@@ -1,20 +1,25 @@
 {
-  "$comment": "DDD bridge for PatternFly 6. Build with: yarn ddd:bridge elements/patternfly-theme. Named DDD colors are constants (elements pair them with light-dark() themselves), so they point at fixed PatternFly palette values by role; mode-aware PatternFly semantic tokens are used for the theme chrome and for fonts, radius, shadows and focus.",
+  "$comment": "DDD bridge for PatternFly 6. Build with: yarn ddd:bridge elements/patternfly-theme. Named DDD colors are constants (elements pair them with light-dark() themselves), so they point at fixed PatternFly palette values by role; mode-aware PatternFly semantic tokens are used for the theme chrome and for fonts, radius, shadows and focus. Tiers follow elements/d-d-d/design-system/bridge/contract.json. Kept as DDD on purpose: font-weight light and medium (PatternFly has no 300 or 500 step), radius-xl and boxShadow-xl (no PatternFly equivalent), timing-emphasized, state opacities and control heights (PatternFly has no tokens for them), and the semantic type sizes: PatternFly body text is 14px (below the 16px floor) and its h3-h6 (18px, 16px) would fall below DDD's 20px body text, so headings follow DDD until body size is decided.",
   "system": "patternfly",
   "title": "PatternFly",
   "prefix": "Patternfly",
-  "upstream": {
-    "package": "@patternfly/patternfly",
-    "version": "6.7.0",
-    "license": "MIT",
-    "homepage": "https://www.patternfly.org",
-    "repository": "https://github.com/patternfly/patternfly",
-    "file": "base/patternfly-variables.css"
-  },
-  "scopes": {
-    "light": [":root"],
-    "dark": [":root", ":root:where(.pf-v6-theme-dark)"]
-  },
+  "homepage": "https://www.patternfly.org",
+  "sources": [
+    {
+      "package": "@patternfly/patternfly",
+      "version": "6.7.0",
+      "license": "MIT",
+      "copyright": "Copyright (c) 2019 Red Hat, Inc.",
+      "homepage": "https://www.patternfly.org",
+      "repository": "https://github.com/patternfly/patternfly",
+      "format": "css",
+      "file": "base/patternfly-variables.css",
+      "scopes": {
+        "light": [":root"],
+        "dark": [":root", ":root:where(.pf-v6-theme-dark)"]
+      }
+    }
+  ],
   "fonts": [
     {
       "family": "Red Hat Text",
@@ -45,54 +50,96 @@
       "token": "--pf-t--color--blue--80",
       "note": "darkest brand surface"
     },
-    "--ddd-theme-default-pughBlue": { "token": "--pf-t--color--blue--30" },
-    "--ddd-theme-default-accent": { "token": "--pf-t--color--blue--30" },
-    "--ddd-theme-default-skyBlue": { "token": "--pf-t--color--blue--40" },
-    "--ddd-theme-default-skyLight": { "token": "--pf-t--color--blue--20" },
-    "--ddd-theme-default-skyMaxLight": { "token": "--pf-t--color--blue--10" },
+    "--ddd-theme-default-pughBlue": {
+      "token": "--pf-t--color--blue--30"
+    },
+    "--ddd-theme-default-accent": {
+      "token": "--pf-t--color--blue--30"
+    },
+    "--ddd-theme-default-skyBlue": {
+      "token": "--pf-t--color--blue--40"
+    },
+    "--ddd-theme-default-skyLight": {
+      "token": "--pf-t--color--blue--20"
+    },
+    "--ddd-theme-default-skyMaxLight": {
+      "token": "--pf-t--color--blue--10"
+    },
     "--ddd-theme-default-slateGray": {
       "token": "--pf-t--color--gray--70",
       "note": "PatternFly has no slate; closest neutral"
     },
-    "--ddd-theme-default-slateLight": { "token": "--pf-t--color--gray--30" },
-    "--ddd-theme-default-slateMaxLight": { "token": "--pf-t--color--blue--10" },
+    "--ddd-theme-default-slateLight": {
+      "token": "--pf-t--color--gray--30"
+    },
+    "--ddd-theme-default-slateMaxLight": {
+      "token": "--pf-t--color--blue--10"
+    },
     "--ddd-theme-default-coalyGray": {
       "token": "--pf-t--color--gray--95",
       "note": "PatternFly regular text / dark surface"
     },
-    "--ddd-theme-default-black": { "token": "--pf-t--color--black" },
-    "--ddd-theme-default-white": { "token": "--pf-t--color--white" },
-    "--ddd-theme-default-limestoneGray": { "token": "--pf-t--color--gray--40" },
+    "--ddd-theme-default-black": {
+      "token": "--pf-t--color--black"
+    },
+    "--ddd-theme-default-white": {
+      "token": "--pf-t--color--white"
+    },
+    "--ddd-theme-default-limestoneGray": {
+      "token": "--pf-t--color--gray--40"
+    },
     "--ddd-theme-default-limestoneLight": {
       "token": "--pf-t--color--gray--20"
     },
     "--ddd-theme-default-limestoneMaxLight": {
       "token": "--pf-t--color--gray--10"
     },
-    "--ddd-theme-default-background": { "token": "--pf-t--color--gray--10" },
-    "--ddd-theme-default-disabled": { "token": "--pf-t--color--gray--10" },
+    "--ddd-theme-default-background": {
+      "token": "--pf-t--color--gray--10"
+    },
+    "--ddd-theme-default-disabled": {
+      "token": "--pf-t--color--gray--10"
+    },
     "--ddd-theme-default-keystoneYellow": {
       "token": "--pf-t--color--yellow--30"
     },
-    "--ddd-theme-default-globalNeon": { "token": "--pf-t--color--yellow--20" },
-    "--ddd-theme-default-roarGolden": { "token": "--pf-t--color--yellow--50" },
-    "--ddd-theme-default-roarLight": { "token": "--pf-t--color--yellow--10" },
-    "--ddd-theme-default-shrineTan": { "token": "--pf-t--color--orange--50" },
-    "--ddd-theme-default-shrineLight": { "token": "--pf-t--color--orange--10" },
+    "--ddd-theme-default-globalNeon": {
+      "token": "--pf-t--color--yellow--20"
+    },
+    "--ddd-theme-default-roarGolden": {
+      "token": "--pf-t--color--yellow--50"
+    },
+    "--ddd-theme-default-roarLight": {
+      "token": "--pf-t--color--yellow--10"
+    },
+    "--ddd-theme-default-shrineTan": {
+      "token": "--pf-t--color--orange--50"
+    },
+    "--ddd-theme-default-shrineLight": {
+      "token": "--pf-t--color--orange--10"
+    },
     "--ddd-theme-default-inventOrange": {
       "token": "--pf-t--color--orange--40"
     },
     "--ddd-theme-default-landgrantBrown": {
       "token": "--pf-t--color--orange--70"
     },
-    "--ddd-theme-default-creekTeal": { "token": "--pf-t--color--teal--50" },
-    "--ddd-theme-default-creekLight": { "token": "--pf-t--color--teal--20" },
-    "--ddd-theme-default-creekMaxLight": { "token": "--pf-t--color--teal--10" },
+    "--ddd-theme-default-creekTeal": {
+      "token": "--pf-t--color--teal--50"
+    },
+    "--ddd-theme-default-creekLight": {
+      "token": "--pf-t--color--teal--20"
+    },
+    "--ddd-theme-default-creekMaxLight": {
+      "token": "--pf-t--color--teal--10"
+    },
     "--ddd-theme-default-opportunityGreen": {
       "token": "--pf-t--color--green--60",
       "note": "correct signal (light)"
     },
-    "--ddd-theme-default-forestGreen": { "token": "--pf-t--color--green--50" },
+    "--ddd-theme-default-forestGreen": {
+      "token": "--pf-t--color--green--50"
+    },
     "--ddd-theme-default-futureLime": {
       "token": "--pf-t--color--green--40",
       "note": "correct signal (dark)"
@@ -109,7 +156,9 @@
       "token": "--pf-t--color--red--60",
       "note": "PatternFly has no pink; red keeps white text above 4.5:1"
     },
-    "--ddd-theme-default-discoveryCoral": { "token": "--pf-t--color--red--40" },
+    "--ddd-theme-default-discoveryCoral": {
+      "token": "--pf-t--color--red--40"
+    },
     "--ddd-theme-default-link": {
       "token": "--pf-t--color--blue--50",
       "note": "PatternFly light link color"
@@ -118,39 +167,121 @@
       "token": "--pf-t--color--blue--20",
       "note": "dark-mode link / light link surface"
     },
-    "--ddd-theme-default-error": { "token": "--pf-t--color--red--70" },
-    "--ddd-theme-default-errorLight": { "token": "--pf-t--color--red--10" },
-    "--ddd-theme-default-warning": { "token": "--pf-t--color--yellow--70" },
+    "--ddd-theme-default-error": {
+      "token": "--pf-t--color--red--70"
+    },
+    "--ddd-theme-default-errorLight": {
+      "token": "--pf-t--color--red--10"
+    },
+    "--ddd-theme-default-warning": {
+      "token": "--pf-t--color--yellow--70"
+    },
     "--ddd-theme-default-warningLight": {
       "token": "--pf-t--color--yellow--10"
     },
-    "--ddd-theme-default-info": { "token": "--pf-t--color--blue--70" },
-    "--ddd-theme-default-infoLight": { "token": "--pf-t--color--blue--10" },
-    "--ddd-theme-default-success": { "token": "--pf-t--color--green--70" },
-    "--ddd-theme-default-successLight": { "token": "--pf-t--color--green--10" },
-    "--ddd-theme-default-alertImmediate": { "token": "--pf-t--color--red--20" },
-    "--ddd-theme-default-alertUrgent": { "token": "--pf-t--color--yellow--10" },
+    "--ddd-theme-default-info": {
+      "token": "--pf-t--color--blue--70"
+    },
+    "--ddd-theme-default-infoLight": {
+      "token": "--pf-t--color--blue--10"
+    },
+    "--ddd-theme-default-success": {
+      "token": "--pf-t--color--green--70"
+    },
+    "--ddd-theme-default-successLight": {
+      "token": "--pf-t--color--green--10"
+    },
+    "--ddd-theme-default-alertImmediate": {
+      "token": "--pf-t--color--red--20"
+    },
+    "--ddd-theme-default-alertUrgent": {
+      "token": "--pf-t--color--yellow--10"
+    },
     "--ddd-theme-default-alertAllClear": {
       "token": "--pf-t--color--green--10"
     },
     "--ddd-theme-default-alertNonEmergency": {
       "token": "--pf-t--color--blue--10"
     },
-    "--ddd-font-primary": { "token": "--pf-t--global--font--family--body" },
+    "--ddd-font-primary": {
+      "token": "--pf-t--global--font--family--body"
+    },
     "--ddd-font-secondary": {
       "token": "--pf-t--global--font--family--heading"
     },
-    "--ddd-font-navigation": { "token": "--pf-t--global--font--family--body" },
-    "--ddd-font-mono": { "token": "--pf-t--global--font--family--mono" },
-    "--ddd-radius-xs": { "token": "--pf-t--global--border--radius--tiny" },
-    "--ddd-radius-sm": { "token": "--pf-t--global--border--radius--small" },
-    "--ddd-radius-md": { "token": "--pf-t--global--border--radius--medium" },
-    "--ddd-radius-lg": { "token": "--pf-t--global--border--radius--large" },
-    "--ddd-boxShadow-sm": { "token": "--pf-t--global--box-shadow--sm" },
-    "--ddd-boxShadow-md": { "token": "--pf-t--global--box-shadow--md" },
-    "--ddd-boxShadow-lg": { "token": "--pf-t--global--box-shadow--lg" },
+    "--ddd-font-navigation": {
+      "token": "--pf-t--global--font--family--body"
+    },
+    "--ddd-font-mono": {
+      "token": "--pf-t--global--font--family--mono"
+    },
+    "--ddd-radius-xs": {
+      "token": "--pf-t--global--border--radius--tiny"
+    },
+    "--ddd-radius-sm": {
+      "token": "--pf-t--global--border--radius--small"
+    },
+    "--ddd-radius-md": {
+      "token": "--pf-t--global--border--radius--medium"
+    },
+    "--ddd-radius-lg": {
+      "token": "--pf-t--global--border--radius--large"
+    },
+    "--ddd-boxShadow-sm": {
+      "token": "--pf-t--global--box-shadow--sm"
+    },
+    "--ddd-boxShadow-md": {
+      "token": "--pf-t--global--box-shadow--md"
+    },
+    "--ddd-boxShadow-lg": {
+      "token": "--pf-t--global--box-shadow--lg"
+    },
     "--ddd-focus-ring": {
       "value": "2px solid var(--pf-t--global--focus-ring--color--default)"
+    },
+    "--ddd-font-weight-regular": {
+      "token": "--pf-t--global--font--weight--body--default"
+    },
+    "--ddd-font-weight-bold": {
+      "token": "--pf-t--global--font--weight--body--bold",
+      "note": "PatternFly bold is 600"
+    },
+    "--ddd-font-weight-black": {
+      "token": "--pf-t--global--font--weight--heading--bold",
+      "note": "PatternFly heavy heading weight, 800"
+    },
+    "--ddd-focus-offset": {
+      "token": "--pf-t--global--focus-ring--position--offset"
+    },
+    "--ddd-duration-fast": {
+      "token": "--pf-t--global--motion--duration--sm"
+    },
+    "--ddd-duration-normal": {
+      "token": "--pf-t--global--motion--duration--lg"
+    },
+    "--ddd-duration-slow": {
+      "token": "--pf-t--global--motion--duration--2xl"
+    },
+    "--ddd-timing-ease": {
+      "token": "--pf-t--global--motion--timing-function--default"
+    },
+    "--ddd-timing-enter": {
+      "token": "--pf-t--global--motion--timing-function--decelerate"
+    },
+    "--ddd-timing-exit": {
+      "token": "--pf-t--global--motion--timing-function--accelerate"
+    },
+    "--ddd-border-size-xs": {
+      "token": "--pf-t--global--border--width--regular"
+    },
+    "--ddd-border-size-sm": {
+      "token": "--pf-t--global--border--width--strong"
+    },
+    "--ddd-border-size-md": {
+      "token": "--pf-t--global--border--width--extra-strong"
+    },
+    "--ddd-border-size-lg": {
+      "token": "--pf-t--global--border--width--400"
     }
   },
   "extraTokens": [

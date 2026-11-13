@@ -19,8 +19,30 @@
           "default": "1"
         },
         {
+          "kind": "function",
+          "name": "milestoneKey",
+          "parameters": [
+            {
+              "name": "verb"
+            },
+            {
+              "name": "progress"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "mergeRanges",
+          "parameters": [
+            {
+              "name": "ranges"
+            }
+          ],
+          "description": "Inclusive whole-number ranges ([[from, to], ...]: seconds of media, slide\nindexes) sorted and joined where they touch or overlap; anything that is\nnot a pair of numbers is dropped"
+        },
+        {
           "kind": "class",
-          "description": "`user-scaffold`\n`memory and context to establish and maintain appropriate user scaffolding`\n\nLearner profile: long-term memory holds ONE profile for the person using\nthis browser (readProfile()), shaped as\n  { v, preferences: { darkMode, soundStatus, audioDescription: {<src>: bool} },\n    session: { firstVisit, lastVisit, visits, lastLogin },\n    sites: { <siteKey>: { url, title, actor, firstVisit, lastVisit,\n      pages: { <pageId>: { title, url, firstVisit, lastVisit, visits,\n        activities: [activityId], trackable, trackableByTag, legacyRead\n        (done before reading was tracked; counts as read) } },\n      activities: { <activityId>: { page, tag, name, verb, verbs, count,\n        first, last, trackable, done, progress (0 to 1, highest progress\n        extension sent), reading (the page's own reading activity),\n        status, success, firstTry (result of the first answer), attempts,\n        maxAttempts, score, response (xAPI result.response, component ids\n        for choice / matching / sequencing), responseText (the same in\n        plain words, when the recorder resolved it), migratedFrom } },\n      counts: { byElement: { <tag>: { <verb>: n } }, byVerb: { <verb>: n } },\n      statementCount } },\n    migrations: { <name>: when it ran } }\nEvery xAPI statement recorded is also appended to the statements list\n(IndexedDB by default, see lib/user-scaffold-storage.js). Nothing here is\nsent anywhere; the actor of each site is a random per-device account.",
+          "description": "`user-scaffold`\n`memory and context to establish and maintain appropriate user scaffolding`\n\nLearner profile: long-term memory holds ONE profile for the person using\nthis browser (readProfile()), shaped as\n  { v, preferences: { darkMode, soundStatus, audioDescription: {<src>: bool} },\n    session: { firstVisit, lastVisit, visits, lastLogin },\n    sites: { <siteKey>: { url, title, actor, firstVisit, lastVisit,\n      pages: { <pageId>: { title, url, firstVisit, lastVisit, visits,\n        activities: [activityId], trackable, trackableByTag, legacyRead\n        (done before reading was tracked; counts as read) } },\n      activities: { <activityId>: { page, tag, name, verb, verbs, count,\n        first, last, trackable, done, progress (0 to 1, highest progress\n        extension sent), reading (the page's own reading activity),\n        status, success, firstTry (result of the first answer), attempts,\n        maxAttempts, score, response (xAPI result.response, component ids\n        for choice / matching / sequencing), responseText (the same in\n        plain words, when the recorder resolved it), migratedFrom,\n        milestones (attempted / progressed@share / completed keys already\n        sent), state ({ covered: [[from, to]], resume }, where the learner\n        is in media or slides, see updateActivityState) } },\n      counts: { byElement: { <tag>: { <verb>: n } }, byVerb: { <verb>: n } },\n      statementCount } },\n    migrations: { <name>: when it ran } }\nEvery xAPI statement recorded is also appended to the statements list\n(IndexedDB by default, see lib/user-scaffold-storage.js). Nothing here is\nsent anywhere; the actor of each site is a random per-device account.",
           "name": "UserScaffold",
           "members": [
             {
@@ -372,6 +394,47 @@
             },
             {
               "kind": "method",
+              "name": "updateActivityState",
+              "parameters": [
+                {
+                  "name": "site",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "activityId",
+                  "description": "the id statements about the activity use",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "state",
+                  "default": "{}",
+                  "description": "{ covered: [[from, to], ...] whole-number inclusive\nranges (seconds, slide indexes), resume: number (where to pick up),\nprogress: 0 to 1 }",
+                  "type": {
+                    "text": "Object"
+                  }
+                },
+                {
+                  "name": "meta",
+                  "default": "{}",
+                  "description": "{ page, tag, name, trackable }",
+                  "type": {
+                    "text": "Object"
+                  }
+                }
+              ],
+              "description": "Where a learner is in an activity they go through in order (media,\nslides), kept on its summary as `state` and overwritten as they go:\nthis is NOT a statement and adds nothing to the statements list. Coverage\nonly grows (merged with what was covered before) and progress never goes\nback; resume is replaced each time.",
+              "return": {
+                "type": {
+                  "text": "Object|null"
+                }
+              }
+            },
+            {
+              "kind": "method",
               "name": "_migrateActivity",
               "parameters": [
                 {
@@ -619,6 +682,22 @@
           "name": "USER_PROFILE_VERSION",
           "declaration": {
             "name": "USER_PROFILE_VERSION",
+            "module": "user-scaffold.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "milestoneKey",
+          "declaration": {
+            "name": "milestoneKey",
+            "module": "user-scaffold.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "mergeRanges",
+          "declaration": {
+            "name": "mergeRanges",
             "module": "user-scaffold.js"
           }
         },

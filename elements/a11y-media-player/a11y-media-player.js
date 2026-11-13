@@ -29,20 +29,24 @@ import {
   XAPI_EXTENSIONS,
 } from "@haxtheweb/user-action/lib/xapi.js";
 
-// learner data milestones, as the share of the media actually watched.
-// Completion is 95%, not 100%: YouTube often stops reporting time a moment
-// before the very end, so an exact 100% may never be reached.
-export const MEDIA_WATCH_HALF = 0.5;
-export const MEDIA_WATCH_DONE = 0.95;
+// learner data milestones. The media is split in four quarters; a quarter
+// is watched once this share of its seconds was actually played (YouTube
+// and background tabs drop a few time reports). progressed is sent once
+// for each quarter watched in order (0.25, 0.5, 0.75); completed once all
+// four are, or the first three are and the player reaches its end. Each is
+// sent once per learner, ever (the learner profile remembers them).
+export const MEDIA_QUARTER_HIT = 0.9;
+export const MEDIA_MILESTONES = [0.25, 0.5, 0.75];
+// where the learner is (seconds covered, where to resume) is saved to the
+// learner profile each time another tenth of the media is covered, and on
+// pause, end and leaving the page; it is never a statement
+export const MEDIA_STATE_STEP = 0.1;
+// a learner who got no further than this many seconds starts at the start
+export const MEDIA_RESUME_MIN = 10;
 // the largest jump in media time still counted as watching; anything bigger
 // is a seek (YouTube reports every 250ms, HTML5 every ~250ms, fast playback
 // at 2x moves about 0.5s between reports)
 const MEDIA_WATCH_MAX_STEP = 3;
-// playing on into the end of the media completes it once at least this
-// share was actually watched (a few seconds can go unreported: background
-// tabs, stalls, YouTube stopping its reports just before the end); seeking
-// to the end and letting it run out does not reach it
-export const MEDIA_WATCH_END_MIN = 0.8;
 // the end of the media: its last 5%, at least 1 and at most 3 seconds
 const MEDIA_END_WINDOW_MIN = 1;
 const MEDIA_END_WINDOW_MAX = 3;
@@ -2274,7 +2278,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
         "extensions.https://w3id.org/xapi/video/extensions/progress",
       ],
       countsTowardCompletion: true,
-      done: "95% of the media actually watched, or played on into the end after watching 80% (seeking ahead does not count)",
+      done: "every quarter of the media actually watched (90% of its seconds), or the first three and the player reaching its end; seeking ahead does not count, and each milestone is sent once per learner",
     };
   }
 
@@ -2403,6 +2407,19 @@ class A11yMediaPlayer extends SchemaBehaviors(
     this.__transcriptLayout = null;
     this.__transcriptSide = "right";
     this._layoutPreferenceHandler = this._onLayoutPreference.bind(this);
+    // learner profile: save where the learner is when they leave, read it
+    // again once the HAXcms learner progress bridge is listening, forget it
+    // when the learner clears their progress
+    this._learnerLeaveHandler = () => this._saveLearnerState();
+    this._learnerReadyHandler = () => {
+      this.__learnerChecked = false;
+      this._readLearnerRecord();
+    };
+    this._learnerClearedHandler = () => {
+      this._resetWatched();
+      this.__learnerChecked = true;
+      this.__resumed = true;
+    };
     // global listeners for settings menu ESC and click-away behavior
     this._settingsKeydownHandler = this._onSettingsKeydown.bind(this);
     this._settingsClickHandler = this._onSettingsDocumentClick.bind(this);
@@ -4151,6 +4168,206 @@ class A11yMediaPlayer extends SchemaBehaviors(
     this.__watchSent = {};
     this.__playedToEnd = false;
     this.__reportedEnd = false;
+    // learner profile: whether it was asked yet for this media, whether the
+    // media was finished on an earlier visit (nothing is sent again), the
+    // tenth of the media the last saved state reached, and whether the
+    // saved resume point was used already
+    this.__learnerChecked = false;
+    this.__alreadyDone = false;
+    this.__stateStep = 0;
+    this.__resumed = false;
+  }
+
+  /**
+   * Learner data: the activity this player reports as. When the player
+   * sits inside video-player or audio-player (rendered by it, or authored
+   * inside it as legacy light DOM markup), that element is the activity.
+   * @returns {{host: HTMLElement, tag: string, name: string, id: string}}
+   */
+  _mediaActivity() {
+    const wrappers = ["video-player", "audio-player"];
+    const root = this.getRootNode ? this.getRootNode() : null;
+    const parent = this.parentElement;
+    const host =
+      root && root.host && wrappers.includes(root.host.tagName.toLowerCase())
+        ? root.host
+        : parent && wrappers.includes(parent.tagName.toLowerCase())
+          ? parent
+          : this;
+    const tag = host.tagName.toLowerCase();
+    const name = this.mediaTitle || host.getAttribute("title") || tag;
+    const fingerprint =
+      host.source || host.getAttribute("source") || this.mediaTitle || "";
+    return {
+      host,
+      tag,
+      name,
+      id: activityId(
+        host,
+        typeof host.xapiFingerprint === "function"
+          ? host.xapiFingerprint()
+          : fingerprint,
+      ),
+    };
+  }
+
+  /**
+   * Learner data: whether the page is being edited (HAX); nothing is read
+   * back, resumed or saved then
+   */
+  _inEditor() {
+    const hs = globalThis.HaxStore;
+    return Boolean(hs && hs.instance && hs.instance.editMode);
+  }
+
+  /**
+   * Learner data: what this learner did with this media before, from the
+   * learner profile (the HAXcms learner progress bridge answers
+   * `learner-progress-request`; with nothing listening the record stays
+   * null and only this visit counts). Puts back the seconds covered and
+   * the milestones already sent, and resumes where they left off. Asked
+   * once the duration is known (quarters and resume need it).
+   */
+  _readLearnerRecord() {
+    if (this.__learnerChecked || !this.isConnected || this._inEditor()) {
+      return;
+    }
+    const d = Number(this.duration);
+    if (!isFinite(d) || d <= 0) {
+      return;
+    }
+    this.__learnerChecked = true;
+    const activity = this._mediaActivity();
+    const detail = {
+      activityId: activity.id,
+      tag: activity.tag,
+      record: null,
+    };
+    globalThis.dispatchEvent(
+      new CustomEvent("learner-progress-request", { detail }),
+    );
+    const record =
+      detail.record && typeof detail.record === "object" ? detail.record : null;
+    if (!record) {
+      return;
+    }
+    if (record.done) {
+      // finished before: watching again sends and saves nothing
+      this.__alreadyDone = true;
+      return;
+    }
+    const sent = this.__watchSent;
+    (Array.isArray(record.milestones) ? record.milestones : []).forEach(
+      (key) => {
+        sent[key] = true;
+      },
+    );
+    const verbs = record.verbs || {};
+    if (verbs.attempted) {
+      sent.attempted = true;
+    }
+    const state = record.state || {};
+    const last = Math.ceil(d) - 1;
+    (Array.isArray(state.covered) ? state.covered : []).forEach((r) => {
+      const from = Math.max(0, Math.floor(Number(r[0])));
+      const to = Math.min(last, Math.floor(Number(r[1])));
+      for (let sec = from; sec <= to; sec++) {
+        this.__watched.add(sec);
+      }
+    });
+    const share = this.watchedShare;
+    this.__stateStep = share
+      ? Math.floor(share / MEDIA_STATE_STEP + 0.000001)
+      : 0;
+    this._resumeAt(Number(state.resume));
+  }
+
+  /**
+   * Learner data: pick up where the learner stopped. Not when they barely
+   * started or were already at the end, and not when something else (a
+   * link to a time, a cue) already moved the player.
+   * @param {number} t seconds
+   */
+  _resumeAt(t) {
+    if (this.__resumed) {
+      return;
+    }
+    this.__resumed = true;
+    const media = this.media;
+    const now = media ? Number(media.currentTime) || 0 : 0;
+    if (
+      !isFinite(t) ||
+      t < MEDIA_RESUME_MIN ||
+      this._isAtEnd(t) ||
+      now > 1 ||
+      (this.anchor && this.anchor.target === this)
+    ) {
+      return;
+    }
+    this.seek(t);
+  }
+
+  /**
+   * Learner data: save where the learner is (seconds covered, resume
+   * point, share covered) to the learner profile, without a statement
+   * (`learner-progress-update`, written by the HAXcms learner progress
+   * bridge). Nothing when finished on an earlier visit or while editing.
+   * @param {number} [resume] where to resume, default the current time
+   */
+  _saveLearnerState(resume) {
+    if (
+      this.__alreadyDone ||
+      !this.__watched ||
+      !this.__watched.size ||
+      this._inEditor()
+    ) {
+      return;
+    }
+    const media = this.media;
+    const t =
+      typeof resume === "number"
+        ? resume
+        : media
+          ? Number(media.currentTime) || 0
+          : 0;
+    const share = this.watchedShare;
+    const state = {
+      covered: this.coveredRanges,
+      resume: Math.max(0, Math.round(t * 10) / 10),
+    };
+    if (this.__watchSent.completed) {
+      state.progress = 1;
+    } else if (share !== null) {
+      state.progress = Math.round(share * 100) / 100;
+    }
+    const activity = this._mediaActivity();
+    globalThis.dispatchEvent(
+      new CustomEvent("learner-progress-update", {
+        detail: {
+          activityId: activity.id,
+          tag: activity.tag,
+          name: activity.name,
+          state,
+        },
+      }),
+    );
+  }
+
+  /**
+   * Learner data: the seconds watched as inclusive ranges, [[from, to], ...]
+   */
+  get coveredRanges() {
+    const secs = Array.from(this.__watched || []).sort((a, b) => a - b);
+    const out = [];
+    secs.forEach((s) => {
+      const prev = out[out.length - 1];
+      if (prev && s === prev[1] + 1) {
+        prev[1] = s;
+      } else {
+        out.push([s, s]);
+      }
+    });
+    return out;
   }
 
   /**
@@ -4188,6 +4405,8 @@ class A11yMediaPlayer extends SchemaBehaviors(
       this._trackWatched(true);
       this._completeAtEnd();
     }
+    // where they stopped is where they pick up next time
+    this._saveLearnerState(t);
   }
 
   /**
@@ -4238,6 +4457,8 @@ class A11yMediaPlayer extends SchemaBehaviors(
     if (!playing || this.__seeking || last === null) {
       return;
     }
+    // what this learner watched before counts before anything new does
+    this._readLearnerRecord();
     const step = t - last;
     if (step <= 0 || step > MEDIA_WATCH_MAX_STEP) {
       return;
@@ -4273,42 +4494,86 @@ class A11yMediaPlayer extends SchemaBehaviors(
   }
 
   /**
-   * Learner data: send start, half way and done once each per visit
+   * Learner data: which quarters of the media were watched (at least
+   * MEDIA_QUARTER_HIT of the seconds in each), or null when the duration is
+   * not known. A quarter with no whole second in it (very short media)
+   * counts as watched.
+   * @returns {boolean[]|null}
+   */
+  get watchedQuarters() {
+    const d = Number(this.duration);
+    if (!isFinite(d) || d <= 0 || !this.__watched) {
+      return null;
+    }
+    const n = Math.ceil(d);
+    return [0, 1, 2, 3].map((q) => {
+      const from = Math.floor((q * n) / 4);
+      const to = Math.floor(((q + 1) * n) / 4);
+      if (to <= from) {
+        return true;
+      }
+      let watched = 0;
+      for (let sec = from; sec < to; sec++) {
+        if (this.__watched.has(sec)) {
+          watched++;
+        }
+      }
+      return watched / (to - from) >= MEDIA_QUARTER_HIT;
+    });
+  }
+
+  /**
+   * Learner data: send each milestone once, ever: attempted on the first
+   * second played, progressed (0.25, 0.5, 0.75) as each quarter is watched
+   * in order, completed once every quarter is, or the first three are and
+   * the player reached its end (ended event, a stop at the end, or playback
+   * running on into it). Saves where the learner is each time another tenth
+   * of the media is covered.
    */
   _checkWatched() {
+    if (this.__alreadyDone) {
+      return;
+    }
     const sent = this.__watchSent;
     if (!sent.attempted && this.__watched.size) {
       sent.attempted = true;
       this._announceMedia("attempted");
     }
-    const share = this.watchedShare;
-    if (share === null) {
+    const quarters = this.watchedQuarters;
+    if (!quarters) {
       return;
     }
-    if (!sent.progressed && share >= MEDIA_WATCH_HALF) {
-      sent.progressed = true;
-      this._announceMedia("progressed", share);
+    let inOrder = 0;
+    while (inOrder < MEDIA_MILESTONES.length && quarters[inOrder]) {
+      inOrder++;
     }
-    if (
-      !sent.completed &&
-      (share >= MEDIA_WATCH_DONE ||
-        ((this.__playedToEnd || this.__reportedEnd) &&
-          share >= MEDIA_WATCH_END_MIN))
-    ) {
-      // xAPI order: a completion always follows a progressed statement
-      if (!sent.progressed) {
-        sent.progressed = true;
+    for (let i = 0; i < inOrder; i++) {
+      const share = MEDIA_MILESTONES[i];
+      const key = `progressed@${share}`;
+      if (!sent[key]) {
+        sent[key] = true;
         this._announceMedia("progressed", share);
       }
+    }
+    const atEnd = quarters[3] || this.__playedToEnd || this.__reportedEnd;
+    if (!sent.completed && inOrder === MEDIA_MILESTONES.length && atEnd) {
       sent.completed = true;
       this._announceEnded();
+      this._saveLearnerState();
+      return;
+    }
+    const share = this.watchedShare;
+    const step = share ? Math.floor(share / MEDIA_STATE_STEP + 0.000001) : 0;
+    if (step > this.__stateStep) {
+      this.__stateStep = step;
+      this._saveLearnerState();
     }
   }
 
   /**
-   * Learner data: the media was watched (95% or more, or played on into
-   * the end after watching at least 80%). Fires user-engagement (verb
-   * completed, with an xAPI statement and progress 1) once per visit.
+   * Learner data: the media was watched (every quarter, or the first three
+   * and the end). Fires user-engagement (verb completed, with an xAPI
+   * statement and progress 1) once per learner.
    */
   _announceEnded() {
     // completed is the whole media: progress 1 (the duration in the
@@ -4321,24 +4586,10 @@ class A11yMediaPlayer extends SchemaBehaviors(
    * this media. When the player sits inside video-player or audio-player,
    * that element is the activity.
    * @param {string} verb attempted, progressed or completed
-   * @param {number|null} [share] share of the media watched, 0 to 1
+   * @param {number|null} [share] progress milestone, 0 to 1
    */
   _announceMedia(verb, share) {
-    const wrappers = ["video-player", "audio-player"];
-    const root = this.getRootNode ? this.getRootNode() : null;
-    const parent = this.parentElement;
-    // rendered by the wrapper (shadow) or authored inside it (legacy light
-    // DOM markup): either way the wrapper is the activity on the page
-    const host =
-      root && root.host && wrappers.includes(root.host.tagName.toLowerCase())
-        ? root.host
-        : parent && wrappers.includes(parent.tagName.toLowerCase())
-          ? parent
-          : this;
-    const tag = host.tagName.toLowerCase();
-    const name = this.mediaTitle || host.getAttribute("title") || tag;
-    const fingerprint =
-      host.source || host.getAttribute("source") || this.mediaTitle || "";
+    const { tag, name, id } = this._mediaActivity();
     const done = verb === "completed";
     let result;
     if (verb !== "attempted") {
@@ -4358,12 +4609,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
       statement: buildStatement({
         verb,
         object: {
-          id: activityId(
-            host,
-            typeof host.xapiFingerprint === "function"
-              ? host.xapiFingerprint()
-              : fingerprint,
-          ),
+          id,
           name,
           type: XAPI_ACTIVITY_TYPES.media,
         },
@@ -4402,6 +4648,8 @@ class A11yMediaPlayer extends SchemaBehaviors(
         ),
       );
     }
+    // the duration is what quarters and resuming need
+    this._readLearnerRecord();
   }
 
   /**
@@ -4944,16 +5192,36 @@ class A11yMediaPlayer extends SchemaBehaviors(
         "a11y-media-layout-preference",
         this._layoutPreferenceHandler,
       );
+      globalThis.addEventListener("pagehide", this._learnerLeaveHandler);
+      globalThis.addEventListener(
+        "learner-progress-ready",
+        this._learnerReadyHandler,
+      );
+      globalThis.addEventListener(
+        "learner-progress-cleared",
+        this._learnerClearedHandler,
+      );
     }
   }
 
   disconnectedCallback() {
+    // the learner moved on (another page of the site): keep where they were
+    this._saveLearnerState();
     // the utility's ResizeObserver keeps a registered element alive
     unregisterResponsiveElement(this);
     if (globalThis.removeEventListener) {
       globalThis.removeEventListener(
         "a11y-media-layout-preference",
         this._layoutPreferenceHandler,
+      );
+      globalThis.removeEventListener("pagehide", this._learnerLeaveHandler);
+      globalThis.removeEventListener(
+        "learner-progress-ready",
+        this._learnerReadyHandler,
+      );
+      globalThis.removeEventListener(
+        "learner-progress-cleared",
+        this._learnerClearedHandler,
       );
     }
     if (super.disconnectedCallback) {

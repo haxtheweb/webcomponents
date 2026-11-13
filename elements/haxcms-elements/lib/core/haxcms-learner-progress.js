@@ -23,6 +23,12 @@
  *   `learner-progress-ready` once it is listening and `learner-progress-
  *   cleared` after clear() / clearDevice() (detail.scope "site" or
  *   "device").
+ * - Where the learner is: `learner-progress-update` window events (media
+ *   and slide decks, as the learner goes) are written to the activity's
+ *   summary as state (covered ranges, resume point, progress) without a
+ *   statement (UserScaffold.updateActivityState); the element reads it
+ *   back with `learner-progress-request` to resume and to not send a
+ *   milestone twice.
  * - Preferences: mirrors the site's dark mode and sound status into the
  *   profile and imports legacy preference keys once.
  *
@@ -141,6 +147,8 @@ class HAXCMSLearnerProgress {
       "learner-progress-request",
       this._requestHandler,
     );
+    this._updateHandler = (e) => this._onUpdate(e);
+    globalThis.addEventListener("learner-progress-update", this._updateHandler);
     // the learner leaves the site part way through a page
     this._leaveHandler = () => this.reading.flush();
     globalThis.addEventListener("pagehide", this._leaveHandler);
@@ -222,6 +230,13 @@ class HAXCMSLearnerProgress {
         this._requestHandler,
       );
     }
+    if (this._updateHandler) {
+      globalThis.removeEventListener(
+        "learner-progress-update",
+        this._updateHandler,
+      );
+      this._updateHandler = null;
+    }
     if (this._bodyHandler) {
       globalThis.removeEventListener(
         "json-outline-schema-active-body-changed",
@@ -301,6 +316,17 @@ class HAXCMSLearnerProgress {
    */
   _reportReading(verb, share, page) {
     if (!page || !page.url || store.editMode) {
+      return;
+    }
+    // reading is reported once per page, ever: a page read part way on one
+    // visit only reports again once the learner reads past where they got
+    const key = this.siteKey;
+    const read = key ? this.profile.readActivity(key, page.url) : null;
+    if (
+      read &&
+      (read.done ||
+        (verb === "progressed" && (Number(read.progress) || 0) >= share))
+    ) {
       return;
     }
     const done = verb === "completed";
@@ -455,6 +481,26 @@ class HAXCMSLearnerProgress {
       d.activityId,
       d.legacyActivityId,
     );
+  }
+  /**
+   * Where the learner is in media or slides (detail: activityId, tag, name,
+   * state { covered, resume, progress }): written to the activity summary in
+   * the profile without a statement. detail.record gets the summary back.
+   * Never while editing.
+   */
+  _onUpdate(e) {
+    const d = e && e.detail;
+    const key = this.siteKey;
+    if (!d || !d.activityId || !key || store.editMode || !store.activeId) {
+      return;
+    }
+    const tag = typeof d.tag === "string" ? d.tag : "";
+    d.record = this.profile.updateActivityState(key, d.activityId, d.state, {
+      page: store.activeId,
+      tag,
+      name: typeof d.name === "string" ? d.name : "",
+      trackable: this.isTrackable(tag),
+    });
   }
   _scheduleScan() {
     clearTimeout(this._scanTimer);

@@ -243,6 +243,44 @@ describe("HAXcms learner progress", () => {
     expect(byTag.groups.waves.activities).to.be.greaterThan(0);
   });
 
+  it("writes where the learner is to the profile without a statement", async () => {
+    const id = `${pageUrl()}#clip`;
+    const before = UserScaffoldInstance.readSite("lp-site").statementCount;
+    const detail = {
+      activityId: id,
+      tag: "video-player",
+      name: "Clip",
+      state: { covered: [[0, 19]], resume: 19.5, progress: 0.2 },
+    };
+    globalThis.dispatchEvent(
+      new CustomEvent("learner-progress-update", { detail }),
+    );
+    expect(detail.record.state).to.deep.equal({
+      covered: [[0, 19]],
+      resume: 19.5,
+    });
+    const site = UserScaffoldInstance.readSite("lp-site");
+    expect(site.statementCount).to.equal(before);
+    const act = site.activities[id];
+    expect(act.page).to.equal("p1");
+    expect(act.progress).to.equal(0.2);
+    expect(act.trackable).to.equal(true);
+    // the element reads it back to resume
+    const ask = { activityId: id, record: null };
+    globalThis.dispatchEvent(
+      new CustomEvent("learner-progress-request", { detail: ask }),
+    );
+    expect(ask.record.state.resume).to.equal(19.5);
+    // never while editing
+    store.editMode = true;
+    const edit = { activityId: `${pageUrl()}#other`, state: { resume: 3 } };
+    globalThis.dispatchEvent(
+      new CustomEvent("learner-progress-update", { detail: edit }),
+    );
+    store.editMode = false;
+    expect(edit.record).to.equal(undefined);
+  });
+
   it("does not record while editing", async () => {
     store.editMode = true;
     answer(host, "q-edit", true, true);

@@ -70,6 +70,61 @@ const progressShare = (value) => {
   return Math.min(1, Math.max(0, share));
 };
 const round3 = (n) => Math.round(n * 1000) / 1000;
+// verbs an element sends at most once per activity, ever; progressed counts
+// once per progress share (0.25, 0.5, 0.75), so elements that report going
+// through media or slides in steps can tell what was already sent
+const MILESTONE_VERBS = ["attempted", "progressed", "completed"];
+export const milestoneKey = (verb, progress) =>
+  verb === "progressed" && typeof progress === "number"
+    ? `progressed@${round3(progress)}`
+    : verb;
+// the most ranges an activity's coverage keeps (a learner skipping around a
+// very long video); past it the closest ranges are joined
+const MAX_COVERED_RANGES = 200;
+/**
+ * Inclusive whole-number ranges ([[from, to], ...]: seconds of media, slide
+ * indexes) sorted and joined where they touch or overlap; anything that is
+ * not a pair of numbers is dropped
+ */
+export const mergeRanges = (ranges) => {
+  const list = (Array.isArray(ranges) ? ranges : [])
+    .filter(
+      (r) =>
+        Array.isArray(r) &&
+        r.length === 2 &&
+        isFinite(Number(r[0])) &&
+        isFinite(Number(r[1])),
+    )
+    .map((r) => {
+      const a = Math.max(0, Math.floor(Number(r[0])));
+      const b = Math.max(0, Math.floor(Number(r[1])));
+      return a <= b ? [a, b] : [b, a];
+    })
+    .sort((x, y) => x[0] - y[0]);
+  const out = [];
+  list.forEach((r) => {
+    const prev = out[out.length - 1];
+    if (prev && r[0] <= prev[1] + 1) {
+      prev[1] = Math.max(prev[1], r[1]);
+    } else {
+      out.push([r[0], r[1]]);
+    }
+  });
+  while (out.length > MAX_COVERED_RANGES) {
+    let at = 0;
+    let gap = Infinity;
+    for (let i = 1; i < out.length; i++) {
+      const g = out[i][0] - out[i - 1][1];
+      if (g < gap) {
+        gap = g;
+        at = i;
+      }
+    }
+    out[at - 1][1] = out[at][1];
+    out.splice(at, 1);
+  }
+  return out;
+};
 const extensionOf = (obj, suffix) => {
   const ext = obj && obj.extensions ? obj.extensions : {};
   const key = Object.keys(ext).find((k) => k.endsWith(`/${suffix}`));
@@ -103,7 +158,10 @@ const newUuid = () => {
  *         status, success, firstTry (result of the first answer), attempts,
  *         maxAttempts, score, response (xAPI result.response, component ids
  *         for choice / matching / sequencing), responseText (the same in
- *         plain words, when the recorder resolved it), migratedFrom } },
+ *         plain words, when the recorder resolved it), migratedFrom,
+ *         milestones (attempted / progressed@share / completed keys already
+ *         sent), state ({ covered: [[from, to]], resume }, where the learner
+ *         is in media or slides, see updateActivityState) } },
  *       counts: { byElement: { <tag>: { <verb>: n } }, byVerb: { <verb>: n } },
  *       statementCount } },
  *     migrations: { <name>: when it ran } }
@@ -760,6 +818,13 @@ export class UserScaffold extends HTMLElement {
     if (progress !== null && progress > (act.progress || 0)) {
       act.progress = progress;
     }
+    if (MILESTONE_VERBS.includes(verb)) {
+      const key = milestoneKey(verb, progress);
+      act.milestones = Array.isArray(act.milestones) ? act.milestones : [];
+      if (!act.milestones.includes(key)) {
+        act.milestones.push(key);
+      }
+    }
     if (meta.imported) {
       act.imported = true;
     }
@@ -797,6 +862,83 @@ export class UserScaffold extends HTMLElement {
     }
     const act = siteRec ? siteRec.activities[activityId] : null;
     return act ? toJS(act) : null;
+  }
+  /**
+   * Where a learner is in an activity they go through in order (media,
+   * slides), kept on its summary as `state` and overwritten as they go:
+   * this is NOT a statement and adds nothing to the statements list. Coverage
+   * only grows (merged with what was covered before) and progress never goes
+   * back; resume is replaced each time.
+   * @param {string} site
+   * @param {string} activityId the id statements about the activity use
+   * @param {Object} state { covered: [[from, to], ...] whole-number inclusive
+   *   ranges (seconds, slide indexes), resume: number (where to pick up),
+   *   progress: 0 to 1 }
+   * @param {Object} meta { page, tag, name, trackable }
+   * @returns {Object|null} the activity summary, or null when skipped
+   */
+  updateActivityState(site, activityId, state = {}, meta = {}) {
+    if (
+      !site ||
+      typeof activityId !== "string" ||
+      !activityId ||
+      activityId === "__proto__" ||
+      activityId === "constructor" ||
+      activityId === "prototype" ||
+      !state ||
+      typeof state !== "object"
+    ) {
+      return null;
+    }
+    const siteRec = this._site(site);
+    const ts = new Date().toISOString();
+    const act = siteRec.activities[activityId] || {
+      page: meta.page || "",
+      tag: meta.tag || "",
+      name: "",
+      first: ts,
+      count: 0,
+      verbs: {},
+      done: false,
+    };
+    if (meta.page && !act.page) {
+      act.page = meta.page;
+    }
+    if (meta.tag && !act.tag) {
+      act.tag = meta.tag;
+    }
+    if (meta.name && !act.name) {
+      act.name = String(meta.name);
+    }
+    if (typeof act.trackable !== "boolean") {
+      act.trackable = meta.trackable !== false;
+    }
+    const prev = act.state && typeof act.state === "object" ? act.state : {};
+    const next = { ...prev };
+    if (Array.isArray(state.covered)) {
+      next.covered = mergeRanges(
+        (Array.isArray(prev.covered) ? prev.covered : []).concat(state.covered),
+      );
+    }
+    const resume = Number(state.resume);
+    if (state.resume != null && isFinite(resume) && resume >= 0) {
+      next.resume = round3(resume);
+    }
+    act.state = next;
+    const progress = progressShare(state.progress);
+    if (progress !== null && progress > (act.progress || 0)) {
+      act.progress = progress;
+    }
+    act.last = ts;
+    siteRec.activities[activityId] = act;
+    if (act.page) {
+      const p = this._page(siteRec, act.page);
+      if (!p.activities.includes(activityId)) {
+        p.activities.push(activityId);
+      }
+    }
+    this._saveLongTerm();
+    return toJS(act);
   }
   /**
    * Move what was saved under activity id `from` to `to` (also in the page
@@ -1305,6 +1447,9 @@ export class UserScaffold extends HTMLElement {
         String(a.timestamp || "").localeCompare(String(b.timestamp || "")),
       );
     let changed = 0;
+    // where the learner was (state) is not in any statement: it is kept
+    // across a rebuild
+    const keptState = new Map();
     // an activity the profile has with fewer statements than are stored is
     // stale (it missed writes): drop it and replay all of its statements
     const perObject = new Map();
@@ -1318,6 +1463,9 @@ export class UserScaffold extends HTMLElement {
           ? existing.activities[id]
           : null;
       if (act && (act.count || 0) < n) {
+        if (act.state) {
+          keptState.set(id, { state: act.state, progress: act.progress });
+        }
         delete existing.activities[id];
         known.delete(id);
       }
@@ -1349,6 +1497,19 @@ export class UserScaffold extends HTMLElement {
         changed++;
       }
     });
+    if (keptState.size) {
+      const siteRec = this._site(site);
+      keptState.forEach((kept, id) => {
+        const act = siteRec.activities[id];
+        if (act) {
+          act.state = kept.state;
+          if ((Number(kept.progress) || 0) > (act.progress || 0)) {
+            act.progress = kept.progress;
+          }
+        }
+      });
+      this._saveLongTerm();
+    }
     if (reads.size) {
       const siteRec = this._site(site);
       reads.forEach((r, page) => {

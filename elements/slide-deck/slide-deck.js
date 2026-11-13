@@ -19,6 +19,14 @@ import {
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 
+// learner data milestones: the deck is split in four quarters by slide; a
+// quarter is gone through once every slide in it was shown. progressed is
+// sent once for each quarter gone through in order, completed once every
+// slide was shown. Decks under four slides send attempted and completed
+// only. Each is sent once per learner, ever (the learner profile remembers
+// them).
+export const SLIDE_DECK_MILESTONES = [0.25, 0.5, 0.75];
+
 /**
  * `slide-deck`
  * Presents a PPTX deck imported by HAXcms, from the deck.json manifest written
@@ -39,7 +47,7 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
   }
   /**
    * xAPI statements this element sends (see scripts/generate-xapi-vocabulary.mjs).
-   * Three at most per visit however long the deck is.
+   * Five at most per learner however long the deck is.
    */
   static get xapiVocabulary() {
     return {
@@ -47,9 +55,13 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
       event: "user-engagement",
       verbs: ["attempted", "progressed", "completed"],
       objectType: "http://adlnet.gov/expapi/activities/interaction",
-      result: ["completion", "score"],
+      result: [
+        "completion",
+        "score",
+        "extensions.https://haxtheweb.org/xapi/extensions/progress",
+      ],
       countsTowardCompletion: false,
-      done: "never required; completed once every slide has been shown",
+      done: "never required; progressed as each quarter of the slides is shown, completed once every slide has been shown; each once per learner",
     };
   }
 
@@ -57,6 +69,13 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
     super();
     this._haxstate = false;
     this._resetSeen();
+    // learner profile: save where the learner is when they leave; forget it
+    // when they clear their progress
+    this._learnerLeaveHandler = () => this._saveLearnerState();
+    this._learnerClearedHandler = () => {
+      this._resetSeen();
+      this._learnerChecked = true;
+    };
     this.source = null;
     this.deckId = null;
     this.slide = 1;
@@ -118,9 +137,21 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
     super.connectedCallback();
     globalThis.addEventListener("hashchange", this._onHashChange);
     this.addEventListener("fullscreenchange", this._onFullscreenChange);
+    globalThis.addEventListener("pagehide", this._learnerLeaveHandler);
+    globalThis.addEventListener(
+      "learner-progress-cleared",
+      this._learnerClearedHandler,
+    );
   }
 
   disconnectedCallback() {
+    // the learner moved on (another page of the site): keep where they were
+    this._saveLearnerState();
+    globalThis.removeEventListener("pagehide", this._learnerLeaveHandler);
+    globalThis.removeEventListener(
+      "learner-progress-cleared",
+      this._learnerClearedHandler,
+    );
     globalThis.removeEventListener("hashchange", this._onHashChange);
     this.removeEventListener("fullscreenchange", this._onFullscreenChange);
     if (this._observer) {
@@ -139,8 +170,10 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
       this.loadDeck();
     }
     if (changedProperties.has("deck")) {
-      // a new deck is a new activity
+      // a new deck is a new activity; what this learner did with it before
+      // (and where they stopped) comes back from the learner profile
       this._resetSeen();
+      this._readLearnerRecord();
     }
     if (changedProperties.has("slide") && this.deck) {
       this._message = null;
@@ -736,26 +769,157 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
   }
 
   /**
-   * Learner data: forget which slides were shown (new deck, new visit)
+   * Learner data: forget which slides were shown (new deck)
    */
   _resetSeen() {
     this._seen = new Set();
     this._seenSent = {};
+    // learner profile: whether it was asked yet for this deck, and whether
+    // the deck was finished on an earlier visit (nothing is sent again)
+    this._learnerChecked = false;
+    this._alreadyDone = false;
+  }
+
+  /**
+   * Learner data: the activity id statements about this deck use
+   */
+  _deckActivityId() {
+    return activityId(
+      this,
+      `slide-deck\u0001${this.source || ""}\u0001${this.deckId || ""}`,
+    );
+  }
+
+  /**
+   * Learner data: what this learner did with this deck before, from the
+   * learner profile (the HAXcms learner progress bridge answers
+   * `learner-progress-request`; with nothing listening only this visit
+   * counts). Puts back the slides shown and the milestones already sent,
+   * and opens the slide they stopped on unless the address names a slide.
+   */
+  _readLearnerRecord() {
+    if (this._learnerChecked || this._haxstate || !this.slides.length) {
+      return;
+    }
+    this._learnerChecked = true;
+    const detail = {
+      activityId: this._deckActivityId(),
+      tag: SlideDeck.tag,
+      record: null,
+    };
+    globalThis.dispatchEvent(
+      new CustomEvent("learner-progress-request", { detail }),
+    );
+    const record =
+      detail.record && typeof detail.record === "object" ? detail.record : null;
+    if (!record) {
+      return;
+    }
+    if (record.done) {
+      // finished before: paging through again sends and saves nothing
+      this._alreadyDone = true;
+      return;
+    }
+    const sent = this._seenSent;
+    (Array.isArray(record.milestones) ? record.milestones : []).forEach(
+      (key) => {
+        sent[key] = true;
+      },
+    );
+    if (record.verbs && record.verbs.attempted) {
+      sent.attempted = true;
+    }
+    const total = this.slides.length;
+    const state = record.state || {};
+    (Array.isArray(state.covered) ? state.covered : []).forEach((r) => {
+      const from = Math.max(1, Math.floor(Number(r[0])));
+      const to = Math.min(total, Math.floor(Number(r[1])));
+      for (let n = from; n <= to; n++) {
+        this._seen.add(n);
+      }
+    });
+    const resume = Math.floor(Number(state.resume));
+    if (this.slide === 1 && isFinite(resume) && resume > 1) {
+      this.goTo(resume);
+    }
+  }
+
+  /**
+   * Learner data: save the slides shown and the one on screen to the
+   * learner profile, without a statement (`learner-progress-update`,
+   * written by the HAXcms learner progress bridge). Nothing when finished
+   * on an earlier visit or while editing.
+   */
+  _saveLearnerState() {
+    const total = this.slides.length;
+    if (this._alreadyDone || this._haxstate || !total || this._seen.size < 2) {
+      return;
+    }
+    const covered = [];
+    Array.from(this._seen)
+      .sort((a, b) => a - b)
+      .forEach((n) => {
+        const prev = covered[covered.length - 1];
+        if (prev && n === prev[1] + 1) {
+          prev[1] = n;
+        } else {
+          covered.push([n, n]);
+        }
+      });
+    globalThis.dispatchEvent(
+      new CustomEvent("learner-progress-update", {
+        detail: {
+          activityId: this._deckActivityId(),
+          tag: SlideDeck.tag,
+          name: this._deckName(),
+          state: {
+            covered,
+            resume: this.slide,
+            progress: Math.round((this._seen.size / total) * 100) / 100,
+          },
+        },
+      }),
+    );
+  }
+
+  /**
+   * Learner data: which quarters of the deck were gone through (every slide
+   * in them shown); null for decks under four slides, which have no
+   * quarters
+   * @returns {boolean[]|null}
+   */
+  get seenQuarters() {
+    const total = this.slides.length;
+    if (total < 4) {
+      return null;
+    }
+    return [0, 1, 2, 3].map((q) => {
+      const from = Math.floor((q * total) / 4) + 1;
+      const to = Math.floor(((q + 1) * total) / 4);
+      for (let n = from; n <= to; n++) {
+        if (!this._seen.has(n)) {
+          return false;
+        }
+      }
+      return true;
+    });
   }
 
   /**
    * Learner data: the slide on screen in slide mode counts as shown (the
-   * grid shows thumbnails, which is not going through the deck). Sends at
-   * most three statements per visit however long the deck is: attempted
-   * once a learner moves on to a second slide, progressed once half the
-   * slides were shown, completed once every slide was. Decks of one slide
-   * have nothing to go through and send nothing.
+   * grid shows thumbnails, which is not going through the deck). Sends each
+   * milestone once per learner however long the deck is: attempted once a
+   * learner moves on to a second slide, progressed as each quarter of the
+   * slides is gone through in order, completed once every slide was shown.
+   * Decks of one slide have nothing to go through and send nothing. Saves
+   * where the learner is each time a new slide is shown.
    */
   _trackSeen() {
     const total = this.slides.length;
-    if (this._haxstate || total < 2 || !this.slide) {
+    if (this._haxstate || this._alreadyDone || total < 2 || !this.slide) {
       return;
     }
+    const isNew = !this._seen.has(this.slide);
     this._seen.add(this.slide);
     const seen = this._seen.size;
     const sent = this._seenSent;
@@ -766,39 +930,66 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
       sent.attempted = true;
       this._announceSlides("attempted", seen, total);
     }
-    if (!sent.progressed && seen / total >= 0.5) {
-      sent.progressed = true;
-      this._announceSlides("progressed", seen, total);
+    const quarters = this.seenQuarters;
+    if (quarters) {
+      let inOrder = 0;
+      while (inOrder < SLIDE_DECK_MILESTONES.length && quarters[inOrder]) {
+        inOrder++;
+      }
+      for (let i = 0; i < inOrder; i++) {
+        const share = SLIDE_DECK_MILESTONES[i];
+        const key = `progressed@${share}`;
+        if (!sent[key]) {
+          sent[key] = true;
+          this._announceSlides("progressed", seen, total, share);
+        }
+      }
     }
     if (!sent.completed && seen >= total) {
       sent.completed = true;
-      this._announceSlides("completed", seen, total);
+      this._announceSlides("completed", seen, total, 1);
+    }
+    if (isNew) {
+      this._saveLearnerState();
     }
   }
 
-  _announceSlides(verb, seen, total) {
-    const name =
+  _deckName() {
+    return (
       String(
         (this.deck && this.deck.title) || this.getAttribute("title") || "",
-      ).trim() || "Slide deck";
-    const result =
-      verb === "attempted"
-        ? undefined
-        : {
-            completion: verb === "completed",
-            score: { raw: seen, min: 0, max: total },
-          };
+      ).trim() || "Slide deck"
+    ).slice(0, 120);
+  }
+
+  /**
+   * Learner data: one user-engagement event with an xAPI statement about
+   * this deck
+   * @param {string} verb attempted, progressed or completed
+   * @param {number} seen slides shown
+   * @param {number} total slides in the deck
+   * @param {number} [share] progress milestone, 0 to 1
+   */
+  _announceSlides(verb, seen, total, share) {
+    const name = this._deckName();
+    let result;
+    if (verb !== "attempted") {
+      result = {
+        completion: verb === "completed",
+        score: { raw: seen, min: 0, max: total },
+      };
+      if (typeof share === "number") {
+        result.extensions = { [XAPI_EXTENSIONS.progress]: share };
+      }
+    }
     const detail = {
       activityDisplay: verb,
-      objectName: name.slice(0, 120),
+      objectName: name,
       statement: buildStatement({
         verb,
         object: {
-          id: activityId(
-            this,
-            `slide-deck\u0001${this.source || ""}\u0001${this.deckId || ""}`,
-          ),
-          name: name.slice(0, 120),
+          id: this._deckActivityId(),
+          name,
           type: XAPI_ACTIVITY_TYPES.interactionGeneric,
         },
         result,

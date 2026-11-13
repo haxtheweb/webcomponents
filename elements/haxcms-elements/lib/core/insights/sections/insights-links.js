@@ -5,6 +5,7 @@
 import { LitElement, html, css, nothing } from "lit";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { InsightsStyles } from "../insights-styles.js";
+import "../insights-url-replace.js";
 import {
   LINK_STATES,
   checkLinks,
@@ -455,7 +456,18 @@ class InsightsLinks extends I18NMixin(LitElement) {
       <div class="grid-2">
         ${this._renderOutside(links)} ${this._renderStatus(links)}
       </div>
+      ${this._renderReplace(links)}
     </div>`;
+  }
+
+  _renderReplace(links) {
+    const save = links.urlSave || {};
+    return html`<insights-url-replace
+      .blockUrls="${links.blockUrls || []}"
+      note="${save.note || ""}"
+      max-pages="${save.maxPagesPerSave || 20}"
+      density="${this.density}"
+    ></insights-url-replace>`;
   }
 
   _renderKpis(links) {

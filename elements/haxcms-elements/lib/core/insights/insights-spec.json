@@ -77,6 +77,26 @@
       { "tag": "media-image", "src": "source" },
       { "tag": "a11y-gif-player", "src": "src" }
     ],
+    "descriptionFields": [
+      {
+        "tag": "a11y-gif-player",
+        "attribute": "media-title",
+        "src": ["src"],
+        "listMissing": true
+      },
+      {
+        "tag": "a11y-gif-player",
+        "attribute": "longdesc",
+        "src": ["src"],
+        "listMissing": true
+      },
+      {
+        "tag": "img",
+        "attribute": "longdesc",
+        "src": ["src"],
+        "listMissing": false
+      }
+    ],
     "contrast": {
       "minRatio": 4.5,
       "dddDefault": { "name": "Beaver blue", "hex": "#1e407c" }
@@ -130,7 +150,28 @@
     ],
     "captionTrackKinds": ["captions", "subtitles"],
     "videosPerPageBuckets": [0, 1, 2, 3, 4],
-    "noMediaListLimit": 13
+    "noMediaListLimit": 13,
+    "titleFields": [
+      {
+        "tag": "video-player",
+        "attribute": "media-title",
+        "src": ["source", "src"]
+      },
+      { "tag": "video", "attribute": "title", "src": ["src"] },
+      { "tag": "iframe", "attribute": "title", "src": ["src"] }
+    ],
+    "genericTitleWords": [
+      "video",
+      "embed",
+      "iframe",
+      "untitled",
+      "media",
+      "player",
+      "youtube",
+      "watch",
+      "clip",
+      "title"
+    ]
   },
   "instructional": {
     "practiceTitlePatterns": ["^\\s*try it\\b"],
@@ -444,7 +485,361 @@
     "scoreBands": { "danger": 50, "warning": 70 },
     "severityOrder": ["error", "warning", "info"]
   },
-  "bulkAltSave": { "maxPagesPerSave": 20 },
+  "bulkAltSave": {
+    "maxPagesPerSave": 20,
+    "replaceUrlsNote": "URLs replaced from Reports",
+    "titlesNote": "Titles from Reports",
+    "descriptionsNote": "Descriptions from Reports"
+  },
+  "blockAttributes": {
+    "$comment": "Copy of the block operations allowlist tags (haxcms-nodejs src/lib/haxcmsBlockAttributes.json, haxcms-php system/backend/php/lib/haxcms-block-attributes.json). Reports only offers edits the backends accept; keep these tags identical to theirs.",
+    "version": 1,
+    "tags": {
+      "a": {
+        "aria-label": "text",
+        "href": "url",
+        "title": "text"
+      },
+      "a11y-figure": {
+        "img-alt": "text",
+        "img-src": "url"
+      },
+      "a11y-gif-player": {
+        "alt": "text",
+        "longdesc": "text",
+        "media-title": "text",
+        "src": "url",
+        "src-without-animation": "url"
+      },
+      "a11y-tab": {
+        "label": "text"
+      },
+      "a11y-tabs": {
+        "aria-label": "text"
+      },
+      "accent-card": {
+        "image-alt": "text",
+        "image-src": "url"
+      },
+      "area": {
+        "alt": "text",
+        "href": "url"
+      },
+      "audio": {
+        "aria-label": "text",
+        "src": "url",
+        "title": "text"
+      },
+      "audio-player": {
+        "media-title": "text",
+        "source": "url",
+        "thumbnail-src": "url",
+        "track": "url"
+      },
+      "author-card": {
+        "description": "text",
+        "image": "url",
+        "profile-url": "url",
+        "social-link": "url",
+        "title": "text"
+      },
+      "awesome-explosion": {
+        "image": "url",
+        "sound": "url"
+      },
+      "bibliography-item": {
+        "title": "text"
+      },
+      "block-quote": {
+        "alt": "text",
+        "citation": "text",
+        "image": "url"
+      },
+      "bullet-check-list": {
+        "title": "text"
+      },
+      "career-org-item": {
+        "source": "url"
+      },
+      "career-role-item": {
+        "title": "text"
+      },
+      "career-timeline": {
+        "title": "text"
+      },
+      "citation-element": {
+        "title": "text"
+      },
+      "collection-item": {
+        "alt": "text",
+        "image": "url",
+        "url": "url"
+      },
+      "collection-row": {
+        "alt": "text",
+        "image": "url",
+        "url": "url"
+      },
+      "concept-map-game": {
+        "finish-title": "text",
+        "game-title": "text",
+        "hub-label": "text",
+        "quest-title": "text"
+      },
+      "concept-quest-game": {
+        "finish-title": "text",
+        "game-title": "text",
+        "hub-label": "text",
+        "quest-title": "text"
+      },
+      "concept-runner-game": {
+        "finish-title": "text",
+        "game-title": "text",
+        "quest-title": "text"
+      },
+      "course-model": {
+        "alt": "text",
+        "environment-image": "url",
+        "poster": "url",
+        "src": "url",
+        "title": "text"
+      },
+      "date-card": {
+        "title": "text"
+      },
+      "ddd-card": {
+        "alt": "text",
+        "href": "url",
+        "label": "text",
+        "src": "url",
+        "title": "text"
+      },
+      "ddd-steps-list-item": {
+        "title": "text"
+      },
+      "disqus-embed": {
+        "page-title": "text"
+      },
+      "documentation-player": {
+        "docs-src": "url",
+        "motion-src": "url",
+        "video-src": "url"
+      },
+      "ebook-button": {
+        "title": "text"
+      },
+      "event-badge": {
+        "image": "url",
+        "logo": "url",
+        "title": "text"
+      },
+      "figure-label": {
+        "description": "text",
+        "title": "text"
+      },
+      "flash-card": {
+        "img-source": "url"
+      },
+      "full-width-image": {
+        "caption": "text",
+        "source": "url"
+      },
+      "h5p-element": {
+        "source": "url"
+      },
+      "ics-render": {
+        "caption": "text",
+        "data-source": "url"
+      },
+      "iframe": {
+        "src": "url",
+        "title": "text"
+      },
+      "image-compare-slider": {
+        "bottom-alt": "text",
+        "bottom-src": "url",
+        "top-alt": "text",
+        "top-src": "url"
+      },
+      "img": {
+        "alt": "text",
+        "longdesc": "url",
+        "src": "url",
+        "title": "text"
+      },
+      "inline-audio": {
+        "source": "url"
+      },
+      "learning-component": {
+        "title": "text",
+        "url": "url"
+      },
+      "license-element": {
+        "more-label": "text",
+        "title": "text"
+      },
+      "lrn-table": {
+        "csv-file": "url",
+        "description": "text",
+        "title": "text"
+      },
+      "lrn-vocab": {
+        "description": "text"
+      },
+      "lrndesign-chart": {
+        "axis-xtitle": "text",
+        "axis-ytitle": "text",
+        "data-source": "url"
+      },
+      "lrndesign-imagemap": {
+        "label": "text"
+      },
+      "lrndesign-sidenote": {
+        "label": "text"
+      },
+      "lrndesign-timeline": {
+        "imagealt": "text",
+        "imagesrc": "url",
+        "timeline-title": "text"
+      },
+      "md-block": {
+        "source": "url"
+      },
+      "media-image": {
+        "alt": "text",
+        "caption": "text",
+        "citation": "text",
+        "figure-label-description": "text",
+        "figure-label-title": "text",
+        "link": "url",
+        "source": "url",
+        "thumbnail": "url"
+      },
+      "media-quote": {
+        "alt": "text",
+        "src": "url"
+      },
+      "meme-maker": {
+        "alt": "text",
+        "image-url": "url"
+      },
+      "merit-badge": {
+        "badge-image": "url",
+        "badge-title": "text"
+      },
+      "music-player": {
+        "source": "url"
+      },
+      "page-flag": {
+        "label": "text"
+      },
+      "page-section": {
+        "image": "url"
+      },
+      "parallax-image": {
+        "image-bg": "url"
+      },
+      "pdf-browser-viewer": {
+        "download-label": "text"
+      },
+      "person-testimonial": {
+        "image": "url"
+      },
+      "polaris-cta": {
+        "link": "url"
+      },
+      "polaris-mark": {
+        "url": "url"
+      },
+      "polaris-story-card": {
+        "image": "url",
+        "label": "text",
+        "link": "url"
+      },
+      "polaris-tile": {
+        "image": "url",
+        "link": "url"
+      },
+      "product-glance": {
+        "title": "text"
+      },
+      "progress-donut": {
+        "desc": "text",
+        "image-alt": "text",
+        "image-src": "url",
+        "title": "text"
+      },
+      "q-r": {
+        "title": "text"
+      },
+      "radar-chart": {
+        "score-label": "text",
+        "target-label": "text",
+        "title": "text"
+      },
+      "relative-heading": {
+        "close-label": "text",
+        "link-label": "text"
+      },
+      "retro-card": {
+        "hover-source": "url",
+        "media-source": "url",
+        "title": "text"
+      },
+      "self-check": {
+        "alt": "text",
+        "image": "url",
+        "title": "text"
+      },
+      "sheet-music": {
+        "source": "url"
+      },
+      "simple-cta": {
+        "label": "text",
+        "link": "url"
+      },
+      "simple-img": {
+        "alt": "text",
+        "src": "url"
+      },
+      "slide-deck": {
+        "source": "url"
+      },
+      "source": {
+        "src": "url"
+      },
+      "stop-note": {
+        "title": "text",
+        "url": "url"
+      },
+      "track": {
+        "label": "text",
+        "src": "url"
+      },
+      "vcf-render": {
+        "caption": "text",
+        "data-source": "url"
+      },
+      "video": {
+        "aria-label": "text",
+        "poster": "url",
+        "src": "url",
+        "title": "text"
+      },
+      "video-player": {
+        "audio-description-source": "url",
+        "label": "text",
+        "media-title": "text",
+        "source": "url",
+        "src": "url",
+        "thumbnail-src": "url"
+      },
+      "worksheet-download": {
+        "link": "url",
+        "title": "text"
+      }
+    }
+  },
   "unavailable": {
     "outsideLinkStatus": "Needs server-side link checks",
     "youtubeCaptions": "Needs a server-side YouTube lookup",

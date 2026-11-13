@@ -8,27 +8,35 @@
       "declarations": [
         {
           "kind": "variable",
-          "name": "MEDIA_WATCH_HALF",
+          "name": "MEDIA_QUARTER_HIT",
           "type": {
             "text": "number"
           },
-          "default": "0.5"
+          "default": "0.9"
         },
         {
           "kind": "variable",
-          "name": "MEDIA_WATCH_DONE",
+          "name": "MEDIA_MILESTONES",
           "type": {
-            "text": "number"
+            "text": "array"
           },
-          "default": "0.95"
+          "default": "[0.25, 0.5, 0.75]"
         },
         {
           "kind": "variable",
-          "name": "MEDIA_WATCH_END_MIN",
+          "name": "MEDIA_STATE_STEP",
           "type": {
             "text": "number"
           },
-          "default": "0.8"
+          "default": "0.1"
+        },
+        {
+          "kind": "variable",
+          "name": "MEDIA_RESUME_MIN",
+          "type": {
+            "text": "number"
+          },
+          "default": "10"
         },
         {
           "kind": "variable",
@@ -1143,6 +1151,61 @@
             },
             {
               "kind": "method",
+              "name": "_mediaActivity",
+              "description": "Learner data: the activity this player reports as. When the player\nsits inside video-player or audio-player (rendered by it, or authored\ninside it as legacy light DOM markup), that element is the activity.",
+              "return": {
+                "type": {
+                  "text": "{host: HTMLElement, tag: string, name: string, id: string}"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_inEditor",
+              "description": "Learner data: whether the page is being edited (HAX); nothing is read\nback, resumed or saved then"
+            },
+            {
+              "kind": "method",
+              "name": "_readLearnerRecord",
+              "description": "Learner data: what this learner did with this media before, from the\nlearner profile (the HAXcms learner progress bridge answers\n`learner-progress-request`; with nothing listening the record stays\nnull and only this visit counts). Puts back the seconds covered and\nthe milestones already sent, and resumes where they left off. Asked\nonce the duration is known (quarters and resume need it)."
+            },
+            {
+              "kind": "method",
+              "name": "_resumeAt",
+              "parameters": [
+                {
+                  "name": "t",
+                  "description": "seconds",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "Learner data: pick up where the learner stopped. Not when they barely\nstarted or were already at the end, and not when something else (a\nlink to a time, a cue) already moved the player."
+            },
+            {
+              "kind": "method",
+              "name": "_saveLearnerState",
+              "parameters": [
+                {
+                  "name": "resume",
+                  "description": "where to resume, default the current time",
+                  "optional": true,
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "Learner data: save where the learner is (seconds covered, resume\npoint, share covered) to the learner profile, without a statement\n(`learner-progress-update`, written by the HAXcms learner progress\nbridge). Nothing when finished on an earlier visit or while editing."
+            },
+            {
+              "kind": "field",
+              "name": "coveredRanges",
+              "description": "Learner data: the seconds watched as inclusive ranges, [[from, to], ...]",
+              "readonly": true
+            },
+            {
+              "kind": "method",
               "name": "_completeAtEnd",
               "description": "Learner data: the player stopped at its end (HTML5 ended, YouTube\nENDED, or a pause / stop within the last second). The seconds after\nthe last time report count when that report was already in the last\nstretch (so playing out the end counts, jumping there does not), then\ncompletion is checked; at least MEDIA_WATCH_END_MIN must be watched."
             },
@@ -1202,14 +1265,25 @@
               "readonly": true
             },
             {
+              "kind": "field",
+              "name": "watchedQuarters",
+              "description": "Learner data: which quarters of the media were watched (at least\nMEDIA_QUARTER_HIT of the seconds in each), or null when the duration is\nnot known. A quarter with no whole second in it (very short media)\ncounts as watched.",
+              "return": {
+                "type": {
+                  "text": "boolean[]|null"
+                }
+              },
+              "readonly": true
+            },
+            {
               "kind": "method",
               "name": "_checkWatched",
-              "description": "Learner data: send start, half way and done once each per visit"
+              "description": "Learner data: send each milestone once, ever: attempted on the first\nsecond played, progressed (0.25, 0.5, 0.75) as each quarter is watched\nin order, completed once every quarter is, or the first three are and\nthe player reached its end (ended event, a stop at the end, or playback\nrunning on into it). Saves where the learner is each time another tenth\nof the media is covered."
             },
             {
               "kind": "method",
               "name": "_announceEnded",
-              "description": "Learner data: the media was watched (95% or more, or played on into\nthe end after watching at least 80%). Fires user-engagement (verb\ncompleted, with an xAPI statement and progress 1) once per visit."
+              "description": "Learner data: the media was watched (every quarter, or the first three\nand the end). Fires user-engagement (verb completed, with an xAPI\nstatement and progress 1) once per learner."
             },
             {
               "kind": "method",
@@ -1224,7 +1298,7 @@
                 },
                 {
                   "name": "share",
-                  "description": "share of the media watched, 0 to 1",
+                  "description": "progress milestone, 0 to 1",
                   "optional": true,
                   "type": {
                     "text": "number|null"
@@ -2159,6 +2233,18 @@
             },
             {
               "kind": "field",
+              "name": "_learnerLeaveHandler"
+            },
+            {
+              "kind": "field",
+              "name": "_learnerReadyHandler"
+            },
+            {
+              "kind": "field",
+              "name": "_learnerClearedHandler"
+            },
+            {
+              "kind": "field",
               "name": "_settingsKeydownHandler"
             },
             {
@@ -2906,34 +2992,38 @@
           },
           "tagName": "a11y-media-player",
           "customElement": true
-        },
-        {
-          "kind": "variable",
-          "name": "name"
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "MEDIA_WATCH_HALF",
+          "name": "MEDIA_QUARTER_HIT",
           "declaration": {
-            "name": "MEDIA_WATCH_HALF",
+            "name": "MEDIA_QUARTER_HIT",
             "module": "a11y-media-player.js"
           }
         },
         {
           "kind": "js",
-          "name": "MEDIA_WATCH_DONE",
+          "name": "MEDIA_MILESTONES",
           "declaration": {
-            "name": "MEDIA_WATCH_DONE",
+            "name": "MEDIA_MILESTONES",
             "module": "a11y-media-player.js"
           }
         },
         {
           "kind": "js",
-          "name": "MEDIA_WATCH_END_MIN",
+          "name": "MEDIA_STATE_STEP",
           "declaration": {
-            "name": "MEDIA_WATCH_END_MIN",
+            "name": "MEDIA_STATE_STEP",
+            "module": "a11y-media-player.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "MEDIA_RESUME_MIN",
+          "declaration": {
+            "name": "MEDIA_RESUME_MIN",
             "module": "a11y-media-player.js"
           }
         },

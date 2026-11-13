@@ -352,7 +352,8 @@
       "declarations": [
         {
           "kind": "variable",
-          "name": "CountUp"
+          "name": "CountUp",
+          "description": "Copyright 2020 The Pennsylvania State University"
         }
       ],
       "exports": [

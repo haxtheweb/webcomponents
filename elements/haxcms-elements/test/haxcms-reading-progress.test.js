@@ -335,6 +335,21 @@ describe("HAXcms learner progress: reading and page completion", () => {
     expect(LearnerProgress.reading.page).to.equal(null);
   });
 
+  it("reports reading once per page, ever: only past where the learner got", async () => {
+    const r3 = { id: "r3", url: urlOf("r3"), title: "R3", started: Date.now() };
+    LearnerProgress._reportReading("progressed", 0.5, r3);
+    // a later visit that reads the same share again (or less) sends nothing
+    LearnerProgress._reportReading("progressed", 0.5, r3);
+    LearnerProgress._reportReading("progressed", 0.3, r3);
+    expect(await readingStatements("r3")).to.have.length(1);
+    LearnerProgress._reportReading("progressed", 0.75, r3);
+    LearnerProgress._reportReading("completed", 1, r3);
+    LearnerProgress._reportReading("completed", 1, r3);
+    expect(
+      (await readingStatements("r3")).map((s) => s.verb.display["en-US"]),
+    ).to.deep.equal(["progressed", "progressed", "completed"]);
+  });
+
   it("tracks a long page as it is scrolled and files it under that page on leave", async () => {
     await goTo("r2");
     showContent(host, "r2", `<div style="height: ${vh() * 5}px"></div>`);

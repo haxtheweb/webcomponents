@@ -1,0 +1,43 @@
+{
+  "tag": "carbon-theme",
+  "folder": "carbon-theme",
+  "package": "@haxtheweb/carbon-theme",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "carbon-theme",
+  "description": "IBM Carbon theme for HAXcms, built on the DDD-capable Carbon design system bridge",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/carbon-theme/carbon-theme.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/carbon-theme/carbon-theme.js",
+  "install": "npm i @haxtheweb/carbon-theme",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "sidebar-open",
+      "property": "sidebarOpen",
+      "type": "boolean",
+      "default": "true",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "fcbca29723ff",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/carbon-theme",
+    "file": "carbon-theme.js"
+  }
+}
