@@ -1063,7 +1063,11 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           flex-direction: column;
           align-items: stretch;
           padding-top: 60px;
-          zoom: calc(var(--vhs-den-zoom) * 0.82);
+        }
+        @media (min-width: 901px) {
+          .stand {
+            zoom: calc(var(--vhs-den-zoom) * 0.82);
+          }
         }
         .stand retro-vcr {
           display: block;
