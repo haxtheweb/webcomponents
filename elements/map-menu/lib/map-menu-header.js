@@ -32,6 +32,9 @@ class MapMenuHeader extends I18NMixin(LitElement) {
           display: block;
           position: relative;
           transition: var(--ddd-duration-normal, 0.3s) ease-in all;
+          /* optional rule above each row (USWDS side navigation); off unless
+             a theme sets --map-menu-item-divider, e.g. 1px solid <color> */
+          border-top: var(--map-menu-item-divider, none);
         }
 
         :host([hovered]) {

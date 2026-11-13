@@ -304,6 +304,10 @@
       "value": "\"Roboto Mono\", \"Bitstream Vera Sans Mono\", Consolas, Courier, monospace",
       "note": "code role: Roboto Mono with $font-stack-monospace"
     },
+    "--ddd-font-heading": {
+      "value": "Merriweather, Georgia, Cambria, \"Times New Roman\", Times, serif",
+      "note": "heading role: serif (Merriweather) with $font-stack-georgia"
+    },
     "--ddd-radius-xs": {
       "value": "2px",
       "note": "$theme-border-radius-sm"

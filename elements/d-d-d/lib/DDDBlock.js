@@ -280,7 +280,7 @@ export const DDDBlockStyles = css`
   }
   .ddd-block-title {
     margin: 0;
-    font-family: var(--ddd-font-primary);
+    font-family: var(--ddd-font-heading, var(--ddd-font-primary));
     font-size: var(--ddd-font-size-xs);
     font-weight: var(--ddd-font-weight-bold);
     line-height: var(--ddd-lh-120);

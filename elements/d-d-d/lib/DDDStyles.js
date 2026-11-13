@@ -510,6 +510,9 @@ export const DDDVariables = css`
     --ddd-font-mono:
       ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono",
       "Courier New", monospace; /* code, keyboard input, tabular data */
+    --ddd-font-heading: var(
+      --ddd-font-primary
+    ); /* headings and block titles; a design system may give them their own face */
 
     /* font weights - generalized */
     --ddd-font-weight-light: 300;
@@ -1602,7 +1605,7 @@ const DDDResetStart = css`
   h4,
   h5,
   h6 {
-    font-family: var(--ddd-font-primary);
+    font-family: var(--ddd-font-heading, var(--ddd-font-primary));
     font-weight: var(--ddd-font-weight-bold);
     line-height: normal;
     letter-spacing: normal;

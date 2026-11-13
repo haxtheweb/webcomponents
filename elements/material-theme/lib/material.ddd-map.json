@@ -97,8 +97,8 @@
           "keptDDD": []
         },
         "font": {
-          "mapped": 4,
-          "total": 4,
+          "mapped": 5,
+          "total": 5,
           "keptDDD": []
         },
         "weight": {
@@ -713,6 +713,14 @@
       "light": "\"Roboto Mono\", ui-monospace, monospace",
       "dark": "\"Roboto Mono\", ui-monospace, monospace",
       "note": ""
+    },
+    {
+      "ddd": "--ddd-font-heading",
+      "tier": "identity",
+      "token": null,
+      "light": "Roboto, system-ui, sans-serif",
+      "dark": "Roboto, system-ui, sans-serif",
+      "note": "M3 display and headline roles use the brand typeface"
     },
     {
       "ddd": "--ddd-font-weight-regular",

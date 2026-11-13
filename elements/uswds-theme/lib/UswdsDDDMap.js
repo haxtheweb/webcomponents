@@ -77,6 +77,8 @@ export const UswdsDDDMap = css`
       "Source Sans 3", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
     --ddd-font-mono:
       "Roboto Mono", "Bitstream Vera Sans Mono", Consolas, Courier, monospace;
+    --ddd-font-heading:
+      Merriweather, Georgia, Cambria, "Times New Roman", Times, serif;
     --ddd-radius-xs: 2px;
     --ddd-radius-sm: 4px;
     --ddd-radius-md: 8px;

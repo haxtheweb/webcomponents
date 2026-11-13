@@ -64,6 +64,7 @@ export const PatternflyDDDMap = css`
     --ddd-font-secondary: var(--pf-t--global--font--family--heading);
     --ddd-font-navigation: var(--pf-t--global--font--family--body);
     --ddd-font-mono: var(--pf-t--global--font--family--mono);
+    --ddd-font-heading: var(--pf-t--global--font--family--heading);
     --ddd-radius-xs: var(--pf-t--global--border--radius--tiny);
     --ddd-radius-sm: var(--pf-t--global--border--radius--small);
     --ddd-radius-md: var(--pf-t--global--border--radius--medium);

@@ -34,7 +34,7 @@
       "why": "What makes the system recognizable: color, type families and weights, corners, elevation, focus.",
       "families": {
         "color": "^ddd-theme-default-[a-zA-Z]+$",
-        "font": "^ddd-font-(primary|secondary|navigation|mono)$",
+        "font": "^ddd-font-(primary|secondary|navigation|mono|heading)$",
         "weight": "^ddd-font-weight-(light|regular|medium|bold|black)$",
         "radius": "^ddd-radius-(xs|sm|md|lg|xl)$",
         "shadow": "^ddd-boxShadow-(sm|md|lg|xl)$",
@@ -42,7 +42,7 @@
       },
       "patterns": [
         "^ddd-theme-default-",
-        "^ddd-font-(primary|secondary|navigation|mono)$",
+        "^ddd-font-(primary|secondary|navigation|mono|heading)$",
         "^ddd-font-weight-",
         "^ddd-radius-",
         "^ddd-boxShadow-",
