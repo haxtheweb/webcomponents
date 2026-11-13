@@ -1,0 +1,20 @@
+<h2>Install</h2>
+<ddd-steps-list>
+<ddd-steps-list-item title="Add the package"><p>The theme ships with HAX; nothing else needs installing.</p></ddd-steps-list-item>
+<ddd-steps-list-item title="Pick the theme"><p>Choose Carbon from the theme list in site settings, or set it in site.json.</p></ddd-steps-list-item>
+<ddd-steps-list-item title="Author as usual"><p>Blocks read DDD tokens; the bridge answers with Carbon values.</p></ddd-steps-list-item>
+</ddd-steps-list>
+<h2>Set the theme in site.json</h2>
+<code-sample type="json"><template preserve-content="preserve-content">{
+  "metadata": {
+    "theme": {
+      "element": "carbon-theme",
+      "path": "@haxtheweb/carbon-theme/carbon-theme.js"
+    }
+  }
+}</template></code-sample>
+<h2>Packages</h2>
+<editable-table bordered striped>
+<table><caption>Where the token values come from</caption><thead><tr><th scope="col">Package</th><th scope="col">Provides</th><th scope="col">License</th></tr></thead>
+<tbody><tr><td>@carbon/styles</td><td>Theme tokens for white and g100</td><td>Apache-2.0</td></tr><tr><td>@carbon/colors</td><td>The color palette</td><td>Apache-2.0</td></tr><tr><td>@carbon/motion</td><td>Durations and easing</td><td>Apache-2.0</td></tr></tbody></table>
+</editable-table>
