@@ -145,15 +145,15 @@
       "rows": [
         {
           "name": "title",
-          "desc": "title"
+          "desc": "Heading shown above the course…"
         },
         {
           "name": "src",
-          "desc": "src"
+          "desc": "Address of the 3D model file (.…"
         },
         {
           "name": "alt",
-          "desc": "alt"
+          "desc": "Describe the 3D model for peopl…"
         }
       ],
       "active": [
@@ -305,13 +305,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set title and src",
-      "text": "Set Title and Src in the HAX sidebar."
+      "text": "Heading shown above the course model. Address of the 3D model file to show."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set alt",
-      "text": "Set Alt in the HAX sidebar."
+      "text": "Describe the 3D model for people who cannot see it."
     },
     {
       "t": 14.8,

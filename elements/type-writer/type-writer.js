@@ -131,31 +131,40 @@ class TypeWriter extends IntersectionObserverMixin(LitElement) {
         configure: [
           {
             property: "delay",
-            description: "",
+            title: "Delay",
+            description: "Milliseconds to wait before typing starts.",
             inputMethod: "textfield",
             required: false,
           },
           {
             property: "cursorDuration",
-            description: "",
+            title: "Cursor duration",
+            description:
+              "Milliseconds the cursor keeps blinking after the text is typed.",
             inputMethod: "textfield",
             required: false,
           },
           {
             property: "text",
-            description: "",
+            title: "Text",
+            description:
+              "The text to type out once the element scrolls into view.",
             inputMethod: "textfield",
             required: false,
           },
           {
             property: "speed",
-            description: "",
+            title: "Speed",
+            description:
+              "Milliseconds per character; lower numbers type faster.",
             inputMethod: "textfield",
             required: false,
           },
           {
             property: "typing",
-            description: "",
+            title: "Typing",
+            description:
+              "Show the blinking cursor; the element sets this while it types.",
             inputMethod: "boolean",
             required: false,
           },

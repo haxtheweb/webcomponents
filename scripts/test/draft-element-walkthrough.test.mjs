@@ -32,6 +32,7 @@ const plain = {
     attr("opened", "Whether the probe is open", "boolean"),
     attr("focused", "Whether toggle is disabled", "boolean"),
     attr("disabled", "Whether toggle is disabled", "boolean"),
+    attr("expanded", "Whether toggle is disabled", "boolean"),
     attr("items", "Items to list", "Array"),
     attr("old-title", "DEPRECATED: use the heading slot"),
     attr("label", "Text the probe shows"),
@@ -50,6 +51,22 @@ test("attributes the demo sets come first, live state and lists are left out", (
   for (const left of ["opened", "focused", "items", "old-title"]) {
     assert.ok(!names.includes(left), `${left} should not be taught`);
   }
+});
+
+test("two fields may share a description; three sharing one is copy-paste", () => {
+  const withDemo = {
+    ...plain,
+    demoHtml: '<docs-probe top-alt="A" bottom-alt="B"></docs-probe>',
+    attributes: [
+      attr("top-alt", "Required alt text for accessibility."),
+      attr("bottom-alt", "Required alt text for accessibility."),
+    ],
+  };
+  const rows = attributesOf(withDemo);
+  assert.equal(
+    rows.find((r) => r.name === "top-alt").desc,
+    "Required alt text for accessibility.",
+  );
 });
 
 test("a description copied onto several attributes is not used for any of them", () => {
