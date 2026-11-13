@@ -137,6 +137,17 @@
             "--ddd-theme-h6-font-size",
             "--ddd-theme-body-font-size"
           ]
+        },
+        "density": {
+          "mapped": 0,
+          "total": 5,
+          "keptDDD": [
+            "--ddd-surface-padding",
+            "--ddd-surface-padding-lg",
+            "--ddd-stack-gap",
+            "--ddd-inline-gap",
+            "--ddd-control-padding-inline"
+          ]
         }
       }
     }
