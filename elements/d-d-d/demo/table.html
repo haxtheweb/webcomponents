@@ -1,0 +1,598 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes"
+    />
+    <title>DDD data table</title>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <script type="module">
+      import "../d-d-d.js";
+      import { DesignSystemManager } from "../lib/DesignSystemManager.js";
+      import "@haxtheweb/editable-table/editable-table.js";
+      import { registerPatternflyDesignSystem } from "@haxtheweb/patternfly-theme/lib/PatternflyDesignSystem.js";
+      import { registerCarbonDesignSystem } from "@haxtheweb/carbon-theme/lib/CarbonDesignSystem.js";
+      import { registerMaterialDesignSystem } from "@haxtheweb/material-theme/lib/MaterialDesignSystem.js";
+      import { registerShadcnDesignSystem } from "@haxtheweb/shadcn-theme/lib/ShadcnDesignSystem.js";
+      import { registerSpectrumDesignSystem } from "@haxtheweb/spectrum-theme/lib/SpectrumDesignSystem.js";
+      import { registerTailwindDesignSystem } from "@haxtheweb/tailwind-theme/lib/TailwindDesignSystem.js";
+
+      [
+        registerPatternflyDesignSystem,
+        registerCarbonDesignSystem,
+        registerMaterialDesignSystem,
+        registerShadcnDesignSystem,
+        registerSpectrumDesignSystem,
+        registerTailwindDesignSystem,
+      ].forEach((register) => register(DesignSystemManager));
+
+      // the page background each theme draws behind content (see each
+      // <system>-theme.js), so the preview reads the way a site would
+      const PAGE = {
+        ddd: [
+          "var(--ddd-theme-default-white)",
+          "var(--ddd-theme-default-potentialMidnight)",
+        ],
+        patternfly: ["#f2f2f2", "#151515"],
+        carbon: ["#ffffff", "#161616"],
+        material: ["#fef7ff", "#141218"],
+        shadcn: ["#fafafa", "#171717"],
+        spectrum: ["rgb(248, 248, 248)", "rgb(27, 27, 27)"],
+        tailwind: ["#ffffff", "#030712"],
+      };
+
+      const DATA = {
+        budget: [
+          ["Item", "Supplier", "Qty", "Unit cost", "Change"],
+          ["Pipette tips", "Fisher", "40", "$12.50", "-3.2%"],
+          ["Nitrile gloves", "VWR", "25", "$9.80", "+1.4%"],
+          ["Microscope slides", "Fisher", "12", "$22.00", "0.0%"],
+          ["Beakers, 250 mL", "Corning", "18", "$6.75", "-0.8%"],
+          ["Safety goggles", "VWR", "30", "$4.20", "+2.9%"],
+          ["Lab notebooks", "Staples", "60", "$3.15", "-1.1%"],
+          ["Total", "", "185", "$1,893.50", "-0.4%"],
+        ],
+        rubric: [
+          ["Criterion", "Exemplary (4)", "Proficient (3)", "Developing (2)"],
+          [
+            "Thesis",
+            "States a clear, arguable claim that frames the whole paper and anticipates objections.",
+            "States a clear claim that frames most of the paper.",
+            "Claim is present but vague or only partly arguable.",
+          ],
+          [
+            "Evidence",
+            "Integrates varied, credible sources and explains how each supports the claim.",
+            "Uses credible sources with some explanation.",
+            "Sources are thin, loosely connected, or unexplained.",
+          ],
+          [
+            "Organization",
+            "Each paragraph builds on the last; transitions make the logic easy to follow.",
+            "Mostly logical order with some abrupt transitions.",
+            "Order is hard to follow in places.",
+          ],
+          [
+            "Mechanics",
+            "Virtually error-free.",
+            "A few errors that do not distract.",
+            "Frequent errors that distract the reader.",
+          ],
+        ],
+        simple: [
+          ["one", "two"],
+          ["three", "four"],
+        ],
+      };
+
+      // attribute: the editable-table attribute each setting sets
+      const SETTINGS = [
+        "column-header",
+        "row-header",
+        "footer",
+        "sort",
+        "filter",
+        "numeric-styles",
+        "responsive",
+        "bordered",
+        "condensed",
+        "striped",
+        "column-striped",
+        "downloadable",
+        "copyable",
+        "printable",
+      ];
+
+      const PRESETS = {
+        demo: {
+          data: "simple",
+          caption: "",
+          on: [
+            "copyable",
+            "downloadable",
+            "printable",
+            "bordered",
+            "striped",
+            "condensed",
+          ],
+        },
+        plain: {
+          data: "budget",
+          caption: "Lab supply order",
+          on: ["column-header"],
+        },
+        data: {
+          data: "budget",
+          caption: "Lab supply order",
+          on: [
+            "column-header",
+            "row-header",
+            "footer",
+            "sort",
+            "filter",
+            "numeric-styles",
+            "striped",
+            "downloadable",
+            "copyable",
+            "printable",
+          ],
+        },
+        grid: {
+          data: "budget",
+          caption: "Lab supply order",
+          on: [
+            "column-header",
+            "row-header",
+            "footer",
+            "numeric-styles",
+            "bordered",
+            "condensed",
+          ],
+        },
+        rubric: {
+          data: "rubric",
+          caption: "Argumentative essay rubric",
+          on: ["column-header", "row-header", "striped"],
+        },
+      };
+
+      const state = {
+        mode: "both",
+        system: "ddd",
+        data: "budget",
+        caption: "",
+        on: new Set(),
+      };
+
+      const escapeText = (value) => {
+        const span = document.createElement("span");
+        span.textContent = value;
+        return span.innerHTML;
+      };
+
+      function tableMarkup() {
+        const rows = DATA[state.data]
+          .map(
+            (row) =>
+              "<tr>" +
+              row.map((cell) => "<td>" + escapeText(cell) + "</td>").join("") +
+              "</tr>",
+          )
+          .join("");
+        const caption = state.caption
+          ? "<caption>" + escapeText(state.caption) + "</caption>"
+          : "";
+        return "<table>" + caption + rows + "</table>";
+      }
+
+      function makeTable() {
+        const el = document.createElement("editable-table");
+        SETTINGS.forEach((attr) => {
+          if (state.on.has(attr)) el.setAttribute(attr, "");
+        });
+        el.innerHTML = tableMarkup();
+        return el;
+      }
+
+      function panel(scheme) {
+        const section = document.createElement("section");
+        section.className = "panel";
+        section.setAttribute("aria-label", scheme + " mode");
+        section.style.colorScheme = scheme;
+        const [light, dark] = PAGE[state.system];
+        section.style.backgroundColor = scheme === "light" ? light : dark;
+        const label = document.createElement("p");
+        label.className = "panel-label";
+        label.textContent = scheme + " mode";
+        const before = document.createElement("p");
+        before.textContent =
+          "Paragraph text before the table, to judge the table against body copy.";
+        const after = document.createElement("p");
+        after.textContent = "Paragraph text after the table.";
+        section.append(label, before);
+        if (state.on.has("responsive")) {
+          const narrow = document.createElement("div");
+          narrow.className = "narrow";
+          narrow.append(makeTable());
+          section.append(narrow);
+        } else {
+          section.append(makeTable());
+        }
+        section.append(after);
+        return section;
+      }
+
+      function render() {
+        const stage = document.getElementById("stage");
+        stage.classList.toggle("one", state.mode !== "both");
+        stage.replaceChildren(
+          ...(state.mode !== "dark" ? [panel("light")] : []),
+          ...(state.mode !== "light" ? [panel("dark")] : []),
+        );
+        document
+          .querySelectorAll("#settings input[data-attr]")
+          .forEach((input) => {
+            input.checked = state.on.has(input.dataset.attr);
+          });
+        document
+          .querySelectorAll('#settings input[name="data"]')
+          .forEach((input) => {
+            input.checked = input.value === state.data;
+          });
+        document.getElementById("caption").value = state.caption;
+        document.querySelectorAll("[data-group] button").forEach((button) => {
+          const group = button.parentElement.dataset.group;
+          button.setAttribute(
+            "aria-pressed",
+            String(state[group] === button.value),
+          );
+        });
+      }
+
+      function applyPreset(name) {
+        const preset = PRESETS[name];
+        state.data = preset.data;
+        state.caption = preset.caption;
+        state.on = new Set(preset.on);
+        render();
+      }
+
+      document.querySelectorAll("[data-group]").forEach((group) => {
+        group.addEventListener("click", (e) => {
+          const button = e.target.closest("button");
+          if (!button) return;
+          state[group.dataset.group] = button.value;
+          if (group.dataset.group === "system") {
+            DesignSystemManager.active = button.value;
+          }
+          render();
+        });
+      });
+      document.getElementById("presets").addEventListener("click", (e) => {
+        const button = e.target.closest("button");
+        if (button) applyPreset(button.value);
+      });
+      document.getElementById("settings").addEventListener("change", (e) => {
+        const attr = e.target.dataset.attr;
+        if (attr) {
+          if (e.target.checked) {
+            state.on.add(attr);
+            // striped and column-striped are exclusive, as in the element
+            if (attr === "striped") state.on.delete("column-striped");
+            if (attr === "column-striped") state.on.delete("striped");
+          } else {
+            state.on.delete(attr);
+          }
+        }
+        if (e.target.name === "data") state.data = e.target.value;
+        render();
+      });
+      document.getElementById("caption").addEventListener("change", (e) => {
+        state.caption = e.target.value;
+        render();
+      });
+      applyPreset("data");
+    </script>
+    <style>
+      body {
+        margin: 0;
+        font-family: var(--ddd-font-primary);
+        color: light-dark(
+          var(--ddd-theme-default-coalyGray),
+          var(--ddd-theme-default-white)
+        );
+        background-color: light-dark(
+          var(--ddd-theme-default-limestoneMaxLight),
+          var(--ddd-theme-default-coalyGray)
+        );
+        color-scheme: light dark;
+      }
+      header {
+        padding: var(--ddd-spacing-6) var(--ddd-spacing-8) var(--ddd-spacing-4);
+      }
+      h1 {
+        margin: 0 0 var(--ddd-spacing-2);
+        font-family: var(--ddd-font-heading, var(--ddd-font-primary));
+        font-size: var(--ddd-font-size-l);
+      }
+      header p {
+        margin: 0;
+        max-width: 80ch;
+        line-height: var(--ddd-lh-150);
+      }
+      .bar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: var(--ddd-spacing-2) var(--ddd-spacing-4);
+        margin-top: var(--ddd-spacing-4);
+      }
+      .bar-label,
+      fieldset legend {
+        font-family: var(--ddd-font-navigation);
+        font-size: var(--ddd-font-size-4xs);
+        font-weight: var(--ddd-font-weight-medium);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+      .group {
+        display: inline-flex;
+        flex-wrap: wrap;
+        gap: var(--ddd-spacing-1);
+      }
+      .group button {
+        min-height: var(--ddd-control-height-xs, 32px);
+        padding: 0 var(--ddd-spacing-3);
+        border: var(--ddd-border-xs);
+        border-color: light-dark(
+          var(--ddd-theme-default-limestoneGray),
+          var(--ddd-theme-default-slateGray)
+        );
+        border-radius: var(--ddd-radius-rounded);
+        background: transparent;
+        color: inherit;
+        font: inherit;
+        cursor: pointer;
+      }
+      .group button[aria-pressed="true"] {
+        background-color: light-dark(
+          var(--ddd-theme-default-nittanyNavy),
+          var(--ddd-theme-default-linkLight)
+        );
+        border-color: transparent;
+        color: light-dark(
+          var(--ddd-theme-default-white),
+          var(--ddd-theme-default-potentialMidnight)
+        );
+      }
+      .group button:focus-visible,
+      #settings input:focus-visible {
+        outline: var(--ddd-focus-ring);
+        outline-offset: var(--ddd-focus-offset);
+      }
+      .layout {
+        display: grid;
+        grid-template-columns: 260px 1fr;
+      }
+      @media (max-width: 900px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+      }
+      #settings {
+        padding: 0 var(--ddd-spacing-6) var(--ddd-spacing-6)
+          var(--ddd-spacing-8);
+      }
+      fieldset {
+        margin: 0 0 var(--ddd-spacing-4);
+        padding: 0;
+        border: 0 none;
+      }
+      fieldset label {
+        display: flex;
+        align-items: flex-start;
+        gap: var(--ddd-spacing-2);
+        padding: var(--ddd-spacing-1) 0;
+        line-height: var(--ddd-lh-120);
+      }
+      fieldset code {
+        font-size: var(--ddd-font-size-4xs);
+        opacity: 0.75;
+      }
+      #caption {
+        width: 100%;
+        box-sizing: border-box;
+        margin-top: var(--ddd-spacing-1);
+        padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
+        font: inherit;
+      }
+      #stage {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-content: start;
+      }
+      #stage.one {
+        grid-template-columns: 1fr;
+      }
+      @media (max-width: 1200px) {
+        #stage {
+          grid-template-columns: 1fr;
+        }
+      }
+      .panel {
+        min-width: 0;
+        padding: var(--ddd-spacing-6) var(--ddd-spacing-8);
+        color: light-dark(
+          var(--ddd-theme-default-coalyGray),
+          var(--ddd-theme-default-white)
+        );
+        font-family: var(--ddd-font-primary);
+      }
+      .panel p {
+        max-width: 70ch;
+        line-height: var(--ddd-lh-150);
+      }
+      .panel-label {
+        font-family: var(--ddd-font-navigation);
+        font-size: var(--ddd-font-size-4xs);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+      .narrow {
+        max-width: 360px;
+        margin-inline: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>DDD data table</h1>
+      <p>
+        The shared DDD table look (<code>DDDTable.js</code>) as
+        <code>editable-table</code> renders it. Turn on any setting, compare
+        light and dark mode, and switch the design system bridge to see the same
+        table under PatternFly, Carbon, Material 3, shadcn, Spectrum and
+        Tailwind tokens.
+      </p>
+      <div class="bar">
+        <span class="bar-label" id="mode-label">Mode</span>
+        <div
+          class="group"
+          data-group="mode"
+          role="group"
+          aria-labelledby="mode-label"
+        >
+          <button value="both">Light and dark</button>
+          <button value="light">Light</button>
+          <button value="dark">Dark</button>
+        </div>
+        <span class="bar-label" id="system-label">Design system</span>
+        <div
+          class="group"
+          data-group="system"
+          role="group"
+          aria-labelledby="system-label"
+        >
+          <button value="ddd">DDD</button>
+          <button value="patternfly">PatternFly</button>
+          <button value="carbon">Carbon</button>
+          <button value="material">Material 3</button>
+          <button value="shadcn">shadcn</button>
+          <button value="spectrum">Spectrum</button>
+          <button value="tailwind">Tailwind</button>
+        </div>
+        <span class="bar-label" id="preset-label">Presets</span>
+        <div
+          class="group"
+          id="presets"
+          role="group"
+          aria-labelledby="preset-label"
+        >
+          <button value="data">Data table</button>
+          <button value="plain">Plain</button>
+          <button value="grid">Dense grid</button>
+          <button value="rubric">Rubric</button>
+          <button value="demo">HAX demo schema</button>
+        </div>
+      </div>
+    </header>
+    <div class="layout">
+      <form id="settings" aria-label="Table settings" onsubmit="return false;">
+        <fieldset>
+          <legend>Structure</legend>
+          <label
+            ><input type="checkbox" data-attr="column-header" />
+            <span
+              >First row is the header <code>column-header</code></span
+            ></label
+          >
+          <label
+            ><input type="checkbox" data-attr="row-header" />
+            <span
+              >First column is row headers <code>row-header</code></span
+            ></label
+          >
+          <label
+            ><input type="checkbox" data-attr="footer" />
+            <span>Last row is a footer <code>footer</code></span></label
+          >
+        </fieldset>
+        <fieldset>
+          <legend>Behavior</legend>
+          <label
+            ><input type="checkbox" data-attr="sort" />
+            <span>Sortable <code>sort</code></span></label
+          >
+          <label
+            ><input type="checkbox" data-attr="filter" />
+            <span>Allow filter <code>filter</code></span></label
+          >
+          <label
+            ><input type="checkbox" data-attr="numeric-styles" />
+            <span>Numeric styling <code>numeric-styles</code></span></label
+          >
+          <label
+            ><input type="checkbox" data-attr="responsive" />
+            <span
+              >Responsive, shown at phone width <code>responsive</code></span
+            ></label
+          >
+        </fieldset>
+        <fieldset>
+          <legend>Look</legend>
+          <label
+            ><input type="checkbox" data-attr="bordered" />
+            <span>Bordered <code>bordered</code></span></label
+          >
+          <label
+            ><input type="checkbox" data-attr="condensed" />
+            <span>Condense rows <code>condensed</code></span></label
+          >
+          <label
+            ><input type="checkbox" data-attr="striped" />
+            <span>Striped rows <code>striped</code></span></label
+          >
+          <label
+            ><input type="checkbox" data-attr="column-striped" />
+            <span>Striped columns <code>column-striped</code></span></label
+          >
+        </fieldset>
+        <fieldset>
+          <legend>Actions</legend>
+          <label
+            ><input type="checkbox" data-attr="downloadable" />
+            <span>Download <code>downloadable</code></span></label
+          >
+          <label
+            ><input type="checkbox" data-attr="copyable" />
+            <span>Copy <code>copyable</code></span></label
+          >
+          <label
+            ><input type="checkbox" data-attr="printable" />
+            <span>Print <code>printable</code></span></label
+          >
+        </fieldset>
+        <fieldset>
+          <legend>Content</legend>
+          <label
+            ><input type="radio" name="data" value="budget" />
+            <span>Budget (numbers)</span></label
+          >
+          <label
+            ><input type="radio" name="data" value="rubric" />
+            <span>Rubric (long text)</span></label
+          >
+          <label
+            ><input type="radio" name="data" value="simple" />
+            <span>Two by two</span></label
+          >
+          <label for="caption">Caption (shows as the block title)</label>
+          <input type="text" id="caption" />
+        </fieldset>
+      </form>
+      <main id="stage"></main>
+    </div>
+  </body>
+</html>
