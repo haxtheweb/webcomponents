@@ -96,7 +96,7 @@
     },
     {
       "type": "text",
-      "s": "hax:2022",
+      "s": "hax:hax2022",
       "x": 720,
       "y": 460,
       "c": "cdd",
@@ -142,7 +142,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "icon=\"hax:2022\""
+      "s": "icon=\"hax:hax2022\""
     },
     {
       "type": "text",
@@ -248,7 +248,7 @@
   "end": {
     "in": 17.8,
     "line": "Icon from the full icon library.",
-    "code": "<simple-icon icon=\"hax:2022\" accentColor=\"purple\"></simple-icon>"
+    "code": "<simple-icon icon=\"hax:hax2022\" accentColor=\"purple\"></simple-icon>"
   },
   "surfaceHash": "b5dfa812a0e3",
   "review": {
