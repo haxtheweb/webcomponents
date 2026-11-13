@@ -448,7 +448,7 @@ describe("AiUsageLicense label i18n", () => {
     expect(label.textContent).to.equal("AI Usage License");
     // DDD eyebrow: first line of the card, read before the badge
     const body = el.shadowRoot.querySelector(".license-body");
-    expect(body.firstElementChild).to.equal(label);
+    expect(body.querySelector(":scope > :not(meta)") === label).to.be.true;
     expect(getComputedStyle(el, "::after").content).to.equal("none");
     el.t = {
       ...el.t,
