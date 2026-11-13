@@ -70,7 +70,22 @@
         "inputMethod": "boolean"
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "lens",
+        "title": "Read by",
+        "description": "Start with every tile read by one measure.",
+        "inputMethod": "select",
+        "options": {
+          "": "Connections only",
+          "fresh": "Freshness",
+          "bus": "Bus factor",
+          "impact": "Impact",
+          "evidence": "Evidence",
+          "parity": "Parity"
+        }
+      }
+    ]
   },
   "saveOptions": {
     "wipeSlot": true,

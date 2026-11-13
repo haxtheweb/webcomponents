@@ -24,7 +24,16 @@ const BUNDLE = {
         "  %%@ node cms icon=hax:hax2022 color=beaverBlue web=sub",
       ].join("\n"),
       json: {
-        nodes: { cms: { desc: "The content system." } },
+        nodes: {
+          cms: {
+            desc: "The content system.",
+            year: 2019,
+            yearNote: "HAXcms ships",
+            links: { repo: "https://github.com/haxtheweb/haxcms-nodejs" },
+          },
+          open: { year: 2018, yearNote: "The pillars" },
+          people: { always: true },
+        },
         tours: [
           {
             id: "everyone",
@@ -58,6 +67,10 @@ const BUNDLE = {
     "web:sub": "haxcms",
     "tile:main:cms": "ecosystem/haxcms",
     "tour:main:everyone": "tours/everyone",
+  },
+  layers: {
+    fresh: { main: { cms: new Date().toISOString().slice(0, 10) } },
+    released: { main: { cms: "2020-01-01" } },
   },
   icons: {
     "hax:hax2022": {
@@ -182,6 +195,97 @@ describe("ecosystem-web", () => {
     await element.updateComplete;
     const img = element.shadowRoot.querySelector(".node image");
     expect(img.getAttribute("href")).to.equal("data:image/png;base64,AAAA");
+  });
+
+  it("reads the web through a lens, with a key and a note per tile", async () => {
+    const r = element.shadowRoot;
+    r.querySelector('[aria-controls="layers"]').click();
+    await element.updateComplete;
+    const lensBtn = [...r.querySelectorAll("#layers button")].find(
+      (b) => b.textContent.trim() === "Freshness",
+    );
+    lensBtn.click();
+    await element.updateComplete;
+    expect(element.lens).to.equal("fresh");
+    expect(r.querySelector("svg.net.lensing")).to.exist;
+    expect(r.querySelector('.node.lens-a[aria-label^="HAXcms"]')).to.exist;
+    // main changed long after the last release: a release is due
+    expect(r.querySelector(".node.lens-a .lbadge .due")).to.exist;
+    expect(r.querySelectorAll(".node.lens-na").length).to.equal(2);
+    expect(r.querySelector(".lenskey").textContent).to.contain(
+      "Changed in the last 90 days",
+    );
+    element.node = "cms";
+    await element.updateComplete;
+    expect(r.querySelector(".lensnote").textContent).to.contain(
+      "Main has changed since the last release.",
+    );
+  });
+
+  it("hides a kind of connection", async () => {
+    element.toggleLayer("pillar");
+    await element.updateComplete;
+    expect(element.shadowRoot.querySelector("svg.net.hide-pillar")).to.exist;
+  });
+
+  it("searches the web as a combobox and selects what it finds", async () => {
+    const r = element.shadowRoot;
+    r.querySelector('[aria-controls="search"]').click();
+    await element.updateComplete;
+    const q = r.querySelector("#q");
+    q.value = "haxc";
+    q.dispatchEvent(new Event("input"));
+    await element.updateComplete;
+    expect(q.getAttribute("aria-expanded")).to.equal("true");
+    const opts = r.querySelectorAll('#qres [role="option"]');
+    expect(opts.length).to.equal(1);
+    expect(q.getAttribute("aria-activedescendant")).to.equal("qo-cms");
+    expect(r.querySelector("svg.net.searching .node.match")).to.exist;
+    q.dispatchEvent(new KeyboardEvent("keydown", { key: "Enter" }));
+    await element.updateComplete;
+    expect(element.node).to.equal("cms");
+    expect(r.querySelector("svg.net.searching")).to.equal(null);
+  });
+
+  it("grows the web over time and records finishing it", async () => {
+    element.pickTour("_time");
+    await element.updateComplete;
+    const chip = [
+      ...element.shadowRoot.querySelectorAll("#tourlist button"),
+    ].find((b) => b.textContent.trim() === "Over time");
+    expect(chip.getAttribute("aria-pressed")).to.equal("true");
+    element.goStep(0);
+    await element.updateComplete;
+    // 2018 brings the pillar, with the hub that is always shown
+    expect(element.shadowRoot.querySelectorAll(".node.off").length).to.equal(1);
+    expect(element.shadowRoot.querySelector(".cap").textContent).to.contain(
+      "2018",
+    );
+    setTimeout(() => element.goStep(9));
+    const ev = await oneEvent(element, "user-engagement");
+    expect(ev.detail.activityDisplay).to.equal("experienced");
+    expect(ev.detail.objectName).to.equal("Ecosystem web: Over time");
+    expect(ev.detail.resultCompletion).to.be.true;
+  });
+
+  it("shows the web's source to authors in the HAX editor", async () => {
+    expect(element.shadowRoot.querySelector(".author")).to.equal(null);
+    element.haxeditModeChanged(true);
+    await element.updateComplete;
+    const box = element.shadowRoot.querySelector(".author textarea");
+    expect(box.value).to.contain("flowchart TB");
+    expect(box.getAttribute("aria-label")).to.equal("hax-ecosystem.mmd");
+  });
+
+  it("passes the a11y audit with the strips open", async () => {
+    element._toggle("layers");
+    element.setLens("evidence");
+    await element.updateComplete;
+    await expect(element).shadowDom.to.be.accessible();
+    element._toggle("search");
+    element._q = "o";
+    await element.updateComplete;
+    await expect(element).shadowDom.to.be.accessible();
   });
 
   it("passes the a11y audit", async () => {
