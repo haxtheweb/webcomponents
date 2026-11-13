@@ -39,6 +39,22 @@ import { trimChars } from "@haxtheweb/utils/lib/safe-html.js";
 
 /** whether the section rail is collapsed to icons, per browser */
 const RAIL_COLLAPSED_KEY = "haxcms-system-settings-rail-collapsed";
+/** the HAXcms version this browser last saw, for the one-time "updated" note */
+const LAST_SEEN_VERSION_KEY = "haxcms-system-settings-last-version";
+/** links from the update report must point at our own GitHub org */
+const TRUSTED_UPDATE_URL = "https://github.com/haxtheweb/";
+/** a release version, the only thing interpolated into update commands */
+const RELEASE_VERSION = /^\d{1,4}\.\d{1,4}\.\d{1,4}$/;
+const INSTALL_METHODS = [
+  "node-npm",
+  "node-docker",
+  "node-source",
+  "desktop",
+  "php-archive",
+  "php-git",
+  "php-docker",
+  "unknown",
+];
 /** at or below this width (px) the rail holds its icons only */
 const NARROW_WIDTH = 760;
 
@@ -105,6 +121,9 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
       statusSummary: { type: Object, attribute: false },
       statusLoading: { type: Boolean, attribute: "status-loading" },
       statusError: { type: String, attribute: "status-error" },
+      statusUpdate: { type: Object, attribute: false },
+      _copiedCommand: { type: String, state: true },
+      _updatedNotice: { type: String, state: true },
       skeletonOptions: { type: Array, attribute: false },
       themeOptions: { type: Array, attribute: false },
       loadingSkeletons: { type: Boolean, attribute: "loading-skeletons" },
@@ -315,6 +334,55 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
       latestRelease: "Latest release",
       updateAvailable: "Update available",
       upToDate: "Up to date",
+      securityUpdate: "Security update",
+      securityUpdateIntro:
+        "This version is missing security fixes. Update to {version} or later.",
+      fixedIn: "fixed in {version}",
+      howToUpdate: "How to update this install",
+      detectedInstall: "Detected: {method}",
+      installNodeNpm: "Node.js, installed with npm",
+      installNodeDocker: "Node.js, Docker",
+      installNodeSource: "Node.js, git checkout",
+      installDesktop: "HAX desktop app",
+      installPhpArchive: "PHP, release zip",
+      installPhpGit: "PHP, git checkout",
+      installPhpDocker: "PHP, Docker",
+      installUnknown: "Unknown",
+      updatesManagedByHost:
+        "Updates for this install are managed by your host.",
+      updateChecksOff:
+        "Update checks are turned off (updates.check in config.json).",
+      releaseNotes: "Release notes",
+      releasedOn: "Released {date}",
+      downloadZip: "Download zip",
+      downloadChecksums: "Checksums (SHA256SUMS)",
+      copyCommand: "Copy",
+      copyCommandLabel: "Copy command: {command}",
+      copied: "Copied",
+      copyFailed: "Could not copy. Select the command and copy it yourself.",
+      updatedToVersion: "HAXcms was updated to {version}.",
+      dismiss: "Dismiss",
+      fixChecksFirst:
+        "{count} checks above need attention. Fix them before you update.",
+      stepBackup:
+        "Back up the _config, _sites, _published and _archived folders.",
+      stepPhpUpgrader:
+        "With shell access, run the upgrader from the install folder. It checks the release, backs up the code and can roll back:",
+      stepNoShell: "No shell? Update by hand:",
+      stepUnzip:
+        "Download the release zip and unzip it over this install. Never delete those four folders.",
+      stepReload: "Reload this page. Status checks the version again.",
+      stepGitCheckout: "From the install folder, check out the release:",
+      stepDockerPull: "Pull the new image:",
+      stepDockerRecreate:
+        "Recreate the container with the same volumes, then reload this page.",
+      stepCliUpdate: "If you run HAXcms through the HAX CLI, update the CLI:",
+      stepNpmUpdate: "Otherwise update the package directly:",
+      stepRestart: "Restart HAXcms, then reload this page.",
+      stepSourceUpdate:
+        "From the checkout, switch to the release and install its dependencies:",
+      stepDesktop: "Update the HAX desktop app. HAXcms updates with it.",
+      stepSeeReleaseNotes: "See the release notes for update steps.",
       filterSkeletons: "Filter skeletons",
       filterThemes: "Filter themes",
       show: "Show",
@@ -385,6 +453,9 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
     this.statusSummary = {};
     this.statusLoading = false;
     this.statusError = "";
+    this.statusUpdate = null;
+    this._copiedCommand = "";
+    this._updatedNotice = "";
     this.skeletonOptions = [];
     this.themeOptions = [];
     this.loadingSkeletons = false;
@@ -664,6 +735,100 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
           flex-wrap: wrap;
           gap: var(--hax-ui-gap-md);
           margin-top: var(--hax-ui-gap-lg);
+        }
+        .updated-note {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: space-between;
+          gap: var(--hax-ui-gap-md);
+        }
+        .updates {
+          margin-top: var(--hax-ui-gap-lg);
+        }
+        .update-card {
+          border: 1px solid var(--hax-ui-line);
+          border-radius: var(--hax-ui-radius-lg);
+          overflow: hidden;
+        }
+        .update-head,
+        .update-security,
+        .update-how {
+          padding: 10px 14px;
+        }
+        .update-security,
+        .update-how {
+          border-top: 1px solid var(--hax-ui-line);
+        }
+        .update-head,
+        .update-how-head,
+        .update-downloads {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: var(--hax-ui-gap-md);
+        }
+        .update-version {
+          font-size: 15px;
+          font-weight: var(--ddd-font-weight-bold, 700);
+          font-variant-numeric: tabular-nums;
+        }
+        .updates .muted {
+          color: var(--hax-ui-text-muted);
+          font-size: var(--hax-ui-admin-font-size-xs);
+        }
+        .updates a {
+          color: var(--hax-ui-accent-strong);
+          font-weight: var(--ddd-font-weight-bold, 700);
+        }
+        .updates a.hax-ui-btn {
+          text-decoration: none;
+        }
+        .update-security {
+          background-color: color-mix(
+            in srgb,
+            var(--hax-ui-danger) 8%,
+            transparent
+          );
+        }
+        .update-security p,
+        .update-how h4 {
+          margin: 0;
+        }
+        .update-how h4 {
+          font-size: var(--ddd-font-size-4xs, 16px);
+        }
+        .update-security ul,
+        .update-steps {
+          margin: var(--hax-ui-gap-md) 0 0;
+          padding-inline-start: var(--ddd-spacing-5, 20px);
+        }
+        .update-security li,
+        .update-steps li {
+          margin-bottom: var(--hax-ui-gap-md);
+        }
+        .update-security li {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: var(--hax-ui-gap-md);
+        }
+        .update-downloads {
+          margin-top: var(--hax-ui-gap-md);
+        }
+        .update-command {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: var(--hax-ui-gap-md);
+          margin-top: 4px;
+        }
+        .update-command code {
+          padding: 4px 8px;
+          border-radius: var(--hax-ui-radius);
+          background-color: var(--hax-ui-hover);
+          font-family: var(--ddd-font-secondary, monospace);
+          overflow-wrap: anywhere;
         }
         .rows {
           margin: 0;
@@ -2898,20 +3063,34 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
     summary,
     title = this.t.haxcmsVersion,
     description = "",
+    update = null,
   ) {
+    if (update && (update.managed || !update.checkEnabled)) {
+      // no check ran: say why instead of comparing a version with itself
+      return this._replaceVersionRow(rows, summary, {
+        key: "haxcms-version",
+        tone: "info",
+        title: title,
+        value: summary.haxcmsVersionCurrent || this.t.unknown,
+        description: update.managed
+          ? this.t.updatesManagedByHost
+          : this.t.updateChecksOff,
+      });
+    }
     const compare = this._compareVersion(
       summary.haxcmsVersionCurrent,
       summary.haxcmsVersionLatest,
     );
-    const versionTone = compare < 0 ? "warning" : "ok";
+    const security = !!(update && update.security);
+    const versionTone = security ? "error" : compare < 0 ? "warning" : "ok";
     const versionValue = summary.haxcmsVersionCurrent
-      ? (compare < 0
+      ? (compare < 0 || security
           ? this.t.versionUpdateAvailable
           : this.t.versionUpToDate
         ).replace("{version}", () => summary.haxcmsVersionCurrent)
       : this.t.unknown;
     const versionDescription =
-      compare < 0
+      compare < 0 || security
         ? this.t.currentLatestVersion
             .replace(
               "{current}",
@@ -2930,6 +3109,9 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
         nextRows[i].title = title;
         nextRows[i].value = versionValue;
         nextRows[i].description = versionDescription;
+        if (security) {
+          nextRows[i].links = this._advisoryLinks(update.advisories);
+        }
         found = true;
       }
     }
@@ -2940,12 +3122,121 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
         title: title,
         value: versionValue,
         description: versionDescription,
+        links: security ? this._advisoryLinks(update.advisories) : [],
       });
     }
     return {
       summary: summary,
       rows: nextRows,
     };
+  }
+
+  _replaceVersionRow(rows, summary, row) {
+    const nextRows = Array.isArray(rows) ? this._cloneData(rows) : [];
+    const index = nextRows.findIndex((item) => item.key === "haxcms-version");
+    if (index === -1) {
+      nextRows.push(row);
+    } else {
+      nextRows[index] = row;
+    }
+    return {
+      summary: summary,
+      rows: nextRows,
+    };
+  }
+
+  _trustedUpdateUrl(value) {
+    return typeof value === "string" && value.indexOf(TRUSTED_UPDATE_URL) === 0
+      ? value
+      : "";
+  }
+
+  _releaseVersion(value) {
+    return typeof value === "string" && RELEASE_VERSION.test(value)
+      ? value
+      : "";
+  }
+
+  /**
+   * The status report's update object (haxtheweb/issues#1768), reduced to
+   * known fields. Links outside github.com/haxtheweb are dropped.
+   */
+  _normalizeStatusUpdate(source) {
+    if (!source || typeof source !== "object") {
+      return null;
+    }
+    const text = (value) => (typeof value === "string" ? value : "");
+    const advisories = Array.isArray(source.advisories)
+      ? source.advisories
+          .filter((item) => item && typeof item === "object")
+          .map((item) => ({
+            id: text(item.id),
+            cve: text(item.cve),
+            severity: text(item.severity),
+            summary: text(item.summary),
+            url: this._trustedUpdateUrl(item.url),
+            patched: this._releaseVersion(item.patched),
+          }))
+      : [];
+    const assets = Array.isArray(source.assets)
+      ? source.assets
+          .filter(
+            (item) =>
+              item &&
+              typeof item.name === "string" &&
+              this._trustedUpdateUrl(item.url),
+          )
+          .map((item) => ({ name: item.name, url: item.url }))
+      : [];
+    return {
+      checkEnabled: source.checkEnabled === true,
+      managed: source.managed === true,
+      current: text(source.current),
+      latest: text(source.latest),
+      releasedAt: text(source.releasedAt),
+      releaseUrl: this._trustedUpdateUrl(source.releaseUrl),
+      updateAvailable: source.updateAvailable === true,
+      security: source.security === true && advisories.length > 0,
+      advisories: advisories,
+      installMethod: INSTALL_METHODS.includes(source.installMethod)
+        ? source.installMethod
+        : "unknown",
+      assets: assets,
+    };
+  }
+
+  _advisoryLinks(advisories = []) {
+    return advisories
+      .filter((item) => item.url)
+      .map((item) => {
+        const label = item.cve || item.id;
+        return {
+          url: item.url,
+          label: item.severity ? `${label} (${item.severity})` : label,
+        };
+      });
+  }
+
+  /**
+   * One-time "HAXcms was updated" note: compares the version this browser
+   * last saw with the one the report just returned.
+   */
+  _checkUpdatedNotice(currentVersion = "") {
+    if (!this._releaseVersion(currentVersion)) {
+      return;
+    }
+    try {
+      const lastSeen = globalThis.localStorage.getItem(LAST_SEEN_VERSION_KEY);
+      if (
+        this._releaseVersion(lastSeen) &&
+        this._compareVersion(lastSeen, currentVersion) < 0
+      ) {
+        this._updatedNotice = currentVersion;
+      }
+      globalThis.localStorage.setItem(LAST_SEEN_VERSION_KEY, currentVersion);
+    } catch {
+      // storage can be blocked; the note is a convenience only
+    }
   }
 
   async _loadStatusData(force = false) {
@@ -2962,9 +3253,11 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
       summary: this._cloneData(fallbackPayload.summary),
       rows: this._cloneData(fallbackPayload.rows),
     };
+    let update = null;
     const response = await this._callAppEndpoint(["systemStatus", "status"]);
     if (response && response.data && typeof response.data === "object") {
       const source = response.data;
+      update = this._normalizeStatusUpdate(source.update);
       const summary = this._normalizeStatusSummary(
         source.summary ? source.summary : source,
         fallbackPayload.summary,
@@ -2975,6 +3268,9 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
         statusPayload = this._ensureVersionStatusRow(
           this._normalizeStatusRows(rowsSource),
           summary,
+          this.t.haxcmsVersion,
+          "",
+          update,
         );
       } else {
         const generated = [
@@ -2991,9 +3287,17 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
             value: summary.serverVersion || "",
           },
         ];
-        statusPayload = this._ensureVersionStatusRow(generated, summary);
+        statusPayload = this._ensureVersionStatusRow(
+          generated,
+          summary,
+          this.t.haxcmsVersion,
+          "",
+          update,
+        );
       }
+      this._checkUpdatedNotice(summary.haxcmsVersionCurrent);
     }
+    this.statusUpdate = update;
     this.statusRows = statusPayload.rows;
     this.statusSummary = statusPayload.summary;
     this.statusLoading = false;
@@ -4034,11 +4338,350 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
     `;
   }
 
+  _installMethodLabel(method = "unknown") {
+    const labels = {
+      "node-npm": this.t.installNodeNpm,
+      "node-docker": this.t.installNodeDocker,
+      "node-source": this.t.installNodeSource,
+      desktop: this.t.installDesktop,
+      "php-archive": this.t.installPhpArchive,
+      "php-git": this.t.installPhpGit,
+      "php-docker": this.t.installPhpDocker,
+    };
+    return labels[method] || this.t.installUnknown;
+  }
+
+  /**
+   * Update steps for how this install was set up. Commands are fixed
+   * templates; the only value put into them is a release version that
+   * matched RELEASE_VERSION, so nothing from the server becomes a command.
+   */
+  _updateSteps(update) {
+    const version = this._releaseVersion(update.latest);
+    // a template that needs a version gets none when the version is not a
+    // plain release number
+    const step = (text, template = "") => ({
+      text: text,
+      command: !template.includes("{version}")
+        ? template
+        : version
+          ? template.replace("{version}", () => version)
+          : "",
+    });
+    switch (update.installMethod) {
+      case "php-archive":
+        return [
+          step(
+            this.t.stepPhpUpgrader,
+            "php scripts/platform-upgrade.php upgrade",
+          ),
+          step(this.t.stepNoShell),
+          step(this.t.stepBackup),
+          step(this.t.stepUnzip),
+          step(this.t.stepReload),
+        ];
+      case "php-git":
+        return [
+          step(this.t.stepBackup),
+          step(
+            this.t.stepGitCheckout,
+            "git fetch --tags && git checkout {version}",
+          ),
+          step(this.t.stepReload),
+        ];
+      case "php-docker":
+        return [
+          step(
+            this.t.stepDockerPull,
+            "docker pull ghcr.io/haxtheweb/haxcms-php:{version}",
+          ),
+          step(this.t.stepDockerRecreate),
+        ];
+      case "node-docker":
+        return [
+          step(
+            this.t.stepDockerPull,
+            "docker pull ghcr.io/haxtheweb/haxcms-nodejs:{version}",
+          ),
+          step(this.t.stepDockerRecreate),
+        ];
+      case "node-npm":
+        return [
+          step(this.t.stepCliUpdate, "hax update"),
+          step(
+            this.t.stepNpmUpdate,
+            "npm install --global @haxtheweb/haxcms-nodejs@{version}",
+          ),
+          step(this.t.stepRestart),
+        ];
+      case "node-source":
+        return [
+          step(
+            this.t.stepSourceUpdate,
+            "git fetch --tags && git checkout {version} && yarn install",
+          ),
+          step(this.t.stepRestart),
+        ];
+      case "desktop":
+        return [step(this.t.stepDesktop)];
+      default:
+        return [step(this.t.stepSeeReleaseNotes)];
+    }
+  }
+
+  _updateDownloads(update) {
+    if (update.installMethod !== "php-archive") {
+      return [];
+    }
+    const links = [];
+    const zip = update.assets.find((asset) => /\.zip$/i.test(asset.name));
+    const version = this._releaseVersion(update.latest);
+    if (zip) {
+      links.push({ url: zip.url, label: this.t.downloadZip });
+    } else if (version) {
+      // releases without attached files still have GitHub's tag archive
+      links.push({
+        url: `https://github.com/haxtheweb/haxcms-php/archive/refs/tags/${version}.zip`,
+        label: this.t.downloadZip,
+      });
+    }
+    const sums = update.assets.find((asset) => asset.name === "SHA256SUMS");
+    if (sums) {
+      links.push({ url: sums.url, label: this.t.downloadChecksums });
+    }
+    return links;
+  }
+
+  async _copyUpdateCommand(command) {
+    try {
+      await globalThis.navigator.clipboard.writeText(command);
+      this._copiedCommand = command;
+    } catch {
+      this._copiedCommand = "";
+      this.statusMessage = this.t.copyFailed;
+    }
+  }
+
+  _renderUpdatedNotice() {
+    if (!this._updatedNotice) {
+      return nothing;
+    }
+    return html`<div class="hax-ui-message updated-note" data-tone="info">
+      <span
+        >${this.t.updatedToVersion.replace(
+          "{version}",
+          () => this._updatedNotice,
+        )}</span
+      >
+      <button
+        type="button"
+        class="hax-ui-btn"
+        @click="${() => {
+          this._updatedNotice = "";
+        }}"
+      >
+        ${this.t.dismiss}
+      </button>
+    </div>`;
+  }
+
+  _renderUpdatesCard() {
+    const update = this.statusUpdate;
+    if (!update) {
+      return nothing;
+    }
+    if (update.managed || !update.checkEnabled) {
+      return html`<section class="updates" aria-labelledby="updates-title">
+        <h3 class="group-title" id="updates-title">${this.t.updates}</h3>
+        <p class="hax-ui-note">
+          ${
+            update.managed
+              ? this.t.updatesManagedByHost
+              : this.t.updateChecksOff
+          }
+        </p>
+      </section>`;
+    }
+    if (!update.updateAvailable && !update.security) {
+      return nothing;
+    }
+    const steps = this._updateSteps(update);
+    const downloads = this._updateDownloads(update);
+    const counts = this._statusCounts();
+    const problems = Math.max(0, counts.error + counts.warning - 1);
+    const patched = update.advisories.reduce(
+      (max, item) =>
+        item.patched && this._compareVersion(max, item.patched) < 0
+          ? item.patched
+          : max,
+      "",
+    );
+    let released = "";
+    if (update.releasedAt) {
+      const date = new Date(update.releasedAt);
+      if (!Number.isNaN(date.getTime())) {
+        released = this.t.releasedOn.replace("{date}", () =>
+          date.toLocaleDateString(),
+        );
+      }
+    }
+    return html`<section class="updates" aria-labelledby="updates-title">
+      <h3 class="group-title" id="updates-title">${this.t.updates}</h3>
+      <div class="update-card">
+        <div class="update-head">
+          <span class="update-version">
+            ${update.current || this.t.unknown} → ${update.latest}
+          </span>
+          ${
+            update.security
+              ? html`<span class="hax-ui-pill tone" data-tone="error"
+                  >${this.t.securityUpdate}</span
+                >`
+              : html`<span class="hax-ui-pill tone" data-tone="warning"
+                  >${this.t.updateAvailable}</span
+                >`
+          }
+          ${released ? html`<span class="muted">${released}</span>` : nothing}
+          ${
+            update.releaseUrl
+              ? html`<a
+                  href="${update.releaseUrl}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >${this.t.releaseNotes}</a
+                >`
+              : nothing
+          }
+        </div>
+        ${
+          update.security
+            ? html`<div class="update-security">
+                <p>
+                  ${this.t.securityUpdateIntro.replace(
+                    "{version}",
+                    () => patched || update.latest,
+                  )}
+                </p>
+                <ul>
+                  ${update.advisories.map(
+                    (item) =>
+                      html`<li>
+                        ${
+                          item.url
+                            ? html`<a
+                                href="${item.url}"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                >${item.cve || item.id}</a
+                              >`
+                            : html`<span>${item.cve || item.id}</span>`
+                        }
+                        ${
+                          item.severity
+                            ? html`<span
+                                class="hax-ui-pill tone"
+                                data-tone="error"
+                                >${item.severity}</span
+                              >`
+                            : nothing
+                        }
+                        ${
+                          item.summary
+                            ? html`<span>${item.summary}</span>`
+                            : nothing
+                        }
+                        ${
+                          item.patched
+                            ? html`<span class="muted"
+                                >${this.t.fixedIn.replace(
+                                  "{version}",
+                                  () => item.patched,
+                                )}</span
+                              >`
+                            : nothing
+                        }
+                      </li>`,
+                  )}
+                </ul>
+              </div>`
+            : nothing
+        }
+        <div class="update-how">
+          <div class="update-how-head">
+            <h4>${this.t.howToUpdate}</h4>
+            <span class="muted"
+              >${this.t.detectedInstall.replace("{method}", () =>
+                this._installMethodLabel(update.installMethod),
+              )}</span
+            >
+          </div>
+          ${
+            downloads.length
+              ? html`<div class="update-downloads">
+                  ${downloads.map(
+                    (link) =>
+                      html`<a
+                        class="hax-ui-btn"
+                        href="${link.url}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >${link.label}</a
+                      >`,
+                  )}
+                </div>`
+              : nothing
+          }
+          <ol class="update-steps">
+            ${steps.map(
+              (item) =>
+                html`<li>
+                  <span>${item.text}</span>
+                  ${
+                    item.command
+                      ? html`<span class="update-command">
+                          <code>${item.command}</code>
+                          <button
+                            type="button"
+                            class="hax-ui-btn"
+                            aria-label="${this.t.copyCommandLabel.replace(
+                              "{command}",
+                              () => item.command,
+                            )}"
+                            @click="${() => this._copyUpdateCommand(item.command)}"
+                          >
+                            ${
+                              this._copiedCommand === item.command
+                                ? this.t.copied
+                                : this.t.copyCommand
+                            }
+                          </button>
+                        </span>`
+                      : nothing
+                  }
+                </li>`,
+            )}
+          </ol>
+          ${
+            problems > 0
+              ? html`<p class="hax-ui-note">
+                  ${this.t.fixChecksFirst.replace("{count}", () => problems)}
+                </p>`
+              : nothing
+          }
+        </div>
+        <p class="sr-only" role="status" aria-live="polite">
+          ${this._copiedCommand ? this.t.copied : ""}
+        </p>
+      </div>
+    </section>`;
+  }
+
   _renderStatusPanel() {
     const current = this._statusSummaryValue("haxcmsVersionCurrent");
     const latest = this._statusSummaryValue("haxcmsVersionLatest");
     const known = current !== this.t.unknown && latest !== this.t.unknown;
     const behind = known && this._compareVersion(current, latest) < 0;
+    const security = !!(this.statusUpdate && this.statusUpdate.security);
     const counts = this._statusCounts();
     const sections = this._statusSections();
     return html`
@@ -4054,6 +4697,7 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
             </p>`
           : nothing
       }
+      ${this._renderUpdatedNotice()}
       <div class="facts">
         <div class="fact">
           <span class="k">${this.t.runtime}</span>
@@ -4074,13 +4718,19 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
           <span class="v"
             >${latest}
             ${
-              known
-                ? html`<span
-                    class="hax-ui-pill tone"
-                    data-tone="${behind ? "warning" : "ok"}"
-                    >${behind ? this.t.updateAvailable : this.t.upToDate}</span
+              security
+                ? html`<span class="hax-ui-pill tone" data-tone="error"
+                    >${this.t.securityUpdate}</span
                   >`
-                : nothing
+                : known
+                  ? html`<span
+                      class="hax-ui-pill tone"
+                      data-tone="${behind ? "warning" : "ok"}"
+                      >${
+                        behind ? this.t.updateAvailable : this.t.upToDate
+                      }</span
+                    >`
+                  : nothing
             }</span
           >
         </div>
@@ -4113,6 +4763,7 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
           >${this.t.infoCount.replace("{count}", () => counts.info)}</span
         >
       </div>
+      ${this._renderUpdatesCard()}
       ${sections.map(
         (section) => html`
           <h3 class="group-title" id="group-${section.id}">
