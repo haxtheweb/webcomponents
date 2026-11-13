@@ -57,11 +57,5 @@ var r = "build/es6/node_modules/@haxtheweb/haxcms-elements/lib/base.css",
     })();
   }));
 var n = document.getElementsByTagName("link")[0];
-if ((n.parentNode.insertBefore(l, n), !globalThis.__appCustomEnv)) {
-  var a = document.createElement("link");
-  ((a.rel = "stylesheet"),
-    (a.href = "./theme/theme.css"),
-    (a.type = "text/css"),
-    n.parentNode.insertBefore(a, n));
-}
+n.parentNode.insertBefore(l, n);
 var c = o;
