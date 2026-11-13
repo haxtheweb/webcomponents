@@ -166,7 +166,7 @@ describe("VhsBlogTheme", () => {
     expect(keys[4].getAttribute("aria-label")).to.equal("FF, next post");
   });
 
-  it("flips the TV to channel 4, 2 and back, with a pause for the static", async () => {
+  it("flips the TV through all ten channels, with a pause for the static", async () => {
     const root = element.shadowRoot;
     const tv = root.querySelector("vhs-blog-tv");
     tv.shadowRoot.querySelector("button.screen").click();
@@ -188,18 +188,41 @@ describe("VhsBlogTheme", () => {
     expect(tv.held).to.equal(true);
     expect(pause.getAttribute("aria-pressed")).to.equal("true");
     const cabinet = root.querySelector("vhs-blog-console");
-    // the shared dial: numbers on the ring, the knob is the button
-    cabinet.shadowRoot.querySelector("button.knob").click();
-    await element.updateComplete;
+    const knob = async () => {
+      // the shared dial: numbers on the ring, the knob is the button
+      cabinet.shadowRoot.querySelector("button.knob").click();
+      await element.updateComplete;
+      await tv.updateComplete;
+    };
+    // 5 to 10 and around to 1 are the installer's HAX TV lineup
+    const lineup = {
+      5: "RETRO-TV-CREDITS",
+      6: "RETRO-TV-HAX-TV",
+      7: "RETRO-TV-HOME-COMPUTER",
+      8: "RETRO-TV-HANDHELD",
+      9: "RETRO-TV-PC",
+      10: "RETRO-TV-DISC",
+      1: "RETRO-TV-SIGN-ON",
+    };
+    for (const ch of [5, 6, 7, 8, 9, 10, 1]) {
+      await knob();
+      expect(element.channel).to.equal(ch);
+      const set = tv.shadowRoot.querySelector("retro-tv");
+      await set.updateComplete;
+      expect(set.program.tagName).to.equal(lineup[ch]);
+      expect(
+        root.querySelector(".hint [role=status]").textContent.trim(),
+      ).to.equal(`Channel ${ch}: ${set.program.programName}.`);
+    }
+    expect(root.querySelector(".hint button[aria-pressed]")).to.equal(null);
+    await knob();
     expect(element.channel).to.equal(2);
     expect(root.querySelector("retro-console").power).to.equal(true);
-    cabinet.shadowRoot.querySelector("button.knob").click();
-    await element.updateComplete;
+    await knob();
     expect(element.channel).to.equal(3);
-    expect(root.querySelector(".hint button[aria-pressed]")).to.equal(null);
   });
 
-  it("plays HAX Melee from the controller and turns the set off and on", async () => {
+  it("plays HAX Blocks from the controller and turns the set off and on", async () => {
     const root = element.shadowRoot;
     const pad = root.querySelector("retro-controller");
     expect(pad.getAttribute("slot")).to.equal("game");
@@ -208,9 +231,9 @@ describe("VhsBlogTheme", () => {
     expect(element.channel).to.equal(2);
     const tv = root.querySelector("vhs-blog-tv");
     await tv.updateComplete;
-    const melee = tv.shadowRoot.querySelector("retro-tv-melee");
+    const blocks = tv.shadowRoot.querySelector("retro-tv-blocks");
     pad.press("a");
-    expect(melee.score + melee._g.rivals[0].x).to.be.greaterThan(0);
+    expect(blocks.score + blocks._g.rivals[0].x).to.be.greaterThan(0);
     const cabinet = root.querySelector("vhs-blog-console");
     cabinet.shadowRoot.querySelector("button.pwr").click();
     await element.updateComplete;

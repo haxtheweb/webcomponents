@@ -6,17 +6,27 @@ import { LitElement, html, css } from "lit";
 import "@haxtheweb/retro-tv/retro-tv.js";
 import "@haxtheweb/retro-tv/lib/programs/retro-tv-title-sequence.js";
 import "@haxtheweb/retro-tv/lib/programs/retro-tv-static.js";
-import "@haxtheweb/retro-tv/lib/programs/retro-tv-melee.js";
+import "@haxtheweb/retro-tv/lib/programs/retro-tv-blocks.js";
+import "@haxtheweb/retro-tv/lib/programs/retro-tv-sign-on.js";
+import "@haxtheweb/retro-tv/lib/programs/retro-tv-credits.js";
+import "@haxtheweb/retro-tv/lib/programs/retro-tv-hax-tv.js";
+import "@haxtheweb/retro-tv/lib/programs/retro-tv-home-computer.js";
+import "@haxtheweb/retro-tv/lib/programs/retro-tv-handheld.js";
+import "@haxtheweb/retro-tv/lib/programs/retro-tv-pc.js";
+import "@haxtheweb/retro-tv/lib/programs/retro-tv-disc.js";
 
-/** the channels a tunable set flips through, in order */
-const CHANNELS = [3, 4, 2];
+/** the channels a tunable set flips through, in order: all ten */
+const CHANNELS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 /**
  * `vhs-blog-tv`
  * The VHS Blog's television, built on `retro-tv` like every TV in HAX:
  * channel 3 rolls the 80s title sequence for the active post, channel 4 is
  * static with a cast of rpg-characters tumbling through it, and channel 2
- * is HAX Melee, the game on the HAX 64 cartridge. All motion is CSS and
+ * is HAX Blocks, the game on the HAX 64 cartridge. The rest of the ten are
+ * the HAX TV lineup the installer plays: 1 the sign-on card, 5 credits,
+ * 6 HAX TV, and the loading screens on 7 (home computer), 8 (handheld),
+ * 9 (PC) and 10 (disc console). All motion is CSS and
  * only runs when the visitor has not asked for reduced motion; otherwise
  * (and after skip()) the final frame shows with no motion.
  *
@@ -90,8 +100,25 @@ export class VhsBlogTv extends LitElement {
     return this.shadowRoot && this.shadowRoot.querySelector("retro-tv");
   }
 
-  get _melee() {
-    return this.shadowRoot && this.shadowRoot.querySelector("retro-tv-melee");
+  /**
+   * The name of the program on a channel, for a "now playing" line.
+   * @param {Number} channel - defaults to the current channel
+   * @returns {String}
+   */
+  programNameFor(channel = this.channel) {
+    const ch = Number(channel);
+    const p =
+      this.shadowRoot &&
+      [...this.shadowRoot.querySelectorAll("[channel]")].find(
+        (el) =>
+          el.tagName !== "RETRO-TV" &&
+          Number(el.getAttribute("channel")) === ch,
+      );
+    return p && p.programName ? p.programName : "";
+  }
+
+  get _blocks() {
+    return this.shadowRoot && this.shadowRoot.querySelector("retro-tv-blocks");
   }
 
   /**
@@ -112,7 +139,7 @@ export class VhsBlogTv extends LitElement {
   }
 
   /**
-   * Change to the next channel (3, 4, 2, and around) and tell the page.
+   * Change to the next channel (1 to 10, and around) and tell the page.
    */
   changeChannel() {
     const i = CHANNELS.indexOf(Number(this.channel));
@@ -136,19 +163,19 @@ export class VhsBlogTv extends LitElement {
   }
 
   /**
-   * Play a HAX 64 controller button in HAX Melee.
+   * Play a HAX 64 controller button in HAX Blocks.
    * @param {String} button u, d, l, r, select, start, b or a
    */
   press(button) {
-    if (this._melee) {
-      this._melee.press(button);
+    if (this._blocks) {
+      this._blocks.press(button);
     }
   }
 
-  /** Start HAX Melee over. */
+  /** Start HAX Blocks over. */
   reset() {
-    if (this._melee) {
-      this._melee.reset();
+    if (this._blocks) {
+      this._blocks.reset();
     }
   }
 
@@ -277,7 +304,23 @@ export class VhsBlogTv extends LitElement {
         off-air="${this.offAirLabel}"
         .cast="${this.cast}"
       ></retro-tv-static>
-      <retro-tv-melee channel="2"></retro-tv-melee>
+      <retro-tv-sign-on channel="1"></retro-tv-sign-on>
+      <retro-tv-blocks channel="2"></retro-tv-blocks>
+      <retro-tv-credits channel="5"></retro-tv-credits>
+      <retro-tv-hax-tv channel="6"></retro-tv-hax-tv>
+      <retro-tv-home-computer
+        channel="7"
+        what="${this.crawlTitle}"
+        loading
+      ></retro-tv-home-computer>
+      <retro-tv-handheld channel="8"></retro-tv-handheld>
+      <retro-tv-pc
+        channel="9"
+        command="PLAY"
+        message="${this.crawlTitle}"
+        loading
+      ></retro-tv-pc>
+      <retro-tv-disc channel="10"></retro-tv-disc>
       <div class="seek" slot="overlay" aria-hidden="true">
         <span>${this.seek === "rew" ? "◀◀" : "▶▶"}</span>
       </div>

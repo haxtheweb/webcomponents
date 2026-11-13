@@ -2,7 +2,7 @@ import { fixture, expect, html, oneEvent } from "@open-wc/testing";
 import "../lib/retro-vcr.js";
 import "../lib/retro-console.js";
 import "../lib/retro-controller.js";
-import "../lib/programs/retro-tv-melee.js";
+import "../lib/programs/retro-tv-blocks.js";
 import "../lib/programs/retro-tv-static.js";
 import { retroKitKey } from "../lib/retro-kit.js";
 
@@ -64,10 +64,10 @@ describe("retro-console", () => {
     await oneEvent(el, "retro-console-reset");
   });
 
-  it("labels the cartridge HAX Melee with four fighters", async () => {
+  it("labels the cartridge HAX Blocks with four fighters", async () => {
     const el = await fixture(html`<retro-console></retro-console>`);
     expect(el.shadowRoot.querySelector(".ttl").textContent.trim()).to.equal(
-      "HAX Melee",
+      "HAX Blocks",
     );
     expect(el.shadowRoot.querySelectorAll("rpg-character").length).to.equal(4);
     await expect(el).shadowDom.to.be.accessible();
@@ -97,9 +97,9 @@ describe("retro-vcr", () => {
   });
 });
 
-describe("retro-tv-melee", () => {
+describe("retro-tv-blocks", () => {
   it("grabs, takes back, publishes and resets", async () => {
-    const el = await fixture(html`<retro-tv-melee></retro-tv-melee>`);
+    const el = await fixture(html`<retro-tv-blocks></retro-tv-blocks>`);
     el.press("a");
     await el.updateComplete;
     expect(el.score).to.equal(1);
@@ -118,7 +118,7 @@ describe("retro-tv-melee", () => {
   });
 
   it("rivals take a turn only when you press", async () => {
-    const el = await fixture(html`<retro-tv-melee></retro-tv-melee>`);
+    const el = await fixture(html`<retro-tv-blocks></retro-tv-blocks>`);
     const before = el._g.rivals.map((r) => r.x).join();
     await new Promise((r) => setTimeout(r, 300));
     expect(el._g.rivals.map((r) => r.x).join()).to.equal(before);

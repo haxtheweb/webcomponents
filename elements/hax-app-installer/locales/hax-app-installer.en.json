@@ -133,7 +133,7 @@
   "padStart": "Start: publish your page",
   "padB": "B: take back the last block",
   "padA": "A: grab a block",
-  "padNote": "HAX Melee on channel 2: race three rivals for the HAX blocks. A grabs (or bonks a rival next to you), B takes one back, Select remixes your fighter, Start publishes. Your keyboard works too: arrows, A and B light up the button they press.",
+  "padNote": "HAX Blocks on channel 2: race three rivals for the HAX blocks. A grabs (or bonks a rival next to you), B takes one back, Select remixes your fighter, Start publishes. Your keyboard works too: arrows, A and B light up the button they press.",
   "tips": "Tips",
   "tipDifferenceTitle": "The HAX difference: what you make keeps working",
   "tipDifference": "Your pages are web-standard HTML in plain files you own, tracked with git. Nearly every site built with HAX since 2020 still works today, and a site moves between HAXcms in PHP, in Node or static hosting as it is. Built to last, light on the planet.",

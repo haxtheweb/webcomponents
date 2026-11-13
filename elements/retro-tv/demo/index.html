@@ -16,8 +16,9 @@
       import "../lib/programs/retro-tv-handheld.js";
       import "../lib/programs/retro-tv-pc.js";
       import "../lib/programs/retro-tv-disc.js";
-      import "../lib/programs/retro-tv-melee.js";
+      import "../lib/programs/retro-tv-blocks.js";
       import "../lib/programs/retro-tv-static.js";
+      import "../lib/programs/retro-tv-sign-on.js";
       import "../lib/retro-vcr.js";
       import "../lib/retro-console.js";
       import "../lib/retro-controller.js";
@@ -40,9 +41,9 @@
         }
       });
       customElements.whenDefined("retro-tv-hax-tv").then(() => setTimeout(show, 50));
-      // the kit drives the TV: the controller plays HAX Melee on channel 2,
+      // the kit drives the TV: the controller plays HAX Blocks on channel 2,
       // the console's power puts the cartridge on, the VCR's keys change channel
-      const melee = document.querySelector("retro-tv-melee");
+      const blocks = document.querySelector("retro-tv-blocks");
       const deck = document.querySelector("retro-console");
       const pad = document.querySelector("retro-controller");
       const vcr = document.querySelector("retro-vcr");
@@ -57,10 +58,10 @@
       document.addEventListener("retro-controller-press", (e) => {
         if (!tv.power) tv.togglePower();
         if (tv.channel !== 2) { tv.tune(2); return; }
-        melee.press(e.detail.button);
+        blocks.press(e.detail.button);
       });
       deck.addEventListener("retro-console-power", (e) => tv.tune(e.detail.power ? 2 : lastShow));
-      deck.addEventListener("retro-console-reset", () => { melee.reset(); tv.tune(2); });
+      deck.addEventListener("retro-console-reset", () => { blocks.reset(); tv.tune(2); });
       vcr.addEventListener("retro-vcr-key", (e) => {
         if (e.detail.key === "rew") tv.previous();
         if (e.detail.key === "ff") tv.next();
@@ -99,6 +100,7 @@
       <h1>retro-tv</h1>
       <p>Channels with working knobs. The channel knob and the CH buttons move through the programs; Power turns the set off and on (remembered in this browser).</p>
       <retro-tv id="tv" channel="4" controls osd-fade remember-power="retro-tv-demo">
+        <retro-tv-sign-on channel="1"></retro-tv-sign-on>
         <retro-tv-title-sequence channel="3" crawl-title="Rewind the web" presenter="HAX" kicker="Feature" runtime="7"></retro-tv-title-sequence>
         <retro-tv-hax-tv channel="4"></retro-tv-hax-tv>
         <retro-tv-credits id="credits" channel="5" tape="001"></retro-tv-credits>
@@ -106,7 +108,7 @@
         <retro-tv-handheld channel="8"></retro-tv-handheld>
         <retro-tv-pc channel="9" command="INSTALL /CHECK"></retro-tv-pc>
         <retro-tv-disc channel="10"></retro-tv-disc>
-        <retro-tv-melee channel="2"></retro-tv-melee>
+        <retro-tv-blocks channel="2"></retro-tv-blocks>
         <retro-tv-static channel="6"></retro-tv-static>
       </retro-tv>
       <div class="row">
@@ -114,7 +116,7 @@
         <span>Now playing: <b id="now"></b></span>
       </div>
       <h2>The HAX TV kit</h2>
-      <p>The VCR, the HAX 64 console and the controller, in the Future Traveler's colors. They drive the TV above: the controller plays HAX Melee on channel 2 (arrow keys, A and B light it up), the console's Power puts the cartridge on and Reset starts over, the VCR's Rew and FF change channel.</p>
+      <p>The VCR, the HAX 64 console and the controller, in the Future Traveler's colors. They drive the TV above: the controller plays HAX Blocks on channel 2 (arrow keys, A and B light it up), the console's Power puts the cartridge on and Reset starts over, the VCR's Rew and FF change channel.</p>
       <label>Colorway <select id="colorway"><option value="helmet">Helmet red</option><option value="goggle">Goggle cyan</option><option value="bulb">Bulb yellow</option></select></label>
       <retro-vcr tape-label="HAXcms" rew-hint="previous channel" ff-hint="next channel" style="margin-top: 60px"></retro-vcr>
       <div class="row" style="align-items: flex-end; gap: 24px">

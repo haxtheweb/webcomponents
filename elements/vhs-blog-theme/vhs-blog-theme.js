@@ -133,8 +133,9 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
       hintPlaying: "Now playing. The post is below.",
       hintLoading: "Loading",
       hintStatic: "Channel 4: static. Something keeps tumbling through it.",
-      hintMelee:
-        "Channel 2: HAX Melee. Grab the blocks before your rivals do: A grabs, B takes one back, Start publishes.",
+      hintChannel: "Channel {channel}: {name}.",
+      hintBlocks:
+        "Channel 2: HAX Blocks. Grab the blocks before your rivals do: A grabs, B takes one back, Start publishes.",
       tvOn: "Turn the TV on",
       consoleLabel: "HAX 64 console",
       consolePower: "Console power",
@@ -732,7 +733,7 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
   }
 
   /**
-   * A and B light the controller (and play) while HAX Melee is on, and the
+   * A and B light the controller (and play) while HAX Blocks is on, and the
    * arrows do too while focus is in the den; never while typing.
    */
   _onDenKey(e) {
@@ -1738,11 +1739,18 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     if (loading) {
       hint = `${this.t.hintLoading} ${this.loadingTitle}…`;
     }
+    if (![2, 3, 4].includes(this.channel)) {
+      const set =
+        this.shadowRoot && this.shadowRoot.querySelector("vhs-blog-tv");
+      hint = this.t.hintChannel
+        .replace("{channel}", this.channel)
+        .replace("{name}", set ? set.programNameFor(this.channel) : "");
+    }
     if (this.channel === 4) {
       hint = this.t.hintStatic;
     }
     if (this.channel === 2) {
-      hint = this.t.hintMelee;
+      hint = this.t.hintBlocks;
     }
     const label = vhsBlogCase(tapeTitle || " ");
     const tapeVars = {

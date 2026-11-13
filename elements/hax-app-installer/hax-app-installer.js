@@ -14,27 +14,39 @@ import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 // the shared, searchable language list (reads the canonical language registry)
 import "@haxtheweb/haxcms-elements/lib/core/haxcms-language-picker.js";
-// HAX TV: the set and the programs the installer plays on it
-import "@haxtheweb/retro-tv/retro-tv.js";
-import "@haxtheweb/retro-tv/lib/programs/retro-tv-title-sequence.js";
-import "@haxtheweb/retro-tv/lib/programs/retro-tv-hax-tv.js";
-import "@haxtheweb/retro-tv/lib/programs/retro-tv-credits.js";
-import "@haxtheweb/retro-tv/lib/programs/retro-tv-home-computer.js";
-import "@haxtheweb/retro-tv/lib/programs/retro-tv-handheld.js";
-import "@haxtheweb/retro-tv/lib/programs/retro-tv-pc.js";
-import "@haxtheweb/retro-tv/lib/programs/retro-tv-disc.js";
-import "@haxtheweb/retro-tv/lib/programs/retro-tv-melee.js";
-import "@haxtheweb/retro-tv/lib/programs/retro-tv-static.js";
-// the HAX TV kit: a VCR on the set, the HAX 64 and its controller below it
-import "@haxtheweb/retro-tv/lib/retro-vcr.js";
-import "@haxtheweb/retro-tv/lib/retro-console.js";
-import "@haxtheweb/retro-tv/lib/retro-controller.js";
 import {
   retroKitKey,
   retroKitInField,
 } from "@haxtheweb/retro-tv/lib/retro-kit.js";
 // Tips: stacked stop-notes
 import "@haxtheweb/stop-note/lib/stop-note-group.js";
+
+/**
+ * HAX TV (the set, its programs and the kit) is not on the critical path:
+ * it loads after the installer's form has painted, so the page is usable
+ * at once. Until then its tags sit in the DOM undefined and the installer
+ * leaves them alone.
+ * @returns {Promise}
+ */
+export function loadHaxTv() {
+  return Promise.all([
+    import("@haxtheweb/retro-tv/retro-tv.js"),
+    import("@haxtheweb/retro-tv/lib/programs/retro-tv-sign-on.js"),
+    import("@haxtheweb/retro-tv/lib/programs/retro-tv-blocks.js"),
+    import("@haxtheweb/retro-tv/lib/programs/retro-tv-title-sequence.js"),
+    import("@haxtheweb/retro-tv/lib/programs/retro-tv-hax-tv.js"),
+    import("@haxtheweb/retro-tv/lib/programs/retro-tv-credits.js"),
+    import("@haxtheweb/retro-tv/lib/programs/retro-tv-static.js"),
+    import("@haxtheweb/retro-tv/lib/programs/retro-tv-home-computer.js"),
+    import("@haxtheweb/retro-tv/lib/programs/retro-tv-handheld.js"),
+    import("@haxtheweb/retro-tv/lib/programs/retro-tv-pc.js"),
+    import("@haxtheweb/retro-tv/lib/programs/retro-tv-disc.js"),
+    // the HAX TV kit: a VCR on the set, the HAX 64 and its controller below
+    import("@haxtheweb/retro-tv/lib/retro-vcr.js"),
+    import("@haxtheweb/retro-tv/lib/retro-console.js"),
+    import("@haxtheweb/retro-tv/lib/retro-controller.js"),
+  ]);
+}
 
 /** HAX TV channels: what plays while each request runs */
 const TV = {
@@ -47,7 +59,7 @@ const TV = {
 };
 /** a loading screen stays on at least this long, so a fast server still shows it */
 const TV_MIN_MS = 1600;
-/** the HAX 64 plays HAX Melee on this channel */
+/** the HAX 64 plays HAX Blocks on this channel */
 const TV_GAME = 2;
 /** which tip each step opens on */
 const TIP_START = { 1: 0, 2: 1, 3: 4, 4: 0 };
@@ -75,6 +87,9 @@ export class HaxAppInstaller extends I18NMixin(LitElement) {
 
   constructor() {
     super();
+    /** resolves once HAX TV (set, programs, kit) has loaded */
+    this.haxTvReady = Promise.resolve(false);
+    this._haxTvLoaded = false;
     this.step = 1;
     this.language = "en";
     this.apiEndpoint = "install.php";
@@ -252,7 +267,7 @@ export class HaxAppInstaller extends I18NMixin(LitElement) {
       padB: "B: take back the last block",
       padA: "A: grab a block",
       padNote:
-        "HAX Melee on channel 2: race three rivals for the HAX blocks. A grabs (or bonks a rival next to you), B takes one back, Select remixes your fighter, Start publishes. Your keyboard works too: arrows, A and B light up the button they press.",
+        "HAX Blocks on channel 2: race three rivals for the HAX blocks. A grabs (or bonks a rival next to you), B takes one back, Select remixes your fighter, Start publishes. Your keyboard works too: arrows, A and B light up the button they press.",
       tips: "Tips",
       tipDifferenceTitle: "The HAX difference: what you make keeps working",
       tipDifference:
@@ -1527,6 +1542,20 @@ export class HaxAppInstaller extends I18NMixin(LitElement) {
       super.firstUpdated(changedProperties);
     }
     this.fetchState();
+    // HAX TV after the first paint, when the browser has a moment
+    const later =
+      globalThis.requestIdleCallback || ((fn) => globalThis.setTimeout(fn, 1));
+    this.haxTvReady = new Promise((resolve) => {
+      later(() => {
+        loadHaxTv().then(
+          () => {
+            this._haxTvLoaded = true;
+            resolve(true);
+          },
+          () => resolve(false),
+        );
+      });
+    });
   }
 
   updated(changedProperties) {
@@ -1581,15 +1610,19 @@ export class HaxAppInstaller extends I18NMixin(LitElement) {
     }
   }
 
+  /** the set, once HAX TV has loaded (null before that) */
   _tv() {
-    return this.shadowRoot && this.shadowRoot.querySelector("retro-tv");
+    if (!this._haxTvLoaded || !this.shadowRoot) {
+      return null;
+    }
+    return this.shadowRoot.querySelector("retro-tv");
   }
 
   /** a controller button: wakes the set, puts the cartridge on, then plays */
   _onPad(e) {
     const tv = this._tv();
-    const melee = this.shadowRoot.querySelector("retro-tv-melee");
-    if (!tv || !melee) {
+    const blocks = this.shadowRoot.querySelector("retro-tv-blocks");
+    if (!tv || !blocks) {
       return;
     }
     if (!tv.power) {
@@ -1599,7 +1632,7 @@ export class HaxAppInstaller extends I18NMixin(LitElement) {
       tv.tune(TV_GAME);
       return;
     }
-    melee.press(e.detail.button);
+    blocks.press(e.detail.button);
   }
 
   _onConsolePower(e) {
@@ -1615,9 +1648,9 @@ export class HaxAppInstaller extends I18NMixin(LitElement) {
 
   _onConsoleReset() {
     const tv = this._tv();
-    const melee = this.shadowRoot.querySelector("retro-tv-melee");
-    if (melee) {
-      melee.reset();
+    const blocks = this.shadowRoot.querySelector("retro-tv-blocks");
+    if (blocks) {
+      blocks.reset();
     }
     if (tv) {
       if (!tv.power) {
@@ -1676,7 +1709,7 @@ export class HaxAppInstaller extends I18NMixin(LitElement) {
   }
 
   _tvStep(dir) {
-    const tv = this.shadowRoot && this.shadowRoot.querySelector("retro-tv");
+    const tv = this._tv();
     if (tv) {
       if (dir > 0) {
         tv.next();
@@ -1687,7 +1720,7 @@ export class HaxAppInstaller extends I18NMixin(LitElement) {
   }
 
   _tvTogglePower() {
-    const tv = this.shadowRoot && this.shadowRoot.querySelector("retro-tv");
+    const tv = this._tv();
     if (tv) {
       tv.togglePower();
     }
@@ -1700,13 +1733,13 @@ export class HaxAppInstaller extends I18NMixin(LitElement) {
    * @param {KeyboardEvent} e
    */
   _onKeydown(e) {
-    // arrows, A and B light the controller (and play HAX Melee): arrows only
+    // arrows, A and B light the controller (and play HAX Blocks): arrows only
     // at the TV, so they still scroll the page elsewhere; A and B anywhere
     // while the game is on. Never while typing or choosing.
     const pad =
       this.shadowRoot && this.shadowRoot.querySelector("retro-controller");
     const k = retroKitKey(e);
-    if (k && pad && !this._tvMin && !retroKitInField(e)) {
+    if (k && pad && this._haxTvLoaded && !this._tvMin && !retroKitInField(e)) {
       const path = e.composedPath();
       const panel = this.shadowRoot.querySelector(".tvpanel");
       const tv = this._tv();
@@ -2669,7 +2702,8 @@ export class HaxAppInstaller extends I18NMixin(LitElement) {
                 }</span
               >
             </div>
-            <retro-tv-melee channel="${TV_GAME}"></retro-tv-melee>
+            <retro-tv-sign-on channel="1"></retro-tv-sign-on>
+            <retro-tv-blocks channel="${TV_GAME}"></retro-tv-blocks>
             <retro-tv-title-sequence
               channel="3"
               crawl-title="${this.t.haxcmsInstaller}"

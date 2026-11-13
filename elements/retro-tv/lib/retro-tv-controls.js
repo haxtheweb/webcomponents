@@ -4,20 +4,23 @@
  */
 import { html, css, svg } from "lit";
 
-/** the numbers on the dial's ring */
-const DIAL = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+/** the numbers on the dial's ring: ten channels, one for each year HAX
+    took to lift off */
+const DIAL = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+/** degrees between two numbers on the ring */
+const STEP = 360 / DIAL.length;
 const POWER_ICON = svg`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 3h-2v10h2V3zm4.83 2.17l-1.42 1.42A6.92 6.92 0 0 1 19 12c0 3.87-3.13 7-7 7A6.995 6.995 0 0 1 7.58 6.58L6.17 5.17A8.932 8.932 0 0 0 3 12a9 9 0 0 0 18 0c0-2.74-1.23-5.18-3.17-6.83z"></path></svg>`;
 
 /**
  * The set's controls, shared by every TV in the HAX TV family (retro-tv,
- * the VHS Blog console): a channel dial with 2 to 13 printed on its ring
+ * the VHS Blog console): a channel dial with 1 to 10 printed on its ring
  * and a line that points at the channel on air, and a power button that
  * glows green while the set is on. Sizes come from --retro-tv-dial-size,
  * --retro-tv-knob-size, --retro-tv-power-size, --retro-tv-dial-number-size
  * and --retro-tv-side-label-size.
  */
 export const RetroTvControlStyles = css`
-  /* channel dial: numbers 2 to 13 on the ring, the knob's line
+  /* channel dial: numbers 1 to 10 on the ring, the knob's line
            points at the channel on air */
   .dial {
     position: relative;
@@ -162,12 +165,15 @@ export const RetroTvControlStyles = css`
  */
 export function retroTvDial({ channel, label, onClick }) {
   const ch = parseInt(channel, 10) || 0;
-  const style = `--retro-tv-knob-rotate: ${((((ch - 2) % 12) + 12) % 12) * 30}deg`;
+  const at = DIAL.indexOf(ch);
+  const style = `--retro-tv-knob-rotate: ${(at === -1 ? 0 : at) * STEP}deg`;
   return html`<span class="dial">
     <span class="ring" aria-hidden="true"
       >${DIAL.map(
         (n, i) =>
-          html`<span class="${n === ch ? "cur" : ""}" style="--a: ${i * 30}deg"
+          html`<span
+            class="${n === ch ? "cur" : ""}"
+            style="--a: ${i * STEP}deg"
             >${n}</span
           >`,
       )}</span

@@ -11,7 +11,7 @@ import "@haxtheweb/rpg-character/rpg-character.js";
  * `retro-console`
  * The HAX 64: a game deck in a HAX TV kit colorway with a cartridge in the
  * slot. The cartridge has a real cart shape and a colorful label: the
- * game's name over four rpg-character fighters (HAX Melee by default).
+ * game's name over four rpg-character fighters (HAX Blocks by default).
  * Power (with a green lamp) and Reset sit on the front left, the "HAX 64"
  * badge on the right in the HAX logo font.
  *
@@ -51,7 +51,7 @@ export class RetroConsole extends LitElement {
     super();
     this.colorway = "helmet";
     this.power = false;
-    this.cartridge = "HAX Melee";
+    this.cartridge = "HAX Blocks";
     this.fighters = ["haxtheweb", "btopro", "future", "traveler"];
     this.brand = "HAX";
     this.model = "64";
