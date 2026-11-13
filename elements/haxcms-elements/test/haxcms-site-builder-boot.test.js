@@ -171,6 +171,23 @@ describe("haxcms-site-builder boot", () => {
     expect(html).to.contain('<page-break title="x"></page-break>');
   });
 
+  it("replaceTagReplacement never rewrites a longer tag that shares a prefix", () => {
+    // the greedy scan skips <a11y-tabs> when it shares a line with an earlier
+    // custom tag; the later <a11y-tab> match must not land on <a11y-tabs
+    const html = Builder().prototype.replaceTagReplacement(
+      '<page-break title="x"></page-break><a11y-tabs id="t">\n<a11y-tab label="One"><p>1</p></a11y-tab>\n<a11y-tab label="Two"><p>2</p></a11y-tab>\n</a11y-tabs>',
+    );
+    expect(html).to.contain('<a11y-tabs id="t">');
+    expect(html).to.contain("</a11y-tabs>");
+    expect(html).to.not.contain('with="a11y-tab"  s');
+    const doc = new DOMParser().parseFromString(html, "text/html");
+    const tabs = doc.querySelector("a11y-tabs");
+    expect(tabs).to.exist;
+    expect(
+      tabs.querySelectorAll('replace-tag[with="a11y-tab"]').length,
+    ).to.equal(2);
+  });
+
   it("idle work waits for the first page body", async () => {
     const proto = Builder().prototype;
     const stub = {
