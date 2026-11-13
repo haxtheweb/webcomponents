@@ -1,0 +1,151 @@
+{
+  "id": "7a11e0d2-6b3d-4e2a-9c8f-tailwi000001",
+  "title": "Tailwind for HAX",
+  "author": "",
+  "description": "A HAXsite demonstrating tailwind-theme and the Tailwind DDD bridge.",
+  "license": "by-sa",
+  "metadata": {
+    "author": {
+      "image": "",
+      "name": "",
+      "email": "",
+      "socialLink": ""
+    },
+    "site": {
+      "name": "tailwind-theme",
+      "logo": "",
+      "lang": "en",
+      "created": 1736889000,
+      "updated": 1736889000,
+      "git": {},
+      "version": "9.0.6",
+      "domain": "",
+      "static": {},
+      "settings": {
+        "pathauto": false,
+        "publishPagesOn": true,
+        "sw": false,
+        "forceUpgrade": false,
+        "lang": "",
+        "gaID": ""
+      },
+      "tags": ""
+    },
+    "theme": {
+      "element": "tailwind-theme",
+      "path": "@haxtheweb/tailwind-theme/tailwind-theme.js",
+      "name": "tailwind-theme",
+      "regions": {}
+    },
+    "node": {
+      "fields": {}
+    },
+    "build": {
+      "version": "6.0.1",
+      "structure": "flat",
+      "type": ""
+    }
+  },
+  "items": [
+    {
+      "id": "item-7a11e0d2-overview",
+      "indent": 0,
+      "location": "pages/item-7a11e0d2-overview/index.html",
+      "slug": "overview",
+      "order": 0,
+      "parent": null,
+      "title": "Overview",
+      "description": "What the Tailwind theme and design system bridge do.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-7a11e0d2-blocks",
+      "indent": 0,
+      "location": "pages/item-7a11e0d2-blocks/index.html",
+      "slug": "blocks",
+      "order": 1,
+      "parent": null,
+      "title": "Blocks in Tailwind",
+      "description": "Common HAX blocks rendered through the Tailwind bridge.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-7a11e0d2-learning-checks",
+      "indent": 1,
+      "location": "pages/item-7a11e0d2-learning-checks/index.html",
+      "slug": "blocks/learning-checks",
+      "order": 0,
+      "parent": "item-7a11e0d2-blocks",
+      "title": "Learning checks",
+      "description": "Answer states keep HAX meaning channels in Tailwind colors.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-7a11e0d2-color",
+      "indent": 0,
+      "location": "pages/item-7a11e0d2-color/index.html",
+      "slug": "color",
+      "order": 2,
+      "parent": null,
+      "title": "Palette and color",
+      "description": "DDD palettes and accents mapped onto the Tailwind palette.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-7a11e0d2-about",
+      "indent": 0,
+      "location": "pages/item-7a11e0d2-about/index.html",
+      "slug": "about",
+      "order": 3,
+      "parent": null,
+      "title": "About the bridge",
+      "description": "How the mapping works, and upstream attribution.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    }
+  ]
+}
