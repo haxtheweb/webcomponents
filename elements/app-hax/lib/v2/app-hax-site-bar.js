@@ -76,6 +76,7 @@ export class AppHaxSiteBars extends I18NMixin(SimpleColors) {
     this.inprogress = false;
     this.textInfo = {};
     this.siteId = "";
+    this.returnFocusTo = null;
     this.description = "";
     this.lastUpdatedTime = 0;
     this.moreOptionsId = `moreOptions-${appHaxSiteBarInstanceCount}`;
@@ -90,6 +91,8 @@ export class AppHaxSiteBars extends I18NMixin(SimpleColors) {
       inprogress: { type: Boolean, reflect: true },
       textInfo: { type: Object },
       siteId: { type: String, reflect: true, attribute: "site-id" },
+      /** where focus returns after a dialog opened from off the page */
+      returnFocusTo: { type: Object, attribute: false },
       title: { type: String },
       slug: { type: String },
       description: { type: String },
@@ -101,6 +104,9 @@ export class AppHaxSiteBars extends I18NMixin(SimpleColors) {
   }
 
   toggleOptionsMenu() {
+    if (!this.shadowRoot) {
+      return;
+    }
     const menu = this.shadowRoot.querySelector("simple-context-menu");
     const button = this.shadowRoot.querySelector(`#${this.moreOptionsId}`);
     if (menu && button) {
@@ -108,7 +114,12 @@ export class AppHaxSiteBars extends I18NMixin(SimpleColors) {
     }
   }
 
+  // the site options also run from Merlin on a site bar that is never
+  // put on the page (no shadow root, no menu to close)
   closeOptionsMenu() {
+    if (!this.shadowRoot) {
+      return;
+    }
     const menu = this.shadowRoot.querySelector("simple-context-menu");
     if (menu) {
       menu.close();
@@ -381,7 +392,9 @@ export class AppHaxSiteBars extends I18NMixin(SimpleColors) {
           // page's h3 size
           titleIcon: HaxUiAdminIcons.community,
           elements: { content: modal },
-          invokedBy: this,
+          // run from Merlin the bar is not on the page: focus goes back to
+          // whatever the caller says (Merlin's field)
+          invokedBy: this.isConnected ? this : this.returnFocusTo || null,
           // the site admin titlebar (as the sign in dialog uses), sized
           // for one short form
           styles: {
@@ -406,7 +419,9 @@ export class AppHaxSiteBars extends I18NMixin(SimpleColors) {
         },
       });
 
-      this.dispatchEvent(evt);
+      // a site bar run from Merlin is not on the page, so its event
+      // would never reach the modal; send it from the window instead
+      (this.isConnected ? this : globalThis).dispatchEvent(evt);
     });
   }
 

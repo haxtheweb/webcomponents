@@ -3323,6 +3323,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       joinOurCommunity: "Join our Community",
       userTutorials: "User Tutorials",
       userDocumentation: "User Documentation",
+      // no longer in Merlin; kept until the nightly translations drop it
+      // from every locale (translated files may not have keys en lacks)
       haxTeachingExcellence: "HAX Teaching Excellence",
       reportAnIssueTogether: "Report an issue together",
       leaveWithoutSaving:
@@ -3795,21 +3797,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/documentation",
-      context: "community",
-    });
-    SuperDaemonInstance.defineOption({
-      i18n: { context: this, title: "haxTeachingExcellence" },
-      title: this.t.haxTeachingExcellence,
-      icon: "hax:hax2022",
-      tags: ["Ontology", "community", "pedagogy", "documentation", "help"],
-      externalLink: true,
-      value: {
-        target: this,
-        method: "_openExternalLink",
-        args: ["https://haxtheweb.org/ontology"],
-      },
-      eventName: "super-daemon-element-method",
-      path: "HAX/community/pedagogy",
       context: "community",
     });
     SuperDaemonInstance.defineOption({

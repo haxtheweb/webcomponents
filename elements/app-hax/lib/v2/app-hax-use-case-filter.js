@@ -11,6 +11,7 @@ import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import { store } from "./AppHaxStore.js";
 import { HaxUiAdminTokens } from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";
 import { adminPrompt } from "@haxtheweb/haxcms-elements/lib/core/admin/haxcms-admin-confirm.js";
+import { askImportUrl } from "./app-hax-import-url-dialog.js";
 import "./app-hax-use-case.js";
 import "./app-hax-search-results.js";
 import "./app-hax-site-creation-modal.js";
@@ -63,6 +64,21 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
       importOptions: "Import options",
       noImportOptionsMatchFilters:
         "No import options match your current filters.",
+      fromAFile: "From a file",
+      fromAFileDescription:
+        "Pick any file. HAX works out what it is and uses the matching importer.",
+      chooseAFile: "Choose a file…",
+      fromAUrl: "From a URL",
+      fromAUrlDescription: "Paste a link, then say what kind of site it is.",
+      enterAUrlEllipsis: "Enter a URL…",
+      importFromAUrl: "Import from a URL",
+      url: "URL",
+      whatKindOfSite: "What kind of site is it?",
+      continue: "Continue",
+      noImporterForType: "HAX can't make a site from a {type} file.",
+      noImporterForFile: "HAX can't make a site from this file.",
+      supportedFileTypes:
+        "Sites can be made from .docx, .pdf, .pptx, .xlsx, .html or .htm",
       loadingTemplates: "Loading templates...",
       noTemplatesMatchResetFilters:
         "No templates match your current filters. Reset filters to see more options.",
@@ -395,6 +411,110 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
           justify-content: flex-start;
           padding: 0;
           box-sizing: border-box;
+        }
+
+        /* From Existing Source: one card for files, one for URLs */
+        .import-cards {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: var(--ddd-spacing-6, 24px);
+        }
+        @media (max-width: 768px) {
+          .import-cards {
+            grid-template-columns: minmax(0, 1fr);
+          }
+        }
+        .import-card {
+          display: flex;
+          flex-direction: column;
+          gap: var(--hax-ui-gap-lg);
+          padding: var(--ddd-spacing-5, 20px);
+          border: 1px solid var(--hax-ui-line);
+          border-radius: var(--ddd-radius-md, 12px);
+          background-color: var(--hax-ui-surface);
+          color: var(--hax-ui-text);
+          font-family: var(--hax-ui-admin-font-family);
+        }
+        .import-card-head {
+          display: flex;
+          align-items: center;
+          gap: var(--hax-ui-gap-lg);
+        }
+        .import-card-icon {
+          flex: none;
+          display: grid;
+          place-items: center;
+          width: 44px;
+          height: 44px;
+          border-radius: var(--hax-ui-radius-lg);
+          background-color: var(--hax-ui-accent-soft);
+          color: var(--hax-ui-accent-strong);
+          --simple-icon-width: 22px;
+          --simple-icon-height: 22px;
+        }
+        .import-card h4 {
+          margin: 0;
+          font-size: var(--ddd-font-size-xs, 22px);
+          font-weight: var(--ddd-font-weight-bold, 700);
+          color: light-dark(
+            var(--ddd-theme-default-nittanyNavy, #001e44),
+            var(--ddd-theme-default-white, #fff)
+          );
+        }
+        .import-card p {
+          margin: 2px 0 0;
+          font-size: 15px;
+          color: var(--hax-ui-text-muted);
+        }
+        .import-kinds {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+        }
+        .import-kinds.two-col {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          column-gap: var(--ddd-spacing-4, 16px);
+        }
+        .import-kinds li {
+          font-size: 15px;
+          display: flex;
+          align-items: center;
+          gap: var(--hax-ui-gap-md);
+          padding: var(--hax-ui-gap-sm, 4px) 0;
+          --simple-icon-width: 20px;
+          --simple-icon-height: 20px;
+        }
+        .import-kinds simple-icon-lite {
+          color: var(--hax-ui-accent-strong);
+        }
+        .import-kind-name {
+          font-weight: var(--ddd-font-weight-medium, 500);
+        }
+        .import-kind-ext {
+          font-size: 13px;
+          color: var(--hax-ui-text-muted);
+        }
+        .import-card-button {
+          align-self: flex-start;
+          height: var(--ddd-control-height-sm, 40px);
+          padding: 0 var(--hax-ui-gap-lg);
+          border: 1px solid var(--hax-ui-primary);
+          border-radius: var(--hax-ui-radius);
+          background-color: var(--hax-ui-primary);
+          color: var(--hax-ui-on-primary);
+          font-family: var(--hax-ui-admin-font-family);
+          font-size: var(--hax-ui-admin-font-size);
+          font-weight: var(--ddd-font-weight-bold, 700);
+          cursor: pointer;
+        }
+        .import-card-button:hover,
+        .import-card-button:focus-visible {
+          background-color: var(--hax-ui-primary-hover, var(--hax-ui-primary));
+        }
+        .import-card-button:focus-visible {
+          outline: var(--hax-ui-focus-width, 2px) solid var(--hax-ui-focus);
+          outline-offset: 2px;
         }
 
         #returnToSection {
@@ -1116,6 +1236,20 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
     if (!dataType || !Array.isArray(this.filteredItems)) {
       return;
     }
+    // importers are two cards: focus the first one's button
+    if (dataType === "import") {
+      const button =
+        this.shadowRoot &&
+        this.shadowRoot.querySelector(".import-card .import-card-button");
+      if (button) {
+        try {
+          button.focus({ preventScroll: true });
+        } catch {
+          button.focus();
+        }
+      }
+      return;
+    }
     const index = this.filteredItems.findIndex(
       (item) => item && item.dataType === dataType,
     );
@@ -1503,14 +1637,7 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
                         </h3>
                         ${
                           importEntries.length > 0
-                            ? html`<div
-                                class="template-results"
-                                role="grid"
-                                aria-label="${this.t.importOptions}"
-                                aria-describedby="template-count"
-                              >
-                                ${renderEntries(importEntries)}
-                              </div>`
+                            ? this._renderImportCards(importEntries)
                             : html`<p
                                 role="status"
                                 class="no-results"
@@ -2919,7 +3046,280 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
     return name || this.t.importedSite;
   }
 
-  async processImportTemplate(selectedTemplate, modal) {
+  /**
+   * The importers as two cards: From a file (any file; its type picks the
+   * importer) and From a URL (one dialog asks what kind of site it is).
+   * A card shows when any of its importers matches the search and filters.
+   * @param {Array} importEntries { item, index } of the matching importers
+   */
+  _renderImportCards(importEntries) {
+    const hasFile = importEntries.some(
+      (entry) => entry.item.importKind === "file",
+    );
+    const hasUrl = importEntries.some(
+      (entry) => entry.item.importKind === "url",
+    );
+    const fileKinds = this._importKinds("file");
+    const urlKinds = this._importKinds("url");
+    return html`<div
+      class="import-cards"
+      role="group"
+      aria-label="${this.t.importOptions}"
+    >
+      ${
+        hasFile
+          ? html`<section
+              class="import-card"
+              aria-labelledby="import-file-title"
+            >
+              <div class="import-card-head">
+                <span class="import-card-icon" aria-hidden="true"
+                  ><simple-icon-lite icon="icons:file-upload"></simple-icon-lite
+                ></span>
+                <div>
+                  <h4 id="import-file-title">${this.t.fromAFile}</h4>
+                  <p>${this.t.fromAFileDescription}</p>
+                </div>
+              </div>
+              <ul class="import-kinds">
+                ${fileKinds.map(
+                  (item) =>
+                    html`<li>
+                      <simple-icon-lite
+                        icon="${item.useCaseIcon[0].icon}"
+                        aria-hidden="true"
+                      ></simple-icon-lite>
+                      <span class="import-kind-name">${item.useCaseTitle}</span>
+                      <span class="import-kind-ext"
+                        >${this._fileExtensionsLabel(item)}</span
+                      >
+                    </li>`,
+                )}
+              </ul>
+              <button
+                type="button"
+                class="import-card-button"
+                @click="${this.importFromAnyFile}"
+              >
+                ${this.t.chooseAFile}
+              </button>
+            </section>`
+          : ""
+      }
+      ${
+        hasUrl
+          ? html`<section
+              class="import-card"
+              aria-labelledby="import-url-title"
+            >
+              <div class="import-card-head">
+                <span class="import-card-icon" aria-hidden="true"
+                  ><simple-icon-lite icon="icons:link"></simple-icon-lite
+                ></span>
+                <div>
+                  <h4 id="import-url-title">${this.t.fromAUrl}</h4>
+                  <p>${this.t.fromAUrlDescription}</p>
+                </div>
+              </div>
+              <ul class="import-kinds two-col">
+                ${urlKinds.map(
+                  (item) =>
+                    html`<li>
+                      <simple-icon-lite
+                        icon="${item.useCaseIcon[0].icon}"
+                        aria-hidden="true"
+                      ></simple-icon-lite>
+                      <span class="import-kind-name">${item.useCaseTitle}</span>
+                    </li>`,
+                )}
+              </ul>
+              <button
+                type="button"
+                class="import-card-button"
+                @click="${() => this.importFromUrl()}"
+              >
+                ${this.t.enterAUrlEllipsis}
+              </button>
+            </section>`
+          : ""
+      }
+    </div>`;
+  }
+
+  /**
+   * The importers of one kind, in the order the cards and the URL dialog
+   * list them (site platforms first, then repos, then plain HTML).
+   * @param {string} kind "file" or "url"
+   * @returns {Array}
+   */
+  _importKinds(kind) {
+    const order = {
+      url: [
+        "wordpress",
+        "drupal",
+        "haxcms",
+        "pressbooks",
+        "plone",
+        "openstax",
+        "gitbook",
+        "notion",
+        "vitepress",
+        "quarto",
+        "html",
+      ],
+      file: ["docx", "pdf", "pptx", "xlsx", "html"],
+    };
+    const items = this.getImportItems().filter(
+      (item) => item.importKind === kind,
+    );
+    const rank = (item) => {
+      const at = order[kind].indexOf(item.importType);
+      return at === -1 ? order[kind].length : at;
+    };
+    return items.sort((a, b) => rank(a) - rank(b));
+  }
+
+  _fileExtensionsLabel(item) {
+    return item.importType === "html" ? ".html, .htm" : `.${item.fileType}`;
+  }
+
+  /**
+   * From a file: pick any file, then the importer its type picks runs
+   * with it. A type no importer takes says so.
+   */
+  async importFromAnyFile() {
+    await import("@haxtheweb/file-system-broker/file-system-broker.js");
+    const broker = globalThis.FileSystemBroker.requestAvailability();
+    let file = null;
+    try {
+      // the plain file input: any file, the type is worked out after
+      file = await broker.loadFileFallback("*");
+    } catch {
+      // the picker was cancelled
+      return;
+    }
+    if (file) {
+      await this.importFile(file);
+    }
+  }
+
+  /**
+   * Run the importer a file's type picks, or say none takes it.
+   * @param {File} file
+   */
+  async importFile(file) {
+    const importer = this.importItemForFileName(file && file.name);
+    if (importer) {
+      await this.startImport(importer, { file: file });
+      return;
+    }
+    const parts = file && file.name ? file.name.split(".") : [];
+    const ext = parts.length > 1 ? parts.pop().toLowerCase() : "";
+    if (store && store.appEl && store.appEl.playSound) {
+      store.appEl.playSound("error");
+    }
+    if (store && store.toast) {
+      store.toast(
+        `${
+          ext
+            ? this.t.noImporterForType.replace("{type}", () => `.${ext}`)
+            : this.t.noImporterForFile
+        } ${this.t.supportedFileTypes}`,
+        5000,
+      );
+    }
+  }
+
+  /**
+   * From a URL: one dialog takes the URL and asks what kind of site it
+   * is; that importer then runs with the URL.
+   * @param {string} url a URL to start the dialog with
+   */
+  async importFromUrl(url = "") {
+    const urlKinds = this._importKinds("url");
+    const answer = await askImportUrl({
+      url: url,
+      kinds: urlKinds.map((item) => ({
+        importType: item.importType,
+        title: item.useCaseTitle,
+        description: item.useCaseDescription,
+        icon: item.useCaseIcon[0].icon,
+      })),
+      labels: {
+        title: this.t.importFromAUrl,
+        url: this.t.url,
+        kind: this.t.whatKindOfSite,
+        cancel: this.t.cancel,
+        continue: this.t.continue,
+      },
+    });
+    if (!answer) {
+      return;
+    }
+    const importer = this.importItemFor("url", answer.importType);
+    if (importer) {
+      await this.startImport(importer, { url: answer.url });
+    }
+  }
+
+  /**
+   * The importer entry (one of getImportItems) for a kind and type, so
+   * Merlin and a dropped file run the same importer the cards do.
+   * @param {string} kind "file" or "url"
+   * @param {string} type importType, e.g. "docx" or "wordpress"
+   * @returns {Object|null}
+   */
+  importItemFor(kind, type) {
+    return (
+      this.getImportItems().find(
+        (item) => item.importKind === kind && item.importType === type,
+      ) || null
+    );
+  }
+
+  /**
+   * The file importer for a file name, worked out from its extension, or
+   * null when no importer takes that type.
+   * @param {string} fileName
+   * @returns {Object|null}
+   */
+  importItemForFileName(fileName) {
+    if (!fileName || typeof fileName !== "string") {
+      return null;
+    }
+    const parts = fileName.split(".");
+    if (parts.length < 2) {
+      return null;
+    }
+    const ext = parts.pop().toLowerCase();
+    // .htm is the HTML File importer too
+    return this.importItemFor("file", ext === "htm" ? "html" : ext);
+  }
+
+  /**
+   * Run an importer with its input already in hand: a file (dropped on
+   * the dashboard or picked in Merlin) or a URL (typed in Merlin), so the
+   * importer's own picker or URL prompt is skipped.
+   * @param {Object} selectedTemplate an entry from getImportItems
+   * @param {Object} preset { file } or { url }
+   */
+  async startImport(selectedTemplate, preset = {}) {
+    const modal = this.shadowRoot
+      ? this.shadowRoot.querySelector("#siteCreationModal")
+      : null;
+    if (!modal || !selectedTemplate) {
+      return;
+    }
+    modal.title = selectedTemplate.useCaseTitle;
+    modal.description = selectedTemplate.useCaseDescription;
+    modal.source = selectedTemplate.useCaseImage;
+    modal.template = selectedTemplate.useCaseTitle;
+    modal.skeletonMachineName = null;
+    modal.themeElement = "clean-one";
+    await this.processImportTemplate(selectedTemplate, modal, preset);
+  }
+
+  async processImportTemplate(selectedTemplate, modal, preset = {}) {
     try {
       const [{ MicroFrontendRegistry }, { enableServices }] = await Promise.all(
         [
@@ -2932,15 +3332,18 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
 
       let response = null;
       if (selectedTemplate.importKind === "file") {
-        const fileType = selectedTemplate.fileType || "docx";
-        // Ensure the file broker is available
-        if (fileType === "docx") {
-          await import("@haxtheweb/file-system-broker/lib/docx-file-system-broker.js");
-        } else {
-          await import("@haxtheweb/file-system-broker/file-system-broker.js");
+        let file = preset && preset.file ? preset.file : null;
+        if (!file) {
+          const fileType = selectedTemplate.fileType || "docx";
+          // Ensure the file broker is available
+          if (fileType === "docx") {
+            await import("@haxtheweb/file-system-broker/lib/docx-file-system-broker.js");
+          } else {
+            await import("@haxtheweb/file-system-broker/file-system-broker.js");
+          }
+          const broker = globalThis.FileSystemBroker.requestAvailability();
+          file = await broker.loadFile(fileType);
         }
-        const broker = globalThis.FileSystemBroker.requestAvailability();
-        const file = await broker.loadFile(fileType);
         if (!file) {
           return;
         }
@@ -2956,15 +3359,18 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
           formData,
         );
       } else if (selectedTemplate.importKind === "url") {
-        const promptText = selectedTemplate.prompt || this.t.enterAUrl;
-        const promptUrl = await adminPrompt({
-          title: selectedTemplate.useCaseTitle || this.t.importContent,
-          label: promptText,
-          placeholder: "https://",
-          required: true,
-          confirmLabel: this.t.import,
-          cancelLabel: this.t.cancel,
-        });
+        let promptUrl = preset && preset.url ? preset.url : null;
+        if (!promptUrl) {
+          const promptText = selectedTemplate.prompt || this.t.enterAUrl;
+          promptUrl = await adminPrompt({
+            title: selectedTemplate.useCaseTitle || this.t.importContent,
+            label: promptText,
+            placeholder: "https://",
+            required: true,
+            confirmLabel: this.t.import,
+            cancelLabel: this.t.cancel,
+          });
+        }
         if (!promptUrl) {
           return;
         }

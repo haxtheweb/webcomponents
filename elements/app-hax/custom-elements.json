@@ -168,6 +168,30 @@
             },
             {
               "kind": "method",
+              "name": "_supportsUserAccess"
+            },
+            {
+              "kind": "method",
+              "name": "siteOptionFromMerlin",
+              "parameters": [
+                {
+                  "name": "op",
+                  "description": "copy, download, archive, template or access",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "siteId",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "Run a site's options menu item from Merlin: the same site bar code\nthe card's menu runs, on a site bar that is never put on the page."
+            },
+            {
+              "kind": "method",
               "name": "_restoreMerlinAllowedCallback"
             },
             {
@@ -459,6 +483,15 @@
             },
             {
               "kind": "method",
+              "name": "_syncHeaderPostSlot",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
               "name": "_isDashboardModalOpen"
             },
             {
@@ -473,6 +506,191 @@
             {
               "kind": "method",
               "name": "openMerlin"
+            },
+            {
+              "kind": "method",
+              "name": "_useCaseFilter"
+            },
+            {
+              "kind": "method",
+              "name": "_openDashboardMerlin",
+              "parameters": [
+                {
+                  "name": "like",
+                  "default": "null"
+                },
+                {
+                  "name": "context",
+                  "default": "\"*\""
+                },
+                {
+                  "name": "values",
+                  "default": "{}"
+                },
+                {
+                  "name": "program",
+                  "default": "null"
+                },
+                {
+                  "name": "name",
+                  "default": "null"
+                },
+                {
+                  "name": "placeholder",
+                  "default": "null"
+                }
+              ],
+              "description": "Merlin on the dashboard opens as the full dialog (results and\ndetails): the dashboard has the room the editor's bar does not."
+            },
+            {
+              "kind": "method",
+              "name": "_merlinPlaceholder"
+            },
+            {
+              "kind": "method",
+              "name": "_merlinFieldOp",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_isFileDrag",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_fileDropAllowed"
+            },
+            {
+              "kind": "method",
+              "name": "_resetFileDrag"
+            },
+            {
+              "kind": "method",
+              "name": "_watchFileDrag"
+            },
+            {
+              "kind": "method",
+              "name": "_fileDragEnter",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_fileDragOver",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_fileDragLeave",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_fileDrop",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "fileToSite",
+              "parameters": [
+                {
+                  "name": "file",
+                  "type": {
+                    "text": "File"
+                  }
+                }
+              ],
+              "description": "Show what Merlin can do with a file: make a site from it when an\nimporter takes its type, or say it can't and offer the way on."
+            },
+            {
+              "kind": "method",
+              "name": "chooseFileForSite"
+            },
+            {
+              "kind": "method",
+              "name": "importFileToSite",
+              "parameters": [
+                {
+                  "name": "file"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "runImporter",
+              "parameters": [
+                {
+                  "name": "kind",
+                  "description": "\"file\" or \"url\"",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "type",
+                  "description": "the importer's importType",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "url",
+                  "default": "null",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "Run one importer, as its card does. A URL already typed in Merlin\nskips the importer's URL prompt."
+            },
+            {
+              "kind": "method",
+              "name": "openImportFromUrl"
+            },
+            {
+              "kind": "method",
+              "name": "showImportOptions"
+            },
+            {
+              "kind": "method",
+              "name": "openTemplateFromMerlin",
+              "parameters": [
+                {
+                  "name": "item"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "sortSitesFromMerlin",
+              "parameters": [
+                {
+                  "name": "sortValue"
+                }
+              ]
             },
             {
               "kind": "method",
@@ -544,7 +762,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ ...this.t, selectPage: \"Select page\", listMySites: \"List my sites\", cancel: \"Cancel\", editDetails: \"Page details\", add: \"Add\", editSettings: \"Edit settings\", source: \"Source\", viewSource: \"View source\", findMedia: \"Find media\", undo: \"Undo\", redo: \"Redo\", media: \"Media\", outline: \"Outline\", blocks: \"Blocks\", addBlock: \"Add block\", addPage: \"Add page\", addChildPage: \"Add child page\", clonePage: \"Clone page\", delete: \"Delete page\", siteSettings: \"Site Settings\", close: \"Close\", settings: \"Settings\", edit: \"Edit\", configureBlock: \"Configure block\", configure: \"Configure\", save: \"Save\", home: \"Home\", startNewJourney: \"Start new journey\", newJourney: \"New Journey\", accountInfo: \"Account Info\", outlineDesigner: \"Site Outline\", pageOutline: \"Structure\", more: \"More\", siteActions: \"Site actions\", insights: \"Insights\", merlin: \"Merlin\", summonMerlin: \"Summon Merlin\", logOut: \"Log out\", menu: \"Menu\", showMore: \"More\", userAccess: \"User Access\", statusPanel: \"Status\", skeletonsPanel: \"Skeletons\", themesPanel: \"Themes\", integrationsPanel: \"Integrations\", configurationPanel: \"Configuration\", styleGuidePanel: \"Style guide\", customCodePanel: \"JS/CSS\", unlockHiddenFeatures: \"Unlock hidden features\", showTerribleThemes: \"Show terrible themes\", showHiddenTemplates: \"Show hidden templates\", goToSite: \"Go to site\", systemSettings: \"System Settings\", joinOurCommunity: \"Join our Community\", userTutorials: \"User Tutorials\", userDocumentation: \"User Documentation\", haxTeachingExcellence: \"HAX Teaching Excellence\", bugIssue: \"Bug / issue\", ideaFeatureRequest: \"Idea / Feature request\", pageMissBurns: \"the page miss.. it burns!!!\", scaredOfTheDark: \"I'm ascared of the dark\", sunnyDayItIs: \"Sunny day it is\", soundOffHello: \"Sound off.. hey! HELLO!?!\", canHearMeNow: \"You can hear me now? Good.\", terribleThemesUnlocked: \"Enjoy these early 2000s table based layouts. May they remind you how never to web, again.\", hiddenTemplatesRevealed: \"Hidden templates revealed. With great power comes great questionable design decisions.\", allFeaturesUnlocked: \"Unbelievable! You, (Subject Name), must be the pride of (Subject Hometown). Enjoy all locked features as a boon!\", loginToHax: \"Login to HAX\", systemSettingsNotAvailableHaxiam: \"System settings are not available in HAXiam deployments.\", unableToLoadSystemSettings: \"Unable to load system settings UI\", user: \"User\", haxSiteDashboard: \"HAX Site Dashboard\", userMenuFor: \"User menu for {name}\", customizeCharacter: \"Customize character\", toggleSoundEffectsOff: \"Toggle sound effects off\", toggleSoundEffectsOn: \"Toggle sound effects on\", soundEffects: \"Sound effects\", // route text from AppHaxStore baseRoutes (see _translateRoute) welcomeBack: \"Welcome back\", letsGoOnAHaxJourney: \"Let's go on a HAX Journey\", search: \"Search\", discoverActiveAdventures: \"Discover active adventures\", searchSites: \"Search sites\", welcome: \"Welcome\", letsBuildSomethingAwesome: \"Let's build something awesome!\", notFoundStatement: \"it's not you.. it's me\", notFoundTitle: \"FoUr Oh FoUr\", }"
+              "default": "{ ...this.t, selectPage: \"Select page\", listMySites: \"List my sites\", cancel: \"Cancel\", editDetails: \"Page details\", add: \"Add\", editSettings: \"Edit settings\", source: \"Source\", viewSource: \"View source\", findMedia: \"Find media\", undo: \"Undo\", redo: \"Redo\", media: \"Media\", outline: \"Outline\", blocks: \"Blocks\", addBlock: \"Add block\", addPage: \"Add page\", addChildPage: \"Add child page\", clonePage: \"Clone page\", delete: \"Delete page\", siteSettings: \"Site Settings\", close: \"Close\", settings: \"Settings\", edit: \"Edit\", configureBlock: \"Configure block\", configure: \"Configure\", save: \"Save\", home: \"Home\", startNewJourney: \"Start new journey\", newJourney: \"New Journey\", accountInfo: \"Account Info\", outlineDesigner: \"Site Outline\", pageOutline: \"Structure\", more: \"More\", siteActions: \"Site actions\", insights: \"Insights\", merlin: \"Merlin\", summonMerlin: \"Summon Merlin\", logOut: \"Log out\", menu: \"Menu\", showMore: \"More\", userAccess: \"User Access\", statusPanel: \"Status\", skeletonsPanel: \"Skeletons\", themesPanel: \"Themes\", integrationsPanel: \"Integrations\", configurationPanel: \"Configuration\", styleGuidePanel: \"Style guide\", customCodePanel: \"JS/CSS\", unlockHiddenFeatures: \"Unlock hidden features\", showTerribleThemes: \"Show terrible themes\", showHiddenTemplates: \"Show hidden templates\", goToSite: \"Go to site\", systemSettings: \"System Settings\", joinOurCommunity: \"Join our Community\", userTutorials: \"User Tutorials\", userDocumentation: \"User Documentation\", bugIssue: \"Bug / issue\", ideaFeatureRequest: \"Idea / Feature request\", pageMissBurns: \"the page miss.. it burns!!!\", scaredOfTheDark: \"I'm ascared of the dark\", sunnyDayItIs: \"Sunny day it is\", soundOffHello: \"Sound off.. hey! HELLO!?!\", canHearMeNow: \"You can hear me now? Good.\", terribleThemesUnlocked: \"Enjoy these early 2000s table based layouts. May they remind you how never to web, again.\", hiddenTemplatesRevealed: \"Hidden templates revealed. With great power comes great questionable design decisions.\", allFeaturesUnlocked: \"Unbelievable! You, (Subject Name), must be the pride of (Subject Hometown). Enjoy all locked features as a boon!\", loginToHax: \"Login to HAX\", systemSettingsNotAvailableHaxiam: \"System settings are not available in HAXiam deployments.\", unableToLoadSystemSettings: \"Unable to load system settings UI\", user: \"User\", searchOrDropAFile: \"Search or drop a file\", dropTypeToMakeSite: \"Drop {type} to make a site\", dropFileForOptions: \"Drop a file to see what HAX can do with it\", dropToMakeSiteFromType: \"Drop to make a site from this {type} file\", dropFileToSeeOptions: \"Drop the file to see what HAX can do with it\", dropAnywhere: \"Drop anywhere on the dashboard, or on Merlin.\", makeSiteFromAFile: \"Make a site from a file\", makeSiteFromAFileEllipsis: \"Make a site from a file…\", pickWhatToDoWithFile: \"Pick what to do with this file\", createSiteFromFile: \"Create a site from {name}\", chooseDifferentFile: \"Choose a different file…\", chooseFileDescription: \"Opens your file picker. Sites can be made from .docx, .pdf, .pptx, .xlsx, .html and .htm files.\", noImporterForType: \"HAX can't make a site from a {type} file.\", noImporterForFile: \"HAX can't make a site from this file.\", supportedFileTypes: \"Sites can be made from .docx, .pdf, .pptx, .xlsx, .html or .htm\", seeEveryImportOption: \"See every import option\", importFromUrlInstead: \"Import from a link instead…\", createSiteFromTemplate: \"Create a site from a template…\", createSiteFromTemplateName: \"Create a site from a template\", createBlankSiteWithTheme: \"Create a blank site with a theme…\", createBlankSiteWithThemeName: \"Create a blank site with a theme\", importType: \"Import {title}\", importTypeEllipsis: \"Import {title}…\", importFromUrl: \"Import from a URL…\", importFromUrlName: \"Import from a URL\", importFromUrlPlaceholder: \"Type or paste the URL of the site\", importUrlAs: \"Import {url} as {kind}\", createSiteFromUrl: \"Create a site from {url}\", sortSitesBy: \"Sort sites by…\", sortSitesByName: \"Sort sites by\", copyASite: \"Copy a site…\", copyASiteName: \"Copy a site\", downloadASite: \"Download a site…\", downloadASiteName: \"Download a site\", archiveASite: \"Archive a site…\", archiveASiteName: \"Archive a site\", createTemplateFromSite: \"Create a template from a site…\", createTemplateFromSiteName: \"Create a template from a site\", manageUserAccess: \"Manage user access to a site…\", manageUserAccessName: \"Manage user access\", userMenuFor: \"User menu for {name}\", customizeCharacter: \"Customize character\", toggleSoundEffectsOff: \"Toggle sound effects off\", toggleSoundEffectsOn: \"Toggle sound effects on\", soundEffects: \"Sound effects\", // route text from AppHaxStore baseRoutes (see _translateRoute) welcomeBack: \"Welcome back\", letsGoOnAHaxJourney: \"Let's go on a HAX Journey\", search: \"Search\", discoverActiveAdventures: \"Discover active adventures\", searchSites: \"Search sites\", welcome: \"Welcome\", letsBuildSomethingAwesome: \"Let's build something awesome!\", notFoundStatement: \"it's not you.. it's me\", notFoundTitle: \"FoUr Oh FoUr\", }"
             },
             {
               "kind": "field",
@@ -558,6 +776,51 @@
               "kind": "field",
               "name": "windowControllers",
               "default": "new AbortController()"
+            },
+            {
+              "kind": "field",
+              "name": "fileDragActive",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "A file is being dragged over the dashboard: Merlin's field and the\ndrop area say what dropping it will do.",
+              "default": "false",
+              "attribute": "file-drag",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "fileDragType",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\""
+            },
+            {
+              "kind": "field",
+              "name": "__fileDragCounter",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "__fileDragWatch",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "__dashboardProgramsDefined",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
             },
             {
               "kind": "field",
@@ -590,6 +853,17 @@
               },
               "default": "false",
               "attribute": "has-header-pre",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "hasHeaderPost",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "has-header-post",
               "reflects": true
             },
             {
@@ -878,6 +1152,14 @@
               "fieldName": "hasHeaderPre"
             },
             {
+              "name": "has-header-post",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "hasHeaderPost"
+            },
+            {
               "name": "siteReady",
               "type": {
                 "text": "boolean"
@@ -907,6 +1189,15 @@
                 "text": "string"
               },
               "fieldName": "token"
+            },
+            {
+              "name": "file-drag",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "A file is being dragged over the dashboard: Merlin's field and the\ndrop area say what dropping it will do.",
+              "default": "false",
+              "fieldName": "fileDragActive"
             }
           ],
           "mixins": [

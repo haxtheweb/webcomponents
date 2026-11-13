@@ -17,6 +17,15 @@ import { store } from "./lib/v2/AppHaxStore.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { AppHaxAPI } from "./lib/v2/AppHaxBackendAPI.js";
 import { SuperDaemonInstance } from "@haxtheweb/super-daemon/super-daemon.js";
+import "@haxtheweb/super-daemon/lib/super-daemon-search.js";
+import {
+  defineDashboardPrograms,
+  defineSiteOptionPrograms,
+  goToSiteRows,
+  dragTypeLabel,
+  dragTypeMakesSite,
+  FILE_DROP_PROGRAM,
+} from "./lib/v2/app-hax-dashboard-programs.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import { ResponsiveUtilityBehaviors } from "@haxtheweb/responsive-utility/lib/responsive-utility-behaviors.js";
 import "./lib/v2/AppHaxRouter.js";
@@ -339,6 +348,34 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       this._merlinRowSelectedWhileDocked.bind(this),
       { signal: this.windowControllers.signal },
     );
+    // a file dropped anywhere on the dashboard goes to Merlin. Capture
+    // phase: user-scaffold's window drop listener stops the event from
+    // reaching any listener after it
+    const dragOptions = {
+      signal: this.windowControllers.signal,
+      capture: true,
+    };
+    globalThis.addEventListener(
+      "dragenter",
+      this._fileDragEnter.bind(this),
+      dragOptions,
+    );
+    globalThis.addEventListener(
+      "dragover",
+      this._fileDragOver.bind(this),
+      dragOptions,
+    );
+    globalThis.addEventListener(
+      "dragleave",
+      this._fileDragLeave.bind(this),
+      dragOptions,
+    );
+    globalThis.addEventListener("drop", this._fileDrop.bind(this), dragOptions);
+    globalThis.addEventListener(
+      "dragend",
+      this._resetFileDrag.bind(this),
+      dragOptions,
+    );
   }
 
   goToLocation(location) {
@@ -416,6 +453,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       joinOurCommunity: "Join our Community",
       userTutorials: "User Tutorials",
       userDocumentation: "User Documentation",
+      // no longer in Merlin; kept until the nightly translations drop it
+      // from every locale (translated files may not have keys en lacks)
       haxTeachingExcellence: "HAX Teaching Excellence",
       bugIssue: "Bug / issue",
       ideaFeatureRequest: "Idea / Feature request",
@@ -435,7 +474,48 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         "System settings are not available in HAXiam deployments.",
       unableToLoadSystemSettings: "Unable to load system settings UI",
       user: "User",
-      haxSiteDashboard: "HAX Site Dashboard",
+      searchOrDropAFile: "Search or drop a file",
+      dropTypeToMakeSite: "Drop {type} to make a site",
+      dropFileForOptions: "Drop a file to see what HAX can do with it",
+      dropToMakeSiteFromType: "Drop to make a site from this {type} file",
+      dropFileToSeeOptions: "Drop the file to see what HAX can do with it",
+      dropAnywhere: "Drop anywhere on the dashboard, or on Merlin.",
+      makeSiteFromAFile: "Make a site from a file",
+      makeSiteFromAFileEllipsis: "Make a site from a file…",
+      pickWhatToDoWithFile: "Pick what to do with this file",
+      createSiteFromFile: "Create a site from {name}",
+      chooseDifferentFile: "Choose a different file…",
+      chooseFileDescription:
+        "Opens your file picker. Sites can be made from .docx, .pdf, .pptx, .xlsx, .html and .htm files.",
+      noImporterForType: "HAX can't make a site from a {type} file.",
+      noImporterForFile: "HAX can't make a site from this file.",
+      supportedFileTypes:
+        "Sites can be made from .docx, .pdf, .pptx, .xlsx, .html or .htm",
+      seeEveryImportOption: "See every import option",
+      importFromUrlInstead: "Import from a link instead…",
+      createSiteFromTemplate: "Create a site from a template…",
+      createSiteFromTemplateName: "Create a site from a template",
+      createBlankSiteWithTheme: "Create a blank site with a theme…",
+      createBlankSiteWithThemeName: "Create a blank site with a theme",
+      importType: "Import {title}",
+      importTypeEllipsis: "Import {title}…",
+      importFromUrl: "Import from a URL…",
+      importFromUrlName: "Import from a URL",
+      importFromUrlPlaceholder: "Type or paste the URL of the site",
+      importUrlAs: "Import {url} as {kind}",
+      createSiteFromUrl: "Create a site from {url}",
+      sortSitesBy: "Sort sites by…",
+      sortSitesByName: "Sort sites by",
+      copyASite: "Copy a site…",
+      copyASiteName: "Copy a site",
+      downloadASite: "Download a site…",
+      downloadASiteName: "Download a site",
+      archiveASite: "Archive a site…",
+      archiveASiteName: "Archive a site",
+      createTemplateFromSite: "Create a template from a site…",
+      createTemplateFromSiteName: "Create a template from a site",
+      manageUserAccess: "Manage user access to a site…",
+      manageUserAccessName: "Manage user access",
       userMenuFor: "User menu for {name}",
       customizeCharacter: "Customize character",
       toggleSoundEffectsOff: "Toggle sound effects off",
@@ -523,46 +603,13 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       icon: "hax:hax2022",
       tags: ["Sites", "Administration", "change"],
       eventName: "super-daemon-run-program",
-      path: "HAX/action/goToSite",
+      path: "Sites/Go to",
+      priority: -30,
       value: {
         name: "Go to site",
-        program: async (input, _values) => {
-          let results = [];
-          const items = toJS(store.manifest.items);
-          items.forEach(async (site) => {
-            if (
-              input == "" ||
-              (site.metadata.site &&
-                site.metadata.site.name &&
-                site.metadata.site.name.includes(input))
-            ) {
-              results.push({
-                title: site.title,
-                icon:
-                  site.metadata.theme &&
-                  site.metadata.theme.variables &&
-                  site.metadata.theme.variables.icon
-                    ? site.metadata.theme.variables.icon
-                    : "hax:hax2022",
-                tags: ["site", site.description],
-                value: {
-                  target: this,
-                  method: "goToLocation",
-                  args: [site.slug],
-                },
-                eventName: "super-daemon-element-method",
-                context: [
-                  "*",
-                  "HAX/action/goToSite/" + site.metadata.site.name,
-                ],
-                path: "HAX/action/goToSite/" + site.metadata.site.name,
-              });
-            }
-          });
-          return results;
-        },
+        program: async (input) => goToSiteRows(this, store, input),
       },
-      context: ["*"],
+      context: ["*", "/"],
     });
     SuperDaemonInstance.defineOption({
       i18n: { context: this, title: "systemSettings" },
@@ -575,7 +622,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         args: [],
       },
       eventName: "super-daemon-element-method",
-      path: "HAX/action/systemSettings",
+      path: "Dashboard/System settings",
+      priority: -10,
       context: ["system-settings"],
     });
     // contribution helpers
@@ -583,7 +631,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       i18n: { context: this, title: "joinOurCommunity" },
       title: this.t.joinOurCommunity,
       icon: "hax:discord",
-      priority: -100,
+      priority: 100,
       tags: ["community", "discord", "chat", "help"],
       externalLink: true,
       value: {
@@ -592,14 +640,14 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         args: ["https://discord.gg/aCGxmRHEJP"],
       },
       eventName: "super-daemon-element-method",
-      path: "HAX/community/join",
+      path: "Community/Join",
       context: ["logged-in", "CMS", "HAX", "*"],
     });
     SuperDaemonInstance.defineOption({
       i18n: { context: this, title: "userTutorials" },
       title: this.t.userTutorials,
       icon: "hax:hax2022",
-      priority: -1000,
+      priority: 100,
       tags: ["Documentation", "community", "help"],
       externalLink: true,
       value: {
@@ -608,13 +656,14 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         args: ["https://haxtheweb.org/tutorials"],
       },
       eventName: "super-daemon-element-method",
-      path: "HAX/community/tutorials",
+      path: "Community/Tutorials",
       context: ["logged-in", "CMS", "HAX", "*"],
     });
     SuperDaemonInstance.defineOption({
       i18n: { context: this, title: "userDocumentation" },
       title: this.t.userDocumentation,
       icon: "hax:hax2022",
+      priority: 100,
       tags: ["Documentation", "community", "help"],
       externalLink: true,
       value: {
@@ -623,28 +672,14 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         args: ["https://haxtheweb.org/documentation"],
       },
       eventName: "super-daemon-element-method",
-      path: "HAX/community/documentation",
-      context: ["logged-in", "CMS", "HAX", "*"],
-    });
-    SuperDaemonInstance.defineOption({
-      i18n: { context: this, title: "haxTeachingExcellence" },
-      title: this.t.haxTeachingExcellence,
-      icon: "hax:hax2022",
-      tags: ["Ontology", "community", "pedagogy", "documentation", "help"],
-      externalLink: true,
-      value: {
-        target: this,
-        method: "_openExternalLink",
-        args: ["https://haxtheweb.org/ontology"],
-      },
-      eventName: "super-daemon-element-method",
-      path: "HAX/community/pedagogy",
+      path: "Community/Documentation",
       context: ["logged-in", "CMS", "HAX", "*"],
     });
     SuperDaemonInstance.defineOption({
       i18n: { context: this, title: "bugIssue" },
       title: this.t.bugIssue,
       icon: "mdi-social:github-circle",
+      priority: 100,
       tags: ["Bug report", "github", "git", "community", "issue queue"],
       value: {
         target: this,
@@ -652,13 +687,14 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         args: ["bug", "POP,bug"],
       },
       eventName: "super-daemon-element-method",
-      path: "HAX/community/contribute",
+      path: "Community/Contribute",
       context: ["logged-in", "CMS", "HAX", "*"],
     });
     SuperDaemonInstance.defineOption({
       i18n: { context: this, title: "ideaFeatureRequest" },
       title: this.t.ideaFeatureRequest,
       icon: "mdi-social:github-circle",
+      priority: 100,
       tags: [
         "Feature request",
         "idea",
@@ -674,9 +710,14 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       },
       context: ["logged-in", "CMS", "HAX", "*"],
       eventName: "super-daemon-element-method",
-      path: "HAX/community/contribute",
+      path: "Community/Contribute",
     });
     this.windowControllers = new AbortController();
+    this.fileDragActive = false;
+    this.fileDragType = "";
+    this.__fileDragCounter = 0;
+    this.__fileDragWatch = null;
+    this.__dashboardProgramsDefined = false;
     // manage title when activeItem changes
     autorun(() => {
       const _mobx_val_0 = toJS(store.activeItem);
@@ -707,6 +748,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     this.userMenuOpen = false;
     this.adminDocked = false;
     this.hasHeaderPre = false;
+    this.hasHeaderPost = false;
     this.isHAXiamDeployment = false;
     this.__currentAdminRoutePath = null;
     this.__systemSettingsModalOpen = false;
@@ -922,6 +964,11 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         reflect: true,
         attribute: "has-header-pre",
       },
+      hasHeaderPost: {
+        type: Boolean,
+        reflect: true,
+        attribute: "has-header-post",
+      },
       siteReady: { type: Boolean },
       /**
        * System Settings is open, docked below the bar. The bar stays
@@ -934,6 +981,12 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       },
       basePath: { type: String, attribute: "base-path" },
       token: { type: String },
+      /**
+       * A file is being dragged over the dashboard: Merlin's field and the
+       * drop area say what dropping it will do.
+       */
+      fileDragActive: { type: Boolean, reflect: true, attribute: "file-drag" },
+      fileDragType: { type: String, attribute: false },
     };
   }
 
@@ -1108,13 +1161,15 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           justify-content: flex-start;
           padding-left: var(--hax-ui-gap-lg, 12px);
         }
-        slot[name="app-header-pre"] {
+        slot[name="app-header-pre"],
+        slot[name="app-header-post"] {
           display: inline-flex;
           align-items: center;
           justify-content: center;
           height: var(--top-bar-height, 64px);
         }
-        slot[name="app-header-pre"]::slotted(*) {
+        slot[name="app-header-pre"]::slotted(*),
+        slot[name="app-header-post"]::slotted(*) {
           color: var(--ddd-theme-default-white, #fff);
           background-color: var(--ddd-primary-2, #1e407c);
           height: var(--top-bar-height, 64px);
@@ -1131,8 +1186,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           --simple-icon-width: var(--ddd-icon-2xl, 48px);
         }
 
-        /* the page you are on, and the way back to it from anywhere in
-           the dashboard */
+        /* Merlin, centered in the bar as in the site editor */
         .center-group {
           display: flex;
           align-items: center;
@@ -1140,33 +1194,74 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           height: var(--top-bar-height, 64px);
           min-width: 0;
         }
-        .bar-title {
-          color: var(--ddd-theme-default-white, #ffffff);
-          font-family: var(--hax-ui-admin-font-family);
-          font-size: var(--ddd-font-size-4xs, 16px);
-          font-weight: var(--ddd-font-weight-bold, 700);
-          text-decoration: none;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          border-radius: var(--hax-ui-radius);
-          padding: var(--hax-ui-gap-sm, 4px) var(--hax-ui-gap-md, 8px);
+        super-daemon-search.merlin {
+          /* a darker well than the bar, so the field reads as a field */
+          --hax-ui-background-color: #111;
+          height: var(--ddd-control-height-sm, 40px);
+          --super-daemon-search-width: min(520px, calc(100vw - 280px));
         }
-        .bar-title:hover {
-          text-decoration: underline;
-        }
-        .bar-title:focus-visible {
-          outline: var(--hax-ui-focus-width, 2px) solid var(--hax-ui-focus);
-          outline-offset: 2px;
-        }
-        /* phones: you on the left, the title takes what is left */
+        /* phones: you on the left, Merlin takes what is left */
         @media (max-width: 600px) {
           app-hax-top-bar::part(top-bar) {
             grid-template-columns: auto minmax(0, 1fr) auto;
           }
           .center-group {
-            justify-content: flex-start;
+            justify-content: stretch;
+            padding: 0 var(--hax-ui-gap-md, 8px);
           }
+          super-daemon-search.merlin {
+            --super-daemon-search-width: 100%;
+          }
+          /* the deployment's own marks give Merlin the room on phones */
+          slot[name="app-header-pre"],
+          slot[name="app-header-post"] {
+            display: none;
+          }
+          /* no keyboard shortcut chips on phones */
+          super-daemon-search.merlin::part(shortcut) {
+            display: none;
+          }
+        }
+        /* a file dragged over the dashboard: where it can be dropped */
+        .file-drop-veil {
+          position: fixed;
+          inset: calc(var(--top-bar-height, 64px) + var(--ddd-spacing-4, 16px))
+            var(--ddd-spacing-4, 16px) var(--ddd-spacing-4, 16px);
+          z-index: 1000;
+          pointer-events: none;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: var(--ddd-spacing-3, 12px);
+          border: 2px dashed var(--ddd-theme-default-link, #005fa9);
+          border-radius: var(--ddd-radius-md, 12px);
+          background-color: light-dark(
+            rgba(255, 255, 255, 0.88),
+            rgba(17, 17, 17, 0.88)
+          );
+          color: light-dark(
+            var(--ddd-theme-default-nittanyNavy, #001e44),
+            var(--ddd-theme-default-white, #fff)
+          );
+          font-family: var(--hax-ui-admin-font-family);
+          text-align: center;
+          padding: var(--ddd-spacing-4, 16px);
+        }
+        .file-drop-veil simple-icon-lite {
+          --simple-icon-width: var(--ddd-icon-md, 48px);
+          --simple-icon-height: var(--ddd-icon-md, 48px);
+          color: light-dark(
+            var(--ddd-theme-default-link, #005fa9),
+            var(--ddd-theme-default-linkLight, #cce9ff)
+          );
+        }
+        .file-drop-title {
+          font-size: var(--ddd-font-size-xs, 22px);
+          font-weight: var(--ddd-font-weight-bold, 700);
+        }
+        .file-drop-hint {
+          font-size: var(--ddd-font-size-4xs, 16px);
         }
         /* the HAX mark: the Future Traveler, decorative only */
         .haxLogo {
@@ -1694,6 +1789,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     // in firstUpdated scheduled a redundant second update (change-in-update).
     if (!this.hasUpdated) {
       this.hasHeaderPre = !!this.querySelector('[slot="app-header-pre"]');
+      this.hasHeaderPost = !!this.querySelector('[slot="app-header-post"]');
     }
   }
 
@@ -1740,6 +1836,13 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       }),
     );
     store.appReady = true;
+    // the importer programs come from the importer cards, so they are
+    // defined once the cards' element is on the page
+    if (!this.__dashboardProgramsDefined && this._useCaseFilter()) {
+      this.__dashboardProgramsDefined = true;
+      defineDashboardPrograms(this, SuperDaemonInstance);
+      defineSiteOptionPrograms(this, SuperDaemonInstance, store);
+    }
     autorun(() => {
       const _mobx_val_0 = toJS(store.appReady);
       Promise.resolve().then(() => {
@@ -1866,6 +1969,62 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       SuperDaemonInstance.appendContext("system-settings");
     } else {
       SuperDaemonInstance.removeContext("system-settings");
+    }
+    // Manage user access shows in Merlin only where the site options
+    // menu shows User Access (a backend that has the call)
+    if (this._supportsUserAccess()) {
+      SuperDaemonInstance.appendContext("site-user-access");
+    } else {
+      SuperDaemonInstance.removeContext("site-user-access");
+    }
+  }
+
+  _supportsUserAccess() {
+    return !!(
+      store.AppHaxAPI &&
+      typeof store.AppHaxAPI.supportsCall === "function" &&
+      store.AppHaxAPI.supportsCall("haxiamAddUserAccess")
+    );
+  }
+
+  /**
+   * Run a site's options menu item from Merlin: the same site bar code
+   * the card's menu runs, on a site bar that is never put on the page.
+   * @param {string} op copy, download, archive, template or access
+   * @param {string} siteId
+   */
+  siteOptionFromMerlin(op, siteId) {
+    SuperDaemonInstance.close();
+    const items = toJS(store.manifest && store.manifest.items) || [];
+    const site = items.find((item) => item.id === siteId);
+    if (!site) {
+      return;
+    }
+    const bar = globalThis.document.createElement("app-hax-site-bar");
+    bar.siteId = site.id;
+    bar.title = site.title;
+    bar.slug = site.slug;
+    bar.returnFocusTo = this.shadowRoot
+      ? this.shadowRoot.querySelector("#merlinsearch")
+      : null;
+    switch (op) {
+      case "copy":
+        bar.copySite();
+        break;
+      case "download":
+        bar.downloadSite();
+        break;
+      case "archive":
+        bar.archiveSite();
+        break;
+      case "template":
+        bar.createTemplate();
+        break;
+      case "access":
+        if (this._supportsUserAccess()) {
+          bar.openUserAccess();
+        }
+        break;
     }
   }
 
@@ -2076,7 +2235,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     handleDockedMerlinRow(e, {
       host: this,
       dialog: this._currentSystemSettingsDialog(),
-      isAdminCommand: (path) => path.indexOf("HAX/action/systemSettings") === 0,
+      isAdminCommand: (path) => path.indexOf("Dashboard/System settings") === 0,
       closeDialog: () => closeDockedAdmin(),
       guard: (proceed) => this._systemSettingsGuard(proceed),
       closeMerlin: () => SuperDaemonInstance.close(),
@@ -2452,6 +2611,16 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     this.hasHeaderPre = hasContent;
   }
 
+  _syncHeaderPostSlot(e) {
+    let hasContent = false;
+    if (e && e.target && e.target.assignedElements) {
+      hasContent = e.target.assignedElements({ flatten: true }).length > 0;
+    } else if (this.querySelector('[slot="app-header-post"]')) {
+      hasContent = true;
+    }
+    this.hasHeaderPost = hasContent;
+  }
+
   _isDashboardModalOpen() {
     // If simple-modal is open (login, etc), keep scroll locked
     const simpleModal =
@@ -2513,6 +2682,263 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     SuperDaemonInstance.open();
   }
 
+  _useCaseFilter() {
+    return this.shadowRoot
+      ? this.shadowRoot.querySelector("app-hax-use-case-filter")
+      : null;
+  }
+
+  /**
+   * Merlin on the dashboard opens as the full dialog (results and
+   * details): the dashboard has the room the editor's bar does not.
+   */
+  _openDashboardMerlin(
+    like = null,
+    context = "*",
+    values = {},
+    program = null,
+    name = null,
+    placeholder = null,
+  ) {
+    SuperDaemonInstance.mini = false;
+    SuperDaemonInstance.wand = false;
+    SuperDaemonInstance.activeNode = null;
+    SuperDaemonInstance.runProgram(
+      like,
+      context,
+      values,
+      program,
+      name,
+      "",
+      placeholder,
+    );
+    SuperDaemonInstance.open();
+  }
+
+  // what Merlin's field says: what a drop will do while a file is dragged
+  _merlinPlaceholder() {
+    if (this.fileDragActive) {
+      return dragTypeMakesSite(this.fileDragType)
+        ? this.t.dropTypeToMakeSite.replace("{type}", () =>
+            dragTypeLabel(this.fileDragType),
+          )
+        : this.t.dropFileForOptions;
+    }
+    return this.t.searchOrDropAFile;
+  }
+
+  _merlinFieldOp(e) {
+    const field = e.target;
+    if (!field) {
+      return;
+    }
+    const value = field.value;
+    // typing starts a search; clearing the field (as below) does nothing
+    if (e.type === "value-changed" && !value) {
+      return;
+    }
+    if (e.type === "click") {
+      store.appEl.playSound("click");
+    }
+    this._openDashboardMerlin(value ? value : null);
+    field.value = null;
+  }
+
+  _isFileDrag(e) {
+    return !!(
+      e &&
+      e.dataTransfer &&
+      e.dataTransfer.types &&
+      Array.from(e.dataTransfer.types).includes("Files")
+    );
+  }
+
+  // drops go to Merlin only on the dashboard itself, never into an open
+  // dialog (Merlin, System Settings, Create New Site, sign in...)
+  _fileDropAllowed() {
+    return !!(
+      SuperDaemonInstance.allowedCallback() &&
+      !SuperDaemonInstance.opened &&
+      !this.adminDocked &&
+      !this._isDashboardModalOpen()
+    );
+  }
+
+  _resetFileDrag() {
+    this.__fileDragCounter = 0;
+    this.fileDragActive = false;
+    this.fileDragType = "";
+    if (this.__fileDragWatch) {
+      clearTimeout(this.__fileDragWatch);
+      this.__fileDragWatch = null;
+    }
+  }
+
+  // dragover fires over and over while a drag is on the page. When it
+  // stops (the drag left the window, was cancelled with Escape, or the drop
+  // went somewhere else) the drop state must not stay on screen
+  _watchFileDrag() {
+    if (this.__fileDragWatch) {
+      clearTimeout(this.__fileDragWatch);
+    }
+    this.__fileDragWatch = setTimeout(() => {
+      this.__fileDragWatch = null;
+      if (this.fileDragActive) {
+        this._resetFileDrag();
+      }
+    }, 1000);
+  }
+
+  _fileDragEnter(e) {
+    if (!this._isFileDrag(e) || !this._fileDropAllowed()) {
+      return;
+    }
+    this.__fileDragCounter++;
+    if (this.__fileDragCounter === 1) {
+      const item =
+        e.dataTransfer.items && e.dataTransfer.items.length > 0
+          ? e.dataTransfer.items[0]
+          : null;
+      this.fileDragType = item && item.type ? item.type : "";
+      this.fileDragActive = true;
+    }
+    this._watchFileDrag();
+  }
+
+  _fileDragOver(e) {
+    if (this._isFileDrag(e) && this.fileDragActive) {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = "copy";
+      this._watchFileDrag();
+    }
+  }
+
+  _fileDragLeave(e) {
+    if (!this.fileDragActive || !this._isFileDrag(e)) {
+      return;
+    }
+    this.__fileDragCounter--;
+    if (this.__fileDragCounter <= 0) {
+      this._resetFileDrag();
+    }
+  }
+
+  _fileDrop(e) {
+    if (!this.fileDragActive) {
+      return;
+    }
+    this._resetFileDrag();
+    if (!this._isFileDrag(e) || !this._fileDropAllowed()) {
+      return;
+    }
+    e.preventDefault();
+    const file =
+      e.dataTransfer.files && e.dataTransfer.files.length > 0
+        ? e.dataTransfer.files[0]
+        : null;
+    if (file) {
+      store.appEl.playSound("click");
+      this.fileToSite(file);
+    }
+  }
+
+  /**
+   * Show what Merlin can do with a file: make a site from it when an
+   * importer takes its type, or say it can't and offer the way on.
+   * @param {File} file
+   */
+  fileToSite(file) {
+    this._openDashboardMerlin(
+      "",
+      "/",
+      { file: file },
+      FILE_DROP_PROGRAM,
+      this.t.makeSiteFromAFile,
+    );
+  }
+
+  // pick any file; Merlin works out which importer (if any) takes it
+  async chooseFileForSite() {
+    SuperDaemonInstance.close();
+    await import("@haxtheweb/file-system-broker/file-system-broker.js");
+    const broker = globalThis.FileSystemBroker.requestAvailability();
+    let file = null;
+    try {
+      // the plain file input: any file, the type is worked out after
+      file = await broker.loadFileFallback("*");
+    } catch {
+      // cancelled the picker
+      return;
+    }
+    if (file) {
+      this.fileToSite(file);
+    }
+  }
+
+  // run the importer a file's type picks, with that file
+  importFileToSite(file) {
+    const filter = this._useCaseFilter();
+    if (filter) {
+      SuperDaemonInstance.close();
+      filter.importFile(file);
+    }
+  }
+
+  /**
+   * Run one importer, as its card does. A URL already typed in Merlin
+   * skips the importer's URL prompt.
+   * @param {string} kind "file" or "url"
+   * @param {string} type the importer's importType
+   * @param {string} url
+   */
+  runImporter(kind, type, url = null) {
+    const filter = this._useCaseFilter();
+    const importer = filter ? filter.importItemFor(kind, type) : null;
+    if (!importer) {
+      return;
+    }
+    SuperDaemonInstance.close();
+    if (url) {
+      filter.startImport(importer, { url: url });
+    } else {
+      filter.openTemplateModal(importer);
+    }
+  }
+
+  openImportFromUrl() {
+    this._openDashboardMerlin(
+      null,
+      "/",
+      {},
+      "app-hax-import-url",
+      this.t.importFromUrlName,
+    );
+  }
+
+  showImportOptions() {
+    SuperDaemonInstance.close();
+    const filter = this._useCaseFilter();
+    if (filter) {
+      filter.scrollToGroup("from-existing-heading", "import");
+    }
+  }
+
+  openTemplateFromMerlin(item) {
+    SuperDaemonInstance.close();
+    const filter = this._useCaseFilter();
+    if (filter && item) {
+      filter.openTemplateModal(item);
+    }
+  }
+
+  sortSitesFromMerlin(sortValue) {
+    SuperDaemonInstance.close();
+    const filter = this._useCaseFilter();
+    if (filter) {
+      filter.handleSortChange(sortValue);
+    }
+  }
+
   render() {
     const displayUserName =
       this.userName && this.userName.trim() !== ""
@@ -2525,10 +2951,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       <div class="bar-wrap">
         <app-hax-top-bar>
           <div slot="left" class="left-group">
-            <slot
-              name="app-header-pre"
-              @slotchange="${this._syncHeaderPreSlot}"
-            ></slot>
             <app-hax-user-menu
               id="user-menu"
               align="start"
@@ -2616,15 +3038,34 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
                 @click=${this._logoutGuarded}
               ></app-hax-user-menu-button>
             </app-hax-user-menu>
+            <!-- after the character, so you are always in the same spot -->
+            <slot
+              name="app-header-pre"
+              @slotchange="${this._syncHeaderPreSlot}"
+            ></slot>
           </div>
 
           <div slot="center" class="center-group">
-            <a id="home" class="bar-title" href="home"
-              >${this.t.haxSiteDashboard}</a
-            >
+            <super-daemon-search
+              id="merlinsearch"
+              class="merlin ${this.fileDragActive ? "window-file-drag" : ""}"
+              icon="hax:world-traveler-plain"
+              aria-label="${this.t.merlin}"
+              show-shortcut
+              program-placeholder="${this._merlinPlaceholder()}"
+              ?droppable="${this.fileDragActive}"
+              @click="${this._merlinFieldOp}"
+              @value-changed="${this._merlinFieldOp}"
+            ></super-daemon-search>
           </div>
 
           <div slot="right" class="right-group">
+            <!-- a deployment's own mark (an institution logo, say), just
+                 before the HAX mark -->
+            <slot
+              name="app-header-post"
+              @slotchange="${this._syncHeaderPostSlot}"
+            ></slot>
             <!-- the HAX mark: decorative, it says you are in HAX -->
             <span class="haxLogo" id="hlogo" aria-hidden="true">
               <simple-icon-lite
@@ -2643,7 +3084,24 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             </div>
           </section>
         </confetti-container>
-      </main>`;
+      </main>
+      ${
+        this.fileDragActive
+          ? html`<div class="file-drop-veil" aria-hidden="true">
+              <simple-icon-lite icon="icons:file-upload"></simple-icon-lite>
+              <span class="file-drop-title"
+                >${
+                  dragTypeMakesSite(this.fileDragType)
+                    ? this.t.dropToMakeSiteFromType.replace("{type}", () =>
+                        dragTypeLabel(this.fileDragType),
+                      )
+                    : this.t.dropFileToSeeOptions
+                }</span
+              >
+              <span class="file-drop-hint">${this.t.dropAnywhere}</span>
+            </div>`
+          : ""
+      }`;
   }
 
   _openCharacterBuilder(e) {

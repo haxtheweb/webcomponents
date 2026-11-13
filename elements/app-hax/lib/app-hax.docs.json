@@ -127,6 +127,14 @@
       "hax": null
     },
     {
+      "name": "has-header-post",
+      "property": "hasHeaderPost",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
       "name": "siteReady",
       "property": "siteReady",
       "type": "boolean",
@@ -157,6 +165,14 @@
       "default": "",
       "description": "",
       "hax": null
+    },
+    {
+      "name": "file-drag",
+      "property": "fileDragActive",
+      "type": "boolean",
+      "default": "false",
+      "description": "A file is being dragged over the dashboard: Merlin's field and the drop area say what dropping it will do.",
+      "hax": null
     }
   ],
   "slots": [],
@@ -167,7 +183,7 @@
     "simple-modal-show"
   ],
   "hax": {},
-  "surfaceHash": "53cbfea7f267",
+  "surfaceHash": "1f78c43b2b3f",
   "walkthroughs": [
     {
       "id": "",
@@ -175,7 +191,7 @@
       "order": 0,
       "src": "app-hax.motion.json",
       "file": "lib/app-hax.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     },
     {
       "id": "create-site",
@@ -183,7 +199,7 @@
       "order": 10,
       "src": "app-hax.create-site.motion.json",
       "file": "lib/app-hax.create-site.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     },
     {
       "id": "site-actions",
@@ -191,7 +207,7 @@
       "order": 20,
       "src": "app-hax.site-actions.motion.json",
       "file": "lib/app-hax.site-actions.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     },
     {
       "id": "settings",
@@ -199,13 +215,13 @@
       "order": 30,
       "src": "app-hax.settings.motion.json",
       "file": "lib/app-hax.settings.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/app-hax.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

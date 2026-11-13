@@ -26,7 +26,7 @@
   },
   "elements/app-hax/app-hax.js": {
     "eqeqeq": {
-      "count": 3
+      "count": 2
     },
     "haxtheweb-leaks/autorun-in-constructor": {
       "count": 12
