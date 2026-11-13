@@ -116,7 +116,10 @@ export class SuperDaemonToast extends I18NMixin(SimpleToastEl) {
           position: fixed;
           top: var(
             --super-daemon-toast-top,
-            calc(var(--top-bar-height, 64px) + var(--super-daemon-toast-gap))
+            calc(
+              var(--top-bar-height, 64px) + var(--super-daemon-toast-gap) +
+                var(--haxcms-top-offset, 0px)
+            )
           );
           right: var(--super-daemon-toast-right, var(--super-daemon-toast-gap));
           left: auto;

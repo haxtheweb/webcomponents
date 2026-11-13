@@ -210,6 +210,71 @@ describe("hax-network-bar", () => {
     }
   });
 
+  it("draws the demo strip: nothing is saved, the browser version, Install HAX, no Merlin", async () => {
+    const strip = await fixture(html`<hax-network-bar demo></hax-network-bar>`);
+    const r = strip.shadowRoot;
+    expect(r.querySelector(".strip .notice .tag").textContent).to.equal("Demo");
+    expect(r.querySelector(".strip .notice .long").textContent).to.equal(
+      strip.t.demoNotice,
+    );
+    expect(r.querySelector(".strip a.browser").getAttribute("href")).to.equal(
+      "https://browser.hax.cloud",
+    );
+    expect(r.querySelector(".strip .install-btn")).to.exist;
+    expect(r.querySelector("button.merlin")).to.not.exist;
+    expect(r.querySelector("a.character")).to.not.exist;
+    expect(r.querySelectorAll("nav.sites a").length).to.equal(
+      HAX_NETWORK_SITES.length,
+    );
+    r.querySelector(".strip .install-btn").click();
+    await strip.updateComplete;
+    expect(r.querySelector("dialog").open).to.be.true;
+    strip.closeInstall();
+  });
+
+  it("keeps --haxcms-top-offset at the strip's height while it is on the page", async () => {
+    const root = document.documentElement;
+    const strip = await fixture(html`<hax-network-bar demo></hax-network-bar>`);
+    expect(root.style.getPropertyValue("--haxcms-top-offset")).to.equal("40px");
+    strip.demo = false;
+    await strip.updateComplete;
+    expect(root.style.getPropertyValue("--haxcms-top-offset")).to.equal("");
+    strip.demo = true;
+    await strip.updateComplete;
+    expect(root.style.getPropertyValue("--haxcms-top-offset")).to.equal("40px");
+    strip.remove();
+    expect(root.style.getPropertyValue("--haxcms-top-offset")).to.equal("");
+    // the full bar never sets it
+    expect(element.demo).to.be.false;
+  });
+
+  it("leaves Alt⇧ to the editor's Merlin in a demo", async () => {
+    const strip = await fixture(html`<hax-network-bar demo></hax-network-bar>`);
+    let opened = false;
+    strip.openMerlin = () => {
+      opened = true;
+    };
+    const ready = HaxNetworkBar._merlinReady;
+    HaxNetworkBar._merlinReady = false;
+    try {
+      strip._onKey(
+        new KeyboardEvent("keydown", {
+          key: "Shift",
+          shiftKey: true,
+          altKey: true,
+        }),
+      );
+      expect(opened).to.be.false;
+    } finally {
+      HaxNetworkBar._merlinReady = ready;
+    }
+  });
+
+  it("passes the a11y audit as the demo strip", async () => {
+    const strip = await fixture(html`<hax-network-bar demo></hax-network-bar>`);
+    await expect(strip).shadowDom.to.be.accessible();
+  });
+
   it("passes the a11y audit", async () => {
     await expect(element).shadowDom.to.be.accessible();
   });

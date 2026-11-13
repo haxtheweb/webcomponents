@@ -843,8 +843,11 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
           }
         }
         /* Mini and wand Merlin: a HAX UI popover */
+        /* --haxcms-top-offset: a strip the page keeps above the HAXcms bar */
         :host([wand]) absolute-position-behavior {
-          top: var(--ddd-spacing-8) !important;
+          top: calc(
+            var(--ddd-spacing-8) + var(--haxcms-top-offset, 0px)
+          ) !important;
           right: 0;
           position: fixed !important;
           display: table;

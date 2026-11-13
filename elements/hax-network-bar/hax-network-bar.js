@@ -321,6 +321,7 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
     this.installOpen = false;
     this.installMethod = "";
     this.menuOpen = false;
+    this.demo = false;
     this._copied = "";
     this.t = this.t || {};
     this.t = {
@@ -336,6 +337,12 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
       issues: "Issues",
       linkedin: "LinkedIn",
       x: "X",
+      demoLabel: "About this demo",
+      demoTag: "Demo",
+      demoNotice: "There's no backend here, so nothing you change is saved.",
+      demoNoticeShort: "Nothing is saved.",
+      demoBrowser: "Use HAXcms in your browser",
+      demoBrowserShort: "Browser version",
       githubLink: "HAX on GitHub",
       sitesMenu: "HAX network sites",
       character: "Your character: make it in RPG me",
@@ -477,6 +484,14 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
       installMethod: { type: String, attribute: "install-method" },
       /** The sites menu is open (narrow screens) */
       menuOpen: { type: Boolean, attribute: "menu-open", reflect: true },
+      /**
+       * The demo strip: a thin bar for a HAXcms demo with no backend
+       * (demo.hax.cloud). It says nothing is saved, links HAXcms in the
+       * browser and Install HAX, and has no Merlin of its own (the editor
+       * under it has him). It keeps --haxcms-top-offset on the page set to
+       * its height so the HAXcms editor bar sits under it.
+       */
+      demo: { type: Boolean, reflect: true },
       _copied: { type: String, state: true },
     };
   }
@@ -1160,11 +1175,114 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
             border-color: ButtonText;
           }
         }
+
+        /* ---------- demo strip ---------- */
+        :host([demo]) {
+          --hax-network-bar-height: 40px;
+          height: var(--hax-network-bar-height);
+          border-bottom: none;
+          background-color: transparent;
+        }
+        /* fixed over the page, with the host holding its room in the flow,
+           so it stays put as the page scrolls (as the editor bar does) */
+        :host([demo]) .strip {
+          position: fixed;
+          inset: 0 0 auto 0;
+          z-index: 10001;
+          display: flex;
+          align-items: center;
+          gap: var(--ddd-spacing-4);
+          box-sizing: border-box;
+          height: var(--hax-network-bar-height);
+          padding: 0 var(--ddd-spacing-3);
+          background-color: var(--ddd-theme-default-potentialMidnight);
+          border-bottom: 1px solid var(--hax-ui-line);
+          color: var(--hax-ui-on-titlebar);
+        }
+        .strip nav.sites a {
+          padding: var(--ddd-spacing-1) 0;
+        }
+        .strip .notice {
+          flex: 1 1 auto;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: var(--ddd-spacing-2);
+          min-width: 0;
+          margin: 0;
+          font-size: var(--hax-ui-admin-font-size);
+          white-space: nowrap;
+          overflow: hidden;
+        }
+        .strip .tag {
+          flex: none;
+          padding: 2px var(--ddd-spacing-2);
+          border-radius: var(--hax-ui-radius);
+          background-color: var(--ddd-theme-default-keystoneYellow);
+          color: var(--ddd-theme-default-coalyGray);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          font-weight: var(--ddd-font-weight-bold);
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+        }
+        .strip .notice .text {
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        .strip .short {
+          display: none;
+        }
+        .strip .browser {
+          flex: none;
+          color: var(--ddd-theme-default-white);
+          font-size: var(--hax-ui-admin-font-size);
+          font-weight: var(--ddd-font-weight-bold);
+          white-space: nowrap;
+        }
+        .strip .install-btn {
+          height: 28px;
+          padding: 0 var(--ddd-spacing-3);
+          font-size: var(--hax-ui-admin-font-size);
+          --simple-icon-width: 16px;
+          --simple-icon-height: 16px;
+        }
+        .strip .icon-btn {
+          width: 32px;
+          height: 32px;
+          --simple-icon-width: 20px;
+          --simple-icon-height: 20px;
+        }
+        :host([demo][menu-open]) .strip nav.sites {
+          position: fixed;
+          inset: var(--hax-network-bar-height) 0 auto 0;
+        }
+        @media (max-width: 1279px) {
+          .strip .long {
+            display: none;
+          }
+          .strip .short {
+            display: inline;
+          }
+        }
+        @media (max-width: 599px) {
+          .strip {
+            gap: var(--ddd-spacing-2);
+          }
+          .strip .notice {
+            justify-content: flex-start;
+          }
+          .strip .browser {
+            display: none;
+          }
+        }
       `,
     ];
   }
 
   render() {
+    if (this.demo) {
+      return this._renderDemo();
+    }
     return html`
       <div class="bar">
         <div class="start">
@@ -1432,28 +1550,108 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
     `;
   }
 
+  /** The demo strip: sites, a notice that nothing is saved, the browser version and Install HAX */
+  _renderDemo() {
+    return html`
+      <div class="strip" role="region" aria-label="${this.t.demoLabel}">
+        <button
+          class="icon-btn menu-btn"
+          type="button"
+          aria-expanded="${this.menuOpen ? "true" : "false"}"
+          aria-controls="sites"
+          title="${this.t.sitesMenu}"
+          @click="${this.toggleMenu}"
+        >
+          <simple-icon-lite
+            icon="${this.menuOpen ? "icons:close" : "icons:menu"}"
+          ></simple-icon-lite>
+          <span class="sr-only">${this.t.sitesMenu}</span>
+        </button>
+        <nav class="sites" id="sites" aria-label="${this.t.network}">
+          <ul>
+            ${HAX_NETWORK_SITES.map(
+              (s) =>
+                html`<li>
+                  <a
+                    href="${s.href}"
+                    aria-current="${s.id === this.current ? "page" : "false"}"
+                    >${this.t[s.label]}</a
+                  >
+                </li>`,
+            )}
+          </ul>
+        </nav>
+        <p class="notice">
+          <span class="tag">${this.t.demoTag}</span>
+          <span class="text"
+            ><span class="long">${this.t.demoNotice}</span
+            ><span class="short">${this.t.demoNoticeShort}</span></span
+          >
+        </p>
+        <a class="browser" href="https://browser.hax.cloud"
+          ><span class="long">${this.t.demoBrowser}</span
+          ><span class="short">${this.t.demoBrowserShort}</span></a
+        >
+        <button
+          class="install-btn"
+          type="button"
+          aria-haspopup="dialog"
+          @click="${() => this.openInstall()}"
+        >
+          <simple-icon-lite icon="hax:admin-download"></simple-icon-lite>
+          <span>${this.t.install}</span>
+        </button>
+      </div>
+      ${this._renderInstall()}
+    `;
+  }
+
   connectedCallback() {
     super.connectedCallback();
     globalThis.addEventListener("hashchange", this._onHash);
     globalThis.document.addEventListener("keydown", this._onKey);
+    this._syncTopOffset();
   }
 
   disconnectedCallback() {
     globalThis.removeEventListener("hashchange", this._onHash);
     globalThis.document.removeEventListener("keydown", this._onKey);
+    this._syncTopOffset(true);
     super.disconnectedCallback();
+  }
+
+  /**
+   * In demo mode the strip sits above the HAXcms editor bar: the page's
+   * --haxcms-top-offset says how much room it takes, and goes away with it.
+   * @param {boolean} leaving the bar is being removed
+   */
+  _syncTopOffset(leaving = false) {
+    const root = globalThis.document && globalThis.document.documentElement;
+    if (!root) return;
+    if (this.demo && !leaving) {
+      root.style.setProperty("--haxcms-top-offset", "40px");
+      this._setOffset = true;
+    } else if (this._setOffset) {
+      root.style.removeProperty("--haxcms-top-offset");
+      this._setOffset = false;
+    }
   }
 
   firstUpdated(changedProperties) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);
     // the character is decoration on every network page, so it loads after
     // the bar has drawn
-    import("@haxtheweb/rpg-character/rpg-character.js");
+    if (!this.demo) {
+      import("@haxtheweb/rpg-character/rpg-character.js");
+    }
     this._onHash();
   }
 
   updated(changedProperties) {
     if (super.updated) super.updated(changedProperties);
+    if (changedProperties.has("demo")) {
+      this._syncTopOffset();
+    }
     if (changedProperties.has("installOpen")) {
       const dialog = this.shadowRoot.querySelector("dialog");
       if (this.installOpen && !dialog.open) {
@@ -1494,7 +1692,8 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
    * once he has, his own shortcut takes over.
    */
   _onKey(e) {
-    if (HaxNetworkBar._merlinReady || !e.shiftKey) return;
+    // in a demo the editor under the strip owns Merlin and his shortcut
+    if (this.demo || HaxNetworkBar._merlinReady || !e.shiftKey) return;
     const mod =
       globalThis.safari !== undefined
         ? e.key === "Meta" || e.metaKey

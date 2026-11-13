@@ -296,8 +296,9 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
           bottom: 0;
           min-width: calc(var(--hax-tray-width) - 100px);
           max-width: 70vw;
-          height: calc(100vh - 64px);
-          max-height: calc(100vh - 64px);
+          /* the HAXcms bar, plus any strip the page keeps above it */
+          height: calc(100vh - 64px - var(--haxcms-top-offset, 0px));
+          max-height: calc(100vh - 64px - var(--haxcms-top-offset, 0px));
           z-index: var(--hax-ui-focus-z-index);
           /* slide + fade on transform and opacity only so the edit-mode
              toggle never animates a layout property (haxtheweb/issues#3263) */

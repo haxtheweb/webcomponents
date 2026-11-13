@@ -323,8 +323,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
            schemes, so it reads the same as the admin dialog it opens.
            color-scheme dark makes every light-dark() token on it resolve
            to its dark half (light primary, yellow focus) */
+        /* --haxcms-top-offset: room a page keeps above the bar for its own
+           strip (demo.hax.cloud's hax-network-bar); everything that sits
+           under the bar (toasts, Merlin's wand popover, the tray, the
+           preview stage and menus, the theme panel) adds it too */
         app-hax-top-bar {
           z-index: 1000;
+          top: var(--haxcms-top-offset, 0px);
           right: 0px;
           left: 0px;
           position: fixed;
@@ -855,8 +860,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           align-items: center;
           justify-content: center;
           gap: var(--hax-ui-gap-md, 8px);
-          padding: var(--top-bar-height, 64px) var(--ddd-spacing-4, 16px)
-            var(--ddd-spacing-4, 16px);
+          padding: calc(
+              var(--top-bar-height, 64px) + var(--haxcms-top-offset, 0px)
+            )
+            var(--ddd-spacing-4, 16px) var(--ddd-spacing-4, 16px);
           box-sizing: border-box;
           background-color: var(--hax-ui-sunken, #f2f2f4);
           color-scheme: light dark;
@@ -954,7 +961,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           }
           #previewmenu::part(dropdown) {
             position: fixed;
-            top: calc(var(--top-bar-height, 64px) - var(--hax-ui-gap, 4px));
+            top: calc(
+              var(--top-bar-height, 64px) - var(--hax-ui-gap, 4px) +
+                var(--haxcms-top-offset, 0px)
+            );
             left: var(--hax-ui-gap-md, 8px);
             right: var(--hax-ui-gap-md, 8px);
             min-width: 0;
