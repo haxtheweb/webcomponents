@@ -461,6 +461,9 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       joinOurCommunity: "Join our Community",
       userTutorials: "User Tutorials",
       userDocumentation: "User Documentation",
+      // no longer in Merlin; kept until the nightly translations drop it
+      // from every locale (translated files may not have keys en lacks)
+      haxTeachingExcellence: "HAX Teaching Excellence",
       bugIssue: "Bug / issue",
       ideaFeatureRequest: "Idea / Feature request",
       pageMissBurns: "the page miss.. it burns!!!",

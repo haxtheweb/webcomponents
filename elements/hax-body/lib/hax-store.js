@@ -3330,6 +3330,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       joinOurCommunity: "Join our Community",
       userTutorials: "User Tutorials",
       userDocumentation: "User Documentation",
+      // no longer in Merlin; kept until the nightly translations drop it
+      // from every locale (translated files may not have keys en lacks)
+      haxTeachingExcellence: "HAX Teaching Excellence",
       reportAnIssueTogether: "Report an issue together",
       leaveWithoutSaving:
         "Are you sure you want to leave? Your work will not be saved!",
