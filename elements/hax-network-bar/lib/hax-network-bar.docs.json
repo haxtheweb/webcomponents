@@ -53,6 +53,14 @@
       "default": "false",
       "description": "The sites menu is open (narrow screens)",
       "hax": null
+    },
+    {
+      "name": "demo",
+      "property": "demo",
+      "type": "boolean",
+      "default": "false",
+      "description": "The demo strip: a thin bar for a HAXcms demo with no backend (demo.hax.cloud). It says nothing is saved, links HAXcms in the browser and Install HAX, and has no Merlin of its own (the editor under it has him). It keeps --haxcms-top-offset on the page set to its height so the HAXcms editor bar sits under it.",
+      "hax": null
     }
   ],
   "slots": [
@@ -63,7 +71,7 @@
     "hax-network-merlin"
   ],
   "hax": {},
-  "surfaceHash": "d58d5a0cda82",
+  "surfaceHash": "a08dec54127b",
   "walkthroughs": [],
   "videos": [],
   "motion": {

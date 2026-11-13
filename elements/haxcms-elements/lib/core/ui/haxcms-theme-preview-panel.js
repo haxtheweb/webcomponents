@@ -130,7 +130,9 @@ class HAXCMSThemePreviewPanel extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
            detail-panel header, two picker groups and an action bar */
         :host {
           position: fixed;
-          top: var(--top-bar-height, 64px);
+          top: calc(
+            var(--top-bar-height, 64px) + var(--haxcms-top-offset, 0px)
+          );
           right: 0;
           bottom: 0;
           width: var(--haxcms-theme-preview-width, 420px);

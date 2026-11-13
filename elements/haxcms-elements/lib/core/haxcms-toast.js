@@ -131,7 +131,10 @@ export class HAXCMSToast extends I18NMixin(RPGCharacterToast) {
           position: fixed;
           top: var(
             --haxcms-toast-top,
-            calc(var(--top-bar-height, 64px) + var(--haxcms-toast-gap))
+            calc(
+              var(--top-bar-height, 64px) + var(--haxcms-toast-gap) +
+                var(--haxcms-top-offset, 0px)
+            )
           );
           right: var(--haxcms-toast-right, var(--haxcms-toast-gap));
           left: auto;
