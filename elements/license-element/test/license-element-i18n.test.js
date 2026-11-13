@@ -9,8 +9,9 @@ describe("license-element label i18n", () => {
     const label = el.shadowRoot.querySelector(".license-label");
     expect(label).to.exist;
     expect(label.textContent).to.equal("License");
-    // last in the shadow root, where :host::after used to render
-    expect(el.shadowRoot.lastElementChild).to.equal(label);
+    // DDD eyebrow: first line of the card
+    const body = el.shadowRoot.querySelector(".license-body");
+    expect(body.firstElementChild).to.equal(label);
     expect(getComputedStyle(el, "::after").content).to.equal("none");
     el.t = { ...el.t, licenseLabel: "Lizenz" };
     await el.updateComplete;
