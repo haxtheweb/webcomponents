@@ -334,6 +334,26 @@
     "--ddd-textfield-height-lg": {
       "token": "--cds-layout-size-height-lg",
       "note": "lg 48px"
+    },
+    "--ddd-surface-padding": {
+      "value": "1rem",
+      "note": "Carbon tile padding, spacing-05 (16px, same as DDD); Carbon only exposes spacing variables inside component scopes"
+    },
+    "--ddd-surface-padding-lg": {
+      "value": "2rem",
+      "note": "spacing-07"
+    },
+    "--ddd-stack-gap": {
+      "value": "1rem",
+      "note": "spacing-05"
+    },
+    "--ddd-inline-gap": {
+      "value": "0.5rem",
+      "note": "spacing-03"
+    },
+    "--ddd-control-padding-inline": {
+      "value": "1rem",
+      "note": "Carbon button inline-start padding, spacing-05"
     }
   },
   "extraTokens": [

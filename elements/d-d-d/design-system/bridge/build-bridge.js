@@ -530,6 +530,20 @@ if (guards.bodyMinPx) {
     previous = size;
   });
 }
+if (guards.densityMinPx) {
+  Object.entries(guards.densityMinPx).forEach(([name, min]) => {
+    const row = rows.find((r) => r.ddd === name);
+    if (!row) return;
+    const size = px(row.light);
+    if (size === null) {
+      problems.push(
+        `${name} resolves to ${row.light}, which can't be checked against its ${min}px floor`,
+      );
+    } else if (size < min) {
+      problems.push(`${name} resolves to ${size}px, below its ${min}px floor`);
+    }
+  });
+}
 if (guards.controlMinPx) {
   rows
     .filter((row) => /^--ddd-(control|textfield)-height-/.test(row.ddd))

@@ -5119,5 +5119,154 @@
       "vb": "0 0 24 24",
       "d": "<path d=\"M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z\"/>"
     }
+  },
+  "layers": {
+    "fresh": {
+      "main": {
+        "traveler": "2026-11-07",
+        "php": "2026-11-10",
+        "nodejs": "2026-11-10",
+        "haxiam": "2026-10-23",
+        "hax11ty": "2026-10-22",
+        "cli": "2026-11-10",
+        "ubiquity": "2026-11-10",
+        "importers": "2026-10-22",
+        "learnhax": "2026-09-01",
+        "agents": "2026-11-10",
+        "mcp": "2026-11-10",
+        "praw": "2026-11-10",
+        "wins": "2026-11-05",
+        "components": "2026-11-10",
+        "ddd": "2026-11-10",
+        "plugins": "2026-10-23",
+        "ist256": "2025-01-21",
+        "jos": "2026-10-30",
+        "oerschema": "2026-11-02",
+        "haxlab": "2026-01-05",
+        "elmsln": "2026-08-14",
+        "editor": "2026-11-10",
+        "dashboard": "2026-11-10",
+        "themes": "2026-11-09",
+        "outline": "2026-11-10",
+        "merlin": "2026-11-10",
+        "haxcms": "2026-11-10",
+        "haxschema": "2026-10-30",
+        "appstore": "2026-10-19",
+        "skeletons": "2026-11-06",
+        "testing": "2026-11-09",
+        "games": "2026-11-09",
+        "xapi": "2026-11-10",
+        "security": "2026-11-09"
+      }
+    },
+    "bus": {
+      "main": {
+        "traveler": ["btopro"],
+        "php": ["btopro"],
+        "nodejs": ["btopro"],
+        "haxiam": ["btopro"],
+        "hax11ty": ["btopro"],
+        "cli": ["btopro"],
+        "ubiquity": ["btopro"],
+        "importers": ["btopro", "SanikaA3"],
+        "learnhax": ["btopro"],
+        "agents": ["btopro"],
+        "mcp": ["btopro", "Trivi Sunil"],
+        "praw": ["btopro"],
+        "wins": ["btopro"],
+        "components": ["btopro"],
+        "ddd": ["btopro"],
+        "plugins": [],
+        "ist256": ["btopro"],
+        "jos": ["btopro"],
+        "oerschema": ["btopro"],
+        "haxlab": ["btopro"],
+        "elmsln": ["btopro"],
+        "editor": ["btopro"],
+        "dashboard": ["btopro"],
+        "themes": ["btopro"],
+        "outline": ["btopro"],
+        "merlin": ["btopro"],
+        "haxcms": ["btopro"],
+        "haxschema": ["btopro"],
+        "appstore": ["btopro"],
+        "skeletons": ["btopro"],
+        "testing": ["btopro"],
+        "games": ["btopro"],
+        "xapi": ["btopro"],
+        "security": ["btopro"]
+      }
+    },
+    "parity": {
+      "features": {
+        "run": "2026-11-09",
+        "source": {
+          "label": "haxtheweb/issues #3292",
+          "url": "https://github.com/haxtheweb/issues/issues/3292"
+        },
+        "features": {
+          "openapi": {
+            "api": "match",
+            "why": ["Both backends are tested against the same OpenAPI specs."]
+          },
+          "haxcms": {
+            "api": "gap",
+            "cli": "gap",
+            "agent": "gap",
+            "why": [
+              "Slug rule: nodejs turns \"C++ & C#\" into c-c-, PHP into c-c.",
+              "createSite writes metadata.theme.regions in nodejs only.",
+              "CLI site creation doesn't follow the API's createSite defaults.",
+              "A parent change with no order doesn't move the page to the end of its siblings.",
+              "Skills don't document node:edit, node:delete, site:theme, --item-id or --parent=null."
+            ]
+          },
+          "editor": {
+            "label": "content save",
+            "api": "gap",
+            "cli": "gap",
+            "agent": "gap",
+            "why": [
+              "nodejs builds the description from the whole body and re-sorts items; PHP doesn't.",
+              "CLI node:edit doesn't regenerate description, read time, files, images or videos."
+            ]
+          },
+          "themes": {
+            "api": "match",
+            "cli": "gap",
+            "agent": "gap",
+            "why": [
+              "CLI site:theme writes extra theme variables instead of using the appearance operation.",
+              "site:theme is undocumented in the skills."
+            ]
+          }
+        },
+        "surfaces": ["php", "nodejs", "cli", "agents"],
+        "planned": ["staticpub", "magiclink"]
+      }
+    },
+    "released": {
+      "main": {
+        "editor": "2026-08-14",
+        "dashboard": "2026-08-14",
+        "themes": "2026-08-14",
+        "php": "2026-09-17",
+        "nodejs": "2026-08-14",
+        "hax11ty": "2026-05-12",
+        "cli": "2026-08-14",
+        "ubiquity": "2026-08-14",
+        "components": "2026-08-14",
+        "ddd": "2026-08-14",
+        "jos": "2026-08-14",
+        "elmsln": "2023-06-27",
+        "outline": "2026-08-14",
+        "merlin": "2026-08-14",
+        "oerschema": "2026-08-14",
+        "testing": "2026-08-14",
+        "games": "2026-08-14",
+        "xapi": "2026-08-14"
+      }
+    },
+    "maintainers": ["bryan", "billrose"]
   }
 }

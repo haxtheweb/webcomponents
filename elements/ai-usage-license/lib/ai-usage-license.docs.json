@@ -69,7 +69,7 @@
       "property": "licenseImage",
       "type": "null",
       "default": "null",
-      "description": "License badge image URL.",
+      "description": "URL of the official AIUL badge art for this license. Kept as data for integrations; the element draws its own DDD badge instead.",
       "hax": null
     },
     {
@@ -118,7 +118,7 @@
       "title": "AI Usage License",
       "description": "Display an AI Usage License (AIUL) badge for your work",
       "icon": "hardware:memory",
-      "color": "blue",
+      "color": "grey",
       "tags": [
         "Other",
         "content",

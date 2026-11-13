@@ -218,6 +218,9 @@ class CarbonTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
             --cds-layer-selected-01
           );
           --map-menu-item-active-item-color: var(--cds-text-primary);
+          /* Carbon marks the selected side nav item with a 3px bar */
+          --map-menu-item-active-accent-width: 3px;
+          --map-menu-item-active-accent-color: var(--cds-interactive);
           --map-menu-item-icon-active-color: var(--cds-text-primary);
           --map-menu-item-button-active-font-weight: var(
             --ddd-font-weight-bold
