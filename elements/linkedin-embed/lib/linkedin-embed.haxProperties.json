@@ -9,7 +9,7 @@
   "gizmo": {
     "title": "LinkedIn embed",
     "description": "Embed a LinkedIn profile card.",
-    "icon": "hax:link",
+    "icon": "mdi-social:linkedin",
     "color": "blue",
     "tags": ["Other", "social media", "linkedin", "profile", "card"],
     "handles": [],

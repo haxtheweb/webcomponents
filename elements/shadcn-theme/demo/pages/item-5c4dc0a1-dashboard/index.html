@@ -1,0 +1,42 @@
+<p>A dashboard in the shadcn/ui block layout: stat cards, a chart card and a data table, all HAX blocks.</p>
+<grid-plate layout="1-1">
+<div slot="col-1" data-border="xs" data-border-radius="lg" data-primary="5">
+<p>Enrollments <simple-tag value="+12.5%" accent-color="green" readonly></simple-tag></p>
+<p data-font-size="l"><strong>1,250</strong></p>
+<p><strong>Trending up this month</strong><br>Learners in the last 6 months</p>
+</div>
+<div slot="col-2" data-border="xs" data-border-radius="lg" data-primary="5">
+<p>New learners <simple-tag value="-20%" accent-color="red" readonly></simple-tag></p>
+<p data-font-size="l"><strong>1,234</strong></p>
+<p><strong>Down 20% this period</strong><br>Outreach needs attention</p>
+</div>
+<div slot="col-1" data-border="xs" data-border-radius="lg" data-primary="5">
+<p>Active courses <simple-tag value="+12.5%" accent-color="green" readonly></simple-tag></p>
+<p data-font-size="l"><strong>45</strong></p>
+<p><strong>Strong retention</strong><br>Engagement above target</p>
+</div>
+<div slot="col-2" data-border="xs" data-border-radius="lg" data-primary="5">
+<p>Completion rate <simple-tag value="+4.5%" accent-color="green" readonly></simple-tag></p>
+<p data-font-size="l"><strong>4.5%</strong></p>
+<p><strong>Steady increase</strong><br>Meets projections</p>
+</div>
+</grid-plate>
+<div data-border="xs" data-border-radius="lg" data-primary="5">
+<h2>Total visitors</h2>
+<p>Total for the last 12 months</p>
+<media-image source="files/visitors-chart.svg" alt="Area chart of desktop and mobile visitors by month; both rise through the year, desktop from 186 to 390 and mobile from 80 to 260"></media-image>
+<a11y-collapse heading="View the data"><div slot="content">
+<editable-table bordered><table><caption>Visitors by month</caption><thead><tr><th scope="col">Month</th><th scope="col">Desktop</th><th scope="col">Mobile</th></tr></thead>
+<tbody><tr><td>January</td><td>186</td><td>80</td></tr><tr><td>April</td><td>273</td><td>190</td></tr><tr><td>August</td><td>290</td><td>180</td></tr><tr><td>December</td><td>390</td><td>260</td></tr></tbody></table></editable-table>
+</div></a11y-collapse>
+</div>
+<h2>Course outline</h2>
+<editable-table bordered striped>
+<table><caption>Sections in review</caption><thead><tr><th scope="col">Section</th><th scope="col">Type</th><th scope="col">Status</th><th scope="col">Pages</th><th scope="col">Reviewer</th></tr></thead>
+<tbody>
+<tr><td>Cover page</td><td>Narrative</td><td>In progress</td><td>18</td><td>Eddie Lake</td></tr>
+<tr><td>Table of contents</td><td>Outline</td><td>Done</td><td>29</td><td>Eddie Lake</td></tr>
+<tr><td>Executive summary</td><td>Narrative</td><td>Done</td><td>10</td><td>Jamik Tashpulatov</td></tr>
+<tr><td>Technical approach</td><td>Narrative</td><td>Not started</td><td>27</td><td>Assign reviewer</td></tr>
+</tbody></table>
+</editable-table>

@@ -1,0 +1,22 @@
+<p>A details page in the PatternFly pattern: a description list, then tabs for the related views.</p>
+<a11y-tabs>
+<a11y-tab label="Overview">
+<dl>
+<dt>Status</dt><dd>Down: one of three control plane nodes is unreachable</dd>
+<dt>Region</dt><dd>West</dd>
+<dt>Version</dt><dd>4.16.2</dd>
+</dl>
+</a11y-tab>
+<a11y-tab label="Nodes">
+<editable-table bordered>
+<table><caption>Nodes in west-2</caption><thead><tr><th scope="col">Node</th><th scope="col">Role</th><th scope="col">Status</th></tr></thead>
+<tbody><tr><td>w2-cp-1</td><td>Control plane</td><td>Ready</td></tr><tr><td>w2-cp-2</td><td>Control plane</td><td>Not ready</td></tr><tr><td>w2-cp-3</td><td>Control plane</td><td>Ready</td></tr></tbody></table>
+</editable-table>
+</a11y-tab>
+<a11y-tab label="Events">
+<ul>
+<li><strong>Node not ready</strong>: w2-cp-2, 12 minutes ago</li>
+<li><strong>Workloads rescheduled</strong>: 38 pods, 11 minutes ago</li>
+</ul>
+</a11y-tab>
+</a11y-tabs>

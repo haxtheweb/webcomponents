@@ -82,6 +82,15 @@
                 "text": "boolean"
               },
               "attribute": "_dark"
+            },
+            {
+              "kind": "field",
+              "name": "_lead",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "_lead"
             }
           ],
           "attributes": [
@@ -107,6 +116,13 @@
                 "text": "boolean"
               },
               "fieldName": "_dark"
+            },
+            {
+              "name": "_lead",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "_lead"
             }
           ],
           "mixins": [

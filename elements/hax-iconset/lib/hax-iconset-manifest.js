@@ -461,6 +461,7 @@ export const HaxIconsetManifest = [
       "twitter-box",
       "twitter",
       "whatsapp",
+      "x",
       "youtube",
     ],
   },

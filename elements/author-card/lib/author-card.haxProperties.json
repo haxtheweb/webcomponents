@@ -80,7 +80,7 @@
         "title": "Social Handle",
         "description": "Social media handle (for example @username).",
         "inputMethod": "textfield",
-        "icon": "communication:alternate-email"
+        "icon": "communication:email"
       }
     ],
     "advanced": []

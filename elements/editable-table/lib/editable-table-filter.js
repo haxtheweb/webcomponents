@@ -32,20 +32,26 @@ class EditableTableFilter extends I18NMixin(SimpleToolbarButtonBehaviors(DDD)) {
           font-family: inherit;
           font-size: inherit;
         }
+        /* the icon sits right after the text; in a numeric column it sits
+           before it, so the figures stay lined up with the column */
         :host > div {
           display: flex;
           align-items: center;
-          justify-content: space-between;
+          justify-content: flex-start;
+          gap: var(--ddd-spacing-1);
           width: 100%;
+        }
+        :host([numeric]) > div {
+          flex-direction: row-reverse;
         }
         button {
           flex: 0 0 auto !important;
           width: auto !important;
         }
         #cell {
-          flex: 1 1 auto !important;
+          flex: 0 1 auto !important;
           display: inline-block;
-          padding: var(--ddd-spacing-1);
+          padding: 0;
           text-align: inherit;
         }
         /* a subtle DDD icon button, like the sort buttons */
@@ -53,7 +59,7 @@ class EditableTableFilter extends I18NMixin(SimpleToolbarButtonBehaviors(DDD)) {
           color: var(--simple-toolbar-button-color, inherit);
           border-color: var(--simple-toolbar-button-border-color, transparent);
           border-radius: var(--ddd-radius-xs);
-          margin-inline-start: var(--ddd-spacing-1);
+          margin: 0;
         }
         *[part="button"]:hover {
           background-color: var(
@@ -72,8 +78,25 @@ class EditableTableFilter extends I18NMixin(SimpleToolbarButtonBehaviors(DDD)) {
           outline: var(--ddd-focus-ring, 2px solid currentColor);
           outline-offset: var(--ddd-focus-offset, 2px);
         }
+        /* the matching cells are outlined by the table, so the toggled
+           button itself stays a plain icon */
+        :host([toggled]) {
+          --simple-toolbar-button-toggled-bg: transparent;
+          --simple-toolbar-button-toggled-border-color: transparent;
+        }
+        *[part="button"] {
+          --simple-icon-color: light-dark(
+            var(--ddd-theme-default-link),
+            var(--ddd-theme-default-linkLight)
+          );
+        }
+        /* editable-table-display hides the icon until the row is hovered or
+           focused; keyboard focus always shows it */
         :host(:not([toggled])) #icon {
-          opacity: 0.6;
+          opacity: var(--editable-table-filter-icon-opacity, 0.6);
+        }
+        :host(:not([toggled])) *[part="button"]:focus-visible #icon {
+          opacity: 1;
         }
       `,
     ];
@@ -84,6 +107,13 @@ class EditableTableFilter extends I18NMixin(SimpleToolbarButtonBehaviors(DDD)) {
   static get properties() {
     return {
       ...super.properties,
+      /**
+       * Whether the column holds numbers: the icon goes before the text
+       */
+      numeric: {
+        type: Boolean,
+        reflect: true,
+      },
       /**
        * Index of column
        */
@@ -106,6 +136,7 @@ class EditableTableFilter extends I18NMixin(SimpleToolbarButtonBehaviors(DDD)) {
   }
   constructor() {
     super();
+    this.numeric = false;
     this.columnIndex = null;
     this.filtered = false;
     this.text = "";

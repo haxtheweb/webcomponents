@@ -331,8 +331,42 @@ class A11yTab extends I18NMixin(LitElement) {
     this.observer.observe(this, { childList: true });
   }
 
+  // a panel whose content scrolls (a wide table or code block) must be
+  // reachable by keyboard; it gets a tab stop only while it overflows
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) super.firstUpdated(changedProperties);
+    const inner = this.shadowRoot.querySelector("#content-inner");
+    if (inner && globalThis.ResizeObserver) {
+      this.__scrollObserver = new ResizeObserver(() => {
+        if (
+          inner.scrollWidth > inner.clientWidth ||
+          inner.scrollHeight > inner.clientHeight
+        ) {
+          inner.setAttribute("tabindex", "0");
+        } else {
+          inner.removeAttribute("tabindex");
+        }
+      });
+      this.__scrollObserver.observe(inner);
+      // content that grows wider later (a block that upgrades) resizes its
+      // own box, not the panel's, so watch the slotted children too
+      const slot = inner.querySelector("slot");
+      if (slot) {
+        slot.addEventListener("slotchange", () => {
+          slot
+            .assignedElements()
+            .forEach((el) => this.__scrollObserver.observe(el));
+        });
+        slot
+          .assignedElements()
+          .forEach((el) => this.__scrollObserver.observe(el));
+      }
+    }
+  }
+
   disconnectedCallback() {
     this.observer.disconnect();
+    if (this.__scrollObserver) this.__scrollObserver.disconnect();
     this.removeEventListener("a11y-tab-flag", this._onTabFlag);
     this._fireTabChanged();
     super.disconnectedCallback();
@@ -344,17 +378,34 @@ class A11yTab extends I18NMixin(LitElement) {
    */
   willUpdate(changedProperties) {
     if (super.willUpdate) super.willUpdate(changedProperties);
+    // an id this tab generated follows its order: tabs that upgrade before
+    // the group numbers them would otherwise all keep tab-1. Authored ids
+    // are never touched.
     if (
       (changedProperties.has("id") || changedProperties.has("order")) &&
-      !this.id
-    )
-      this.id = `tab-${this.order}`;
+      (!this.id || this.id === this.__autoId)
+    ) {
+      this.__autoId = `tab-${this.order}`;
+      this.id = this.__autoId;
+    }
     if (
       (changedProperties.has("label") || changedProperties.has("order")) &&
       !this.label
     )
       this._labelChanged();
-    if (changedProperties.has("id")) this.ariaLabelledby = `${this.id}-button`;
+    // the tab button lives in the group's shadow root, where an
+    // aria-labelledby id can't reach; name the panel from its label instead,
+    // unless the author named it
+    if (
+      (changedProperties.has("label") || changedProperties.has("id")) &&
+      !this.ariaLabelledby &&
+      (!this.hasAttribute("aria-label") || this.__autoLabel)
+    ) {
+      this.__autoLabel = true;
+      if (this.label) {
+        this.setAttribute("aria-label", this.label);
+      }
+    }
   }
 
   /**

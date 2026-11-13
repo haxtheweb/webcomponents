@@ -952,15 +952,22 @@ export const displayBehaviors = function (SuperClass) {
      * @memberof EditableTableDisplay
      */
     _isRowFiltered(tr) {
+      // column 0 is a real column, and the filter text is plain text, not
+      // a pattern
+      const hasColumn =
+        this.filterColumn !== undefined &&
+        this.filterColumn !== null &&
+        tr &&
+        tr[this.filterColumn] !== undefined;
       let filter = (this.filterText || "").trim(),
-        cellText = this.filterColumn && tr ? tr[this.filterColumn].trim() : "",
+        cellText = hasColumn ? String(tr[this.filterColumn]).trim() : "",
         filtered;
       if (!this.filterCaseSensitive) {
         filter = filter.toLowerCase();
         cellText = cellText.toLowerCase();
       }
       filtered = this.filterContains
-        ? !cellText.match(filter)
+        ? !cellText.includes(filter)
         : cellText !== filter;
       return filtered;
     }

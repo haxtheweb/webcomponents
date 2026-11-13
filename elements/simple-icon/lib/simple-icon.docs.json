@@ -16,7 +16,7 @@
   "import": "@haxtheweb/simple-icon/simple-icon.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/simple-icon/simple-icon.js",
   "install": "npm i @haxtheweb/simple-icon",
-  "demoHtml": "<simple-icon icon=\"hax:2022\" accentColor=\"purple\"></simple-icon>",
+  "demoHtml": "<simple-icon icon=\"hax:hax2022\" accentColor=\"purple\"></simple-icon>",
   "attributes": [
     {
       "name": "contrast",
@@ -112,13 +112,13 @@
         "tag": "simple-icon",
         "content": "",
         "properties": {
-          "icon": "hax:2022",
+          "icon": "hax:hax2022",
           "accentColor": "purple"
         }
       }
     ]
   },
-  "surfaceHash": "b5dfa812a0e3",
+  "surfaceHash": "90f49809e41f",
   "walkthroughs": [
     {
       "id": "",
@@ -126,13 +126,13 @@
       "order": 0,
       "src": "simple-icon.motion.json",
       "file": "lib/simple-icon.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/simple-icon.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

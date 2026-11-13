@@ -322,7 +322,7 @@ describe("HAXcms learner progress: reading and page completion", () => {
     expect(site).to.deep.include({ done: 1, total: 3, engaged: true });
     expect(site.percent).to.equal(0.333);
     // the site menu rings the page open now, done once it was read
-    const menu = await fixture(html`<site-menu></site-menu>`);
+    const menu = await fixture(html`<site-menu show-progress></site-menu>`);
     await flush(150);
     await menu.updateComplete;
     expect(menu.shadowRoot.querySelector(".progress-summary")).to.equal(null);

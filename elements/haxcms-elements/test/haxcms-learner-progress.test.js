@@ -297,7 +297,7 @@ describe("HAXcms learner progress", () => {
     await goTo("p3");
     answer(host, "q3", false, false);
     await goTo("p1");
-    const menu = await fixture(html`<site-menu></site-menu>`);
+    const menu = await fixture(html`<site-menu show-progress></site-menu>`);
     await flush(150);
     await menu.updateComplete;
     // the old "N of M pages done" summary is gone
@@ -341,8 +341,8 @@ describe("HAXcms learner progress", () => {
     await Promise.all(Object.values(items).map((i) => i.updateComplete));
     expect(items.p1.shadowRoot.querySelector(".active-ring")).to.equal(null);
     expect(items.p3.shadowRoot.querySelector(".active-ring")).to.exist;
-    // hide-progress turns it off
-    menu.hideProgress = true;
+    // turning show-progress off removes it
+    menu.showProgress = false;
     await menu.updateComplete;
     await mm.updateComplete;
     expect(mm.activeProgress).to.equal(null);
@@ -351,7 +351,7 @@ describe("HAXcms learner progress", () => {
   it("site menu ring turns into a check when the page is done", async () => {
     host.innerHTML = `<multiple-choice></multiple-choice>`;
     LearnerProgress.scanPage(host);
-    const menu = await fixture(html`<site-menu></site-menu>`);
+    const menu = await fixture(html`<site-menu show-progress></site-menu>`);
     await flush(150);
     const mm = menu.shadowRoot.querySelector("map-menu");
     const p1 = () => {
@@ -378,8 +378,27 @@ describe("HAXcms learner progress", () => {
     ).to.equal("icons:check");
   });
 
-  it("site menu shows no ring while editing", async () => {
+  it("site menu shows no ring unless the theme opts in", async () => {
+    host.innerHTML = `<multiple-choice></multiple-choice>`;
+    LearnerProgress.scanPage(host);
+    answer(host, "q1", true, true);
     const menu = await fixture(html`<site-menu></site-menu>`);
+    await flush(150);
+    await menu.updateComplete;
+    const mm = menu.shadowRoot.querySelector("map-menu");
+    await mm.updateComplete;
+    expect(menu.showProgress).to.equal(false);
+    expect(mm.activeProgress).to.equal(null);
+    menu.showProgress = true;
+    await menu.updateComplete;
+    await mm.updateComplete;
+    expect(mm.activeProgress).to.equal(
+      LearnerProgress.pageProgress("p1").percent,
+    );
+  });
+
+  it("site menu shows no ring while editing", async () => {
+    const menu = await fixture(html`<site-menu show-progress></site-menu>`);
     await flush(150);
     const mm = menu.shadowRoot.querySelector("map-menu");
     expect(mm.activeProgress).to.equal(0);

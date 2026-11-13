@@ -1,0 +1,20 @@
+<p>This page follows the component page pattern: usage guidance, the style tokens, and code, each on its own tab.</p>
+<a11y-tabs>
+<a11y-tab label="Usage">
+<h2>When to use</h2>
+<p>Use a button for an action, such as submitting or starting a task. Use a link to go somewhere.</p>
+<p><simple-cta link="components" label="Primary action" data-primary="1"></simple-cta> <simple-cta link="components" label="Secondary action" data-primary="4"></simple-cta></p>
+<stop-note status="warning" title="One primary button"><span slot="message">Two primary buttons compete for attention. Make the second one secondary.</span></stop-note>
+</a11y-tab>
+<a11y-tab label="Style">
+<h2>Tokens</h2>
+<editable-table bordered>
+<table><caption>Tokens a primary button reads</caption><thead><tr><th scope="col">Part</th><th scope="col">DDD token</th><th scope="col">Carbon value</th></tr></thead>
+<tbody><tr><td>Background</td><td>--ddd-theme-default-beaverBlue</td><td>blue 60</td></tr><tr><td>Corner</td><td>--ddd-radius-sm</td><td>0</td></tr><tr><td>Focus</td><td>--ddd-focus-ring</td><td>2px focus color, inset</td></tr></tbody></table>
+</editable-table>
+</a11y-tab>
+<a11y-tab label="Code">
+<h2>Markup</h2>
+<code-sample type="html"><template preserve-content="preserve-content"><simple-cta link="/next" label="Primary action"></simple-cta></template></code-sample>
+</a11y-tab>
+</a11y-tabs>

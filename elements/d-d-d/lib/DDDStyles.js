@@ -2081,7 +2081,32 @@ const DDDResetEnd = css`
   ol[type="I"] {
     padding-inline-start: var(--ddd-spacing-16);
   }
+  /* markers: palette, then theme primary; a list that picks its own
+     data-primary keeps it */
   ul li::marker {
+    color: var(
+      --lowContrast-override,
+      var(
+        --ddd-palette-marker,
+        var(--ddd-theme-primary, var(--ddd-theme-default-skyBlue))
+      )
+    );
+  }
+  ol li::marker {
+    color: var(--lowContrast-override, var(--ddd-palette-marker, inherit));
+  }
+  ul li li::marker,
+  ol li li::marker {
+    color: var(
+      --lowContrast-override,
+      var(
+        --ddd-palette-secondary,
+        var(--ddd-theme-primary, var(--ddd-theme-default-skyBlue))
+      )
+    );
+  }
+  ul[data-primary] li::marker,
+  ol[data-primary] li::marker {
     color: var(
       --lowContrast-override,
       var(--ddd-theme-primary, var(--ddd-theme-default-skyBlue))
@@ -2091,11 +2116,15 @@ const DDDResetEnd = css`
     font-family: var(--ddd-font-primary);
     font-size: var(--ddd-theme-body-font-size);
     font-style: italic;
-    border-left: var(--ddd-spacing-1) solid var(--ddd-theme-primary);
+    border-left: var(--ddd-spacing-1) solid
+      var(--ddd-palette-accent, var(--ddd-theme-primary));
     padding-left: var(--ddd-spacing-6);
     padding-bottom: var(--ddd-spacing-2);
     margin: var(--ddd-spacing-9) 0 var(--ddd-spacing-9) var(--ddd-spacing-10);
     line-height: var(--ddd-lh-150);
+  }
+  blockquote[data-primary] {
+    border-left-color: var(--ddd-theme-primary);
   }
   hr {
     display: block;
@@ -2130,10 +2159,37 @@ const DDDResetEnd = css`
       background-color var(--ddd-duration-normal, 0.3s) ease-in-out;
   }
 
+  /* treatment lines and instructional icons: palette, then theme primary;
+     an element that picks its own data-primary keeps it */
+  [data-design-treatment],
+  [data-instructional-action] {
+    --ddd-treatment-accent: var(
+      --ddd-palette-accent,
+      var(--ddd-theme-primary, var(--ddd-primary-0))
+    );
+  }
+  [data-design-treatment][data-primary],
+  [data-instructional-action][data-primary] {
+    --ddd-treatment-accent: var(--ddd-theme-primary, var(--ddd-primary-0));
+  }
+  /* the action icon: palette chip, then theme primary, then the colour of
+     the action type */
+  [data-instructional-action] {
+    --ddd-instructional-icon: var(
+      --ddd-palette-chip,
+      var(--ddd-theme-primary, var(--instructional-action-color, blue))
+    );
+  }
+  [data-instructional-action][data-primary] {
+    --ddd-instructional-icon: var(
+      --ddd-theme-primary,
+      var(--instructional-action-color, blue)
+    );
+  }
   [data-design-treatment="vert"] {
     border-bottom: none;
     border-left: var(--ddd-theme-header-border-thickness) solid
-      var(--ddd-theme-primary, var(--ddd-primary-0));
+      var(--ddd-treatment-accent);
     padding-left: var(--ddd-spacing-3);
   }
 
@@ -2178,7 +2234,7 @@ const DDDResetEnd = css`
     transition: width var(--ddd-duration-normal, 0.3s) ease-in-out;
     width: var(--ddd-theme-header-border-treatment);
     border-bottom: var(--ddd-theme-header-border-thickness) solid
-      var(--ddd-theme-primary, var(--ddd-primary-0));
+      var(--ddd-treatment-accent);
     height: 0;
     display: block;
     padding-top: var(--ddd-spacing-2);
@@ -2192,7 +2248,7 @@ const DDDResetEnd = css`
     content: "";
     width: var(--ddd-theme-header-border-treatment);
     border-bottom: var(--ddd-theme-header-border-thickness) solid
-      var(--ddd-theme-primary, var(--ddd-primary-0));
+      var(--ddd-treatment-accent);
     height: 0;
     display: block;
     position: relative;
@@ -2229,7 +2285,7 @@ const DDDResetEnd = css`
     z-index: 2;
     background-color: var(
       --lowContrast-override,
-      var(--ddd-theme-primary, var(--instructional-action-color, blue))
+      var(--ddd-instructional-icon)
     );
     mask-repeat: no-repeat;
     mask-size: contain;
@@ -2772,6 +2828,18 @@ export const DDDAnimations = css`
   }
 `;
 
+/* Palette accent roles (--ddd-palette-accent, -accent-ink, -marker,
+   -secondary, -chip, -chip-ink, -tint) are set only inside a data-palette
+   block, so with no palette they are undefined and every consumer falls
+   back to what it drew before. They colour decorative accents only: seek
+   bars, active edges, list markers, heading rules, instructional chips and
+   their tint. Colour that carries meaning (--ddd-status-*, stop-note
+   status, errors) never reads them.
+   Accent priority, last match wins:
+     1 element default   2 theme default (--ddd-theme-primary)
+     3 theme palette     4 instructional significance / other indicator
+     5 colour picked on the element itself (accent-color, data-primary)
+   In var() fallbacks that reads 5, 4, 3, 2, 1. */
 export const DDDPaletteStyles = css`
   /** Default Palette */
   html,
@@ -2817,6 +2885,43 @@ export const DDDPaletteStyles = css`
     --ddd-palette-text-color-7: var(
       --simple-colors-default-theme-deep-orange-10
     );
+    /* accent roles: decorative accents only, never meaning (status) colours */
+    --ddd-palette-accent: light-dark(
+      var(--ddd-palette-color-3),
+      var(--ddd-palette-color-4)
+    );
+    --ddd-palette-accent-ink: light-dark(
+      var(--ddd-theme-default-nittanyNavy),
+      var(--ddd-palette-text-color-4)
+    );
+    --ddd-palette-marker: light-dark(
+      var(--ddd-palette-color-3),
+      var(--ddd-palette-color-4)
+    );
+    --ddd-palette-secondary: light-dark(
+      var(--ddd-palette-color-1),
+      var(--ddd-palette-color-6)
+    );
+    --ddd-palette-chip: light-dark(
+      var(--ddd-palette-color-3),
+      var(--ddd-palette-color-4)
+    );
+    --ddd-palette-chip-ink: light-dark(
+      var(--ddd-theme-default-nittanyNavy),
+      var(--ddd-palette-text-color-4)
+    );
+    --ddd-palette-tint: light-dark(
+      color-mix(
+        in srgb,
+        var(--ddd-palette-color-3) 14%,
+        var(--ddd-theme-default-white)
+      ),
+      color-mix(
+        in srgb,
+        var(--ddd-palette-color-4) 24%,
+        var(--ddd-theme-default-potentialMidnight)
+      )
+    );
   }
 
   /** Very Violent Red */
@@ -2840,6 +2945,25 @@ export const DDDPaletteStyles = css`
     --ddd-palette-text-color-5: var(--simple-colors-default-theme-red-10);
     --ddd-palette-text-color-6: var(--ddd-theme-default-skyLight);
     --ddd-palette-text-color-7: var(--simple-colors-default-theme-blue-10);
+    /* accent roles: decorative accents only, never meaning (status) colours */
+    --ddd-palette-accent: var(--ddd-palette-color-3);
+    --ddd-palette-accent-ink: var(--ddd-palette-text-color-3);
+    --ddd-palette-marker: var(--ddd-palette-color-3);
+    --ddd-palette-secondary: var(--ddd-palette-color-2);
+    --ddd-palette-chip: var(--ddd-palette-color-3);
+    --ddd-palette-chip-ink: var(--ddd-palette-text-color-3);
+    --ddd-palette-tint: light-dark(
+      color-mix(
+        in srgb,
+        var(--ddd-palette-color-3) 14%,
+        var(--ddd-theme-default-white)
+      ),
+      color-mix(
+        in srgb,
+        var(--ddd-palette-color-3) 24%,
+        var(--ddd-theme-default-potentialMidnight)
+      )
+    );
   }
 
   /** Beetles Yellow */
@@ -2863,6 +2987,43 @@ export const DDDPaletteStyles = css`
     --ddd-palette-text-color-5: var(--simple-colors-fixed-theme-deep-orange-11);
     --ddd-palette-text-color-6: var(--simple-colors-fixed-theme-cyan-12);
     --ddd-palette-text-color-7: var(--simple-colors-fixed-theme-light-blue-10);
+    /* accent roles: decorative accents only, never meaning (status) colours */
+    --ddd-palette-accent: light-dark(
+      var(--ddd-palette-color-2),
+      var(--ddd-palette-color-4)
+    );
+    --ddd-palette-accent-ink: light-dark(
+      var(--ddd-palette-text-color-2),
+      var(--ddd-palette-text-color-4)
+    );
+    --ddd-palette-marker: light-dark(
+      var(--ddd-palette-color-2),
+      var(--ddd-palette-color-4)
+    );
+    --ddd-palette-secondary: light-dark(
+      var(--ddd-palette-color-6),
+      var(--ddd-palette-color-2)
+    );
+    --ddd-palette-chip: light-dark(
+      var(--ddd-palette-color-2),
+      var(--ddd-palette-color-4)
+    );
+    --ddd-palette-chip-ink: light-dark(
+      var(--ddd-palette-text-color-2),
+      var(--ddd-palette-text-color-4)
+    );
+    --ddd-palette-tint: light-dark(
+      color-mix(
+        in srgb,
+        var(--ddd-palette-color-2) 14%,
+        var(--ddd-theme-default-white)
+      ),
+      color-mix(
+        in srgb,
+        var(--ddd-palette-color-4) 24%,
+        var(--ddd-theme-default-potentialMidnight)
+      )
+    );
   }
 
   /* Offbrand Nittany Blue */
@@ -2886,6 +3047,40 @@ export const DDDPaletteStyles = css`
     --ddd-palette-text-color-5: var(--simple-colors-fixed-theme-light-blue-10);
     --ddd-palette-text-color-6: var(--simple-colors-fixed-theme-orange-12);
     --ddd-palette-text-color-7: var(--simple-colors-fixed-theme-orange-10);
+    /* accent roles: decorative accents only, never meaning (status) colours */
+    --ddd-palette-accent: light-dark(
+      var(--ddd-palette-color-3),
+      var(--ddd-palette-color-4)
+    );
+    --ddd-palette-accent-ink: light-dark(
+      var(--ddd-palette-text-color-3),
+      var(--ddd-palette-text-color-4)
+    );
+    --ddd-palette-marker: light-dark(
+      var(--ddd-palette-color-3),
+      var(--ddd-palette-color-4)
+    );
+    --ddd-palette-secondary: var(--ddd-palette-color-6);
+    --ddd-palette-chip: light-dark(
+      var(--ddd-palette-color-3),
+      var(--ddd-palette-color-4)
+    );
+    --ddd-palette-chip-ink: light-dark(
+      var(--ddd-palette-text-color-3),
+      var(--ddd-palette-text-color-4)
+    );
+    --ddd-palette-tint: light-dark(
+      color-mix(
+        in srgb,
+        var(--ddd-palette-color-3) 14%,
+        var(--ddd-theme-default-white)
+      ),
+      color-mix(
+        in srgb,
+        var(--ddd-palette-color-4) 24%,
+        var(--ddd-theme-default-potentialMidnight)
+      )
+    );
   }
 
   /* Boring Blue Gray */
@@ -2909,6 +3104,43 @@ export const DDDPaletteStyles = css`
     --ddd-palette-text-color-5: var(--simple-colors-fixed-theme-blue-grey-11);
     --ddd-palette-text-color-6: var(--simple-colors-fixed-theme-blue-grey-1);
     --ddd-palette-text-color-7: var(--simple-colors-fixed-theme-blue-grey-10);
+    /* accent roles: decorative accents only, never meaning (status) colours */
+    --ddd-palette-accent: light-dark(
+      var(--ddd-palette-color-3),
+      var(--ddd-palette-color-4)
+    );
+    --ddd-palette-accent-ink: light-dark(
+      var(--ddd-palette-text-color-3),
+      var(--ddd-palette-text-color-4)
+    );
+    --ddd-palette-marker: light-dark(
+      var(--ddd-palette-color-3),
+      var(--ddd-palette-color-4)
+    );
+    --ddd-palette-secondary: light-dark(
+      var(--ddd-palette-color-4),
+      var(--ddd-palette-color-7)
+    );
+    --ddd-palette-chip: light-dark(
+      var(--ddd-palette-color-3),
+      var(--ddd-palette-color-4)
+    );
+    --ddd-palette-chip-ink: light-dark(
+      var(--ddd-palette-text-color-3),
+      var(--ddd-palette-text-color-4)
+    );
+    --ddd-palette-tint: light-dark(
+      color-mix(
+        in srgb,
+        var(--ddd-palette-color-3) 14%,
+        var(--ddd-theme-default-white)
+      ),
+      color-mix(
+        in srgb,
+        var(--ddd-palette-color-4) 24%,
+        var(--ddd-theme-default-potentialMidnight)
+      )
+    );
   }
 
   /** Monotone Gray */
@@ -2932,6 +3164,40 @@ export const DDDPaletteStyles = css`
     --ddd-palette-text-color-5: var(--simple-colors-fixed-theme-grey-12);
     --ddd-palette-text-color-6: var(--simple-colors-fixed-theme-grey-12);
     --ddd-palette-text-color-7: var(--simple-colors-fixed-theme-orange-12);
+    /* accent roles: decorative accents only, never meaning (status) colours */
+    --ddd-palette-accent: light-dark(
+      var(--ddd-palette-color-3),
+      var(--ddd-palette-color-5)
+    );
+    --ddd-palette-accent-ink: light-dark(
+      var(--ddd-palette-text-color-3),
+      var(--ddd-palette-text-color-5)
+    );
+    --ddd-palette-marker: light-dark(
+      var(--ddd-palette-color-3),
+      var(--ddd-palette-color-5)
+    );
+    --ddd-palette-secondary: var(--ddd-palette-color-4);
+    --ddd-palette-chip: light-dark(
+      var(--ddd-palette-color-3),
+      var(--ddd-palette-color-5)
+    );
+    --ddd-palette-chip-ink: light-dark(
+      var(--ddd-palette-text-color-3),
+      var(--ddd-palette-text-color-5)
+    );
+    --ddd-palette-tint: light-dark(
+      color-mix(
+        in srgb,
+        var(--ddd-palette-color-3) 14%,
+        var(--ddd-theme-default-white)
+      ),
+      color-mix(
+        in srgb,
+        var(--ddd-palette-color-5) 24%,
+        var(--ddd-theme-default-potentialMidnight)
+      )
+    );
   }
 
   /** Salmon Season */
@@ -2958,6 +3224,43 @@ export const DDDPaletteStyles = css`
     --ddd-palette-text-color-7: var(
       --simple-colors-default-theme-light-green-10
     );
+    /* accent roles: decorative accents only, never meaning (status) colours */
+    --ddd-palette-accent: light-dark(
+      var(--ddd-palette-color-3),
+      var(--ddd-palette-color-4)
+    );
+    --ddd-palette-accent-ink: light-dark(
+      var(--ddd-palette-text-color-3),
+      var(--ddd-palette-text-color-4)
+    );
+    --ddd-palette-marker: light-dark(
+      var(--ddd-palette-color-3),
+      var(--ddd-palette-color-4)
+    );
+    --ddd-palette-secondary: light-dark(
+      var(--ddd-palette-color-6),
+      var(--ddd-palette-color-7)
+    );
+    --ddd-palette-chip: light-dark(
+      var(--ddd-palette-color-3),
+      var(--ddd-palette-color-4)
+    );
+    --ddd-palette-chip-ink: light-dark(
+      var(--ddd-palette-text-color-3),
+      var(--ddd-palette-text-color-4)
+    );
+    --ddd-palette-tint: light-dark(
+      color-mix(
+        in srgb,
+        var(--ddd-palette-color-3) 14%,
+        var(--ddd-theme-default-white)
+      ),
+      color-mix(
+        in srgb,
+        var(--ddd-palette-color-4) 24%,
+        var(--ddd-theme-default-potentialMidnight)
+      )
+    );
   }
 
   /** Tweedle Dee */
@@ -2983,6 +3286,25 @@ export const DDDPaletteStyles = css`
     --ddd-palette-text-color-5: var(--simple-colors-default-theme-teal-1);
     --ddd-palette-text-color-6: var(--simple-colors-default-theme-purple-1);
     --ddd-palette-text-color-7: var(--ddd-theme-default-white);
+    /* accent roles: decorative accents only, never meaning (status) colours */
+    --ddd-palette-accent: var(--ddd-palette-color-3);
+    --ddd-palette-accent-ink: var(--ddd-theme-default-nittanyNavy);
+    --ddd-palette-marker: var(--ddd-palette-color-3);
+    --ddd-palette-secondary: var(--ddd-palette-color-7);
+    --ddd-palette-chip: var(--ddd-palette-color-3);
+    --ddd-palette-chip-ink: var(--ddd-theme-default-nittanyNavy);
+    --ddd-palette-tint: light-dark(
+      color-mix(
+        in srgb,
+        var(--ddd-palette-color-3) 14%,
+        var(--ddd-theme-default-white)
+      ),
+      color-mix(
+        in srgb,
+        var(--ddd-palette-color-3) 24%,
+        var(--ddd-theme-default-potentialMidnight)
+      )
+    );
   }
 
   /* Polaris Invent */
@@ -3007,6 +3329,28 @@ export const DDDPaletteStyles = css`
     --ddd-palette-text-color-5: var(--ddd-theme-default-coalyGray);
     --ddd-palette-text-color-6: var(--ddd-theme-default-white);
     --ddd-palette-text-color-7: var(--ddd-theme-default-coalyGray);
+    /* accent roles: decorative accents only, never meaning (status) colours */
+    --ddd-palette-accent: var(--ddd-palette-color-1);
+    --ddd-palette-accent-ink: var(--ddd-theme-default-nittanyNavy);
+    --ddd-palette-marker: var(--ddd-palette-color-1);
+    --ddd-palette-secondary: light-dark(
+      var(--ddd-palette-color-3),
+      var(--ddd-palette-color-7)
+    );
+    --ddd-palette-chip: var(--ddd-palette-color-1);
+    --ddd-palette-chip-ink: var(--ddd-theme-default-nittanyNavy);
+    --ddd-palette-tint: light-dark(
+      color-mix(
+        in srgb,
+        var(--ddd-palette-color-1) 14%,
+        var(--ddd-theme-default-white)
+      ),
+      color-mix(
+        in srgb,
+        var(--ddd-palette-color-1) 24%,
+        var(--ddd-theme-default-potentialMidnight)
+      )
+    );
   }
 
   [data-palette="positively-purple"],
@@ -3035,6 +3379,40 @@ export const DDDPaletteStyles = css`
     );
     --ddd-palette-text-color-6: var(--ddd-theme-default-coalyGray);
     --ddd-palette-text-color-7: var(--simple-colors-default-theme-brown-11);
+    /* accent roles: decorative accents only, never meaning (status) colours */
+    --ddd-palette-accent: light-dark(
+      var(--ddd-palette-color-2),
+      var(--ddd-palette-color-3)
+    );
+    --ddd-palette-accent-ink: light-dark(
+      var(--ddd-theme-default-white),
+      var(--ddd-theme-default-nittanyNavy)
+    );
+    --ddd-palette-marker: light-dark(
+      var(--ddd-palette-color-2),
+      var(--ddd-palette-color-3)
+    );
+    --ddd-palette-secondary: var(--ddd-palette-color-6);
+    --ddd-palette-chip: light-dark(
+      var(--ddd-palette-color-2),
+      var(--ddd-palette-color-3)
+    );
+    --ddd-palette-chip-ink: light-dark(
+      var(--ddd-theme-default-white),
+      var(--ddd-theme-default-nittanyNavy)
+    );
+    --ddd-palette-tint: light-dark(
+      color-mix(
+        in srgb,
+        var(--ddd-palette-color-2) 14%,
+        var(--ddd-theme-default-white)
+      ),
+      color-mix(
+        in srgb,
+        var(--ddd-palette-color-3) 24%,
+        var(--ddd-theme-default-potentialMidnight)
+      )
+    );
   }
 
   [data-palette="honey-bear"],
@@ -3057,6 +3435,43 @@ export const DDDPaletteStyles = css`
     --ddd-palette-text-color-5: var(--simple-colors-default-theme-brown-2);
     --ddd-palette-text-color-6: var(--simple-colors-default-theme-orange-3);
     --ddd-palette-text-color-7: var(--simple-colors-default-theme-orange-4);
+    /* accent roles: decorative accents only, never meaning (status) colours */
+    --ddd-palette-accent: light-dark(
+      var(--ddd-palette-color-3),
+      var(--ddd-palette-color-2)
+    );
+    --ddd-palette-accent-ink: light-dark(
+      var(--ddd-theme-default-white),
+      var(--ddd-palette-text-color-2)
+    );
+    --ddd-palette-marker: light-dark(
+      var(--ddd-palette-color-3),
+      var(--ddd-palette-color-2)
+    );
+    --ddd-palette-secondary: light-dark(
+      var(--ddd-palette-color-6),
+      var(--ddd-palette-color-1)
+    );
+    --ddd-palette-chip: light-dark(
+      var(--ddd-palette-color-3),
+      var(--ddd-palette-color-2)
+    );
+    --ddd-palette-chip-ink: light-dark(
+      var(--ddd-theme-default-white),
+      var(--ddd-palette-text-color-2)
+    );
+    --ddd-palette-tint: light-dark(
+      color-mix(
+        in srgb,
+        var(--ddd-palette-color-3) 14%,
+        var(--ddd-theme-default-white)
+      ),
+      color-mix(
+        in srgb,
+        var(--ddd-palette-color-2) 24%,
+        var(--ddd-theme-default-potentialMidnight)
+      )
+    );
   }
 
   [data-palette="boldly-lion"],
@@ -3080,6 +3495,43 @@ export const DDDPaletteStyles = css`
     --ddd-palette-text-color-5: var(--ddd-theme-default-nittanyNavy);
     --ddd-palette-text-color-6: var(--ddd-theme-default-limestoneLight);
     --ddd-palette-text-color-7: var(--ddd-theme-default-nittanyNavy);
+    /* accent roles: decorative accents only, never meaning (status) colours */
+    --ddd-palette-accent: light-dark(
+      var(--ddd-palette-color-2),
+      var(--ddd-palette-color-3)
+    );
+    --ddd-palette-accent-ink: light-dark(
+      var(--ddd-palette-text-color-2),
+      var(--ddd-theme-default-nittanyNavy)
+    );
+    --ddd-palette-marker: light-dark(
+      var(--ddd-palette-color-2),
+      var(--ddd-palette-color-3)
+    );
+    --ddd-palette-secondary: light-dark(
+      var(--ddd-palette-color-1),
+      var(--ddd-palette-color-7)
+    );
+    --ddd-palette-chip: light-dark(
+      var(--ddd-palette-color-2),
+      var(--ddd-palette-color-3)
+    );
+    --ddd-palette-chip-ink: light-dark(
+      var(--ddd-palette-text-color-2),
+      var(--ddd-theme-default-nittanyNavy)
+    );
+    --ddd-palette-tint: light-dark(
+      color-mix(
+        in srgb,
+        var(--ddd-palette-color-2) 14%,
+        var(--ddd-theme-default-white)
+      ),
+      color-mix(
+        in srgb,
+        var(--ddd-palette-color-3) 24%,
+        var(--ddd-theme-default-potentialMidnight)
+      )
+    );
   }
 
   /** Ocean Current */
@@ -3105,6 +3557,25 @@ export const DDDPaletteStyles = css`
     --ddd-palette-text-color-5: var(--ddd-theme-default-black);
     --ddd-palette-text-color-6: var(--simple-colors-default-theme-blue-grey-2);
     --ddd-palette-text-color-7: var(--ddd-theme-default-coalyGray);
+    /* accent roles: decorative accents only, never meaning (status) colours */
+    --ddd-palette-accent: var(--ddd-palette-color-4);
+    --ddd-palette-accent-ink: var(--ddd-theme-default-nittanyNavy);
+    --ddd-palette-marker: var(--ddd-palette-color-4);
+    --ddd-palette-secondary: var(--ddd-palette-color-7);
+    --ddd-palette-chip: var(--ddd-palette-color-4);
+    --ddd-palette-chip-ink: var(--ddd-theme-default-nittanyNavy);
+    --ddd-palette-tint: light-dark(
+      color-mix(
+        in srgb,
+        var(--ddd-palette-color-4) 14%,
+        var(--ddd-theme-default-white)
+      ),
+      color-mix(
+        in srgb,
+        var(--ddd-palette-color-4) 24%,
+        var(--ddd-theme-default-potentialMidnight)
+      )
+    );
   }
 
   /** Twilight Indigo */
@@ -3132,6 +3603,43 @@ export const DDDPaletteStyles = css`
     --ddd-palette-text-color-5: var(--simple-colors-default-theme-purple-2);
     --ddd-palette-text-color-6: var(--simple-colors-default-theme-blue-grey-1);
     --ddd-palette-text-color-7: var(--simple-colors-default-theme-blue-grey-2);
+    /* accent roles: decorative accents only, never meaning (status) colours */
+    --ddd-palette-accent: light-dark(
+      var(--ddd-palette-color-4),
+      var(--ddd-palette-color-3)
+    );
+    --ddd-palette-accent-ink: light-dark(
+      var(--ddd-palette-text-color-4),
+      var(--ddd-palette-text-color-3)
+    );
+    --ddd-palette-marker: light-dark(
+      var(--ddd-palette-color-4),
+      var(--ddd-palette-color-3)
+    );
+    --ddd-palette-secondary: light-dark(
+      var(--ddd-palette-color-3),
+      var(--ddd-palette-color-2)
+    );
+    --ddd-palette-chip: light-dark(
+      var(--ddd-palette-color-4),
+      var(--ddd-palette-color-3)
+    );
+    --ddd-palette-chip-ink: light-dark(
+      var(--ddd-palette-text-color-4),
+      var(--ddd-palette-text-color-3)
+    );
+    --ddd-palette-tint: light-dark(
+      color-mix(
+        in srgb,
+        var(--ddd-palette-color-4) 14%,
+        var(--ddd-theme-default-white)
+      ),
+      color-mix(
+        in srgb,
+        var(--ddd-palette-color-3) 24%,
+        var(--ddd-theme-default-potentialMidnight)
+      )
+    );
   }
 
   /** Evergreen Earth */
@@ -3155,6 +3663,25 @@ export const DDDPaletteStyles = css`
     --ddd-palette-text-color-5: var(--simple-colors-default-theme-brown-1);
     --ddd-palette-text-color-6: var(--simple-colors-default-theme-amber-1);
     --ddd-palette-text-color-7: var(--simple-colors-default-theme-brown-2);
+    /* accent roles: decorative accents only, never meaning (status) colours */
+    --ddd-palette-accent: var(--ddd-palette-color-3);
+    --ddd-palette-accent-ink: var(--ddd-theme-default-nittanyNavy);
+    --ddd-palette-marker: var(--ddd-palette-color-3);
+    --ddd-palette-secondary: var(--ddd-palette-color-6);
+    --ddd-palette-chip: var(--ddd-palette-color-3);
+    --ddd-palette-chip-ink: var(--ddd-theme-default-nittanyNavy);
+    --ddd-palette-tint: light-dark(
+      color-mix(
+        in srgb,
+        var(--ddd-palette-color-3) 14%,
+        var(--ddd-theme-default-white)
+      ),
+      color-mix(
+        in srgb,
+        var(--ddd-palette-color-3) 24%,
+        var(--ddd-theme-default-potentialMidnight)
+      )
+    );
   }
 
   /** Graphite Contrast */
@@ -3178,6 +3705,25 @@ export const DDDPaletteStyles = css`
     --ddd-palette-text-color-5: var(--simple-colors-default-theme-blue-grey-12);
     --ddd-palette-text-color-6: var(--ddd-theme-default-coalyGray);
     --ddd-palette-text-color-7: var(--ddd-theme-default-coalyGray);
+    /* accent roles: decorative accents only, never meaning (status) colours */
+    --ddd-palette-accent: var(--ddd-palette-color-6);
+    --ddd-palette-accent-ink: var(--ddd-theme-default-nittanyNavy);
+    --ddd-palette-marker: var(--ddd-palette-color-6);
+    --ddd-palette-secondary: var(--ddd-palette-color-7);
+    --ddd-palette-chip: var(--ddd-palette-color-6);
+    --ddd-palette-chip-ink: var(--ddd-theme-default-nittanyNavy);
+    --ddd-palette-tint: light-dark(
+      color-mix(
+        in srgb,
+        var(--ddd-palette-color-6) 14%,
+        var(--ddd-theme-default-white)
+      ),
+      color-mix(
+        in srgb,
+        var(--ddd-palette-color-6) 24%,
+        var(--ddd-theme-default-potentialMidnight)
+      )
+    );
   }
 
   /** Tidepool Teal: teal and aqua with coral and sand accents. Literal values; every
@@ -3202,6 +3748,43 @@ export const DDDPaletteStyles = css`
     --ddd-palette-text-color-5: #0e534a;
     --ddd-palette-text-color-6: #300b03;
     --ddd-palette-text-color-7: #5c4305;
+    /* accent roles: decorative accents only, never meaning (status) colours */
+    --ddd-palette-accent: light-dark(
+      var(--ddd-palette-color-3),
+      var(--ddd-palette-color-4)
+    );
+    --ddd-palette-accent-ink: light-dark(
+      var(--ddd-palette-text-color-3),
+      var(--ddd-palette-text-color-4)
+    );
+    --ddd-palette-marker: light-dark(
+      var(--ddd-palette-color-3),
+      var(--ddd-palette-color-4)
+    );
+    --ddd-palette-secondary: light-dark(
+      var(--ddd-palette-color-2),
+      var(--ddd-palette-color-6)
+    );
+    --ddd-palette-chip: light-dark(
+      var(--ddd-palette-color-3),
+      var(--ddd-palette-color-4)
+    );
+    --ddd-palette-chip-ink: light-dark(
+      var(--ddd-palette-text-color-3),
+      var(--ddd-palette-text-color-4)
+    );
+    --ddd-palette-tint: light-dark(
+      color-mix(
+        in srgb,
+        var(--ddd-palette-color-3) 14%,
+        var(--ddd-theme-default-white)
+      ),
+      color-mix(
+        in srgb,
+        var(--ddd-palette-color-4) 24%,
+        var(--ddd-theme-default-potentialMidnight)
+      )
+    );
   }
 
   /** Desert Dune: umber, clay, terracotta and sand with sage and dusty teal accents. Literal values; every
@@ -3226,6 +3809,28 @@ export const DDDPaletteStyles = css`
     --ddd-palette-text-color-5: #5f4216;
     --ddd-palette-text-color-6: #000000;
     --ddd-palette-text-color-7: #fbfdfd;
+    /* accent roles: decorative accents only, never meaning (status) colours */
+    --ddd-palette-accent: var(--ddd-palette-color-3);
+    --ddd-palette-accent-ink: var(--ddd-palette-text-color-3);
+    --ddd-palette-marker: var(--ddd-palette-color-3);
+    --ddd-palette-secondary: light-dark(
+      var(--ddd-palette-color-7),
+      var(--ddd-palette-color-4)
+    );
+    --ddd-palette-chip: var(--ddd-palette-color-3);
+    --ddd-palette-chip-ink: var(--ddd-palette-text-color-3);
+    --ddd-palette-tint: light-dark(
+      color-mix(
+        in srgb,
+        var(--ddd-palette-color-3) 14%,
+        var(--ddd-theme-default-white)
+      ),
+      color-mix(
+        in srgb,
+        var(--ddd-palette-color-3) 24%,
+        var(--ddd-theme-default-potentialMidnight)
+      )
+    );
   }
 
   /** Berry Bramble: berry and magenta with leaf green and gold accents. Literal values; every
@@ -3250,6 +3855,43 @@ export const DDDPaletteStyles = css`
     --ddd-palette-text-color-5: #79114c;
     --ddd-palette-text-color-6: #ffffff;
     --ddd-palette-text-color-7: #3e2a04;
+    /* accent roles: decorative accents only, never meaning (status) colours */
+    --ddd-palette-accent: light-dark(
+      var(--ddd-palette-color-3),
+      var(--ddd-palette-color-4)
+    );
+    --ddd-palette-accent-ink: light-dark(
+      var(--ddd-palette-text-color-3),
+      var(--ddd-palette-text-color-4)
+    );
+    --ddd-palette-marker: light-dark(
+      var(--ddd-palette-color-3),
+      var(--ddd-palette-color-4)
+    );
+    --ddd-palette-secondary: light-dark(
+      var(--ddd-palette-color-4),
+      var(--ddd-palette-color-7)
+    );
+    --ddd-palette-chip: light-dark(
+      var(--ddd-palette-color-3),
+      var(--ddd-palette-color-4)
+    );
+    --ddd-palette-chip-ink: light-dark(
+      var(--ddd-palette-text-color-3),
+      var(--ddd-palette-text-color-4)
+    );
+    --ddd-palette-tint: light-dark(
+      color-mix(
+        in srgb,
+        var(--ddd-palette-color-3) 14%,
+        var(--ddd-theme-default-white)
+      ),
+      color-mix(
+        in srgb,
+        var(--ddd-palette-color-4) 24%,
+        var(--ddd-theme-default-potentialMidnight)
+      )
+    );
   }
 
   /** Clear Sight: the Okabe-Ito colorblind-safe set. Literal values; every
@@ -3274,6 +3916,40 @@ export const DDDPaletteStyles = css`
     --ddd-palette-text-color-5: #4c4706;
     --ddd-palette-text-color-6: #000000;
     --ddd-palette-text-color-7: #000000;
+    /* accent roles: decorative accents only, never meaning (status) colours */
+    --ddd-palette-accent: light-dark(
+      var(--ddd-palette-color-2),
+      var(--ddd-palette-color-3)
+    );
+    --ddd-palette-accent-ink: light-dark(
+      var(--ddd-palette-text-color-2),
+      var(--ddd-palette-text-color-3)
+    );
+    --ddd-palette-marker: light-dark(
+      var(--ddd-palette-color-2),
+      var(--ddd-palette-color-3)
+    );
+    --ddd-palette-secondary: var(--ddd-palette-color-6);
+    --ddd-palette-chip: light-dark(
+      var(--ddd-palette-color-2),
+      var(--ddd-palette-color-3)
+    );
+    --ddd-palette-chip-ink: light-dark(
+      var(--ddd-palette-text-color-2),
+      var(--ddd-palette-text-color-3)
+    );
+    --ddd-palette-tint: light-dark(
+      color-mix(
+        in srgb,
+        var(--ddd-palette-color-2) 14%,
+        var(--ddd-theme-default-white)
+      ),
+      color-mix(
+        in srgb,
+        var(--ddd-palette-color-3) 24%,
+        var(--ddd-theme-default-potentialMidnight)
+      )
+    );
   }
 `;
 

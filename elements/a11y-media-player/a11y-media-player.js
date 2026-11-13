@@ -268,28 +268,35 @@ class A11yMediaPlayer extends SchemaBehaviors(
             var(--ddd-theme-default-limestoneMaxLight),
             var(--ddd-theme-default-slateGray)
           );
-          /* accent cascade: local accent-color (DDDAccentStyles), then the
-             theme palette (data-primary), then the default DDD blue. Only
-             the header chip and the seek fill / pin use it. */
+          /* accent cascade, last match wins: DDD blue, theme primary
+             (data-primary), theme palette (data-palette), local
+             accent-color (DDDAccentStyles). Only the header chip and the
+             seek fill / pin use it. */
           --a11y-media-accent-color: var(
             --ddd-accent-color,
             var(
-              --ddd-theme-primary,
-              light-dark(
-                var(--ddd-theme-default-beaverBlue),
-                var(--ddd-theme-default-skyBlue)
+              --ddd-palette-accent,
+              var(
+                --ddd-theme-primary,
+                light-dark(
+                  var(--ddd-theme-default-beaverBlue),
+                  var(--ddd-theme-default-skyBlue)
+                )
               )
             )
           );
           --a11y-media-accent-ink: var(
             --ddd-accent-color-ink,
             var(
-              --ddd-theme-bgContrast,
+              --ddd-palette-accent-ink,
               var(
-                --lowContrast-override,
-                light-dark(
-                  var(--ddd-theme-default-white),
-                  var(--ddd-theme-default-potentialMidnight)
+                --ddd-theme-bgContrast,
+                var(
+                  --lowContrast-override,
+                  light-dark(
+                    var(--ddd-theme-default-white),
+                    var(--ddd-theme-default-potentialMidnight)
+                  )
                 )
               )
             )
@@ -386,9 +393,16 @@ class A11yMediaPlayer extends SchemaBehaviors(
           );
           --a11y-media-caption-color: var(--a11y-media-accent-ink);
 
-          /* the header chip takes the accent (or palette) */
-          --ddd-block-chip-background: var(--a11y-media-accent-color);
-          --ddd-block-chip-color: var(--a11y-media-accent-ink);
+          /* the header chip: local accent, then the palette chip, then the
+             same theme / DDD default as the seek bar */
+          --ddd-block-chip-background: var(
+            --ddd-accent-color,
+            var(--ddd-palette-chip, var(--a11y-media-accent-color))
+          );
+          --ddd-block-chip-color: var(
+            --ddd-accent-color-ink,
+            var(--ddd-palette-chip-ink, var(--a11y-media-accent-ink))
+          );
         }
 
         /* accent-color defaults to grey (SimpleColors), which means no

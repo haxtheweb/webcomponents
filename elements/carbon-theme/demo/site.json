@@ -1,8 +1,8 @@
 {
   "id": "c4a7b0e1-6b3d-4e2a-9c8f-carbon000001",
-  "title": "Carbon for HAX",
+  "title": "Design system site",
   "author": "",
-  "description": "A HAXsite demonstrating carbon-theme and the Carbon DDD bridge.",
+  "description": "A demo site for carbon-theme in the layout of Carbon's own documentation, built from HAX blocks.",
   "license": "by-sa",
   "metadata": {
     "author": {
@@ -48,14 +48,14 @@
   },
   "items": [
     {
-      "id": "item-c4a7b0e1-overview",
+      "id": "item-c4a7b0e1-getting-started",
       "indent": 0,
-      "location": "pages/item-c4a7b0e1-overview/index.html",
-      "slug": "overview",
+      "location": "pages/item-c4a7b0e1-getting-started/index.html",
+      "slug": "getting-started",
       "order": 0,
       "parent": null,
-      "title": "Overview",
-      "description": "What the Carbon theme and design system bridge do.",
+      "title": "Getting started",
+      "description": "Everything you need to start designing and building with this theme: resources, setup and the components it styles.",
       "metadata": {
         "created": 1736889000,
         "updated": 1736889000,
@@ -68,14 +68,54 @@
       }
     },
     {
-      "id": "item-c4a7b0e1-blocks",
+      "id": "item-c4a7b0e1-getting-started-design-resources",
+      "indent": 1,
+      "location": "pages/item-c4a7b0e1-getting-started-design-resources/index.html",
+      "slug": "getting-started/design-resources",
+      "order": 0,
+      "parent": "item-c4a7b0e1-getting-started",
+      "title": "Design resources",
+      "description": "Explore libraries, kits, templates and color palettes to speed up designing sites and course materials with this theme.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-c4a7b0e1-getting-started-developing",
+      "indent": 1,
+      "location": "pages/item-c4a7b0e1-getting-started-developing/index.html",
+      "slug": "getting-started/developing",
+      "order": 1,
+      "parent": "item-c4a7b0e1-getting-started",
+      "title": "Developing",
+      "description": "Install the theme, turn it on for a site, and keep authored content portable.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-c4a7b0e1-components",
       "indent": 0,
-      "location": "pages/item-c4a7b0e1-blocks/index.html",
-      "slug": "blocks",
+      "location": "pages/item-c4a7b0e1-components/index.html",
+      "slug": "components",
       "order": 1,
       "parent": null,
-      "title": "Blocks in Carbon",
-      "description": "Common HAX blocks rendered through the Carbon bridge.",
+      "title": "Components",
+      "description": "How common interface patterns look when HAX blocks render through the Carbon bridge.",
       "metadata": {
         "created": 1736889000,
         "updated": 1736889000,
@@ -88,14 +128,14 @@
       }
     },
     {
-      "id": "item-c4a7b0e1-learning-checks",
+      "id": "item-c4a7b0e1-components-button",
       "indent": 1,
-      "location": "pages/item-c4a7b0e1-learning-checks/index.html",
-      "slug": "blocks/learning-checks",
+      "location": "pages/item-c4a7b0e1-components-button/index.html",
+      "slug": "components/button",
       "order": 0,
-      "parent": "item-c4a7b0e1-blocks",
-      "title": "Learning checks",
-      "description": "Answer states keep HAX meaning channels in Carbon colors.",
+      "parent": "item-c4a7b0e1-components",
+      "title": "Button",
+      "description": "Buttons start an action. Use one primary button per view, and secondary or ghost buttons for everything else.",
       "metadata": {
         "created": 1736889000,
         "updated": 1736889000,
@@ -108,14 +148,14 @@
       }
     },
     {
-      "id": "item-c4a7b0e1-color",
-      "indent": 0,
-      "location": "pages/item-c4a7b0e1-color/index.html",
-      "slug": "color",
-      "order": 2,
-      "parent": null,
-      "title": "Palette and color",
-      "description": "DDD palettes and accents mapped onto the Carbon palette.",
+      "id": "item-c4a7b0e1-components-learning-checks",
+      "indent": 1,
+      "location": "pages/item-c4a7b0e1-components-learning-checks/index.html",
+      "slug": "components/learning-checks",
+      "order": 1,
+      "parent": "item-c4a7b0e1-components",
+      "title": "Learning checks",
+      "description": "Answer states keep the HAX meaning channels, drawn from Carbon's green and purple.",
       "metadata": {
         "created": 1736889000,
         "updated": 1736889000,
@@ -132,10 +172,30 @@
       "indent": 0,
       "location": "pages/item-c4a7b0e1-about/index.html",
       "slug": "about",
-      "order": 3,
+      "order": 2,
       "parent": null,
       "title": "About the bridge",
-      "description": "How the mapping works, and upstream attribution.",
+      "description": "How Carbon tokens reach every HAX block, and upstream attribution.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-c4a7b0e1-about-color",
+      "indent": 1,
+      "location": "pages/item-c4a7b0e1-about-color/index.html",
+      "slug": "about/color",
+      "order": 0,
+      "parent": "item-c4a7b0e1-about",
+      "title": "Palette and color",
+      "description": "DDD palettes and accents mapped onto the Carbon palette.",
       "metadata": {
         "created": 1736889000,
         "updated": 1736889000,

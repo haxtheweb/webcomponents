@@ -1283,8 +1283,23 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         tag.indexOf("-") !== -1 &&
         !HAXCMSSiteBuilder.replaceTagExcludedTags.includes(tag)
       ) {
-        // shift the replacement over to with; leave everything else the same
-        html = html.replace("<" + tag, '<replace-tag with="' + tag + '" ');
+        // shift the replacement over to with; leave everything else the same.
+        // Match the whole tag name: a plain "<" + tag also matches a longer
+        // tag that starts with it (<a11y-tab inside <a11y-tabs), which turned
+        // the wrapper into a tab when the wrapper itself had been skipped
+        const opening = "<" + tag;
+        let at = html.indexOf(opening);
+        while (at !== -1 && !/[\s/>]/.test(html.charAt(at + opening.length))) {
+          at = html.indexOf(opening, at + 1);
+        }
+        if (at !== -1) {
+          html =
+            html.slice(0, at) +
+            '<replace-tag with="' +
+            tag +
+            '" ' +
+            html.slice(at + opening.length);
+        }
         // ensure a matching closing tag is also updated
         html = html.replace("</" + tag + ">", "</replace-tag>");
       }
