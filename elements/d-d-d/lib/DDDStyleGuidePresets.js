@@ -178,6 +178,50 @@ export const DDDStyleGuidePresets = {
       "data-design-treatment": "reading-optional",
     },
   },
+  // Bullet and number styles (DDDStyles.js list-* treatments). A plain ul is
+  // square bullets and a plain ol is decimal, so those need no preset. The
+  // decimal-leading-zero and upper-roman treatments still render for content
+  // that has them but are not offered, to stay within five per tag.
+  listDisc: {
+    name: "Disc bullets",
+    allowedTags: ["ul"],
+    default: false,
+    properties: {
+      "data-design-treatment": "list-disc",
+    },
+  },
+  listCircle: {
+    name: "Circle bullets",
+    allowedTags: ["ul"],
+    default: false,
+    properties: {
+      "data-design-treatment": "list-circle",
+    },
+  },
+  listLowerAlpha: {
+    name: "Letters (a, b, c)",
+    allowedTags: ["ol"],
+    default: false,
+    properties: {
+      "data-design-treatment": "list-lower-alpha",
+    },
+  },
+  listUpperAlpha: {
+    name: "Capital letters (A, B, C)",
+    allowedTags: ["ol"],
+    default: false,
+    properties: {
+      "data-design-treatment": "list-upper-alpha",
+    },
+  },
+  listLowerRoman: {
+    name: "Roman numerals (i, ii, iii)",
+    allowedTags: ["ol"],
+    default: false,
+    properties: {
+      "data-design-treatment": "list-lower-roman",
+    },
+  },
 };
 
 function normalizeTag(tag) {

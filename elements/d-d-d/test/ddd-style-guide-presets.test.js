@@ -138,11 +138,27 @@ describe("getDDDStyleGuideOptionsForTag", () => {
     expect(keys).to.include("pullQuote");
   });
 
-  it("returns only the reading presets for ul and ol", () => {
-    ["ul", "ol", "UL"].forEach((tag) => {
+  it("returns the reading and bullet presets for ul", () => {
+    ["ul", "UL"].forEach((tag) => {
       const keys = getDDDStyleGuideOptionsForTag(tag).map((o) => o.value);
-      expect(keys).to.deep.equal(["readingRequired", "readingOptional"]);
+      expect(keys).to.deep.equal([
+        "readingRequired",
+        "readingOptional",
+        "listDisc",
+        "listCircle",
+      ]);
     });
+  });
+
+  it("returns the reading and numbering presets for ol", () => {
+    const keys = getDDDStyleGuideOptionsForTag("ol").map((o) => o.value);
+    expect(keys).to.deep.equal([
+      "readingRequired",
+      "readingOptional",
+      "listLowerAlpha",
+      "listUpperAlpha",
+      "listLowerRoman",
+    ]);
   });
 
   it("keeps callouts on paragraphs, not quotes", () => {

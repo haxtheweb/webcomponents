@@ -2250,34 +2250,28 @@ const DDDResetEnd = css`
     );
   }
 
+  /* A drop cap sinks --initialLetter lines into its block, so the block is
+     at least that many lines tall (1lh is one line of the block's own
+     line-height) and contains the letter even when the text is shorter.
+     flow-root also contains the floated letter browsers without
+     initial-letter get from .dropCap-noSupport below. */
   [data-design-treatment^="dropCap"] {
     --initialLetter: 6;
+    display: flow-root;
     min-height: calc(
-      (
-          var(--initialLetter) * var(--ddd-theme-body-font-size) * 1.5 *
-            var(--special-multiplier)
-        ) +
-        20px
+      var(--initialLetter) * var(--ddd-theme-body-font-size) * 1.5
     );
+    min-height: calc(var(--initialLetter) * 1lh);
   }
 
   [data-design-treatment^="dropCap"]::first-letter {
     -webkit-initial-letter: var(--initialLetter);
     text-transform: uppercase;
     initial-letter: var(--initialLetter);
-    color: var(--ddd-theme-primary);
+    color: var(--ddd-theme-primary, currentColor);
     font-weight: var(--ddd-font-weight-bold);
     margin-right: var(--ddd-spacing-3);
     padding: 0 var(--ddd-spacing-1);
-    text-shadow:
-      -3px -3px 0 #000,
-      3px -3px 0 #000,
-      -3px 3px 0 #000,
-      3px 3px 0 #000,
-      -3px 0 0 #000,
-      3px 0 0 #000,
-      0 -3px 0 #000,
-      0 3px 0 #000;
   }
   [data-design-treatment="dropCap-xs"] {
     --initialLetter: 2;
@@ -2293,7 +2287,6 @@ const DDDResetEnd = css`
 
   [data-design-treatment="dropCap-lg"] {
     --initialLetter: 8;
-    --special-multiplier: 1.7;
   }
 
   [data-design-treatment="dropCap-xl"] {

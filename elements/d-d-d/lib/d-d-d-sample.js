@@ -12,7 +12,11 @@
 import { LitElement, css, html } from "lit";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import { DDDSuper } from "../d-d-d.js";
-import { ApplicationAttributeData, DDDDataAttributes } from "./DDDStyles.js";
+import {
+  ApplicationAttributeData,
+  DDDDataAttributes,
+  DDDReadingList,
+} from "./DDDStyles.js";
 import { getDDDStyleGuidePresetByKey } from "./DDDStyleGuidePresets.js";
 
 export class DDDSample extends DDDSuper(LitElement) {
@@ -27,6 +31,8 @@ export class DDDSample extends DDDSuper(LitElement) {
     return [
       super.styles,
       ...DDDDataAttributes,
+      // reading list markers, for the Required / Optional reading samples
+      DDDReadingList,
       css`
         :host {
           display: flex;
@@ -147,6 +153,22 @@ export class DDDSample extends DDDSuper(LitElement) {
         :host([type="style-guide"]) .sample {
           display: none;
         }
+        :host([type="style-guide"]) ul.label,
+        :host([type="style-guide"]) ol.label {
+          margin: 0;
+          padding-inline-start: var(--ddd-spacing-6);
+        }
+        :host([type="style-guide"]) .label li {
+          font-size: var(--ddd-font-size-4xs);
+          text-align: start;
+        }
+        :host([type="style-guide"])
+          .label:not([data-design-treatment^="reading-"])
+          li {
+          margin: 0;
+          padding-top: 0;
+          padding-bottom: 0;
+        }
         :host([type="style-guide"]) .label {
           display: block;
           font-weight: var(--ddd-font-weight-medium);
@@ -211,10 +233,22 @@ export class DDDSample extends DDDSuper(LitElement) {
           padding: var(--ddd-spacing-16);
         }
 
-        /* @hack from normal presentation so that it renders nicely here */
+        /* instructional context: a compact row like the other pickers,
+           a small icon in the action's color before a bold label */
+        :host([type="instructional-action"]) .label {
+          display: flex;
+          align-items: center;
+          gap: var(--ddd-spacing-2);
+          font-weight: var(--ddd-font-weight-bold);
+          font-size: var(--ddd-font-size-4xs);
+          line-height: var(--ddd-lh-120);
+        }
         [data-instructional-action]::before {
-          padding: 6px 0 0;
-          margin: 8px 16px 0 0;
+          flex: 0 0 auto;
+          padding: 0;
+          margin: 0;
+          height: var(--ddd-icon-xxs);
+          width: var(--ddd-icon-xxs);
         }
 
         /* @hack so that we reduce the size of the drop cap or it'll be ridiculous */
@@ -307,7 +341,7 @@ export class DDDSample extends DDDSuper(LitElement) {
   }
 
   _applyStyleGuidePreset() {
-    const label = this.shadowRoot.querySelector("span.label");
+    const label = this.shadowRoot.querySelector(".label");
     if (!label) {
       return;
     }
@@ -346,7 +380,39 @@ export class DDDSample extends DDDSuper(LitElement) {
     return options[this.option];
   }
 
+  // list presets preview as a one item list so the marker shows
+  get styleGuideListTag() {
+    if (this.type !== "style-guide") {
+      return null;
+    }
+    const preset = getDDDStyleGuidePresetByKey(this.option);
+    if (
+      preset &&
+      Array.isArray(preset.allowedTags) &&
+      preset.allowedTags.length > 0 &&
+      preset.allowedTags.every((tag) => tag === "ul" || tag === "ol")
+    ) {
+      return preset.allowedTags[0];
+    }
+    return null;
+  }
+
   render() {
+    const listTag = this.styleGuideListTag;
+    if (listTag === "ol") {
+      return html`<div class="wrapper">
+        <ol class="label">
+          <li>${this.sampleLabel}</li>
+        </ol>
+      </div>`;
+    }
+    if (listTag === "ul") {
+      return html`<div class="wrapper">
+        <ul class="label">
+          <li>${this.sampleLabel}</li>
+        </ul>
+      </div>`;
+    }
     return html`
       <div class="wrapper">
         <span class="sample" id="sample"></span
