@@ -617,3 +617,30 @@ const regex = /[<>&"']/g;`;
     expect(el.editMode).to.be.false;
   });
 });
+
+describe("code-sample keyboard scrolling", () => {
+  it("puts the code area in the tab order only while it overflows", async () => {
+    const el = await fixture(html`<div style="width: 320px"></div>`);
+    el.innerHTML =
+      '<code-sample type="javascript"><template preserve-content="preserve-content">const x = "' +
+      "a".repeat(400) +
+      '";</template></code-sample>';
+    const sample = el.querySelector("code-sample");
+    await sample.updateComplete;
+    const short = await fixture(html`
+      <code-sample type="javascript"
+        ><template preserve-content="preserve-content"
+          >const a = 1;</template
+        ></code-sample
+      >
+    `);
+    await new Promise((r) => setTimeout(r, 300));
+    const container = sample.shadowRoot.querySelector("#code-container");
+    expect(container.getAttribute("role")).to.equal("region");
+    expect(container.getAttribute("aria-label")).to.not.equal(null);
+    expect(container.scrollWidth).to.be.greaterThan(container.clientWidth);
+    expect(container.getAttribute("tabindex")).to.equal("0");
+    const shortContainer = short.shadowRoot.querySelector("#code-container");
+    expect(shortContainer.hasAttribute("tabindex")).to.equal(false);
+  });
+});

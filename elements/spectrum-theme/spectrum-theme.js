@@ -14,14 +14,16 @@ import { activateSpectrumDesignSystem } from "@haxtheweb/spectrum-theme/lib/Spec
 import { autorun, toJS } from "mobx";
 import "@haxtheweb/haxcms-elements/lib/ui-components/site/site-title.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu-content.js";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 
 /**
  * `spectrum-theme`
- * A HAXcms theme in an Adobe Spectrum 2 app frame (header, side navigation,
- * rounded content panel), built on the Spectrum DDD bridge: every HAX block
+ * A HAXcms theme laid out like Adobe's own Spectrum 2 documentation: a header,
+ * a floating rounded navigation panel, a rounded content panel with a centered
+ * reading column and an "On this page" list, built on the Spectrum DDD bridge: every HAX block
  * reads --ddd-* tokens, which point at Spectrum tokens while it is active.
  *
  * @title Spectrum
@@ -43,6 +45,11 @@ class SpectrumTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           margin: 0;
           background-color: light-dark(rgb(248, 248, 248), rgb(27, 27, 27));
         }
+        /* images in page content never overflow the reading column */
+        spectrum-theme img {
+          max-width: 100%;
+          height: auto;
+        }
       `,
     ];
   }
@@ -59,6 +66,7 @@ class SpectrumTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
       search: "Search",
       toggleDarkMode: "Toggle dark mode",
       pageNavigation: "Page navigation",
+      onThisPage: "On this page",
     };
     // no I18NMixin in this class chain, so register with the store directly
     I18NManagerStore.registerLocalization({
@@ -228,9 +236,13 @@ class SpectrumTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           top: var(--spectrum-theme-header-height);
           flex: 0 0 var(--spectrum-theme-nav-width);
           width: var(--spectrum-theme-nav-width);
-          height: calc(100vh - var(--spectrum-theme-header-height));
-          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
-          background-color: var(--spectrum-background-layer-1-color);
+          height: calc(
+            100vh - var(--spectrum-theme-header-height) - var(--ddd-spacing-4)
+          );
+          margin: 0 var(--ddd-spacing-3) 0 var(--ddd-spacing-4);
+          padding: var(--ddd-spacing-4) var(--ddd-spacing-3);
+          border-radius: var(--spectrum-corner-radius-extra-large-default);
+          background-color: var(--spectrum-background-base-color);
         }
         site-menu {
           --site-menu-color: var(--spectrum-body-color);
@@ -263,11 +275,35 @@ class SpectrumTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           border-radius: var(--spectrum-corner-radius-extra-large-default);
           background-color: var(--spectrum-background-base-color);
         }
-        .content {
+        .page {
           flex: 1 1 auto;
-          padding: var(--ddd-spacing-8) var(--ddd-spacing-10) 0;
-          max-width: var(--spectrum-theme-content-max-width, 960px);
-          box-sizing: border-box;
+          display: flex;
+          justify-content: center;
+          gap: var(--ddd-spacing-10);
+          padding: var(--ddd-spacing-10) var(--ddd-spacing-10) 0;
+        }
+        .content {
+          flex: 0 1 var(--spectrum-theme-content-max-width, 800px);
+          min-width: 0;
+        }
+        .toc {
+          display: none;
+          position: sticky;
+          top: calc(
+            var(--spectrum-theme-header-height) + var(--ddd-spacing-10)
+          );
+          align-self: flex-start;
+          flex: 0 0 12rem;
+          font-size: var(--ddd-font-size-5xs);
+          --page-contents-menu-link: var(
+            --spectrum-neutral-subdued-content-color-default
+          );
+          --page-contents-menu-link-color-focus: var(--spectrum-body-color);
+        }
+        @media (min-width: 1280px) {
+          .toc {
+            display: block;
+          }
         }
         site-breadcrumb {
           --site-breadcrumb-margin: 0 0 var(--ddd-spacing-2) 0;
@@ -283,8 +319,8 @@ class SpectrumTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
         }
         site-active-title h1 {
           margin: 0 0 var(--ddd-spacing-6) 0;
-          font-family: var(--ddd-font-secondary);
-          font-size: var(--ddd-font-size-ms);
+          font-family: var(--ddd-font-heading, var(--ddd-font-secondary));
+          font-size: var(--ddd-font-size-l);
           font-weight: var(--ddd-font-weight-black);
           line-height: 1.3;
           color: var(--spectrum-heading-color);
@@ -333,14 +369,14 @@ class SpectrumTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           .panel {
             border-radius: 0;
           }
-          .content,
+          .page,
           .pager,
           footer {
             padding-left: var(--ddd-spacing-4);
             padding-right: var(--ddd-spacing-4);
           }
           site-active-title h1 {
-            font-size: var(--ddd-font-size-s);
+            font-size: var(--ddd-font-size-m);
           }
         }
       `,
@@ -364,12 +400,19 @@ class SpectrumTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
         ${this.renderNav()}
         <main>
           <div class="panel">
-            <div class="content">
-              <site-breadcrumb part="page-breadcrumb"></site-breadcrumb>
-              <site-active-title part="page-title"></site-active-title>
-              <article id="contentcontainer">
-                <section id="slot"><slot></slot></section>
-              </article>
+            <div class="page">
+              <div class="content">
+                <site-breadcrumb part="page-breadcrumb"></site-breadcrumb>
+                <site-active-title part="page-title"></site-active-title>
+                <article id="contentcontainer">
+                  <section id="slot"><slot></slot></section>
+                </article>
+              </div>
+              <aside class="toc" part="toc">
+                <site-menu-content
+                  label="${this.t.onThisPage}"
+                ></site-menu-content>
+              </aside>
             </div>
             ${this.renderPager()}
             <footer part="footer">

@@ -1,0 +1,22 @@
+<p><img src="files/hero-button.svg" alt="" data-border-radius="lg" data-width="100" loading="lazy"/></p>
+<p data-font-size="s">Buttons let people take an action. Use one primary button for the main action on a page, and secondary buttons for everything else.</p>
+<a11y-tabs>
+<a11y-tab label="Overview">
+<p><simple-cta link="components/learning-checks" label="Start the check" data-primary="1"></simple-cta> <simple-cta link="getting-started" label="Review setup" data-primary="4"></simple-cta></p>
+<p>A primary button uses the accent color. A secondary button sits on a neutral fill so it never competes with the primary one.</p>
+</a11y-tab>
+<a11y-tab label="Usage">
+<grid-plate layout="1-1">
+<div slot="col-1" data-border="xs" data-border-radius="lg" data-primary="5"><h3>Do</h3><p>Start labels with a verb and keep them short: "Start the check", "Save draft".</p></div>
+<div slot="col-2" data-border="xs" data-border-radius="lg" data-primary="5"><h3>Don't</h3><p>Use more than one primary button in the same view, or a button for a link to another page.</p></div>
+</grid-plate>
+</a11y-tab>
+<a11y-tab label="Code">
+<code-sample type="html"><template preserve-content="preserve-content"><simple-cta link="/next" label="Start the check"></simple-cta></template></code-sample>
+</a11y-tab>
+</a11y-tabs>
+<h2>Variants</h2>
+<editable-table bordered striped>
+<table><caption>Button variants</caption><thead><tr><th scope="col">Variant</th><th scope="col">When to use</th></tr></thead>
+<tbody><tr><td>Accent</td><td>The single most important action</td></tr><tr><td>Secondary</td><td>Other actions in the same view</td></tr><tr><td>Outline</td><td>Actions on busy or image backgrounds</td></tr></tbody></table>
+</editable-table>
