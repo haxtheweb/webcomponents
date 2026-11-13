@@ -27,33 +27,40 @@ class AiUsageLicense extends SchemaBehaviors(I18NMixin(DDDSuper(LitElement))) {
           line-height: var(--ddd-lh-140);
           background-color: var(--ai-usage-license-background-color);
         }
-        /* the "AI Usage License" tag: real text (not CSS generated content)
-           so it can be translated and is read consistently by screen
-           readers; last in the shadow root, styled as the old :host::after */
+        /* "AI Usage License" uses the DDD eyebrow pattern (navigation
+           font, bold, uppercase) as the first line of the card; real
+           text so it is translated and read in order */
         .license-label {
-          position: relative;
-          float: inline-end;
-          bottom: var(--ddd-spacing-9);
-          inset-inline-end: var(--ddd-spacing-2);
-          font-size: var(--ddd-font-size-ms);
-          /* bottom pulls the label up into the corner of .license-body,
-             a fixed light card in both color schemes, so it keeps the
-             card's text color in dark mode too */
-          color: var(--ddd-theme-default-slateGray);
-          font-style: italic;
+          display: block;
+          margin: 0 0 var(--ddd-spacing-3);
+          font-family: var(--ddd-eyebrow-font-family);
+          font-size: var(--ddd-eyebrow-font-size);
+          font-weight: var(--ddd-eyebrow-font-weight);
+          letter-spacing: var(--ddd-eyebrow-letter-spacing);
+          line-height: var(--ddd-eyebrow-line-height);
+          text-transform: var(--ddd-eyebrow-text-transform);
+          color: var(--ddd-eyebrow-color);
         }
-        /* the card is light in both color schemes, so DDD tokens that
-           use light-dark() (the focus ring) resolve for a light surface */
+        /* light-dark() follows the page or theme color scheme (DDD sets
+           light dark on :root, body.dark-mode forces dark) */
         .license-body {
-          color-scheme: light;
-          padding: var(--ddd-spacing-8);
-          background-color: var(--ddd-theme-default-limestoneMaxLight);
-          color: var(--ddd-theme-default-slateGray);
+          padding: var(--ddd-spacing-6) var(--ddd-spacing-8);
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight),
+            var(--ddd-theme-default-coalyGray)
+          );
+          color: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneMaxLight)
+          );
         }
         a,
         a:any-link,
         a:-webkit-any-link {
-          color: var(--ddd-theme-default-link);
+          color: light-dark(
+            var(--ddd-theme-default-link),
+            var(--ddd-theme-default-linkLight)
+          );
           font-weight: var(--ddd-font-weight-bold);
         }
         a:focus-visible {
@@ -79,13 +86,15 @@ class AiUsageLicense extends SchemaBehaviors(I18NMixin(DDDSuper(LitElement))) {
           text-decoration: underline;
         }
         /* the AIUL code drawn with DDD tokens in place of the third-party
-           badge art; navy on white because the card is light in both
-           color schemes */
+           badge art: navy outline in light, pugh blue in dark */
         .license-chip {
           display: inline-flex;
           align-items: stretch;
           border: var(--ddd-border-sm);
-          border-color: var(--ddd-theme-default-nittanyNavy);
+          border-color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-pughBlue)
+          );
           border-radius: var(--ddd-radius-xs);
           overflow: hidden;
           font-family: var(--ddd-font-navigation);
@@ -100,12 +109,24 @@ class AiUsageLicense extends SchemaBehaviors(I18NMixin(DDDSuper(LitElement))) {
           padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
         }
         .license-tag {
-          background-color: var(--ddd-theme-default-white);
-          color: var(--ddd-theme-default-nittanyNavy);
+          background-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+          color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-white)
+          );
         }
         .license-modifier {
-          background-color: var(--ddd-theme-default-nittanyNavy);
-          color: var(--ddd-theme-default-white);
+          background-color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-pughBlue)
+          );
+          color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
         }
         .license-description {
           margin-top: var(--ddd-spacing-2);
@@ -120,6 +141,7 @@ class AiUsageLicense extends SchemaBehaviors(I18NMixin(DDDSuper(LitElement))) {
     return html`
       <meta property="oer:uri" content="${this.uri || this.licenseLink}" />
       <div class="license-body">
+        <p class="license-label">${this.t.aiUsageLicense}</p>
         ${
           this.licenseTag
             ? html`<a
@@ -156,7 +178,6 @@ class AiUsageLicense extends SchemaBehaviors(I18NMixin(DDDSuper(LitElement))) {
             : ``
         }
       </div>
-      <span class="license-label">${this.t.aiUsageLicense}</span>
     `;
   }
 
