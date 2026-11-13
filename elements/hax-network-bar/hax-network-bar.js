@@ -340,7 +340,7 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
       demoLabel: "About this demo",
       demoTag: "Demo",
       demoNotice: "There's no backend here, so nothing you change is saved.",
-      demoNoticeShort: "Nothing here is saved.",
+      demoNoticeShort: "Nothing is saved.",
       demoBrowser: "Use HAXcms in your browser",
       demoBrowserShort: "Browser version",
       githubLink: "HAX on GitHub",
