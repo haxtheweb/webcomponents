@@ -146,15 +146,15 @@
       "rows": [
         {
           "name": "to",
-          "desc": "Who is this going to?"
+          "desc": "The person the card is addresse…"
         },
         {
           "name": "from",
-          "desc": "Who are you?"
+          "desc": "Your name, as the sender of the…"
         },
         {
           "name": "message",
-          "desc": "What do you want to say?"
+          "desc": "The note on the back of the car…"
         },
         {
           "name": "post-mark-locations",
@@ -345,13 +345,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set to and from",
-      "text": "Set To and From in the HAX sidebar."
+      "text": "The person the card is addressed to. Your name, as the sender of the card."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set message",
-      "text": "Set Message and Postmarked From in the HAX sidebar."
+      "text": "The note on the back of the card. Places on the postmark, such as Paris - Rome."
     },
     {
       "t": 14.8,

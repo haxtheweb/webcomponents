@@ -23,37 +23,37 @@
       {
         "property": "to",
         "title": "To",
-        "description": "Who is this going to?",
+        "description": "The person the card is addressed to.",
         "inputMethod": "textfield"
       },
       {
         "property": "from",
         "title": "From",
-        "description": "Who are you?",
+        "description": "Your name, as the sender of the card.",
         "inputMethod": "textfield"
       },
       {
         "property": "message",
         "title": "Message",
-        "description": "What do you want to say?",
+        "description": "The note on the back of the card.",
         "inputMethod": "textfield"
       },
       {
         "property": "postMarkLocations",
         "title": "Postmarked From",
-        "description": "Where did this card get sent from?",
+        "description": "Places on the postmark, such as Paris - Rome.",
         "inputMethod": "textfield"
       },
       {
         "property": "photoSrc",
         "title": "Main Photo Source",
-        "description": "Where is your photo located?",
+        "description": "The photo on the front of the card.",
         "inputMethod": "fileupload"
       },
       {
         "property": "stampSrc",
         "title": "Stamp Photo Source",
-        "description": "Where is your photo located?",
+        "description": "The picture on the stamp.",
         "inputMethod": "fileupload"
       }
     ],
