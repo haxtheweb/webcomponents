@@ -121,10 +121,10 @@ describe("VhsBlogTheme", () => {
     );
   });
 
-  it("sits the VCR on the console with the TV off at the shelf", () => {
+  it("stands the VCR on the tower with the TV off at the shelf", () => {
     const root = element.shadowRoot;
-    const vcr = root.querySelector("vhs-blog-console retro-vcr");
-    expect(vcr.getAttribute("slot")).to.equal("vcr");
+    const vcr = root.querySelector(".stand > retro-vcr");
+    expect(vcr.hasAttribute("slot")).to.equal(false);
     expect(vcr.phase).to.equal("idle");
     expect(vcr.disabled).to.equal("eject rew skip");
     expect(root.querySelector("vhs-blog-tv").hasAttribute("off")).to.equal(
@@ -272,6 +272,43 @@ describe("VhsBlogTheme", () => {
     const scheme = globalThis.getComputedStyle(element).colorScheme;
     expect(scheme).to.contain("dark");
     expect(scheme).to.not.contain("light");
+  });
+
+  it("stands the VCR on top of the tape tower, beside the set", () => {
+    const root = element.shadowRoot;
+    const stand = root.querySelector(".setup > .stand");
+    expect(stand.firstElementChild.tagName).to.equal("RETRO-VCR");
+    expect(stand.querySelector(".tower")).to.exist;
+    expect(root.querySelector('vhs-blog-console > [slot="vcr"]')).to.equal(
+      null,
+    );
+  });
+
+  it("on a post, the screen reads the post and points down to it", async () => {
+    const root = element.shadowRoot;
+    const tv = root.querySelector("vhs-blog-tv");
+    // on the shelf the screen still changes channel, with no cue
+    expect(tv.readLabel).to.equal("");
+    expect(tv.shadowRoot.querySelector(".read")).to.equal(null);
+    store.activeId = "a";
+    element._noticeLocation({ route: { name: "reclaim-the-web" } });
+    await tick();
+    await element.updateComplete;
+    await tv.updateComplete;
+    expect(tv.readLabel).to.equal("Scroll down to read the post");
+    expect(tv.shadowRoot.querySelector(".read").textContent).to.contain("READ");
+    const screen = tv.shadowRoot.querySelector("button.screen");
+    expect(screen.querySelector(".sr-only").textContent).to.contain(
+      "Scroll down to read the post",
+    );
+    const ch = element.channel;
+    screen.click();
+    await element.updateComplete;
+    // the knob changes channel; the screen goes to the post
+    expect(element.channel).to.equal(ch);
+    expect(root.activeElement.id).to.equal("contentcontainer");
+    element._noticeLocation({ route: { name: "home" } });
+    await element.updateComplete;
   });
 
   it("renders the post with the TV, cover, content and pager", async () => {

@@ -166,6 +166,8 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
       ffDisplay: "FF",
       tvOff: "The TV is off",
       changeChannel: "Change channel",
+      readPost: "Scroll down to read the post",
+      readCue: "READ",
       channelStatic: "Channel 4: static",
       noSignal: "No signal · HAX the web",
       channelKnob: "Channel",
@@ -840,6 +842,18 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     }
   }
 
+  /** the screen was pressed with a post below it: go read it */
+  _readPost() {
+    const target = this.shadowRoot.querySelector("#contentcontainer");
+    if (target) {
+      target.focus({ preventScroll: true });
+      target.scrollIntoView({
+        block: "start",
+        behavior: this._reduced() ? "auto" : "smooth",
+      });
+    }
+  }
+
   _skipIntro() {
     const tv = this.shadowRoot.querySelector("vhs-blog-tv");
     if (tv) {
@@ -985,8 +999,9 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
         /* the den: console, VCR and the tape tower */
         .den {
           position: relative;
-          /* headroom above the VCR for a cassette waiting over the lid */
-          padding: 190px var(--ddd-spacing-8) 0;
+          /* the set sits close under the header; the VCR is on top of the
+             tape tower, so its cassette has headroom there instead */
+          padding: 30px var(--ddd-spacing-8) 0;
           overflow: hidden;
           background:
             radial-gradient(
@@ -1009,9 +1024,50 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           align-items: flex-end;
           justify-content: center;
         }
+        /* the set and the stand scale with the window's height, so the
+           top of the post shows under them on any desktop screen */
+        .setup {
+          --vhs-den-zoom: 1;
+        }
+        @media (min-width: 901px) and (max-height: 1300px) {
+          .setup {
+            --vhs-den-zoom: 0.9;
+          }
+        }
+        @media (min-width: 901px) and (max-height: 1100px) {
+          .setup {
+            --vhs-den-zoom: 0.8;
+          }
+        }
+        @media (min-width: 901px) and (max-height: 950px) {
+          .setup {
+            --vhs-den-zoom: 0.7;
+          }
+        }
+        @media (min-width: 901px) and (max-height: 800px) {
+          .setup {
+            --vhs-den-zoom: 0.6;
+          }
+        }
         vhs-blog-console {
           flex: 0 1 860px;
           min-width: 0;
+          zoom: var(--vhs-den-zoom);
+        }
+        /* the VCR on top of the tape tower, with headroom above it for a
+           cassette waiting over the open lid; never taller than the set */
+        .stand {
+          flex: 0 1 470px;
+          min-width: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: stretch;
+          padding-top: 60px;
+          zoom: calc(var(--vhs-den-zoom) * 0.82);
+        }
+        .stand retro-vcr {
+          display: block;
+          margin: 0 6px;
         }
         /* the HAX 64 and its controller, in the cubby between the drawers */
         vhs-blog-console retro-console,
@@ -1019,7 +1075,6 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           zoom: 0.8;
         }
         .tower {
-          flex: 0 1 470px;
           min-width: 0;
           box-sizing: border-box;
           padding: 14px 14px 0;
@@ -1599,11 +1654,6 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
             flex-basis: 100%;
           }
         }
-        @media (max-width: 760px) {
-          .den {
-            padding-top: 150px;
-          }
-        }
         @media (max-width: 700px) {
           .aisles,
           .pager {
@@ -1773,29 +1823,6 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
             @vhs-blog-console-knob="${this._knob}"
             @vhs-blog-console-power="${this._tvPowerChanged}"
           >
-            <retro-vcr
-              slot="vcr"
-              style=${styleMap(tapeVars)}
-              keys="eject rew play skip ff"
-              phase="${this.phase}"
-              tape-label="${tapeTitle}"
-              disabled="${this._vcrDisabled()}"
-              label="${this.t.vcr}"
-              lid-label="${this.t.topLoad}"
-              clock-label="${this.t.clock}"
-              load-label="${this.t.load}"
-              playing-label="${this.t.play}"
-              eject-label="${this.t.eject}"
-              rew-label="${this.t.prev}"
-              rew-hint="${this.t.prevHint}"
-              play-label="${this.t.play}"
-              skip-label="${this.t.skip}"
-              ff-label="${this.t.next}"
-              ff-hint="${this.t.nextHint}"
-              rew-word="${this.t.rewDisplay}"
-              ff-word="${this.t.ffDisplay}"
-              @retro-vcr-key="${this._vcrKey}"
-            ></retro-vcr>
             <retro-console
               slot="game"
               ?power="${this.tvPower && this.channel === 2}"
@@ -1830,6 +1857,9 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
               static-label="${this.t.channelStatic}"
               off-air-label="${this.t.noSignal}"
               @vhs-blog-tv-channel="${this._channel}"
+              @vhs-blog-tv-read="${this._readPost}"
+              read-label="${showPost ? this.t.readPost : ""}"
+              read-cue="${this.t.readCue}"
               ?off="${!this.tvPower || (this.channel === 3 && !playing)}"
               off-label="${this.t.tvOff}"
               crawl-title="${active.title || ""}"
@@ -1845,25 +1875,53 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
               ?still="${this.editMode}"
             ></vhs-blog-tv>
           </vhs-blog-console>
-          ${
-            rows.length
-              ? html`
-                  <div class="tower" role="group" aria-label="${this.t.tower}">
-                    ${rows.map(
-                      (row, r) => html`
-                        <h2>
-                          ${r === 0 ? this.t.topShelf : this.t.bottomShelf}
-                        </h2>
-                        <ul class="tape-row">
-                          ${row.map((item) => this._renderTape(item))}
-                        </ul>
-                        <div class="tboard"></div>
-                      `,
-                    )}
-                  </div>
-                `
-              : nothing
-          }
+          <div class="stand">
+            <retro-vcr
+              style=${styleMap(tapeVars)}
+              keys="eject rew play skip ff"
+              phase="${this.phase}"
+              tape-label="${tapeTitle}"
+              disabled="${this._vcrDisabled()}"
+              label="${this.t.vcr}"
+              lid-label="${this.t.topLoad}"
+              clock-label="${this.t.clock}"
+              load-label="${this.t.load}"
+              playing-label="${this.t.play}"
+              eject-label="${this.t.eject}"
+              rew-label="${this.t.prev}"
+              rew-hint="${this.t.prevHint}"
+              play-label="${this.t.play}"
+              skip-label="${this.t.skip}"
+              ff-label="${this.t.next}"
+              ff-hint="${this.t.nextHint}"
+              rew-word="${this.t.rewDisplay}"
+              ff-word="${this.t.ffDisplay}"
+              @retro-vcr-key="${this._vcrKey}"
+            ></retro-vcr>
+            ${
+              rows.length
+                ? html`
+                    <div
+                      class="tower"
+                      role="group"
+                      aria-label="${this.t.tower}"
+                    >
+                      ${rows.map(
+                        (row, r) => html`
+                          <h2>
+                            ${r === 0 ? this.t.topShelf : this.t.bottomShelf}
+                          </h2>
+                          <ul class="tape-row">
+                            ${row.map((item) => this._renderTape(item))}
+                          </ul>
+                          <div class="tboard"></div>
+                        `,
+                      )}
+                    </div>
+                  `
+                : nothing
+            }
+          </div>
         </div>
         <div class="hint">
           <span role="status">${hint}</span>
