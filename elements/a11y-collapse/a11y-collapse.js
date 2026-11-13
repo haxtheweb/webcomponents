@@ -55,13 +55,20 @@ class A11yCollapse extends I18NMixin(DDD) {
             var(--ddd-theme-default-nittanyNavy),
             var(--ddd-theme-default-white)
           );
-          --a11y-collapse-_action: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-linkLight)
+          /* the open toggle takes the palette accent when there is one */
+          --a11y-collapse-_action: var(
+            --ddd-palette-accent,
+            light-dark(
+              var(--ddd-theme-default-nittanyNavy),
+              var(--ddd-theme-default-linkLight)
+            )
           );
-          --a11y-collapse-_action-ink: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-potentialMidnight)
+          --a11y-collapse-_action-ink: var(
+            --ddd-palette-accent-ink,
+            light-dark(
+              var(--ddd-theme-default-white),
+              var(--ddd-theme-default-potentialMidnight)
+            )
           );
           margin: var(
             --a11y-collapse-margin,

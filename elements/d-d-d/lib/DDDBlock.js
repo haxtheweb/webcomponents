@@ -184,7 +184,10 @@ export const DDDBlockStyles = css`
   }
   .ddd-block[data-block-accent] {
     border-top: var(--ddd-border-size-md) solid
-      var(--ddd-block-accent, var(--ddd-theme-default-beaverBlue));
+      var(
+        --ddd-block-accent,
+        var(--ddd-palette-chip, var(--ddd-theme-default-beaverBlue))
+      );
   }
   .ddd-block-header {
     display: flex;
@@ -212,18 +215,26 @@ export const DDDBlockStyles = css`
     width: var(--ddd-icon-xs);
     height: var(--ddd-icon-xs);
     border-radius: var(--ddd-radius-circle);
+    /* an element's own chip colour wins, then the palette chip
+       (data-palette), then the DDD default */
     background-color: var(
       --ddd-block-chip-background,
-      light-dark(
-        var(--ddd-theme-default-beaverBlue),
-        var(--ddd-theme-default-skyBlue)
+      var(
+        --ddd-palette-chip,
+        light-dark(
+          var(--ddd-theme-default-beaverBlue),
+          var(--ddd-theme-default-skyBlue)
+        )
       )
     );
     color: var(
       --ddd-block-chip-color,
-      light-dark(
-        var(--ddd-theme-default-white),
-        var(--ddd-theme-default-potentialMidnight)
+      var(
+        --ddd-palette-chip-ink,
+        light-dark(
+          var(--ddd-theme-default-white),
+          var(--ddd-theme-default-potentialMidnight)
+        )
       )
     );
     --simple-icon-color: currentColor;

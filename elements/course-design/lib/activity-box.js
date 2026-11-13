@@ -96,6 +96,10 @@ export class ActivityBox extends I18NMixin(DDD) {
           padding: var(--activity-box-container-padding, 0);
           padding-top: var(--activity-box-container-padding-top, 0);
         }
+        /* a palette tints the body; nocolourize keeps it on the page */
+        .ddd-block:not([data-neutral]) .ddd-block-body {
+          background-color: var(--ddd-palette-tint, transparent);
+        }
         .pullout {
           margin: 0;
           padding: var(
