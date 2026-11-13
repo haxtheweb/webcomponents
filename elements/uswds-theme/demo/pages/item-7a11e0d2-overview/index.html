@@ -1,0 +1,9 @@
+<p>This site runs on <strong>uswds-theme</strong>, a HAXcms theme in the U.S. Web Design System layout: a basic header, side navigation and a slim footer. It sits on top of the <strong>USWDS DDD bridge</strong>.</p>
+<h2>How the bridge works</h2>
+<p>Every HAX block reads DDD tokens such as <code>--ddd-theme-default-beaverBlue</code>, <code>--ddd-font-primary</code> and <code>--ddd-radius-sm</code>. While USWDS is the active design system those tokens point at the USWDS palette and default theme, so the whole block ecosystem takes on USWDS colors, Source Sans and Merriweather, radii, shadows and its thick focus outline without any block changing.</p>
+<p>Content stays plain DDD content. Switch this site to any other theme and every page keeps working.</p>
+<grid-plate layout="1-1-1">
+<ddd-card src="../../accent-card/demo/images/image1.jpg" alt="" slot="col-1" title="Tokens" href="color" label="See the palette"><p>The USWDS palette under its own names.</p></ddd-card>
+<ddd-card src="../../accent-card/demo/images/image2.jpg" alt="" slot="col-2" title="Blocks" href="blocks" label="See the blocks"><p>Cards, notes, steps and callouts, unchanged, in USWDS.</p></ddd-card>
+<ddd-card src="../../haxcms-elements/demo/assets/banner.jpg" alt="" slot="col-3" title="Attribution" href="about" label="Read more"><p>Where the values come from and how they are licensed.</p></ddd-card>
+</grid-plate>

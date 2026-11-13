@@ -68,7 +68,15 @@ const sources = config.sources || [
 
 // licenses that can ship inside an Apache-2.0 project; anything else stops
 // the build so an incompatible system never lands in the monorepo
-const SHIPPABLE = ["MIT", "Apache-2.0", "BSD-2-Clause", "BSD-3-Clause", "ISC"];
+// CC0-1.0 is a public domain dedication (USWDS: U.S. government work)
+const SHIPPABLE = [
+  "MIT",
+  "Apache-2.0",
+  "BSD-2-Clause",
+  "BSD-3-Clause",
+  "ISC",
+  "CC0-1.0",
+];
 const SHIPPABLE_FONTS = ["OFL-1.1", "Apache-2.0", "MIT"];
 sources.forEach((source) => {
   if (!SHIPPABLE.includes(source.license)) {
@@ -109,7 +117,19 @@ function fetchSource(source, index) {
   const pkg = JSON.parse(
     fs.readFileSync(path.join(tmp, "package", "package.json"), "utf8"),
   );
-  if (pkg.license !== source.license) {
+  // "SEE LICENSE IN <file>": read that file and check it for the declared
+  // license's own text instead of trusting a free-form field
+  const seeFile = /^SEE LICENSE IN (\S+)$/.exec(pkg.license || "");
+  if (seeFile) {
+    const file = path.join(tmp, "package", path.basename(seeFile[1]));
+    const text = fs.existsSync(file) ? fs.readFileSync(file, "utf8") : "";
+    if (!text.includes(LICENSE_TEXT[source.license])) {
+      console.error(
+        `${spec} points at ${seeFile[1]}, which doesn't read as ${source.license}.`,
+      );
+      process.exit(1);
+    }
+  } else if (pkg.license !== source.license) {
     console.error(
       `bridge.json says ${source.license} but ${spec} declares ${pkg.license}.`,
     );
@@ -130,6 +150,7 @@ const LICENSE_TEXT = {
   "BSD-2-Clause": "BSD 2-Clause",
   "BSD-3-Clause": "BSD 3-Clause",
   ISC: "ISC License",
+  "CC0-1.0": "CC0 1.0 Universal",
 };
 const curl = (url) =>
   execFileSync("curl", ["-fsSL", "--max-time", "60", url], {
@@ -282,6 +303,61 @@ function parseScssVars(text, prefix) {
   return out;
 }
 
+/**
+ * Sass map files ($name: ("blue": (5: #eff6fb, "vivid": (60: #005ea2))))
+ * flattened to custom properties under prefix: --usa-blue-5,
+ * --usa-blue-vivid-60. Entries set to false (no value at that step) are
+ * skipped. Only literal values are read; nothing is evaluated.
+ */
+function parseScssMaps(text, prefix) {
+  const out = {};
+  const clean = text
+    .replace(/\/\*[\s\S]*?\*\//g, "")
+    .replace(/(^|[^:])\/\/[^\n]*/g, "$1");
+  // split a map body on commas at depth 0
+  const entries = (body) => {
+    const parts = [];
+    let depth = 0;
+    let start = 0;
+    for (let i = 0; i < body.length; i++) {
+      if (body[i] === "(") depth++;
+      else if (body[i] === ")") depth--;
+      else if (body[i] === "," && depth === 0) {
+        parts.push(body.slice(start, i));
+        start = i + 1;
+      }
+    }
+    parts.push(body.slice(start));
+    return parts.map((p) => p.trim()).filter(Boolean);
+  };
+  const unquote = (k) => k.trim().replace(/^["']|["']$/g, "");
+  const walk = (body, keys) => {
+    entries(body).forEach((entry) => {
+      const colon = entry.indexOf(":");
+      if (colon === -1) return;
+      const key = unquote(entry.slice(0, colon));
+      const value = entry.slice(colon + 1).trim();
+      if (value.startsWith("(") && value.endsWith(")")) {
+        walk(value.slice(1, -1), [...keys, key]);
+      } else if (value !== "false" && value !== "null") {
+        out[`${prefix}${[...keys, key].join("-")}`] = unquote(value);
+      }
+    });
+  };
+  const re = /\$[\w-]+\s*:\s*\(/g;
+  while (re.exec(clean)) {
+    let depth = 1;
+    let i = re.lastIndex;
+    for (; i < clean.length && depth > 0; i++) {
+      if (clean[i] === "(") depth++;
+      else if (clean[i] === ")") depth--;
+    }
+    walk(clean.slice(re.lastIndex, i - 1), []);
+    re.lastIndex = i;
+  }
+  return out;
+}
+
 function scopeEnv(blocks, selectors) {
   const env = {};
   selectors.forEach((sel) => {
@@ -351,6 +427,16 @@ sources.forEach((source, index) => {
     );
     Object.assign(light, flat);
     Object.assign(dark, flat);
+  } else if (source.format === "scss-map") {
+    // mode-free palettes; files: [ ... ] merged in order
+    (source.files || [source.file]).forEach((file) => {
+      const flat = parseScssMaps(
+        readSource(source, index, file),
+        source.prefix,
+      );
+      Object.assign(light, flat);
+      Object.assign(dark, flat);
+    });
   } else if (source.format === "scss-vars") {
     // one file for both modes, or files: { light, dark }
     const files = source.files || { light: source.file, dark: source.file };
@@ -644,6 +730,9 @@ const header = (what) =>
  */
 function toHex(value) {
   const v = String(value || "").trim();
+  // keyword colors upstream writes literally (USWDS: white, black)
+  const keyword = { white: "#ffffff", black: "#000000" }[v.toLowerCase()];
+  if (keyword) return keyword;
   const hex = /^#([0-9a-f]{3}|[0-9a-f]{6})$/i.exec(v);
   if (hex) {
     const h = hex[1].length === 3 ? hex[1].replace(/./g, "$&$&") : hex[1];

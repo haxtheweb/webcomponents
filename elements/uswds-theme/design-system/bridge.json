@@ -1,0 +1,348 @@
+{
+  "$comment": "DDD bridge for the U.S. Web Design System (USWDS) 3 default theme. Tiers follow elements/d-d-d/design-system/bridge/contract.json. The palette comes from USWDS's Sass color maps (scss-map), so named DDD colors map onto USWDS system colors by the roles the default theme assigns (primary blue-60v, base gray-cool, success green-cool, warning gold, the visited-link violet as HAX's incorrect purple). Vivid grades are written as <family>-vivid-<grade> (USWDS writes blue-60v). USWDS has no dark mode, so the theme chrome pairs palette steps with light-dark(). Values USWDS only computes in Sass (fonts, weights, radii, shadows, focus, card and button spacing) are literal entries with a note naming the setting. Kept as DDD on purpose: medium and black weights (USWDS sets none), radius-lg/xl (USWDS stops at 8px plus pill), motion and state opacities (no tokens), control heights, border widths, and heading/body sizes. USWDS's 8px unit sits on DDD's 4px grid. This is an independent HAX integration; it does not include the official U.S. government banner, seals or any identifier that marks a real .gov site.",
+  "system": "uswds",
+  "title": "USWDS",
+  "prefix": "Uswds",
+  "homepage": "https://designsystem.digital.gov",
+  "sources": [
+    {
+      "package": "@uswds/uswds",
+      "version": "3.14.0",
+      "license": "CC0-1.0",
+      "copyright": "U.S. General Services Administration; public domain in the U.S., CC0 1.0 worldwide",
+      "repository": "https://github.com/uswds/uswds",
+      "format": "scss-map",
+      "prefix": "--usa-",
+      "files": [
+        "packages/uswds-core/src/styles/tokens/color/_blue.scss",
+        "packages/uswds-core/src/styles/tokens/color/_blue-warm.scss",
+        "packages/uswds-core/src/styles/tokens/color/_blue-cool.scss",
+        "packages/uswds-core/src/styles/tokens/color/_cyan.scss",
+        "packages/uswds-core/src/styles/tokens/color/_gray.scss",
+        "packages/uswds-core/src/styles/tokens/color/_gray-cool.scss",
+        "packages/uswds-core/src/styles/tokens/color/_gold.scss",
+        "packages/uswds-core/src/styles/tokens/color/_yellow.scss",
+        "packages/uswds-core/src/styles/tokens/color/_orange.scss",
+        "packages/uswds-core/src/styles/tokens/color/_orange-warm.scss",
+        "packages/uswds-core/src/styles/tokens/color/_mint-cool.scss",
+        "packages/uswds-core/src/styles/tokens/color/_green-cool.scss",
+        "packages/uswds-core/src/styles/tokens/color/_violet.scss",
+        "packages/uswds-core/src/styles/tokens/color/_magenta.scss",
+        "packages/uswds-core/src/styles/tokens/color/_red.scss",
+        "packages/uswds-core/src/styles/tokens/color/_red-warm.scss",
+        "packages/uswds-core/src/styles/tokens/color/_global.scss"
+      ]
+    }
+  ],
+  "fonts": [
+    {
+      "family": "Source Sans 3",
+      "license": "OFL-1.1",
+      "url": "https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,700;1,400&display=swap"
+    },
+    {
+      "family": "Merriweather",
+      "license": "OFL-1.1",
+      "url": "https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap"
+    },
+    {
+      "family": "Roboto Mono",
+      "license": "Apache-2.0",
+      "url": "https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap"
+    }
+  ],
+  "extraTokens": [
+    "--usa-white",
+    "--usa-gray-5",
+    "--usa-gray-10",
+    "--usa-gray-70",
+    "--usa-gray-80",
+    "--usa-gray-90",
+    "--usa-gray-cool-10",
+    "--usa-gray-cool-60",
+    "--usa-blue-10",
+    "--usa-blue-vivid-30",
+    "--usa-blue-vivid-60",
+    "--usa-blue-warm-vivid-70"
+  ],
+  "ddd": {
+    "--ddd-theme-default-pughBlue": {
+      "token": "--usa-blue-30",
+      "note": "primary-light"
+    },
+    "--ddd-theme-default-accent": {
+      "token": "--usa-blue-30",
+      "note": "primary-light"
+    },
+    "--ddd-theme-default-skyBlue": {
+      "token": "--usa-cyan-vivid-30",
+      "note": "accent-cool"
+    },
+    "--ddd-theme-default-skyLight": {
+      "token": "--usa-cyan-20"
+    },
+    "--ddd-theme-default-skyMaxLight": {
+      "token": "--usa-cyan-5"
+    },
+    "--ddd-theme-default-slateGray": {
+      "token": "--usa-gray-cool-60",
+      "note": "base-dark"
+    },
+    "--ddd-theme-default-slateLight": {
+      "token": "--usa-gray-cool-30",
+      "note": "base-light"
+    },
+    "--ddd-theme-default-slateMaxLight": {
+      "token": "--usa-gray-cool-5"
+    },
+    "--ddd-theme-default-coalyGray": {
+      "token": "--usa-gray-90",
+      "note": "base-ink"
+    },
+    "--ddd-theme-default-black": {
+      "token": "--usa-black"
+    },
+    "--ddd-theme-default-white": {
+      "token": "--usa-white"
+    },
+    "--ddd-theme-default-limestoneGray": {
+      "token": "--usa-gray-cool-40"
+    },
+    "--ddd-theme-default-limestoneLight": {
+      "token": "--usa-gray-cool-10",
+      "note": "base-lighter"
+    },
+    "--ddd-theme-default-limestoneMaxLight": {
+      "token": "--usa-gray-5",
+      "note": "base-lightest"
+    },
+    "--ddd-theme-default-background": {
+      "token": "--usa-gray-5",
+      "note": "base-lightest"
+    },
+    "--ddd-theme-default-disabled": {
+      "token": "--usa-gray-20",
+      "note": "disabled-lighter"
+    },
+    "--ddd-theme-default-keystoneYellow": {
+      "token": "--usa-gold-vivid-20",
+      "note": "warning"
+    },
+    "--ddd-theme-default-globalNeon": {
+      "token": "--usa-yellow-vivid-10",
+      "note": "warning-light"
+    },
+    "--ddd-theme-default-roarGolden": {
+      "token": "--usa-gold-vivid-30",
+      "note": "warning-dark"
+    },
+    "--ddd-theme-default-roarLight": {
+      "token": "--usa-gold-10"
+    },
+    "--ddd-theme-default-roarMaxlight": {
+      "token": "--usa-yellow-5",
+      "note": "warning-lighter"
+    },
+    "--ddd-theme-default-shrineTan": {
+      "token": "--usa-gold-30",
+      "note": "USWDS has no tan; muted gold"
+    },
+    "--ddd-theme-default-shrineLight": {
+      "token": "--usa-gold-10"
+    },
+    "--ddd-theme-default-shrineMaxLight": {
+      "token": "--usa-gold-5"
+    },
+    "--ddd-theme-default-inventOrange": {
+      "token": "--usa-orange-vivid-30",
+      "note": "accent-warm"
+    },
+    "--ddd-theme-default-landgrantBrown": {
+      "token": "--usa-orange-warm-70"
+    },
+    "--ddd-theme-default-creekTeal": {
+      "token": "--usa-mint-cool-vivid-50"
+    },
+    "--ddd-theme-default-creekLight": {
+      "token": "--usa-mint-cool-20"
+    },
+    "--ddd-theme-default-creekMaxLight": {
+      "token": "--usa-mint-cool-5"
+    },
+    "--ddd-theme-default-opportunityGreen": {
+      "token": "--usa-green-cool-vivid-60",
+      "note": "correct signal (light); success-darker"
+    },
+    "--ddd-theme-default-forestGreen": {
+      "token": "--usa-green-cool-vivid-50",
+      "note": "success-dark"
+    },
+    "--ddd-theme-default-futureLime": {
+      "token": "--usa-green-cool-vivid-20",
+      "note": "correct signal (dark); success-light"
+    },
+    "--ddd-theme-default-athertonViolet": {
+      "token": "--usa-violet-30",
+      "note": "incorrect signal (dark)"
+    },
+    "--ddd-theme-default-wonderPurple": {
+      "token": "--usa-violet-vivid-70",
+      "note": "incorrect signal (light); USWDS's visited-link violet, keeps HAX purple-for-incorrect"
+    },
+    "--ddd-theme-default-original87Pink": {
+      "token": "--usa-magenta-vivid-60"
+    },
+    "--ddd-theme-default-discoveryCoral": {
+      "token": "--usa-red-warm-vivid-30",
+      "note": "error-light"
+    },
+    "--ddd-theme-default-error": {
+      "token": "--usa-red-vivid-60",
+      "note": "error-dark"
+    },
+    "--ddd-theme-default-errorLight": {
+      "token": "--usa-red-warm-10",
+      "note": "error-lighter"
+    },
+    "--ddd-theme-default-warning": {
+      "token": "--usa-gold-vivid-60",
+      "note": "one step past warning-darker (gold-50v), which is 4.11:1 on warning-lighter"
+    },
+    "--ddd-theme-default-warningLight": {
+      "token": "--usa-yellow-5",
+      "note": "warning-lighter"
+    },
+    "--ddd-theme-default-info": {
+      "token": "--usa-blue-cool-60",
+      "note": "info-darker"
+    },
+    "--ddd-theme-default-infoLight": {
+      "token": "--usa-cyan-5",
+      "note": "info-lighter"
+    },
+    "--ddd-theme-default-success": {
+      "token": "--usa-green-cool-vivid-60",
+      "note": "success-darker"
+    },
+    "--ddd-theme-default-successLight": {
+      "token": "--usa-green-cool-5",
+      "note": "success-lighter"
+    },
+    "--ddd-theme-default-alertImmediate": {
+      "token": "--usa-red-warm-vivid-10"
+    },
+    "--ddd-theme-default-alertUrgent": {
+      "token": "--usa-yellow-vivid-10"
+    },
+    "--ddd-theme-default-alertAllClear": {
+      "token": "--usa-green-cool-vivid-5"
+    },
+    "--ddd-theme-default-alertNonEmergency": {
+      "token": "--usa-blue-cool-vivid-5"
+    },
+    "--ddd-theme-default-beaverBlue": {
+      "token": "--usa-blue-vivid-60",
+      "note": "primary"
+    },
+    "--ddd-theme-default-nittanyNavy": {
+      "token": "--usa-blue-warm-vivid-70",
+      "note": "primary-dark"
+    },
+    "--ddd-theme-default-potentialMidnight": {
+      "token": "--usa-blue-warm-vivid-80",
+      "note": "primary-darker"
+    },
+    "--ddd-theme-default-link": {
+      "token": "--usa-blue-vivid-60",
+      "note": "link: primary"
+    },
+    "--ddd-theme-default-linkLight": {
+      "token": "--usa-blue-vivid-30",
+      "note": "link on dark surfaces"
+    },
+    "--ddd-font-weight-light": {
+      "value": "300",
+      "note": "$theme-font-weight-light"
+    },
+    "--ddd-font-weight-regular": {
+      "value": "400",
+      "note": "$theme-font-weight-normal"
+    },
+    "--ddd-font-weight-bold": {
+      "value": "700",
+      "note": "$theme-font-weight-bold"
+    },
+    "--ddd-boxShadow-sm": {
+      "value": "0 1px 4px 0 rgba(0, 0, 0, 0.1)",
+      "note": "shadow-1: 0 units(1px) units(0.5)"
+    },
+    "--ddd-boxShadow-md": {
+      "value": "0 4px 8px 0 rgba(0, 0, 0, 0.1)",
+      "note": "shadow-2"
+    },
+    "--ddd-boxShadow-lg": {
+      "value": "0 8px 16px 0 rgba(0, 0, 0, 0.1)",
+      "note": "shadow-3"
+    },
+    "--ddd-boxShadow-xl": {
+      "value": "0 12px 24px 0 rgba(0, 0, 0, 0.1)",
+      "note": "shadow-4"
+    },
+    "--ddd-font-primary": {
+      "value": "\"Source Sans 3\", \"Helvetica Neue\", Helvetica, Roboto, Arial, sans-serif",
+      "note": "body role: Source Sans Pro (Source Sans 3 on Google Fonts) with $font-stack-helvetica"
+    },
+    "--ddd-font-secondary": {
+      "value": "Merriweather, Georgia, Cambria, \"Times New Roman\", Times, serif",
+      "note": "heading role: serif (Merriweather) with $font-stack-georgia"
+    },
+    "--ddd-font-navigation": {
+      "value": "\"Source Sans 3\", \"Helvetica Neue\", Helvetica, Roboto, Arial, sans-serif",
+      "note": "ui role: sans"
+    },
+    "--ddd-font-mono": {
+      "value": "\"Roboto Mono\", \"Bitstream Vera Sans Mono\", Consolas, Courier, monospace",
+      "note": "code role: Roboto Mono with $font-stack-monospace"
+    },
+    "--ddd-radius-xs": {
+      "value": "2px",
+      "note": "$theme-border-radius-sm"
+    },
+    "--ddd-radius-sm": {
+      "value": "4px",
+      "note": "$theme-border-radius-md: 0.5 units; buttons"
+    },
+    "--ddd-radius-md": {
+      "value": "8px",
+      "note": "$theme-border-radius-lg: 1 unit; cards"
+    },
+    "--ddd-focus-ring": {
+      "value": "0.25rem solid var(--usa-blue-vivid-40)",
+      "note": "$theme-focus-width 0.5 units, $theme-focus-color blue-40v"
+    },
+    "--ddd-focus-offset": {
+      "value": "0px",
+      "note": "$theme-focus-offset"
+    },
+    "--ddd-surface-padding": {
+      "value": "24px",
+      "note": "$theme-card-padding-perimeter: 3 units"
+    },
+    "--ddd-surface-padding-lg": {
+      "value": "32px",
+      "note": "4 units"
+    },
+    "--ddd-stack-gap": {
+      "value": "16px",
+      "note": "$theme-card-gap: 2 units"
+    },
+    "--ddd-inline-gap": {
+      "value": "8px",
+      "note": "1 unit"
+    },
+    "--ddd-control-padding-inline": {
+      "value": "20px",
+      "note": "usa-button padding: units(1.5) units(2.5)"
+    }
+  }
+}
