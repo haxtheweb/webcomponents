@@ -919,7 +919,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
       <button
         id="${tab.id}-button"
         aria-selected="${tab.id === this.activeTab ? "true" : "false"}"
-        aria-controls="${tab.id}"
+        .ariaControlsElements="${[tab]}"
         class="${tab.id === this.activeTab && !this.disabled ? "active" : ""}"
         .flag="${tab.flag}"
         @click="${(_e) => this._handleTab(tab)}"
