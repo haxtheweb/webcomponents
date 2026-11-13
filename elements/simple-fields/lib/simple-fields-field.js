@@ -470,6 +470,12 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
             flex: 0 0 auto;
             display: flex;
           }
+          /* a label-prefix (e.g. an image answer in multiple-choice) is
+             taller than the label text; keep the text centered beside it */
+          :host([type="checkbox"]) .label-text > span,
+          :host([type="radio"]) .label-text > span {
+            align-items: center;
+          }
           :host([type="checkbox"]) fieldset.block-options span,
           :host([type="radio"]) fieldset.block-options span {
             flex: 0 0 auto;
