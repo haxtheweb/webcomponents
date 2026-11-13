@@ -25,8 +25,8 @@ const NAMES = {
 };
 
 /**
- * `retro-tv-melee`
- * HAX Melee, the game on the HAX 64 cartridge. You and three rival
+ * `retro-tv-blocks`
+ * HAX Blocks, the game on the HAX 64 cartridge. You and three rival
  * rpg-characters race for the HAX blocks (paragraph, image, video, quiz,
  * gallery) floating overhead. Call `press(button)` with a controller
  * button: arrows move, A (or up) grabs the block above you or bonks a
@@ -34,11 +34,11 @@ const NAMES = {
  * fighter, Start publishes your page. The rivals take a turn after each
  * press, so nothing moves on its own. `reset()` starts over.
  *
- * @element retro-tv-melee
+ * @element retro-tv-blocks
  */
-export class RetroTvMelee extends RetroTvLocalizedProgram {
+export class RetroTvBlocks extends RetroTvLocalizedProgram {
   static get tag() {
-    return "retro-tv-melee";
+    return "retro-tv-blocks";
   }
 
   static get properties() {
@@ -81,7 +81,7 @@ export class RetroTvMelee extends RetroTvLocalizedProgram {
         { x: 64, got: 0 },
         { x: 88, got: 0 },
       ],
-      msg: quiet === true ? "" : this.t.meleeReset,
+      msg: quiet === true ? "" : this.t.blocksReset,
     };
     if (quiet !== true) {
       this._changed();
@@ -91,15 +91,15 @@ export class RetroTvMelee extends RetroTvLocalizedProgram {
   defaultLabel() {
     const g = this._g;
     if (!g) {
-      return this.t.meleeLabel;
+      return this.t.blocksLabel;
     }
     const words = g.page.map((k) => this.t[NAMES[BLOCKS[k]]]);
     return [
-      this.t.meleeLabel,
+      this.t.blocksLabel,
       words.length
-        ? this.t.meleeYourPage.replace("{blocks}", words.join(", "))
-        : this.t.meleeEmpty,
-      this.t.meleeRivals.replace(
+        ? this.t.blocksYourPage.replace("{blocks}", words.join(", "))
+        : this.t.blocksEmpty,
+      this.t.blocksRivals.replace(
         "{scores}",
         g.rivals.map((r) => r.got).join(", "),
       ),
@@ -110,7 +110,7 @@ export class RetroTvMelee extends RetroTvLocalizedProgram {
   }
 
   defaultName() {
-    return this.t.meleeName;
+    return this.t.blocksName;
   }
 
   /** how many blocks are on your page */
@@ -155,23 +155,23 @@ export class RetroTvMelee extends RetroTvLocalizedProgram {
       g.x = Math.min(92, g.x + 7);
     } else if (btn === "select") {
       g.hero = (g.hero + 1) % (this.heroes.length || 1);
-      g.msg = this.t.meleeRemixed;
+      g.msg = this.t.blocksRemixed;
       return this._changed();
     } else if (btn === "start") {
       if (!g.page.length) {
-        g.msg = this.t.meleeGrabFirst;
+        g.msg = this.t.blocksGrabFirst;
       } else {
         g.published++;
         g.page = [];
-        g.msg = this.t.meleePublished.replace("{n}", g.published);
+        g.msg = this.t.blocksPublished.replace("{n}", g.published);
       }
       return this._changed();
     } else if (btn === "b" || btn === "d") {
       const k = g.page.pop();
       g.msg =
         k === undefined
-          ? this.t.meleeNothing
-          : this.t.meleeTookBack.replace("{block}", name(k));
+          ? this.t.blocksNothing
+          : this.t.blocksTookBack.replace("{block}", name(k));
       return this._changed();
     }
     this._rivalsTurn();
@@ -184,15 +184,15 @@ export class RetroTvMelee extends RetroTvLocalizedProgram {
         if (g.page.length > 10) {
           g.page.shift();
         }
-        g.msg = this.t.meleeGot.replace("{block}", name(hit.k));
+        g.msg = this.t.blocksGot.replace("{block}", name(hit.k));
         hit.k = g.n++ % BLOCKS.length;
         hit.x = 10 + ((g.n * 29) % 80);
       } else if (foe > -1) {
         const r = g.rivals[foe];
         r.x = Math.max(4, Math.min(96, r.x + (r.x >= g.x ? 22 : -22)));
-        g.msg = this.t.meleeBonk.replace("{n}", foe + 2);
+        g.msg = this.t.blocksBonk.replace("{n}", foe + 2);
       } else {
-        g.msg = this.t.meleeMissed;
+        g.msg = this.t.blocksMissed;
       }
     }
     this._changed();
@@ -338,7 +338,7 @@ export class RetroTvMelee extends RetroTvLocalizedProgram {
       <div class="page" aria-hidden="true">
         ${g.page.map((k) => html`<i>${icon(k)}</i>`)}
       </div>
-      <div class="msg" aria-hidden="true">${g.msg || this.t.meleePressA}</div>
+      <div class="msg" aria-hidden="true">${g.msg || this.t.blocksPressA}</div>
       ${g.blocks.map(
         (b) =>
           html`<span class="blk" style="left:${b.x}%" aria-hidden="true"
@@ -368,9 +368,9 @@ export class RetroTvMelee extends RetroTvLocalizedProgram {
         P1 ${g.page.length}
         ${g.rivals.map((r, i) => `P${i + 2} ${r.got}`).join(" ")}
       </div>
-      <div class="help" aria-hidden="true">${this.t.meleeHelp}</div>
+      <div class="help" aria-hidden="true">${this.t.blocksHelp}</div>
     `;
   }
 }
 
-globalThis.customElements.define(RetroTvMelee.tag, RetroTvMelee);
+globalThis.customElements.define(RetroTvBlocks.tag, RetroTvBlocks);

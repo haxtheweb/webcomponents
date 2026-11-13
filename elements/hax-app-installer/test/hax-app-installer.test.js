@@ -1495,6 +1495,7 @@ describe("HaxAppInstaller HAX UI, HAX TV and keyboard", () => {
       html`<hax-app-installer api-endpoint="mock://test"></hax-app-installer>`,
     );
     await element.updateComplete;
+    await element.haxTvReady;
     await new Promise(function (r) {
       setTimeout(r, 50);
     });
@@ -1527,13 +1528,33 @@ describe("HaxAppInstaller HAX UI, HAX TV and keyboard", () => {
     expect(current.textContent).to.contain("Choose language");
   });
 
-  it("plays HAX TV on channel 4 with every program", () => {
+  it("plays HAX TV on channel 4 with every program, 1 to 10", () => {
     const tv = element.shadowRoot.querySelector("retro-tv");
     expect(tv).to.exist;
     expect(tv.channel).to.equal(4);
     expect(tv.programs.map((p) => p.channel)).to.deep.equal([
-      2, 3, 4, 5, 6, 7, 8, 9, 10,
+      1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
     ]);
+    expect(tv.program.tagName).to.equal("RETRO-TV-HAX-TV");
+    expect(
+      element.shadowRoot.querySelector("retro-tv-sign-on").channel,
+    ).to.equal(1);
+  });
+
+  it("loads HAX TV after the installer, not with it", async () => {
+    // the set and its kit are defined once haxTvReady resolves
+    expect(await element.haxTvReady).to.equal(true);
+    expect(element._haxTvLoaded).to.be.true;
+    for (const tag of [
+      "retro-tv",
+      "retro-tv-sign-on",
+      "retro-tv-disc",
+      "retro-vcr",
+      "retro-console",
+      "retro-controller",
+    ]) {
+      expect(customElements.get(tag), tag).to.exist;
+    }
   });
 
   it("shows the step's actions under the steps too", () => {
@@ -1569,7 +1590,7 @@ describe("HaxAppInstaller HAX UI, HAX TV and keyboard", () => {
     expect(Number(tips.active)).to.equal(0);
   });
 
-  it("plays HAX Melee from the controller and lights keyboard presses", async () => {
+  it("plays HAX Blocks from the controller and lights keyboard presses", async () => {
     const tv = element.shadowRoot.querySelector("retro-tv");
     const pad = element.shadowRoot.querySelector("retro-controller");
     pad.press("a");
@@ -1580,11 +1601,11 @@ describe("HaxAppInstaller HAX UI, HAX TV and keyboard", () => {
     await element.updateComplete;
     expect(deck.power).to.equal(true);
     // A on the keyboard while the game is on lights A and plays it
-    const melee = element.shadowRoot.querySelector("retro-tv-melee");
+    const blocks = element.shadowRoot.querySelector("retro-tv-blocks");
     globalThis.dispatchEvent(new KeyboardEvent("keydown", { key: "a" }));
     await pad.updateComplete;
     expect(pad.shadowRoot.querySelector(".well .lit")).to.exist;
-    expect(melee.score + melee._g.rivals.length).to.be.greaterThan(0);
+    expect(blocks.score + blocks._g.rivals.length).to.be.greaterThan(0);
     // the console's power goes back to the last show
     deck.shadowRoot.querySelector("button").click();
     await element.updateComplete;

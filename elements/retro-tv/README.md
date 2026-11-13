@@ -4,7 +4,20 @@ An old CRT with channels. The cabinet (wood, bezel, knobs, LED, speaker grille),
 
 It is printed artwork, so it looks the same in light and dark. Motion only runs when the viewer has not asked for reduced motion and `still` is not set.
 
-Used by `vhs-blog-theme` (channel 3, the title sequence) and the HAXcms installer, `hax-app-installer` (HAX TV, loading screens and credits).
+Used by `vhs-blog-theme` and the HAXcms installer, `hax-app-installer`. The dial is printed 1 to 10, one channel for each year HAX took to lift off, and both sets carry all ten:
+
+| CH | Installer | VHS Blog |
+| --- | --- | --- |
+| 1 | Sign-on card | Sign-on card |
+| 2 | HAX Blocks (the HAX 64 game) | HAX Blocks |
+| 3 | Title sequence | Title sequence for the post |
+| 4 | HAX TV (on by default) | Static with tumbling characters |
+| 5 | Credits | Credits |
+| 6 | Static | HAX TV |
+| 7 | Home computer | Home computer |
+| 8 | Handheld | Handheld |
+| 9 | PC | PC |
+| 10 | Disc console | Disc console |
 
 ## Usage
 
@@ -51,13 +64,16 @@ Import each one you use from `lib/programs/`.
 
 | Element | | Attributes |
 | --- | --- | --- |
+| `retro-tv-sign-on` | The station sign-on: color bars, the Future Traveler in the station circle, HAX TV | `caption` |
+| `retro-tv-blocks` | HAX Blocks, the game on the HAX 64 cartridge | |
+| `retro-tv-static` | Static, with a cast tumbling through it | `cast`, `label` |
 | `retro-tv-title-sequence` | An 80s title sequence: synthwave sunset, a chrome title rolling up, a Play cue | `crawl-title`, `presenter`, `kicker`, `runtime` and their labels |
 | `retro-tv-hax-tv` | HAX TV: Future Traveler stickers bounce around like a screensaver | |
 | `retro-tv-credits` | End credits starring the Future Traveler | `tape` (label text), `lines` property `[{ role, name }]` |
 | `retro-tv-home-computer` | Early 80s home computer: a BASIC prompt types out; loading stripes while `loading` | `what`, `loading` |
 | `retro-tv-handheld` | Late 80s green-screen handheld: HAX drops in | |
 | `retro-tv-pc` | Early 90s DOS prompt; a progress bar fills while `loading` | `command`, `message`, `loading` |
-| `retro-tv-disc` | Mid 90s disc console: a Future Traveler disc spins behind a glowing HAX | |
+| `retro-tv-disc` | Mid 90s disc console, by way of a late-night anthology: a Future Traveler disc sinks into a black and white spiral, an oscilloscope line holds, HAX glows and the card asks you to stand by | |
 
 Every program has `channel`, `label`, `name` (`programName` for a "now playing" line) and `loading`. Program words are translated with `locales/retro-tv.<lang>.json`.
 

@@ -7,6 +7,7 @@ import "../lib/programs/retro-tv-home-computer.js";
 import "../lib/programs/retro-tv-handheld.js";
 import "../lib/programs/retro-tv-pc.js";
 import "../lib/programs/retro-tv-disc.js";
+import "../lib/programs/retro-tv-sign-on.js";
 
 const settle = async (el) => {
   await el.updateComplete;
@@ -24,6 +25,7 @@ describe("retro-tv", () => {
     }
     element = await fixture(html`
       <retro-tv channel="4" controls>
+        <retro-tv-sign-on channel="1"></retro-tv-sign-on>
         <retro-tv-title-sequence
           channel="3"
           crawl-title="Rewind"
@@ -49,7 +51,7 @@ describe("retro-tv", () => {
 
   it("lists programs in channel order", () => {
     const channels = element.programs.map((p) => p.channel);
-    expect(channels).to.deep.equal([3, 4, 5, 7, 8, 9, 10]);
+    expect(channels).to.deep.equal([1, 3, 4, 5, 7, 8, 9, 10]);
   });
 
   it("puts only the program on this channel on air", () => {
@@ -81,7 +83,7 @@ describe("retro-tv", () => {
     await settle(element);
     element.next();
     await settle(element);
-    expect(element.channel).to.equal(3);
+    expect(element.channel).to.equal(1);
     element.previous();
     await settle(element);
     expect(element.channel).to.equal(10);
@@ -182,6 +184,7 @@ describe("retro-tv", () => {
   it("programs name themselves", () => {
     const names = element.programs.map((p) => p.programName);
     expect(names).to.deep.equal([
+      "Sign on: HAX TV",
       "Rewind",
       "HAX TV: Future Travelers on the loose",
       "Credits",
@@ -232,5 +235,55 @@ describe("retro-tv", () => {
     expect(hc.shadowRoot.querySelector("pre").textContent).to.contain(
       'LOAD "LANGUAGE"',
     );
+  });
+
+  it("the dial runs 1 to 10 and turns with the channel", async () => {
+    const marks = [...element.shadowRoot.querySelectorAll(".ring > *")].map(
+      (m) => m.textContent.trim(),
+    );
+    expect(marks).to.deep.equal([
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+    ]);
+    element.tune(10);
+    await settle(element);
+    expect(
+      element.shadowRoot.querySelector(".ring .cur").textContent.trim(),
+    ).to.equal("10");
+    // the knob after 10 goes back around to 1, the sign-on card
+    element.shadowRoot.querySelector("button.knob").click();
+    await settle(element);
+    expect(element.channel).to.equal(1);
+    expect(element.program.tagName).to.equal("RETRO-TV-SIGN-ON");
+  });
+
+  it("the sign-on card shows HAX TV and a caption", async () => {
+    element.tune(1);
+    await settle(element);
+    const card = element.querySelector("retro-tv-sign-on");
+    await card.updateComplete;
+    expect(card.shadowRoot.textContent).to.contain("HAX TV");
+    expect(card.shadowRoot.textContent).to.contain("Ten years to lift off");
+    card.caption = "Hello";
+    await card.updateComplete;
+    expect(card.shadowRoot.textContent).to.contain("Hello");
+  });
+
+  it("the disc console stands by in black and white", async () => {
+    element.tune(10);
+    await settle(element);
+    const disc = element.querySelector("retro-tv-disc");
+    await disc.updateComplete;
+    expect(disc.shadowRoot.querySelector(".bw")).to.exist;
+    expect(disc.shadowRoot.textContent).to.contain("Please stand by");
+    expect(disc.screenLabel).to.contain("spiral");
   });
 });

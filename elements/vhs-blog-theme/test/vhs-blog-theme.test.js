@@ -121,10 +121,10 @@ describe("VhsBlogTheme", () => {
     );
   });
 
-  it("sits the VCR on the console with the TV off at the shelf", () => {
+  it("stands the VCR on the tower with the TV off at the shelf", () => {
     const root = element.shadowRoot;
-    const vcr = root.querySelector("vhs-blog-console retro-vcr");
-    expect(vcr.getAttribute("slot")).to.equal("vcr");
+    const vcr = root.querySelector(".stand > retro-vcr");
+    expect(vcr.hasAttribute("slot")).to.equal(false);
     expect(vcr.phase).to.equal("idle");
     expect(vcr.disabled).to.equal("eject rew skip");
     expect(root.querySelector("vhs-blog-tv").hasAttribute("off")).to.equal(
@@ -166,7 +166,7 @@ describe("VhsBlogTheme", () => {
     expect(keys[4].getAttribute("aria-label")).to.equal("FF, next post");
   });
 
-  it("flips the TV to channel 4, 2 and back, with a pause for the static", async () => {
+  it("flips the TV through all ten channels, with a pause for the static", async () => {
     const root = element.shadowRoot;
     const tv = root.querySelector("vhs-blog-tv");
     tv.shadowRoot.querySelector("button.screen").click();
@@ -188,18 +188,41 @@ describe("VhsBlogTheme", () => {
     expect(tv.held).to.equal(true);
     expect(pause.getAttribute("aria-pressed")).to.equal("true");
     const cabinet = root.querySelector("vhs-blog-console");
-    // the shared dial: numbers on the ring, the knob is the button
-    cabinet.shadowRoot.querySelector("button.knob").click();
-    await element.updateComplete;
+    const knob = async () => {
+      // the shared dial: numbers on the ring, the knob is the button
+      cabinet.shadowRoot.querySelector("button.knob").click();
+      await element.updateComplete;
+      await tv.updateComplete;
+    };
+    // 5 to 10 and around to 1 are the installer's HAX TV lineup
+    const lineup = {
+      5: "RETRO-TV-CREDITS",
+      6: "RETRO-TV-HAX-TV",
+      7: "RETRO-TV-HOME-COMPUTER",
+      8: "RETRO-TV-HANDHELD",
+      9: "RETRO-TV-PC",
+      10: "RETRO-TV-DISC",
+      1: "RETRO-TV-SIGN-ON",
+    };
+    for (const ch of [5, 6, 7, 8, 9, 10, 1]) {
+      await knob();
+      expect(element.channel).to.equal(ch);
+      const set = tv.shadowRoot.querySelector("retro-tv");
+      await set.updateComplete;
+      expect(set.program.tagName).to.equal(lineup[ch]);
+      expect(
+        root.querySelector(".hint [role=status]").textContent.trim(),
+      ).to.equal(`Channel ${ch}: ${set.program.programName}.`);
+    }
+    expect(root.querySelector(".hint button[aria-pressed]")).to.equal(null);
+    await knob();
     expect(element.channel).to.equal(2);
     expect(root.querySelector("retro-console").power).to.equal(true);
-    cabinet.shadowRoot.querySelector("button.knob").click();
-    await element.updateComplete;
+    await knob();
     expect(element.channel).to.equal(3);
-    expect(root.querySelector(".hint button[aria-pressed]")).to.equal(null);
   });
 
-  it("plays HAX Melee from the controller and turns the set off and on", async () => {
+  it("plays HAX Blocks from the controller and turns the set off and on", async () => {
     const root = element.shadowRoot;
     const pad = root.querySelector("retro-controller");
     expect(pad.getAttribute("slot")).to.equal("game");
@@ -208,9 +231,9 @@ describe("VhsBlogTheme", () => {
     expect(element.channel).to.equal(2);
     const tv = root.querySelector("vhs-blog-tv");
     await tv.updateComplete;
-    const melee = tv.shadowRoot.querySelector("retro-tv-melee");
+    const blocks = tv.shadowRoot.querySelector("retro-tv-blocks");
     pad.press("a");
-    expect(melee.score + melee._g.rivals[0].x).to.be.greaterThan(0);
+    expect(blocks.score + blocks._g.rivals[0].x).to.be.greaterThan(0);
     const cabinet = root.querySelector("vhs-blog-console");
     cabinet.shadowRoot.querySelector("button.pwr").click();
     await element.updateComplete;
@@ -249,6 +272,43 @@ describe("VhsBlogTheme", () => {
     const scheme = globalThis.getComputedStyle(element).colorScheme;
     expect(scheme).to.contain("dark");
     expect(scheme).to.not.contain("light");
+  });
+
+  it("stands the VCR on top of the tape tower, beside the set", () => {
+    const root = element.shadowRoot;
+    const stand = root.querySelector(".setup > .stand");
+    expect(stand.firstElementChild.tagName).to.equal("RETRO-VCR");
+    expect(stand.querySelector(".tower")).to.exist;
+    expect(root.querySelector('vhs-blog-console > [slot="vcr"]')).to.equal(
+      null,
+    );
+  });
+
+  it("on a post, the screen reads the post and points down to it", async () => {
+    const root = element.shadowRoot;
+    const tv = root.querySelector("vhs-blog-tv");
+    // on the shelf the screen still changes channel, with no cue
+    expect(tv.readLabel).to.equal("");
+    expect(tv.shadowRoot.querySelector(".read")).to.equal(null);
+    store.activeId = "a";
+    element._noticeLocation({ route: { name: "reclaim-the-web" } });
+    await tick();
+    await element.updateComplete;
+    await tv.updateComplete;
+    expect(tv.readLabel).to.equal("Scroll down to read the post");
+    expect(tv.shadowRoot.querySelector(".read").textContent).to.contain("READ");
+    const screen = tv.shadowRoot.querySelector("button.screen");
+    expect(screen.querySelector(".sr-only").textContent).to.contain(
+      "Scroll down to read the post",
+    );
+    const ch = element.channel;
+    screen.click();
+    await element.updateComplete;
+    // the knob changes channel; the screen goes to the post
+    expect(element.channel).to.equal(ch);
+    expect(root.activeElement.id).to.equal("contentcontainer");
+    element._noticeLocation({ route: { name: "home" } });
+    await element.updateComplete;
   });
 
   it("renders the post with the TV, cover, content and pager", async () => {
