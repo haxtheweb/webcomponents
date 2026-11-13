@@ -1,21 +1,48 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes"
+    />
     <title>hax-network-bar demo</title>
     <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
     <script type="module">
-      import '../hax-network-bar.js';
+      import "../hax-network-bar.js";
     </script>
-    <style>body { margin: 0; } p { margin: 16px 32px; font-family: sans-serif; }</style>
+    <style>
+      body {
+        margin: 0;
+        font-family: sans-serif;
+        color-scheme: light dark;
+        background-color: light-dark(#ffffff, #000321);
+        color: light-dark(#262626, #ffffff);
+      }
+      p { margin: 16px 32px; }
+      a { color: light-dark(#005fa9, #99ccff); }
+      .page-link { color: inherit; font-size: 14px; }
+    </style>
   </head>
   <body>
     <p>On hax.cloud</p>
     <hax-network-bar current="cloud"></hax-network-bar>
-    <p>On the element portfolio</p>
-    <hax-network-bar current="elements"></hax-network-bar>
-    <p>On RPG me</p>
-    <hax-network-bar current="rpg"></hax-network-bar>
+    <p>
+      On the element portfolio, with a page link in the <code>pre</code> slot
+    </p>
+    <hax-network-bar current="elements">
+      <a slot="pre" class="page-link" href="#">This page's link</a>
+    </hax-network-bar>
+    <p>On HAXcms in the browser</p>
+    <hax-network-bar current="browser"></hax-network-bar>
+    <p>On RPG me, with your own character</p>
+    <hax-network-bar
+      current="rpg"
+      character="1-0103020401020305060009"
+    ></hax-network-bar>
+    <p>
+      <a href="#install">Open Install HAX (#install)</a> ·
+      <a href="#install/agent">Ask your agent (#install/agent)</a>
+    </p>
   </body>
 </html>

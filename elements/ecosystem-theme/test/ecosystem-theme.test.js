@@ -167,11 +167,14 @@ describe("ecosystem-theme", function () {
     expect(element.hasAttribute("menu-open")).to.be.true;
   });
 
-  it("draws the HAX top bar with the Future Traveler in its corner", () => {
-    const logo = element.shadowRoot.querySelector("header.top .haxLogo");
-    expect(logo.getAttribute("aria-hidden")).to.equal("true");
+  it("leaves the Future Traveler's corner to the network bar above it", () => {
+    expect(element.shadowRoot.querySelector("header.top .haxLogo")).to.not
+      .exist;
+    const bar = element.shadowRoot.querySelector("hax-network-bar");
     expect(
-      logo.querySelector("simple-icon-lite").getAttribute("icon"),
+      bar.shadowRoot
+        .querySelector(".traveler simple-icon-lite")
+        .getAttribute("icon"),
     ).to.equal("hax:future-traveler");
   });
 
