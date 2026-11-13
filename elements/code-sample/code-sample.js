@@ -155,6 +155,15 @@ class CodeSample extends I18NMixin(LitElement) {
           min-width: 0;
           overflow-x: auto;
         }
+        /* the container is the one scroll area (it takes focus while it
+           overflows), so highlight themes must not scroll the code element too */
+        #code-container #code code {
+          overflow-x: visible;
+        }
+        #code-container:focus-visible {
+          outline: var(--ddd-focus-ring);
+          outline-offset: calc(-1 * var(--ddd-border-size-sm));
+        }
 
         /* copy keeps its visible word (Copy / Done / Error), so it is a
            text header action rather than an icon-only button */
@@ -242,7 +251,11 @@ class CodeSample extends I18NMixin(LitElement) {
           <div id="theme"></div>
           <div id="demo" class="demo"></div>
           <slot></slot>
-          <div id="code-container">
+          <div
+            id="code-container"
+            role="region"
+            aria-label="${this._frameLabel}"
+          >
             <pre id="code"></pre>
           </div>
         </div>
@@ -552,6 +565,24 @@ if ($MrTheCheat) {
     setTimeout(() => {
       this._themeChanged(this.theme);
     }, 0);
+    // keyboard users must be able to scroll long lines (WCAG 2.1.1), so the
+    // code area joins the tab order only while it overflows
+    const container = this.shadowRoot.querySelector("#code-container");
+    if (container && globalThis.ResizeObserver) {
+      const sync = () => {
+        if (container.scrollWidth > container.clientWidth) {
+          container.setAttribute("tabindex", "0");
+        } else {
+          container.removeAttribute("tabindex");
+        }
+      };
+      this.__scrollObserver = new globalThis.ResizeObserver(sync);
+      this.__scrollObserver.observe(container);
+      const code = this.shadowRoot.querySelector("#code");
+      if (code) {
+        this.__scrollObserver.observe(code);
+      }
+    }
   }
   /**
    * HTMLElement
@@ -583,6 +614,10 @@ if ($MrTheCheat) {
     if (this._observer) {
       this._observer.disconnect();
       this._observer = null;
+    }
+    if (this.__scrollObserver) {
+      this.__scrollObserver.disconnect();
+      this.__scrollObserver = null;
     }
     super.disconnectedCallback();
   }

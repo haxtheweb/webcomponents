@@ -1,6 +1,10 @@
 # carbon-theme
 
-A HAXcms theme in the [IBM Carbon](https://carbondesignsystem.com) UI Shell layout (dark 48px header, side navigation, content area), built on the **Carbon DDD bridge**.
+A HAXcms theme in the layout of Carbon's own documentation site, [carbondesignsystem.com](https://carbondesignsystem.com), built on the **Carbon DDD bridge**:
+
+- **UI shell**: a light 48px header and a side navigation on the background layer, with the current item on the selected background and a 3px interactive bar. Both follow the theme into g100 in dark mode.
+- **Page header**: each page opens with a panel holding the breadcrumb, a light display title and the page description as lead text.
+- **Content**: on the `layer-01` gray below the header, with previous and next as ghost buttons on a rule.
 
 ## What the bridge does
 

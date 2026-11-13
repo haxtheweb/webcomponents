@@ -53,7 +53,9 @@ export const mapMenuActiveRingStyles = [
        check on the done disc in the row's background), so every part of it
        has the contrast the theme gives its active text, at least 3:1 in any
        palette, light or dark. Progress reads as a thick arc over a thin
-       full track, never colour alone. */
+       full track, never colour alone. A theme whose active background is
+       translucent must set --map-menu-progress-ring-on-color to an opaque
+       colour, or the check fades into the disc. */
     .active-ring {
       display: inline-flex;
       flex: none;

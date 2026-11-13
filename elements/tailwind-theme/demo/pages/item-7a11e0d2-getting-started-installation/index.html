@@ -1,0 +1,24 @@
+<p>The theme ships with HAX, so there is nothing extra to install. Pick the way you work and follow the steps.</p>
+<h2>Installation</h2>
+<a11y-tabs>
+<a11y-tab label="Using the HAX CLI">
+<ddd-steps-list>
+<ddd-steps-list-item title="Create your site"><p>Start a new site with the HAX command line.</p><code-sample type="bash"><template preserve-content="preserve-content">hax site my-docs --y
+cd my-docs</template></code-sample></ddd-steps-list-item>
+<ddd-steps-list-item title="Turn on the theme"><p>Set the theme in site.json.</p><code-sample type="json"><template preserve-content="preserve-content">{
+  "metadata": {
+    "theme": { "element": "tailwind-theme" }
+  }
+}</template></code-sample></ddd-steps-list-item>
+<ddd-steps-list-item title="Start writing"><p>Run the site locally and edit pages in the browser.</p><code-sample type="bash"><template preserve-content="preserve-content">hax serve</template></code-sample></ddd-steps-list-item>
+</ddd-steps-list>
+</a11y-tab>
+<a11y-tab label="Using HAXcms">
+<ddd-steps-list>
+<ddd-steps-list-item title="Open site settings"><p>In the editor, open the site settings.</p></ddd-steps-list-item>
+<ddd-steps-list-item title="Pick Tailwind"><p>Choose Tailwind from the theme list and save.</p></ddd-steps-list-item>
+</ddd-steps-list>
+</a11y-tab>
+</a11y-tabs>
+<h2>Check the result</h2>
+<p>Blocks you already use pick up the Tailwind palette, type and radii. Nothing in your content changes.</p>

@@ -39,6 +39,14 @@
             },
             {
               "kind": "field",
+              "name": "siteMenuShowProgress",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "kind": "field",
               "name": "t",
               "type": {
                 "text": "object"

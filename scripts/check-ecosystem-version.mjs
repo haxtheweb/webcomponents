@@ -26,7 +26,8 @@ import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const STRICT = process.argv.includes("--strict");
-// packages that ubiquity-push.sh releases with --release-as $(cat .version)
+// repos that ubiquity-push.sh tags v<.version>, and the file each keeps its
+// version in (package.json unless noted)
 const SIBLINGS = [
   "haxcms-nodejs",
   "haxcms-php",
@@ -34,11 +35,24 @@ const SIBLINGS = [
   "hax11ty",
   "psucdn",
   "open-apis",
+  "haxcms-desktop",
+  "haxcms-browser",
+  ["haxcms-mcp", "pyproject.toml"],
+  ["praw", ".version"],
 ];
 
 function readVersion(file) {
   try {
-    return JSON.parse(fs.readFileSync(file, "utf8")).version || null;
+    const text = fs.readFileSync(file, "utf8");
+    if (file.endsWith(".json")) {
+      return JSON.parse(text).version || null;
+    }
+    if (file.endsWith(".toml")) {
+      // [project] version, the first top-level version key
+      const m = /^version\s*=\s*"([^"]+)"/m.exec(text);
+      return m ? m[1] : null;
+    }
+    return text.trim() || null;
   } catch (e) {
     return null;
   }
@@ -46,8 +60,12 @@ function readVersion(file) {
 
 // numeric compare of x.y.z; prerelease tags are not used in this ecosystem
 function compare(a, b) {
-  const pa = String(a).split(/[.-]/).map((n) => parseInt(n, 10) || 0);
-  const pb = String(b).split(/[.-]/).map((n) => parseInt(n, 10) || 0);
+  const pa = String(a)
+    .split(/[.-]/)
+    .map((n) => parseInt(n, 10) || 0);
+  const pb = String(b)
+    .split(/[.-]/)
+    .map((n) => parseInt(n, 10) || 0);
   for (let i = 0; i < 3; i++) {
     if (pa[i] !== pb[i]) {
       return pa[i] > pb[i] ? 1 : -1;
@@ -63,13 +81,18 @@ try {
   release = null;
 }
 if (!release) {
-  console.log("check-ecosystem-version: no .version yet; run gulp version-match");
+  console.log(
+    "check-ecosystem-version: no .version yet; run gulp version-match",
+  );
   process.exit(STRICT ? 1 : 0);
 }
 
 const ahead = [];
-for (const name of SIBLINGS) {
-  const version = readVersion(path.join(ROOT, "..", name, "package.json"));
+for (const sibling of SIBLINGS) {
+  const [name, file] = Array.isArray(sibling)
+    ? sibling
+    : [sibling, "package.json"];
+  const version = readVersion(path.join(ROOT, "..", name, file));
   // Releasing (--strict) needs .version strictly past every sibling: an equal
   // version is already published there, so a lerna patch bump from 26.8.0 to
   // 26.8.1 would still fail its npm publish. Between releases every sibling

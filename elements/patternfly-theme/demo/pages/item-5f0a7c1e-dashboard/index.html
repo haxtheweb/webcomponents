@@ -1,0 +1,26 @@
+<p>Each card shows one metric or a small group of related metrics, laid out on a grid, following the PatternFly dashboard guidelines.</p>
+<grid-plate layout="1-1">
+<div slot="col-1" data-border="xs" data-border-radius="md" data-primary="5"><h2>12 clusters</h2>
+<p><simple-icon icon="icons:check-circle" accent-color="green" aria-hidden="true"></simple-icon> <strong>10</strong> running normally</p><p><simple-icon icon="icons:warning" accent-color="orange" aria-hidden="true"></simple-icon> <strong>1</strong> need maintenance</p><p><simple-icon icon="icons:error" accent-color="red" aria-hidden="true"></simple-icon> <strong>1</strong> down</p>
+<p><a href="clusters">View clusters</a></p></div>
+<div slot="col-2" data-border="xs" data-border-radius="md" data-primary="5"><h2>Requests</h2>
+<p data-font-size="xl"><count-up end="1204" duration="1.5"></count-up></p>
+<p><simple-tag value="+12% from last week" accent-color="green" readonly></simple-tag></p>
+<p><a href="clusters">See traffic by cluster</a></p></div>
+<div slot="col-1" data-border="xs" data-border-radius="md" data-primary="5"><h2>CPU utilization</h2>
+<progress-donut title="CPU in use" desc="62 of 100 cores in use" complete="[62]" total="100"></progress-donut></div>
+<div slot="col-2" data-border="xs" data-border-radius="md" data-primary="5"><h2>Events</h2>
+<ul>
+<li><simple-icon icon="icons:error" accent-color="red" aria-hidden="true"></simple-icon> <strong>Node down</strong> on cluster west-2, 12 minutes ago</li>
+<li><simple-icon icon="icons:warning" accent-color="orange" aria-hidden="true"></simple-icon> <strong>Certificate expires</strong> in 9 days on east-1</li>
+<li><simple-icon icon="icons:check-circle" accent-color="green" aria-hidden="true"></simple-icon> <strong>Update finished</strong> on central-1, 2 hours ago</li>
+</ul>
+<p><a href="clusters/west-2">View all events</a></p></div>
+</grid-plate>
+<h2>Details</h2>
+<dl>
+<dt>Provider</dt><dd>Private cloud</dd>
+<dt>Version</dt><dd>4.16.2</dd>
+<dt>Update channel</dt><dd>stable</dd>
+<dt>Owner</dt><dd>Platform team</dd>
+</dl>

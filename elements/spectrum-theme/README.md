@@ -1,6 +1,8 @@
 # spectrum-theme
 
-A HAXcms theme in an Adobe Spectrum 2 app frame (header, side navigation that overlays below 1024px, rounded content panel), built on the **Spectrum DDD bridge**.
+A HAXcms theme laid out like Adobe's own Spectrum 2 documentation (header, a floating rounded navigation panel that overlays below 1024px, a rounded content panel with a centered reading column, and an "On this page" list from 1280px), built on the **Spectrum DDD bridge**.
+
+The demo site (`demo/`) is a design-guidance site in that layout: principles, getting started, a component page with tabs, voice and tone, color and the bridge's coverage, all authored with ordinary HAX blocks. Its gradient artwork in `demo/files` is original to this repository.
 
 ## What the bridge does
 

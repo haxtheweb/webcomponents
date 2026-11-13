@@ -230,12 +230,15 @@ git add -A
 git commit -m "ubiquity publish"
 git push --follow-tags origin master
 
-# praw: CLI pin (.version) and the agent-skills index written in STEP 1.5
+# praw: CLI pin (.version) and the agent-skills index written in STEP 1.5.
+# praw has no package.json, so it is tagged directly; the tag matches the
+# v<version> tags commit-and-tag-version writes in the other repos.
 cd ~/haxtheweb/praw
 git pull origin main
 git add -A
 git commit -m "ubiquity publish"
-git push origin main
+git tag -a "v$version" -m "v$version"
+git push --follow-tags origin main
 
 cd ~/haxtheweb/hax11ty/
 git pull origin master
@@ -313,7 +316,9 @@ git commit -m "ubiquity publish"
 git push --follow-tags origin main
 npm publish
 
-cd ~/haxtheweb/desktop/
+# haxcms-desktop (renamed from desktop): Electron wrapper around the
+# haxcms-nodejs release published above
+cd ~/haxtheweb/haxcms-desktop/
 git pull origin master
 npm update @haxtheweb/haxcms-nodejs --save
 git add -A
@@ -321,6 +326,39 @@ git commit -m "ubiquity publish"
 npm run build
 ./node_modules/.bin/commit-and-tag-version --release-as $version
 git push --follow-tags origin master
+
+# haxcms-browser: haxcms-nodejs bundled to run in a browser Worker. Built from
+# the haxcms-nodejs checkout tagged above (HAXCMS_NODEJS_SRC) so the published
+# Worker is exactly this release; its GitHub Pages demo rebuilds from main on push.
+cd ~/haxtheweb/haxcms-browser/
+git pull origin main
+npm update @haxtheweb/haxcms-nodejs --save
+git add -A
+git commit -m "ubiquity publish"
+HAXCMS_NODEJS_SRC=~/haxtheweb/haxcms-nodejs/src npm run build
+# commit-and-tag-version is run pinned via npx rather than added as a
+# devDependency: its tree includes a CC-BY-3.0 data package that the repo's
+# license gate does not allow
+npx --yes commit-and-tag-version@12.7.3 --release-as $version
+git push --follow-tags origin main
+npm publish
+
+# haxcms-mcp (Python): vendor the OpenAPI specs of the haxcms-nodejs release
+# tagged above, regenerate the routes/tools/docs built from them, then version
+# and tag to match. A failed regeneration stops here rather than tagging stale specs.
+cd ~/haxtheweb/haxcms-mcp/
+git pull origin main
+uv run python scripts/sync_specs.py --from ~/haxtheweb/haxcms-nodejs || exit 1
+uv run python scripts/gen_routes.py || exit 1
+uv run python scripts/gen_tools.py || exit 1
+uv run python scripts/gen_tool_docs.py || exit 1
+uv version "$version"
+# hand-written Keep a Changelog: open a release section under [Unreleased]
+node -e 'const fs=require("fs");const [v,d]=process.argv.slice(1);const t=fs.readFileSync("CHANGELOG.md","utf8");fs.writeFileSync("CHANGELOG.md",t.replace(/^## \[Unreleased\]$/m,`## [Unreleased]\n\n## [${v}] - ${d}`))' "$version" "$(date +%F)"
+git add -A
+git commit -m "ubiquity publish"
+git tag -a "v$version" -m "v$version"
+git push --follow-tags origin main
 
 
 cd ~/haxtheweb/create/

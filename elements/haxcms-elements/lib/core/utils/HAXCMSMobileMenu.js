@@ -22,6 +22,9 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
       this.isHorizontal = true;
       this.isFlex = true;
       this.menuOpen = true;
+      // learner progress ring on the site-menu item of the page open now;
+      // off unless the theme presents learner progress and sets this true
+      this.siteMenuShowProgress = false;
       this.t.closeMenu = "Close menu";
       this.t.openMenu = "Open menu";
       this.t.toggleSiteMenu = "Toggle site menu";
@@ -144,6 +147,9 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
       }
     }
     HAXCMSMobileMenu(_e) {
+      // show-progress is written as a static attribute: replace-tag copies
+      // attributes in its constructor when site-menu is already defined,
+      // before bound attributes are set
       return html`
         <nav
           id="haxcmsmobilemenunav"
@@ -153,12 +159,22 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
           itemscope
           itemtype="http://schema.org/SiteNavigationElement"
         >
-          <replace-tag
-            with="site-menu"
-            part="site-menu"
-            id="sitemenu"
-            import-method="view"
-          ></replace-tag>
+          ${
+            this.siteMenuShowProgress
+              ? html`<replace-tag
+                  with="site-menu"
+                  part="site-menu"
+                  id="sitemenu"
+                  show-progress
+                  import-method="view"
+                ></replace-tag>`
+              : html`<replace-tag
+                  with="site-menu"
+                  part="site-menu"
+                  id="sitemenu"
+                  import-method="view"
+                ></replace-tag>`
+          }
         </nav>
       `;
     }
@@ -260,6 +276,15 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
         isHorizontal: {
           type: Boolean,
           attribute: "is-horizontal",
+        },
+        /**
+         * Show the learner progress ring in the site-menu this mixin renders.
+         * Off by default; set true in the constructor of a theme that
+         * presents learner progress.
+         */
+        siteMenuShowProgress: {
+          type: Boolean,
+          attribute: false,
         },
       };
     }

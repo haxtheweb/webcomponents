@@ -16,12 +16,14 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/site/site-title.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu.js";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 
 /**
  * `material-theme`
- * A HAXcms theme in the Material Design 3 layout (top app bar, navigation
- * drawer, content surface), built on the Material DDD bridge: every HAX block
+ * A HAXcms theme laid out like the Material Design 3 site itself: a navigation
+ * rail of top-level sections, a navigation drawer for the whole outline, and
+ * content on a rounded surface, built on the Material DDD bridge: every HAX block
  * reads --ddd-* tokens, which point at Material 3 tokens while it is
  * active.
  *
@@ -42,7 +44,12 @@ class MaterialTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
       css`
         body {
           margin: 0;
-          background-color: light-dark(#fef7ff, #141218);
+          background-color: light-dark(#f3edf7, #211f26);
+        }
+        /* images in page content never overflow the reading column */
+        material-theme img {
+          max-width: 100%;
+          height: auto;
         }
       `,
     ];
@@ -60,6 +67,7 @@ class MaterialTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
       search: "Search",
       toggleDarkMode: "Toggle dark mode",
       pageNavigation: "Page navigation",
+      sections: "Sections",
     };
     // no I18NMixin in this class chain, so register with the store directly
     I18NManagerStore.registerLocalization({
@@ -69,6 +77,9 @@ class MaterialTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     this.HAXCMSThemeSettings.autoScroll = true;
     this.sidebarOpen = true;
     this._mobile = false;
+    this._topItems = [];
+    this._currentTop = "";
+    this._activeId = "";
     this.__themeDisposers = [];
     activateMaterialDesignSystem();
     // prettier-ignore
@@ -103,6 +114,9 @@ class MaterialTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
       sidebarOpen: { type: Boolean, reflect: true, attribute: "sidebar-open" },
       _mobile: { type: Boolean, state: true },
       _dark: { type: Boolean, state: true },
+      _topItems: { type: Array, state: true },
+      _currentTop: { type: String, state: true },
+      _activeId: { type: String, state: true },
     };
   }
 
@@ -180,10 +194,11 @@ class MaterialTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           display: block;
           min-height: 100vh;
           color: var(--md-sys-color-on-surface);
-          background-color: var(--md-sys-color-surface);
+          background-color: var(--md-sys-color-surface-container);
           font-family: var(--ddd-font-primary);
           --material-theme-bar-height: 64px;
-          --material-theme-drawer-width: 304px;
+          --material-theme-rail-width: 96px;
+          --material-theme-drawer-width: 280px;
         }
         .top-app-bar {
           position: sticky;
@@ -193,7 +208,7 @@ class MaterialTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           align-items: center;
           gap: var(--ddd-spacing-1);
           height: var(--material-theme-bar-height);
-          padding: 0 var(--ddd-spacing-1);
+          padding: 0 var(--ddd-spacing-5);
           background-color: var(--md-sys-color-surface-container);
         }
         .brand {
@@ -230,15 +245,79 @@ class MaterialTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
             transparent
           );
         }
+        .rail {
+          position: sticky;
+          top: var(--material-theme-bar-height);
+          flex: 0 0 var(--material-theme-rail-width);
+          width: var(--material-theme-rail-width);
+          height: calc(100vh - var(--material-theme-bar-height));
+          overflow-y: auto;
+          box-sizing: border-box;
+          padding: var(--ddd-spacing-2) 0;
+        }
+        .rail ul {
+          display: flex;
+          flex-direction: column;
+          gap: var(--ddd-spacing-3);
+          margin: 0;
+          padding: 0;
+          list-style: none;
+        }
+        .dest {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: var(--ddd-spacing-1);
+          padding: 0 var(--ddd-spacing-1);
+          color: var(--md-sys-color-on-surface-variant);
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-5xs);
+          font-weight: var(--ddd-font-weight-medium);
+          line-height: 1.3;
+          text-align: center;
+          text-decoration: none;
+          hyphens: auto;
+        }
+        .dest .indicator {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 56px;
+          height: 32px;
+          border-radius: var(--md-sys-shape-corner-full);
+          --simple-icon-width: 24px;
+          --simple-icon-height: 24px;
+        }
+        .dest:hover .indicator {
+          background-color: color-mix(
+            in srgb,
+            var(--md-sys-color-on-surface-variant)
+              calc(var(--ddd-state-hover-opacity) * 100%),
+            transparent
+          );
+        }
+        .dest.current {
+          color: var(--md-sys-color-on-surface);
+          font-weight: var(--ddd-font-weight-bold);
+        }
+        .dest.current .indicator {
+          background-color: var(--md-sys-color-secondary-container);
+          color: var(--md-sys-color-on-secondary-container);
+        }
+        .dest:focus-visible {
+          outline: none;
+        }
+        .dest:focus-visible .indicator {
+          outline: var(--ddd-focus-ring);
+          outline-offset: var(--ddd-focus-offset, 2px);
+        }
         .nav {
           top: var(--material-theme-bar-height);
           flex: 0 0 var(--material-theme-drawer-width);
           width: var(--material-theme-drawer-width);
           height: calc(100vh - var(--material-theme-bar-height));
-          padding: var(--ddd-spacing-3);
-          background-color: var(--md-sys-color-surface-container-low);
-          border-radius: 0 var(--md-sys-shape-corner-large)
-            var(--md-sys-shape-corner-large) 0;
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
+          background-color: var(--md-sys-color-surface-container);
         }
         site-menu {
           --site-menu-color: var(--md-sys-color-on-surface-variant);
@@ -265,9 +344,24 @@ class MaterialTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           );
           --map-menu-font-weight: var(--ddd-font-weight-medium);
         }
+        main {
+          padding: 0 var(--ddd-spacing-4) var(--ddd-spacing-4) 0;
+        }
+        .panel {
+          min-height: calc(
+            100vh - var(--material-theme-bar-height) - var(--ddd-spacing-4)
+          );
+          display: flex;
+          flex-direction: column;
+          border-radius: var(--md-sys-shape-corner-extra-large);
+          background-color: var(--md-sys-color-surface);
+        }
         .content {
-          padding: var(--ddd-spacing-6) var(--ddd-spacing-10) 0;
-          max-width: var(--material-theme-content-max-width, 960px);
+          flex: 1 1 auto;
+          width: 100%;
+          padding: var(--ddd-spacing-10) var(--ddd-spacing-12) 0;
+          max-width: var(--material-theme-content-max-width, 1040px);
+          margin-inline: auto;
           box-sizing: border-box;
         }
         site-breadcrumb {
@@ -280,12 +374,17 @@ class MaterialTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
             --md-sys-color-on-surface-variant
           );
         }
+        /* the rail carries page icons, so titles stay text only */
+        site-active-title .site-active-title-icon {
+          display: none;
+        }
         site-active-title h1 {
           margin: 0 0 var(--ddd-spacing-6) 0;
-          font-family: var(--ddd-font-secondary);
-          font-size: var(--ddd-font-size-m);
+          font-family: var(--ddd-font-heading, var(--ddd-font-secondary));
+          font-size: var(--ddd-font-size-l);
           font-weight: var(--ddd-font-weight-regular);
-          line-height: 1.25;
+          letter-spacing: -0.01em;
+          line-height: 1.15;
           color: var(--md-sys-color-on-surface);
         }
         .pager {
@@ -320,6 +419,15 @@ class MaterialTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           }
         }
         @media (max-width: 600px) {
+          .rail {
+            display: none;
+          }
+          main {
+            padding: 0;
+          }
+          .panel {
+            border-radius: 0;
+          }
           .content,
           .pager,
           footer {
@@ -330,7 +438,7 @@ class MaterialTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
             width: min(var(--material-theme-drawer-width), 85vw);
           }
           site-active-title h1 {
-            font-size: var(--ddd-font-size-s);
+            font-size: var(--ddd-font-size-m);
           }
         }
       `,
@@ -351,19 +459,21 @@ class MaterialTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
         ${this.renderActions()}
       </header>
       <div class="layout">
-        ${this.renderNav()}
+        ${this.renderRail()} ${this.renderNav()}
         <main>
-          <div class="content">
-            <site-breadcrumb part="page-breadcrumb"></site-breadcrumb>
-            <site-active-title part="page-title"></site-active-title>
-            <article id="contentcontainer">
-              <section id="slot"><slot></slot></section>
-            </article>
+          <div class="panel">
+            <div class="content">
+              <site-breadcrumb part="page-breadcrumb"></site-breadcrumb>
+              <site-active-title part="page-title"></site-active-title>
+              <article id="contentcontainer">
+                <section id="slot"><slot></slot></section>
+              </article>
+            </div>
+            ${this.renderPager()}
+            <footer part="footer">
+              <site-region name="footerPrimary"></site-region>
+            </footer>
           </div>
-          ${this.renderPager()}
-          <footer part="footer">
-            <site-region name="footerPrimary"></site-region>
-          </footer>
         </main>
       </div>
     `;
@@ -403,6 +513,44 @@ class MaterialTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     </div>`;
   }
 
+  /**
+   * Navigation rail: one destination per top-level page, with the page icon
+   * (metadata.icon) above its title and a pill indicator on the current section
+   */
+  renderRail() {
+    return html`<nav class="rail" part="rail" aria-label="${this.t.sections}">
+      <ul>
+        ${this._topItems.map((item) => {
+          const current = item.id === this._currentTop;
+          return html`<li>
+            <a
+              class="dest${current ? " current" : ""}"
+              href="${item.slug}"
+              aria-current="${
+                current
+                  ? item.id === this._activeId
+                    ? "page"
+                    : "true"
+                  : "false"
+              }"
+            >
+              <span class="indicator"
+                ><simple-icon-lite
+                  icon="${
+                    item.metadata && item.metadata.icon
+                      ? item.metadata.icon
+                      : "icons:description"
+                  }"
+                ></simple-icon-lite
+              ></span>
+              ${item.title}
+            </a>
+          </li>`;
+        })}
+      </ul>
+    </nav>`;
+  }
+
   renderNav() {
     return html`<div
       class="nav"
@@ -436,6 +584,22 @@ class MaterialTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     this.__themeDisposers.push(
       autorun(() => {
         this._dark = !!toJS(store.darkMode);
+      }),
+    );
+    this.__themeDisposers.push(
+      autorun(() => {
+        const manifest = toJS(store.manifest);
+        const active = toJS(store.activeItem);
+        const items = manifest && manifest.items ? manifest.items : [];
+        this._topItems = items.filter(
+          (i) =>
+            !i.parent &&
+            !(i.metadata && i.metadata.hideInMenu) &&
+            !(i.metadata && i.metadata.published === false),
+        );
+        const ancestor = toJS(store.ancestorItem);
+        this._activeId = active ? active.id : "";
+        this._currentTop = ancestor ? ancestor.id : this._activeId;
       }),
     );
     this.__themeDisposers.push(

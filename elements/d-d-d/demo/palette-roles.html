@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes"
+    />
+    <title>DDD: palette accent roles</title>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <script type="module">
+      import "../d-d-d.js";
+      import "../lib/hax-palette-picker.js";
+      import "@haxtheweb/video-player/video-player.js";
+      import "@haxtheweb/course-design/lib/learning-component.js";
+      import "@haxtheweb/course-design/lib/activity-box.js";
+      import "@haxtheweb/a11y-tabs/a11y-tabs.js";
+      import "@haxtheweb/a11y-tabs/lib/a11y-tab.js";
+      import "@haxtheweb/a11y-collapse/a11y-collapse.js";
+      import "@haxtheweb/stop-note/stop-note.js";
+
+      const stage = globalThis.document.getElementById("stage");
+      const picker = globalThis.document.querySelector("hax-palette-picker");
+      const none = globalThis.document.getElementById("no-palette");
+      const scheme = globalThis.document.getElementById("scheme");
+      const theme = globalThis.document.getElementById("theme-primary");
+      const label = globalThis.document.getElementById("palette-attr");
+
+      function setPalette(value) {
+        if (value === null) {
+          stage.removeAttribute("data-palette");
+          label.textContent = "no data-palette";
+        } else {
+          stage.setAttribute("data-palette", value);
+          label.textContent = 'data-palette="' + value + '"';
+        }
+        none.setAttribute("aria-pressed", value === null ? "true" : "false");
+      }
+      picker.addEventListener("value-changed", (e) => {
+        setPalette(e.detail.value);
+      });
+      none.addEventListener("click", () => {
+        setPalette(null);
+      });
+      scheme.addEventListener("change", () => {
+        globalThis.document.documentElement.style.colorScheme = scheme.value;
+        stage.style.colorScheme = scheme.value;
+        stage.classList.toggle("dark", scheme.value === "dark");
+      });
+      theme.addEventListener("change", () => {
+        if (theme.checked) {
+          stage.parentNode.setAttribute("data-primary", "7");
+        } else {
+          stage.parentNode.removeAttribute("data-primary");
+        }
+      });
+      setPalette("0");
+    </script>
+    <style>
+      html {
+        color-scheme: light dark;
+      }
+      body {
+        margin: 0;
+        font-family: var(--ddd-font-primary);
+        background-color: light-dark(
+          var(--ddd-theme-default-limestoneMaxLight),
+          var(--ddd-theme-default-coalyGray)
+        );
+        color: light-dark(
+          var(--ddd-theme-default-coalyGray),
+          var(--ddd-theme-default-white)
+        );
+      }
+      .layout {
+        display: grid;
+        grid-template-columns: minmax(260px, 340px) 1fr;
+        gap: var(--ddd-spacing-6);
+        padding: var(--ddd-spacing-6);
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+      @media (max-width: 900px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+      }
+      .controls {
+        display: flex;
+        flex-direction: column;
+        gap: var(--ddd-spacing-4);
+        align-self: start;
+        position: sticky;
+        top: var(--ddd-spacing-4);
+      }
+      .panel {
+        background-color: light-dark(
+          var(--ddd-theme-default-white),
+          var(--ddd-theme-default-potentialMidnight)
+        );
+        border: var(--ddd-border-xs);
+        border-color: light-dark(
+          var(--ddd-theme-default-limestoneLight),
+          var(--ddd-theme-default-slateGray)
+        );
+        border-radius: var(--ddd-radius-md);
+        padding: var(--ddd-spacing-4);
+      }
+      .panel h2 {
+        font-size: var(--ddd-font-size-4xs);
+        text-transform: uppercase;
+        letter-spacing: var(--ddd-ls-16-sm);
+        margin: 0 0 var(--ddd-spacing-3);
+      }
+      .panel p {
+        font-size: var(--ddd-font-size-4xs);
+        margin: 0 0 var(--ddd-spacing-3);
+      }
+      .row {
+        display: flex;
+        gap: var(--ddd-spacing-3);
+        align-items: center;
+        flex-wrap: wrap;
+        font-size: var(--ddd-font-size-4xs);
+        margin-bottom: var(--ddd-spacing-2);
+      }
+      .row select,
+      .row button {
+        font: inherit;
+        padding: var(--ddd-spacing-1) var(--ddd-spacing-3);
+        border-radius: var(--ddd-radius-xs);
+        border: var(--ddd-border-xs);
+        background: transparent;
+        color: inherit;
+        cursor: pointer;
+      }
+      .row button[aria-pressed="true"] {
+        font-weight: var(--ddd-font-weight-bold);
+        outline: var(--ddd-border-sm);
+      }
+      code {
+        font-family: var(--ddd-font-navigation);
+        font-size: 0.9em;
+      }
+      /* the stage is the page surface a site would be */
+      #stage {
+        background-color: var(--ddd-theme-default-white);
+        color: var(--ddd-theme-default-coalyGray);
+        border-radius: var(--ddd-radius-md);
+        padding: var(--ddd-spacing-8);
+      }
+      #stage.dark {
+        background-color: var(--ddd-theme-default-potentialMidnight);
+        color: var(--ddd-theme-default-white);
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: var(--ddd-spacing-6);
+        align-items: start;
+      }
+      .label {
+        font-size: var(--ddd-font-size-4xs);
+        text-transform: uppercase;
+        letter-spacing: var(--ddd-ls-16-sm);
+        font-weight: var(--ddd-font-weight-bold);
+        opacity: 0.7;
+        margin: var(--ddd-spacing-8) 0 var(--ddd-spacing-3);
+      }
+      .label:first-child {
+        margin-top: 0;
+      }
+      /* the live role values for the current palette */
+      .roles {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: var(--ddd-spacing-2) var(--ddd-spacing-3);
+        align-items: center;
+        font-size: var(--ddd-font-size-4xs);
+      }
+      .roles span.sw {
+        width: var(--ddd-icon-xs);
+        height: var(--ddd-icon-xs);
+        border-radius: var(--ddd-radius-xs);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: var(--ddd-font-weight-bold);
+        box-shadow: inset 0 0 0 1px rgb(0 0 0 / 15%);
+        background: repeating-linear-gradient(
+          45deg,
+          var(--ddd-theme-default-limestoneLight) 0 4px,
+          transparent 4px 8px
+        );
+      }
+      .roles .sw.accent {
+        background: var(--ddd-palette-accent);
+        color: var(--ddd-palette-accent-ink);
+      }
+      .roles .sw.marker {
+        background: var(--ddd-palette-marker);
+      }
+      .roles .sw.secondary {
+        background: var(--ddd-palette-secondary);
+      }
+      .roles .sw.chip {
+        background: var(--ddd-palette-chip);
+        color: var(--ddd-palette-chip-ink);
+      }
+      .roles .sw.tint {
+        background: var(--ddd-palette-tint);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="layout">
+      <div class="controls">
+        <div class="panel">
+          <h2>Palette</h2>
+          <p>
+            Pick a palette. Decorative accents across these elements follow
+            it; colour that carries meaning does not.
+          </p>
+          <div class="row">
+            <button type="button" id="no-palette" aria-pressed="false">
+              No palette
+            </button>
+            <code id="palette-attr"></code>
+          </div>
+          <hax-palette-picker value="0"></hax-palette-picker>
+        </div>
+        <div class="panel">
+          <h2>Context</h2>
+          <div class="row">
+            <label for="scheme">Scheme</label>
+            <select id="scheme">
+              <option value="light">Light</option>
+              <option value="dark">Dark</option>
+            </select>
+          </div>
+          <div class="row">
+            <input type="checkbox" id="theme-primary" />
+            <label for="theme-primary"
+              >Theme sets <code>data-primary="7"</code></label
+            >
+          </div>
+          <p>
+            Last match wins: element default, theme default, theme palette,
+            instructional significance, then a colour picked on the element
+            itself. With a palette set, the theme primary only shows where
+            the palette has no role.
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <main id="stage" data-palette="0">
+          <div class="label">Palette roles</div>
+          <div class="roles">
+            <span class="sw accent">Aa</span
+            ><span
+              ><code>--ddd-palette-accent</code>: seek bar, active tab and
+              collapse, heading lines, quote edge</span
+            >
+            <span class="sw marker"></span
+            ><span><code>--ddd-palette-marker</code>: list markers</span>
+            <span class="sw secondary"></span
+            ><span
+              ><code>--ddd-palette-secondary</code>: nested list markers</span
+            >
+            <span class="sw chip">Aa</span
+            ><span
+              ><code>--ddd-palette-chip</code>: instructional chips and
+              action icons</span
+            >
+            <span class="sw tint"></span
+            ><span
+              ><code>--ddd-palette-tint</code>: instructional block body</span
+            >
+          </div>
+
+          <div class="label">Media and instructional blocks</div>
+          <div class="grid">
+            <video-player
+              source="https://media.aanda.psu.edu/sites/media/aa/files/video/card-mockup.mp4"
+              track="https://haxtheweb.org/files/HAXshort.vtt"
+              media-title="Figma design files"
+            ></video-player>
+            <div>
+              <learning-component type="read" url="#"
+                ><p>
+                  Chapter 2 introduces the water cycle and the forces that
+                  drive it.
+                </p></learning-component
+              >
+              <activity-box tag="Sketch it"
+                ><p>
+                  Sketch the cycle from memory, then compare it with the
+                  diagram.
+                </p></activity-box
+              >
+              <activity-box tag="Picks its own data-primary" data-primary="1"
+                ><p>A colour picked on the element beats the palette.</p></activity-box
+              >
+            </div>
+          </div>
+
+          <div class="label">Active states</div>
+          <div class="grid">
+            <a11y-tabs>
+              <a11y-tab id="t1" label="Overview">The selected tab rule.</a11y-tab>
+              <a11y-tab id="t2" label="Practice">Practice content.</a11y-tab>
+              <a11y-tab id="t3" label="Resources">Resources content.</a11y-tab>
+            </a11y-tabs>
+            <div>
+              <a11y-collapse expanded heading="Why does water evaporate?"
+                ><p>The open toggle takes the accent.</p></a11y-collapse
+              >
+              <a11y-collapse heading="What is condensation?"
+                ><p>Water vapour cooling into droplets.</p></a11y-collapse
+              >
+            </div>
+          </div>
+
+          <div class="label">Reading content</div>
+          <div class="grid">
+            <div>
+              <h2 data-design-treatment="horz-md">The water cycle</h2>
+              <ul>
+                <li>
+                  Evaporation
+                  <ul>
+                    <li>Sun heats surface water</li>
+                    <li>Plants transpire</li>
+                  </ul>
+                </li>
+                <li>Condensation</li>
+                <li>Precipitation</li>
+              </ul>
+            </div>
+            <div>
+              <h3 data-instructional-action="make">Try it</h3>
+              <ol>
+                <li>Collect a jar of water</li>
+                <li>Cover it with plastic wrap</li>
+                <li>Watch droplets form</li>
+              </ol>
+              <h3 data-design-treatment="vert">Key idea</h3>
+              <blockquote>
+                Water moves through four stages that repeat without end.
+              </blockquote>
+            </div>
+          </div>
+
+          <div class="label">Colour that carries meaning: never takes the palette</div>
+          <div class="grid">
+            <stop-note status="stop" title="Stop"
+              ><span slot="message">Do not mix these chemicals.</span></stop-note
+            >
+            <stop-note status="warning" title="Warning"
+              ><span slot="message">Wear goggles for this step.</span></stop-note
+            >
+            <stop-note status="success" title="Success"
+              ><span slot="message">You finished the lab.</span></stop-note
+            >
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

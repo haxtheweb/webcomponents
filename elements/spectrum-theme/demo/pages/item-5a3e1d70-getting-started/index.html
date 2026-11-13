@@ -1,0 +1,20 @@
+<p><img src="files/hero-start.svg" alt="" data-border-radius="lg" data-width="100" loading="lazy"/></p>
+<p data-font-size="s">This theme dresses a HAX site in Spectrum 2 tokens. Authors keep writing with the same blocks; the theme changes how they look.</p>
+<h2>Set up</h2>
+<ddd-steps-list>
+<ddd-steps-list-item title="Choose the theme"><p>Pick Spectrum in site settings, or set it in site.json.</p></ddd-steps-list-item>
+<ddd-steps-list-item title="Write a page"><p>Use headings, cards, notes and tabs. Each block reads DDD tokens.</p></ddd-steps-list-item>
+<ddd-steps-list-item title="Check light and dark"><p>Use the theme toggle in the header. Every token has a light and a dark value.</p></ddd-steps-list-item>
+</ddd-steps-list>
+<h2>Set the theme in site.json</h2>
+<code-sample type="json"><template preserve-content="preserve-content">{
+  "metadata": {
+    "theme": {
+      "element": "spectrum-theme",
+      "path": "@haxtheweb/spectrum-theme/spectrum-theme.js"
+    }
+  }
+}</template></code-sample>
+<stop-note status="info" title="Content stays portable"><span slot="message">Nothing in your pages refers to Spectrum. Switch themes and the same content renders in the new system.</span></stop-note>
+<h2>Before you publish</h2>
+<bullet-check-list title="Publishing checklist" storage-id="spectrum-demo-publish" items='[{"label":"Every image has alt text or is marked decorative"},{"label":"Headings follow in order"},{"label":"Links say where they go"},{"label":"The page reads well in dark mode"}]'></bullet-check-list>

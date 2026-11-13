@@ -8,7 +8,6 @@ import { displayBehaviors } from "./editable-table-behaviors.js";
 import { ResponsiveUtilityBehaviors } from "@haxtheweb/responsive-utility/lib/responsive-utility-behaviors.js";
 import "@haxtheweb/simple-picker/simple-picker.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
-import { DDDVariables } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import {
   DDDBlockStyles,
@@ -31,13 +30,14 @@ class EditableTableDisplay extends I18NMixin(
 ) {
   static get styles() {
     return [
-      DDDVariables,
       super.styles,
       DDDBlockStyles,
       DDDTableStyles,
       css`
         /* the table takes the shared DDD table look (DDDTable.js); the
-           editable-table custom properties still win when they are set */
+           editable-table custom properties still win when they are set.
+           DDD tokens are inherited from the page, never re-declared here,
+           so design system bridges and theme overrides reach the table. */
         :host {
           display: block;
           width: 100%;
@@ -49,7 +49,7 @@ class EditableTableDisplay extends I18NMixin(
             --editable-table-color,
             light-dark(
               var(--ddd-theme-default-coalyGray),
-              var(--ddd-theme-default-white)
+              var(--ddd-theme-default-limestoneLight)
             )
           );
           background-color: var(--editable-table-bg-color, transparent);
@@ -81,20 +81,36 @@ class EditableTableDisplay extends I18NMixin(
           --ddd-table-divider: var(--editable-table-border-color);
           --ddd-table-header-background: var(--editable-table-heading-bg-color);
           --ddd-table-header-color: var(--editable-table-heading-color);
-          --ddd-table-row-header-color: var(--editable-table-heading-color);
+          --ddd-table-row-header-color: var(
+            --editable-table-heading-color,
+            light-dark(
+              var(--ddd-theme-default-nittanyNavy),
+              var(--ddd-theme-default-white)
+            )
+          );
           --ddd-table-stripe-background: var(--editable-table-stripe-bg-color);
           --ddd-table-caption-color: var(--editable-table-caption-color);
           --ddd-table-cell-padding-block: var(
-            --editable-table-cell-vertical-padding
+            --editable-table-cell-vertical-padding,
+            var(--ddd-spacing-3)
           );
           --ddd-table-cell-padding-inline: var(
-            --editable-table-cell-horizontal-padding
+            --editable-table-cell-horizontal-padding,
+            var(--ddd-spacing-4)
           );
           --ddd-table-cell-padding-block-condensed: var(
-            --editable-table-cell-vertical-padding-condensed
+            --editable-table-cell-vertical-padding-condensed,
+            var(--ddd-spacing-2)
           );
           --ddd-table-cell-padding-inline-condensed: var(
-            --editable-table-cell-horizontal-padding-condensed
+            --editable-table-cell-horizontal-padding-condensed,
+            var(--ddd-spacing-3)
+          );
+          /* first and last cells line up with the block header, which uses
+             the same token; a bridge that sets it moves both together */
+          --ddd-table-edge-padding: var(
+            --ddd-surface-padding,
+            var(--ddd-spacing-4)
           );
           font-weight: var(
             --editable-table-light-weight,
@@ -126,6 +142,16 @@ class EditableTableDisplay extends I18NMixin(
         span.cell {
           display: block;
         }
+        /* footer totals read as headings, like the header row */
+        table.ddd-table tfoot td {
+          color: var(
+            --editable-table-heading-color,
+            light-dark(
+              var(--ddd-theme-default-nittanyNavy),
+              var(--ddd-theme-default-white)
+            )
+          );
+        }
         editable-table-sort,
         editable-table-filter {
           text-align: inherit;
@@ -156,9 +182,92 @@ class EditableTableDisplay extends I18NMixin(
             display: none;
           }
         }
+        /* the table runs edge to edge in the block so the header tint and
+           stripes span it; a bordered grid keeps a margin so its lines do
+           not double up with the block border */
         .ddd-block-body {
-          padding: var(--ddd-spacing-3) var(--ddd-spacing-4);
+          padding: 0;
           overflow-x: auto;
+        }
+        .ddd-block-body.bordered {
+          padding: var(--ddd-surface-padding, var(--ddd-spacing-4));
+        }
+        /* sort: the whole header cell is the click target */
+        table.ddd-table thead th {
+          position: relative;
+        }
+        /* filter: the icon stays out of the way until the row is hovered or
+           focused (always shown, dimmed, on touch screens), and the cells
+           matching an active filter are outlined */
+        table.ddd-table editable-table-filter {
+          --editable-table-filter-icon-opacity: 0;
+        }
+        table.ddd-table tr:hover editable-table-filter,
+        table.ddd-table tr:focus-within editable-table-filter {
+          --editable-table-filter-icon-opacity: 1;
+        }
+        @media (hover: none) {
+          table.ddd-table editable-table-filter {
+            --editable-table-filter-icon-opacity: 0.6;
+          }
+        }
+        table.ddd-table tbody td[filtered] {
+          box-shadow: inset 0 0 0 2px
+            light-dark(
+              var(--ddd-theme-default-link),
+              var(--ddd-theme-default-linkLight)
+            );
+          background-color: light-dark(
+            color-mix(in srgb, var(--ddd-theme-default-link) 6%, transparent),
+            color-mix(
+              in srgb,
+              var(--ddd-theme-default-linkLight) 16%,
+              transparent
+            )
+          );
+        }
+        .filter-status {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: var(--ddd-spacing-2);
+          padding: var(--ddd-spacing-2)
+            var(--ddd-surface-padding, var(--ddd-spacing-4));
+          font-size: var(--ddd-font-size-4xs);
+          line-height: var(--ddd-lh-150);
+          border-bottom: var(--ddd-border-size-xs, 1px) solid
+            light-dark(
+              var(--ddd-theme-default-limestoneLight),
+              var(--ddd-theme-default-slateGray)
+            );
+          background-color: light-dark(
+            color-mix(in srgb, var(--ddd-theme-default-link) 6%, transparent),
+            color-mix(
+              in srgb,
+              var(--ddd-theme-default-linkLight) 16%,
+              transparent
+            )
+          );
+          --simple-icon-width: var(--ddd-icon-3xs);
+          --simple-icon-height: var(--ddd-icon-3xs);
+        }
+        .filter-status button {
+          margin: 0;
+          padding: 0;
+          border: 0 none;
+          background: transparent;
+          font: inherit;
+          font-weight: var(--ddd-font-weight-medium);
+          color: light-dark(
+            var(--ddd-theme-default-link),
+            var(--ddd-theme-default-linkLight)
+          );
+          text-decoration: underline;
+          cursor: pointer;
+        }
+        .filter-status button:focus-visible {
+          outline: var(--ddd-focus-ring);
+          outline-offset: var(--ddd-focus-offset);
         }
         .embedded-scroll {
           overflow-x: auto;
@@ -265,6 +374,57 @@ class EditableTableDisplay extends I18NMixin(
     )}`;
   }
 
+  /**
+   * Says how many rows a filter leaves and offers a way back, so a filtered
+   * table never reads as missing data
+   */
+  _renderFilterStatus() {
+    if (!this.filter || !this.filtered) {
+      return nothing;
+    }
+    const rows = this.tbody || [];
+    const shown = rows.filter((tr) => !this._isRowFiltered(tr)).length;
+    const head = this.thead[0] || [];
+    const column =
+      head[this.filterColumn] !== undefined &&
+      String(head[this.filterColumn]).trim() !== ""
+        ? this._plainText(head[this.filterColumn])
+        : this.t.columnNumber.replace("{column}", () => this.filterColumn + 1);
+    const text = this.t.filterStatus
+      .replace("{shown}", () => shown)
+      .replace("{total}", () => rows.length)
+      .replace("{column}", () => column)
+      .replace("{text}", () => this.filterText || "");
+    return html`<div class="filter-status" role="status" part="filter-status">
+      <simple-icon-lite
+        icon="editable-table:filter"
+        aria-hidden="true"
+      ></simple-icon-lite>
+      <span>${text}</span>
+      <button type="button" @click="${this._clearFilter}">
+        ${this.t.clearFilter}
+      </button>
+    </div>`;
+  }
+
+  /**
+   * Text of a cell for a status message: markup removed through the DOM
+   * parser, never by pattern, and rendered as text by Lit
+   * @param {string} cell cell contents
+   * @returns {string}
+   */
+  _plainText(cell) {
+    const doc = new globalThis.DOMParser().parseFromString(
+      String(cell),
+      "text/html",
+    );
+    return (doc.body.textContent || "").trim();
+  }
+
+  _clearFilter() {
+    this.toggleFilter();
+  }
+
   get _hasCaption() {
     return !!(
       this.caption &&
@@ -286,7 +446,7 @@ class EditableTableDisplay extends I18NMixin(
               </div>`
             : nothing
         }
-        <div class="embedded-scroll">${table}</div>
+        <div class="embedded-scroll">${this._renderFilterStatus()}${table}</div>
         <div id="htmlImport" hidden><slot></slot></div>`;
     }
     return html`
@@ -301,7 +461,9 @@ class EditableTableDisplay extends I18NMixin(
               ? this._renderBlockActions()
               : "",
         })}
-        <div class="ddd-block-body">${table}</div>
+        <div class="ddd-block-body ${this.bordered ? "bordered" : ""}">
+          ${this._renderFilterStatus()}${table}
+        </div>
       </div>
       <div id="htmlImport" hidden><slot></slot></div>
     `;
@@ -354,6 +516,7 @@ class EditableTableDisplay extends I18NMixin(
                       : html`
                           <editable-table-sort
                             column-index="${index}"
+                            ?numeric="${this._isNumberCol(index)}"
                             sort-column="${this.sortColumn}"
                             sort-mode="${
                               this.sortColumn === index ? this.sortMode : "none"
@@ -493,6 +656,10 @@ class EditableTableDisplay extends I18NMixin(
       printTable: "Print Table",
       selectColumn: "Select Column",
       dataTable: "Data · Table",
+      filterStatus:
+        "Showing {shown} of {total} rows, filtered by {column}: {text}",
+      columnNumber: "Column {column}",
+      clearFilter: "Clear filter",
     };
     this.registerLocalization({
       context: this,
@@ -750,7 +917,12 @@ class EditableTableDisplay extends I18NMixin(
    * @returns {boolean} whether column is filtered
    */
   _isCellFiltered(column, filterColumn, filtered) {
-    return !!filterColumn && filterColumn === column && filtered;
+    return (
+      filterColumn !== undefined &&
+      filterColumn !== null &&
+      filterColumn === column &&
+      !!filtered
+    );
   }
 
   /**
@@ -823,14 +995,19 @@ class EditableTableDisplay extends I18NMixin(
       ?numeric="${this._isNumericColumn(index)}"
       ?data-numeric="${this._isNumberCol(index)}"
       ?negative="${this._isNegative(cell)}"
+      ?filtered="${
+        this.filter &&
+        this._isCellFiltered(index, this.filterColumn, this.filtered)
+      }"
       ?xs-hidden="${this._isColHidden(index, this.selected || 1)}"
     >
       ${
-        this.filter
+        this.filter && !noFilter
           ? html`
               <editable-table-filter
                 class="cell"
                 column-index="${index}"
+                ?numeric="${this._isNumberCol(index)}"
                 text="${this._replaceBlankCell(cell)}"
                 ?toggled="${this._isCellFiltered(
                   index,

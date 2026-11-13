@@ -15,9 +15,7 @@ describe("a11y-tabs test", () => {
   });
 
   it("passes the a11y audit", async () => {
-    await expect(element).shadowDom.to.be.accessible({
-      ignoredRules: ["aria-valid-attr-value"],
-    });
+    await expect(element).shadowDom.to.be.accessible();
   });
 
   describe("Property validation with accessibility", () => {
@@ -42,25 +40,23 @@ describe("a11y-tabs test", () => {
         expect(testElement.fullWidth).to.equal(true);
         expect(testElement.hasAttribute("full-width")).to.be.true;
 
-        // Prove the aria-controls IDREF actually resolves in the real DOM:
-        // the <button aria-controls="tab1"> lives in the tabs' shadow root,
-        // and the target <a11y-tab id="tab1"> is slotted into that root from
-        // light DOM. axe-core 4.13 does not follow IDREFs across that shadow
-        // boundary, so it reports aria-valid-attr-value as a false positive.
-        // We assert the relationship directly, then scope the ignore to that
-        // single rule so a real defect (missing panel, wrong role) would still
-        // be caught by the manual check below.
+        // The tab button lives in the tabs' shadow root and its panel is
+        // slotted from light DOM. An aria-controls IDREF can't cross that
+        // boundary, so the button points at its panel through element
+        // reflection (ariaControlsElements), which can.
         const tab1Button = testElement.shadowRoot.querySelector("#tab1-button");
-        const controlsId = tab1Button.getAttribute("aria-controls");
-        const panel = testElement.querySelector(`#${controlsId}`);
-        expect(panel, "aria-controls target must exist in light DOM").to.exist;
+        const panel = testElement.querySelector("#tab1");
+        expect(panel, "panel must exist in light DOM").to.exist;
         expect(panel.getAttribute("role"), "panel must be a tabpanel").to.equal(
           "tabpanel",
         );
+        expect(tab1Button.getAttribute("aria-controls") || "").to.equal("");
+        if ("ariaControlsElements" in tab1Button) {
+          expect(tab1Button.ariaControlsElements[0]).to.equal(panel);
+        }
+        expect(panel.getAttribute("aria-label")).to.equal(panel.label);
 
-        await expect(testElement).shadowDom.to.be.accessible({
-          ignoredRules: ["aria-valid-attr-value"],
-        });
+        await expect(testElement).shadowDom.to.be.accessible();
       });
 
       it("should handle disabled property", async () => {
@@ -70,9 +66,7 @@ describe("a11y-tabs test", () => {
         await testElement.updateComplete;
         expect(testElement.disabled).to.equal(true);
         expect(testElement.hasAttribute("disabled")).to.be.true;
-        await expect(testElement).shadowDom.to.be.accessible({
-          ignoredRules: ["aria-valid-attr-value"],
-        });
+        await expect(testElement).shadowDom.to.be.accessible();
       });
 
       it("should handle hidden property", async () => {
@@ -92,9 +86,7 @@ describe("a11y-tabs test", () => {
         await testElement.updateComplete;
         expect(testElement.sticky).to.equal(true);
         expect(testElement.hasAttribute("sticky")).to.be.true;
-        await expect(testElement).shadowDom.to.be.accessible({
-          ignoredRules: ["aria-valid-attr-value"],
-        });
+        await expect(testElement).shadowDom.to.be.accessible();
       });
 
       it("should handle disableResponsive property", async () => {
@@ -103,9 +95,7 @@ describe("a11y-tabs test", () => {
         testElement.disableResponsive = true;
         await testElement.updateComplete;
         expect(testElement.disableResponsive).to.equal(true);
-        await expect(testElement).shadowDom.to.be.accessible({
-          ignoredRules: ["aria-valid-attr-value"],
-        });
+        await expect(testElement).shadowDom.to.be.accessible();
       });
     });
 
@@ -115,9 +105,7 @@ describe("a11y-tabs test", () => {
         await testElement.updateComplete;
         expect(testElement.ariaLabel).to.equal("Tab navigation");
         expect(testElement.hasAttribute("aria-label")).to.be.true;
-        await expect(testElement).shadowDom.to.be.accessible({
-          ignoredRules: ["aria-valid-attr-value"],
-        });
+        await expect(testElement).shadowDom.to.be.accessible();
       });
 
       it("should handle activeTab property", async () => {
@@ -125,9 +113,7 @@ describe("a11y-tabs test", () => {
         await testElement.updateComplete;
         expect(testElement.activeTab).to.equal("tab2");
         expect(testElement.hasAttribute("active-tab")).to.be.true;
-        await expect(testElement).shadowDom.to.be.accessible({
-          ignoredRules: ["aria-valid-attr-value"],
-        });
+        await expect(testElement).shadowDom.to.be.accessible();
       });
 
       it("should handle responsiveSize property", async () => {
@@ -135,9 +121,7 @@ describe("a11y-tabs test", () => {
         await testElement.updateComplete;
         expect(testElement.responsiveSize).to.equal("md");
         expect(testElement.hasAttribute("responsive-size")).to.be.true;
-        await expect(testElement).shadowDom.to.be.accessible({
-          ignoredRules: ["aria-valid-attr-value"],
-        });
+        await expect(testElement).shadowDom.to.be.accessible();
       });
     });
 
@@ -146,18 +130,14 @@ describe("a11y-tabs test", () => {
         testElement.layoutBreakpoint = 768;
         await testElement.updateComplete;
         expect(testElement.layoutBreakpoint).to.equal(768);
-        await expect(testElement).shadowDom.to.be.accessible({
-          ignoredRules: ["aria-valid-attr-value"],
-        });
+        await expect(testElement).shadowDom.to.be.accessible();
       });
 
       it("should handle iconBreakpoint property", async () => {
         testElement.iconBreakpoint = 600;
         await testElement.updateComplete;
         expect(testElement.iconBreakpoint).to.equal(600);
-        await expect(testElement).shadowDom.to.be.accessible({
-          ignoredRules: ["aria-valid-attr-value"],
-        });
+        await expect(testElement).shadowDom.to.be.accessible();
       });
     });
   });
@@ -195,9 +175,7 @@ describe("a11y-tabs test", () => {
       await tabsElement.updateComplete;
       expect(tabsElement.activeTab).to.equal("tab-2");
 
-      await expect(tabsElement).shadowDom.to.be.accessible({
-        ignoredRules: ["aria-valid-attr-value"],
-      });
+      await expect(tabsElement).shadowDom.to.be.accessible();
     });
 
     it("should handle tab selection via selectTab method", async () => {
@@ -208,9 +186,7 @@ describe("a11y-tabs test", () => {
         expect(tabsElement.activeTab).to.equal("tab-1");
       }
 
-      await expect(tabsElement).shadowDom.to.be.accessible({
-        ignoredRules: ["aria-valid-attr-value"],
-      });
+      await expect(tabsElement).shadowDom.to.be.accessible();
     });
   });
 
@@ -229,9 +205,7 @@ describe("a11y-tabs test", () => {
       // Test vertical property computation
       expect(testElement.vertical).to.be.a("boolean");
 
-      await expect(testElement).shadowDom.to.be.accessible({
-        ignoredRules: ["aria-valid-attr-value"],
-      });
+      await expect(testElement).shadowDom.to.be.accessible();
     });
 
     it("should handle icon-only mode based on breakpoint", async () => {
@@ -252,9 +226,7 @@ describe("a11y-tabs test", () => {
       // Test iconsOnly property computation
       expect(testElement.iconsOnly).to.be.a("boolean");
 
-      await expect(testElement).shadowDom.to.be.accessible({
-        ignoredRules: ["aria-valid-attr-value"],
-      });
+      await expect(testElement).shadowDom.to.be.accessible();
     });
   });
 
@@ -275,9 +247,45 @@ describe("a11y-tabs test", () => {
         expect(tablist.getAttribute("role")).to.equal("tablist");
       }
 
-      await expect(testElement).shadowDom.to.be.accessible({
-        ignoredRules: ["aria-valid-attr-value"],
-      });
+      await expect(testElement).shadowDom.to.be.accessible();
+    });
+
+    it("makes a panel whose content overflows reachable by keyboard", async () => {
+      const testElement = await fixture(html`
+        <div style="width: 300px">
+          <a11y-tabs>
+            <a11y-tab label="Wide">
+              <pre style="white-space: pre">${"x".repeat(400)}</pre>
+            </a11y-tab>
+          </a11y-tabs>
+        </div>
+      `);
+      const tabs = testElement.querySelector("a11y-tabs");
+      await tabs.updateComplete;
+      await new Promise((resolve) => setTimeout(resolve, 200));
+      const inner = tabs
+        .querySelector("a11y-tab")
+        .shadowRoot.querySelector("#content-inner");
+      expect(inner.getAttribute("tabindex")).to.equal("0");
+      await expect(tabs).shadowDom.to.be.accessible();
+    });
+
+    it("gives tabs without ids distinct ids, even when they upgrade first", async () => {
+      // tabs defined before the group numbers them used to keep tab-1
+      const testElement = await fixture(html`
+        <a11y-tabs>
+          <a11y-tab label="One">1</a11y-tab>
+          <a11y-tab label="Two">2</a11y-tab>
+          <a11y-tab label="Three">3</a11y-tab>
+        </a11y-tabs>
+      `);
+      await testElement.updateComplete;
+      await new Promise((resolve) => setTimeout(resolve, 100));
+      const ids = [...testElement.querySelectorAll("a11y-tab")].map(
+        (t) => t.id,
+      );
+      expect(new Set(ids).size).to.equal(3);
+      await expect(testElement).shadowDom.to.be.accessible();
     });
 
     it("should handle keyboard navigation", async () => {
@@ -297,9 +305,7 @@ describe("a11y-tabs test", () => {
         await testElement.updateComplete;
       }
 
-      await expect(testElement).shadowDom.to.be.accessible({
-        ignoredRules: ["aria-valid-attr-value"],
-      });
+      await expect(testElement).shadowDom.to.be.accessible();
     });
 
     it("should handle disabled tabs appropriately", async () => {
@@ -318,9 +324,7 @@ describe("a11y-tabs test", () => {
       const disabledTab = testElement.querySelector("#disabled-tab-2");
       expect(disabledTab.disabled).to.be.true;
 
-      await expect(testElement).shadowDom.to.be.accessible({
-        ignoredRules: ["aria-valid-attr-value"],
-      });
+      await expect(testElement).shadowDom.to.be.accessible();
     });
   });
 
@@ -337,9 +341,7 @@ describe("a11y-tabs test", () => {
       expect(testElement.fullWidth).to.be.true;
       expect(testElement.hasAttribute("full-width")).to.be.true;
 
-      await expect(testElement).shadowDom.to.be.accessible({
-        ignoredRules: ["aria-valid-attr-value"],
-      });
+      await expect(testElement).shadowDom.to.be.accessible();
     });
 
     it("should render in sticky mode", async () => {
@@ -354,9 +356,7 @@ describe("a11y-tabs test", () => {
       expect(testElement.sticky).to.be.true;
       expect(testElement.hasAttribute("sticky")).to.be.true;
 
-      await expect(testElement).shadowDom.to.be.accessible({
-        ignoredRules: ["aria-valid-attr-value"],
-      });
+      await expect(testElement).shadowDom.to.be.accessible();
     });
   });
 
@@ -368,9 +368,7 @@ describe("a11y-tabs test", () => {
       expect(testElement.tabs).to.be.an("array");
       expect(testElement.tabs.length).to.equal(0);
 
-      await expect(testElement).shadowDom.to.be.accessible({
-        ignoredRules: ["aria-valid-attr-value"],
-      });
+      await expect(testElement).shadowDom.to.be.accessible();
     });
 
     it("should handle tabs with unusual property values", async () => {
@@ -402,9 +400,7 @@ describe("a11y-tabs test", () => {
 
         // Most values should maintain accessibility (skip dangerous content)
         if (!value.includes("<script>")) {
-          await expect(testElement).shadowDom.to.be.accessible({
-            ignoredRules: ["aria-valid-attr-value"],
-          });
+          await expect(testElement).shadowDom.to.be.accessible();
         }
       }
     });
@@ -421,9 +417,7 @@ describe("a11y-tabs test", () => {
         await testElement.updateComplete;
 
         expect(testElement.layoutBreakpoint).to.equal(value);
-        await expect(testElement).shadowDom.to.be.accessible({
-          ignoredRules: ["aria-valid-attr-value"],
-        });
+        await expect(testElement).shadowDom.to.be.accessible();
       }
     });
   });
@@ -454,9 +448,7 @@ describe("a11y-tabs test", () => {
       await new Promise((resolve) => setTimeout(resolve, 100));
       await testElement.updateComplete;
 
-      await expect(testElement).shadowDom.to.be.accessible({
-        ignoredRules: ["aria-valid-attr-value"],
-      });
+      await expect(testElement).shadowDom.to.be.accessible();
     });
 
     it("should handle tab updates correctly", async () => {
@@ -476,9 +468,7 @@ describe("a11y-tabs test", () => {
         await testElement.updateComplete;
       }
 
-      await expect(testElement).shadowDom.to.be.accessible({
-        ignoredRules: ["aria-valid-attr-value"],
-      });
+      await expect(testElement).shadowDom.to.be.accessible();
     });
   });
 

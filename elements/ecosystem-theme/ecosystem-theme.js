@@ -11,8 +11,6 @@ import {
   HaxUiAdminTokens,
   HaxUiDarkChromeDeclarations,
 } from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";
-import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
-import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import { HAXCMSThemeParts } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
@@ -443,8 +441,8 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           --hax-network-bar-gutter: var(--eco-gutter);
         }
         /* the HAX top bar, as the HAX editor draws it: the dark HAX UI
-           chrome in both schemes, 64px, a hairline under it and the
-           Future Traveler in the right-hand corner */
+           chrome in both schemes, 64px, a hairline under it; the Future
+           Traveler's corner is the network bar's, above it */
         header.top {
           ${HaxUiDarkChromeDeclarations}
           background-color: var(--ddd-theme-default-coalyGray);
@@ -594,16 +592,6 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
         header.top a:focus-visible,
         header.top button:focus-visible {
           outline: var(--hax-ui-focus-width, 2px) solid var(--hax-ui-focus);
-        }
-        /* the HAX mark: the Future Traveler, decorative, as in the editor */
-        .haxLogo {
-          display: inline-grid;
-          place-items: center;
-          width: var(--ddd-control-height-sm, 40px);
-          height: var(--ddd-control-height-sm, 40px);
-          --simple-icon-height: var(--ddd-icon-xs, 32px);
-          --simple-icon-width: var(--ddd-icon-xs, 32px);
-          pointer-events: none;
         }
         .end {
           display: flex;
@@ -1074,12 +1062,6 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
                 <path d="M4 6h16M4 12h16M4 18h16"></path>
               </svg>
             </button>
-            <span class="haxLogo" aria-hidden="true">
-              <simple-icon-lite
-                icon="hax:future-traveler"
-                no-colorize
-              ></simple-icon-lite>
-            </span>
           </div>
         </div>
       </header>

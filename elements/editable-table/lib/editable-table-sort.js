@@ -31,20 +31,26 @@ class EditableTableSort extends I18NMixin(SimpleToolbarButtonBehaviors(DDD)) {
           font-family: inherit;
           font-size: inherit;
         }
+        /* the icon sits right after the text; in a numeric column it sits
+           before it, so the figures stay lined up with the column */
         :host > div {
           display: flex;
           align-items: center;
-          justify-content: space-between;
+          justify-content: flex-start;
+          gap: var(--ddd-spacing-1);
           width: 100%;
+        }
+        :host([numeric]) > div {
+          flex-direction: row-reverse;
         }
         button {
           flex: 0 0 auto !important;
           width: auto !important;
         }
         #cell {
-          flex: 1 1 auto !important;
+          flex: 0 1 auto !important;
           display: inline-block;
-          padding: var(--ddd-spacing-1);
+          padding: 0;
           text-align: inherit;
         }
         /* a subtle DDD icon button: no box until hover or focus, and the
@@ -53,7 +59,7 @@ class EditableTableSort extends I18NMixin(SimpleToolbarButtonBehaviors(DDD)) {
           color: var(--simple-toolbar-button-color, inherit);
           border-color: var(--simple-toolbar-button-border-color, transparent);
           border-radius: var(--ddd-radius-xs);
-          margin-inline-start: var(--ddd-spacing-1);
+          margin: 0;
         }
         *[part="button"]:hover {
           background-color: var(
@@ -72,8 +78,23 @@ class EditableTableSort extends I18NMixin(SimpleToolbarButtonBehaviors(DDD)) {
           outline: var(--ddd-focus-ring, 2px solid currentColor);
           outline-offset: var(--ddd-focus-offset, 2px);
         }
+        /* the whole header cell is the click target (the cell is
+           position: relative in editable-table-display) */
+        *[part="button"]::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+        }
+        /* the unsorted icon sits back; the active sort takes the accent */
         :host(:not([sort-mode="asc"]):not([sort-mode="desc"])) #icon {
-          opacity: 0.6;
+          opacity: 0.45;
+        }
+        :host([sort-mode="asc"]) #icon,
+        :host([sort-mode="desc"]) #icon {
+          --simple-icon-color: light-dark(
+            var(--ddd-theme-default-link),
+            var(--ddd-theme-default-linkLight)
+          );
         }
       `,
     ];
@@ -86,6 +107,13 @@ class EditableTableSort extends I18NMixin(SimpleToolbarButtonBehaviors(DDD)) {
   static get properties() {
     return {
       ...super.properties,
+      /**
+       * Whether the column holds numbers: the icon goes before the text
+       */
+      numeric: {
+        type: Boolean,
+        reflect: true,
+      },
       /**
        * Sort ascending, descending or none
        */
@@ -124,6 +152,7 @@ class EditableTableSort extends I18NMixin(SimpleToolbarButtonBehaviors(DDD)) {
   }
   constructor() {
     super();
+    this.numeric = false;
     this.t = this.t || {};
     this.t = {
       ...this.t,

@@ -46,17 +46,21 @@ class VideoPlayer extends IntersectionObserverMixin(
         :host {
           display: block;
           margin: var(--ddd-stack-gap, var(--ddd-spacing-4)) 0;
-          /* same accent cascade as a11y-media-player: local accent-color,
-             then the theme palette, then the DDD default */
+          /* accent cascade, last match wins: DDD blue, theme default
+             (--ddd-theme-primary, --video-player-accent-color), theme
+             palette (data-palette), local accent-color */
           --ddd-block-chip-background: var(
             --ddd-accent-color,
             var(
-              --video-player-accent-color,
+              --ddd-palette-chip,
               var(
-                --ddd-theme-primary,
-                light-dark(
-                  var(--ddd-theme-default-beaverBlue),
-                  var(--ddd-theme-default-skyBlue)
+                --video-player-accent-color,
+                var(
+                  --ddd-theme-primary,
+                  light-dark(
+                    var(--ddd-theme-default-beaverBlue),
+                    var(--ddd-theme-default-skyBlue)
+                  )
                 )
               )
             )
@@ -64,12 +68,15 @@ class VideoPlayer extends IntersectionObserverMixin(
           --ddd-block-chip-color: var(
             --ddd-accent-color-ink,
             var(
-              --ddd-theme-bgContrast,
+              --ddd-palette-chip-ink,
               var(
-                --lowContrast-override,
-                light-dark(
-                  var(--ddd-theme-default-white),
-                  var(--ddd-theme-default-potentialMidnight)
+                --ddd-theme-bgContrast,
+                var(
+                  --lowContrast-override,
+                  light-dark(
+                    var(--ddd-theme-default-white),
+                    var(--ddd-theme-default-potentialMidnight)
+                  )
                 )
               )
             )
@@ -167,18 +174,21 @@ class VideoPlayer extends IntersectionObserverMixin(
               var(--ddd-theme-default-slateGray)
             )
           );
-          /* a local accent-color wins over the theme: themes that set
-             --video-player-accent-color (or a palette) are the level
-             below it, then the DDD default */
+          /* a local accent-color wins, then the theme palette, then a
+             theme default (--video-player-accent-color, then
+             --ddd-theme-primary), then the DDD default */
           --a11y-media-accent-color: var(
             --ddd-accent-color,
             var(
-              --video-player-accent-color,
+              --ddd-palette-accent,
               var(
-                --ddd-theme-primary,
-                light-dark(
-                  var(--ddd-theme-default-beaverBlue),
-                  var(--ddd-theme-default-skyBlue)
+                --video-player-accent-color,
+                var(
+                  --ddd-theme-primary,
+                  light-dark(
+                    var(--ddd-theme-default-beaverBlue),
+                    var(--ddd-theme-default-skyBlue)
+                  )
                 )
               )
             )

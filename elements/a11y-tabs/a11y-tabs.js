@@ -238,9 +238,13 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
               var(--ddd-theme-default-slateGray, #314d64)
             )
           );
-          --a11y-tabs-_rule: light-dark(
-            var(--ddd-theme-default-beaverBlue, #1e407c),
-            var(--ddd-theme-default-skyBlue, #009cde)
+          /* the selected rule takes the palette accent when there is one */
+          --a11y-tabs-_rule: var(
+            --ddd-palette-accent,
+            light-dark(
+              var(--ddd-theme-default-beaverBlue, #1e407c),
+              var(--ddd-theme-default-skyBlue, #009cde)
+            )
           );
           --a11y-tabs-_ink: light-dark(
             var(--ddd-theme-default-nittanyNavy, #001e44),
@@ -919,7 +923,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
       <button
         id="${tab.id}-button"
         aria-selected="${tab.id === this.activeTab ? "true" : "false"}"
-        aria-controls="${tab.id}"
+        .ariaControlsElements="${[tab]}"
         class="${tab.id === this.activeTab && !this.disabled ? "active" : ""}"
         .flag="${tab.flag}"
         @click="${(_e) => this._handleTab(tab)}"

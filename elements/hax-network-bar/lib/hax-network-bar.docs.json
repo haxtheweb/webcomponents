@@ -5,7 +5,7 @@
   "version": "26.8.0",
   "license": "Apache-2.0",
   "title": "hax-network-bar",
-  "description": "The strip across the top of every hax.cloud site that links them as one network, with Merlin to jump anywhere in it",
+  "description": "The top bar of every hax.cloud site: your character and the network sites, Merlin to jump anywhere, and Install HAX with every way to get it",
   "icon": "",
   "tags": [],
   "haxCapable": false,
@@ -19,16 +19,51 @@
       "property": "current",
       "type": "string",
       "default": "\"\"",
-      "description": "Which site this is: cloud, elements, demo, rpg or docs.",
+      "description": "Which site this is: cloud, elements, browser, rpg or docs.",
+      "hax": null
+    },
+    {
+      "name": "character",
+      "property": "character",
+      "type": "string",
+      "default": "\"\"",
+      "description": "The character in the left corner, as an rpg-character code (RPG me makes one). Empty draws HAX's own.",
+      "hax": null
+    },
+    {
+      "name": "install-open",
+      "property": "installOpen",
+      "type": "boolean",
+      "default": "false",
+      "description": "Install HAX is open",
+      "hax": null
+    },
+    {
+      "name": "install-method",
+      "property": "installMethod",
+      "type": "string",
+      "default": "\"\"",
+      "description": "The way to install whose steps are showing; empty lists them all",
+      "hax": null
+    },
+    {
+      "name": "menu-open",
+      "property": "menuOpen",
+      "type": "boolean",
+      "default": "false",
+      "description": "The sites menu is open (narrow screens)",
       "hax": null
     }
   ],
-  "slots": [],
+  "slots": [
+    "post",
+    "pre"
+  ],
   "events": [
     "hax-network-merlin"
   ],
   "hax": {},
-  "surfaceHash": "9e862638d681",
+  "surfaceHash": "d58d5a0cda82",
   "walkthroughs": [],
   "videos": [],
   "motion": {
