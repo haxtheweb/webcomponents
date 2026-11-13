@@ -93,7 +93,7 @@ class StopNoteGroup extends I18NMixin(DDD) {
         .pager {
           position: absolute;
           top: var(--stop-note-group-pager-top, var(--ddd-border-size-md));
-          right: var(--ddd-spacing-1);
+          inset-inline-end: var(--ddd-spacing-1);
           height: var(
             --stop-note-group-pager-height,
             var(--ddd-control-height-sm)
