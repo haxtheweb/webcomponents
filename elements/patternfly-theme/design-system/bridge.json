@@ -282,6 +282,26 @@
     },
     "--ddd-border-size-lg": {
       "token": "--pf-t--global--border--width--400"
+    },
+    "--ddd-surface-padding": {
+      "token": "--pf-t--global--spacer--lg",
+      "note": "PatternFly card body padding, 24px"
+    },
+    "--ddd-surface-padding-lg": {
+      "token": "--pf-t--global--spacer--xl",
+      "note": "32px"
+    },
+    "--ddd-stack-gap": {
+      "token": "--pf-t--global--spacer--md",
+      "note": "16px"
+    },
+    "--ddd-inline-gap": {
+      "token": "--pf-t--global--spacer--sm",
+      "note": "8px"
+    },
+    "--ddd-control-padding-inline": {
+      "token": "--pf-t--global--spacer--md",
+      "note": "PatternFly button inline padding, 16px"
     }
   },
   "extraTokens": [

@@ -31,6 +31,8 @@ export const StopNoteIconList = {
   warning: "stopnoteicons:warning-icon",
   success: "stopnoteicons:confirm-icon",
   info: "stopnoteicons:book-icon",
+  tip: "stopnoteicons:tip-icon",
+  new: "stopnoteicons:new-icon",
 };
 
 class StopNote extends SchemaBehaviors(I18NMixin(remoteLinkBehavior(DDD))) {
@@ -125,6 +127,35 @@ class StopNote extends SchemaBehaviors(I18NMixin(remoteLinkBehavior(DDD))) {
           );
           --status-ink: var(--ddd-theme-default-info);
         }
+        /* a helpful idea: teal band, the Future Traveler's lightbulb */
+        :host([icon="stopnoteicons:tip-icon"]),
+        :host([status="tip"]) {
+          --accent-color: var(
+            --ddd-component-stop-note-border,
+            light-dark(
+              var(--ddd-theme-default-creekTeal),
+              var(--ddd-theme-default-creekLight)
+            )
+          );
+          --background-color: var(
+            --ddd-component-stop-note-text-background,
+            var(--ddd-theme-default-creekMaxLight)
+          );
+          --status-ink: var(--ddd-theme-default-coalyGray);
+        }
+        /* a recent change: orange band, sparkle */
+        :host([icon="stopnoteicons:new-icon"]),
+        :host([status="new"]) {
+          --accent-color: var(
+            --ddd-component-stop-note-border,
+            var(--ddd-theme-default-inventOrange)
+          );
+          --background-color: var(
+            --ddd-component-stop-note-text-background,
+            var(--ddd-theme-default-roarMaxlight)
+          );
+          --status-ink: var(--ddd-theme-default-landgrantBrown);
+        }
         .ddd-block {
           display: flex;
           flex-direction: column;
@@ -143,7 +174,14 @@ class StopNote extends SchemaBehaviors(I18NMixin(remoteLinkBehavior(DDD))) {
           );
         }
         .ddd-block-header {
-          padding-inline: var(--ddd-spacing-4);
+          /* the end padding leaves room for controls laid over the header,
+            such as the pager of stop-note-group */
+          padding-inline: var(--ddd-surface-padding, var(--ddd-spacing-4))
+            var(
+              --stop-note-header-end,
+              var(--ddd-surface-padding, var(--ddd-spacing-4))
+            );
+          min-width: 0;
           background-color: light-dark(
             var(--background-color),
             var(--ddd-theme-default-potentialMidnight)
@@ -157,6 +195,10 @@ class StopNote extends SchemaBehaviors(I18NMixin(remoteLinkBehavior(DDD))) {
           --simple-icon-width: var(--ddd-icon-xs);
         }
         .status-label {
+          min-width: 0;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
           font-weight: var(--ddd-font-weight-bold);
           color: light-dark(var(--status-ink), var(--ddd-theme-default-white));
         }
@@ -165,7 +207,7 @@ class StopNote extends SchemaBehaviors(I18NMixin(remoteLinkBehavior(DDD))) {
           flex-direction: column;
           gap: var(--ddd-spacing-1);
           padding-block: var(--ddd-spacing-3) var(--ddd-spacing-4);
-          padding-inline: var(--ddd-spacing-4);
+          padding-inline: var(--ddd-surface-padding, var(--ddd-spacing-4));
           color: var(--text-color);
         }
         .message_wrap > * {
@@ -201,7 +243,11 @@ class StopNote extends SchemaBehaviors(I18NMixin(remoteLinkBehavior(DDD))) {
           align-items: center;
           gap: var(--ddd-spacing-3);
           padding-block: var(--ddd-spacing-2);
-          padding-inline: var(--ddd-spacing-4);
+          padding-inline: var(--ddd-surface-padding, var(--ddd-spacing-4))
+            var(
+              --stop-note-header-end,
+              var(--ddd-surface-padding, var(--ddd-spacing-4))
+            );
           background-color: light-dark(
             var(--background-color),
             var(--ddd-theme-default-potentialMidnight)
@@ -210,9 +256,17 @@ class StopNote extends SchemaBehaviors(I18NMixin(remoteLinkBehavior(DDD))) {
         .ddd-block.compact .ddd-block-header {
           display: contents;
         }
+        .ddd-block.compact .status-label {
+          flex: none;
+        }
+        /* on a narrow row the message moves under the status word rather
+          than squeezing into a thin column */
+        .ddd-block.compact {
+          flex-wrap: wrap;
+        }
         .ddd-block.compact .message_wrap {
           padding: 0;
-          flex: 1 1 auto;
+          flex: 1 1 12ch;
           min-width: 0;
         }
         .ddd-block.compact .secondary_message {
@@ -338,6 +392,8 @@ class StopNote extends SchemaBehaviors(I18NMixin(remoteLinkBehavior(DDD))) {
       status_warning: "Warning",
       status_success: "Success",
       status_info: "Note",
+      status_tip: "Did you know?",
+      status_new: "What's new",
     };
     this.registerLocalization({
       context: this,

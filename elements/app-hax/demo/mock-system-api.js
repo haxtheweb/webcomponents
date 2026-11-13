@@ -35,6 +35,8 @@
  *                      or "login-offline" (login fails like a dropped network)
  *                      or "validate" (connection-test always 401s, as when the
  *                      browser drops the refresh cookie after a good login)
+ *                      or "import" (every importer answers 500, to show the
+ *                      dashboard's import failure toast)
  *
  * From devtools or a test: AppHaxDemoMockApi.expireNow() makes the current
  * access token fail with 401 (as if it expired) while the "refresh cookie"
@@ -515,6 +517,80 @@
     async () => [200, await fixture("haxiamAddUserAccess.json")],
   );
 
+  // --- importers -------------------------------------------------------------
+  // Every From Existing Source importer (and a file dropped on the dashboard)
+  // answers with a small outline so Create New Site opens with it, the way
+  // it would after a real conversion. The pages are named from the file or
+  // the URL; nothing is fetched or parsed.
+  function importedOutline(name) {
+    const base = String(name || "Imported site").trim() || "Imported site";
+    const titles = [base, "Getting started", "Key ideas", "Wrap up"];
+    return titles.map((title, index) => ({
+      id: `item-${randomId()}`,
+      title,
+      slug: title.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
+      order: index,
+      parent: null,
+      indent: 0,
+      contents: `<p>Demo import: this page stands in for content converted from ${base}.</p>`,
+      metadata: {},
+    }));
+  }
+  function importer(kind) {
+    return async (req) => {
+      if (FAIL.indexOf("import") !== -1) {
+        return [
+          500,
+          {
+            status: 500,
+            data: { message: "Import failed (demo-fail=import)" },
+          },
+        ];
+      }
+      let name = "";
+      const upload = req.formData ? req.formData.get("upload") : null;
+      if (upload && upload.name) {
+        name = upload.name.replace(/\.[^.]+$/, "");
+      } else if (req.body) {
+        const url = Object.values(req.body).find(
+          (v) => typeof v === "string" && /^https?:\/\//.test(v),
+        );
+        try {
+          name = url ? new URL(url).hostname : "";
+        } catch {
+          name = "";
+        }
+      }
+      return [
+        200,
+        ok({
+          items: importedOutline(name || kind),
+          files: [],
+          filename: name || kind,
+        }),
+      ];
+    };
+  }
+  [
+    ["/actions/import-docx", "importDocx"],
+    ["/actions/import-pdf", "importPdf"],
+    ["/actions/import-pptx", "importPptx"],
+    ["/actions/import-xlsx", "importXlsx"],
+    ["/site/import/html", "htmlToSite"],
+    ["/site/import/gitbook", "gitbookToSite"],
+    ["/site/import/haxcms", "haxcmsToSite"],
+    ["/site/import/notion", "notionToSite"],
+    ["/site/import/pressbooks", "pressbooksToSite"],
+    ["/site/import/wordpress", "wordpressToSite"],
+    ["/site/import/drupal", "drupalToSite"],
+    ["/site/import/plone", "ploneToSite"],
+    ["/site/import/openstax", "openstaxToSite"],
+    ["/site/import/vitepress", "vitepressToSite"],
+    ["/site/import/quarto", "quartoToSite"],
+  ].forEach(([path, operationId]) => {
+    route("POST", path, operationId, USER, importer(operationId));
+  });
+
   // ---------------------------------------------------------------------------
   // OpenAPI document generated from the route table, so the client's real
   // bootstrap (configureAppHAXSystemApiRegistry) registers exactly these ops
@@ -664,6 +740,11 @@
       method,
       headers,
       body,
+      // file importers post a FormData with the upload in it
+      formData:
+        init && typeof FormData !== "undefined" && init.body instanceof FormData
+          ? init.body
+          : null,
       query: Object.fromEntries(url.searchParams.entries()),
       bearer:
         auth.toLowerCase().indexOf("bearer ") === 0

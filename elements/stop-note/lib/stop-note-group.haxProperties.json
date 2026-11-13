@@ -1,0 +1,48 @@
+{
+  "canScale": false,
+  "canEditSource": true,
+  "type": "grid",
+  "gizmo": {
+    "title": "Stop Note Group",
+    "description": "Stack several stop notes into one block that shows a note at a time, such as Tips or What's new.",
+    "icon": "icons:view-carousel",
+    "color": "orange",
+    "tags": ["Instructional", "content", "layout", "note", "tip", "what's new"],
+    "meta": {
+      "author": "HAXTheWeb core team"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Label",
+        "description": "Name for the group that screen readers announce, such as Tips or What's new.",
+        "inputMethod": "textfield"
+      },
+      {
+        "slot": "",
+        "title": "Notes",
+        "description": "The stop notes in the group.",
+        "inputMethod": "code-editor",
+        "slotWrapper": "stop-note",
+        "editMode": {
+          "disabled": false
+        }
+      }
+    ],
+    "advanced": []
+  },
+  "saveOptions": {
+    "unsetAttributes": ["active", "t"]
+  },
+  "demoSchema": [
+    {
+      "tag": "stop-note-group",
+      "properties": {
+        "label": "Tips"
+      },
+      "content": "<stop-note status=\"tip\" title=\"Bring your files and make them HAX\"><p slot=\"message\">Import turns Word, PDF, PowerPoint and more into a HAX site.</p></stop-note><stop-note status=\"tip\" title=\"What you make keeps working\"><p slot=\"message\">Pages are web-standard HTML in plain files you own.</p></stop-note><stop-note status=\"new\" title=\"Two new statuses\"><p slot=\"message\">Tip and What's new join Note, Success, Warning and Stop.</p></stop-note>"
+    }
+  ]
+}

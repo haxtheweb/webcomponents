@@ -76,7 +76,9 @@
           "stop": "Stop",
           "warning": "Warning",
           "success": "Confirmation",
-          "info": "Notice"
+          "info": "Notice",
+          "tip": "Tip",
+          "new": "What's new"
         }
       }
     }
@@ -145,7 +147,9 @@
             "stop": "Stop",
             "warning": "Warning",
             "success": "Confirmation",
-            "info": "Notice"
+            "info": "Notice",
+            "tip": "Tip",
+            "new": "What's new"
           }
         },
         {
@@ -186,7 +190,7 @@
       }
     ]
   },
-  "surfaceHash": "1c46800f012e",
+  "surfaceHash": "3066875ce50a",
   "walkthroughs": [
     {
       "id": "",
@@ -194,13 +198,13 @@
       "order": 0,
       "src": "stop-note.motion.json",
       "file": "lib/stop-note.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/stop-note.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

@@ -930,6 +930,27 @@ export const DDDVariables = css`
     --ddd-target-comfortable: 44px; /* WCAG 2.5.5 AAA, preferred for touch */
 
     /* ===========================================
+       DENSITY (semantic spacing)
+       Named roles for the spacing a design system tunes: surface padding,
+       the gap between stacked blocks, inline gaps, control padding. Each
+       defaults to the DDD scale step blocks already use, so nothing moves
+       until a design system bridge answers it; the scales stay fixed.
+       Usage: padding: var(--ddd-surface-padding);
+              margin-block: var(--ddd-stack-gap);
+       =========================================== */
+    --ddd-surface-padding: var(
+      --ddd-spacing-4
+    ); /* cards, callouts, collapse bodies */
+    --ddd-surface-padding-lg: var(
+      --ddd-spacing-6
+    ); /* hero and feature surfaces */
+    --ddd-stack-gap: var(--ddd-spacing-4); /* space between stacked blocks */
+    --ddd-inline-gap: var(
+      --ddd-spacing-2
+    ); /* icon and label, button groups, chips */
+    --ddd-control-padding-inline: var(--ddd-spacing-4); /* buttons and inputs */
+
+    /* ===========================================
        MEDIA CONTROL
        The round play / pause button laid over decorative background
        motion, such as a hero video. Motion that plays on its own for more
@@ -2229,34 +2250,28 @@ const DDDResetEnd = css`
     );
   }
 
+  /* A drop cap sinks --initialLetter lines into its block, so the block is
+     at least that many lines tall (1lh is one line of the block's own
+     line-height) and contains the letter even when the text is shorter.
+     flow-root also contains the floated letter browsers without
+     initial-letter get from .dropCap-noSupport below. */
   [data-design-treatment^="dropCap"] {
     --initialLetter: 6;
+    display: flow-root;
     min-height: calc(
-      (
-          var(--initialLetter) * var(--ddd-theme-body-font-size) * 1.5 *
-            var(--special-multiplier)
-        ) +
-        20px
+      var(--initialLetter) * var(--ddd-theme-body-font-size) * 1.5
     );
+    min-height: calc(var(--initialLetter) * 1lh);
   }
 
   [data-design-treatment^="dropCap"]::first-letter {
     -webkit-initial-letter: var(--initialLetter);
     text-transform: uppercase;
     initial-letter: var(--initialLetter);
-    color: var(--ddd-theme-primary);
+    color: var(--ddd-theme-primary, currentColor);
     font-weight: var(--ddd-font-weight-bold);
     margin-right: var(--ddd-spacing-3);
     padding: 0 var(--ddd-spacing-1);
-    text-shadow:
-      -3px -3px 0 #000,
-      3px -3px 0 #000,
-      -3px 3px 0 #000,
-      3px 3px 0 #000,
-      -3px 0 0 #000,
-      3px 0 0 #000,
-      0 -3px 0 #000,
-      0 3px 0 #000;
   }
   [data-design-treatment="dropCap-xs"] {
     --initialLetter: 2;
@@ -2272,7 +2287,6 @@ const DDDResetEnd = css`
 
   [data-design-treatment="dropCap-lg"] {
     --initialLetter: 8;
-    --special-multiplier: 1.7;
   }
 
   [data-design-treatment="dropCap-xl"] {

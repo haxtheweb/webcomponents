@@ -23,6 +23,18 @@
     "terrible": false,
     "supportedPalettes": null
   },
+  "carbon-theme": {
+    "element": "carbon-theme",
+    "path": "@haxtheweb/carbon-theme/carbon-theme.js",
+    "name": "Carbon",
+    "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-carbon-theme-thumb.jpg",
+    "description": "Start with a blank site using the Carbon",
+    "category": ["Website", "Course", "Documentation"],
+    "hidden": false,
+    "priority": 50,
+    "terrible": false,
+    "supportedPalettes": null
+  },
   "chamfer-theme": {
     "element": "chamfer-theme",
     "path": "@haxtheweb/chamfer-theme/chamfer-theme.js",
@@ -239,6 +251,18 @@
     "terrible": false,
     "supportedPalettes": null
   },
+  "material-theme": {
+    "element": "material-theme",
+    "path": "@haxtheweb/material-theme/material-theme.js",
+    "name": "Material 3",
+    "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-material-theme-thumb.jpg",
+    "description": "Start with a blank site using the Material 3",
+    "category": ["Website", "Course", "Documentation"],
+    "hidden": false,
+    "priority": 50,
+    "terrible": false,
+    "supportedPalettes": null
+  },
   "outline-player": {
     "element": "outline-player",
     "path": "@haxtheweb/outline-player/outline-player.js",
@@ -323,6 +347,18 @@
     "terrible": false,
     "supportedPalettes": null
   },
+  "shadcn-theme": {
+    "element": "shadcn-theme",
+    "path": "@haxtheweb/shadcn-theme/shadcn-theme.js",
+    "name": "shadcn/ui",
+    "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-shadcn-theme-thumb.jpg",
+    "description": "Start with a blank site using the shadcn/ui",
+    "category": ["Website", "Course", "Documentation"],
+    "hidden": false,
+    "priority": 50,
+    "terrible": false,
+    "supportedPalettes": null
+  },
   "simple-blog": {
     "element": "simple-blog",
     "path": "@haxtheweb/simple-blog/simple-blog.js",
@@ -344,6 +380,30 @@
     "category": ["Website"],
     "hidden": false,
     "priority": 0,
+    "terrible": false,
+    "supportedPalettes": null
+  },
+  "spectrum-theme": {
+    "element": "spectrum-theme",
+    "path": "@haxtheweb/spectrum-theme/spectrum-theme.js",
+    "name": "Spectrum",
+    "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-spectrum-theme-thumb.jpg",
+    "description": "Start with a blank site using the Spectrum",
+    "category": ["Website", "Course", "Documentation"],
+    "hidden": false,
+    "priority": 50,
+    "terrible": false,
+    "supportedPalettes": null
+  },
+  "tailwind-theme": {
+    "element": "tailwind-theme",
+    "path": "@haxtheweb/tailwind-theme/tailwind-theme.js",
+    "name": "Tailwind",
+    "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-tailwind-theme-thumb.jpg",
+    "description": "Start with a blank site using the Tailwind",
+    "category": ["Website", "Course", "Documentation"],
+    "hidden": false,
+    "priority": 50,
     "terrible": false,
     "supportedPalettes": null
   },

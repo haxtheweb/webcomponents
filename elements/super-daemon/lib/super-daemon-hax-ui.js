@@ -72,19 +72,24 @@ export const merlinWand = (className = "") =>
 export const MERLIN_ICONS = ["hax:wand", "hax:wizard-hat"];
 
 /**
- * Icon names that mean Merlin wearing the World Traveler: the HAX helmet,
+ * Icon names that mean Merlin wearing the Future Traveler: the HAX helmet,
  * goggles and idea bulb, in one ink (currentColor) with see-through
  * lenses. A Merlin control given one of these draws him inline so his bulb
  * and goggles can light: off at rest, on with hover or focus, glowing
- * while Merlin listens or works. Same shapes as hax:world-traveler-plain.
+ * while Merlin listens or works. Same shapes as hax:future-traveler-plain.
+ * hax:world-traveler-plain is the icon's old name, kept so a Merlin set up
+ * with it still draws him.
  */
-export const TRAVELER_ICONS = ["hax:world-traveler-plain"];
+export const TRAVELER_ICONS = [
+  "hax:future-traveler-plain",
+  "hax:world-traveler-plain",
+];
 
 // each inline Traveler needs its own mask and blur ids
 let travelerCount = 0;
 
 /**
- * Merlin's World Traveler mark, drawn inline. The ink is one mask so the
+ * Merlin's Future Traveler mark, drawn inline. The ink is one mask so the
  * lenses, the helmet shine and the gaps between parts stay see-through on
  * any surface; the lit parts (halos, bulb, lenses, glints) sit in .lit and
  * fade in by state (MerlinWandStyles).
@@ -142,7 +147,7 @@ export const merlinTraveler = (className = "") => {
 };
 
 /**
- * Merlin's mark for an icon name: the World Traveler for TRAVELER_ICONS,
+ * Merlin's mark for an icon name: the Future Traveler for TRAVELER_ICONS,
  * the wand for MERLIN_ICONS, nothing otherwise.
  * @param {string} icon the control's icon
  * @param {string} className extra class names for the svg
@@ -222,7 +227,7 @@ export const MerlinWandStyles = css`
       opacity: 1;
     }
   }
-  /* the World Traveler: one ink, lit parts in color. His bulb and goggles
+  /* the Future Traveler: one ink, lit parts in color. His bulb and goggles
      light with hover or focus and glow while Merlin listens or works */
   .merlin-traveler {
     display: inline-block;

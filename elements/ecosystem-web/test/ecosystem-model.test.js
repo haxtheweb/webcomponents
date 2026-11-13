@@ -12,6 +12,11 @@ import {
   lerpView,
   easeOut,
   safeImage,
+  lensOf,
+  impactIndex,
+  impactCuts,
+  timelineSteps,
+  searchNodes,
 } from "../lib/ecosystem-model.js";
 
 const MMD = [
@@ -140,5 +145,91 @@ describe("ecosystem-model", () => {
     expect(visibleAt(steps, -1)).to.equal(null);
     expect([...visibleAt(steps, 1)]).to.deep.equal(["a", "b"]);
     expect(visibleAt(steps, 2)).to.equal(null);
+  });
+
+  it("reads tiles through lenses from the webs and the outside layers", () => {
+    const models = buildWebs({
+      webs: {
+        main: {
+          mmd: MMD,
+          json: {
+            nodes: {
+              b: { links: { repo: "https://github.com/haxtheweb/x" } },
+            },
+            evidence: { "a>b": ["a talk"] },
+          },
+        },
+      },
+    });
+    const M = models.main;
+    const impact = impactIndex(models);
+    expect(impact.b.n).to.equal(2);
+    const day = 864e5;
+    const now = Date.parse("2026-11-01");
+    const iso = (d) => new Date(now - d * day).toISOString().slice(0, 10);
+    const ctx = {
+      M,
+      web: "main",
+      layers: {
+        fresh: { main: { b: iso(10), c: iso(500) } },
+        released: { main: { b: iso(40) } },
+      },
+      impact,
+      cut: impactCuts(M, impact),
+      people: new Set(),
+      maintainers: new Set(),
+      now,
+    };
+    const b = lensOf("fresh", M.nodes.get("b"), ctx);
+    expect(b.band).to.equal("a");
+    expect(b.due).to.be.true;
+    expect(lensOf("fresh", M.nodes.get("c"), ctx).band).to.equal("c");
+    expect(lensOf("fresh", M.nodes.get("a"), ctx)).to.equal(null);
+    // b has a link and evidence on a connection; c has nothing
+    expect(lensOf("evidence", M.nodes.get("b"), ctx).count).to.equal(2);
+    expect(lensOf("evidence", M.nodes.get("c"), ctx).band).to.equal("c");
+    expect(lensOf("impact", M.nodes.get("b"), ctx).band).to.equal("a");
+    // only code parts have a bus factor
+    expect(lensOf("bus", M.nodes.get("b"), ctx).band).to.equal("c");
+    expect(lensOf("bus", M.nodes.get("c"), ctx)).to.equal(null);
+  });
+
+  it("grows a web year by year, then today and what is planned", () => {
+    const M = buildWebs({
+      webs: {
+        main: {
+          mmd: MMD,
+          json: {
+            nodes: {
+              a: { always: true },
+              b: { year: 2019, yearNote: "B ships" },
+              c: { status: "planned" },
+            },
+          },
+        },
+      },
+    }).main;
+    const words = {
+      today: "Today",
+      todayCaption: "All of it.",
+      next: "Next",
+      nextCaption: "Planned next:",
+      personJoins: "1 person joins",
+      peopleJoin: "{n} people join",
+      andMore: "and {n} more",
+    };
+    const steps = timelineSteps(M, words);
+    expect(steps.map((s) => s.label)).to.deep.equal(["2019", "Today", "Next"]);
+    expect(steps[0].ids).to.deep.equal(["a", "b"]);
+    expect(steps[0].caption).to.equal("B ships.");
+    expect(steps[2].caption).to.equal("Planned next: C.");
+  });
+
+  it("finds tiles by label first, then by what else they say", () => {
+    const M = buildWebs({ webs: { main: { mmd: MMD, json: {} } } }).main;
+    expect(searchNodes(M, "c").map((n) => n.id)).to.deep.equal(["c"]);
+    // a connection's verb finds both ends
+    expect(searchNodes(M, "speaks").map((n) => n.id)).to.deep.equal(["b", "c"]);
+    expect(searchNodes(M, "")).to.deep.equal([]);
   });
 });

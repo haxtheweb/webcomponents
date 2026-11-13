@@ -38,7 +38,7 @@ export function superDaemonToastVoiceState(toast) {
 
 /**
  * `super-daemon-toast`
- * Merlin's voice card in the HAX UI admin style: the World Traveler mark,
+ * Merlin's voice card in the HAX UI admin style: the Future Traveler mark,
  * a state pill (Listening, Speaking, Santa mode), the message, a hint of
  * what can be said, and a way to stop. Sits bottom left, apart from the
  * haxcms-toast that drops from the top bar.

@@ -67,6 +67,9 @@ class MapMenuItem extends I18NMixin(LitElement) {
           color: var(--map-menu-item-a-color, inherit);
           text-decoration: var(--map-menu-item-a-text-decoration, none);
         }
+        :host(:dir(rtl)) {
+          --map-menu-item-active-accent-direction: -1;
+        }
         :host([active]) button,
         :host([active]) a button {
           color: var(
@@ -83,6 +86,18 @@ class MapMenuItem extends I18NMixin(LitElement) {
             black
           );
           border-radius: var(--map-menu-item-border-radius, 0px);
+          /* optional accent bar on the start edge of the active row, off
+             unless a theme sets --map-menu-item-active-accent-width */
+          box-shadow: inset
+            calc(
+              var(--map-menu-item-active-accent-direction, 1) *
+                var(--map-menu-item-active-accent-width, 0px)
+            )
+            0 0 0
+            var(
+              --map-menu-item-active-accent-color,
+              var(--ddd-theme-primary, currentColor)
+            );
         }
 
         a:hover button,

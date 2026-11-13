@@ -123,7 +123,7 @@
     },
     "semantic": {
       "mapping": "optional",
-      "percent": 0,
+      "percent": 42,
       "families": {
         "type": {
           "mapped": 0,
@@ -137,6 +137,11 @@
             "--ddd-theme-h6-font-size",
             "--ddd-theme-body-font-size"
           ]
+        },
+        "density": {
+          "mapped": 5,
+          "total": 5,
+          "keptDDD": []
         }
       }
     }
@@ -891,6 +896,46 @@
       "light": "3rem",
       "dark": "3rem",
       "note": "lg 48px"
+    },
+    {
+      "ddd": "--ddd-surface-padding",
+      "tier": "semantic",
+      "token": null,
+      "light": "1rem",
+      "dark": "1rem",
+      "note": "Carbon tile padding, spacing-05 (16px, same as DDD); Carbon only exposes spacing variables inside component scopes"
+    },
+    {
+      "ddd": "--ddd-surface-padding-lg",
+      "tier": "semantic",
+      "token": null,
+      "light": "2rem",
+      "dark": "2rem",
+      "note": "spacing-07"
+    },
+    {
+      "ddd": "--ddd-stack-gap",
+      "tier": "semantic",
+      "token": null,
+      "light": "1rem",
+      "dark": "1rem",
+      "note": "spacing-05"
+    },
+    {
+      "ddd": "--ddd-inline-gap",
+      "tier": "semantic",
+      "token": null,
+      "light": "0.5rem",
+      "dark": "0.5rem",
+      "note": "spacing-03"
+    },
+    {
+      "ddd": "--ddd-control-padding-inline",
+      "tier": "semantic",
+      "token": null,
+      "light": "1rem",
+      "dark": "1rem",
+      "note": "Carbon button inline-start padding, spacing-05"
     }
   ]
 }

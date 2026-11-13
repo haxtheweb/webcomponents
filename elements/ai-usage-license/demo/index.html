@@ -12,8 +12,24 @@
       import "@haxtheweb/demo-snippet/demo-snippet.js";
       import "../ai-usage-license.js";
     </script>
+    <style>
+      /* same switch HAXcms themes use (body.dark-mode) to force dark */
+      .dark-mode {
+        color-scheme: only dark;
+        background-color: var(--ddd-theme-default-potentialMidnight);
+        color: var(--ddd-theme-default-white);
+        padding: var(--ddd-spacing-4);
+      }
+    </style>
   </head>
   <body>
+    <div class="vertical-section-container centered dark-mode">
+      <h3>Dark mode (AIUL-CD-IM and AIUL-NA)</h3>
+      <ai-usage-license license="CD" modifier="IM"></ai-usage-license>
+      <br />
+      <ai-usage-license license="NA"></ai-usage-license>
+    </div>
+
     <div class="vertical-section-container centered">
       <h3>Not Allowed (AIUL-NA)</h3>
       <demo-snippet>

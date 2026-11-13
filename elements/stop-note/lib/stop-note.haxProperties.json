@@ -59,7 +59,9 @@
           "stop": "Stop",
           "warning": "Warning",
           "success": "Confirmation",
-          "info": "Notice"
+          "info": "Notice",
+          "tip": "Tip",
+          "new": "What's new"
         }
       },
       {

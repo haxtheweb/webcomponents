@@ -10,11 +10,61 @@
   <script type="module">
     import "@haxtheweb/demo-snippet/demo-snippet.js";
     import "../stop-note.js";
+    import "../lib/stop-note-group.js";
   </script>
 </head>
 
 <body>
 <div class="vertical-section-container">
+    <h3>Tip and What's new statuses</h3>
+    <demo-snippet>
+      <template>
+        <stop-note status="tip" title="Bring your files and make them HAX">
+          <p slot="message">Import turns Word, PDF, PowerPoint and more into a HAX site.</p>
+        </stop-note>
+        <stop-note status="new" title="Markdown mode for page Source">
+          <p slot="message">Edit a page's source as Markdown with a live preview.</p>
+        </stop-note>
+      </template>
+    </demo-snippet>
+    <h3>stop-note-group: notes that stack</h3>
+    <demo-snippet>
+      <template>
+        <stop-note-group label="Tips">
+          <stop-note status="tip" title="The HAX difference: what you make keeps working">
+            <p slot="message">Your pages are web-standard HTML in plain files you own. Nearly every site built with HAX since 2020 still works today.</p>
+          </stop-note>
+          <stop-note status="tip" title="Bring your files and make them HAX">
+            <p slot="message">Import on the dashboard turns Word, PDF, PowerPoint and Excel into a HAX site.</p>
+          </stop-note>
+          <stop-note status="tip" title="Move a whole website in">
+            <p slot="message">Point Import at a site's address and its pages come in as HAX pages and blocks.</p>
+          </stop-note>
+          <stop-note status="warning" title="Your password shows once">
+            <p slot="message">Keep it in a password manager.</p>
+          </stop-note>
+        </stop-note-group>
+      </template>
+    </demo-snippet>
+    <demo-snippet>
+      <template>
+        <div style="max-width: 260px">
+          <stop-note-group label="What's new">
+            <stop-note status="new" title="VHS Blog theme">
+              <p slot="message">Posts as video cases on a shelf.</p>
+            </stop-note>
+            <stop-note status="new" title="Doodle board">
+              <p slot="message">Drawing, markup and a signature pad as a block.</p>
+            </stop-note>
+            <stop-note status="new">
+              <p slot="message">A compact note, message only.</p>
+            </stop-note>
+          </stop-note-group>
+        </div>
+      </template>
+    </demo-snippet>
+  </div>
+  <div class="vertical-section-container">
     <h3>Basic stop-note demo: Default</h3>
     <demo-snippet>
       <template>

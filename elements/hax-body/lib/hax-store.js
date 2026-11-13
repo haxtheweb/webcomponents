@@ -1699,10 +1699,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       // now process the dynamic imports
       await this._handleDynamicImports(items, this.haxAutoloader);
 
-      // detect and register page-template elements from style guide as stax if available
-      // Try again here in case HAXcms wasn't ready during initial store setup
-      await this._detectStyleGuideTemplates();
-
       this.appStoreLoaded = true;
     }
   }
@@ -2152,9 +2148,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       }
       // register built in primitive definitions
       this._buildPrimitiveDefinitions();
-
-      // load style guide templates early if available
-      this._detectStyleGuideTemplates();
     }
   }
   _handleConfirmCancel(e) {
@@ -3330,6 +3323,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       joinOurCommunity: "Join our Community",
       userTutorials: "User Tutorials",
       userDocumentation: "User Documentation",
+      // no longer in Merlin; kept until the nightly translations drop it
+      // from every locale (translated files may not have keys en lacks)
       haxTeachingExcellence: "HAX Teaching Excellence",
       reportAnIssueTogether: "Report an issue together",
       leaveWithoutSaving:
@@ -3347,7 +3342,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     ) {
       SuperDaemonInstance.voiceSearch = true;
     }
-    SuperDaemonInstance.icon = "hax:world-traveler-plain";
+    SuperDaemonInstance.icon = "hax:future-traveler-plain";
     // ensure we are running HAX / ready and in edit mode before allowing commands to go through
     SuperDaemonInstance.allowedCallback = () => {
       if (this.ready && this.editMode) {
@@ -3802,21 +3797,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/documentation",
-      context: "community",
-    });
-    SuperDaemonInstance.defineOption({
-      i18n: { context: this, title: "haxTeachingExcellence" },
-      title: this.t.haxTeachingExcellence,
-      icon: "hax:hax2022",
-      tags: ["Ontology", "community", "pedagogy", "documentation", "help"],
-      externalLink: true,
-      value: {
-        target: this,
-        method: "_openExternalLink",
-        args: ["https://haxtheweb.org/ontology"],
-      },
-      eventName: "super-daemon-element-method",
-      path: "HAX/community/pedagogy",
       context: "community",
     });
     SuperDaemonInstance.defineOption({
@@ -5171,46 +5151,14 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
 
     for (let tag in this.__primsBuilder) {
       let primContentDemo = "";
-      let configure = [];
+      const configure = [];
       if (["h1", "h2", "h3", "h4", "h5", "h6"].includes(tag)) {
         primContentDemo = "Heading";
       } else if (tag == "ul" || tag == "ol") {
         primContentDemo = "<li>Item</li><li>Item</li>";
       }
-      if (tag === "ul") {
-        configure.push({
-          attribute: "data-design-treatment",
-          title: "Bullet style",
-          description: "Style used for unordered list bullets.",
-          inputMethod: "select",
-          options: {
-            "": "Default (square)",
-            "list-disc": "Disc",
-            "list-circle": "Circle",
-            "list-square": "Square",
-            "reading-required": "Required reading",
-            "reading-optional": "Optional reading",
-          },
-        });
-      } else if (tag === "ol") {
-        configure.push({
-          attribute: "data-design-treatment",
-          title: "Number style",
-          description: "Style used for ordered list numbering.",
-          inputMethod: "select",
-          options: {
-            "": "Default (decimal)",
-            "list-decimal-leading-zero":
-              "Decimal with leading zero (01, 02, 03)",
-            "list-lower-alpha": "Lower alpha (a, b, c)",
-            "list-upper-alpha": "Upper alpha (A, B, C)",
-            "list-lower-roman": "Lower roman (i, ii, iii)",
-            "list-upper-roman": "Upper roman (I, II, III)",
-            "reading-required": "Required reading",
-            "reading-optional": "Optional reading",
-          },
-        });
-      }
+      // list bullet / number styles are DDD style guide presets
+      // (DDDStyleGuidePresets.js), not a field of their own
       this.setHaxProperties(
         {
           type: "element",
@@ -5875,8 +5823,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     // test that this is valid HTML before we dig into it as elements
     // and that it actually has children prior to parsing for children
     if (fragment.children) {
-      // page template is a valid tag in this context
-      const validTags = [...this.validTagList, "page-template"];
+      const validTags = this.validTagList;
       const children = fragment.children;
       // loop over the new nodes
       for (let i = 0; i < children.length; i++) {
@@ -5893,31 +5840,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
   }
 
   /**
-   * Check if style guide content is available and detect page-template elements
-   * This is called during app store loading to register any available templates
-   */
-  async _detectStyleGuideTemplates() {
-    try {
-      // Check if we have access to HAXcms store for style guide content
-      if (
-        typeof globalThis.HAXCMS !== "undefined" &&
-        globalThis.HAXCMS &&
-        globalThis.HAXCMS.instance
-      ) {
-        const styleGuideContent =
-          await globalThis.HAXCMS.instance.store.loadStyleGuideContent();
-        if (styleGuideContent) {
-          await this.detectAndRegisterPageTemplateStax(styleGuideContent);
-        }
-      }
-    } catch {
-      // Style guide may not be available in all contexts, which is fine
-    }
-  }
-
-  /**
    * Force app store loading if it hasn't loaded yet
-   * This can be called from external contexts like the style guide route
    */
   async forceAppStoreLoad() {
     // Only force load if not already loaded and we have the necessary pieces
@@ -5937,111 +5860,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       this.haxAutoloader
     ) {
       this.loadAppStoreFromRemote();
-    }
-  }
-
-  /**
-   * Detect page-template elements from style guide content and register them as stax or demoSchema
-   * Multi-child templates become stax, single-child templates replace demoSchema for that element
-   * Uses the same HAX schema conversion approach as the style guide system
-   * @param {string} styleGuideContent - The HTML content of the style guide
-   */
-  async detectAndRegisterPageTemplateStax(styleGuideContent) {
-    if (!styleGuideContent) {
-      return;
-    }
-
-    try {
-      // Convert style guide content to HAX schema elements using existing method
-      const styleGuideElements =
-        await this.htmlToHaxElements(styleGuideContent);
-
-      for (const styleElement of styleGuideElements) {
-        // Look for page-template elements
-        if (styleElement && styleElement.tag === "page-template") {
-          // Get template name, schema, and haxsg-id from properties
-          const templateName =
-            styleElement.properties && styleElement.properties.name;
-          const templateSchema =
-            (styleElement.properties && styleElement.properties.schema) ||
-            "area";
-          const haxsgId =
-            styleElement.properties && styleElement.properties["data-haxsg-id"];
-
-          if (templateName && styleElement.content) {
-            // Convert the content inside page-template to HAX elements
-            const templateContentElements = await this.htmlToHaxElements(
-              styleElement.content,
-            );
-
-            if (templateContentElements && templateContentElements.length > 0) {
-              if (templateSchema === "block") {
-                // Block templates: replace demoSchema for the specific element type
-                if (templateContentElements.length === 1) {
-                  await this._updateElementDemoSchema(
-                    templateContentElements[0],
-                  );
-                }
-              } else if (
-                templateSchema === "area" ||
-                templateSchema === "page"
-              ) {
-                // Area or Page templates: register as stax template
-                const staxData = {
-                  details: {
-                    title: templateName,
-                    image: "",
-                    author: "Style Guide",
-                    description: `Template: ${templateName}`,
-                    status: "available",
-                    rating: "0",
-                    tags: ["template", "style-guide", templateSchema],
-                    templateType: templateSchema, // Add templateType for filtering
-                    haxsgId: haxsgId, // Store the haxsg-id for deduplication
-                  },
-                  stax: templateContentElements, // Use the HAX elements directly (excludes page-template wrapper)
-                };
-
-                // Create and register the stax element
-                let stax = globalThis.document.createElement("hax-stax");
-                stax.data = staxData;
-                this.appendChild(stax);
-              }
-            }
-          }
-        }
-      }
-    } catch (error) {
-      console.warn("Error detecting page-template elements:", error);
-    }
-  }
-
-  /**
-   * Update the demoSchema for an element based on page-template content
-   * @param {Object} haxElement - HAX element schema from page-template content
-   */
-  async _updateElementDemoSchema(haxElement) {
-    if (!haxElement || !haxElement.tag) {
-      return;
-    }
-
-    try {
-      const tagName = haxElement.tag;
-
-      // Create new demoSchema entry based on the page-template content
-      const newDemoSchema = {
-        tag: tagName,
-        properties: haxElement.properties || {},
-        content: haxElement.content || "",
-      };
-
-      // Store in styleGuideSchema for later lookup
-      if (!this.styleGuideSchema[tagName]) {
-        this.styleGuideSchema[tagName] = {};
-      }
-      this.styleGuideSchema[tagName].demoSchema = [newDemoSchema];
-    } catch (error) {
-      console.warn("Error updating element demoSchema:", error);
     }
   }
 

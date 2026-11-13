@@ -716,6 +716,16 @@
       "walkthrough": true
     },
     {
+      "tag": "carbon-theme",
+      "title": "",
+      "description": "A HAXcms theme in the IBM Carbon UI Shell layout (dark 48px header, side navigation, content area), built on the Carbon DDD bridge: every HAX block reads --ddd-* tokens, which point at Carbon tokens while this theme is active.",
+      "package": "@haxtheweb/carbon-theme",
+      "import": "@haxtheweb/carbon-theme/carbon-theme.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
       "tag": "career-org-item",
       "title": "Career Item",
       "description": "",
@@ -1251,6 +1261,44 @@
       "description": "Web component that bridges local file system via File API and combines the functionality of the DOCX parser so that you can easily load a file / directory from the user's file system and then access that data from DOCX",
       "package": "@haxtheweb/file-system-broker",
       "import": "@haxtheweb/file-system-broker/lib/docx-file-system-broker.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "doodle-board",
+      "title": "Doodle Board",
+      "description": "A drawing on an optional background image. One element covers three uses through mode: - draw: a picture made in HAX, or by visitors when interactive - feedback: marks, highlight zones and comments over a submission (the submission is src, the marks are drawing) - signature: a signature pad The m...",
+      "package": "@haxtheweb/doodle-board",
+      "import": "@haxtheweb/doodle-board/doodle-board.js",
+      "type": "element",
+      "haxCapable": true,
+      "tags": [
+        "Media",
+        "Interactive",
+        "drawing",
+        "annotation",
+        "feedback",
+        "signature",
+        "canvas"
+      ]
+    },
+    {
+      "tag": "doodle-board-canvas",
+      "title": "",
+      "description": "The drawing surface: pen, highlighter, eraser, line, arrow, filled boxes and circles (translucent by default), text and fill, over an optional background image. Three modes set the tools and defaults: draw, feedback (mark up a submission) and signature (a signature pad). The drawing is kept as a...",
+      "package": "@haxtheweb/doodle-board",
+      "import": "@haxtheweb/doodle-board/lib/doodle-board-canvas.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "doodle-board-field",
+      "title": "",
+      "description": "The \"doodle\" input method: a field that shows a preview of a drawing in the HAX settings panel, with Edit drawing opening a dialog that holds the full doodle-board-canvas. Saving fires value-changed with the marks as a transparent PNG data URL (\"\" when nothing is drawn). In a HAX settings form it...",
+      "package": "@haxtheweb/doodle-board",
+      "import": "@haxtheweb/doodle-board/lib/doodle-board-field.js",
       "type": "element",
       "haxCapable": false,
       "tags": []
@@ -1947,6 +1995,16 @@
       "description": "",
       "package": "@haxtheweb/hax-body",
       "import": "@haxtheweb/hax-body/lib/hax-map.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "hax-network-bar",
+      "title": "",
+      "description": "The thin strip across the top of every hax.cloud site (hax.cloud, the element portfolio, the live demo, RPG me) that links them as one network and marks the one you are on. Each site keeps its own header under it.",
+      "package": "@haxtheweb/hax-network-bar",
+      "import": "@haxtheweb/hax-network-bar/hax-network-bar.js",
       "type": "element",
       "haxCapable": false,
       "tags": []
@@ -2869,6 +2927,16 @@
       "tags": []
     },
     {
+      "tag": "insights-block-editor",
+      "title": "",
+      "description": "A Reports table of attribute rows (one attribute on one element, from the analyzer) that a person edits and saves through the block operations API (haxtheweb/issues#3321). Two modes: - edit: each row has a text field for its new value - preview: proposals (row index -> new value) are shown old ->...",
+      "package": "@haxtheweb/haxcms-elements",
+      "import": "@haxtheweb/haxcms-elements/lib/core/insights/insights-block-editor.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
       "tag": "insights-cadence",
       "title": "",
       "description": "Cadence screen of Reports (Insights): the course's pacing as music, one phrase per lesson and a beat per page, to review and listen to. Draws from the same scan as the other screens (results.content.pages) and the site outline; the scoring lives in instructional-cadence's model. See haxtheweb/iss...",
@@ -2954,6 +3022,16 @@
       "description": "Overview screen of Reports (Insights): site health and its checks, the key numbers, what to fix next, and where the pages live. A finding about one page opens that page; a finding about several pages (or the whole site) opens its screen. See haxtheweb/issues#3180. Reports screen",
       "package": "@haxtheweb/haxcms-elements",
       "import": "@haxtheweb/haxcms-elements/lib/core/insights/sections/insights-overview.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "insights-url-replace",
+      "title": "",
+      "description": "Links screen of Reports: replace the start of every matching URL the block operations API can change (a href, img src, media-image source, video-player source, iframe src, longdesc, ...), for moving files to a new host or fixing a renamed folder. A person enters the prefix to find and its replace...",
+      "package": "@haxtheweb/haxcms-elements",
+      "import": "@haxtheweb/haxcms-elements/lib/core/insights/insights-url-replace.js",
       "type": "element",
       "haxCapable": false,
       "tags": []
@@ -3476,6 +3554,16 @@
       "haxCapable": true,
       "tags": ["Instructional", "matching", "drag and drop", "question"],
       "walkthrough": true
+    },
+    {
+      "tag": "material-theme",
+      "title": "",
+      "description": "A HAXcms theme in the Material Design 3 layout (top app bar, navigation drawer, content surface), built on the Material DDD bridge: every HAX block reads --ddd-* tokens, which point at Material 3 tokens while it is active.",
+      "package": "@haxtheweb/material-theme",
+      "import": "@haxtheweb/material-theme/material-theme.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
     },
     {
       "tag": "md-block",
@@ -4629,6 +4717,16 @@
         "nudge"
       ],
       "walkthrough": true
+    },
+    {
+      "tag": "shadcn-theme",
+      "title": "",
+      "description": "A HAXcms theme in the shadcn/ui sidebar layout (sidebar, inset panel, header with a breadcrumb), built on the shadcn DDD bridge: every HAX block reads --ddd-* tokens, which point at shadcn and Tailwind tokens while it is active.",
+      "package": "@haxtheweb/shadcn-theme",
+      "import": "@haxtheweb/shadcn-theme/shadcn-theme.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
     },
     {
       "tag": "shadow-style",
@@ -5921,6 +6019,16 @@
       "tags": []
     },
     {
+      "tag": "spectrum-theme",
+      "title": "",
+      "description": "A HAXcms theme in an Adobe Spectrum 2 app frame (header, side navigation, rounded content panel), built on the Spectrum DDD bridge: every HAX block reads --ddd-* tokens, which point at Spectrum tokens while it is active.",
+      "package": "@haxtheweb/spectrum-theme",
+      "import": "@haxtheweb/spectrum-theme/spectrum-theme.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
       "tag": "spotify-embed",
       "title": "Spotify Embed",
       "description": "embed spotify playlists",
@@ -6034,6 +6142,16 @@
       "haxCapable": true,
       "tags": ["Instructional", "self check", "assessment", "tag"],
       "walkthrough": true
+    },
+    {
+      "tag": "tailwind-theme",
+      "title": "",
+      "description": "A HAXcms theme in a Tailwind-style documentation layout (top bar, sidebar, reading column), built on the Tailwind DDD bridge: every HAX block reads --ddd-* tokens, which point at Tailwind theme tokens while it is active. Authored content uses no utility classes.",
+      "package": "@haxtheweb/tailwind-theme",
+      "import": "@haxtheweb/tailwind-theme/tailwind-theme.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
     },
     {
       "tag": "terrible-best-themes",

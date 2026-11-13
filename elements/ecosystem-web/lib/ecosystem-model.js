@@ -569,7 +569,7 @@ const ART_TAGS =
  * not kept, which the HAX iconsets do not use).
  *
  * A glyph that needs more than one ink (masks, lettering, gradients, like
- * the World Traveler marks) comes back as `art` instead: the SVG as a
+ * the Future Traveler marks) comes back as `art` instead: the SVG as a
  * data: URL for an <image>, which draws it exactly but statically (an SVG
  * drawn as an image runs no script and loads nothing).
  * @param {string} markup the inner markup of an <svg>, or a whole <svg> file
@@ -630,4 +630,325 @@ export function lerpView(a, b, e) {
     y: a.y + (b.y - a.y) * e,
     w: a.w + (b.w - a.w) * e,
   };
+}
+
+// ---------- lenses: reading the web by a measure ----------
+
+/** The lenses, in the order they are offered. */
+export const LENSES = ["fresh", "bus", "impact", "evidence", "parity"];
+
+/** The id of a portal tile's home web. */
+function homeOf(n) {
+  return n.portal === true ? "main" : n.portal;
+}
+
+/**
+ * A tile's value in one of the bundle's outside layers ({kind: {web: {id: v}}}),
+ * falling back to its home web for a portal.
+ */
+export function layerValue(layers, kind, web, n) {
+  const L = (layers && layers[kind]) || {};
+  let v = (L[web] || {})[n.id];
+  if (v == null && n.portal) v = (L[homeOf(n)] || {})[n.id];
+  return v;
+}
+
+/** Whether a tile is code: it has a repo, npm or code link, or a release. */
+export function isCode(n) {
+  const d = n.doc || {};
+  const l = d.links || {};
+  return !!(l.repo || l.npm || l.code || d.release);
+}
+
+/** The connections a tile has in its web. */
+export function relsOf(M, id) {
+  return M.edges.filter((e) => e.from === id || e.to === id);
+}
+
+/**
+ * Every tile's distinct neighbours across all webs, and how many webs it
+ * appears in: {id: {n, webs, ids: Set}}.
+ */
+export function impactIndex(models) {
+  const nb = {};
+  const webs = {};
+  Object.keys(models || {}).forEach((w) => {
+    models[w].edges.forEach((e) => {
+      [
+        [e.from, e.to],
+        [e.to, e.from],
+      ].forEach(([a, b]) => {
+        (nb[a] = nb[a] || new Set()).add(b);
+        (webs[a] = webs[a] || new Set()).add(w);
+      });
+    });
+  });
+  const out = {};
+  Object.keys(nb).forEach((k) => {
+    out[k] = { n: nb[k].size, webs: webs[k].size, ids: nb[k] };
+  });
+  return out;
+}
+
+/** The two impact counts that split a web's tiles into thirds. */
+export function impactCuts(M, impact) {
+  const v = [...M.nodes.values()]
+    .map((n) => (impact[n.id] || { n: 0 }).n)
+    .sort((a, b) => a - b);
+  const lo = v[Math.floor(v.length / 3)] || 0;
+  let hi = v[Math.floor((2 * v.length) / 3)] || 0;
+  if (hi <= lo) hi = lo + 1;
+  return [lo, hi];
+}
+
+/** How much backs a tile up: a source, its links, a year source, connection evidence. */
+export function evidenceScore(M, n) {
+  const d = n.doc || {};
+  let s =
+    (d.source ? 1 : 0) +
+    Object.keys(d.links || {}).length +
+    (d.yearSource ? 1 : 0);
+  relsOf(M, n.id).forEach((e) => {
+    s += (M.evidence[`${e.from}>${e.to}`] || []).length;
+  });
+  return s;
+}
+
+/** Where a tile stands in the parity run: a feature, a surface, planned, or nothing. */
+export function featureOf(layers, web, n) {
+  const P = (layers && layers.parity) || {};
+  const F = P.features;
+  if (!F || web === "openapi") return null;
+  if (F.features && F.features[n.id])
+    return { kind: "feature", f: F.features[n.id] };
+  if ((F.surfaces || []).indexOf(n.id) >= 0) return { kind: "surface" };
+  if ((F.planned || []).indexOf(n.id) >= 0) return { kind: "planned" };
+  return null;
+}
+
+/** Whole days between an ISO date and now. */
+export function daysSince(iso, now) {
+  return Math.floor(((now || Date.now()) - Date.parse(iso)) / 864e5);
+}
+
+/**
+ * Read one tile through a lens. Returns null when the lens does not measure
+ * it, or {band, ...facts}: bands a (best), b, c, and for parity s (a surface
+ * compared) and p (planned). The facts are for the caller to put in words.
+ * @param {string} kind one of LENSES
+ * @param {Object} n the tile
+ * @param {Object} ctx {M, web, layers, impact, cut, people: Set, maintainers: Set, now}
+ */
+export function lensOf(kind, n, ctx) {
+  const { M, web, layers } = ctx;
+  if (kind === "fresh") {
+    const d = layerValue(layers, "fresh", web, n);
+    if (!d) return null;
+    const days = daysSince(d, ctx.now);
+    const rel = layerValue(layers, "released", web, n);
+    const legacy = (n.doc || {}).status === "legacy";
+    const due = !!(
+      rel &&
+      !legacy &&
+      (Date.parse(d) - Date.parse(rel)) / 864e5 > 14
+    );
+    return {
+      band: days <= 90 ? "a" : days <= 365 ? "b" : "c",
+      date: d,
+      days,
+      released: rel || "",
+      due,
+    };
+  }
+  if (kind === "bus") {
+    const keep = ctx.maintainers || new Set();
+    if (!isCode(n) || keep.has(n.id)) return null;
+    const nb = (ctx.impact[n.id] || { ids: new Set() }).ids;
+    const people = ctx.people || new Set();
+    const who = [...nb].filter((x) => people.has(x) && !keep.has(x));
+    return {
+      band: who.length >= 2 ? "a" : who.length === 1 ? "b" : "c",
+      badge: String(who.length),
+      who,
+    };
+  }
+  if (kind === "impact") {
+    const v = ctx.impact[n.id] || { n: 0, webs: 0 };
+    const cut = ctx.cut || [0, 0];
+    return {
+      band: v.n >= cut[1] ? "a" : v.n >= cut[0] ? "b" : "c",
+      count: v.n,
+      webs: v.webs,
+    };
+  }
+  if (kind === "evidence") {
+    const s = evidenceScore(M, n);
+    return { band: s >= 3 ? "a" : s >= 1 ? "b" : "c", count: s };
+  }
+  if (kind === "parity") {
+    if (web === "openapi") {
+      const p = layerValue(layers, "parity", web, n);
+      if (!p) return null;
+      const both = p.php && p.nodejs;
+      return {
+        band: both && p.cli && p.mcp ? "a" : both ? "b" : "c",
+        op: { php: !!p.php, nodejs: !!p.nodejs, cli: !!p.cli, mcp: !!p.mcp },
+      };
+    }
+    const fo = featureOf(layers, web, n);
+    if (!fo) return null;
+    if (fo.kind === "surface") return { band: "s" };
+    if (fo.kind === "planned") return { band: "p" };
+    const dots = [fo.f.api, fo.f.cli, fo.f.agent];
+    const got = dots.filter(Boolean);
+    const gaps = got.filter((x) => x === "gap").length;
+    return {
+      band: gaps === 0 ? "a" : gaps === got.length ? "c" : "b",
+      dots,
+      why: fo.f.why || [],
+    };
+  }
+  return null;
+}
+
+// ---------- timeline: the web growing year by year ----------
+
+/**
+ * The steps of "Over time": one per year, each adding the tiles that year
+ * brought. A web with meta.timelineTier steps through the tiles of that ring
+ * instead (semesters, say), bringing their neighbours along. `t` holds the
+ * words: {today, todayCaption, next, nextCaption, everythingElse,
+ * everythingElseCaption, personJoins, peopleJoin, andMore}.
+ */
+export function timelineSteps(M, t) {
+  const nb = M.geo.neighbours;
+  const nodes = [...M.nodes.values()];
+  const always = nodes.filter((n) => n.doc.always).map((n) => n.id);
+  const tt = M.meta && M.meta.timelineTier;
+  if (tt != null) {
+    const ring = nodes.filter((n) => n.tier === tt);
+    const by = {};
+    ring.forEach((n) => {
+      if (n.doc.year) (by[n.doc.year] = by[n.doc.year] || []).push(n);
+    });
+    const withNb = (ns) => ns.flatMap((n) => [n.id].concat(nb.get(n.id) || []));
+    const years = Object.keys(by)
+      .map(Number)
+      .sort((a, b) => a - b);
+    const out = years.map((y, i) => ({
+      label: by[y][0].doc.yearLabel || String(y),
+      caption: `${by[y]
+        .map((n) => {
+          const kids = (nb.get(n.id) || [])
+            .map((id) => M.nodes.get(id))
+            .filter((o) => o && o.tier === tt + 1)
+            .map((o) => o.label);
+          return kids.length && n.doc.kind === "semester"
+            ? `${n.label}: ${kids.slice(0, 4).join(", ")}${kids.length > 4 ? ` ${t.andMore.replace("{n}", kids.length - 4)}` : ""}`
+            : n.label;
+        })
+        .join("; ")}.`,
+      ids: (i === 0 ? always : []).concat(withNb(by[y])),
+    }));
+    out.push({
+      label: t.everythingElse,
+      caption: t.everythingElseCaption,
+      ids: withNb(ring.filter((n) => !n.doc.year)),
+    });
+    return out;
+  }
+  const byYear = {};
+  nodes.forEach((n) => {
+    if (n.doc.year && !n.doc.always)
+      (byYear[n.doc.year] = byYear[n.doc.year] || []).push(n);
+  });
+  const years = Object.keys(byYear)
+    .map(Number)
+    .sort((a, b) => a - b);
+  const out = years.map((y, i) => {
+    const ns = byYear[y];
+    const notes = [
+      ...new Set(
+        ns
+          .filter((n) => n.tier !== 4)
+          .map((n) => n.doc.yearNote)
+          .filter(Boolean),
+      ),
+    ];
+    const ppl = ns.filter((n) => n.tier === 4).length;
+    let cap = notes.slice(0, 3).join(". ");
+    if (notes.length > 3)
+      cap += `, ${t.andMore.replace("{n}", notes.length - 3)}`;
+    if (ppl)
+      cap +=
+        (cap ? ". " : "") +
+        (ppl === 1 ? t.personJoins : t.peopleJoin.replace("{n}", ppl));
+    return {
+      label: String(y),
+      caption: `${cap}.`,
+      ids: (i === 0 ? always : []).concat(ns.map((n) => n.id)),
+    };
+  });
+  out.push({
+    label: t.today,
+    caption: t.todayCaption,
+    ids: nodes.filter((n) => !n.doc.year && !n.doc.always).map((n) => n.id),
+  });
+  const planned = nodes.filter((n) => n.doc.status === "planned");
+  if (planned.length)
+    out.push({
+      label: t.next,
+      caption: `${t.nextCaption} ${planned.map((n) => n.label).join(", ")}.`,
+      ids: planned.map((n) => n.id),
+    });
+  return out;
+}
+
+// ---------- search ----------
+
+/** How many connections a tile has in its web. */
+export function degree(M, id) {
+  return M.edges.reduce(
+    (c, e) => c + (e.from === id || e.to === id ? 1 : 0),
+    0,
+  );
+}
+
+/**
+ * Tiles matching a query, best first: label starts with it, a word in the
+ * label does, the label contains it, its group, icon, role or description
+ * do, or one of its connections is named with it.
+ */
+export function searchNodes(M, q) {
+  q = String(q || "")
+    .trim()
+    .toLowerCase();
+  if (!q) return [];
+  const score = (n) => {
+    const L = n.label.toLowerCase();
+    const d = n.doc || {};
+    const hay = [
+      n.id,
+      n.group ? n.group.label : "",
+      n.icon || "",
+      n.mono || "",
+      d.role || "",
+      d.github || "",
+      d.desc || "",
+    ]
+      .join(" ")
+      .toLowerCase();
+    if (L.startsWith(q)) return 0;
+    if (L.split(/[\s\-:]+/).some((w) => w.startsWith(q))) return 1;
+    if (L.includes(q)) return 2;
+    if (hay.includes(q)) return 3;
+    if (relsOf(M, n.id).some((e) => (e.label || "").toLowerCase().includes(q)))
+      return 4;
+    return 9;
+  };
+  return [...M.nodes.values()]
+    .map((n) => ({ n, s: score(n) }))
+    .filter((x) => x.s < 9)
+    .sort((a, b) => a.s - b.s || a.n.label.localeCompare(b.n.label))
+    .map((x) => x.n);
 }

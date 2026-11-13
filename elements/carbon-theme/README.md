@@ -19,7 +19,7 @@ The design system registers as `carbon` with `extends: "ddd"` in `DesignSystemMa
 
 ## Coverage
 
-Checked against the shared [bridge contract](../d-d-d/design-system/bridge/README.md): identity 97%, feel 61%, semantic 0%, structure locked. Kept as DDD on purpose: font weights medium and black (Carbon only has light, regular and semibold), state opacities (Carbon uses hover colors), border widths (same values), and heading/body sizes (Carbon body-01 is 14px, under the 16px floor). Carbon's spacing scale sits on DDD's 4px grid, so the theme chrome uses DDD spacing.
+Checked against the shared [bridge contract](../d-d-d/design-system/bridge/README.md): identity 97%, feel 61%, semantic 42% (density at Carbon's spacing steps: 16px surface padding and stack gap, 8px inline gap, which match DDD), structure locked. Kept as DDD on purpose: font weights medium and black (Carbon only has light, regular and semibold), state opacities (Carbon uses hover colors), border widths (same values), and heading/body sizes (Carbon body-01 is 14px, under the 16px floor). Carbon's spacing scale sits on DDD's 4px grid, so the theme chrome uses DDD spacing.
 
 ## Rebuilding the tokens
 

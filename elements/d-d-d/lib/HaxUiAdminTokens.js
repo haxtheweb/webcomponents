@@ -115,6 +115,18 @@ export const HaxUiAdminTokens = [
         var(--hax-ui-danger) 10%,
         transparent
       );
+      /* meaning channel for a wrong answer or a mismatch: purple, never red
+         (HAX/DDD: purple is incorrect, green is correct), and always with an
+         icon and words beside it */
+      --hax-ui-incorrect: light-dark(
+        var(--ddd-theme-default-wonderPurple, #491d70),
+        var(--ddd-theme-default-athertonViolet, #ac8dce)
+      );
+      --hax-ui-incorrect-soft: color-mix(
+        in srgb,
+        var(--hax-ui-incorrect) 12%,
+        transparent
+      );
       /* "this throws work away", as a texture rather than a color, so it
          still reads in greyscale and with red/green color vision: the
          diagonal hatch outline-designer draws on rows pending delete.

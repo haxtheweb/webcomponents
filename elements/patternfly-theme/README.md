@@ -19,7 +19,7 @@ The design system registers as `patternfly` with `extends: "ddd"` in `DesignSyst
 
 ## Coverage
 
-Checked against the shared [bridge contract](../d-d-d/design-system/bridge/README.md): identity 92%, feel 43%, semantic 0%, structure locked. Kept as DDD on purpose: font weights light and medium (no PatternFly 300 or 500 step), radius-xl and boxShadow-xl, emphasized easing, state opacities and control heights (PatternFly has no tokens for them), and the heading/body sizes (PatternFly body text is 14px, under the 16px floor, and its h3-h6 would fall below DDD's 20px body text).
+Checked against the shared [bridge contract](../d-d-d/design-system/bridge/README.md): identity 92%, feel 43%, semantic 42% (density mapped to PatternFly's spacers: 24px surface padding, 16px stack gap, 8px inline gap), structure locked. Kept as DDD on purpose: font weights light and medium (no PatternFly 300 or 500 step), radius-xl and boxShadow-xl, emphasized easing, state opacities and control heights (PatternFly has no tokens for them), and the heading/body sizes, a readability decision (PatternFly body text is 14px, under the 16px floor, and its h3-h6 would fall below DDD's 20px body text).
 
 ## Rebuilding the tokens
 
