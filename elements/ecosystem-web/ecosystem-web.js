@@ -548,7 +548,7 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
         }
         .mapctl {
           position: absolute;
-          right: var(--ddd-spacing-2);
+          inset-inline-end: var(--ddd-spacing-2);
           bottom: var(--ddd-spacing-2);
           display: flex;
           flex-direction: column;
@@ -570,7 +570,7 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
         }
         .zoomhint {
           position: absolute;
-          left: var(--ddd-spacing-2);
+          inset-inline-start: var(--ddd-spacing-2);
           bottom: var(--ddd-spacing-2);
           background: var(--surface);
           padding: var(--ddd-spacing-1) var(--ddd-spacing-3);
@@ -1247,8 +1247,8 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
           display: flex;
           flex-direction: column;
           overflow: auto;
-          padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px)
-            env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+          padding-block: env(safe-area-inset-top, 0px)
+            env(safe-area-inset-bottom, 0px);
         }
         :host([data-presenting]) .body {
           flex: 1 1 auto;
