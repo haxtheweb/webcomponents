@@ -1,0 +1,43 @@
+{
+  "tag": "uswds-theme",
+  "folder": "uswds-theme",
+  "package": "@haxtheweb/uswds-theme",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "uswds-theme",
+  "description": "U.S. Web Design System (USWDS) theme for HAXcms, built on the DDD-capable USWDS design system bridge",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/uswds-theme/uswds-theme.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/uswds-theme/uswds-theme.js",
+  "install": "npm i @haxtheweb/uswds-theme",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "sidebar-open",
+      "property": "sidebarOpen",
+      "type": "boolean",
+      "default": "true",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "9d74f155fdc2",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/uswds-theme",
+    "file": "uswds-theme.js"
+  }
+}

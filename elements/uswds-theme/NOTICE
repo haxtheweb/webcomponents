@@ -1,0 +1,25 @@
+uswds-theme
+Copyright 2026 The Pennsylvania State University
+Licensed under the Apache License, Version 2.0 (see LICENSE).
+
+This package contains design token values derived from the U.S. Web Design
+System (https://designsystem.digital.gov):
+
+  @uswds/uswds 3.14.0  U.S. General Services Administration
+  The USWDS color tokens are a work of the United States Government and are
+  not subject to copyright within the United States. GSA waives copyright and
+  related rights worldwide through the CC0 1.0 Universal Public Domain
+  Dedication (https://creativecommons.org/publicdomain/zero/1.0/).
+
+The token values were re-expressed as CSS custom properties by
+elements/d-d-d/design-system/bridge/build-bridge.js. No USWDS stylesheet,
+script, image, icon or font file is distributed in this package.
+
+Fonts (loaded at runtime from Google Fonts, not distributed in this package):
+  Source Sans 3 and Merriweather, SIL Open Font License 1.1
+  Roboto Mono, Apache License 2.0
+
+This package is an independent integration. It is not affiliated with or
+endorsed by the General Services Administration or any U.S. government agency.
+It does not include the official U.S. government website banner, agency seals,
+the identifier component or any other element reserved for federal websites.
