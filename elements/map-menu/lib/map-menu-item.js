@@ -33,6 +33,9 @@ class MapMenuItem extends I18NMixin(LitElement) {
           position: relative;
           font-size: var(--map-menu-font-size);
           overflow: var(--map-menu-item-overflow, hidden);
+          /* optional rule above each row (USWDS side navigation); off unless
+             a theme sets --map-menu-item-divider, e.g. 1px solid <color> */
+          border-top: var(--map-menu-item-divider, none);
         }
         simple-icon-lite {
           display: inline-flex;

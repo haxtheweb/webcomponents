@@ -16,7 +16,7 @@
   "coverage": {
     "identity": {
       "mapping": "expected",
-      "percent": 100,
+      "percent": 99,
       "families": {
         "color": {
           "mapped": 52,
@@ -25,8 +25,8 @@
         },
         "font": {
           "mapped": 4,
-          "total": 4,
-          "keptDDD": []
+          "total": 5,
+          "keptDDD": ["--ddd-font-heading"]
         },
         "weight": {
           "mapped": 5,

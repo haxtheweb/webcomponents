@@ -46,7 +46,7 @@ const rules = [
   [/^ddd-primary-(\d+)$/, (m) => ["color", "primary", m[1]], "color"],
   [/^ddd-accent-(\d+)$/, (m) => ["color", "accent", m[1]], "color"],
   [
-    /^ddd-font-(primary|secondary|navigation|mono)$/,
+    /^ddd-font-(primary|secondary|navigation|mono|heading)$/,
     (m) => ["font", "family", m[1]],
     "fontFamily",
   ],
@@ -239,7 +239,7 @@ export default function build() {
       case "color":
         return a || color(v);
       case "fontFamily":
-        return v.split(",").map((s) => s.trim().replace(/^"|"$/g, ""));
+        return a || v.split(",").map((s) => s.trim().replace(/^"|"$/g, ""));
       case "fontWeight":
         return a || Number(v);
       case "number":

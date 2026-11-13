@@ -66,6 +66,7 @@ export const MaterialDDDMap = css`
     --ddd-font-secondary: var(--md-ref-typeface-brand), system-ui, sans-serif;
     --ddd-font-navigation: var(--md-ref-typeface-plain), system-ui, sans-serif;
     --ddd-font-mono: "Roboto Mono", ui-monospace, monospace;
+    --ddd-font-heading: var(--md-ref-typeface-brand), system-ui, sans-serif;
     --ddd-font-weight-regular: var(--md-ref-typeface-weight-regular);
     --ddd-font-weight-medium: var(--md-ref-typeface-weight-medium);
     --ddd-font-weight-bold: var(--md-ref-typeface-weight-bold);

@@ -215,6 +215,10 @@
     "--ddd-font-mono": {
       "token": "--pf-t--global--font--family--mono"
     },
+    "--ddd-font-heading": {
+      "token": "--pf-t--global--font--family--heading",
+      "note": "Red Hat Display"
+    },
     "--ddd-radius-xs": {
       "token": "--pf-t--global--border--radius--tiny"
     },

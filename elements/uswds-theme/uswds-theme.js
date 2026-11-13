@@ -297,7 +297,8 @@ class UswdsTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           --map-menu-item-active-accent-width: 4px;
           --map-menu-item-active-accent-color: var(--uswds-theme-primary);
           --map-menu-font-weight: var(--ddd-font-weight-regular);
-          border-top: 1px solid var(--uswds-theme-line);
+          /* usa-sidenav: a rule above each row, and one closing the list */
+          --map-menu-item-divider: 1px solid var(--uswds-theme-line);
           border-bottom: 1px solid var(--uswds-theme-line);
         }
         .content {

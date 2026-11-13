@@ -51,7 +51,7 @@
   "coverage": {
     "identity": {
       "mapping": "expected",
-      "percent": 94,
+      "percent": 95,
       "families": {
         "color": {
           "mapped": 52,
@@ -59,8 +59,8 @@
           "keptDDD": []
         },
         "font": {
-          "mapped": 4,
-          "total": 4,
+          "mapped": 5,
+          "total": 5,
           "keptDDD": []
         },
         "weight": {
@@ -745,6 +745,14 @@
       "light": "\"Roboto Mono\", \"Bitstream Vera Sans Mono\", Consolas, Courier, monospace",
       "dark": "\"Roboto Mono\", \"Bitstream Vera Sans Mono\", Consolas, Courier, monospace",
       "note": "code role: Roboto Mono with $font-stack-monospace"
+    },
+    {
+      "ddd": "--ddd-font-heading",
+      "tier": "identity",
+      "token": null,
+      "light": "Merriweather, Georgia, Cambria, \"Times New Roman\", Times, serif",
+      "dark": "Merriweather, Georgia, Cambria, \"Times New Roman\", Times, serif",
+      "note": "heading role: serif (Merriweather) with $font-stack-georgia"
     },
     {
       "ddd": "--ddd-radius-xs",

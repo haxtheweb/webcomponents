@@ -44,8 +44,8 @@
           ]
         },
         "font": {
-          "mapped": 4,
-          "total": 4,
+          "mapped": 5,
+          "total": 5,
           "keptDDD": []
         },
         "weight": {
@@ -645,6 +645,14 @@
       "light": "\"Red Hat Mono\", \"RedHatMono\", \"Courier New\", Courier, monospace",
       "dark": "\"Red Hat Mono\", \"RedHatMono\", \"Courier New\", Courier, monospace",
       "note": ""
+    },
+    {
+      "ddd": "--ddd-font-heading",
+      "tier": "identity",
+      "token": "--pf-t--global--font--family--heading",
+      "light": "\"Red Hat Display\", \"RedHatDisplay\", \"Noto Sans Arabic\", \"Noto Sans Hebrew\", \"Noto Sans JP\", \"Noto Sans KR\", \"Noto Sans Malayalam\", \"Noto Sans SC\", \"Noto Sans TC\", \"Noto Sans Thai\", Helvetica, Arial, sans-serif",
+      "dark": "\"Red Hat Display\", \"RedHatDisplay\", \"Noto Sans Arabic\", \"Noto Sans Hebrew\", \"Noto Sans JP\", \"Noto Sans KR\", \"Noto Sans Malayalam\", \"Noto Sans SC\", \"Noto Sans TC\", \"Noto Sans Thai\", Helvetica, Arial, sans-serif",
+      "note": "Red Hat Display"
     },
     {
       "ddd": "--ddd-radius-xs",

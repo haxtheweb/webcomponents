@@ -1121,6 +1121,16 @@
               "cssVar": "--ddd-font-mono"
             }
           }
+        },
+        "heading": {
+          "$type": "fontFamily",
+          "$value": "{ddd.font.family.primary}",
+          "$description": "headings and block titles; a design system may give them their own face",
+          "$extensions": {
+            "org.haxtheweb.ddd": {
+              "cssVar": "--ddd-font-heading"
+            }
+          }
         }
       },
       "weight": {
