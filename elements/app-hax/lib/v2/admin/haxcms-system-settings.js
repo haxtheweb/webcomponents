@@ -366,6 +366,9 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
         "{count} checks above need attention. Fix them before you update.",
       stepBackup:
         "Back up the _config, _sites, _published and _archived folders.",
+      stepPhpUpgrader:
+        "With shell access, run the upgrader from the install folder. It checks the release, backs up the code and can roll back:",
+      stepNoShell: "No shell? Update by hand:",
       stepUnzip:
         "Download the release zip and unzip it over this install. Never delete those four folders.",
       stepReload: "Reload this page. Status checks the version again.",
@@ -4368,6 +4371,11 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
     switch (update.installMethod) {
       case "php-archive":
         return [
+          step(
+            this.t.stepPhpUpgrader,
+            "php scripts/platform-upgrade.php upgrade",
+          ),
+          step(this.t.stepNoShell),
           step(this.t.stepBackup),
           step(this.t.stepUnzip),
           step(this.t.stepReload),

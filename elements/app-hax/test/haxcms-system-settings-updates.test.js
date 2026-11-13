@@ -156,7 +156,10 @@ describe("haxcms-system-settings Status ▸ Updates", () => {
     expect(
       card.querySelector(".update-security a").getAttribute("href"),
     ).to.equal(advisory.url);
-    expect(card.querySelectorAll(".update-steps li").length).to.equal(3);
+    expect(card.querySelectorAll(".update-steps li").length).to.equal(5);
+    expect(card.querySelector(".update-steps code").textContent).to.equal(
+      "php scripts/platform-upgrade.php upgrade",
+    );
     el.statusUpdate = el._normalizeStatusUpdate(
       report({ updateAvailable: false, security: false, advisories: [] }),
     );
