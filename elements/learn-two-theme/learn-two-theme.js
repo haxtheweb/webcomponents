@@ -578,7 +578,7 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
             </div>
           </header>
           <nav aria-label="${this.t.siteNavigation}">
-            <site-menu part="site-menu"></site-menu>
+            <site-menu part="site-menu" show-progress></site-menu>
           </nav>
         </div>
         <div
