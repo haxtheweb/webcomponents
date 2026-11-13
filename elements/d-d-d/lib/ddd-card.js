@@ -103,8 +103,10 @@ export class DddCard extends I18NMixin(DDDSuper(LitElement)) {
         }
 
         .title {
-          padding: var(--ddd-spacing-4) var(--ddd-spacing-4)
-            var(--ddd-spacing-0) var(--ddd-spacing-4);
+          padding: var(--ddd-surface-padding, var(--ddd-spacing-4))
+            var(--ddd-surface-padding, var(--ddd-spacing-4))
+            var(--ddd-spacing-0)
+            var(--ddd-surface-padding, var(--ddd-spacing-4));
           font-size: var(--ddd-font-size-s);
           font-weight: var(--ddd-font-weight-bold);
           color: light-dark(var(--ddd-theme-default-nittanyNavy), white);
@@ -112,7 +114,7 @@ export class DddCard extends I18NMixin(DDDSuper(LitElement)) {
 
         .description {
           flex-grow: 1;
-          padding: var(--ddd-spacing-4) var(--ddd-spacing-4);
+          padding: var(--ddd-surface-padding, var(--ddd-spacing-4));
           font-size: var(--ddd-font-size-4xs);
           height: var(--ddd-card-height, var(--ddd-spacing-22));
           overflow-y: auto;
@@ -125,7 +127,7 @@ export class DddCard extends I18NMixin(DDDSuper(LitElement)) {
         }
 
         .button-wrapper {
-          padding: var(--ddd-spacing-4);
+          padding: var(--ddd-surface-padding, var(--ddd-spacing-4));
           text-align: center;
           height: 44px;
         }

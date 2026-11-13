@@ -32,7 +32,7 @@ class SimpleCta extends DDDPulseEffectSuper(
           display: inline-block;
           width: fit-content;
           height: fit-content;
-          margin: var(--ddd-spacing-4) 0 0;
+          margin: var(--ddd-stack-gap, var(--ddd-spacing-4)) 0 0;
           border-radius: var(--ddd-radius-xs);
           --component-color: var(
             --lowContrast-override,

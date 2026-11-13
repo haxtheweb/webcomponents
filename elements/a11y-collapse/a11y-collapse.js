@@ -63,7 +63,10 @@ class A11yCollapse extends I18NMixin(DDD) {
             var(--ddd-theme-default-white),
             var(--ddd-theme-default-potentialMidnight)
           );
-          margin: var(--a11y-collapse-margin, var(--ddd-spacing-4) 0);
+          margin: var(
+            --a11y-collapse-margin,
+            var(--ddd-stack-gap, var(--ddd-spacing-4)) 0
+          );
           border: var(--a11y-collapse-border, var(--ddd-border-xs));
           border-color: var(
             --a11y-collapse-border-color,
@@ -171,7 +174,10 @@ class A11yCollapse extends I18NMixin(DDD) {
           );
           padding-inline: var(
               --a11y-collapse-padding-left,
-              var(--a11y-collapse-horizontal-padding, var(--ddd-spacing-4))
+              var(
+                --a11y-collapse-horizontal-padding,
+                var(--ddd-surface-padding, var(--ddd-spacing-4))
+              )
             )
             var(
               --a11y-collapse-padding-right,
@@ -301,19 +307,31 @@ class A11yCollapse extends I18NMixin(DDD) {
         #content {
           padding-block: var(
               --a11y-collapse-padding-top,
-              var(--a11y-collapse-vertical-padding, var(--ddd-spacing-4))
+              var(
+                --a11y-collapse-vertical-padding,
+                var(--ddd-surface-padding, var(--ddd-spacing-4))
+              )
             )
             var(
               --a11y-collapse-padding-bottom,
-              var(--a11y-collapse-vertical-padding, var(--ddd-spacing-4))
+              var(
+                --a11y-collapse-vertical-padding,
+                var(--ddd-surface-padding, var(--ddd-spacing-4))
+              )
             );
           padding-inline: var(
               --a11y-collapse-padding-left,
-              var(--a11y-collapse-horizontal-padding, var(--ddd-spacing-4))
+              var(
+                --a11y-collapse-horizontal-padding,
+                var(--ddd-surface-padding, var(--ddd-spacing-4))
+              )
             )
             var(
               --a11y-collapse-padding-right,
-              var(--a11y-collapse-horizontal-padding, var(--ddd-spacing-4))
+              var(
+                --a11y-collapse-horizontal-padding,
+                var(--ddd-surface-padding, var(--ddd-spacing-4))
+              )
             );
           border-top: var(--a11y-collapse-border, var(--ddd-border-xs));
           border-color: var(
@@ -332,11 +350,17 @@ class A11yCollapse extends I18NMixin(DDD) {
             padding-block: 0;
             padding-inline: var(
                 --a11y-collapse-padding-left,
-                var(--a11y-collapse-horizontal-padding, var(--ddd-spacing-4))
+                var(
+                  --a11y-collapse-horizontal-padding,
+                  var(--ddd-surface-padding, var(--ddd-spacing-4))
+                )
               )
               var(
                 --a11y-collapse-padding-right,
-                var(--a11y-collapse-horizontal-padding, var(--ddd-spacing-4))
+                var(
+                  --a11y-collapse-horizontal-padding,
+                  var(--ddd-surface-padding, var(--ddd-spacing-4))
+                )
               );
             border-top: none;
             border-color: var(
@@ -361,19 +385,31 @@ class A11yCollapse extends I18NMixin(DDD) {
           :host([expanded]) #content {
             padding-block: var(
                 --a11y-collapse-padding-top,
-                var(--a11y-collapse-vertical-padding, var(--ddd-spacing-4))
+                var(
+                  --a11y-collapse-vertical-padding,
+                  var(--ddd-surface-padding, var(--ddd-spacing-4))
+                )
               )
               var(
                 --a11y-collapse-padding-bottom,
-                var(--a11y-collapse-vertical-padding, var(--ddd-spacing-4))
+                var(
+                  --a11y-collapse-vertical-padding,
+                  var(--ddd-surface-padding, var(--ddd-spacing-4))
+                )
               );
             padding-inline: var(
                 --a11y-collapse-padding-left,
-                var(--a11y-collapse-horizontal-padding, var(--ddd-spacing-4))
+                var(
+                  --a11y-collapse-horizontal-padding,
+                  var(--ddd-surface-padding, var(--ddd-spacing-4))
+                )
               )
               var(
                 --a11y-collapse-padding-right,
-                var(--a11y-collapse-horizontal-padding, var(--ddd-spacing-4))
+                var(
+                  --a11y-collapse-horizontal-padding,
+                  var(--ddd-surface-padding, var(--ddd-spacing-4))
+                )
               );
             border-top: var(--a11y-collapse-border, var(--ddd-border-xs));
             border-color: var(

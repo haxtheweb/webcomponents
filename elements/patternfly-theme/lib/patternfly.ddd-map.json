@@ -112,7 +112,7 @@
     },
     "semantic": {
       "mapping": "optional",
-      "percent": 0,
+      "percent": 42,
       "families": {
         "type": {
           "mapped": 0,
@@ -126,6 +126,11 @@
             "--ddd-theme-h6-font-size",
             "--ddd-theme-body-font-size"
           ]
+        },
+        "density": {
+          "mapped": 5,
+          "total": 5,
+          "keptDDD": []
         }
       }
     }
@@ -816,6 +821,46 @@
       "light": "4px",
       "dark": "4px",
       "note": ""
+    },
+    {
+      "ddd": "--ddd-surface-padding",
+      "tier": "semantic",
+      "token": "--pf-t--global--spacer--lg",
+      "light": "1.5rem",
+      "dark": "1.5rem",
+      "note": "PatternFly card body padding, 24px"
+    },
+    {
+      "ddd": "--ddd-surface-padding-lg",
+      "tier": "semantic",
+      "token": "--pf-t--global--spacer--xl",
+      "light": "2rem",
+      "dark": "2rem",
+      "note": "32px"
+    },
+    {
+      "ddd": "--ddd-stack-gap",
+      "tier": "semantic",
+      "token": "--pf-t--global--spacer--md",
+      "light": "1rem",
+      "dark": "1rem",
+      "note": "16px"
+    },
+    {
+      "ddd": "--ddd-inline-gap",
+      "tier": "semantic",
+      "token": "--pf-t--global--spacer--sm",
+      "light": "0.5rem",
+      "dark": "0.5rem",
+      "note": "8px"
+    },
+    {
+      "ddd": "--ddd-control-padding-inline",
+      "tier": "semantic",
+      "token": "--pf-t--global--spacer--md",
+      "light": "1rem",
+      "dark": "1rem",
+      "note": "PatternFly button inline padding, 16px"
     }
   ]
 }

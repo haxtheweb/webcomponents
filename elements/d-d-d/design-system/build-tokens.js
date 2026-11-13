@@ -155,6 +155,11 @@ const rules = [
   ],
   [/^ddd-media-control-(.+)$/, (m) => ["mediaControl", m[1]], null],
   [/^ddd-target-(min|comfortable)$/, (m) => ["targetSize", m[1]], "dimension"],
+  [
+    /^ddd-(surface-padding|surface-padding-lg|stack-gap|inline-gap|control-padding-inline)$/,
+    (m) => ["density", m[1]],
+    "dimension",
+  ],
   [/^ddd-state-(.+)-opacity$/, (m) => ["state", m[1]], "number"],
   [/^ddd-status-(.+)-(signal|ink|bg)$/, (m) => ["status", m[1], m[2]], "color"],
   [/^ddd-status-(.+)-line$/, (m) => ["status", m[1], "line"], null],

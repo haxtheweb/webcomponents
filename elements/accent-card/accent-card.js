@@ -40,7 +40,7 @@ class AccentCard extends I18NMixin(IntersectionObserverMixin(DDD)) {
       css`
         :host {
           display: block;
-          margin: 0 0 var(--ddd-spacing-4);
+          margin: 0 0 var(--ddd-stack-gap, var(--ddd-spacing-4));
           /* surface, text and link follow the page colour scheme */
           --accent-card-surface: light-dark(
             var(--ddd-theme-default-white),
@@ -333,8 +333,8 @@ class AccentCard extends I18NMixin(IntersectionObserverMixin(DDD)) {
             --accent-card-footer-border-color,
             var(--accent-card-line)
           );
-          padding-top: var(--ddd-spacing-4);
-          --bottom-padding: var(--ddd-spacing-4);
+          padding-top: var(--ddd-surface-padding, var(--ddd-spacing-4));
+          --bottom-padding: var(--ddd-surface-padding, var(--ddd-spacing-4));
         }
 
         simple-icon-lite {
