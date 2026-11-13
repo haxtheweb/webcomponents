@@ -379,10 +379,34 @@ function scopeEnv(blocks, selectors) {
   const env = {};
   selectors.forEach((sel) => {
     blocks
-      .filter((b) => b.selector === sel)
+      .filter(
+        (b) => b.selector === sel || selectorList(b.selector).includes(sel),
+      )
       .forEach((b) => Object.assign(env, b.decls));
   });
   return env;
+}
+
+/**
+ * the selectors of a selector list, split at top-level commas only, so a
+ * scope can name one member of a shared rule (Web Awesome writes
+ * ":where(:root), .wa-theme-default, .wa-light, ..." for its light theme)
+ */
+function selectorList(selector) {
+  const parts = [];
+  let depth = 0;
+  let start = 0;
+  for (let i = 0; i < selector.length; i++) {
+    const c = selector[i];
+    if (c === "(" || c === "[") depth++;
+    else if (c === ")" || c === "]") depth--;
+    else if (c === "," && depth === 0) {
+      parts.push(selector.slice(start, i).trim());
+      start = i + 1;
+    }
+  }
+  parts.push(selector.slice(start).trim());
+  return parts;
 }
 
 /** replace every var() in value with its resolved value from env */

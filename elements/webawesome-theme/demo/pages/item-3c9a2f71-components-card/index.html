@@ -1,0 +1,24 @@
+<h2>Examples</h2>
+<h3>Basic card</h3>
+<div data-border="xs" data-border-radius="lg" data-primary="5" data-padding="m">
+<grid-plate layout="1-1">
+<ddd-card slot="col-1" title="Week 1: Getting started" href="start/installation" label="Open lesson" src="files/card-example.svg" alt=""><p>Set up your workspace and meet the course team.</p></ddd-card>
+</grid-plate>
+</div>
+<h3>Cards in a grid</h3>
+<div data-border="xs" data-border-radius="lg" data-primary="5" data-padding="m">
+<grid-plate layout="1-1-1">
+<div slot="col-1" data-border="xs" data-border-radius="lg" data-primary="5"><h4>Readings</h4><p>Two short articles.</p></div>
+<div slot="col-2" data-border="xs" data-border-radius="lg" data-primary="5"><h4>Video</h4><p>A twelve-minute walkthrough.</p></div>
+<div slot="col-3" data-border="xs" data-border-radius="lg" data-primary="5"><h4>Practice</h4><p>A five-question check.</p></div>
+</grid-plate>
+</div>
+<h2>Usage</h2>
+<a11y-tabs>
+<a11y-tab label="Guidelines">
+<p>Keep one action per card. Write the title as the thing the reader gets, not the format it comes in.</p>
+</a11y-tab>
+<a11y-tab label="Code">
+<code-sample type="html"><template preserve-content="preserve-content"><ddd-card title="Week 1" href="/week-1" label="Open lesson" src="week-1.svg" alt=""><p>Set up your workspace.</p></ddd-card></template></code-sample>
+</a11y-tab>
+</a11y-tabs>

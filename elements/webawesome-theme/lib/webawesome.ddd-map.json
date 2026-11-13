@@ -1,0 +1,935 @@
+{
+  "system": "webawesome",
+  "title": "Web Awesome",
+  "sources": [
+    {
+      "package": "@awesome.me/webawesome",
+      "version": "3.14.0",
+      "license": "MIT",
+      "copyright": "Copyright (c) 2025 Fonticons, Inc.",
+      "homepage": "https://webawesome.com",
+      "repository": "https://github.com/shoelace-style/webawesome",
+      "format": "css",
+      "file": "dist/styles/color/palettes/default.css"
+    },
+    {
+      "package": "@awesome.me/webawesome",
+      "version": "3.14.0",
+      "license": "MIT",
+      "copyright": "Copyright (c) 2025 Fonticons, Inc.",
+      "homepage": "https://webawesome.com",
+      "repository": "https://github.com/shoelace-style/webawesome",
+      "format": "css",
+      "file": "dist/styles/color/variants/brand.css"
+    },
+    {
+      "package": "@awesome.me/webawesome",
+      "version": "3.14.0",
+      "license": "MIT",
+      "copyright": "Copyright (c) 2025 Fonticons, Inc.",
+      "homepage": "https://webawesome.com",
+      "repository": "https://github.com/shoelace-style/webawesome",
+      "format": "css",
+      "file": "dist/styles/color/variants/neutral.css"
+    },
+    {
+      "package": "@awesome.me/webawesome",
+      "version": "3.14.0",
+      "license": "MIT",
+      "copyright": "Copyright (c) 2025 Fonticons, Inc.",
+      "homepage": "https://webawesome.com",
+      "repository": "https://github.com/shoelace-style/webawesome",
+      "format": "css",
+      "file": "dist/styles/color/variants/success.css"
+    },
+    {
+      "package": "@awesome.me/webawesome",
+      "version": "3.14.0",
+      "license": "MIT",
+      "copyright": "Copyright (c) 2025 Fonticons, Inc.",
+      "homepage": "https://webawesome.com",
+      "repository": "https://github.com/shoelace-style/webawesome",
+      "format": "css",
+      "file": "dist/styles/color/variants/warning.css"
+    },
+    {
+      "package": "@awesome.me/webawesome",
+      "version": "3.14.0",
+      "license": "MIT",
+      "copyright": "Copyright (c) 2025 Fonticons, Inc.",
+      "homepage": "https://webawesome.com",
+      "repository": "https://github.com/shoelace-style/webawesome",
+      "format": "css",
+      "file": "dist/styles/color/variants/danger.css"
+    },
+    {
+      "package": "@awesome.me/webawesome",
+      "version": "3.14.0",
+      "license": "MIT",
+      "copyright": "Copyright (c) 2025 Fonticons, Inc.",
+      "homepage": "https://webawesome.com",
+      "repository": "https://github.com/shoelace-style/webawesome",
+      "format": "css",
+      "file": "dist/styles/themes/default.css"
+    }
+  ],
+  "fonts": [],
+  "coverage": {
+    "identity": {
+      "mapping": "expected",
+      "percent": 99,
+      "families": {
+        "color": {
+          "mapped": 52,
+          "total": 52,
+          "keptDDD": []
+        },
+        "font": {
+          "mapped": 5,
+          "total": 5,
+          "keptDDD": []
+        },
+        "weight": {
+          "mapped": 4,
+          "total": 5,
+          "keptDDD": ["--ddd-font-weight-black"]
+        },
+        "radius": {
+          "mapped": 5,
+          "total": 5,
+          "keptDDD": []
+        },
+        "shadow": {
+          "mapped": 4,
+          "total": 4,
+          "keptDDD": []
+        },
+        "focus": {
+          "mapped": 2,
+          "total": 2,
+          "keptDDD": []
+        }
+      }
+    },
+    "feel": {
+      "mapping": "optional",
+      "percent": 30,
+      "families": {
+        "motion": {
+          "mapped": 4,
+          "total": 7,
+          "keptDDD": [
+            "--ddd-timing-enter",
+            "--ddd-timing-exit",
+            "--ddd-timing-emphasized"
+          ]
+        },
+        "state": {
+          "mapped": 0,
+          "total": 5,
+          "keptDDD": [
+            "--ddd-state-hover-opacity",
+            "--ddd-state-focus-opacity",
+            "--ddd-state-pressed-opacity",
+            "--ddd-state-selected-opacity",
+            "--ddd-state-disabled-opacity"
+          ]
+        },
+        "control": {
+          "mapped": 0,
+          "total": 7,
+          "keptDDD": [
+            "--ddd-textfield-height-sm",
+            "--ddd-textfield-height-md",
+            "--ddd-textfield-height-lg",
+            "--ddd-control-height-xs",
+            "--ddd-control-height-sm",
+            "--ddd-control-height-md",
+            "--ddd-control-height-lg"
+          ]
+        },
+        "border": {
+          "mapped": 3,
+          "total": 4,
+          "keptDDD": ["--ddd-border-size-lg"]
+        }
+      }
+    },
+    "semantic": {
+      "mapping": "optional",
+      "percent": 42,
+      "families": {
+        "type": {
+          "mapped": 0,
+          "total": 7,
+          "keptDDD": [
+            "--ddd-theme-h1-font-size",
+            "--ddd-theme-h2-font-size",
+            "--ddd-theme-h3-font-size",
+            "--ddd-theme-h4-font-size",
+            "--ddd-theme-h5-font-size",
+            "--ddd-theme-h6-font-size",
+            "--ddd-theme-body-font-size"
+          ]
+        },
+        "density": {
+          "mapped": 5,
+          "total": 5,
+          "keptDDD": []
+        }
+      }
+    }
+  },
+  "contrast": [
+    {
+      "fg": "--ddd-theme-default-coalyGray",
+      "bg": "--ddd-theme-default-white",
+      "ratio": 16.8,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-link",
+      "bg": "--ddd-theme-default-white",
+      "ratio": 7,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-white",
+      "bg": "--ddd-theme-default-beaverBlue",
+      "ratio": 4.59,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-white",
+      "bg": "--ddd-theme-default-nittanyNavy",
+      "ratio": 9.58,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-white",
+      "bg": "--ddd-theme-default-coalyGray",
+      "ratio": 16.8,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-linkLight",
+      "bg": "--ddd-theme-default-coalyGray",
+      "ratio": 7.64,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-error",
+      "bg": "--ddd-theme-default-errorLight",
+      "ratio": 6.35,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-warning",
+      "bg": "--ddd-theme-default-warningLight",
+      "ratio": 6.32,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-info",
+      "bg": "--ddd-theme-default-infoLight",
+      "ratio": 6.24,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-success",
+      "bg": "--ddd-theme-default-successLight",
+      "ratio": 6.34,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-coalyGray",
+      "bg": "--ddd-theme-default-limestoneMaxLight",
+      "ratio": 14.98,
+      "min": 4.5
+    }
+  ],
+  "problems": [],
+  "contract": 1,
+  "map": [
+    {
+      "ddd": "--ddd-theme-default-beaverBlue",
+      "tier": "identity",
+      "token": "--wa-color-blue-50",
+      "light": "#0071ec",
+      "dark": "#0071ec",
+      "note": "brand key color (brand-fill-loud); white on it, as Web Awesome's brand-on-loud"
+    },
+    {
+      "ddd": "--ddd-theme-default-nittanyNavy",
+      "tier": "identity",
+      "token": "--wa-color-blue-30",
+      "light": "#003f9c",
+      "dark": "#003f9c",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-potentialMidnight",
+      "tier": "identity",
+      "token": "--wa-color-blue-10",
+      "light": "#001a4e",
+      "dark": "#001a4e",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-pughBlue",
+      "tier": "identity",
+      "token": "--wa-color-blue-80",
+      "light": "#9fceff",
+      "dark": "#9fceff",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-accent",
+      "tier": "identity",
+      "token": "--wa-color-blue-80",
+      "light": "#9fceff",
+      "dark": "#9fceff",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-skyBlue",
+      "tier": "identity",
+      "token": "--wa-color-blue-70",
+      "light": "#6eb3ff",
+      "dark": "#6eb3ff",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-skyLight",
+      "tier": "identity",
+      "token": "--wa-color-blue-90",
+      "light": "#d1e8ff",
+      "dark": "#d1e8ff",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-skyMaxLight",
+      "tier": "identity",
+      "token": "--wa-color-blue-95",
+      "light": "#e8f3ff",
+      "dark": "#e8f3ff",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-slateGray",
+      "tier": "identity",
+      "token": "--wa-color-gray-40",
+      "light": "#545868",
+      "dark": "#545868",
+      "note": "gray key color"
+    },
+    {
+      "ddd": "--ddd-theme-default-slateLight",
+      "tier": "identity",
+      "token": "--wa-color-gray-80",
+      "light": "#c7c9d0",
+      "dark": "#c7c9d0",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-slateMaxLight",
+      "tier": "identity",
+      "token": "--wa-color-gray-95",
+      "light": "#f1f2f3",
+      "dark": "#f1f2f3",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-coalyGray",
+      "tier": "identity",
+      "token": "--wa-color-gray-10",
+      "light": "#1b1d26",
+      "dark": "#1b1d26",
+      "note": "text-normal in the light theme"
+    },
+    {
+      "ddd": "--ddd-theme-default-black",
+      "tier": "identity",
+      "token": null,
+      "light": "black",
+      "dark": "black",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-white",
+      "tier": "identity",
+      "token": null,
+      "light": "white",
+      "dark": "white",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-limestoneGray",
+      "tier": "identity",
+      "token": "--wa-color-gray-60",
+      "light": "#9194a2",
+      "dark": "#9194a2",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-limestoneLight",
+      "tier": "identity",
+      "token": "--wa-color-gray-90",
+      "light": "#e4e5e9",
+      "dark": "#e4e5e9",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-limestoneMaxLight",
+      "tier": "identity",
+      "token": "--wa-color-gray-95",
+      "light": "#f1f2f3",
+      "dark": "#f1f2f3",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-background",
+      "tier": "identity",
+      "token": "--wa-color-gray-95",
+      "light": "#f1f2f3",
+      "dark": "#f1f2f3",
+      "note": "surface-lowered in the light theme"
+    },
+    {
+      "ddd": "--ddd-theme-default-disabled",
+      "tier": "identity",
+      "token": "--wa-color-gray-90",
+      "light": "#e4e5e9",
+      "dark": "#e4e5e9",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-keystoneYellow",
+      "tier": "identity",
+      "token": "--wa-color-yellow-80",
+      "light": "#fac22b",
+      "dark": "#fac22b",
+      "note": "yellow key color"
+    },
+    {
+      "ddd": "--ddd-theme-default-globalNeon",
+      "tier": "identity",
+      "token": "--wa-color-yellow-90",
+      "light": "#ffe495",
+      "dark": "#ffe495",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-roarGolden",
+      "tier": "identity",
+      "token": "--wa-color-yellow-70",
+      "light": "#ef9d00",
+      "dark": "#ef9d00",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-roarLight",
+      "tier": "identity",
+      "token": "--wa-color-yellow-90",
+      "light": "#ffe495",
+      "dark": "#ffe495",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-roarMaxlight",
+      "tier": "identity",
+      "token": "--wa-color-yellow-95",
+      "light": "#fef3cd",
+      "dark": "#fef3cd",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-shrineTan",
+      "tier": "identity",
+      "token": "--wa-color-orange-80",
+      "light": "#ffbb94",
+      "dark": "#ffbb94",
+      "note": "Web Awesome has no tan; light orange keeps the palette distinct"
+    },
+    {
+      "ddd": "--ddd-theme-default-shrineLight",
+      "tier": "identity",
+      "token": "--wa-color-orange-90",
+      "light": "#ffdfca",
+      "dark": "#ffdfca",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-shrineMaxLight",
+      "tier": "identity",
+      "token": "--wa-color-orange-95",
+      "light": "#fff0e6",
+      "dark": "#fff0e6",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-inventOrange",
+      "tier": "identity",
+      "token": "--wa-color-orange-70",
+      "light": "#ff9266",
+      "dark": "#ff9266",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-landgrantBrown",
+      "tier": "identity",
+      "token": "--wa-color-orange-30",
+      "light": "#802700",
+      "dark": "#802700",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-creekTeal",
+      "tier": "identity",
+      "token": "--wa-color-cyan-70",
+      "light": "#2fbedc",
+      "dark": "#2fbedc",
+      "note": "cyan key color; Web Awesome pairs it with dark text, as DDD does"
+    },
+    {
+      "ddd": "--ddd-theme-default-creekLight",
+      "tier": "identity",
+      "token": "--wa-color-cyan-90",
+      "light": "#c5ecf7",
+      "dark": "#c5ecf7",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-creekMaxLight",
+      "tier": "identity",
+      "token": "--wa-color-cyan-95",
+      "light": "#e3f6fb",
+      "dark": "#e3f6fb",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-opportunityGreen",
+      "tier": "identity",
+      "token": "--wa-color-green-70",
+      "light": "#5dc36f",
+      "dark": "#5dc36f",
+      "note": "correct signal (light); a light green so DDD's dark text on it passes"
+    },
+    {
+      "ddd": "--ddd-theme-default-forestGreen",
+      "tier": "identity",
+      "token": "--wa-color-green-30",
+      "light": "#0a5027",
+      "dark": "#0a5027",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-futureLime",
+      "tier": "identity",
+      "token": "--wa-color-green-80",
+      "light": "#93da98",
+      "dark": "#93da98",
+      "note": "correct signal (dark)"
+    },
+    {
+      "ddd": "--ddd-theme-default-athertonViolet",
+      "tier": "identity",
+      "token": "--wa-color-purple-80",
+      "light": "#ddbdff",
+      "dark": "#ddbdff",
+      "note": "incorrect signal (dark)"
+    },
+    {
+      "ddd": "--ddd-theme-default-wonderPurple",
+      "tier": "identity",
+      "token": "--wa-color-purple-40",
+      "light": "#7936b3",
+      "dark": "#7936b3",
+      "note": "incorrect signal (light); keeps HAX purple-for-incorrect"
+    },
+    {
+      "ddd": "--ddd-theme-default-original87Pink",
+      "tier": "identity",
+      "token": "--wa-color-pink-40",
+      "light": "#9e2a6c",
+      "dark": "#9e2a6c",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-discoveryCoral",
+      "tier": "identity",
+      "token": "--wa-color-red-70",
+      "light": "#fd8f90",
+      "dark": "#fd8f90",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-link",
+      "tier": "identity",
+      "token": "--wa-color-blue-40",
+      "light": "#0053c0",
+      "dark": "#0053c0",
+      "note": "text-link in the light theme (brand-40)"
+    },
+    {
+      "ddd": "--ddd-theme-default-linkLight",
+      "tier": "identity",
+      "token": "--wa-color-blue-70",
+      "light": "#6eb3ff",
+      "dark": "#6eb3ff",
+      "note": "text-link in the dark theme (brand-70)"
+    },
+    {
+      "ddd": "--ddd-theme-default-error",
+      "tier": "identity",
+      "token": "--wa-color-red-40",
+      "light": "#b30532",
+      "dark": "#b30532",
+      "note": "danger-on-quiet"
+    },
+    {
+      "ddd": "--ddd-theme-default-errorLight",
+      "tier": "identity",
+      "token": "--wa-color-red-95",
+      "light": "#fff0ef",
+      "dark": "#fff0ef",
+      "note": "danger-fill-quiet"
+    },
+    {
+      "ddd": "--ddd-theme-default-warning",
+      "tier": "identity",
+      "token": "--wa-color-yellow-40",
+      "light": "#8c4602",
+      "dark": "#8c4602",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-warningLight",
+      "tier": "identity",
+      "token": "--wa-color-yellow-95",
+      "light": "#fef3cd",
+      "dark": "#fef3cd",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-info",
+      "tier": "identity",
+      "token": "--wa-color-blue-40",
+      "light": "#0053c0",
+      "dark": "#0053c0",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-infoLight",
+      "tier": "identity",
+      "token": "--wa-color-blue-95",
+      "light": "#e8f3ff",
+      "dark": "#e8f3ff",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-success",
+      "tier": "identity",
+      "token": "--wa-color-green-40",
+      "light": "#036730",
+      "dark": "#036730",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-successLight",
+      "tier": "identity",
+      "token": "--wa-color-green-95",
+      "light": "#e3f9e3",
+      "dark": "#e3f9e3",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-alertImmediate",
+      "tier": "identity",
+      "token": "--wa-color-red-90",
+      "light": "#ffdedc",
+      "dark": "#ffdedc",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-alertUrgent",
+      "tier": "identity",
+      "token": "--wa-color-yellow-90",
+      "light": "#ffe495",
+      "dark": "#ffe495",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-alertAllClear",
+      "tier": "identity",
+      "token": "--wa-color-green-90",
+      "light": "#c2f2c1",
+      "dark": "#c2f2c1",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-alertNonEmergency",
+      "tier": "identity",
+      "token": "--wa-color-blue-90",
+      "light": "#d1e8ff",
+      "dark": "#d1e8ff",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-font-primary",
+      "tier": "identity",
+      "token": "--wa-font-family-body",
+      "light": "ui-sans-serif, system-ui, sans-serif",
+      "dark": "ui-sans-serif, system-ui, sans-serif",
+      "note": "system UI stack; the default theme loads no web font"
+    },
+    {
+      "ddd": "--ddd-font-secondary",
+      "tier": "identity",
+      "token": "--wa-font-family-heading",
+      "light": "ui-sans-serif, system-ui, sans-serif",
+      "dark": "ui-sans-serif, system-ui, sans-serif",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-font-heading",
+      "tier": "identity",
+      "token": "--wa-font-family-heading",
+      "light": "ui-sans-serif, system-ui, sans-serif",
+      "dark": "ui-sans-serif, system-ui, sans-serif",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-font-navigation",
+      "tier": "identity",
+      "token": "--wa-font-family-body",
+      "light": "ui-sans-serif, system-ui, sans-serif",
+      "dark": "ui-sans-serif, system-ui, sans-serif",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-font-mono",
+      "tier": "identity",
+      "token": "--wa-font-family-code",
+      "light": "ui-monospace, monospace",
+      "dark": "ui-monospace, monospace",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-font-weight-light",
+      "tier": "identity",
+      "token": "--wa-font-weight-light",
+      "light": "300",
+      "dark": "300",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-font-weight-regular",
+      "tier": "identity",
+      "token": "--wa-font-weight-normal",
+      "light": "400",
+      "dark": "400",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-font-weight-medium",
+      "tier": "identity",
+      "token": "--wa-font-weight-semibold",
+      "light": "500",
+      "dark": "500",
+      "note": "Web Awesome semibold is 500"
+    },
+    {
+      "ddd": "--ddd-font-weight-bold",
+      "tier": "identity",
+      "token": "--wa-font-weight-bold",
+      "light": "600",
+      "dark": "600",
+      "note": "Web Awesome bold is 600, its heading weight"
+    },
+    {
+      "ddd": "--ddd-radius-xs",
+      "tier": "identity",
+      "token": "--wa-border-radius-s",
+      "light": "calc(1 * 0.1875rem)",
+      "dark": "calc(1 * 0.1875rem)",
+      "note": "3px"
+    },
+    {
+      "ddd": "--ddd-radius-sm",
+      "tier": "identity",
+      "token": "--wa-border-radius-s",
+      "light": "calc(1 * 0.1875rem)",
+      "dark": "calc(1 * 0.1875rem)",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-radius-md",
+      "tier": "identity",
+      "token": "--wa-border-radius-m",
+      "light": "calc(1 * 0.375rem)",
+      "dark": "calc(1 * 0.375rem)",
+      "note": "6px, form controls"
+    },
+    {
+      "ddd": "--ddd-radius-lg",
+      "tier": "identity",
+      "token": "--wa-border-radius-l",
+      "light": "calc(1 * 0.75rem)",
+      "dark": "calc(1 * 0.75rem)",
+      "note": "12px, panels and cards"
+    },
+    {
+      "ddd": "--ddd-radius-xl",
+      "tier": "identity",
+      "token": "--wa-border-radius-l",
+      "light": "calc(1 * 0.75rem)",
+      "dark": "calc(1 * 0.75rem)",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-boxShadow-sm",
+      "tier": "identity",
+      "token": "--wa-shadow-s",
+      "light": "calc(0 * 0.125rem) calc(1 * 0.125rem) calc(1 * 0.125rem) calc(-0.5 * 0.125rem) color-mix( in oklab, #101219 calc(1 * 4% + 8%), transparent )",
+      "dark": "calc(0 * 0.125rem) calc(1 * 0.125rem) calc(1 * 0.125rem) calc(-0.5 * 0.125rem) color-mix( in oklab, color-mix(in oklab, #101219, black 20%) calc(1 * 32% + 40%), transparent )",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-boxShadow-md",
+      "tier": "identity",
+      "token": "--wa-shadow-m",
+      "light": "calc(0 * 0.25rem) calc(1 * 0.25rem) calc(1 * 0.25rem) calc(-0.5 * 0.25rem) color-mix( in oklab, #101219 calc(1 * 4% + 8%), transparent )",
+      "dark": "calc(0 * 0.25rem) calc(1 * 0.25rem) calc(1 * 0.25rem) calc(-0.5 * 0.25rem) color-mix( in oklab, color-mix(in oklab, #101219, black 20%) calc(1 * 32% + 40%), transparent )",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-boxShadow-lg",
+      "tier": "identity",
+      "token": "--wa-shadow-l",
+      "light": "calc(0 * 0.5rem) calc(1 * 0.5rem) calc(1 * 0.5rem) calc(-0.5 * 0.5rem) color-mix( in oklab, #101219 calc(1 * 4% + 8%), transparent )",
+      "dark": "calc(0 * 0.5rem) calc(1 * 0.5rem) calc(1 * 0.5rem) calc(-0.5 * 0.5rem) color-mix( in oklab, color-mix(in oklab, #101219, black 20%) calc(1 * 32% + 40%), transparent )",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-boxShadow-xl",
+      "tier": "identity",
+      "token": "--wa-shadow-l",
+      "light": "calc(0 * 0.5rem) calc(1 * 0.5rem) calc(1 * 0.5rem) calc(-0.5 * 0.5rem) color-mix( in oklab, #101219 calc(1 * 4% + 8%), transparent )",
+      "dark": "calc(0 * 0.5rem) calc(1 * 0.5rem) calc(1 * 0.5rem) calc(-0.5 * 0.5rem) color-mix( in oklab, color-mix(in oklab, #101219, black 20%) calc(1 * 32% + 40%), transparent )",
+      "note": "Web Awesome has three shadows"
+    },
+    {
+      "ddd": "--ddd-focus-ring",
+      "tier": "identity",
+      "token": "--wa-focus-ring",
+      "light": "solid 0.1875rem #3e96ff",
+      "dark": "solid 0.1875rem #3e96ff",
+      "note": "3px solid brand-60"
+    },
+    {
+      "ddd": "--ddd-focus-offset",
+      "tier": "identity",
+      "token": "--wa-focus-ring-offset",
+      "light": "0.0625rem",
+      "dark": "0.0625rem",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-duration-fast",
+      "tier": "feel",
+      "token": "--wa-transition-fast",
+      "light": "75ms",
+      "dark": "75ms",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-duration-normal",
+      "tier": "feel",
+      "token": "--wa-transition-normal",
+      "light": "150ms",
+      "dark": "150ms",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-duration-slow",
+      "tier": "feel",
+      "token": "--wa-transition-slow",
+      "light": "300ms",
+      "dark": "300ms",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-timing-ease",
+      "tier": "feel",
+      "token": "--wa-transition-easing",
+      "light": "ease",
+      "dark": "ease",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-border-size-xs",
+      "tier": "feel",
+      "token": "--wa-border-width-s",
+      "light": "calc(1 * 0.0625rem)",
+      "dark": "calc(1 * 0.0625rem)",
+      "note": "1px"
+    },
+    {
+      "ddd": "--ddd-border-size-sm",
+      "tier": "feel",
+      "token": "--wa-border-width-m",
+      "light": "calc(1 * 0.125rem)",
+      "dark": "calc(1 * 0.125rem)",
+      "note": "2px"
+    },
+    {
+      "ddd": "--ddd-border-size-md",
+      "tier": "feel",
+      "token": "--wa-border-width-l",
+      "light": "calc(1 * 0.1875rem)",
+      "dark": "calc(1 * 0.1875rem)",
+      "note": "3px"
+    },
+    {
+      "ddd": "--ddd-surface-padding",
+      "tier": "semantic",
+      "token": "--wa-space-l",
+      "light": "calc(1 * 1.5rem)",
+      "dark": "calc(1 * 1.5rem)",
+      "note": "card and panel spacing, 24px"
+    },
+    {
+      "ddd": "--ddd-surface-padding-lg",
+      "tier": "semantic",
+      "token": "--wa-space-xl",
+      "light": "calc(1 * 2rem)",
+      "dark": "calc(1 * 2rem)",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-stack-gap",
+      "tier": "semantic",
+      "token": "--wa-content-spacing",
+      "light": "calc(1 * 1.5rem)",
+      "dark": "calc(1 * 1.5rem)",
+      "note": "space between blocks in Web Awesome's native styles"
+    },
+    {
+      "ddd": "--ddd-inline-gap",
+      "tier": "semantic",
+      "token": "--wa-space-xs",
+      "light": "calc(1 * 0.5rem)",
+      "dark": "calc(1 * 0.5rem)",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-control-padding-inline",
+      "tier": "semantic",
+      "token": "--wa-space-m",
+      "light": "calc(1 * 1rem)",
+      "dark": "calc(1 * 1rem)",
+      "note": "form-control-padding-inline is 1em; space-m is the same 16px at body size"
+    }
+  ]
+}
