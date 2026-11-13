@@ -107,7 +107,7 @@
       "rows": [
         {
           "name": "term",
-          "desc": "Term"
+          "desc": "The word or phrase readers clic…"
         },
         {
           "name": "information",
@@ -168,7 +168,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "links=\"Links\""
+      "s": "links=\"[...this.links]\""
     },
     {
       "type": "text",
@@ -289,7 +289,7 @@
       "ex": 796,
       "ey": 430,
       "label": "links",
-      "sub": "\"Links\"",
+      "sub": "\"[...this.links]\"",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -305,13 +305,13 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set term and definition",
-      "text": "Fill in the Term field in the sidebar."
+      "title": "Set term",
+      "text": "The word or phrase readers click to see its definition."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set popover and links",
+      "title": "Set popover",
       "text": "Display the definition in a popover instead of inline."
     },
     {

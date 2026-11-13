@@ -27,7 +27,7 @@
       "property": "contenteditable",
       "type": "string",
       "default": "",
-      "description": "Maps to editing attribute",
+      "description": "Whether the region is being edited now; focusing the editor sets it to true.",
       "hax": null
     },
     {
@@ -35,7 +35,7 @@
       "property": "disabled",
       "type": "boolean",
       "default": "false",
-      "description": "don't reveal toolbar on mouseover",
+      "description": "Keep the content read-only: focusing it does not start editing.",
       "hax": null
     },
     {
@@ -43,7 +43,7 @@
       "property": "disableHover",
       "type": "boolean",
       "default": "",
-      "description": "don't reveal toolbar on mouseover",
+      "description": "Do not reveal the toolbar when the pointer moves over the editor.",
       "hax": null
     },
     {
@@ -59,7 +59,7 @@
       "property": "toolbarId",
       "type": "string",
       "default": "\"\"",
-      "description": "id for toolbar",
+      "description": "Id of the rich-text-editor-toolbar this editor uses.",
       "hax": null
     },
     {
@@ -75,7 +75,7 @@
       "property": "rawhtml",
       "type": "string",
       "default": "",
-      "description": "raw html",
+      "description": "HTML to load into the editor in place of its content.",
       "hax": null
     },
     {
@@ -83,7 +83,7 @@
       "property": "type",
       "type": "string",
       "default": "\"rich-text-editor-toolbar\"",
-      "description": "type of editor toolbar, i.e. full - full for full toolbar with breadcrumb, mini - mini for mini floating toolbar, or default toolbar if neither.",
+      "description": "Toolbar to use: full (with breadcrumbs), mini (floating) or the default.",
       "hax": null
     },
     {

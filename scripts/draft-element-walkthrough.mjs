@@ -92,13 +92,41 @@ export function kindOf(d) {
 }
 
 /* ---------------------------------------------------------- settings to show */
-function settingsOf(d) {
+/** the choices of a select setting, by label, leaving out the empty "none" key */
+function optionLabels(options) {
+  if (!options || typeof options !== "object") return [];
+  return Object.keys(options)
+    .filter((k) => k !== "")
+    .map((k) => (typeof options[k] === "string" && options[k].trim() ? options[k].trim() : k));
+}
+
+/**
+ * descriptions shared by three or more attributes or settings of one element
+ * are copy-paste leftovers ("Whether toggle is disabled" on four different
+ * properties), not a description of any one of them
+ */
+function sharedDescriptions(list) {
+  const count = new Map();
+  for (const x of list) {
+    const k = String((x && x.description) || "")
+      .replace(/\s+/g, " ")
+      .trim()
+      .toLowerCase();
+    if (k) count.set(k, (count.get(k) || 0) + 1);
+  }
+  // two matching fields (top and bottom image alt text) are often a real
+  // pair; three or more is the copy-paste pattern
+  return new Set([...count].filter(([, n]) => n > 2).map(([k]) => k));
+}
+
+export function settingsOf(d) {
   const s = (d.hax && d.hax.settings) || {};
   const demo = (d.hax.demoSchema && d.hax.demoSchema[0]) || {};
   const props = demo.properties || {};
   const pool = [...(s.configure || []), ...(s.advanced || [])].filter(
     (x) => (x.property || x.attribute || x.slot !== undefined) && x.inputMethod !== "code-editor",
   );
+  const shared = sharedDescriptions(pool);
   const seen = new Set();
   const rows = [];
   for (const x of pool) {
@@ -120,9 +148,10 @@ function settingsOf(d) {
       attr: isSlot ? null : (attrRec && attrRec.name) || x.attribute || kebab(x.property),
       slot: isSlot ? x.slot || "" : null,
       title: x.title || name,
-      desc: x.description || "",
+      desc: shared.has(String(x.description || "").replace(/\s+/g, " ").trim().toLowerCase()) ? "" : x.description || "",
       input: x.inputMethod || "textfield",
-      options: x.options && typeof x.options === "object" ? Object.keys(x.options) : [],
+      options: optionLabels(x.options),
+      optionValues: x.options && typeof x.options === "object" ? Object.keys(x.options).filter((k) => k !== "") : [],
       value,
       fromDemo: props[x.property || x.attribute] !== undefined,
     });
@@ -130,6 +159,7 @@ function settingsOf(d) {
   // prefer settings the demo actually uses, then text and select inputs
   const rank = (r) =>
     (r.fromDemo ? 0 : 4) +
+    (goodDesc(r) || (r.input === "select" && r.options.length) ? 0 : 3) +
     (r.input === "select" ? 0 : r.input === "boolean" ? 2 : r.input === "haxupload" ? 1 : 1) +
     (r.slot !== null ? 1 : 0);
   return rows
@@ -145,21 +175,80 @@ function settingsOf(d) {
 const PLUMBING = /^(typeof|property|resource|prefix|vocab|about|schema-.*|dir|lang|role|tabindex|hidden|id|class|style|slot|aria-.*|data-.*|t|disabled-.*|editing|edit-mode|_.*)$/;
 const humanize = (name) => String(name).replace(/[-_]+/g, " ").trim();
 
-function attributesOf(d) {
+// attributes that report what the element is doing right now (open, focused,
+// mid-drag, recording) rather than something an author sets
+const STATE = /^(opened|expanded|collapsed-state|focused|focus|hovered|hover|active|dragging|recording|playing|paused|loading|loaded|selected|current-item|currentitem|immediate-value|is-.*|has-.*|.*-state)$/i;
+
+/** attributes set on the tag in the element's demo markup, with their values */
+function demoAttributes(d) {
+  // HAX elements carry demo markup in their docs; for the rest read the
+  // element's own demo page
+  let html = String(d.demoHtml || "");
+  if (!html) {
+    try {
+      html = fs.readFileSync(path.join(ELEMENTS, d.folder || d.tag, "demo", "index.html"), "utf8");
+    } catch {
+      html = "";
+    }
+  }
+  const out = new Map();
+  // the first opening tag for this element, found without building a
+  // pattern from the tag name
+  const lower = html.toLowerCase();
+  const open = `<${String(d.tag).toLowerCase()}`;
+  let at = lower.indexOf(open);
+  while (at !== -1 && !/[\s>/]/.test(lower.charAt(at + open.length))) {
+    at = lower.indexOf(open, at + 1);
+  }
+  if (at === -1) return out;
+  const close = html.indexOf(">", at);
+  if (close === -1) return out;
+  const attrs = html.slice(at + open.length, close);
+  const re = /([:@.\w-]+)(?:\s*=\s*("([^"]*)"|'([^']*)'|[^\s>]+))?/g;
+  let a;
+  while ((a = re.exec(attrs))) {
+    const v = a[3] !== undefined ? a[3] : a[4] !== undefined ? a[4] : a[2];
+    out.set(a[1].toLowerCase(), v === undefined ? true : v);
+  }
+  return out;
+}
+
+export function attributesOf(d) {
+  const used = demoAttributes(d);
+  const shared = sharedDescriptions(d.attributes);
+  const inDemo = (a) => used.has(String(a.name).toLowerCase());
+  const plain = (a) => !/\b(array|object|function|map|set)\b/i.test(String(a.type || ""));
   return d.attributes
     .filter((a) => !PLUMBING.test(a.name))
-    .sort((x, y) => (y.description ? 1 : 0) - (x.description ? 1 : 0))
-    .slice(0, 4)
     .map((a) => ({
-      name: a.name,
-      attr: a.name,
-      slot: null,
-      title: humanize(a.name),
-      desc: a.description,
-      input: /boolean/.test(a.type) ? "boolean" : /number/.test(a.type) ? "number" : "textfield",
-      options: [],
-      value: a.default ? String(a.default).replace(/^["'`]|["'`]$/g, "") : undefined,
-    }));
+      a,
+      desc: shared.has(String(a.description || "").replace(/\s+/g, " ").trim().toLowerCase()) ? "" : a.description || "",
+    }))
+    // what an author sets: used in the demo, or a plain described value that
+    // is not live state
+    // deprecated attributes are kept for old content, not taught
+    .filter(({ a }) => !/\bdeprecated\b/i.test(String(a.description || "")))
+    .filter(({ a, desc }) => inDemo(a) || (desc && plain(a) && !STATE.test(a.name)))
+    .sort((x, y) => (inDemo(y.a) ? 1 : 0) - (inDemo(x.a) ? 1 : 0))
+    .slice(0, 4)
+    .map(({ a, desc }) => {
+      const demoValue = used.get(String(a.name).toLowerCase());
+      return {
+        name: a.name,
+        attr: a.name,
+        slot: null,
+        title: humanize(a.name),
+        desc,
+        input: /boolean/.test(a.type) ? "boolean" : /number/.test(a.type) ? "number" : "textfield",
+        options: [],
+        value:
+          demoValue !== undefined
+            ? demoValue
+            : a.default
+              ? String(a.default).replace(/^["'`]|["'`]$/g, "")
+              : undefined,
+      };
+    });
 }
 
 /** a short noun for a setting, for beat titles */
@@ -177,33 +266,76 @@ const fieldLabel = (r) => {
 };
 
 /** whether a setting has a description worth showing as is */
-function goodDesc(r) {
-  const d = (r.desc || "").replace(/\s+/g, " ").trim();
-  return d.length > 14 && d.length <= 78 && !/\?$/.test(d) && /[a-z]/.test(d) && !/^(todo|@|https?:)/i.test(d);
+function descText(r) {
+  // "Optional." on its own says nothing about what the setting does
+  const d = (r.desc || "")
+    .replace(/\s+/g, " ")
+    .trim()
+    .replace(/^optional[.:,]?\s+/i, "")
+    // asides in brackets ("(used for full screen)") are detail, not meaning
+    .replace(/\s*\([^)]*\)/g, "");
+  // the first sentence carries the meaning; later ones are usually detail.
+  // A sentence ends at . or ! before a capital letter (or a code block), so
+  // "i.e." and "e.g." do not cut one short
+  const first = d.match(/^.*?[.!](?=\s+[A-Z"'(]|`|$)/);
+  return (first && first[0].trim().length > 14 ? first[0] : d).trim();
+}
+const squash = (s) => String(s || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+export function goodDesc(r) {
+  const d = descText(r);
+  return (
+    d.length > 14 &&
+    d.length <= 78 &&
+    !/\?$/.test(d) &&
+    /[a-z]/.test(d) &&
+    !/^(todo|@|https?:)/i.test(d) &&
+    // "Title" or "Label of the label" says nothing the field name does not
+    squash(d).replace(/^(the|a|an)/, "") !== squash(r.title) &&
+    squash(d) !== squash(r.attr || r.name)
+  );
 }
 
 /** one sentence about what a setting does */
-function captionFor(r, hax) {
-  const name = r.attr || r.name;
-  if (goodDesc(r)) return sentence(r.desc.replace(/\s+/g, " ").trim().replace(/\.?$/, "."));
-  if (r.input === "boolean")
-    return hax ? `Switch ${fieldLabel(r)} on or off in the sidebar.` : `Add the ${name} attribute to switch it on.`;
-  if (r.input === "select" && r.options.length) return clip(`Choose ${r.options.slice(0, 3).join(", ")}${r.options.length > 3 ? " and more" : ""} for ${fieldLabel(r)}.`, 80);
+/**
+ * one sentence about what a setting does, or null when the element gives
+ * nothing to say beyond the setting's name ("Fill in the Title field" only
+ * repeats what the panel already shows)
+ */
+function captionFor(r) {
+  if (goodDesc(r)) return sentence(descText(r).replace(/[.!]?$/, "."));
+  if (r.input === "select" && r.options.length > 1) {
+    const opts = r.options.slice(0, 3).map((o) => clip(o, 18));
+    const list = opts.length > 2 ? `${opts.slice(0, -1).join(", ")} or ${opts[opts.length - 1]}` : opts.join(" or ");
+    return clip(`${fieldLabel(r)}: ${list}${r.options.length > 3 ? ", and more" : ""}.`, 80);
+  }
   if (r.input === "haxupload") return `Upload a file or paste a link for ${fieldLabel(r)}.`;
-  if (r.input === "colorpicker") return `Pick a color for ${fieldLabel(r)}.`;
   if (r.slot !== null) return `${fieldLabel(r)} goes inside the tag as content.`;
-  return hax ? `Fill in the ${fieldLabel(r)} field in the sidebar.` : `Add ${/^[aeiou]/i.test(name) ? "an" : "a"} ${name} attribute to the tag.`;
+  return null;
 }
 
-/** two settings in one sentence when neither has its own description */
-function captionForPair(a, b, hax) {
-  const plain = (r) => !goodDesc(r) && r.slot === null && !["boolean", "select", "haxupload", "colorpicker"].includes(r.input);
-  if (plain(a) && plain(b)) {
-    return hax
-      ? `Fill in the ${fieldLabel(a)} and ${fieldLabel(b)} fields in the sidebar.`
-      : `Add ${a.attr || a.name} and ${b.attr || b.name} attributes to the tag.`;
+/**
+ * the sentence for a beat that shows one or two settings, and the settings it
+ * actually talks about (so the beat title names only those)
+ */
+function captionForBeat(rs, hax) {
+  // keep every sentence that fits; a beat never ends mid-sentence
+  let text = "";
+  const covered = [];
+  for (const r of rs) {
+    const c = captionFor(r);
+    if (!c) continue;
+    const next = text ? `${text} ${c}` : c;
+    if (next.length <= 80) {
+      text = next;
+      covered.push(r);
+    }
   }
-  return `${captionFor(a, hax)} ${captionFor(b, hax)}`;
+  if (text) return { text, covered };
+  const labels = rs.map((r) => (hax ? fieldLabel(r) : r.attr || r.name));
+  return {
+    text: clip(`Set ${labels.join(" and ")} ${hax ? "in the HAX sidebar" : "on the tag"}.`, 80),
+    covered: rs,
+  };
 }
 
 function exampleValue(r) {
@@ -213,7 +345,7 @@ function exampleValue(r) {
     return String(r.value);
   }
   if (r.input === "boolean") return true;
-  if (r.input === "select" && r.options.length) return r.options[0];
+  if (r.input === "select" && r.optionValues && r.optionValues.length) return r.optionValues[0];
   if (r.input === "number" || r.input === "slider") return "3";
   if (r.input === "colorpicker") return "blue";
   if (r.input === "haxupload") return "photo.jpg";
@@ -495,15 +627,11 @@ export function draftWalkthrough(d) {
   const pair = (a, b) => {
     const rs = rows.slice(a, b);
     if (!rs.length) return null;
-    const names = rs.map(shortName);
+    const { text, covered } = captionForBeat(rs, hax);
+    const names = covered.map(shortName);
     const both = `Set ${names.join(" and ")}`;
     const title = both.length <= 30 ? both : clip(`Set ${names[0]}`, 30);
-    let text = captionFor(rs[0], hax);
-    if (rs[1]) {
-      const more = captionForPair(rs[0], rs[1], hax);
-      if (more.length <= 80) text = more;
-    }
-    return { title, text: clip(text, 80) };
+    return { title, text };
   };
   const beats = [];
   beats.push(

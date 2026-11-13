@@ -95,7 +95,7 @@
               "type": {
                 "text": "null"
               },
-              "description": "Original Source of the work in question",
+              "description": "Address of the original work this content comes from.",
               "default": "null",
               "attribute": "source"
             },
@@ -155,7 +155,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "License short hand. Options cc0,",
+              "description": "License short name such as by, by-sa, by-nc or cc0; sets the link and\nicon.",
               "attribute": "license"
             },
             {
@@ -211,7 +211,7 @@
               "type": {
                 "text": "null"
               },
-              "description": "Original Source of the work in question",
+              "description": "Address of the original work this content comes from.",
               "default": "null",
               "fieldName": "source"
             },
@@ -243,7 +243,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "License short hand. Options cc0,",
+              "description": "License short name such as by, by-sa, by-nc or cc0; sets the link and\nicon.",
               "fieldName": "license"
             },
             {

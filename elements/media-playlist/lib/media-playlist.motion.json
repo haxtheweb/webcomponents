@@ -321,7 +321,7 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set active index and course",
-      "text": "Index of the active item to start on."
+      "text": "Index of the active item to start on. The Course this playlist is meant for."
     },
     {
       "t": 14.8,

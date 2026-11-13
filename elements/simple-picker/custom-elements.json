@@ -330,6 +330,16 @@
             },
             {
               "kind": "method",
+              "name": "_cancelListbox",
+              "description": "closes the listbox without changing the value: the active option goes\nback to the selected one (so the list reopens on it) and focus returns\nto the listbox",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
               "name": "setOptions",
               "parameters": [
                 {
@@ -354,7 +364,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "allow a null value?\nDefault behavior/false will select first option and set value accordingly.",
+              "description": "Allow no selection; otherwise the first option is selected.",
               "default": "false",
               "attribute": "allow-null",
               "reflects": true
@@ -366,7 +376,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Align right edges of listbox and button?\nDefault behavior/false aligns to left edges.",
+              "description": "Align the right edges of the list and button instead of the left.",
               "default": "false",
               "attribute": "align-right",
               "reflects": true
@@ -389,7 +399,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Position label above select dropdown?",
+              "description": "Put the label above the dropdown instead of beside it.",
               "default": "false",
               "attribute": "block-label",
               "reflects": true
@@ -631,7 +641,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "allow a null value?\nDefault behavior/false will select first option and set value accordingly.",
+              "description": "Allow no selection; otherwise the first option is selected.",
               "default": "false",
               "fieldName": "allowNull"
             },
@@ -640,7 +650,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Align right edges of listbox and button?\nDefault behavior/false aligns to left edges.",
+              "description": "Align the right edges of the list and button instead of the left.",
               "default": "false",
               "fieldName": "alignRight"
             },
@@ -658,7 +668,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Position label above select dropdown?",
+              "description": "Put the label above the dropdown instead of beside it.",
               "default": "false",
               "fieldName": "blockLabel"
             },
@@ -814,7 +824,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "allow a null value?\nDefault behavior/false will select first option and set value accordingly.",
+              "description": "Allow no selection; otherwise the first option is selected.",
               "default": "false",
               "fieldName": "allowNull",
               "inheritedFrom": {
@@ -827,7 +837,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Align right edges of listbox and button?\nDefault behavior/false aligns to left edges.",
+              "description": "Align the right edges of the list and button instead of the left.",
               "default": "false",
               "fieldName": "alignRight",
               "inheritedFrom": {
@@ -853,7 +863,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Position label above select dropdown?",
+              "description": "Put the label above the dropdown instead of beside it.",
               "default": "false",
               "fieldName": "blockLabel",
               "inheritedFrom": {
@@ -1441,6 +1451,20 @@
             },
             {
               "kind": "method",
+              "name": "_cancelListbox",
+              "description": "closes the listbox without changing the value: the active option goes\nback to the selected one (so the list reopens on it) and focus returns\nto the listbox",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimplePickerBehaviors",
+                "module": "simple-picker.js"
+              }
+            },
+            {
+              "kind": "method",
               "name": "setOptions",
               "parameters": [
                 {
@@ -1469,7 +1493,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "allow a null value?\nDefault behavior/false will select first option and set value accordingly.",
+              "description": "Allow no selection; otherwise the first option is selected.",
               "default": "false",
               "attribute": "allow-null",
               "reflects": true,
@@ -1485,7 +1509,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Align right edges of listbox and button?\nDefault behavior/false aligns to left edges.",
+              "description": "Align the right edges of the list and button instead of the left.",
               "default": "false",
               "attribute": "align-right",
               "reflects": true,
@@ -1516,7 +1540,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Position label above select dropdown?",
+              "description": "Put the label above the dropdown instead of beside it.",
               "default": "false",
               "attribute": "block-label",
               "reflects": true,
@@ -2380,6 +2404,20 @@
             },
             {
               "kind": "method",
+              "name": "_cancelListbox",
+              "description": "closes the listbox without changing the value: the active option goes\nback to the selected one (so the list reopens on it) and focus returns\nto the listbox",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimplePickerBehaviors",
+                "module": "simple-picker.js"
+              }
+            },
+            {
+              "kind": "method",
               "name": "setOptions",
               "parameters": [
                 {
@@ -2408,7 +2446,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "allow a null value?\nDefault behavior/false will select first option and set value accordingly.",
+              "description": "Allow no selection; otherwise the first option is selected.",
               "default": "false",
               "attribute": "allow-null",
               "reflects": true,
@@ -2424,7 +2462,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Align right edges of listbox and button?\nDefault behavior/false aligns to left edges.",
+              "description": "Align the right edges of the list and button instead of the left.",
               "default": "false",
               "attribute": "align-right",
               "reflects": true,
@@ -2455,7 +2493,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Position label above select dropdown?",
+              "description": "Put the label above the dropdown instead of beside it.",
               "default": "false",
               "attribute": "block-label",
               "reflects": true,
@@ -2676,7 +2714,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "allow a null value?\nDefault behavior/false will select first option and set value accordingly.",
+              "description": "Allow no selection; otherwise the first option is selected.",
               "default": "false",
               "fieldName": "allowNull",
               "inheritedFrom": {
@@ -2689,7 +2727,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Align right edges of listbox and button?\nDefault behavior/false aligns to left edges.",
+              "description": "Align the right edges of the list and button instead of the left.",
               "default": "false",
               "fieldName": "alignRight",
               "inheritedFrom": {
@@ -2715,7 +2753,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Position label above select dropdown?",
+              "description": "Put the label above the dropdown instead of beside it.",
               "default": "false",
               "fieldName": "blockLabel",
               "inheritedFrom": {
@@ -3809,6 +3847,20 @@
             },
             {
               "kind": "method",
+              "name": "_cancelListbox",
+              "description": "closes the listbox without changing the value: the active option goes\nback to the selected one (so the list reopens on it) and focus returns\nto the listbox",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimplePickerBehaviors",
+                "module": "simple-picker.js"
+              }
+            },
+            {
+              "kind": "method",
               "name": "setOptions",
               "parameters": [
                 {
@@ -3837,7 +3889,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "allow a null value?\nDefault behavior/false will select first option and set value accordingly.",
+              "description": "Allow no selection; otherwise the first option is selected.",
               "default": "false",
               "attribute": "allow-null",
               "reflects": true,
@@ -3853,7 +3905,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Align right edges of listbox and button?\nDefault behavior/false aligns to left edges.",
+              "description": "Align the right edges of the list and button instead of the left.",
               "default": "false",
               "attribute": "align-right",
               "reflects": true,
@@ -3884,7 +3936,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Position label above select dropdown?",
+              "description": "Put the label above the dropdown instead of beside it.",
               "default": "false",
               "attribute": "block-label",
               "reflects": true,
@@ -4105,7 +4157,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "allow a null value?\nDefault behavior/false will select first option and set value accordingly.",
+              "description": "Allow no selection; otherwise the first option is selected.",
               "default": "false",
               "fieldName": "allowNull",
               "inheritedFrom": {
@@ -4118,7 +4170,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Align right edges of listbox and button?\nDefault behavior/false aligns to left edges.",
+              "description": "Align the right edges of the list and button instead of the left.",
               "default": "false",
               "fieldName": "alignRight",
               "inheritedFrom": {
@@ -4144,7 +4196,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Position label above select dropdown?",
+              "description": "Put the label above the dropdown instead of beside it.",
               "default": "false",
               "fieldName": "blockLabel",
               "inheritedFrom": {

@@ -351,7 +351,7 @@
       "ex": 616,
       "ey": 540,
       "label": "toolbar",
-      "sub": "top · bottom · hidden",
+      "sub": "Top · Bottom · Hidden",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -363,7 +363,7 @@
       "ex": 796,
       "ey": 540,
       "label": "device",
-      "sub": "desktop · tablet · phone",
+      "sub": "Desktop · Tablet · Phone",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001

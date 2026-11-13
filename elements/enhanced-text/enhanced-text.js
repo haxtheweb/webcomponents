@@ -173,6 +173,9 @@ class EnhancedText extends LitElement {
 
   static get properties() {
     return {
+      /**
+       * Also link terms that are found to their Wikipedia articles.
+       */
       wikipedia: {
         type: Boolean,
         reflect: true,
@@ -185,6 +188,9 @@ class EnhancedText extends LitElement {
         type: Number,
         attribute: "fixation-point",
       },
+      /**
+       * Wrap terms from the HAXcms site glossary in vocab-term definitions.
+       */
       haxcmsGlossary: {
         type: Boolean,
         attribute: "haxcms-glossary",
@@ -197,6 +203,9 @@ class EnhancedText extends LitElement {
         type: Object,
         attribute: "haxcms-site",
       },
+      /**
+       * Mark every match of a glossary term, not only the first one.
+       */
       haxcmsMarkAll: {
         type: Boolean,
         attribute: "haxcms-mark-all",
@@ -205,6 +214,10 @@ class EnhancedText extends LitElement {
         type: Boolean,
         reflect: true,
       },
+      /**
+       * Enhance the text as soon as the element loads, without calling
+       * enhance().
+       */
       auto: {
         type: Boolean,
         reflect: true,

@@ -261,7 +261,7 @@
       "ex": 616,
       "ey": 434,
       "label": "size",
-      "sub": "tiny · small · medium …",
+      "sub": "Tiny · Small · Medium …",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -273,7 +273,7 @@
       "ex": 796,
       "ey": 434,
       "label": "color",
-      "sub": "· red · blue …",
+      "sub": "Red · Blue · Purple …",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -320,7 +320,7 @@
       "t": 10,
       "out": 14.6,
       "title": "Set custom image",
-      "text": "Optional URL for a custom explosion image."
+      "text": "URL for a custom explosion image. URL for a custom sound effect."
     },
     {
       "t": 14.8,

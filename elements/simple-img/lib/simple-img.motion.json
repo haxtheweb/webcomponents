@@ -117,8 +117,8 @@
           "desc": "Source"
         },
         {
-          "name": "height",
-          "desc": "Optional image height."
+          "name": "alt",
+          "desc": "Alt text"
         }
       ],
       "active": [
@@ -167,7 +167,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "height=\"3\""
+      "s": "alt=\"Alt text\""
     },
     {
       "type": "text",
@@ -252,7 +252,7 @@
       "ex": 616,
       "ey": 540,
       "label": "fetchpriority",
-      "sub": "auto · high · low",
+      "sub": "Automatic · High · Low",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -264,7 +264,7 @@
       "ex": 796,
       "ey": 540,
       "label": "decoding",
-      "sub": "auto · async",
+      "sub": "Automatic · Async",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -287,8 +287,8 @@
       "py": 488,
       "ex": 796,
       "ey": 540,
-      "label": "height",
-      "sub": "a number",
+      "label": "alt",
+      "sub": "\"Alt text\"",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -310,8 +310,8 @@
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set source and height",
-      "text": "Image source URL. Optional image height."
+      "title": "Set source and alt text",
+      "text": "Image source URL. Useful for screen readers and improved SEO."
     },
     {
       "t": 14.8,

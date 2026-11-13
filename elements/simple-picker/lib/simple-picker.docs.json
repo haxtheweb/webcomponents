@@ -19,7 +19,7 @@
       "property": "allowNull",
       "type": "boolean",
       "default": "false",
-      "description": "allow a null value? Default behavior/false will select first option and set value accordingly.",
+      "description": "Allow no selection; otherwise the first option is selected.",
       "hax": null
     },
     {
@@ -27,7 +27,7 @@
       "property": "alignRight",
       "type": "boolean",
       "default": "false",
-      "description": "Align right edges of listbox and button? Default behavior/false aligns to left edges.",
+      "description": "Align the right edges of the list and button instead of the left.",
       "hax": null
     },
     {
@@ -43,7 +43,7 @@
       "property": "blockLabel",
       "type": "boolean",
       "default": "false",
-      "description": "Position label above select dropdown?",
+      "description": "Put the label above the dropdown instead of beside it.",
       "hax": null
     },
     {

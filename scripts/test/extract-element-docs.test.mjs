@@ -182,3 +182,41 @@ test("an apostrophe in a comment does not hide inline haxProperties", () => {
   assert.equal(docs.hax.settings.configure[0].property, "label");
   fs.rmSync(elements, { recursive: true, force: true });
 });
+
+test("the class named for the tag wins over a helper class declared first", () => {
+  const { elements, dir } = probe();
+  // a built manifest where a helper class (no tagName) comes before the
+  // element's own class in the main module, as in license-element
+  const manifest = {
+    schemaVersion: "1.0.0",
+    modules: [
+      {
+        kind: "javascript-module",
+        path: "docs-probe.js",
+        declarations: [
+          { kind: "class", name: "probeHelper", attributes: [] },
+          {
+            kind: "class",
+            name: "DocsProbe",
+            tagName: "docs-probe",
+            attributes: [
+              {
+                name: "label",
+                fieldName: "label",
+                description: "What the probe shows",
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  };
+  fs.writeFileSync(
+    path.join(dir, "custom-elements.json"),
+    JSON.stringify(manifest),
+  );
+  const docs = extractElementDocs("docs-probe", elements);
+  const label = docs.attributes.find((a) => a.property === "label");
+  assert.equal(label.description, "What the probe shows");
+  fs.rmSync(elements, { recursive: true, force: true });
+});

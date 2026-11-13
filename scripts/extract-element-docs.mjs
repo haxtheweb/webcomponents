@@ -370,18 +370,20 @@ export function extractElementDocs(name, elementsDir = ELEMENTS) {
     readJson(path.join(dir, "custom-elements.json")) ||
     analyzeManifest(dir, pkg);
 
-  // the class for this tag (the manifest sometimes omits tagName)
+  // the class for this tag; when the manifest omits tagName, the first class
+  // in the main module. A class named for the tag always wins over that
+  // fallback, so a helper class declared first in the module (license-element
+  // has licenseList) never stands in for the element
   let decl = null;
+  let fallback = null;
   for (const mod of (cem && cem.modules) || []) {
     for (const d of mod.declarations || []) {
-      if (
-        d.kind === "class" &&
-        (d.tagName === tag || (!decl && mod.path === main))
-      ) {
-        decl = decl || d;
-      }
+      if (d.kind !== "class") continue;
+      if (d.tagName === tag && !decl) decl = d;
+      else if (!fallback && mod.path === main) fallback = d;
     }
   }
+  decl = decl || fallback;
   const settings = [
     ...((hax.settings && hax.settings.configure) || []),
     ...((hax.settings && hax.settings.advanced) || []),

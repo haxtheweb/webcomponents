@@ -628,7 +628,6 @@
   ],
   "autoloader": {
     "multiple-choice": "@haxtheweb/multiple-choice/multiple-choice.js",
-    "example-hax-element": "@haxtheweb/example-hax-element/example-hax-element.js",
     "true-false-question": "@haxtheweb/multiple-choice/lib/true-false-question.js",
     "short-answer-question": "@haxtheweb/multiple-choice/lib/short-answer-question.js",
     "sorting-question": "@haxtheweb/sorting-question/sorting-question.js",
@@ -686,6 +685,22 @@
     "site-random-content": "@haxtheweb/haxcms-elements/lib/ui-components/site/site-random-content.js",
     "flash-card": "@haxtheweb/flash-card/flash-card.js",
     "image-gallery": "@haxtheweb/image-gallery/image-gallery.js",
-    "media-playlist": "@haxtheweb/media-playlist/media-playlist.js"
+    "media-playlist": "@haxtheweb/media-playlist/media-playlist.js",
+    "site-remote-content": "@haxtheweb/haxcms-elements/lib/ui-components/site/site-remote-content.js",
+    "citation-element": "@haxtheweb/citation-element/citation-element.js",
+    "page-flag": "@haxtheweb/page-flag/page-flag.js",
+    "block-quote": "@haxtheweb/course-design/lib/block-quote.js",
+    "career-org-item": "@haxtheweb/career-timeline/lib/career-org-item.js",
+    "career-role-item": "@haxtheweb/career-timeline/lib/career-role-item.js",
+    "career-timeline": "@haxtheweb/career-timeline/career-timeline.js",
+    "bibliography-builder": "@haxtheweb/bibliography-builder/bibliography-builder.js",
+    "bibliography-item": "@haxtheweb/bibliography-builder/lib/bibliography-item.js",
+    "slide-deck": "@haxtheweb/slide-deck/slide-deck.js",
+    "linkedin-embed": "@haxtheweb/linkedin-embed/linkedin-embed.js",
+    "bullet-check-list": "@haxtheweb/bullet-check-list/bullet-check-list.js",
+    "ics-render": "@haxtheweb/ics-render/ics-render.js",
+    "vcf-render": "@haxtheweb/vcf-render/vcf-render.js",
+    "sheet-music": "@haxtheweb/sheet-music/sheet-music.js",
+    "media-quote": "@haxtheweb/media-quote/media-quote.js"
   }
 }

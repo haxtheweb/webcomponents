@@ -416,7 +416,7 @@
       "t": 10,
       "out": 14.6,
       "title": "Set icon breakpoint",
-      "text": "Fill in the Icon Breakpoint field in the sidebar. Unique ID for this tab set."
+      "text": "Breakpoint for showing text with icons. Unique ID for this tab set."
     },
     {
       "t": 14.8,
@@ -428,7 +428,7 @@
   "end": {
     "in": 17.8,
     "line": "Set of tabs.",
-    "code": ""
+    "code": "<a11y-tabs></a11y-tabs>"
   },
   "surfaceHash": "b3bd76e5b7ac",
   "review": {

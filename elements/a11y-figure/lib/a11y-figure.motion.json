@@ -105,10 +105,6 @@
       "in": 4.6,
       "rows": [
         {
-          "name": "img-src",
-          "desc": "Image"
-        },
-        {
           "name": "img-alt",
           "desc": "Alt Text"
         },
@@ -119,6 +115,10 @@
         {
           "name": "close-text",
           "desc": "Optional summary text when deta…"
+        },
+        {
+          "name": "img-src",
+          "desc": "Image"
         }
       ],
       "active": [
@@ -143,7 +143,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "img-src=\"data:image/svg+xml,%3Cs…\""
+      "s": "img-alt=\"Alt Text\""
     },
     {
       "type": "text",
@@ -151,7 +151,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "img-alt=\"Alt Text\""
+      "s": "open-text=\"Show Description\""
     },
     {
       "type": "text",
@@ -159,7 +159,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "open-text=\"Show Description\""
+      "s": "close-text=\"Hide Description\""
     },
     {
       "type": "text",
@@ -167,7 +167,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "close-text=\"Hide Description\""
+      "s": "img-src=\"data:image/svg+xml,%3Cs…\""
     },
     {
       "type": "text",
@@ -251,8 +251,8 @@
       "py": 488,
       "ex": 616,
       "ey": 540,
-      "label": "img-src",
-      "sub": "upload or link",
+      "label": "img-alt",
+      "sub": "\"Alt Text\"",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -263,8 +263,8 @@
       "py": 488,
       "ex": 796,
       "ey": 540,
-      "label": "img-alt",
-      "sub": "\"Alt Text\"",
+      "label": "open-text",
+      "sub": "\"Show Description\"",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -275,8 +275,8 @@
       "py": 488,
       "ex": 616,
       "ey": 540,
-      "label": "open-text",
-      "sub": "\"Show Description\"",
+      "label": "close-text",
+      "sub": "\"Hide Description\"",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -287,8 +287,8 @@
       "py": 488,
       "ex": 796,
       "ey": 540,
-      "label": "close-text",
-      "sub": "\"Hide Description\"",
+      "label": "img-src",
+      "sub": "upload or link",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -304,14 +304,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set image and alt text",
-      "text": "Upload a file or paste a link for Image."
+      "title": "Set alt text",
+      "text": "Describe the image for people who cannot see it."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set open text and close text",
-      "text": "Fill in the Optional summary text when details are open field in the sidebar."
+      "title": "Set close text",
+      "text": "Button text while the description is showing, such as Hide description."
     },
     {
       "t": 14.8,

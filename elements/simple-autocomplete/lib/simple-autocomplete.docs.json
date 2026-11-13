@@ -27,7 +27,7 @@
       "property": "hideInput",
       "type": "boolean",
       "default": "false",
-      "description": "",
+      "description": "Hide the built-in text box when the element is driven by another input.",
       "hax": null
     },
     {
@@ -51,7 +51,7 @@
       "property": "itemLimit",
       "type": "number",
       "default": "6",
-      "description": "",
+      "description": "Most suggestions to list at once.",
       "hax": null
     },
     {

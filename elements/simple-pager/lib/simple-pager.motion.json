@@ -140,19 +140,19 @@
       "rows": [
         {
           "name": "limit",
-          "desc": "limit"
+          "desc": "Items per page."
         },
         {
           "name": "offset",
-          "desc": "offset"
+          "desc": "Index of the first item on the…"
         },
         {
           "name": "total",
-          "desc": "total"
+          "desc": "Total number of items across al…"
         },
         {
           "name": "count",
-          "desc": "count"
+          "desc": "Number of items on the current…"
         }
       ],
       "active": [
@@ -177,7 +177,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "limit=\"3\""
+      "s": "limit=\"25\""
     },
     {
       "type": "text",
@@ -185,7 +185,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "offset=\"3\""
+      "s": "offset=\"0\""
     },
     {
       "type": "text",
@@ -193,7 +193,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "total=\"3\""
+      "s": "total=\"137\""
     },
     {
       "type": "text",
@@ -201,7 +201,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "count=\"3\""
+      "s": "count=\"25\""
     },
     {
       "type": "text",
@@ -339,13 +339,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set limit and offset",
-      "text": "Add limit and offset attributes to the tag."
+      "text": "Items per page. Index of the first item on the current page, starting at 0."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set total and count",
-      "text": "Add total and count attributes to the tag."
+      "text": "Total number of items across all pages. Number of items on the current page."
     },
     {
       "t": 14.8,

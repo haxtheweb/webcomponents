@@ -1,0 +1,292 @@
+{
+  "$comment": "DDD bridge for Tailwind CSS v4's default theme (theme.css). Tiers follow elements/d-d-d/design-system/bridge/contract.json. Tailwind's palette is mode-free, so named DDD colors map straight onto it by hue; dark mode in the theme chrome pairs palette steps with light-dark(), the way dark: variants do. Tailwind has no brand color, so blue-600 stands in. Open-source values only (no Tailwind Plus/UI). Kept as DDD on purpose: duration-normal/slow and emphasized easing (Tailwind defines one transition duration), state opacities and control heights (no tokens), border widths, and heading/body sizes. Tailwind's spacing (--spacing: 0.25rem) is DDD's 4px grid. No utility classes are used in authored content.",
+  "system": "tailwind",
+  "title": "Tailwind",
+  "prefix": "Tailwind",
+  "homepage": "https://tailwindcss.com",
+  "sources": [
+    {
+      "package": "tailwindcss",
+      "version": "4.3.5",
+      "license": "MIT",
+      "copyright": "Copyright (c) Tailwind Labs, Inc.",
+      "repository": "https://github.com/tailwindlabs/tailwindcss",
+      "format": "css",
+      "file": "theme.css",
+      "scopes": {
+        "light": ["@theme default"],
+        "dark": ["@theme default"]
+      }
+    }
+  ],
+  "fonts": [],
+  "ddd": {
+    "--ddd-theme-default-pughBlue": {
+      "token": "--color-blue-300"
+    },
+    "--ddd-theme-default-accent": {
+      "token": "--color-blue-300"
+    },
+    "--ddd-theme-default-skyBlue": {
+      "token": "--color-sky-500"
+    },
+    "--ddd-theme-default-skyLight": {
+      "token": "--color-sky-200"
+    },
+    "--ddd-theme-default-skyMaxLight": {
+      "token": "--color-sky-50"
+    },
+    "--ddd-theme-default-slateGray": {
+      "token": "--color-slate-600"
+    },
+    "--ddd-theme-default-slateLight": {
+      "token": "--color-slate-300"
+    },
+    "--ddd-theme-default-slateMaxLight": {
+      "token": "--color-slate-50"
+    },
+    "--ddd-theme-default-coalyGray": {
+      "token": "--color-gray-900"
+    },
+    "--ddd-theme-default-black": {
+      "token": "--color-black"
+    },
+    "--ddd-theme-default-white": {
+      "token": "--color-white"
+    },
+    "--ddd-theme-default-limestoneGray": {
+      "token": "--color-gray-400"
+    },
+    "--ddd-theme-default-limestoneLight": {
+      "token": "--color-gray-200"
+    },
+    "--ddd-theme-default-limestoneMaxLight": {
+      "token": "--color-gray-50"
+    },
+    "--ddd-theme-default-background": {
+      "token": "--color-gray-50"
+    },
+    "--ddd-theme-default-disabled": {
+      "token": "--color-gray-100"
+    },
+    "--ddd-theme-default-keystoneYellow": {
+      "token": "--color-yellow-400"
+    },
+    "--ddd-theme-default-globalNeon": {
+      "token": "--color-yellow-300"
+    },
+    "--ddd-theme-default-roarGolden": {
+      "token": "--color-amber-600"
+    },
+    "--ddd-theme-default-roarLight": {
+      "token": "--color-amber-200"
+    },
+    "--ddd-theme-default-roarMaxlight": {
+      "token": "--color-amber-50"
+    },
+    "--ddd-theme-default-shrineTan": {
+      "token": "--color-stone-400",
+      "note": "Tailwind has no tan; warm stone"
+    },
+    "--ddd-theme-default-shrineLight": {
+      "token": "--color-stone-200"
+    },
+    "--ddd-theme-default-shrineMaxLight": {
+      "token": "--color-stone-50"
+    },
+    "--ddd-theme-default-inventOrange": {
+      "token": "--color-orange-500"
+    },
+    "--ddd-theme-default-landgrantBrown": {
+      "token": "--color-orange-900"
+    },
+    "--ddd-theme-default-creekTeal": {
+      "token": "--color-teal-600"
+    },
+    "--ddd-theme-default-creekLight": {
+      "token": "--color-teal-200"
+    },
+    "--ddd-theme-default-creekMaxLight": {
+      "token": "--color-teal-50"
+    },
+    "--ddd-theme-default-opportunityGreen": {
+      "token": "--color-green-700",
+      "note": "correct signal (light)"
+    },
+    "--ddd-theme-default-forestGreen": {
+      "token": "--color-green-600"
+    },
+    "--ddd-theme-default-futureLime": {
+      "token": "--color-lime-400",
+      "note": "correct signal (dark)"
+    },
+    "--ddd-theme-default-athertonViolet": {
+      "token": "--color-violet-300",
+      "note": "incorrect signal (dark)"
+    },
+    "--ddd-theme-default-wonderPurple": {
+      "token": "--color-purple-800",
+      "note": "incorrect signal (light); keeps HAX purple-for-incorrect"
+    },
+    "--ddd-theme-default-original87Pink": {
+      "token": "--color-pink-700"
+    },
+    "--ddd-theme-default-discoveryCoral": {
+      "token": "--color-red-400"
+    },
+    "--ddd-theme-default-error": {
+      "token": "--color-red-800"
+    },
+    "--ddd-theme-default-errorLight": {
+      "token": "--color-red-50"
+    },
+    "--ddd-theme-default-warning": {
+      "token": "--color-amber-800"
+    },
+    "--ddd-theme-default-warningLight": {
+      "token": "--color-amber-50"
+    },
+    "--ddd-theme-default-info": {
+      "token": "--color-blue-800"
+    },
+    "--ddd-theme-default-infoLight": {
+      "token": "--color-blue-50"
+    },
+    "--ddd-theme-default-success": {
+      "token": "--color-green-800"
+    },
+    "--ddd-theme-default-successLight": {
+      "token": "--color-green-50"
+    },
+    "--ddd-theme-default-alertImmediate": {
+      "token": "--color-red-200"
+    },
+    "--ddd-theme-default-alertUrgent": {
+      "token": "--color-amber-100"
+    },
+    "--ddd-theme-default-alertAllClear": {
+      "token": "--color-green-100"
+    },
+    "--ddd-theme-default-alertNonEmergency": {
+      "token": "--color-blue-100"
+    },
+    "--ddd-theme-default-beaverBlue": {
+      "token": "--color-blue-600",
+      "note": "Tailwind has no brand color; blue-600 is the common primary"
+    },
+    "--ddd-theme-default-nittanyNavy": {
+      "token": "--color-blue-900"
+    },
+    "--ddd-theme-default-potentialMidnight": {
+      "token": "--color-blue-950"
+    },
+    "--ddd-theme-default-link": {
+      "token": "--color-blue-700"
+    },
+    "--ddd-theme-default-linkLight": {
+      "token": "--color-blue-300"
+    },
+    "--ddd-font-weight-light": {
+      "token": "--font-weight-light"
+    },
+    "--ddd-font-weight-regular": {
+      "token": "--font-weight-normal"
+    },
+    "--ddd-font-weight-medium": {
+      "token": "--font-weight-medium"
+    },
+    "--ddd-font-weight-bold": {
+      "token": "--font-weight-bold"
+    },
+    "--ddd-font-weight-black": {
+      "token": "--font-weight-black"
+    },
+    "--ddd-boxShadow-sm": {
+      "token": "--shadow-sm"
+    },
+    "--ddd-boxShadow-md": {
+      "token": "--shadow-md"
+    },
+    "--ddd-boxShadow-lg": {
+      "token": "--shadow-lg"
+    },
+    "--ddd-boxShadow-xl": {
+      "token": "--shadow-xl"
+    },
+    "--ddd-duration-fast": {
+      "token": "--default-transition-duration",
+      "note": "150ms"
+    },
+    "--ddd-timing-ease": {
+      "token": "--ease-in-out"
+    },
+    "--ddd-timing-enter": {
+      "token": "--ease-out"
+    },
+    "--ddd-timing-exit": {
+      "token": "--ease-in"
+    },
+    "--ddd-font-primary": {
+      "token": "--font-sans",
+      "note": "Tailwind's default system stack; no web font"
+    },
+    "--ddd-font-secondary": {
+      "token": "--font-sans"
+    },
+    "--ddd-font-navigation": {
+      "token": "--font-sans"
+    },
+    "--ddd-font-mono": {
+      "token": "--font-mono"
+    },
+    "--ddd-radius-xs": {
+      "token": "--radius-sm",
+      "note": "4px"
+    },
+    "--ddd-radius-sm": {
+      "token": "--radius-md",
+      "note": "6px"
+    },
+    "--ddd-radius-md": {
+      "token": "--radius-lg",
+      "note": "8px"
+    },
+    "--ddd-radius-lg": {
+      "token": "--radius-xl",
+      "note": "12px"
+    },
+    "--ddd-radius-xl": {
+      "token": "--radius-2xl",
+      "note": "16px"
+    },
+    "--ddd-focus-ring": {
+      "value": "2px solid var(--color-blue-600)",
+      "note": "Tailwind's usual focus-visible:outline-2 outline-blue-600"
+    },
+    "--ddd-focus-offset": {
+      "value": "2px"
+    }
+  },
+  "extraTokens": [
+    "--color-white",
+    "--color-gray-50",
+    "--color-gray-100",
+    "--color-gray-200",
+    "--color-gray-300",
+    "--color-gray-400",
+    "--color-gray-500",
+    "--color-gray-600",
+    "--color-gray-700",
+    "--color-gray-800",
+    "--color-gray-900",
+    "--color-gray-950",
+    "--color-sky-300",
+    "--color-sky-500",
+    "--color-sky-600",
+    "--color-blue-600",
+    "--color-blue-400",
+    "--text-sm",
+    "--text-sm--line-height",
+    "--font-weight-semibold"
+  ]
+}

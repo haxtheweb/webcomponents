@@ -85,7 +85,7 @@
       "in": 2.6,
       "states": [
         [2.6, "Type writer"],
-        [10, "text"]
+        [10, "Text"]
       ],
       "typed": true
     },
@@ -110,19 +110,19 @@
       "rows": [
         {
           "name": "delay",
-          "desc": "delay"
+          "desc": "Milliseconds to wait before typ…"
         },
         {
           "name": "cursor-duration",
-          "desc": "cursor-duration"
+          "desc": "Milliseconds the cursor keeps b…"
         },
         {
           "name": "text",
-          "desc": "text"
+          "desc": "The text to type out once the e…"
         },
         {
           "name": "speed",
-          "desc": "speed"
+          "desc": "Milliseconds per character; low…"
         }
       ],
       "active": [
@@ -163,7 +163,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "text=\"text\""
+      "s": "text=\"Text\""
     },
     {
       "type": "text",
@@ -280,7 +280,7 @@
       "ex": 616,
       "ey": 430,
       "label": "text",
-      "sub": "\"text\"",
+      "sub": "\"Text\"",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -308,14 +308,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set delay and cursor duration",
-      "text": "Fill in the Delay and Cursor duration fields in the sidebar."
+      "title": "Set delay",
+      "text": "Milliseconds to wait before typing starts."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set text and speed",
-      "text": "Fill in the Text and Speed fields in the sidebar."
+      "title": "Set text",
+      "text": "The text to type out once the element scrolls into view."
     },
     {
       "t": 14.8,
@@ -327,7 +327,7 @@
   "end": {
     "in": 17.8,
     "line": "typewritter effect",
-    "code": ""
+    "code": "<type-writer></type-writer>"
   },
   "surfaceHash": "04d77e3c7a9b",
   "review": {

@@ -127,7 +127,7 @@
   "end": {
     "in": 17.8,
     "line": "A basic HTML block that provides HAXschema wiring",
-    "code": ""
+    "code": "<html-block></html-block>"
   },
   "surfaceHash": "d5af77c256cb",
   "review": {

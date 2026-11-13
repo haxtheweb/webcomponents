@@ -250,14 +250,6 @@
             },
             {
               "kind": "field",
-              "name": "tabIndex",
-              "type": {
-                "text": "number"
-              },
-              "default": "0"
-            },
-            {
-              "kind": "field",
               "name": "stopped",
               "privacy": "public",
               "type": {

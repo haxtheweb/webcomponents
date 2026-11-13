@@ -124,7 +124,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "License scope",
+              "description": "The part of the page the license covers: sibling or parent content.",
               "default": "\"sibling\"",
               "attribute": "scope"
             },
@@ -266,7 +266,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "License scope",
+              "description": "The part of the page the license covers: sibling or parent content.",
               "default": "\"sibling\"",
               "fieldName": "scope"
             },

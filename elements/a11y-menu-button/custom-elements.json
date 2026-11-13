@@ -452,7 +452,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Whether toggle is disabled",
+              "description": "Whether the menu is open; set it to show the menu from the start.",
               "default": "false",
               "attribute": "expanded",
               "reflects": true
@@ -486,7 +486,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "disables menu i=opening on hover",
+              "description": "Disables opening the menu on hover; it then opens only on click or\nkey.",
               "default": "false",
               "attribute": "no-open-on-hover"
             },
@@ -514,7 +514,7 @@
               "type": {
                 "text": "object"
               },
-              "description": "Whether toggle is disabled",
+              "description": "The menu item that has focus while the menu is open.",
               "attribute": "currentItem"
             },
             {
@@ -524,7 +524,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Whether toggle is disabled",
+              "description": "Disable the menu button so the menu cannot be opened.",
               "attribute": "disabled"
             },
             {
@@ -534,7 +534,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Whether button is toggled",
+              "description": "Whether the menu button or one of its items has keyboard focus.",
               "attribute": "focused"
             },
             {
@@ -544,7 +544,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Whether button is toggled",
+              "description": "Whether the pointer is over the menu button or its menu.",
               "attribute": "hovered"
             }
           ],
@@ -576,7 +576,7 @@
               "type": {
                 "text": "object"
               },
-              "description": "Whether toggle is disabled",
+              "description": "The menu item that has focus while the menu is open.",
               "fieldName": "currentItem"
             },
             {
@@ -584,7 +584,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Whether toggle is disabled",
+              "description": "Disable the menu button so the menu cannot be opened.",
               "fieldName": "disabled"
             },
             {
@@ -592,7 +592,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Whether toggle is disabled",
+              "description": "Whether the menu is open; set it to show the menu from the start.",
               "default": "false",
               "fieldName": "expanded"
             },
@@ -601,7 +601,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Whether button is toggled",
+              "description": "Whether the menu button or one of its items has keyboard focus.",
               "fieldName": "focused"
             },
             {
@@ -609,7 +609,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Whether button is toggled",
+              "description": "Whether the pointer is over the menu button or its menu.",
               "fieldName": "hovered"
             },
             {
@@ -635,7 +635,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "disables menu i=opening on hover",
+              "description": "Disables opening the menu on hover; it then opens only on click or\nkey.",
               "default": "false",
               "fieldName": "noOpenOnHover"
             },
@@ -695,7 +695,7 @@
               "type": {
                 "text": "object"
               },
-              "description": "Whether toggle is disabled",
+              "description": "The menu item that has focus while the menu is open.",
               "fieldName": "currentItem",
               "inheritedFrom": {
                 "name": "A11yMenuButtonBehaviors",
@@ -707,7 +707,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Whether toggle is disabled",
+              "description": "Disable the menu button so the menu cannot be opened.",
               "fieldName": "disabled",
               "inheritedFrom": {
                 "name": "A11yMenuButtonBehaviors",
@@ -719,7 +719,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Whether toggle is disabled",
+              "description": "Whether the menu is open; set it to show the menu from the start.",
               "default": "false",
               "fieldName": "expanded",
               "inheritedFrom": {
@@ -732,7 +732,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Whether button is toggled",
+              "description": "Whether the menu button or one of its items has keyboard focus.",
               "fieldName": "focused",
               "inheritedFrom": {
                 "name": "A11yMenuButtonBehaviors",
@@ -744,7 +744,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Whether button is toggled",
+              "description": "Whether the pointer is over the menu button or its menu.",
               "fieldName": "hovered",
               "inheritedFrom": {
                 "name": "A11yMenuButtonBehaviors",
@@ -782,7 +782,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "disables menu i=opening on hover",
+              "description": "Disables opening the menu on hover; it then opens only on click or\nkey.",
               "default": "false",
               "fieldName": "noOpenOnHover",
               "inheritedFrom": {
@@ -1428,7 +1428,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Whether toggle is disabled",
+              "description": "Whether the menu is open; set it to show the menu from the start.",
               "default": "false",
               "attribute": "expanded",
               "reflects": true,
@@ -1474,7 +1474,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "disables menu i=opening on hover",
+              "description": "Disables opening the menu on hover; it then opens only on click or\nkey.",
               "default": "false",
               "attribute": "no-open-on-hover",
               "inheritedFrom": {
@@ -1518,7 +1518,7 @@
               "type": {
                 "text": "object"
               },
-              "description": "Whether toggle is disabled",
+              "description": "The menu item that has focus while the menu is open.",
               "attribute": "currentItem",
               "inheritedFrom": {
                 "name": "A11yMenuButtonBehaviors",
@@ -1532,7 +1532,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Whether toggle is disabled",
+              "description": "Disable the menu button so the menu cannot be opened.",
               "attribute": "disabled",
               "inheritedFrom": {
                 "name": "A11yMenuButtonBehaviors",
@@ -1546,7 +1546,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Whether button is toggled",
+              "description": "Whether the menu button or one of its items has keyboard focus.",
               "attribute": "focused",
               "inheritedFrom": {
                 "name": "A11yMenuButtonBehaviors",
@@ -1560,7 +1560,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Whether button is toggled",
+              "description": "Whether the pointer is over the menu button or its menu.",
               "attribute": "hovered",
               "inheritedFrom": {
                 "name": "A11yMenuButtonBehaviors",

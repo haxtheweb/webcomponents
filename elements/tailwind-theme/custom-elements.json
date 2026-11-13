@@ -1,0 +1,285 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "tailwind-theme.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "`tailwind-theme`\nA HAXcms theme in a Tailwind-style documentation layout (top bar, sidebar,\nreading column), built on the Tailwind DDD bridge: every HAX block reads\n--ddd-* tokens, which point at Tailwind theme tokens while it is active.\nAuthored content uses no utility classes.",
+          "name": "TailwindTheme",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "HAXCMSGlobalStyleSheetContent"
+            },
+            {
+              "kind": "method",
+              "name": "renderNavToggle"
+            },
+            {
+              "kind": "method",
+              "name": "renderActions"
+            },
+            {
+              "kind": "method",
+              "name": "renderNav"
+            },
+            {
+              "kind": "method",
+              "name": "renderPager"
+            },
+            {
+              "kind": "method",
+              "name": "toggleSidebar"
+            },
+            {
+              "kind": "method",
+              "name": "toggleDarkMode"
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, skipToContent: \"Skip to content\", toggleSiteMenu: \"Toggle site menu\", siteNavigation: \"Site navigation\", searchSite: \"Search site\", search: \"Search\", toggleDarkMode: \"Toggle dark mode\", pageNavigation: \"Page navigation\", }"
+            },
+            {
+              "kind": "field",
+              "name": "autoScroll",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "kind": "field",
+              "name": "sidebarOpen",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "attribute": "sidebar-open",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "_mobile",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "_mobile"
+            },
+            {
+              "kind": "field",
+              "name": "__themeDisposers",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "_dark",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "_dark"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "sidebar-open",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "fieldName": "sidebarOpen"
+            },
+            {
+              "name": "_mobile",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "_mobile"
+            },
+            {
+              "name": "_dark",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "_dark"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "HAXCMSThemeParts",
+              "package": "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js"
+            },
+            {
+              "name": "DDDSuper",
+              "package": "@haxtheweb/d-d-d/d-d-d.js"
+            }
+          ],
+          "superclass": {
+            "name": "HAXCMSLitElementTheme",
+            "package": "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js"
+          },
+          "tagName": "tailwind-theme",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "TailwindTheme",
+            "module": "tailwind-theme.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "TailwindTheme",
+          "declaration": {
+            "name": "TailwindTheme",
+            "module": "tailwind-theme.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/TailwindDDDMap.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "TailwindDDDMap",
+          "default": "css` :root, :host { --ddd-theme-default-pughBlue: var(--color-blue-300); --ddd-theme-default-accent: var(--color-blue-300); --ddd-theme-default-skyBlue: var(--color-sky-500); --ddd-theme-default-skyLight: var(--color-sky-200); --ddd-theme-default-skyMaxLight: var(--color-sky-50); --ddd-theme-default-slateGray: var(--color-slate-600); --ddd-theme-default-slateLight: var(--color-slate-300); --ddd-theme-default-slateMaxLight: var(--color-slate-50); --ddd-theme-default-coalyGray: var(--color-gray-900); --ddd-theme-default-black: var(--color-black); --ddd-theme-default-white: var(--color-white); --ddd-theme-default-limestoneGray: var(--color-gray-400); --ddd-theme-default-limestoneLight: var(--color-gray-200); --ddd-theme-default-limestoneMaxLight: var(--color-gray-50); --ddd-theme-default-background: var(--color-gray-50); --ddd-theme-default-disabled: var(--color-gray-100); --ddd-theme-default-keystoneYellow: var(--color-yellow-400); --ddd-theme-default-globalNeon: var(--color-yellow-300); --ddd-theme-default-roarGolden: var(--color-amber-600); --ddd-theme-default-roarLight: var(--color-amber-200); --ddd-theme-default-roarMaxlight: var(--color-amber-50); --ddd-theme-default-shrineTan: var(--color-stone-400); --ddd-theme-default-shrineLight: var(--color-stone-200); --ddd-theme-default-shrineMaxLight: var(--color-stone-50); --ddd-theme-default-inventOrange: var(--color-orange-500); --ddd-theme-default-landgrantBrown: var(--color-orange-900); --ddd-theme-default-creekTeal: var(--color-teal-600); --ddd-theme-default-creekLight: var(--color-teal-200); --ddd-theme-default-creekMaxLight: var(--color-teal-50); --ddd-theme-default-opportunityGreen: var(--color-green-700); --ddd-theme-default-forestGreen: var(--color-green-600); --ddd-theme-default-futureLime: var(--color-lime-400); --ddd-theme-default-athertonViolet: var(--color-violet-300); --ddd-theme-default-wonderPurple: var(--color-purple-800); --ddd-theme-default-original87Pink: var(--color-pink-700); --ddd-theme-default-discoveryCoral: var(--color-red-400); --ddd-theme-default-error: var(--color-red-800); --ddd-theme-default-errorLight: var(--color-red-50); --ddd-theme-default-warning: var(--color-amber-800); --ddd-theme-default-warningLight: var(--color-amber-50); --ddd-theme-default-info: var(--color-blue-800); --ddd-theme-default-infoLight: var(--color-blue-50); --ddd-theme-default-success: var(--color-green-800); --ddd-theme-default-successLight: var(--color-green-50); --ddd-theme-default-alertImmediate: var(--color-red-200); --ddd-theme-default-alertUrgent: var(--color-amber-100); --ddd-theme-default-alertAllClear: var(--color-green-100); --ddd-theme-default-alertNonEmergency: var(--color-blue-100); --ddd-theme-default-beaverBlue: var(--color-blue-600); --ddd-theme-default-nittanyNavy: var(--color-blue-900); --ddd-theme-default-potentialMidnight: var(--color-blue-950); --ddd-theme-default-link: var(--color-blue-700); --ddd-theme-default-linkLight: var(--color-blue-300); --ddd-font-weight-light: var(--font-weight-light); --ddd-font-weight-regular: var(--font-weight-normal); --ddd-font-weight-medium: var(--font-weight-medium); --ddd-font-weight-bold: var(--font-weight-bold); --ddd-font-weight-black: var(--font-weight-black); --ddd-boxShadow-sm: var(--shadow-sm); --ddd-boxShadow-md: var(--shadow-md); --ddd-boxShadow-lg: var(--shadow-lg); --ddd-boxShadow-xl: var(--shadow-xl); --ddd-duration-fast: var(--default-transition-duration); --ddd-timing-ease: var(--ease-in-out); --ddd-timing-enter: var(--ease-out); --ddd-timing-exit: var(--ease-in); --ddd-font-primary: var(--font-sans); --ddd-font-secondary: var(--font-sans); --ddd-font-navigation: var(--font-sans); --ddd-font-mono: var(--font-mono); --ddd-radius-xs: var(--radius-sm); --ddd-radius-sm: var(--radius-md); --ddd-radius-md: var(--radius-lg); --ddd-radius-lg: var(--radius-xl); --ddd-radius-xl: var(--radius-2xl); --ddd-focus-ring: 2px solid var(--color-blue-600); --ddd-focus-offset: 2px; /* rgb channels follow their mapped color */ --ddd-primary-0-rgb: 142, 197, 255, 0.7; --ddd-primary-1-rgb: 21, 93, 252; --ddd-primary-2-rgb: 28, 57, 142; --ddd-primary-3-rgb: 22, 36, 86; --ddd-primary-4-rgb: 16, 24, 40; --ddd-primary-5-rgb: 153, 161, 175; --ddd-primary-6-rgb: 69, 85, 108; --ddd-primary-7-rgb: 0, 150, 137; --ddd-primary-8-rgb: 0, 166, 244; --ddd-primary-9-rgb: 166, 160, 155; --ddd-primary-10-rgb: 225, 113, 0; --ddd-primary-11-rgb: 198, 0, 92, 0.7; --ddd-primary-12-rgb: 255, 100, 103; --ddd-primary-13-rgb: 110, 17, 176; --ddd-primary-14-rgb: 196, 180, 255; --ddd-primary-15-rgb: 255, 105, 0; --ddd-primary-16-rgb: 253, 199, 0; --ddd-primary-17-rgb: 0, 130, 54; --ddd-primary-18-rgb: 154, 230, 0; --ddd-primary-19-rgb: 0, 166, 62; --ddd-primary-20-rgb: 126, 42, 12; --ddd-primary-21-rgb: 255, 223, 32; --ddd-primary-22-rgb: 159, 7, 18; --ddd-primary-23-rgb: 151, 60, 0; --ddd-primary-24-rgb: 25, 60, 184; --ddd-primary-25-rgb: 1, 102, 48; } `"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "TailwindDDDMap",
+          "declaration": {
+            "name": "TailwindDDDMap",
+            "module": "lib/TailwindDDDMap.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/TailwindDesignSystem.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "TAILWIND_SYSTEM",
+          "type": {
+            "text": "string"
+          },
+          "default": "\"tailwind\""
+        },
+        {
+          "kind": "function",
+          "name": "registerTailwindDesignSystem",
+          "parameters": [
+            {
+              "name": "manager",
+              "default": "DesignSystemManager"
+            }
+          ],
+          "description": "register Tailwind with the design system manager (once)"
+        },
+        {
+          "kind": "function",
+          "name": "activateTailwindDesignSystem",
+          "parameters": [
+            {
+              "name": "manager",
+              "default": "DesignSystemManager"
+            }
+          ],
+          "description": "make Tailwind the active design system"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "TAILWIND_SYSTEM",
+          "declaration": {
+            "name": "TAILWIND_SYSTEM",
+            "module": "lib/TailwindDesignSystem.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "registerTailwindDesignSystem",
+          "declaration": {
+            "name": "registerTailwindDesignSystem",
+            "module": "lib/TailwindDesignSystem.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "activateTailwindDesignSystem",
+          "declaration": {
+            "name": "activateTailwindDesignSystem",
+            "module": "lib/TailwindDesignSystem.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/TailwindTokens.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "TailwindTokens",
+          "default": "css` :root, :host { --color-amber-100: oklch(96.2% 0.059 95.617); --color-amber-200: oklch(92.4% 0.12 95.746); --color-amber-50: oklch(98.7% 0.022 95.277); --color-amber-600: oklch(66.6% 0.179 58.318); --color-amber-800: oklch(47.3% 0.137 46.201); --color-black: #000; --color-blue-100: oklch(93.2% 0.032 255.585); --color-blue-300: oklch(80.9% 0.105 251.813); --color-blue-400: oklch(70.7% 0.165 254.624); --color-blue-50: oklch(97% 0.014 254.604); --color-blue-600: oklch(54.6% 0.245 262.881); --color-blue-700: oklch(48.8% 0.243 264.376); --color-blue-800: oklch(42.4% 0.199 265.638); --color-blue-900: oklch(37.9% 0.146 265.522); --color-blue-950: oklch(28.2% 0.091 267.935); --color-gray-100: oklch(96.7% 0.003 264.542); --color-gray-200: oklch(92.8% 0.006 264.531); --color-gray-300: oklch(87.2% 0.01 258.338); --color-gray-400: oklch(70.7% 0.022 261.325); --color-gray-50: oklch(98.5% 0.002 247.839); --color-gray-500: oklch(55.1% 0.027 264.364); --color-gray-600: oklch(44.6% 0.03 256.802); --color-gray-700: oklch(37.3% 0.034 259.733); --color-gray-800: oklch(27.8% 0.033 256.848); --color-gray-900: oklch(21% 0.034 264.665); --color-gray-950: oklch(13% 0.028 261.692); --color-green-100: oklch(96.2% 0.044 156.743); --color-green-50: oklch(98.2% 0.018 155.826); --color-green-600: oklch(62.7% 0.194 149.214); --color-green-700: oklch(52.7% 0.154 150.069); --color-green-800: oklch(44.8% 0.119 151.328); --color-lime-400: oklch(84.1% 0.238 128.85); --color-orange-500: oklch(70.5% 0.213 47.604); --color-orange-900: oklch(40.8% 0.123 38.172); --color-pink-700: oklch(52.5% 0.223 3.958); --color-purple-800: oklch(43.8% 0.218 303.724); --color-red-200: oklch(88.5% 0.062 18.334); --color-red-400: oklch(70.4% 0.191 22.216); --color-red-50: oklch(97.1% 0.013 17.38); --color-red-800: oklch(44.4% 0.177 26.899); --color-sky-200: oklch(90.1% 0.058 230.902); --color-sky-300: oklch(82.8% 0.111 230.318); --color-sky-50: oklch(97.7% 0.013 236.62); --color-sky-500: oklch(68.5% 0.169 237.323); --color-sky-600: oklch(58.8% 0.158 241.966); --color-slate-300: oklch(86.9% 0.022 252.894); --color-slate-50: oklch(98.4% 0.003 247.858); --color-slate-600: oklch(44.6% 0.043 257.281); --color-stone-200: oklch(92.3% 0.003 48.717); --color-stone-400: oklch(70.9% 0.01 56.259); --color-stone-50: oklch(98.5% 0.001 106.423); --color-teal-200: oklch(91% 0.096 180.426); --color-teal-50: oklch(98.4% 0.014 180.72); --color-teal-600: oklch(60% 0.118 184.704); --color-violet-300: oklch(81.1% 0.111 293.571); --color-white: #fff; --color-yellow-300: oklch(90.5% 0.182 98.111); --color-yellow-400: oklch(85.2% 0.199 91.936); --default-transition-duration: 150ms; --ease-in: cubic-bezier(0.4, 0, 1, 1); --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1); --ease-out: cubic-bezier(0, 0, 0.2, 1); --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, \"Liberation Mono\", \"Courier New\", monospace; --font-sans: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", \"Noto Sans\", Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"; --font-weight-black: 900; --font-weight-bold: 700; --font-weight-light: 300; --font-weight-medium: 500; --font-weight-normal: 400; --font-weight-semibold: 600; --radius-2xl: 1rem; --radius-lg: 0.5rem; --radius-md: 0.375rem; --radius-sm: 0.25rem; --radius-xl: 0.75rem; --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1); --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1); --text-sm: 0.875rem; --text-sm--line-height: calc(1.25 / 0.875); } `"
+        },
+        {
+          "kind": "variable",
+          "name": "TailwindFonts",
+          "type": {
+            "text": "array"
+          },
+          "default": "[]"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "TailwindTokens",
+          "declaration": {
+            "name": "TailwindTokens",
+            "module": "lib/TailwindTokens.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "TailwindFonts",
+          "declaration": {
+            "name": "TailwindFonts",
+            "module": "lib/TailwindTokens.js"
+          }
+        }
+      ]
+    }
+  ]
+}

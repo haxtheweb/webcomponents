@@ -19,7 +19,7 @@
       "property": "label",
       "type": "string",
       "default": "\"\"",
-      "description": "",
+      "description": "Label for the text field.",
       "hax": null
     },
     {
@@ -75,7 +75,7 @@
       "property": "value",
       "type": "string",
       "default": "\"\"",
-      "description": "value",
+      "description": "Text in the field, checked against the flagged words as it changes.",
       "hax": null
     },
     {

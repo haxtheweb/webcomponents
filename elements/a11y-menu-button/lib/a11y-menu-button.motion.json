@@ -152,20 +152,20 @@
       "in": 2.4,
       "rows": [
         {
-          "name": "currentItem",
-          "desc": "Whether toggle is disabled"
+          "name": "expanded",
+          "desc": "Whether the menu is open; set i…"
         },
         {
           "name": "disabled",
-          "desc": "Whether toggle is disabled"
+          "desc": "Disable the menu button so the…"
         },
         {
-          "name": "expanded",
-          "desc": "Whether toggle is disabled"
+          "name": "keep-open-on-click",
+          "desc": "overrides default behavior of c…"
         },
         {
-          "name": "focused",
-          "desc": "Whether button is toggled"
+          "name": "no-open-on-hover",
+          "desc": "Disables opening the menu on ho…"
         }
       ],
       "active": [
@@ -190,7 +190,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "currentItem=\"currentItem\""
+      "s": "expanded"
     },
     {
       "type": "text",
@@ -206,7 +206,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "expanded=\"false\""
+      "s": "keep-open-on-click=\"false\""
     },
     {
       "type": "text",
@@ -214,7 +214,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "focused"
+      "s": "no-open-on-hover=\"false\""
     },
     {
       "type": "text",
@@ -298,8 +298,8 @@
       "py": 508,
       "ex": 616,
       "ey": 560,
-      "label": "currentItem",
-      "sub": "\"currentItem\"",
+      "label": "expanded",
+      "sub": "on or off",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -322,7 +322,7 @@
       "py": 508,
       "ex": 616,
       "ey": 560,
-      "label": "expanded",
+      "label": "keep-open-on-click",
       "sub": "on or off",
       "dir": 1,
       "in": 10.2,
@@ -334,7 +334,7 @@
       "py": 508,
       "ex": 796,
       "ey": 560,
-      "label": "focused",
+      "label": "no-open-on-hover",
       "sub": "on or off",
       "dir": 1,
       "in": 12.6,
@@ -351,14 +351,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set currentitem and disabled",
-      "text": "Whether toggle is disabled. Whether toggle is disabled."
+      "title": "Set expanded",
+      "text": "Whether the menu is open; set it to show the menu from the start."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set expanded and focused",
-      "text": "Whether toggle is disabled. Whether button is toggled."
+      "title": "Set keep open on click",
+      "text": "Overrides default behavior of closing menu after an item is clicked."
     },
     {
       "t": 14.8,

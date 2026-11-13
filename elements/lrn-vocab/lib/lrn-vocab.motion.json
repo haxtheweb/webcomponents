@@ -110,7 +110,7 @@
       "rows": [
         {
           "name": "term",
-          "desc": "Term"
+          "desc": "The word or phrase readers clic…"
         },
         {
           "name": "description",
@@ -255,8 +255,8 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set term and description",
-      "text": "Fill in the Term and Description (OER Schema) fields in the sidebar."
+      "title": "Set term",
+      "text": "The word or phrase readers click to see its definition."
     },
     {
       "t": 10,
@@ -274,7 +274,7 @@
   "end": {
     "in": 17.8,
     "line": "Vocabulary term",
-    "code": ""
+    "code": "<lrn-vocab></lrn-vocab>"
   },
   "surfaceHash": "2aaeabcc33db",
   "review": {

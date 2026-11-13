@@ -50,19 +50,19 @@
       "rows": [
         {
           "name": "wikipedia",
-          "desc": "wikipedia"
-        },
-        {
-          "name": "vide",
-          "desc": "vide"
-        },
-        {
-          "name": "fixation-point",
-          "desc": "fixation point"
+          "desc": "Also link terms that are found…"
         },
         {
           "name": "haxcms-glossary",
-          "desc": "haxcms glossary"
+          "desc": "Wrap terms from the HAXcms site…"
+        },
+        {
+          "name": "haxcms-mark-all",
+          "desc": "Mark every match of a glossary…"
+        },
+        {
+          "name": "auto",
+          "desc": "Enhance the text as soon as the…"
         }
       ],
       "active": [
@@ -95,7 +95,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "vide"
+      "s": "haxcms-glossary"
     },
     {
       "type": "text",
@@ -103,7 +103,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "fixation-point=\"3\""
+      "s": "haxcms-mark-all"
     },
     {
       "type": "text",
@@ -111,7 +111,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "haxcms-glossary"
+      "s": "auto"
     },
     {
       "type": "text",
@@ -207,7 +207,7 @@
       "py": 378,
       "ex": 796,
       "ey": 430,
-      "label": "vide",
+      "label": "haxcms-glossary",
       "sub": "on or off",
       "dir": 1,
       "in": 7.6000000000000005,
@@ -219,8 +219,8 @@
       "py": 378,
       "ex": 616,
       "ey": 430,
-      "label": "fixation-point",
-      "sub": "a number",
+      "label": "haxcms-mark-all",
+      "sub": "on or off",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -231,7 +231,7 @@
       "py": 378,
       "ex": 796,
       "ey": 430,
-      "label": "haxcms-glossary",
+      "label": "auto",
       "sub": "on or off",
       "dir": 1,
       "in": 12.6,
@@ -248,14 +248,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set wikipedia and vide",
-      "text": "Add the wikipedia attribute to switch it on."
+      "title": "Set wikipedia",
+      "text": "Also link terms that are found to their Wikipedia articles."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set fixation point",
-      "text": "Add a fixation-point attribute to the tag."
+      "title": "Set haxcms mark all",
+      "text": "Mark every match of a glossary term, not only the first one."
     },
     {
       "t": 14.8,

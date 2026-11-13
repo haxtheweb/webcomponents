@@ -19,7 +19,7 @@
       "property": "dark",
       "type": "boolean",
       "default": "false",
-      "description": "dark",
+      "description": "Draw the spinner for a dark background.",
       "hax": null
     },
     {
@@ -27,7 +27,7 @@
       "property": "color",
       "type": "string",
       "default": "",
-      "description": "color",
+      "description": "Spinner color, as a SimpleColors accent color name such as blue.",
       "hax": null
     },
     {
@@ -35,7 +35,7 @@
       "property": "contrast",
       "type": "number",
       "default": "",
-      "description": "contrast",
+      "description": "Contrast step for the spinner color, from 0 (none) to 4 (most).",
       "hax": null
     },
     {

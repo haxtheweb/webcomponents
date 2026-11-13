@@ -852,7 +852,7 @@
                   }
                 }
               ],
-              "description": "Sanitizes cell content before it is interpolated into an HTML string\n(e.g. getTableHTML's print() sink). Cell data can originate from a\nremote data-csv fetch, so it must never be trusted as-is; sanitizing\n(rather than escaping) preserves legitimate rich-text formatting\n(bold/italic/links) authored via the cell editor while stripping\nscripts, event handler attributes, and unsafe URLs.\nsecurity (JS-XSS-001)",
+              "description": "Sanitizes cell content before it is interpolated into an HTML string\n(e.g. getTableHTML's print() sink). Cell data can originate from a\nremote data-csv fetch, so it must never be trusted as-is; sanitizing\n(rather than escaping) preserves legitimate rich-text formatting\n(bold/italic/links) authored via the cell editor while stripping\nscripts, event handler attributes, and unsafe URLs.\nsecurity (JS-XSS)",
               "return": {
                 "type": {
                   "text": "string"
@@ -1535,7 +1535,7 @@
                   }
                 }
               ],
-              "description": "Sanitizes cell content before it is interpolated into an HTML string\n(e.g. getTableHTML's print() sink). Cell data can originate from a\nremote data-csv fetch, so it must never be trusted as-is; sanitizing\n(rather than escaping) preserves legitimate rich-text formatting\n(bold/italic/links) authored via the cell editor while stripping\nscripts, event handler attributes, and unsafe URLs.\nsecurity (JS-XSS-001)",
+              "description": "Sanitizes cell content before it is interpolated into an HTML string\n(e.g. getTableHTML's print() sink). Cell data can originate from a\nremote data-csv fetch, so it must never be trusted as-is; sanitizing\n(rather than escaping) preserves legitimate rich-text formatting\n(bold/italic/links) authored via the cell editor while stripping\nscripts, event handler attributes, and unsafe URLs.\nsecurity (JS-XSS)",
               "return": {
                 "type": {
                   "text": "string"
@@ -2298,7 +2298,7 @@
                   }
                 }
               ],
-              "description": "Sanitizes cell content before it is interpolated into an HTML string\n(e.g. getTableHTML's print() sink). Cell data can originate from a\nremote data-csv fetch, so it must never be trusted as-is; sanitizing\n(rather than escaping) preserves legitimate rich-text formatting\n(bold/italic/links) authored via the cell editor while stripping\nscripts, event handler attributes, and unsafe URLs.\nsecurity (JS-XSS-001)",
+              "description": "Sanitizes cell content before it is interpolated into an HTML string\n(e.g. getTableHTML's print() sink). Cell data can originate from a\nremote data-csv fetch, so it must never be trusted as-is; sanitizing\n(rather than escaping) preserves legitimate rich-text formatting\n(bold/italic/links) authored via the cell editor while stripping\nscripts, event handler attributes, and unsafe URLs.\nsecurity (JS-XSS)",
               "return": {
                 "type": {
                   "text": "string"
@@ -3570,7 +3570,7 @@
                   }
                 }
               ],
-              "description": "Sanitizes cell content before it is interpolated into an HTML string\n(e.g. getTableHTML's print() sink). Cell data can originate from a\nremote data-csv fetch, so it must never be trusted as-is; sanitizing\n(rather than escaping) preserves legitimate rich-text formatting\n(bold/italic/links) authored via the cell editor while stripping\nscripts, event handler attributes, and unsafe URLs.\nsecurity (JS-XSS-001)",
+              "description": "Sanitizes cell content before it is interpolated into an HTML string\n(e.g. getTableHTML's print() sink). Cell data can originate from a\nremote data-csv fetch, so it must never be trusted as-is; sanitizing\n(rather than escaping) preserves legitimate rich-text formatting\n(bold/italic/links) authored via the cell editor while stripping\nscripts, event handler attributes, and unsafe URLs.\nsecurity (JS-XSS)",
               "return": {
                 "type": {
                   "text": "string"
@@ -5025,7 +5025,7 @@
                   }
                 }
               ],
-              "description": "Sanitizes cell content before it is interpolated into an HTML string\n(e.g. getTableHTML's print() sink). Cell data can originate from a\nremote data-csv fetch, so it must never be trusted as-is; sanitizing\n(rather than escaping) preserves legitimate rich-text formatting\n(bold/italic/links) authored via the cell editor while stripping\nscripts, event handler attributes, and unsafe URLs.\nsecurity (JS-XSS-001)",
+              "description": "Sanitizes cell content before it is interpolated into an HTML string\n(e.g. getTableHTML's print() sink). Cell data can originate from a\nremote data-csv fetch, so it must never be trusted as-is; sanitizing\n(rather than escaping) preserves legitimate rich-text formatting\n(bold/italic/links) authored via the cell editor while stripping\nscripts, event handler attributes, and unsafe URLs.\nsecurity (JS-XSS)",
               "return": {
                 "type": {
                   "text": "string"

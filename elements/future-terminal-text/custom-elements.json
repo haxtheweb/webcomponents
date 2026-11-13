@@ -71,6 +71,7 @@
               "type": {
                 "text": "boolean"
               },
+              "description": "Use the red alert color for the text instead of the normal color.",
               "attribute": "red",
               "reflects": true,
               "default": "false",
@@ -86,6 +87,7 @@
               "type": {
                 "text": "boolean"
               },
+              "description": "Fade the text in, then flicker it, when it first appears.",
               "attribute": "fadein",
               "reflects": true,
               "default": "false",
@@ -166,6 +168,7 @@
               "type": {
                 "text": "boolean"
               },
+              "description": "Use the red alert color for the text instead of the normal color.",
               "fieldName": "red",
               "inheritedFrom": {
                 "name": "FutureTerminalTextLite",
@@ -177,6 +180,7 @@
               "type": {
                 "text": "boolean"
               },
+              "description": "Fade the text in, then flicker it, when it first appears.",
               "fieldName": "fadein",
               "inheritedFrom": {
                 "name": "FutureTerminalTextLite",
@@ -354,6 +358,7 @@
               },
               "default": "false",
               "privacy": "public",
+              "description": "Use the red alert color for the text instead of the normal color.",
               "attribute": "red",
               "reflects": true,
               "inheritedFrom": {
@@ -369,6 +374,7 @@
               },
               "default": "false",
               "privacy": "public",
+              "description": "Fade the text in, then flicker it, when it first appears.",
               "attribute": "fadein",
               "reflects": true,
               "inheritedFrom": {
@@ -452,6 +458,7 @@
               "type": {
                 "text": "boolean"
               },
+              "description": "Use the red alert color for the text instead of the normal color.",
               "fieldName": "red"
             },
             {
@@ -459,6 +466,7 @@
               "type": {
                 "text": "boolean"
               },
+              "description": "Fade the text in, then flicker it, when it first appears.",
               "fieldName": "fadein"
             },
             {

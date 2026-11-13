@@ -1852,12 +1852,16 @@ class A11yMediaPlayer extends SchemaBehaviors(
        * Default is to pause this a11y-media-player when other a11y-media-player starts playing.
        */
 
+      /**
+       * Keep playing when another player on the page starts, instead of
+       * pausing.
+       */
       allowConcurrent: {
         attribute: "allow-concurrent",
         type: Boolean,
       },
       /**
-       * Is this an audio file?
+       * Treat the source as audio: no video area unless a thumbnail is set.
        */
       audioOnly: {
         attribute: "audio-only",

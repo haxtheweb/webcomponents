@@ -19,7 +19,7 @@
       "property": "title",
       "type": "string",
       "default": "",
-      "description": "",
+      "description": "Title of the work.",
       "hax": null
     },
     {
@@ -27,15 +27,15 @@
       "property": "creator",
       "type": "string",
       "default": "",
-      "description": "",
+      "description": "Person or group that owns / created the work.",
       "hax": null
     },
     {
       "name": "source",
       "property": "source",
-      "type": "string",
-      "default": "",
-      "description": "",
+      "type": "null",
+      "default": "null",
+      "description": "Address of the original work this content comes from.",
       "hax": null
     },
     {
@@ -43,7 +43,7 @@
       "property": "licenseName",
       "type": "string",
       "default": "",
-      "description": "",
+      "description": "License name, calculated or supplied by the end user if we don't have them.",
       "hax": null
     },
     {
@@ -59,7 +59,7 @@
       "property": "licenseLink",
       "type": "string",
       "default": "",
-      "description": "",
+      "description": "License link for more details",
       "hax": null
     },
     {
@@ -67,7 +67,7 @@
       "property": "license",
       "type": "string",
       "default": "",
-      "description": "",
+      "description": "License short name such as by, by-sa, by-nc or cc0; sets the link and icon.",
       "hax": null
     },
     {
@@ -75,7 +75,7 @@
       "property": "moreLabel",
       "type": "string",
       "default": "",
-      "description": "",
+      "description": "More details label",
       "hax": null
     },
     {
@@ -83,7 +83,7 @@
       "property": "moreLink",
       "type": "string",
       "default": "",
-      "description": "",
+      "description": "More details link",
       "hax": null
     },
     {
@@ -91,14 +91,14 @@
       "property": "hasMore",
       "type": "boolean",
       "default": "",
-      "description": "",
+      "description": "See if we have more things to point to",
       "hax": null
     }
   ],
   "slots": [],
   "events": [],
   "hax": {},
-  "surfaceHash": "4123602f459f",
+  "surfaceHash": "691c1116f75c",
   "walkthroughs": [
     {
       "id": "",

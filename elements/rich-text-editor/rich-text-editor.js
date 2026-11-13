@@ -142,7 +142,8 @@ const RichTextEditorBehaviors = function (SuperClass) {
           attribute: "id",
         },
         /**
-         * Maps to editing attribute
+         * Whether the region is being edited now; focusing the editor sets it
+         * to true.
          */
         contenteditable: {
           name: "contenteditable",
@@ -151,7 +152,7 @@ const RichTextEditorBehaviors = function (SuperClass) {
           attribute: "contenteditable",
         },
         /**
-         * don't reveal toolbar on mouseover
+         * Keep the content read-only: focusing it does not start editing.
          */
         disabled: {
           name: "disabled",
@@ -160,7 +161,7 @@ const RichTextEditorBehaviors = function (SuperClass) {
           reflect: true,
         },
         /**
-         * don't reveal toolbar on mouseover
+         * Do not reveal the toolbar when the pointer moves over the editor.
          */
         disableHover: {
           name: "disableHover",
@@ -178,7 +179,7 @@ const RichTextEditorBehaviors = function (SuperClass) {
         },
 
         /**
-         * id for toolbar
+         * Id of the rich-text-editor-toolbar this editor uses.
          */
         toolbarId: {
           name: "toolbarId",
@@ -196,7 +197,7 @@ const RichTextEditorBehaviors = function (SuperClass) {
           attribute: "range",
         },
         /**
-         * raw html
+         * HTML to load into the editor in place of its content.
          */
         rawhtml: {
           type: String,
@@ -204,10 +205,8 @@ const RichTextEditorBehaviors = function (SuperClass) {
         },
 
         /**
-         * type of editor toolbar, i.e.
-         * full - full for full toolbar with breadcrumb,
-         * mini - mini for mini floating toolbar, or
-         * default toolbar if neither.
+         * Toolbar to use: full (with breadcrumbs), mini (floating) or the
+         * default.
          */
         type: {
           name: "type",

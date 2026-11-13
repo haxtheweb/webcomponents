@@ -203,20 +203,20 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
     static get properties() {
       return {
         /**
-         * Whether toggle is disabled
+         * The menu item that has focus while the menu is open.
          */
         currentItem: {
           type: Object,
         },
         /**
-         * Whether toggle is disabled
+         * Disable the menu button so the menu cannot be opened.
          */
         disabled: {
           attribute: "disabled",
           type: Boolean,
         },
         /**
-         * Whether toggle is disabled
+         * Whether the menu is open; set it to show the menu from the start.
          */
         expanded: {
           attribute: "expanded",
@@ -224,14 +224,14 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
           reflect: true,
         },
         /**
-         * Whether button is toggled
+         * Whether the menu button or one of its items has keyboard focus.
          */
         focused: {
           attribute: "focused",
           type: Boolean,
         },
         /**
-         * Whether button is toggled
+         * Whether the pointer is over the menu button or its menu.
          */
         hovered: {
           attribute: "hovered",
@@ -252,7 +252,8 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
           type: Array,
         },
         /**
-         * disables menu i=opening on hover
+         * Disables opening the menu on hover; it then opens only on click or
+         * key.
          */
         noOpenOnHover: {
           attribute: "no-open-on-hover",

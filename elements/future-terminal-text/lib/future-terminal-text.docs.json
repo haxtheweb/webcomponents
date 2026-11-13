@@ -27,7 +27,7 @@
       "property": "red",
       "type": "boolean",
       "default": "",
-      "description": "",
+      "description": "Use the red alert color for the text instead of the normal color.",
       "hax": null
     },
     {
@@ -35,7 +35,7 @@
       "property": "fadein",
       "type": "boolean",
       "default": "",
-      "description": "",
+      "description": "Fade the text in, then flicker it, when it first appears.",
       "hax": null
     },
     {

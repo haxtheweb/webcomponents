@@ -1,0 +1,43 @@
+{
+  "tag": "shadcn-theme",
+  "folder": "shadcn-theme",
+  "package": "@haxtheweb/shadcn-theme",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "shadcn-theme",
+  "description": "shadcn/ui theme for HAXcms, built on the DDD-capable shadcn design system bridge",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/shadcn-theme/shadcn-theme.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/shadcn-theme/shadcn-theme.js",
+  "install": "npm i @haxtheweb/shadcn-theme",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "sidebar-open",
+      "property": "sidebarOpen",
+      "type": "boolean",
+      "default": "true",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "7082000a430b",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/shadcn-theme",
+    "file": "shadcn-theme.js"
+  }
+}

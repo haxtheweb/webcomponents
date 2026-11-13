@@ -193,7 +193,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "height=\"Height\""
+      "s": "height=\"500\""
     },
     {
       "type": "text",
@@ -201,7 +201,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "width=\"Width\""
+      "s": "width=\"100%\""
     },
     {
       "type": "text",
@@ -284,7 +284,7 @@
       "ex": 796,
       "ey": 570,
       "label": "height",
-      "sub": "\"Height\"",
+      "sub": "\"500\"",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -296,7 +296,7 @@
       "ex": 616,
       "ey": 570,
       "label": "width",
-      "sub": "\"Width\"",
+      "sub": "\"100%\"",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -313,7 +313,7 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set resource url and height",
-      "text": "Fill in the Resource URL field in the sidebar. Content frame height."
+      "text": "Discord channel link to show as a live widget. Content frame height."
     },
     {
       "t": 10,

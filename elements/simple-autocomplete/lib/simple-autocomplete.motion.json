@@ -59,27 +59,17 @@
       "in": 2.4,
       "rows": [
         {
-          "name": "opened",
-          "desc": "opened"
-        },
-        {
           "name": "hide-input",
-          "desc": "hide input"
+          "desc": "Hide the built-in text box when…"
         },
         {
-          "name": "selection-position",
-          "desc": "selection position"
-        },
-        {
-          "name": "value",
-          "desc": "value"
+          "name": "item-limit",
+          "desc": "Most suggestions to list at onc…"
         }
       ],
       "active": [
         [5, 0],
         [7.4, 1],
-        [10, 2],
-        [12.4, 3],
         [14.8, 0]
       ]
     },
@@ -97,7 +87,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "opened"
+      "s": "hide-input"
     },
     {
       "type": "text",
@@ -105,23 +95,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "hide-input"
-    },
-    {
-      "type": "text",
-      "x": 1022,
-      "y": 336,
-      "c": "code",
-      "in": 10,
-      "s": "selection-position"
-    },
-    {
-      "type": "text",
-      "x": 1022,
-      "y": 368,
-      "c": "code",
-      "in": 12.4,
-      "s": "value=\"value\""
+      "s": "item-limit=\"5\""
     },
     {
       "type": "text",
@@ -142,20 +116,6 @@
           7.4,
           {
             "y": 336
-          },
-          0.4
-        ],
-        [
-          10,
-          {
-            "y": 368
-          },
-          0.4
-        ],
-        [
-          12.4,
-          {
-            "y": 400
           },
           0.4
         ]
@@ -182,20 +142,6 @@
             "y": 368
           },
           0.4
-        ],
-        [
-          10,
-          {
-            "y": 400
-          },
-          0.4
-        ],
-        [
-          12.4,
-          {
-            "y": 432
-          },
-          0.4
         ]
       ]
     },
@@ -205,7 +151,7 @@
       "py": 382,
       "ex": 616,
       "ey": 434,
-      "label": "opened",
+      "label": "hide-input",
       "sub": "on or off",
       "dir": 1,
       "in": 5.2,
@@ -217,35 +163,11 @@
       "py": 382,
       "ex": 796,
       "ey": 434,
-      "label": "hide-input",
-      "sub": "on or off",
+      "label": "item-limit",
+      "sub": "a number",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
-    },
-    {
-      "type": "callout",
-      "px": 590,
-      "py": 382,
-      "ex": 616,
-      "ey": 434,
-      "label": "selection-position",
-      "sub": "on or off",
-      "dir": 1,
-      "in": 10.2,
-      "out": 12.2
-    },
-    {
-      "type": "callout",
-      "px": 770,
-      "py": 382,
-      "ex": 796,
-      "ey": 434,
-      "label": "value",
-      "sub": "\"value\"",
-      "dir": 1,
-      "in": 12.6,
-      "out": 14.600000000000001
     }
   ],
   "beats": [
@@ -258,14 +180,8 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set opened and hide input",
-      "text": "Add the opened attribute to switch it on."
-    },
-    {
-      "t": 10,
-      "out": 14.6,
-      "title": "Set selection position",
-      "text": "Add the selection-position attribute to switch it on."
+      "title": "Set hide input",
+      "text": "Hide the built-in text box when the element is driven by another input."
     },
     {
       "t": 14.8,

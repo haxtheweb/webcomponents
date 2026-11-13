@@ -19,7 +19,7 @@
       "property": "alt",
       "type": "string",
       "default": "\"\"",
-      "description": "",
+      "description": "Alternative text for the image.",
       "hax": null
     },
     {
@@ -27,7 +27,7 @@
       "property": "source",
       "type": "string",
       "default": "",
-      "description": "",
+      "description": "Address of the image shown beside the offering.",
       "hax": null
     },
     {
@@ -35,7 +35,7 @@
       "property": "icon",
       "type": "string",
       "default": "",
-      "description": "",
+      "description": "Icon shown next to the title.",
       "hax": null
     },
     {
@@ -43,7 +43,7 @@
       "property": "title",
       "type": "string",
       "default": "",
-      "description": "",
+      "description": "Title of the offering; its first word is underlined.",
       "hax": null
     },
     {

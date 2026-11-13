@@ -191,6 +191,9 @@ class PaperInputFlagged extends LitElement {
   }
   static get properties() {
     return {
+      /**
+       * Label for the text field.
+       */
       label: {
         type: String,
       },
@@ -224,7 +227,7 @@ class PaperInputFlagged extends LitElement {
         reflect: true,
       },
       /**
-       * value
+       * Text in the field, checked against the flagged words as it changes.
        */
       value: {
         type: String,
