@@ -12,8 +12,8 @@
  * `"--ddd-x"` used as an object key or setProperty() name, or a prefix
  * declared from a template such as `--ddd-primary-${i}:`.
  * Used = any `var(--ddd-x` that is not itself built from a template.
- * Override hooks (`--ddd-component-*`, `--ddd-card-*`, `--ddd-button-*`) are
- * set by consumers, so they are never flagged.
+ * Override hooks (`--ddd-component-*`, `--ddd-card-*`, `--ddd-button-*`,
+ * `--ddd-table-*`) are set by consumers, so they are never flagged.
  *
  * It also fails on `var(--ddd-border-xs) solid <colour>` (with or without a
  * fallback inside the var()): --ddd-border-xs…lg already include width,
@@ -52,7 +52,13 @@ const SKIP_DIRS = new Set([
 const BASELINE = path.join(__dirname, "ddd-token-lint.baseline.json");
 // Override hooks: components read these so authors can restyle one element.
 // They are meant to be set by consumers, so nothing in the repo declares them.
-const HOOK_PREFIXES = ["--ddd-component-", "--ddd-card-", "--ddd-button-"];
+// --ddd-table-* are the DDDTable.js hooks listed in its header comment.
+const HOOK_PREFIXES = [
+  "--ddd-component-",
+  "--ddd-card-",
+  "--ddd-button-",
+  "--ddd-table-",
+];
 // Single override hooks DDD reads with a fallback (DDDStyles.js, learning-component).
 const HOOK_TOKENS = new Set([
   "--ddd-theme-font-color",

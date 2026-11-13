@@ -1,5 +1,5 @@
 import { fixture, expect, html } from "@open-wc/testing";
-import { LitElement } from "lit";
+import { LitElement, css } from "lit";
 import * as DDDModule from "../d-d-d.js";
 import { DDDTableStyles } from "../lib/DDDTable.js";
 
@@ -40,10 +40,32 @@ class DDDTableTester extends LitElement {
 }
 globalThis.customElements.define("ddd-table-tester", DDDTableTester);
 
+// the DDD reset that DDDSuper shadow roots carry sizes table parts with the
+// body font size and forces border-color: inherit !important on them
+class DDDTableResetTester extends DDDTableTester {
+  static get styles() {
+    return [
+      css`
+        thead,
+        tbody,
+        tfoot,
+        tr,
+        td,
+        th {
+          border-color: inherit !important;
+          font-size: 30px;
+        }
+      `,
+      DDDTableStyles,
+    ];
+  }
+}
+globalThis.customElements.define("ddd-table-reset-tester", DDDTableResetTester);
+
 // the DDD colour tokens come from DDDStyles on a real page; give the
 // fixture its own so the light-dark() values compute
 const tokens =
-  "--ddd-theme-default-limestoneMaxLight: rgb(242, 242, 244); --ddd-theme-default-coalyGray: rgb(38, 38, 38); --ddd-theme-default-nittanyNavy: rgb(0, 30, 68); --ddd-theme-default-white: rgb(255, 255, 255); --ddd-theme-default-limestoneLight: rgb(228, 229, 231); --ddd-theme-default-slateGray: rgb(49, 77, 100); --ddd-theme-default-slateMaxLight: rgb(238, 243, 247); --ddd-spacing-1: 4px; --ddd-spacing-2: 8px; --ddd-spacing-3: 12px;";
+  "--ddd-theme-default-limestoneMaxLight: rgb(242, 242, 244); --ddd-theme-default-coalyGray: rgb(38, 38, 38); --ddd-theme-default-nittanyNavy: rgb(0, 30, 68); --ddd-theme-default-white: rgb(255, 255, 255); --ddd-theme-default-limestoneLight: rgb(228, 229, 231); --ddd-theme-default-slateGray: rgb(49, 77, 100); --ddd-theme-default-slateMaxLight: rgb(238, 243, 247); --ddd-theme-default-limestoneGray: rgb(162, 170, 173); --ddd-font-size-4xs: 16px; --ddd-spacing-1: 4px; --ddd-spacing-2: 8px; --ddd-spacing-3: 12px;";
 
 const q = (el, sel) => el.shadowRoot.querySelector(sel);
 const cs = (el, sel) => getComputedStyle(q(el, sel));
@@ -61,8 +83,11 @@ describe("DDDTable", () => {
       ></ddd-table-tester>`,
     );
     const head = cs(el, "thead th");
-    expect(head.backgroundColor).to.equal("rgb(242, 242, 244)");
+    // a 6% tint of the text token, so it shows under every design system
+    expect(head.backgroundColor).to.contain("0.06");
     expect(head.color).to.equal("rgb(0, 30, 68)");
+    expect(head.borderBottomWidth).to.equal("2px");
+    expect(head.borderBottomColor).to.equal("rgb(162, 170, 173)");
     expect(Number(head.fontWeight)).to.be.at.least(700);
     const cell = cs(el, "tbody tr:first-child td");
     expect(cell.borderBottomWidth).to.equal("1px");
@@ -81,7 +106,7 @@ describe("DDDTable", () => {
       ></ddd-table-tester>`,
     );
     const head = cs(el, "thead th");
-    expect(head.backgroundColor).to.equal("rgb(38, 38, 38)");
+    expect(head.backgroundColor).to.equal("rgb(49, 77, 100)");
     expect(head.color).to.equal("rgb(255, 255, 255)");
     expect(cs(el, "tbody tr:first-child td").borderBottomColor).to.equal(
       "rgb(49, 77, 100)",
@@ -107,8 +132,8 @@ describe("DDDTable", () => {
         style="color-scheme: light; ${tokens}"
       ></ddd-table-tester>`,
     );
-    expect(cs(el, "tbody tr:nth-child(2) td").backgroundColor).to.equal(
-      "rgb(238, 243, 247)",
+    expect(cs(el, "tbody tr:nth-child(2) td").backgroundColor).to.contain(
+      "0.04",
     );
     expect(cs(el, "tbody tr:nth-child(1) td").backgroundColor).to.equal(
       "rgba(0, 0, 0, 0)",
@@ -131,6 +156,47 @@ describe("DDDTable", () => {
       "rgba(0, 0, 0, 0)",
     );
     expect(cs(el, "tbody tr:first-child td").borderLeftStyle).to.equal("solid");
+  });
+
+  it("gives a column of row headers a stronger divider", async () => {
+    const el = await fixture(
+      html`<ddd-table-tester
+        style="color-scheme: light; ${tokens}"
+      ></ddd-table-tester>`,
+    );
+    const th = cs(el, "tbody tr:first-child th");
+    expect(th.borderRightWidth).to.equal("2px");
+    expect(th.borderRightColor).to.equal("rgb(228, 229, 231)");
+  });
+
+  it("pads the outer cells with --ddd-table-edge-padding", async () => {
+    const el = await fixture(
+      html`<ddd-table-tester
+        style="${tokens} --ddd-table-edge-padding: 24px"
+      ></ddd-table-tester>`,
+    );
+    expect(cs(el, "tbody tr:first-child th").paddingLeft).to.equal("24px");
+    expect(cs(el, "tbody tr:first-child td").paddingRight).to.equal("24px");
+    // inner edges keep the cell padding
+    expect(cs(el, "tbody tr:first-child td").paddingLeft).to.equal("12px");
+    el.mods = "bordered";
+    await el.updateComplete;
+    expect(cs(el, "tbody tr:first-child th").paddingLeft).to.equal("12px");
+  });
+
+  it("keeps its size and line colours under the DDD reset", async () => {
+    const el = await fixture(
+      html`<ddd-table-reset-tester
+        style="color-scheme: light; ${tokens}"
+      ></ddd-table-reset-tester>`,
+    );
+    expect(cs(el, "tbody tr:first-child td").fontSize).to.equal("16px");
+    expect(cs(el, "thead th").borderBottomColor).to.equal("rgb(162, 170, 173)");
+    el.mods = "bordered";
+    await el.updateComplete;
+    expect(cs(el, "tbody tr:first-child td").borderLeftColor).to.equal(
+      "rgb(162, 170, 173)",
+    );
   });
 
   it("lets custom properties override the DDD defaults", async () => {
