@@ -21,6 +21,8 @@ const {
   goToSiteRows,
 } = await import("../lib/v2/app-hax-dashboard-programs.js");
 await import("../app-hax.js");
+const { SuperDaemonInstance } =
+  await import("@haxtheweb/super-daemon/super-daemon.js");
 
 const DOCX =
   "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
@@ -140,6 +142,40 @@ describe("app-hax: Merlin in the dashboard bar", () => {
   });
   afterEach(() => {
     el.remove();
+  });
+
+  it("puts app-header-pre after the character and app-header-post before the HAX mark", () => {
+    const left = el.shadowRoot.querySelector(".left-group");
+    const leftOrder = Array.from(left.children).map(
+      (n) => n.getAttribute("name") || n.localName,
+    );
+    expect(leftOrder.indexOf("app-hax-user-menu")).to.be.lessThan(
+      leftOrder.indexOf("app-header-pre"),
+    );
+    const right = el.shadowRoot.querySelector(".right-group");
+    const rightOrder = Array.from(right.children).map(
+      (n) => n.getAttribute("name") || n.className || n.localName,
+    );
+    expect(rightOrder).to.deep.equal(["app-header-post", "haxLogo"]);
+  });
+
+  it("lists the dashboard operations before Community, with no Editor group", () => {
+    const options = SuperDaemonInstance.allItems;
+    const community = options.filter((o) => o.path.indexOf("Community/") === 0);
+    expect(community.length).to.be.greaterThan(0);
+    expect(
+      options.some((o) => (o.path || "").indexOf("HAX/community") === 0),
+    ).to.equal(false);
+    expect(
+      options.some((o) =>
+        /pedagogy|Teaching Excellence/.test(`${o.path} ${o.title}`),
+      ),
+    ).to.equal(false);
+    community.forEach((o) => expect(o.priority).to.be.greaterThan(0));
+    // the site operations are commands too, so / Commands is never empty
+    const copy = options.find((o) => o.path === "Sites/Copy a site");
+    expect(copy.context).to.include("/");
+    expect(copy.priority).to.be.lessThan(0);
   });
 
   it("puts Merlin's field where the title was", () => {

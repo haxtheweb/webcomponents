@@ -461,7 +461,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       joinOurCommunity: "Join our Community",
       userTutorials: "User Tutorials",
       userDocumentation: "User Documentation",
-      haxTeachingExcellence: "HAX Teaching Excellence",
       bugIssue: "Bug / issue",
       ideaFeatureRequest: "Idea / Feature request",
       pageMissBurns: "the page miss.. it burns!!!",
@@ -610,11 +609,12 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       tags: ["Sites", "Administration", "change"],
       eventName: "super-daemon-run-program",
       path: "Sites/Go to",
+      priority: -30,
       value: {
         name: "Go to site",
         program: async (input) => goToSiteRows(this, store, input),
       },
-      context: ["*"],
+      context: ["*", "/"],
     });
     SuperDaemonInstance.defineOption({
       i18n: { context: this, title: "systemSettings" },
@@ -628,6 +628,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       },
       eventName: "super-daemon-element-method",
       path: "Dashboard/System settings",
+      priority: -10,
       context: ["system-settings"],
     });
     // contribution helpers
@@ -635,7 +636,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       i18n: { context: this, title: "joinOurCommunity" },
       title: this.t.joinOurCommunity,
       icon: "hax:discord",
-      priority: -100,
+      priority: 100,
       tags: ["community", "discord", "chat", "help"],
       externalLink: true,
       value: {
@@ -644,14 +645,14 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         args: ["https://discord.gg/aCGxmRHEJP"],
       },
       eventName: "super-daemon-element-method",
-      path: "HAX/community/join",
+      path: "Community/Join",
       context: ["logged-in", "CMS", "HAX", "*"],
     });
     SuperDaemonInstance.defineOption({
       i18n: { context: this, title: "userTutorials" },
       title: this.t.userTutorials,
       icon: "hax:hax2022",
-      priority: -1000,
+      priority: 100,
       tags: ["Documentation", "community", "help"],
       externalLink: true,
       value: {
@@ -660,13 +661,14 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         args: ["https://haxtheweb.org/tutorials"],
       },
       eventName: "super-daemon-element-method",
-      path: "HAX/community/tutorials",
+      path: "Community/Tutorials",
       context: ["logged-in", "CMS", "HAX", "*"],
     });
     SuperDaemonInstance.defineOption({
       i18n: { context: this, title: "userDocumentation" },
       title: this.t.userDocumentation,
       icon: "hax:hax2022",
+      priority: 100,
       tags: ["Documentation", "community", "help"],
       externalLink: true,
       value: {
@@ -675,28 +677,14 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         args: ["https://haxtheweb.org/documentation"],
       },
       eventName: "super-daemon-element-method",
-      path: "HAX/community/documentation",
-      context: ["logged-in", "CMS", "HAX", "*"],
-    });
-    SuperDaemonInstance.defineOption({
-      i18n: { context: this, title: "haxTeachingExcellence" },
-      title: this.t.haxTeachingExcellence,
-      icon: "hax:hax2022",
-      tags: ["Ontology", "community", "pedagogy", "documentation", "help"],
-      externalLink: true,
-      value: {
-        target: this,
-        method: "_openExternalLink",
-        args: ["https://haxtheweb.org/ontology"],
-      },
-      eventName: "super-daemon-element-method",
-      path: "HAX/community/pedagogy",
+      path: "Community/Documentation",
       context: ["logged-in", "CMS", "HAX", "*"],
     });
     SuperDaemonInstance.defineOption({
       i18n: { context: this, title: "bugIssue" },
       title: this.t.bugIssue,
       icon: "mdi-social:github-circle",
+      priority: 100,
       tags: ["Bug report", "github", "git", "community", "issue queue"],
       value: {
         target: this,
@@ -704,13 +692,14 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         args: ["bug", "POP,bug"],
       },
       eventName: "super-daemon-element-method",
-      path: "HAX/community/contribute",
+      path: "Community/Contribute",
       context: ["logged-in", "CMS", "HAX", "*"],
     });
     SuperDaemonInstance.defineOption({
       i18n: { context: this, title: "ideaFeatureRequest" },
       title: this.t.ideaFeatureRequest,
       icon: "mdi-social:github-circle",
+      priority: 100,
       tags: [
         "Feature request",
         "idea",
@@ -726,7 +715,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       },
       context: ["logged-in", "CMS", "HAX", "*"],
       eventName: "super-daemon-element-method",
-      path: "HAX/community/contribute",
+      path: "Community/Contribute",
     });
     this.windowControllers = new AbortController();
     this.fileDragActive = false;
@@ -764,6 +753,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     this.userMenuOpen = false;
     this.adminDocked = false;
     this.hasHeaderPre = false;
+    this.hasHeaderPost = false;
     this.isHAXiamDeployment = false;
     this.__currentAdminRoutePath = null;
     this.__systemSettingsModalOpen = false;
@@ -979,6 +969,11 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         reflect: true,
         attribute: "has-header-pre",
       },
+      hasHeaderPost: {
+        type: Boolean,
+        reflect: true,
+        attribute: "has-header-post",
+      },
       siteReady: { type: Boolean },
       /**
        * System Settings is open, docked below the bar. The bar stays
@@ -1171,13 +1166,15 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           justify-content: flex-start;
           padding-left: var(--hax-ui-gap-lg, 12px);
         }
-        slot[name="app-header-pre"] {
+        slot[name="app-header-pre"],
+        slot[name="app-header-post"] {
           display: inline-flex;
           align-items: center;
           justify-content: center;
           height: var(--top-bar-height, 64px);
         }
-        slot[name="app-header-pre"]::slotted(*) {
+        slot[name="app-header-pre"]::slotted(*),
+        slot[name="app-header-post"]::slotted(*) {
           color: var(--ddd-theme-default-white, #fff);
           background-color: var(--ddd-primary-2, #1e407c);
           height: var(--top-bar-height, 64px);
@@ -1219,6 +1216,11 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           }
           super-daemon-search.merlin {
             --super-daemon-search-width: 100%;
+          }
+          /* the deployment's own marks give Merlin the room on phones */
+          slot[name="app-header-pre"],
+          slot[name="app-header-post"] {
+            display: none;
           }
           /* no keyboard shortcut chips on phones */
           super-daemon-search.merlin::part(shortcut) {
@@ -1792,6 +1794,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     // in firstUpdated scheduled a redundant second update (change-in-update).
     if (!this.hasUpdated) {
       this.hasHeaderPre = !!this.querySelector('[slot="app-header-pre"]');
+      this.hasHeaderPost = !!this.querySelector('[slot="app-header-post"]');
     }
   }
 
@@ -2613,6 +2616,16 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     this.hasHeaderPre = hasContent;
   }
 
+  _syncHeaderPostSlot(e) {
+    let hasContent = false;
+    if (e && e.target && e.target.assignedElements) {
+      hasContent = e.target.assignedElements({ flatten: true }).length > 0;
+    } else if (this.querySelector('[slot="app-header-post"]')) {
+      hasContent = true;
+    }
+    this.hasHeaderPost = hasContent;
+  }
+
   _isDashboardModalOpen() {
     // If simple-modal is open (login, etc), keep scroll locked
     const simpleModal =
@@ -2943,10 +2956,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       <div class="bar-wrap">
         <app-hax-top-bar>
           <div slot="left" class="left-group">
-            <slot
-              name="app-header-pre"
-              @slotchange="${this._syncHeaderPreSlot}"
-            ></slot>
             <app-hax-user-menu
               id="user-menu"
               align="start"
@@ -3034,6 +3043,11 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
                 @click=${this._logoutGuarded}
               ></app-hax-user-menu-button>
             </app-hax-user-menu>
+            <!-- after the character, so you are always in the same spot -->
+            <slot
+              name="app-header-pre"
+              @slotchange="${this._syncHeaderPreSlot}"
+            ></slot>
           </div>
 
           <div slot="center" class="center-group">
@@ -3051,6 +3065,12 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           </div>
 
           <div slot="right" class="right-group">
+            <!-- a deployment's own mark (an institution logo, say), just
+                 before the HAX mark -->
+            <slot
+              name="app-header-post"
+              @slotchange="${this._syncHeaderPostSlot}"
+            ></slot>
             <!-- the HAX mark: decorative, it says you are in HAX -->
             <span class="haxLogo" id="hlogo" aria-hidden="true">
               <simple-icon-lite

@@ -163,12 +163,14 @@ export function defineDashboardPrograms(host, SuperDaemonInstance) {
     tags: ["Create", "Import", "file", "upload", "drop", "site"],
     eventName: "super-daemon-element-method",
     path: "Create/From file",
+    priority: -40,
     value: {
       target: host,
       method: "chooseFileForSite",
       args: [],
     },
-    context: ["*"],
+    // "/" lists it under Commands too
+    context: ["*", "/"],
   });
   SuperDaemonInstance.defineOption({
     title: t.makeSiteFromAFile,
@@ -177,6 +179,7 @@ export function defineDashboardPrograms(host, SuperDaemonInstance) {
     tags: [],
     eventName: "super-daemon-run-program",
     path: "Create/From file",
+    priority: -40,
     context: [FILE_DROP_PROGRAM],
     value: {
       name: t.makeSiteFromAFile,
@@ -224,11 +227,13 @@ export function defineDashboardPrograms(host, SuperDaemonInstance) {
     tags: ["Create", "template", "skeleton", "site"],
     eventName: "super-daemon-run-program",
     path: "Create/From template",
+    priority: -40,
     value: {
       name: t.createSiteFromTemplateName,
       program: listProgram("skeleton"),
     },
-    context: ["*"],
+    // "/" lists it under Commands too
+    context: ["*", "/"],
   });
   SuperDaemonInstance.defineOption({
     i18n: { context: host, title: "createBlankSiteWithTheme" },
@@ -237,11 +242,13 @@ export function defineDashboardPrograms(host, SuperDaemonInstance) {
     tags: ["Create", "theme", "blank", "scratch", "site"],
     eventName: "super-daemon-run-program",
     path: "Create/From scratch",
+    priority: -40,
     value: {
       name: t.createBlankSiteWithThemeName,
       program: listProgram("blank"),
     },
-    context: ["*"],
+    // "/" lists it under Commands too
+    context: ["*", "/"],
   });
   // every importer, by name, so typing "wordpress" finds it
   const filter = host._useCaseFilter();
@@ -260,12 +267,14 @@ export function defineDashboardPrograms(host, SuperDaemonInstance) {
         description: item.useCaseDescription,
         eventName: "super-daemon-element-method",
         path: `Import/${item.useCaseTitle}`,
+        priority: -20,
         value: {
           target: host,
           method: "runImporter",
           args: ["file", item.importType],
         },
-        context: ["*"],
+        // "/" lists it under Commands too
+        context: ["*", "/"],
       });
     } else if (item.importKind === "url") {
       SuperDaemonInstance.defineOption({
@@ -277,6 +286,7 @@ export function defineDashboardPrograms(host, SuperDaemonInstance) {
         description: item.useCaseDescription,
         eventName: "super-daemon-run-program",
         path: `Import/${item.useCaseTitle}`,
+        priority: -20,
         value: {
           name: item.useCaseTitle,
           placeholder: item.prompt,
@@ -302,7 +312,8 @@ export function defineDashboardPrograms(host, SuperDaemonInstance) {
             ];
           },
         },
-        context: ["*"],
+        // "/" lists it under Commands too
+        context: ["*", "/"],
       });
     }
   });
@@ -314,6 +325,7 @@ export function defineDashboardPrograms(host, SuperDaemonInstance) {
     tags: ["Import", "url", "link", "migrate", "site"],
     eventName: "super-daemon-run-program",
     path: "Import/From a URL",
+    priority: -20,
     value: {
       name: t.importFromUrlName,
       machineName: "app-hax-import-url",
@@ -342,7 +354,8 @@ export function defineDashboardPrograms(host, SuperDaemonInstance) {
           }));
       },
     },
-    context: ["*"],
+    // "/" lists it under Commands too
+    context: ["*", "/"],
   });
   // sort the sites, as the sort menu by the search does
   SuperDaemonInstance.defineOption({
@@ -352,6 +365,7 @@ export function defineDashboardPrograms(host, SuperDaemonInstance) {
     tags: ["Dashboard", "sort", "sites", "order"],
     eventName: "super-daemon-run-program",
     path: "Dashboard/Sort",
+    priority: -10,
     value: {
       name: t.sortSitesByName,
       program: async () => {
@@ -378,7 +392,8 @@ export function defineDashboardPrograms(host, SuperDaemonInstance) {
         }));
       },
     },
-    context: ["*"],
+    // "/" lists it under Commands too
+    context: ["*", "/"],
   });
 }
 
@@ -411,6 +426,7 @@ export function defineSiteOptionPrograms(host, SuperDaemonInstance, store) {
       tags: ["Sites", "site", "options", op],
       eventName: "super-daemon-run-program",
       path: `Sites/${name}`,
+      priority: -30,
       value: {
         name: name,
         program: async (input) =>
@@ -427,7 +443,9 @@ export function defineSiteOptionPrograms(host, SuperDaemonInstance, store) {
             path: `Sites/${name}/${site.title}`,
           })),
       },
-      context: [context],
+      // "/" lists it under Commands too; user access only where the
+      // backend has it (its own context, kept in step by app-hax)
+      context: context === "*" ? ["*", "/"] : [context],
     });
   });
 }
