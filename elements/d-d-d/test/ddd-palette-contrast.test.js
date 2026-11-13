@@ -1,15 +1,24 @@
 import { expect } from "@open-wc/testing";
+// the older palettes are built from simple-colors tokens, defined globally
+import "@haxtheweb/simple-colors-shared-styles/simple-colors-shared-styles.js";
 import { DDDAllStyles } from "../lib/DDDStyles.js";
-import { DDDPaletteSwatches } from "../lib/DDDPaletteRegistry.js";
+import {
+  DDDPaletteRegistry,
+  DDDPaletteSwatches,
+} from "../lib/DDDPaletteRegistry.js";
 
-// the palettes added with literal values (16-19) promise that every
-// text-color-N meets WCAG AA (4.5:1) on color-N; hold them to it
+// the palettes added with literal values (16-19) answer to their key and to
+// their number without any other stylesheet
 const LITERAL_PALETTES = [
   "tidepool-teal",
   "desert-dune",
   "berry-bramble",
   "clear-sight",
 ];
+// every palette promises that text-color-N meets WCAG AA (4.5:1) on
+// color-N: themes put text-color-N on color-N fills (header, footer, menu,
+// buttons) for whichever palette a site picks, so hold every one to it
+const ALL_PALETTES = DDDPaletteRegistry.map((p) => p.key);
 
 function channels(value) {
   const m = String(value).match(/rgba?\(([^)]+)\)/);
@@ -30,7 +39,7 @@ function ratio(a, b) {
   return (Math.max(la, lb) + 0.05) / (Math.min(la, lb) + 0.05);
 }
 
-describe("DDD literal palettes contrast", () => {
+describe("DDD palettes contrast", () => {
   let host;
   // a plain container: open-wc fixtures are removed after each test
   before(() => {
@@ -38,7 +47,7 @@ describe("DDD literal palettes contrast", () => {
     globalThis.document.body.appendChild(host);
     const root = host.attachShadow({ mode: "open" });
     root.adoptedStyleSheets = DDDAllStyles.map((s) => s.styleSheet);
-    root.innerHTML = LITERAL_PALETTES.map(
+    root.innerHTML = ALL_PALETTES.map(
       (key) =>
         `<div data-palette="${key}">${DDDPaletteSwatches.map(
           (n) =>
@@ -59,6 +68,9 @@ describe("DDD literal palettes contrast", () => {
       expect(channels(bg)).to.not.equal(null);
       expect(bg).to.not.equal("rgba(0, 0, 0, 0)");
     });
+  });
+
+  ALL_PALETTES.forEach((key) => {
     it(`${key}: every text color meets 4.5:1 on its fill`, () => {
       const spans = host.shadowRoot.querySelectorAll(
         `[data-palette="${key}"] span`,
@@ -69,6 +81,10 @@ describe("DDD literal palettes contrast", () => {
         const bg = channels(cs.backgroundColor);
         const fg = channels(cs.color);
         expect(bg, `fill ${span.dataset.n}`).to.not.equal(null);
+        expect(
+          cs.backgroundColor,
+          `${key} fill ${span.dataset.n}`,
+        ).to.not.equal("rgba(0, 0, 0, 0)");
         expect(ratio(bg, fg), `${key} ${span.dataset.n}`).to.be.at.least(4.5);
       });
     });

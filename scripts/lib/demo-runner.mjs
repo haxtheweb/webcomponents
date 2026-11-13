@@ -165,7 +165,7 @@ export async function openPage(
  * is done twice, since a render that lands late can start new animations.
  * Bounded by SETTLED_MAX_MS; a page still changing then is measured as is.
  */
-async function waitForSettledRender(page) {
+export async function waitForSettledRender(page) {
   const deadline = Date.now() + SETTLED_MAX_MS;
   for (let pass = 0; pass < 2; pass++) {
     await page.evaluate(freezeMotion).catch(() => {});

@@ -9,6 +9,11 @@ import {
   shrinkBaseline,
   mergeResults,
   baselineSize,
+  modesOf,
+  paletteMode,
+  parseMode,
+  sortBaseline,
+  takesPalettes,
 } from "../lib/contrast.mjs";
 
 test("targetKey joins shadow paths and drops positions and digits", () => {
@@ -112,4 +117,108 @@ test("mergeResults keeps what both runs saw (min) or either saw (max)", () => {
   assert.deepEqual(mergeResults(a, b, Math.max), {
     e: { light: { p: 2, r: 1 }, dark: { q: 1 } },
   });
+});
+
+test("paletteMode and parseMode round-trip palette and theme modes", () => {
+  assert.equal(paletteMode("dark", "salmon-season"), "dark@salmon-season");
+  assert.equal(
+    paletteMode("light", null, "journey-sidebar-theme"),
+    "light@journey-sidebar-theme",
+  );
+  assert.equal(
+    paletteMode("light", "monotone", "journey-sidebar-theme"),
+    "light@journey-sidebar-theme:monotone",
+  );
+  assert.equal(paletteMode("dark", null, null), "dark");
+  assert.deepEqual(parseMode("light"), {
+    scheme: "light",
+    theme: null,
+    palette: null,
+  });
+  assert.deepEqual(parseMode("dark@salmon-season"), {
+    scheme: "dark",
+    theme: null,
+    palette: "salmon-season",
+  });
+  assert.deepEqual(parseMode("light@journey-sidebar-theme:monotone"), {
+    scheme: "light",
+    theme: "journey-sidebar-theme",
+    palette: "monotone",
+  });
+  assert.deepEqual(
+    parseMode("light@journey-sidebar-theme", ["journey-sidebar-theme"]),
+    { scheme: "light", theme: "journey-sidebar-theme", palette: null },
+  );
+});
+
+test("modesOf lists light and dark first, then palette modes in order", () => {
+  assert.deepEqual(
+    modesOf(
+      { "light@monotone": {}, dark: {} },
+      { light: {}, "dark@berry-bramble": {} },
+    ),
+    ["light", "dark", "dark@berry-bramble", "light@monotone"],
+  );
+  assert.deepEqual(modesOf(undefined, null), []);
+});
+
+test("palette modes go through compare, shrink, merge and sort", () => {
+  const baseline = {
+    "x-theme": { "dark@monotone": { "x-theme >> header": 2 } },
+  };
+  const results = {
+    "x-theme": {
+      light: {},
+      dark: {},
+      "dark@monotone": { "x-theme >> header": 1 },
+      "light@salmon-season": { "x-theme >> footer": 1 },
+    },
+  };
+  const { fresh, fixed } = compareToBaseline(results, baseline);
+  assert.deepEqual(
+    fresh.map((f) => [f.mode, f.key]),
+    [["light@salmon-season", "x-theme >> footer"]],
+  );
+  assert.deepEqual(
+    fixed.map((f) => [f.mode, f.count, f.baseline]),
+    [["dark@monotone", 1, 2]],
+  );
+  assert.deepEqual(shrinkBaseline(baseline, results), {
+    "x-theme": { "dark@monotone": { "x-theme >> header": 1 } },
+  });
+  assert.equal(baselineGrowth(baseline, results).length, 1);
+  const merged = mergeResults(
+    results,
+    { "x-theme": { "dark@monotone": { "x-theme >> header": 3 } } },
+    Math.min,
+  );
+  assert.deepEqual(merged["x-theme"]["dark@monotone"], {
+    "x-theme >> header": 1,
+  });
+  assert.deepEqual(Object.keys(sortBaseline(results)["x-theme"]), [
+    "dark@monotone",
+    "light@salmon-season",
+  ]);
+});
+
+test("takesPalettes: palette tokens or a reflected data-palette", () => {
+  assert.equal(
+    takesPalettes(["a { color: var(--ddd-palette-color-1); }"]),
+    true,
+  );
+  assert.equal(
+    takesPalettes(["a { color: var(--ddd-palette-text-color-6); }"]),
+    true,
+  );
+  assert.equal(
+    takesPalettes([
+      'dataPalette: { type: Number, reflect: true, attribute: "data-palette" }',
+    ]),
+    true,
+  );
+  assert.equal(
+    takesPalettes(["a { color: var(--ddd-theme-default-white); }"]),
+    false,
+  );
+  assert.equal(takesPalettes([]), false);
 });

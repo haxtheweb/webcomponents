@@ -22,10 +22,22 @@ describe("DDDReading", () => {
     expect(text).to.include("--ddd-theme-default-coalyGray");
     expect(text).to.include("--ddd-theme-default-limestoneMaxLight");
     expect(text).to.match(
-      /clean-one > :is\(p, ul, ol, dl, blockquote\) \{\s*color: light-dark/,
+      /clean-one > :is\(p, ul, ol, dl, blockquote\) \{\s*color: var\(\s*--ddd-reading-prose-color,\s*light-dark/,
     );
     // no rule that selects headings sets a color
     expect(text).to.not.match(/h[1-6][^{}]*\{[^}]*\bcolor:/);
+  });
+
+  it("lets a theme set the running text color for its surface", () => {
+    const host = globalThis.document.createElement("div");
+    globalThis.document.body.appendChild(host);
+    const root = host.attachShadow({ mode: "open" });
+    root.adoptedStyleSheets = [dddReadingProse("x-reading-host").styleSheet];
+    root.innerHTML =
+      '<x-reading-host style="--ddd-reading-prose-color: rgb(1, 2, 3)"><p>text</p></x-reading-host>';
+    const p = root.querySelector("p");
+    expect(globalThis.getComputedStyle(p).color).to.equal("rgb(1, 2, 3)");
+    host.remove();
   });
 
   it("keeps a start-aligned blockquote's indent inside the measure", () => {

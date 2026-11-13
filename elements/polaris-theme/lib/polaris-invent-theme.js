@@ -156,6 +156,7 @@ class PolarisInventTheme extends LTIResizingMixin(
         :host([data-palette="11"]) site-menu,
         :host([data-palette="boldly-lion"]) site-menu {
           --site-menu-container-background-color: var(--ddd-palette-color-7);
+          --map-menu-item-a-color: var(--ddd-palette-text-color-7);
         }
 
         scroll-button {
@@ -208,9 +209,13 @@ class PolarisInventTheme extends LTIResizingMixin(
           background-color: var(--polaris-header-bg-color);
         }
 
+        /* text on palette fills uses the palette's paired text color, which
+           DDD holds at WCAG AA (4.5:1) on its fill in every palette:
+           text-color-1 on this color-1 bar, text-color-7 on the color-7
+           buttons below (WCAG 1.4.3, 1.4.11) */
         .nav {
           background-color: var(--ddd-palette-color-1);
-          color: var(--polaris-nav-color);
+          color: var(--ddd-palette-text-color-1, var(--polaris-nav-color));
         }
 
         #slot {
@@ -232,7 +237,10 @@ class PolarisInventTheme extends LTIResizingMixin(
           );
           --map-menu-overflow: visible;
           --site-menu-container-background-color: var(--ddd-palette-color-6);
-          --map-menu-item-a-active-color: var(--ddd-palette-text-color-1);
+          /* item text paired with the fill under it: the menu panel
+             (color-6, color-7 above) and the active item (color-2) */
+          --map-menu-item-a-color: var(--ddd-palette-text-color-6);
+          --map-menu-item-a-active-color: var(--ddd-palette-text-color-2);
           --map-menu-item-icon-active-color: white;
           max-width: 300px;
           overflow-x: hidden;
@@ -279,8 +287,11 @@ class PolarisInventTheme extends LTIResizingMixin(
           --site-menu-button-button-hover-color: var(
             --ddd-palette-text-color-6
           );
-          --site-menu-button-icon-fill-color: white;
-          color: white;
+          --site-menu-button-icon-fill-color: var(
+            --ddd-palette-text-color-7,
+            white
+          );
+          color: var(--ddd-palette-text-color-7, white);
           background-color: var(
             --ddd-palette-color-7,
             var(--ddd-theme-default-inventOrange)
@@ -321,6 +332,9 @@ class PolarisInventTheme extends LTIResizingMixin(
           grid-area: next;
         }
         site-menu-button div.wrapper {
+          /* set here, not inherited: the label is slotted into a button,
+             whose browser default text color (white in dark mode) would win */
+          color: var(--ddd-palette-text-color-7, white);
           flex: 1;
           margin: 0;
           display: block;
@@ -337,40 +351,6 @@ class PolarisInventTheme extends LTIResizingMixin(
           font-weight: 800;
           line-height: 1.625;
           color: inherit;
-        }
-        /*
-         * Pick black or white from the background the palette gives each
-         * surface: white when the background's relative luminance is below
-         * 0.179 (where both reach the same contrast), black otherwise.
-         * White on the default inventOrange buttons was 2.7:1 and the
-         * limestone icons on the skyBlue bar 2.5:1 (WCAG 1.4.3, 1.4.11).
-         * Browsers without relative color syntax keep the colors above.
-         */
-        @supports (color: color(from red xyz-d65 x y z)) {
-          site-menu-button {
-            --polaris-invent-button-text: color(
-              from
-                var(
-                  --ddd-palette-color-7,
-                  var(--ddd-theme-default-inventOrange)
-                )
-                xyz-d65 calc(clamp(0, (0.179 - y) * 1000, 1) * 0.9505)
-                calc(clamp(0, (0.179 - y) * 1000, 1))
-                calc(clamp(0, (0.179 - y) * 1000, 1) * 1.089)
-            );
-            --site-menu-button-icon-fill-color: var(
-              --polaris-invent-button-text
-            );
-            color: var(--polaris-invent-button-text);
-          }
-          .nav {
-            color: color(
-              from var(--ddd-palette-color-1) xyz-d65
-                calc(clamp(0, (0.179 - y) * 1000, 1) * 0.9505)
-                calc(clamp(0, (0.179 - y) * 1000, 1))
-                calc(clamp(0, (0.179 - y) * 1000, 1) * 1.089)
-            );
-          }
         }
         site-menu-button div .bottom {
           font-size: 18px;

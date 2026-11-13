@@ -17,6 +17,8 @@ export const JourneySidebarThemeStyles = css`
     );
     --text-body: var(--text-heading);
     --text-primary: var(--text-heading);
+    /* prose sits on --content-bg, so it takes the text color paired with it */
+    --ddd-reading-prose-color: var(--text-body);
     --accent-color: var(
       --ddd-palette-color-7,
       var(--ddd-theme-default-keystoneYellow)
@@ -73,12 +75,13 @@ export const JourneySidebarThemeStyles = css`
     font-family: var(--ddd-font-primary);
   }
 
+  /* links take the text color paired with --content-bg (another palette
+     fill as text color is not readable in every palette) and an underline,
+     so they never rely on color alone */
   main a {
-    color: light-dark(
-      var(--ddd-palette-color-3, var(--ddd-theme-default-link)),
-      var(--ddd-palette-color-7, var(--ddd-theme-default-linkLight))
-    );
-    text-decoration: none;
+    color: var(--text-body);
+    text-decoration: underline;
+    text-underline-offset: 3px;
     transition: all var(--ddd-duration-fast, 0.2s) ease;
     border-radius: var(--ddd-radius-xs);
     padding: var(--ddd-spacing-1) var(--ddd-spacing-1);
@@ -86,7 +89,7 @@ export const JourneySidebarThemeStyles = css`
 
   main a:hover,
   main a:focus {
-    text-decoration: underline;
+    text-decoration-thickness: 2px;
     background-color: color-mix(
       in srgb,
       var(--ddd-palette-color-3, var(--ddd-theme-default-link)) 15%,

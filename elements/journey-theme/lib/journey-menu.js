@@ -128,7 +128,7 @@ export class JourneyMenu extends I18NMixin(LitElement) {
 
       li a:hover,
       li a:focus {
-        color: var(--accent-color);
+        color: var(--text-primary);
         background-color: color-mix(
           in srgb,
           var(--accent-color) 16%,
@@ -146,7 +146,7 @@ export class JourneyMenu extends I18NMixin(LitElement) {
 
       li a.active {
         font-weight: var(--ddd-font-weight-bold);
-        color: var(--accent-color);
+        color: var(--text-primary);
         background-color: color-mix(
           in srgb,
           var(--accent-color) 22%,
