@@ -143,7 +143,7 @@ class StopNote extends SchemaBehaviors(I18NMixin(remoteLinkBehavior(DDD))) {
           );
         }
         .ddd-block-header {
-          padding-inline: var(--ddd-spacing-4);
+          padding-inline: var(--ddd-surface-padding, var(--ddd-spacing-4));
           background-color: light-dark(
             var(--background-color),
             var(--ddd-theme-default-potentialMidnight)
@@ -165,7 +165,7 @@ class StopNote extends SchemaBehaviors(I18NMixin(remoteLinkBehavior(DDD))) {
           flex-direction: column;
           gap: var(--ddd-spacing-1);
           padding-block: var(--ddd-spacing-3) var(--ddd-spacing-4);
-          padding-inline: var(--ddd-spacing-4);
+          padding-inline: var(--ddd-surface-padding, var(--ddd-spacing-4));
           color: var(--text-color);
         }
         .message_wrap > * {
@@ -201,7 +201,7 @@ class StopNote extends SchemaBehaviors(I18NMixin(remoteLinkBehavior(DDD))) {
           align-items: center;
           gap: var(--ddd-spacing-3);
           padding-block: var(--ddd-spacing-2);
-          padding-inline: var(--ddd-spacing-4);
+          padding-inline: var(--ddd-surface-padding, var(--ddd-spacing-4));
           background-color: light-dark(
             var(--background-color),
             var(--ddd-theme-default-potentialMidnight)

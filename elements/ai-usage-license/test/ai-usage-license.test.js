@@ -170,7 +170,7 @@ describe("AiUsageLicense license resolution", () => {
     expect(el.licenseImage).to.equal("data:image/png;base64,AAAAAQ==");
   });
 
-  it("renders the badge, tag link, name and description for a license", async () => {
+  it("renders one link with the DDD badge, name and description for a license", async () => {
     resetFetchMode("data");
     const el = await fixture(html`<ai-usage-license></ai-usage-license>`);
     el.license = "CD";
@@ -179,26 +179,61 @@ describe("AiUsageLicense license resolution", () => {
     await settle(el);
     const badge = el.shadowRoot.querySelector(".license-badge");
     expect(badge).to.exist;
+    expect(badge.tagName).to.equal("A");
     expect(badge.getAttribute("href")).to.equal(el.licenseLink);
     expect(badge.getAttribute("aria-label")).to.equal(
-      "Conceptual Development - AI Usage License",
+      "AIUL-CD Conceptual Development - AI Usage License",
     );
-    const img = el.shadowRoot.querySelector(".license-badge img");
-    expect(img).to.exist;
-    expect(img.getAttribute("alt")).to.equal(
-      "AIUL-CD - Conceptual Development",
-    );
-    expect(img.getAttribute("src")).to.equal(el.licenseImage);
-    const tagLink = el.shadowRoot.querySelector(".license-tag a");
-    expect(tagLink).to.exist;
-    expect(tagLink.getAttribute("href")).to.equal(el.licenseLink);
-    expect(tagLink.textContent).to.equal("AIUL-CD");
-    expect(el.shadowRoot.textContent).to.include("Conceptual Development");
+    // the badge is drawn with DDD tokens, not the third-party badge art
+    expect(el.shadowRoot.querySelector("img")).to.not.exist;
+    expect(el.shadowRoot.querySelectorAll("a").length).to.equal(1);
+    const tag = el.shadowRoot.querySelector(".license-chip .license-tag");
+    expect(tag).to.exist;
+    expect(tag.textContent).to.equal("AIUL-CD");
+    expect(el.shadowRoot.querySelector(".license-modifier")).to.not.exist;
+    const name = el.shadowRoot.querySelector(".license-badge .license-link");
+    expect(name.textContent).to.equal("Conceptual Development");
     const desc = el.shadowRoot.querySelector(".license-description");
     expect(desc).to.exist;
     expect(desc.textContent).to.include("conceptual development");
     const meta = el.shadowRoot.querySelector('meta[property="oer:uri"]');
     expect(meta.getAttribute("content")).to.equal(el.licenseLink);
+  });
+
+  it("draws the media modifier as the second half of the badge", async () => {
+    resetFetchMode("data");
+    const el = await fixture(html`<ai-usage-license></ai-usage-license>`);
+    el.license = "CD";
+    await settle(el);
+    el.modifier = "IM";
+    await settle(el);
+    expect(el.shadowRoot.querySelector(".license-tag").textContent).to.equal(
+      "AIUL-CD",
+    );
+    expect(
+      el.shadowRoot.querySelector(".license-modifier").textContent,
+    ).to.equal("IM");
+    expect(
+      el.shadowRoot.querySelector(".license-badge").getAttribute("aria-label"),
+    ).to.equal(
+      "AIUL-CD-IM Conceptual Development / Immersive - AI Usage License",
+    );
+  });
+
+  it("badge stays inside the card at phone width", async () => {
+    resetFetchMode("data");
+    const el = await fixture(
+      html`<ai-usage-license style="width: 320px"></ai-usage-license>`,
+    );
+    el.license = "CD";
+    await settle(el);
+    el.modifier = "IM";
+    await settle(el);
+    const body = el.shadowRoot.querySelector(".license-body");
+    const chip = el.shadowRoot.querySelector(".license-chip");
+    expect(chip.getBoundingClientRect().right).to.be.at.most(
+      body.getBoundingClientRect().right,
+    );
   });
 
   it("resolves a license with a combination modifier", async () => {
@@ -411,7 +446,9 @@ describe("AiUsageLicense label i18n", () => {
     const label = el.shadowRoot.querySelector(".license-label");
     expect(label).to.exist;
     expect(label.textContent).to.equal("AI Usage License");
-    expect(el.shadowRoot.lastElementChild).to.equal(label);
+    // DDD eyebrow: first line of the card, read before the badge
+    const body = el.shadowRoot.querySelector(".license-body");
+    expect(body.firstElementChild).to.equal(label);
     expect(getComputedStyle(el, "::after").content).to.equal("none");
     el.t = {
       ...el.t,
@@ -422,6 +459,27 @@ describe("AiUsageLicense label i18n", () => {
     expect(label.textContent).to.equal("Licencia de uso de IA");
     expect(
       el.shadowRoot.querySelector(".license-badge").getAttribute("aria-label"),
-    ).to.equal("Conceptual Development - Licencia de uso de IA");
+    ).to.equal("AIUL-CD Conceptual Development - Licencia de uso de IA");
+  });
+});
+
+describe("AiUsageLicense color scheme", () => {
+  it("follows a dark color scheme from the page or theme", async () => {
+    resetFetchMode("data");
+    const wrap = await fixture(
+      html`<div style="color-scheme: only light">
+        <ai-usage-license license="CD"></ai-usage-license>
+      </div>`,
+    );
+    const el = wrap.querySelector("ai-usage-license");
+    await settle(el);
+    const body = el.shadowRoot.querySelector(".license-body");
+    const light = getComputedStyle(body).backgroundColor;
+    wrap.style.colorScheme = "only dark";
+    const dark = getComputedStyle(body).backgroundColor;
+    expect(dark).to.not.equal(light);
+    expect(getComputedStyle(body).color).to.not.equal(
+      getComputedStyle(body).backgroundColor,
+    );
   });
 });

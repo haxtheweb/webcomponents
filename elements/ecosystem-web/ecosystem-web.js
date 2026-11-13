@@ -25,6 +25,13 @@ import {
   easeOut,
   lerpView,
   safeImage,
+  LENSES,
+  lensOf,
+  impactIndex,
+  impactCuts,
+  timelineSteps,
+  searchNodes,
+  degree,
 } from "./lib/ecosystem-model.js";
 
 /** Glyphs by icon name, shared by every ecosystem-web on the page. */
@@ -33,6 +40,10 @@ const GLYPHS = new Map();
 const CAM_MS = 460;
 /** How long the web fades out before a new one opens, in ms. */
 const SWAP_MS = 160;
+/** The tour id of "Over time", the web growing year by year. */
+const TIME = "_time";
+/** How many search matches the list shows. */
+const MAX_HITS = 14;
 
 function reducedMotion() {
   return !!(
@@ -99,11 +110,19 @@ function glyphShape(sh) {
  * the bundle carries slugs, the page path for it.
  *
  * A list view (the List button) shows the same web as nested lists for
- * screen readers and keyboard users.
+ * screen readers and keyboard users. Layers hide kinds of connection; a lens
+ * reads every tile by one measure (freshness, bus factor, impact, evidence,
+ * parity) from the bundle's `layers`; search finds a tile by name, group or
+ * verb; "Over time" grows the web year by year; Present fills the screen.
+ * In the HAX editor the element shows the web's Mermaid and JSON source.
+ *
+ * Finishing a tour or the timeline fires `user-engagement` (verb
+ * experienced), the event HAX elements use for learner records.
  *
  * @demo demo/index.html
  * @element ecosystem-web
- * @fires ecosystem-web-changed - {web, node, tour, step, path}
+ * @fires ecosystem-web-changed - {web, node, tour, step, lens, path}
+ * @fires user-engagement - {activityDisplay: "experienced", objectName, objectId, resultCompletion}
  */
 export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
   static get tag() {
@@ -120,7 +139,17 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
     this.listView = false;
     this.playing = false;
     this.compact = false;
+    this.lens = "";
     this._toursOpen = false;
+    this._hidden = new Set();
+    this._panel = "";
+    this._q = "";
+    this._qAct = 0;
+    this._editing = false;
+    this._presenting = false;
+    this._srcTab = "mmd";
+    this._key = this._key.bind(this);
+    this._fsChange = this._fsChange.bind(this);
     this._bundle = null;
     this._models = null;
     this._error = "";
@@ -173,6 +202,104 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
       planned: "Planned",
       gap: "Gap",
       inProgress: "In progress",
+      overTime: "Over time",
+      growTheWeb: "Press Play to grow the web year by year.",
+      today: "Today",
+      todayCaption: "The whole web as it stands today.",
+      nextYear: "Next",
+      nextCaption: "Planned next:",
+      everythingElse: "Everything else",
+      everythingElseCaption: "The rest of the web.",
+      personJoins: "1 person joins",
+      peopleJoin: "{n} people join",
+      andMore: "and {n} more",
+      layers: "Layers",
+      show: "Show",
+      readBy: "Read by",
+      connectionsOnly: "Connections only",
+      search: "Search",
+      searchLabel: "Search the web",
+      searchPlaceholder: "Search people, parts, verbs",
+      searchMatches: "matches",
+      searchMatch: "match",
+      searchNone:
+        'Nothing matches. Try a person, a group, an icon or a verb like "styles".',
+      searchHelp: 'Type a name, a group, an icon or a verb like "styles".',
+      links: "links",
+      present: "Present full screen",
+      exitPresent: "Exit full screen",
+      notMeasured: "Not measured for this tile.",
+      faded: "faded: not measured",
+      lensFresh: "Freshness",
+      lensBus: "Bus factor",
+      lensImpact: "Impact",
+      lensEvidence: "Evidence",
+      lensParity: "Parity",
+      freshAbout:
+        "How recently the code behind a tile changed: the last commit on main to its path. A filled corner dot means main has changed more than 14 days after the last release, so a release is due. Faded tiles have no code path to check.",
+      freshA: "Changed in the last 90 days",
+      freshB: "Changed this year",
+      freshC: "Quiet for over a year",
+      freshText: "Last change on main {date}, {ago}.",
+      freshReleased: "Last release {date}.",
+      freshDue: "Main has changed since the last release.",
+      freshDueKey:
+        "with a release due: main changed 14+ days after the last release",
+      today0: "today",
+      dayAgo: "a day ago",
+      daysAgo: "{n} days ago",
+      monthsAgo: "{n} months ago",
+      busAbout:
+        "How many people besides the maintainers are connected to each code part, by any kind of connection in any web. Only code parts count (a repo or npm link, or a release); other tiles are faded. The corner badge shows the count.",
+      busA: "Two or more others",
+      busB: "One other person",
+      busC: "Only the maintainers",
+      busText: "Besides the maintainers: {who}.",
+      busNone: "Only the maintainers are connected to it.",
+      impactAbout:
+        "How much else touches a tile: its distinct connections across every web it appears in. Bands split this web into thirds.",
+      impactA: "Most connected third",
+      impactB: "Middle third",
+      impactC: "Least connected third",
+      impactText: "{n} distinct connections across {w} webs.",
+      impactText1: "{n} distinct connections across 1 web.",
+      evidenceAbout:
+        "How well a tile is backed up: a cited source, links, and evidence on its connections.",
+      evidenceA: "Strong: three or more",
+      evidenceB: "Some: one or two",
+      evidenceC: "None yet",
+      evidenceText:
+        "{n} pieces of evidence: sources, links and connection evidence.",
+      evidenceNone: "No source, links or connection evidence yet.",
+      parityAbout:
+        "From the parity run: three dots per feature, left to right: API pair (Node.js and PHP), CLI, Agent. A filled dot matches; an open dot has a gap to close. The surfaces compared get a plain ring; planned parts a dashed one.",
+      parityApiAbout:
+        "For each API operation: whether the PHP and Node.js backends both implement it, and whether the CLI and the MCP server call it. Faded tiles are not API operations.",
+      parityA: "Matches everywhere measured",
+      parityB: "Matches in part",
+      parityC: "Gaps on every surface measured",
+      parityS: "A surface being compared",
+      parityP: "Planned: will need parity",
+      paritySurface:
+        "One of the surfaces the parity run compares: the same seeded operations go to each, and the sites they write are compared.",
+      parityPlanned:
+        "Planned. When it lands it joins the parity run on every surface.",
+      parityDots: ["API pair (Node.js and PHP)", "CLI", "Agent"],
+      parityMatch: "matches",
+      parityGap: "gap",
+      parityNone: "not measured",
+      parityDotsKey: "filled matches, open has a gap, small not measured",
+      parityOp:
+        "PHP backend: {php}. Node.js backend: {nodejs}. CLI calls it: {cli}. MCP calls it: {mcp}.",
+      yes: "yes",
+      no: "no",
+      authorSource: "Web source",
+      authorHelp:
+        "The web is two files in PRAW: Mermaid for its structure and JSON for descriptions, links, evidence, tours and years. Edit them there; this view shows what the element read.",
+      copy: "Copy this file",
+      copied: "Copied",
+      problems: "Problems in this web",
+      noProblems: "No problems found in this web.",
     };
   }
 
@@ -197,7 +324,16 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
       compact: { type: Boolean, reflect: true },
       _models: { type: Object, state: true },
       _error: { type: String, state: true },
+      /** Read every tile by one measure: fresh, bus, impact, evidence or parity */
+      lens: { type: String, reflect: true },
       _toursOpen: { type: Boolean, state: true },
+      _hidden: { type: Object, state: true },
+      _panel: { type: String, state: true },
+      _q: { type: String, state: true },
+      _qAct: { type: Number, state: true },
+      _editing: { type: Boolean, state: true },
+      _presenting: { type: Boolean, state: true },
+      _srcTab: { type: String, state: true },
     };
   }
 
@@ -334,6 +470,7 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
           cursor: pointer;
         }
         button.act[aria-pressed="true"],
+        button.act[aria-expanded="true"]:not(.tours-toggle),
         button.act.primary {
           background: var(--accent);
           color: var(--accent-ink);
@@ -411,7 +548,7 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
         }
         .mapctl {
           position: absolute;
-          right: var(--ddd-spacing-2);
+          inset-inline-end: var(--ddd-spacing-2);
           bottom: var(--ddd-spacing-2);
           display: flex;
           flex-direction: column;
@@ -433,7 +570,7 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
         }
         .zoomhint {
           position: absolute;
-          left: var(--ddd-spacing-2);
+          inset-inline-start: var(--ddd-spacing-2);
           bottom: var(--ddd-spacing-2);
           background: var(--surface);
           padding: var(--ddd-spacing-1) var(--ddd-spacing-3);
@@ -823,6 +960,351 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
         .msg {
           padding: var(--ddd-spacing-4);
         }
+        :host {
+          --lens-a: light-dark(
+            var(--ddd-theme-default-forestGreen),
+            var(--ddd-theme-default-futureLime)
+          );
+          --lens-b: light-dark(
+            var(--ddd-theme-default-roarGolden),
+            var(--ddd-theme-default-keystoneYellow)
+          );
+          --lens-c: light-dark(
+            var(--ddd-theme-default-original87Pink),
+            var(--ddd-theme-default-discoveryCoral)
+          );
+          --match: light-dark(
+            var(--ddd-theme-default-inventOrange),
+            var(--ddd-theme-default-keystoneYellow)
+          );
+        }
+        /* the strips under the header: layers and lenses, search */
+        .strip {
+          display: grid;
+          gap: var(--ddd-spacing-2);
+          padding: var(--ddd-spacing-3) var(--ddd-spacing-4);
+          border-bottom: var(--ddd-border-xs);
+          border-color: var(--line);
+        }
+        .strip .lab {
+          color: var(--muted);
+          margin-inline-end: var(--ddd-spacing-1);
+        }
+        button.act.layer::before {
+          content: "";
+          display: inline-block;
+          width: 18px;
+          margin-inline-end: var(--ddd-spacing-2);
+          vertical-align: middle;
+          border-top: 3px solid var(--edge);
+        }
+        button.act.layer[data-k="pillar"]::before {
+          border-top-color: var(--pillar);
+        }
+        button.act.layer[data-k="schema"]::before {
+          border-top: 3px dashed var(--schema);
+        }
+        button.act.layer[data-k="org"]::before {
+          border-top: 3px dotted var(--org);
+        }
+        button.act.layer[data-k="contrib"]::before {
+          border-top-color: var(--person);
+        }
+        .lenskey {
+          display: flex;
+          flex-wrap: wrap;
+          gap: var(--ddd-spacing-2) var(--ddd-spacing-4);
+          align-items: center;
+          color: var(--muted);
+        }
+        .lenskey p {
+          margin: 0;
+          flex: 0 0 100%;
+        }
+        .lenskey .k {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--ddd-spacing-2);
+          color: var(--fg);
+        }
+        .lenskey svg {
+          width: 22px;
+          height: 22px;
+          flex: none;
+        }
+        .lenskey svg.dots {
+          width: 54px;
+        }
+        .lenskey circle {
+          fill: none;
+          stroke-width: 3;
+        }
+        .node .lring,
+        .node .ldots,
+        .node .lbadge {
+          display: none;
+        }
+        .node .lring {
+          fill: none;
+          stroke-width: 3;
+        }
+        .net.lensing .node .lring,
+        .net.lensing .node .ldots,
+        .net.lensing .node .lbadge {
+          display: inline;
+        }
+        .net.lensing .node.lens-a .lring,
+        .lenskey .a circle {
+          stroke: var(--lens-a);
+        }
+        .net.lensing .node.lens-b .lring,
+        .lenskey .b circle {
+          stroke: var(--lens-b);
+          stroke-dasharray: 9 5;
+        }
+        .net.lensing .node.lens-c .lring,
+        .lenskey .c circle {
+          stroke: var(--lens-c);
+          stroke-dasharray: 2 5;
+          stroke-linecap: round;
+        }
+        .net.lensing .node.lens-s .lring,
+        .lenskey .s circle {
+          stroke: var(--accent);
+        }
+        .net.lensing .node.lens-p .lring,
+        .lenskey .p circle {
+          stroke: var(--signal-revealed);
+          stroke-dasharray: 5 5;
+        }
+        .net.lensing .node.lens-na .lring {
+          display: none;
+        }
+        .net.lensing .node.lens-na .body {
+          opacity: 0.28;
+        }
+        .net.lensing .node.lens-na .lb {
+          opacity: 0.45;
+        }
+        .ldots circle,
+        .lenskey .dots circle {
+          stroke-width: 2.5;
+        }
+        .ldots .m,
+        .lenskey .dots .m {
+          fill: var(--lens-a);
+          stroke: var(--lens-a);
+        }
+        .ldots .g,
+        .lenskey .dots .g {
+          fill: var(--surface);
+          stroke: var(--lens-c);
+        }
+        .ldots .n,
+        .lenskey .dots .n {
+          fill: var(--line);
+          stroke: var(--line);
+        }
+        .lbadge circle {
+          fill: var(--surface);
+          stroke: var(--fg);
+          stroke-width: 1.5;
+        }
+        .lbadge text {
+          font-family: var(--ddd-font-navigation);
+          font-weight: var(--ddd-font-weight-bold);
+          font-size: 12px;
+          fill: var(--fg);
+          text-anchor: middle;
+          dominant-baseline: central;
+        }
+        .lbadge circle.due,
+        .lenskey circle.due {
+          fill: var(--lens-b);
+          stroke: var(--surface);
+          stroke-width: 2;
+        }
+        .lensnote {
+          border-inline-start: var(--ddd-border-size-md) solid var(--accent);
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
+          background: var(--chip);
+        }
+        .lensnote b {
+          display: block;
+          font-family: var(--ddd-font-navigation);
+        }
+        .lensnote ul {
+          margin: var(--ddd-spacing-1) 0 0;
+          padding-inline-start: var(--ddd-spacing-5);
+        }
+        /* layers: a hidden kind of connection goes, and People takes the
+           person tiles with it */
+        .net.hide-rel .k-rel,
+        .net.hide-pillar .k-pillar,
+        .net.hide-schema .k-schema,
+        .net.hide-org .k-org,
+        .net.hide-contrib .k-contrib,
+        .net.hide-contrib .node.t4 {
+          display: none;
+        }
+        /* search: matches stay, the rest fall back */
+        .net.searching .edges .edge {
+          opacity: 0.06;
+        }
+        .net.searching .nodes .node:not(.match) {
+          opacity: 0.16;
+        }
+        .node.match .halo {
+          opacity: 1;
+          stroke: var(--match);
+          stroke-width: 4;
+        }
+        .net.searching .node.match .lb {
+          display: block !important;
+        }
+        .search {
+          position: relative;
+          max-width: 520px;
+        }
+        .search input {
+          box-sizing: border-box;
+          width: 100%;
+          min-height: 44px;
+          padding: 0 var(--ddd-spacing-3);
+          font: inherit;
+          font-size: var(--ddd-font-size-4xs);
+          color: var(--fg);
+          background: var(--surface);
+          border: var(--ddd-border-sm);
+          border-color: var(--edge);
+          border-radius: var(--ddd-radius-sm);
+        }
+        .search input:focus-visible {
+          outline: var(--ddd-focus-ring);
+          outline-offset: var(--ddd-focus-offset);
+        }
+        .lensnote li,
+        .qres li,
+        .author li {
+          font-size: var(--ddd-font-size-4xs);
+          line-height: var(--ddd-lh-150);
+        }
+        .qres {
+          position: absolute;
+          inset-inline: 0;
+          top: 100%;
+          z-index: 2;
+          box-shadow: var(--ddd-boxShadow-sm);
+          list-style: none;
+          margin: var(--ddd-spacing-1) 0 0;
+          padding: var(--ddd-spacing-1);
+          max-height: 320px;
+          overflow: auto;
+          border: var(--ddd-border-xs);
+          border-color: var(--line);
+          border-radius: var(--ddd-radius-sm);
+          background: var(--surface);
+        }
+        .qres li[role="option"] {
+          display: flex;
+          gap: var(--ddd-spacing-2);
+          align-items: baseline;
+          min-height: 40px;
+          padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
+          border-radius: var(--ddd-radius-xs);
+          cursor: pointer;
+        }
+        .qres li[aria-selected="true"],
+        .qres li[role="option"]:hover {
+          background: var(--chip);
+          outline: var(--ddd-border-xs);
+          outline-color: var(--accent);
+        }
+        .qres .ql {
+          flex: 1 1 auto;
+          min-width: 0;
+        }
+        .qres .qg,
+        .qres .qc,
+        .qres .qe,
+        .qres .qh {
+          color: var(--muted);
+        }
+        .qres .qg {
+          display: block;
+        }
+        .qres .qe,
+        .qres .qh {
+          padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
+        }
+        /* presenting: the web fills the screen */
+        :host([data-presenting]) {
+          position: fixed;
+          inset: 0;
+          z-index: 1000;
+          border-radius: 0;
+          border: 0;
+          display: flex;
+          flex-direction: column;
+          overflow: auto;
+          padding-block: env(safe-area-inset-top, 0px)
+            env(safe-area-inset-bottom, 0px);
+        }
+        :host([data-presenting]) .body {
+          flex: 1 1 auto;
+          min-height: 0;
+        }
+        :host([data-presenting]) .stage {
+          display: grid;
+          min-height: 0;
+        }
+        :host([data-presenting]) svg.net {
+          height: 100%;
+          max-height: none;
+          aspect-ratio: auto;
+        }
+        :host([data-presenting]) .rail {
+          max-height: none;
+        }
+        /* author view, in the HAX editor */
+        .author {
+          display: grid;
+          gap: var(--ddd-spacing-2);
+          padding: var(--ddd-spacing-3) var(--ddd-spacing-4);
+          border-top: var(--ddd-border-xs);
+          border-color: var(--line);
+        }
+        .author h3 {
+          margin: 0;
+          font-size: var(--ddd-font-size-4xs);
+          color: var(--heading);
+        }
+        .author textarea {
+          box-sizing: border-box;
+          width: 100%;
+          min-height: 220px;
+          font-family: var(--ddd-font-secondary);
+          font-size: var(--ddd-font-size-4xs);
+          color: var(--fg);
+          background: var(--chip);
+          border: var(--ddd-border-xs);
+          border-color: var(--line);
+          border-radius: var(--ddd-radius-xs);
+          padding: var(--ddd-spacing-2);
+        }
+        .author ul {
+          margin: 0;
+          padding-inline-start: var(--ddd-spacing-5);
+        }
+        @media (forced-colors: active) {
+          .net.lensing .node .lring,
+          .lenskey circle {
+            stroke: CanvasText;
+          }
+          .node.match .halo {
+            stroke: Highlight;
+          }
+        }
       `,
     ];
   }
@@ -833,7 +1315,7 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
     if (changed.has("src") && this.src) this._load();
     if (changed.has("playing")) this._schedule();
     if (
-      ["web", "node", "tour", "step"].some((k) => changed.has(k)) &&
+      ["web", "node", "tour", "step", "lens"].some((k) => changed.has(k)) &&
       this._models
     ) {
       this._announce();
@@ -841,7 +1323,14 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
     this._applyCam();
     this._drawIn();
   }
+  connectedCallback() {
+    super.connectedCallback();
+    this.addEventListener("keydown", this._key);
+    globalThis.document.addEventListener("fullscreenchange", this._fsChange);
+  }
   disconnectedCallback() {
+    this.removeEventListener("keydown", this._key);
+    globalThis.document.removeEventListener("fullscreenchange", this._fsChange);
     clearInterval(this._timer);
     this._timer = null;
     clearTimeout(this._swapTimer);
@@ -871,6 +1360,8 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
       this._bundle.images || {},
     );
     if (!this._models[this.web]) this.web = "main";
+    this._layers = this._bundle.layers || {};
+    this._impact = null;
     this._edgePrev = null;
     this._cam = null;
     this._fit(false);
@@ -920,6 +1411,7 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
           node: this.node,
           tour: this.tour,
           step: this.step,
+          lens: this.lens,
           path: this.pathFor(this.web, this.node, this.tour, this.step),
         },
       }),
@@ -933,6 +1425,7 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
     const net = this._net();
     const go = () => {
       this.web = id;
+      this._q = "";
       this.tour = "";
       this.step = -1;
       this.node = nodeId || "";
@@ -1078,7 +1571,19 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
   }
   _steps() {
     const M = this._M;
-    return M && this.tour ? tourSteps(M, this.tour) : [];
+    if (!M || !this.tour) return [];
+    if (this.tour === TIME) {
+      if (!M._time) M._time = timelineSteps(M, this.t);
+      return M._time;
+    }
+    return tourSteps(M, this.tour);
+  }
+  /** The label of the tour being played ("Over time" for the timeline). */
+  _tourLabel() {
+    const M = this._M;
+    if (this.tour === TIME) return this.t.overTime;
+    const t = M.tours.find((x) => x.id === this.tour) || M.tours[0];
+    return t ? t.label : "";
   }
   pickTour(id) {
     this._toursOpen = false;
@@ -1106,9 +1611,34 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
           M.geo.width,
         ),
       );
-    if (this.step >= steps.length - 1) this.playing = false;
+    if (this.step >= steps.length - 1) {
+      if (this.playing || this._lastStep !== this.step) this._engage();
+      this.playing = false;
+    }
+    this._lastStep = this.step;
+  }
+  /**
+   * Finishing a tour or the timeline is a learner record: one user-engagement
+   * event with the verb experienced, the shape every HAX element sends (the
+   * HAXcms progress store finishes the xAPI statement).
+   */
+  _engage() {
+    const name = `${this._webTitle(this.web)}: ${this._tourLabel()}`;
+    this.dispatchEvent(
+      new CustomEvent("user-engagement", {
+        bubbles: true,
+        composed: true,
+        detail: {
+          activityDisplay: "experienced",
+          objectName: name,
+          objectId: `ecosystem-web:${this.web}:${this.tour}`,
+          resultCompletion: true,
+        },
+      }),
+    );
   }
   togglePlay() {
+    this._q = "";
     if (!this.tour) {
       const M = this._M;
       this.tour = M && M.tours.length ? M.tours[0].id : "";
@@ -1122,13 +1652,17 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
     this.playing = false;
     this.step = -1;
     this.node = "";
+    this._q = "";
     this._fit();
   }
   _schedule() {
     clearInterval(this._timer);
     this._timer = null;
     if (this.playing)
-      this._timer = setInterval(() => this.goStep(this.step + 1), 3200);
+      this._timer = setInterval(
+        () => this.goStep(this.step + 1),
+        this.tour === TIME ? 2600 : 3200,
+      );
   }
   _zoom(f) {
     this._zoomAt(f, null, null, true);
@@ -1210,6 +1744,497 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
   }
   _tileOpen(n) {
     if (this._canOpen(n)) this.openWeb(n.web);
+  }
+
+  // ---------- layers and lenses ----------
+  /** Show or hide one kind of connection (People also takes the person tiles). */
+  toggleLayer(kind) {
+    const h = new Set(this._hidden);
+    if (h.has(kind)) h.delete(kind);
+    else h.add(kind);
+    this._hidden = h;
+  }
+  /** Read the web by a lens ("" for connections only). */
+  setLens(kind) {
+    this.lens = LENSES.indexOf(kind) >= 0 ? kind : "";
+  }
+  /** What every lens needs: the web, the outside layers, impact across webs. */
+  _lensCtx() {
+    const M = this._M;
+    if (!this._impact) this._impact = impactIndex(this._models);
+    const main = this._models.main;
+    const people = new Set();
+    if (main)
+      main.nodes.forEach((n) => {
+        if (n.group && n.group.id === "people") people.add(n.id);
+      });
+    return {
+      M,
+      web: this.web,
+      layers: this._layers || {},
+      impact: this._impact,
+      cut: impactCuts(M, this._impact),
+      people,
+      maintainers: new Set((this._layers && this._layers.maintainers) || []),
+    };
+  }
+  /** Whether a lens measures anything in this web. */
+  _lensAvailable(kind, ctx) {
+    if (kind === "impact" || kind === "evidence") return true;
+    return [...ctx.M.nodes.values()].some((n) => lensOf(kind, n, ctx) != null);
+  }
+  /** The lens readings for every tile of the web, or null with no lens. */
+  _readings() {
+    const M = this._M;
+    if (!this.lens || !M) return null;
+    const key = `${this.web}:${this.lens}`;
+    if (this._readCache && this._readCache.key === key)
+      return this._readCache.map;
+    const ctx = this._lensCtx();
+    const map = new Map();
+    M.nodes.forEach((n) => map.set(n.id, lensOf(this.lens, n, ctx)));
+    this._readCache = { key, map, ctx };
+    return map;
+  }
+  _lensName(kind) {
+    const k = kind.charAt(0).toUpperCase() + kind.slice(1);
+    return this.t[`lens${k}`] || kind;
+  }
+  _bandWord(kind, band) {
+    return this.t[`${kind}${band.toUpperCase()}`] || "";
+  }
+  _ago(days) {
+    if (days < 1) return this.t.today0;
+    if (days === 1) return this.t.dayAgo;
+    if (days < 60) return this.t.daysAgo.replace("{n}", days);
+    return this.t.monthsAgo.replace("{n}", Math.round(days / 30.4));
+  }
+  /** A reading in words. */
+  _readingText(kind, r) {
+    const t = this.t;
+    if (!r) return t.notMeasured;
+    if (kind === "fresh")
+      return [
+        t.freshText
+          .replace("{date}", r.date)
+          .replace("{ago}", this._ago(r.days)),
+        r.released ? t.freshReleased.replace("{date}", r.released) : "",
+        r.due ? t.freshDue : "",
+      ]
+        .filter(Boolean)
+        .join(" ");
+    if (kind === "bus") {
+      const main = this._models.main;
+      const names = r.who.map((x) => {
+        const b = main && main.nodes.get(x);
+        return b ? b.label : x;
+      });
+      return names.length
+        ? t.busText.replace("{who}", names.join(", "))
+        : t.busNone;
+    }
+    if (kind === "impact")
+      return (r.webs === 1 ? t.impactText1 : t.impactText)
+        .replace("{n}", r.count)
+        .replace("{w}", r.webs);
+    if (kind === "evidence")
+      return r.count ? t.evidenceText.replace("{n}", r.count) : t.evidenceNone;
+    if (kind === "parity") {
+      if (r.op)
+        return t.parityOp.replace(/\{(php|nodejs|cli|mcp)\}/g, (m, k) =>
+          r.op[k] ? t.yes : t.no,
+        );
+      if (r.band === "s") return t.paritySurface;
+      if (r.band === "p") return t.parityPlanned;
+      return r.dots
+        .map(
+          (x, i) =>
+            `${t.parityDots[i]}: ${x === "match" ? t.parityMatch : x === "gap" ? t.parityGap : t.parityNone}.`,
+        )
+        .join(" ");
+    }
+    return "";
+  }
+  _dots(ds) {
+    return ds.map(
+      (x, i) =>
+        svg`<circle class="${x === "match" ? "m" : x === "gap" ? "g" : "n"}" cx="${(i - 1) * 14}" cy="0" r="${x ? 5 : 3}"></circle>`,
+    );
+  }
+  /** The key under the lens buttons: what the lens reads and how many tiles fall in each band. */
+  _lensKey() {
+    const map = this._readings();
+    if (!map) return nothing;
+    const kind = this.lens;
+    const cnt = { a: 0, b: 0, c: 0, s: 0, p: 0, na: 0 };
+    let due = 0;
+    map.forEach((r) => {
+      cnt[r ? r.band : "na"]++;
+      if (r && r.due) due++;
+    });
+    const api = kind === "parity" && this.web === "openapi";
+    const about =
+      kind === "parity"
+        ? api
+          ? this.t.parityApiAbout
+          : this.t.parityAbout
+        : this.t[`${kind}About`];
+    const order =
+      kind === "parity" && !api ? ["a", "b", "c", "s", "p"] : ["a", "b", "c"];
+    return html`<div class="lenskey" aria-live="polite">
+      <p>${about}</p>
+      ${order
+        .filter((b) => cnt[b] || ["a", "b", "c"].indexOf(b) >= 0)
+        .map(
+          (b) =>
+            html`<span class="k ${b}"
+              ><svg viewBox="-12 -12 24 24" aria-hidden="true">
+                <circle r="9"></circle></svg
+              ><span><b>${cnt[b]}</b> ${this._bandWord(kind, b)}</span></span
+            >`,
+        )}
+      ${
+        kind === "parity" && !api
+          ? html`<span class="k"
+              ><svg class="dots" viewBox="-27 -8 54 16" aria-hidden="true">
+                ${this._dots(["match", "gap", null])}</svg
+              ><span>${this.t.parityDotsKey}</span></span
+            >`
+          : nothing
+      }
+      ${
+        kind === "fresh"
+          ? html`<span class="k"
+              ><svg viewBox="-12 -12 24 24" aria-hidden="true">
+                <circle class="due" r="7"></circle></svg
+              ><span><b>${due}</b> ${this.t.freshDueKey}</span></span
+            >`
+          : nothing
+      }
+      ${
+        cnt.na
+          ? html`<span class="k"
+              ><span><b>${cnt.na}</b> ${this.t.faded}</span></span
+            >`
+          : nothing
+      }
+    </div>`;
+  }
+  /** The lens reading for the selected tile, in the details. */
+  _lensNote(n) {
+    const map = this._readings();
+    if (!map) return nothing;
+    const r = map.get(n.id);
+    const why = r && r.why && r.why.length ? r.why : [];
+    return html`<div class="lensnote">
+      <b
+        >${this._lensName(this.lens)}${
+          r ? `: ${this._bandWord(this.lens, r.band)}` : ""
+        }</b
+      >${this._readingText(this.lens, r)}
+      ${
+        why.length
+          ? html`<ul>
+              ${why.map((w) => html`<li>${w}</li>`)}
+            </ul>`
+          : nothing
+      }
+    </div>`;
+  }
+  _layersStrip() {
+    const ctx = this._lensCtx();
+    const SL = this._M.meta.sectionLabels || {};
+    const kinds = KIND_ORDER.filter((k) =>
+      this._M.edges.some((e) => e.kind === k),
+    );
+    const lenses = LENSES.filter(
+      (k) => k === this.lens || this._lensAvailable(k, ctx),
+    );
+    return html`<div class="strip">
+      <div class="chips" role="group" aria-label="${this.t.layers}">
+        <span class="lab">${this.t.show}</span>
+        ${kinds.map(
+          (k) =>
+            html`<button
+              class="act layer"
+              type="button"
+              data-k="${k}"
+              aria-pressed="${this._hidden.has(k) ? "false" : "true"}"
+              @click="${() => this.toggleLayer(k)}"
+            >
+              ${SL[k] || this.t[k]}
+            </button>`,
+        )}
+      </div>
+      <div class="chips" role="group" aria-label="${this.t.readBy}">
+        <span class="lab">${this.t.readBy}</span>
+        <button
+          class="act"
+          type="button"
+          aria-pressed="${this.lens ? "false" : "true"}"
+          @click="${() => this.setLens("")}"
+        >
+          ${this.t.connectionsOnly}
+        </button>
+        ${lenses.map(
+          (k) =>
+            html`<button
+              class="act"
+              type="button"
+              aria-pressed="${this.lens === k ? "true" : "false"}"
+              @click="${() => this.setLens(k)}"
+            >
+              ${this._lensName(k)}
+            </button>`,
+        )}
+      </div>
+      ${this._lensKey()}
+    </div>`;
+  }
+
+  // ---------- search ----------
+  _hits() {
+    return this._q && this._M ? searchNodes(this._M, this._q) : [];
+  }
+  _searchStrip() {
+    const hits = this._hits();
+    const shown = hits.slice(0, MAX_HITS);
+    const act = shown.length ? Math.min(this._qAct, shown.length - 1) : -1;
+    const open = !!this._q;
+    return html`<div class="strip">
+      <div class="search">
+        <input
+          id="q"
+          type="search"
+          role="combobox"
+          aria-expanded="${open ? "true" : "false"}"
+          aria-controls="qres"
+          aria-autocomplete="list"
+          aria-activedescendant="${act >= 0 ? `qo-${shown[act].id}` : nothing}"
+          autocomplete="off"
+          placeholder="${this.t.searchPlaceholder}"
+          aria-label="${this.t.searchLabel}"
+          .value="${this._q}"
+          @input="${(e) => {
+            this._q = e.target.value;
+            this._qAct = 0;
+          }}"
+          @keydown="${this._qKey}"
+        />
+        <ul
+          class="qres"
+          id="qres"
+          role="listbox"
+          aria-label="${this.t.searchLabel}"
+          ?hidden="${!open}"
+        >
+          ${
+            open
+              ? html`<li class="qh" role="presentation">
+                    ${hits.length}
+                    ${hits.length === 1 ? this.t.searchMatch : this.t.searchMatches}
+                  </li>
+                  ${
+                    shown.length
+                      ? shown.map(
+                          (n, i) =>
+                            html`<li
+                              role="option"
+                              id="qo-${n.id}"
+                              aria-selected="${i === act ? "true" : "false"}"
+                              @pointerdown="${(e) => {
+                                e.preventDefault();
+                                this.pick(n.id);
+                              }}"
+                            >
+                              <span class="ql"
+                                >${n.label}<span class="qg"
+                                  >${n.group ? n.group.label : ""}</span
+                                ></span
+                              ><span class="qc"
+                                >${degree(this._M, n.id)} ${this.t.links}</span
+                              >
+                            </li>`,
+                        )
+                      : html`<li class="qe" role="presentation">
+                          ${this.t.searchNone}
+                        </li>`
+                  }`
+              : nothing
+          }
+        </ul>
+      </div>
+    </div>`;
+  }
+  _qKey(e) {
+    const shown = this._hits().slice(0, MAX_HITS);
+    if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+      e.preventDefault();
+      if (!shown.length) return;
+      const d = e.key === "ArrowDown" ? 1 : -1;
+      this._qAct = (this._qAct + d + shown.length) % shown.length;
+    } else if (e.key === "Enter") {
+      e.preventDefault();
+      if (shown[this._qAct]) this.pick(shown[this._qAct].id);
+    } else if (e.key === "Escape") {
+      this._q = "";
+    }
+    e.stopPropagation();
+  }
+  /** Select a tile found by search, showing whatever hides it first. */
+  pick(id) {
+    const M = this._M;
+    const n = M && M.nodes.get(id);
+    if (!n) return;
+    this._q = "";
+    const vis = visibleAt(this._steps(), this.step);
+    if (vis && !vis.has(id)) {
+      this.playing = false;
+      this.step = -1;
+    }
+    if (n.tier === 4 && this._hidden.has("contrib"))
+      this.toggleLayer("contrib");
+    this.node = id;
+    this._focusOn(id);
+  }
+
+  // ---------- strips, presenting, keys ----------
+  _toggle(panel) {
+    this._panel = this._panel === panel ? "" : panel;
+    if (this._panel === "search")
+      this.updateComplete.then(() => {
+        const q = this.shadowRoot.querySelector("#q");
+        if (q) q.focus();
+      });
+  }
+  /** Fill the screen with the web (full screen where the browser allows it). */
+  present(on) {
+    this._presenting = on === undefined ? !this._presenting : !!on;
+    this.toggleAttribute("data-presenting", this._presenting);
+    const doc = globalThis.document;
+    if (this._presenting) {
+      try {
+        const r = this.requestFullscreen && this.requestFullscreen();
+        if (r && r.catch) r.catch(() => {});
+      } catch {
+        // full screen refused: the fixed layout still fills the window
+      }
+    } else if (doc.fullscreenElement === this) {
+      try {
+        doc.exitFullscreen();
+      } catch {
+        // already out of full screen
+      }
+    }
+    this.updateComplete.then(() => this._fit(false));
+  }
+  _fsChange() {
+    const doc = globalThis.document;
+    if (!doc.fullscreenElement && this._presenting) this.present(false);
+  }
+  /** Keys: / searches; arrows step a tour; + - 0 zoom; Escape leaves full screen. */
+  _key(e) {
+    const path = e.composedPath ? e.composedPath() : [];
+    const typing = path.some(
+      (el) => el && (el.tagName === "INPUT" || el.tagName === "TEXTAREA"),
+    );
+    if (typing || !this._M || this.compact) return;
+    if (e.key === "/") {
+      e.preventDefault();
+      if (this._panel !== "search") this._toggle("search");
+      return;
+    }
+    if (e.key === "ArrowRight" || e.key === "PageDown") {
+      if (!this.tour) return;
+      e.preventDefault();
+      this.playing = false;
+      this.goStep(this.step + 1);
+    } else if (e.key === "ArrowLeft" || e.key === "PageUp") {
+      if (!this.tour) return;
+      e.preventDefault();
+      this.playing = false;
+      this.goStep(this.step - 1);
+    } else if (e.key === "+" || e.key === "=") {
+      this._zoom(1 / 1.4);
+    } else if (e.key === "-") {
+      this._zoom(1.4);
+    } else if (e.key === "0") {
+      this._fit();
+    } else if (e.key === "Escape" && this._presenting) {
+      this.present(false);
+    }
+  }
+
+  // ---------- author view (HAX editor) ----------
+  haxHooks() {
+    return { editModeChanged: "haxeditModeChanged" };
+  }
+  haxeditModeChanged(value) {
+    this._editing = !!value;
+  }
+  _author() {
+    const raw = ((this._bundle && this._bundle.webs) || {})[this.web] || {};
+    const json =
+      typeof raw.json === "string"
+        ? raw.json
+        : JSON.stringify(raw.json || {}, null, 2);
+    const text = this._srcTab === "json" ? json : raw.mmd || "";
+    const file = `${this.web === "main" ? "hax-ecosystem" : `hax-${this.web}`}.${this._srcTab === "json" ? "json" : "mmd"}`;
+    const errs = this._M.errors || [];
+    return html`<section class="author" aria-label="${this.t.authorSource}">
+      <h3>${this.t.authorSource}</h3>
+      <p class="hint">${this.t.authorHelp}</p>
+      <div class="chips" role="group" aria-label="${this.t.authorSource}">
+        ${["mmd", "json"].map(
+          (k) =>
+            html`<button
+              class="act"
+              type="button"
+              aria-pressed="${this._srcTab === k ? "true" : "false"}"
+              @click="${() => {
+                this._srcTab = k;
+              }}"
+            >
+              ${this.web === "main" ? "hax-ecosystem" : `hax-${this.web}`}.${k}
+            </button>`,
+        )}
+        <button
+          class="act"
+          type="button"
+          @click="${(e) => this._copy(e, text)}"
+        >
+          ${this.t.copy}
+        </button>
+      </div>
+      <textarea
+        readonly
+        spellcheck="false"
+        aria-label="${file}"
+        .value="${text}"
+      ></textarea>
+      <p class="relhead">
+        ${errs.length ? this.t.problems : this.t.noProblems}
+      </p>
+      ${
+        errs.length
+          ? html`<ul>
+              ${errs.map((x) => html`<li>${x}</li>`)}
+            </ul>`
+          : nothing
+      }
+    </section>`;
+  }
+  _copy(e, text) {
+    const b = e.currentTarget;
+    const done = () => {
+      b.textContent = this.t.copied;
+    };
+    try {
+      const c = globalThis.navigator.clipboard;
+      if (c && c.writeText) c.writeText(text).then(done, () => {});
+    } catch {
+      // the source stays selectable in the box below
+    }
   }
 
   // ---------- drawing ----------
@@ -1323,7 +2348,7 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
       .catch(() => {});
     return null;
   }
-  _tile(n, vis, rel, ghost) {
+  _tile(n, vis, rel, ghost, reads, hits) {
     const t = n.tier;
     const sizes = this._M.geo.sizes;
     const s = sizes[t] != null ? sizes[t] : sizes[sizes.length - 1];
@@ -1340,20 +2365,29 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
       this.node === n.id ? "sel" : "",
       rel.has(n.id) ? "rel" : "",
       vis && !vis.has(n.id) ? "off" : "",
-    ]
-      .filter(Boolean)
-      .join(" ");
+      hits && hits.has(n.id) ? "match" : "",
+    ];
+    const r = reads ? reads.get(n.id) : null;
+    if (reads) cls.push(`lens-${r ? r.band : "na"}`);
+    const cn = cls.filter(Boolean).join(" ");
     const style = `--tile:${n.color};--glyph:${glyphFor(n.color)}`;
     const open = this._canOpen(n);
-    const body = svg`${this._halo(n, s)}${this._shape(n, s)}<g class="ic">${this._icon(n, s)}</g>
+    // a lens rings the tile (solid, dashed or dotted by band, so the band
+    // never rests on color alone) and may add dots or a count badge
+    const lensMarks = reads
+      ? svg`<circle class="lring" r="${(h + 9).toFixed(1)}"></circle>
+        ${r && r.dots ? svg`<g class="ldots" transform="translate(0 ${(-h - 15).toFixed(1)})">${this._dots(r.dots)}</g>` : nothing}
+        ${r && (r.badge != null || r.due) ? svg`<g class="lbadge" transform="translate(${(-h + 2).toFixed(1)} ${(-h + 2).toFixed(1)})">${r.due ? svg`<circle class="due" r="7"></circle>` : svg`<circle r="10"></circle><text>${r.badge}</text>`}</g>` : nothing}`
+      : nothing;
+    const body = svg`<g class="body">${lensMarks}${this._halo(n, s)}${this._shape(n, s)}<g class="ic">${this._icon(n, s)}</g>
       ${st === "prerelease" ? svg`<circle class="badge pre" cx="${h - 1}" cy="${-h + 1}" r="7"></circle>` : nothing}
-      ${open ? svg`<circle class="badge web" cx="${h - 1}" cy="${h - 1}" r="9"></circle><path class="badge-ic" d="M${h - 5} ${h - 1}h8M${h - 1} ${h - 5}v8"></path>` : nothing}
+      ${open ? svg`<circle class="badge web" cx="${h - 1}" cy="${h - 1}" r="9"></circle><path class="badge-ic" d="M${h - 5} ${h - 1}h8M${h - 1} ${h - 5}v8"></path>` : nothing}</g>
       <text class="lb" y="${ly}">${lines.map((l, i) => svg`<tspan x="0" dy="${i ? 14 : 0}">${l}${i < lines.length - 1 ? " " : ""}</tspan>`)}</text>`;
     // the copy drawn above the scrim: seen, not focused or clicked (the
     // tile underneath, in the same place, takes the click)
     if (ghost)
-      return svg`<g class="${cls}" transform="translate(${n.x.toFixed(1)} ${n.y.toFixed(1)})" style="${style}">${body}</g>`;
-    return svg`<g class="${cls}" transform="translate(${n.x.toFixed(1)} ${n.y.toFixed(1)})" style="${style}"
+      return svg`<g class="${cn}" transform="translate(${n.x.toFixed(1)} ${n.y.toFixed(1)})" style="${style}">${body}</g>`;
+    return svg`<g class="${cn}" transform="translate(${n.x.toFixed(1)} ${n.y.toFixed(1)})" style="${style}"
       tabindex="${vis && !vis.has(n.id) ? -1 : 0}" role="button" aria-pressed="${this.node === n.id ? "true" : "false"}"
       aria-label="${n.label}${open ? `, ${this.t.open} ${this._webName(n.web)}` : ""}"
       @click="${() => this._tileClick(n.id)}" @dblclick="${() => this._tileOpen(n)}" @keydown="${(e) => this._tileKey(e, n.id)}">
@@ -1379,9 +2413,20 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
     const ghosts = ordered.filter((n) => rel.has(n.id) && n.id !== this.node);
     if (this.node && M.nodes.has(this.node))
       ghosts.push(M.nodes.get(this.node));
+    const reads = this._readings();
+    const hits = this._q ? new Set(this._hits().map((n) => n.id)) : null;
+    const netCls = [
+      "net",
+      this.node ? "focus" : "",
+      reads ? "lensing" : "",
+      hits ? "searching" : "",
+      ...[...this._hidden].map((k) => `hide-${k}`),
+    ]
+      .filter(Boolean)
+      .join(" ");
     return html`<div class="stage">
       <svg
-        class="net ${this.node ? "focus" : ""}"
+        class="${netCls}"
         role="group"
         aria-label="${this._webTitle(this.web)}"
         @pointerdown="${this._down}"
@@ -1405,7 +2450,7 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
           ${repeat(
             ordered,
             (n) => `${this.web}:${n.id}`,
-            (n) => this._tile(n, vis, rel),
+            (n) => this._tile(n, vis, rel, false, reads, hits),
           )}
         </g>
         <rect
@@ -1425,7 +2470,7 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
           ${repeat(
             ghosts,
             (n) => `${this.web}:${this.node}:${n.id}`,
-            (n) => this._tile(n, vis, rel, true),
+            (n) => this._tile(n, vis, rel, true, reads, hits),
           )}
         </g>
       </svg>
@@ -1556,6 +2601,7 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
         <h3>${n.label}</h3>
         <div class="grp">${n.group ? n.group.label : ""}</div>
       </div>
+      ${this._lensNote(n)}
       ${d.status ? html`<span class="st ${d.status}">${d.status === "released" && d.version ? `${d.version}` : stWord[d.status] || d.status}</span>` : nothing}
       ${d.desc ? html`<p>${d.desc}</p>` : nothing}
       ${d.source && d.source.url ? html`<p class="hint">${this.t.source}: <a href="${safeUrl(d.source.url)}" target="_blank" rel="noopener">${d.source.label}</a></p>` : nothing}
@@ -1606,7 +2652,20 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
       >
         ${t.label}
       </button>`;
-    const picked = M.tours.find((t) => t.id === this.tour);
+    const picked =
+      this.tour === TIME
+        ? { label: this.t.overTime }
+        : M.tours.find((t) => t.id === this.tour);
+    const time = !M.meta.noTimeline
+      ? html`<button
+          class="act"
+          type="button"
+          aria-pressed="${this.tour === TIME ? "true" : "false"}"
+          @click="${() => this.pickTour(TIME)}"
+        >
+          ${this.t.overTime}
+        </button>`
+      : nothing;
     return html`<div class="tours" ?data-open="${this._toursOpen}">
       <button
         class="act tours-toggle"
@@ -1620,7 +2679,7 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
         ${this.t.tours}${picked ? `: ${picked.label}` : ""}
       </button>
       <div class="tourlist" id="tourlist">
-        ${aud.length ? html`<div class="chips"><span class="lab">${this.t.tourFor}</span>${aud.map(chip)}</div>` : nothing}
+        ${aud.length || time !== nothing ? html`<div class="chips"><span class="lab">${this.t.tourFor}</span>${aud.map(chip)}${time}</div>` : nothing}
         ${story.length ? html`<div class="chips"><span class="lab">${this.t.followAStory}</span>${story.map(chip)}</div>` : nothing}
       </div>
     </div>`;
@@ -1629,15 +2688,18 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
     const M = this._M;
     const steps = this._steps();
     const t = M.tours.find((x) => x.id === this.tour) || M.tours[0];
+    const label = this.tour ? this._tourLabel() : t.label;
     const S = this.step >= 0 && steps[this.step];
     const pct = S ? ((this.step + 1) / steps.length) * 100 : 0;
     const last = this.step >= steps.length - 1 && this.step >= 0;
     return html`<div class="bar">
       <div class="cap" aria-live="polite">
         <div class="n">
-          ${S ? `${t.label} · ${this.step + 1} ${this.t.stepOf} ${steps.length}` : this.t.overview}
+          ${S ? (this.tour === TIME ? S.label : `${label} · ${this.step + 1} ${this.t.stepOf} ${steps.length}`) : this.t.overview}
         </div>
-        <div>${S ? S.caption : `${this.t.pressPlay}: ${t.label}.`}</div>
+        <div>
+          ${S ? S.caption : this.tour === TIME ? this.t.growTheWeb : `${this.t.pressPlay}: ${label}.`}
+        </div>
         <div class="progress"><b style="width:${pct}%"></b></div>
       </div>
       <div class="btns">
@@ -1702,6 +2764,32 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
           <button
             class="act"
             type="button"
+            aria-expanded="${this._panel === "layers" ? "true" : "false"}"
+            aria-controls="layers"
+            @click="${() => this._toggle("layers")}"
+          >
+            ${this.t.layers}${this.lens ? `: ${this._lensName(this.lens)}` : ""}
+          </button>
+          <button
+            class="act"
+            type="button"
+            aria-expanded="${this._panel === "search" ? "true" : "false"}"
+            aria-controls="search"
+            @click="${() => this._toggle("search")}"
+          >
+            ${this.t.search}
+          </button>
+          <button
+            class="act"
+            type="button"
+            aria-pressed="${this._presenting ? "true" : "false"}"
+            @click="${() => this.present()}"
+          >
+            ${this._presenting ? this.t.exitPresent : this.t.present}
+          </button>
+          <button
+            class="act"
+            type="button"
             aria-pressed="${this.listView ? "true" : "false"}"
             @click="${() => {
               this.listView = !this.listView;
@@ -1712,10 +2800,16 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
         </div>
       </header>
       ${this._tours()}
+      <div id="layers" ?hidden="${this._panel !== "layers"}">
+        ${this._panel === "layers" ? this._layersStrip() : nothing}
+      </div>
+      <div id="search" ?hidden="${this._panel !== "search"}">
+        ${this._panel === "search" ? this._searchStrip() : nothing}
+      </div>
       <div class="body">
         ${this.listView ? this._list() : this._drawing()}${this._rail()}
       </div>
-      ${this._bar()}`;
+      ${this._bar()} ${this._editing ? this._author() : nothing}`;
   }
 
   static get haxProperties() {

@@ -3105,6 +3105,58 @@
         }
       }
     },
+    "density": {
+      "surface-padding": {
+        "$type": "dimension",
+        "$value": "{ddd.spacing.4}",
+        "$description": "cards, callouts, collapse bodies",
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-surface-padding"
+          }
+        }
+      },
+      "surface-padding-lg": {
+        "$type": "dimension",
+        "$value": "{ddd.spacing.6}",
+        "$description": "hero and feature surfaces",
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-surface-padding-lg"
+          }
+        }
+      },
+      "stack-gap": {
+        "$type": "dimension",
+        "$value": "{ddd.spacing.4}",
+        "$description": "space between stacked blocks",
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-stack-gap"
+          }
+        }
+      },
+      "inline-gap": {
+        "$type": "dimension",
+        "$value": "{ddd.spacing.2}",
+        "$description": "icon and label, button groups, chips",
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-inline-gap"
+          }
+        }
+      },
+      "control-padding-inline": {
+        "$type": "dimension",
+        "$value": "{ddd.spacing.4}",
+        "$description": "buttons and inputs",
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-control-padding-inline"
+          }
+        }
+      }
+    },
     "mediaControl": {
       "size": {
         "$type": "dimension",

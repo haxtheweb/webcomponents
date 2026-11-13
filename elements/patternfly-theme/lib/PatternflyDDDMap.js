@@ -88,6 +88,11 @@ export const PatternflyDDDMap = css`
     --ddd-border-size-sm: var(--pf-t--global--border--width--strong);
     --ddd-border-size-md: var(--pf-t--global--border--width--extra-strong);
     --ddd-border-size-lg: var(--pf-t--global--border--width--400);
+    --ddd-surface-padding: var(--pf-t--global--spacer--lg);
+    --ddd-surface-padding-lg: var(--pf-t--global--spacer--xl);
+    --ddd-stack-gap: var(--pf-t--global--spacer--md);
+    --ddd-inline-gap: var(--pf-t--global--spacer--sm);
+    --ddd-control-padding-inline: var(--pf-t--global--spacer--md);
     /* rgb channels follow their mapped color */
     --ddd-primary-0-rgb: 146, 197, 249, 0.7;
     --ddd-primary-1-rgb: 0, 102, 204;

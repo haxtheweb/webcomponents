@@ -930,6 +930,27 @@ export const DDDVariables = css`
     --ddd-target-comfortable: 44px; /* WCAG 2.5.5 AAA, preferred for touch */
 
     /* ===========================================
+       DENSITY (semantic spacing)
+       Named roles for the spacing a design system tunes: surface padding,
+       the gap between stacked blocks, inline gaps, control padding. Each
+       defaults to the DDD scale step blocks already use, so nothing moves
+       until a design system bridge answers it; the scales stay fixed.
+       Usage: padding: var(--ddd-surface-padding);
+              margin-block: var(--ddd-stack-gap);
+       =========================================== */
+    --ddd-surface-padding: var(
+      --ddd-spacing-4
+    ); /* cards, callouts, collapse bodies */
+    --ddd-surface-padding-lg: var(
+      --ddd-spacing-6
+    ); /* hero and feature surfaces */
+    --ddd-stack-gap: var(--ddd-spacing-4); /* space between stacked blocks */
+    --ddd-inline-gap: var(
+      --ddd-spacing-2
+    ); /* icon and label, button groups, chips */
+    --ddd-control-padding-inline: var(--ddd-spacing-4); /* buttons and inputs */
+
+    /* ===========================================
        MEDIA CONTROL
        The round play / pause button laid over decorative background
        motion, such as a hero video. Motion that plays on its own for more
