@@ -18,7 +18,13 @@ import { vhsBlogCase, vhsBlogLoadFace } from "./lib/vhs-blog-case.js";
 import "./lib/vhs-blog-spine.js";
 import "./lib/vhs-blog-cover.js";
 import "./lib/vhs-blog-tv.js";
-import "./lib/vhs-blog-vcr.js";
+import "@haxtheweb/retro-tv/lib/retro-vcr.js";
+import "@haxtheweb/retro-tv/lib/retro-console.js";
+import "@haxtheweb/retro-tv/lib/retro-controller.js";
+import {
+  retroKitKey,
+  retroKitInField,
+} from "@haxtheweb/retro-tv/lib/retro-kit.js";
 import "./lib/vhs-blog-console.js";
 import "./lib/vhs-blog-back.js";
 import { KeepcaseTokens } from "./lib/KeepcaseTokens.js";
@@ -103,6 +109,7 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     this.loadingTitle = "";
     this.channel = 3;
     this.staticHeld = false;
+    this.tvPower = true;
     this.flipped = false;
     this._unbox = null;
     this.__timers = [];
@@ -126,6 +133,21 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
       hintPlaying: "Now playing. The post is below.",
       hintLoading: "Loading",
       hintStatic: "Channel 4: static. Something keeps tumbling through it.",
+      hintMelee:
+        "Channel 2: HAX Melee. Grab the blocks before your rivals do: A grabs, B takes one back, Start publishes.",
+      tvOn: "Turn the TV on",
+      consoleLabel: "HAX 64 console",
+      consolePower: "Console power",
+      consoleReset: "Reset the game",
+      gameController: "Game controller",
+      padUp: "Up: grab",
+      padDown: "Down: take back",
+      padLeft: "Left",
+      padRight: "Right",
+      padSelect: "Select: remix your fighter",
+      padStart: "Start: publish your page",
+      padB: "B: take back the last block",
+      padA: "A: grab a block",
       skipAnimation: "Skip animation",
       pauseStatic: "Pause static",
       vcr: "VCR",
@@ -192,6 +214,8 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
       /** TV channel: 3 plays the tape, 4 is static */
       channel: { type: Number },
       staticHeld: { type: Boolean, attribute: "static-held" },
+      /** the console's power button: the visitor can turn the set off */
+      tvPower: { type: Boolean, attribute: "tv-power" },
       /** the box art is turned to its back */
       flipped: { type: Boolean, reflect: true },
       _unbox: { type: Object, state: true },
@@ -201,6 +225,8 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
   connectedCallback() {
     super.connectedCallback();
     CHROME_FACES.forEach((f) => vhsBlogLoadFace(f));
+    this.__onDenKey = this.__onDenKey || ((e) => this._onDenKey(e));
+    globalThis.addEventListener("keydown", this.__onDenKey);
     // store reactions live only while connected
     this.__vhsReactions = [];
     this.__vhsReactions.push(
@@ -240,6 +266,7 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
 
   disconnectedCallback() {
     this._clearTimers();
+    globalThis.removeEventListener("keydown", this.__onDenKey);
     if (this.__vhsReactions) {
       this.__vhsReactions.forEach((dispose) => dispose());
       this.__vhsReactions = null;
@@ -556,7 +583,7 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     }
     const sleeve = this.shadowRoot.querySelector(".fly .sleeve");
     const cas = this.shadowRoot.querySelector(".fly .cas");
-    const vcr = this.shadowRoot.querySelector("vhs-blog-vcr");
+    const vcr = this.shadowRoot.querySelector("retro-vcr");
     if (!sleeve || !cas || !vcr) {
       this._route(item);
       return;
@@ -667,6 +694,66 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     }
   }
 
+  _tvPowerChanged(e) {
+    this.tvPower = !!(e.detail && e.detail.power);
+  }
+
+  /** a controller button: the HAX 64 goes on, then the button plays */
+  _onPad(e) {
+    const tv = this.shadowRoot.querySelector("vhs-blog-tv");
+    if (!tv) {
+      return;
+    }
+    this.tvPower = true;
+    if (this.channel !== 2) {
+      tv.tune(2);
+      return;
+    }
+    tv.press(e.detail.button);
+  }
+
+  _onConsolePower(e) {
+    const tv = this.shadowRoot.querySelector("vhs-blog-tv");
+    if (tv) {
+      this.tvPower = true;
+      tv.tune(e.detail.power ? 2 : 3);
+    }
+  }
+
+  _onConsoleReset() {
+    const tv = this.shadowRoot.querySelector("vhs-blog-tv");
+    if (tv) {
+      tv.reset();
+      this.tvPower = true;
+      if (this.channel !== 2) {
+        tv.tune(2);
+      }
+    }
+  }
+
+  /**
+   * A and B light the controller (and play) while HAX Melee is on, and the
+   * arrows do too while focus is in the den; never while typing.
+   */
+  _onDenKey(e) {
+    const k = retroKitKey(e);
+    const pad =
+      this.shadowRoot && this.shadowRoot.querySelector("retro-controller");
+    if (!k || !pad || this.editMode || retroKitInField(e)) {
+      return;
+    }
+    const path = e.composedPath();
+    if (path.includes(pad)) {
+      return;
+    }
+    const den = this.shadowRoot.querySelector(".den");
+    const playing = this.tvPower && this.channel === 2;
+    if (k === "a" || k === "b" ? playing : playing && path.includes(den)) {
+      e.preventDefault();
+      pad.press(k);
+    }
+  }
+
   _toggleStatic() {
     this.staticHeld = !this.staticHeld;
   }
@@ -681,19 +768,19 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
         this.phase,
       )
     ) {
-      return "eject prev play skip next";
+      return "eject rew play skip ff";
     }
     if (this.isHome) {
-      return "eject prev skip";
+      return "eject rew skip";
     }
     const flat = this._flat();
     const idx = flat.findIndex((i) => i.id === this.activeId);
     const off = [];
     if (idx <= 0) {
-      off.push("prev");
+      off.push("rew");
     }
     if (idx === -1 || idx >= flat.length - 1) {
-      off.push("next");
+      off.push("ff");
     }
     return off.join(" ");
   }
@@ -704,9 +791,9 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     const idx = flat.findIndex((i) => i.id === this.activeId);
     if (key === "eject") {
       this._goShelf();
-    } else if (key === "prev" && !this.isHome && idx > 0) {
+    } else if (key === "rew" && !this.isHome && idx > 0) {
       this._seek(flat[idx - 1], "rew");
-    } else if (key === "next" || (key === "play" && this.isHome)) {
+    } else if (key === "ff" || (key === "play" && this.isHome)) {
       if (this.isHome) {
         this._loadTape(this._shelf().tower[0] || flat[0]);
       } else if (idx > -1 && idx < flat.length - 1) {
@@ -924,6 +1011,11 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
         vhs-blog-console {
           flex: 0 1 860px;
           min-width: 0;
+        }
+        /* the HAX 64 and its controller, in the cubby between the drawers */
+        vhs-blog-console retro-console,
+        vhs-blog-console retro-controller {
+          zoom: 0.8;
         }
         .tower {
           flex: 0 1 470px;
@@ -1649,18 +1741,36 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     if (this.channel === 4) {
       hint = this.t.hintStatic;
     }
+    if (this.channel === 2) {
+      hint = this.t.hintMelee;
+    }
+    const label = vhsBlogCase(tapeTitle || " ");
+    const tapeVars = {
+      "--retro-vcr-tape-bg": label.bg,
+      "--retro-vcr-tape-ink": label.ink,
+      "--retro-vcr-tape-family": `"${label.family}"`,
+      "--retro-vcr-tape-weight": String(label.weight),
+      "--retro-vcr-tape-transform": label.transform,
+      "--retro-vcr-tape-size": "17px",
+    };
     return html`
       <section class="den" aria-label="${this.t.console}" part="${dim}">
         <div class="setup">
           <vhs-blog-console
             channel="${this.channel}"
+            ?power="${this.tvPower}"
             knob-label="${this.t.channelKnob}"
+            power-on-label="${this.t.tvOn}"
+            power-off-label="${this.t.tvOff}"
             @vhs-blog-console-knob="${this._knob}"
+            @vhs-blog-console-power="${this._tvPowerChanged}"
           >
-            <vhs-blog-vcr
+            <retro-vcr
               slot="vcr"
+              style=${styleMap(tapeVars)}
+              keys="eject rew play skip ff"
               phase="${this.phase}"
-              tape-title="${tapeTitle}"
+              tape-label="${tapeTitle}"
               disabled="${this._vcrDisabled()}"
               label="${this.t.vcr}"
               lid-label="${this.t.topLoad}"
@@ -1668,16 +1778,39 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
               load-label="${this.t.load}"
               playing-label="${this.t.play}"
               eject-label="${this.t.eject}"
-              prev-label="${this.t.prev}"
-              prev-hint="${this.t.prevHint}"
+              rew-label="${this.t.prev}"
+              rew-hint="${this.t.prevHint}"
               play-label="${this.t.play}"
               skip-label="${this.t.skip}"
-              next-label="${this.t.next}"
-              next-hint="${this.t.nextHint}"
-              rew-label="${this.t.rewDisplay}"
-              ff-label="${this.t.ffDisplay}"
-              @vhs-blog-vcr-key="${this._vcrKey}"
-            ></vhs-blog-vcr>
+              ff-label="${this.t.next}"
+              ff-hint="${this.t.nextHint}"
+              rew-word="${this.t.rewDisplay}"
+              ff-word="${this.t.ffDisplay}"
+              @retro-vcr-key="${this._vcrKey}"
+            ></retro-vcr>
+            <retro-console
+              slot="game"
+              ?power="${this.tvPower && this.channel === 2}"
+              label="${this.t.consoleLabel}"
+              power-label="${this.t.consolePower}"
+              reset-label="${this.t.consoleReset}"
+              .fighters="${tower.slice(0, 4).map((i) => i.title)}"
+              @retro-console-power="${this._onConsolePower}"
+              @retro-console-reset="${this._onConsoleReset}"
+            ></retro-console>
+            <retro-controller
+              slot="game"
+              label="${this.t.gameController}"
+              up-label="${this.t.padUp}"
+              down-label="${this.t.padDown}"
+              left-label="${this.t.padLeft}"
+              right-label="${this.t.padRight}"
+              select-label="${this.t.padSelect}"
+              start-label="${this.t.padStart}"
+              b-label="${this.t.padB}"
+              a-label="${this.t.padA}"
+              @retro-controller-press="${this._onPad}"
+            ></retro-controller>
             <vhs-blog-tv
               bare
               tunable
@@ -1689,7 +1822,7 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
               static-label="${this.t.channelStatic}"
               off-air-label="${this.t.noSignal}"
               @vhs-blog-tv-channel="${this._channel}"
-              ?off="${!playing}"
+              ?off="${!this.tvPower || (this.channel === 3 && !playing)}"
               off-label="${this.t.tvOff}"
               crawl-title="${active.title || ""}"
               presenter="${this.siteTitle}"

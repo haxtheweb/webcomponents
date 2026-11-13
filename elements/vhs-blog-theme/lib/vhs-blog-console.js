@@ -3,13 +3,21 @@
  * @license Apache-2.0, see LICENSE for full text.
  */
 import { LitElement, html, css } from "lit";
+import {
+  RetroTvControlStyles,
+  retroTvDial,
+  retroTvPower,
+} from "@haxtheweb/retro-tv/lib/retro-tv-controls.js";
 
 /**
  * `vhs-blog-console`
  * A walnut console TV cabinet: the "vcr" slot sits on top of the cabinet,
  * the default slot is the screen, with a control panel and drawers around
- * it. A frame: the only control is the Channel knob, which fires
- * "vhs-blog-console-knob" for the page to change the TV's channel.
+ * it, and an open cubby between the drawers for the "game" slot (the HAX 64
+ * and its controller). The panel has the HAX TV family's controls: the
+ * channel dial (numbers on the ring, a line pointing at the channel),
+ * which fires "vhs-blog-console-knob", and the power button, lit green
+ * while `power` is on, which fires "vhs-blog-console-power".
  *
  * @element vhs-blog-console
  */
@@ -22,7 +30,10 @@ export class VhsBlogConsole extends LitElement {
     return {
       plate: { type: String },
       channel: { type: Number },
+      power: { type: Boolean, reflect: true },
       knobLabel: { type: String, attribute: "knob-label" },
+      powerOnLabel: { type: String, attribute: "power-on-label" },
+      powerOffLabel: { type: String, attribute: "power-off-label" },
     };
   }
 
@@ -30,14 +41,23 @@ export class VhsBlogConsole extends LitElement {
     super();
     this.plate = "HAXTRON";
     this.channel = 3;
+    this.power = true;
     this.knobLabel = "Channel";
+    this.powerOnLabel = "Turn the TV on";
+    this.powerOffLabel = "Turn the TV off";
   }
 
   static get styles() {
     return [
+      RetroTvControlStyles,
       css`
         :host {
           display: flex;
+          --retro-tv-dial-size: 92px;
+          --retro-tv-knob-size: 48px;
+          --retro-tv-power-size: 44px;
+          --retro-tv-dial-number-size: 10px;
+          --retro-tv-side-label-size: 11px;
           flex-direction: column;
           color-scheme: only dark;
         }
@@ -85,7 +105,7 @@ export class VhsBlogConsole extends LitElement {
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 14px;
+          gap: 10px;
           padding: 12px 10px;
           border-radius: 8px;
           background: linear-gradient(180deg, #5a2c14, #3f1d0c);
@@ -108,47 +128,6 @@ export class VhsBlogConsole extends LitElement {
           border-radius: 4px;
           padding: 0 10px;
         }
-        .knob {
-          width: 54px;
-          height: 54px;
-          border-radius: 50%;
-          background: radial-gradient(circle at 35% 30%, #d9c79a, #7a6438 70%);
-          box-shadow: 0 3px 0 #1a0d05;
-          position: relative;
-        }
-        .knobbtn {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 6px;
-          background: transparent;
-          border: 0;
-          padding: 0;
-          cursor: pointer;
-          color: #e9d9b0;
-          font-family: "Archivo Narrow", sans-serif;
-          font-weight: 700;
-          font-size: 12px;
-          letter-spacing: 0.12em;
-          text-transform: uppercase;
-        }
-        .knobbtn:focus-visible {
-          outline: 3px solid #ffd60a;
-          outline-offset: 4px;
-        }
-        .knob::after {
-          content: "";
-          position: absolute;
-          left: 50%;
-          top: 6px;
-          width: 4px;
-          height: 16px;
-          margin-left: -2px;
-          background: #2a1408;
-          border-radius: 2px;
-          transform-origin: 50% 21px;
-          transform: rotate(var(--vhs-knob, 35deg));
-        }
         .grille {
           width: 100%;
           flex: 1;
@@ -160,9 +139,25 @@ export class VhsBlogConsole extends LitElement {
             #4a250f 3px 6px
           );
         }
+        .slbl {
+          margin-top: -4px;
+          margin-bottom: 4px;
+        }
+        /* an open cubby between the drawers for the game console */
+        .cubby {
+          display: flex;
+          align-items: flex-end;
+          justify-content: center;
+          gap: 16px;
+          min-height: 84px;
+          padding: 10px 12px 8px;
+          border-radius: 4px;
+          background: linear-gradient(180deg, #120803, #24110a);
+          box-shadow: inset 0 6px 14px rgba(0, 0, 0, 0.7);
+        }
         .drawers {
           display: grid;
-          grid-template-columns: repeat(3, minmax(0, 1fr));
+          grid-template-columns: minmax(0, 1fr) minmax(0, 3fr) minmax(0, 1fr);
           gap: 12px;
           padding: 0 20px 20px;
         }
@@ -197,11 +192,6 @@ export class VhsBlogConsole extends LitElement {
           background: #c9a34a;
           border-radius: 2px;
         }
-        @media (prefers-reduced-motion: no-preference) {
-          .knob::after {
-            transition: transform 0.3s;
-          }
-        }
         @media (max-width: 760px) {
           .ctrl,
           .drawers {
@@ -230,6 +220,17 @@ export class VhsBlogConsole extends LitElement {
     );
   }
 
+  _power() {
+    this.power = !this.power;
+    this.dispatchEvent(
+      new CustomEvent("vhs-blog-console-power", {
+        bubbles: true,
+        composed: true,
+        detail: { power: this.power },
+      }),
+    );
+  }
+
   render() {
     return html`
       <div class="top-shelf"><slot name="vcr"></slot></div>
@@ -242,22 +243,29 @@ export class VhsBlogConsole extends LitElement {
             <span class="chan" aria-hidden="true"
               >${this.channel < 10 ? "0" + this.channel : this.channel}</span
             >
-            <button
-              class="knobbtn"
-              type="button"
-              style="--vhs-knob: ${this.channel === 4 ? "75deg" : "35deg"}"
-              @click="${this._knob}"
-            >
-              <span class="knob" aria-hidden="true"></span>${this.knobLabel}
-            </button>
-            <span class="knob" aria-hidden="true"></span>
+            ${retroTvDial({
+              channel: this.channel,
+              label: this.knobLabel,
+              onClick: () => this._knob(),
+            })}
+            <span class="slbl" aria-hidden="true">CHANNEL</span>
+            ${retroTvPower({
+              power: this.power,
+              label: this.power ? this.powerOffLabel : this.powerOnLabel,
+              onClick: () => this._power(),
+            })}
+            <span class="slbl" aria-hidden="true">POWER</span>
             <span class="grille" aria-hidden="true"></span>
           </div>
         </div>
-        <div class="drawers" aria-hidden="true">
-          <span class="drawer"><span class="pull"></span></span>
-          <span class="drawer"><span class="pull"></span></span>
-          <span class="drawer"><span class="pull"></span></span>
+        <div class="drawers">
+          <span class="drawer" aria-hidden="true"
+            ><span class="pull"></span
+          ></span>
+          <span class="cubby"><slot name="game"></slot></span>
+          <span class="drawer" aria-hidden="true"
+            ><span class="pull"></span
+          ></span>
         </div>
       </div>
     `;

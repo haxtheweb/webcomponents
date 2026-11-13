@@ -120,6 +120,7 @@ export class RetroController extends LitElement {
       css`
         :host {
           display: block;
+          min-width: 290px;
           max-width: 330px;
         }
         :host([hidden]) {

@@ -123,10 +123,10 @@ describe("VhsBlogTheme", () => {
 
   it("sits the VCR on the console with the TV off at the shelf", () => {
     const root = element.shadowRoot;
-    const vcr = root.querySelector("vhs-blog-console vhs-blog-vcr");
+    const vcr = root.querySelector("vhs-blog-console retro-vcr");
     expect(vcr.getAttribute("slot")).to.equal("vcr");
     expect(vcr.phase).to.equal("idle");
-    expect(vcr.disabled).to.equal("eject prev skip");
+    expect(vcr.disabled).to.equal("eject rew skip");
     expect(root.querySelector("vhs-blog-tv").hasAttribute("off")).to.equal(
       true,
     );
@@ -135,10 +135,10 @@ describe("VhsBlogTheme", () => {
   it("drops a tape into the VCR before routing", async () => {
     element._loadTape(ITEMS[1]);
     await element.updateComplete;
-    const vcr = element.shadowRoot.querySelector("vhs-blog-vcr");
+    const vcr = element.shadowRoot.querySelector("retro-vcr");
     expect(element.phase).to.equal("open");
-    expect(vcr.tapeTitle).to.equal("Pure Joy");
-    expect(vcr.disabled).to.equal("eject prev play skip next");
+    expect(vcr.tapeLabel).to.equal("Pure Joy");
+    expect(vcr.disabled).to.equal("eject rew play skip ff");
     expect(
       element.shadowRoot.querySelector(".tower a.tape.out").textContent,
     ).to.contain("Pure Joy");
@@ -160,13 +160,13 @@ describe("VhsBlogTheme", () => {
 
   it("names the VCR rewind and fast forward keys for what they do", () => {
     const keys = element.shadowRoot
-      .querySelector("vhs-blog-vcr")
+      .querySelector("retro-vcr")
       .shadowRoot.querySelectorAll("button");
     expect(keys[1].getAttribute("aria-label")).to.equal("Rew, previous post");
     expect(keys[4].getAttribute("aria-label")).to.equal("FF, next post");
   });
 
-  it("flips the TV to channel 4 and back, with a pause for the static", async () => {
+  it("flips the TV to channel 4, 2 and back, with a pause for the static", async () => {
     const root = element.shadowRoot;
     const tv = root.querySelector("vhs-blog-tv");
     tv.shadowRoot.querySelector("button.screen").click();
@@ -174,24 +174,52 @@ describe("VhsBlogTheme", () => {
     await tv.updateComplete;
     expect(element.channel).to.equal(4);
     expect(
-      tv.shadowRoot.querySelector("button.screen").getAttribute("aria-label"),
+      tv.shadowRoot.querySelector("button.screen .sr-only").textContent.trim(),
     ).to.equal("Channel 4: static. Change channel");
-    expect(
-      tv.shadowRoot.querySelectorAll(".ch4 rpg-character").length,
-    ).to.equal(2);
+    const fuzz = tv.shadowRoot.querySelector("retro-tv-static");
+    await fuzz.updateComplete;
+    expect(fuzz.shadowRoot.querySelectorAll("rpg-character").length).to.equal(
+      2,
+    );
     const pause = root.querySelector(".hint button[aria-pressed]");
     expect(pause.textContent.trim()).to.equal("Pause static");
     pause.click();
     await element.updateComplete;
     expect(tv.held).to.equal(true);
     expect(pause.getAttribute("aria-pressed")).to.equal("true");
-    root
-      .querySelector("vhs-blog-console")
-      .shadowRoot.querySelector(".knobbtn")
-      .click();
+    const cabinet = root.querySelector("vhs-blog-console");
+    // the shared dial: numbers on the ring, the knob is the button
+    cabinet.shadowRoot.querySelector("button.knob").click();
+    await element.updateComplete;
+    expect(element.channel).to.equal(2);
+    expect(root.querySelector("retro-console").power).to.equal(true);
+    cabinet.shadowRoot.querySelector("button.knob").click();
     await element.updateComplete;
     expect(element.channel).to.equal(3);
     expect(root.querySelector(".hint button[aria-pressed]")).to.equal(null);
+  });
+
+  it("plays HAX Melee from the controller and turns the set off and on", async () => {
+    const root = element.shadowRoot;
+    const pad = root.querySelector("retro-controller");
+    expect(pad.getAttribute("slot")).to.equal("game");
+    pad.press("a");
+    await element.updateComplete;
+    expect(element.channel).to.equal(2);
+    const tv = root.querySelector("vhs-blog-tv");
+    await tv.updateComplete;
+    const melee = tv.shadowRoot.querySelector("retro-tv-melee");
+    pad.press("a");
+    expect(melee.score + melee._g.rivals[0].x).to.be.greaterThan(0);
+    const cabinet = root.querySelector("vhs-blog-console");
+    cabinet.shadowRoot.querySelector("button.pwr").click();
+    await element.updateComplete;
+    expect(element.tvPower).to.equal(false);
+    expect(tv.hasAttribute("off")).to.equal(true);
+    cabinet.shadowRoot.querySelector("button.pwr").click();
+    await element.updateComplete;
+    tv.tune(3);
+    await element.updateComplete;
   });
 
   it("unboxes a tape: sleeve and cassette fly, then the deck takes over", async () => {
@@ -244,7 +272,7 @@ describe("VhsBlogTheme", () => {
     expect(root.querySelector("vhs-blog-tv").hasAttribute("off")).to.equal(
       false,
     );
-    expect(root.querySelector("vhs-blog-vcr").disabled).to.equal("prev");
+    expect(root.querySelector("retro-vcr").disabled).to.equal("rew");
     await expect(element).shadowDom.to.be.accessible({
       ignoredRules: ["skip-link"],
     });
@@ -255,9 +283,9 @@ describe("VhsBlogTheme", () => {
     element._noticeLocation({ route: { name: "pure-joy" } });
     await tick();
     await element.updateComplete;
-    element._vcrKey({ detail: { key: "next" } });
+    element._vcrKey({ detail: { key: "ff" } });
     await element.updateComplete;
-    const vcr = element.shadowRoot.querySelector("vhs-blog-vcr");
+    const vcr = element.shadowRoot.querySelector("retro-vcr");
     const tv = element.shadowRoot.querySelector("vhs-blog-tv");
     await vcr.updateComplete;
     expect(element.phase).to.equal("ff");
@@ -266,7 +294,7 @@ describe("VhsBlogTheme", () => {
       "FF ▶▶",
     );
     element._clearTimers();
-    element._vcrKey({ detail: { key: "prev" } });
+    element._vcrKey({ detail: { key: "rew" } });
     await element.updateComplete;
     expect(element.phase).to.equal("rew");
     element._clearTimers();
@@ -332,7 +360,7 @@ describe("VhsBlogTheme", () => {
     await tick();
     await element.updateComplete;
     element.shadowRoot
-      .querySelector("vhs-blog-vcr")
+      .querySelector("retro-vcr")
       .shadowRoot.querySelectorAll("button")[3]
       .click();
     const tv = element.shadowRoot.querySelector("vhs-blog-tv");

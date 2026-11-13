@@ -87,6 +87,14 @@
       "hax": null
     },
     {
+      "name": "tv-power",
+      "property": "tvPower",
+      "type": "boolean",
+      "default": "true",
+      "description": "the console's power button: the visitor can turn the set off",
+      "hax": null
+    },
+    {
       "name": "flipped",
       "property": "flipped",
       "type": "boolean",
@@ -101,7 +109,7 @@
   ],
   "events": [],
   "hax": {},
-  "surfaceHash": "b70e6a484af2",
+  "surfaceHash": "506e1e3a4b50",
   "walkthroughs": [],
   "videos": [],
   "motion": {

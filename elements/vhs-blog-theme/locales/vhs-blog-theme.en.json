@@ -55,5 +55,20 @@
   "backOfBox": "Back of the box · select it to turn it over",
   "distributedBy": "Exclusively distributed by",
   "publishedWith": "Published with HAXcms",
-  "qrOpens": "QR code that opens"
+  "qrOpens": "QR code that opens",
+  "hintMelee": "Channel 2: HAX Melee. Grab the blocks before your rivals do: A grabs, B takes one back, Start publishes.",
+  "tvOn": "Turn the TV on",
+  "consoleLabel": "HAX 64 console",
+  "consolePower": "Console power",
+  "consoleReset": "Reset the game",
+  "gameController": "Game controller",
+  "padUp": "Up: grab",
+  "padDown": "Down: take back",
+  "padLeft": "Left",
+  "padRight": "Right",
+  "padSelect": "Select: remix your fighter",
+  "padStart": "Start: publish your page",
+  "padB": "B: take back the last block",
+  "padA": "A: grab a block",
+  "easing": "ease-out"
 }

@@ -39,6 +39,14 @@
       "hax": null
     },
     {
+      "name": "bare",
+      "property": "bare",
+      "type": "boolean",
+      "default": "false",
+      "description": "only the screen: no cabinet, dial or power (for a host's own set)",
+      "hax": null
+    },
+    {
       "name": "controls",
       "property": "controls",
       "type": "boolean",
@@ -120,7 +128,7 @@
     "retro-tv-power-changed"
   ],
   "hax": {},
-  "surfaceHash": "d383508b4b45",
+  "surfaceHash": "3e5584a0f17f",
   "walkthroughs": [],
   "videos": [],
   "motion": {
