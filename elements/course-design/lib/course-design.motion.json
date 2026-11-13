@@ -344,13 +344,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set course identifier",
-      "text": "OER Schema: the identifier of the course, e.g. MATH-100."
+      "text": "OER Schema: the identifier of the course, e.g."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set delivery format",
-      "text": "Fill in the Delivery Format field in the sidebar."
+      "text": "OER Schema: the format used to deliver the course."
     },
     {
       "t": 14.8,
@@ -362,7 +362,7 @@
   "end": {
     "in": 17.8,
     "line": "Container for educational materials and course design eleme…",
-    "code": ""
+    "code": "<course-design></course-design>"
   },
   "surfaceHash": "0ef116a9777e",
   "review": {

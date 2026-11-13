@@ -169,7 +169,7 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set title",
-      "text": "Add a title attribute to the tag."
+      "text": "Accessible name for the popover's role=alertdialog content div."
     },
     {
       "t": 14.8,

@@ -19,7 +19,7 @@
       "property": "src",
       "type": "string",
       "default": "",
-      "description": "image source",
+      "description": "Address of the image to pan and zoom.",
       "hax": null
     },
     {

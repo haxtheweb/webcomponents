@@ -200,7 +200,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "the type of social; currently supports\nFacebook, LinkedIn, Pinterest, and Twitter (default)",
+              "description": "Network to share to: Facebook, LinkedIn, Pinterest or Twitter\n(default).",
               "default": "\"Twitter\"",
               "attribute": "type"
             },
@@ -324,7 +324,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "the type of social; currently supports\nFacebook, LinkedIn, Pinterest, and Twitter (default)",
+              "description": "Network to share to: Facebook, LinkedIn, Pinterest or Twitter\n(default).",
               "default": "\"Twitter\"",
               "fieldName": "type"
             },

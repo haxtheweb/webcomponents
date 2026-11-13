@@ -19,7 +19,7 @@
       "property": "allowNull",
       "type": "boolean",
       "default": "true",
-      "description": "Allow a null option to be selected?",
+      "description": "Offer a \"no icon\" choice so the value can be cleared.",
       "hax": null
     },
     {

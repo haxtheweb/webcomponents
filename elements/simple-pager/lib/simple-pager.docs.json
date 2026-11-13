@@ -19,7 +19,7 @@
       "property": "limit",
       "type": "number",
       "default": "25",
-      "description": "",
+      "description": "Items per page.",
       "hax": null
     },
     {
@@ -27,7 +27,7 @@
       "property": "offset",
       "type": "number",
       "default": "0",
-      "description": "",
+      "description": "Index of the first item on the current page, starting at 0.",
       "hax": null
     },
     {
@@ -35,7 +35,7 @@
       "property": "total",
       "type": "number",
       "default": "0",
-      "description": "",
+      "description": "Total number of items across all pages.",
       "hax": null
     },
     {
@@ -43,7 +43,7 @@
       "property": "count",
       "type": "number",
       "default": "0",
-      "description": "",
+      "description": "Number of items on the current page.",
       "hax": null
     },
     {

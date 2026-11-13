@@ -155,12 +155,12 @@
           "desc": "URL to open when the card is cl…"
         },
         {
-          "name": "subtitle",
-          "desc": "Sub-title"
-        },
-        {
           "name": "tags",
           "desc": "Comma-separated tags."
+        },
+        {
+          "name": "accent-color",
+          "desc": "Accent color applied across the…"
         }
       ],
       "active": [
@@ -201,7 +201,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "subtitle=\"btopro dreaming reality\""
+      "s": "tags=\"dreams, hax, camp\""
     },
     {
       "type": "text",
@@ -209,7 +209,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "tags=\"dreams, hax, camp\""
+      "s": "accent-color=\"pink\""
     },
     {
       "type": "text",
@@ -317,8 +317,8 @@
       "py": 518,
       "ex": 616,
       "ey": 570,
-      "label": "subtitle",
-      "sub": "\"btopro dreaming reality\"",
+      "label": "tags",
+      "sub": "\"dreams, hax, camp\"",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -329,8 +329,8 @@
       "py": 518,
       "ex": 796,
       "ey": 570,
-      "label": "tags",
-      "sub": "\"dreams, hax, camp\"",
+      "label": "accent-color",
+      "sub": "any color",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -352,8 +352,8 @@
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set sub title and tags",
-      "text": "Fill in the Sub title field in the sidebar. Comma-separated tags."
+      "title": "Set tags and accent color",
+      "text": "Comma-separated tags. Accent color applied across the card."
     },
     {
       "t": 14.8,

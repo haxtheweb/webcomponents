@@ -37,7 +37,7 @@
       "in": 1.7999999999999998,
       "states": [
         [1.4, "scroll-button"],
-        [10, "label"]
+        [7.4, "Get started"]
       ]
     },
     {
@@ -60,27 +60,22 @@
       "in": 2.4,
       "rows": [
         {
-          "name": "target",
-          "desc": "target"
-        },
-        {
           "name": "icon",
-          "desc": "icon"
+          "desc": "Icon on the button; an arrow po…"
         },
         {
           "name": "label",
-          "desc": "label"
+          "desc": "Tooltip and accessible name; de…"
         },
         {
           "name": "position",
-          "desc": "position"
+          "desc": "Side the tooltip shows on: top,…"
         }
       ],
       "active": [
         [5, 0],
         [7.4, 1],
         [10, 2],
-        [12.4, 3],
         [14.8, 0]
       ]
     },
@@ -98,7 +93,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "target=\"target\""
+      "s": "icon=\"icons:expand-more\""
     },
     {
       "type": "text",
@@ -106,7 +101,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "icon=\"icons:expand-less\""
+      "s": "label=\"Get started\""
     },
     {
       "type": "text",
@@ -114,15 +109,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "label=\"label\""
-    },
-    {
-      "type": "text",
-      "x": 1022,
-      "y": 368,
-      "c": "code",
-      "in": 12.4,
-      "s": "position=\"top\""
+      "s": "position=\"right\""
     },
     {
       "type": "text",
@@ -150,13 +137,6 @@
           10,
           {
             "y": 368
-          },
-          0.4
-        ],
-        [
-          12.4,
-          {
-            "y": 400
           },
           0.4
         ]
@@ -190,13 +170,6 @@
             "y": 400
           },
           0.4
-        ],
-        [
-          12.4,
-          {
-            "y": 432
-          },
-          0.4
         ]
       ]
     },
@@ -206,8 +179,8 @@
       "py": 382,
       "ex": 616,
       "ey": 434,
-      "label": "target",
-      "sub": "\"target\"",
+      "label": "icon",
+      "sub": "\"icons:expand-more\"",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -218,8 +191,8 @@
       "py": 382,
       "ex": 796,
       "ey": 434,
-      "label": "icon",
-      "sub": "\"icons:expand-less\"",
+      "label": "label",
+      "sub": "\"Get started\"",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -230,23 +203,11 @@
       "py": 382,
       "ex": 616,
       "ey": 434,
-      "label": "label",
-      "sub": "\"label\"",
+      "label": "position",
+      "sub": "\"right\"",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
-    },
-    {
-      "type": "callout",
-      "px": 770,
-      "py": 382,
-      "ex": 796,
-      "ey": 434,
-      "label": "position",
-      "sub": "\"top\"",
-      "dir": 1,
-      "in": 12.6,
-      "out": 14.600000000000001
     }
   ],
   "beats": [
@@ -259,14 +220,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set target and icon",
-      "text": "Add target and icon attributes to the tag."
+      "title": "Set icon",
+      "text": "Icon on the button; an arrow pointing up by default."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set label and position",
-      "text": "Add label and position attributes to the tag."
+      "title": "Set position",
+      "text": "Side the tooltip shows on: top, right, bottom or left."
     },
     {
       "t": 14.8,

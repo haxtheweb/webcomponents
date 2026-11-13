@@ -304,14 +304,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set image and alt text",
+      "title": "Set image",
       "text": "Upload a file or paste a link for Image."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set open text and close text",
-      "text": "Fill in the Optional summary text when details are open field in the sidebar."
+      "text": "Set Optional summary text when details are open and Optional summary text when…"
     },
     {
       "t": 14.8,

@@ -1,0 +1,9 @@
+<p>This site runs on <strong>material-theme</strong>, a HAXcms theme in the Material 3 layout: a top app bar, a navigation drawer and a content surface. It sits on top of the <strong>Material 3 DDD bridge</strong>.</p>
+<h2>How the bridge works</h2>
+<p>Every HAX block reads DDD tokens such as <code>--ddd-theme-default-beaverBlue</code>, <code>--ddd-font-primary</code> and <code>--ddd-radius-sm</code>. While Material 3 is the active design system those tokens point at Material 3 tokens, so the whole block ecosystem takes on Material 3 colors, Roboto type, radii, shadows and focus rings without any block changing.</p>
+<p>Content stays plain DDD content. Switch this site to any other theme and every page keeps working.</p>
+<grid-plate layout="1-1-1">
+<ddd-card src="../../accent-card/demo/images/image1.jpg" alt="" slot="col-1" title="Tokens" href="color" label="See the palette"><p>Material 3 tokens, light and dark, under their own names.</p></ddd-card>
+<ddd-card src="../../accent-card/demo/images/image2.jpg" alt="" slot="col-2" title="Blocks" href="blocks" label="See the blocks"><p>Cards, notes, steps and callouts, unchanged, in Material 3.</p></ddd-card>
+<ddd-card src="../../haxcms-elements/demo/assets/banner.jpg" alt="" slot="col-3" title="Attribution" href="about" label="Read more"><p>Where the values come from and how they are licensed.</p></ddd-card>
+</grid-plate>

@@ -307,7 +307,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "open state",
+              "description": "Whether the modal is open; set by the simple-modal-show event.",
               "default": "false",
               "attribute": "opened",
               "reflects": true
@@ -319,7 +319,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "Close icon",
+              "description": "Icon on the close button.",
               "default": "\"close\"",
               "attribute": "close-icon"
             },
@@ -353,7 +353,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "Close label",
+              "description": "Label of the close button.",
               "attribute": "close-label"
             },
             {
@@ -410,7 +410,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "open state",
+              "description": "Whether the modal is open; set by the simple-modal-show event.",
               "default": "false",
               "fieldName": "opened"
             },
@@ -419,7 +419,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "Close label",
+              "description": "Label of the close button.",
               "fieldName": "closeLabel"
             },
             {
@@ -427,7 +427,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "Close icon",
+              "description": "Icon on the close button.",
               "default": "\"close\"",
               "fieldName": "closeIcon"
             },

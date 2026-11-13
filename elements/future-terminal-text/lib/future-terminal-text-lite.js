@@ -111,10 +111,16 @@ class FutureTerminalTextLite extends FutureTerminalTextLiteSuper(LitElement) {
       glitch: {
         type: Boolean,
       },
+      /**
+       * Use the red alert color for the text instead of the normal color.
+       */
       red: {
         type: Boolean,
         reflect: true,
       },
+      /**
+       * Fade the text in, then flicker it, when it first appears.
+       */
       fadein: {
         type: Boolean,
         reflect: true,

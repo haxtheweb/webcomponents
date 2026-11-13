@@ -199,9 +199,9 @@
   "end": {
     "in": 17.8,
     "line": "Present math in a nice looking way.",
-    "code": ""
+    "code": "<lrn-math></lrn-math>"
   },
-  "surfaceHash": "c9524417b74b",
+  "surfaceHash": "6d2669f6ab48",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

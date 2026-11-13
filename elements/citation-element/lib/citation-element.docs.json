@@ -27,7 +27,7 @@
       "property": "scope",
       "type": "string",
       "default": "\"sibling\"",
-      "description": "License scope",
+      "description": "The part of the page the license covers: sibling or parent content.",
       "hax": null
     },
     {

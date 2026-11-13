@@ -19,7 +19,7 @@
       "property": "currentItem",
       "type": "object",
       "default": "",
-      "description": "Whether toggle is disabled",
+      "description": "The menu item that has focus while the menu is open.",
       "hax": null
     },
     {
@@ -27,7 +27,7 @@
       "property": "disabled",
       "type": "boolean",
       "default": "",
-      "description": "Whether toggle is disabled",
+      "description": "Disable the menu button so the menu cannot be opened.",
       "hax": null
     },
     {
@@ -35,7 +35,7 @@
       "property": "expanded",
       "type": "boolean",
       "default": "false",
-      "description": "Whether toggle is disabled",
+      "description": "Whether the menu is open; set it to show the menu from the start.",
       "hax": null
     },
     {
@@ -43,7 +43,7 @@
       "property": "focused",
       "type": "boolean",
       "default": "",
-      "description": "Whether button is toggled",
+      "description": "Whether the menu button or one of its items has keyboard focus.",
       "hax": null
     },
     {
@@ -51,7 +51,7 @@
       "property": "hovered",
       "type": "boolean",
       "default": "",
-      "description": "Whether button is toggled",
+      "description": "Whether the pointer is over the menu button or its menu.",
       "hax": null
     },
     {
@@ -75,7 +75,7 @@
       "property": "noOpenOnHover",
       "type": "boolean",
       "default": "false",
-      "description": "disables menu i=opening on hover",
+      "description": "Disables opening the menu on hover; it then opens only on click or key.",
       "hax": null
     },
     {

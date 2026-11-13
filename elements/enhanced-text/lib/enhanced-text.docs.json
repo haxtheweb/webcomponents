@@ -19,7 +19,7 @@
       "property": "wikipedia",
       "type": "boolean",
       "default": "false",
-      "description": "",
+      "description": "Also link terms that are found to their Wikipedia articles.",
       "hax": null
     },
     {
@@ -43,7 +43,7 @@
       "property": "haxcmsGlossary",
       "type": "boolean",
       "default": "false",
-      "description": "",
+      "description": "Wrap terms from the HAXcms site glossary in vocab-term definitions.",
       "hax": null
     },
     {
@@ -67,7 +67,7 @@
       "property": "haxcmsMarkAll",
       "type": "boolean",
       "default": "false",
-      "description": "",
+      "description": "Mark every match of a glossary term, not only the first one.",
       "hax": null
     },
     {
@@ -83,7 +83,7 @@
       "property": "auto",
       "type": "boolean",
       "default": "false",
-      "description": "",
+      "description": "Enhance the text as soon as the element loads, without calling enhance().",
       "hax": null
     }
   ],

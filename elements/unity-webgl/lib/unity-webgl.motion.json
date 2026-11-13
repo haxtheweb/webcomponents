@@ -151,8 +151,8 @@
           "desc": "Streaming URL"
         },
         {
-          "name": "companyname",
-          "desc": "Company Name"
+          "name": "productversion",
+          "desc": "Product Version"
         }
       ],
       "active": [
@@ -201,7 +201,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "companyname=\"DefaultCompany\""
+      "s": "productversion=\"0.1\""
     },
     {
       "type": "text",
@@ -321,8 +321,8 @@
       "py": 494,
       "ex": 796,
       "ey": 546,
-      "label": "companyname",
-      "sub": "\"DefaultCompany\"",
+      "label": "productversion",
+      "sub": "\"0.1\"",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -345,7 +345,7 @@
       "t": 10,
       "out": 14.6,
       "title": "Set streaming url",
-      "text": "Streaming assets URL. Fill in the Company Name field in the sidebar."
+      "text": "Streaming assets URL. Release version."
     },
     {
       "t": 14.8,

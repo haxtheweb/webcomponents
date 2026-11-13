@@ -1,0 +1,43 @@
+{
+  "tag": "tailwind-theme",
+  "folder": "tailwind-theme",
+  "package": "@haxtheweb/tailwind-theme",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "tailwind-theme",
+  "description": "Tailwind CSS theme for HAXcms, built on the DDD-capable Tailwind design system bridge",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/tailwind-theme/tailwind-theme.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/tailwind-theme/tailwind-theme.js",
+  "install": "npm i @haxtheweb/tailwind-theme",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "sidebar-open",
+      "property": "sidebarOpen",
+      "type": "boolean",
+      "default": "true",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "981929e508e6",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/tailwind-theme",
+    "file": "tailwind-theme.js"
+  }
+}

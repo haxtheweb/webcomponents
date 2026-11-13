@@ -156,7 +156,7 @@ class GitCorner extends LitElement {
         type: String,
       },
       /**
-       * alt text
+       * Accessible name for the corner link, read in place of the logo.
        */
       alt: {
         type: String,

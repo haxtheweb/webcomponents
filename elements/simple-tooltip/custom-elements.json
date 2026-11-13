@@ -141,7 +141,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Set this to true if you want to manually control when the tooltip\nis shown or hidden.",
+              "description": "Show and hide the tooltip only from code, not on hover or focus.",
               "default": "false",
               "attribute": "manual-mode"
             },
@@ -253,7 +253,7 @@
               "type": {
                 "text": "number"
               },
-              "description": "The delay that will be applied before the `entry` animation is\nplayed when showing the tooltip.",
+              "description": "Milliseconds to wait before the tooltip's entry animation plays.",
               "attribute": "animation-delay"
             },
             {
@@ -280,7 +280,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Set this to true if you want to manually control when the tooltip\nis shown or hidden.",
+              "description": "Show and hide the tooltip only from code, not on hover or focus.",
               "default": "false",
               "fieldName": "manualMode"
             },
@@ -326,7 +326,7 @@
               "type": {
                 "text": "number"
               },
-              "description": "The delay that will be applied before the `entry` animation is\nplayed when showing the tooltip.",
+              "description": "Milliseconds to wait before the tooltip's entry animation plays.",
               "fieldName": "animationDelay"
             },
             {

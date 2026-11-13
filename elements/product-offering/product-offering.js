@@ -216,9 +216,21 @@ class ProductOffering extends IntersectionObserverMixin(DDD) {
   static get properties() {
     return {
       ...super.properties,
+      /**
+       * Alternative text for the image.
+       */
       alt: { type: String },
+      /**
+       * Address of the image shown beside the offering.
+       */
       source: { type: String },
+      /**
+       * Icon shown next to the title.
+       */
       icon: { type: String },
+      /**
+       * Title of the offering; its first word is underlined.
+       */
       title: { type: String },
       _titleOne: { type: String },
       _titleTwo: { type: String },

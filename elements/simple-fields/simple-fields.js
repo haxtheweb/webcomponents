@@ -200,7 +200,7 @@ class SimpleFields extends SimpleFieldsLite {
         attribute: "schematizer",
       },
       /**
-       * Schema label
+       * Label for the whole form.
        */
       label: {
         type: String,

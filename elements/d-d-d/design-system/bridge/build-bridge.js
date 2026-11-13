@@ -36,6 +36,7 @@
  *     --upstream  an already-extracted package for the first source (skips npm pack)
  *     --check     exit 1 if the committed outputs are out of date
  */
+import crypto from "crypto";
 import fs from "fs";
 import os from "os";
 import path from "path";
@@ -135,6 +136,46 @@ function fetchSource(source, index) {
   return packed[spec];
 }
 
+/**
+ * A source that isn't published to npm (shadcn's theme lives in its repo):
+ * a raw URL pinned to a commit, verified by sha256, with its LICENSE file
+ * fetched from the same commit and checked for the declared license.
+ */
+const LICENSE_TEXT = {
+  MIT: "MIT License",
+  "Apache-2.0": "Apache License",
+  "BSD-2-Clause": "BSD 2-Clause",
+  "BSD-3-Clause": "BSD 3-Clause",
+  ISC: "ISC License",
+};
+const curl = (url) =>
+  execFileSync("curl", ["-fsSL", "--max-time", "60", url], {
+    encoding: "utf8",
+    maxBuffer: 64 * 1024 * 1024,
+  });
+function fetchUrl(source) {
+  if (!/^https:\/\/[\w.-]+\/.+\/[0-9a-f]{40}\//.test(source.url)) {
+    console.error(
+      `${source.url} must be https and pinned to a full commit sha.`,
+    );
+    process.exit(1);
+  }
+  const text = curl(source.url);
+  const digest = crypto.createHash("sha256").update(text).digest("hex");
+  if (digest !== source.sha256) {
+    console.error(
+      `${source.url} sha256 is ${digest}, bridge.json pins ${source.sha256}.`,
+    );
+    process.exit(1);
+  }
+  const license = curl(source.licenseUrl);
+  if (!license.includes(LICENSE_TEXT[source.license])) {
+    console.error(`${source.licenseUrl} doesn't read as ${source.license}.`);
+    process.exit(1);
+  }
+  return text;
+}
+
 const kebab = (key) =>
   String(key)
     .replace(/([a-z0-9])([A-Z])/g, "$1-$2")
@@ -184,28 +225,78 @@ function flattenDTCG(json, prefix, pathParts = [], out = {}) {
 }
 
 /** custom property declarations per selector, in source order */
+/**
+ * custom property declarations per selector, in source order. Blocks can
+ * nest (Tailwind's @theme holds @keyframes), so declarations belong to the
+ * innermost block they sit in and nested blocks never leak into it.
+ */
 function parseBlocks(cssText) {
   const text = cssText.replace(/\/\*[\s\S]*?\*\//g, "");
   const blocks = [];
-  const re = /([^{}]+)\{([^{}]*)\}/g;
-  let m;
-  while ((m = re.exec(text))) {
-    const selector = m[1].replace(/\s+/g, " ").trim();
-    const decls = {};
-    // values can hold ; only inside strings, which custom properties here don't
-    m[2].split(";").forEach((decl) => {
-      const i = decl.indexOf(":");
-      if (i === -1) return;
-      const name = decl.slice(0, i).trim();
-      if (!name.startsWith("--")) return;
-      decls[name] = decl
-        .slice(i + 1)
-        .replace(/\s+/g, " ")
-        .trim();
-    });
-    blocks.push({ selector, decls });
+  const stack = [];
+  let buffer = "";
+  let quote = null;
+  const flushDecl = () => {
+    const top = stack[stack.length - 1];
+    const decl = buffer;
+    buffer = "";
+    if (!top) return;
+    const i = decl.indexOf(":");
+    if (i === -1) return;
+    const name = decl.slice(0, i).trim();
+    if (!name.startsWith("--")) return;
+    top.decls[name] = decl
+      .slice(i + 1)
+      .replace(/\s+/g, " ")
+      .trim();
+  };
+  for (const c of text) {
+    if (quote) {
+      buffer += c;
+      if (c === quote) quote = null;
+    } else if (c === '"' || c === "'") {
+      quote = c;
+      buffer += c;
+    } else if (c === "{") {
+      const block = { selector: buffer.replace(/\s+/g, " ").trim(), decls: {} };
+      buffer = "";
+      blocks.push(block);
+      stack.push(block);
+    } else if (c === "}") {
+      flushDecl();
+      stack.pop();
+    } else if (c === ";") {
+      flushDecl();
+    } else {
+      buffer += c;
+    }
   }
   return blocks;
+}
+
+/**
+ * Sass variable files ($name: value;) as custom properties under prefix.
+ * module.$var references become var(--module-var), and local $var
+ * references var(<prefix>var), matching Material's own CSS names.
+ */
+function parseScssVars(text, prefix) {
+  const out = {};
+  const clean = text.replace(/\/\*[\s\S]*?\*\//g, "");
+  clean.split("\n").forEach((line) => {
+    const m = /^\$([\w-]+)\s*:\s*(.+?);\s*$/.exec(line.trim());
+    if (!m || /\bnull\b/.test(m[2])) return;
+    const value = m[2]
+      .replace(
+        /([\w-]+)\.\$([\w-]+)/g,
+        (all, mod, name) => `var(--${mod}-${name})`,
+      )
+      .replace(
+        /(^|[^\w-])\$([\w-]+)/g,
+        (all, pre, name) => `${pre}var(${prefix}${name})`,
+      );
+    out[`${prefix}${m[1]}`] = value;
+  });
+  return out;
 }
 
 function scopeEnv(blocks, selectors) {
@@ -264,16 +355,32 @@ function resolve(value, env, seen = []) {
 // light and dark environments, merged across sources in order
 const light = {};
 const dark = {};
+const readSource = (source, index, file) => {
+  if (source.url) return fetchUrl(source);
+  return fs.readFileSync(path.join(fetchSource(source, index), file), "utf8");
+};
 sources.forEach((source, index) => {
-  const dir = fetchSource(source, index);
-  const text = fs.readFileSync(path.join(dir, source.file), "utf8");
   if (source.format === "dtcg") {
     // DTCG files here are mode-free (palettes, motion): same in both modes
-    const flat = flattenDTCG(JSON.parse(text), source.prefix);
+    const flat = flattenDTCG(
+      JSON.parse(readSource(source, index, source.file)),
+      source.prefix,
+    );
     Object.assign(light, flat);
     Object.assign(dark, flat);
+  } else if (source.format === "scss-vars") {
+    // one file for both modes, or files: { light, dark }
+    const files = source.files || { light: source.file, dark: source.file };
+    Object.assign(
+      light,
+      parseScssVars(readSource(source, index, files.light), source.prefix),
+    );
+    Object.assign(
+      dark,
+      parseScssVars(readSource(source, index, files.dark), source.prefix),
+    );
   } else {
-    const blocks = parseBlocks(text);
+    const blocks = parseBlocks(readSource(source, index, source.file));
     Object.assign(light, scopeEnv(blocks, source.scopes.light));
     Object.assign(dark, scopeEnv(blocks, source.scopes.dark));
   }
@@ -316,7 +423,14 @@ const rows = Object.keys(map).map((dddName) => {
   let lightValue;
   let darkValue;
   let css;
-  if (entry.token) {
+  if (entry.token && entry.fromMode) {
+    // a palette that only exists per mode (Spectrum): take the value the
+    // named mode gives and write it as a constant
+    const t = tokenByName[entry.token] || { light: "", dark: "" };
+    lightValue = t[entry.fromMode];
+    darkValue = t[entry.fromMode];
+    css = lightValue;
+  } else if (entry.token) {
     const t = tokenByName[entry.token] || { light: "", dark: "" };
     lightValue = t.light;
     darkValue = t.dark;
@@ -345,6 +459,7 @@ const rows = Object.keys(map).map((dddName) => {
   return {
     ddd: dddName,
     token: entry.token || null,
+    fromMode: entry.fromMode || null,
     css,
     light: lightValue,
     dark: darkValue,
@@ -362,8 +477,9 @@ ddd
     const named =
       alias && /var\((--ddd-theme-default-[\w-]+)/.exec(alias.value);
     const row = named && rows.find((r) => r.ddd === named[1]);
-    if (!row || !/^#[0-9a-f]{6}$/i.test(row.light)) return;
-    const [r, g, b] = hexToRgb(row.light);
+    const rowHex = row ? toHex(row.light) : null;
+    if (!rowHex) return;
+    const [r, g, b] = hexToRgb(rowHex);
     const parts = v.value.split(",").map((s) => s.trim());
     const alpha = parts.length === 4 ? `, ${parts[3]}` : "";
     rgbRows.push({ ddd: "--" + v.name, css: `${r}, ${g}, ${b}${alpha}` });
@@ -498,8 +614,17 @@ const PAIRS = [
 const contrastReport = PAIRS.map(([fg, bg, min]) => {
   const a = value(fg, "light");
   const b = value(bg, "light");
-  const hex = /^#[0-9a-f]{6}$/i;
-  const ratio = hex.test(a) && hex.test(b) ? contrast(a, b) : null;
+  const ha = toHex(a);
+  const hb = toHex(b);
+  const ratio = ha && hb ? contrast(ha, hb) : null;
+  if (
+    ratio === null &&
+    (rows.some((r) => r.ddd === fg) || rows.some((r) => r.ddd === bg))
+  ) {
+    problems.push(
+      `${fg} on ${bg}: can't read the mapped colors to check contrast (${a} / ${b})`,
+    );
+  }
   if (ratio !== null && ratio < min) {
     problems.push(`${fg} on ${bg}: ${ratio.toFixed(2)} < ${min}`);
   }
@@ -516,6 +641,67 @@ const contrastReport = PAIRS.map(([fg, bg, min]) => {
 const prefix = config.prefix;
 const header = (what) =>
   `/**\n * ${what}\n * GENERATED by elements/d-d-d/design-system/bridge/build-bridge.js from\n * ${sources.map((src) => (src.local ? `${themePkg.name}/${src.file}` : `${src.package}@${src.version}`) + ` (${src.license})`).join(", ")}, ${config.homepage || sources[0].homepage}.\n * Do not edit by hand: change design-system/bridge.json and rebuild.\n */\n`;
+/**
+ * An opaque color as #rrggbb for contrast and rgb-channel math, or null.
+ * Upstream values stay as written in the output (oklch is fine in CSS).
+ */
+function toHex(value) {
+  const v = String(value || "").trim();
+  const hex = /^#([0-9a-f]{3}|[0-9a-f]{6})$/i.exec(v);
+  if (hex) {
+    const h = hex[1].length === 3 ? hex[1].replace(/./g, "$&$&") : hex[1];
+    return `#${h.toLowerCase()}`;
+  }
+  const byte = (n) =>
+    Math.round(Math.min(1, Math.max(0, n)) * 255)
+      .toString(16)
+      .padStart(2, "0");
+  const rgb =
+    /^rgba?\(\s*([\d.]+)[\s,]+([\d.]+)[\s,]+([\d.]+)\s*(?:[,/]\s*([\d.]+%?))?\s*\)$/i.exec(
+      v,
+    );
+  if (rgb) {
+    if (
+      rgb[4] !== undefined &&
+      parseFloat(rgb[4]) < (rgb[4].endsWith("%") ? 100 : 1)
+    ) {
+      return null;
+    }
+    return `#${[rgb[1], rgb[2], rgb[3]].map((n) => byte(Number(n) / 255)).join("")}`;
+  }
+  const ok =
+    /^oklch\(\s*([\d.]+)(%?)\s+([\d.]+|none)\s+([\d.]+|none)\s*(?:\/\s*([\d.]+%?))?\s*\)$/i.exec(
+      v,
+    );
+  if (ok) {
+    if (
+      ok[5] !== undefined &&
+      parseFloat(ok[5]) < (ok[5].endsWith("%") ? 100 : 1)
+    ) {
+      return null;
+    }
+    // OKLCH → OKLab → linear sRGB → sRGB (Björn Ottosson's matrices)
+    const L = ok[2] ? Number(ok[1]) / 100 : Number(ok[1]);
+    // "none" is a missing component (Tailwind writes neutrals that way): 0
+    const C = ok[3] === "none" ? 0 : Number(ok[3]);
+    const H = ok[4] === "none" ? 0 : (Number(ok[4]) * Math.PI) / 180;
+    const a = C * Math.cos(H);
+    const b = C * Math.sin(H);
+    const l = (L + 0.3963377774 * a + 0.2158037573 * b) ** 3;
+    const m = (L - 0.1055613458 * a - 0.0638541728 * b) ** 3;
+    const s2 = (L - 0.0894841775 * a - 1.291485548 * b) ** 3;
+    const lin = [
+      4.0767416621 * l - 3.3077115913 * m + 0.2309699292 * s2,
+      -1.2684380046 * l + 2.6097574011 * m - 0.3413193965 * s2,
+      -0.0041960863 * l - 0.7034186147 * m + 1.707614701 * s2,
+    ];
+    const gamma = (x) =>
+      x <= 0.0031308 ? 12.92 * x : 1.055 * Math.pow(x, 1 / 2.4) - 0.055;
+    return `#${lin.map((x) => byte(gamma(x))).join("")}`;
+  }
+  return null;
+}
+
 /** split on a separator at paren depth 0 */
 function splitTop(value, sep) {
   const parts = [];

@@ -27,7 +27,7 @@
       "property": "title",
       "type": "string",
       "default": "",
-      "description": "Title",
+      "description": "Heading shown above the editor.",
       "hax": null
     },
     {

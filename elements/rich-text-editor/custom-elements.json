@@ -101,7 +101,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "id for toolbar",
+              "description": "Id of the rich-text-editor-toolbar this editor uses.",
               "default": "\"\"",
               "attribute": "toolbar-id",
               "reflects": true
@@ -113,7 +113,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "type of editor toolbar, i.e.\nfull - full for full toolbar with breadcrumb,\nmini - mini for mini floating toolbar, or\ndefault toolbar if neither.",
+              "description": "Toolbar to use: full (with breadcrumbs), mini (floating) or the\ndefault.",
               "default": "\"rich-text-editor-toolbar\"",
               "attribute": "type",
               "reflects": true
@@ -211,7 +211,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "raw html",
+              "description": "HTML to load into the editor in place of its content.",
               "attribute": "rawhtml"
             },
             {
@@ -309,7 +309,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "id for toolbar",
+              "description": "Id of the rich-text-editor-toolbar this editor uses.",
               "default": "\"\"",
               "fieldName": "toolbarId"
             },
@@ -327,7 +327,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "raw html",
+              "description": "HTML to load into the editor in place of its content.",
               "fieldName": "rawhtml"
             },
             {
@@ -335,7 +335,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "type of editor toolbar, i.e.\nfull - full for full toolbar with breadcrumb,\nmini - mini for mini floating toolbar, or\ndefault toolbar if neither.",
+              "description": "Toolbar to use: full (with breadcrumbs), mini (floating) or the\ndefault.",
               "default": "\"rich-text-editor-toolbar\"",
               "fieldName": "type"
             },
@@ -473,7 +473,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "id for toolbar",
+              "description": "Id of the rich-text-editor-toolbar this editor uses.",
               "default": "\"\"",
               "fieldName": "toolbarId",
               "inheritedFrom": {
@@ -499,7 +499,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "raw html",
+              "description": "HTML to load into the editor in place of its content.",
               "fieldName": "rawhtml",
               "inheritedFrom": {
                 "name": "RichTextEditorBehaviors",
@@ -511,7 +511,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "type of editor toolbar, i.e.\nfull - full for full toolbar with breadcrumb,\nmini - mini for mini floating toolbar, or\ndefault toolbar if neither.",
+              "description": "Toolbar to use: full (with breadcrumbs), mini (floating) or the\ndefault.",
               "default": "\"rich-text-editor-toolbar\"",
               "fieldName": "type",
               "inheritedFrom": {
@@ -713,7 +713,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "id for toolbar",
+              "description": "Id of the rich-text-editor-toolbar this editor uses.",
               "default": "\"\"",
               "attribute": "toolbar-id",
               "reflects": true,
@@ -729,7 +729,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "type of editor toolbar, i.e.\nfull - full for full toolbar with breadcrumb,\nmini - mini for mini floating toolbar, or\ndefault toolbar if neither.",
+              "description": "Toolbar to use: full (with breadcrumbs), mini (floating) or the\ndefault.",
               "default": "\"rich-text-editor-toolbar\"",
               "attribute": "type",
               "reflects": true,
@@ -863,7 +863,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "raw html",
+              "description": "HTML to load into the editor in place of its content.",
               "attribute": "rawhtml",
               "inheritedFrom": {
                 "name": "RichTextEditorBehaviors",

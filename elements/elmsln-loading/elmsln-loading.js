@@ -140,19 +140,19 @@ class ElmslnLoading extends I18NMixin(SimpleColors) {
     return {
       ...super.properties,
       /**
-       * dark
+       * Draw the spinner for a dark background.
        */
       dark: {
         type: Boolean,
       },
       /**
-       * color
+       * Spinner color, as a SimpleColors accent color name such as blue.
        */
       color: {
         type: String,
       },
       /**
-       * contrast
+       * Contrast step for the spinner color, from 0 (none) to 4 (most).
        */
       contrast: {
         type: Number,

@@ -126,15 +126,24 @@ class ScrollButton extends LitElement {
       target: {
         type: Object,
       },
+      /**
+       * Icon on the button; an arrow pointing up by default.
+       */
       icon: {
         type: String,
       },
+      /**
+       * Tooltip and accessible name; defaults to "Back to top".
+       */
       label: {
         type: String,
       },
       _label: {
         type: String,
       },
+      /**
+       * Side the tooltip shows on: top, right, bottom or left.
+       */
       position: {
         type: String,
       },
