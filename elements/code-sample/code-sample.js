@@ -159,6 +159,11 @@ class CodeSample extends I18NMixin(LitElement) {
            overflows), so highlight themes must not scroll the code element too */
         #code-container #code code {
           overflow-x: visible;
+          /* grow with the longest line so the theme background stays under
+             text that scrolls into view, not just the first screenful */
+          box-sizing: border-box;
+          min-width: 100%;
+          width: max-content;
         }
         #code-container:focus-visible {
           outline: var(--ddd-focus-ring);
