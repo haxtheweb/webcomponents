@@ -120,6 +120,7 @@ export const HaxIconsetManifest = [
       "admin-components",
       "admin-content",
       "admin-copy",
+      "admin-crop",
       "admin-delete",
       "admin-details",
       "admin-docs",

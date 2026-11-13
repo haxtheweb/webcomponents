@@ -21,6 +21,14 @@ import "@haxtheweb/simple-pager/simple-pager.js";
 import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
 import { COMPRESS_PRESETS } from "@haxtheweb/hax-body/lib/hax-file-actions.js";
 import {
+  CROP_ASPECTS,
+  canCropMime,
+  centeredCropRect,
+  cropOutputType,
+  encodeCrop,
+  loadCropImage,
+} from "@haxtheweb/hax-body/lib/hax-image-crop.js";
+import {
   HaxUiAdminStyles,
   HaxUiAdminIcons,
 } from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
@@ -71,6 +79,7 @@ const SCALE_PRESETS = {
 
 /** keys the item menu shows, bound on the rows (as in outline-designer) */
 const FILES_ROW_SHORTCUTS = {
+  crop: { key: "c", keys: [{ key: "c" }] },
   duplicate: { key: "d", ctrl: true, keys: [{ key: "d", ctrl: true }] },
   rename: { key: "F2", keys: [{ key: "F2" }] },
   delete: {
@@ -116,6 +125,11 @@ class HAXCMSFilesAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
       inShell: { type: Boolean, attribute: "in-shell", reflect: true },
       /** open option chooser for a bulk action that needs a value */
       _choice: { state: true },
+      /**
+       * the crop editor: { rows, index, done, aspect }. Opened by Crop…
+       * on the selected JPG, PNG and WebP files, one at a time.
+       */
+      _crop: { state: true },
       /**
        * true while the section is narrow (a phone, or a small dialog): files
        * show as cards and the filters fold into one row. Set from the
@@ -236,6 +250,24 @@ class HAXCMSFilesAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
       actionScaleChoose: "Scale\u2026",
       actionTransformChoose: "Transform\u2026",
       actionCompressChoose: "Compress\u2026",
+      actionCropChoose: "Crop\u2026",
+      actionCrop: "Crop",
+      cropHeading: "Crop {name}",
+      cropProgress: "Crop {current} of {total}: {name}",
+      cropEditor: "Crop editor",
+      cropReplaceNote:
+        "Replaces {name} with the crop. It keeps its name and address, so every page using it shows the crop.",
+      download: "Download",
+      skip: "Skip",
+      replaceOriginal: "Replace original",
+      replaceAndNext: "Replace and next",
+      cropAll: "Crop all {count} to {aspect}",
+      cropAllNote:
+        "Or crop this image and the {count} after it to the same shape, centered.",
+      imageCropped: "{name} cropped",
+      cropped: "Cropped",
+      cropFailed: "Unable to crop {name}.",
+      onlyCroppable: "Only JPG, PNG and WebP images can be cropped.",
       actionDuplicate: "Duplicate",
       actionRenameChoose: "Rename\u2026",
       actionDeleteChoose: "Delete\u2026",
@@ -634,6 +666,64 @@ class HAXCMSFilesAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
           .insp {
             display: none;
           }
+        }
+        /* crop editor: takes the inspector's place, wider; on a narrow
+           section it takes the list's place */
+        .cropper {
+          width: min(560px, 55%);
+          flex: none;
+          display: flex;
+          flex-direction: column;
+          gap: var(--hax-ui-gap-lg);
+          padding: var(--ddd-spacing-4, 16px);
+          overflow: auto;
+          border-left: 1px solid var(--hax-ui-line);
+          /* only focused to move focus in, never a tab stop */
+          outline: none;
+          /* leave room for the controls and the buttons under the image */
+          --hax-image-crop-max-height: clamp(140px, 28vh, 480px);
+        }
+        @container files (max-width: 980px) {
+          .split.cropping .tw {
+            display: none;
+          }
+          .cropper {
+            width: auto;
+            flex: 1;
+            border-left: 0;
+          }
+        }
+        .crop-all {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: var(--hax-ui-gap-md);
+          padding-top: var(--hax-ui-gap-lg);
+          border-top: 1px solid var(--hax-ui-line);
+        }
+        .crop-all .hax-ui-note {
+          flex: 1 1 200px;
+          margin: 0;
+        }
+        /* key hints on the crop buttons, as on site admin's Save; only
+           where there is a keyboard to press them */
+        @media (hover: hover) and (pointer: fine) {
+          .cropper .hax-ui-btn[data-shortcut]::after {
+            content: attr(data-shortcut);
+            margin-inline-start: var(--hax-ui-gap);
+            padding: 0 var(--hax-ui-gap);
+            line-height: 16px;
+            font-family: var(--ddd-font-mono, monospace);
+            font-size: var(--hax-ui-admin-font-size-xs);
+            font-weight: var(--ddd-font-weight-bold, 700);
+            border: 1px solid currentColor;
+            border-bottom-width: var(--hax-ui-focus-width);
+            border-radius: var(--hax-ui-radius);
+            opacity: 0.8;
+          }
+        }
+        :host([compact]) .cropper .hax-ui-btn[data-shortcut]::after {
+          display: none;
         }
         .insp-empty {
           margin: 0;
@@ -1043,6 +1133,11 @@ class HAXCMSFilesAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
     return [
       { id: "insert", label: this.t.embedInPage, disabled: busy },
       {
+        id: "crop",
+        label: this.t.actionCropChoose,
+        disabled: busy || !selected.some((r) => this._canCrop(r)),
+      },
+      {
         id: "scale",
         label: this.t.actionScaleChoose,
         disabled: busy || !canScale,
@@ -1123,6 +1218,9 @@ class HAXCMSFilesAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
         case "transform":
         case "compress":
           this._openChoice(action);
+          return;
+        case "crop":
+          this._openCrop(selected);
           return;
         default:
           return;
@@ -1545,6 +1643,10 @@ class HAXCMSFilesAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
   _canConvertToJpg(r) {
     return this._canScale(r);
   }
+  /** JPG, PNG and WebP: what a browser canvas can write back */
+  _canCrop(r) {
+    return this._isImg(r) && canCropMime(r.mimetype);
+  }
 
   _nextCacheBustToken() {
     this.__cacheBustCounter += 1;
@@ -1944,6 +2046,7 @@ class HAXCMSFilesAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
     // outline-designer's page menu does
     const icons = {
       insert: HaxUiAdminIcons.add,
+      crop: HaxUiAdminIcons.crop,
       scale: HaxUiAdminIcons.image,
       rotate: HaxUiAdminIcons.refresh,
       transform: HaxUiAdminIcons.image,
@@ -3051,6 +3154,334 @@ class HAXCMSFilesAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
   }
 
   /** the selected file's preview and details; actions live in the bar */
+  /**
+   * Crop… : the selected JPG, PNG and WebP files open one at a time in
+   * hax-image-crop beside the list. Each crop is made in the browser and
+   * replaces the original (replaceFileContent), like Files' other image
+   * actions; a fixed aspect can crop the rest centered in one go.
+   */
+  _openCrop(rows) {
+    const croppable = (rows || []).filter((r) => this._canCrop(r));
+    if (croppable.length === 0) {
+      this._msg(this.t.onlyCroppable, true);
+      return;
+    }
+    this._choice = null;
+    this._crop = { rows: croppable, index: 0, done: 0, aspect: "free" };
+    this.updateComplete.then(() => {
+      const cropper =
+        this.shadowRoot && this.shadowRoot.querySelector(".cropper");
+      if (cropper) cropper.focus();
+    });
+  }
+
+  _cropRow() {
+    const crop = this._crop;
+    return crop ? crop.rows[crop.index] || null : null;
+  }
+
+  /** leave the editor; refresh the list when anything was replaced */
+  async _closeCrop() {
+    const crop = this._crop;
+    this._crop = null;
+    if (crop && crop.done > 0) {
+      await this.refreshFiles();
+      if (crop.rows.length > 1) {
+        this._msg(
+          (crop.done === 1 ? this.t.bulkSummaryFile : this.t.bulkSummaryFiles)
+            .replace("{verb}", () => this.t.cropped)
+            .replace("{count}", () => crop.done),
+        );
+      }
+    }
+    // back to the list, on the first selected file
+    this.updateComplete.then(() => {
+      const root = this.shadowRoot;
+      const box =
+        root &&
+        (root.querySelector(".tw [data-row-key] input:checked") ||
+          root.querySelector(".tw [data-row-key] input"));
+      if (box) box.focus();
+    });
+  }
+
+  _nextCrop() {
+    const crop = this._crop;
+    if (!crop) return;
+    if (crop.index + 1 >= crop.rows.length) {
+      this._closeCrop();
+      return;
+    }
+    this._crop = Object.assign({}, crop, { index: crop.index + 1 });
+  }
+
+  _onCropChanged(e) {
+    const cropper = e && e.target;
+    if (
+      this._crop &&
+      cropper &&
+      typeof cropper.aspect === "string" &&
+      cropper.aspect !== this._crop.aspect
+    ) {
+      this._crop = Object.assign({}, this._crop, { aspect: cropper.aspect });
+    }
+  }
+
+  /** Esc cancels, Ctrl+Enter replaces, Ctrl+Shift+Enter skips */
+  _onCropKeydown(e) {
+    if (e.key === "Escape") {
+      e.preventDefault();
+      e.stopPropagation();
+      this._closeCrop();
+      return;
+    }
+    if (e.key === "Enter" && (e.ctrlKey || e.metaKey) && !e.altKey) {
+      e.preventDefault();
+      e.stopPropagation();
+      if (this.busy) return;
+      if (e.shiftKey) {
+        if (this._crop && this._crop.index + 1 < this._crop.rows.length) {
+          this._nextCrop();
+        }
+      } else {
+        this._replaceWithCrop();
+      }
+    }
+  }
+
+  async _downloadCrop() {
+    const cropper = this.shadowRoot.querySelector("hax-image-crop");
+    if (!cropper) return;
+    try {
+      await cropper.download();
+    } catch (e) {
+      cropper.error =
+        e && e.message
+          ? e.message
+          : this.t.cropFailed.replace("{name}", () => cropper.fileName);
+    }
+  }
+
+  /**
+   * Send new bytes for `row` to replaceFileContent. The server writes them
+   * over the file in its own format, keeping its name, path and UUID.
+   * @returns {Promise<{ok: boolean, message: string}>}
+   */
+  async _replaceContent(row, blob) {
+    const name = "@site/replaceFileContent";
+    const failed = this.t.cropFailed.replace("{name}", () =>
+      row && row.name ? row.name : "",
+    );
+    const fileUuid = this._s(row && row.uuid ? row.uuid : "");
+    if (!fileUuid) {
+      return { ok: false, message: this.t.fileUuidMissing };
+    }
+    if (!this._canOp) {
+      return { ok: false, message: this.t.unableToRunFileOperation };
+    }
+    try {
+      await waitForHAXCMSSiteApiRegistryReady();
+      if (
+        !MicroFrontendRegistry ||
+        typeof MicroFrontendRegistry.has !== "function" ||
+        !MicroFrontendRegistry.has(name)
+      ) {
+        return { ok: false, message: this.t.fileOperationEndpointUnavailable };
+      }
+      const form = new FormData();
+      form.append("fileUuid", fileUuid);
+      form.append("upload", blob, row.name || "image");
+      const d = await MicroFrontendRegistry.call(name, form, null, this);
+      if (this._statusCode(d) !== 200) {
+        return { ok: false, message: this._messageFromResponse(d, failed) };
+      }
+      return { ok: true, message: "" };
+    } catch {
+      return { ok: false, message: failed };
+    }
+  }
+
+  /** the crop in the editor replaces the current file, then the next opens */
+  async _replaceWithCrop() {
+    const row = this._cropRow();
+    const cropper =
+      this.shadowRoot && this.shadowRoot.querySelector("hax-image-crop");
+    if (!row || !cropper || this.busy) return;
+    this.busy = true;
+    cropper.error = "";
+    try {
+      let blob;
+      try {
+        blob = await cropper.toBlob();
+      } catch (e) {
+        cropper.error =
+          e && e.message
+            ? e.message
+            : this.t.cropFailed.replace("{name}", () => row.name);
+        return;
+      }
+      const result = await this._replaceContent(row, blob);
+      if (!result.ok) {
+        cropper.error = result.message;
+        return;
+      }
+      if (HAXStore && typeof HAXStore.refreshMediaSource === "function") {
+        HAXStore.refreshMediaSource(
+          row.publicUrl || row.fullUrl || row.path || "",
+        );
+      }
+      this._crop = Object.assign({}, this._crop, {
+        done: this._crop.done + 1,
+      });
+      this._msg(this.t.imageCropped.replace("{name}", () => row.name));
+      this._nextCrop();
+    } finally {
+      this.busy = false;
+    }
+  }
+
+  /** crop one file to `ratio`, centered, without opening it */
+  async _cropCentered(row, ratio) {
+    const failed = this.t.cropFailed.replace("{name}", () => row.name);
+    try {
+      const img = await loadCropImage(
+        this._withCacheBust(row.publicUrl, this._nextCacheBustToken()),
+      );
+      const w = img.naturalWidth;
+      const h = img.naturalHeight;
+      const rect = centeredCropRect(w, h, ratio);
+      if (rect.width === w && rect.height === h) {
+        // already this shape; nothing to replace
+        return { ok: true, message: "" };
+      }
+      const blob = await encodeCrop(img, rect, cropOutputType(row.mimetype));
+      return this._replaceContent(row, blob);
+    } catch {
+      return { ok: false, message: failed };
+    }
+  }
+
+  /** crop this file and the rest of the queue to the chosen aspect */
+  async _cropAll() {
+    const crop = this._crop;
+    if (!crop || this.busy) return;
+    const aspect = CROP_ASPECTS.find((a) => a.id === crop.aspect);
+    if (!aspect || typeof aspect.ratio !== "number") return;
+    const rows = crop.rows.slice(crop.index);
+    if (!(await this._confirmBulkOverwrite(rows.length, this.t.actionCrop))) {
+      return;
+    }
+    // files already replaced one at a time show up in the refresh the
+    // bulk run ends with
+    this._crop = null;
+    await this._runBulkOp(
+      rows,
+      (row) => this._cropCentered(row, aspect.ratio),
+      this.t.cropped,
+      { refreshMedia: true },
+    );
+  }
+
+  _renderCrop() {
+    const crop = this._crop;
+    const row = this._cropRow();
+    if (!row) return nothing;
+    const total = crop.rows.length;
+    const remaining = total - crop.index;
+    const more = remaining > 1;
+    const aspect = CROP_ASPECTS.find((a) => a.id === crop.aspect);
+    const canAll = more && aspect && typeof aspect.ratio === "number";
+    const busy = !!this.busy;
+    const heading =
+      total > 1
+        ? this.t.cropProgress
+            .replace("{current}", () => crop.index + 1)
+            .replace("{total}", () => total)
+            .replace("{name}", () => row.name)
+        : this.t.cropHeading.replace("{name}", () => row.name);
+    return html`<section
+      class="cropper"
+      tabindex="-1"
+      aria-label="${this.t.cropEditor}"
+      @keydown="${this._onCropKeydown}"
+      @crop-changed="${this._onCropChanged}"
+    >
+      <hax-image-crop
+        src="${this._withCacheBust(row.publicUrl, this.cacheBustToken)}"
+        file-name="${row.name}"
+        mime-type="${row.mimetype}"
+        aspect="${crop.aspect}"
+        heading="${heading}"
+        note="${this.t.cropReplaceNote.replace("{name}", () => row.name)}"
+      >
+        <button
+          slot="actions"
+          type="button"
+          class="hax-ui-btn"
+          ?disabled="${busy}"
+          @click="${this._downloadCrop}"
+        >
+          ${this.t.download}
+        </button>
+        ${
+          more
+            ? html`<button
+                slot="actions"
+                type="button"
+                class="hax-ui-btn"
+                ?disabled="${busy}"
+                aria-keyshortcuts="Control+Shift+Enter"
+                data-shortcut="Ctrl⇧↵"
+                @click="${this._nextCrop}"
+              >
+                ${this.t.skip}
+              </button>`
+            : nothing
+        }
+        <button
+          slot="actions"
+          type="button"
+          class="hax-ui-btn ghost"
+          aria-keyshortcuts="Escape"
+          data-shortcut="Esc"
+          @click="${this._closeCrop}"
+        >
+          ${this.t.cancel}
+        </button>
+        <button
+          slot="actions"
+          type="button"
+          class="hax-ui-btn primary"
+          ?disabled="${busy}"
+          aria-keyshortcuts="Control+Enter"
+          data-shortcut="Ctrl↵"
+          @click="${this._replaceWithCrop}"
+        >
+          ${more ? this.t.replaceAndNext : this.t.replaceOriginal}
+        </button>
+      </hax-image-crop>
+      ${
+        canAll
+          ? html`<div class="crop-all">
+              <p class="hax-ui-note">
+                ${this.t.cropAllNote.replace("{count}", () => remaining - 1)}
+              </p>
+              <button
+                type="button"
+                class="hax-ui-btn"
+                ?disabled="${busy}"
+                @click="${this._cropAll}"
+              >
+                ${this.t.cropAll
+                  .replace("{count}", () => remaining)
+                  .replace("{aspect}", () => aspect.id)}
+              </button>
+            </div>`
+          : nothing
+      }
+    </section>`;
+  }
+
   _renderInspector() {
     const r = this._focusRow();
     if (!r) {
@@ -3179,7 +3610,7 @@ class HAXCMSFilesAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
               `
             : nothing
         }
-        <div class="split">
+        <div class="split ${this._crop ? "cropping" : ""}">
           <div
             class="tw"
             @contextmenu="${this._onRowContextMenu}"
@@ -3200,9 +3631,11 @@ class HAXCMSFilesAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
             }
           </div>
           ${
-            this.compact || this.rows.length === 0
-              ? nothing
-              : this._renderInspector()
+            this._crop
+              ? this._renderCrop()
+              : this.compact || this.rows.length === 0
+                ? nothing
+                : this._renderInspector()
           }
         </div>
         ${

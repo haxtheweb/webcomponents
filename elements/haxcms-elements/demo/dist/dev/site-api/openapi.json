@@ -720,6 +720,27 @@
         "tags": ["files"]
       }
     },
+    "/x/api/v1/files/{fileUuid}/content": {
+      "post": {
+        "operationId": "replaceFileContent",
+        "summary": "Replace an image file's content with uploaded bytes",
+        "description": "Re-encodes the uploaded JPG, PNG or WebP image into the existing file's format and writes it over the file, keeping its path and UUID. Used by client-side crop.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/FileUuid"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": [],
+            "siteTokenHeader": []
+          }
+        ],
+        "tags": [
+          "files"
+        ]
+      }
+    },
     "/x/api/v1/tags": {
       "get": {
         "operationId": "listTags",

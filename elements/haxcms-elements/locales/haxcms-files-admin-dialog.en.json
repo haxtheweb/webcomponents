@@ -87,5 +87,21 @@
   "replaceOriginalsTitle": "Replace original files",
   "newName": "New name",
   "deleteAction": "Delete",
-  "renameAction": "Rename"
+  "renameAction": "Rename",
+  "actionCropChoose": "Crop…",
+  "actionCrop": "Crop",
+  "cropHeading": "Crop {name}",
+  "cropProgress": "Crop {current} of {total}: {name}",
+  "cropEditor": "Crop editor",
+  "cropReplaceNote": "Replaces {name} with the crop. It keeps its name and address, so every page using it shows the crop.",
+  "download": "Download",
+  "skip": "Skip",
+  "replaceOriginal": "Replace original",
+  "replaceAndNext": "Replace and next",
+  "cropAll": "Crop all {count} to {aspect}",
+  "cropAllNote": "Or crop this image and the {count} after it to the same shape, centered.",
+  "imageCropped": "{name} cropped",
+  "cropped": "Cropped",
+  "cropFailed": "Unable to crop {name}.",
+  "onlyCroppable": "Only JPG, PNG and WebP images can be cropped."
 }

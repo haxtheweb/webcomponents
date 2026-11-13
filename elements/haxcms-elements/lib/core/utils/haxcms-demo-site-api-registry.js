@@ -28,6 +28,7 @@ const DEMO_OPERATIONS = [
   { name: "@site/createFile", file: "createFile.json" },
   { name: "@site/deleteFileByUuid", file: "fileDelete.json" },
   { name: "@site/updateFileByUuid", file: "fileUpdate.json" },
+  { name: "@site/replaceFileContent", file: "fileReplaceContent.json" },
   // Views Admin entity list endpoints
   { name: "@site/listItems", file: "listItems.json" },
   { name: "@site/listContent", file: "listContent.json" },

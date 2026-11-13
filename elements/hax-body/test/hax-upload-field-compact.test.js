@@ -22,9 +22,7 @@ async function showImageInfo(el) {
     fullUrl: "",
   };
   await el.updateComplete;
-  const collapse = $(el, ".file-info-collapse");
-  await collapse.updateComplete;
-  return collapse;
+  return $(el, ".ii-head");
 }
 
 describe("hax-upload-field compact and label-hidden", () => {
@@ -53,9 +51,9 @@ describe("hax-upload-field compact and label-hidden", () => {
     const el = await fixture(
       html`<hax-upload-field label="Image"></hax-upload-field>`,
     );
-    const collapse = await showImageInfo(el);
-    const heading = collapse.shadowRoot.querySelector('[part="heading-id"]');
-    expect(Number(css(heading).fontWeight)).to.be.at.least(600);
+    const head = await showImageInfo(el);
+    expect(head.closest("h3")).to.exist;
+    expect(Number(css(head).fontWeight)).to.be.at.least(600);
   });
 
   it("label-hidden keeps the legend as the fieldset name only", async () => {
@@ -109,19 +107,19 @@ describe("hax-upload-field compact and label-hidden", () => {
         style="--hax-upload-field-info-height: 30px; --hax-upload-field-font-size: 14px"
       ></hax-upload-field>`,
     );
-    const collapse = await showImageInfo(el);
-    const heading = collapse.shadowRoot.querySelector('[part="heading-id"]');
-    expect(Number(css(heading).fontWeight)).to.equal(400);
-    expect(Math.round(rect(heading).height)).to.equal(30);
-    expect(
-      css($(el, '.file-info-collapse span[slot="heading"]')).fontSize,
-    ).to.equal("14px");
+    const head = await showImageInfo(el);
+    expect(Number(css(head).fontWeight)).to.equal(400);
+    expect(Math.round(rect(head).height)).to.equal(30);
+    expect(css(head).fontSize).to.equal("14px");
     // still a working disclosure
-    const button = collapse.shadowRoot.querySelector("button");
-    expect(button.getAttribute("aria-expanded")).to.equal("false");
-    button.click();
-    await collapse.updateComplete;
-    expect(collapse.expanded).to.equal(true);
+    const body = $(el, "#image-info");
+    expect(head.getAttribute("aria-controls")).to.equal("image-info");
+    expect(head.getAttribute("aria-expanded")).to.equal("false");
+    expect(body.hidden).to.equal(true);
+    head.click();
+    await el.updateComplete;
+    expect(head.getAttribute("aria-expanded")).to.equal("true");
+    expect(body.hidden).to.equal(false);
   });
 
   it("compact keeps value and value-changed behavior", async () => {
