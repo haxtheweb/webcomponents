@@ -105,7 +105,7 @@
       "rows": [
         {
           "name": "markdown",
-          "desc": "Raw markdown"
+          "desc": "Markdown text to show on the pa…"
         },
         {
           "name": "source",
@@ -225,8 +225,8 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set source",
-      "text": "Source file for markdown."
+      "title": "Set markdown",
+      "text": "Markdown text to show on the page as formatted content."
     },
     {
       "t": 14.8,

@@ -142,7 +142,8 @@ const RichTextEditorBehaviors = function (SuperClass) {
           attribute: "id",
         },
         /**
-         * Maps to editing attribute
+         * Whether the region is being edited now; focusing the editor sets it
+         * to true.
          */
         contenteditable: {
           name: "contenteditable",
@@ -151,7 +152,7 @@ const RichTextEditorBehaviors = function (SuperClass) {
           attribute: "contenteditable",
         },
         /**
-         * don't reveal toolbar on mouseover
+         * Keep the content read-only: focusing it does not start editing.
          */
         disabled: {
           name: "disabled",
@@ -160,7 +161,7 @@ const RichTextEditorBehaviors = function (SuperClass) {
           reflect: true,
         },
         /**
-         * don't reveal toolbar on mouseover
+         * Do not reveal the toolbar when the pointer moves over the editor.
          */
         disableHover: {
           name: "disableHover",

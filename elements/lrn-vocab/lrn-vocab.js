@@ -237,6 +237,8 @@ class LrnVocab extends SchemaBehaviors(I18NMixin(LitElement)) {
           {
             property: "term",
             title: "Term",
+            description:
+              "The word or phrase readers click to see its definition.",
             inputMethod: "textfield",
             icon: "editor:title",
             required: true,
@@ -246,6 +248,8 @@ class LrnVocab extends SchemaBehaviors(I18NMixin(LitElement)) {
           {
             property: "term",
             title: "Term",
+            description:
+              "The word or phrase readers click to see its definition.",
             inputMethod: "textfield",
             icon: "editor:title",
             required: true,
