@@ -1,0 +1,43 @@
+{
+  "tag": "webawesome-theme",
+  "folder": "webawesome-theme",
+  "package": "@haxtheweb/webawesome-theme",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "webawesome-theme",
+  "description": "Web Awesome theme for HAXcms, built on the DDD-capable Web Awesome design system bridge",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/webawesome-theme/webawesome-theme.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/webawesome-theme/webawesome-theme.js",
+  "install": "npm i @haxtheweb/webawesome-theme",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "sidebar-open",
+      "property": "sidebarOpen",
+      "type": "boolean",
+      "default": "true",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "8987cbdde394",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/webawesome-theme",
+    "file": "webawesome-theme.js"
+  }
+}

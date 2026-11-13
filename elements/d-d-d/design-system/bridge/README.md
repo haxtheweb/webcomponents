@@ -21,6 +21,8 @@ Lengths may be `px`, `rem`, `em` or `calc(<length> * <number>)`, so Tailwind's s
 
 The keywords `white` and `black` read as colors too (USWDS writes them that way).
 
+A `css` scope selector matches a rule whose selector is exactly that selector, or a rule whose selector list contains it, so a scope can name one member of a shared rule (Web Awesome writes `:where(:root), .wa-theme-default, .wa-light, ...` for its light theme and `.wa-dark, ...` for its dark one).
+
 A map entry can take `"fromMode": "light"` (or `"dark"`) to write that mode's value as a constant. Use it for a named DDD color when the system's palette only exists per mode (Spectrum).
 
 A design system that lives in its theme rather than on npm (for example Keepcase in `elements/vhs-blog-theme`) is a `local` source: `"local": true` with `file` relative to the theme folder. It is read in place, and its `license` must match the theme's own `package.json`.

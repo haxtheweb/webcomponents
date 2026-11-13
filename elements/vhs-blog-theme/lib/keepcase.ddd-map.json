@@ -31,7 +31,7 @@
   "coverage": {
     "identity": {
       "mapping": "expected",
-      "percent": 96,
+      "percent": 95,
       "families": {
         "color": {
           "mapped": 52,
@@ -40,8 +40,8 @@
         },
         "font": {
           "mapped": 4,
-          "total": 4,
-          "keptDDD": []
+          "total": 5,
+          "keptDDD": ["--ddd-font-heading"]
         },
         "weight": {
           "mapped": 2,
@@ -129,6 +129,17 @@
             "--ddd-theme-h5-font-size",
             "--ddd-theme-h6-font-size",
             "--ddd-theme-body-font-size"
+          ]
+        },
+        "density": {
+          "mapped": 0,
+          "total": 5,
+          "keptDDD": [
+            "--ddd-surface-padding",
+            "--ddd-surface-padding-lg",
+            "--ddd-stack-gap",
+            "--ddd-inline-gap",
+            "--ddd-control-padding-inline"
           ]
         }
       }

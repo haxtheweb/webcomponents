@@ -1,0 +1,420 @@
+{
+  "$comment": "DDD bridge for Web Awesome 3 (the open-source successor to Shoelace), default theme with the default palette. Tiers follow elements/d-d-d/design-system/bridge/contract.json. Named DDD colors point at fixed palette steps by role and keep the palettes distinct; the theme chrome uses Web Awesome's light (:root) and dark (.wa-dark) surface, text and brand fill tokens. Web Awesome Pro themes and palettes are commercial and excluded: only the MIT package is read. The default theme uses system font stacks, so no web font loads. Kept as DDD on purpose: font weight black (Web Awesome stops at 600), emphasized/enter/exit easing (one easing), state opacities (Web Awesome mixes colors instead), control heights (em-based, computed from padding), border size lg, and heading/body sizes.",
+  "system": "webawesome",
+  "title": "Web Awesome",
+  "prefix": "Webawesome",
+  "homepage": "https://webawesome.com",
+  "sources": [
+    {
+      "package": "@awesome.me/webawesome",
+      "version": "3.14.0",
+      "license": "MIT",
+      "copyright": "Copyright (c) 2025 Fonticons, Inc.",
+      "homepage": "https://webawesome.com",
+      "repository": "https://github.com/shoelace-style/webawesome",
+      "format": "css",
+      "file": "dist/styles/color/palettes/default.css",
+      "scopes": {
+        "light": [":where(:root)"],
+        "dark": [":where(:root)"]
+      }
+    },
+    {
+      "package": "@awesome.me/webawesome",
+      "version": "3.14.0",
+      "license": "MIT",
+      "copyright": "Copyright (c) 2025 Fonticons, Inc.",
+      "homepage": "https://webawesome.com",
+      "repository": "https://github.com/shoelace-style/webawesome",
+      "format": "css",
+      "file": "dist/styles/color/variants/brand.css",
+      "scopes": {
+        "light": [":where(:root)"],
+        "dark": [":where(:root)"]
+      }
+    },
+    {
+      "package": "@awesome.me/webawesome",
+      "version": "3.14.0",
+      "license": "MIT",
+      "copyright": "Copyright (c) 2025 Fonticons, Inc.",
+      "homepage": "https://webawesome.com",
+      "repository": "https://github.com/shoelace-style/webawesome",
+      "format": "css",
+      "file": "dist/styles/color/variants/neutral.css",
+      "scopes": {
+        "light": [":where(:root)"],
+        "dark": [":where(:root)"]
+      }
+    },
+    {
+      "package": "@awesome.me/webawesome",
+      "version": "3.14.0",
+      "license": "MIT",
+      "copyright": "Copyright (c) 2025 Fonticons, Inc.",
+      "homepage": "https://webawesome.com",
+      "repository": "https://github.com/shoelace-style/webawesome",
+      "format": "css",
+      "file": "dist/styles/color/variants/success.css",
+      "scopes": {
+        "light": [":where(:root)"],
+        "dark": [":where(:root)"]
+      }
+    },
+    {
+      "package": "@awesome.me/webawesome",
+      "version": "3.14.0",
+      "license": "MIT",
+      "copyright": "Copyright (c) 2025 Fonticons, Inc.",
+      "homepage": "https://webawesome.com",
+      "repository": "https://github.com/shoelace-style/webawesome",
+      "format": "css",
+      "file": "dist/styles/color/variants/warning.css",
+      "scopes": {
+        "light": [":where(:root)"],
+        "dark": [":where(:root)"]
+      }
+    },
+    {
+      "package": "@awesome.me/webawesome",
+      "version": "3.14.0",
+      "license": "MIT",
+      "copyright": "Copyright (c) 2025 Fonticons, Inc.",
+      "homepage": "https://webawesome.com",
+      "repository": "https://github.com/shoelace-style/webawesome",
+      "format": "css",
+      "file": "dist/styles/color/variants/danger.css",
+      "scopes": {
+        "light": [":where(:root)"],
+        "dark": [":where(:root)"]
+      }
+    },
+    {
+      "package": "@awesome.me/webawesome",
+      "version": "3.14.0",
+      "license": "MIT",
+      "copyright": "Copyright (c) 2025 Fonticons, Inc.",
+      "homepage": "https://webawesome.com",
+      "repository": "https://github.com/shoelace-style/webawesome",
+      "format": "css",
+      "file": "dist/styles/themes/default.css",
+      "scopes": {
+        "light": [":where(:root)"],
+        "dark": [":where(:root)", ".wa-dark"]
+      }
+    }
+  ],
+  "fonts": [],
+  "ddd": {
+    "--ddd-theme-default-beaverBlue": {
+      "token": "--wa-color-blue-50",
+      "note": "brand key color (brand-fill-loud); white on it, as Web Awesome's brand-on-loud"
+    },
+    "--ddd-theme-default-nittanyNavy": {
+      "token": "--wa-color-blue-30"
+    },
+    "--ddd-theme-default-potentialMidnight": {
+      "token": "--wa-color-blue-10"
+    },
+    "--ddd-theme-default-pughBlue": {
+      "token": "--wa-color-blue-80"
+    },
+    "--ddd-theme-default-accent": {
+      "token": "--wa-color-blue-80"
+    },
+    "--ddd-theme-default-skyBlue": {
+      "token": "--wa-color-blue-70"
+    },
+    "--ddd-theme-default-skyLight": {
+      "token": "--wa-color-blue-90"
+    },
+    "--ddd-theme-default-skyMaxLight": {
+      "token": "--wa-color-blue-95"
+    },
+    "--ddd-theme-default-slateGray": {
+      "token": "--wa-color-gray-40",
+      "note": "gray key color"
+    },
+    "--ddd-theme-default-slateLight": {
+      "token": "--wa-color-gray-80"
+    },
+    "--ddd-theme-default-slateMaxLight": {
+      "token": "--wa-color-gray-95"
+    },
+    "--ddd-theme-default-coalyGray": {
+      "token": "--wa-color-gray-10",
+      "note": "text-normal in the light theme"
+    },
+    "--ddd-theme-default-black": {
+      "value": "black"
+    },
+    "--ddd-theme-default-white": {
+      "value": "white"
+    },
+    "--ddd-theme-default-limestoneGray": {
+      "token": "--wa-color-gray-60"
+    },
+    "--ddd-theme-default-limestoneLight": {
+      "token": "--wa-color-gray-90"
+    },
+    "--ddd-theme-default-limestoneMaxLight": {
+      "token": "--wa-color-gray-95"
+    },
+    "--ddd-theme-default-background": {
+      "token": "--wa-color-gray-95",
+      "note": "surface-lowered in the light theme"
+    },
+    "--ddd-theme-default-disabled": {
+      "token": "--wa-color-gray-90"
+    },
+    "--ddd-theme-default-keystoneYellow": {
+      "token": "--wa-color-yellow-80",
+      "note": "yellow key color"
+    },
+    "--ddd-theme-default-globalNeon": {
+      "token": "--wa-color-yellow-90"
+    },
+    "--ddd-theme-default-roarGolden": {
+      "token": "--wa-color-yellow-70"
+    },
+    "--ddd-theme-default-roarLight": {
+      "token": "--wa-color-yellow-90"
+    },
+    "--ddd-theme-default-roarMaxlight": {
+      "token": "--wa-color-yellow-95"
+    },
+    "--ddd-theme-default-shrineTan": {
+      "token": "--wa-color-orange-80",
+      "note": "Web Awesome has no tan; light orange keeps the palette distinct"
+    },
+    "--ddd-theme-default-shrineLight": {
+      "token": "--wa-color-orange-90"
+    },
+    "--ddd-theme-default-shrineMaxLight": {
+      "token": "--wa-color-orange-95"
+    },
+    "--ddd-theme-default-inventOrange": {
+      "token": "--wa-color-orange-70"
+    },
+    "--ddd-theme-default-landgrantBrown": {
+      "token": "--wa-color-orange-30"
+    },
+    "--ddd-theme-default-creekTeal": {
+      "token": "--wa-color-cyan-70",
+      "note": "cyan key color; Web Awesome pairs it with dark text, as DDD does"
+    },
+    "--ddd-theme-default-creekLight": {
+      "token": "--wa-color-cyan-90"
+    },
+    "--ddd-theme-default-creekMaxLight": {
+      "token": "--wa-color-cyan-95"
+    },
+    "--ddd-theme-default-opportunityGreen": {
+      "token": "--wa-color-green-70",
+      "note": "correct signal (light); a light green so DDD's dark text on it passes"
+    },
+    "--ddd-theme-default-forestGreen": {
+      "token": "--wa-color-green-30"
+    },
+    "--ddd-theme-default-futureLime": {
+      "token": "--wa-color-green-80",
+      "note": "correct signal (dark)"
+    },
+    "--ddd-theme-default-athertonViolet": {
+      "token": "--wa-color-purple-80",
+      "note": "incorrect signal (dark)"
+    },
+    "--ddd-theme-default-wonderPurple": {
+      "token": "--wa-color-purple-40",
+      "note": "incorrect signal (light); keeps HAX purple-for-incorrect"
+    },
+    "--ddd-theme-default-original87Pink": {
+      "token": "--wa-color-pink-40"
+    },
+    "--ddd-theme-default-discoveryCoral": {
+      "token": "--wa-color-red-70"
+    },
+    "--ddd-theme-default-link": {
+      "token": "--wa-color-blue-40",
+      "note": "text-link in the light theme (brand-40)"
+    },
+    "--ddd-theme-default-linkLight": {
+      "token": "--wa-color-blue-70",
+      "note": "text-link in the dark theme (brand-70)"
+    },
+    "--ddd-theme-default-error": {
+      "token": "--wa-color-red-40",
+      "note": "danger-on-quiet"
+    },
+    "--ddd-theme-default-errorLight": {
+      "token": "--wa-color-red-95",
+      "note": "danger-fill-quiet"
+    },
+    "--ddd-theme-default-warning": {
+      "token": "--wa-color-yellow-40"
+    },
+    "--ddd-theme-default-warningLight": {
+      "token": "--wa-color-yellow-95"
+    },
+    "--ddd-theme-default-info": {
+      "token": "--wa-color-blue-40"
+    },
+    "--ddd-theme-default-infoLight": {
+      "token": "--wa-color-blue-95"
+    },
+    "--ddd-theme-default-success": {
+      "token": "--wa-color-green-40"
+    },
+    "--ddd-theme-default-successLight": {
+      "token": "--wa-color-green-95"
+    },
+    "--ddd-theme-default-alertImmediate": {
+      "token": "--wa-color-red-90"
+    },
+    "--ddd-theme-default-alertUrgent": {
+      "token": "--wa-color-yellow-90"
+    },
+    "--ddd-theme-default-alertAllClear": {
+      "token": "--wa-color-green-90"
+    },
+    "--ddd-theme-default-alertNonEmergency": {
+      "token": "--wa-color-blue-90"
+    },
+    "--ddd-font-primary": {
+      "token": "--wa-font-family-body",
+      "note": "system UI stack; the default theme loads no web font"
+    },
+    "--ddd-font-secondary": {
+      "token": "--wa-font-family-heading"
+    },
+    "--ddd-font-heading": {
+      "token": "--wa-font-family-heading"
+    },
+    "--ddd-font-navigation": {
+      "token": "--wa-font-family-body"
+    },
+    "--ddd-font-mono": {
+      "token": "--wa-font-family-code"
+    },
+    "--ddd-font-weight-light": {
+      "token": "--wa-font-weight-light"
+    },
+    "--ddd-font-weight-regular": {
+      "token": "--wa-font-weight-normal"
+    },
+    "--ddd-font-weight-medium": {
+      "token": "--wa-font-weight-semibold",
+      "note": "Web Awesome semibold is 500"
+    },
+    "--ddd-font-weight-bold": {
+      "token": "--wa-font-weight-bold",
+      "note": "Web Awesome bold is 600, its heading weight"
+    },
+    "--ddd-radius-xs": {
+      "token": "--wa-border-radius-s",
+      "note": "3px"
+    },
+    "--ddd-radius-sm": {
+      "token": "--wa-border-radius-s"
+    },
+    "--ddd-radius-md": {
+      "token": "--wa-border-radius-m",
+      "note": "6px, form controls"
+    },
+    "--ddd-radius-lg": {
+      "token": "--wa-border-radius-l",
+      "note": "12px, panels and cards"
+    },
+    "--ddd-radius-xl": {
+      "token": "--wa-border-radius-l"
+    },
+    "--ddd-boxShadow-sm": {
+      "token": "--wa-shadow-s"
+    },
+    "--ddd-boxShadow-md": {
+      "token": "--wa-shadow-m"
+    },
+    "--ddd-boxShadow-lg": {
+      "token": "--wa-shadow-l"
+    },
+    "--ddd-boxShadow-xl": {
+      "token": "--wa-shadow-l",
+      "note": "Web Awesome has three shadows"
+    },
+    "--ddd-focus-ring": {
+      "token": "--wa-focus-ring",
+      "note": "3px solid brand-60"
+    },
+    "--ddd-focus-offset": {
+      "token": "--wa-focus-ring-offset"
+    },
+    "--ddd-duration-fast": {
+      "token": "--wa-transition-fast"
+    },
+    "--ddd-duration-normal": {
+      "token": "--wa-transition-normal"
+    },
+    "--ddd-duration-slow": {
+      "token": "--wa-transition-slow"
+    },
+    "--ddd-timing-ease": {
+      "token": "--wa-transition-easing"
+    },
+    "--ddd-border-size-xs": {
+      "token": "--wa-border-width-s",
+      "note": "1px"
+    },
+    "--ddd-border-size-sm": {
+      "token": "--wa-border-width-m",
+      "note": "2px"
+    },
+    "--ddd-border-size-md": {
+      "token": "--wa-border-width-l",
+      "note": "3px"
+    },
+    "--ddd-surface-padding": {
+      "token": "--wa-space-l",
+      "note": "card and panel spacing, 24px"
+    },
+    "--ddd-surface-padding-lg": {
+      "token": "--wa-space-xl"
+    },
+    "--ddd-stack-gap": {
+      "token": "--wa-content-spacing",
+      "note": "space between blocks in Web Awesome's native styles"
+    },
+    "--ddd-inline-gap": {
+      "token": "--wa-space-xs"
+    },
+    "--ddd-control-padding-inline": {
+      "token": "--wa-space-m",
+      "note": "form-control-padding-inline is 1em; space-m is the same 16px at body size"
+    }
+  },
+  "extraTokens": [
+    "--wa-color-surface-default",
+    "--wa-color-surface-raised",
+    "--wa-color-surface-lowered",
+    "--wa-color-surface-border",
+    "--wa-color-text-normal",
+    "--wa-color-text-quiet",
+    "--wa-color-text-link",
+    "--wa-color-brand-fill-quiet",
+    "--wa-color-brand-fill-normal",
+    "--wa-color-brand-fill-loud",
+    "--wa-color-brand-on-quiet",
+    "--wa-color-brand-on-normal",
+    "--wa-color-brand-border-loud",
+    "--wa-color-neutral-fill-quiet",
+    "--wa-color-neutral-fill-normal",
+    "--wa-color-neutral-on-quiet",
+    "--wa-color-neutral-on-normal",
+    "--wa-color-focus",
+    "--wa-border-radius-pill",
+    "--wa-space-s",
+    "--wa-space-2xl",
+    "--wa-font-weight-heading",
+    "--wa-panel-border-radius",
+    "--wa-panel-border-width"
+  ]
+}

@@ -1,0 +1,211 @@
+{
+  "id": "3c9a2f71-5e8b-4d1a-a6b2-webawe000001",
+  "title": "Course kit",
+  "author": "",
+  "description": "A demo site for webawesome-theme in the layout of Web Awesome's documentation, built from HAX blocks.",
+  "license": "by-sa",
+  "metadata": {
+    "author": {
+      "image": "",
+      "name": "",
+      "email": "",
+      "socialLink": ""
+    },
+    "site": {
+      "name": "webawesome-theme",
+      "logo": "",
+      "lang": "en",
+      "created": 1736889000,
+      "updated": 1736889000,
+      "git": {},
+      "version": "9.0.6",
+      "domain": "",
+      "static": {},
+      "settings": {
+        "pathauto": false,
+        "publishPagesOn": true,
+        "sw": false,
+        "forceUpgrade": false,
+        "lang": "",
+        "gaID": ""
+      },
+      "tags": ""
+    },
+    "theme": {
+      "element": "webawesome-theme",
+      "path": "@haxtheweb/webawesome-theme/webawesome-theme.js",
+      "name": "webawesome-theme",
+      "regions": {}
+    },
+    "node": {
+      "fields": {}
+    },
+    "build": {
+      "version": "6.0.1",
+      "structure": "flat",
+      "type": ""
+    }
+  },
+  "items": [
+    {
+      "id": "item-3c9a2f71-start",
+      "indent": 0,
+      "location": "pages/item-3c9a2f71-start/index.html",
+      "slug": "start",
+      "order": 0,
+      "parent": null,
+      "title": "Start",
+      "description": "Everything you need to build course pages with this kit: install it, pick components, and make it yours.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-3c9a2f71-start-installation",
+      "indent": 1,
+      "location": "pages/item-3c9a2f71-start-installation/index.html",
+      "slug": "start/installation",
+      "order": 0,
+      "parent": "item-3c9a2f71-start",
+      "title": "Installation",
+      "description": "Turn the theme on for a site. Nothing else needs installing, and your content stays portable.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "Guide",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-3c9a2f71-components",
+      "indent": 0,
+      "location": "pages/item-3c9a2f71-components/index.html",
+      "slug": "components",
+      "order": 1,
+      "parent": null,
+      "title": "Components",
+      "description": "The blocks this kit documents, and when to use each one.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-3c9a2f71-components-card",
+      "indent": 1,
+      "location": "pages/item-3c9a2f71-components-card/index.html",
+      "slug": "components/card",
+      "order": 0,
+      "parent": "item-3c9a2f71-components",
+      "title": "Card",
+      "description": "Cards group related content and actions inside a bordered container. Use them to present lessons, resources or any self-contained unit of information.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "Stable, Layout",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-3c9a2f71-components-callout",
+      "indent": 1,
+      "location": "pages/item-3c9a2f71-components-callout/index.html",
+      "slug": "components/callout",
+      "order": 1,
+      "parent": "item-3c9a2f71-components",
+      "title": "Callout",
+      "description": "Callouts display important messages inline with the content around them.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "Stable, Feedback",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-3c9a2f71-components-multiple-choice",
+      "indent": 1,
+      "location": "pages/item-3c9a2f71-components-multiple-choice/index.html",
+      "slug": "components/multiple-choice",
+      "order": 2,
+      "parent": "item-3c9a2f71-components",
+      "title": "Multiple choice",
+      "description": "Questions with answer states that keep their meaning without color.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "Stable, Assessment",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-3c9a2f71-theming",
+      "indent": 0,
+      "location": "pages/item-3c9a2f71-theming/index.html",
+      "slug": "theming",
+      "order": 2,
+      "parent": null,
+      "title": "Theming",
+      "description": "DDD palettes point at Web Awesome palette steps with the same role, so every palette stays readable.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-3c9a2f71-help",
+      "indent": 0,
+      "location": "pages/item-3c9a2f71-help/index.html",
+      "slug": "help",
+      "order": 3,
+      "parent": null,
+      "title": "Help",
+      "description": "Where the token values come from and how much of DDD they cover.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    }
+  ]
+}

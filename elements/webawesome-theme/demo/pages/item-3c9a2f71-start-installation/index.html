@@ -1,0 +1,16 @@
+<h2>Set up</h2>
+<ddd-steps-list>
+<ddd-steps-list-item title="Choose the theme"><p>Pick Web Awesome in site settings, or set it in site.json.</p></ddd-steps-list-item>
+<ddd-steps-list-item title="Write a page"><p>Use headings, cards, callouts and tabs. Each block reads DDD tokens.</p></ddd-steps-list-item>
+<ddd-steps-list-item title="Check light and dark"><p>Use the toggle in the header; every surface has a light and a dark value.</p></ddd-steps-list-item>
+</ddd-steps-list>
+<h2>Set the theme in site.json</h2>
+<code-sample type="json"><template preserve-content="preserve-content">{
+  "metadata": {
+    "theme": {
+      "element": "webawesome-theme",
+      "path": "@haxtheweb/webawesome-theme/webawesome-theme.js"
+    }
+  }
+}</template></code-sample>
+<stop-note status="info" title="No Web Awesome components are loaded"><span slot="message">The theme reads Web Awesome's design tokens only. Pages are built from HAX blocks, so they keep working in any theme.</span></stop-note>
