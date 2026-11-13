@@ -258,7 +258,16 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
             display: none;
           }
         }
+        /* on the narrowest screens Merlin takes a row of his own, so the
+           links never run under him */
         @media (max-width: 479px) {
+          nav {
+            flex-wrap: wrap;
+            padding-block: var(--ddd-spacing-1) var(--ddd-spacing-2);
+          }
+          .sites {
+            flex: 1 1 100%;
+          }
           nav a.end {
             display: none;
           }
