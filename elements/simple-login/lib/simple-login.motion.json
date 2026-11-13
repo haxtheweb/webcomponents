@@ -35,7 +35,7 @@
       "in": 1.7999999999999998,
       "states": [
         [1.4, "simple-login"],
-        [5, "title"]
+        [5, "Demo Login"]
       ]
     },
     {
@@ -96,7 +96,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "title=\"title\""
+      "s": "title=\"Demo Login\""
     },
     {
       "type": "text",
@@ -205,7 +205,7 @@
       "ex": 616,
       "ey": 434,
       "label": "title",
-      "sub": "\"title\"",
+      "sub": "\"Demo Login\"",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -264,7 +264,7 @@
       "t": 10,
       "out": 14.6,
       "title": "Set errormsg and username",
-      "text": "Error message to show (example : \"Invalid username\")."
+      "text": "Error message to show. Content of the username field."
     },
     {
       "t": 14.8,

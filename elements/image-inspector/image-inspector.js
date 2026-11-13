@@ -202,14 +202,14 @@ class ImageInspector extends I18NMixin(LitElement) {
         attribute: "no-left",
       },
       /**
-       * Image rotation
+       * Rotation of the image in degrees, changed by the rotate buttons.
        */
       degrees: {
         type: Number,
         reflect: true,
       },
       /**
-       * Image source.
+       * Address of the image to inspect.
        */
       src: {
         type: String,

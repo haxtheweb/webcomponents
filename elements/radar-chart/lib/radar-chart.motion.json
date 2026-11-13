@@ -213,7 +213,7 @@
         },
         {
           "name": "scores",
-          "desc": "Comma separated numbers, one pe…"
+          "desc": "Scores"
         },
         {
           "name": "categories",
@@ -266,7 +266,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "categories=\"Categories\""
+      "s": "categories=\"[...DEFAULT_CATEGORIES]\""
     },
     {
       "type": "text",
@@ -387,7 +387,7 @@
       "ex": 796,
       "ey": 540,
       "label": "categories",
-      "sub": "\"Categories\"",
+      "sub": "\"[...DEFAULT_CATEGORIES]\"",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -403,14 +403,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set title and maximum score",
+      "title": "Set title",
       "text": "Heading for the chart; also used as its accessible name."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set scores and categories",
-      "text": "Comma separated numbers, one per category in the same order."
+      "title": "Set categories",
+      "text": "One category per line."
     },
     {
       "t": 14.8,

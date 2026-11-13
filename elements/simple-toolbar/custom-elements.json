@@ -243,6 +243,59 @@
             },
             {
               "kind": "method",
+              "name": "_isNavigable",
+              "parameters": [
+                {
+                  "name": "item",
+                  "type": {
+                    "text": "object"
+                  }
+                }
+              ],
+              "description": "whether an item can be the current item: arrow keys and the roving\ntabindex skip disabled and hidden items",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_findNavigableItem",
+              "parameters": [
+                {
+                  "name": "start",
+                  "default": "0",
+                  "description": "index to start from",
+                  "optional": true,
+                  "type": {
+                    "text": "number"
+                  }
+                },
+                {
+                  "name": "step",
+                  "default": "1",
+                  "description": "1 to search forward, -1 backward",
+                  "optional": true,
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "finds the first navigable main item, starting at an index and stepping\nthrough the items (wrapping around) at most once",
+              "return": {
+                "type": {
+                  "text": "object|undefined"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "refreshCurrentItem",
+              "description": "keeps the roving tabindex off a disabled or hidden item: when the\ncurrent item can no longer take focus, the first item that can becomes\ncurrent (with none, the current item stays as it is)"
+            },
+            {
+              "kind": "method",
               "name": "setCurrentItem",
               "parameters": [
                 {
@@ -487,7 +540,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "is toolbar collapsed?",
+              "description": "Whether the toolbar is collapsed, hiding buttons behind more.",
               "default": "true",
               "attribute": "collapsed",
               "reflects": true
@@ -619,7 +672,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Should toolbar stick to top so that it is always visible?",
+              "description": "Stick the toolbar to the top of the page so it stays in view.",
               "default": "false",
               "attribute": "sticky",
               "reflects": true
@@ -642,7 +695,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "always expanded so more button is unnecessary?",
+              "description": "Always show every button, so there is no more button.",
               "attribute": "always-expanded",
               "reflects": true
             },
@@ -704,7 +757,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "always expanded so more button is unnecessary?",
+              "description": "Always show every button, so there is no more button.",
               "fieldName": "alwaysExpanded"
             },
             {
@@ -728,7 +781,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "is toolbar collapsed?",
+              "description": "Whether the toolbar is collapsed, hiding buttons behind more.",
               "default": "true",
               "fieldName": "collapsed"
             },
@@ -771,7 +824,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Should toolbar stick to top so that it is always visible?",
+              "description": "Stick the toolbar to the top of the page so it stays in view.",
               "default": "false",
               "fieldName": "sticky"
             },
@@ -840,7 +893,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "always expanded so more button is unnecessary?",
+              "description": "Always show every button, so there is no more button.",
               "fieldName": "alwaysExpanded",
               "inheritedFrom": {
                 "name": "SimpleToolbarBehaviors",
@@ -876,7 +929,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "is toolbar collapsed?",
+              "description": "Whether the toolbar is collapsed, hiding buttons behind more.",
               "default": "true",
               "fieldName": "collapsed",
               "inheritedFrom": {
@@ -939,7 +992,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Should toolbar stick to top so that it is always visible?",
+              "description": "Stick the toolbar to the top of the page so it stays in view.",
               "default": "false",
               "fieldName": "sticky",
               "inheritedFrom": {
@@ -1325,6 +1378,71 @@
             },
             {
               "kind": "method",
+              "name": "_isNavigable",
+              "parameters": [
+                {
+                  "name": "item",
+                  "type": {
+                    "text": "object"
+                  }
+                }
+              ],
+              "description": "whether an item can be the current item: arrow keys and the roving\ntabindex skip disabled and hidden items",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleToolbarBehaviors",
+                "module": "simple-toolbar.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_findNavigableItem",
+              "parameters": [
+                {
+                  "name": "start",
+                  "default": "0",
+                  "description": "index to start from",
+                  "optional": true,
+                  "type": {
+                    "text": "number"
+                  }
+                },
+                {
+                  "name": "step",
+                  "default": "1",
+                  "description": "1 to search forward, -1 backward",
+                  "optional": true,
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "finds the first navigable main item, starting at an index and stepping\nthrough the items (wrapping around) at most once",
+              "return": {
+                "type": {
+                  "text": "object|undefined"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleToolbarBehaviors",
+                "module": "simple-toolbar.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "refreshCurrentItem",
+              "description": "keeps the roving tabindex off a disabled or hidden item: when the\ncurrent item can no longer take focus, the first item that can becomes\ncurrent (with none, the current item stays as it is)",
+              "inheritedFrom": {
+                "name": "SimpleToolbarBehaviors",
+                "module": "simple-toolbar.js"
+              }
+            },
+            {
+              "kind": "method",
               "name": "setCurrentItem",
               "parameters": [
                 {
@@ -1649,7 +1767,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "is toolbar collapsed?",
+              "description": "Whether the toolbar is collapsed, hiding buttons behind more.",
               "default": "true",
               "attribute": "collapsed",
               "reflects": true,
@@ -1837,7 +1955,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Should toolbar stick to top so that it is always visible?",
+              "description": "Stick the toolbar to the top of the page so it stays in view.",
               "default": "false",
               "attribute": "sticky",
               "reflects": true,
@@ -1868,7 +1986,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "always expanded so more button is unnecessary?",
+              "description": "Always show every button, so there is no more button.",
               "attribute": "always-expanded",
               "reflects": true,
               "inheritedFrom": {
@@ -2352,6 +2470,71 @@
             },
             {
               "kind": "method",
+              "name": "_isNavigable",
+              "parameters": [
+                {
+                  "name": "item",
+                  "type": {
+                    "text": "object"
+                  }
+                }
+              ],
+              "description": "whether an item can be the current item: arrow keys and the roving\ntabindex skip disabled and hidden items",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleToolbarBehaviors",
+                "module": "simple-toolbar.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_findNavigableItem",
+              "parameters": [
+                {
+                  "name": "start",
+                  "default": "0",
+                  "description": "index to start from",
+                  "optional": true,
+                  "type": {
+                    "text": "number"
+                  }
+                },
+                {
+                  "name": "step",
+                  "default": "1",
+                  "description": "1 to search forward, -1 backward",
+                  "optional": true,
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "finds the first navigable main item, starting at an index and stepping\nthrough the items (wrapping around) at most once",
+              "return": {
+                "type": {
+                  "text": "object|undefined"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleToolbarBehaviors",
+                "module": "simple-toolbar.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "refreshCurrentItem",
+              "description": "keeps the roving tabindex off a disabled or hidden item: when the\ncurrent item can no longer take focus, the first item that can becomes\ncurrent (with none, the current item stays as it is)",
+              "inheritedFrom": {
+                "name": "SimpleToolbarBehaviors",
+                "module": "simple-toolbar.js"
+              }
+            },
+            {
+              "kind": "method",
               "name": "setCurrentItem",
               "parameters": [
                 {
@@ -2676,7 +2859,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "is toolbar collapsed?",
+              "description": "Whether the toolbar is collapsed, hiding buttons behind more.",
               "default": "true",
               "attribute": "collapsed",
               "reflects": true,
@@ -2864,7 +3047,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Should toolbar stick to top so that it is always visible?",
+              "description": "Stick the toolbar to the top of the page so it stays in view.",
               "default": "false",
               "attribute": "sticky",
               "reflects": true,
@@ -2895,7 +3078,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "always expanded so more button is unnecessary?",
+              "description": "Always show every button, so there is no more button.",
               "attribute": "always-expanded",
               "reflects": true,
               "inheritedFrom": {
@@ -2990,7 +3173,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "always expanded so more button is unnecessary?",
+              "description": "Always show every button, so there is no more button.",
               "fieldName": "alwaysExpanded",
               "inheritedFrom": {
                 "name": "SimpleToolbarBehaviors",
@@ -3026,7 +3209,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "is toolbar collapsed?",
+              "description": "Whether the toolbar is collapsed, hiding buttons behind more.",
               "default": "true",
               "fieldName": "collapsed",
               "inheritedFrom": {
@@ -3089,7 +3272,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Should toolbar stick to top so that it is always visible?",
+              "description": "Stick the toolbar to the top of the page so it stays in view.",
               "default": "false",
               "fieldName": "sticky",
               "inheritedFrom": {
@@ -3229,7 +3412,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "always expanded so more button is unnecessary?",
+              "description": "Always show every button, so there is no more button.",
               "fieldName": "alwaysExpanded",
               "inheritedFrom": {
                 "name": "SimpleToolbarBehaviors",
@@ -3265,7 +3448,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "is toolbar collapsed?",
+              "description": "Whether the toolbar is collapsed, hiding buttons behind more.",
               "default": "true",
               "fieldName": "collapsed",
               "inheritedFrom": {
@@ -3328,7 +3511,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Should toolbar stick to top so that it is always visible?",
+              "description": "Stick the toolbar to the top of the page so it stays in view.",
               "default": "false",
               "fieldName": "sticky",
               "inheritedFrom": {
@@ -3776,6 +3959,71 @@
             },
             {
               "kind": "method",
+              "name": "_isNavigable",
+              "parameters": [
+                {
+                  "name": "item",
+                  "type": {
+                    "text": "object"
+                  }
+                }
+              ],
+              "description": "whether an item can be the current item: arrow keys and the roving\ntabindex skip disabled and hidden items",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleToolbarBehaviors",
+                "module": "simple-toolbar.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_findNavigableItem",
+              "parameters": [
+                {
+                  "name": "start",
+                  "default": "0",
+                  "description": "index to start from",
+                  "optional": true,
+                  "type": {
+                    "text": "number"
+                  }
+                },
+                {
+                  "name": "step",
+                  "default": "1",
+                  "description": "1 to search forward, -1 backward",
+                  "optional": true,
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "finds the first navigable main item, starting at an index and stepping\nthrough the items (wrapping around) at most once",
+              "return": {
+                "type": {
+                  "text": "object|undefined"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleToolbarBehaviors",
+                "module": "simple-toolbar.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "refreshCurrentItem",
+              "description": "keeps the roving tabindex off a disabled or hidden item: when the\ncurrent item can no longer take focus, the first item that can becomes\ncurrent (with none, the current item stays as it is)",
+              "inheritedFrom": {
+                "name": "SimpleToolbarBehaviors",
+                "module": "simple-toolbar.js"
+              }
+            },
+            {
+              "kind": "method",
               "name": "setCurrentItem",
               "parameters": [
                 {
@@ -4100,7 +4348,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "is toolbar collapsed?",
+              "description": "Whether the toolbar is collapsed, hiding buttons behind more.",
               "default": "true",
               "attribute": "collapsed",
               "reflects": true,
@@ -4288,7 +4536,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Should toolbar stick to top so that it is always visible?",
+              "description": "Stick the toolbar to the top of the page so it stays in view.",
               "default": "false",
               "attribute": "sticky",
               "reflects": true,
@@ -4319,7 +4567,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "always expanded so more button is unnecessary?",
+              "description": "Always show every button, so there is no more button.",
               "attribute": "always-expanded",
               "reflects": true,
               "inheritedFrom": {

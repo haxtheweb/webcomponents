@@ -261,7 +261,7 @@
       "ex": 616,
       "ey": 520,
       "label": "format",
-      "sub": "png · html · svg",
+      "sub": "PNG · HTML · SVG",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -332,7 +332,7 @@
   "end": {
     "in": 17.8,
     "line": "Code to scan from a smartphone.",
-    "code": ""
+    "code": "<q-r></q-r>"
   },
   "surfaceHash": "5fb2eef78d14",
   "review": {

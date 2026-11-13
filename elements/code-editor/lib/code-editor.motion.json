@@ -45,19 +45,19 @@
       "rows": [
         {
           "name": "title",
-          "desc": "Title"
+          "desc": "Heading shown above the editor."
         },
         {
           "name": "show-code-pen",
           "desc": "Show codePen button to fork it…"
         },
         {
-          "name": "read-only",
-          "desc": "Readonly setting for the editor"
+          "name": "language",
+          "desc": "Language to present color codin…"
         },
         {
-          "name": "code-pen-data",
-          "desc": "Code pen data, computed based o…"
+          "name": "autofocus",
+          "desc": "automatically set focus on the…"
         }
       ],
       "active": [
@@ -82,7 +82,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "title=\"title\""
+      "s": "title=\"With template (recommen…\""
     },
     {
       "type": "text",
@@ -90,7 +90,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "show-code-pen=\"false\""
+      "s": "show-code-pen"
     },
     {
       "type": "text",
@@ -98,7 +98,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "read-only=\"false\""
+      "s": "language=\"html\""
     },
     {
       "type": "text",
@@ -106,7 +106,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "code-pen-data=\"null\""
+      "s": "autofocus"
     },
     {
       "type": "text",
@@ -191,7 +191,7 @@
       "ex": 616,
       "ey": 520,
       "label": "title",
-      "sub": "\"title\"",
+      "sub": "\"With template (recommended)\"",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -214,8 +214,8 @@
       "py": 468,
       "ex": 616,
       "ey": 520,
-      "label": "read-only",
-      "sub": "on or off",
+      "label": "language",
+      "sub": "\"html\"",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -226,8 +226,8 @@
       "py": 468,
       "ex": 796,
       "ey": 520,
-      "label": "code-pen-data",
-      "sub": "\"null\"",
+      "label": "autofocus",
+      "sub": "on or off",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -244,13 +244,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set title and show code pen",
-      "text": "Add a title attribute to the tag."
+      "text": "Heading shown above the editor. Show codePen button to fork it to there to run."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set read only",
-      "text": "Readonly setting for the editor."
+      "title": "Set language and autofocus",
+      "text": "Language to present color coding for. Automatically set focus on the editor."
     },
     {
       "t": 14.8,

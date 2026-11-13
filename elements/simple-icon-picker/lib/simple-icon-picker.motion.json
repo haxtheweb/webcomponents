@@ -57,11 +57,7 @@
       "rows": [
         {
           "name": "allowNull",
-          "desc": "Allow a null option to be selec…"
-        },
-        {
-          "name": "icons",
-          "desc": "An array of icons by name: ```…"
+          "desc": "Offer a \"no icon\" choice so the…"
         },
         {
           "name": "value",
@@ -76,7 +72,6 @@
         [5, 0],
         [7.4, 1],
         [10, 2],
-        [12.4, 3],
         [14.8, 0]
       ]
     },
@@ -102,7 +97,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "icons=\"[]\""
+      "s": "value=\"null\""
     },
     {
       "type": "text",
@@ -110,14 +105,6 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "value=\"null\""
-    },
-    {
-      "type": "text",
-      "x": 1022,
-      "y": 368,
-      "c": "code",
-      "in": 12.4,
       "s": "optionsPerRow=\"6\""
     },
     {
@@ -146,13 +133,6 @@
           10,
           {
             "y": 368
-          },
-          0.4
-        ],
-        [
-          12.4,
-          {
-            "y": 400
           },
           0.4
         ]
@@ -186,13 +166,6 @@
             "y": 400
           },
           0.4
-        ],
-        [
-          12.4,
-          {
-            "y": 432
-          },
-          0.4
         ]
       ]
     },
@@ -214,8 +187,8 @@
       "py": 382,
       "ex": 796,
       "ey": 434,
-      "label": "icons",
-      "sub": "\"[]\"",
+      "label": "value",
+      "sub": "\"null\"",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -226,23 +199,11 @@
       "py": 382,
       "ex": 616,
       "ey": 434,
-      "label": "value",
-      "sub": "\"null\"",
-      "dir": 1,
-      "in": 10.2,
-      "out": 12.2
-    },
-    {
-      "type": "callout",
-      "px": 770,
-      "py": 382,
-      "ex": 796,
-      "ey": 434,
       "label": "optionsPerRow",
       "sub": "a number",
       "dir": 1,
-      "in": 12.6,
-      "out": 14.600000000000001
+      "in": 10.2,
+      "out": 12.2
     }
   ],
   "beats": [
@@ -255,14 +216,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set allownull and icons",
-      "text": "Add the allowNull attribute to switch it on. Add an icons attribute to the tag."
+      "title": "Set allownull and value",
+      "text": "Offer a \"no icon\" choice so the value can be cleared. The value of the option."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set value and optionsperrow",
-      "text": "The value of the option. The maximum number of options per row."
+      "title": "Set optionsperrow",
+      "text": "The maximum number of options per row."
     },
     {
       "t": 14.8,

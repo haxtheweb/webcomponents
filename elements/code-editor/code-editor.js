@@ -234,7 +234,7 @@ class CodeEditor extends I18NMixin(SchemaBehaviors(LitElement)) {
         type: String,
       },
       /**
-       * Title
+       * Heading shown above the editor.
        */
       title: {
         type: String,

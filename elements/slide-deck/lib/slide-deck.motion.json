@@ -180,7 +180,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "deck-id=\"Deck id\""
+      "s": "deck-id=\"null\""
     },
     {
       "type": "text",
@@ -188,7 +188,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "downloadable"
+      "s": "downloadable=\"true\""
     },
     {
       "type": "text",
@@ -271,7 +271,7 @@
       "ex": 796,
       "ey": 546,
       "label": "deck-id",
-      "sub": "\"Deck id\"",
+      "sub": "\"null\"",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -299,8 +299,8 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set deck manifest and deck id",
-      "text": "Upload a file or paste a link for Deck manifest."
+      "title": "Set deck manifest",
+      "text": "Drop a .pptx file and it is converted to a slide deck automatically."
     },
     {
       "t": 10,
@@ -320,7 +320,7 @@
     "line": "Present an imported PowerPoint deck slide by slide, with sp…",
     "code": "<slide-deck source=\"files/decks/my-talk/deck.json\"></slide-deck>"
   },
-  "surfaceHash": "8abb76772eb8",
+  "surfaceHash": "76ea02867284",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

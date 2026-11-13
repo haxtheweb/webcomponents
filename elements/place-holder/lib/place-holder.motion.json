@@ -198,7 +198,7 @@
       "ex": 616,
       "ey": 540,
       "label": "type",
-      "sub": "text · document · audio …",
+      "sub": "Text / content · Document / file…",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -226,7 +226,7 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set type and text",
+      "title": "Set type",
       "text": "Type of gizmo that this accepts for replacement."
     },
     {

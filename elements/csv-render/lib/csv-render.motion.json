@@ -114,10 +114,6 @@
       "in": 2.4,
       "rows": [
         {
-          "name": "debounce-delay",
-          "desc": "Delay in ms before a data-sourc…"
-        },
-        {
           "name": "caption",
           "desc": "Caption for the table to improv…"
         },
@@ -126,8 +122,12 @@
           "desc": "Summary to improve accessibilit…"
         },
         {
-          "name": "table",
-          "desc": "Table busted out as an array."
+          "name": "debounce-delay",
+          "desc": "Delay in ms before a data-sourc…"
+        },
+        {
+          "name": "table-data",
+          "desc": "Raw data pulled in from the csv…"
         }
       ],
       "active": [
@@ -152,7 +152,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "debounce-delay=\"500\""
+      "s": "caption=\"NYC Capital Grant Award…\""
     },
     {
       "type": "text",
@@ -160,7 +160,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "caption=\"caption\""
+      "s": "summary=\"Public records for acco…\""
     },
     {
       "type": "text",
@@ -168,7 +168,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "summary=\"summary\""
+      "s": "debounce-delay=\"500\""
     },
     {
       "type": "text",
@@ -176,7 +176,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "table=\"[]\""
+      "s": "table-data=\"table data\""
     },
     {
       "type": "text",
@@ -260,8 +260,8 @@
       "py": 518,
       "ex": 616,
       "ey": 570,
-      "label": "debounce-delay",
-      "sub": "a number",
+      "label": "caption",
+      "sub": "\"NYC Capital Grant Awards 201…",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -272,8 +272,8 @@
       "py": 518,
       "ex": 796,
       "ey": 570,
-      "label": "caption",
-      "sub": "\"caption\"",
+      "label": "summary",
+      "sub": "\"Public records for accountab…",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -284,8 +284,8 @@
       "py": 518,
       "ex": 616,
       "ey": 570,
-      "label": "summary",
-      "sub": "\"summary\"",
+      "label": "debounce-delay",
+      "sub": "a number",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -296,8 +296,8 @@
       "py": 518,
       "ex": 796,
       "ey": 570,
-      "label": "table",
-      "sub": "\"[]\"",
+      "label": "table-data",
+      "sub": "\"table data\"",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -313,14 +313,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set debounce delay and caption",
-      "text": "Add a debounce-delay attribute to the tag."
+      "title": "Set caption",
+      "text": "Caption for the table to improve accessibility and readability."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set summary and table",
-      "text": "Summary to improve accessibility for screen readers."
+      "title": "Set debounce delay",
+      "text": "Delay in ms before a data-source/visibility change triggers a load."
     },
     {
       "t": 14.8,

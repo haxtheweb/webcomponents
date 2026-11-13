@@ -235,7 +235,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "Schema label",
+              "description": "Label for the whole form.",
               "attribute": "label"
             },
             {
@@ -1013,7 +1013,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "Schema label",
+              "description": "Label for the whole form.",
               "fieldName": "label"
             },
             {

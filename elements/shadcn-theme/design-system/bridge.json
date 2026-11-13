@@ -1,0 +1,324 @@
+{
+  "$comment": "DDD bridge for shadcn/ui's default (neutral) theme, layered on Tailwind CSS v4's palette, the same base tailwind-theme uses. Tiers follow elements/d-d-d/design-system/bridge/contract.json. shadcn doesn't publish its theme to npm, so the semantic tokens come from the file `shadcn init` writes, pinned to a commit of the shadcn-ui/ui repo and verified by sha256. Named DDD colors map onto the Tailwind palette; brand roles use neutral, as shadcn's primary does. Kept as DDD on purpose: duration-normal/slow and emphasized easing, state opacities and control heights (no tokens), border widths, and heading/body sizes.",
+  "system": "shadcn",
+  "title": "shadcn/ui",
+  "prefix": "Shadcn",
+  "homepage": "https://ui.shadcn.com",
+  "sources": [
+    {
+      "package": "tailwindcss",
+      "version": "4.3.5",
+      "license": "MIT",
+      "copyright": "Copyright (c) Tailwind Labs, Inc.",
+      "repository": "https://github.com/tailwindlabs/tailwindcss",
+      "format": "css",
+      "file": "theme.css",
+      "scopes": {
+        "light": ["@theme default"],
+        "dark": ["@theme default"]
+      }
+    },
+    {
+      "url": "https://raw.githubusercontent.com/shadcn-ui/ui/dd41d19e2f80ff6891951f7ced74c2c9a650b065/packages/tests/fixtures/next-app-init/app/globals.css",
+      "sha256": "c7531f2a5d181e3c45c941b3e23928a65117611b653a1dd8ed4ca91530b17838",
+      "licenseUrl": "https://raw.githubusercontent.com/shadcn-ui/ui/dd41d19e2f80ff6891951f7ced74c2c9a650b065/LICENSE.md",
+      "package": "shadcn-ui/ui (theme written by shadcn init)",
+      "version": "dd41d19e2f80ff6891951f7ced74c2c9a650b065",
+      "license": "MIT",
+      "copyright": "Copyright (c) 2023 shadcn",
+      "repository": "https://github.com/shadcn-ui/ui",
+      "format": "css",
+      "scopes": {
+        "light": [":root", "@theme inline"],
+        "dark": [":root", ".dark", "@theme inline"]
+      }
+    }
+  ],
+  "fonts": [
+    {
+      "family": "Geist",
+      "license": "OFL-1.1",
+      "url": "https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;900&display=swap"
+    },
+    {
+      "family": "Geist Mono",
+      "license": "OFL-1.1",
+      "url": "https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;600&display=swap"
+    }
+  ],
+  "ddd": {
+    "--ddd-theme-default-pughBlue": {
+      "token": "--color-neutral-300",
+      "note": "shadcn's accents are neutral; light brand step"
+    },
+    "--ddd-theme-default-accent": {
+      "token": "--color-neutral-200",
+      "note": "shadcn dark-mode primary (oklch 0.922 0 0)"
+    },
+    "--ddd-theme-default-skyBlue": {
+      "token": "--color-sky-500"
+    },
+    "--ddd-theme-default-skyLight": {
+      "token": "--color-sky-200"
+    },
+    "--ddd-theme-default-skyMaxLight": {
+      "token": "--color-sky-50"
+    },
+    "--ddd-theme-default-slateGray": {
+      "token": "--color-slate-600"
+    },
+    "--ddd-theme-default-slateLight": {
+      "token": "--color-slate-300"
+    },
+    "--ddd-theme-default-slateMaxLight": {
+      "token": "--color-slate-50"
+    },
+    "--ddd-theme-default-coalyGray": {
+      "token": "--color-neutral-900"
+    },
+    "--ddd-theme-default-black": {
+      "token": "--color-black"
+    },
+    "--ddd-theme-default-white": {
+      "token": "--color-white"
+    },
+    "--ddd-theme-default-limestoneGray": {
+      "token": "--color-neutral-400"
+    },
+    "--ddd-theme-default-limestoneLight": {
+      "token": "--color-neutral-200"
+    },
+    "--ddd-theme-default-limestoneMaxLight": {
+      "token": "--color-neutral-50"
+    },
+    "--ddd-theme-default-background": {
+      "token": "--color-neutral-50"
+    },
+    "--ddd-theme-default-disabled": {
+      "token": "--color-neutral-100"
+    },
+    "--ddd-theme-default-keystoneYellow": {
+      "token": "--color-yellow-400"
+    },
+    "--ddd-theme-default-globalNeon": {
+      "token": "--color-yellow-300"
+    },
+    "--ddd-theme-default-roarGolden": {
+      "token": "--color-amber-600"
+    },
+    "--ddd-theme-default-roarLight": {
+      "token": "--color-amber-200"
+    },
+    "--ddd-theme-default-roarMaxlight": {
+      "token": "--color-amber-50"
+    },
+    "--ddd-theme-default-shrineTan": {
+      "token": "--color-stone-400",
+      "note": "Tailwind has no tan; warm stone"
+    },
+    "--ddd-theme-default-shrineLight": {
+      "token": "--color-stone-200"
+    },
+    "--ddd-theme-default-shrineMaxLight": {
+      "token": "--color-stone-50"
+    },
+    "--ddd-theme-default-inventOrange": {
+      "token": "--color-orange-500"
+    },
+    "--ddd-theme-default-landgrantBrown": {
+      "token": "--color-orange-900"
+    },
+    "--ddd-theme-default-creekTeal": {
+      "token": "--color-teal-600"
+    },
+    "--ddd-theme-default-creekLight": {
+      "token": "--color-teal-200"
+    },
+    "--ddd-theme-default-creekMaxLight": {
+      "token": "--color-teal-50"
+    },
+    "--ddd-theme-default-opportunityGreen": {
+      "token": "--color-green-700",
+      "note": "correct signal (light)"
+    },
+    "--ddd-theme-default-forestGreen": {
+      "token": "--color-green-600"
+    },
+    "--ddd-theme-default-futureLime": {
+      "token": "--color-lime-400",
+      "note": "correct signal (dark)"
+    },
+    "--ddd-theme-default-athertonViolet": {
+      "token": "--color-violet-300",
+      "note": "incorrect signal (dark)"
+    },
+    "--ddd-theme-default-wonderPurple": {
+      "token": "--color-purple-800",
+      "note": "incorrect signal (light); keeps HAX purple-for-incorrect"
+    },
+    "--ddd-theme-default-original87Pink": {
+      "token": "--color-pink-700"
+    },
+    "--ddd-theme-default-discoveryCoral": {
+      "token": "--color-red-400"
+    },
+    "--ddd-theme-default-error": {
+      "token": "--color-red-800"
+    },
+    "--ddd-theme-default-errorLight": {
+      "token": "--color-red-50"
+    },
+    "--ddd-theme-default-warning": {
+      "token": "--color-amber-800"
+    },
+    "--ddd-theme-default-warningLight": {
+      "token": "--color-amber-50"
+    },
+    "--ddd-theme-default-info": {
+      "token": "--color-blue-800"
+    },
+    "--ddd-theme-default-infoLight": {
+      "token": "--color-blue-50"
+    },
+    "--ddd-theme-default-success": {
+      "token": "--color-green-800"
+    },
+    "--ddd-theme-default-successLight": {
+      "token": "--color-green-50"
+    },
+    "--ddd-theme-default-alertImmediate": {
+      "token": "--color-red-200"
+    },
+    "--ddd-theme-default-alertUrgent": {
+      "token": "--color-amber-100"
+    },
+    "--ddd-theme-default-alertAllClear": {
+      "token": "--color-green-100"
+    },
+    "--ddd-theme-default-alertNonEmergency": {
+      "token": "--color-blue-100"
+    },
+    "--ddd-theme-default-beaverBlue": {
+      "token": "--color-neutral-900",
+      "note": "shadcn neutral primary (oklch 0.205 0 0)"
+    },
+    "--ddd-theme-default-nittanyNavy": {
+      "token": "--color-neutral-800"
+    },
+    "--ddd-theme-default-potentialMidnight": {
+      "token": "--color-neutral-950"
+    },
+    "--ddd-theme-default-link": {
+      "token": "--color-neutral-900",
+      "note": "shadcn links are underlined primary"
+    },
+    "--ddd-theme-default-linkLight": {
+      "token": "--color-neutral-200"
+    },
+    "--ddd-font-weight-light": {
+      "token": "--font-weight-light"
+    },
+    "--ddd-font-weight-regular": {
+      "token": "--font-weight-normal"
+    },
+    "--ddd-font-weight-medium": {
+      "token": "--font-weight-medium"
+    },
+    "--ddd-font-weight-bold": {
+      "token": "--font-weight-bold"
+    },
+    "--ddd-font-weight-black": {
+      "token": "--font-weight-black"
+    },
+    "--ddd-boxShadow-sm": {
+      "token": "--shadow-sm"
+    },
+    "--ddd-boxShadow-md": {
+      "token": "--shadow-md"
+    },
+    "--ddd-boxShadow-lg": {
+      "token": "--shadow-lg"
+    },
+    "--ddd-boxShadow-xl": {
+      "token": "--shadow-xl"
+    },
+    "--ddd-duration-fast": {
+      "token": "--default-transition-duration",
+      "note": "150ms"
+    },
+    "--ddd-timing-ease": {
+      "token": "--ease-in-out"
+    },
+    "--ddd-timing-enter": {
+      "token": "--ease-out"
+    },
+    "--ddd-timing-exit": {
+      "token": "--ease-in"
+    },
+    "--ddd-font-primary": {
+      "value": "\"Geist\", ui-sans-serif, system-ui, sans-serif",
+      "note": "shadcn's default (Geist via next/font)"
+    },
+    "--ddd-font-secondary": {
+      "value": "\"Geist\", ui-sans-serif, system-ui, sans-serif"
+    },
+    "--ddd-font-navigation": {
+      "value": "\"Geist\", ui-sans-serif, system-ui, sans-serif"
+    },
+    "--ddd-font-mono": {
+      "value": "\"Geist Mono\", ui-monospace, monospace"
+    },
+    "--ddd-radius-xs": {
+      "token": "--radius-sm",
+      "note": "calc(--radius * 0.6) = 6px"
+    },
+    "--ddd-radius-sm": {
+      "token": "--radius-md",
+      "note": "8px"
+    },
+    "--ddd-radius-md": {
+      "token": "--radius-lg",
+      "note": "--radius, 10px"
+    },
+    "--ddd-radius-lg": {
+      "token": "--radius-xl",
+      "note": "14px"
+    },
+    "--ddd-radius-xl": {
+      "token": "--radius-2xl",
+      "note": "18px"
+    },
+    "--ddd-focus-ring": {
+      "value": "2px solid var(--primary)",
+      "note": "shadcn draws a 3px ring in --ring at 50%; that gray is under 3:1 on white, so the ring uses --primary"
+    },
+    "--ddd-focus-offset": {
+      "value": "2px"
+    }
+  },
+  "extraTokens": [
+    "--background",
+    "--foreground",
+    "--card",
+    "--card-foreground",
+    "--primary",
+    "--primary-foreground",
+    "--secondary",
+    "--secondary-foreground",
+    "--muted",
+    "--muted-foreground",
+    "--accent",
+    "--accent-foreground",
+    "--border",
+    "--ring",
+    "--sidebar",
+    "--sidebar-foreground",
+    "--sidebar-primary",
+    "--sidebar-accent",
+    "--sidebar-accent-foreground",
+    "--sidebar-border",
+    "--radius",
+    "--text-sm",
+    "--font-weight-semibold"
+  ]
+}

@@ -314,7 +314,7 @@
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set copymessage and linklabel",
+      "title": "Set copymessage",
       "text": "Overrides default text for copy link's toast message."
     },
     {

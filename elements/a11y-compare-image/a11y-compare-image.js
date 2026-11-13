@@ -701,8 +701,8 @@ class a11yCompareImage extends LitElement {
         type: Boolean,
       },
       /**
-       * fill the available height and fit the images without cropping
-       * (used for full screen)
+       * Fit both images to the available height without cropping, as in full
+       * screen.
        */
       fit: {
         type: Boolean,

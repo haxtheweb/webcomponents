@@ -355,7 +355,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "Title",
+              "description": "Heading shown above the editor.",
               "attribute": "title"
             },
             {
@@ -403,7 +403,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "Title",
+              "description": "Heading shown above the editor.",
               "fieldName": "title"
             },
             {

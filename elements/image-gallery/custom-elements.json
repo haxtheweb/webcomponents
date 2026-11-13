@@ -44,6 +44,25 @@
             },
             {
               "kind": "method",
+              "name": "_frameClass",
+              "parameters": [
+                {
+                  "name": "image",
+                  "description": "an entry of this.images",
+                  "type": {
+                    "text": "object"
+                  }
+                }
+              ],
+              "description": "The card / box class an image's gallery item gets from its media-image",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "method",
               "name": "_setActiveIndex",
               "parameters": [
                 {

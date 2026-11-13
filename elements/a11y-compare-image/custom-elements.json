@@ -83,7 +83,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "fill the available height and fit the images without cropping\n(used for full screen)",
+              "description": "Fit both images to the available height without cropping, as in full\nscreen.",
               "default": "false",
               "attribute": "fit",
               "reflects": true
@@ -230,7 +230,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "fill the available height and fit the images without cropping\n(used for full screen)",
+              "description": "Fit both images to the available height without cropping, as in full\nscreen.",
               "default": "false",
               "fieldName": "fit"
             },

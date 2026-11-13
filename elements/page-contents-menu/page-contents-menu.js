@@ -355,6 +355,9 @@ class PageContentsMenu extends SchemaBehaviors(DDD) {
       position: {
         type: String,
       },
+      /**
+       * Collapse to an icon button that opens the contents in a popover.
+       */
       mobile: {
         type: Boolean,
         reflect: true,

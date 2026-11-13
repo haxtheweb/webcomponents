@@ -309,13 +309,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set delay and cursor duration",
-      "text": "Fill in the Delay and Cursor duration fields in the sidebar."
+      "text": "Set Delay and Cursor duration in the HAX sidebar."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set text and speed",
-      "text": "Fill in the Text and Speed fields in the sidebar."
+      "text": "Set Text and Speed in the HAX sidebar."
     },
     {
       "t": 14.8,
@@ -327,7 +327,7 @@
   "end": {
     "in": 17.8,
     "line": "typewritter effect",
-    "code": ""
+    "code": "<type-writer></type-writer>"
   },
   "surfaceHash": "04d77e3c7a9b",
   "review": {

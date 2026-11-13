@@ -368,7 +368,7 @@
   "end": {
     "in": 17.8,
     "line": "Visual badge to communicate obtaining a skill.",
-    "code": ""
+    "code": "<merit-badge></merit-badge>"
   },
   "surfaceHash": "11081bb9e557",
   "review": {

@@ -27,7 +27,7 @@
       "property": "manualMode",
       "type": "boolean",
       "default": "false",
-      "description": "Set this to true if you want to manually control when the tooltip is shown or hidden.",
+      "description": "Show and hide the tooltip only from code, not on hover or focus.",
       "hax": null
     },
     {
@@ -67,7 +67,7 @@
       "property": "animationDelay",
       "type": "number",
       "default": "",
-      "description": "The delay that will be applied before the `entry` animation is played when showing the tooltip.",
+      "description": "Milliseconds to wait before the tooltip's entry animation plays.",
       "hax": null
     },
     {

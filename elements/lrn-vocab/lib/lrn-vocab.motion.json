@@ -85,7 +85,7 @@
       "in": 2.6,
       "states": [
         [2.6, "Vocab"],
-        [5, "Term"]
+        [10, "Term"]
       ],
       "typed": true
     },
@@ -109,16 +109,16 @@
       "in": 4.6,
       "rows": [
         {
-          "name": "term",
-          "desc": "Term"
-        },
-        {
           "name": "description",
           "desc": "Description (OER Schema)"
         },
         {
           "name": "content",
           "desc": "Definition"
+        },
+        {
+          "name": "term",
+          "desc": "Term"
         }
       ],
       "active": [
@@ -142,15 +142,15 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "term=\"Term\""
+      "s": "description=\"Description (OER…\""
     },
     {
       "type": "text",
       "x": 1022,
       "y": 304,
       "c": "code",
-      "in": 7.4,
-      "s": "description=\"Description (OER…\""
+      "in": 10,
+      "s": "term=\"Term\""
     },
     {
       "type": "text",
@@ -168,7 +168,7 @@
           0.4
         ],
         [
-          7.4,
+          10,
           {
             "y": 336
           },
@@ -179,10 +179,19 @@
     {
       "type": "text",
       "x": 1022,
-      "y": 368,
+      "y": 336,
       "c": "code",
-      "in": 10,
-      "s": "<p>Definition</p>"
+      "in": 7.4,
+      "s": "<p>Definition</p>",
+      "keys": [
+        [
+          10,
+          {
+            "y": 368
+          },
+          0.4
+        ]
+      ]
     },
     {
       "type": "text",
@@ -200,7 +209,7 @@
           0.4
         ],
         [
-          7.4,
+          10,
           {
             "y": 400
           },
@@ -214,8 +223,8 @@
       "py": 378,
       "ex": 616,
       "ey": 430,
-      "label": "term",
-      "sub": "\"Term\"",
+      "label": "description",
+      "sub": "\"Description (OER…\"",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -226,8 +235,8 @@
       "py": 378,
       "ex": 796,
       "ey": 430,
-      "label": "description",
-      "sub": "\"Description (OER…\"",
+      "label": "content",
+      "sub": "\"Definition\"",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -238,8 +247,8 @@
       "py": 378,
       "ex": 616,
       "ey": 430,
-      "label": "content",
-      "sub": "\"Definition\"",
+      "label": "term",
+      "sub": "\"Term\"",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -255,14 +264,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set term and description",
-      "text": "Fill in the Term and Description (OER Schema) fields in the sidebar."
+      "title": "Set description",
+      "text": "OER Schema: a short description of the vocabulary term."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set definition",
-      "text": "The definitition to display when the term is clicked."
+      "title": "Set term",
+      "text": "Set Term in the HAX sidebar."
     },
     {
       "t": 14.8,
@@ -274,7 +283,7 @@
   "end": {
     "in": 17.8,
     "line": "Vocabulary term",
-    "code": ""
+    "code": "<lrn-vocab></lrn-vocab>"
   },
   "surfaceHash": "2aaeabcc33db",
   "review": {

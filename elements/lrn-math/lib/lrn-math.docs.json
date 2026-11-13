@@ -20,7 +20,15 @@
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/lrn-math/lrn-math.js",
   "install": "npm i @haxtheweb/lrn-math",
   "demoHtml": "<lrn-math></lrn-math>",
-  "attributes": [],
+  "attributes": [
+    {
+      "name": "mathtext",
+      "type": "",
+      "default": "",
+      "description": "",
+      "hax": null
+    }
+  ],
   "slots": [],
   "events": [],
   "hax": {
@@ -75,7 +83,7 @@
       }
     ]
   },
-  "surfaceHash": "c9524417b74b",
+  "surfaceHash": "6d2669f6ab48",
   "walkthroughs": [
     {
       "id": "",

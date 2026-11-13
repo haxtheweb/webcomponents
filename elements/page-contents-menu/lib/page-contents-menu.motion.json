@@ -141,27 +141,12 @@
       "in": 2.4,
       "rows": [
         {
-          "name": "schemaMap",
-          "desc": "schemaMap"
-        },
-        {
-          "name": "contentContainer",
-          "desc": "contentContainer"
-        },
-        {
-          "name": "relationship",
-          "desc": "relationship"
-        },
-        {
-          "name": "items",
-          "desc": "items"
+          "name": "mobile",
+          "desc": "Collapse to an icon button that…"
         }
       ],
       "active": [
         [5, 0],
-        [7.4, 1],
-        [10, 2],
-        [12.4, 3],
         [14.8, 0]
       ]
     },
@@ -179,31 +164,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "schemaMap=\"schemaMap\""
-    },
-    {
-      "type": "text",
-      "x": 1022,
-      "y": 304,
-      "c": "code",
-      "in": 7.4,
-      "s": "contentContainer=\"null\""
-    },
-    {
-      "type": "text",
-      "x": 1022,
-      "y": 336,
-      "c": "code",
-      "in": 10,
-      "s": "relationship=\"null\""
-    },
-    {
-      "type": "text",
-      "x": 1022,
-      "y": 368,
-      "c": "code",
-      "in": 12.4,
-      "s": "items=\"[]\""
+      "s": "mobile"
     },
     {
       "type": "text",
@@ -217,27 +178,6 @@
           5,
           {
             "y": 304
-          },
-          0.4
-        ],
-        [
-          7.4,
-          {
-            "y": 336
-          },
-          0.4
-        ],
-        [
-          10,
-          {
-            "y": 368
-          },
-          0.4
-        ],
-        [
-          12.4,
-          {
-            "y": 400
           },
           0.4
         ]
@@ -257,27 +197,6 @@
             "y": 336
           },
           0.4
-        ],
-        [
-          7.4,
-          {
-            "y": 368
-          },
-          0.4
-        ],
-        [
-          10,
-          {
-            "y": 400
-          },
-          0.4
-        ],
-        [
-          12.4,
-          {
-            "y": 432
-          },
-          0.4
         ]
       ]
     },
@@ -287,47 +206,11 @@
       "py": 498,
       "ex": 616,
       "ey": 550,
-      "label": "schemaMap",
-      "sub": "\"schemaMap\"",
+      "label": "mobile",
+      "sub": "on or off",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
-    },
-    {
-      "type": "callout",
-      "px": 770,
-      "py": 498,
-      "ex": 796,
-      "ey": 550,
-      "label": "contentContainer",
-      "sub": "\"null\"",
-      "dir": 1,
-      "in": 7.6000000000000005,
-      "out": 9.600000000000001
-    },
-    {
-      "type": "callout",
-      "px": 590,
-      "py": 498,
-      "ex": 616,
-      "ey": 550,
-      "label": "relationship",
-      "sub": "\"null\"",
-      "dir": 1,
-      "in": 10.2,
-      "out": 12.2
-    },
-    {
-      "type": "callout",
-      "px": 770,
-      "py": 498,
-      "ex": 796,
-      "ey": 550,
-      "label": "items",
-      "sub": "\"[]\"",
-      "dir": 1,
-      "in": 12.6,
-      "out": 14.600000000000001
     }
   ],
   "beats": [
@@ -340,14 +223,8 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set schemamap",
-      "text": "Add schemaMap and contentContainer attributes to the tag."
-    },
-    {
-      "t": 10,
-      "out": 14.6,
-      "title": "Set relationship and items",
-      "text": "Add relationship and items attributes to the tag."
+      "title": "Set mobile",
+      "text": "Collapse to an icon button that opens the contents in a popover."
     },
     {
       "t": 14.8,

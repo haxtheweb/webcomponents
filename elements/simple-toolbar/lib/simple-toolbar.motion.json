@@ -57,19 +57,19 @@
       "rows": [
         {
           "name": "always-expanded",
-          "desc": "always expanded so more button…"
+          "desc": "Always show every button, so th…"
         },
         {
           "name": "collapsed",
-          "desc": "is toolbar collapsed?"
+          "desc": "Whether the toolbar is collapse…"
         },
         {
-          "name": "config",
-          "desc": "Custom configuration of toolbar…"
+          "name": "sticky",
+          "desc": "Stick the toolbar to the top of…"
         },
         {
-          "name": "more-shortcuts",
-          "desc": "Optional space-separated list o…"
+          "name": "collapse-disabled",
+          "desc": "whether there is no need to col…"
         }
       ],
       "active": [
@@ -110,7 +110,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "config=\"[]\""
+      "s": "sticky=\"false\""
     },
     {
       "type": "text",
@@ -118,7 +118,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "more-shortcuts=\"more shortcuts\""
+      "s": "collapse-disabled=\"false\""
     },
     {
       "type": "text",
@@ -226,8 +226,8 @@
       "py": 382,
       "ex": 616,
       "ey": 434,
-      "label": "config",
-      "sub": "\"[]\"",
+      "label": "sticky",
+      "sub": "on or off",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -238,8 +238,8 @@
       "py": 382,
       "ex": 796,
       "ey": 434,
-      "label": "more-shortcuts",
-      "sub": "\"more shortcuts\"",
+      "label": "collapse-disabled",
+      "sub": "on or off",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -256,13 +256,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set always expanded",
-      "text": "Add the always-expanded attribute to switch it on."
+      "text": "Always show every button, so there is no more button."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set config and more shortcuts",
-      "text": "Add config and more-shortcuts attributes to the tag."
+      "title": "Set sticky",
+      "text": "Stick the toolbar to the top of the page so it stays in view."
     },
     {
       "t": 14.8,

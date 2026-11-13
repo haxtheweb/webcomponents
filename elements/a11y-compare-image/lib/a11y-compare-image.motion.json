@@ -98,18 +98,13 @@
         },
         {
           "name": "fit",
-          "desc": "fill the available height and f…"
-        },
-        {
-          "name": "active-layer",
-          "desc": "active layer"
+          "desc": "Fit both images to the availabl…"
         }
       ],
       "active": [
         [5, 0],
         [7.4, 1],
         [10, 2],
-        [12.4, 3],
         [14.8, 0]
       ]
     },
@@ -147,14 +142,6 @@
     },
     {
       "type": "text",
-      "x": 1022,
-      "y": 368,
-      "c": "code",
-      "in": 12.4,
-      "s": "active-layer=\"3\""
-    },
-    {
-      "type": "text",
       "x": 1000,
       "y": 272,
       "c": "code",
@@ -179,13 +166,6 @@
           10,
           {
             "y": 368
-          },
-          0.4
-        ],
-        [
-          12.4,
-          {
-            "y": 400
           },
           0.4
         ]
@@ -217,13 +197,6 @@
           10,
           {
             "y": 400
-          },
-          0.4
-        ],
-        [
-          12.4,
-          {
-            "y": 432
           },
           0.4
         ]
@@ -264,18 +237,6 @@
       "dir": 1,
       "in": 10.2,
       "out": 12.2
-    },
-    {
-      "type": "callout",
-      "px": 770,
-      "py": 518,
-      "ex": 796,
-      "ey": 570,
-      "label": "active-layer",
-      "sub": "a number",
-      "dir": 1,
-      "in": 12.6,
-      "out": 14.600000000000001
     }
   ],
   "beats": [
@@ -294,8 +255,8 @@
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set fit and active layer",
-      "text": "Add the fit attribute to switch it on. Add an active-layer attribute to the tag."
+      "title": "Set fit",
+      "text": "Fit both images to the available height without cropping, as in full screen."
     },
     {
       "t": 14.8,

@@ -245,7 +245,7 @@ class LicenseElement extends I18NMixin(SchemaBehaviors(DDDSuper(LitElement))) {
         type: String,
       },
       /**
-       * Original Source of the work in question
+       * Address of the original work this content comes from.
        */
       source: {
         type: String,
@@ -269,7 +269,8 @@ class LicenseElement extends I18NMixin(SchemaBehaviors(DDDSuper(LitElement))) {
         attribute: "license-link",
       },
       /**
-       * License short hand. Options cc0,
+       * License short name such as by, by-sa, by-nc or cc0; sets the link and
+       * icon.
        */
       license: {
         type: String,

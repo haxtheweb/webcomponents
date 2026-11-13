@@ -549,8 +549,7 @@ const SimplePickerBehaviors = function (SuperClass) {
         ...super.properties,
 
         /**
-         * allow a null value?
-         * Default behavior/false will select first option and set value accordingly.
+         * Allow no selection; otherwise the first option is selected.
          */
         allowNull: {
           type: Boolean,
@@ -559,8 +558,7 @@ const SimplePickerBehaviors = function (SuperClass) {
         },
 
         /**
-         * Align right edges of listbox and button?
-         * Default behavior/false aligns to left edges.
+         * Align the right edges of the list and button instead of the left.
          */
         alignRight: {
           type: Boolean,
@@ -577,7 +575,7 @@ const SimplePickerBehaviors = function (SuperClass) {
         },
 
         /**
-         * Position label above select dropdown?
+         * Put the label above the dropdown instead of beside it.
          */
         blockLabel: {
           type: Boolean,

@@ -27,7 +27,7 @@
       "property": "allowConcurrent",
       "type": "boolean",
       "default": "false",
-      "description": "Allow this media to play concurrently with other a11y-media-players? Default is to pause this a11y-media-player when other a11y-media-player starts playing.",
+      "description": "Keep playing when another player on the page starts, instead of pausing.",
       "hax": null
     },
     {
@@ -35,7 +35,7 @@
       "property": "audioOnly",
       "type": "boolean",
       "default": "false",
-      "description": "Is this an audio file?",
+      "description": "Treat the source as audio: no video area unless a thumbnail is set.",
       "hax": null
     },
     {
@@ -441,13 +441,13 @@
       "order": 0,
       "src": "a11y-media-player.motion.json",
       "file": "lib/a11y-media-player.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/a11y-media-player.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

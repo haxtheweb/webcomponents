@@ -100,7 +100,7 @@ class ImgPanZoom extends LitElement {
   static get properties() {
     return {
       /**
-       * image source
+       * Address of the image to pan and zoom.
        */
       src: {
         type: String,

@@ -1,0 +1,43 @@
+{
+  "tag": "material-theme",
+  "folder": "material-theme",
+  "package": "@haxtheweb/material-theme",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "material-theme",
+  "description": "Material Design 3 theme for HAXcms, built on the DDD-capable Material design system bridge",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/material-theme/material-theme.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/material-theme/material-theme.js",
+  "install": "npm i @haxtheweb/material-theme",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "sidebar-open",
+      "property": "sidebarOpen",
+      "type": "boolean",
+      "default": "true",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "4bc339039432",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/material-theme",
+    "file": "material-theme.js"
+  }
+}

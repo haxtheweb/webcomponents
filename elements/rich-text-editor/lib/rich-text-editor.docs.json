@@ -59,7 +59,7 @@
       "property": "toolbarId",
       "type": "string",
       "default": "\"\"",
-      "description": "id for toolbar",
+      "description": "Id of the rich-text-editor-toolbar this editor uses.",
       "hax": null
     },
     {
@@ -75,7 +75,7 @@
       "property": "rawhtml",
       "type": "string",
       "default": "",
-      "description": "raw html",
+      "description": "HTML to load into the editor in place of its content.",
       "hax": null
     },
     {
@@ -83,7 +83,7 @@
       "property": "type",
       "type": "string",
       "default": "\"rich-text-editor-toolbar\"",
-      "description": "type of editor toolbar, i.e. full - full for full toolbar with breadcrumb, mini - mini for mini floating toolbar, or default toolbar if neither.",
+      "description": "Toolbar to use: full (with breadcrumbs), mini (floating) or the default.",
       "hax": null
     },
     {
