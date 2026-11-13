@@ -36,7 +36,15 @@ gulp.task("iconset", (done) => {
     const manifestFilename = iconset.manifestFilename || `${packageJson.wcfactory.elementName}-iconsets-manifest`
     const manifestPath = iconset.manifestPath || `./lib`;
     const exportName = iconset.exportName || `${packageJson.wcfactory.className}IconsetsManifest`;
-    const jsonContent = JSON.stringify(dirTree(path).icons, null, 2);
+    // icons kept only under an old name, so content that uses it still
+    // draws, but left out of the manifest (and so the icon picker):
+    // wcfactory.iconset.legacy is {iconset: [names]}
+    const legacy = iconset.legacy || {};
+    const sets = dirTree(path).icons.map((set) => ({
+      ...set,
+      icons: set.icons.filter((icon) => (legacy[set.name] || []).indexOf(icon) < 0),
+    }));
+    const jsonContent = JSON.stringify(sets, null, 2);
     // keep the license header every element source file carries; this file
     // is rewritten on each build, so the header has to come from here
     const iconVar =  `/**

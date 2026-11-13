@@ -142,7 +142,6 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
       mediaPolicy: "Media policy",
       configuration: "Configuration",
       localization: "Localization",
-      styleGuide: "Style Guide",
       customCodePanel: "JS/CSS",
       runtimeAndUpdateStatus: "Runtime and update status",
       availableStarterStructures: "Available starter structures",
@@ -155,7 +154,6 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
       acceptedFileFormats: "Accepted file formats",
       systemWideDefaults: "System-wide defaults",
       defaultLanguageForNewSites: "Default language for new sites",
-      authoringStyleGuidance: "Authoring style guidance",
       globalCssAndJavaScript: "Global CSS and JavaScript",
       statusPanelIntro:
         "System health report modeled after the admin status table, using backend-friendly keys for both PHP and NodeJS deployments.",
@@ -177,8 +175,6 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
         "Set the default language applied to newly created sites and other system-wide configuration defaults.",
       localizationSectionDescription:
         "Localization defaults are stored in the system config localization block.",
-      styleGuidePanelIntro:
-        "Style guide controls are intentionally disabled while backend support is finalized.",
       customCodePanelIntro:
         "Edit global CSS and JavaScript. Empty values are valid and will save as empty.",
       schemaEndpointUnavailable:
@@ -274,9 +270,6 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
       loadingStatusReport: "Loading status report…",
       globalCss: "Global CSS",
       globalJavaScript: "Global JavaScript",
-      styleGuideHeading: "Style guide",
-      styleGuideDisabledRelease:
-        "Style guide controls are intentionally disabled in this release while backend integration is completed.",
       loadingSavedApiKeys: "Loading saved API keys…",
       noIntegrationProviders: "No integration providers are configured.",
       getApiKey: "Get API key",
@@ -1217,16 +1210,6 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
         ],
       },
       {
-        key: "style-guide",
-        label: this.t.styleGuide,
-        icon: HaxUiAdminIcons.text,
-        group: "advanced",
-        description: this.t.authoringStyleGuidance,
-        intro: this.t.styleGuidePanelIntro,
-        panelType: "style-guide",
-        disabled: true,
-      },
-      {
         key: "custom-code",
         label: this.t.customCodePanel,
         icon: HaxUiAdminIcons.editor,
@@ -1737,7 +1720,7 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
     if (!panel) {
       return false;
     }
-    return !["status", "style-guide", "blocks"].includes(panel.key);
+    return !["status", "blocks"].includes(panel.key);
   }
 
   _buildSavePayload(panelKey, values) {
@@ -4675,12 +4658,6 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
     `;
   }
 
-  _renderStyleGuidePanel() {
-    return html`<p class="hax-ui-empty">
-      ${this.t.styleGuideDisabledRelease}
-    </p>`;
-  }
-
   _renderIntegrationsPanel() {
     const fields = this._integrationFields();
     return html`
@@ -4791,9 +4768,6 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
     }
     if (panel.panelType === "integrations") {
       return this._renderIntegrationsPanel();
-    }
-    if (panel.panelType === "style-guide") {
-      return this._renderStyleGuidePanel();
     }
     if (panel.key === "media") {
       return this._renderMediaPanel();

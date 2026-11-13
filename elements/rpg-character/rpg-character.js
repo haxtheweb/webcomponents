@@ -336,7 +336,7 @@ export const presets = {
     feet: "skates",
     crest: "icers-away",
   },
-  // the HAX World Traveler as a character: red HAX helmet with an idea bulb
+  // the HAX Future Traveler as a character: red HAX helmet with an idea bulb
   // and big goggles, Beaver blue coat over a cyan shirt
   "future-traveler": { hat: "future-traveler" },
 };

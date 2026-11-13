@@ -46,7 +46,6 @@
         "palette": "5",
         "icon": "hax:hax2022"
       },
-      "styleGuide": "theme/style-guide.html",
       "regions": {}
     },
     "node": {

@@ -45,6 +45,15 @@ DDD "HAX UI admin layer" doc (`elements/d-d-d/design-system/source/hax-ui-admin.
 section "Admin icons"). Add new SVGs to `lib/svgs/hax/` and run `yarn run build`
 in this folder to regenerate `lib/hax-iconset-manifest.js`.
 
+## The Future Traveler (`hax:future-traveler`)
+
+`hax:future-traveler` (color) and `hax:future-traveler-plain` (one ink) are
+HAX's mascot, the Future Traveler. They were first named
+`hax:world-traveler` and `hax:world-traveler-plain`; those files stay in
+`lib/svgs/hax/` so content that names them keeps drawing, but they are listed
+under `wcfactory.iconset.legacy` in `package.json`, which keeps them out of the
+manifest and the icon picker. Use the `future-traveler` names in anything new.
+
 ## Attribution
 
 The `hax:admin-*` glyph paths are taken from Google's

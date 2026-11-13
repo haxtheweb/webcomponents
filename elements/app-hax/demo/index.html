@@ -434,7 +434,10 @@
     }, 4000);
     </script>
       <app-hax base-path="/elements/app-hax/demo/">
-        <a href="https://www.psu.edu" slot="app-header-pre"><img src="https://iam.hax.psu.edu/assets/psu.png" style="height:48px;display:inline-flex;vertical-align:top;" alt="Pennsylvania State University" /></a>
+        <!-- a deployment's own mark goes in app-header-post (just left of the
+             HAX mark); app-header-pre puts content right after the character.
+             Example University is made up for the demo. -->
+        <span slot="app-header-post"><img src="example-logo.svg" style="height:40px;display:inline-flex;vertical-align:top;" alt="Example University" /></span>
       </app-hax>
       <div id="demo">
         <script>

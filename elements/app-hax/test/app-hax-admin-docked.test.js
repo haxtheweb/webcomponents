@@ -256,26 +256,26 @@ describe("app-hax with System Settings docked", () => {
     });
 
     it("lets System Settings move the dialog when nothing is unsaved", () => {
-      const evt = selectRow("HAX/action/systemSettings");
+      const evt = selectRow("Dashboard/System settings");
       expect(evt.defaultPrevented).to.equal(false);
       expect(hides).to.equal(0);
     });
 
     it("closes the dialog before any other command runs", () => {
-      const evt = selectRow("HAX/action/goToSite");
+      const evt = selectRow("Sites/Go to");
       expect(evt.defaultPrevented).to.equal(true);
       expect(hides).to.equal(1);
-      expect(commands).to.deep.equal([{ path: "HAX/action/goToSite" }]);
+      expect(commands).to.deep.equal([{ path: "Sites/Go to" }]);
     });
 
     it("asks first with unsaved changes, then closes and runs", () => {
       makeDirty(dialog);
-      selectRow("HAX/action/goToSite");
+      selectRow("Sites/Go to");
       expect(commands).to.deep.equal([]);
       expect(dialog._pendingPanel).to.equal("status");
       dialog._leaveDiscard();
       expect(hides).to.equal(1);
-      expect(commands).to.deep.equal([{ path: "HAX/action/goToSite" }]);
+      expect(commands).to.deep.equal([{ path: "Sites/Go to" }]);
     });
   });
 });

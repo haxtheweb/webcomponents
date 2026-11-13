@@ -30,7 +30,6 @@ describe("haxcms-system-settings HAX UI shell", () => {
       "media",
       "configuration",
       "integrations",
-      "style-guide",
       "custom-code",
     ]);
   });

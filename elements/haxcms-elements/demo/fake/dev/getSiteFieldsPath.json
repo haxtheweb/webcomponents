@@ -139,14 +139,6 @@
                 "inputMethod": "iconpicker",
                 "required": false,
                 "icon": "icons:send"
-              },
-              {
-                "property": "manifest.metadata.theme.styleGuide",
-                "title": "Style guide URL",
-                "description": "URL to custom style-guide.html file or leave empty to use default theme location",
-                "inputMethod": "textfield",
-                "required": false,
-                "icon": "icons:style"
               }
             ]
           },
@@ -351,8 +343,7 @@
           "manifest.metadata.theme.variables.hexCode": "#da004e",
           "manifest.metadata.theme.variables.cssVariable": "pink",
           "manifest.metadata.theme.variables.palette": "0",
-          "manifest.metadata.theme.variables.icon": "icons:record-voice-over",
-          "manifest.metadata.theme.styleGuide": "theme/style-guide.html"
+          "manifest.metadata.theme.variables.icon": "icons:record-voice-over"
         },
         "fields": {
           "manifest.metadata.node.fields.configure": [

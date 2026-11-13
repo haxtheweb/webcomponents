@@ -7,6 +7,12 @@ import { autorun, toJS } from "mobx";
 import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import {
+  HaxUiAdminTokens,
+  HaxUiDarkChromeDeclarations,
+} from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import { HAXCMSThemeParts } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
@@ -74,7 +80,14 @@ function go(url) {
  * `ecosystemSrc` (the bundle URL, default `ecosystem-webs.json`), `nav`
  * (`[{label, slug}]`, default the top-level pages), `links`
  * (`[{label, href, kind}]` where kind is `docs`, `portfolio` or `demo`) and
- * `footer` (`[{label, href}]`, plus a `footerNote` line).
+ * `footer` (`[{label, href}]`, plus a `footerNote` line) and `welcome`
+ * (`{title, text, tour, tourLabel}`: the greeting on the home page, `tour`
+ * being the slug of the tour its button starts).
+ *
+ * The header is the HAX top bar as the HAX editor draws it (the dark HAX UI
+ * chrome, the Future Traveler in its right-hand corner), under the HAX
+ * network strip. Merlin, in that strip, can jump to every web, tile and tour
+ * of the site as well as across the network.
  *
  * @title Ecosystem
  * @element ecosystem-theme
@@ -103,6 +116,12 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
       whereInWeb: "Where this sits in the web",
       openInWeb: "Open in the web",
       theWeb: "The interactive web",
+      askMerlin: "Ask Merlin",
+      takeTour: "Take the tour",
+      welcome: "Welcome",
+      merlinWebs: "hax.cloud: webs",
+      merlinTours: "hax.cloud: tours",
+      merlinPages: "hax.cloud",
     };
     this.view = "web";
     this.menuOpen = false;
@@ -115,6 +134,7 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     this._chosen = readView();
     this._disposers = [];
     this._onWebChanged = this._onWebChanged.bind(this);
+    this._onMerlin = this._onMerlin.bind(this);
   }
 
   static get properties() {
@@ -252,6 +272,58 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     const item = this._itemBySlug(slug);
     if (item) go(new URL(item.slug, globalThis.document.baseURI).href);
   }
+  /**
+   * Merlin opened from the network strip for the first time: every web, tour
+   * and tile of the site becomes a place he can jump to.
+   */
+  _onMerlin(e) {
+    const d = e.detail || {};
+    const merlin = d.merlin;
+    if (!merlin || typeof merlin.defineOption !== "function") return;
+    const byId = new Map(this._items.map((i) => [i.id, i]));
+    this._items.forEach((i) => {
+      const eco = (i.metadata && i.metadata.ecosystem) || null;
+      const parent = i.parent ? byId.get(i.parent) : null;
+      let path = this.t.merlinPages;
+      let icon = "hax:page-details";
+      if (eco && eco.tour) {
+        path = this.t.merlinTours;
+        icon = "maps:directions-walk";
+      } else if (eco && !eco.node) {
+        path = this.t.merlinWebs;
+        icon = "hax:site-map";
+      } else if (eco && parent) {
+        path = `${this.t.merlinPages}: ${parent.title}`;
+        icon = "hax:blocks";
+      }
+      merlin.defineOption({
+        title: i.title,
+        description: i.description || "",
+        icon,
+        tags: ["hax.cloud"],
+        path,
+        context: "*",
+        value: { target: this, method: "goTo", args: [i.slug] },
+        eventName: "super-daemon-element-method",
+      });
+    });
+  }
+  /** Go to a page of this site by its slug. */
+  goTo(slug) {
+    const item = this._itemBySlug(slug);
+    if (item) go(new URL(item.slug, globalThis.document.baseURI).href);
+  }
+  /** The home page's greeting, when the site sets one and this is the home page. */
+  _welcome() {
+    const w = this._vars.welcome;
+    const home = this._items.find((i) => !i.parent);
+    if (!w || !w.title || !home || !this._active) return null;
+    return this._active.id === home.id ? w : null;
+  }
+  _askMerlin() {
+    const bar = this.shadowRoot.querySelector("hax-network-bar");
+    if (bar && typeof bar.openMerlin === "function") bar.openMerlin();
+  }
   _copy() {
     const url = `https://${this._pageUrl()}`;
     const done = () => {
@@ -282,6 +354,7 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
   static get styles() {
     return [
       super.styles,
+      ...HaxUiAdminTokens,
       css`
         :host {
           display: block;
@@ -369,65 +442,75 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           --hax-network-bar-max-width: var(--eco-wrap);
           --hax-network-bar-gutter: var(--eco-gutter);
         }
+        /* the HAX top bar, as the HAX editor draws it: the dark HAX UI
+           chrome in both schemes, 64px, a hairline under it and the
+           Future Traveler in the right-hand corner */
         header.top {
-          background-color: var(--ddd-theme-default-nittanyNavy);
-          color: var(--ddd-theme-default-white);
-          /* the header is navy in both schemes, so its own links and the
-             focus ring are drawn for a dark ground */
-          color-scheme: dark;
+          ${HaxUiDarkChromeDeclarations}
+          background-color: var(--ddd-theme-default-coalyGray);
+          color: var(--hax-ui-on-titlebar);
+          font-family: var(--hax-ui-admin-font-family);
+          border-bottom: 1px solid var(--hax-ui-line);
         }
         header.top .wrap {
-          display: flex;
-          flex-wrap: wrap;
+          display: grid;
+          grid-template-columns: auto minmax(0, 1fr) auto minmax(0, 1fr) auto;
           align-items: center;
-          gap: var(--ddd-spacing-4) var(--ddd-spacing-8);
-          padding-block: var(--ddd-spacing-3);
+          gap: 0 var(--ddd-spacing-6);
+          min-height: 64px;
+          padding-inline-end: var(--ddd-spacing-3);
         }
         .brand {
-          display: flex;
-          align-items: center;
-          gap: var(--ddd-spacing-3);
-          color: var(--ddd-theme-default-white);
-          font-weight: var(--ddd-font-weight-black);
+          color: var(--hax-ui-on-titlebar);
+          font-family: var(--ddd-font-navigation);
+          font-weight: var(--ddd-font-weight-bold);
           font-size: var(--ddd-font-size-xs);
+          white-space: nowrap;
         }
         .brand:hover {
           text-decoration: none;
         }
-        .badge {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          width: var(--ddd-spacing-10);
-          height: var(--ddd-spacing-10);
-          border-radius: var(--ddd-radius-sm);
-          background-color: var(--ddd-theme-default-beaverBlue);
-          font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-4xs);
-          font-weight: var(--ddd-font-weight-bold);
-          letter-spacing: 0.04em;
-        }
         .navs {
-          display: flex;
-          flex-wrap: wrap;
-          align-items: center;
-          gap: var(--ddd-spacing-4) var(--ddd-spacing-8);
-          flex: 1 1 420px;
-          min-width: 0;
+          display: contents;
+        }
+        .brand {
+          grid-column: 1;
+          grid-row: 1;
+        }
+        nav.main {
+          grid-column: 2;
+          grid-row: 1;
+        }
+        .toggle {
+          grid-column: 3;
+          grid-row: 1;
+        }
+        .acts {
+          grid-column: 4;
+          grid-row: 1;
+        }
+        .end {
+          grid-column: 5;
+          grid-row: 1;
         }
         nav.main {
           display: flex;
           flex-wrap: wrap;
+          align-items: center;
           gap: var(--ddd-spacing-1) var(--ddd-spacing-6);
           font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-3xs);
-          flex: 1 1 auto;
+          font-size: var(--ddd-font-size-4xs);
+          min-width: 0;
         }
         nav.main a {
-          color: var(--ddd-theme-default-white);
+          color: var(--hax-ui-on-titlebar);
           font-weight: var(--ddd-font-weight-regular);
           padding-block: var(--ddd-spacing-2);
           border-bottom: var(--ddd-border-size-md) solid transparent;
+        }
+        nav.main a:hover {
+          text-decoration: none;
+          border-bottom-color: var(--ddd-theme-default-pughBlue);
         }
         nav.main a[aria-current="page"] {
           font-weight: var(--ddd-font-weight-bold);
@@ -440,6 +523,7 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           display: flex;
           flex-wrap: wrap;
           align-items: center;
+          justify-content: flex-end;
           gap: var(--ddd-spacing-3);
         }
         .pill {
@@ -448,43 +532,72 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
           border-radius: var(--ddd-radius-rounded);
           line-height: 1.5;
+          white-space: nowrap;
+        }
+        .pill:hover {
+          text-decoration: none;
         }
         .pill.portfolio {
-          color: var(--ddd-theme-default-white);
-          border: var(--ddd-border-size-sm) solid
-            var(--ddd-theme-default-pughBlue);
+          color: var(--hax-ui-on-titlebar);
+          border: var(--ddd-border-size-sm) solid var(--hax-ui-line);
+        }
+        .pill.portfolio:hover {
+          background-color: var(--hax-ui-hover);
         }
         .pill.demo {
-          color: var(--ddd-theme-default-nittanyNavy);
+          color: var(--ddd-theme-default-coalyGray);
           background-color: var(--ddd-theme-default-keystoneYellow);
           border: var(--ddd-border-size-sm) solid
             var(--ddd-theme-default-keystoneYellow);
         }
+        /* Web or Site, in the middle like the editor's main action */
         .toggle {
           display: inline-flex;
-          border: var(--ddd-border-size-sm) solid
-            var(--ddd-theme-default-pughBlue);
+          border: 1px solid var(--hax-ui-line);
           border-radius: var(--ddd-radius-rounded);
+          background-color: #111;
           overflow: hidden;
         }
         .toggle button {
-          font-family: var(--ddd-font-primary);
+          font-family: var(--hax-ui-admin-font-family);
           font-size: var(--ddd-font-size-4xs);
-          font-weight: var(--ddd-font-weight-regular);
-          padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
+          font-weight: var(--ddd-font-weight-medium);
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-5);
           min-height: 40px;
           border: 0;
           background: transparent;
-          color: var(--ddd-theme-default-white);
+          color: var(--hax-ui-on-titlebar);
           cursor: pointer;
         }
+        .toggle button:hover {
+          background-color: var(--hax-ui-hover);
+        }
         .toggle button[aria-pressed="true"] {
-          background-color: var(--ddd-theme-default-pughBlue);
-          color: var(--ddd-theme-default-nittanyNavy);
+          background-color: var(--ddd-theme-default-white);
+          color: var(--ddd-theme-default-coalyGray);
           font-weight: var(--ddd-font-weight-bold);
         }
         .toggle button:focus-visible {
           outline-offset: calc(-1 * var(--ddd-spacing-1));
+        }
+        header.top a:focus-visible,
+        header.top button:focus-visible {
+          outline: var(--hax-ui-focus-width, 2px) solid var(--hax-ui-focus);
+        }
+        /* the HAX mark: the Future Traveler, decorative, as in the editor */
+        .haxLogo {
+          display: inline-grid;
+          place-items: center;
+          width: var(--ddd-control-height-sm, 40px);
+          height: var(--ddd-control-height-sm, 40px);
+          --simple-icon-height: var(--ddd-icon-xs, 32px);
+          --simple-icon-width: var(--ddd-icon-xs, 32px);
+          pointer-events: none;
+        }
+        .end {
+          display: flex;
+          align-items: center;
+          gap: var(--ddd-spacing-2);
         }
         .menu-btn {
           display: none;
@@ -492,15 +605,86 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           height: 44px;
           border: 0;
           border-radius: var(--ddd-radius-sm);
-          background-color: var(--ddd-theme-default-beaverBlue);
-          color: var(--ddd-theme-default-white);
+          background-color: transparent;
+          color: var(--hax-ui-on-titlebar);
           align-items: center;
           justify-content: center;
           cursor: pointer;
         }
+        .menu-btn:hover {
+          background-color: var(--hax-ui-hover);
+        }
         .menu-btn svg {
           width: 22px;
           height: 22px;
+        }
+
+        /* ---------- welcome ---------- */
+        .welcome {
+          background-color: var(--eco-band);
+          border-bottom: var(--ddd-border-xs);
+          border-color: var(--eco-line);
+        }
+        .welcome .wrap {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: var(--ddd-spacing-4) var(--ddd-spacing-10);
+          padding-block: var(--ddd-spacing-8);
+        }
+        .welcome .words {
+          flex: 1 1 520px;
+          min-width: 0;
+        }
+        .welcome .kicker {
+          margin: 0 0 var(--ddd-spacing-2);
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-weight-bold);
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          color: var(--eco-eyebrow);
+        }
+        .welcome h1 {
+          margin: 0 0 var(--ddd-spacing-3);
+          font-size: var(--ddd-font-size-l);
+          line-height: 1.15;
+          color: var(--eco-heading);
+          text-wrap: balance;
+        }
+        .welcome p.text {
+          margin: 0;
+          max-width: 68ch;
+          font-size: var(--ddd-font-size-xs);
+          line-height: 1.5;
+        }
+        .welcome .go {
+          display: flex;
+          flex-wrap: wrap;
+          gap: var(--ddd-spacing-3);
+        }
+        .welcome .btn {
+          display: inline-flex;
+          align-items: center;
+          box-sizing: border-box;
+          min-height: 44px;
+          line-height: 1.2;
+        }
+        .welcome a.btn:not(.ghost) {
+          color: var(--ddd-theme-default-white);
+          background-color: var(--ddd-theme-default-nittanyNavy);
+          border-color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-pughBlue)
+          );
+        }
+        .btn.ghost {
+          color: var(--eco-heading);
+          background-color: transparent;
+          border-color: var(--eco-heading);
+        }
+        .btn.ghost:hover {
+          background-color: var(--eco-current);
         }
 
         /* ---------- link bar ---------- */
@@ -585,6 +769,11 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           --map-menu-item-a-active-background-color: var(--eco-current);
           --map-menu-item-border-radius: var(--ddd-radius-sm);
           --map-menu-container-background-color: transparent;
+          /* a row with children starts its title past the expand chevron
+             and the progress ring map-menu draws around it on the page you
+             are on (28px from the row start), so the two never touch */
+          --map-menu-header-button-padding: var(--ddd-spacing-2)
+            var(--ddd-spacing-3) var(--ddd-spacing-2) var(--ddd-spacing-8);
         }
         .ol-head {
           margin: 0 0 var(--ddd-spacing-3);
@@ -682,36 +871,55 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
             --eco-gutter: var(--ddd-spacing-4);
           }
           header.top .wrap {
-            gap: var(--ddd-spacing-3);
+            grid-template-columns: minmax(0, 1fr) auto auto;
+            gap: 0 var(--ddd-spacing-2);
+          }
+          .toggle {
+            grid-column: 2;
+          }
+          .end {
+            grid-column: 3;
+          }
+          nav.main,
+          .acts {
+            grid-column: auto;
+            grid-row: auto;
           }
           .brand {
-            flex: 1 1 auto;
             font-size: var(--ddd-font-size-3xs);
-          }
-          .badge {
-            width: 36px;
-            height: 36px;
+            overflow: hidden;
+            text-overflow: ellipsis;
           }
           .menu-btn {
             display: inline-flex;
-            order: 3;
           }
-          .toggle {
-            order: 2;
+          .toggle button {
+            padding-inline: var(--ddd-spacing-3);
           }
           .navs {
             display: none;
-            order: 4;
-            flex: 1 1 100%;
+            grid-column: 1 / -1;
+            grid-row: 2;
             flex-direction: column;
             align-items: flex-start;
-            padding-bottom: var(--ddd-spacing-3);
+            gap: var(--ddd-spacing-3);
+            padding-bottom: var(--ddd-spacing-4);
           }
           :host([menu-open]) .navs {
             display: flex;
           }
           nav.main {
             flex-direction: column;
+            align-items: flex-start;
+          }
+          .acts {
+            justify-content: flex-start;
+          }
+          .welcome .wrap {
+            padding-block: var(--ddd-spacing-6);
+          }
+          .welcome h1 {
+            font-size: var(--ddd-font-size-m);
           }
           .linkbar site-breadcrumb,
           .linkbar .lbl,
@@ -742,18 +950,38 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     const top = this._topId();
     const src = this._vars.ecosystemSrc || "ecosystem-webs.json";
     const footer = Array.isArray(this._vars.footer) ? this._vars.footer : [];
+    const welcome = web ? this._welcome() : null;
+    const tour =
+      welcome && welcome.tour ? this._itemBySlug(welcome.tour) : null;
     return html`
       <a class="skip-link" href="#contentcontainer">${this.t.skip}</a>
-      <hax-network-bar current="cloud"></hax-network-bar>
+      <hax-network-bar
+        current="cloud"
+        @hax-network-merlin="${this._onMerlin}"
+      ></hax-network-bar>
       <header class="top">
         <div class="wrap">
           <a
             class="brand"
             href="${this._items.length ? this._items[0].slug : "./"}"
+            >${this._title}</a
           >
-            <span class="badge" aria-hidden="true">HAX</span>
-            <span>${this._title}</span>
-          </a>
+          <div class="toggle" role="group" aria-label="${this.t.view}">
+            <button
+              type="button"
+              aria-pressed="${web ? "true" : "false"}"
+              @click="${() => this._setView("web")}"
+            >
+              ${this.t.web}
+            </button>
+            <button
+              type="button"
+              aria-pressed="${web ? "false" : "true"}"
+              @click="${() => this._setView("site")}"
+            >
+              ${this.t.site}
+            </button>
+          </div>
           <div class="navs" id="navs">
             <nav class="main" aria-label="${this.t.main}">
               ${this._nav().map(
@@ -798,45 +1026,66 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
               )}
             </div>
           </div>
-          <div class="toggle" role="group" aria-label="${this.t.view}">
+          <div class="end">
             <button
+              class="menu-btn"
               type="button"
-              aria-pressed="${web ? "true" : "false"}"
-              @click="${() => this._setView("web")}"
+              aria-label="${this.t.menu}"
+              aria-expanded="${this.menuOpen ? "true" : "false"}"
+              aria-controls="navs"
+              @click="${() => {
+                this.menuOpen = !this.menuOpen;
+              }}"
             >
-              ${this.t.web}
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              >
+                <path d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
             </button>
-            <button
-              type="button"
-              aria-pressed="${web ? "false" : "true"}"
-              @click="${() => this._setView("site")}"
-            >
-              ${this.t.site}
-            </button>
+            <span class="haxLogo" aria-hidden="true">
+              <simple-icon-lite
+                icon="hax:future-traveler"
+                no-colorize
+              ></simple-icon-lite>
+            </span>
           </div>
-          <button
-            class="menu-btn"
-            type="button"
-            aria-label="${this.t.menu}"
-            aria-expanded="${this.menuOpen ? "true" : "false"}"
-            aria-controls="navs"
-            @click="${() => {
-              this.menuOpen = !this.menuOpen;
-            }}"
-          >
-            <svg
-              aria-hidden="true"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-            >
-              <path d="M4 6h16M4 12h16M4 18h16"></path>
-            </svg>
-          </button>
         </div>
       </header>
+      ${
+        welcome
+          ? html`<section class="welcome" aria-labelledby="welcome">
+              <div class="wrap">
+                <div class="words">
+                  <p class="kicker">${this.t.welcome}</p>
+                  <h1 id="welcome">${welcome.title}</h1>
+                  ${welcome.text ? html`<p class="text">${welcome.text}</p>` : ""}
+                </div>
+                <div class="go">
+                  ${
+                    tour
+                      ? html`<a class="btn" href="${tour.slug}"
+                          >${welcome.tourLabel || this.t.takeTour}</a
+                        >`
+                      : ""
+                  }
+                  <button
+                    class="btn ghost"
+                    type="button"
+                    @click="${this._askMerlin}"
+                  >
+                    ${this.t.askMerlin}
+                  </button>
+                </div>
+              </div>
+            </section>`
+          : ""
+      }
       ${
         web
           ? html`<div class="linkbar">

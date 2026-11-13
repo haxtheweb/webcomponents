@@ -43,14 +43,6 @@ const FEATURE_DEFS = [
       "Enables site structure tools, including outline actions and Structure admin operations.",
   },
   {
-    key: "styleGuide",
-    label: "Style guide",
-    icon: HaxUiAdminIcons.appearance,
-    group: "CMS",
-    description:
-      "Shows Style Guide access in admin tools and command search shortcuts.",
-  },
-  {
     // Keep "insights" as the platform feature key for compatibility; this controls Reports UI.
     key: "insights",
     label: "Reports",
@@ -261,9 +253,6 @@ class HAXCMSSitePlatformUI extends HaxcmsAdminSectionMixin(
       outlineDesignerFeatureLabel: "Outline designer",
       outlineDesignerFeatureDescription:
         "Enables site structure tools, including outline actions and Structure admin operations.",
-      styleGuideFeatureLabel: "Style guide",
-      styleGuideFeatureDescription:
-        "Shows Style Guide access in admin tools and command search shortcuts.",
       insightsFeatureLabel: "Reports",
       insightsFeatureDescription:
         "Enables Reports in admin and command search so analytics and insights views are available.",

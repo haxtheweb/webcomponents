@@ -5,7 +5,7 @@
   "version": "26.8.0",
   "license": "Apache-2.0",
   "title": "hax-network-bar",
-  "description": "The strip across the top of every hax.cloud site that links them as one network",
+  "description": "The strip across the top of every hax.cloud site that links them as one network, with Merlin to jump anywhere in it",
   "icon": "",
   "tags": [],
   "haxCapable": false,
@@ -24,9 +24,11 @@
     }
   ],
   "slots": [],
-  "events": [],
+  "events": [
+    "hax-network-merlin"
+  ],
   "hax": {},
-  "surfaceHash": "377aeab6f518",
+  "surfaceHash": "9e862638d681",
   "walkthroughs": [],
   "videos": [],
   "motion": {

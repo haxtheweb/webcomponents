@@ -22,7 +22,6 @@ class HAXCMSSiteSettingsDashboard extends I18NMixin(DDD) {
       allowSeo: { type: Boolean, attribute: "allow-seo" },
       allowBlocks: { type: Boolean, attribute: "allow-blocks" },
       allowEditor: { type: Boolean, attribute: "allow-editor" },
-      allowStyleGuide: { type: Boolean, attribute: "allow-style-guide" },
       allowReports: { type: Boolean, attribute: "allow-reports" },
       allowFiles: { type: Boolean, attribute: "allow-files" },
       allowViews: { type: Boolean, attribute: "allow-views" },
@@ -69,7 +68,6 @@ class HAXCMSSiteSettingsDashboard extends I18NMixin(DDD) {
     this.allowSeo = true;
     this.allowBlocks = true;
     this.allowEditor = true;
-    this.allowStyleGuide = false;
     this.allowReports = false;
     this.allowFiles = false;
     this.allowViews = true;
