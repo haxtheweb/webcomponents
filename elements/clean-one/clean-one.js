@@ -961,6 +961,8 @@ class CleanOne extends LTIResizingMixin(
    */
   constructor() {
     super();
+    // this theme presents learner progress on the page open in its menu
+    this.siteMenuShowProgress = true;
     this.t = this.t || {};
     this.t = {
       ...this.t,

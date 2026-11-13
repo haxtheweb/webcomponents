@@ -19,8 +19,10 @@ import { LearnerProgress } from "../../core/haxcms-learner-progress.js";
  * page is done (it bursts once the first time that happens while it is
  * open). The percent is the item's hover text and is spoken after its
  * title. Other items show no mark and there is no pages done summary here;
- * that moved into My learning (progress/my-learning-button.js). Vertical
- * menus only, never while editing; set hide-progress to turn it off.
+ * that moved into My learning (progress/my-learning-button.js). Off by
+ * default: a theme opts in with show-progress (HAXCMSMobileMenuMixin themes
+ * set siteMenuShowProgress = true). Vertical menus only, never while
+ * editing.
  * Progress is read from the learner profile on this device (see
  * core/haxcms-learner-progress.js).
  */
@@ -107,7 +109,7 @@ class SiteMenu extends I18NMixin(HAXCMSThemeParts(LitElement)) {
     this.isFlex = false;
     this.isHorizontal = false;
     this.maxDepth = 5;
-    this.hideProgress = false;
+    this.showProgress = false;
     this._activePercent = null;
     this.registerLocalization({
       context: this,
@@ -191,7 +193,7 @@ class SiteMenu extends I18NMixin(HAXCMSThemeParts(LitElement)) {
   _showProgress() {
     if (
       typeof this._activePercent !== "number" ||
-      this.hideProgress ||
+      !this.showProgress ||
       this.editMode
     ) {
       return false;
@@ -300,12 +302,12 @@ class SiteMenu extends I18NMixin(HAXCMSThemeParts(LitElement)) {
         attribute: "track-icon",
       },
       /**
-       * Do not show the learner progress ring on the item of the page open
-       * now
+       * Show the learner progress ring on the item of the page open now.
+       * Off by default; themes that present learner progress opt in.
        */
-      hideProgress: {
+      showProgress: {
         type: Boolean,
-        attribute: "hide-progress",
+        attribute: "show-progress",
       },
       _activePercent: { type: Number, state: true },
     };

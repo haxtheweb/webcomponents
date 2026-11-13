@@ -219,6 +219,11 @@ class CarbonTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           --map-menu-item-a-active-background-color: var(
             --cds-background-selected
           );
+          /* --cds-background-selected is translucent, so the check on the
+             done progress disc would fade into the disc; draw it in the
+             opaque page background, which contrasts with the
+             --cds-text-primary disc in light and dark */
+          --map-menu-progress-ring-on-color: var(--cds-background);
           --map-menu-item-active-item-color: var(--cds-text-primary);
           /* Carbon marks the selected side nav item with a 3px bar */
           --map-menu-item-active-accent-width: 3px;
