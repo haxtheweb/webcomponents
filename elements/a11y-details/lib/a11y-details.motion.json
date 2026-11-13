@@ -331,8 +331,8 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set open text and close text",
-      "text": "Set Optional summary text when details are open and Optional summary text when…"
+      "title": "Set open text",
+      "text": "Button text while the description is hidden, such as Show description."
     },
     {
       "t": 14.8,

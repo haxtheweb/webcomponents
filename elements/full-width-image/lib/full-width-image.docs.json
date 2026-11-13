@@ -27,6 +27,7 @@
       "default": "",
       "description": "",
       "hax": {
+        "title": "Image",
         "input": "haxupload",
         "options": null
       }
@@ -38,6 +39,7 @@
       "default": "",
       "description": "",
       "hax": {
+        "title": "Caption",
         "input": "textfield",
         "options": null
       }
@@ -86,6 +88,7 @@
       "configure": [
         {
           "property": "source",
+          "title": "Image",
           "description": "Background image.",
           "inputMethod": "haxupload",
           "fileActions": true,
@@ -95,7 +98,8 @@
         },
         {
           "property": "caption",
-          "description": "Text heading.",
+          "title": "Caption",
+          "description": "Text shown over the image, in a band readers can hide.",
           "inputMethod": "textfield"
         }
       ],

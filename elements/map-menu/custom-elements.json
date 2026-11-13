@@ -318,7 +318,7 @@
               "type": {
                 "text": "null"
               },
-              "description": "Learner progress marks by item id: { <id>: \"done\" | \"in-progress\" |\n\"visited\" | \"not-started\" }. Empty (the default) shows no marks.",
+              "description": "Learner progress mark for each item, keyed by item id.\nShape: { <id>: \"done\" | \"in-progress\" | \"visited\" | \"not-started\" }.\nEmpty (the default) shows no marks.",
               "default": "null",
               "attribute": "progress"
             },
@@ -329,7 +329,7 @@
               "type": {
                 "text": "null"
               },
-              "description": "Percent (0 to 1) of the page open now (the selected item): that item\nshows a ring around its icon area filled to it, a check once it is\ndone, and says the percent on hover and to screen readers. null\n(the default) shows no ring.",
+              "description": "How much of the open page is done, from 0 to 1, shown as a ring.\nThe selected item's ring fills to this value, turns into a check once\nit is done, and the percent is said on hover and to screen readers.\nnull (the default) shows no ring.",
               "default": "null",
               "attribute": "active-progress"
             },
@@ -494,7 +494,7 @@
               "type": {
                 "text": "null"
               },
-              "description": "Learner progress marks by item id: { <id>: \"done\" | \"in-progress\" |\n\"visited\" | \"not-started\" }. Empty (the default) shows no marks.",
+              "description": "Learner progress mark for each item, keyed by item id.\nShape: { <id>: \"done\" | \"in-progress\" | \"visited\" | \"not-started\" }.\nEmpty (the default) shows no marks.",
               "default": "null",
               "fieldName": "progress"
             },
@@ -503,7 +503,7 @@
               "type": {
                 "text": "null"
               },
-              "description": "Percent (0 to 1) of the page open now (the selected item): that item\nshows a ring around its icon area filled to it, a check once it is\ndone, and says the percent on hover and to screen readers. null\n(the default) shows no ring.",
+              "description": "How much of the open page is done, from 0 to 1, shown as a ring.\nThe selected item's ring fills to this value, turns into a check once\nit is done, and the percent is said on hover and to screen readers.\nnull (the default) shows no ring.",
               "default": "null",
               "fieldName": "activeProgress"
             },

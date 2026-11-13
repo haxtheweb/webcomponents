@@ -173,11 +173,11 @@
       "rows": [
         {
           "name": "source",
-          "desc": "Background image."
+          "desc": "Image"
         },
         {
           "name": "caption",
-          "desc": "Text heading."
+          "desc": "Text shown over the image, in a…"
         }
       ],
       "active": [
@@ -293,8 +293,8 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set source",
-      "text": "Background image."
+      "title": "Set image and caption",
+      "text": "Background image. Text shown over the image, in a band readers can hide."
     },
     {
       "t": 14.8,

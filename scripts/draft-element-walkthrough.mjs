@@ -101,7 +101,7 @@ function optionLabels(options) {
 }
 
 /**
- * descriptions shared by two or more attributes or settings of one element
+ * descriptions shared by three or more attributes or settings of one element
  * are copy-paste leftovers ("Whether toggle is disabled" on four different
  * properties), not a description of any one of them
  */
@@ -114,7 +114,9 @@ function sharedDescriptions(list) {
       .toLowerCase();
     if (k) count.set(k, (count.get(k) || 0) + 1);
   }
-  return new Set([...count].filter(([, n]) => n > 1).map(([k]) => k));
+  // two matching fields (top and bottom image alt text) are often a real
+  // pair; three or more is the copy-paste pattern
+  return new Set([...count].filter(([, n]) => n > 2).map(([k]) => k));
 }
 
 export function settingsOf(d) {
@@ -273,9 +275,9 @@ function descText(r) {
     // asides in brackets ("(used for full screen)") are detail, not meaning
     .replace(/\s*\([^)]*\)/g, "");
   // the first sentence carries the meaning; later ones are usually detail.
-  // A sentence ends at . or ! before a capital letter, so "i.e." and "e.g."
-  // do not cut one short
-  const first = d.match(/^.*?[.!](?=\s+[A-Z"'(]|$)/);
+  // A sentence ends at . or ! before a capital letter (or a code block), so
+  // "i.e." and "e.g." do not cut one short
+  const first = d.match(/^.*?[.!](?=\s+[A-Z"'(]|`|$)/);
   return (first && first[0].trim().length > 14 ? first[0] : d).trim();
 }
 const squash = (s) => String(s || "").toLowerCase().replace(/[^a-z0-9]/g, "");
