@@ -7823,7 +7823,7 @@ boxen@^1.2.1:
     term-size "^1.2.0"
     widest-line "^2.0.0"
 
-brace-expansion@5.0.9, brace-expansion@^5.0.12:
+brace-expansion@5.0.9, brace-expansion@^5.0.12, brace-expansion@^5.0.5, brace-expansion@^5.0.8:
   version "5.0.13"
   resolved "https://registry.yarnpkg.com/brace-expansion/-/brace-expansion-5.0.13.tgz#e2d4497370f7e385e6f96b57bd7ff11d77d85851"
   integrity sha512-Vh3dmFbc4wZeox7M9I/0L9GfFd83Su4+yCck/OF9Gi/P/dAHn0RT7X4K9R7gMNMhDck3DvhR6QXsnQdjjgwNvQ==
@@ -7831,26 +7831,19 @@ brace-expansion@5.0.9, brace-expansion@^5.0.12:
     balanced-match "^4.0.2"
 
 brace-expansion@^1.1.7:
-  version "1.1.21"
-  resolved "https://registry.npmjs.org/brace-expansion/-/brace-expansion-1.1.21.tgz"
-  integrity sha512-9zeA+KLZNNzglF2TPKRQEDyx6Yby7daAkuy8MiPzpXPsYDWi/DRM8jmwUDxokQjYqBpv5DgPiwD4h4ZZSy1Ujw==
+  version "1.1.22"
+  resolved "https://registry.yarnpkg.com/brace-expansion/-/brace-expansion-1.1.22.tgz#82f87655acd0bae5c8a717bb0a81573e43ab42c0"
+  integrity sha512-CKLDTuSsN0+r1ThM0WkzzBI7dnPI6xEGfa/JnVYIK9JNBA1N1NyPwXVHor//NKD/y3sDxp764sZdLhFK7pH8XQ==
   dependencies:
     balanced-match "^1.0.0"
     concat-map "0.0.1"
 
 brace-expansion@^2.0.2:
-  version "2.1.7"
-  resolved "https://registry.npmjs.org/brace-expansion/-/brace-expansion-2.1.7.tgz"
-  integrity sha512-uZbew1NqdmPDTMJ8ah1y+b+9QEJrfkXFk3RcTQw3X0jW/xRUvFKsg1CfQdSYGdTbXZWExtU3J3ccxtnfw1Fi0g==
+  version "2.1.8"
+  resolved "https://registry.yarnpkg.com/brace-expansion/-/brace-expansion-2.1.8.tgz#b4cf1e18069418e97732d5f30b39bb321c41bd9b"
+  integrity sha512-BnlDzDYQoplTsZSvPi86CNzmbcb07X8ufR8fk1zivaiEJlXJkiq1MQyDCVmlWcsWbj6aWXqHnrwwevbrm/Saig==
   dependencies:
     balanced-match "^1.0.0"
-
-brace-expansion@^5.0.5, brace-expansion@^5.0.8:
-  version "5.0.12"
-  resolved "https://registry.npmjs.org/brace-expansion/-/brace-expansion-5.0.12.tgz"
-  integrity sha512-YovQ3rzhaLMIrDjNDMkNS01tea93qhEhG5xy8f6+R0l+dw3Ki+5sCoIoI942iuLZTHWogWktgwVDhU09iNEimQ==
-  dependencies:
-    balanced-match "^4.0.2"
 
 braces@^3.0.2, braces@^3.0.3, braces@~3.0.2:
   version "3.0.3"
