@@ -1,8 +1,8 @@
 {
   "id": "5f0a7c1e-6b3d-4e2a-9c8f-patternfly0001",
-  "title": "PatternFly for HAX",
+  "title": "Cluster console",
   "author": "",
-  "description": "A HAXsite demonstrating patternfly-theme and the PatternFly DDD bridge.",
+  "description": "A demo site for patternfly-theme following the PatternFly dashboard pattern, built from HAX blocks.",
   "license": "by-sa",
   "metadata": {
     "author": {
@@ -48,14 +48,14 @@
   },
   "items": [
     {
-      "id": "item-5f0a7c1e-overview",
+      "id": "item-5f0a7c1e-dashboard",
       "indent": 0,
-      "location": "pages/item-5f0a7c1e-overview/index.html",
-      "slug": "overview",
+      "location": "pages/item-5f0a7c1e-dashboard/index.html",
+      "slug": "dashboard",
       "order": 0,
       "parent": null,
-      "title": "Overview",
-      "description": "What the PatternFly theme and design system bridge do.",
+      "title": "Dashboard",
+      "description": "Overview of clusters, utilization and recent events.",
       "metadata": {
         "created": 1736889000,
         "updated": 1736889000,
@@ -68,14 +68,14 @@
       }
     },
     {
-      "id": "item-5f0a7c1e-blocks",
+      "id": "item-5f0a7c1e-clusters",
       "indent": 0,
-      "location": "pages/item-5f0a7c1e-blocks/index.html",
-      "slug": "blocks",
+      "location": "pages/item-5f0a7c1e-clusters/index.html",
+      "slug": "clusters",
       "order": 1,
       "parent": null,
-      "title": "Blocks in PatternFly",
-      "description": "Common HAX blocks rendered through the PatternFly bridge.",
+      "title": "Clusters",
+      "description": "Every cluster with its status, version and node count.",
       "metadata": {
         "created": 1736889000,
         "updated": 1736889000,
@@ -88,14 +88,14 @@
       }
     },
     {
-      "id": "item-5f0a7c1e-learning-checks",
+      "id": "item-5f0a7c1e-clusters-west-2",
       "indent": 1,
-      "location": "pages/item-5f0a7c1e-learning-checks/index.html",
-      "slug": "blocks/learning-checks",
+      "location": "pages/item-5f0a7c1e-clusters-west-2/index.html",
+      "slug": "clusters/west-2",
       "order": 0,
-      "parent": "item-5f0a7c1e-blocks",
-      "title": "Learning checks",
-      "description": "Answer states keep HAX meaning channels in PatternFly colors.",
+      "parent": "item-5f0a7c1e-clusters",
+      "title": "west-2",
+      "description": "Cluster details, nodes and events for west-2.",
       "metadata": {
         "created": 1736889000,
         "updated": 1736889000,
@@ -108,14 +108,34 @@
       }
     },
     {
-      "id": "item-5f0a7c1e-color",
+      "id": "item-5f0a7c1e-getting-started",
       "indent": 0,
-      "location": "pages/item-5f0a7c1e-color/index.html",
-      "slug": "color",
+      "location": "pages/item-5f0a7c1e-getting-started/index.html",
+      "slug": "getting-started",
       "order": 2,
       "parent": null,
-      "title": "Palette and color",
-      "description": "DDD palettes and accents mapped onto the PatternFly palette.",
+      "title": "Getting started",
+      "description": "Add a cluster to the console in three steps.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-5f0a7c1e-getting-started-learning-checks",
+      "indent": 1,
+      "location": "pages/item-5f0a7c1e-getting-started-learning-checks/index.html",
+      "slug": "getting-started/learning-checks",
+      "order": 0,
+      "parent": "item-5f0a7c1e-getting-started",
+      "title": "Learning checks",
+      "description": "Answer states keep HAX meaning channels in PatternFly colors.",
       "metadata": {
         "created": 1736889000,
         "updated": 1736889000,
@@ -136,6 +156,26 @@
       "parent": null,
       "title": "About the bridge",
       "description": "How the mapping works, and upstream attribution.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-5f0a7c1e-about-color",
+      "indent": 1,
+      "location": "pages/item-5f0a7c1e-about-color/index.html",
+      "slug": "about/color",
+      "order": 0,
+      "parent": "item-5f0a7c1e-about",
+      "title": "Palette and color",
+      "description": "DDD palettes and accents mapped onto PatternFly.",
       "metadata": {
         "created": 1736889000,
         "updated": 1736889000,
