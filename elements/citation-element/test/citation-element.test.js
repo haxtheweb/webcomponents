@@ -248,43 +248,18 @@ describe("citation-element test", () => {
       expect(text).to.include("2024-01-01");
     });
 
-    it("renders license image when available", async () => {
+    it("draws the license as a DDD badge inside the license link", async () => {
       element.license = "by";
       await element.updateComplete;
-
-      const licenseImg = element.shadowRoot.querySelector("img");
-      expect(licenseImg).to.exist;
-      // real @haxtheweb/license-element image URL for "by":
-      expect(licenseImg.getAttribute("src")).to.equal(
+      expect(element.shadowRoot.querySelector("img")).to.not.exist;
+      const link = element.shadowRoot.querySelector("a.license-link");
+      const badge = link.querySelector(".license-badge");
+      expect(badge.textContent).to.equal("CC BY");
+      expect(link.textContent).to.equal("CC BYAttribution");
+      // image URL is still derived as data for integrations
+      expect(element.licenseImage).to.equal(
         "https://i.creativecommons.org/l/by/4.0/88x31.png",
       );
-      expect(licenseImg.getAttribute("alt")).to.include("Attribution graphic");
-      expect(licenseImg.getAttribute("width")).to.equal("44px");
-      expect(licenseImg.getAttribute("height")).to.equal("16px");
-    });
-
-    it("hides license image when not available", async () => {
-      // licenseName (and therefore licenseImage) are populated by the
-      // beforeEach fixture's license="by". Clear them out and verify the
-      // image gets the hidden attribute because no image is available.
-      element.licenseImage = "";
-      element.licenseName = "";
-      // remove the <img> from the shadow DOM template when licenseName is
-      // empty so the test sees the no-image path. The Lit template uses the
-      // ternary `this.licenseImage ? html`...` : html``, so setting both to
-      // '' ensures no <img> is rendered and the hidden check is meaningless.
-      await element.updateComplete;
-
-      // when both licenseImage and licenseName are empty, no <img> is rendered
-      // by the template. simulate the "no image available" case explicitly
-      // by clearing just the image and asserting that the attribute is set
-      // even when the licenseName still produces the wrapped <a>.
-      element.licenseName = "Custom Name"; // keep the <a> wrapper
-      element.licenseImage = "";
-      await element.updateComplete;
-      const licenseImg = element.shadowRoot.querySelector("img");
-      expect(licenseImg).to.exist;
-      expect(licenseImg.hasAttribute("hidden")).to.be.true;
     });
 
     it("renders proper link attributes for accessibility", () => {
@@ -311,22 +286,6 @@ describe("citation-element test", () => {
       element.shadowRoot.querySelectorAll("a").forEach((link) => {
         expect(getComputedStyle(link).fontStyle).to.equal("normal");
       });
-    });
-
-    it("shows a text badge instead of a broken licence graphic", async () => {
-      const img = element.shadowRoot.querySelector("img");
-      expect(element._licenseBadgeText()).to.equal("CC BY");
-      img.dispatchEvent(new Event("error"));
-      await element.updateComplete;
-      expect(img.hasAttribute("hidden")).to.be.true;
-      const badge = element.shadowRoot.querySelector(".license-badge");
-      expect(badge).to.exist;
-      expect(badge.textContent).to.equal("CC BY");
-      // a new licence gets a fresh chance to load its graphic
-      element.license = "by-sa";
-      await element.updateComplete;
-      expect(img.hasAttribute("hidden")).to.be.false;
-      expect(element.shadowRoot.querySelector(".license-badge")).to.not.exist;
     });
 
     it("shows the badge when a known licence has no graphic", async () => {

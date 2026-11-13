@@ -228,7 +228,7 @@ describe("license-element behavior", () => {
     expect(creator.textContent.trim()).to.equal("Mad Hatter");
   });
 
-  it("renders the big license image with alt text", async () => {
+  it("draws the license as a DDD badge, not an image", async () => {
     const el = await fixture(html`
       <license-element
         title="Wonderland"
@@ -237,19 +237,29 @@ describe("license-element behavior", () => {
         license="by-sa"
       ></license-element>
     `);
-    const link = el.shadowRoot.querySelector("a.big-license-link");
-    expect(link.getAttribute("href")).to.equal(
-      "https://creativecommons.org/licenses/by-sa/4.0/",
-    );
-    expect(link.getAttribute("target")).to.equal("_blank");
-    const img = link.querySelector("img");
-    expect(img.getAttribute("src")).to.equal(
+    expect(el.shadowRoot.querySelector("img")).to.not.exist;
+    const chip = el.shadowRoot.querySelector(".license-chip");
+    expect(chip.textContent.trim()).to.equal("CC BY-SA");
+    // decorative: the sentence names and links the license
+    expect(chip.getAttribute("aria-hidden")).to.equal("true");
+    // image URL is still derived as data for themes and integrations
+    expect(el.licenseImage).to.equal(
       "https://i.creativecommons.org/l/by-sa/4.0/88x31.png",
     );
-    expect(img.getAttribute("alt")).to.equal(
-      "Attribution Share a like graphic",
-    );
-    expect(img.getAttribute("loading")).to.equal("lazy");
+  });
+
+  it("follows a dark color scheme from the page or theme", async () => {
+    const wrap = await fixture(html`
+      <div style="color-scheme: only light">
+        <license-element title="W" license="by"></license-element>
+      </div>
+    `);
+    const el = wrap.querySelector("license-element");
+    await el.updateComplete;
+    const body = el.shadowRoot.querySelector(".license-body");
+    const light = getComputedStyle(body).backgroundColor;
+    wrap.style.colorScheme = "only dark";
+    expect(getComputedStyle(body).backgroundColor).to.not.equal(light);
   });
 
   it("renders the license statement with a link to the deed", async () => {
@@ -285,11 +295,11 @@ describe("license-element behavior", () => {
     expect(el.shadowRoot.textContent.includes("is licensed under")).to.be.false;
   });
 
-  it("omits the big license image without a license", async () => {
+  it("omits the license badge without a license", async () => {
     const el = await fixture(
       html`<license-element title="W"></license-element>`,
     );
-    expect(!!el.shadowRoot.querySelector("a.big-license-link")).to.be.false;
+    expect(!!el.shadowRoot.querySelector(".license-chip")).to.be.false;
   });
 
   it("renders schema metadata for the supporting material", async () => {

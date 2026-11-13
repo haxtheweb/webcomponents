@@ -21,6 +21,16 @@
           "name": "licenseList"
         },
         {
+          "kind": "function",
+          "name": "licenseBadgeText",
+          "parameters": [
+            {
+              "name": "code"
+            }
+          ],
+          "description": "Short text for the DDD license badge, e.g. \"CC BY\", \"CC0\" or \"PD\";\nempty when the code is not a known license. Shared with citation-element\nso the license family draws one badge."
+        },
+        {
           "kind": "class",
           "description": "`license-element`\n`A simple way of applying a semantically accurate license to work.`",
           "name": "LicenseElement",
@@ -136,6 +146,7 @@
               "type": {
                 "text": "string"
               },
+              "description": "URL of the license badge image. Kept as data for themes and\nintegrations; the element draws its own DDD badge instead.",
               "attribute": "license-image"
             },
             {
@@ -228,6 +239,7 @@
               "type": {
                 "text": "string"
               },
+              "description": "URL of the license badge image. Kept as data for themes and\nintegrations; the element draws its own DDD badge instead.",
               "fieldName": "licenseImage"
             },
             {
@@ -307,6 +319,14 @@
           "name": "licenseList",
           "declaration": {
             "name": "licenseList",
+            "module": "license-element.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "licenseBadgeText",
+          "declaration": {
+            "name": "licenseBadgeText",
             "module": "license-element.js"
           }
         },

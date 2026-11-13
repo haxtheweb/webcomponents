@@ -51,7 +51,7 @@
       "property": "licenseImage",
       "type": "string",
       "default": "",
-      "description": "",
+      "description": "URL of the license badge image. Kept as data for themes and integrations; the element draws its own DDD badge instead.",
       "hax": null
     },
     {
