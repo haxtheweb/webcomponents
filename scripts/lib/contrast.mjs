@@ -20,10 +20,84 @@
  *   finding that depends on load timing neither fails a build nor leaves
  *   the baseline by chance.
  *
- * Baseline shape: { elements: { <element>: { light|dark: { <key>: count } } } }
+ * Baseline shape: { elements: { <element>: { <mode>: { <key>: count } } } }
+ *
+ * A mode is a color scheme ("light" or "dark") as the page opened, or, for a
+ * theme that takes DDD palettes, "<scheme>@<palette key>" for the same page
+ * with that palette applied. Another site theme from the same element folder
+ * (journey-theme also ships journey-sidebar-theme, for one) is measured as
+ * "<scheme>@<theme>" in the palette it opens with and
+ * "<scheme>@<theme>:<palette key>" in each other palette (paletteMode /
+ * parseMode).
  */
 
 export const MODES = ["light", "dark"];
+
+/**
+ * a color scheme with a DDD palette applied and/or another site theme
+ * switched in: "<scheme>@<palette>", "<scheme>@<theme>" or
+ * "<scheme>@<theme>:<palette>"
+ */
+export function paletteMode(scheme, paletteKey, theme) {
+  if (!theme) {
+    return paletteKey ? `${scheme}@${paletteKey}` : scheme;
+  }
+  return paletteKey ? `${scheme}@${theme}:${paletteKey}` : `${scheme}@${theme}`;
+}
+
+/**
+ * { scheme, theme, palette } for a mode written by paletteMode; theme and
+ * palette are null when the mode does not carry them. A single name after
+ * "@" with a hyphen in it can be either; pass the known theme tags to tell
+ * them apart (palette keys are never theme tags).
+ */
+export function parseMode(mode, themes = []) {
+  const text = String(mode);
+  const at = text.indexOf("@");
+  if (at === -1) {
+    return { scheme: text, theme: null, palette: null };
+  }
+  const scheme = text.slice(0, at);
+  const rest = text.slice(at + 1);
+  const colon = rest.indexOf(":");
+  if (colon !== -1) {
+    return {
+      scheme,
+      theme: rest.slice(0, colon),
+      palette: rest.slice(colon + 1),
+    };
+  }
+  return themes.includes(rest)
+    ? { scheme, theme: rest, palette: null }
+    : { scheme, theme: null, palette: rest };
+}
+
+/**
+ * true when an element's own source follows the DDD palette: it reads the
+ * palette tokens (--ddd-palette-color-N / --ddd-palette-text-color-N, or the
+ * shorthands a theme maps them to) or reflects a data-palette attribute
+ */
+export function takesPalettes(sources) {
+  return (sources || []).some((src) =>
+    /--ddd-palette-(text-)?(color-)?\d|attribute:\s*["']data-palette["']/.test(
+      String(src),
+    ),
+  );
+}
+
+/**
+ * every mode used across the given { mode: ... } objects: light and dark
+ * first, then palette modes in alphabetical order
+ */
+export function modesOf(...maps) {
+  const seen = new Set();
+  for (const m of maps) {
+    Object.keys(m || {}).forEach((k) => seen.add(k));
+  }
+  const plain = MODES.filter((m) => seen.has(m));
+  const rest = [...seen].filter((m) => !MODES.includes(m)).sort();
+  return [...plain, ...rest];
+}
 
 /** stable key for one axe node target */
 export function targetKey(target) {
@@ -65,7 +139,7 @@ export function countViolations(violations) {
 function entriesOf(map) {
   const out = [];
   for (const element of Object.keys(map || {}).sort()) {
-    for (const mode of MODES) {
+    for (const mode of modesOf(map[element])) {
       const keys = (map[element] || {})[mode] || {};
       for (const key of Object.keys(keys).sort()) {
         out.push({ element, mode, key, count: keys[key] });
@@ -131,7 +205,7 @@ export function shrinkBaseline(baseline, results, { allowAdditions } = {}) {
   const out = JSON.parse(JSON.stringify(baseline || {}));
   for (const element of Object.keys(results || {})) {
     const next = {};
-    for (const mode of MODES) {
+    for (const mode of modesOf(out[element] || {}, results[element])) {
       const now = (results[element] || {})[mode] || {};
       const keys = {};
       const was = (out[element] || {})[mode] || {};
@@ -165,7 +239,7 @@ export function sortBaseline(map) {
   const sorted = {};
   for (const element of Object.keys(map || {}).sort()) {
     const modes = {};
-    for (const mode of MODES) {
+    for (const mode of modesOf(map[element])) {
       const keys = (map[element] || {})[mode];
       if (keys && Object.keys(keys).length) {
         modes[mode] = {};
@@ -189,7 +263,7 @@ export function mergeResults(a, b, pick) {
       continue;
     }
     out[element] = {};
-    for (const mode of MODES) {
+    for (const mode of modesOf(a[element], b[element])) {
       const x = a[element][mode] || {};
       const y = b[element][mode] || {};
       const keys = {};

@@ -156,9 +156,12 @@ class CodeSample extends I18NMixin(LitElement) {
           overflow-x: auto;
         }
         /* the container is the one scroll area (it takes focus while it
-           overflows), so highlight themes must not scroll the code element too */
+           overflows), so highlight themes must not scroll the code element
+           too; the code element grows to its longest line so the theme
+           background stays behind every character that scrolls into view */
         #code-container #code code {
           overflow-x: visible;
+          min-width: max-content;
         }
         #code-container:focus-visible {
           outline: var(--ddd-focus-ring);

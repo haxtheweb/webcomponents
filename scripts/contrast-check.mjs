@@ -18,6 +18,20 @@
  * runner is. axe-core then runs only the color-contrast rule over the page,
  * shadow DOM included.
  *
+ * Palettes: a HAXcms theme can be given any DDD palette (site settings set
+ * data-palette on the theme element), and its own colors come from the
+ * palette tokens. So for a theme that takes palettes (its demo is a HAXcms
+ * site, demo/site.json, and its own source reads --ddd-palette-* tokens or
+ * reflects data-palette), the same page is measured again in each color
+ * scheme with every palette in the DDD palette registry
+ * (elements/d-d-d/lib/DDDPaletteRegistry.js) set on the theme element.
+ * Those results use the mode "<scheme>@<palette key>", e.g.
+ * "dark@salmon-season"; the palette the demo already shows is the plain
+ * "light" / "dark" run and is not measured twice. When the folder ships more
+ * than one site theme (elements/haxcms-elements/lib/themes.json), each other
+ * theme is switched in on the same demo site (HAXCMS.setTheme) and measured
+ * the same way, as "<scheme>@<theme>" and "<scheme>@<theme>:<palette key>".
+ *
  * A finding is keyed by element + mode + target, where the target is axe's
  * selector path with positions and digits dropped (scripts/lib/contrast.mjs),
  * and counted per key. A key missing from the baseline, or more nodes than
@@ -47,7 +61,9 @@ import {
   openDemo,
   runPool,
   startServer,
+  waitForSettledRender,
 } from "./lib/demo-runner.mjs";
+import { DDDPaletteRegistry } from "../elements/d-d-d/lib/DDDPaletteRegistry.js";
 import {
   MODES,
   baselineGrowth,
@@ -55,8 +71,10 @@ import {
   compareToBaseline,
   countViolations,
   mergeResults,
+  paletteMode,
   shrinkBaseline,
   sortBaseline,
+  takesPalettes,
 } from "./lib/contrast.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -71,6 +89,7 @@ const TOOLING = [
   /^scripts\/contrast/,
   /^scripts\/lib\/contrast\.mjs$/,
   /^scripts\/lib\/demo-runner\.mjs$/,
+  /^elements\/d-d-d\/lib\/DDDPaletteRegistry\.js$/,
   /^web-dev-server\.config\.mjs$/,
   /^\.github\/workflows\/contrast\.yml$/,
 ];
@@ -134,6 +153,72 @@ function writeBaseline(elements) {
 /** element folders that have a demo page */
 const demoElements = () => listDemoElements(root);
 
+/** the element's own source files (folder root and lib/), as text */
+function ownSources(element) {
+  const dir = path.join(root, "elements", element);
+  const out = [];
+  for (const sub of ["", "lib"]) {
+    let names = [];
+    try {
+      names = fs.readdirSync(path.join(dir, sub));
+    } catch {
+      continue;
+    }
+    for (const name of names) {
+      if (/\.js$/.test(name) && !/\.(min|haxProperties)\./.test(name)) {
+        try {
+          out.push(fs.readFileSync(path.join(dir, sub, name), "utf8"));
+        } catch {
+          // unreadable file: not a source
+        }
+      }
+    }
+  }
+  return out;
+}
+
+/** a HAXcms theme demo whose own colors follow the DDD palette */
+function isPaletteTheme(element) {
+  return (
+    fs.existsSync(path.join(root, "elements", element, "demo", "site.json")) &&
+    takesPalettes(ownSources(element))
+  );
+}
+
+/**
+ * other site themes the element folder ships, from the theme registry:
+ * [{ tag, src }] where src is the module's path on the local server
+ */
+function siblingThemes(element) {
+  let themes = {};
+  try {
+    themes = JSON.parse(
+      fs.readFileSync(
+        path.join(root, "elements", "haxcms-elements", "lib", "themes.json"),
+        "utf8",
+      ),
+    );
+  } catch {
+    return [];
+  }
+  const prefix = `@haxtheweb/${element}/`;
+  return Object.keys(themes)
+    .filter(
+      (tag) =>
+        tag !== element && String(themes[tag].path || "").startsWith(prefix),
+    )
+    .sort()
+    .map((tag) => ({
+      tag,
+      src: `/elements/${element}/${themes[tag].path.slice(prefix.length)}`,
+    }));
+}
+
+const PALETTES = DDDPaletteRegistry.map((p) => ({
+  key: p.key,
+  value: p.dataPalette,
+}));
+
 function selectElements(all) {
   if (ELEMENTS) {
     const want = new Set(ELEMENTS.split(",").map((t) => t.trim()));
@@ -184,7 +269,94 @@ function checkBaselineShrinkOnly(ref) {
   return 1;
 }
 
-async function auditDemo(browser, origin, element, mode, axeSource) {
+// runs in the page: axe's color-contrast rule over the whole document
+async function runContrastRule() {
+  const res = await globalThis.axe.run(document, {
+    runOnly: { type: "rule", values: ["color-contrast"] },
+    resultTypes: ["violations"],
+  });
+  return res.violations.map((v) => ({
+    id: v.id,
+    nodes: v.nodes.map((n) => ({ target: n.target })),
+  }));
+}
+
+// runs in the page: set a palette on the site's theme element and wait for
+// it to render; false when the page has no theme element
+async function applyPalette(value) {
+  const theme = document.querySelector(".haxcms-theme-element");
+  if (!theme) {
+    return false;
+  }
+  theme.setAttribute("data-palette", value);
+  if (theme.updateComplete) {
+    await theme.updateComplete;
+  }
+  await new Promise((r) =>
+    requestAnimationFrame(() => requestAnimationFrame(r)),
+  );
+  return true;
+}
+
+// runs in the page: load another site theme's module, switch the demo site
+// to it and wait for it to be the rendered theme element; false when it
+// never arrives
+async function switchTheme({ tag, src }) {
+  if (!globalThis.HAXCMS || typeof globalThis.HAXCMS.setTheme !== "function") {
+    return false;
+  }
+  await import(src);
+  globalThis.HAXCMS.setTheme(tag);
+  const deadline = Date.now() + 15000;
+  while (Date.now() < deadline) {
+    const theme = document.querySelector(".haxcms-theme-element");
+    if (
+      theme &&
+      theme.localName === tag &&
+      globalThis.customElements.get(tag) &&
+      theme.shadowRoot
+    ) {
+      if (theme.updateComplete) {
+        await theme.updateComplete;
+      }
+      return true;
+    }
+    await new Promise((r) => setTimeout(r, 100));
+  }
+  return false;
+}
+
+/**
+ * the theme's own palette run is the plain mode; every other registry
+ * palette is applied to the theme element and measured as scheme@key
+ * (scheme@theme:key for a sibling theme)
+ */
+async function auditPalettes(page, scheme, theme) {
+  const current = await page.evaluate(() => {
+    const theme = document.querySelector(".haxcms-theme-element");
+    return theme ? theme.getAttribute("data-palette") : null;
+  });
+  const out = {};
+  for (const palette of PALETTES) {
+    if (
+      current !== null &&
+      (current === palette.value || current === palette.key)
+    ) {
+      continue;
+    }
+    const applied = await page.evaluate(applyPalette, palette.value);
+    if (!applied) {
+      return out;
+    }
+    await waitForSettledRender(page);
+    out[paletteMode(scheme, palette.key, theme)] = countViolations(
+      await page.evaluate(runContrastRule),
+    );
+  }
+  return out;
+}
+
+async function auditDemo(browser, origin, element, mode, axeSource, palettes) {
   const context = await browser.newContext({
     colorScheme: mode,
     reducedMotion: "reduce",
@@ -196,17 +368,23 @@ async function auditDemo(browser, origin, element, mode, axeSource) {
       settled: true,
     });
     await page.addScriptTag({ content: axeSource });
-    const violations = await page.evaluate(async () => {
-      const res = await globalThis.axe.run(document, {
-        runOnly: { type: "rule", values: ["color-contrast"] },
-        resultTypes: ["violations"],
-      });
-      return res.violations.map((v) => ({
-        id: v.id,
-        nodes: v.nodes.map((n) => ({ target: n.target })),
-      }));
-    });
-    return { counts: countViolations(violations) };
+    const counts = {
+      [mode]: countViolations(await page.evaluate(runContrastRule)),
+    };
+    if (palettes) {
+      Object.assign(counts, await auditPalettes(page, mode, null));
+      for (const theme of palettes.siblings) {
+        if (!(await page.evaluate(switchTheme, theme))) {
+          throw new Error(`site theme ${theme.tag} did not render on the demo`);
+        }
+        await waitForSettledRender(page);
+        counts[paletteMode(mode, null, theme.tag)] = countViolations(
+          await page.evaluate(runContrastRule),
+        );
+        Object.assign(counts, await auditPalettes(page, mode, theme.tag));
+      }
+    }
+    return { counts };
   } catch (e) {
     return { error: String((e && e.message) || e).split("\n")[0] };
   } finally {
@@ -229,28 +407,50 @@ async function runAudits(picked) {
     throw e;
   }
   const jobs = [];
+  const paletteThemes = picked.filter(isPaletteTheme);
   for (const element of picked) {
+    const palettes = paletteThemes.includes(element)
+      ? { siblings: siblingThemes(element) }
+      : null;
     for (const mode of MODES) {
-      jobs.push({ element, mode });
+      jobs.push({ element, mode, palettes });
     }
   }
   console.log(
     `contrast: ${picked.length} demo(s) x ${MODES.length} modes in Chromium (${origin})`,
   );
+  if (paletteThemes.length) {
+    console.log(
+      `contrast: palette themes, also measured in each of ${PALETTES.length} DDD palettes: ${paletteThemes
+        .map((e) => {
+          const more = siblingThemes(e);
+          return more.length
+            ? `${e} (+ ${more.map((t) => t.tag).join(", ")})`
+            : e;
+        })
+        .join(", ")}`,
+    );
+  }
   const results = {};
   const errors = {};
   try {
     await runPool(
       jobs,
       CONCURRENCY,
-      async ({ element, mode }) => {
-        const r = await auditDemo(browser, origin, element, mode, axeSource);
+      async ({ element, mode, palettes }) => {
+        const r = await auditDemo(
+          browser,
+          origin,
+          element,
+          mode,
+          axeSource,
+          palettes,
+        );
         if (r.error) {
           errors[element] = errors[element] || {};
           errors[element][mode] = r.error;
         } else {
-          results[element] = results[element] || {};
-          results[element][mode] = r.counts;
+          results[element] = Object.assign(results[element] || {}, r.counts);
         }
       },
       "contrast",
@@ -391,7 +591,7 @@ async function main() {
   }
   line(
     out,
-    `\ncontrast: ${Object.keys(results).length} demo(s) checked in light and dark, ${fresh.length} new, ${known.length} baselined, ${fixed.length} fixed.`,
+    `\ncontrast: ${Object.keys(results).length} demo(s) checked in light and dark (palette themes in every DDD palette), ${fresh.length} new, ${known.length} baselined, ${fixed.length} fixed.`,
   );
   if (process.env.GITHUB_STEP_SUMMARY) {
     try {

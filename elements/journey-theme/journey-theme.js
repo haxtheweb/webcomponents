@@ -384,6 +384,16 @@ class JourneyTheme extends HAXCMSLitElementTheme {
 
           --ddd-palette-1: var(--ddd-palette-color-1, default);
           --ddd-palette-2: var(--ddd-palette-color-6, default);
+          /* text on the two palette fills: the palette's own paired text
+             color, which DDD keeps at WCAG AA on its fill in every palette */
+          --journey-on-palette-1: var(
+            --ddd-palette-text-color-1,
+            var(--haxcms-site-theme-low-tone)
+          );
+          --journey-on-palette-2: var(
+            --ddd-palette-text-color-6,
+            var(--haxcms-site-theme-low-tone)
+          );
         }
 
         :host([edit-mode]) {
@@ -409,7 +419,7 @@ class JourneyTheme extends HAXCMSLitElementTheme {
           text-align: center;
           justify-content: center;
           align-items: center;
-          color: var(--haxcms-site-theme-low-tone);
+          color: var(--journey-on-palette-1);
           background-color: var(--ddd-palette-1);
           height: 50vh;
           overflow: hidden;
@@ -456,7 +466,7 @@ class JourneyTheme extends HAXCMSLitElementTheme {
         }
 
         .author a {
-          color: var(--haxcms-site-theme-low-tone);
+          color: inherit;
           text-decoration: none;
         }
         footer .author .spacing {
@@ -467,7 +477,7 @@ class JourneyTheme extends HAXCMSLitElementTheme {
         footer .author {
           --component-color: var(
             --lowContrast-override,
-            var(--haxcms-site-theme-low-tone)
+            var(--journey-on-palette-2)
           );
           color: var(--component-color);
         }
@@ -687,14 +697,14 @@ class JourneyTheme extends HAXCMSLitElementTheme {
           --component-background-color: var(--ddd-palette-2);
           --component-color: var(
             --lowContrast-override,
-            var(--haxcms-site-theme-low-tone)
+            var(--journey-on-palette-2)
           );
         }
         .article-wrap simple-cta:hover,
         .article-wrap simple-cta:focus-visible {
           --component-color: var(
             --lowContrast-override,
-            var(--haxcms-site-theme-low-tone)
+            var(--journey-on-palette-1)
           );
           --component-background-color: var(--ddd-palette-1);
         }
@@ -705,7 +715,7 @@ class JourneyTheme extends HAXCMSLitElementTheme {
           display: block;
           padding: var(--ddd-spacing-10);
           background-color: var(--ddd-palette-2);
-          color: var(--haxcms-site-theme-low-tone);
+          color: var(--journey-on-palette-2);
           min-height: var(--ddd-spacing-5);
           transition: var(--haxcms-site-transition);
         }

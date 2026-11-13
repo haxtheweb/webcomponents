@@ -401,6 +401,54 @@ describe("TwentySixTheme behavior", () => {
     expect(element.__parseColorToRgb("not-a-color")).to.equal(null);
   });
 
+  it("measures again once a palette change's color transitions end", async () => {
+    // a running transition on a measured surface means the first sync saw
+    // the color it is leaving; the theme syncs again when it has finished
+    const sidebar = element.shadowRoot.querySelector(".sidebar-inner");
+    // only count syncs from the re-measure, not the theme's own queue
+    await tick(50);
+    const queue = element.__queueContrastSync;
+    element.__queueContrastSync = () => {};
+    let syncs = 0;
+    const original = element.__syncContrastTextColors.bind(element);
+    element.__syncContrastTextColors = () => {
+      syncs += 1;
+      original();
+    };
+    sidebar.style.transition = "background-color 120ms linear";
+    sidebar.style.backgroundColor = "rgb(0, 0, 0)";
+    await new Promise((r) => requestAnimationFrame(() => r()));
+    sidebar.style.backgroundColor = "rgb(255, 255, 255)";
+    element.__resyncAfterTransitions();
+    expect(syncs).to.equal(0);
+    await tick(250);
+    expect(syncs).to.equal(1);
+    expect(
+      element.style.getPropertyValue("--twenty-six-sidebar-text"),
+    ).to.equal("var(--ddd-theme-default-black)");
+    element.__syncContrastTextColors = original;
+    element.__queueContrastSync = queue;
+    sidebar.style.transition = "";
+    sidebar.style.backgroundColor = "";
+  });
+
+  it("does not measure again when nothing is transitioning", async () => {
+    await tick(50);
+    const queue = element.__queueContrastSync;
+    element.__queueContrastSync = () => {};
+    let syncs = 0;
+    const original = element.__syncContrastTextColors.bind(element);
+    element.__syncContrastTextColors = () => {
+      syncs += 1;
+      original();
+    };
+    element.__resyncAfterTransitions();
+    await tick(50);
+    expect(syncs).to.equal(0);
+    element.__syncContrastTextColors = original;
+    element.__queueContrastSync = queue;
+  });
+
   it("picks black or white text by maximum contrast", () => {
     expect(element.__pickBlackOrWhite("rgb(255, 255, 255)")).to.equal(
       "var(--ddd-theme-default-black)",

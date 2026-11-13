@@ -20,6 +20,11 @@ export const JourneyTopbarThemeStyles = css`
       var(--ddd-palette-text-color-1, var(--ddd-theme-default-white))
     );
     --text-body: var(--text-heading);
+    /* text paired with --content-surface (the article card) */
+    --text-surface: light-dark(
+      var(--ddd-theme-default-coalyGray),
+      var(--ddd-palette-text-color-6, var(--ddd-theme-default-white))
+    );
     --accent-color: var(--ddd-palette-color-7, var(--ddd-primary-9));
     --topbar-bg: var(
       --ddd-palette-color-1,
@@ -70,6 +75,8 @@ export const JourneyTopbarThemeStyles = css`
 
   article {
     background-color: var(--content-surface);
+    color: var(--text-surface);
+    --ddd-reading-prose-color: var(--text-surface);
     padding: var(--ddd-spacing-4);
     border-radius: var(--ddd-radius-md);
     box-shadow: var(--ddd-boxShadow-md);
@@ -109,14 +116,17 @@ export const JourneyTopbarThemeStyles = css`
   nav ul li a:hover,
   nav ul li a:focus-visible {
     text-decoration: underline;
-    color: var(--accent-color);
+    color: var(--topbar-text);
     outline: 2px solid color-mix(in srgb, var(--accent-color) 45%, transparent);
     outline-offset: 1px;
   }
 
   nav ul li.active a {
     text-decoration: underline;
-    color: var(--accent-color);
+    text-decoration-thickness: 3px;
+    text-decoration-color: var(--accent-color);
+    color: var(--topbar-text);
+    font-weight: var(--ddd-font-weight-bold);
   }
 
   nav.topbar-scroll {
@@ -156,7 +166,10 @@ export const JourneyTopbarThemeStyles = css`
 
   nav.topbar-scroll li.active a {
     text-decoration: underline;
-    color: var(--accent-color);
+    text-decoration-thickness: 3px;
+    text-decoration-color: var(--accent-color);
+    color: var(--topbar-text);
+    font-weight: var(--ddd-font-weight-bold);
   }
 
   nav.topbar-scroll::-webkit-scrollbar {

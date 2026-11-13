@@ -28,7 +28,7 @@ Utility classes mirror these attributes. They are opt-in (`DDDUtilityClasses.js`
 
 ## Palettes (`data-palette`)
 
-A palette sets seven fills, `--ddd-palette-color-1…7`, and seven matching inks, `--ddd-palette-text-color-1…7`. Ink N is meant to sit on fill N. Use a palette when a whole region or site needs a coordinated scheme; use `data-primary`/`data-accent` for a single block. Palettes 0–15 draw on DDD base colours and SimpleColors shades, all of which are tokens in this system; 16–19 use literal hex values because their hues (or, for clear-sight, the exact Okabe–Ito values) have no matching token. Every one of their inks meets WCAG AA on its fill. The Foundations › Palettes card renders every palette live.
+A palette sets seven fills, `--ddd-palette-color-1…7`, and seven matching inks, `--ddd-palette-text-color-1…7`. Ink N is meant to sit on fill N. Use a palette when a whole region or site needs a coordinated scheme; use `data-primary`/`data-accent` for a single block. Palettes 0–15 draw on DDD base colours and SimpleColors shades, all of which are tokens in this system; 16–19 use literal hex values because their hues (or, for clear-sight, the exact Okabe–Ito values) have no matching token. In every palette, ink N meets WCAG AA (4.5:1) on fill N (`test/ddd-palette-contrast.test.js` holds all of them to it), so text on a palette fill should always use its paired ink rather than white, black or another fill. The Foundations › Palettes card renders every palette live.
 
 | #   | Name                  | Built from                                                                                 |
 | --- | --------------------- | ------------------------------------------------------------------------------------------ |
