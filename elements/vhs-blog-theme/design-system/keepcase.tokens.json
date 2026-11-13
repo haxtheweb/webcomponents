@@ -1,0 +1,66 @@
+{
+  "$description": "Keepcase, the design system of vhs-blog-theme: a dark video store den. Room colors are the theme chrome; case colors come from the hashed case palettes in lib/vhs-blog-case.js. Dark by design, so every value is fixed (no light/dark pairs).",
+  "room": {
+    "$type": "color",
+    "floor": { "$value": "#0f0e13", "$description": "page background" },
+    "peg": {
+      "$value": "#17151c",
+      "$description": "pegboard behind the aisles"
+    },
+    "panel": { "$value": "#1b1a20", "$description": "post and card surface" },
+    "ink": { "$value": "#f3eee4", "$description": "warm white text" },
+    "muted": { "$value": "#b8ad9c", "$description": "secondary text" },
+    "dust": { "$value": "#e9e3d8" },
+    "paper": { "$value": "#f5f1e8", "$description": "case paper white" },
+    "black": { "$value": "#0d0d0d" },
+    "walnut": { "$value": "#5a2c14" },
+    "walnut-dark": { "$value": "#3f1d0c" },
+    "walnut-edge": { "$value": "#8a4a26" },
+    "brass": { "$value": "#c9a34a", "$description": "drawer pulls" },
+    "neon": { "$value": "#ff4fa3", "$description": "store sign" },
+    "focus": { "$value": "#ffd60a", "$description": "focus ring" },
+    "vfd": { "$value": "#5dff8a", "$description": "VCR display" },
+    "screen-blue": { "$value": "#9ccfff", "$description": "links on dark" },
+    "sticker": { "$value": "#ff7a1a", "$description": "price sticker" }
+  },
+  "case": {
+    "$type": "color",
+    "navy": { "$value": "#1d3557" },
+    "royal": { "$value": "#0b3d91" },
+    "blue": { "$value": "#0077b6" },
+    "sky": { "$value": "#90e0ef" },
+    "ice": { "$value": "#a8dadc" },
+    "frost": { "$value": "#e3f4f7" },
+    "violet": { "$value": "#3a0ca3" },
+    "plum": { "$value": "#5e548e" },
+    "mauve": { "$value": "#e0b1cb" },
+    "magenta": { "$value": "#f72585" },
+    "red": { "$value": "#c1121f" },
+    "crimson": { "$value": "#e63946" },
+    "oxblood": { "$value": "#6a040f" },
+    "blush": { "$value": "#ffe0e0" },
+    "gold": { "$value": "#ffba08" },
+    "yellow": { "$value": "#ffbe0b" },
+    "butter": { "$value": "#ffd6a5" },
+    "cream": { "$value": "#fff3d6" },
+    "orange": { "$value": "#e85d04" },
+    "green": { "$value": "#1b6e35" },
+    "olive": { "$value": "#283618" },
+    "lime": { "$value": "#9ef01a" },
+    "mint": { "$value": "#dff3e4" },
+    "teal": { "$value": "#00b4d8" }
+  },
+  "duration": {
+    "$type": "duration",
+    "key": { "$value": "120ms", "$description": "a VCR key going down" },
+    "lid": { "$value": "300ms", "$description": "the VCR lid" },
+    "tape": { "$value": "600ms", "$description": "a cassette dropping in" }
+  },
+  "easing": {
+    "$type": "cubicBezier",
+    "tape": { "$value": [0.3, 0.7, 0.3, 1] },
+    "pull": { "$value": [0.25, 0.8, 0.3, 1] },
+    "drop": { "$value": [0.5, 0, 0.8, 0.4] },
+    "lid": { "$value": [0.3, 1.5, 0.5, 1] }
+  }
+}

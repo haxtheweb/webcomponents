@@ -55,11 +55,51 @@
       "hax": null
     },
     {
-      "name": "held",
-      "property": "held",
-      "type": "null",
-      "default": "null",
+      "name": "phase",
+      "property": "phase",
+      "type": "string",
+      "default": "\"idle\"",
+      "description": "tape load state: idle, unbox, lift, open, insert, press, rew, ff, playing",
+      "hax": null
+    },
+    {
+      "name": "loadingTitle",
+      "property": "loadingTitle",
+      "type": "string",
+      "default": "\"\"",
       "description": "",
+      "hax": null
+    },
+    {
+      "name": "channel",
+      "property": "channel",
+      "type": "number",
+      "default": "3",
+      "description": "TV channel: 3 plays the tape, 4 is static",
+      "hax": null
+    },
+    {
+      "name": "static-held",
+      "property": "staticHeld",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "tv-power",
+      "property": "tvPower",
+      "type": "boolean",
+      "default": "true",
+      "description": "the console's power button: the visitor can turn the set off",
+      "hax": null
+    },
+    {
+      "name": "flipped",
+      "property": "flipped",
+      "type": "boolean",
+      "default": "false",
+      "description": "the box art is turned to its back",
       "hax": null
     }
   ],
@@ -69,7 +109,7 @@
   ],
   "events": [],
   "hax": {},
-  "surfaceHash": "e8c9fe8c2469",
+  "surfaceHash": "506e1e3a4b50",
   "walkthroughs": [],
   "videos": [],
   "motion": {

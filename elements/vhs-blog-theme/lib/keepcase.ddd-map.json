@@ -1,0 +1,825 @@
+{
+  "system": "keepcase",
+  "title": "Keepcase",
+  "sources": [
+    {
+      "local": true,
+      "file": "design-system/keepcase.tokens.json",
+      "format": "dtcg",
+      "prefix": "--keepcase-",
+      "license": "Apache-2.0",
+      "copyright": "Copyright 2026 The Pennsylvania State University"
+    }
+  ],
+  "fonts": [
+    {
+      "family": "Archivo",
+      "license": "OFL-1.1",
+      "url": "https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800;900&display=swap"
+    },
+    {
+      "family": "Archivo Narrow",
+      "license": "OFL-1.1",
+      "url": "https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;700&display=swap"
+    },
+    {
+      "family": "IBM Plex Mono",
+      "license": "OFL-1.1",
+      "url": "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+    }
+  ],
+  "coverage": {
+    "identity": {
+      "mapping": "expected",
+      "percent": 96,
+      "families": {
+        "color": {
+          "mapped": 52,
+          "total": 52,
+          "keptDDD": []
+        },
+        "font": {
+          "mapped": 4,
+          "total": 4,
+          "keptDDD": []
+        },
+        "weight": {
+          "mapped": 2,
+          "total": 5,
+          "keptDDD": [
+            "--ddd-font-weight-light",
+            "--ddd-font-weight-regular",
+            "--ddd-font-weight-medium"
+          ]
+        },
+        "radius": {
+          "mapped": 5,
+          "total": 5,
+          "keptDDD": []
+        },
+        "shadow": {
+          "mapped": 4,
+          "total": 4,
+          "keptDDD": []
+        },
+        "focus": {
+          "mapped": 2,
+          "total": 2,
+          "keptDDD": []
+        }
+      }
+    },
+    "feel": {
+      "mapping": "optional",
+      "percent": 30,
+      "families": {
+        "motion": {
+          "mapped": 7,
+          "total": 7,
+          "keptDDD": []
+        },
+        "state": {
+          "mapped": 0,
+          "total": 5,
+          "keptDDD": [
+            "--ddd-state-hover-opacity",
+            "--ddd-state-focus-opacity",
+            "--ddd-state-pressed-opacity",
+            "--ddd-state-selected-opacity",
+            "--ddd-state-disabled-opacity"
+          ]
+        },
+        "control": {
+          "mapped": 0,
+          "total": 7,
+          "keptDDD": [
+            "--ddd-textfield-height-sm",
+            "--ddd-textfield-height-md",
+            "--ddd-textfield-height-lg",
+            "--ddd-control-height-xs",
+            "--ddd-control-height-sm",
+            "--ddd-control-height-md",
+            "--ddd-control-height-lg"
+          ]
+        },
+        "border": {
+          "mapped": 0,
+          "total": 4,
+          "keptDDD": [
+            "--ddd-border-size-xs",
+            "--ddd-border-size-sm",
+            "--ddd-border-size-md",
+            "--ddd-border-size-lg"
+          ]
+        }
+      }
+    },
+    "semantic": {
+      "mapping": "optional",
+      "percent": 0,
+      "families": {
+        "type": {
+          "mapped": 0,
+          "total": 7,
+          "keptDDD": [
+            "--ddd-theme-h1-font-size",
+            "--ddd-theme-h2-font-size",
+            "--ddd-theme-h3-font-size",
+            "--ddd-theme-h4-font-size",
+            "--ddd-theme-h5-font-size",
+            "--ddd-theme-h6-font-size",
+            "--ddd-theme-body-font-size"
+          ]
+        }
+      }
+    }
+  },
+  "contrast": [
+    {
+      "fg": "--ddd-theme-default-coalyGray",
+      "bg": "--ddd-theme-default-white",
+      "ratio": 14.94,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-link",
+      "bg": "--ddd-theme-default-white",
+      "ratio": 8.69,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-white",
+      "bg": "--ddd-theme-default-beaverBlue",
+      "ratio": 10.31,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-white",
+      "bg": "--ddd-theme-default-nittanyNavy",
+      "ratio": 10.69,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-white",
+      "bg": "--ddd-theme-default-coalyGray",
+      "ratio": 14.94,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-linkLight",
+      "bg": "--ddd-theme-default-coalyGray",
+      "ratio": 10.52,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-error",
+      "bg": "--ddd-theme-default-errorLight",
+      "ratio": 5.04,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-warning",
+      "bg": "--ddd-theme-default-warningLight",
+      "ratio": 8.54,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-info",
+      "bg": "--ddd-theme-default-infoLight",
+      "ratio": 10.92,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-success",
+      "bg": "--ddd-theme-default-successLight",
+      "ratio": 5.43,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-coalyGray",
+      "bg": "--ddd-theme-default-limestoneMaxLight",
+      "ratio": 15.33,
+      "min": 4.5
+    }
+  ],
+  "problems": [],
+  "contract": 1,
+  "map": [
+    {
+      "ddd": "--ddd-theme-default-beaverBlue",
+      "tier": "identity",
+      "token": "--keepcase-case-violet",
+      "light": "#3a0ca3",
+      "dark": "#3a0ca3",
+      "note": "primary: VHS violet; warm white text on it"
+    },
+    {
+      "ddd": "--ddd-theme-default-nittanyNavy",
+      "tier": "identity",
+      "token": "--keepcase-case-navy",
+      "light": "#1d3557",
+      "dark": "#1d3557",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-potentialMidnight",
+      "tier": "identity",
+      "token": "--keepcase-room-floor",
+      "light": "#0f0e13",
+      "dark": "#0f0e13",
+      "note": "the den floor"
+    },
+    {
+      "ddd": "--ddd-theme-default-pughBlue",
+      "tier": "identity",
+      "token": "--keepcase-case-ice",
+      "light": "#a8dadc",
+      "dark": "#a8dadc",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-accent",
+      "tier": "identity",
+      "token": "--keepcase-room-neon",
+      "light": "#ff4fa3",
+      "dark": "#ff4fa3",
+      "note": "the store sign"
+    },
+    {
+      "ddd": "--ddd-theme-default-skyBlue",
+      "tier": "identity",
+      "token": "--keepcase-case-sky",
+      "light": "#90e0ef",
+      "dark": "#90e0ef",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-skyLight",
+      "tier": "identity",
+      "token": "--keepcase-case-ice",
+      "light": "#a8dadc",
+      "dark": "#a8dadc",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-skyMaxLight",
+      "tier": "identity",
+      "token": "--keepcase-case-frost",
+      "light": "#e3f4f7",
+      "dark": "#e3f4f7",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-slateGray",
+      "tier": "identity",
+      "token": "--keepcase-case-plum",
+      "light": "#5e548e",
+      "dark": "#5e548e",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-slateLight",
+      "tier": "identity",
+      "token": "--keepcase-room-muted",
+      "light": "#b8ad9c",
+      "dark": "#b8ad9c",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-slateMaxLight",
+      "tier": "identity",
+      "token": "--keepcase-room-dust",
+      "light": "#e9e3d8",
+      "dark": "#e9e3d8",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-coalyGray",
+      "tier": "identity",
+      "token": "--keepcase-room-panel",
+      "light": "#1b1a20",
+      "dark": "#1b1a20",
+      "note": "post and card surface; dark side of every DDD pair"
+    },
+    {
+      "ddd": "--ddd-theme-default-black",
+      "tier": "identity",
+      "token": "--keepcase-room-black",
+      "light": "#0d0d0d",
+      "dark": "#0d0d0d",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-white",
+      "tier": "identity",
+      "token": "--keepcase-room-ink",
+      "light": "#f3eee4",
+      "dark": "#f3eee4",
+      "note": "Keepcase white is warm: the ink of the room"
+    },
+    {
+      "ddd": "--ddd-theme-default-limestoneGray",
+      "tier": "identity",
+      "token": "--keepcase-room-muted",
+      "light": "#b8ad9c",
+      "dark": "#b8ad9c",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-limestoneLight",
+      "tier": "identity",
+      "token": "--keepcase-room-dust",
+      "light": "#e9e3d8",
+      "dark": "#e9e3d8",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-limestoneMaxLight",
+      "tier": "identity",
+      "token": "--keepcase-room-paper",
+      "light": "#f5f1e8",
+      "dark": "#f5f1e8",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-background",
+      "tier": "identity",
+      "token": "--keepcase-room-paper",
+      "light": "#f5f1e8",
+      "dark": "#f5f1e8",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-disabled",
+      "tier": "identity",
+      "token": "--keepcase-room-dust",
+      "light": "#e9e3d8",
+      "dark": "#e9e3d8",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-keystoneYellow",
+      "tier": "identity",
+      "token": "--keepcase-case-yellow",
+      "light": "#ffbe0b",
+      "dark": "#ffbe0b",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-globalNeon",
+      "tier": "identity",
+      "token": "--keepcase-room-focus",
+      "light": "#ffd60a",
+      "dark": "#ffd60a",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-roarGolden",
+      "tier": "identity",
+      "token": "--keepcase-case-gold",
+      "light": "#ffba08",
+      "dark": "#ffba08",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-roarLight",
+      "tier": "identity",
+      "token": "--keepcase-case-butter",
+      "light": "#ffd6a5",
+      "dark": "#ffd6a5",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-roarMaxlight",
+      "tier": "identity",
+      "token": "--keepcase-case-cream",
+      "light": "#fff3d6",
+      "dark": "#fff3d6",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-shrineTan",
+      "tier": "identity",
+      "token": "--keepcase-room-brass",
+      "light": "#c9a34a",
+      "dark": "#c9a34a",
+      "note": "drawer-pull brass"
+    },
+    {
+      "ddd": "--ddd-theme-default-shrineLight",
+      "tier": "identity",
+      "token": "--keepcase-case-butter",
+      "light": "#ffd6a5",
+      "dark": "#ffd6a5",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-shrineMaxLight",
+      "tier": "identity",
+      "token": "--keepcase-room-paper",
+      "light": "#f5f1e8",
+      "dark": "#f5f1e8",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-inventOrange",
+      "tier": "identity",
+      "token": "--keepcase-room-sticker",
+      "light": "#ff7a1a",
+      "dark": "#ff7a1a",
+      "note": "price sticker orange"
+    },
+    {
+      "ddd": "--ddd-theme-default-landgrantBrown",
+      "tier": "identity",
+      "token": "--keepcase-room-walnut",
+      "light": "#5a2c14",
+      "dark": "#5a2c14",
+      "note": "the console cabinet"
+    },
+    {
+      "ddd": "--ddd-theme-default-creekTeal",
+      "tier": "identity",
+      "token": "--keepcase-case-teal",
+      "light": "#00b4d8",
+      "dark": "#00b4d8",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-creekLight",
+      "tier": "identity",
+      "token": "--keepcase-case-ice",
+      "light": "#a8dadc",
+      "dark": "#a8dadc",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-creekMaxLight",
+      "tier": "identity",
+      "token": "--keepcase-case-frost",
+      "light": "#e3f4f7",
+      "dark": "#e3f4f7",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-opportunityGreen",
+      "tier": "identity",
+      "token": "--keepcase-case-green",
+      "light": "#1b6e35",
+      "dark": "#1b6e35",
+      "note": "correct signal (light)"
+    },
+    {
+      "ddd": "--ddd-theme-default-forestGreen",
+      "tier": "identity",
+      "token": "--keepcase-case-olive",
+      "light": "#283618",
+      "dark": "#283618",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-futureLime",
+      "tier": "identity",
+      "token": "--keepcase-case-lime",
+      "light": "#9ef01a",
+      "dark": "#9ef01a",
+      "note": "correct signal (dark)"
+    },
+    {
+      "ddd": "--ddd-theme-default-athertonViolet",
+      "tier": "identity",
+      "token": "--keepcase-case-mauve",
+      "light": "#e0b1cb",
+      "dark": "#e0b1cb",
+      "note": "incorrect signal (dark)"
+    },
+    {
+      "ddd": "--ddd-theme-default-wonderPurple",
+      "tier": "identity",
+      "token": "--keepcase-case-plum",
+      "light": "#5e548e",
+      "dark": "#5e548e",
+      "note": "incorrect signal (light); keeps HAX purple-for-incorrect"
+    },
+    {
+      "ddd": "--ddd-theme-default-original87Pink",
+      "tier": "identity",
+      "token": "--keepcase-case-magenta",
+      "light": "#f72585",
+      "dark": "#f72585",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-discoveryCoral",
+      "tier": "identity",
+      "token": "--keepcase-case-crimson",
+      "light": "#e63946",
+      "dark": "#e63946",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-link",
+      "tier": "identity",
+      "token": "--keepcase-case-royal",
+      "light": "#0b3d91",
+      "dark": "#0b3d91",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-linkLight",
+      "tier": "identity",
+      "token": "--keepcase-room-screen-blue",
+      "light": "#9ccfff",
+      "dark": "#9ccfff",
+      "note": "links on the dark room"
+    },
+    {
+      "ddd": "--ddd-theme-default-error",
+      "tier": "identity",
+      "token": "--keepcase-case-red",
+      "light": "#c1121f",
+      "dark": "#c1121f",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-errorLight",
+      "tier": "identity",
+      "token": "--keepcase-case-blush",
+      "light": "#ffe0e0",
+      "dark": "#ffe0e0",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-warning",
+      "tier": "identity",
+      "token": "--keepcase-room-walnut",
+      "light": "#5a2c14",
+      "dark": "#5a2c14",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-warningLight",
+      "tier": "identity",
+      "token": "--keepcase-case-butter",
+      "light": "#ffd6a5",
+      "dark": "#ffd6a5",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-info",
+      "tier": "identity",
+      "token": "--keepcase-case-navy",
+      "light": "#1d3557",
+      "dark": "#1d3557",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-infoLight",
+      "tier": "identity",
+      "token": "--keepcase-case-frost",
+      "light": "#e3f4f7",
+      "dark": "#e3f4f7",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-success",
+      "tier": "identity",
+      "token": "--keepcase-case-green",
+      "light": "#1b6e35",
+      "dark": "#1b6e35",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-successLight",
+      "tier": "identity",
+      "token": "--keepcase-case-mint",
+      "light": "#dff3e4",
+      "dark": "#dff3e4",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-alertImmediate",
+      "tier": "identity",
+      "token": "--keepcase-case-blush",
+      "light": "#ffe0e0",
+      "dark": "#ffe0e0",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-alertUrgent",
+      "tier": "identity",
+      "token": "--keepcase-case-butter",
+      "light": "#ffd6a5",
+      "dark": "#ffd6a5",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-alertAllClear",
+      "tier": "identity",
+      "token": "--keepcase-case-mint",
+      "light": "#dff3e4",
+      "dark": "#dff3e4",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-theme-default-alertNonEmergency",
+      "tier": "identity",
+      "token": "--keepcase-case-frost",
+      "light": "#e3f4f7",
+      "dark": "#e3f4f7",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-font-primary",
+      "tier": "identity",
+      "token": null,
+      "light": "'Archivo', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+      "dark": "'Archivo', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+      "note": "Keepcase UI face"
+    },
+    {
+      "ddd": "--ddd-font-secondary",
+      "tier": "identity",
+      "token": null,
+      "light": "'Archivo', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+      "dark": "'Archivo', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+      "note": "headings in Archivo at the bold weight"
+    },
+    {
+      "ddd": "--ddd-font-navigation",
+      "tier": "identity",
+      "token": null,
+      "light": "'Archivo Narrow', 'Archivo', system-ui, sans-serif",
+      "dark": "'Archivo Narrow', 'Archivo', system-ui, sans-serif",
+      "note": "shelf labels and VCR keys"
+    },
+    {
+      "ddd": "--ddd-font-mono",
+      "tier": "identity",
+      "token": null,
+      "light": "'IBM Plex Mono', 'Menlo', 'DejaVu Sans Mono', Courier, monospace",
+      "dark": "'IBM Plex Mono', 'Menlo', 'DejaVu Sans Mono', Courier, monospace",
+      "note": "catalog numbers"
+    },
+    {
+      "ddd": "--ddd-font-weight-bold",
+      "tier": "identity",
+      "token": null,
+      "light": "800",
+      "dark": "800",
+      "note": "Archivo ExtraBold, as the chrome uses it"
+    },
+    {
+      "ddd": "--ddd-font-weight-black",
+      "tier": "identity",
+      "token": null,
+      "light": "900",
+      "dark": "900",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-radius-xs",
+      "tier": "identity",
+      "token": null,
+      "light": "2px",
+      "dark": "2px",
+      "note": "stickers and labels"
+    },
+    {
+      "ddd": "--ddd-radius-sm",
+      "tier": "identity",
+      "token": null,
+      "light": "4px",
+      "dark": "4px",
+      "note": "case corners"
+    },
+    {
+      "ddd": "--ddd-radius-md",
+      "tier": "identity",
+      "token": null,
+      "light": "6px",
+      "dark": "6px",
+      "note": "buttons"
+    },
+    {
+      "ddd": "--ddd-radius-lg",
+      "tier": "identity",
+      "token": null,
+      "light": "8px",
+      "dark": "8px",
+      "note": "cards and the post panel"
+    },
+    {
+      "ddd": "--ddd-radius-xl",
+      "tier": "identity",
+      "token": null,
+      "light": "14px",
+      "dark": "14px",
+      "note": "the TV bezel"
+    },
+    {
+      "ddd": "--ddd-boxShadow-sm",
+      "tier": "identity",
+      "token": null,
+      "light": "0 4px 0 rgba(0, 0, 0, 0.35)",
+      "dark": "0 4px 0 rgba(0, 0, 0, 0.35)",
+      "note": "hard drop, like a VCR key"
+    },
+    {
+      "ddd": "--ddd-boxShadow-md",
+      "tier": "identity",
+      "token": null,
+      "light": "0 8px 14px rgba(0, 0, 0, 0.5)",
+      "dark": "0 8px 14px rgba(0, 0, 0, 0.5)",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-boxShadow-lg",
+      "tier": "identity",
+      "token": null,
+      "light": "0 14px 30px rgba(0, 0, 0, 0.45)",
+      "dark": "0 14px 30px rgba(0, 0, 0, 0.45)",
+      "note": "a case lifted off the shelf"
+    },
+    {
+      "ddd": "--ddd-boxShadow-xl",
+      "tier": "identity",
+      "token": null,
+      "light": "0 30px 40px rgba(0, 0, 0, 0.6)",
+      "dark": "0 30px 40px rgba(0, 0, 0, 0.6)",
+      "note": "the console cabinet"
+    },
+    {
+      "ddd": "--ddd-focus-ring",
+      "tier": "identity",
+      "token": null,
+      "light": "3px solid #ffd60a",
+      "dark": "3px solid #ffd60a",
+      "note": "the theme's yellow focus ring"
+    },
+    {
+      "ddd": "--ddd-focus-offset",
+      "tier": "identity",
+      "token": null,
+      "light": "3px",
+      "dark": "3px",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-duration-fast",
+      "tier": "feel",
+      "token": "--keepcase-duration-key",
+      "light": "120ms",
+      "dark": "120ms",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-duration-normal",
+      "tier": "feel",
+      "token": "--keepcase-duration-lid",
+      "light": "300ms",
+      "dark": "300ms",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-duration-slow",
+      "tier": "feel",
+      "token": "--keepcase-duration-tape",
+      "light": "600ms",
+      "dark": "600ms",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-timing-ease",
+      "tier": "feel",
+      "token": "--keepcase-easing-tape",
+      "light": "0.3 0.7 0.3 1",
+      "dark": "0.3 0.7 0.3 1",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-timing-enter",
+      "tier": "feel",
+      "token": "--keepcase-easing-pull",
+      "light": "0.25 0.8 0.3 1",
+      "dark": "0.25 0.8 0.3 1",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-timing-exit",
+      "tier": "feel",
+      "token": "--keepcase-easing-drop",
+      "light": "0.5 0 0.8 0.4",
+      "dark": "0.5 0 0.8 0.4",
+      "note": ""
+    },
+    {
+      "ddd": "--ddd-timing-emphasized",
+      "tier": "feel",
+      "token": "--keepcase-easing-lid",
+      "light": "0.3 1.5 0.5 1",
+      "dark": "0.3 1.5 0.5 1",
+      "note": ""
+    }
+  ]
+}

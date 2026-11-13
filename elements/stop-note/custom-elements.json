@@ -12,7 +12,7 @@
           "type": {
             "text": "object"
           },
-          "default": "{ stop: \"stopnoteicons:stop-icon\", warning: \"stopnoteicons:warning-icon\", success: \"stopnoteicons:confirm-icon\", info: \"stopnoteicons:book-icon\", }",
+          "default": "{ stop: \"stopnoteicons:stop-icon\", warning: \"stopnoteicons:warning-icon\", success: \"stopnoteicons:confirm-icon\", info: \"stopnoteicons:book-icon\", tip: \"stopnoteicons:tip-icon\", new: \"stopnoteicons:new-icon\", }",
           "description": "`stop-note`\n`A note that directs people to an action item of different warning levels`"
         },
         {
@@ -149,7 +149,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ moreInformation: \"More Information\", status_stop: \"Stop\", status_warning: \"Warning\", status_success: \"Success\", status_info: \"Note\", }"
+              "default": "{ moreInformation: \"More Information\", status_stop: \"Stop\", status_warning: \"Warning\", status_success: \"Success\", status_info: \"Note\", status_tip: \"Did you know?\", status_new: \"What's new\", }"
             }
           ],
           "attributes": [
@@ -240,6 +240,246 @@
           "declaration": {
             "name": "StopNote",
             "module": "stop-note.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/stop-note-group.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "`stop-note-group`\nStacks several `stop-note`s into one block that shows a note at a time,\nwith previous and next buttons and a count laid over the note's header\n(\"Did you know?  ← 2 / 5 →\"). Made for Tips and What's new, but any\nstatuses can be mixed.\n\nThe notes stay ordinary light DOM children: the group never changes\nthem, it only hides the ones not showing, so saved content is exactly\nwhat the author wrote. While HAX is editing, and when printing, every\nnote shows.",
+          "name": "StopNoteGroup",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "notes",
+              "description": "the stop-notes this group pages through",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "paged",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_pagedCSS",
+              "parameters": [
+                {
+                  "name": "i"
+                }
+              ],
+              "description": "While paging, only the showing note is displayed and every note leaves\nroom in its header for the pager. Hiding is done here, in the group's\nown styles, so the notes themselves are never changed."
+            },
+            {
+              "kind": "method",
+              "name": "_index",
+              "description": "active, kept inside the notes there are"
+            },
+            {
+              "kind": "method",
+              "name": "next",
+              "description": "show the next note, wrapping to the first"
+            },
+            {
+              "kind": "method",
+              "name": "previous",
+              "description": "show the previous note, wrapping to the last"
+            },
+            {
+              "kind": "method",
+              "name": "go",
+              "parameters": [
+                {
+                  "name": "dir"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_sync"
+            },
+            {
+              "kind": "method",
+              "name": "_place",
+              "description": "Lay the pager over the showing note's header: measure the header (or\nthe whole row of a compact note) and the pager itself."
+            },
+            {
+              "kind": "method",
+              "name": "haxHooks",
+              "description": "HAX: show every note while editing so each one can be edited."
+            },
+            {
+              "kind": "method",
+              "name": "haxeditModeChanged",
+              "parameters": [
+                {
+                  "name": "val"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Accessible name for the group, such as \"Tips\" or \"What's new\".",
+              "default": "\"\"",
+              "attribute": "label"
+            },
+            {
+              "kind": "field",
+              "name": "active",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "Index of the note showing, starting at 0.",
+              "default": "0",
+              "attribute": "active"
+            },
+            {
+              "kind": "field",
+              "name": "_count",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "number of stop-note children",
+              "default": "0",
+              "attribute": "_count"
+            },
+            {
+              "kind": "field",
+              "name": "_editing",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "HAX edit mode shows every note",
+              "default": "false",
+              "attribute": "_editing"
+            },
+            {
+              "kind": "field",
+              "name": "_announce",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "text for the polite live region, set only after a button press",
+              "default": "\"\"",
+              "attribute": "_announce"
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ notes: \"Notes\", previous: \"Previous note\", next: \"Next note\", of: \"of\", }"
+            }
+          ],
+          "events": [
+            {
+              "name": "stop-note-group-change",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Accessible name for the group, such as \"Tips\" or \"What's new\".",
+              "default": "\"\"",
+              "fieldName": "label"
+            },
+            {
+              "name": "active",
+              "type": {
+                "text": "number"
+              },
+              "description": "Index of the note showing, starting at 0.",
+              "default": "0",
+              "fieldName": "active"
+            },
+            {
+              "name": "_count",
+              "type": {
+                "text": "number"
+              },
+              "description": "number of stop-note children",
+              "default": "0",
+              "fieldName": "_count"
+            },
+            {
+              "name": "_editing",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "HAX edit mode shows every note",
+              "default": "false",
+              "fieldName": "_editing"
+            },
+            {
+              "name": "_announce",
+              "type": {
+                "text": "string"
+              },
+              "description": "text for the polite live region, set only after a button press",
+              "default": "\"\"",
+              "fieldName": "_announce"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            }
+          ],
+          "superclass": {
+            "name": "DDD",
+            "package": "@haxtheweb/d-d-d/d-d-d.js"
+          },
+          "tagName": "stop-note-group",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "StopNoteGroup",
+            "module": "lib/stop-note-group.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "StopNoteGroup",
+          "declaration": {
+            "name": "StopNoteGroup",
+            "module": "lib/stop-note-group.js"
           }
         }
       ]

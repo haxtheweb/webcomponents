@@ -1,0 +1,143 @@
+{
+  "tag": "retro-tv",
+  "folder": "retro-tv",
+  "package": "@haxtheweb/retro-tv",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "retro-tv",
+  "description": "An old CRT with channels: the cabinet, knobs, static and on-screen display, with programs (HAX TV, credits, loading screens, a title sequence) that play on it",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/retro-tv/retro-tv.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/retro-tv/retro-tv.js",
+  "install": "npm i @haxtheweb/retro-tv",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "channel",
+      "property": "channel",
+      "type": "number",
+      "default": "3",
+      "description": "channel on air; a program whose `channel` matches is shown",
+      "hax": null
+    },
+    {
+      "name": "power",
+      "property": "power",
+      "type": "boolean",
+      "default": "true",
+      "description": "whether the set is on",
+      "hax": null
+    },
+    {
+      "name": "still",
+      "property": "still",
+      "type": "boolean",
+      "default": "false",
+      "description": "no motion: final frames only",
+      "hax": null
+    },
+    {
+      "name": "bare",
+      "property": "bare",
+      "type": "boolean",
+      "default": "false",
+      "description": "only the screen: no cabinet, dial or power (for a host's own set)",
+      "hax": null
+    },
+    {
+      "name": "controls",
+      "property": "controls",
+      "type": "boolean",
+      "default": "false",
+      "description": "make the knobs working buttons",
+      "hax": null
+    },
+    {
+      "name": "channel-label",
+      "property": "channelLabel",
+      "type": "string",
+      "default": "\"\"",
+      "description": "on-screen channel text; defaults to \"CH\" and the number",
+      "hax": null
+    },
+    {
+      "name": "channel-prefix",
+      "property": "channelPrefix",
+      "type": "string",
+      "default": "\"CH\"",
+      "description": "short word before the channel number when channel-label is not set",
+      "hax": null
+    },
+    {
+      "name": "osd-fade",
+      "property": "osdFade",
+      "type": "boolean",
+      "default": "false",
+      "description": "fade the on-screen channel number a moment after tuning",
+      "hax": null
+    },
+    {
+      "name": "remember-power",
+      "property": "rememberPower",
+      "type": "string",
+      "default": "\"\"",
+      "description": "localStorage key that remembers power for this viewer",
+      "hax": null
+    },
+    {
+      "name": "next-channel-label",
+      "property": "nextChannelLabel",
+      "type": "string",
+      "default": "\"Next channel\"",
+      "description": "accessible names for the controls (pass translated text)",
+      "hax": null
+    },
+    {
+      "name": "power-on-label",
+      "property": "powerOnLabel",
+      "type": "string",
+      "default": "\"Turn the TV on\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "power-off-label",
+      "property": "powerOffLabel",
+      "type": "string",
+      "default": "\"Turn the TV off\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "off-label",
+      "property": "offLabel",
+      "type": "string",
+      "default": "\"TV is off\"",
+      "description": "what the screen is called when the set is off",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "on-air",
+    "overlay"
+  ],
+  "events": [
+    "retro-tv-channel-changed",
+    "retro-tv-power-changed"
+  ],
+  "hax": {},
+  "surfaceHash": "3e5584a0f17f",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/retro-tv",
+    "file": "retro-tv.js"
+  }
+}

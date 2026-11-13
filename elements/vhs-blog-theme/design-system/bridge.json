@@ -1,0 +1,303 @@
+{
+  "$comment": "DDD bridge for Keepcase, the design system vhs-blog-theme defines for itself (design-system/keepcase.tokens.json, a local source). Tiers follow elements/d-d-d/design-system/bridge/contract.json. Keepcase is dark by design, so every named DDD color points at one fixed room or case color: white is the room's warm ink and coalyGray is the post panel, which is the pair DDD blocks use on a dark page. Kept as DDD on purpose: light, regular and medium weights (Archivo has them at DDD's values), state opacities, control heights and border widths (Keepcase has no rules of its own there), and heading/body sizes (posts keep DDD's reading sizes). The per-case palettes are not mapped: they belong to each tape, not to the page.",
+  "system": "keepcase",
+  "title": "Keepcase",
+  "prefix": "Keepcase",
+  "homepage": "https://github.com/haxtheweb/webcomponents/tree/master/elements/vhs-blog-theme",
+  "sources": [
+    {
+      "local": true,
+      "file": "design-system/keepcase.tokens.json",
+      "format": "dtcg",
+      "prefix": "--keepcase-",
+      "license": "Apache-2.0",
+      "copyright": "Copyright 2026 The Pennsylvania State University"
+    }
+  ],
+  "fonts": [
+    {
+      "family": "Archivo",
+      "license": "OFL-1.1",
+      "url": "https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800;900&display=swap"
+    },
+    {
+      "family": "Archivo Narrow",
+      "license": "OFL-1.1",
+      "url": "https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;700&display=swap"
+    },
+    {
+      "family": "IBM Plex Mono",
+      "license": "OFL-1.1",
+      "url": "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+    }
+  ],
+  "ddd": {
+    "--ddd-theme-default-beaverBlue": {
+      "token": "--keepcase-case-violet",
+      "note": "primary: VHS violet; warm white text on it"
+    },
+    "--ddd-theme-default-nittanyNavy": {
+      "token": "--keepcase-case-navy"
+    },
+    "--ddd-theme-default-potentialMidnight": {
+      "token": "--keepcase-room-floor",
+      "note": "the den floor"
+    },
+    "--ddd-theme-default-pughBlue": {
+      "token": "--keepcase-case-ice"
+    },
+    "--ddd-theme-default-accent": {
+      "token": "--keepcase-room-neon",
+      "note": "the store sign"
+    },
+    "--ddd-theme-default-skyBlue": {
+      "token": "--keepcase-case-sky"
+    },
+    "--ddd-theme-default-skyLight": {
+      "token": "--keepcase-case-ice"
+    },
+    "--ddd-theme-default-skyMaxLight": {
+      "token": "--keepcase-case-frost"
+    },
+    "--ddd-theme-default-slateGray": {
+      "token": "--keepcase-case-plum"
+    },
+    "--ddd-theme-default-slateLight": {
+      "token": "--keepcase-room-muted"
+    },
+    "--ddd-theme-default-slateMaxLight": {
+      "token": "--keepcase-room-dust"
+    },
+    "--ddd-theme-default-coalyGray": {
+      "token": "--keepcase-room-panel",
+      "note": "post and card surface; dark side of every DDD pair"
+    },
+    "--ddd-theme-default-black": {
+      "token": "--keepcase-room-black"
+    },
+    "--ddd-theme-default-white": {
+      "token": "--keepcase-room-ink",
+      "note": "Keepcase white is warm: the ink of the room"
+    },
+    "--ddd-theme-default-limestoneGray": {
+      "token": "--keepcase-room-muted"
+    },
+    "--ddd-theme-default-limestoneLight": {
+      "token": "--keepcase-room-dust"
+    },
+    "--ddd-theme-default-limestoneMaxLight": {
+      "token": "--keepcase-room-paper"
+    },
+    "--ddd-theme-default-background": {
+      "token": "--keepcase-room-paper"
+    },
+    "--ddd-theme-default-disabled": {
+      "token": "--keepcase-room-dust"
+    },
+    "--ddd-theme-default-keystoneYellow": {
+      "token": "--keepcase-case-yellow"
+    },
+    "--ddd-theme-default-globalNeon": {
+      "token": "--keepcase-room-focus"
+    },
+    "--ddd-theme-default-roarGolden": {
+      "token": "--keepcase-case-gold"
+    },
+    "--ddd-theme-default-roarLight": {
+      "token": "--keepcase-case-butter"
+    },
+    "--ddd-theme-default-roarMaxlight": {
+      "token": "--keepcase-case-cream"
+    },
+    "--ddd-theme-default-shrineTan": {
+      "token": "--keepcase-room-brass",
+      "note": "drawer-pull brass"
+    },
+    "--ddd-theme-default-shrineLight": {
+      "token": "--keepcase-case-butter"
+    },
+    "--ddd-theme-default-shrineMaxLight": {
+      "token": "--keepcase-room-paper"
+    },
+    "--ddd-theme-default-inventOrange": {
+      "token": "--keepcase-room-sticker",
+      "note": "price sticker orange"
+    },
+    "--ddd-theme-default-landgrantBrown": {
+      "token": "--keepcase-room-walnut",
+      "note": "the console cabinet"
+    },
+    "--ddd-theme-default-creekTeal": {
+      "token": "--keepcase-case-teal"
+    },
+    "--ddd-theme-default-creekLight": {
+      "token": "--keepcase-case-ice"
+    },
+    "--ddd-theme-default-creekMaxLight": {
+      "token": "--keepcase-case-frost"
+    },
+    "--ddd-theme-default-opportunityGreen": {
+      "token": "--keepcase-case-green",
+      "note": "correct signal (light)"
+    },
+    "--ddd-theme-default-forestGreen": {
+      "token": "--keepcase-case-olive"
+    },
+    "--ddd-theme-default-futureLime": {
+      "token": "--keepcase-case-lime",
+      "note": "correct signal (dark)"
+    },
+    "--ddd-theme-default-athertonViolet": {
+      "token": "--keepcase-case-mauve",
+      "note": "incorrect signal (dark)"
+    },
+    "--ddd-theme-default-wonderPurple": {
+      "token": "--keepcase-case-plum",
+      "note": "incorrect signal (light); keeps HAX purple-for-incorrect"
+    },
+    "--ddd-theme-default-original87Pink": {
+      "token": "--keepcase-case-magenta"
+    },
+    "--ddd-theme-default-discoveryCoral": {
+      "token": "--keepcase-case-crimson"
+    },
+    "--ddd-theme-default-link": {
+      "token": "--keepcase-case-royal"
+    },
+    "--ddd-theme-default-linkLight": {
+      "token": "--keepcase-room-screen-blue",
+      "note": "links on the dark room"
+    },
+    "--ddd-theme-default-error": {
+      "token": "--keepcase-case-red"
+    },
+    "--ddd-theme-default-errorLight": {
+      "token": "--keepcase-case-blush"
+    },
+    "--ddd-theme-default-warning": {
+      "token": "--keepcase-room-walnut"
+    },
+    "--ddd-theme-default-warningLight": {
+      "token": "--keepcase-case-butter"
+    },
+    "--ddd-theme-default-info": {
+      "token": "--keepcase-case-navy"
+    },
+    "--ddd-theme-default-infoLight": {
+      "token": "--keepcase-case-frost"
+    },
+    "--ddd-theme-default-success": {
+      "token": "--keepcase-case-green"
+    },
+    "--ddd-theme-default-successLight": {
+      "token": "--keepcase-case-mint"
+    },
+    "--ddd-theme-default-alertImmediate": {
+      "token": "--keepcase-case-blush"
+    },
+    "--ddd-theme-default-alertUrgent": {
+      "token": "--keepcase-case-butter"
+    },
+    "--ddd-theme-default-alertAllClear": {
+      "token": "--keepcase-case-mint"
+    },
+    "--ddd-theme-default-alertNonEmergency": {
+      "token": "--keepcase-case-frost"
+    },
+    "--ddd-font-primary": {
+      "value": "'Archivo', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+      "note": "Keepcase UI face"
+    },
+    "--ddd-font-secondary": {
+      "value": "'Archivo', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+      "note": "headings in Archivo at the bold weight"
+    },
+    "--ddd-font-navigation": {
+      "value": "'Archivo Narrow', 'Archivo', system-ui, sans-serif",
+      "note": "shelf labels and VCR keys"
+    },
+    "--ddd-font-mono": {
+      "value": "'IBM Plex Mono', 'Menlo', 'DejaVu Sans Mono', Courier, monospace",
+      "note": "catalog numbers"
+    },
+    "--ddd-font-weight-bold": {
+      "value": "800",
+      "note": "Archivo ExtraBold, as the chrome uses it"
+    },
+    "--ddd-font-weight-black": {
+      "value": "900"
+    },
+    "--ddd-radius-xs": {
+      "value": "2px",
+      "note": "stickers and labels"
+    },
+    "--ddd-radius-sm": {
+      "value": "4px",
+      "note": "case corners"
+    },
+    "--ddd-radius-md": {
+      "value": "6px",
+      "note": "buttons"
+    },
+    "--ddd-radius-lg": {
+      "value": "8px",
+      "note": "cards and the post panel"
+    },
+    "--ddd-radius-xl": {
+      "value": "14px",
+      "note": "the TV bezel"
+    },
+    "--ddd-boxShadow-sm": {
+      "value": "0 4px 0 rgba(0, 0, 0, 0.35)",
+      "note": "hard drop, like a VCR key"
+    },
+    "--ddd-boxShadow-md": {
+      "value": "0 8px 14px rgba(0, 0, 0, 0.5)"
+    },
+    "--ddd-boxShadow-lg": {
+      "value": "0 14px 30px rgba(0, 0, 0, 0.45)",
+      "note": "a case lifted off the shelf"
+    },
+    "--ddd-boxShadow-xl": {
+      "value": "0 30px 40px rgba(0, 0, 0, 0.6)",
+      "note": "the console cabinet"
+    },
+    "--ddd-focus-ring": {
+      "value": "3px solid var(--keepcase-room-focus)",
+      "note": "the theme's yellow focus ring"
+    },
+    "--ddd-focus-offset": {
+      "value": "3px"
+    },
+    "--ddd-duration-fast": {
+      "token": "--keepcase-duration-key"
+    },
+    "--ddd-duration-normal": {
+      "token": "--keepcase-duration-lid"
+    },
+    "--ddd-duration-slow": {
+      "token": "--keepcase-duration-tape"
+    },
+    "--ddd-timing-ease": {
+      "token": "--keepcase-easing-tape"
+    },
+    "--ddd-timing-enter": {
+      "token": "--keepcase-easing-pull"
+    },
+    "--ddd-timing-exit": {
+      "token": "--keepcase-easing-drop"
+    },
+    "--ddd-timing-emphasized": {
+      "token": "--keepcase-easing-lid"
+    }
+  },
+  "extraTokens": [
+    "--keepcase-room-floor",
+    "--keepcase-room-ink",
+    "--keepcase-room-neon",
+    "--keepcase-room-focus",
+    "--keepcase-room-vfd",
+    "--keepcase-room-walnut-dark",
+    "--keepcase-room-walnut-edge"
+  ]
+}

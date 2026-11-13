@@ -20,6 +20,8 @@ Lengths may be `px`, `rem`, `em` or `calc(<length> * <number>)`, so Tailwind's s
 
 A map entry can take `"fromMode": "light"` (or `"dark"`) to write that mode's value as a constant. Use it for a named DDD color when the system's palette only exists per mode (Spectrum).
 
+A design system that lives in its theme rather than on npm (for example Keepcase in `elements/vhs-blog-theme`) is a `local` source: `"local": true` with `file` relative to the theme folder. It is read in place, and its `license` must match the theme's own `package.json`.
+
 ## The contract
 
 Every bridge is checked against the same contract, so coverage is comparable across systems.

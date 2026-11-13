@@ -90,6 +90,7 @@ Rules:
 | `--hax-ui-on-accent`                   | white                           | potentialMidnight      | Text on an accent fill                                                                          |
 | `--hax-ui-danger` / `-soft`            | original87Pink                  | discoveryCoral         | Destructive actions, rows marked for deletion                                                   |
 | `--hax-ui-danger-hatch` / `-on-fill`   | danger 22% stripes / black 20%  | danger 22% / white 30% | The diagonal hatch on danger buttons and rows pending delete, so they read apart without colour |
+| `--hax-ui-incorrect` / `-soft`         | wonderPurple, 12%               | athertonViolet         | A wrong answer or a mismatch (passwords that do not match): purple, never red, with an icon and words |
 | `--hax-ui-success`                     | opportunityGreen                | creekLight             | Success pills and saved state                                                                   |
 | `--hax-ui-focus`                       | link                            | keystoneYellow         | Focus rings                                                                                     |
 | `--hax-ui-drop`, `--hax-ui-landed`     | accent-strong, 24%              |                        | Drag-and-drop targets, landing highlight                                                        |

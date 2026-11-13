@@ -3,16 +3,30 @@
  * @license Apache-2.0, see LICENSE for full text.
  */
 import { LitElement, html, css } from "lit";
+import "@haxtheweb/retro-tv/retro-tv.js";
+import "@haxtheweb/retro-tv/lib/programs/retro-tv-title-sequence.js";
+import "@haxtheweb/retro-tv/lib/programs/retro-tv-static.js";
+import "@haxtheweb/retro-tv/lib/programs/retro-tv-melee.js";
+
+/** the channels a tunable set flips through, in order */
+const CHANNELS = [3, 4, 2];
 
 /**
  * `vhs-blog-tv`
- * An old CRT that powers on and rolls an 80s style title sequence for the
- * active post. All motion is CSS and only runs when the visitor has not
- * asked for reduced motion; otherwise (and after skip()) the final frame
- * shows with no motion. The screen is one image to assistive tech, named
- * by the post title; the real heading lives in the page content.
+ * The VHS Blog's television, built on `retro-tv` like every TV in HAX:
+ * channel 3 rolls the 80s title sequence for the active post, channel 4 is
+ * static with a cast of rpg-characters tumbling through it, and channel 2
+ * is HAX Melee, the game on the HAX 64 cartridge. All motion is CSS and
+ * only runs when the visitor has not asked for reduced motion; otherwise
+ * (and after skip()) the final frame shows with no motion.
+ *
+ * "bare" renders only the screen (for the console cabinet) and "off" shows
+ * dark glass. A "tunable" screen is a button that changes channel
+ * (3, 4, 2, and around); "held" stops the picture. "seek" (rew or ff) runs
+ * tracking lines while the VCR moves between posts.
  *
  * @element vhs-blog-tv
+ * @fires vhs-blog-tv-channel - detail { channel }
  */
 export class VhsBlogTv extends LitElement {
   static get tag() {
@@ -32,7 +46,17 @@ export class VhsBlogTv extends LitElement {
       sequenceLabel: { type: String, attribute: "sequence-label" },
       presentsLabel: { type: String, attribute: "presents-label" },
       still: { type: Boolean, reflect: true },
-      _run: { type: Number, state: true },
+      bare: { type: Boolean, reflect: true },
+      off: { type: Boolean, reflect: true },
+      offLabel: { type: String, attribute: "off-label" },
+      tunable: { type: Boolean, reflect: true },
+      channel: { type: Number, reflect: true },
+      held: { type: Boolean, reflect: true },
+      seek: { type: String, reflect: true },
+      cast: { type: Array },
+      changeLabel: { type: String, attribute: "change-label" },
+      staticLabel: { type: String, attribute: "static-label" },
+      offAirLabel: { type: String, attribute: "off-air-label" },
     };
   }
 
@@ -45,11 +69,29 @@ export class VhsBlogTv extends LitElement {
     this.runtimeLabel = "Running time";
     this.minLabel = "min";
     this.playLabel = "Play";
-    this.channelLabel = "CH 03";
+    this.channelLabel = "CH";
     this.sequenceLabel = "Title sequence for";
     this.presentsLabel = "presents";
     this.still = false;
-    this._run = 0;
+    this.bare = false;
+    this.off = false;
+    this.offLabel = "The TV is off";
+    this.tunable = false;
+    this.channel = 3;
+    this.held = false;
+    this.seek = "";
+    this.cast = [];
+    this.changeLabel = "Change channel";
+    this.staticLabel = "";
+    this.offAirLabel = "";
+  }
+
+  get _tv() {
+    return this.shadowRoot && this.shadowRoot.querySelector("retro-tv");
+  }
+
+  get _melee() {
+    return this.shadowRoot && this.shadowRoot.querySelector("retro-tv-melee");
   }
 
   /**
@@ -57,7 +99,9 @@ export class VhsBlogTv extends LitElement {
    */
   replay() {
     this.still = false;
-    this._run = this._run + 1;
+    if (this._tv) {
+      this._tv.replay();
+    }
   }
 
   /**
@@ -65,6 +109,47 @@ export class VhsBlogTv extends LitElement {
    */
   skip() {
     this.still = true;
+  }
+
+  /**
+   * Change to the next channel (3, 4, 2, and around) and tell the page.
+   */
+  changeChannel() {
+    const i = CHANNELS.indexOf(Number(this.channel));
+    this.tune(CHANNELS[(i + 1) % CHANNELS.length]);
+  }
+
+  /**
+   * Change to a channel and tell the page.
+   * @param {Number} channel
+   */
+  tune(channel) {
+    this.channel = Number(channel);
+    this.held = false;
+    this.dispatchEvent(
+      new CustomEvent("vhs-blog-tv-channel", {
+        bubbles: true,
+        composed: true,
+        detail: { channel: this.channel },
+      }),
+    );
+  }
+
+  /**
+   * Play a HAX 64 controller button in HAX Melee.
+   * @param {String} button u, d, l, r, select, start, b or a
+   */
+  press(button) {
+    if (this._melee) {
+      this._melee.press(button);
+    }
+  }
+
+  /** Start HAX Melee over. */
+  reset() {
+    if (this._melee) {
+      this._melee.reset();
+    }
   }
 
   static get styles() {
@@ -75,488 +160,141 @@ export class VhsBlogTv extends LitElement {
           /* printed artwork: the same in light and dark, like the theme */
           color-scheme: only dark;
         }
-        .tv {
-          display: flex;
-          gap: 18px;
-          padding: 22px;
-          box-sizing: border-box;
-          border-radius: 22px;
-          background:
-            repeating-linear-gradient(
-              90deg,
-              rgba(0, 0, 0, 0.12) 0 2px,
-              transparent 2px 9px,
-              rgba(255, 255, 255, 0.04) 9px 10px,
-              transparent 10px 17px
-            ),
-            linear-gradient(180deg, #6b4529, #3b2718);
-          box-shadow:
-            0 24px 60px rgba(0, 0, 0, 0.6),
-            inset 0 2px 0 rgba(255, 255, 255, 0.12);
+        :host([bare]) retro-tv {
+          --retro-tv-screen-radius: 34px / 42px;
         }
-        .bezel {
-          flex: 1;
-          min-width: 0;
-          background: #1a1a1a;
-          border-radius: 18px;
-          padding: 18px;
-          box-shadow:
-            inset 0 0 0 3px #2b2b2b,
-            inset 0 6px 18px rgba(0, 0, 0, 0.8);
-        }
-        .side {
-          width: 100px;
-          flex: none;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 18px;
-          padding-top: 12px;
-        }
-        .knob {
-          width: 52px;
-          height: 52px;
-          border-radius: 50%;
-          background: radial-gradient(circle at 35% 30%, #9a9a9a, #3a3a3a 70%);
-          box-shadow:
-            0 3px 0 #111,
-            inset 0 0 0 4px rgba(0, 0, 0, 0.25);
+        button.screen {
           position: relative;
+          display: block;
+          width: 100%;
+          padding: 0;
+          border: 0;
+          border-radius: 34px / 42px;
+          background: none;
+          cursor: pointer;
+          font: inherit;
+          color: inherit;
         }
-        .knob::after {
-          content: "";
+        .sr-only {
           position: absolute;
-          left: 50%;
-          top: 6px;
-          width: 4px;
-          height: 15px;
-          margin-left: -2px;
-          background: #eee;
-          border-radius: 2px;
-          transform-origin: 50% 20px;
-          transform: rotate(40deg);
-        }
-        .grille {
-          width: 76px;
-          flex: 1;
-          min-height: 110px;
-          border-radius: 8px;
-          background:
-            radial-gradient(circle, #140d08 2.5px, transparent 3px) 0 0 / 9px
-              9px,
-            #2a1b10;
-        }
-        .led {
-          width: 10px;
-          height: 10px;
-          border-radius: 50%;
-          background: #ff3b3b;
-          box-shadow: 0 0 8px #ff3b3b;
-        }
-        @media (max-width: 700px) {
-          .side {
-            display: none;
-          }
-          .tv {
-            padding: 12px;
-          }
-          .bezel {
-            padding: 10px;
-          }
-        }
-        .screen {
-          position: relative;
-          aspect-ratio: 4 / 3;
-          border-radius: 28px / 36px;
+          width: 1px;
+          height: 1px;
           overflow: hidden;
-          background: #000;
+          clip-path: inset(50%);
+          white-space: nowrap;
         }
-        .scene {
+        button.screen:focus-visible {
+          outline: 4px solid #ffd60a;
+          outline-offset: 6px;
+        }
+        /* rewind and fast forward: tracking lines over the picture */
+        .seek {
           position: absolute;
           inset: 0;
-          background: linear-gradient(
-            180deg,
-            #07021a 0,
-            #1d0a3f 38%,
-            #5b1466 58%,
-            #ff4fa3 66%,
-            #0b0218 66.2%
-          );
-        }
-        .stars {
-          position: absolute;
-          inset: 0 0 40% 0;
-          background:
-            radial-gradient(circle, #fff 1px, transparent 1.5px) 0 0 / 53px 41px,
-            radial-gradient(
-                circle,
-                rgba(255, 255, 255, 0.7) 1px,
-                transparent 1.5px
-              )
-              20px 13px / 71px 59px;
-        }
-        .sun {
-          position: absolute;
-          left: 50%;
-          top: 30%;
-          width: 34%;
-          aspect-ratio: 1;
-          transform: translateX(-50%);
-          border-radius: 50%;
-          background: linear-gradient(180deg, #ffd60a, #ff7a1a 55%, #ff4fa3);
-          mask: linear-gradient(
-            #000 0 55%,
-            transparent 55% 59%,
-            #000 59% 67%,
-            transparent 67% 71%,
-            #000 71% 78%,
-            transparent 78% 83%,
-            #000 83% 88%,
-            transparent 88% 94%,
-            #000 94%
-          );
-        }
-        .floor {
-          position: absolute;
-          left: -50%;
-          right: -50%;
-          bottom: -10%;
-          height: 46%;
-          transform: perspective(300px) rotateX(62deg);
-          transform-origin: 50% 0;
-          background:
-            repeating-linear-gradient(
-              90deg,
-              rgba(255, 79, 163, 0.85) 0 2px,
-              transparent 2px 60px
-            ),
-            repeating-linear-gradient(
-              0deg,
-              rgba(255, 79, 163, 0.85) 0 2px,
-              transparent 2px 40px
-            ),
-            #0b0218;
-        }
-        .crawl {
-          position: absolute;
-          inset: 0;
-          display: flex;
-          flex-direction: column;
+          z-index: 2;
+          display: none;
           align-items: center;
           justify-content: center;
-          gap: 14px;
-          text-align: center;
-          padding: 0 8%;
-        }
-        .k {
-          font-family: "Russo One", sans-serif;
-          font-size: clamp(12px, 2vw, 18px);
-          letter-spacing: 0.3em;
-          text-transform: uppercase;
-          color: #cfe9ff;
-          /* a dark backing keeps the kicker lines readable over the sun */
-          background: rgba(7, 2, 26, 0.72);
-          padding: 2px 10px;
-          border-radius: 2px;
-        }
-        .chrome {
-          font-family: "Russo One", sans-serif;
-          font-size: clamp(32px, 6vw, 72px);
-          line-height: 0.95;
-          text-transform: uppercase;
-          font-style: italic;
-          overflow-wrap: anywhere;
-          color: #f2fbff;
-          background: linear-gradient(
-            180deg,
-            #f2fbff 0,
-            #ffffff 42%,
-            #c9b8ff 48%,
-            #ff9ccf 70%,
-            #ffd60a
-          );
-          -webkit-background-clip: text;
-          background-clip: text;
-          -webkit-text-fill-color: transparent;
-          filter: drop-shadow(0 4px 0 #1d0a3f)
-            drop-shadow(0 0 14px rgba(255, 79, 163, 0.6));
-        }
-        .osd {
-          position: absolute;
-          font-family: "VT323", monospace;
-          font-size: clamp(18px, 2.4vw, 28px);
-          color: #5dff8a;
-          text-shadow: 0 0 6px rgba(93, 255, 138, 0.8);
-          letter-spacing: 0.06em;
-          text-transform: uppercase;
-        }
-        .ch {
-          top: 6%;
-          right: 7%;
-        }
-        .pl {
-          bottom: 6%;
-          left: 7%;
-        }
-        .noise {
-          position: absolute;
-          inset: 0;
-          opacity: 0;
-          background:
-            repeating-radial-gradient(
-              circle at 17% 32%,
-              rgba(255, 255, 255, 0.5) 0 1px,
-              transparent 1px 3px
-            ),
-            repeating-radial-gradient(
-              circle at 71% 63%,
-              rgba(255, 255, 255, 0.35) 0 1px,
-              transparent 1px 2px
-            ),
-            #555;
-        }
-        .scan {
-          position: absolute;
-          inset: 0;
-          pointer-events: none;
           background: repeating-linear-gradient(
             180deg,
-            rgba(0, 0, 0, 0.28) 0 1px,
-            transparent 1px 3px
+            transparent 0 18%,
+            rgba(255, 255, 255, 0.28) 18% 20%,
+            transparent 20% 34%,
+            rgba(0, 0, 0, 0.35) 34% 37%
           );
         }
-        .glass {
-          position: absolute;
-          inset: 0;
-          pointer-events: none;
-          border-radius: inherit;
-          background:
-            radial-gradient(
-              ellipse at 50% 50%,
-              transparent 55%,
-              rgba(0, 0, 0, 0.55) 100%
-            ),
-            linear-gradient(160deg, rgba(255, 255, 255, 0.12), transparent 30%);
+        :host([seek="rew"]) .seek,
+        :host([seek="ff"]) .seek {
+          display: flex;
         }
-        /* motion only for people who have not asked for less of it, and
-           never once the sequence is skipped or the page is being edited */
+        .seek span {
+          font-family: "VT323", monospace;
+          font-size: clamp(28px, 8vw, 96px);
+          color: #5dff8a;
+          text-shadow: 0 0 8px rgba(93, 255, 138, 0.8);
+          background: rgba(0, 0, 0, 0.55);
+          padding: 0 16px;
+        }
         @media (prefers-reduced-motion: no-preference) {
-          :host(:not([still])) .run-a .screen {
-            animation: vhs-pow-a 0.9s ease-out both;
-          }
-          :host(:not([still])) .run-b .screen {
-            animation: vhs-pow-b 0.9s ease-out both;
-          }
-          :host(:not([still])) .run-a .scene {
-            animation: vhs-fade-a 1.8s linear both;
-          }
-          :host(:not([still])) .run-b .scene {
-            animation: vhs-fade-b 1.8s linear both;
-          }
-          :host(:not([still])) .run-a .noise {
-            animation: vhs-noise-a 1.5s steps(8) 0.6s both;
-          }
-          :host(:not([still])) .run-b .noise {
-            animation: vhs-noise-b 1.5s steps(8) 0.6s both;
-          }
-          :host(:not([still])) .run-a .crawl {
-            animation: vhs-crawl-a 6.5s cubic-bezier(0.2, 0.7, 0.2, 1) 1.4s both;
-          }
-          :host(:not([still])) .run-b .crawl {
-            animation: vhs-crawl-b 6.5s cubic-bezier(0.2, 0.7, 0.2, 1) 1.4s both;
-          }
-          :host(:not([still])) .run-a .pl {
-            animation: vhs-osd-a 1s steps(2) 7.5s both;
-          }
-          :host(:not([still])) .run-b .pl {
-            animation: vhs-osd-b 1s steps(2) 7.5s both;
-          }
-          :host(:not([still])) .floor {
-            animation: vhs-grid 1.2s linear 7;
+          .seek {
+            animation: vhs-track 0.4s linear infinite;
           }
         }
-        @keyframes vhs-pow-a {
+        @keyframes vhs-track {
           0% {
-            transform: scale(0, 0.004);
-            filter: brightness(4);
-          }
-          40% {
-            transform: scale(1, 0.004);
-            filter: brightness(4);
-          }
-          70% {
-            transform: scale(1, 1);
-            filter: brightness(2);
+            background-position: 0 0;
           }
           100% {
-            transform: scale(1, 1);
-            filter: brightness(1);
+            background-position: 0 100%;
           }
         }
-        @keyframes vhs-pow-b {
-          0% {
-            transform: scale(0, 0.004);
-            filter: brightness(4);
-          }
-          40% {
-            transform: scale(1, 0.004);
-            filter: brightness(4);
-          }
-          70% {
-            transform: scale(1, 1);
-            filter: brightness(2);
-          }
-          100% {
-            transform: scale(1, 1);
-            filter: brightness(1);
-          }
-        }
-        @keyframes vhs-fade-a {
-          0%,
-          60% {
-            opacity: 0;
-          }
-          100% {
-            opacity: 1;
-          }
-        }
-        @keyframes vhs-fade-b {
-          0%,
-          60% {
-            opacity: 0;
-          }
-          100% {
-            opacity: 1;
-          }
-        }
-        @keyframes vhs-noise-a {
-          0% {
-            opacity: 1;
-            background-position:
-              0 0,
-              0 0;
-          }
-          50% {
-            background-position:
-              7px 3px,
-              -5px 9px;
-          }
-          99% {
-            opacity: 1;
-          }
-          100% {
-            opacity: 0;
-          }
-        }
-        @keyframes vhs-noise-b {
-          0% {
-            opacity: 1;
-            background-position:
-              0 0,
-              0 0;
-          }
-          50% {
-            background-position:
-              7px 3px,
-              -5px 9px;
-          }
-          99% {
-            opacity: 1;
-          }
-          100% {
-            opacity: 0;
-          }
-        }
-        @keyframes vhs-crawl-a {
-          0% {
-            transform: translateY(115%);
-          }
-          100% {
-            transform: translateY(0);
-          }
-        }
-        @keyframes vhs-crawl-b {
-          0% {
-            transform: translateY(115%);
-          }
-          100% {
-            transform: translateY(0);
-          }
-        }
-        @keyframes vhs-osd-a {
-          0% {
-            opacity: 0;
-          }
-          100% {
-            opacity: 1;
-          }
-        }
-        @keyframes vhs-osd-b {
-          0% {
-            opacity: 0;
-          }
-          100% {
-            opacity: 1;
-          }
-        }
-        @keyframes vhs-grid {
-          0% {
-            background-position:
-              0 0,
-              0 0;
-          }
-          100% {
-            background-position:
-              0 0,
-              0 40px;
+        @media (forced-colors: active) {
+          button.screen {
+            border: 2px solid ButtonText;
           }
         }
       `,
     ];
   }
 
+  _label() {
+    if (this.off) {
+      return this.offLabel;
+    }
+    const tv = this._tv;
+    const p = tv ? tv.program : null;
+    return p ? p.screenLabel : `${this.sequenceLabel} ${this.crawlTitle}`;
+  }
+
   render() {
-    return html`
-      <div class="tv run-${this._run % 2 === 0 ? "a" : "b"}" part="tv">
-        <div class="bezel">
-          <div
-            class="screen"
-            role="img"
-            aria-label="${this.sequenceLabel} ${this.crawlTitle}"
-          >
-            <div class="scene">
-              <div class="stars"></div>
-              <div class="sun"></div>
-              <div class="floor"></div>
-            </div>
-            <div class="crawl">
-              <span class="k">${this.presenter} ${this.presentsLabel}</span>
-              <span class="k">${this.kicker}</span>
-              <span class="chrome">${this.crawlTitle}</span>
-              ${
-                this.runtime
-                  ? html`<span class="k"
-                      >${this.runtimeLabel} ${this.runtime}
-                      ${this.minLabel}</span
-                    >`
-                  : ""
-              }
-            </div>
-            <div class="noise"></div>
-            <span class="osd ch">${this.channelLabel}</span>
-            <span class="osd pl">${this.playLabel} &#9654;</span>
-            <div class="scan"></div>
-            <div class="glass"></div>
-          </div>
-        </div>
-        <div class="side" aria-hidden="true">
-          <span class="led"></span>
-          <span class="knob"></span>
-          <span class="knob"></span>
-          <span class="grille"></span>
-        </div>
+    // inside the tunable button the set is one picture, named by the button
+    const set = html`<retro-tv
+      aria-hidden="${this.tunable ? "true" : "false"}"
+      exportparts="tv, screen"
+      ?bare="${this.bare}"
+      channel="${this.channel}"
+      channel-prefix="${this.channelLabel}"
+      ?power="${!this.off}"
+      off-label="${this.offLabel}"
+      ?still="${this.still || this.held}"
+      @retro-tv-program-updated="${() => this.requestUpdate()}"
+    >
+      <retro-tv-title-sequence
+        channel="3"
+        crawl-title="${this.crawlTitle}"
+        presenter="${this.presenter}"
+        kicker="${this.kicker}"
+        runtime="${this.runtime}"
+        runtime-label="${this.runtimeLabel}"
+        min-label="${this.minLabel}"
+        play-label="${this.playLabel}"
+        sequence-label="${this.sequenceLabel}"
+        presents-label="${this.presentsLabel}"
+      ></retro-tv-title-sequence>
+      <retro-tv-static
+        channel="4"
+        label="${this.staticLabel}"
+        off-air="${this.offAirLabel}"
+        .cast="${this.cast}"
+      ></retro-tv-static>
+      <retro-tv-melee channel="2"></retro-tv-melee>
+      <div class="seek" slot="overlay" aria-hidden="true">
+        <span>${this.seek === "rew" ? "◀◀" : "▶▶"}</span>
       </div>
-    `;
+    </retro-tv>`;
+    if (this.tunable) {
+      // the name comes from words in the button, not aria-label, so it
+      // never disagrees with text drawn on the screen
+      return html`<button
+        class="screen"
+        type="button"
+        @click="${this.changeChannel}"
+      >
+        <span class="sr-only">${this._label()}. ${this.changeLabel}</span>
+        ${set}
+      </button>`;
+    }
+    return set;
   }
 }
 globalThis.customElements.define(VhsBlogTv.tag, VhsBlogTv);
