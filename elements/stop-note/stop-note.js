@@ -172,6 +172,12 @@ class StopNote extends SchemaBehaviors(I18NMixin(remoteLinkBehavior(DDD))) {
             --ddd-component-stop-note-icon-background,
             light-dark(transparent, var(--ddd-theme-default-white))
           );
+          /* status colour is meaning: pin the chip ink so a palette never
+             reaches it */
+          --ddd-block-chip-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
         }
         .ddd-block-header {
           /* the end padding leaves room for controls laid over the header,

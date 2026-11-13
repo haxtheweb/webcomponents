@@ -93,14 +93,27 @@ class LearningComponent extends I18NMixin(DDD) {
         :host {
           display: block;
           margin: var(--ddd-stack-gap, var(--ddd-spacing-4)) 0;
-          /* the type colour: chip fill and the frame's top rule */
+          /* chip fill and the frame's top rule, last match wins: the type
+             colour, theme primary (data-primary), theme palette
+             (data-palette), a data-primary on the element itself */
+          --learning-component-palette: var(--ddd-palette-chip);
+          --learning-component-palette-ink: var(--ddd-palette-chip-ink);
           --learning-component-type-color: var(
             --ddd-component-learning-component-title-background,
             var(
-              --ddd-theme-primary,
-              var(--simple-colors-default-theme-accent-8, #dc7927)
+              --learning-component-palette,
+              var(
+                --ddd-theme-primary,
+                var(--simple-colors-default-theme-accent-8, #dc7927)
+              )
             )
           );
+        }
+        /* a primary picked on the element is a local choice: it beats the
+           palette */
+        :host([data-primary]) {
+          --learning-component-palette: initial;
+          --learning-component-palette-ink: initial;
         }
         /* the type colour is kept on the chip and the frame's top rule */
         .ddd-block {
@@ -110,8 +123,11 @@ class LearningComponent extends I18NMixin(DDD) {
           border-top: var(--ddd-border-size-md) solid var(--ddd-block-accent);
           --ddd-block-chip-background: var(--learning-component-type-color);
           --ddd-block-chip-color: var(
-            --ddd-theme-font-color,
-            var(--simple-colors-default-theme-accent-1, #fff)
+            --learning-component-palette-ink,
+            var(
+              --ddd-theme-font-color,
+              var(--simple-colors-default-theme-accent-1, #fff)
+            )
           );
         }
         /* light type colours (observe, reflect, read, unit, knowledge,
@@ -124,8 +140,8 @@ class LearningComponent extends I18NMixin(DDD) {
         :host([accent-color="light-blue"]) .ddd-block,
         :host([accent-color="orange"]) .ddd-block {
           --ddd-block-chip-color: var(
-            --ddd-theme-font-color,
-            var(--ddd-theme-default-coalyGray)
+            --learning-component-palette-ink,
+            var(--ddd-theme-font-color, var(--ddd-theme-default-coalyGray))
           );
         }
         .sub-title:empty,
@@ -134,9 +150,12 @@ class LearningComponent extends I18NMixin(DDD) {
         }
         .ddd-block-body {
           padding: var(--ddd-spacing-4);
-          /* an author applied DDD accent still tints the body; otherwise it
-             sits on the page colour */
-          background-color: var(--ddd-theme-accent, transparent);
+          /* an author applied DDD accent still tints the body; otherwise the
+             palette tint, or the page colour */
+          background-color: var(
+            --ddd-theme-accent,
+            var(--ddd-palette-tint, transparent)
+          );
         }
         /* DDD pairs every accent with a readable ink; without it light text
            sat on a light accent in dark mode */
