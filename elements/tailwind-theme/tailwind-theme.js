@@ -14,6 +14,7 @@ import { activateTailwindDesignSystem } from "@haxtheweb/tailwind-theme/lib/Tail
 import { autorun, toJS } from "mobx";
 import "@haxtheweb/haxcms-elements/lib/ui-components/site/site-title.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu-content.js";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
@@ -60,6 +61,7 @@ class TailwindTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
       search: "Search",
       toggleDarkMode: "Toggle dark mode",
       pageNavigation: "Page navigation",
+      onThisPage: "On this page",
     };
     // no I18NMixin in this class chain, so register with the store directly
     I18NManagerStore.registerLocalization({
@@ -103,6 +105,7 @@ class TailwindTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
       sidebarOpen: { type: Boolean, reflect: true, attribute: "sidebar-open" },
       _mobile: { type: Boolean, state: true },
       _dark: { type: Boolean, state: true },
+      _eyebrow: { type: String, state: true },
     };
   }
 
@@ -281,6 +284,43 @@ class TailwindTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           max-width: var(--tailwind-theme-content-max-width, 768px);
           box-sizing: border-box;
         }
+        /* the page's section, small and in the accent color, above the title */
+        .eyebrow {
+          margin: 0 0 var(--ddd-spacing-2) 0;
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--text-sm, 0.875rem);
+          font-weight: var(--ddd-font-weight-bold);
+          letter-spacing: 0.05em;
+          text-transform: uppercase;
+          color: var(--tailwind-theme-accent);
+        }
+        /* reading column plus an "on this page" rail on wide screens */
+        .page {
+          display: flex;
+          align-items: flex-start;
+          gap: var(--ddd-spacing-10);
+        }
+        .page .content {
+          flex: 1 1 auto;
+          min-width: 0;
+        }
+        .toc {
+          display: none;
+          position: sticky;
+          top: calc(
+            var(--tailwind-theme-header-height, 64px) + var(--ddd-spacing-10)
+          );
+          flex: 0 0 12rem;
+          padding-top: var(--ddd-spacing-10);
+          font-size: var(--text-sm, 0.875rem);
+          --page-contents-menu-link: var(--tailwind-theme-muted);
+          --page-contents-menu-link-color-focus: var(--tailwind-theme-accent);
+        }
+        @media (min-width: 1280px) {
+          .toc {
+            display: block;
+          }
+        }
         site-breadcrumb {
           --site-breadcrumb-margin: 0 0 var(--ddd-spacing-2) 0;
           --site-breadcrumb-font-size: var(--text-sm);
@@ -373,12 +413,23 @@ class TailwindTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
       <div class="layout">
         ${this.renderNav()}
         <main>
-          <div class="content">
-            <site-breadcrumb part="page-breadcrumb"></site-breadcrumb>
-            <site-active-title part="page-title"></site-active-title>
-            <article id="contentcontainer">
-              <section id="slot"><slot></slot></section>
-            </article>
+          <div class="page">
+            <div class="content">
+              ${
+                this._eyebrow
+                  ? html`<p class="eyebrow" part="eyebrow">${this._eyebrow}</p>`
+                  : ""
+              }
+              <site-active-title part="page-title"></site-active-title>
+              <article id="contentcontainer">
+                <section id="slot"><slot></slot></section>
+              </article>
+            </div>
+            <aside class="toc" part="toc">
+              <site-menu-content
+                label="${this.t.onThisPage}"
+              ></site-menu-content>
+            </aside>
           </div>
           ${this.renderPager()}
           <footer part="footer">
@@ -456,6 +507,18 @@ class TailwindTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     this.__themeDisposers.push(
       autorun(() => {
         this._dark = !!toJS(store.darkMode);
+      }),
+    );
+    this.__themeDisposers.push(
+      autorun(() => {
+        // the docs show the section a page belongs to above its title
+        const item = toJS(store.activeItem);
+        const manifest = toJS(store.manifest);
+        const parent =
+          item && item.parent && manifest && manifest.items
+            ? manifest.items.find((i) => i.id === item.parent)
+            : null;
+        this._eyebrow = parent ? parent.title : "";
       }),
     );
     this.__themeDisposers.push(
