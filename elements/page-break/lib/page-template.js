@@ -10,7 +10,8 @@ import { generateResourceID } from "@haxtheweb/utils/lib/ids.js";
 
 /**
  * `page-template`
- * `Template component for style guide functionality`
+ * `Wrapper from the retired theme/style-guide.html system. HAXcms no longer
+ * reads it; the tag stays defined so any markup that still has it renders.`
  *
  * @demo demo/index.html
  * @element page-template

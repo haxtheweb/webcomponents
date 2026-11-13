@@ -2035,59 +2035,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       .replace(/[^0-9\-/a-z]/gi, "");
   }
 
-  // Get available page templates from style guide
-  async getPageTemplates() {
-    try {
-      const siteBuilder = globalThis.document.querySelector(
-        "haxcms-site-builder",
-      );
-      if (!siteBuilder) {
-        console.warn("getPageTemplates: No haxcms-site-builder found");
-        return [];
-      }
-
-      // Load style guide content
-      const styleGuideContent = await store.loadStyleGuideContent();
-      if (!styleGuideContent) {
-        console.warn("getPageTemplates: No style guide content found");
-        return [];
-      }
-
-      // Convert style guide content to HAX schema elements
-      const styleGuideElements =
-        await siteBuilder.htmlToHaxElements(styleGuideContent);
-      const templates = [];
-
-      for (const styleElement of styleGuideElements) {
-        // Look for page-template elements with schema="page"
-        if (styleElement && styleElement.tag === "page-template") {
-          const schema =
-            styleElement.properties && styleElement.properties.schema;
-          const templateName =
-            styleElement.properties && styleElement.properties.name;
-          const templateId =
-            styleElement.properties &&
-            (styleElement.properties["data-haxsg-id"] ||
-              styleElement.properties.id);
-
-          if (schema === "page" && templateName && styleElement.content) {
-            const template = {
-              id: templateId || `template-${templates.length}`,
-              name: templateName,
-              content: styleElement.content,
-            };
-            templates.push(template);
-          }
-        }
-      }
-
-      return templates;
-    } catch (error) {
-      console.warn("Failed to get page templates:", error);
-      return [];
-    }
-  }
-
   // Create page with title - method called by Merlin programs
   async createPageWithTitle(title, type, templateContent = null) {
     // When invoked from the create-page Merlin program, always prefer the
@@ -2330,8 +2277,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       newPageCapitalized: "New Page",
       createTitleWithView: "Create {title} with view",
       createTitle: "Create {title}",
-      createTemplate: "Create {template}",
-      createTemplateNamedTitle: "Create {template} named {title}",
       duplicateCurrentPage: "Duplicate current page",
       duplicateCurrentPageRenameTo: "Duplicate current page, rename to {title}",
       copyOfTitle: "{title} (copy)",
@@ -2612,8 +2557,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           const typed = input ? input.trim() : "";
           const title = typed || this.t.newPageCapitalized;
           try {
-            // Get available page templates
-            const pageTemplates = await siteEditorUI.getPageTemplates();
             const results = [];
 
             // blank page first
@@ -2635,35 +2578,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               eventName: "super-daemon-element-method",
               path: "CMS/action/create/page/blank",
             });
-
-            // Add template options if templates are available
-            if (pageTemplates && pageTemplates.length > 0) {
-              pageTemplates.forEach((template, _index) => {
-                results.push({
-                  title: typed
-                    ? this.t.createTemplateNamedTitle
-                        .replace("{template}", () => template.name)
-                        .replace("{title}", () => typed)
-                    : this.t.createTemplate.replace(
-                        "{template}",
-                        () => template.name,
-                      ),
-                  icon: "hax:templates",
-                  tags: ["template", "page", "create"],
-                  value: {
-                    target: siteEditorUI,
-                    method: "createPageWithTitle",
-                    args: [
-                      title,
-                      createType,
-                      templateContent || template.content,
-                    ],
-                  },
-                  eventName: "super-daemon-element-method",
-                  path: `CMS/action/create/page/template/${template.id}`,
-                });
-              });
-            }
 
             // duplicate the current page, renamed to the typed title (or
             // kept as a copy of the current title when nothing is typed)
@@ -3530,7 +3444,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       themeSettings: "Theme Settings",
       seoSettings: "SEO Settings",
       authorSettings: "Author Settings",
-      styleGuide: "Style Guide",
       close: "Close",
       settings: "Settings",
       edit: "Edit",
@@ -5154,23 +5067,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       eventName: "super-daemon-element-method",
       path: "CMS/admin/import-export",
     });
-    if (store.platformAllows("styleGuide")) {
-      SuperDaemonInstance.defineOption({
-        title: this.t.adminSection.replace(
-          "{section}",
-          () => this.t.styleGuide,
-        ),
-        icon: "lrn:palette",
-        tags: ["CMS", "admin", "theme", "style guide", "design"],
-        value: {
-          target: this,
-          method: "_styleGuideButtonTap",
-        },
-        context: "admin",
-        eventName: "super-daemon-element-method",
-        path: "CMS/admin/style-guide",
-      });
-    }
     SuperDaemonInstance.defineOption({
       i18n: { context: this, title: "logOut" },
       title: this.t.logOut,
@@ -8844,14 +8740,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           break;
       }
     });
-  }
-  /**
-   * Navigate to style guide route
-   */
-  _styleGuideButtonTap(_e) {
-    this._clearAdminRoutePathFromLocation("replace");
-    store.playSound("click");
-    globalThis.location.href = "x/displays/style-guide";
   }
   async _openThemePreviewFromProgram(e) {
     await this._openThemePreview(e);

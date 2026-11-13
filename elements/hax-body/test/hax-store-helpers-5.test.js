@@ -37,12 +37,10 @@ describe("hax-store helpers round 5 (app store + editor command logic)", () => {
       stash("haxAutoloader");
       stash("setHaxProperties");
       stash("_handleDynamicImports");
-      stash("_detectStyleGuideTemplates");
       HAXStore.appStoreLoaded = false;
       HAXStore.haxAutoloader = globalThis.document.createElement("div");
       HAXStore.setHaxProperties = () => {};
       HAXStore._handleDynamicImports = () => {};
-      HAXStore._detectStyleGuideTemplates = () => {};
     });
 
     it("does nothing for a null response", async () => {
@@ -588,12 +586,10 @@ describe("hax-store helpers round 5 (app store + editor command logic)", () => {
       stash("storageData");
       stash("_storageDataChanged");
       stash("_buildPrimitiveDefinitions");
-      stash("_detectStyleGuideTemplates");
       HAXStore.ready = false;
       HAXStore.storageData = {};
       HAXStore._storageDataChanged = () => {};
       HAXStore._buildPrimitiveDefinitions = () => {};
-      HAXStore._detectStyleGuideTemplates = () => {};
     });
 
     it("does nothing while a piece is missing", () => {
@@ -655,12 +651,8 @@ describe("hax-store helpers round 5 (app store + editor command logic)", () => {
         },
       };
       let primitivesBuilt = false;
-      let templatesDetected = false;
       HAXStore._buildPrimitiveDefinitions = () => {
         primitivesBuilt = true;
-      };
-      HAXStore._detectStyleGuideTemplates = () => {
-        templatesDetected = true;
       };
       try {
         HAXStore._storePiecesAllHere(
@@ -678,7 +670,6 @@ describe("hax-store helpers round 5 (app store + editor command logic)", () => {
       expect(schematizeTargets.length).to.equal(2);
       expect(associated).to.equal(fakeButton);
       expect(primitivesBuilt).to.equal(true);
-      expect(templatesDetected).to.equal(true);
     });
   });
 

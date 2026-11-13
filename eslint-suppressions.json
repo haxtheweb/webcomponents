@@ -549,7 +549,7 @@
       "count": 3
     },
     "haxtheweb-leaks/live-document-parse": {
-      "count": 2
+      "count": 1
     }
   },
   "elements/haxcms-elements/lib/core/haxcms-site-dashboard.js": {
@@ -790,11 +790,6 @@
   },
   "elements/haxcms-elements/lib/ui-components/routes/site-tags-route.js": {
     "haxtheweb-leaks/autorun-in-constructor": {
-      "count": 1
-    }
-  },
-  "elements/haxcms-elements/lib/ui-components/routes/site-theme-style-guide-route.js": {
-    "haxtheweb-leaks/live-document-parse": {
       "count": 1
     }
   },

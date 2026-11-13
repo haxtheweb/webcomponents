@@ -186,12 +186,6 @@ class Store {
         titleKey: "print",
         component: "site-print-route",
       },
-      "displays/style-guide": {
-        titleKey: "displays/style-guide",
-        component: "site-theme-style-guide-route",
-        callback: () => {},
-        useHaxEditor: true,
-      },
     };
     this.evaluatebadDevice();
     this.location = null;
@@ -240,7 +234,6 @@ class Store {
       random: "Random page",
       home: "Home page",
       print: "Print page",
-      "displays/style-guide": "Theme Style Guide",
       pageNotFound: "Page not found",
     };
     // Store is not an element; register it against the shared haxcms namespace
@@ -588,8 +581,6 @@ class Store {
     }
     manifest.items = newItems;
     this.manifest = manifest;
-    // Clear style guide cache when manifest changes
-    this.clearStyleGuideCache();
     target.dispatchEvent(
       new CustomEvent("json-outline-schema-changed", {
         bubbles: true,
@@ -1275,7 +1266,6 @@ class Store {
         "addPage",
         "saveAndEdit",
         "deletePage",
-        "styleGuide",
         "outlineDesigner",
         // Keep "insights" for compatibility in platform config; it gates Reports UI.
         "insights",
@@ -1503,183 +1493,6 @@ class Store {
       console.warn("Failed to load content for item:", itemId, error);
     }
 
-    return "";
-  }
-
-  /**
-   * Load style guide content from theme/style-guide.html with caching
-   *
-   * This method handles the common issue in HAXcms PHP where htaccess rewrites
-   * cause missing style-guide.html files to return the site's index.html instead
-   * of a proper 404. We validate the returned content contains page-template tags
-   * to ensure we're working with actual style guide content.
-   *
-   * @returns {Promise<string>} The HTML content of the style guide or default content
-   */
-  async loadStyleGuideContent() {
-    // Create a cache key based on the current site and styleGuide URL
-    const siteId =
-      this.manifest && this.manifest.id ? this.manifest.id : "default";
-    const styleGuideUrlFromManifest =
-      this.manifest &&
-      this.manifest.metadata &&
-      this.manifest.metadata.theme &&
-      this.manifest.metadata.theme.styleGuide
-        ? this.manifest.metadata.theme.styleGuide
-        : "default";
-    const cacheKey = `${siteId}-${styleGuideUrlFromManifest}`;
-
-    // Check if we have cached content for this site/URL combination
-    if (!this._styleGuideCache) {
-      this._styleGuideCache = new Map();
-    }
-
-    if (this._styleGuideCache.has(cacheKey)) {
-      // Return cached content immediately
-      return this._styleGuideCache.get(cacheKey);
-    }
-
-    // If not cached, fetch and cache the result
-    try {
-      // Get outlineLocation from site builder if available
-      let outlineLocation = "";
-      if (HAXcmsStore.storePieces && HAXcmsStore.storePieces.siteBuilder) {
-        outlineLocation =
-          HAXcmsStore.storePieces.siteBuilder.outlineLocation || "";
-      }
-
-      // Check if there's a custom styleGuide URL in the manifest
-      let styleGuideUrl = "theme/style-guide.html"; // default
-      if (
-        this.manifest &&
-        this.manifest.metadata &&
-        this.manifest.metadata.theme &&
-        this.manifest.metadata.theme.styleGuide
-      ) {
-        styleGuideUrl = this.manifest.metadata.theme.styleGuide;
-        // If it's a full URL (http/https), use it directly, otherwise prepend outlineLocation
-        if (
-          !styleGuideUrl.startsWith("http://") &&
-          !styleGuideUrl.startsWith("https://")
-        ) {
-          styleGuideUrl = `${outlineLocation}${styleGuideUrl}`;
-        }
-      } else {
-        styleGuideUrl = `${outlineLocation}${styleGuideUrl}`;
-      }
-
-      const response = await fetch(styleGuideUrl);
-      let content;
-
-      if (response.ok) {
-        // Validate that the response is HTML content
-        const contentType = response.headers.get("content-type");
-        if (
-          contentType &&
-          (contentType.includes("text/html") ||
-            contentType.includes("text/plain"))
-        ) {
-          const responseText = await response.text();
-
-          // Validate that this is actually a style guide by checking for page-template tags
-          // This prevents htaccess redirects from serving the site index when style-guide.html is missing
-          if (responseText && this.isValidStyleGuideContent(responseText)) {
-            content = responseText;
-          } else {
-            console.warn(
-              "Style guide URL returned HTML without valid page-template tags - likely htaccess redirect to index. Treating as missing style guide.",
-            );
-            content = this.getDefaultStyleGuideContent();
-            // Don't cache the invalid content - let it try again next time in case the issue is resolved
-            return content;
-          }
-        } else {
-          console.warn(
-            `Style guide URL returned non-HTML content type: ${contentType}`,
-          );
-          content = this.getDefaultStyleGuideContent();
-        }
-      } else if (response.status === 404) {
-        // File doesn't exist, return default content
-        content = this.getDefaultStyleGuideContent();
-      } else {
-        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-      }
-
-      // Cache the result
-      this._styleGuideCache.set(cacheKey, content);
-      return content;
-    } catch (error) {
-      console.warn("Failed to load style guide content:", error);
-      const defaultContent = this.getDefaultStyleGuideContent();
-      // Cache the default content as well to prevent repeated failures
-      this._styleGuideCache.set(cacheKey, defaultContent);
-      return defaultContent;
-    }
-  }
-
-  /**
-   * Clear the style guide cache
-   * Call this when the manifest changes or when the styleGuide URL is updated
-   */
-  clearStyleGuideCache() {
-    if (this._styleGuideCache) {
-      this._styleGuideCache.clear();
-    }
-  }
-
-  /**
-   * Validate that content is actually a style guide by checking for page-template tags
-   *
-   * This prevents htaccess redirects from serving the site index when style-guide.html is missing.
-   * In HAXcms PHP, when a file like 'style-guide.html' doesn't exist, the htaccess rewrite rules
-   * often redirect to the site's root index file instead of returning a proper 404. This causes
-   * the site's index.html to be processed as if it were the style guide, leading to theme
-   * element issues and broken styling.
-   *
-   * @param {string} content - The content to validate
-   * @returns {boolean} - True if content contains valid page-template elements and doesn't appear to be site index
-   */
-  isValidStyleGuideContent(content) {
-    if (!content || typeof content !== "string") {
-      return false;
-    }
-
-    // Check for page-template tags (case insensitive)
-    const pageTemplateStart = /<page-template/i.exec(content);
-    const hasPageTemplate =
-      pageTemplateStart !== null &&
-      content.indexOf(
-        ">",
-        pageTemplateStart.index + pageTemplateStart[0].length,
-      ) !== -1;
-
-    // Additional validation: ensure it's not just a site index by checking for typical HAXcms site elements
-    // If it contains these, it's likely the site index being served instead of style-guide.html
-    const siteIndexIndicators = [
-      /<haxcms-site-builder/i,
-      /<site-menu/i,
-      /<json-outline-schema/i,
-      /manifest\.json/i,
-      /site\.json/i,
-    ];
-
-    const appearsToBeSiteIndex = siteIndexIndicators.some((regex) =>
-      regex.test(content),
-    );
-
-    // Valid style guide should have page-template tags and NOT appear to be the site index
-    return hasPageTemplate && !appearsToBeSiteIndex;
-  }
-
-  /**
-   * Get default style guide content template
-   * @returns {string} - The default HTML content for the style guide
-   */
-  getDefaultStyleGuideContent() {
-    // Default style guide content is intentionally empty.
-    // Themes that want style-guide-driven behavior should
-    // provide their own theme/style-guide.html file.
     return "";
   }
 

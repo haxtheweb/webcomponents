@@ -104,21 +104,13 @@ describe("DDD style guide presets for lists in the HAX settings form", () => {
     }
   }
 
-  function listProps(tag) {
-    // mirrors the ul / ol primitive definition in hax-store
+  function listProps() {
+    // mirrors the ul / ol primitive definition in hax-store: no list field,
+    // bullet and number styles come from the presets
     return {
       gizmo: {},
       designSystem: { text: true, card: true, accent: true, primary: true },
-      settings: {
-        configure: [
-          {
-            attribute: "data-design-treatment",
-            title: tag === "ul" ? "Bullet style" : "Number style",
-            inputMethod: "select",
-            options: {},
-          },
-        ],
-      },
+      settings: { configure: [] },
     };
   }
 
@@ -141,39 +133,39 @@ describe("DDD style guide presets for lists in the HAX settings form", () => {
   };
   registerWithStore(store);
 
+  const listPresets = {
+    ul: ["readingRequired", "readingOptional", "listDisc", "listCircle"],
+    ol: [
+      "readingRequired",
+      "readingOptional",
+      "listLowerAlpha",
+      "listUpperAlpha",
+      "listLowerRoman",
+    ],
+  };
   ["ul", "ol"].forEach((tag) => {
-    it(`offers the reading presets in the Style Guide group for ${tag}`, () => {
-      const props = store.designSystemHAXProperties(listProps(tag), tag);
+    it(`offers the list presets in the Style Guide group for ${tag}`, () => {
+      const props = store.designSystemHAXProperties(listProps(), tag);
       const { group, field } = styleGuideField(props);
       expect(group.hidden).to.be.false;
       expect(field.attribute).to.equal("data-style-guide");
-      expect(field.itemsList.map((item) => item.value)).to.deep.equal([
-        "readingRequired",
-        "readingOptional",
-      ]);
-      expect(field.itemsList.map((item) => item.text)).to.deep.equal([
-        "Required reading",
-        "Optional reading",
-      ]);
-      // the list's own Bullet / Number style field is left in place
-      expect(
-        props.settings.configure.find(
-          (item) => item.attribute === "data-design-treatment",
-        ),
-      ).to.exist;
+      expect(field.itemsList.map((item) => item.value)).to.deep.equal(
+        listPresets[tag],
+      );
+      // every option carries a live sample of the preset
+      field.itemsList.forEach((item) => {
+        expect(item.html).to.exist;
+        expect(item.html.values).to.include(item.value);
+      });
     });
   });
 
-  it("choosing a reading preset writes data-design-treatment on the list", () => {
-    const props = store.designSystemHAXProperties(listProps("ol"), "ol");
+  it("choosing a list preset writes data-design-treatment on the list", () => {
+    const props = store.designSystemHAXProperties(listProps(), "ol");
     const { field } = styleGuideField(props);
-    const treatmentInput = { value: "list-lower-alpha" };
     const setValues = {};
     const form = {
       formElements: {
-        "settings.configure.data-design-treatment": {
-          element: treatmentInput,
-        },
         "settings.configure.ddd-styles.ddd-styleguide.data-style-guide": {
           element: {},
           field: {},
@@ -183,17 +175,21 @@ describe("DDD style guide presets for lists in the HAX settings form", () => {
         setValues[key] = value;
       },
     };
-    field.onValueChanged({ detail: { value: "readingOptional" } }, { form });
-    expect(treatmentInput.value).to.equal("reading-optional");
+    field.onValueChanged({ detail: { value: "listLowerRoman" } }, { form });
+    expect(setValues["settings.configure.data-design-treatment"]).to.equal(
+      "list-lower-roman",
+    );
     // attributes owned by other presets are cleared, not left behind
     expect(setValues["settings.configure.data-primary"]).to.be.undefined;
     expect("settings.configure.data-primary" in setValues).to.be.true;
     field.onValueChanged({ detail: { value: "readingRequired" } }, { form });
-    expect(treatmentInput.value).to.equal("reading-required");
+    expect(setValues["settings.configure.data-design-treatment"]).to.equal(
+      "reading-required",
+    );
   });
 
   it("does not offer a Style Guide group for tags without presets", () => {
-    const props = store.designSystemHAXProperties(listProps("ul"), "dl");
+    const props = store.designSystemHAXProperties(listProps(), "dl");
     const { group } = styleGuideField(props);
     expect(group.hidden).to.be.true;
   });
@@ -253,5 +249,55 @@ describe("DDD text alignment setting opt-out", () => {
     expect(attrs).to.include("data-width");
     expect(attrs).to.include("data-padding");
     expect(attrs).to.include("data-margin");
+  });
+});
+
+describe("DDD style guide defaults follow the active design system", () => {
+  it("removes the heading insert default when a non-DDD system becomes active", () => {
+    const wasRegistered = globalThis.__dddStyleGuideAuthoringRegistered;
+    const origHaxStore = globalThis.HaxStore;
+    const manager = { active: "ddd" };
+    const originalDemo = [{ tag: "h2", content: "Heading", properties: {} }];
+    const store = {
+      elementList: {
+        h2: {
+          gizmo: {},
+          designSystem: { text: true, designTreatment: true },
+          settings: { configure: [] },
+          demoSchema: JSON.parse(JSON.stringify(originalDemo)),
+        },
+      },
+      styleGuideSchema: {},
+      __dddStyleGuideAuthoringApplied: false,
+      __dddStyleGuideDefaultSchemaReady: true,
+      isInlineElement: () => false,
+      designSystemHAXProperties: (props) => props,
+    };
+    globalThis.__dddStyleGuideAuthoringRegistered = false;
+    globalThis.HaxStore = { requestAvailability: () => store };
+    try {
+      registerDDDStyleGuideAuthoring({
+        manager,
+        options: { HAXOptionSampleFactory },
+      });
+      // DDD active: new h2s get the headline preset
+      expect(store.styleGuideSchema.h2).to.exist;
+      expect(
+        store.elementList.h2.demoSchema[0].properties["data-style-guide"],
+      ).to.equal("headline");
+      // a system that does not extend ddd takes the default back out
+      manager.active = "bootstrap";
+      globalThis.dispatchEvent(new CustomEvent("design-system-active-changed"));
+      expect(store.styleGuideSchema.h2).to.be.undefined;
+      expect(store.elementList.h2.demoSchema).to.deep.equal(originalDemo);
+      // and back to ddd puts it back
+      manager.active = "ddd";
+      globalThis.dispatchEvent(new CustomEvent("design-system-active-changed"));
+      expect(store.styleGuideSchema.h2).to.exist;
+    } finally {
+      manager.active = "ddd";
+      globalThis.__dddStyleGuideAuthoringRegistered = wasRegistered;
+      globalThis.HaxStore = origHaxStore;
+    }
   });
 });
