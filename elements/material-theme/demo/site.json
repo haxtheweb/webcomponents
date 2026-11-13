@@ -1,8 +1,8 @@
 {
   "id": "3a7e2d11-6b3d-4e2a-9c8f-materi000001",
-  "title": "Material 3 for HAX",
+  "title": "Course design kit",
   "author": "",
-  "description": "A HAXsite demonstrating material-theme and the Material 3 DDD bridge.",
+  "description": "A demo site for material-theme in the layout of the Material Design 3 site, built from HAX blocks.",
   "license": "by-sa",
   "metadata": {
     "author": {
@@ -48,14 +48,14 @@
   },
   "items": [
     {
-      "id": "item-3a7e2d11-overview",
+      "id": "item-3a7e2d11-home",
       "indent": 0,
-      "location": "pages/item-3a7e2d11-overview/index.html",
-      "slug": "overview",
+      "location": "pages/item-3a7e2d11-home/index.html",
+      "slug": "home",
       "order": 0,
       "parent": null,
-      "title": "Overview",
-      "description": "What the Material 3 theme and design system bridge do.",
+      "title": "Home",
+      "description": "An open kit for designing accessible, consistent course sites.",
       "metadata": {
         "created": 1736889000,
         "updated": 1736889000,
@@ -64,18 +64,19 @@
         "locked": false,
         "readtime": 1,
         "tags": "",
-        "status": ""
+        "status": "",
+        "icon": "icons:home"
       }
     },
     {
-      "id": "item-3a7e2d11-blocks",
+      "id": "item-3a7e2d11-get-started",
       "indent": 0,
-      "location": "pages/item-3a7e2d11-blocks/index.html",
-      "slug": "blocks",
+      "location": "pages/item-3a7e2d11-get-started/index.html",
+      "slug": "get-started",
       "order": 1,
       "parent": null,
-      "title": "Blocks in Material 3",
-      "description": "Common HAX blocks rendered through the Material 3 bridge.",
+      "title": "Get started",
+      "description": "Turn the theme on, write a first page and check it in both schemes.",
       "metadata": {
         "created": 1736889000,
         "updated": 1736889000,
@@ -84,38 +85,122 @@
         "locked": false,
         "readtime": 1,
         "tags": "",
-        "status": ""
+        "status": "",
+        "icon": "icons:flag"
       }
     },
     {
-      "id": "item-3a7e2d11-learning-checks",
-      "indent": 1,
-      "location": "pages/item-3a7e2d11-learning-checks/index.html",
-      "slug": "blocks/learning-checks",
-      "order": 0,
-      "parent": "item-3a7e2d11-blocks",
-      "title": "Learning checks",
-      "description": "Answer states keep HAX meaning channels in Material 3 colors.",
-      "metadata": {
-        "created": 1736889000,
-        "updated": 1736889000,
-        "published": true,
-        "hideInMenu": false,
-        "locked": false,
-        "readtime": 1,
-        "tags": "",
-        "status": ""
-      }
-    },
-    {
-      "id": "item-3a7e2d11-color",
+      "id": "item-3a7e2d11-foundations",
       "indent": 0,
-      "location": "pages/item-3a7e2d11-color/index.html",
-      "slug": "color",
+      "location": "pages/item-3a7e2d11-foundations/index.html",
+      "slug": "foundations",
       "order": 2,
       "parent": null,
-      "title": "Palette and color",
-      "description": "DDD palettes and accents mapped onto the Material 3 palette.",
+      "title": "Foundations",
+      "description": "The principles every page in the kit is built on.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": "",
+        "icon": "icons:accessibility"
+      }
+    },
+    {
+      "id": "item-3a7e2d11-foundations-accessibility",
+      "indent": 1,
+      "location": "pages/item-3a7e2d11-foundations-accessibility/index.html",
+      "slug": "foundations/accessibility",
+      "order": 0,
+      "parent": "item-3a7e2d11-foundations",
+      "title": "Accessibility",
+      "description": "Practical checks for accessible course pages.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-3a7e2d11-styles",
+      "indent": 0,
+      "location": "pages/item-3a7e2d11-styles/index.html",
+      "slug": "styles",
+      "order": 3,
+      "parent": null,
+      "title": "Styles",
+      "description": "Color, shape and type, applied by role.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": "",
+        "icon": "image:palette"
+      }
+    },
+    {
+      "id": "item-3a7e2d11-components",
+      "indent": 0,
+      "location": "pages/item-3a7e2d11-components/index.html",
+      "slug": "components",
+      "order": 4,
+      "parent": null,
+      "title": "Components",
+      "description": "Blocks as they appear in this theme, with guidance on when to use them.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": "",
+        "icon": "icons:widgets"
+      }
+    },
+    {
+      "id": "item-3a7e2d11-components-buttons",
+      "indent": 1,
+      "location": "pages/item-3a7e2d11-components-buttons/index.html",
+      "slug": "components/buttons",
+      "order": 0,
+      "parent": "item-3a7e2d11-components",
+      "title": "Buttons",
+      "description": "Buttons let people take an action with one tap.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-3a7e2d11-components-learning-checks",
+      "indent": 1,
+      "location": "pages/item-3a7e2d11-components-learning-checks/index.html",
+      "slug": "components/learning-checks",
+      "order": 1,
+      "parent": "item-3a7e2d11-components",
+      "title": "Learning checks",
+      "description": "Answer states keep their meaning channels in Material colors.",
       "metadata": {
         "created": 1736889000,
         "updated": 1736889000,
@@ -132,10 +217,10 @@
       "indent": 0,
       "location": "pages/item-3a7e2d11-about/index.html",
       "slug": "about",
-      "order": 3,
+      "order": 5,
       "parent": null,
-      "title": "About the bridge",
-      "description": "How the mapping works, and upstream attribution.",
+      "title": "About",
+      "description": "Where the token values come from and how much of DDD they cover.",
       "metadata": {
         "created": 1736889000,
         "updated": 1736889000,
@@ -144,7 +229,8 @@
         "locked": false,
         "readtime": 1,
         "tags": "",
-        "status": ""
+        "status": "",
+        "icon": "icons:info-outline"
       }
     }
   ]

@@ -1,6 +1,8 @@
 # material-theme
 
-A HAXcms theme in the Material 3 layout (top app bar, navigation drawer that overlays below 840px, content surface), built on the **Material 3 DDD bridge**.
+A HAXcms theme laid out like the Material Design 3 site itself (top app bar; a navigation rail of top-level pages, each with its `metadata.icon` and a pill indicator on the current section, hidden below 600px; a navigation drawer for the whole outline that overlays below 840px; content on a rounded surface), built on the **Material 3 DDD bridge**.
+
+The demo site (`demo/`) is a course design kit in that layout: a home page with a hero and "What's new" cards, get started, foundations, styles, components with tabs and learning checks, and the bridge's coverage, all authored with ordinary HAX blocks. Its artwork in `demo/files` is original to this repository.
 
 ## What the bridge does
 
