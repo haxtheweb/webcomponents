@@ -104,6 +104,7 @@ class SiteMenuContent extends HAXCMSThemeParts(I18NMixin(PageContentsMenu)) {
         ${super.render()}
         <simple-icon-button-lite
           icon="icons:arrow-upward"
+          label="${this.t.backToTop}"
           @click="${this.backToTop}"
           ><span>${this.t.backToTop}</span></simple-icon-button-lite
         >

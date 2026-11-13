@@ -250,6 +250,26 @@ describe("a11y-tabs test", () => {
       await expect(testElement).shadowDom.to.be.accessible();
     });
 
+    it("makes a panel whose content overflows reachable by keyboard", async () => {
+      const testElement = await fixture(html`
+        <div style="width: 300px">
+          <a11y-tabs>
+            <a11y-tab label="Wide">
+              <pre style="white-space: pre">${"x".repeat(400)}</pre>
+            </a11y-tab>
+          </a11y-tabs>
+        </div>
+      `);
+      const tabs = testElement.querySelector("a11y-tabs");
+      await tabs.updateComplete;
+      await new Promise((resolve) => setTimeout(resolve, 200));
+      const inner = tabs
+        .querySelector("a11y-tab")
+        .shadowRoot.querySelector("#content-inner");
+      expect(inner.getAttribute("tabindex")).to.equal("0");
+      await expect(tabs).shadowDom.to.be.accessible();
+    });
+
     it("gives tabs without ids distinct ids, even when they upgrade first", async () => {
       // tabs defined before the group numbers them used to keep tab-1
       const testElement = await fixture(html`

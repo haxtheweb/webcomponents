@@ -331,8 +331,42 @@ class A11yTab extends I18NMixin(LitElement) {
     this.observer.observe(this, { childList: true });
   }
 
+  // a panel whose content scrolls (a wide table or code block) must be
+  // reachable by keyboard; it gets a tab stop only while it overflows
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) super.firstUpdated(changedProperties);
+    const inner = this.shadowRoot.querySelector("#content-inner");
+    if (inner && globalThis.ResizeObserver) {
+      this.__scrollObserver = new ResizeObserver(() => {
+        if (
+          inner.scrollWidth > inner.clientWidth ||
+          inner.scrollHeight > inner.clientHeight
+        ) {
+          inner.setAttribute("tabindex", "0");
+        } else {
+          inner.removeAttribute("tabindex");
+        }
+      });
+      this.__scrollObserver.observe(inner);
+      // content that grows wider later (a block that upgrades) resizes its
+      // own box, not the panel's, so watch the slotted children too
+      const slot = inner.querySelector("slot");
+      if (slot) {
+        slot.addEventListener("slotchange", () => {
+          slot
+            .assignedElements()
+            .forEach((el) => this.__scrollObserver.observe(el));
+        });
+        slot
+          .assignedElements()
+          .forEach((el) => this.__scrollObserver.observe(el));
+      }
+    }
+  }
+
   disconnectedCallback() {
     this.observer.disconnect();
+    if (this.__scrollObserver) this.__scrollObserver.disconnect();
     this.removeEventListener("a11y-tab-flag", this._onTabFlag);
     this._fireTabChanged();
     super.disconnectedCallback();
