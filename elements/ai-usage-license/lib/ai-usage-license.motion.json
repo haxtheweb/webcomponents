@@ -188,7 +188,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "uri=\"AIUL URI (OER Sch…\""
+      "s": "uri=\"null\""
     },
     {
       "type": "text",
@@ -271,7 +271,7 @@
       "ex": 796,
       "ey": 500,
       "label": "modifier",
-      "sub": "",
+      "sub": "\"IM\"",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -283,7 +283,7 @@
       "ex": 616,
       "ey": 500,
       "label": "uri",
-      "sub": "\"AIUL URI (OER Sch…\"",
+      "sub": "\"null\"",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -300,13 +300,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set license and media modifier",
-      "text": "Fill in the License field in the sidebar. Choose for Media Modifier."
+      "text": "The AI usage license level for this work. Media domain modifier."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set aiul uri (oer schema)",
-      "text": "Fill in the AIUL URI (OER Schema) field in the sidebar."
+      "text": "OER Schema: URI for the AI Usage License reference page."
     },
     {
       "t": 14.8,

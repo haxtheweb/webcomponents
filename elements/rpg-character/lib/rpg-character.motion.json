@@ -294,7 +294,7 @@
       "ex": 616,
       "ey": 570,
       "label": "hat",
-      "sub": "none · random · bunny …",
+      "sub": "Default · Random · Bunny …",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -318,7 +318,7 @@
       "ex": 616,
       "ey": 570,
       "label": "preset",
-      "sub": "none · hockey · football …",
+      "sub": "None · Hockey player · Football p…",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -330,7 +330,7 @@
       "ex": 796,
       "ey": 570,
       "label": "mask",
-      "sub": "none · lion · plague …",
+      "sub": "None · Lion · Plague doctor …",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -346,14 +346,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set hat and name",
-      "text": "Choose none, random, bunny and more for Hat."
+      "title": "Set hat",
+      "text": "Hat: Default, Random or Bunny, and more."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set character type and mask",
-      "text": "Choose none, hockey, football and more for Character type."
+      "title": "Set character type",
+      "text": "Character type: None, Hockey player or Football player, and more."
     },
     {
       "t": 14.8,

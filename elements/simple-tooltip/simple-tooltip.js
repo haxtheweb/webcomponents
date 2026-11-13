@@ -236,8 +236,7 @@ class SimpleTooltip extends LitElement {
        */
       for: { type: String },
       /**
-       * Set this to true if you want to manually control when the tooltip
-       * is shown or hidden.
+       * Show and hide the tooltip only from code, not on hover or focus.
        */
       manualMode: { type: Boolean, attribute: "manual-mode" },
       /**
@@ -264,8 +263,7 @@ class SimpleTooltip extends LitElement {
        */
       marginTop: { type: Number, attribute: "margin-top" },
       /**
-       * The delay that will be applied before the `entry` animation is
-       * played when showing the tooltip.
+       * Milliseconds to wait before the tooltip's entry animation plays.
        */
       animationDelay: { type: Number, attribute: "animation-delay" },
       /**

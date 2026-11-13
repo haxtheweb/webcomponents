@@ -319,7 +319,7 @@
       "ex": 616,
       "ey": 550,
       "label": "display-as",
-      "sub": "cards · timeline · table …",
+      "sub": "Date cards · Timeline · Table …",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -360,13 +360,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set display as",
-      "text": "How to present what the file contains."
+      "text": "How to present what the file contains. Upload or choose an .ics calendar file."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set heading",
-      "text": "Fill in the Heading field in the sidebar."
+      "text": "Shown above the events, and as the table caption."
     },
     {
       "t": 14.8,

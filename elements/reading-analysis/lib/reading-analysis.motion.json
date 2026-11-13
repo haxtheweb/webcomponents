@@ -252,7 +252,7 @@
       "ex": 616,
       "ey": 570,
       "label": "mode",
-      "sub": "flag · one",
+      "sub": "Flag evidence · Select one",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -264,7 +264,7 @@
       "ex": 796,
       "ey": 570,
       "label": "unit",
-      "sub": "sentence · paragraph · figure",
+      "sub": "Sentences · Paragraphs · Figures…",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -305,12 +305,12 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set activity",
-      "text": "Choose flag, one for Activity."
+      "text": "Flag evidence: learners stick each flag beside the evidence for it."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set question and attempts",
+      "title": "Set question",
       "text": "What learners are asked to find in the reading."
     },
     {

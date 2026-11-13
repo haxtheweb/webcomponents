@@ -225,7 +225,7 @@
   "end": {
     "in": 17.8,
     "line": "Image scroll by",
-    "code": ""
+    "code": "<parallax-image></parallax-image>"
   },
   "surfaceHash": "4f7bd7934ad6",
   "review": {

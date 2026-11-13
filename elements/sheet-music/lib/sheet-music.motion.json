@@ -193,7 +193,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "show-display-options"
+      "s": "show-display-options=\"true\""
     },
     {
       "type": "text",
@@ -201,7 +201,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "show-export"
+      "s": "show-export=\"true\""
     },
     {
       "type": "text",
@@ -339,7 +339,7 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set audio playback",
-      "text": "Switch Audio playback on or off in the sidebar."
+      "text": "On by default - listen to the sheet music played via the built-in synthesizer."
     },
     {
       "t": 10,

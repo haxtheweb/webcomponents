@@ -27,7 +27,7 @@
       "property": "opened",
       "type": "boolean",
       "default": "false",
-      "description": "open state",
+      "description": "Whether the modal is open; set by the simple-modal-show event.",
       "hax": null
     },
     {
@@ -35,7 +35,7 @@
       "property": "closeLabel",
       "type": "string",
       "default": "",
-      "description": "Close label",
+      "description": "Label of the close button.",
       "hax": null
     },
     {
@@ -43,7 +43,7 @@
       "property": "closeIcon",
       "type": "string",
       "default": "\"close\"",
-      "description": "Close icon",
+      "description": "Icon on the close button.",
       "hax": null
     },
     {

@@ -345,7 +345,7 @@
       "t": 10,
       "out": 14.6,
       "title": "Set closed captions",
-      "text": "The URL for the captions file. Optional. The URL for a thumbnail/poster image."
+      "text": "The URL for the captions file. The URL for a thumbnail/poster image."
     },
     {
       "t": 14.8,

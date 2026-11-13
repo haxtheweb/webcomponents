@@ -27,7 +27,7 @@
       "property": "alt",
       "type": "null",
       "default": "null",
-      "description": "alt text",
+      "description": "Accessible name for the corner link, read in place of the logo.",
       "hax": null
     },
     {

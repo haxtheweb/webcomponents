@@ -75,7 +75,7 @@
       "property": "type",
       "type": "string",
       "default": "\"Twitter\"",
-      "description": "the type of social; currently supports Facebook, LinkedIn, Pinterest, and Twitter (default)",
+      "description": "Network to share to: Facebook, LinkedIn, Pinterest or Twitter (default).",
       "hax": null
     },
     {

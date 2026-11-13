@@ -178,7 +178,7 @@ const RichTextEditorBehaviors = function (SuperClass) {
         },
 
         /**
-         * id for toolbar
+         * Id of the rich-text-editor-toolbar this editor uses.
          */
         toolbarId: {
           name: "toolbarId",
@@ -196,7 +196,7 @@ const RichTextEditorBehaviors = function (SuperClass) {
           attribute: "range",
         },
         /**
-         * raw html
+         * HTML to load into the editor in place of its content.
          */
         rawhtml: {
           type: String,
@@ -204,10 +204,8 @@ const RichTextEditorBehaviors = function (SuperClass) {
         },
 
         /**
-         * type of editor toolbar, i.e.
-         * full - full for full toolbar with breadcrumb,
-         * mini - mini for mini floating toolbar, or
-         * default toolbar if neither.
+         * Toolbar to use: full (with breadcrumbs), mini (floating) or the
+         * default.
          */
         type: {
           name: "type",

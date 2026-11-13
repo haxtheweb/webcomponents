@@ -81,7 +81,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Allow a null option to be selected?",
+              "description": "Offer a \"no icon\" choice so the value can be cleared.",
               "default": "true",
               "attribute": "allowNull"
             },
@@ -180,7 +180,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Allow a null option to be selected?",
+              "description": "Offer a \"no icon\" choice so the value can be cleared.",
               "default": "true",
               "fieldName": "allowNull"
             },

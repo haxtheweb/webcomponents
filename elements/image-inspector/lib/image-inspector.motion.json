@@ -47,27 +47,22 @@
       "in": 2.4,
       "rows": [
         {
-          "name": "degrees",
-          "desc": "Image rotation"
+          "name": "src",
+          "desc": "Address of the image to inspect."
         },
         {
-          "name": "src",
-          "desc": "Image source."
+          "name": "degrees",
+          "desc": "Rotation of the image in degree…"
         },
         {
           "name": "hover-class",
           "desc": "Hover class for button styling"
-        },
-        {
-          "name": "no-left",
-          "desc": "no left"
         }
       ],
       "active": [
         [5, 0],
         [7.4, 1],
         [10, 2],
-        [12.4, 3],
         [14.8, 0]
       ]
     },
@@ -85,7 +80,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "degrees=\"0\""
+      "s": "src=\"../../lrndesign-imagema…\""
     },
     {
       "type": "text",
@@ -93,7 +88,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "src=\"src\""
+      "s": "degrees=\"0\""
     },
     {
       "type": "text",
@@ -102,14 +97,6 @@
       "c": "code",
       "in": 10,
       "s": "hover-class=\"hover class\""
-    },
-    {
-      "type": "text",
-      "x": 1022,
-      "y": 368,
-      "c": "code",
-      "in": 12.4,
-      "s": "no-left=\"false\""
     },
     {
       "type": "text",
@@ -137,13 +124,6 @@
           10,
           {
             "y": 368
-          },
-          0.4
-        ],
-        [
-          12.4,
-          {
-            "y": 400
           },
           0.4
         ]
@@ -177,13 +157,6 @@
             "y": 400
           },
           0.4
-        ],
-        [
-          12.4,
-          {
-            "y": 432
-          },
-          0.4
         ]
       ]
     },
@@ -193,8 +166,8 @@
       "py": 488,
       "ex": 616,
       "ey": 540,
-      "label": "degrees",
-      "sub": "a number",
+      "label": "src",
+      "sub": "\"../../lrndesign-imagemap/dem…",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -205,8 +178,8 @@
       "py": 488,
       "ex": 796,
       "ey": 540,
-      "label": "src",
-      "sub": "\"src\"",
+      "label": "degrees",
+      "sub": "a number",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -222,18 +195,6 @@
       "dir": 1,
       "in": 10.2,
       "out": 12.2
-    },
-    {
-      "type": "callout",
-      "px": 770,
-      "py": 488,
-      "ex": 796,
-      "ey": 540,
-      "label": "no-left",
-      "sub": "on or off",
-      "dir": 1,
-      "in": 12.6,
-      "out": 14.600000000000001
     }
   ],
   "beats": [
@@ -246,14 +207,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set degrees and src",
-      "text": "Add degrees and src attributes to the tag."
+      "title": "Set src",
+      "text": "Address of the image to inspect."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set hover class and no left",
-      "text": "Hover class for button styling. Add the no-left attribute to switch it on."
+      "title": "Set hover class",
+      "text": "Hover class for button styling."
     },
     {
       "t": 14.8,

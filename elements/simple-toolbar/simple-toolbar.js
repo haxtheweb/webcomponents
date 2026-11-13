@@ -118,7 +118,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
       return {
         ...SimpleToolbarGlobalProperties,
         /**
-         * always expanded so more button is unnecessary?
+         * Always show every button, so there is no more button.
          */
         alwaysExpanded: {
           name: "alwaysExpanded",
@@ -145,7 +145,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
           reflect: true,
         },
         /**
-         * is toolbar collapsed?
+         * Whether the toolbar is collapsed, hiding buttons behind more.
          */
         collapsed: {
           name: "collapsed",
@@ -190,7 +190,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
           type: Object,
         },
         /**
-         * Should toolbar stick to top so that it is always visible?
+         * Stick the toolbar to the top of the page so it stays in view.
          */
         sticky: {
           name: "sticky",

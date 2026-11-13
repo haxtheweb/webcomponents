@@ -54,7 +54,7 @@ class SimpleDatetime extends LitElement {
         type: Number,
       },
       /**
-       * Format to output, see https://github.com/jacwright/date.format#supported-identifiers
+       * Date format, using the PHP date() letters, for example M jS, Y.
        */
       format: {
         type: String,

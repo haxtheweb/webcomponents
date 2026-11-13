@@ -27,7 +27,7 @@
       "property": "degrees",
       "type": "number",
       "default": "0",
-      "description": "Image rotation",
+      "description": "Rotation of the image in degrees, changed by the rotate buttons.",
       "hax": null
     },
     {
@@ -35,7 +35,7 @@
       "property": "src",
       "type": "string",
       "default": "\"\"",
-      "description": "Image source.",
+      "description": "Address of the image to inspect.",
       "hax": null
     },
     {

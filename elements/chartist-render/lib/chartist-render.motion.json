@@ -146,27 +146,22 @@
       "in": 2.4,
       "rows": [
         {
-          "name": "chart-title",
-          "desc": "DEPRECATED: Use heading slot in…"
+          "name": "scale",
+          "desc": "The scale of the chart. (See ht…"
         },
         {
-          "name": "chart-data",
-          "desc": "Raw data pulled in from the csv…"
+          "name": "type",
+          "desc": "The type of chart:bar, line, or…"
         },
         {
-          "name": "chart-desc",
-          "desc": "DEPRECATED: Use desc slot inste…"
-        },
-        {
-          "name": "data",
-          "desc": "Use an accessible table in unna…"
+          "name": "show-table",
+          "desc": "The show data in table form as…"
         }
       ],
       "active": [
         [5, 0],
         [7.4, 1],
         [10, 2],
-        [12.4, 3],
         [14.8, 0]
       ]
     },
@@ -184,7 +179,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "chart-title=\"chart title\""
+      "s": "scale=\"ct-square\""
     },
     {
       "type": "text",
@@ -192,7 +187,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "chart-data=\"chart data\""
+      "s": "type=\"pie\""
     },
     {
       "type": "text",
@@ -200,15 +195,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "chart-desc=\"chart desc\""
-    },
-    {
-      "type": "text",
-      "x": 1022,
-      "y": 368,
-      "c": "code",
-      "in": 12.4,
-      "s": "data=\"[]\""
+      "s": "show-table=\"false\""
     },
     {
       "type": "text",
@@ -236,13 +223,6 @@
           10,
           {
             "y": 368
-          },
-          0.4
-        ],
-        [
-          12.4,
-          {
-            "y": 400
           },
           0.4
         ]
@@ -276,13 +256,6 @@
             "y": 400
           },
           0.4
-        ],
-        [
-          12.4,
-          {
-            "y": 432
-          },
-          0.4
         ]
       ]
     },
@@ -292,8 +265,8 @@
       "py": 488,
       "ex": 616,
       "ey": 540,
-      "label": "chart-title",
-      "sub": "\"chart title\"",
+      "label": "scale",
+      "sub": "\"ct-square\"",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -304,8 +277,8 @@
       "py": 488,
       "ex": 796,
       "ey": 540,
-      "label": "chart-data",
-      "sub": "\"chart data\"",
+      "label": "type",
+      "sub": "\"pie\"",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -316,23 +289,11 @@
       "py": 488,
       "ex": 616,
       "ey": 540,
-      "label": "chart-desc",
-      "sub": "\"chart desc\"",
+      "label": "show-table",
+      "sub": "on or off",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
-    },
-    {
-      "type": "callout",
-      "px": 770,
-      "py": 488,
-      "ex": 796,
-      "ey": 540,
-      "label": "data",
-      "sub": "\"[]\"",
-      "dir": 1,
-      "in": 12.6,
-      "out": 14.600000000000001
     }
   ],
   "beats": [
@@ -345,14 +306,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set chart title and chart data",
-      "text": "DEPRECATED: Use heading slot instead for progressive enhancement."
+      "title": "Set type",
+      "text": "The type of chart:bar, line, or pie."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set chart desc and data",
-      "text": "DEPRECATED: Use desc slot instead for progressive enhancement."
+      "title": "Set show table",
+      "text": "The show data in table form as well? Default is false."
     },
     {
       "t": 14.8,

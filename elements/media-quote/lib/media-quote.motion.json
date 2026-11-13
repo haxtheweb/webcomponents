@@ -137,12 +137,12 @@
           "desc": "Alt Text"
         },
         {
-          "name": "slot quote",
-          "desc": "Quote"
+          "name": "slot author-detail",
+          "desc": "Author details"
         },
         {
-          "name": "slot author",
-          "desc": "Author"
+          "name": "slot quote",
+          "desc": "Quote"
         }
       ],
       "active": [
@@ -207,7 +207,7 @@
       "y": 368,
       "c": "code",
       "in": 10,
-      "s": "<p slot=\"quote\">A cute cat stalki…</p>"
+      "s": "<p slot=\"author-detail\">A cute cat stalki…<…"
     },
     {
       "type": "text",
@@ -215,7 +215,7 @@
       "y": 400,
       "c": "code",
       "in": 12.4,
-      "s": "<p slot=\"author\">A cute cat stalki…</p>"
+      "s": "<p slot=\"quote\">A cute cat stalki…</p>"
     },
     {
       "type": "text",
@@ -271,8 +271,8 @@
       "py": 428,
       "ex": 616,
       "ey": 480,
-      "label": "slot quote",
-      "sub": "\"Quote\"",
+      "label": "slot author-detail",
+      "sub": "\"Author details\"",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -283,8 +283,8 @@
       "py": 428,
       "ex": 796,
       "ey": 480,
-      "label": "slot author",
-      "sub": "\"Author\"",
+      "label": "slot quote",
+      "sub": "\"Quote\"",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -306,8 +306,8 @@
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set quote and author",
-      "text": "Quote goes inside the tag as content. Author goes inside the tag as content."
+      "title": "Set author details and quote",
+      "text": "Author details. Quote goes inside the tag as content."
     },
     {
       "t": 14.8,
