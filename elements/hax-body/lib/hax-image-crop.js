@@ -254,14 +254,20 @@ class HaxImageCrop extends I18NMixin(LitElement) {
           touch-action: none;
           user-select: none;
         }
+        /* the box is exactly the drawn image, so the crop's percentages
+           line up; hosts short on height cap it with
+           --hax-image-crop-max-height */
         .box {
           position: relative;
-          margin: 0 auto;
+          width: fit-content;
           max-width: 100%;
+          margin: 0 auto;
         }
         .box img {
           display: block;
-          width: 100%;
+          max-width: 100%;
+          max-height: var(--hax-image-crop-max-height, none);
+          width: auto;
           height: auto;
           pointer-events: none;
         }
@@ -375,7 +381,7 @@ class HaxImageCrop extends I18NMixin(LitElement) {
         }
         .nums {
           display: grid;
-          grid-template-columns: repeat(2, minmax(0, 1fr));
+          grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
           gap: var(--hax-ui-gap-md);
         }
         .num {

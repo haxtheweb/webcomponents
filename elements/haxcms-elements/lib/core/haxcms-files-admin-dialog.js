@@ -678,11 +678,10 @@ class HAXCMSFilesAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
           padding: var(--ddd-spacing-4, 16px);
           overflow: auto;
           border-left: 1px solid var(--hax-ui-line);
+          /* only focused to move focus in, never a tab stop */
           outline: none;
-        }
-        .cropper:focus-visible {
-          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
-          outline-offset: calc(-1 * var(--hax-ui-focus-width));
+          /* leave room for the controls and the buttons under the image */
+          --hax-image-crop-max-height: clamp(140px, 28vh, 480px);
         }
         @container files (max-width: 980px) {
           .split.cropping .tw {
