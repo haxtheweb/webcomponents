@@ -3,14 +3,18 @@
  * @license Apache-2.0, see LICENSE for full text.
  */
 import { LitElement, html, css } from "lit";
+import "@haxtheweb/retro-tv/retro-tv.js";
+import "@haxtheweb/retro-tv/lib/programs/retro-tv-title-sequence.js";
 
 /**
  * `vhs-blog-tv`
  * An old CRT that powers on and rolls an 80s style title sequence for the
- * active post. All motion is CSS and only runs when the visitor has not
- * asked for reduced motion; otherwise (and after skip()) the final frame
- * shows with no motion. The screen is one image to assistive tech, named
- * by the post title; the real heading lives in the page content.
+ * active post. The set is `retro-tv` on channel 3 with the
+ * `retro-tv-title-sequence` program; this element keeps the attributes the
+ * theme has always passed. All motion is CSS and only runs when the visitor
+ * has not asked for reduced motion; otherwise (and after skip()) the final
+ * frame shows with no motion. The screen is one image to assistive tech,
+ * named by the post title; the real heading lives in the page content.
  *
  * @element vhs-blog-tv
  */
@@ -32,7 +36,6 @@ export class VhsBlogTv extends LitElement {
       sequenceLabel: { type: String, attribute: "sequence-label" },
       presentsLabel: { type: String, attribute: "presents-label" },
       still: { type: Boolean, reflect: true },
-      _run: { type: Number, state: true },
     };
   }
 
@@ -49,7 +52,10 @@ export class VhsBlogTv extends LitElement {
     this.sequenceLabel = "Title sequence for";
     this.presentsLabel = "presents";
     this.still = false;
-    this._run = 0;
+  }
+
+  get _tv() {
+    return this.shadowRoot && this.shadowRoot.querySelector("retro-tv");
   }
 
   /**
@@ -57,7 +63,9 @@ export class VhsBlogTv extends LitElement {
    */
   replay() {
     this.still = false;
-    this._run = this._run + 1;
+    if (this._tv) {
+      this._tv.replay();
+    }
   }
 
   /**
@@ -75,487 +83,31 @@ export class VhsBlogTv extends LitElement {
           /* printed artwork: the same in light and dark, like the theme */
           color-scheme: only dark;
         }
-        .tv {
-          display: flex;
-          gap: 18px;
-          padding: 22px;
-          box-sizing: border-box;
-          border-radius: 22px;
-          background:
-            repeating-linear-gradient(
-              90deg,
-              rgba(0, 0, 0, 0.12) 0 2px,
-              transparent 2px 9px,
-              rgba(255, 255, 255, 0.04) 9px 10px,
-              transparent 10px 17px
-            ),
-            linear-gradient(180deg, #6b4529, #3b2718);
-          box-shadow:
-            0 24px 60px rgba(0, 0, 0, 0.6),
-            inset 0 2px 0 rgba(255, 255, 255, 0.12);
-        }
-        .bezel {
-          flex: 1;
-          min-width: 0;
-          background: #1a1a1a;
-          border-radius: 18px;
-          padding: 18px;
-          box-shadow:
-            inset 0 0 0 3px #2b2b2b,
-            inset 0 6px 18px rgba(0, 0, 0, 0.8);
-        }
-        .side {
-          width: 100px;
-          flex: none;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 18px;
-          padding-top: 12px;
-        }
-        .knob {
-          width: 52px;
-          height: 52px;
-          border-radius: 50%;
-          background: radial-gradient(circle at 35% 30%, #9a9a9a, #3a3a3a 70%);
-          box-shadow:
-            0 3px 0 #111,
-            inset 0 0 0 4px rgba(0, 0, 0, 0.25);
-          position: relative;
-        }
-        .knob::after {
-          content: "";
-          position: absolute;
-          left: 50%;
-          top: 6px;
-          width: 4px;
-          height: 15px;
-          margin-left: -2px;
-          background: #eee;
-          border-radius: 2px;
-          transform-origin: 50% 20px;
-          transform: rotate(40deg);
-        }
-        .grille {
-          width: 76px;
-          flex: 1;
-          min-height: 110px;
-          border-radius: 8px;
-          background:
-            radial-gradient(circle, #140d08 2.5px, transparent 3px) 0 0 / 9px
-              9px,
-            #2a1b10;
-        }
-        .led {
-          width: 10px;
-          height: 10px;
-          border-radius: 50%;
-          background: #ff3b3b;
-          box-shadow: 0 0 8px #ff3b3b;
-        }
-        @media (max-width: 700px) {
-          .side {
-            display: none;
-          }
-          .tv {
-            padding: 12px;
-          }
-          .bezel {
-            padding: 10px;
-          }
-        }
-        .screen {
-          position: relative;
-          aspect-ratio: 4 / 3;
-          border-radius: 28px / 36px;
-          overflow: hidden;
-          background: #000;
-        }
-        .scene {
-          position: absolute;
-          inset: 0;
-          background: linear-gradient(
-            180deg,
-            #07021a 0,
-            #1d0a3f 38%,
-            #5b1466 58%,
-            #ff4fa3 66%,
-            #0b0218 66.2%
-          );
-        }
-        .stars {
-          position: absolute;
-          inset: 0 0 40% 0;
-          background:
-            radial-gradient(circle, #fff 1px, transparent 1.5px) 0 0 / 53px 41px,
-            radial-gradient(
-                circle,
-                rgba(255, 255, 255, 0.7) 1px,
-                transparent 1.5px
-              )
-              20px 13px / 71px 59px;
-        }
-        .sun {
-          position: absolute;
-          left: 50%;
-          top: 30%;
-          width: 34%;
-          aspect-ratio: 1;
-          transform: translateX(-50%);
-          border-radius: 50%;
-          background: linear-gradient(180deg, #ffd60a, #ff7a1a 55%, #ff4fa3);
-          mask: linear-gradient(
-            #000 0 55%,
-            transparent 55% 59%,
-            #000 59% 67%,
-            transparent 67% 71%,
-            #000 71% 78%,
-            transparent 78% 83%,
-            #000 83% 88%,
-            transparent 88% 94%,
-            #000 94%
-          );
-        }
-        .floor {
-          position: absolute;
-          left: -50%;
-          right: -50%;
-          bottom: -10%;
-          height: 46%;
-          transform: perspective(300px) rotateX(62deg);
-          transform-origin: 50% 0;
-          background:
-            repeating-linear-gradient(
-              90deg,
-              rgba(255, 79, 163, 0.85) 0 2px,
-              transparent 2px 60px
-            ),
-            repeating-linear-gradient(
-              0deg,
-              rgba(255, 79, 163, 0.85) 0 2px,
-              transparent 2px 40px
-            ),
-            #0b0218;
-        }
-        .crawl {
-          position: absolute;
-          inset: 0;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          gap: 14px;
-          text-align: center;
-          padding: 0 8%;
-        }
-        .k {
-          font-family: "Russo One", sans-serif;
-          font-size: clamp(12px, 2vw, 18px);
-          letter-spacing: 0.3em;
-          text-transform: uppercase;
-          color: #cfe9ff;
-          /* a dark backing keeps the kicker lines readable over the sun */
-          background: rgba(7, 2, 26, 0.72);
-          padding: 2px 10px;
-          border-radius: 2px;
-        }
-        .chrome {
-          font-family: "Russo One", sans-serif;
-          font-size: clamp(32px, 6vw, 72px);
-          line-height: 0.95;
-          text-transform: uppercase;
-          font-style: italic;
-          overflow-wrap: anywhere;
-          color: #f2fbff;
-          background: linear-gradient(
-            180deg,
-            #f2fbff 0,
-            #ffffff 42%,
-            #c9b8ff 48%,
-            #ff9ccf 70%,
-            #ffd60a
-          );
-          -webkit-background-clip: text;
-          background-clip: text;
-          -webkit-text-fill-color: transparent;
-          filter: drop-shadow(0 4px 0 #1d0a3f)
-            drop-shadow(0 0 14px rgba(255, 79, 163, 0.6));
-        }
-        .osd {
-          position: absolute;
-          font-family: "VT323", monospace;
-          font-size: clamp(18px, 2.4vw, 28px);
-          color: #5dff8a;
-          text-shadow: 0 0 6px rgba(93, 255, 138, 0.8);
-          letter-spacing: 0.06em;
-          text-transform: uppercase;
-        }
-        .ch {
-          top: 6%;
-          right: 7%;
-        }
-        .pl {
-          bottom: 6%;
-          left: 7%;
-        }
-        .noise {
-          position: absolute;
-          inset: 0;
-          opacity: 0;
-          background:
-            repeating-radial-gradient(
-              circle at 17% 32%,
-              rgba(255, 255, 255, 0.5) 0 1px,
-              transparent 1px 3px
-            ),
-            repeating-radial-gradient(
-              circle at 71% 63%,
-              rgba(255, 255, 255, 0.35) 0 1px,
-              transparent 1px 2px
-            ),
-            #555;
-        }
-        .scan {
-          position: absolute;
-          inset: 0;
-          pointer-events: none;
-          background: repeating-linear-gradient(
-            180deg,
-            rgba(0, 0, 0, 0.28) 0 1px,
-            transparent 1px 3px
-          );
-        }
-        .glass {
-          position: absolute;
-          inset: 0;
-          pointer-events: none;
-          border-radius: inherit;
-          background:
-            radial-gradient(
-              ellipse at 50% 50%,
-              transparent 55%,
-              rgba(0, 0, 0, 0.55) 100%
-            ),
-            linear-gradient(160deg, rgba(255, 255, 255, 0.12), transparent 30%);
-        }
-        /* motion only for people who have not asked for less of it, and
-           never once the sequence is skipped or the page is being edited */
-        @media (prefers-reduced-motion: no-preference) {
-          :host(:not([still])) .run-a .screen {
-            animation: vhs-pow-a 0.9s ease-out both;
-          }
-          :host(:not([still])) .run-b .screen {
-            animation: vhs-pow-b 0.9s ease-out both;
-          }
-          :host(:not([still])) .run-a .scene {
-            animation: vhs-fade-a 1.8s linear both;
-          }
-          :host(:not([still])) .run-b .scene {
-            animation: vhs-fade-b 1.8s linear both;
-          }
-          :host(:not([still])) .run-a .noise {
-            animation: vhs-noise-a 1.5s steps(8) 0.6s both;
-          }
-          :host(:not([still])) .run-b .noise {
-            animation: vhs-noise-b 1.5s steps(8) 0.6s both;
-          }
-          :host(:not([still])) .run-a .crawl {
-            animation: vhs-crawl-a 6.5s cubic-bezier(0.2, 0.7, 0.2, 1) 1.4s both;
-          }
-          :host(:not([still])) .run-b .crawl {
-            animation: vhs-crawl-b 6.5s cubic-bezier(0.2, 0.7, 0.2, 1) 1.4s both;
-          }
-          :host(:not([still])) .run-a .pl {
-            animation: vhs-osd-a 1s steps(2) 7.5s both;
-          }
-          :host(:not([still])) .run-b .pl {
-            animation: vhs-osd-b 1s steps(2) 7.5s both;
-          }
-          :host(:not([still])) .floor {
-            animation: vhs-grid 1.2s linear 7;
-          }
-        }
-        @keyframes vhs-pow-a {
-          0% {
-            transform: scale(0, 0.004);
-            filter: brightness(4);
-          }
-          40% {
-            transform: scale(1, 0.004);
-            filter: brightness(4);
-          }
-          70% {
-            transform: scale(1, 1);
-            filter: brightness(2);
-          }
-          100% {
-            transform: scale(1, 1);
-            filter: brightness(1);
-          }
-        }
-        @keyframes vhs-pow-b {
-          0% {
-            transform: scale(0, 0.004);
-            filter: brightness(4);
-          }
-          40% {
-            transform: scale(1, 0.004);
-            filter: brightness(4);
-          }
-          70% {
-            transform: scale(1, 1);
-            filter: brightness(2);
-          }
-          100% {
-            transform: scale(1, 1);
-            filter: brightness(1);
-          }
-        }
-        @keyframes vhs-fade-a {
-          0%,
-          60% {
-            opacity: 0;
-          }
-          100% {
-            opacity: 1;
-          }
-        }
-        @keyframes vhs-fade-b {
-          0%,
-          60% {
-            opacity: 0;
-          }
-          100% {
-            opacity: 1;
-          }
-        }
-        @keyframes vhs-noise-a {
-          0% {
-            opacity: 1;
-            background-position:
-              0 0,
-              0 0;
-          }
-          50% {
-            background-position:
-              7px 3px,
-              -5px 9px;
-          }
-          99% {
-            opacity: 1;
-          }
-          100% {
-            opacity: 0;
-          }
-        }
-        @keyframes vhs-noise-b {
-          0% {
-            opacity: 1;
-            background-position:
-              0 0,
-              0 0;
-          }
-          50% {
-            background-position:
-              7px 3px,
-              -5px 9px;
-          }
-          99% {
-            opacity: 1;
-          }
-          100% {
-            opacity: 0;
-          }
-        }
-        @keyframes vhs-crawl-a {
-          0% {
-            transform: translateY(115%);
-          }
-          100% {
-            transform: translateY(0);
-          }
-        }
-        @keyframes vhs-crawl-b {
-          0% {
-            transform: translateY(115%);
-          }
-          100% {
-            transform: translateY(0);
-          }
-        }
-        @keyframes vhs-osd-a {
-          0% {
-            opacity: 0;
-          }
-          100% {
-            opacity: 1;
-          }
-        }
-        @keyframes vhs-osd-b {
-          0% {
-            opacity: 0;
-          }
-          100% {
-            opacity: 1;
-          }
-        }
-        @keyframes vhs-grid {
-          0% {
-            background-position:
-              0 0,
-              0 0;
-          }
-          100% {
-            background-position:
-              0 0,
-              0 40px;
-          }
-        }
       `,
     ];
   }
 
   render() {
     return html`
-      <div class="tv run-${this._run % 2 === 0 ? "a" : "b"}" part="tv">
-        <div class="bezel">
-          <div
-            class="screen"
-            role="img"
-            aria-label="${this.sequenceLabel} ${this.crawlTitle}"
-          >
-            <div class="scene">
-              <div class="stars"></div>
-              <div class="sun"></div>
-              <div class="floor"></div>
-            </div>
-            <div class="crawl">
-              <span class="k">${this.presenter} ${this.presentsLabel}</span>
-              <span class="k">${this.kicker}</span>
-              <span class="chrome">${this.crawlTitle}</span>
-              ${
-                this.runtime
-                  ? html`<span class="k"
-                      >${this.runtimeLabel} ${this.runtime}
-                      ${this.minLabel}</span
-                    >`
-                  : ""
-              }
-            </div>
-            <div class="noise"></div>
-            <span class="osd ch">${this.channelLabel}</span>
-            <span class="osd pl">${this.playLabel} &#9654;</span>
-            <div class="scan"></div>
-            <div class="glass"></div>
-          </div>
-        </div>
-        <div class="side" aria-hidden="true">
-          <span class="led"></span>
-          <span class="knob"></span>
-          <span class="knob"></span>
-          <span class="grille"></span>
-        </div>
-      </div>
+      <retro-tv
+        exportparts="tv"
+        channel="3"
+        channel-label="${this.channelLabel}"
+        ?still="${this.still}"
+      >
+        <retro-tv-title-sequence
+          channel="3"
+          crawl-title="${this.crawlTitle}"
+          presenter="${this.presenter}"
+          kicker="${this.kicker}"
+          runtime="${this.runtime}"
+          runtime-label="${this.runtimeLabel}"
+          min-label="${this.minLabel}"
+          play-label="${this.playLabel}"
+          sequence-label="${this.sequenceLabel}"
+          presents-label="${this.presentsLabel}"
+        ></retro-tv-title-sequence>
+      </retro-tv>
     `;
   }
 }

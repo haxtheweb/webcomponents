@@ -1032,7 +1032,7 @@ describe("HaxAppInstaller fetchState error and edge cases", () => {
   });
 });
 
-describe("HaxAppInstaller _applyState and confetti", () => {
+describe("HaxAppInstaller _applyState and the credits on HAX TV", () => {
   let element;
   let originalFetch;
 
@@ -1063,7 +1063,7 @@ describe("HaxAppInstaller _applyState and confetti", () => {
     globalThis.fetch = originalFetch;
   });
 
-  it("_applyState triggers confetti burst on transition to step 4 with credentials", async () => {
+  it("_applyState rolls the credits on transition to step 4 with credentials", async () => {
     element.step = 3;
     element._applyState({
       step: 4,
@@ -1073,23 +1073,27 @@ describe("HaxAppInstaller _applyState and confetti", () => {
         password: "GenP@ss1",
       },
     });
-    expect(element._confettiBurst).to.be.true;
+    expect(element._celebrate).to.be.true;
+    expect(element._tvChannel).to.equal(5);
     await element.updateComplete;
-    const confetti = element.shadowRoot.querySelector(".confetti");
-    expect(confetti).to.exist;
+    const tv = element.shadowRoot.querySelector("retro-tv");
+    expect(tv.channel).to.equal(5);
+    await tv.updateComplete;
+    expect(element.shadowRoot.querySelector("retro-tv-credits").onAir).to.be
+      .true;
   });
 
-  it("_applyState does not trigger confetti when already on step 4", () => {
+  it("_applyState does not roll the credits when already on step 4", () => {
     element.step = 4;
     element._applyState({
       step: 4,
       language: "en",
       credentials: { username: "admin", password: "x" },
     });
-    expect(element._confettiBurst).to.be.false;
+    expect(element._celebrate).to.be.false;
   });
 
-  it("_applyState does not trigger confetti when hasErrors", () => {
+  it("_applyState does not roll the credits when hasErrors", () => {
     element.step = 3;
     element._applyState({
       step: 4,
@@ -1097,7 +1101,7 @@ describe("HaxAppInstaller _applyState and confetti", () => {
       credentials: { username: "admin", password: "x" },
       hasErrors: true,
     });
-    expect(element._confettiBurst).to.be.false;
+    expect(element._celebrate).to.be.false;
   });
 
   it("_applyState dispatches language change when language differs", () => {
@@ -1211,13 +1215,15 @@ describe("HaxAppInstaller rendering edge cases", () => {
     };
     await element.updateComplete;
     const prepareBtn = element.shadowRoot.querySelector(
-      ".prepare-action .btn-primary",
+      ".ftr .hax-ui-btn.primary",
     );
     expect(prepareBtn).to.exist;
+    expect(prepareBtn.textContent).to.contain("Create missing files");
     const recheckBtn = element.shadowRoot.querySelector(
-      ".btn-row .btn-secondary",
+      ".ftr .hax-ui-btn:not(.primary):not(.ghost)",
     );
     expect(recheckBtn).to.exist;
+    expect(recheckBtn.textContent).to.contain("Re-check requirements");
   });
 
   it("renders step 2 with permission banner when _preparePermissionCommand is set", async () => {
@@ -1246,9 +1252,10 @@ describe("HaxAppInstaller rendering edge cases", () => {
     };
     await element.updateComplete;
     const continueBtn = element.shadowRoot.querySelector(
-      ".btn-row .btn-primary",
+      ".ftr .hax-ui-btn.primary",
     );
     expect(continueBtn).to.exist;
+    expect(continueBtn.textContent).to.contain("Continue");
   });
 
   it("renders req table with warning tone", async () => {
@@ -1375,17 +1382,17 @@ describe("HaxAppInstaller rendering edge cases", () => {
     expect(tag).to.not.exist;
   });
 
-  it("renders confetti when _confettiBurst is true", async () => {
+  it("labels the tape with the install date while the credits roll", async () => {
     element.step = 4;
     element.loading = false;
     element.error = "";
-    element._confettiBurst = true;
+    element._tvChannel = 5;
     element.stateData = {
       credentials: { username: "admin", password: "x" },
     };
     await element.updateComplete;
-    const confetti = element.shadowRoot.querySelector(".confetti");
-    expect(confetti).to.exist;
+    const credits = element.shadowRoot.querySelector("retro-tv-credits");
+    expect(credits.tape).to.match(/^001 · \d{4}-\d{2}-\d{2}$/);
   });
 
   it("renders fallback to step 1 for unknown step number", async () => {
@@ -1461,9 +1468,230 @@ describe("HaxAppInstaller haxProperties and attributes", () => {
     expect(fresh.loading).to.be.false;
     expect(fresh.error).to.equal("");
     expect(fresh._passwordRevealed).to.be.false;
-    expect(fresh._confettiBurst).to.be.false;
+    expect(fresh._celebrate).to.be.false;
+    expect(fresh._tvChannel).to.equal(4);
     expect(fresh._passwordMismatch).to.be.false;
     expect(fresh._serverErrors).to.deep.equal([]);
     globalThis.fetch = originalFetch;
+  });
+});
+
+describe("HaxAppInstaller HAX UI, HAX TV and keyboard", () => {
+  let element;
+  let originalFetch;
+
+  beforeEach(async () => {
+    originalFetch = globalThis.fetch;
+    globalThis.fetch = function () {
+      return Promise.resolve({
+        ok: true,
+        status: 200,
+        json: function () {
+          return Promise.resolve({ step: 1, language: "en" });
+        },
+      });
+    };
+    element = await fixture(
+      html`<hax-app-installer api-endpoint="mock://test"></hax-app-installer>`,
+    );
+    await element.updateComplete;
+    await new Promise(function (r) {
+      setTimeout(r, 50);
+    });
+  });
+
+  afterEach(() => {
+    globalThis.fetch = originalFetch;
+  });
+
+  it("names the mascot the Future Traveler", () => {
+    const logo = element.shadowRoot.querySelector(".installer-logo");
+    expect(logo.getAttribute("alt")).to.contain("Future Traveler");
+    expect(logo.getAttribute("alt")).to.not.contain("World");
+  });
+
+  it("draws the HAX UI frame: titlebar, rail, page header, action bar", () => {
+    const root = element.shadowRoot;
+    expect(root.querySelector(".hax-ui-dialog-titlebar h1")).to.exist;
+    expect(root.querySelector("nav.rail .step-indicator")).to.exist;
+    expect(root.querySelector("#step-title").textContent.trim()).to.equal(
+      "Choose language",
+    );
+    expect(root.querySelector(".ftr [role='status']")).to.exist;
+    expect(root.querySelector(".ftr .hax-ui-btn.primary")).to.exist;
+  });
+
+  it("marks the current step for assistive tech", () => {
+    const current = element.shadowRoot.querySelector("[aria-current='step']");
+    expect(current).to.exist;
+    expect(current.textContent).to.contain("Choose language");
+  });
+
+  it("plays HAX TV on channel 4 with every program", () => {
+    const tv = element.shadowRoot.querySelector("retro-tv");
+    expect(tv).to.exist;
+    expect(tv.channel).to.equal(4);
+    expect(tv.programs.map((p) => p.channel)).to.deep.equal([
+      3, 4, 5, 7, 8, 9, 10,
+    ]);
+  });
+
+  it("plays a loading screen while a request runs, then goes back", async () => {
+    let release;
+    globalThis.fetch = function () {
+      return new Promise((resolve) => {
+        release = () =>
+          resolve({
+            ok: true,
+            status: 200,
+            json: () => Promise.resolve({ step: 2, language: "en" }),
+          });
+      });
+    };
+    const pending = element._handleStep1Submit();
+    await element.updateComplete;
+    expect(element._tvChannel).to.equal(7);
+    expect(element._tvBusy).to.equal("language");
+    const hc = element.shadowRoot.querySelector("retro-tv-home-computer");
+    expect(hc.loading).to.be.true;
+    release();
+    await pending;
+    expect(element.step).to.equal(2);
+    // the loading screen keeps its moment, then returns to channel 4
+    await new Promise((r) => setTimeout(r, 1700));
+    expect(element._tvChannel).to.equal(4);
+    expect(element._tvBusy).to.equal("");
+  });
+
+  it("submitting the step form runs the main action (Enter)", async () => {
+    let called = false;
+    element._handleStep1Submit = () => {
+      called = true;
+    };
+    const form = element.shadowRoot.querySelector("#step-form");
+    form.dispatchEvent(new Event("submit", { cancelable: true }));
+    expect(called).to.be.true;
+  });
+
+  it("step 3 submit with an unready password focuses the password", async () => {
+    element.step = 3;
+    await element.updateComplete;
+    let installed = false;
+    element._handleStep3Submit = () => {
+      installed = true;
+    };
+    const form = element.shadowRoot.querySelector("#step-form");
+    form.dispatchEvent(new Event("submit", { cancelable: true }));
+    expect(installed).to.be.false;
+    expect(element.shadowRoot.activeElement.id).to.equal("password-input");
+    const btn = element.shadowRoot.querySelector(".ftr .hax-ui-btn.primary");
+    expect(btn.getAttribute("aria-disabled")).to.equal("true");
+  });
+
+  it("Ctrl+Shift+/ toggles the shortcuts list and Esc closes it", async () => {
+    globalThis.dispatchEvent(
+      new KeyboardEvent("keydown", {
+        key: "/",
+        code: "Slash",
+        ctrlKey: true,
+        shiftKey: true,
+      }),
+    );
+    await element.updateComplete;
+    expect(element.shadowRoot.querySelector("#shortcuts")).to.exist;
+    globalThis.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape" }));
+    await element.updateComplete;
+    expect(element.shadowRoot.querySelector("#shortcuts")).to.not.exist;
+  });
+
+  it("Ctrl+Shift+Up changes the TV channel", async () => {
+    globalThis.dispatchEvent(
+      new KeyboardEvent("keydown", {
+        key: "ArrowUp",
+        ctrlKey: true,
+        shiftKey: true,
+      }),
+    );
+    const tv = element.shadowRoot.querySelector("retro-tv");
+    await tv.updateComplete;
+    expect(tv.channel).to.equal(5);
+  });
+
+  it("Alt+Left goes back a step", async () => {
+    element.step = 3;
+    await element.updateComplete;
+    let target = 0;
+    element._goToStep = (n) => {
+      target = n;
+    };
+    globalThis.dispatchEvent(
+      new KeyboardEvent("keydown", { key: "ArrowLeft", altKey: true }),
+    );
+    expect(target).to.equal(2);
+  });
+
+  it("a password mismatch reads as incorrect, not as an error", async () => {
+    element.step = 3;
+    element._passwordInput = "Abc123!@";
+    element._confirmPasswordInput = "Abc123!#";
+    element.requestUpdate();
+    await element.updateComplete;
+    const msg = element.shadowRoot.querySelector(".confirm-feedback.mismatch");
+    expect(msg).to.exist;
+    expect(msg.textContent).to.contain("Passwords do not match.");
+    expect(
+      element.shadowRoot
+        .querySelector("#confirm-password-input")
+        .getAttribute("aria-invalid"),
+    ).to.equal("true");
+  });
+
+  it("does not show the HAXcms version or full server paths", async () => {
+    element.step = 2;
+    element.stateData = {
+      hasErrors: true,
+      needsConfiguration: [
+        {
+          key: "sites-directory",
+          tone: "error",
+          title: "Sites directory",
+          value: "Missing",
+          description: "Expected path: /var/www/html/haxcms/_sites",
+          suggestedCommand: "mkdir -p '/var/www/html/haxcms/_sites'",
+        },
+      ],
+      allPassed: [
+        {
+          key: "haxcms-version",
+          tone: "ok",
+          title: "HAXcms version",
+          value: "26.11.1",
+          description: "Current: 26.11.1",
+        },
+      ],
+    };
+    await element.updateComplete;
+    const text = element.shadowRoot.querySelector(".content").textContent;
+    expect(text).to.not.contain("26.11.1");
+    expect(text).to.not.contain("/var/www");
+    expect(text).to.contain("_sites");
+  });
+
+  it("the status bar counts password requirements", async () => {
+    element.step = 3;
+    element._passwordInput = "abc";
+    element.requestUpdate();
+    await element.updateComplete;
+    const status = element.shadowRoot.querySelector(".ftr .st-text");
+    expect(status.textContent).to.contain("1 of 5 met");
+  });
+
+  it("step 4 shows the forever card", async () => {
+    element.step = 4;
+    element.stateData = { credentials: { username: "a", password: "b" } };
+    await element.updateComplete;
+    const card = element.shadowRoot.querySelector(".forever");
+    expect(card).to.exist;
+    expect(card.textContent).to.contain("Your HAX is yours, forever");
   });
 });

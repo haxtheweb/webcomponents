@@ -1,0 +1,50 @@
+{
+  "name": "@haxtheweb/retro-tv",
+  "version": "26.8.0",
+  "description": "An old CRT with channels: the cabinet, knobs, static and on-screen display, with programs (HAX TV, credits, loading screens, a title sequence) that play on it",
+  "license": "Apache-2.0",
+  "author": {
+    "name": "haxtheweb",
+    "url": "https://hax.psu.edu/"
+  },
+  "keywords": [
+    "webcomponents",
+    "lit",
+    "haxtheweb",
+    "retro",
+    "tv"
+  ],
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "type": "module",
+  "main": "retro-tv.js",
+  "module": "retro-tv.js",
+  "scripts": {
+    "start": "yarn run dev",
+    "build": "prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && cem analyze --litelement --exclude \"(public|*.stories.js)\" --globs \"{*,lib/**}.js\" && node ../../scripts/extract-element-docs.mjs --write .",
+    "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
+    "watch": "gulp dev --gulpfile=gulpfile.cjs",
+    "serve": "web-dev-server -c ../../web-dev-server.config.mjs",
+    "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium"
+  },
+  "dependencies": {
+    "lit": "3.3.3",
+    "@haxtheweb/i18n-manager": "^26.8.0"
+  },
+  "devDependencies": {
+    "@custom-elements-manifest/analyzer": "0.11.0",
+    "@haxtheweb/deduping-fix": "^26.8.0",
+    "@web/dev-server": "0.4.6",
+    "concurrently": "9.2.5"
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "hax": {
+    "cli": true
+  },
+  "customElements": "custom-elements.json"
+}
