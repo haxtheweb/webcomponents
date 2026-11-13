@@ -326,7 +326,7 @@ class CodeSample extends I18NMixin(LitElement) {
             copyClipboardButton: true,
           },
           content:
-            '<template preserve-content="preserve-content">const greeting = "Hello";\nconst name = "world";\nconst message = `${greeting}, ${name}!`;</template>',
+            '<template preserve-content="preserve-content">const a = 2;\nconst b = 3;\nconst sum = a + b;</template>',
         },
       ],
     };

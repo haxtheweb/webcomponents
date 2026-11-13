@@ -18,7 +18,7 @@
   "import": "@haxtheweb/code-sample/code-sample.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/code-sample/code-sample.js",
   "install": "npm i @haxtheweb/code-sample",
-  "demoHtml": "<code-sample type=\"javascript\" copy-clipboard-button>\n  <template preserve-content=\"preserve-content\">const greeting = \"Hello\";\n  const name = \"world\";\n  const message = `${greeting}, ${name}!`;</template>\n</code-sample>",
+  "demoHtml": "<code-sample type=\"javascript\" copy-clipboard-button>\n  <template preserve-content=\"preserve-content\">const a = 2;\n  const b = 3;\n  const sum = a + b;</template>\n</code-sample>",
   "attributes": [
     {
       "name": "edit-mode",
@@ -171,11 +171,11 @@
           "type": "javascript",
           "copyClipboardButton": true
         },
-        "content": "<template preserve-content=\"preserve-content\">const greeting = \"Hello\";\nconst name = \"world\";\nconst message = `${greeting}, ${name}!`;</template>"
+        "content": "<template preserve-content=\"preserve-content\">const a = 2;\nconst b = 3;\nconst sum = a + b;</template>"
       }
     ]
   },
-  "surfaceHash": "c2f6ebfb6076",
+  "surfaceHash": "cf99f160343f",
   "walkthroughs": [
     {
       "id": "",
