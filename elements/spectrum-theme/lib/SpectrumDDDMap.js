@@ -104,6 +104,13 @@ export const SpectrumDDDMap = css`
     --ddd-textfield-height-sm: var(--spectrum-component-height-100);
     --ddd-textfield-height-md: var(--spectrum-component-height-200);
     --ddd-textfield-height-lg: var(--spectrum-component-height-300);
+    --ddd-surface-padding: var(--spectrum-spacing-400);
+    --ddd-surface-padding-lg: var(--spectrum-spacing-500);
+    --ddd-stack-gap: var(--spectrum-spacing-300);
+    --ddd-inline-gap: var(--spectrum-spacing-100);
+    --ddd-control-padding-inline: var(
+      --spectrum-component-pill-edge-to-text-100
+    );
     /* rgb channels follow their mapped color */
     --ddd-primary-0-rgb: 172, 207, 253, 0.7;
     --ddd-primary-1-rgb: 59, 99, 251;

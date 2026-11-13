@@ -92,7 +92,7 @@ class LearningComponent extends I18NMixin(DDD) {
       css`
         :host {
           display: block;
-          margin: var(--ddd-spacing-4) 0;
+          margin: var(--ddd-stack-gap, var(--ddd-spacing-4)) 0;
           /* the type colour: chip fill and the frame's top rule */
           --learning-component-type-color: var(
             --ddd-component-learning-component-title-background,

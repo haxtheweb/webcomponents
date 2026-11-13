@@ -64,6 +64,14 @@
       "format": "scss-vars",
       "prefix": "--md-ref-typeface-",
       "file": "tokens/versions/latest/sass/_md-ref-typeface.scss"
+    },
+    {
+      "package": "@material/web",
+      "version": "2.5.0",
+      "license": "Apache-2.0",
+      "format": "scss-vars",
+      "prefix": "--md-comp-button-",
+      "file": "tokens/versions/latest/sass/_md-comp-button.scss"
     }
   ],
   "fonts": [
@@ -156,7 +164,7 @@
     },
     "semantic": {
       "mapping": "optional",
-      "percent": 0,
+      "percent": 42,
       "families": {
         "type": {
           "mapped": 0,
@@ -172,15 +180,9 @@
           ]
         },
         "density": {
-          "mapped": 0,
+          "mapped": 5,
           "total": 5,
-          "keptDDD": [
-            "--ddd-surface-padding",
-            "--ddd-surface-padding-lg",
-            "--ddd-stack-gap",
-            "--ddd-inline-gap",
-            "--ddd-control-padding-inline"
-          ]
+          "keptDDD": []
         }
       }
     }
@@ -919,6 +921,46 @@
       "light": "0.38",
       "dark": "0.38",
       "note": ""
+    },
+    {
+      "ddd": "--ddd-surface-padding",
+      "tier": "semantic",
+      "token": null,
+      "light": "16px",
+      "dark": "16px",
+      "note": "Material 3 card padding; @material/web has no spacing tokens"
+    },
+    {
+      "ddd": "--ddd-surface-padding-lg",
+      "tier": "semantic",
+      "token": null,
+      "light": "24px",
+      "dark": "24px",
+      "note": "Material 3 layout margin at medium width"
+    },
+    {
+      "ddd": "--ddd-stack-gap",
+      "tier": "semantic",
+      "token": null,
+      "light": "16px",
+      "dark": "16px",
+      "note": "Material 3 layout spacing"
+    },
+    {
+      "ddd": "--ddd-inline-gap",
+      "tier": "semantic",
+      "token": null,
+      "light": "8px",
+      "dark": "8px",
+      "note": "Material 3 layout spacing"
+    },
+    {
+      "ddd": "--ddd-control-padding-inline",
+      "tier": "semantic",
+      "token": "--md-comp-button-leading-space",
+      "light": "24px",
+      "dark": "24px",
+      "note": "24px"
     }
   ]
 }

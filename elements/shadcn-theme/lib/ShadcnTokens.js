@@ -99,6 +99,7 @@ export const ShadcnTokens = css`
     --sidebar-border: light-dark(oklch(0.922 0 0), oklch(1 0 0 / 10%));
     --sidebar-foreground: light-dark(oklch(0.145 0 0), oklch(0.985 0 0));
     --sidebar-primary: light-dark(oklch(0.205 0 0), oklch(0.488 0.243 264.376));
+    --spacing: 0.25rem;
     --text-sm: 0.875rem;
   }
 `;

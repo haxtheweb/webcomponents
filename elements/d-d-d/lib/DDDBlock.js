@@ -191,7 +191,8 @@ export const DDDBlockStyles = css`
     align-items: center;
     gap: var(--ddd-spacing-3);
     padding-block: var(--ddd-spacing-2);
-    padding-inline: var(--ddd-spacing-4) var(--ddd-spacing-2);
+    padding-inline: var(--ddd-surface-padding, var(--ddd-spacing-4))
+      var(--ddd-spacing-2);
     min-height: var(--ddd-control-height-sm);
     border-bottom: var(--ddd-border-xs);
     border-color: light-dark(
@@ -378,7 +379,8 @@ export const DDDBlockStyles = css`
     align-items: center;
     gap: var(--ddd-spacing-3);
     padding-block: var(--ddd-spacing-2);
-    padding-inline: var(--ddd-spacing-4) var(--ddd-spacing-2);
+    padding-inline: var(--ddd-surface-padding, var(--ddd-spacing-4))
+      var(--ddd-spacing-2);
     border-top: var(--ddd-border-xs);
     border-color: light-dark(
       var(--ddd-theme-default-limestoneLight),

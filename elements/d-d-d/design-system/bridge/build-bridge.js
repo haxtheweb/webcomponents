@@ -477,7 +477,21 @@ const tierOf = (name) =>
     tier.patterns.some((pattern) => new RegExp(pattern).test(name)),
   ) || null;
 const px = (value) => {
-  const m = /^(-?[\d.]+)(px|rem|em)$/.exec(String(value).trim());
+  const text = String(value).trim();
+  // calc(<length> * <number>) or calc(<number> * <length>): Tailwind writes
+  // every spacing step as a multiple of its one --spacing token
+  const calc =
+    /^calc\(\s*([\d.]+(?:px|rem|em)?)\s*\*\s*([\d.]+(?:px|rem|em)?)\s*\)$/.exec(
+      text,
+    );
+  if (calc) {
+    const a = px(calc[1]);
+    const b = px(calc[2]);
+    if (a !== null && /^[\d.]+$/.test(calc[2])) return a * Number(calc[2]);
+    if (b !== null && /^[\d.]+$/.test(calc[1])) return b * Number(calc[1]);
+    return null;
+  }
+  const m = /^(-?[\d.]+)(px|rem|em)$/.exec(text);
   if (!m) return null;
   return m[2] === "px" ? Number(m[1]) : Number(m[1]) * 16;
 };

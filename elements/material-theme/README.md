@@ -19,7 +19,7 @@ The design system registers as `material` with `extends: "ddd"` in `DesignSystem
 
 ## Coverage
 
-Checked against the shared [bridge contract](../d-d-d/design-system/bridge/README.md): identity 97%, feel 52%, semantic 0%, structure locked. M3's baseline primary is purple, so brand roles are purple. Incorrect stays on the purple static palette and correct on green; with HAX's labels, icons and line styles, the meaning channels hold. Kept as DDD on purpose: light and black font weights (M3 types Roboto at 400/500/700), control heights, border widths, and heading/body sizes.
+Checked against the shared [bridge contract](../d-d-d/design-system/bridge/README.md): identity 97%, feel 52%, semantic 42% (density from M3 layout guidance: 16px card padding and stack gap, 8px inline gap; button padding from `md.comp.button.leading-space`, 24px), structure locked. M3's baseline primary is purple, so brand roles are purple. Incorrect stays on the purple static palette and correct on green; with HAX's labels, icons and line styles, the meaning channels hold. Kept as DDD on purpose: light and black font weights (M3 types Roboto at 400/500/700), control heights, border widths, and heading/body sizes.
 
 ## Rebuilding the tokens
 

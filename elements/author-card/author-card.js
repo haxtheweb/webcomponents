@@ -69,7 +69,7 @@ export class AuthorCard extends DDDSuper(I18NMixin(LitElement)) {
       css`
         :host {
           display: block;
-          margin: var(--ddd-spacing-4) 0;
+          margin: var(--ddd-stack-gap, var(--ddd-spacing-4)) 0;
           font-family: var(--ddd-font-primary);
           container-type: inline-size;
 
@@ -129,7 +129,7 @@ export class AuthorCard extends DDDSuper(I18NMixin(LitElement)) {
           border-radius: var(--author-card-border-radius);
           border: var(--ddd-border-xs);
           border-color: var(--author-card-border);
-          padding: var(--ddd-spacing-4);
+          padding: var(--ddd-surface-padding, var(--ddd-spacing-4));
         }
 
         /* Accent color styling */

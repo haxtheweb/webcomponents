@@ -63,7 +63,7 @@ export class CareerTimeline extends SchemaBehaviors(
         }
         .wrapper {
           margin: var(--ddd-spacing-2);
-          padding: var(--ddd-spacing-4);
+          padding: var(--ddd-surface-padding, var(--ddd-spacing-4));
           border: var(--ddd-border-md);
         }
       `,

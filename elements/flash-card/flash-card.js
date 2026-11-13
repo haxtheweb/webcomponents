@@ -113,7 +113,8 @@ export class FlashCard extends I18NMixin(SchemaBehaviors(DDD)) {
           min-width: 320px;
           min-height: 155px;
           padding: 0;
-          margin: var(--ddd-spacing-4);
+          margin: var(--ddd-stack-gap, var(--ddd-spacing-4))
+            var(--ddd-spacing-4);
           transition: border-color var(--ddd-duration-normal) ease-in-out;
           /* the frame sits on the page colour (no grey slab in dark mode) */
           background-color: transparent;
@@ -134,7 +135,7 @@ export class FlashCard extends I18NMixin(SchemaBehaviors(DDD)) {
           display: none;
         }
         .ddd-block-body {
-          padding: var(--ddd-spacing-4);
+          padding: var(--ddd-surface-padding, var(--ddd-spacing-4));
         }
 
         /* the result shows in the footer action bar and on the image, like

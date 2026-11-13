@@ -123,7 +123,7 @@
     },
     "semantic": {
       "mapping": "optional",
-      "percent": 0,
+      "percent": 42,
       "families": {
         "type": {
           "mapped": 0,
@@ -139,15 +139,9 @@
           ]
         },
         "density": {
-          "mapped": 0,
+          "mapped": 5,
           "total": 5,
-          "keptDDD": [
-            "--ddd-surface-padding",
-            "--ddd-surface-padding-lg",
-            "--ddd-stack-gap",
-            "--ddd-inline-gap",
-            "--ddd-control-padding-inline"
-          ]
+          "keptDDD": []
         }
       }
     }
@@ -838,6 +832,46 @@
       "light": "2px",
       "dark": "2px",
       "note": ""
+    },
+    {
+      "ddd": "--ddd-surface-padding",
+      "tier": "semantic",
+      "token": null,
+      "light": "calc(0.25rem * 6)",
+      "dark": "calc(0.25rem * 6)",
+      "note": "Card content px-6, 24px"
+    },
+    {
+      "ddd": "--ddd-surface-padding-lg",
+      "tier": "semantic",
+      "token": null,
+      "light": "calc(0.25rem * 8)",
+      "dark": "calc(0.25rem * 8)",
+      "note": "p-8, 32px"
+    },
+    {
+      "ddd": "--ddd-stack-gap",
+      "tier": "semantic",
+      "token": null,
+      "light": "calc(0.25rem * 6)",
+      "dark": "calc(0.25rem * 6)",
+      "note": "Card gap-6, 24px"
+    },
+    {
+      "ddd": "--ddd-inline-gap",
+      "tier": "semantic",
+      "token": null,
+      "light": "calc(0.25rem * 2)",
+      "dark": "calc(0.25rem * 2)",
+      "note": "gap-2, 8px"
+    },
+    {
+      "ddd": "--ddd-control-padding-inline",
+      "tier": "semantic",
+      "token": null,
+      "light": "calc(0.25rem * 4)",
+      "dark": "calc(0.25rem * 4)",
+      "note": "Button px-4, 16px"
     }
   ]
 }

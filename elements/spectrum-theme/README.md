@@ -19,7 +19,7 @@ The design system registers as `spectrum` with `extends: "ddd"` in `DesignSystem
 
 ## Coverage
 
-Checked against the shared [bridge contract](../d-d-d/design-system/bridge/README.md): identity 97%, feel 57%, semantic 0%, structure locked. Spectrum defines its palette per mode, so named DDD colors take the light set as constants (`fromMode`). Kept as DDD on purpose: shadows lg/xl (Spectrum has one drop shadow), emphasized easing, state opacities (Spectrum uses state colors), border widths (same values), and heading/body sizes (DDD reading sizes stay).
+Checked against the shared [bridge contract](../d-d-d/design-system/bridge/README.md): identity 97%, feel 57%, semantic 42% (density from Spectrum's spacing scale: 24px surface padding, 16px stack gap, 8px inline gap; button padding from its pill edge-to-text token), structure locked. Spectrum defines its palette per mode, so named DDD colors take the light set as constants (`fromMode`). Kept as DDD on purpose: shadows lg/xl (Spectrum has one drop shadow), emphasized easing, state opacities (Spectrum uses state colors), border widths (same values), and heading/body sizes (DDD reading sizes stay).
 
 ## Rebuilding the tokens
 

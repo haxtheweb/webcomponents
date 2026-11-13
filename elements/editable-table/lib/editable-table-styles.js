@@ -31,7 +31,7 @@ export const editableTableStyles = [
       display: block;
       width: 100%;
       max-width: 100%;
-      margin: var(--ddd-spacing-4) 0;
+      margin: var(--ddd-stack-gap, var(--ddd-spacing-4)) 0;
       font-size: var(--editable-table-font-size, unset);
       font-family: var(--editable-table-font-family, inherit);
       font-weight: var(--editable-table-medium-weight, 300);
