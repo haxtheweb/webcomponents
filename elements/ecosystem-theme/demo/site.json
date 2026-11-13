@@ -65,7 +65,13 @@
             "label": "Roadmap",
             "href": "https://github.com/haxtheweb/issues/issues/3310"
           }
-        ]
+        ],
+        "welcome": {
+          "title": "Everything in HAX is connected",
+          "text": "Every part of HAX, every site in the HAX network and everyone who builds it, in one web. Select a tile to see what it connects to, take a tour, or ask Merlin to take you anywhere in the network.",
+          "tour": "tours/everyone",
+          "tourLabel": "Take the tour"
+        }
       }
     },
     "build": {

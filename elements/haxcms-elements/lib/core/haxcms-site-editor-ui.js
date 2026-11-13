@@ -394,7 +394,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           display: inline-flex;
           height: var(--top-bar-height, 64px);
         }
-        /* the HAX mark: the World Traveler, decorative only */
+        /* the HAX mark: the Future Traveler, decorative only */
         .haxLogo {
           display: inline-grid;
           place-items: center;
@@ -4017,7 +4017,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               @click="${this._sitesDashboardLinkClick}"
             >
               <app-hax-user-menu-button
-                icon="hax:world-traveler-plain"
+                icon="hax:future-traveler-plain"
                 label="${this.backText || this.t.siteDashboard}"
                 part="mysitesbtn"
               ></app-hax-user-menu-button>
@@ -4278,7 +4278,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               @click="${this._closeMerlin}"
             ></simple-toolbar-button>
             <simple-toolbar-button
-              icon="hax:world-traveler-plain"
+              icon="hax:future-traveler-plain"
               label="${this.t.merlin}"
               class="merlin top-bar-button merlin-anchor-button"
               id="merlin"
@@ -4292,7 +4292,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               @dragenter="${this.dragenterEvent}"
               @dragleave="${this.dragleaveEvent}"
               @dragover="${this.dragoverEvent}"
-              icon="hax:world-traveler-plain"
+              icon="hax:future-traveler-plain"
               id="search"
               class="merlin"
               data-event="super-daemon"
@@ -4320,7 +4320,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               aria-hidden="true"
             >
               <simple-icon-lite
-                icon="hax:world-traveler"
+                icon="hax:future-traveler"
                 no-colorize
               ></simple-icon-lite>
             </span>

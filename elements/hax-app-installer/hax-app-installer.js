@@ -107,7 +107,7 @@ export class HaxAppInstaller extends DDDSuper(I18NMixin(LitElement)) {
       githubRepository: "GitHub Repository",
       anErrorOccurred: "An error occurred",
       retry: "Retry",
-      haxcmsMascotAlt: "HAXcms World Traveler mascot",
+      haxcmsMascotAlt: "HAXcms Future Traveler mascot",
     };
     this.registerLocalization({
       context: this,

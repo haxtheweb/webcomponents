@@ -551,7 +551,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
         :host([mini]:not([wand])) .field .merlin-wand {
           --merlin-wand-size: var(--hax-ui-icon);
         }
-        /* the World Traveler takes the field's ink; his lit parts carry
+        /* the Future Traveler takes the field's ink; his lit parts carry
            the color */
         .field .merlin-traveler {
           --merlin-traveler-size: 24px;

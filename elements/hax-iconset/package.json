@@ -10,7 +10,13 @@
       "exportName": "HaxIconsetManifest",
       "manifestFilename": "hax-iconset-manifest",
       "manifestPath": "./lib",
-      "svgsPath": "./lib/svgs"
+      "svgsPath": "./lib/svgs",
+      "legacy": {
+        "hax": [
+          "world-traveler",
+          "world-traveler-plain"
+        ]
+      }
     },
     "sharedHaxProps": [],
     "sharedProps": [],

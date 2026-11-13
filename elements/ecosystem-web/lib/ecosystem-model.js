@@ -569,7 +569,7 @@ const ART_TAGS =
  * not kept, which the HAX iconsets do not use).
  *
  * A glyph that needs more than one ink (masks, lettering, gradients, like
- * the World Traveler marks) comes back as `art` instead: the SVG as a
+ * the Future Traveler marks) comes back as `art` instead: the SVG as a
  * data: URL for an <image>, which draws it exactly but statically (an SVG
  * drawn as an image runs no script and loads nothing).
  * @param {string} markup the inner markup of an <svg>, or a whole <svg> file

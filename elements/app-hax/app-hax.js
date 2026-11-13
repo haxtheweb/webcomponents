@@ -466,7 +466,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     ) {
       SuperDaemonInstance.voiceSearch = true;
     }
-    SuperDaemonInstance.icon = "hax:world-traveler-plain";
+    SuperDaemonInstance.icon = "hax:future-traveler-plain";
     SuperDaemonInstance.appendContext("*");
     this._restoreMerlinAllowedCallback();
 
@@ -1168,7 +1168,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             justify-content: flex-start;
           }
         }
-        /* the HAX mark: the World Traveler, decorative only */
+        /* the HAX mark: the Future Traveler, decorative only */
         .haxLogo {
           display: inline-grid;
           place-items: center;
@@ -2628,7 +2628,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             <!-- the HAX mark: decorative, it says you are in HAX -->
             <span class="haxLogo" id="hlogo" aria-hidden="true">
               <simple-icon-lite
-                icon="hax:world-traveler"
+                icon="hax:future-traveler"
                 no-colorize
               ></simple-icon-lite>
             </span>

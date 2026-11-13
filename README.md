@@ -224,4 +224,4 @@ Contributions are always welcome!
 ## Additional contributions
 Past contributors, student and larger community, can be found here: https://github.com/haxtheweb/webcomponents/graphs/contributors
 
-![HAX Traveler: World Changer](https://raw.githubusercontent.com/haxtheweb/art/refs/heads/main/haxtheweb/hax-traveler-world-changer.jpg)
+![HAX Future Traveler](https://raw.githubusercontent.com/haxtheweb/art/refs/heads/main/haxtheweb/hax-future-traveler.jpg)

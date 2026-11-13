@@ -3340,7 +3340,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     ) {
       SuperDaemonInstance.voiceSearch = true;
     }
-    SuperDaemonInstance.icon = "hax:world-traveler-plain";
+    SuperDaemonInstance.icon = "hax:future-traveler-plain";
     // ensure we are running HAX / ready and in edit mode before allowing commands to go through
     SuperDaemonInstance.allowedCallback = () => {
       if (this.ready && this.editMode) {

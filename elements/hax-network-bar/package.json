@@ -1,7 +1,7 @@
 {
   "name": "@haxtheweb/hax-network-bar",
   "version": "26.8.0",
-  "description": "The strip across the top of every hax.cloud site that links them as one network",
+  "description": "The strip across the top of every hax.cloud site that links them as one network, with Merlin to jump anywhere in it",
   "license": "Apache-2.0",
   "author": {
     "name": "haxtheweb"
@@ -29,6 +29,7 @@
   "dependencies": {
     "@haxtheweb/d-d-d": "^26.8.0",
     "@haxtheweb/i18n-manager": "^26.8.0",
+    "@haxtheweb/super-daemon": "^26.8.0",
     "lit": "3.3.3"
   },
   "devDependencies": {
