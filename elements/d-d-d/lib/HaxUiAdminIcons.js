@@ -42,6 +42,7 @@ export const HaxUiAdminIcons = Object.freeze({
   components: "hax:admin-components",
   content: "hax:admin-content",
   copy: "hax:admin-copy",
+  crop: "hax:admin-crop",
   delete: "hax:admin-delete",
   details: "hax:admin-details",
   docs: "hax:admin-docs",

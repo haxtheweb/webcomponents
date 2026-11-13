@@ -293,6 +293,7 @@ describe("haxcms-files-admin-dialog section state", () => {
     expect(e.detail.selected).to.equal(1);
     expect(e.detail.actions.map((a) => a.id)).to.deep.equal([
       "insert",
+      "crop",
       "scale",
       "rotate",
       "transform",

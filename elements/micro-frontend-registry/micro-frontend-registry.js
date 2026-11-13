@@ -49,7 +49,30 @@ export const MicroFrontendRegCapabilities = function (SuperClass) {
     _resolveEndpointTemplate(endpoint = "", params = {}) {
       let resolvedEndpoint = String(endpoint || "");
       let cleanedParams = params;
-      if (
+      if (params instanceof FormData) {
+        // multipart bodies carry path tokens as plain fields; move them into
+        // the path and keep the rest (uploads included) on a copy
+        const tokens = [];
+        resolvedEndpoint = resolvedEndpoint.replace(
+          /\{([A-Za-z0-9_]+)\}/g,
+          (match, tokenName) => {
+            const value = params.get(tokenName);
+            if (value != null && typeof value === "string") {
+              tokens.push(tokenName);
+              return encodeURIComponent(value);
+            }
+            return match;
+          },
+        );
+        if (tokens.length > 0) {
+          cleanedParams = new FormData();
+          params.forEach((value, key) => {
+            if (tokens.indexOf(key) === -1) {
+              cleanedParams.append(key, value);
+            }
+          });
+        }
+      } else if (
         params &&
         typeof params === "object" &&
         !(params instanceof FormData)

@@ -9,13 +9,15 @@ import { HAXStore } from "./hax-store.js";
 import { SuperDaemonInstance } from "@haxtheweb/super-daemon/super-daemon.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
-import "@haxtheweb/a11y-collapse/a11y-collapse.js";
-import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
-// #3028: reuse the real hax-file-actions element (field mode) and its preset
-// table as the single source of truth for transforms/compress/scale, instead
-// of duplicating the option list here. The op itself reuses the existing
-// @site/updateFileByUuid backend.
-import { SCALE_PRESETS } from "./hax-file-actions.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
+import { HaxUiAdminPrimitives } from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";
+import { HaxUiAdminControls } from "@haxtheweb/d-d-d/lib/HaxUiAdminControls.js";
+import { canCropMime, croppedFileName } from "./hax-image-crop.js";
+// #3028: reuse hax-file-actions' preset tables as the single source of truth
+// for the Scale and Compress choices instead of duplicating them here. The op
+// itself reuses the existing @site/updateFileByUuid backend.
+import { SCALE_PRESETS, COMPRESS_PRESETS } from "./hax-file-actions.js";
 
 // Advisory thresholds (recommendations only; never block). See issue #3028.
 const COMPRESS_RECOMMEND_SIZE = 256 * 1024;
@@ -66,6 +68,10 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
     this.__lastUploadedFile = null;
     this.__fileActionsBusy = false;
     this.__fileActionsError = "";
+    this.__infoOpen = false;
+    this.__choice = "";
+    this.__cropping = false;
+    this.__savedName = "";
     this.t = this.t || {};
     this.t = {
       ...this.t,
@@ -83,11 +89,6 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
       uploadMedia: "Upload media",
       uploadDisabled: "Uploading media is disabled for this site",
       imageInfo: "Image info",
-      imageActions: "Image actions",
-      imageRecommendations: "Image recommendations",
-      compressImage: "Compress image",
-      resizeTo: "Resize to",
-      created: "Created",
       size: "Size",
       dimensions: "Dimensions",
       type: "Type",
@@ -101,6 +102,43 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
       transformFailed:
         "Post-upload transform failed; the original file was kept.",
       imageGalleryCreated: "Image gallery created successfully!",
+      updated: "Updated",
+      kindImage: "Image",
+      editImage: "Edit image",
+      crop: "Crop",
+      scale: "Scale",
+      rotate: "Rotate",
+      transform: "Transform",
+      compress: "Compress",
+      convertJpg: "Convert to JPG",
+      sepia: "Sepia",
+      blackAndWhite: "Black and white",
+      chooseScale: "Scale this image to",
+      chooseTransform: "Transform this image",
+      chooseCompress: "Compress this image",
+      recommendedScale: "Recommended: {size} or smaller",
+      scaleTo: "Scale to {size}",
+      recommendedCompress: "Recommended: compress to load faster",
+      compressLevel: "Compress ({quality})",
+      download: "Download",
+      useCroppedImage: "Use cropped image",
+      cropNote:
+        "Saves a new file, {name}, and uses it in this block. The original stays in Files.",
+      savedAs: "Saved",
+      savedNote: "{name}. The original is still in Files.",
+      cropFailed: "Unable to save the cropped image.",
+      timeAgo: "{time} ago",
+      justNow: "Just now",
+      month: "month",
+      months: "months",
+      day: "day",
+      days: "days",
+      hour: "hour",
+      hours: "hours",
+      minute: "minute",
+      minutes: "minutes",
+      second: "second",
+      seconds: "seconds",
     };
     this.registerLocalization({
       context: this,
@@ -178,103 +216,161 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
       __fileActionsBusy: { type: Boolean, attribute: false },
       __fileActionsError: { type: String, attribute: false },
       __transformBusy: { type: Boolean, attribute: false },
+      // Image info disclosure, open chooser, crop view, last crop saved
+      __infoOpen: { type: Boolean, attribute: false },
+      __choice: { type: String, attribute: false },
+      __cropping: { type: Boolean, attribute: false },
+      __savedName: { type: String, attribute: false },
     };
   }
   static get styles() {
     return [
       ...super.styles,
+      ...HaxUiAdminPrimitives,
+      ...HaxUiAdminControls,
       css`
+        /* Image info: the HAX UI admin layout of site admin Files. Buttons,
+           pills, messages and inputs are the shared HaxUiAdminControls. */
         .file-actions-wrap {
-          margin-top: var(--ddd-spacing-2);
+          margin-top: var(--hax-ui-gap-md);
+          font-family: var(--hax-ui-admin-font-family);
+          font-size: var(--hax-ui-admin-font-size);
+          color: var(--hax-ui-text);
         }
-        a11y-collapse.file-actions-collapse,
-        a11y-collapse.file-info-collapse {
+        .ii-heading {
           margin: 0;
-          --a11y-collapse-margin: 0;
-          --a11y-collapse-vertical-padding: var(--ddd-spacing-1);
-          --a11y-collapse-horizontal-padding: var(--ddd-spacing-2);
+          font-size: var(--hax-ui-admin-font-size);
         }
-        a11y-collapse.file-actions-collapse::part(heading),
-        a11y-collapse.file-info-collapse::part(heading) {
-          font-weight: var(--ddd-font-weight-medium);
-        }
-        .file-info-grid {
-          display: grid;
-          grid-template-columns: max-content 1fr;
-          gap: var(--ddd-spacing-1) var(--ddd-spacing-3);
-          font-size: var(--ddd-font-size-5xs);
-          font-family: var(--ddd-font-navigation);
-          padding: var(--ddd-spacing-1) 0;
-        }
-        .file-info-grid dt {
-          font-weight: var(--ddd-font-weight-medium);
-        }
-        .file-info-grid dd {
-          margin: 0;
-          display: inline-flex;
+        /* the admin fieldset heading row (contract-admin-fieldset) */
+        .ii-head {
+          display: flex;
           align-items: center;
-          gap: var(--ddd-spacing-1);
-        }
-        .info-action-btn {
-          --simple-icon-button-background-color: var(
-            --ddd-theme-default-skyBlue
+          gap: var(--hax-ui-gap);
+          width: 100%;
+          height: var(--hax-upload-field-info-height, var(--hax-ui-row-height));
+          margin: 0;
+          padding: 0 var(--hax-ui-gap-lg);
+          border: 0;
+          border-bottom: 1px solid var(--hax-ui-line);
+          background-color: transparent;
+          color: var(--hax-ui-text);
+          font-family: inherit;
+          font-size: var(
+            --hax-upload-field-font-size,
+            var(--hax-ui-admin-font-size)
           );
-          --simple-icon-button-border-radius: var(--ddd-radius-sm);
-          --simple-icon-button-padding: var(--ddd-spacing-1)
-            var(--ddd-spacing-2);
-          --simple-icon-width: var(--ddd-icon-4xs);
-          --simple-icon-height: var(--ddd-icon-4xs);
-          --simple-icon-color: var(--ddd-theme-default-white);
-          color: var(--ddd-theme-default-white);
-          font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-5xs);
           font-weight: var(--ddd-font-weight-bold);
-          gap: var(--ddd-spacing-1);
+          text-align: left;
+          cursor: pointer;
+          --simple-icon-width: var(--hax-ui-icon);
+          --simple-icon-height: var(--hax-ui-icon);
         }
-        .rec-chips {
+        .ii-head:hover {
+          background-color: var(--hax-ui-hover);
+        }
+        .ii-head:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: calc(-1 * var(--hax-ui-focus-width));
+        }
+        .ii-head span {
+          flex: 1;
+        }
+        .ii-head simple-icon-lite {
+          color: var(--hax-ui-text-muted);
+          transition: transform var(--hax-ui-duration) var(--hax-ui-easing);
+        }
+        .ii-head[aria-expanded="true"] simple-icon-lite {
+          transform: rotate(90deg);
+        }
+        .ii-body {
+          display: flex;
+          flex-direction: column;
+          gap: var(--hax-ui-gap-md);
+          padding: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
+        }
+        .ii-body[hidden] {
+          display: none;
+        }
+        /* site admin Files' File details list */
+        .facts {
+          display: grid;
+          grid-template-columns:
+            calc(var(--hax-ui-row-height) * 2 + var(--hax-ui-gap-md))
+            minmax(0, 1fr);
+          gap: var(--hax-ui-gap) var(--hax-ui-gap-md);
+          margin: 0;
+          font-size: calc(var(--hax-ui-admin-font-size) - 1px);
+        }
+        .facts dt,
+        .facts dd {
+          margin: 0;
+        }
+        .facts dt {
+          color: var(--hax-ui-text-muted);
+        }
+        .facts dd {
+          font-variant-numeric: tabular-nums;
+        }
+        .saved {
           display: flex;
           flex-wrap: wrap;
-          gap: var(--ddd-spacing-2);
-          padding: var(--ddd-spacing-1) 0;
-        }
-        .rec-chip {
-          display: inline-flex;
           align-items: center;
-          gap: var(--ddd-spacing-1);
-          font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-5xs);
-          font-weight: var(--ddd-font-weight-medium);
-          padding: var(--ddd-spacing-1) var(--ddd-spacing-3);
-          border: var(--ddd-border-size-sm) solid
-            var(--ddd-theme-default-limestoneGray);
-          border-radius: var(--ddd-radius-rounded, 999px);
-          background: var(--ddd-theme-default-white);
-          color: var(--ddd-theme-default-coalyGray);
-          cursor: pointer;
-        }
-        .rec-chip:hover:not(:disabled) {
-          border-color: var(--ddd-theme-default-skyBlue);
-          color: var(--ddd-theme-default-skyBlue);
-        }
-        .rec-chip:disabled {
-          opacity: var(--ddd-opacity-60, 0.6);
-          cursor: default;
-        }
-        .rec-more {
-          margin-top: var(--ddd-spacing-2);
-        }
-        .rec-more simple-fields-field {
-          --simple-fields-font-size: var(--ddd-font-size-5xs);
-          --simple-fields-select-max-width: 100%;
+          gap: var(--hax-ui-gap-md);
           margin: 0;
         }
+        .rec {
+          flex-wrap: wrap;
+          align-items: center;
+        }
+        .rec span {
+          flex: 1 1 auto;
+        }
+        /* a line between the facts and the actions */
+        .ii-actions {
+          display: flex;
+          flex-wrap: wrap;
+          gap: var(--hax-ui-gap);
+          padding-top: var(--hax-ui-gap-md);
+          border-top: 1px solid var(--hax-ui-line);
+        }
+        /* site admin Files' chooser */
+        .choice {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: var(--hax-ui-gap-md);
+          padding: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius-lg);
+          background-color: var(--hax-ui-surface);
+          box-shadow: var(--hax-ui-shadow-popover);
+        }
+        .choice-title {
+          margin-right: auto;
+          font-weight: var(--ddd-font-weight-bold);
+        }
+        .choice-opts {
+          display: flex;
+          flex-wrap: wrap;
+          gap: var(--hax-ui-gap-md);
+        }
+        .choice.crop {
+          display: block;
+          padding: var(--hax-ui-gap-md);
+        }
         .rec-status {
-          font-size: var(--ddd-font-size-5xs);
-          min-height: 1.2em;
-          margin-top: var(--ddd-spacing-1);
+          font-size: var(--hax-ui-admin-font-size-xs);
+        }
+        .rec-status:empty {
+          display: none;
         }
         .rec-status.error {
-          color: var(--ddd-theme-default-error);
+          color: var(--hax-ui-danger);
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .ii-head simple-icon-lite {
+            transition: none;
+          }
         }
         /* label-hidden: the fieldset keeps its name for assistive tech */
         :host([label-hidden]) legend[part="legend"],
@@ -297,6 +393,11 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
             --hax-upload-field-font-size,
             var(--hax-ui-admin-font-size, 14px)
           );
+        }
+        /* in an admin field row the disclosure sits under a field label,
+           so it reads as a row, not a heading */
+        :host([compact]) .ii-head {
+          font-weight: var(--ddd-font-weight-regular, 400);
         }
         :host([compact]) fieldset {
           min-inline-size: 0;
@@ -413,65 +514,6 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
             var(--hax-ui-admin-font-size, 14px)
           );
           color: var(--hax-ui-text, inherit);
-        }
-        :host([compact]) .file-actions-wrap {
-          margin-top: var(--hax-ui-gap-md, var(--ddd-spacing-2, 8px));
-        }
-        :host([compact]) a11y-collapse.file-info-collapse {
-          /* keep the compact admin row: no 48px block row or 40px toggle */
-          --a11y-collapse-heading-min-height: var(
-            --hax-upload-field-info-height,
-            var(--hax-ui-row-height, 32px)
-          );
-          --a11y-collapse-heading-vertical-padding: 0;
-          --a11y-collapse-toggle-size: var(
-            --hax-upload-field-info-height,
-            var(--hax-ui-row-height, 32px)
-          );
-          --a11y-collapse-border: 1px solid;
-          --a11y-collapse-border-color: var(
-            --hax-ui-line,
-            var(--ddd-theme-default-limestoneLight, #e4e5e7)
-          );
-          --a11y-collapse-heading-font-weight: var(
-            --ddd-font-weight-regular,
-            400
-          );
-          --a11y-collapse-vertical-padding: var(
-            --hax-ui-gap-md,
-            var(--ddd-spacing-2, 8px)
-          );
-          --a11y-collapse-horizontal-padding: var(
-            --hax-ui-gap-md,
-            var(--ddd-spacing-2, 8px)
-          );
-          border-radius: var(--hax-ui-radius, var(--ddd-radius-xs, 4px));
-          color: var(--hax-ui-text, inherit);
-        }
-        :host([compact]) a11y-collapse.file-info-collapse::part(heading-id) {
-          min-block-size: var(
-            --hax-upload-field-info-height,
-            var(--hax-ui-row-height, 32px)
-          );
-          font-weight: var(--ddd-font-weight-regular, 400);
-        }
-        :host([compact]) a11y-collapse.file-info-collapse::part(icon) {
-          --simple-icon-width: var(--hax-ui-icon, var(--ddd-icon-4xs, 16px));
-          --simple-icon-height: var(--hax-ui-icon, var(--ddd-icon-4xs, 16px));
-        }
-        :host([compact]) .file-info-collapse span[slot="heading"] {
-          font-family: inherit;
-          font-size: var(
-            --hax-upload-field-font-size,
-            var(--hax-ui-admin-font-size, 14px)
-          );
-        }
-        :host([compact]) .file-info-grid {
-          font-family: inherit;
-          font-size: var(
-            --hax-ui-admin-font-size-xs,
-            var(--ddd-font-size-5xs, 12px)
-          );
         }
       `,
     ];
@@ -1102,78 +1144,389 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
     const f = this.__lastUploadedFile;
     const isImage = !!(f && this._isImageMime(f.type));
     if (!f || !isImage) return html``;
-    const recs = this.__fileRecs || [];
-    const compressRec = recs.find((r) => r.kind === "compress");
-    const resizeRec = recs.find((r) => r.kind === "scale");
-    const hasUuid = !!f.uuid;
     return html`
       <div class="file-actions-wrap">
-        <a11y-collapse class="file-info-collapse" heading-button accordion>
-          <span slot="heading">${this.t.imageInfo}</span>
-          <dl class="file-info-grid">
-            <dt>${this.t.created}</dt>
-            <dd>${this._fmtDate(f.dateCreated)}</dd>
-            <dt>${this.t.size}</dt>
-            <dd>
-              ${this._fmtBytes(f.size)}
-              ${
-                compressRec
-                  ? html`<simple-icon-button-lite
-                      class="info-action-btn"
-                      icon="icons:compress"
-                      label="${compressRec.label}"
-                      title="${compressRec.label}"
-                      ?disabled="${this.__fileActionsBusy}"
-                      @click="${() => this._runFileRec(compressRec)}"
-                      >90</simple-icon-button-lite
-                    >`
-                  : html``
-              }
-            </dd>
-            <dt>${this.t.dimensions}</dt>
-            <dd>
-              ${
-                f.width && f.height ? f.width + " \u00d7 " + f.height : "\u2014"
-              }
-              ${
-                resizeRec
-                  ? html`<simple-icon-button-lite
-                      class="info-action-btn"
-                      icon="image:transform"
-                      label="${resizeRec.label}"
-                      title="${resizeRec.label}"
-                      ?disabled="${this.__fileActionsBusy}"
-                      @click="${() => this._runFileRec(resizeRec)}"
-                    ></simple-icon-button-lite>`
-                  : html``
-              }
-            </dd>
-            <dt>${this.t.type}</dt>
-            <dd>${f.type || "\u2014"}</dd>
-          </dl>
-          ${
-            hasUuid
-              ? html`<div class="rec-more">
-                  <hax-file-actions
-                    mode="field"
-                    selected-count="1"
-                    image-count="1"
-                    ?can-scale="${!this.__fileActionsBusy}"
-                    ?busy="${this.__fileActionsBusy}"
-                    @hax-file-action="${this._onInlineFileAction}"
-                  ></hax-file-actions>
-                </div>`
-              : html``
-          }
-          <div
-            class="rec-status ${this.__fileActionsError ? "error" : ""}"
-            aria-live="polite"
+        <h3 class="ii-heading">
+          <button
+            type="button"
+            class="ii-head"
+            aria-expanded="${this.__infoOpen ? "true" : "false"}"
+            aria-controls="image-info"
+            @click="${this._toggleImageInfo}"
           >
-            ${this.__fileActionsError}
-          </div>
-        </a11y-collapse>
+            <span>${this.t.imageInfo}</span>
+            <simple-icon-lite
+              icon="hax:admin-chevron"
+              aria-hidden="true"
+            ></simple-icon-lite>
+          </button>
+        </h3>
+        <div id="image-info" class="ii-body" ?hidden="${!this.__infoOpen}">
+          ${
+            this.__cropping ? this._cropTemplate(f) : this._imageInfoTemplate(f)
+          }
+        </div>
       </div>
     `;
+  }
+  /** facts, recommendations and edit actions, in the site admin Files style */
+  _imageInfoTemplate(f) {
+    const recs = this.__fileRecs || [];
+    const hasUuid = !!f.uuid;
+    const busy = this.__fileActionsBusy;
+    return html`
+      ${
+        this.__savedName
+          ? html`<p class="saved" role="status">
+              <span class="hax-ui-pill" data-tone="success"
+                >${this.t.savedAs}</span
+              ><span class="hax-ui-note"
+                >${this.t.savedNote.replace(
+                  "{name}",
+                  () => this.__savedName,
+                )}</span
+              >
+            </p>`
+          : ""
+      }
+      <dl class="facts">
+        <dt>${this.t.type}</dt>
+        <dd>${this._typeLabel(f)}</dd>
+        <dt>${this.t.size}</dt>
+        <dd>${this._fmtBytes(f.size)}</dd>
+        <dt>${this.t.dimensions}</dt>
+        <dd>${f.width && f.height ? f.width + " × " + f.height : "—"}</dd>
+        <dt>${this.t.updated}</dt>
+        <dd title="${this._fmtDate(f.dateCreated)}">
+          ${this._fmtRelativeDate(f.dateCreated)}
+        </dd>
+      </dl>
+      ${recs.map(
+        (rec) =>
+          html`<div class="hax-ui-message rec" data-tone="warning">
+            <span>${rec.message}</span>
+            <button
+              type="button"
+              class="hax-ui-btn"
+              ?disabled="${busy || !hasUuid}"
+              @click="${() => this._runFileRec(rec)}"
+            >
+              ${rec.label}
+            </button>
+          </div>`,
+      )}
+      ${
+        hasUuid
+          ? html`<div
+                class="ii-actions"
+                role="group"
+                aria-label="${this.t.editImage}"
+              >
+                <button
+                  type="button"
+                  class="hax-ui-btn"
+                  ?disabled="${busy || !this._canCrop(f)}"
+                  @click="${this._openCrop}"
+                >
+                  ${this.t.crop}…
+                </button>
+                <button
+                  type="button"
+                  class="hax-ui-btn"
+                  ?disabled="${busy}"
+                  @click="${() => this._openChoice("scale")}"
+                >
+                  ${this.t.scale}…
+                </button>
+                <button
+                  type="button"
+                  class="hax-ui-btn"
+                  ?disabled="${busy}"
+                  @click="${() =>
+                    this._onInlineFileAction({
+                      detail: { action: "rotate", value: "rotate-90" },
+                    })}"
+                >
+                  ${this.t.rotate}
+                </button>
+                <button
+                  type="button"
+                  class="hax-ui-btn"
+                  ?disabled="${busy}"
+                  @click="${() => this._openChoice("transform")}"
+                >
+                  ${this.t.transform}…
+                </button>
+                <button
+                  type="button"
+                  class="hax-ui-btn"
+                  ?disabled="${busy}"
+                  @click="${() => this._openChoice("compress")}"
+                >
+                  ${this.t.compress}…
+                </button>
+              </div>
+              ${this.__choice ? this._choiceTemplate() : ""}`
+          : ""
+      }
+      <div
+        class="rec-status ${this.__fileActionsError ? "error" : ""}"
+        aria-live="polite"
+      >
+        ${this.__fileActionsError}
+      </div>
+    `;
+  }
+  /** site admin Files' chooser: a bold title, one button each, ghost Cancel */
+  _choiceTemplate() {
+    const action = this.__choice;
+    const titles = {
+      scale: this.t.chooseScale,
+      transform: this.t.chooseTransform,
+      compress: this.t.chooseCompress,
+    };
+    let options = [];
+    if (action === "scale") {
+      options = Object.keys(SCALE_PRESETS).map((key) => ({
+        value: key,
+        label: SCALE_PRESETS[key].label,
+      }));
+    } else if (action === "transform") {
+      options = [
+        { value: "convert-jpg", label: this.t.convertJpg },
+        { value: "sepia", label: this.t.sepia },
+        { value: "black-and-white", label: this.t.blackAndWhite },
+      ];
+    } else if (action === "compress") {
+      options = Object.keys(COMPRESS_PRESETS).map((key) => ({
+        value: key,
+        label: COMPRESS_PRESETS[key].label,
+      }));
+    }
+    return html`<div
+      class="choice"
+      role="group"
+      aria-labelledby="choice-title"
+      @keydown="${this._onChoiceKeydown}"
+    >
+      <span class="choice-title" id="choice-title">${titles[action]}</span>
+      <div class="choice-opts">
+        ${options.map(
+          (option) =>
+            html`<button
+              type="button"
+              class="hax-ui-btn"
+              ?disabled="${this.__fileActionsBusy}"
+              @click="${() => this._runChoice(action, option.value)}"
+            >
+              ${option.label}
+            </button>`,
+        )}
+      </div>
+      <button
+        type="button"
+        class="hax-ui-btn ghost"
+        @click="${this._closeChoice}"
+      >
+        ${this.t.cancel}
+      </button>
+    </div>`;
+  }
+  /** the in-browser crop: hax-image-crop with this field's buttons */
+  _cropTemplate(f) {
+    const src = f.fullUrl || f.source || "";
+    const name = this._fileNameOf(f);
+    return html`<div class="choice crop">
+      <hax-image-crop
+        src="${src}"
+        file-name="${name}"
+        mime-type="${f.type || ""}"
+        note="${this.t.cropNote.replace("{name}", () =>
+          this._croppedName(name, f.type),
+        )}"
+      >
+        <button
+          slot="actions"
+          type="button"
+          class="hax-ui-btn"
+          ?disabled="${this.__fileActionsBusy}"
+          @click="${this._downloadCrop}"
+        >
+          ${this.t.download}
+        </button>
+        <button
+          slot="actions"
+          type="button"
+          class="hax-ui-btn ghost"
+          ?disabled="${this.__fileActionsBusy}"
+          @click="${this._closeCrop}"
+        >
+          ${this.t.cancel}
+        </button>
+        <button
+          slot="actions"
+          type="button"
+          class="hax-ui-btn primary"
+          ?disabled="${this.__fileActionsBusy}"
+          @click="${this._useCroppedImage}"
+        >
+          ${this.t.useCroppedImage}
+        </button>
+      </hax-image-crop>
+    </div>`;
+  }
+  _toggleImageInfo() {
+    this.__infoOpen = !this.__infoOpen;
+  }
+  _openChoice(action) {
+    this.__choice = this.__choice === action ? "" : action;
+    if (this.__choice) {
+      this.updateComplete.then(() => {
+        const first = this.shadowRoot.querySelector(".choice-opts button");
+        if (first) first.focus();
+      });
+    }
+  }
+  _closeChoice() {
+    this.__choice = "";
+  }
+  _onChoiceKeydown(e) {
+    if (e.key === "Escape") {
+      e.stopPropagation();
+      this._closeChoice();
+    }
+  }
+  _runChoice(action, value) {
+    this.__choice = "";
+    this._onInlineFileAction({ detail: { action: action, value: value } });
+  }
+  /** Crop works on JPG, PNG and WebP: the formats a browser canvas writes */
+  _canCrop(f) {
+    return canCropMime(f && f.type);
+  }
+  _fileNameOf(f) {
+    const raw = String((f && (f.source || f.fullUrl)) || "")
+      .split("?")[0]
+      .split("#")[0];
+    return raw.split("/").pop() || "image";
+  }
+  _croppedName(name, mime) {
+    return croppedFileName(name, mime);
+  }
+  _openCrop() {
+    this.__choice = "";
+    this.__savedName = "";
+    this.__cropping = true;
+  }
+  _closeCrop() {
+    this.__cropping = false;
+  }
+  async _downloadCrop() {
+    const cropper = this.shadowRoot.querySelector("hax-image-crop");
+    if (!cropper) return;
+    try {
+      await cropper.download();
+    } catch (e) {
+      cropper.error = e && e.message ? e.message : this.t.cropFailed;
+    }
+  }
+  /**
+   * Make the crop in the browser, upload it as a new file through the v1
+   * createFile endpoint, and point this field at it. The original file is
+   * left as it was (haxtheweb/issues#1149).
+   */
+  async _useCroppedImage() {
+    const cropper = this.shadowRoot.querySelector("hax-image-crop");
+    if (!cropper || this.__fileActionsBusy) return;
+    this.__fileActionsBusy = true;
+    this.__fileActionsError = "";
+    try {
+      let blob = null;
+      try {
+        blob = await cropper.toBlob();
+      } catch (e) {
+        cropper.error = e && e.message ? e.message : this.t.cropFailed;
+        return;
+      }
+      const ready = await this._waitForSiteOp("@site/createFile");
+      if (!ready) {
+        cropper.error = this.t.fileOpsUnavailable;
+        return;
+      }
+      const form = new FormData();
+      form.append("upload", blob, cropper.croppedFileName);
+      const nodeId = this._resolveUploadNodeId();
+      if (nodeId) form.append("nodeId", nodeId);
+      const d = await MicroFrontendRegistry.call(
+        "@site/createFile",
+        form,
+        null,
+        this,
+      );
+      const file = d && d.data && d.data.file ? d.data.file : null;
+      if (!d || d.status !== 200 || !file || !file.url) {
+        cropper.error =
+          typeof globalThis.haxcmsApiMessage === "function"
+            ? globalThis.haxcmsApiMessage(d, this.t.cropFailed)
+            : this.t.cropFailed;
+        return;
+      }
+      // the server may rename on a clash (name_1.jpg): use what it returns
+      const urlField = this.shadowRoot.querySelector("#url");
+      if (urlField) urlField.value = file.url;
+      this.value = file.url;
+      this._captureUploadedFileForRecs(d, { url: file.url });
+      this.__savedName = file.name || this._fileNameOf({ source: file.url });
+      this.__cropping = false;
+    } catch {
+      cropper.error = this.t.cropFailed;
+    } finally {
+      this.__fileActionsBusy = false;
+    }
+  }
+  /** "Image · JPG", the site admin Files type label */
+  _typeLabel(f) {
+    const name = this._fileNameOf(f);
+    const dot = name.lastIndexOf(".");
+    let ext = dot > -1 ? name.substring(dot + 1) : "";
+    if (!ext && f && f.type) ext = String(f.type).split("/").pop();
+    ext = String(ext || "").toUpperCase();
+    if (ext === "JPEG") ext = "JPG";
+    return ext ? this.t.kindImage + " · " + ext : this.t.kindImage;
+  }
+  /** seconds or ms since the epoch (backends differ) to ms */
+  _dateMs(v) {
+    const n = typeof v === "number" ? v : parseInt(v, 10);
+    if (!Number.isFinite(n) || n <= 0) return 0;
+    return n < 1000000000000 ? n * 1000 : n;
+  }
+  /** relative time in the site admin Files wording */
+  _fmtRelativeDate(v) {
+    const ms = this._dateMs(v);
+    if (!ms) return "—";
+    const delta = Math.max(0, Math.floor((Date.now() - ms) / 1000));
+    const unit = (n, one, many) => n + " " + (n === 1 ? one : many);
+    const t = this.t;
+    let time = "";
+    if (delta < 5) return t.justNow;
+    if (delta >= 2592000) {
+      time = unit(Math.floor(delta / 2592000), t.month, t.months);
+    } else if (delta >= 86400) {
+      time = unit(Math.floor(delta / 86400), t.day, t.days);
+    } else if (delta >= 3600) {
+      const m = Math.floor((delta % 3600) / 60);
+      time =
+        unit(Math.floor(delta / 3600), t.hour, t.hours) +
+        (m > 0 ? " " + unit(m, t.minute, t.minutes) : "");
+    } else if (delta >= 60) {
+      time =
+        unit(Math.floor(delta / 60), t.minute, t.minutes) +
+        " " +
+        unit(delta % 60, t.second, t.seconds);
+    } else {
+      time = unit(delta, t.second, t.seconds);
+    }
+    return t.timeAgo.replace("{time}", () => time);
   }
   /**
    * Preserve SimpleFieldsUpload.updated (value-changed notify + delayed focus)
@@ -1470,8 +1823,7 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
   }
   /**
    * Build the proactive recommendation list. Only compress / resize are
-   * surfaced as chips; the full transform/compress/scale list lives in the
-   * embedded <hax-file-actions mode="field"> bar.
+   * surfaced as recommendations; every action sits in the Image info buttons.
    */
   _recomputeRecs() {
     if (!this.fileActions) {
@@ -1485,7 +1837,11 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
         recs.push({
           kind: "compress",
           level: "medium",
-          label: this.t.compressImage,
+          message: this.t.recommendedCompress,
+          label: this.t.compressLevel.replace(
+            "{quality}",
+            () => COMPRESS_PRESETS.medium.quality,
+          ),
         });
       }
       if (f.width && f.height) {
@@ -1495,7 +1851,14 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
           recs.push({
             kind: "scale",
             size: key,
-            label: this.t.resizeTo + " " + SCALE_PRESETS[key].label,
+            message: this.t.recommendedScale.replace(
+              "{size}",
+              () => SCALE_PRESETS[key].label,
+            ),
+            label: this.t.scaleTo.replace(
+              "{size}",
+              () => SCALE_PRESETS[key].label,
+            ),
           });
         }
       }
@@ -1560,8 +1923,8 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
     this._callFileOp(params, rec.label);
   }
   /**
-   * Handle a transform/compress/scale/rotate choice from the inline
-   * <hax-file-actions mode="field"> bar. Maps the {action, value} event to
+   * Handle a transform/compress/scale/rotate choice from Image info's
+   * buttons and choosers. Maps the {action, value} event to
    * the @site/updateFileByUuid params and runs the op on the uploaded file.
    */
   _onInlineFileAction(e) {
@@ -1710,21 +2073,25 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
    * Format bytes for the Image Info panel (e.g. 312 KB, 1.4 MB).
    */
   _fmtBytes(bytes) {
-    const n = typeof bytes === "number" && bytes > 0 ? bytes : 0;
-    if (n < 1024) return n + " B";
-    if (n < 1024 * 1024) return (n / 1024).toFixed(1) + " KB";
-    if (n < 1024 * 1024 * 1024) return (n / (1024 * 1024)).toFixed(1) + " MB";
-    return (n / (1024 * 1024 * 1024)).toFixed(1) + " GB";
+    let v = typeof bytes === "number" && bytes > 0 ? bytes : 0;
+    if (!v) return "\u2014";
+    const u = ["B", "KB", "MB", "GB"];
+    let i = 0;
+    while (v >= 1024 && i < u.length - 1) {
+      v /= 1024;
+      i++;
+    }
+    return v.toFixed(v >= 10 || i === 0 ? 0 : 1) + " " + u[i];
   }
   /**
    * Format the dateCreated (seconds since epoch, matching the backend
    * FileRecord dateCreated) for the Image Info panel.
    */
   _fmtDate(seconds) {
-    const s = typeof seconds === "number" && seconds > 0 ? seconds : 0;
-    if (!s) return "\u2014";
+    const ms = this._dateMs(seconds);
+    if (!ms) return "\u2014";
     try {
-      const d = new Date(s * 1000);
+      const d = new Date(ms);
       return d.toLocaleDateString() + " " + d.toLocaleTimeString();
     } catch {
       return "\u2014";

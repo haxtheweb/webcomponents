@@ -348,6 +348,39 @@ describe("_resolveEndpointTemplate", () => {
     expect(result.params).to.equal(fd);
   });
 
+  it("fills path tokens from FormData fields and keeps the rest, files included", () => {
+    const fd = new FormData();
+    const file = new File(["x"], "crop.png", { type: "image/png" });
+    fd.append("fileUuid", "a b/c");
+    fd.append("upload", file);
+    fd.append("note", "keep");
+    const result = MicroFrontendRegistry._resolveEndpointTemplate(
+      "https://example.com/files/{fileUuid}/content",
+      fd,
+    );
+    expect(result.endpoint).to.equal(
+      "https://example.com/files/a%20b%2Fc/content",
+    );
+    expect(result.params).to.be.instanceOf(FormData);
+    expect(result.params).to.not.equal(fd);
+    expect(result.params.has("fileUuid")).to.equal(false);
+    expect(result.params.get("note")).to.equal("keep");
+    expect(result.params.get("upload").name).to.equal("crop.png");
+    // the caller's FormData is left as it was
+    expect(fd.get("fileUuid")).to.equal("a b/c");
+  });
+
+  it("does not fill a path token from a file field", () => {
+    const fd = new FormData();
+    fd.append("id", new File(["x"], "a.png"));
+    const result = MicroFrontendRegistry._resolveEndpointTemplate(
+      "https://example.com/{id}",
+      fd,
+    );
+    expect(result.endpoint).to.equal("https://example.com/{id}");
+    expect(result.params).to.equal(fd);
+  });
+
   it("handles null/empty endpoint gracefully", () => {
     const result = MicroFrontendRegistry._resolveEndpointTemplate(null, {
       id: 1,

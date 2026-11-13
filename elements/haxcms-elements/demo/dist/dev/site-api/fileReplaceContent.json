@@ -1,0 +1,19 @@
+{
+  "status": 200,
+  "data": {
+    "operation": "replace-content",
+    "path": "files/team-neon-circle.png",
+    "file": {
+      "path": "files/team-neon-circle.png",
+      "fullUrl": "/sites/scyihaprogramming/files/team-neon-circle.png",
+      "url": "files/team-neon-circle.png",
+      "mimetype": "image/png",
+      "name": "team-neon-circle.png",
+      "uuid": "a1b2c3d4-0019-4aaa-8bbb-000000000019",
+      "size": 298000,
+      "dateCreated": 1700000000,
+      "width": 1046,
+      "height": 588
+    }
+  }
+}

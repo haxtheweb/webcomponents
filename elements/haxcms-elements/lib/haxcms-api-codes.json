@@ -583,7 +583,7 @@
       "en": "The file operation failed.",
       "match": [
         "failed to (?:write|delete|rename file|delete file|save uploaded file|prepare schema directory)",
-        "unable to (?:save file(?: to target location)?|complete file operation|delete file|rename file|duplicate file)",
+        "unable to (?:save file(?: to target location)?|complete file operation|delete file|rename file|duplicate file|replace file content)",
         "unable to generate a unique (?:duplicate|jpg output) file name"
       ]
     },
@@ -617,7 +617,8 @@
         "file must have a (?<expected>\\.\\w+) extension",
         "invalid file type for schema .+; expected (?<expected>\\.\\w+)",
         "detected mime type .+ does not match allowed type for (?<expected>\\.\\w+)",
-        "convert-pptx-deck requires a (?<expected>\\.pptx) file"
+        "convert-pptx-deck requires a (?<expected>\\.pptx) file",
+        "the uploaded file must be a (?<expected>jpg, png or webp) image"
       ]
     },
     {
@@ -688,6 +689,7 @@
       "en": "This image format can't be edited in place.",
       "match": [
         "image format does not support in-place .+",
+        "only jpg, png and webp images can be replaced",
         "unsupported (?:in-place )?transform(?: operation)?(?:: .*)?"
       ]
     },
@@ -702,7 +704,7 @@
       "match": [
         "unable to determine source image size",
         "unable to prepare image .+",
-        "unable to (?:scale|compress|transform|rotate) image",
+        "unable to (?:scale|compress|transform|rotate|replace) image",
         "unable to save (?:scaled|converted|compressed|transformed|rotated) image",
         "unable to replace original image after .+"
       ]
