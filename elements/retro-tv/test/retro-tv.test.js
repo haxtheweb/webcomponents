@@ -103,13 +103,19 @@ describe("retro-tv", () => {
     expect(osd.textContent.trim()).to.equal("CH 03");
   });
 
-  it("knobs are buttons that change channel and power", async () => {
-    const knobs = element.shadowRoot.querySelectorAll("button.knob");
-    expect(knobs.length).to.equal(2);
-    knobs[0].click();
+  it("the dial and power button change channel and power", async () => {
+    const knob = element.shadowRoot.querySelector("button.knob");
+    const pwr = element.shadowRoot.querySelector("button.pwr");
+    expect(knob).to.exist;
+    expect(pwr).to.exist;
+    knob.click();
     await settle(element);
     expect(element.channel).to.equal(5);
-    setTimeout(() => knobs[1].click());
+    // the dial's numbers mark the channel on air
+    expect(
+      element.shadowRoot.querySelector(".ring .cur").textContent.trim(),
+    ).to.equal("5");
+    setTimeout(() => pwr.click());
     const ev = await oneEvent(element, "retro-tv-power-changed");
     expect(ev.detail.power).to.be.false;
     await settle(element);
@@ -117,7 +123,7 @@ describe("retro-tv", () => {
     expect(
       element.shadowRoot.querySelector(".screen").getAttribute("aria-label"),
     ).to.equal("TV is off");
-    expect(knobs[1].getAttribute("aria-pressed")).to.equal("true");
+    expect(pwr.getAttribute("aria-label")).to.equal("Turn the TV on");
   });
 
   it("knobs are decoration without controls", async () => {
@@ -127,7 +133,7 @@ describe("retro-tv", () => {
       </retro-tv>
     `);
     await settle(el);
-    expect(el.shadowRoot.querySelectorAll("button.knob").length).to.equal(0);
+    expect(el.shadowRoot.querySelectorAll("button").length).to.equal(0);
     expect(
       el.shadowRoot.querySelector(".side").getAttribute("aria-hidden"),
     ).to.equal("true");

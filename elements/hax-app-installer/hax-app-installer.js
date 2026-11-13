@@ -23,6 +23,18 @@ import "@haxtheweb/retro-tv/lib/programs/retro-tv-home-computer.js";
 import "@haxtheweb/retro-tv/lib/programs/retro-tv-handheld.js";
 import "@haxtheweb/retro-tv/lib/programs/retro-tv-pc.js";
 import "@haxtheweb/retro-tv/lib/programs/retro-tv-disc.js";
+import "@haxtheweb/retro-tv/lib/programs/retro-tv-melee.js";
+import "@haxtheweb/retro-tv/lib/programs/retro-tv-static.js";
+// the HAX TV kit: a VCR on the set, the HAX 64 and its controller below it
+import "@haxtheweb/retro-tv/lib/retro-vcr.js";
+import "@haxtheweb/retro-tv/lib/retro-console.js";
+import "@haxtheweb/retro-tv/lib/retro-controller.js";
+import {
+  retroKitKey,
+  retroKitInField,
+} from "@haxtheweb/retro-tv/lib/retro-kit.js";
+// Tips: stacked stop-notes
+import "@haxtheweb/stop-note/lib/stop-note-group.js";
 
 /** HAX TV channels: what plays while each request runs */
 const TV = {
@@ -35,6 +47,15 @@ const TV = {
 };
 /** a loading screen stays on at least this long, so a fast server still shows it */
 const TV_MIN_MS = 1600;
+/** the HAX 64 plays HAX Melee on this channel */
+const TV_GAME = 2;
+/** which tip each step opens on */
+const TIP_START = { 1: 0, 2: 1, 3: 4, 4: 0 };
+/** the kit's colorways, from the Future Traveler */
+const KITS = ["helmet", "goggle", "bulb"];
+/** where the viewer's TV choices are kept */
+const TV_MIN_KEY = "hax-app-installer-tv-min";
+const KIT_KEY = "hax-app-installer-kit";
 
 /**
  * `hax-app-installer`
@@ -75,6 +96,9 @@ export class HaxAppInstaller extends I18NMixin(LitElement) {
     this._tvChannel = TV.idle;
     this._tvBusy = "";
     this._tvPower = true;
+    this._tvMin = false;
+    this._kit = "helmet";
+    this.__lastShow = TV.idle;
     this.__tvReturn = TV.idle;
     this.__tvTimer = null;
     this.__focusHeading = false;
@@ -191,6 +215,69 @@ export class HaxAppInstaller extends I18NMixin(LitElement) {
       runningTime: "Running time",
       min: "min",
       play: "Play",
+      installingHaxcms: "Installing HAXcms",
+      haxcmsInstalled: "HAXcms installed",
+      minimize: "Minimize",
+      showTv: "Show TV",
+      tvPower: "Power",
+      installed: "Installed",
+      bannerStep: "STEP {current}/4 · {what}",
+      bannerWorking: "WORKING…",
+      banner1: "PICK A LANGUAGE",
+      banner2: "CHECKING YOUR SERVER",
+      banner3: "MAKE YOUR ADMIN ACCOUNT",
+      banner4: "SAVE YOUR LOGIN",
+      vcr: "VCR",
+      topLoad: "Top load",
+      eject: "Eject",
+      rew: "Rew",
+      ff: "FF",
+      previousChannelHint: "previous channel",
+      replayChannel: "replay this channel",
+      nextChannelHint: "next channel",
+      consoleLabel: "HAX 64 console",
+      consolePower: "Console power",
+      consoleReset: "Reset the game",
+      consoleColor: "Console color",
+      colorHelmet: "Helmet red",
+      colorGoggle: "Goggle cyan",
+      colorBulb: "Bulb yellow",
+      gameController: "Game controller",
+      padUp: "Up: grab",
+      padDown: "Down: take back",
+      padLeft: "Left",
+      padRight: "Right",
+      padSelect: "Select: remix your fighter",
+      padStart: "Start: publish your page",
+      padB: "B: take back the last block",
+      padA: "A: grab a block",
+      padNote:
+        "HAX Melee on channel 2: race three rivals for the HAX blocks. A grabs (or bonks a rival next to you), B takes one back, Select remixes your fighter, Start publishes. Your keyboard works too: arrows, A and B light up the button they press.",
+      tips: "Tips",
+      tipDifferenceTitle: "The HAX difference: what you make keeps working",
+      tipDifference:
+        "Your pages are web-standard HTML in plain files you own, tracked with git. Nearly every site built with HAX since 2020 still works today, and a site moves between HAXcms in PHP, in Node or static hosting as it is. Built to last, light on the planet.",
+      pillarAccessible: "Accessible",
+      pillarEfficient: "Efficient",
+      pillarExtensible: "Extensible",
+      pillarOpen: "Free and open",
+      pillarAgnostic: "Platform agnostic",
+      pillarRemixable: "Remixable",
+      pillarSustainable: "Sustainable",
+      tipFilesTitle: "Bring your files and make them HAX",
+      tipFiles:
+        "After install, Import on the dashboard turns these into a HAX site you can edit, remix and take anywhere.",
+      htmlFile: "HTML file",
+      tipSitesTitle: "Move a whole website in",
+      tipSites:
+        "Point Import at a site's address and its pages come in as HAX pages and blocks.",
+      anyWebPage: "Any web page",
+      tipBooksTitle: "Books and docs come in too",
+      tipBooks:
+        "Open textbooks and docs-as-code repos become a HAX site with their outline intact.",
+      tipPasswordTitle: "Your password shows once",
+      tipPassword:
+        "The last step shows your new login one time. Keep it in a password manager before you start HAXcms.",
     };
     this.registerLocalization({
       context: this,
@@ -211,6 +298,8 @@ export class HaxAppInstaller extends I18NMixin(LitElement) {
       _tvChannel: { type: Number, state: true },
       _tvBusy: { type: String, state: true },
       _tvPower: { type: Boolean, state: true },
+      _tvMin: { type: Boolean, state: true },
+      _kit: { type: String, state: true },
     };
   }
 
@@ -905,7 +994,7 @@ export class HaxAppInstaller extends I18NMixin(LitElement) {
         @container installer (max-width: 620px) {
           .body {
             grid-template-columns: minmax(0, 1fr);
-            grid-template-rows: auto auto minmax(0, 1fr);
+            grid-template-rows: auto minmax(0, 1fr) auto;
           }
           .rail {
             flex-direction: row;
@@ -930,11 +1019,11 @@ export class HaxAppInstaller extends I18NMixin(LitElement) {
             display: none;
           }
           .tvpanel {
-            grid-row: 2;
+            grid-row: 3;
             flex-direction: row;
             align-items: center;
             border-left: 0;
-            border-bottom: 1px solid var(--hax-ui-line);
+            border-top: 1px solid var(--hax-ui-line);
             padding: var(--hax-ui-gap-md);
             overflow: visible;
           }
@@ -956,7 +1045,7 @@ export class HaxAppInstaller extends I18NMixin(LitElement) {
             --retro-tv-kicker-size: 5px;
           }
           .main {
-            grid-row: 3;
+            grid-row: 2;
           }
           .ph,
           .content {
@@ -1004,6 +1093,402 @@ export class HaxAppInstaller extends I18NMixin(LitElement) {
             grid-template-columns: minmax(0, 1fr);
           }
         }
+
+        /* the Future Traveler, top right as in every HAX interface */
+        .ft-mark {
+          display: inline-grid;
+          place-items: center;
+          width: 32px;
+          height: 32px;
+          --simple-icon-width: 28px;
+          --simple-icon-height: 28px;
+        }
+        /* the step's actions again, right under the steps */
+        .rail-acts {
+          display: flex;
+          flex-direction: column;
+          gap: var(--hax-ui-gap-md);
+          margin: 0 var(--hax-ui-gap-md);
+          padding: var(--hax-ui-gap-md) 0 var(--hax-ui-gap-lg);
+          border-top: 1px solid var(--hax-ui-line);
+        }
+        .rail-acts .hax-ui-btn {
+          width: 100%;
+          box-sizing: border-box;
+          justify-content: center;
+        }
+        .rail-acts .hax-ui-btn.ghost {
+          order: 2;
+        }
+        button.help-footer-link {
+          box-sizing: border-box;
+          width: 100%;
+          border: 0;
+          background: none;
+          font: inherit;
+          cursor: pointer;
+          text-align: start;
+        }
+        .help-footer-link:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 2px;
+        }
+        /* installing: the meter in the page header on every step */
+        .inst {
+          margin-left: auto;
+          display: flex;
+          align-items: center;
+          gap: var(--hax-ui-gap-md);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          color: var(--hax-ui-text-muted);
+          white-space: nowrap;
+        }
+        .inst-lbl {
+          font-weight: var(--ddd-font-weight-bold, 700);
+          color: var(--hax-ui-text);
+        }
+        .inst .segs {
+          display: inline-grid;
+          grid-template-columns: repeat(4, 22px);
+          gap: 3px;
+        }
+        .inst .segs i {
+          height: 6px;
+          border-radius: 3px;
+          background: var(--hax-ui-line);
+        }
+        .inst .segs i.done {
+          background: var(--hax-ui-success);
+        }
+        .inst .segs i.now {
+          background: repeating-linear-gradient(
+            135deg,
+            var(--hax-ui-accent-strong) 0 4px,
+            color-mix(in srgb, var(--hax-ui-accent-strong) 55%, transparent) 4px
+              8px
+          );
+        }
+        /* tips */
+        /* stop-notes at the admin layer's size */
+        .tips {
+          margin-top: var(--ddd-spacing-6, 24px);
+          --ddd-theme-h5-font-size: 16px;
+        }
+        .tips p {
+          margin: 0;
+          font-size: var(--hax-ui-admin-font-size);
+          line-height: 1.5;
+        }
+        .tips .chips {
+          list-style: none;
+          margin: var(--hax-ui-gap-md) 0 0;
+          padding: 0;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 6px;
+        }
+        .tips .chips li {
+          padding: 2px 10px;
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius-pill);
+          font-size: var(--hax-ui-admin-font-size-xs);
+        }
+        /* HAX TV: minimize, the kit, real buttons */
+        .tvpanel h2 .tvmin {
+          margin-left: auto;
+          height: 28px;
+          text-transform: none;
+          letter-spacing: 0;
+          color: var(--hax-ui-text);
+        }
+        .tvmini {
+          margin: 0;
+          display: flex;
+          align-items: center;
+          gap: var(--hax-ui-gap-md);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          color: var(--hax-ui-text-muted);
+        }
+        .tvmini b {
+          color: var(--hax-ui-text);
+        }
+        .dotlive {
+          flex: none;
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: var(--hax-ui-success);
+        }
+        .tvbody {
+          display: flex;
+          flex-direction: column;
+          gap: var(--hax-ui-gap-md);
+          min-width: 0;
+        }
+        .tvbody[hidden] {
+          display: none;
+        }
+        retro-vcr {
+          zoom: 0.6;
+          margin-top: 40px;
+        }
+        retro-tv {
+          --retro-tv-side-width: 64px;
+          --retro-tv-side-padding: 0px;
+          --retro-tv-dial-size: 62px;
+          --retro-tv-knob-size: 30px;
+          --retro-tv-power-size: 30px;
+          --retro-tv-dial-number-size: 6px;
+          --retro-tv-side-label-size: 7px;
+        }
+        /* the banner over every channel: the install is what is on */
+        .bnr {
+          position: absolute;
+          z-index: 4;
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: auto;
+          display: grid;
+          grid-template-columns: 1fr auto;
+          align-items: center;
+          column-gap: 8px;
+          padding: 5% 9% 4%;
+          background: linear-gradient(
+            180deg,
+            rgba(0, 3, 33, 0.88),
+            rgba(0, 3, 33, 0.65) 70%,
+            transparent
+          );
+          font-family: "VT323", monospace;
+          color: #ffffff;
+          text-transform: uppercase;
+          pointer-events: none;
+        }
+        .bnr b {
+          font-weight: 400;
+          font-size: 14px;
+          white-space: nowrap;
+          color: #5dff8a;
+          text-shadow: 0 0 6px rgba(93, 255, 138, 0.7);
+          letter-spacing: 0.06em;
+        }
+        .bnr .bsub {
+          grid-column: 1 / -1;
+          font-size: 12px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          letter-spacing: 0.04em;
+        }
+        .bnr .bsegs {
+          grid-row: 1;
+          grid-column: 2;
+          display: inline-grid;
+          grid-template-columns: repeat(4, 14px);
+          gap: 2px;
+        }
+        .bnr .bsegs i {
+          height: 6px;
+          background: rgba(255, 255, 255, 0.25);
+        }
+        .bnr .bsegs i.done {
+          background: #5dff8a;
+        }
+        .bnr .bsegs i.now {
+          background: #ffd100;
+        }
+        .kit {
+          display: flex;
+          flex-direction: column;
+          gap: var(--hax-ui-gap-md);
+        }
+        .deckrow {
+          display: flex;
+          align-items: flex-end;
+          justify-content: space-between;
+          gap: var(--hax-ui-gap-md);
+        }
+        .kitpick {
+          display: inline-flex;
+          gap: 4px;
+          margin-bottom: 4px;
+        }
+        .kitpick button {
+          all: unset;
+          cursor: pointer;
+          width: 24px;
+          height: 24px;
+          display: grid;
+          place-items: center;
+          border-radius: 50%;
+        }
+        .kitpick button[aria-pressed="true"] {
+          box-shadow: 0 0 0 2px var(--hax-ui-text);
+        }
+        .kitpick button:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 2px;
+        }
+        .sw {
+          width: 16px;
+          height: 16px;
+          border-radius: 50%;
+          box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.35);
+        }
+        .sw-helmet {
+          background: #bc204b;
+        }
+        .sw-goggle {
+          background: #2fd3e0;
+        }
+        .sw-bulb {
+          background: #ffd100;
+        }
+        .padnote {
+          margin: 0;
+          font-size: var(--hax-ui-admin-font-size-xs);
+          line-height: 1.4;
+          color: var(--hax-ui-text-muted);
+        }
+        .tv-controls {
+          gap: 8px;
+        }
+        .chbtns {
+          display: inline-flex;
+          flex: none;
+          overflow: hidden;
+          border-radius: var(--hax-ui-radius);
+          box-shadow: 0 0 0 1px var(--hax-ui-line-strong);
+        }
+        .chb {
+          box-sizing: border-box;
+          height: 44px;
+          min-width: 56px;
+          padding: 0 10px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 2px;
+          border: 0;
+          border-bottom: 3px solid var(--hax-ui-line-strong);
+          border-radius: 0;
+          background: linear-gradient(
+            180deg,
+            var(--hax-ui-surface),
+            color-mix(in srgb, var(--hax-ui-surface) 88%, var(--hax-ui-text))
+          );
+          color: var(--hax-ui-text);
+          font: 700 13px var(--hax-ui-admin-font-family);
+          letter-spacing: 0.04em;
+          cursor: pointer;
+          touch-action: manipulation;
+          --simple-icon-width: 20px;
+          --simple-icon-height: 20px;
+        }
+        .chbtns .chb + .chb {
+          box-shadow: inset 1px 0 0 var(--hax-ui-line-strong);
+        }
+        .chb:hover {
+          background: var(--hax-ui-hover);
+        }
+        .chb:active {
+          border-bottom-width: 1px;
+          padding-top: 2px;
+        }
+        .chb:focus-visible {
+          position: relative;
+          z-index: 1;
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 2px;
+        }
+        .chb.pw {
+          gap: 8px;
+          padding: 0 12px;
+          border-radius: var(--hax-ui-radius);
+          box-shadow: 0 0 0 1px var(--hax-ui-line-strong);
+        }
+        .chb .lamp {
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background: var(--hax-ui-line-strong);
+          box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.35);
+        }
+        .chb.pw[aria-pressed="true"] .lamp {
+          background: #1f9d55;
+          box-shadow:
+            0 0 0 2px color-mix(in srgb, #1f9d55 30%, transparent),
+            0 0 8px #3ddc84;
+        }
+        .now {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          min-width: 0;
+        }
+        @container installer (max-width: 980px) {
+          .rail-acts {
+            display: none;
+          }
+          retro-vcr {
+            zoom: 0.48;
+          }
+          .inst-n {
+            display: none;
+          }
+        }
+        @container installer (max-width: 620px) {
+          .tvpanel {
+            flex-direction: column;
+            align-items: stretch;
+          }
+          .tvpanel h2 {
+            display: flex;
+          }
+          .tvbody {
+            display: grid;
+            grid-template-columns: 168px minmax(0, 1fr);
+            align-items: center;
+            gap: var(--hax-ui-gap-md);
+          }
+          .tvbody[hidden] {
+            display: none;
+          }
+          .tv-side {
+            display: contents;
+          }
+          .tv-controls {
+            grid-column: 2;
+          }
+          .tvbody .now {
+            grid-column: 1 / -1;
+          }
+          retro-vcr,
+          .kit {
+            display: none;
+          }
+          .ph-top {
+            flex-wrap: wrap;
+          }
+          .inst {
+            margin-left: 0;
+            width: 100%;
+          }
+          .inst .segs {
+            flex: 1;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+          }
+          .bnr b {
+            font-size: 10px;
+          }
+          .bnr .bsub {
+            font-size: 9px;
+          }
+          .bnr .bsegs {
+            grid-template-columns: repeat(4, 8px);
+          }
+        }
       `,
     ];
   }
@@ -1011,11 +1496,29 @@ export class HaxAppInstaller extends I18NMixin(LitElement) {
   connectedCallback() {
     super.connectedCallback();
     globalThis.addEventListener("keydown", this.__onKeydown);
+    // the viewer's TV choices: minimized (phones start minimized) and colorway
+    try {
+      const min = globalThis.localStorage.getItem(TV_MIN_KEY);
+      this._tvMin =
+        min === null
+          ? !!(
+              globalThis.matchMedia &&
+              globalThis.matchMedia("(max-width: 620px)").matches
+            )
+          : min === "1";
+      const kit = globalThis.localStorage.getItem(KIT_KEY);
+      if (KITS.includes(kit)) {
+        this._kit = kit;
+      }
+    } catch {
+      // storage can be missing or blocked; the defaults stand
+    }
   }
 
   disconnectedCallback() {
     globalThis.removeEventListener("keydown", this.__onKeydown);
     clearTimeout(this.__tvTimer);
+    clearTimeout(this.__ejectTimer);
     super.disconnectedCallback();
   }
 
@@ -1072,6 +1575,99 @@ export class HaxAppInstaller extends I18NMixin(LitElement) {
   _onTvChannel(e) {
     if (e.detail && typeof e.detail.channel === "number") {
       this._tvChannel = e.detail.channel;
+      if (e.detail.channel !== TV_GAME) {
+        this.__lastShow = e.detail.channel;
+      }
+    }
+  }
+
+  _tv() {
+    return this.shadowRoot && this.shadowRoot.querySelector("retro-tv");
+  }
+
+  /** a controller button: wakes the set, puts the cartridge on, then plays */
+  _onPad(e) {
+    const tv = this._tv();
+    const melee = this.shadowRoot.querySelector("retro-tv-melee");
+    if (!tv || !melee) {
+      return;
+    }
+    if (!tv.power) {
+      tv.togglePower();
+    }
+    if (tv.channel !== TV_GAME) {
+      tv.tune(TV_GAME);
+      return;
+    }
+    melee.press(e.detail.button);
+  }
+
+  _onConsolePower(e) {
+    const tv = this._tv();
+    if (!tv) {
+      return;
+    }
+    if (!tv.power) {
+      tv.togglePower();
+    }
+    tv.tune(e.detail.power ? TV_GAME : this.__lastShow);
+  }
+
+  _onConsoleReset() {
+    const tv = this._tv();
+    const melee = this.shadowRoot.querySelector("retro-tv-melee");
+    if (melee) {
+      melee.reset();
+    }
+    if (tv) {
+      if (!tv.power) {
+        tv.togglePower();
+      }
+      tv.tune(TV_GAME);
+    }
+  }
+
+  /** the VCR's keys: Rew and FF change channel, Play starts it over */
+  _onVcrKey(e) {
+    const tv = this._tv();
+    if (!tv) {
+      return;
+    }
+    const key = e.detail.key;
+    if (key === "rew") {
+      tv.previous();
+    } else if (key === "ff") {
+      tv.next();
+    } else if (key === "play") {
+      if (!tv.power) {
+        tv.togglePower();
+      }
+      tv.replay();
+    } else if (key === "eject") {
+      const vcr = this.shadowRoot.querySelector("retro-vcr");
+      vcr.phase = "lift";
+      clearTimeout(this.__ejectTimer);
+      this.__ejectTimer = setTimeout(() => {
+        vcr.phase = this._tvPower ? "playing" : "idle";
+      }, 1200);
+    }
+  }
+
+  _setMin(min) {
+    this._tvMin = min;
+    try {
+      globalThis.localStorage.setItem(TV_MIN_KEY, min ? "1" : "0");
+    } catch {
+      // storage can be missing or blocked
+    }
+  }
+
+  _setKit(kit) {
+    this._kit = kit;
+    try {
+      globalThis.localStorage.setItem(KIT_KEY, kit);
+    } catch {
+      // storage can be missing or blocked
     }
   }
 
@@ -1104,6 +1700,26 @@ export class HaxAppInstaller extends I18NMixin(LitElement) {
    * @param {KeyboardEvent} e
    */
   _onKeydown(e) {
+    // arrows, A and B light the controller (and play HAX Melee): arrows only
+    // at the TV, so they still scroll the page elsewhere; A and B anywhere
+    // while the game is on. Never while typing or choosing.
+    const pad =
+      this.shadowRoot && this.shadowRoot.querySelector("retro-controller");
+    const k = retroKitKey(e);
+    if (k && pad && !this._tvMin && !retroKitInField(e)) {
+      const path = e.composedPath();
+      const panel = this.shadowRoot.querySelector(".tvpanel");
+      const tv = this._tv();
+      const playing = tv && tv.power && tv.channel === TV_GAME;
+      if (!path.includes(pad)) {
+        const near = path.includes(panel);
+        if (k === "a" || k === "b" ? near || playing : near) {
+          e.preventDefault();
+          pad.press(k);
+          return;
+        }
+      }
+    }
     if (e.key === "Escape" && this._shortcutsOpen) {
       this._toggleShortcuts();
       return;
@@ -1749,37 +2365,27 @@ export class HaxAppInstaller extends I18NMixin(LitElement) {
           </h1>
           <div class="tb-tools">
             <span class="lang-chip">${this._languageLabel()}</span>
-            <button
-              id="shortcuts-button"
-              class="hax-ui-dialog-close"
-              type="button"
-              aria-label="${this.t.keyboardShortcuts}"
-              title="${this.t.keyboardShortcuts}"
-              aria-expanded="${this._shortcutsOpen ? "true" : "false"}"
-              aria-controls="shortcuts"
-              @click="${this._toggleShortcuts}"
-            >
+            <!-- the HAX mark: decorative, it says you are in HAX -->
+            <span class="ft-mark" aria-hidden="true">
               <simple-icon-lite
-                icon="${HaxUiAdminIcons.shortcuts}"
+                icon="hax:world-traveler"
+                no-colorize
               ></simple-icon-lite>
-            </button>
+            </span>
           </div>
         </header>
         ${this._shortcutsOpen ? this.renderShortcuts() : ""}
         <div class="body">
           <nav class="rail" aria-label="${this.t.installationSteps}">
-            ${this.renderStepIndicator()} ${this.renderHelpFooter()}
+            ${this.renderStepIndicator()}
+            <div class="rail-acts">${this.renderActions(true)}</div>
+            ${this.renderHelpFooter()}
           </nav>
           <section class="main" aria-labelledby="step-title">
             <div class="ph">
               <div class="ph-top">
                 <h2 id="step-title" tabindex="-1">${current.label}</h2>
-                <span class="hax-ui-pill" data-tone="muted"
-                  >${this._format(this.t.stepCount, {
-                    current: this.step,
-                    total: 4,
-                  })}</span
-                >
+                ${this.renderInstallMeter()}
               </div>
               <p>${current.desc}</p>
             </div>
@@ -1794,7 +2400,7 @@ export class HaxAppInstaller extends I18NMixin(LitElement) {
                   ? this.renderError()
                   : this.loading && !this.stateData.step
                     ? this.renderLoading()
-                    : this.renderStepContent()
+                    : html`${this.renderStepContent()} ${this.renderTips()}`
               }
             </form>
           </section>
@@ -1869,6 +2475,83 @@ export class HaxAppInstaller extends I18NMixin(LitElement) {
     `;
   }
 
+  /** "Installing HAXcms" and four segments, in the page header on every step */
+  renderInstallMeter() {
+    const done = this.step === 4;
+    return html`<div class="inst">
+      <span class="inst-lbl"
+        >${done ? this.t.haxcmsInstalled : this.t.installingHaxcms}</span
+      >
+      <span class="segs" aria-hidden="true">
+        ${[1, 2, 3, 4].map(
+          (n) =>
+            html`<i
+              class="${n < this.step || done ? "done" : n === this.step ? "now" : ""}"
+            ></i>`,
+        )}
+      </span>
+      <span class="inst-n"
+        >${this._format(this.t.stepCount, { current: this.step, total: 4 })}</span
+      >
+    </div>`;
+  }
+
+  /** Tips: stacked stop-notes, opening on the one that fits the step */
+  renderTips() {
+    const chips = (list) =>
+      html`<ul class="chips">
+        ${list.map((x) => html`<li>${x}</li>`)}
+      </ul>`;
+    return html`<stop-note-group
+      class="tips"
+      label="${this.t.tips}"
+      active="${TIP_START[this.step] || 0}"
+    >
+      <stop-note status="tip" title="${this.t.tipDifferenceTitle}">
+        <div slot="message">
+          <p>${this.t.tipDifference}</p>
+          ${chips([
+            this.t.pillarAccessible,
+            this.t.pillarEfficient,
+            this.t.pillarExtensible,
+            this.t.pillarOpen,
+            this.t.pillarAgnostic,
+            this.t.pillarRemixable,
+            this.t.pillarSustainable,
+          ])}
+        </div>
+      </stop-note>
+      <stop-note status="tip" title="${this.t.tipFilesTitle}">
+        <div slot="message">
+          <p>${this.t.tipFiles}</p>
+          ${chips(["Word", "PDF", "PowerPoint", "Excel", this.t.htmlFile])}
+        </div>
+      </stop-note>
+      <stop-note status="tip" title="${this.t.tipSitesTitle}">
+        <div slot="message">
+          <p>${this.t.tipSites}</p>
+          ${chips([
+            this.t.anyWebPage,
+            "WordPress",
+            "Drupal",
+            "Plone",
+            "Pressbooks",
+            "HAXcms",
+          ])}
+        </div>
+      </stop-note>
+      <stop-note status="tip" title="${this.t.tipBooksTitle}">
+        <div slot="message">
+          <p>${this.t.tipBooks}</p>
+          ${chips(["OpenStax", "GitBook", "Notion", "VitePress", "Quarto"])}
+        </div>
+      </stop-note>
+      <stop-note status="warning" title="${this.t.tipPasswordTitle}">
+        <p slot="message">${this.t.tipPassword}</p>
+      </stop-note>
+    </stop-note-group>`;
+  }
+
   renderTv() {
     const credits = this._tvChannel === TV.credits;
     const now = new Date();
@@ -1878,102 +2561,245 @@ export class HaxAppInstaller extends I18NMixin(LitElement) {
       this.shadowRoot.querySelector(
         `retro-tv > [channel="${this._tvChannel}"]`,
       );
+    const what = this.t[`banner${this.step}`] || "";
+    const kits = {
+      helmet: this.t.colorHelmet,
+      goggle: this.t.colorGoggle,
+      bulb: this.t.colorBulb,
+    };
     return html`
-      <aside class="tvpanel" aria-labelledby="tv-title">
+      <aside
+        class="tvpanel ${this._tvMin ? "min" : ""}"
+        aria-labelledby="tv-title"
+      >
         <h2 id="tv-title">
           <simple-icon-lite
             icon="${HaxUiAdminIcons.preview}"
           ></simple-icon-lite>
           ${this.t.haxTv}
+          <button
+            type="button"
+            class="hax-ui-btn ghost tvmin"
+            aria-expanded="${this._tvMin ? "false" : "true"}"
+            aria-controls="tvbody"
+            @click="${() => this._setMin(!this._tvMin)}"
+          >
+            ${this._tvMin ? this.t.showTv : this.t.minimize}
+          </button>
         </h2>
-        <retro-tv
-          channel="${this._tvChannel}"
-          controls
-          osd-fade
-          remember-power="hax-app-installer-tv"
-          channel-prefix="${this.t.channel}"
-          next-channel-label="${this.t.nextChannel}"
-          power-on-label="${this.t.turnTvOn}"
-          power-off-label="${this.t.turnTvOff}"
-          off-label="${this.t.tvIsOff}"
-          @retro-tv-channel-changed="${this._onTvChannel}"
-          @retro-tv-power-changed="${this._onTvPower}"
-        >
-          <retro-tv-title-sequence
-            channel="3"
-            crawl-title="${this.t.haxcmsInstaller}"
-            presenter="HAX"
-            kicker="${this.t.startHaxcms}"
-            runtime="2"
-            runtime-label="${this.t.runningTime}"
-            min-label="${this.t.min}"
+        ${
+          this._tvMin
+            ? html`<p class="tvmini">
+                <span class="dotlive" aria-hidden="true"></span>
+                <b>${this.t.haxTv}</b>
+                <span
+                  >${this.t.channel} ${String(this._tvChannel).padStart(2, "0")}
+                  ·
+                  ${
+                    this.step === 4
+                      ? this.t.installed
+                      : this._format(this.t.stepCount, {
+                          current: this.step,
+                          total: 4,
+                        })
+                  }</span
+                >
+              </p>`
+            : ""
+        }
+        <div class="tvbody" id="tvbody" ?hidden="${this._tvMin}">
+          <retro-vcr
+            colorway="${this._kit}"
+            phase="${this._tvPower ? "playing" : "idle"}"
+            tape-label="HAXcms"
+            label="${this.t.vcr}"
+            lid-label="${this.t.topLoad}"
+            eject-label="${this.t.eject}"
+            rew-label="${this.t.rew}"
             play-label="${this.t.play}"
-            sequence-label="${this.t.titleSequenceFor}"
-            presents-label="${this.t.presents}"
-          ></retro-tv-title-sequence>
-          <retro-tv-hax-tv channel="4"></retro-tv-hax-tv>
-          <retro-tv-credits
-            channel="5"
-            tape="${credits ? tape : ""}"
-          ></retro-tv-credits>
-          <retro-tv-home-computer
-            channel="7"
-            what="${this._selectedLanguage || this.language}"
-            ?loading="${this._tvBusy === "language"}"
-          ></retro-tv-home-computer>
-          <retro-tv-handheld channel="8"></retro-tv-handheld>
-          <retro-tv-pc
-            channel="9"
-            message="${
-              this.stateData && this.stateData.hasErrors
-                ? this.t.createMissingFiles
-                : this.t.recheckRequirements
-            }"
-            ?loading="${this._tvBusy === "prepare"}"
-          ></retro-tv-pc>
-          <retro-tv-disc channel="10"></retro-tv-disc>
-        </retro-tv>
-        <div class="tv-side">
-          <div class="tv-controls">
-            <span class="hax-ui-seg">
-              <button
-                type="button"
-                title="${this.t.previousChannel}"
-                @click="${() => this._tvStep(-1)}"
+            ff-label="${this.t.ff}"
+            rew-hint="${this.t.previousChannelHint}"
+            play-hint="${this.t.replayChannel}"
+            ff-hint="${this.t.nextChannelHint}"
+            @retro-vcr-key="${this._onVcrKey}"
+          ></retro-vcr>
+          <retro-tv
+            channel="${this._tvChannel}"
+            controls
+            osd-fade
+            remember-power="hax-app-installer-tv"
+            channel-prefix="${this.t.channel}"
+            next-channel-label="${this.t.nextChannel}"
+            power-on-label="${this.t.turnTvOn}"
+            power-off-label="${this.t.turnTvOff}"
+            off-label="${this.t.tvIsOff}"
+            @retro-tv-channel-changed="${this._onTvChannel}"
+            @retro-tv-power-changed="${this._onTvPower}"
+          >
+            <div class="bnr" slot="overlay" aria-hidden="true">
+              <b
+                >${
+                  this.step === 4
+                    ? `${this.t.haxcmsInstalled.toUpperCase()} ✓`
+                    : this.t.installingHaxcms.toUpperCase()
+                }</b
               >
-                ${this.t.channelDown}<span class="hax-ui-sr-only"
-                  >: ${this.t.previousChannel}</span
-                >
-              </button>
-              <button
-                type="button"
-                title="${this.t.nextChannel}"
-                @click="${() => this._tvStep(1)}"
+              <span class="bsegs">
+                ${[1, 2, 3, 4].map(
+                  (n) =>
+                    html`<i
+                      class="${
+                        n < this.step || this.step === 4
+                          ? "done"
+                          : n === this.step
+                            ? "now"
+                            : ""
+                      }"
+                    ></i>`,
+                )}
+              </span>
+              <span class="bsub"
+                >${
+                  this._tvBusy
+                    ? this.t.bannerWorking
+                    : this._format(this.t.bannerStep, {
+                        current: this.step,
+                        what,
+                      })
+                }</span
               >
-                ${this.t.channelUp}<span class="hax-ui-sr-only"
-                  >: ${this.t.nextChannel}</span
-                >
-              </button>
-            </span>
-            <button
-              type="button"
-              class="hax-ui-btn ghost"
-              aria-pressed="${this._tvPower ? "false" : "true"}"
-              @click="${this._tvTogglePower}"
-            >
-              ${this._tvPower ? this.t.powerOff : this.t.powerOn}
-            </button>
+            </div>
+            <retro-tv-melee channel="${TV_GAME}"></retro-tv-melee>
+            <retro-tv-title-sequence
+              channel="3"
+              crawl-title="${this.t.haxcmsInstaller}"
+              presenter="HAX"
+              kicker="${this.t.startHaxcms}"
+              runtime="2"
+              runtime-label="${this.t.runningTime}"
+              min-label="${this.t.min}"
+              play-label="${this.t.play}"
+              sequence-label="${this.t.titleSequenceFor}"
+              presents-label="${this.t.presents}"
+            ></retro-tv-title-sequence>
+            <retro-tv-hax-tv channel="4"></retro-tv-hax-tv>
+            <retro-tv-credits
+              channel="5"
+              tape="${credits ? tape : ""}"
+            ></retro-tv-credits>
+            <retro-tv-static channel="6"></retro-tv-static>
+            <retro-tv-home-computer
+              channel="7"
+              what="${this._selectedLanguage || this.language}"
+              ?loading="${this._tvBusy === "language"}"
+            ></retro-tv-home-computer>
+            <retro-tv-handheld channel="8"></retro-tv-handheld>
+            <retro-tv-pc
+              channel="9"
+              message="${
+                this.stateData && this.stateData.hasErrors
+                  ? this.t.createMissingFiles
+                  : this.t.recheckRequirements
+              }"
+              ?loading="${this._tvBusy === "prepare"}"
+            ></retro-tv-pc>
+            <retro-tv-disc channel="10"></retro-tv-disc>
+          </retro-tv>
+          <div class="kit">
+            <div class="deckrow">
+              <retro-console
+                colorway="${this._kit}"
+                ?power="${this._tvPower && this._tvChannel === TV_GAME}"
+                label="${this.t.consoleLabel}"
+                power-label="${this.t.consolePower}"
+                reset-label="${this.t.consoleReset}"
+                @retro-console-power="${this._onConsolePower}"
+                @retro-console-reset="${this._onConsoleReset}"
+              ></retro-console>
+              <span
+                class="kitpick"
+                role="group"
+                aria-label="${this.t.consoleColor}"
+              >
+                ${KITS.map(
+                  (k) =>
+                    html`<button
+                      type="button"
+                      aria-pressed="${this._kit === k ? "true" : "false"}"
+                      aria-label="${kits[k]}"
+                      title="${kits[k]}"
+                      @click="${() => this._setKit(k)}"
+                    >
+                      <span class="sw sw-${k}"></span>
+                    </button>`,
+                )}
+              </span>
+            </div>
+            <retro-controller
+              colorway="${this._kit}"
+              label="${this.t.gameController}"
+              up-label="${this.t.padUp}"
+              down-label="${this.t.padDown}"
+              left-label="${this.t.padLeft}"
+              right-label="${this.t.padRight}"
+              select-label="${this.t.padSelect}"
+              start-label="${this.t.padStart}"
+              b-label="${this.t.padB}"
+              a-label="${this.t.padA}"
+              @retro-controller-press="${this._onPad}"
+            ></retro-controller>
+            <p class="padnote">${this.t.padNote}</p>
           </div>
-          <p class="now">
-            ${
-              this._tvPower && program
-                ? html`${this.t.nowPlaying}
-                    <b>${program.programName}</b>
-                    ${this._tvBusy ? this.t.whileInstallerWorks : ""}`
-                : this.t.tvIsOff
-            }
-          </p>
-          <p class="tv-credit">${this.t.tvArtCredit}</p>
+          <div class="tv-side">
+            <div class="tv-controls">
+              <span class="chbtns" role="group" aria-label="${this.t.channel}">
+                <button
+                  type="button"
+                  class="chb"
+                  title="${this.t.previousChannel}"
+                  @click="${() => this._tvStep(-1)}"
+                >
+                  <simple-icon-lite
+                    icon="hardware:keyboard-arrow-down"
+                  ></simple-icon-lite>
+                  ${this.t.channel}<span class="hax-ui-sr-only"
+                    >: ${this.t.previousChannel}</span
+                  >
+                </button>
+                <button
+                  type="button"
+                  class="chb"
+                  title="${this.t.nextChannel}"
+                  @click="${() => this._tvStep(1)}"
+                >
+                  ${this.t.channel}<span class="hax-ui-sr-only"
+                    >: ${this.t.nextChannel}</span
+                  >
+                  <simple-icon-lite
+                    icon="hardware:keyboard-arrow-up"
+                  ></simple-icon-lite>
+                </button>
+              </span>
+              <button
+                type="button"
+                class="chb pw"
+                aria-pressed="${this._tvPower ? "true" : "false"}"
+                @click="${this._tvTogglePower}"
+              >
+                <i class="lamp" aria-hidden="true"></i>${this.t.tvPower}
+              </button>
+            </div>
+            <p class="now">
+              ${
+                this._tvPower && program
+                  ? html`${this.t.nowPlaying}
+                      <b>${program.programName}</b>
+                      ${this._tvBusy ? this.t.whileInstallerWorks : ""}`
+                  : this.t.tvIsOff
+              }
+            </p>
+            <p class="tv-credit">${this.t.tvArtCredit}</p>
+          </div>
         </div>
       </aside>
     `;
@@ -2006,6 +2832,20 @@ export class HaxAppInstaller extends I18NMixin(LitElement) {
       <div class="help-footer">
         <span class="help-footer-label">${this.t.needHelp}</span>
         <div class="help-footer-links">
+          <button
+            id="shortcuts-button"
+            class="help-footer-link"
+            type="button"
+            title="${this.t.keyboardShortcuts}"
+            aria-expanded="${this._shortcutsOpen ? "true" : "false"}"
+            aria-controls="shortcuts"
+            @click="${this._toggleShortcuts}"
+          >
+            <simple-icon-lite
+              icon="${HaxUiAdminIcons.shortcuts}"
+            ></simple-icon-lite>
+            <span>${this.t.keyboardShortcuts}</span>
+          </button>
           ${links.map(
             (link) => html`
               <a
@@ -2088,9 +2928,11 @@ export class HaxAppInstaller extends I18NMixin(LitElement) {
     `;
   }
 
-  renderActions() {
+  renderActions(rail) {
     const busy = this.loading;
-    const kbd = html`<span class="hax-ui-kbd" aria-hidden="true">Enter</span>`;
+    const kbd = rail
+      ? ""
+      : html`<span class="hax-ui-kbd" aria-hidden="true">Enter</span>`;
     const back = html`<button
       type="button"
       class="hax-ui-btn ghost"
@@ -2099,7 +2941,7 @@ export class HaxAppInstaller extends I18NMixin(LitElement) {
     >
       <simple-icon-lite icon="${HaxUiAdminIcons.back}"></simple-icon-lite>
       <span class="btn-label">${this.t.back}</span>
-      <span class="hax-ui-kbd" aria-hidden="true">Alt ←</span>
+      ${rail ? "" : html`<span class="hax-ui-kbd" aria-hidden="true">Alt ←</span>`}
     </button>`;
     if (this.error) {
       return html`<button
@@ -2176,7 +3018,7 @@ export class HaxAppInstaller extends I18NMixin(LitElement) {
       `;
     }
     return html`<a class="hax-ui-btn primary start-hax-btn" href="index.php">
-      <simple-icon-lite icon="hax:hax2022"></simple-icon-lite>
+      <simple-icon-lite icon="hax:world-traveler-plain"></simple-icon-lite>
       ${this.t.startHaxcms}
     </a>`;
   }

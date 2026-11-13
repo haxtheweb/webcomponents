@@ -2,8 +2,11 @@
  * Copyright 2026 The Pennsylvania State University
  * @license Apache-2.0, see LICENSE for full text.
  */
-import { LitElement, html, css } from "lit";
+import { LitElement, html, css, svg, nothing } from "lit";
 import { retroTvLoadFace } from "./lib/retro-tv-program.js";
+
+const DIAL = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+const POWER_ICON = svg`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 3h-2v10h2V3zm4.83 2.17l-1.42 1.42A6.92 6.92 0 0 1 19 12c0 3.87-3.13 7-7 7A6.995 6.995 0 0 1 7.58 6.58L6.17 5.17A8.932 8.932 0 0 0 3 12a9 9 0 0 0 18 0c0-2.74-1.23-5.18-3.17-6.83z"></path></svg>`;
 
 /**
  * `retro-tv`
@@ -17,7 +20,10 @@ import { retroTvLoadFace } from "./lib/retro-tv-program.js";
  * All motion is CSS (or a program's own frame loop) and only runs when the
  * viewer has not asked for reduced motion and `still` is not set.
  *
- * With `controls`, the knobs are real buttons (next channel, power) and the
+ * A child with `slot="overlay"` sits over every program, under the glass
+ * (a host can keep a banner on screen whatever channel is on).
+ *
+ * With `controls`, the dial and power button are real buttons (next channel, power) and the
  * screen announces what is on; without it the knobs are decoration.
  *
  * @demo demo/index.html
@@ -324,6 +330,34 @@ export class RetroTv extends LitElement {
     return `${this.channelPrefix} ${String(this.channel).padStart(2, "0")}`;
   }
 
+  /** the channel dial: a ring of numbers and a knob that points at one */
+  _renderDial(ch) {
+    const style = `--retro-tv-knob-rotate: ${((((ch - 2) % 12) + 12) % 12) * 30}deg`;
+    return html`<span class="dial">
+      <span class="ring" aria-hidden="true"
+        >${DIAL.map(
+          (n, i) =>
+            html`<span
+              class="${n === ch ? "cur" : ""}"
+              style="--a: ${i * 30}deg"
+              >${n}</span
+            >`,
+        )}</span
+      >${
+        this.controls
+          ? html`<button
+              class="knob"
+              type="button"
+              style="${style}"
+              aria-label="${this.nextChannelLabel}"
+              title="${this.nextChannelLabel}"
+              @click="${this.next}"
+            ></button>`
+          : html`<span class="knob" style="${style}" aria-hidden="true"></span>`
+      }
+    </span>`;
+  }
+
   static get styles() {
     return [
       css`
@@ -376,37 +410,126 @@ export class RetroTv extends LitElement {
           gap: var(--retro-tv-gap, 18px);
           padding-top: var(--retro-tv-side-padding, 12px);
         }
+        /* channel dial: numbers 2 to 13 on the ring, the knob's line
+           points at the channel on air */
+        .dial {
+          position: relative;
+          flex: none;
+          width: var(--retro-tv-dial-size, 86px);
+          height: var(--retro-tv-dial-size, 86px);
+          border-radius: 50%;
+          display: grid;
+          place-items: center;
+          background: radial-gradient(circle, #1d1d21 0 62%, #0c0c0e 63% 100%);
+          box-shadow:
+            inset 0 0 0 1px #45454c,
+            0 1px 0 rgba(255, 255, 255, 0.14);
+        }
+        .ring {
+          position: absolute;
+          inset: 0;
+        }
+        .ring span {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          font:
+            700 var(--retro-tv-dial-number-size, 9px) / 1 "Roboto Condensed",
+            sans-serif;
+          color: #c9ccd2;
+          transform: translate(-50%, -50%) rotate(var(--a))
+            translateY(calc(var(--retro-tv-dial-size, 86px) * -0.4))
+            rotate(calc(-1 * var(--a)));
+        }
+        .ring span.cur {
+          color: #ffd100;
+        }
         .knob {
           all: unset;
           box-sizing: border-box;
-          width: var(--retro-tv-knob-size, 52px);
-          height: var(--retro-tv-knob-size, 52px);
+          position: relative;
+          width: var(--retro-tv-knob-size, 46px);
+          height: var(--retro-tv-knob-size, 46px);
           border-radius: 50%;
-          background: radial-gradient(circle at 35% 30%, #9a9a9a, #3a3a3a 70%);
+          background: radial-gradient(
+            circle at 35% 30%,
+            #c9ccd2,
+            #6b6f77 55%,
+            #2f3236 80%
+          );
           box-shadow:
             0 3px 0 #111,
-            inset 0 0 0 4px rgba(0, 0, 0, 0.25);
-          position: relative;
+            inset 0 0 0 3px rgba(0, 0, 0, 0.25);
+        }
+        .knob::before {
+          content: "";
+          position: absolute;
+          inset: 15%;
+          border-radius: 50%;
+          background: repeating-conic-gradient(
+            rgba(0, 0, 0, 0.18) 0 6deg,
+            transparent 6deg 12deg
+          );
         }
         .knob::after {
           content: "";
           position: absolute;
           left: 50%;
-          top: var(--retro-tv-knob-mark-top, 6px);
+          top: -10%;
           width: var(--retro-tv-knob-mark-width, 4px);
-          height: var(--retro-tv-knob-mark-height, 15px);
+          height: 45%;
           margin-left: calc(var(--retro-tv-knob-mark-width, 4px) / -2);
-          background: #eee;
+          background: #ffd100;
+          box-shadow: 0 0 0 1px #111;
           border-radius: 2px;
-          transform-origin: 50% var(--retro-tv-knob-mark-origin, 20px);
+          transform-origin: 50% 133%;
           transform: rotate(var(--retro-tv-knob-rotate));
         }
-        button.knob {
+        button.knob,
+        .pwr {
           cursor: pointer;
         }
-        button.knob:focus-visible {
+        button.knob:focus-visible,
+        .pwr:focus-visible {
           outline: 3px solid #ffd100;
           outline-offset: 3px;
+        }
+        .slbl {
+          margin-top: calc(var(--retro-tv-gap, 18px) / -2);
+          font:
+            700 var(--retro-tv-side-label-size, 10px) / 1 "Roboto Condensed",
+            sans-serif;
+          letter-spacing: 0.12em;
+          color: #f3e7d3;
+        }
+        /* power: a push button that glows green while the set is on */
+        .pwr {
+          all: unset;
+          box-sizing: border-box;
+          width: var(--retro-tv-power-size, 42px);
+          height: var(--retro-tv-power-size, 42px);
+          border-radius: 50%;
+          display: grid;
+          place-items: center;
+          background: radial-gradient(circle at 35% 30%, #4a4a50, #18181b 75%);
+          box-shadow:
+            0 0 0 2px #9aa0aa,
+            0 3px 0 #0a0a0a;
+        }
+        .pwr svg {
+          width: 55%;
+          height: 55%;
+          fill: #59625b;
+        }
+        :host([power]) .pwr {
+          box-shadow:
+            0 0 0 2px #5dff8a,
+            0 3px 0 #0a0a0a,
+            0 0 12px rgba(93, 255, 138, 0.6);
+        }
+        :host([power]) .pwr svg {
+          fill: #5dff8a;
+          filter: drop-shadow(0 0 3px rgba(93, 255, 138, 0.9));
         }
         .grille {
           width: var(--retro-tv-grille-width, 76px);
@@ -417,17 +540,6 @@ export class RetroTv extends LitElement {
             radial-gradient(circle, #140d08 2.5px, transparent 3px) 0 0 / 9px
               9px,
             #2a1b10;
-        }
-        .led {
-          width: var(--retro-tv-led-size, 10px);
-          height: var(--retro-tv-led-size, 10px);
-          border-radius: 50%;
-          background: #ff3b3b;
-          box-shadow: 0 0 8px #ff3b3b;
-        }
-        :host(:not([power])) .led {
-          background: #4a1414;
-          box-shadow: none;
         }
         @media (max-width: 700px) {
           .side {
@@ -541,6 +653,9 @@ export class RetroTv extends LitElement {
           .knob::after {
             transition: transform 0.3s ease-in-out;
           }
+          .pwr:active {
+            transform: translateY(1px);
+          }
         }
         @keyframes retro-tv-pow-a {
           0% {
@@ -617,7 +732,8 @@ export class RetroTv extends LitElement {
           }
         }
         @media (forced-colors: active) {
-          button.knob {
+          button.knob,
+          .pwr {
             forced-color-adjust: none;
             border: 2px solid ButtonText;
           }
@@ -629,7 +745,6 @@ export class RetroTv extends LitElement {
   render() {
     const empty = this.power && !this.program;
     const ch = parseInt(this.channel, 10) || 0;
-    const rotate = this.controls ? `${(ch * 37) % 360}deg` : "40deg";
     return html`
       <div class="tv run-${this._run % 2 === 0 ? "a" : "b"}" part="tv">
         <div class="bezel" part="bezel">
@@ -640,6 +755,7 @@ export class RetroTv extends LitElement {
             aria-label="${this._screenLabel()}"
           >
             <slot name="on-air"></slot>
+            <slot name="overlay"></slot>
             <div class="noise ${this._flash ? "flash" : ""}"></div>
             <span class="osd ch ${this._osdHidden ? "faded" : ""}" part="osd"
               >${this._osdText()}</span
@@ -649,40 +765,31 @@ export class RetroTv extends LitElement {
             <div class="off"></div>
           </div>
         </div>
-        ${
-          this.controls
-            ? html`<div class="side" part="side">
-                <span class="led" aria-hidden="true"></span>
-                <button
-                  class="knob"
+        <div
+          class="side"
+          part="side"
+          aria-hidden="${this.controls ? nothing : "true"}"
+        >
+          ${this._renderDial(ch)}
+          <span class="slbl" aria-hidden="true">CHANNEL</span>
+          ${
+            this.controls
+              ? html`<button
+                  class="pwr"
                   type="button"
-                  style="--retro-tv-knob-rotate: ${rotate}"
-                  aria-label="${this.nextChannelLabel}"
-                  title="${this.nextChannelLabel}"
-                  @click="${this.next}"
-                ></button>
-                <button
-                  class="knob"
-                  type="button"
-                  style="--retro-tv-knob-rotate: ${
-                    this.power ? "-40deg" : "40deg"
-                  }"
                   aria-label="${
                     this.power ? this.powerOffLabel : this.powerOnLabel
                   }"
-                  aria-pressed="${this.power ? "false" : "true"}"
                   title="${this.power ? this.powerOffLabel : this.powerOnLabel}"
                   @click="${this.togglePower}"
-                ></button>
-                <span class="grille" aria-hidden="true"></span>
-              </div>`
-            : html`<div class="side" part="side" aria-hidden="true">
-                <span class="led"></span>
-                <span class="knob"></span>
-                <span class="knob"></span>
-                <span class="grille"></span>
-              </div>`
-        }
+                >
+                  ${POWER_ICON}
+                </button>`
+              : html`<span class="pwr" aria-hidden="true">${POWER_ICON}</span>`
+          }
+          <span class="slbl" aria-hidden="true">POWER</span>
+          <span class="grille" aria-hidden="true"></span>
+        </div>
         <slot hidden @slotchange="${this._onSlotChange}"></slot>
       </div>
     `;

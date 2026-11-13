@@ -112,14 +112,15 @@
     }
   ],
   "slots": [
-    "on-air"
+    "on-air",
+    "overlay"
   ],
   "events": [
     "retro-tv-channel-changed",
     "retro-tv-power-changed"
   ],
   "hax": {},
-  "surfaceHash": "28bb6f82da5a",
+  "surfaceHash": "d383508b4b45",
   "walkthroughs": [],
   "videos": [],
   "motion": {

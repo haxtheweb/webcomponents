@@ -16,6 +16,12 @@
       import "../lib/programs/retro-tv-handheld.js";
       import "../lib/programs/retro-tv-pc.js";
       import "../lib/programs/retro-tv-disc.js";
+      import "../lib/programs/retro-tv-melee.js";
+      import "../lib/programs/retro-tv-static.js";
+      import "../lib/retro-vcr.js";
+      import "../lib/retro-console.js";
+      import "../lib/retro-controller.js";
+      import { retroKitKey, retroKitInField } from "../lib/retro-kit.js";
       const tv = document.querySelector("#tv");
       const now = document.querySelector("#now");
       const show = () => {
@@ -34,6 +40,42 @@
         }
       });
       customElements.whenDefined("retro-tv-hax-tv").then(() => setTimeout(show, 50));
+      // the kit drives the TV: the controller plays HAX Melee on channel 2,
+      // the console's power puts the cartridge on, the VCR's keys change channel
+      const melee = document.querySelector("retro-tv-melee");
+      const deck = document.querySelector("retro-console");
+      const pad = document.querySelector("retro-controller");
+      const vcr = document.querySelector("retro-vcr");
+      let lastShow = 4;
+      const sync = () => {
+        deck.power = tv.power && tv.channel === 2;
+        vcr.phase = tv.power ? "playing" : "idle";
+        if (tv.channel !== 2) lastShow = tv.channel;
+      };
+      tv.addEventListener("retro-tv-channel-changed", sync);
+      tv.addEventListener("retro-tv-power-changed", sync);
+      document.addEventListener("retro-controller-press", (e) => {
+        if (!tv.power) tv.togglePower();
+        if (tv.channel !== 2) { tv.tune(2); return; }
+        melee.press(e.detail.button);
+      });
+      deck.addEventListener("retro-console-power", (e) => tv.tune(e.detail.power ? 2 : lastShow));
+      deck.addEventListener("retro-console-reset", () => { melee.reset(); tv.tune(2); });
+      vcr.addEventListener("retro-vcr-key", (e) => {
+        if (e.detail.key === "rew") tv.previous();
+        if (e.detail.key === "ff") tv.next();
+        if (e.detail.key === "play" && !tv.power) tv.togglePower();
+        if (e.detail.key === "eject") { vcr.phase = "lift"; setTimeout(() => vcr.phase = "playing", 1200); }
+      });
+      // A and B anywhere while the game is on light the pad, so people see their keyboard
+      document.addEventListener("keydown", (e) => {
+        const k = retroKitKey(e);
+        if (!k || retroKitInField(e) || e.composedPath().includes(pad)) return;
+        if ((k === "a" || k === "b") && tv.power && tv.channel === 2) { pad.press(k); e.preventDefault(); }
+      });
+      document.querySelector("#colorway").addEventListener("change", (e) => {
+        [vcr, deck, pad].forEach((el) => el.colorway = e.target.value);
+      });
     </script>
     <style>
       body { margin: 0; padding: 24px; background: #262626; color: #fff; font-family: "Roboto Condensed", sans-serif; }
@@ -44,10 +86,11 @@
       .small retro-tv {
         --retro-tv-padding: 12px; --retro-tv-gap: 10px; --retro-tv-radius: 16px;
         --retro-tv-bezel-padding: 10px; --retro-tv-bezel-radius: 12px; --retro-tv-side-width: 40px;
-        --retro-tv-knob-size: 30px; --retro-tv-knob-mark-top: 4px; --retro-tv-knob-mark-width: 3px;
-        --retro-tv-knob-mark-height: 9px; --retro-tv-knob-mark-origin: 11px; --retro-tv-grille-width: 30px;
-        --retro-tv-grille-min-height: 50px; --retro-tv-led-size: 8px; --retro-tv-osd-size: 22px;
-        --retro-tv-screen-radius: 22px / 28px; --retro-tv-side-padding: 6px;
+        --retro-tv-side-width: 64px; --retro-tv-dial-size: 62px; --retro-tv-knob-size: 30px;
+        --retro-tv-knob-mark-width: 3px; --retro-tv-power-size: 30px; --retro-tv-dial-number-size: 6px;
+        --retro-tv-side-label-size: 7px; --retro-tv-grille-width: 30px;
+        --retro-tv-grille-min-height: 50px; --retro-tv-osd-size: 22px;
+        --retro-tv-screen-radius: 22px / 28px; --retro-tv-side-padding: 0px;
       }
     </style>
   </head>
@@ -63,10 +106,20 @@
         <retro-tv-handheld channel="8"></retro-tv-handheld>
         <retro-tv-pc channel="9" command="INSTALL /CHECK"></retro-tv-pc>
         <retro-tv-disc channel="10"></retro-tv-disc>
+        <retro-tv-melee channel="2"></retro-tv-melee>
+        <retro-tv-static channel="6"></retro-tv-static>
       </retro-tv>
       <div class="row">
         <button id="prev">CH −</button><button id="next">CH +</button><button id="power">Power</button><button id="load">Toggle loading</button>
         <span>Now playing: <b id="now"></b></span>
+      </div>
+      <h2>The HAX TV kit</h2>
+      <p>The VCR, the HAX 64 console and the controller, in the Future Traveler's colors. They drive the TV above: the controller plays HAX Melee on channel 2 (arrow keys, A and B light it up), the console's Power puts the cartridge on and Reset starts over, the VCR's Rew and FF change channel.</p>
+      <label>Colorway <select id="colorway"><option value="helmet">Helmet red</option><option value="goggle">Goggle cyan</option><option value="bulb">Bulb yellow</option></select></label>
+      <retro-vcr tape-label="HAXcms" rew-hint="previous channel" ff-hint="next channel" style="margin-top: 60px"></retro-vcr>
+      <div class="row" style="align-items: flex-end; gap: 24px">
+        <retro-console></retro-console>
+        <retro-controller up-label="Up: grab" down-label="Down: take back" select-label="Select: remix your fighter" start-label="Start: publish your page" b-label="B: take back the last block" a-label="A: grab a block"></retro-controller>
       </div>
       <h2>Compact, as in the HAXcms installer</h2>
       <div class="small">

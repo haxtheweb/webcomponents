@@ -1532,8 +1532,86 @@ describe("HaxAppInstaller HAX UI, HAX TV and keyboard", () => {
     expect(tv).to.exist;
     expect(tv.channel).to.equal(4);
     expect(tv.programs.map((p) => p.channel)).to.deep.equal([
-      3, 4, 5, 7, 8, 9, 10,
+      2, 3, 4, 5, 6, 7, 8, 9, 10,
     ]);
+  });
+
+  it("shows the step's actions under the steps too", () => {
+    const rail = element.shadowRoot.querySelector(".rail-acts");
+    const primary = rail.querySelector(".hax-ui-btn.primary");
+    expect(primary).to.exist;
+    expect(primary.getAttribute("form")).to.equal("step-form");
+    // no keyboard hints in the rail copy
+    expect(rail.querySelector(".hax-ui-kbd")).to.equal(null);
+  });
+
+  it("says it is installing on every step, with the Future Traveler top right", () => {
+    const meter = element.shadowRoot.querySelector(".inst");
+    expect(meter.querySelector(".inst-lbl").textContent.trim()).to.equal(
+      "Installing HAXcms",
+    );
+    expect(meter.querySelectorAll(".segs i.now").length).to.equal(1);
+    const ft = element.shadowRoot.querySelector(".ft-mark simple-icon-lite");
+    expect(ft.getAttribute("icon")).to.equal("hax:world-traveler");
+    // keyboard shortcuts moved to the help links
+    expect(element.shadowRoot.querySelector(".help-footer #shortcuts-button"))
+      .to.exist;
+    const bnr = element.shadowRoot.querySelector('retro-tv > [slot="overlay"]');
+    expect(bnr.textContent).to.contain("STEP 1/4");
+  });
+
+  it("stacks tips that open on the HAX difference", async () => {
+    const tips = element.shadowRoot.querySelector("stop-note-group.tips");
+    expect(tips).to.exist;
+    await tips.updateComplete;
+    expect(tips.notes.length).to.equal(5);
+    expect(tips.notes[0].getAttribute("title")).to.contain("HAX difference");
+    expect(Number(tips.active)).to.equal(0);
+  });
+
+  it("plays HAX Melee from the controller and lights keyboard presses", async () => {
+    const tv = element.shadowRoot.querySelector("retro-tv");
+    const pad = element.shadowRoot.querySelector("retro-controller");
+    pad.press("a");
+    await element.updateComplete;
+    await tv.updateComplete;
+    expect(tv.channel).to.equal(2);
+    const deck = element.shadowRoot.querySelector("retro-console");
+    await element.updateComplete;
+    expect(deck.power).to.equal(true);
+    // A on the keyboard while the game is on lights A and plays it
+    const melee = element.shadowRoot.querySelector("retro-tv-melee");
+    globalThis.dispatchEvent(new KeyboardEvent("keydown", { key: "a" }));
+    await pad.updateComplete;
+    expect(pad.shadowRoot.querySelector(".well .lit")).to.exist;
+    expect(melee.score + melee._g.rivals.length).to.be.greaterThan(0);
+    // the console's power goes back to the last show
+    deck.shadowRoot.querySelector("button").click();
+    await element.updateComplete;
+    expect(tv.channel).to.equal(4);
+  });
+
+  it("minimizes the TV and remembers the colorway", async () => {
+    const min = element.shadowRoot.querySelector(".tvmin");
+    min.click();
+    await element.updateComplete;
+    expect(element.shadowRoot.querySelector("#tvbody").hidden).to.equal(true);
+    expect(element.shadowRoot.querySelector(".tvmini")).to.exist;
+    min.click();
+    await element.updateComplete;
+    const cyan = element.shadowRoot.querySelector(
+      '.kitpick [aria-label="Goggle cyan"]',
+    );
+    cyan.click();
+    await element.updateComplete;
+    expect(
+      element.shadowRoot.querySelector("retro-controller").colorway,
+    ).to.equal("goggle");
+    expect(globalThis.localStorage.getItem("hax-app-installer-kit")).to.equal(
+      "goggle",
+    );
+    globalThis.localStorage.removeItem("hax-app-installer-kit");
+    globalThis.localStorage.removeItem("hax-app-installer-tv-min");
   });
 
   it("plays a loading screen while a request runs, then goes back", async () => {
