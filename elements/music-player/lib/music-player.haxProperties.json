@@ -5,7 +5,7 @@
   "gizmo": {
     "title": "MIDI visualizer",
     "description": "Play MIDI in context with visualization.",
-    "icon": "image:music-note",
+    "icon": "av:library-music",
     "color": "blue",
     "tags": [
       "Media",

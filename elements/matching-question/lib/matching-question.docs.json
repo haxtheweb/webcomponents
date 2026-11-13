@@ -4,9 +4,9 @@
   "package": "@haxtheweb/matching-question",
   "version": "26.8.0",
   "license": "Apache-2.0",
-  "title": "Matching Question",
+  "title": "Matching question",
   "description": "Drag-and-drop matching activity that pairs prompts with their correct responses.",
-  "icon": "editor:drag-handle",
+  "icon": "icons:compare-arrows",
   "tags": [
     "Instructional",
     "matching",
@@ -69,9 +69,9 @@
       "accent": true
     },
     "gizmo": {
-      "title": "Matching Question",
+      "title": "Matching question",
       "description": "Drag-and-drop matching activity that pairs prompts with their correct responses.",
-      "icon": "editor:drag-handle",
+      "icon": "icons:compare-arrows",
       "color": "purple",
       "tags": [
         "Instructional",
@@ -90,24 +90,6 @@
           "property": "question",
           "title": "Question",
           "description": "Question for users. Mark drop targets, then list answers until the next target.",
-          "inputMethod": "textfield"
-        },
-        {
-          "property": "gradingFormat",
-          "title": "Grading format",
-          "description": "OER Schema: grading format for this assessment (e.g. points, letter, percent, completion).",
-          "inputMethod": "textfield"
-        },
-        {
-          "property": "hasLearningObjective",
-          "title": "Learning objective",
-          "description": "OER Schema: learning objective associated with this assessment.",
-          "inputMethod": "textfield"
-        },
-        {
-          "property": "forCourse",
-          "title": "Course",
-          "description": "OER Schema: course this assessment is intended for.",
           "inputMethod": "textfield"
         },
         {
@@ -145,6 +127,18 @@
           "title": "Start collapsed",
           "description": "When collapsible, start as a closed row that shows only the question and its status.",
           "inputMethod": "boolean"
+        },
+        {
+          "property": "gradingFormat",
+          "title": "Grading format",
+          "description": "OER Schema: grading format for this assessment (e.g. points, letter, percent, completion).",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "hasLearningObjective",
+          "title": "Learning objective",
+          "description": "OER Schema: learning objective associated with this assessment.",
+          "inputMethod": "textfield"
         }
       ],
       "developer": [
@@ -152,6 +146,12 @@
           "property": "quizName",
           "title": "Name of the quiz",
           "description": "Quiz name used for xAPI identification in analytics systems.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "forCourse",
+          "title": "Course",
+          "description": "OER Schema: course this assessment is intended for.",
           "inputMethod": "textfield"
         }
       ]
@@ -185,7 +185,7 @@
       }
     ]
   },
-  "surfaceHash": "fd9c15ff1521",
+  "surfaceHash": "d475c1daa42f",
   "walkthroughs": [
     {
       "id": "",
@@ -193,13 +193,13 @@
       "order": 0,
       "src": "matching-question.motion.json",
       "file": "lib/matching-question.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/matching-question.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

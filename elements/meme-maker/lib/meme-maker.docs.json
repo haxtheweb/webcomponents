@@ -17,7 +17,7 @@
   "import": "@haxtheweb/meme-maker/meme-maker.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/meme-maker/meme-maker.js",
   "install": "npm i @haxtheweb/meme-maker",
-  "demoHtml": "<meme-maker alt=\"Cat stalking a small toy\" image-url=\"https://cdn2.thecatapi.com/images/9j5.jpg\" top-text=\"I bring you\" bottom-text=\"the death\"></meme-maker>",
+  "demoHtml": "<meme-maker alt=\"Cat stalking a small toy\" image-url=\"https://cdn2.thecatapi.com/images/9j5.jpg\" top-text=\"When the toy\" bottom-text=\"moves first\"></meme-maker>",
   "attributes": [
     {
       "name": "alt",
@@ -154,17 +154,17 @@
     "demoSchema": [
       {
         "tag": "meme-maker",
-        "content": "",
         "properties": {
           "alt": "Cat stalking a small toy",
           "imageUrl": "https://cdn2.thecatapi.com/images/9j5.jpg",
-          "topText": "I bring you",
-          "bottomText": "the death"
-        }
+          "topText": "When the toy",
+          "bottomText": "moves first"
+        },
+        "content": ""
       }
     ]
   },
-  "surfaceHash": "261833596fc0",
+  "surfaceHash": "cf2471c4b5d5",
   "walkthroughs": [
     {
       "id": "",
@@ -172,13 +172,13 @@
       "order": 0,
       "src": "meme-maker.motion.json",
       "file": "lib/meme-maker.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/meme-maker.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

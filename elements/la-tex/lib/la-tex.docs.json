@@ -6,14 +6,14 @@
   "license": "Apache-2.0",
   "title": "LaTeX",
   "description": "Write using the math notation LaTeX",
-  "icon": "hax:pi",
+  "icon": "editor:functions",
   "tags": [
     "Instructional",
     "math",
     "mathjax",
     "mathml",
     "latex",
-    "mathml"
+    "equation"
   ],
   "haxCapable": true,
   "import": "@haxtheweb/la-tex/la-tex.js",
@@ -52,7 +52,7 @@
     "gizmo": {
       "title": "LaTeX",
       "description": "Write using the math notation LaTeX",
-      "icon": "hax:pi",
+      "icon": "editor:functions",
       "color": "grey",
       "tags": [
         "Instructional",
@@ -60,7 +60,7 @@
         "mathjax",
         "mathml",
         "latex",
-        "mathml"
+        "equation"
       ],
       "handles": [],
       "meta": {

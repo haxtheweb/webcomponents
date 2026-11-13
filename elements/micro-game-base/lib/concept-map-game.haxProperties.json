@@ -6,10 +6,10 @@
   "designSystem": false,
   "gizmo": {
     "title": "Concept map game",
-    "description": "A short keyboard game. A character walks to each concept on a map and it explains itself. Touch them all for confetti and a prompt to copy.",
-    "icon": "hax:hax2022",
+    "description": "A short keyboard game where a character walks a map and each concept explains itself.",
+    "icon": "hardware:videogame-asset",
     "color": "purple",
-    "tags": ["Other", "Interactive", "Game"],
+    "tags": ["Instructional", "interactive", "game"],
     "handles": [],
     "meta": {
       "author": "haxtheweb"
@@ -150,7 +150,9 @@
         "title": "Game name",
         "description": "Names this game in progress events and OER Schema markup.",
         "inputMethod": "textfield"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Game id",

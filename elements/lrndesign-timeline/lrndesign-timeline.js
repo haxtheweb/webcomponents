@@ -456,7 +456,7 @@ class LrndesignTimeline extends I18NMixin(SchemaBehaviors(SimpleColors)) {
         tags: [
           "Instructional",
           "content",
-          "Media",
+          "media",
           "timeline",
           "time",
           "event",

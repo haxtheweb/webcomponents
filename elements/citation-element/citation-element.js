@@ -449,12 +449,12 @@ class CitationElement extends I18NMixin(SchemaBehaviors(DDDSuper(LitElement))) {
       canEditSource: true,
       gizmo: {
         title: "Citation",
-        description: "Citation element with three presentation modes.",
-        icon: "editor:title",
+        description:
+          "Credit a source with its title, creator, license and link.",
+        icon: "communication:import-contacts",
         color: "grey",
         tags: [
-          "Text",
-          "content",
+          "Content",
           "citation",
           "reference",
           "cc0",
@@ -504,17 +504,6 @@ class CitationElement extends I18NMixin(SchemaBehaviors(DDDSuper(LitElement))) {
             icon: "link",
           },
           {
-            property: "scope",
-            title: "Scope",
-            description: "Element scope to cite.",
-            inputMethod: "select",
-            options: {
-              sibling: "Sibling element",
-              parent: "Parent element",
-            },
-            icon: "code",
-          },
-          {
             property: "license",
             title: "License",
             description: "License for the cited work.",
@@ -529,6 +518,21 @@ class CitationElement extends I18NMixin(SchemaBehaviors(DDDSuper(LitElement))) {
             inputMethod: "textfield",
             icon: "link",
           },
+        ],
+        advanced: [
+          {
+            property: "scope",
+            title: "Scope",
+            description: "Element scope to cite.",
+            inputMethod: "select",
+            options: {
+              sibling: "Sibling element",
+              parent: "Parent element",
+            },
+            icon: "code",
+          },
+        ],
+        developer: [
           {
             property: "typeof",
             title: "OER Schema type",
@@ -538,17 +542,16 @@ class CitationElement extends I18NMixin(SchemaBehaviors(DDDSuper(LitElement))) {
             icon: "code",
           },
         ],
-        advanced: [],
       },
       demoSchema: [
         {
           tag: "citation-element",
           properties: {
-            creator: "Cool Joe",
+            title: "Open Educational Resources",
+            creator: "HAXTheWeb",
             license: "by",
-            title: "Te Futr Da Biz",
-            source: "https://duckduckgo.com/",
-            date: "03/07/2020",
+            source: "https://haxtheweb.org/",
+            date: "2026",
           },
           content: "",
         },

@@ -18,7 +18,7 @@ describe("event-badge haxProperties integration", () => {
     const schema = await response.json();
     expect(schema.settings).to.exist;
     expect(schema.settings.configure[0].property).to.exist;
-    expect(schema.gizmo.title).to.equal("Event Badge");
+    expect(schema.gizmo.title).to.equal("Event badge");
   });
 
   it("defines the element on the custom element registry", () => {

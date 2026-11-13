@@ -57,7 +57,7 @@ export class EbookButton extends I18NMixin(LitElement) {
             property: "link",
             title: "Link",
             description: "The link to redirect to on click.",
-            inputMethod: "textfield",
+            inputMethod: "haxupload",
             icon: "editor:insert-link",
           },
           {

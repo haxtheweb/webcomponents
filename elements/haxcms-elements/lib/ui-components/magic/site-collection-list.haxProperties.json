@@ -8,11 +8,11 @@
   "canEditSource": true,
   "contentEditable": false,
   "gizmo": {
-    "title": "Smart Collection",
+    "title": "Smart collection",
     "description": "Collection built from site manifest data.",
-    "icon": "hax:idea",
+    "icon": "icons:dashboard",
     "color": "blue",
-    "tags": ["Layout", "smart", "site", "collection", "list", "items"],
+    "tags": ["Site", "smart", "collection", "list", "items"],
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team"
@@ -130,8 +130,11 @@
   "demoSchema": [
     {
       "tag": "site-collection-list",
-      "content": "",
-      "properties": {}
+      "properties": {
+        "sort": "order",
+        "limit": 6
+      },
+      "content": ""
     }
   ]
 }

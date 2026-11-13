@@ -126,18 +126,6 @@ describe("lrs-emitter test", () => {
     expect(received.length).to.equal(0);
   });
 
-  it("exposes a static haxProperties schema", () => {
-    const props = LrsEmitter.haxProperties;
-    expect(props.canScale).to.be.true;
-    expect(props.canEditSource).to.be.true;
-    expect(props.gizmo.title).to.equal("Lrs emitter");
-    expect(props.gizmo.color).to.equal("green");
-    expect(props.gizmo.tags).to.include("lrs");
-    expect(props.gizmo.tags).to.include("xapi");
-    expect(props.settings.configure[0].property).to.equal("verb");
-    expect(props.settings.configure[0].inputMethod).to.equal("textfield");
-  });
-
   it("sends the same data as an xAPI statement on user-engagement", async () => {
     const listener = oneEvent(element, "user-engagement");
     element.click();

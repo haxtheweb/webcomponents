@@ -77,7 +77,7 @@ describe("oer-schema element", () => {
   it("exposes haxProperties with schema driven settings", () => {
     const props = OerSchemaElement.haxProperties;
     expect(props.canScale).to.be.false;
-    expect(props.gizmo.title).to.equal("Schema");
+    expect(props.gizmo.title).to.equal("OER schema");
     expect(props.gizmo.meta.inlineOnly).to.be.true;
     const configure = props.settings.configure;
     expect(configure.length).to.equal(4);

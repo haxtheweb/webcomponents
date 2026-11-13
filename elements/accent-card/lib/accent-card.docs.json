@@ -4,15 +4,15 @@
   "package": "@haxtheweb/accent-card",
   "version": "26.8.0",
   "license": "Apache-2.0",
-  "title": "Card",
+  "title": "Accent card",
   "description": "A card with optional accent styling.",
   "icon": "chrome-reader-mode",
   "tags": [
     "Layout",
     "content",
     "card",
-    "Image",
-    "Presentation",
+    "image",
+    "presentation",
     "style"
   ],
   "haxCapable": true,
@@ -185,7 +185,7 @@
     "canEditSource": true,
     "contentEditable": true,
     "gizmo": {
-      "title": "Card",
+      "title": "Accent card",
       "description": "A card with optional accent styling.",
       "icon": "chrome-reader-mode",
       "color": "light-blue",
@@ -193,8 +193,8 @@
         "Layout",
         "content",
         "card",
-        "Image",
-        "Presentation",
+        "image",
+        "presentation",
         "style"
       ],
       "handles": [

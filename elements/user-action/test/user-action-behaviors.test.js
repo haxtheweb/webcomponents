@@ -264,30 +264,11 @@ describe("user-action behaviors", () => {
     expect(el.demo).to.equal(false);
   });
 
-  it("haxProperties points at the lib schema file", () => {
-    expect(UserAction.haxProperties).to.contain(
-      "lib/user-action.haxProperties.json",
-    );
-  });
-
-  it("haxHooks registers the three hook callbacks", () => {
+  it("haxHooks registers the two hook callbacks", () => {
     const el = globalThis.document.createElement("user-action");
     const hooks = el.haxHooks();
     expect(hooks.editModeChanged).to.equal("haxeditModeChanged");
     expect(hooks.activeElementChanged).to.equal("haxactiveElementChanged");
-    expect(hooks.gizmoRegistration).to.equal("haxgizmoRegistration");
-  });
-
-  it("haxgizmoRegistration dispatches an i18n registration event", async () => {
-    const el = await fixture(html`<user-action></user-action>`);
-    const registrations = [];
-    const handler = (e) => registrations.push(e.detail);
-    globalThis.addEventListener("i18n-manager-register-element", handler);
-    el.haxgizmoRegistration({});
-    expect(registrations.length).to.equal(1);
-    expect(registrations[0].namespace).to.equal("user-action.haxProperties");
-    expect(registrations[0].localesPath).to.contain("locales");
-    globalThis.removeEventListener("i18n-manager-register-element", handler);
   });
 
   it("haxactiveElementChanged and haxeditModeChanged gate firing", async () => {

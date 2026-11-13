@@ -4,15 +4,15 @@
   "package": "@haxtheweb/awesome-explosion",
   "version": "26.8.0",
   "license": "Apache-2.0",
-  "title": "Awesome Explosion",
+  "title": "Awesome explosion",
   "description": "Interactive explosion animation with optional sound effects.",
-  "icon": "av:fiber-manual-record",
+  "icon": "image:flare",
   "tags": [
     "Other",
-    "Animation",
-    "Interactive",
-    "Sound",
-    "Effect"
+    "animation",
+    "interactive",
+    "sound",
+    "effect"
   ],
   "haxCapable": true,
   "import": "@haxtheweb/awesome-explosion/awesome-explosion.js",
@@ -161,16 +161,16 @@
     "canScale": false,
     "canEditSource": false,
     "gizmo": {
-      "title": "Awesome Explosion",
+      "title": "Awesome explosion",
       "description": "Interactive explosion animation with optional sound effects.",
-      "icon": "av:fiber-manual-record",
+      "icon": "image:flare",
       "color": "orange",
       "tags": [
         "Other",
-        "Animation",
-        "Interactive",
-        "Sound",
-        "Effect"
+        "animation",
+        "interactive",
+        "sound",
+        "effect"
       ],
       "handles": [],
       "meta": {

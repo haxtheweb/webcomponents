@@ -1,0 +1,43 @@
+{
+  "tag": "ecosystem-web",
+  "package": "@haxtheweb/ecosystem-web",
+  "source": "elements/ecosystem-web/ecosystem-web.js",
+  "attributes": {
+    "compact": "compact",
+    "is-safari": "isSafari",
+    "lens": "lens",
+    "list-view": "listView",
+    "node": "node",
+    "playing": "playing",
+    "src": "src",
+    "step": "step",
+    "t": "t",
+    "tour": "tour",
+    "web": "web"
+  },
+  "slots": [],
+  "events": [
+    "ecosystem-web-changed",
+    "user-engagement"
+  ],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/ecosystem-web/lib/ecosystem-web.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "compact",
+      "lens",
+      "listView",
+      "node",
+      "src",
+      "tour",
+      "web"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "ecosystem-web"
+    ]
+  }
+}

@@ -9,7 +9,7 @@
   "gizmo": {
     "title": "Page section",
     "description": "Section container for page content and screen-based layouts.",
-    "icon": "av:call-to-action",
+    "icon": "icons:view-stream",
     "color": "purple",
     "tags": ["Layout", "page", "section", "container", "cta"],
     "handles": [],
@@ -89,16 +89,15 @@
         "title": "Buttons",
         "description": "Button group shown below the text.",
         "inputMethod": "textfield"
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "inputMethod": "textfield",
         "title": "Anchor text",
         "description": "Anchor label shown in navigation."
       }
-    ]
+    ],
+    "developer": []
   },
   "saveOptions": {
     "unsetAttributes": ["colors"]

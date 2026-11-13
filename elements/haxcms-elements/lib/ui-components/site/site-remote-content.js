@@ -353,12 +353,12 @@ class SiteRemoteContent extends HAXCMSI18NMixin(
 
       canEditSource: false,
       gizmo: {
-        title: "Remote Content",
+        title: "Remote content",
         description: "Reuse content from one site in another.",
         icon: "hax:remote",
         color: "grey",
         tags: [
-          "Other",
+          "Site",
           "haxcms",
           "content",
           "remote",
@@ -407,7 +407,6 @@ class SiteRemoteContent extends HAXCMSI18NMixin(
           tag: "site-remote-content",
           properties: {
             showTitle: true,
-            _remoteTitle: "Select content",
           },
           content: "<div>Select content to load</div>",
         },

@@ -13,7 +13,7 @@
   "gizmo": {
     "title": "Contacts",
     "description": "Show the people in a contact file as person cards, quotes, a table or a list.",
-    "icon": "social:person",
+    "icon": "social:people",
     "color": "green",
     "tags": ["Content", "contacts", "vcard", "vcf", "directory", "people"],
     "handles": [

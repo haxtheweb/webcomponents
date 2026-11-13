@@ -4,8 +4,8 @@
   "package": "@haxtheweb/simple-img",
   "version": "26.8.0",
   "license": "Apache-2.0",
-  "title": "Simple Image",
-  "description": "Manipulate images with simple parameters.",
+  "title": "Simple image",
+  "description": "An image resized, cropped or rotated by simple settings.",
   "icon": "image:image",
   "tags": [
     "Media",
@@ -15,7 +15,7 @@
   "import": "@haxtheweb/simple-img/simple-img.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/simple-img/simple-img.js",
   "install": "npm i @haxtheweb/simple-img",
-  "demoHtml": "<simple-img decoding=\"async\" fetchpriority=\"low\">\n  <template><img src=\"https://ftw.usatoday.com/wp-content/uploads/sites/90/2017/05/spongebob.jpg?w=1000&h=600&crop=1\" /></template>\n</simple-img>",
+  "demoHtml": "<simple-img src=\"https://placehold.co/600x400\" alt=\"Placeholder image\" width=\"600\" height=\"400\"></simple-img>",
   "attributes": [
     {
       "name": "srcconverted",
@@ -122,8 +122,8 @@
     "canScale": false,
     "canEditSource": true,
     "gizmo": {
-      "title": "Simple Image",
-      "description": "Manipulate images with simple parameters.",
+      "title": "Simple image",
+      "description": "An image resized, cropped or rotated by simple settings.",
       "icon": "image:image",
       "color": "red",
       "tags": [
@@ -165,7 +165,8 @@
           "inputMethod": "alt"
         }
       ],
-      "advanced": [
+      "advanced": [],
+      "developer": [
         {
           "property": "quality",
           "title": "Quality",
@@ -201,14 +202,16 @@
       {
         "tag": "simple-img",
         "properties": {
-          "decoding": "async",
-          "fetchpriority": "low"
+          "src": "https://placehold.co/600x400",
+          "alt": "Placeholder image",
+          "width": 600,
+          "height": 400
         },
-        "content": "<template><img src=\"https://ftw.usatoday.com/wp-content/uploads/sites/90/2017/05/spongebob.jpg?w=1000&h=600&crop=1\" /></template>"
+        "content": ""
       }
     ]
   },
-  "surfaceHash": "32768e7e0745",
+  "surfaceHash": "50891c090cc8",
   "walkthroughs": [
     {
       "id": "",
@@ -216,13 +219,13 @@
       "order": 0,
       "src": "simple-img.motion.json",
       "file": "lib/simple-img.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/simple-img.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

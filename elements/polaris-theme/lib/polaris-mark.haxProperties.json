@@ -6,9 +6,9 @@
   "gizmo": {
     "title": "Polaris mark",
     "description": "Display the PSU identity mark with optional college name and destination URL.",
-    "icon": "icons:book",
+    "icon": "icons:account-balance",
     "color": "blue",
-    "tags": ["Brand", "Header", "Logo", "Polaris"],
+    "tags": ["Layout", "header", "logo", "polaris", "brand"],
     "handles": [
       {
         "type": "link",

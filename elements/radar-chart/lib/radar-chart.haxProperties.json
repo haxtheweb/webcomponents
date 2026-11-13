@@ -16,7 +16,7 @@
     "description": "Radar (spider) chart for maturity models and facet scoring, such as HEOSAT. Includes a text alternative and data table.",
     "icon": "editor:multiline-chart",
     "color": "blue",
-    "tags": ["Visualization", "Metrics", "Data"],
+    "tags": ["Media", "metrics", "data", "visualization"],
     "handles": [],
     "meta": {
       "author": "haxtheweb"

@@ -12,7 +12,7 @@
     "description": "Embed Discord communities from a share URL.",
     "icon": "hax:discord",
     "color": "purple",
-    "tags": ["Other", "discord", "embed", "link", "social"],
+    "tags": ["Media", "discord", "embed", "link", "social"],
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team"
@@ -28,7 +28,9 @@
         "icon": "link",
         "required": true,
         "validationType": "url"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Height",
@@ -41,8 +43,7 @@
         "description": "Content frame width.",
         "inputMethod": "textfield"
       }
-    ],
-    "advanced": []
+    ]
   },
   "demoSchema": [
     {

@@ -8,7 +8,7 @@
     "description": "Display a Polaris story card with a background image, pillar label, and headline text.",
     "icon": "image:photo",
     "color": "blue",
-    "tags": ["Layout", "Card", "Theme", "Polaris"],
+    "tags": ["Layout", "card", "theme", "polaris"],
     "handles": [
       {
         "type": "image",

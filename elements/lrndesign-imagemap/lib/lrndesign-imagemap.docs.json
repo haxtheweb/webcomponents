@@ -6,13 +6,14 @@
   "license": "Apache-2.0",
   "title": "Image map",
   "description": "An accessible image map with interactive hotspots.",
-  "icon": "image:image",
+  "icon": "maps:place",
   "tags": [
-    "Images",
+    "Media",
     "image",
     "map",
     "hotspot",
-    "accessibility"
+    "accessibility",
+    "images"
   ],
   "haxCapable": true,
   "import": "@haxtheweb/lrndesign-imagemap/lrndesign-imagemap.js",
@@ -38,7 +39,11 @@
       "type": "string",
       "default": "",
       "description": "",
-      "hax": null
+      "hax": {
+        "title": "Image",
+        "input": "haxupload",
+        "options": null
+      }
     },
     {
       "name": "hotspot-details",
@@ -90,14 +95,15 @@
     "gizmo": {
       "title": "Image map",
       "description": "An accessible image map with interactive hotspots.",
-      "icon": "image:image",
+      "icon": "maps:place",
       "color": "blue",
       "tags": [
-        "Images",
+        "Media",
         "image",
         "map",
         "hotspot",
-        "accessibility"
+        "accessibility",
+        "images"
       ],
       "handles": [],
       "meta": {
@@ -106,6 +112,12 @@
     },
     "settings": {
       "configure": [
+        {
+          "property": "src",
+          "title": "Image",
+          "description": "SVG image the hotspots point to.",
+          "inputMethod": "haxupload"
+        },
         {
           "property": "label",
           "title": "Label",
@@ -135,7 +147,7 @@
       }
     ]
   },
-  "surfaceHash": "9768729ddada",
+  "surfaceHash": "6fde06583fc7",
   "walkthroughs": [
     {
       "id": "",
@@ -143,13 +155,13 @@
       "order": 0,
       "src": "lrndesign-imagemap.motion.json",
       "file": "lib/lrndesign-imagemap.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/lrndesign-imagemap.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

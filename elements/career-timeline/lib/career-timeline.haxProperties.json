@@ -13,7 +13,7 @@
   "gizmo": {
     "title": "Career timeline",
     "description": "A career timeline containing organizations, roles, and other data",
-    "icon": "icons:android",
+    "icon": "icons:work",
     "color": "purple",
     "tags": ["Content", "portfolio", "career", "timeline", "resume"],
     "handles": [],

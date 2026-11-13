@@ -4,8 +4,8 @@
   "package": "@haxtheweb/self-check",
   "version": "26.8.0",
   "license": "Apache-2.0",
-  "title": "Self Check",
-  "description": "Users can complete a self-check.",
+  "title": "Self check",
+  "description": "A question with a hidden answer the learner reveals to check themselves.",
   "icon": "icons:check-circle",
   "tags": [
     "Instructional",
@@ -90,7 +90,7 @@
       "description": "Link for more information.",
       "hax": {
         "title": "More link",
-        "input": "textfield",
+        "input": "haxupload",
         "options": null
       }
     },
@@ -151,8 +151,8 @@
       "primary": true
     },
     "gizmo": {
-      "title": "Self Check",
-      "description": "Users can complete a self-check.",
+      "title": "Self check",
+      "description": "A question with a hidden answer the learner reveals to check themselves.",
       "icon": "icons:check-circle",
       "color": "orange",
       "tags": [
@@ -209,6 +209,14 @@
           "slot": "",
           "title": "Answer",
           "inputMethod": "textarea"
+        }
+      ],
+      "advanced": [
+        {
+          "property": "link",
+          "title": "More link",
+          "description": "Link to additional information.",
+          "inputMethod": "haxupload"
         },
         {
           "property": "hasLearningObjective",
@@ -220,14 +228,6 @@
           "property": "assessing",
           "title": "Assessing",
           "description": "Activity reference emitted as oer:assessing.",
-          "inputMethod": "textfield"
-        }
-      ],
-      "advanced": [
-        {
-          "property": "link",
-          "title": "More link",
-          "description": "Link to additional information.",
           "inputMethod": "textfield"
         }
       ]
@@ -255,7 +255,7 @@
       }
     ]
   },
-  "surfaceHash": "25c803ab9e59",
+  "surfaceHash": "65007e000a59",
   "walkthroughs": [
     {
       "id": "",
@@ -263,13 +263,13 @@
       "order": 0,
       "src": "self-check.motion.json",
       "file": "lib/self-check.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/self-check.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

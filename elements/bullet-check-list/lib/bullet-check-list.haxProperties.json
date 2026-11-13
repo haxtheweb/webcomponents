@@ -80,7 +80,8 @@
         }
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "storageId",
         "title": "Storage id",

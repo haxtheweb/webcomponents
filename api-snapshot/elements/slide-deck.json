@@ -17,6 +17,8 @@
   },
   "slots": [],
   "events": [
+    "learner-progress-request",
+    "learner-progress-update",
     "user-engagement"
   ],
   "cssParts": [],

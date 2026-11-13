@@ -5,13 +5,15 @@
   "version": "26.8.0",
   "license": "Apache-2.0",
   "title": "Audio",
-  "description": "This can present video in a highly accessible manner regardless of source.",
-  "icon": "av:music-video",
+  "description": "Accessible audio player with transcript support.",
+  "icon": "av:equalizer",
   "tags": [
     "Media",
-    "Media",
+    "audio",
     "listen",
-    "mp3"
+    "mp3",
+    "podcast",
+    "sound"
   ],
   "haxCapable": true,
   "import": "@haxtheweb/audio-player/audio-player.js",
@@ -29,14 +31,16 @@
     "canEditSource": true,
     "gizmo": {
       "title": "Audio",
-      "description": "This can present video in a highly accessible manner regardless of source.",
-      "icon": "av:music-video",
+      "description": "Accessible audio player with transcript support.",
+      "icon": "av:equalizer",
       "color": "green",
       "tags": [
         "Media",
-        "Media",
+        "audio",
         "listen",
-        "mp3"
+        "mp3",
+        "podcast",
+        "sound"
       ],
       "handles": [
         {
@@ -115,6 +119,18 @@
           "title": "Accent color",
           "description": "Select the accent color for the player.",
           "inputMethod": "colorpicker"
+        },
+        {
+          "property": "hideTimestamps",
+          "title": "Hide timestamps",
+          "description": "Hide the time stamps on the transcript.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "hideTranscript",
+          "title": "Hide Transcript",
+          "description": "Hide transcript by default.",
+          "inputMethod": "boolean"
         }
       ],
       "developer": [
@@ -148,18 +164,6 @@
           "inputMethod": "boolean"
         },
         {
-          "property": "hideTimestamps",
-          "title": "Hide timestamps",
-          "description": "Hide the time stamps on the transcript.",
-          "inputMethod": "boolean"
-        },
-        {
-          "property": "hideTranscript",
-          "title": "Hide Transcript",
-          "description": "Hide transcript by default.",
-          "inputMethod": "boolean"
-        },
-        {
           "property": "lang",
           "title": "Language",
           "description": "Language of the media.",
@@ -187,7 +191,7 @@
       }
     ]
   },
-  "surfaceHash": "cada5d4c9b4c",
+  "surfaceHash": "1ec69c698e66",
   "walkthroughs": [
     {
       "id": "",
@@ -195,13 +199,13 @@
       "order": 0,
       "src": "audio-player.motion.json",
       "file": "lib/audio-player.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/audio-player.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

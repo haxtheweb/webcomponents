@@ -4,7 +4,7 @@
   "package": "@haxtheweb/html-block",
   "version": "26.8.0",
   "license": "Apache-2.0",
-  "title": "Html block",
+  "title": "HTML block",
   "description": "A basic HTML block that provides HAXschema wiring",
   "icon": "hax:html-code",
   "tags": [
@@ -38,7 +38,7 @@
     "canScale": true,
     "canEditSource": true,
     "gizmo": {
-      "title": "Html block",
+      "title": "HTML block",
       "description": "A basic HTML block that provides HAXschema wiring",
       "icon": "hax:html-code",
       "color": "red",
@@ -55,7 +55,8 @@
       ],
       "meta": {
         "author": "HAXTheWeb",
-        "owner": "The Pennsylvania State University"
+        "owner": "The Pennsylvania State University",
+        "hidden": true
       }
     },
     "settings": {

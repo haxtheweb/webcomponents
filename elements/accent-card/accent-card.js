@@ -428,11 +428,11 @@ class AccentCard extends I18NMixin(IntersectionObserverMixin(DDD)) {
       canEditSource: true,
       contentEditable: true,
       gizmo: {
-        title: "Card",
+        title: "Accent card",
         description: "A card with optional accent styling.",
         icon: "chrome-reader-mode",
         color: "light-blue",
-        tags: ["Layout", "content", "card", "Image", "Presentation", "style"],
+        tags: ["Layout", "content", "card", "image", "presentation", "style"],
         handles: [
           {
             type: "media",

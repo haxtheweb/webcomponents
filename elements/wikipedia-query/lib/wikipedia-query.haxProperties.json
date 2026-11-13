@@ -4,11 +4,11 @@
   "canEditSource": true,
   "gizmo": {
     "title": "Wikipedia",
-    "description": "This can display a wikipedia article in context in a variety of formats.",
+    "description": "Show a Wikipedia article in the page.",
     "icon": "book",
     "color": "green",
     "tags": [
-      "Other",
+      "Content",
       "creative commons",
       "wikipedia",
       "search",

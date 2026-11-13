@@ -4,14 +4,14 @@
   "package": "@haxtheweb/course-model",
   "version": "26.8.0",
   "license": "Apache-2.0",
-  "title": "course model",
+  "title": "Course model",
   "description": "Interactive layout for course concepts with details, animation, and knowledge checks.",
   "icon": "3d-rotation",
   "tags": [
-    "Other",
-    "Course",
-    "Model",
-    "Eberly"
+    "Instructional",
+    "course",
+    "model",
+    "3d"
   ],
   "haxCapable": true,
   "import": "@haxtheweb/course-model/course-model.js",
@@ -94,15 +94,15 @@
     "canEditSource": true,
     "contentEditable": false,
     "gizmo": {
-      "title": "course model",
+      "title": "Course model",
       "description": "Interactive layout for course concepts with details, animation, and knowledge checks.",
       "icon": "3d-rotation",
       "color": "purple",
       "tags": [
-        "Other",
-        "Course",
-        "Model",
-        "Eberly"
+        "Instructional",
+        "course",
+        "model",
+        "3d"
       ],
       "handles": [],
       "meta": {

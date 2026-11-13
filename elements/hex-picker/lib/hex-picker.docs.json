@@ -4,19 +4,15 @@
   "package": "@haxtheweb/hex-picker",
   "version": "26.8.0",
   "license": "Apache-2.0",
-  "title": "Hex Picker",
-  "description": "Hexcode color picker",
-  "icon": "image:colorize",
-  "tags": [
-    "Other",
-    "dev",
-    "developer"
-  ],
-  "haxCapable": true,
+  "title": "hex-picker",
+  "description": "Choose a color by hex or rgba code",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
   "import": "@haxtheweb/hex-picker/hex-picker.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/hex-picker/hex-picker.js",
   "install": "npm i @haxtheweb/hex-picker",
-  "demoHtml": "<hex-picker org=\"haxtheweb\" repo=\"webcomponents\"></hex-picker>",
+  "demoHtml": "",
   "attributes": [
     {
       "name": "value",
@@ -24,11 +20,7 @@
       "type": "string",
       "default": "\"#000000FF\"",
       "description": "",
-      "hax": {
-        "title": "Value",
-        "input": "textfield",
-        "options": null
-      }
+      "hax": null
     },
     {
       "name": "disabled",
@@ -36,11 +28,7 @@
       "type": "boolean",
       "default": "false",
       "description": "",
-      "hax": {
-        "title": "Disabled",
-        "input": "boolean",
-        "options": null
-      }
+      "hax": null
     },
     {
       "name": "large-display",
@@ -48,71 +36,15 @@
       "type": "boolean",
       "default": "",
       "description": "",
-      "hax": {
-        "title": "Large Display",
-        "input": "boolean",
-        "options": null
-      }
+      "hax": null
     }
   ],
   "slots": [],
   "events": [
     "value-changed"
   ],
-  "hax": {
-    "canScale": false,
-    "canEditSource": true,
-    "gizmo": {
-      "title": "Hex Picker",
-      "description": "Hexcode color picker",
-      "icon": "image:colorize",
-      "color": "grey",
-      "tags": [
-        "Other",
-        "dev",
-        "developer"
-      ],
-      "handles": [],
-      "meta": {
-        "author": "collinkleest",
-        "owner": "The Pennsylvania State University"
-      }
-    },
-    "settings": {
-      "configure": [
-        {
-          "property": "value",
-          "title": "Value",
-          "description": "Default hex value",
-          "inputMethod": "textfield"
-        },
-        {
-          "property": "disabled",
-          "title": "Disabled",
-          "description": "Disable the text field",
-          "inputMethod": "boolean"
-        },
-        {
-          "property": "largeDisplay",
-          "title": "Large Display",
-          "description": "Include color in large display",
-          "inputMethod": "boolean"
-        }
-      ],
-      "advanced": []
-    },
-    "demoSchema": [
-      {
-        "tag": "hex-picker",
-        "properties": {
-          "org": "haxtheweb",
-          "repo": "webcomponents"
-        },
-        "content": ""
-      }
-    ]
-  },
-  "surfaceHash": "62bbbd34e7e6",
+  "hax": {},
+  "surfaceHash": "690aebe89f61",
   "walkthroughs": [
     {
       "id": "",
@@ -120,13 +52,13 @@
       "order": 0,
       "src": "hex-picker.motion.json",
       "file": "lib/hex-picker.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/hex-picker.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

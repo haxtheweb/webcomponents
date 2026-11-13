@@ -4,21 +4,21 @@
   "package": "@haxtheweb/a11y-details",
   "version": "26.8.0",
   "license": "Apache-2.0",
-  "title": "Accessible Details Button",
+  "title": "Details",
   "description": "Accessible progressive disclosure with detail and summary",
   "icon": "icons:arrow-drop-down",
   "tags": [
     "Layout",
-    "Details",
-    "Summary",
-    "Button",
-    "Accessible"
+    "details",
+    "summary",
+    "button",
+    "accessible"
   ],
   "haxCapable": true,
   "import": "@haxtheweb/a11y-details/a11y-details.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/a11y-details/a11y-details.js",
   "install": "npm i @haxtheweb/a11y-details",
-  "demoHtml": "<a11y-details open-text=\"Show Aenean\" close-text=\"Hide Aenean\">\n  <div slot=\"summary\">Show Aenean</div>\n  <div slot=\"details\">Aenean eget nisl volutpat, molestie purus eget, bibendum metus. Pellentesque magna velit, tincidunt quis pharetra id, gravida placerat erat. Maecenas id dui pretium risus pulvinar feugiat vel nec leo. Praesent non congue tellus. Suspendisse ac tincidunt purus. Donec eu dui a metus vehicula bibendum sed nec tortor. Nunc convallis justo sed nibh consectetur, at pharetra nulla accumsan.\n  </div>\n</a11y-details>",
+  "demoHtml": "<a11y-details open-text=\"Show details\" close-text=\"Hide details\">\n  <div slot=\"summary\">More about this topic</div>\n  <div slot=\"details\">Add the extra explanation here. Readers open it only if they need it.</div>\n</a11y-details>",
   "attributes": [
     {
       "name": "close-text",
@@ -54,16 +54,16 @@
     "canScale": true,
     "canEditSource": true,
     "gizmo": {
-      "title": "Accessible Details Button",
+      "title": "Details",
       "description": "Accessible progressive disclosure with detail and summary",
       "icon": "icons:arrow-drop-down",
       "color": "grey",
       "tags": [
         "Layout",
-        "Details",
-        "Summary",
-        "Button",
-        "Accessible"
+        "details",
+        "summary",
+        "button",
+        "accessible"
       ],
       "handles": [
         {
@@ -117,14 +117,14 @@
       {
         "tag": "a11y-details",
         "properties": {
-          "openText": "Show Aenean",
-          "closeText": "Hide Aenean"
+          "openText": "Show details",
+          "closeText": "Hide details"
         },
-        "content": "<div slot=\"summary\">Show Aenean</div>\n<div slot=\"details\">Aenean eget nisl volutpat, molestie purus eget, bibendum metus. Pellentesque magna velit, tincidunt quis pharetra id, gravida placerat erat. Maecenas id dui pretium risus pulvinar feugiat vel nec leo. Praesent non congue tellus. Suspendisse ac tincidunt purus. Donec eu dui a metus vehicula bibendum sed nec tortor. Nunc convallis justo sed nibh consectetur, at pharetra nulla accumsan.\n</div>"
+        "content": "<div slot=\"summary\">More about this topic</div>\n<div slot=\"details\">Add the extra explanation here. Readers open it only if they need it.</div>"
       }
     ]
   },
-  "surfaceHash": "fdf94da4271f",
+  "surfaceHash": "058f1d1e4f52",
   "walkthroughs": [
     {
       "id": "",
@@ -132,13 +132,13 @@
       "order": 0,
       "src": "a11y-details.motion.json",
       "file": "lib/a11y-details.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/a11y-details.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

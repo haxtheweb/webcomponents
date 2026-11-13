@@ -21,7 +21,7 @@ describe("star-rating behavior", () => {
     const props = StarRating.haxProperties;
     expect(props).to.exist;
     expect(props.canScale).to.equal(true);
-    expect(props.gizmo.title).to.equal("Star Rating");
+    expect(props.gizmo.title).to.equal("Star rating");
     expect(props.gizmo.icon).to.equal("icons:star");
     expect(props.gizmo.handles).to.deep.equal([]);
     const configure = props.settings.configure.map((s) => s.property);
@@ -30,6 +30,8 @@ describe("star-rating behavior", () => {
       "possible",
       "numStars",
       "interactive",
+    ]);
+    expect(props.settings.advanced.map((s) => s.property)).to.deep.equal([
       "rubricScaleMode",
     ]);
   });

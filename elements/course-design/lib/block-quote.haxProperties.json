@@ -16,14 +16,7 @@
     "description": "Styled quote block.",
     "icon": "editor:format-quote",
     "color": "blue",
-    "tags": [
-      "Layout",
-      "quote",
-      "blockquote",
-      "content",
-      "design",
-      "presentation"
-    ],
+    "tags": ["Content", "quote", "blockquote", "design", "presentation"],
     "meta": {
       "author": "HAXTheWeb core team"
     }
@@ -61,9 +54,9 @@
     {
       "tag": "block-quote",
       "properties": {
-        "citation": "Padmé Amidala: Star wars, Episode II"
+        "citation": "Ralph Waldo Emerson"
       },
-      "content": "<p>So this is how liberty dies... with thunderous applause</p>"
+      "content": "<p>The only way to have a friend is to be one.</p>"
     }
   ]
 }

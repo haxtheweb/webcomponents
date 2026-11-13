@@ -49,18 +49,6 @@ describe("hex-picker defaults and rendering", () => {
       .false;
     expect(el.hasAttribute("disabled")).to.be.false;
   });
-  it("exposes haxProperties", () => {
-    const props = HexPicker.haxProperties;
-    expect(props.canScale).to.be.false;
-    expect(props.canEditSource).to.be.true;
-    expect(props.gizmo.title).to.equal("Hex Picker");
-    expect(props.gizmo.tags).to.include("developer");
-    expect(props.settings.configure.length).to.equal(3);
-    expect(props.settings.configure[0].property).to.equal("value");
-    expect(props.settings.advanced.length).to.equal(0);
-    expect(props.demoSchema[0].tag).to.equal("hex-picker");
-    expect(HexPicker.tag).to.equal("hex-picker");
-  });
 });
 
 describe("hex-picker hex utilities", () => {

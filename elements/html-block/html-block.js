@@ -31,7 +31,7 @@ class HtmlBlock extends HTMLElement {
 
       canEditSource: true,
       gizmo: {
-        title: "Html block",
+        title: "HTML block",
         description: "A basic HTML block that provides HAXschema wiring",
         icon: "hax:html-code",
         color: "red",
@@ -45,6 +45,7 @@ class HtmlBlock extends HTMLElement {
         meta: {
           author: "HAXTheWeb",
           owner: "The Pennsylvania State University",
+          hidden: true,
         },
       },
       settings: {

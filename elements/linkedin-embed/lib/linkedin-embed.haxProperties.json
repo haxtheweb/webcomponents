@@ -7,11 +7,11 @@
   "canEditSource": true,
   "contentEditable": false,
   "gizmo": {
-    "title": "LinkedIn embed",
+    "title": "LinkedIn",
     "description": "Embed a LinkedIn profile card.",
     "icon": "mdi-social:linkedin",
     "color": "blue",
-    "tags": ["Other", "social media", "linkedin", "profile", "card"],
+    "tags": ["Media", "social media", "linkedin", "profile", "card"],
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team"

@@ -79,7 +79,7 @@ describe("learning-component", () => {
     expect(props.type).to.equal("grid");
     expect(props.canScale).to.be.false;
     expect(props.hideDefaultSettings).to.be.true;
-    expect(props.gizmo.title).to.equal("Learning Component");
+    expect(props.gizmo.title).to.equal("Learning component");
     const configure = props.settings.configure;
     expect(configure.length).to.equal(6);
     // accent color lives in the advanced panel

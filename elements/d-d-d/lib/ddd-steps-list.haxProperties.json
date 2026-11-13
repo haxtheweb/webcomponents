@@ -9,8 +9,8 @@
   "hideDefaultSettings": true,
   "gizmo": {
     "title": "Steps list",
-    "description": "Numerical steps to complete tasks",
-    "icon": "chrome-reader-mode",
+    "description": "Numbered steps for completing a task.",
+    "icon": "editor:format-list-numbered",
     "color": "light-blue",
     "tags": ["Content", "list", "step"],
     "handles": [],

@@ -90,7 +90,7 @@ describe("worksheet-download", () => {
   it("exposes haxProperties with an upload-driven link setting", () => {
     const props = WorksheetDownload.haxProperties;
     expect(props.canScale).to.be.false;
-    expect(props.gizmo.title).to.equal("Worksheet Download");
+    expect(props.gizmo.title).to.equal("Worksheet download");
     expect(props.settings.configure.length).to.equal(2);
     expect(props.settings.configure[1].validationType).to.equal("url");
     expect(props.settings.configure[1].inputMethod).to.equal("haxupload");

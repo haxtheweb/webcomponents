@@ -4,8 +4,8 @@
   "package": "@haxtheweb/star-rating",
   "version": "26.8.0",
   "license": "Apache-2.0",
-  "title": "Star Rating",
-  "description": "Rating display widget or button to do rating.",
+  "title": "Star rating",
+  "description": "Show a star rating, or let readers pick one.",
   "icon": "icons:star",
   "tags": [
     "Instructional",
@@ -19,7 +19,7 @@
   "import": "@haxtheweb/star-rating/star-rating.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/star-rating/star-rating.js",
   "install": "npm i @haxtheweb/star-rating",
-  "demoHtml": "<star-rating></star-rating>",
+  "demoHtml": "<star-rating score=\"80\" possible=\"100\" num-stars=\"5\"></star-rating>",
   "attributes": [
     {
       "name": "score",
@@ -89,8 +89,8 @@
   "hax": {
     "canScale": true,
     "gizmo": {
-      "title": "Star Rating",
-      "description": "Rating display widget or button to do rating.",
+      "title": "Star rating",
+      "description": "Show a star rating, or let readers pick one.",
       "icon": "icons:star",
       "color": "yellow",
       "tags": [
@@ -131,7 +131,9 @@
           "title": "Interactive",
           "description": "Allow user interaction to set the rating.",
           "inputMethod": "boolean"
-        },
+        }
+      ],
+      "advanced": [
         {
           "property": "rubricScaleMode",
           "title": "Rubric Scale Mode",
@@ -143,12 +145,16 @@
     "demoSchema": [
       {
         "tag": "star-rating",
-        "properties": {},
+        "properties": {
+          "score": 80,
+          "possible": 100,
+          "numStars": 5
+        },
         "content": ""
       }
     ]
   },
-  "surfaceHash": "d8bafb14b0d9",
+  "surfaceHash": "d07f75fde5ce",
   "walkthroughs": [
     {
       "id": "",
@@ -156,13 +162,13 @@
       "order": 0,
       "src": "star-rating.motion.json",
       "file": "lib/star-rating.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/star-rating.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

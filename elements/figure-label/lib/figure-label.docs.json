@@ -68,7 +68,8 @@
       ],
       "meta": {
         "author": "HAXTheWeb core team",
-        "owner": "PSU"
+        "owner": "PSU",
+        "hidden": true
       }
     },
     "settings": {

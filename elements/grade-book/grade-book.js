@@ -822,6 +822,7 @@ class GradeBook extends UIRenderPieces(
         handles: [],
         meta: {
           author: "HAXTheWeb core team",
+          hidden: true,
         },
       },
       settings: {

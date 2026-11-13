@@ -6,12 +6,12 @@
   "license": "Apache-2.0",
   "title": "Ecosystem web",
   "description": "An interactive web of how the parts of a project connect, with sub-webs and step-by-step tours.",
-  "icon": "social:share",
+  "icon": "hardware:device-hub",
   "tags": [
     "Media",
-    "Data",
-    "Interactive",
-    "Visualization",
+    "data",
+    "interactive",
+    "visualization",
     "ecosystem",
     "graph",
     "tour"
@@ -109,6 +109,25 @@
         "input": "boolean",
         "options": null
       }
+    },
+    {
+      "name": "lens",
+      "property": "lens",
+      "type": "string",
+      "default": "\"\"",
+      "description": "Read every tile by one measure: fresh, bus, impact, evidence or parity",
+      "hax": {
+        "title": "Read by",
+        "input": "select",
+        "options": {
+          "": "Connections only",
+          "fresh": "Freshness",
+          "bus": "Bus factor",
+          "impact": "Impact",
+          "evidence": "Evidence",
+          "parity": "Parity"
+        }
+      }
     }
   ],
   "slots": [],
@@ -131,13 +150,13 @@
     "gizmo": {
       "title": "Ecosystem web",
       "description": "An interactive web of how the parts of a project connect, with sub-webs and step-by-step tours.",
-      "icon": "social:share",
+      "icon": "hardware:device-hub",
       "color": "blue",
       "tags": [
         "Media",
-        "Data",
-        "Interactive",
-        "Visualization",
+        "data",
+        "interactive",
+        "visualization",
         "ecosystem",
         "graph",
         "tour"
@@ -222,7 +241,7 @@
       }
     ]
   },
-  "surfaceHash": "5b5ab029cea7",
+  "surfaceHash": "32c69f3617a2",
   "walkthroughs": [],
   "videos": [],
   "motion": {

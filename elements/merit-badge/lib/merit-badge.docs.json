@@ -4,9 +4,9 @@
   "package": "@haxtheweb/merit-badge",
   "version": "26.8.0",
   "license": "Apache-2.0",
-  "title": "Merit Badge",
+  "title": "Merit badge",
   "description": "Visual badge to communicate obtaining a skill.",
-  "icon": "icons:verified",
+  "icon": "icons:card-membership",
   "tags": [
     "Instructional",
     "badge",
@@ -17,7 +17,7 @@
   "import": "@haxtheweb/merit-badge/merit-badge.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/merit-badge/merit-badge.js",
   "install": "npm i @haxtheweb/merit-badge",
-  "demoHtml": "<merit-badge></merit-badge>",
+  "demoHtml": "<merit-badge badge-title=\"Web components\" badge-details=\"Built and published a custom element.\" hyper-link=\"https://haxtheweb.org/\" badge-skills=\"HTML, CSS, JavaScript\"></merit-badge>",
   "attributes": [
     {
       "name": "typeof",
@@ -67,7 +67,7 @@
       "description": "",
       "hax": {
         "title": "Badge Details",
-        "input": "textfield",
+        "input": "textarea",
         "options": null
       }
     },
@@ -79,7 +79,7 @@
       "description": "",
       "hax": {
         "title": "Hyperlink",
-        "input": "textfield",
+        "input": "haxupload",
         "options": null
       }
     },
@@ -146,9 +146,9 @@
     "canScale": true,
     "canEditSource": true,
     "gizmo": {
-      "title": "Merit Badge",
+      "title": "Merit badge",
       "description": "Visual badge to communicate obtaining a skill.",
-      "icon": "icons:verified",
+      "icon": "icons:card-membership",
       "color": "green",
       "tags": [
         "Instructional",
@@ -182,13 +182,13 @@
           "property": "badgeDetails",
           "title": "Badge Details",
           "description": "Details about the badge.",
-          "inputMethod": "textfield"
+          "inputMethod": "textarea"
         },
         {
           "property": "hyperLink",
           "title": "Hyperlink",
           "description": "Link associated with the badge.",
-          "inputMethod": "textfield"
+          "inputMethod": "haxupload"
         },
         {
           "property": "badgeSkills",
@@ -208,12 +208,17 @@
     "demoSchema": [
       {
         "tag": "merit-badge",
-        "properties": {},
+        "properties": {
+          "badgeTitle": "Web components",
+          "badgeDetails": "Built and published a custom element.",
+          "hyperLink": "https://haxtheweb.org/",
+          "badgeSkills": "HTML, CSS, JavaScript"
+        },
         "content": ""
       }
     ]
   },
-  "surfaceHash": "11081bb9e557",
+  "surfaceHash": "dbb7af61d75d",
   "walkthroughs": [
     {
       "id": "",
@@ -221,13 +226,13 @@
       "order": 0,
       "src": "merit-badge.motion.json",
       "file": "lib/merit-badge.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/merit-badge.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

@@ -8,7 +8,7 @@
   "description": "A place holder that can be converted into the media type that's been selected",
   "icon": "hax:placeholder-image",
   "tags": [
-    "Text",
+    "Other",
     "development",
     "authoring",
     "media",
@@ -103,7 +103,7 @@
       "icon": "hax:placeholder-image",
       "color": "grey",
       "tags": [
-        "Text",
+        "Other",
         "development",
         "authoring",
         "media",

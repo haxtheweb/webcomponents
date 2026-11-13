@@ -201,38 +201,13 @@ class UserAction extends HTMLElement {
     }
   }
   /**
-   * haxProperties integration via file reference
-   */
-  static get haxProperties() {
-    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
-      .href;
-  }
-  /**
    * Implements haxHooks to tie into life-cycle if hax exists.
    */
   haxHooks() {
     return {
       editModeChanged: "haxeditModeChanged",
       activeElementChanged: "haxactiveElementChanged",
-      gizmoRegistration: "haxgizmoRegistration",
     };
-  }
-  /**
-   * Supply translations for the UI elements of HAX in meme-maker
-   */
-  haxgizmoRegistration(_store) {
-    globalThis.dispatchEvent(
-      new CustomEvent("i18n-manager-register-element", {
-        detail: {
-          namespace: `user-action.haxProperties`,
-          localesPath:
-            new URL(
-              "./locales/user-action.haxProperties.es.json",
-              import.meta.url,
-            ).href + "/../",
-        },
-      }),
-    );
   }
   /**
    * double-check that we are set to inactivate click handlers

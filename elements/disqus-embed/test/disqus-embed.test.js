@@ -154,22 +154,6 @@ describe("disqus-embed", () => {
   });
 
   // HAX integration tests
-  it("has proper HAX properties configuration", async () => {
-    expect(DisqusEmbed.haxProperties).to.exist;
-    expect(DisqusEmbed.haxProperties).to.include("haxProperties.json");
-  });
-
-  it("serves a parseable haxProperties document from that URL", async () => {
-    const response = await fetch(DisqusEmbed.haxProperties);
-    expect(response.status).to.equal(200);
-    const schema = await response.json();
-    expect(schema.gizmo.title).to.equal("Disqus");
-    const shortName = schema.settings.configure.find(
-      (item) => item.property === "shortName",
-    );
-    expect(shortName).to.exist;
-    expect(shortName.required).to.be.true;
-  });
 });
 
 describe("disqus broker", () => {

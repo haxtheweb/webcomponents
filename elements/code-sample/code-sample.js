@@ -321,13 +321,12 @@ class CodeSample extends I18NMixin(LitElement) {
       demoSchema: [
         {
           tag: "code-sample",
-          content: `<template preserve-content="preserve-content">const great = "example";
-const great = "example";
-const great = "example";</template>`,
           properties: {
             type: "javascript",
-            "copy-clipboard-button": true,
+            copyClipboardButton: true,
           },
+          content:
+            '<template preserve-content="preserve-content">const greeting = "Hello";\nconst name = "world";\nconst message = `${greeting}, ${name}!`;</template>',
         },
       ],
     };

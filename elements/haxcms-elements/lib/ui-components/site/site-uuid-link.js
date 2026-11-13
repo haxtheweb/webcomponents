@@ -95,13 +95,12 @@ class SiteUuidLink extends I18NMixin(LitElement) {
 
       canEditSource: false,
       gizmo: {
-        title: "HAX link",
-        description:
-          "A link to a specific resource in the site your working on.",
+        title: "Page link",
+        description: "A link to a page in the site you're working on.",
         icon: "icons:link",
         color: "grey",
         tags: [
-          "Other",
+          "Site",
           "haxcms",
           "content",
           "remote",
@@ -116,6 +115,7 @@ class SiteUuidLink extends I18NMixin(LitElement) {
         ],
         meta: {
           author: "HAXTheWeb core team",
+          inlineOnly: true,
         },
       },
       settings: {

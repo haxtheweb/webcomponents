@@ -25,8 +25,8 @@ class StarRating extends I18NMixin(SchemaBehaviors(SimpleColors)) {
     return {
       canScale: true,
       gizmo: {
-        title: "Star Rating",
-        description: "Rating display widget or button to do rating.",
+        title: "Star rating",
+        description: "Show a star rating, or let readers pick one.",
         icon: "icons:star",
         color: "yellow",
         tags: [
@@ -68,6 +68,8 @@ class StarRating extends I18NMixin(SchemaBehaviors(SimpleColors)) {
             description: "Allow user interaction to set the rating.",
             inputMethod: "boolean",
           },
+        ],
+        advanced: [
           {
             property: "rubricScaleMode",
             title: "Rubric Scale Mode",
@@ -80,7 +82,11 @@ class StarRating extends I18NMixin(SchemaBehaviors(SimpleColors)) {
       demoSchema: [
         {
           tag: "star-rating",
-          properties: {},
+          properties: {
+            score: 80,
+            possible: 100,
+            numStars: 5,
+          },
           content: "",
         },
       ],

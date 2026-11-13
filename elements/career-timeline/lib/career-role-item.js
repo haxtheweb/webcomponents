@@ -339,15 +339,16 @@ export class CareerRoleItem extends I18NMixin(DDDSuper(LitElement)) {
       contentEditable: false,
       hideDefaultSettings: true,
       gizmo: {
-        title: "Career Role",
+        title: "Career role",
         description: "An individual role within an organization",
-        icon: "chrome-reader-mode",
+        icon: "icons:work",
         color: "light-blue",
-        tags: ["Content", "list", "step"],
+        tags: ["Content", "career", "role", "job", "resume"],
         handles: [],
         meta: {
           author: "HAXTheWeb core team",
         },
+        requiresParent: "career-org-item",
       },
       settings: {
         configure: [
@@ -390,8 +391,11 @@ export class CareerRoleItem extends I18NMixin(DDDSuper(LitElement)) {
       demoSchema: [
         {
           tag: "career-role-item",
-          properties: {},
-          content: "",
+          properties: {
+            title: "Role title",
+            startDate: "2024-08-01",
+          },
+          content: "<p>What you did in this role.</p>",
         },
       ],
     };

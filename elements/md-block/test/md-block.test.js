@@ -249,7 +249,7 @@ describe("md-block test", () => {
       expect(props.canScale).to.equal(false);
       expect(props.canEditSource).to.equal(true);
       expect(props.gizmo.title).to.equal("Markdown");
-      expect(props.gizmo.description).to.contain("markdown");
+      expect(props.gizmo.description).to.contain("Markdown");
       expect(props.gizmo.tags).to.contain("markdown");
       expect(props.gizmo.meta.author).to.equal("HAXTheWeb");
       expect(props.settings.configure[0].property).to.equal("markdown");
@@ -257,7 +257,7 @@ describe("md-block test", () => {
       expect(props.settings.configure[1].property).to.equal("source");
       expect(props.settings.advanced.length).to.equal(0);
       expect(props.demoSchema[0].tag).to.equal("md-block");
-      expect(props.demoSchema[0].properties.markdown).to.contain("bulleted");
+      expect(props.demoSchema[0].properties.markdown).to.contain("First item");
     });
   });
 

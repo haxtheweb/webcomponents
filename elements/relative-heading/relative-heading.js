@@ -129,13 +129,14 @@ class RelativeHeading extends I18NMixin(RelativeHeadingLite) {
         title: "Relative heading",
         description:
           "outputs the correct heading hierarchy based on parent's heading",
-        icon: "icons:android",
+        icon: "editor:title",
         color: "green",
         tags: ["Text", "heading", "header", "h1", "h2", "h3", "h4", "h5", "h6"],
         handles: [],
         meta: {
           author: "HAXTheWeb core team",
           owner: "The Pennsylvania State University",
+          hidden: true,
         },
       },
       settings: {

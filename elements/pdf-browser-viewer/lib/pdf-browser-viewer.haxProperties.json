@@ -7,7 +7,7 @@
   "canEditSource": false,
   "contentEditable": false,
   "gizmo": {
-    "title": "PDF Browser Viewer",
+    "title": "PDF viewer",
     "description": "Embed a PDF file inline with an optional card layout and download button.",
     "icon": "image:picture-as-pdf",
     "color": "blue",
@@ -23,7 +23,7 @@
         "property": "file",
         "title": "PDF URL",
         "description": "Location of the PDF file.",
-        "inputMethod": "textfield",
+        "inputMethod": "haxupload",
         "icon": "link",
         "required": true,
         "validationType": "url"
@@ -50,18 +50,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Not supported message",
-        "description": "Message when the browser cannot display PDF files.",
-        "inputMethod": "textfield"
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Not supported link message",
-        "description": "Link text when the browser cannot display PDF files.",
-        "inputMethod": "textfield"
-      },
-      {
         "property": "width",
         "title": "Width",
         "description": "Width of the PDF viewer.",
@@ -71,6 +59,20 @@
         "property": "height",
         "title": "Height",
         "description": "Height of the PDF viewer.",
+        "inputMethod": "textfield"
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Not supported message",
+        "description": "Message when the browser cannot display PDF files.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Not supported link message",
+        "description": "Link text when the browser cannot display PDF files.",
         "inputMethod": "textfield"
       }
     ]

@@ -229,12 +229,12 @@ class A11yDetails extends I18NMixin(LitElement) {
 
       canEditSource: true,
       gizmo: {
-        title: "Accessible Details Button",
+        title: "Details",
         description:
           "Accessible progressive disclosure with detail and summary",
         icon: "icons:arrow-drop-down",
         color: "grey",
-        tags: ["Layout", "Details", "Summary", "Button", "Accessible"],
+        tags: ["Layout", "details", "summary", "button", "accessible"],
         handles: [
           {
             type: "",
@@ -291,11 +291,11 @@ class A11yDetails extends I18NMixin(LitElement) {
         {
           tag: "a11y-details",
           properties: {
-            openText: "Show Aenean",
-            closeText: "Hide Aenean",
+            openText: "Show details",
+            closeText: "Hide details",
           },
           content:
-            '<div slot="summary">Show Aenean</div>\n<div slot="details">Aenean eget nisl volutpat, molestie purus eget, bibendum metus. Pellentesque magna velit, tincidunt quis pharetra id, gravida placerat erat. Maecenas id dui pretium risus pulvinar feugiat vel nec leo. Praesent non congue tellus. Suspendisse ac tincidunt purus. Donec eu dui a metus vehicula bibendum sed nec tortor. Nunc convallis justo sed nibh consectetur, at pharetra nulla accumsan.\n</div>',
+            '<div slot="summary">More about this topic</div>\n<div slot="details">Add the extra explanation here. Readers open it only if they need it.</div>',
         },
       ],
     };

@@ -7,15 +7,7 @@
     "description": "Play audio inline to supplement page content.",
     "icon": "av:volume-up",
     "color": "blue",
-    "tags": [
-      "Media",
-      "media",
-      "mp3",
-      "sound",
-      "audio",
-      "inline",
-      "enhancement"
-    ],
+    "tags": ["Media", "mp3", "sound", "audio", "inline", "enhancement"],
     "handles": [
       {
         "type": "inline",

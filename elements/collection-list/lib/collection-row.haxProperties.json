@@ -15,7 +15,8 @@
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team"
-    }
+    },
+    "requiresParent": "collection-list"
   },
   "settings": {
     "configure": [

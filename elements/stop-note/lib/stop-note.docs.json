@@ -4,7 +4,7 @@
   "package": "@haxtheweb/stop-note",
   "version": "26.8.0",
   "license": "Apache-2.0",
-  "title": "Stop Note",
+  "title": "Stop note",
   "description": "A message to alert readers to specific directions.",
   "icon": "icons:report",
   "tags": [
@@ -96,7 +96,7 @@
       "accent": false
     },
     "gizmo": {
-      "title": "Stop Note",
+      "title": "Stop note",
       "description": "A message to alert readers to specific directions.",
       "icon": "icons:report",
       "color": "orange",

@@ -8,7 +8,7 @@
   "description": "Code to scan from a smartphone.",
   "icon": "hax:qr-code",
   "tags": [
-    "Other",
+    "Media",
     "qr",
     "code",
     "phone",
@@ -21,7 +21,7 @@
   "import": "@haxtheweb/q-r/q-r.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/q-r/q-r.js",
   "install": "npm i @haxtheweb/q-r",
-  "demoHtml": "<q-r></q-r>",
+  "demoHtml": "<q-r data=\"https://haxtheweb.org/\" title=\"QR code linking to haxtheweb.org\" modulesize=\"4\" margin=\"2\"></q-r>",
   "attributes": [
     {
       "name": "data",
@@ -99,7 +99,7 @@
       "icon": "hax:qr-code",
       "color": "grey",
       "tags": [
-        "Other",
+        "Media",
         "qr",
         "code",
         "phone",
@@ -146,6 +146,20 @@
           "description": "Alternate title linked to the QR code source.",
           "inputMethod": "alt",
           "icon": "editor:title"
+        }
+      ],
+      "advanced": [
+        {
+          "property": "format",
+          "title": "Output format",
+          "description": "Format to put it out.",
+          "inputMethod": "select",
+          "options": {
+            "png": "PNG",
+            "html": "HTML",
+            "svg": "SVG"
+          },
+          "icon": "editor:bubble-chart"
         },
         {
           "property": "modulesize",
@@ -161,31 +175,22 @@
           "inputMethod": "number",
           "icon": "icons:settings-overscan"
         }
-      ],
-      "advanced": [
-        {
-          "property": "format",
-          "title": "Output format",
-          "description": "Format to put it out.",
-          "inputMethod": "select",
-          "options": {
-            "png": "PNG",
-            "html": "HTML",
-            "svg": "SVG"
-          },
-          "icon": "editor:bubble-chart"
-        }
       ]
     },
     "demoSchema": [
       {
         "tag": "q-r",
-        "properties": {},
+        "properties": {
+          "data": "https://haxtheweb.org/",
+          "title": "QR code linking to haxtheweb.org",
+          "modulesize": 4,
+          "margin": 2
+        },
         "content": ""
       }
     ]
   },
-  "surfaceHash": "5fb2eef78d14",
+  "surfaceHash": "6d390b5c98fa",
   "walkthroughs": [
     {
       "id": "",
@@ -193,13 +198,13 @@
       "order": 0,
       "src": "q-r.motion.json",
       "file": "lib/q-r.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/q-r.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

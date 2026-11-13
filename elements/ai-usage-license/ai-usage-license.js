@@ -390,15 +390,7 @@ class AiUsageLicense extends SchemaBehaviors(I18NMixin(DDDSuper(LitElement))) {
         description: "Display an AI Usage License (AIUL) badge for your work",
         icon: "hardware:memory",
         color: "grey",
-        tags: [
-          "Other",
-          "content",
-          "ai",
-          "license",
-          "aiul",
-          "ai-usage",
-          "attribution",
-        ],
+        tags: ["Content", "ai", "license", "aiul", "ai-usage", "attribution"],
         handles: [],
         meta: {
           author: "HAXTheWeb core team",

@@ -24,11 +24,11 @@ class SiteChildrenBlock extends LitElement {
 
       canEditSource: true,
       gizmo: {
-        title: "HAXcms: child block",
-        description: "Dynamic block to show child of the current page",
-        icon: "av:call-to-action",
+        title: "Child pages",
+        description: "List the child pages of the current page.",
+        icon: "hax:site-map",
         color: "grey",
-        tags: ["Other", "haxcms"],
+        tags: ["Site", "haxcms"],
         handles: [],
         meta: {
           author: "HAXTheWeb core team",
@@ -36,8 +36,7 @@ class SiteChildrenBlock extends LitElement {
         },
       },
       settings: {
-        configure: [],
-        advanced: [
+        configure: [
           {
             property: "dynamicMethodology",
             title: "Dynamic method",
@@ -50,6 +49,8 @@ class SiteChildrenBlock extends LitElement {
               ancestor: "All children from the highest ancestor",
             },
           },
+        ],
+        advanced: [
           {
             property: "start",
             title: "Start level",
@@ -65,7 +66,9 @@ class SiteChildrenBlock extends LitElement {
       demoSchema: [
         {
           tag: "site-children-block",
-          properties: {},
+          properties: {
+            dynamicMethodology: "active",
+          },
           content: "",
         },
       ],

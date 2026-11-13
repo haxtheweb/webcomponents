@@ -9,9 +9,9 @@
   },
   "type": "grid",
   "gizmo": {
-    "title": "Activity Box",
-    "description": "Small styled heading block.",
-    "icon": "editor:format-quote",
+    "title": "Activity box",
+    "description": "A labelled heading that marks the start of an activity.",
+    "icon": "icons:assignment",
     "color": "blue",
     "tags": ["Instructional", "design", "pedagogy", "presentation", "action"],
     "meta": {
@@ -24,7 +24,7 @@
         "property": "icon",
         "title": "Icon",
         "description": "Icon displayed alongside the activity box.",
-        "inputMethod": "textfield"
+        "inputMethod": "iconpicker"
       },
       {
         "property": "tag",

@@ -547,7 +547,7 @@ describe("media-image behavior", () => {
           .haxProperties;
       expect(haxProps.canScale).to.be.true;
       expect(haxProps.canEditSource).to.be.true;
-      expect(haxProps.gizmo.title).to.equal("Enhanced Image");
+      expect(haxProps.gizmo.title).to.equal("Enhanced image");
       expect(haxProps.gizmo.handles[0].type).to.equal("image");
       expect(haxProps.gizmo.handles[0].type_exclusive).to.be.true;
       expect(haxProps.gizmo.meta.outlineDesigner).to.be.true;

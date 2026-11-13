@@ -9,8 +9,7 @@
   "icon": "icons:credit-card",
   "tags": [
     "Layout",
-    "card",
-    "layout"
+    "card"
   ],
   "haxCapable": true,
   "import": "@haxtheweb/retro-card/retro-card.js",
@@ -73,7 +72,7 @@
       "default": "",
       "description": "",
       "hax": {
-        "input": "textfield",
+        "input": "haxupload",
         "options": null
       }
     },
@@ -123,8 +122,7 @@
       "color": "purple",
       "tags": [
         "Layout",
-        "card",
-        "layout"
+        "card"
       ],
       "handles": [],
       "meta": {
@@ -144,7 +142,7 @@
         {
           "property": "url",
           "description": "URL to open when the card is clicked.",
-          "inputMethod": "textfield",
+          "inputMethod": "haxupload",
           "required": false,
           "validationType": "url"
         },
@@ -215,7 +213,7 @@
       }
     ]
   },
-  "surfaceHash": "990d793919b3",
+  "surfaceHash": "e34f3cee4e95",
   "walkthroughs": [
     {
       "id": "",
@@ -223,13 +221,13 @@
       "order": 0,
       "src": "retro-card.motion.json",
       "file": "lib/retro-card.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/retro-card.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

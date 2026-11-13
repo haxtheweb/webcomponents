@@ -182,9 +182,9 @@ class MeritBadge extends I18NMixin(SchemaBehaviors(LitElement)) {
       canScale: true,
       canEditSource: true,
       gizmo: {
-        title: "Merit Badge",
+        title: "Merit badge",
         description: "Visual badge to communicate obtaining a skill.",
-        icon: "icons:verified",
+        icon: "icons:card-membership",
         color: "green",
         tags: ["Instructional", "badge", "skill", "achievement"],
         handles: [],
@@ -213,13 +213,13 @@ class MeritBadge extends I18NMixin(SchemaBehaviors(LitElement)) {
             property: "badgeDetails",
             title: "Badge Details",
             description: "Details about the badge.",
-            inputMethod: "textfield",
+            inputMethod: "textarea",
           },
           {
             property: "hyperLink",
             title: "Hyperlink",
             description: "Link associated with the badge.",
-            inputMethod: "textfield",
+            inputMethod: "haxupload",
           },
           {
             property: "badgeSkills",
@@ -240,7 +240,12 @@ class MeritBadge extends I18NMixin(SchemaBehaviors(LitElement)) {
       demoSchema: [
         {
           tag: "merit-badge",
-          properties: {},
+          properties: {
+            badgeTitle: "Web components",
+            badgeDetails: "Built and published a custom element.",
+            hyperLink: "https://haxtheweb.org/",
+            badgeSkills: "HTML, CSS, JavaScript",
+          },
           content: "",
         },
       ],

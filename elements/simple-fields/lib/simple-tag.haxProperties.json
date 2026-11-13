@@ -3,7 +3,7 @@
   "canScale": true,
   "canEditSource": true,
   "gizmo": {
-    "title": "Tag / Pill",
+    "title": "Tag",
     "description": "A compact pill-shaped label with optional accent color, cancel button, or toggle.",
     "icon": "icons:label",
     "color": "grey",
@@ -26,18 +26,6 @@
         "property": "autoAccentColor",
         "title": "Auto accent color",
         "description": "Derive the accent color from the label text automatically.",
-        "inputMethod": "boolean"
-      },
-      {
-        "property": "cancelButton",
-        "title": "Cancel button",
-        "description": "Show a remove/cancel icon button inside the pill.",
-        "inputMethod": "boolean"
-      },
-      {
-        "property": "readonly",
-        "title": "Read only",
-        "description": "Hide the cancel button so the pill is display-only.",
         "inputMethod": "boolean"
       }
     ],
@@ -93,6 +81,18 @@
           "blue-grey": "Blue Grey",
           "grey": "Grey"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Cancel button",
+        "description": "Show a remove/cancel icon button inside the pill.",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "readonly",
+        "title": "Read only",
+        "description": "Hide the cancel button so the pill is display-only.",
+        "inputMethod": "boolean"
       }
     ]
   },

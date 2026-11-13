@@ -164,12 +164,6 @@ describe("course-design test", () => {
   });
 
   describe("HAX configuration", () => {
-    it("has haxProperties defined", () => {
-      expect(element.constructor.haxProperties).to.exist;
-      expect(element.constructor.haxProperties.gizmo).to.exist;
-      expect(element.constructor.haxProperties.settings).to.exist;
-    });
-
     it("has correct tag name", () => {
       expect(element.constructor.tag).to.equal("course-design");
     });

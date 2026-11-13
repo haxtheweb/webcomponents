@@ -32,7 +32,8 @@
     "gizmo": true,
     "properties": [
       "hotspotDetails",
-      "label"
+      "label",
+      "src"
     ],
     "attributes": [],
     "slots": [],

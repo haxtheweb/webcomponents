@@ -6,7 +6,7 @@
   "contentEditable": false,
   "gizmo": {
     "title": "Spotify",
-    "description": "Wrapper for Spotify player embeds.",
+    "description": "Embed a Spotify track, album or playlist.",
     "icon": "hax:spotify",
     "color": "green",
     "tags": ["Media", "music", "spotify"],

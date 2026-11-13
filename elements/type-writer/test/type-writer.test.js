@@ -115,22 +115,29 @@ describe("type-writer", () => {
 
     it("declares a gizmo with the expected metadata", () => {
       const gizmo = element.constructor.haxProperties.gizmo;
-      expect(gizmo.title).to.equal("Type writer");
+      expect(gizmo.title).to.equal("Typewriter");
       expect(gizmo.icon).to.equal("hardware:keyboard");
       expect(gizmo.color).to.equal("green");
-      expect(gizmo.tags).to.include.members(["interactive", "Writer", "type"]);
+      expect(gizmo.tags).to.include.members([
+        "typewriter",
+        "animation",
+        "effect",
+      ]);
     });
 
-    it("exposes text / delay / speed / cursorDuration / typing as configure settings", () => {
-      const configure = element.constructor.haxProperties.settings.configure;
-      const names = configure.map((c) => c.property);
-      expect(names).to.include.members([
-        "delay",
-        "cursorDuration",
+    it("exposes text / typing as configure and the timing fields as advanced settings", () => {
+      const settings = element.constructor.haxProperties.settings;
+      expect(settings.configure.map((c) => c.property)).to.include.members([
         "text",
-        "speed",
         "typing",
       ]);
+      const advanced = settings.advanced;
+      expect(advanced.map((c) => c.property)).to.include.members([
+        "delay",
+        "cursorDuration",
+        "speed",
+      ]);
+      expect(advanced.every((c) => c.inputMethod === "number")).to.be.true;
     });
 
     it("strips element-visible attribute on save", () => {

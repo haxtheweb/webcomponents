@@ -15,7 +15,7 @@
     "description": "Renders and plays sheet music, guitar tabs, and score notation via alphaTex or MusicXML.",
     "icon": "image:music-note",
     "color": "purple",
-    "tags": ["Media", "Music", "Instructional"],
+    "tags": ["Media", "music", "instructional"],
     "handles": [
       {
         "type": "media",

@@ -357,7 +357,7 @@ class PlaceHolder extends I18NMixin(DDD) {
         icon: "hax:placeholder-image",
         color: "grey",
         tags: [
-          "Text",
+          "Other",
           "development",
           "authoring",
           "media",

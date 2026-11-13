@@ -98,7 +98,7 @@
     },
     {
       "tag": "a11y-details",
-      "title": "Accessible Details Button",
+      "title": "Details",
       "description": "accessible progressive disclosure with detail and summary",
       "package": "@haxtheweb/a11y-details",
       "import": "@haxtheweb/a11y-details/a11y-details.js",
@@ -109,7 +109,7 @@
     },
     {
       "tag": "a11y-figure",
-      "title": "Descriptive Figure",
+      "title": "Descriptive figure",
       "description": "accessible progressive disclosure with detail and summary",
       "package": "@haxtheweb/a11y-figure",
       "import": "@haxtheweb/a11y-figure/a11y-figure.js",
@@ -130,7 +130,6 @@
         "Media",
         "player",
         "gif",
-        "media",
         "a11y",
         "accessibility",
         "animation",
@@ -238,7 +237,7 @@
       "import": "@haxtheweb/a11y-tabs/a11y-tabs.js",
       "type": "element",
       "haxCapable": true,
-      "tags": ["Layout", "tabs", "display", "layout"],
+      "tags": ["Layout", "tabs", "display"],
       "walkthrough": true
     },
     {
@@ -263,7 +262,7 @@
     },
     {
       "tag": "accent-card",
-      "title": "Card",
+      "title": "Accent card",
       "description": "",
       "package": "@haxtheweb/accent-card",
       "import": "@haxtheweb/accent-card/accent-card.js",
@@ -301,14 +300,15 @@
       "type": "element",
       "haxCapable": true,
       "tags": [
-        "3D",
+        "Media",
         "augmented reality",
-        "AR",
-        "VR",
+        "ar",
+        "vr",
         "video",
         "aframe",
         "webxr",
-        "webvr"
+        "webvr",
+        "3d"
       ],
       "walkthrough": true
     },
@@ -381,6 +381,16 @@
       "description": "",
       "package": "@haxtheweb/app-hax",
       "import": "@haxtheweb/app-hax/lib/v2/app-hax-filter-tag.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "app-hax-import-url-dialog",
+      "title": "",
+      "description": "The From a URL import: one HAX UI dialog that takes the URL and asks what kind of site it is, which picks the importer. Same card as the HAX UI confirm (haxcms-admin-confirm) on a native modal dialog. Use the helper rather than the element: const answer = await askImportUrl({ kinds, labels }); //...",
+      "package": "@haxtheweb/app-hax",
+      "import": "@haxtheweb/app-hax/lib/v2/app-hax-import-url-dialog.js",
       "type": "element",
       "haxCapable": false,
       "tags": []
@@ -574,7 +584,7 @@
       "import": "@haxtheweb/author-card/author-card.js",
       "type": "element",
       "haxCapable": true,
-      "tags": ["Other"],
+      "tags": ["Content", "author", "bio", "profile", "person"],
       "walkthrough": true
     },
     {
@@ -585,7 +595,7 @@
       "import": "@haxtheweb/awesome-explosion/awesome-explosion.js",
       "type": "element",
       "haxCapable": true,
-      "tags": ["Other", "Animation", "Interactive", "Sound", "Effect"],
+      "tags": ["Other", "animation", "interactive", "sound", "effect"],
       "walkthrough": true
     },
     {
@@ -647,14 +657,7 @@
       "import": "@haxtheweb/course-design/lib/block-quote.js",
       "type": "grid",
       "haxCapable": true,
-      "tags": [
-        "Layout",
-        "quote",
-        "blockquote",
-        "content",
-        "design",
-        "presentation"
-      ]
+      "tags": ["Content", "quote", "blockquote", "design", "presentation"]
     },
     {
       "tag": "bootstrap-breadcrumb",
@@ -727,7 +730,7 @@
     },
     {
       "tag": "career-org-item",
-      "title": "Career Item",
+      "title": "Career organization",
       "description": "",
       "package": "@haxtheweb/career-timeline",
       "import": "@haxtheweb/career-timeline/lib/career-org-item.js",
@@ -737,7 +740,7 @@
     },
     {
       "tag": "career-role-item",
-      "title": "Career Role",
+      "title": "Career role",
       "description": "",
       "package": "@haxtheweb/career-timeline",
       "import": "@haxtheweb/career-timeline/lib/career-role-item.js",
@@ -829,26 +832,6 @@
       "tags": []
     },
     {
-      "tag": "cms-block",
-      "title": "CMS Block",
-      "description": "",
-      "package": "@haxtheweb/cms-hax",
-      "import": "@haxtheweb/cms-hax/lib/cms-block.js",
-      "type": "element",
-      "haxCapable": true,
-      "tags": []
-    },
-    {
-      "tag": "cms-entity",
-      "title": "CMS Entity",
-      "description": "",
-      "package": "@haxtheweb/cms-hax",
-      "import": "@haxtheweb/cms-hax/lib/cms-entity.js",
-      "type": "element",
-      "haxCapable": true,
-      "tags": []
-    },
-    {
       "tag": "cms-hax",
       "title": "",
       "description": "",
@@ -856,26 +839,6 @@
       "import": "@haxtheweb/cms-hax/cms-hax.js",
       "type": "element",
       "haxCapable": false,
-      "tags": []
-    },
-    {
-      "tag": "cms-token",
-      "title": "CMS Token",
-      "description": "Render and process a shortcode / token from a content management system.",
-      "package": "@haxtheweb/cms-hax",
-      "import": "@haxtheweb/cms-hax/lib/cms-token.js",
-      "type": "element",
-      "haxCapable": true,
-      "tags": []
-    },
-    {
-      "tag": "cms-views",
-      "title": "CMS View",
-      "description": "",
-      "package": "@haxtheweb/cms-hax",
-      "import": "@haxtheweb/cms-hax/lib/cms-views.js",
-      "type": "element",
-      "haxCapable": true,
       "tags": []
     },
     {
@@ -969,7 +932,7 @@
       "import": "@haxtheweb/micro-game-base/lib/concept-map-game.js",
       "type": "element",
       "haxCapable": true,
-      "tags": ["Other", "Interactive", "Game"]
+      "tags": ["Instructional", "interactive", "game"]
     },
     {
       "tag": "concept-quest-game",
@@ -979,7 +942,7 @@
       "import": "@haxtheweb/micro-game-base/lib/concept-quest-game.js",
       "type": "element",
       "haxCapable": true,
-      "tags": ["Other", "Interactive", "Game"]
+      "tags": ["Instructional", "interactive", "game"]
     },
     {
       "tag": "concept-runner-game",
@@ -989,7 +952,7 @@
       "import": "@haxtheweb/micro-game-base/lib/concept-runner-game.js",
       "type": "element",
       "haxCapable": true,
-      "tags": ["Other", "Interactive", "Game"]
+      "tags": ["Instructional", "interactive", "game"]
     },
     {
       "tag": "count-up",
@@ -1004,12 +967,12 @@
     },
     {
       "tag": "course-design",
-      "title": "Course Design",
+      "title": "",
       "description": "some different elements specific to the design of educational materials. Lots of small elements and a catch all repo",
       "package": "@haxtheweb/course-design",
       "import": "@haxtheweb/course-design/course-design.js",
       "type": "element",
-      "haxCapable": true,
+      "haxCapable": false,
       "tags": [],
       "walkthrough": true
     },
@@ -1061,7 +1024,7 @@
       "import": "@haxtheweb/course-model/course-model.js",
       "type": "element",
       "haxCapable": true,
-      "tags": ["Other", "Course", "Model", "Eberly"],
+      "tags": ["Instructional", "course", "model", "3d"],
       "walkthrough": true
     },
     {
@@ -1097,12 +1060,12 @@
     },
     {
       "tag": "d-d-docs",
-      "title": "Design, Develop, Deliver",
+      "title": "",
       "description": "Webcomponent d-d-docs following hax / open-wc recommendations",
       "package": "@haxtheweb/d-d-docs",
       "import": "@haxtheweb/d-d-docs/d-d-docs.js",
       "type": "element",
-      "haxCapable": true,
+      "haxCapable": false,
       "tags": []
     },
     {
@@ -1123,7 +1086,7 @@
       "import": "@haxtheweb/date-card/date-card.js",
       "type": "element",
       "haxCapable": true,
-      "tags": ["Other", "date", "place", "location", "evenet", "calendar"],
+      "tags": ["Content", "date", "place", "location", "event", "calendar"],
       "walkthrough": true
     },
     {
@@ -1164,12 +1127,12 @@
       "import": "@haxtheweb/d-d-d/lib/ddd-card.js",
       "type": "grid",
       "haxCapable": true,
-      "tags": ["Layout", "content", "card", "Image"]
+      "tags": ["Layout", "content", "card", "image"]
     },
     {
       "tag": "ddd-steps-list",
       "title": "Ddd Steps List",
-      "description": "Numerical steps to complete tasks",
+      "description": "Numbered steps for completing a task.",
       "package": "@haxtheweb/d-d-d",
       "import": "@haxtheweb/d-d-d/lib/ddd-steps-list.js",
       "type": "grid",
@@ -1179,7 +1142,7 @@
     {
       "tag": "ddd-steps-list-item",
       "title": "Ddd Steps List Item",
-      "description": "Item that is part of a steps list",
+      "description": "A single step in a steps list.",
       "package": "@haxtheweb/d-d-d",
       "import": "@haxtheweb/d-d-d/lib/ddd-steps-list-item.js",
       "type": "grid",
@@ -1214,7 +1177,7 @@
       "import": "@haxtheweb/discord-embed/discord-embed.js",
       "type": "element",
       "haxCapable": true,
-      "tags": ["Other", "discord", "embed", "link", "social"],
+      "tags": ["Media", "discord", "embed", "link", "social"],
       "walkthrough": true
     },
     {
@@ -1229,13 +1192,13 @@
     },
     {
       "tag": "disqus-embed",
-      "title": "Disqus Embed",
+      "title": "",
       "description": "Disqus service integration",
       "package": "@haxtheweb/disqus-embed",
       "import": "@haxtheweb/disqus-embed/disqus-embed.js",
       "type": "element",
-      "haxCapable": true,
-      "tags": ["Other", "disqus", "comments", "embed", "social"],
+      "haxCapable": false,
+      "tags": [],
       "walkthrough": true
     },
     {
@@ -1247,12 +1210,12 @@
       "type": "element",
       "haxCapable": true,
       "tags": [
-        "Documentation",
+        "Media",
         "developer",
-        "media",
         "demo",
         "video",
-        "tutorial"
+        "tutorial",
+        "documentation"
       ]
     },
     {
@@ -1267,21 +1230,13 @@
     },
     {
       "tag": "doodle-board",
-      "title": "Doodle Board",
+      "title": "",
       "description": "A drawing on an optional background image. One element covers three uses through mode: - draw: a picture made in HAX, or by visitors when interactive - feedback: marks, highlight zones and comments over a submission (the submission is src, the marks are drawing) - signature: a signature pad The m...",
       "package": "@haxtheweb/doodle-board",
       "import": "@haxtheweb/doodle-board/doodle-board.js",
       "type": "element",
-      "haxCapable": true,
-      "tags": [
-        "Media",
-        "Interactive",
-        "drawing",
-        "annotation",
-        "feedback",
-        "signature",
-        "canvas"
-      ]
+      "haxCapable": false,
+      "tags": []
     },
     {
       "tag": "doodle-board-canvas",
@@ -1343,9 +1298,9 @@
       "haxCapable": true,
       "tags": [
         "Media",
-        "Data",
-        "Interactive",
-        "Visualization",
+        "data",
+        "interactive",
+        "visualization",
         "ecosystem",
         "graph",
         "tour"
@@ -1360,7 +1315,7 @@
       "type": "grid",
       "haxCapable": true,
       "tags": [
-        "Instructional",
+        "Content",
         "presentation",
         "table",
         "data",
@@ -1425,7 +1380,7 @@
     {
       "tag": "elmsln-loading",
       "title": "",
-      "description": "A spinner to tell the user that something is loading. This is just the spinner though and doesn't provide any text or anything else.",
+      "description": "A spinner to tell the user that something is loading. This is just the spinner though and doesn't provide any text or anything else. - elmsln - an open source NGDLE to save education",
       "package": "@haxtheweb/elmsln-loading",
       "import": "@haxtheweb/elmsln-loading/elmsln-loading.js",
       "type": "element",
@@ -1457,18 +1412,18 @@
     },
     {
       "tag": "example-hax-element",
-      "title": "Example Hax Element",
+      "title": "example-hax-element",
       "description": "Example starter element used to demonstrate HAX configuration and editable properties.",
       "package": "@haxtheweb/example-hax-element",
       "import": "@haxtheweb/example-hax-element/example-hax-element.js",
       "type": "element",
-      "haxCapable": true,
+      "haxCapable": false,
       "tags": ["Other"]
     },
     {
       "tag": "example-haxcms-theme",
       "title": "example-haxcms-theme",
-      "description": "ExampleHaxcmsTheme ExampleHaxcmsTheme based on HAXCMS theming ecosystem This theme is an example of extending an existing theme component",
+      "description": "ExampleHaxcmsTheme ExampleHaxcmsTheme based on HAXCMS theming ecosystem This theme is an example of extending an existing theme component - HAXcms - A headless content management system - HAXCMSLitElementTheme - A class that provides correct baseline wiring to build a new theme that HAX can use -...",
       "package": "@haxtheweb/example-haxcms-theme",
       "import": "@haxtheweb/example-haxcms-theme/example-haxcms-theme.js",
       "type": "element",
@@ -1504,7 +1459,14 @@
       "import": "@haxtheweb/fill-in-the-blanks/fill-in-the-blanks.js",
       "type": "grid",
       "haxCapable": true,
-      "tags": ["Instructional", "question"],
+      "tags": [
+        "Instructional",
+        "question",
+        "quiz",
+        "cloze",
+        "assessment",
+        "self check"
+      ],
       "walkthrough": true
     },
     {
@@ -1569,7 +1531,7 @@
       "import": "@haxtheweb/full-width-image/full-width-image.js",
       "type": "element",
       "haxCapable": true,
-      "tags": ["Layout", "image", "layout", "section", "heading"],
+      "tags": ["Layout", "image", "section", "heading"],
       "walkthrough": true
     },
     {
@@ -1616,7 +1578,7 @@
     },
     {
       "tag": "github-preview",
-      "title": "Github Preview",
+      "title": "GitHub preview",
       "description": "A simple element that displays information about a github repository. A DDD block: GitHub chip, \"GitHub · Repository\" label, \"org / repo\" title and an open-on-GitHub header action; the description in the body (and the README in extended mode); language, stars and forks in the footer. Fluid up to...",
       "package": "@haxtheweb/github-preview",
       "import": "@haxtheweb/github-preview/github-preview.js",
@@ -1628,7 +1590,7 @@
     {
       "tag": "github-rpg-contributors",
       "title": "Github Rpg Contributors",
-      "description": "Rendered as RPG characters using the GitHub API.",
+      "description": "List a repository's contributors as RPG characters.",
       "package": "@haxtheweb/github-preview",
       "import": "@haxtheweb/github-preview/lib/github-rpg-contributors.js",
       "type": "element",
@@ -1717,12 +1679,12 @@
     },
     {
       "tag": "grade-book",
-      "title": "Grade Book",
+      "title": "",
       "description": "A headless gradebook that supports multiple backends with rubrics",
       "package": "@haxtheweb/grade-book",
       "import": "@haxtheweb/grade-book/grade-book.js",
       "type": "element",
-      "haxCapable": true,
+      "haxCapable": false,
       "tags": [],
       "walkthrough": true
     },
@@ -1800,12 +1762,12 @@
     {
       "tag": "h5p-element",
       "title": "H5p Element",
-      "description": "Plays H5P interactive content from an uploaded .h5p file, with no H5P server needed",
+      "description": "h5p wrapper for loading and presenting .h5p files - h5p is it's own eco system, we're just trying to wrap it a bit",
       "package": "@haxtheweb/h5p-element",
       "import": "@haxtheweb/h5p-element/h5p-element.js",
       "type": "element",
       "haxCapable": true,
-      "tags": ["Instructional", "Interactive", "media"],
+      "tags": ["Instructional", "interactive", "media"],
       "walkthrough": true
     },
     {
@@ -1841,7 +1803,7 @@
     {
       "tag": "hax-app-installer",
       "title": "",
-      "description": "4-step HAXcms installation wizard. Steps: Choose language, Verify requirements, Configure system, Start HAXcms.",
+      "description": "4-step HAXcms installation wizard, drawn in HAX UI (the admin layer of DDD): a titlebar, the steps as a rail, one action bar that owns Back and the step's main action, and HAX TV (retro-tv) beside the form, which plays a loading screen from an old system while each request runs and rolls credits...",
       "package": "@haxtheweb/hax-app-installer",
       "import": "@haxtheweb/hax-app-installer/hax-app-installer.js",
       "type": "element",
@@ -1979,6 +1941,16 @@
       "tags": []
     },
     {
+      "tag": "hax-image-crop",
+      "title": "",
+      "description": "Crop an image in the browser (haxtheweb/issues#1149). Shows the image with a crop box (drag it, drag a handle, or use the arrow keys), an aspect choice and X / Y / Width / Height in image pixels. It only edits; the host puts its own buttons in the actions slot and calls toBlob() or download(). Us...",
+      "package": "@haxtheweb/hax-body",
+      "import": "@haxtheweb/hax-body/lib/hax-image-crop.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
       "tag": "hax-logo",
       "title": "HAX word art",
       "description": "logo element for hax, obviously as a hax capable element.",
@@ -2002,7 +1974,7 @@
     {
       "tag": "hax-network-bar",
       "title": "",
-      "description": "The thin strip across the top of every hax.cloud site (hax.cloud, the element portfolio, the live demo, RPG me) that links them as one network and marks the one you are on. Each site keeps its own header under it.",
+      "description": "The thin strip across the top of every hax.cloud site (hax.cloud, the element portfolio, the live demo, RPG me) that links them as one network and marks the one you are on. Each site keeps its own header under it. Merlin sits in the strip too: it opens HAX's command palette with every place in th...",
       "package": "@haxtheweb/hax-network-bar",
       "import": "@haxtheweb/hax-network-bar/hax-network-bar.js",
       "type": "element",
@@ -2751,12 +2723,12 @@
     },
     {
       "tag": "hex-picker",
-      "title": "Hex Picker",
+      "title": "",
       "description": "Choose a color by hex or rgba code",
       "package": "@haxtheweb/hex-picker",
       "import": "@haxtheweb/hex-picker/hex-picker.js",
       "type": "element",
-      "haxCapable": true,
+      "haxCapable": false,
       "tags": [],
       "walkthrough": true
     },
@@ -2773,7 +2745,7 @@
     },
     {
       "tag": "html-block",
-      "title": "Html block",
+      "title": "HTML block",
       "description": "",
       "package": "@haxtheweb/html-block",
       "import": "@haxtheweb/html-block/html-block.js",
@@ -2811,7 +2783,7 @@
       "import": "@haxtheweb/iframe-loader/iframe-loader.js",
       "type": "element",
       "haxCapable": true,
-      "tags": ["Other", "iframe", "embed", "web", "link"],
+      "tags": ["Media", "iframe", "embed", "web", "link"],
       "walkthrough": true
     },
     {
@@ -2824,7 +2796,6 @@
       "haxCapable": true,
       "tags": [
         "Media",
-        "media",
         "comparison",
         "slider",
         "swipe",
@@ -2905,15 +2876,7 @@
       "import": "@haxtheweb/inline-audio/inline-audio.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "Media",
-        "media",
-        "mp3",
-        "sound",
-        "audio",
-        "inline",
-        "enhancement"
-      ],
+      "tags": ["Media", "mp3", "sound", "audio", "inline", "enhancement"],
       "walkthrough": true
     },
     {
@@ -3124,7 +3087,14 @@
       "import": "@haxtheweb/la-tex/la-tex.js",
       "type": "grid",
       "haxCapable": true,
-      "tags": ["Instructional", "math", "mathjax", "mathml", "latex", "mathml"],
+      "tags": [
+        "Instructional",
+        "math",
+        "mathjax",
+        "mathml",
+        "latex",
+        "equation"
+      ],
       "walkthrough": true
     },
     {
@@ -3140,7 +3110,7 @@
     {
       "tag": "lazy-import-discover",
       "title": "",
-      "description": "",
+      "description": "Break peoples' brains on simplifying webcomponent integrations",
       "package": "@haxtheweb/lazy-import-discover",
       "import": "@haxtheweb/lazy-import-discover/lazy-import-discover.js",
       "type": "element",
@@ -3159,7 +3129,7 @@
     },
     {
       "tag": "learning-component",
-      "title": "Learning Component",
+      "title": "Learning component",
       "description": "An element for displaying learning materials.",
       "package": "@haxtheweb/course-design",
       "import": "@haxtheweb/course-design/lib/learning-component.js",
@@ -3246,7 +3216,7 @@
       "import": "@haxtheweb/linkedin-embed/lib/linkedin-embed.js",
       "type": "element",
       "haxCapable": true,
-      "tags": ["Other", "social media", "linkedin", "profile", "card"],
+      "tags": ["Media", "social media", "linkedin", "profile", "card"],
       "walkthrough": true
     },
     {
@@ -3309,7 +3279,7 @@
       "type": "element",
       "haxCapable": true,
       "tags": [
-        "Instructional",
+        "Content",
         "presentation",
         "table",
         "data",
@@ -3356,12 +3326,12 @@
     {
       "tag": "lrndesign-imagemap",
       "title": "Lrndesign Imagemap",
-      "description": "An accessible image map with interactive hotspots.",
+      "description": "creates an accessible image map Learner data: opening a hotspot for the first time sends progressed (one step of exploring the map); opening the last unseen one sends completed. Each statement carries the ids of the hotspots opened so far as its result.response, so the learner profile can hand th...",
       "package": "@haxtheweb/lrndesign-imagemap",
       "import": "@haxtheweb/lrndesign-imagemap/lrndesign-imagemap.js",
       "type": "element",
       "haxCapable": true,
-      "tags": ["Images", "image", "map", "hotspot", "accessibility"],
+      "tags": ["Media", "image", "map", "hotspot", "accessibility", "images"],
       "walkthrough": true
     },
     {
@@ -3402,7 +3372,7 @@
       "import": "@haxtheweb/lrndesign-sidenote/lrndesign-sidenote.js",
       "type": "element",
       "haxCapable": true,
-      "tags": ["Instructional", "Layout", "Content"],
+      "tags": ["Instructional", "layout", "content"],
       "walkthrough": true
     },
     {
@@ -3448,12 +3418,12 @@
     },
     {
       "tag": "lrs-emitter",
-      "title": "Lrs emitter",
+      "title": "",
       "description": "Emit learning statements occuring in your app.",
       "package": "@haxtheweb/lrs-elements",
       "import": "@haxtheweb/lrs-elements/lib/lrs-emitter.js",
       "type": "element",
-      "haxCapable": true,
+      "haxCapable": false,
       "tags": []
     },
     {
@@ -3578,7 +3548,7 @@
     },
     {
       "tag": "media-image",
-      "title": "Enhanced Image",
+      "title": "Enhanced image",
       "description": "A simple image presentaiton with minor documented options",
       "package": "@haxtheweb/media-image",
       "import": "@haxtheweb/media-image/media-image.js",
@@ -3652,7 +3622,7 @@
     },
     {
       "tag": "merit-badge",
-      "title": "Merit Badge",
+      "title": "Merit badge",
       "description": "visual badge to communicate obtaining a skill",
       "package": "@haxtheweb/merit-badge",
       "import": "@haxtheweb/merit-badge/merit-badge.js",
@@ -3679,7 +3649,7 @@
       "import": "@haxtheweb/moar-sarcasm/moar-sarcasm.js",
       "type": "element",
       "haxCapable": true,
-      "tags": ["Other", "troll", "sarcasm", "text", "funny"],
+      "tags": ["Text", "troll", "sarcasm", "funny"],
       "walkthrough": true
     },
     {
@@ -3794,7 +3764,7 @@
     },
     {
       "tag": "oer-schema",
-      "title": "Schema",
+      "title": "OER schema",
       "description": "A LRN element to wrap an oer schema prefix onto materials.",
       "package": "@haxtheweb/oer-schema",
       "import": "@haxtheweb/oer-schema/oer-schema.js",
@@ -3831,14 +3801,7 @@
       "import": "@haxtheweb/page-break/lib/page-anchor.js",
       "type": "element",
       "haxCapable": true,
-      "tags": [
-        "Other",
-        "video-player",
-        "audio-player",
-        "play-list",
-        "site",
-        "taxonomy"
-      ]
+      "tags": ["Other", "anchor", "link", "timestamp", "media", "jump"]
     },
     {
       "tag": "page-break",
@@ -3916,7 +3879,7 @@
     {
       "tag": "page-template",
       "title": "",
-      "description": "Template component for style guide functionality",
+      "description": "Wrapper from the retired theme/style-guide.html system. HAXcms no longer reads it; the tag stays defined so any markup that still has it renders.",
       "package": "@haxtheweb/page-break",
       "import": "@haxtheweb/page-break/lib/page-template.js",
       "type": "element",
@@ -3926,7 +3889,7 @@
     {
       "tag": "paper-input-flagged",
       "title": "",
-      "description": "A LRN element",
+      "description": "A LRN element - flagged - a piece of content with a status message indicating there's an issue with the input by the user. This isn't formal validation but more of feedback or suggestions about what they are entering. The default is feedback for alt metadata, useful for images.",
       "package": "@haxtheweb/paper-input-flagged",
       "import": "@haxtheweb/paper-input-flagged/paper-input-flagged.js",
       "type": "element",
@@ -3985,8 +3948,7 @@
       "type": "grid",
       "haxCapable": true,
       "tags": [
-        "Layout",
-        "content",
+        "Content",
         "presentation",
         "blockquote",
         "quote",
@@ -4024,8 +3986,7 @@
         "grid",
         "player",
         "slideshow",
-        "carousel",
-        "player"
+        "carousel"
       ],
       "walkthrough": true
     },
@@ -4047,7 +4008,7 @@
       "import": "@haxtheweb/polaris-theme/lib/polaris-cta.js",
       "type": "element",
       "haxCapable": true,
-      "tags": ["Action", "Button", "Link", "Polaris"]
+      "tags": ["Layout", "button", "link", "polaris", "action"]
     },
     {
       "tag": "polaris-flex-sidebar",
@@ -4087,7 +4048,7 @@
       "import": "@haxtheweb/polaris-theme/lib/polaris-mark.js",
       "type": "element",
       "haxCapable": true,
-      "tags": ["Brand", "Header", "Logo", "Polaris"]
+      "tags": ["Layout", "header", "logo", "polaris", "brand"]
     },
     {
       "tag": "polaris-story-card",
@@ -4097,7 +4058,7 @@
       "import": "@haxtheweb/polaris-theme/lib/polaris-story-card.js",
       "type": "element",
       "haxCapable": true,
-      "tags": ["Layout", "Card", "Theme", "Polaris"]
+      "tags": ["Layout", "card", "theme", "polaris"]
     },
     {
       "tag": "polaris-theme",
@@ -4117,7 +4078,7 @@
       "import": "@haxtheweb/polaris-theme/lib/polaris-tile.js",
       "type": "element",
       "haxCapable": true,
-      "tags": ["Layout", "Card", "Tile", "Polaris"]
+      "tags": ["Layout", "card", "tile", "polaris"]
     },
     {
       "tag": "portal-launcher",
@@ -4139,8 +4100,8 @@
       "type": "element",
       "haxCapable": true,
       "tags": [
-        "Layout",
-        "Fun",
+        "Other",
+        "fun",
         "extra",
         "postcard",
         "card",
@@ -4198,7 +4159,7 @@
       "import": "@haxtheweb/product-glance/product-glance.js",
       "type": "element",
       "haxCapable": true,
-      "tags": ["Other", "product", "marketing", "overview", "card"],
+      "tags": ["Layout", "product", "marketing", "overview", "card"],
       "walkthrough": true
     },
     {
@@ -4214,8 +4175,8 @@
     },
     {
       "tag": "progress-donut",
-      "title": "Progress Donut",
-      "description": "",
+      "title": "Progress donut",
+      "description": "shows progress in as a rounded shape w/ hollow middle",
       "package": "@haxtheweb/progress-donut",
       "import": "@haxtheweb/progress-donut/progress-donut.js",
       "type": "element",
@@ -4253,7 +4214,7 @@
       "type": "element",
       "haxCapable": true,
       "tags": [
-        "Other",
+        "Media",
         "qr",
         "code",
         "phone",
@@ -4282,7 +4243,7 @@
       "import": "@haxtheweb/radar-chart/radar-chart.js",
       "type": "element",
       "haxCapable": true,
-      "tags": ["Visualization", "Metrics", "Data"],
+      "tags": ["Media", "metrics", "data", "visualization"],
       "walkthrough": true
     },
     {
@@ -4415,6 +4376,146 @@
       "haxCapable": true,
       "tags": [],
       "walkthrough": true
+    },
+    {
+      "tag": "retro-console",
+      "title": "",
+      "description": "The HAX 64: a game deck in a HAX TV kit colorway with a cartridge in the slot. The cartridge has a real cart shape and a colorful label: the game's name over four rpg-character fighters (HAX Blocks by default). Power (with a green lamp) and Reset sit on the front left, the \"HAX 64\" badge on the r...",
+      "package": "@haxtheweb/retro-tv",
+      "import": "@haxtheweb/retro-tv/lib/retro-console.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "retro-controller",
+      "title": "",
+      "description": "An old-school game pad: D-pad, Select, Start, B and A on a dark faceplate, the body in a HAX TV kit colorway and a small \"HAX\" at the top right. Every button is a real button named for what it does; pressing one (or calling press()) lights it for a moment and fires retro-controller-press with det...",
+      "package": "@haxtheweb/retro-tv",
+      "import": "@haxtheweb/retro-tv/lib/retro-controller.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "retro-tv",
+      "title": "",
+      "description": "An old CRT with channels. Each child with a channel attribute is a program; the one whose number matches channel is on air and the rest wait off screen. Programs can be any element: the ones in lib/retro-tv-programs.js (HAX TV, credits, loading screens, the title sequence) or a plain element with...",
+      "package": "@haxtheweb/retro-tv",
+      "import": "@haxtheweb/retro-tv/retro-tv.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "retro-tv-blocks",
+      "title": "",
+      "description": "HAX Blocks, the game on the HAX 64 cartridge. You and three rival rpg-characters race for the HAX blocks (paragraph, image, video, quiz, gallery) floating overhead. Call press(button) with a controller button: arrows move, A (or up) grabs the block above you or bonks a rival next to you, B (or do...",
+      "package": "@haxtheweb/retro-tv",
+      "import": "@haxtheweb/retro-tv/lib/programs/retro-tv-blocks.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "retro-tv-credits",
+      "title": "",
+      "description": "End credits starring the Future Traveler, with a tape label. Pass lines ([{ role, name }]) to write your own credits and tape for the label (for example the install date); otherwise the HAX credits roll.",
+      "package": "@haxtheweb/retro-tv",
+      "import": "@haxtheweb/retro-tv/lib/programs/retro-tv-credits.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "retro-tv-disc",
+      "title": "",
+      "description": "A mid 90s disc console boot that has drifted into a late-night anthology: black and white, a hypnotic spiral turning behind a Future Traveler disc that slowly sinks away, an oscilloscope line drawing across, the picture losing its horizontal hold, a glowing HAX wordmark and a \"please stand by\" ca...",
+      "package": "@haxtheweb/retro-tv",
+      "import": "@haxtheweb/retro-tv/lib/programs/retro-tv-disc.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "retro-tv-handheld",
+      "title": "",
+      "description": "A boot screen in the style of a late 80s green-screen handheld: a pixel HAX wordmark drops in, then a line under it.",
+      "package": "@haxtheweb/retro-tv",
+      "import": "@haxtheweb/retro-tv/lib/programs/retro-tv-handheld.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "retro-tv-hax-tv",
+      "title": "",
+      "description": "HAX TV: Future Traveler stickers (art from haxtheweb/art) bounce around the screen like an old screensaver. With reduced motion, or when the program is not on air, they sit still.",
+      "package": "@haxtheweb/retro-tv",
+      "import": "@haxtheweb/retro-tv/lib/programs/retro-tv-hax-tv.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "retro-tv-home-computer",
+      "title": "",
+      "description": "A loading screen in the style of an early 80s home computer: a BASIC prompt types itself out and, while loading, the border runs loading stripes. what is the name on the LOAD line.",
+      "package": "@haxtheweb/retro-tv",
+      "import": "@haxtheweb/retro-tv/lib/programs/retro-tv-home-computer.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "retro-tv-pc",
+      "title": "",
+      "description": "A DOS-style prompt from the early 90s. While loading, a block progress bar fills under message; command is what was typed at the prompt.",
+      "package": "@haxtheweb/retro-tv",
+      "import": "@haxtheweb/retro-tv/lib/programs/retro-tv-pc.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "retro-tv-sign-on",
+      "title": "",
+      "description": "Channel 1: the station sign-on card. Color bars, the Future Traveler in the station circle, \"HAX TV\" and the line under it (ten years to lift off, by default). A soft sweep runs down the bars unless motion is off.",
+      "package": "@haxtheweb/retro-tv",
+      "import": "@haxtheweb/retro-tv/lib/programs/retro-tv-sign-on.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "retro-tv-static",
+      "title": "",
+      "description": "No tape: grey static with a cast of rpg-characters tumbling through it and a little RGB glitch. The static moves at a constant average brightness, so it never flashes. The cast loads the first time the program goes on air. cast is a list of rpg-character seeds.",
+      "package": "@haxtheweb/retro-tv",
+      "import": "@haxtheweb/retro-tv/lib/programs/retro-tv-static.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "retro-tv-title-sequence",
+      "title": "",
+      "description": "An 80s style title sequence: a synthwave sunset, a chrome title rolling up and a Play cue. Every word comes in through attributes, so the host passes translated text. vhs-blog-theme shows it on channel 3.",
+      "package": "@haxtheweb/retro-tv",
+      "import": "@haxtheweb/retro-tv/lib/programs/retro-tv-title-sequence.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "retro-vcr",
+      "title": "",
+      "description": "HAXVISION, a dark top-loading VCR with silver piano keys, a green display and a stripe in its HAX TV kit colorway. phase drives a tape load: idle (the clock blinks) -> lift (lid up) -> open (cassette over the slot) -> insert (it drops in) -> press (lid down, PLAY goes down) -> playing. rew and ff...",
+      "package": "@haxtheweb/retro-tv",
+      "import": "@haxtheweb/retro-tv/lib/retro-vcr.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
     },
     {
       "tag": "rich-text-editor",
@@ -4660,13 +4761,13 @@
     },
     {
       "tag": "screen-recorder",
-      "title": "Screen Recorder",
+      "title": "",
       "description": "A webcomponent that allows users to record their screen and download the recording",
       "package": "@haxtheweb/screen-recorder",
       "import": "@haxtheweb/screen-recorder/screen-recorder.js",
       "type": "element",
-      "haxCapable": true,
-      "tags": ["Media", "screen", "recording", "video", "capture"],
+      "haxCapable": false,
+      "tags": [],
       "walkthrough": true
     },
     {
@@ -4683,7 +4784,7 @@
     {
       "tag": "self-check",
       "title": "Self Check",
-      "description": "Users can complete a self-check.",
+      "description": "A question with a hidden answer the learner reveals to check themselves.",
       "package": "@haxtheweb/self-check",
       "import": "@haxtheweb/self-check/self-check.js",
       "type": "element",
@@ -4746,7 +4847,7 @@
       "import": "@haxtheweb/sheet-music/sheet-music.js",
       "type": "element",
       "haxCapable": true,
-      "tags": ["Media", "Music", "Instructional"],
+      "tags": ["Media", "music", "instructional"],
       "walkthrough": true
     },
     {
@@ -5433,7 +5534,7 @@
       "import": "@haxtheweb/simple-fields/lib/simple-tags.js",
       "type": "element",
       "haxCapable": true,
-      "tags": ["Other", "content", "tag", "list"]
+      "tags": ["Content", "tag", "list"]
     },
     {
       "tag": "simple-toast",
@@ -5610,7 +5711,7 @@
     },
     {
       "tag": "site-children-block",
-      "title": "HAXcms: child block",
+      "title": "Child pages",
       "description": "Child pages of whatever is active",
       "package": "@haxtheweb/haxcms-elements",
       "import": "@haxtheweb/haxcms-elements/lib/ui-components/blocks/site-children-block.js",
@@ -5620,7 +5721,7 @@
     },
     {
       "tag": "site-citation",
-      "title": "Citation",
+      "title": "Cite this page",
       "description": "Generate a copyable APA, MLA, Chicago or BibTeX citation for the current page or whole site from site.json data Fields used (anything missing is left out of the citation, never invented): page / site title, author, license, created / updated dates and the site domain. See lib/site-citation-format...",
       "package": "@haxtheweb/haxcms-elements",
       "import": "@haxtheweb/haxcms-elements/lib/ui-components/site/site-citation.js",
@@ -5800,7 +5901,7 @@
     },
     {
       "tag": "site-random-content",
-      "title": "Random Page Content",
+      "title": "Random page content",
       "description": "Display random content from pages within the HAXcms site",
       "package": "@haxtheweb/haxcms-elements",
       "import": "@haxtheweb/haxcms-elements/lib/ui-components/site/site-random-content.js",
@@ -5840,7 +5941,7 @@
     },
     {
       "tag": "site-remote-content",
-      "title": "Remote Content",
+      "title": "Remote content",
       "description": "Remote render of content given a site URL and UUID",
       "package": "@haxtheweb/haxcms-elements",
       "import": "@haxtheweb/haxcms-elements/lib/ui-components/site/site-remote-content.js",
@@ -5909,16 +6010,6 @@
       "tags": []
     },
     {
-      "tag": "site-theme-style-guide-route",
-      "title": "",
-      "description": "Route for editing theme style guide content via HAX editor",
-      "package": "@haxtheweb/haxcms-elements",
-      "import": "@haxtheweb/haxcms-elements/lib/ui-components/routes/site-theme-style-guide-route.js",
-      "type": "element",
-      "haxCapable": false,
-      "tags": []
-    },
-    {
       "tag": "site-title",
       "title": "",
       "description": "Title of the site",
@@ -5940,7 +6031,7 @@
     },
     {
       "tag": "site-uuid-link",
-      "title": "HAX link",
+      "title": "Page link",
       "description": "UUID to render an accurate link and title in the site",
       "package": "@haxtheweb/haxcms-elements",
       "import": "@haxtheweb/haxcms-elements/lib/ui-components/site/site-uuid-link.js",
@@ -6041,7 +6132,7 @@
     },
     {
       "tag": "star-rating",
-      "title": "Star Rating",
+      "title": "Star rating",
       "description": "Rating display widget or button to do rating",
       "package": "@haxtheweb/star-rating",
       "import": "@haxtheweb/star-rating/star-rating.js",
@@ -6069,6 +6160,23 @@
         "note"
       ],
       "walkthrough": true
+    },
+    {
+      "tag": "stop-note-group",
+      "title": "Stop Note Group",
+      "description": "Stacks several stop-notes into one block that shows a note at a time, with previous and next buttons and a count laid over the note's header (\"Did you know? ← 2 / 5 →\"). Made for Tips and What's new, but any statuses can be mixed. The notes stay ordinary light DOM children: the group never change...",
+      "package": "@haxtheweb/stop-note",
+      "import": "@haxtheweb/stop-note/lib/stop-note-group.js",
+      "type": "grid",
+      "haxCapable": true,
+      "tags": [
+        "Instructional",
+        "content",
+        "layout",
+        "note",
+        "tip",
+        "what's new"
+      ]
     },
     {
       "tag": "super-daemon",
@@ -6104,7 +6212,7 @@
     {
       "tag": "super-daemon-toast",
       "title": "",
-      "description": "Merlin's voice card in the HAX UI admin style: the World Traveler mark, a state pill (Listening, Speaking, Santa mode), the message, a hint of what can be said, and a way to stop. Sits bottom left, apart from the haxcms-toast that drops from the top bar. Same API as before: the super-daemon-toast...",
+      "description": "Merlin's voice card in the HAX UI admin style: the Future Traveler mark, a state pill (Listening, Speaking, Santa mode), the message, a hint of what can be said, and a way to stop. Sits bottom left, apart from the haxcms-toast that drops from the top bar. Same API as before: the super-daemon-toas...",
       "package": "@haxtheweb/super-daemon",
       "import": "@haxtheweb/super-daemon/lib/super-daemon-toast.js",
       "type": "element",
@@ -6251,7 +6359,7 @@
       "import": "@haxtheweb/twitter-embed/twitter-embed.js",
       "type": "element",
       "haxCapable": true,
-      "tags": ["Other", "social media", "twitter", "embed", "tweet"],
+      "tags": ["Media", "social media", "twitter", "embed", "tweet"],
       "walkthrough": true
     },
     {
@@ -6266,7 +6374,7 @@
     },
     {
       "tag": "type-writer",
-      "title": "Type writer",
+      "title": "Typewriter",
       "description": "typewritter effect based off of https://github.com/PolymerEl/type-writer",
       "package": "@haxtheweb/type-writer",
       "import": "@haxtheweb/type-writer/type-writer.js",
@@ -6283,7 +6391,7 @@
       "import": "@haxtheweb/un-sdg/un-sdg.js",
       "type": "element",
       "haxCapable": true,
-      "tags": ["Other", "sustainable"],
+      "tags": ["Content", "sdg", "united nations", "sustainable", "goal"],
       "walkthrough": true
     },
     {
@@ -6304,26 +6412,18 @@
       "import": "@haxtheweb/unity-webgl/unity-webgl.js",
       "type": "element",
       "haxCapable": true,
-      "tags": ["3D", "game", "unity", "media"],
+      "tags": ["Media", "game", "unity", "3d"],
       "walkthrough": true
     },
     {
       "tag": "user-action",
-      "title": "User Action",
-      "description": "Track user actions and send data to xAPI stores.",
+      "title": "",
+      "description": "",
       "package": "@haxtheweb/user-action",
       "import": "@haxtheweb/user-action/user-action.js",
       "type": "element",
-      "haxCapable": true,
-      "tags": [
-        "Other",
-        "developer",
-        "dev",
-        "xapi",
-        "analytics",
-        "user",
-        "track"
-      ],
+      "haxCapable": false,
+      "tags": [],
       "walkthrough": true
     },
     {
@@ -6332,6 +6432,16 @@
       "description": "memory and context to establish and maintain appropriate user scaffolding Learner profile: long-term memory holds ONE profile for the person using this browser (readProfile()), shaped as { v, preferences: { darkMode, soundStatus, audioDescription: {<src>: bool} }, session: { firstVisit, lastVisit...",
       "package": "@haxtheweb/user-scaffold",
       "import": "@haxtheweb/user-scaffold/user-scaffold.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "uswds-theme",
+      "title": "",
+      "description": "A HAXcms theme in the U.S. Web Design System layout (basic header, side navigation, slim footer), built on the USWDS DDD bridge: every HAX block reads --ddd-* tokens, which point at the USWDS palette while it is active. An independent integration: it carries no official government banner, seal or...",
+      "package": "@haxtheweb/uswds-theme",
+      "import": "@haxtheweb/uswds-theme/uswds-theme.js",
       "type": "element",
       "haxCapable": false,
       "tags": []
@@ -6346,6 +6456,26 @@
       "haxCapable": true,
       "tags": ["Content", "contacts", "vcard", "vcf", "directory", "people"],
       "walkthrough": true
+    },
+    {
+      "tag": "vhs-blog-back",
+      "title": "",
+      "description": "The back of a generated video case: distributor and catalog number, a real QR code that opens the post, the title, the post's description as the blurb, and the running time. Same hash as the cover and spine, so it is always the back of that box. Unlike the cover it is real text, so a screen reade...",
+      "package": "@haxtheweb/vhs-blog-theme",
+      "import": "@haxtheweb/vhs-blog-theme/lib/vhs-blog-back.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "vhs-blog-console",
+      "title": "",
+      "description": "A walnut console TV cabinet: the \"vcr\" slot sits on top of the cabinet, the default slot is the screen, with a control panel and drawers around it, and an open cubby between the drawers for the \"game\" slot (the HAX 64 and its controller). The panel has the HAX TV family's controls: the channel di...",
+      "package": "@haxtheweb/vhs-blog-theme",
+      "import": "@haxtheweb/vhs-blog-theme/lib/vhs-blog-console.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
     },
     {
       "tag": "vhs-blog-cover",
@@ -6370,7 +6500,7 @@
     {
       "tag": "vhs-blog-theme",
       "title": "",
-      "description": "A dark, bargain-bin video shelf for blogs and vlogs. Every post is a one-of-a-kind video case generated from a hash of its title; posts with child pages become box sets. Opening a post powers on an old CRT that rolls an 80s title sequence before the page content. - case: the generated spine + cov...",
+      "description": "A dark, bargain-bin video shelf for blogs and vlogs. Every post is a one-of-a-kind video case generated from a hash of its title; posts with child pages become box sets. Picking a tape drops it into a top-loading VCR on a console TV, which rolls an 80s title sequence while the post loads below. -...",
       "package": "@haxtheweb/vhs-blog-theme",
       "import": "@haxtheweb/vhs-blog-theme/vhs-blog-theme.js",
       "type": "element",
@@ -6380,7 +6510,7 @@
     {
       "tag": "vhs-blog-tv",
       "title": "",
-      "description": "An old CRT that powers on and rolls an 80s style title sequence for the active post. All motion is CSS and only runs when the visitor has not asked for reduced motion; otherwise (and after skip()) the final frame shows with no motion. The screen is one image to assistive tech, named by the post t...",
+      "description": "The VHS Blog's television, built on retro-tv like every TV in HAX: channel 3 rolls the 80s title sequence for the active post, channel 4 is static with a cast of rpg-characters tumbling through it, and channel 2 is HAX Blocks, the game on the HAX 64 cartridge. The rest of the ten are the HAX TV l...",
       "package": "@haxtheweb/vhs-blog-theme",
       "import": "@haxtheweb/vhs-blog-theme/lib/vhs-blog-tv.js",
       "type": "element",
@@ -6469,8 +6599,8 @@
       "type": "element",
       "haxCapable": true,
       "tags": [
-        "Other",
-        "Developer",
+        "Content",
+        "developer",
         "baseline",
         "web platform",
         "browser support",
@@ -6518,7 +6648,7 @@
       "type": "element",
       "haxCapable": true,
       "tags": [
-        "Other",
+        "Content",
         "creative commons",
         "wikipedia",
         "search",
@@ -6542,7 +6672,7 @@
     },
     {
       "tag": "worksheet-download",
-      "title": "Worksheet Download",
+      "title": "Worksheet download",
       "description": "",
       "package": "@haxtheweb/course-design",
       "import": "@haxtheweb/course-design/lib/worksheet-download.js",

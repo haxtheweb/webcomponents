@@ -372,12 +372,12 @@ class GithubPreview extends I18NMixin(
 
       canEditSource: true,
       gizmo: {
-        title: "Github Preview",
+        title: "GitHub preview",
         description:
           "Preview a GitHub repository: description, language, stars and forks.",
         icon: "mdi-social:github-circle",
         color: "grey",
-        tags: ["Other", "git", "code", "github", "repo", "organization"],
+        tags: ["Content", "git", "code", "github", "repo", "organization"],
         handles: [
           {
             type: "github",

@@ -6,7 +6,7 @@
   "license": "Apache-2.0",
   "title": "Bibliography builder",
   "description": "A tool for creating and managing bibliographies",
-  "icon": "icons:android",
+  "icon": "icons:list",
   "tags": [
     "Content",
     "portfolio",
@@ -73,7 +73,7 @@
     "gizmo": {
       "title": "Bibliography builder",
       "description": "A tool for creating and managing bibliographies",
-      "icon": "icons:android",
+      "icon": "icons:list",
       "color": "purple",
       "tags": [
         "Content",
@@ -94,7 +94,9 @@
           "title": "Citations",
           "description": "Citation items in this bibliography",
           "inputMethod": "code-editor"
-        },
+        }
+      ],
+      "developer": [
         {
           "property": "forCourse",
           "title": "Course",

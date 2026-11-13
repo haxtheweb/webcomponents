@@ -4,11 +4,15 @@
   "package": "@haxtheweb/author-card",
   "version": "26.8.0",
   "license": "Apache-2.0",
-  "title": "Author Card",
+  "title": "Author card",
   "description": "Display author information with photo, bio, and social links.",
   "icon": "social:person",
   "tags": [
-    "Other"
+    "Content",
+    "author",
+    "bio",
+    "profile",
+    "person"
   ],
   "haxCapable": true,
   "import": "@haxtheweb/author-card/author-card.js",
@@ -140,12 +144,16 @@
       "designTreatment": false
     },
     "gizmo": {
-      "title": "Author Card",
+      "title": "Author card",
       "description": "Display author information with photo, bio, and social links.",
       "icon": "social:person",
       "color": "blue",
       "tags": [
-        "Other"
+        "Content",
+        "author",
+        "bio",
+        "profile",
+        "person"
       ],
       "handles": [
         {

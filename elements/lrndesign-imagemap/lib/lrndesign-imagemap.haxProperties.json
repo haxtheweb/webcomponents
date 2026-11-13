@@ -11,9 +11,9 @@
   "gizmo": {
     "title": "Image map",
     "description": "An accessible image map with interactive hotspots.",
-    "icon": "image:image",
+    "icon": "maps:place",
     "color": "blue",
-    "tags": ["Images", "image", "map", "hotspot", "accessibility"],
+    "tags": ["Media", "image", "map", "hotspot", "accessibility", "images"],
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team"
@@ -21,6 +21,13 @@
   },
   "settings": {
     "configure": [
+      {
+        "property": "src",
+        "title": "Image",
+        "description": "SVG image the hotspots point to.",
+        "inputMethod": "haxupload"
+      },
+
       {
         "property": "label",
         "title": "Label",

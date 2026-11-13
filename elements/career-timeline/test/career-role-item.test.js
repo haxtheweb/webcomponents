@@ -187,7 +187,7 @@ describe("CareerRoleItem test", () => {
     const props = CareerRoleItem.haxProperties;
     expect(props.designSystem).to.be.false;
     expect(props.canEditSource).to.be.true;
-    expect(props.gizmo.title).to.equal("Career Role");
+    expect(props.gizmo.title).to.equal("Career role");
     expect(props.settings.configure[0].property).to.equal("title");
     expect(props.settings.configure[1].inputMethod).to.equal("datepicker");
     expect(props.settings.configure[3].property).to.equal("skills");

@@ -80,15 +80,14 @@ class MdBlock extends DDD {
       canEditSource: true,
       gizmo: {
         title: "Markdown",
-        description: "A block of markdown content directly or remote loaded",
-        icon: "icons:code",
+        description: "Markdown content, written inline or loaded from a file.",
+        icon: "hax:markdown",
         color: "yellow",
         tags: [
-          "Other",
+          "Text",
           "md",
           "markdown",
           "content",
-          "text",
           "code",
           "codeblock",
           "code-block",
@@ -106,7 +105,8 @@ class MdBlock extends DDD {
           {
             property: "markdown",
             title: "Markdown",
-            description: "Markdown text to show on the page as formatted content.",
+            description:
+              "Markdown text to show on the page as formatted content.",
             inputMethod: "textarea",
           },
           {
@@ -124,7 +124,8 @@ class MdBlock extends DDD {
         {
           tag: "md-block",
           properties: {
-            markdown: "- The first bulleted item in a long list..",
+            markdown:
+              "## Heading\n\n- First item\n- Second item\n\nSome **bold** text.",
           },
           content: "",
         },

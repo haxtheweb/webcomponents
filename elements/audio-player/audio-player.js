@@ -54,11 +54,10 @@ class AudioPlayer extends VideoPlayer {
       canEditSource: true,
       gizmo: {
         title: "Audio",
-        description:
-          "This can present video in a highly accessible manner regardless of source.",
-        icon: "av:music-video",
+        description: "Accessible audio player with transcript support.",
+        icon: "av:equalizer",
         color: "green",
-        tags: ["Media", "Media", "listen", "mp3"],
+        tags: ["Media", "audio", "listen", "mp3", "podcast", "sound"],
         handles: [
           {
             type: "audio",
@@ -137,6 +136,18 @@ class AudioPlayer extends VideoPlayer {
             description: "Select the accent color for the player.",
             inputMethod: "colorpicker",
           },
+          {
+            property: "hideTimestamps",
+            title: "Hide timestamps",
+            description: "Hide the time stamps on the transcript.",
+            inputMethod: "boolean",
+          },
+          {
+            property: "hideTranscript",
+            title: "Hide Transcript",
+            description: "Hide transcript by default.",
+            inputMethod: "boolean",
+          },
         ],
         developer: [
           {
@@ -168,18 +179,6 @@ class AudioPlayer extends VideoPlayer {
             title: "Disable Interactive",
             description:
               "Disable interactive mode that makes transcript clickable.",
-            inputMethod: "boolean",
-          },
-          {
-            property: "hideTimestamps",
-            title: "Hide timestamps",
-            description: "Hide the time stamps on the transcript.",
-            inputMethod: "boolean",
-          },
-          {
-            property: "hideTranscript",
-            title: "Hide Transcript",
-            description: "Hide transcript by default.",
             inputMethod: "boolean",
           },
           {

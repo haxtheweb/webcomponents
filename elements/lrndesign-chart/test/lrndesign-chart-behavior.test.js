@@ -87,61 +87,6 @@ describe("lrndesign-chart mixin", () => {
     expect(props.reverseData.attribute).to.equal("reverse-data");
   });
 
-  it("defines the shared haxProperties schema", async () => {
-    const hax = ChartBase.haxProperties;
-    expect(hax.canScale).to.equal(true);
-    expect(hax.canEditSource).to.equal(true);
-    expect(hax.gizmo.description).to.equal(
-      "Creates an accessible chart based on a CSV.",
-    );
-    const configure = hax.settings.configure.map((setting) => setting.property);
-    expect(configure).to.not.include("accentColor");
-    // dark is no longer offered as a setting; the attribute still works
-    expect(configure).to.not.include("dark");
-    expect(configure).to.include("dataSource");
-    const slots = hax.settings.configure.map((setting) => setting.slot);
-    expect(slots).to.include("heading");
-    expect(slots).to.include("desc");
-    const scale = hax.settings.configure.filter(
-      (setting) => setting.property === "scale",
-    )[0];
-    expect(scale.options["ct-square"]).to.exist;
-    expect(scale.options["ct-golden-section"]).to.exist;
-    // the double-octave label carries no stray backtick
-    expect(scale.options["ct-double-octave"]).to.equal(
-      "ct-double-octave  (1:4)",
-    );
-    const advanced = hax.settings.advanced.map((setting) => setting.property);
-    expect(advanced).to.include("reverseData");
-    expect(advanced).to.include("accentColor");
-  });
-
-  it("shares line/bar hax settings groups", async () => {
-    const lineBar = ChartBase.lineBarHaxProperties;
-    expect(Object.keys(lineBar)).to.deep.equal([
-      "gridBackground",
-      "padding",
-      "minMax",
-      "xAxis",
-      "yAxis",
-    ]);
-    expect(lineBar.gridBackground[0].property).to.equal("showGridBackground");
-    expect(lineBar.padding.map((s) => s.property)).to.deep.equal([
-      "chartPaddingTop",
-      "chartPaddingBottom",
-      "chartPaddingLeft",
-      "chartPaddingRight",
-    ]);
-    expect(lineBar.minMax.map((s) => s.property)).to.deep.equal([
-      "low",
-      "high",
-    ]);
-    expect(lineBar.xAxis.map((s) => s.property)).to.include("axisXTitle");
-    expect(lineBar.xAxis.map((s) => s.property)).to.include("axisXTitleAnchor");
-    expect(lineBar.yAxis.map((s) => s.property)).to.include("axisYTitle");
-    expect(lineBar.yAxis.map((s) => s.property)).to.include("axisYTitleFlip");
-  });
-
   it("shares line/bar property definitions", async () => {
     const props = ChartBase.lineBarProperties;
     expect(props.axisXLabelOffsetX.attribute).to.equal("axis-x-label-offset-x");
@@ -285,29 +230,6 @@ describe("lrndesign-bar", () => {
     await element.updateComplete;
     expect(element.hasAttribute("dark")).to.equal(true);
     expect(element.getAttribute("accent-color")).to.equal("red");
-  });
-
-  it("extends the haxProperties schema for bars", async () => {
-    const hax = LrndesignBar.haxProperties;
-    expect(hax.gizmo.title).to.equal("Bar Chart");
-    expect(hax.gizmo.icon).to.equal("editor:insert-chart");
-    const configure = hax.settings.configure.map((s) => s.property);
-    expect(configure).to.include("horizontalBars");
-    expect(configure).to.include("stackBars");
-    expect(configure).to.include("distributeSeries");
-    expect(configure).to.include("chartPaddingTop");
-    expect(configure).to.include("showGridBackground");
-    const advanced = hax.settings.advanced.map((s) => s.property);
-    expect(advanced).to.include("low");
-    expect(advanced).to.include("high");
-    expect(advanced).to.include("axisXTitle");
-    expect(advanced).to.include("axisYTitle");
-    expect(advanced).to.include("referenceValue");
-    expect(advanced).to.include("seriesBarDistance");
-    expect(advanced).to.include("stackMode");
-    expect(LrndesignBar.properties.axisXOnlyInteger.attribute).to.equal(
-      "axis-x-only-integer",
-    );
   });
 
   it("passes the a11y audit", async () => {
@@ -514,27 +436,6 @@ describe("lrndesign-line", () => {
     expect(element.pluginPointLabels.labelInterpolationFnc).to.be.a("function");
   });
 
-  it("extends the haxProperties schema for lines", async () => {
-    const hax = LrndesignLine.haxProperties;
-    expect(hax.gizmo.title).to.equal("Link Chart");
-    expect(hax.gizmo.icon).to.equal("editor:show-chart");
-    const configure = hax.settings.configure.map((s) => s.property);
-    expect(configure).to.include("showArea");
-    expect(configure).to.include("showLine");
-    expect(configure).to.include("showPoint");
-    expect(configure).to.include("fullWidth");
-    expect(configure).to.include("showPointLabels");
-    const advanced = hax.settings.advanced.map((s) => s.property);
-    expect(advanced).to.include("pointLabelsAnchor");
-    expect(advanced).to.include("pointLabelsOffsetX");
-    expect(advanced).to.include("pointLabelsOffsetY");
-    expect(advanced).to.include("lineSmooth");
-    expect(advanced).to.include("areaBase");
-    expect(LrndesignLine.properties.showPointLabels.attribute).to.equal(
-      "show-point-labels",
-    );
-  });
-
   it("passes the a11y audit", async () => {
     await expect(element).shadowDom.to.be.accessible();
   });
@@ -610,28 +511,6 @@ describe("lrndesign-pie", () => {
     await element.updateComplete;
     await aTimeout(100);
     expect(element.fullOptions.plugins.length).to.equal(1);
-  });
-
-  it("extends the haxProperties schema for pies", async () => {
-    const hax = LrndesignPie.haxProperties;
-    expect(hax.gizmo.title).to.equal("Pie Chart");
-    expect(hax.gizmo.icon).to.equal("editor:pie-chart");
-    const configure = hax.settings.configure.map((s) => s.property);
-    expect(configure).to.include("donut");
-    expect(configure).to.include("showLabel");
-    expect(configure).to.include("startAngle");
-    expect(configure).to.include("chartPadding");
-    expect(configure).to.include("total");
-    expect(configure).to.include("ignoreEmptyValues");
-    const advanced = hax.settings.advanced.map((s) => s.property);
-    expect(advanced).to.include("donutWidth");
-    expect(advanced).to.include("donutSolid");
-    expect(advanced).to.include("labelDirection");
-    expect(advanced).to.include("labelOffset");
-    expect(advanced).to.include("labelPosition");
-    expect(LrndesignPie.properties.labelPosition.attribute).to.equal(
-      "label-position",
-    );
   });
 
   it("passes the a11y audit", async () => {

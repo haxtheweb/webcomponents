@@ -606,13 +606,14 @@ export class BibliographyItem extends SchemaBehaviors(
         title: "Bibliography item",
         description:
           "Item representing a single citation in a bibliography, supporting multiple formats and export options.",
-        icon: "icons:android",
+        icon: "icons:bookmark-border",
         color: "purple",
         tags: ["Content", "portfolio", "citation", "reference", "bibliography"],
         handles: [],
         meta: {
           author: "HAXTheWeb core team",
         },
+        requiresParent: "bibliography-builder",
       },
       settings: {
         configure: [

@@ -7,7 +7,7 @@
     "icon": "hax:qr-code",
     "color": "grey",
     "tags": [
-      "Other",
+      "Media",
       "qr",
       "code",
       "phone",
@@ -54,6 +54,20 @@
         "description": "Alternate title linked to the QR code source.",
         "inputMethod": "alt",
         "icon": "editor:title"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "format",
+        "title": "Output format",
+        "description": "Format to put it out.",
+        "inputMethod": "select",
+        "options": {
+          "png": "PNG",
+          "html": "HTML",
+          "svg": "SVG"
+        },
+        "icon": "editor:bubble-chart"
       },
       {
         "property": "modulesize",
@@ -69,26 +83,17 @@
         "inputMethod": "number",
         "icon": "icons:settings-overscan"
       }
-    ],
-    "advanced": [
-      {
-        "property": "format",
-        "title": "Output format",
-        "description": "Format to put it out.",
-        "inputMethod": "select",
-        "options": {
-          "png": "PNG",
-          "html": "HTML",
-          "svg": "SVG"
-        },
-        "icon": "editor:bubble-chart"
-      }
     ]
   },
   "demoSchema": [
     {
       "tag": "q-r",
-      "properties": {},
+      "properties": {
+        "data": "https://haxtheweb.org/",
+        "title": "QR code linking to haxtheweb.org",
+        "modulesize": 4,
+        "margin": 2
+      },
       "content": ""
     }
   ]

@@ -4,7 +4,7 @@
   "package": "@haxtheweb/image-gallery",
   "version": "26.8.0",
   "license": "Apache-2.0",
-  "title": "Image Gallery",
+  "title": "Image gallery",
   "description": "A gallery that presents images in grid, masonry, or slideshow layouts.",
   "icon": "image:photo-library",
   "tags": [
@@ -83,7 +83,7 @@
       "designTreatment": false
     },
     "gizmo": {
-      "title": "Image Gallery",
+      "title": "Image gallery",
       "description": "A gallery that presents images in grid, masonry, or slideshow layouts.",
       "icon": "image:photo-library",
       "color": "indigo",
@@ -132,7 +132,8 @@
           "allowedSlotWrappers": [
             "media-image",
             "img"
-          ]
+          ],
+          "inputMethod": "code-editor"
         }
       ]
     },
@@ -157,7 +158,7 @@
       }
     ]
   },
-  "surfaceHash": "aabaf2cf59c7",
+  "surfaceHash": "6e27f5f170bd",
   "walkthroughs": [
     {
       "id": "",
@@ -165,13 +166,13 @@
       "order": 0,
       "src": "image-gallery.motion.json",
       "file": "lib/image-gallery.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/image-gallery.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

@@ -44,7 +44,8 @@ describe("html-block behaviors", () => {
     const props = HtmlBlock.haxProperties;
     expect(props.canScale).to.equal(true);
     expect(props.canEditSource).to.equal(true);
-    expect(props.gizmo.title).to.equal("Html block");
+    expect(props.gizmo.title).to.equal("HTML block");
+    expect(props.gizmo.meta.hidden).to.equal(true);
     expect(props.gizmo.icon).to.equal("hax:html-code");
     expect(props.gizmo.handles).to.deep.equal([
       { type: "html", content: "slot" },

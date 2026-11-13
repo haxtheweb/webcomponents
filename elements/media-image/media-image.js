@@ -475,13 +475,12 @@ class MediaImage extends SchemaBehaviors(DDD) {
       canScale: true,
       canEditSource: true,
       gizmo: {
-        title: "Enhanced Image",
+        title: "Enhanced image",
         description: "A way of presenting images with various enhancements.",
         icon: "editor:insert-photo",
         color: "indigo",
         tags: [
           "Media",
-          "media",
           "core",
           "figure",
           "image",
@@ -574,20 +573,6 @@ class MediaImage extends SchemaBehaviors(DDD) {
             inputMethod: "textfield",
             required: false,
           },
-          {
-            property: "figureLabelTitle",
-            title: "Figure Title",
-            description: "Title for the figure label.",
-            inputMethod: "textfield",
-            required: false,
-          },
-          {
-            property: "figureLabelDescription",
-            title: "Figure Description",
-            description: "Description for the figure label.",
-            inputMethod: "textfield",
-            required: false,
-          },
         ],
         advanced: [
           {
@@ -617,6 +602,20 @@ class MediaImage extends SchemaBehaviors(DDD) {
             inputMethod: "boolean",
             required: false,
           },
+          {
+            property: "figureLabelTitle",
+            title: "Figure Title",
+            description: "Title for the figure label.",
+            inputMethod: "textfield",
+            required: false,
+          },
+          {
+            property: "figureLabelDescription",
+            title: "Figure Description",
+            description: "Description for the figure label.",
+            inputMethod: "textfield",
+            required: false,
+          },
         ],
         developer: [
           {
@@ -635,6 +634,7 @@ class MediaImage extends SchemaBehaviors(DDD) {
             source: "https://dummyimage.com/300x200/000/fff",
             card: true,
             citation: "This is my citation.",
+            alt: "Black placeholder image, 300 by 200",
           },
         },
       ],

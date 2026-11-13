@@ -6,8 +6,8 @@
     "primary": true
   },
   "gizmo": {
-    "title": "Self Check",
-    "description": "Users can complete a self-check.",
+    "title": "Self check",
+    "description": "A question with a hidden answer the learner reveals to check themselves.",
     "icon": "icons:check-circle",
     "color": "orange",
     "tags": [
@@ -64,6 +64,14 @@
         "slot": "",
         "title": "Answer",
         "inputMethod": "textarea"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "More link",
+        "description": "Link to additional information.",
+        "inputMethod": "haxupload"
       },
       {
         "property": "hasLearningObjective",
@@ -75,14 +83,6 @@
         "property": "assessing",
         "title": "Assessing",
         "description": "Activity reference emitted as oer:assessing.",
-        "inputMethod": "textfield"
-      }
-    ],
-    "advanced": [
-      {
-        "property": "link",
-        "title": "More link",
-        "description": "Link to additional information.",
         "inputMethod": "textfield"
       }
     ]

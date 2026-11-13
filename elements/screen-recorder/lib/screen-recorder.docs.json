@@ -4,21 +4,15 @@
   "package": "@haxtheweb/screen-recorder",
   "version": "26.8.0",
   "license": "Apache-2.0",
-  "title": "Screen recorder",
-  "description": "Record your screen, with optional system and microphone audio, and download the video.",
-  "icon": "av:fiber-smart-record",
-  "tags": [
-    "Media",
-    "screen",
-    "recording",
-    "video",
-    "capture"
-  ],
-  "haxCapable": true,
+  "title": "screen-recorder",
+  "description": "Webcomponent screen-recorder following hax / open-wc recommendations",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
   "import": "@haxtheweb/screen-recorder/screen-recorder.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/screen-recorder/screen-recorder.js",
   "install": "npm i @haxtheweb/screen-recorder",
-  "demoHtml": "<screen-recorder></screen-recorder>",
+  "demoHtml": "",
   "attributes": [
     {
       "name": "recording",
@@ -75,52 +69,8 @@
   "events": [
     "screen-recorder-blob"
   ],
-  "hax": {
-    "api": "1",
-    "canScale": false,
-    "canEditSource": true,
-    "type": "element",
-    "designSystem": {
-      "accent": true,
-      "primary": true,
-      "card": true,
-      "text": true,
-      "designTreatment": false
-    },
-    "gizmo": {
-      "title": "Screen recorder",
-      "description": "Record your screen, with optional system and microphone audio, and download the video.",
-      "icon": "av:fiber-smart-record",
-      "color": "red",
-      "tags": [
-        "Media",
-        "screen",
-        "recording",
-        "video",
-        "capture"
-      ],
-      "handles": [],
-      "meta": {
-        "author": "haxtheweb"
-      }
-    },
-    "settings": {
-      "configure": [],
-      "advanced": []
-    },
-    "saveOptions": {
-      "wipeSlot": false,
-      "unsetAttributes": []
-    },
-    "demoSchema": [
-      {
-        "tag": "screen-recorder",
-        "properties": {},
-        "content": ""
-      }
-    ]
-  },
-  "surfaceHash": "6f9d81de2621",
+  "hax": {},
+  "surfaceHash": "e1020505c975",
   "walkthroughs": [
     {
       "id": "",
@@ -128,13 +78,13 @@
       "order": 0,
       "src": "screen-recorder.motion.json",
       "file": "lib/screen-recorder.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/screen-recorder.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

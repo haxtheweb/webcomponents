@@ -4,9 +4,9 @@
   "package": "@haxtheweb/sorting-question",
   "version": "26.8.0",
   "license": "Apache-2.0",
-  "title": "Sorting Question",
+  "title": "Sorting question",
   "description": "Sort items into the correct order.",
-  "icon": "credit-card",
+  "icon": "icons:swap-vert",
   "tags": [
     "Instructional",
     "self check",
@@ -47,9 +47,9 @@
     "canEditSource": true,
     "type": "grid",
     "gizmo": {
-      "title": "Sorting Question",
+      "title": "Sorting question",
       "description": "Sort items into the correct order.",
-      "icon": "credit-card",
+      "icon": "icons:swap-vert",
       "color": "blue",
       "tags": [
         "Instructional",
@@ -66,24 +66,6 @@
           "property": "question",
           "title": "Question",
           "description": "Question Header.",
-          "inputMethod": "textfield"
-        },
-        {
-          "property": "gradingFormat",
-          "title": "Grading format",
-          "description": "OER Schema: grading format for this assessment (e.g. points, letter, percent, completion).",
-          "inputMethod": "textfield"
-        },
-        {
-          "property": "hasLearningObjective",
-          "title": "Learning objective",
-          "description": "OER Schema: learning objective associated with this assessment.",
-          "inputMethod": "textfield"
-        },
-        {
-          "property": "forCourse",
-          "title": "Course",
-          "description": "OER Schema: course this assessment is intended for.",
           "inputMethod": "textfield"
         },
         {
@@ -131,6 +113,18 @@
           "title": "Start collapsed",
           "description": "When collapsible, start as a closed row that shows only the question and its status.",
           "inputMethod": "boolean"
+        },
+        {
+          "property": "gradingFormat",
+          "title": "Grading format",
+          "description": "OER Schema: grading format for this assessment (e.g. points, letter, percent, completion).",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "hasLearningObjective",
+          "title": "Learning objective",
+          "description": "OER Schema: learning objective associated with this assessment.",
+          "inputMethod": "textfield"
         }
       ],
       "developer": [
@@ -138,6 +132,12 @@
           "property": "quizName",
           "title": "Name of the quiz",
           "description": "Quiz name used for xAPI identification in analytics systems.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "forCourse",
+          "title": "Course",
+          "description": "OER Schema: course this assessment is intended for.",
           "inputMethod": "textfield"
         }
       ]
@@ -168,7 +168,7 @@
       }
     ]
   },
-  "surfaceHash": "2d6fab24f74f",
+  "surfaceHash": "c25fe0e06f2c",
   "walkthroughs": [
     {
       "id": "",
@@ -176,13 +176,13 @@
       "order": 0,
       "src": "sorting-question.motion.json",
       "file": "lib/sorting-question.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/sorting-question.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

@@ -266,15 +266,16 @@ export class CareerOrgItem extends I18NMixin(DDDSuper(LitElement)) {
       contentEditable: false,
       hideDefaultSettings: true,
       gizmo: {
-        title: "Career Item",
+        title: "Career organization",
         description: "An individual organization and its affiliated roles",
-        icon: "chrome-reader-mode",
+        icon: "communication:business",
         color: "light-blue",
-        tags: ["Content", "list", "step"],
+        tags: ["Content", "career", "organization", "employer", "resume"],
         handles: [],
         meta: {
           author: "HAXTheWeb core team",
         },
+        requiresParent: "career-timeline",
       },
       settings: {
         configure: [
@@ -300,8 +301,12 @@ export class CareerOrgItem extends I18NMixin(DDDSuper(LitElement)) {
       demoSchema: [
         {
           tag: "career-org-item",
-          properties: {},
-          content: "",
+          properties: {
+            organization: "Organization name",
+            location: "City, State",
+          },
+          content:
+            '<career-role-item title="Role title" start-date="2024-08-01"><p>What you did in this role.</p></career-role-item>',
         },
       ],
     };

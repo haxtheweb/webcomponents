@@ -4845,7 +4845,7 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
       gizmo: {
         title: "My learning",
         description:
-          "Dashboard of what the visitor has done on this page, section, branch or site: tiles, a chart, pages and recent activity, from the learner profile on their device",
+          "Dashboard of what the visitor has done on this page, section or site.",
         icon: "social:school",
         color: "blue",
         tags: [

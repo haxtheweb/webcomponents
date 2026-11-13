@@ -332,12 +332,12 @@ export class SiteCitation extends HAXCMSI18NMixin(DDD) {
       canEditSource: false,
       contentEditable: false,
       gizmo: {
-        title: "Citation",
+        title: "Cite this page",
         description:
           "Copyable APA, MLA, Chicago or BibTeX citation for this page or the whole site, built from site information",
         icon: "editor:format-quote",
         color: "blue",
-        tags: ["Other", "citation", "reference", "apa", "mla"],
+        tags: ["Site", "citation", "reference", "apa", "mla"],
         handles: [],
         meta: { author: "HAXcms" },
       },

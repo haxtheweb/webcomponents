@@ -6,11 +6,10 @@
   "license": "Apache-2.0",
   "title": "Image section",
   "description": "Full-width image that breaks up a page section.",
-  "icon": "image:image",
+  "icon": "image:panorama",
   "tags": [
     "Layout",
     "image",
-    "layout",
     "section",
     "heading"
   ],
@@ -63,12 +62,11 @@
     "gizmo": {
       "title": "Image section",
       "description": "Full-width image that breaks up a page section.",
-      "icon": "image:image",
+      "icon": "image:panorama",
       "color": "green",
       "tags": [
         "Layout",
         "image",
-        "layout",
         "section",
         "heading"
       ],

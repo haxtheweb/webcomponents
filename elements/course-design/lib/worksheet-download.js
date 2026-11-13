@@ -26,7 +26,7 @@ export class WorksheetDownload extends I18NMixin(LitElement) {
 
       canEditSource: false,
       gizmo: {
-        title: "Worksheet Download",
+        title: "Worksheet download",
         description: "A button for displaying files available for download.",
         icon: "icons:file-download",
         color: "blue",

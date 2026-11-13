@@ -10,9 +10,9 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "Write using the math notation LaTeX",
-    "icon": "hax:pi",
+    "icon": "editor:functions",
     "color": "grey",
-    "tags": ["Instructional", "math", "mathjax", "mathml", "latex", "mathml"],
+    "tags": ["Instructional", "math", "mathjax", "mathml", "latex", "equation"],
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team"

@@ -170,10 +170,11 @@ class ParallaxImage extends SchemaBehaviors(LitElement) {
       canEditSource: true,
       gizmo: {
         title: "Parallax image",
-        description: "Image scroll by",
-        icon: "av:play-circle-filled",
+        description:
+          "A full-width image that scrolls slower than the page, with a heading over it.",
+        icon: "image:landscape",
         color: "grey",
-        tags: ["Media", "style"],
+        tags: ["Media", "image", "parallax", "scroll", "banner"],
         handles: [
           {
             type: "image",
@@ -208,8 +209,10 @@ class ParallaxImage extends SchemaBehaviors(LitElement) {
       demoSchema: [
         {
           tag: "parallax-image",
-          properties: {},
-          content: "",
+          properties: {
+            imageBg: "https://placehold.co/1600x900",
+          },
+          content: '<span slot="parallax_heading">Section heading</span>',
         },
       ],
     };

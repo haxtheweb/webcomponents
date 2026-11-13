@@ -11,11 +11,11 @@
     "designTreatment": false
   },
   "gizmo": {
-    "title": "Author Card",
+    "title": "Author card",
     "description": "Display author information with photo, bio, and social links.",
     "icon": "social:person",
     "color": "blue",
-    "tags": ["Other"],
+    "tags": ["Content", "author", "bio", "profile", "person"],
     "handles": [
       {
         "type": "image",

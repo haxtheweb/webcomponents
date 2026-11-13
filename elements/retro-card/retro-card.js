@@ -265,7 +265,7 @@ class RetroCard extends SimpleColors {
         description: "Simple card with a retro design.",
         icon: "icons:credit-card",
         color: "purple",
-        tags: ["Layout", "card", "layout"],
+        tags: ["Layout", "card"],
         handles: [],
         meta: {
           author: "HAXTheWeb core team",
@@ -284,7 +284,7 @@ class RetroCard extends SimpleColors {
           {
             property: "url",
             description: "URL to open when the card is clicked.",
-            inputMethod: "textfield",
+            inputMethod: "haxupload",
             required: false,
             validationType: "url",
           },

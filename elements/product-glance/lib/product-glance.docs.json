@@ -8,7 +8,7 @@
   "description": "Quick product overview block.",
   "icon": "communication:business",
   "tags": [
-    "Other",
+    "Layout",
     "product",
     "marketing",
     "overview",
@@ -71,7 +71,7 @@
       "icon": "communication:business",
       "color": "blue",
       "tags": [
-        "Other",
+        "Layout",
         "product",
         "marketing",
         "overview",

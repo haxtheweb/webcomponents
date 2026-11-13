@@ -471,8 +471,6 @@ class VideoPlayer extends IntersectionObserverMixin(
             noScreenRecord: true,
             validationType: "url",
           },
-        ],
-        advanced: [
           {
             property: "tracks",
             title: "Text tracks",
@@ -522,6 +520,8 @@ class VideoPlayer extends IntersectionObserverMixin(
               },
             ],
           },
+        ],
+        advanced: [
           {
             property: "startTime",
             title: "Start time",
@@ -576,6 +576,12 @@ class VideoPlayer extends IntersectionObserverMixin(
             noScreenRecord: true,
             validationType: "url",
           },
+          {
+            property: "accentColor",
+            title: "Accent color",
+            description: "(deprecated) Select the accent color for the player.",
+            inputMethod: "colorpicker",
+          },
         ],
         developer: [
           {
@@ -614,12 +620,6 @@ class VideoPlayer extends IntersectionObserverMixin(
             description: "Language of the media.",
             inputMethod: "textfield",
             validationType: "text",
-          },
-          {
-            property: "accentColor",
-            title: "Accent color",
-            description: "(deprecated) Select the accent color for the player.",
-            inputMethod: "colorpicker",
           },
         ],
       },

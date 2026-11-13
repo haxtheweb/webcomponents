@@ -493,9 +493,10 @@ describe("aframe-player test", () => {
     it("should have proper HAX gizmo configuration", () => {
       expect(haxProps.gizmo.title).to.equal("3D player");
       expect(haxProps.gizmo.description).to.contain("3D file");
-      expect(haxProps.gizmo.icon).to.equal("av:play-circle-filled");
-      expect(haxProps.gizmo.tags).to.include("3D");
-      expect(haxProps.gizmo.tags).to.include("AR");
+      expect(haxProps.gizmo.icon).to.equal("hax:vr");
+      expect(haxProps.gizmo.tags[0]).to.equal("Media");
+      expect(haxProps.gizmo.tags).to.include("3d");
+      expect(haxProps.gizmo.tags).to.include("ar");
       expect(haxProps.gizmo.tags).to.include("aframe");
     });
 
@@ -508,14 +509,16 @@ describe("aframe-player test", () => {
       expect(sourceProp.required).to.be.true;
       expect(sourceProp.inputMethod).to.equal("textfield");
 
-      // Verify coordinate properties are required
-      const xProp = configItems.find((item) => item.property === "x");
-      const yProp = configItems.find((item) => item.property === "y");
-      const zProp = configItems.find((item) => item.property === "z");
+      // Coordinates are required number fields under Advanced
+      const advancedItems = haxProps.settings.advanced;
+      const xProp = advancedItems.find((item) => item.property === "x");
+      const yProp = advancedItems.find((item) => item.property === "y");
+      const zProp = advancedItems.find((item) => item.property === "z");
 
       expect(xProp.required).to.be.true;
       expect(yProp.required).to.be.true;
       expect(zProp.required).to.be.true;
+      expect(xProp.inputMethod).to.equal("number");
 
       // Verify skyColor has colorpicker input method
       const skyColorProp = configItems.find(

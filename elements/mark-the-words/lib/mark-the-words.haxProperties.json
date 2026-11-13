@@ -13,7 +13,7 @@
   "gizmo": {
     "title": "Mark the words",
     "description": "Identify concepts via words by clicking within a body of text.",
-    "icon": "icons:receipt",
+    "icon": "editor:border-color",
     "color": "yellow",
     "tags": [
       "Instructional",
@@ -41,24 +41,7 @@
         "description": "Statement that will be converted into the mark the words interaction.",
         "inputMethod": "textarea"
       },
-      {
-        "property": "gradingFormat",
-        "title": "Grading format",
-        "description": "OER Schema: grading format for this assessment (e.g. points, letter, percent, completion).",
-        "inputMethod": "textfield"
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Learning objective",
-        "description": "OER Schema: learning objective associated with this assessment.",
-        "inputMethod": "textfield"
-      },
-      {
-        "property": "forCourse",
-        "title": "Course",
-        "description": "OER Schema: course this assessment is intended for.",
-        "inputMethod": "textfield"
-      },
+
       {
         "property": "answers",
         "title": "Answers",
@@ -107,6 +90,18 @@
         "title": "Start collapsed",
         "description": "When collapsible, start as a closed row that shows only the question and its status.",
         "inputMethod": "boolean"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Grading format",
+        "description": "OER Schema: grading format for this assessment (e.g. points, letter, percent, completion).",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Learning objective",
+        "description": "OER Schema: learning objective associated with this assessment.",
+        "inputMethod": "textfield"
       }
     ],
     "developer": [
@@ -114,6 +109,12 @@
         "property": "quizName",
         "title": "Name of the quiz",
         "description": "Quiz name passed in for use in xAPI driven environments for identification of this item",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "forCourse",
+        "title": "Course",
+        "description": "OER Schema: course this assessment is intended for.",
         "inputMethod": "textfield"
       }
     ]

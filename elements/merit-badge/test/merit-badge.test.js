@@ -248,8 +248,8 @@ describe("merit-badge element", () => {
   it("exposes haxProperties with badge settings", () => {
     const props = MeritBadge.haxProperties;
     expect(props.canScale).to.be.true;
-    expect(props.gizmo.title).to.equal("Merit Badge");
-    expect(props.gizmo.icon).to.equal("icons:verified");
+    expect(props.gizmo.title).to.equal("Merit badge");
+    expect(props.gizmo.icon).to.equal("icons:card-membership");
     expect(props.settings.configure.length).to.equal(6);
     expect(props.settings.configure[5].property).to.equal("skill");
     expect(props.settings.configure[5].inputMethod).to.equal("textfield");

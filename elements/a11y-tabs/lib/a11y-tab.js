@@ -122,9 +122,10 @@ class A11yTab extends I18NMixin(LitElement) {
       gizmo: {
         title: "Tab",
         description: "A single tab.",
-        icon: "view-day",
+        icon: "icons:tab",
         color: "grey",
-        tags: ["Layout", "a11y", "presentation", "tab", "layout", "tabs"],
+        tags: ["Layout", "a11y", "presentation", "tab", "tabs"],
+        requiresParent: "a11y-tabs",
       },
       settings: {
         configure: [
@@ -132,11 +133,6 @@ class A11yTab extends I18NMixin(LitElement) {
             property: "icon",
             title: "Tab Icon",
             inputMethod: "iconpicker",
-          },
-          {
-            property: "disabled",
-            title: "Disabled",
-            inputMethod: "boolean",
           },
           {
             property: "label",
@@ -152,11 +148,6 @@ class A11yTab extends I18NMixin(LitElement) {
         ],
         advanced: [
           {
-            property: "id",
-            title: "Unique ID",
-            inputMethod: "textfield",
-          },
-          {
             property: "flag",
             title: "Optional Flag Text",
             inputMethod: "textfield",
@@ -166,13 +157,27 @@ class A11yTab extends I18NMixin(LitElement) {
             title: "Optional Flag Icon",
             inputMethod: "iconpicker",
           },
+          {
+            property: "disabled",
+            title: "Disabled",
+            inputMethod: "boolean",
+          },
+        ],
+        developer: [
+          {
+            property: "id",
+            title: "Unique ID",
+            inputMethod: "textfield",
+          },
         ],
       },
       demoSchema: [
         {
           tag: "a11y-tab",
-          properties: {},
-          content: "",
+          properties: {
+            label: "New tab",
+          },
+          content: "<p>Tab content goes here.</p>",
         },
       ],
     };

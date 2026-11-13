@@ -213,7 +213,7 @@ class A11yFigure extends A11yDetails {
       canEditSource: true,
       type: "grid",
       gizmo: {
-        title: "Descriptive Figure",
+        title: "Descriptive figure",
         description: "Accessible figure with long description",
         icon: "hax:figure",
         color: "grey",
@@ -304,13 +304,13 @@ class A11yFigure extends A11yDetails {
             // attempts an external request
             imgSrc:
               "data:image/svg+xml,%3Csvg%20xmlns='http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20width%3D'500'%20height%3D'300'%3E%3Crect%20width%3D'500'%20height%3D'300'%20fill%3D'%23dddddd'%2F%3E%3C%2Fsvg%3E",
-            imgAlt: "",
+            imgAlt: "Grey placeholder image",
             openText: "Show Description",
             closeText: "Hide Description",
             style: "max-width:400px",
           },
           content:
-            '<h4 slot="figcaption">Random</h4>\n<div slot="summary">Image Description</div>\n<div slot="details">Aenean eget nisl volutpat, molestie purus eget, bibendum metus. Pellentesque magna velit, tincidunt quis pharetra id, gravida placerat erat. Maecenas id dui pretium risus pulvinar feugiat vel nec leo. Praesent non congue tellus. Suspendisse ac tincidunt purus. Donec eu dui a metus vehicula bibendum sed nec tortor. Nunc convallis justo sed nibh consectetur, at pharetra nulla accumsan.</div>',
+            '<h4 slot="figcaption">Figure caption</h4>\n<div slot="summary">Image description</div>\n<div slot="details">Describe what the image shows for readers who cannot see it. Readers open this only if they need it.</div>',
         },
       ],
     };

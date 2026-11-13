@@ -123,6 +123,7 @@ class FigureLabel extends DDD {
         meta: {
           author: "HAXTheWeb core team",
           owner: "PSU",
+          hidden: true,
         },
       },
       settings: {

@@ -7,7 +7,7 @@
   "gizmo": {
     "title": "Flash card",
     "description": "Practice concepts with front-and-back flash cards.",
-    "icon": "av:call-to-action",
+    "icon": "icons:flip-to-front",
     "color": "blue",
     "tags": ["Instructional", "self check", "flash card", "quiz", "educational"]
   },
@@ -31,6 +31,14 @@
         "description": "Image file used for the card. Overrides Image Keyword.",
         "inputMethod": "haxupload",
         "noVoiceRecord": true
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Image Keyword",
+        "description": "Random image keyword. Overridden by Image Source.",
+        "inputMethod": "textfield"
       },
       {
         "property": "typeOfAction",
@@ -44,25 +52,13 @@
         "description": "OER Schema: ID or URL of the learning objective this practice supports.",
         "inputMethod": "textfield"
       }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Image Keyword",
-        "description": "Random image keyword. Overridden by Image Source.",
-        "inputMethod": "textfield"
-      }
     ]
   },
   "demoSchema": [
     {
       "tag": "flash-card",
-      "properties": {
-        "speak": true,
-        "img-source": "https://hips.hearstapps.com/clv.h-cdn.co/assets/15/22/1432664914-strawberry-facts1.jpg",
-        "listen": true
-      },
-      "content": "<p slot='front'>What is strawberry in Spanish</p><p slot='back'>fresa</p>"
+      "properties": {},
+      "content": "<p slot=\"front\">What is strawberry in Spanish?</p><p slot=\"back\">fresa</p>"
     }
   ]
 }

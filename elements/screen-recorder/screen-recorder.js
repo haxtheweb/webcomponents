@@ -423,35 +423,6 @@ export class ScreenRecorder extends DDDSuper(I18NMixin(LitElement)) {
       this.audioStream.getTracks().forEach((track) => track.stop());
     }
   }
-
-  /**
-   * @see haxHooks: gizmoRegistration
-   * Register haxProperties locales so the HAX editor UI can be translated
-   */
-  haxHooks() {
-    return {
-      gizmoRegistration: "haxgizmoRegistration",
-    };
-  }
-
-  haxgizmoRegistration(_store) {
-    globalThis.dispatchEvent(
-      new CustomEvent("i18n-manager-register-element", {
-        detail: {
-          namespace: `screen-recorder.haxProperties`,
-          localesPath: new URL(`./locales`, import.meta.url).href,
-        },
-      }),
-    );
-  }
-
-  /**
-   * haxProperties integration via file reference
-   */
-  static get haxProperties() {
-    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
-      .href;
-  }
 }
 
 globalThis.customElements.define(ScreenRecorder.tag, ScreenRecorder);

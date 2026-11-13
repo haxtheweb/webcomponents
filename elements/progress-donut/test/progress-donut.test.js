@@ -125,9 +125,10 @@ describe("progress-donut data model", () => {
 
   it("registers haxProperties for the HAX editor", () => {
     const hax = customElements.get("progress-donut").haxProperties;
-    expect(hax.gizmo.title).to.equal("Progress Donut");
-    expect(hax.gizmo.icon).to.equal("av:play-circle-filled");
-    expect(hax.settings.configure).to.have.lengthOf(8);
+    expect(hax.gizmo.title).to.equal("Progress donut");
+    expect(hax.gizmo.icon).to.equal("device:data-usage");
+    expect(hax.settings.configure).to.have.lengthOf(6);
+    expect(hax.settings.advanced).to.have.lengthOf(2);
     const totalSetting = hax.settings.configure.find(
       (setting) => setting.property === "total",
     );

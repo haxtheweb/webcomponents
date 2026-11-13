@@ -2,11 +2,11 @@
   "canScale": false,
   "canEditSource": true,
   "gizmo": {
-    "title": "Date",
+    "title": "Date card",
     "description": "Display a calendar date with details.",
     "icon": "hax:calendar",
     "color": "green",
-    "tags": ["Other", "date", "place", "location", "evenet", "calendar"],
+    "tags": ["Content", "date", "place", "location", "event", "calendar"],
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team"

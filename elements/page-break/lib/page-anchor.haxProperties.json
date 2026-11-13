@@ -6,18 +6,11 @@
   "canEditSource": true,
   "api": "1",
   "gizmo": {
-    "title": "Page Anchor",
+    "title": "Page anchor",
     "description": "Link to specific points in media on the page.",
     "icon": "hax:anchor",
     "color": "grey",
-    "tags": [
-      "Other",
-      "video-player",
-      "audio-player",
-      "play-list",
-      "site",
-      "taxonomy"
-    ],
+    "tags": ["Other", "anchor", "link", "timestamp", "media", "jump"],
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team",

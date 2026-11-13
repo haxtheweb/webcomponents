@@ -48,11 +48,11 @@ class ProgressDonut extends LrndesignPie {
 
       canEditSource: true,
       gizmo: {
-        title: "Progress Donut",
-        description: "Progression donut",
-        icon: "av:play-circle-filled",
+        title: "Progress donut",
+        description: "A donut chart showing progress toward a total.",
+        icon: "device:data-usage",
         color: "grey",
-        tags: ["Other", "Data"],
+        tags: ["Media", "progress", "chart", "donut", "data"],
         handles: [],
         meta: {
           author: "HAXTheWeb core team",
@@ -91,12 +91,6 @@ class ProgressDonut extends LrndesignPie {
             inputMethod: "alt",
           },
           {
-            property: "animated",
-            title: "Animated",
-            description: "Whether progress animates on first load",
-            inputMethod: "boolean",
-          },
-          {
             property: "complete",
             title: "Complete",
             description: "An array of completed values.",
@@ -108,6 +102,14 @@ class ProgressDonut extends LrndesignPie {
             description: "Total when all items are complete.",
             inputMethod: "number",
           },
+        ],
+        advanced: [
+          {
+            property: "animated",
+            title: "Animated",
+            description: "Whether progress animates on first load",
+            inputMethod: "boolean",
+          },
           {
             property: "startAngle",
             title: "Start Angle",
@@ -115,12 +117,17 @@ class ProgressDonut extends LrndesignPie {
             inputMethod: "number",
           },
         ],
-        advanced: [],
       },
       demoSchema: [
         {
           tag: "progress-donut",
-          properties: {},
+          properties: {
+            title: "Your progress",
+            desc: "You have completed 30 of 50 points: 10 from readings, 8 from quizzes and 12 from projects.",
+            complete: [10, 8, 12],
+            total: 50,
+            animated: true,
+          },
           content: "",
         },
       ],

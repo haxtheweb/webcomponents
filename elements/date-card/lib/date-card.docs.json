@@ -4,15 +4,15 @@
   "package": "@haxtheweb/date-card",
   "version": "26.8.0",
   "license": "Apache-2.0",
-  "title": "Date",
+  "title": "Date card",
   "description": "Display a calendar date with details.",
   "icon": "hax:calendar",
   "tags": [
-    "Other",
+    "Content",
     "date",
     "place",
     "location",
-    "evenet",
+    "event",
     "calendar"
   ],
   "haxCapable": true,
@@ -120,16 +120,16 @@
     "canScale": false,
     "canEditSource": true,
     "gizmo": {
-      "title": "Date",
+      "title": "Date card",
       "description": "Display a calendar date with details.",
       "icon": "hax:calendar",
       "color": "green",
       "tags": [
-        "Other",
+        "Content",
         "date",
         "place",
         "location",
-        "evenet",
+        "event",
         "calendar"
       ],
       "handles": [],

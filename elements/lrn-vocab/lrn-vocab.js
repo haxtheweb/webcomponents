@@ -230,6 +230,7 @@ class LrnVocab extends SchemaBehaviors(I18NMixin(LitElement)) {
         meta: {
           author: "HAXTheWeb core team",
           inlineOnly: true,
+          hidden: true,
         },
       },
       settings: {

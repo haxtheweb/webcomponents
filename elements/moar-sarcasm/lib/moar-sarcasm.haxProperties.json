@@ -8,10 +8,10 @@
   "contentEditable": true,
   "gizmo": {
     "title": "Sarcasm",
-    "description": "Presenting text in a trolly way",
+    "description": "Text in alternating caps for a sarcastic tone.",
     "icon": "hax:case-sensitive-alt",
     "color": "purple",
-    "tags": ["Other", "troll", "sarcasm", "text", "funny"],
+    "tags": ["Text", "troll", "sarcasm", "funny"],
     "handles": [
       {
         "type": "text",

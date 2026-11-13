@@ -267,8 +267,8 @@ describe("audio-player test", function () {
     it("should have proper HAX gizmo configuration for audio", () => {
       const haxProps = element.constructor.haxProperties;
       expect(haxProps.gizmo.title).to.equal("Audio");
-      expect(haxProps.gizmo.description).to.contain("accessible");
-      expect(haxProps.gizmo.icon).to.equal("av:music-video");
+      expect(haxProps.gizmo.description).to.contain("Accessible");
+      expect(haxProps.gizmo.icon).to.equal("av:equalizer");
       expect(haxProps.gizmo.color).to.equal("green");
       expect(haxProps.gizmo.tags).to.include("Media");
       expect(haxProps.gizmo.tags).to.include("mp3");

@@ -166,7 +166,7 @@ describe("CareerOrgItem test", () => {
   it("reports inline haxProperties for the editor", async () => {
     const props = CareerOrgItem.haxProperties;
     expect(props.designSystem).to.be.false;
-    expect(props.gizmo.title).to.equal("Career Item");
+    expect(props.gizmo.title).to.equal("Career organization");
     expect(props.settings.configure[0].property).to.equal("organization");
     expect(props.settings.configure[2].property).to.equal("source");
   });

@@ -32,7 +32,8 @@ describe("a11y-tabs statics and helpers", () => {
     expect(props.canScale).to.equal(false);
     expect(props.canEditSource).to.equal(true);
     expect(props.gizmo.title).to.equal("Tab");
-    expect(props.gizmo.icon).to.equal("view-day");
+    expect(props.gizmo.icon).to.equal("icons:tab");
+    expect(props.gizmo.requiresParent).to.equal("a11y-tabs");
     const configure = props.settings.configure;
     expect(configure.some((s) => s.property === "icon")).to.be.true;
     expect(configure.some((s) => s.slot === "")).to.be.true;

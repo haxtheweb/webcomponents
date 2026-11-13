@@ -8,8 +8,7 @@
   "description": "Display an AI Usage License (AIUL) badge for your work",
   "icon": "hardware:memory",
   "tags": [
-    "Other",
-    "content",
+    "Content",
     "ai",
     "license",
     "aiul",
@@ -120,8 +119,7 @@
       "icon": "hardware:memory",
       "color": "grey",
       "tags": [
-        "Other",
-        "content",
+        "Content",
         "ai",
         "license",
         "aiul",

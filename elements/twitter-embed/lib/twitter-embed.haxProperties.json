@@ -4,11 +4,11 @@
   "canEditSource": true,
   "designSystem": false,
   "gizmo": {
-    "title": "Twitter (X) embed",
+    "title": "X (Twitter)",
     "description": "Embed a tweet from X in context.",
     "icon": "hax:twitter",
     "color": "blue",
-    "tags": ["Other", "social media", "twitter", "embed", "tweet"],
+    "tags": ["Media", "social media", "twitter", "embed", "tweet"],
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team"

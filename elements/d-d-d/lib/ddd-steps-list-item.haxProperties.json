@@ -7,15 +7,16 @@
   "hideDefaultSettings": true,
   "gizmo": {
     "title": "Steps item",
-    "description": "Item that is part of a steps list",
-    "icon": "chrome-reader-mode",
+    "description": "A single step in a steps list.",
+    "icon": "editor:format-list-numbered",
     "color": "light-blue",
     "tags": ["Content", "list", "step"],
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team",
       "owner": "The Pennsylvania State University"
-    }
+    },
+    "requiresParent": "ddd-steps-list"
   },
   "settings": {
     "configure": [

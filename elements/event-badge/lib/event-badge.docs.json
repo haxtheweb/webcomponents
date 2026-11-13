@@ -4,9 +4,9 @@
   "package": "@haxtheweb/event-badge",
   "version": "26.8.0",
   "license": "Apache-2.0",
-  "title": "Event Badge",
-  "description": "Event badge component.",
-  "icon": "credit-card",
+  "title": "Event badge",
+  "description": "A conference-style name badge with photo, name and organization.",
+  "icon": "icons:assignment-ind",
   "tags": [
     "Other",
     "event",
@@ -19,7 +19,7 @@
   "import": "@haxtheweb/event-badge/event-badge.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/event-badge/event-badge.js",
   "install": "npm i @haxtheweb/event-badge",
-  "demoHtml": "<event-badge title=\"IST 256\" name=\"BTO PRO\" position=\"EdTechJoker\" organization=\"HaxTheWeb\" image=\"https://cdn.discordapp.com/attachments/898236833853481032/1088241666730754108/unnamed.gif\" tvcolor=\"blue\" accentColor=\"red\" knobcolor=\"purple\" logo=\"https://img.itch.zone/aW1hZ2UvNjUxMS8zMzA5Ni5wbmc=/original/2RYWer.png\" sepia=\"false\" blackwhite=\"false\"></event-badge>",
+  "demoHtml": "<event-badge title=\"HAX Camp\" name=\"Your name\" position=\"Instructor\" organization=\"HAXTheWeb\" image=\"https://placehold.co/300x300\" tvcolor=\"blue\" knobcolor=\"purple\"></event-badge>",
   "attributes": [
     {
       "name": "title",
@@ -148,9 +148,9 @@
     "canScale": false,
     "canEditSource": false,
     "gizmo": {
-      "title": "Event Badge",
-      "description": "Event badge component.",
-      "icon": "credit-card",
+      "title": "Event badge",
+      "description": "A conference-style name badge with photo, name and organization.",
+      "icon": "icons:assignment-ind",
       "color": "blue",
       "tags": [
         "Other",
@@ -245,23 +245,19 @@
       {
         "tag": "event-badge",
         "properties": {
-          "title": "IST 256",
-          "name": "BTO PRO",
-          "position": "EdTechJoker",
-          "organization": "HaxTheWeb",
-          "image": "https://cdn.discordapp.com/attachments/898236833853481032/1088241666730754108/unnamed.gif",
+          "title": "HAX Camp",
+          "name": "Your name",
+          "position": "Instructor",
+          "organization": "HAXTheWeb",
+          "image": "https://placehold.co/300x300",
           "tvcolor": "blue",
-          "accentColor": "red",
-          "knobcolor": "purple",
-          "logo": "https://img.itch.zone/aW1hZ2UvNjUxMS8zMzA5Ni5wbmc=/original/2RYWer.png",
-          "sepia": false,
-          "blackwhite": false
+          "knobcolor": "purple"
         },
         "content": ""
       }
     ]
   },
-  "surfaceHash": "9273cc39efbe",
+  "surfaceHash": "dbc595f2dcce",
   "walkthroughs": [
     {
       "id": "",
@@ -269,13 +265,13 @@
       "order": 0,
       "src": "event-badge.motion.json",
       "file": "lib/event-badge.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/event-badge.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

@@ -3,18 +3,11 @@
 
   "canEditSource": true,
   "gizmo": {
-    "title": "Lesson Overview",
-    "description": "Quick overview of a thing",
-    "icon": "communication:business",
+    "title": "Lesson overview",
+    "description": "A summary block of highlights at the top of a lesson.",
+    "icon": "hax:lesson",
     "color": "blue",
-    "tags": [
-      "Other",
-      "instructional",
-      "layout",
-      "highlight",
-      "summary",
-      "overview"
-    ],
+    "tags": ["Instructional", "layout", "highlight", "summary", "overview"],
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team"

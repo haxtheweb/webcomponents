@@ -6,7 +6,7 @@
   "license": "Apache-2.0",
   "title": "Page flag",
   "description": "Editorial note for page authors.",
-  "icon": "lrn:quiz",
+  "icon": "icons:flag",
   "tags": [
     "Other",
     "workflow",
@@ -19,7 +19,7 @@
   "import": "@haxtheweb/page-flag/page-flag.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/page-flag/page-flag.js",
   "install": "npm i @haxtheweb/page-flag",
-  "demoHtml": "<page-flag accentColor=\"blue\" opened></page-flag>",
+  "demoHtml": "<page-flag label=\"Needs review\" accentColor=\"orange\" opened>\n  <page-flag-comment seed=\"Editor\">Check the dates in this section before publishing.</page-flag-comment>\n</page-flag>",
   "attributes": [
     {
       "name": "label",
@@ -61,7 +61,7 @@
     "gizmo": {
       "title": "Page flag",
       "description": "Editorial note for page authors.",
-      "icon": "lrn:quiz",
+      "icon": "icons:flag",
       "color": "grey",
       "tags": [
         "Other",
@@ -93,14 +93,15 @@
       {
         "tag": "page-flag",
         "properties": {
-          "accentColor": "blue",
+          "label": "Needs review",
+          "accentColor": "orange",
           "opened": true
         },
-        "content": ""
+        "content": "<page-flag-comment seed=\"Editor\">Check the dates in this section before publishing.</page-flag-comment>"
       }
     ]
   },
-  "surfaceHash": "cf6c567e0475",
+  "surfaceHash": "5f96eeb194fd",
   "walkthroughs": [
     {
       "id": "",
@@ -108,13 +109,13 @@
       "order": 0,
       "src": "page-flag.motion.json",
       "file": "lib/page-flag.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/page-flag.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

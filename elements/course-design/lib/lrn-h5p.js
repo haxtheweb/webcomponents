@@ -97,6 +97,7 @@ export class LrnH5p extends I18NMixin(LitElement) {
         tags: ["Instructional", "h5p", "embed", "interactive"],
         meta: {
           author: "HAXTheWeb core team",
+          hidden: true,
         },
       },
       settings: {

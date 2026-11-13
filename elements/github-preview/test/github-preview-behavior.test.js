@@ -96,7 +96,7 @@ describe("github-preview", () => {
     const hax = GithubPreview.haxProperties;
     expect(hax.canScale).to.equal(false);
     expect(hax.canEditSource).to.equal(true);
-    expect(hax.gizmo.title).to.equal("Github Preview");
+    expect(hax.gizmo.title).to.equal("GitHub preview");
     expect(hax.gizmo.tags).to.include("github");
     expect(hax.demoSchema[0].tag).to.equal("github-preview");
     expect(hax.demoSchema[0].properties.org).to.equal("haxtheweb");

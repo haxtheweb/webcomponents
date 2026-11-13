@@ -4,9 +4,9 @@
   "gizmo": {
     "title": "Tags",
     "description": "Simple tag list for display on the page.",
-    "icon": "line-style",
+    "icon": "icons:label-outline",
     "color": "orange",
-    "tags": ["Other", "content", "tag", "list"],
+    "tags": ["Content", "tag", "list"],
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team"
