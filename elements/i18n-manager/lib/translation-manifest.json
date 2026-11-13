@@ -1,8 +1,8 @@
 {
   "_meta": {
-    "elementsScanned": 238,
-    "elementsWithTranslations": 150,
-    "translationFilesFound": 42253,
+    "elementsScanned": 245,
+    "elementsWithTranslations": 157,
+    "translationFilesFound": 42262,
     "languagesSupported": [
       "af",
       "am",
@@ -4612,6 +4612,7 @@
       "zh",
       "zu"
     ],
+    "carbon-theme": ["en"],
     "career-org-item": [
       "af",
       "am",
@@ -10253,6 +10254,9 @@
       "zh",
       "zu"
     ],
+    "doodle-board-canvas": ["en"],
+    "doodle-board-field": ["en"],
+    "doodle-board": ["en"],
     "editable-table-display": [
       "af",
       "am",
@@ -18493,6 +18497,7 @@
       "zh",
       "zu"
     ],
+    "hax-network-bar": ["en"],
     "app-hax-top-bar": [
       "af",
       "am",
@@ -29385,6 +29390,7 @@
       "zh",
       "zu"
     ],
+    "material-theme": ["en"],
     "md-block.haxProperties": [
       "af",
       "am",
@@ -37224,6 +37230,7 @@
       "zh",
       "zu"
     ],
+    "shadcn-theme": ["en"],
     "sheet-music": [
       "af",
       "am",
@@ -39631,6 +39638,7 @@
       "zh",
       "zu"
     ],
+    "spectrum-theme": ["en"],
     "spotify-embed": [
       "af",
       "am",
@@ -40781,6 +40789,7 @@
       "zh",
       "zu"
     ],
+    "tailwind-theme": ["en"],
     "twenty-six-theme": [
       "af",
       "am",

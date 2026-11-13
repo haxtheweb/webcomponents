@@ -3,7 +3,7 @@
 <!-- GENERATED FILE: do not edit by hand. Run `yarn run elements-readme` -->
 <!-- Descriptions come from each element's package.json; edit them there. -->
 
-Every element in this monorepo (228 packages). Browse them live with `yarn gallery`, or open an element's folder for its own README.
+Every element in this monorepo (235 packages). Browse them live with `yarn gallery`, or open an element's folder for its own README.
 
 | Element | Description | Package | Demo |
 | --- | --- | --- | --- |
@@ -32,6 +32,7 @@ Every element in this monorepo (228 packages). Browse them live with `yarn galle
 | [bibliography-builder](./bibliography-builder/) | Webcomponent bibliography-builder following hax / open-wc recommendations | `@haxtheweb/bibliography-builder` | [demo](./bibliography-builder/demo/) |
 | [bootstrap-theme](./bootstrap-theme/) | Hax bootstrap themeing | `@haxtheweb/bootstrap-theme` | [demo](./bootstrap-theme/demo/) |
 | [bullet-check-list](./bullet-check-list/) | Bulleted or numbered list of checkboxes whose state is remembered on this machine | `@haxtheweb/bullet-check-list` | [demo](./bullet-check-list/demo/) |
+| [carbon-theme](./carbon-theme/) | IBM Carbon theme for HAXcms, built on the DDD-capable Carbon design system bridge | `@haxtheweb/carbon-theme` | [demo](./carbon-theme/demo/) |
 | [career-timeline](./career-timeline/) | Webcomponent career-timeline following hax / open-wc recommendations | `@haxtheweb/career-timeline` | [demo](./career-timeline/demo/) |
 | [chamfer-theme](./chamfer-theme/) | Fixed-width HAXcms theme with a left navigation column and a chamfered top-left corner on the body area. | `@haxtheweb/chamfer-theme` | [demo](./chamfer-theme/demo/) |
 | [chartist-render](./chartist-render/) | Renders charts with the Chartist library | `@haxtheweb/chartist-render` | [demo](./chartist-render/demo/) |
@@ -55,6 +56,7 @@ Every element in this monorepo (228 packages). Browse them live with `yarn galle
 | [discord-embed](./discord-embed/) | widgetbot.io based embed widget for discord threads and channels | `@haxtheweb/discord-embed` | [demo](./discord-embed/demo/) |
 | [disqus-embed](./disqus-embed/) | Disqus service integration | `@haxtheweb/disqus-embed` | [demo](./disqus-embed/demo/) |
 | [documentation-player](./documentation-player/) | Living documentation for a web component: animated walkthrough, video tutorial, demo, docs and schema | `@haxtheweb/documentation-player` | [demo](./documentation-player/demo/) |
+| [doodle-board](./doodle-board/) | Draw, mark up an image with feedback, or sign: a canvas element with a HAX doodle input | `@haxtheweb/doodle-board` | [demo](./doodle-board/demo/) |
 | [dynamic-import-registry](./dynamic-import-registry/) | maintain manage the registration and usage of dynamic imports | `@haxtheweb/dynamic-import-registry` |  |
 | [ecosystem-theme](./ecosystem-theme/) | The hax.cloud theme: the HAX ecosystem web as a website, with a Web view and a Site view of every page | `@haxtheweb/ecosystem-theme` | [demo](./ecosystem-theme/demo/) |
 | [ecosystem-web](./ecosystem-web/) | The HAX ecosystem web: tiles on rings, their connections, sub-webs and step-by-step tours, routable by attribute. | `@haxtheweb/ecosystem-web` | [demo](./ecosystem-web/demo/) |
@@ -85,6 +87,7 @@ Every element in this monorepo (228 packages). Browse them live with `yarn galle
 | [hax-body-behaviors](./hax-body-behaviors/) | Wire any element up to HAX | `@haxtheweb/hax-body-behaviors` |  |
 | [hax-iconset](./hax-iconset/) | HAX-specific icons | `@haxtheweb/hax-iconset` | [demo](./hax-iconset/demo/) |
 | [hax-logo](./hax-logo/) | logo element for hax, obviously as a hax capable element. | `@haxtheweb/hax-logo` | [demo](./hax-logo/demo/) |
+| [hax-network-bar](./hax-network-bar/) | The strip across the top of every hax.cloud site that links them as one network | `@haxtheweb/hax-network-bar` | [demo](./hax-network-bar/demo/) |
 | [haxcms-elements](./haxcms-elements/) | HAX CMS series of elements to provide a full on CMS | `@haxtheweb/haxcms-elements` | [demo](./haxcms-elements/demo/) |
 | [haxma-theme](./haxma-theme/) | HAXma theme for HAXcms inspired by Figma documentation design | `@haxtheweb/haxma-theme` | [demo](./haxma-theme/demo/) |
 | [haxor-slevin](./haxor-slevin/) | Tech blogger theme | `@haxtheweb/haxor-slevin` | [demo](./haxor-slevin/demo/) |
@@ -125,6 +128,7 @@ Every element in this monorepo (228 packages). Browse them live with `yarn galle
 | [map-menu](./map-menu/) | Hierarchical navigation menu built from a site outline | `@haxtheweb/map-menu` | [demo](./map-menu/demo/) |
 | [mark-the-words](./mark-the-words/) | Mark desired words in a sentence | `@haxtheweb/mark-the-words` | [demo](./mark-the-words/demo/) |
 | [matching-question](./matching-question/) | Match concepts question type | `@haxtheweb/matching-question` | [demo](./matching-question/demo/) |
+| [material-theme](./material-theme/) | Material Design 3 theme for HAXcms, built on the DDD-capable Material design system bridge | `@haxtheweb/material-theme` | [demo](./material-theme/demo/) |
 | [md-block](./md-block/) | a markdown block | `@haxtheweb/md-block` | [demo](./md-block/demo/) |
 | [media-behaviors](./media-behaviors/) | Helpers for resolving video sources such as YouTube, Vimeo and Twitch | `@haxtheweb/media-behaviors` |  |
 | [media-image](./media-image/) | Image presentation with captions, citations, sizing and figure enhancements | `@haxtheweb/media-image` | [demo](./media-image/demo/) |
@@ -178,6 +182,7 @@ Every element in this monorepo (228 packages). Browse them live with `yarn galle
 | [scroll-button](./scroll-button/) | button to scroll to an area or back to top | `@haxtheweb/scroll-button` | [demo](./scroll-button/demo/) |
 | [self-check](./self-check/) | Self check question card that reveals an answer on demand | `@haxtheweb/self-check` | [demo](./self-check/demo/) |
 | [self-reflective-nudge](./self-reflective-nudge/) | Webcomponent self-reflective-nudge following hax / open-wc recommendations | `@haxtheweb/self-reflective-nudge` | [demo](./self-reflective-nudge/demo/) |
+| [shadcn-theme](./shadcn-theme/) | shadcn/ui theme for HAXcms, built on the DDD-capable shadcn design system bridge | `@haxtheweb/shadcn-theme` | [demo](./shadcn-theme/demo/) |
 | [shadow-style](./shadow-style/) | write css that is for piercing shadow roots and applying CSS automatically | `@haxtheweb/shadow-style` |  |
 | [sheet-music](./sheet-music/) | Webcomponent sheet-music following hax / open-wc recommendations | `@haxtheweb/sheet-music` | [demo](./sheet-music/demo/) |
 | [simple-autocomplete](./simple-autocomplete/) | auto complete either from an endpoint or local json array | `@haxtheweb/simple-autocomplete` | [demo](./simple-autocomplete/demo/) |
@@ -207,12 +212,14 @@ Every element in this monorepo (228 packages). Browse them live with `yarn galle
 | [social-share-link](./social-share-link/) | a link to share content on social | `@haxtheweb/social-share-link` | [demo](./social-share-link/demo/) |
 | [sorting-question](./sorting-question/) | sorting questions to be in the right order when they are randomized. | `@haxtheweb/sorting-question` | [demo](./sorting-question/demo/) |
 | [spacebook-theme](./spacebook-theme/) | Webcomponent spacebook-theme following hax / open-wc recommendations | `@haxtheweb/spacebook-theme` | [demo](./spacebook-theme/demo/) |
+| [spectrum-theme](./spectrum-theme/) | Adobe Spectrum theme for HAXcms, built on the DDD-capable Spectrum design system bridge | `@haxtheweb/spectrum-theme` | [demo](./spectrum-theme/demo/) |
 | [spotify-embed](./spotify-embed/) | embed spotify playlists | `@haxtheweb/spotify-embed` | [demo](./spotify-embed/demo/) |
 | [star-rating](./star-rating/) | rating display and interaction widget | `@haxtheweb/star-rating` | [demo](./star-rating/demo/) |
 | [stop-note](./stop-note/) | Callout note that directs people to an action at different warning levels | `@haxtheweb/stop-note` | [demo](./stop-note/demo/) |
 | [super-daemon](./super-daemon/) | Keyboard-driven command palette for searching and running programs across HAX | `@haxtheweb/super-daemon` | [demo](./super-daemon/demo/) |
 | [tableau-embed](./tableau-embed/) | Tableau visualization embed wrapper with HAX capabilities. | `@haxtheweb/tableau-embed` | [demo](./tableau-embed/demo/) |
 | [tagging-question](./tagging-question/) | Answer question by applying related tags | `@haxtheweb/tagging-question` | [demo](./tagging-question/demo/) |
+| [tailwind-theme](./tailwind-theme/) | Tailwind CSS theme for HAXcms, built on the DDD-capable Tailwind design system bridge | `@haxtheweb/tailwind-theme` | [demo](./tailwind-theme/demo/) |
 | [terrible-themes](./terrible-themes/) | themes inspired by creations by btopro from his youth. legitimate, terrible websites. | `@haxtheweb/terrible-themes` | [demo](./terrible-themes/demo/) |
 | [training-theme](./training-theme/) | theme for training content in HAXcms | `@haxtheweb/training-theme` | [demo](./training-theme/demo/) |
 | [twenty-six-theme](./twenty-six-theme/) | HAXcms Twenty Fifteen inspired blog theme | `@haxtheweb/twenty-six-theme` | [demo](./twenty-six-theme/demo/) |
