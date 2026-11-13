@@ -21,6 +21,14 @@
       "default": "true",
       "description": "",
       "hax": null
+    },
+    {
+      "name": "landing",
+      "property": "landing",
+      "type": "boolean",
+      "default": "",
+      "description": "",
+      "hax": null
     }
   ],
   "slots": [
@@ -28,7 +36,7 @@
   ],
   "events": [],
   "hax": {},
-  "surfaceHash": "9d74f155fdc2",
+  "surfaceHash": "01f16396261c",
   "walkthroughs": [],
   "videos": [],
   "motion": {

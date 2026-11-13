@@ -39,6 +39,7 @@ export const UswdsTokens = css`
     --usa-gray-cool-40: #8d9297;
     --usa-gray-cool-5: #edeff0;
     --usa-gray-cool-60: #565c65;
+    --usa-gray-cool-80: #2d2e2f;
     --usa-green-cool-5: #ecf3ec;
     --usa-green-cool-vivid-20: #70e17b;
     --usa-green-cool-vivid-5: #e3f5e1;

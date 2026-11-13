@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 640" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Abstract illustration of hills under a morning sky">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#73b3e7"/>
+      <stop offset="1" stop-color="#d9e8f6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="640" fill="url(#sky)"/>
+  <circle cx="1220" cy="190" r="90" fill="#ffbe2e"/>
+  <path d="M0 430 C260 340 470 360 720 420 S1220 500 1600 380 V640 H0Z" fill="#2378c3"/>
+  <path d="M0 500 C300 430 620 470 900 520 S1350 560 1600 470 V640 H0Z" fill="#005ea2"/>
+  <path d="M0 570 C340 530 700 560 1000 590 S1400 610 1600 560 V640 H0Z" fill="#1a4480"/>
+  <g fill="#ffffff" opacity="0.85">
+    <rect x="980" y="360" width="22" height="70" rx="3"/>
+    <rect x="1010" y="330" width="26" height="100" rx="3"/>
+    <rect x="1044" y="372" width="20" height="58" rx="3"/>
+  </g>
+</svg>

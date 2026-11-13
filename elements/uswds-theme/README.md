@@ -1,6 +1,11 @@
 # uswds-theme
 
-A HAXcms theme in the [U.S. Web Design System](https://designsystem.digital.gov) layout (basic header, side navigation, slim footer), built on the **USWDS DDD bridge**.
+A HAXcms theme in the [U.S. Web Design System](https://designsystem.digital.gov) page templates, built on the **USWDS DDD bridge**:
+
+- **Header**: a basic header with the site title and, on desktop, the top-level pages as primary navigation (current page in primary with a bar under it). Below 1024px a text **Menu** button opens the full navigation.
+- **Landing page**: the site's first page uses the USWDS landing page layout. The content column is centered and `page-section` blocks run edge to edge, so a hero, a tagline and a dark graphic list are plain HAX content. The page title stays for screen readers; the hero carries the visible heading.
+- **Inner pages**: the documentation layout, with side navigation (a rule above each row, a bar on the current item), breadcrumbs and a reading column.
+- **Footer**: a return-to-top link, a band of primary links and a secondary band with the site title and the `footerPrimary` region.
 
 ## What the bridge does
 
