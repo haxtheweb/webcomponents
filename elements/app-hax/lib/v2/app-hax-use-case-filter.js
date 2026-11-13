@@ -2919,7 +2919,64 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
     return name || this.t.importedSite;
   }
 
-  async processImportTemplate(selectedTemplate, modal) {
+  /**
+   * The importer entry (one of getImportItems) for a kind and type, so
+   * Merlin and a dropped file run the same importer the cards do.
+   * @param {string} kind "file" or "url"
+   * @param {string} type importType, e.g. "docx" or "wordpress"
+   * @returns {Object|null}
+   */
+  importItemFor(kind, type) {
+    return (
+      this.getImportItems().find(
+        (item) => item.importKind === kind && item.importType === type,
+      ) || null
+    );
+  }
+
+  /**
+   * The file importer for a file name, worked out from its extension, or
+   * null when no importer takes that type.
+   * @param {string} fileName
+   * @returns {Object|null}
+   */
+  importItemForFileName(fileName) {
+    if (!fileName || typeof fileName !== "string") {
+      return null;
+    }
+    const parts = fileName.split(".");
+    if (parts.length < 2) {
+      return null;
+    }
+    const ext = parts.pop().toLowerCase();
+    // .htm is the HTML File importer too
+    return this.importItemFor("file", ext === "htm" ? "html" : ext);
+  }
+
+  /**
+   * Run an importer with its input already in hand: a file (dropped on
+   * the dashboard or picked in Merlin) or a URL (typed in Merlin), so the
+   * importer's own picker or URL prompt is skipped.
+   * @param {Object} selectedTemplate an entry from getImportItems
+   * @param {Object} preset { file } or { url }
+   */
+  async startImport(selectedTemplate, preset = {}) {
+    const modal = this.shadowRoot
+      ? this.shadowRoot.querySelector("#siteCreationModal")
+      : null;
+    if (!modal || !selectedTemplate) {
+      return;
+    }
+    modal.title = selectedTemplate.useCaseTitle;
+    modal.description = selectedTemplate.useCaseDescription;
+    modal.source = selectedTemplate.useCaseImage;
+    modal.template = selectedTemplate.useCaseTitle;
+    modal.skeletonMachineName = null;
+    modal.themeElement = "clean-one";
+    await this.processImportTemplate(selectedTemplate, modal, preset);
+  }
+
+  async processImportTemplate(selectedTemplate, modal, preset = {}) {
     try {
       const [{ MicroFrontendRegistry }, { enableServices }] = await Promise.all(
         [
@@ -2932,15 +2989,18 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
 
       let response = null;
       if (selectedTemplate.importKind === "file") {
-        const fileType = selectedTemplate.fileType || "docx";
-        // Ensure the file broker is available
-        if (fileType === "docx") {
-          await import("@haxtheweb/file-system-broker/lib/docx-file-system-broker.js");
-        } else {
-          await import("@haxtheweb/file-system-broker/file-system-broker.js");
+        let file = preset && preset.file ? preset.file : null;
+        if (!file) {
+          const fileType = selectedTemplate.fileType || "docx";
+          // Ensure the file broker is available
+          if (fileType === "docx") {
+            await import("@haxtheweb/file-system-broker/lib/docx-file-system-broker.js");
+          } else {
+            await import("@haxtheweb/file-system-broker/file-system-broker.js");
+          }
+          const broker = globalThis.FileSystemBroker.requestAvailability();
+          file = await broker.loadFile(fileType);
         }
-        const broker = globalThis.FileSystemBroker.requestAvailability();
-        const file = await broker.loadFile(fileType);
         if (!file) {
           return;
         }
@@ -2956,15 +3016,18 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
           formData,
         );
       } else if (selectedTemplate.importKind === "url") {
-        const promptText = selectedTemplate.prompt || this.t.enterAUrl;
-        const promptUrl = await adminPrompt({
-          title: selectedTemplate.useCaseTitle || this.t.importContent,
-          label: promptText,
-          placeholder: "https://",
-          required: true,
-          confirmLabel: this.t.import,
-          cancelLabel: this.t.cancel,
-        });
+        let promptUrl = preset && preset.url ? preset.url : null;
+        if (!promptUrl) {
+          const promptText = selectedTemplate.prompt || this.t.enterAUrl;
+          promptUrl = await adminPrompt({
+            title: selectedTemplate.useCaseTitle || this.t.importContent,
+            label: promptText,
+            placeholder: "https://",
+            required: true,
+            confirmLabel: this.t.import,
+            cancelLabel: this.t.cancel,
+          });
+        }
         if (!promptUrl) {
           return;
         }
