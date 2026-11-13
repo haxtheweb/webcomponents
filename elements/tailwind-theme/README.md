@@ -2,6 +2,8 @@
 
 A HAXcms theme in a Tailwind-style documentation layout (top bar, bordered sidebar that overlays below 1024px, 768px reading column), built on the **Tailwind DDD bridge**.
 
+The layout follows the Tailwind CSS documentation: grouped side navigation, the page's section as a small accent eyebrow above the title, a reading column, and an "On this page" list (`site-menu-content`) on screens 1280px and wider.
+
 ## What the bridge does
 
 HAX blocks only read DDD tokens (`--ddd-*`). This package re-expresses Tailwind CSS's tokens under their own names and points every DDD token a block reads at the closest Tailwind token. While this theme is active, blocks take on Tailwind's color, type, corners, elevation, focus and motion. Authored content stays plain DDD content that renders in any other theme.
