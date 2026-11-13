@@ -355,19 +355,34 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       this._merlinRowSelectedWhileDocked.bind(this),
       { signal: this.windowControllers.signal },
     );
-    // a file dropped anywhere on the dashboard goes to Merlin
-    globalThis.addEventListener("dragenter", this._fileDragEnter.bind(this), {
+    // a file dropped anywhere on the dashboard goes to Merlin. Capture
+    // phase: user-scaffold's window drop listener stops the event from
+    // reaching any listener after it
+    const dragOptions = {
       signal: this.windowControllers.signal,
-    });
-    globalThis.addEventListener("dragover", this._fileDragOver.bind(this), {
-      signal: this.windowControllers.signal,
-    });
-    globalThis.addEventListener("dragleave", this._fileDragLeave.bind(this), {
-      signal: this.windowControllers.signal,
-    });
-    globalThis.addEventListener("drop", this._fileDrop.bind(this), {
-      signal: this.windowControllers.signal,
-    });
+      capture: true,
+    };
+    globalThis.addEventListener(
+      "dragenter",
+      this._fileDragEnter.bind(this),
+      dragOptions,
+    );
+    globalThis.addEventListener(
+      "dragover",
+      this._fileDragOver.bind(this),
+      dragOptions,
+    );
+    globalThis.addEventListener(
+      "dragleave",
+      this._fileDragLeave.bind(this),
+      dragOptions,
+    );
+    globalThis.addEventListener("drop", this._fileDrop.bind(this), dragOptions);
+    globalThis.addEventListener(
+      "dragend",
+      this._resetFileDrag.bind(this),
+      dragOptions,
+    );
   }
 
   goToLocation(location) {
@@ -717,6 +732,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     this.fileDragActive = false;
     this.fileDragType = "";
     this.__fileDragCounter = 0;
+    this.__fileDragWatch = null;
     this.__dashboardProgramsDefined = false;
     // manage title when activeItem changes
     autorun(() => {
@@ -2744,6 +2760,25 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     this.__fileDragCounter = 0;
     this.fileDragActive = false;
     this.fileDragType = "";
+    if (this.__fileDragWatch) {
+      clearTimeout(this.__fileDragWatch);
+      this.__fileDragWatch = null;
+    }
+  }
+
+  // dragover fires over and over while a drag is on the page. When it
+  // stops (the drag left the window, was cancelled with Escape, or the drop
+  // went somewhere else) the drop state must not stay on screen
+  _watchFileDrag() {
+    if (this.__fileDragWatch) {
+      clearTimeout(this.__fileDragWatch);
+    }
+    this.__fileDragWatch = setTimeout(() => {
+      this.__fileDragWatch = null;
+      if (this.fileDragActive) {
+        this._resetFileDrag();
+      }
+    }, 1000);
   }
 
   _fileDragEnter(e) {
@@ -2759,12 +2794,14 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       this.fileDragType = item && item.type ? item.type : "";
       this.fileDragActive = true;
     }
+    this._watchFileDrag();
   }
 
   _fileDragOver(e) {
     if (this._isFileDrag(e) && this.fileDragActive) {
       e.preventDefault();
       e.dataTransfer.dropEffect = "copy";
+      this._watchFileDrag();
     }
   }
 

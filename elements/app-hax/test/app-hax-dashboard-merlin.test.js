@@ -168,6 +168,69 @@ describe("app-hax: Merlin in the dashboard bar", () => {
     expect(el.shadowRoot.querySelector(".file-drop-veil")).to.equal(null);
   });
 
+  it("gets a drop even when a later window listener stops it", async () => {
+    // user-scaffold's window drop listener calls stopImmediatePropagation
+    const stopper = (e) => {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+    };
+    globalThis.addEventListener("drop", stopper);
+    const dropped = [];
+    const originalFileToSite = el.fileToSite;
+    const originalAllowed = el._fileDropAllowed;
+    el.fileToSite = (file) => dropped.push(file.name);
+    el._fileDropAllowed = () => true;
+    try {
+      const dt = new DataTransfer();
+      dt.items.add(new File(["x"], "unit-3.docx", { type: DOCX }));
+      const target = el.shadowRoot.querySelector("main") || el;
+      target.dispatchEvent(
+        new DragEvent("dragenter", {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          dataTransfer: dt,
+        }),
+      );
+      expect(el.fileDragActive).to.equal(true);
+      target.dispatchEvent(
+        new DragEvent("drop", {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          dataTransfer: dt,
+        }),
+      );
+      expect(dropped).to.deep.equal(["unit-3.docx"]);
+      expect(el.fileDragActive).to.equal(false);
+    } finally {
+      globalThis.removeEventListener("drop", stopper);
+      el.fileToSite = originalFileToSite;
+      el._fileDropAllowed = originalAllowed;
+    }
+  });
+
+  it("clears the drop state when a drag stops without a drop", async () => {
+    const originalAllowed = el._fileDropAllowed;
+    el._fileDropAllowed = () => true;
+    try {
+      const dt = new DataTransfer();
+      dt.items.add(new File(["x"], "unit-3.docx", { type: DOCX }));
+      el.dispatchEvent(
+        new DragEvent("dragenter", {
+          bubbles: true,
+          composed: true,
+          dataTransfer: dt,
+        }),
+      );
+      expect(el.fileDragActive).to.equal(true);
+      await new Promise((r) => setTimeout(r, 1100));
+      expect(el.fileDragActive).to.equal(false);
+    } finally {
+      el._fileDropAllowed = originalAllowed;
+    }
+  });
+
   it("offers to make a site from a file an importer takes", () => {
     const rows = fileRows(el, new File(["x"], "unit-3-outline.docx"));
     expect(rows[0].title).to.equal("Create a site from unit-3-outline.docx");

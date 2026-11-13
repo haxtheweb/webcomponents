@@ -485,7 +485,7 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
           --simple-icon-width: 20px;
           --simple-icon-height: 20px;
         }
-        .import-kinds.two-col simple-icon-lite {
+        .import-kinds simple-icon-lite {
           color: var(--hax-ui-accent-strong);
         }
         .import-kind-name {
@@ -3087,7 +3087,6 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
                     html`<li>
                       <simple-icon-lite
                         icon="${item.useCaseIcon[0].icon}"
-                        no-colorize
                         aria-hidden="true"
                       ></simple-icon-lite>
                       <span class="import-kind-name">${item.useCaseTitle}</span>
