@@ -336,7 +336,10 @@ npm update @haxtheweb/haxcms-nodejs --save
 git add -A
 git commit -m "ubiquity publish"
 HAXCMS_NODEJS_SRC=~/haxtheweb/haxcms-nodejs/src npm run build
-./node_modules/.bin/commit-and-tag-version --release-as $version
+# commit-and-tag-version is run pinned via npx rather than added as a
+# devDependency: its tree includes a CC-BY-3.0 data package that the repo's
+# license gate does not allow
+npx --yes commit-and-tag-version@12.7.3 --release-as $version
 git push --follow-tags origin main
 npm publish
 
