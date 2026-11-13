@@ -1,0 +1,375 @@
+{
+  "$comment": "DDD bridge for Adobe Spectrum (Spectrum 2 tokens from @spectrum-css/tokens). Tiers follow elements/d-d-d/design-system/bridge/contract.json. Spectrum's palette is defined per mode (blue-900 is a different color in light and dark), so named DDD colors take the light set as constants (fromMode). Adobe Clean is proprietary and never loaded: type is Source Sans 3 (OFL), the open face Spectrum's own font stack falls back to. Kept as DDD on purpose: state opacities (Spectrum uses state colors), border widths (same values), and heading/body sizes (DDD reading sizes stay).",
+  "system": "spectrum",
+  "title": "Spectrum",
+  "prefix": "Spectrum",
+  "homepage": "https://spectrum.adobe.com",
+  "sources": [
+    {
+      "package": "@spectrum-css/tokens",
+      "version": "16.0.2",
+      "license": "Apache-2.0",
+      "copyright": "Copyright 2024 Adobe. All rights reserved.",
+      "repository": "https://github.com/adobe/spectrum-css",
+      "format": "css",
+      "file": "dist/css/index.css",
+      "scopes": {
+        "light": [".spectrum", ".spectrum--medium", ".spectrum--light"],
+        "dark": [".spectrum", ".spectrum--medium", ".spectrum--dark"]
+      }
+    }
+  ],
+  "fonts": [
+    {
+      "family": "Source Sans 3",
+      "license": "OFL-1.1",
+      "url": "https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,700;0,800;0,900;1,400&display=swap"
+    },
+    {
+      "family": "Source Code Pro",
+      "license": "OFL-1.1",
+      "url": "https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600&display=swap"
+    }
+  ],
+  "ddd": {
+    "--ddd-theme-default-beaverBlue": {
+      "token": "--spectrum-blue-900",
+      "fromMode": "light",
+      "note": "Spectrum accent blue"
+    },
+    "--ddd-theme-default-nittanyNavy": {
+      "token": "--spectrum-blue-1200",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-potentialMidnight": {
+      "token": "--spectrum-blue-1400",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-pughBlue": {
+      "token": "--spectrum-blue-400",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-accent": {
+      "token": "--spectrum-blue-400",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-skyBlue": {
+      "token": "--spectrum-blue-600",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-skyLight": {
+      "token": "--spectrum-blue-300",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-skyMaxLight": {
+      "token": "--spectrum-blue-100",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-slateGray": {
+      "token": "--spectrum-gray-700",
+      "fromMode": "light",
+      "note": "Spectrum has no slate; neutral gray"
+    },
+    "--ddd-theme-default-slateLight": {
+      "token": "--spectrum-gray-300",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-slateMaxLight": {
+      "token": "--spectrum-gray-75",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-coalyGray": {
+      "token": "--spectrum-gray-800",
+      "fromMode": "light",
+      "note": "Spectrum body text"
+    },
+    "--ddd-theme-default-black": {
+      "token": "--spectrum-gray-1000",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-white": {
+      "token": "--spectrum-gray-25",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-limestoneGray": {
+      "token": "--spectrum-gray-500",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-limestoneLight": {
+      "token": "--spectrum-gray-200",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-limestoneMaxLight": {
+      "token": "--spectrum-gray-50",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-background": {
+      "token": "--spectrum-gray-50",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-disabled": {
+      "token": "--spectrum-gray-100",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-keystoneYellow": {
+      "token": "--spectrum-yellow-400",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-globalNeon": {
+      "token": "--spectrum-yellow-300",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-roarGolden": {
+      "token": "--spectrum-yellow-800",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-roarLight": {
+      "token": "--spectrum-yellow-200",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-roarMaxlight": {
+      "token": "--spectrum-yellow-100",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-shrineTan": {
+      "token": "--spectrum-orange-800",
+      "fromMode": "light",
+      "note": "Spectrum has no tan; muted orange"
+    },
+    "--ddd-theme-default-shrineLight": {
+      "token": "--spectrum-orange-200",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-shrineMaxLight": {
+      "token": "--spectrum-orange-100",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-inventOrange": {
+      "token": "--spectrum-orange-600",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-landgrantBrown": {
+      "token": "--spectrum-orange-1300",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-creekTeal": {
+      "token": "--spectrum-seafoam-900",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-creekLight": {
+      "token": "--spectrum-seafoam-300",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-creekMaxLight": {
+      "token": "--spectrum-seafoam-100",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-opportunityGreen": {
+      "token": "--spectrum-green-1000",
+      "fromMode": "light",
+      "note": "correct signal (light)"
+    },
+    "--ddd-theme-default-forestGreen": {
+      "token": "--spectrum-green-900",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-futureLime": {
+      "token": "--spectrum-celery-400",
+      "fromMode": "light",
+      "note": "correct signal (dark)"
+    },
+    "--ddd-theme-default-athertonViolet": {
+      "token": "--spectrum-purple-400",
+      "fromMode": "light",
+      "note": "incorrect signal (dark)"
+    },
+    "--ddd-theme-default-wonderPurple": {
+      "token": "--spectrum-purple-1100",
+      "fromMode": "light",
+      "note": "incorrect signal (light); keeps HAX purple-for-incorrect"
+    },
+    "--ddd-theme-default-original87Pink": {
+      "token": "--spectrum-magenta-1000",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-discoveryCoral": {
+      "token": "--spectrum-red-600",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-link": {
+      "token": "--spectrum-blue-1000",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-linkLight": {
+      "token": "--spectrum-blue-400",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-error": {
+      "token": "--spectrum-red-1100",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-errorLight": {
+      "token": "--spectrum-red-100",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-warning": {
+      "token": "--spectrum-yellow-1200",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-warningLight": {
+      "token": "--spectrum-yellow-100",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-info": {
+      "token": "--spectrum-blue-1100",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-infoLight": {
+      "token": "--spectrum-blue-100",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-success": {
+      "token": "--spectrum-green-1100",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-successLight": {
+      "token": "--spectrum-green-100",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-alertImmediate": {
+      "token": "--spectrum-red-300",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-alertUrgent": {
+      "token": "--spectrum-yellow-200",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-alertAllClear": {
+      "token": "--spectrum-green-200",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-alertNonEmergency": {
+      "token": "--spectrum-blue-200",
+      "fromMode": "light"
+    },
+    "--ddd-font-primary": {
+      "value": "\"Source Sans 3\", \"Source Sans Pro\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Ubuntu, \"Trebuchet MS\", \"Lucida Grande\", sans-serif",
+      "note": "Spectrum's stack with Source Sans 3 in place of Adobe Clean (proprietary)"
+    },
+    "--ddd-font-secondary": {
+      "value": "\"Source Sans 3\", \"Source Sans Pro\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Ubuntu, \"Trebuchet MS\", \"Lucida Grande\", sans-serif"
+    },
+    "--ddd-font-navigation": {
+      "value": "\"Source Sans 3\", \"Source Sans Pro\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Ubuntu, \"Trebuchet MS\", \"Lucida Grande\", sans-serif"
+    },
+    "--ddd-font-mono": {
+      "value": "\"Source Code Pro\", Monaco, monospace",
+      "note": "Spectrum code font"
+    },
+    "--ddd-font-weight-light": {
+      "token": "--spectrum-light-font-weight"
+    },
+    "--ddd-font-weight-regular": {
+      "token": "--spectrum-regular-font-weight"
+    },
+    "--ddd-font-weight-medium": {
+      "token": "--spectrum-medium-font-weight"
+    },
+    "--ddd-font-weight-bold": {
+      "token": "--spectrum-bold-font-weight"
+    },
+    "--ddd-font-weight-black": {
+      "token": "--spectrum-black-font-weight"
+    },
+    "--ddd-radius-xs": {
+      "token": "--spectrum-corner-radius-75"
+    },
+    "--ddd-radius-sm": {
+      "token": "--spectrum-corner-radius-300",
+      "note": "6px"
+    },
+    "--ddd-radius-md": {
+      "token": "--spectrum-corner-radius-medium-default",
+      "note": "8px"
+    },
+    "--ddd-radius-lg": {
+      "token": "--spectrum-corner-radius-large-default",
+      "note": "10px"
+    },
+    "--ddd-radius-xl": {
+      "token": "--spectrum-corner-radius-extra-large-default",
+      "note": "16px"
+    },
+    "--ddd-boxShadow-sm": {
+      "value": "var(--spectrum-drop-shadow-x) var(--spectrum-drop-shadow-y) var(--spectrum-drop-shadow-blur) var(--spectrum-drop-shadow-color)"
+    },
+    "--ddd-boxShadow-md": {
+      "value": "var(--spectrum-drop-shadow-x) var(--spectrum-drop-shadow-y) var(--spectrum-drop-shadow-blur) var(--spectrum-drop-shadow-color)"
+    },
+    "--ddd-focus-ring": {
+      "value": "var(--spectrum-focus-indicator-thickness) solid var(--spectrum-focus-indicator-color)"
+    },
+    "--ddd-focus-offset": {
+      "token": "--spectrum-focus-indicator-gap"
+    },
+    "--ddd-duration-fast": {
+      "token": "--spectrum-animation-duration-100"
+    },
+    "--ddd-duration-normal": {
+      "token": "--spectrum-animation-duration-300"
+    },
+    "--ddd-duration-slow": {
+      "token": "--spectrum-animation-duration-700"
+    },
+    "--ddd-timing-ease": {
+      "token": "--spectrum-animation-ease-in-out"
+    },
+    "--ddd-timing-enter": {
+      "token": "--spectrum-animation-ease-out"
+    },
+    "--ddd-timing-exit": {
+      "token": "--spectrum-animation-ease-in"
+    },
+    "--ddd-control-height-xs": {
+      "token": "--spectrum-component-height-100",
+      "note": "32px"
+    },
+    "--ddd-control-height-sm": {
+      "token": "--spectrum-component-height-200",
+      "note": "40px"
+    },
+    "--ddd-control-height-md": {
+      "token": "--spectrum-component-height-300",
+      "note": "48px"
+    },
+    "--ddd-control-height-lg": {
+      "token": "--spectrum-component-height-400",
+      "note": "56px"
+    },
+    "--ddd-textfield-height-sm": {
+      "token": "--spectrum-component-height-100"
+    },
+    "--ddd-textfield-height-md": {
+      "token": "--spectrum-component-height-200"
+    },
+    "--ddd-textfield-height-lg": {
+      "token": "--spectrum-component-height-300"
+    }
+  },
+  "extraTokens": [
+    "--spectrum-background-base-color",
+    "--spectrum-background-layer-1-color",
+    "--spectrum-background-layer-2-color",
+    "--spectrum-body-color",
+    "--spectrum-heading-color",
+    "--spectrum-neutral-subdued-content-color-default",
+    "--spectrum-accent-content-color-default",
+    "--spectrum-accent-background-color-default",
+    "--spectrum-gray-100",
+    "--spectrum-gray-200",
+    "--spectrum-gray-300",
+    "--spectrum-gray-800",
+    "--spectrum-corner-radius-100",
+    "--spectrum-corner-radius-extra-large-default"
+  ]
+}

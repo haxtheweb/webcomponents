@@ -1,0 +1,18 @@
+spectrum-theme
+Copyright 2026 The Pennsylvania State University
+Licensed under the Apache License, Version 2.0 (see LICENSE).
+
+This package contains design token values derived from Adobe Spectrum
+(https://spectrum.adobe.com):
+
+  @spectrum-css/tokens 16.0.2  Copyright 2024 Adobe. All rights reserved.
+  Licensed under the Apache License, Version 2.0 (the same license as this package).
+
+The token values were re-expressed as CSS custom properties by
+elements/d-d-d/design-system/bridge/build-bridge.js.
+
+Fonts (loaded at runtime from Google Fonts, not distributed in this package,
+where any are loaded): Source Sans 3 and Source Code Pro, licensed under the SIL Open Font License 1.1. Spectrum's own face, Adobe Clean, is proprietary and is never loaded; Source Sans 3 is the open face its font stack falls back to.
+
+Adobe and Spectrum are trademarks of Adobe Inc. This package is an independent integration and is not affiliated
+with or endorsed by Adobe.
