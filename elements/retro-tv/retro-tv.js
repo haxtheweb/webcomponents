@@ -571,7 +571,6 @@ export class RetroTv extends LitElement {
           text-shadow: 0 0 6px rgba(93, 255, 138, 0.8);
           letter-spacing: 0.06em;
           text-transform: uppercase;
-          transition: opacity 0.6s ease-in-out;
         }
         .ch {
           top: 6%;
@@ -638,6 +637,9 @@ export class RetroTv extends LitElement {
         /* motion only for people who have not asked for less of it, and
            never once the picture is still */
         @media (prefers-reduced-motion: no-preference) {
+          .osd {
+            transition: opacity 0.6s ease-in-out;
+          }
           :host(:not([still])) .run-a .screen {
             animation: retro-tv-pow-a 0.9s ease-out both;
           }
