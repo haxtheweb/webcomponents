@@ -556,7 +556,6 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           border: 1px solid var(--hax-ui-line);
           border-radius: var(--ddd-radius-rounded);
           background-color: #111;
-          overflow: hidden;
         }
         .toggle button {
           font-family: var(--hax-ui-admin-font-family);
@@ -572,13 +571,25 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
         .toggle button:hover {
           background-color: var(--hax-ui-hover);
         }
+        .toggle button:first-child {
+          border-start-start-radius: var(--ddd-radius-rounded);
+          border-end-start-radius: var(--ddd-radius-rounded);
+        }
+        .toggle button:last-child {
+          border-start-end-radius: var(--ddd-radius-rounded);
+          border-end-end-radius: var(--ddd-radius-rounded);
+        }
         .toggle button[aria-pressed="true"] {
           background-color: var(--ddd-theme-default-white);
           color: var(--ddd-theme-default-coalyGray);
           font-weight: var(--ddd-font-weight-bold);
         }
+        /* the ring sits outside the button, on the bar, so it keeps its
+           contrast on the white pressed half too */
         .toggle button:focus-visible {
-          outline-offset: calc(-1 * var(--ddd-spacing-1));
+          position: relative;
+          z-index: 1;
+          outline-offset: 2px;
         }
         header.top a:focus-visible,
         header.top button:focus-visible {
@@ -887,8 +898,7 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           }
           .brand {
             font-size: var(--ddd-font-size-3xs);
-            overflow: hidden;
-            text-overflow: ellipsis;
+            white-space: normal;
           }
           .menu-btn {
             display: inline-flex;
@@ -937,6 +947,22 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
             max-width: none;
             flex-basis: 100%;
             padding-block: var(--ddd-spacing-4) 0;
+          }
+        }
+        /* the narrowest phones: everything in the bar stays on one row */
+        @media (max-width: 400px) {
+          :host {
+            --eco-gutter: var(--ddd-spacing-3);
+          }
+          header.top .wrap {
+            gap: 0 var(--ddd-spacing-1);
+            padding-inline-end: var(--ddd-spacing-1);
+          }
+          .toggle button {
+            padding-inline: var(--ddd-spacing-2);
+          }
+          .end {
+            gap: 0;
           }
         }
       `,
