@@ -63,6 +63,9 @@ class UswdsTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
       pageNavigation: "Page navigation",
       menu: "Menu",
       close: "Close",
+      primaryNavigation: "Primary navigation",
+      footerNavigation: "Footer navigation",
+      returnToTop: "Return to top",
     };
     // no I18NMixin in this class chain, so register with the store directly
     I18NManagerStore.registerLocalization({
@@ -106,6 +109,10 @@ class UswdsTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
       sidebarOpen: { type: Boolean, reflect: true, attribute: "sidebar-open" },
       _mobile: { type: Boolean, state: true },
       _dark: { type: Boolean, state: true },
+      _topItems: { type: Array, state: true },
+      _currentTop: { type: String, state: true },
+      /* the site's first page uses the USWDS landing page layout */
+      landing: { type: Boolean, reflect: true },
     };
   }
 
@@ -341,17 +348,144 @@ class UswdsTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
             --uswds-theme-band
           );
         }
-        /* usa-footer--slim: a base-lightest band */
         footer {
           margin-top: var(--ddd-spacing-12);
-          padding: var(--ddd-spacing-6) var(--ddd-spacing-8);
-          background-color: var(--uswds-theme-band);
           font-size: var(--ddd-font-size-4xs);
+        }
+        /* usa-nav primary links: bold, current page in primary with a
+           bar under it */
+        .primary-nav {
+          flex: 0 0 auto;
+        }
+        .primary-nav ul,
+        .footer-primary ul {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          margin: 0;
+          padding: 0;
+          list-style: none;
+        }
+        .primary-link {
+          position: relative;
+          display: inline-flex;
+          align-items: center;
+          min-height: var(--uswds-theme-header-height);
+          padding: 0 var(--ddd-spacing-4);
+          box-sizing: border-box;
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-weight-bold);
+          color: var(--uswds-theme-muted);
+          text-decoration: none;
+        }
+        .primary-link:hover,
+        .primary-link.current {
+          color: var(--uswds-theme-primary);
+        }
+        .primary-link:hover::after,
+        .primary-link.current::after {
+          content: "";
+          position: absolute;
+          left: var(--ddd-spacing-4);
+          right: var(--ddd-spacing-4);
+          bottom: 0;
+          height: 4px;
+          background-color: var(--uswds-theme-primary);
+        }
+        /* landing page: full width bands, no side navigation */
+        @media (min-width: 1025px) {
+          :host([landing]) .nav {
+            display: none;
+          }
+        }
+        /* the landing column is centered; page sections break out of it to
+           run edge to edge */
+        :host([landing]) main {
+          overflow-x: clip;
+        }
+        :host([landing]) .content {
+          max-width: var(--uswds-theme-content-max-width, 880px);
+          margin-inline: auto;
+          padding-top: 0;
+        }
+        :host([landing]) site-breadcrumb,
+        :host([landing]) .pager {
+          display: none;
+        }
+        /* the hero carries the visible heading; the page title stays for
+           screen readers */
+        :host([landing]) site-active-title {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          overflow: hidden;
+          clip-path: inset(50%);
+          white-space: nowrap;
+        }
+        /* landing bands: page sections run edge to edge, their content on
+           the USWDS grid */
+        :host([landing]) #slot ::slotted(page-section) {
+          --page-section-content-width: 100%;
+          --page-section-content-max-width: 1040px;
+          --page-section-content-padding: 0 var(--ddd-spacing-8);
+          --page-section-padding: var(--ddd-spacing-16) 0;
+          margin-bottom: var(--ddd-spacing-12);
+        }
+        :host([landing]) #slot ::slotted(page-section),
+        :host([landing]) #slot ::slotted(full-width-image) {
+          margin-inline: calc(50% - 50vw);
+        }
+        /* usa-footer: return to top, a primary link band, a secondary band */
+        footer {
+          padding: 0;
+          background-color: transparent;
+        }
+        .return-to-top {
+          max-width: var(--uswds-theme-content-max-width, 880px);
+          padding: var(--ddd-spacing-5) var(--ddd-spacing-8);
+          box-sizing: border-box;
+        }
+        :host([landing]) .return-to-top {
+          margin-inline: auto;
+        }
+        .return-to-top a {
+          color: var(--uswds-theme-primary);
+        }
+        .footer-primary {
+          padding: var(--ddd-spacing-4) var(--ddd-spacing-8);
+          background-color: var(--uswds-theme-band);
+        }
+        .footer-link {
+          display: inline-block;
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-6)
+            var(--ddd-spacing-2) 0;
+          font-weight: var(--ddd-font-weight-bold);
+          color: light-dark(var(--usa-gray-90), var(--usa-white));
+        }
+        .footer-secondary {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: space-between;
+          gap: var(--ddd-spacing-4);
+          padding: var(--ddd-spacing-8);
+          background-color: light-dark(
+            var(--usa-gray-cool-10),
+            var(--usa-gray-cool-80)
+          );
+        }
+        .footer-title {
+          --site-title-heading-font-size: var(--ddd-font-size-xs);
+          --site-title-heading-font-weight: var(--ddd-font-weight-bold);
         }
         @media (max-width: 1024px) {
           .menu-btn {
             display: inline-flex;
             align-items: center;
+          }
+          .primary-nav {
+            display: none;
           }
           .nav {
             position: fixed;
@@ -366,9 +500,14 @@ class UswdsTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
             padding: 0 var(--ddd-spacing-4);
           }
           .content,
-          footer {
+          .return-to-top,
+          .footer-primary,
+          .footer-secondary {
             padding-left: var(--ddd-spacing-4);
             padding-right: var(--ddd-spacing-4);
+          }
+          :host([landing]) .content {
+            padding-top: 0;
           }
           .pager {
             margin-left: var(--ddd-spacing-4);
@@ -396,7 +535,8 @@ class UswdsTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
             part="site-title"
           ></site-title>
         </div>
-        ${this.renderActions()} ${this.renderNavToggle()}
+        ${this.renderPrimaryNav()} ${this.renderActions()}
+        ${this.renderNavToggle()}
       </header>
       <div class="layout">
         ${this.renderNav()}
@@ -410,11 +550,60 @@ class UswdsTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           </div>
           ${this.renderPager()}
           <footer part="footer">
-            <site-region name="footerPrimary"></site-region>
+            <div class="return-to-top">
+              <a href="#top" @click="${this._returnToTop}"
+                >${this.t.returnToTop}</a
+              >
+            </div>
+            <nav class="footer-primary" aria-label="${this.t.footerNavigation}">
+              ${this.renderTopLinks("footer-link")}
+            </nav>
+            <div class="footer-secondary">
+              <site-title
+                ?disabled="${this.editMode}"
+                class="footer-title"
+              ></site-title>
+              <site-region name="footerPrimary"></site-region>
+            </div>
           </footer>
         </main>
       </div>
     `;
+  }
+
+  // top-level pages, as USWDS's primary navigation and footer links
+  renderTopLinks(cls) {
+    return html`<ul class="${cls}s">
+      ${(this._topItems || []).map(
+        (item) =>
+          html`<li>
+            <a
+              class="${cls}${item.id === this._currentTop ? " current" : ""}"
+              href="${item.slug}"
+              aria-current="${item.id === this._currentTop ? "page" : "false"}"
+              >${item.title}</a
+            >
+          </li>`,
+      )}
+    </ul>`;
+  }
+
+  renderPrimaryNav() {
+    return html`<nav
+      class="primary-nav"
+      aria-label="${this.t.primaryNavigation}"
+    >
+      ${this.renderTopLinks("primary-link")}
+    </nav>`;
+  }
+
+  _returnToTop(e) {
+    e.preventDefault();
+    globalThis.scrollTo({ top: 0 });
+    const skip = this.shadowRoot.querySelector(".skip-link");
+    if (skip) {
+      skip.focus();
+    }
   }
 
   renderNavToggle() {
@@ -485,6 +674,23 @@ class UswdsTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     this.__themeDisposers.push(
       autorun(() => {
         this._dark = !!toJS(store.darkMode);
+      }),
+    );
+    this.__themeDisposers.push(
+      autorun(() => {
+        const manifest = toJS(store.manifest);
+        const active = toJS(store.activeItem);
+        const items = manifest && manifest.items ? manifest.items : [];
+        this._topItems = items.filter(
+          (i) =>
+            !i.parent &&
+            !(i.metadata && i.metadata.hideInMenu) &&
+            !(i.metadata && i.metadata.published === false),
+        );
+        const ancestor = toJS(store.ancestorItem);
+        this._currentTop = ancestor ? ancestor.id : active ? active.id : "";
+        const first = items.find((i) => typeof i.id !== "undefined");
+        this.landing = !!(active && first && active.id === first.id);
       }),
     );
     this.__themeDisposers.push(

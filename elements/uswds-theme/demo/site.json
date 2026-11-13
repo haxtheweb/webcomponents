@@ -1,8 +1,8 @@
 {
   "id": "7a11e0d2-6b3d-4e2a-9c8f-uswds0000001",
-  "title": "USWDS for HAX",
+  "title": "Open Learning Commons",
   "author": "",
-  "description": "A HAXsite demonstrating uswds-theme and the USWDS DDD bridge.",
+  "description": "A demo site for uswds-theme: the USWDS landing page and documentation layouts, built from HAX blocks.",
   "license": "by-sa",
   "metadata": {
     "author": {
@@ -48,14 +48,14 @@
   },
   "items": [
     {
-      "id": "item-7a11e0d2-overview",
+      "id": "item-7a11e0d2-home",
       "indent": 0,
-      "location": "pages/item-7a11e0d2-overview/index.html",
-      "slug": "overview",
+      "location": "pages/item-7a11e0d2-home/index.html",
+      "slug": "home",
       "order": 0,
       "parent": null,
-      "title": "Overview",
-      "description": "What the USWDS theme and design system bridge do.",
+      "title": "Home",
+      "description": "A landing page built from HAX blocks in the USWDS landing page layout.",
       "metadata": {
         "created": 1736889000,
         "updated": 1736889000,
@@ -68,14 +68,14 @@
       }
     },
     {
-      "id": "item-7a11e0d2-blocks",
+      "id": "item-7a11e0d2-services",
       "indent": 0,
-      "location": "pages/item-7a11e0d2-blocks/index.html",
-      "slug": "blocks",
+      "location": "pages/item-7a11e0d2-services/index.html",
+      "slug": "services",
       "order": 1,
       "parent": null,
-      "title": "Blocks in USWDS",
-      "description": "Common HAX blocks rendered through the USWDS bridge.",
+      "title": "Services",
+      "description": "A documentation page with USWDS-style alerts, accordion, process list and table.",
       "metadata": {
         "created": 1736889000,
         "updated": 1736889000,
@@ -88,34 +88,14 @@
       }
     },
     {
-      "id": "item-7a11e0d2-learning-checks",
+      "id": "item-7a11e0d2-services-eligibility",
       "indent": 1,
-      "location": "pages/item-7a11e0d2-learning-checks/index.html",
-      "slug": "blocks/learning-checks",
+      "location": "pages/item-7a11e0d2-services-eligibility/index.html",
+      "slug": "services/eligibility",
       "order": 0,
-      "parent": "item-7a11e0d2-blocks",
-      "title": "Learning checks",
-      "description": "Answer states keep HAX meaning channels in USWDS colors.",
-      "metadata": {
-        "created": 1736889000,
-        "updated": 1736889000,
-        "published": true,
-        "hideInMenu": false,
-        "locked": false,
-        "readtime": 1,
-        "tags": "",
-        "status": ""
-      }
-    },
-    {
-      "id": "item-7a11e0d2-color",
-      "indent": 0,
-      "location": "pages/item-7a11e0d2-color/index.html",
-      "slug": "color",
-      "order": 2,
-      "parent": null,
-      "title": "Palette and color",
-      "description": "DDD palettes and accents mapped onto the USWDS palette.",
+      "parent": "item-7a11e0d2-services",
+      "title": "Eligibility checklist",
+      "description": "A checklist and a learning check in USWDS colors.",
       "metadata": {
         "created": 1736889000,
         "updated": 1736889000,
@@ -132,10 +112,30 @@
       "indent": 0,
       "location": "pages/item-7a11e0d2-about/index.html",
       "slug": "about",
-      "order": 3,
+      "order": 2,
       "parent": null,
-      "title": "About the bridge",
-      "description": "How the mapping works, and upstream attribution.",
+      "title": "About",
+      "description": "How the theme and the USWDS bridge work, and attribution.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-7a11e0d2-about-color",
+      "indent": 1,
+      "location": "pages/item-7a11e0d2-about-color/index.html",
+      "slug": "about/color",
+      "order": 0,
+      "parent": "item-7a11e0d2-about",
+      "title": "Palette and type",
+      "description": "DDD palettes and accents mapped onto the USWDS palette.",
       "metadata": {
         "created": 1736889000,
         "updated": 1736889000,

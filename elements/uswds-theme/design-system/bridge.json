@@ -63,7 +63,11 @@
     "--usa-blue-10",
     "--usa-blue-vivid-30",
     "--usa-blue-vivid-60",
-    "--usa-blue-warm-vivid-70"
+    "--usa-blue-warm-vivid-70",
+    "--usa-gray-cool-80",
+    "--usa-blue-warm-vivid-80",
+    "--usa-cyan-vivid-30",
+    "--usa-blue-cool-vivid-5"
   ],
   "ddd": {
     "--ddd-theme-default-pughBlue": {
