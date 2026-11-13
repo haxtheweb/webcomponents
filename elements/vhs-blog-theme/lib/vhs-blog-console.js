@@ -8,7 +8,8 @@ import { LitElement, html, css } from "lit";
  * `vhs-blog-console`
  * A walnut console TV cabinet: the "vcr" slot sits on top of the cabinet,
  * the default slot is the screen, with a control panel and drawers around
- * it. Purely a frame; it holds no state and every part is decorative.
+ * it. A frame: the only control is the Channel knob, which fires
+ * "vhs-blog-console-knob" for the page to change the TV's channel.
  *
  * @element vhs-blog-console
  */
@@ -20,14 +21,16 @@ export class VhsBlogConsole extends LitElement {
   static get properties() {
     return {
       plate: { type: String },
-      channel: { type: String },
+      channel: { type: Number },
+      knobLabel: { type: String, attribute: "knob-label" },
     };
   }
 
   constructor() {
     super();
     this.plate = "HAXTRON";
-    this.channel = "03";
+    this.channel = 3;
+    this.knobLabel = "Channel";
   }
 
   static get styles() {
@@ -113,6 +116,26 @@ export class VhsBlogConsole extends LitElement {
           box-shadow: 0 3px 0 #1a0d05;
           position: relative;
         }
+        .knobbtn {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 6px;
+          background: transparent;
+          border: 0;
+          padding: 0;
+          cursor: pointer;
+          color: #e9d9b0;
+          font-family: "Archivo Narrow", sans-serif;
+          font-weight: 700;
+          font-size: 12px;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+        }
+        .knobbtn:focus-visible {
+          outline: 3px solid #ffd60a;
+          outline-offset: 4px;
+        }
         .knob::after {
           content: "";
           position: absolute;
@@ -124,7 +147,7 @@ export class VhsBlogConsole extends LitElement {
           background: #2a1408;
           border-radius: 2px;
           transform-origin: 50% 21px;
-          transform: rotate(35deg);
+          transform: rotate(var(--vhs-knob, 35deg));
         }
         .grille {
           width: 100%;
@@ -174,6 +197,11 @@ export class VhsBlogConsole extends LitElement {
           background: #c9a34a;
           border-radius: 2px;
         }
+        @media (prefers-reduced-motion: no-preference) {
+          .knob::after {
+            transition: transform 0.3s;
+          }
+        }
         @media (max-width: 760px) {
           .ctrl,
           .drawers {
@@ -193,6 +221,15 @@ export class VhsBlogConsole extends LitElement {
     ];
   }
 
+  _knob() {
+    this.dispatchEvent(
+      new CustomEvent("vhs-blog-console-knob", {
+        bubbles: true,
+        composed: true,
+      }),
+    );
+  }
+
   render() {
     return html`
       <div class="top-shelf"><slot name="vcr"></slot></div>
@@ -200,12 +237,21 @@ export class VhsBlogConsole extends LitElement {
         <div class="top"></div>
         <div class="body">
           <div class="tvbox"><slot></slot></div>
-          <div class="ctrl" aria-hidden="true">
-            <span class="plate">${this.plate}</span>
-            <span class="chan">${this.channel}</span>
-            <span class="knob"></span>
-            <span class="knob"></span>
-            <span class="grille"></span>
+          <div class="ctrl">
+            <span class="plate" aria-hidden="true">${this.plate}</span>
+            <span class="chan" aria-hidden="true"
+              >${this.channel < 10 ? "0" + this.channel : this.channel}</span
+            >
+            <button
+              class="knobbtn"
+              type="button"
+              style="--vhs-knob: ${this.channel === 4 ? "75deg" : "35deg"}"
+              @click="${this._knob}"
+            >
+              <span class="knob" aria-hidden="true"></span>${this.knobLabel}
+            </button>
+            <span class="knob" aria-hidden="true"></span>
+            <span class="grille" aria-hidden="true"></span>
           </div>
         </div>
         <div class="drawers" aria-hidden="true">

@@ -10,6 +10,8 @@ A bridge makes an outside design system (PatternFly, Carbon, Spectrum, ...) **DD
 
 `bridge.json` lists one or more `sources`, each an npm package pinned to an exact version with its license. `format: "css"` reads compiled CSS custom properties, using `scopes.light` and `scopes.dark` (selectors merged in order) to resolve each mode. `format: "dtcg"` reads a [DTCG](https://www.designtokens.org/) token file and writes each token as a custom property under the source's `prefix` (for example, Carbon's palette `blue.60` becomes `--carbon-blue-60`). DTCG sources are treated as mode-free, which suits palettes and motion. Later sources override earlier ones on name clashes.
 
+A design system that lives in its theme rather than on npm (for example Keepcase in `elements/vhs-blog-theme`) is a `local` source: `"local": true` with `file` relative to the theme folder. It is read in place, and its `license` must match the theme's own `package.json`.
+
 ## The contract
 
 Every bridge is checked against the same contract, so coverage is comparable across systems.

@@ -7,21 +7,24 @@ import { styleMap } from "lit/directives/style-map.js";
 import { vhsBlogCase, vhsBlogLoadFace } from "./vhs-blog-case.js";
 
 const KEYS = ["eject", "prev", "play", "skip", "next"];
+// prev and next are the rewind and fast forward keys: they move between posts
 const ICONS = {
   eject: "M12 5l7 9H5zM5 17h14v2H5z",
   prev: "M11 6v12L3 12zM21 6v12l-8-6z",
   play: "M8 5v14l11-7z",
-  skip: "M3 6v12l8-6zM13 6v12l8-6z",
-  next: "M4 6v12l8-6zM14 6h3v12h-3z",
+  skip: "M4 6v12l8-6zM14 6h3v12h-3z",
+  next: "M3 6v12l8-6zM13 6v12l8-6z",
 };
 
 /**
  * `vhs-blog-vcr`
  * A silver top-loading VCR. The "phase" drives the tape load:
- * idle (clock blinks) -> open (lid pops up, cassette above) -> insert
- * (cassette drops in) -> press (lid presses down, PLAY key goes down) ->
- * playing. The piano keys are real buttons; each one fires
- * "vhs-blog-vcr-key" with detail.key of eject, prev, play, skip or next.
+ * idle (clock blinks) -> lift (lid pops up, waiting for a tape) -> open
+ * (cassette above the slot) -> insert (cassette drops in) -> press (lid
+ * presses down, PLAY key goes down) -> playing. "rew" and "ff" hold the
+ * rewind or fast forward key down while the theme moves between posts.
+ * The piano keys are real buttons; each one fires "vhs-blog-vcr-key" with
+ * detail.key of eject, prev (rewind), play, skip or next (fast forward).
  * Disabled keys are listed in "disabled" (space separated).
  *
  * @element vhs-blog-vcr
@@ -47,6 +50,10 @@ export class VhsBlogVcr extends LitElement {
       playLabel: { type: String, attribute: "play-label" },
       skipLabel: { type: String, attribute: "skip-label" },
       nextLabel: { type: String, attribute: "next-label" },
+      prevHint: { type: String, attribute: "prev-hint" },
+      nextHint: { type: String, attribute: "next-hint" },
+      rewLabel: { type: String, attribute: "rew-label" },
+      ffLabel: { type: String, attribute: "ff-label" },
     };
   }
 
@@ -62,10 +69,14 @@ export class VhsBlogVcr extends LitElement {
     this.loadLabel = "LOAD";
     this.playingLabel = "PLAY";
     this.ejectLabel = "Eject";
-    this.prevLabel = "Prev";
+    this.prevLabel = "Rew";
     this.playLabel = "Play";
     this.skipLabel = "Skip";
-    this.nextLabel = "Next";
+    this.nextLabel = "FF";
+    this.prevHint = "previous post";
+    this.nextHint = "next post";
+    this.rewLabel = "REW";
+    this.ffLabel = "FF";
   }
 
   static get styles() {
@@ -244,6 +255,7 @@ export class VhsBlogVcr extends LitElement {
           background: #2c2c2c;
           box-shadow: inset 0 0 0 2px #444;
         }
+        :host([phase="lift"]) .lid,
         :host([phase="open"]) .lid,
         :host([phase="insert"]) .lid {
           transform: translateY(-40px);
@@ -314,6 +326,16 @@ export class VhsBlogVcr extends LitElement {
     }
   }
 
+  /**
+   * Where the cassette waits above the open lid, in viewport pixels, so a
+   * tape carried in from elsewhere can land exactly where this deck takes
+   * it over (phase "open").
+   */
+  cassetteRect() {
+    const cas = this.shadowRoot ? this.shadowRoot.querySelector(".cas") : null;
+    return cas ? cas.getBoundingClientRect() : null;
+  }
+
   _key(key) {
     this.dispatchEvent(
       new CustomEvent("vhs-blog-vcr-key", {
@@ -330,6 +352,15 @@ export class VhsBlogVcr extends LitElement {
     }
     if (this.phase === "press" || this.phase === "playing") {
       return "▶ " + this.playingLabel;
+    }
+    if (this.phase === "rew") {
+      return "◀◀ " + this.rewLabel;
+    }
+    if (this.phase === "ff") {
+      return this.ffLabel + " ▶▶";
+    }
+    if (this.phase === "lift") {
+      return this.loadLabel;
     }
     return this.clockLabel;
   }
@@ -351,7 +382,12 @@ export class VhsBlogVcr extends LitElement {
       skip: this.skipLabel,
       next: this.nextLabel,
     };
-    const playDown = this.phase === "press" || this.phase === "playing";
+    const down = {
+      play: this.phase === "press" || this.phase === "playing",
+      prev: this.phase === "rew",
+      next: this.phase === "ff",
+    };
+    const hints = { prev: this.prevHint, next: this.nextHint };
     return html`
       <div class="cas" style=${styleMap(vars)} aria-hidden="true">
         <span class="win"></span><span class="lbl">${this.tapeTitle}</span
@@ -368,8 +404,9 @@ export class VhsBlogVcr extends LitElement {
             (k) => html`
               <button
                 type="button"
-                class="${k === "play" && playDown ? "down" : ""}"
+                class="${down[k] ? "down" : ""}"
                 ?disabled="${off.includes(k)}"
+                aria-label="${hints[k] ? `${labels[k]}, ${hints[k]}` : labels[k]}"
                 @click="${() => this._key(k)}"
               >
                 <span class="cap"

@@ -28,12 +28,15 @@
     "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs",
     "dddaudit": "hax audit",
     "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium --watch",
-    "test": "web-test-runner \"test/**/*.test.js\" --coverage --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium"
+    "test": "web-test-runner \"test/**/*.test.js\" --coverage --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium",
+    "bridge": "node ../d-d-d/design-system/bridge/build-bridge.js ."
   },
   "dependencies": {
     "@haxtheweb/d-d-d": "^26.0.0",
     "@haxtheweb/haxcms-elements": "^26.0.0",
     "@haxtheweb/i18n-manager": "^26.8.0",
+    "@haxtheweb/q-r": "^26.8.0",
+    "@haxtheweb/rpg-character": "^26.8.0",
     "lit": "3.3.3",
     "mobx": "^6.0.0"
   },

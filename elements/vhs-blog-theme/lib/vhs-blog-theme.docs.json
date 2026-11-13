@@ -59,7 +59,7 @@
       "property": "phase",
       "type": "string",
       "default": "\"idle\"",
-      "description": "tape load state: idle, open, insert, press, playing",
+      "description": "tape load state: idle, unbox, lift, open, insert, press, rew, ff, playing",
       "hax": null
     },
     {
@@ -69,6 +69,30 @@
       "default": "\"\"",
       "description": "",
       "hax": null
+    },
+    {
+      "name": "channel",
+      "property": "channel",
+      "type": "number",
+      "default": "3",
+      "description": "TV channel: 3 plays the tape, 4 is static",
+      "hax": null
+    },
+    {
+      "name": "static-held",
+      "property": "staticHeld",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "flipped",
+      "property": "flipped",
+      "type": "boolean",
+      "default": "false",
+      "description": "the box art is turned to its back",
+      "hax": null
     }
   ],
   "slots": [
@@ -77,7 +101,7 @@
   ],
   "events": [],
   "hax": {},
-  "surfaceHash": "f44c62d7f2fe",
+  "surfaceHash": "b70e6a484af2",
   "walkthroughs": [],
   "videos": [],
   "motion": {

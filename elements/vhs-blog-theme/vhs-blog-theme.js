@@ -20,6 +20,10 @@ import "./lib/vhs-blog-cover.js";
 import "./lib/vhs-blog-tv.js";
 import "./lib/vhs-blog-vcr.js";
 import "./lib/vhs-blog-console.js";
+import "./lib/vhs-blog-back.js";
+import { KeepcaseTokens } from "./lib/KeepcaseTokens.js";
+import { KeepcaseDDDMap } from "./lib/KeepcaseDDDMap.js";
+import { activateKeepcaseDesignSystem } from "./lib/KeepcaseDesignSystem.js";
 
 // faces the theme chrome itself uses (case title faces load per case)
 const CHROME_FACES = [
@@ -37,10 +41,27 @@ const STACK_SIZE = 10;
 // upright tapes in the tower beside the console, and per tower shelf
 const TOWER_SIZE = 16;
 const TOWER_ROW = 8;
-// tape load timeline (ms): lid opens, cassette drops, lid presses, route
+// deck timeline (ms) once a cassette is over the open lid: it drops in,
+// the lid presses down, then the route changes
 const LOAD_INSERT = 380;
 const LOAD_PRESS = 1150;
 const LOAD_ROUTE = 1500;
+// unboxing a tape from the tower (ms): off the shelf and turned to its
+// front, tipped open, cassette slides out, cassette flies to the deck
+const UNBOX_PULL = 720;
+const UNBOX_OPEN = 300;
+const UNBOX_SLIDE = 650;
+const UNBOX_FLY = 650;
+// a carried-in cassette is already over the lid, so the deck starts sooner
+const HANDOFF = 320;
+// rewind / fast forward between posts, and the reduced motion hold
+const SEEK = 900;
+const STILL_HOLD = 700;
+// the cassette as the VCR draws it, so a flying one can match it
+const CASSETTE_W = 310;
+const CASSETTE_H = 46;
+// tower titles cast on channel 4
+const CAST_SIZE = 8;
 
 /**
  * @title VHS Blog
@@ -80,7 +101,13 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     this.isHome = true;
     this.phase = "idle";
     this.loadingTitle = "";
+    this.channel = 3;
+    this.staticHeld = false;
+    this.flipped = false;
+    this._unbox = null;
     this.__timers = [];
+    this.__anims = [];
+    this.__run = 0;
     this.t = {
       ...this.t,
       skipToContent: "Skip to content",
@@ -97,16 +124,28 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
       hintIdle:
         "Pick a tape. It drops into the VCR, the TV warms up, and the post loads below.",
       hintPlaying: "Now playing. The post is below.",
+      hintLoading: "Loading",
+      hintStatic: "Channel 4: static. Something keeps tumbling through it.",
+      skipAnimation: "Skip animation",
+      pauseStatic: "Pause static",
       vcr: "VCR",
       topLoad: "Top load",
       clock: "12:00",
       load: "LOAD",
       play: "Play",
       eject: "Eject",
-      prev: "Prev",
+      prev: "Rew",
+      prevHint: "previous post",
       skip: "Skip",
-      next: "Next",
+      next: "FF",
+      nextHint: "next post",
+      rewDisplay: "REW",
+      ffDisplay: "FF",
       tvOff: "The TV is off",
+      changeChannel: "Change channel",
+      channelStatic: "Channel 4: static",
+      noSignal: "No signal · HAX the web",
+      channelKnob: "Channel",
       aisle: "Aisle",
       boxSet: "Box set",
       min: "min",
@@ -118,12 +157,20 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
       titleSequenceFor: "Title sequence for",
       runningTime: "Running time",
       feature: "a keepcase feature",
-      channel: "CH 03",
+      channel: "CH",
       previousCase: "Previous case",
       nextCase: "Next case",
       previousAndNext: "Previous and next",
-      frontCover: "Front cover",
+      boxArt: "Box art",
+      showBack: "Show the back of the box",
+      frontOfBox: "Front of the box · select it to turn it over",
+      backOfBox: "Back of the box · select it to turn it over",
+      distributedBy: "Exclusively distributed by",
+      publishedWith: "Published with HAXcms",
+      qrOpens: "QR code that opens",
     };
+    // blocks authored in posts take on Keepcase through the DDD bridge
+    activateKeepcaseDesignSystem();
     // no I18NMixin in this class chain, so register with the store directly
     I18NManagerStore.registerLocalization({
       context: this,
@@ -139,9 +186,15 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
       activeId: { type: String },
       activeItem: { type: Object },
       isHome: { type: Boolean, reflect: true, attribute: "is-home" },
-      /** tape load state: idle, open, insert, press, playing */
+      /** tape load state: idle, unbox, lift, open, insert, press, rew, ff, playing */
       phase: { type: String, reflect: true },
       loadingTitle: { type: String },
+      /** TV channel: 3 plays the tape, 4 is static */
+      channel: { type: Number },
+      staticHeld: { type: Boolean, attribute: "static-held" },
+      /** the box art is turned to its back */
+      flipped: { type: Boolean, reflect: true },
+      _unbox: { type: Object, state: true },
     };
   }
 
@@ -250,6 +303,7 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     this.isHome = home;
     this.phase = home ? "idle" : "playing";
     this.loadingTitle = "";
+    this.flipped = false;
     const dialog = this.shadowRoot
       ? this.shadowRoot.querySelector("#browse")
       : null;
@@ -373,6 +427,37 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
   _clearTimers() {
     (this.__timers || []).forEach((id) => clearTimeout(id));
     this.__timers = [];
+    (this.__anims || []).forEach((a) => a.cancel());
+    this.__anims = [];
+    this.__run = (this.__run || 0) + 1;
+    this._unbox = null;
+  }
+
+  _reduced() {
+    return Boolean(
+      globalThis.matchMedia &&
+      globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches,
+    );
+  }
+
+  _route(item) {
+    const href = new URL(item.slug, globalThis.document.baseURI).href;
+    globalThis.history.pushState(null, null, href);
+    globalThis.dispatchEvent(new PopStateEvent("popstate"));
+  }
+
+  /** the deck takes over a cassette that is already over its open lid */
+  _deck(item, insertAt, pressAt, routeAt) {
+    this.phase = "open";
+    this.__timers.push(
+      setTimeout(() => {
+        this.phase = "insert";
+      }, insertAt),
+      setTimeout(() => {
+        this.phase = "press";
+      }, pressAt),
+      setTimeout(() => this._route(item), routeAt),
+    );
   }
 
   /**
@@ -394,14 +479,17 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     if (e) {
       e.preventDefault();
     }
-    this._loadTape(item);
+    this._loadTape(item, e ? e.currentTarget : null);
   }
 
   /**
-   * Drop a tape into the VCR: lid up, cassette in, lid down, then route to
-   * the post. Reduced motion and edit mode skip straight to the route.
+   * Play a post. A tape picked from the tower beside the console comes off
+   * the shelf in its sleeve, turns to its front, opens, and its cassette
+   * flies into the VCR. Anything else (aisles, pager, narrow screens where
+   * the tower sits below the console) goes straight into the deck. Reduced
+   * motion shows the sleeve where it lands, then plays; edit mode routes.
    */
-  _loadTape(item) {
+  _loadTape(item, from) {
     if (!item) {
       return;
     }
@@ -410,34 +498,189 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
       this._replay();
       return;
     }
-    const href = new URL(item.slug, globalThis.document.baseURI).href;
-    const go = () => {
-      globalThis.history.pushState(null, null, href);
-      globalThis.dispatchEvent(new PopStateEvent("popstate"));
-    };
-    const reduce =
-      globalThis.matchMedia &&
-      globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches;
     this.loadingTitle = item.title;
-    if (reduce || this.editMode) {
-      go();
+    if (this.editMode) {
+      this._route(item);
+      return;
+    }
+    const tape =
+      from && from.classList && from.classList.contains("tape")
+        ? from
+        : this.shadowRoot.querySelector(
+            `.tower a.tape[data-id="${globalThis.CSS.escape(item.id)}"]`,
+          );
+    const tv = this.shadowRoot.querySelector("vhs-blog-tv");
+    const tr = tape ? tape.getBoundingClientRect() : null;
+    const sr = tv ? tv.getBoundingClientRect() : null;
+    // the tower has to be beside the TV and the TV on screen
+    const beside =
+      tr &&
+      sr &&
+      tr.left >= sr.right &&
+      sr.top >= -sr.height / 2 &&
+      sr.bottom <= globalThis.innerHeight + sr.height / 2;
+    if (beside) {
+      this._unboxTape(item, tr, sr);
+      return;
+    }
+    if (this._reduced()) {
+      this._route(item);
       return;
     }
     globalThis.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-    this.phase = "open";
-    this.__timers = [
-      setTimeout(() => {
-        this.phase = "insert";
-      }, LOAD_INSERT),
-      setTimeout(() => {
-        this.phase = "press";
-      }, LOAD_PRESS),
-      setTimeout(go, LOAD_ROUTE),
-    ];
+    this._deck(item, LOAD_INSERT, LOAD_PRESS, LOAD_ROUTE);
+  }
+
+  _animate(el, keyframes, options) {
+    const a = el.animate(keyframes, { fill: "forwards", ...options });
+    this.__anims.push(a);
+    // a cancelled animation (another tape, skip, a route) just ends the run
+    return a.finished.catch(() => null);
+  }
+
+  async _unboxTape(item, tr, sr) {
+    const run = this.__run;
+    const sx = sr.left + sr.width / 2;
+    const sy = sr.top + sr.height / 2;
+    // the sleeve comes out at the post cover's own size when the TV allows
+    const h = Math.round(Math.min(427, sr.height * 0.92));
+    const w = Math.round(h * 0.75);
+    const still = this._reduced();
+    this.loadingTitle = item.title;
+    this._unbox = { item, sx, sy, w, h, still };
+    this.phase = still ? "lift" : "unbox";
+    await this.updateComplete;
+    if (still) {
+      this.__timers.push(setTimeout(() => this._route(item), STILL_HOLD));
+      return;
+    }
+    const sleeve = this.shadowRoot.querySelector(".fly .sleeve");
+    const cas = this.shadowRoot.querySelector(".fly .cas");
+    const vcr = this.shadowRoot.querySelector("vhs-blog-vcr");
+    if (!sleeve || !cas || !vcr) {
+      this._route(item);
+      return;
+    }
+    const tilt = "rotateX(-14deg) rotateY(-8deg)";
+    const cs = w / CASSETTE_W;
+    const out = `translate(0, ${-(h / 2 + 18)}px) scale(${cs})`;
+    // 1. off the shelf spine first, turning to show the front
+    await this._animate(
+      sleeve,
+      [
+        {
+          transform: `translate(${tr.left + tr.width / 2 - sx}px, ${tr.top + tr.height / 2 - sy}px) rotateY(90deg) scale(${tr.height / h})`,
+        },
+        { transform: "none" },
+      ],
+      { duration: UNBOX_PULL, easing: "cubic-bezier(0.25, 0.8, 0.3, 1)" },
+    );
+    if (run !== this.__run) return;
+    // 2. tipped back, open end up
+    await this._animate(sleeve, [{ transform: "none" }, { transform: tilt }], {
+      duration: UNBOX_OPEN,
+      easing: "ease-out",
+    });
+    if (run !== this.__run) return;
+    // 3. the cassette slides out of the sleeve
+    await this._animate(
+      cas,
+      [
+        { transform: `scale(${cs})`, opacity: 1 },
+        { transform: out, opacity: 1 },
+      ],
+      { duration: UNBOX_SLIDE, easing: "cubic-bezier(0.3, 0.7, 0.3, 1)" },
+    );
+    if (run !== this.__run) return;
+    // 4. lid up; the cassette flies over it and the sleeve drops away
+    this.phase = "lift";
+    await this.updateComplete;
+    const target = vcr.cassetteRect();
+    if (!target || run !== this.__run) return;
+    this._animate(
+      sleeve,
+      [
+        { transform: tilt, opacity: 1 },
+        { transform: "translate(-60px, 560px) scale(0.7)", opacity: 0 },
+      ],
+      { duration: 550, easing: "cubic-bezier(0.5, 0, 0.8, 0.4)" },
+    );
+    await this._animate(
+      cas,
+      [
+        { transform: out, opacity: 1 },
+        {
+          transform: `translate(${target.left + target.width / 2 - sx}px, ${target.top + target.height / 2 - sy}px) scale(${target.width / CASSETTE_W})`,
+          opacity: 1,
+        },
+      ],
+      { duration: UNBOX_FLY, easing: "cubic-bezier(0.4, 0.1, 0.2, 1)" },
+    );
+    if (run !== this.__run) return;
+    // 5. the deck takes it from here
+    this._unbox = null;
+    this._deck(
+      item,
+      60,
+      HANDOFF + LOAD_PRESS - LOAD_INSERT,
+      HANDOFF + LOAD_ROUTE - LOAD_INSERT,
+    );
+  }
+
+  /** jump past whatever is animating straight to the post */
+  _skipAnimation() {
+    const title = this.loadingTitle;
+    const item = this._flat().find((i) => i.title === title);
+    this._clearTimers();
+    if (item) {
+      this._route(item);
+    }
+  }
+
+  /**
+   * Rewind or fast forward to the post before or after this one: the
+   * key stays down and the TV runs tracking lines, then the next tape plays.
+   */
+  _seek(item, dir) {
+    this._clearTimers();
+    if (!item) {
+      return;
+    }
+    if (this.editMode || this._reduced()) {
+      this._route(item);
+      return;
+    }
+    this.loadingTitle = item.title;
+    this.phase = dir;
+    this.__timers.push(setTimeout(() => this._route(item), SEEK));
+  }
+
+  _channel(e) {
+    this.channel = e.detail.channel;
+    this.staticHeld = false;
+  }
+
+  _knob() {
+    const tv = this.shadowRoot.querySelector("vhs-blog-tv");
+    if (tv) {
+      tv.changeChannel();
+    }
+  }
+
+  _toggleStatic() {
+    this.staticHeld = !this.staticHeld;
+  }
+
+  _flip() {
+    this.flipped = !this.flipped;
   }
 
   _vcrDisabled() {
-    if (["open", "insert", "press"].includes(this.phase)) {
+    if (
+      ["unbox", "lift", "open", "insert", "press", "rew", "ff"].includes(
+        this.phase,
+      )
+    ) {
       return "eject prev play skip next";
     }
     if (this.isHome) {
@@ -462,12 +705,12 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     if (key === "eject") {
       this._goShelf();
     } else if (key === "prev" && !this.isHome && idx > 0) {
-      this._loadTape(flat[idx - 1]);
+      this._seek(flat[idx - 1], "rew");
     } else if (key === "next" || (key === "play" && this.isHome)) {
       if (this.isHome) {
         this._loadTape(this._shelf().tower[0] || flat[0]);
       } else if (idx > -1 && idx < flat.length - 1) {
-        this._loadTape(flat[idx + 1]);
+        this._seek(flat[idx + 1], "ff");
       }
     } else if (key === "play") {
       this._replay();
@@ -539,6 +782,8 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
   static get styles() {
     return [
       super.styles,
+      KeepcaseTokens,
+      KeepcaseDDDMap,
       css`
         :host {
           /* Keepcase chrome tokens: this theme is dark by design */
@@ -652,7 +897,8 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
         /* the den: console, VCR and the tape tower */
         .den {
           position: relative;
-          padding: var(--ddd-spacing-10) var(--ddd-spacing-8) 0;
+          /* headroom above the VCR for a cassette waiting over the lid */
+          padding: 190px var(--ddd-spacing-8) 0;
           overflow: hidden;
           background:
             radial-gradient(
@@ -834,11 +1080,145 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
             var(--vhs-art-bg);
         }
         .hint {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: center;
+          gap: var(--ddd-spacing-3);
+          min-height: 44px;
           text-align: center;
           color: var(--vhs-muted);
           font-size: 16px;
           margin: 0;
           padding: 14px 0 18px;
+        }
+        .btn[aria-pressed="true"] {
+          border-color: var(--vhs-focus);
+          color: var(--vhs-focus);
+        }
+
+        /* a tape coming off the tower: sleeve and cassette in flight */
+        .fly {
+          position: fixed;
+          inset: 0;
+          z-index: 20;
+          pointer-events: none;
+          perspective: 1400px;
+        }
+        .fly .sleeve {
+          position: absolute;
+          transform-style: preserve-3d;
+        }
+        .fly .fr {
+          position: absolute;
+          inset: 0;
+          transform: translateZ(var(--vhs-depth));
+          box-shadow: 0 30px 50px rgba(0, 0, 0, 0.7);
+        }
+        .fly .sd {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: var(--vhs-depth);
+          height: 100%;
+          box-sizing: border-box;
+          transform-origin: left center;
+          transform: rotateY(-90deg);
+          background: var(--vhs-case-bg);
+          color: var(--vhs-case-ink);
+          --vhs-art-bg: var(--vhs-case-bg);
+          --vhs-art-ac: var(--vhs-case-accent);
+          --vhs-art-ink: var(--vhs-case-ink);
+          border-top: 5px solid #121212;
+          border-bottom: 5px solid #121212;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          overflow: hidden;
+        }
+        .fly .sd .tart {
+          flex: none;
+          width: 100%;
+          height: 58px;
+        }
+        .fly .sd .vt {
+          flex: 1;
+          min-height: 0;
+          writing-mode: vertical-rl;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 8px 0;
+          font-family: var(--vhs-case-family), Impact, sans-serif;
+          font-weight: var(--vhs-case-weight);
+          text-transform: var(--vhs-case-transform);
+          font-size: 20px;
+          line-height: 1;
+          overflow: hidden;
+        }
+        .fly .mouth {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: var(--vhs-depth);
+          transform-origin: top center;
+          transform: rotateX(90deg);
+          background: linear-gradient(180deg, #050505, #1b1b1b);
+          box-shadow: inset 0 0 0 3px var(--vhs-case-bg);
+        }
+        .fly .cas {
+          position: absolute;
+          width: 310px;
+          height: 46px;
+          box-sizing: border-box;
+          border-radius: 4px;
+          background: repeating-linear-gradient(
+            90deg,
+            #161616 0 3px,
+            #1f1f1f 3px 6px
+          );
+          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding: 0 10px;
+          opacity: 0;
+        }
+        .fly .cas .lbl {
+          flex: 1;
+          min-width: 0;
+          height: 30px;
+          background: var(--vhs-case-bg);
+          color: var(--vhs-case-ink);
+          border: 2px solid #f5f1e8;
+          display: flex;
+          align-items: center;
+          padding: 0 8px;
+          font-family: var(--vhs-case-family), Impact, sans-serif;
+          font-weight: var(--vhs-case-weight);
+          text-transform: var(--vhs-case-transform);
+          font-size: 17px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        .fly .cas .win {
+          flex: none;
+          width: 44px;
+          height: 18px;
+          border-radius: 9px;
+          background: #2c2c2c;
+          box-shadow: inset 0 0 0 2px #444;
+        }
+        /* reduced motion: the sleeve just appears where it lands */
+        .fly.still .sd,
+        .fly.still .mouth,
+        .fly.still .cas {
+          display: none;
+        }
+        .fly.still .fr {
+          transform: none;
         }
         .carpet {
           height: 40px;
@@ -973,6 +1353,76 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           position: sticky;
           top: var(--ddd-spacing-4);
         }
+        /* the box art turns over to its back */
+        .flip {
+          position: relative;
+          perspective: 1600px;
+        }
+        .card {
+          display: grid;
+          transform-style: preserve-3d;
+        }
+        .face {
+          grid-area: 1 / 1;
+          backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
+        }
+        .face-back {
+          transform: rotateY(180deg);
+        }
+        :host([flipped]) .card {
+          transform: rotateY(180deg);
+        }
+        .fliphit {
+          position: absolute;
+          inset: 0;
+          z-index: 1;
+          margin: 0;
+          padding: 0;
+          border: 0;
+          background: transparent;
+          cursor: pointer;
+          border-radius: 8px;
+        }
+        @media (forced-colors: active) {
+          .fliphit {
+            border: 2px solid ButtonText;
+          }
+        }
+        .flipnote {
+          margin: var(--ddd-spacing-3) 0 0;
+          text-align: center;
+          font-family: "Archivo Narrow", sans-serif;
+          font-weight: 700;
+          font-size: 14px;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: var(--vhs-muted);
+        }
+        @media (prefers-reduced-motion: no-preference) {
+          .card {
+            transition: transform 0.7s cubic-bezier(0.3, 0.7, 0.3, 1);
+          }
+        }
+        /* without motion the box swaps sides with a short fade */
+        @media (prefers-reduced-motion: reduce) {
+          :host([flipped]) .card,
+          .face-back {
+            transform: none;
+          }
+          .face {
+            backface-visibility: visible;
+            -webkit-backface-visibility: visible;
+            transition: opacity 0.15s;
+          }
+          .face-back,
+          :host([flipped]) .face-front {
+            opacity: 0;
+          }
+          :host([flipped]) .face-back {
+            opacity: 1;
+          }
+        }
         .case > main {
           flex: 1 1 560px;
           min-width: 0;
@@ -1056,6 +1506,11 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
             flex-basis: 100%;
           }
         }
+        @media (max-width: 760px) {
+          .den {
+            padding-top: 150px;
+          }
+        }
         @media (max-width: 700px) {
           .aisles,
           .pager {
@@ -1122,12 +1577,8 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     return 12;
   }
 
-  _renderTape(item) {
-    const c = vhsBlogCase(item.title);
-    vhsBlogLoadFace(c.family);
-    const rt = this._readtime(item);
-    const size = this._tapeSize(c, rt);
-    const vars = {
+  _caseVars(c) {
+    return {
       "--vhs-case-bg": c.bg,
       "--vhs-case-ink": c.ink,
       "--vhs-case-accent": c.accent,
@@ -1138,7 +1589,16 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
       "--vhs-case-spacing": c.letterSpacing,
       "--vhs-case-sticker": c.sticker,
       "--vhs-case-tilt": c.tilt + "deg",
-      "--vhs-tape-size": size + "px",
+    };
+  }
+
+  _renderTape(item) {
+    const c = vhsBlogCase(item.title);
+    vhsBlogLoadFace(c.family);
+    const rt = this._readtime(item);
+    const vars = {
+      ...this._caseVars(c),
+      "--vhs-tape-size": this._tapeSize(c, rt) + "px",
     };
     const current = !this.isHome && item.id === this.activeId;
     const loading = this.phase !== "idle" && item.title === this.loadingTitle;
@@ -1147,6 +1607,7 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
         <a
           class="tape ${current || loading ? "out" : ""}"
           href="${item.slug}"
+          data-id="${item.id}"
           style=${styleMap(vars)}
           aria-current="${current ? "page" : "false"}"
           @click="${(e) => this._insert(e, item)}"
@@ -1179,10 +1640,23 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
       rows.push(tower.slice(i, i + TOWER_ROW));
     }
     const dim = this.editMode ? "edit-mode-active" : "";
+    const seek = this.phase === "rew" || this.phase === "ff" ? this.phase : "";
+    const loading = !["idle", "playing"].includes(this.phase);
+    let hint = playing ? this.t.hintPlaying : this.t.hintIdle;
+    if (loading) {
+      hint = `${this.t.hintLoading} ${this.loadingTitle}…`;
+    }
+    if (this.channel === 4) {
+      hint = this.t.hintStatic;
+    }
     return html`
       <section class="den" aria-label="${this.t.console}" part="${dim}">
         <div class="setup">
-          <vhs-blog-console>
+          <vhs-blog-console
+            channel="${this.channel}"
+            knob-label="${this.t.channelKnob}"
+            @vhs-blog-console-knob="${this._knob}"
+          >
             <vhs-blog-vcr
               slot="vcr"
               phase="${this.phase}"
@@ -1195,13 +1669,26 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
               playing-label="${this.t.play}"
               eject-label="${this.t.eject}"
               prev-label="${this.t.prev}"
+              prev-hint="${this.t.prevHint}"
               play-label="${this.t.play}"
               skip-label="${this.t.skip}"
               next-label="${this.t.next}"
+              next-hint="${this.t.nextHint}"
+              rew-label="${this.t.rewDisplay}"
+              ff-label="${this.t.ffDisplay}"
               @vhs-blog-vcr-key="${this._vcrKey}"
             ></vhs-blog-vcr>
             <vhs-blog-tv
               bare
+              tunable
+              channel="${this.channel}"
+              ?held="${this.staticHeld}"
+              seek="${seek}"
+              .cast="${tower.slice(0, CAST_SIZE).map((i) => i.title)}"
+              change-label="${this.t.changeChannel}"
+              static-label="${this.t.channelStatic}"
+              off-air-label="${this.t.noSignal}"
+              @vhs-blog-tv-channel="${this._channel}"
               ?off="${!playing}"
               off-label="${this.t.tvOff}"
               crawl-title="${active.title || ""}"
@@ -1237,9 +1724,94 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
               : nothing
           }
         </div>
-        <p class="hint">${playing ? this.t.hintPlaying : this.t.hintIdle}</p>
+        <div class="hint">
+          <span role="status">${hint}</span>
+          ${
+            loading && !this._reduced()
+              ? html`<button
+                  class="btn"
+                  type="button"
+                  @click="${this._skipAnimation}"
+                >
+                  ${this.t.skipAnimation}
+                </button>`
+              : nothing
+          }
+          ${
+            this.channel === 4 && !this._reduced()
+              ? html`<button
+                  class="btn"
+                  type="button"
+                  aria-pressed="${this.staticHeld ? "true" : "false"}"
+                  @click="${this._toggleStatic}"
+                >
+                  ${this.t.pauseStatic}
+                </button>`
+              : nothing
+          }
+        </div>
         <div class="carpet"></div>
+        ${this._renderFly()}
       </section>
+    `;
+  }
+
+  /**
+   * The sleeve and cassette that travel from the tower to the VCR. Purely
+   * visual: the tape link stays the control, and the status line says
+   * what is loading.
+   */
+  _renderFly() {
+    const u = this._unbox;
+    if (!u) {
+      return nothing;
+    }
+    const c = vhsBlogCase(u.item.title);
+    const depth = Math.round(u.w * 0.19);
+    const layer = {
+      "perspective-origin": `${u.sx}px ${u.sy}px`,
+    };
+    const sleeve = {
+      ...this._caseVars(c),
+      left: `${u.sx - u.w / 2}px`,
+      top: `${u.sy - u.h / 2}px`,
+      width: `${u.w}px`,
+      height: `${u.h}px`,
+      "--vhs-depth": `${depth}px`,
+    };
+    const cas = {
+      ...this._caseVars(c),
+      left: `${u.sx - CASSETTE_W / 2}px`,
+      top: `${u.sy - CASSETTE_H / 2}px`,
+    };
+    return html`
+      <div
+        class="fly ${u.still ? "still" : ""}"
+        style=${styleMap(layer)}
+        aria-hidden="true"
+      >
+        <div class="cas" style=${styleMap(cas)}>
+          <span class="win"></span><span class="lbl">${u.item.title}</span
+          ><span class="win"></span>
+        </div>
+        <div class="sleeve" style=${styleMap(sleeve)}>
+          <div class="sd">
+            <span class="tart art-${c.art}"></span
+            ><span class="vt">${u.item.title}</span>
+          </div>
+          <div class="mouth"></div>
+          <div class="fr">
+            <vhs-blog-cover
+              case-title="${u.item.title}"
+              readtime="${this._readtime(u.item)}"
+              presenter="${this.siteTitle}"
+              presents-label="${this.t.presents}"
+              rating-label="${this.t.rating}"
+              min-label="${this.t.min}"
+            ></vhs-blog-cover>
+          </div>
+        </div>
+      </div>
     `;
   }
 
@@ -1303,16 +1875,47 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     return html`
       <div class="post peg">
         <div class="case">
-          <aside class="front" aria-label="${this.t.frontCover}" part="${dim}">
-            <vhs-blog-cover
-              case-title="${title}"
-              readtime="${rt}"
-              presenter="${this.siteTitle}"
-              presents-label="${this.t.presents}"
-              rating-label="${this.t.rating}"
-              min-label="${this.t.min}"
-              cover-label="${this.t.coverArtFor}"
-            ></vhs-blog-cover>
+          <aside class="front" aria-label="${this.t.boxArt}" part="${dim}">
+            <div class="flip">
+              <div class="card">
+                <div class="face face-front" ?inert="${this.flipped}">
+                  <vhs-blog-cover
+                    case-title="${title}"
+                    readtime="${rt}"
+                    presenter="${this.siteTitle}"
+                    presents-label="${this.t.presents}"
+                    rating-label="${this.t.rating}"
+                    min-label="${this.t.min}"
+                    cover-label="${this.t.coverArtFor}"
+                  ></vhs-blog-cover>
+                </div>
+                <div class="face face-back" ?inert="${!this.flipped}">
+                  <vhs-blog-back
+                    case-title="${title}"
+                    description="${item.description || ""}"
+                    url="${item.slug ? new URL(item.slug, globalThis.document.baseURI).href : ""}"
+                    readtime="${rt}"
+                    presenter="${this.siteTitle}"
+                    distributed-label="${this.t.distributedBy}"
+                    running-time-label="${this.t.runningTime}"
+                    min-label="${this.t.min}"
+                    published-label="${this.t.publishedWith}"
+                    qr-label="${this.t.qrOpens}"
+                  ></vhs-blog-back>
+                </div>
+              </div>
+              <button
+                class="fliphit"
+                type="button"
+                aria-pressed="${this.flipped ? "true" : "false"}"
+                @click="${this._flip}"
+              >
+                <span class="sr-only">${this.t.showBack}</span>
+              </button>
+            </div>
+            <p class="flipnote">
+              ${this.flipped ? this.t.backOfBox : this.t.frontOfBox}
+            </p>
           </aside>
           <main>
             <article id="contentcontainer" tabindex="-1">
