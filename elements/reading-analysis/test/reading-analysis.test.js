@@ -1,4 +1,4 @@
-import { fixture, expect, html } from "@open-wc/testing";
+import { fixture, expect, html, waitUntil } from "@open-wc/testing";
 import {
   executeServerCommand,
   sendMouse,
@@ -301,8 +301,13 @@ describe("reading-analysis", () => {
         const passage = target(el, sid(3));
         passage.scrollIntoView({ block: "center" });
         await sendMouse({ type: "move", position: center(passage) });
-        expect(getComputedStyle(passage).backgroundColor).to.not.equal(
-          "rgba(0, 0, 0, 0)",
+        // the passage fades its background in (--ddd-duration-fast), so wait
+        // for it rather than reading the first frame
+        await waitUntil(
+          () =>
+            getComputedStyle(passage).backgroundColor !== "rgba(0, 0, 0, 0)",
+          "the held flag never colored the passage",
+          { timeout: 2000 },
         );
       });
     });
