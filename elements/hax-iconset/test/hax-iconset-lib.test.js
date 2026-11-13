@@ -179,3 +179,23 @@ describe("hax-iconset lib — elmsln-custom-iconset", () => {
     expect(store.iconsets["elmsln-custom-icons"]).to.equal(before);
   });
 });
+
+describe("hax-iconset — the Future Traveler", () => {
+  it("lists the Future Traveler and not his old names", () => {
+    const hax = HaxIconsetManifest.find((set) => set.name === "hax").icons;
+    expect(hax).to.include("future-traveler");
+    expect(hax).to.include("future-traveler-plain");
+    expect(hax).to.not.include("world-traveler");
+    expect(hax).to.not.include("world-traveler-plain");
+  });
+
+  it("still draws content that uses the old names", async () => {
+    for (const name of ["hax:world-traveler", "hax:world-traveler-plain"]) {
+      const url = SimpleIconsetStore.getIcon(name);
+      expect(url).to.match(/\/svgs\/hax\/world-traveler(-plain)?\.svg$/);
+      const res = await fetch(url);
+      expect(res.ok).to.be.true;
+      expect(await res.text()).to.contain("<svg");
+    }
+  });
+});

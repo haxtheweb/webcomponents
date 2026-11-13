@@ -552,7 +552,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"hax:world-traveler-plain\""
+              "default": "\"hax:future-traveler-plain\""
             },
             {
               "kind": "field",

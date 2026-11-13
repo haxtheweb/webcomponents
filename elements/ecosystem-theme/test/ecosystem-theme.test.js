@@ -30,6 +30,12 @@ const MANIFEST = {
           { kind: "portfolio", label: "Bad", href: "javascript:alert(1)" },
         ],
         footerNote: "Built from PRAW.",
+        welcome: {
+          title: "Everything in HAX is connected",
+          text: "One web.",
+          tour: "tours",
+          tourLabel: "Take the tour",
+        },
       },
     },
   },
@@ -159,6 +165,49 @@ describe("ecosystem-theme", function () {
     await element.updateComplete;
     expect(btn.getAttribute("aria-expanded")).to.equal("true");
     expect(element.hasAttribute("menu-open")).to.be.true;
+  });
+
+  it("draws the HAX top bar with the Future Traveler in its corner", () => {
+    const logo = element.shadowRoot.querySelector("header.top .haxLogo");
+    expect(logo.getAttribute("aria-hidden")).to.equal("true");
+    expect(
+      logo.querySelector("simple-icon-lite").getAttribute("icon"),
+    ).to.equal("hax:future-traveler");
+  });
+
+  it("welcomes you on the home page, with a tour and Merlin", async () => {
+    const r = element.shadowRoot;
+    const w = r.querySelector("section.welcome");
+    expect(w.querySelector("h1").textContent).to.equal(
+      "Everything in HAX is connected",
+    );
+    expect(w.querySelector("a.btn").getAttribute("href")).to.equal("tours");
+    expect(w.querySelector("button.btn").textContent.trim()).to.equal(
+      "Ask Merlin",
+    );
+    store.activeId = "goal";
+    await tick();
+    await element.updateComplete;
+    expect(r.querySelector("section.welcome")).to.equal(null);
+  });
+
+  it("gives Merlin every page of the site to jump to", () => {
+    const options = [];
+    element._onMerlin({
+      detail: { merlin: { defineOption: (o) => options.push(o) } },
+    });
+    expect(options.map((o) => o.title)).to.deep.equal([
+      "Ecosystem web",
+      "4. Quality Education",
+      "Tours",
+    ]);
+    expect(options[0].path).to.equal("hax.cloud: webs");
+    expect(options[1].path).to.equal("hax.cloud: Ecosystem web");
+    expect(options[1].value).to.deep.equal({
+      target: element,
+      method: "goTo",
+      args: ["un-sdgs/4-quality-education"],
+    });
   });
 
   it("passes the a11y audit", async () => {

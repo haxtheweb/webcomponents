@@ -227,6 +227,8 @@ export const HaxIconsetManifest = [
       "file-xls",
       "flikr",
       "format-textblock",
+      "future-traveler-plain",
+      "future-traveler",
       "gears",
       "git",
       "globe",
@@ -320,8 +322,6 @@ export const HaxIconsetManifest = [
       "wand",
       "wizard-hat",
       "wordpress",
-      "world-traveler-plain",
-      "world-traveler",
     ],
   },
   {

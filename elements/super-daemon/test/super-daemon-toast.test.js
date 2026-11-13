@@ -27,7 +27,7 @@ describe("super-daemon-toast behavior", () => {
     expect(element.classStyle).to.equal("");
   });
 
-  it("renders the World Traveler mark in a card", () => {
+  it("renders the Future Traveler mark in a card", () => {
     expect(element.shadowRoot.querySelector(".card")).to.exist;
     expect(element.shadowRoot.querySelector(".tile .merlin-traveler")).to.exist;
     expect(
