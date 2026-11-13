@@ -24,7 +24,6 @@
       "outlineDesigner": false,
       "pageBreak": false,
       "insights": false,
-      "styleGuide": false,
       "manifest": false,
       "blocks": ["video-player", "media-image"]
     },

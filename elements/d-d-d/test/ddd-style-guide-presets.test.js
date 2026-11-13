@@ -3,6 +3,7 @@ import { expect } from "@open-wc/testing";
 import "../lib/DDDStyleGuidePresets.js";
 import {
   DDDStyleGuidePresets,
+  MAX_STYLE_GUIDE_PRESETS_PER_TAG,
   getDDDStyleGuidePresetByKey,
   getDDDStyleGuideOptionsForTag,
   getDDDStyleGuidePresetManagedAttributes,
@@ -24,6 +25,34 @@ describe("DDDStyleGuidePresets data", () => {
     expect(DDDStyleGuidePresets.sectionDivider).to.exist;
     expect(DDDStyleGuidePresets.readingRequired).to.exist;
     expect(DDDStyleGuidePresets.readingOptional).to.exist;
+    expect(DDDStyleGuidePresets.bannerHeading).to.exist;
+  });
+
+  it("offers at most five presets for any one tag", () => {
+    expect(MAX_STYLE_GUIDE_PRESETS_PER_TAG).to.equal(5);
+    const perTag = {};
+    Object.keys(DDDStyleGuidePresets).forEach((key) => {
+      DDDStyleGuidePresets[key].allowedTags.forEach((tag) => {
+        perTag[tag] = (perTag[tag] || 0) + 1;
+      });
+    });
+    Object.keys(perTag).forEach((tag) => {
+      expect(perTag[tag], tag).to.be.at.most(MAX_STYLE_GUIDE_PRESETS_PER_TAG);
+    });
+  });
+
+  it("gives every heading level at least one preset", () => {
+    ["h1", "h2", "h3", "h4", "h5", "h6"].forEach((tag) => {
+      expect(getDDDStyleGuideOptionsForTag(tag).length, tag).to.be.above(0);
+    });
+  });
+
+  it("only sets DDD data attributes", () => {
+    Object.keys(DDDStyleGuidePresets).forEach((key) => {
+      Object.keys(DDDStyleGuidePresets[key].properties).forEach((attr) => {
+        expect(attr.indexOf("data-"), key + " " + attr).to.equal(0);
+      });
+    });
   });
 
   it("reading presets target ul and ol through data-design-treatment", () => {
@@ -114,6 +143,21 @@ describe("getDDDStyleGuideOptionsForTag", () => {
       const keys = getDDDStyleGuideOptionsForTag(tag).map((o) => o.value);
       expect(keys).to.deep.equal(["readingRequired", "readingOptional"]);
     });
+  });
+
+  it("keeps callouts on paragraphs, not quotes", () => {
+    const quoteKeys = getDDDStyleGuideOptionsForTag("blockquote").map(
+      (o) => o.value,
+    );
+    expect(quoteKeys).to.deep.equal(["pullQuote"]);
+    const pKeys = getDDDStyleGuideOptionsForTag("p").map((o) => o.value);
+    expect(pKeys).to.deep.equal([
+      "style-1",
+      "calloutInfo",
+      "calloutWarning",
+      "calloutSuccess",
+      "calloutError",
+    ]);
   });
 
   it("does not offer reading presets to text tags", () => {

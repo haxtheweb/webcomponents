@@ -13,6 +13,7 @@ import { LitElement, css, html } from "lit";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import { DDDSuper } from "../d-d-d.js";
 import { ApplicationAttributeData, DDDDataAttributes } from "./DDDStyles.js";
+import { getDDDStyleGuidePresetByKey } from "./DDDStyleGuidePresets.js";
 
 export class DDDSample extends DDDSuper(LitElement) {
   constructor() {
@@ -135,6 +136,34 @@ export class DDDSample extends DDDSuper(LitElement) {
           margin: 0;
         }
 
+        /* style guide presets: the label is a small live sample */
+        :host([type="style-guide"]) {
+          display: block;
+          width: 100%;
+        }
+        :host([type="style-guide"]) .wrapper {
+          width: 100%;
+        }
+        :host([type="style-guide"]) .sample {
+          display: none;
+        }
+        :host([type="style-guide"]) .label {
+          display: block;
+          font-weight: var(--ddd-font-weight-medium);
+          font-size: var(--ddd-font-size-4xs);
+          line-height: var(--ddd-lh-140);
+        }
+        /* accent blocks style p / ul / div in content; the sample is a span */
+        :host([type="style-guide"]) .label[data-accent] {
+          background-color: var(--ddd-theme-accent);
+          color: light-dark(currentcolor, var(--ddd-theme-colorContrast));
+          border: var(--ddd-border-sm);
+          border-color: var(--ddd-theme-primary);
+        }
+        :host([type="style-guide"]) .label[data-accent]:not([data-padding]) {
+          padding: var(--ddd-spacing-2);
+        }
+
         /* design treatments may require display block */
         :host([type="design-treatment"]) .label {
           display: block;
@@ -231,6 +260,16 @@ export class DDDSample extends DDDSuper(LitElement) {
     if (super.updated) {
       super.updated(changedProperties);
     }
+    // a style guide preset previews every attribute it sets on the label
+    if (this.type === "style-guide") {
+      if (
+        this.shadowRoot &&
+        (changedProperties.has("type") || changedProperties.has("option"))
+      ) {
+        this._applyStyleGuidePreset();
+      }
+      return;
+    }
     if (changedProperties.has("type") && this.shadowRoot) {
       let span;
       // accent, primary, spacing
@@ -267,9 +306,39 @@ export class DDDSample extends DDDSuper(LitElement) {
     }
   }
 
+  _applyStyleGuidePreset() {
+    const label = this.shadowRoot.querySelector("span.label");
+    if (!label) {
+      return;
+    }
+    Array.from(label.attributes).forEach((attr) => {
+      if (attr.name.indexOf("data-") === 0) {
+        label.removeAttribute(attr.name);
+      }
+    });
+    const preset = getDDDStyleGuidePresetByKey(this.option);
+    if (preset && preset.properties) {
+      Object.keys(preset.properties).forEach((attribute) => {
+        const value = preset.properties[attribute];
+        // a drop cap does not fit a one-line sample, so leave it off
+        if (
+          attribute === "data-design-treatment" &&
+          String(value).indexOf("dropCap") === 0
+        ) {
+          return;
+        }
+        label.setAttribute(attribute, value);
+      });
+    }
+  }
+
   // label for the current type / option; empty when either is unset or
   // unknown (a bare <d-d-d-sample> has no type yet)
   get sampleLabel() {
+    if (this.type === "style-guide") {
+      const preset = getDDDStyleGuidePresetByKey(this.option);
+      return preset ? preset.name : "";
+    }
     const options = this.type ? ApplicationAttributeData[this.type] : null;
     if (!options || options[this.option] == null) {
       return "";

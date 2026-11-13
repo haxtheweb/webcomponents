@@ -4,6 +4,7 @@
  */
 // the style guide pickers render HAXOptionSampleFactory previews, which
 // are d-d-d-sample elements; d-d-d.js no longer defines it
+import { html } from "lit";
 import "./d-d-d-sample.js";
 import {
   getDDDStyleGuideOptionsForTag,
@@ -30,6 +31,12 @@ function getStyleGuideDefaultDemoSchemaForTag(tag) {
   return null;
 }
 
+// the demoSchema each element had before DDD defaults were merged in, so
+// switching to a design system that does not extend "ddd" can put it back
+const originalDemoSchemas = new WeakMap();
+// marks styleGuideSchema entries this file wrote
+const DDD_STYLE_GUIDE_SOURCE = "ddd-style-guide";
+
 function applyStyleGuideDefaultsToProperties(tag, properties) {
   if (!properties || !tag) {
     return null;
@@ -37,6 +44,14 @@ function applyStyleGuideDefaultsToProperties(tag, properties) {
   const defaultDemoSchema = getStyleGuideDefaultDemoSchemaForTag(tag);
   if (!defaultDemoSchema) {
     return null;
+  }
+  if (!originalDemoSchemas.has(properties)) {
+    originalDemoSchemas.set(
+      properties,
+      Array.isArray(properties.demoSchema)
+        ? JSON.parse(JSON.stringify(properties.demoSchema))
+        : null,
+    );
   }
   const currentDemoSchema =
     properties.demoSchema && properties.demoSchema[0]
@@ -92,6 +107,7 @@ function applyStyleGuideDefaultsToStore(HAXStore, tag, properties) {
       },
     },
   ];
+  HAXStore.styleGuideSchema[tag].source = DDD_STYLE_GUIDE_SOURCE;
   if (
     HAXStore.elementList &&
     HAXStore.elementList[tag] &&
@@ -99,6 +115,35 @@ function applyStyleGuideDefaultsToStore(HAXStore, tag, properties) {
   ) {
     applyStyleGuideDefaultsToProperties(tag, HAXStore.elementList[tag]);
   }
+}
+
+/**
+ * Take the DDD insert defaults back out when the active design system does
+ * not extend "ddd", so a new heading there is not stamped with DDD
+ * attributes that system does not style.
+ */
+function removeStyleGuideDefaultsFromStore(HAXStore) {
+  if (!HAXStore) {
+    return;
+  }
+  const schema = HAXStore.styleGuideSchema || {};
+  Object.keys(schema).forEach((tag) => {
+    if (schema[tag] && schema[tag].source === DDD_STYLE_GUIDE_SOURCE) {
+      delete schema[tag];
+    }
+  });
+  Object.keys(HAXStore.elementList || {}).forEach((tag) => {
+    const properties = HAXStore.elementList[tag];
+    if (properties && originalDemoSchemas.has(properties)) {
+      const original = originalDemoSchemas.get(properties);
+      if (original) {
+        properties.demoSchema = original;
+      } else {
+        delete properties.demoSchema;
+      }
+      originalDemoSchemas.delete(properties);
+    }
+  });
 }
 
 function dddStyleGuideValueChanged(e, detail = {}) {
@@ -349,7 +394,15 @@ export function registerDDDStyleGuideAuthoring(payload = {}) {
               description: "Preset style combinations from the style guide",
               inputMethod: "radio",
               onValueChanged: dddStyleGuideValueChanged,
-              itemsList: styleGuideOptions,
+              // each option is a live sample of the preset, drawn with the
+              // active system's tokens
+              itemsList: styleGuideOptions.map((option) => ({
+                ...option,
+                html: html`<d-d-d-sample
+                  type="style-guide"
+                  option="${option.value}"
+                ></d-d-d-sample>`,
+              })),
             });
           }
           if (["media-image", "img"].includes(tag)) {
@@ -597,6 +650,8 @@ export function registerDDDStyleGuideAuthoring(payload = {}) {
                 HAXStore.elementList[registeredTag],
               );
             });
+          } else {
+            removeStyleGuideDefaultsFromStore(HAXStore);
           }
           refreshDesignSystemProperties(HAXStore);
         });

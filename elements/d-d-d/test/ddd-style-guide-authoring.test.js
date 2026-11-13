@@ -155,6 +155,11 @@ describe("DDD style guide presets for lists in the HAX settings form", () => {
         "Required reading",
         "Optional reading",
       ]);
+      // every option carries a live sample of the preset
+      field.itemsList.forEach((item) => {
+        expect(item.html).to.exist;
+        expect(item.html.values).to.include(item.value);
+      });
       // the list's own Bullet / Number style field is left in place
       expect(
         props.settings.configure.find(
@@ -253,5 +258,55 @@ describe("DDD text alignment setting opt-out", () => {
     expect(attrs).to.include("data-width");
     expect(attrs).to.include("data-padding");
     expect(attrs).to.include("data-margin");
+  });
+});
+
+describe("DDD style guide defaults follow the active design system", () => {
+  it("removes the heading insert default when a non-DDD system becomes active", () => {
+    const wasRegistered = globalThis.__dddStyleGuideAuthoringRegistered;
+    const origHaxStore = globalThis.HaxStore;
+    const manager = { active: "ddd" };
+    const originalDemo = [{ tag: "h2", content: "Heading", properties: {} }];
+    const store = {
+      elementList: {
+        h2: {
+          gizmo: {},
+          designSystem: { text: true, designTreatment: true },
+          settings: { configure: [] },
+          demoSchema: JSON.parse(JSON.stringify(originalDemo)),
+        },
+      },
+      styleGuideSchema: {},
+      __dddStyleGuideAuthoringApplied: false,
+      __dddStyleGuideDefaultSchemaReady: true,
+      isInlineElement: () => false,
+      designSystemHAXProperties: (props) => props,
+    };
+    globalThis.__dddStyleGuideAuthoringRegistered = false;
+    globalThis.HaxStore = { requestAvailability: () => store };
+    try {
+      registerDDDStyleGuideAuthoring({
+        manager,
+        options: { HAXOptionSampleFactory },
+      });
+      // DDD active: new h2s get the headline preset
+      expect(store.styleGuideSchema.h2).to.exist;
+      expect(
+        store.elementList.h2.demoSchema[0].properties["data-style-guide"],
+      ).to.equal("headline");
+      // a system that does not extend ddd takes the default back out
+      manager.active = "bootstrap";
+      globalThis.dispatchEvent(new CustomEvent("design-system-active-changed"));
+      expect(store.styleGuideSchema.h2).to.be.undefined;
+      expect(store.elementList.h2.demoSchema).to.deep.equal(originalDemo);
+      // and back to ddd puts it back
+      manager.active = "ddd";
+      globalThis.dispatchEvent(new CustomEvent("design-system-active-changed"));
+      expect(store.styleGuideSchema.h2).to.exist;
+    } finally {
+      manager.active = "ddd";
+      globalThis.__dddStyleGuideAuthoringRegistered = wasRegistered;
+      globalThis.HaxStore = origHaxStore;
+    }
   });
 });

@@ -114,87 +114,6 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     `;
   }
   /**
-   * Convert HTML into HAX Elements without HAXStore dependency
-   * Similar to HAXStore.htmlToHaxElements but works for all users
-   */
-  async htmlToHaxElements(html) {
-    let elements = [];
-    let fragment = globalThis.document.createElement("div");
-    fragment.innerHTML = html;
-
-    // Test that this is valid HTML and has children
-    if (fragment.children) {
-      const children = fragment.children;
-      // only needed here (style guide / template parsing), never for first paint
-      const { nodeToHaxElement } = await import("@haxtheweb/utils/utils.js");
-      // Loop over the new nodes and convert each to HAXElement
-      for (let i = 0; i < children.length; i++) {
-        if (typeof children[i].tagName !== typeof undefined) {
-          // Use nodeToHaxElement from utils - no validation filtering
-          elements.push(await nodeToHaxElement(children[i], null));
-        }
-      }
-    }
-    return elements;
-  }
-
-  /**
-   * Get available style guide templates for a given tag name
-   * Returns array of template options with id and name for HAX configure forms
-   */
-  async getStyleGuideTemplates(tagName, preloadedContent = null) {
-    try {
-      // Use preloaded content if provided, otherwise load from store
-      const styleGuideContent =
-        preloadedContent || (await store.loadStyleGuideContent());
-      if (!styleGuideContent) {
-        return [];
-      }
-
-      // Convert style guide content to HAX schema elements
-      const styleGuideElements =
-        await this.htmlToHaxElements(styleGuideContent);
-
-      const templates = [];
-
-      for (const styleElement of styleGuideElements) {
-        // Look for page-template elements
-        if (styleElement && styleElement.tag === "page-template") {
-          // Get the actual content element inside the page-template
-          if (styleElement.content) {
-            const templateContentElement = await this.htmlToHaxElements(
-              styleElement.content,
-            );
-            if (
-              templateContentElement &&
-              templateContentElement.length > 0 &&
-              templateContentElement[0].tag === tagName
-            ) {
-              // Extract template information
-              const templateId =
-                styleElement.properties && styleElement.properties.id;
-              const templateName =
-                styleElement.properties && styleElement.properties.name;
-
-              if (templateId && templateName) {
-                templates.push({
-                  value: templateId,
-                  text: templateName,
-                });
-              }
-            }
-          }
-        }
-      }
-
-      return templates;
-    } catch (error) {
-      console.warn("Failed to get style guide templates:", error);
-      return [];
-    }
-  }
-
-  /**
    * Simple "two way" data binding from the element below via events
    */
   _updateManifest(data) {
@@ -993,10 +912,6 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       goToTheHomePage: "Go to the home page",
       redirectHint:
         "If the redirect doesn't work, please click the link above.",
-      styleGuideTemplate: "Template",
-      styleGuideTemplateDescription:
-        "Choose a predefined style template for this element",
-      styleGuideTemplateCustom: "Custom",
     };
     this.registerLocalization({
       context: this,
@@ -1418,9 +1333,6 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         redirectHint: this.t.redirectHint,
       });
 
-      // Previously, style-guide-driven defaults were applied here.
-      // That behavior has been removed so page content renders as-is.
-
       htmlcontent = encapScript(htmlcontent);
       wipeSlot(store.themeElement, "*");
       store.activeItemContent = htmlcontent;
@@ -1739,52 +1651,6 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       }
     };
     whenIdle(run, { timeout: 3000 });
-  }
-
-  /**
-   * Style guide integration for HAX - adds template selector when templates are available
-   * This is called by HaxStore's designSystemHAXProperties method
-   */
-  async addStyleGuideTemplateSelector(props, tag) {
-    try {
-      // Get available templates for this tag
-      const templates = await this.getStyleGuideTemplates(tag);
-
-      // If templates exist, add a template selector to the configure section
-      if (templates && templates.length > 0) {
-        // Create template selector field
-        const templateField = {
-          attribute: "data-haxsg-id",
-          title: this.t.styleGuideTemplate,
-          description: this.t.styleGuideTemplateDescription,
-          inputMethod: "select",
-          icon: "icons:style",
-          options: {
-            "": this.t.styleGuideTemplateCustom,
-          },
-        };
-
-        // Add template options
-        for (const template of templates) {
-          templateField.options[template.value] = template.text;
-        }
-
-        // Ensure configure array exists
-        if (!props.settings) {
-          props.settings = {};
-        }
-        if (!props.settings.configure) {
-          props.settings.configure = [];
-        }
-
-        // Add template field to the beginning of configure section
-        props.settings.configure.unshift(templateField);
-      }
-    } catch (error) {
-      console.warn("Failed to add template selector to HAX properties:", error);
-    }
-
-    return props;
   }
 }
 // this global allows a backdoor into activating the HAXcms editor UI

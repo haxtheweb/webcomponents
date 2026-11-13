@@ -7,10 +7,8 @@
  * -----------------
  * Wires the DDDPatternLibrary registry into the existing HAX stax rail.
  * No new tray UI is built: hax-stax-browser already renders whatever is in
- * HAXStore.staxList, and hax-store already converts <page-template
- * schema="area|page|block"> content into stax entries and demoSchema
- * overrides (see hax-store.js detectAndRegisterPageTemplateStax +
- * _updateElementDemoSchema). This module produces those same shapes from the
+ * HAXStore.staxList, and hax-store reads per-tag insert defaults from
+ * HAXStore.styleGuideSchema. This module produces those shapes from the
  * registry so the pattern library's templates/organisms appear as
  * click-to-insert blocks and single-element molecules override that
  * element's demoSchema on insert.
@@ -107,8 +105,7 @@ function isDDDActive() {
  * Register a single pattern as a stax entry via the existing store hook.
  * Converts the canonical HTML recipe to HAX element objects (the shape
  * hax-insert-content-array expects) using store.htmlToHaxElements(),
- * then creates a <hax-stax> element with that data. Mirrors how
- * hax-store.detectAndRegisterPageTemplateStax builds stax entries.
+ * then creates a <hax-stax> element with that data.
  * @param {object} store HaxStore instance
  * @param {object} pattern registry entry
  */
@@ -140,9 +137,8 @@ async function registerStaxPattern(store, pattern) {
  * Register a single-element molecule as a demoSchema override for its
  * target element. Converts the canonical HTML recipe to a HAX element
  * object so the tag, properties, and inner content are correctly split.
- * Mirrors hax-store._updateElementDemoSchema: writes into
- * HAXStore.styleGuideSchema[targetTag].demoSchema so inserting that element
- * from the gizmo tray uses the canonical recipe.
+ * Writes into HAXStore.styleGuideSchema[targetTag].demoSchema so inserting
+ * that element from the gizmo tray uses the canonical recipe.
  * @param {object} store HaxStore instance
  * @param {object} pattern registry entry (hax.publish === 'demoSchemaOverride')
  */

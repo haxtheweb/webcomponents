@@ -755,9 +755,18 @@ describe("haxcms-site-store computed getters extended", () => {
     });
 
     it("returns true when internal route has useHaxEditor", () => {
-      store.activeId = "404";
-      store.currentRouterLocation = { params: ["x/displays/style-guide"] };
-      expect(store.currentRouteSupportsHaxEditor()).to.equal(true);
+      store.internalRoutes["test/editable-route"] = {
+        titleKey: "test/editable-route",
+        component: "div",
+        useHaxEditor: true,
+      };
+      try {
+        store.activeId = "404";
+        store.currentRouterLocation = { params: ["x/test/editable-route"] };
+        expect(store.currentRouteSupportsHaxEditor()).to.equal(true);
+      } finally {
+        delete store.internalRoutes["test/editable-route"];
+      }
     });
 
     it("returns false when internal route does not have useHaxEditor", () => {
@@ -768,7 +777,7 @@ describe("haxcms-site-store computed getters extended", () => {
   });
 });
 
-describe("haxcms-site-store style guide and content loading", () => {
+describe("haxcms-site-store content loading", () => {
   let saved = {};
   let originalFetch;
 
@@ -788,128 +797,6 @@ describe("haxcms-site-store style guide and content loading", () => {
     store.activeId = saved.activeId;
     store.appReady = saved.appReady;
     globalThis.fetch = originalFetch;
-    store.clearStyleGuideCache();
-  });
-
-  describe("isValidStyleGuideContent", () => {
-    it("returns false for null or non-string content", () => {
-      expect(store.isValidStyleGuideContent(null)).to.equal(false);
-      expect(store.isValidStyleGuideContent(undefined)).to.equal(false);
-      expect(store.isValidStyleGuideContent(123)).to.equal(false);
-    });
-
-    it("returns false for content without page-template tags", () => {
-      expect(store.isValidStyleGuideContent("<div>hello</div>")).to.equal(
-        false,
-      );
-    });
-
-    it("returns true for content with page-template tags and no site index indicators", () => {
-      const content = "<page-template><div>style guide</div></page-template>";
-      expect(store.isValidStyleGuideContent(content)).to.equal(true);
-    });
-
-    it("returns false when content appears to be site index", () => {
-      const content =
-        "<page-template><haxcms-site-builder></haxcms-site-builder></page-template>";
-      expect(store.isValidStyleGuideContent(content)).to.equal(false);
-    });
-
-    it("returns false for content with site.json reference", () => {
-      const content = "<page-template>site.json data</page-template>";
-      expect(store.isValidStyleGuideContent(content)).to.equal(false);
-    });
-  });
-
-  describe("getDefaultStyleGuideContent", () => {
-    it("returns empty string", () => {
-      expect(store.getDefaultStyleGuideContent()).to.equal("");
-    });
-  });
-
-  describe("clearStyleGuideCache", () => {
-    it("does not throw when cache is undefined", () => {
-      store._styleGuideCache = undefined;
-      expect(() => store.clearStyleGuideCache()).to.not.throw();
-    });
-  });
-
-  describe("loadStyleGuideContent", () => {
-    it("returns cached content when available", async () => {
-      store._styleGuideCache = new Map();
-      store._styleGuideCache.set("test-site-default", "cached html");
-      const result = await store.loadStyleGuideContent();
-      expect(result).to.equal("cached html");
-    });
-
-    it("returns default content on fetch failure", async () => {
-      store._styleGuideCache = new Map();
-      globalThis.fetch = () => Promise.reject(new Error("network error"));
-      const result = await store.loadStyleGuideContent();
-      expect(result).to.equal("");
-    });
-
-    it("returns default content on 404 response", async () => {
-      store._styleGuideCache = new Map();
-      globalThis.fetch = () =>
-        Promise.resolve({
-          ok: false,
-          status: 404,
-          statusText: "Not Found",
-          headers: new Map(),
-        });
-      const result = await store.loadStyleGuideContent();
-      expect(result).to.equal("");
-    });
-
-    it("returns default content when response is not HTML", async () => {
-      store._styleGuideCache = new Map();
-      const headers = new Map();
-      headers.set("content-type", "application/json");
-      globalThis.fetch = () =>
-        Promise.resolve({
-          ok: true,
-          status: 200,
-          statusText: "OK",
-          headers,
-        });
-      const result = await store.loadStyleGuideContent();
-      expect(result).to.equal("");
-    });
-
-    it("returns default content when HTML lacks page-template tags", async () => {
-      store._styleGuideCache = new Map();
-      const headers = new Map();
-      headers.set("content-type", "text/html");
-      globalThis.fetch = () =>
-        Promise.resolve({
-          ok: true,
-          status: 200,
-          statusText: "OK",
-          headers,
-          text: () => Promise.resolve("<div>not a style guide</div>"),
-        });
-      const result = await store.loadStyleGuideContent();
-      expect(result).to.equal("");
-    });
-
-    it("returns valid style guide content when response has page-template tags", async () => {
-      store._styleGuideCache = new Map();
-      const headers = new Map();
-      headers.set("content-type", "text/html");
-      const validContent =
-        "<page-template><div>real style guide</div></page-template>";
-      globalThis.fetch = () =>
-        Promise.resolve({
-          ok: true,
-          status: 200,
-          statusText: "OK",
-          headers,
-          text: () => Promise.resolve(validContent),
-        });
-      const result = await store.loadStyleGuideContent();
-      expect(result).to.equal(validContent);
-    });
   });
 
   describe("loadItemContent", () => {

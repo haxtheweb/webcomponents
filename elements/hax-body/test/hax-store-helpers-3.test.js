@@ -211,60 +211,6 @@ describe("hax-store methods round 3", () => {
     });
   });
 
-  describe("_updateElementDemoSchema", () => {
-    let originalSchema;
-    beforeEach(() => {
-      originalSchema = HAXStore.styleGuideSchema;
-      HAXStore.styleGuideSchema = {};
-    });
-    afterEach(() => {
-      HAXStore.styleGuideSchema = originalSchema;
-    });
-
-    it("does nothing for null haxElement", async () => {
-      await HAXStore._updateElementDemoSchema(null);
-      expect(HAXStore.styleGuideSchema).to.deep.equal({});
-    });
-
-    it("does nothing for haxElement without tag", async () => {
-      await HAXStore._updateElementDemoSchema({ properties: {} });
-      expect(HAXStore.styleGuideSchema).to.deep.equal({});
-    });
-
-    it("creates demoSchema entry for tag", async () => {
-      await HAXStore._updateElementDemoSchema({
-        tag: "test-el",
-        properties: { source: "img.jpg" },
-        content: "<p>content</p>",
-      });
-      expect(HAXStore.styleGuideSchema["test-el"]).to.exist;
-      expect(HAXStore.styleGuideSchema["test-el"].demoSchema).to.exist;
-      expect(HAXStore.styleGuideSchema["test-el"].demoSchema[0].tag).to.equal(
-        "test-el",
-      );
-    });
-  });
-
-  describe("detectAndRegisterPageTemplateStax", () => {
-    it("returns early for null content", async () => {
-      await HAXStore.detectAndRegisterPageTemplateStax(null);
-      // Should not throw
-      expect(true).to.equal(true);
-    });
-
-    it("returns early for empty content", async () => {
-      await HAXStore.detectAndRegisterPageTemplateStax("");
-      expect(true).to.equal(true);
-    });
-  });
-
-  describe("_detectStyleGuideTemplates", () => {
-    it("does not throw when HAXCMS is not available", async () => {
-      await HAXStore._detectStyleGuideTemplates();
-      expect(true).to.equal(true);
-    });
-  });
-
   describe("forceAppStoreLoad", () => {
     it("does not throw when not loaded and no appStore data", async () => {
       await HAXStore.forceAppStoreLoad();

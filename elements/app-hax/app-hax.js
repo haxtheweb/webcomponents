@@ -102,12 +102,6 @@ const SYSTEM_SETTINGS_PANELS = {
     icon: "hax:admin-details",
     route: "configuration",
   },
-  "style-guide": {
-    label: "Style guide",
-    tKey: "styleGuidePanel",
-    icon: "hax:admin-text",
-    route: "style-guide",
-  },
   "custom-code": {
     label: "JS/CSS",
     tKey: "customCodePanel",
@@ -126,7 +120,6 @@ const SYSTEM_SETTINGS_ROUTE_ALIASES = {
   integrations: "integrations",
   media: "media",
   configuration: "configuration",
-  "style-guide": "style-guide",
   "custom-code": "custom-code",
   "js-css": "custom-code",
 };
@@ -414,7 +407,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       themesPanel: "Themes",
       integrationsPanel: "Integrations",
       configurationPanel: "Configuration",
-      styleGuidePanel: "Style guide",
       customCodePanel: "JS/CSS",
       unlockHiddenFeatures: "Unlock hidden features",
       showTerribleThemes: "Show terrible themes",

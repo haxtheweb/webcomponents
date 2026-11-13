@@ -880,89 +880,15 @@ describe("hax-store primitives + registration wiring", () => {
     });
   });
 
-  describe("htmlToHaxElements page-template support", () => {
-    it("keeps page-template as a valid element during conversion", async () => {
+  describe("htmlToHaxElements tag filtering", () => {
+    it("drops tags that are not in the valid tag list", async () => {
       stash("validTagList");
       HAXStore.validTagList = ["p"];
       const elements = await HAXStore.htmlToHaxElements(
-        '<page-template name="tpl"><p>inner</p></page-template>',
+        '<page-template name="tpl"><p>inner</p></page-template><p>kept</p>',
       );
       expect(elements.length).to.equal(1);
-      expect(elements[0].tag).to.equal("page-template");
-    });
-  });
-
-  describe("detectAndRegisterPageTemplateStax", () => {
-    beforeEach(() => {
-      stash("validTagList");
-      stash("staxList");
-      stash("styleGuideSchema");
-      HAXStore.validTagList = ["p"];
-      HAXStore.staxList = [];
-      HAXStore.styleGuideSchema = {};
-    });
-    afterEach(() => {
-      // remove any hax-stax elements appended to the singleton during the test
-      const staxEls = HAXStore.querySelectorAll("hax-stax");
-      for (let i = 0; i < staxEls.length; i++) {
-        staxEls[i].remove();
-      }
-    });
-
-    it("registers an area template as a stax with dedup id", async () => {
-      await HAXStore.detectAndRegisterPageTemplateStax(
-        '<page-template name="My Area" schema="area" data-haxsg-id="sg-1"><p>content</p></page-template>',
-      );
-      await aTimeout(20);
-      const found = HAXStore.staxList.filter(
-        (s) => s.details.haxsgId === "sg-1",
-      );
-      expect(found.length).to.equal(1);
-      expect(found[0].details.title).to.equal("My Area");
-      expect(found[0].details.templateType).to.equal("area");
-    });
-
-    it("replaces the demoSchema for block templates", async () => {
-      await HAXStore.detectAndRegisterPageTemplateStax(
-        '<page-template name="My Block" schema="block"><p>block content</p></page-template>',
-      );
-      await aTimeout(20);
-      expect(HAXStore.styleGuideSchema["p"]).to.exist;
-      expect(HAXStore.styleGuideSchema["p"].demoSchema[0].tag).to.equal("p");
-    });
-  });
-
-  describe("_detectStyleGuideTemplates", () => {
-    it("pulls style guide content from HAXCMS when available", async () => {
-      stashGlobal("HAXCMS");
-      stash("validTagList");
-      stash("staxList");
-      stash("styleGuideSchema");
-      HAXStore.validTagList = ["p"];
-      HAXStore.staxList = [];
-      HAXStore.styleGuideSchema = {};
-      globalThis.HAXCMS = {
-        instance: {
-          store: {
-            loadStyleGuideContent: async () =>
-              '<page-template name="CMS tpl" schema="block"><p>cms content</p></page-template>',
-          },
-        },
-      };
-      await HAXStore._detectStyleGuideTemplates();
-      await aTimeout(20);
-      expect(HAXStore.styleGuideSchema["p"]).to.exist;
-      const staxEls = HAXStore.querySelectorAll("hax-stax");
-      for (let i = 0; i < staxEls.length; i++) {
-        staxEls[i].remove();
-      }
-    });
-
-    it("does nothing without a HAXCMS instance", async () => {
-      stashGlobal("HAXCMS");
-      globalThis.HAXCMS = undefined;
-      await HAXStore._detectStyleGuideTemplates();
-      expect(true).to.equal(true);
+      expect(elements[0].tag).to.equal("p");
     });
   });
 
