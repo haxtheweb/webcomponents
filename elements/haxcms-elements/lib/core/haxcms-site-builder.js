@@ -1287,10 +1287,19 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         // Match the whole tag name: a plain "<" + tag also matches a longer
         // tag that starts with it (<a11y-tab inside <a11y-tabs), which turned
         // the wrapper into a tab when the wrapper itself had been skipped
-        const opening = new RegExp(
-          "<" + tag.replace(/\./g, "\\.") + "(?=[\\s/>])",
-        );
-        html = html.replace(opening, '<replace-tag with="' + tag + '" ');
+        const opening = "<" + tag;
+        let at = html.indexOf(opening);
+        while (at !== -1 && !/[\s/>]/.test(html.charAt(at + opening.length))) {
+          at = html.indexOf(opening, at + 1);
+        }
+        if (at !== -1) {
+          html =
+            html.slice(0, at) +
+            '<replace-tag with="' +
+            tag +
+            '" ' +
+            html.slice(at + opening.length);
+        }
         // ensure a matching closing tag is also updated
         html = html.replace("</" + tag + ">", "</replace-tag>");
       }
