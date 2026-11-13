@@ -89,7 +89,9 @@
         "property": "gameTitle",
         "title": "Ainm an chluiche",
         "description": "Ainmníonn sé an cluiche seo i bhfeidhmeanna dul chun cinn agus i marcáil OER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "ID an chluiche",

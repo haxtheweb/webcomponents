@@ -21,15 +21,6 @@
         "description": "Ọjọ́ tí a wọlé sí orísun náà."
       },
       {
-        "property": "scope",
-        "title": "Ààlà",
-        "description": "Ààlà ẹ̀yà láti tọ́ka sí.",
-        "options": {
-          "sibling": "Ẹ̀yà ẹ̀gbọ́n-àbúrò",
-          "parent": "Ẹ̀yà òbí"
-        }
-      },
-      {
         "property": "license",
         "title": "Ìwé-àṣẹ",
         "description": "Ìwé àṣẹ fún iṣẹ́ tí a tọ́ka sí."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Olùṣẹ̀dá",
         "description": "Olùṣẹ̀dá tàbí olóhun iṣẹ́ tí a tọ́ka sí."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Ààlà",
+        "description": "Ààlà ẹ̀yà láti tọ́ka sí.",
+        "options": {
+          "sibling": "Ẹ̀yà ẹ̀gbọ́n-àbúrò",
+          "parent": "Ẹ̀yà òbí"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "Irú OER Schema",

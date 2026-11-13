@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Bildquell",
         "description": "Bildfichier fir d'Kaart. Huet Virrang virum Bild-Stéchwuert."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Bild-Stéchwuert",
+        "description": "Stéchwuert fir e Zoufallsbild. Gëtt vun der Bildquell iwwerschriwwen."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Léierzil",
         "description": "OER Schema: ID oder URL vum Léierzil, dat dës Übung ënnerstëtzt."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Bild-Stéchwuert",
-        "description": "Stéchwuert fir e Zoufallsbild. Gëtt vun der Bildquell iwwerschriwwen."
       }
     ]
   }

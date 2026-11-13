@@ -48,7 +48,7 @@
   ],
   "cssProperties": [],
   "hax": {
-    "schema": "elements/audio-player/audio-player.js",
+    "schema": "elements/audio-player/lib/audio-player.haxProperties.json",
     "gizmo": true,
     "properties": [
       "accentColor",

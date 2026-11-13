@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "Grup desplegable",
-    "description": "Un grup d'elements desplegables."
+    "title": "Grup replegable",
+    "description": "Un grup de contenidors replegables."
   },
   "settings": {
     "configure": [

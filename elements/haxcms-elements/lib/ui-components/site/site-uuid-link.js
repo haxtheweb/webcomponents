@@ -90,52 +90,7 @@ class SiteUuidLink extends I18NMixin(LitElement) {
    * haxProperties integration via file reference
    */
   static get haxProperties() {
-    return {
-      canScale: false,
-
-      canEditSource: false,
-      gizmo: {
-        title: "Page link",
-        description: "A link to a page in the site you're working on.",
-        icon: "icons:link",
-        color: "grey",
-        tags: [
-          "Site",
-          "haxcms",
-          "content",
-          "remote",
-          "reference",
-          "url",
-          "resource",
-        ],
-        handles: [
-          {
-            type: "inline",
-          },
-        ],
-        meta: {
-          author: "HAXTheWeb core team",
-          inlineOnly: true,
-        },
-      },
-      settings: {
-        configure: [
-          {
-            property: "uuid",
-            title: "Item",
-            description: "Item to render for the link / title data",
-            inputMethod: "textfield",
-          },
-        ],
-      },
-      demoSchema: [
-        {
-          tag: "site-uuid-link",
-          properties: {},
-          content: "",
-        },
-      ],
-    };
+    return new URL("./site-uuid-link.haxProperties.json", import.meta.url).href;
   }
   /**
    * Implements haxHooks to tie into life-cycle if hax exists.

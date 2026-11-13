@@ -4,22 +4,23 @@
     "description": "Danh sách phát hiển thị trình phát video và âm thanh theo bố cục trình phát + thanh bên."
   },
   "settings": {
-    "configure": [
+    "configure": [],
+    "advanced": [
       {
         "property": "activeIndex",
         "title": "Chỉ mục hiện hành",
         "description": "Chỉ mục của mục bắt đầu phát."
-      },
-      {
-        "property": "forCourse",
-        "title": "Khóa học",
-        "description": "Khóa học mà danh sách phát này dành cho (mã khóa học hoặc URL)."
       }
     ],
     "developer": [
       {
         "title": "Phương tiện",
         "description": "Video và âm thanh trong danh sách phát. Không chỉnh sửa ở đây: dàn ý trang dùng nó để biết khối nào có thể thả vào bên trong."
+      },
+      {
+        "property": "forCourse",
+        "title": "Khóa học",
+        "description": "Khóa học mà danh sách phát này dành cho (mã khóa học hoặc URL)."
       }
     ]
   }

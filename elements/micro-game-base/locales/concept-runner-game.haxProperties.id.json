@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Game pelari konsep",
-    "description": "Game side scroller. Karakter berlari dengan api dan tidak pernah berhenti. Lompat untuk mengambil konsep yang baik dan melewati yang buruk, lalu lihat rangkuman mana yang baik dan mana yang buruk."
+    "description": "Permainan gulir samping: lompat untuk menangkap konsep yang benar dan menghindari yang salah."
   },
   "settings": {
     "configure": [
@@ -89,7 +89,9 @@
         "property": "gameTitle",
         "title": "Nama game",
         "description": "Menamai game ini dalam event kemajuan dan markup OER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "ID game",

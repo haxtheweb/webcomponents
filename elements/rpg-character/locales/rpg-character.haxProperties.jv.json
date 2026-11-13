@@ -11,11 +11,6 @@
         "description": "Tembung sing digunakake kanggo nggawe karakter acak."
       },
       {
-        "property": "code",
-        "title": "Kode paraga",
-        "description": "Tempel kode sing wis disimpen kanggo nggawe maneh paraga kasebut."
-      },
-      {
         "property": "hat",
         "title": "Topi",
         "description": "Gaya topi.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Topeng",
-        "description": "Topeng sing dienggo ing rai utawa sirah.",
-        "options": {
-          "none": "Ora ana",
-          "lion": "Singa",
-          "plague": "Dokter pageblug",
-          "theater": "Teater",
-          "pumpkin": "Waluh",
-          "ghost": "Memedi",
-          "mummy": "Mumi",
-          "wrestler": "Topeng gulat",
-          "block-head": "Sirah balok",
-          "web": "Topeng jaring kemangga",
-          "werewolf": "Rai manungsa asu ajag",
-          "shadow": "Rai bayangan"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Rias",
-        "description": "Cat rai utawa lipstik.",
-        "options": {
-          "none": "Ora ana",
-          "red-lipstick": "Lipstik abang",
-          "pink-lipstick": "Lipstik jambon",
-          "berry-lipstick": "Lipstik berry",
-          "clown": "Cat badut",
-          "fangs": "Taring",
-          "skull": "Cet tengkorak",
-          "zombie": "Cet zombi",
-          "red-nose": "Irung abang",
-          "white-beard": "Jenggot putih",
-          "domino": "Topeng pahlawan",
-          "carrot": "Irung wortel",
-          "bunny": "Irung terwelu",
-          "mustache": "Brengos",
-          "monster": "Cat rai monster",
-          "round-glasses": "Kacamata bunder"
-        }
-      },
-      {
         "property": "expression",
         "title": "Ekspresi",
         "description": "Ekspresi rai.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Kewan piaraan",
+        "description": "Kewan piaraan jejere karakter.",
+        "options": {
+          "none": "Ora ana",
+          "cat": "Kucing",
+          "dog": "Asu",
+          "bunny": "Truwelu",
+          "goldfish": "Iwak mas",
+          "slime": "Lendhir",
+          "squirrel": "Bajing",
+          "dragon": "Naga cilik",
+          "parrot": "Manuk beo",
+          "owl": "Manuk dares",
+          "bat": "Lawa"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Kode paraga",
+        "description": "Tempel kode sing wis disimpen kanggo nggawe maneh paraga kasebut."
+      },
+      {
+        "property": "mask",
+        "title": "Topeng",
+        "description": "Topeng sing dienggo ing rai utawa sirah.",
+        "options": {
+          "none": "Ora ana",
+          "lion": "Singa",
+          "plague": "Dokter pageblug",
+          "theater": "Teater",
+          "pumpkin": "Waluh",
+          "ghost": "Memedi",
+          "mummy": "Mumi",
+          "wrestler": "Topeng gulat",
+          "block-head": "Sirah balok",
+          "web": "Topeng jaring kemangga",
+          "werewolf": "Rai manungsa asu ajag",
+          "shadow": "Rai bayangan"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Rias",
+        "description": "Cat rai utawa lipstik.",
+        "options": {
+          "none": "Ora ana",
+          "red-lipstick": "Lipstik abang",
+          "pink-lipstick": "Lipstik jambon",
+          "berry-lipstick": "Lipstik berry",
+          "clown": "Cat badut",
+          "fangs": "Taring",
+          "skull": "Cet tengkorak",
+          "zombie": "Cet zombi",
+          "red-nose": "Irung abang",
+          "white-beard": "Jenggot putih",
+          "domino": "Topeng pahlawan",
+          "carrot": "Irung wortel",
+          "bunny": "Irung terwelu",
+          "mustache": "Brengos",
+          "monster": "Cat rai monster",
+          "round-glasses": "Kacamata bunder"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Teks gendera",
         "description": "Nganti 4 aksara katon ing gendera."
@@ -310,24 +330,6 @@
           "skates": "Sepatu roda",
           "skateboard": "Skateboard",
           "hoverboard": "Papan mabur"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Kewan piaraan",
-        "description": "Kewan piaraan jejere karakter.",
-        "options": {
-          "none": "Ora ana",
-          "cat": "Kucing",
-          "dog": "Asu",
-          "bunny": "Truwelu",
-          "goldfish": "Iwak mas",
-          "slime": "Lendhir",
-          "squirrel": "Bajing",
-          "dragon": "Naga cilik",
-          "parrot": "Manuk beo",
-          "owl": "Manuk dares",
-          "bat": "Lawa"
         }
       },
       {

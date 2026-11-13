@@ -11,20 +11,17 @@
         "description": "Etiqueta accessible per al conjunt de pestanyes."
       },
       {
-        "property": "disabled",
-        "title": "Desactivat",
-        "description": "Desactiva totes les pestanyes."
-      },
-      {
-        "property": "hidden",
-        "title": "Ocult",
-        "description": "Amaga el conjunt de pestanyes."
-      },
-      {
         "property": "sticky",
         "title": "Fix",
         "description": "Mantén les pestanyes horitzontals a dalt en desplaçar-te."
       },
+      {
+        "slot": "",
+        "title": "Pestanyes",
+        "description": "Sèrie d'elements <a11y-tab/>."
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "Punt de ruptura del disseny",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "Punt de ruptura de les icones",
         "description": "Punt de ruptura per mostrar text amb icones. El valor per defecte és 0; utilitza -1 per al mode només icones."
-      },
-      {
-        "slot": "",
-        "title": "Pestanyes",
-        "description": "Sèrie d'elements <a11y-tab/>."
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "Desactivat",
+        "description": "Desactiva totes les pestanyes."
+      },
+      {
+        "property": "hidden",
+        "title": "Ocult",
+        "description": "Amaga el conjunt de pestanyes."
+      },
       {
         "property": "id",
         "title": "ID únic",

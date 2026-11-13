@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "Oznaka / značka",
+    "title": "Oznaka",
     "description": "Kompaktna oznaka v obliki kapsule z neobvezno poudarno barvo, gumbom za preklic ali preklopom."
   },
   "settings": {
@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Samodejna poudarna barva",
         "description": "Samodejno izpelji poudarno barvo iz besedila oznake."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Gumb za preklic",
-        "description": "Prikaži ikonski gumb za odstranitev/preklic v znački."
-      },
-      {
-        "property": "readonly",
-        "title": "Samo za branje",
-        "description": "Skrij gumb za preklic, da je značka samo za prikaz."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Modrosiva",
           "grey": "Siva"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Gumb za preklic",
+        "description": "Prikaži ikonski gumb za odstranitev/preklic v znački."
+      },
+      {
+        "property": "readonly",
+        "title": "Samo za branje",
+        "description": "Skrij gumb za preklic, da je značka samo za prikaz."
       }
     ]
   }

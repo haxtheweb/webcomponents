@@ -11,20 +11,17 @@
         "description": "Zita rinowanikwa nevose reseti yemathebhu."
       },
       {
-        "property": "disabled",
-        "title": "Zvakadzimwa",
-        "description": "Dzima mathebhu ose."
-      },
-      {
-        "property": "hidden",
-        "title": "Zvakavigwa",
-        "description": "Viga seti yemathebhu."
-      },
-      {
         "property": "sticky",
         "title": "Zvakanamatira",
         "description": "Chengeta mathebhu akatwasuka kumusoro paunenge uchikwesha."
       },
+      {
+        "slot": "",
+        "title": "Mathebhu",
+        "description": "Nhevedzano yezvinhu <a11y-tab/>."
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "Nhanho yeMarongerwo",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "Nhanho yeAikoni",
         "description": "Nhanho yekuratidza mavara nemaaikoni. Zvakajairwa ndi 0; shandisa -1 kuti pave nemaaikoni chete."
-      },
-      {
-        "slot": "",
-        "title": "Mathebhu",
-        "description": "Nhevedzano yezvinhu <a11y-tab/>."
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "Zvakadzimwa",
+        "description": "Dzima mathebhu ose."
+      },
+      {
+        "property": "hidden",
+        "title": "Zvakavigwa",
+        "description": "Viga seti yemathebhu."
+      },
       {
         "property": "id",
         "title": "ID Yakasiyana",

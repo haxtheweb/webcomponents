@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Sammu element",
-    "description": "Sammude loendi osaks olev element"
+    "description": "Üks samm sammude loendis."
   },
   "settings": {
     "configure": [

@@ -21,15 +21,6 @@
         "description": "წყაროზე წვდომის თარიღი."
       },
       {
-        "property": "scope",
-        "title": "მოქმედების არე",
-        "description": "ციტირებადი ელემენტის არე.",
-        "options": {
-          "sibling": "მეზობელი ელემენტი",
-          "parent": "მშობელი ელემენტი"
-        }
-      },
-      {
         "property": "license",
         "title": "ლიცენზია",
         "description": "ციტირებული ნაშრომის ლიცენზია."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "შემქმნელი",
         "description": "ციტირებული ნაშრომის შემქმნელი ან მფლობელი."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "მოქმედების არე",
+        "description": "ციტირებადი ელემენტის არე.",
+        "options": {
+          "sibling": "მეზობელი ელემენტი",
+          "parent": "მშობელი ელემენტი"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "OER Schema ტიპი",

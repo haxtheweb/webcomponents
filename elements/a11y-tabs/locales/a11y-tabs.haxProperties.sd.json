@@ -11,20 +11,17 @@
         "description": "ٽيب سيٽ لاءِ رسائي لائق ليبل."
       },
       {
-        "property": "disabled",
-        "title": "غير فعال",
-        "description": "سڀ ٽيبون غير فعال ڪريو."
-      },
-      {
-        "property": "hidden",
-        "title": "لڪيل",
-        "description": "ٽيب سيٽ لڪايو."
-      },
-      {
         "property": "sticky",
         "title": "چنبڙيل",
         "description": "اسڪرول ڪرڻ دوران افقي ٽيبون مٿي رکو."
       },
+      {
+        "slot": "",
+        "title": "ٽيبون",
+        "description": "<a11y-tab/> عنصرن جو سلسلو."
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "ترتيب بريڪ پوائنٽ",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "آئڪن بريڪ پوائنٽ",
         "description": "آئڪنن سان گڏ متن ڏيکارڻ لاءِ بريڪ پوائنٽ. ڊفالٽ 0 آهي؛ صرف آئڪن موڊ لاءِ -1 استعمال ڪريو."
-      },
-      {
-        "slot": "",
-        "title": "ٽيبون",
-        "description": "<a11y-tab/> عنصرن جو سلسلو."
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "غير فعال",
+        "description": "سڀ ٽيبون غير فعال ڪريو."
+      },
+      {
+        "property": "hidden",
+        "title": "لڪيل",
+        "description": "ٽيب سيٽ لڪايو."
+      },
       {
         "property": "id",
         "title": "منفرد ID",

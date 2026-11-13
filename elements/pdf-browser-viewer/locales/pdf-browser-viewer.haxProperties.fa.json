@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "نمایشگر PDF مرورگر",
+    "title": "نمایشگر PDF",
     "description": "جاسازی درون‌خطی فایل PDF با چیدمان کارتی و دکمهٔ بارگیری اختیاری."
   },
   "settings": {
@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "پیام عدم پشتیبانی",
-        "description": "پیامی که وقتی مرورگر نمی‌تواند فایل PDF را نمایش دهد نشان داده می‌شود."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "پیام پیوند عدم پشتیبانی",
-        "description": "متن پیوند وقتی مرورگر نمی‌تواند فایل PDF را نمایش دهد."
-      },
-      {
         "property": "width",
         "title": "عرض",
         "description": "عرض نمایشگر PDF."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "ارتفاع",
         "description": "ارتفاع نمایشگر PDF."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "پیام عدم پشتیبانی",
+        "description": "پیامی که وقتی مرورگر نمی‌تواند فایل PDF را نمایش دهد نشان داده می‌شود."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "پیام پیوند عدم پشتیبانی",
+        "description": "متن پیوند وقتی مرورگر نمی‌تواند فایل PDF را نمایش دهد."
       }
     ]
   }

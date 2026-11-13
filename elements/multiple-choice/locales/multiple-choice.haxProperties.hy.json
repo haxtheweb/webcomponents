@@ -21,30 +21,8 @@
         "description": "Թույլատրել միայն մեկ պատասխան։"
       },
       {
-        "property": "gradingFormat",
-        "title": "Գնահատման ձևաչափ",
-        "description": "OER Schema՝ այս գնահատման ձևաչափը (օր.՝ միավորներ, տառ, տոկոս, ավարտվածություն)։"
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Ուսումնական նպատակ",
-        "description": "OER Schema՝ այս գնահատման հետ կապված ուսումնական նպատակը։"
-      },
-      {
-        "property": "forCourse",
-        "title": "Դասընթաց",
-        "description": "OER Schema՝ դասընթացը, որի համար նախատեսված է այս գնահատումը։"
-      },
-      {
         "property": "answers",
         "title": "Պատասխաններ"
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Թեստի անվանում",
-        "description": "Թեստի անվանում, որն օգտագործվում է վերլուծական համակարգերում xAPI նույնականացման համար։"
       }
     ],
     "advanced": [
@@ -57,6 +35,28 @@
         "property": "collapsed",
         "title": "Սկսել ծալված",
         "description": "Ծալվող լինելու դեպքում սկսվում է որպես փակ տող, որը ցույց է տալիս միայն հարցը և դրա կարգավիճակը։"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Գնահատման ձևաչափ",
+        "description": "OER Schema՝ այս գնահատման ձևաչափը (օր.՝ միավորներ, տառ, տոկոս, ավարտվածություն)։"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Ուսումնական նպատակ",
+        "description": "OER Schema՝ այս գնահատման հետ կապված ուսումնական նպատակը։"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Թեստի անվանում",
+        "description": "Թեստի անվանում, որն օգտագործվում է վերլուծական համակարգերում xAPI նույնականացման համար։"
+      },
+      {
+        "property": "forCourse",
+        "title": "Դասընթաց",
+        "description": "OER Schema՝ դասընթացը, որի համար նախատեսված է այս գնահատումը։"
       }
     ]
   }

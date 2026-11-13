@@ -38,21 +38,6 @@
         "slot": "",
         "title": "Ìwé kíkà",
         "description": "Ìwé kíkà tí àwọn akẹ́kọ̀ọ́ ń ṣiṣẹ́ lé lórí. HTML èyíkéyìí: àwọn àkọlé, ìpínrọ̀, àkójọ àti àwòrán."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "Ọ̀nà ìfúnmáàkì",
-        "description": "OER Schema: ọ̀nà ìfúnmáàkì fún ìgbéléwọ̀n yìí (fún àpẹẹrẹ máàkì, lẹ́tà, ìdá-ọgọ́rùn-ún, ìparí)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Àfojúsùn ẹ̀kọ́",
-        "description": "OER Schema: àfojúsùn ẹ̀kọ́ tí ó jẹmọ́ ìgbéléwọ̀n yìí."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kọ́ọ̀sì",
-        "description": "OER Schema: kọ́ọ̀sì tí a pète ìgbéléwọ̀n yìí fún."
       }
     ],
     "advanced": [
@@ -70,6 +55,16 @@
         "property": "collapsed",
         "title": "Bẹ̀rẹ̀ ní ká",
         "description": "Nígbà tó bá ṣeé ká, bẹ̀rẹ̀ bí ìlà tí a ti pa tó ń fi ìbéèrè àti ipò rẹ̀ nìkan hàn."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Ọ̀nà ìfúnmáàkì",
+        "description": "OER Schema: ọ̀nà ìfúnmáàkì fún ìgbéléwọ̀n yìí (fún àpẹẹrẹ máàkì, lẹ́tà, ìdá-ọgọ́rùn-ún, ìparí)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Àfojúsùn ẹ̀kọ́",
+        "description": "OER Schema: àfojúsùn ẹ̀kọ́ tí ó jẹmọ́ ìgbéléwọ̀n yìí."
       }
     ],
     "developer": [
@@ -77,6 +72,11 @@
         "property": "quizName",
         "title": "Orúkọ ìdánwò kékeré náà",
         "description": "Orúkọ ìdánwò kékeré tí a fi ránṣẹ́ fún lílò ní àwọn àyíká tí xAPI ń darí láti dá ẹyọ yìí mọ̀"
+      },
+      {
+        "property": "forCourse",
+        "title": "Kọ́ọ̀sì",
+        "description": "OER Schema: kọ́ọ̀sì tí a pète ìgbéléwọ̀n yìí fún."
       }
     ]
   }

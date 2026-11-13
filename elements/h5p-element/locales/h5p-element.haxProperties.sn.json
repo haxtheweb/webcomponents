@@ -4,17 +4,16 @@
     "description": "Inoridza zvinhu zvinobvumira kuita zveH5P kubva pafaera ye.h5p yakaiswa, pasina kuda server yeH5P"
   },
   "settings": {
-    "configure": [
-      {
-        "slot": "",
-        "description": "Isa kana kubatanidza faera ye.h5p. Inovhurwa mubrowser; server yeH5P haidiwi.",
-        "title": "Faera yeH5P"
-      }
-    ],
+    "configure": [],
     "advanced": [
       {
         "title": "Kodhi yekare yekuisa iframe",
         "description": "Zvinhu zvekare chete zvinoisa iframe yeH5P kubva kune imwe webhusaiti. Siya isina chinhu kana faera ye.h5p yaiswa pamusoro."
+      },
+      {
+        "slot": "",
+        "description": "Isa kana kubatanidza faera ye.h5p. Inovhurwa mubrowser; server yeH5P haidiwi.",
+        "title": "Faera yeH5P"
       }
     ]
   }

@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Obraz plakatu",
         "description": "URL obrazu plakatu."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Ścieżki tekstowe",
         "description": "Napisy, napisy dla niesłyszących, opisy i inne ścieżki tekstowe wideo."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Czas rozpoczęcia",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Ścieżka audiodeskrypcji",
         "description": "URL ścieżki audiodeskrypcji (plik MP3), która opisuje słownie elementy wizualne."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kolor akcentu",
+        "description": "(przestarzałe) Wybierz kolor akcentu odtwarzacza."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Język",
         "description": "Język multimediów."
-      },
-      {
-        "property": "accentColor",
-        "title": "Kolor akcentu",
-        "description": "(przestarzałe) Wybierz kolor akcentu odtwarzacza."
       }
     ]
   }

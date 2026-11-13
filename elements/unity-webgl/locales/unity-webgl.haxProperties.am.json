@@ -9,7 +9,21 @@
         "property": "target",
         "title": "ዒላማ",
         "description": "ወደ ጨዋታው ግንባታ የሚወስድ መንገድ።"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "የሸራ ስፋት",
+        "description": "የሸራው CSS ስፋት (ለምሳሌ px ወይም em)።"
       },
+      {
+        "property": "height",
+        "title": "የሸራ ቁመት",
+        "description": "የሸራው CSS ቁመት (ለምሳሌ px ወይም em)።"
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "የመጭመቂያ ዘዴ",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "የምርት ስሪት",
         "description": "የልቀት ስሪት።"
-      },
-      {
-        "property": "width",
-        "title": "የሸራ ስፋት",
-        "description": "የሸራው CSS ስፋት (ለምሳሌ px ወይም em)።"
-      },
-      {
-        "property": "height",
-        "title": "የሸራ ቁመት",
-        "description": "የሸራው CSS ቁመት (ለምሳሌ px ወይም em)።"
       },
       {
         "property": "background",

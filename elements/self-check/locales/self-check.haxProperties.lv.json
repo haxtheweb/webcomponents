@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Pašpārbaude",
-    "description": "Lietotāji var veikt pašpārbaudi."
+    "description": "Jautājums ar slēptu atbildi, ko izglītojamais atklāj, lai sevi pārbaudītu."
   },
   "settings": {
     "configure": [
@@ -27,6 +27,13 @@
       {
         "slot": "",
         "title": "Atbilde"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Saite uz vairāk",
+        "description": "Saite uz papildu informāciju."
       },
       {
         "property": "hasLearningObjective",
@@ -37,13 +44,6 @@
         "property": "assessing",
         "title": "Tiek vērtēts",
         "description": "Aktivitātes atsauce, kas tiek izvadīta kā oer:assessing."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "link",
-        "title": "Saite uz vairāk",
-        "description": "Saite uz papildu informāciju."
       }
     ]
   }

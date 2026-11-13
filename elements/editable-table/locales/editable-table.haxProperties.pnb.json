@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "فلٹر دی اجازت",
         "description": "کالم دیاں قدراں نال فلٹر کرن دی اجازت دیو۔"
-      },
-      {
-        "property": "numericStyles",
-        "title": "عددی سٹائل",
-        "description": "عددی کالماں تے عددی سٹائل لاؤ۔"
-      },
-      {
-        "property": "responsive",
-        "title": "ریسپانسو",
-        "description": "نکیاں سکریناں اُتے ٹیبل دی ترتیب ٹھیک کرو۔"
-      },
-      {
-        "property": "rubricMode",
-        "title": "روبرک موڈ",
-        "description": "ایس ٹیبل نوں OER Schema Rubric سمجھو تاں جے Rubric، RubricScale، RubricCriterion تے RubricLevel میٹاڈیٹا جاری ہووے۔"
-      },
-      {
-        "property": "rubricType",
-        "title": "روبرک دی قسم",
-        "description": "روبرک سٹائل جیہڑا oer:rubricType وجوں جاری ہوندا اے (صرف روبرک موڈ چالو ہوݨ تے معنی رکھدا اے)۔",
-        "options": {
-          "": "(کوئی نہیں)",
-          "analytic": "تجزیاتی",
-          "holistic": "مجموعی",
-          "single-point": "اک نکتہ",
-          "checklist": "چیک لسٹ"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "پرنٹ بٹن",
         "description": "صرف ٹیبل پرنٹ کرن لئی بٹن جوڑو۔"
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "عددی سٹائل",
+        "description": "عددی کالماں تے عددی سٹائل لاؤ۔"
+      },
+      {
+        "property": "responsive",
+        "title": "ریسپانسو",
+        "description": "نکیاں سکریناں اُتے ٹیبل دی ترتیب ٹھیک کرو۔"
+      },
+      {
+        "property": "rubricMode",
+        "title": "روبرک موڈ",
+        "description": "ایس ٹیبل نوں OER Schema Rubric سمجھو تاں جے Rubric، RubricScale، RubricCriterion تے RubricLevel میٹاڈیٹا جاری ہووے۔"
+      },
+      {
+        "property": "rubricType",
+        "title": "روبرک دی قسم",
+        "description": "روبرک سٹائل جیہڑا oer:rubricType وجوں جاری ہوندا اے (صرف روبرک موڈ چالو ہوݨ تے معنی رکھدا اے)۔",
+        "options": {
+          "": "(کوئی نہیں)",
+          "analytic": "تجزیاتی",
+          "holistic": "مجموعی",
+          "single-point": "اک نکتہ",
+          "checklist": "چیک لسٹ"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "CSV ڈیٹا",
         "description": "اپ لوڈ کیتی CSV فائل توں ٹیبل بناؤ۔"
       }
-    ]
+    ],
+    "developer": []
   }
 }

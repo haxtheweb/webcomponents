@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "GitHub katkıda bulunanlar listesi",
-    "description": "GitHub API kullanılarak RPG karakterleri olarak gösterilir."
+    "description": "Bir deponun katkıda bulunanlarını RPG karakterleri olarak listeler."
   },
   "settings": {
     "configure": [

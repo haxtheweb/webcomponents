@@ -10,10 +10,6 @@
         "title": "Cilnes ikona"
       },
       {
-        "property": "disabled",
-        "title": "Atspējots"
-      },
-      {
         "property": "label",
         "title": "Cilnes etiķete"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "Unikāls ID"
-      },
-      {
         "property": "flag",
         "title": "Neobligāts karodziņa teksts"
       },
       {
         "property": "flagIcon",
         "title": "Neobligāta karodziņa ikona"
+      },
+      {
+        "property": "disabled",
+        "title": "Atspējots"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "Unikāls ID"
       }
     ]
   }

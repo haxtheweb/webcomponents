@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "Uitklapgroep",
-    "description": "Een groep uitklapbare elementen."
+    "title": "Inklapbare groep",
+    "description": "Een groep inklapbare containers."
   },
   "settings": {
     "configure": [

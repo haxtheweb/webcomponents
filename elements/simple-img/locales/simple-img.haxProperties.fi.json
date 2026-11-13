@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Yksinkertainen kuva",
-    "description": "Muokkaa kuvia yksinkertaisilla parametreilla."
+    "description": "Kuva, jonka kokoa muutetaan, jota rajataan tai käännetään yksinkertaisilla asetuksilla."
   },
   "settings": {
     "configure": [
@@ -26,7 +26,8 @@
         "description": "Hyödyllinen ruudunlukijoille ja parantaa hakukoneoptimointia (SEO)."
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "Laatu",

@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "तीर छैन",
         "description": "बटनको तीर लुकाउनुहोस्।"
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "लिङ्क: लक्ष्य",
@@ -54,7 +52,9 @@
           "_top": "शीर्ष विन्डो - _top",
           "_parent": "मूल विन्डो - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "लिङ्क: rel",

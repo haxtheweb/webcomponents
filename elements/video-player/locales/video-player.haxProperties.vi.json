@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Ảnh bìa",
         "description": "URL ảnh bìa."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Rãnh văn bản",
         "description": "Phụ đề chi tiết, phụ đề, mô tả và các rãnh văn bản khác cho video."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Thời điểm bắt đầu",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Rãnh mô tả âm thanh",
         "description": "URL đến rãnh mô tả âm thanh (tệp MP3) cung cấp lời thuyết minh cho các yếu tố hình ảnh."
+      },
+      {
+        "property": "accentColor",
+        "title": "Màu nhấn",
+        "description": "(không còn dùng) Chọn màu nhấn cho trình phát."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Ngôn ngữ",
         "description": "Ngôn ngữ của phương tiện."
-      },
-      {
-        "property": "accentColor",
-        "title": "Màu nhấn",
-        "description": "(không còn dùng) Chọn màu nhấn cho trình phát."
       }
     ]
   }

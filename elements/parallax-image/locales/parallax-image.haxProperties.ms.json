@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Imej paralaks",
-    "description": "Imej menatal melepasi"
+    "description": "Imej lebar penuh yang menatal lebih perlahan daripada halaman, dengan tajuk di atasnya."
   },
   "settings": {
     "configure": [

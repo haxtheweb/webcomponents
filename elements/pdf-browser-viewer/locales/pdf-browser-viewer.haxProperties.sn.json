@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Meseji yekusatsigirwa",
-        "description": "Meseji kana browser isingakwanise kuratidza mafaira ePDF."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Meseji yechinongedzo chekusatsigirwa",
-        "description": "Mavara echinongedzo kana browser isingakwanise kuratidza mafaira ePDF."
-      },
-      {
         "property": "width",
         "title": "Upamhi",
         "description": "Upamhi hwemuoni wePDF."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Kureba",
         "description": "Kureba kwemuoni wePDF."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Meseji yekusatsigirwa",
+        "description": "Meseji kana browser isingakwanise kuratidza mafaira ePDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Meseji yechinongedzo chekusatsigirwa",
+        "description": "Mavara echinongedzo kana browser isingakwanise kuratidza mafaira ePDF."
       }
     ]
   }

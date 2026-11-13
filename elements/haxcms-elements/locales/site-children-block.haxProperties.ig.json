@@ -4,7 +4,7 @@
     "description": "Blọọkụ na-agbanwe agbanwe iji gosi ụmụ nke ibe dị ugbu a"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "Usoro na-agbanwe agbanwe",
@@ -14,7 +14,9 @@
           "parent": "Ụmụ nke nne na nna",
           "ancestor": "Ụmụ niile site na nna nna kachasị elu"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "Ọkwa mbido"

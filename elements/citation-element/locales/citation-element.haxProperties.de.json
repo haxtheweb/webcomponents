@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Quellenangabe",
-    "description": "Zitat-Element mit drei Darstellungsmodi."
+    "description": "Nennen Sie eine Quelle mit Titel, Urheber, Lizenz und Link."
   },
   "settings": {
     "configure": [
@@ -21,15 +21,6 @@
         "description": "Datum, an dem die Quelle abgerufen wurde."
       },
       {
-        "property": "scope",
-        "title": "Geltungsbereich",
-        "description": "Element-Geltungsbereich, der zitiert wird.",
-        "options": {
-          "sibling": "Geschwisterelement",
-          "parent": "Übergeordnetes Element"
-        }
-      },
-      {
         "property": "license",
         "title": "Lizenz",
         "description": "Lizenz des zitierten Werks."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Urheber",
         "description": "Urheber oder Eigentümer des zitierten Werks."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Geltungsbereich",
+        "description": "Element-Geltungsbereich, der zitiert wird.",
+        "options": {
+          "sibling": "Geschwisterelement",
+          "parent": "Übergeordnetes Element"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "OER-Schema-Typ",

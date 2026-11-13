@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "Visualitzador de PDF del navegador",
+    "title": "Visor de PDF",
     "description": "Insereix un fitxer PDF amb un disseny de targeta i un botó de baixada opcionals."
   },
   "settings": {
@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Missatge de no compatible",
-        "description": "Missatge quan el navegador no pot mostrar fitxers PDF."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Missatge d'enllaç de no compatible",
-        "description": "Text de l'enllaç quan el navegador no pot mostrar fitxers PDF."
-      },
-      {
         "property": "width",
         "title": "Amplada",
         "description": "Amplada del visualitzador de PDF."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Alçada",
         "description": "Alçada del visualitzador de PDF."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Missatge de no compatible",
+        "description": "Missatge quan el navegador no pot mostrar fitxers PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Missatge d'enllaç de no compatible",
+        "description": "Text de l'enllaç quan el navegador no pot mostrar fitxers PDF."
       }
     ]
   }

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Donut de progrés",
-    "description": "Donut de progressió"
+    "description": "Un gràfic d’anella que mostra el progrés cap a un total."
   },
   "settings": {
     "configure": [
@@ -26,11 +26,6 @@
         "description": "Text alternatiu de la imatge."
       },
       {
-        "property": "animated",
-        "title": "Animat",
-        "description": "Si el progrés s'anima en la primera càrrega"
-      },
-      {
         "property": "complete",
         "title": "Completat",
         "description": "Una matriu de valors completats."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "Total",
         "description": "Total quan tots els elements estan completats."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "Animat",
+        "description": "Si el progrés s'anima en la primera càrrega"
       },
       {
         "property": "startAngle",

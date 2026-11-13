@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Pinagmulan ng Larawan",
         "description": "Image file na ginagamit para sa card. Nangingibabaw sa Keyword ng Larawan."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Keyword ng Larawan",
+        "description": "Keyword para sa random na larawan. Nangingibabaw dito ang Pinagmulan ng Larawan."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Layunin sa Pagkatuto",
         "description": "OER Schema: ID o URL ng layunin sa pagkatuto na sinusuportahan ng pagsasanay na ito."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Keyword ng Larawan",
-        "description": "Keyword para sa random na larawan. Nangingibabaw dito ang Pinagmulan ng Larawan."
       }
     ]
   }

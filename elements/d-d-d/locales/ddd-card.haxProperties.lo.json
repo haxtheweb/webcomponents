@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "ບໍ່ມີລູກສອນ",
         "description": "ເຊື່ອງລູກສອນຂອງປຸ່ມ."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "ລິ້ງ: ເປົ້າໝາຍ",
@@ -54,7 +52,9 @@
           "_top": "ໜ້າຕ່າງເທິງສຸດ - _top",
           "_parent": "ໜ້າຕ່າງແມ່ - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "ລິ້ງ: rel",

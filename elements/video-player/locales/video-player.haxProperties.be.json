@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Вокладка",
         "description": "URL выявы вокладкі."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Тэкставыя дарожкі",
         "description": "Субтытры, пераклад, апісанні і іншыя тэкставыя дарожкі для відэа."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Час пачатку",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Дарожка аўдыяапісання",
         "description": "URL дарожкі аўдыяапісання (файл MP3), якая агучвае візуальныя элементы."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцэнтны колер",
+        "description": "(састарэла) Выберыце акцэнтны колер прайгравальніка."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Мова",
         "description": "Мова медыя."
-      },
-      {
-        "property": "accentColor",
-        "title": "Акцэнтны колер",
-        "description": "(састарэла) Выберыце акцэнтны колер прайгравальніка."
       }
     ]
   }

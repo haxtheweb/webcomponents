@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Ñe'ẽ'i",
         "description": "Teratee ta'ãngape g̃uarã."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Ta'ãnga Réra",
-        "description": "Téra ta'ãnga techaukahápe g̃uarã."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Ta'ãnga Ñemoha'ãnga",
-        "description": "Ñemoha'ãnga ta'ãnga techaukahápe g̃uarã."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Embogue ta'ãnga ovetã'i",
         "description": "Embogue jejopy ombojurujáva ta'ãnga ta'ãnga jehesa'ỹijoha ovetãme."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Ta'ãnga Réra",
+        "description": "Téra ta'ãnga techaukahápe g̃uarã."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Ta'ãnga Ñemoha'ãnga",
+        "description": "Ñemoha'ãnga ta'ãnga techaukahápe g̃uarã."
       }
     ],
     "developer": [

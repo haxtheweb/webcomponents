@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Bez strelice",
         "description": "Sakrij strelicu dugmeta."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Link: cilj",
@@ -54,7 +52,9 @@
           "_top": "Gornji prozor - _top",
           "_parent": "Roditeljski prozor - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Link: rel",

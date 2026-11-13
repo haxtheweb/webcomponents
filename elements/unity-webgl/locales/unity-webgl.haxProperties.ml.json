@@ -9,7 +9,21 @@
         "property": "target",
         "title": "ലക്ഷ്യം",
         "description": "ഗെയിം ബിൽഡിലേക്കുള്ള പാത."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "ക്യാൻവാസ് വീതി",
+        "description": "ക്യാൻവാസിന്റെ CSS വീതി (ഉദാഹരണത്തിന് px അല്ലെങ്കിൽ em)."
       },
+      {
+        "property": "height",
+        "title": "ക്യാൻവാസ് ഉയരം",
+        "description": "ക്യാൻവാസിന്റെ CSS ഉയരം (ഉദാഹരണത്തിന് px അല്ലെങ്കിൽ em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "കംപ്രഷൻ രീതി",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "ഉൽപ്പന്ന പതിപ്പ്",
         "description": "റിലീസ് പതിപ്പ്."
-      },
-      {
-        "property": "width",
-        "title": "ക്യാൻവാസ് വീതി",
-        "description": "ക്യാൻവാസിന്റെ CSS വീതി (ഉദാഹരണത്തിന് px അല്ലെങ്കിൽ em)."
-      },
-      {
-        "property": "height",
-        "title": "ക്യാൻവാസ് ഉയരം",
-        "description": "ക്യാൻവാസിന്റെ CSS ഉയരം (ഉദാഹരണത്തിന് px അല്ലെങ്കിൽ em)."
       },
       {
         "property": "background",

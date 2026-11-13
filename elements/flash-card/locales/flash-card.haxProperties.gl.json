@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Orixe da imaxe",
         "description": "Ficheiro de imaxe usado para a tarxeta. Substitúe a palabra clave da imaxe."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Palabra clave da imaxe",
+        "description": "Palabra clave para unha imaxe aleatoria. A orixe da imaxe ten prioridade sobre ela."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Obxectivo de aprendizaxe",
         "description": "OER Schema: ID ou URL do obxectivo de aprendizaxe que apoia esta práctica."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Palabra clave da imaxe",
-        "description": "Palabra clave para unha imaxe aleatoria. A orixe da imaxe ten prioridade sobre ela."
       }
     ]
   }

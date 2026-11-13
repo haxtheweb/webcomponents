@@ -4,22 +4,23 @@
     "description": "Video, audio puriyachiqkunata puriyachiq + kinray layoutpi rikuchiq uyarina sinri."
   },
   "settings": {
-    "configure": [
+    "configure": [],
+    "advanced": [
       {
         "property": "activeIndex",
         "title": "Qallariq yupay",
         "description": "Mayqin imamanta qallarinapaq yupaynin."
-      },
-      {
-        "property": "forCourse",
-        "title": "Yachay kurso",
-        "description": "Kay uyarina sinri maypaq kasqan yachay kurso (kursopa riqsichiynin utaq URL)."
       }
     ],
     "developer": [
       {
         "title": "Willakuy",
         "description": "Waqachina siq'ipi videokuna audiokunapas. Kaypi mana allichasqachu: raphip siq'inin kayta llamk'achin yachanapaq mayqin bloquekuna ukhuman churakunman."
+      },
+      {
+        "property": "forCourse",
+        "title": "Yachay kurso",
+        "description": "Kay uyarina sinri maypaq kasqan yachay kurso (kursopa riqsichiynin utaq URL)."
       }
     ]
   }

@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "សារមិនគាំទ្រ",
-        "description": "សារពេលកម្មវិធីរុករកមិនអាចបង្ហាញឯកសារ PDF។"
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "សារតំណមិនគាំទ្រ",
-        "description": "អត្ថបទតំណពេលកម្មវិធីរុករកមិនអាចបង្ហាញឯកសារ PDF។"
-      },
-      {
         "property": "width",
         "title": "ទទឹង",
         "description": "ទទឹងកម្មវិធីមើល PDF។"
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "កម្ពស់",
         "description": "កម្ពស់កម្មវិធីមើល PDF។"
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "សារមិនគាំទ្រ",
+        "description": "សារពេលកម្មវិធីរុករកមិនអាចបង្ហាញឯកសារ PDF។"
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "សារតំណមិនគាំទ្រ",
+        "description": "អត្ថបទតំណពេលកម្មវិធីរុករកមិនអាចបង្ហាញឯកសារ PDF។"
       }
     ]
   }

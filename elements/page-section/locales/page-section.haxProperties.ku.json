@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "Bişkok",
         "description": "Koma bişkokan ku li binê nivîsê tê nîşandan."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "Nivîsa lengerê",
         "description": "Etîketa lengerê ku di navîgasyonê de tê nîşandan."
       }
-    ]
+    ],
+    "developer": []
   }
 }

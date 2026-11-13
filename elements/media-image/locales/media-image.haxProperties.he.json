@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "כיתוב",
         "description": "כיתוב לתמונה."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "כותרת האיור",
-        "description": "כותרת לתווית האיור."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "תיאור האיור",
-        "description": "תיאור לתווית האיור."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "השבתת חלון התמונה",
         "description": "השבתת פתיחת התמונה בחלון בודק התמונות בלחיצה."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "כותרת האיור",
+        "description": "כותרת לתווית האיור."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "תיאור האיור",
+        "description": "תיאור לתווית האיור."
       }
     ],
     "developer": [

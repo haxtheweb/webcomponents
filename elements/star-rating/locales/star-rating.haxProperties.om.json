@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Walqunnamtii",
         "description": "Fayyadamaan sadarkaa akka kaa'uuf walqunnamtii hayyami."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Haalata Safartuu Rubriksii",

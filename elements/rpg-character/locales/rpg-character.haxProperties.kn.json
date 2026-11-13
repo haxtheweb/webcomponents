@@ -11,11 +11,6 @@
         "description": "ಯಾದೃಚ್ಛಿಕ ಪಾತ್ರವನ್ನು ರಚಿಸಲು ಬಳಸುವ ಪದ."
       },
       {
-        "property": "code",
-        "title": "ಪಾತ್ರದ ಕೋಡ್",
-        "description": "ಆ ಪಾತ್ರವನ್ನು ಮರುರಚಿಸಲು ಉಳಿಸಿದ ಕೋಡ್ ಅಂಟಿಸಿ."
-      },
-      {
         "property": "hat",
         "title": "ಟೋಪಿ",
         "description": "ಟೋಪಿಯ ಶೈಲಿ.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "ಮುಖವಾಡ",
-        "description": "ಮುಖ ಅಥವಾ ತಲೆಯ ಮೇಲೆ ಧರಿಸುವ ಮುಖವಾಡ.",
-        "options": {
-          "none": "ಯಾವುದೂ ಇಲ್ಲ",
-          "lion": "ಸಿಂಹ",
-          "plague": "ಪ್ಲೇಗ್ ವೈದ್ಯ",
-          "theater": "ರಂಗಭೂಮಿ",
-          "pumpkin": "ಕುಂಬಳಕಾಯಿ",
-          "ghost": "ಭೂತ",
-          "mummy": "ಮಮ್ಮಿ",
-          "wrestler": "ಕುಸ್ತಿ ಮುಖವಾಡ",
-          "block-head": "ಬ್ಲಾಕ್ ತಲೆ",
-          "web": "ಜಾಲ ಮುಖವಾಡ",
-          "werewolf": "ತೋಳ-ಮಾನವ ಮುಖ",
-          "shadow": "ನೆರಳಿನ ಮುಖ"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "ಮೇಕಪ್",
-        "description": "ಮುಖಕ್ಕೆ ಬಣ್ಣ ಅಥವಾ ಲಿಪ್‌ಸ್ಟಿಕ್.",
-        "options": {
-          "none": "ಯಾವುದೂ ಇಲ್ಲ",
-          "red-lipstick": "ಕೆಂಪು ಲಿಪ್‌ಸ್ಟಿಕ್",
-          "pink-lipstick": "ಗುಲಾಬಿ ಲಿಪ್‌ಸ್ಟಿಕ್",
-          "berry-lipstick": "ಬೆರ್ರಿ ಲಿಪ್‌ಸ್ಟಿಕ್",
-          "clown": "ಕೋಡಂಗಿ ಬಣ್ಣ",
-          "fangs": "ಕೋರೆಹಲ್ಲುಗಳು",
-          "skull": "ತಲೆಬುರುಡೆ ಬಣ್ಣ",
-          "zombie": "ಜೊಂಬಿ ಬಣ್ಣ",
-          "red-nose": "ಕೆಂಪು ಮೂಗು",
-          "white-beard": "ಬಿಳಿ ಗಡ್ಡ",
-          "domino": "ಹೀರೋ ಮುಖವಾಡ",
-          "carrot": "ಕ್ಯಾರೆಟ್ ಮೂಗು",
-          "bunny": "ಮೊಲದ ಮೂಗು",
-          "mustache": "ಮೀಸೆ",
-          "monster": "ರಾಕ್ಷಸ ಮುಖ ಬಣ್ಣ",
-          "round-glasses": "ದುಂಡು ಕನ್ನಡಕ"
-        }
-      },
-      {
         "property": "expression",
         "title": "ಭಾವ",
         "description": "ಮುಖದ ಭಾವ.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "ಸಾಕುಪ್ರಾಣಿ",
+        "description": "ಪಾತ್ರದ ಪಕ್ಕದಲ್ಲಿರುವ ಸಾಕುಪ್ರಾಣಿ.",
+        "options": {
+          "none": "ಯಾವುದೂ ಇಲ್ಲ",
+          "cat": "ಬೆಕ್ಕು",
+          "dog": "ನಾಯಿ",
+          "bunny": "ಮೊಲ",
+          "goldfish": "ಗೋಲ್ಡ್‌ಫಿಶ್",
+          "slime": "ಸ್ಲೈಮ್",
+          "squirrel": "ಅಳಿಲು",
+          "dragon": "ಮರಿ ಡ್ರ್ಯಾಗನ್",
+          "parrot": "ಗಿಳಿ",
+          "owl": "ಗೂಬೆ",
+          "bat": "ಬಾವಲಿ"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "ಪಾತ್ರದ ಕೋಡ್",
+        "description": "ಆ ಪಾತ್ರವನ್ನು ಮರುರಚಿಸಲು ಉಳಿಸಿದ ಕೋಡ್ ಅಂಟಿಸಿ."
+      },
+      {
+        "property": "mask",
+        "title": "ಮುಖವಾಡ",
+        "description": "ಮುಖ ಅಥವಾ ತಲೆಯ ಮೇಲೆ ಧರಿಸುವ ಮುಖವಾಡ.",
+        "options": {
+          "none": "ಯಾವುದೂ ಇಲ್ಲ",
+          "lion": "ಸಿಂಹ",
+          "plague": "ಪ್ಲೇಗ್ ವೈದ್ಯ",
+          "theater": "ರಂಗಭೂಮಿ",
+          "pumpkin": "ಕುಂಬಳಕಾಯಿ",
+          "ghost": "ಭೂತ",
+          "mummy": "ಮಮ್ಮಿ",
+          "wrestler": "ಕುಸ್ತಿ ಮುಖವಾಡ",
+          "block-head": "ಬ್ಲಾಕ್ ತಲೆ",
+          "web": "ಜಾಲ ಮುಖವಾಡ",
+          "werewolf": "ತೋಳ-ಮಾನವ ಮುಖ",
+          "shadow": "ನೆರಳಿನ ಮುಖ"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "ಮೇಕಪ್",
+        "description": "ಮುಖಕ್ಕೆ ಬಣ್ಣ ಅಥವಾ ಲಿಪ್‌ಸ್ಟಿಕ್.",
+        "options": {
+          "none": "ಯಾವುದೂ ಇಲ್ಲ",
+          "red-lipstick": "ಕೆಂಪು ಲಿಪ್‌ಸ್ಟಿಕ್",
+          "pink-lipstick": "ಗುಲಾಬಿ ಲಿಪ್‌ಸ್ಟಿಕ್",
+          "berry-lipstick": "ಬೆರ್ರಿ ಲಿಪ್‌ಸ್ಟಿಕ್",
+          "clown": "ಕೋಡಂಗಿ ಬಣ್ಣ",
+          "fangs": "ಕೋರೆಹಲ್ಲುಗಳು",
+          "skull": "ತಲೆಬುರುಡೆ ಬಣ್ಣ",
+          "zombie": "ಜೊಂಬಿ ಬಣ್ಣ",
+          "red-nose": "ಕೆಂಪು ಮೂಗು",
+          "white-beard": "ಬಿಳಿ ಗಡ್ಡ",
+          "domino": "ಹೀರೋ ಮುಖವಾಡ",
+          "carrot": "ಕ್ಯಾರೆಟ್ ಮೂಗು",
+          "bunny": "ಮೊಲದ ಮೂಗು",
+          "mustache": "ಮೀಸೆ",
+          "monster": "ರಾಕ್ಷಸ ಮುಖ ಬಣ್ಣ",
+          "round-glasses": "ದುಂಡು ಕನ್ನಡಕ"
+        }
+      },
+      {
         "property": "flagText",
         "title": "ಧ್ವಜದ ಪಠ್ಯ",
         "description": "ಧ್ವಜದ ಮೇಲೆ ಗರಿಷ್ಠ 4 ಅಕ್ಷರಗಳು ಕಾಣಿಸುತ್ತವೆ."
@@ -310,24 +330,6 @@
           "skates": "ಸ್ಕೇಟ್‌ಗಳು",
           "skateboard": "ಸ್ಕೇಟ್‌ಬೋರ್ಡ್",
           "hoverboard": "ಹೋವರ್‌ಬೋರ್ಡ್"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "ಸಾಕುಪ್ರಾಣಿ",
-        "description": "ಪಾತ್ರದ ಪಕ್ಕದಲ್ಲಿರುವ ಸಾಕುಪ್ರಾಣಿ.",
-        "options": {
-          "none": "ಯಾವುದೂ ಇಲ್ಲ",
-          "cat": "ಬೆಕ್ಕು",
-          "dog": "ನಾಯಿ",
-          "bunny": "ಮೊಲ",
-          "goldfish": "ಗೋಲ್ಡ್‌ಫಿಶ್",
-          "slime": "ಸ್ಲೈಮ್",
-          "squirrel": "ಅಳಿಲು",
-          "dragon": "ಮರಿ ಡ್ರ್ಯಾಗನ್",
-          "parrot": "ಗಿಳಿ",
-          "owl": "ಗೂಬೆ",
-          "bat": "ಬಾವಲಿ"
         }
       },
       {

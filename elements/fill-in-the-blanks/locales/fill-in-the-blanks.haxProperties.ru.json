@@ -14,28 +14,6 @@
         "property": "statement",
         "title": "Утверждение",
         "description": "Утверждение, которое будет преобразовано в задание на отметку слов."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "Формат оценивания",
-        "description": "OER Schema: формат оценивания для этого задания (например, баллы, буква, процент, выполнение)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Учебная цель",
-        "description": "OER Schema: учебная цель, связанная с этим заданием."
-      },
-      {
-        "property": "forCourse",
-        "title": "Курс",
-        "description": "OER Schema: курс, для которого предназначено это задание."
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Название теста",
-        "description": "Название теста, передаваемое для идентификации этого элемента в средах на основе xAPI"
       }
     ],
     "advanced": [
@@ -46,6 +24,28 @@
       {
         "title": "Изначально свёрнут",
         "description": "Если вопрос сворачиваемый, он изначально отображается закрытой строкой только с вопросом и его статусом."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Формат оценивания",
+        "description": "OER Schema: формат оценивания для этого задания (например, баллы, буква, процент, выполнение)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Учебная цель",
+        "description": "OER Schema: учебная цель, связанная с этим заданием."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Название теста",
+        "description": "Название теста, передаваемое для идентификации этого элемента в средах на основе xAPI"
+      },
+      {
+        "property": "forCourse",
+        "title": "Курс",
+        "description": "OER Schema: курс, для которого предназначено это задание."
       }
     ]
   }

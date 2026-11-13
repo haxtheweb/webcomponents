@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "PDF preglednik u pregledniku",
+    "title": "Preglednik PDF-a",
     "description": "Ugradite PDF datoteku u stranicu s neobaveznim rasporedom kartice i gumbom za preuzimanje."
   },
   "settings": {
@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Poruka o nepodržanosti",
-        "description": "Poruka kada preglednik ne može prikazati PDF datoteke."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Tekst poveznice o nepodržanosti",
-        "description": "Tekst poveznice kada preglednik ne može prikazati PDF datoteke."
-      },
-      {
         "property": "width",
         "title": "Širina",
         "description": "Širina PDF preglednika."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Visina",
         "description": "Visina PDF preglednika."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Poruka o nepodržanosti",
+        "description": "Poruka kada preglednik ne može prikazati PDF datoteke."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Tekst poveznice o nepodržanosti",
+        "description": "Tekst poveznice kada preglednik ne može prikazati PDF datoteke."
       }
     ]
   }

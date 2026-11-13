@@ -9,7 +9,9 @@
         "property": "source",
         "title": "Hulpbron-URL",
         "description": "Hulpbron-URL."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Hoogte",

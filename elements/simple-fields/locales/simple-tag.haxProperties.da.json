@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "Tag/pille",
+    "title": "Tag",
     "description": "En kompakt pilleformet etiket med valgfri accentfarve, annulleringsknap eller til/fra-funktion."
   },
   "settings": {
@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Automatisk accentfarve",
         "description": "Udled accentfarven automatisk fra etiketteksten."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Annulleringsknap",
-        "description": "Vis en ikonknap til fjern/annuller inde i pillen."
-      },
-      {
-        "property": "readonly",
-        "title": "Skrivebeskyttet",
-        "description": "Skjul annulleringsknappen, så pillen kun er til visning."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Blågrå",
           "grey": "Grå"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Annulleringsknap",
+        "description": "Vis en ikonknap til fjern/annuller inde i pillen."
+      },
+      {
+        "property": "readonly",
+        "title": "Skrivebeskyttet",
+        "description": "Skjul annulleringsknappen, så pillen kun er til visning."
       }
     ]
   }

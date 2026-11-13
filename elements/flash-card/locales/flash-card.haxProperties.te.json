@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "చిత్ర మూలం",
         "description": "కార్డ్ కోసం ఉపయోగించే చిత్ర ఫైల్. చిత్ర కీవర్డ్‌ను భర్తీ చేస్తుంది."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "చిత్ర కీవర్డ్",
+        "description": "యాదృచ్ఛిక చిత్ర కీవర్డ్. చిత్ర మూలం దీన్ని భర్తీ చేస్తుంది."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "అభ్యాస లక్ష్యం",
         "description": "OER Schema: ఈ సాధన మద్దతు ఇచ్చే అభ్యాస లక్ష్యం యొక్క ID లేదా URL."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "చిత్ర కీవర్డ్",
-        "description": "యాదృచ్ఛిక చిత్ర కీవర్డ్. చిత్ర మూలం దీన్ని భర్తీ చేస్తుంది."
       }
     ]
   }

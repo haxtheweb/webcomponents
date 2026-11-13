@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "Kibontható-összecsukható csoport",
-    "description": "Kibontható-összecsukható elemek csoportja."
+    "title": "Összecsukható csoport",
+    "description": "Összecsukható tárolók csoportja."
   },
   "settings": {
     "configure": [

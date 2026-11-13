@@ -10,10 +10,6 @@
         "title": "ट्याब आइकन"
       },
       {
-        "property": "disabled",
-        "title": "निष्क्रिय"
-      },
-      {
         "property": "label",
         "title": "ट्याब लेबल"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "अद्वितीय ID"
-      },
-      {
         "property": "flag",
         "title": "वैकल्पिक झण्डा पाठ"
       },
       {
         "property": "flagIcon",
         "title": "वैकल्पिक झण्डा आइकन"
+      },
+      {
+        "property": "disabled",
+        "title": "निष्क्रिय"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "अद्वितीय ID"
       }
     ]
   }

@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "בילד־מקור",
         "description": "בילד־טעקע פֿאַרן קאַרטל. גייט איבער דעם בילד־שליסלוואָרט."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "בילד־שליסלוואָרט",
+        "description": "שליסלוואָרט פֿאַר אַ צופֿעליק בילד. בילד־מקור גייט עס איבער."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "לערן־ציל",
         "description": "OER Schema: ID אָדער URL פֿונעם לערן־ציל וואָס די איבונג שטיצט."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "בילד־שליסלוואָרט",
-        "description": "שליסלוואָרט פֿאַר אַ צופֿעליק בילד. בילד־מקור גייט עס איבער."
       }
     ]
   }

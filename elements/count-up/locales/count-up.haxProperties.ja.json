@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "接尾テキスト",
         "description": "数値の後に表示するテキスト（例: '%'）。"
-      },
-      {
-        "slot": "prefix",
-        "title": "接頭スロット",
-        "description": "数値の前に入れる任意のスロットコンテンツ。"
-      },
-      {
-        "slot": "suffix",
-        "title": "接尾スロット",
-        "description": "数値の後に入れる任意のスロットコンテンツ。"
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "イージングなし",
         "description": "イージングを無効にして一定速度でカウントします。"
+      },
+      {
+        "slot": "prefix",
+        "title": "接頭スロット",
+        "description": "数値の前に入れる任意のスロットコンテンツ。"
+      },
+      {
+        "slot": "suffix",
+        "title": "接尾スロット",
+        "description": "数値の後に入れる任意のスロットコンテンツ。"
       }
     ]
   }

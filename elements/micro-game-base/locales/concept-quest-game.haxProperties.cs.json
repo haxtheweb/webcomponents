@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Hra s pojmovou výpravou",
-    "description": "Svět k procházení. Pojmy si tě najdou a položí otázku. Odpověz správně, porazíš ho a odemkneš jeho domek. Shrnutí ukáže pokusy a co si zopakovat."
+    "description": "Hra s mapou světa, ve které pojmy kladou otázky a správné odpovědi odemykají mapu."
   },
   "settings": {
     "configure": [
@@ -91,7 +91,9 @@
         "property": "gameTitle",
         "title": "Název hry",
         "description": "Pojmenuje tuto hru v událostech průběhu a ve značkování OER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "ID hry",

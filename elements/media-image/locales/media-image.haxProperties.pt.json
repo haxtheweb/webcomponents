@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Legenda",
         "description": "Legenda da imagem."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Título da figura",
-        "description": "Título do rótulo da figura."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Descrição da figura",
-        "description": "Descrição do rótulo da figura."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Desativar modal da imagem",
         "description": "Desativar a abertura da imagem em uma caixa de diálogo de inspeção ao clicar."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Título da figura",
+        "description": "Título do rótulo da figura."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Descrição da figura",
+        "description": "Descrição do rótulo da figura."
       }
     ],
     "developer": [

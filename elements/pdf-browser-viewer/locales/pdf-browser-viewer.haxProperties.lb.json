@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Message fir net ënnerstëtzt",
-        "description": "Message, wann de Browser keng PDF-Fichieren uweise kann."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Link-Message fir net ënnerstëtzt",
-        "description": "Linktext, wann de Browser keng PDF-Fichieren uweise kann."
-      },
-      {
         "property": "width",
         "title": "Breet",
         "description": "Breet vum PDF-Viewer."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Héicht",
         "description": "Héicht vum PDF-Viewer."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Message fir net ënnerstëtzt",
+        "description": "Message, wann de Browser keng PDF-Fichieren uweise kann."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Link-Message fir net ënnerstëtzt",
+        "description": "Linktext, wann de Browser keng PDF-Fichieren uweise kann."
       }
     ]
   }

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "短答式問題",
-    "description": "ユーザーに簡単な問題に答えてもらいます"
+    "description": "学習者が1〜2文で答える質問。"
   },
   "settings": {
     "configure": [

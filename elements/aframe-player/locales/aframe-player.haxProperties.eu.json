@@ -11,6 +11,13 @@
         "description": "AR fitxategi honen URLa."
       },
       {
+        "property": "skyColor",
+        "title": "Zeruaren kolorea",
+        "description": "Hautatu eszenako zeruaren kolorea."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "Elementuaren X posizioa AR-n."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "Elementuaren Z posizioa AR-n."
-      },
-      {
-        "property": "skyColor",
-        "title": "Zeruaren kolorea",
-        "description": "Hautatu eszenako zeruaren kolorea."
       }
     ]
   }

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Samosprawdzenie",
-    "description": "Użytkownicy mogą wykonać samosprawdzenie."
+    "description": "Pytanie z ukrytą odpowiedzią, którą uczeń odsłania, by się sprawdzić."
   },
   "settings": {
     "configure": [
@@ -27,6 +27,13 @@
       {
         "slot": "",
         "title": "Odpowiedź"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Link „więcej”",
+        "description": "Link do dodatkowych informacji."
       },
       {
         "property": "hasLearningObjective",
@@ -37,13 +44,6 @@
         "property": "assessing",
         "title": "Oceniane",
         "description": "Odwołanie do aktywności emitowane jako oer:assessing."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "link",
-        "title": "Link „więcej”",
-        "description": "Link do dodatkowych informacji."
       }
     ]
   }

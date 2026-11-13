@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "Knoppies",
         "description": "Knoppiegroep wat onder die teks gewys word."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "Ankerteks",
         "description": "Anker-etiket wat in die navigasie gewys word."
       }
-    ]
+    ],
+    "developer": []
   }
 }

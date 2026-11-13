@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Julistekuva",
         "description": "Julistekuvan URL."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Tekstiraidat",
         "description": "Videon tekstitykset, ohjelmatekstitykset, kuvailut ja muut tekstiraidat."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Aloitusaika",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Kuvailutulkkausraita",
         "description": "URL kuvailutulkkausraitaan (MP3-tiedosto), joka kertoo visuaalisista elementeistä."
+      },
+      {
+        "property": "accentColor",
+        "title": "Korostusväri",
+        "description": "(vanhentunut) Valitse soittimen korosteväri."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Kieli",
         "description": "Median kieli."
-      },
-      {
-        "property": "accentColor",
-        "title": "Korostusväri",
-        "description": "(vanhentunut) Valitse soittimen korosteväri."
       }
     ]
   }

@@ -10,10 +10,6 @@
         "title": "Icône de l'onglet"
       },
       {
-        "property": "disabled",
-        "title": "Désactivé"
-      },
-      {
         "property": "label",
         "title": "Libellé de l'onglet"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "ID unique"
-      },
-      {
         "property": "flag",
         "title": "Texte d'indicateur facultatif"
       },
       {
         "property": "flagIcon",
         "title": "Icône d'indicateur facultative"
+      },
+      {
+        "property": "disabled",
+        "title": "Désactivé"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "ID unique"
       }
     ]
   }

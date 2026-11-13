@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "فلٽر جي اجازت",
         "description": "ڪالم جي قيمتن موجب فلٽر ڪرڻ جي اجازت ڏيو."
-      },
-      {
-        "property": "numericStyles",
-        "title": "عددي انداز",
-        "description": "عددي ڪالمن تي عددي انداز لاڳو ڪريو."
-      },
-      {
-        "property": "responsive",
-        "title": "رسپانسِو",
-        "description": "ننڍين اسڪرينن تي جدول جي ترتيب ٺيڪ ڪريو."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Rubric موڊ",
-        "description": "هن جدول کي OER Schema Rubric طور سمجهو ته جيئن Rubric، RubricScale، RubricCriterion ۽ RubricLevel ميٽاڊيٽا جاري ٿئي."
-      },
-      {
-        "property": "rubricType",
-        "title": "Rubric قسم",
-        "description": "oer:rubricType طور جاري ٿيندڙ rubric انداز (صرف تڏهن بامعنيٰ جڏهن Rubric موڊ آن هجي).",
-        "options": {
-          "": "(ڪوبه نه)",
-          "analytic": "تجزياتي",
-          "holistic": "مجموعي",
-          "single-point": "هڪ نقطو",
-          "checklist": "چيڪ لسٽ"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "پرنٽ بٽڻ",
         "description": "صرف جدول پرنٽ ڪرڻ لاءِ بٽڻ شامل ڪريو."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "عددي انداز",
+        "description": "عددي ڪالمن تي عددي انداز لاڳو ڪريو."
+      },
+      {
+        "property": "responsive",
+        "title": "رسپانسِو",
+        "description": "ننڍين اسڪرينن تي جدول جي ترتيب ٺيڪ ڪريو."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Rubric موڊ",
+        "description": "هن جدول کي OER Schema Rubric طور سمجهو ته جيئن Rubric، RubricScale، RubricCriterion ۽ RubricLevel ميٽاڊيٽا جاري ٿئي."
+      },
+      {
+        "property": "rubricType",
+        "title": "Rubric قسم",
+        "description": "oer:rubricType طور جاري ٿيندڙ rubric انداز (صرف تڏهن بامعنيٰ جڏهن Rubric موڊ آن هجي).",
+        "options": {
+          "": "(ڪوبه نه)",
+          "analytic": "تجزياتي",
+          "holistic": "مجموعي",
+          "single-point": "هڪ نقطو",
+          "checklist": "چيڪ لسٽ"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "CSV ڊيٽا",
         "description": "اپلوڊ ڪيل CSV فائل مان جدول ٺاهيو."
       }
-    ]
+    ],
+    "developer": []
   }
 }

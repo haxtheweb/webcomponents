@@ -9,7 +9,9 @@
         "property": "source",
         "title": "வள URL",
         "description": "வள URL."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "உயரம்",

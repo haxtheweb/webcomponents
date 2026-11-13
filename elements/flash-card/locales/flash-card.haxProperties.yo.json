@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Orísun àwòrán",
         "description": "Fáìlì àwòrán tí a lò fún káàdì. Ó borí Kókó-ọ̀rọ̀ Àwòrán."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Kókó-ọ̀rọ̀ Àwòrán",
+        "description": "Kókó-ọ̀rọ̀ fún àwòrán àìròtẹ́lẹ̀. Orísun Àwòrán borí rẹ̀."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Àfojúsùn Ẹ̀kọ́",
         "description": "OER Schema: ID tàbí URL àfojúsùn ẹ̀kọ́ tí ìdánrawò yìí ń ṣàtìlẹ́yìn."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Kókó-ọ̀rọ̀ Àwòrán",
-        "description": "Kókó-ọ̀rọ̀ fún àwòrán àìròtẹ́lẹ̀. Orísun Àwòrán borí rẹ̀."
       }
     ]
   }

@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Хупланмау хәбәре",
-        "description": "Браузер PDF файлларны күрсәтә алмаганда чыга торган хәбәр."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Хупланмау сылтамасы хәбәре",
-        "description": "Браузер PDF файлларны күрсәтә алмаганда чыга торган сылтама тексты."
-      },
-      {
         "property": "width",
         "title": "Киңлек",
         "description": "PDF караучысының киңлеге."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Биеклек",
         "description": "PDF караучысының биеклеге."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Хупланмау хәбәре",
+        "description": "Браузер PDF файлларны күрсәтә алмаганда чыга торган хәбәр."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Хупланмау сылтамасы хәбәре",
+        "description": "Браузер PDF файлларны күрсәтә алмаганда чыга торган сылтама тексты."
       }
     ]
   }

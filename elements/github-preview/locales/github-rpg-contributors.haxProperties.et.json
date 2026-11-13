@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "GitHubi kaastööliste loend",
-    "description": "Kuvatakse RPG-tegelastena GitHubi API abil."
+    "description": "Kuvab hoidla kaasautorid RPG-tegelastena."
   },
   "settings": {
     "configure": [

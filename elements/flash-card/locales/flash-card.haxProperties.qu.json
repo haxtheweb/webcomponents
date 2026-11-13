@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Rikch'a pukyu",
         "description": "Tarjetapi rikch'a willañiqi. Rikch'a simi chaninta rantin."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Rikch'a simi",
+        "description": "Mana yuyasqa rikch'apaq simi. Rikch'a pukyuwan rantikun."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Yachana munay",
         "description": "OER Schema: kay yachanakuy yanapasqan yachana munaypa ID-n utaq URL-nin."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Rikch'a simi",
-        "description": "Mana yuyasqa rikch'apaq simi. Rikch'a pukyuwan rantikun."
       }
     ]
   }

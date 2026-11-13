@@ -10,10 +10,6 @@
         "title": "Tendayke Ta'ãnga'i"
       },
       {
-        "property": "disabled",
-        "title": "Ojepe'apyre"
-      },
-      {
         "property": "label",
         "title": "Tendayke Réra"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "ID peteĩchagua"
-      },
-      {
         "property": "flag",
         "title": "Techaukaha Moñe'ẽrã Ojeporavokuaáva"
       },
       {
         "property": "flagIcon",
         "title": "Techaukaha Ta'ãnga'i Ojeporavokuaáva"
+      },
+      {
+        "property": "disabled",
+        "title": "Ojepe'apyre"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "ID peteĩchagua"
       }
     ]
   }

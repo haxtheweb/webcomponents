@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "Visualizador de PDF no navegador",
+    "title": "Visualizador de PDF",
     "description": "Incorpore um arquivo PDF na página com layout de cartão e botão de download opcionais."
   },
   "settings": {
@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Mensagem de não compatível",
-        "description": "Mensagem quando o navegador não consegue exibir arquivos PDF."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Mensagem do link de não compatível",
-        "description": "Texto do link quando o navegador não consegue exibir arquivos PDF."
-      },
-      {
         "property": "width",
         "title": "Largura",
         "description": "Largura do visualizador de PDF."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Altura",
         "description": "Altura do visualizador de PDF."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Mensagem de não compatível",
+        "description": "Mensagem quando o navegador não consegue exibir arquivos PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Mensagem do link de não compatível",
+        "description": "Texto do link quando o navegador não consegue exibir arquivos PDF."
       }
     ]
   }

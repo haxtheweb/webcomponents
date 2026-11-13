@@ -9,7 +9,9 @@
         "slot": "",
         "title": "Παραπομπές",
         "description": "Στοιχεία παραπομπών σε αυτή τη βιβλιογραφία"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "Μάθημα",

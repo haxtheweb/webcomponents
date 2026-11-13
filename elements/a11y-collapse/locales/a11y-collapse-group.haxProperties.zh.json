@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "展开折叠组",
-    "description": "一组可展开/折叠的元素。"
+    "title": "折叠组",
+    "description": "一组可折叠的容器。"
   },
   "settings": {
     "configure": [

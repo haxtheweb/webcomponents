@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "Grupa za proširivanje i sažimanje",
-    "description": "Grupa elemenata koji se mogu proširiti i sažeti."
+    "title": "Sklopiva grupa",
+    "description": "Grupa sklopivih spremnika."
   },
   "settings": {
     "configure": [

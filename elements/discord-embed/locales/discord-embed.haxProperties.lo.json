@@ -9,7 +9,9 @@
         "property": "source",
         "title": "URL ຊັບພະຍາກອນ",
         "description": "URL ຊັບພະຍາກອນ."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "ຄວາມສູງ",

@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "ڪيپشن",
         "description": "تصوير جو ڪيپشن."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "شڪل جو عنوان",
-        "description": "شڪل جي ليبل لاءِ عنوان."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "شڪل جي وضاحت",
-        "description": "شڪل جي ليبل لاءِ وضاحت."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "تصوير موڊل بند ڪريو",
         "description": "ڪلڪ ڪرڻ تي تصوير کي تصوير جانچيندڙ ڊائلاگ ۾ کولڻ بند ڪريو."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "شڪل جو عنوان",
+        "description": "شڪل جي ليبل لاءِ عنوان."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "شڪل جي وضاحت",
+        "description": "شڪل جي ليبل لاءِ وضاحت."
       }
     ],
     "developer": [

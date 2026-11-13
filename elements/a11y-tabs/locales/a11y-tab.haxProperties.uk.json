@@ -10,10 +10,6 @@
         "title": "Значок вкладки"
       },
       {
-        "property": "disabled",
-        "title": "Вимкнено"
-      },
-      {
         "property": "label",
         "title": "Мітка вкладки"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "Унікальний ID"
-      },
-      {
         "property": "flag",
         "title": "Необов'язковий текст позначки"
       },
       {
         "property": "flagIcon",
         "title": "Необов'язковий значок позначки"
+      },
+      {
+        "property": "disabled",
+        "title": "Вимкнено"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "Унікальний ID"
       }
     ]
   }

@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Origine dell'immagine",
         "description": "File immagine usato per la carta. Ha la precedenza su Parola chiave immagine."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Parola chiave immagine",
+        "description": "Parola chiave per un'immagine casuale. Sostituita da Origine dell'immagine."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Obiettivo di apprendimento",
         "description": "OER Schema: ID o URL dell'obiettivo di apprendimento supportato da questo esercizio."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Parola chiave immagine",
-        "description": "Parola chiave per un'immagine casuale. Sostituita da Origine dell'immagine."
       }
     ]
   }

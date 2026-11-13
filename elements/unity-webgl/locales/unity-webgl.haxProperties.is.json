@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Markmið",
         "description": "Slóð að leikjasmíðinni."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Breidd striga",
+        "description": "CSS-breidd striga (t.d. px eða em)."
       },
+      {
+        "property": "height",
+        "title": "Hæð striga",
+        "description": "CSS-hæð striga (t.d. px eða em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Þjöppunaraðferð",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Útgáfa vöru",
         "description": "Útgáfunúmer."
-      },
-      {
-        "property": "width",
-        "title": "Breidd striga",
-        "description": "CSS-breidd striga (t.d. px eða em)."
-      },
-      {
-        "property": "height",
-        "title": "Hæð striga",
-        "description": "CSS-hæð striga (t.d. px eða em)."
       },
       {
         "property": "background",

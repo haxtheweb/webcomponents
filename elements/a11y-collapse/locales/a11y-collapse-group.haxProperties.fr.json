@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "Groupe de sections repliables",
-    "description": "Un groupe d'éléments dépliables et repliables."
+    "title": "Groupe repliable",
+    "description": "Un groupe de conteneurs repliables."
   },
   "settings": {
     "configure": [

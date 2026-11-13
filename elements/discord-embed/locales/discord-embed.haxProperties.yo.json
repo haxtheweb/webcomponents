@@ -9,7 +9,9 @@
         "property": "source",
         "title": "URL ohun-èlò",
         "description": "URL ohun-èlò."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Gíga",

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Wikipedia",
-    "description": "Dit kan een Wikipedia-artikel in context weergeven in verschillende formaten."
+    "description": "Toont een Wikipedia-artikel op de pagina."
   },
   "settings": {
     "configure": [

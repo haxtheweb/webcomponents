@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "Kääre Spotify-soitinupotuksille."
+    "description": "Upota Spotify-kappale, -albumi tai -soittolista."
   },
   "settings": {
     "configure": [

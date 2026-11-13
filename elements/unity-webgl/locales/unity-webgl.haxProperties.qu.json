@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Maypi",
         "description": "Pukllay buildman ñan."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Canvas kinray",
+        "description": "Canvaspa CSS kinraynin (kayhina px utaq em)."
       },
+      {
+        "property": "height",
+        "title": "Canvas sayay",
+        "description": "Canvaspa CSS sayaynin (kayhina px utaq em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "K'iskichay ñan",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Productopa versiónnin",
         "description": "Lluqsichisqa versión."
-      },
-      {
-        "property": "width",
-        "title": "Canvas kinray",
-        "description": "Canvaspa CSS kinraynin (kayhina px utaq em)."
-      },
-      {
-        "property": "height",
-        "title": "Canvas sayay",
-        "description": "Canvaspa CSS sayaynin (kayhina px utaq em)."
       },
       {
         "property": "background",

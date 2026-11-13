@@ -86,7 +86,9 @@
         "property": "gameTitle",
         "title": "Тоглоомын нэр",
         "description": "Явцын үйл явдал болон OER Schema тэмдэглэгээнд энэ тоглоомыг нэрлэнэ."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Тоглоомын ID",

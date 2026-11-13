@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Rasm manbasi",
         "description": "Karta uchun ishlatiladigan rasm fayli. Rasm kalit soʻzini bekor qiladi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Rasm kalit soʻzi",
+        "description": "Tasodifiy rasm kalit soʻzi. Rasm manbasi tomonidan bekor qilinadi."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Oʻquv maqsadi",
         "description": "OER Schema: ushbu mashq qoʻllab-quvvatlaydigan oʻquv maqsadining ID yoki URL manzili."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Rasm kalit soʻzi",
-        "description": "Tasodifiy rasm kalit soʻzi. Rasm manbasi tomonidan bekor qilinadi."
       }
     ]
   }

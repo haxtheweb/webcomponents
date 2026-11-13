@@ -9,7 +9,9 @@
         "property": "source",
         "title": "Resurs URL-i",
         "description": "Resurs URL-i."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Hündürlük",

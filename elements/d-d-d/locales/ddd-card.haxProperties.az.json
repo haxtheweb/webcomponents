@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Oxsuz",
         "description": "Düymənin oxunu gizlət."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Keçid: hədəf",
@@ -54,7 +52,9 @@
           "_top": "Üst pəncərə - _top",
           "_parent": "Ana pəncərə - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Keçid: rel",

@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "تیر نہیں",
         "description": "بٹن دا تیر لکاؤ۔"
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "لنک: ٹارگٹ",
@@ -54,7 +52,9 @@
           "_top": "اُتلی ونڈو - _top",
           "_parent": "پیرنٹ ونڈو - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "لنک: rel",

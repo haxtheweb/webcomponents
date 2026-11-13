@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "সাধারণ ছবি",
-    "description": "সাধারণ প্যারামিটার দিয়ে ছবি পরিবর্তন করুন।"
+    "description": "সহজ সেটিংসে আকার বদলানো, ছাঁটা বা ঘোরানো ছবি।"
   },
   "settings": {
     "configure": [
@@ -26,7 +26,8 @@
         "description": "স্ক্রিন রিডার ও উন্নত SEO-র জন্য উপযোগী।"
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "মান",

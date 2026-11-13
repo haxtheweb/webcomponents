@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Begrebs-questspil",
-    "description": "En oververden at vandre rundt i. Begreber finder dig og stiller et spørgsmål. Svar rigtigt for at besejre et og låse dets hus op. Opsummeringen viser forsøg og hvad du bør gennemgå."
+    "description": "Et oververdensspil, hvor begreber stiller spørgsmål, og rigtige svar låser kortet op."
   },
   "settings": {
     "configure": [
@@ -91,7 +91,9 @@
         "property": "gameTitle",
         "title": "Spillets navn",
         "description": "Navngiver dette spil i fremskridtshændelser og OER Schema-markup."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Spil-id",

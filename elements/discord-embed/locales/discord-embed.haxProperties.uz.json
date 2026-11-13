@@ -9,7 +9,9 @@
         "property": "source",
         "title": "Resurs URL",
         "description": "Resurs URL."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Balandlik",

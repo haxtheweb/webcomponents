@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Tanong na Maikling Sagot",
-    "description": "Pasagutin ang user ng isang simpleng tanong"
+    "description": "Isang tanong na sinasagot ng mag-aaral sa isa o dalawang pangungusap."
   },
   "settings": {
     "configure": [

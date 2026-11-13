@@ -10,10 +10,6 @@
         "title": "Langeta piktogramo"
       },
       {
-        "property": "disabled",
-        "title": "Malŝaltita"
-      },
-      {
         "property": "label",
         "title": "Langeta etikedo"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "Unika ID"
-      },
-      {
         "property": "flag",
         "title": "Nedeviga flaga teksto"
       },
       {
         "property": "flagIcon",
         "title": "Nedeviga flaga piktogramo"
+      },
+      {
+        "property": "disabled",
+        "title": "Malŝaltita"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "Unika ID"
       }
     ]
   }

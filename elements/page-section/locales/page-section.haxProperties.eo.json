@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "Butonoj",
         "description": "Butongrupo montrata sub la teksto."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "Ankra teksto",
         "description": "Ankra etikedo montrata en la navigado."
       }
-    ]
+    ],
+    "developer": []
   }
 }

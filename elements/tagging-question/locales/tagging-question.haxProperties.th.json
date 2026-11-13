@@ -11,30 +11,8 @@
         "description": "คำถามให้ผู้ใช้ตอบ"
       },
       {
-        "property": "gradingFormat",
-        "title": "รูปแบบการให้คะแนน",
-        "description": "OER Schema: รูปแบบการให้คะแนนสำหรับการประเมินนี้ (เช่น คะแนน เกรดตัวอักษร เปอร์เซ็นต์ การทำเสร็จ)"
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "วัตถุประสงค์การเรียนรู้",
-        "description": "OER Schema: วัตถุประสงค์การเรียนรู้ที่เชื่อมโยงกับการประเมินนี้"
-      },
-      {
-        "property": "forCourse",
-        "title": "รายวิชา",
-        "description": "OER Schema: รายวิชาที่การประเมินนี้มีไว้สำหรับ"
-      },
-      {
         "property": "answers",
         "title": "คำตอบ"
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "ชื่อแบบทดสอบ",
-        "description": "ชื่อแบบทดสอบที่ใช้ระบุ xAPI ในระบบวิเคราะห์"
       }
     ],
     "advanced": [
@@ -47,6 +25,28 @@
         "property": "collapsed",
         "title": "เริ่มแบบพับไว้",
         "description": "เมื่อพับได้ ให้เริ่มเป็นแถวที่ปิดอยู่ ซึ่งแสดงเฉพาะคำถามและสถานะของคำถาม"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "รูปแบบการให้คะแนน",
+        "description": "OER Schema: รูปแบบการให้คะแนนสำหรับการประเมินนี้ (เช่น คะแนน เกรดตัวอักษร เปอร์เซ็นต์ การทำเสร็จ)"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "วัตถุประสงค์การเรียนรู้",
+        "description": "OER Schema: วัตถุประสงค์การเรียนรู้ที่เชื่อมโยงกับการประเมินนี้"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "ชื่อแบบทดสอบ",
+        "description": "ชื่อแบบทดสอบที่ใช้ระบุ xAPI ในระบบวิเคราะห์"
+      },
+      {
+        "property": "forCourse",
+        "title": "รายวิชา",
+        "description": "OER Schema: รายวิชาที่การประเมินนี้มีไว้สำหรับ"
       }
     ]
   }

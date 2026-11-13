@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Тасвири постер",
         "description": "URL-и тасвири постер."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Роҳчаҳои матнӣ",
         "description": "Зернависҳо, субтитрҳо, тавсифҳо ва дигар роҳчаҳои матнӣ барои видео."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Вақти оғоз",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Роҳчаи тавсифи аудиоӣ",
         "description": "URL ба роҳчаи тавсифи аудиоӣ (файли MP3), ки унсурҳои визуалиро нақл мекунад."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ранги таъкидӣ",
+        "description": "(кӯҳна) Ранги таъкидии плейерро интихоб кунед."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Забон",
         "description": "Забони медиа."
-      },
-      {
-        "property": "accentColor",
-        "title": "Ранги таъкидӣ",
-        "description": "(кӯҳна) Ранги таъкидии плейерро интихоб кунед."
       }
     ]
   }

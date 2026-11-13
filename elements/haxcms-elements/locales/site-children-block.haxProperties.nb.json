@@ -1,10 +1,10 @@
 {
   "gizmo": {
-    "title": "HAXcms: underblokk",
-    "description": "Dynamisk blokk som viser undersider av gjeldende side"
+    "title": "Undersider",
+    "description": "Viser undersidene til den gjeldende siden."
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "Dynamisk metode",
@@ -14,7 +14,9 @@
           "parent": "Overordnets undersider",
           "ancestor": "Alle undersider fra den øverste forfaren"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "Startnivå"

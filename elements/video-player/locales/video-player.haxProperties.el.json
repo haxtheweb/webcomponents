@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Εικόνα αφίσας",
         "description": "URL εικόνας αφίσας."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Κομμάτια κειμένου",
         "description": "Υπότιτλοι για κωφούς, υπότιτλοι, περιγραφές και άλλα κομμάτια κειμένου για το βίντεο."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Χρόνος έναρξης",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Κομμάτι ακουστικής περιγραφής",
         "description": "URL προς ένα κομμάτι ακουστικής περιγραφής (αρχείο MP3) που αφηγείται τα οπτικά στοιχεία."
+      },
+      {
+        "property": "accentColor",
+        "title": "Χρώμα έμφασης",
+        "description": "(καταργημένο) Επιλέξτε το χρώμα έμφασης για τη συσκευή αναπαραγωγής."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Γλώσσα",
         "description": "Γλώσσα του πολυμέσου."
-      },
-      {
-        "property": "accentColor",
-        "title": "Χρώμα έμφασης",
-        "description": "(καταργημένο) Επιλέξτε το χρώμα έμφασης για τη συσκευή αναπαραγωγής."
       }
     ]
   }

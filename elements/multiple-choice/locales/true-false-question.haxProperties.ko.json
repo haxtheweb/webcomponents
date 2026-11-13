@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "참/거짓 문제",
-    "description": "참 거짓 문제"
+    "description": "학습자가 참 또는 거짓으로 표시하는 진술."
   },
   "settings": {
     "configure": [

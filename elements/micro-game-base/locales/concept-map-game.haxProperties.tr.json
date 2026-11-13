@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Kavram haritası oyunu",
-    "description": "Kısa bir klavye oyunu. Bir karakter haritadaki her kavrama yürür ve kavram kendini anlatır. Hepsine dokunursan konfeti ve kopyalanacak bir istem gelir."
+    "description": "Bir karakterin haritada yürüdüğü ve her kavramın kendini açıkladığı kısa bir klavye oyunu."
   },
   "settings": {
     "configure": [
@@ -86,7 +86,9 @@
         "property": "gameTitle",
         "title": "Oyun adı",
         "description": "Bu oyuna ilerleme olaylarında ve OER Schema işaretlemesinde ad verir."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Oyun kimliği",

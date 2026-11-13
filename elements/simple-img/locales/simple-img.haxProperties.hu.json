@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Egyszerű kép",
-    "description": "Képek módosítása egyszerű paraméterekkel."
+    "description": "Egyszerű beállításokkal átméretezett, körbevágott vagy elforgatott kép."
   },
   "settings": {
     "configure": [
@@ -26,7 +26,8 @@
         "description": "Hasznos a képernyőolvasók számára és a jobb SEO érdekében."
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "Minőség",

@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "შეტყობინება მხარდაუჭერლობის შესახებ",
-        "description": "შეტყობინება, როცა ბრაუზერს PDF ფაილების ჩვენება არ შეუძლია."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "ბმულის შეტყობინება მხარდაუჭერლობის შესახებ",
-        "description": "ბმულის ტექსტი, როცა ბრაუზერს PDF ფაილების ჩვენება არ შეუძლია."
-      },
-      {
         "property": "width",
         "title": "სიგანე",
         "description": "PDF მნახველის სიგანე."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "სიმაღლე",
         "description": "PDF მნახველის სიმაღლე."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "შეტყობინება მხარდაუჭერლობის შესახებ",
+        "description": "შეტყობინება, როცა ბრაუზერს PDF ფაილების ჩვენება არ შეუძლია."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "ბმულის შეტყობინება მხარდაუჭერლობის შესახებ",
+        "description": "ბმულის ტექსტი, როცა ბრაუზერს PDF ფაილების ჩვენება არ შეუძლია."
       }
     ]
   }

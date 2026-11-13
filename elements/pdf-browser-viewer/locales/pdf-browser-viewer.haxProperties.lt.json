@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "PDF naršyklės peržiūros priemonė",
+    "title": "PDF peržiūros programa",
     "description": "Įterpti PDF failą tekste su pasirenkamu kortelės išdėstymu ir atsisiuntimo mygtuku."
   },
   "settings": {
@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Nepalaikymo pranešimas",
-        "description": "Pranešimas, kai naršyklė negali rodyti PDF failų."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Nepalaikymo nuorodos pranešimas",
-        "description": "Nuorodos tekstas, kai naršyklė negali rodyti PDF failų."
-      },
-      {
         "property": "width",
         "title": "Plotis",
         "description": "PDF peržiūros priemonės plotis."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Aukštis",
         "description": "PDF peržiūros priemonės aukštis."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Nepalaikymo pranešimas",
+        "description": "Pranešimas, kai naršyklė negali rodyti PDF failų."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Nepalaikymo nuorodos pranešimas",
+        "description": "Nuorodos tekstas, kai naršyklė negali rodyti PDF failų."
       }
     ]
   }

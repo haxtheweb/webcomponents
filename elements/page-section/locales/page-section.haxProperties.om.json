@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "Qabduuwwan",
         "description": "Garee qabduuwwanii barreeffama jalatti mul'atu."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "Barreeffama hidhaa",
         "description": "Maqaa hidhaa naannessa keessatti mul'atu."
       }
-    ]
+    ],
+    "developer": []
   }
 }

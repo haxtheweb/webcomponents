@@ -14,7 +14,7 @@
   "cssParts": [],
   "cssProperties": [],
   "hax": {
-    "schema": "elements/course-design/lib/ebook-button.js",
+    "schema": "elements/course-design/lib/ebook-button.haxProperties.json",
     "gizmo": true,
     "properties": [
       "icon",

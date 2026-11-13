@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Аўдыё",
-    "description": "Можа прадстаўляць відэа вельмі даступным спосабам незалежна ад крыніцы."
+    "description": "Даступны аўдыяплэер з падтрымкай расшыфроўкі."
   },
   "settings": {
     "configure": [
@@ -46,6 +46,16 @@
         "property": "accentColor",
         "title": "Акцэнтны колер",
         "description": "Выберыце акцэнтны колер прайгравальніка."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Схаваць пазнакі часу",
+        "description": "Схаваць пазнакі часу ў транскрыпцыі."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Схаваць транскрыпцыю",
+        "description": "Хаваць транскрыпцыю па змаўчанні."
       }
     ],
     "developer": [
@@ -72,16 +82,6 @@
         "property": "disableInteractive",
         "title": "Адключыць інтэрактыўнасць",
         "description": "Адключыць інтэрактыўны рэжым, у якім транскрыпцыя клікабельная."
-      },
-      {
-        "property": "hideTimestamps",
-        "title": "Схаваць пазнакі часу",
-        "description": "Схаваць пазнакі часу ў транскрыпцыі."
-      },
-      {
-        "property": "hideTranscript",
-        "title": "Схаваць транскрыпцыю",
-        "description": "Хаваць транскрыпцыю па змаўчанні."
       },
       {
         "property": "lang",

@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "بدون پیکان",
         "description": "پیکان دکمه پنهان شود."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "پیوند: مقصد",
@@ -54,7 +52,9 @@
           "_top": "پنجرهٔ بالایی - _top",
           "_parent": "پنجرهٔ والد - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "پیوند: rel",

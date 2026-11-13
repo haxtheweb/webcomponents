@@ -21,15 +21,6 @@
         "description": "Taariikhda isha la galay."
       },
       {
-        "property": "scope",
-        "title": "Baaxad",
-        "description": "Baaxadda curiyaha la tixraacayo.",
-        "options": {
-          "sibling": "Curiyaha walaalka",
-          "parent": "Curiyaha waalidka"
-        }
-      },
-      {
         "property": "license",
         "title": "Shati",
         "description": "Shatiga shaqada la tixraacay."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Abuure",
         "description": "Abuuraha ama milkiilaha shaqada la tixraacay."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Baaxad",
+        "description": "Baaxadda curiyaha la tixraacayo.",
+        "options": {
+          "sibling": "Curiyaha walaalka",
+          "parent": "Curiyaha waalidka"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "Nooca OER Schema",

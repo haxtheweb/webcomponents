@@ -11,20 +11,17 @@
         "description": "Maqaa dhaqqabamaa walitti qabama tabiiwwanii."
       },
       {
-        "property": "disabled",
-        "title": "Kan dhaabbate",
-        "description": "Tabiiwwan hunda dhaabi."
-      },
-      {
-        "property": "hidden",
-        "title": "Kan dhokate",
-        "description": "Walitti qabama tabiiwwanii dhoksi."
-      },
-      {
         "property": "sticky",
         "title": "Kan maxxanu",
         "description": "Yeroo gadi buufamu tabiiwwan dalgaa gubbaatti tursi."
       },
+      {
+        "slot": "",
+        "title": "Tabiiwwan",
+        "description": "Tarree wantoota <a11y-tab/>."
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "Daangaa Qindaa'inaa",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "Daangaa Mallattoo",
         "description": "Daangaa barreeffama mallattoo wajjin agarsiisuu. Durtiin 0 dha; haala mallattoo qofaaf -1 fayyadami."
-      },
-      {
-        "slot": "",
-        "title": "Tabiiwwan",
-        "description": "Tarree wantoota <a11y-tab/>."
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "Kan dhaabbate",
+        "description": "Tabiiwwan hunda dhaabi."
+      },
+      {
+        "property": "hidden",
+        "title": "Kan dhokate",
+        "description": "Walitti qabama tabiiwwanii dhoksi."
+      },
       {
         "property": "id",
         "title": "ID Addaa",

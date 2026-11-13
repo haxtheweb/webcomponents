@@ -9,7 +9,21 @@
         "property": "target",
         "title": "គោលដៅ",
         "description": "ផ្លូវទៅកាន់កំណែស្ថាបនាហ្គេម។"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "ទទឹងផ្ទាំងគំនូរ",
+        "description": "ទទឹង CSS នៃផ្ទាំងគំនូរ (ឧទាហរណ៍ px ឬ em)។"
       },
+      {
+        "property": "height",
+        "title": "កម្ពស់ផ្ទាំងគំនូរ",
+        "description": "កម្ពស់ CSS នៃផ្ទាំងគំនូរ (ឧទាហរណ៍ px ឬ em)។"
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "វិធីបង្ហាប់",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "កំណែផលិតផល",
         "description": "កំណែចេញផ្សាយ។"
-      },
-      {
-        "property": "width",
-        "title": "ទទឹងផ្ទាំងគំនូរ",
-        "description": "ទទឹង CSS នៃផ្ទាំងគំនូរ (ឧទាហរណ៍ px ឬ em)។"
-      },
-      {
-        "property": "height",
-        "title": "កម្ពស់ផ្ទាំងគំនូរ",
-        "description": "កម្ពស់ CSS នៃផ្ទាំងគំនូរ (ឧទាហរណ៍ px ឬ em)។"
       },
       {
         "property": "background",

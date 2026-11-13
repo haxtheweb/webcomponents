@@ -11,31 +11,9 @@
         "description": "Galderaren goiburua."
       },
       {
-        "property": "gradingFormat",
-        "title": "Kalifikazio formatua",
-        "description": "OER Schema: ebaluazio honen kalifikazio formatua (adib. puntuak, letra, ehunekoa, osatzea)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Ikaskuntza helburua",
-        "description": "OER Schema: ebaluazio honi lotutako ikaskuntza helburua."
-      },
-      {
-        "property": "forCourse",
-        "title": "Ikastaroa",
-        "description": "OER Schema: ebaluazio hau zein ikastarorako den."
-      },
-      {
         "property": "answers",
         "title": "Erantzunak",
         "description": "Erantzunen ordenak sekuentzia zuzena definitzen du."
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Galdetegiaren izena",
-        "description": "Analitika sistemetan xAPI bidez identifikatzeko erabiltzen den galdetegiaren izena."
       }
     ],
     "advanced": [
@@ -48,6 +26,28 @@
         "property": "collapsed",
         "title": "Hasi tolestuta",
         "description": "Tolesgarria denean, itxitako errenkada gisa hasten da, galdera eta haren egoera soilik erakutsiz."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Kalifikazio formatua",
+        "description": "OER Schema: ebaluazio honen kalifikazio formatua (adib. puntuak, letra, ehunekoa, osatzea)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Ikaskuntza helburua",
+        "description": "OER Schema: ebaluazio honi lotutako ikaskuntza helburua."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Galdetegiaren izena",
+        "description": "Analitika sistemetan xAPI bidez identifikatzeko erabiltzen den galdetegiaren izena."
+      },
+      {
+        "property": "forCourse",
+        "title": "Ikastaroa",
+        "description": "OER Schema: ebaluazio hau zein ikastarorako den."
       }
     ]
   }

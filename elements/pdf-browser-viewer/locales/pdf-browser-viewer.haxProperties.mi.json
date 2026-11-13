@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Karere kāore e tautokona",
-        "description": "Karere ina kāore e taea e te pūtirotiro te whakaatu kōnae PDF."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Karere hono kāore e tautokona",
-        "description": "Kupu hono ina kāore e taea e te pūtirotiro te whakaatu kōnae PDF."
-      },
-      {
         "property": "width",
         "title": "Whānui",
         "description": "Whānui o te kaitiro PDF."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Teitei",
         "description": "Teitei o te kaitiro PDF."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Karere kāore e tautokona",
+        "description": "Karere ina kāore e taea e te pūtirotiro te whakaatu kōnae PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Karere hono kāore e tautokona",
+        "description": "Kupu hono ina kāore e taea e te pūtirotiro te whakaatu kōnae PDF."
       }
     ]
   }

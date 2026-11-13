@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "דערלויבן פֿילטער",
         "description": "דערלויבן פֿילטרירן לויט זײַל־ווערטן."
-      },
-      {
-        "property": "numericStyles",
-        "title": "נומערישער סטיל",
-        "description": "אָנווענדן נומערישן סטיל אויף נומערישע זײַלן."
-      },
-      {
-        "property": "responsive",
-        "title": "רעספּאָנסיוו",
-        "description": "צופּאַסן דעם טאַבעלע־אויסלייג אויף קליינע עקראַנען."
-      },
-      {
-        "property": "rubricMode",
-        "title": "רובריק־מאָדע",
-        "description": "אינטערפּרעטירן די טאַבעלע ווי אַן OER Schema Rubric, כּדי עס זאָלן אַרויסגעגעבן ווערן Rubric, RubricScale, RubricCriterion און RubricLevel מעטאַדאַטן."
-      },
-      {
-        "property": "rubricType",
-        "title": "רובריק־טיפּ",
-        "description": "רובריק־סטיל אַרויסגעגעבן ווי oer:rubricType (נאָר באַטײַטיק ווען רובריק־מאָדע איז אָנגעשאַלטן).",
-        "options": {
-          "": "(קיינער)",
-          "analytic": "אַנאַליטיש",
-          "holistic": "האָליסטיש",
-          "single-point": "איין פּונקט",
-          "checklist": "קאָנטראָל־רשימה"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "דרוק־קנעפּל",
         "description": "צולייגן אַ קנעפּל צו דרוקן נאָר די טאַבעלע."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "נומערישער סטיל",
+        "description": "אָנווענדן נומערישן סטיל אויף נומערישע זײַלן."
+      },
+      {
+        "property": "responsive",
+        "title": "רעספּאָנסיוו",
+        "description": "צופּאַסן דעם טאַבעלע־אויסלייג אויף קליינע עקראַנען."
+      },
+      {
+        "property": "rubricMode",
+        "title": "רובריק־מאָדע",
+        "description": "אינטערפּרעטירן די טאַבעלע ווי אַן OER Schema Rubric, כּדי עס זאָלן אַרויסגעגעבן ווערן Rubric, RubricScale, RubricCriterion און RubricLevel מעטאַדאַטן."
+      },
+      {
+        "property": "rubricType",
+        "title": "רובריק־טיפּ",
+        "description": "רובריק־סטיל אַרויסגעגעבן ווי oer:rubricType (נאָר באַטײַטיק ווען רובריק־מאָדע איז אָנגעשאַלטן).",
+        "options": {
+          "": "(קיינער)",
+          "analytic": "אַנאַליטיש",
+          "holistic": "האָליסטיש",
+          "single-point": "איין פּונקט",
+          "checklist": "קאָנטראָל־רשימה"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "CSV־דאַטן",
         "description": "שאַפֿן אַ טאַבעלע פֿון אַן אַרויפֿגעלאָדענער CSV־טעקע."
       }
-    ]
+    ],
+    "developer": []
   }
 }

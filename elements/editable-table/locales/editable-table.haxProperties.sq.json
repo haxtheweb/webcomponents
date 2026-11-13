@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Lejo filtrimin",
         "description": "Lejo filtrimin sipas vlerave të kolonës."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Stil numerik",
-        "description": "Apliko stil numerik te kolonat numerike."
-      },
-      {
-        "property": "responsive",
-        "title": "Responsive",
-        "description": "Përshtat paraqitjen e tabelës në ekranet e vogla."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Modaliteti i rubrikës",
-        "description": "Interpretoje këtë tabelë si një Rubric të OER Schema që të emetohen meta të dhënat Rubric, RubricScale, RubricCriterion dhe RubricLevel."
-      },
-      {
-        "property": "rubricType",
-        "title": "Lloji i rubrikës",
-        "description": "Stili i rubrikës i emetuar si oer:rubricType (ka kuptim vetëm kur Modaliteti i rubrikës është aktiv).",
-        "options": {
-          "": "(asnjë)",
-          "analytic": "Analitike",
-          "holistic": "Holistike",
-          "single-point": "Me një pikë",
-          "checklist": "Listë kontrolli"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Butoni i printimit",
         "description": "Shto një buton për të printuar vetëm tabelën."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Stil numerik",
+        "description": "Apliko stil numerik te kolonat numerike."
+      },
+      {
+        "property": "responsive",
+        "title": "Responsive",
+        "description": "Përshtat paraqitjen e tabelës në ekranet e vogla."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Modaliteti i rubrikës",
+        "description": "Interpretoje këtë tabelë si një Rubric të OER Schema që të emetohen meta të dhënat Rubric, RubricScale, RubricCriterion dhe RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "Lloji i rubrikës",
+        "description": "Stili i rubrikës i emetuar si oer:rubricType (ka kuptim vetëm kur Modaliteti i rubrikës është aktiv).",
+        "options": {
+          "": "(asnjë)",
+          "analytic": "Analitike",
+          "holistic": "Holistike",
+          "single-point": "Me një pikë",
+          "checklist": "Listë kontrolli"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "Të dhënat CSV",
         "description": "Krijo një tabelë nga një skedar CSV i ngarkuar."
       }
-    ]
+    ],
+    "developer": []
   }
 }

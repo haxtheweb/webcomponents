@@ -10,10 +10,6 @@
         "title": "Aikoni ya Kichupo"
       },
       {
-        "property": "disabled",
-        "title": "Imezimwa"
-      },
-      {
         "property": "label",
         "title": "Lebo ya Kichupo"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "ID ya Kipekee"
-      },
-      {
         "property": "flag",
         "title": "Maandishi ya Hiari ya Bendera"
       },
       {
         "property": "flagIcon",
         "title": "Aikoni ya Hiari ya Bendera"
+      },
+      {
+        "property": "disabled",
+        "title": "Imezimwa"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "ID ya Kipekee"
       }
     ]
   }

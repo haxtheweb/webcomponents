@@ -19,7 +19,7 @@
   "cssParts": [],
   "cssProperties": [],
   "hax": {
-    "schema": "elements/career-timeline/lib/career-role-item.js",
+    "schema": "elements/career-timeline/lib/career-role-item.haxProperties.json",
     "gizmo": true,
     "properties": [
       "endDate",

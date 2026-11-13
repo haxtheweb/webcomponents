@@ -26,11 +26,6 @@
         "description": "Суреттің балама мәтіні."
       },
       {
-        "property": "animated",
-        "title": "Анимацияланған",
-        "description": "Алғаш жүктелгенде прогресс анимациялана ма"
-      },
-      {
         "property": "complete",
         "title": "Аяқталды",
         "description": "Аяқталған мәндер массиві."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "Барлығы",
         "description": "Барлық элементтер аяқталғандағы жалпы мән."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "Анимацияланған",
+        "description": "Алғаш жүктелгенде прогресс анимациялана ма"
       },
       {
         "property": "startAngle",

@@ -9,7 +9,21 @@
         "property": "target",
         "title": "લક્ષ્ય",
         "description": "ગેમ બિલ્ડનો પાથ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "કૅનવાસ પહોળાઈ",
+        "description": "કૅનવાસની CSS પહોળાઈ (ઉદાહરણ તરીકે px અથવા em)."
       },
+      {
+        "property": "height",
+        "title": "કૅનવાસ ઊંચાઈ",
+        "description": "કૅનવાસની CSS ઊંચાઈ (ઉદાહરણ તરીકે px અથવા em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "સંકોચન પદ્ધતિ",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "ઉત્પાદન સંસ્કરણ",
         "description": "પ્રકાશન સંસ્કરણ."
-      },
-      {
-        "property": "width",
-        "title": "કૅનવાસ પહોળાઈ",
-        "description": "કૅનવાસની CSS પહોળાઈ (ઉદાહરણ તરીકે px અથવા em)."
-      },
-      {
-        "property": "height",
-        "title": "કૅનવાસ ઊંચાઈ",
-        "description": "કૅનવાસની CSS ઊંચાઈ (ઉદાહરણ તરીકે px અથવા em)."
       },
       {
         "property": "background",

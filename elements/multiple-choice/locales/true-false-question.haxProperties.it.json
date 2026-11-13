@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Domanda Vero / Falso",
-    "description": "Domanda vero o falso"
+    "description": "Un’affermazione che lo studente segna come vera o falsa."
   },
   "settings": {
     "configure": [

@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Сурет дереккөзі",
         "description": "Картаға арналған сурет файлы. Сурет кілт сөзін алмастырады."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Сурет кілт сөзі",
+        "description": "Кездейсоқ сурет кілт сөзі. Сурет дереккөзі оны алмастырады."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Оқу мақсаты",
         "description": "OER Schema: осы жаттығу қолдайтын оқу мақсатының ID-і немесе URL-і."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Сурет кілт сөзі",
-        "description": "Кездейсоқ сурет кілт сөзі. Сурет дереккөзі оны алмастырады."
       }
     ]
   }

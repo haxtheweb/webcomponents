@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "无箭头",
         "description": "隐藏按钮箭头。"
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "链接：目标",
@@ -54,7 +52,9 @@
           "_top": "顶层窗口 - _top",
           "_parent": "父窗口 - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "链接：rel",

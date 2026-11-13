@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Sarkasmus",
-    "description": "Text auf trollige Weise darstellen"
+    "description": "Text in abwechselnder Groß- und Kleinschreibung für einen sarkastischen Ton."
   },
   "settings": {
     "configure": [

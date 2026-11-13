@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Стъпка",
-    "description": "Елемент, който е част от списък със стъпки"
+    "description": "Една стъпка в списък със стъпки."
   },
   "settings": {
     "configure": [

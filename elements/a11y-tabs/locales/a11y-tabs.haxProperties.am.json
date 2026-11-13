@@ -11,20 +11,17 @@
         "description": "ለትሮች ስብስብ ተደራሽ መለያ።"
       },
       {
-        "property": "disabled",
-        "title": "ተሰናክሏል",
-        "description": "ሁሉንም ትሮች አሰናክል።"
-      },
-      {
-        "property": "hidden",
-        "title": "የተደበቀ",
-        "description": "የትሮችን ስብስብ ደብቅ።"
-      },
-      {
         "property": "sticky",
         "title": "ተጣባቂ",
         "description": "በሚሸበለልበት ጊዜ አግድም ትሮችን ከላይ አቆይ።"
       },
+      {
+        "slot": "",
+        "title": "ትሮች",
+        "description": "ተከታታይ <a11y-tab/> አካላት።"
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "የአቀማመጥ መቋረጫ ነጥብ",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "የአዶ መቋረጫ ነጥብ",
         "description": "ጽሑፍን ከአዶዎች ጋር ለማሳየት መቋረጫ ነጥብ። ነባሪው 0 ነው፤ ለአዶ-ብቻ ሁነታ -1 ተጠቀም።"
-      },
-      {
-        "slot": "",
-        "title": "ትሮች",
-        "description": "ተከታታይ <a11y-tab/> አካላት።"
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "ተሰናክሏል",
+        "description": "ሁሉንም ትሮች አሰናክል።"
+      },
+      {
+        "property": "hidden",
+        "title": "የተደበቀ",
+        "description": "የትሮችን ስብስብ ደብቅ።"
+      },
       {
         "property": "id",
         "title": "ልዩ ID",

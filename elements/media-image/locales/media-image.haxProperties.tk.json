@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Ýazgy",
         "description": "Surat üçin ýazgy."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Şekiliň ady",
-        "description": "Şekil belligi üçin at."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Şekiliň düşündirişi",
-        "description": "Şekil belligi üçin düşündiriş."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Surat modalyny öçür",
         "description": "Basylanda suratyň surat gözden geçiriji dialogda açylmagyny öçür."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Şekiliň ady",
+        "description": "Şekil belligi üçin at."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Şekiliň düşündirişi",
+        "description": "Şekil belligi üçin düşündiriş."
       }
     ],
     "developer": [

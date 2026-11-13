@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "சரி / தவறு கேள்வி",
-    "description": "சரி தவறு கேள்வி"
+    "description": "கற்பவர் சரி அல்லது தவறு எனக் குறிக்கும் கூற்று."
   },
   "settings": {
     "configure": [

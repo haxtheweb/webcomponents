@@ -1,6 +1,6 @@
 {
   "gizmo": {
     "title": "Kirjoituskone",
-    "description": "kirjoituskonetehoste"
+    "description": "Teksti, joka kirjoittaa itsensä merkki kerrallaan."
   }
 }

@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Caption",
         "description": "Caption para sa larawan."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Pamagat ng Figure",
-        "description": "Pamagat para sa label ng figure."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Paglalarawan ng Figure",
-        "description": "Paglalarawan para sa label ng figure."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "I-disable ang image modal",
         "description": "I-disable ang pagbubukas ng larawan sa image inspector dialog kapag na-click."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Pamagat ng Figure",
+        "description": "Pamagat para sa label ng figure."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Paglalarawan ng Figure",
+        "description": "Paglalarawan para sa label ng figure."
       }
     ],
     "developer": [

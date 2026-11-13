@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "Expandera/fäll ihop-grupp",
-    "description": "En grupp med element som kan expanderas och fällas ihop."
+    "title": "Hopfällbar grupp",
+    "description": "En grupp hopfällbara behållare."
   },
   "settings": {
     "configure": [

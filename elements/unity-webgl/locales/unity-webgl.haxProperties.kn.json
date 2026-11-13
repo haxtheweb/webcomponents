@@ -9,7 +9,21 @@
         "property": "target",
         "title": "ಗುರಿ",
         "description": "ಆಟದ ಬಿಲ್ಡ್‌ಗೆ ಮಾರ್ಗ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "ಕ್ಯಾನ್ವಾಸ್ ಅಗಲ",
+        "description": "ಕ್ಯಾನ್ವಾಸ್ CSS ಅಗಲ (ಉದಾಹರಣೆಗೆ px ಅಥವಾ em)."
       },
+      {
+        "property": "height",
+        "title": "ಕ್ಯಾನ್ವಾಸ್ ಎತ್ತರ",
+        "description": "ಕ್ಯಾನ್ವಾಸ್ CSS ಎತ್ತರ (ಉದಾಹರಣೆಗೆ px ಅಥವಾ em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "ಸಂಕುಚನ ವಿಧಾನ",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "ಉತ್ಪನ್ನದ ಆವೃತ್ತಿ",
         "description": "ಬಿಡುಗಡೆ ಆವೃತ್ತಿ."
-      },
-      {
-        "property": "width",
-        "title": "ಕ್ಯಾನ್ವಾಸ್ ಅಗಲ",
-        "description": "ಕ್ಯಾನ್ವಾಸ್ CSS ಅಗಲ (ಉದಾಹರಣೆಗೆ px ಅಥವಾ em)."
-      },
-      {
-        "property": "height",
-        "title": "ಕ್ಯಾನ್ವಾಸ್ ಎತ್ತರ",
-        "description": "ಕ್ಯಾನ್ವಾಸ್ CSS ಎತ್ತರ (ಉದಾಹರಣೆಗೆ px ಅಥವಾ em)."
       },
       {
         "property": "background",

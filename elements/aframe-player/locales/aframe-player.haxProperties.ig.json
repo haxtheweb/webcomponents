@@ -11,6 +11,13 @@
         "description": "URL maka faịlụ AR a."
       },
       {
+        "property": "skyColor",
+        "title": "Agba mbara igwe",
+        "description": "Họrọ agba mbara igwe n'ihe nkiri ahụ."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "Ọnọdụ X nke ihe ahụ na AR."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "Ọnọdụ Z nke ihe ahụ na AR."
-      },
-      {
-        "property": "skyColor",
-        "title": "Agba mbara igwe",
-        "description": "Họrọ agba mbara igwe n'ihe nkiri ahụ."
       }
     ]
   }

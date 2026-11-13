@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Vumela Isihlungi",
         "description": "Vumela ukuhlunga ngamanani ekholomu."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Isitayela Sezinombolo",
-        "description": "Faka isitayela sezinombolo kumakholomu ezinombolo."
-      },
-      {
-        "property": "responsive",
-        "title": "Okuzivumelanisayo",
-        "description": "Lungisa isakhiwo sethebula ezikrinini ezincane."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Imodi Yerubrikhi",
-        "description": "Hunyusha leli thebula njenge-OER Schema Rubric ukuze kukhishwe imethadatha ye-Rubric, RubricScale, RubricCriterion, ne-RubricLevel."
-      },
-      {
-        "property": "rubricType",
-        "title": "Uhlobo Lwerubrikhi",
-        "description": "Isitayela serubrikhi esikhishwa njenge-oer:rubricType (sinomqondo kuphela uma iModi Yerubrikhi ivuliwe).",
-        "options": {
-          "": "(akukho)",
-          "analytic": "Ehlaziyayo",
-          "holistic": "Ephelele",
-          "single-point": "Iphoyinti Elilodwa",
-          "checklist": "Uhlu lokuhlola"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Inkinobho Yokuphrinta",
         "description": "Engeza inkinobho yokuphrinta ithebula kuphela."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Isitayela Sezinombolo",
+        "description": "Faka isitayela sezinombolo kumakholomu ezinombolo."
+      },
+      {
+        "property": "responsive",
+        "title": "Okuzivumelanisayo",
+        "description": "Lungisa isakhiwo sethebula ezikrinini ezincane."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Imodi Yerubrikhi",
+        "description": "Hunyusha leli thebula njenge-OER Schema Rubric ukuze kukhishwe imethadatha ye-Rubric, RubricScale, RubricCriterion, ne-RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "Uhlobo Lwerubrikhi",
+        "description": "Isitayela serubrikhi esikhishwa njenge-oer:rubricType (sinomqondo kuphela uma iModi Yerubrikhi ivuliwe).",
+        "options": {
+          "": "(akukho)",
+          "analytic": "Ehlaziyayo",
+          "holistic": "Ephelele",
+          "single-point": "Iphoyinti Elilodwa",
+          "checklist": "Uhlu lokuhlola"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "Idatha ye-CSV",
         "description": "Dala ithebula kusuka efayeleni le-CSV elilayishiwe."
       }
-    ]
+    ],
+    "developer": []
   }
 }

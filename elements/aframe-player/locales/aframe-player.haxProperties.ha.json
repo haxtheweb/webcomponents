@@ -11,6 +11,13 @@
         "description": "URL na wannan fayil ɗin AR."
       },
       {
+        "property": "skyColor",
+        "title": "Launin sama",
+        "description": "Zaɓi launin sama a cikin wurin."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "Matsayin X na abin a cikin AR."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "Matsayin Z na abin a cikin AR."
-      },
-      {
-        "property": "skyColor",
-        "title": "Launin sama",
-        "description": "Zaɓi launin sama a cikin wurin."
       }
     ]
   }

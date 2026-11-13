@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "מעלדונג „ניט געשטיצט“",
-        "description": "מעלדונג ווען דער בלעטערער קען ניט ווײַזן PDF־טעקעס."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "לינק־מעלדונג „ניט געשטיצט“",
-        "description": "לינק־טעקסט ווען דער בלעטערער קען ניט ווײַזן PDF־טעקעס."
-      },
-      {
         "property": "width",
         "title": "ברייט",
         "description": "ברייט פֿונעם PDF־ווײַזער."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "הייך",
         "description": "הייך פֿונעם PDF־ווײַזער."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "מעלדונג „ניט געשטיצט“",
+        "description": "מעלדונג ווען דער בלעטערער קען ניט ווײַזן PDF־טעקעס."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "לינק־מעלדונג „ניט געשטיצט“",
+        "description": "לינק־טעקסט ווען דער בלעטערער קען ניט ווײַזן PDF־טעקעס."
       }
     ]
   }

@@ -4,22 +4,23 @@
     "description": "Uhlu lokudlala olubonisa izidlali zevidiyo nezomsindo ngesakhiwo sesidlali + ibha eseceleni."
   },
   "settings": {
-    "configure": [
+    "configure": [],
+    "advanced": [
       {
         "property": "activeIndex",
         "title": "Inkomba esebenzayo",
         "description": "Inkomba yento esebenzayo okuqalwa ngayo."
-      },
-      {
-        "property": "forCourse",
-        "title": "Isifundo",
-        "description": "Isifundo lolu hlu lokudlala olwenzelwe sona (isihlonzi sesifundo noma i-URL)."
       }
     ],
     "developer": [
       {
         "title": "Imidiya",
         "description": "Amavidiyo nomsindo osohlwini lokudlala. Akuhlelwa lapha: uhlaka lwekhasi lukusebenzisa ukuze lwazi ukuthi yimaphi amabhulokhi angawiselwa ngaphakathi."
+      },
+      {
+        "property": "forCourse",
+        "title": "Isifundo",
+        "description": "Isifundo lolu hlu lokudlala olwenzelwe sona (isihlonzi sesifundo noma i-URL)."
       }
     ]
   }

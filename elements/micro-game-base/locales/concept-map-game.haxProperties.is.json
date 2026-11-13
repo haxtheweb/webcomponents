@@ -86,7 +86,9 @@
         "property": "gameTitle",
         "title": "Heiti leiks",
         "description": "Nefnir þennan leik í framvinduatburðum og OER Schema-merkingu."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Auðkenni leiks",

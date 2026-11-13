@@ -4,22 +4,23 @@
     "description": "Esitusloend, mis näitab video- ja helimängijaid paigutuses mängija + külgriba."
   },
   "settings": {
-    "configure": [
+    "configure": [],
+    "advanced": [
       {
         "property": "activeIndex",
         "title": "Algüksus",
         "description": "Üksuse number, millest alustada."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kursus",
-        "description": "Kursus, mille jaoks see esitusloend on mõeldud (kursuse tunnus või URL)."
       }
     ],
     "developer": [
       {
         "title": "Meedia",
         "description": "Esitusloendi videod ja heli. Siin ei muudeta: lehe ülevaade kasutab seda, et teada, milliseid plokke saab sisse lohistada."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursus",
+        "description": "Kursus, mille jaoks see esitusloend on mõeldud (kursuse tunnus või URL)."
       }
     ]
   }

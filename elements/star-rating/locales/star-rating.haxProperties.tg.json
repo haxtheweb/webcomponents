@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Интерактивӣ",
         "description": "Ба корбар иҷозат диҳед, ки баҳоро муқаррар кунад."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Реҷаи миқёси рубрика",

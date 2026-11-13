@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Sprioc",
         "description": "Cosán chuig tógáil an chluiche."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Leithead an Chanbháis",
+        "description": "Leithead CSS an chanbháis (mar shampla px nó em)."
       },
+      {
+        "property": "height",
+        "title": "Airde an Chanbháis",
+        "description": "Airde CSS an chanbháis (mar shampla px nó em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Modh comhbhrúite",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Leagan an Táirge",
         "description": "Leagan an eisiúna."
-      },
-      {
-        "property": "width",
-        "title": "Leithead an Chanbháis",
-        "description": "Leithead CSS an chanbháis (mar shampla px nó em)."
-      },
-      {
-        "property": "height",
-        "title": "Airde an Chanbháis",
-        "description": "Airde CSS an chanbháis (mar shampla px nó em)."
       },
       {
         "property": "background",

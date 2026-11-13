@@ -11,20 +11,17 @@
         "description": "တဘ်အစုံအတွက် အသုံးပြုရလွယ်ကူသော အညွှန်း။"
       },
       {
-        "property": "disabled",
-        "title": "ပိတ်ထားသည်",
-        "description": "တဘ်အားလုံးကို ပိတ်ရန်။"
-      },
-      {
-        "property": "hidden",
-        "title": "ဝှက်ထားသည်",
-        "description": "တဘ်အစုံကို ဝှက်ရန်။"
-      },
-      {
         "property": "sticky",
         "title": "ကပ်နေစေရန်",
         "description": "လှိမ့်နေစဉ် အလျားလိုက် တဘ်များကို အပေါ်ဆုံးတွင် ထားရန်။"
       },
+      {
+        "slot": "",
+        "title": "တဘ်များ",
+        "description": "<a11y-tab/> အစိတ်အပိုင်းများ အစဉ်။"
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "အပြင်အဆင် Breakpoint",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "အိုင်ကွန် Breakpoint",
         "description": "အိုင်ကွန်များနှင့်အတူ စာသားပြရန် breakpoint။ မူလတန်ဖိုး 0 ဖြစ်သည်; အိုင်ကွန်သာ မုဒ်အတွက် -1 ကို သုံးပါ။"
-      },
-      {
-        "slot": "",
-        "title": "တဘ်များ",
-        "description": "<a11y-tab/> အစိတ်အပိုင်းများ အစဉ်။"
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "ပိတ်ထားသည်",
+        "description": "တဘ်အားလုံးကို ပိတ်ရန်။"
+      },
+      {
+        "property": "hidden",
+        "title": "ဝှက်ထားသည်",
+        "description": "တဘ်အစုံကို ဝှက်ရန်။"
+      },
       {
         "property": "id",
         "title": "သီးသန့် ID",

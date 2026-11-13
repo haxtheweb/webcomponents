@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Ҳадаф",
         "description": "Роҳ ба сохти бозӣ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Паҳноии канвас",
+        "description": "Паҳноии CSS-и канвас (масалан, px ё em)."
       },
+      {
+        "property": "height",
+        "title": "Баландии канвас",
+        "description": "Баландии CSS-и канвас (масалан, px ё em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Усули фишурдасозӣ",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Версияи маҳсулот",
         "description": "Версияи нашр."
-      },
-      {
-        "property": "width",
-        "title": "Паҳноии канвас",
-        "description": "Паҳноии CSS-и канвас (масалан, px ё em)."
-      },
-      {
-        "property": "height",
-        "title": "Баландии канвас",
-        "description": "Баландии CSS-и канвас (масалан, px ё em)."
       },
       {
         "property": "background",

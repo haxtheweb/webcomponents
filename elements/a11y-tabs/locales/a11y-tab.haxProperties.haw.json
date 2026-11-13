@@ -10,10 +10,6 @@
         "title": "Ikona pākaʻa"
       },
       {
-        "property": "disabled",
-        "title": "Hoʻopio ʻia"
-      },
-      {
         "property": "label",
         "title": "Lepili pākaʻa"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "ID Kū Hoʻokahi"
-      },
-      {
         "property": "flag",
         "title": "Kikokikona hae koho"
       },
       {
         "property": "flagIcon",
         "title": "Ikona hae koho"
+      },
+      {
+        "property": "disabled",
+        "title": "Hoʻopio ʻia"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "ID Kū Hoʻokahi"
       }
     ]
   }

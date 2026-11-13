@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "Nakładka na osadzenia odtwarzacza Spotify."
+    "description": "Osadź utwór, album lub playlistę ze Spotify."
   },
   "settings": {
     "configure": [

@@ -9,7 +9,21 @@
         "property": "target",
         "title": "الهدف",
         "description": "مسار بنية اللعبة."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "عرض اللوحة",
+        "description": "عرض اللوحة بـ CSS (مثل px أو em)."
       },
+      {
+        "property": "height",
+        "title": "ارتفاع اللوحة",
+        "description": "ارتفاع اللوحة بـ CSS (مثل px أو em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "طريقة الضغط",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "إصدار المنتج",
         "description": "إصدار النشر."
-      },
-      {
-        "property": "width",
-        "title": "عرض اللوحة",
-        "description": "عرض اللوحة بـ CSS (مثل px أو em)."
-      },
-      {
-        "property": "height",
-        "title": "ارتفاع اللوحة",
-        "description": "ارتفاع اللوحة بـ CSS (مثل px أو em)."
       },
       {
         "property": "background",

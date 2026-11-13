@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "سخرية",
-    "description": "عرض النص بأسلوب ساخر"
+    "description": "نص بأحرف كبيرة وصغيرة متناوبة لنبرة ساخرة."
   },
   "settings": {
     "configure": [

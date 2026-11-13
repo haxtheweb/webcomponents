@@ -9,7 +9,9 @@
         "property": "source",
         "title": "د سرچینې URL",
         "description": "د سرچینې URL."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "لوړوالی",

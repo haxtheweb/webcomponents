@@ -26,7 +26,8 @@
         "description": "Útil para os lectores de pantalla e para mellorar o SEO."
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "Calidade",

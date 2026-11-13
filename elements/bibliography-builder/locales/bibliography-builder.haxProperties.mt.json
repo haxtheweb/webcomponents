@@ -9,7 +9,9 @@
         "slot": "",
         "title": "Ċitazzjonijiet",
         "description": "Oġġetti ta' ċitazzjoni f'din il-bibljografija"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "Kors",

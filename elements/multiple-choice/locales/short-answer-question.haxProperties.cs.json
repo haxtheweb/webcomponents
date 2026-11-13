@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Otázka s krátkou odpovědí",
-    "description": "Nechte uživatele odpovědět na jednoduchou otázku"
+    "description": "Otázka, na kterou student odpoví jednou nebo dvěma větami."
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Kotak Aktiviti",
-    "description": "Blok tajuk kecil bergaya."
+    "description": "Tajuk berlabel yang menandakan permulaan sesuatu aktiviti."
   },
   "settings": {
     "configure": [

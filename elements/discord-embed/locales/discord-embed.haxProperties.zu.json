@@ -9,7 +9,9 @@
         "property": "source",
         "title": "I-URL Yensiza",
         "description": "I-URL yensiza."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Ubude",

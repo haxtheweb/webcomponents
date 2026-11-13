@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Aktivitetsboks",
-    "description": "Lille formateret overskriftsblok."
+    "description": "En mærket overskrift, der markerer starten på en aktivitet."
   },
   "settings": {
     "configure": [

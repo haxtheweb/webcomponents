@@ -46,6 +46,16 @@
         "property": "accentColor",
         "title": "Lliw acen",
         "description": "Dewiswch liw acen y chwaraewr."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Cuddio stampiau amser",
+        "description": "Cuddio'r stampiau amser ar y trawsgrifiad."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Cuddio'r Trawsgrifiad",
+        "description": "Cuddio'r trawsgrifiad yn ddiofyn."
       }
     ],
     "developer": [
@@ -72,16 +82,6 @@
         "property": "disableInteractive",
         "title": "Analluogi Rhyngweithiol",
         "description": "Analluogi'r modd rhyngweithiol sy'n gwneud y trawsgrifiad yn gliciadwy."
-      },
-      {
-        "property": "hideTimestamps",
-        "title": "Cuddio stampiau amser",
-        "description": "Cuddio'r stampiau amser ar y trawsgrifiad."
-      },
-      {
-        "property": "hideTranscript",
-        "title": "Cuddio'r Trawsgrifiad",
-        "description": "Cuddio'r trawsgrifiad yn ddiofyn."
       },
       {
         "property": "lang",

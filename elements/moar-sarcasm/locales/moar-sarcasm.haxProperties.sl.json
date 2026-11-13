@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Sarkazem",
-    "description": "Predstavitev besedila na provokativen način"
+    "description": "Besedilo z izmenjujočimi se velikimi in malimi črkami za sarkastičen ton."
   },
   "settings": {
     "configure": [

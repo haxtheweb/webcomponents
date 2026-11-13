@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Poster şəkli",
         "description": "Poster şəklinin URL-i."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Mətn trekləri",
         "description": "Video üçün altyazılar, tərcümə altyazıları, təsvirlər və digər mətn trekləri."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Başlama vaxtı",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Səsli təsvir treki",
         "description": "Vizual elementləri nəql edən səsli təsvir trekinin (MP3 faylı) URL-i."
+      },
+      {
+        "property": "accentColor",
+        "title": "Vurğu rəngi",
+        "description": "(köhnəlmiş) Pleyer üçün vurğu rəngini seçin."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Dil",
         "description": "Medianın dili."
-      },
-      {
-        "property": "accentColor",
-        "title": "Vurğu rəngi",
-        "description": "(köhnəlmiş) Pleyer üçün vurğu rəngini seçin."
       }
     ]
   }

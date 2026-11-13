@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Interattiv",
         "description": "Ippermetti l-interazzjoni tal-utent biex tissettja l-klassifikazzjoni."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Mod tal-Iskala tar-Rubrika",

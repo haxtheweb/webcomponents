@@ -85,17 +85,24 @@ function elementSourceFiles(dir, depth = 0) {
 
 function haxPropertiesFiles(dir) {
   const found = [];
-  for (const sub of ['', 'lib']) {
-    const d = path.join(dir, sub);
+  // the element folder itself, then lib/ at any depth: elements kept in
+  // nested lib folders ship their schema file beside their source
+  const walk = (d, deep) => {
     if (!fs.existsSync(d)) {
-      continue;
+      return;
     }
-    for (const f of fs.readdirSync(d)) {
-      if (f.endsWith('.haxProperties.json')) {
-        found.push(path.join(d, f));
+    for (const f of fs.readdirSync(d, { withFileTypes: true })) {
+      if (f.isDirectory()) {
+        if (deep && f.name !== 'node_modules') {
+          walk(path.join(d, f.name), true);
+        }
+      } else if (f.name.endsWith('.haxProperties.json')) {
+        found.push(path.join(d, f.name));
       }
     }
-  }
+  };
+  walk(dir, false);
+  walk(path.join(dir, 'lib'), true);
   return found;
 }
 

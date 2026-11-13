@@ -11,31 +11,9 @@
         "description": "سوال کی سرخی۔"
       },
       {
-        "property": "gradingFormat",
-        "title": "درجہ بندی کا فارمیٹ",
-        "description": "OER Schema: اس جانچ کا درجہ بندی فارمیٹ (مثلاً پوائنٹس، حرفی گریڈ، فیصد، تکمیل)۔"
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "تعلیمی مقصد",
-        "description": "OER Schema: اس جانچ سے وابستہ تعلیمی مقصد۔"
-      },
-      {
-        "property": "forCourse",
-        "title": "کورس",
-        "description": "OER Schema: وہ کورس جس کے لیے یہ جانچ ہے۔"
-      },
-      {
         "property": "answers",
         "title": "جوابات",
         "description": "جوابات کی ترتیب درست سلسلہ طے کرتی ہے۔"
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "کوئز کا نام",
-        "description": "تجزیاتی نظاموں میں xAPI شناخت کے لیے استعمال ہونے والا کوئز کا نام۔"
       }
     ],
     "advanced": [
@@ -48,6 +26,28 @@
         "property": "collapsed",
         "title": "سمٹی ہوئی حالت میں شروع کریں",
         "description": "سمیٹنے کے قابل ہونے پر، ایک بند قطار کے طور پر شروع کریں جو صرف سوال اور اس کی حالت دکھائے۔"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "درجہ بندی کا فارمیٹ",
+        "description": "OER Schema: اس جانچ کا درجہ بندی فارمیٹ (مثلاً پوائنٹس، حرفی گریڈ، فیصد، تکمیل)۔"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "تعلیمی مقصد",
+        "description": "OER Schema: اس جانچ سے وابستہ تعلیمی مقصد۔"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "کوئز کا نام",
+        "description": "تجزیاتی نظاموں میں xAPI شناخت کے لیے استعمال ہونے والا کوئز کا نام۔"
+      },
+      {
+        "property": "forCourse",
+        "title": "کورس",
+        "description": "OER Schema: وہ کورس جس کے لیے یہ جانچ ہے۔"
       }
     ]
   }

@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "فلټر ته اجازه",
         "description": "د ستون د ارزښتونو له مخې فلټر کولو ته اجازه ورکړئ."
-      },
-      {
-        "property": "numericStyles",
-        "title": "شمېریزه بڼه",
-        "description": "شمېریزو ستونونو ته شمېریزه بڼه ورکړئ."
-      },
-      {
-        "property": "responsive",
-        "title": "تطبیقېدونکی",
-        "description": "په کوچنیو سکرینونو کې د جدول ترتیب برابر کړئ."
-      },
-      {
-        "property": "rubricMode",
-        "title": "د روبریک حالت",
-        "description": "دا جدول د OER Schema Rubric په توګه تفسیر کړئ ترڅو د Rubric، RubricScale، RubricCriterion او RubricLevel میټاډېټا خپره شي."
-      },
-      {
-        "property": "rubricType",
-        "title": "د روبریک ډول",
-        "description": "د روبریک بڼه چې د oer:rubricType په توګه خپرېږي (یوازې هغه وخت معنا لري چې د روبریک حالت فعال وي).",
-        "options": {
-          "": "(هېڅ)",
-          "analytic": "تحلیلي",
-          "holistic": "کلي",
-          "single-point": "یو ټکی",
-          "checklist": "چک لېست"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "د چاپ تڼۍ",
         "description": "یوازې د جدول د چاپ لپاره تڼۍ ورزیاته کړئ."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "شمېریزه بڼه",
+        "description": "شمېریزو ستونونو ته شمېریزه بڼه ورکړئ."
+      },
+      {
+        "property": "responsive",
+        "title": "تطبیقېدونکی",
+        "description": "په کوچنیو سکرینونو کې د جدول ترتیب برابر کړئ."
+      },
+      {
+        "property": "rubricMode",
+        "title": "د روبریک حالت",
+        "description": "دا جدول د OER Schema Rubric په توګه تفسیر کړئ ترڅو د Rubric، RubricScale، RubricCriterion او RubricLevel میټاډېټا خپره شي."
+      },
+      {
+        "property": "rubricType",
+        "title": "د روبریک ډول",
+        "description": "د روبریک بڼه چې د oer:rubricType په توګه خپرېږي (یوازې هغه وخت معنا لري چې د روبریک حالت فعال وي).",
+        "options": {
+          "": "(هېڅ)",
+          "analytic": "تحلیلي",
+          "holistic": "کلي",
+          "single-point": "یو ټکی",
+          "checklist": "چک لېست"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "CSV معلومات",
         "description": "له پورته شوي CSV فایل څخه جدول جوړ کړئ."
       }
-    ]
+    ],
+    "developer": []
   }
 }

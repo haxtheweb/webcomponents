@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Списък на сътрудниците в GitHub",
-    "description": "Показани като RPG персонажи чрез GitHub API."
+    "description": "Показва участниците в хранилище като RPG герои."
   },
   "settings": {
     "configure": [

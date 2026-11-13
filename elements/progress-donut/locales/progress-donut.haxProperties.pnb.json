@@ -26,11 +26,6 @@
         "description": "تصویر لئی alt متن۔"
       },
       {
-        "property": "animated",
-        "title": "اینیمیٹڈ",
-        "description": "کی ترقی پہلی واری لوڈ ہوݨ تے اینیمیٹ ہووے"
-      },
-      {
         "property": "complete",
         "title": "پورا",
         "description": "پورے ہوئے قدراں دی ایرے۔"
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "کُل",
         "description": "ساریاں آئٹماں پوریاں ہوݨ تے کُل۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "اینیمیٹڈ",
+        "description": "کی ترقی پہلی واری لوڈ ہوݨ تے اینیمیٹ ہووے"
       },
       {
         "property": "startAngle",

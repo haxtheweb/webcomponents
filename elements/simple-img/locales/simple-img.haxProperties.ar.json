@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "صورة بسيطة",
-    "description": "معالجة الصور بمعاملات بسيطة."
+    "description": "صورة يُغيَّر حجمها أو تُقص أو تُدار بإعدادات بسيطة."
   },
   "settings": {
     "configure": [
@@ -26,7 +26,8 @@
         "description": "مفيد لقارئات الشاشة وتحسين SEO."
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "الجودة",

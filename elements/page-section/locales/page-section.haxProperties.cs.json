@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "Tlačítka",
         "description": "Skupina tlačítek zobrazená pod textem."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "Text kotvy",
         "description": "Popisek kotvy zobrazený v navigaci."
       }
-    ]
+    ],
+    "developer": []
   }
 }

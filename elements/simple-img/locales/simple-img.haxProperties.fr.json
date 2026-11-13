@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Image simple",
-    "description": "Manipuler des images avec des paramètres simples."
+    "description": "Une image redimensionnée, recadrée ou pivotée par des réglages simples."
   },
   "settings": {
     "configure": [
@@ -26,7 +26,8 @@
         "description": "Utile pour les lecteurs d'écran et pour améliorer le SEO."
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "Qualité",

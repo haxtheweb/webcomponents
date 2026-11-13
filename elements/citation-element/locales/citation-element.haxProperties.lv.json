@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Atsauce",
-    "description": "Atsauces elements ar trim attēlošanas režīmiem."
+    "description": "Norādiet avotu ar nosaukumu, autoru, licenci un saiti."
   },
   "settings": {
     "configure": [
@@ -21,15 +21,6 @@
         "description": "Datums, kad avots tika skatīts."
       },
       {
-        "property": "scope",
-        "title": "Tvērums",
-        "description": "Citējamā elementa tvērums.",
-        "options": {
-          "sibling": "Blakus elements",
-          "parent": "Vecākelements"
-        }
-      },
-      {
         "property": "license",
         "title": "Licence",
         "description": "Citētā darba licence."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Autors",
         "description": "Citētā darba autors vai īpašnieks."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Tvērums",
+        "description": "Citējamā elementa tvērums.",
+        "options": {
+          "sibling": "Blakus elements",
+          "parent": "Vecākelements"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "OER Schema veids",

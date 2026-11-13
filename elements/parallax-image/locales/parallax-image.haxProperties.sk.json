@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Paralaxný obrázok",
-    "description": "Posúvanie obrázka"
+    "description": "Obrázok na celú šírku, ktorý sa posúva pomalšie ako stránka, s nadpisom cez neho."
   },
   "settings": {
     "configure": [

@@ -14,16 +14,6 @@
         "property": "title",
         "title": "Алтернативни наслов",
         "description": "Алтернативни наслов повезан са извором QR кода."
-      },
-      {
-        "property": "modulesize",
-        "title": "Величина",
-        "description": "Величина QR кода."
-      },
-      {
-        "property": "margin",
-        "title": "Маргина",
-        "description": "Омотач кода."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "Величина",
+        "description": "Величина QR кода."
+      },
+      {
+        "property": "margin",
+        "title": "Маргина",
+        "description": "Омотач кода."
       }
     ]
   }

@@ -4,7 +4,7 @@
     "description": "Boolokii socho'aa ijoollee fuula ammaa agarsiisu"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "Mala socho'aa",
@@ -14,7 +14,9 @@
           "parent": "Ijoollee maatii",
           "ancestor": "Ijoollee hunda akaakayyuu olaanaa irraa"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "Sadarkaa jalqabaa"

@@ -14,16 +14,6 @@
         "property": "title",
         "title": "Өөр гарчиг",
         "description": "QR кодын эх сурвалжтай холбосон өөр гарчиг."
-      },
-      {
-        "property": "modulesize",
-        "title": "Хэмжээ",
-        "description": "QR кодын хэмжээ."
-      },
-      {
-        "property": "margin",
-        "title": "Захын зай",
-        "description": "Кодыг тойрсон зай."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "Хэмжээ",
+        "description": "QR кодын хэмжээ."
+      },
+      {
+        "property": "margin",
+        "title": "Захын зай",
+        "description": "Кодыг тойрсон зай."
       }
     ]
   }

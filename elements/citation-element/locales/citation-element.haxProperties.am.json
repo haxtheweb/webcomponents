@@ -21,15 +21,6 @@
         "description": "ምንጩ የተደረሰበት ቀን።"
       },
       {
-        "property": "scope",
-        "title": "ወሰን",
-        "description": "የሚጠቀስ የአካል ወሰን።",
-        "options": {
-          "sibling": "ተጓዳኝ አካል",
-          "parent": "የወላጅ አካል"
-        }
-      },
-      {
         "property": "license",
         "title": "ፈቃድ",
         "description": "ለተጠቀሰው ሥራ ፈቃድ።"
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "ፈጣሪ",
         "description": "የተጠቀሰው ሥራ ፈጣሪ ወይም ባለቤት።"
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "ወሰን",
+        "description": "የሚጠቀስ የአካል ወሰን።",
+        "options": {
+          "sibling": "ተጓዳኝ አካል",
+          "parent": "የወላጅ አካል"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "የOER Schema ዓይነት",

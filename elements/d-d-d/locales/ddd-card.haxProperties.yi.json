@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "אָן פֿײַל",
         "description": "באַהאַלטן דעם פֿײַל פֿון קנעפּל."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "לינק: ציל",
@@ -54,7 +52,9 @@
           "_top": "אייבערשטער פֿענצטער - _top",
           "_parent": "עלטערן־פֿענצטער - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "לינק: rel",

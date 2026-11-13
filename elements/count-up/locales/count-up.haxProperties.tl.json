@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Teksto sa hulihan",
         "description": "Tekstong ipinapakita pagkatapos ng numero (hal. '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Slot sa unahan",
-        "description": "Opsyonal na nilalaman sa slot bago ang numero."
-      },
-      {
-        "slot": "suffix",
-        "title": "Slot sa hulihan",
-        "description": "Opsyonal na nilalaman sa slot pagkatapos ng numero."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Walang easing",
         "description": "I-disable ang easing para linear ang pagbilang."
+      },
+      {
+        "slot": "prefix",
+        "title": "Slot sa unahan",
+        "description": "Opsyonal na nilalaman sa slot bago ang numero."
+      },
+      {
+        "slot": "suffix",
+        "title": "Slot sa hulihan",
+        "description": "Opsyonal na nilalaman sa slot pagkatapos ng numero."
       }
     ]
   }

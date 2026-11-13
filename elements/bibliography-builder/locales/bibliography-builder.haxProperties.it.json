@@ -9,7 +9,9 @@
         "slot": "",
         "title": "Citazioni",
         "description": "Voci di citazione in questa bibliografia"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "Corso",

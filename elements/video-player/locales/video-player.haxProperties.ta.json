@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "முன்னோட்டப் படம்",
         "description": "முன்னோட்டப் பட URL."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "உரைத் தடங்கள்",
         "description": "வீடியோவுக்கான மூடிய தலைப்புகள், வசனங்கள், விவரிப்புகள் மற்றும் பிற உரைத் தடங்கள்."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "தொடக்க நேரம்",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "ஒலி விவரிப்புத் தடம்",
         "description": "காட்சிக் கூறுகளை விவரிக்கும் ஒலி விவரிப்புத் தடத்தின் (MP3 கோப்பு) URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "அழுத்த நிறம்",
+        "description": "(காலாவதியானது) இயக்கிக்கான உச்சரிப்பு நிறத்தைத் தேர்ந்தெடுக்கவும்."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "மொழி",
         "description": "ஊடகத்தின் மொழி."
-      },
-      {
-        "property": "accentColor",
-        "title": "அழுத்த நிறம்",
-        "description": "(காலாவதியானது) இயக்கிக்கான உச்சரிப்பு நிறத்தைத் தேர்ந்தெடுக்கவும்."
       }
     ]
   }

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "การให้คะแนนแบบดาว",
-    "description": "วิดเจ็ตแสดงคะแนนหรือปุ่มสำหรับให้คะแนน"
+    "description": "แสดงคะแนนดาว หรือให้ผู้อ่านเลือกคะแนน"
   },
   "settings": {
     "configure": [
@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "โต้ตอบได้",
         "description": "อนุญาตให้ผู้ใช้โต้ตอบเพื่อกำหนดคะแนน"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "โหมดสเกลรูบริก",

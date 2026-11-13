@@ -4,22 +4,23 @@
     "description": "Isang playlist na nagpapakita ng mga video at audio player sa layout na player + sidebar."
   },
   "settings": {
-    "configure": [
+    "configure": [],
+    "advanced": [
       {
         "property": "activeIndex",
         "title": "Aktibong index",
         "description": "Index ng aktibong item na pagsisimulan."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kurso",
-        "description": "Ang kursong pinaglalaanan ng playlist na ito (identifier ng kurso o URL)."
       }
     ],
     "developer": [
       {
         "title": "Media",
         "description": "Ang mga video at audio sa playlist. Hindi ito ine-edit dito: ginagamit ito ng balangkas ng pahina para malaman kung aling mga block ang puwedeng ihulog sa loob."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurso",
+        "description": "Ang kursong pinaglalaanan ng playlist na ito (identifier ng kurso o URL)."
       }
     ]
   }

@@ -9,7 +9,9 @@
         "slot": "",
         "title": "Kildehenvisninger",
         "description": "Kildehenvisninger i denne bibliografien"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "Emne",

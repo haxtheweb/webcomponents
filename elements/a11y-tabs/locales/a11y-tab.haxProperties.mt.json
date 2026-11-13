@@ -10,10 +10,6 @@
         "title": "Ikona tat-Tab"
       },
       {
-        "property": "disabled",
-        "title": "Diżattivat"
-      },
-      {
         "property": "label",
         "title": "Tikketta tat-Tab"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "ID uniku"
-      },
-      {
         "property": "flag",
         "title": "Test tal-Bandiera Opzjonali"
       },
       {
         "property": "flagIcon",
         "title": "Ikona tal-Bandiera Opzjonali"
+      },
+      {
+        "property": "disabled",
+        "title": "Diżattivat"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "ID uniku"
       }
     ]
   }

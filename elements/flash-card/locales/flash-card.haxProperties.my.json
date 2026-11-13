@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "ပုံ ရင်းမြစ်",
         "description": "ကတ်အတွက် အသုံးပြုသော ပုံဖိုင်။ ပုံ သော့ချက်စကားလုံးကို အစားထိုးသည်။"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "ပုံ သော့ချက်စကားလုံး",
+        "description": "ကျပန်း ပုံအတွက် သော့ချက်စကားလုံး။ ပုံ ရင်းမြစ်က အစားထိုးသည်။"
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "သင်ယူမှု ရည်မှန်းချက်",
         "description": "OER Schema: ဤလေ့ကျင့်မှုက ထောက်ပံ့သော သင်ယူမှု ရည်မှန်းချက်၏ ID သို့မဟုတ် URL။"
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "ပုံ သော့ချက်စကားလုံး",
-        "description": "ကျပန်း ပုံအတွက် သော့ချက်စကားလုံး။ ပုံ ရင်းမြစ်က အစားထိုးသည်။"
       }
     ]
   }

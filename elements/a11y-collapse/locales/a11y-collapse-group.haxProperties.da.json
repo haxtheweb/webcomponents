@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "Udvid/skjul-gruppe",
-    "description": "En gruppe af udvid/skjul-elementer."
+    "title": "Sammenklappelig gruppe",
+    "description": "En gruppe af sammenklappelige beholdere."
   },
   "settings": {
     "configure": [

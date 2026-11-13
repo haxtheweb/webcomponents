@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "コンセプトマップゲーム",
-    "description": "短いキーボードゲームです。キャラクターがマップ上の各コンセプトまで歩くと、コンセプトが自己紹介します。すべてに触れると紙吹雪とコピー用のプロンプトが出ます。"
+    "description": "キャラクターがマップを歩き、各概念が自ら説明する短いキーボードゲーム。"
   },
   "settings": {
     "configure": [
@@ -86,7 +86,9 @@
         "property": "gameTitle",
         "title": "ゲーム名",
         "description": "進捗イベントと OER Schema マークアップでこのゲームの名前になります。"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "ゲーム ID",

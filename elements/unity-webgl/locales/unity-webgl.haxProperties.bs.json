@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Cilj",
         "description": "Putanja do builda igre."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Širina platna",
+        "description": "CSS širina platna (npr. px ili em)."
       },
+      {
+        "property": "height",
+        "title": "Visina platna",
+        "description": "CSS visina platna (npr. px ili em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Metod kompresije",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Verzija proizvoda",
         "description": "Verzija izdanja."
-      },
-      {
-        "property": "width",
-        "title": "Širina platna",
-        "description": "CSS širina platna (npr. px ili em)."
-      },
-      {
-        "property": "height",
-        "title": "Visina platna",
-        "description": "CSS visina platna (npr. px ili em)."
       },
       {
         "property": "background",

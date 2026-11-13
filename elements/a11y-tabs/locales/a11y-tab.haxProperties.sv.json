@@ -10,10 +10,6 @@
         "title": "Flikikon"
       },
       {
-        "property": "disabled",
-        "title": "Inaktiverad"
-      },
-      {
         "property": "label",
         "title": "Fliketikett"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "Unikt ID"
-      },
-      {
         "property": "flag",
         "title": "Valfri flaggtext"
       },
       {
         "property": "flagIcon",
         "title": "Valfri flaggikon"
+      },
+      {
+        "property": "disabled",
+        "title": "Inaktiverad"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "Unikt ID"
       }
     ]
   }

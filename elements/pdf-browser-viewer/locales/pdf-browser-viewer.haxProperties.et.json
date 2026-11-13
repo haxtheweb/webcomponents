@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "Brauseri PDF-vaatur",
+    "title": "PDF-vaatur",
     "description": "Manusta PDF-fail tekstisiseselt koos valikulise kaardipaigutuse ja allalaadimisnupuga."
   },
   "settings": {
@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Toetamatuse teade",
-        "description": "Teade, kui brauser ei saa PDF-faile kuvada."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Toetamatuse lingi teade",
-        "description": "Lingi tekst, kui brauser ei saa PDF-faile kuvada."
-      },
-      {
         "property": "width",
         "title": "Laius",
         "description": "PDF-vaaturi laius."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Kõrgus",
         "description": "PDF-vaaturi kõrgus."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Toetamatuse teade",
+        "description": "Teade, kui brauser ei saa PDF-faile kuvada."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Toetamatuse lingi teade",
+        "description": "Lingi tekst, kui brauser ei saa PDF-faile kuvada."
       }
     ]
   }

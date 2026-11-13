@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "ปุ่ม",
         "description": "กลุ่มปุ่มที่แสดงใต้ข้อความ"
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "ข้อความจุดยึด",
         "description": "ป้ายกำกับจุดยึดที่แสดงในการนำทาง"
       }
-    ]
+    ],
+    "developer": []
   }
 }

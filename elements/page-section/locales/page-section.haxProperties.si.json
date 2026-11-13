@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "බොත්තම්",
         "description": "පෙළට පහළින් පෙන්වන බොත්තම් සමූහය."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "නැංගුරම් පෙළ",
         "description": "සංචාලනයේ පෙන්වන නැංගුරම් ලේබලය."
       }
-    ]
+    ],
+    "developer": []
   }
 }

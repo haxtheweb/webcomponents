@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Destino",
         "description": "Ruta a la compilación del juego."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Ancho del lienzo",
+        "description": "Ancho CSS del lienzo (por ejemplo, px o em)."
       },
+      {
+        "property": "height",
+        "title": "Altura del lienzo",
+        "description": "Altura CSS del lienzo (por ejemplo, px o em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Método de compresión",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Versión del producto",
         "description": "Versión de lanzamiento."
-      },
-      {
-        "property": "width",
-        "title": "Ancho del lienzo",
-        "description": "Ancho CSS del lienzo (por ejemplo, px o em)."
-      },
-      {
-        "property": "height",
-        "title": "Altura del lienzo",
-        "description": "Altura CSS del lienzo (por ejemplo, px o em)."
       },
       {
         "property": "background",

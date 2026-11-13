@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Preprosta slika",
-    "description": "Obdelajte slike s preprostimi parametri."
+    "description": "Slika, ki ji s preprostimi nastavitvami spremenite velikost, jo obrežete ali zavrtite."
   },
   "settings": {
     "configure": [
@@ -26,7 +26,8 @@
         "description": "Uporabno za bralnike zaslona in boljši SEO."
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "Kakovost",

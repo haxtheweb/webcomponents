@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "امکان پالایش",
         "description": "امکان پالایش بر اساس مقادیر ستون."
-      },
-      {
-        "property": "numericStyles",
-        "title": "سبک عددی",
-        "description": "سبک عددی روی ستون‌های عددی اعمال شود."
-      },
-      {
-        "property": "responsive",
-        "title": "واکنش‌گرا",
-        "description": "چیدمان جدول در صفحه‌نمایش‌های کوچک تنظیم شود."
-      },
-      {
-        "property": "rubricMode",
-        "title": "حالت روبریک",
-        "description": "این جدول به‌عنوان یک Rubric در OER Schema تفسیر شود تا فراداده‌های Rubric، RubricScale، RubricCriterion و RubricLevel تولید شوند."
-      },
-      {
-        "property": "rubricType",
-        "title": "نوع روبریک",
-        "description": "سبک روبریک که به‌صورت oer:rubricType تولید می‌شود (فقط وقتی حالت روبریک روشن است معنا دارد).",
-        "options": {
-          "": "(هیچ)",
-          "analytic": "تحلیلی",
-          "holistic": "کل‌نگر",
-          "single-point": "تک‌نقطه‌ای",
-          "checklist": "چک‌لیست"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "دکمهٔ چاپ",
         "description": "افزودن دکمه‌ای برای چاپ فقط جدول."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "سبک عددی",
+        "description": "سبک عددی روی ستون‌های عددی اعمال شود."
+      },
+      {
+        "property": "responsive",
+        "title": "واکنش‌گرا",
+        "description": "چیدمان جدول در صفحه‌نمایش‌های کوچک تنظیم شود."
+      },
+      {
+        "property": "rubricMode",
+        "title": "حالت روبریک",
+        "description": "این جدول به‌عنوان یک Rubric در OER Schema تفسیر شود تا فراداده‌های Rubric، RubricScale، RubricCriterion و RubricLevel تولید شوند."
+      },
+      {
+        "property": "rubricType",
+        "title": "نوع روبریک",
+        "description": "سبک روبریک که به‌صورت oer:rubricType تولید می‌شود (فقط وقتی حالت روبریک روشن است معنا دارد).",
+        "options": {
+          "": "(هیچ)",
+          "analytic": "تحلیلی",
+          "holistic": "کل‌نگر",
+          "single-point": "تک‌نقطه‌ای",
+          "checklist": "چک‌لیست"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "داده‌های CSV",
         "description": "ساخت جدول از فایل CSV بارگذاری‌شده."
       }
-    ]
+    ],
+    "developer": []
   }
 }

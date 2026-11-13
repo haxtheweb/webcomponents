@@ -14,16 +14,6 @@
         "property": "title",
         "title": "Teratee mokõiha",
         "description": "Teratee mokõiha ojoajúva QR ayvu ypykue ndive."
-      },
-      {
-        "property": "modulesize",
-        "title": "Tuichakue",
-        "description": "QR ayvu tuichakue."
-      },
-      {
-        "property": "margin",
-        "title": "Hembe'y",
-        "description": "Ayvu jerekuéra."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "Tuichakue",
+        "description": "QR ayvu tuichakue."
+      },
+      {
+        "property": "margin",
+        "title": "Hembe'y",
+        "description": "Ayvu jerekuéra."
       }
     ]
   }

@@ -2,6 +2,13 @@ import { fixture, expect, html, waitUntil } from "@open-wc/testing";
 
 import { MdBlock } from "../md-block.js";
 
+// HAX schemas ship as JSON next to the element; read one whether the class
+// returns the object or the URL of its file
+const haxSchema = async (C) => {
+  const hp = C.haxProperties;
+  return typeof hp === "string" ? (await fetch(hp)).json() : hp;
+};
+
 // `lit-html` preserves the exact whitespace inside template literals, so any
 // indentation in our <md-block> fixture bodies becomes leading whitespace
 // in the element's `innerHTML`. CommonMark then interprets four-space
@@ -244,8 +251,8 @@ describe("md-block test", () => {
   });
 
   describe("HAX integration", () => {
-    it("exposes the haxProperties schema for the HAX editor", () => {
-      const props = MdBlock.haxProperties;
+    it("exposes the haxProperties schema for the HAX editor", async () => {
+      const props = await haxSchema(MdBlock);
       expect(props.canScale).to.equal(false);
       expect(props.canEditSource).to.equal(true);
       expect(props.gizmo.title).to.equal("Markdown");

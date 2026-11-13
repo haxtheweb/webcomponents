@@ -10,10 +10,6 @@
         "title": "Ikon Tab"
       },
       {
-        "property": "disabled",
-        "title": "Dilumpuhkan"
-      },
-      {
         "property": "label",
         "title": "Label Tab"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "ID Unik"
-      },
-      {
         "property": "flag",
         "title": "Teks Bendera Pilihan"
       },
       {
         "property": "flagIcon",
         "title": "Ikon Bendera Pilihan"
+      },
+      {
+        "property": "disabled",
+        "title": "Dilumpuhkan"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "ID Unik"
       }
     ]
   }

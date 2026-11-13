@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Peyama nayê piştgirîkirin",
-        "description": "Peyama dema ku gerok nikare pelên PDF nîşan bide."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Peyama girêdanê ya nayê piştgirîkirin",
-        "description": "Nivîsa girêdanê dema ku gerok nikare pelên PDF nîşan bide."
-      },
-      {
         "property": "width",
         "title": "Firehî",
         "description": "Firehiya dîtera PDF."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Bilindahî",
         "description": "Bilindahiya dîtera PDF."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Peyama nayê piştgirîkirin",
+        "description": "Peyama dema ku gerok nikare pelên PDF nîşan bide."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Peyama girêdanê ya nayê piştgirîkirin",
+        "description": "Nivîsa girêdanê dema ku gerok nikare pelên PDF nîşan bide."
       }
     ]
   }

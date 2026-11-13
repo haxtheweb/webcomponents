@@ -9,7 +9,9 @@
         "property": "source",
         "title": "Baliabidearen URLa",
         "description": "Baliabidearen URLa."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Altuera",

@@ -9,7 +9,9 @@
         "slot": "",
         "title": "અવતરણો",
         "description": "આ ગ્રંથસૂચિમાંની અવતરણ આઇટમ્સ"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "અભ્યાસક્રમ",

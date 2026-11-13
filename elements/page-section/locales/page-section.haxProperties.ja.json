@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "ボタン",
         "description": "テキストの下に表示するボタングループ。"
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "アンカーテキスト",
         "description": "ナビゲーションに表示するアンカーのラベル。"
       }
-    ]
+    ],
+    "developer": []
   }
 }

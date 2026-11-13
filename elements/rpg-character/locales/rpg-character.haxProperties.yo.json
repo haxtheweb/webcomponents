@@ -11,11 +11,6 @@
         "description": "Ọ̀rọ̀ tí a lò láti ṣẹ̀dá ẹ̀dá àìròtẹ́lẹ̀."
       },
       {
-        "property": "code",
-        "title": "Kóòdù ẹ̀dá",
-        "description": "Lẹ kóòdù tí a fipamọ́ láti tún ẹ̀dá yẹn ṣe."
-      },
-      {
         "property": "hat",
         "title": "Fìlà",
         "description": "Ìrísí fìlà.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Ìbòjú",
-        "description": "Ìbòjú tí a wọ̀ sí ojú tàbí orí.",
-        "options": {
-          "none": "Kò sí",
-          "lion": "Kìnnìún",
-          "plague": "Dókítà àjàkálẹ̀ àrùn",
-          "theater": "Eré orí ìtàgé",
-          "pumpkin": "Elégede",
-          "ghost": "Ẹ̀mí",
-          "mummy": "Òkú tí a fi aṣọ wé",
-          "wrestler": "Ìbojú ìjàkadì",
-          "block-head": "Orí bùlọ́ọ̀kù",
-          "web": "Ìbojú àwọ̀n",
-          "werewolf": "Ojú ènìyàn-ìkookò",
-          "shadow": "Ojú òjìji"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Ìṣaralóge",
-        "description": "Àwòrán ojú tàbí ìpara ètè.",
-        "options": {
-          "none": "Kò sí",
-          "red-lipstick": "Ìpara ètè pupa",
-          "pink-lipstick": "Ìpara ètè pọ́ńkì",
-          "berry-lipstick": "Ìpara ètè èso bẹ́rì",
-          "clown": "Àwọ̀ ojú aláwàdà",
-          "fangs": "Eyín gígùn",
-          "skull": "Àwòrán agbárí",
-          "zombie": "Àwòrán òkú tó jí dìde",
-          "red-nose": "Imú pupa",
-          "white-beard": "Irùngbọ̀n funfun",
-          "domino": "Ìbòjú akọni",
-          "carrot": "Imú karọ́ọ̀tì",
-          "bunny": "Imú ehoro",
-          "mustache": "Irun ètè",
-          "monster": "Àwọ̀ ojú abàmì",
-          "round-glasses": "Gíláàsì yíká"
-        }
-      },
-      {
         "property": "expression",
         "title": "Ìrísí ojú",
         "description": "Ìrísí ojú.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Ẹran ọ̀sìn",
+        "description": "Ẹran ọ̀sìn lẹ́gbẹ̀ẹ́ ẹ̀dá náà.",
+        "options": {
+          "none": "Kò sí",
+          "cat": "Ológbò",
+          "dog": "Ajá",
+          "bunny": "Ehoro",
+          "goldfish": "Ẹja wúrà",
+          "slime": "Ọ̀rá alálẹ̀mọ́",
+          "squirrel": "Ọ̀kẹ́rẹ́",
+          "dragon": "Dírágónì kékeré",
+          "parrot": "Ayékòótọ́",
+          "owl": "Òwìwí",
+          "bat": "Àdán"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Kóòdù ẹ̀dá",
+        "description": "Lẹ kóòdù tí a fipamọ́ láti tún ẹ̀dá yẹn ṣe."
+      },
+      {
+        "property": "mask",
+        "title": "Ìbòjú",
+        "description": "Ìbòjú tí a wọ̀ sí ojú tàbí orí.",
+        "options": {
+          "none": "Kò sí",
+          "lion": "Kìnnìún",
+          "plague": "Dókítà àjàkálẹ̀ àrùn",
+          "theater": "Eré orí ìtàgé",
+          "pumpkin": "Elégede",
+          "ghost": "Ẹ̀mí",
+          "mummy": "Òkú tí a fi aṣọ wé",
+          "wrestler": "Ìbojú ìjàkadì",
+          "block-head": "Orí bùlọ́ọ̀kù",
+          "web": "Ìbojú àwọ̀n",
+          "werewolf": "Ojú ènìyàn-ìkookò",
+          "shadow": "Ojú òjìji"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Ìṣaralóge",
+        "description": "Àwòrán ojú tàbí ìpara ètè.",
+        "options": {
+          "none": "Kò sí",
+          "red-lipstick": "Ìpara ètè pupa",
+          "pink-lipstick": "Ìpara ètè pọ́ńkì",
+          "berry-lipstick": "Ìpara ètè èso bẹ́rì",
+          "clown": "Àwọ̀ ojú aláwàdà",
+          "fangs": "Eyín gígùn",
+          "skull": "Àwòrán agbárí",
+          "zombie": "Àwòrán òkú tó jí dìde",
+          "red-nose": "Imú pupa",
+          "white-beard": "Irùngbọ̀n funfun",
+          "domino": "Ìbòjú akọni",
+          "carrot": "Imú karọ́ọ̀tì",
+          "bunny": "Imú ehoro",
+          "mustache": "Irun ètè",
+          "monster": "Àwọ̀ ojú abàmì",
+          "round-glasses": "Gíláàsì yíká"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Ọ̀rọ̀ orí àsíá",
         "description": "Kò ju lẹ́tà mẹ́rin lọ tí a fi hàn lórí àsíá."
@@ -310,24 +330,6 @@
           "skates": "Bàtà yíyọ́",
           "skateboard": "Pátákó yíyọ́",
           "hoverboard": "Pátákó tó ń fò"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Ẹran ọ̀sìn",
-        "description": "Ẹran ọ̀sìn lẹ́gbẹ̀ẹ́ ẹ̀dá náà.",
-        "options": {
-          "none": "Kò sí",
-          "cat": "Ológbò",
-          "dog": "Ajá",
-          "bunny": "Ehoro",
-          "goldfish": "Ẹja wúrà",
-          "slime": "Ọ̀rá alálẹ̀mọ́",
-          "squirrel": "Ọ̀kẹ́rẹ́",
-          "dragon": "Dírágónì kékeré",
-          "parrot": "Ayékòótọ́",
-          "owl": "Òwìwí",
-          "bat": "Àdán"
         }
       },
       {

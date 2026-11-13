@@ -4,17 +4,16 @@
     "description": "Spillt interaktiven H5P-Inhalt vun enger eropgeluedener .h5p-Datei of, ouni H5P-Server"
   },
   "settings": {
-    "configure": [
-      {
-        "slot": "",
-        "description": "Eng .h5p-Datei eroplueden oder verlinken. Si gëtt am Browser entpaakt; et gëtt kee H5P-Server gebraucht.",
-        "title": "H5P-Datei"
-      }
-    ],
+    "configure": [],
     "advanced": [
       {
         "title": "Ale iframe-Embed-Code",
         "description": "Nëmme fir méi ale Inhalt, deen en H5P-iframe vun enger anerer Websäit abett. Eidel loossen, wann uewen eng .h5p-Datei festgeluecht ass."
+      },
+      {
+        "slot": "",
+        "description": "Eng .h5p-Datei eroplueden oder verlinken. Si gëtt am Browser entpaakt; et gëtt kee H5P-Server gebraucht.",
+        "title": "H5P-Datei"
       }
     ]
   }

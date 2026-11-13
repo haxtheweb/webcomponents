@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Légende",
         "description": "Légende de l'image."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Titre de la figure",
-        "description": "Titre de l'étiquette de figure."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Description de la figure",
-        "description": "Description de l'étiquette de figure."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Désactiver la fenêtre modale de l'image",
         "description": "Empêcher les clics d'ouvrir l'image dans une boîte de dialogue d'inspection."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Titre de la figure",
+        "description": "Titre de l'étiquette de figure."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Description de la figure",
+        "description": "Description de l'étiquette de figure."
       }
     ],
     "developer": [

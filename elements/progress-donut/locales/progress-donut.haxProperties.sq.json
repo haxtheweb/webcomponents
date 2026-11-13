@@ -26,11 +26,6 @@
         "description": "Teksti alternativ për imazhin."
       },
       {
-        "property": "animated",
-        "title": "I animuar",
-        "description": "Nëse progresi animohet në ngarkimin e parë"
-      },
-      {
         "property": "complete",
         "title": "Përfunduar",
         "description": "Një varg vlerash të përfunduara."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "Gjithsej",
         "description": "Totali kur të gjitha elementet janë përfunduar."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "I animuar",
+        "description": "Nëse progresi animohet në ngarkimin e parë"
       },
       {
         "property": "startAngle",

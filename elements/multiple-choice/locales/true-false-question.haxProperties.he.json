@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "שאלת נכון / לא נכון",
-    "description": "שאלת נכון או לא נכון"
+    "description": "היגד שהלומד מסמן כנכון או לא נכון."
   },
   "settings": {
     "configure": [

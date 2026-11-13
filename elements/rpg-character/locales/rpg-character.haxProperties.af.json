@@ -11,11 +11,6 @@
         "description": "Woord gebruik om 'n ewekansige karakter te genereer."
       },
       {
-        "property": "code",
-        "title": "Karakterkode",
-        "description": "Plak 'n gestoorde kode om daardie karakter te herskep."
-      },
-      {
         "property": "hat",
         "title": "Hoed",
         "description": "Hoedstyl.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Masker",
-        "description": "Masker wat oor die gesig of kop gedra word.",
-        "options": {
-          "none": "Geen",
-          "lion": "Leeu",
-          "plague": "Pesdokter",
-          "theater": "Teater",
-          "pumpkin": "Pampoen",
-          "ghost": "Spook",
-          "mummy": "Mummie",
-          "wrestler": "Stoeimasker",
-          "block-head": "Blokkop",
-          "web": "Webmasker",
-          "werewolf": "Weerwolfgesig",
-          "shadow": "Skaduagtige gesig"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Grimering",
-        "description": "Gesigverf of lipstiffie.",
-        "options": {
-          "none": "Geen",
-          "red-lipstick": "Rooi lipstiffie",
-          "pink-lipstick": "Pienk lipstiffie",
-          "berry-lipstick": "Bessie-lipstiffie",
-          "clown": "Nar-grimering",
-          "fangs": "Slagtande",
-          "skull": "Doodskopverf",
-          "zombie": "Zombieverf",
-          "red-nose": "Rooi neus",
-          "white-beard": "Wit baard",
-          "domino": "Heldemasker",
-          "carrot": "Wortelneus",
-          "bunny": "Haasneus",
-          "mustache": "Snor",
-          "monster": "Monstergesigverf",
-          "round-glasses": "Ronde bril"
-        }
-      },
-      {
         "property": "expression",
         "title": "Uitdrukking",
         "description": "Gesigsuitdrukking.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Troeteldier",
+        "description": "Troeteldier langs die karakter.",
+        "options": {
+          "none": "Geen",
+          "cat": "Kat",
+          "dog": "Hond",
+          "bunny": "Haasie",
+          "goldfish": "Goudvis",
+          "slime": "Slym",
+          "squirrel": "Eekhoring",
+          "dragon": "Babadraak",
+          "parrot": "Papegaai",
+          "owl": "Uil",
+          "bat": "Vlermuis"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Karakterkode",
+        "description": "Plak 'n gestoorde kode om daardie karakter te herskep."
+      },
+      {
+        "property": "mask",
+        "title": "Masker",
+        "description": "Masker wat oor die gesig of kop gedra word.",
+        "options": {
+          "none": "Geen",
+          "lion": "Leeu",
+          "plague": "Pesdokter",
+          "theater": "Teater",
+          "pumpkin": "Pampoen",
+          "ghost": "Spook",
+          "mummy": "Mummie",
+          "wrestler": "Stoeimasker",
+          "block-head": "Blokkop",
+          "web": "Webmasker",
+          "werewolf": "Weerwolfgesig",
+          "shadow": "Skaduagtige gesig"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Grimering",
+        "description": "Gesigverf of lipstiffie.",
+        "options": {
+          "none": "Geen",
+          "red-lipstick": "Rooi lipstiffie",
+          "pink-lipstick": "Pienk lipstiffie",
+          "berry-lipstick": "Bessie-lipstiffie",
+          "clown": "Nar-grimering",
+          "fangs": "Slagtande",
+          "skull": "Doodskopverf",
+          "zombie": "Zombieverf",
+          "red-nose": "Rooi neus",
+          "white-beard": "Wit baard",
+          "domino": "Heldemasker",
+          "carrot": "Wortelneus",
+          "bunny": "Haasneus",
+          "mustache": "Snor",
+          "monster": "Monstergesigverf",
+          "round-glasses": "Ronde bril"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Vlagteks",
         "description": "Tot 4 letters word op die vlag gewys."
@@ -310,24 +330,6 @@
           "skates": "Skaatse",
           "skateboard": "Skaatsplank",
           "hoverboard": "Sweefplank"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Troeteldier",
-        "description": "Troeteldier langs die karakter.",
-        "options": {
-          "none": "Geen",
-          "cat": "Kat",
-          "dog": "Hond",
-          "bunny": "Haasie",
-          "goldfish": "Goudvis",
-          "slime": "Slym",
-          "squirrel": "Eekhoring",
-          "dragon": "Babadraak",
-          "parrot": "Papegaai",
-          "owl": "Uil",
-          "bat": "Vlermuis"
         }
       },
       {

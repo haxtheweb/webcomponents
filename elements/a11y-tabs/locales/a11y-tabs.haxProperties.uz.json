@@ -11,20 +11,17 @@
         "description": "Yorliqlar toʻplami uchun qulay yorliq."
       },
       {
-        "property": "disabled",
-        "title": "Oʻchirilgan",
-        "description": "Barcha yorliqlarni oʻchirib qoʻyish."
-      },
-      {
-        "property": "hidden",
-        "title": "Yashirin",
-        "description": "Yorliqlar toʻplamini yashirish."
-      },
-      {
         "property": "sticky",
         "title": "Yopishqoq",
         "description": "Aylantirishda gorizontal yorliqlarni yuqorida ushlab turish."
       },
+      {
+        "slot": "",
+        "title": "Yorliqlar",
+        "description": "<a11y-tab/> elementlari ketma-ketligi."
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "Maket chegara nuqtasi",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "Belgi chegara nuqtasi",
         "description": "Belgilar bilan matnni koʻrsatish uchun chegara nuqtasi. Standart qiymat 0; faqat belgi rejimi uchun -1 dan foydalaning."
-      },
-      {
-        "slot": "",
-        "title": "Yorliqlar",
-        "description": "<a11y-tab/> elementlari ketma-ketligi."
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "Oʻchirilgan",
+        "description": "Barcha yorliqlarni oʻchirib qoʻyish."
+      },
+      {
+        "property": "hidden",
+        "title": "Yashirin",
+        "description": "Yorliqlar toʻplamini yashirish."
+      },
       {
         "property": "id",
         "title": "Noyob ID",

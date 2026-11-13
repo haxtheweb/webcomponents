@@ -11,11 +11,6 @@
         "description": "Tötänleýin gahryman döretmek üçin ulanylýan söz."
       },
       {
-        "property": "code",
-        "title": "Gahryman kody",
-        "description": "Şol gahrymany täzeden döretmek üçin ýatda saklanan kody goýuň."
-      },
-      {
         "property": "hat",
         "title": "Şlýapa",
         "description": "Şlýapanyň stili.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Maska",
-        "description": "Ýüze ýa-da kelläňe dakylýan maska.",
-        "options": {
-          "none": "Ýok",
-          "lion": "Arslan",
-          "plague": "Çuma lukmany",
-          "theater": "Teatr",
-          "pumpkin": "Gowaça",
-          "ghost": "Arwah",
-          "mummy": "Mumiýa",
-          "wrestler": "Göreşçi maskasy",
-          "block-head": "Blok kelle",
-          "web": "Tor maskasy",
-          "werewolf": "Möjek-adam ýüzi",
-          "shadow": "Kölegeli ýüz"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Makiýaž",
-        "description": "Ýüz boýagy ýa-da dodak boýagy.",
-        "options": {
-          "none": "Ýok",
-          "red-lipstick": "Gyzyl dodak boýagy",
-          "pink-lipstick": "Gülgüne dodak boýagy",
-          "berry-lipstick": "Berri dodak boýagy",
-          "clown": "Masgaraçy boýagy",
-          "fangs": "Ýiti dişler",
-          "skull": "Kelle çanagy boýagy",
-          "zombie": "Zombi boýagy",
-          "red-nose": "Gyzyl burun",
-          "white-beard": "Ak sakgal",
-          "domino": "Gahryman maskasy",
-          "carrot": "Käşir burun",
-          "bunny": "Towşan burny",
-          "mustache": "Murt",
-          "monster": "Döw ýüz boýagy",
-          "round-glasses": "Tegelek äýnek"
-        }
-      },
-      {
         "property": "expression",
         "title": "Ýüz keşbi",
         "description": "Ýüzüň keşbi.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Öý haýwany",
+        "description": "Gahrymanyň ýanyndaky öý haýwany.",
+        "options": {
+          "none": "Ýok",
+          "cat": "Pişik",
+          "dog": "It",
+          "bunny": "Towşan",
+          "goldfish": "Altyn balyk",
+          "slime": "Sümük",
+          "squirrel": "Belka",
+          "dragon": "Kiçi aždarha",
+          "parrot": "Tutuguş",
+          "owl": "Baýguş",
+          "bat": "Ýarganat"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Gahryman kody",
+        "description": "Şol gahrymany täzeden döretmek üçin ýatda saklanan kody goýuň."
+      },
+      {
+        "property": "mask",
+        "title": "Maska",
+        "description": "Ýüze ýa-da kelläňe dakylýan maska.",
+        "options": {
+          "none": "Ýok",
+          "lion": "Arslan",
+          "plague": "Çuma lukmany",
+          "theater": "Teatr",
+          "pumpkin": "Gowaça",
+          "ghost": "Arwah",
+          "mummy": "Mumiýa",
+          "wrestler": "Göreşçi maskasy",
+          "block-head": "Blok kelle",
+          "web": "Tor maskasy",
+          "werewolf": "Möjek-adam ýüzi",
+          "shadow": "Kölegeli ýüz"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Makiýaž",
+        "description": "Ýüz boýagy ýa-da dodak boýagy.",
+        "options": {
+          "none": "Ýok",
+          "red-lipstick": "Gyzyl dodak boýagy",
+          "pink-lipstick": "Gülgüne dodak boýagy",
+          "berry-lipstick": "Berri dodak boýagy",
+          "clown": "Masgaraçy boýagy",
+          "fangs": "Ýiti dişler",
+          "skull": "Kelle çanagy boýagy",
+          "zombie": "Zombi boýagy",
+          "red-nose": "Gyzyl burun",
+          "white-beard": "Ak sakgal",
+          "domino": "Gahryman maskasy",
+          "carrot": "Käşir burun",
+          "bunny": "Towşan burny",
+          "mustache": "Murt",
+          "monster": "Döw ýüz boýagy",
+          "round-glasses": "Tegelek äýnek"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Baýdagyň ýazgysy",
         "description": "Baýdakda görkezilýän 4 harpa çenli."
@@ -310,24 +330,6 @@
           "skates": "Konki",
           "skateboard": "Skeýtbord",
           "hoverboard": "Uçýan tagta"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Öý haýwany",
-        "description": "Gahrymanyň ýanyndaky öý haýwany.",
-        "options": {
-          "none": "Ýok",
-          "cat": "Pişik",
-          "dog": "It",
-          "bunny": "Towşan",
-          "goldfish": "Altyn balyk",
-          "slime": "Sümük",
-          "squirrel": "Belka",
-          "dragon": "Kiçi aždarha",
-          "parrot": "Tutuguş",
-          "owl": "Baýguş",
-          "bat": "Ýarganat"
         }
       },
       {

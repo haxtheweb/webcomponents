@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Idirghníomhach",
         "description": "Ceadaigh idirghníomhú úsáideora chun an rátáil a shocrú."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Mód Scála Ruibrice",

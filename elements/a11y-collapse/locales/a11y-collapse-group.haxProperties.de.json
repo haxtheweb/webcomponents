@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "Auf-/Zuklapp-Gruppe",
-    "description": "Eine Gruppe von auf- und zuklappbaren Elementen."
+    "title": "Aufklappgruppe",
+    "description": "Eine Gruppe aufklappbarer Container."
   },
   "settings": {
     "configure": [

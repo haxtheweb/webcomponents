@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "ចំណងជើងរូប",
         "description": "ចំណងជើងរូបសម្រាប់រូបភាព។"
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "ចំណងជើងរូបភាព",
-        "description": "ចំណងជើងសម្រាប់ស្លាករូបភាព។"
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "ការពិពណ៌នារូបភាព",
-        "description": "ការពិពណ៌នាសម្រាប់ស្លាករូបភាព។"
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "បិទម៉ូដាល់រូបភាព",
         "description": "បិទការចុចដែលបើករូបភាពនៅក្នុងប្រអប់ពិនិត្យរូបភាព។"
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "ចំណងជើងរូបភាព",
+        "description": "ចំណងជើងសម្រាប់ស្លាករូបភាព។"
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "ការពិពណ៌នារូបភាព",
+        "description": "ការពិពណ៌នាសម្រាប់ស្លាករូបភាព។"
       }
     ],
     "developer": [

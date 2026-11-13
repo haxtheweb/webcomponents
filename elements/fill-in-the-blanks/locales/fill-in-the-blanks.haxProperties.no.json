@@ -14,28 +14,6 @@
         "property": "statement",
         "title": "Påstand",
         "description": "Påstand som gjøres om til interaksjonen «marker ordene»."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "Vurderingsformat",
-        "description": "OER Schema: vurderingsformat for denne vurderingen (f.eks. poeng, bokstav, prosent, fullført)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Læringsmål",
-        "description": "OER Schema: læringsmål knyttet til denne vurderingen."
-      },
-      {
-        "property": "forCourse",
-        "title": "Emne",
-        "description": "OER Schema: emnet denne vurderingen er beregnet for."
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Navn på quizen",
-        "description": "Quiznavn som sendes inn i xAPI-baserte miljøer for å identifisere dette elementet"
       }
     ],
     "advanced": [
@@ -46,6 +24,28 @@
       {
         "title": "Start sammenlagt",
         "description": "Når sammenleggbar, start som en lukket rad som bare viser spørsmålet og statusen."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Vurderingsformat",
+        "description": "OER Schema: vurderingsformat for denne vurderingen (f.eks. poeng, bokstav, prosent, fullført)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Læringsmål",
+        "description": "OER Schema: læringsmål knyttet til denne vurderingen."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Navn på quizen",
+        "description": "Quiznavn som sendes inn i xAPI-baserte miljøer for å identifisere dette elementet"
+      },
+      {
+        "property": "forCourse",
+        "title": "Emne",
+        "description": "OER Schema: emnet denne vurderingen er beregnet for."
       }
     ]
   }

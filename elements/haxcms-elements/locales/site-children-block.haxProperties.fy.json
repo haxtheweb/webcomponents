@@ -4,7 +4,7 @@
     "description": "Dynamysk blok om ûndersiden fan de hjoeddeiske side te toanen"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "Dynamyske metoade",
@@ -14,7 +14,9 @@
           "parent": "Undersiden fan boppelizzende side",
           "ancestor": "Alle ûndersiden fan de heechste foarâlder"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "Begjinnivo"

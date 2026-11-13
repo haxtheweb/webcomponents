@@ -16,30 +16,8 @@
         "description": "Chirevo chichashandurwa kuita chiitwa chekumaka mazwi."
       },
       {
-        "property": "gradingFormat",
-        "title": "Nzira yekupa mamaki",
-        "description": "OER Schema: nzira yekupa mamaki yeongororo iyi (semuenzaniso mapoinzi, tsamba, chikamu muzana, kupedzisa)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Chinangwa chekudzidza",
-        "description": "OER Schema: chinangwa chekudzidza chakabatanidzwa neongororo iyi."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kosi",
-        "description": "OER Schema: kosi yakagadzirirwa ongororo iyi."
-      },
-      {
         "property": "answers",
         "title": "Mhinduro"
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Zita rekuedzwa",
-        "description": "Zita rekuedzwa rinoshandiswa munzvimbo dzinoshandisa xAPI kuziva chinhu ichi"
       }
     ],
     "advanced": [
@@ -52,6 +30,28 @@
         "property": "collapsed",
         "title": "Tanga yakapetwa",
         "description": "Painopeteka, tanga semutsetse wakavharwa unongoratidza mubvunzo nemamiriro awo."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Nzira yekupa mamaki",
+        "description": "OER Schema: nzira yekupa mamaki yeongororo iyi (semuenzaniso mapoinzi, tsamba, chikamu muzana, kupedzisa)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Chinangwa chekudzidza",
+        "description": "OER Schema: chinangwa chekudzidza chakabatanidzwa neongororo iyi."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Zita rekuedzwa",
+        "description": "Zita rekuedzwa rinoshandiswa munzvimbo dzinoshandisa xAPI kuziva chinhu ichi"
+      },
+      {
+        "property": "forCourse",
+        "title": "Kosi",
+        "description": "OER Schema: kosi yakagadzirirwa ongororo iyi."
       }
     ]
   }

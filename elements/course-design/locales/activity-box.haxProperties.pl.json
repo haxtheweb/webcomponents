@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Ramka aktywności",
-    "description": "Mały stylizowany blok nagłówka."
+    "description": "Nagłówek z etykietą oznaczający początek aktywności."
   },
   "settings": {
     "configure": [

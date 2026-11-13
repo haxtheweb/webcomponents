@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "تڼۍ",
         "description": "د تڼیو ډله چې د متن لاندې ښودل کېږي."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "د لنګر متن",
         "description": "د لنګر لیبل چې په ناوبرۍ کې ښودل کېږي."
       }
-    ]
+    ],
+    "developer": []
   }
 }

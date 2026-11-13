@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "በይነተገናኝ",
         "description": "ደረጃውን ለማዘጋጀት የተጠቃሚ መስተጋብርን ፍቀድ።"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "የመመዘኛ ልኬት ሁነታ",

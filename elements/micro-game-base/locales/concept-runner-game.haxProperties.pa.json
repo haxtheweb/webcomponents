@@ -89,7 +89,9 @@
         "property": "gameTitle",
         "title": "ਖੇਡ ਦਾ ਨਾਮ",
         "description": "ਤਰੱਕੀ ਦੀਆਂ ਘਟਨਾਵਾਂ ਅਤੇ OER Schema ਮਾਰਕਅੱਪ ਵਿੱਚ ਇਸ ਖੇਡ ਨੂੰ ਨਾਮ ਦਿੰਦਾ ਹੈ।"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "ਖੇਡ ਆਈਡੀ",

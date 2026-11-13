@@ -10,10 +10,6 @@
         "title": "የትር አዶ"
       },
       {
-        "property": "disabled",
-        "title": "ተሰናክሏል"
-      },
-      {
         "property": "label",
         "title": "የትር መለያ"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "ልዩ ID"
-      },
-      {
         "property": "flag",
         "title": "አማራጭ የምልክት ጽሑፍ"
       },
       {
         "property": "flagIcon",
         "title": "አማራጭ የምልክት አዶ"
+      },
+      {
+        "property": "disabled",
+        "title": "ተሰናክሏል"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "ልዩ ID"
       }
     ]
   }

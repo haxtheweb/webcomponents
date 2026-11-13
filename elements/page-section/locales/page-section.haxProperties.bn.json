@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "বোতাম",
         "description": "টেক্সটের নিচে দেখানো বোতামের গ্রুপ।"
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "অ্যাংকর টেক্সট",
         "description": "নেভিগেশনে দেখানো অ্যাংকর লেবেল।"
       }
-    ]
+    ],
+    "developer": []
   }
 }

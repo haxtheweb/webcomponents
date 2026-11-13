@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "تير ناهي",
         "description": "بٽڻ جو تير لڪايو."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "لنڪ: ٽارگيٽ",
@@ -54,7 +52,9 @@
           "_top": "مٿين ونڊو - _top",
           "_parent": "پيرنٽ ونڊو - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "لنڪ: rel",

@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "غير مددي پيغام",
-        "description": "جڏهن براؤزر PDF فائلون ڏيکاري نه سگهي ته پيغام."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "غير مددي لنڪ پيغام",
-        "description": "جڏهن براؤزر PDF فائلون ڏيکاري نه سگهي ته لنڪ جو متن."
-      },
-      {
         "property": "width",
         "title": "ويڪر",
         "description": "PDF ويوئر جي ويڪر."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "اوچائي",
         "description": "PDF ويوئر جي اوچائي."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "غير مددي پيغام",
+        "description": "جڏهن براؤزر PDF فائلون ڏيکاري نه سگهي ته پيغام."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "غير مددي لنڪ پيغام",
+        "description": "جڏهن براؤزر PDF فائلون ڏيکاري نه سگهي ته لنڪ جو متن."
       }
     ]
   }

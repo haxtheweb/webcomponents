@@ -9,7 +9,21 @@
         "property": "target",
         "title": "लक्ष्य",
         "description": "गेम बिल्ड का पथ।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "कैनवास चौड़ाई",
+        "description": "कैनवास की CSS चौड़ाई (उदाहरण के लिए px या em)।"
       },
+      {
+        "property": "height",
+        "title": "कैनवास ऊँचाई",
+        "description": "कैनवास की CSS ऊँचाई (उदाहरण के लिए px या em)।"
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "संपीड़न विधि",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "उत्पाद संस्करण",
         "description": "रिलीज़ संस्करण।"
-      },
-      {
-        "property": "width",
-        "title": "कैनवास चौड़ाई",
-        "description": "कैनवास की CSS चौड़ाई (उदाहरण के लिए px या em)।"
-      },
-      {
-        "property": "height",
-        "title": "कैनवास ऊँचाई",
-        "description": "कैनवास की CSS ऊँचाई (उदाहरण के लिए px या em)।"
       },
       {
         "property": "background",

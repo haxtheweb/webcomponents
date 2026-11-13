@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Крофна за напредок",
-    "description": "Крофна за напредување"
+    "description": "Прстенест графикон што го прикажува напредокот кон вкупниот збир."
   },
   "settings": {
     "configure": [
@@ -26,11 +26,6 @@
         "description": "Алтернативен текст за сликата."
       },
       {
-        "property": "animated",
-        "title": "Анимирано",
-        "description": "Дали напредокот се анимира при првото вчитување"
-      },
-      {
         "property": "complete",
         "title": "Завршено",
         "description": "Низа од завршени вредности."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "Вкупно",
         "description": "Вкупно кога сите ставки се завршени."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "Анимирано",
+        "description": "Дали напредокот се анимира при првото вчитување"
       },
       {
         "property": "startAngle",

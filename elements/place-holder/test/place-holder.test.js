@@ -2,6 +2,13 @@ import { fixture, expect, html } from "@open-wc/testing";
 import { PlaceHolder } from "../place-holder.js";
 import "../place-holder.js";
 
+// HAX schemas ship as JSON next to the element; read one whether the class
+// returns the object or the URL of its file
+const haxSchema = async (C) => {
+  const hp = C.haxProperties;
+  return typeof hp === "string" ? (await fetch(hp)).json() : hp;
+};
+
 describe("place-holder test", () => {
   let element;
   beforeEach(async () => {
@@ -356,8 +363,8 @@ describe("place-holder test", () => {
   });
 
   describe("HAX Integration", () => {
-    it("should have correct HAX properties", () => {
-      const haxProps = PlaceHolder.haxProperties;
+    it("should have correct HAX properties", async () => {
+      const haxProps = await haxSchema(PlaceHolder);
 
       expect(haxProps).to.exist;
       expect(haxProps.canScale).to.be.false;
@@ -367,8 +374,8 @@ describe("place-holder test", () => {
       expect(haxProps.gizmo.color).to.equal("grey");
     });
 
-    it("should have proper settings configuration", () => {
-      const haxProps = PlaceHolder.haxProperties;
+    it("should have proper settings configuration", async () => {
+      const haxProps = await haxSchema(PlaceHolder);
       const configSettings = haxProps.settings.configure;
 
       expect(configSettings).to.have.lengthOf(2);
@@ -385,8 +392,8 @@ describe("place-holder test", () => {
       expect(textConfig.inputMethod).to.equal("textfield");
     });
 
-    it("should have demo schema", () => {
-      const haxProps = PlaceHolder.haxProperties;
+    it("should have demo schema", async () => {
+      const haxProps = await haxSchema(PlaceHolder);
       const demoSchema = haxProps.demoSchema;
 
       expect(demoSchema).to.have.lengthOf(1);

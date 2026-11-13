@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "简单图像",
-    "description": "使用简单参数处理图像。"
+    "description": "通过简单设置调整大小、裁剪或旋转的图片。"
   },
   "settings": {
     "configure": [
@@ -26,7 +26,8 @@
         "description": "有助于屏幕阅读器并改善 SEO。"
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "质量",

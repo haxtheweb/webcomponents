@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "Maɓallai",
         "description": "Rukunin maɓallai da ake nunawa ƙarƙashin rubutun."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "Rubutun angar",
         "description": "Lakabin angar da ake nunawa a kewayawa."
       }
-    ]
+    ],
+    "developer": []
   }
 }

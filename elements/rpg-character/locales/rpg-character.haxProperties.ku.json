@@ -11,11 +11,6 @@
         "description": "Peyva ku ji bo çêkirina karakterekî rasthatî tê bikaranîn."
       },
       {
-        "property": "code",
-        "title": "Koda karakterê",
-        "description": "Kodeke tomarkirî bişidîne da ku wî karakterî ji nû ve biafirînî."
-      },
-      {
         "property": "hat",
         "title": "Kum",
         "description": "Şêweya kumê.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Maske",
-        "description": "Maskeya ku li ser rû an serî tê li xwe kirin.",
-        "options": {
-          "none": "Tune",
-          "lion": "Şêr",
-          "plague": "Doktorê ta'ûnê",
-          "theater": "Şano",
-          "pumpkin": "Kundir",
-          "ghost": "Cin",
-          "mummy": "Mûmya",
-          "wrestler": "Maskeya zorêniyê",
-          "block-head": "Serê blokê",
-          "web": "Maskeya torê",
-          "werewolf": "Rûyê gurmirov",
-          "shadow": "Rûyê sîberî"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Makyaj",
-        "description": "Boyaxa rû an lêvboyax.",
-        "options": {
-          "none": "Tune",
-          "red-lipstick": "Lêvboyaxa sor",
-          "pink-lipstick": "Lêvboyaxa pembe",
-          "berry-lipstick": "Lêvboyaxa tûtikî",
-          "clown": "Boyaxa palyaçoyê",
-          "fangs": "Didanên tûj",
-          "skull": "Boyaxa kelogirê",
-          "zombie": "Boyaxa zombî",
-          "red-nose": "Pozê sor",
-          "white-beard": "Rihê spî",
-          "domino": "Maskeya qehreman",
-          "carrot": "Pozê gêzerê",
-          "bunny": "Pozê kêvroşkê",
-          "mustache": "Simbêl",
-          "monster": "Boyaxa rûyê cinawir",
-          "round-glasses": "Berçavkên girover"
-        }
-      },
-      {
         "property": "expression",
         "title": "Rûdan",
         "description": "Rûdana rûyê.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Heywanê malê",
+        "description": "Heywanê malê li kêleka karakterê.",
+        "options": {
+          "none": "Tune",
+          "cat": "Pisîk",
+          "dog": "Kûçik",
+          "bunny": "Kêvroşk",
+          "goldfish": "Masiyê zêrîn",
+          "slime": "Lîç",
+          "squirrel": "Sixur",
+          "dragon": "Ejderhayê biçûk",
+          "parrot": "Tûtî",
+          "owl": "Kund",
+          "bat": "Şevşevok"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Koda karakterê",
+        "description": "Kodeke tomarkirî bişidîne da ku wî karakterî ji nû ve biafirînî."
+      },
+      {
+        "property": "mask",
+        "title": "Maske",
+        "description": "Maskeya ku li ser rû an serî tê li xwe kirin.",
+        "options": {
+          "none": "Tune",
+          "lion": "Şêr",
+          "plague": "Doktorê ta'ûnê",
+          "theater": "Şano",
+          "pumpkin": "Kundir",
+          "ghost": "Cin",
+          "mummy": "Mûmya",
+          "wrestler": "Maskeya zorêniyê",
+          "block-head": "Serê blokê",
+          "web": "Maskeya torê",
+          "werewolf": "Rûyê gurmirov",
+          "shadow": "Rûyê sîberî"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Makyaj",
+        "description": "Boyaxa rû an lêvboyax.",
+        "options": {
+          "none": "Tune",
+          "red-lipstick": "Lêvboyaxa sor",
+          "pink-lipstick": "Lêvboyaxa pembe",
+          "berry-lipstick": "Lêvboyaxa tûtikî",
+          "clown": "Boyaxa palyaçoyê",
+          "fangs": "Didanên tûj",
+          "skull": "Boyaxa kelogirê",
+          "zombie": "Boyaxa zombî",
+          "red-nose": "Pozê sor",
+          "white-beard": "Rihê spî",
+          "domino": "Maskeya qehreman",
+          "carrot": "Pozê gêzerê",
+          "bunny": "Pozê kêvroşkê",
+          "mustache": "Simbêl",
+          "monster": "Boyaxa rûyê cinawir",
+          "round-glasses": "Berçavkên girover"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Nivîsa alê",
         "description": "Heta 4 tîp li ser alê tên nîşandan."
@@ -310,24 +330,6 @@
           "skates": "Paten",
           "skateboard": "Skeytbord",
           "hoverboard": "Texteya firok"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Heywanê malê",
-        "description": "Heywanê malê li kêleka karakterê.",
-        "options": {
-          "none": "Tune",
-          "cat": "Pisîk",
-          "dog": "Kûçik",
-          "bunny": "Kêvroşk",
-          "goldfish": "Masiyê zêrîn",
-          "slime": "Lîç",
-          "squirrel": "Sixur",
-          "dragon": "Ejderhayê biçûk",
-          "parrot": "Tûtî",
-          "owl": "Kund",
-          "bat": "Şevşevok"
         }
       },
       {

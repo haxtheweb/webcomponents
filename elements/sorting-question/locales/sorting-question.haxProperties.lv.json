@@ -11,31 +11,9 @@
         "description": "Jautājuma virsraksts."
       },
       {
-        "property": "gradingFormat",
-        "title": "Vērtēšanas formāts",
-        "description": "OER Schema: šī vērtējuma formāts (piem., punkti, burts, procenti, izpilde)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Mācību mērķis",
-        "description": "OER Schema: ar šo vērtējumu saistītais mācību mērķis."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kurss",
-        "description": "OER Schema: kurss, kuram paredzēts šis vērtējums."
-      },
-      {
         "property": "answers",
         "title": "Atbildes",
         "description": "Atbilžu secība nosaka pareizo kārtību."
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Testa nosaukums",
-        "description": "Testa nosaukums, ko izmanto xAPI identifikācijai analītikas sistēmās."
       }
     ],
     "advanced": [
@@ -48,6 +26,28 @@
         "property": "collapsed",
         "title": "Sākt salocītu",
         "description": "Kad ir salokāms, sākt kā aizvērtu rindu, kurā redzams tikai jautājums un tā statuss."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Vērtēšanas formāts",
+        "description": "OER Schema: šī vērtējuma formāts (piem., punkti, burts, procenti, izpilde)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Mācību mērķis",
+        "description": "OER Schema: ar šo vērtējumu saistītais mācību mērķis."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Testa nosaukums",
+        "description": "Testa nosaukums, ko izmanto xAPI identifikācijai analītikas sistēmās."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurss",
+        "description": "OER Schema: kurss, kuram paredzēts šis vērtējums."
       }
     ]
   }

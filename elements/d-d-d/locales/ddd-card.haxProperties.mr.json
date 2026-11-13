@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "बाण नाही",
         "description": "बटणावरील बाण लपवा."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "लिंक: लक्ष्य",
@@ -54,7 +52,9 @@
           "_top": "सर्वात वरची विंडो - _top",
           "_parent": "मूळ विंडो - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "लिंक: rel",

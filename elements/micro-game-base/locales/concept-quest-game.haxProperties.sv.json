@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Begreppsuppdragsspel",
-    "description": "En värld att vandra i. Begreppen hittar dig och ställer en fråga. Svara rätt för att besegra ett och låsa upp dess hus. Sammanfattningen visar försök och vad du bör repetera."
+    "description": "Ett övervärldsspel där begrepp ställer frågor och rätta svar låser upp kartan."
   },
   "settings": {
     "configure": [
@@ -91,7 +91,9 @@
         "property": "gameTitle",
         "title": "Spelets namn",
         "description": "Namnger spelet i förloppshändelser och OER Schema-markering."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Spel-id",

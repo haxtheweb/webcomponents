@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "ਇੰਟਰਐਕਟਿਵ",
         "description": "ਰੇਟਿੰਗ ਸੈੱਟ ਕਰਨ ਲਈ ਵਰਤੋਂਕਾਰ ਪਰਸਪਰ ਕਿਰਿਆ ਦੀ ਇਜਾਜ਼ਤ ਦਿਓ।"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "ਰੂਬਰਿਕ ਪੈਮਾਨਾ ਮੋਡ",

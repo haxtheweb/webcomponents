@@ -11,11 +11,6 @@
         "description": "Ord, der bruges til at generere en tilfældig figur."
       },
       {
-        "property": "code",
-        "title": "Figurkode",
-        "description": "Indsæt en gemt kode for at genskabe den figur."
-      },
-      {
         "property": "hat",
         "title": "Hat",
         "description": "Hattestil.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Maske",
-        "description": "Maske båret over ansigtet eller hovedet.",
-        "options": {
-          "none": "Ingen",
-          "lion": "Løve",
-          "plague": "Pestlæge",
-          "theater": "Teater",
-          "pumpkin": "Græskar",
-          "ghost": "Spøgelse",
-          "mummy": "Mumie",
-          "wrestler": "Brydermaske",
-          "block-head": "Klodshoved",
-          "web": "Spindelvævsmaske",
-          "werewolf": "Varulveansigt",
-          "shadow": "Skyggeansigt"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Makeup",
-        "description": "Ansigtsmaling eller læbestift.",
-        "options": {
-          "none": "Ingen",
-          "red-lipstick": "Rød læbestift",
-          "pink-lipstick": "Lyserød læbestift",
-          "berry-lipstick": "Bærfarvet læbestift",
-          "clown": "Klovnemaling",
-          "fangs": "Hugtænder",
-          "skull": "Kranie-maling",
-          "zombie": "Zombie-maling",
-          "red-nose": "Rød næse",
-          "white-beard": "Hvidt skæg",
-          "domino": "Heltemaske",
-          "carrot": "Gulerodsnæse",
-          "bunny": "Kaninnæse",
-          "mustache": "Overskæg",
-          "monster": "Monster-ansigtsmaling",
-          "round-glasses": "Runde briller"
-        }
-      },
-      {
         "property": "expression",
         "title": "Udtryk",
         "description": "Ansigtsudtryk.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Kæledyr",
+        "description": "Kæledyr ved siden af figuren.",
+        "options": {
+          "none": "Ingen",
+          "cat": "Kat",
+          "dog": "Hund",
+          "bunny": "Kanin",
+          "goldfish": "Guldfisk",
+          "slime": "Slim",
+          "squirrel": "Egern",
+          "dragon": "Babydrage",
+          "parrot": "Papegøje",
+          "owl": "Ugle",
+          "bat": "Flagermus"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Figurkode",
+        "description": "Indsæt en gemt kode for at genskabe den figur."
+      },
+      {
+        "property": "mask",
+        "title": "Maske",
+        "description": "Maske båret over ansigtet eller hovedet.",
+        "options": {
+          "none": "Ingen",
+          "lion": "Løve",
+          "plague": "Pestlæge",
+          "theater": "Teater",
+          "pumpkin": "Græskar",
+          "ghost": "Spøgelse",
+          "mummy": "Mumie",
+          "wrestler": "Brydermaske",
+          "block-head": "Klodshoved",
+          "web": "Spindelvævsmaske",
+          "werewolf": "Varulveansigt",
+          "shadow": "Skyggeansigt"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Makeup",
+        "description": "Ansigtsmaling eller læbestift.",
+        "options": {
+          "none": "Ingen",
+          "red-lipstick": "Rød læbestift",
+          "pink-lipstick": "Lyserød læbestift",
+          "berry-lipstick": "Bærfarvet læbestift",
+          "clown": "Klovnemaling",
+          "fangs": "Hugtænder",
+          "skull": "Kranie-maling",
+          "zombie": "Zombie-maling",
+          "red-nose": "Rød næse",
+          "white-beard": "Hvidt skæg",
+          "domino": "Heltemaske",
+          "carrot": "Gulerodsnæse",
+          "bunny": "Kaninnæse",
+          "mustache": "Overskæg",
+          "monster": "Monster-ansigtsmaling",
+          "round-glasses": "Runde briller"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Flagtekst",
         "description": "Op til 4 bogstaver vises på flaget."
@@ -310,24 +330,6 @@
           "skates": "Skøjter",
           "skateboard": "Skateboard",
           "hoverboard": "Svævebræt"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Kæledyr",
-        "description": "Kæledyr ved siden af figuren.",
-        "options": {
-          "none": "Ingen",
-          "cat": "Kat",
-          "dog": "Hund",
-          "bunny": "Kanin",
-          "goldfish": "Guldfisk",
-          "slime": "Slim",
-          "squirrel": "Egern",
-          "dragon": "Babydrage",
-          "parrot": "Papegøje",
-          "owl": "Ugle",
-          "bat": "Flagermus"
         }
       },
       {

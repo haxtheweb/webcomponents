@@ -9,7 +9,9 @@
         "property": "source",
         "title": "URL yeZviwanikwa",
         "description": "URL yeZviwanikwa."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Kureba",

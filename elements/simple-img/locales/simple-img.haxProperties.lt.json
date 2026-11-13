@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Paprastas vaizdas",
-    "description": "Keiskite vaizdus paprastais parametrais."
+    "description": "Vaizdas, kurio dydis keičiamas, jis apkarpomas ar pasukamas paprastais nustatymais."
   },
   "settings": {
     "configure": [
@@ -26,7 +26,8 @@
         "description": "Naudinga ekrano skaitytuvams ir geresniam SEO."
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "Kokybė",

@@ -11,20 +11,17 @@
         "description": "Приступачна ознака за скуп картица."
       },
       {
-        "property": "disabled",
-        "title": "Онемогућено",
-        "description": "Онемогући све картице."
-      },
-      {
-        "property": "hidden",
-        "title": "Скривено",
-        "description": "Сакриј скуп картица."
-      },
-      {
         "property": "sticky",
         "title": "Фиксирано",
         "description": "Задржи хоризонталне картице на врху током померања."
       },
+      {
+        "slot": "",
+        "title": "Картице",
+        "description": "Низ елемената <a11y-tab/>."
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "Тачка прелома распореда",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "Тачка прелома икона",
         "description": "Тачка прелома за приказ текста са иконама. Подразумевано је 0; користите -1 за режим само са иконама."
-      },
-      {
-        "slot": "",
-        "title": "Картице",
-        "description": "Низ елемената <a11y-tab/>."
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "Онемогућено",
+        "description": "Онемогући све картице."
+      },
+      {
+        "property": "hidden",
+        "title": "Скривено",
+        "description": "Сакриј скуп картица."
+      },
       {
         "property": "id",
         "title": "Јединствени ID",

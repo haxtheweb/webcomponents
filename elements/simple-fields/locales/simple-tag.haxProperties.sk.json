@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "Značka / štítok",
+    "title": "Štítok",
     "description": "Kompaktný štítok v tvare kapsuly s voliteľnou zvýrazňujúcou farbou, tlačidlom zrušenia alebo prepínačom."
   },
   "settings": {
@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Automatická zvýrazňujúca farba",
         "description": "Automaticky odvodiť zvýrazňujúcu farbu z textu označenia."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Tlačidlo zrušenia",
-        "description": "Zobraziť v štítku ikonové tlačidlo na odstránenie/zrušenie."
-      },
-      {
-        "property": "readonly",
-        "title": "Iba na čítanie",
-        "description": "Skryť tlačidlo zrušenia, aby štítok slúžil iba na zobrazenie."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Modrosivá",
           "grey": "Sivá"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Tlačidlo zrušenia",
+        "description": "Zobraziť v štítku ikonové tlačidlo na odstránenie/zrušenie."
+      },
+      {
+        "property": "readonly",
+        "title": "Iba na čítanie",
+        "description": "Skryť tlačidlo zrušenia, aby štítok slúžil iba na zobrazenie."
       }
     ]
   }

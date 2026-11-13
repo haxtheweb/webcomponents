@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Inopindurana",
         "description": "Bvumira mushandisi kuisa chiyero."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Modhi yeChiyero cheRubric",

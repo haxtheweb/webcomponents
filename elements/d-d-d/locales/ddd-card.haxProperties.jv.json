@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Tanpa Panah",
         "description": "Dhelikake panah tombol."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Pranala: target",
@@ -54,7 +52,9 @@
           "_top": "Jendhela paling ndhuwur - _top",
           "_parent": "Jendhela induk - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Pranala: rel",

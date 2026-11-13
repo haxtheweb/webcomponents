@@ -9,7 +9,9 @@
         "slot": "",
         "title": "حوالې",
         "description": "په دې کتابتون کې د حوالو توکي"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "کورس",

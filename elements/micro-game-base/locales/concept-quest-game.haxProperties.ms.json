@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Permainan misi konsep",
-    "description": "Dunia terbuka untuk dijelajah. Konsep menemui anda dan bertanya soalan. Jawab dengan betul untuk menewaskan satu dan membuka rumahnya. Ringkasan menunjukkan percubaan dan apa yang perlu disemak."
+    "description": "Permainan peta dunia di mana konsep bertanya soalan dan jawapan betul membuka peta."
   },
   "settings": {
     "configure": [
@@ -91,7 +91,9 @@
         "property": "gameTitle",
         "title": "Nama permainan",
         "description": "Menamakan permainan ini dalam acara kemajuan dan markup OER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "ID permainan",

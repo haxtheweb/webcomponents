@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Interaktiv",
         "description": "Foydalanuvchiga reytingni belgilashga ruxsat berish."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Rubrika shkalasi rejimi",

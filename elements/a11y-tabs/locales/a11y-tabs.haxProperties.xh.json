@@ -11,20 +11,17 @@
         "description": "Ileyibhile efikelelekayo yeseti yeethebhu."
       },
       {
-        "property": "disabled",
-        "title": "Kuvaliwe",
-        "description": "Vala zonke iithebhu."
-      },
-      {
-        "property": "hidden",
-        "title": "Kufihliwe",
-        "description": "Fihla iseti yeethebhu."
-      },
-      {
         "property": "sticky",
         "title": "Ezincamathelayo",
         "description": "Gcina iithebhu ezithe tyaba phezulu xa uskrola."
       },
+      {
+        "slot": "",
+        "title": "Iithebhu",
+        "description": "Uthotho lwezinto ze-<a11y-tab/>."
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "Indawo yoTshintsho lweLayout",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "Indawo yoTshintsho ye-Icon",
         "description": "Indawo yotshintsho yokubonisa umbhalo nee-icon. Okungagqibekanga ngu-0; sebenzisa -1 ukuze kubonakale ii-icon kuphela."
-      },
-      {
-        "slot": "",
-        "title": "Iithebhu",
-        "description": "Uthotho lwezinto ze-<a11y-tab/>."
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "Kuvaliwe",
+        "description": "Vala zonke iithebhu."
+      },
+      {
+        "property": "hidden",
+        "title": "Kufihliwe",
+        "description": "Fihla iseti yeethebhu."
+      },
       {
         "property": "id",
         "title": "I-ID eyodwa",

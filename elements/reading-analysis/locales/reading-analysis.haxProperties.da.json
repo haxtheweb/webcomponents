@@ -38,21 +38,6 @@
         "slot": "",
         "title": "Tekst",
         "description": "Teksten, eleverne arbejder i. Enhver HTML: overskrifter, afsnit, lister og figurer."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "Bedømmelsesformat",
-        "description": "OER Schema: bedømmelsesformat for denne vurdering (f.eks. point, bogstav, procent, gennemførelse)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Læringsmål",
-        "description": "OER Schema: læringsmål knyttet til denne vurdering."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kursus",
-        "description": "OER Schema: kursus, som denne vurdering er beregnet til."
       }
     ],
     "advanced": [
@@ -70,6 +55,16 @@
         "property": "collapsed",
         "title": "Start sammenfoldet",
         "description": "Når det er sammenfoldeligt, starter det som en lukket række, der kun viser spørgsmålet og dets status."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Bedømmelsesformat",
+        "description": "OER Schema: bedømmelsesformat for denne vurdering (f.eks. point, bogstav, procent, gennemførelse)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Læringsmål",
+        "description": "OER Schema: læringsmål knyttet til denne vurdering."
       }
     ],
     "developer": [
@@ -77,6 +72,11 @@
         "property": "quizName",
         "title": "Quizzens navn",
         "description": "Quiznavn, der videregives til brug i xAPI-drevne miljøer til identifikation af dette element"
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursus",
+        "description": "OER Schema: kursus, som denne vurdering er beregnet til."
       }
     ]
   }

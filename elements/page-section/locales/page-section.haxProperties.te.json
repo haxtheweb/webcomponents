@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "బటన్‌లు",
         "description": "వచనం కింద చూపబడే బటన్ సమూహం."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "యాంకర్ వచనం",
         "description": "నావిగేషన్‌లో చూపబడే యాంకర్ లేబుల్."
       }
-    ]
+    ],
+    "developer": []
   }
 }

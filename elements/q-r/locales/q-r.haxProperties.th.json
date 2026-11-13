@@ -14,16 +14,6 @@
         "property": "title",
         "title": "ชื่อทางเลือก",
         "description": "ชื่อทางเลือกที่ลิงก์กับแหล่งที่มาของรหัส QR"
-      },
-      {
-        "property": "modulesize",
-        "title": "ขนาด",
-        "description": "ขนาดของรหัส QR"
-      },
-      {
-        "property": "margin",
-        "title": "ระยะขอบ",
-        "description": "ระยะห่างรอบรหัส"
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "ขนาด",
+        "description": "ขนาดของรหัส QR"
+      },
+      {
+        "property": "margin",
+        "title": "ระยะขอบ",
+        "description": "ระยะห่างรอบรหัส"
       }
     ]
   }

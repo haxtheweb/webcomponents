@@ -14,28 +14,6 @@
         "property": "statement",
         "title": "Enunciado",
         "description": "Enunciado que se convertirá en la interacción de marcar las palabras."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "Formato de calificación",
-        "description": "OER Schema: formato de calificación de esta evaluación (p. ej., puntos, letra, porcentaje, finalización)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Objetivo de aprendizaje",
-        "description": "OER Schema: objetivo de aprendizaje asociado a esta evaluación."
-      },
-      {
-        "property": "forCourse",
-        "title": "Curso",
-        "description": "OER Schema: curso al que está destinada esta evaluación."
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Nombre del cuestionario",
-        "description": "Nombre del cuestionario que se usa en entornos basados en xAPI para identificar este elemento"
       }
     ],
     "advanced": [
@@ -46,6 +24,28 @@
       {
         "title": "Iniciar contraída",
         "description": "Si es contraíble, empieza como una fila cerrada que solo muestra la pregunta y su estado."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Formato de calificación",
+        "description": "OER Schema: formato de calificación de esta evaluación (p. ej., puntos, letra, porcentaje, finalización)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Objetivo de aprendizaje",
+        "description": "OER Schema: objetivo de aprendizaje asociado a esta evaluación."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nombre del cuestionario",
+        "description": "Nombre del cuestionario que se usa en entornos basados en xAPI para identificar este elemento"
+      },
+      {
+        "property": "forCourse",
+        "title": "Curso",
+        "description": "OER Schema: curso al que está destinada esta evaluación."
       }
     ]
   }

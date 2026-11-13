@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Hra s pojmovou mapou",
-    "description": "Krátká hra na klávesnici. Postava chodí k pojmům na mapě a každý se sám vysvětlí. Dotkni se všech a dostaneš konfety a zadání ke zkopírování."
+    "description": "Krátká klávesnicová hra, ve které postava prochází mapou a každý pojem se sám vysvětlí."
   },
   "settings": {
     "configure": [
@@ -86,7 +86,9 @@
         "property": "gameTitle",
         "title": "Název hry",
         "description": "Pojmenuje tuto hru v událostech průběhu a ve značkování OER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "ID hry",

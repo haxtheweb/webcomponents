@@ -11,30 +11,8 @@
         "description": "Ceist le freagairt ag úsáideoirí."
       },
       {
-        "property": "gradingFormat",
-        "title": "Formáid ghrádaithe",
-        "description": "OER Schema: formáid ghrádaithe don mheasúnú seo (m.sh. pointí, litir, céatadán, críochnú)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Cuspóir foghlama",
-        "description": "OER Schema: cuspóir foghlama a bhaineann leis an measúnú seo."
-      },
-      {
-        "property": "forCourse",
-        "title": "Cúrsa",
-        "description": "OER Schema: an cúrsa a bhfuil an measúnú seo beartaithe dó."
-      },
-      {
         "property": "answers",
         "title": "Freagraí"
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Ainm an tráth na gceist",
-        "description": "Ainm an tráth na gceist a úsáidtear chun aithint xAPI i gcórais anailíse."
       }
     ],
     "advanced": [
@@ -47,6 +25,28 @@
         "property": "collapsed",
         "title": "Tosaigh fillte",
         "description": "Nuair atá sé infhillte, tosaíonn sé mar shraith dúnta nach dtaispeánann ach an cheist agus a stádas."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Formáid ghrádaithe",
+        "description": "OER Schema: formáid ghrádaithe don mheasúnú seo (m.sh. pointí, litir, céatadán, críochnú)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Cuspóir foghlama",
+        "description": "OER Schema: cuspóir foghlama a bhaineann leis an measúnú seo."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Ainm an tráth na gceist",
+        "description": "Ainm an tráth na gceist a úsáidtear chun aithint xAPI i gcórais anailíse."
+      },
+      {
+        "property": "forCourse",
+        "title": "Cúrsa",
+        "description": "OER Schema: an cúrsa a bhfuil an measúnú seo beartaithe dó."
       }
     ]
   }

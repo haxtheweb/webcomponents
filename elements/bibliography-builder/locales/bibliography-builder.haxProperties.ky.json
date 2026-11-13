@@ -9,7 +9,9 @@
         "slot": "",
         "title": "Цитаталар",
         "description": "Бул библиографиядагы цитата элементтери"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "Курс",

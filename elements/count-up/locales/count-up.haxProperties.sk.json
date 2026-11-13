@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Text prípony",
         "description": "Text zobrazený za číslom (napr. '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Slot predpony",
-        "description": "Voliteľný vložený obsah pred číslom."
-      },
-      {
-        "slot": "suffix",
-        "title": "Slot prípony",
-        "description": "Voliteľný vložený obsah za číslom."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Bez zjemnenia",
         "description": "Vypnúť zjemnenie, aby bolo počítanie lineárne."
+      },
+      {
+        "slot": "prefix",
+        "title": "Slot predpony",
+        "description": "Voliteľný vložený obsah pred číslom."
+      },
+      {
+        "slot": "suffix",
+        "title": "Slot prípony",
+        "description": "Voliteľný vložený obsah za číslom."
       }
     ]
   }

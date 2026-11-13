@@ -1,6 +1,13 @@
 import { fixture, expect, html, oneEvent } from "@open-wc/testing";
 import "@haxtheweb/type-writer/type-writer.js";
 
+// HAX schemas ship as JSON next to the element; read one whether the class
+// returns the object or the URL of its file
+const haxSchema = async (C) => {
+  const hp = C.haxProperties;
+  return typeof hp === "string" ? (await fetch(hp)).json() : hp;
+};
+
 describe("type-writer", () => {
   let element;
 
@@ -106,15 +113,15 @@ describe("type-writer", () => {
       element = await fixture(html`<type-writer></type-writer>`);
     });
 
-    it("exposes haxProperties", () => {
-      const hax = element.constructor.haxProperties;
+    it("exposes haxProperties", async () => {
+      const hax = await haxSchema(element.constructor);
       expect(hax).to.exist;
       expect(hax.canScale).to.equal(true);
       expect(hax.canEditSource).to.equal(true);
     });
 
-    it("declares a gizmo with the expected metadata", () => {
-      const gizmo = element.constructor.haxProperties.gizmo;
+    it("declares a gizmo with the expected metadata", async () => {
+      const gizmo = (await haxSchema(element.constructor)).gizmo;
       expect(gizmo.title).to.equal("Typewriter");
       expect(gizmo.icon).to.equal("hardware:keyboard");
       expect(gizmo.color).to.equal("green");
@@ -125,8 +132,8 @@ describe("type-writer", () => {
       ]);
     });
 
-    it("exposes text / typing as configure and the timing fields as advanced settings", () => {
-      const settings = element.constructor.haxProperties.settings;
+    it("exposes text / typing as configure and the timing fields as advanced settings", async () => {
+      const settings = (await haxSchema(element.constructor)).settings;
       expect(settings.configure.map((c) => c.property)).to.include.members([
         "text",
         "typing",
@@ -140,8 +147,8 @@ describe("type-writer", () => {
       expect(advanced.every((c) => c.inputMethod === "number")).to.be.true;
     });
 
-    it("strips element-visible attribute on save", () => {
-      const opts = element.constructor.haxProperties.saveOptions;
+    it("strips element-visible attribute on save", async () => {
+      const opts = (await haxSchema(element.constructor)).saveOptions;
       expect(opts.unsetAttributes).to.include("element-visible");
     });
   });

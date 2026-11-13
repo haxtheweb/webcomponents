@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Plakatipilt",
         "description": "Plakatipildi URL."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Tekstirajad",
         "description": "Video subtiitrid, tõlkesubtiitrid, kirjeldused ja muud tekstirajad."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Algusaeg",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Kirjeldustõlke rada",
         "description": "Kirjeldustõlke raja URL (MP3-fail), mis jutustab visuaalsetest elementidest."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rõhuvärv",
+        "description": "(aegunud) Vali mängija rõhuvärv."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Keel",
         "description": "Meedia keel."
-      },
-      {
-        "property": "accentColor",
-        "title": "Rõhuvärv",
-        "description": "(aegunud) Vali mängija rõhuvärv."
       }
     ]
   }

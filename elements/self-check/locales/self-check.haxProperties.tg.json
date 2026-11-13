@@ -27,6 +27,13 @@
       {
         "slot": "",
         "title": "Ҷавоб"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Пайванди бештар",
+        "description": "Пайванд ба маълумоти иловагӣ."
       },
       {
         "property": "hasLearningObjective",
@@ -37,13 +44,6 @@
         "property": "assessing",
         "title": "Арзёбӣ мекунад",
         "description": "Истинод ба фаъолият, ки ҳамчун oer:assessing тавлид мешавад."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "link",
-        "title": "Пайванди бештар",
-        "description": "Пайванд ба маълумоти иловагӣ."
       }
     ]
   }

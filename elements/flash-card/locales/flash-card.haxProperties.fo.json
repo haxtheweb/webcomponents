@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Myndakelda",
         "description": "Myndafíla, sum verður nýtt á kortinum. Gongur fram um myndaleitorð."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Myndaleitorð",
+        "description": "Leitorð til tilvildarliga mynd. Myndakelda gongur fram um hetta."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Lærumál",
         "description": "OER Schema: ID ella URL til lærumálið, sum henda venjingin stuðlar."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Myndaleitorð",
-        "description": "Leitorð til tilvildarliga mynd. Myndakelda gongur fram um hetta."
       }
     ]
   }

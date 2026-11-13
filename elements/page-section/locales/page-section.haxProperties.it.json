@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "Pulsanti",
         "description": "Gruppo di pulsanti mostrato sotto il testo."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "Testo dell'ancora",
         "description": "Etichetta dell'ancora mostrata nella navigazione."
       }
-    ]
+    ],
+    "developer": []
   }
 }

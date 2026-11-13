@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Suffixtext",
         "description": "Text som visas efter talet (t.ex. '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Prefixplats",
-        "description": "Valfritt infogat innehåll före talet."
-      },
-      {
-        "slot": "suffix",
-        "title": "Suffixplats",
-        "description": "Valfritt infogat innehåll efter talet."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Ingen utjämning",
         "description": "Inaktivera utjämning så att räkningen blir linjär."
+      },
+      {
+        "slot": "prefix",
+        "title": "Prefixplats",
+        "description": "Valfritt infogat innehåll före talet."
+      },
+      {
+        "slot": "suffix",
+        "title": "Suffixplats",
+        "description": "Valfritt infogat innehåll efter talet."
       }
     ]
   }

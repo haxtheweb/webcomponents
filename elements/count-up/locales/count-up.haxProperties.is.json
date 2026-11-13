@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Viðskeytistexti",
         "description": "Texti sem birtist á eftir tölunni (t.d. '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Forskeytisrauf",
-        "description": "Valfrjálst raufarefni á undan tölunni."
-      },
-      {
-        "slot": "suffix",
-        "title": "Viðskeytisrauf",
-        "description": "Valfrjálst raufarefni á eftir tölunni."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Engin mýking",
         "description": "Slökkva á mýkingu svo talningin sé línuleg."
+      },
+      {
+        "slot": "prefix",
+        "title": "Forskeytisrauf",
+        "description": "Valfrjálst raufarefni á undan tölunni."
+      },
+      {
+        "slot": "suffix",
+        "title": "Viðskeytisrauf",
+        "description": "Valfrjálst raufarefni á eftir tölunni."
       }
     ]
   }

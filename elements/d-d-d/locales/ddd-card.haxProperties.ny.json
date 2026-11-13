@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Popanda Muvi",
         "description": "Bisani muvi wa batani."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Ulalo: komwe ukutsegukira",
@@ -54,7 +52,9 @@
           "_top": "Zenera lapamwamba - _top",
           "_parent": "Zenera la kholo - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Ulalo: rel",

@@ -11,11 +11,6 @@
         "description": "هغه کلمه چې د تصادفي کرکټر د جوړولو لپاره کارول کېږي."
       },
       {
-        "property": "code",
-        "title": "د کرکټر کوډ",
-        "description": "هغه کرکټر بیا جوړولو لپاره خوندي شوی کوډ ولګوئ."
-      },
-      {
         "property": "hat",
         "title": "خولۍ",
         "description": "د خولۍ بڼه.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "ماسک",
-        "description": "پر مخ یا سر اغوستل کېدونکی ماسک.",
-        "options": {
-          "none": "هېڅ نه",
-          "lion": "زمری",
-          "plague": "د طاعون ډاکټر",
-          "theater": "تیاتر",
-          "pumpkin": "کدو",
-          "ghost": "ارواح",
-          "mummy": "ممي",
-          "wrestler": "د غېږې ماسک",
-          "block-head": "بلاکي سر",
-          "web": "د جال ماسک",
-          "werewolf": "د لېوه سړي مخ",
-          "shadow": "سیوري مخ"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "میک اپ",
-        "description": "د مخ رنګ یا لیپ‌سټیک.",
-        "options": {
-          "none": "هېڅ نه",
-          "red-lipstick": "سور لیپ‌سټیک",
-          "pink-lipstick": "ګلابي لیپ‌سټیک",
-          "berry-lipstick": "بېري لیپ‌سټیک",
-          "clown": "د مسخرې رنګ",
-          "fangs": "اوږده غابونه",
-          "skull": "د کوپړۍ رنګ",
-          "zombie": "د زومبي رنګ",
-          "red-nose": "سره پوزه",
-          "white-beard": "سپینه ږیره",
-          "domino": "د اتل ماسک",
-          "carrot": "د ګاجرو پوزه",
-          "bunny": "د سوي پوزه",
-          "mustache": "بریت",
-          "monster": "د دېو د مخ رنګ",
-          "round-glasses": "ګردې عینکې"
-        }
-      },
-      {
         "property": "expression",
         "title": "څېره",
         "description": "د مخ څرګندونه.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "کورنی څاروی",
+        "description": "د کرکټر ترڅنګ کورنی څاروی.",
+        "options": {
+          "none": "هېڅ نه",
+          "cat": "پیشو",
+          "dog": "سپی",
+          "bunny": "سوی",
+          "goldfish": "طلایي کب",
+          "slime": "لېسناک",
+          "squirrel": "ګرګوری",
+          "dragon": "کوچنی ښامار",
+          "parrot": "طوطی",
+          "owl": "ګونګ",
+          "bat": "شپېلکی"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "د کرکټر کوډ",
+        "description": "هغه کرکټر بیا جوړولو لپاره خوندي شوی کوډ ولګوئ."
+      },
+      {
+        "property": "mask",
+        "title": "ماسک",
+        "description": "پر مخ یا سر اغوستل کېدونکی ماسک.",
+        "options": {
+          "none": "هېڅ نه",
+          "lion": "زمری",
+          "plague": "د طاعون ډاکټر",
+          "theater": "تیاتر",
+          "pumpkin": "کدو",
+          "ghost": "ارواح",
+          "mummy": "ممي",
+          "wrestler": "د غېږې ماسک",
+          "block-head": "بلاکي سر",
+          "web": "د جال ماسک",
+          "werewolf": "د لېوه سړي مخ",
+          "shadow": "سیوري مخ"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "میک اپ",
+        "description": "د مخ رنګ یا لیپ‌سټیک.",
+        "options": {
+          "none": "هېڅ نه",
+          "red-lipstick": "سور لیپ‌سټیک",
+          "pink-lipstick": "ګلابي لیپ‌سټیک",
+          "berry-lipstick": "بېري لیپ‌سټیک",
+          "clown": "د مسخرې رنګ",
+          "fangs": "اوږده غابونه",
+          "skull": "د کوپړۍ رنګ",
+          "zombie": "د زومبي رنګ",
+          "red-nose": "سره پوزه",
+          "white-beard": "سپینه ږیره",
+          "domino": "د اتل ماسک",
+          "carrot": "د ګاجرو پوزه",
+          "bunny": "د سوي پوزه",
+          "mustache": "بریت",
+          "monster": "د دېو د مخ رنګ",
+          "round-glasses": "ګردې عینکې"
+        }
+      },
+      {
         "property": "flagText",
         "title": "د بیرغ متن",
         "description": "تر ۴ توریو پورې چې په بیرغ ښکاري."
@@ -310,24 +330,6 @@
           "skates": "سکېټس",
           "skateboard": "سکېټبورډ",
           "hoverboard": "الوتونکې تخته"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "کورنی څاروی",
-        "description": "د کرکټر ترڅنګ کورنی څاروی.",
-        "options": {
-          "none": "هېڅ نه",
-          "cat": "پیشو",
-          "dog": "سپی",
-          "bunny": "سوی",
-          "goldfish": "طلایي کب",
-          "slime": "لېسناک",
-          "squirrel": "ګرګوری",
-          "dragon": "کوچنی ښامار",
-          "parrot": "طوطی",
-          "owl": "ګونګ",
-          "bat": "شپېلکی"
         }
       },
       {

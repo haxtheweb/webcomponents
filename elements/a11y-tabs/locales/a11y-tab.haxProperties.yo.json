@@ -10,10 +10,6 @@
         "title": "Àmì Táàbù"
       },
       {
-        "property": "disabled",
-        "title": "Àìṣiṣẹ́"
-      },
-      {
         "property": "label",
         "title": "Àkọlé Táàbù"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "ID aláìlẹ́gbẹ́"
-      },
-      {
         "property": "flag",
         "title": "Ọ̀rọ̀ Àsíá (Àṣàyàn)"
       },
       {
         "property": "flagIcon",
         "title": "Àmì Àsíá (Àṣàyàn)"
+      },
+      {
+        "property": "disabled",
+        "title": "Àìṣiṣẹ́"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "ID aláìlẹ́gbẹ́"
       }
     ]
   }

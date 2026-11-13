@@ -26,7 +26,8 @@
         "description": "Ekran okaýjylar we gowulandyrylan SEO üçin peýdaly."
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "Hil",

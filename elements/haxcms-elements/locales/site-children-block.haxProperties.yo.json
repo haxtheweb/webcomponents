@@ -4,7 +4,7 @@
     "description": "Búlọ́ọ̀kù alágbèéká láti fi ọmọ ojú-ìwé lọ́wọ́lọ́wọ́ hàn"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "Ọ̀nà alágbèéká",
@@ -14,7 +14,9 @@
           "parent": "Àwọn ọmọ òbí",
           "ancestor": "Gbogbo ọmọ láti ọ̀dọ̀ baba-ńlá tó ga jùlọ"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "Ìpele ìbẹ̀rẹ̀"

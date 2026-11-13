@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Paveikslėlio aprašas",
         "description": "Paveikslėlio antraštė."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Iliustracijos pavadinimas",
-        "description": "Iliustracijos žymos pavadinimas."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Iliustracijos aprašas",
-        "description": "Iliustracijos žymos aprašas."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Išjungti paveikslėlio modalinį langą",
         "description": "Išjungti paveikslėlio atidarymą peržiūros dialoge spustelėjus."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Iliustracijos pavadinimas",
+        "description": "Iliustracijos žymos pavadinimas."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Iliustracijos aprašas",
+        "description": "Iliustracijos žymos aprašas."
       }
     ],
     "developer": [

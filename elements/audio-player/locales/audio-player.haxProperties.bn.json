@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "অডিও",
-    "description": "উৎস যা-ই হোক, এটি ভিডিওকে অত্যন্ত অ্যাক্সেসযোগ্যভাবে উপস্থাপন করতে পারে।"
+    "description": "ট্রান্সক্রিপ্ট সমর্থনসহ প্রবেশযোগ্য অডিও প্লেয়ার।"
   },
   "settings": {
     "configure": [
@@ -46,6 +46,16 @@
         "property": "accentColor",
         "title": "অ্যাকসেন্ট রং",
         "description": "প্লেয়ারের অ্যাকসেন্ট রং নির্বাচন করুন।"
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "টাইমস্ট্যাম্প লুকান",
+        "description": "ট্রান্সক্রিপ্টের টাইমস্ট্যাম্প লুকান।"
+      },
+      {
+        "property": "hideTranscript",
+        "title": "ট্রান্সক্রিপ্ট লুকান",
+        "description": "ডিফল্টভাবে ট্রান্সক্রিপ্ট লুকান।"
       }
     ],
     "developer": [
@@ -72,16 +82,6 @@
         "property": "disableInteractive",
         "title": "ইন্টারঅ্যাকটিভ বন্ধ করুন",
         "description": "ট্রান্সক্রিপ্ট ক্লিকযোগ্য করার ইন্টারঅ্যাকটিভ মোড বন্ধ করুন।"
-      },
-      {
-        "property": "hideTimestamps",
-        "title": "টাইমস্ট্যাম্প লুকান",
-        "description": "ট্রান্সক্রিপ্টের টাইমস্ট্যাম্প লুকান।"
-      },
-      {
-        "property": "hideTranscript",
-        "title": "ট্রান্সক্রিপ্ট লুকান",
-        "description": "ডিফল্টভাবে ট্রান্সক্রিপ্ট লুকান।"
       },
       {
         "property": "lang",

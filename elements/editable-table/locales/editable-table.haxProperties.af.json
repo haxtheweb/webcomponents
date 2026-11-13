@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Laat filter toe",
         "description": "Laat filtrering volgens kolomwaardes toe."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Numeriese stilering",
-        "description": "Pas numeriese stilering op numeriese kolomme toe."
-      },
-      {
-        "property": "responsive",
-        "title": "Responsief",
-        "description": "Pas tabeluitleg op klein skerms aan."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Rubriekmodus",
-        "description": "Interpreteer hierdie tabel as 'n OER Schema Rubric sodat Rubric-, RubricScale-, RubricCriterion- en RubricLevel-metadata uitgestuur word."
-      },
-      {
-        "property": "rubricType",
-        "title": "Rubriektipe",
-        "description": "Rubriekstyl uitgestuur as oer:rubricType (slegs betekenisvol wanneer Rubriekmodus aan is).",
-        "options": {
-          "": "(geen)",
-          "analytic": "Analities",
-          "holistic": "Holisties",
-          "single-point": "Enkelpunt",
-          "checklist": "Kontrolelys"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Drukknoppie",
         "description": "Voeg 'n knoppie by om slegs die tabel te druk."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Numeriese stilering",
+        "description": "Pas numeriese stilering op numeriese kolomme toe."
+      },
+      {
+        "property": "responsive",
+        "title": "Responsief",
+        "description": "Pas tabeluitleg op klein skerms aan."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Rubriekmodus",
+        "description": "Interpreteer hierdie tabel as 'n OER Schema Rubric sodat Rubric-, RubricScale-, RubricCriterion- en RubricLevel-metadata uitgestuur word."
+      },
+      {
+        "property": "rubricType",
+        "title": "Rubriektipe",
+        "description": "Rubriekstyl uitgestuur as oer:rubricType (slegs betekenisvol wanneer Rubriekmodus aan is).",
+        "options": {
+          "": "(geen)",
+          "analytic": "Analities",
+          "holistic": "Holisties",
+          "single-point": "Enkelpunt",
+          "checklist": "Kontrolelys"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "CSV-data",
         "description": "Skep 'n tabel vanuit 'n opgelaaide CSV-lêer."
       }
-    ]
+    ],
+    "developer": []
   }
 }

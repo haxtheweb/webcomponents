@@ -14,16 +14,6 @@
         "property": "title",
         "title": "Alternativ titel",
         "description": "Alternativ titel länkad till QR-kodens källa."
-      },
-      {
-        "property": "modulesize",
-        "title": "Storlek",
-        "description": "QR-kodens storlek."
-      },
-      {
-        "property": "margin",
-        "title": "Marginal",
-        "description": "Omslutning runt koden."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "Storlek",
+        "description": "QR-kodens storlek."
+      },
+      {
+        "property": "margin",
+        "title": "Marginal",
+        "description": "Omslutning runt koden."
       }
     ]
   }

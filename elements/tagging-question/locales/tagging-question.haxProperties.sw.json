@@ -11,30 +11,8 @@
         "description": "Swali ambalo watumiaji watajibu."
       },
       {
-        "property": "gradingFormat",
-        "title": "Muundo wa kupanga alama",
-        "description": "OER Schema: muundo wa kupanga alama wa tathmini hii (k.m. pointi, herufi, asilimia, ukamilishaji)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Lengo la kujifunza",
-        "description": "OER Schema: lengo la kujifunza linalohusiana na tathmini hii."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kozi",
-        "description": "OER Schema: kozi ambayo tathmini hii imekusudiwa."
-      },
-      {
         "property": "answers",
         "title": "Majibu"
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Jina la jaribio",
-        "description": "Jina la jaribio linalotumika kwa utambulisho wa xAPI katika mifumo ya uchanganuzi."
       }
     ],
     "advanced": [
@@ -47,6 +25,28 @@
         "property": "collapsed",
         "title": "Anza ikiwa imekunjwa",
         "description": "Inapokunjika, anza kama safu iliyofungwa inayoonyesha swali na hali yake pekee."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Muundo wa kupanga alama",
+        "description": "OER Schema: muundo wa kupanga alama wa tathmini hii (k.m. pointi, herufi, asilimia, ukamilishaji)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Lengo la kujifunza",
+        "description": "OER Schema: lengo la kujifunza linalohusiana na tathmini hii."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Jina la jaribio",
+        "description": "Jina la jaribio linalotumika kwa utambulisho wa xAPI katika mifumo ya uchanganuzi."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kozi",
+        "description": "OER Schema: kozi ambayo tathmini hii imekusudiwa."
       }
     ]
   }

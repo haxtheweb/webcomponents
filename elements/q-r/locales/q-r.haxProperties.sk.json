@@ -14,16 +14,6 @@
         "property": "title",
         "title": "Alternatívny názov",
         "description": "Alternatívny názov prepojený so zdrojom QR kódu."
-      },
-      {
-        "property": "modulesize",
-        "title": "Veľkosť",
-        "description": "Veľkosť QR kódu."
-      },
-      {
-        "property": "margin",
-        "title": "Okraj",
-        "description": "Okraj okolo kódu."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "Veľkosť",
+        "description": "Veľkosť QR kódu."
+      },
+      {
+        "property": "margin",
+        "title": "Okraj",
+        "description": "Okraj okolo kódu."
       }
     ]
   }

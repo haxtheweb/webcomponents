@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Umbhalo ochazayo",
         "description": "Inkcazelo yomfanekiso."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Isihloko soMzobo",
-        "description": "Isihloko seleyibhile yomzobo."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Inkcazo yoMzobo",
-        "description": "Inkcazo yeleyibhile yomzobo."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Vala ifestile yomfanekiso",
         "description": "Vala ukucofa okuvula umfanekiso kwingxoxo yomhloli wemifanekiso."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Isihloko soMzobo",
+        "description": "Isihloko seleyibhile yomzobo."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Inkcazo yoMzobo",
+        "description": "Inkcazo yeleyibhile yomzobo."
       }
     ],
     "developer": [

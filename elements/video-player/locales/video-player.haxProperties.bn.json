@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "পোস্টার ছবি",
         "description": "পোস্টার ছবির URL।"
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "টেক্সট ট্র্যাক",
         "description": "ভিডিওর ক্লোজড ক্যাপশন, সাবটাইটেল, বর্ণনা এবং অন্যান্য টেক্সট ট্র্যাক।"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "শুরুর সময়",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "অডিও বর্ণনা ট্র্যাক",
         "description": "একটি অডিও বর্ণনা ট্র্যাকের URL (MP3 ফাইল) যা ভিজ্যুয়াল উপাদানগুলোর বর্ণনা দেয়।"
+      },
+      {
+        "property": "accentColor",
+        "title": "অ্যাকসেন্ট রং",
+        "description": "(অপ্রচলিত) প্লেয়ারের অ্যাকসেন্ট রং নির্বাচন করুন।"
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "ভাষা",
         "description": "মিডিয়ার ভাষা।"
-      },
-      {
-        "property": "accentColor",
-        "title": "অ্যাকসেন্ট রং",
-        "description": "(অপ্রচলিত) প্লেয়ারের অ্যাকসেন্ট রং নির্বাচন করুন।"
       }
     ]
   }

@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Рәсем чыганагы",
         "description": "Карточка өчен кулланыла торган рәсем файлы. «Рәсем ачкыч сүзе»н алыштыра."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Рәсем ачкыч сүзе",
+        "description": "Очраклы рәсем өчен ачкыч сүз. «Рәсем чыганагы» белән алыштырыла."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Уку максаты",
         "description": "OER Schema: бу күнегү ярдәм иткән уку максатының ID-сы яки URL адресы."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Рәсем ачкыч сүзе",
-        "description": "Очраклы рәсем өчен ачкыч сүз. «Рәсем чыганагы» белән алыштырыла."
       }
     ]
   }

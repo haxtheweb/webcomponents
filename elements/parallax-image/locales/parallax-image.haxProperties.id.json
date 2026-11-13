@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Gambar paralaks",
-    "description": "Gambar bergulir"
+    "description": "Gambar selebar penuh yang bergulir lebih lambat dari halaman, dengan judul di atasnya."
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "Obal pre vložené prehrávače Spotify."
+    "description": "Vložte skladbu, album alebo playlist zo Spotify."
   },
   "settings": {
     "configure": [

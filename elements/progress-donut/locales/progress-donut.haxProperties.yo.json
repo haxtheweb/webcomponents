@@ -26,11 +26,6 @@
         "description": "Ọ̀rọ̀ àfirọ́pò fún àwòrán."
       },
       {
-        "property": "animated",
-        "title": "Oníṣípòpadà",
-        "description": "Bóyá ìlọsíwájú yóò ṣípòpadà nígbà ìgbéwọlé àkọ́kọ́"
-      },
-      {
         "property": "complete",
         "title": "Ó ti parí",
         "description": "Àkójọ àwọn iye tí a ti parí."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "Àpapọ̀",
         "description": "Àpapọ̀ nígbà tí gbogbo ohun bá parí."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "Oníṣípòpadà",
+        "description": "Bóyá ìlọsíwájú yóò ṣípòpadà nígbà ìgbéwọlé àkọ́kọ́"
       },
       {
         "property": "startAngle",

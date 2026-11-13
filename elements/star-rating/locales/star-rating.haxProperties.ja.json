@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "星評価",
-    "description": "評価を表示するウィジェット、または評価を行うボタン。"
+    "description": "星評価を表示するか、読者に選んでもらいます。"
   },
   "settings": {
     "configure": [
@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "インタラクティブ",
         "description": "ユーザーが操作して評価を設定できるようにします。"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "ルーブリック尺度モード",

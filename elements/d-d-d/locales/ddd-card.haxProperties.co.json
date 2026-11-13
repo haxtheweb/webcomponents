@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Senza freccia",
         "description": "Piattà a freccia di u buttone."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Ligame: destinazione",
@@ -54,7 +52,9 @@
           "_top": "Finestra superiore - _top",
           "_parent": "Finestra parente - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Ligame: rel",

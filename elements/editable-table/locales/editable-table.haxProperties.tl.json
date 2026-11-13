@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Payagan ang Filter",
         "description": "Payagan ang pag-filter ayon sa mga halaga ng column."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Numerikong Istilo",
-        "description": "Ilapat ang numerikong istilo sa mga numerikong column."
-      },
-      {
-        "property": "responsive",
-        "title": "Responsive",
-        "description": "Iangkop ang layout ng talahanayan sa maliliit na screen."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Rubric Mode",
-        "description": "Ituring ang talahanayang ito bilang OER Schema Rubric para mailabas ang metadata na Rubric, RubricScale, RubricCriterion, at RubricLevel."
-      },
-      {
-        "property": "rubricType",
-        "title": "Uri ng Rubric",
-        "description": "Istilo ng rubric na inilalabas bilang oer:rubricType (may saysay lamang kapag naka-on ang Rubric Mode).",
-        "options": {
-          "": "(wala)",
-          "analytic": "Analitiko",
-          "holistic": "Holistiko",
-          "single-point": "Iisang Punto",
-          "checklist": "Checklist"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Button sa Pag-print",
         "description": "Magdagdag ng button para i-print ang talahanayan lamang."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Numerikong Istilo",
+        "description": "Ilapat ang numerikong istilo sa mga numerikong column."
+      },
+      {
+        "property": "responsive",
+        "title": "Responsive",
+        "description": "Iangkop ang layout ng talahanayan sa maliliit na screen."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Rubric Mode",
+        "description": "Ituring ang talahanayang ito bilang OER Schema Rubric para mailabas ang metadata na Rubric, RubricScale, RubricCriterion, at RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "Uri ng Rubric",
+        "description": "Istilo ng rubric na inilalabas bilang oer:rubricType (may saysay lamang kapag naka-on ang Rubric Mode).",
+        "options": {
+          "": "(wala)",
+          "analytic": "Analitiko",
+          "holistic": "Holistiko",
+          "single-point": "Iisang Punto",
+          "checklist": "Checklist"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "CSV Data",
         "description": "Gumawa ng talahanayan mula sa na-upload na CSV file."
       }
-    ]
+    ],
+    "developer": []
   }
 }

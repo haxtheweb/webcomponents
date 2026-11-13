@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Testu di suffissu",
         "description": "Testu affissatu dopu à u numeru (per esempiu '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Slot di prefissu",
-        "description": "Cuntenutu facultativu inseritu nanzu à u numeru."
-      },
-      {
-        "slot": "suffix",
-        "title": "Slot di suffissu",
-        "description": "Cuntenutu facultativu inseritu dopu à u numeru."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Senza addulcimentu",
         "description": "Disattivà l'addulcimentu per chì u contu sia lineare."
+      },
+      {
+        "slot": "prefix",
+        "title": "Slot di prefissu",
+        "description": "Cuntenutu facultativu inseritu nanzu à u numeru."
+      },
+      {
+        "slot": "suffix",
+        "title": "Slot di suffissu",
+        "description": "Cuntenutu facultativu inseritu dopu à u numeru."
       }
     ]
   }

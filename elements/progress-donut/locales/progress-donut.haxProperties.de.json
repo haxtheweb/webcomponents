@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Fortschrittsring",
-    "description": "Fortschrittsring"
+    "description": "Ein Ringdiagramm, das den Fortschritt zu einer Gesamtsumme zeigt."
   },
   "settings": {
     "configure": [
@@ -26,11 +26,6 @@
         "description": "Alternativtext für das Bild."
       },
       {
-        "property": "animated",
-        "title": "Animiert",
-        "description": "Ob der Fortschritt beim ersten Laden animiert wird"
-      },
-      {
         "property": "complete",
         "title": "Abgeschlossen",
         "description": "Ein Array abgeschlossener Werte."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "Gesamt",
         "description": "Gesamtwert, wenn alle Elemente abgeschlossen sind."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "Animiert",
+        "description": "Ob der Fortschritt beim ersten Laden animiert wird"
       },
       {
         "property": "startAngle",

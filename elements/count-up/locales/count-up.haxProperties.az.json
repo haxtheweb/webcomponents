@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Suffiks mətni",
         "description": "Ədəddən sonra göstərilən mətn (məs. '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Prefiks yuvası",
-        "description": "Ədəddən əvvəl ixtiyari yerləşdirilən məzmun."
-      },
-      {
-        "slot": "suffix",
-        "title": "Suffiks yuvası",
-        "description": "Ədəddən sonra ixtiyari yerləşdirilən məzmun."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Yumşaltmasız",
         "description": "Sayma xətti olsun deyə yumşaltmanı deaktiv et."
+      },
+      {
+        "slot": "prefix",
+        "title": "Prefiks yuvası",
+        "description": "Ədəddən əvvəl ixtiyari yerləşdirilən məzmun."
+      },
+      {
+        "slot": "suffix",
+        "title": "Suffiks yuvası",
+        "description": "Ədəddən sonra ixtiyari yerləşdirilən məzmun."
       }
     ]
   }

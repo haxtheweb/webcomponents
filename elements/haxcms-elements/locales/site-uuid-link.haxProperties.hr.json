@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "HAX poveznica",
-    "description": "Poveznica na određeni resurs na mjestu na kojem radite."
+    "title": "Poveznica na stranicu",
+    "description": "Poveznica na stranicu web-mjesta na kojem radite."
   },
   "settings": {
     "configure": [

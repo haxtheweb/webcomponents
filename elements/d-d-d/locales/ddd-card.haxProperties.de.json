@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Kein Pfeil",
         "description": "Pfeil der Schaltfläche ausblenden."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Link: Ziel",
@@ -54,7 +52,9 @@
           "_top": "Oberstes Fenster - _top",
           "_parent": "Übergeordnetes Fenster - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Link: rel",

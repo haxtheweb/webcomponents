@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Parallax படம்",
-    "description": "உருட்டும்போது நகரும் படம்"
+    "description": "பக்கத்தை விட மெதுவாக உருளும் முழு அகலப் படம், மேலே ஒரு தலைப்புடன்."
   },
   "settings": {
     "configure": [

@@ -9,7 +9,9 @@
         "slot": "",
         "title": "Tilvísingar",
         "description": "Tilvísingar í hesum bókalista"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "Skeið",

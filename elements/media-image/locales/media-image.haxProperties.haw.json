@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Lepili kiʻi",
         "description": "Kākau kiʻi no ke kiʻi."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Poʻo inoa kiʻi",
-        "description": "Poʻo inoa no ka lepili kiʻi."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Wehewehe kiʻi",
-        "description": "Wehewehe no ka lepili kiʻi."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Hoʻopio i ka pukaaniani kiʻi",
         "description": "Hoʻopio i nā kaomi e wehe ana i ke kiʻi ma ka pukaaniani nānā kiʻi."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Poʻo inoa kiʻi",
+        "description": "Poʻo inoa no ka lepili kiʻi."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Wehewehe kiʻi",
+        "description": "Wehewehe no ka lepili kiʻi."
       }
     ],
     "developer": [

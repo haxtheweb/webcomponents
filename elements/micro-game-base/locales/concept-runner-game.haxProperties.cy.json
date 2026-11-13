@@ -89,7 +89,9 @@
         "property": "gameTitle",
         "title": "Enw'r gêm",
         "description": "Yn enwi'r gêm hon mewn digwyddiadau cynnydd a marcio OER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "ID y gêm",

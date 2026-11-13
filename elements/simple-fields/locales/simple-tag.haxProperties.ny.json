@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Mtundu wowonjezera wokha",
         "description": "Pezani mtundu wowonjezera kuchokera m'mawu a dzina lokha."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Batani loletsa",
-        "description": "Onetsani batani la chizindikiro chochotsa/kuletsa mkati mwa piritsi."
-      },
-      {
-        "property": "readonly",
-        "title": "Kuwerenga kokha",
-        "description": "Bisani batani loletsa kuti piritsi likhale lowonetsa lokha."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Imvi ya Buluu",
           "grey": "Imvi"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Batani loletsa",
+        "description": "Onetsani batani la chizindikiro chochotsa/kuletsa mkati mwa piritsi."
+      },
+      {
+        "property": "readonly",
+        "title": "Kuwerenga kokha",
+        "description": "Bisani batani loletsa kuti piritsi likhale lowonetsa lokha."
       }
     ]
   }

@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Interaga",
         "description": "Permesi al la uzanto agordi la takson."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Rubrika skala reĝimo",

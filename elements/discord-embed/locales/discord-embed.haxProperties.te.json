@@ -9,7 +9,9 @@
         "property": "source",
         "title": "వనరు URL",
         "description": "వనరు URL."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "ఎత్తు",

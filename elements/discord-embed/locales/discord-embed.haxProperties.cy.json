@@ -9,7 +9,9 @@
         "property": "source",
         "title": "URL yr Adnodd",
         "description": "URL yr adnodd."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Uchder",

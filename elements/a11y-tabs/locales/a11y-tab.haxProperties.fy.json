@@ -10,10 +10,6 @@
         "title": "Ljepperikoan"
       },
       {
-        "property": "disabled",
-        "title": "Utskeakele"
-      },
-      {
         "property": "label",
         "title": "Ljepperlabel"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "Unike ID"
-      },
-      {
         "property": "flag",
         "title": "Opsjonele flaggetekst"
       },
       {
         "property": "flagIcon",
         "title": "Opsjoneel flaggeikoan"
+      },
+      {
+        "property": "disabled",
+        "title": "Utskeakele"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "Unike ID"
       }
     ]
   }

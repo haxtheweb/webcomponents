@@ -4,7 +4,7 @@
     "description": "Դինամիկ բլոկ՝ ընթացիկ էջի ենթաէջերը ցույց տալու համար"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "Դինամիկ մեթոդ",
@@ -14,7 +14,9 @@
           "parent": "Ծնողի ենթաէջերը",
           "ancestor": "Բոլոր ենթաէջերը ամենաբարձր նախնուց"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "Սկզբնական մակարդակ"

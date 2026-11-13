@@ -26,11 +26,6 @@
         "description": "Alternativa teksto por la bildo."
       },
       {
-        "property": "animated",
-        "title": "Animaciita",
-        "description": "Ĉu la progreso animaciiĝas ĉe la unua ŝargo"
-      },
-      {
         "property": "complete",
         "title": "Finita",
         "description": "Tabelo de kompletigitaj valoroj."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "Totalo",
         "description": "Totalo kiam ĉiuj eroj estas kompletaj."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "Animaciita",
+        "description": "Ĉu la progreso animaciiĝas ĉe la unua ŝargo"
       },
       {
         "property": "startAngle",

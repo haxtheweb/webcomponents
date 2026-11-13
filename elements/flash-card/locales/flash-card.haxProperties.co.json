@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Fonte di l'imagine",
         "description": "Schedariu d'imagine adupratu per a carta. Rimpiazza a parolla chjave di l'imagine."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Parolla chjave di l'imagine",
+        "description": "Parolla chjave per una imagine à l'azardu. Rimpiazzata da a fonte di l'imagine."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Ughjettivu d'amparera",
         "description": "OER Schema: ID o URL di l'ughjettivu d'amparera chì sta pratica sustene."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Parolla chjave di l'imagine",
-        "description": "Parolla chjave per una imagine à l'azardu. Rimpiazzata da a fonte di l'imagine."
       }
     ]
   }

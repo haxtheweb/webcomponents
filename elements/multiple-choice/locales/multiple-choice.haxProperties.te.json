@@ -21,30 +21,8 @@
         "description": "ఒక సమాధానాన్ని మాత్రమే అనుమతించండి."
       },
       {
-        "property": "gradingFormat",
-        "title": "గ్రేడింగ్ ఫార్మాట్",
-        "description": "OER Schema: ఈ మూల్యాంకనం కోసం గ్రేడింగ్ ఫార్మాట్ (ఉదా. పాయింట్లు, అక్షర గ్రేడ్, శాతం, పూర్తి)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "అభ్యాస లక్ష్యం",
-        "description": "OER Schema: ఈ మూల్యాంకనంతో అనుబంధించిన అభ్యాస లక్ష్యం."
-      },
-      {
-        "property": "forCourse",
-        "title": "కోర్సు",
-        "description": "OER Schema: ఈ మూల్యాంకనం ఉద్దేశించిన కోర్సు."
-      },
-      {
         "property": "answers",
         "title": "సమాధానాలు"
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "క్విజ్ పేరు",
-        "description": "విశ్లేషణ వ్యవస్థలలో xAPI గుర్తింపు కోసం ఉపయోగించే క్విజ్ పేరు."
       }
     ],
     "advanced": [
@@ -57,6 +35,28 @@
         "property": "collapsed",
         "title": "మడిచి ప్రారంభించు",
         "description": "మడవగలిగేది అయినప్పుడు, ప్రశ్న మరియు దాని స్థితిని మాత్రమే చూపే మూసిన వరుసగా ప్రారంభించండి."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "గ్రేడింగ్ ఫార్మాట్",
+        "description": "OER Schema: ఈ మూల్యాంకనం కోసం గ్రేడింగ్ ఫార్మాట్ (ఉదా. పాయింట్లు, అక్షర గ్రేడ్, శాతం, పూర్తి)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "అభ్యాస లక్ష్యం",
+        "description": "OER Schema: ఈ మూల్యాంకనంతో అనుబంధించిన అభ్యాస లక్ష్యం."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "క్విజ్ పేరు",
+        "description": "విశ్లేషణ వ్యవస్థలలో xAPI గుర్తింపు కోసం ఉపయోగించే క్విజ్ పేరు."
+      },
+      {
+        "property": "forCourse",
+        "title": "కోర్సు",
+        "description": "OER Schema: ఈ మూల్యాంకనం ఉద్దేశించిన కోర్సు."
       }
     ]
   }

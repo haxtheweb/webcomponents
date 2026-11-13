@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Jēdzienu piedzīvojumu spēle",
-    "description": "Atklāta pasaule pastaigām. Jēdzieni tevi atrod un uzdod jautājumu. Atbildi pareizi, lai uzvarētu vienu un atbloķētu tā māju. Kopsavilkums rāda mēģinājumus un ko pārskatīt."
+    "description": "Atvērtās kartes spēle, kurā jēdzieni uzdod jautājumus un pareizās atbildes atbloķē karti."
   },
   "settings": {
     "configure": [
@@ -91,7 +91,9 @@
         "property": "gameTitle",
         "title": "Spēles nosaukums",
         "description": "Nosauc šo spēli progresa notikumos un OER Schema marķējumā."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Spēles id",

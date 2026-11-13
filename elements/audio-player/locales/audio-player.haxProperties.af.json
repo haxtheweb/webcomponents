@@ -46,6 +46,16 @@
         "property": "accentColor",
         "title": "Aksentkleur",
         "description": "Kies die aksentkleur vir die speler."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Versteek tydstempels",
+        "description": "Versteek die tydstempels op die transkripsie."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Versteek transkripsie",
+        "description": "Versteek transkripsie by verstek."
       }
     ],
     "developer": [
@@ -72,16 +82,6 @@
         "property": "disableInteractive",
         "title": "Deaktiveer interaktief",
         "description": "Deaktiveer interaktiewe modus wat die transkripsie klikbaar maak."
-      },
-      {
-        "property": "hideTimestamps",
-        "title": "Versteek tydstempels",
-        "description": "Versteek die tydstempels op die transkripsie."
-      },
-      {
-        "property": "hideTranscript",
-        "title": "Versteek transkripsie",
-        "description": "Versteek transkripsie by verstek."
       },
       {
         "property": "lang",

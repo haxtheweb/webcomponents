@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Подпись",
         "description": "Подпись к изображению."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Название иллюстрации",
-        "description": "Название для метки иллюстрации."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Описание иллюстрации",
-        "description": "Описание для метки иллюстрации."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Отключить окно изображения",
         "description": "Отключить открытие изображения по щелчку в окне просмотра изображений."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Название иллюстрации",
+        "description": "Название для метки иллюстрации."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Описание иллюстрации",
+        "description": "Описание для метки иллюстрации."
       }
     ],
     "developer": [

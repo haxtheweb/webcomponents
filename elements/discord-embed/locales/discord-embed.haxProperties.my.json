@@ -9,7 +9,9 @@
         "property": "source",
         "title": "အရင်းအမြစ် URL",
         "description": "အရင်းအမြစ် URL။"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "အမြင့်",

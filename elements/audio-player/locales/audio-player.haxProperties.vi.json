@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Âm thanh",
-    "description": "Khối này có thể trình chiếu video theo cách rất dễ tiếp cận bất kể nguồn."
+    "description": "Trình phát âm thanh dễ tiếp cận, có hỗ trợ bản chép lời."
   },
   "settings": {
     "configure": [
@@ -46,6 +46,16 @@
         "property": "accentColor",
         "title": "Màu nhấn",
         "description": "Chọn màu nhấn cho trình phát."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Ẩn mốc thời gian",
+        "description": "Ẩn mốc thời gian trên bản ghi lời."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Ẩn bản ghi lời",
+        "description": "Ẩn bản ghi lời theo mặc định."
       }
     ],
     "developer": [
@@ -72,16 +82,6 @@
         "property": "disableInteractive",
         "title": "Tắt tương tác",
         "description": "Tắt chế độ tương tác cho phép nhấp vào bản ghi lời."
-      },
-      {
-        "property": "hideTimestamps",
-        "title": "Ẩn mốc thời gian",
-        "description": "Ẩn mốc thời gian trên bản ghi lời."
-      },
-      {
-        "property": "hideTranscript",
-        "title": "Ẩn bản ghi lời",
-        "description": "Ẩn bản ghi lời theo mặc định."
       },
       {
         "property": "lang",

@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Suffixtext",
         "description": "Text nach der Zahl (z. B. '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Präfix-Slot",
-        "description": "Optionaler Slot-Inhalt vor der Zahl."
-      },
-      {
-        "slot": "suffix",
-        "title": "Suffix-Slot",
-        "description": "Optionaler Slot-Inhalt nach der Zahl."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Keine Beschleunigungskurve",
         "description": "Beschleunigungskurve deaktivieren, sodass linear gezählt wird."
+      },
+      {
+        "slot": "prefix",
+        "title": "Präfix-Slot",
+        "description": "Optionaler Slot-Inhalt vor der Zahl."
+      },
+      {
+        "slot": "suffix",
+        "title": "Suffix-Slot",
+        "description": "Optionaler Slot-Inhalt nach der Zahl."
       }
     ]
   }

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Elemento dei passaggi",
-    "description": "Elemento che fa parte di un elenco di passaggi"
+    "description": "Un singolo passaggio in un elenco di passaggi."
   },
   "settings": {
     "configure": [

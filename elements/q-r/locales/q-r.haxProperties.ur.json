@@ -14,16 +14,6 @@
         "property": "title",
         "title": "متبادل عنوان",
         "description": "QR کوڈ کے ماخذ سے منسلک متبادل عنوان۔"
-      },
-      {
-        "property": "modulesize",
-        "title": "سائز",
-        "description": "QR کوڈ کا سائز۔"
-      },
-      {
-        "property": "margin",
-        "title": "حاشیہ",
-        "description": "کوڈ کے گرد خالی جگہ۔"
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "سائز",
+        "description": "QR کوڈ کا سائز۔"
+      },
+      {
+        "property": "margin",
+        "title": "حاشیہ",
+        "description": "کوڈ کے گرد خالی جگہ۔"
       }
     ]
   }

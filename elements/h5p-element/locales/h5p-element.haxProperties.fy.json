@@ -4,17 +4,16 @@
     "description": "Spilet ynteraktive H5P-ynhâld ôf fan in oplade .h5p-bestân, sûnder H5P-server"
   },
   "settings": {
-    "configure": [
-      {
-        "slot": "",
-        "description": "Laad in .h5p-bestân op of keppelje it. It wurdt yn de browser útpakt; der is gjin H5P-server nedich.",
-        "title": "H5P-bestân"
-      }
-    ],
+    "configure": [],
     "advanced": [
       {
         "title": "Âlde iframe-ynslútkoade",
         "description": "Allinnich foar âldere ynhâld dy't in H5P-iframe fan in oare side ynslút. Lit leech as hjirboppe in .h5p-bestân ynsteld is."
+      },
+      {
+        "slot": "",
+        "description": "Laad in .h5p-bestân op of keppelje it. It wurdt yn de browser útpakt; der is gjin H5P-server nedich.",
+        "title": "H5P-bestân"
       }
     ]
   }

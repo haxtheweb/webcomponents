@@ -14,28 +14,6 @@
         "property": "statement",
         "title": "Stqarrija",
         "description": "Stqarrija li tiġi kkonvertita fl-interazzjoni ta' mmarka l-kliem."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "Format tal-gradi",
-        "description": "OER Schema: format tal-gradi għal din il-valutazzjoni (eż. punti, ittra, perċentwal, tlestija)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Għan tat-tagħlim",
-        "description": "OER Schema: għan tat-tagħlim assoċjat ma' din il-valutazzjoni."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kors",
-        "description": "OER Schema: il-kors li għalih hija maħsuba din il-valutazzjoni."
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Isem il-kwizz",
-        "description": "Isem il-kwizz mgħoddi għall-użu f'ambjenti mmexxija minn xAPI għall-identifikazzjoni ta' dan l-oġġett"
       }
     ],
     "advanced": [
@@ -46,6 +24,28 @@
       {
         "title": "Ibda kkollassat",
         "description": "Meta tista' tikkollassa, ibda bħala ringiela magħluqa li turi biss il-mistoqsija u l-istatus tagħha."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Format tal-gradi",
+        "description": "OER Schema: format tal-gradi għal din il-valutazzjoni (eż. punti, ittra, perċentwal, tlestija)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Għan tat-tagħlim",
+        "description": "OER Schema: għan tat-tagħlim assoċjat ma' din il-valutazzjoni."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Isem il-kwizz",
+        "description": "Isem il-kwizz mgħoddi għall-użu f'ambjenti mmexxija minn xAPI għall-identifikazzjoni ta' dan l-oġġett"
+      },
+      {
+        "property": "forCourse",
+        "title": "Kors",
+        "description": "OER Schema: il-kors li għalih hija maħsuba din il-valutazzjoni."
       }
     ]
   }

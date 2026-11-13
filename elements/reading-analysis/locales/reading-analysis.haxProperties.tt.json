@@ -38,21 +38,6 @@
         "slot": "",
         "title": "Текст",
         "description": "Укучылар эшли торган текст. Теләсә нинди HTML: башисемнәр, абзацлар, исемлекләр һәм рәсемнәр."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "Бәяләү форматы",
-        "description": "OER Schema: бу бәяләүнең бәяләү форматы (мәс., баллар, хәреф, процент, үтәлү)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Уку максаты",
-        "description": "OER Schema: бу бәяләү белән бәйле уку максаты."
-      },
-      {
-        "property": "forCourse",
-        "title": "Курс",
-        "description": "OER Schema: бу бәяләү билгеләнгән курс."
       }
     ],
     "advanced": [
@@ -70,6 +55,16 @@
         "property": "collapsed",
         "title": "Җыелган килеш башлау",
         "description": "Җыела торган булганда, бары тик сорауны һәм аның хәлен күрсәтүче ябык юл итеп башлагыз."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Бәяләү форматы",
+        "description": "OER Schema: бу бәяләүнең бәяләү форматы (мәс., баллар, хәреф, процент, үтәлү)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Уку максаты",
+        "description": "OER Schema: бу бәяләү белән бәйле уку максаты."
       }
     ],
     "developer": [
@@ -77,6 +72,11 @@
         "property": "quizName",
         "title": "Тест исеме",
         "description": "Бу элементны танып белү өчен xAPI нигезендәге мохитләрдә кулланыла торган тест исеме"
+      },
+      {
+        "property": "forCourse",
+        "title": "Курс",
+        "description": "OER Schema: бу бәяләү билгеләнгән курс."
       }
     ]
   }

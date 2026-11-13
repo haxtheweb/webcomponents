@@ -14,16 +14,6 @@
         "property": "title",
         "title": "替代标题",
         "description": "链接到 QR 码来源的替代标题。"
-      },
-      {
-        "property": "modulesize",
-        "title": "大小",
-        "description": "QR 码的大小。"
-      },
-      {
-        "property": "margin",
-        "title": "边距",
-        "description": "码周围的留白。"
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "大小",
+        "description": "QR 码的大小。"
+      },
+      {
+        "property": "margin",
+        "title": "边距",
+        "description": "码周围的留白。"
       }
     ]
   }

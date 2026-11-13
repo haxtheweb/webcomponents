@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Жебесиз",
         "description": "Баскычтын жебесин жашыруу."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Шилтеме: target",
@@ -54,7 +52,9 @@
           "_top": "Жогорку терезе - _top",
           "_parent": "Ата терезе - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Шилтеме: rel",

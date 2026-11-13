@@ -9,7 +9,9 @@
         "property": "source",
         "title": "Ressource-URL",
         "description": "Ressource-URL."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Héicht",

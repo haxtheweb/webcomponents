@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "پوسٽر تصوير",
         "description": "پوسٽر تصوير جو URL."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "ٽيڪسٽ ٽريڪ",
         "description": "وڊيو لاءِ بند ڪيپشن، سب ٽائيٽل، وضاحتون ۽ ٻيا ٽيڪسٽ ٽريڪ."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "شروعاتي وقت",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "آڊيو وضاحت ٽريڪ",
         "description": "آڊيو وضاحت ٽريڪ (MP3 فائل) جو URL جيڪو بصري عنصرن جي بيان ڪري ٿو."
+      },
+      {
+        "property": "accentColor",
+        "title": "نمايان رنگ",
+        "description": "(ختم ٿيل) پليئر لاءِ ايڪسينٽ رنگ چونڊيو."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "ٻولي",
         "description": "ميڊيا جي ٻولي."
-      },
-      {
-        "property": "accentColor",
-        "title": "نمايان رنگ",
-        "description": "(ختم ٿيل) پليئر لاءِ ايڪسينٽ رنگ چونڊيو."
       }
     ]
   }

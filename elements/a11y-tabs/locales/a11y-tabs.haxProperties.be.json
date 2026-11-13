@@ -11,20 +11,17 @@
         "description": "Даступная метка для набору ўкладак."
       },
       {
-        "property": "disabled",
-        "title": "Адключана",
-        "description": "Адключыць усе ўкладкі."
-      },
-      {
-        "property": "hidden",
-        "title": "Схавана",
-        "description": "Схаваць набор укладак."
-      },
-      {
         "property": "sticky",
         "title": "Замацаваныя",
         "description": "Утрымліваць гарызантальныя ўкладкі ўверсе пры пракрутцы."
       },
+      {
+        "slot": "",
+        "title": "Укладкі",
+        "description": "Шэраг элементаў <a11y-tab/>."
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "Кропка пераключэння макета",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "Кропка пераключэння значкоў",
         "description": "Кропка пераключэння для паказу тэксту са значкамі. Па змаўчанні 0; -1 — рэжым толькі значкоў."
-      },
-      {
-        "slot": "",
-        "title": "Укладкі",
-        "description": "Шэраг элементаў <a11y-tab/>."
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "Адключана",
+        "description": "Адключыць усе ўкладкі."
+      },
+      {
+        "property": "hidden",
+        "title": "Схавана",
+        "description": "Схаваць набор укладак."
+      },
       {
         "property": "id",
         "title": "Унікальны ID",

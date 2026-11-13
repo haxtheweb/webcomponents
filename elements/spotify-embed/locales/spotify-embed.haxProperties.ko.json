@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "Spotify 플레이어 삽입용 래퍼입니다."
+    "description": "Spotify 트랙, 앨범 또는 재생목록을 삽입합니다."
   },
   "settings": {
     "configure": [

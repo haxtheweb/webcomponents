@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "GitHub-közreműködők listája",
-    "description": "RPG-karakterekként megjelenítve a GitHub API segítségével."
+    "description": "Egy tároló közreműködőit RPG-karakterekként listázza."
   },
   "settings": {
     "configure": [

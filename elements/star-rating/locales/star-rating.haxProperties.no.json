@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Stjernevurdering",
-    "description": "Modul som viser vurdering eller knapp for å gi vurdering."
+    "description": "Vis en stjernevurdering, eller la leserne velge en."
   },
   "settings": {
     "configure": [
@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Interaktiv",
         "description": "Tillat at brukeren angir vurderingen."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Rubrikkskala-modus",

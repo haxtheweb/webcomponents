@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "進捗ドーナツ",
-    "description": "進捗ドーナツグラフ"
+    "description": "合計に対する進捗を示すドーナツグラフ。"
   },
   "settings": {
     "configure": [
@@ -26,11 +26,6 @@
         "description": "画像の代替テキスト。"
       },
       {
-        "property": "animated",
-        "title": "アニメーション",
-        "description": "初回読み込み時に進捗をアニメーション表示するかどうか"
-      },
-      {
         "property": "complete",
         "title": "完了",
         "description": "完了した値の配列。"
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "合計",
         "description": "すべての項目が完了したときの合計。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "アニメーション",
+        "description": "初回読み込み時に進捗をアニメーション表示するかどうか"
       },
       {
         "property": "startAngle",

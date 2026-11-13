@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Kortsvarsspørgsmål",
-    "description": "Lad brugeren besvare et enkelt spørgsmål"
+    "description": "Et spørgsmål, som eleven besvarer med en eller to sætninger."
   },
   "settings": {
     "configure": [

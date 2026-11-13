@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Wikipedia",
-    "description": "Detta kan visa en Wikipedia-artikel i kontext i en mängd olika format."
+    "description": "Visar en Wikipedia-artikel på sidan."
   },
   "settings": {
     "configure": [

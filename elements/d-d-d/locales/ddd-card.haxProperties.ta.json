@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "அம்புக்குறி இல்லை",
         "description": "பொத்தான் அம்புக்குறியை மறைக்கவும்."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "இணைப்பு: இலக்கு",
@@ -54,7 +52,9 @@
           "_top": "மேல் சாளரம் - _top",
           "_parent": "பெற்றோர் சாளரம் - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "இணைப்பு: rel",

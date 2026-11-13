@@ -11,6 +11,13 @@
         "description": "Šio AR failo URL."
       },
       {
+        "property": "skyColor",
+        "title": "Dangaus spalva",
+        "description": "Pasirinkite dangaus spalvą scenoje."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "Elemento X padėtis AR erdvėje."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "Elemento Z padėtis AR erdvėje."
-      },
-      {
-        "property": "skyColor",
-        "title": "Dangaus spalva",
-        "description": "Pasirinkite dangaus spalvą scenoje."
       }
     ]
   }

@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Zochita nawo",
         "description": "Lolani wogwiritsa ntchito kuika muyeso."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Njira ya Muyeso wa Rubric",

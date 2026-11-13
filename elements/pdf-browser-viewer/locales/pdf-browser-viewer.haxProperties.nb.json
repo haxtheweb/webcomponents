@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "PDF-visning i nettleseren",
+    "title": "PDF-visning",
     "description": "Bygg inn en PDF-fil i siden med valgfritt kortoppsett og nedlastingsknapp."
   },
   "settings": {
@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Melding om manglende støtte",
-        "description": "Melding når nettleseren ikke kan vise PDF-filer."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Lenketekst ved manglende støtte",
-        "description": "Lenketekst når nettleseren ikke kan vise PDF-filer."
-      },
-      {
         "property": "width",
         "title": "Bredde",
         "description": "Bredden på PDF-visningen."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Høyde",
         "description": "Høyden på PDF-visningen."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Melding om manglende støtte",
+        "description": "Melding når nettleseren ikke kan vise PDF-filer."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Lenketekst ved manglende støtte",
+        "description": "Lenketekst når nettleseren ikke kan vise PDF-filer."
       }
     ]
   }

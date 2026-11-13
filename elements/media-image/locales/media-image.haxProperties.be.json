@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Подпіс",
         "description": "Подпіс да выявы."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Назва ілюстрацыі",
-        "description": "Назва для подпісу ілюстрацыі."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Апісанне ілюстрацыі",
-        "description": "Апісанне для подпісу ілюстрацыі."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Адключыць мадальнае акно выявы",
         "description": "Не адкрываць выяву ў дыялогу прагляду пры націсканні."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Назва ілюстрацыі",
+        "description": "Назва для подпісу ілюстрацыі."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Апісанне ілюстрацыі",
+        "description": "Апісанне для подпісу ілюстрацыі."
       }
     ],
     "developer": [

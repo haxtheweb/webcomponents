@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Lliw acen awtomatig",
         "description": "Pennu'r lliw acen o destun y label yn awtomatig."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Botwm canslo",
-        "description": "Dangos botwm eicon tynnu/canslo y tu mewn i'r bilsen."
-      },
-      {
-        "property": "readonly",
-        "title": "Darllen yn unig",
-        "description": "Cuddio'r botwm canslo fel mai i'w dangos yn unig y mae'r bilsen."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Glaslwyd",
           "grey": "Llwyd"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Botwm canslo",
+        "description": "Dangos botwm eicon tynnu/canslo y tu mewn i'r bilsen."
+      },
+      {
+        "property": "readonly",
+        "title": "Darllen yn unig",
+        "description": "Cuddio'r botwm canslo fel mai i'w dangos yn unig y mae'r bilsen."
       }
     ]
   }

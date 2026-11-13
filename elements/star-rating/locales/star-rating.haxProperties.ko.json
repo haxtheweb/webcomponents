@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "별점",
-    "description": "별점을 표시하거나 평가하는 위젯 또는 버튼."
+    "description": "별점을 표시하거나 독자가 선택하게 합니다."
   },
   "settings": {
     "configure": [
@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "상호작용",
         "description": "사용자가 직접 평점을 매길 수 있도록 허용합니다."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "루브릭 척도 모드",

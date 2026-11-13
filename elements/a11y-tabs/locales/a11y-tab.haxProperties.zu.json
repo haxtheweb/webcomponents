@@ -10,10 +10,6 @@
         "title": "Isithonjana Sethebhu"
       },
       {
-        "property": "disabled",
-        "title": "Kukhutshaziwe"
-      },
-      {
         "property": "label",
         "title": "Ilebula Lethebhu"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "I-ID Eyingqayizivele"
-      },
-      {
         "property": "flag",
         "title": "Umbhalo Wefulegi Ongaphoqelekile"
       },
       {
         "property": "flagIcon",
         "title": "Isithonjana Sefulegi Esingaphoqelekile"
+      },
+      {
+        "property": "disabled",
+        "title": "Kukhutshaziwe"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "I-ID Eyingqayizivele"
       }
     ]
   }

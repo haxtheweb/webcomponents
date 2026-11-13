@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "કૅપ્શન",
         "description": "છબી માટે કૅપ્શન."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "આકૃતિ શીર્ષક",
-        "description": "આકૃતિ લેબલ માટે શીર્ષક."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "આકૃતિ વર્ણન",
-        "description": "આકૃતિ લેબલ માટે વર્ણન."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "છબી મોડલ અક્ષમ કરો",
         "description": "ક્લિક કરવાથી છબી નિરીક્ષક સંવાદમાં છબી ખૂલવાનું અક્ષમ કરો."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "આકૃતિ શીર્ષક",
+        "description": "આકૃતિ લેબલ માટે શીર્ષક."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "આકૃતિ વર્ણન",
+        "description": "આકૃતિ લેબલ માટે વર્ણન."
       }
     ],
     "developer": [

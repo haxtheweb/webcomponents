@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Kartel-irudia",
         "description": "Kartel-irudiaren URLa."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Testu-pistak",
         "description": "Bideoaren azpitituluak, deskribapenak eta beste testu-pista batzuk."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Hasiera-denbora",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Audio-deskribapenaren pista",
         "description": "Elementu bisualak narratzen dituen audio-deskribapen pistaren URL (MP3 fitxategia)."
+      },
+      {
+        "property": "accentColor",
+        "title": "Nabarmentze kolorea",
+        "description": "(zaharkitua) Hautatu erreproduzigailuaren azentu-kolorea."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Hizkuntza",
         "description": "Multimediaren hizkuntza."
-      },
-      {
-        "property": "accentColor",
-        "title": "Nabarmentze kolorea",
-        "description": "(zaharkitua) Hautatu erreproduzigailuaren azentu-kolorea."
       }
     ]
   }

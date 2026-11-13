@@ -10,10 +10,6 @@
         "title": "Gunkin Shafi"
       },
       {
-        "property": "disabled",
-        "title": "An kashe"
-      },
-      {
         "property": "label",
         "title": "Lakabin Shafi"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "ID na Musamman"
-      },
-      {
         "property": "flag",
         "title": "Rubutun Tuta na Zaɓi"
       },
       {
         "property": "flagIcon",
         "title": "Gunkin Tuta na Zaɓi"
+      },
+      {
+        "property": "disabled",
+        "title": "An kashe"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "ID na Musamman"
       }
     ]
   }

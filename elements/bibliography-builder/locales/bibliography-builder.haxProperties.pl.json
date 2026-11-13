@@ -9,7 +9,9 @@
         "slot": "",
         "title": "Cytowania",
         "description": "Pozycje cytowań w tej bibliografii"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "Kurs",

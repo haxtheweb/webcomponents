@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Messaġġ ta' mhux appoġġjat",
-        "description": "Messaġġ meta l-browser ma jistax juri fajls PDF."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Messaġġ tal-link ta' mhux appoġġjat",
-        "description": "Test tal-link meta l-browser ma jistax juri fajls PDF."
-      },
-      {
         "property": "width",
         "title": "Wisa'",
         "description": "Il-wisa' tal-viewer tal-PDF."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Għoli",
         "description": "L-għoli tal-viewer tal-PDF."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Messaġġ ta' mhux appoġġjat",
+        "description": "Messaġġ meta l-browser ma jistax juri fajls PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Messaġġ tal-link ta' mhux appoġġjat",
+        "description": "Test tal-link meta l-browser ma jistax juri fajls PDF."
       }
     ]
   }

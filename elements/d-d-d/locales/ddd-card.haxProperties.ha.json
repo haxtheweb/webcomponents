@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Babu Kibiya",
         "description": "Ɓoye kibiyar maɓallin."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Mahaɗi: manufa",
@@ -54,7 +52,9 @@
           "_top": "Taga ta sama - _top",
           "_parent": "Taga uwa - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Mahaɗi: rel",

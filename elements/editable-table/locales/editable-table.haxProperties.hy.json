@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Թույլատրել զտումը",
         "description": "Թույլատրել զտումն ըստ սյունակի արժեքների։"
-      },
-      {
-        "property": "numericStyles",
-        "title": "Թվային ձևավորում",
-        "description": "Կիրառել թվային ձևավորում թվային սյունակների վրա։"
-      },
-      {
-        "property": "responsive",
-        "title": "Հարմարվող",
-        "description": "Հարմարեցնել աղյուսակի դասավորությունը փոքր էկրանների համար։"
-      },
-      {
-        "property": "rubricMode",
-        "title": "Ռուբրիկայի ռեժիմ",
-        "description": "Մեկնաբանել այս աղյուսակը որպես OER Schema Rubric, որպեսզի ստեղծվեն Rubric, RubricScale, RubricCriterion և RubricLevel մետատվյալներ։"
-      },
-      {
-        "property": "rubricType",
-        "title": "Ռուբրիկայի տեսակ",
-        "description": "Ռուբրիկայի ոճը, որը ստեղծվում է որպես oer:rubricType (իմաստ ունի միայն, երբ Ռուբրիկայի ռեժիմը միացված է)։",
-        "options": {
-          "": "(ոչ մեկը)",
-          "analytic": "Վերլուծական",
-          "holistic": "Ամբողջական",
-          "single-point": "Մեկ միավոր",
-          "checklist": "Ստուգաթերթ"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Տպման կոճակ",
         "description": "Ավելացնել միայն աղյուսակը տպելու կոճակ։"
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Թվային ձևավորում",
+        "description": "Կիրառել թվային ձևավորում թվային սյունակների վրա։"
+      },
+      {
+        "property": "responsive",
+        "title": "Հարմարվող",
+        "description": "Հարմարեցնել աղյուսակի դասավորությունը փոքր էկրանների համար։"
+      },
+      {
+        "property": "rubricMode",
+        "title": "Ռուբրիկայի ռեժիմ",
+        "description": "Մեկնաբանել այս աղյուսակը որպես OER Schema Rubric, որպեսզի ստեղծվեն Rubric, RubricScale, RubricCriterion և RubricLevel մետատվյալներ։"
+      },
+      {
+        "property": "rubricType",
+        "title": "Ռուբրիկայի տեսակ",
+        "description": "Ռուբրիկայի ոճը, որը ստեղծվում է որպես oer:rubricType (իմաստ ունի միայն, երբ Ռուբրիկայի ռեժիմը միացված է)։",
+        "options": {
+          "": "(ոչ մեկը)",
+          "analytic": "Վերլուծական",
+          "holistic": "Ամբողջական",
+          "single-point": "Մեկ միավոր",
+          "checklist": "Ստուգաթերթ"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "CSV տվյալներ",
         "description": "Ստեղծել աղյուսակ վերբեռնված CSV ֆայլից։"
       }
-    ]
+    ],
+    "developer": []
   }
 }

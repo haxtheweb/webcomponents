@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "Etichetă / Pastilă",
+    "title": "Etichetă",
     "description": "O etichetă compactă în formă de pastilă, cu culoare de accent, buton de anulare sau comutare opționale."
   },
   "settings": {
@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Culoare de accent automată",
         "description": "Derivă automat culoarea de accent din textul etichetei."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Buton de anulare",
-        "description": "Afișează un buton cu pictogramă de eliminare/anulare în pastilă."
-      },
-      {
-        "property": "readonly",
-        "title": "Doar citire",
-        "description": "Ascunde butonul de anulare, astfel încât pastila să fie doar de afișare."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Gri albăstrui",
           "grey": "Gri"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Buton de anulare",
+        "description": "Afișează un buton cu pictogramă de eliminare/anulare în pastilă."
+      },
+      {
+        "property": "readonly",
+        "title": "Doar citire",
+        "description": "Ascunde butonul de anulare, astfel încât pastila să fie doar de afișare."
       }
     ]
   }

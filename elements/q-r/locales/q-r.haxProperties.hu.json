@@ -14,16 +14,6 @@
         "property": "title",
         "title": "Alternatív cím",
         "description": "A QR-kód forrásához kapcsolt alternatív cím."
-      },
-      {
-        "property": "modulesize",
-        "title": "Méret",
-        "description": "A QR-kód mérete."
-      },
-      {
-        "property": "margin",
-        "title": "Margó",
-        "description": "A kód körüli keret."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "Méret",
+        "description": "A QR-kód mérete."
+      },
+      {
+        "property": "margin",
+        "title": "Margó",
+        "description": "A kód körüli keret."
       }
     ]
   }

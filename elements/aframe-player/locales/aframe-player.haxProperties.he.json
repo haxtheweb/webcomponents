@@ -11,6 +11,13 @@
         "description": "ה-URL של קובץ ה-AR."
       },
       {
+        "property": "skyColor",
+        "title": "צבע השמיים",
+        "description": "בחרו את צבע השמיים בסצנה."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "מיקום X של הרכיב ב-AR."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "מיקום Z של הרכיב ב-AR."
-      },
-      {
-        "property": "skyColor",
-        "title": "צבע השמיים",
-        "description": "בחרו את צבע השמיים בסצנה."
       }
     ]
   }

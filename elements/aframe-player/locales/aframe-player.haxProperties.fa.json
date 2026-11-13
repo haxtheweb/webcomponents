@@ -11,6 +11,13 @@
         "description": "URL این فایل AR."
       },
       {
+        "property": "skyColor",
+        "title": "رنگ آسمان",
+        "description": "رنگ آسمان صحنه را انتخاب کنید."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "موقعیت X عنصر در AR."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "موقعیت Z عنصر در AR."
-      },
-      {
-        "property": "skyColor",
-        "title": "رنگ آسمان",
-        "description": "رنگ آسمان صحنه را انتخاب کنید."
       }
     ]
   }

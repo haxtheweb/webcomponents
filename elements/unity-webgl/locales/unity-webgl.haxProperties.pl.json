@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Cel",
         "description": "Ścieżka do kompilacji gry."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Szerokość płótna",
+        "description": "Szerokość płótna w CSS (np. px lub em)."
       },
+      {
+        "property": "height",
+        "title": "Wysokość płótna",
+        "description": "Wysokość płótna w CSS (np. px lub em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Metoda kompresji",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Wersja produktu",
         "description": "Wersja wydania."
-      },
-      {
-        "property": "width",
-        "title": "Szerokość płótna",
-        "description": "Szerokość płótna w CSS (np. px lub em)."
-      },
-      {
-        "property": "height",
-        "title": "Wysokość płótna",
-        "description": "Wysokość płótna w CSS (np. px lub em)."
       },
       {
         "property": "background",

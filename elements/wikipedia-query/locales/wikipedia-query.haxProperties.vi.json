@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Wikipedia",
-    "description": "Điều này có thể hiển thị một bài viết Wikipedia trong ngữ cảnh ở nhiều định dạng khác nhau."
+    "description": "Hiển thị một bài viết Wikipedia trong trang."
   },
   "settings": {
     "configure": [

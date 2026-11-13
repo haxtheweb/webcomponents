@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "Mabhatani",
         "description": "Boka remabhatani rinoratidzwa pasi pemavara."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "Mavara echisungo",
         "description": "Zita rechisungo rinoratidzwa mukufamba."
       }
-    ]
+    ],
+    "developer": []
   }
 }

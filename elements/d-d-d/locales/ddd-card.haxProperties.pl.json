@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Bez strzałki",
         "description": "Ukryj strzałkę przycisku."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Link: cel",
@@ -54,7 +52,9 @@
           "_top": "Okno najwyższego poziomu - _top",
           "_parent": "Okno nadrzędne - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Link: rel",

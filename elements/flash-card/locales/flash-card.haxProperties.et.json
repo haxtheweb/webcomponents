@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Pildi allikas",
         "description": "Kaardi jaoks kasutatav pildifail. Alistab pildi märksõna."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Pildi märksõna",
+        "description": "Juhusliku pildi märksõna. Pildi allikas alistab selle."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Õpieesmärk",
         "description": "OER Schema: õpieesmärgi ID või URL, mida see harjutus toetab."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Pildi märksõna",
-        "description": "Juhusliku pildi märksõna. Pildi allikas alistab selle."
       }
     ]
   }

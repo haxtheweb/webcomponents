@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "展開/折りたたみグループ",
-    "description": "展開/折りたたみ要素のグループ。"
+    "title": "折りたたみグループ",
+    "description": "折りたたみ可能なコンテナのグループ。"
   },
   "settings": {
     "configure": [

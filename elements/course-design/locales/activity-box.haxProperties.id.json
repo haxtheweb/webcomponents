@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Kotak Aktivitas",
-    "description": "Blok judul kecil bergaya."
+    "description": "Judul berlabel yang menandai awal sebuah aktivitas."
   },
   "settings": {
     "configure": [

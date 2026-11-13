@@ -104,60 +104,8 @@ class FigureLabel extends DDD {
 
   // haxProperty definition
   static get haxProperties() {
-    return {
-      canScale: true,
-
-      canEditSource: true,
-      gizmo: {
-        title: "Figure label",
-        description:
-          "Figure label element to mark media assets within content.",
-        icon: "editor:insert-photo",
-        color: "green",
-        tags: [
-          "Content",
-          "figure",
-          "a11y",
-          "accessibility",
-          "image",
-          "caption",
-          "description",
-        ],
-        meta: {
-          author: "HAXTheWeb core team",
-          owner: "PSU",
-          hidden: true,
-        },
-      },
-      settings: {
-        configure: [
-          {
-            property: "title",
-            title: "Figure number",
-            description: "Number or short label for the figure, e.g. 1.3",
-            inputMethod: "textfield",
-            required: false,
-            icon: "editor:format-list-numbered",
-          },
-          {
-            property: "description",
-            title: "Description",
-            description: "Short description of the figure",
-            inputMethod: "textfield",
-            required: false,
-            icon: "editor:short-text",
-          },
-        ],
-        advanced: [],
-      },
-      demoSchema: [
-        {
-          tag: "figure-label",
-          properties: {},
-          content: "",
-        },
-      ],
-    };
+    return new URL("./lib/figure-label.haxProperties.json", import.meta.url)
+      .href;
   }
   // properties available to the custom element for data binding
   static get properties() {

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Sipi",
-    "description": "Citation element na may tatlong mode ng pagpapakita."
+    "description": "Kilalanin ang pinagmulan gamit ang pamagat, lumikha, lisensiya at link nito."
   },
   "settings": {
     "configure": [
@@ -21,15 +21,6 @@
         "description": "Petsa kung kailan na-access ang source."
       },
       {
-        "property": "scope",
-        "title": "Saklaw",
-        "description": "Saklaw ng element na sisipiin.",
-        "options": {
-          "sibling": "Kapatid na element",
-          "parent": "Parent na element"
-        }
-      },
-      {
         "property": "license",
         "title": "Lisensya",
         "description": "Lisensya para sa siniping akda."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Lumikha",
         "description": "Lumikha o may-ari ng siniping akda."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Saklaw",
+        "description": "Saklaw ng element na sisipiin.",
+        "options": {
+          "sibling": "Kapatid na element",
+          "parent": "Parent na element"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "Uri ng OER Schema",

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Aktivitetsruta",
-    "description": "Litet formaterat rubrikblock."
+    "description": "En etiketterad rubrik som markerar början på en aktivitet."
   },
   "settings": {
     "configure": [

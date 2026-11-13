@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "Tautan HAX",
-    "description": "Tautan ke sumber daya tertentu di situs yang sedang Anda kerjakan."
+    "title": "Tautan halaman",
+    "description": "Tautan ke halaman di situs yang sedang Anda kerjakan."
   },
   "settings": {
     "configure": [

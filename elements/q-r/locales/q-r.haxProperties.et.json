@@ -14,16 +14,6 @@
         "property": "title",
         "title": "Alternatiivpealkiri",
         "description": "QR-koodi allikaga lingitud alternatiivpealkiri."
-      },
-      {
-        "property": "modulesize",
-        "title": "Suurus",
-        "description": "QR-koodi suurus."
-      },
-      {
-        "property": "margin",
-        "title": "Veeris",
-        "description": "Koodi ümbritsev ala."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "Suurus",
+        "description": "QR-koodi suurus."
+      },
+      {
+        "property": "margin",
+        "title": "Veeris",
+        "description": "Koodi ümbritsev ala."
       }
     ]
   }

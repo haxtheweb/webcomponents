@@ -91,7 +91,9 @@
         "property": "gameTitle",
         "title": "Magaca ciyaarta",
         "description": "Wuxuu magac u bixiyaa ciyaartan dhacdooyinka horumarka iyo calaamadaynta OER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Aqoonsiga ciyaarta",

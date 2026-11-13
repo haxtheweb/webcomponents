@@ -4,22 +4,23 @@
     "description": "Una lista di lettura chì presenta lettori video è audio in una disposizione lettore + barra laterale."
   },
   "settings": {
-    "configure": [
+    "configure": [],
+    "advanced": [
       {
         "property": "activeIndex",
         "title": "Elementu iniziale",
         "description": "Numeru di l'elementu da cumincià."
-      },
-      {
-        "property": "forCourse",
-        "title": "Corsu",
-        "description": "U corsu per u quale hè fatta sta lista di lettura (identificatore o URL di u corsu)."
       }
     ],
     "developer": [
       {
         "title": "Media",
         "description": "I video è l'audio di a lista di lettura. Ùn si mudificanu micca quì: a struttura di a pagina l'adopra per sapè quali blocchi ponu esse lasciati cascà."
+      },
+      {
+        "property": "forCourse",
+        "title": "Corsu",
+        "description": "U corsu per u quale hè fatta sta lista di lettura (identificatore o URL di u corsu)."
       }
     ]
   }

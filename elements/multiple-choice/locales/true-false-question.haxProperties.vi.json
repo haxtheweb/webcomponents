@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Câu hỏi Đúng / Sai",
-    "description": "Câu hỏi đúng sai"
+    "description": "Một phát biểu mà người học đánh dấu là đúng hoặc sai."
   },
   "settings": {
     "configure": [

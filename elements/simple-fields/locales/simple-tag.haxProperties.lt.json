@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "Žymė / piliulė",
+    "title": "Žyma",
     "description": "Kompaktiška piliulės formos etiketė su pasirenkama akcento spalva, atšaukimo mygtuku arba perjungikliu."
   },
   "settings": {
@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Automatinė akcento spalva",
         "description": "Automatiškai nustatyti akcento spalvą pagal etiketės tekstą."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Atšaukimo mygtukas",
-        "description": "Rodyti šalinimo / atšaukimo piktogramos mygtuką piliulėje."
-      },
-      {
-        "property": "readonly",
-        "title": "Tik skaitymui",
-        "description": "Slėpti atšaukimo mygtuką, kad piliulė būtų tik rodoma."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Melsvai pilka",
           "grey": "Pilka"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Atšaukimo mygtukas",
+        "description": "Rodyti šalinimo / atšaukimo piktogramos mygtuką piliulėje."
+      },
+      {
+        "property": "readonly",
+        "title": "Tik skaitymui",
+        "description": "Slėpti atšaukimo mygtuką, kad piliulė būtų tik rodoma."
       }
     ]
   }

@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "포스터 이미지",
         "description": "포스터 이미지 URL."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "텍스트 트랙",
         "description": "비디오의 폐쇄 자막, 자막, 설명 및 기타 텍스트 트랙입니다."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "시작 시간",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "화면 해설 트랙",
         "description": "시각적 요소를 음성으로 설명하는 화면 해설 트랙(MP3 파일)의 URL입니다."
+      },
+      {
+        "property": "accentColor",
+        "title": "강조 색상",
+        "description": "(사용 중단됨) 플레이어의 강조 색상을 선택합니다."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "언어",
         "description": "미디어의 언어."
-      },
-      {
-        "property": "accentColor",
-        "title": "강조 색상",
-        "description": "(사용 중단됨) 플레이어의 강조 색상을 선택합니다."
       }
     ]
   }

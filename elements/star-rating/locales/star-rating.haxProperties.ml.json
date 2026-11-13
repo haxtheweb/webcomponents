@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "ഇന്ററാക്ടീവ്",
         "description": "റേറ്റിംഗ് സജ്ജമാക്കാൻ ഉപയോക്തൃ ഇടപെടൽ അനുവദിക്കുക."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "റൂബ്രിക് സ്കെയിൽ മോഡ്",

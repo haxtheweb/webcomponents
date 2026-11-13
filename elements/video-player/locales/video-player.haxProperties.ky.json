@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Постер сүрөтү",
         "description": "Постер сүрөтүнүн URL дареги."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Текст тректери",
         "description": "Видео үчүн жабык субтитрлер, субтитрлер, сүрөттөмөлөр жана башка текст тректери."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Башталыш убактысы",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Аудио сүрөттөмө треги",
         "description": "Визуалдык элементтерди үн менен баяндаган аудио сүрөттөмө трегинин (MP3 файл) URL дареги."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцент түсү",
+        "description": "(эскирген) Ойноткуч үчүн акцент түсүн тандаңыз."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Тил",
         "description": "Медианын тили."
-      },
-      {
-        "property": "accentColor",
-        "title": "Акцент түсү",
-        "description": "(эскирген) Ойноткуч үчүн акцент түсүн тандаңыз."
       }
     ]
   }

@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Sawirka boodhka",
         "description": "URL-ka sawirka boodhka."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Raadadka qoraalka",
         "description": "Qoraal-hoosaadyo, turjumaado, sharaxaado, iyo raadad kale oo qoraal ah oo fiidiyowga ah."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Waqtiga bilowga",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Raadka sharaxaadda codka",
         "description": "URL-ka raadka sharaxaadda codka (fayl MP3 ah) oo sharxaya waxyaabaha muuqda."
+      },
+      {
+        "property": "accentColor",
+        "title": "Midabka xoojinta",
+        "description": "(duugoobay) Dooro midabka xoojinta ee ciyaaraha."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Luuqad",
         "description": "Luqadda warbaahinta."
-      },
-      {
-        "property": "accentColor",
-        "title": "Midabka xoojinta",
-        "description": "(duugoobay) Dooro midabka xoojinta ee ciyaaraha."
       }
     ]
   }

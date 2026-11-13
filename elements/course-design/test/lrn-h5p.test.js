@@ -4,6 +4,13 @@ import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js"
 import "../lib/lrn-h5p.js";
 import { LrnH5p } from "../lib/lrn-h5p.js";
 
+// HAX schemas ship as JSON next to the element; read one whether the class
+// returns the object or the URL of its file
+const haxSchema = async (C) => {
+  const hp = C.haxProperties;
+  return typeof hp === "string" ? (await fetch(hp)).json() : hp;
+};
+
 const settle = () => new Promise((resolve) => setTimeout(resolve, 60));
 
 describe("lrn-h5p", () => {
@@ -21,9 +28,9 @@ describe("lrn-h5p", () => {
     expect(globalThis.customElements.get("lrn-h5p")).to.exist;
   });
 
-  it("has the expected static tag and haxProperties", () => {
+  it("has the expected static tag and haxProperties", async () => {
     expect(LrnH5p.tag).to.equal("lrn-h5p");
-    const props = LrnH5p.haxProperties;
+    const props = await haxSchema(LrnH5p);
     expect(props.gizmo.title).to.equal("H5P Element");
     expect(props.settings.configure.length).to.equal(1);
     expect(props.settings.configure[0].inputMethod).to.equal("code-editor");

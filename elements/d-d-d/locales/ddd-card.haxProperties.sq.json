@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Pa shigjetë",
         "description": "Fshih shigjetën e butonit."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Lidhja: target",
@@ -54,7 +52,9 @@
           "_top": "Dritarja e sipërme - _top",
           "_parent": "Dritarja prind - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Lidhja: rel",

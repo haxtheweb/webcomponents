@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "ಫಿಲ್ಟರ್ ಅನುಮತಿಸಿ",
         "description": "ಕಾಲಮ್ ಮೌಲ್ಯಗಳ ಪ್ರಕಾರ ಫಿಲ್ಟರ್ ಮಾಡಲು ಅನುಮತಿಸಿ."
-      },
-      {
-        "property": "numericStyles",
-        "title": "ಸಂಖ್ಯಾ ಶೈಲಿ",
-        "description": "ಸಂಖ್ಯಾ ಕಾಲಮ್‌ಗಳಿಗೆ ಸಂಖ್ಯಾ ಶೈಲಿಯನ್ನು ಅನ್ವಯಿಸಿ."
-      },
-      {
-        "property": "responsive",
-        "title": "ಸ್ಪಂದನಶೀಲ",
-        "description": "ಸಣ್ಣ ಪರದೆಗಳಲ್ಲಿ ಕೋಷ್ಟಕದ ಲೇಔಟ್ ಹೊಂದಿಸಿ."
-      },
-      {
-        "property": "rubricMode",
-        "title": "ರೂಬ್ರಿಕ್ ಮೋಡ್",
-        "description": "Rubric, RubricScale, RubricCriterion ಮತ್ತು RubricLevel ಮೆಟಾಡೇಟಾ ಹೊರಸೂಸಲು ಈ ಕೋಷ್ಟಕವನ್ನು OER Schema Rubric ಆಗಿ ಅರ್ಥೈಸಿ."
-      },
-      {
-        "property": "rubricType",
-        "title": "ರೂಬ್ರಿಕ್ ಪ್ರಕಾರ",
-        "description": "oer:rubricType ಆಗಿ ಹೊರಸೂಸುವ ರೂಬ್ರಿಕ್ ಶೈಲಿ (ರೂಬ್ರಿಕ್ ಮೋಡ್ ಆನ್ ಇದ್ದಾಗ ಮಾತ್ರ ಅರ್ಥಪೂರ್ಣ).",
-        "options": {
-          "": "(ಯಾವುದೂ ಇಲ್ಲ)",
-          "analytic": "ವಿಶ್ಲೇಷಣಾತ್ಮಕ",
-          "holistic": "ಸಮಗ್ರ",
-          "single-point": "ಏಕ ಬಿಂದು",
-          "checklist": "ಪರಿಶೀಲನಾ ಪಟ್ಟಿ"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "ಮುದ್ರಣ ಬಟನ್",
         "description": "ಕೋಷ್ಟಕವನ್ನು ಮಾತ್ರ ಮುದ್ರಿಸಲು ಬಟನ್ ಸೇರಿಸಿ."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "ಸಂಖ್ಯಾ ಶೈಲಿ",
+        "description": "ಸಂಖ್ಯಾ ಕಾಲಮ್‌ಗಳಿಗೆ ಸಂಖ್ಯಾ ಶೈಲಿಯನ್ನು ಅನ್ವಯಿಸಿ."
+      },
+      {
+        "property": "responsive",
+        "title": "ಸ್ಪಂದನಶೀಲ",
+        "description": "ಸಣ್ಣ ಪರದೆಗಳಲ್ಲಿ ಕೋಷ್ಟಕದ ಲೇಔಟ್ ಹೊಂದಿಸಿ."
+      },
+      {
+        "property": "rubricMode",
+        "title": "ರೂಬ್ರಿಕ್ ಮೋಡ್",
+        "description": "Rubric, RubricScale, RubricCriterion ಮತ್ತು RubricLevel ಮೆಟಾಡೇಟಾ ಹೊರಸೂಸಲು ಈ ಕೋಷ್ಟಕವನ್ನು OER Schema Rubric ಆಗಿ ಅರ್ಥೈಸಿ."
+      },
+      {
+        "property": "rubricType",
+        "title": "ರೂಬ್ರಿಕ್ ಪ್ರಕಾರ",
+        "description": "oer:rubricType ಆಗಿ ಹೊರಸೂಸುವ ರೂಬ್ರಿಕ್ ಶೈಲಿ (ರೂಬ್ರಿಕ್ ಮೋಡ್ ಆನ್ ಇದ್ದಾಗ ಮಾತ್ರ ಅರ್ಥಪೂರ್ಣ).",
+        "options": {
+          "": "(ಯಾವುದೂ ಇಲ್ಲ)",
+          "analytic": "ವಿಶ್ಲೇಷಣಾತ್ಮಕ",
+          "holistic": "ಸಮಗ್ರ",
+          "single-point": "ಏಕ ಬಿಂದು",
+          "checklist": "ಪರಿಶೀಲನಾ ಪಟ್ಟಿ"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "CSV ಡೇಟಾ",
         "description": "ಅಪ್‌ಲೋಡ್ ಮಾಡಿದ CSV ಫೈಲ್‌ನಿಂದ ಕೋಷ್ಟಕ ರಚಿಸಿ."
       }
-    ]
+    ],
+    "developer": []
   }
 }

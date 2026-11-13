@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "활동 상자",
-    "description": "스타일이 적용된 작은 제목 블록입니다."
+    "description": "활동의 시작을 표시하는 레이블이 있는 제목."
   },
   "settings": {
     "configure": [

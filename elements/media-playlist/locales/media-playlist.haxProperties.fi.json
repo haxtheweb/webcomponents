@@ -4,22 +4,23 @@
     "description": "Soittolista, joka esittää video- ja äänisoittimet soitin + sivupalkki -asettelussa."
   },
   "settings": {
-    "configure": [
+    "configure": [],
+    "advanced": [
       {
         "property": "activeIndex",
         "title": "Aktiivinen indeksi",
         "description": "Aktiivisen kohteen indeksi, josta aloitetaan."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kurssi",
-        "description": "Kurssi, jota varten tämä soittolista on (kurssin tunniste tai URL)."
       }
     ],
     "developer": [
       {
         "title": "Media",
         "description": "Soittolistan videot ja äänet. Ei muokata täällä: sivun jäsennys käyttää tätä tietääkseen, mitä lohkoja siihen voi pudottaa."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurssi",
+        "description": "Kurssi, jota varten tämä soittolista on (kurssin tunniste tai URL)."
       }
     ]
   }

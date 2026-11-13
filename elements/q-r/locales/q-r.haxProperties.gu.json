@@ -14,16 +14,6 @@
         "property": "title",
         "title": "વૈકલ્પિક શીર્ષક",
         "description": "QR કોડ સ્રોત સાથે લિંક થયેલું વૈકલ્પિક શીર્ષક."
-      },
-      {
-        "property": "modulesize",
-        "title": "કદ",
-        "description": "QR કોડનું કદ."
-      },
-      {
-        "property": "margin",
-        "title": "હાંસિયો",
-        "description": "કોડની આસપાસનું આવરણ."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "કદ",
+        "description": "QR કોડનું કદ."
+      },
+      {
+        "property": "margin",
+        "title": "હાંસિયો",
+        "description": "કોડની આસપાસનું આવરણ."
       }
     ]
   }

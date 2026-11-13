@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "Botoiak",
         "description": "Testuaren azpian erakusten den botoi taldea."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "Aingura testua",
         "description": "Nabigazioan erakusten den aingura etiketa."
       }
-    ]
+    ],
+    "developer": []
   }
 }

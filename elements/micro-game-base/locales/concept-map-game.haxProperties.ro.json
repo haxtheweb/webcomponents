@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Joc cu harta conceptelor",
-    "description": "Un joc scurt de tastatură. Un personaj merge la fiecare concept de pe o hartă, iar conceptul se explică singur. Atinge-le pe toate pentru confetti și un prompt de copiat."
+    "description": "Un joc scurt de tastatură în care un personaj parcurge o hartă și fiecare concept se explică singur."
   },
   "settings": {
     "configure": [
@@ -86,7 +86,9 @@
         "property": "gameTitle",
         "title": "Numele jocului",
         "description": "Denumește acest joc în evenimentele de progres și în marcajul OER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "ID-ul jocului",

@@ -1,6 +1,13 @@
 import { fixture, expect, html } from "@open-wc/testing";
 import "../accent-card.js";
 
+// HAX schemas ship as JSON next to the element; read one whether the class
+// returns the object or the URL of its file
+const haxSchema = async (C) => {
+  const hp = C.haxProperties;
+  return typeof hp === "string" ? (await fetch(hp)).json() : hp;
+};
+
 describe("accent-card test", () => {
   let element;
   beforeEach(async () => {
@@ -671,15 +678,15 @@ describe("accent-card test", () => {
   });
 
   describe("HAX Properties and Integration", () => {
-    it("should have haxProperties defined", () => {
-      expect(element.constructor.haxProperties).to.exist;
-      expect(element.constructor.haxProperties.gizmo).to.exist;
-      expect(element.constructor.haxProperties.settings).to.exist;
-      expect(element.constructor.haxProperties.demoSchema).to.exist;
+    it("should have haxProperties defined", async () => {
+      expect(await haxSchema(element.constructor)).to.exist;
+      expect((await haxSchema(element.constructor)).gizmo).to.exist;
+      expect((await haxSchema(element.constructor)).settings).to.exist;
+      expect((await haxSchema(element.constructor)).demoSchema).to.exist;
     });
 
-    it("should have proper HAX configuration for image upload", () => {
-      const haxProps = element.constructor.haxProperties;
+    it("should have proper HAX configuration for image upload", async () => {
+      const haxProps = await haxSchema(element.constructor);
       const configItems = haxProps.settings.configure;
 
       // Verify imageSrc property has haxupload input method
@@ -693,7 +700,7 @@ describe("accent-card test", () => {
 
     it("should maintain accessibility with HAX demo schema", async () => {
       const { unsafeHTML } = await import("lit/directives/unsafe-html.js");
-      const demoSchema = element.constructor.haxProperties.demoSchema[0];
+      const demoSchema = (await haxSchema(element.constructor)).demoSchema[0];
       const haxTestElement = await fixture(html`
         <accent-card
           accent-color="${demoSchema.properties.accentColor}"

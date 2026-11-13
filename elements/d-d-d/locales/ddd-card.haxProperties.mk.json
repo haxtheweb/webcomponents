@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Без стрелка",
         "description": "Скриј ја стрелката на копчето."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Врска: цел",
@@ -54,7 +52,9 @@
           "_top": "Највисок прозорец - _top",
           "_parent": "Матичен прозорец - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Врска: rel",

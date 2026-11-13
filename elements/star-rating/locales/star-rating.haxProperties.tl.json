@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Star Rating",
-    "description": "Widget na nagpapakita ng rating o button para mag-rate."
+    "description": "Magpakita ng star rating o hayaang pumili ang mga mambabasa."
   },
   "settings": {
     "configure": [
@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Interactive",
         "description": "Payagan ang user na mag-set ng rating."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Rubric Scale Mode",

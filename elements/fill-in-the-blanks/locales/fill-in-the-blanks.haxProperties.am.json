@@ -14,28 +14,6 @@
         "property": "statement",
         "title": "ዓረፍተ ነገር",
         "description": "ወደ ቃላትን ምልክት አድርግ መስተጋብር የሚቀየር ዓረፍተ ነገር።"
-      },
-      {
-        "property": "gradingFormat",
-        "title": "የውጤት አሰጣጥ ቅርጸት",
-        "description": "OER Schema፦ ለዚህ ምዘና የውጤት አሰጣጥ ቅርጸት (ለምሳሌ ነጥቦች፣ ፊደል፣ መቶኛ፣ ማጠናቀቅ)።"
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "የመማር ዓላማ",
-        "description": "OER Schema፦ ከዚህ ምዘና ጋር የተያያዘ የመማር ዓላማ።"
-      },
-      {
-        "property": "forCourse",
-        "title": "ኮርስ",
-        "description": "OER Schema፦ ይህ ምዘና የታሰበለት ኮርስ።"
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "የፈተናው ስም",
-        "description": "ይህን ንጥል ለመለየት በxAPI የሚመሩ አካባቢዎች ውስጥ ጥቅም ላይ የሚውል የፈተና ስም"
       }
     ],
     "advanced": [
@@ -46,6 +24,28 @@
       {
         "title": "ተዘግቶ ጀምር",
         "description": "ሊታጠፍ በሚችልበት ጊዜ፣ ጥያቄውን እና ሁኔታውን ብቻ የሚያሳይ የተዘጋ ረድፍ ሆኖ ይጀምር።"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "የውጤት አሰጣጥ ቅርጸት",
+        "description": "OER Schema፦ ለዚህ ምዘና የውጤት አሰጣጥ ቅርጸት (ለምሳሌ ነጥቦች፣ ፊደል፣ መቶኛ፣ ማጠናቀቅ)።"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "የመማር ዓላማ",
+        "description": "OER Schema፦ ከዚህ ምዘና ጋር የተያያዘ የመማር ዓላማ።"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "የፈተናው ስም",
+        "description": "ይህን ንጥል ለመለየት በxAPI የሚመሩ አካባቢዎች ውስጥ ጥቅም ላይ የሚውል የፈተና ስም"
+      },
+      {
+        "property": "forCourse",
+        "title": "ኮርስ",
+        "description": "OER Schema፦ ይህ ምዘና የታሰበለት ኮርስ።"
       }
     ]
   }

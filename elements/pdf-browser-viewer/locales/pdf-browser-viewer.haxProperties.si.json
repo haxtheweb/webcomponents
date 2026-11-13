@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "සහාය නොදක්වන පණිවිඩය",
-        "description": "බ්‍රවුසරයට PDF ගොනු පෙන්විය නොහැකි විට පණිවිඩය."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "සහාය නොදක්වන සබැඳි පණිවිඩය",
-        "description": "බ්‍රවුසරයට PDF ගොනු පෙන්විය නොහැකි විට සබැඳි පෙළ."
-      },
-      {
         "property": "width",
         "title": "පළල",
         "description": "PDF දසුනේ පළල."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "උස",
         "description": "PDF දසුනේ උස."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "සහාය නොදක්වන පණිවිඩය",
+        "description": "බ්‍රවුසරයට PDF ගොනු පෙන්විය නොහැකි විට පණිවිඩය."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "සහාය නොදක්වන සබැඳි පණිවිඩය",
+        "description": "බ්‍රවුසරයට PDF ගොනු පෙන්විය නොහැකි විට සබැඳි පෙළ."
       }
     ]
   }

@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Destinació",
         "description": "Ruta a la compilació del joc."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Amplada del llenç",
+        "description": "Amplada CSS del llenç (per exemple, px o em)."
       },
+      {
+        "property": "height",
+        "title": "Alçada del llenç",
+        "description": "Alçada CSS del llenç (per exemple, px o em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Mètode de compressió",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Versió del producte",
         "description": "Versió de llançament."
-      },
-      {
-        "property": "width",
-        "title": "Amplada del llenç",
-        "description": "Amplada CSS del llenç (per exemple, px o em)."
-      },
-      {
-        "property": "height",
-        "title": "Alçada del llenç",
-        "description": "Alçada CSS del llenç (per exemple, px o em)."
       },
       {
         "property": "background",

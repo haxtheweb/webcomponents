@@ -11,30 +11,8 @@
         "description": "صارفاں لئی سوال۔ ڈراپ ٹارگٹاں تے نشان لاؤ، فیر اگلے ٹارگٹ تک جواب لکھو۔"
       },
       {
-        "property": "gradingFormat",
-        "title": "گریڈنگ فارمیٹ",
-        "description": "OER Schema: ایس جائزے دا گریڈنگ فارمیٹ (جیویں پوائنٹ، حرف، فیصد، تکمیل)۔"
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "سکھݨ دا مقصد",
-        "description": "OER Schema: ایس جائزے نال جڑیا سکھݨ دا مقصد۔"
-      },
-      {
-        "property": "forCourse",
-        "title": "کورس",
-        "description": "OER Schema: اوہ کورس جیہدے لئی ایہہ جائزہ اے۔"
-      },
-      {
         "property": "answers",
         "title": "جواب"
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "کوئز دا ناں",
-        "description": "تجزیاتی سسٹماں وچ xAPI شناخت لئی ورتیا جاوݨ والا کوئز دا ناں۔"
       }
     ],
     "advanced": [
@@ -47,6 +25,28 @@
         "property": "collapsed",
         "title": "سمٹیا ہویا شروع کرو",
         "description": "جدوں سمیٹن جوگا ہووے، اک بند قطار دے طور تے شروع کرو جیہڑی صرف سوال تے اوہدی حالت وکھاوے۔"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "گریڈنگ فارمیٹ",
+        "description": "OER Schema: ایس جائزے دا گریڈنگ فارمیٹ (جیویں پوائنٹ، حرف، فیصد، تکمیل)۔"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "سکھݨ دا مقصد",
+        "description": "OER Schema: ایس جائزے نال جڑیا سکھݨ دا مقصد۔"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "کوئز دا ناں",
+        "description": "تجزیاتی سسٹماں وچ xAPI شناخت لئی ورتیا جاوݨ والا کوئز دا ناں۔"
+      },
+      {
+        "property": "forCourse",
+        "title": "کورس",
+        "description": "OER Schema: اوہ کورس جیہدے لئی ایہہ جائزہ اے۔"
       }
     ]
   }

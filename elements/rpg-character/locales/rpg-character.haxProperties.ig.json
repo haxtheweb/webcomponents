@@ -11,11 +11,6 @@
         "description": "Okwu eji emepụta agwa na-enweghị usoro."
       },
       {
-        "property": "code",
-        "title": "Koodu agwa",
-        "description": "Mado koodu echekwara iji mepụtaghachi agwa ahụ."
-      },
-      {
         "property": "hat",
         "title": "Okpu",
         "description": "Ụdị okpu.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Ihe mkpuchi ihu",
-        "description": "Ihe mkpuchi a na-eyi n'ihu ma ọ bụ n'isi.",
-        "options": {
-          "none": "Ọ dịghị",
-          "lion": "Ọdụm",
-          "plague": "Dọkịta ọrịa otiti",
-          "theater": "Ihe nkiri",
-          "pumpkin": "Ugboguru",
-          "ghost": "Mmuo",
-          "mummy": "Mọmi",
-          "wrestler": "Ihe mkpuchi ihu mgba",
-          "block-head": "Isi blọk",
-          "web": "Ihe mkpuchi ihu ụdọ ududo",
-          "werewolf": "Ihu mmadụ-nkịta ọhịa",
-          "shadow": "Ihu onyinyo"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Ịchọ ihu mma",
-        "description": "Agba ihu ma ọ bụ lipstick.",
-        "options": {
-          "none": "Ọ dịghị",
-          "red-lipstick": "Lipstick uhie",
-          "pink-lipstick": "Lipstick pink",
-          "berry-lipstick": "Lipstick berry",
-          "clown": "Agba ihu onye ntụrụndụ",
-          "fangs": "Ezé mkpa",
-          "skull": "Agba okpokoro isi",
-          "zombie": "Agba zombie",
-          "red-nose": "Imi ọbara ọbara",
-          "white-beard": "Afụ ọcha",
-          "domino": "Ihe mkpuchi dike",
-          "carrot": "Imi karọt",
-          "bunny": "Imi oke bekee",
-          "mustache": "Ajị ọnụ",
-          "monster": "Agba ihu anụ ọjọọ",
-          "round-glasses": "Ugegbe okirikiri"
-        }
-      },
-      {
         "property": "expression",
         "title": "Ọdịdị ihu",
         "description": "Ọdịdị ihu.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Anụ ụlọ",
+        "description": "Anụ ụlọ n'akụkụ agwa.",
+        "options": {
+          "none": "Ọ dịghị",
+          "cat": "Pusi",
+          "dog": "Nkịta",
+          "bunny": "Oke bekee",
+          "goldfish": "Azụ ọlaedo",
+          "slime": "Ihe nkwonkwo",
+          "squirrel": "Osa",
+          "dragon": "Obere dragọn",
+          "parrot": "Icheoku",
+          "owl": "Ikwiikwii",
+          "bat": "Ụsụ"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Koodu agwa",
+        "description": "Mado koodu echekwara iji mepụtaghachi agwa ahụ."
+      },
+      {
+        "property": "mask",
+        "title": "Ihe mkpuchi ihu",
+        "description": "Ihe mkpuchi a na-eyi n'ihu ma ọ bụ n'isi.",
+        "options": {
+          "none": "Ọ dịghị",
+          "lion": "Ọdụm",
+          "plague": "Dọkịta ọrịa otiti",
+          "theater": "Ihe nkiri",
+          "pumpkin": "Ugboguru",
+          "ghost": "Mmuo",
+          "mummy": "Mọmi",
+          "wrestler": "Ihe mkpuchi ihu mgba",
+          "block-head": "Isi blọk",
+          "web": "Ihe mkpuchi ihu ụdọ ududo",
+          "werewolf": "Ihu mmadụ-nkịta ọhịa",
+          "shadow": "Ihu onyinyo"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Ịchọ ihu mma",
+        "description": "Agba ihu ma ọ bụ lipstick.",
+        "options": {
+          "none": "Ọ dịghị",
+          "red-lipstick": "Lipstick uhie",
+          "pink-lipstick": "Lipstick pink",
+          "berry-lipstick": "Lipstick berry",
+          "clown": "Agba ihu onye ntụrụndụ",
+          "fangs": "Ezé mkpa",
+          "skull": "Agba okpokoro isi",
+          "zombie": "Agba zombie",
+          "red-nose": "Imi ọbara ọbara",
+          "white-beard": "Afụ ọcha",
+          "domino": "Ihe mkpuchi dike",
+          "carrot": "Imi karọt",
+          "bunny": "Imi oke bekee",
+          "mustache": "Ajị ọnụ",
+          "monster": "Agba ihu anụ ọjọọ",
+          "round-glasses": "Ugegbe okirikiri"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Ederede ọkọlọtọ",
         "description": "Mkpụrụedemede ruo 4 ka a na-egosi n'ọkọlọtọ."
@@ -310,24 +330,6 @@
           "skates": "Skates",
           "skateboard": "Skateboard",
           "hoverboard": "Bọọdụ na-efe efe"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Anụ ụlọ",
-        "description": "Anụ ụlọ n'akụkụ agwa.",
-        "options": {
-          "none": "Ọ dịghị",
-          "cat": "Pusi",
-          "dog": "Nkịta",
-          "bunny": "Oke bekee",
-          "goldfish": "Azụ ọlaedo",
-          "slime": "Ihe nkwonkwo",
-          "squirrel": "Osa",
-          "dragon": "Obere dragọn",
-          "parrot": "Icheoku",
-          "owl": "Ikwiikwii",
-          "bat": "Ụsụ"
         }
       },
       {

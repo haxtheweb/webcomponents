@@ -4,17 +4,16 @@
     "description": "Imasewera zinthu zolumikizana za H5P kuchokera ku fayilo ya .h5p yokwezedwa, popanda seva ya H5P"
   },
   "settings": {
-    "configure": [
-      {
-        "slot": "",
-        "description": "Kwezani kapena lumikizani fayilo ya .h5p. Imatsegulidwa mu msakatuli; seva ya H5P siikufunika.",
-        "title": "Fayilo ya H5P"
-      }
-    ],
+    "configure": [],
     "advanced": [
       {
         "title": "Khodi yakale yoyika iframe",
         "description": "Ya zinthu zakale zokha zomwe zimaika iframe ya H5P kuchokera patsamba lina. Siyani yopanda kanthu ngati fayilo ya .h5p yaikidwa pamwambapa."
+      },
+      {
+        "slot": "",
+        "description": "Kwezani kapena lumikizani fayilo ya .h5p. Imatsegulidwa mu msakatuli; seva ya H5P siikufunika.",
+        "title": "Fayilo ya H5P"
       }
     ]
   }

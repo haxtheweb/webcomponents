@@ -4,7 +4,7 @@
     "description": "सध्याच्या पानाची उप-पाने दाखवणारा डायनॅमिक ब्लॉक"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "डायनॅमिक पद्धत",
@@ -14,7 +14,9 @@
           "parent": "पालकाची उप-पाने",
           "ancestor": "सर्वोच्च पूर्वजापासूनची सर्व उप-पाने"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "सुरुवातीचा स्तर"

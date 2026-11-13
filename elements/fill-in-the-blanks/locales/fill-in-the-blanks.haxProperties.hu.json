@@ -14,28 +14,6 @@
         "property": "statement",
         "title": "Állítás",
         "description": "Az állítás, amelyből a szavak megjelölése interakció készül."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "Értékelési formátum",
-        "description": "OER Schema: az értékelés pontozási formátuma (pl. pont, érdemjegy, százalék, teljesítés)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Tanulási cél",
-        "description": "OER Schema: az értékeléshez kapcsolódó tanulási cél."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kurzus",
-        "description": "OER Schema: a kurzus, amelyhez az értékelés készült."
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "A kvíz neve",
-        "description": "A kvíz neve, amely xAPI-alapú környezetekben az elem azonosítására szolgál"
       }
     ],
     "advanced": [
@@ -46,6 +24,28 @@
       {
         "title": "Induljon összecsukva",
         "description": "Ha összecsukható, zárt sorként indul, amely csak a kérdést és az állapotát mutatja."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Értékelési formátum",
+        "description": "OER Schema: az értékelés pontozási formátuma (pl. pont, érdemjegy, százalék, teljesítés)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Tanulási cél",
+        "description": "OER Schema: az értékeléshez kapcsolódó tanulási cél."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "A kvíz neve",
+        "description": "A kvíz neve, amely xAPI-alapú környezetekben az elem azonosítására szolgál"
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurzus",
+        "description": "OER Schema: a kurzus, amelyhez az értékelés készült."
       }
     ]
   }

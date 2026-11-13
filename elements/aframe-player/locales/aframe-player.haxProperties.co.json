@@ -11,6 +11,13 @@
         "description": "L'URL di stu schedariu AR."
       },
       {
+        "property": "skyColor",
+        "title": "Culore di u celu",
+        "description": "Sceglie u culore di u celu in a scena."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "Pusizione X di l'elementu in AR."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "Pusizione Z di l'elementu in AR."
-      },
-      {
-        "property": "skyColor",
-        "title": "Culore di u celu",
-        "description": "Sceglie u culore di u celu in a scena."
       }
     ]
   }

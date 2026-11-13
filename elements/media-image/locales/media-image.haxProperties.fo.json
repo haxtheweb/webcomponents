@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Myndatekstur",
         "description": "Myndatekstur til myndina."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Heiti á mynd",
-        "description": "Heiti til myndaspjaldrið."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Lýsing av mynd",
-        "description": "Lýsing til myndaspjaldrið."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Slókk myndaglugga",
         "description": "Slókk, at klikk opna myndina í einum myndakanningarglugga."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Heiti á mynd",
+        "description": "Heiti til myndaspjaldrið."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Lýsing av mynd",
+        "description": "Lýsing til myndaspjaldrið."
       }
     ],
     "developer": [

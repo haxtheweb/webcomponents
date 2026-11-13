@@ -14,16 +14,6 @@
         "property": "title",
         "title": "Aha ọzọ",
         "description": "Aha ọzọ jikọtara na isi mmalite koodu QR."
-      },
-      {
-        "property": "modulesize",
-        "title": "Nha",
-        "description": "Nha koodu QR."
-      },
-      {
-        "property": "margin",
-        "title": "Oke ọnụ",
-        "description": "Ihe mkpuchi koodu ahụ."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "Nha",
+        "description": "Nha koodu QR."
+      },
+      {
+        "property": "margin",
+        "title": "Oke ọnụ",
+        "description": "Ihe mkpuchi koodu ahụ."
       }
     ]
   }

@@ -32,7 +32,7 @@
   ],
   "cssProperties": [],
   "hax": {
-    "schema": "elements/a11y-tabs/lib/a11y-tab.js",
+    "schema": "elements/a11y-tabs/lib/a11y-tab.haxProperties.json",
     "gizmo": true,
     "properties": [
       "disabled",

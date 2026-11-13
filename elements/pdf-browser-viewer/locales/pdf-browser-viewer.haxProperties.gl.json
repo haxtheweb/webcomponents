@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Mensaxe de non compatible",
-        "description": "Mensaxe cando o navegador non pode mostrar ficheiros PDF."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Mensaxe da ligazón de non compatible",
-        "description": "Texto da ligazón cando o navegador non pode mostrar ficheiros PDF."
-      },
-      {
         "property": "width",
         "title": "Largura",
         "description": "Largura do visor de PDF."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Altura",
         "description": "Altura do visor de PDF."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Mensaxe de non compatible",
+        "description": "Mensaxe cando o navegador non pode mostrar ficheiros PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Mensaxe da ligazón de non compatible",
+        "description": "Texto da ligazón cando o navegador non pode mostrar ficheiros PDF."
       }
     ]
   }

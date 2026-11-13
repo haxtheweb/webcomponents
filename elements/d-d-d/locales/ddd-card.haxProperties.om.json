@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Xiyya Malee",
         "description": "Xiyya qabduu dhoksi."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Hidhoo: bakka banamu",
@@ -54,7 +52,9 @@
           "_top": "Foddaa olii - _top",
           "_parent": "Foddaa maatii - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Hidhoo: rel",

@@ -4,7 +4,7 @@
     "description": "Bloc dinimiciúil chun leanbh an leathanaigh reatha a thaispeáint"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "Modh dinimiciúil",
@@ -14,7 +14,9 @@
           "parent": "Leanaí an tuismitheora",
           "ancestor": "Gach leanbh ón sinsear is airde"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "Leibhéal tosaigh"

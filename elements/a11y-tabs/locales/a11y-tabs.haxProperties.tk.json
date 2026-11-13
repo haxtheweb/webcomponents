@@ -11,20 +11,17 @@
         "description": "Goýmalar toplumy üçin elýeterli belgi."
       },
       {
-        "property": "disabled",
-        "title": "Öçürilen",
-        "description": "Ähli goýmalary öçür."
-      },
-      {
-        "property": "hidden",
-        "title": "Gizlin",
-        "description": "Goýmalar toplumyny gizle."
-      },
-      {
         "property": "sticky",
         "title": "Berkidilen",
         "description": "Aýlananda keseligine goýmalary ýokarda sakla."
       },
+      {
+        "slot": "",
+        "title": "Goýmalar",
+        "description": "<a11y-tab/> elementleriniň yzygiderligi."
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "Ýerleşiş çägi",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "Nyşan çägi",
         "description": "Teksti nyşanlar bilen görkezmek üçin çäk. Deslapky baha 0; diňe nyşan tertibi üçin -1 ulanyň."
-      },
-      {
-        "slot": "",
-        "title": "Goýmalar",
-        "description": "<a11y-tab/> elementleriniň yzygiderligi."
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "Öçürilen",
+        "description": "Ähli goýmalary öçür."
+      },
+      {
+        "property": "hidden",
+        "title": "Gizlin",
+        "description": "Goýmalar toplumyny gizle."
+      },
       {
         "property": "id",
         "title": "Özboluşly ID",

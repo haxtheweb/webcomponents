@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Titulek",
         "description": "Popisek obrázku."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Název obrázku",
-        "description": "Název popisku obrázku."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Popis obrázku",
-        "description": "Popis popisku obrázku."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Vypnout modální okno obrázku",
         "description": "Vypnout otevírání obrázku kliknutím v dialogu inspektoru obrázků."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Název obrázku",
+        "description": "Název popisku obrázku."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Popis obrázku",
+        "description": "Popis popisku obrázku."
       }
     ],
     "developer": [

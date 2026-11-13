@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "Tag / Pigułka",
+    "title": "Tag",
     "description": "Kompaktowa etykieta w kształcie pigułki z opcjonalnym kolorem akcentu, przyciskiem anulowania lub przełącznikiem."
   },
   "settings": {
@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Automatyczny kolor akcentu",
         "description": "Automatycznie wyznaczaj kolor akcentu na podstawie tekstu etykiety."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Przycisk anulowania",
-        "description": "Pokaż przycisk ikony usuwania/anulowania wewnątrz pigułki."
-      },
-      {
-        "property": "readonly",
-        "title": "Tylko do odczytu",
-        "description": "Ukryj przycisk anulowania, aby pigułka służyła tylko do wyświetlania."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Niebieskoszary",
           "grey": "Szary"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Przycisk anulowania",
+        "description": "Pokaż przycisk ikony usuwania/anulowania wewnątrz pigułki."
+      },
+      {
+        "property": "readonly",
+        "title": "Tylko do odczytu",
+        "description": "Ukryj przycisk anulowania, aby pigułka służyła tylko do wyświetlania."
       }
     ]
   }

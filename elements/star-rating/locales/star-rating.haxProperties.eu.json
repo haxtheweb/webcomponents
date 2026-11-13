@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Interaktiboa",
         "description": "Baimendu erabiltzaileari balorazioa ezartzea."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Errubrika-eskala modua",

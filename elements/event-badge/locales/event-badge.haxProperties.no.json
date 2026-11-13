@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Arrangementsmerke",
-    "description": "Komponent for arrangementsmerke."
+    "description": "Et navneskilt i konferansestil med bilde, navn og organisasjon."
   },
   "settings": {
     "configure": [

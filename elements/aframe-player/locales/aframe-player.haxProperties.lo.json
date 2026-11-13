@@ -11,6 +11,13 @@
         "description": "URL ຂອງໄຟລ໌ AR ນີ້."
       },
       {
+        "property": "skyColor",
+        "title": "ສີທ້ອງຟ້າ",
+        "description": "ເລືອກສີຂອງທ້ອງຟ້າໃນສາກ."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "ຕຳແໜ່ງ X ຂອງອົງປະກອບໃນ AR."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "ຕຳແໜ່ງ Z ຂອງອົງປະກອບໃນ AR."
-      },
-      {
-        "property": "skyColor",
-        "title": "ສີທ້ອງຟ້າ",
-        "description": "ເລືອກສີຂອງທ້ອງຟ້າໃນສາກ."
       }
     ]
   }

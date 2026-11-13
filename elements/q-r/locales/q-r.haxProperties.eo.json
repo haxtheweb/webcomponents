@@ -14,16 +14,6 @@
         "property": "title",
         "title": "Alternativa titolo",
         "description": "Alternativa titolo ligita al la fonto de la QR-kodo."
-      },
-      {
-        "property": "modulesize",
-        "title": "Grandeco",
-        "description": "Grandeco de la QR-kodo."
-      },
-      {
-        "property": "margin",
-        "title": "Marĝeno",
-        "description": "Ĉirkaŭaĵo de la kodo."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "Grandeco",
+        "description": "Grandeco de la QR-kodo."
+      },
+      {
+        "property": "margin",
+        "title": "Marĝeno",
+        "description": "Ĉirkaŭaĵo de la kodo."
       }
     ]
   }

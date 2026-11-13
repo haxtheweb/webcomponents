@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Parallax na larawan",
-    "description": "Pag-scroll ng larawan"
+    "description": "Isang larawang buong lapad na mas mabagal mag-scroll kaysa sa pahina, na may pamagat sa ibabaw."
   },
   "settings": {
     "configure": [

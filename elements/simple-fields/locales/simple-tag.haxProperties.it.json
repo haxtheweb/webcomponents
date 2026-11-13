@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "Tag / Etichetta",
+    "title": "Tag",
     "description": "Un'etichetta compatta a forma di pillola con colore di accento, pulsante di annullamento o interruttore facoltativi."
   },
   "settings": {
@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Colore di accento automatico",
         "description": "Ricava automaticamente il colore di accento dal testo dell'etichetta."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Pulsante di annullamento",
-        "description": "Mostra un pulsante icona di rimozione/annullamento nell'etichetta."
-      },
-      {
-        "property": "readonly",
-        "title": "Sola lettura",
-        "description": "Nascondi il pulsante di annullamento in modo che l'etichetta sia solo visualizzata."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Grigio blu",
           "grey": "Grigio"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Pulsante di annullamento",
+        "description": "Mostra un pulsante icona di rimozione/annullamento nell'etichetta."
+      },
+      {
+        "property": "readonly",
+        "title": "Sola lettura",
+        "description": "Nascondi il pulsante di annullamento in modo che l'etichetta sia solo visualizzata."
       }
     ]
   }

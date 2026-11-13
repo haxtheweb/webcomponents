@@ -9,7 +9,9 @@
         "slot": "",
         "title": "Цитаты",
         "description": "Библиографические записи в этом списке"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "Курс",

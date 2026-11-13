@@ -21,15 +21,6 @@
         "description": "Dagsetningin þegar heimildin var skoðuð."
       },
       {
-        "property": "scope",
-        "title": "Umfang",
-        "description": "Umfang einingar sem vitna á í.",
-        "options": {
-          "sibling": "Systureining",
-          "parent": "Yfireining"
-        }
-      },
-      {
         "property": "license",
         "title": "Leyfi",
         "description": "Leyfi verksins sem vitnað er í."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Höfundur",
         "description": "Höfundur eða eigandi verksins sem vitnað er í."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Umfang",
+        "description": "Umfang einingar sem vitna á í.",
+        "options": {
+          "sibling": "Systureining",
+          "parent": "Yfireining"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "OER Schema-tegund",

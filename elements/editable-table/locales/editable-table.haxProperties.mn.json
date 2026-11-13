@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Шүүлтүүр зөвшөөрөх",
         "description": "Баганын утгаар шүүхийг зөвшөөрөх."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Тоон загвар",
-        "description": "Тоон баганад тоон загвар хэрэглэх."
-      },
-      {
-        "property": "responsive",
-        "title": "Дасан зохицох",
-        "description": "Жижиг дэлгэц дээр хүснэгтийн байршлыг тохируулах."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Рубрикийн горим",
-        "description": "Rubric, RubricScale, RubricCriterion, RubricLevel мета өгөгдөл гаргахын тулд энэ хүснэгтийг OER Schema Rubric гэж тайлбарлах."
-      },
-      {
-        "property": "rubricType",
-        "title": "Рубрикийн төрөл",
-        "description": "oer:rubricType болгон гаргах рубрикийн хэв маяг (зөвхөн Рубрикийн горим асаалттай үед утгатай).",
-        "options": {
-          "": "(байхгүй)",
-          "analytic": "Шинжилгээний",
-          "holistic": "Нэгдсэн",
-          "single-point": "Нэг оноот",
-          "checklist": "Шалгах жагсаалт"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Хэвлэх товч",
         "description": "Зөвхөн хүснэгтийг хэвлэх товч нэмэх."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Тоон загвар",
+        "description": "Тоон баганад тоон загвар хэрэглэх."
+      },
+      {
+        "property": "responsive",
+        "title": "Дасан зохицох",
+        "description": "Жижиг дэлгэц дээр хүснэгтийн байршлыг тохируулах."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Рубрикийн горим",
+        "description": "Rubric, RubricScale, RubricCriterion, RubricLevel мета өгөгдөл гаргахын тулд энэ хүснэгтийг OER Schema Rubric гэж тайлбарлах."
+      },
+      {
+        "property": "rubricType",
+        "title": "Рубрикийн төрөл",
+        "description": "oer:rubricType болгон гаргах рубрикийн хэв маяг (зөвхөн Рубрикийн горим асаалттай үед утгатай).",
+        "options": {
+          "": "(байхгүй)",
+          "analytic": "Шинжилгээний",
+          "holistic": "Нэгдсэн",
+          "single-point": "Нэг оноот",
+          "checklist": "Шалгах жагсаалт"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "CSV өгөгдөл",
         "description": "Байршуулсан CSV файлаас хүснэгт үүсгэх."
       }
-    ]
+    ],
+    "developer": []
   }
 }

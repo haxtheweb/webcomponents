@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "단답형 문제",
-    "description": "사용자가 기본 질문에 답하게 합니다"
+    "description": "학습자가 한두 문장으로 답하는 질문."
   },
   "settings": {
     "configure": [

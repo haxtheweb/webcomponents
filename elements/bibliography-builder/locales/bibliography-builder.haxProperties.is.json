@@ -9,7 +9,9 @@
         "slot": "",
         "title": "Tilvitnanir",
         "description": "Heimildafærslur í þessari heimildaskrá"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "Námskeið",

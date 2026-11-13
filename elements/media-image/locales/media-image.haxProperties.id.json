@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Keterangan",
         "description": "Keterangan untuk gambar."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Judul Gambar",
-        "description": "Judul untuk label gambar."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Deskripsi Gambar",
-        "description": "Deskripsi untuk label gambar."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Nonaktifkan modal gambar",
         "description": "Nonaktifkan klik yang membuka gambar di dialog pemeriksa gambar."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Judul Gambar",
+        "description": "Judul untuk label gambar."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Deskripsi Gambar",
+        "description": "Deskripsi untuk label gambar."
       }
     ],
     "developer": [

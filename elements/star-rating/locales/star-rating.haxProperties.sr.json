@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Оцена звездицама",
-    "description": "Виџет за приказ оцене или дугме за оцењивање."
+    "description": "Прикажите оцену звездицама или пустите читаоце да је изаберу."
   },
   "settings": {
     "configure": [
@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Интерактивно",
         "description": "Дозволи кориснику да постави оцену."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Режим скале рубрике",

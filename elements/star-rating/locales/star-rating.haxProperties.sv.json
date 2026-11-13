@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Stjärnbetyg",
-    "description": "Widget för att visa betyg eller knapp för att betygsätta."
+    "description": "Visa ett stjärnbetyg eller låt läsarna välja ett."
   },
   "settings": {
     "configure": [
@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Interaktiv",
         "description": "Låt användaren ange betyget."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Läge för bedömningsskala",

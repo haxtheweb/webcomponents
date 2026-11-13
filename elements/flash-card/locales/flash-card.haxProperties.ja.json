@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "画像ソース",
         "description": "カードに使う画像ファイル。画像キーワードより優先されます。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "画像キーワード",
+        "description": "ランダム画像のキーワード。画像ソースが優先されます。"
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "学習目標",
         "description": "OER Schema: この練習が支える学習目標のIDまたはURL。"
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "画像キーワード",
-        "description": "ランダム画像のキーワード。画像ソースが優先されます。"
       }
     ]
   }

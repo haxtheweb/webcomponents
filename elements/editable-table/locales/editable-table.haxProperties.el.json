@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Να επιτρέπεται φιλτράρισμα",
         "description": "Να επιτρέπεται το φιλτράρισμα με βάση τις τιμές στηλών."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Αριθμητική μορφοποίηση",
-        "description": "Εφαρμογή αριθμητικής μορφοποίησης στις αριθμητικές στήλες."
-      },
-      {
-        "property": "responsive",
-        "title": "Προσαρμοστικό",
-        "description": "Προσαρμογή της διάταξης του πίνακα σε μικρές οθόνες."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Λειτουργία ρουμπρίκας",
-        "description": "Ερμηνεία αυτού του πίνακα ως Rubric του OER Schema ώστε να παράγονται μεταδεδομένα Rubric, RubricScale, RubricCriterion και RubricLevel."
-      },
-      {
-        "property": "rubricType",
-        "title": "Τύπος ρουμπρίκας",
-        "description": "Στυλ ρουμπρίκας που παράγεται ως oer:rubricType (έχει νόημα μόνο όταν η Λειτουργία ρουμπρίκας είναι ενεργή).",
-        "options": {
-          "": "(κανένα)",
-          "analytic": "Αναλυτική",
-          "holistic": "Ολιστική",
-          "single-point": "Μονού σημείου",
-          "checklist": "Λίστα ελέγχου"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Κουμπί εκτύπωσης",
         "description": "Προσθήκη κουμπιού για εκτύπωση μόνο του πίνακα."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Αριθμητική μορφοποίηση",
+        "description": "Εφαρμογή αριθμητικής μορφοποίησης στις αριθμητικές στήλες."
+      },
+      {
+        "property": "responsive",
+        "title": "Προσαρμοστικό",
+        "description": "Προσαρμογή της διάταξης του πίνακα σε μικρές οθόνες."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Λειτουργία ρουμπρίκας",
+        "description": "Ερμηνεία αυτού του πίνακα ως Rubric του OER Schema ώστε να παράγονται μεταδεδομένα Rubric, RubricScale, RubricCriterion και RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "Τύπος ρουμπρίκας",
+        "description": "Στυλ ρουμπρίκας που παράγεται ως oer:rubricType (έχει νόημα μόνο όταν η Λειτουργία ρουμπρίκας είναι ενεργή).",
+        "options": {
+          "": "(κανένα)",
+          "analytic": "Αναλυτική",
+          "holistic": "Ολιστική",
+          "single-point": "Μονού σημείου",
+          "checklist": "Λίστα ελέγχου"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "Δεδομένα CSV",
         "description": "Δημιουργία πίνακα από μεταφορτωμένο αρχείο CSV."
       }
-    ]
+    ],
+    "developer": []
   }
 }

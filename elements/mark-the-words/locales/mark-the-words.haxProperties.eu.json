@@ -16,30 +16,8 @@
         "description": "Hitzak markatzeko interakzio bihurtuko den enuntziatua."
       },
       {
-        "property": "gradingFormat",
-        "title": "Kalifikazio formatua",
-        "description": "OER Schema: ebaluazio honen kalifikazio formatua (adib. puntuak, letra, ehunekoa, osatzea)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Ikaskuntza helburua",
-        "description": "OER Schema: ebaluazio honi lotutako ikaskuntza helburua."
-      },
-      {
-        "property": "forCourse",
-        "title": "Ikastaroa",
-        "description": "OER Schema: ebaluazio hau zein ikastarorako den."
-      },
-      {
         "property": "answers",
         "title": "Erantzunak"
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Galdetegiaren izena",
-        "description": "xAPI bidezko inguruneetan elementu hau identifikatzeko pasatzen den galdetegiaren izena"
       }
     ],
     "advanced": [
@@ -52,6 +30,28 @@
         "property": "collapsed",
         "title": "Hasi tolestuta",
         "description": "Tolesgarria denean, itxitako errenkada gisa hasten da, galdera eta haren egoera soilik erakutsiz."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Kalifikazio formatua",
+        "description": "OER Schema: ebaluazio honen kalifikazio formatua (adib. puntuak, letra, ehunekoa, osatzea)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Ikaskuntza helburua",
+        "description": "OER Schema: ebaluazio honi lotutako ikaskuntza helburua."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Galdetegiaren izena",
+        "description": "xAPI bidezko inguruneetan elementu hau identifikatzeko pasatzen den galdetegiaren izena"
+      },
+      {
+        "property": "forCourse",
+        "title": "Ikastaroa",
+        "description": "OER Schema: ebaluazio hau zein ikastarorako den."
       }
     ]
   }

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "Περιτύλιγμα για ενσωματώσεις του προγράμματος αναπαραγωγής Spotify."
+    "description": "Ενσωματώστε ένα κομμάτι, άλμπουμ ή λίστα του Spotify."
   },
   "settings": {
     "configure": [

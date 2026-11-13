@@ -11,11 +11,6 @@
         "description": "Rastgele karakter oluşturmak için kullanılan sözcük."
       },
       {
-        "property": "code",
-        "title": "Karakter kodu",
-        "description": "O karakteri yeniden oluşturmak için kayıtlı bir kod yapıştırın."
-      },
-      {
         "property": "hat",
         "title": "Şapka",
         "description": "Şapka stili.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Maske",
-        "description": "Yüze veya başa takılan maske.",
-        "options": {
-          "none": "Yok",
-          "lion": "Aslan",
-          "plague": "Veba doktoru",
-          "theater": "Tiyatro",
-          "pumpkin": "Balkabağı",
-          "ghost": "Hayalet",
-          "mummy": "Mumya",
-          "wrestler": "Güreşçi maskesi",
-          "block-head": "Blok kafa",
-          "web": "Ağ maskesi",
-          "werewolf": "Kurt adam yüzü",
-          "shadow": "Gölgeli yüz"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Makyaj",
-        "description": "Yüz boyası veya ruj.",
-        "options": {
-          "none": "Yok",
-          "red-lipstick": "Kırmızı ruj",
-          "pink-lipstick": "Pembe ruj",
-          "berry-lipstick": "Böğürtlen rengi ruj",
-          "clown": "Palyaço boyası",
-          "fangs": "Sivri dişler",
-          "skull": "Kurukafa boyası",
-          "zombie": "Zombi boyası",
-          "red-nose": "Kırmızı burun",
-          "white-beard": "Beyaz sakal",
-          "domino": "Kahraman maskesi",
-          "carrot": "Havuç burun",
-          "bunny": "Tavşan burnu",
-          "mustache": "Bıyık",
-          "monster": "Canavar yüz boyası",
-          "round-glasses": "Yuvarlak gözlük"
-        }
-      },
-      {
         "property": "expression",
         "title": "İfade",
         "description": "Yüz ifadesi.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Evcil hayvan",
+        "description": "Karakterin yanındaki evcil hayvan.",
+        "options": {
+          "none": "Yok",
+          "cat": "Kedi",
+          "dog": "Köpek",
+          "bunny": "Tavşan",
+          "goldfish": "Japon balığı",
+          "slime": "Balçık",
+          "squirrel": "Sincap",
+          "dragon": "Yavru ejderha",
+          "parrot": "Papağan",
+          "owl": "Baykuş",
+          "bat": "Yarasa"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Karakter kodu",
+        "description": "O karakteri yeniden oluşturmak için kayıtlı bir kod yapıştırın."
+      },
+      {
+        "property": "mask",
+        "title": "Maske",
+        "description": "Yüze veya başa takılan maske.",
+        "options": {
+          "none": "Yok",
+          "lion": "Aslan",
+          "plague": "Veba doktoru",
+          "theater": "Tiyatro",
+          "pumpkin": "Balkabağı",
+          "ghost": "Hayalet",
+          "mummy": "Mumya",
+          "wrestler": "Güreşçi maskesi",
+          "block-head": "Blok kafa",
+          "web": "Ağ maskesi",
+          "werewolf": "Kurt adam yüzü",
+          "shadow": "Gölgeli yüz"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Makyaj",
+        "description": "Yüz boyası veya ruj.",
+        "options": {
+          "none": "Yok",
+          "red-lipstick": "Kırmızı ruj",
+          "pink-lipstick": "Pembe ruj",
+          "berry-lipstick": "Böğürtlen rengi ruj",
+          "clown": "Palyaço boyası",
+          "fangs": "Sivri dişler",
+          "skull": "Kurukafa boyası",
+          "zombie": "Zombi boyası",
+          "red-nose": "Kırmızı burun",
+          "white-beard": "Beyaz sakal",
+          "domino": "Kahraman maskesi",
+          "carrot": "Havuç burun",
+          "bunny": "Tavşan burnu",
+          "mustache": "Bıyık",
+          "monster": "Canavar yüz boyası",
+          "round-glasses": "Yuvarlak gözlük"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Bayrak yazısı",
         "description": "Bayrakta gösterilen en fazla 4 harf."
@@ -310,24 +330,6 @@
           "skates": "Patenler",
           "skateboard": "Kaykay",
           "hoverboard": "Uçan kaykay"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Evcil hayvan",
-        "description": "Karakterin yanındaki evcil hayvan.",
-        "options": {
-          "none": "Yok",
-          "cat": "Kedi",
-          "dog": "Köpek",
-          "bunny": "Tavşan",
-          "goldfish": "Japon balığı",
-          "slime": "Balçık",
-          "squirrel": "Sincap",
-          "dragon": "Yavru ejderha",
-          "parrot": "Papağan",
-          "owl": "Baykuş",
-          "bat": "Yarasa"
         }
       },
       {

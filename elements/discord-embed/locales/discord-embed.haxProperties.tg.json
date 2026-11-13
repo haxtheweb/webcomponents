@@ -9,7 +9,9 @@
         "property": "source",
         "title": "URL-и манбаъ",
         "description": "URL-и манбаъ."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Баландӣ",

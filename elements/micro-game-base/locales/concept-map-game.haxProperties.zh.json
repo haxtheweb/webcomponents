@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "概念地图游戏",
-    "description": "一个简短的键盘游戏。角色走向地图上的每个概念，概念会自我介绍。全部碰到后会有彩纸和一条可复制的提示词。"
+    "description": "一款简短的键盘游戏，角色在地图上行走，每个概念都会自行讲解。"
   },
   "settings": {
     "configure": [
@@ -86,7 +86,9 @@
         "property": "gameTitle",
         "title": "游戏名称",
         "description": "在进度事件和 OER Schema 标记中为这个游戏命名。"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "游戏 ID",

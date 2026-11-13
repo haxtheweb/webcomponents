@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "Silt / pill",
+    "title": "Silt",
     "description": "Kompaktne pillikujuline silt valikulise rõhuvärvi, tühistamisnupu või lülitiga."
   },
   "settings": {
@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Automaatne rõhuvärv",
         "description": "Tuleta rõhuvärv automaatselt sildi tekstist."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Tühistamisnupp",
-        "description": "Kuva pilli sees eemaldamise/tühistamise ikoonnupp."
-      },
-      {
-        "property": "readonly",
-        "title": "Kirjutuskaitstud",
-        "description": "Peida tühistamisnupp, et pill oleks ainult kuvamiseks."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Sinakashall",
           "grey": "Hall"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Tühistamisnupp",
+        "description": "Kuva pilli sees eemaldamise/tühistamise ikoonnupp."
+      },
+      {
+        "property": "readonly",
+        "title": "Kirjutuskaitstud",
+        "description": "Peida tühistamisnupp, et pill oleks ainult kuvamiseks."
       }
     ]
   }

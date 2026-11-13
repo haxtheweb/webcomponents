@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Hộp hoạt động",
-    "description": "Khối tiêu đề nhỏ có định dạng."
+    "description": "Tiêu đề có nhãn đánh dấu phần bắt đầu của một hoạt động."
   },
   "settings": {
     "configure": [

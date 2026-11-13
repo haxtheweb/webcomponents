@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "דונאט התקדמות",
-    "description": "דונאט התקדמות"
+    "description": "תרשים טבעת שמציג התקדמות לקראת סך הכול."
   },
   "settings": {
     "configure": [
@@ -26,11 +26,6 @@
         "description": "טקסט חלופי לתמונה."
       },
       {
-        "property": "animated",
-        "title": "מונפש",
-        "description": "האם ההתקדמות מונפשת בטעינה הראשונה"
-      },
-      {
         "property": "complete",
         "title": "הושלם",
         "description": "מערך של ערכים שהושלמו."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "סך הכול",
         "description": "הסך הכולל כאשר כל הפריטים הושלמו."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "מונפש",
+        "description": "האם ההתקדמות מונפשת בטעינה הראשונה"
       },
       {
         "property": "startAngle",

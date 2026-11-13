@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "ภาพโปสเตอร์",
         "description": "URL ของภาพโปสเตอร์"
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "แทร็กข้อความ",
         "description": "คำบรรยายแบบปิด คำบรรยาย คำอธิบาย และแทร็กข้อความอื่นๆ สำหรับวิดีโอ"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "เวลาเริ่มต้น",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "แทร็กเสียงบรรยายภาพ",
         "description": "URL ของแทร็กเสียงบรรยายภาพ (ไฟล์ MP3) ที่บรรยายองค์ประกอบด้านภาพ"
+      },
+      {
+        "property": "accentColor",
+        "title": "สีเน้น",
+        "description": "(เลิกใช้แล้ว) เลือกสีเน้นสำหรับเครื่องเล่น"
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "ภาษา",
         "description": "ภาษาของสื่อ"
-      },
-      {
-        "property": "accentColor",
-        "title": "สีเน้น",
-        "description": "(เลิกใช้แล้ว) เลือกสีเน้นสำหรับเครื่องเล่น"
       }
     ]
   }

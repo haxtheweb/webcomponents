@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "អន្តរកម្ម",
         "description": "អនុញ្ញាតឱ្យអ្នកប្រើធ្វើអន្តរកម្មដើម្បីកំណត់ការវាយតម្លៃ។"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "របៀបមាត្រដ្ឋានរូប្រិក",

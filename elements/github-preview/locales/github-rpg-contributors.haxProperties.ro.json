@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Listă de contribuitori GitHub",
-    "description": "Afișați ca personaje RPG folosind API-ul GitHub."
+    "description": "Afișează contribuitorii unui depozit ca personaje RPG."
   },
   "settings": {
     "configure": [

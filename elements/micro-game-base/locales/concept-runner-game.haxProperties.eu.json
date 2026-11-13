@@ -89,7 +89,9 @@
         "property": "gameTitle",
         "title": "Jokoaren izena",
         "description": "Joko honi izena ematen dio aurrerapen-gertaeretan eta OER Schema markaketan."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Jokoaren IDa",

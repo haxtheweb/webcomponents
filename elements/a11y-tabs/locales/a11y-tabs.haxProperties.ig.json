@@ -11,20 +11,17 @@
         "description": "Aha a na-enweta maka otu taabụ ahụ."
       },
       {
-        "property": "disabled",
-        "title": "Agbanyụrụ",
-        "description": "Gbanyụọ taabụ niile."
-      },
-      {
-        "property": "hidden",
-        "title": "Ezoro ezo",
-        "description": "Zoo otu taabụ ahụ."
-      },
-      {
         "property": "sticky",
         "title": "Na-arapara",
         "description": "Debe taabụ kwụ ọnọdụ n'elu mgbe a na-akpụgharị."
       },
+      {
+        "slot": "",
+        "title": "Taabụ",
+        "description": "Usoro ihe <a11y-tab/>."
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "Ebe Mgbanwe Nhazi",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "Ebe Mgbanwe Akara Ngosi",
         "description": "Ebe mgbanwe maka igosi ederede na akara ngosi. Ndabara bụ 0; jiri -1 maka ọnọdụ naanị akara ngosi."
-      },
-      {
-        "slot": "",
-        "title": "Taabụ",
-        "description": "Usoro ihe <a11y-tab/>."
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "Agbanyụrụ",
+        "description": "Gbanyụọ taabụ niile."
+      },
+      {
+        "property": "hidden",
+        "title": "Ezoro ezo",
+        "description": "Zoo otu taabụ ahụ."
+      },
       {
         "property": "id",
         "title": "ID Pụrụ Iche",

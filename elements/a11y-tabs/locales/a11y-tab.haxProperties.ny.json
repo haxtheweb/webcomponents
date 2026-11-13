@@ -10,10 +10,6 @@
         "title": "Chizindikiro cha Tabu"
       },
       {
-        "property": "disabled",
-        "title": "Zoletsedwa"
-      },
-      {
         "property": "label",
         "title": "Dzina la Tabu"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "ID Yapadera"
-      },
-      {
         "property": "flag",
         "title": "Mawu a Mbendera Osankha"
       },
       {
         "property": "flagIcon",
         "title": "Chizindikiro cha Mbendera Chosankha"
+      },
+      {
+        "property": "disabled",
+        "title": "Zoletsedwa"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "ID Yapadera"
       }
     ]
   }

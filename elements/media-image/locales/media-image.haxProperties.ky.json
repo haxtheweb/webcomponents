@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Жазуу",
         "description": "Сүрөттүн жазуусу."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Сүрөттүн аталышы",
-        "description": "Сүрөт белгисинин аталышы."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Сүрөттүн сыпаттамасы",
-        "description": "Сүрөт белгисинин сыпаттамасы."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Сүрөттүн модалдык терезесин өчүрүү",
         "description": "Басканда сүрөттүн сүрөт карагыч диалогунда ачылышын өчүрүү."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Сүрөттүн аталышы",
+        "description": "Сүрөт белгисинин аталышы."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Сүрөттүн сыпаттамасы",
+        "description": "Сүрөт белгисинин сыпаттамасы."
       }
     ],
     "developer": [

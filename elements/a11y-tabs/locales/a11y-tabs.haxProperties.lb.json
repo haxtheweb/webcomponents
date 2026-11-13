@@ -11,20 +11,17 @@
         "description": "Accessibelt Etikett fir d'Tab-Grupp."
       },
       {
-        "property": "disabled",
-        "title": "Desaktivéiert",
-        "description": "All Tabs desaktivéieren."
-      },
-      {
-        "property": "hidden",
-        "title": "Verstoppt",
-        "description": "D'Tab-Grupp verstoppen."
-      },
-      {
         "property": "sticky",
         "title": "Fixéiert",
         "description": "Horizontal Tabs beim Scrollen uewen halen."
       },
+      {
+        "slot": "",
+        "title": "Tabs",
+        "description": "Rei vun <a11y-tab/>-Elementer."
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "Layout-Breakpoint",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "Ikon-Breakpoint",
         "description": "Breakpoint fir Text mat Ikonen ze weisen. Standard ass 0; -1 fir nëmmen Ikonen."
-      },
-      {
-        "slot": "",
-        "title": "Tabs",
-        "description": "Rei vun <a11y-tab/>-Elementer."
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "Desaktivéiert",
+        "description": "All Tabs desaktivéieren."
+      },
+      {
+        "property": "hidden",
+        "title": "Verstoppt",
+        "description": "D'Tab-Grupp verstoppen."
+      },
       {
         "property": "id",
         "title": "Eendeiteg ID",

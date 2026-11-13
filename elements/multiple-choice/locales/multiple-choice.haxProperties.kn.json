@@ -21,30 +21,8 @@
         "description": "ಒಂದೇ ಉತ್ತರವನ್ನು ಮಾತ್ರ ಅನುಮತಿಸಿ."
       },
       {
-        "property": "gradingFormat",
-        "title": "ಶ್ರೇಣೀಕರಣ ಸ್ವರೂಪ",
-        "description": "OER Schema: ಈ ಮೌಲ್ಯಮಾಪನದ ಶ್ರೇಣೀಕರಣ ಸ್ವರೂಪ (ಉದಾ. ಅಂಕಗಳು, ಗ್ರೇಡ್ ಅಕ್ಷರ, ಶೇಕಡಾ, ಪೂರ್ಣಗೊಳಿಕೆ)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "ಕಲಿಕಾ ಉದ್ದೇಶ",
-        "description": "OER Schema: ಈ ಮೌಲ್ಯಮಾಪನಕ್ಕೆ ಸಂಬಂಧಿಸಿದ ಕಲಿಕಾ ಉದ್ದೇಶ."
-      },
-      {
-        "property": "forCourse",
-        "title": "ಕೋರ್ಸ್",
-        "description": "OER Schema: ಈ ಮೌಲ್ಯಮಾಪನ ಉದ್ದೇಶಿಸಿರುವ ಕೋರ್ಸ್."
-      },
-      {
         "property": "answers",
         "title": "ಉತ್ತರಗಳು"
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "ರಸಪ್ರಶ್ನೆಯ ಹೆಸರು",
-        "description": "ವಿಶ್ಲೇಷಣಾ ವ್ಯವಸ್ಥೆಗಳಲ್ಲಿ xAPI ಗುರುತಿಸುವಿಕೆಗೆ ಬಳಸುವ ರಸಪ್ರಶ್ನೆಯ ಹೆಸರು."
       }
     ],
     "advanced": [
@@ -57,6 +35,28 @@
         "property": "collapsed",
         "title": "ಮಡಚಿದ ಸ್ಥಿತಿಯಲ್ಲಿ ಪ್ರಾರಂಭಿಸಿ",
         "description": "ಮಡಚಬಹುದಾದಾಗ, ಪ್ರಶ್ನೆ ಮತ್ತು ಅದರ ಸ್ಥಿತಿಯನ್ನು ಮಾತ್ರ ತೋರಿಸುವ ಮುಚ್ಚಿದ ಸಾಲಾಗಿ ಪ್ರಾರಂಭವಾಗುತ್ತದೆ."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "ಶ್ರೇಣೀಕರಣ ಸ್ವರೂಪ",
+        "description": "OER Schema: ಈ ಮೌಲ್ಯಮಾಪನದ ಶ್ರೇಣೀಕರಣ ಸ್ವರೂಪ (ಉದಾ. ಅಂಕಗಳು, ಗ್ರೇಡ್ ಅಕ್ಷರ, ಶೇಕಡಾ, ಪೂರ್ಣಗೊಳಿಕೆ)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "ಕಲಿಕಾ ಉದ್ದೇಶ",
+        "description": "OER Schema: ಈ ಮೌಲ್ಯಮಾಪನಕ್ಕೆ ಸಂಬಂಧಿಸಿದ ಕಲಿಕಾ ಉದ್ದೇಶ."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "ರಸಪ್ರಶ್ನೆಯ ಹೆಸರು",
+        "description": "ವಿಶ್ಲೇಷಣಾ ವ್ಯವಸ್ಥೆಗಳಲ್ಲಿ xAPI ಗುರುತಿಸುವಿಕೆಗೆ ಬಳಸುವ ರಸಪ್ರಶ್ನೆಯ ಹೆಸರು."
+      },
+      {
+        "property": "forCourse",
+        "title": "ಕೋರ್ಸ್",
+        "description": "OER Schema: ಈ ಮೌಲ್ಯಮಾಪನ ಉದ್ದೇಶಿಸಿರುವ ಕೋರ್ಸ್."
       }
     ]
   }

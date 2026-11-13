@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "버튼",
         "description": "텍스트 아래에 표시되는 버튼 그룹입니다."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "앵커 텍스트",
         "description": "탐색에 표시되는 앵커 레이블입니다."
       }
-    ]
+    ],
+    "developer": []
   }
 }

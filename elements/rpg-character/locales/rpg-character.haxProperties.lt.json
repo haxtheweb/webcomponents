@@ -11,11 +11,6 @@
         "description": "Žodis, naudojamas atsitiktiniam personažui sugeneruoti."
       },
       {
-        "property": "code",
-        "title": "Veikėjo kodas",
-        "description": "Įklijuokite išsaugotą kodą, kad atkurtumėte tą veikėją."
-      },
-      {
         "property": "hat",
         "title": "Kepurė",
         "description": "Kepurės stilius.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Kaukė",
-        "description": "Kaukė, dėvima ant veido ar galvos.",
-        "options": {
-          "none": "Nėra",
-          "lion": "Liūtas",
-          "plague": "Maro gydytojas",
-          "theater": "Teatras",
-          "pumpkin": "Moliūgas",
-          "ghost": "Vaiduoklis",
-          "mummy": "Mumija",
-          "wrestler": "Imtynininko kaukė",
-          "block-head": "Kaladėlių galva",
-          "web": "Voratinklio kaukė",
-          "werewolf": "Vilkolakio veidas",
-          "shadow": "Šešėlinis veidas"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Makiažas",
-        "description": "Veido dažai arba lūpų dažai.",
-        "options": {
-          "none": "Nėra",
-          "red-lipstick": "Raudoni lūpų dažai",
-          "pink-lipstick": "Rožiniai lūpų dažai",
-          "berry-lipstick": "Uogų spalvos lūpų dažai",
-          "clown": "Klouno dažai",
-          "fangs": "Iltys",
-          "skull": "Kaukolės dažai",
-          "zombie": "Zombio dažai",
-          "red-nose": "Raudona nosis",
-          "white-beard": "Balta barzda",
-          "domino": "Herojaus kaukė",
-          "carrot": "Morkos nosis",
-          "bunny": "Zuikio nosis",
-          "mustache": "Ūsai",
-          "monster": "Pabaisos veido piešinys",
-          "round-glasses": "Apvalūs akiniai"
-        }
-      },
-      {
         "property": "expression",
         "title": "Išraiška",
         "description": "Veido išraiška.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Augintinis",
+        "description": "Augintinis šalia personažo.",
+        "options": {
+          "none": "Nėra",
+          "cat": "Katė",
+          "dog": "Šuo",
+          "bunny": "Zuikutis",
+          "goldfish": "Auksinė žuvelė",
+          "slime": "Gleivės",
+          "squirrel": "Voverė",
+          "dragon": "Drakoniukas",
+          "parrot": "Papūga",
+          "owl": "Pelėda",
+          "bat": "Šikšnosparnis"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Veikėjo kodas",
+        "description": "Įklijuokite išsaugotą kodą, kad atkurtumėte tą veikėją."
+      },
+      {
+        "property": "mask",
+        "title": "Kaukė",
+        "description": "Kaukė, dėvima ant veido ar galvos.",
+        "options": {
+          "none": "Nėra",
+          "lion": "Liūtas",
+          "plague": "Maro gydytojas",
+          "theater": "Teatras",
+          "pumpkin": "Moliūgas",
+          "ghost": "Vaiduoklis",
+          "mummy": "Mumija",
+          "wrestler": "Imtynininko kaukė",
+          "block-head": "Kaladėlių galva",
+          "web": "Voratinklio kaukė",
+          "werewolf": "Vilkolakio veidas",
+          "shadow": "Šešėlinis veidas"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Makiažas",
+        "description": "Veido dažai arba lūpų dažai.",
+        "options": {
+          "none": "Nėra",
+          "red-lipstick": "Raudoni lūpų dažai",
+          "pink-lipstick": "Rožiniai lūpų dažai",
+          "berry-lipstick": "Uogų spalvos lūpų dažai",
+          "clown": "Klouno dažai",
+          "fangs": "Iltys",
+          "skull": "Kaukolės dažai",
+          "zombie": "Zombio dažai",
+          "red-nose": "Raudona nosis",
+          "white-beard": "Balta barzda",
+          "domino": "Herojaus kaukė",
+          "carrot": "Morkos nosis",
+          "bunny": "Zuikio nosis",
+          "mustache": "Ūsai",
+          "monster": "Pabaisos veido piešinys",
+          "round-glasses": "Apvalūs akiniai"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Vėliavos tekstas",
         "description": "Ant vėliavos rodoma iki 4 raidžių."
@@ -310,24 +330,6 @@
           "skates": "Pačiūžos",
           "skateboard": "Riedlentė",
           "hoverboard": "Sklandlentė"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Augintinis",
-        "description": "Augintinis šalia personažo.",
-        "options": {
-          "none": "Nėra",
-          "cat": "Katė",
-          "dog": "Šuo",
-          "bunny": "Zuikutis",
-          "goldfish": "Auksinė žuvelė",
-          "slime": "Gleivės",
-          "squirrel": "Voverė",
-          "dragon": "Drakoniukas",
-          "parrot": "Papūga",
-          "owl": "Pelėda",
-          "bat": "Šikšnosparnis"
         }
       },
       {

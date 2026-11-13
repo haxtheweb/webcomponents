@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Imazhi poster",
         "description": "URL-ja e imazhit poster."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Gjurmët e tekstit",
         "description": "Titra, nëntitra, përshkrime dhe gjurmë të tjera teksti për videon."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Koha e fillimit",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Gjurma e përshkrimit audio",
         "description": "URL për një gjurmë përshkrimi audio (skedar MP3) që rrëfen elementet vizuale."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ngjyra theksuese",
+        "description": "(i vjetruar) Zgjidh ngjyrën theksuese për luajtësin."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Gjuha",
         "description": "Gjuha e medias."
-      },
-      {
-        "property": "accentColor",
-        "title": "Ngjyra theksuese",
-        "description": "(i vjetruar) Zgjidh ngjyrën theksuese për luajtësin."
       }
     ]
   }

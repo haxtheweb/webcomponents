@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "समर्थन नभएको सन्देश",
-        "description": "ब्राउजरले PDF फाइलहरू देखाउन नसक्दाको सन्देश।"
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "समर्थन नभएको लिङ्क सन्देश",
-        "description": "ब्राउजरले PDF फाइलहरू देखाउन नसक्दाको लिङ्क पाठ।"
-      },
-      {
         "property": "width",
         "title": "चौडाइ",
         "description": "PDF दर्शकको चौडाइ।"
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "उचाइ",
         "description": "PDF दर्शकको उचाइ।"
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "समर्थन नभएको सन्देश",
+        "description": "ब्राउजरले PDF फाइलहरू देखाउन नसक्दाको सन्देश।"
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "समर्थन नभएको लिङ्क सन्देश",
+        "description": "ब्राउजरले PDF फाइलहरू देखाउन नसक्दाको लिङ्क पाठ।"
       }
     ]
   }

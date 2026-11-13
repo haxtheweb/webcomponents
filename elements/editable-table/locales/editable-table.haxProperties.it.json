@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Consenti filtro",
         "description": "Consenti il filtro in base ai valori delle colonne."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Stile numerico",
-        "description": "Applica lo stile numerico alle colonne numeriche."
-      },
-      {
-        "property": "responsive",
-        "title": "Adattiva",
-        "description": "Adatta il layout della tabella sugli schermi piccoli."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Modalità rubrica",
-        "description": "Interpreta questa tabella come una Rubric di OER Schema, in modo da emettere i metadati Rubric, RubricScale, RubricCriterion e RubricLevel."
-      },
-      {
-        "property": "rubricType",
-        "title": "Tipo di rubrica",
-        "description": "Stile della rubrica emesso come oer:rubricType (significativo solo con la Modalità rubrica attiva).",
-        "options": {
-          "": "(nessuno)",
-          "analytic": "Analitica",
-          "holistic": "Olistica",
-          "single-point": "A punto singolo",
-          "checklist": "Lista di controllo"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Pulsante stampa",
         "description": "Aggiungi un pulsante per stampare solo la tabella."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Stile numerico",
+        "description": "Applica lo stile numerico alle colonne numeriche."
+      },
+      {
+        "property": "responsive",
+        "title": "Adattiva",
+        "description": "Adatta il layout della tabella sugli schermi piccoli."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Modalità rubrica",
+        "description": "Interpreta questa tabella come una Rubric di OER Schema, in modo da emettere i metadati Rubric, RubricScale, RubricCriterion e RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "Tipo di rubrica",
+        "description": "Stile della rubrica emesso come oer:rubricType (significativo solo con la Modalità rubrica attiva).",
+        "options": {
+          "": "(nessuno)",
+          "analytic": "Analitica",
+          "holistic": "Olistica",
+          "single-point": "A punto singolo",
+          "checklist": "Lista di controllo"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "Dati CSV",
         "description": "Crea una tabella da un file CSV caricato."
       }
-    ]
+    ],
+    "developer": []
   }
 }

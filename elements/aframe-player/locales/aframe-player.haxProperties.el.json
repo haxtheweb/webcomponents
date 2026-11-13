@@ -11,6 +11,13 @@
         "description": "Το URL για αυτό το αρχείο AR."
       },
       {
+        "property": "skyColor",
+        "title": "Χρώμα ουρανού",
+        "description": "Επιλέξτε το χρώμα του ουρανού στη σκηνή."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "Θέση X του στοιχείου στο AR."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "Θέση Z του στοιχείου στο AR."
-      },
-      {
-        "property": "skyColor",
-        "title": "Χρώμα ουρανού",
-        "description": "Επιλέξτε το χρώμα του ουρανού στη σκηνή."
       }
     ]
   }

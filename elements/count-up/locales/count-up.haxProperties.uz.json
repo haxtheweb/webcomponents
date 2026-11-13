@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Suffiks matni",
         "description": "Sondan keyin koʻrsatiladigan matn (masalan, '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Prefiks sloti",
-        "description": "Sondan oldingi ixtiyoriy slot kontenti."
-      },
-      {
-        "slot": "suffix",
-        "title": "Suffiks sloti",
-        "description": "Sondan keyingi ixtiyoriy slot kontenti."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Silliqlashsiz",
         "description": "Hisoblash chiziqli boʻlishi uchun silliqlashni oʻchirish."
+      },
+      {
+        "slot": "prefix",
+        "title": "Prefiks sloti",
+        "description": "Sondan oldingi ixtiyoriy slot kontenti."
+      },
+      {
+        "slot": "suffix",
+        "title": "Suffiks sloti",
+        "description": "Sondan keyingi ixtiyoriy slot kontenti."
       }
     ]
   }

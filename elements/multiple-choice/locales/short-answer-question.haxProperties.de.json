@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Kurzantwortfrage",
-    "description": "Den Benutzer eine einfache Frage beantworten lassen"
+    "description": "Eine Frage, die Lernende in ein oder zwei Sätzen beantworten."
   },
   "settings": {
     "configure": [

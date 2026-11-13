@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Umthombo Wesithombe",
         "description": "Ifayela lesithombe elisetshenziselwa ikhadi. Lidlula Igama Elingukhiye Lesithombe."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Igama Elingukhiye Lesithombe",
+        "description": "Igama elingukhiye lesithombe esingahleliwe. Lidlulwa nguMthombo Wesithombe."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Inhloso Yokufunda",
         "description": "OER Schema: i-ID noma i-URL yenhloso yokufunda esekelwa yilokhu kuzijwayeza."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Igama Elingukhiye Lesithombe",
-        "description": "Igama elingukhiye lesithombe esingahleliwe. Lidlulwa nguMthombo Wesithombe."
       }
     ]
   }

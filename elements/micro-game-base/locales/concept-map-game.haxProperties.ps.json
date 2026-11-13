@@ -86,7 +86,9 @@
         "property": "gameTitle",
         "title": "د لوبې نوم",
         "description": "دا لوبه د پرمختګ پېښو او د OER Schema مارک اپ کې نومولو لپاره."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "د لوبې ID",

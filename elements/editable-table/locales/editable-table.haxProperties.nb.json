@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Tillat filtrering",
         "description": "Tillat filtrering etter kolonneverdier."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Tallformatering",
-        "description": "Bruk tallformatering på numeriske kolonner."
-      },
-      {
-        "property": "responsive",
-        "title": "Responsiv",
-        "description": "Tilpass tabelloppsettet på små skjermer."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Vurderingsmatrisemodus",
-        "description": "Tolk denne tabellen som en OER Schema-Rubric slik at metadata for Rubric, RubricScale, RubricCriterion og RubricLevel genereres."
-      },
-      {
-        "property": "rubricType",
-        "title": "Type vurderingsmatrise",
-        "description": "Matrisestil som genereres som oer:rubricType (gjelder bare når vurderingsmatrisemodus er på).",
-        "options": {
-          "": "(ingen)",
-          "analytic": "Analytisk",
-          "holistic": "Helhetlig",
-          "single-point": "Enkeltpunkt",
-          "checklist": "Sjekkliste"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Utskriftsknapp",
         "description": "Legg til en knapp for å skrive ut bare tabellen."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Tallformatering",
+        "description": "Bruk tallformatering på numeriske kolonner."
+      },
+      {
+        "property": "responsive",
+        "title": "Responsiv",
+        "description": "Tilpass tabelloppsettet på små skjermer."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Vurderingsmatrisemodus",
+        "description": "Tolk denne tabellen som en OER Schema-Rubric slik at metadata for Rubric, RubricScale, RubricCriterion og RubricLevel genereres."
+      },
+      {
+        "property": "rubricType",
+        "title": "Type vurderingsmatrise",
+        "description": "Matrisestil som genereres som oer:rubricType (gjelder bare når vurderingsmatrisemodus er på).",
+        "options": {
+          "": "(ingen)",
+          "analytic": "Analytisk",
+          "holistic": "Helhetlig",
+          "single-point": "Enkeltpunkt",
+          "checklist": "Sjekkliste"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "CSV-data",
         "description": "Lag en tabell fra en opplastet CSV-fil."
       }
-    ]
+    ],
+    "developer": []
   }
 }

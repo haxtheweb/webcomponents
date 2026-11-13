@@ -11,11 +11,6 @@
         "description": "Kelma użata biex jiġi ġġenerat karattru każwali."
       },
       {
-        "property": "code",
-        "title": "Kodiċi tal-karattru",
-        "description": "Waħħal kodiċi salvat biex terġa' toħloq dak il-karattru."
-      },
-      {
         "property": "hat",
         "title": "Kappell",
         "description": "Stil tal-kappell.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Maskra",
-        "description": "Maskra li titwaħħal fuq il-wiċċ jew ir-ras.",
-        "options": {
-          "none": "Xejn",
-          "lion": "Iljun",
-          "plague": "Tabib tal-pesta",
-          "theater": "Teatru",
-          "pumpkin": "Qargħa ħamra",
-          "ghost": "Fantażma",
-          "mummy": "Mummja",
-          "wrestler": "Maskra tal-lotta",
-          "block-head": "Ras ta' blokk",
-          "web": "Maskra tax-xibka",
-          "werewolf": "Wiċċ ta' lupu mannar",
-          "shadow": "Wiċċ fid-dell"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Make-up",
-        "description": "Żebgħa tal-wiċċ jew lipstick.",
-        "options": {
-          "none": "Xejn",
-          "red-lipstick": "Lipstick aħmar",
-          "pink-lipstick": "Lipstick roża",
-          "berry-lipstick": "Lipstick tal-berries",
-          "clown": "Żebgħa tal-pagliaċ",
-          "fangs": "Zanni",
-          "skull": "Żebgħa tal-kranju",
-          "zombie": "Żebgħa taż-żombi",
-          "red-nose": "Imnieħer aħmar",
-          "white-beard": "Daqna bajda",
-          "domino": "Maskra tal-eroj",
-          "carrot": "Imnieħer tal-karrotta",
-          "bunny": "Imnieħer tal-fenek",
-          "mustache": "Mustaċċi",
-          "monster": "Żebgħa tal-wiċċ ta' mostru",
-          "round-glasses": "Nuċċali tondi"
-        }
-      },
-      {
         "property": "expression",
         "title": "Espressjoni",
         "description": "Espressjoni tal-wiċċ.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Annimal domestiku",
+        "description": "Annimal domestiku maġenb il-karattru.",
+        "options": {
+          "none": "Xejn",
+          "cat": "Qattus",
+          "dog": "Kelb",
+          "bunny": "Fenek żgħir",
+          "goldfish": "Ħuta tad-deheb",
+          "slime": "Ġelatina",
+          "squirrel": "Skojjattlu",
+          "dragon": "Dragun żgħir",
+          "parrot": "Pappagall",
+          "owl": "Kokka",
+          "bat": "Farfett il-lejl"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Kodiċi tal-karattru",
+        "description": "Waħħal kodiċi salvat biex terġa' toħloq dak il-karattru."
+      },
+      {
+        "property": "mask",
+        "title": "Maskra",
+        "description": "Maskra li titwaħħal fuq il-wiċċ jew ir-ras.",
+        "options": {
+          "none": "Xejn",
+          "lion": "Iljun",
+          "plague": "Tabib tal-pesta",
+          "theater": "Teatru",
+          "pumpkin": "Qargħa ħamra",
+          "ghost": "Fantażma",
+          "mummy": "Mummja",
+          "wrestler": "Maskra tal-lotta",
+          "block-head": "Ras ta' blokk",
+          "web": "Maskra tax-xibka",
+          "werewolf": "Wiċċ ta' lupu mannar",
+          "shadow": "Wiċċ fid-dell"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Make-up",
+        "description": "Żebgħa tal-wiċċ jew lipstick.",
+        "options": {
+          "none": "Xejn",
+          "red-lipstick": "Lipstick aħmar",
+          "pink-lipstick": "Lipstick roża",
+          "berry-lipstick": "Lipstick tal-berries",
+          "clown": "Żebgħa tal-pagliaċ",
+          "fangs": "Zanni",
+          "skull": "Żebgħa tal-kranju",
+          "zombie": "Żebgħa taż-żombi",
+          "red-nose": "Imnieħer aħmar",
+          "white-beard": "Daqna bajda",
+          "domino": "Maskra tal-eroj",
+          "carrot": "Imnieħer tal-karrotta",
+          "bunny": "Imnieħer tal-fenek",
+          "mustache": "Mustaċċi",
+          "monster": "Żebgħa tal-wiċċ ta' mostru",
+          "round-glasses": "Nuċċali tondi"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Test tal-bandiera",
         "description": "Sa 4 ittri murija fuq il-bandiera."
@@ -310,24 +330,6 @@
           "skates": "Skates",
           "skateboard": "Skateboard",
           "hoverboard": "Hoverboard"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Annimal domestiku",
-        "description": "Annimal domestiku maġenb il-karattru.",
-        "options": {
-          "none": "Xejn",
-          "cat": "Qattus",
-          "dog": "Kelb",
-          "bunny": "Fenek żgħir",
-          "goldfish": "Ħuta tad-deheb",
-          "slime": "Ġelatina",
-          "squirrel": "Skojjattlu",
-          "dragon": "Dragun żgħir",
-          "parrot": "Pappagall",
-          "owl": "Kokka",
-          "bat": "Farfett il-lejl"
         }
       },
       {

@@ -14,16 +14,6 @@
         "property": "title",
         "title": "Judhul alternatif",
         "description": "Judhul alternatif sing dipranalani menyang sumber kode QR."
-      },
-      {
-        "property": "modulesize",
-        "title": "Ukuran",
-        "description": "Ukuran kode QR."
-      },
-      {
-        "property": "margin",
-        "title": "Pinggiran",
-        "description": "Pambungkus kode."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "Ukuran",
+        "description": "Ukuran kode QR."
+      },
+      {
+        "property": "margin",
+        "title": "Pinggiran",
+        "description": "Pambungkus kode."
       }
     ]
   }

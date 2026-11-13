@@ -14,28 +14,6 @@
         "property": "statement",
         "title": "Datganiad",
         "description": "Datganiad a fydd yn cael ei drosi'n rhyngweithiad marcio'r geiriau."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "Fformat graddio",
-        "description": "OER Schema: fformat graddio ar gyfer yr asesiad hwn (e.e. pwyntiau, llythyren, canran, cwblhau)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Amcan dysgu",
-        "description": "OER Schema: amcan dysgu sy'n gysylltiedig â'r asesiad hwn."
-      },
-      {
-        "property": "forCourse",
-        "title": "Cwrs",
-        "description": "OER Schema: y cwrs y bwriedir yr asesiad hwn ar ei gyfer."
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Enw'r cwis",
-        "description": "Enw'r cwis a drosglwyddir i'w ddefnyddio mewn amgylcheddau a yrrir gan xAPI i adnabod yr eitem hon"
       }
     ],
     "advanced": [
@@ -46,6 +24,28 @@
       {
         "title": "Dechrau wedi'i blygu",
         "description": "Pan fydd yn blygadwy, dechrau fel rhes gaeedig sy'n dangos y cwestiwn a'i statws yn unig."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Fformat graddio",
+        "description": "OER Schema: fformat graddio ar gyfer yr asesiad hwn (e.e. pwyntiau, llythyren, canran, cwblhau)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Amcan dysgu",
+        "description": "OER Schema: amcan dysgu sy'n gysylltiedig â'r asesiad hwn."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Enw'r cwis",
+        "description": "Enw'r cwis a drosglwyddir i'w ddefnyddio mewn amgylcheddau a yrrir gan xAPI i adnabod yr eitem hon"
+      },
+      {
+        "property": "forCourse",
+        "title": "Cwrs",
+        "description": "OER Schema: y cwrs y bwriedir yr asesiad hwn ar ei gyfer."
       }
     ]
   }

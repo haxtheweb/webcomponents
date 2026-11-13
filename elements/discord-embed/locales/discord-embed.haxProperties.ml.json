@@ -9,7 +9,9 @@
         "property": "source",
         "title": "ഉറവിട URL",
         "description": "ഉറവിട URL."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "ഉയരം",

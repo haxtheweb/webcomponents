@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Marejeleo",
-    "description": "Kipengele cha nukuu chenye hali tatu za uwasilishaji."
+    "description": "Taja chanzo kwa kichwa, mtunzi, leseni na kiungo chake."
   },
   "settings": {
     "configure": [
@@ -21,15 +21,6 @@
         "description": "Tarehe chanzo kilipofikiwa."
       },
       {
-        "property": "scope",
-        "title": "Upeo",
-        "description": "Upeo wa kipengele cha kunukuu.",
-        "options": {
-          "sibling": "Kipengele cha kando",
-          "parent": "Kipengele mzazi"
-        }
-      },
-      {
         "property": "license",
         "title": "Leseni",
         "description": "Leseni ya kazi iliyonukuliwa."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Mtayarishi",
         "description": "Mtayarishi au mmiliki wa kazi iliyonukuliwa."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Upeo",
+        "description": "Upeo wa kipengele cha kunukuu.",
+        "options": {
+          "sibling": "Kipengele cha kando",
+          "parent": "Kipengele mzazi"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "Aina ya OER Schema",

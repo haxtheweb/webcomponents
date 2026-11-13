@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Isdhexgal",
         "description": "U oggolow isticmaalaha inuu dejiyo qiimaynta."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Habka Miisaanka Rubric",

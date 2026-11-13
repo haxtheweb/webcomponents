@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "Преглед на PDF в браузъра",
+    "title": "PDF визуализатор",
     "description": "Вграждане на PDF файл в страницата с незадължително оформление като карта и бутон за изтегляне."
   },
   "settings": {
@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Съобщение за липса на поддръжка",
-        "description": "Съобщение, когато браузърът не може да показва PDF файлове."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Текст на връзката при липса на поддръжка",
-        "description": "Текст на връзката, когато браузърът не може да показва PDF файлове."
-      },
-      {
         "property": "width",
         "title": "Ширина",
         "description": "Ширина на програмата за преглед на PDF."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Височина",
         "description": "Височина на програмата за преглед на PDF."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Съобщение за липса на поддръжка",
+        "description": "Съобщение, когато браузърът не може да показва PDF файлове."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Текст на връзката при липса на поддръжка",
+        "description": "Текст на връзката, когато браузърът не може да показва PDF файлове."
       }
     ]
   }

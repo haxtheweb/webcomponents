@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "نص اللاحقة",
         "description": "النص المعروض بعد الرقم (مثل '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "خانة البادئة",
-        "description": "محتوى اختياري يوضع قبل الرقم."
-      },
-      {
-        "slot": "suffix",
-        "title": "خانة اللاحقة",
-        "description": "محتوى اختياري يوضع بعد الرقم."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "بدون تسهيل",
         "description": "تعطيل التسهيل ليكون العد خطيًا."
+      },
+      {
+        "slot": "prefix",
+        "title": "خانة البادئة",
+        "description": "محتوى اختياري يوضع قبل الرقم."
+      },
+      {
+        "slot": "suffix",
+        "title": "خانة اللاحقة",
+        "description": "محتوى اختياري يوضع بعد الرقم."
       }
     ]
   }

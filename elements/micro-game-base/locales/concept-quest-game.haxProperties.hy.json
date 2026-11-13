@@ -91,7 +91,9 @@
         "property": "gameTitle",
         "title": "Խաղի անուն",
         "description": "Անվանում է այս խաղը առաջընթացի իրադարձություններում և OER Schema նշագրման մեջ։"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Խաղի ID",

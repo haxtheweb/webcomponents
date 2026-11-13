@@ -9,7 +9,9 @@
         "slot": "",
         "title": "ציטוטים",
         "description": "פריטי הציטוט בביבליוגרפיה זו"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "קורס",

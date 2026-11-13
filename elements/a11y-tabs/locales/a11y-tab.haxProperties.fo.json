@@ -10,10 +10,6 @@
         "title": "Teigaikon"
       },
       {
-        "property": "disabled",
-        "title": "Óvirkið"
-      },
-      {
         "property": "label",
         "title": "Teigaheiti"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "Eintýtt ID"
-      },
-      {
         "property": "flag",
         "title": "Valfrír fánatekstur"
       },
       {
         "property": "flagIcon",
         "title": "Valfrítt fánaikon"
+      },
+      {
+        "property": "disabled",
+        "title": "Óvirkið"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "Eintýtt ID"
       }
     ]
   }

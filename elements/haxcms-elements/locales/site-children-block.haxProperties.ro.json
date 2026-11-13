@@ -1,10 +1,10 @@
 {
   "gizmo": {
-    "title": "HAXcms: bloc de pagini copil",
-    "description": "Bloc dinamic care afișează paginile copil ale paginii curente"
+    "title": "Pagini copil",
+    "description": "Listează paginile copil ale paginii curente."
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "Metodă dinamică",
@@ -14,7 +14,9 @@
           "parent": "Copiii părintelui",
           "ancestor": "Toți copiii de la cel mai înalt strămoș"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "Nivel de început"

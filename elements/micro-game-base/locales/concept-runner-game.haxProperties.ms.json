@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Permainan pelari konsep",
-    "description": "Permainan skrol sisi. Watak berlari dalam api dan tidak pernah berhenti. Lompat untuk mengutip konsep yang baik dan melompati yang buruk, kemudian lihat ringkasan apa yang baik dan apa yang buruk."
+    "description": "Permainan tatal sisi: lompat untuk menangkap konsep yang betul dan mengelak yang salah."
   },
   "settings": {
     "configure": [
@@ -89,7 +89,9 @@
         "property": "gameTitle",
         "title": "Nama permainan",
         "description": "Menamakan permainan ini dalam acara kemajuan dan markup OER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "ID permainan",

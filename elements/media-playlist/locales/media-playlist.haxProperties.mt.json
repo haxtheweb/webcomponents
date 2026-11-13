@@ -4,22 +4,23 @@
     "description": "Lista tad-daqq li tippreżenta plejers tal-vidjo u tal-awdjo f'tqassim ta' plejer + sidebar."
   },
   "settings": {
-    "configure": [
+    "configure": [],
+    "advanced": [
       {
         "property": "activeIndex",
         "title": "Indiċi attiv",
         "description": "L-indiċi tal-oġġett attiv li minnu tibda."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kors",
-        "description": "Il-kors li għalih hija maħsuba din il-lista (identifikatur tal-kors jew URL)."
       }
     ],
     "developer": [
       {
         "title": "Midja",
         "description": "Il-vidjows u l-awdjo fil-playlist. Mhux editjat hawn: il-qafas tal-paġna jużah biex ikun jaf liema blokki jistgħu jitqiegħdu ġewwa."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kors",
+        "description": "Il-kors li għalih hija maħsuba din il-lista (identifikatur tal-kors jew URL)."
       }
     ]
   }

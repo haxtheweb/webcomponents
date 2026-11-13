@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Strelkasiz",
         "description": "Tugma strelkasini yashirish."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Havola: target",
@@ -54,7 +52,9 @@
           "_top": "Yuqori oyna - _top",
           "_parent": "Ota oyna - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Havola: rel",

@@ -89,7 +89,9 @@
         "property": "gameTitle",
         "title": "Nomo de la ludo",
         "description": "Nomas ĉi tiun ludon en progresaj eventoj kaj en OER Schema marko."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Id de la ludo",

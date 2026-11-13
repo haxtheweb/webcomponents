@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "标签 / 胶囊",
+    "title": "标签",
     "description": "紧凑的胶囊形标签，可选强调色、取消按钮或切换功能。"
   },
   "settings": {
@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "自动强调色",
         "description": "根据标签文本自动生成强调色。"
-      },
-      {
-        "property": "cancelButton",
-        "title": "取消按钮",
-        "description": "在胶囊内显示移除/取消图标按钮。"
-      },
-      {
-        "property": "readonly",
-        "title": "只读",
-        "description": "隐藏取消按钮，使胶囊仅用于显示。"
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "蓝灰色",
           "grey": "灰色"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "取消按钮",
+        "description": "在胶囊内显示移除/取消图标按钮。"
+      },
+      {
+        "property": "readonly",
+        "title": "只读",
+        "description": "隐藏取消按钮，使胶囊仅用于显示。"
       }
     ]
   }

@@ -14,16 +14,6 @@
         "property": "title",
         "title": "Mata-duree bakka bu'aa",
         "description": "Mata-duree bakka bu'aa madda koodii QR wajjin hidhame."
-      },
-      {
-        "property": "modulesize",
-        "title": "Hamma",
-        "description": "Hamma koodii QR."
-      },
-      {
-        "property": "margin",
-        "title": "Qarqara",
-        "description": "Iddoo koodii marsu."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "Hamma",
+        "description": "Hamma koodii QR."
+      },
+      {
+        "property": "margin",
+        "title": "Qarqara",
+        "description": "Iddoo koodii marsu."
       }
     ]
   }

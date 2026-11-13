@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "برچسب / قرصی",
+    "title": "برچسب",
     "description": "برچسب فشردهٔ قرصی‌شکل با رنگ تأکیدی، دکمهٔ لغو یا کلید روشن/خاموش اختیاری."
   },
   "settings": {
@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "رنگ تأکیدی خودکار",
         "description": "رنگ تأکیدی به‌طور خودکار از متن برچسب به دست آید."
-      },
-      {
-        "property": "cancelButton",
-        "title": "دکمهٔ لغو",
-        "description": "نمایش دکمهٔ نماد حذف/لغو درون قرص."
-      },
-      {
-        "property": "readonly",
-        "title": "فقط خواندنی",
-        "description": "دکمهٔ لغو پنهان شود تا قرص فقط برای نمایش باشد."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "خاکستری آبی",
           "grey": "خاکستری"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "دکمهٔ لغو",
+        "description": "نمایش دکمهٔ نماد حذف/لغو درون قرص."
+      },
+      {
+        "property": "readonly",
+        "title": "فقط خواندنی",
+        "description": "دکمهٔ لغو پنهان شود تا قرص فقط برای نمایش باشد."
       }
     ]
   }

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Ocjena zvjezdicama",
-    "description": "Dodatak za prikaz ocjene ili dugme za ocjenjivanje."
+    "description": "Prikažite ocjenu zvjezdicama ili pustite čitaoce da je odaberu."
   },
   "settings": {
     "configure": [
@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Interaktivno",
         "description": "Dozvoli korisniku da postavi ocjenu."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Način skale rubrike",

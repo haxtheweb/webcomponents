@@ -4,22 +4,23 @@
     "description": "Bideo- eta audio-erreproduzigailuak erreproduzigailu + alboko barra diseinuan aurkezten dituen erreprodukzio-zerrenda."
   },
   "settings": {
-    "configure": [
+    "configure": [],
+    "advanced": [
       {
         "property": "activeIndex",
         "title": "Indize aktiboa",
         "description": "Hasierako elementu aktiboaren indizea."
-      },
-      {
-        "property": "forCourse",
-        "title": "Ikastaroa",
-        "description": "Erreprodukzio-zerrenda hau zein ikastarotarako den (ikastaroaren identifikatzailea edo URLa)."
       }
     ],
     "developer": [
       {
         "title": "Multimedia",
         "description": "Erreprodukzio-zerrendako bideoak eta audioak. Hemen ez da editatzen: orriaren eskemak blokeak non jaregin daitezkeen jakiteko erabiltzen du."
+      },
+      {
+        "property": "forCourse",
+        "title": "Ikastaroa",
+        "description": "Erreprodukzio-zerrenda hau zein ikastarotarako den (ikastaroaren identifikatzailea edo URLa)."
       }
     ]
   }

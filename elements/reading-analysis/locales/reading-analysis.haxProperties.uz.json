@@ -38,21 +38,6 @@
         "slot": "",
         "title": "Matn",
         "description": "O‘quvchilar ishlaydigan matn. Istalgan HTML: sarlavhalar, xatboshilar, ro‘yxatlar va rasmlar."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "Baholash formati",
-        "description": "OER Schema: ushbu baholash uchun baholash formati (masalan, ball, harf, foiz, bajarilganlik)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Oʻquv maqsadi",
-        "description": "OER Schema: ushbu baholash bilan bogʻliq oʻquv maqsadi."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kurs",
-        "description": "OER Schema: ushbu baholash moʻljallangan kurs."
       }
     ],
     "advanced": [
@@ -70,6 +55,16 @@
         "property": "collapsed",
         "title": "Yig‘ilgan holda boshlash",
         "description": "Yig‘iladigan bo‘lsa, faqat savol va uning holatini ko‘rsatadigan yopiq qator sifatida boshlansin."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Baholash formati",
+        "description": "OER Schema: ushbu baholash uchun baholash formati (masalan, ball, harf, foiz, bajarilganlik)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Oʻquv maqsadi",
+        "description": "OER Schema: ushbu baholash bilan bogʻliq oʻquv maqsadi."
       }
     ],
     "developer": [
@@ -77,6 +72,11 @@
         "property": "quizName",
         "title": "Test nomi",
         "description": "xAPI asosidagi muhitlarda ushbu elementni aniqlash uchun uzatiladigan test nomi"
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurs",
+        "description": "OER Schema: ushbu baholash moʻljallangan kurs."
       }
     ]
   }

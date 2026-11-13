@@ -9,7 +9,9 @@
         "slot": "",
         "title": "การอ้างอิง",
         "description": "รายการอ้างอิงในบรรณานุกรมนี้"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "รายวิชา",

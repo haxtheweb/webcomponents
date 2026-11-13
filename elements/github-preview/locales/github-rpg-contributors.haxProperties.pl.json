@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Lista współtwórców GitHub",
-    "description": "Wyświetlani jako postacie RPG z użyciem GitHub API."
+    "description": "Wyświetla współtwórców repozytorium jako postacie RPG."
   },
   "settings": {
     "configure": [

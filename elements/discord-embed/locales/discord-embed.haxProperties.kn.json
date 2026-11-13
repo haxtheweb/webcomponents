@@ -9,7 +9,9 @@
         "property": "source",
         "title": "ಸಂಪನ್ಮೂಲ URL",
         "description": "ಸಂಪನ್ಮೂಲ URL."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "ಎತ್ತರ",

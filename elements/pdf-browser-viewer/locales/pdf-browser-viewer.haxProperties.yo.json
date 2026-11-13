@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Ìfiránṣẹ́ àìṣàtìlẹ́yìn",
-        "description": "Ìfiránṣẹ́ nígbà tí aṣàwákiri kò lè fi àwọn fáìlì PDF hàn."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Ìfiránṣẹ́ ìjápọ̀ àìṣàtìlẹ́yìn",
-        "description": "Ọ̀rọ̀ ìjápọ̀ nígbà tí aṣàwákiri kò lè fi àwọn fáìlì PDF hàn."
-      },
-      {
         "property": "width",
         "title": "Ìbú",
         "description": "Ìbú olùwò PDF."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Gíga",
         "description": "Gíga olùwò PDF."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Ìfiránṣẹ́ àìṣàtìlẹ́yìn",
+        "description": "Ìfiránṣẹ́ nígbà tí aṣàwákiri kò lè fi àwọn fáìlì PDF hàn."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Ìfiránṣẹ́ ìjápọ̀ àìṣàtìlẹ́yìn",
+        "description": "Ọ̀rọ̀ ìjápọ̀ nígbà tí aṣàwákiri kò lè fi àwọn fáìlì PDF hàn."
       }
     ]
   }

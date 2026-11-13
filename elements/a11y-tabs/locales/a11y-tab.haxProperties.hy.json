@@ -10,10 +10,6 @@
         "title": "Ներդիրի պատկերակ"
       },
       {
-        "property": "disabled",
-        "title": "Անջատված"
-      },
-      {
         "property": "label",
         "title": "Ներդիրի պիտակ"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "Եզակի ID"
-      },
-      {
         "property": "flag",
         "title": "Դրոշակի ընտրովի տեքստ"
       },
       {
         "property": "flagIcon",
         "title": "Դրոշակի ընտրովի պատկերակ"
+      },
+      {
+        "property": "disabled",
+        "title": "Անջատված"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "Եզակի ID"
       }
     ]
   }

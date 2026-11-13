@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "Közvetlenül megadott vagy távolról betöltött Markdown-tartalomblokk"
+    "description": "Markdown-tartalom helyben megírva vagy fájlból betöltve."
   },
   "settings": {
     "configure": [

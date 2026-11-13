@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Jeu de carte conceptuelle",
-    "description": "Un court jeu au clavier. Un personnage va vers chaque concept sur une carte et celui-ci s'explique. Touche-les tous pour des confettis et un prompt à copier."
+    "description": "Un court jeu au clavier où un personnage parcourt une carte et où chaque concept s’explique lui-même."
   },
   "settings": {
     "configure": [
@@ -86,7 +86,9 @@
         "property": "gameTitle",
         "title": "Nom du jeu",
         "description": "Nomme ce jeu dans les événements de progression et le balisage OER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Identifiant du jeu",

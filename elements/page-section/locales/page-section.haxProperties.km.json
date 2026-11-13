@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "ប៊ូតុង",
         "description": "ក្រុមប៊ូតុងបង្ហាញនៅក្រោមអត្ថបទ។"
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "អត្ថបទយុថ្កា",
         "description": "ស្លាកយុថ្កាបង្ហាញក្នុងការរុករក។"
       }
-    ]
+    ],
+    "developer": []
   }
 }

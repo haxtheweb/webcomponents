@@ -9,7 +9,9 @@
         "property": "source",
         "title": "Ressursi URL",
         "description": "Ressursi URL."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Kõrgus",

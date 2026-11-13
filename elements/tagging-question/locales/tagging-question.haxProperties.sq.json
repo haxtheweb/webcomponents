@@ -11,30 +11,8 @@
         "description": "Pyetja të cilës përdoruesit duhet t'i përgjigjen."
       },
       {
-        "property": "gradingFormat",
-        "title": "Formati i vlerësimit",
-        "description": "OER Schema: formati i vlerësimit për këtë test (p.sh. pikë, shkronjë, përqindje, përfundim)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Objektivi mësimor",
-        "description": "OER Schema: objektivi mësimor i lidhur me këtë vlerësim."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kursi",
-        "description": "OER Schema: kursi për të cilin është menduar ky vlerësim."
-      },
-      {
         "property": "answers",
         "title": "Përgjigjet"
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Emri i kuizit",
-        "description": "Emri i kuizit i përdorur për identifikim xAPI në sistemet analitike."
       }
     ],
     "advanced": [
@@ -47,6 +25,28 @@
         "property": "collapsed",
         "title": "Fillo e palosur",
         "description": "Kur është i palosshëm, fillo si rresht i mbyllur që tregon vetëm pyetjen dhe statusin e saj."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Formati i vlerësimit",
+        "description": "OER Schema: formati i vlerësimit për këtë test (p.sh. pikë, shkronjë, përqindje, përfundim)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Objektivi mësimor",
+        "description": "OER Schema: objektivi mësimor i lidhur me këtë vlerësim."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Emri i kuizit",
+        "description": "Emri i kuizit i përdorur për identifikim xAPI në sistemet analitike."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursi",
+        "description": "OER Schema: kursi për të cilin është menduar ky vlerësim."
       }
     ]
   }

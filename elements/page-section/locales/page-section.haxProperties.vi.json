@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "Nút",
         "description": "Nhóm nút hiển thị bên dưới văn bản."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "Văn bản neo",
         "description": "Nhãn neo hiển thị trong thanh điều hướng."
       }
-    ]
+    ],
+    "developer": []
   }
 }

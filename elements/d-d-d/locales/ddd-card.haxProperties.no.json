@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Ingen pil",
         "description": "Skjul pilen på knappen."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Lenke: mål",
@@ -54,7 +52,9 @@
           "_top": "Øverste vindu - _top",
           "_parent": "Overordnet vindu - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Lenke: rel",

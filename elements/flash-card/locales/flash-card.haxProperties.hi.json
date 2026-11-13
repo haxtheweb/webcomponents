@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "छवि स्रोत",
         "description": "कार्ड के लिए प्रयुक्त छवि फ़ाइल। छवि कीवर्ड को ओवरराइड करती है।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "छवि कीवर्ड",
+        "description": "यादृच्छिक छवि कीवर्ड। छवि स्रोत द्वारा ओवरराइड किया जाता है।"
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "अधिगम उद्देश्य",
         "description": "OER Schema: उस अधिगम उद्देश्य का ID या URL जिसे यह अभ्यास समर्थन देता है।"
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "छवि कीवर्ड",
-        "description": "यादृच्छिक छवि कीवर्ड। छवि स्रोत द्वारा ओवरराइड किया जाता है।"
       }
     ]
   }

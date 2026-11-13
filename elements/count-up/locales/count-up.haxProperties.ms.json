@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Teks akhiran",
         "description": "Teks yang dipaparkan selepas nombor (cth. '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Slot awalan",
-        "description": "Kandungan slot pilihan sebelum nombor."
-      },
-      {
-        "slot": "suffix",
-        "title": "Slot akhiran",
-        "description": "Kandungan slot pilihan selepas nombor."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Tiada pelonggaran",
         "description": "Lumpuhkan pelonggaran supaya kiraan adalah linear."
+      },
+      {
+        "slot": "prefix",
+        "title": "Slot awalan",
+        "description": "Kandungan slot pilihan sebelum nombor."
+      },
+      {
+        "slot": "suffix",
+        "title": "Slot akhiran",
+        "description": "Kandungan slot pilihan selepas nombor."
       }
     ]
   }

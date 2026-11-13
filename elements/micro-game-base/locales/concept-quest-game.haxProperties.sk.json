@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Hra s výpravou za pojmami",
-    "description": "Svet na túlanie. Pojmy ťa nájdu a položia otázku. Odpovedz správne, porazíš ho a odomkneš jeho dom. Zhrnutie ukáže pokusy a čo si zopakovať."
+    "description": "Hra s mapou sveta, v ktorej pojmy kladú otázky a správne odpovede odomykajú mapu."
   },
   "settings": {
     "configure": [
@@ -91,7 +91,9 @@
         "property": "gameTitle",
         "title": "Názov hry",
         "description": "Pomenuje túto hru v udalostiach priebehu a v značkách OER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "ID hry",

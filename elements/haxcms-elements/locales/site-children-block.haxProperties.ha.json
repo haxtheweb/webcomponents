@@ -4,7 +4,7 @@
     "description": "Toshe mai motsi don nuna ƙananan shafukan shafin yanzu"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "Hanya mai motsi",
@@ -14,7 +14,9 @@
           "parent": "Ƙananan abubuwan mahaifi",
           "ancestor": "Dukkan ƙananan abubuwa daga kakan sama"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "Matakin farawa"

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Wikipedia",
-    "description": "Ovo može da prikaže članak sa Wikipedije u kontekstu u različitim formatima."
+    "description": "Приказује чланак са Википедије на страници."
   },
   "settings": {
     "configure": [

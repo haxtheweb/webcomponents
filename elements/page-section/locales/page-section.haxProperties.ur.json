@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "بٹن",
         "description": "متن کے نیچے دکھایا جانے والا بٹنوں کا گروپ۔"
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "اینکر متن",
         "description": "نیویگیشن میں دکھایا جانے والا اینکر لیبل۔"
       }
-    ]
+    ],
+    "developer": []
   }
 }

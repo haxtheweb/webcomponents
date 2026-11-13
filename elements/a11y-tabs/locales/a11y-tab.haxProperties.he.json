@@ -10,10 +10,6 @@
         "title": "סמל הכרטיסייה"
       },
       {
-        "property": "disabled",
-        "title": "מושבת"
-      },
-      {
         "property": "label",
         "title": "תווית הכרטיסייה"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "מזהה ייחודי"
-      },
-      {
         "property": "flag",
         "title": "טקסט סימון אופציונלי"
       },
       {
         "property": "flagIcon",
         "title": "סמל סימון אופציונלי"
+      },
+      {
+        "property": "disabled",
+        "title": "מושבת"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "מזהה ייחודי"
       }
     ]
   }

@@ -9,7 +9,9 @@
         "property": "source",
         "title": "URL-ja e burimit",
         "description": "URL-ja e burimit."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Lartësia",

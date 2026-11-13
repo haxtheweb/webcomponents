@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "Кнопки",
         "description": "Група кнопок, показана під текстом."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "Текст якоря",
         "description": "Мітка якоря, показана в навігації."
       }
-    ]
+    ],
+    "developer": []
   }
 }

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Popis GitHub suradnika",
-    "description": "Prikazani kao RPG likovi pomoću GitHub API-ja."
+    "description": "Prikazuje suradnike repozitorija kao RPG likove."
   },
   "settings": {
     "configure": [

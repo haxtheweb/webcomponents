@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Wikipedia",
-    "description": "Ini boleh memaparkan artikel Wikipedia dalam pelbagai format."
+    "description": "Memaparkan rencana Wikipedia dalam halaman."
   },
   "settings": {
     "configure": [

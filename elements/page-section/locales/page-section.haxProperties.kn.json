@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "ಬಟನ್‌ಗಳು",
         "description": "ಪಠ್ಯದ ಕೆಳಗೆ ತೋರಿಸುವ ಬಟನ್ ಗುಂಪು."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "ಆಂಕರ್ ಪಠ್ಯ",
         "description": "ನ್ಯಾವಿಗೇಷನ್‌ನಲ್ಲಿ ತೋರಿಸುವ ಆಂಕರ್ ಲೇಬಲ್."
       }
-    ]
+    ],
+    "developer": []
   }
 }

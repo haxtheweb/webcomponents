@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Mõistete jooksumäng",
-    "description": "Külgsuunas kerimise mäng. Tegelane jookseb tules ega peatu kunagi. Hüppa, et püüda häid mõisteid ja hüpata üle halbadest, siis vaata kokkuvõtet, mis oli hea ja mis halb."
+    "description": "Külgkerimisega mäng: hüppa, et püüda õigeid mõisteid ja vältida valesid."
   },
   "settings": {
     "configure": [
@@ -89,7 +89,9 @@
         "property": "gameTitle",
         "title": "Mängu nimi",
         "description": "Annab sellele mängule nime edenemissündmustes ja OER Schema märgistuses."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Mängu ID",

@@ -38,21 +38,6 @@
         "slot": "",
         "title": "ਪਾਠ",
         "description": "ਉਹ ਪਾਠ ਜਿਸ ਵਿੱਚ ਸਿਖਿਆਰਥੀ ਕੰਮ ਕਰਦੇ ਹਨ। ਕੋਈ ਵੀ HTML: ਸਿਰਲੇਖ, ਪੈਰੇ, ਸੂਚੀਆਂ ਅਤੇ ਚਿੱਤਰ।"
-      },
-      {
-        "property": "gradingFormat",
-        "title": "ਗ੍ਰੇਡਿੰਗ ਫਾਰਮੈਟ",
-        "description": "OER Schema: ਇਸ ਮੁਲਾਂਕਣ ਲਈ ਗ੍ਰੇਡਿੰਗ ਫਾਰਮੈਟ (ਜਿਵੇਂ ਅੰਕ, ਅੱਖਰ, ਪ੍ਰਤੀਸ਼ਤ, ਪੂਰਤੀ)।"
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "ਸਿੱਖਣ ਦਾ ਉਦੇਸ਼",
-        "description": "OER Schema: ਇਸ ਮੁਲਾਂਕਣ ਨਾਲ ਜੁੜਿਆ ਸਿੱਖਣ ਦਾ ਉਦੇਸ਼।"
-      },
-      {
-        "property": "forCourse",
-        "title": "ਕੋਰਸ",
-        "description": "OER Schema: ਉਹ ਕੋਰਸ ਜਿਸ ਲਈ ਇਹ ਮੁਲਾਂਕਣ ਹੈ।"
       }
     ],
     "advanced": [
@@ -70,6 +55,16 @@
         "property": "collapsed",
         "title": "ਸਮੇਟ ਕੇ ਸ਼ੁਰੂ ਕਰੋ",
         "description": "ਸਮੇਟਣਯੋਗ ਹੋਣ 'ਤੇ, ਸਿਰਫ਼ ਸਵਾਲ ਅਤੇ ਇਸ ਦੀ ਸਥਿਤੀ ਦਿਖਾਉਣ ਵਾਲੀ ਬੰਦ ਕਤਾਰ ਵਜੋਂ ਸ਼ੁਰੂ ਕਰੋ।"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "ਗ੍ਰੇਡਿੰਗ ਫਾਰਮੈਟ",
+        "description": "OER Schema: ਇਸ ਮੁਲਾਂਕਣ ਲਈ ਗ੍ਰੇਡਿੰਗ ਫਾਰਮੈਟ (ਜਿਵੇਂ ਅੰਕ, ਅੱਖਰ, ਪ੍ਰਤੀਸ਼ਤ, ਪੂਰਤੀ)।"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "ਸਿੱਖਣ ਦਾ ਉਦੇਸ਼",
+        "description": "OER Schema: ਇਸ ਮੁਲਾਂਕਣ ਨਾਲ ਜੁੜਿਆ ਸਿੱਖਣ ਦਾ ਉਦੇਸ਼।"
       }
     ],
     "developer": [
@@ -77,6 +72,11 @@
         "property": "quizName",
         "title": "ਕੁਇਜ਼ ਦਾ ਨਾਮ",
         "description": "xAPI-ਆਧਾਰਿਤ ਵਾਤਾਵਰਣਾਂ ਵਿੱਚ ਇਸ ਆਈਟਮ ਦੀ ਪਛਾਣ ਲਈ ਭੇਜਿਆ ਕੁਇਜ਼ ਨਾਮ"
+      },
+      {
+        "property": "forCourse",
+        "title": "ਕੋਰਸ",
+        "description": "OER Schema: ਉਹ ਕੋਰਸ ਜਿਸ ਲਈ ਇਹ ਮੁਲਾਂਕਣ ਹੈ।"
       }
     ]
   }

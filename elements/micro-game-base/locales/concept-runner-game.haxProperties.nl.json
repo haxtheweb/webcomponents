@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Conceptrenner",
-    "description": "Een sidescroller. Het personage rent in vuur en vlam en stopt nooit. Spring om de goede concepten te pakken en over de slechte heen, en bekijk daarna een overzicht van wat goed en wat slecht was."
+    "description": "Een sidescroller: spring om de juiste concepten te pakken en de verkeerde te ontwijken."
   },
   "settings": {
     "configure": [
@@ -89,7 +89,9 @@
         "property": "gameTitle",
         "title": "Spelnaam",
         "description": "Geeft dit spel een naam in voortgangsgebeurtenissen en OER Schema-markup."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Spel-ID",

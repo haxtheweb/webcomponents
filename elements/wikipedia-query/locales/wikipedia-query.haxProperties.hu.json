@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Wikipedia",
-    "description": "Ez egy wikipédia cikket jeleníthet meg kontextusban különböző formátumokban."
+    "description": "Wikipédia-szócikket jelenít meg az oldalon."
   },
   "settings": {
     "configure": [

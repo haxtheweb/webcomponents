@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Tushen Hoto",
         "description": "Fayil ɗin hoton da ake amfani da shi don katin. Yana maye gurbin Kalmar Hoto."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Kalmar Hoto",
+        "description": "Kalmar hoto ta bazuwar. Tushen Hoto yana maye gurbinta."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Manufar Koyo",
         "description": "OER Schema: ID ko URL na manufar koyo da wannan atisaye ke tallafawa."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Kalmar Hoto",
-        "description": "Kalmar hoto ta bazuwar. Tushen Hoto yana maye gurbinta."
       }
     ]
   }

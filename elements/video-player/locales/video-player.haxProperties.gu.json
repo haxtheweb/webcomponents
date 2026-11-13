@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "પોસ્ટર છબી",
         "description": "પોસ્ટર છબી URL."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "ટેક્સ્ટ ટ્રૅક્સ",
         "description": "વિડિયો માટે ક્લોઝ્ડ કૅપ્શન્સ, સબટાઇટલ્સ, વર્ણનો અને અન્ય ટેક્સ્ટ ટ્રૅક્સ."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "શરૂઆતનો સમય",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "ઑડિયો વર્ણન ટ્રૅક",
         "description": "ઑડિયો વર્ણન ટ્રૅક (MP3 ફાઇલ)નું URL, જે દૃશ્ય તત્વોનું વર્ણન સંભળાવે છે."
+      },
+      {
+        "property": "accentColor",
+        "title": "ઍક્સેન્ટ રંગ",
+        "description": "(નાપસંદ) પ્લેયર માટે એક્સેન્ટ રંગ પસંદ કરો."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "ભાષા",
         "description": "મીડિયાની ભાષા."
-      },
-      {
-        "property": "accentColor",
-        "title": "ઍક્સેન્ટ રંગ",
-        "description": "(નાપસંદ) પ્લેયર માટે એક્સેન્ટ રંગ પસંદ કરો."
       }
     ]
   }

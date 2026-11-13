@@ -11,20 +11,17 @@
         "description": "Доступна мітка для набору вкладок."
       },
       {
-        "property": "disabled",
-        "title": "Вимкнено",
-        "description": "Вимкнути всі вкладки."
-      },
-      {
-        "property": "hidden",
-        "title": "Приховано",
-        "description": "Приховати набір вкладок."
-      },
-      {
         "property": "sticky",
         "title": "Закріплені",
         "description": "Утримувати горизонтальні вкладки вгорі під час прокручування."
       },
+      {
+        "slot": "",
+        "title": "Вкладки",
+        "description": "Послідовність елементів <a11y-tab/>."
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "Точка перелому макета",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "Точка перелому значків",
         "description": "Точка перелому для показу тексту зі значками. За замовчуванням 0; -1 — режим лише значків."
-      },
-      {
-        "slot": "",
-        "title": "Вкладки",
-        "description": "Послідовність елементів <a11y-tab/>."
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "Вимкнено",
+        "description": "Вимкнути всі вкладки."
+      },
+      {
+        "property": "hidden",
+        "title": "Приховано",
+        "description": "Приховати набір вкладок."
+      },
       {
         "property": "id",
         "title": "Унікальний ID",

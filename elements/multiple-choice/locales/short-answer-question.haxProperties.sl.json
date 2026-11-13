@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Vprašanje s kratkim odgovorom",
-    "description": "Uporabnik odgovori na preprosto vprašanje"
+    "description": "Vprašanje, na katero učenec odgovori v stavku ali dveh."
   },
   "settings": {
     "configure": [

@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Tekst sufiksa",
         "description": "Tekst prikazan nakon broja (npr. '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Utor prefiksa",
-        "description": "Neobavezni umetnuti sadržaj prije broja."
-      },
-      {
-        "slot": "suffix",
-        "title": "Utor sufiksa",
-        "description": "Neobavezni umetnuti sadržaj nakon broja."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Bez ublažavanja",
         "description": "Onemogući ublažavanje kako bi brojanje bilo linearno."
+      },
+      {
+        "slot": "prefix",
+        "title": "Utor prefiksa",
+        "description": "Neobavezni umetnuti sadržaj prije broja."
+      },
+      {
+        "slot": "suffix",
+        "title": "Utor sufiksa",
+        "description": "Neobavezni umetnuti sadržaj nakon broja."
       }
     ]
   }

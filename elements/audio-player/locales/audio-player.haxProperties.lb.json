@@ -46,6 +46,16 @@
         "property": "accentColor",
         "title": "Akzentfaarf",
         "description": "Wielt d'Akzentfaarf fir de Player."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Zäitstempelen verstoppen",
+        "description": "D'Zäitstempelen an der Transkriptioun verstoppen."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Transkriptioun verstoppen",
+        "description": "Transkriptioun standardméisseg verstoppen."
       }
     ],
     "developer": [
@@ -72,16 +82,6 @@
         "property": "disableInteractive",
         "title": "Interaktivitéit desaktivéieren",
         "description": "Interaktive Modus desaktivéieren, deen d'Transkriptioun klickbar mécht."
-      },
-      {
-        "property": "hideTimestamps",
-        "title": "Zäitstempelen verstoppen",
-        "description": "D'Zäitstempelen an der Transkriptioun verstoppen."
-      },
-      {
-        "property": "hideTranscript",
-        "title": "Transkriptioun verstoppen",
-        "description": "Transkriptioun standardméisseg verstoppen."
       },
       {
         "property": "lang",

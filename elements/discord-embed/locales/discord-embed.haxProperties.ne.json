@@ -9,7 +9,9 @@
         "property": "source",
         "title": "स्रोत URL",
         "description": "स्रोत URL।"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "उचाइ",

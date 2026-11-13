@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Burimi i imazhit",
         "description": "Skedari i imazhit i përdorur për kartën. Mbishkruan Fjalën kyçe të imazhit."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Fjala kyçe e imazhit",
+        "description": "Fjalë kyçe për imazh të rastësishëm. Mbishkruhet nga Burimi i imazhit."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Objektivi mësimor",
         "description": "OER Schema: ID ose URL e objektivit mësimor që mbështet kjo praktikë."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Fjala kyçe e imazhit",
-        "description": "Fjalë kyçe për imazh të rastësishëm. Mbishkruhet nga Burimi i imazhit."
       }
     ]
   }

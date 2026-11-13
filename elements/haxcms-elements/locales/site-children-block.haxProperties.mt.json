@@ -4,7 +4,7 @@
     "description": "Blokk dinamiku biex juri s-sottopaġni tal-paġna attwali"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "Metodu dinamiku",
@@ -14,7 +14,9 @@
           "parent": "Sottopaġni tal-ġenitur",
           "ancestor": "Is-sottopaġni kollha mill-ogħla antenat"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "Livell tal-bidu"

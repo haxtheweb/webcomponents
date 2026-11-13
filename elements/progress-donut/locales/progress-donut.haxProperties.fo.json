@@ -26,11 +26,6 @@
         "description": "Alt-tekstur til mynd."
       },
       {
-        "property": "animated",
-        "title": "Livandi",
-        "description": "Um framgongdin er livandi við fyrstu innlesing"
-      },
-      {
         "property": "complete",
         "title": "Liðugt",
         "description": "Ein røð av fullførdum virðum."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "Íalt",
         "description": "Íalt, tá ið allir lutir eru fullførdir."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "Livandi",
+        "description": "Um framgongdin er livandi við fyrstu innlesing"
       },
       {
         "property": "startAngle",

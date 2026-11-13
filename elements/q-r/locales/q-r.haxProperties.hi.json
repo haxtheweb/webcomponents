@@ -14,16 +14,6 @@
         "property": "title",
         "title": "वैकल्पिक शीर्षक",
         "description": "QR कोड स्रोत से जुड़ा वैकल्पिक शीर्षक।"
-      },
-      {
-        "property": "modulesize",
-        "title": "आकार",
-        "description": "QR कोड का आकार।"
-      },
-      {
-        "property": "margin",
-        "title": "मार्जिन",
-        "description": "कोड के चारों ओर का आवरण।"
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "आकार",
+        "description": "QR कोड का आकार।"
+      },
+      {
+        "property": "margin",
+        "title": "मार्जिन",
+        "description": "कोड के चारों ओर का आवरण।"
       }
     ]
   }

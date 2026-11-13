@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Kupu whakamārama",
         "description": "Tapanga mō te atahanga."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Taitara Whakaahua",
-        "description": "Taitara mō te tapanga whakaahua."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Whakaahuatanga Whakaahua",
-        "description": "Whakaahuatanga mō te tapanga whakaahua."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Whakakore matapihi atahanga",
         "description": "Whakakore i ngā pāwhiri e whakatuwhera ana i te atahanga i tētahi matapihi kaitirotiro atahanga."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Taitara Whakaahua",
+        "description": "Taitara mō te tapanga whakaahua."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Whakaahuatanga Whakaahua",
+        "description": "Whakaahuatanga mō te tapanga whakaahua."
       }
     ],
     "developer": [

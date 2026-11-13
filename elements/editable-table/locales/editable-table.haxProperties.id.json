@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Izinkan Filter",
         "description": "Izinkan pemfilteran berdasarkan nilai kolom."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Gaya Numerik",
-        "description": "Terapkan gaya numerik pada kolom angka."
-      },
-      {
-        "property": "responsive",
-        "title": "Responsif",
-        "description": "Sesuaikan tata letak tabel di layar kecil."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Mode Rubrik",
-        "description": "Tafsirkan tabel ini sebagai Rubric OER Schema sehingga metadata Rubric, RubricScale, RubricCriterion, dan RubricLevel dihasilkan."
-      },
-      {
-        "property": "rubricType",
-        "title": "Jenis Rubrik",
-        "description": "Gaya rubrik yang dihasilkan sebagai oer:rubricType (hanya berarti saat Mode Rubrik aktif).",
-        "options": {
-          "": "(tidak ada)",
-          "analytic": "Analitik",
-          "holistic": "Holistik",
-          "single-point": "Satu Poin",
-          "checklist": "Daftar periksa"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Tombol Cetak",
         "description": "Tambahkan tombol untuk mencetak tabel saja."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Gaya Numerik",
+        "description": "Terapkan gaya numerik pada kolom angka."
+      },
+      {
+        "property": "responsive",
+        "title": "Responsif",
+        "description": "Sesuaikan tata letak tabel di layar kecil."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Mode Rubrik",
+        "description": "Tafsirkan tabel ini sebagai Rubric OER Schema sehingga metadata Rubric, RubricScale, RubricCriterion, dan RubricLevel dihasilkan."
+      },
+      {
+        "property": "rubricType",
+        "title": "Jenis Rubrik",
+        "description": "Gaya rubrik yang dihasilkan sebagai oer:rubricType (hanya berarti saat Mode Rubrik aktif).",
+        "options": {
+          "": "(tidak ada)",
+          "analytic": "Analitik",
+          "holistic": "Holistik",
+          "single-point": "Satu Poin",
+          "checklist": "Daftar periksa"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "Data CSV",
         "description": "Buat tabel dari file CSV yang diunggah."
       }
-    ]
+    ],
+    "developer": []
   }
 }

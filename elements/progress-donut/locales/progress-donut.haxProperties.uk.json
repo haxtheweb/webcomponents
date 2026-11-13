@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Кільце прогресу",
-    "description": "Кільцева діаграма прогресу"
+    "description": "Кільцева діаграма, що показує поступ до загальної суми."
   },
   "settings": {
     "configure": [
@@ -26,11 +26,6 @@
         "description": "Альтернативний текст зображення."
       },
       {
-        "property": "animated",
-        "title": "Анімовано",
-        "description": "Чи анімувати прогрес під час першого завантаження"
-      },
-      {
         "property": "complete",
         "title": "Завершено",
         "description": "Масив виконаних значень."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "Усього",
         "description": "Підсумок, коли всі елементи виконано."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "Анімовано",
+        "description": "Чи анімувати прогрес під час першого завантаження"
       },
       {
         "property": "startAngle",

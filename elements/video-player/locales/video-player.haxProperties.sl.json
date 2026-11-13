@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Naslovna slika",
         "description": "URL naslovne slike."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Besedilne sledi",
         "description": "Podnapisi za gluhe, podnapisi, opisi in druge besedilne sledi za video."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Čas začetka",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Sled zvočnega opisa",
         "description": "URL do sledi zvočnega opisa (datoteka MP3), ki pripoveduje o vizualnih elementih."
+      },
+      {
+        "property": "accentColor",
+        "title": "Poudarna barva",
+        "description": "(zastarelo) Izberite poudarjeno barvo predvajalnika."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Jezik",
         "description": "Jezik medija."
-      },
-      {
-        "property": "accentColor",
-        "title": "Poudarna barva",
-        "description": "(zastarelo) Izberite poudarjeno barvo predvajalnika."
       }
     ]
   }

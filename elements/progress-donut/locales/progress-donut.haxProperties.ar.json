@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "حلقة التقدم",
-    "description": "حلقة التقدم"
+    "description": "مخطط حلقي يوضح التقدم نحو المجموع."
   },
   "settings": {
     "configure": [
@@ -26,11 +26,6 @@
         "description": "النص البديل للصورة."
       },
       {
-        "property": "animated",
-        "title": "متحرك",
-        "description": "ما إذا كان التقدم يتحرك عند التحميل الأول"
-      },
-      {
         "property": "complete",
         "title": "مكتمل",
         "description": "مصفوفة من القيم المكتملة."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "الإجمالي",
         "description": "الإجمالي عند اكتمال جميع العناصر."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "متحرك",
+        "description": "ما إذا كان التقدم يتحرك عند التحميل الأول"
       },
       {
         "property": "startAngle",

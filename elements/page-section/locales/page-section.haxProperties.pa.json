@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "ਬਟਨ",
         "description": "ਲਿਖਤ ਦੇ ਹੇਠਾਂ ਦਿਖਾਇਆ ਬਟਨ ਸਮੂਹ।"
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "ਐਂਕਰ ਲਿਖਤ",
         "description": "ਨੈਵੀਗੇਸ਼ਨ ਵਿੱਚ ਦਿਖਾਇਆ ਐਂਕਰ ਲੇਬਲ।"
       }
-    ]
+    ],
+    "developer": []
   }
 }

@@ -11,11 +11,6 @@
         "description": "Orð, sum verður nýtt at gera ein tilvildarligan figur."
       },
       {
-        "property": "code",
-        "title": "Persónskota",
-        "description": "Set inn eina goymda kotu fyri at endurskapa ta persónin."
-      },
-      {
         "property": "hat",
         "title": "Hattur",
         "description": "Hattasnið.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Grima",
-        "description": "Grima, sum verður borin yvir andlitinum ella høvdinum.",
-        "options": {
-          "none": "Eingin",
-          "lion": "Ljón",
-          "plague": "Pestlækni",
-          "theater": "Sjónleikarhús",
-          "pumpkin": "Graskar",
-          "ghost": "Spøkilsi",
-          "mummy": "Múmia",
-          "wrestler": "Brytingarmaska",
-          "block-head": "Kubbahøvd",
-          "web": "Vevmaska",
-          "werewolf": "Varúlvsandlit",
-          "shadow": "Skuggaandlit"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Sminka",
-        "description": "Andlitsmáling ella varrarod.",
-        "options": {
-          "none": "Eingin",
-          "red-lipstick": "Reytt varrarod",
-          "pink-lipstick": "Ljósareytt varrarod",
-          "berry-lipstick": "Berjalitað varrarod",
-          "clown": "Klovnamáling",
-          "fangs": "Vígtenn",
-          "skull": "Deyðahøvdamáling",
-          "zombie": "Zombimáling",
-          "red-nose": "Reytt nev",
-          "white-beard": "Hvítt skegg",
-          "domino": "Hetjugrima",
-          "carrot": "Gulrótarnev",
-          "bunny": "Haranev",
-          "mustache": "Yvirskegg",
-          "monster": "Ófreskjuandlitsmáling",
-          "round-glasses": "Rundar brillur"
-        }
-      },
-      {
         "property": "expression",
         "title": "Andlitsbrá",
         "description": "Andlitsbrá.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Kjeledjór",
+        "description": "Kjeledjór við síðuna á figurinum.",
+        "options": {
+          "none": "Eingin",
+          "cat": "Katta",
+          "dog": "Hundur",
+          "bunny": "Kanin",
+          "goldfish": "Gullfiskur",
+          "slime": "Slím",
+          "squirrel": "Íkorni",
+          "dragon": "Dreka-ungi",
+          "parrot": "Pappagoyi",
+          "owl": "Ugla",
+          "bat": "Flogmús"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Persónskota",
+        "description": "Set inn eina goymda kotu fyri at endurskapa ta persónin."
+      },
+      {
+        "property": "mask",
+        "title": "Grima",
+        "description": "Grima, sum verður borin yvir andlitinum ella høvdinum.",
+        "options": {
+          "none": "Eingin",
+          "lion": "Ljón",
+          "plague": "Pestlækni",
+          "theater": "Sjónleikarhús",
+          "pumpkin": "Graskar",
+          "ghost": "Spøkilsi",
+          "mummy": "Múmia",
+          "wrestler": "Brytingarmaska",
+          "block-head": "Kubbahøvd",
+          "web": "Vevmaska",
+          "werewolf": "Varúlvsandlit",
+          "shadow": "Skuggaandlit"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Sminka",
+        "description": "Andlitsmáling ella varrarod.",
+        "options": {
+          "none": "Eingin",
+          "red-lipstick": "Reytt varrarod",
+          "pink-lipstick": "Ljósareytt varrarod",
+          "berry-lipstick": "Berjalitað varrarod",
+          "clown": "Klovnamáling",
+          "fangs": "Vígtenn",
+          "skull": "Deyðahøvdamáling",
+          "zombie": "Zombimáling",
+          "red-nose": "Reytt nev",
+          "white-beard": "Hvítt skegg",
+          "domino": "Hetjugrima",
+          "carrot": "Gulrótarnev",
+          "bunny": "Haranev",
+          "mustache": "Yvirskegg",
+          "monster": "Ófreskjuandlitsmáling",
+          "round-glasses": "Rundar brillur"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Tekstur á flaggi",
         "description": "Upp til 4 bókstavir, sum verða víst á flagginum."
@@ -310,24 +330,6 @@
           "skates": "Skeitur",
           "skateboard": "Skeittbretti",
           "hoverboard": "Svevibretti"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Kjeledjór",
-        "description": "Kjeledjór við síðuna á figurinum.",
-        "options": {
-          "none": "Eingin",
-          "cat": "Katta",
-          "dog": "Hundur",
-          "bunny": "Kanin",
-          "goldfish": "Gullfiskur",
-          "slime": "Slím",
-          "squirrel": "Íkorni",
-          "dragon": "Dreka-ungi",
-          "parrot": "Pappagoyi",
-          "owl": "Ugla",
-          "bat": "Flogmús"
         }
       },
       {

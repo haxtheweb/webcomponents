@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "ตัวดู PDF ในเบราว์เซอร์",
+    "title": "ตัวดู PDF",
     "description": "ฝังไฟล์ PDF แบบอินไลน์พร้อมเลย์เอาต์การ์ดและปุ่มดาวน์โหลดเสริม"
   },
   "settings": {
@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "ข้อความเมื่อไม่รองรับ",
-        "description": "ข้อความเมื่อเบราว์เซอร์ไม่สามารถแสดงไฟล์ PDF ได้"
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "ข้อความลิงก์เมื่อไม่รองรับ",
-        "description": "ข้อความลิงก์เมื่อเบราว์เซอร์ไม่สามารถแสดงไฟล์ PDF ได้"
-      },
-      {
         "property": "width",
         "title": "ความกว้าง",
         "description": "ความกว้างของตัวดู PDF"
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "ความสูง",
         "description": "ความสูงของตัวดู PDF"
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "ข้อความเมื่อไม่รองรับ",
+        "description": "ข้อความเมื่อเบราว์เซอร์ไม่สามารถแสดงไฟล์ PDF ได้"
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "ข้อความลิงก์เมื่อไม่รองรับ",
+        "description": "ข้อความลิงก์เมื่อเบราว์เซอร์ไม่สามารถแสดงไฟล์ PDF ได้"
       }
     ]
   }

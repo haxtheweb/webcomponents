@@ -11,11 +11,6 @@
         "description": "بے ترتیب کردار بنانے کے لیے استعمال ہونے والا لفظ۔"
       },
       {
-        "property": "code",
-        "title": "کردار کوڈ",
-        "description": "اس کردار کو دوبارہ بنانے کے لیے محفوظ کردہ کوڈ پیسٹ کریں۔"
-      },
-      {
         "property": "hat",
         "title": "ٹوپی",
         "description": "ٹوپی کا انداز۔",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "نقاب",
-        "description": "چہرے یا سر پر پہنا جانے والا نقاب۔",
-        "options": {
-          "none": "کوئی نہیں",
-          "lion": "شیر",
-          "plague": "طاعون کا ڈاکٹر",
-          "theater": "تھیٹر",
-          "pumpkin": "کدو",
-          "ghost": "بھوت",
-          "mummy": "ممی",
-          "wrestler": "پہلوان کا نقاب",
-          "block-head": "بلاک سر",
-          "web": "جالے کا نقاب",
-          "werewolf": "بھیڑیا انسان کا چہرہ",
-          "shadow": "سایہ دار چہرہ"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "میک اپ",
-        "description": "فیس پینٹ یا لپ اسٹک۔",
-        "options": {
-          "none": "کوئی نہیں",
-          "red-lipstick": "سرخ لپ اسٹک",
-          "pink-lipstick": "گلابی لپ اسٹک",
-          "berry-lipstick": "بیری رنگ کی لپ اسٹک",
-          "clown": "مسخرے کا رنگ",
-          "fangs": "نوکیلے دانت",
-          "skull": "کھوپڑی کا رنگ",
-          "zombie": "زومبی کا رنگ",
-          "red-nose": "سرخ ناک",
-          "white-beard": "سفید داڑھی",
-          "domino": "ہیرو کا نقاب",
-          "carrot": "گاجر جیسی ناک",
-          "bunny": "خرگوش کی ناک",
-          "mustache": "مونچھیں",
-          "monster": "عفریت فیس پینٹ",
-          "round-glasses": "گول عینک"
-        }
-      },
-      {
         "property": "expression",
         "title": "تاثر",
         "description": "چہرے کا تاثر۔",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "پالتو جانور",
+        "description": "کردار کے ساتھ پالتو جانور۔",
+        "options": {
+          "none": "کوئی نہیں",
+          "cat": "بلی",
+          "dog": "کتا",
+          "bunny": "خرگوش",
+          "goldfish": "سنہری مچھلی",
+          "slime": "سلائم",
+          "squirrel": "گلہری",
+          "dragon": "ننھا ڈریگن",
+          "parrot": "طوطا",
+          "owl": "الو",
+          "bat": "چمگادڑ"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "کردار کوڈ",
+        "description": "اس کردار کو دوبارہ بنانے کے لیے محفوظ کردہ کوڈ پیسٹ کریں۔"
+      },
+      {
+        "property": "mask",
+        "title": "نقاب",
+        "description": "چہرے یا سر پر پہنا جانے والا نقاب۔",
+        "options": {
+          "none": "کوئی نہیں",
+          "lion": "شیر",
+          "plague": "طاعون کا ڈاکٹر",
+          "theater": "تھیٹر",
+          "pumpkin": "کدو",
+          "ghost": "بھوت",
+          "mummy": "ممی",
+          "wrestler": "پہلوان کا نقاب",
+          "block-head": "بلاک سر",
+          "web": "جالے کا نقاب",
+          "werewolf": "بھیڑیا انسان کا چہرہ",
+          "shadow": "سایہ دار چہرہ"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "میک اپ",
+        "description": "فیس پینٹ یا لپ اسٹک۔",
+        "options": {
+          "none": "کوئی نہیں",
+          "red-lipstick": "سرخ لپ اسٹک",
+          "pink-lipstick": "گلابی لپ اسٹک",
+          "berry-lipstick": "بیری رنگ کی لپ اسٹک",
+          "clown": "مسخرے کا رنگ",
+          "fangs": "نوکیلے دانت",
+          "skull": "کھوپڑی کا رنگ",
+          "zombie": "زومبی کا رنگ",
+          "red-nose": "سرخ ناک",
+          "white-beard": "سفید داڑھی",
+          "domino": "ہیرو کا نقاب",
+          "carrot": "گاجر جیسی ناک",
+          "bunny": "خرگوش کی ناک",
+          "mustache": "مونچھیں",
+          "monster": "عفریت فیس پینٹ",
+          "round-glasses": "گول عینک"
+        }
+      },
+      {
         "property": "flagText",
         "title": "جھنڈے کا متن",
         "description": "جھنڈے پر نظر آنے والے زیادہ سے زیادہ 4 حروف۔"
@@ -310,24 +330,6 @@
           "skates": "اسکیٹس",
           "skateboard": "اسکیٹ بورڈ",
           "hoverboard": "اڑنے والا بورڈ"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "پالتو جانور",
-        "description": "کردار کے ساتھ پالتو جانور۔",
-        "options": {
-          "none": "کوئی نہیں",
-          "cat": "بلی",
-          "dog": "کتا",
-          "bunny": "خرگوش",
-          "goldfish": "سنہری مچھلی",
-          "slime": "سلائم",
-          "squirrel": "گلہری",
-          "dragon": "ننھا ڈریگن",
-          "parrot": "طوطا",
-          "owl": "الو",
-          "bat": "چمگادڑ"
         }
       },
       {

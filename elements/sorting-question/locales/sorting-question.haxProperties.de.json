@@ -11,31 +11,9 @@
         "description": "Überschrift der Frage."
       },
       {
-        "property": "gradingFormat",
-        "title": "Bewertungsformat",
-        "description": "OER Schema: Bewertungsformat für diese Prüfung (z. B. Punkte, Buchstabe, Prozent, Abschluss)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Lernziel",
-        "description": "OER Schema: Mit dieser Prüfung verknüpftes Lernziel."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kurs",
-        "description": "OER Schema: Kurs, für den diese Prüfung vorgesehen ist."
-      },
-      {
         "property": "answers",
         "title": "Antworten",
         "description": "Die Reihenfolge der Antworten legt die richtige Abfolge fest."
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Name des Quiz",
-        "description": "Quizname zur xAPI-Identifizierung in Analysesystemen."
       }
     ],
     "advanced": [
@@ -48,6 +26,28 @@
         "property": "collapsed",
         "title": "Eingeklappt starten",
         "description": "Wenn einklappbar, wird zunächst eine geschlossene Zeile angezeigt, die nur die Frage und ihren Status enthält."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Bewertungsformat",
+        "description": "OER Schema: Bewertungsformat für diese Prüfung (z. B. Punkte, Buchstabe, Prozent, Abschluss)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Lernziel",
+        "description": "OER Schema: Mit dieser Prüfung verknüpftes Lernziel."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Name des Quiz",
+        "description": "Quizname zur xAPI-Identifizierung in Analysesystemen."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurs",
+        "description": "OER Schema: Kurs, für den diese Prüfung vorgesehen ist."
       }
     ]
   }

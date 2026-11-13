@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "पोस्टर छवि",
         "description": "पोस्टर छवि URL।"
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "पाठ ट्र्याकहरू",
         "description": "भिडियोका लागि क्याप्सन, उपशीर्षक, विवरण र अन्य पाठ ट्र्याकहरू।"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "सुरु समय",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "अडियो विवरण ट्र्याक",
         "description": "दृश्य तत्वहरूको वर्णन गर्ने अडियो विवरण ट्र्याक (MP3 फाइल) को URL।"
+      },
+      {
+        "property": "accentColor",
+        "title": "एक्सेन्ट रङ",
+        "description": "(अप्रचलित) प्लेयरका लागि एक्सेन्ट रङ चयन गर्नुहोस्।"
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "भाषा",
         "description": "मिडियाको भाषा।"
-      },
-      {
-        "property": "accentColor",
-        "title": "एक्सेन्ट रङ",
-        "description": "(अप्रचलित) प्लेयरका लागि एक्सेन्ट रङ चयन गर्नुहोस्।"
       }
     ]
   }

@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Ynteraktyf",
         "description": "Brûkersynteraksje tastean om de wurdearring yn te stellen."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Rubrykskaalmodus",

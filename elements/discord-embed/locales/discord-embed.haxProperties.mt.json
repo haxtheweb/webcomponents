@@ -9,7 +9,9 @@
         "property": "source",
         "title": "URL tar-riżorsa",
         "description": "URL tar-riżorsa."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Għoli",

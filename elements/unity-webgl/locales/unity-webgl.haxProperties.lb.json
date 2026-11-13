@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Zil",
         "description": "Pfad zum Build vum Spill."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Breet vum Canvas",
+        "description": "CSS-Breet vum Canvas (zum Beispill px oder em)."
       },
+      {
+        "property": "height",
+        "title": "Héicht vum Canvas",
+        "description": "CSS-Héicht vum Canvas (zum Beispill px oder em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Kompressiounsmethod",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Produitversioun",
         "description": "Release-Versioun."
-      },
-      {
-        "property": "width",
-        "title": "Breet vum Canvas",
-        "description": "CSS-Breet vum Canvas (zum Beispill px oder em)."
-      },
-      {
-        "property": "height",
-        "title": "Héicht vum Canvas",
-        "description": "CSS-Héicht vum Canvas (zum Beispill px oder em)."
       },
       {
         "property": "background",

@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Без стрэлкі",
         "description": "Схаваць стрэлку кнопкі."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Спасылка: target",
@@ -54,7 +52,9 @@
           "_top": "Верхняе акно - _top",
           "_parent": "Бацькоўскае акно - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Спасылка: rel",

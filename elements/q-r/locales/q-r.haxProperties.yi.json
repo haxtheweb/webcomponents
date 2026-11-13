@@ -14,16 +14,6 @@
         "property": "title",
         "title": "אַלטערנאַטיווער טיטל",
         "description": "אַלטערנאַטיווער טיטל פֿאַרלינקט צום מקור פֿונעם QR־קאָד."
-      },
-      {
-        "property": "modulesize",
-        "title": "גרייס",
-        "description": "גרייס פֿונעם QR־קאָד."
-      },
-      {
-        "property": "margin",
-        "title": "ראַנד",
-        "description": "הילע אַרום דעם קאָד."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "גרייס",
+        "description": "גרייס פֿונעם QR־קאָד."
+      },
+      {
+        "property": "margin",
+        "title": "ראַנד",
+        "description": "הילע אַרום דעם קאָד."
       }
     ]
   }

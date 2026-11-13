@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Igra trčanja s pojmovima",
-    "description": "Igra s bočnim pomicanjem. Lik trči u plamenu i nikad ne staje. Skači da pokupiš dobre pojmove i preskočiš loše, a zatim pogledaj sažetak što je bilo dobro, a što loše."
+    "description": "Igra s bočnim pomicanjem: skačite kako biste uhvatili točne pojmove i izbjegli pogrešne."
   },
   "settings": {
     "configure": [
@@ -89,7 +89,9 @@
         "property": "gameTitle",
         "title": "Naziv igre",
         "description": "Imenuje ovu igru u događajima napretka i oznakama OER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "ID igre",

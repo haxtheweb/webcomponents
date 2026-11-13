@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Hra s behom pojmov",
-    "description": "Bočne rolovacia hra. Postava beží v plameňoch a nezastaví sa. Skáč, aby si chytil dobré pojmy a preskočil zlé, potom uvidíš zhrnutie, čo bolo dobré a čo zlé."
+    "description": "Hra s bočným posúvaním: skáčte, aby ste chytili správne pojmy a vyhli sa nesprávnym."
   },
   "settings": {
     "configure": [
@@ -89,7 +89,9 @@
         "property": "gameTitle",
         "title": "Názov hry",
         "description": "Pomenuje túto hru v udalostiach priebehu a v značkách OER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "ID hry",

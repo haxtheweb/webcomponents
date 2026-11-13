@@ -14,16 +14,6 @@
         "property": "title",
         "title": "متبادل عنوان",
         "description": "QR ڪوڊ جي ذريعي سان ڳنڍيل متبادل عنوان."
-      },
-      {
-        "property": "modulesize",
-        "title": "سائيز",
-        "description": "QR ڪوڊ جي سائيز."
-      },
-      {
-        "property": "margin",
-        "title": "مارجن",
-        "description": "ڪوڊ جي چوڌاري ريپر."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "سائيز",
+        "description": "QR ڪوڊ جي سائيز."
+      },
+      {
+        "property": "margin",
+        "title": "مارجن",
+        "description": "ڪوڊ جي چوڌاري ريپر."
       }
     ]
   }

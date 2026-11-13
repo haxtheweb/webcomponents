@@ -11,6 +11,13 @@
         "description": "ఈ AR ఫైల్ కోసం URL."
       },
       {
+        "property": "skyColor",
+        "title": "ఆకాశం రంగు",
+        "description": "దృశ్యంలో ఆకాశం రంగును ఎంచుకోండి."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "AR‌లో అంశం యొక్క X స్థానం."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "AR‌లో అంశం యొక్క Z స్థానం."
-      },
-      {
-        "property": "skyColor",
-        "title": "ఆకాశం రంగు",
-        "description": "దృశ్యంలో ఆకాశం రంగును ఎంచుకోండి."
       }
     ]
   }

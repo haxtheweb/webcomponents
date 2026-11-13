@@ -11,20 +11,17 @@
         "description": "Lakabin sauƙin isa na saitin shafukan."
       },
       {
-        "property": "disabled",
-        "title": "An kashe",
-        "description": "Kashe dukan shafukan."
-      },
-      {
-        "property": "hidden",
-        "title": "A ɓoye",
-        "description": "Ɓoye saitin shafukan."
-      },
-      {
         "property": "sticky",
         "title": "Manne",
         "description": "Ajiye shafukan kwance a sama yayin gungurawa."
       },
+      {
+        "slot": "",
+        "title": "Shafuka",
+        "description": "Jerin abubuwan <a11y-tab/>."
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "Iyakar Tsari",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "Iyakar Alama",
         "description": "Iyakar nuna rubutu tare da alamomi. Tsoho shi ne 0; yi amfani da -1 don yanayin alama kawai."
-      },
-      {
-        "slot": "",
-        "title": "Shafuka",
-        "description": "Jerin abubuwan <a11y-tab/>."
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "An kashe",
+        "description": "Kashe dukan shafukan."
+      },
+      {
+        "property": "hidden",
+        "title": "A ɓoye",
+        "description": "Ɓoye saitin shafukan."
+      },
       {
         "property": "id",
         "title": "ID na Musamman",

@@ -4,22 +4,23 @@
     "description": "Video və audio pleyerləri pleyer + yan panel düzümündə təqdim edən pleylist."
   },
   "settings": {
-    "configure": [
+    "configure": [],
+    "advanced": [
       {
         "property": "activeIndex",
         "title": "Aktiv indeks",
         "description": "Başlanğıc aktiv elementin indeksi."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kurs",
-        "description": "Bu pleylistin nəzərdə tutulduğu kurs (kurs identifikatoru və ya URL)."
       }
     ],
     "developer": [
       {
         "title": "Media",
         "description": "Oxutma siyahısındakı videolar və audio. Burada redaktə olunmur: səhifə konturu hansı blokların buraya buraxıla biləcəyini bilmək üçün ondan istifadə edir."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurs",
+        "description": "Bu pleylistin nəzərdə tutulduğu kurs (kurs identifikatoru və ya URL)."
       }
     ]
   }

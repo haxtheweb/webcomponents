@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Цель",
         "description": "Путь к сборке игры."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Ширина холста",
+        "description": "CSS-ширина холста (например, px или em)."
       },
+      {
+        "property": "height",
+        "title": "Высота холста",
+        "description": "CSS-высота холста (например, px или em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Метод сжатия",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Версия продукта",
         "description": "Версия выпуска."
-      },
-      {
-        "property": "width",
-        "title": "Ширина холста",
-        "description": "CSS-ширина холста (например, px или em)."
-      },
-      {
-        "property": "height",
-        "title": "Высота холста",
-        "description": "CSS-высота холста (например, px или em)."
       },
       {
         "property": "background",

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Gioco della missione dei concetti",
-    "description": "Un mondo da esplorare. I concetti ti trovano e ti fanno una domanda. Rispondi bene per sconfiggerne uno e sbloccare la sua casa. Il riepilogo mostra i tentativi e cosa ripassare."
+    "description": "Un gioco a mondo aperto in cui i concetti pongono domande e le risposte corrette sbloccano la mappa."
   },
   "settings": {
     "configure": [
@@ -91,7 +91,9 @@
         "property": "gameTitle",
         "title": "Nome del gioco",
         "description": "Dà un nome a questo gioco negli eventi di avanzamento e nel markup OER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "ID del gioco",

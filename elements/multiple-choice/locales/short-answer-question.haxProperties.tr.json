@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Kısa Yanıtlı Soru",
-    "description": "Kullanıcının basit bir soruyu yanıtlamasını sağlayın"
+    "description": "Öğrencinin bir iki cümleyle yanıtladığı bir soru."
   },
   "settings": {
     "configure": [

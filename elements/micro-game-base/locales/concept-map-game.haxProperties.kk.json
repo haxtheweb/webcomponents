@@ -86,7 +86,9 @@
         "property": "gameTitle",
         "title": "Ойын атауы",
         "description": "Бұл ойынға үдеріс оқиғаларында және OER Schema белгілеуінде ат береді."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Ойын идентификаторы",

@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Filterjen tastean",
         "description": "Filterjen op kolomwearden tastean."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Numerike opmaak",
-        "description": "Numerike opmaak tapasse op numerike kolommen."
-      },
-      {
-        "property": "responsive",
-        "title": "Responsyf",
-        "description": "Tabelopmaak oanpasse op lytse skermen."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Rubrykmodus",
-        "description": "Ynterpretearje dizze tabel as in OER Schema Rubric, sadat Rubric-, RubricScale-, RubricCriterion- en RubricLevel-metadata útjûn wurde."
-      },
-      {
-        "property": "rubricType",
-        "title": "Rubryktype",
-        "description": "Rubrykstyl útjûn as oer:rubricType (allinnich sinfol as Rubrykmodus oan stiet).",
-        "options": {
-          "": "(gjin)",
-          "analytic": "Analytysk",
-          "holistic": "Holistysk",
-          "single-point": "Ien punt",
-          "checklist": "Kontrôlelist"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Printknop",
         "description": "In knop tafoegje om allinnich de tabel te printsjen."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Numerike opmaak",
+        "description": "Numerike opmaak tapasse op numerike kolommen."
+      },
+      {
+        "property": "responsive",
+        "title": "Responsyf",
+        "description": "Tabelopmaak oanpasse op lytse skermen."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Rubrykmodus",
+        "description": "Ynterpretearje dizze tabel as in OER Schema Rubric, sadat Rubric-, RubricScale-, RubricCriterion- en RubricLevel-metadata útjûn wurde."
+      },
+      {
+        "property": "rubricType",
+        "title": "Rubryktype",
+        "description": "Rubrykstyl útjûn as oer:rubricType (allinnich sinfol as Rubrykmodus oan stiet).",
+        "options": {
+          "": "(gjin)",
+          "analytic": "Analytysk",
+          "holistic": "Holistysk",
+          "single-point": "Ien punt",
+          "checklist": "Kontrôlelist"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "CSV-gegevens",
         "description": "In tabel meitsje fan in opladen CSV-bestân."
       }
-    ]
+    ],
+    "developer": []
   }
 }

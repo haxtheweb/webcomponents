@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Đích",
         "description": "Đường dẫn đến bản dựng trò chơi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Chiều rộng canvas",
+        "description": "Chiều rộng CSS của canvas (ví dụ px hoặc em)."
       },
+      {
+        "property": "height",
+        "title": "Chiều cao canvas",
+        "description": "Chiều cao CSS của canvas (ví dụ px hoặc em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Phương thức nén",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Phiên bản sản phẩm",
         "description": "Phiên bản phát hành."
-      },
-      {
-        "property": "width",
-        "title": "Chiều rộng canvas",
-        "description": "Chiều rộng CSS của canvas (ví dụ px hoặc em)."
-      },
-      {
-        "property": "height",
-        "title": "Chiều cao canvas",
-        "description": "Chiều cao CSS của canvas (ví dụ px hoặc em)."
       },
       {
         "property": "background",

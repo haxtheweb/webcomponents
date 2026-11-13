@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Conceptkaartspel",
-    "description": "Een kort toetsenbordspel. Een personage loopt op een kaart naar elk concept en het legt zichzelf uit. Raak ze allemaal aan voor confetti en een prompt om te kopiëren."
+    "description": "Een kort toetsenbordspel waarin een personage over een kaart loopt en elk concept zichzelf uitlegt."
   },
   "settings": {
     "configure": [
@@ -86,7 +86,9 @@
         "property": "gameTitle",
         "title": "Spelnaam",
         "description": "Geeft dit spel een naam in voortgangsgebeurtenissen en OER Schema-markup."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Spel-ID",

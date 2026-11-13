@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Inel de progres",
-    "description": "Inel de progres"
+    "description": "Un grafic inelar care arată progresul către un total."
   },
   "settings": {
     "configure": [
@@ -26,11 +26,6 @@
         "description": "Text alternativ pentru imagine."
       },
       {
-        "property": "animated",
-        "title": "Animat",
-        "description": "Dacă progresul este animat la prima încărcare"
-      },
-      {
         "property": "complete",
         "title": "Finalizat",
         "description": "Un tablou de valori finalizate."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "Total",
         "description": "Totalul când toate elementele sunt finalizate."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "Animat",
+        "description": "Dacă progresul este animat la prima încărcare"
       },
       {
         "property": "startAngle",

@@ -3,6 +3,13 @@ import { fixture, expect, html, waitUntil } from "@open-wc/testing";
 import "../video-player.js";
 import { installOfflineYouTubeStubs } from "../../a11y-media-player/test/offline-stubs.js";
 
+// HAX schemas ship as JSON next to the element; read one whether the class
+// returns the object or the URL of its file
+const haxSchema = async (C) => {
+  const hp = C.haxProperties;
+  return typeof hp === "string" ? (await fetch(hp)).json() : hp;
+};
+
 // keep every youtube / thumbnail request off the real network
 installOfflineYouTubeStubs();
 
@@ -102,9 +109,10 @@ Object.keys(SOURCES).forEach((kind) => {
   const SRC = SOURCES[kind];
   const youtube = kind === "youtube";
   describe(`video-player HAX settings take effect right away (${kind} source)`, () => {
-    it("covers every HAX-editable property", () => {
-      const settings =
-        globalThis.customElements.get("video-player").haxProperties.settings;
+    it("covers every HAX-editable property", async () => {
+      const settings = (
+        await haxSchema(globalThis.customElements.get("video-player"))
+      ).settings;
       const props = []
         .concat(settings.configure, settings.advanced, settings.developer)
         .map((s) => s.property)
@@ -545,13 +553,15 @@ describe("video-player learner data across re-renders", () => {
 });
 
 describe("video-player text alignment", () => {
-  it("the HAX settings form does not offer text alignment", () => {
-    const props = globalThis.customElements.get("video-player").haxProperties;
+  it("the HAX settings form does not offer text alignment", async () => {
+    const props = await haxSchema(
+      globalThis.customElements.get("video-player"),
+    );
     expect(props.designSystem.textAlign).to.equal(false);
     expect(props.designSystem.card).to.equal(true);
     const audio = globalThis.customElements.get("audio-player");
     if (audio) {
-      expect(audio.haxProperties.designSystem.textAlign).to.equal(false);
+      expect((await haxSchema(audio)).designSystem.textAlign).to.equal(false);
     }
   });
 

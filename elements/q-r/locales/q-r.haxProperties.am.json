@@ -14,16 +14,6 @@
         "property": "title",
         "title": "አማራጭ ርዕስ",
         "description": "ከQR ኮዱ ምንጭ ጋር የተገናኘ አማራጭ ርዕስ።"
-      },
-      {
-        "property": "modulesize",
-        "title": "መጠን",
-        "description": "የQR ኮዱ መጠን።"
-      },
-      {
-        "property": "margin",
-        "title": "ህዳግ",
-        "description": "በኮዱ ዙሪያ ያለ መጠቅለያ።"
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "መጠን",
+        "description": "የQR ኮዱ መጠን።"
+      },
+      {
+        "property": "margin",
+        "title": "ህዳግ",
+        "description": "በኮዱ ዙሪያ ያለ መጠቅለያ።"
       }
     ]
   }

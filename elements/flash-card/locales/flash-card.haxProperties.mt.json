@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Sors tal-immaġni",
         "description": "Fajl tal-immaġni użat għall-karta. Jissostitwixxi l-Kelma ewlenija tal-immaġni."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Kelma ewlenija tal-immaġni",
+        "description": "Kelma ewlenija għal immaġni każwali. Tiġi sostitwita mis-Sors tal-immaġni."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Għan tat-tagħlim",
         "description": "OER Schema: ID jew URL tal-għan tat-tagħlim li din il-prattika tappoġġja."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Kelma ewlenija tal-immaġni",
-        "description": "Kelma ewlenija għal immaġni każwali. Tiġi sostitwita mis-Sors tal-immaġni."
       }
     ]
   }

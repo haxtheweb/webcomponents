@@ -11,11 +11,6 @@
         "description": "Słowo używane do wygenerowania losowej postaci."
       },
       {
-        "property": "code",
-        "title": "Kod postaci",
-        "description": "Wklej zapisany kod, aby odtworzyć tę postać."
-      },
-      {
         "property": "hat",
         "title": "Kapelusz",
         "description": "Styl kapelusza.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Maska",
-        "description": "Maska noszona na twarzy lub głowie.",
-        "options": {
-          "none": "Brak",
-          "lion": "Lew",
-          "plague": "Doktor dżuma",
-          "theater": "Teatralna",
-          "pumpkin": "Dynia",
-          "ghost": "Duch",
-          "mummy": "Mumia",
-          "wrestler": "Maska zapaśnika",
-          "block-head": "Klockowa głowa",
-          "web": "Maska z pajęczyną",
-          "werewolf": "Twarz wilkołaka",
-          "shadow": "Mroczna twarz"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Makijaż",
-        "description": "Farba do twarzy lub szminka.",
-        "options": {
-          "none": "Brak",
-          "red-lipstick": "Czerwona szminka",
-          "pink-lipstick": "Różowa szminka",
-          "berry-lipstick": "Jagodowa szminka",
-          "clown": "Makijaż klauna",
-          "fangs": "Kły",
-          "skull": "Malunek czaszki",
-          "zombie": "Malunek zombie",
-          "red-nose": "Czerwony nos",
-          "white-beard": "Biała broda",
-          "domino": "Maska bohatera",
-          "carrot": "Marchewkowy nos",
-          "bunny": "Króliczy nos",
-          "mustache": "Wąsy",
-          "monster": "Makijaż potwora",
-          "round-glasses": "Okrągłe okulary"
-        }
-      },
-      {
         "property": "expression",
         "title": "Mina",
         "description": "Wyraz twarzy.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Zwierzak",
+        "description": "Zwierzak obok postaci.",
+        "options": {
+          "none": "Brak",
+          "cat": "Kot",
+          "dog": "Pies",
+          "bunny": "Króliczek",
+          "goldfish": "Złota rybka",
+          "slime": "Glut",
+          "squirrel": "Wiewiórka",
+          "dragon": "Smoczek",
+          "parrot": "Papuga",
+          "owl": "Sowa",
+          "bat": "Nietoperz"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Kod postaci",
+        "description": "Wklej zapisany kod, aby odtworzyć tę postać."
+      },
+      {
+        "property": "mask",
+        "title": "Maska",
+        "description": "Maska noszona na twarzy lub głowie.",
+        "options": {
+          "none": "Brak",
+          "lion": "Lew",
+          "plague": "Doktor dżuma",
+          "theater": "Teatralna",
+          "pumpkin": "Dynia",
+          "ghost": "Duch",
+          "mummy": "Mumia",
+          "wrestler": "Maska zapaśnika",
+          "block-head": "Klockowa głowa",
+          "web": "Maska z pajęczyną",
+          "werewolf": "Twarz wilkołaka",
+          "shadow": "Mroczna twarz"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Makijaż",
+        "description": "Farba do twarzy lub szminka.",
+        "options": {
+          "none": "Brak",
+          "red-lipstick": "Czerwona szminka",
+          "pink-lipstick": "Różowa szminka",
+          "berry-lipstick": "Jagodowa szminka",
+          "clown": "Makijaż klauna",
+          "fangs": "Kły",
+          "skull": "Malunek czaszki",
+          "zombie": "Malunek zombie",
+          "red-nose": "Czerwony nos",
+          "white-beard": "Biała broda",
+          "domino": "Maska bohatera",
+          "carrot": "Marchewkowy nos",
+          "bunny": "Króliczy nos",
+          "mustache": "Wąsy",
+          "monster": "Makijaż potwora",
+          "round-glasses": "Okrągłe okulary"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Tekst na fladze",
         "description": "Do 4 liter widocznych na fladze."
@@ -310,24 +330,6 @@
           "skates": "Łyżwy",
           "skateboard": "Deskorolka",
           "hoverboard": "Deskolot"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Zwierzak",
-        "description": "Zwierzak obok postaci.",
-        "options": {
-          "none": "Brak",
-          "cat": "Kot",
-          "dog": "Pies",
-          "bunny": "Króliczek",
-          "goldfish": "Złota rybka",
-          "slime": "Glut",
-          "squirrel": "Wiewiórka",
-          "dragon": "Smoczek",
-          "parrot": "Papuga",
-          "owl": "Sowa",
-          "bat": "Nietoperz"
         }
       },
       {

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "เสียง",
-    "description": "สามารถนำเสนอวิดีโอในรูปแบบที่เข้าถึงได้สูงไม่ว่าจะมาจากแหล่งใด"
+    "description": "เครื่องเล่นเสียงที่เข้าถึงได้ พร้อมรองรับบทถอดความ"
   },
   "settings": {
     "configure": [
@@ -46,6 +46,16 @@
         "property": "accentColor",
         "title": "สีเน้น",
         "description": "เลือกสีเน้นสำหรับเครื่องเล่น"
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "ซ่อนการประทับเวลา",
+        "description": "ซ่อนการประทับเวลาในบทถอดความ"
+      },
+      {
+        "property": "hideTranscript",
+        "title": "ซ่อนบทถอดความ",
+        "description": "ซ่อนบทถอดความโดยค่าเริ่มต้น"
       }
     ],
     "developer": [
@@ -72,16 +82,6 @@
         "property": "disableInteractive",
         "title": "ปิดใช้การโต้ตอบ",
         "description": "ปิดใช้โหมดโต้ตอบที่ทำให้คลิกบทถอดความได้"
-      },
-      {
-        "property": "hideTimestamps",
-        "title": "ซ่อนการประทับเวลา",
-        "description": "ซ่อนการประทับเวลาในบทถอดความ"
-      },
-      {
-        "property": "hideTranscript",
-        "title": "ซ่อนบทถอดความ",
-        "description": "ซ่อนบทถอดความโดยค่าเริ่มต้น"
       },
       {
         "property": "lang",

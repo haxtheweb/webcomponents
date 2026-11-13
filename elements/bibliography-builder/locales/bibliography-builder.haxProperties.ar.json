@@ -9,7 +9,9 @@
         "slot": "",
         "title": "الاستشهادات",
         "description": "عناصر الاستشهاد في قائمة المراجع هذه"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "المقرر الدراسي",

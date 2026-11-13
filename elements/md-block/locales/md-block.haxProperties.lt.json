@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "Markdown turinio blokas, įvestas tiesiogiai arba įkeltas nuotoliniu būdu"
+    "description": "Markdown turinys, parašytas vietoje arba įkeltas iš failo."
   },
   "settings": {
     "configure": [

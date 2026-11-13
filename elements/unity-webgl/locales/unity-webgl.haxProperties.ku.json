@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Armanc",
         "description": "Rêya avakirina lîstikê."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Firehiya Kanvasê",
+        "description": "Firehiya CSS ya kanvasê (mînak px an em)."
       },
+      {
+        "property": "height",
+        "title": "Bilindahiya Kanvasê",
+        "description": "Bilindahiya CSS ya kanvasê (mînak px an em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Rêbaza pêçandinê",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Guhertoya Berhemê",
         "description": "Guhertoya weşanê."
-      },
-      {
-        "property": "width",
-        "title": "Firehiya Kanvasê",
-        "description": "Firehiya CSS ya kanvasê (mînak px an em)."
-      },
-      {
-        "property": "height",
-        "title": "Bilindahiya Kanvasê",
-        "description": "Bilindahiya CSS ya kanvasê (mînak px an em)."
       },
       {
         "property": "background",

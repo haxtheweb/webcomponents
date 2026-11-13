@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Marandu ndojepytyvõiramo",
-        "description": "Marandu kundahára ndaikatúiramo ohechauka marandurenda PDF."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Joajuha marandu ndojepytyvõiramo",
-        "description": "Joajuha moñe'ẽrã kundahára ndaikatúiramo ohechauka marandurenda PDF."
-      },
-      {
         "property": "width",
         "title": "Pekue",
         "description": "PDF jehechaha pekue."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Yvatekue",
         "description": "PDF jehechaha yvatekue."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Marandu ndojepytyvõiramo",
+        "description": "Marandu kundahára ndaikatúiramo ohechauka marandurenda PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Joajuha marandu ndojepytyvõiramo",
+        "description": "Joajuha moñe'ẽrã kundahára ndaikatúiramo ohechauka marandurenda PDF."
       }
     ]
   }

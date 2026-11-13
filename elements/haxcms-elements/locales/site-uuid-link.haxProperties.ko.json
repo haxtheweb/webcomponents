@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "HAX 링크",
-    "description": "작업 중인 사이트의 특정 리소스에 대한 링크."
+    "title": "페이지 링크",
+    "description": "작업 중인 사이트의 페이지로 연결되는 링크."
   },
   "settings": {
     "configure": [

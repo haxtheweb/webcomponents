@@ -9,7 +9,9 @@
         "property": "source",
         "title": "URL resursă",
         "description": "URL-ul resursei."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Înălțime",

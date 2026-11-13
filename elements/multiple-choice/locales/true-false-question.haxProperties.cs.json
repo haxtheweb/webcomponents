@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Otázka pravda / nepravda",
-    "description": "Otázka pravda/nepravda"
+    "description": "Tvrzení, které student označí jako pravdivé nebo nepravdivé."
   },
   "settings": {
     "configure": [

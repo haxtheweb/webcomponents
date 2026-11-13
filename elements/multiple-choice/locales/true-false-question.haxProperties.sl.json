@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Vprašanje drži / ne drži",
-    "description": "Vprašanje drži ali ne drži"
+    "description": "Trditev, ki jo učenec označi kot pravilno ali napačno."
   },
   "settings": {
     "configure": [

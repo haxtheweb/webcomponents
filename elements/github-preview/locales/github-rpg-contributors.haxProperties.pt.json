@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Lista de colaboradores do GitHub",
-    "description": "Exibidos como personagens de RPG usando a API do GitHub."
+    "description": "Lista os colaboradores de um repositório como personagens de RPG."
   },
   "settings": {
     "configure": [

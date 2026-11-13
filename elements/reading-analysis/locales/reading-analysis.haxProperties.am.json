@@ -38,21 +38,6 @@
         "slot": "",
         "title": "ንባብ",
         "description": "ተማሪዎች የሚሠሩበት ንባብ። ማንኛውም HTML፦ ርዕሶች፣ አንቀጾች፣ ዝርዝሮች እና ምስሎች።"
-      },
-      {
-        "property": "gradingFormat",
-        "title": "የውጤት አሰጣጥ ቅርጸት",
-        "description": "OER Schema፦ ለዚህ ምዘና የውጤት አሰጣጥ ቅርጸት (ለምሳሌ ነጥቦች፣ ፊደል፣ መቶኛ፣ ማጠናቀቅ)።"
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "የመማር ዓላማ",
-        "description": "OER Schema፦ ከዚህ ምዘና ጋር የተያያዘ የመማር ዓላማ።"
-      },
-      {
-        "property": "forCourse",
-        "title": "ኮርስ",
-        "description": "OER Schema፦ ይህ ምዘና የታሰበለት ኮርስ።"
       }
     ],
     "advanced": [
@@ -70,6 +55,16 @@
         "property": "collapsed",
         "title": "ተሰብስቦ ጀምር",
         "description": "ሊሰበሰብ በሚችልበት ጊዜ፣ ጥያቄውንና ሁኔታውን ብቻ የሚያሳይ የተዘጋ ረድፍ ሆኖ ይጀምር።"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "የውጤት አሰጣጥ ቅርጸት",
+        "description": "OER Schema፦ ለዚህ ምዘና የውጤት አሰጣጥ ቅርጸት (ለምሳሌ ነጥቦች፣ ፊደል፣ መቶኛ፣ ማጠናቀቅ)።"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "የመማር ዓላማ",
+        "description": "OER Schema፦ ከዚህ ምዘና ጋር የተያያዘ የመማር ዓላማ።"
       }
     ],
     "developer": [
@@ -77,6 +72,11 @@
         "property": "quizName",
         "title": "የፈተናው ስም",
         "description": "ይህን ንጥል ለመለየት በxAPI የሚመሩ አካባቢዎች ውስጥ ጥቅም ላይ የሚውል የፈተና ስም"
+      },
+      {
+        "property": "forCourse",
+        "title": "ኮርስ",
+        "description": "OER Schema፦ ይህ ምዘና የታሰበለት ኮርስ።"
       }
     ]
   }

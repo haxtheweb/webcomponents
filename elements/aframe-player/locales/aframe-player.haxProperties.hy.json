@@ -11,6 +11,13 @@
         "description": "Այս AR ֆայլի URL-ը։"
       },
       {
+        "property": "skyColor",
+        "title": "Երկնքի գույն",
+        "description": "Ընտրեք տեսարանում երկնքի գույնը։"
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "Տարրի X դիրքը AR-ում։"
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "Տարրի Z դիրքը AR-ում։"
-      },
-      {
-        "property": "skyColor",
-        "title": "Երկնքի գույն",
-        "description": "Ընտրեք տեսարանում երկնքի գույնը։"
       }
     ]
   }

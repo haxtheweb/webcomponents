@@ -26,7 +26,8 @@
         "description": "Дэлгэц уншигч болон SEO-г сайжруулахад хэрэгтэй."
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "Чанар",

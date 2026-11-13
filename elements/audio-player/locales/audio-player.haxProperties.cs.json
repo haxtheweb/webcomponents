@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Zvuk",
-    "description": "Umožňuje prezentovat video vysoce přístupným způsobem bez ohledu na zdroj."
+    "description": "Přístupný zvukový přehrávač s podporou přepisu."
   },
   "settings": {
     "configure": [
@@ -46,6 +46,16 @@
         "property": "accentColor",
         "title": "Zvýrazňující barva",
         "description": "Vyberte barvu zvýraznění přehrávače."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Skrýt časové značky",
+        "description": "Skrýt časové značky v přepisu."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Skrýt přepis",
+        "description": "Ve výchozím stavu skrýt přepis."
       }
     ],
     "developer": [
@@ -72,16 +82,6 @@
         "property": "disableInteractive",
         "title": "Vypnout interaktivitu",
         "description": "Vypnout interaktivní režim, který dělá přepis klikatelným."
-      },
-      {
-        "property": "hideTimestamps",
-        "title": "Skrýt časové značky",
-        "description": "Skrýt časové značky v přepisu."
-      },
-      {
-        "property": "hideTranscript",
-        "title": "Skrýt přepis",
-        "description": "Ve výchozím stavu skrýt přepis."
       },
       {
         "property": "lang",

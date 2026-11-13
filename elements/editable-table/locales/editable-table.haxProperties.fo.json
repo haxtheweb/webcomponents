@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Loyv filtur",
         "description": "Loyv at filtrera eftir virðum í teigum."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Talsnið",
-        "description": "Nýt talsnið á teigar við tølum."
-      },
-      {
-        "property": "responsive",
-        "title": "Lagaligt",
-        "description": "Laga talvusniðið á smáum skermum."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Metingarstigastillingur",
-        "description": "Tulka hesa talvuna sum eina OER Schema Rubric, so at Rubric-, RubricScale-, RubricCriterion- og RubricLevel-metadáta verður útgivið."
-      },
-      {
-        "property": "rubricType",
-        "title": "Slag av metingarstiga",
-        "description": "Metingarstigasnið útgivið sum oer:rubricType (hevur bert týdning, tá metingarstigastillingur er virkin).",
-        "options": {
-          "": "(einki)",
-          "analytic": "Greinandi",
-          "holistic": "Heildarligt",
-          "single-point": "Einstakt punkt",
-          "checklist": "Eftirkannarlisti"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Prentknøttur",
         "description": "Legg ein knøtt afturat at prenta bert talvuna."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Talsnið",
+        "description": "Nýt talsnið á teigar við tølum."
+      },
+      {
+        "property": "responsive",
+        "title": "Lagaligt",
+        "description": "Laga talvusniðið á smáum skermum."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Metingarstigastillingur",
+        "description": "Tulka hesa talvuna sum eina OER Schema Rubric, so at Rubric-, RubricScale-, RubricCriterion- og RubricLevel-metadáta verður útgivið."
+      },
+      {
+        "property": "rubricType",
+        "title": "Slag av metingarstiga",
+        "description": "Metingarstigasnið útgivið sum oer:rubricType (hevur bert týdning, tá metingarstigastillingur er virkin).",
+        "options": {
+          "": "(einki)",
+          "analytic": "Greinandi",
+          "holistic": "Heildarligt",
+          "single-point": "Einstakt punkt",
+          "checklist": "Eftirkannarlisti"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "CSV-dáta",
         "description": "Ger eina talvu úr eini uppsendari CSV-fílu."
       }
-    ]
+    ],
+    "developer": []
   }
 }

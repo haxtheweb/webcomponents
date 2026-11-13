@@ -9,7 +9,9 @@
         "property": "source",
         "title": "URL של המשאב",
         "description": "URL של המשאב."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "גובה",

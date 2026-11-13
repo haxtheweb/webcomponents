@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Bildunterschrift",
         "description": "Bildunterschrift für das Bild."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Abbildungstitel",
-        "description": "Titel für die Abbildungsbeschriftung."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Abbildungsbeschreibung",
-        "description": "Beschreibung für die Abbildungsbeschriftung."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Bilddialog deaktivieren",
         "description": "Verhindert, dass ein Klick das Bild in einem Bildinspektor-Dialog öffnet."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Abbildungstitel",
+        "description": "Titel für die Abbildungsbeschriftung."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Abbildungsbeschreibung",
+        "description": "Beschreibung für die Abbildungsbeschriftung."
       }
     ],
     "developer": [

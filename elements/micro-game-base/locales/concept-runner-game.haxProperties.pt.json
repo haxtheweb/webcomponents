@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Jogo de corrida de conceitos",
-    "description": "Um jogo de deslocamento lateral. A personagem corre em chamas e nunca para. Salta para apanhar os bons conceitos e passar por cima dos maus, e depois vê um resumo do que era bom e do que era mau."
+    "description": "Um jogo de rolagem lateral: pule para pegar os conceitos certos e evitar os errados."
   },
   "settings": {
     "configure": [
@@ -89,7 +89,9 @@
         "property": "gameTitle",
         "title": "Nome do jogo",
         "description": "Dá nome a este jogo nos eventos de progresso e na marcação OER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "ID do jogo",

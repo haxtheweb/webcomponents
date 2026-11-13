@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "نشان رویداد",
-    "description": "مؤلفهٔ نشان رویداد."
+    "description": "نشان نام به سبک همایش با عکس، نام و سازمان."
   },
   "settings": {
     "configure": [

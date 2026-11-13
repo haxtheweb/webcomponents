@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Značka događaja",
-    "description": "Komponenta značke događaja."
+    "description": "Bedž s imenom u konferencijskom stilu s fotografijom, imenom i organizacijom."
   },
   "settings": {
     "configure": [

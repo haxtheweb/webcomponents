@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Zdroj obrázka",
         "description": "Súbor obrázka použitý pre kartičku. Má prednosť pred kľúčovým slovom obrázka."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Kľúčové slovo obrázka",
+        "description": "Kľúčové slovo pre náhodný obrázok. Zdroj obrázka má pred ním prednosť."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Vzdelávací cieľ",
         "description": "OER Schema: ID alebo URL vzdelávacieho cieľa, ktorý toto precvičovanie podporuje."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Kľúčové slovo obrázka",
-        "description": "Kľúčové slovo pre náhodný obrázok. Zdroj obrázka má pred ním prednosť."
       }
     ]
   }

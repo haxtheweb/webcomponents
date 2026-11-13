@@ -9,7 +9,9 @@
         "slot": "",
         "title": "Citāti",
         "description": "Šīs bibliogrāfijas citēšanas vienumi"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "Kurss",

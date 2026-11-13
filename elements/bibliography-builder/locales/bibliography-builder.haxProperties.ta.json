@@ -9,7 +9,9 @@
         "slot": "",
         "title": "மேற்கோள்கள்",
         "description": "இந்த நூற்பட்டியலில் உள்ள மேற்கோள் உருப்படிகள்"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "பாடநெறி",

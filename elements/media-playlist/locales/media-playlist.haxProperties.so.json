@@ -4,22 +4,23 @@
     "description": "Liis ciyaareed oo soo bandhiga ciyaarayaasha muuqaalka iyo codka qaab ciyaariye iyo bar dhinac ah."
   },
   "settings": {
-    "configure": [
+    "configure": [],
+    "advanced": [
       {
         "property": "activeIndex",
         "title": "Lambarka bilowga",
         "description": "Lambarka shayga laga bilaabayo."
-      },
-      {
-        "property": "forCourse",
-        "title": "Koorso",
-        "description": "Koorsada liiskan loogu talagalay (aqoonsiga koorsada ama URL)."
       }
     ],
     "developer": [
       {
         "title": "Warbaahin",
         "description": "Fiidiyowyada iyo codka liiska ciyaarka. Halkan laguma beddelo: qorshaha boggu wuxuu u isticmaalaa si uu u ogaado baloogyada la dhex dhigi karo."
+      },
+      {
+        "property": "forCourse",
+        "title": "Koorso",
+        "description": "Koorsada liiskan loogu talagalay (aqoonsiga koorsada ama URL)."
       }
     ]
   }

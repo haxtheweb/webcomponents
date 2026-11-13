@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Doel",
         "description": "Paad nei de build fan it spul."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Kanvasbreedte",
+        "description": "CSS-breedte fan it kanvas (bygelyks px of em)."
       },
+      {
+        "property": "height",
+        "title": "Kanvashichte",
+        "description": "CSS-hichte fan it kanvas (bygelyks px of em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Kompresjemetoade",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Produktferzje",
         "description": "Utjeftferzje."
-      },
-      {
-        "property": "width",
-        "title": "Kanvasbreedte",
-        "description": "CSS-breedte fan it kanvas (bygelyks px of em)."
-      },
-      {
-        "property": "height",
-        "title": "Kanvashichte",
-        "description": "CSS-hichte fan it kanvas (bygelyks px of em)."
       },
       {
         "property": "background",

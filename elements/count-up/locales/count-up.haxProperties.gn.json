@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Moñe'ẽrã pahagua",
         "description": "Moñe'ẽrã ojehechaukáva papapy rire (techapyrã '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Tenda tenondegua",
-        "description": "Tetepy ojeiporavokuaáva papapy mboyve."
-      },
-      {
-        "slot": "suffix",
-        "title": "Tenda pahagua",
-        "description": "Tetepy ojeiporavokuaáva papapy rire."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Mbeguekatu'ỹre",
         "description": "Embogue mbeguekatu ani hag̃ua papapy oñemoambue."
+      },
+      {
+        "slot": "prefix",
+        "title": "Tenda tenondegua",
+        "description": "Tetepy ojeiporavokuaáva papapy mboyve."
+      },
+      {
+        "slot": "suffix",
+        "title": "Tenda pahagua",
+        "description": "Tetepy ojeiporavokuaáva papapy rire."
       }
     ]
   }

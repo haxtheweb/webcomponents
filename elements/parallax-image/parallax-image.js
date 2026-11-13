@@ -164,58 +164,8 @@ class ParallaxImage extends SchemaBehaviors(LitElement) {
     this.style.setProperty("--parallax-image-background", `url(${busted})`);
   }
   static get haxProperties() {
-    return {
-      canScale: true,
-
-      canEditSource: true,
-      gizmo: {
-        title: "Parallax image",
-        description:
-          "A full-width image that scrolls slower than the page, with a heading over it.",
-        icon: "image:landscape",
-        color: "grey",
-        tags: ["Media", "image", "parallax", "scroll", "banner"],
-        handles: [
-          {
-            type: "image",
-            url: "imageBg",
-          },
-        ],
-        meta: {
-          author: "HAXTheWeb core team",
-        },
-      },
-      settings: {
-        configure: [
-          {
-            property: "imageBg",
-            title: "Image",
-            description: "image to be involved in the background",
-            inputMethod: "haxupload",
-            fileActions: true,
-            noVoiceRecord: true,
-            noCamera: true,
-            noScreenRecord: true,
-          },
-          {
-            slot: "parallax_heading",
-            title: "Heading area",
-            description: "Heading text area",
-            inputMethod: "textarea",
-          },
-        ],
-        advanced: [],
-      },
-      demoSchema: [
-        {
-          tag: "parallax-image",
-          properties: {
-            imageBg: "https://placehold.co/1600x900",
-          },
-          content: '<span slot="parallax_heading">Section heading</span>',
-        },
-      ],
-    };
+    return new URL("./lib/parallax-image.haxProperties.json", import.meta.url)
+      .href;
   }
 }
 globalThis.customElements.define(ParallaxImage.tag, ParallaxImage);

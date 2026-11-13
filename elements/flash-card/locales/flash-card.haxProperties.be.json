@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Крыніца выявы",
         "description": "Файл выявы для карткі. Мае прыярытэт над ключавым словам выявы."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Ключавое слова выявы",
+        "description": "Ключавое слова для выпадковай выявы. Перавызначаецца крыніцай выявы."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Вучэбная мэта",
         "description": "OER Schema: ID або URL вучэбнай мэты, якую падтрымлівае гэта практыка."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Ключавое слова выявы",
-        "description": "Ключавое слова для выпадковай выявы. Перавызначаецца крыніцай выявы."
       }
     ]
   }

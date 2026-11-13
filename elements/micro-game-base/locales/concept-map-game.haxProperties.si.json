@@ -86,7 +86,9 @@
         "property": "gameTitle",
         "title": "ක්‍රීඩාවේ නම",
         "description": "ප්‍රගති සිදුවීම් සහ OER Schema සලකුණු කිරීමේදී මෙම ක්‍රීඩාවට නම තබයි."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "ක්‍රීඩා id",

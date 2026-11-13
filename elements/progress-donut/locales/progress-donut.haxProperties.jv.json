@@ -26,11 +26,6 @@
         "description": "Teks alt kanggo gambar."
       },
       {
-        "property": "animated",
-        "title": "Animasi",
-        "description": "Apa kemajuan dianimasi nalika diemot kapisan"
-      },
-      {
         "property": "complete",
         "title": "Rampung",
         "description": "Larik nilai sing wis rampung."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "Total",
         "description": "Total nalika kabeh item rampung."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "Animasi",
+        "description": "Apa kemajuan dianimasi nalika diemot kapisan"
       },
       {
         "property": "startAngle",

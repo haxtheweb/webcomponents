@@ -27,6 +27,13 @@
       {
         "slot": "",
         "title": "ענטפֿער"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "לינק פֿאַר מער",
+        "description": "לינק צו נאָך אינפֿאָרמאַציע."
       },
       {
         "property": "hasLearningObjective",
@@ -37,13 +44,6 @@
         "property": "assessing",
         "title": "אָפּשאַצט",
         "description": "רעפֿערענץ צו דער טעטיקייט אַרויסגעגעבן ווי oer:assessing."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "link",
-        "title": "לינק פֿאַר מער",
-        "description": "לינק צו נאָך אינפֿאָרמאַציע."
       }
     ]
   }

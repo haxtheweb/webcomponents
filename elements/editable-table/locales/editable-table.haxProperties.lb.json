@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Filteren erlaben",
         "description": "Filteren no Spaltewäerter erlaben."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Numeresch Gestaltung",
-        "description": "Numeresch Gestaltung op numeresch Spalten uwenden."
-      },
-      {
-        "property": "responsive",
-        "title": "Responsiv",
-        "description": "Tabellelayout op klengen Ecranen upassen."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Rubrik-Modus",
-        "description": "Dës Tabell als OER Schema Rubric interpretéieren, sou datt Rubric-, RubricScale-, RubricCriterion- a RubricLevel-Metadaten ausginn ginn."
-      },
-      {
-        "property": "rubricType",
-        "title": "Rubrik-Typ",
-        "description": "Rubrik-Stil, deen als oer:rubricType ausginn gëtt (nëmme sënnvoll, wann de Rubrik-Modus un ass).",
-        "options": {
-          "": "(keen)",
-          "analytic": "Analytesch",
-          "holistic": "Holistesch",
-          "single-point": "Eenzelpunkt",
-          "checklist": "Checklëscht"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Dréck-Knäppchen",
         "description": "E Knäppchen derbäisetzen fir nëmmen d'Tabell ze drécken."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Numeresch Gestaltung",
+        "description": "Numeresch Gestaltung op numeresch Spalten uwenden."
+      },
+      {
+        "property": "responsive",
+        "title": "Responsiv",
+        "description": "Tabellelayout op klengen Ecranen upassen."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Rubrik-Modus",
+        "description": "Dës Tabell als OER Schema Rubric interpretéieren, sou datt Rubric-, RubricScale-, RubricCriterion- a RubricLevel-Metadaten ausginn ginn."
+      },
+      {
+        "property": "rubricType",
+        "title": "Rubrik-Typ",
+        "description": "Rubrik-Stil, deen als oer:rubricType ausginn gëtt (nëmme sënnvoll, wann de Rubrik-Modus un ass).",
+        "options": {
+          "": "(keen)",
+          "analytic": "Analytesch",
+          "holistic": "Holistesch",
+          "single-point": "Eenzelpunkt",
+          "checklist": "Checklëscht"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "CSV-Daten",
         "description": "Eng Tabell aus engem eropgeluedene CSV-Fichier erstellen."
       }
-    ]
+    ],
+    "developer": []
   }
 }

@@ -9,7 +9,9 @@
         "slot": "",
         "title": "Ambato",
         "description": "Abubuwan ambato a cikin wannan jerin manazarta"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "Kwas",

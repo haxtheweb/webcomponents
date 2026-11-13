@@ -1,10 +1,10 @@
 {
   "gizmo": {
-    "title": "HAXcms: kizuizi cha vipengee vidogo",
-    "description": "Kizuizi kinachobadilika cha kuonyesha vipengee vidogo vya ukurasa wa sasa"
+    "title": "Kurasa ndogo",
+    "description": "Huorodhesha kurasa ndogo za ukurasa wa sasa."
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "Mbinu inayobadilika",
@@ -14,7 +14,9 @@
           "parent": "Vipengee vidogo vya mzazi",
           "ancestor": "Vipengee vidogo vyote kutoka kwa babu wa juu zaidi"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "Kiwango cha kuanza"

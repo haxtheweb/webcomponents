@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "Visor de PDF del navegador",
+    "title": "Visor de PDF",
     "description": "Inserta un archivo PDF en línea con un diseño de tarjeta opcional y un botón de descarga."
   },
   "settings": {
@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Mensaje de no compatible",
-        "description": "Mensaje que se muestra cuando el navegador no puede mostrar archivos PDF."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Mensaje del enlace de no compatible",
-        "description": "Texto del enlace cuando el navegador no puede mostrar archivos PDF."
-      },
-      {
         "property": "width",
         "title": "Ancho",
         "description": "Ancho del visor de PDF."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Altura",
         "description": "Altura del visor de PDF."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Mensaje de no compatible",
+        "description": "Mensaje que se muestra cuando el navegador no puede mostrar archivos PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Mensaje del enlace de no compatible",
+        "description": "Texto del enlace cuando el navegador no puede mostrar archivos PDF."
       }
     ]
   }

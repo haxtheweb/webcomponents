@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "ਫਿਲਟਰ ਦੀ ਇਜਾਜ਼ਤ",
         "description": "ਕਾਲਮ ਮੁੱਲਾਂ ਅਨੁਸਾਰ ਫਿਲਟਰ ਕਰਨ ਦੀ ਇਜਾਜ਼ਤ ਦਿਓ।"
-      },
-      {
-        "property": "numericStyles",
-        "title": "ਅੰਕੀ ਸਟਾਈਲਿੰਗ",
-        "description": "ਅੰਕੀ ਕਾਲਮਾਂ 'ਤੇ ਅੰਕੀ ਸਟਾਈਲਿੰਗ ਲਾਗੂ ਕਰੋ।"
-      },
-      {
-        "property": "responsive",
-        "title": "ਰਿਸਪਾਂਸਿਵ",
-        "description": "ਛੋਟੀਆਂ ਸਕ੍ਰੀਨਾਂ 'ਤੇ ਸਾਰਣੀ ਦਾ ਲੇਆਉਟ ਅਨੁਕੂਲ ਕਰੋ।"
-      },
-      {
-        "property": "rubricMode",
-        "title": "ਰੂਬ੍ਰਿਕ ਮੋਡ",
-        "description": "ਇਸ ਸਾਰਣੀ ਨੂੰ OER Schema Rubric ਵਜੋਂ ਸਮਝੋ ਤਾਂ ਜੋ Rubric, RubricScale, RubricCriterion ਅਤੇ RubricLevel ਮੈਟਾਡਾਟਾ ਜਾਰੀ ਹੋਵੇ।"
-      },
-      {
-        "property": "rubricType",
-        "title": "ਰੂਬ੍ਰਿਕ ਕਿਸਮ",
-        "description": "oer:rubricType ਵਜੋਂ ਜਾਰੀ ਰੂਬ੍ਰਿਕ ਸ਼ੈਲੀ (ਸਿਰਫ਼ ਰੂਬ੍ਰਿਕ ਮੋਡ ਚਾਲੂ ਹੋਣ 'ਤੇ ਅਰਥਪੂਰਨ)।",
-        "options": {
-          "": "(ਕੋਈ ਨਹੀਂ)",
-          "analytic": "ਵਿਸ਼ਲੇਸ਼ਣਾਤਮਕ",
-          "holistic": "ਸਮੁੱਚਾ",
-          "single-point": "ਇੱਕ-ਬਿੰਦੂ",
-          "checklist": "ਚੈੱਕਲਿਸਟ"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "ਪ੍ਰਿੰਟ ਬਟਨ",
         "description": "ਸਿਰਫ਼ ਸਾਰਣੀ ਪ੍ਰਿੰਟ ਕਰਨ ਲਈ ਬਟਨ ਜੋੜੋ।"
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "ਅੰਕੀ ਸਟਾਈਲਿੰਗ",
+        "description": "ਅੰਕੀ ਕਾਲਮਾਂ 'ਤੇ ਅੰਕੀ ਸਟਾਈਲਿੰਗ ਲਾਗੂ ਕਰੋ।"
+      },
+      {
+        "property": "responsive",
+        "title": "ਰਿਸਪਾਂਸਿਵ",
+        "description": "ਛੋਟੀਆਂ ਸਕ੍ਰੀਨਾਂ 'ਤੇ ਸਾਰਣੀ ਦਾ ਲੇਆਉਟ ਅਨੁਕੂਲ ਕਰੋ।"
+      },
+      {
+        "property": "rubricMode",
+        "title": "ਰੂਬ੍ਰਿਕ ਮੋਡ",
+        "description": "ਇਸ ਸਾਰਣੀ ਨੂੰ OER Schema Rubric ਵਜੋਂ ਸਮਝੋ ਤਾਂ ਜੋ Rubric, RubricScale, RubricCriterion ਅਤੇ RubricLevel ਮੈਟਾਡਾਟਾ ਜਾਰੀ ਹੋਵੇ।"
+      },
+      {
+        "property": "rubricType",
+        "title": "ਰੂਬ੍ਰਿਕ ਕਿਸਮ",
+        "description": "oer:rubricType ਵਜੋਂ ਜਾਰੀ ਰੂਬ੍ਰਿਕ ਸ਼ੈਲੀ (ਸਿਰਫ਼ ਰੂਬ੍ਰਿਕ ਮੋਡ ਚਾਲੂ ਹੋਣ 'ਤੇ ਅਰਥਪੂਰਨ)।",
+        "options": {
+          "": "(ਕੋਈ ਨਹੀਂ)",
+          "analytic": "ਵਿਸ਼ਲੇਸ਼ਣਾਤਮਕ",
+          "holistic": "ਸਮੁੱਚਾ",
+          "single-point": "ਇੱਕ-ਬਿੰਦੂ",
+          "checklist": "ਚੈੱਕਲਿਸਟ"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "CSV ਡਾਟਾ",
         "description": "ਅੱਪਲੋਡ ਕੀਤੀ CSV ਫ਼ਾਈਲ ਤੋਂ ਸਾਰਣੀ ਬਣਾਓ।"
       }
-    ]
+    ],
+    "developer": []
   }
 }

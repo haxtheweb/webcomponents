@@ -1,10 +1,10 @@
 {
   "gizmo": {
-    "title": "HAXcms: child block",
-    "description": "Dynamic na block para ipakita ang child ng kasalukuyang pahina"
+    "title": "Mga child page",
+    "description": "Inililista ang mga child page ng kasalukuyang pahina."
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "Dynamic na paraan",
@@ -14,7 +14,9 @@
           "parent": "Mga child ng parent",
           "ancestor": "Lahat ng child mula sa pinakamataas na ninuno"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "Panimulang antas"

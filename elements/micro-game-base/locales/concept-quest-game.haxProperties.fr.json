@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Jeu de quête de concepts",
-    "description": "Un monde à explorer. Les concepts viennent à toi et posent une question. Réponds juste pour en vaincre un et débloquer sa maison. Le récapitulatif montre les essais et ce qu'il faut revoir."
+    "description": "Un jeu en monde ouvert où les concepts posent des questions et où les bonnes réponses débloquent la carte."
   },
   "settings": {
     "configure": [
@@ -91,7 +91,9 @@
         "property": "gameTitle",
         "title": "Nom du jeu",
         "description": "Nomme ce jeu dans les événements de progression et le balisage OER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Identifiant du jeu",

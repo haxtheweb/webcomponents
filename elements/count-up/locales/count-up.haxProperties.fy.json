@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Efterheaksel",
         "description": "Tekst nei it getal (bgl. '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Slot foarheaksel",
-        "description": "Opsjonele ynhâld yn it slot foar it getal."
-      },
-      {
-        "slot": "suffix",
-        "title": "Slot efterheaksel",
-        "description": "Opsjonele ynhâld yn it slot nei it getal."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Gjin fersnelling",
         "description": "Fersnelling útskeakelje, sadat it tellen lineêr is."
+      },
+      {
+        "slot": "prefix",
+        "title": "Slot foarheaksel",
+        "description": "Opsjonele ynhâld yn it slot foar it getal."
+      },
+      {
+        "slot": "suffix",
+        "title": "Slot efterheaksel",
+        "description": "Opsjonele ynhâld yn it slot nei it getal."
       }
     ]
   }

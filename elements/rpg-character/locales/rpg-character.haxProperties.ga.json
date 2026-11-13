@@ -11,11 +11,6 @@
         "description": "Focal a úsáidtear chun carachtar randamach a ghiniúint."
       },
       {
-        "property": "code",
-        "title": "Cód an charachtair",
-        "description": "Greamaigh cód sábháilte chun an carachtar sin a athchruthú."
-      },
-      {
         "property": "hat",
         "title": "Hata",
         "description": "Stíl an hata.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Masc",
-        "description": "Masc a chaitear ar an aghaidh nó ar an gceann.",
-        "options": {
-          "none": "Ceann ar bith",
-          "lion": "Leon",
-          "plague": "Dochtúir phlá",
-          "theater": "Amharclann",
-          "pumpkin": "Puimcín",
-          "ghost": "Taibhse",
-          "mummy": "Mumaí",
-          "wrestler": "Masc coraíochta",
-          "block-head": "Cloigeann bloic",
-          "web": "Masc gréasáin",
-          "werewolf": "Aghaidh conriochta",
-          "shadow": "Aghaidh scáthach"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Smideadh",
-        "description": "Péint aghaidhe nó béaldath.",
-        "options": {
-          "none": "Ceann ar bith",
-          "red-lipstick": "Béaldath dearg",
-          "pink-lipstick": "Béaldath bándearg",
-          "berry-lipstick": "Béaldath caor",
-          "clown": "Péint chlóin",
-          "fangs": "Starrfhiacla",
-          "skull": "Péint chloiginn",
-          "zombie": "Péint zombaí",
-          "red-nose": "Srón dhearg",
-          "white-beard": "Féasóg bhán",
-          "domino": "Masc laoich",
-          "carrot": "Srón cairéad",
-          "bunny": "Srón choinín",
-          "mustache": "Croiméal",
-          "monster": "Péint aghaidhe ollphéiste",
-          "round-glasses": "Spéaclaí cruinne"
-        }
-      },
-      {
         "property": "expression",
         "title": "Gnúis",
         "description": "Gnúis an duine.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Peata",
+        "description": "Peata in aice leis an gcarachtar.",
+        "options": {
+          "none": "Ceann ar bith",
+          "cat": "Cat",
+          "dog": "Madra",
+          "bunny": "Coinín",
+          "goldfish": "Iasc órga",
+          "slime": "Sláthach",
+          "squirrel": "Iora rua",
+          "dragon": "Dragan beag",
+          "parrot": "Pearóid",
+          "owl": "Ulchabhán",
+          "bat": "Ialtóg"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Cód an charachtair",
+        "description": "Greamaigh cód sábháilte chun an carachtar sin a athchruthú."
+      },
+      {
+        "property": "mask",
+        "title": "Masc",
+        "description": "Masc a chaitear ar an aghaidh nó ar an gceann.",
+        "options": {
+          "none": "Ceann ar bith",
+          "lion": "Leon",
+          "plague": "Dochtúir phlá",
+          "theater": "Amharclann",
+          "pumpkin": "Puimcín",
+          "ghost": "Taibhse",
+          "mummy": "Mumaí",
+          "wrestler": "Masc coraíochta",
+          "block-head": "Cloigeann bloic",
+          "web": "Masc gréasáin",
+          "werewolf": "Aghaidh conriochta",
+          "shadow": "Aghaidh scáthach"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Smideadh",
+        "description": "Péint aghaidhe nó béaldath.",
+        "options": {
+          "none": "Ceann ar bith",
+          "red-lipstick": "Béaldath dearg",
+          "pink-lipstick": "Béaldath bándearg",
+          "berry-lipstick": "Béaldath caor",
+          "clown": "Péint chlóin",
+          "fangs": "Starrfhiacla",
+          "skull": "Péint chloiginn",
+          "zombie": "Péint zombaí",
+          "red-nose": "Srón dhearg",
+          "white-beard": "Féasóg bhán",
+          "domino": "Masc laoich",
+          "carrot": "Srón cairéad",
+          "bunny": "Srón choinín",
+          "mustache": "Croiméal",
+          "monster": "Péint aghaidhe ollphéiste",
+          "round-glasses": "Spéaclaí cruinne"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Téacs na brataí",
         "description": "Suas le 4 litir a thaispeántar ar an mbratach."
@@ -310,24 +330,6 @@
           "skates": "Scátaí",
           "skateboard": "Clár scátála",
           "hoverboard": "Clár foluaineach"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Peata",
-        "description": "Peata in aice leis an gcarachtar.",
-        "options": {
-          "none": "Ceann ar bith",
-          "cat": "Cat",
-          "dog": "Madra",
-          "bunny": "Coinín",
-          "goldfish": "Iasc órga",
-          "slime": "Sláthach",
-          "squirrel": "Iora rua",
-          "dragon": "Dragan beag",
-          "parrot": "Pearóid",
-          "owl": "Ulchabhán",
-          "bat": "Ialtóg"
         }
       },
       {

@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "ਕੋਈ ਤੀਰ ਨਹੀਂ",
         "description": "ਬਟਨ ਦਾ ਤੀਰ ਲੁਕਾਓ।"
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "ਲਿੰਕ: ਟੀਚਾ",
@@ -54,7 +52,9 @@
           "_top": "ਸਿਖਰਲੀ ਵਿੰਡੋ - _top",
           "_parent": "ਮੂਲ ਵਿੰਡੋ - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "ਲਿੰਕ: rel",

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "GitHubコントリビューター一覧",
-    "description": "GitHub APIを使ってRPGキャラクターとして表示します。"
+    "description": "リポジトリのコントリビューターをRPGキャラクターとして一覧表示します。"
   },
   "settings": {
     "configure": [

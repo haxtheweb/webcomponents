@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Benarkan Penapis",
         "description": "Benarkan penapisan mengikut nilai lajur."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Gaya Angka",
-        "description": "Gunakan gaya angka pada lajur berangka."
-      },
-      {
-        "property": "responsive",
-        "title": "Responsif",
-        "description": "Laraskan susun atur jadual pada skrin kecil."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Mod Rubrik",
-        "description": "Tafsirkan jadual ini sebagai OER Schema Rubric supaya metadata Rubric, RubricScale, RubricCriterion dan RubricLevel dikeluarkan."
-      },
-      {
-        "property": "rubricType",
-        "title": "Jenis Rubrik",
-        "description": "Gaya rubrik yang dikeluarkan sebagai oer:rubricType (hanya bermakna apabila Mod Rubrik dihidupkan).",
-        "options": {
-          "": "(tiada)",
-          "analytic": "Analitik",
-          "holistic": "Holistik",
-          "single-point": "Titik Tunggal",
-          "checklist": "Senarai Semak"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Butang Cetak",
         "description": "Tambah butang untuk mencetak jadual sahaja."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Gaya Angka",
+        "description": "Gunakan gaya angka pada lajur berangka."
+      },
+      {
+        "property": "responsive",
+        "title": "Responsif",
+        "description": "Laraskan susun atur jadual pada skrin kecil."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Mod Rubrik",
+        "description": "Tafsirkan jadual ini sebagai OER Schema Rubric supaya metadata Rubric, RubricScale, RubricCriterion dan RubricLevel dikeluarkan."
+      },
+      {
+        "property": "rubricType",
+        "title": "Jenis Rubrik",
+        "description": "Gaya rubrik yang dikeluarkan sebagai oer:rubricType (hanya bermakna apabila Mod Rubrik dihidupkan).",
+        "options": {
+          "": "(tiada)",
+          "analytic": "Analitik",
+          "holistic": "Holistik",
+          "single-point": "Titik Tunggal",
+          "checklist": "Senarai Semak"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "Data CSV",
         "description": "Cipta jadual daripada fail CSV yang dimuat naik."
       }
-    ]
+    ],
+    "developer": []
   }
 }

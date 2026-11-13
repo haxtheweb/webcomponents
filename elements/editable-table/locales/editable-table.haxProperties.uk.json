@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Дозволити фільтр",
         "description": "Дозволити фільтрування за значеннями стовпців."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Числове оформлення",
-        "description": "Застосувати числове оформлення до числових стовпців."
-      },
-      {
-        "property": "responsive",
-        "title": "Адаптивна",
-        "description": "Підлаштовувати макет таблиці на малих екранах."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Режим рубрики",
-        "description": "Трактувати цю таблицю як Rubric з OER Schema, щоб генерувалися метадані Rubric, RubricScale, RubricCriterion і RubricLevel."
-      },
-      {
-        "property": "rubricType",
-        "title": "Тип рубрики",
-        "description": "Стиль рубрики, що виводиться як oer:rubricType (має сенс лише коли увімкнено режим рубрики).",
-        "options": {
-          "": "(немає)",
-          "analytic": "Аналітична",
-          "holistic": "Холістична",
-          "single-point": "Одноточкова",
-          "checklist": "Контрольний список"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Кнопка друку",
         "description": "Додати кнопку для друку лише таблиці."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Числове оформлення",
+        "description": "Застосувати числове оформлення до числових стовпців."
+      },
+      {
+        "property": "responsive",
+        "title": "Адаптивна",
+        "description": "Підлаштовувати макет таблиці на малих екранах."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Режим рубрики",
+        "description": "Трактувати цю таблицю як Rubric з OER Schema, щоб генерувалися метадані Rubric, RubricScale, RubricCriterion і RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "Тип рубрики",
+        "description": "Стиль рубрики, що виводиться як oer:rubricType (має сенс лише коли увімкнено режим рубрики).",
+        "options": {
+          "": "(немає)",
+          "analytic": "Аналітична",
+          "holistic": "Холістична",
+          "single-point": "Одноточкова",
+          "checklist": "Контрольний список"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "Дані CSV",
         "description": "Створити таблицю із завантаженого CSV-файлу."
       }
-    ]
+    ],
+    "developer": []
   }
 }

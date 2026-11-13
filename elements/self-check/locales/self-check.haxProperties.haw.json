@@ -27,6 +27,13 @@
       {
         "slot": "",
         "title": "Pane"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Loulou hou",
+        "description": "Loulou i ka ʻike hou aʻe."
       },
       {
         "property": "hasLearningObjective",
@@ -37,13 +44,6 @@
         "property": "assessing",
         "title": "Ke loiloi nei",
         "description": "Kuhikuhi hana i puka ʻia ma ke ʻano he oer:assessing."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "link",
-        "title": "Loulou hou",
-        "description": "Loulou i ka ʻike hou aʻe."
       }
     ]
   }

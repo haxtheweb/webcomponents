@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Wikipedia",
-    "description": "これはさまざまな形式でコンテキスト内にWikipediaの記事を表示できます。"
+    "description": "ページにWikipediaの記事を表示します。"
   },
   "settings": {
     "configure": [

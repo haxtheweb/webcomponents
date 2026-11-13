@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Ederede njedebe",
         "description": "Ederede a na-egosi mgbe nọmba ahụ gasịrị (dịka '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Oghere mbido",
-        "description": "Ọdịnaya oghere nhọrọ tupu nọmba ahụ."
-      },
-      {
-        "slot": "suffix",
-        "title": "Oghere njedebe",
-        "description": "Ọdịnaya oghere nhọrọ mgbe nọmba ahụ gasịrị."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Enweghị nwayọọ",
         "description": "Gbanyụọ nwayọọ ka ngụgharị ahụ bụrụ nke ahịrị."
+      },
+      {
+        "slot": "prefix",
+        "title": "Oghere mbido",
+        "description": "Ọdịnaya oghere nhọrọ tupu nọmba ahụ."
+      },
+      {
+        "slot": "suffix",
+        "title": "Oghere njedebe",
+        "description": "Ọdịnaya oghere nhọrọ mgbe nọmba ahụ gasịrị."
       }
     ]
   }

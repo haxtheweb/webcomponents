@@ -4,22 +4,23 @@
     "description": "Wideo we audio pleýerleri «pleýer + gapdal panel» ýerleşişinde görkezýän pleý-list."
   },
   "settings": {
-    "configure": [
+    "configure": [],
+    "advanced": [
       {
         "property": "activeIndex",
         "title": "Işjeň indeks",
         "description": "Başlanjak işjeň elementiň indeksi."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kurs",
-        "description": "Bu pleý-listiň niýetlenen kursy (kursuň identifikatory ýa-da URL)."
       }
     ],
     "developer": [
       {
         "title": "Media",
         "description": "Oýnatma sanawyndaky wideolar we ses. Bu ýerde redaktirlenmeýär: sahypanyň gurluşy içine haýsy bloklaryň taşlanyp bilinjekdigini bilmek üçin ony ulanýar."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurs",
+        "description": "Bu pleý-listiň niýetlenen kursy (kursuň identifikatory ýa-da URL)."
       }
     ]
   }

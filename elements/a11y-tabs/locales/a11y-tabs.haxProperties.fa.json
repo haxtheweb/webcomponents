@@ -11,20 +11,17 @@
         "description": "برچسب دسترس‌پذیر مجموعهٔ زبانه‌ها."
       },
       {
-        "property": "disabled",
-        "title": "غیرفعال",
-        "description": "همهٔ زبانه‌ها غیرفعال شوند."
-      },
-      {
-        "property": "hidden",
-        "title": "پنهان",
-        "description": "مجموعهٔ زبانه‌ها پنهان شود."
-      },
-      {
         "property": "sticky",
         "title": "چسبان",
         "description": "زبانه‌های افقی هنگام پیمایش در بالا بمانند."
       },
+      {
+        "slot": "",
+        "title": "زبانه‌ها",
+        "description": "مجموعه‌ای از عناصر <a11y-tab/>."
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "نقطهٔ شکست چیدمان",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "نقطهٔ شکست نماد",
         "description": "نقطهٔ شکست برای نمایش متن همراه نمادها. پیش‌فرض 0 است؛ برای حالت فقط نماد از ‎-1 استفاده کنید."
-      },
-      {
-        "slot": "",
-        "title": "زبانه‌ها",
-        "description": "مجموعه‌ای از عناصر <a11y-tab/>."
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "غیرفعال",
+        "description": "همهٔ زبانه‌ها غیرفعال شوند."
+      },
+      {
+        "property": "hidden",
+        "title": "پنهان",
+        "description": "مجموعهٔ زبانه‌ها پنهان شود."
+      },
       {
         "property": "id",
         "title": "شناسهٔ یکتا",

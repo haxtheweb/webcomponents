@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Suffikstekst",
         "description": "Tekst som vises etter tallet (f.eks. '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Prefiksspor",
-        "description": "Valgfritt innhold i spor før tallet."
-      },
-      {
-        "slot": "suffix",
-        "title": "Suffiksspor",
-        "description": "Valgfritt innhold i spor etter tallet."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Ingen easing",
         "description": "Slå av easing slik at tellingen blir lineær."
+      },
+      {
+        "slot": "prefix",
+        "title": "Prefiksspor",
+        "description": "Valgfritt innhold i spor før tallet."
+      },
+      {
+        "slot": "suffix",
+        "title": "Suffiksspor",
+        "description": "Valgfritt innhold i spor etter tallet."
       }
     ]
   }

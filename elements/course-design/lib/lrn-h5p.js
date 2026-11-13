@@ -85,41 +85,7 @@ export class LrnH5p extends I18NMixin(LitElement) {
   }
 
   static get haxProperties() {
-    return {
-      canScale: false,
-
-      canEditSource: true,
-      gizmo: {
-        title: "H5P Element",
-        description: "LRN H5P",
-        icon: "editor:format-quote",
-        color: "blue",
-        tags: ["Instructional", "h5p", "embed", "interactive"],
-        meta: {
-          author: "HAXTheWeb core team",
-          hidden: true,
-        },
-      },
-      settings: {
-        configure: [
-          {
-            slot: "",
-            title: "Text",
-            description: "Content of the sidenote",
-            inputMethod: "code-editor",
-            required: true,
-          },
-        ],
-        advanced: [],
-      },
-      demoSchema: [
-        {
-          tag: "lrn-h5p",
-          properties: {},
-          content: "",
-        },
-      ],
-    };
+    return new URL("./lrn-h5p.haxProperties.json", import.meta.url).href;
   }
   static get styles() {
     return [

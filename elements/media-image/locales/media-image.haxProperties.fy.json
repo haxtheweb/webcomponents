@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Underskrift",
         "description": "Byskrift foar de ôfbylding."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Figuertitel",
-        "description": "Titel foar it figuerlabel."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Figuerbeskriuwing",
-        "description": "Beskriuwing foar it figuerlabel."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Modaal finster foar ôfbylding útskeakelje",
         "description": "Foarkomme dat klikken de ôfbylding iepenet yn in ôfbyldingsynspeksjedialooch."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Figuertitel",
+        "description": "Titel foar it figuerlabel."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Figuerbeskriuwing",
+        "description": "Beskriuwing foar it figuerlabel."
       }
     ],
     "developer": [

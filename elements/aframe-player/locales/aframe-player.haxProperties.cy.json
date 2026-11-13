@@ -11,6 +11,13 @@
         "description": "Yr URL ar gyfer y ffeil AR hon."
       },
       {
+        "property": "skyColor",
+        "title": "Lliw'r awyr",
+        "description": "Dewiswch liw'r awyr yn yr olygfa."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "Safle X yr elfen yn AR."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "Safle Z yr elfen yn AR."
-      },
-      {
-        "property": "skyColor",
-        "title": "Lliw'r awyr",
-        "description": "Dewiswch liw'r awyr yn yr olygfa."
       }
     ]
   }

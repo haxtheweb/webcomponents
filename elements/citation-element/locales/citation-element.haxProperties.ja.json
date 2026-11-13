@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "出典",
-    "description": "3つの表示モードを持つ引用要素。"
+    "description": "出典のタイトル、作成者、ライセンス、リンクを明記します。"
   },
   "settings": {
     "configure": [
@@ -21,15 +21,6 @@
         "description": "ソースにアクセスした日付。"
       },
       {
-        "property": "scope",
-        "title": "スコープ",
-        "description": "引用する要素のスコープ。",
-        "options": {
-          "sibling": "兄弟要素",
-          "parent": "親要素"
-        }
-      },
-      {
         "property": "license",
         "title": "ライセンス",
         "description": "引用する作品のライセンス。"
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "作成者",
         "description": "引用する作品の作成者または所有者。"
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "スコープ",
+        "description": "引用する要素のスコープ。",
+        "options": {
+          "sibling": "兄弟要素",
+          "parent": "親要素"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "OER Schemaタイプ",

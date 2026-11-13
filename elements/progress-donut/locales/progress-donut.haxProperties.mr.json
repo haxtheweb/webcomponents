@@ -26,11 +26,6 @@
         "description": "प्रतिमेसाठी alt मजकूर."
       },
       {
-        "property": "animated",
-        "title": "अ‍ॅनिमेटेड",
-        "description": "पहिल्यांदा लोड होताना प्रगती अ‍ॅनिमेट होते की नाही"
-      },
-      {
         "property": "complete",
         "title": "पूर्ण",
         "description": "पूर्ण झालेल्या मूल्यांचा अ‍ॅरे."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "एकूण",
         "description": "सर्व आयटम पूर्ण झाल्यावर एकूण."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "अ‍ॅनिमेटेड",
+        "description": "पहिल्यांदा लोड होताना प्रगती अ‍ॅनिमेट होते की नाही"
       },
       {
         "property": "startAngle",

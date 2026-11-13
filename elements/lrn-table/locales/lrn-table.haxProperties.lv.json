@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "CSV tabula",
-    "description": "Var ģenerēt tabulu no CSV faila neatkarīgi no tā atrašanās vietas."
+    "description": "Parāda CSV failu kā piekļūstamu tabulu."
   },
   "settings": {
     "configure": [

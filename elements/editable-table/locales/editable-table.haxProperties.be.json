@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Дазволіць фільтр",
         "description": "Дазволіць фільтраванне па значэннях слупка."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Лікавае афармленне",
-        "description": "Прымяняць лікавае афармленне да лікавых слупкоў."
-      },
-      {
-        "property": "responsive",
-        "title": "Адаптыўная",
-        "description": "Падладжваць макет табліцы на малых экранах."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Рэжым рубрыкі",
-        "description": "Інтэрпрэтаваць гэту табліцу як Rubric з OER Schema, каб выводзіліся метаданыя Rubric, RubricScale, RubricCriterion і RubricLevel."
-      },
-      {
-        "property": "rubricType",
-        "title": "Тып рубрыкі",
-        "description": "Стыль рубрыкі, які выводзіцца як oer:rubricType (мае сэнс толькі пры ўключаным рэжыме рубрыкі).",
-        "options": {
-          "": "(няма)",
-          "analytic": "Аналітычная",
-          "holistic": "Цэласная",
-          "single-point": "Адна кропка",
-          "checklist": "Чэк-ліст"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Кнопка друку",
         "description": "Дадаць кнопку для друку толькі табліцы."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Лікавае афармленне",
+        "description": "Прымяняць лікавае афармленне да лікавых слупкоў."
+      },
+      {
+        "property": "responsive",
+        "title": "Адаптыўная",
+        "description": "Падладжваць макет табліцы на малых экранах."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Рэжым рубрыкі",
+        "description": "Інтэрпрэтаваць гэту табліцу як Rubric з OER Schema, каб выводзіліся метаданыя Rubric, RubricScale, RubricCriterion і RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "Тып рубрыкі",
+        "description": "Стыль рубрыкі, які выводзіцца як oer:rubricType (мае сэнс толькі пры ўключаным рэжыме рубрыкі).",
+        "options": {
+          "": "(няма)",
+          "analytic": "Аналітычная",
+          "holistic": "Цэласная",
+          "single-point": "Адна кропка",
+          "checklist": "Чэк-ліст"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "Даныя CSV",
         "description": "Стварыць табліцу з запампаванага файла CSV."
       }
-    ]
+    ],
+    "developer": []
   }
 }

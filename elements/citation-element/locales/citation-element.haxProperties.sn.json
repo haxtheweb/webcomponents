@@ -21,15 +21,6 @@
         "description": "Zuva iro sosi yakawanikwa."
       },
       {
-        "property": "scope",
-        "title": "Huwandu",
-        "description": "Huwandu hwechinhu chekududza.",
-        "options": {
-          "sibling": "Chinhu chehama",
-          "parent": "Chinhu chemubereki"
-        }
-      },
-      {
         "property": "license",
         "title": "Rezinesi",
         "description": "Rezinesi rebasa riri kududzwa."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Mugadziri",
         "description": "Mugadziri kana muridzi webasa riri kududzwa."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Huwandu",
+        "description": "Huwandu hwechinhu chekududza.",
+        "options": {
+          "sibling": "Chinhu chehama",
+          "parent": "Chinhu chemubereki"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "Mhando yeOER Schema",

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Image en parallaxe",
-    "description": "Image défilante"
+    "description": "Une image pleine largeur qui défile plus lentement que la page, avec un titre par-dessus."
   },
   "settings": {
     "configure": [

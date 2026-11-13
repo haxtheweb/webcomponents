@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Hình ảnh đơn giản",
-    "description": "Xử lý hình ảnh bằng các tham số đơn giản."
+    "description": "Hình ảnh được đổi kích thước, cắt hoặc xoay bằng các thiết lập đơn giản."
   },
   "settings": {
     "configure": [
@@ -26,7 +26,8 @@
         "description": "Hữu ích cho trình đọc màn hình và cải thiện SEO."
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "Chất lượng",

@@ -278,74 +278,8 @@ class CodeSample extends I18NMixin(LitElement) {
 
   // haxProperty definition
   static get haxProperties() {
-    return {
-      type: "element",
-      canScale: false,
-      canEditSource: false,
-      hideDefaultSettings: true,
-      gizmo: {
-        title: "Code sample",
-        description: "A sample of code highlighted in the page",
-        icon: "icons:code",
-        color: "blue",
-        tags: ["Instructional", "code", "highlight", "syntax", "code-sample"],
-        meta: {
-          author: "HAXTheWeb core team",
-        },
-      },
-      settings: {
-        configure: [
-          {
-            property: "type",
-            title: "Code highlighting",
-            description: "Syntax highlighting to apply to the code area",
-            inputMethod: "select",
-            options: {
-              javascript: "JavaScript",
-              html: "HTML",
-              css: "CSS",
-              xml: "XML",
-              json: "JSON data",
-              yaml: "YAML",
-              php: "PHP",
-            },
-          },
-          {
-            property: "copyClipboardButton",
-            title: "Copy to clipboard button",
-            description: "button in top right that says copy to clipboard",
-            inputMethod: "boolean",
-          },
-          {
-            property: "highlightStart",
-            title: "Highlight start",
-            description: "Line number to start highlighting",
-            inputMethod: "number",
-          },
-          {
-            property: "highlightEnd",
-            title: "Highlight end",
-            description: "Line to finish highlighting on",
-            inputMethod: "number",
-          },
-        ],
-        advanced: [],
-      },
-      saveOptions: {
-        unsetAttributes: ["theme", "edit-mode", "_haxstate", "t"],
-      },
-      demoSchema: [
-        {
-          tag: "code-sample",
-          properties: {
-            type: "javascript",
-            copyClipboardButton: true,
-          },
-          content:
-            '<template preserve-content="preserve-content">const a = 2;\nconst b = 3;\nconst sum = a + b;</template>',
-        },
-      ],
-    };
+    return new URL("./lib/code-sample.haxProperties.json", import.meta.url)
+      .href;
   }
   // properties available to the custom element for data binding
   static get properties() {

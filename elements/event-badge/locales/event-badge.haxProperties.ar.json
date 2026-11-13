@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "شارة الحدث",
-    "description": "مكوّن شارة الحدث."
+    "description": "شارة اسم بأسلوب المؤتمرات مع صورة واسم وجهة."
   },
   "settings": {
     "configure": [

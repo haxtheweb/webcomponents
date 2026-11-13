@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "טבלת CSV",
-    "description": "יוצר טבלה מקובץ CSV, בלי קשר למיקומו."
+    "description": "מציג קובץ CSV כטבלה נגישה."
   },
   "settings": {
     "configure": [

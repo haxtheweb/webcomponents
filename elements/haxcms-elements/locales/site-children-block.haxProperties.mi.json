@@ -4,7 +4,7 @@
     "description": "Poraka hihiri hei whakaatu i te tamaiti o te whārangi o nāianei"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "Tikanga hihiri",
@@ -14,7 +14,9 @@
           "parent": "Ngā tamariki o te matua",
           "ancestor": "Ngā tamariki katoa mai i te tupuna teitei rawa"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "Taumata tīmata"

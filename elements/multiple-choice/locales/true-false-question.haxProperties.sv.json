@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Sant/falskt-fråga",
-    "description": "Fråga med sant eller falskt"
+    "description": "Ett påstående som eleven markerar som sant eller falskt."
   },
   "settings": {
     "configure": [

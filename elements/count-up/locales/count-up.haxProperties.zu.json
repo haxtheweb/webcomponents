@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Umbhalo wesijobelelo",
         "description": "Umbhalo oboniswa ngemuva kwenombolo (isb. '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Isikhala sesiqalo",
-        "description": "Okuqukethwe ongakukhetha ngaphambi kwenombolo."
-      },
-      {
-        "slot": "suffix",
-        "title": "Isikhala sesijobelelo",
-        "description": "Okuqukethwe ongakukhetha ngemuva kwenombolo."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Akukho ukwehlisa ijubane",
         "description": "Khubaza ukwehlisa ijubane ukuze ukubala kuhambe ngokulinganayo."
+      },
+      {
+        "slot": "prefix",
+        "title": "Isikhala sesiqalo",
+        "description": "Okuqukethwe ongakukhetha ngaphambi kwenombolo."
+      },
+      {
+        "slot": "suffix",
+        "title": "Isikhala sesijobelelo",
+        "description": "Okuqukethwe ongakukhetha ngemuva kwenombolo."
       }
     ]
   }

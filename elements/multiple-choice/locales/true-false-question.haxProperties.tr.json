@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Doğru / Yanlış Sorusu",
-    "description": "Doğru yanlış sorusu"
+    "description": "Öğrencinin doğru veya yanlış olarak işaretlediği bir ifade."
   },
   "settings": {
     "configure": [

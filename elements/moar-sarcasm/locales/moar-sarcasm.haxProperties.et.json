@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Sarkasm",
-    "description": "Esitab teksti trollivalt"
+    "description": "Vahelduvate suur- ja väiketähtedega tekst sarkastilise tooni jaoks."
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Àudio",
-    "description": "Pot presentar vídeo de manera molt accessible, sigui quina sigui la font."
+    "description": "Reproductor d’àudio accessible amb transcripció."
   },
   "settings": {
     "configure": [
@@ -46,6 +46,16 @@
         "property": "accentColor",
         "title": "Color d'accent",
         "description": "Selecciona el color d'accent del reproductor."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Amaga les marques de temps",
+        "description": "Amaga les marques de temps de la transcripció."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Amaga la transcripció",
+        "description": "Amaga la transcripció per defecte."
       }
     ],
     "developer": [
@@ -72,16 +82,6 @@
         "property": "disableInteractive",
         "title": "Desactiva la interactivitat",
         "description": "Desactiva el mode interactiu que fa que la transcripció sigui clicable."
-      },
-      {
-        "property": "hideTimestamps",
-        "title": "Amaga les marques de temps",
-        "description": "Amaga les marques de temps de la transcripció."
-      },
-      {
-        "property": "hideTranscript",
-        "title": "Amaga la transcripció",
-        "description": "Amaga la transcripció per defecte."
       },
       {
         "property": "lang",

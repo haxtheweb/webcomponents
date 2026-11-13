@@ -11,6 +11,13 @@
         "description": "د دې AR فایل URL."
       },
       {
+        "property": "skyColor",
+        "title": "د اسمان رنګ",
+        "description": "په صحنه کې د اسمان رنګ وټاکئ."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "په AR کې د عنصر X موقعیت."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "په AR کې د عنصر Z موقعیت."
-      },
-      {
-        "property": "skyColor",
-        "title": "د اسمان رنګ",
-        "description": "په صحنه کې د اسمان رنګ وټاکئ."
       }
     ]
   }

@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Agtervoegselteks",
         "description": "Teks wat na die getal gewys word (bv. '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Voorvoegselgleuf",
-        "description": "Opsionele ingegleufde inhoud voor die getal."
-      },
-      {
-        "slot": "suffix",
-        "title": "Agtervoegselgleuf",
-        "description": "Opsionele ingegleufde inhoud na die getal."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Geen versagting",
         "description": "Deaktiveer versagting sodat die telling lineêr is."
+      },
+      {
+        "slot": "prefix",
+        "title": "Voorvoegselgleuf",
+        "description": "Opsionele ingegleufde inhoud voor die getal."
+      },
+      {
+        "slot": "suffix",
+        "title": "Agtervoegselgleuf",
+        "description": "Opsionele ingegleufde inhoud na die getal."
       }
     ]
   }

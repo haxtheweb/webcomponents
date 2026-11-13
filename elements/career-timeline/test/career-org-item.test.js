@@ -1,6 +1,13 @@
 import { html, fixture, expect } from "@open-wc/testing";
 import { CareerOrgItem } from "../lib/career-org-item.js";
 
+// HAX schemas ship as JSON next to the element; read one whether the class
+// returns the object or the URL of its file
+const haxSchema = async (C) => {
+  const hp = C.haxProperties;
+  return typeof hp === "string" ? (await fetch(hp)).json() : hp;
+};
+
 const logoSrc =
   "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
 
@@ -164,7 +171,7 @@ describe("CareerOrgItem test", () => {
   });
 
   it("reports inline haxProperties for the editor", async () => {
-    const props = CareerOrgItem.haxProperties;
+    const props = await haxSchema(CareerOrgItem);
     expect(props.designSystem).to.be.false;
     expect(props.gizmo.title).to.equal("Career organization");
     expect(props.settings.configure[0].property).to.equal("organization");

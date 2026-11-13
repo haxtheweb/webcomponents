@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Lähdeviite",
-    "description": "Lähdeviite-elementti kolmella esitystavalla."
+    "description": "Mainitse lähde: otsikko, tekijä, lisenssi ja linkki."
   },
   "settings": {
     "configure": [
@@ -21,15 +21,6 @@
         "description": "Päivä, jolloin lähdettä käytettiin."
       },
       {
-        "property": "scope",
-        "title": "Laajuus",
-        "description": "Viitattavan elementin laajuus.",
-        "options": {
-          "sibling": "Sisarelementti",
-          "parent": "Yläelementti"
-        }
-      },
-      {
         "property": "license",
         "title": "Lisenssi",
         "description": "Viitatun teoksen lisenssi."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Tekijä",
         "description": "Viitatun teoksen tekijä tai omistaja."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Laajuus",
+        "description": "Viitattavan elementin laajuus.",
+        "options": {
+          "sibling": "Sisarelementti",
+          "parent": "Yläelementti"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "OER Schema -tyyppi",

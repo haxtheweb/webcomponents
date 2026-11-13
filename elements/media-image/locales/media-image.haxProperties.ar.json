@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "التعليق",
         "description": "التسمية التوضيحية للصورة."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "عنوان الشكل",
-        "description": "عنوان تسمية الشكل."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "وصف الشكل",
-        "description": "وصف تسمية الشكل."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "تعطيل نافذة الصورة",
         "description": "تعطيل فتح الصورة في مربع حوار فاحص الصور عند النقر."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "عنوان الشكل",
+        "description": "عنوان تسمية الشكل."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "وصف الشكل",
+        "description": "وصف تسمية الشكل."
       }
     ],
     "developer": [

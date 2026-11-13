@@ -21,15 +21,6 @@
         "description": "Data à a quale a fonte hè stata cunsultata."
       },
       {
-        "property": "scope",
-        "title": "Portata",
-        "description": "Portata di l'elementu da cità.",
-        "options": {
-          "sibling": "Elementu fratellu",
-          "parent": "Elementu parente"
-        }
-      },
-      {
         "property": "license",
         "title": "Licenza",
         "description": "Licenza di l'opera citata."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Creatore",
         "description": "Creatore o pruprietariu di l'opera citata."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Portata",
+        "description": "Portata di l'elementu da cità.",
+        "options": {
+          "sibling": "Elementu fratellu",
+          "parent": "Elementu parente"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "Tipu OER Schema",

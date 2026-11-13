@@ -14,16 +14,6 @@
         "property": "title",
         "title": "Альтэрнатыўная назва",
         "description": "Альтэрнатыўная назва, звязаная з крыніцай QR-кода."
-      },
-      {
-        "property": "modulesize",
-        "title": "Памер",
-        "description": "Памер QR-кода."
-      },
-      {
-        "property": "margin",
-        "title": "Палі",
-        "description": "Абрамленне вакол кода."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "Памер",
+        "description": "Памер QR-кода."
+      },
+      {
+        "property": "margin",
+        "title": "Палі",
+        "description": "Абрамленне вакол кода."
       }
     ]
   }

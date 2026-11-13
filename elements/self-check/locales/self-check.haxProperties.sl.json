@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Samopreverjanje",
-    "description": "Uporabniki lahko opravijo samopreverjanje."
+    "description": "Vprašanje s skritim odgovorom, ki ga učenec razkrije, da se preveri."
   },
   "settings": {
     "configure": [
@@ -27,6 +27,13 @@
       {
         "slot": "",
         "title": "Odgovor"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Povezava za več",
+        "description": "Povezava do dodatnih informacij."
       },
       {
         "property": "hasLearningObjective",
@@ -37,13 +44,6 @@
         "property": "assessing",
         "title": "Ocenjuje",
         "description": "Sklic na dejavnost, ustvarjen kot oer:assessing."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "link",
-        "title": "Povezava za več",
-        "description": "Povezava do dodatnih informacij."
       }
     ]
   }

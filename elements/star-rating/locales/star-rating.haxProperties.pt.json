@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Avaliação por estrelas",
-    "description": "Widget de exibição de avaliação ou botão para avaliar."
+    "description": "Mostre uma avaliação por estrelas ou deixe os leitores escolherem uma."
   },
   "settings": {
     "configure": [
@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Interativo",
         "description": "Permitir que o usuário interaja para definir a avaliação."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Modo de escala de rubrica",

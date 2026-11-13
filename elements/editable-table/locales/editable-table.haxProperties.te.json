@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "ఫిల్టర్ అనుమతించు",
         "description": "నిలువు వరుస విలువల ద్వారా ఫిల్టర్ చేయడాన్ని అనుమతించండి."
-      },
-      {
-        "property": "numericStyles",
-        "title": "సంఖ్యా శైలి",
-        "description": "సంఖ్యా నిలువు వరుసలకు సంఖ్యా శైలిని వర్తింపజేయండి."
-      },
-      {
-        "property": "responsive",
-        "title": "ప్రతిస్పందనాత్మకం",
-        "description": "చిన్న స్క్రీన్‌లపై పట్టిక లేఅవుట్‌ను సర్దుబాటు చేయండి."
-      },
-      {
-        "property": "rubricMode",
-        "title": "రూబ్రిక్ మోడ్",
-        "description": "Rubric, RubricScale, RubricCriterion మరియు RubricLevel మెటాడేటా విడుదలయ్యేలా ఈ పట్టికను OER Schema Rubric గా పరిగణించండి."
-      },
-      {
-        "property": "rubricType",
-        "title": "రూబ్రిక్ రకం",
-        "description": "oer:rubricType గా విడుదలయ్యే రూబ్రిక్ శైలి (రూబ్రిక్ మోడ్ ఆన్‌లో ఉన్నప్పుడు మాత్రమే అర్థవంతం).",
-        "options": {
-          "": "(ఏదీ లేదు)",
-          "analytic": "విశ్లేషణాత్మక",
-          "holistic": "సమగ్ర",
-          "single-point": "ఒకే పాయింట్",
-          "checklist": "చెక్‌లిస్ట్"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "ప్రింట్ బటన్",
         "description": "పట్టికను మాత్రమే ప్రింట్ చేయడానికి బటన్‌ను జోడించండి."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "సంఖ్యా శైలి",
+        "description": "సంఖ్యా నిలువు వరుసలకు సంఖ్యా శైలిని వర్తింపజేయండి."
+      },
+      {
+        "property": "responsive",
+        "title": "ప్రతిస్పందనాత్మకం",
+        "description": "చిన్న స్క్రీన్‌లపై పట్టిక లేఅవుట్‌ను సర్దుబాటు చేయండి."
+      },
+      {
+        "property": "rubricMode",
+        "title": "రూబ్రిక్ మోడ్",
+        "description": "Rubric, RubricScale, RubricCriterion మరియు RubricLevel మెటాడేటా విడుదలయ్యేలా ఈ పట్టికను OER Schema Rubric గా పరిగణించండి."
+      },
+      {
+        "property": "rubricType",
+        "title": "రూబ్రిక్ రకం",
+        "description": "oer:rubricType గా విడుదలయ్యే రూబ్రిక్ శైలి (రూబ్రిక్ మోడ్ ఆన్‌లో ఉన్నప్పుడు మాత్రమే అర్థవంతం).",
+        "options": {
+          "": "(ఏదీ లేదు)",
+          "analytic": "విశ్లేషణాత్మక",
+          "holistic": "సమగ్ర",
+          "single-point": "ఒకే పాయింట్",
+          "checklist": "చెక్‌లిస్ట్"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "CSV డేటా",
         "description": "అప్‌లోడ్ చేసిన CSV ఫైల్ నుండి పట్టికను సృష్టించండి."
       }
-    ]
+    ],
+    "developer": []
   }
 }

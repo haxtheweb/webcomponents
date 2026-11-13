@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "မြှား မပါ",
         "description": "ခလုတ် မြှားကို ဝှက်ရန်။"
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "လင့်ခ်: target",
@@ -54,7 +52,9 @@
           "_top": "အပေါ်ဆုံး ဝင်းဒိုး - _top",
           "_parent": "မိခင် ဝင်းဒိုး - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "လင့်ခ်: rel",

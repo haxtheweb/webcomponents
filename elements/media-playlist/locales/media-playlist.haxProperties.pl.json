@@ -4,22 +4,23 @@
     "description": "Playlista prezentująca odtwarzacze wideo i audio w układzie odtwarzacz + panel boczny."
   },
   "settings": {
-    "configure": [
+    "configure": [],
+    "advanced": [
       {
         "property": "activeIndex",
         "title": "Aktywny indeks",
         "description": "Indeks elementu, od którego należy zacząć."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kurs",
-        "description": "Kurs, dla którego przeznaczona jest ta playlista (identyfikator kursu lub URL)."
       }
     ],
     "developer": [
       {
         "title": "Multimedia",
         "description": "Filmy i dźwięk na liście odtwarzania. Nie edytuje się tutaj: struktura strony używa tego, aby wiedzieć, które bloki można do niej upuścić."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurs",
+        "description": "Kurs, dla którego przeznaczona jest ta playlista (identyfikator kursu lub URL)."
       }
     ]
   }

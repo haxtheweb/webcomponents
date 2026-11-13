@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Mana atikuq willay",
-        "description": "Navegador PDF willañiqikunata mana rikuchiyta atiqtin willay."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Mana atikuq t'inki willay",
-        "description": "Navegador PDF willañiqikunata mana rikuchiyta atiqtin t'inki qillqa."
-      },
-      {
         "property": "width",
         "title": "Kinraynin",
         "description": "PDF qhawanapa kinraynin."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Sayaynin",
         "description": "PDF qhawanapa sayaynin."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Mana atikuq willay",
+        "description": "Navegador PDF willañiqikunata mana rikuchiyta atiqtin willay."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Mana atikuq t'inki willay",
+        "description": "Navegador PDF willañiqikunata mana rikuchiyta atiqtin t'inki qillqa."
       }
     ]
   }

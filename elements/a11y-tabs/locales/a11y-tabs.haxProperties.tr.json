@@ -11,20 +11,17 @@
         "description": "Sekme kümesinin erişilebilir etiketi."
       },
       {
-        "property": "disabled",
-        "title": "Devre dışı",
-        "description": "Tüm sekmeleri devre dışı bırak."
-      },
-      {
-        "property": "hidden",
-        "title": "Gizli",
-        "description": "Sekme kümesini gizle."
-      },
-      {
         "property": "sticky",
         "title": "Yapışkan",
         "description": "Kaydırırken yatay sekmeleri üstte tut."
       },
+      {
+        "slot": "",
+        "title": "Sekmeler",
+        "description": "<a11y-tab/> öğelerinden oluşan dizi."
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "Düzen Kesme Noktası",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "Simge Kesme Noktası",
         "description": "Simgelerle birlikte metin gösterme kesme noktası. Varsayılan 0'dır; yalnızca simge modu için -1 kullanın."
-      },
-      {
-        "slot": "",
-        "title": "Sekmeler",
-        "description": "<a11y-tab/> öğelerinden oluşan dizi."
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "Devre dışı",
+        "description": "Tüm sekmeleri devre dışı bırak."
+      },
+      {
+        "property": "hidden",
+        "title": "Gizli",
+        "description": "Sekme kümesini gizle."
+      },
       {
         "property": "id",
         "title": "Benzersiz ID",

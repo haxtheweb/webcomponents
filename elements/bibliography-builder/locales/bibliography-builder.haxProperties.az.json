@@ -9,7 +9,9 @@
         "slot": "",
         "title": "Sitatlar",
         "description": "Bu biblioqrafiyadakı sitat elementləri"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "Kurs",

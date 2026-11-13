@@ -10,10 +10,6 @@
         "title": "أيقونة علامة التبويب"
       },
       {
-        "property": "disabled",
-        "title": "معطَّل"
-      },
-      {
         "property": "label",
         "title": "تسمية علامة التبويب"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "ID فريد"
-      },
-      {
         "property": "flag",
         "title": "نص العلامة الاختياري"
       },
       {
         "property": "flagIcon",
         "title": "أيقونة العلامة الاختيارية"
+      },
+      {
+        "property": "disabled",
+        "title": "معطَّل"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "ID فريد"
       }
     ]
   }

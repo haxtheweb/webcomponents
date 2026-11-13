@@ -21,15 +21,6 @@
         "description": "Dagfesting, tá ið keldan varð lisin."
       },
       {
-        "property": "scope",
-        "title": "Umfang",
-        "description": "Elementsumfang at vísa til.",
-        "options": {
-          "sibling": "Systurelement",
-          "parent": "Yvirelement"
-        }
-      },
-      {
         "property": "license",
         "title": "Loyvi",
         "description": "Loyvi til verkið, ið verður víst til."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Skapari",
         "description": "Skapari ella eigari av verkinum, ið verður víst til."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Umfang",
+        "description": "Elementsumfang at vísa til.",
+        "options": {
+          "sibling": "Systurelement",
+          "parent": "Yvirelement"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "OER Schema slag",

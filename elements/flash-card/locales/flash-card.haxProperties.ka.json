@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "სურათის წყარო",
         "description": "ბარათისთვის გამოყენებული სურათის ფაილი. აუქმებს სურათის საკვანძო სიტყვას."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "სურათის საკვანძო სიტყვა",
+        "description": "შემთხვევითი სურათის საკვანძო სიტყვა. მას აუქმებს სურათის წყარო."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "სასწავლო მიზანი",
         "description": "OER Schema: სასწავლო მიზნის ID ან URL, რომელსაც ეს ვარჯიში ემსახურება."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "სურათის საკვანძო სიტყვა",
-        "description": "შემთხვევითი სურათის საკვანძო სიტყვა. მას აუქმებს სურათის წყარო."
       }
     ]
   }

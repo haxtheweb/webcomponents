@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Bartilmaameed",
         "description": "Waddada dhismaha ciyaarta."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Ballaca Canvas-ka",
+        "description": "Ballaca CSS ee canvas-ka (tusaale px ama em)."
       },
+      {
+        "property": "height",
+        "title": "Dhererka Canvas-ka",
+        "description": "Dhererka CSS ee canvas-ka (tusaale px ama em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Habka cufnaanta",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Nooca Alaabta",
         "description": "Nooca la sii daayay."
-      },
-      {
-        "property": "width",
-        "title": "Ballaca Canvas-ka",
-        "description": "Ballaca CSS ee canvas-ka (tusaale px ama em)."
-      },
-      {
-        "property": "height",
-        "title": "Dhererka Canvas-ka",
-        "description": "Dhererka CSS ee canvas-ka (tusaale px ama em)."
       },
       {
         "property": "background",

@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "Gombok",
         "description": "A szöveg alatt megjelenő gombcsoport."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "Horgonyszöveg",
         "description": "A navigációban megjelenő horgonycímke."
       }
-    ]
+    ],
+    "developer": []
   }
 }

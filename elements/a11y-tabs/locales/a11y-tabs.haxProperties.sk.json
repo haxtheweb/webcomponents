@@ -11,20 +11,17 @@
         "description": "Prístupné označenie sady kariet."
       },
       {
-        "property": "disabled",
-        "title": "Zakázané",
-        "description": "Zakázať všetky karty."
-      },
-      {
-        "property": "hidden",
-        "title": "Skryté",
-        "description": "Skryť sadu kariet."
-      },
-      {
         "property": "sticky",
         "title": "Prilepené",
         "description": "Pri posúvaní ponechať vodorovné karty hore."
       },
+      {
+        "slot": "",
+        "title": "Karty",
+        "description": "Séria prvkov <a11y-tab/>."
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "Bod zlomu rozloženia",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "Bod zlomu ikon",
         "description": "Bod zlomu pre zobrazenie textu s ikonami. Predvolená hodnota je 0; použite -1 pre režim iba s ikonami."
-      },
-      {
-        "slot": "",
-        "title": "Karty",
-        "description": "Séria prvkov <a11y-tab/>."
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "Zakázané",
+        "description": "Zakázať všetky karty."
+      },
+      {
+        "property": "hidden",
+        "title": "Skryté",
+        "description": "Skryť sadu kariet."
+      },
       {
         "property": "id",
         "title": "Jedinečné ID",

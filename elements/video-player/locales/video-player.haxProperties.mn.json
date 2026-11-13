@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Постер зураг",
         "description": "Постер зургийн URL."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Текст замууд",
         "description": "Видеоны хаалттай хадмал, хадмал орчуулга, тайлбар болон бусад текст замууд."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Эхлэх хугацаа",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Аудио тайлбарын зам",
         "description": "Дүрслэлийн элементүүдийг өгүүлэн тайлбарладаг аудио тайлбарын зам (MP3 файл)-ын URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Онцлох өнгө",
+        "description": "(хуучирсан) Тоглуулагчийн онцлох өнгийг сонгоно уу."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Хэл",
         "description": "Медиагийн хэл."
-      },
-      {
-        "property": "accentColor",
-        "title": "Онцлох өнгө",
-        "description": "(хуучирсан) Тоглуулагчийн онцлох өнгийг сонгоно уу."
       }
     ]
   }

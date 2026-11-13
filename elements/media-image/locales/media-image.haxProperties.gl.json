@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Lenda",
         "description": "Pé da imaxe."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Título da figura",
-        "description": "Título para a etiqueta da figura."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Descrición da figura",
-        "description": "Descrición para a etiqueta da figura."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Desactivar a xanela modal da imaxe",
         "description": "Desactiva que os clics abran a imaxe nun diálogo de inspección de imaxes."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Título da figura",
+        "description": "Título para a etiqueta da figura."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Descrición da figura",
+        "description": "Descrición para a etiqueta da figura."
       }
     ],
     "developer": [

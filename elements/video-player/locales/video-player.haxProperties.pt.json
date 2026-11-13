@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Imagem de pôster",
         "description": "URL da imagem de pôster."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Faixas de texto",
         "description": "Legendas ocultas, legendas, descrições e outras faixas de texto do vídeo."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Tempo inicial",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Faixa de audiodescrição",
         "description": "URL de uma faixa de audiodescrição (arquivo MP3) que narra os elementos visuais."
+      },
+      {
+        "property": "accentColor",
+        "title": "Cor de destaque",
+        "description": "(obsoleto) Selecione a cor de destaque do player."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Idioma",
         "description": "Idioma da mídia."
-      },
-      {
-        "property": "accentColor",
-        "title": "Cor de destaque",
-        "description": "(obsoleto) Selecione a cor de destaque do player."
       }
     ]
   }

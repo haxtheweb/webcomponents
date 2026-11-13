@@ -89,7 +89,9 @@
         "property": "gameTitle",
         "title": "Nome do xogo",
         "description": "Dá nome a este xogo nos eventos de progreso e no marcado de OER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "ID do xogo",

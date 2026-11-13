@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Ենթագիր",
         "description": "Նկարի ենթագիրը։"
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Պատկերի վերնագիր",
-        "description": "Պատկերի պիտակի վերնագիրը։"
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Պատկերի նկարագրություն",
-        "description": "Պատկերի պիտակի նկարագրությունը։"
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Անջատել նկարի պատուհանը",
         "description": "Անջատել սեղմումները, որոնք բացում են նկարը դիտման պատուհանում։"
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Պատկերի վերնագիր",
+        "description": "Պատկերի պիտակի վերնագիրը։"
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Պատկերի նկարագրություն",
+        "description": "Պատկերի պիտակի նկարագրությունը։"
       }
     ],
     "developer": [

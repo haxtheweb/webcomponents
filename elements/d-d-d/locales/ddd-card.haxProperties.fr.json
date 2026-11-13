@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Sans flèche",
         "description": "Masquer la flèche du bouton."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Lien : cible",
@@ -54,7 +52,9 @@
           "_top": "Fenêtre principale - _top",
           "_parent": "Fenêtre parente - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Lien : rel",

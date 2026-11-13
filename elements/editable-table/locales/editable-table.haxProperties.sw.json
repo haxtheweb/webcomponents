@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Ruhusu Kichujio",
         "description": "Ruhusu kuchuja kwa thamani za safu wima."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Mtindo wa Nambari",
-        "description": "Tumia mtindo wa nambari kwenye safu wima za nambari."
-      },
-      {
-        "property": "responsive",
-        "title": "Inayojibadilisha",
-        "description": "Rekebisha mpangilio wa jedwali kwenye skrini ndogo."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Hali ya Rubriki",
-        "description": "Tafsiri jedwali hili kama Rubric ya OER Schema ili metadata ya Rubric, RubricScale, RubricCriterion na RubricLevel itolewe."
-      },
-      {
-        "property": "rubricType",
-        "title": "Aina ya Rubriki",
-        "description": "Mtindo wa rubriki unaotolewa kama oer:rubricType (una maana tu Hali ya Rubriki ikiwa imewashwa).",
-        "options": {
-          "": "(hakuna)",
-          "analytic": "Kichanganuzi",
-          "holistic": "Kijumla",
-          "single-point": "Nukta Moja",
-          "checklist": "Orodha hakiki"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Kitufe cha Kuchapisha",
         "description": "Ongeza kitufe cha kuchapisha jedwali pekee."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Mtindo wa Nambari",
+        "description": "Tumia mtindo wa nambari kwenye safu wima za nambari."
+      },
+      {
+        "property": "responsive",
+        "title": "Inayojibadilisha",
+        "description": "Rekebisha mpangilio wa jedwali kwenye skrini ndogo."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Hali ya Rubriki",
+        "description": "Tafsiri jedwali hili kama Rubric ya OER Schema ili metadata ya Rubric, RubricScale, RubricCriterion na RubricLevel itolewe."
+      },
+      {
+        "property": "rubricType",
+        "title": "Aina ya Rubriki",
+        "description": "Mtindo wa rubriki unaotolewa kama oer:rubricType (una maana tu Hali ya Rubriki ikiwa imewashwa).",
+        "options": {
+          "": "(hakuna)",
+          "analytic": "Kichanganuzi",
+          "holistic": "Kijumla",
+          "single-point": "Nukta Moja",
+          "checklist": "Orodha hakiki"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "Data ya CSV",
         "description": "Unda jedwali kutoka kwa faili ya CSV iliyopakiwa."
       }
-    ]
+    ],
+    "developer": []
   }
 }

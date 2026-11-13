@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Navedba vira",
-    "description": "Element citata s tremi načini predstavitve."
+    "description": "Navedite vir z naslovom, avtorjem, licenco in povezavo."
   },
   "settings": {
     "configure": [
@@ -21,15 +21,6 @@
         "description": "Datum, ko je bil vir dostopan."
       },
       {
-        "property": "scope",
-        "title": "Obseg",
-        "description": "Obseg elementa za citiranje.",
-        "options": {
-          "sibling": "Sosednji element",
-          "parent": "Nadrejeni element"
-        }
-      },
-      {
         "property": "license",
         "title": "Licenca",
         "description": "Licenca citiranega dela."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Ustvarjalec",
         "description": "Ustvarjalec ali lastnik citiranega dela."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Obseg",
+        "description": "Obseg elementa za citiranje.",
+        "options": {
+          "sibling": "Sosednji element",
+          "parent": "Nadrejeni element"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "Vrsta OER Schema",

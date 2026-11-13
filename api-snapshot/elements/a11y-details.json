@@ -16,7 +16,7 @@
   "cssParts": [],
   "cssProperties": [],
   "hax": {
-    "schema": "elements/a11y-details/a11y-details.js",
+    "schema": "elements/a11y-details/lib/a11y-details.haxProperties.json",
     "gizmo": true,
     "properties": [
       "closeText",

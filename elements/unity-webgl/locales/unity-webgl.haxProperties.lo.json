@@ -9,7 +9,21 @@
         "property": "target",
         "title": "ເປົ້າໝາຍ",
         "description": "ເສັ້ນທາງໄປຫາບິວຂອງເກມ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "ຄວາມກວ້າງຂອງ Canvas",
+        "description": "ຄວາມກວ້າງ CSS ຂອງ Canvas (ເຊັ່ນ: px ຫຼື em)."
       },
+      {
+        "property": "height",
+        "title": "ຄວາມສູງຂອງ Canvas",
+        "description": "ຄວາມສູງ CSS ຂອງ Canvas (ເຊັ່ນ: px ຫຼື em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "ວິທີບີບອັດ",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "ເວີຊັນຜະລິດຕະພັນ",
         "description": "ເວີຊັນທີ່ເຜີຍແຜ່."
-      },
-      {
-        "property": "width",
-        "title": "ຄວາມກວ້າງຂອງ Canvas",
-        "description": "ຄວາມກວ້າງ CSS ຂອງ Canvas (ເຊັ່ນ: px ຫຼື em)."
-      },
-      {
-        "property": "height",
-        "title": "ຄວາມສູງຂອງ Canvas",
-        "description": "ຄວາມສູງ CSS ຂອງ Canvas (ເຊັ່ນ: px ຫຼື em)."
       },
       {
         "property": "background",

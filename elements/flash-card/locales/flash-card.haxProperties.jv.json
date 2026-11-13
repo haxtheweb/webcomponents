@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Sumber Gambar",
         "description": "Berkas gambar sing digunakake kanggo kertu. Ngganti Tembung Kunci Gambar."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Tembung Kunci Gambar",
+        "description": "Tembung kunci gambar acak. Diganti dening Sumber Gambar."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Tujuan Sinau",
         "description": "OER Schema: ID utawa URL tujuan sinau sing didhukung latihan iki."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Tembung Kunci Gambar",
-        "description": "Tembung kunci gambar acak. Diganti dening Sumber Gambar."
       }
     ]
   }

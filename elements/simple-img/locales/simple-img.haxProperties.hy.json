@@ -26,7 +26,8 @@
         "description": "Օգտակար է էկրանընթերցիչների և SEO-ի բարելավման համար։"
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "Որակ",

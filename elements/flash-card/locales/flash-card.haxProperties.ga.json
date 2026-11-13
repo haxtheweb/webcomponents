@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Foinse na hÍomhá",
         "description": "Comhad íomhá a úsáidtear don chárta. Sáraíonn sé Eochairfhocal Íomhá."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Eochairfhocal Íomhá",
+        "description": "Eochairfhocal d'íomhá randamach. Sáraítear é le Foinse na hÍomhá."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Cuspóir Foghlama",
         "description": "OER Schema: ID nó URL an chuspóra foghlama a dtacaíonn an cleachtadh seo leis."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Eochairfhocal Íomhá",
-        "description": "Eochairfhocal d'íomhá randamach. Sáraítear é le Foinse na hÍomhá."
       }
     ]
   }

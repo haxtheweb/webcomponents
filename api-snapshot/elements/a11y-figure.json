@@ -21,7 +21,7 @@
   "cssParts": [],
   "cssProperties": [],
   "hax": {
-    "schema": "elements/a11y-figure/a11y-figure.js",
+    "schema": "elements/a11y-figure/lib/a11y-figure.haxProperties.json",
     "gizmo": true,
     "properties": [
       "closeText",

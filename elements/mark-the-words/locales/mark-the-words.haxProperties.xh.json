@@ -16,30 +16,8 @@
         "description": "Ingxelo eza kuguqulwa ibe ngumsebenzi wokuphawula amagama."
       },
       {
-        "property": "gradingFormat",
-        "title": "Ifomathi yokumakisha",
-        "description": "OER Schema: ifomathi yokumakisha yolu vavanyo (umz. amanqaku, unobumba, ipesenti, ukugqitywa)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Injongo yokufunda",
-        "description": "OER Schema: injongo yokufunda enxulumene nolu vavanyo."
-      },
-      {
-        "property": "forCourse",
-        "title": "Ikhosi",
-        "description": "OER Schema: ikhosi olu vavanyo lwenzelwe yona."
-      },
-      {
         "property": "answers",
         "title": "Iimpendulo"
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Igama lekwizi",
-        "description": "Igama lekwizi elidluliselwa kwiindawo eziqhutywa yi-xAPI ukuze kuchongwe le nto"
       }
     ],
     "advanced": [
@@ -52,6 +30,28 @@
         "property": "collapsed",
         "title": "Qala igoqiwe",
         "description": "Xa igobeka, qala njengomqolo ovaliweyo obonisa umbuzo kuphela kunye nesimo sawo."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Ifomathi yokumakisha",
+        "description": "OER Schema: ifomathi yokumakisha yolu vavanyo (umz. amanqaku, unobumba, ipesenti, ukugqitywa)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Injongo yokufunda",
+        "description": "OER Schema: injongo yokufunda enxulumene nolu vavanyo."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Igama lekwizi",
+        "description": "Igama lekwizi elidluliselwa kwiindawo eziqhutywa yi-xAPI ukuze kuchongwe le nto"
+      },
+      {
+        "property": "forCourse",
+        "title": "Ikhosi",
+        "description": "OER Schema: ikhosi olu vavanyo lwenzelwe yona."
       }
     ]
   }

@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "പിന്തുണയില്ലാത്തപ്പോഴുള്ള സന്ദേശം",
-        "description": "ബ്രൗസറിന് PDF ഫയലുകൾ പ്രദർശിപ്പിക്കാൻ കഴിയാത്തപ്പോഴുള്ള സന്ദേശം."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "പിന്തുണയില്ലാത്തപ്പോഴുള്ള ലിങ്ക് സന്ദേശം",
-        "description": "ബ്രൗസറിന് PDF ഫയലുകൾ പ്രദർശിപ്പിക്കാൻ കഴിയാത്തപ്പോഴുള്ള ലിങ്ക് വാചകം."
-      },
-      {
         "property": "width",
         "title": "വീതി",
         "description": "PDF വ്യൂവറിന്റെ വീതി."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "ഉയരം",
         "description": "PDF വ്യൂവറിന്റെ ഉയരം."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "പിന്തുണയില്ലാത്തപ്പോഴുള്ള സന്ദേശം",
+        "description": "ബ്രൗസറിന് PDF ഫയലുകൾ പ്രദർശിപ്പിക്കാൻ കഴിയാത്തപ്പോഴുള്ള സന്ദേശം."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "പിന്തുണയില്ലാത്തപ്പോഴുള്ള ലിങ്ക് സന്ദേശം",
+        "description": "ബ്രൗസറിന് PDF ഫയലുകൾ പ്രദർശിപ്പിക്കാൻ കഴിയാത്തപ്പോഴുള്ള ലിങ്ക് വാചകം."
       }
     ]
   }

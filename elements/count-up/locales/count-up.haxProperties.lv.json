@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Sufiksa teksts",
         "description": "Teksts pēc skaitļa (piem., '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Prefiksa slots",
-        "description": "Neobligāts slota saturs pirms skaitļa."
-      },
-      {
-        "slot": "suffix",
-        "title": "Sufiksa slots",
-        "description": "Neobligāts slota saturs pēc skaitļa."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Bez paātrinājuma",
         "description": "Atspējot paātrinājuma līkni, lai skaitīšana būtu vienmērīga."
+      },
+      {
+        "slot": "prefix",
+        "title": "Prefiksa slots",
+        "description": "Neobligāts slota saturs pirms skaitļa."
+      },
+      {
+        "slot": "suffix",
+        "title": "Sufiksa slots",
+        "description": "Neobligāts slota saturs pēc skaitļa."
       }
     ]
   }

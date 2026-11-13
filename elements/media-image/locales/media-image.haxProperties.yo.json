@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Àkọlé àwòrán",
         "description": "Àkọlé-àlàyé fún àwòrán náà."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Àkọlé Àwòrán",
-        "description": "Àkọlé fún àmì àwòrán."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Àpèjúwe Àwòrán",
-        "description": "Àpèjúwe fún àmì àwòrán."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Pa fèrèsé àwòrán",
         "description": "Pa títẹ̀ tó ń ṣí àwòrán nínú fèrèsé olùyẹ̀wò àwòrán."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Àkọlé Àwòrán",
+        "description": "Àkọlé fún àmì àwòrán."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Àpèjúwe Àwòrán",
+        "description": "Àpèjúwe fún àmì àwòrán."
       }
     ],
     "developer": [

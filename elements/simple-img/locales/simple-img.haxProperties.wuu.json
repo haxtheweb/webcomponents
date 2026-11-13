@@ -26,7 +26,8 @@
         "description": "对读屏软件有用，也好改善 SEO。"
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "质量",

@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Launin ƙawa na atomatik",
         "description": "Samo launin ƙawa daga rubutun lakabi ta atomatik."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Maɓallin soke",
-        "description": "Nuna maɓallin alamar cirewa/soke a cikin ƙwayar."
-      },
-      {
-        "property": "readonly",
-        "title": "Karatu kawai",
-        "description": "Ɓoye maɓallin soke domin ƙwayar ta zama don nuni kawai."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Toka-shuɗi",
           "grey": "Toka"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Maɓallin soke",
+        "description": "Nuna maɓallin alamar cirewa/soke a cikin ƙwayar."
+      },
+      {
+        "property": "readonly",
+        "title": "Karatu kawai",
+        "description": "Ɓoye maɓallin soke domin ƙwayar ta zama don nuni kawai."
       }
     ]
   }

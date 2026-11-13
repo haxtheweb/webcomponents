@@ -4,22 +4,23 @@
     "description": "Ndepụta na-egosi ihe ọkpụkpọ vidiyo na ọdịyo n'usoro ihe ọkpụkpọ na akụkụ mmanya."
   },
   "settings": {
-    "configure": [
+    "configure": [],
+    "advanced": [
       {
         "property": "activeIndex",
         "title": "Nọmba mmalite",
         "description": "Nọmba ihe a ga-amalite na ya."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kọọsụ",
-        "description": "Kọọsụ ndepụta a bụ maka ya (njirimara kọọsụ ma ọ bụ URL)."
       }
     ],
     "developer": [
       {
         "title": "Mgbasa ozi",
         "description": "Vidiyo na ọdịyo dị na ndepụta egwu. A naghị edezi ya ebe a: nhazi peeji na-eji ya mara ngọngọ ndị enwere ike ịtụnye n'ime ya."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kọọsụ",
+        "description": "Kọọsụ ndepụta a bụ maka ya (njirimara kọọsụ ma ọ bụ URL)."
       }
     ]
   }

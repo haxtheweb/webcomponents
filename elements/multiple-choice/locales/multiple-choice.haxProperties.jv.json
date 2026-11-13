@@ -21,30 +21,8 @@
         "description": "Idini mung siji wangsulan."
       },
       {
-        "property": "gradingFormat",
-        "title": "Format biji",
-        "description": "OER Schema: format biji kanggo penilaian iki (contone poin, huruf, persen, rampung)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Tujuan sinau",
-        "description": "OER Schema: tujuan sinau sing ana gandhengane karo penilaian iki."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kursus",
-        "description": "OER Schema: kursus sing dituju penilaian iki."
-      },
-      {
         "property": "answers",
         "title": "Wangsulan"
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Jeneng kuis",
-        "description": "Jeneng kuis sing digunakake kanggo identifikasi xAPI ing sistem analitik."
       }
     ],
     "advanced": [
@@ -57,6 +35,28 @@
         "property": "collapsed",
         "title": "Wiwiti kanthi diciutake",
         "description": "Yen bisa diciutake, diwiwiti minangka baris tertutup sing mung nuduhake pitakonan lan statuse."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Format biji",
+        "description": "OER Schema: format biji kanggo penilaian iki (contone poin, huruf, persen, rampung)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Tujuan sinau",
+        "description": "OER Schema: tujuan sinau sing ana gandhengane karo penilaian iki."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Jeneng kuis",
+        "description": "Jeneng kuis sing digunakake kanggo identifikasi xAPI ing sistem analitik."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursus",
+        "description": "OER Schema: kursus sing dituju penilaian iki."
       }
     ]
   }

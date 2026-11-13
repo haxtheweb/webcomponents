@@ -178,78 +178,8 @@ class MeritBadge extends I18NMixin(SchemaBehaviors(LitElement)) {
   }
 
   static get haxProperties() {
-    return {
-      canScale: true,
-      canEditSource: true,
-      gizmo: {
-        title: "Merit badge",
-        description: "Visual badge to communicate obtaining a skill.",
-        icon: "icons:card-membership",
-        color: "green",
-        tags: ["Instructional", "badge", "skill", "achievement"],
-        handles: [],
-        meta: {
-          author: "HAXTheWeb core team",
-        },
-      },
-      settings: {
-        configure: [
-          {
-            property: "badgeTitle",
-            title: "Badge Title",
-            description: "Title displayed on the badge.",
-            inputMethod: "textfield",
-          },
-          {
-            property: "badgeImage",
-            title: "Badge Image",
-            description: "Image URL for the badge.",
-            inputMethod: "haxupload",
-            noVoiceRecord: true,
-            noCamera: true,
-            noScreenRecord: true,
-          },
-          {
-            property: "badgeDetails",
-            title: "Badge Details",
-            description: "Details about the badge.",
-            inputMethod: "textarea",
-          },
-          {
-            property: "hyperLink",
-            title: "Hyperlink",
-            description: "Link associated with the badge.",
-            inputMethod: "haxupload",
-          },
-          {
-            property: "badgeSkills",
-            title: "Badge Skills",
-            description: "Skills displayed on the badge.",
-            inputMethod: "textfield",
-          },
-          {
-            property: "skill",
-            title: "Skill (OER Schema)",
-            description:
-              "OER Schema: a learned skill obtained by completion of this learning objective.",
-            inputMethod: "textfield",
-          },
-        ],
-        advanced: [],
-      },
-      demoSchema: [
-        {
-          tag: "merit-badge",
-          properties: {
-            badgeTitle: "Web components",
-            badgeDetails: "Built and published a custom element.",
-            hyperLink: "https://haxtheweb.org/",
-            badgeSkills: "HTML, CSS, JavaScript",
-          },
-          content: "",
-        },
-      ],
-    };
+    return new URL("./lib/merit-badge.haxProperties.json", import.meta.url)
+      .href;
   }
 
   unlockButtonClicked() {

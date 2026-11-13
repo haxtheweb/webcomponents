@@ -89,7 +89,9 @@
         "property": "gameTitle",
         "title": "Oyunun adı",
         "description": "Bu oyunu irəliləyiş hadisələrində və OER Schema işarələməsində adlandırır."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Oyun id-si",

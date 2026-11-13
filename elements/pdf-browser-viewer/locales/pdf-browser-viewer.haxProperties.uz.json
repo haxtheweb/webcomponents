@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Qoʻllab-quvvatlanmaslik xabari",
-        "description": "Brauzer PDF fayllarni koʻrsata olmaganda chiqadigan xabar."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Qoʻllab-quvvatlanmaslik havolasi xabari",
-        "description": "Brauzer PDF fayllarni koʻrsata olmaganda chiqadigan havola matni."
-      },
-      {
         "property": "width",
         "title": "Kenglik",
         "description": "PDF koʻrsatkichi kengligi."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Balandlik",
         "description": "PDF koʻrsatkichi balandligi."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Qoʻllab-quvvatlanmaslik xabari",
+        "description": "Brauzer PDF fayllarni koʻrsata olmaganda chiqadigan xabar."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Qoʻllab-quvvatlanmaslik havolasi xabari",
+        "description": "Brauzer PDF fayllarni koʻrsata olmaganda chiqadigan havola matni."
       }
     ]
   }

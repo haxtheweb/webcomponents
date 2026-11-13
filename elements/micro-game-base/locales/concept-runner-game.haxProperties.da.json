@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Begrebsløbespil",
-    "description": "Et sidescrollende spil. Figuren løber i flammer og stopper aldrig. Hop for at fange de gode begreber og over de dårlige, og se derefter en opsummering af, hvad der var godt, og hvad der var dårligt."
+    "description": "Et sidescrollende spil: hop for at gribe de rigtige begreber og undgå de forkerte."
   },
   "settings": {
     "configure": [
@@ -89,7 +89,9 @@
         "property": "gameTitle",
         "title": "Spillets navn",
         "description": "Navngiver dette spil i fremskridtshændelser og OER Schema-markup."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Spil-id",

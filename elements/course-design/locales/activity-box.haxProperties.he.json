@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "תיבת פעילות",
-    "description": "בלוק כותרת קטן ומעוצב."
+    "description": "כותרת עם תווית שמסמנת את תחילת הפעילות."
   },
   "settings": {
     "configure": [

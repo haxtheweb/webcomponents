@@ -11,11 +11,6 @@
         "description": "Palabra usada para generar un personaje aleatorio."
       },
       {
-        "property": "code",
-        "title": "Código del personaje",
-        "description": "Pega un código guardado para recrear ese personaje."
-      },
-      {
         "property": "hat",
         "title": "Sombrero",
         "description": "Estilo de sombrero.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Máscara",
-        "description": "Máscara que cubre la cara o la cabeza.",
-        "options": {
-          "none": "Ninguna",
-          "lion": "León",
-          "plague": "Médico de la peste",
-          "theater": "Teatro",
-          "pumpkin": "Calabaza",
-          "ghost": "Fantasma",
-          "mummy": "Momia",
-          "wrestler": "Máscara de luchador",
-          "block-head": "Cabeza de bloque",
-          "web": "Máscara de telaraña",
-          "werewolf": "Cara de hombre lobo",
-          "shadow": "Rostro sombrío"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Maquillaje",
-        "description": "Pintura facial o pintalabios.",
-        "options": {
-          "none": "Ninguno",
-          "red-lipstick": "Pintalabios rojo",
-          "pink-lipstick": "Pintalabios rosa",
-          "berry-lipstick": "Pintalabios frambuesa",
-          "clown": "Pintura de payaso",
-          "fangs": "Colmillos",
-          "skull": "Pintura de calavera",
-          "zombie": "Pintura de zombi",
-          "red-nose": "Nariz roja",
-          "white-beard": "Barba blanca",
-          "domino": "Antifaz de héroe",
-          "carrot": "Nariz de zanahoria",
-          "bunny": "Nariz de conejo",
-          "mustache": "Bigote",
-          "monster": "Maquillaje de monstruo",
-          "round-glasses": "Gafas redondas"
-        }
-      },
-      {
         "property": "expression",
         "title": "Expresión",
         "description": "Expresión de la cara.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Mascota",
+        "description": "Mascota junto al personaje.",
+        "options": {
+          "none": "Ninguna",
+          "cat": "Gato",
+          "dog": "Perro",
+          "bunny": "Conejito",
+          "goldfish": "Pez dorado",
+          "slime": "Limo",
+          "squirrel": "Ardilla",
+          "dragon": "Dragoncito",
+          "parrot": "Loro",
+          "owl": "Búho",
+          "bat": "Murciélago"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Código del personaje",
+        "description": "Pega un código guardado para recrear ese personaje."
+      },
+      {
+        "property": "mask",
+        "title": "Máscara",
+        "description": "Máscara que cubre la cara o la cabeza.",
+        "options": {
+          "none": "Ninguna",
+          "lion": "León",
+          "plague": "Médico de la peste",
+          "theater": "Teatro",
+          "pumpkin": "Calabaza",
+          "ghost": "Fantasma",
+          "mummy": "Momia",
+          "wrestler": "Máscara de luchador",
+          "block-head": "Cabeza de bloque",
+          "web": "Máscara de telaraña",
+          "werewolf": "Cara de hombre lobo",
+          "shadow": "Rostro sombrío"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Maquillaje",
+        "description": "Pintura facial o pintalabios.",
+        "options": {
+          "none": "Ninguno",
+          "red-lipstick": "Pintalabios rojo",
+          "pink-lipstick": "Pintalabios rosa",
+          "berry-lipstick": "Pintalabios frambuesa",
+          "clown": "Pintura de payaso",
+          "fangs": "Colmillos",
+          "skull": "Pintura de calavera",
+          "zombie": "Pintura de zombi",
+          "red-nose": "Nariz roja",
+          "white-beard": "Barba blanca",
+          "domino": "Antifaz de héroe",
+          "carrot": "Nariz de zanahoria",
+          "bunny": "Nariz de conejo",
+          "mustache": "Bigote",
+          "monster": "Maquillaje de monstruo",
+          "round-glasses": "Gafas redondas"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Texto de la bandera",
         "description": "Hasta 4 letras que se muestran en la bandera."
@@ -310,24 +330,6 @@
           "skates": "Patines",
           "skateboard": "Monopatín",
           "hoverboard": "Patineta flotante"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Mascota",
-        "description": "Mascota junto al personaje.",
-        "options": {
-          "none": "Ninguna",
-          "cat": "Gato",
-          "dog": "Perro",
-          "bunny": "Conejito",
-          "goldfish": "Pez dorado",
-          "slime": "Limo",
-          "squirrel": "Ardilla",
-          "dragon": "Dragoncito",
-          "parrot": "Loro",
-          "owl": "Búho",
-          "bat": "Murciélago"
         }
       },
       {

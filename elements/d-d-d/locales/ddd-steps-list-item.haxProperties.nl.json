@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Stapitem",
-    "description": "Item dat deel uitmaakt van een stappenlijst"
+    "description": "Eén stap in een stappenlijst."
   },
   "settings": {
     "configure": [

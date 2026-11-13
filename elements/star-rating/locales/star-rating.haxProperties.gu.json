@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "ઇન્ટરેક્ટિવ",
         "description": "રેટિંગ સેટ કરવા માટે વપરાશકર્તા ક્રિયાપ્રતિક્રિયાની મંજૂરી આપો."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "રૂબ્રિક સ્કેલ મોડ",

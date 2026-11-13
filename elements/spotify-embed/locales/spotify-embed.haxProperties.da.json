@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "Indpakning til indlejrede Spotify-afspillere."
+    "description": "Indlejr et nummer, et album eller en playliste fra Spotify."
   },
   "settings": {
     "configure": [

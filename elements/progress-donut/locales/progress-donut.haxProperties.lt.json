@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Pažangos žiedas",
-    "description": "Pažangos žiedinė diagrama"
+    "description": "Žiedinė diagrama, rodanti pažangą bendros sumos link."
   },
   "settings": {
     "configure": [
@@ -26,11 +26,6 @@
         "description": "Alternatyvusis paveikslėlio tekstas."
       },
       {
-        "property": "animated",
-        "title": "Animuotas",
-        "description": "Ar pažanga animuojama pirmą kartą įkeliant"
-      },
-      {
         "property": "complete",
         "title": "Baigta",
         "description": "Užbaigtų reikšmių masyvas."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "Iš viso",
         "description": "Bendra suma, kai visi elementai užbaigti."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "Animuotas",
+        "description": "Ar pažanga animuojama pirmą kartą įkeliant"
       },
       {
         "property": "startAngle",

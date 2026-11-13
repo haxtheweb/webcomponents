@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Interaktif",
         "description": "Idini interaksi pangguna kanggo nyetel rating."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Mode Skala Rubrik",

@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Suffix-Text",
         "description": "Text no der Zuel (z. B. '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Prefix-Slot",
-        "description": "Optionalen Inhalt virun der Zuel."
-      },
-      {
-        "slot": "suffix",
-        "title": "Suffix-Slot",
-        "description": "Optionalen Inhalt no der Zuel."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Keng Beschleunegung",
         "description": "Beschleunegung desaktivéieren, sou datt d'Zielen linear ass."
+      },
+      {
+        "slot": "prefix",
+        "title": "Prefix-Slot",
+        "description": "Optionalen Inhalt virun der Zuel."
+      },
+      {
+        "slot": "suffix",
+        "title": "Suffix-Slot",
+        "description": "Optionalen Inhalt no der Zuel."
       }
     ]
   }

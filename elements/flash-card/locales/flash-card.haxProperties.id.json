@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Sumber Gambar",
         "description": "File gambar yang digunakan untuk kartu. Menggantikan Kata Kunci Gambar."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Kata Kunci Gambar",
+        "description": "Kata kunci gambar acak. Digantikan oleh Sumber Gambar."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Tujuan Pembelajaran",
         "description": "OER Schema: ID atau URL tujuan pembelajaran yang didukung latihan ini."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Kata Kunci Gambar",
-        "description": "Kata kunci gambar acak. Digantikan oleh Sumber Gambar."
       }
     ]
   }

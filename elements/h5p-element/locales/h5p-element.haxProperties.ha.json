@@ -4,17 +4,16 @@
     "description": "Yana kunna abun H5P mai mu'amala daga fayil ɗin .h5p da aka ɗora, ba tare da buƙatar sabar H5P ba"
   },
   "settings": {
-    "configure": [
-      {
-        "slot": "",
-        "description": "Ɗora ko haɗa fayil ɗin .h5p. Ana buɗe shi a cikin burauza; ba a buƙatar sabar H5P.",
-        "title": "Fayil ɗin H5P"
-      }
-    ],
+    "configure": [],
     "advanced": [
       {
         "title": "Tsohon lambar iframe ta shigarwa",
         "description": "Don tsofaffin abubuwa da ke saka iframe na H5P daga wani shafi kawai. A bar shi fanko idan an saita fayil ɗin .h5p a sama."
+      },
+      {
+        "slot": "",
+        "description": "Ɗora ko haɗa fayil ɗin .h5p. Ana buɗe shi a cikin burauza; ba a buƙatar sabar H5P.",
+        "title": "Fayil ɗin H5P"
       }
     ]
   }

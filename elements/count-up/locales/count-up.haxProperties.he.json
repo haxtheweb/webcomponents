@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "טקסט סיומת",
         "description": "טקסט המוצג אחרי המספר (למשל '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "משבצת קידומת",
-        "description": "תוכן משובץ אופציונלי לפני המספר."
-      },
-      {
-        "slot": "suffix",
-        "title": "משבצת סיומת",
-        "description": "תוכן משובץ אופציונלי אחרי המספר."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "ללא האטה",
         "description": "ביטול ההאטה כך שהספירה תהיה ליניארית."
+      },
+      {
+        "slot": "prefix",
+        "title": "משבצת קידומת",
+        "description": "תוכן משובץ אופציונלי לפני המספר."
+      },
+      {
+        "slot": "suffix",
+        "title": "משבצת סיומת",
+        "description": "תוכן משובץ אופציונלי אחרי המספר."
       }
     ]
   }

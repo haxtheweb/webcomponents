@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "Düymələr",
         "description": "Mətnin altında göstərilən düymə qrupu."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "Lövbər mətni",
         "description": "Naviqasiyada göstərilən lövbər etiketi."
       }
-    ]
+    ],
+    "developer": []
   }
 }

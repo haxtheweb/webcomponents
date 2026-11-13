@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Prosty obraz",
-    "description": "Modyfikuj obrazy za pomocą prostych parametrów."
+    "description": "Obraz skalowany, przycinany lub obracany prostymi ustawieniami."
   },
   "settings": {
     "configure": [
@@ -26,7 +26,8 @@
         "description": "Przydatny dla czytników ekranu i lepszego SEO."
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "Jakość",

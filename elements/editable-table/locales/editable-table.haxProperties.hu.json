@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Szűrés engedélyezése",
         "description": "Szűrés engedélyezése oszlopértékek szerint."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Numerikus formázás",
-        "description": "Numerikus formázás alkalmazása a numerikus oszlopokra."
-      },
-      {
-        "property": "responsive",
-        "title": "Reszponzív",
-        "description": "A táblázat elrendezésének igazítása kis képernyőkön."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Értékelési mátrix mód",
-        "description": "A táblázat OER Schema Rubric-ként való értelmezése, hogy Rubric, RubricScale, RubricCriterion és RubricLevel metaadatok jöjjenek létre."
-      },
-      {
-        "property": "rubricType",
-        "title": "Értékelési mátrix típusa",
-        "description": "Az oer:rubricType értékként kiadott mátrixstílus (csak bekapcsolt értékelési mátrix módban van jelentősége).",
-        "options": {
-          "": "(nincs)",
-          "analytic": "Analitikus",
-          "holistic": "Holisztikus",
-          "single-point": "Egypontos",
-          "checklist": "Ellenőrzőlista"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Nyomtatás gomb",
         "description": "Gomb hozzáadása csak a táblázat nyomtatásához."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Numerikus formázás",
+        "description": "Numerikus formázás alkalmazása a numerikus oszlopokra."
+      },
+      {
+        "property": "responsive",
+        "title": "Reszponzív",
+        "description": "A táblázat elrendezésének igazítása kis képernyőkön."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Értékelési mátrix mód",
+        "description": "A táblázat OER Schema Rubric-ként való értelmezése, hogy Rubric, RubricScale, RubricCriterion és RubricLevel metaadatok jöjjenek létre."
+      },
+      {
+        "property": "rubricType",
+        "title": "Értékelési mátrix típusa",
+        "description": "Az oer:rubricType értékként kiadott mátrixstílus (csak bekapcsolt értékelési mátrix módban van jelentősége).",
+        "options": {
+          "": "(nincs)",
+          "analytic": "Analitikus",
+          "holistic": "Holisztikus",
+          "single-point": "Egypontos",
+          "checklist": "Ellenőrzőlista"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "CSV-adatok",
         "description": "Táblázat létrehozása feltöltött CSV-fájlból."
       }
-    ]
+    ],
+    "developer": []
   }
 }

@@ -38,21 +38,6 @@
         "slot": "",
         "title": "Ihe a na-agụ",
         "description": "Ihe a na-agụ nke ndị na-amụ ihe na-arụ ọrụ na ya. HTML ọ bụla: isiokwu, paragraf, ndepụta na onyonyo."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "Usoro akara",
-        "description": "OER Schema: usoro akara maka nyocha a (dịka akara, mkpụrụedemede, pasentị, mmecha)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Ebumnuche mmụta",
-        "description": "OER Schema: ebumnuche mmụta jikọtara na nyocha a."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kọọsị",
-        "description": "OER Schema: kọọsị e mere nyocha a maka ya."
       }
     ],
     "advanced": [
@@ -70,6 +55,16 @@
         "property": "collapsed",
         "title": "Malite ka ọ daba",
         "description": "Mgbe ọ nwere ike ịdaba, ọ na-amalite dị ka ahịrị emechiri nke na-egosi naanị ajụjụ na ọnọdụ ya."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Usoro akara",
+        "description": "OER Schema: usoro akara maka nyocha a (dịka akara, mkpụrụedemede, pasentị, mmecha)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Ebumnuche mmụta",
+        "description": "OER Schema: ebumnuche mmụta jikọtara na nyocha a."
       }
     ],
     "developer": [
@@ -77,6 +72,11 @@
         "property": "quizName",
         "title": "Aha ule",
         "description": "Aha ule e zigara maka iji na gburugburu xAPI iji mata ihe a"
+      },
+      {
+        "property": "forCourse",
+        "title": "Kọọsị",
+        "description": "OER Schema: kọọsị e mere nyocha a maka ya."
       }
     ]
   }

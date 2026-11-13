@@ -11,6 +11,13 @@
         "description": "Ang URL para sa AR file na ito."
       },
       {
+        "property": "skyColor",
+        "title": "Kulay ng langit",
+        "description": "Piliin ang kulay ng langit sa eksena."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "X na posisyon ng elemento sa AR."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "Z na posisyon ng elemento sa AR."
-      },
-      {
-        "property": "skyColor",
-        "title": "Kulay ng langit",
-        "description": "Piliin ang kulay ng langit sa eksena."
       }
     ]
   }

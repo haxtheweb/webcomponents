@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "PDF прегледач у претраживачу",
+    "title": "PDF прегледач",
     "description": "Уградите PDF датотеку у страницу са опционалним распоредом картице и дугметом за преузимање."
   },
   "settings": {
@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Порука о неподржаности",
-        "description": "Порука када претраживач не може да прикаже PDF датотеке."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Порука везе о неподржаности",
-        "description": "Текст везе када претраживач не може да прикаже PDF датотеке."
-      },
-      {
         "property": "width",
         "title": "Ширина",
         "description": "Ширина PDF прегледача."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Висина",
         "description": "Висина PDF прегледача."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Порука о неподржаности",
+        "description": "Порука када претраживач не може да прикаже PDF датотеке."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Порука везе о неподржаности",
+        "description": "Текст везе када претраживач не може да прикаже PDF датотеке."
       }
     ]
   }

@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Mesaĝo pri nesubteno",
-        "description": "Mesaĝo kiam la retumilo ne povas montri PDF-dosierojn."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Ligila mesaĝo pri nesubteno",
-        "description": "Ligila teksto kiam la retumilo ne povas montri PDF-dosierojn."
-      },
-      {
         "property": "width",
         "title": "Larĝo",
         "description": "Larĝo de la PDF-montrilo."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Alteco",
         "description": "Alteco de la PDF-montrilo."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Mesaĝo pri nesubteno",
+        "description": "Mesaĝo kiam la retumilo ne povas montri PDF-dosierojn."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Ligila mesaĝo pri nesubteno",
+        "description": "Ligila teksto kiam la retumilo ne povas montri PDF-dosierojn."
       }
     ]
   }

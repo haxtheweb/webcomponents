@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "Vitufe",
         "description": "Kikundi cha vitufe kinachoonyeshwa chini ya maandishi."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "Maandishi ya nanga",
         "description": "Lebo ya nanga inayoonyeshwa kwenye urambazaji."
       }
-    ]
+    ],
+    "developer": []
   }
 }

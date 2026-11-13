@@ -1,10 +1,10 @@
 {
   "gizmo": {
-    "title": "HAXcms: Unterseiten-Block",
-    "description": "Dynamischer Block, der Unterseiten der aktuellen Seite anzeigt"
+    "title": "Unterseiten",
+    "description": "Listet die Unterseiten der aktuellen Seite auf."
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "Dynamische Methode",
@@ -14,7 +14,9 @@
           "parent": "Unterseiten der übergeordneten Seite",
           "ancestor": "Alle Unterseiten ab dem höchsten Vorfahren"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "Startebene"

@@ -11,11 +11,6 @@
         "description": "Ñe'ẽ ojeporúva ojejapo hag̃ua tapicha oimeraẽva."
       },
       {
-        "property": "code",
-        "title": "Tekoverã código",
-        "description": "Emoĩ peteĩ código ñongatupyre rejapo jey hag̃ua upe tekoverã."
-      },
-      {
         "property": "hat",
         "title": "Akãngao",
         "description": "Akãngao reko.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Máscara",
-        "description": "Máscara ojeporúva tova térã akã ári.",
-        "options": {
-          "none": "Mba'eve",
-          "lion": "León",
-          "plague": "Mba'asy pohãnohára",
-          "theater": "Teatro",
-          "pumpkin": "Andai",
-          "ghost": "Aña",
-          "mummy": "Momia",
-          "wrestler": "Luchador tovarã",
-          "block-head": "Akã cubo",
-          "web": "Ñandu kyha tovarã",
-          "werewolf": "Luisõ rova",
-          "shadow": "Kuarahy'ã rova"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Maquillaje",
-        "description": "Tova pintura térã labial.",
-        "options": {
-          "none": "Mba'eve",
-          "red-lipstick": "Labial pytã",
-          "pink-lipstick": "Labial rosa",
-          "berry-lipstick": "Labial berry",
-          "clown": "Payaso pintura",
-          "fangs": "Tãi puku",
-          "skull": "Ñeñapytĩ akã ruguái",
-          "zombie": "Ñeñapytĩ zombi",
-          "red-nose": "Tĩ pytã",
-          "white-beard": "Tigua morotĩ",
-          "domino": "Héroe nemoñanga",
-          "carrot": "Tĩ zanahoria",
-          "bunny": "Tĩ tapiti",
-          "mustache": "Bigote",
-          "monster": "Monstruo rova ñemopinta",
-          "round-glasses": "Tesa'ã apu'a"
-        }
-      },
-      {
         "property": "expression",
         "title": "Tova jehechauka",
         "description": "Tova jehechauka.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Mymba rapicha",
+        "description": "Mymba tapicha ykére.",
+        "options": {
+          "none": "Mba'eve",
+          "cat": "Mbarakaja",
+          "dog": "Jagua",
+          "bunny": "Tapiti",
+          "goldfish": "Pira sa'yju",
+          "slime": "Ñai'ũ ky'a",
+          "squirrel": "Kaguare'i",
+          "dragon": "Mbói-tata ra'y",
+          "parrot": "Paraguái",
+          "owl": "Urukure'a",
+          "bat": "Mbopi"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Tekoverã código",
+        "description": "Emoĩ peteĩ código ñongatupyre rejapo jey hag̃ua upe tekoverã."
+      },
+      {
+        "property": "mask",
+        "title": "Máscara",
+        "description": "Máscara ojeporúva tova térã akã ári.",
+        "options": {
+          "none": "Mba'eve",
+          "lion": "León",
+          "plague": "Mba'asy pohãnohára",
+          "theater": "Teatro",
+          "pumpkin": "Andai",
+          "ghost": "Aña",
+          "mummy": "Momia",
+          "wrestler": "Luchador tovarã",
+          "block-head": "Akã cubo",
+          "web": "Ñandu kyha tovarã",
+          "werewolf": "Luisõ rova",
+          "shadow": "Kuarahy'ã rova"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Maquillaje",
+        "description": "Tova pintura térã labial.",
+        "options": {
+          "none": "Mba'eve",
+          "red-lipstick": "Labial pytã",
+          "pink-lipstick": "Labial rosa",
+          "berry-lipstick": "Labial berry",
+          "clown": "Payaso pintura",
+          "fangs": "Tãi puku",
+          "skull": "Ñeñapytĩ akã ruguái",
+          "zombie": "Ñeñapytĩ zombi",
+          "red-nose": "Tĩ pytã",
+          "white-beard": "Tigua morotĩ",
+          "domino": "Héroe nemoñanga",
+          "carrot": "Tĩ zanahoria",
+          "bunny": "Tĩ tapiti",
+          "mustache": "Bigote",
+          "monster": "Monstruo rova ñemopinta",
+          "round-glasses": "Tesa'ã apu'a"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Bandera ñe'ẽ",
         "description": "Irundy letra peve ojehecha bandera-pe."
@@ -310,24 +330,6 @@
           "skates": "Patín",
           "skateboard": "Skateboard",
           "hoverboard": "Tabla ovevéva"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Mymba rapicha",
-        "description": "Mymba tapicha ykére.",
-        "options": {
-          "none": "Mba'eve",
-          "cat": "Mbarakaja",
-          "dog": "Jagua",
-          "bunny": "Tapiti",
-          "goldfish": "Pira sa'yju",
-          "slime": "Ñai'ũ ky'a",
-          "squirrel": "Kaguare'i",
-          "dragon": "Mbói-tata ra'y",
-          "parrot": "Paraguái",
-          "owl": "Urukure'a",
-          "bat": "Mbopi"
         }
       },
       {

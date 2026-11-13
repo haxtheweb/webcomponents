@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Képaláírás",
         "description": "A kép felirata."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Ábra címe",
-        "description": "Az ábracímke címe."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Ábra leírása",
-        "description": "Az ábracímke leírása."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Képablak letiltása",
         "description": "Letiltja, hogy kattintásra a kép egy képvizsgáló párbeszédablakban nyíljon meg."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Ábra címe",
+        "description": "Az ábracímke címe."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Ábra leírása",
+        "description": "Az ábracímke leírása."
       }
     ],
     "developer": [

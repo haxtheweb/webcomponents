@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Ojoapykuéva",
         "description": "Emoneĩ puruhára omoĩ hag̃ua papaha."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Rúbrica Tuichakue Reko",

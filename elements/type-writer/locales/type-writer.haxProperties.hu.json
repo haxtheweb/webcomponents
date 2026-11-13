@@ -1,6 +1,6 @@
 {
   "gizmo": {
     "title": "Írógép",
-    "description": "írógépeffektus"
+    "description": "Szöveg, amely karakterenként írja ki magát."
   }
 }

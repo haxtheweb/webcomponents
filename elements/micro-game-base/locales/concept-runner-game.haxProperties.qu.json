@@ -89,7 +89,9 @@
         "property": "gameTitle",
         "title": "Pukllaypa sutin",
         "description": "Kay pukllayta sutichan puririy ruwaykunapi hinallataq OER Schema willakuypi."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Pukllaypa id nisqan",

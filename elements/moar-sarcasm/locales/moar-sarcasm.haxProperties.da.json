@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Sarkasme",
-    "description": "Vis tekst på en drillende måde"
+    "description": "Tekst med skiftevis store og små bogstaver til en sarkastisk tone."
   },
   "settings": {
     "configure": [

@@ -4,17 +4,16 @@
     "description": "Kachasqa .h5p willaymanta H5P tinkuq yachayta ruwachin, mana H5P servidor necesitaspa"
   },
   "settings": {
-    "configure": [
-      {
-        "slot": "",
-        "description": "Huk .h5p willayta churay utaq kuskachay. Navegadorpi kichakun; mana H5P servidor necesitanchu.",
-        "title": "H5P willay"
-      }
-    ],
+    "configure": [],
     "advanced": [
       {
         "title": "Ñawpaq iframe embed código",
         "description": "Huk ñawpaq yachaykunapaq, huk wasimanta H5P iframeta churaqkunapaq. Hawapi .h5p willay kaptinqa, ch'usaqllata saqiy."
+      },
+      {
+        "slot": "",
+        "description": "Huk .h5p willayta churay utaq kuskachay. Navegadorpi kichakun; mana H5P servidor necesitanchu.",
+        "title": "H5P willay"
       }
     ]
   }

@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "ແຫຼ່ງຮູບພາບ",
         "description": "ໄຟລ໌ຮູບພາບທີ່ໃຊ້ສຳລັບບັດ. ໃຊ້ແທນຄຳສຳຄັນຮູບພາບ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "ຄຳສຳຄັນຮູບພາບ",
+        "description": "ຄຳສຳຄັນສຳລັບຮູບພາບແບບສຸ່ມ. ຖືກແທນທີ່ດ້ວຍແຫຼ່ງຮູບພາບ."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "ຈຸດປະສົງການຮຽນຮູ້",
         "description": "OER Schema: ID ຫຼື URL ຂອງຈຸດປະສົງການຮຽນຮູ້ທີ່ການຝຶກນີ້ສະໜັບສະໜູນ."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "ຄຳສຳຄັນຮູບພາບ",
-        "description": "ຄຳສຳຄັນສຳລັບຮູບພາບແບບສຸ່ມ. ຖືກແທນທີ່ດ້ວຍແຫຼ່ງຮູບພາບ."
       }
     ]
   }

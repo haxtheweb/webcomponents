@@ -89,7 +89,9 @@
         "property": "gameTitle",
         "title": "თამაშის სახელი",
         "description": "არქმევს ამ თამაშს პროგრესის მოვლენებსა და OER Schema მარკირებაში."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "თამაშის ID",

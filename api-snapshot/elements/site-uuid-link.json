@@ -11,7 +11,7 @@
   "cssParts": [],
   "cssProperties": [],
   "hax": {
-    "schema": "elements/haxcms-elements/lib/ui-components/site/site-uuid-link.js",
+    "schema": "elements/haxcms-elements/lib/ui-components/site/site-uuid-link.haxProperties.json",
     "gizmo": true,
     "properties": [
       "uuid"

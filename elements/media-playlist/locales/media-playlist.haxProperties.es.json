@@ -4,22 +4,23 @@
     "description": "Una lista de reproducción que presenta reproductores de vídeo y audio con un diseño de reproductor y barra lateral."
   },
   "settings": {
-    "configure": [
+    "configure": [],
+    "advanced": [
       {
         "property": "activeIndex",
         "title": "Elemento inicial",
         "description": "Índice del elemento activo con el que empezar."
-      },
-      {
-        "property": "forCourse",
-        "title": "Curso",
-        "description": "El curso al que está destinada esta lista de reproducción (identificador o URL del curso)."
       }
     ],
     "developer": [
       {
         "title": "Multimedia",
         "description": "Los vídeos y el audio de la lista de reproducción. No se editan aquí: el esquema de la página los usa para saber qué bloques se pueden soltar dentro."
+      },
+      {
+        "property": "forCourse",
+        "title": "Curso",
+        "description": "El curso al que está destinada esta lista de reproducción (identificador o URL del curso)."
       }
     ]
   }

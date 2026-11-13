@@ -9,7 +9,9 @@
         "property": "source",
         "title": "URL ng Resource",
         "description": "URL ng resource."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Taas",

@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "पोस्टर प्रतिमा",
         "description": "पोस्टर प्रतिमा URL."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "मजकूर ट्रॅक",
         "description": "व्हिडिओसाठी क्लोज्ड कॅप्शन्स, उपशीर्षके, वर्णने आणि इतर मजकूर ट्रॅक."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "सुरुवातीची वेळ",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "ऑडिओ वर्णन ट्रॅक",
         "description": "दृश्य घटकांचे निवेदन देणाऱ्या ऑडिओ वर्णन ट्रॅकची (MP3 फाइल) URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "उठाव रंग",
+        "description": "(कालबाह्य) प्लेअरसाठी अ‍ॅक्सेंट रंग निवडा."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "भाषा",
         "description": "माध्यमाची भाषा."
-      },
-      {
-        "property": "accentColor",
-        "title": "उठाव रंग",
-        "description": "(कालबाह्य) प्लेअरसाठी अ‍ॅक्सेंट रंग निवडा."
       }
     ]
   }

@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Destûra Parzûnê",
         "description": "Destûrê bide parzûnkirinê li gorî nirxên stûnan."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Şêweya Hejmarî",
-        "description": "Şêweya hejmarî li stûnên hejmarî bisepîne."
-      },
-      {
-        "property": "responsive",
-        "title": "Bersivdar",
-        "description": "Rûpelsazkirina tabloyê li ser ekranên piçûk eyar bike."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Moda Rubrîkê",
-        "description": "Vê tabloyê wekî OER Schema Rubric şîrove bike da ku metadaneyên Rubric, RubricScale, RubricCriterion û RubricLevel werin derxistin."
-      },
-      {
-        "property": "rubricType",
-        "title": "Cureyê Rubrîkê",
-        "description": "Şêweya rubrîkê ku wekî oer:rubricType tê derxistin (tenê dema Moda Rubrîkê vekirî be wate heye).",
-        "options": {
-          "": "(tune)",
-          "analytic": "Analîtîk",
-          "holistic": "Gelemperî",
-          "single-point": "Yek Xal",
-          "checklist": "Lîsteya kontrolê"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Bişkoka Çapkirinê",
         "description": "Bişkokekê ji bo çapkirina tenê tabloyê lê zêde bike."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Şêweya Hejmarî",
+        "description": "Şêweya hejmarî li stûnên hejmarî bisepîne."
+      },
+      {
+        "property": "responsive",
+        "title": "Bersivdar",
+        "description": "Rûpelsazkirina tabloyê li ser ekranên piçûk eyar bike."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Moda Rubrîkê",
+        "description": "Vê tabloyê wekî OER Schema Rubric şîrove bike da ku metadaneyên Rubric, RubricScale, RubricCriterion û RubricLevel werin derxistin."
+      },
+      {
+        "property": "rubricType",
+        "title": "Cureyê Rubrîkê",
+        "description": "Şêweya rubrîkê ku wekî oer:rubricType tê derxistin (tenê dema Moda Rubrîkê vekirî be wate heye).",
+        "options": {
+          "": "(tune)",
+          "analytic": "Analîtîk",
+          "holistic": "Gelemperî",
+          "single-point": "Yek Xal",
+          "checklist": "Lîsteya kontrolê"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "Daneyên CSV",
         "description": "Ji pela CSV ya barkirî tabloyekê çêke."
       }
-    ]
+    ],
+    "developer": []
   }
 }

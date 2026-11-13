@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Chinangwa",
         "description": "Nzira yekuenda kubuild yemutambo."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Upamhi hweCanvas",
+        "description": "Upamhi hweCSS hwecanvas (semuenzaniso px kana em)."
       },
+      {
+        "property": "height",
+        "title": "Kureba kweCanvas",
+        "description": "Kureba kweCSS kwecanvas (semuenzaniso px kana em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Nzira yekumanikidza",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Vhezheni yeChigadzirwa",
         "description": "Vhezheni yakaburitswa."
-      },
-      {
-        "property": "width",
-        "title": "Upamhi hweCanvas",
-        "description": "Upamhi hweCSS hwecanvas (semuenzaniso px kana em)."
-      },
-      {
-        "property": "height",
-        "title": "Kureba kweCanvas",
-        "description": "Kureba kweCSS kwecanvas (semuenzaniso px kana em)."
       },
       {
         "property": "background",

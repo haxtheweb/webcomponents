@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Нысана",
         "description": "Ойын жинағына апаратын жол."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Кенеп ені",
+        "description": "Кенептің CSS ені (мысалы, px немесе em)."
       },
+      {
+        "property": "height",
+        "title": "Кенеп биіктігі",
+        "description": "Кенептің CSS биіктігі (мысалы, px немесе em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Сығу әдісі",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Өнім нұсқасы",
         "description": "Шығарылым нұсқасы."
-      },
-      {
-        "property": "width",
-        "title": "Кенеп ені",
-        "description": "Кенептің CSS ені (мысалы, px немесе em)."
-      },
-      {
-        "property": "height",
-        "title": "Кенеп биіктігі",
-        "description": "Кенептің CSS биіктігі (мысалы, px немесе em)."
       },
       {
         "property": "background",

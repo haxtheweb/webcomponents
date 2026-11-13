@@ -38,21 +38,6 @@
         "slot": "",
         "title": "Teksti",
         "description": "Teksti në të cilin punojnë nxënësit. Çdo HTML: tituj, paragrafë, lista dhe figura."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "Formati i vlerësimit",
-        "description": "OER Schema: formati i vlerësimit për këtë test (p.sh. pikë, shkronjë, përqindje, përfundim)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Objektivi mësimor",
-        "description": "OER Schema: objektivi mësimor i lidhur me këtë vlerësim."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kursi",
-        "description": "OER Schema: kursi për të cilin është menduar ky vlerësim."
       }
     ],
     "advanced": [
@@ -70,6 +55,16 @@
         "property": "collapsed",
         "title": "Fillo e palosur",
         "description": "Kur është i palosshëm, fillo si rresht i mbyllur që tregon vetëm pyetjen dhe statusin e saj."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Formati i vlerësimit",
+        "description": "OER Schema: formati i vlerësimit për këtë test (p.sh. pikë, shkronjë, përqindje, përfundim)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Objektivi mësimor",
+        "description": "OER Schema: objektivi mësimor i lidhur me këtë vlerësim."
       }
     ],
     "developer": [
@@ -77,6 +72,11 @@
         "property": "quizName",
         "title": "Emri i kuizit",
         "description": "Emri i kuizit që përcillet për përdorim në mjedise të drejtuara nga xAPI për identifikimin e këtij elementi"
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursi",
+        "description": "OER Schema: kursi për të cilin është menduar ky vlerësim."
       }
     ]
   }

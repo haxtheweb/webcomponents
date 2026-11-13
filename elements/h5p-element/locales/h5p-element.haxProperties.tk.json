@@ -4,17 +4,16 @@
     "description": "Ýüklenen .h5p faýlyndan H5P interaktiw mazmunyny H5P serwersiz ýaňlandyrýar"
   },
   "settings": {
-    "configure": [
-      {
-        "slot": "",
-        "description": ".h5p faýlyny ýükläň ýa-da baglanyşdyryň. Ol brauzerde açylýar; H5P serweri gerek däl.",
-        "title": "H5P faýly"
-      }
-    ],
+    "configure": [],
     "advanced": [
       {
         "title": "Köne iframe goýma kody",
         "description": "Diňe başga saýtdan H5P iframe goýýan köne mazmun üçin. Ýokarda .h5p faýly bellenen bolsa, boş goýuň."
+      },
+      {
+        "slot": "",
+        "description": ".h5p faýlyny ýükläň ýa-da baglanyşdyryň. Ol brauzerde açylýar; H5P serweri gerek däl.",
+        "title": "H5P faýly"
       }
     ]
   }

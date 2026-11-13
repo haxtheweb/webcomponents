@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Begrepsoppdragsspill",
-    "description": "En oververden å vandre rundt i. Begreper finner deg og stiller et spørsmål. Svar riktig for å beseire ett og låse opp huset. Oppsummeringen viser forsøk og hva du bør gå gjennom."
+    "description": "Et oververdensspill der begreper stiller spørsmål og riktige svar låser opp kartet."
   },
   "settings": {
     "configure": [
@@ -91,7 +91,9 @@
         "property": "gameTitle",
         "title": "Spillnavn",
         "description": "Gir dette spillet navn i fremdriftshendelser og OER Schema-markup."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Spill-ID",

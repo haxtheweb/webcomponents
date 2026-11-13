@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Žingsnio elementas",
-    "description": "Žingsnių sąrašo elementas"
+    "description": "Vienas žingsnis žingsnių sąraše."
   },
   "settings": {
     "configure": [

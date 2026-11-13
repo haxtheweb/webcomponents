@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Zoznam prispievateľov GitHub",
-    "description": "Zobrazení ako RPG postavy pomocou GitHub API."
+    "description": "Zobrazí prispievateľov repozitára ako RPG postavy."
   },
   "settings": {
     "configure": [

@@ -4,7 +4,7 @@
     "description": "Bloka dînamîk ji bo nîşandana zarokên rûpela niha"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "Rêbaza dînamîk",
@@ -14,7 +14,9 @@
           "parent": "Zarokên dêûbav",
           "ancestor": "Hemû zarok ji bav û kalê herî jorîn"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "Asta destpêkê"

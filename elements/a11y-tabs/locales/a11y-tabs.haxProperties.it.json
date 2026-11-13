@@ -11,20 +11,17 @@
         "description": "Etichetta accessibile per l'insieme di schede."
       },
       {
-        "property": "disabled",
-        "title": "Disattivato",
-        "description": "Disattiva tutte le schede."
-      },
-      {
-        "property": "hidden",
-        "title": "Nascosto",
-        "description": "Nascondi l'insieme di schede."
-      },
-      {
         "property": "sticky",
         "title": "Fisso",
         "description": "Mantieni le schede orizzontali in alto durante lo scorrimento."
       },
+      {
+        "slot": "",
+        "title": "Schede",
+        "description": "Serie di elementi <a11y-tab/>."
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "Breakpoint del layout",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "Breakpoint delle icone",
         "description": "Breakpoint per mostrare il testo con le icone. Il valore predefinito è 0; usa -1 per la modalità solo icone."
-      },
-      {
-        "slot": "",
-        "title": "Schede",
-        "description": "Serie di elementi <a11y-tab/>."
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "Disattivato",
+        "description": "Disattiva tutte le schede."
+      },
+      {
+        "property": "hidden",
+        "title": "Nascosto",
+        "description": "Nascondi l'insieme di schede."
+      },
       {
         "property": "id",
         "title": "ID univoco",

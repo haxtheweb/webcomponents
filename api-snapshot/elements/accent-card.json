@@ -38,7 +38,7 @@
   ],
   "cssProperties": [],
   "hax": {
-    "schema": "elements/accent-card/accent-card.js",
+    "schema": "elements/accent-card/lib/accent-card.haxProperties.json",
     "gizmo": true,
     "properties": [
       "accentBackground",

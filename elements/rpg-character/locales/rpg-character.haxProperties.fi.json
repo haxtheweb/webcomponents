@@ -11,11 +11,6 @@
         "description": "Sana, jonka avulla luodaan satunnainen hahmo."
       },
       {
-        "property": "code",
-        "title": "Hahmokoodi",
-        "description": "Liitä tallennettu koodi luodaksesi hahmon uudelleen."
-      },
-      {
         "property": "hat",
         "title": "Hattu",
         "description": "Hatun tyyli.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Naamio",
-        "description": "Kasvojen tai pään päällä pidettävä naamio.",
-        "options": {
-          "none": "Ei mitään",
-          "lion": "Leijona",
-          "plague": "Ruttolääkäri",
-          "theater": "Teatteri",
-          "pumpkin": "Kurpitsa",
-          "ghost": "Aave",
-          "mummy": "Muumio",
-          "wrestler": "Painijan naamio",
-          "block-head": "Kuutiopää",
-          "web": "Verkkonaamio",
-          "werewolf": "Ihmissuden kasvot",
-          "shadow": "Varjokasvot"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Meikki",
-        "description": "Kasvomaali tai huulipuna.",
-        "options": {
-          "none": "Ei mitään",
-          "red-lipstick": "Punainen huulipuna",
-          "pink-lipstick": "Vaaleanpunainen huulipuna",
-          "berry-lipstick": "Marjanpunainen huulipuna",
-          "clown": "Klovnimaali",
-          "fangs": "Torahampaat",
-          "skull": "Kallomaali",
-          "zombie": "Zombimaali",
-          "red-nose": "Punainen nenä",
-          "white-beard": "Valkoinen parta",
-          "domino": "Sankarinaamio",
-          "carrot": "Porkkananenä",
-          "bunny": "Pupunenä",
-          "mustache": "Viikset",
-          "monster": "Hirviön kasvomaalaus",
-          "round-glasses": "Pyöreät silmälasit"
-        }
-      },
-      {
         "property": "expression",
         "title": "Ilme",
         "description": "Kasvojen ilme.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Lemmikki",
+        "description": "Hahmon vieressä oleva lemmikki.",
+        "options": {
+          "none": "Ei mitään",
+          "cat": "Kissa",
+          "dog": "Koira",
+          "bunny": "Pupu",
+          "goldfish": "Kultakala",
+          "slime": "Lima",
+          "squirrel": "Orava",
+          "dragon": "Lohikäärmeenpoikanen",
+          "parrot": "Papukaija",
+          "owl": "Pöllö",
+          "bat": "Lepakko"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Hahmokoodi",
+        "description": "Liitä tallennettu koodi luodaksesi hahmon uudelleen."
+      },
+      {
+        "property": "mask",
+        "title": "Naamio",
+        "description": "Kasvojen tai pään päällä pidettävä naamio.",
+        "options": {
+          "none": "Ei mitään",
+          "lion": "Leijona",
+          "plague": "Ruttolääkäri",
+          "theater": "Teatteri",
+          "pumpkin": "Kurpitsa",
+          "ghost": "Aave",
+          "mummy": "Muumio",
+          "wrestler": "Painijan naamio",
+          "block-head": "Kuutiopää",
+          "web": "Verkkonaamio",
+          "werewolf": "Ihmissuden kasvot",
+          "shadow": "Varjokasvot"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Meikki",
+        "description": "Kasvomaali tai huulipuna.",
+        "options": {
+          "none": "Ei mitään",
+          "red-lipstick": "Punainen huulipuna",
+          "pink-lipstick": "Vaaleanpunainen huulipuna",
+          "berry-lipstick": "Marjanpunainen huulipuna",
+          "clown": "Klovnimaali",
+          "fangs": "Torahampaat",
+          "skull": "Kallomaali",
+          "zombie": "Zombimaali",
+          "red-nose": "Punainen nenä",
+          "white-beard": "Valkoinen parta",
+          "domino": "Sankarinaamio",
+          "carrot": "Porkkananenä",
+          "bunny": "Pupunenä",
+          "mustache": "Viikset",
+          "monster": "Hirviön kasvomaalaus",
+          "round-glasses": "Pyöreät silmälasit"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Lipun teksti",
         "description": "Enintään 4 kirjainta, jotka näkyvät lipussa."
@@ -310,24 +330,6 @@
           "skates": "Luistimet",
           "skateboard": "Skeittilauta",
           "hoverboard": "Leijulauta"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Lemmikki",
-        "description": "Hahmon vieressä oleva lemmikki.",
-        "options": {
-          "none": "Ei mitään",
-          "cat": "Kissa",
-          "dog": "Koira",
-          "bunny": "Pupu",
-          "goldfish": "Kultakala",
-          "slime": "Lima",
-          "squirrel": "Orava",
-          "dragon": "Lohikäärmeenpoikanen",
-          "parrot": "Papukaija",
-          "owl": "Pöllö",
-          "bat": "Lepakko"
         }
       },
       {

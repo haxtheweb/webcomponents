@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Թիրախ",
         "description": "Խաղի կառուցվածքի ուղին։"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Կտավի լայնություն",
+        "description": "Կտավի CSS լայնությունը (օրինակ՝ px կամ em)։"
       },
+      {
+        "property": "height",
+        "title": "Կտավի բարձրություն",
+        "description": "Կտավի CSS բարձրությունը (օրինակ՝ px կամ em)։"
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Սեղմման եղանակ",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Ապրանքի տարբերակ",
         "description": "Թողարկման տարբերակը։"
-      },
-      {
-        "property": "width",
-        "title": "Կտավի լայնություն",
-        "description": "Կտավի CSS լայնությունը (օրինակ՝ px կամ em)։"
-      },
-      {
-        "property": "height",
-        "title": "Կտավի բարձրություն",
-        "description": "Կտավի CSS բարձրությունը (օրինակ՝ px կամ em)։"
       },
       {
         "property": "background",

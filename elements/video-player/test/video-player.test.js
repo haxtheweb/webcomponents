@@ -2,6 +2,13 @@ import { fixture, expect, html } from "@open-wc/testing";
 
 import "../video-player.js";
 
+// HAX schemas ship as JSON next to the element; read one whether the class
+// returns the object or the URL of its file
+const haxSchema = async (C) => {
+  const hp = C.haxProperties;
+  return typeof hp === "string" ? (await fetch(hp)).json() : hp;
+};
+
 describe("video-player test", () => {
   let element;
   beforeEach(async () => {
@@ -23,26 +30,26 @@ describe("video-player test", () => {
 });
 
 describe("video-player haxProperties", () => {
-  it("has haxProperties static getter", () => {
+  it("has haxProperties static getter", async () => {
     const ctor = globalThis.customElements.get("video-player");
-    const props = ctor.haxProperties;
+    const props = await haxSchema(ctor);
     expect(props).to.exist;
     expect(props.canScale).to.exist;
     expect(props.gizmo).to.exist;
     expect(props.settings).to.exist;
   });
 
-  it("has demoSchema", () => {
+  it("has demoSchema", async () => {
     const ctor = globalThis.customElements.get("video-player");
-    const props = ctor.haxProperties;
+    const props = await haxSchema(ctor);
     expect(props.demoSchema).to.exist;
     expect(props.demoSchema.length).to.be.greaterThan(0);
     expect(props.demoSchema[0].tag).to.equal("video-player");
   });
 
-  it("has saveOptions with unsetAttributes", () => {
+  it("has saveOptions with unsetAttributes", async () => {
     const ctor = globalThis.customElements.get("video-player");
-    const props = ctor.haxProperties;
+    const props = await haxSchema(ctor);
     expect(props.saveOptions).to.exist;
     expect(props.saveOptions.unsetAttributes).to.exist;
   });

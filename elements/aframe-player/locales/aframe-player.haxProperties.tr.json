@@ -11,6 +11,13 @@
         "description": "Bu AR dosyasının URL'si."
       },
       {
+        "property": "skyColor",
+        "title": "Gökyüzü rengi",
+        "description": "Sahnedeki gökyüzünün rengini seçin."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "Öğenin AR'deki X konumu."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "Öğenin AR'deki Z konumu."
-      },
-      {
-        "property": "skyColor",
-        "title": "Gökyüzü rengi",
-        "description": "Sahnedeki gökyüzünün rengini seçin."
       }
     ]
   }

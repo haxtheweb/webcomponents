@@ -11,6 +11,13 @@
         "description": "דער URL פֿון דער AR־טעקע."
       },
       {
+        "property": "skyColor",
+        "title": "הימל־קאָליר",
+        "description": "קלײַבט אויס דעם קאָליר פֿונעם הימל אין דער סצענע."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "X־פּאָזיציע פֿון דעם עלעמענט אין AR."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "Z־פּאָזיציע פֿון דעם עלעמענט אין AR."
-      },
-      {
-        "property": "skyColor",
-        "title": "הימל־קאָליר",
-        "description": "קלײַבט אויס דעם קאָליר פֿונעם הימל אין דער סצענע."
       }
     ]
   }

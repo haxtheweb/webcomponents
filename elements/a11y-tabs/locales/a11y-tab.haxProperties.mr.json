@@ -10,10 +10,6 @@
         "title": "टॅब आयकॉन"
       },
       {
-        "property": "disabled",
-        "title": "अक्षम"
-      },
-      {
         "property": "label",
         "title": "टॅब लेबल"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "अद्वितीय ID"
-      },
-      {
         "property": "flag",
         "title": "पर्यायी ध्वज मजकूर"
       },
       {
         "property": "flagIcon",
         "title": "पर्यायी ध्वज आयकॉन"
+      },
+      {
+        "property": "disabled",
+        "title": "अक्षम"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "अद्वितीय ID"
       }
     ]
   }

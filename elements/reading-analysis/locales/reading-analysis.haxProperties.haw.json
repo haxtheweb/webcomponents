@@ -38,21 +38,6 @@
         "slot": "",
         "title": "Heluhelu",
         "description": "Ka heluhelu a nā haumāna e hana ai. Kekahi HTML: nā poʻomanaʻo, nā paukū, nā papa helu a me nā kiʻi."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "ʻAno helu kaha",
-        "description": "OER Schema: ke ʻano helu kaha no kēia loiloi (e laʻa me nā kiko, ka hua, ka pākēneka, ka hoʻopau)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Pahuhopu aʻo",
-        "description": "OER Schema: ka pahuhopu aʻo e pili ana i kēia loiloi."
-      },
-      {
-        "property": "forCourse",
-        "title": "Papa",
-        "description": "OER Schema: ka papa i manaʻo ʻia ai kēia loiloi."
       }
     ],
     "advanced": [
@@ -70,6 +55,16 @@
         "property": "collapsed",
         "title": "E hoʻomaka me ka hōʻuku ʻia",
         "description": "I ka wā hiki ke hōʻuku, hoʻomaka ma ke ʻano lālani pani ʻia e hōʻike ana i ka nīnau a me kona kūlana wale nō."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "ʻAno helu kaha",
+        "description": "OER Schema: ke ʻano helu kaha no kēia loiloi (e laʻa me nā kiko, ka hua, ka pākēneka, ka hoʻopau)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Pahuhopu aʻo",
+        "description": "OER Schema: ka pahuhopu aʻo e pili ana i kēia loiloi."
       }
     ],
     "developer": [
@@ -77,6 +72,11 @@
         "property": "quizName",
         "title": "Inoa o ka hōʻike",
         "description": "Inoa hōʻike i hoʻouna ʻia no ka hoʻohana ʻana ma nā kaiapuni xAPI no ka ʻike ʻana i kēia mea"
+      },
+      {
+        "property": "forCourse",
+        "title": "Papa",
+        "description": "OER Schema: ka papa i manaʻo ʻia ai kēia loiloi."
       }
     ]
   }

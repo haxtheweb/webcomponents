@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "PDF Browser Viewer",
+    "title": "PDF viewer",
     "description": "Mag-embed ng PDF file nang inline na may opsyonal na card layout at button sa pag-download."
   },
   "settings": {
@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Mensaheng hindi suportado",
-        "description": "Mensahe kapag hindi maipakita ng browser ang mga PDF file."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Mensahe ng link na hindi suportado",
-        "description": "Teksto ng link kapag hindi maipakita ng browser ang mga PDF file."
-      },
-      {
         "property": "width",
         "title": "Lapad",
         "description": "Lapad ng PDF viewer."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Taas",
         "description": "Taas ng PDF viewer."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Mensaheng hindi suportado",
+        "description": "Mensahe kapag hindi maipakita ng browser ang mga PDF file."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Mensahe ng link na hindi suportado",
+        "description": "Teksto ng link kapag hindi maipakita ng browser ang mga PDF file."
       }
     ]
   }

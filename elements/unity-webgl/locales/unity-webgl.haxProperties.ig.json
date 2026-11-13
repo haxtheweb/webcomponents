@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Ebumnuche",
         "description": "Ụzọ gaa na nrụpụta egwuregwu ahụ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Obosara Kanvas",
+        "description": "Obosara CSS kanvas (dịka px ma ọ bụ em)."
       },
+      {
+        "property": "height",
+        "title": "Ogo Kanvas",
+        "description": "Ogo CSS kanvas (dịka px ma ọ bụ em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Usoro mkpakọ",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Ụdị Ngwaahịa",
         "description": "Ụdị ntọhapụ."
-      },
-      {
-        "property": "width",
-        "title": "Obosara Kanvas",
-        "description": "Obosara CSS kanvas (dịka px ma ọ bụ em)."
-      },
-      {
-        "property": "height",
-        "title": "Ogo Kanvas",
-        "description": "Ogo CSS kanvas (dịka px ma ọ bụ em)."
       },
       {
         "property": "background",

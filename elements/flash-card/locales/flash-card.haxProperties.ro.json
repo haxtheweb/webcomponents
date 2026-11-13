@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Sursa imaginii",
         "description": "Fișierul imagine folosit pentru fișă. Înlocuiește Cuvântul cheie pentru imagine."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Cuvânt cheie pentru imagine",
+        "description": "Cuvânt cheie pentru o imagine aleatorie. Înlocuit de Sursa imaginii."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Obiectiv de învățare",
         "description": "OER Schema: ID-ul sau URL-ul obiectivului de învățare susținut de această exersare."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Cuvânt cheie pentru imagine",
-        "description": "Cuvânt cheie pentru o imagine aleatorie. Înlocuit de Sursa imaginii."
       }
     ]
   }

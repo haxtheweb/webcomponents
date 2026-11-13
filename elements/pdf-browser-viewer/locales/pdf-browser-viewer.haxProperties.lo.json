@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "ຂໍ້ຄວາມບໍ່ຮອງຮັບ",
-        "description": "ຂໍ້ຄວາມເມື່ອບຣາວເຊີບໍ່ສາມາດສະແດງໄຟລ໌ PDF ໄດ້."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "ຂໍ້ຄວາມລິ້ງບໍ່ຮອງຮັບ",
-        "description": "ຂໍ້ຄວາມລິ້ງເມື່ອບຣາວເຊີບໍ່ສາມາດສະແດງໄຟລ໌ PDF ໄດ້."
-      },
-      {
         "property": "width",
         "title": "ຄວາມກວ້າງ",
         "description": "ຄວາມກວ້າງຂອງຕົວເບິ່ງ PDF."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "ຄວາມສູງ",
         "description": "ຄວາມສູງຂອງຕົວເບິ່ງ PDF."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "ຂໍ້ຄວາມບໍ່ຮອງຮັບ",
+        "description": "ຂໍ້ຄວາມເມື່ອບຣາວເຊີບໍ່ສາມາດສະແດງໄຟລ໌ PDF ໄດ້."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "ຂໍ້ຄວາມລິ້ງບໍ່ຮອງຮັບ",
+        "description": "ຂໍ້ຄວາມລິ້ງເມື່ອບຣາວເຊີບໍ່ສາມາດສະແດງໄຟລ໌ PDF ໄດ້."
       }
     ]
   }

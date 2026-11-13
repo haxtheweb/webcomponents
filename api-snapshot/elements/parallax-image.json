@@ -14,7 +14,7 @@
   "cssParts": [],
   "cssProperties": [],
   "hax": {
-    "schema": "elements/parallax-image/parallax-image.js",
+    "schema": "elements/parallax-image/lib/parallax-image.haxProperties.json",
     "gizmo": true,
     "properties": [
       "imageBg"

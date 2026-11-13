@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "ポスター画像",
         "description": "ポスター画像のURL。"
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "テキストトラック",
         "description": "動画のクローズドキャプション、字幕、解説などのテキストトラック。"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "開始時間",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "音声解説トラック",
         "description": "映像の視覚的要素をナレーションで伝える音声解説トラック（MP3 ファイル）の URL。"
+      },
+      {
+        "property": "accentColor",
+        "title": "アクセントカラー",
+        "description": "（非推奨）プレーヤーのアクセントカラーを選択します。"
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "言語",
         "description": "メディアの言語。"
-      },
-      {
-        "property": "accentColor",
-        "title": "アクセントカラー",
-        "description": "（非推奨）プレーヤーのアクセントカラーを選択します。"
       }
     ]
   }

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Vòng tiến độ",
-    "description": "Biểu đồ vòng tiến độ"
+    "description": "Biểu đồ vành khuyên cho thấy tiến độ so với tổng."
   },
   "settings": {
     "configure": [
@@ -26,11 +26,6 @@
         "description": "Văn bản thay thế cho hình ảnh."
       },
       {
-        "property": "animated",
-        "title": "Hoạt ảnh",
-        "description": "Tiến độ có hiệu ứng chuyển động khi tải lần đầu hay không"
-      },
-      {
         "property": "complete",
         "title": "Hoàn tất",
         "description": "Mảng các giá trị đã hoàn thành."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "Tổng",
         "description": "Tổng khi tất cả các mục đã hoàn thành."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "Hoạt ảnh",
+        "description": "Tiến độ có hiệu ứng chuyển động khi tải lần đầu hay không"
       },
       {
         "property": "startAngle",

@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Bijschrift",
         "description": "Bijschrift voor de afbeelding."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Figuurtitel",
-        "description": "Titel voor het figuurlabel."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Figuurbeschrijving",
-        "description": "Beschrijving voor het figuurlabel."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Afbeeldingsvenster uitschakelen",
         "description": "Voorkomen dat klikken de afbeelding openen in een dialoogvenster voor afbeeldingsinspectie."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Figuurtitel",
+        "description": "Titel voor het figuurlabel."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Figuurbeschrijving",
+        "description": "Beschrijving voor het figuurlabel."
       }
     ],
     "developer": [

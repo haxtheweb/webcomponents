@@ -10,10 +10,6 @@
         "title": "タブのアイコン"
       },
       {
-        "property": "disabled",
-        "title": "無効"
-      },
-      {
         "property": "label",
         "title": "タブのラベル"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "一意のID"
-      },
-      {
         "property": "flag",
         "title": "フラグのテキスト (任意)"
       },
       {
         "property": "flagIcon",
         "title": "フラグのアイコン (任意)"
+      },
+      {
+        "property": "disabled",
+        "title": "無効"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "一意のID"
       }
     ]
   }

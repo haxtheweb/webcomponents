@@ -10,10 +10,6 @@
         "title": "Ata Ripa"
       },
       {
-        "property": "disabled",
-        "title": "Kua monokia"
-      },
-      {
         "property": "label",
         "title": "Tapanga Ripa"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "ID Ahurei"
-      },
-      {
         "property": "flag",
         "title": "Kuputuhi Haki Kōwhiringa"
       },
       {
         "property": "flagIcon",
         "title": "Ata Haki Kōwhiringa"
+      },
+      {
+        "property": "disabled",
+        "title": "Kua monokia"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "ID Ahurei"
       }
     ]
   }

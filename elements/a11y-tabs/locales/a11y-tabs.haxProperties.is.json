@@ -11,20 +11,17 @@
         "description": "Aðgengilegt merki fyrir flipasafnið."
       },
       {
-        "property": "disabled",
-        "title": "Óvirkt",
-        "description": "Gera alla flipa óvirka."
-      },
-      {
-        "property": "hidden",
-        "title": "Falið",
-        "description": "Fela flipasafnið."
-      },
-      {
         "property": "sticky",
         "title": "Fast",
         "description": "Halda láréttum flipum efst við skrun."
       },
+      {
+        "slot": "",
+        "title": "Flipar",
+        "description": "Röð af <a11y-tab/> einingum."
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "Útlitsbrotpunktur",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "Táknbrotpunktur",
         "description": "Brotpunktur fyrir birtingu texta með táknum. Sjálfgefið er 0; notaðu -1 fyrir aðeins tákn."
-      },
-      {
-        "slot": "",
-        "title": "Flipar",
-        "description": "Röð af <a11y-tab/> einingum."
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "Óvirkt",
+        "description": "Gera alla flipa óvirka."
+      },
+      {
+        "property": "hidden",
+        "title": "Falið",
+        "description": "Fela flipasafnið."
+      },
       {
         "property": "id",
         "title": "Einkvæmt auðkenni (ID)",

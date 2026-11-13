@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "ໂຕ້ຕອບໄດ້",
         "description": "ອະນຸຍາດໃຫ້ຜູ້ໃຊ້ໂຕ້ຕອບເພື່ອຕັ້ງຄະແນນ."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "ໂໝດມາດຕາສ່ວນເກນ",

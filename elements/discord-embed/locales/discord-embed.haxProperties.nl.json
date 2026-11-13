@@ -9,7 +9,9 @@
         "property": "source",
         "title": "Bron-URL",
         "description": "Bron-URL."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Hoogte",

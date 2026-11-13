@@ -91,7 +91,9 @@
         "property": "gameTitle",
         "title": "खेलको नाम",
         "description": "प्रगति इभेन्ट र OER Schema मार्कअपमा यो खेलको नाम राख्छ।"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "खेलको आईडी",

@@ -86,7 +86,9 @@
         "property": "gameTitle",
         "title": "Jeneng game",
         "description": "Menehi jeneng game iki ing acara kemajuan lan markup OER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "ID game",

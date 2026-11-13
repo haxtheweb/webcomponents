@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Sarkasme",
-    "description": "Menyajikan teks dengan gaya usil"
+    "description": "Teks dengan huruf besar-kecil berselang untuk nada sarkastis."
   },
   "settings": {
     "configure": [

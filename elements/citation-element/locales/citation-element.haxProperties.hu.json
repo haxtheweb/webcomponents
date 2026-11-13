@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Forrásmegjelölés",
-    "description": "Forrásmegjelölés elem három megjelenítési móddal."
+    "description": "Tüntesse fel a forrást címmel, szerzővel, licenccel és hivatkozással."
   },
   "settings": {
     "configure": [
@@ -21,15 +21,6 @@
         "description": "A forráshoz való hozzáférés dátuma."
       },
       {
-        "property": "scope",
-        "title": "Hatókör",
-        "description": "A hivatkozandó elem hatóköre.",
-        "options": {
-          "sibling": "Testvérelem",
-          "parent": "Szülőelem"
-        }
-      },
-      {
         "property": "license",
         "title": "Licenc",
         "description": "A hivatkozott mű licence."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Alkotó",
         "description": "A hivatkozott mű alkotója vagy tulajdonosa."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Hatókör",
+        "description": "A hivatkozandó elem hatóköre.",
+        "options": {
+          "sibling": "Testvérelem",
+          "parent": "Szülőelem"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "OER Schema típus",

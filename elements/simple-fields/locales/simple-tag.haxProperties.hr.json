@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "Oznaka / pilula",
+    "title": "Oznaka",
     "description": "Kompaktna oznaka u obliku pilule s neobaveznom bojom isticanja, gumbom za poništavanje ili prekidačem."
   },
   "settings": {
@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Automatska boja isticanja",
         "description": "Automatski izvedi boju isticanja iz teksta oznake."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Gumb za poništavanje",
-        "description": "Prikaži gumb s ikonom za uklanjanje/poništavanje unutar pilule."
-      },
-      {
-        "property": "readonly",
-        "title": "Samo za čitanje",
-        "description": "Sakrij gumb za poništavanje tako da pilula služi samo za prikaz."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Plavosiva",
           "grey": "Siva"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Gumb za poništavanje",
+        "description": "Prikaži gumb s ikonom za uklanjanje/poništavanje unutar pilule."
+      },
+      {
+        "property": "readonly",
+        "title": "Samo za čitanje",
+        "description": "Sakrij gumb za poništavanje tako da pilula služi samo za prikaz."
       }
     ]
   }

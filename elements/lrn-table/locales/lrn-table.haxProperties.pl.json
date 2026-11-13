@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Tabela CSV",
-    "description": "Może wygenerować tabelę z pliku CSV, niezależnie od jego lokalizacji."
+    "description": "Pokazuje plik CSV jako dostępną tabelę."
   },
   "settings": {
     "configure": [

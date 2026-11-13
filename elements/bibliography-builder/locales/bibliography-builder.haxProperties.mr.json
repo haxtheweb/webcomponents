@@ -9,7 +9,9 @@
         "slot": "",
         "title": "संदर्भ नोंदी",
         "description": "या संदर्भसूचीतील संदर्भ नोंदी"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "अभ्यासक्रम",

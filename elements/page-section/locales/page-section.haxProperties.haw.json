@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "Nā Pihi",
         "description": "Pūʻulu pihi i hōʻike ʻia ma lalo o ka kikokikona."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "Kikokikona heleuma",
         "description": "Lepili heleuma i hōʻike ʻia ma ka hoʻokele."
       }
-    ]
+    ],
+    "developer": []
   }
 }

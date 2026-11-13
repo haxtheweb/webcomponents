@@ -11,30 +11,8 @@
         "description": "ഉപയോക്താക്കൾ പ്രതികരിക്കേണ്ട ചോദ്യം."
       },
       {
-        "property": "gradingFormat",
-        "title": "ഗ്രേഡിംഗ് ഫോർമാറ്റ്",
-        "description": "OER Schema: ഈ മൂല്യനിർണ്ണയത്തിനുള്ള ഗ്രേഡിംഗ് ഫോർമാറ്റ് (ഉദാ. പോയിന്റുകൾ, അക്ഷരം, ശതമാനം, പൂർത്തീകരണം)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "പഠന ലക്ഷ്യം",
-        "description": "OER Schema: ഈ മൂല്യനിർണ്ണയവുമായി ബന്ധപ്പെട്ട പഠന ലക്ഷ്യം."
-      },
-      {
-        "property": "forCourse",
-        "title": "കോഴ്സ്",
-        "description": "OER Schema: ഈ മൂല്യനിർണ്ണയം ഉദ്ദേശിച്ചിരിക്കുന്ന കോഴ്സ്."
-      },
-      {
         "property": "answers",
         "title": "ഉത്തരങ്ങൾ"
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "ക്വിസിന്റെ പേര്",
-        "description": "അനലിറ്റിക്സ് സിസ്റ്റങ്ങളിൽ xAPI തിരിച്ചറിയലിനായി ഉപയോഗിക്കുന്ന ക്വിസ് പേര്."
       }
     ],
     "advanced": [
@@ -47,6 +25,28 @@
         "property": "collapsed",
         "title": "ചുരുക്കിയ നിലയിൽ ആരംഭിക്കുക",
         "description": "ചുരുക്കാവുന്നതായിരിക്കുമ്പോൾ, ചോദ്യവും അതിന്റെ നിലയും മാത്രം കാണിക്കുന്ന അടഞ്ഞ വരിയായി ആരംഭിക്കുക."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "ഗ്രേഡിംഗ് ഫോർമാറ്റ്",
+        "description": "OER Schema: ഈ മൂല്യനിർണ്ണയത്തിനുള്ള ഗ്രേഡിംഗ് ഫോർമാറ്റ് (ഉദാ. പോയിന്റുകൾ, അക്ഷരം, ശതമാനം, പൂർത്തീകരണം)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "പഠന ലക്ഷ്യം",
+        "description": "OER Schema: ഈ മൂല്യനിർണ്ണയവുമായി ബന്ധപ്പെട്ട പഠന ലക്ഷ്യം."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "ക്വിസിന്റെ പേര്",
+        "description": "അനലിറ്റിക്സ് സിസ്റ്റങ്ങളിൽ xAPI തിരിച്ചറിയലിനായി ഉപയോഗിക്കുന്ന ക്വിസ് പേര്."
+      },
+      {
+        "property": "forCourse",
+        "title": "കോഴ്സ്",
+        "description": "OER Schema: ഈ മൂല്യനിർണ്ണയം ഉദ്ദേശിച്ചിരിക്കുന്ന കോഴ്സ്."
       }
     ]
   }

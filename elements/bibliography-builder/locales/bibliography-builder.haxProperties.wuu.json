@@ -9,7 +9,9 @@
         "slot": "",
         "title": "引文",
         "description": "搿份参考文献目录里向个引文条目"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "课程",

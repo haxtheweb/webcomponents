@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "Spotify پلیئر ایمبیڈز کے لیے ریپر۔"
+    "description": "Spotify کا ٹریک، البم یا پلے لسٹ ایمبیڈ کریں۔"
   },
   "settings": {
     "configure": [

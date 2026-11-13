@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Крофна напретка",
-    "description": "Крофна напредовања"
+    "description": "Прстенасти графикон који приказује напредак ка укупном збиру."
   },
   "settings": {
     "configure": [
@@ -26,11 +26,6 @@
         "description": "Alt текст за слику."
       },
       {
-        "property": "animated",
-        "title": "Анимирано",
-        "description": "Да ли се напредак анимира при првом учитавању"
-      },
-      {
         "property": "complete",
         "title": "Завршено",
         "description": "Низ завршених вредности."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "Укупно",
         "description": "Укупно када су све ставке завршене."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "Анимирано",
+        "description": "Да ли се напредак анимира при првом учитавању"
       },
       {
         "property": "startAngle",

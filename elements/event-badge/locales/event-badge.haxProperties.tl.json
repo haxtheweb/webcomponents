@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Badge ng Event",
-    "description": "Component na badge ng event."
+    "description": "Name badge na istilong kumperensiya na may larawan, pangalan at organisasyon."
   },
   "settings": {
     "configure": [

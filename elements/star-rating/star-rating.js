@@ -22,75 +22,8 @@ class StarRating extends I18NMixin(SchemaBehaviors(SimpleColors)) {
   }
 
   static get haxProperties() {
-    return {
-      canScale: true,
-      gizmo: {
-        title: "Star rating",
-        description: "Show a star rating, or let readers pick one.",
-        icon: "icons:star",
-        color: "yellow",
-        tags: [
-          "Instructional",
-          "rating",
-          "stars",
-          "rubric",
-          "scale",
-          "feedback",
-        ],
-        handles: [],
-        meta: {
-          author: "HAXTheWeb core team",
-        },
-      },
-      settings: {
-        configure: [
-          {
-            property: "score",
-            title: "Score",
-            description: "Current score value.",
-            inputMethod: "number",
-          },
-          {
-            property: "possible",
-            title: "Possible",
-            description: "Maximum possible score.",
-            inputMethod: "number",
-          },
-          {
-            property: "numStars",
-            title: "Number of Stars",
-            description: "Number of stars to display.",
-            inputMethod: "number",
-          },
-          {
-            property: "interactive",
-            title: "Interactive",
-            description: "Allow user interaction to set the rating.",
-            inputMethod: "boolean",
-          },
-        ],
-        advanced: [
-          {
-            property: "rubricScaleMode",
-            title: "Rubric Scale Mode",
-            description:
-              "Emit OER Schema RubricScale and RubricLevel metadata (levelOrdinal/levelPoints) for each star.",
-            inputMethod: "boolean",
-          },
-        ],
-      },
-      demoSchema: [
-        {
-          tag: "star-rating",
-          properties: {
-            score: 80,
-            possible: 100,
-            numStars: 5,
-          },
-          content: "",
-        },
-      ],
-    };
+    return new URL("./lib/star-rating.haxProperties.json", import.meta.url)
+      .href;
   }
 
   static get styles() {

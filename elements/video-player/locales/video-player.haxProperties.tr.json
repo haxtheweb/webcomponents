@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Kapak görseli",
         "description": "Kapak görseli URL'si."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Metin parçaları",
         "description": "Video için kapalı altyazılar, altyazılar, betimlemeler ve diğer metin parçaları."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Başlangıç zamanı",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Sesli betimleme parçası",
         "description": "Görsel öğeleri anlatan bir sesli betimleme parçasının (MP3 dosyası) URL'si."
+      },
+      {
+        "property": "accentColor",
+        "title": "Vurgu rengi",
+        "description": "(kullanımdan kaldırıldı) Oynatıcı için vurgu rengini seçin."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Dil",
         "description": "Medyanın dili."
-      },
-      {
-        "property": "accentColor",
-        "title": "Vurgu rengi",
-        "description": "(kullanımdan kaldırıldı) Oynatıcı için vurgu rengini seçin."
       }
     ]
   }

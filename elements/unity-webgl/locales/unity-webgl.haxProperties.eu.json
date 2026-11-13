@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Helburua",
         "description": "Jokoaren konpilazioaren bidea."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Oihalaren zabalera",
+        "description": "Oihalaren CSS zabalera (adibidez px edo em)."
       },
+      {
+        "property": "height",
+        "title": "Oihalaren altuera",
+        "description": "Oihalaren CSS altuera (adibidez px edo em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Konpresio metodoa",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Produktuaren bertsioa",
         "description": "Argitalpenaren bertsioa."
-      },
-      {
-        "property": "width",
-        "title": "Oihalaren zabalera",
-        "description": "Oihalaren CSS zabalera (adibidez px edo em)."
-      },
-      {
-        "property": "height",
-        "title": "Oihalaren altuera",
-        "description": "Oihalaren CSS altuera (adibidez px edo em)."
       },
       {
         "property": "background",

@@ -9,7 +9,9 @@
         "slot": "",
         "title": "Zitater",
         "description": "Zitatelementer an dëser Bibliographie"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "Cours",

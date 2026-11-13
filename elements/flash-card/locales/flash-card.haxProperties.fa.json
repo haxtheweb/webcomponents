@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "منبع تصویر",
         "description": "فایل تصویری که برای کارت استفاده می‌شود. بر کلیدواژهٔ تصویر اولویت دارد."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "کلیدواژهٔ تصویر",
+        "description": "کلیدواژهٔ تصویر تصادفی. منبع تصویر بر آن اولویت دارد."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "هدف یادگیری",
         "description": "OER Schema: شناسه یا URL هدف یادگیری‌ای که این تمرین از آن پشتیبانی می‌کند."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "کلیدواژهٔ تصویر",
-        "description": "کلیدواژهٔ تصویر تصادفی. منبع تصویر بر آن اولویت دارد."
       }
     ]
   }

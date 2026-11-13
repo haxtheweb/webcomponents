@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "CSV جدول",
-    "description": "یہ CSV فائل سے جدول بنا سکتا ہے، چاہے وہ کہیں بھی موجود ہو۔"
+    "description": "CSV فائل کو قابلِ رسائی جدول کی صورت میں دکھاتا ہے۔"
   },
   "settings": {
     "configure": [

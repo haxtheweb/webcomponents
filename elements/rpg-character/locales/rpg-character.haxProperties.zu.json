@@ -11,11 +11,6 @@
         "description": "Igama elisetshenziselwa ukukhiqiza umlingiswa ongahleliwe."
       },
       {
-        "property": "code",
-        "title": "Ikhodi yomlingiswa",
-        "description": "Namathisela ikhodi elondoloziwe ukuze wakhe kabusha lowo mlingiswa."
-      },
-      {
         "property": "hat",
         "title": "Isigqoko",
         "description": "Isitayela sesigqoko.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Imaski",
-        "description": "Imaski egqokwa ebusweni noma ekhanda.",
-        "options": {
-          "none": "Lutho",
-          "lion": "Ibhubesi",
-          "plague": "Udokotela wobhubhane",
-          "theater": "Itiyetha",
-          "pumpkin": "Ithanga",
-          "ghost": "Isipoki",
-          "mummy": "Imamikazi",
-          "wrestler": "Imaski yokubambana",
-          "block-head": "Ikhanda lebhulokhi",
-          "web": "Imaski kalwembu",
-          "werewolf": "Ubuso bomuntu-mpisi",
-          "shadow": "Ubuso besithunzi"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Izimonyo",
-        "description": "Upende wobuso noma ilipstikhi.",
-        "options": {
-          "none": "Lutho",
-          "red-lipstick": "Ilipstikhi ebomvu",
-          "pink-lipstick": "Ilipstikhi ephinki",
-          "berry-lipstick": "Ilipstikhi yeberi",
-          "clown": "Upende wekhlowuni",
-          "fangs": "Imisila emide",
-          "skull": "Upende wogebhezi",
-          "zombie": "Upende wesidumbu esiphilayo",
-          "red-nose": "Ikhala elibomvu",
-          "white-beard": "Isilevu esimhlophe",
-          "domino": "Imaski yeqhawe",
-          "carrot": "Ikhala likakherothi",
-          "bunny": "Ikhala likanogwaja",
-          "mustache": "Amadevu",
-          "monster": "Upende wobuso wesilo",
-          "round-glasses": "Izibuko eziyindilinga"
-        }
-      },
-      {
         "property": "expression",
         "title": "Isimo sobuso",
         "description": "Isimo sobuso.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Isilwane esifuywayo",
+        "description": "Isilwane esifuywayo eduze komlingiswa.",
+        "options": {
+          "none": "Lutho",
+          "cat": "Ikati",
+          "dog": "Inja",
+          "bunny": "Unogwaja",
+          "goldfish": "Inhlanzi yegolide",
+          "slime": "Udaka",
+          "squirrel": "Ingwejeje",
+          "dragon": "Udrako omncane",
+          "parrot": "Upholi",
+          "owl": "Isikhova",
+          "bat": "Ilulwane"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Ikhodi yomlingiswa",
+        "description": "Namathisela ikhodi elondoloziwe ukuze wakhe kabusha lowo mlingiswa."
+      },
+      {
+        "property": "mask",
+        "title": "Imaski",
+        "description": "Imaski egqokwa ebusweni noma ekhanda.",
+        "options": {
+          "none": "Lutho",
+          "lion": "Ibhubesi",
+          "plague": "Udokotela wobhubhane",
+          "theater": "Itiyetha",
+          "pumpkin": "Ithanga",
+          "ghost": "Isipoki",
+          "mummy": "Imamikazi",
+          "wrestler": "Imaski yokubambana",
+          "block-head": "Ikhanda lebhulokhi",
+          "web": "Imaski kalwembu",
+          "werewolf": "Ubuso bomuntu-mpisi",
+          "shadow": "Ubuso besithunzi"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Izimonyo",
+        "description": "Upende wobuso noma ilipstikhi.",
+        "options": {
+          "none": "Lutho",
+          "red-lipstick": "Ilipstikhi ebomvu",
+          "pink-lipstick": "Ilipstikhi ephinki",
+          "berry-lipstick": "Ilipstikhi yeberi",
+          "clown": "Upende wekhlowuni",
+          "fangs": "Imisila emide",
+          "skull": "Upende wogebhezi",
+          "zombie": "Upende wesidumbu esiphilayo",
+          "red-nose": "Ikhala elibomvu",
+          "white-beard": "Isilevu esimhlophe",
+          "domino": "Imaski yeqhawe",
+          "carrot": "Ikhala likakherothi",
+          "bunny": "Ikhala likanogwaja",
+          "mustache": "Amadevu",
+          "monster": "Upende wobuso wesilo",
+          "round-glasses": "Izibuko eziyindilinga"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Umbhalo wefulegi",
         "description": "Amaletha afika ku-4 abonisiwe efulegini."
@@ -310,24 +330,6 @@
           "skates": "Amaskeyithi",
           "skateboard": "Iskeyibhodi",
           "hoverboard": "Ibhodi elindizayo"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Isilwane esifuywayo",
-        "description": "Isilwane esifuywayo eduze komlingiswa.",
-        "options": {
-          "none": "Lutho",
-          "cat": "Ikati",
-          "dog": "Inja",
-          "bunny": "Unogwaja",
-          "goldfish": "Inhlanzi yegolide",
-          "slime": "Udaka",
-          "squirrel": "Ingwejeje",
-          "dragon": "Udrako omncane",
-          "parrot": "Upholi",
-          "owl": "Isikhova",
-          "bat": "Ilulwane"
         }
       },
       {

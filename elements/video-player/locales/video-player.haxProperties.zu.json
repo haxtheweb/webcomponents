@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Isithombe sephosta",
         "description": "I-URL yesithombe sephosta."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Amathrekhi ombhalo",
         "description": "Imibhalo engezansi, imibhalo yokuhumusha, izincazelo, namanye amathrekhi ombhalo wevidiyo."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Isikhathi sokuqala",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Ithrekhi yencazelo ezwakalayo",
         "description": "I-URL yethrekhi yencazelo ezwakalayo (ifayela le-MP3) elandisa ngezinto ezibonakalayo."
+      },
+      {
+        "property": "accentColor",
+        "title": "Umbala wokugcizelela",
+        "description": "(akusasetshenziswa) Khetha umbala wokugcizelela wesidlali."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Ulimi",
         "description": "Ulimi lwemidiya."
-      },
-      {
-        "property": "accentColor",
-        "title": "Umbala wokugcizelela",
-        "description": "(akusasetshenziswa) Khetha umbala wokugcizelela wesidlali."
       }
     ]
   }

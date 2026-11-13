@@ -11,20 +11,17 @@
         "description": "Ilebula efinyelelekayo yeqoqo lamathebhu."
       },
       {
-        "property": "disabled",
-        "title": "Kukhutshaziwe",
-        "description": "Khubaza wonke amathebhu."
-      },
-      {
-        "property": "hidden",
-        "title": "Kufihliwe",
-        "description": "Fihla iqoqo lamathebhu."
-      },
-      {
         "property": "sticky",
         "title": "Okunamathelayo",
         "description": "Gcina amathebhu avundlile phezulu ngesikhathi uskrola."
       },
+      {
+        "slot": "",
+        "title": "Amathebhu",
+        "description": "Uchungechunge lwezinto ze-<a11y-tab/>."
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "Iphoyinti Lokuphuka Lesakhiwo",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "Iphoyinti Lokuphuka Lezithonjana",
         "description": "Iphoyinti lokuphuka lokubonisa umbhalo nezithonjana. Okuzenzakalelayo ngu-0; sebenzisa u--1 kumodi yezithonjana kuphela."
-      },
-      {
-        "slot": "",
-        "title": "Amathebhu",
-        "description": "Uchungechunge lwezinto ze-<a11y-tab/>."
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "Kukhutshaziwe",
+        "description": "Khubaza wonke amathebhu."
+      },
+      {
+        "property": "hidden",
+        "title": "Kufihliwe",
+        "description": "Fihla iqoqo lamathebhu."
+      },
       {
         "property": "id",
         "title": "I-ID Eyingqayizivele",

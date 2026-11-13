@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Značka dogodka",
-    "description": "Komponenta značke dogodka."
+    "description": "Priponka z imenom v konferenčnem slogu s fotografijo, imenom in organizacijo."
   },
   "settings": {
     "configure": [

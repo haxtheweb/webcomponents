@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Pasākuma nozīmīte",
-    "description": "Pasākuma nozīmītes komponents."
+    "description": "Konferences stila vārda karte ar fotoattēlu, vārdu un organizāciju."
   },
   "settings": {
     "configure": [

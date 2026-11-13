@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Источник цитаты",
-    "description": "Элемент ссылки на источник с тремя режимами отображения."
+    "description": "Укажите источник: название, автора, лицензию и ссылку."
   },
   "settings": {
     "configure": [
@@ -21,15 +21,6 @@
         "description": "Дата обращения к источнику."
       },
       {
-        "property": "scope",
-        "title": "Область",
-        "description": "Область элементов для цитирования.",
-        "options": {
-          "sibling": "Соседний элемент",
-          "parent": "Родительский элемент"
-        }
-      },
-      {
         "property": "license",
         "title": "Лицензия",
         "description": "Лицензия цитируемой работы."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Автор",
         "description": "Автор или владелец цитируемой работы."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Область",
+        "description": "Область элементов для цитирования.",
+        "options": {
+          "sibling": "Соседний элемент",
+          "parent": "Родительский элемент"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "Тип OER Schema",

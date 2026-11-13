@@ -9,7 +9,9 @@
         "property": "source",
         "title": "URL zasobu",
         "description": "URL zasobu."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Wysokość",

@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Teks panambang",
         "description": "Teks sing katon sawise angka (contone '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Slot ater-ater",
-        "description": "Isi slot opsional sadurunge angka."
-      },
-      {
-        "slot": "suffix",
-        "title": "Slot panambang",
-        "description": "Isi slot opsional sawise angka."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Tanpa easing",
         "description": "Pateni easing supaya etungane linier."
+      },
+      {
+        "slot": "prefix",
+        "title": "Slot ater-ater",
+        "description": "Isi slot opsional sadurunge angka."
+      },
+      {
+        "slot": "suffix",
+        "title": "Slot panambang",
+        "description": "Isi slot opsional sawise angka."
       }
     ]
   }

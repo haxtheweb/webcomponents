@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Сүрөт булагы",
         "description": "Карта үчүн колдонулган сүрөт файлы. Сүрөттүн ачкыч сөзүнүн ордуна колдонулат."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Сүрөттүн ачкыч сөзү",
+        "description": "Кокус сүрөт үчүн ачкыч сөз. Сүрөт булагы аны алмаштырат."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Окуу максаты",
         "description": "OER Schema: бул машыгуу колдогон окуу максатынын ID же URL дареги."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Сүрөттүн ачкыч сөзү",
-        "description": "Кокус сүрөт үчүн ачкыч сөз. Сүрөт булагы аны алмаштырат."
       }
     ]
   }

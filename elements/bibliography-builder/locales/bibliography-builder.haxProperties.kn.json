@@ -9,7 +9,9 @@
         "slot": "",
         "title": "ಉಲ್ಲೇಖಗಳು",
         "description": "ಈ ಗ್ರಂಥಸೂಚಿಯಲ್ಲಿರುವ ಉಲ್ಲೇಖ ಐಟಂಗಳು"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "ಕೋರ್ಸ್",

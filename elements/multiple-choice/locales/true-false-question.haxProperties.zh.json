@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "判断题",
-    "description": "判断对错题"
+    "description": "学习者判断为对或错的陈述。"
   },
   "settings": {
     "configure": [

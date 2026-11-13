@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Quadre d'activitat",
-    "description": "Bloc d'encapçalament petit amb estil."
+    "description": "Un encapçalament etiquetat que marca l’inici d’una activitat."
   },
   "settings": {
     "configure": [

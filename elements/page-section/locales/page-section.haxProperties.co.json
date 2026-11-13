@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "Buttoni",
         "description": "Gruppu di buttoni affissatu sottu à u testu."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "Testu di l'ancura",
         "description": "Etichetta di l'ancura affissata in a navigazione."
       }
-    ]
+    ],
+    "developer": []
   }
 }

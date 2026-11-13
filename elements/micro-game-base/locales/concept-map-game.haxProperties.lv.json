@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Jēdzienu kartes spēle",
-    "description": "Īsa tastatūras spēle. Tēls iet pie katra jēdziena kartē, un tas pats sevi paskaidro. Pieskaries visiem, lai saņemtu konfeti un uzvedni kopēšanai."
+    "description": "Īsa tastatūras spēle, kurā tēls staigā pa karti un katrs jēdziens izskaidro pats sevi."
   },
   "settings": {
     "configure": [
@@ -86,7 +86,9 @@
         "property": "gameTitle",
         "title": "Spēles nosaukums",
         "description": "Nosauc šo spēli progresa notikumos un OER Schema marķējumā."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Spēles id",

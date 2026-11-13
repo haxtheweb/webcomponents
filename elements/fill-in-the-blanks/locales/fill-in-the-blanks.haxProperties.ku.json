@@ -14,28 +14,6 @@
         "property": "statement",
         "title": "Daxuyanî",
         "description": "Daxuyaniya ku dê were veguherandin bo înteraksiyona nîşankirina peyvan."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "Formata nirxandinê",
-        "description": "OER Schema: formata nirxandinê ji bo vê nirxandinê (mînak xal, tîp, ji sedî, temamkirin)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Armanca fêrbûnê",
-        "description": "OER Schema: armanca fêrbûnê ya bi vê nirxandinê ve girêdayî."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kurs",
-        "description": "OER Schema: kursa ku ev nirxandin jê re hatiye amadekirin."
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Navê quizê",
-        "description": "Navê quizê ku ji bo naskirina vê hêmanê di hawîrdorên bi xAPI de tê bikaranîn"
       }
     ],
     "advanced": [
@@ -46,6 +24,28 @@
       {
         "title": "Girtî dest pê bike",
         "description": "Dema dikare were girtin, wekî rêzek girtî dest pê dike ku tenê pirs û rewşa wê nîşan dide."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Formata nirxandinê",
+        "description": "OER Schema: formata nirxandinê ji bo vê nirxandinê (mînak xal, tîp, ji sedî, temamkirin)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Armanca fêrbûnê",
+        "description": "OER Schema: armanca fêrbûnê ya bi vê nirxandinê ve girêdayî."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Navê quizê",
+        "description": "Navê quizê ku ji bo naskirina vê hêmanê di hawîrdorên bi xAPI de tê bikaranîn"
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurs",
+        "description": "OER Schema: kursa ku ev nirxandin jê re hatiye amadekirin."
       }
     ]
   }

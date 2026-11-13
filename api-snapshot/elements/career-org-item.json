@@ -16,7 +16,7 @@
   "cssParts": [],
   "cssProperties": [],
   "hax": {
-    "schema": "elements/career-timeline/lib/career-org-item.js",
+    "schema": "elements/career-timeline/lib/career-org-item.haxProperties.json",
     "gizmo": true,
     "properties": [
       "location",

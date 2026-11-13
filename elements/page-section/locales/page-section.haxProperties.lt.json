@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "Mygtukai",
         "description": "Po tekstu rodoma mygtukų grupė."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "Inkaro tekstas",
         "description": "Navigacijoje rodoma inkaro etiketė."
       }
-    ]
+    ],
+    "developer": []
   }
 }

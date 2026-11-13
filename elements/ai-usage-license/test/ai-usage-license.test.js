@@ -1,6 +1,13 @@
 import { html, fixture, expect } from "@open-wc/testing";
 import { AiUsageLicense } from "../ai-usage-license.js";
 
+// HAX schemas ship as JSON next to the element; read one whether the class
+// returns the object or the URL of its file
+const haxSchema = async (C) => {
+  const hp = C.haxProperties;
+  return typeof hp === "string" ? (await fetch(hp)).json() : hp;
+};
+
 // The constructor always fetches ./lib/v1.json; stub that fetch so no
 // network is involved (images in the stub data are data URIs so the
 // rendered <img> never loads anything remote either). Any other fetch
@@ -409,8 +416,8 @@ describe("AiUsageLicense HAX integration", () => {
     expect(props.settings.configure[2].options).to.equal(undefined);
   });
 
-  it("exposes a static haxProperties schema with demo schema", () => {
-    const schema = AiUsageLicense.haxProperties;
+  it("exposes a static haxProperties schema with demo schema", async () => {
+    const schema = await haxSchema(AiUsageLicense);
     expect(schema.canScale).to.equal(false);
     expect(schema.canEditSource).to.equal(true);
     expect(schema.gizmo.title).to.equal("AI Usage License");

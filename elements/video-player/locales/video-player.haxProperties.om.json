@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Suuraa poostarii",
         "description": "URL suuraa poostarii."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Sararoota barreeffamaa",
         "description": "Mata-duree cufaa, hiika jalaa, ibsaa fi sararoota barreeffamaa biroo viidiyoof."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Yeroo jalqabaa",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Sarara ibsa sagaleen",
         "description": "URL sarara ibsa sagaleen (faayilii MP3) kan wantoota mul'atan ibsu."
+      },
+      {
+        "property": "accentColor",
+        "title": "Halluu calaqqee",
+        "description": "(dulloomeera) Halluu cimsaa taphataaf fili."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Afaan",
         "description": "Afaan miidiyaa."
-      },
-      {
-        "property": "accentColor",
-        "title": "Halluu calaqqee",
-        "description": "(dulloomeera) Halluu cimsaa taphataaf fili."
       }
     ]
   }

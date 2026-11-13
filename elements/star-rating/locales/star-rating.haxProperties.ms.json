@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Penarafan Bintang",
-    "description": "Widget paparan penarafan atau butang untuk membuat penarafan."
+    "description": "Paparkan penarafan bintang atau biarkan pembaca memilihnya."
   },
   "settings": {
     "configure": [
@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Interaktif",
         "description": "Benarkan interaksi pengguna untuk menetapkan penarafan."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Mod Skala Rubrik",

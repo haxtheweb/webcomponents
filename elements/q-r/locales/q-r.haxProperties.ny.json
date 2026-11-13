@@ -14,16 +14,6 @@
         "property": "title",
         "title": "Mutu wina",
         "description": "Mutu wina wolumikizidwa ku gwero la khodi ya QR."
-      },
-      {
-        "property": "modulesize",
-        "title": "Kukula",
-        "description": "Kukula kwa khodi ya QR."
-      },
-      {
-        "property": "margin",
-        "title": "M'mphepete",
-        "description": "Malo ozungulira khodiyo."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "Kukula",
+        "description": "Kukula kwa khodi ya QR."
+      },
+      {
+        "property": "margin",
+        "title": "M'mphepete",
+        "description": "Malo ozungulira khodiyo."
       }
     ]
   }

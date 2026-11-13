@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Igra mape pojmova",
-    "description": "Kratka igra na tastaturi. Lik hoda do svakog pojma na mapi i pojam se sam objasni. Dodirni sve za konfete i upit za kopiranje."
+    "description": "Kratka igra na tastaturi u kojoj lik hoda po mapi, a svaki pojam objašnjava sam sebe."
   },
   "settings": {
     "configure": [
@@ -86,7 +86,9 @@
         "property": "gameTitle",
         "title": "Naziv igre",
         "description": "Imenuje ovu igru u događajima napretka i OER Schema oznakama."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "ID igre",

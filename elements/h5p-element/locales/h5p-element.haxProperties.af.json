@@ -4,17 +4,16 @@
     "description": "Speel interaktiewe H5P-inhoud vanaf 'n opgelaaide .h5p-lêer, sonder dat 'n H5P-bediener nodig is"
   },
   "settings": {
-    "configure": [
-      {
-        "slot": "",
-        "description": "Laai 'n .h5p-lêer op of skakel daarheen. Dit word in die blaaier uitgepak; geen H5P-bediener is nodig nie.",
-        "title": "H5P-lêer"
-      }
-    ],
+    "configure": [],
     "advanced": [
       {
         "title": "Ou iframe-invoegkode",
         "description": "Slegs vir ouer inhoud wat 'n H5P-iframe van 'n ander webwerf insluit. Los leeg wanneer 'n .h5p-lêer hierbo gestel is."
+      },
+      {
+        "slot": "",
+        "description": "Laai 'n .h5p-lêer op of skakel daarheen. Dit word in die blaaier uitgepak; geen H5P-bediener is nodig nie.",
+        "title": "H5P-lêer"
       }
     ]
   }

@@ -11,31 +11,9 @@
         "description": "Κεφαλίδα ερώτησης."
       },
       {
-        "property": "gradingFormat",
-        "title": "Μορφή βαθμολόγησης",
-        "description": "OER Schema: μορφή βαθμολόγησης για αυτή την αξιολόγηση (π.χ. μονάδες, γράμμα, ποσοστό, ολοκλήρωση)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Μαθησιακός στόχος",
-        "description": "OER Schema: μαθησιακός στόχος που σχετίζεται με αυτή την αξιολόγηση."
-      },
-      {
-        "property": "forCourse",
-        "title": "Μάθημα",
-        "description": "OER Schema: μάθημα για το οποίο προορίζεται αυτή η αξιολόγηση."
-      },
-      {
         "property": "answers",
         "title": "Απαντήσεις",
         "description": "Η σειρά των απαντήσεων ορίζει τη σωστή ακολουθία."
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Όνομα του κουίζ",
-        "description": "Όνομα κουίζ για αναγνώριση xAPI σε συστήματα αναλυτικών στοιχείων."
       }
     ],
     "advanced": [
@@ -48,6 +26,28 @@
         "property": "collapsed",
         "title": "Έναρξη συμπτυγμένο",
         "description": "Όταν είναι αναδιπλούμενο, ξεκινά ως κλειστή γραμμή που δείχνει μόνο την ερώτηση και την κατάστασή της."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Μορφή βαθμολόγησης",
+        "description": "OER Schema: μορφή βαθμολόγησης για αυτή την αξιολόγηση (π.χ. μονάδες, γράμμα, ποσοστό, ολοκλήρωση)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Μαθησιακός στόχος",
+        "description": "OER Schema: μαθησιακός στόχος που σχετίζεται με αυτή την αξιολόγηση."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Όνομα του κουίζ",
+        "description": "Όνομα κουίζ για αναγνώριση xAPI σε συστήματα αναλυτικών στοιχείων."
+      },
+      {
+        "property": "forCourse",
+        "title": "Μάθημα",
+        "description": "OER Schema: μάθημα για το οποίο προορίζεται αυτή η αξιολόγηση."
       }
     ]
   }

@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Peu de foto",
         "description": "Llegenda de la imatge."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Títol de la figura",
-        "description": "Títol de l'etiqueta de figura."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Descripció de la figura",
-        "description": "Descripció de l'etiqueta de figura."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Desactiva el modal de la imatge",
         "description": "Desactiva que els clics obrin la imatge en un diàleg d'inspector d'imatges."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Títol de la figura",
+        "description": "Títol de l'etiqueta de figura."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Descripció de la figura",
+        "description": "Descripció de l'etiqueta de figura."
       }
     ],
     "developer": [

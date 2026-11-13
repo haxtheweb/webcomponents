@@ -23,7 +23,7 @@
   "cssParts": [],
   "cssProperties": [],
   "hax": {
-    "schema": "elements/merit-badge/merit-badge.js",
+    "schema": "elements/merit-badge/lib/merit-badge.haxProperties.json",
     "gizmo": true,
     "properties": [
       "badgeDetails",

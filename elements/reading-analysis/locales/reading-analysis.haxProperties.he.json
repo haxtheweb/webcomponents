@@ -38,21 +38,6 @@
         "slot": "",
         "title": "קטע קריאה",
         "description": "הקטע שבו הלומדים עובדים. כל HTML: כותרות, פסקאות, רשימות ואיורים."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "פורמט ציון",
-        "description": "OER Schema: פורמט הציון להערכה זו (למשל נקודות, אות, אחוז, השלמה)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "מטרת למידה",
-        "description": "OER Schema: מטרת הלמידה המשויכת להערכה זו."
-      },
-      {
-        "property": "forCourse",
-        "title": "קורס",
-        "description": "OER Schema: הקורס שעבורו מיועדת הערכה זו."
       }
     ],
     "advanced": [
@@ -70,6 +55,16 @@
         "property": "collapsed",
         "title": "התחל מכווץ",
         "description": "כשניתן לכיווץ, השאלה תתחיל כשורה סגורה שמציגה רק את השאלה ואת הסטטוס שלה."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "פורמט ציון",
+        "description": "OER Schema: פורמט הציון להערכה זו (למשל נקודות, אות, אחוז, השלמה)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "מטרת למידה",
+        "description": "OER Schema: מטרת הלמידה המשויכת להערכה זו."
       }
     ],
     "developer": [
@@ -77,6 +72,11 @@
         "property": "quizName",
         "title": "שם הבוחן",
         "description": "שם הבוחן המועבר לשימוש בסביבות מבוססות xAPI לצורך זיהוי פריט זה"
+      },
+      {
+        "property": "forCourse",
+        "title": "קורס",
+        "description": "OER Schema: הקורס שעבורו מיועדת הערכה זו."
       }
     ]
   }

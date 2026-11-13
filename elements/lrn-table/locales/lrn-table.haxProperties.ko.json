@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "CSV 표",
-    "description": "CSV 파일이 어디에 있든 표를 생성할 수 있습니다."
+    "description": "CSV 파일을 접근성 있는 표로 표시합니다."
   },
   "settings": {
     "configure": [

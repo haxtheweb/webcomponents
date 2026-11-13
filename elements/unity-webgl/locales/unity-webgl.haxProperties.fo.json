@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Mál",
         "description": "Slóð til spælbygningin."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Breidd á lørifti",
+        "description": "CSS-breidd á lørifti (til dømis px ella em)."
       },
+      {
+        "property": "height",
+        "title": "Hædd á lørifti",
+        "description": "CSS-hædd á lørifti (til dømis px ella em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Samanpakkingarháttur",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Vøruútgáva",
         "description": "Útgávunummar."
-      },
-      {
-        "property": "width",
-        "title": "Breidd á lørifti",
-        "description": "CSS-breidd á lørifti (til dømis px ella em)."
-      },
-      {
-        "property": "height",
-        "title": "Hædd á lørifti",
-        "description": "CSS-hædd á lørifti (til dømis px ella em)."
       },
       {
         "property": "background",

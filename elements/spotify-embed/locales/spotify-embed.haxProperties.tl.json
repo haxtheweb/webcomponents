@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "Wrapper para sa mga embed ng Spotify player."
+    "description": "Mag-embed ng Spotify track, album o playlist."
   },
   "settings": {
     "configure": [

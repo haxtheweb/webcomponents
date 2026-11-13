@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "Kitazamaji cha PDF cha Kivinjari",
+    "title": "Kitazamaji cha PDF",
     "description": "Pachika faili ya PDF ndani ya ukurasa pamoja na mpangilio wa kadi wa hiari na kitufe cha kupakua."
   },
   "settings": {
@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Ujumbe wa kutotumika",
-        "description": "Ujumbe wakati kivinjari hakiwezi kuonyesha faili za PDF."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Ujumbe wa kiungo wa kutotumika",
-        "description": "Maandishi ya kiungo wakati kivinjari hakiwezi kuonyesha faili za PDF."
-      },
-      {
         "property": "width",
         "title": "Upana",
         "description": "Upana wa kitazamaji cha PDF."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Urefu",
         "description": "Urefu wa kitazamaji cha PDF."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Ujumbe wa kutotumika",
+        "description": "Ujumbe wakati kivinjari hakiwezi kuonyesha faili za PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Ujumbe wa kiungo wa kutotumika",
+        "description": "Maandishi ya kiungo wakati kivinjari hakiwezi kuonyesha faili za PDF."
       }
     ]
   }

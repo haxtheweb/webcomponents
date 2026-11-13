@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Joc de mapa de conceptes",
-    "description": "Un joc breu de teclat. Un personatge camina fins a cada concepte d'un mapa i aquest s'explica. Toca'ls tots per veure confeti i una indicació per copiar."
+    "description": "Un joc breu de teclat en què un personatge recorre un mapa i cada concepte s’explica tot sol."
   },
   "settings": {
     "configure": [
@@ -86,7 +86,9 @@
         "property": "gameTitle",
         "title": "Nom del joc",
         "description": "Dona nom a aquest joc als esdeveniments de progrés i al marcatge d'OER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Identificador del joc",

@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "Merkelapp / pille",
+    "title": "Tagg",
     "description": "En kompakt pilleformet etikett med valgfri aksentfarge, avbryt-knapp eller av/på-bryter."
   },
   "settings": {
@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Automatisk aksentfarge",
         "description": "Utled aksentfargen automatisk fra etikettteksten."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Avbryt-knapp",
-        "description": "Vis en ikonknapp for fjern/avbryt inne i pillen."
-      },
-      {
-        "property": "readonly",
-        "title": "Skrivebeskyttet",
-        "description": "Skjul avbryt-knappen slik at pillen bare er til visning."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Blågrå",
           "grey": "Grå"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Avbryt-knapp",
+        "description": "Vis en ikonknapp for fjern/avbryt inne i pillen."
+      },
+      {
+        "property": "readonly",
+        "title": "Skrivebeskyttet",
+        "description": "Skjul avbryt-knappen slik at pillen bare er til visning."
       }
     ]
   }

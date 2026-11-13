@@ -4,22 +4,23 @@
     "description": "Spilunarlisti sem sýnir mynd- og hljóðspilara í uppsetningu með spilara og hliðarstiku."
   },
   "settings": {
-    "configure": [
+    "configure": [],
+    "advanced": [
       {
         "property": "activeIndex",
         "title": "Upphafsatriði",
         "description": "Númer atriðisins sem byrjað er á."
-      },
-      {
-        "property": "forCourse",
-        "title": "Námskeið",
-        "description": "Námskeiðið sem þessi spilunarlisti er ætlaður (auðkenni eða URL námskeiðs)."
       }
     ],
     "developer": [
       {
         "title": "Miðlar",
         "description": "Myndskeiðin og hljóðið í spilunarlistanum. Ekki breytt hér: yfirlit síðunnar notar þetta til að vita hvaða kubbum má sleppa inn í."
+      },
+      {
+        "property": "forCourse",
+        "title": "Námskeið",
+        "description": "Námskeiðið sem þessi spilunarlisti er ætlaður (auðkenni eða URL námskeiðs)."
       }
     ]
   }

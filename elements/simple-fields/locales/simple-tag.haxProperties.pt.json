@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "Tag / Pílula",
+    "title": "Etiqueta",
     "description": "Um rótulo compacto em forma de pílula com cor de destaque, botão de cancelar ou alternância opcionais."
   },
   "settings": {
@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Cor de destaque automática",
         "description": "Derivar a cor de destaque automaticamente do texto do rótulo."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Botão de cancelar",
-        "description": "Mostrar um botão de ícone de remover/cancelar dentro da pílula."
-      },
-      {
-        "property": "readonly",
-        "title": "Somente leitura",
-        "description": "Ocultar o botão de cancelar para que a pílula seja apenas de exibição."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Cinza-azulado",
           "grey": "Cinza"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Botão de cancelar",
+        "description": "Mostrar um botão de ícone de remover/cancelar dentro da pílula."
+      },
+      {
+        "property": "readonly",
+        "title": "Somente leitura",
+        "description": "Ocultar o botão de cancelar para que a pílula seja apenas de exibição."
       }
     ]
   }

@@ -11,6 +11,13 @@
         "description": "L'URL d'aquest fitxer AR."
       },
       {
+        "property": "skyColor",
+        "title": "Color del cel",
+        "description": "Selecciona el color del cel a l'escena."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "Posició X de l'element en AR."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "Posició Z de l'element en AR."
-      },
-      {
-        "property": "skyColor",
-        "title": "Color del cel",
-        "description": "Selecciona el color del cel a l'escena."
       }
     ]
   }

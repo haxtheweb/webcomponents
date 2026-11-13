@@ -11,11 +11,6 @@
         "description": "Véletlenszerű karakter létrehozásához használt szó."
       },
       {
-        "property": "code",
-        "title": "Karakterkód",
-        "description": "Illessz be egy mentett kódot a karakter újbóli létrehozásához."
-      },
-      {
         "property": "hat",
         "title": "Kalap",
         "description": "Kalap stílusa.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Maszk",
-        "description": "Az arcon vagy a fejen viselt maszk.",
-        "options": {
-          "none": "Nincs",
-          "lion": "Oroszlán",
-          "plague": "Pestisdoktor",
-          "theater": "Színház",
-          "pumpkin": "Tök",
-          "ghost": "Szellem",
-          "mummy": "Múmia",
-          "wrestler": "Birkózómaszk",
-          "block-head": "Kockafej",
-          "web": "Hálómaszk",
-          "werewolf": "Vérfarkasarc",
-          "shadow": "Árnyékos arc"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Smink",
-        "description": "Arcfesték vagy rúzs.",
-        "options": {
-          "none": "Nincs",
-          "red-lipstick": "Piros rúzs",
-          "pink-lipstick": "Rózsaszín rúzs",
-          "berry-lipstick": "Bogyószínű rúzs",
-          "clown": "Bohócfesték",
-          "fangs": "Agyarak",
-          "skull": "Koponyafesték",
-          "zombie": "Zombifesték",
-          "red-nose": "Piros orr",
-          "white-beard": "Fehér szakáll",
-          "domino": "Hősmaszk",
-          "carrot": "Sárgarépa-orr",
-          "bunny": "Nyuszi orr",
-          "mustache": "Bajusz",
-          "monster": "Szörnyarcfestés",
-          "round-glasses": "Kerek szemüveg"
-        }
-      },
-      {
         "property": "expression",
         "title": "Arckifejezés",
         "description": "Az arc kifejezése.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Kisállat",
+        "description": "A karakter mellett álló kisállat.",
+        "options": {
+          "none": "Nincs",
+          "cat": "Macska",
+          "dog": "Kutya",
+          "bunny": "Nyuszi",
+          "goldfish": "Aranyhal",
+          "slime": "Nyálka",
+          "squirrel": "Mókus",
+          "dragon": "Sárkánybébi",
+          "parrot": "Papagáj",
+          "owl": "Bagoly",
+          "bat": "Denevér"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Karakterkód",
+        "description": "Illessz be egy mentett kódot a karakter újbóli létrehozásához."
+      },
+      {
+        "property": "mask",
+        "title": "Maszk",
+        "description": "Az arcon vagy a fejen viselt maszk.",
+        "options": {
+          "none": "Nincs",
+          "lion": "Oroszlán",
+          "plague": "Pestisdoktor",
+          "theater": "Színház",
+          "pumpkin": "Tök",
+          "ghost": "Szellem",
+          "mummy": "Múmia",
+          "wrestler": "Birkózómaszk",
+          "block-head": "Kockafej",
+          "web": "Hálómaszk",
+          "werewolf": "Vérfarkasarc",
+          "shadow": "Árnyékos arc"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Smink",
+        "description": "Arcfesték vagy rúzs.",
+        "options": {
+          "none": "Nincs",
+          "red-lipstick": "Piros rúzs",
+          "pink-lipstick": "Rózsaszín rúzs",
+          "berry-lipstick": "Bogyószínű rúzs",
+          "clown": "Bohócfesték",
+          "fangs": "Agyarak",
+          "skull": "Koponyafesték",
+          "zombie": "Zombifesték",
+          "red-nose": "Piros orr",
+          "white-beard": "Fehér szakáll",
+          "domino": "Hősmaszk",
+          "carrot": "Sárgarépa-orr",
+          "bunny": "Nyuszi orr",
+          "mustache": "Bajusz",
+          "monster": "Szörnyarcfestés",
+          "round-glasses": "Kerek szemüveg"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Zászló szövege",
         "description": "Legfeljebb 4 betű jelenik meg a zászlón."
@@ -310,24 +330,6 @@
           "skates": "Korcsolya",
           "skateboard": "Gördeszka",
           "hoverboard": "Lebegődeszka"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Kisállat",
-        "description": "A karakter mellett álló kisállat.",
-        "options": {
-          "none": "Nincs",
-          "cat": "Macska",
-          "dog": "Kutya",
-          "bunny": "Nyuszi",
-          "goldfish": "Aranyhal",
-          "slime": "Nyálka",
-          "squirrel": "Mókus",
-          "dragon": "Sárkánybébi",
-          "parrot": "Papagáj",
-          "owl": "Bagoly",
-          "bat": "Denevér"
         }
       },
       {

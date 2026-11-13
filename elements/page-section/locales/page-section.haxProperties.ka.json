@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "ღილაკები",
         "description": "ტექსტის ქვეშ ნაჩვენები ღილაკების ჯგუფი."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "ღუზის ტექსტი",
         "description": "ნავიგაციაში ნაჩვენები ღუზის იარლიყი."
       }
-    ]
+    ],
+    "developer": []
   }
 }

@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "캡션",
         "description": "이미지의 캡션."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "그림 제목",
-        "description": "그림 레이블의 제목."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "그림 설명",
-        "description": "그림 레이블의 설명."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "이미지 모달 비활성화",
         "description": "클릭 시 이미지 검사 대화 상자에서 이미지가 열리지 않도록 합니다."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "그림 제목",
+        "description": "그림 레이블의 제목."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "그림 설명",
+        "description": "그림 레이블의 설명."
       }
     ],
     "developer": [

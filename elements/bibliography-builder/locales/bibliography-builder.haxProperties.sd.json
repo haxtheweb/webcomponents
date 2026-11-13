@@ -9,7 +9,9 @@
         "slot": "",
         "title": "حوالا",
         "description": "هن ببليوگرافي ۾ حوالن جون شيون"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "ڪورس",

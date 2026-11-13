@@ -14,16 +14,6 @@
         "property": "title",
         "title": "Àkọlé àfirọ́pò",
         "description": "Àkọlé àfirọ́pò tí a jápọ̀ mọ́ orísun kóòdù QR."
-      },
-      {
-        "property": "modulesize",
-        "title": "Ìwọ̀n",
-        "description": "Ìwọ̀n kóòdù QR."
-      },
-      {
-        "property": "margin",
-        "title": "Ààyè etí",
-        "description": "Ààyè tí ó yí kóòdù náà ká."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "Ìwọ̀n",
+        "description": "Ìwọ̀n kóòdù QR."
+      },
+      {
+        "property": "margin",
+        "title": "Ààyè etí",
+        "description": "Ààyè tí ó yí kóòdù náà ká."
       }
     ]
   }

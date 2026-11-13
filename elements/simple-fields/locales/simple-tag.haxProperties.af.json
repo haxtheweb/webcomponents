@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Outomatiese aksentkleur",
         "description": "Lei die aksentkleur outomaties van die etiketteks af."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Kanselleerknoppie",
-        "description": "Wys 'n verwyder-/kanselleer-ikoonknoppie binne die pil."
-      },
-      {
-        "property": "readonly",
-        "title": "Slegs lees",
-        "description": "Versteek die kanselleerknoppie sodat die pil slegs vir vertoon is."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Blougrys",
           "grey": "Grys"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Kanselleerknoppie",
+        "description": "Wys 'n verwyder-/kanselleer-ikoonknoppie binne die pil."
+      },
+      {
+        "property": "readonly",
+        "title": "Slegs lees",
+        "description": "Versteek die kanselleerknoppie sodat die pil slegs vir vertoon is."
       }
     ]
   }

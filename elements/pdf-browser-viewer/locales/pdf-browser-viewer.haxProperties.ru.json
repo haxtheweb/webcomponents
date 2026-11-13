@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "Просмотр PDF в браузере",
+    "title": "Просмотр PDF",
     "description": "Встраивание PDF-файла на страницу с необязательным макетом карточки и кнопкой скачивания."
   },
   "settings": {
@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Сообщение о неподдержке",
-        "description": "Сообщение, если браузер не может отображать PDF-файлы."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Текст ссылки при неподдержке",
-        "description": "Текст ссылки, если браузер не может отображать PDF-файлы."
-      },
-      {
         "property": "width",
         "title": "Ширина",
         "description": "Ширина просмотрщика PDF."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Высота",
         "description": "Высота просмотрщика PDF."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Сообщение о неподдержке",
+        "description": "Сообщение, если браузер не может отображать PDF-файлы."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Текст ссылки при неподдержке",
+        "description": "Текст ссылки, если браузер не может отображать PDF-файлы."
       }
     ]
   }

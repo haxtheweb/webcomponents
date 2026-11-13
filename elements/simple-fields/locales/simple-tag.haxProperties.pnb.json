@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "خودکار نمایاں رنگ",
         "description": "لیبل دے متن توں نمایاں رنگ آپوں کڈھو۔"
-      },
-      {
-        "property": "cancelButton",
-        "title": "منسوخ بٹن",
-        "description": "گولی اندر ہٹاؤ/منسوخ والا آئیکن بٹن وکھاؤ۔"
-      },
-      {
-        "property": "readonly",
-        "title": "صرف پڑھن لئی",
-        "description": "منسوخ بٹن لکاؤ تاں جے گولی صرف وکھاوݨ لئی ہووے۔"
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "نیلا سلیٹی",
           "grey": "سلیٹی"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "منسوخ بٹن",
+        "description": "گولی اندر ہٹاؤ/منسوخ والا آئیکن بٹن وکھاؤ۔"
+      },
+      {
+        "property": "readonly",
+        "title": "صرف پڑھن لئی",
+        "description": "منسوخ بٹن لکاؤ تاں جے گولی صرف وکھاوݨ لئی ہووے۔"
       }
     ]
   }

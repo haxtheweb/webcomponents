@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "Genişlet Daralt Grubu",
-    "description": "Genişletilip daraltılabilen öğelerden oluşan bir grup."
+    "title": "Daraltılabilir grup",
+    "description": "Daraltılabilir kapsayıcılardan oluşan bir grup."
   },
   "settings": {
     "configure": [

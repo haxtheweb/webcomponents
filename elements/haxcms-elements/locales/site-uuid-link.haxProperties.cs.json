@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "Odkaz HAX",
-    "description": "Odkaz na konkrétní zdroj na webu, na kterém pracujete."
+    "title": "Odkaz na stránku",
+    "description": "Odkaz na stránku webu, na kterém pracujete."
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "패럴랙스 이미지",
-    "description": "스크롤에 따라 움직이는 이미지"
+    "description": "페이지보다 느리게 스크롤되는 전체 너비 이미지로, 위에 제목이 놓입니다."
   },
   "settings": {
     "configure": [

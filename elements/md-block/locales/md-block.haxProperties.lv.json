@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "Markdown satura bloks, ievadīts tieši vai ielādēts attālināti"
+    "description": "Markdown saturs, rakstīts uz vietas vai ielādēts no faila."
   },
   "settings": {
     "configure": [

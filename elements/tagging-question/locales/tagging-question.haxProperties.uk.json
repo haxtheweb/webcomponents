@@ -11,30 +11,8 @@
         "description": "Запитання, на яке мають відповісти користувачі."
       },
       {
-        "property": "gradingFormat",
-        "title": "Формат оцінювання",
-        "description": "OER Schema: формат оцінювання для цього завдання (напр. бали, літера, відсоток, виконання)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Навчальна мета",
-        "description": "OER Schema: навчальна мета, пов'язана з цим завданням."
-      },
-      {
-        "property": "forCourse",
-        "title": "Курс",
-        "description": "OER Schema: курс, для якого призначене це завдання."
-      },
-      {
         "property": "answers",
         "title": "Відповіді"
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Назва тесту",
-        "description": "Назва тесту для ідентифікації xAPI в аналітичних системах."
       }
     ],
     "advanced": [
@@ -47,6 +25,28 @@
         "property": "collapsed",
         "title": "Починати згорнутим",
         "description": "Якщо запитання згортне, починати із закритого рядка, у якому видно лише запитання та його статус."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Формат оцінювання",
+        "description": "OER Schema: формат оцінювання для цього завдання (напр. бали, літера, відсоток, виконання)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Навчальна мета",
+        "description": "OER Schema: навчальна мета, пов'язана з цим завданням."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Назва тесту",
+        "description": "Назва тесту для ідентифікації xAPI в аналітичних системах."
+      },
+      {
+        "property": "forCourse",
+        "title": "Курс",
+        "description": "OER Schema: курс, для якого призначене це завдання."
       }
     ]
   }

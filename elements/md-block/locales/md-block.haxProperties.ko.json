@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "마크다운",
-    "description": "직접 입력하거나 원격으로 불러온 마크다운 콘텐츠 블록"
+    "description": "직접 작성하거나 파일에서 불러오는 Markdown 콘텐츠."
   },
   "settings": {
     "configure": [

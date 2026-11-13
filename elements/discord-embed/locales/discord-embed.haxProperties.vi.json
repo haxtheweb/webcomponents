@@ -9,7 +9,9 @@
         "property": "source",
         "title": "URL tài nguyên",
         "description": "URL tài nguyên."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Chiều cao",

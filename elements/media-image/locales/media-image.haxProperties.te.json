@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "చిత్ర శీర్షిక",
         "description": "చిత్రం కోసం శీర్షిక."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "చిత్ర శీర్షిక",
-        "description": "చిత్ర లేబుల్ కోసం శీర్షిక."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "చిత్ర వివరణ",
-        "description": "చిత్ర లేబుల్ కోసం వివరణ."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "చిత్ర మోడల్‌ను నిలిపివేయండి",
         "description": "క్లిక్‌లు చిత్రాన్ని చిత్ర పరిశీలక డైలాగ్‌లో తెరవడాన్ని నిలిపివేయండి."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "చిత్ర శీర్షిక",
+        "description": "చిత్ర లేబుల్ కోసం శీర్షిక."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "చిత్ర వివరణ",
+        "description": "చిత్ర లేబుల్ కోసం వివరణ."
       }
     ],
     "developer": [

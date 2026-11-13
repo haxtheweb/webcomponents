@@ -14,16 +14,6 @@
         "property": "title",
         "title": "Alternatiewe titel",
         "description": "Alternatiewe titel gekoppel aan die QR-kode se bron."
-      },
-      {
-        "property": "modulesize",
-        "title": "Grootte",
-        "description": "Grootte van die QR-kode."
-      },
-      {
-        "property": "margin",
-        "title": "Kantlyn",
-        "description": "Omhulsel om die kode."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "Grootte",
+        "description": "Grootte van die QR-kode."
+      },
+      {
+        "property": "margin",
+        "title": "Kantlyn",
+        "description": "Omhulsel om die kode."
       }
     ]
   }

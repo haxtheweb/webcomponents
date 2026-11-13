@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "इवेंट बैज",
-    "description": "इवेंट बैज घटक।"
+    "description": "फ़ोटो, नाम और संगठन वाला सम्मेलन-शैली का नाम बैज।"
   },
   "settings": {
     "configure": [

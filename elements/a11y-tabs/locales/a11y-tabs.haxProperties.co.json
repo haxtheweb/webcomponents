@@ -11,20 +11,17 @@
         "description": "Etichetta accessibile per l'inseme d'unghjette."
       },
       {
-        "property": "disabled",
-        "title": "Disattivatu",
-        "description": "Disattivà tutte l'unghjette."
-      },
-      {
-        "property": "hidden",
-        "title": "Piattatu",
-        "description": "Piattà l'inseme d'unghjette."
-      },
-      {
         "property": "sticky",
         "title": "Fissu",
         "description": "Tene l'unghjette orizontale in cima mentre si sfila."
       },
+      {
+        "slot": "",
+        "title": "Unghjette",
+        "description": "Serie d'elementi <a11y-tab/>."
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "Puntu di rottura di a dispusizione",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "Puntu di rottura di l'icone",
         "description": "Puntu di rottura per affissà u testu cù l'icone. U valore predefinitu hè 0; aduprà -1 per u modu solu icone."
-      },
-      {
-        "slot": "",
-        "title": "Unghjette",
-        "description": "Serie d'elementi <a11y-tab/>."
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "Disattivatu",
+        "description": "Disattivà tutte l'unghjette."
+      },
+      {
+        "property": "hidden",
+        "title": "Piattatu",
+        "description": "Piattà l'inseme d'unghjette."
+      },
       {
         "property": "id",
         "title": "ID unicu",

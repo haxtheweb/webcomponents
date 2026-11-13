@@ -11,11 +11,6 @@
         "description": "Slovo použité na vygenerovanie náhodnej postavy."
       },
       {
-        "property": "code",
-        "title": "Kód postavy",
-        "description": "Vložte uložený kód a znovu vytvorte túto postavu."
-      },
-      {
         "property": "hat",
         "title": "Klobúk",
         "description": "Štýl klobúka.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Maska",
-        "description": "Maska nosená na tvári alebo hlave.",
-        "options": {
-          "none": "Žiadna",
-          "lion": "Lev",
-          "plague": "Morový doktor",
-          "theater": "Divadelná",
-          "pumpkin": "Tekvica",
-          "ghost": "Duch",
-          "mummy": "Múmia",
-          "wrestler": "Zápasnícka maska",
-          "block-head": "Kockatá hlava",
-          "web": "Pavučinová maska",
-          "werewolf": "Tvár vlkolaka",
-          "shadow": "Tieňová tvár"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Make-up",
-        "description": "Maľovanie tváre alebo rúž.",
-        "options": {
-          "none": "Žiadny",
-          "red-lipstick": "Červený rúž",
-          "pink-lipstick": "Ružový rúž",
-          "berry-lipstick": "Bobuľový rúž",
-          "clown": "Klaunské líčenie",
-          "fangs": "Tesáky",
-          "skull": "Maľba lebky",
-          "zombie": "Maľba zombie",
-          "red-nose": "Červený nos",
-          "white-beard": "Biela brada",
-          "domino": "Maska hrdinu",
-          "carrot": "Mrkvový nos",
-          "bunny": "Zajačí nos",
-          "mustache": "Fúzy",
-          "monster": "Líčenie príšery",
-          "round-glasses": "Okrúhle okuliare"
-        }
-      },
-      {
         "property": "expression",
         "title": "Výraz",
         "description": "Výraz tváre.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Domáci miláčik",
+        "description": "Miláčik vedľa postavy.",
+        "options": {
+          "none": "Žiadny",
+          "cat": "Mačka",
+          "dog": "Pes",
+          "bunny": "Zajačik",
+          "goldfish": "Zlatá rybka",
+          "slime": "Sliz",
+          "squirrel": "Veverička",
+          "dragon": "Dráčik",
+          "parrot": "Papagáj",
+          "owl": "Sova",
+          "bat": "Netopier"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Kód postavy",
+        "description": "Vložte uložený kód a znovu vytvorte túto postavu."
+      },
+      {
+        "property": "mask",
+        "title": "Maska",
+        "description": "Maska nosená na tvári alebo hlave.",
+        "options": {
+          "none": "Žiadna",
+          "lion": "Lev",
+          "plague": "Morový doktor",
+          "theater": "Divadelná",
+          "pumpkin": "Tekvica",
+          "ghost": "Duch",
+          "mummy": "Múmia",
+          "wrestler": "Zápasnícka maska",
+          "block-head": "Kockatá hlava",
+          "web": "Pavučinová maska",
+          "werewolf": "Tvár vlkolaka",
+          "shadow": "Tieňová tvár"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Make-up",
+        "description": "Maľovanie tváre alebo rúž.",
+        "options": {
+          "none": "Žiadny",
+          "red-lipstick": "Červený rúž",
+          "pink-lipstick": "Ružový rúž",
+          "berry-lipstick": "Bobuľový rúž",
+          "clown": "Klaunské líčenie",
+          "fangs": "Tesáky",
+          "skull": "Maľba lebky",
+          "zombie": "Maľba zombie",
+          "red-nose": "Červený nos",
+          "white-beard": "Biela brada",
+          "domino": "Maska hrdinu",
+          "carrot": "Mrkvový nos",
+          "bunny": "Zajačí nos",
+          "mustache": "Fúzy",
+          "monster": "Líčenie príšery",
+          "round-glasses": "Okrúhle okuliare"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Text na zástave",
         "description": "Až 4 písmená zobrazené na zástave."
@@ -310,24 +330,6 @@
           "skates": "Korčule",
           "skateboard": "Skateboard",
           "hoverboard": "Levitačná doska"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Domáci miláčik",
-        "description": "Miláčik vedľa postavy.",
-        "options": {
-          "none": "Žiadny",
-          "cat": "Mačka",
-          "dog": "Pes",
-          "bunny": "Zajačik",
-          "goldfish": "Zlatá rybka",
-          "slime": "Sliz",
-          "squirrel": "Veverička",
-          "dragon": "Dráčik",
-          "parrot": "Papagáj",
-          "owl": "Sova",
-          "bat": "Netopier"
         }
       },
       {

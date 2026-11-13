@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Цел",
         "description": "Патека до изведбата на играта."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Ширина на платното",
+        "description": "CSS ширина на платното (на пример px или em)."
       },
+      {
+        "property": "height",
+        "title": "Висина на платното",
+        "description": "CSS висина на платното (на пример px или em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Метод на компресија",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Верзија на производот",
         "description": "Верзија на изданието."
-      },
-      {
-        "property": "width",
-        "title": "Ширина на платното",
-        "description": "CSS ширина на платното (на пример px или em)."
-      },
-      {
-        "property": "height",
-        "title": "Висина на платното",
-        "description": "CSS висина на платното (на пример px или em)."
       },
       {
         "property": "background",

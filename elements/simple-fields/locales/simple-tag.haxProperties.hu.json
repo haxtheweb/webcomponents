@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "Címke / tabletta",
+    "title": "Címke",
     "description": "Kompakt, tabletta alakú címke opcionális kiemelőszínnel, mégse gombbal vagy kapcsolóval."
   },
   "settings": {
@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Automatikus kiemelőszín",
         "description": "A kiemelőszín automatikus származtatása a címke szövegéből."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Mégse gomb",
-        "description": "Eltávolítás/mégse ikongomb megjelenítése a tablettában."
-      },
-      {
-        "property": "readonly",
-        "title": "Csak olvasható",
-        "description": "A mégse gomb elrejtése, hogy a tabletta csak megjelenítésre szolgáljon."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Kékesszürke",
           "grey": "Szürke"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Mégse gomb",
+        "description": "Eltávolítás/mégse ikongomb megjelenítése a tablettában."
+      },
+      {
+        "property": "readonly",
+        "title": "Csak olvasható",
+        "description": "A mégse gomb elrejtése, hogy a tabletta csak megjelenítésre szolgáljon."
       }
     ]
   }

@@ -26,11 +26,6 @@
         "description": "Irudiaren testu alternatiboa."
       },
       {
-        "property": "animated",
-        "title": "Animatua",
-        "description": "Aurrerapena lehen kargan animatzen den ala ez"
-      },
-      {
         "property": "complete",
         "title": "Osatuta",
         "description": "Osatutako balioen matrizea."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "Guztira",
         "description": "Elementu guztiak osatuta daudenean guztizkoa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "Animatua",
+        "description": "Aurrerapena lehen kargan animatzen den ala ez"
       },
       {
         "property": "startAngle",

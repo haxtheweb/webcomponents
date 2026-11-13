@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Sarkazmas",
-    "description": "Teksto pateikimas pašaipiai"
+    "description": "Tekstas kaitaliojamomis didžiosiomis ir mažosiomis raidėmis sarkastiškam tonui."
   },
   "settings": {
     "configure": [

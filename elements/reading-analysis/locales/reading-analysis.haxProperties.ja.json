@@ -38,21 +38,6 @@
         "slot": "",
         "title": "読み物",
         "description": "学習者が取り組む文章。見出し、段落、リスト、図など任意のHTML。"
-      },
-      {
-        "property": "gradingFormat",
-        "title": "採点形式",
-        "description": "OER Schema: この評価の採点形式（例: 点数、レター評価、パーセント、完了）。"
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "学習目標",
-        "description": "OER Schema: この評価に関連付けられた学習目標。"
-      },
-      {
-        "property": "forCourse",
-        "title": "コース",
-        "description": "OER Schema: この評価の対象となるコース。"
       }
     ],
     "advanced": [
@@ -70,6 +55,16 @@
         "property": "collapsed",
         "title": "折りたたんだ状態で開始",
         "description": "折りたたみ可能な場合、質問とその状態だけを表示する閉じた行として開始します。"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "採点形式",
+        "description": "OER Schema: この評価の採点形式（例: 点数、レター評価、パーセント、完了）。"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "学習目標",
+        "description": "OER Schema: この評価に関連付けられた学習目標。"
       }
     ],
     "developer": [
@@ -77,6 +72,11 @@
         "property": "quizName",
         "title": "クイズ名",
         "description": "xAPI環境でこの項目を識別するために渡されるクイズ名"
+      },
+      {
+        "property": "forCourse",
+        "title": "コース",
+        "description": "OER Schema: この評価の対象となるコース。"
       }
     ]
   }

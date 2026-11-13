@@ -11,11 +11,6 @@
         "description": "Neno linalotumika kuunda mhusika wa nasibu."
       },
       {
-        "property": "code",
-        "title": "Msimbo wa mhusika",
-        "description": "Bandika msimbo uliohifadhiwa ili kumuunda upya mhusika huyo."
-      },
-      {
         "property": "hat",
         "title": "Kofia",
         "description": "Mtindo wa kofia.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Kinyago",
-        "description": "Kinyago kinachovaliwa usoni au kichwani.",
-        "options": {
-          "none": "Hakuna",
-          "lion": "Simba",
-          "plague": "Daktari wa tauni",
-          "theater": "Maigizo",
-          "pumpkin": "Boga",
-          "ghost": "Mzimu",
-          "mummy": "Mumia",
-          "wrestler": "Kinyago cha mieleka",
-          "block-head": "Kichwa cha bloku",
-          "web": "Kinyago cha utando",
-          "werewolf": "Uso wa mbwamwitu-mtu",
-          "shadow": "Uso wa kivuli"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Vipodozi",
-        "description": "Rangi ya uso au lipstiki.",
-        "options": {
-          "none": "Hakuna",
-          "red-lipstick": "Lipstiki nyekundu",
-          "pink-lipstick": "Lipstiki ya waridi",
-          "berry-lipstick": "Lipstiki ya rangi ya beri",
-          "clown": "Rangi ya mcheshi",
-          "fangs": "Meno marefu ya vampaya",
-          "skull": "Rangi ya fuvu",
-          "zombie": "Rangi ya zombi",
-          "red-nose": "Pua nyekundu",
-          "white-beard": "Ndevu nyeupe",
-          "domino": "Kinyago cha shujaa",
-          "carrot": "Pua ya karoti",
-          "bunny": "Pua ya sungura",
-          "mustache": "Masharubu",
-          "monster": "Rangi ya uso ya zimwi",
-          "round-glasses": "Miwani ya duara"
-        }
-      },
-      {
         "property": "expression",
         "title": "Sura",
         "description": "Sura ya uso.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Kipenzi",
+        "description": "Kipenzi kando ya mhusika.",
+        "options": {
+          "none": "Hakuna",
+          "cat": "Paka",
+          "dog": "Mbwa",
+          "bunny": "Sungura",
+          "goldfish": "Samaki wa dhahabu",
+          "slime": "Ute",
+          "squirrel": "Kindi",
+          "dragon": "Joka mdogo",
+          "parrot": "Kasuku",
+          "owl": "Bundi",
+          "bat": "Popo"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Msimbo wa mhusika",
+        "description": "Bandika msimbo uliohifadhiwa ili kumuunda upya mhusika huyo."
+      },
+      {
+        "property": "mask",
+        "title": "Kinyago",
+        "description": "Kinyago kinachovaliwa usoni au kichwani.",
+        "options": {
+          "none": "Hakuna",
+          "lion": "Simba",
+          "plague": "Daktari wa tauni",
+          "theater": "Maigizo",
+          "pumpkin": "Boga",
+          "ghost": "Mzimu",
+          "mummy": "Mumia",
+          "wrestler": "Kinyago cha mieleka",
+          "block-head": "Kichwa cha bloku",
+          "web": "Kinyago cha utando",
+          "werewolf": "Uso wa mbwamwitu-mtu",
+          "shadow": "Uso wa kivuli"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Vipodozi",
+        "description": "Rangi ya uso au lipstiki.",
+        "options": {
+          "none": "Hakuna",
+          "red-lipstick": "Lipstiki nyekundu",
+          "pink-lipstick": "Lipstiki ya waridi",
+          "berry-lipstick": "Lipstiki ya rangi ya beri",
+          "clown": "Rangi ya mcheshi",
+          "fangs": "Meno marefu ya vampaya",
+          "skull": "Rangi ya fuvu",
+          "zombie": "Rangi ya zombi",
+          "red-nose": "Pua nyekundu",
+          "white-beard": "Ndevu nyeupe",
+          "domino": "Kinyago cha shujaa",
+          "carrot": "Pua ya karoti",
+          "bunny": "Pua ya sungura",
+          "mustache": "Masharubu",
+          "monster": "Rangi ya uso ya zimwi",
+          "round-glasses": "Miwani ya duara"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Maandishi ya bendera",
         "description": "Hadi herufi 4 zinazoonyeshwa kwenye bendera."
@@ -310,24 +330,6 @@
           "skates": "Skeita",
           "skateboard": "Ubao wa skeita",
           "hoverboard": "Ubao unaoelea"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Kipenzi",
-        "description": "Kipenzi kando ya mhusika.",
-        "options": {
-          "none": "Hakuna",
-          "cat": "Paka",
-          "dog": "Mbwa",
-          "bunny": "Sungura",
-          "goldfish": "Samaki wa dhahabu",
-          "slime": "Ute",
-          "squirrel": "Kindi",
-          "dragon": "Joka mdogo",
-          "parrot": "Kasuku",
-          "owl": "Bundi",
-          "bat": "Popo"
         }
       },
       {

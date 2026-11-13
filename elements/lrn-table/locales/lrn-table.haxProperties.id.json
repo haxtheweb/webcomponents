@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Tabel CSV",
-    "description": "Ini dapat membuat tabel dari file CSV di mana pun lokasinya."
+    "description": "Menampilkan berkas CSV sebagai tabel yang aksesibel."
   },
   "settings": {
     "configure": [

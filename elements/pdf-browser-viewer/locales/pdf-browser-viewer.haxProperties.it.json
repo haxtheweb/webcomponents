@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "Visualizzatore PDF del browser",
+    "title": "Visualizzatore PDF",
     "description": "Incorpora un file PDF in linea con layout a scheda e pulsante di download facoltativi."
   },
   "settings": {
@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Messaggio di mancato supporto",
-        "description": "Messaggio mostrato quando il browser non può visualizzare file PDF."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Messaggio del link di mancato supporto",
-        "description": "Testo del link quando il browser non può visualizzare file PDF."
-      },
-      {
         "property": "width",
         "title": "Larghezza",
         "description": "Larghezza del visualizzatore PDF."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Altezza",
         "description": "Altezza del visualizzatore PDF."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Messaggio di mancato supporto",
+        "description": "Messaggio mostrato quando il browser non può visualizzare file PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Messaggio del link di mancato supporto",
+        "description": "Testo del link quando il browser non può visualizzare file PDF."
       }
     ]
   }

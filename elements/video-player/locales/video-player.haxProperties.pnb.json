@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "پوسٹر تصویر",
         "description": "پوسٹر تصویر دا URL۔"
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "ٹیکسٹ ٹریک",
         "description": "ویڈیو لئی کیپشن، سب ٹائٹل، تفصیلاں تے ہور ٹیکسٹ ٹریک۔"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "شروع ویلا",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "آڈیو تفصیل ٹریک",
         "description": "آڈیو تفصیل ٹریک (MP3 فائل) دا URL جیہڑا بصری حصیاں دا بیان کردا اے۔"
+      },
+      {
+        "property": "accentColor",
+        "title": "نمایاں رنگ",
+        "description": "(پرانا) پلیئر لئی ایکسنٹ رنگ چݨو۔"
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "بولی",
         "description": "میڈیا دی بولی۔"
-      },
-      {
-        "property": "accentColor",
-        "title": "نمایاں رنگ",
-        "description": "(پرانا) پلیئر لئی ایکسنٹ رنگ چݨو۔"
       }
     ]
   }

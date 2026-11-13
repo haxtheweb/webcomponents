@@ -4,7 +4,7 @@
     "description": "Kvikur kubbur sem sýnir undirsíður núverandi síðu"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "Kvik aðferð",
@@ -14,7 +14,9 @@
           "parent": "Undirsíður yfirsíðu",
           "ancestor": "Allar undirsíður frá efsta forföður"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "Upphafsstig"

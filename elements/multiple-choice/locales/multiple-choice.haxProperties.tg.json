@@ -21,30 +21,8 @@
         "description": "Танҳо як ҷавобро иҷозат диҳед."
       },
       {
-        "property": "gradingFormat",
-        "title": "Формати баҳодиҳӣ",
-        "description": "OER Schema: формати баҳодиҳӣ барои ин арзёбӣ (масалан, хол, ҳарф, фоиз, иҷро)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Ҳадафи таълимӣ",
-        "description": "OER Schema: ҳадафи таълимӣ, ки бо ин арзёбӣ алоқаманд аст."
-      },
-      {
-        "property": "forCourse",
-        "title": "Курс",
-        "description": "OER Schema: курсе, ки ин арзёбӣ барои он пешбинӣ шудааст."
-      },
-      {
         "property": "answers",
         "title": "Ҷавобҳо"
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Номи викторина",
-        "description": "Номи викторина, ки барои муайянкунии xAPI дар системаҳои таҳлилӣ истифода мешавад."
       }
     ],
     "advanced": [
@@ -57,6 +35,28 @@
         "property": "collapsed",
         "title": "Печонидашуда оғоз кунед",
         "description": "Ҳангоми печондашаванда будан, ҳамчун сатри пӯшида оғоз кунед, ки танҳо савол ва вазъияти онро нишон медиҳад."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Формати баҳодиҳӣ",
+        "description": "OER Schema: формати баҳодиҳӣ барои ин арзёбӣ (масалан, хол, ҳарф, фоиз, иҷро)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Ҳадафи таълимӣ",
+        "description": "OER Schema: ҳадафи таълимӣ, ки бо ин арзёбӣ алоқаманд аст."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Номи викторина",
+        "description": "Номи викторина, ки барои муайянкунии xAPI дар системаҳои таҳлилӣ истифода мешавад."
+      },
+      {
+        "property": "forCourse",
+        "title": "Курс",
+        "description": "OER Schema: курсе, ки ин арзёбӣ барои он пешбинӣ шудааст."
       }
     ]
   }

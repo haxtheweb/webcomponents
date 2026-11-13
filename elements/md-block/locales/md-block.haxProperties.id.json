@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "Blok konten markdown, langsung atau dimuat dari jarak jauh"
+    "description": "Konten Markdown, ditulis langsung atau dimuat dari berkas."
   },
   "settings": {
     "configure": [

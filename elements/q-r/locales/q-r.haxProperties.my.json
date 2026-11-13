@@ -14,16 +14,6 @@
         "property": "title",
         "title": "အစားထိုး ခေါင်းစဉ်",
         "description": "QR ကုဒ် ရင်းမြစ်နှင့် ချိတ်ဆက်ထားသော အစားထိုး ခေါင်းစဉ်။"
-      },
-      {
-        "property": "modulesize",
-        "title": "အရွယ်အစား",
-        "description": "QR ကုဒ်၏ အရွယ်အစား။"
-      },
-      {
-        "property": "margin",
-        "title": "အနားသတ်",
-        "description": "ကုဒ်ပတ်လည်ရှိ နေရာလွတ်။"
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "အရွယ်အစား",
+        "description": "QR ကုဒ်၏ အရွယ်အစား။"
+      },
+      {
+        "property": "margin",
+        "title": "အနားသတ်",
+        "description": "ကုဒ်ပတ်လည်ရှိ နေရာလွတ်။"
       }
     ]
   }

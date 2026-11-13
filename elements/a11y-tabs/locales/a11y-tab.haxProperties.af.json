@@ -10,10 +10,6 @@
         "title": "Oortjie-ikoon"
       },
       {
-        "property": "disabled",
-        "title": "Gedeaktiveer"
-      },
-      {
         "property": "label",
         "title": "Oortjie-etiket"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "Unieke ID"
-      },
-      {
         "property": "flag",
         "title": "Opsionele vlagteks"
       },
       {
         "property": "flagIcon",
         "title": "Opsionele vlagikoon"
+      },
+      {
+        "property": "disabled",
+        "title": "Gedeaktiveer"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "Unieke ID"
       }
     ]
   }

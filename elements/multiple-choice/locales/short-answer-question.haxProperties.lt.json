@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Trumpo atsakymo klausimas",
-    "description": "Naudotojas atsako į paprastą klausimą"
+    "description": "Klausimas, į kurį besimokantysis atsako vienu ar dviem sakiniais."
   },
   "settings": {
     "configure": [

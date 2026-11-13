@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Извор слике",
         "description": "Датотека слике за картицу. Има предност над кључном речи слике."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Кључна реч слике",
+        "description": "Кључна реч за насумичну слику. Извор слике има предност."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Циљ учења",
         "description": "OER Schema: ID или URL циља учења који ова вежба подржава."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Кључна реч слике",
-        "description": "Кључна реч за насумичну слику. Извор слике има предност."
       }
     ]
   }

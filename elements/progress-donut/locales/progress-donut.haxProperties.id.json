@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Donat Kemajuan",
-    "description": "Donat progres"
+    "description": "Bagan donat yang menunjukkan kemajuan menuju total."
   },
   "settings": {
     "configure": [
@@ -26,11 +26,6 @@
         "description": "Teks alt untuk gambar."
       },
       {
-        "property": "animated",
-        "title": "Animasi",
-        "description": "Apakah kemajuan dianimasikan saat pertama kali dimuat"
-      },
-      {
         "property": "complete",
         "title": "Selesai",
         "description": "Larik nilai yang telah selesai."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "Total",
         "description": "Total saat semua item selesai."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "Animasi",
+        "description": "Apakah kemajuan dianimasikan saat pertama kali dimuat"
       },
       {
         "property": "startAngle",

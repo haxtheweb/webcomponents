@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "Container pentru playere Spotify încorporate."
+    "description": "Încorporați o piesă, un album sau un playlist Spotify."
   },
   "settings": {
     "configure": [

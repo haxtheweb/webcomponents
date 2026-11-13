@@ -1,6 +1,13 @@
 import { fixture, expect, html, aTimeout } from "@open-wc/testing";
 import "../media-image.js";
 
+// HAX schemas ship as JSON next to the element; read one whether the class
+// returns the object or the URL of its file
+const haxSchema = async (C) => {
+  const hp = C.haxProperties;
+  return typeof hp === "string" ? (await fetch(hp)).json() : hp;
+};
+
 describe("media-image behavior", () => {
   describe("defaults", () => {
     it("starts with documented default property values", async () => {
@@ -164,7 +171,7 @@ describe("media-image behavior", () => {
       );
       await el.updateComplete;
       const label = el.shadowRoot.querySelector("figure-label");
-      const haxProps = label.constructor.haxProperties;
+      const haxProps = await haxSchema(label.constructor);
       expect(haxProps.gizmo.title).to.equal("Figure label");
       expect(haxProps.settings.configure).to.have.lengthOf(2);
     });
@@ -541,10 +548,10 @@ describe("media-image behavior", () => {
   });
 
   describe("hax schema", () => {
-    it("exposes the full HAX property schema", () => {
-      const haxProps =
-        globalThis.document.createElement("media-image").constructor
-          .haxProperties;
+    it("exposes the full HAX property schema", async () => {
+      const haxProps = await haxSchema(
+        globalThis.document.createElement("media-image").constructor,
+      );
       expect(haxProps.canScale).to.be.true;
       expect(haxProps.canEditSource).to.be.true;
       expect(haxProps.gizmo.title).to.equal("Enhanced image");

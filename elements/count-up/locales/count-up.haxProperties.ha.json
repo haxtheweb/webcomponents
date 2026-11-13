@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Rubutun baya",
         "description": "Rubutun da ake nunawa bayan lambar (misali '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Ramin gaba",
-        "description": "Abun ciki na zaɓi a gaban lambar."
-      },
-      {
-        "slot": "suffix",
-        "title": "Ramin baya",
-        "description": "Abun ciki na zaɓi bayan lambar."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Babu sassauci",
         "description": "Kashe sassauci domin ƙidayar ta tafi daidai."
+      },
+      {
+        "slot": "prefix",
+        "title": "Ramin gaba",
+        "description": "Abun ciki na zaɓi a gaban lambar."
+      },
+      {
+        "slot": "suffix",
+        "title": "Ramin baya",
+        "description": "Abun ciki na zaɓi bayan lambar."
       }
     ]
   }

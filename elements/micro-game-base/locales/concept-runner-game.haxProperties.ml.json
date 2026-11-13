@@ -89,7 +89,9 @@
         "property": "gameTitle",
         "title": "ഗെയിമിന്റെ പേര്",
         "description": "പുരോഗതി ഇവന്റുകളിലും OER Schema മാർക്കപ്പിലും ഈ ഗെയിമിന് പേര് നൽകുന്നു."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "ഗെയിം ഐഡി",

@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "متقابل",
         "description": "کارن ته د درجه بندي د ټاکلو اجازه ورکړئ."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "د روبریک پیمانې حالت",

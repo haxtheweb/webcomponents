@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "તીર નહીં",
         "description": "બટનનું તીર છુપાવો."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "લિંક: લક્ષ્ય",
@@ -54,7 +52,9 @@
           "_top": "ટોચની વિન્ડો - _top",
           "_parent": "પેરેન્ટ વિન્ડો - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "લિંક: rel",

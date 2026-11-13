@@ -4,22 +4,23 @@
     "description": "Une playlist qui présente des lecteurs vidéo et audio dans une disposition lecteur + barre latérale."
   },
   "settings": {
-    "configure": [
+    "configure": [],
+    "advanced": [
       {
         "property": "activeIndex",
         "title": "Index actif",
         "description": "Index de l’élément actif de départ."
-      },
-      {
-        "property": "forCourse",
-        "title": "Cours",
-        "description": "Le cours auquel cette playlist est destinée (identifiant ou URL du cours)."
       }
     ],
     "developer": [
       {
         "title": "Médias",
         "description": "Les vidéos et l'audio de la playlist. Non modifié ici : le plan de la page s'en sert pour savoir quels blocs peuvent y être déposés."
+      },
+      {
+        "property": "forCourse",
+        "title": "Cours",
+        "description": "Le cours auquel cette playlist est destinée (identifiant ou URL du cours)."
       }
     ]
   }

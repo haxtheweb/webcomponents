@@ -46,6 +46,16 @@
         "property": "accentColor",
         "title": "نمايان رنگ",
         "description": "پليئر لاءِ ايڪسينٽ رنگ چونڊيو."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "ٽائيم اسٽيمپ لڪايو",
+        "description": "ٽرانسڪرپٽ تي ٽائيم اسٽيمپ لڪايو."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "ٽرانسڪرپٽ لڪايو",
+        "description": "ڊفالٽ طور ٽرانسڪرپٽ لڪايو."
       }
     ],
     "developer": [
@@ -72,16 +82,6 @@
         "property": "disableInteractive",
         "title": "انٽرايڪٽو بند ڪريو",
         "description": "انٽرايڪٽو موڊ بند ڪريو جيڪو ٽرانسڪرپٽ کي ڪلڪ لائق بڻائي ٿو."
-      },
-      {
-        "property": "hideTimestamps",
-        "title": "ٽائيم اسٽيمپ لڪايو",
-        "description": "ٽرانسڪرپٽ تي ٽائيم اسٽيمپ لڪايو."
-      },
-      {
-        "property": "hideTranscript",
-        "title": "ٽرانسڪرپٽ لڪايو",
-        "description": "ڊفالٽ طور ٽرانسڪرپٽ لڪايو."
       },
       {
         "property": "lang",

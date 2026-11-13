@@ -4,7 +4,7 @@
     "description": "Блоки динамикӣ барои нишон додани фаръиҳои саҳифаи ҷорӣ"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "Усули динамикӣ",
@@ -14,7 +14,9 @@
           "parent": "Фаръиҳои волидайн",
           "ancestor": "Ҳамаи фаръиҳо аз аҷдоди болотарин"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "Сатҳи оғоз"

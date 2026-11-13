@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "Grupo expansível",
-    "description": "Um grupo de elementos expansíveis e recolhíveis."
+    "title": "Grupo recolhível",
+    "description": "Um grupo de contêineres recolhíveis."
   },
   "settings": {
     "configure": [

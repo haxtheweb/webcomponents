@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "Pautan HAX",
-    "description": "Pautan ke sumber tertentu dalam laman yang sedang anda usahakan."
+    "title": "Pautan halaman",
+    "description": "Pautan ke halaman dalam laman yang sedang anda usahakan."
   },
   "settings": {
     "configure": [

@@ -14,28 +14,6 @@
         "property": "statement",
         "title": "Jumla",
         "description": "Jumlar da za a mayar da ita aikin alamta kalmomi."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "Tsarin maki",
-        "description": "OER Schema: tsarin maki na wannan tantancewa (misali maki, harafi, kashi, kammalawa)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Manufar koyo",
-        "description": "OER Schema: manufar koyo da ke da alaƙa da wannan tantancewa."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kwas",
-        "description": "OER Schema: kwas ɗin da aka yi wannan tantancewa domin sa."
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Sunan jarrabawa",
-        "description": "Sunan jarrabawa da ake turawa don amfani a muhallin xAPI don gano wannan abu"
       }
     ],
     "advanced": [
@@ -46,6 +24,28 @@
       {
         "title": "Fara a ƙunshe",
         "description": "Idan mai ƙunsuwa ne, fara a matsayin rufaffen jere da ke nuna tambaya da matsayinta kawai."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Tsarin maki",
+        "description": "OER Schema: tsarin maki na wannan tantancewa (misali maki, harafi, kashi, kammalawa)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Manufar koyo",
+        "description": "OER Schema: manufar koyo da ke da alaƙa da wannan tantancewa."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Sunan jarrabawa",
+        "description": "Sunan jarrabawa da ake turawa don amfani a muhallin xAPI don gano wannan abu"
+      },
+      {
+        "property": "forCourse",
+        "title": "Kwas",
+        "description": "OER Schema: kwas ɗin da aka yi wannan tantancewa domin sa."
       }
     ]
   }

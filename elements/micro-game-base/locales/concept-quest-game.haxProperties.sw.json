@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Mchezo wa safari ya dhana",
-    "description": "Ulimwengu wazi wa kuzurura. Dhana zinakupata na kukuuliza swali. Jibu kwa usahihi ili kumshinda mmoja na kufungua nyumba yake. Muhtasari unaonyesha majaribio na cha kukagua."
+    "description": "Mchezo wa ramani wazi ambapo dhana zinauliza maswali na majibu sahihi yanafungua ramani."
   },
   "settings": {
     "configure": [
@@ -91,7 +91,9 @@
         "property": "gameTitle",
         "title": "Jina la mchezo",
         "description": "Hupa mchezo huu jina katika matukio ya maendeleo na alama za OER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Kitambulisho cha mchezo",

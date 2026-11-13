@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Ինտերակտիվ",
         "description": "Թույլատրել օգտատիրոջը սահմանել գնահատականը։"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Գնահատման սանդղակի ռեժիմ",

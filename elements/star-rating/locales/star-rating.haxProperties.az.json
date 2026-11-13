@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "İnteraktiv",
         "description": "İstifadəçiyə reytinq təyin etməyə icazə ver."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Rubrika şkalası rejimi",

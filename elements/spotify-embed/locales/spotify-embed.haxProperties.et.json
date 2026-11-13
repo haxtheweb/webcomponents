@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "Ümbris Spotify mängija manustamiseks."
+    "description": "Manustage Spotify lugu, album või esitusloend."
   },
   "settings": {
     "configure": [

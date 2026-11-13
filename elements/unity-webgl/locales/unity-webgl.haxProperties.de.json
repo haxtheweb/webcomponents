@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Ziel",
         "description": "Pfad zum Build des Spiels."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Canvas-Breite",
+        "description": "CSS-Breite des Canvas (zum Beispiel px oder em)."
       },
+      {
+        "property": "height",
+        "title": "Canvas-Höhe",
+        "description": "CSS-Höhe des Canvas (zum Beispiel px oder em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Komprimierungsmethode",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Produktversion",
         "description": "Release-Version."
-      },
-      {
-        "property": "width",
-        "title": "Canvas-Breite",
-        "description": "CSS-Breite des Canvas (zum Beispiel px oder em)."
-      },
-      {
-        "property": "height",
-        "title": "Canvas-Höhe",
-        "description": "CSS-Höhe des Canvas (zum Beispiel px oder em)."
       },
       {
         "property": "background",

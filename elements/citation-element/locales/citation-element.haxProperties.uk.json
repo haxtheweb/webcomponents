@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Джерело цитати",
-    "description": "Елемент цитування з трьома режимами показу."
+    "description": "Зазначте джерело: назву, автора, ліцензію та посилання."
   },
   "settings": {
     "configure": [
@@ -21,15 +21,6 @@
         "description": "Дата звернення до джерела."
       },
       {
-        "property": "scope",
-        "title": "Область",
-        "description": "Область елемента для цитування.",
-        "options": {
-          "sibling": "Сусідній елемент",
-          "parent": "Батьківський елемент"
-        }
-      },
-      {
         "property": "license",
         "title": "Ліцензія",
         "description": "Ліцензія цитованої праці."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Автор",
         "description": "Автор або власник цитованої праці."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Область",
+        "description": "Область елемента для цитування.",
+        "options": {
+          "sibling": "Сусідній елемент",
+          "parent": "Батьківський елемент"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "Тип OER Schema",

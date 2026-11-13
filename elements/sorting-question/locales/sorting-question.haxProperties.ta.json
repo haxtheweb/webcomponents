@@ -11,31 +11,9 @@
         "description": "கேள்வித் தலைப்பு."
       },
       {
-        "property": "gradingFormat",
-        "title": "மதிப்பெண் வடிவம்",
-        "description": "OER Schema: இந்த மதிப்பீட்டிற்கான மதிப்பெண் வடிவம் (எ.கா. புள்ளிகள், எழுத்துத் தரம், சதவீதம், நிறைவு)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "கற்றல் நோக்கம்",
-        "description": "OER Schema: இந்த மதிப்பீட்டுடன் தொடர்புடைய கற்றல் நோக்கம்."
-      },
-      {
-        "property": "forCourse",
-        "title": "பாடநெறி",
-        "description": "OER Schema: இந்த மதிப்பீடு நோக்கமாகக் கொண்ட பாடநெறி."
-      },
-      {
         "property": "answers",
         "title": "பதில்கள்",
         "description": "பதில்களின் வரிசையே சரியான வரிசையை வரையறுக்கிறது."
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "வினாடி வினாவின் பெயர்",
-        "description": "பகுப்பாய்வு அமைப்புகளில் xAPI அடையாளத்திற்குப் பயன்படும் வினாடி வினாப் பெயர்."
       }
     ],
     "advanced": [
@@ -48,6 +26,28 @@
         "property": "collapsed",
         "title": "மடித்த நிலையில் தொடங்கு",
         "description": "மடிக்கக்கூடியதாக இருக்கும்போது, கேள்வியையும் அதன் நிலையையும் மட்டும் காட்டும் மூடிய வரிசையாகத் தொடங்கவும்."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "மதிப்பெண் வடிவம்",
+        "description": "OER Schema: இந்த மதிப்பீட்டிற்கான மதிப்பெண் வடிவம் (எ.கா. புள்ளிகள், எழுத்துத் தரம், சதவீதம், நிறைவு)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "கற்றல் நோக்கம்",
+        "description": "OER Schema: இந்த மதிப்பீட்டுடன் தொடர்புடைய கற்றல் நோக்கம்."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "வினாடி வினாவின் பெயர்",
+        "description": "பகுப்பாய்வு அமைப்புகளில் xAPI அடையாளத்திற்குப் பயன்படும் வினாடி வினாப் பெயர்."
+      },
+      {
+        "property": "forCourse",
+        "title": "பாடநெறி",
+        "description": "OER Schema: இந்த மதிப்பீடு நோக்கமாகக் கொண்ட பாடநெறி."
       }
     ]
   }

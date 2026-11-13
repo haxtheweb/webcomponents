@@ -9,7 +9,9 @@
         "slot": "",
         "title": "Ngā whakahua",
         "description": "Ngā tūemi whakahua i tēnei rārangi pukapuka"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "Akoranga",

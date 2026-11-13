@@ -9,7 +9,9 @@
         "property": "source",
         "title": "Ištekliaus URL",
         "description": "Ištekliaus URL."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Aukštis",

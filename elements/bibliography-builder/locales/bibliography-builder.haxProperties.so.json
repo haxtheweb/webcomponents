@@ -9,7 +9,9 @@
         "slot": "",
         "title": "Xigashooyin",
         "description": "Xigashooyinka ku jira liiskan tixraacyada"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "Koorso",

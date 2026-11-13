@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "CSV টেবিল",
-    "description": "CSV ফাইল যেখানেই থাকুক, এটি তা থেকে টেবিল তৈরি করতে পারে।"
+    "description": "একটি CSV ফাইলকে প্রবেশযোগ্য টেবিল হিসেবে দেখায়।"
   },
   "settings": {
     "configure": [

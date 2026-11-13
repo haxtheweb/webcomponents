@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "Omslag för inbäddade Spotify-spelare."
+    "description": "Bädda in en låt, ett album eller en spellista från Spotify."
   },
   "settings": {
     "configure": [

@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Iyasebenzisana",
         "description": "Vumela umsebenzisi ukuba asete ulinganiselo."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Imo yeSikali seRubrikhi",

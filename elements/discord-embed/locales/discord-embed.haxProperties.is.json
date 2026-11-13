@@ -9,7 +9,9 @@
         "property": "source",
         "title": "URL auðlindar",
         "description": "URL auðlindar."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Hæð",

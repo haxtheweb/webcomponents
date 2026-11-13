@@ -11,6 +11,13 @@
         "description": "De URL van dit AR-bestand."
       },
       {
+        "property": "skyColor",
+        "title": "Kleur van de lucht",
+        "description": "Kies de kleur van de lucht in de scène."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "X-positie van het element in AR."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "Z-positie van het element in AR."
-      },
-      {
-        "property": "skyColor",
-        "title": "Kleur van de lucht",
-        "description": "Kies de kleur van de lucht in de scène."
       }
     ]
   }

@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "ફિલ્ટરની મંજૂરી આપો",
         "description": "કૉલમ મૂલ્યો પ્રમાણે ફિલ્ટર કરવાની મંજૂરી આપો."
-      },
-      {
-        "property": "numericStyles",
-        "title": "આંકડાકીય શૈલી",
-        "description": "આંકડાકીય કૉલમ્સ પર આંકડાકીય શૈલી લાગુ કરો."
-      },
-      {
-        "property": "responsive",
-        "title": "રિસ્પોન્સિવ",
-        "description": "નાની સ્ક્રીન પર કોષ્ટકનું લેઆઉટ ગોઠવો."
-      },
-      {
-        "property": "rubricMode",
-        "title": "રૂબ્રિક મોડ",
-        "description": "આ કોષ્ટકને OER Schema Rubric તરીકે ગણો જેથી Rubric, RubricScale, RubricCriterion અને RubricLevel મેટાડેટા ઉત્પન્ન થાય."
-      },
-      {
-        "property": "rubricType",
-        "title": "રૂબ્રિક પ્રકાર",
-        "description": "oer:rubricType તરીકે ઉત્પન્ન થતી રૂબ્રિક શૈલી (ફક્ત રૂબ્રિક મોડ ચાલુ હોય ત્યારે જ અર્થપૂર્ણ).",
-        "options": {
-          "": "(કંઈ નહીં)",
-          "analytic": "વિશ્લેષણાત્મક",
-          "holistic": "સર્વગ્રાહી",
-          "single-point": "એક-બિંદુ",
-          "checklist": "ચેકલિસ્ટ"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "પ્રિન્ટ બટન",
         "description": "ફક્ત કોષ્ટક પ્રિન્ટ કરવા માટે બટન ઉમેરો."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "આંકડાકીય શૈલી",
+        "description": "આંકડાકીય કૉલમ્સ પર આંકડાકીય શૈલી લાગુ કરો."
+      },
+      {
+        "property": "responsive",
+        "title": "રિસ્પોન્સિવ",
+        "description": "નાની સ્ક્રીન પર કોષ્ટકનું લેઆઉટ ગોઠવો."
+      },
+      {
+        "property": "rubricMode",
+        "title": "રૂબ્રિક મોડ",
+        "description": "આ કોષ્ટકને OER Schema Rubric તરીકે ગણો જેથી Rubric, RubricScale, RubricCriterion અને RubricLevel મેટાડેટા ઉત્પન્ન થાય."
+      },
+      {
+        "property": "rubricType",
+        "title": "રૂબ્રિક પ્રકાર",
+        "description": "oer:rubricType તરીકે ઉત્પન્ન થતી રૂબ્રિક શૈલી (ફક્ત રૂબ્રિક મોડ ચાલુ હોય ત્યારે જ અર્થપૂર્ણ).",
+        "options": {
+          "": "(કંઈ નહીં)",
+          "analytic": "વિશ્લેષણાત્મક",
+          "holistic": "સર્વગ્રાહી",
+          "single-point": "એક-બિંદુ",
+          "checklist": "ચેકલિસ્ટ"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "CSV ડેટા",
         "description": "અપલોડ કરેલી CSV ફાઇલમાંથી કોષ્ટક બનાવો."
       }
-    ]
+    ],
+    "developer": []
   }
 }

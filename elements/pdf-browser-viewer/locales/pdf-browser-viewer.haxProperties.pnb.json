@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "سپورٹ نہ ہوݨ دا پیغام",
-        "description": "جدوں براؤزر PDF فائلاں نہ وکھا سکے تاں پیغام۔"
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "سپورٹ نہ ہوݨ دا لنک پیغام",
-        "description": "جدوں براؤزر PDF فائلاں نہ وکھا سکے تاں لنک دا متن۔"
-      },
-      {
         "property": "width",
         "title": "چوڑائی",
         "description": "PDF ویور دی چوڑائی۔"
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "اُچائی",
         "description": "PDF ویور دی اُچائی۔"
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "سپورٹ نہ ہوݨ دا پیغام",
+        "description": "جدوں براؤزر PDF فائلاں نہ وکھا سکے تاں پیغام۔"
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "سپورٹ نہ ہوݨ دا لنک پیغام",
+        "description": "جدوں براؤزر PDF فائلاں نہ وکھا سکے تاں لنک دا متن۔"
       }
     ]
   }

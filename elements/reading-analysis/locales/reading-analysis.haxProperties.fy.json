@@ -38,21 +38,6 @@
         "slot": "",
         "title": "Tekst",
         "description": "De tekst dêr't learlingen yn wurkje. Elke HTML: koppen, alinea's, listen en figueren."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "Beoardielingsformaat",
-        "description": "OER Schema: beoardielingsformaat foar dizze toets (bgl. punten, letter, persintaazje, foltôging)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Leardoel",
-        "description": "OER Schema: leardoel dat by dizze toets heart."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kursus",
-        "description": "OER Schema: kursus dêr't dizze toets foar bedoeld is."
       }
     ],
     "advanced": [
@@ -70,6 +55,16 @@
         "property": "collapsed",
         "title": "Ynklapt starte",
         "description": "As ynklapber, begjint it as in sletten rige dy't allinne de fraach en de status toant."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Beoardielingsformaat",
+        "description": "OER Schema: beoardielingsformaat foar dizze toets (bgl. punten, letter, persintaazje, foltôging)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Leardoel",
+        "description": "OER Schema: leardoel dat by dizze toets heart."
       }
     ],
     "developer": [
@@ -77,6 +72,11 @@
         "property": "quizName",
         "title": "Namme fan de kwis",
         "description": "Kwisnamme dy't trochjûn wurdt foar identifikaasje fan dit item yn xAPI-basearre omjouwings"
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursus",
+        "description": "OER Schema: kursus dêr't dizze toets foar bedoeld is."
       }
     ]
   }

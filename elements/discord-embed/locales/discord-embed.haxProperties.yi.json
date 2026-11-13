@@ -9,7 +9,9 @@
         "property": "source",
         "title": "רעסורס־URL",
         "description": "רעסורס־URL."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "הייך",

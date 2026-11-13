@@ -1,10 +1,10 @@
 {
   "gizmo": {
-    "title": "HAXcms: gyermekblokk",
-    "description": "Az aktuális oldal gyermekeit megjelenítő dinamikus blokk"
+    "title": "Aloldalak",
+    "description": "Felsorolja az aktuális oldal aloldalait."
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "Dinamikus módszer",
@@ -14,7 +14,9 @@
           "parent": "A szülő gyermekei",
           "ancestor": "A legfelső őstől számított összes gyermek"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "Kezdőszint"

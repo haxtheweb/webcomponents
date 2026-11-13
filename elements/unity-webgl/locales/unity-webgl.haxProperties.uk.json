@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Ціль",
         "description": "Шлях до збірки гри."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Ширина полотна",
+        "description": "Ширина полотна в CSS (напр. px або em)."
       },
+      {
+        "property": "height",
+        "title": "Висота полотна",
+        "description": "Висота полотна в CSS (напр. px або em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Метод стиснення",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Версія продукту",
         "description": "Версія випуску."
-      },
-      {
-        "property": "width",
-        "title": "Ширина полотна",
-        "description": "Ширина полотна в CSS (напр. px або em)."
-      },
-      {
-        "property": "height",
-        "title": "Висота полотна",
-        "description": "Висота полотна в CSS (напр. px або em)."
       },
       {
         "property": "background",

@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Boð um, at tað ikki er stuðlað",
-        "description": "Boð, tá kagin ikki kann vísa PDF-fílur."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Leinkjuboð um, at tað ikki er stuðlað",
-        "description": "Leinkjutekstur, tá kagin ikki kann vísa PDF-fílur."
-      },
-      {
         "property": "width",
         "title": "Breidd",
         "description": "Breidd á PDF-vísaranum."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Hædd",
         "description": "Hædd á PDF-vísaranum."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Boð um, at tað ikki er stuðlað",
+        "description": "Boð, tá kagin ikki kann vísa PDF-fílur."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Leinkjuboð um, at tað ikki er stuðlað",
+        "description": "Leinkjutekstur, tá kagin ikki kann vísa PDF-fílur."
       }
     ]
   }

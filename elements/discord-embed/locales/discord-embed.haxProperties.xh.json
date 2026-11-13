@@ -9,7 +9,9 @@
         "property": "source",
         "title": "I-URL yesixhobo",
         "description": "I-URL yesixhobo."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Ubude",

@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "ಬೆಂಬಲಿತವಲ್ಲ ಸಂದೇಶ",
-        "description": "ಬ್ರೌಸರ್ PDF ಫೈಲ್‌ಗಳನ್ನು ಪ್ರದರ್ಶಿಸಲು ಸಾಧ್ಯವಾಗದಿದ್ದಾಗ ಸಂದೇಶ."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "ಬೆಂಬಲಿತವಲ್ಲ ಲಿಂಕ್ ಸಂದೇಶ",
-        "description": "ಬ್ರೌಸರ್ PDF ಫೈಲ್‌ಗಳನ್ನು ಪ್ರದರ್ಶಿಸಲು ಸಾಧ್ಯವಾಗದಿದ್ದಾಗ ಲಿಂಕ್ ಪಠ್ಯ."
-      },
-      {
         "property": "width",
         "title": "ಅಗಲ",
         "description": "PDF ವೀಕ್ಷಕದ ಅಗಲ."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "ಎತ್ತರ",
         "description": "PDF ವೀಕ್ಷಕದ ಎತ್ತರ."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "ಬೆಂಬಲಿತವಲ್ಲ ಸಂದೇಶ",
+        "description": "ಬ್ರೌಸರ್ PDF ಫೈಲ್‌ಗಳನ್ನು ಪ್ರದರ್ಶಿಸಲು ಸಾಧ್ಯವಾಗದಿದ್ದಾಗ ಸಂದೇಶ."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "ಬೆಂಬಲಿತವಲ್ಲ ಲಿಂಕ್ ಸಂದೇಶ",
+        "description": "ಬ್ರೌಸರ್ PDF ಫೈಲ್‌ಗಳನ್ನು ಪ್ರದರ್ಶಿಸಲು ಸಾಧ್ಯವಾಗದಿದ್ದಾಗ ಲಿಂಕ್ ಪಠ್ಯ."
       }
     ]
   }

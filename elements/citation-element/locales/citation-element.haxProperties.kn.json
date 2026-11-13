@@ -21,15 +21,6 @@
         "description": "ಮೂಲವನ್ನು ಪ್ರವೇಶಿಸಿದ ದಿನಾಂಕ."
       },
       {
-        "property": "scope",
-        "title": "ವ್ಯಾಪ್ತಿ",
-        "description": "ಉಲ್ಲೇಖಿಸಬೇಕಾದ ಘಟಕದ ವ್ಯಾಪ್ತಿ.",
-        "options": {
-          "sibling": "ಪಕ್ಕದ ಘಟಕ",
-          "parent": "ಮೂಲ ಘಟಕ"
-        }
-      },
-      {
         "property": "license",
         "title": "ಪರವಾನಗಿ",
         "description": "ಉಲ್ಲೇಖಿಸಿದ ಕೃತಿಯ ಪರವಾನಗಿ."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "ರಚನೆಕಾರ",
         "description": "ಉಲ್ಲೇಖಿಸಿದ ಕೃತಿಯ ರಚನೆಕಾರ ಅಥವಾ ಮಾಲೀಕ."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "ವ್ಯಾಪ್ತಿ",
+        "description": "ಉಲ್ಲೇಖಿಸಬೇಕಾದ ಘಟಕದ ವ್ಯಾಪ್ತಿ.",
+        "options": {
+          "sibling": "ಪಕ್ಕದ ಘಟಕ",
+          "parent": "ಮೂಲ ಘಟಕ"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "OER Schema ಪ್ರಕಾರ",

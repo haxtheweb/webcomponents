@@ -11,6 +11,13 @@
         "description": "URL-ka faylkan AR."
       },
       {
+        "property": "skyColor",
+        "title": "Midabka cirka",
+        "description": "Dooro midabka cirka ee muuqaalka."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "Booska X ee walaxda gudaha AR."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "Booska Z ee walaxda gudaha AR."
-      },
-      {
-        "property": "skyColor",
-        "title": "Midabka cirka",
-        "description": "Dooro midabka cirka ee muuqaalka."
       }
     ]
   }

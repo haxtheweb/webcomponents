@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Wikipedia",
-    "description": "Tai gali rodyti Vikipedijos straipsnį kontekste įvairiais formatais."
+    "description": "Rodo Vikipedijos straipsnį puslapyje."
   },
   "settings": {
     "configure": [

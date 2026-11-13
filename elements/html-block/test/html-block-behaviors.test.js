@@ -3,6 +3,13 @@ import { fixture, expect, html } from "@open-wc/testing";
 import "../html-block.js";
 import { HtmlBlock } from "../html-block.js";
 
+// HAX schemas ship as JSON next to the element; read one whether the class
+// returns the object or the URL of its file
+const haxSchema = async (C) => {
+  const hp = C.haxProperties;
+  return typeof hp === "string" ? (await fetch(hp)).json() : hp;
+};
+
 const settle = (ms = 100) => new Promise((r) => setTimeout(r, ms));
 
 // Behavioral coverage for html-block: MutationObserver-driven
@@ -40,8 +47,8 @@ describe("html-block behaviors", () => {
     expect(el.html).to.contain("<style>");
   });
 
-  it("haxProperties describes the gizmo and code-editor setting", () => {
-    const props = HtmlBlock.haxProperties;
+  it("haxProperties describes the gizmo and code-editor setting", async () => {
+    const props = await haxSchema(HtmlBlock);
     expect(props.canScale).to.equal(true);
     expect(props.canEditSource).to.equal(true);
     expect(props.gizmo.title).to.equal("HTML block");

@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Görsel açıklaması",
         "description": "Görsel için alt yazı."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Şekil Başlığı",
-        "description": "Şekil etiketi için başlık."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Şekil Açıklaması",
-        "description": "Şekil etiketi için açıklama."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Görsel penceresini devre dışı bırak",
         "description": "Tıklamaların görseli bir görsel inceleme penceresinde açmasını devre dışı bırakın."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Şekil Başlığı",
+        "description": "Şekil etiketi için başlık."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Şekil Açıklaması",
+        "description": "Şekil etiketi için açıklama."
       }
     ],
     "developer": [

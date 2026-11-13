@@ -26,11 +26,6 @@
         "description": "ပုံအတွက် alt စာသား။"
       },
       {
-        "property": "animated",
-        "title": "လှုပ်ရှားမှုပါ",
-        "description": "ပထမဆုံး ဖွင့်သောအခါ တိုးတက်မှု လှုပ်ရှားမလား"
-      },
-      {
         "property": "complete",
         "title": "ပြီးစီး",
         "description": "ပြီးစီးသော တန်ဖိုးများ၏ array။"
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "စုစုပေါင်း",
         "description": "အရာအားလုံး ပြီးစီးသောအခါ စုစုပေါင်း။"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "လှုပ်ရှားမှုပါ",
+        "description": "ပထမဆုံး ဖွင့်သောအခါ တိုးတက်မှု လှုပ်ရှားမလား"
       },
       {
         "property": "startAngle",

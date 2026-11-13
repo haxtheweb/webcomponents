@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Hodnocení hvězdičkami",
-    "description": "Widget pro zobrazení hodnocení nebo tlačítko pro hodnocení."
+    "description": "Zobrazte hodnocení hvězdičkami nebo ho nechte vybrat čtenáře."
   },
   "settings": {
     "configure": [
@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Interaktivní",
         "description": "Umožnit uživateli nastavit hodnocení."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Režim škály rubriky",

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Einfaches Bild",
-    "description": "Bilder mit einfachen Parametern bearbeiten."
+    "description": "Ein Bild, das über einfache Einstellungen skaliert, zugeschnitten oder gedreht wird."
   },
   "settings": {
     "configure": [
@@ -26,7 +26,8 @@
         "description": "Hilfreich für Screenreader und bessere SEO."
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "Qualität",

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "CSV-Tabelle",
-    "description": "Kann eine Tabelle aus einer CSV-Datei erzeugen, egal wo sie gespeichert ist."
+    "description": "Zeigt eine CSV-Datei als barrierefreie Tabelle an."
   },
   "settings": {
     "configure": [

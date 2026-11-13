@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Maksat",
         "description": "Oýun gurluşygynyň ýoly."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Kanwanyň giňligi",
+        "description": "Kanwanyň CSS giňligi (meselem, px ýa-da em)."
       },
+      {
+        "property": "height",
+        "title": "Kanwanyň beýikligi",
+        "description": "Kanwanyň CSS beýikligi (meselem, px ýa-da em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Gysyş usuly",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Önümiň wersiýasy",
         "description": "Çykyş wersiýasy."
-      },
-      {
-        "property": "width",
-        "title": "Kanwanyň giňligi",
-        "description": "Kanwanyň CSS giňligi (meselem, px ýa-da em)."
-      },
-      {
-        "property": "height",
-        "title": "Kanwanyň beýikligi",
-        "description": "Kanwanyň CSS beýikligi (meselem, px ýa-da em)."
       },
       {
         "property": "background",

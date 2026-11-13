@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "የማይደገፍ መልእክት",
-        "description": "አሳሹ PDF ፋይሎችን ማሳየት በማይችልበት ጊዜ የሚታይ መልእክት።"
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "የማይደገፍ የአገናኝ መልእክት",
-        "description": "አሳሹ PDF ፋይሎችን ማሳየት በማይችልበት ጊዜ የአገናኝ ጽሑፍ።"
-      },
-      {
         "property": "width",
         "title": "ስፋት",
         "description": "የPDF መመልከቻው ስፋት።"
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "ቁመት",
         "description": "የPDF መመልከቻው ቁመት።"
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "የማይደገፍ መልእክት",
+        "description": "አሳሹ PDF ፋይሎችን ማሳየት በማይችልበት ጊዜ የሚታይ መልእክት።"
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "የማይደገፍ የአገናኝ መልእክት",
+        "description": "አሳሹ PDF ፋይሎችን ማሳየት በማይችልበት ጊዜ የአገናኝ ጽሑፍ።"
       }
     ]
   }

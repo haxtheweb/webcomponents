@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "Gumbi",
         "description": "Grupa gumba prikazana ispod teksta."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "Tekst sidra",
         "description": "Oznaka sidra prikazana u navigaciji."
       }
-    ]
+    ],
+    "developer": []
   }
 }

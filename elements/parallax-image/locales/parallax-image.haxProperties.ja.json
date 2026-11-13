@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "パララックス画像",
-    "description": "スクロールに合わせて動く画像"
+    "description": "ページよりゆっくりスクロールする全幅の画像。上に見出しを重ねます。"
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Sarcasm",
-    "description": "Prezintă textul într-un mod ironic"
+    "description": "Text cu majuscule alternante pentru un ton sarcastic."
   },
   "settings": {
     "configure": [

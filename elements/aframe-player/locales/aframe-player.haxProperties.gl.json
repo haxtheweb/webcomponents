@@ -11,6 +11,13 @@
         "description": "O URL deste ficheiro AR."
       },
       {
+        "property": "skyColor",
+        "title": "Cor do ceo",
+        "description": "Selecciona a cor do ceo na escena."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "Posición X do elemento en AR."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "Posición Z do elemento en AR."
-      },
-      {
-        "property": "skyColor",
-        "title": "Cor do ceo",
-        "description": "Selecciona a cor do ceo na escena."
       }
     ]
   }

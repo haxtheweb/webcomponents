@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "جدول CSV",
-    "description": "يمكنه إنشاء جدول من ملف CSV أيًّا كان موقعه."
+    "description": "يعرض ملف CSV كجدول ميسّر."
   },
   "settings": {
     "configure": [

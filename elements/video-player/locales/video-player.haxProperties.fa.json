@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "تصویر پوستر",
         "description": "URL تصویر پوستر."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "ترک‌های متنی",
         "description": "زیرنویس‌های ناشنوایان، زیرنویس‌ها، توصیف‌ها و سایر ترک‌های متنی ویدیو."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "زمان شروع",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "ترک توصیف صوتی",
         "description": "URL ترک توصیف صوتی (فایل MP3) که عناصر بصری را روایت می‌کند."
+      },
+      {
+        "property": "accentColor",
+        "title": "رنگ تأکیدی",
+        "description": "(منسوخ) رنگ تأکیدی پخش‌کننده را انتخاب کنید."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "زبان",
         "description": "زبان رسانه."
-      },
-      {
-        "property": "accentColor",
-        "title": "رنگ تأکیدی",
-        "description": "(منسوخ) رنگ تأکیدی پخش‌کننده را انتخاب کنید."
       }
     ]
   }

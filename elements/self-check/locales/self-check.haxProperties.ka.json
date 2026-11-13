@@ -27,6 +27,13 @@
       {
         "slot": "",
         "title": "პასუხი"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "დამატებითი ბმული",
+        "description": "ბმული დამატებით ინფორმაციაზე."
       },
       {
         "property": "hasLearningObjective",
@@ -37,13 +44,6 @@
         "property": "assessing",
         "title": "შეფასების ობიექტი",
         "description": "აქტივობის მითითება, რომელიც გამოიცემა როგორც oer:assessing."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "link",
-        "title": "დამატებითი ბმული",
-        "description": "ბმული დამატებით ინფორმაციაზე."
       }
     ]
   }

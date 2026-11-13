@@ -27,6 +27,13 @@
       {
         "slot": "",
         "title": "Wangsulan"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Pranala liyane",
+        "description": "Pranala menyang informasi tambahan."
       },
       {
         "property": "hasLearningObjective",
@@ -37,13 +44,6 @@
         "property": "assessing",
         "title": "Sing dinilai",
         "description": "Referensi kagiyatan sing diasilake minangka oer:assessing."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "link",
-        "title": "Pranala liyane",
-        "description": "Pranala menyang informasi tambahan."
       }
     ]
   }

@@ -9,7 +9,9 @@
         "slot": "",
         "title": "Luanna",
         "description": "Míreanna lua sa leabharliosta seo"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "Cúrsa",

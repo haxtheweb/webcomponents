@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "متن پسوند",
         "description": "متنی که پس از عدد نمایش داده می‌شود (مثلاً '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "اسلات پیشوند",
-        "description": "محتوای اسلات اختیاری پیش از عدد."
-      },
-      {
-        "slot": "suffix",
-        "title": "اسلات پسوند",
-        "description": "محتوای اسلات اختیاری پس از عدد."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "بدون نرم‌سازی",
         "description": "نرم‌سازی غیرفعال شود تا شمارش خطی باشد."
+      },
+      {
+        "slot": "prefix",
+        "title": "اسلات پیشوند",
+        "description": "محتوای اسلات اختیاری پیش از عدد."
+      },
+      {
+        "slot": "suffix",
+        "title": "اسلات پسوند",
+        "description": "محتوای اسلات اختیاری پس از عدد."
       }
     ]
   }

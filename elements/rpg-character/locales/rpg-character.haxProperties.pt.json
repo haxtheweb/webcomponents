@@ -11,11 +11,6 @@
         "description": "Palavra usada para gerar um personagem aleatório."
       },
       {
-        "property": "code",
-        "title": "Código do personagem",
-        "description": "Cole um código salvo para recriar esse personagem."
-      },
-      {
         "property": "hat",
         "title": "Chapéu",
         "description": "Estilo do chapéu.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Máscara",
-        "description": "Máscara usada sobre o rosto ou a cabeça.",
-        "options": {
-          "none": "Nenhuma",
-          "lion": "Leão",
-          "plague": "Médico da peste",
-          "theater": "Teatro",
-          "pumpkin": "Abóbora",
-          "ghost": "Fantasma",
-          "mummy": "Múmia",
-          "wrestler": "Máscara de luta livre",
-          "block-head": "Cabeça de bloco",
-          "web": "Máscara de teia",
-          "werewolf": "Rosto de lobisomem",
-          "shadow": "Rosto sombrio"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Maquiagem",
-        "description": "Pintura facial ou batom.",
-        "options": {
-          "none": "Nenhuma",
-          "red-lipstick": "Batom vermelho",
-          "pink-lipstick": "Batom rosa",
-          "berry-lipstick": "Batom cor de amora",
-          "clown": "Pintura de palhaço",
-          "fangs": "Presas",
-          "skull": "Pintura de caveira",
-          "zombie": "Pintura de zumbi",
-          "red-nose": "Nariz vermelho",
-          "white-beard": "Barba branca",
-          "domino": "Máscara de herói",
-          "carrot": "Nariz de cenoura",
-          "bunny": "Nariz de coelho",
-          "mustache": "Bigode",
-          "monster": "Pintura facial de monstro",
-          "round-glasses": "Óculos redondos"
-        }
-      },
-      {
         "property": "expression",
         "title": "Expressão",
         "description": "Expressão do rosto.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Animal de estimação",
+        "description": "Animal de estimação ao lado do personagem.",
+        "options": {
+          "none": "Nenhum",
+          "cat": "Gato",
+          "dog": "Cachorro",
+          "bunny": "Coelhinho",
+          "goldfish": "Peixinho dourado",
+          "slime": "Gosma",
+          "squirrel": "Esquilo",
+          "dragon": "Dragãozinho",
+          "parrot": "Papagaio",
+          "owl": "Coruja",
+          "bat": "Morcego"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Código do personagem",
+        "description": "Cole um código salvo para recriar esse personagem."
+      },
+      {
+        "property": "mask",
+        "title": "Máscara",
+        "description": "Máscara usada sobre o rosto ou a cabeça.",
+        "options": {
+          "none": "Nenhuma",
+          "lion": "Leão",
+          "plague": "Médico da peste",
+          "theater": "Teatro",
+          "pumpkin": "Abóbora",
+          "ghost": "Fantasma",
+          "mummy": "Múmia",
+          "wrestler": "Máscara de luta livre",
+          "block-head": "Cabeça de bloco",
+          "web": "Máscara de teia",
+          "werewolf": "Rosto de lobisomem",
+          "shadow": "Rosto sombrio"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Maquiagem",
+        "description": "Pintura facial ou batom.",
+        "options": {
+          "none": "Nenhuma",
+          "red-lipstick": "Batom vermelho",
+          "pink-lipstick": "Batom rosa",
+          "berry-lipstick": "Batom cor de amora",
+          "clown": "Pintura de palhaço",
+          "fangs": "Presas",
+          "skull": "Pintura de caveira",
+          "zombie": "Pintura de zumbi",
+          "red-nose": "Nariz vermelho",
+          "white-beard": "Barba branca",
+          "domino": "Máscara de herói",
+          "carrot": "Nariz de cenoura",
+          "bunny": "Nariz de coelho",
+          "mustache": "Bigode",
+          "monster": "Pintura facial de monstro",
+          "round-glasses": "Óculos redondos"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Texto da bandeira",
         "description": "Até 4 letras exibidas na bandeira."
@@ -310,24 +330,6 @@
           "skates": "Patins",
           "skateboard": "Skate",
           "hoverboard": "Prancha flutuante"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Animal de estimação",
-        "description": "Animal de estimação ao lado do personagem.",
-        "options": {
-          "none": "Nenhum",
-          "cat": "Gato",
-          "dog": "Cachorro",
-          "bunny": "Coelhinho",
-          "goldfish": "Peixinho dourado",
-          "slime": "Gosma",
-          "squirrel": "Esquilo",
-          "dragon": "Dragãozinho",
-          "parrot": "Papagaio",
-          "owl": "Coruja",
-          "bat": "Morcego"
         }
       },
       {

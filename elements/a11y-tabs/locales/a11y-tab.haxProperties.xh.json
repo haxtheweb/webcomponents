@@ -10,10 +10,6 @@
         "title": "I-Icon yeThebhu"
       },
       {
-        "property": "disabled",
-        "title": "Kuvaliwe"
-      },
-      {
         "property": "label",
         "title": "Ileyibhile yeThebhu"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "I-ID eyodwa"
-      },
-      {
         "property": "flag",
         "title": "Umbhalo weFlegi Ongenyanzelekanga"
       },
       {
         "property": "flagIcon",
         "title": "I-Icon yeFlegi Engenyanzelekanga"
+      },
+      {
+        "property": "disabled",
+        "title": "Kuvaliwe"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "I-ID eyodwa"
       }
     ]
   }

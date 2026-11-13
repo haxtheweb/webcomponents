@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Ofbyldingsboarne",
         "description": "Ofbyldingsbestân foar de kaart. Giet foar it ôfbyldingskaaiwurd."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Ofbyldingskaaiwurd",
+        "description": "Kaaiwurd foar in willekeurige ôfbylding. Wurdt oerskreaun troch de ôfbyldingsboarne."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Leardoel",
         "description": "OER Schema: ID of URL fan it leardoel dat dizze oefening stipet."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Ofbyldingskaaiwurd",
-        "description": "Kaaiwurd foar in willekeurige ôfbylding. Wurdt oerskreaun troch de ôfbyldingsboarne."
       }
     ]
   }

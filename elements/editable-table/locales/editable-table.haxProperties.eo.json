@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Permesi filtradon",
         "description": "Permesi filtradon laŭ kolumnaj valoroj."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Numera stiligo",
-        "description": "Apliki numeran stiligon al numeraj kolumnoj."
-      },
-      {
-        "property": "responsive",
-        "title": "Respondema",
-        "description": "Adapti la tabelan aranĝon sur malgrandaj ekranoj."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Rubrika reĝimo",
-        "description": "Interpreti ĉi tiun tabelon kiel OER Schema Rubric, por ke metadatumoj Rubric, RubricScale, RubricCriterion kaj RubricLevel estu eligataj."
-      },
-      {
-        "property": "rubricType",
-        "title": "Rubrika tipo",
-        "description": "Rubrika stilo eligata kiel oer:rubricType (signifa nur kiam Rubrika reĝimo estas ŝaltita).",
-        "options": {
-          "": "(neniu)",
-          "analytic": "Analiza",
-          "holistic": "Holisma",
-          "single-point": "Unupunkta",
-          "checklist": "Kontrollisto"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Presa butono",
         "description": "Aldoni butonon por presi nur la tabelon."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Numera stiligo",
+        "description": "Apliki numeran stiligon al numeraj kolumnoj."
+      },
+      {
+        "property": "responsive",
+        "title": "Respondema",
+        "description": "Adapti la tabelan aranĝon sur malgrandaj ekranoj."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Rubrika reĝimo",
+        "description": "Interpreti ĉi tiun tabelon kiel OER Schema Rubric, por ke metadatumoj Rubric, RubricScale, RubricCriterion kaj RubricLevel estu eligataj."
+      },
+      {
+        "property": "rubricType",
+        "title": "Rubrika tipo",
+        "description": "Rubrika stilo eligata kiel oer:rubricType (signifa nur kiam Rubrika reĝimo estas ŝaltita).",
+        "options": {
+          "": "(neniu)",
+          "analytic": "Analiza",
+          "holistic": "Holisma",
+          "single-point": "Unupunkta",
+          "checklist": "Kontrollisto"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "CSV-datumoj",
         "description": "Krei tabelon el alŝutita CSV-dosiero."
       }
-    ]
+    ],
+    "developer": []
   }
 }

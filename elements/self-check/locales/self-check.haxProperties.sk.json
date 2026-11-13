@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Sebakontrola",
-    "description": "Používatelia môžu vykonať sebakontrolu."
+    "description": "Otázka so skrytou odpoveďou, ktorú si študent odkryje, aby sa skontroloval."
   },
   "settings": {
     "configure": [
@@ -27,6 +27,13 @@
       {
         "slot": "",
         "title": "Odpoveď"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Odkaz na viac",
+        "description": "Odkaz na ďalšie informácie."
       },
       {
         "property": "hasLearningObjective",
@@ -37,13 +44,6 @@
         "property": "assessing",
         "title": "Hodnotí",
         "description": "Odkaz na aktivitu generovaný ako oer:assessing."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "link",
-        "title": "Odkaz na viac",
-        "description": "Odkaz na ďalšie informácie."
       }
     ]
   }

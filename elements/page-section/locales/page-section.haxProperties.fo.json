@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "Knøttar",
         "description": "Knøttabólkur, sum verður vístur undir tekstinum."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "Akkertekstur",
         "description": "Akkerheiti, sum verður víst í leiðsluni."
       }
-    ]
+    ],
+    "developer": []
   }
 }

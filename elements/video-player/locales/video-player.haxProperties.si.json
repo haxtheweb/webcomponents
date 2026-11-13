@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "පෝස්ටර් රූපය",
         "description": "පෝස්ටර් රූප URL."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "පෙළ පථ",
         "description": "වීඩියෝව සඳහා සංවෘත සිරස්තල, උපසිරැසි, විස්තර සහ වෙනත් පෙළ පථ."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "ආරම්භක වේලාව",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "ශ්‍රව්‍ය විස්තර පථය",
         "description": "දෘශ්‍ය අංග පිළිබඳ විවරණයක් සපයන ශ්‍රව්‍ය විස්තර පථයක (MP3 ගොනුව) URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "උච්චාරණ වර්ණය",
+        "description": "(අත්හැර දැමූ) වාදකය සඳහා උච්චාරණ වර්ණය තෝරන්න."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "භාෂාව",
         "description": "මාධ්‍යයේ භාෂාව."
-      },
-      {
-        "property": "accentColor",
-        "title": "උච්චාරණ වර්ණය",
-        "description": "(අත්හැර දැමූ) වාදකය සඳහා උච්චාරණ වර්ණය තෝරන්න."
       }
     ]
   }

@@ -11,30 +11,8 @@
         "description": "Demando, al kiu uzantoj respondu."
       },
       {
-        "property": "gradingFormat",
-        "title": "Taksa formato",
-        "description": "OER Schema: taksa formato por ĉi tiu takso (ekz. poentoj, litero, procento, kompletigo)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Lerncelo",
-        "description": "OER Schema: lerncelo asociita kun ĉi tiu takso."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kurso",
-        "description": "OER Schema: kurso, por kiu ĉi tiu takso estas celita."
-      },
-      {
         "property": "answers",
         "title": "Respondoj"
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Nomo de la kvizo",
-        "description": "Nomo de kvizo uzata por xAPI-identigo en analizaj sistemoj."
       }
     ],
     "advanced": [
@@ -47,6 +25,28 @@
         "property": "collapsed",
         "title": "Komenci faldita",
         "description": "Kiam faldebla, komenci kiel fermita vico, kiu montras nur la demandon kaj ĝian staton."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Taksa formato",
+        "description": "OER Schema: taksa formato por ĉi tiu takso (ekz. poentoj, litero, procento, kompletigo)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Lerncelo",
+        "description": "OER Schema: lerncelo asociita kun ĉi tiu takso."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nomo de la kvizo",
+        "description": "Nomo de kvizo uzata por xAPI-identigo en analizaj sistemoj."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurso",
+        "description": "OER Schema: kurso, por kiu ĉi tiu takso estas celita."
       }
     ]
   }

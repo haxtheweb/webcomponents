@@ -1,10 +1,10 @@
 {
   "gizmo": {
-    "title": "HAXcms: চাইল্ড ব্লক",
-    "description": "বর্তমান পেজের চাইল্ড দেখানোর ডায়নামিক ব্লক"
+    "title": "চাইল্ড পৃষ্ঠা",
+    "description": "বর্তমান পৃষ্ঠার চাইল্ড পৃষ্ঠাগুলোর তালিকা দেয়।"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "ডায়নামিক পদ্ধতি",
@@ -14,7 +14,9 @@
           "parent": "প্যারেন্টের চাইল্ড",
           "ancestor": "সর্বোচ্চ পূর্বপুরুষ থেকে সব চাইল্ড"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "শুরুর স্তর"

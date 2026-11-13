@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Ba da Damar Tacewa",
         "description": "Ba da damar tacewa ta ƙimomin shafi."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Salon Lambobi",
-        "description": "Sanya salon lambobi a shafukan lambobi."
-      },
-      {
-        "property": "responsive",
-        "title": "Mai daidaitawa",
-        "description": "Daidaita tsarin tebur a ƙananan allo."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Yanayin Rubric",
-        "description": "Fassara wannan tebur a matsayin OER Schema Rubric domin a fitar da metadata na Rubric, RubricScale, RubricCriterion, da RubricLevel."
-      },
-      {
-        "property": "rubricType",
-        "title": "Nau'in Rubric",
-        "description": "Salon rubric da ake fitarwa a matsayin oer:rubricType (yana da ma'ana ne kawai idan Yanayin Rubric yana kunne).",
-        "options": {
-          "": "(babu)",
-          "analytic": "Mai nazari",
-          "holistic": "Gaba ɗaya",
-          "single-point": "Maki Ɗaya",
-          "checklist": "Jerin dubawa"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Maɓallin Bugawa",
         "description": "Ƙara maɓalli don buga teburin kawai."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Salon Lambobi",
+        "description": "Sanya salon lambobi a shafukan lambobi."
+      },
+      {
+        "property": "responsive",
+        "title": "Mai daidaitawa",
+        "description": "Daidaita tsarin tebur a ƙananan allo."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Yanayin Rubric",
+        "description": "Fassara wannan tebur a matsayin OER Schema Rubric domin a fitar da metadata na Rubric, RubricScale, RubricCriterion, da RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "Nau'in Rubric",
+        "description": "Salon rubric da ake fitarwa a matsayin oer:rubricType (yana da ma'ana ne kawai idan Yanayin Rubric yana kunne).",
+        "options": {
+          "": "(babu)",
+          "analytic": "Mai nazari",
+          "holistic": "Gaba ɗaya",
+          "single-point": "Maki Ɗaya",
+          "checklist": "Jerin dubawa"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "Bayanan CSV",
         "description": "Ƙirƙiri tebur daga fayil ɗin CSV da aka ɗora."
       }
-    ]
+    ],
+    "developer": []
   }
 }

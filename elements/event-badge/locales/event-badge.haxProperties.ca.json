@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Acreditació d'esdeveniment",
-    "description": "Component d'acreditació d'esdeveniment."
+    "description": "Una credencial d’estil conferència amb foto, nom i organització."
   },
   "settings": {
     "configure": [

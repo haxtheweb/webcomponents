@@ -9,7 +9,9 @@
         "slot": "",
         "title": "उद्धरण",
         "description": "इस ग्रंथसूची में उद्धरण आइटम"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "पाठ्यक्रम",

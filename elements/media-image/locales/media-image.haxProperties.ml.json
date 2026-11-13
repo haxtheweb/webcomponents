@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "അടിക്കുറിപ്പ്",
         "description": "ചിത്രത്തിനുള്ള അടിക്കുറിപ്പ്."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "ചിത്ര തലക്കെട്ട്",
-        "description": "ചിത്ര ലേബലിനുള്ള തലക്കെട്ട്."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "ചിത്ര വിവരണം",
-        "description": "ചിത്ര ലേബലിനുള്ള വിവരണം."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "ചിത്ര മോഡൽ പ്രവർത്തനരഹിതമാക്കുക",
         "description": "ക്ലിക്ക് ചെയ്യുമ്പോൾ ചിത്രം ഒരു ഇമേജ് ഇൻസ്പെക്ടർ ഡയലോഗിൽ തുറക്കുന്നത് പ്രവർത്തനരഹിതമാക്കുക."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "ചിത്ര തലക്കെട്ട്",
+        "description": "ചിത്ര ലേബലിനുള്ള തലക്കെട്ട്."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "ചിത്ര വിവരണം",
+        "description": "ചിത്ര ലേബലിനുള്ള വിവരണം."
       }
     ],
     "developer": [

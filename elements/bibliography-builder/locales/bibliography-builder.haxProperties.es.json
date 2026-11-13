@@ -9,7 +9,9 @@
         "slot": "",
         "title": "Citas",
         "description": "Elementos de cita de esta bibliografía"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "Curso",

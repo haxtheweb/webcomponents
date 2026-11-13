@@ -14,16 +14,6 @@
         "property": "title",
         "title": "Εναλλακτικός τίτλος",
         "description": "Εναλλακτικός τίτλος συνδεδεμένος με την πηγή του κωδικού QR."
-      },
-      {
-        "property": "modulesize",
-        "title": "Μέγεθος",
-        "description": "Μέγεθος του κωδικού QR."
-      },
-      {
-        "property": "margin",
-        "title": "Περιθώριο",
-        "description": "Περιθώριο γύρω από τον κωδικό."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "Μέγεθος",
+        "description": "Μέγεθος του κωδικού QR."
+      },
+      {
+        "property": "margin",
+        "title": "Περιθώριο",
+        "description": "Περιθώριο γύρω από τον κωδικό."
       }
     ]
   }

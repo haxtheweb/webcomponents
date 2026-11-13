@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Fogalomfutó játék",
-    "description": "Oldalnézetes játék. A karakter lángolva fut, és soha nem áll meg. Ugorj, hogy elkapd a jó fogalmakat, és ugord át a rosszakat, aztán nézd meg az összefoglalót arról, mi volt jó és mi rossz."
+    "description": "Oldalra görgő játék: ugorjon, hogy elkapja a helyes fogalmakat, és kerülje el a hibásakat."
   },
   "settings": {
     "configure": [
@@ -89,7 +89,9 @@
         "property": "gameTitle",
         "title": "Játék neve",
         "description": "Ezen a néven szerepel a játék az előrehaladási eseményekben és az OER Schema jelölésben."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Játék azonosítója",

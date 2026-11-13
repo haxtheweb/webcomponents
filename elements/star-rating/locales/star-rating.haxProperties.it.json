@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Valutazione a stelle",
-    "description": "Widget per mostrare una valutazione o pulsante per valutare."
+    "description": "Mostra una valutazione a stelle o lascia che i lettori ne scelgano una."
   },
   "settings": {
     "configure": [
@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Interattivo",
         "description": "Consente all'utente di impostare la valutazione."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Modalità scala di rubrica",

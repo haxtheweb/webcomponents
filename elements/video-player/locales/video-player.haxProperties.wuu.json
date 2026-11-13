@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "封面图",
         "description": "封面图 URL。"
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "文字轨道",
         "description": "视频个隐藏字幕、字幕、描述搭其他文字轨道。"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "开始辰光",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "音频描述轨道",
         "description": "音频描述轨道（MP3 文件）个 URL，用来讲解画面里个视觉内容。"
+      },
+      {
+        "property": "accentColor",
+        "title": "强调色",
+        "description": "(已弃用)选播放器个强调色。"
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "语言",
         "description": "媒体个语言。"
-      },
-      {
-        "property": "accentColor",
-        "title": "强调色",
-        "description": "(已弃用)选播放器个强调色。"
       }
     ]
   }

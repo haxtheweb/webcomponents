@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Citácia",
-    "description": "Prvok citácie s tromi režimami prezentácie."
+    "description": "Uveďte zdroj s názvom, autorom, licenciou a odkazom."
   },
   "settings": {
     "configure": [
@@ -21,15 +21,6 @@
         "description": "Dátum, kedy bol zdroj sprístupnený."
       },
       {
-        "property": "scope",
-        "title": "Rozsah",
-        "description": "Rozsah prvku na citovanie.",
-        "options": {
-          "sibling": "Súrodenecký prvok",
-          "parent": "Nadradený prvok"
-        }
-      },
-      {
         "property": "license",
         "title": "Licencia",
         "description": "Licencia citovaného diela."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Tvorca",
         "description": "Tvorca alebo vlastník citovaného diela."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Rozsah",
+        "description": "Rozsah prvku na citovanie.",
+        "options": {
+          "sibling": "Súrodenecký prvok",
+          "parent": "Nadradený prvok"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "Typ OER Schema",

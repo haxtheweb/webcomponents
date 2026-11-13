@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Підпис",
         "description": "Підпис зображення."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Назва ілюстрації",
-        "description": "Назва для мітки ілюстрації."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Опис ілюстрації",
-        "description": "Опис для мітки ілюстрації."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Вимкнути модальне вікно зображення",
         "description": "Вимкнути відкриття зображення в діалозі перегляду після натискання."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Назва ілюстрації",
+        "description": "Назва для мітки ілюстрації."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Опис ілюстрації",
+        "description": "Опис для мітки ілюстрації."
       }
     ],
     "developer": [

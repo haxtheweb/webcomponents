@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "စာတန်း",
         "description": "ပုံအတွက် စာတန်း။"
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "ပုံ ခေါင်းစဉ်",
-        "description": "ပုံ တံဆိပ်အတွက် ခေါင်းစဉ်။"
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "ပုံ ဖော်ပြချက်",
-        "description": "ပုံ တံဆိပ်အတွက် ဖော်ပြချက်။"
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "ပုံ မော်ဒယ် ပိတ်ရန်",
         "description": "ပုံ စစ်ဆေးရေး ဒိုင်ယာလော့ခ်တွင် ပုံကို ဖွင့်သော နှိပ်ခြင်းများကို ပိတ်ရန်။"
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "ပုံ ခေါင်းစဉ်",
+        "description": "ပုံ တံဆိပ်အတွက် ခေါင်းစဉ်။"
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "ပုံ ဖော်ပြချက်",
+        "description": "ပုံ တံဆိပ်အတွက် ဖော်ပြချက်။"
       }
     ],
     "developer": [

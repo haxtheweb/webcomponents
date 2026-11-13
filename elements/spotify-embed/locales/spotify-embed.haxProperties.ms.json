@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "Pembalut untuk benaman pemain Spotify."
+    "description": "Benamkan lagu, album atau senarai main Spotify."
   },
   "settings": {
     "configure": [

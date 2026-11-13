@@ -11,11 +11,6 @@
         "description": "بي ترتيب ڪردار ٺاهڻ لاءِ استعمال ٿيندڙ لفظ."
       },
       {
-        "property": "code",
-        "title": "ڪردار ڪوڊ",
-        "description": "ان ڪردار کي ٻيهر ٺاهڻ لاءِ محفوظ ڪيل ڪوڊ پيسٽ ڪريو."
-      },
-      {
         "property": "hat",
         "title": "ٽوپي",
         "description": "ٽوپي جو انداز.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "نقاب",
-        "description": "منهن يا مٿي تي پاتل نقاب.",
-        "options": {
-          "none": "ڪو به نه",
-          "lion": "شينهن",
-          "plague": "طاعون ڊاڪٽر",
-          "theater": "ٿيٽر",
-          "pumpkin": "ڪدو",
-          "ghost": "ڀوت",
-          "mummy": "ممي",
-          "wrestler": "ڪشتيءَ جو نقاب",
-          "block-head": "بلاڪ مٿو",
-          "web": "ڄار وارو نقاب",
-          "werewolf": "بگهڙ ماڻهوءَ جو چهرو",
-          "shadow": "پاڇي وارو چهرو"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "ميڪ اپ",
-        "description": "منهن جو رنگ يا لپ اسٽڪ.",
-        "options": {
-          "none": "ڪو به نه",
-          "red-lipstick": "ڳاڙهي لپ اسٽڪ",
-          "pink-lipstick": "گلابي لپ اسٽڪ",
-          "berry-lipstick": "بيري لپ اسٽڪ",
-          "clown": "مسخري جو رنگ",
-          "fangs": "ڏند",
-          "skull": "کوپڙي جو رنگ",
-          "zombie": "زومبي جو رنگ",
-          "red-nose": "ڳاڙهي نڪ",
-          "white-beard": "اڇي ڏاڙهي",
-          "domino": "هيرو جو نقاب",
-          "carrot": "گاجر جهڙو نڪ",
-          "bunny": "ٻلي جهڙو نڪ",
-          "mustache": "مڇون",
-          "monster": "راڪاس جو منهن رنگ",
-          "round-glasses": "گول عينڪ"
-        }
-      },
-      {
         "property": "expression",
         "title": "تاثر",
         "description": "چهري جو تاثر.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "پالتو جانور",
+        "description": "ڪردار جي ڀرسان پالتو جانور.",
+        "options": {
+          "none": "ڪو به نه",
+          "cat": "ٻلي",
+          "dog": "ڪتو",
+          "bunny": "سهو",
+          "goldfish": "سونهري مڇي",
+          "slime": "لعاب",
+          "squirrel": "ڳلهري",
+          "dragon": "ننڍو ڊريگن",
+          "parrot": "طوطو",
+          "owl": "گهگهه",
+          "bat": "چمڙو"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "ڪردار ڪوڊ",
+        "description": "ان ڪردار کي ٻيهر ٺاهڻ لاءِ محفوظ ڪيل ڪوڊ پيسٽ ڪريو."
+      },
+      {
+        "property": "mask",
+        "title": "نقاب",
+        "description": "منهن يا مٿي تي پاتل نقاب.",
+        "options": {
+          "none": "ڪو به نه",
+          "lion": "شينهن",
+          "plague": "طاعون ڊاڪٽر",
+          "theater": "ٿيٽر",
+          "pumpkin": "ڪدو",
+          "ghost": "ڀوت",
+          "mummy": "ممي",
+          "wrestler": "ڪشتيءَ جو نقاب",
+          "block-head": "بلاڪ مٿو",
+          "web": "ڄار وارو نقاب",
+          "werewolf": "بگهڙ ماڻهوءَ جو چهرو",
+          "shadow": "پاڇي وارو چهرو"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "ميڪ اپ",
+        "description": "منهن جو رنگ يا لپ اسٽڪ.",
+        "options": {
+          "none": "ڪو به نه",
+          "red-lipstick": "ڳاڙهي لپ اسٽڪ",
+          "pink-lipstick": "گلابي لپ اسٽڪ",
+          "berry-lipstick": "بيري لپ اسٽڪ",
+          "clown": "مسخري جو رنگ",
+          "fangs": "ڏند",
+          "skull": "کوپڙي جو رنگ",
+          "zombie": "زومبي جو رنگ",
+          "red-nose": "ڳاڙهي نڪ",
+          "white-beard": "اڇي ڏاڙهي",
+          "domino": "هيرو جو نقاب",
+          "carrot": "گاجر جهڙو نڪ",
+          "bunny": "ٻلي جهڙو نڪ",
+          "mustache": "مڇون",
+          "monster": "راڪاس جو منهن رنگ",
+          "round-glasses": "گول عينڪ"
+        }
+      },
+      {
         "property": "flagText",
         "title": "جهنڊي جو متن",
         "description": "جهنڊي تي ڏيکاريل وڌ ۾ وڌ 4 اکر."
@@ -310,24 +330,6 @@
           "skates": "اسڪيٽس",
           "skateboard": "اسڪيٽ بورڊ",
           "hoverboard": "هوائي تختو"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "پالتو جانور",
-        "description": "ڪردار جي ڀرسان پالتو جانور.",
-        "options": {
-          "none": "ڪو به نه",
-          "cat": "ٻلي",
-          "dog": "ڪتو",
-          "bunny": "سهو",
-          "goldfish": "سونهري مڇي",
-          "slime": "لعاب",
-          "squirrel": "ڳلهري",
-          "dragon": "ننڍو ڊريگن",
-          "parrot": "طوطو",
-          "owl": "گهگهه",
-          "bat": "چمڙو"
         }
       },
       {

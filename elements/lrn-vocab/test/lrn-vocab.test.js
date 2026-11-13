@@ -2,6 +2,13 @@ import { fixture, expect, html } from "@open-wc/testing";
 
 import { LrnVocab } from "../lrn-vocab.js";
 
+// HAX schemas ship as JSON next to the element; read one whether the class
+// returns the object or the URL of its file
+const haxSchema = async (C) => {
+  const hp = C.haxProperties;
+  return typeof hp === "string" ? (await fetch(hp)).json() : hp;
+};
+
 describe("lrn-vocab test", () => {
   let element;
   beforeEach(async () => {
@@ -132,7 +139,7 @@ describe("lrn-vocab behavior", () => {
   });
 
   it("reports haxProperties for the editor", async () => {
-    const props = LrnVocab.haxProperties;
+    const props = await haxSchema(LrnVocab);
     expect(props.canScale).to.be.false;
     expect(props.canEditSource).to.be.true;
     expect(props.gizmo.title).to.equal("Vocab");
@@ -195,10 +202,12 @@ describe("lrn-vocab DDD trigger", () => {
     expect(content.querySelector("p").textContent).to.equal("Attacking prey");
   });
 
-  it("turns on the DDD primary design system hook", () => {
-    expect(LrnVocab.haxProperties.designSystem).to.deep.equal({
+  it("turns on the DDD primary design system hook", async () => {
+    expect((await haxSchema(LrnVocab)).designSystem).to.deep.equal({
       primary: true,
     });
-    expect(LrnVocab.haxProperties.saveOptions.unsetAttributes).to.include("t");
+    expect((await haxSchema(LrnVocab)).saveOptions.unsetAttributes).to.include(
+      "t",
+    );
   });
 });

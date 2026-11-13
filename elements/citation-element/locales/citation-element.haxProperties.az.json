@@ -21,15 +21,6 @@
         "description": "Mənbəyə müraciət edildiyi tarix."
       },
       {
-        "property": "scope",
-        "title": "Əhatə",
-        "description": "İstinad ediləcək elementin əhatəsi.",
-        "options": {
-          "sibling": "Qonşu element",
-          "parent": "Üst element"
-        }
-      },
-      {
         "property": "license",
         "title": "Lisenziya",
         "description": "İstinad edilən əsərin lisenziyası."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Yaradıcı",
         "description": "İstinad edilən əsərin yaradıcısı və ya sahibi."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Əhatə",
+        "description": "İstinad ediləcək elementin əhatəsi.",
+        "options": {
+          "sibling": "Qonşu element",
+          "parent": "Üst element"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "OER Schema növü",

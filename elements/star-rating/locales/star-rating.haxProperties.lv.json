@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Zvaigžņu vērtējums",
-    "description": "Vērtējuma attēlošanas logrīks vai poga vērtēšanai."
+    "description": "Rādiet zvaigžņu vērtējumu vai ļaujiet lasītājiem to izvēlēties."
   },
   "settings": {
     "configure": [
@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Interaktīvs",
         "description": "Ļaut lietotājam iestatīt vērtējumu."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Vērtēšanas skalas režīms",

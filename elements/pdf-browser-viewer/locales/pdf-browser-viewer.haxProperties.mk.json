@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "Прегледувач на PDF во прелистувач",
+    "title": "PDF прегледувач",
     "description": "Вградете PDF-датотека во страницата со изборен распоред на картичка и копче за преземање."
   },
   "settings": {
@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Порака за неподдржано",
-        "description": "Порака кога прелистувачот не може да прикажува PDF-датотеки."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Порака за врска при неподдржано",
-        "description": "Текст на врската кога прелистувачот не може да прикажува PDF-датотеки."
-      },
-      {
         "property": "width",
         "title": "Ширина",
         "description": "Ширина на PDF-прегледувачот."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Висина",
         "description": "Висина на PDF-прегледувачот."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Порака за неподдржано",
+        "description": "Порака кога прелистувачот не може да прикажува PDF-датотеки."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Порака за врска при неподдржано",
+        "description": "Текст на врската кога прелистувачот не може да прикажува PDF-датотеки."
       }
     ]
   }

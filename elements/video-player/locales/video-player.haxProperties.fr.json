@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Image d'affiche",
         "description": "URL de l'image d'affiche."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Pistes de texte",
         "description": "Sous-titres, sous-titres pour sourds et malentendants, descriptions et autres pistes de texte de la vidéo."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Heure de début",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Piste d'audiodescription",
         "description": "URL d'une piste d'audiodescription (fichier MP3) qui décrit oralement les éléments visuels."
+      },
+      {
+        "property": "accentColor",
+        "title": "Couleur d'accent",
+        "description": "(obsolète) Sélectionnez la couleur d'accent du lecteur."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Langue",
         "description": "Langue du média."
-      },
-      {
-        "property": "accentColor",
-        "title": "Couleur d'accent",
-        "description": "(obsolète) Sélectionnez la couleur d'accent du lecteur."
       }
     ]
   }

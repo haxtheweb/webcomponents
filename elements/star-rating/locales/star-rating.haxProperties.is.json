@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Gagnvirkt",
         "description": "Leyfa notanda að gefa einkunn."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Matskvarðahamur",

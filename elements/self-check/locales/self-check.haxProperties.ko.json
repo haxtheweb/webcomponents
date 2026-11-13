@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "자가 점검",
-    "description": "사용자가 자가 점검을 완료할 수 있습니다."
+    "description": "학습자가 스스로 확인하기 위해 펼쳐 보는 숨겨진 답이 있는 질문."
   },
   "settings": {
     "configure": [
@@ -27,6 +27,13 @@
       {
         "slot": "",
         "title": "정답"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "더 보기 링크",
+        "description": "추가 정보로 연결되는 링크입니다."
       },
       {
         "property": "hasLearningObjective",
@@ -37,13 +44,6 @@
         "property": "assessing",
         "title": "평가 대상",
         "description": "oer:assessing으로 출력되는 활동 참조입니다."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "link",
-        "title": "더 보기 링크",
-        "description": "추가 정보로 연결되는 링크입니다."
       }
     ]
   }

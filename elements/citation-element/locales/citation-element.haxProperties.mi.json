@@ -21,15 +21,6 @@
         "description": "Te rā i torohia ai te pūtake."
       },
       {
-        "property": "scope",
-        "title": "Korahi",
-        "description": "Korahi huānga hei tohutoro.",
-        "options": {
-          "sibling": "Huānga tuakana-teina",
-          "parent": "Huānga matua"
-        }
-      },
-      {
         "property": "license",
         "title": "Raihana",
         "description": "Raihana mō te mahi kua tohutorotia."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Kaihanga",
         "description": "Kaihanga, rangatira rānei o te mahi kua tohutorotia."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Korahi",
+        "description": "Korahi huānga hei tohutoro.",
+        "options": {
+          "sibling": "Huānga tuakana-teina",
+          "parent": "Huānga matua"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "Momo OER Schema",

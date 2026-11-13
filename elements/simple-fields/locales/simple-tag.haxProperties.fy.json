@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Automatyske aksintkleur",
         "description": "Lei de aksintkleur automatysk ôf út de labeltekst."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Annulearknop",
-        "description": "In ikoanknop foar fuortsmite/annulearje yn de pil toane."
-      },
-      {
-        "property": "readonly",
-        "title": "Allinnich lêze",
-        "description": "Ferbergje de annulearknop, sadat de pil allinnich werjûn wurdt."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Blaugriis",
           "grey": "Griis"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Annulearknop",
+        "description": "In ikoanknop foar fuortsmite/annulearje yn de pil toane."
+      },
+      {
+        "property": "readonly",
+        "title": "Allinnich lêze",
+        "description": "Ferbergje de annulearknop, sadat de pil allinnich werjûn wurdt."
       }
     ]
   }

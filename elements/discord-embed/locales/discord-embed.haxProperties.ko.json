@@ -9,7 +9,9 @@
         "property": "source",
         "title": "리소스 URL",
         "description": "리소스 URL입니다."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "높이",

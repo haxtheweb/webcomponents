@@ -11,6 +11,13 @@
         "description": "यस AR फाइलको URL।"
       },
       {
+        "property": "skyColor",
+        "title": "आकाशको रङ",
+        "description": "दृश्यमा आकाशको रङ छान्नुहोस्।"
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "AR मा तत्वको X स्थिति।"
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "AR मा तत्वको Z स्थिति।"
-      },
-      {
-        "property": "skyColor",
-        "title": "आकाशको रङ",
-        "description": "दृश्यमा आकाशको रङ छान्नुहोस्।"
       }
     ]
   }

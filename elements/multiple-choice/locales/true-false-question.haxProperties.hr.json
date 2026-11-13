@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Pitanje točno / netočno",
-    "description": "Pitanje točno-netočno"
+    "description": "Tvrdnja koju učenik označava kao točnu ili netočnu."
   },
   "settings": {
     "configure": [

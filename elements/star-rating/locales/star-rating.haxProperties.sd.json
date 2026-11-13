@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "انٽرايڪٽو",
         "description": "ريٽنگ مقرر ڪرڻ لاءِ صارف جي عمل جي اجازت ڏيو."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "روبرڪ پيماني موڊ",

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Оценка звёздами",
-    "description": "Виджет отображения оценки или кнопка для оценивания."
+    "description": "Покажите оценку звёздами или дайте читателям выбрать её."
   },
   "settings": {
     "configure": [
@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Интерактивно",
         "description": "Разрешить пользователю выставлять оценку."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Режим шкалы рубрики",

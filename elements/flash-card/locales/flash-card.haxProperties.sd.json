@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "تصوير جو ذريعو",
         "description": "ڪارڊ لاءِ استعمال ٿيندڙ تصويري فائل. تصويري ڪي ورڊ کي اوور رائيڊ ڪري ٿي."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "تصويري ڪي ورڊ",
+        "description": "بي ترتيب تصوير جو ڪي ورڊ. تصوير جو ذريعو ان کي اوور رائيڊ ڪري ٿو."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "سکيا جو مقصد",
         "description": "OER Schema: ان سکيا جي مقصد جو ID يا URL جنهن جي هي مشق مدد ڪري ٿي."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "تصويري ڪي ورڊ",
-        "description": "بي ترتيب تصوير جو ڪي ورڊ. تصوير جو ذريعو ان کي اوور رائيڊ ڪري ٿو."
       }
     ]
   }

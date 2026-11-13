@@ -86,7 +86,9 @@
         "property": "gameTitle",
         "title": "Inoa pāʻani",
         "description": "Hoʻohua i ka inoa o kēia pāʻani ma nā hanana holomua a me ka māka OER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "ID pāʻani",

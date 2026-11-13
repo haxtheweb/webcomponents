@@ -10,10 +10,6 @@
         "title": "Tab-Symbol"
       },
       {
-        "property": "disabled",
-        "title": "Deaktiviert"
-      },
-      {
         "property": "label",
         "title": "Tab-Beschriftung"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "Eindeutige ID"
-      },
-      {
         "property": "flag",
         "title": "Optionaler Markierungstext"
       },
       {
         "property": "flagIcon",
         "title": "Optionales Markierungssymbol"
+      },
+      {
+        "property": "disabled",
+        "title": "Deaktiviert"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "Eindeutige ID"
       }
     ]
   }

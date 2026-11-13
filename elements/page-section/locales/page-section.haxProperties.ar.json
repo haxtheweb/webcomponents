@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "الأزرار",
         "description": "مجموعة أزرار تُعرض أسفل النص."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "نص المرساة",
         "description": "تسمية المرساة المعروضة في التنقل."
       }
-    ]
+    ],
+    "developer": []
   }
 }

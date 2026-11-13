@@ -86,7 +86,9 @@
         "property": "gameTitle",
         "title": "ಆಟದ ಹೆಸರು",
         "description": "ಪ್ರಗತಿ ಈವೆಂಟ್‌ಗಳು ಮತ್ತು OER Schema ಮಾರ್ಕಪ್‌ನಲ್ಲಿ ಈ ಆಟಕ್ಕೆ ಹೆಸರಿಡುತ್ತದೆ."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "ಆಟದ ಐಡಿ",

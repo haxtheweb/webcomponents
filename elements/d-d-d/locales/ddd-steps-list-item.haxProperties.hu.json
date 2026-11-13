@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Lépéselem",
-    "description": "Lépéslista részét képező elem"
+    "description": "Egyetlen lépés egy lépéslistában."
   },
   "settings": {
     "configure": [

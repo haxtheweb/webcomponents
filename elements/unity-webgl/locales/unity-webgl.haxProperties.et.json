@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Sihtkoht",
         "description": "Tee mängu järguni."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Lõuendi laius",
+        "description": "Lõuendi CSS-laius (näiteks px või em)."
       },
+      {
+        "property": "height",
+        "title": "Lõuendi kõrgus",
+        "description": "Lõuendi CSS-kõrgus (näiteks px või em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Tihendusmeetod",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Toote versioon",
         "description": "Väljalaske versioon."
-      },
-      {
-        "property": "width",
-        "title": "Lõuendi laius",
-        "description": "Lõuendi CSS-laius (näiteks px või em)."
-      },
-      {
-        "property": "height",
-        "title": "Lõuendi kõrgus",
-        "description": "Lõuendi CSS-kõrgus (näiteks px või em)."
       },
       {
         "property": "background",

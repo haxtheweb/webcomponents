@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Àwòrán pósítà",
         "description": "URL àwòrán pósítà."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Àwọn ipa ọ̀rọ̀",
         "description": "Àkọlé àpèjúwe, àkọlé ìtúmọ̀, àpèjúwe, àti àwọn ipa ọ̀rọ̀ mìíràn fún fídíò náà."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Àkókò ìbẹ̀rẹ̀",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Ipa àpèjúwe ohùn",
         "description": "URL sí ipa àpèjúwe ohùn (fáìlì MP3) tí ó ń ṣàlàyé àwọn ohun tí a lè rí."
+      },
+      {
+        "property": "accentColor",
+        "title": "Àwọ̀ ìtẹnumọ́",
+        "description": "(a ti fẹ̀yìn rẹ̀ tì) Yan àwọ̀ àfikún fún ẹ̀rọ ìṣeré."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Èdè",
         "description": "Èdè mídíà náà."
-      },
-      {
-        "property": "accentColor",
-        "title": "Àwọ̀ ìtẹnumọ́",
-        "description": "(a ti fẹ̀yìn rẹ̀ tì) Yan àwọ̀ àfikún fún ẹ̀rọ ìṣeré."
       }
     ]
   }

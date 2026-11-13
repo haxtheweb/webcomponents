@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "CSV-tabel",
-    "description": "Loob tabeli CSV-failist, ükskõik kus see asub."
+    "description": "Kuvab CSV-faili ligipääsetava tabelina."
   },
   "settings": {
     "configure": [

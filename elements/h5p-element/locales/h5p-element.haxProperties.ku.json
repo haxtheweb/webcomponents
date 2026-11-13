@@ -4,17 +4,16 @@
     "description": "Naveroka înteraktîf a H5P ji pelê .h5p yê barkirî lê dide, bêyî pêwistiya serverê H5P"
   },
   "settings": {
-    "configure": [
-      {
-        "slot": "",
-        "description": "Pelek .h5p bar bike an girêde. Ew di geroka de tê vekirin; serverê H5P ne pêwîst e.",
-        "title": "Pelê H5P"
-      }
-    ],
+    "configure": [],
     "advanced": [
       {
         "title": "Koda embed ya iframe ya kevn",
         "description": "Tenê ji bo naveroka kevn ku iframeyek H5P ji malperek din dihewîne. Dema pelek .h5p li jor hatibe danîn vala bihêle."
+      },
+      {
+        "slot": "",
+        "description": "Pelek .h5p bar bike an girêde. Ew di geroka de tê vekirin; serverê H5P ne pêwîst e.",
+        "title": "Pelê H5P"
       }
     ]
   }

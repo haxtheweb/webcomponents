@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "कोई तीर नहीं",
         "description": "बटन का तीर छिपाएँ।"
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "लिंक: लक्ष्य",
@@ -54,7 +52,9 @@
           "_top": "शीर्ष विंडो - _top",
           "_parent": "पैरेंट विंडो - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "लिंक: rel",

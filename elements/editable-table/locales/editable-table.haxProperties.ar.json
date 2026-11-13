@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "السماح بالتصفية",
         "description": "السماح بالتصفية حسب قيم الأعمدة."
-      },
-      {
-        "property": "numericStyles",
-        "title": "تنسيق رقمي",
-        "description": "تطبيق تنسيق رقمي على الأعمدة الرقمية."
-      },
-      {
-        "property": "responsive",
-        "title": "متجاوب",
-        "description": "ضبط تخطيط الجدول على الشاشات الصغيرة."
-      },
-      {
-        "property": "rubricMode",
-        "title": "وضع سلّم التقدير",
-        "description": "تفسير هذا الجدول على أنه Rubric وفق OER Schema بحيث تُصدَر بيانات وصفية من نوع Rubric وRubricScale وRubricCriterion وRubricLevel."
-      },
-      {
-        "property": "rubricType",
-        "title": "نوع سلّم التقدير",
-        "description": "نمط سلّم التقدير الذي يُصدَر كـ oer:rubricType (له معنى فقط عند تفعيل وضع سلّم التقدير).",
-        "options": {
-          "": "(لا شيء)",
-          "analytic": "تحليلي",
-          "holistic": "شمولي",
-          "single-point": "نقطة واحدة",
-          "checklist": "قائمة تحقق"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "زر الطباعة",
         "description": "إضافة زر لطباعة الجدول فقط."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "تنسيق رقمي",
+        "description": "تطبيق تنسيق رقمي على الأعمدة الرقمية."
+      },
+      {
+        "property": "responsive",
+        "title": "متجاوب",
+        "description": "ضبط تخطيط الجدول على الشاشات الصغيرة."
+      },
+      {
+        "property": "rubricMode",
+        "title": "وضع سلّم التقدير",
+        "description": "تفسير هذا الجدول على أنه Rubric وفق OER Schema بحيث تُصدَر بيانات وصفية من نوع Rubric وRubricScale وRubricCriterion وRubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "نوع سلّم التقدير",
+        "description": "نمط سلّم التقدير الذي يُصدَر كـ oer:rubricType (له معنى فقط عند تفعيل وضع سلّم التقدير).",
+        "options": {
+          "": "(لا شيء)",
+          "analytic": "تحليلي",
+          "holistic": "شمولي",
+          "single-point": "نقطة واحدة",
+          "checklist": "قائمة تحقق"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "بيانات CSV",
         "description": "إنشاء جدول من ملف CSV مرفوع."
       }
-    ]
+    ],
+    "developer": []
   }
 }

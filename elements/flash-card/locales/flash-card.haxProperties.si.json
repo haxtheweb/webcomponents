@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "රූප මූලාශ්‍රය",
         "description": "කාඩ්පත සඳහා භාවිත රූප ගොනුව. රූප මූලපදය අභිබවා යයි."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "රූප මූලපදය",
+        "description": "අහඹු රූප මූලපදය. රූප මූලාශ්‍රය මගින් අභිබවා යයි."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "ඉගෙනුම් අරමුණ",
         "description": "OER Schema: මෙම පුහුණුව සහාය දක්වන ඉගෙනුම් අරමුණේ ID හෝ URL."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "රූප මූලපදය",
-        "description": "අහඹු රූප මූලපදය. රූප මූලාශ්‍රය මගින් අභිබවා යයි."
       }
     ]
   }

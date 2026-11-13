@@ -11,6 +11,13 @@
         "description": "ለዚህ AR ፋይል የURL አድራሻ።"
       },
       {
+        "property": "skyColor",
+        "title": "የሰማይ ቀለም",
+        "description": "በትዕይንቱ ውስጥ የሰማዩን ቀለም ምረጥ።"
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "በAR ውስጥ የአካሉ X አቀማመጥ።"
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "በAR ውስጥ የአካሉ Z አቀማመጥ።"
-      },
-      {
-        "property": "skyColor",
-        "title": "የሰማይ ቀለም",
-        "description": "በትዕይንቱ ውስጥ የሰማዩን ቀለም ምረጥ።"
       }
     ]
   }

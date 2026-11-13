@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "ਸਵੈਚਲਿਤ ਐਕਸੈਂਟ ਰੰਗ",
         "description": "ਲੇਬਲ ਲਿਖਤ ਤੋਂ ਐਕਸੈਂਟ ਰੰਗ ਸਵੈਚਲਿਤ ਤੌਰ 'ਤੇ ਤੈਅ ਕਰੋ।"
-      },
-      {
-        "property": "cancelButton",
-        "title": "ਰੱਦ ਬਟਨ",
-        "description": "ਪਿੱਲ ਦੇ ਅੰਦਰ ਹਟਾਓ/ਰੱਦ ਕਰੋ ਆਈਕਨ ਬਟਨ ਦਿਖਾਓ।"
-      },
-      {
-        "property": "readonly",
-        "title": "ਸਿਰਫ਼ ਪੜ੍ਹਨ ਲਈ",
-        "description": "ਰੱਦ ਬਟਨ ਲੁਕਾਓ ਤਾਂ ਜੋ ਪਿੱਲ ਸਿਰਫ਼ ਦਿਖਾਉਣ ਲਈ ਹੋਵੇ।"
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "ਨੀਲਾ ਸਲੇਟੀ",
           "grey": "ਸਲੇਟੀ"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "ਰੱਦ ਬਟਨ",
+        "description": "ਪਿੱਲ ਦੇ ਅੰਦਰ ਹਟਾਓ/ਰੱਦ ਕਰੋ ਆਈਕਨ ਬਟਨ ਦਿਖਾਓ।"
+      },
+      {
+        "property": "readonly",
+        "title": "ਸਿਰਫ਼ ਪੜ੍ਹਨ ਲਈ",
+        "description": "ਰੱਦ ਬਟਨ ਲੁਕਾਓ ਤਾਂ ਜੋ ਪਿੱਲ ਸਿਰਫ਼ ਦਿਖਾਉਣ ਲਈ ਹੋਵੇ।"
       }
     ]
   }

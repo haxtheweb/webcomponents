@@ -11,6 +11,13 @@
         "description": "URL ove AR datoteke."
       },
       {
+        "property": "skyColor",
+        "title": "Boja neba",
+        "description": "Odaberite boju neba u sceni."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "X položaj elementa u AR-u."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "Z položaj elementa u AR-u."
-      },
-      {
-        "property": "skyColor",
-        "title": "Boja neba",
-        "description": "Odaberite boju neba u sceni."
       }
     ]
   }

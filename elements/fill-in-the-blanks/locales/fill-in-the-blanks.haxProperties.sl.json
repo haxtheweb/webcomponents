@@ -14,28 +14,6 @@
         "property": "statement",
         "title": "Izjava",
         "description": "Izjava, ki bo pretvorjena v interakcijo označevanja besed."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "Oblika ocenjevanja",
-        "description": "OER Schema: oblika ocenjevanja za to preverjanje (npr. točke, ocena, odstotki, dokončanje)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Učni cilj",
-        "description": "OER Schema: učni cilj, povezan s tem preverjanjem."
-      },
-      {
-        "property": "forCourse",
-        "title": "Tečaj",
-        "description": "OER Schema: tečaj, za katerega je to preverjanje namenjeno."
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Ime kviza",
-        "description": "Ime kviza, posredovano za identifikacijo tega elementa v okoljih, ki jih poganja xAPI"
       }
     ],
     "advanced": [
@@ -46,6 +24,28 @@
       {
         "title": "Začni strnjeno",
         "description": "Če je vprašanje strnljivo, se začne kot zaprta vrstica, ki prikazuje samo vprašanje in njegov status."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Oblika ocenjevanja",
+        "description": "OER Schema: oblika ocenjevanja za to preverjanje (npr. točke, ocena, odstotki, dokončanje)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Učni cilj",
+        "description": "OER Schema: učni cilj, povezan s tem preverjanjem."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Ime kviza",
+        "description": "Ime kviza, posredovano za identifikacijo tega elementa v okoljih, ki jih poganja xAPI"
+      },
+      {
+        "property": "forCourse",
+        "title": "Tečaj",
+        "description": "OER Schema: tečaj, za katerega je to preverjanje namenjeno."
       }
     ]
   }

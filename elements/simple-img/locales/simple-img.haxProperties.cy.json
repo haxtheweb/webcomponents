@@ -26,7 +26,8 @@
         "description": "Defnyddiol ar gyfer darllenwyr sgrin a gwella SEO."
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "Ansawdd",

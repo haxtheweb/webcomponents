@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "コンセプトクエストゲーム",
-    "description": "歩き回るフィールド。コンセプトが見つけに来て質問します。正解すると倒して家を解放できます。振り返りでは挑戦回数と復習すべきものがわかります。"
+    "description": "概念が質問を出し、正解するとマップが開放されるフィールド型ゲーム。"
   },
   "settings": {
     "configure": [
@@ -91,7 +91,9 @@
         "property": "gameTitle",
         "title": "ゲーム名",
         "description": "進捗イベントと OER Schema マークアップでこのゲームの名前になります。"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "ゲーム ID",

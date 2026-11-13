@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "PDF ব্রাউজার ভিউয়ার",
+    "title": "PDF ভিউয়ার",
     "description": "ঐচ্ছিক কার্ড লেআউট ও ডাউনলোড বোতামসহ PDF ফাইল ইনলাইনে এমবেড করুন।"
   },
   "settings": {
@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "অসমর্থিত বার্তা",
-        "description": "ব্রাউজার PDF ফাইল দেখাতে না পারলে প্রদর্শিত বার্তা।"
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "অসমর্থিত লিংক বার্তা",
-        "description": "ব্রাউজার PDF ফাইল দেখাতে না পারলে লিংক টেক্সট।"
-      },
-      {
         "property": "width",
         "title": "প্রস্থ",
         "description": "PDF ভিউয়ারের প্রস্থ।"
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "উচ্চতা",
         "description": "PDF ভিউয়ারের উচ্চতা।"
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "অসমর্থিত বার্তা",
+        "description": "ব্রাউজার PDF ফাইল দেখাতে না পারলে প্রদর্শিত বার্তা।"
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "অসমর্থিত লিংক বার্তা",
+        "description": "ব্রাউজার PDF ফাইল দেখাতে না পারলে লিংক টেক্সট।"
       }
     ]
   }

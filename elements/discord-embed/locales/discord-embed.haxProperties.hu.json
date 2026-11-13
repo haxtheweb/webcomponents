@@ -9,7 +9,9 @@
         "property": "source",
         "title": "Erőforrás URL-je",
         "description": "Az erőforrás URL-je."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Magasság",

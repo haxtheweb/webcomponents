@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Noolata",
         "description": "Peida nupu nool."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Link: sihtkoht",
@@ -54,7 +52,9 @@
           "_top": "Ülemises aknas - _top",
           "_parent": "Ülemaknas - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Link: rel",

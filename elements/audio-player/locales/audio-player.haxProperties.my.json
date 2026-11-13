@@ -46,6 +46,16 @@
         "property": "accentColor",
         "title": "အထူးပြု အရောင်",
         "description": "ဖွင့်စက်အတွက် accent အရောင်ကို ရွေးပါ။"
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "အချိန်တံဆိပ်များ ဝှက်ရန်",
+        "description": "စာသားမှတ်တမ်းရှိ အချိန်တံဆိပ်များကို ဝှက်ရန်။"
+      },
+      {
+        "property": "hideTranscript",
+        "title": "စာသားမှတ်တမ်း ဝှက်ရန်",
+        "description": "စာသားမှတ်တမ်းကို မူလအားဖြင့် ဝှက်ရန်။"
       }
     ],
     "developer": [
@@ -72,16 +82,6 @@
         "property": "disableInteractive",
         "title": "အပြန်အလှန် ပိတ်ရန်",
         "description": "စာသားမှတ်တမ်းကို နှိပ်နိုင်စေသော အပြန်အလှန်မုဒ်ကို ပိတ်ရန်။"
-      },
-      {
-        "property": "hideTimestamps",
-        "title": "အချိန်တံဆိပ်များ ဝှက်ရန်",
-        "description": "စာသားမှတ်တမ်းရှိ အချိန်တံဆိပ်များကို ဝှက်ရန်။"
-      },
-      {
-        "property": "hideTranscript",
-        "title": "စာသားမှတ်တမ်း ဝှက်ရန်",
-        "description": "စာသားမှတ်တမ်းကို မူလအားဖြင့် ဝှက်ရန်။"
       },
       {
         "property": "lang",

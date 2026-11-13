@@ -10,10 +10,6 @@
         "title": "Vahekaardi ikoon"
       },
       {
-        "property": "disabled",
-        "title": "Keelatud"
-      },
-      {
         "property": "label",
         "title": "Vahekaardi silt"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "Unikaalne ID"
-      },
-      {
         "property": "flag",
         "title": "Valikuline märgise tekst"
       },
       {
         "property": "flagIcon",
         "title": "Valikuline märgise ikoon"
+      },
+      {
+        "property": "disabled",
+        "title": "Keelatud"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "Unikaalne ID"
       }
     ]
   }

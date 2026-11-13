@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "بدون سهم",
         "description": "إخفاء سهم الزر."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "الرابط: الهدف",
@@ -54,7 +52,9 @@
           "_top": "النافذة العليا - _top",
           "_parent": "النافذة الأم - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "الرابط: rel",

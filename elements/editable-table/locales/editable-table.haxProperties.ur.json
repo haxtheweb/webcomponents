@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "فلٹر کی اجازت",
         "description": "کالم کی قدروں کے لحاظ سے فلٹر کرنے کی اجازت دیں۔"
-      },
-      {
-        "property": "numericStyles",
-        "title": "عددی اسٹائلنگ",
-        "description": "عددی کالموں پر عددی اسٹائلنگ لاگو کریں۔"
-      },
-      {
-        "property": "responsive",
-        "title": "ریسپانسیو",
-        "description": "چھوٹی اسکرینوں پر جدول کا لے آؤٹ ایڈجسٹ کریں۔"
-      },
-      {
-        "property": "rubricMode",
-        "title": "روبرک موڈ",
-        "description": "اس جدول کو OER Schema کا Rubric سمجھیں تاکہ Rubric، RubricScale، RubricCriterion اور RubricLevel میٹا ڈیٹا جاری ہو۔"
-      },
-      {
-        "property": "rubricType",
-        "title": "روبرک کی قسم",
-        "description": "oer:rubricType کے طور پر جاری ہونے والا روبرک انداز (صرف روبرک موڈ آن ہونے پر بامعنی)۔",
-        "options": {
-          "": "(کوئی نہیں)",
-          "analytic": "تجزیاتی",
-          "holistic": "مجموعی",
-          "single-point": "واحد نکاتی",
-          "checklist": "چیک لسٹ"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "پرنٹ بٹن",
         "description": "صرف جدول پرنٹ کرنے کا بٹن شامل کریں۔"
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "عددی اسٹائلنگ",
+        "description": "عددی کالموں پر عددی اسٹائلنگ لاگو کریں۔"
+      },
+      {
+        "property": "responsive",
+        "title": "ریسپانسیو",
+        "description": "چھوٹی اسکرینوں پر جدول کا لے آؤٹ ایڈجسٹ کریں۔"
+      },
+      {
+        "property": "rubricMode",
+        "title": "روبرک موڈ",
+        "description": "اس جدول کو OER Schema کا Rubric سمجھیں تاکہ Rubric، RubricScale، RubricCriterion اور RubricLevel میٹا ڈیٹا جاری ہو۔"
+      },
+      {
+        "property": "rubricType",
+        "title": "روبرک کی قسم",
+        "description": "oer:rubricType کے طور پر جاری ہونے والا روبرک انداز (صرف روبرک موڈ آن ہونے پر بامعنی)۔",
+        "options": {
+          "": "(کوئی نہیں)",
+          "analytic": "تجزیاتی",
+          "holistic": "مجموعی",
+          "single-point": "واحد نکاتی",
+          "checklist": "چیک لسٹ"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "CSV ڈیٹا",
         "description": "اپ لوڈ کی گئی CSV فائل سے جدول بنائیں۔"
       }
-    ]
+    ],
+    "developer": []
   }
 }

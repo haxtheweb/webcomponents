@@ -1,10 +1,10 @@
 {
   "gizmo": {
-    "title": "HAXcms: underordnat block",
-    "description": "Dynamiskt block som visar underordnade till aktuell sida"
+    "title": "Undersidor",
+    "description": "Listar undersidorna till den aktuella sidan."
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "Dynamisk metod",
@@ -14,7 +14,9 @@
           "parent": "Den överordnades underordnade",
           "ancestor": "Alla underordnade från den högsta förfadern"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "Startnivå"

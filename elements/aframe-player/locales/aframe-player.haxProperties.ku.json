@@ -11,6 +11,13 @@
         "description": "URL ya vê pela AR."
       },
       {
+        "property": "skyColor",
+        "title": "Rengê ezmanan",
+        "description": "Rengê ezman di dîmenê de hilbijêre."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "Cihê X yê hêmanê di AR de."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "Cihê Z yê hêmanê di AR de."
-      },
-      {
-        "property": "skyColor",
-        "title": "Rengê ezmanan",
-        "description": "Rengê ezman di dîmenê de hilbijêre."
       }
     ]
   }

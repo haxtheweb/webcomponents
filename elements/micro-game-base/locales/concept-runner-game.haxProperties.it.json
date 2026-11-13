@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Gioco di corsa dei concetti",
-    "description": "Uno scroller laterale. Il personaggio corre infuocato e non si ferma mai. Salta per afferrare i concetti buoni e superare quelli cattivi, poi guarda un riepilogo di cosa era buono e cosa era cattivo."
+    "description": "Un gioco a scorrimento laterale: salta per prendere i concetti giusti ed evitare quelli sbagliati."
   },
   "settings": {
     "configure": [
@@ -89,7 +89,9 @@
         "property": "gameTitle",
         "title": "Nome del gioco",
         "description": "Dà un nome a questo gioco negli eventi di avanzamento e nel markup OER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "ID del gioco",

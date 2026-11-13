@@ -9,7 +9,9 @@
         "property": "source",
         "title": "URL ya Gwero",
         "description": "URL ya gwero."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Kutalika",

@@ -14,16 +14,6 @@
         "property": "title",
         "title": "ਵਿਕਲਪਿਕ ਸਿਰਲੇਖ",
         "description": "QR ਕੋਡ ਸਰੋਤ ਨਾਲ ਲਿੰਕ ਕੀਤਾ ਵਿਕਲਪਿਕ ਸਿਰਲੇਖ।"
-      },
-      {
-        "property": "modulesize",
-        "title": "ਆਕਾਰ",
-        "description": "QR ਕੋਡ ਦਾ ਆਕਾਰ।"
-      },
-      {
-        "property": "margin",
-        "title": "ਹਾਸ਼ੀਆ",
-        "description": "ਕੋਡ ਦੇ ਦੁਆਲੇ ਘੇਰਾ।"
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "ਆਕਾਰ",
+        "description": "QR ਕੋਡ ਦਾ ਆਕਾਰ।"
+      },
+      {
+        "property": "margin",
+        "title": "ਹਾਸ਼ੀਆ",
+        "description": "ਕੋਡ ਦੇ ਦੁਆਲੇ ਘੇਰਾ।"
       }
     ]
   }

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Рэйтынг зоркамі",
-    "description": "Віджэт адлюстравання рэйтынгу або кнопка для ацэнкі."
+    "description": "Пакажыце ацэнку зоркамі або дайце чытачам выбраць яе."
   },
   "settings": {
     "configure": [
@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Інтэрактыўны",
         "description": "Дазволіць карыстальніку ставіць ацэнку."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Рэжым шкалы рубрыкі",

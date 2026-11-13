@@ -4,17 +4,16 @@
     "description": "Yüklənmiş .h5p faylından interaktiv H5P məzmununu oxudur, H5P serverinə ehtiyac yoxdur"
   },
   "settings": {
-    "configure": [
-      {
-        "slot": "",
-        "description": ".h5p faylı yükləyin və ya ona keçid verin. Brauzerdə açılır; H5P serveri tələb olunmur.",
-        "title": "H5P faylı"
-      }
-    ],
+    "configure": [],
     "advanced": [
       {
         "title": "Köhnə iframe yerləşdirmə kodu",
         "description": "Yalnız başqa saytdan H5P iframe-i yerləşdirən köhnə məzmun üçün. Yuxarıda .h5p faylı təyin olunubsa, boş buraxın."
+      },
+      {
+        "slot": "",
+        "description": ".h5p faylı yükləyin və ya ona keçid verin. Brauzerdə açılır; H5P serveri tələb olunmur.",
+        "title": "H5P faylı"
       }
     ]
   }

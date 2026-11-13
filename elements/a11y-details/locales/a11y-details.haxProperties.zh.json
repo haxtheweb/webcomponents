@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "无障碍详情按钮",
+    "title": "详情",
     "description": "使用 details 和 summary 实现的无障碍渐进式展开"
   },
   "settings": {

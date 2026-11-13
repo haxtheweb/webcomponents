@@ -4,17 +4,16 @@
     "description": "Speelt interactieve H5P-inhoud af vanuit een geüpload .h5p-bestand, zonder H5P-server"
   },
   "settings": {
-    "configure": [
-      {
-        "slot": "",
-        "description": "Upload of koppel een .h5p-bestand. Het wordt in de browser uitgepakt; er is geen H5P-server nodig.",
-        "title": "H5P-bestand"
-      }
-    ],
+    "configure": [],
     "advanced": [
       {
         "title": "Verouderde iframe-insluitcode",
         "description": "Alleen voor oudere inhoud die een H5P-iframe van een andere site insluit. Laat leeg als hierboven een .h5p-bestand is ingesteld."
+      },
+      {
+        "slot": "",
+        "description": "Upload of koppel een .h5p-bestand. Het wordt in de browser uitgepakt; er is geen H5P-server nodig.",
+        "title": "H5P-bestand"
       }
     ]
   }

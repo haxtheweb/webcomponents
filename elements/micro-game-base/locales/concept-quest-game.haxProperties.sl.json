@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Igra odprave po pojmih",
-    "description": "Svet za raziskovanje. Pojmi te najdejo in postavijo vprašanje. Odgovori pravilno, da enega premagaš in odkleneš njegovo hišo. Povzetek prikaže poskuse in kaj ponoviti."
+    "description": "Igra z odprtim zemljevidom, v kateri pojmi postavljajo vprašanja, pravilni odgovori pa odklepajo zemljevid."
   },
   "settings": {
     "configure": [
@@ -91,7 +91,9 @@
         "property": "gameTitle",
         "title": "Ime igre",
         "description": "Poimenuje to igro v dogodkih napredka in oznakah OER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "ID igre",

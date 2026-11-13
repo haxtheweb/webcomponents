@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "펼치기/접기 그룹",
-    "description": "펼치기/접기 요소의 그룹입니다."
+    "title": "접기 그룹",
+    "description": "접을 수 있는 컨테이너 그룹."
   },
   "settings": {
     "configure": [

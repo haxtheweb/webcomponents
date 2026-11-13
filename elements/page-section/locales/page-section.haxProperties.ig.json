@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "Bọtịnụ",
         "description": "Otu bọtịnụ a na-egosi n'okpuru ederede."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "Ederede arịlịka",
         "description": "Akara aha arịlịka a na-egosi na nnyocha."
       }
-    ]
+    ],
+    "developer": []
   }
 }

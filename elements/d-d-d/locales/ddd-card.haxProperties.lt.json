@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Be rodyklės",
         "description": "Slėpti mygtuko rodyklę."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Nuoroda: paskirtis",
@@ -54,7 +52,9 @@
           "_top": "Viršutinis langas – _top",
           "_parent": "Tėvinis langas – _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Nuoroda: rel",

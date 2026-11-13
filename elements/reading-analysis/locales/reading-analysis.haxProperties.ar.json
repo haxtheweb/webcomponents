@@ -38,21 +38,6 @@
         "slot": "",
         "title": "نص القراءة",
         "description": "نص القراءة الذي يعمل فيه المتعلمون. أي HTML: عناوين وفقرات وقوائم وأشكال."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "صيغة التقدير",
-        "description": "OER Schema: صيغة تقدير هذا التقييم (مثل النقاط أو الحرف أو النسبة المئوية أو الإكمال)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "هدف التعلّم",
-        "description": "OER Schema: هدف التعلّم المرتبط بهذا التقييم."
-      },
-      {
-        "property": "forCourse",
-        "title": "المقرر",
-        "description": "OER Schema: المقرر المخصص له هذا التقييم."
       }
     ],
     "advanced": [
@@ -70,6 +55,16 @@
         "property": "collapsed",
         "title": "ابدأ مطويًا",
         "description": "عند تفعيل الطي، يبدأ كصف مغلق يعرض السؤال وحالته فقط."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "صيغة التقدير",
+        "description": "OER Schema: صيغة تقدير هذا التقييم (مثل النقاط أو الحرف أو النسبة المئوية أو الإكمال)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "هدف التعلّم",
+        "description": "OER Schema: هدف التعلّم المرتبط بهذا التقييم."
       }
     ],
     "developer": [
@@ -77,6 +72,11 @@
         "property": "quizName",
         "title": "اسم الاختبار",
         "description": "اسم الاختبار المُمرَّر للاستخدام في البيئات المعتمدة على xAPI لتعريف هذا العنصر"
+      },
+      {
+        "property": "forCourse",
+        "title": "المقرر",
+        "description": "OER Schema: المقرر المخصص له هذا التقييم."
       }
     ]
   }

@@ -10,10 +10,6 @@
         "title": "ట్యాబ్ చిహ్నం"
       },
       {
-        "property": "disabled",
-        "title": "నిలిపివేయబడింది"
-      },
-      {
         "property": "label",
         "title": "ట్యాబ్ లేబుల్"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "ప్రత్యేక ID"
-      },
-      {
         "property": "flag",
         "title": "ఐచ్ఛిక ఫ్లాగ్ వచనం"
       },
       {
         "property": "flagIcon",
         "title": "ఐచ్ఛిక ఫ్లాగ్ చిహ్నం"
+      },
+      {
+        "property": "disabled",
+        "title": "నిలిపివేయబడింది"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "ప్రత్యేక ID"
       }
     ]
   }

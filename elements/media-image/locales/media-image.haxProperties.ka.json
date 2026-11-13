@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "წარწერა",
         "description": "სურათის წარწერა."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "ფიგურის სათაური",
-        "description": "ფიგურის ნიშნულის სათაური."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "ფიგურის აღწერა",
-        "description": "ფიგურის ნიშნულის აღწერა."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "სურათის მოდალური ფანჯრის გამორთვა",
         "description": "დაწკაპუნებით სურათის დათვალიერების დიალოგში გახსნის გამორთვა."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "ფიგურის სათაური",
+        "description": "ფიგურის ნიშნულის სათაური."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "ფიგურის აღწერა",
+        "description": "ფიგურის ნიშნულის აღწერა."
       }
     ],
     "developer": [

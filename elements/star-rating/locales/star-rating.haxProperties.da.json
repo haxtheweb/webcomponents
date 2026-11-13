@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Stjernebedømmelse",
-    "description": "Widget til visning af bedømmelse eller knap til at bedømme."
+    "description": "Vis en stjernebedømmelse, eller lad læserne vælge en."
   },
   "settings": {
     "configure": [
@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Interaktiv",
         "description": "Tillad brugerinteraktion til at angive bedømmelsen."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Rubrikskalatilstand",

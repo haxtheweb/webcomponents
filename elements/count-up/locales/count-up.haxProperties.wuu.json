@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "后缀文字",
         "description": "数字后头显示个文字（譬如 '%'）。"
-      },
-      {
-        "slot": "prefix",
-        "title": "前缀插槽",
-        "description": "数字前头个可选插槽内容。"
-      },
-      {
-        "slot": "suffix",
-        "title": "后缀插槽",
-        "description": "数字后头个可选插槽内容。"
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "勿用缓动",
         "description": "关脱缓动，让计数匀速。"
+      },
+      {
+        "slot": "prefix",
+        "title": "前缀插槽",
+        "description": "数字前头个可选插槽内容。"
+      },
+      {
+        "slot": "suffix",
+        "title": "后缀插槽",
+        "description": "数字后头个可选插槽内容。"
       }
     ]
   }

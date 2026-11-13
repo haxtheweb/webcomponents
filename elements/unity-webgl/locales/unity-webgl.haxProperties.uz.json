@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Nishon",
         "description": "Oʻyin yigʻmasiga yoʻl."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Kanva kengligi",
+        "description": "Kanvaning CSS kengligi (masalan, px yoki em)."
       },
+      {
+        "property": "height",
+        "title": "Kanva balandligi",
+        "description": "Kanvaning CSS balandligi (masalan, px yoki em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Siqish usuli",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Mahsulot versiyasi",
         "description": "Reliz versiyasi."
-      },
-      {
-        "property": "width",
-        "title": "Kanva kengligi",
-        "description": "Kanvaning CSS kengligi (masalan, px yoki em)."
-      },
-      {
-        "property": "height",
-        "title": "Kanva balandligi",
-        "description": "Kanvaning CSS balandligi (masalan, px yoki em)."
       },
       {
         "property": "background",

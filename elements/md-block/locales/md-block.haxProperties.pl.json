@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "Blok treści markdown wpisanej bezpośrednio lub wczytanej zdalnie"
+    "description": "Treść Markdown wpisana bezpośrednio lub wczytana z pliku."
   },
   "settings": {
     "configure": [

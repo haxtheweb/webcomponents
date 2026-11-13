@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "간단한 이미지",
-    "description": "간단한 매개변수로 이미지를 조작합니다."
+    "description": "간단한 설정으로 크기 조정, 자르기, 회전하는 이미지."
   },
   "settings": {
     "configure": [
@@ -26,7 +26,8 @@
         "description": "화면 낭독기와 SEO 향상에 유용합니다."
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "품질",

@@ -26,11 +26,6 @@
         "description": "Testu alternativu per l'imagine."
       },
       {
-        "property": "animated",
-        "title": "Animatu",
-        "description": "S'è u prugressu hè animatu à u primu caricamentu"
-      },
-      {
         "property": "complete",
         "title": "Cumpiutu",
         "description": "Una tavula di valori cumpiuti."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "Tutale",
         "description": "Tutale quandu tutti l'elementi sò cumpiuti."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "Animatu",
+        "description": "S'è u prugressu hè animatu à u primu caricamentu"
       },
       {
         "property": "startAngle",

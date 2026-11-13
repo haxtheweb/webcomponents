@@ -1,0 +1,68 @@
+{
+  "type": "grid",
+  "canScale": false,
+  "designSystem": false,
+  "canEditSource": true,
+  "contentEditable": false,
+  "hideDefaultSettings": true,
+  "gizmo": {
+    "title": "Career role",
+    "description": "An individual role within an organization",
+    "icon": "icons:work",
+    "color": "light-blue",
+    "tags": ["Content", "career", "role", "job", "resume"],
+    "handles": [],
+    "meta": {
+      "author": "HAXTheWeb core team"
+    },
+    "requiresParent": "career-org-item"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Title",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "startDate",
+        "title": "Start Date",
+        "inputMethod": "datepicker"
+      },
+      {
+        "property": "endDate",
+        "title": "End Date (Optional)",
+        "inputMethod": "datepicker"
+      },
+      {
+        "property": "skills",
+        "title": "Associated Skills",
+        "description": "Select the + button to start adding skills",
+        "inputMethod": "array",
+        "itemLabel": "name",
+        "hideReorder": true,
+        "expanded": true,
+        "hideDuplicate": true,
+        "properties": [
+          {
+            "property": "name",
+            "title": "Skill",
+            "inputMethod": "textfield"
+          }
+        ]
+      }
+    ],
+    "advanced": [],
+    "developer": []
+  },
+  "demoSchema": [
+    {
+      "tag": "career-role-item",
+      "properties": {
+        "title": "Role title",
+        "startDate": "2024-08-01"
+      },
+      "content": "<p>What you did in this role.</p>"
+    }
+  ]
+}

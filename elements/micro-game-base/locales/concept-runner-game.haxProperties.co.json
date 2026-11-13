@@ -89,7 +89,9 @@
         "property": "gameTitle",
         "title": "Nome di u ghjocu",
         "description": "Dà un nome à stu ghjocu in l'eventi di prugressu è in u marcatu OER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Id di u ghjocu",

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Tärnhinnang",
-    "description": "Hinnangu kuvamise vidin või nupp hindamiseks."
+    "description": "Kuvage tärnihinnang või laske lugejatel see valida."
   },
   "settings": {
     "configure": [
@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Interaktiivne",
         "description": "Luba kasutajal hinnangut määrata."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Hindamisskaala režiim",

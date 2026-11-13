@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Ei nuolta",
         "description": "Piilota painikkeen nuoli."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Linkki: kohde",
@@ -54,7 +52,9 @@
           "_top": "Ylin ikkuna - _top",
           "_parent": "Yläikkuna - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Linkki: rel",

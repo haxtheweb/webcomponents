@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "រូបភាពផ្ទាំងរូប",
         "description": "URL រូបភាពផ្ទាំងរូប។"
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "បទអត្ថបទ",
         "description": "អក្សររត់ អក្សររត់បកប្រែ ការពិពណ៌នា និងបទអត្ថបទផ្សេងទៀតសម្រាប់វីដេអូ។"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "ពេលចាប់ផ្ដើម",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "បទការពិពណ៌នាជាសំឡេង",
         "description": "URL ទៅកាន់បទការពិពណ៌នាជាសំឡេង (ឯកសារ MP3) ដែលនិទានអំពីធាតុដែលមើលឃើញ។"
+      },
+      {
+        "property": "accentColor",
+        "title": "ពណ៌សង្កត់",
+        "description": "(លែងប្រើ) ជ្រើសរើសពណ៌សង្កត់សម្រាប់កម្មវិធីចាក់។"
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "ភាសា",
         "description": "ភាសារបស់មេឌៀ។"
-      },
-      {
-        "property": "accentColor",
-        "title": "ពណ៌សង្កត់",
-        "description": "(លែងប្រើ) ជ្រើសរើសពណ៌សង្កត់សម្រាប់កម្មវិធីចាក់។"
       }
     ]
   }

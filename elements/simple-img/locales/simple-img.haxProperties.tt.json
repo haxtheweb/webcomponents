@@ -26,7 +26,8 @@
         "description": "Экран укыгычлары һәм яхшырак SEO өчен файдалы."
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "Сыйфат",

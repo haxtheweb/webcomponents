@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Nkọwa onyonyo",
         "description": "Nkọwa maka onyonyo ahụ."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Aha ọgụgụ",
-        "description": "Aha maka akara ọgụgụ."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Nkọwa ọgụgụ",
-        "description": "Nkọwa maka akara ọgụgụ."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Gbanyụọ modal onyonyo",
         "description": "Gbanyụọ ịpị na-emepe onyonyo n'igbe nnyocha onyonyo."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Aha ọgụgụ",
+        "description": "Aha maka akara ọgụgụ."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Nkọwa ọgụgụ",
+        "description": "Nkọwa maka akara ọgụgụ."
       }
     ],
     "developer": [

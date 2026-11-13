@@ -4,22 +4,23 @@
     "description": "Orodha ya kucheza inayowasilisha vichezaji vya video na sauti katika mpangilio wa kichezaji na upau wa pembeni."
   },
   "settings": {
-    "configure": [
+    "configure": [],
+    "advanced": [
       {
         "property": "activeIndex",
         "title": "Faharasa ya kuanzia",
         "description": "Nambari ya kipengee cha kuanzia."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kozi",
-        "description": "Kozi ambayo orodha hii ya kucheza imekusudiwa (kitambulisho cha kozi au URL)."
       }
     ],
     "developer": [
       {
         "title": "Media",
         "description": "Video na sauti zilizo kwenye orodha ya kucheza. Haihaririwi hapa: muhtasari wa ukurasa huitumia kujua vizuizi vipi vinaweza kudondoshwa ndani."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kozi",
+        "description": "Kozi ambayo orodha hii ya kucheza imekusudiwa (kitambulisho cha kozi au URL)."
       }
     ]
   }

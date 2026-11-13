@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Madda Suuraa",
         "description": "Faayilii suuraa kaardiif fayyadamu. Jecha Ijoo Suuraa ni bakka bu'a."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Jecha Ijoo Suuraa",
+        "description": "Jecha ijoo suuraa akkasumaa. Madda Suuraatiin bakka bu'ama."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Kaayyoo Barnootaa",
         "description": "OER Schema: ID ykn URL kaayyoo barnootaa shaakalli kun deeggaru."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Jecha Ijoo Suuraa",
-        "description": "Jecha ijoo suuraa akkasumaa. Madda Suuraatiin bakka bu'ama."
       }
     ]
   }

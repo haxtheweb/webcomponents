@@ -26,7 +26,8 @@
         "description": "Erabilgarria pantaila-irakurgailuetarako eta SEO hobetzeko."
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "Kalitatea",

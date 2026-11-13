@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Evenemangsbricka",
-    "description": "Komponent för evenemangsbricka."
+    "description": "En namnbricka i konferensstil med foto, namn och organisation."
   },
   "settings": {
     "configure": [

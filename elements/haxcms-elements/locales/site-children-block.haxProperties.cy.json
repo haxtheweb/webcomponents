@@ -4,7 +4,7 @@
     "description": "Bloc dynamig i ddangos plentyn y dudalen gyfredol"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "Dull dynamig",
@@ -14,7 +14,9 @@
           "parent": "Plant y rhiant",
           "ancestor": "Pob plentyn o'r hynafiad uchaf"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "Lefel dechrau"

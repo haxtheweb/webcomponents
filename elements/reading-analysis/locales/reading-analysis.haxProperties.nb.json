@@ -38,21 +38,6 @@
         "slot": "",
         "title": "Lesetekst",
         "description": "Teksten elevene arbeider i. All HTML: overskrifter, avsnitt, lister og figurer."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "Vurderingsformat",
-        "description": "OER Schema: vurderingsformat for denne vurderingen (f.eks. poeng, bokstav, prosent, fullføring)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Læringsmål",
-        "description": "OER Schema: læringsmål knyttet til denne vurderingen."
-      },
-      {
-        "property": "forCourse",
-        "title": "Emne",
-        "description": "OER Schema: emnet denne vurderingen er beregnet for."
       }
     ],
     "advanced": [
@@ -70,6 +55,16 @@
         "property": "collapsed",
         "title": "Start sammenfoldet",
         "description": "Når det er sammenleggbart, start som en lukket rad som bare viser spørsmålet og statusen."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Vurderingsformat",
+        "description": "OER Schema: vurderingsformat for denne vurderingen (f.eks. poeng, bokstav, prosent, fullføring)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Læringsmål",
+        "description": "OER Schema: læringsmål knyttet til denne vurderingen."
       }
     ],
     "developer": [
@@ -77,6 +72,11 @@
         "property": "quizName",
         "title": "Navn på quizen",
         "description": "Quiznavn som sendes inn for å identifisere dette elementet i xAPI-baserte miljøer"
+      },
+      {
+        "property": "forCourse",
+        "title": "Emne",
+        "description": "OER Schema: emnet denne vurderingen er beregnet for."
       }
     ]
   }

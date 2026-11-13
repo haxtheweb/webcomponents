@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Χωρίς βέλος",
         "description": "Απόκρυψη του βέλους του κουμπιού."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Σύνδεσμος: στόχος",
@@ -54,7 +52,9 @@
           "_top": "Ανώτατο παράθυρο - _top",
           "_parent": "Γονικό παράθυρο - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Σύνδεσμος: rel",

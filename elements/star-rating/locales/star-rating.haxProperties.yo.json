@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Ìbáṣepọ̀",
         "description": "Gbà olùlò láàyè láti ṣètò ìdíwọ̀n."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Ipò Ìwọ̀n Rubric",

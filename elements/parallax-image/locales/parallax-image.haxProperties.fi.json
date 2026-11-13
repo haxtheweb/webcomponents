@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Parallaksikuva",
-    "description": "Kuva vierittyy ohi"
+    "description": "Täysleveä kuva, joka vierii sivua hitaammin ja jonka päällä on otsikko."
   },
   "settings": {
     "configure": [

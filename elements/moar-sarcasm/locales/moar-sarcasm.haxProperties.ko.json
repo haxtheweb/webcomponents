@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "비꼬기",
-    "description": "텍스트를 장난스럽게 비꼬아 표시합니다"
+    "description": "비꼬는 어조를 위한 대소문자 교차 텍스트."
   },
   "settings": {
     "configure": [

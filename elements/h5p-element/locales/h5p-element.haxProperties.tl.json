@@ -4,17 +4,16 @@
     "description": "Nagpe-play ng interaktibong nilalaman ng H5P mula sa na-upload na .h5p file, nang hindi nangangailangan ng H5P server"
   },
   "settings": {
-    "configure": [
-      {
-        "slot": "",
-        "description": "Mag-upload o mag-link ng .h5p file. Binubuksan ito sa browser; walang kinakailangang H5P server.",
-        "title": "H5P file"
-      }
-    ],
+    "configure": [],
     "advanced": [
       {
         "title": "Lumang iframe embed code",
         "description": "Para lamang sa mas lumang nilalaman na nag-e-embed ng H5P iframe mula sa ibang site. Iwanang walang laman kapag may .h5p file na nakatakda sa itaas."
+      },
+      {
+        "slot": "",
+        "description": "Mag-upload o mag-link ng .h5p file. Binubuksan ito sa browser; walang kinakailangang H5P server.",
+        "title": "H5P file"
       }
     ]
   }

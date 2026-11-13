@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Okvir dejavnosti",
-    "description": "Majhen oblikovan blok naslova."
+    "description": "Označen naslov, ki označuje začetek dejavnosti."
   },
   "settings": {
     "configure": [

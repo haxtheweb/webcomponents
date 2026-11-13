@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Առանց սլաքի",
         "description": "Թաքցնել կոճակի սլաքը։"
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Հղում՝ target",
@@ -54,7 +52,9 @@
           "_top": "Վերին պատուհան - _top",
           "_parent": "Ծնող պատուհան - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Հղում՝ rel",

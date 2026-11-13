@@ -11,6 +11,13 @@
         "description": "URL ملف AR هذا."
       },
       {
+        "property": "skyColor",
+        "title": "لون السماء",
+        "description": "اختر لون السماء في المشهد."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "موضع X للعنصر في AR."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "موضع Z للعنصر في AR."
-      },
-      {
-        "property": "skyColor",
-        "title": "لون السماء",
-        "description": "اختر لون السماء في المشهد."
       }
     ]
   }

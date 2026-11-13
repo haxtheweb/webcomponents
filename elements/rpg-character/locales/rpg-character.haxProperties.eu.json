@@ -11,11 +11,6 @@
         "description": "Ausazko pertsonaia bat sortzeko erabiltzen den hitza."
       },
       {
-        "property": "code",
-        "title": "Pertsonaiaren kodea",
-        "description": "Itsatsi gordetako kode bat pertsonaia hori berriz sortzeko."
-      },
-      {
         "property": "hat",
         "title": "Txapela",
         "description": "Txapelaren estiloa.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Maskara",
-        "description": "Aurpegian edo buruan janzten den maskara.",
-        "options": {
-          "none": "Bat ere ez",
-          "lion": "Lehoia",
-          "plague": "Izurriteko medikua",
-          "theater": "Antzerkia",
-          "pumpkin": "Kalabaza",
-          "ghost": "Mamua",
-          "mummy": "Momia",
-          "wrestler": "Borrokalari maskara",
-          "block-head": "Bloke-burua",
-          "web": "Armiarma-sare maskara",
-          "werewolf": "Gizotso aurpegia",
-          "shadow": "Itzal aurpegia"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Makillajea",
-        "description": "Aurpegiko pintura edo ezpain-margoa.",
-        "options": {
-          "none": "Bat ere ez",
-          "red-lipstick": "Ezpain-margo gorria",
-          "pink-lipstick": "Ezpain-margo arrosa",
-          "berry-lipstick": "Ezpain-margo masustakoloreko",
-          "clown": "Pailazo-pintura",
-          "fangs": "Letaginak",
-          "skull": "Garezur-pintura",
-          "zombie": "Zonbi-pintura",
-          "red-nose": "Sudur gorria",
-          "white-beard": "Bizar zuria",
-          "domino": "Heroi-maskara",
-          "carrot": "Azenario-sudurra",
-          "bunny": "Untxi-sudurra",
-          "mustache": "Bibotea",
-          "monster": "Munstro aurpegi-margoa",
-          "round-glasses": "Betaurreko biribilak"
-        }
-      },
-      {
         "property": "expression",
         "title": "Espresioa",
         "description": "Aurpegiko espresioa.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Maskota",
+        "description": "Pertsonaiaren ondoko maskota.",
+        "options": {
+          "none": "Bat ere ez",
+          "cat": "Katua",
+          "dog": "Txakurra",
+          "bunny": "Untxia",
+          "goldfish": "Arrain gorria",
+          "slime": "Lirdinga",
+          "squirrel": "Urtxintxa",
+          "dragon": "Herensuge txikia",
+          "parrot": "Loroa",
+          "owl": "Hontza",
+          "bat": "Saguzarra"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Pertsonaiaren kodea",
+        "description": "Itsatsi gordetako kode bat pertsonaia hori berriz sortzeko."
+      },
+      {
+        "property": "mask",
+        "title": "Maskara",
+        "description": "Aurpegian edo buruan janzten den maskara.",
+        "options": {
+          "none": "Bat ere ez",
+          "lion": "Lehoia",
+          "plague": "Izurriteko medikua",
+          "theater": "Antzerkia",
+          "pumpkin": "Kalabaza",
+          "ghost": "Mamua",
+          "mummy": "Momia",
+          "wrestler": "Borrokalari maskara",
+          "block-head": "Bloke-burua",
+          "web": "Armiarma-sare maskara",
+          "werewolf": "Gizotso aurpegia",
+          "shadow": "Itzal aurpegia"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Makillajea",
+        "description": "Aurpegiko pintura edo ezpain-margoa.",
+        "options": {
+          "none": "Bat ere ez",
+          "red-lipstick": "Ezpain-margo gorria",
+          "pink-lipstick": "Ezpain-margo arrosa",
+          "berry-lipstick": "Ezpain-margo masustakoloreko",
+          "clown": "Pailazo-pintura",
+          "fangs": "Letaginak",
+          "skull": "Garezur-pintura",
+          "zombie": "Zonbi-pintura",
+          "red-nose": "Sudur gorria",
+          "white-beard": "Bizar zuria",
+          "domino": "Heroi-maskara",
+          "carrot": "Azenario-sudurra",
+          "bunny": "Untxi-sudurra",
+          "mustache": "Bibotea",
+          "monster": "Munstro aurpegi-margoa",
+          "round-glasses": "Betaurreko biribilak"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Banderaren testua",
         "description": "Banderan erakusten diren gehienez 4 letra."
@@ -310,24 +330,6 @@
           "skates": "Patinak",
           "skateboard": "Skateboarda",
           "hoverboard": "Taula hegalaria"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Maskota",
-        "description": "Pertsonaiaren ondoko maskota.",
-        "options": {
-          "none": "Bat ere ez",
-          "cat": "Katua",
-          "dog": "Txakurra",
-          "bunny": "Untxia",
-          "goldfish": "Arrain gorria",
-          "slime": "Lirdinga",
-          "squirrel": "Urtxintxa",
-          "dragon": "Herensuge txikia",
-          "parrot": "Loroa",
-          "owl": "Hontza",
-          "bat": "Saguzarra"
         }
       },
       {

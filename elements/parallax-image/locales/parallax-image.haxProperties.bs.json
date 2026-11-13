@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Paralaksna slika",
-    "description": "Pomicanje slike"
+    "description": "Slika pune širine koja se pomjera sporije od stranice, s naslovom preko nje."
   },
   "settings": {
     "configure": [

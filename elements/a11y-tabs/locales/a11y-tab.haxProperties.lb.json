@@ -10,10 +10,6 @@
         "title": "Tab-Ikon"
       },
       {
-        "property": "disabled",
-        "title": "Desaktivéiert"
-      },
-      {
         "property": "label",
         "title": "Tab-Bezeechnung"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "Eendeiteg ID"
-      },
-      {
         "property": "flag",
         "title": "Optionale Fändeltext"
       },
       {
         "property": "flagIcon",
         "title": "Optionalen Fändel-Ikon"
+      },
+      {
+        "property": "disabled",
+        "title": "Desaktivéiert"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "Eendeiteg ID"
       }
     ]
   }

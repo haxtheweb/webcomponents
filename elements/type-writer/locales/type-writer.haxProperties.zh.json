@@ -1,6 +1,6 @@
 {
   "gizmo": {
     "title": "打字机",
-    "description": "打字机效果"
+    "description": "逐字自动打出的文字。"
   }
 }

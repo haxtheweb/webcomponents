@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Sem seta",
         "description": "Ocultar a seta do botão."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Link: destino",
@@ -54,7 +52,9 @@
           "_top": "Janela superior - _top",
           "_parent": "Janela pai - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Link: rel",

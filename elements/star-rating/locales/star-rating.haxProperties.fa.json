@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "امتیاز ستاره‌ای",
-    "description": "ابزارک نمایش امتیاز یا دکمه امتیازدهی."
+    "description": "امتیاز ستاره‌ای نشان دهید یا بگذارید خوانندگان انتخاب کنند."
   },
   "settings": {
     "configure": [
@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "تعاملی",
         "description": "اجازه تعامل کاربر برای تعیین امتیاز."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "حالت مقیاس روبریک",

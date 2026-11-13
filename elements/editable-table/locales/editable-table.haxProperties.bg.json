@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Разрешаване на филтър",
         "description": "Разрешаване на филтриране по стойностите в колоната."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Числов стил",
-        "description": "Прилагане на числов стил към числовите колони."
-      },
-      {
-        "property": "responsive",
-        "title": "Адаптивна",
-        "description": "Пренареждане на таблицата на малки екрани."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Режим рубрика",
-        "description": "Таблицата да се интерпретира като Rubric от OER Schema, така че да се генерират метаданни Rubric, RubricScale, RubricCriterion и RubricLevel."
-      },
-      {
-        "property": "rubricType",
-        "title": "Тип рубрика",
-        "description": "Стил на рубриката, генериран като oer:rubricType (има смисъл само когато режимът рубрика е включен).",
-        "options": {
-          "": "(няма)",
-          "analytic": "Аналитична",
-          "holistic": "Холистична",
-          "single-point": "С една точка",
-          "checklist": "Контролен списък"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Бутон за печат",
         "description": "Добавяне на бутон за отпечатване само на таблицата."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Числов стил",
+        "description": "Прилагане на числов стил към числовите колони."
+      },
+      {
+        "property": "responsive",
+        "title": "Адаптивна",
+        "description": "Пренареждане на таблицата на малки екрани."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Режим рубрика",
+        "description": "Таблицата да се интерпретира като Rubric от OER Schema, така че да се генерират метаданни Rubric, RubricScale, RubricCriterion и RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "Тип рубрика",
+        "description": "Стил на рубриката, генериран като oer:rubricType (има смисъл само когато режимът рубрика е включен).",
+        "options": {
+          "": "(няма)",
+          "analytic": "Аналитична",
+          "holistic": "Холистична",
+          "single-point": "С една точка",
+          "checklist": "Контролен списък"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "CSV данни",
         "description": "Създаване на таблица от качен CSV файл."
       }
-    ]
+    ],
+    "developer": []
   }
 }

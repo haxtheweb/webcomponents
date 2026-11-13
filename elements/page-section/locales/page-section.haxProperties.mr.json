@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "बटणे",
         "description": "मजकुराखाली दाखवलेला बटणांचा गट."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "अँकर मजकूर",
         "description": "नेव्हिगेशनमध्ये दाखवलेले अँकर लेबल."
       }
-    ]
+    ],
+    "developer": []
   }
 }

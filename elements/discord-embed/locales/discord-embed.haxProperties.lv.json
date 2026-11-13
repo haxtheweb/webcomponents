@@ -9,7 +9,9 @@
         "property": "source",
         "title": "Resursa URL",
         "description": "Resursa URL."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Augstums",

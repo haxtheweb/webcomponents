@@ -9,7 +9,9 @@
         "property": "source",
         "title": "Ресурс URL адресы",
         "description": "Ресурс URL адресы."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Биеклек",

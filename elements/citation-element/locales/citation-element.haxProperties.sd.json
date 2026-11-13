@@ -21,15 +21,6 @@
         "description": "تاريخ جڏهن ذريعي تائين رسائي ڪئي وئي."
       },
       {
-        "property": "scope",
-        "title": "دائرو",
-        "description": "حوالي لاءِ عنصر جو دائرو.",
-        "options": {
-          "sibling": "ڀائر عنصر",
-          "parent": "مٿيون عنصر"
-        }
-      },
-      {
         "property": "license",
         "title": "لائسنس",
         "description": "حوالي ڏنل ڪم جو لائسنس."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "تخليق ڪار",
         "description": "حوالي ڏنل ڪم جو تخليق ڪار يا مالڪ."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "دائرو",
+        "description": "حوالي لاءِ عنصر جو دائرو.",
+        "options": {
+          "sibling": "ڀائر عنصر",
+          "parent": "مٿيون عنصر"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "OER Schema قسم",

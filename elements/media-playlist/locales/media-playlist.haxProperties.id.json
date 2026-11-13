@@ -4,22 +4,23 @@
     "description": "Daftar putar yang menyajikan pemutar video dan audio dalam tata letak pemutar + bilah samping."
   },
   "settings": {
-    "configure": [
+    "configure": [],
+    "advanced": [
       {
         "property": "activeIndex",
         "title": "Indeks aktif",
         "description": "Indeks item aktif untuk memulai."
-      },
-      {
-        "property": "forCourse",
-        "title": "Mata kuliah",
-        "description": "Mata kuliah yang dituju daftar putar ini (pengenal mata kuliah atau URL)."
       }
     ],
     "developer": [
       {
         "title": "Media",
         "description": "Video dan audio di daftar putar. Tidak diedit di sini: kerangka halaman menggunakannya untuk mengetahui blok mana yang dapat dijatuhkan ke dalamnya."
+      },
+      {
+        "property": "forCourse",
+        "title": "Mata kuliah",
+        "description": "Mata kuliah yang dituju daftar putar ini (pengenal mata kuliah atau URL)."
       }
     ]
   }

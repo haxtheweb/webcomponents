@@ -11,6 +11,13 @@
         "description": "URL untuk file AR ini."
       },
       {
+        "property": "skyColor",
+        "title": "Warna langit",
+        "description": "Pilih warna langit dalam adegan."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "Posisi X elemen dalam AR."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "Posisi Z elemen dalam AR."
-      },
-      {
-        "property": "skyColor",
-        "title": "Warna langit",
-        "description": "Pilih warna langit dalam adegan."
       }
     ]
   }

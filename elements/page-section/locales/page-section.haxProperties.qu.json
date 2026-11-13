@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "Ñit'inakuna",
         "description": "Qillqapa urayninpi rikukuq ñit'ina t'aqa."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "Ancla qillqa",
         "description": "Puriypi rikukuq ancla sutichay."
       }
-    ]
+    ],
+    "developer": []
   }
 }

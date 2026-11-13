@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "Màquina d'escriure",
-    "description": "efecte de màquina d'escriure"
+    "title": "Màquina d’escriure",
+    "description": "Text que s’escriu tot sol, un caràcter cada vegada."
   }
 }

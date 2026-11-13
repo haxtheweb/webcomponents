@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "Կոճակներ",
         "description": "Տեքստի տակ ցուցադրվող կոճակների խումբ։"
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "Խարսխի տեքստ",
         "description": "Նավիգացիայում ցուցադրվող խարսխի պիտակ։"
       }
-    ]
+    ],
+    "developer": []
   }
 }

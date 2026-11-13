@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Dim Saeth",
         "description": "Cuddio saeth y botwm."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Dolen: targed",
@@ -54,7 +52,9 @@
           "_top": "Ffenestr uchaf - _top",
           "_parent": "Ffenestr rhiant - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Dolen: rel",

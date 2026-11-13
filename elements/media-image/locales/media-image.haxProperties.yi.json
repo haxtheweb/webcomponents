@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "אונטערשריפֿט",
         "description": "אונטערשריפֿט פֿאַרן בילד."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "פֿיגור־טיטל",
-        "description": "טיטל פֿאַרן פֿיגור־עטיקעט."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "פֿיגור־באַשרײַבונג",
-        "description": "באַשרײַבונג פֿאַרן פֿיגור־עטיקעט."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "דעאַקטיוויר דעם בילד־דיאַלאָג",
         "description": "דעאַקטיוויר אַז קליקן זאָל עפֿענען דאָס בילד אין אַ בילד־אינספּעקטאָר־דיאַלאָג."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "פֿיגור־טיטל",
+        "description": "טיטל פֿאַרן פֿיגור־עטיקעט."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "פֿיגור־באַשרײַבונג",
+        "description": "באַשרײַבונג פֿאַרן פֿיגור־עטיקעט."
       }
     ],
     "developer": [

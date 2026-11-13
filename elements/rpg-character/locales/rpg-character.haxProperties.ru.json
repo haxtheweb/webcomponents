@@ -11,11 +11,6 @@
         "description": "Слово для генерации случайного персонажа."
       },
       {
-        "property": "code",
-        "title": "Код персонажа",
-        "description": "Вставьте сохранённый код, чтобы воссоздать этого персонажа."
-      },
-      {
         "property": "hat",
         "title": "Шляпа",
         "description": "Стиль шляпы.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Маска",
-        "description": "Маска на лице или голове.",
-        "options": {
-          "none": "Нет",
-          "lion": "Лев",
-          "plague": "Чумной доктор",
-          "theater": "Театральная",
-          "pumpkin": "Тыква",
-          "ghost": "Привидение",
-          "mummy": "Мумия",
-          "wrestler": "Маска рестлера",
-          "block-head": "Кубическая голова",
-          "web": "Маска с паутиной",
-          "werewolf": "Лицо оборотня",
-          "shadow": "Теневое лицо"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Макияж",
-        "description": "Грим или помада.",
-        "options": {
-          "none": "Нет",
-          "red-lipstick": "Красная помада",
-          "pink-lipstick": "Розовая помада",
-          "berry-lipstick": "Ягодная помада",
-          "clown": "Клоунский грим",
-          "fangs": "Клыки",
-          "skull": "Грим черепа",
-          "zombie": "Грим зомби",
-          "red-nose": "Красный нос",
-          "white-beard": "Белая борода",
-          "domino": "Маска героя",
-          "carrot": "Морковный нос",
-          "bunny": "Кроличий нос",
-          "mustache": "Усы",
-          "monster": "Грим монстра",
-          "round-glasses": "Круглые очки"
-        }
-      },
-      {
         "property": "expression",
         "title": "Выражение лица",
         "description": "Выражение лица.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Питомец",
+        "description": "Питомец рядом с персонажем.",
+        "options": {
+          "none": "Нет",
+          "cat": "Кошка",
+          "dog": "Собака",
+          "bunny": "Кролик",
+          "goldfish": "Золотая рыбка",
+          "slime": "Слайм",
+          "squirrel": "Белка",
+          "dragon": "Дракончик",
+          "parrot": "Попугай",
+          "owl": "Сова",
+          "bat": "Летучая мышь"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Код персонажа",
+        "description": "Вставьте сохранённый код, чтобы воссоздать этого персонажа."
+      },
+      {
+        "property": "mask",
+        "title": "Маска",
+        "description": "Маска на лице или голове.",
+        "options": {
+          "none": "Нет",
+          "lion": "Лев",
+          "plague": "Чумной доктор",
+          "theater": "Театральная",
+          "pumpkin": "Тыква",
+          "ghost": "Привидение",
+          "mummy": "Мумия",
+          "wrestler": "Маска рестлера",
+          "block-head": "Кубическая голова",
+          "web": "Маска с паутиной",
+          "werewolf": "Лицо оборотня",
+          "shadow": "Теневое лицо"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Макияж",
+        "description": "Грим или помада.",
+        "options": {
+          "none": "Нет",
+          "red-lipstick": "Красная помада",
+          "pink-lipstick": "Розовая помада",
+          "berry-lipstick": "Ягодная помада",
+          "clown": "Клоунский грим",
+          "fangs": "Клыки",
+          "skull": "Грим черепа",
+          "zombie": "Грим зомби",
+          "red-nose": "Красный нос",
+          "white-beard": "Белая борода",
+          "domino": "Маска героя",
+          "carrot": "Морковный нос",
+          "bunny": "Кроличий нос",
+          "mustache": "Усы",
+          "monster": "Грим монстра",
+          "round-glasses": "Круглые очки"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Текст на флаге",
         "description": "До 4 букв на флаге."
@@ -310,24 +330,6 @@
           "skates": "Коньки",
           "skateboard": "Скейтборд",
           "hoverboard": "Ховерборд"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Питомец",
-        "description": "Питомец рядом с персонажем.",
-        "options": {
-          "none": "Нет",
-          "cat": "Кошка",
-          "dog": "Собака",
-          "bunny": "Кролик",
-          "goldfish": "Золотая рыбка",
-          "slime": "Слайм",
-          "squirrel": "Белка",
-          "dragon": "Дракончик",
-          "parrot": "Попугай",
-          "owl": "Сова",
-          "bat": "Летучая мышь"
         }
       },
       {

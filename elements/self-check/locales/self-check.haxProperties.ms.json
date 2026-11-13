@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Semak Kendiri",
-    "description": "Pengguna boleh melengkapkan semakan kendiri."
+    "description": "Soalan dengan jawapan tersembunyi yang didedahkan pelajar untuk menyemak diri."
   },
   "settings": {
     "configure": [
@@ -27,6 +27,13 @@
       {
         "slot": "",
         "title": "Jawapan"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Pautan lanjut",
+        "description": "Pautan ke maklumat tambahan."
       },
       {
         "property": "hasLearningObjective",
@@ -37,13 +44,6 @@
         "property": "assessing",
         "title": "Mentaksir",
         "description": "Rujukan aktiviti yang dikeluarkan sebagai oer:assessing."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "link",
-        "title": "Pautan lanjut",
-        "description": "Pautan ke maklumat tambahan."
       }
     ]
   }

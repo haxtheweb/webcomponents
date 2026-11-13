@@ -86,7 +86,9 @@
         "property": "gameTitle",
         "title": "Navê lîstikê",
         "description": "Vê lîstikê di bûyerên pêşveçûnê û nîşankirina OER Schema de nav dike."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "ID ya lîstikê",

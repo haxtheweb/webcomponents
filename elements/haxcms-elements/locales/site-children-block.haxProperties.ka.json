@@ -4,7 +4,7 @@
     "description": "დინამიკური ბლოკი მიმდინარე გვერდის შვილობილების საჩვენებლად"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "დინამიკური მეთოდი",
@@ -14,7 +14,9 @@
           "parent": "მშობლის შვილობილები",
           "ancestor": "ყველა შვილობილი უმაღლესი წინაპრიდან"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "საწყისი დონე"

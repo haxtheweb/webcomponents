@@ -26,11 +26,6 @@
         "description": "छविका लागि alt पाठ।"
       },
       {
-        "property": "animated",
-        "title": "एनिमेटेड",
-        "description": "पहिलो लोडमा प्रगति एनिमेट हुने कि नहुने"
-      },
-      {
         "property": "complete",
         "title": "पूरा",
         "description": "पूरा भएका मानहरूको एरे।"
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "कुल",
         "description": "सबै वस्तुहरू पूरा हुँदाको कुल।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "एनिमेटेड",
+        "description": "पहिलो लोडमा प्रगति एनिमेट हुने कि नहुने"
       },
       {
         "property": "startAngle",

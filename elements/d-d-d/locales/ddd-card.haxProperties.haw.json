@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "ʻAʻohe Pua",
         "description": "E hūnā i ka pua o ke pihi."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Loulou: pahuhopu",
@@ -54,7 +52,9 @@
           "_top": "Puka aniani luna - _top",
           "_parent": "Puka aniani makua - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Loulou: rel",

@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Billedkilde",
         "description": "Billedfil brugt til kortet. Tilsidesætter Billednøgleord."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Billednøgleord",
+        "description": "Nøgleord til tilfældigt billede. Tilsidesættes af Billedkilde."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Læringsmål",
         "description": "OER Schema: ID eller URL for det læringsmål, som denne øvelse understøtter."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Billednøgleord",
-        "description": "Nøgleord til tilfældigt billede. Tilsidesættes af Billedkilde."
       }
     ]
   }

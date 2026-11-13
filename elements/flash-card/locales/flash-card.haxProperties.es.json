@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Origen de la imagen",
         "description": "Archivo de imagen usado para la tarjeta. Tiene prioridad sobre la palabra clave de imagen."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Palabra clave de imagen",
+        "description": "Palabra clave para una imagen aleatoria. El origen de la imagen tiene prioridad."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Objetivo de aprendizaje",
         "description": "OER Schema: ID o URL del objetivo de aprendizaje que apoya esta práctica."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Palabra clave de imagen",
-        "description": "Palabra clave para una imagen aleatoria. El origen de la imagen tiene prioridad."
       }
     ]
   }

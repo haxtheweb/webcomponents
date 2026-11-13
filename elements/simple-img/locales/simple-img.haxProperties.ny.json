@@ -26,7 +26,8 @@
         "description": "Zothandiza kwa owerenga zenera ndi SEO yabwino."
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "Ubwino",

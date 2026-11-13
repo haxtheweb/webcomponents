@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Senarai penyumbang GitHub",
-    "description": "Dipaparkan sebagai watak RPG menggunakan GitHub API."
+    "description": "Menyenaraikan penyumbang repositori sebagai watak RPG."
   },
   "settings": {
     "configure": [

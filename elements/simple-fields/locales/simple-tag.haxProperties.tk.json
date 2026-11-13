@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Awtomatik aksent reňki",
         "description": "Aksent reňkini belginiň tekstinden awtomatik kesgitle."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Ýatyrmak düwmesi",
-        "description": "Tabletkanyň içinde aýyrmak/ýatyrmak nyşan düwmesini görkez."
-      },
-      {
-        "property": "readonly",
-        "title": "Diňe okamak üçin",
-        "description": "Tabletka diňe görkezmek üçin bolar ýaly ýatyrmak düwmesini gizle."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Gök-çal",
           "grey": "Çal"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Ýatyrmak düwmesi",
+        "description": "Tabletkanyň içinde aýyrmak/ýatyrmak nyşan düwmesini görkez."
+      },
+      {
+        "property": "readonly",
+        "title": "Diňe okamak üçin",
+        "description": "Tabletka diňe görkezmek üçin bolar ýaly ýatyrmak düwmesini gizle."
       }
     ]
   }

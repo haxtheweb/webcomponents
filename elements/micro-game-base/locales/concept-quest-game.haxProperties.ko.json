@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "개념 퀘스트 게임",
-    "description": "돌아다니는 오버월드예요. 개념이 찾아와 질문을 해요. 맞게 답하면 물리치고 그 집이 열려요. 요약에서 시도 횟수와 복습할 내용을 볼 수 있어요."
+    "description": "개념이 질문을 하고 정답을 맞히면 지도가 열리는 오버월드 게임."
   },
   "settings": {
     "configure": [
@@ -91,7 +91,9 @@
         "property": "gameTitle",
         "title": "게임 이름",
         "description": "진행 이벤트와 OER Schema 마크업에서 이 게임의 이름으로 쓰여요."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "게임 ID",

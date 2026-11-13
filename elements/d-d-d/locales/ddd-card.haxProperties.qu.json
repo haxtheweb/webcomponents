@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Mana wach'iyuq",
         "description": "Ñit'inapa wach'inta pakay."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "T'inki: maypi",
@@ -54,7 +52,9 @@
           "_top": "Hanaq ventana - _top",
           "_parent": "Tayta ventana - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "T'inki: rel",

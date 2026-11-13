@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "Un bloque de contenido markdown, directo o cargado de forma remota"
+    "description": "Contenido Markdown, escrito en línea o cargado desde un archivo."
   },
   "settings": {
     "configure": [

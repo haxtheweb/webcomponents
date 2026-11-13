@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "બટનો",
         "description": "લખાણની નીચે બતાવાતું બટન જૂથ."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "એન્કર લખાણ",
         "description": "નેવિગેશનમાં બતાવાતું એન્કર લેબલ."
       }
-    ]
+    ],
+    "developer": []
   }
 }

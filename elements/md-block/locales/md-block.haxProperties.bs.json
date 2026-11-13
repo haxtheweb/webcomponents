@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "Blok markdown sadržaja, direktno ili učitan s udaljenog izvora"
+    "description": "Markdown sadržaj, napisan direktno ili učitan iz datoteke."
   },
   "settings": {
     "configure": [

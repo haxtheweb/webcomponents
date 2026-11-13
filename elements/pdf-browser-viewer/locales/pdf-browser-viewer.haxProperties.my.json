@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "မပံ့ပိုးပါ မက်ဆေ့ချ်",
-        "description": "ဘရောက်ဇာက PDF ဖိုင်များကို မပြသနိုင်သောအခါ မက်ဆေ့ချ်။"
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "မပံ့ပိုးပါ လင့်ခ် မက်ဆေ့ချ်",
-        "description": "ဘရောက်ဇာက PDF ဖိုင်များကို မပြသနိုင်သောအခါ လင့်ခ် စာသား။"
-      },
-      {
         "property": "width",
         "title": "အကျယ်",
         "description": "PDF ကြည့်ရှုစနစ်၏ အကျယ်။"
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "အမြင့်",
         "description": "PDF ကြည့်ရှုစနစ်၏ အမြင့်။"
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "မပံ့ပိုးပါ မက်ဆေ့ချ်",
+        "description": "ဘရောက်ဇာက PDF ဖိုင်များကို မပြသနိုင်သောအခါ မက်ဆေ့ချ်။"
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "မပံ့ပိုးပါ လင့်ခ် မက်ဆေ့ချ်",
+        "description": "ဘရောက်ဇာက PDF ဖိုင်များကို မပြသနိုင်သောအခါ လင့်ခ် စာသား။"
       }
     ]
   }

@@ -48,7 +48,7 @@
   ],
   "cssProperties": [],
   "hax": {
-    "schema": "elements/video-player/video-player.js",
+    "schema": "elements/video-player/lib/video-player.haxProperties.json",
     "gizmo": true,
     "properties": [
       "accentColor",

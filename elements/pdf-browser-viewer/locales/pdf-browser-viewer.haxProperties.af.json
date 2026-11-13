@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Nie-ondersteun-boodskap",
-        "description": "Boodskap wanneer die blaaier nie PDF-lêers kan vertoon nie."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Nie-ondersteun-skakelboodskap",
-        "description": "Skakelteks wanneer die blaaier nie PDF-lêers kan vertoon nie."
-      },
-      {
         "property": "width",
         "title": "Breedte",
         "description": "Breedte van die PDF-kyker."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Hoogte",
         "description": "Hoogte van die PDF-kyker."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Nie-ondersteun-boodskap",
+        "description": "Boodskap wanneer die blaaier nie PDF-lêers kan vertoon nie."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Nie-ondersteun-skakelboodskap",
+        "description": "Skakelteks wanneer die blaaier nie PDF-lêers kan vertoon nie."
       }
     ]
   }

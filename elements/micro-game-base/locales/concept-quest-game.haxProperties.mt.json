@@ -91,7 +91,9 @@
         "property": "gameTitle",
         "title": "Isem il-logħba",
         "description": "Jagħti isem lil din il-logħba fl-avvenimenti tal-progress u fil-markup tal-OER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "ID tal-logħba",

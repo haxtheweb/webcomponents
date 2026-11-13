@@ -9,7 +9,9 @@
         "slot": "",
         "title": "Цытаванні",
         "description": "Элементы цытавання ў гэтай бібліяграфіі"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "Курс",

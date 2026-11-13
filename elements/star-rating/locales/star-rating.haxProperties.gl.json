@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Interactivo",
         "description": "Permitir que o usuario interactúe para establecer a valoración."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Modo de escala de rúbrica",

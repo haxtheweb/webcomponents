@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Pitanje s kratkim odgovorom",
-    "description": "Neka korisnik odgovori na osnovno pitanje"
+    "description": "Pitanje na koje učenik odgovara u rečenici ili dvije."
   },
   "settings": {
     "configure": [

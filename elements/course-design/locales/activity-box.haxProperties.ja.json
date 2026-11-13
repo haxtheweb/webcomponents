@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "アクティビティボックス",
-    "description": "スタイル付きの小さな見出しブロック。"
+    "description": "アクティビティの開始を示すラベル付きの見出し。"
   },
   "settings": {
     "configure": [

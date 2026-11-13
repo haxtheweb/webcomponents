@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "Tag / Pill",
+    "title": "Tag",
     "description": "Isang compact na label na hugis-pill na may opsyonal na accent na kulay, button sa pagkansela, o toggle."
   },
   "settings": {
@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Awtomatikong accent na kulay",
         "description": "Awtomatikong kunin ang accent na kulay mula sa teksto ng label."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Button sa pagkansela",
-        "description": "Magpakita ng icon button na pang-alis/pagkansela sa loob ng pill."
-      },
-      {
-        "property": "readonly",
-        "title": "Read only",
-        "description": "Itago ang button sa pagkansela para pang-display lamang ang pill."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Asul na Abo",
           "grey": "Abo"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Button sa pagkansela",
+        "description": "Magpakita ng icon button na pang-alis/pagkansela sa loob ng pill."
+      },
+      {
+        "property": "readonly",
+        "title": "Read only",
+        "description": "Itago ang button sa pagkansela para pang-display lamang ang pill."
       }
     ]
   }

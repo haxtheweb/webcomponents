@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Itsearviointi",
-    "description": "Käyttäjät voivat tehdä itsearvioinnin."
+    "description": "Kysymys, jonka piilotetun vastauksen oppija paljastaa tarkistaakseen itsensä."
   },
   "settings": {
     "configure": [
@@ -27,6 +27,13 @@
       {
         "slot": "",
         "title": "Vastaus"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Lisätietolinkki",
+        "description": "Linkki lisätietoihin."
       },
       {
         "property": "hasLearningObjective",
@@ -37,13 +44,6 @@
         "property": "assessing",
         "title": "Arvioi",
         "description": "Aktiviteettiviittaus, joka tuotetaan muodossa oer:assessing."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "link",
-        "title": "Lisätietolinkki",
-        "description": "Linkki lisätietoihin."
       }
     ]
   }

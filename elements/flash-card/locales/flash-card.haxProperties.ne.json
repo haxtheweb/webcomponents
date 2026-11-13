@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "तस्बिरको स्रोत",
         "description": "कार्डका लागि प्रयोग हुने तस्बिर फाइल। यसले तस्बिर कुञ्जीशब्दलाई ओभरराइड गर्छ।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "तस्बिर कुञ्जीशब्द",
+        "description": "अनियमित तस्बिरको कुञ्जीशब्द। तस्बिरको स्रोतले यसलाई ओभरराइड गर्छ।"
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "सिकाइ उद्देश्य",
         "description": "OER Schema: यो अभ्यासले समर्थन गर्ने सिकाइ उद्देश्यको ID वा URL।"
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "तस्बिर कुञ्जीशब्द",
-        "description": "अनियमित तस्बिरको कुञ्जीशब्द। तस्बिरको स्रोतले यसलाई ओभरराइड गर्छ।"
       }
     ]
   }

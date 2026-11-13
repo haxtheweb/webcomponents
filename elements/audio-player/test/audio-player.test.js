@@ -1,6 +1,13 @@
 import { fixture, expect, html } from "@open-wc/testing";
 import "../audio-player.js";
 
+// HAX schemas ship as JSON next to the element; read one whether the class
+// returns the object or the URL of its file
+const haxSchema = async (C) => {
+  const hp = C.haxProperties;
+  return typeof hp === "string" ? (await fetch(hp)).json() : hp;
+};
+
 // a real audio file served by the test runner, so no test waits on the network
 const localAudio = new URL(
   "../../app-hax/lib/assets/sounds/success.mp3",
@@ -257,15 +264,15 @@ describe("audio-player test", function () {
   });
 
   describe("HAX Properties and Integration", () => {
-    it("should have haxProperties defined", () => {
-      expect(element.constructor.haxProperties).to.exist;
-      expect(element.constructor.haxProperties.gizmo).to.exist;
-      expect(element.constructor.haxProperties.settings).to.exist;
-      expect(element.constructor.haxProperties.demoSchema).to.exist;
+    it("should have haxProperties defined", async () => {
+      expect(await haxSchema(element.constructor)).to.exist;
+      expect((await haxSchema(element.constructor)).gizmo).to.exist;
+      expect((await haxSchema(element.constructor)).settings).to.exist;
+      expect((await haxSchema(element.constructor)).demoSchema).to.exist;
     });
 
-    it("should have proper HAX gizmo configuration for audio", () => {
-      const haxProps = element.constructor.haxProperties;
+    it("should have proper HAX gizmo configuration for audio", async () => {
+      const haxProps = await haxSchema(element.constructor);
       expect(haxProps.gizmo.title).to.equal("Audio");
       expect(haxProps.gizmo.description).to.contain("Accessible");
       expect(haxProps.gizmo.icon).to.equal("av:equalizer");
@@ -274,8 +281,8 @@ describe("audio-player test", function () {
       expect(haxProps.gizmo.tags).to.include("mp3");
     });
 
-    it("should handle audio file types correctly", () => {
-      const haxProps = element.constructor.haxProperties;
+    it("should handle audio file types correctly", async () => {
+      const haxProps = await haxSchema(element.constructor);
       const handles = haxProps.gizmo.handles;
 
       const audioHandle = handles.find((handle) => handle.type === "audio");
@@ -284,8 +291,8 @@ describe("audio-player test", function () {
       expect(audioHandle.source).to.equal("source");
     });
 
-    it("should have proper HAX settings configuration", () => {
-      const haxProps = element.constructor.haxProperties;
+    it("should have proper HAX settings configuration", async () => {
+      const haxProps = await haxSchema(element.constructor);
       const configItems = haxProps.settings.configure;
 
       // Verify source property configuration
@@ -318,7 +325,7 @@ describe("audio-player test", function () {
     });
 
     it("should maintain accessibility with HAX demo schema", async () => {
-      const demoSchema = element.constructor.haxProperties.demoSchema[0];
+      const demoSchema = (await haxSchema(element.constructor)).demoSchema[0];
       const haxTestElement = await fixture(html`
         <audio-player
           source="${demoSchema.properties.source}"
@@ -591,8 +598,10 @@ describe("audio-player in the DDD player frame", () => {
 });
 
 describe("audio-player HAX settings", () => {
-  it("does not offer text alignment (same player as video-player)", () => {
-    const props = globalThis.customElements.get("audio-player").haxProperties;
+  it("does not offer text alignment (same player as video-player)", async () => {
+    const props = await haxSchema(
+      globalThis.customElements.get("audio-player"),
+    );
     expect(props.designSystem.textAlign).to.equal(false);
   });
 

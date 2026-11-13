@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "ინტერაქტიული",
         "description": "მომხმარებლისთვის შეფასების მინიჭების დაშვება."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "რუბრიკის სკალის რეჟიმი",

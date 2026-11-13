@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "שאלת תשובה קצרה",
-    "description": "המשתמש עונה על שאלה בסיסית"
+    "description": "שאלה שהלומד עונה עליה במשפט או שניים."
   },
   "settings": {
     "configure": [

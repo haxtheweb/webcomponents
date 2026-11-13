@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Īsas atbildes jautājums",
-    "description": "Lietotājs atbild uz vienkāršu jautājumu"
+    "description": "Jautājums, uz kuru izglītojamais atbild vienā vai divos teikumos."
   },
   "settings": {
     "configure": [

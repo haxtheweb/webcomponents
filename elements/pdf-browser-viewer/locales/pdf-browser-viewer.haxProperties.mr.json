@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "असमर्थित संदेश",
-        "description": "ब्राउझर PDF फाइल दाखवू शकत नसताना दिसणारा संदेश."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "असमर्थित लिंक संदेश",
-        "description": "ब्राउझर PDF फाइल दाखवू शकत नसताना दिसणारा लिंक मजकूर."
-      },
-      {
         "property": "width",
         "title": "रुंदी",
         "description": "PDF व्ह्यूअरची रुंदी."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "उंची",
         "description": "PDF व्ह्यूअरची उंची."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "असमर्थित संदेश",
+        "description": "ब्राउझर PDF फाइल दाखवू शकत नसताना दिसणारा संदेश."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "असमर्थित लिंक संदेश",
+        "description": "ब्राउझर PDF फाइल दाखवू शकत नसताना दिसणारा लिंक मजकूर."
       }
     ]
   }

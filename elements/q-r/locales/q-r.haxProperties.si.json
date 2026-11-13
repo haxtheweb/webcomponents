@@ -14,16 +14,6 @@
         "property": "title",
         "title": "විකල්ප මාතෘකාව",
         "description": "QR කේත මූලාශ්‍රයට සබැඳි විකල්ප මාතෘකාව."
-      },
-      {
-        "property": "modulesize",
-        "title": "ප්‍රමාණය",
-        "description": "QR කේතයේ ප්‍රමාණය."
-      },
-      {
-        "property": "margin",
-        "title": "මායිම",
-        "description": "කේතය වටා ඇති ආවරණය."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "ප්‍රමාණය",
+        "description": "QR කේතයේ ප්‍රමාණය."
+      },
+      {
+        "property": "margin",
+        "title": "මායිම",
+        "description": "කේතය වටා ඇති ආවරණය."
       }
     ]
   }

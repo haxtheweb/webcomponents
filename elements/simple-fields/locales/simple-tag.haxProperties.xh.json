@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Umbala ogqamisayo ozenzekelayo",
         "description": "Fumana umbala ogqamisayo kumbhalo weleyibhile ngokuzenzekelayo."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Iqhosha lokurhoxisa",
-        "description": "Bonisa iqhosha le-icon lokususa/lokurhoxisa ngaphakathi kwepilisi."
-      },
-      {
-        "property": "readonly",
-        "title": "Ukufunda kuphela",
-        "description": "Fihla iqhosha lokurhoxisa ukuze ipilisi ibe yeyokubonisa kuphela."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Ngwevu eluhlaza okwesibhakabhaka",
           "grey": "Ngwevu"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Iqhosha lokurhoxisa",
+        "description": "Bonisa iqhosha le-icon lokususa/lokurhoxisa ngaphakathi kwepilisi."
+      },
+      {
+        "property": "readonly",
+        "title": "Ukufunda kuphela",
+        "description": "Fihla iqhosha lokurhoxisa ukuze ipilisi ibe yeyokubonisa kuphela."
       }
     ]
   }

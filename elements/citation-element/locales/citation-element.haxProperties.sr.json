@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Навод извора",
-    "description": "Елемент цитата са три режима приказа."
+    "description": "Наведите извор са насловом, аутором, лиценцом и везом."
   },
   "settings": {
     "configure": [
@@ -21,15 +21,6 @@
         "description": "Датум када је извору приступљено."
       },
       {
-        "property": "scope",
-        "title": "Обим",
-        "description": "Обим елемента који се цитира.",
-        "options": {
-          "sibling": "Суседни елемент",
-          "parent": "Надређени елемент"
-        }
-      },
-      {
         "property": "license",
         "title": "Лиценца",
         "description": "Лиценца цитираног дела."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Аутор",
         "description": "Аутор или власник цитираног дела."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Обим",
+        "description": "Обим елемента који се цитира.",
+        "options": {
+          "sibling": "Суседни елемент",
+          "parent": "Надређени елемент"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "OER Schema тип",

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Jogo do mapa de conceitos",
-    "description": "Um jogo curto de teclado. Uma personagem anda até cada conceito num mapa e ele explica-se. Toca em todos para ver confetes e receber um prompt para copiar."
+    "description": "Um jogo curto de teclado em que um personagem percorre um mapa e cada conceito se explica."
   },
   "settings": {
     "configure": [
@@ -86,7 +86,9 @@
         "property": "gameTitle",
         "title": "Nome do jogo",
         "description": "Dá nome a este jogo nos eventos de progresso e na marcação OER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "ID do jogo",

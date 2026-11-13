@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Font de la imatge",
         "description": "Fitxer d'imatge utilitzat per a la targeta. Substitueix la paraula clau de la imatge."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Paraula clau de la imatge",
+        "description": "Paraula clau per a una imatge aleatòria. La substitueix la font de la imatge."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Objectiu d'aprenentatge",
         "description": "OER Schema: ID o URL de l'objectiu d'aprenentatge que dona suport aquesta pràctica."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Paraula clau de la imatge",
-        "description": "Paraula clau per a una imatge aleatòria. La substitueix la font de la imatge."
       }
     ]
   }

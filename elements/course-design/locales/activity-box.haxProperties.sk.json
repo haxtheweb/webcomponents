@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Box aktivity",
-    "description": "Malý štylizovaný blok nadpisu."
+    "description": "Nadpis so štítkom, ktorý označuje začiatok aktivity."
   },
   "settings": {
     "configure": [

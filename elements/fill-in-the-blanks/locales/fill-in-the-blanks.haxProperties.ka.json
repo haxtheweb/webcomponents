@@ -14,28 +14,6 @@
         "property": "statement",
         "title": "წინადადება",
         "description": "წინადადება, რომელიც სიტყვების მონიშვნის ინტერაქციად გარდაიქმნება."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "შეფასების ფორმატი",
-        "description": "OER Schema: ამ შეფასების ფორმატი (მაგ. ქულები, ასო, პროცენტი, შესრულება)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "სასწავლო მიზანი",
-        "description": "OER Schema: ამ შეფასებასთან დაკავშირებული სასწავლო მიზანი."
-      },
-      {
-        "property": "forCourse",
-        "title": "კურსი",
-        "description": "OER Schema: კურსი, რომლისთვისაც ეს შეფასებაა განკუთვნილი."
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "ქვიზის სახელი",
-        "description": "ქვიზის სახელი, რომელიც გადაეცემა xAPI-ზე დაფუძნებულ გარემოებს ამ ელემენტის იდენტიფიკაციისთვის"
       }
     ],
     "advanced": [
@@ -46,6 +24,28 @@
       {
         "title": "დაწყება ჩაკეცილი",
         "description": "ჩაკეცვადობის შემთხვევაში იწყება დახურულ სტრიქონად, რომელიც აჩვენებს მხოლოდ კითხვას და მის სტატუსს."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "შეფასების ფორმატი",
+        "description": "OER Schema: ამ შეფასების ფორმატი (მაგ. ქულები, ასო, პროცენტი, შესრულება)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "სასწავლო მიზანი",
+        "description": "OER Schema: ამ შეფასებასთან დაკავშირებული სასწავლო მიზანი."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "ქვიზის სახელი",
+        "description": "ქვიზის სახელი, რომელიც გადაეცემა xAPI-ზე დაფუძნებულ გარემოებს ამ ელემენტის იდენტიფიკაციისთვის"
+      },
+      {
+        "property": "forCourse",
+        "title": "კურსი",
+        "description": "OER Schema: კურსი, რომლისთვისაც ეს შეფასებაა განკუთვნილი."
       }
     ]
   }

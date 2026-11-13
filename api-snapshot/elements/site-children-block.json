@@ -16,7 +16,7 @@
   "cssParts": [],
   "cssProperties": [],
   "hax": {
-    "schema": "elements/haxcms-elements/lib/ui-components/blocks/site-children-block.js",
+    "schema": "elements/haxcms-elements/lib/ui-components/blocks/site-children-block.haxProperties.json",
     "gizmo": true,
     "properties": [
       "dynamicMethodology",

@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Sjálfvirkur áherslulitur",
         "description": "Leiða áherslulitinn sjálfkrafa af merkitextanum."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Hætta-við-hnappur",
-        "description": "Sýna fjarlægja/hætta við táknhnapp í pillunni."
-      },
-      {
-        "property": "readonly",
-        "title": "Aðeins lestur",
-        "description": "Fela hætta-við-hnappinn svo pillan sé aðeins til birtingar."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Blágrár",
           "grey": "Grár"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Hætta-við-hnappur",
+        "description": "Sýna fjarlægja/hætta við táknhnapp í pillunni."
+      },
+      {
+        "property": "readonly",
+        "title": "Aðeins lestur",
+        "description": "Fela hætta-við-hnappinn svo pillan sé aðeins til birtingar."
       }
     ]
   }

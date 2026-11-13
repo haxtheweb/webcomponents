@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Sant / usant-spørsmål",
-    "description": "Sant-usant-spørsmål"
+    "description": "En påstand eleven markerer som sann eller usann."
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Tosi / epätosi -kysymys",
-    "description": "Tosi vai epätosi -kysymys"
+    "description": "Väite, jonka oppija merkitsee todeksi tai epätodeksi."
   },
   "settings": {
     "configure": [

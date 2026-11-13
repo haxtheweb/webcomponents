@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "ਪੋਸਟਰ ਚਿੱਤਰ",
         "description": "ਪੋਸਟਰ ਚਿੱਤਰ URL।"
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "ਟੈਕਸਟ ਟ੍ਰੈਕ",
         "description": "ਵੀਡੀਓ ਲਈ ਕੈਪਸ਼ਨ, ਉਪਸਿਰਲੇਖ, ਵੇਰਵੇ ਅਤੇ ਹੋਰ ਟੈਕਸਟ ਟ੍ਰੈਕ।"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "ਸ਼ੁਰੂਆਤੀ ਸਮਾਂ",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "ਆਡੀਓ ਵੇਰਵਾ ਟ੍ਰੈਕ",
         "description": "ਆਡੀਓ ਵੇਰਵਾ ਟ੍ਰੈਕ (MP3 ਫਾਈਲ) ਦਾ URL ਜੋ ਦ੍ਰਿਸ਼ਟੀ ਤੱਤਾਂ ਦਾ ਬਿਰਤਾਂਤ ਦਿੰਦਾ ਹੈ।"
+      },
+      {
+        "property": "accentColor",
+        "title": "ਐਕਸੈਂਟ ਰੰਗ",
+        "description": "(ਪੁਰਾਣਾ) ਪਲੇਅਰ ਲਈ ਐਕਸੈਂਟ ਰੰਗ ਚੁਣੋ।"
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "ਭਾਸ਼ਾ",
         "description": "ਮੀਡੀਆ ਦੀ ਭਾਸ਼ਾ।"
-      },
-      {
-        "property": "accentColor",
-        "title": "ਐਕਸੈਂਟ ਰੰਗ",
-        "description": "(ਪੁਰਾਣਾ) ਪਲੇਅਰ ਲਈ ਐਕਸੈਂਟ ਰੰਗ ਚੁਣੋ।"
       }
     ]
   }

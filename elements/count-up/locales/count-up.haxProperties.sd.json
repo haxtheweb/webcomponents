@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "پڇاڙي متن",
         "description": "عدد کان پوءِ ڏيکاريل متن (مثال طور '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "اڳياڙي سلاٽ",
-        "description": "عدد کان اڳ اختياري سلاٽ مواد."
-      },
-      {
-        "slot": "suffix",
-        "title": "پڇاڙي سلاٽ",
-        "description": "عدد کان پوءِ اختياري سلاٽ مواد."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "ايزنگ ناهي",
         "description": "ايزنگ غير فعال ڪريو ته جيئن ڳڻپ سڌي ليڪ ۾ ٿئي."
+      },
+      {
+        "slot": "prefix",
+        "title": "اڳياڙي سلاٽ",
+        "description": "عدد کان اڳ اختياري سلاٽ مواد."
+      },
+      {
+        "slot": "suffix",
+        "title": "پڇاڙي سلاٽ",
+        "description": "عدد کان پوءِ اختياري سلاٽ مواد."
       }
     ]
   }

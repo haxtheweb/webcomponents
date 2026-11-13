@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Taula CSV",
-    "description": "Pot generar una taula a partir d'un fitxer CSV, sigui on sigui."
+    "description": "Mostra un fitxer CSV com una taula accessible."
   },
   "settings": {
     "configure": [

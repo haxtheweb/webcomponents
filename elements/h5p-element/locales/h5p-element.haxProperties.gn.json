@@ -4,17 +4,16 @@
     "description": "Ombopu H5P marandu ojejuhúva joapykuépe peteĩ marandurenda .h5p ojehupytýva guive, ndojeroviái servidor H5P"
   },
   "settings": {
-    "configure": [
-      {
-        "slot": "",
-        "description": "Embohupi térã emomba'e peteĩ marandurenda .h5p. Oñemyaña pe navegador-pe; ndojehekaivéi servidor H5P.",
-        "title": "Marandurenda H5P"
-      }
-    ],
+    "configure": [],
     "advanced": [
       {
         "title": "Iframe ñemoĩ ayvu yma",
         "description": "Ñemoĩ yma ojapóva iframe H5P ambue ñandutípe guive añoite. Eheja nandi marandurenda .h5p oñemoĩ jave yvatévape."
+      },
+      {
+        "slot": "",
+        "description": "Embohupi térã emomba'e peteĩ marandurenda .h5p. Oñemyaña pe navegador-pe; ndojehekaivéi servidor H5P.",
+        "title": "Marandurenda H5P"
       }
     ]
   }

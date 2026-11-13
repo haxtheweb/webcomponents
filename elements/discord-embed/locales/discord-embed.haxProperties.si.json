@@ -9,7 +9,9 @@
         "property": "source",
         "title": "සම්පත් URL",
         "description": "සම්පත් URL."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "උස",

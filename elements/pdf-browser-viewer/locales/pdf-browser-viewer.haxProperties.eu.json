@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Onartzen ez denaren mezua",
-        "description": "Arakatzaileak PDF fitxategiak bistaratu ezin dituenean erakusten den mezua."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Onartzen ez denaren esteka mezua",
-        "description": "Arakatzaileak PDF fitxategiak bistaratu ezin dituenean erakusten den estekaren testua."
-      },
-      {
         "property": "width",
         "title": "Zabalera",
         "description": "PDF ikustailearen zabalera."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Altuera",
         "description": "PDF ikustailearen altuera."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Onartzen ez denaren mezua",
+        "description": "Arakatzaileak PDF fitxategiak bistaratu ezin dituenean erakusten den mezua."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Onartzen ez denaren esteka mezua",
+        "description": "Arakatzaileak PDF fitxategiak bistaratu ezin dituenean erakusten den estekaren testua."
       }
     ]
   }

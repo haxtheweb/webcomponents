@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Nessuna freccia",
         "description": "Nascondi la freccia del pulsante."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Link: destinazione",
@@ -54,7 +52,9 @@
           "_top": "Finestra principale - _top",
           "_parent": "Finestra padre - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Link: rel",

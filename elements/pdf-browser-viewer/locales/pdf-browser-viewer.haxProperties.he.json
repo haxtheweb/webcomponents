@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "מציג PDF בדפדפן",
+    "title": "מציג PDF",
     "description": "הטמעת קובץ PDF בתוך העמוד עם פריסת כרטיס וכפתור הורדה אופציונליים."
   },
   "settings": {
@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "הודעת חוסר תמיכה",
-        "description": "הודעה כאשר הדפדפן אינו יכול להציג קובצי PDF."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "הודעת קישור לחוסר תמיכה",
-        "description": "טקסט הקישור כאשר הדפדפן אינו יכול להציג קובצי PDF."
-      },
-      {
         "property": "width",
         "title": "רוחב",
         "description": "רוחב מציג ה-PDF."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "גובה",
         "description": "גובה מציג ה-PDF."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "הודעת חוסר תמיכה",
+        "description": "הודעה כאשר הדפדפן אינו יכול להציג קובצי PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "הודעת קישור לחוסר תמיכה",
+        "description": "טקסט הקישור כאשר הדפדפן אינו יכול להציג קובצי PDF."
       }
     ]
   }

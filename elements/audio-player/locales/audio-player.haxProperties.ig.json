@@ -46,6 +46,16 @@
         "property": "accentColor",
         "title": "Agba mkpụrụ",
         "description": "Họrọ agba accent maka ihe ọkpụkpọ."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Zoo oge",
+        "description": "Zoo oge dị na ederede."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Zoo ederede",
+        "description": "Zoo ederede na ndabere."
       }
     ],
     "developer": [
@@ -72,16 +82,6 @@
         "property": "disableInteractive",
         "title": "Gbanyụọ mmekọrịta",
         "description": "Gbanyụọ ọnọdụ mmekọrịta na-eme ka ederede bụrụ ihe enwere ike ịpị."
-      },
-      {
-        "property": "hideTimestamps",
-        "title": "Zoo oge",
-        "description": "Zoo oge dị na ederede."
-      },
-      {
-        "property": "hideTranscript",
-        "title": "Zoo ederede",
-        "description": "Zoo ederede na ndabere."
       },
       {
         "property": "lang",

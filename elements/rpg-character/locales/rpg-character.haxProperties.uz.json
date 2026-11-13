@@ -11,11 +11,6 @@
         "description": "Tasodifiy qahramon yaratish uchun ishlatiladigan soʻz."
       },
       {
-        "property": "code",
-        "title": "Qahramon kodi",
-        "description": "O'sha qahramonni qayta yaratish uchun saqlangan kodni joylang."
-      },
-      {
         "property": "hat",
         "title": "Shlyapa",
         "description": "Shlyapa uslubi.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Niqob",
-        "description": "Yuz yoki boshga taqiladigan niqob.",
-        "options": {
-          "none": "Yoʻq",
-          "lion": "Sher",
-          "plague": "Vabo shifokori",
-          "theater": "Teatr",
-          "pumpkin": "Qovoq",
-          "ghost": "Arvoh",
-          "mummy": "Mumiya",
-          "wrestler": "Kurashchi niqobi",
-          "block-head": "Blok bosh",
-          "web": "To'r niqobi",
-          "werewolf": "Bo'ri-odam yuzi",
-          "shadow": "Soyali yuz"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Pardoz",
-        "description": "Yuz boʻyoqlari yoki lab boʻyogʻi.",
-        "options": {
-          "none": "Yoʻq",
-          "red-lipstick": "Qizil lab boʻyogʻi",
-          "pink-lipstick": "Pushti lab boʻyogʻi",
-          "berry-lipstick": "Rezavor lab boʻyogʻi",
-          "clown": "Masxaraboz boʻyogʻi",
-          "fangs": "Oʻtkir tishlar",
-          "skull": "Bosh suyagi pardozi",
-          "zombie": "Zombi pardozi",
-          "red-nose": "Qizil burun",
-          "white-beard": "Oq soqol",
-          "domino": "Qahramon niqobi",
-          "carrot": "Sabzi burun",
-          "bunny": "Quyon burni",
-          "mustache": "Mo'ylov",
-          "monster": "Maxluq yuz bo'yog'i",
-          "round-glasses": "Dumaloq ko'zoynak"
-        }
-      },
-      {
         "property": "expression",
         "title": "Ifoda",
         "description": "Yuz ifodasi.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Uy hayvoni",
+        "description": "Qahramon yonidagi uy hayvoni.",
+        "options": {
+          "none": "Yoʻq",
+          "cat": "Mushuk",
+          "dog": "It",
+          "bunny": "Quyon",
+          "goldfish": "Oltin baliq",
+          "slime": "Shilimshiq",
+          "squirrel": "Olmaxon",
+          "dragon": "Kichik ajdaho",
+          "parrot": "To'tiqush",
+          "owl": "Boyqush",
+          "bat": "Ko'rshapalak"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Qahramon kodi",
+        "description": "O'sha qahramonni qayta yaratish uchun saqlangan kodni joylang."
+      },
+      {
+        "property": "mask",
+        "title": "Niqob",
+        "description": "Yuz yoki boshga taqiladigan niqob.",
+        "options": {
+          "none": "Yoʻq",
+          "lion": "Sher",
+          "plague": "Vabo shifokori",
+          "theater": "Teatr",
+          "pumpkin": "Qovoq",
+          "ghost": "Arvoh",
+          "mummy": "Mumiya",
+          "wrestler": "Kurashchi niqobi",
+          "block-head": "Blok bosh",
+          "web": "To'r niqobi",
+          "werewolf": "Bo'ri-odam yuzi",
+          "shadow": "Soyali yuz"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Pardoz",
+        "description": "Yuz boʻyoqlari yoki lab boʻyogʻi.",
+        "options": {
+          "none": "Yoʻq",
+          "red-lipstick": "Qizil lab boʻyogʻi",
+          "pink-lipstick": "Pushti lab boʻyogʻi",
+          "berry-lipstick": "Rezavor lab boʻyogʻi",
+          "clown": "Masxaraboz boʻyogʻi",
+          "fangs": "Oʻtkir tishlar",
+          "skull": "Bosh suyagi pardozi",
+          "zombie": "Zombi pardozi",
+          "red-nose": "Qizil burun",
+          "white-beard": "Oq soqol",
+          "domino": "Qahramon niqobi",
+          "carrot": "Sabzi burun",
+          "bunny": "Quyon burni",
+          "mustache": "Mo'ylov",
+          "monster": "Maxluq yuz bo'yog'i",
+          "round-glasses": "Dumaloq ko'zoynak"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Bayroq matni",
         "description": "Bayroqda koʻrsatiladigan 4 tagacha harf."
@@ -310,24 +330,6 @@
           "skates": "Konkilar",
           "skateboard": "Skeytbord",
           "hoverboard": "Uchar taxta"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Uy hayvoni",
-        "description": "Qahramon yonidagi uy hayvoni.",
-        "options": {
-          "none": "Yoʻq",
-          "cat": "Mushuk",
-          "dog": "It",
-          "bunny": "Quyon",
-          "goldfish": "Oltin baliq",
-          "slime": "Shilimshiq",
-          "squirrel": "Olmaxon",
-          "dragon": "Kichik ajdaho",
-          "parrot": "To'tiqush",
-          "owl": "Boyqush",
-          "bat": "Ko'rshapalak"
         }
       },
       {

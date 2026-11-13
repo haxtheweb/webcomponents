@@ -14,28 +14,6 @@
         "property": "statement",
         "title": "Выказванне",
         "description": "Выказванне, якое будзе ператворана ва ўзаемадзеянне з пазначэннем слоў."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "Фармат ацэньвання",
-        "description": "OER Schema: фармат ацэньвання для гэтага задання (напр. балы, літара, працэнт, выкананне)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Вучэбная мэта",
-        "description": "OER Schema: вучэбная мэта, звязаная з гэтым заданнем."
-      },
-      {
-        "property": "forCourse",
-        "title": "Курс",
-        "description": "OER Schema: курс, для якога прызначана гэта заданне."
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Назва тэста",
-        "description": "Назва тэста, якая перадаецца для ідэнтыфікацыі гэтага элемента ў асяроддзях на аснове xAPI"
       }
     ],
     "advanced": [
@@ -46,6 +24,28 @@
       {
         "title": "Пачынаць згорнутым",
         "description": "Калі пытанне згортваемае, пачынаць як закрыты радок, які паказвае толькі пытанне і яго стан."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Фармат ацэньвання",
+        "description": "OER Schema: фармат ацэньвання для гэтага задання (напр. балы, літара, працэнт, выкананне)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Вучэбная мэта",
+        "description": "OER Schema: вучэбная мэта, звязаная з гэтым заданнем."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Назва тэста",
+        "description": "Назва тэста, якая перадаецца для ідэнтыфікацыі гэтага элемента ў асяроддзях на аснове xAPI"
+      },
+      {
+        "property": "forCourse",
+        "title": "Курс",
+        "description": "OER Schema: курс, для якога прызначана гэта заданне."
       }
     ]
   }

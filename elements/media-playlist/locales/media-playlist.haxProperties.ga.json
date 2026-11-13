@@ -4,22 +4,23 @@
     "description": "Seinmliosta a chuireann seinnteoirí físe agus fuaime i láthair i leagan amach seinnteoir + barra taoibh."
   },
   "settings": {
-    "configure": [
+    "configure": [],
+    "advanced": [
       {
         "property": "activeIndex",
         "title": "Innéacs gníomhach",
         "description": "Innéacs na míre gníomhaí lena dtosófar."
-      },
-      {
-        "property": "forCourse",
-        "title": "Cúrsa",
-        "description": "An cúrsa a bhfuil an seinmliosta seo beartaithe dó (aitheantóir nó URL an chúrsa)."
       }
     ],
     "developer": [
       {
         "title": "Meáin",
         "description": "Na físeáin agus an fhuaim sa seinmliosta. Ní chuirtear in eagar anseo é: úsáideann imlíne an leathanaigh é chun a fháil amach cé na bloic is féidir a scaoileadh isteach."
+      },
+      {
+        "property": "forCourse",
+        "title": "Cúrsa",
+        "description": "An cúrsa a bhfuil an seinmliosta seo beartaithe dó (aitheantóir nó URL an chúrsa)."
       }
     ]
   }

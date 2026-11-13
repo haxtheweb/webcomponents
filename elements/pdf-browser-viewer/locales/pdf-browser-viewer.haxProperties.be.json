@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "Прагляд PDF у браўзеры",
+    "title": "Праглядальнік PDF",
     "description": "Убудаваць файл PDF з неабавязковым макетам карткі і кнопкай спампоўвання."
   },
   "settings": {
@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Паведамленне аб непадтрымцы",
-        "description": "Паведамленне, калі браўзер не можа паказаць файлы PDF."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Тэкст спасылкі пры непадтрымцы",
-        "description": "Тэкст спасылкі, калі браўзер не можа паказаць файлы PDF."
-      },
-      {
         "property": "width",
         "title": "Шырыня",
         "description": "Шырыня праглядальніка PDF."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Вышыня",
         "description": "Вышыня праглядальніка PDF."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Паведамленне аб непадтрымцы",
+        "description": "Паведамленне, калі браўзер не можа паказаць файлы PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Тэкст спасылкі пры непадтрымцы",
+        "description": "Тэкст спасылкі, калі браўзер не можа паказаць файлы PDF."
       }
     ]
   }

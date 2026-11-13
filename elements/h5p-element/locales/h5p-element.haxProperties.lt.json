@@ -4,17 +4,16 @@
     "description": "Paleidžia interaktyvų H5P turinį iš įkelto .h5p failo, H5P serverio nereikia"
   },
   "settings": {
-    "configure": [
-      {
-        "slot": "",
-        "description": "Įkelkite arba susiekite .h5p failą. Jis išpakuojamas naršyklėje; H5P serverio nereikia.",
-        "title": "H5P failas"
-      }
-    ],
+    "configure": [],
     "advanced": [
       {
         "title": "Senas iframe įterpimo kodas",
         "description": "Tik senesniam turiniui, kuris įterpia H5P iframe iš kitos svetainės. Palikite tuščią, jei aukščiau nustatytas .h5p failas."
+      },
+      {
+        "slot": "",
+        "description": "Įkelkite arba susiekite .h5p failą. Jis išpakuojamas naršyklėje; H5P serverio nereikia.",
+        "title": "H5P failas"
       }
     ]
   }

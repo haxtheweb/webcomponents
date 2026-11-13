@@ -26,7 +26,8 @@
         "description": "સ્ક્રીન રીડર અને વધુ સારા SEO માટે ઉપયોગી."
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "ગુણવત્તા",

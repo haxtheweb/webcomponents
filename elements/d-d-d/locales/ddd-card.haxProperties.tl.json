@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Walang Arrow",
         "description": "Itago ang arrow ng button."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Link: target",
@@ -54,7 +52,9 @@
           "_top": "Pinakamataas na window - _top",
           "_parent": "Parent na window - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Link: rel",

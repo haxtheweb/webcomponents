@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Navod izvora",
-    "description": "Element citata s tri načina prikaza."
+    "description": "Navedite izvor s naslovom, autorom, licencom i linkom."
   },
   "settings": {
     "configure": [
@@ -21,15 +21,6 @@
         "description": "Datum kada je pristupljeno izvoru."
       },
       {
-        "property": "scope",
-        "title": "Opseg",
-        "description": "Opseg elementa za citiranje.",
-        "options": {
-          "sibling": "Susjedni element",
-          "parent": "Nadređeni element"
-        }
-      },
-      {
         "property": "license",
         "title": "Licenca",
         "description": "Licenca citiranog djela."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Autor",
         "description": "Autor ili vlasnik citiranog djela."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Opseg",
+        "description": "Opseg elementa za citiranje.",
+        "options": {
+          "sibling": "Susjedni element",
+          "parent": "Nadređeni element"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "Vrsta OER sheme",

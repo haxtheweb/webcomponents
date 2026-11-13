@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "வடிகட்ட அனுமதி",
         "description": "நெடுவரிசை மதிப்புகளின்படி வடிகட்ட அனுமதிக்கவும்."
-      },
-      {
-        "property": "numericStyles",
-        "title": "எண் வடிவமைப்பு",
-        "description": "எண் நெடுவரிசைகளுக்கு எண் வடிவமைப்பைப் பயன்படுத்தவும்."
-      },
-      {
-        "property": "responsive",
-        "title": "பதிலளிக்கும் தளவமைப்பு",
-        "description": "சிறிய திரைகளில் அட்டவணைத் தளவமைப்பைச் சரிசெய்யவும்."
-      },
-      {
-        "property": "rubricMode",
-        "title": "மதிப்பீட்டு அளவுகோல் பயன்முறை",
-        "description": "Rubric, RubricScale, RubricCriterion மற்றும் RubricLevel மெட்டாடேட்டா வெளியிடப்படும்படி இந்த அட்டவணையை OER Schema Rubric ஆகக் கருதவும்."
-      },
-      {
-        "property": "rubricType",
-        "title": "மதிப்பீட்டு அளவுகோல் வகை",
-        "description": "oer:rubricType ஆக வெளியிடப்படும் அளவுகோல் பாணி (மதிப்பீட்டு அளவுகோல் பயன்முறை இயக்கத்தில் இருக்கும்போது மட்டுமே பொருள்படும்).",
-        "options": {
-          "": "(எதுவுமில்லை)",
-          "analytic": "பகுப்பாய்வு",
-          "holistic": "முழுமையான",
-          "single-point": "ஒற்றைப் புள்ளி",
-          "checklist": "சரிபார்ப்புப் பட்டியல்"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "அச்சுப் பொத்தான்",
         "description": "அட்டவணையை மட்டும் அச்சிட ஒரு பொத்தானைச் சேர்க்கவும்."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "எண் வடிவமைப்பு",
+        "description": "எண் நெடுவரிசைகளுக்கு எண் வடிவமைப்பைப் பயன்படுத்தவும்."
+      },
+      {
+        "property": "responsive",
+        "title": "பதிலளிக்கும் தளவமைப்பு",
+        "description": "சிறிய திரைகளில் அட்டவணைத் தளவமைப்பைச் சரிசெய்யவும்."
+      },
+      {
+        "property": "rubricMode",
+        "title": "மதிப்பீட்டு அளவுகோல் பயன்முறை",
+        "description": "Rubric, RubricScale, RubricCriterion மற்றும் RubricLevel மெட்டாடேட்டா வெளியிடப்படும்படி இந்த அட்டவணையை OER Schema Rubric ஆகக் கருதவும்."
+      },
+      {
+        "property": "rubricType",
+        "title": "மதிப்பீட்டு அளவுகோல் வகை",
+        "description": "oer:rubricType ஆக வெளியிடப்படும் அளவுகோல் பாணி (மதிப்பீட்டு அளவுகோல் பயன்முறை இயக்கத்தில் இருக்கும்போது மட்டுமே பொருள்படும்).",
+        "options": {
+          "": "(எதுவுமில்லை)",
+          "analytic": "பகுப்பாய்வு",
+          "holistic": "முழுமையான",
+          "single-point": "ஒற்றைப் புள்ளி",
+          "checklist": "சரிபார்ப்புப் பட்டியல்"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "CSV தரவு",
         "description": "பதிவேற்றிய CSV கோப்பிலிருந்து அட்டவணையை உருவாக்கவும்."
       }
-    ]
+    ],
+    "developer": []
   }
 }

@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "Boutons",
         "description": "Groupe de boutons affiché sous le texte."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "Texte de l'ancre",
         "description": "Libellé de l'ancre affiché dans la navigation."
       }
-    ]
+    ],
+    "developer": []
   }
 }

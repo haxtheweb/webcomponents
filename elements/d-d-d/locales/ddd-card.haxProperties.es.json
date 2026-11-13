@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Sin flecha",
         "description": "Ocultar la flecha del botón."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Enlace: destino",
@@ -54,7 +52,9 @@
           "_top": "Ventana superior - _top",
           "_parent": "Ventana principal - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Enlace: rel",

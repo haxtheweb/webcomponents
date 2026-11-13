@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Sasaran",
         "description": "Laluan ke binaan permainan."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Lebar Kanvas",
+        "description": "Lebar CSS kanvas (contohnya px atau em)."
       },
+      {
+        "property": "height",
+        "title": "Ketinggian Kanvas",
+        "description": "Ketinggian CSS kanvas (contohnya px atau em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Kaedah pemampatan",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Versi Produk",
         "description": "Versi keluaran."
-      },
-      {
-        "property": "width",
-        "title": "Lebar Kanvas",
-        "description": "Lebar CSS kanvas (contohnya px atau em)."
-      },
-      {
-        "property": "height",
-        "title": "Ketinggian Kanvas",
-        "description": "Ketinggian CSS kanvas (contohnya px atau em)."
       },
       {
         "property": "background",

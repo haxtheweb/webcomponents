@@ -11,6 +11,13 @@
         "description": "URL fyrir þessa AR-skrá."
       },
       {
+        "property": "skyColor",
+        "title": "Litur himins",
+        "description": "Veldu lit himinsins í senunni."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "X-staðsetning einingarinnar í AR."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "Z-staðsetning einingarinnar í AR."
-      },
-      {
-        "property": "skyColor",
-        "title": "Litur himins",
-        "description": "Veldu lit himinsins í senunni."
       }
     ]
   }

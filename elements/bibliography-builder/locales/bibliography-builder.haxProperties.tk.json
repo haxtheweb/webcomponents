@@ -9,7 +9,9 @@
         "slot": "",
         "title": "Sitatalar",
         "description": "Bu bibliografiýadaky sitata elementleri"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "Kurs",

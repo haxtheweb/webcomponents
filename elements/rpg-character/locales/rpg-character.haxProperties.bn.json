@@ -11,11 +11,6 @@
         "description": "এলোমেলো চরিত্র তৈরিতে ব্যবহৃত শব্দ।"
       },
       {
-        "property": "code",
-        "title": "চরিত্রের কোড",
-        "description": "সেই চরিত্রটি আবার তৈরি করতে একটি সংরক্ষিত কোড পেস্ট করুন।"
-      },
-      {
         "property": "hat",
         "title": "টুপি",
         "description": "টুপির স্টাইল।",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "মুখোশ",
-        "description": "মুখ বা মাথায় পরার মুখোশ।",
-        "options": {
-          "none": "কোনোটি নয়",
-          "lion": "সিংহ",
-          "plague": "প্লেগ ডাক্তার",
-          "theater": "থিয়েটার",
-          "pumpkin": "কুমড়া",
-          "ghost": "ভূত",
-          "mummy": "মমি",
-          "wrestler": "কুস্তির মুখোশ",
-          "block-head": "ব্লক মাথা",
-          "web": "জালের মুখোশ",
-          "werewolf": "নেকড়ে-মানবের মুখ",
-          "shadow": "ছায়াময় মুখ"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "মেকআপ",
-        "description": "ফেস পেইন্ট বা লিপস্টিক।",
-        "options": {
-          "none": "কোনোটি নয়",
-          "red-lipstick": "লাল লিপস্টিক",
-          "pink-lipstick": "গোলাপি লিপস্টিক",
-          "berry-lipstick": "বেরি লিপস্টিক",
-          "clown": "ক্লাউন পেইন্ট",
-          "fangs": "শ্বদন্ত",
-          "skull": "খুলির রং",
-          "zombie": "জম্বির রং",
-          "red-nose": "লাল নাক",
-          "white-beard": "সাদা দাড়ি",
-          "domino": "হিরো মাস্ক",
-          "carrot": "গাজরের নাক",
-          "bunny": "খরগোশের নাক",
-          "mustache": "গোঁফ",
-          "monster": "দানবের মুখরং",
-          "round-glasses": "গোল চশমা"
-        }
-      },
-      {
         "property": "expression",
         "title": "অভিব্যক্তি",
         "description": "মুখের অভিব্যক্তি।",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "পোষা প্রাণী",
+        "description": "চরিত্রের পাশে পোষা প্রাণী।",
+        "options": {
+          "none": "কোনোটি নয়",
+          "cat": "বিড়াল",
+          "dog": "কুকুর",
+          "bunny": "খরগোশ",
+          "goldfish": "গোল্ডফিশ",
+          "slime": "স্লাইম",
+          "squirrel": "কাঠবিড়ালি",
+          "dragon": "ছোট ড্রাগন",
+          "parrot": "তোতা",
+          "owl": "পেঁচা",
+          "bat": "বাদুড়"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "চরিত্রের কোড",
+        "description": "সেই চরিত্রটি আবার তৈরি করতে একটি সংরক্ষিত কোড পেস্ট করুন।"
+      },
+      {
+        "property": "mask",
+        "title": "মুখোশ",
+        "description": "মুখ বা মাথায় পরার মুখোশ।",
+        "options": {
+          "none": "কোনোটি নয়",
+          "lion": "সিংহ",
+          "plague": "প্লেগ ডাক্তার",
+          "theater": "থিয়েটার",
+          "pumpkin": "কুমড়া",
+          "ghost": "ভূত",
+          "mummy": "মমি",
+          "wrestler": "কুস্তির মুখোশ",
+          "block-head": "ব্লক মাথা",
+          "web": "জালের মুখোশ",
+          "werewolf": "নেকড়ে-মানবের মুখ",
+          "shadow": "ছায়াময় মুখ"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "মেকআপ",
+        "description": "ফেস পেইন্ট বা লিপস্টিক।",
+        "options": {
+          "none": "কোনোটি নয়",
+          "red-lipstick": "লাল লিপস্টিক",
+          "pink-lipstick": "গোলাপি লিপস্টিক",
+          "berry-lipstick": "বেরি লিপস্টিক",
+          "clown": "ক্লাউন পেইন্ট",
+          "fangs": "শ্বদন্ত",
+          "skull": "খুলির রং",
+          "zombie": "জম্বির রং",
+          "red-nose": "লাল নাক",
+          "white-beard": "সাদা দাড়ি",
+          "domino": "হিরো মাস্ক",
+          "carrot": "গাজরের নাক",
+          "bunny": "খরগোশের নাক",
+          "mustache": "গোঁফ",
+          "monster": "দানবের মুখরং",
+          "round-glasses": "গোল চশমা"
+        }
+      },
+      {
         "property": "flagText",
         "title": "পতাকার লেখা",
         "description": "পতাকায় সর্বোচ্চ ৪টি অক্ষর দেখানো হয়।"
@@ -310,24 +330,6 @@
           "skates": "স্কেট",
           "skateboard": "স্কেটবোর্ড",
           "hoverboard": "ভাসমান বোর্ড"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "পোষা প্রাণী",
-        "description": "চরিত্রের পাশে পোষা প্রাণী।",
-        "options": {
-          "none": "কোনোটি নয়",
-          "cat": "বিড়াল",
-          "dog": "কুকুর",
-          "bunny": "খরগোশ",
-          "goldfish": "গোল্ডফিশ",
-          "slime": "স্লাইম",
-          "squirrel": "কাঠবিড়ালি",
-          "dragon": "ছোট ড্রাগন",
-          "parrot": "তোতা",
-          "owl": "পেঁচা",
-          "bat": "বাদুড়"
         }
       },
       {

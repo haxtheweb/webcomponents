@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "प्रगति डोनट",
-    "description": "प्रगति डोनट"
+    "description": "कुल की ओर प्रगति दिखाने वाला डोनट चार्ट।"
   },
   "settings": {
     "configure": [
@@ -26,11 +26,6 @@
         "description": "छवि के लिए alt टेक्स्ट।"
       },
       {
-        "property": "animated",
-        "title": "एनिमेटेड",
-        "description": "क्या पहली बार लोड होने पर प्रगति एनिमेट होती है"
-      },
-      {
         "property": "complete",
         "title": "पूर्ण",
         "description": "पूर्ण मानों का एक ऐरे।"
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "कुल",
         "description": "सभी आइटम पूर्ण होने पर कुल।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "एनिमेटेड",
+        "description": "क्या पहली बार लोड होने पर प्रगति एनिमेट होती है"
       },
       {
         "property": "startAngle",

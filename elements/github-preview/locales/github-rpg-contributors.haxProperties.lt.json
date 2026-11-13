@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "GitHub bendraautorių sąrašas",
-    "description": "Rodomi kaip RPG personažai naudojant GitHub API."
+    "description": "Rodo saugyklos bendraautorius kaip RPG veikėjus."
   },
   "settings": {
     "configure": [

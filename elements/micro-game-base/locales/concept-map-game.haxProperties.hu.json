@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Fogalomtérkép-játék",
-    "description": "Rövid billentyűzetes játék. Egy karakter sétál a térkép fogalmaihoz, és mindegyik elmagyarázza magát. Ha mindet megérinted, konfetti és egy másolható prompt jár érte."
+    "description": "Rövid billentyűzetes játék, amelyben egy karakter bejárja a térképet, és minden fogalom elmagyarázza önmagát."
   },
   "settings": {
     "configure": [
@@ -86,7 +86,9 @@
         "property": "gameTitle",
         "title": "Játék neve",
         "description": "Ezen a néven szerepel a játék az előrehaladási eseményekben és az OER Schema jelölésben."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Játék azonosítója",

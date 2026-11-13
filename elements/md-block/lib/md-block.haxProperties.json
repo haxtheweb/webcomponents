@@ -1,0 +1,54 @@
+{
+  "canScale": false,
+  "canEditSource": true,
+  "gizmo": {
+    "title": "Markdown",
+    "description": "Markdown content, written inline or loaded from a file.",
+    "icon": "hax:markdown",
+    "color": "yellow",
+    "tags": [
+      "Text",
+      "md",
+      "markdown",
+      "content",
+      "code",
+      "codeblock",
+      "code-block",
+      "code block",
+      "html"
+    ],
+    "handles": [],
+    "meta": {
+      "author": "HAXTheWeb",
+      "owner": "The Pennsylvania State University"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Markdown text to show on the page as formatted content.",
+        "inputMethod": "textarea"
+      },
+      {
+        "property": "source",
+        "title": "Source",
+        "description": "Source file for markdown",
+        "inputMethod": "haxupload",
+        "noVoiceRecord": true,
+        "noCamera": true
+      }
+    ],
+    "advanced": []
+  },
+  "demoSchema": [
+    {
+      "tag": "md-block",
+      "properties": {
+        "markdown": "## Heading\n\n- First item\n- Second item\n\nSome **bold** text."
+      },
+      "content": ""
+    }
+  ]
+}

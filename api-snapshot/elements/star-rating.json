@@ -20,7 +20,7 @@
   "cssParts": [],
   "cssProperties": [],
   "hax": {
-    "schema": "elements/star-rating/star-rating.js",
+    "schema": "elements/star-rating/lib/star-rating.haxProperties.json",
     "gizmo": true,
     "properties": [
       "interactive",

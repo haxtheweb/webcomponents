@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Teachtaireacht nach dtacaítear leis",
-        "description": "Teachtaireacht nuair nach féidir leis an mbrabhsálaí comhaid PDF a thaispeáint."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Teachtaireacht naisc nach dtacaítear leis",
-        "description": "Téacs naisc nuair nach féidir leis an mbrabhsálaí comhaid PDF a thaispeáint."
-      },
-      {
         "property": "width",
         "title": "Leithead",
         "description": "Leithead an amharcáin PDF."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Airde",
         "description": "Airde an amharcáin PDF."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Teachtaireacht nach dtacaítear leis",
+        "description": "Teachtaireacht nuair nach féidir leis an mbrabhsálaí comhaid PDF a thaispeáint."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Teachtaireacht naisc nach dtacaítear leis",
+        "description": "Téacs naisc nuair nach féidir leis an mbrabhsálaí comhaid PDF a thaispeáint."
       }
     ]
   }

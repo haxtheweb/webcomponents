@@ -10,10 +10,6 @@
         "title": "Ikona zavihka"
       },
       {
-        "property": "disabled",
-        "title": "Onemogočeno"
-      },
-      {
         "property": "label",
         "title": "Oznaka zavihka"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "Enolični ID"
-      },
-      {
         "property": "flag",
         "title": "Neobvezno besedilo zastavice"
       },
       {
         "property": "flagIcon",
         "title": "Neobvezna ikona zastavice"
+      },
+      {
+        "property": "disabled",
+        "title": "Onemogočeno"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "Enolični ID"
       }
     ]
   }

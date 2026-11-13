@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "Ovoj za vdelane predvajalnike Spotify."
+    "description": "Vdelajte skladbo, album ali seznam predvajanja iz Spotifyja."
   },
   "settings": {
     "configure": [

@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Popisok",
         "description": "Popis obrázka."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Názov obrázka",
-        "description": "Názov pre označenie obrázka."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Popis obrázka",
-        "description": "Popis pre označenie obrázka."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Vypnúť modálne okno obrázka",
         "description": "Vypnúť otváranie obrázka kliknutím v dialógu inšpektora obrázkov."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Názov obrázka",
+        "description": "Názov pre označenie obrázka."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Popis obrázka",
+        "description": "Popis pre označenie obrázka."
       }
     ],
     "developer": [

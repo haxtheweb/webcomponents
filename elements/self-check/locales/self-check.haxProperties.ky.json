@@ -27,6 +27,13 @@
       {
         "slot": "",
         "title": "Жооп"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Кененирээк шилтеме",
+        "description": "Кошумча маалыматка шилтеме."
       },
       {
         "property": "hasLearningObjective",
@@ -37,13 +44,6 @@
         "property": "assessing",
         "title": "Баалануучу",
         "description": "oer:assessing катары чыгарылган иш-аракетке шилтеме."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "link",
-        "title": "Кененирээк шилтеме",
-        "description": "Кошумча маалыматка шилтеме."
       }
     ]
   }

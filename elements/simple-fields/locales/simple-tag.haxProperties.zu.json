@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Umbala wokugcizelela ozenzakalelayo",
         "description": "Thola umbala wokugcizelela embhalweni welebula ngokuzenzakalelayo."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Inkinobho yokukhansela",
-        "description": "Bonisa inkinobho yesithonjana sokususa/ukukhansela ngaphakathi kwephilisi."
-      },
-      {
-        "property": "readonly",
-        "title": "Ukufunda kuphela",
-        "description": "Fihla inkinobho yokukhansela ukuze iphilisi libe ngelokubonisa kuphela."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Ompunga oluhlaza okwesibhakabhaka",
           "grey": "Ompunga"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Inkinobho yokukhansela",
+        "description": "Bonisa inkinobho yesithonjana sokususa/ukukhansela ngaphakathi kwephilisi."
+      },
+      {
+        "property": "readonly",
+        "title": "Ukufunda kuphela",
+        "description": "Fihla inkinobho yokukhansela ukuze iphilisi libe ngelokubonisa kuphela."
       }
     ]
   }

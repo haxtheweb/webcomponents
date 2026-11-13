@@ -11,30 +11,8 @@
         "description": "ユーザーが回答する問題。"
       },
       {
-        "property": "gradingFormat",
-        "title": "採点形式",
-        "description": "OER Schema: この評価の採点形式（例: 点数、レター評価、パーセント、完了）。"
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "学習目標",
-        "description": "OER Schema: この評価に関連付けられた学習目標。"
-      },
-      {
-        "property": "forCourse",
-        "title": "コース",
-        "description": "OER Schema: この評価の対象となるコース。"
-      },
-      {
         "property": "answers",
         "title": "答え"
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "クイズ名",
-        "description": "分析システムでxAPIの識別に使うクイズ名。"
       }
     ],
     "advanced": [
@@ -47,6 +25,28 @@
         "property": "collapsed",
         "title": "折りたたんだ状態で開始",
         "description": "折りたたみ可能な場合、質問とその状態だけを表示する閉じた行として開始します。"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "採点形式",
+        "description": "OER Schema: この評価の採点形式（例: 点数、レター評価、パーセント、完了）。"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "学習目標",
+        "description": "OER Schema: この評価に関連付けられた学習目標。"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "クイズ名",
+        "description": "分析システムでxAPIの識別に使うクイズ名。"
+      },
+      {
+        "property": "forCourse",
+        "title": "コース",
+        "description": "OER Schema: この評価の対象となるコース。"
       }
     ]
   }

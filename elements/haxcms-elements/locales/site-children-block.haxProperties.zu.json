@@ -4,7 +4,7 @@
     "description": "Ibhulokhi eguquguqukayo yokubonisa ingane yekhasi lamanje"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "Indlela eguquguqukayo",
@@ -14,7 +14,9 @@
           "parent": "Izingane zomzali",
           "ancestor": "Zonke izingane kusuka kukhokho ophezulu kakhulu"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "Izinga lokuqala"

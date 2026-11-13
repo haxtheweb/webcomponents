@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Întrebare Adevărat / Fals",
-    "description": "Întrebare adevărat-fals"
+    "description": "O afirmație pe care cursantul o marchează ca adevărată sau falsă."
   },
   "settings": {
     "configure": [

@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Dəstəklənmir mesajı",
-        "description": "Brauzer PDF fayllarını göstərə bilmədikdə mesaj."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Dəstəklənmir keçid mesajı",
-        "description": "Brauzer PDF fayllarını göstərə bilmədikdə keçid mətni."
-      },
-      {
         "property": "width",
         "title": "En",
         "description": "PDF baxıcısının eni."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Hündürlük",
         "description": "PDF baxıcısının hündürlüyü."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Dəstəklənmir mesajı",
+        "description": "Brauzer PDF fayllarını göstərə bilmədikdə mesaj."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Dəstəklənmir keçid mesajı",
+        "description": "Brauzer PDF fayllarını göstərə bilmədikdə keçid mətni."
       }
     ]
   }

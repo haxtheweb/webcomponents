@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Skilaboð um að ekki sé stutt",
-        "description": "Skilaboð þegar vafrinn getur ekki birt PDF-skrár."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Tengilskilaboð um að ekki sé stutt",
-        "description": "Tengiltexti þegar vafrinn getur ekki birt PDF-skrár."
-      },
-      {
         "property": "width",
         "title": "Breidd",
         "description": "Breidd PDF-skoðarans."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Hæð",
         "description": "Hæð PDF-skoðarans."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Skilaboð um að ekki sé stutt",
+        "description": "Skilaboð þegar vafrinn getur ekki birt PDF-skrár."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Tengilskilaboð um að ekki sé stutt",
+        "description": "Tengiltexti þegar vafrinn getur ekki birt PDF-skrár."
       }
     ]
   }

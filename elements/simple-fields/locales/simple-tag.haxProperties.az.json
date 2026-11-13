@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Avtomatik vurğu rəngi",
         "description": "Vurğu rəngini etiket mətnindən avtomatik müəyyən et."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Ləğv düyməsi",
-        "description": "Həbin içində silmə/ləğv ikon düyməsini göstər."
-      },
-      {
-        "property": "readonly",
-        "title": "Yalnız oxumaq üçün",
-        "description": "Həb yalnız göstərmək üçün olsun deyə ləğv düyməsini gizlət."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Mavi-boz",
           "grey": "Boz"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Ləğv düyməsi",
+        "description": "Həbin içində silmə/ləğv ikon düyməsini göstər."
+      },
+      {
+        "property": "readonly",
+        "title": "Yalnız oxumaq üçün",
+        "description": "Həb yalnız göstərmək üçün olsun deyə ləğv düyməsini gizlət."
       }
     ]
   }

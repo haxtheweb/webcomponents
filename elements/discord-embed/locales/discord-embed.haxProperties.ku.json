@@ -9,7 +9,9 @@
         "property": "source",
         "title": "URL ya Çavkaniyê",
         "description": "URL ya çavkaniyê."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Bilindahî",

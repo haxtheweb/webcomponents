@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Povolit filtr",
         "description": "Povolit filtrování podle hodnot sloupců."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Číselné formátování",
-        "description": "Použít číselné formátování na číselné sloupce."
-      },
-      {
-        "property": "responsive",
-        "title": "Responzivní",
-        "description": "Přizpůsobit rozvržení tabulky na malých obrazovkách."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Režim rubriky",
-        "description": "Interpretovat tuto tabulku jako OER Schema Rubric, aby se generovala metadata Rubric, RubricScale, RubricCriterion a RubricLevel."
-      },
-      {
-        "property": "rubricType",
-        "title": "Typ rubriky",
-        "description": "Styl rubriky generovaný jako oer:rubricType (má smysl jen při zapnutém režimu rubriky).",
-        "options": {
-          "": "(žádný)",
-          "analytic": "Analytická",
-          "holistic": "Holistická",
-          "single-point": "Jednobodová",
-          "checklist": "Kontrolní seznam"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Tlačítko tisku",
         "description": "Přidat tlačítko pro tisk pouze tabulky."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Číselné formátování",
+        "description": "Použít číselné formátování na číselné sloupce."
+      },
+      {
+        "property": "responsive",
+        "title": "Responzivní",
+        "description": "Přizpůsobit rozvržení tabulky na malých obrazovkách."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Režim rubriky",
+        "description": "Interpretovat tuto tabulku jako OER Schema Rubric, aby se generovala metadata Rubric, RubricScale, RubricCriterion a RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "Typ rubriky",
+        "description": "Styl rubriky generovaný jako oer:rubricType (má smysl jen při zapnutém režimu rubriky).",
+        "options": {
+          "": "(žádný)",
+          "analytic": "Analytická",
+          "holistic": "Holistická",
+          "single-point": "Jednobodová",
+          "checklist": "Kontrolní seznam"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "Data CSV",
         "description": "Vytvořit tabulku z nahraného souboru CSV."
       }
-    ]
+    ],
+    "developer": []
   }
 }

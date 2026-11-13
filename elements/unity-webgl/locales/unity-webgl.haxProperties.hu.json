@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Cél",
         "description": "A játék buildjének elérési útja."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Vászon szélessége",
+        "description": "A vászon CSS-szélessége (például px vagy em)."
       },
+      {
+        "property": "height",
+        "title": "Vászon magassága",
+        "description": "A vászon CSS-magassága (például px vagy em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Tömörítési módszer",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Termékverzió",
         "description": "Kiadási verzió."
-      },
-      {
-        "property": "width",
-        "title": "Vászon szélessége",
-        "description": "A vászon CSS-szélessége (például px vagy em)."
-      },
-      {
-        "property": "height",
-        "title": "Vászon magassága",
-        "description": "A vászon CSS-magassága (például px vagy em)."
       },
       {
         "property": "background",

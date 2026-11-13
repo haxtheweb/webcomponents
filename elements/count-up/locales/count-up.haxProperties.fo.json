@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Eftirteksti",
         "description": "Tekstur, ið verður vístur aftaná talið (t.d. '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Forrúm",
-        "description": "Valfrítt innihald undan talinum."
-      },
-      {
-        "slot": "suffix",
-        "title": "Eftirrúm",
-        "description": "Valfrítt innihald aftaná talið."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Ongin javning",
         "description": "Ger javning óvirkna, so teljingin verður lineer."
+      },
+      {
+        "slot": "prefix",
+        "title": "Forrúm",
+        "description": "Valfrítt innihald undan talinum."
+      },
+      {
+        "slot": "suffix",
+        "title": "Eftirrúm",
+        "description": "Valfrítt innihald aftaná talið."
       }
     ]
   }

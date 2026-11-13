@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Bildekilde",
         "description": "Bildefil som brukes til kortet. Overstyrer bildenøkkelord."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Bildenøkkelord",
+        "description": "Nøkkelord for tilfeldig bilde. Overstyres av bildekilde."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Læringsmål",
         "description": "OER Schema: ID eller URL til læringsmålet denne øvingen støtter."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Bildenøkkelord",
-        "description": "Nøkkelord for tilfeldig bilde. Overstyres av bildekilde."
       }
     ]
   }

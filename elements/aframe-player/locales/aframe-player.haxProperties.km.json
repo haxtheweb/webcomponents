@@ -11,6 +11,13 @@
         "description": "URL សម្រាប់ឯកសារ AR នេះ។"
       },
       {
+        "property": "skyColor",
+        "title": "ពណ៌មេឃ",
+        "description": "ជ្រើសរើសពណ៌មេឃក្នុងឈុតឆាក។"
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "ទីតាំង X របស់ធាតុក្នុង AR។"
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "ទីតាំង Z របស់ធាតុក្នុង AR។"
-      },
-      {
-        "property": "skyColor",
-        "title": "ពណ៌មេឃ",
-        "description": "ជ្រើសរើសពណ៌មេឃក្នុងឈុតឆាក។"
       }
     ]
   }

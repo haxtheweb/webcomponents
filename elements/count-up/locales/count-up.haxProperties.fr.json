@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Texte du suffixe",
         "description": "Texte affiché après le nombre (p. ex. '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Emplacement du préfixe",
-        "description": "Contenu facultatif inséré avant le nombre."
-      },
-      {
-        "slot": "suffix",
-        "title": "Emplacement du suffixe",
-        "description": "Contenu facultatif inséré après le nombre."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Sans accélération",
         "description": "Désactiver l'accélération pour un comptage linéaire."
+      },
+      {
+        "slot": "prefix",
+        "title": "Emplacement du préfixe",
+        "description": "Contenu facultatif inséré avant le nombre."
+      },
+      {
+        "slot": "suffix",
+        "title": "Emplacement du suffixe",
+        "description": "Contenu facultatif inséré après le nombre."
       }
     ]
   }

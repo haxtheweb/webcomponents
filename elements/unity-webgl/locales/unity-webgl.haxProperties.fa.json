@@ -9,7 +9,21 @@
         "property": "target",
         "title": "مقصد",
         "description": "مسیر بیلد بازی."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "عرض بوم",
+        "description": "عرض CSS بوم (برای نمونه px یا em)."
       },
+      {
+        "property": "height",
+        "title": "ارتفاع بوم",
+        "description": "ارتفاع CSS بوم (برای نمونه px یا em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "روش فشرده‌سازی",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "نسخهٔ محصول",
         "description": "نسخهٔ انتشار."
-      },
-      {
-        "property": "width",
-        "title": "عرض بوم",
-        "description": "عرض CSS بوم (برای نمونه px یا em)."
-      },
-      {
-        "property": "height",
-        "title": "ارتفاع بوم",
-        "description": "ارتفاع CSS بوم (برای نمونه px یا em)."
       },
       {
         "property": "background",

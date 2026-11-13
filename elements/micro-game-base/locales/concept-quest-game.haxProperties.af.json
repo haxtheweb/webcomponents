@@ -91,7 +91,9 @@
         "property": "gameTitle",
         "title": "Speletjienaam",
         "description": "Noem hierdie speletjie in vorderingsgebeure en OER Schema-opmerking."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Speletjie-ID",

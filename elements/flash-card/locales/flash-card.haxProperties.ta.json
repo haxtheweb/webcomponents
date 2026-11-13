@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "பட மூலம்",
         "description": "அட்டைக்குப் பயன்படும் படக் கோப்பு. படச் சொல்லை மேலெழுதும்."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "படச் சொல்",
+        "description": "சீரற்ற படத்திற்கான சொல். பட மூலத்தால் மேலெழுதப்படும்."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "கற்றல் நோக்கம்",
         "description": "OER Schema: இந்தப் பயிற்சி ஆதரிக்கும் கற்றல் நோக்கத்தின் ID அல்லது URL."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "படச் சொல்",
-        "description": "சீரற்ற படத்திற்கான சொல். பட மூலத்தால் மேலெழுதப்படும்."
       }
     ]
   }

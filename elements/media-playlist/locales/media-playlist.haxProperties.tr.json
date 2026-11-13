@@ -4,22 +4,23 @@
     "description": "Video ve ses oynatıcılarını oynatıcı + kenar çubuğu düzeninde sunan bir oynatma listesi."
   },
   "settings": {
-    "configure": [
+    "configure": [],
+    "advanced": [
       {
         "property": "activeIndex",
         "title": "Etkin dizin",
         "description": "Başlangıçta etkin olacak öğenin dizini."
-      },
-      {
-        "property": "forCourse",
-        "title": "Ders",
-        "description": "Bu oynatma listesinin hazırlandığı ders (ders tanımlayıcısı veya URL)."
       }
     ],
     "developer": [
       {
         "title": "Medya",
         "description": "Oynatma listesindeki videolar ve sesler. Burada düzenlenmez: sayfa ana hattı, içine hangi blokların bırakılabileceğini bilmek için bunu kullanır."
+      },
+      {
+        "property": "forCourse",
+        "title": "Ders",
+        "description": "Bu oynatma listesinin hazırlandığı ders (ders tanımlayıcısı veya URL)."
       }
     ]
   }

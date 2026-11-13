@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "Tag / Pille",
+    "title": "Tag",
     "description": "Eine kompakte pillenförmige Beschriftung mit optionaler Akzentfarbe, Abbrechen-Schaltfläche oder Umschaltfunktion."
   },
   "settings": {
@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Automatische Akzentfarbe",
         "description": "Die Akzentfarbe automatisch aus dem Beschriftungstext ableiten."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Abbrechen-Schaltfläche",
-        "description": "Eine Symbolschaltfläche zum Entfernen/Abbrechen in der Pille anzeigen."
-      },
-      {
-        "property": "readonly",
-        "title": "Schreibgeschützt",
-        "description": "Die Abbrechen-Schaltfläche ausblenden, sodass die Pille nur zur Anzeige dient."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Blaugrau",
           "grey": "Grau"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Abbrechen-Schaltfläche",
+        "description": "Eine Symbolschaltfläche zum Entfernen/Abbrechen in der Pille anzeigen."
+      },
+      {
+        "property": "readonly",
+        "title": "Schreibgeschützt",
+        "description": "Die Abbrechen-Schaltfläche ausblenden, sodass die Pille nur zur Anzeige dient."
       }
     ]
   }

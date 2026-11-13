@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "நேரடியாக அல்லது தொலைவிலிருந்து ஏற்றப்படும் markdown உள்ளடக்கத் தொகுதி"
+    "description": "நேரடியாக எழுதப்பட்ட அல்லது கோப்பிலிருந்து ஏற்றப்பட்ட Markdown உள்ளடக்கம்."
   },
   "settings": {
     "configure": [

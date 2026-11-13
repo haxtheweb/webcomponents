@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Imej poster",
         "description": "URL imej poster."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Trek teks",
         "description": "Kapsyen tertutup, sari kata, penerangan dan trek teks lain untuk video."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Masa mula",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Trek Penerangan Audio",
         "description": "URL ke trek penerangan audio (fail MP3) yang menyediakan naratif bagi elemen visual."
+      },
+      {
+        "property": "accentColor",
+        "title": "Warna aksen",
+        "description": "(lapuk) Pilih warna aksen untuk pemain."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Bahasa",
         "description": "Bahasa media."
-      },
-      {
-        "property": "accentColor",
-        "title": "Warna aksen",
-        "description": "(lapuk) Pilih warna aksen untuk pemain."
       }
     ]
   }

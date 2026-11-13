@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Mål",
         "description": "Sökväg till spelets build."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Canvasbredd",
+        "description": "Canvasens CSS-bredd (till exempel px eller em)."
       },
+      {
+        "property": "height",
+        "title": "Canvashöjd",
+        "description": "Canvasens CSS-höjd (till exempel px eller em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Komprimeringsmetod",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Produktversion",
         "description": "Versionsnummer."
-      },
-      {
-        "property": "width",
-        "title": "Canvasbredd",
-        "description": "Canvasens CSS-bredd (till exempel px eller em)."
-      },
-      {
-        "property": "height",
-        "title": "Canvashöjd",
-        "description": "Canvasens CSS-höjd (till exempel px eller em)."
       },
       {
         "property": "background",

@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "بٹن",
         "description": "متن دے تھلے وکھایا جاوݨ والا بٹناں دا گروپ۔"
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "اینکر متن",
         "description": "نیویگیشن وچ وکھایا جاوݨ والا اینکر لیبل۔"
       }
-    ]
+    ],
+    "developer": []
   }
 }

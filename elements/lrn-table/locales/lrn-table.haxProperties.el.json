@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Πίνακας CSV",
-    "description": "Δημιουργεί πίνακα από αρχείο CSV, όπου κι αν βρίσκεται."
+    "description": "Εμφανίζει ένα αρχείο CSV ως προσβάσιμο πίνακα."
   },
   "settings": {
     "configure": [

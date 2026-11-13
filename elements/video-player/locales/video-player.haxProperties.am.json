@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "የፖስተር ምስል",
         "description": "የፖስተር ምስል URL።"
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "የጽሑፍ ትራኮች",
         "description": "ለቪዲዮው የተዘጉ መግለጫ ጽሑፎች፣ ንዑስ ርዕሶች፣ መግለጫዎች እና ሌሎች የጽሑፍ ትራኮች።"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "የመጀመሪያ ጊዜ",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "የድምፅ መግለጫ ትራክ",
         "description": "የእይታ ክፍሎችን የሚተርክ የድምፅ መግለጫ ትራክ (MP3 ፋይል) URL።"
+      },
+      {
+        "property": "accentColor",
+        "title": "የአጽንዖት ቀለም",
+        "description": "(ጊዜው ያለፈበት) ለአጫዋቹ የአጽንዖት ቀለም ይምረጡ።"
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "ቋንቋ",
         "description": "የሚዲያው ቋንቋ።"
-      },
-      {
-        "property": "accentColor",
-        "title": "የአጽንዖት ቀለም",
-        "description": "(ጊዜው ያለፈበት) ለአጫዋቹ የአጽንዖት ቀለም ይምረጡ።"
       }
     ]
   }

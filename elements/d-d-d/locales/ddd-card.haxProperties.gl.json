@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Sen frecha",
         "description": "Ocultar a frecha do botón."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Ligazón: destino",
@@ -54,7 +52,9 @@
           "_top": "Xanela superior - _top",
           "_parent": "Xanela nai - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Ligazón: rel",

@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Bez bultiņas",
         "description": "Paslēpt pogas bultiņu."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Saite: mērķis",
@@ -54,7 +52,9 @@
           "_top": "Augšējais logs — _top",
           "_parent": "Vecāklogs — _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Saite: rel",

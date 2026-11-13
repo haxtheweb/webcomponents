@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Veranstaltungsabzeichen",
-    "description": "Komponente für Veranstaltungsabzeichen."
+    "description": "Ein Namensschild im Konferenzstil mit Foto, Name und Organisation."
   },
   "settings": {
     "configure": [

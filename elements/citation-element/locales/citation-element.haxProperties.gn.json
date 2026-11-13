@@ -21,15 +21,6 @@
         "description": "Arange ojeikehague ypykuépe."
       },
       {
-        "property": "scope",
-        "title": "Rembe'y",
-        "description": "Pehẽ rembe'y ojehechaukátava.",
-        "options": {
-          "sibling": "Pehẽ ryvy",
-          "parent": "Pehẽ túva"
-        }
-      },
-      {
         "property": "license",
         "title": "Ñemoneĩ",
         "description": "Ñemoneĩ tembiapo ojehechaukávape g̃uarã."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Apohára",
         "description": "Tembiapo ojehechaukáva apohára térã jára."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Rembe'y",
+        "description": "Pehẽ rembe'y ojehechaukátava.",
+        "options": {
+          "sibling": "Pehẽ ryvy",
+          "parent": "Pehẽ túva"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "OER Schema reko",

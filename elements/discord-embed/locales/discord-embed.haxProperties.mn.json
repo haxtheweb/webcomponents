@@ -9,7 +9,9 @@
         "property": "source",
         "title": "Нөөцийн URL",
         "description": "Нөөцийн URL."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Өндөр",

@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Berjocht 'net stipe'",
-        "description": "Berjocht as de blêder gjin PDF-bestannen toane kin."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Keppelingsberjocht 'net stipe'",
-        "description": "Keppelingstekst as de blêder gjin PDF-bestannen toane kin."
-      },
-      {
         "property": "width",
         "title": "Breedte",
         "description": "Breedte fan de PDF-werjouwer."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Hichte",
         "description": "Hichte fan de PDF-werjouwer."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Berjocht 'net stipe'",
+        "description": "Berjocht as de blêder gjin PDF-bestannen toane kin."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Keppelingsberjocht 'net stipe'",
+        "description": "Keppelingstekst as de blêder gjin PDF-bestannen toane kin."
       }
     ]
   }

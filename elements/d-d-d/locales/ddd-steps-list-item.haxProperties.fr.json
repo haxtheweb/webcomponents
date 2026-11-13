@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Élément d'étapes",
-    "description": "Élément faisant partie d'une liste d'étapes"
+    "description": "Une seule étape dans une liste d’étapes."
   },
   "settings": {
     "configure": [

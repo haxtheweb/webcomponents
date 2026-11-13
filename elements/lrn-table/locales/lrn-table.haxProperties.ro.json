@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Tabel CSV",
-    "description": "Poate genera un tabel dintr-un fișier CSV, indiferent unde se află."
+    "description": "Afișează un fișier CSV ca tabel accesibil."
   },
   "settings": {
     "configure": [

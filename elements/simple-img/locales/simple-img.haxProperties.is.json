@@ -26,7 +26,8 @@
         "description": "Gagnlegt fyrir skjálesara og bætta SEO."
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "Gæði",

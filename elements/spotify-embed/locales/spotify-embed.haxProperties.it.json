@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "Wrapper per i lettori Spotify incorporati."
+    "description": "Incorpora un brano, un album o una playlist di Spotify."
   },
   "settings": {
     "configure": [

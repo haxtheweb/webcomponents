@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Testo suffisso",
         "description": "Testo mostrato dopo il numero (es. '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Slot prefisso",
-        "description": "Contenuto facoltativo inserito prima del numero."
-      },
-      {
-        "slot": "suffix",
-        "title": "Slot suffisso",
-        "description": "Contenuto facoltativo inserito dopo il numero."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Nessuna accelerazione",
         "description": "Disattiva l'accelerazione per un conteggio lineare."
+      },
+      {
+        "slot": "prefix",
+        "title": "Slot prefisso",
+        "description": "Contenuto facoltativo inserito prima del numero."
+      },
+      {
+        "slot": "suffix",
+        "title": "Slot suffisso",
+        "description": "Contenuto facoltativo inserito dopo il numero."
       }
     ]
   }

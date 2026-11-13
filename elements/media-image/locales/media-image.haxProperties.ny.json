@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Mawu ofotokoza",
         "description": "Mawu ofotokozera chithunzi."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Mutu wa Chithunzi",
-        "description": "Mutu wa chizindikiro cha chithunzi."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Kufotokozera kwa Chithunzi",
-        "description": "Kufotokozera kwa chizindikiro cha chithunzi."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Zimitsani zenera la chithunzi",
         "description": "Zimitsani kudina komwe kumatsegula chithunzi m'bokosi loyang'anira zithunzi."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Mutu wa Chithunzi",
+        "description": "Mutu wa chizindikiro cha chithunzi."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Kufotokozera kwa Chithunzi",
+        "description": "Kufotokozera kwa chizindikiro cha chithunzi."
       }
     ],
     "developer": [

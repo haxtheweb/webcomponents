@@ -9,7 +9,9 @@
         "slot": "",
         "title": "Цитати",
         "description": "Цитирани източници в тази библиография"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "Курс",

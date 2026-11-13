@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Интерактив",
         "description": "Хэрэглэгч үнэлгээ өгөхийг зөвшөөрөх."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Рубрикийн хуваарийн горим",

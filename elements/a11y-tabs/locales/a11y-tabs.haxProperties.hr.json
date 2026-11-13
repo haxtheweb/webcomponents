@@ -11,20 +11,17 @@
         "description": "Pristupačna oznaka za skup kartica."
       },
       {
-        "property": "disabled",
-        "title": "Onemogućeno",
-        "description": "Onemogući sve kartice."
-      },
-      {
-        "property": "hidden",
-        "title": "Skriveno",
-        "description": "Sakrij skup kartica."
-      },
-      {
         "property": "sticky",
         "title": "Fiksirano",
         "description": "Zadrži vodoravne kartice na vrhu tijekom pomicanja."
       },
+      {
+        "slot": "",
+        "title": "Kartice",
+        "description": "Niz elemenata <a11y-tab/>."
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "Prijelomna točka rasporeda",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "Prijelomna točka ikona",
         "description": "Prijelomna točka za prikaz teksta uz ikone. Zadano je 0; upotrijebite -1 za način samo s ikonama."
-      },
-      {
-        "slot": "",
-        "title": "Kartice",
-        "description": "Niz elemenata <a11y-tab/>."
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "Onemogućeno",
+        "description": "Onemogući sve kartice."
+      },
+      {
+        "property": "hidden",
+        "title": "Skriveno",
+        "description": "Sakrij skup kartica."
+      },
       {
         "property": "id",
         "title": "Jedinstveni ID",

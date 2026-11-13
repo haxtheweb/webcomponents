@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Тавзеҳ",
         "description": "Зернавис барои тасвир."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Сарлавҳаи расм",
-        "description": "Сарлавҳа барои нишонаи расм."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Тавсифи расм",
-        "description": "Тавсиф барои нишонаи расм."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Хомӯш кардани равзанаи тасвир",
         "description": "Кушодани тасвир дар равзанаи тафтиши тасвир бо кликро хомӯш кунед."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Сарлавҳаи расм",
+        "description": "Сарлавҳа барои нишонаи расм."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Тавсифи расм",
+        "description": "Тавсиф барои нишонаи расм."
       }
     ],
     "developer": [

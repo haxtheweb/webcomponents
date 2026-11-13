@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "视差图片",
-    "description": "随滚动移动的图片"
+    "description": "一张全宽图片，滚动速度比页面慢，上面带有标题。"
   },
   "settings": {
     "configure": [

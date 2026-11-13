@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "प्रतिमा स्रोत",
         "description": "कार्डसाठी वापरलेली प्रतिमा फाइल. प्रतिमा कीवर्डला अधिलिखित करते."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "प्रतिमा कीवर्ड",
+        "description": "यादृच्छिक प्रतिमेसाठी कीवर्ड. प्रतिमा स्रोत याला अधिलिखित करतो."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "अध्ययन उद्दिष्ट",
         "description": "OER Schema: हा सराव ज्या अध्ययन उद्दिष्टाला पाठबळ देतो त्याचा ID किंवा URL."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "प्रतिमा कीवर्ड",
-        "description": "यादृच्छिक प्रतिमेसाठी कीवर्ड. प्रतिमा स्रोत याला अधिलिखित करतो."
       }
     ]
   }

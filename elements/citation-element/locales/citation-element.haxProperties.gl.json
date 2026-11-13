@@ -21,15 +21,6 @@
         "description": "Data en que se consultou a fonte."
       },
       {
-        "property": "scope",
-        "title": "Ámbito",
-        "description": "Ámbito do elemento que citar.",
-        "options": {
-          "sibling": "Elemento irmán",
-          "parent": "Elemento pai"
-        }
-      },
-      {
         "property": "license",
         "title": "Licenza",
         "description": "Licenza da obra citada."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Creador",
         "description": "Creador ou propietario da obra citada."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Ámbito",
+        "description": "Ámbito do elemento que citar.",
+        "options": {
+          "sibling": "Elemento irmán",
+          "parent": "Elemento pai"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "Tipo de OER Schema",

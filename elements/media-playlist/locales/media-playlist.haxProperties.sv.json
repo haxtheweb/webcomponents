@@ -4,22 +4,23 @@
     "description": "En spellista som visar video- och ljudspelare i en layout med spelare och sidofält."
   },
   "settings": {
-    "configure": [
+    "configure": [],
+    "advanced": [
       {
         "property": "activeIndex",
         "title": "Startindex",
         "description": "Index för det objekt som ska visas först."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kurs",
-        "description": "Kursen som den här spellistan är avsedd för (kursidentifierare eller URL)."
       }
     ],
     "developer": [
       {
         "title": "Media",
         "description": "Videorna och ljudet i spellistan. Redigeras inte här: sidöversikten använder det för att veta vilka block som kan släppas i den."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurs",
+        "description": "Kursen som den här spellistan är avsedd för (kursidentifierare eller URL)."
       }
     ]
   }

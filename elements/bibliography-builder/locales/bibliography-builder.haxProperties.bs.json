@@ -9,7 +9,9 @@
         "slot": "",
         "title": "Citati",
         "description": "Stavke citata u ovoj bibliografiji"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "Kurs",

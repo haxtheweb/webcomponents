@@ -26,11 +26,6 @@
         "description": "Surat üçin alternatiw tekst."
       },
       {
-        "property": "animated",
-        "title": "Animasiýaly",
-        "description": "Ilkinji ýüklenende ösüşiň animasiýaly bolmalydygy"
-      },
-      {
         "property": "complete",
         "title": "Tamamlandy",
         "description": "Tamamlanan bahalaryň massiwi."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "Jemi",
         "description": "Ähli elementler tamamlananda jemi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "Animasiýaly",
+        "description": "Ilkinji ýüklenende ösüşiň animasiýaly bolmalydygy"
       },
       {
         "property": "startAngle",

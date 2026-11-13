@@ -10,10 +10,6 @@
         "title": "Biểu tượng thẻ"
       },
       {
-        "property": "disabled",
-        "title": "Vô hiệu hóa"
-      },
-      {
         "property": "label",
         "title": "Nhãn thẻ"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "ID duy nhất"
-      },
-      {
         "property": "flag",
         "title": "Văn bản cờ đánh dấu (tùy chọn)"
       },
       {
         "property": "flagIcon",
         "title": "Biểu tượng cờ đánh dấu (tùy chọn)"
+      },
+      {
+        "property": "disabled",
+        "title": "Vô hiệu hóa"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "ID duy nhất"
       }
     ]
   }

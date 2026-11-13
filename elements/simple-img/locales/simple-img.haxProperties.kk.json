@@ -26,7 +26,8 @@
         "description": "Экраннан оқу құралдары мен SEO-ны жақсарту үшін пайдалы."
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "Сапа",

@@ -11,30 +11,8 @@
         "description": "Pregunta á que deben responder os usuarios."
       },
       {
-        "property": "gradingFormat",
-        "title": "Formato de cualificación",
-        "description": "OER Schema: formato de cualificación desta avaliación (p. ex. puntos, letra, porcentaxe, completado)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Obxectivo de aprendizaxe",
-        "description": "OER Schema: obxectivo de aprendizaxe asociado a esta avaliación."
-      },
-      {
-        "property": "forCourse",
-        "title": "Curso",
-        "description": "OER Schema: curso ao que se destina esta avaliación."
-      },
-      {
         "property": "answers",
         "title": "Respostas"
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Nome do cuestionario",
-        "description": "Nome do cuestionario usado para a identificación xAPI en sistemas de analítica."
       }
     ],
     "advanced": [
@@ -47,6 +25,28 @@
         "property": "collapsed",
         "title": "Comezar pregado",
         "description": "Cando é despregable, comeza como unha fila pechada que só amosa a pregunta e o seu estado."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Formato de cualificación",
+        "description": "OER Schema: formato de cualificación desta avaliación (p. ex. puntos, letra, porcentaxe, completado)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Obxectivo de aprendizaxe",
+        "description": "OER Schema: obxectivo de aprendizaxe asociado a esta avaliación."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nome do cuestionario",
+        "description": "Nome do cuestionario usado para a identificación xAPI en sistemas de analítica."
+      },
+      {
+        "property": "forCourse",
+        "title": "Curso",
+        "description": "OER Schema: curso ao que se destina esta avaliación."
       }
     ]
   }

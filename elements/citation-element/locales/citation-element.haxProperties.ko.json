@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "출처",
-    "description": "세 가지 표시 모드를 지원하는 출처 요소."
+    "description": "출처의 제목, 작성자, 라이선스, 링크를 표기합니다."
   },
   "settings": {
     "configure": [
@@ -21,15 +21,6 @@
         "description": "출처에 접근한 날짜."
       },
       {
-        "property": "scope",
-        "title": "범위",
-        "description": "인용할 요소의 범위.",
-        "options": {
-          "sibling": "형제 요소",
-          "parent": "상위 요소"
-        }
-      },
-      {
         "property": "license",
         "title": "라이선스",
         "description": "인용한 저작물의 라이선스."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "저작자",
         "description": "인용한 저작물의 저작자 또는 소유자."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "범위",
+        "description": "인용할 요소의 범위.",
+        "options": {
+          "sibling": "형제 요소",
+          "parent": "상위 요소"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "OER Schema 유형",

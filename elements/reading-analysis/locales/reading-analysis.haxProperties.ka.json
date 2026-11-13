@@ -38,21 +38,6 @@
         "slot": "",
         "title": "საკითხავი ტექსტი",
         "description": "ტექსტი, რომელზეც მოსწავლეები მუშაობენ. ნებისმიერი HTML: სათაურები, აბზაცები, სიები და ფიგურები."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "შეფასების ფორმატი",
-        "description": "OER Schema: ამ შეფასების ფორმატი (მაგ. ქულები, ასო, პროცენტი, შესრულება)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "სასწავლო მიზანი",
-        "description": "OER Schema: ამ შეფასებასთან დაკავშირებული სასწავლო მიზანი."
-      },
-      {
-        "property": "forCourse",
-        "title": "კურსი",
-        "description": "OER Schema: კურსი, რომლისთვისაც ეს შეფასებაა განკუთვნილი."
       }
     ],
     "advanced": [
@@ -70,6 +55,16 @@
         "property": "collapsed",
         "title": "დაწყება ჩაკეცილად",
         "description": "ჩაკეცვადობისას იწყება როგორც დახურული მწკრივი, რომელიც მხოლოდ კითხვას და მის სტატუსს აჩვენებს."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "შეფასების ფორმატი",
+        "description": "OER Schema: ამ შეფასების ფორმატი (მაგ. ქულები, ასო, პროცენტი, შესრულება)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "სასწავლო მიზანი",
+        "description": "OER Schema: ამ შეფასებასთან დაკავშირებული სასწავლო მიზანი."
       }
     ],
     "developer": [
@@ -77,6 +72,11 @@
         "property": "quizName",
         "title": "ქვიზის სახელი",
         "description": "ქვიზის სახელი, რომელიც გადაეცემა xAPI-ზე დაფუძნებულ გარემოებს ამ ელემენტის იდენტიფიკაციისთვის"
+      },
+      {
+        "property": "forCourse",
+        "title": "კურსი",
+        "description": "OER Schema: კურსი, რომლისთვისაც ეს შეფასებაა განკუთვნილი."
       }
     ]
   }

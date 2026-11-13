@@ -27,6 +27,13 @@
       {
         "slot": "",
         "title": "Respondo"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Ligilo al pli",
+        "description": "Ligilo al pliaj informoj."
       },
       {
         "property": "hasLearningObjective",
@@ -37,13 +44,6 @@
         "property": "assessing",
         "title": "Taksas",
         "description": "Referenco al aktivaĵo eligata kiel oer:assessing."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "link",
-        "title": "Ligilo al pli",
-        "description": "Ligilo al pliaj informoj."
       }
     ]
   }

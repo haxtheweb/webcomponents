@@ -21,15 +21,6 @@
         "description": "स्रोत पहुँच गरिएको मिति।"
       },
       {
-        "property": "scope",
-        "title": "दायरा",
-        "description": "उद्धरण गर्ने तत्वको दायरा।",
-        "options": {
-          "sibling": "सहोदर तत्व",
-          "parent": "मूल तत्व"
-        }
-      },
-      {
         "property": "license",
         "title": "इजाजतपत्र",
         "description": "उद्धृत कृतिको इजाजतपत्र।"
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "सर्जक",
         "description": "उद्धृत कृतिको सर्जक वा मालिक।"
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "दायरा",
+        "description": "उद्धरण गर्ने तत्वको दायरा।",
+        "options": {
+          "sibling": "सहोदर तत्व",
+          "parent": "मूल तत्व"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "OER Schema प्रकार",

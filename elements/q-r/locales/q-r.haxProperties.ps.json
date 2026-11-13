@@ -14,16 +14,6 @@
         "property": "title",
         "title": "بدیل سرلیک",
         "description": "بدیل سرلیک چې د QR کوډ له سرچینې سره تړل شوی."
-      },
-      {
-        "property": "modulesize",
-        "title": "اندازه",
-        "description": "د QR کوډ اندازه."
-      },
-      {
-        "property": "margin",
-        "title": "څنډه",
-        "description": "د کوډ شاوخوا پوښ."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "اندازه",
+        "description": "د QR کوډ اندازه."
+      },
+      {
+        "property": "margin",
+        "title": "څنډه",
+        "description": "د کوډ شاوخوا پوښ."
       }
     ]
   }

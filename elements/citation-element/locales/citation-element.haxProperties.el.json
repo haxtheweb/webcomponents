@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Παραπομπή",
-    "description": "Στοιχείο παραπομπής με τρεις τρόπους παρουσίασης."
+    "description": "Αναφέρετε μια πηγή με τίτλο, δημιουργό, άδεια και σύνδεσμο."
   },
   "settings": {
     "configure": [
@@ -21,15 +21,6 @@
         "description": "Ημερομηνία πρόσβασης στην πηγή."
       },
       {
-        "property": "scope",
-        "title": "Εμβέλεια",
-        "description": "Εμβέλεια στοιχείου προς παράθεση.",
-        "options": {
-          "sibling": "Αδελφό στοιχείο",
-          "parent": "Γονικό στοιχείο"
-        }
-      },
-      {
         "property": "license",
         "title": "Άδεια",
         "description": "Άδεια για το έργο που παρατίθεται."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Δημιουργός",
         "description": "Δημιουργός ή κάτοχος του έργου που παρατίθεται."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Εμβέλεια",
+        "description": "Εμβέλεια στοιχείου προς παράθεση.",
+        "options": {
+          "sibling": "Αδελφό στοιχείο",
+          "parent": "Γονικό στοιχείο"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "Τύπος OER Schema",

@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "アクセシブルな詳細ボタン",
+    "title": "詳細",
     "description": "details と summary を使ったアクセシブルな段階的開示"
   },
   "settings": {

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "Contenedor para insertar el reproductor de Spotify."
+    "description": "Inserta una canción, un álbum o una lista de Spotify."
   },
   "settings": {
     "configure": [

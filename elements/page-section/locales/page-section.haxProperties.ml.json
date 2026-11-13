@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "ബട്ടണുകൾ",
         "description": "വാചകത്തിന് താഴെ കാണിക്കുന്ന ബട്ടൺ ഗ്രൂപ്പ്."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "ആങ്കർ വാചകം",
         "description": "നാവിഗേഷനിൽ കാണിക്കുന്ന ആങ്കർ ലേബൽ."
       }
-    ]
+    ],
+    "developer": []
   }
 }

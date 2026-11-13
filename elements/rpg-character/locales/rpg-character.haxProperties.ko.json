@@ -11,11 +11,6 @@
         "description": "임의 캐릭터를 생성하는 데 사용되는 단어입니다."
       },
       {
-        "property": "code",
-        "title": "캐릭터 코드",
-        "description": "저장한 코드를 붙여 넣으면 그 캐릭터를 다시 만들 수 있습니다."
-      },
-      {
         "property": "hat",
         "title": "모자",
         "description": "모자 스타일입니다.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "가면",
-        "description": "얼굴이나 머리에 쓰는 가면입니다.",
-        "options": {
-          "none": "없음",
-          "lion": "사자",
-          "plague": "페스트 의사",
-          "theater": "연극",
-          "pumpkin": "호박",
-          "ghost": "유령",
-          "mummy": "미라",
-          "wrestler": "레슬링 마스크",
-          "block-head": "블록 머리",
-          "web": "거미줄 마스크",
-          "werewolf": "늑대인간 얼굴",
-          "shadow": "그림자 얼굴"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "메이크업",
-        "description": "페이스 페인트 또는 립스틱입니다.",
-        "options": {
-          "none": "없음",
-          "red-lipstick": "빨간 립스틱",
-          "pink-lipstick": "분홍 립스틱",
-          "berry-lipstick": "베리색 립스틱",
-          "clown": "광대 분장",
-          "fangs": "송곳니",
-          "skull": "해골 페이스 페인팅",
-          "zombie": "좀비 페이스 페인팅",
-          "red-nose": "빨간 코",
-          "white-beard": "흰 수염",
-          "domino": "히어로 마스크",
-          "carrot": "당근 코",
-          "bunny": "토끼 코",
-          "mustache": "콧수염",
-          "monster": "괴물 페이스 페인팅",
-          "round-glasses": "동그란 안경"
-        }
-      },
-      {
         "property": "expression",
         "title": "표정",
         "description": "얼굴 표정.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "반려동물",
+        "description": "캐릭터 옆의 반려동물입니다.",
+        "options": {
+          "none": "없음",
+          "cat": "고양이",
+          "dog": "강아지",
+          "bunny": "토끼",
+          "goldfish": "금붕어",
+          "slime": "슬라임",
+          "squirrel": "다람쥐",
+          "dragon": "아기 용",
+          "parrot": "앵무새",
+          "owl": "부엉이",
+          "bat": "박쥐"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "캐릭터 코드",
+        "description": "저장한 코드를 붙여 넣으면 그 캐릭터를 다시 만들 수 있습니다."
+      },
+      {
+        "property": "mask",
+        "title": "가면",
+        "description": "얼굴이나 머리에 쓰는 가면입니다.",
+        "options": {
+          "none": "없음",
+          "lion": "사자",
+          "plague": "페스트 의사",
+          "theater": "연극",
+          "pumpkin": "호박",
+          "ghost": "유령",
+          "mummy": "미라",
+          "wrestler": "레슬링 마스크",
+          "block-head": "블록 머리",
+          "web": "거미줄 마스크",
+          "werewolf": "늑대인간 얼굴",
+          "shadow": "그림자 얼굴"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "메이크업",
+        "description": "페이스 페인트 또는 립스틱입니다.",
+        "options": {
+          "none": "없음",
+          "red-lipstick": "빨간 립스틱",
+          "pink-lipstick": "분홍 립스틱",
+          "berry-lipstick": "베리색 립스틱",
+          "clown": "광대 분장",
+          "fangs": "송곳니",
+          "skull": "해골 페이스 페인팅",
+          "zombie": "좀비 페이스 페인팅",
+          "red-nose": "빨간 코",
+          "white-beard": "흰 수염",
+          "domino": "히어로 마스크",
+          "carrot": "당근 코",
+          "bunny": "토끼 코",
+          "mustache": "콧수염",
+          "monster": "괴물 페이스 페인팅",
+          "round-glasses": "동그란 안경"
+        }
+      },
+      {
         "property": "flagText",
         "title": "깃발 텍스트",
         "description": "깃발에 최대 4글자까지 표시됩니다."
@@ -310,24 +330,6 @@
           "skates": "스케이트",
           "skateboard": "스케이트보드",
           "hoverboard": "호버보드"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "반려동물",
-        "description": "캐릭터 옆의 반려동물입니다.",
-        "options": {
-          "none": "없음",
-          "cat": "고양이",
-          "dog": "강아지",
-          "bunny": "토끼",
-          "goldfish": "금붕어",
-          "slime": "슬라임",
-          "squirrel": "다람쥐",
-          "dragon": "아기 용",
-          "parrot": "앵무새",
-          "owl": "부엉이",
-          "bat": "박쥐"
         }
       },
       {

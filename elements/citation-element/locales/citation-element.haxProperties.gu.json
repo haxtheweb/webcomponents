@@ -21,15 +21,6 @@
         "description": "સ્રોત ઍક્સેસ કર્યાની તારીખ."
       },
       {
-        "property": "scope",
-        "title": "અવકાશ",
-        "description": "સંદર્ભ આપવા માટેનો એલિમેન્ટ અવકાશ.",
-        "options": {
-          "sibling": "સમકક્ષ એલિમેન્ટ",
-          "parent": "પેરેન્ટ એલિમેન્ટ"
-        }
-      },
-      {
         "property": "license",
         "title": "લાઇસન્સ",
         "description": "સંદર્ભિત કૃતિ માટે લાઇસન્સ."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "સર્જક",
         "description": "સંદર્ભિત કૃતિના સર્જક અથવા માલિક."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "અવકાશ",
+        "description": "સંદર્ભ આપવા માટેનો એલિમેન્ટ અવકાશ.",
+        "options": {
+          "sibling": "સમકક્ષ એલિમેન્ટ",
+          "parent": "પેરેન્ટ એલિમેન્ટ"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "OER Schema પ્રકાર",

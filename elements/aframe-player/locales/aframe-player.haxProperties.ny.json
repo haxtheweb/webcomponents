@@ -11,6 +11,13 @@
         "description": "URL ya fayilo ya AR iyi."
       },
       {
+        "property": "skyColor",
+        "title": "Mtundu wa thambo",
+        "description": "Sankhani mtundu wa thambo pachithunzichi."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "Malo a X a chinthucho mu AR."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "Malo a Z a chinthucho mu AR."
-      },
-      {
-        "property": "skyColor",
-        "title": "Mtundu wa thambo",
-        "description": "Sankhani mtundu wa thambo pachithunzichi."
       }
     ]
   }

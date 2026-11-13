@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Mawu omaliza",
         "description": "Mawu owonetsedwa nambala itatha (mwachitsanzo '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Malo oyambirira",
-        "description": "Zomwe zili mkati zosankha nambala isanachitike."
-      },
-      {
-        "slot": "suffix",
-        "title": "Malo omaliza",
-        "description": "Zomwe zili mkati zosankha nambala itatha."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Popanda kuchepetsa liwiro",
         "description": "Letsani kuchepetsa liwiro kuti kuwerenga kukhale kofanana."
+      },
+      {
+        "slot": "prefix",
+        "title": "Malo oyambirira",
+        "description": "Zomwe zili mkati zosankha nambala isanachitike."
+      },
+      {
+        "slot": "suffix",
+        "title": "Malo omaliza",
+        "description": "Zomwe zili mkati zosankha nambala itatha."
       }
     ]
   }

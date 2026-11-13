@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Umlayezo wokungasekelwa",
-        "description": "Umlayezo lapho isiphequluli singakwazi ukubonisa amafayela e-PDF."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Umlayezo wesixhumanisi sokungasekelwa",
-        "description": "Umbhalo wesixhumanisi lapho isiphequluli singakwazi ukubonisa amafayela e-PDF."
-      },
-      {
         "property": "width",
         "title": "Ububanzi",
         "description": "Ububanzi besibukeli se-PDF."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Ubude",
         "description": "Ubude besibukeli se-PDF."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Umlayezo wokungasekelwa",
+        "description": "Umlayezo lapho isiphequluli singakwazi ukubonisa amafayela e-PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Umlayezo wesixhumanisi sokungasekelwa",
+        "description": "Umbhalo wesixhumanisi lapho isiphequluli singakwazi ukubonisa amafayela e-PDF."
       }
     ]
   }

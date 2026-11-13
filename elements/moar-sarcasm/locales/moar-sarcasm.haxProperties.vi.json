@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Mỉa mai",
-    "description": "Trình bày văn bản theo kiểu châm chọc"
+    "description": "Văn bản viết hoa xen kẽ để tạo giọng mỉa mai."
   },
   "settings": {
     "configure": [

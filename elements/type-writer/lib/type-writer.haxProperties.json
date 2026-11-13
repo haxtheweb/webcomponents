@@ -1,0 +1,70 @@
+{
+  "canScale": true,
+  "canEditSource": true,
+  "gizmo": {
+    "title": "Typewriter",
+    "description": "Text that types itself out one character at a time.",
+    "icon": "hardware:keyboard",
+    "color": "green",
+    "tags": ["Text", "typewriter", "animation", "effect"],
+    "handles": [],
+    "meta": {
+      "author": "HAXTheWeb",
+      "owner": "The Pennsylvania State University"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "text",
+        "title": "Text",
+        "description": "The text to type out once the element scrolls into view.",
+        "inputMethod": "textfield",
+        "required": false
+      },
+      {
+        "property": "typing",
+        "title": "Typing",
+        "description": "Show the blinking cursor; the element sets this while it types.",
+        "inputMethod": "boolean",
+        "required": false
+      }
+    ],
+    "advanced": [
+      {
+        "property": "delay",
+        "title": "Delay",
+        "description": "Milliseconds to wait before typing starts.",
+        "inputMethod": "number",
+        "required": false
+      },
+      {
+        "property": "cursorDuration",
+        "title": "Cursor duration",
+        "description": "Milliseconds the cursor keeps blinking after the text is typed.",
+        "inputMethod": "number",
+        "required": false
+      },
+      {
+        "property": "speed",
+        "title": "Speed",
+        "description": "Milliseconds per character; lower numbers type faster.",
+        "inputMethod": "number",
+        "required": false
+      }
+    ]
+  },
+  "saveOptions": {
+    "unsetAttributes": ["element-visible"]
+  },
+  "demoSchema": [
+    {
+      "tag": "type-writer",
+      "properties": {
+        "text": "Type your message here.",
+        "speed": 100
+      },
+      "content": ""
+    }
+  ]
+}

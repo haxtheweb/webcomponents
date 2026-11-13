@@ -11,11 +11,6 @@
         "description": "Salitang ginagamit para bumuo ng random na karakter."
       },
       {
-        "property": "code",
-        "title": "Code ng karakter",
-        "description": "I-paste ang naka-save na code para muling likhain ang karakter na iyon."
-      },
-      {
         "property": "hat",
         "title": "Sumbrero",
         "description": "Istilo ng sumbrero.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Maskara",
-        "description": "Maskarang isinusuot sa mukha o ulo.",
-        "options": {
-          "none": "Wala",
-          "lion": "Leon",
-          "plague": "Doktor ng salot",
-          "theater": "Teatro",
-          "pumpkin": "Kalabasa",
-          "ghost": "Multo",
-          "mummy": "Mummy",
-          "wrestler": "Maskara sa pakikipagbuno",
-          "block-head": "Ulong bloke",
-          "web": "Maskarang sapot",
-          "werewolf": "Mukha ng taong-lobo",
-          "shadow": "Mukhang anino"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Make-up",
-        "description": "Face paint o lipstick.",
-        "options": {
-          "none": "Wala",
-          "red-lipstick": "Pulang lipstick",
-          "pink-lipstick": "Pink na lipstick",
-          "berry-lipstick": "Berry na lipstick",
-          "clown": "Pintura ng payaso",
-          "fangs": "Pangil",
-          "skull": "Pintura ng bungo",
-          "zombie": "Pintura ng zombie",
-          "red-nose": "Pulang ilong",
-          "white-beard": "Puting balbas",
-          "domino": "Maskara ng bayani",
-          "carrot": "Ilong na karot",
-          "bunny": "Ilong ng kuneho",
-          "mustache": "Bigote",
-          "monster": "Pinturang halimaw sa mukha",
-          "round-glasses": "Bilog na salamin"
-        }
-      },
-      {
         "property": "expression",
         "title": "Ekspresyon",
         "description": "Ekspresyon ng mukha.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Alagang hayop",
+        "description": "Alagang hayop sa tabi ng karakter.",
+        "options": {
+          "none": "Wala",
+          "cat": "Pusa",
+          "dog": "Aso",
+          "bunny": "Kuneho",
+          "goldfish": "Goldfish",
+          "slime": "Slime",
+          "squirrel": "Ardilya",
+          "dragon": "Batang dragon",
+          "parrot": "Loro",
+          "owl": "Kuwago",
+          "bat": "Paniki"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Code ng karakter",
+        "description": "I-paste ang naka-save na code para muling likhain ang karakter na iyon."
+      },
+      {
+        "property": "mask",
+        "title": "Maskara",
+        "description": "Maskarang isinusuot sa mukha o ulo.",
+        "options": {
+          "none": "Wala",
+          "lion": "Leon",
+          "plague": "Doktor ng salot",
+          "theater": "Teatro",
+          "pumpkin": "Kalabasa",
+          "ghost": "Multo",
+          "mummy": "Mummy",
+          "wrestler": "Maskara sa pakikipagbuno",
+          "block-head": "Ulong bloke",
+          "web": "Maskarang sapot",
+          "werewolf": "Mukha ng taong-lobo",
+          "shadow": "Mukhang anino"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Make-up",
+        "description": "Face paint o lipstick.",
+        "options": {
+          "none": "Wala",
+          "red-lipstick": "Pulang lipstick",
+          "pink-lipstick": "Pink na lipstick",
+          "berry-lipstick": "Berry na lipstick",
+          "clown": "Pintura ng payaso",
+          "fangs": "Pangil",
+          "skull": "Pintura ng bungo",
+          "zombie": "Pintura ng zombie",
+          "red-nose": "Pulang ilong",
+          "white-beard": "Puting balbas",
+          "domino": "Maskara ng bayani",
+          "carrot": "Ilong na karot",
+          "bunny": "Ilong ng kuneho",
+          "mustache": "Bigote",
+          "monster": "Pinturang halimaw sa mukha",
+          "round-glasses": "Bilog na salamin"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Teksto sa bandila",
         "description": "Hanggang 4 na letrang makikita sa bandila."
@@ -310,24 +330,6 @@
           "skates": "Skates",
           "skateboard": "Skateboard",
           "hoverboard": "Lumulutang na board"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Alagang hayop",
-        "description": "Alagang hayop sa tabi ng karakter.",
-        "options": {
-          "none": "Wala",
-          "cat": "Pusa",
-          "dog": "Aso",
-          "bunny": "Kuneho",
-          "goldfish": "Goldfish",
-          "slime": "Slime",
-          "squirrel": "Ardilya",
-          "dragon": "Batang dragon",
-          "parrot": "Loro",
-          "owl": "Kuwago",
-          "bat": "Paniki"
         }
       },
       {

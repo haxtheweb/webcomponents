@@ -11,11 +11,6 @@
         "description": "كلمة تُستخدم لتوليد شخصية عشوائية."
       },
       {
-        "property": "code",
-        "title": "رمز الشخصية",
-        "description": "الصق رمزًا محفوظًا لإعادة إنشاء تلك الشخصية."
-      },
-      {
         "property": "hat",
         "title": "القبعة",
         "description": "نمط القبعة.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "قناع",
-        "description": "قناع يُرتدى على الوجه أو الرأس.",
-        "options": {
-          "none": "بدون",
-          "lion": "أسد",
-          "plague": "طبيب الطاعون",
-          "theater": "مسرح",
-          "pumpkin": "يقطين",
-          "ghost": "شبح",
-          "mummy": "مومياء",
-          "wrestler": "قناع مصارعة",
-          "block-head": "رأس مكعّب",
-          "web": "قناع الشبكة",
-          "werewolf": "وجه مستذئب",
-          "shadow": "وجه ظِلّي"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "مكياج",
-        "description": "طلاء الوجه أو أحمر الشفاه.",
-        "options": {
-          "none": "بدون",
-          "red-lipstick": "أحمر شفاه أحمر",
-          "pink-lipstick": "أحمر شفاه وردي",
-          "berry-lipstick": "أحمر شفاه توتي",
-          "clown": "مكياج المهرج",
-          "fangs": "أنياب",
-          "skull": "طلاء الجمجمة",
-          "zombie": "طلاء الزومبي",
-          "red-nose": "أنف أحمر",
-          "white-beard": "لحية بيضاء",
-          "domino": "قناع البطل",
-          "carrot": "أنف الجزرة",
-          "bunny": "أنف الأرنب",
-          "mustache": "شارب",
-          "monster": "طلاء وجه الوحش",
-          "round-glasses": "نظارة مستديرة"
-        }
-      },
-      {
         "property": "expression",
         "title": "التعبير",
         "description": "تعبير الوجه.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "حيوان أليف",
+        "description": "حيوان أليف بجانب الشخصية.",
+        "options": {
+          "none": "بدون",
+          "cat": "قطة",
+          "dog": "كلب",
+          "bunny": "أرنب",
+          "goldfish": "سمكة ذهبية",
+          "slime": "هلام",
+          "squirrel": "سنجاب",
+          "dragon": "تنين صغير",
+          "parrot": "ببغاء",
+          "owl": "بومة",
+          "bat": "خفاش"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "رمز الشخصية",
+        "description": "الصق رمزًا محفوظًا لإعادة إنشاء تلك الشخصية."
+      },
+      {
+        "property": "mask",
+        "title": "قناع",
+        "description": "قناع يُرتدى على الوجه أو الرأس.",
+        "options": {
+          "none": "بدون",
+          "lion": "أسد",
+          "plague": "طبيب الطاعون",
+          "theater": "مسرح",
+          "pumpkin": "يقطين",
+          "ghost": "شبح",
+          "mummy": "مومياء",
+          "wrestler": "قناع مصارعة",
+          "block-head": "رأس مكعّب",
+          "web": "قناع الشبكة",
+          "werewolf": "وجه مستذئب",
+          "shadow": "وجه ظِلّي"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "مكياج",
+        "description": "طلاء الوجه أو أحمر الشفاه.",
+        "options": {
+          "none": "بدون",
+          "red-lipstick": "أحمر شفاه أحمر",
+          "pink-lipstick": "أحمر شفاه وردي",
+          "berry-lipstick": "أحمر شفاه توتي",
+          "clown": "مكياج المهرج",
+          "fangs": "أنياب",
+          "skull": "طلاء الجمجمة",
+          "zombie": "طلاء الزومبي",
+          "red-nose": "أنف أحمر",
+          "white-beard": "لحية بيضاء",
+          "domino": "قناع البطل",
+          "carrot": "أنف الجزرة",
+          "bunny": "أنف الأرنب",
+          "mustache": "شارب",
+          "monster": "طلاء وجه الوحش",
+          "round-glasses": "نظارة مستديرة"
+        }
+      },
+      {
         "property": "flagText",
         "title": "نص العلم",
         "description": "يظهر حتى 4 أحرف على العلم."
@@ -310,24 +330,6 @@
           "skates": "زلاجات",
           "skateboard": "لوح تزلج",
           "hoverboard": "لوح طائر"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "حيوان أليف",
-        "description": "حيوان أليف بجانب الشخصية.",
-        "options": {
-          "none": "بدون",
-          "cat": "قطة",
-          "dog": "كلب",
-          "bunny": "أرنب",
-          "goldfish": "سمكة ذهبية",
-          "slime": "هلام",
-          "squirrel": "سنجاب",
-          "dragon": "تنين صغير",
-          "parrot": "ببغاء",
-          "owl": "بومة",
-          "bat": "خفاش"
         }
       },
       {

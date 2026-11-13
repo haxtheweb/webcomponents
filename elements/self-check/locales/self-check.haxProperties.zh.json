@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "自我检测",
-    "description": "用户可以完成自我检测。"
+    "description": "一个带隐藏答案的问题，学习者可揭示答案来自我检查。"
   },
   "settings": {
     "configure": [
@@ -27,6 +27,13 @@
       {
         "slot": "",
         "title": "答案"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "更多链接",
+        "description": "指向更多信息的链接。"
       },
       {
         "property": "hasLearningObjective",
@@ -37,13 +44,6 @@
         "property": "assessing",
         "title": "测评对象",
         "description": "以 oer:assessing 输出的活动引用。"
-      }
-    ],
-    "advanced": [
-      {
-        "property": "link",
-        "title": "更多链接",
-        "description": "指向更多信息的链接。"
       }
     ]
   }

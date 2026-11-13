@@ -10,10 +10,6 @@
         "title": "Îkona Tabê"
       },
       {
-        "property": "disabled",
-        "title": "Neçalak"
-      },
-      {
         "property": "label",
         "title": "Etîketa Tabê"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "ID ya Yekta"
-      },
-      {
         "property": "flag",
         "title": "Nivîsa Alayê ya Vebijarkî"
       },
       {
         "property": "flagIcon",
         "title": "Îkona Alayê ya Vebijarkî"
+      },
+      {
+        "property": "disabled",
+        "title": "Neçalak"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "ID ya Yekta"
       }
     ]
   }

@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Kee Feil",
         "description": "De Feil um Knäppchen verstoppen."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Link: Zil",
@@ -54,7 +52,9 @@
           "_top": "Iewescht Fënster - _top",
           "_parent": "Iwwergeuerdent Fënster - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Link: rel",

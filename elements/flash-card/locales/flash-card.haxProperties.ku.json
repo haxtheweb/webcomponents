@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Çavkaniya Wêneyê",
         "description": "Pela wêneyê ku ji bo kartê tê bikaranîn. Li şûna Peyva Sereke ya Wêneyê derbas dibe."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Peyva Sereke ya Wêneyê",
+        "description": "Peyva sereke ji bo wêneyê rasthatî. Çavkaniya Wêneyê li şûna wê derbas dibe."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Armanca Fêrbûnê",
         "description": "OER Schema: ID an URL ya armanca fêrbûnê ya ku ev pratîk piştgirî dike."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Peyva Sereke ya Wêneyê",
-        "description": "Peyva sereke ji bo wêneyê rasthatî. Çavkaniya Wêneyê li şûna wê derbas dibe."
       }
     ]
   }

@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Дэмжигдээгүй үеийн мессеж",
-        "description": "Хөтөч PDF файл харуулж чадахгүй үеийн мессеж."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Дэмжигдээгүй үеийн холбоосын мессеж",
-        "description": "Хөтөч PDF файл харуулж чадахгүй үеийн холбоосын текст."
-      },
-      {
         "property": "width",
         "title": "Өргөн",
         "description": "PDF үзэгчийн өргөн."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Өндөр",
         "description": "PDF үзэгчийн өндөр."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Дэмжигдээгүй үеийн мессеж",
+        "description": "Хөтөч PDF файл харуулж чадахгүй үеийн мессеж."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Дэмжигдээгүй үеийн холбоосын мессеж",
+        "description": "Хөтөч PDF файл харуулж чадахгүй үеийн холбоосын текст."
       }
     ]
   }

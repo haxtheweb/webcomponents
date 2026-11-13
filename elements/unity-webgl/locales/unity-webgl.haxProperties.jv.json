@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Target",
         "description": "Path menyang build game."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Ambane Kanvas",
+        "description": "Ambane CSS kanvas (contone px utawa em)."
       },
+      {
+        "property": "height",
+        "title": "Dhuwure Kanvas",
+        "description": "Dhuwure CSS kanvas (contone px utawa em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Cara kompresi",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Versi Produk",
         "description": "Versi rilis."
-      },
-      {
-        "property": "width",
-        "title": "Ambane Kanvas",
-        "description": "Ambane CSS kanvas (contone px utawa em)."
-      },
-      {
-        "property": "height",
-        "title": "Dhuwure Kanvas",
-        "description": "Dhuwure CSS kanvas (contone px utawa em)."
       },
       {
         "property": "background",

@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "የምስል መግለጫ",
         "description": "ለምስሉ መግለጫ ጽሑፍ።"
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "የምስል ርዕስ",
-        "description": "ለምስል መለያው ርዕስ።"
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "የምስል መግለጫ",
-        "description": "ለምስል መለያው መግለጫ።"
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "የምስል ሞዳልን አሰናክል",
         "description": "ጠቅታዎች ምስሉን በምስል መመርመሪያ መገናኛ ውስጥ እንዳይከፍቱ አሰናክል።"
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "የምስል ርዕስ",
+        "description": "ለምስል መለያው ርዕስ።"
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "የምስል መግለጫ",
+        "description": "ለምስል መለያው መግለጫ።"
       }
     ],
     "developer": [

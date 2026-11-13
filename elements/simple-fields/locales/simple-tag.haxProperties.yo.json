@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Àwọ̀ ìtẹnumọ́ aládàáṣe",
         "description": "Mú àwọ̀ ìtẹnumọ́ jáde láti ọ̀rọ̀ àmì-orúkọ láìfọwọ́yí."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Bọ́tìnnì ìfagilé",
-        "description": "Fi bọ́tìnnì àmì yíyọ/ìfagilé hàn nínú ìṣù."
-      },
-      {
-        "property": "readonly",
-        "title": "Kíkà nìkan",
-        "description": "Fi bọ́tìnnì ìfagilé pamọ́ kí ìṣù jẹ́ fún ìfihàn nìkan."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Eérú Búlúù",
           "grey": "Eérú"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Bọ́tìnnì ìfagilé",
+        "description": "Fi bọ́tìnnì àmì yíyọ/ìfagilé hàn nínú ìṣù."
+      },
+      {
+        "property": "readonly",
+        "title": "Kíkà nìkan",
+        "description": "Fi bọ́tìnnì ìfagilé pamọ́ kí ìṣù jẹ́ fún ìfihàn nìkan."
       }
     ]
   }

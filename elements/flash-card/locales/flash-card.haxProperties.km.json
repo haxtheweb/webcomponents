@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "ប្រភពរូបភាព",
         "description": "ឯកសាររូបភាពដែលប្រើសម្រាប់កាត។ បដិសេធពាក្យគន្លឹះរូបភាព។"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "ពាក្យគន្លឹះរូបភាព",
+        "description": "ពាក្យគន្លឹះរូបភាពចៃដន្យ។ ត្រូវបានបដិសេធដោយប្រភពរូបភាព។"
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "គោលបំណងសិក្សា",
         "description": "OER Schema: ID ឬ URL នៃគោលបំណងសិក្សាដែលការហាត់នេះគាំទ្រ។"
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "ពាក្យគន្លឹះរូបភាព",
-        "description": "ពាក្យគន្លឹះរូបភាពចៃដន្យ។ ត្រូវបានបដិសេធដោយប្រភពរូបភាព។"
       }
     ]
   }

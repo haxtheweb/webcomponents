@@ -10,10 +10,6 @@
         "title": "Tab ikonu"
       },
       {
-        "property": "disabled",
-        "title": "Deaktiv"
-      },
-      {
         "property": "label",
         "title": "Tab etiketi"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "Unikal ID"
-      },
-      {
         "property": "flag",
         "title": "İstəyə bağlı bayraq mətni"
       },
       {
         "property": "flagIcon",
         "title": "İstəyə bağlı bayraq ikonu"
+      },
+      {
+        "property": "disabled",
+        "title": "Deaktiv"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "Unikal ID"
       }
     ]
   }

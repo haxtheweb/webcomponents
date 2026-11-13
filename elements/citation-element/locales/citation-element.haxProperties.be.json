@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Крыніца цытаты",
-    "description": "Элемент цытавання з трыма рэжымамі прадстаўлення."
+    "description": "Пазначце крыніцу: назву, аўтара, ліцэнзію і спасылку."
   },
   "settings": {
     "configure": [
@@ -21,15 +21,6 @@
         "description": "Дата звароту да крыніцы."
       },
       {
-        "property": "scope",
-        "title": "Ахоп",
-        "description": "Элемент, які трэба цытаваць.",
-        "options": {
-          "sibling": "Суседні элемент",
-          "parent": "Бацькоўскі элемент"
-        }
-      },
-      {
         "property": "license",
         "title": "Ліцэнзія",
         "description": "Ліцэнзія цытаванай працы."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Аўтар",
         "description": "Аўтар або ўладальнік цытаванай працы."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Ахоп",
+        "description": "Элемент, які трэба цытаваць.",
+        "options": {
+          "sibling": "Суседні элемент",
+          "parent": "Бацькоўскі элемент"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "Тып OER Schema",

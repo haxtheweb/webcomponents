@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Krug napretka",
-    "description": "Krug napredovanja"
+    "description": "Prstenasti grafikon koji prikazuje napredak prema ukupnom zbiru."
   },
   "settings": {
     "configure": [
@@ -26,11 +26,6 @@
         "description": "Alternativni tekst za sliku."
       },
       {
-        "property": "animated",
-        "title": "Animirano",
-        "description": "Da li se napredak animira pri prvom učitavanju"
-      },
-      {
         "property": "complete",
         "title": "Završeno",
         "description": "Niz završenih vrijednosti."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "Ukupno",
         "description": "Ukupno kada su sve stavke završene."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "Animirano",
+        "description": "Da li se napredak animira pri prvom učitavanju"
       },
       {
         "property": "startAngle",

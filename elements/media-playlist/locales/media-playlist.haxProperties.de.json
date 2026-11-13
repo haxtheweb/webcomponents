@@ -4,22 +4,23 @@
     "description": "Eine Playlist, die Video- und Audioplayer in einem Layout aus Player und Seitenleiste darstellt."
   },
   "settings": {
-    "configure": [
+    "configure": [],
+    "advanced": [
       {
         "property": "activeIndex",
         "title": "Startelement",
         "description": "Nummer des Elements, mit dem begonnen wird."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kurs",
-        "description": "Der Kurs, für den diese Playlist bestimmt ist (Kurskennung oder URL)."
       }
     ],
     "developer": [
       {
         "title": "Medien",
         "description": "Die Videos und Audiodateien in der Wiedergabeliste. Werden hier nicht bearbeitet: Die Seitenstruktur nutzt sie, um zu wissen, welche Blöcke abgelegt werden können."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurs",
+        "description": "Der Kurs, für den diese Playlist bestimmt ist (Kurskennung oder URL)."
       }
     ]
   }

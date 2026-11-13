@@ -86,7 +86,9 @@
         "property": "gameTitle",
         "title": "Dzina la masewera",
         "description": "Limatchula masewerawa mu zochitika za kupita patsogolo ndi chizindikiro cha OER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "ID ya masewera",

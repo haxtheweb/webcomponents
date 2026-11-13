@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "គ្មានព្រួញ",
         "description": "លាក់ព្រួញប៊ូតុង។"
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "តំណ: target",
@@ -54,7 +52,9 @@
           "_top": "បង្អួចខាងលើ - _top",
           "_parent": "បង្អួចមេ - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "តំណ: rel",

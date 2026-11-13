@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Cíl",
         "description": "Cesta k sestavení hry."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Šířka plátna",
+        "description": "CSS šířka plátna (například px nebo em)."
       },
+      {
+        "property": "height",
+        "title": "Výška plátna",
+        "description": "CSS výška plátna (například px nebo em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Metoda komprese",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Verze produktu",
         "description": "Verze vydání."
-      },
-      {
-        "property": "width",
-        "title": "Šířka plátna",
-        "description": "CSS šířka plátna (například px nebo em)."
-      },
-      {
-        "property": "height",
-        "title": "Výška plátna",
-        "description": "CSS výška plátna (například px nebo em)."
       },
       {
         "property": "background",

@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Permitir filtrar",
         "description": "Permitir filtrar polos valores das columnas."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Estilo numérico",
-        "description": "Aplicar estilo numérico ás columnas numéricas."
-      },
-      {
-        "property": "responsive",
-        "title": "Adaptable",
-        "description": "Axustar o deseño da táboa en pantallas pequenas."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Modo rúbrica",
-        "description": "Interpretar esta táboa como unha Rubric de OER Schema para que se emitan os metadatos Rubric, RubricScale, RubricCriterion e RubricLevel."
-      },
-      {
-        "property": "rubricType",
-        "title": "Tipo de rúbrica",
-        "description": "Estilo de rúbrica emitido como oer:rubricType (só ten sentido cando o modo rúbrica está activado).",
-        "options": {
-          "": "(ningún)",
-          "analytic": "Analítica",
-          "holistic": "Holística",
-          "single-point": "Dun só punto",
-          "checklist": "Lista de verificación"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Botón de impresión",
         "description": "Engadir un botón para imprimir só a táboa."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Estilo numérico",
+        "description": "Aplicar estilo numérico ás columnas numéricas."
+      },
+      {
+        "property": "responsive",
+        "title": "Adaptable",
+        "description": "Axustar o deseño da táboa en pantallas pequenas."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Modo rúbrica",
+        "description": "Interpretar esta táboa como unha Rubric de OER Schema para que se emitan os metadatos Rubric, RubricScale, RubricCriterion e RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "Tipo de rúbrica",
+        "description": "Estilo de rúbrica emitido como oer:rubricType (só ten sentido cando o modo rúbrica está activado).",
+        "options": {
+          "": "(ningún)",
+          "analytic": "Analítica",
+          "holistic": "Holística",
+          "single-point": "Dun só punto",
+          "checklist": "Lista de verificación"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "Datos CSV",
         "description": "Crear unha táboa a partir dun ficheiro CSV cargado."
       }
-    ]
+    ],
+    "developer": []
   }
 }

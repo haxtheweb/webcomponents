@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "태그 / 필",
+    "title": "태그",
     "description": "선택적 강조 색상, 취소 버튼 또는 토글이 있는 작은 알약 모양 레이블입니다."
   },
   "settings": {
@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "자동 강조 색상",
         "description": "레이블 텍스트에서 강조 색상을 자동으로 도출합니다."
-      },
-      {
-        "property": "cancelButton",
-        "title": "취소 버튼",
-        "description": "필 안에 제거/취소 아이콘 버튼을 표시합니다."
-      },
-      {
-        "property": "readonly",
-        "title": "읽기 전용",
-        "description": "취소 버튼을 숨겨 필을 표시 전용으로 만듭니다."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "청회색",
           "grey": "회색"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "취소 버튼",
+        "description": "필 안에 제거/취소 아이콘 버튼을 표시합니다."
+      },
+      {
+        "property": "readonly",
+        "title": "읽기 전용",
+        "description": "취소 버튼을 숨겨 필을 표시 전용으로 만듭니다."
       }
     ]
   }

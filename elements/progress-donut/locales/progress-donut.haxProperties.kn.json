@@ -26,11 +26,6 @@
         "description": "ಚಿತ್ರಕ್ಕೆ ಪರ್ಯಾಯ ಪಠ್ಯ."
       },
       {
-        "property": "animated",
-        "title": "ಅನಿಮೇಟೆಡ್",
-        "description": "ಮೊದಲ ಲೋಡ್‌ನಲ್ಲಿ ಪ್ರಗತಿ ಅನಿಮೇಟ್ ಆಗಬೇಕೇ"
-      },
-      {
         "property": "complete",
         "title": "ಪೂರ್ಣಗೊಂಡಿದೆ",
         "description": "ಪೂರ್ಣಗೊಂಡ ಮೌಲ್ಯಗಳ ಅರೇ."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "ಒಟ್ಟು",
         "description": "ಎಲ್ಲಾ ಐಟಂಗಳು ಪೂರ್ಣಗೊಂಡಾಗಿನ ಒಟ್ಟು."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "ಅನಿಮೇಟೆಡ್",
+        "description": "ಮೊದಲ ಲೋಡ್‌ನಲ್ಲಿ ಪ್ರಗತಿ ಅನಿಮೇಟ್ ಆಗಬೇಕೇ"
       },
       {
         "property": "startAngle",

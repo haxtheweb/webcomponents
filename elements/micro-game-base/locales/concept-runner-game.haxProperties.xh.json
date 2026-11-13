@@ -89,7 +89,9 @@
         "property": "gameTitle",
         "title": "Igama lomdlalo",
         "description": "Linika lo mdlalo igama kwiziganeko zenkqubela kunye ne-OER Schema markup."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "I-ID yomdlalo",

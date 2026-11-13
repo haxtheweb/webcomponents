@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Sąvokų misijos žaidimas",
-    "description": "Atviras pasaulis klajoti. Sąvokos tave suranda ir užduoda klausimą. Atsakyk teisingai, kad nugalėtum vieną ir atrakintum jos namą. Santraukoje rodomi bandymai ir ką pakartoti."
+    "description": "Atviro žemėlapio žaidimas, kuriame sąvokos užduoda klausimus, o teisingi atsakymai atrakina žemėlapį."
   },
   "settings": {
     "configure": [
@@ -91,7 +91,9 @@
         "property": "gameTitle",
         "title": "Žaidimo pavadinimas",
         "description": "Įvardija šį žaidimą eigos įvykiuose ir OER Schema žymėjime."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Žaidimo ID",

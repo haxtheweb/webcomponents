@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Pāhekoheko",
         "description": "Tukua te kaiwhakamahi kia pāhekoheko hei tautuhi i te whakatauranga."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Aratau Tauine Rubric",

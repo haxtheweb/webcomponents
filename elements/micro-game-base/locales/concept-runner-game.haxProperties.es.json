@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Juego de carrera de conceptos",
-    "description": "Un juego de desplazamiento lateral. El personaje corre en llamas y nunca se detiene. Salta para atrapar los conceptos buenos y esquivar los malos, y después mira un resumen de lo bueno y lo malo."
+    "description": "Un juego de desplazamiento lateral: salta para atrapar los conceptos correctos y evitar los incorrectos."
   },
   "settings": {
     "configure": [
@@ -89,7 +89,9 @@
         "property": "gameTitle",
         "title": "Nombre del juego",
         "description": "Da nombre a este juego en los eventos de progreso y en el marcado de OER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "ID del juego",

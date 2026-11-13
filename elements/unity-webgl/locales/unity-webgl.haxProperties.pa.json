@@ -9,7 +9,21 @@
         "property": "target",
         "title": "ਟੀਚਾ",
         "description": "ਗੇਮ ਬਿਲਡ ਦਾ ਪਾਥ।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "ਕੈਨਵਸ ਚੌੜਾਈ",
+        "description": "ਕੈਨਵਸ ਦੀ CSS ਚੌੜਾਈ (ਉਦਾਹਰਨ ਲਈ px ਜਾਂ em)।"
       },
+      {
+        "property": "height",
+        "title": "ਕੈਨਵਸ ਉਚਾਈ",
+        "description": "ਕੈਨਵਸ ਦੀ CSS ਉਚਾਈ (ਉਦਾਹਰਨ ਲਈ px ਜਾਂ em)।"
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "ਸੰਕੁਚਨ ਵਿਧੀ",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "ਉਤਪਾਦ ਸੰਸਕਰਣ",
         "description": "ਰਿਲੀਜ਼ ਸੰਸਕਰਣ।"
-      },
-      {
-        "property": "width",
-        "title": "ਕੈਨਵਸ ਚੌੜਾਈ",
-        "description": "ਕੈਨਵਸ ਦੀ CSS ਚੌੜਾਈ (ਉਦਾਹਰਨ ਲਈ px ਜਾਂ em)।"
-      },
-      {
-        "property": "height",
-        "title": "ਕੈਨਵਸ ਉਚਾਈ",
-        "description": "ਕੈਨਵਸ ਦੀ CSS ਉਚਾਈ (ਉਦਾਹਰਨ ਲਈ px ਜਾਂ em)।"
       },
       {
         "property": "background",

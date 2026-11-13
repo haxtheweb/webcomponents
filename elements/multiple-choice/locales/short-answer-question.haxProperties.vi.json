@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Câu hỏi trả lời ngắn",
-    "description": "Để người dùng trả lời một câu hỏi cơ bản"
+    "description": "Câu hỏi mà người học trả lời trong một hoặc hai câu."
   },
   "settings": {
     "configure": [

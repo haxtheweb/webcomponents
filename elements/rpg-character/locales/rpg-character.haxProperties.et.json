@@ -11,11 +11,6 @@
         "description": "Sõna, mille põhjal luuakse juhuslik tegelane."
       },
       {
-        "property": "code",
-        "title": "Tegelase kood",
-        "description": "Kleebi salvestatud kood, et see tegelane uuesti luua."
-      },
-      {
         "property": "hat",
         "title": "Müts",
         "description": "Mütsi stiil.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Mask",
-        "description": "Näol või peas kantav mask.",
-        "options": {
-          "none": "Puudub",
-          "lion": "Lõvi",
-          "plague": "Katkuarst",
-          "theater": "Teater",
-          "pumpkin": "Kõrvits",
-          "ghost": "Kummitus",
-          "mummy": "Muumia",
-          "wrestler": "Maadlusmask",
-          "block-head": "Klotspea",
-          "web": "Võrgumask",
-          "werewolf": "Libahundi nägu",
-          "shadow": "Varjuline nägu"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Meik",
-        "description": "Näovärv või huulepulk.",
-        "options": {
-          "none": "Puudub",
-          "red-lipstick": "Punane huulepulk",
-          "pink-lipstick": "Roosa huulepulk",
-          "berry-lipstick": "Marjapunane huulepulk",
-          "clown": "Klounivärv",
-          "fangs": "Kihvad",
-          "skull": "Koljumaal",
-          "zombie": "Zombimaal",
-          "red-nose": "Punane nina",
-          "white-beard": "Valge habe",
-          "domino": "Kangelasmask",
-          "carrot": "Porgandnina",
-          "bunny": "Jänesenina",
-          "mustache": "Vuntsid",
-          "monster": "Koletise näovärv",
-          "round-glasses": "Ümmargused prillid"
-        }
-      },
-      {
         "property": "expression",
         "title": "Ilme",
         "description": "Näoilme.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Lemmikloom",
+        "description": "Tegelase kõrval olev lemmikloom.",
+        "options": {
+          "none": "Puudub",
+          "cat": "Kass",
+          "dog": "Koer",
+          "bunny": "Jänku",
+          "goldfish": "Kuldkala",
+          "slime": "Lima",
+          "squirrel": "Orav",
+          "dragon": "Draakonibeebi",
+          "parrot": "Papagoi",
+          "owl": "Öökull",
+          "bat": "Nahkhiir"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Tegelase kood",
+        "description": "Kleebi salvestatud kood, et see tegelane uuesti luua."
+      },
+      {
+        "property": "mask",
+        "title": "Mask",
+        "description": "Näol või peas kantav mask.",
+        "options": {
+          "none": "Puudub",
+          "lion": "Lõvi",
+          "plague": "Katkuarst",
+          "theater": "Teater",
+          "pumpkin": "Kõrvits",
+          "ghost": "Kummitus",
+          "mummy": "Muumia",
+          "wrestler": "Maadlusmask",
+          "block-head": "Klotspea",
+          "web": "Võrgumask",
+          "werewolf": "Libahundi nägu",
+          "shadow": "Varjuline nägu"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Meik",
+        "description": "Näovärv või huulepulk.",
+        "options": {
+          "none": "Puudub",
+          "red-lipstick": "Punane huulepulk",
+          "pink-lipstick": "Roosa huulepulk",
+          "berry-lipstick": "Marjapunane huulepulk",
+          "clown": "Klounivärv",
+          "fangs": "Kihvad",
+          "skull": "Koljumaal",
+          "zombie": "Zombimaal",
+          "red-nose": "Punane nina",
+          "white-beard": "Valge habe",
+          "domino": "Kangelasmask",
+          "carrot": "Porgandnina",
+          "bunny": "Jänesenina",
+          "mustache": "Vuntsid",
+          "monster": "Koletise näovärv",
+          "round-glasses": "Ümmargused prillid"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Lipu tekst",
         "description": "Kuni 4 tähte, mis lipul kuvatakse."
@@ -310,24 +330,6 @@
           "skates": "Uisud",
           "skateboard": "Rula",
           "hoverboard": "Hõljuklaud"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Lemmikloom",
-        "description": "Tegelase kõrval olev lemmikloom.",
-        "options": {
-          "none": "Puudub",
-          "cat": "Kass",
-          "dog": "Koer",
-          "bunny": "Jänku",
-          "goldfish": "Kuldkala",
-          "slime": "Lima",
-          "squirrel": "Orav",
-          "dragon": "Draakonibeebi",
-          "parrot": "Papagoi",
-          "owl": "Öökull",
-          "bat": "Nahkhiir"
         }
       },
       {

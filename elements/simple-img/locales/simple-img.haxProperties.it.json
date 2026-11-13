@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Immagine semplice",
-    "description": "Modifica le immagini con parametri semplici."
+    "description": "Un’immagine ridimensionata, ritagliata o ruotata con impostazioni semplici."
   },
   "settings": {
     "configure": [
@@ -26,7 +26,8 @@
         "description": "Utile per i lettori di schermo e per migliorare la SEO."
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "Qualità",

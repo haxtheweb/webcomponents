@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Soalan Betul / Salah",
-    "description": "Soalan betul salah"
+    "description": "Pernyataan yang ditandakan pelajar sebagai benar atau palsu."
   },
   "settings": {
     "configure": [

@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Başlıq yazısı",
         "description": "Şəkil üçün başlıq."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Fiqurun başlığı",
-        "description": "Fiqur etiketi üçün başlıq."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Fiqurun təsviri",
-        "description": "Fiqur etiketi üçün təsvir."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Şəkil modalını deaktiv et",
         "description": "Kliklərin şəkli şəkil müfəttişi dialoqunda açmasını deaktiv edin."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Fiqurun başlığı",
+        "description": "Fiqur etiketi üçün başlıq."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Fiqurun təsviri",
+        "description": "Fiqur etiketi üçün təsvir."
       }
     ],
     "developer": [

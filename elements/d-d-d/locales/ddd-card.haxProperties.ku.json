@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Bê Tîr",
         "description": "Tîra bişkokê veşêre."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Girêdan: armanc",
@@ -54,7 +52,9 @@
           "_top": "Pencereya jorîn - _top",
           "_parent": "Pencereya dêûbav - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Girêdan: rel",

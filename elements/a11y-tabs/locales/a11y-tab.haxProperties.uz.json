@@ -10,10 +10,6 @@
         "title": "Tab belgisi"
       },
       {
-        "property": "disabled",
-        "title": "Oʻchirilgan"
-      },
-      {
         "property": "label",
         "title": "Tab yorligʻi"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "Noyob ID"
-      },
-      {
         "property": "flag",
         "title": "Ixtiyoriy bayroqcha matni"
       },
       {
         "property": "flagIcon",
         "title": "Ixtiyoriy bayroqcha belgisi"
+      },
+      {
+        "property": "disabled",
+        "title": "Oʻchirilgan"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "Noyob ID"
       }
     ]
   }

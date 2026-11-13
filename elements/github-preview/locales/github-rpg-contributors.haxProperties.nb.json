@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Liste over GitHub-bidragsytere",
-    "description": "Vises som RPG-figurer ved hjelp av GitHub API."
+    "description": "Viser bidragsyterne til et repositorium som RPG-figurer."
   },
   "settings": {
     "configure": [

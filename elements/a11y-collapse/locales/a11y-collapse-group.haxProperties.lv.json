@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "Izvēršamo elementu grupa",
-    "description": "Izvēršamu un sakļaujamu elementu grupa."
+    "title": "Sakļaujama grupa",
+    "description": "Sakļaujamu konteineru grupa."
   },
   "settings": {
     "configure": [

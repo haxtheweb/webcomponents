@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Activity Box",
-    "description": "Maliit na naka-istilong block ng heading."
+    "description": "Isang pamagat na may label na nagmamarka ng simula ng isang aktibidad."
   },
   "settings": {
     "configure": [

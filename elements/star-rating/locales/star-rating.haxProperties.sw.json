@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Ukadiriaji wa Nyota",
-    "description": "Wijeti ya kuonyesha ukadiriaji au kitufe cha kukadiria."
+    "description": "Onyesha ukadiriaji wa nyota au waache wasomaji wachague."
   },
   "settings": {
     "configure": [
@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Shirikishi",
         "description": "Ruhusu mtumiaji kuingiliana ili kuweka ukadiriaji."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Hali ya Kipimo cha Rubriki",

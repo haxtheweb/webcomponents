@@ -14,16 +14,6 @@
         "property": "title",
         "title": "ప్రత్యామ్నాయ శీర్షిక",
         "description": "QR కోడ్ మూలానికి లింక్ చేసిన ప్రత్యామ్నాయ శీర్షిక."
-      },
-      {
-        "property": "modulesize",
-        "title": "పరిమాణం",
-        "description": "QR కోడ్ పరిమాణం."
-      },
-      {
-        "property": "margin",
-        "title": "మార్జిన్",
-        "description": "కోడ్ చుట్టూ ఉన్న ఖాళీ."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "పరిమాణం",
+        "description": "QR కోడ్ పరిమాణం."
+      },
+      {
+        "property": "margin",
+        "title": "మార్జిన్",
+        "description": "కోడ్ చుట్టూ ఉన్న ఖాళీ."
       }
     ]
   }

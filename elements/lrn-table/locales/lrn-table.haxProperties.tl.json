@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "CSV na talahanayan",
-    "description": "Makakagawa ito ng talahanayan mula sa CSV file saanman ito naroroon."
+    "description": "Ipinapakita ang CSV file bilang accessible na talahanayan."
   },
   "settings": {
     "configure": [

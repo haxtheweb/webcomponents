@@ -4,7 +4,7 @@
     "description": "Dynamiskur blokkur til at vísa undirlutir á núverandi síðu"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "Dynamiskur háttur",
@@ -14,7 +14,9 @@
           "parent": "Undirlutir hjá yvirlutinum",
           "ancestor": "Allir undirlutir frá hægsta forfedrinum"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "Byrjanarstig"

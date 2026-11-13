@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Lista över GitHub-bidragsgivare",
-    "description": "Visas som RPG-figurer med hjälp av GitHub API."
+    "description": "Listar ett repos bidragsgivare som RPG-figurer."
   },
   "settings": {
     "configure": [

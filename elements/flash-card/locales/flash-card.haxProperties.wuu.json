@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "图片来源",
         "description": "卡片用个图片文件。会盖脱图片关键词。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "图片关键词",
+        "description": "随机图片关键词。会被图片来源盖脱。"
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "学习目标",
         "description": "OER Schema：搿项练习支持个学习目标个 ID 或者 URL。"
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "图片关键词",
-        "description": "随机图片关键词。会被图片来源盖脱。"
       }
     ]
   }

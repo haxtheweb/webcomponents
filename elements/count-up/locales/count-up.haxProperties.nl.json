@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Achtervoegseltekst",
         "description": "Tekst na het getal (bijv. '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Voorvoegselslot",
-        "description": "Optionele slot-inhoud vóór het getal."
-      },
-      {
-        "slot": "suffix",
-        "title": "Achtervoegselslot",
-        "description": "Optionele slot-inhoud na het getal."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Geen easing",
         "description": "Schakel easing uit zodat het tellen lineair verloopt."
+      },
+      {
+        "slot": "prefix",
+        "title": "Voorvoegselslot",
+        "description": "Optionele slot-inhoud vóór het getal."
+      },
+      {
+        "slot": "suffix",
+        "title": "Achtervoegselslot",
+        "description": "Optionele slot-inhoud na het getal."
       }
     ]
   }

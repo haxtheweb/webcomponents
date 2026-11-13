@@ -26,7 +26,8 @@
         "description": "Úsáideach do léitheoirí scáileáin agus do SEO níos fearr."
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "Cáilíocht",

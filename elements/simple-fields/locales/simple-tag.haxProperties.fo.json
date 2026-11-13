@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Sjálvvirkin dámlitur",
         "description": "Avleið dámlitin sjálvvirkið úr heitistekstinum."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Avlýsingarknøttur",
-        "description": "Vís ein strika/avlýs-ímyndarknøtt inni í pilluni."
-      },
-      {
-        "property": "readonly",
-        "title": "Bert lesing",
-        "description": "Fjal avlýsingarknøttin, so at pillan bert er til vísingar."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Blágráur",
           "grey": "Gráur"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Avlýsingarknøttur",
+        "description": "Vís ein strika/avlýs-ímyndarknøtt inni í pilluni."
+      },
+      {
+        "property": "readonly",
+        "title": "Bert lesing",
+        "description": "Fjal avlýsingarknøttin, so at pillan bert er til vísingar."
       }
     ]
   }

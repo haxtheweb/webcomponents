@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "Etiket / Hap",
+    "title": "Etiket",
     "description": "İsteğe bağlı vurgu rengi, iptal düğmesi veya açma/kapama içeren kompakt, hap biçimli etiket."
   },
   "settings": {
@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Otomatik vurgu rengi",
         "description": "Vurgu rengini etiket metninden otomatik olarak türet."
-      },
-      {
-        "property": "cancelButton",
-        "title": "İptal düğmesi",
-        "description": "Hapın içinde bir kaldır/iptal simge düğmesi göster."
-      },
-      {
-        "property": "readonly",
-        "title": "Salt okunur",
-        "description": "Hap yalnızca görüntülensin diye iptal düğmesini gizle."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Mavi Gri",
           "grey": "Gri"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "İptal düğmesi",
+        "description": "Hapın içinde bir kaldır/iptal simge düğmesi göster."
+      },
+      {
+        "property": "readonly",
+        "title": "Salt okunur",
+        "description": "Hap yalnızca görüntülensin diye iptal düğmesini gizle."
       }
     ]
   }

@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Imagine poster",
         "description": "URL-ul imaginii poster."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Piste text",
         "description": "Subtitrări, descrieri și alte piste text pentru videoclip."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Ora de început",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Pistă de descriere audio",
         "description": "URL către o pistă de descriere audio (fișier MP3) care oferă narațiunea elementelor vizuale."
+      },
+      {
+        "property": "accentColor",
+        "title": "Culoare de accent",
+        "description": "(depreciat) Selectează culoarea de accent pentru player."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Limbă",
         "description": "Limba fișierului media."
-      },
-      {
-        "property": "accentColor",
-        "title": "Culoare de accent",
-        "description": "(depreciat) Selectează culoarea de accent pentru player."
       }
     ]
   }

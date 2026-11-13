@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Parallax-Bild",
-    "description": "Bild scrollt vorbei"
+    "description": "Ein Bild in voller Breite, das langsamer scrollt als die Seite, mit einer Überschrift darüber."
   },
   "settings": {
     "configure": [

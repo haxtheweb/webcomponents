@@ -1,10 +1,10 @@
 {
   "gizmo": {
-    "title": "HAXcms: بلوک فرزند",
-    "description": "بلوک پویا برای نمایش فرزندان صفحه فعلی"
+    "title": "صفحه‌های فرزند",
+    "description": "صفحه‌های فرزند صفحهٔ کنونی را فهرست می‌کند."
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "روش پویا",
@@ -14,7 +14,9 @@
           "parent": "فرزندان والد",
           "ancestor": "همه فرزندان از بالاترین نیا"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "سطح شروع"

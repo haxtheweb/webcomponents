@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "Spotifyプレーヤー埋め込み用のラッパー。"
+    "description": "Spotifyの曲、アルバム、プレイリストを埋め込みます。"
   },
   "settings": {
     "configure": [

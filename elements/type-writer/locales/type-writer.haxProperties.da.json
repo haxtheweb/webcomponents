@@ -1,6 +1,6 @@
 {
   "gizmo": {
     "title": "Skrivemaskine",
-    "description": "skrivemaskineeffekt"
+    "description": "Tekst, der skriver sig selv, ét tegn ad gangen."
   }
 }

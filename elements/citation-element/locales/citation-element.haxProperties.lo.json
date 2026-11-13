@@ -21,15 +21,6 @@
         "description": "ວັນທີທີ່ເຂົ້າເຖິງແຫຼ່ງທີ່ມາ."
       },
       {
-        "property": "scope",
-        "title": "ຂອບເຂດ",
-        "description": "ຂອບເຂດອົງປະກອບທີ່ຈະອ້າງອີງ.",
-        "options": {
-          "sibling": "ອົງປະກອບພີ່ນ້ອງ",
-          "parent": "ອົງປະກອບແມ່"
-        }
-      },
-      {
         "property": "license",
         "title": "ໃບອະນຸຍາດ",
         "description": "ໃບອະນຸຍາດສຳລັບຜົນງານທີ່ອ້າງອີງ."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "ຜູ້ສ້າງ",
         "description": "ຜູ້ສ້າງ ຫຼື ເຈົ້າຂອງຜົນງານທີ່ອ້າງອີງ."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "ຂອບເຂດ",
+        "description": "ຂອບເຂດອົງປະກອບທີ່ຈະອ້າງອີງ.",
+        "options": {
+          "sibling": "ອົງປະກອບພີ່ນ້ອງ",
+          "parent": "ອົງປະກອບແມ່"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "ປະເພດ OER Schema",

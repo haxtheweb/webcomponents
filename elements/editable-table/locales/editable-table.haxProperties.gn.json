@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Emoneĩ mbogua'ã",
         "description": "Emoneĩ mbogua'ã ysýi repykue rupive."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Papapy jehaipyrã",
-        "description": "Emoĩ papapy jehaipyrã ysýi papapygua rehe."
-      },
-      {
-        "property": "responsive",
-        "title": "Ojeguerovakuaáva",
-        "description": "Emohenda tabla mba'erechaha michĩvape."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Rúbrica reko",
-        "description": "Ehechakuaa ko tabla OER Schema Rubric ramo ojeguenohẽ hag̃ua Rubric, RubricScale, RubricCriterion ha RubricLevel mba'ekuaarã."
-      },
-      {
-        "property": "rubricType",
-        "title": "Rúbrica rekoichagua",
-        "description": "Rúbrica reko ojeguenohẽva oer:rubricType ramo (oiporúnte Rúbrica reko oñemyandy jave).",
-        "options": {
-          "": "(mba'eve)",
-          "analytic": "Ñehesa'ỹijopy",
-          "holistic": "Pavẽme",
-          "single-point": "Peteĩ kyta",
-          "checklist": "Jehechajeyrã"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Votõ mbokuatiaha",
         "description": "Embojoapy votõ ojembokuatia hag̃ua tabla añoite."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Papapy jehaipyrã",
+        "description": "Emoĩ papapy jehaipyrã ysýi papapygua rehe."
+      },
+      {
+        "property": "responsive",
+        "title": "Ojeguerovakuaáva",
+        "description": "Emohenda tabla mba'erechaha michĩvape."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Rúbrica reko",
+        "description": "Ehechakuaa ko tabla OER Schema Rubric ramo ojeguenohẽ hag̃ua Rubric, RubricScale, RubricCriterion ha RubricLevel mba'ekuaarã."
+      },
+      {
+        "property": "rubricType",
+        "title": "Rúbrica rekoichagua",
+        "description": "Rúbrica reko ojeguenohẽva oer:rubricType ramo (oiporúnte Rúbrica reko oñemyandy jave).",
+        "options": {
+          "": "(mba'eve)",
+          "analytic": "Ñehesa'ỹijopy",
+          "holistic": "Pavẽme",
+          "single-point": "Peteĩ kyta",
+          "checklist": "Jehechajeyrã"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "Mba'ekuaarã CSV",
         "description": "Ejapo tabla marandurenda CSV ojehupi va'ekuégui."
       }
-    ]
+    ],
+    "developer": []
   }
 }

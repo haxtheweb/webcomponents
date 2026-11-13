@@ -11,6 +11,13 @@
         "description": "Te URL mō tēnei kōnae AR."
       },
       {
+        "property": "skyColor",
+        "title": "Tae o te rangi",
+        "description": "Kōwhiria te tae o te rangi i te whakaaturanga."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "Tūnga X o te huānga i te AR."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "Tūnga Z o te huānga i te AR."
-      },
-      {
-        "property": "skyColor",
-        "title": "Tae o te rangi",
-        "description": "Kōwhiria te tae o te rangi i te whakaaturanga."
       }
     ]
   }

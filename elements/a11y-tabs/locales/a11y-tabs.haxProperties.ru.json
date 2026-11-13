@@ -11,20 +11,17 @@
         "description": "Доступная метка для набора вкладок."
       },
       {
-        "property": "disabled",
-        "title": "Отключено",
-        "description": "Отключить все вкладки."
-      },
-      {
-        "property": "hidden",
-        "title": "Скрыто",
-        "description": "Скрыть набор вкладок."
-      },
-      {
         "property": "sticky",
         "title": "Закрепить",
         "description": "Удерживать горизонтальные вкладки вверху при прокрутке."
       },
+      {
+        "slot": "",
+        "title": "Вкладки",
+        "description": "Последовательность элементов <a11y-tab/>."
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "Точка перестроения макета",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "Точка перестроения значков",
         "description": "Точка перестроения для показа текста со значками. По умолчанию 0; укажите -1 для режима только значков."
-      },
-      {
-        "slot": "",
-        "title": "Вкладки",
-        "description": "Последовательность элементов <a11y-tab/>."
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "Отключено",
+        "description": "Отключить все вкладки."
+      },
+      {
+        "property": "hidden",
+        "title": "Скрыто",
+        "description": "Скрыть набор вкладок."
+      },
       {
         "property": "id",
         "title": "Уникальный ID",

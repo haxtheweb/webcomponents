@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Kwakabva Mufananidzo",
         "description": "Faira remufananidzo rinoshandiswa pakadhi. Rinotsiva Shoko reMufananidzo."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Shoko reMufananidzo",
+        "description": "Shoko remufananidzo usina kurongwa. Rinotsiviwa neKwakabva Mufananidzo."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Chinangwa cheKudzidza",
         "description": "OER Schema: ID kana URL yechinangwa chekudzidza chinotsigirwa nekudzidzira uku."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Shoko reMufananidzo",
-        "description": "Shoko remufananidzo usina kurongwa. Rinotsiviwa neKwakabva Mufananidzo."
       }
     ]
   }

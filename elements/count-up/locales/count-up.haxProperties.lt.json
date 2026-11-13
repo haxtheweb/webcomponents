@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Priesagos tekstas",
         "description": "Tekstas po skaičiaus (pvz., '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Priešdėlio lizdas",
-        "description": "Pasirenkamas lizdo turinys prieš skaičių."
-      },
-      {
-        "slot": "suffix",
-        "title": "Priesagos lizdas",
-        "description": "Pasirenkamas lizdo turinys po skaičiaus."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Be glotninimo",
         "description": "Išjungti glotninimą, kad skaičiavimas būtų tolygus."
+      },
+      {
+        "slot": "prefix",
+        "title": "Priešdėlio lizdas",
+        "description": "Pasirenkamas lizdo turinys prieš skaičių."
+      },
+      {
+        "slot": "suffix",
+        "title": "Priesagos lizdas",
+        "description": "Pasirenkamas lizdo turinys po skaičiaus."
       }
     ]
   }

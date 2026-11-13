@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "Enllaç HAX",
-    "description": "Un enllaç a un recurs concret del lloc en què treballes."
+    "title": "Enllaç a pàgina",
+    "description": "Un enllaç a una pàgina del lloc en què esteu treballant."
   },
   "settings": {
     "configure": [

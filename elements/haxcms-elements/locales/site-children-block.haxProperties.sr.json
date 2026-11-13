@@ -1,10 +1,10 @@
 {
   "gizmo": {
-    "title": "HAXcms: блок подстраница",
-    "description": "Динамички блок за приказ подстраница тренутне странице"
+    "title": "Подстранице",
+    "description": "Наводи подстранице тренутне странице."
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "Динамички метод",
@@ -14,7 +14,9 @@
           "parent": "Подстранице надређене странице",
           "ancestor": "Све подстранице од највишег претка"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "Почетни ниво"

@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "အပြန်အလှန်",
         "description": "အဆင့်သတ်မှတ်ရန် အသုံးပြုသူ အပြန်အလှန် ခွင့်ပြုရန်။"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Rubric စကေး မုဒ်",

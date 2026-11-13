@@ -9,7 +9,9 @@
         "slot": "",
         "title": "Kutipan",
         "description": "Item kutipan dalam bibliografi ini"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "Mata kuliah",

@@ -14,28 +14,6 @@
         "property": "statement",
         "title": "వాక్యం",
         "description": "పదాలను గుర్తించే ఇంటరాక్షన్‌గా మార్చబడే వాక్యం."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "గ్రేడింగ్ ఫార్మాట్",
-        "description": "OER Schema: ఈ మూల్యాంకనం కోసం గ్రేడింగ్ ఫార్మాట్ (ఉదా. పాయింట్లు, అక్షర గ్రేడ్, శాతం, పూర్తి)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "అభ్యాస లక్ష్యం",
-        "description": "OER Schema: ఈ మూల్యాంకనంతో అనుబంధించిన అభ్యాస లక్ష్యం."
-      },
-      {
-        "property": "forCourse",
-        "title": "కోర్సు",
-        "description": "OER Schema: ఈ మూల్యాంకనం ఉద్దేశించిన కోర్సు."
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "క్విజ్ పేరు",
-        "description": "xAPI ఆధారిత వాతావరణాలలో ఈ అంశాన్ని గుర్తించడానికి పంపబడే క్విజ్ పేరు"
       }
     ],
     "advanced": [
@@ -46,6 +24,28 @@
       {
         "title": "కుదించి ప్రారంభించు",
         "description": "కుదించదగినప్పుడు, ప్రశ్న మరియు దాని స్థితి మాత్రమే చూపే మూసిన వరుసగా ప్రారంభించండి."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "గ్రేడింగ్ ఫార్మాట్",
+        "description": "OER Schema: ఈ మూల్యాంకనం కోసం గ్రేడింగ్ ఫార్మాట్ (ఉదా. పాయింట్లు, అక్షర గ్రేడ్, శాతం, పూర్తి)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "అభ్యాస లక్ష్యం",
+        "description": "OER Schema: ఈ మూల్యాంకనంతో అనుబంధించిన అభ్యాస లక్ష్యం."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "క్విజ్ పేరు",
+        "description": "xAPI ఆధారిత వాతావరణాలలో ఈ అంశాన్ని గుర్తించడానికి పంపబడే క్విజ్ పేరు"
+      },
+      {
+        "property": "forCourse",
+        "title": "కోర్సు",
+        "description": "OER Schema: ఈ మూల్యాంకనం ఉద్దేశించిన కోర్సు."
       }
     ]
   }

@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Immaġni tal-poster",
         "description": "URL tal-immaġni tal-poster."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Binarji tat-test",
         "description": "Kapsjonijiet, sottotitoli, deskrizzjonijiet u binarji oħra tat-test għall-vidjo."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Ħin tal-bidu",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Binarju ta' Deskrizzjoni bl-Awdjo",
         "description": "URL għal binarju ta' deskrizzjoni bl-awdjo (fajl MP3) li jipprovdi narrazzjoni tal-elementi viżivi."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kulur tal-enfasi",
+        "description": "(deprekat) Agħżel il-kulur tal-aċċent għall-player."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Lingwa",
         "description": "Lingwa tal-midja."
-      },
-      {
-        "property": "accentColor",
-        "title": "Kulur tal-enfasi",
-        "description": "(deprekat) Agħżel il-kulur tal-aċċent għall-player."
       }
     ]
   }

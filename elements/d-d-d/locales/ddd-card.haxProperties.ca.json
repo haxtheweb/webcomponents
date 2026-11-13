@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Sense fletxa",
         "description": "Amaga la fletxa del botó."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Enllaç: destinació",
@@ -54,7 +52,9 @@
           "_top": "Finestra superior - _top",
           "_parent": "Finestra pare - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Enllaç: rel",

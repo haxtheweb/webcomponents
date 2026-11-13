@@ -14,16 +14,6 @@
         "property": "title",
         "title": "Isihloko esingenye",
         "description": "Isihloko esingenye esixhunywe nomthombo wekhodi ye-QR."
-      },
-      {
-        "property": "modulesize",
-        "title": "Usayizi",
-        "description": "Usayizi wekhodi ye-QR."
-      },
-      {
-        "property": "margin",
-        "title": "Umngcele",
-        "description": "Isikhala esizungeze ikhodi."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "Usayizi",
+        "description": "Usayizi wekhodi ye-QR."
+      },
+      {
+        "property": "margin",
+        "title": "Umngcele",
+        "description": "Isikhala esizungeze ikhodi."
       }
     ]
   }

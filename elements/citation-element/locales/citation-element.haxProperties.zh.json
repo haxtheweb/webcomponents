@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "引文出处",
-    "description": "具有三种呈现模式的引用元素。"
+    "description": "注明来源的标题、作者、许可和链接。"
   },
   "settings": {
     "configure": [
@@ -21,15 +21,6 @@
         "description": "访问该来源的日期。"
       },
       {
-        "property": "scope",
-        "title": "范围",
-        "description": "要引用的元素范围。",
-        "options": {
-          "sibling": "同级元素",
-          "parent": "父元素"
-        }
-      },
-      {
         "property": "license",
         "title": "许可",
         "description": "被引用作品的许可。"
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "创作者",
         "description": "被引用作品的创作者或所有者。"
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "范围",
+        "description": "要引用的元素范围。",
+        "options": {
+          "sibling": "同级元素",
+          "parent": "父元素"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "OER Schema 类型",

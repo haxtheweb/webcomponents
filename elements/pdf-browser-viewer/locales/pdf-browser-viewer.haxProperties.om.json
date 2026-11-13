@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Ergaa hin deeggaramne",
-        "description": "Ergaa yeroo biraawzariin faayilota PDF agarsiisuu hin dandeenye."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Ergaa hidhoo hin deeggaramne",
-        "description": "Barreeffama hidhoo yeroo biraawzariin faayilota PDF agarsiisuu hin dandeenye."
-      },
-      {
         "property": "width",
         "title": "Bal'ina",
         "description": "Bal'ina ilaalaa PDF."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Dheerina",
         "description": "Dheerina ilaalaa PDF."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Ergaa hin deeggaramne",
+        "description": "Ergaa yeroo biraawzariin faayilota PDF agarsiisuu hin dandeenye."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Ergaa hidhoo hin deeggaramne",
+        "description": "Barreeffama hidhoo yeroo biraawzariin faayilota PDF agarsiisuu hin dandeenye."
       }
     ]
   }

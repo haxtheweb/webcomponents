@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Ibi-àfojúsùn",
         "description": "Ipa-ọ̀nà sí ìkọ́ eré náà."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Ìbú Kanfásì",
+        "description": "Ìbú CSS kanfásì (fún àpẹẹrẹ px tàbí em)."
       },
+      {
+        "property": "height",
+        "title": "Gíga Kanfásì",
+        "description": "Gíga CSS kanfásì (fún àpẹẹrẹ px tàbí em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Ọ̀nà ìfúnpọ̀",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Ẹ̀dà Ọjà",
         "description": "Ẹ̀dà ìtújáde."
-      },
-      {
-        "property": "width",
-        "title": "Ìbú Kanfásì",
-        "description": "Ìbú CSS kanfásì (fún àpẹẹrẹ px tàbí em)."
-      },
-      {
-        "property": "height",
-        "title": "Gíga Kanfásì",
-        "description": "Gíga CSS kanfásì (fún àpẹẹrẹ px tàbí em)."
       },
       {
         "property": "background",

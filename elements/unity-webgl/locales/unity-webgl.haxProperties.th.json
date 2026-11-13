@@ -9,7 +9,21 @@
         "property": "target",
         "title": "เป้าหมาย",
         "description": "เส้นทางไปยังบิลด์ของเกม"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "ความกว้างของแคนวาส",
+        "description": "ความกว้าง CSS ของแคนวาส (เช่น px หรือ em)"
       },
+      {
+        "property": "height",
+        "title": "ความสูงของแคนวาส",
+        "description": "ความสูง CSS ของแคนวาส (เช่น px หรือ em)"
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "วิธีการบีบอัด",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "เวอร์ชันผลิตภัณฑ์",
         "description": "เวอร์ชันที่เผยแพร่"
-      },
-      {
-        "property": "width",
-        "title": "ความกว้างของแคนวาส",
-        "description": "ความกว้าง CSS ของแคนวาส (เช่น px หรือ em)"
-      },
-      {
-        "property": "height",
-        "title": "ความสูงของแคนวาส",
-        "description": "ความสูง CSS ของแคนวาส (เช่น px หรือ em)"
       },
       {
         "property": "background",

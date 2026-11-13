@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Salli suodatus",
         "description": "Salli suodatus sarakkeiden arvojen mukaan."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Numeerinen muotoilu",
-        "description": "Käytä numeerista muotoilua numeerisissa sarakkeissa."
-      },
-      {
-        "property": "responsive",
-        "title": "Responsiivinen",
-        "description": "Mukauta taulukon asettelua pienillä näytöillä."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Arviointimatriisitila",
-        "description": "Tulkitse tämä taulukko OER Schema -arviointimatriisina (Rubric), jolloin tuotetaan Rubric-, RubricScale-, RubricCriterion- ja RubricLevel-metatiedot."
-      },
-      {
-        "property": "rubricType",
-        "title": "Arviointimatriisin tyyppi",
-        "description": "Arviointimatriisin tyyli, joka tuotetaan muodossa oer:rubricType (merkityksellinen vain, kun arviointimatriisitila on käytössä).",
-        "options": {
-          "": "(ei mitään)",
-          "analytic": "Analyyttinen",
-          "holistic": "Holistinen",
-          "single-point": "Yksipisteinen",
-          "checklist": "Tarkistuslista"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Tulostuspainike",
         "description": "Lisää painike vain taulukon tulostamiseen."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Numeerinen muotoilu",
+        "description": "Käytä numeerista muotoilua numeerisissa sarakkeissa."
+      },
+      {
+        "property": "responsive",
+        "title": "Responsiivinen",
+        "description": "Mukauta taulukon asettelua pienillä näytöillä."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Arviointimatriisitila",
+        "description": "Tulkitse tämä taulukko OER Schema -arviointimatriisina (Rubric), jolloin tuotetaan Rubric-, RubricScale-, RubricCriterion- ja RubricLevel-metatiedot."
+      },
+      {
+        "property": "rubricType",
+        "title": "Arviointimatriisin tyyppi",
+        "description": "Arviointimatriisin tyyli, joka tuotetaan muodossa oer:rubricType (merkityksellinen vain, kun arviointimatriisitila on käytössä).",
+        "options": {
+          "": "(ei mitään)",
+          "analytic": "Analyyttinen",
+          "holistic": "Holistinen",
+          "single-point": "Yksipisteinen",
+          "checklist": "Tarkistuslista"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "CSV-data",
         "description": "Luo taulukko ladatusta CSV-tiedostosta."
       }
-    ]
+    ],
+    "developer": []
   }
 }

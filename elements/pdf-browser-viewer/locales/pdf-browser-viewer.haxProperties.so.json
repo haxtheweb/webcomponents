@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Fariinta aan la taageerin",
-        "description": "Fariinta marka biraawsarku uusan muujin karin faylasha PDF."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Fariinta xiriiriyaha aan la taageerin",
-        "description": "Qoraalka xiriiriyaha marka biraawsarku uusan muujin karin faylasha PDF."
-      },
-      {
         "property": "width",
         "title": "Ballac",
         "description": "Ballaca daawadaha PDF."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Dherer",
         "description": "Dhererka daawadaha PDF."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Fariinta aan la taageerin",
+        "description": "Fariinta marka biraawsarku uusan muujin karin faylasha PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Fariinta xiriiriyaha aan la taageerin",
+        "description": "Qoraalka xiriiriyaha marka biraawsarku uusan muujin karin faylasha PDF."
       }
     ]
   }

@@ -11,20 +11,17 @@
         "description": "Ներդիրների հավաքածուի մատչելի պիտակը։"
       },
       {
-        "property": "disabled",
-        "title": "Անջատված",
-        "description": "Անջատել բոլոր ներդիրները։"
-      },
-      {
-        "property": "hidden",
-        "title": "Թաքնված",
-        "description": "Թաքցնել ներդիրների հավաքածուն։"
-      },
-      {
         "property": "sticky",
         "title": "Կպչուն",
         "description": "Ոլորելիս հորիզոնական ներդիրները պահել վերևում։"
       },
+      {
+        "slot": "",
+        "title": "Ներդիրներ",
+        "description": "<a11y-tab/> տարրերի շարք։"
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "Դասավորության սահմանակետ",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "Պատկերակի սահմանակետ",
         "description": "Պատկերակների հետ տեքստ ցուցադրելու սահմանակետը։ Լռելյայն 0 է. օգտագործեք -1՝ միայն պատկերակների ռեժիմի համար։"
-      },
-      {
-        "slot": "",
-        "title": "Ներդիրներ",
-        "description": "<a11y-tab/> տարրերի շարք։"
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "Անջատված",
+        "description": "Անջատել բոլոր ներդիրները։"
+      },
+      {
+        "property": "hidden",
+        "title": "Թաքնված",
+        "description": "Թաքցնել ներդիրների հավաքածուն։"
+      },
       {
         "property": "id",
         "title": "Եզակի ID",

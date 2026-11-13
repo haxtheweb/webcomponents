@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Зірковий рейтинг",
-    "description": "Віджет показу рейтингу або кнопка для оцінювання."
+    "description": "Покажіть оцінку зірками або дайте читачам обрати її."
   },
   "settings": {
     "configure": [
@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Інтерактивний",
         "description": "Дозволити користувачеві встановлювати рейтинг."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Режим шкали рубрики",

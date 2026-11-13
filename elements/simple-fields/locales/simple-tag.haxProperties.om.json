@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Halluu calaqqee ofumaan",
         "description": "Halluu calaqqee barreeffama maqaa irraa ofumaan argadhu."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Qabduu haquu",
-        "description": "Kiniinii keessatti qabduu mallattoo haquu/dhiisuu agarsiisi."
-      },
-      {
-        "property": "readonly",
-        "title": "Dubbisuu qofa",
-        "description": "Akka kiniiniin agarsiisaaf qofa ta'uuf qabduu haquu dhoksi."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Daalacha Cuquliisaa",
           "grey": "Daalacha"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Qabduu haquu",
+        "description": "Kiniinii keessatti qabduu mallattoo haquu/dhiisuu agarsiisi."
+      },
+      {
+        "property": "readonly",
+        "title": "Dubbisuu qofa",
+        "description": "Akka kiniiniin agarsiisaaf qofa ta'uuf qabduu haquu dhoksi."
       }
     ]
   }

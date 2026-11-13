@@ -4,22 +4,23 @@
     "description": "비디오 및 오디오 플레이어를 플레이어 + 사이드바 레이아웃으로 보여 주는 재생 목록."
   },
   "settings": {
-    "configure": [
+    "configure": [],
+    "advanced": [
       {
         "property": "activeIndex",
         "title": "시작 항목 번호",
         "description": "처음에 재생할 항목의 번호."
-      },
-      {
-        "property": "forCourse",
-        "title": "강좌",
-        "description": "이 재생 목록이 사용되는 강좌 (강좌 식별자 또는 URL)."
       }
     ],
     "developer": [
       {
         "title": "미디어",
         "description": "재생 목록의 동영상과 오디오입니다. 여기서는 편집하지 않습니다. 페이지 개요가 안에 놓을 수 있는 블록을 알기 위해 사용합니다."
+      },
+      {
+        "property": "forCourse",
+        "title": "강좌",
+        "description": "이 재생 목록이 사용되는 강좌 (강좌 식별자 또는 URL)."
       }
     ]
   }

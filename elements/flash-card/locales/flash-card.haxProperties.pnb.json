@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "تصویر دا سرچشمہ",
         "description": "کارڈ لئی ورتی جاوݨ والی تصویر فائل۔ ایہہ تصویر کی ورڈ اُتے حاوی اے۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "تصویر کی ورڈ",
+        "description": "بے ترتیب تصویر لئی کی ورڈ۔ تصویر دا سرچشمہ ایہدے اُتے حاوی اے۔"
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "سکھݨ دا مقصد",
         "description": "OER Schema: اوس سکھݨ دے مقصد دا ID یا URL جیہدی ایہہ مشق مدد کردی اے۔"
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "تصویر کی ورڈ",
-        "description": "بے ترتیب تصویر لئی کی ورڈ۔ تصویر دا سرچشمہ ایہدے اُتے حاوی اے۔"
       }
     ]
   }

@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Ta'ãnga ypykue",
         "description": "Ta'ãnga marandurenda ojeporúva kuatia'atãme. Omyengovia Ta'ãnga ñe'ẽ ñemiguáva."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Ta'ãnga ñe'ẽ ñemiguáva",
+        "description": "Ta'ãnga ñe'ẽ ñemiguáva oimeraẽva. Ta'ãnga ypykue omyengovia."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Ñembo'e jehupytyrã",
         "description": "OER Schema: ID térã URL ñembo'e jehupytyrã ko jehekombo'e oipytyvõva."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Ta'ãnga ñe'ẽ ñemiguáva",
-        "description": "Ta'ãnga ñe'ẽ ñemiguáva oimeraẽva. Ta'ãnga ypykue omyengovia."
       }
     ]
   }

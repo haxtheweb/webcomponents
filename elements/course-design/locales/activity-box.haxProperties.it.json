@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Riquadro attività",
-    "description": "Piccolo blocco di intestazione con stile."
+    "description": "Un’intestazione con etichetta che segna l’inizio di un’attività."
   },
   "settings": {
     "configure": [

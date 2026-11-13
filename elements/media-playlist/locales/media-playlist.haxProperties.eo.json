@@ -4,22 +4,23 @@
     "description": "Ludlisto, kiu prezentas video- kaj sonludilojn en aranĝo de ludilo + flanka panelo."
   },
   "settings": {
-    "configure": [
+    "configure": [],
+    "advanced": [
       {
         "property": "activeIndex",
         "title": "Komenca ero",
         "description": "Numero de la ero per kiu komenci."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kurso",
-        "description": "La kurso por kiu ĉi tiu ludlisto estas celita (kursa identigilo aŭ URL)."
       }
     ],
     "developer": [
       {
         "title": "Aŭdvidaĵoj",
         "description": "La videoj kaj sonaĵoj en la ludlisto. Ne redaktataj ĉi tie: la konturo de la paĝo uzas ilin por scii kiujn blokojn oni povas faligi enen."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurso",
+        "description": "La kurso por kiu ĉi tiu ludlisto estas celita (kursa identigilo aŭ URL)."
       }
     ]
   }

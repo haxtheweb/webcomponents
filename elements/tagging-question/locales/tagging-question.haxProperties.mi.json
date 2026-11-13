@@ -11,30 +11,8 @@
         "description": "Pātai hei whakautu mā ngā kaiwhakamahi."
       },
       {
-        "property": "gradingFormat",
-        "title": "Hōputu kōeke",
-        "description": "OER Schema: hōputu kōeke mō tēnei aromatawai (hei tauira, piro, reta, ōrau, whakaotinga)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Whāinga ako",
-        "description": "OER Schema: te whāinga ako e hono ana ki tēnei aromatawai."
-      },
-      {
-        "property": "forCourse",
-        "title": "Akoranga",
-        "description": "OER Schema: te akoranga i hangaia ai tēnei aromatawai."
-      },
-      {
         "property": "answers",
         "title": "Ngā Whakautu"
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Ingoa o te pātaitai",
-        "description": "Ingoa pātaitai hei tautuhi xAPI i ngā pūnaha tātari."
       }
     ],
     "advanced": [
@@ -47,6 +25,28 @@
         "property": "collapsed",
         "title": "Tīmata ka hinga",
         "description": "Ina taea te hinga, tīmata hei rarangi kati e whakaatu ana i te pātai me tōna āhua anake."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Hōputu kōeke",
+        "description": "OER Schema: hōputu kōeke mō tēnei aromatawai (hei tauira, piro, reta, ōrau, whakaotinga)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Whāinga ako",
+        "description": "OER Schema: te whāinga ako e hono ana ki tēnei aromatawai."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Ingoa o te pātaitai",
+        "description": "Ingoa pātaitai hei tautuhi xAPI i ngā pūnaha tātari."
+      },
+      {
+        "property": "forCourse",
+        "title": "Akoranga",
+        "description": "OER Schema: te akoranga i hangaia ai tēnei aromatawai."
       }
     ]
   }

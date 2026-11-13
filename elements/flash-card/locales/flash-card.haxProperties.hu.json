@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Kép forrása",
         "description": "A kártyához használt képfájl. Felülírja a képkulcsszót."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Képkulcsszó",
+        "description": "Kulcsszó véletlenszerű képhez. A képforrás felülírja."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Tanulási cél",
         "description": "OER Schema: a gyakorlat által támogatott tanulási cél azonosítója vagy URL-je."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Képkulcsszó",
-        "description": "Kulcsszó véletlenszerű képhez. A képforrás felülírja."
       }
     ]
   }

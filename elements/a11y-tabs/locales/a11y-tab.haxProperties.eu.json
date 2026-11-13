@@ -10,10 +10,6 @@
         "title": "Fitxaren ikonoa"
       },
       {
-        "property": "disabled",
-        "title": "Desgaituta"
-      },
-      {
         "property": "label",
         "title": "Fitxaren etiketa"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "ID bakarra"
-      },
-      {
         "property": "flag",
         "title": "Aukerako bandera-testua"
       },
       {
         "property": "flagIcon",
         "title": "Aukerako bandera-ikonoa"
+      },
+      {
+        "property": "disabled",
+        "title": "Desgaituta"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "ID bakarra"
       }
     ]
   }

@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Leisti filtruoti",
         "description": "Leisti filtruoti pagal stulpelių reikšmes."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Skaitinis stilius",
-        "description": "Taikyti skaitinį stilių skaitiniams stulpeliams."
-      },
-      {
-        "property": "responsive",
-        "title": "Prisitaikanti",
-        "description": "Pritaikyti lentelės išdėstymą mažiems ekranams."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Vertinimo kriterijų režimas",
-        "description": "Interpretuoti šią lentelę kaip OER Schema Rubric, kad būtų pateikiami Rubric, RubricScale, RubricCriterion ir RubricLevel metaduomenys."
-      },
-      {
-        "property": "rubricType",
-        "title": "Vertinimo kriterijų tipas",
-        "description": "Vertinimo kriterijų stilius, pateikiamas kaip oer:rubricType (prasmingas tik įjungus vertinimo kriterijų režimą).",
-        "options": {
-          "": "(nėra)",
-          "analytic": "Analitinis",
-          "holistic": "Holistinis",
-          "single-point": "Vieno taško",
-          "checklist": "Kontrolinis sąrašas"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Spausdinimo mygtukas",
         "description": "Pridėti mygtuką, spausdinantį tik lentelę."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Skaitinis stilius",
+        "description": "Taikyti skaitinį stilių skaitiniams stulpeliams."
+      },
+      {
+        "property": "responsive",
+        "title": "Prisitaikanti",
+        "description": "Pritaikyti lentelės išdėstymą mažiems ekranams."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Vertinimo kriterijų režimas",
+        "description": "Interpretuoti šią lentelę kaip OER Schema Rubric, kad būtų pateikiami Rubric, RubricScale, RubricCriterion ir RubricLevel metaduomenys."
+      },
+      {
+        "property": "rubricType",
+        "title": "Vertinimo kriterijų tipas",
+        "description": "Vertinimo kriterijų stilius, pateikiamas kaip oer:rubricType (prasmingas tik įjungus vertinimo kriterijų režimą).",
+        "options": {
+          "": "(nėra)",
+          "analytic": "Analitinis",
+          "holistic": "Holistinis",
+          "single-point": "Vieno taško",
+          "checklist": "Kontrolinis sąrašas"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "CSV duomenys",
         "description": "Sukurti lentelę iš įkelto CSV failo."
       }
-    ]
+    ],
+    "developer": []
   }
 }

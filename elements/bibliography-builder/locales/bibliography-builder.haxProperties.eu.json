@@ -9,7 +9,9 @@
         "slot": "",
         "title": "Aipamenak",
         "description": "Bibliografia honetako aipamenak"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "Ikastaroa",

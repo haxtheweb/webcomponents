@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Cible",
         "description": "Chemin vers le build du jeu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Largeur du canevas",
+        "description": "Largeur CSS du canevas (par exemple en px ou em)."
       },
+      {
+        "property": "height",
+        "title": "Hauteur du canevas",
+        "description": "Hauteur CSS du canevas (par exemple en px ou em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Méthode de compression",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Version du produit",
         "description": "Version de publication."
-      },
-      {
-        "property": "width",
-        "title": "Largeur du canevas",
-        "description": "Largeur CSS du canevas (par exemple en px ou em)."
-      },
-      {
-        "property": "height",
-        "title": "Hauteur du canevas",
-        "description": "Hauteur CSS du canevas (par exemple en px ou em)."
       },
       {
         "property": "background",

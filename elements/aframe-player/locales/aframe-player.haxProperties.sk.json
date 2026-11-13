@@ -11,6 +11,13 @@
         "description": "URL tohto AR súboru."
       },
       {
+        "property": "skyColor",
+        "title": "Farba oblohy",
+        "description": "Vyberte farbu oblohy v scéne."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "Pozícia X prvku v AR."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "Pozícia Z prvku v AR."
-      },
-      {
-        "property": "skyColor",
-        "title": "Farba oblohy",
-        "description": "Vyberte farbu oblohy v scéne."
       }
     ]
   }

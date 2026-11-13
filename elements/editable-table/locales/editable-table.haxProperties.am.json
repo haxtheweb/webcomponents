@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "ማጣሪያ ፍቀድ",
         "description": "በዓምድ እሴቶች ማጣራትን ፍቀድ።"
-      },
-      {
-        "property": "numericStyles",
-        "title": "የቁጥር ቅጥ",
-        "description": "በቁጥር ዓምዶች ላይ የቁጥር ቅጥ ተግብር።"
-      },
-      {
-        "property": "responsive",
-        "title": "ምላሽ ሰጪ",
-        "description": "በትናንሽ ማያ ገጾች ላይ የሰንጠረዡን አቀማመጥ አስተካክል።"
-      },
-      {
-        "property": "rubricMode",
-        "title": "የመመዘኛ ሁነታ",
-        "description": "Rubric፣ RubricScale፣ RubricCriterion እና RubricLevel ሜታዳታ እንዲወጣ ይህን ሰንጠረዥ እንደ OER Schema Rubric ተርጉም።"
-      },
-      {
-        "property": "rubricType",
-        "title": "የመመዘኛ ዓይነት",
-        "description": "እንደ oer:rubricType የሚወጣ የመመዘኛ ቅጥ (የመመዘኛ ሁነታ ሲበራ ብቻ ትርጉም ያለው)።",
-        "options": {
-          "": "(ምንም)",
-          "analytic": "ትንተናዊ",
-          "holistic": "ሁለንተናዊ",
-          "single-point": "ነጠላ ነጥብ",
-          "checklist": "የማረጋገጫ ዝርዝር"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "የማተሚያ አዝራር",
         "description": "ሰንጠረዡን ብቻ ለማተም አዝራር አክል።"
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "የቁጥር ቅጥ",
+        "description": "በቁጥር ዓምዶች ላይ የቁጥር ቅጥ ተግብር።"
+      },
+      {
+        "property": "responsive",
+        "title": "ምላሽ ሰጪ",
+        "description": "በትናንሽ ማያ ገጾች ላይ የሰንጠረዡን አቀማመጥ አስተካክል።"
+      },
+      {
+        "property": "rubricMode",
+        "title": "የመመዘኛ ሁነታ",
+        "description": "Rubric፣ RubricScale፣ RubricCriterion እና RubricLevel ሜታዳታ እንዲወጣ ይህን ሰንጠረዥ እንደ OER Schema Rubric ተርጉም።"
+      },
+      {
+        "property": "rubricType",
+        "title": "የመመዘኛ ዓይነት",
+        "description": "እንደ oer:rubricType የሚወጣ የመመዘኛ ቅጥ (የመመዘኛ ሁነታ ሲበራ ብቻ ትርጉም ያለው)።",
+        "options": {
+          "": "(ምንም)",
+          "analytic": "ትንተናዊ",
+          "holistic": "ሁለንተናዊ",
+          "single-point": "ነጠላ ነጥብ",
+          "checklist": "የማረጋገጫ ዝርዝር"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "CSV ውሂብ",
         "description": "ከተሰቀለ CSV ፋይል ሰንጠረዥ ፍጠር።"
       }
-    ]
+    ],
+    "developer": []
   }
 }

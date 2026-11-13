@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Téacs iarmhíre",
         "description": "Téacs a thaispeántar i ndiaidh na huimhreach (m.sh. '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Sliotán réimíre",
-        "description": "Ábhar roghnach sa sliotán roimh an uimhir."
-      },
-      {
-        "slot": "suffix",
-        "title": "Sliotán iarmhíre",
-        "description": "Ábhar roghnach sa sliotán i ndiaidh na huimhreach."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Gan maolú",
         "description": "Díchumasaigh an maolú ionas go mbeidh an comhaireamh líneach."
+      },
+      {
+        "slot": "prefix",
+        "title": "Sliotán réimíre",
+        "description": "Ábhar roghnach sa sliotán roimh an uimhir."
+      },
+      {
+        "slot": "suffix",
+        "title": "Sliotán iarmhíre",
+        "description": "Ábhar roghnach sa sliotán i ndiaidh na huimhreach."
       }
     ]
   }

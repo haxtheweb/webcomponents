@@ -27,6 +27,13 @@
       {
         "slot": "",
         "title": "Amsa"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Ƙarin mahaɗi",
+        "description": "Mahaɗi zuwa ƙarin bayani."
       },
       {
         "property": "hasLearningObjective",
@@ -37,13 +44,6 @@
         "property": "assessing",
         "title": "Ana tantancewa",
         "description": "Nassoshin aiki da ake fitarwa a matsayin oer:assessing."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "link",
-        "title": "Ƙarin mahaɗi",
-        "description": "Mahaɗi zuwa ƙarin bayani."
       }
     ]
   }

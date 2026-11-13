@@ -11,6 +11,13 @@
         "description": "D'URL fir dësen AR-Fichier."
       },
       {
+        "property": "skyColor",
+        "title": "Himmelfaarf",
+        "description": "Wielt d'Faarf vum Himmel an der Zeen."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "X-Positioun vum Element an AR."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "Z-Positioun vum Element an AR."
-      },
-      {
-        "property": "skyColor",
-        "title": "Himmelfaarf",
-        "description": "Wielt d'Faarf vum Himmel an der Zeen."
       }
     ]
   }

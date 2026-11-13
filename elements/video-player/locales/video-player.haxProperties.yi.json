@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "פּלאַקאַט־בילד",
         "description": "URL פֿונעם פּלאַקאַט־בילד."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "טעקסט־שפּורן",
         "description": "אונטערשריפֿטן, איבערזעצונגען, באַשרײַבונגען און אַנדערע טעקסט־שפּורן פֿאַרן ווידעאָ."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "אָנהייב־צײַט",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "אױדיאָ־באַשרײַבונג־שפּור",
         "description": "URL צו אַן אױדיאָ־באַשרײַבונג־שפּור (MP3 טעקע) וואָס דערציילט וועגן די וויזועלע עלעמענטן."
+      },
+      {
+        "property": "accentColor",
+        "title": "אַקצענט־קאָליר",
+        "description": "(פֿאַרעלטערט) קלײַב דעם אַקצענט־קאָליר פֿאַרן שפּילער."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "שפּראַך",
         "description": "שפּראַך פֿון דער מעדיע."
-      },
-      {
-        "property": "accentColor",
-        "title": "אַקצענט־קאָליר",
-        "description": "(פֿאַרעלטערט) קלײַב דעם אַקצענט־קאָליר פֿאַרן שפּילער."
       }
     ]
   }

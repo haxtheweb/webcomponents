@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "CSV-tabel",
-    "description": "Hiermee kun je een tabel maken van een CSV-bestand, waar het zich ook bevindt."
+    "description": "Toont een CSV-bestand als toegankelijke tabel."
   },
   "settings": {
     "configure": [

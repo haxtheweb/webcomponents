@@ -3,6 +3,13 @@ import { setViewport } from "@web/test-runner-commands";
 
 import "../code-sample.js";
 
+// HAX schemas ship as JSON next to the element; read one whether the class
+// returns the object or the URL of its file
+const haxSchema = async (C) => {
+  const hp = C.haxProperties;
+  return typeof hp === "string" ? (await fetch(hp)).json() : hp;
+};
+
 // Basic functionality and accessibility tests
 describe("code-sample basic functionality", () => {
   let element;
@@ -401,7 +408,7 @@ describe("code-sample line highlighting", () => {
 describe("code-sample HAX integration", () => {
   it("has proper haxProperties configuration", async () => {
     const el = await fixture(html`<code-sample></code-sample>`);
-    const haxProps = el.constructor.haxProperties;
+    const haxProps = await haxSchema(el.constructor);
 
     expect(haxProps).to.exist;
     expect(haxProps.type).to.equal("element");
@@ -413,7 +420,7 @@ describe("code-sample HAX integration", () => {
 
   it("has proper settings configuration", async () => {
     const el = await fixture(html`<code-sample></code-sample>`);
-    const haxProps = el.constructor.haxProperties;
+    const haxProps = await haxSchema(el.constructor);
     const settings = haxProps.settings.configure;
 
     expect(settings).to.be.an("array");
@@ -427,7 +434,7 @@ describe("code-sample HAX integration", () => {
 
   it("has demo schema configuration", async () => {
     const el = await fixture(html`<code-sample></code-sample>`);
-    const haxProps = el.constructor.haxProperties;
+    const haxProps = await haxSchema(el.constructor);
     const demoSchema = haxProps.demoSchema;
 
     expect(demoSchema).to.be.an("array");

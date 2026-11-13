@@ -14,16 +14,6 @@
         "property": "title",
         "title": "Alternativ tittel",
         "description": "Alternativ tittel knyttet til QR-kodens kilde."
-      },
-      {
-        "property": "modulesize",
-        "title": "Størrelse",
-        "description": "Størrelsen på QR-koden."
-      },
-      {
-        "property": "margin",
-        "title": "Marg",
-        "description": "Ramme rundt koden."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "Størrelse",
+        "description": "Størrelsen på QR-koden."
+      },
+      {
+        "property": "margin",
+        "title": "Marg",
+        "description": "Ramme rundt koden."
       }
     ]
   }

@@ -38,21 +38,6 @@
         "slot": "",
         "title": "Leesstuk",
         "description": "Die leesstuk waarin leerders werk. Enige HTML: opskrifte, paragrawe, lyste en figure."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "Nasienformaat",
-        "description": "OER Schema: nasienformaat vir hierdie assessering (bv. punte, letter, persentasie, voltooiing)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Leeruitkoms",
-        "description": "OER Schema: leeruitkoms wat met hierdie assessering verband hou."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kursus",
-        "description": "OER Schema: kursus waarvoor hierdie assessering bedoel is."
       }
     ],
     "advanced": [
@@ -70,6 +55,16 @@
         "property": "collapsed",
         "title": "Begin ingevou",
         "description": "Wanneer opvouubaar, begin as 'n toe ry wat net die vraag en sy status wys."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Nasienformaat",
+        "description": "OER Schema: nasienformaat vir hierdie assessering (bv. punte, letter, persentasie, voltooiing)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Leeruitkoms",
+        "description": "OER Schema: leeruitkoms wat met hierdie assessering verband hou."
       }
     ],
     "developer": [
@@ -77,6 +72,11 @@
         "property": "quizName",
         "title": "Naam van die vasvra",
         "description": "Vasvranaam wat deurgegee word vir gebruik in xAPI-gedrewe omgewings om hierdie item te identifiseer"
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursus",
+        "description": "OER Schema: kursus waarvoor hierdie assessering bedoel is."
       }
     ]
   }

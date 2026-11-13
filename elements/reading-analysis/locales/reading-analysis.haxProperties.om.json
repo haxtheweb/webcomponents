@@ -38,21 +38,6 @@
         "slot": "",
         "title": "Barreeffama dubbisaa",
         "description": "Barreeffama barattoonni keessatti hojjetan. HTML kamiyyuu: mataduree, keeyyata, tarree fi fakkiiwwan."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "Akkaataa qabxii kennuu",
-        "description": "OER Schema: akkaataa qabxii kennuu madaallii kanaa (fkn. qabxii, qubee, dhibbeentaa, xumuruu)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Kaayyoo barnootaa",
-        "description": "OER Schema: kaayyoo barnootaa madaallii kana wajjin walqabatu."
-      },
-      {
-        "property": "forCourse",
-        "title": "Koorsii",
-        "description": "OER Schema: koorsii madaalliin kun itti yaadame."
       }
     ],
     "advanced": [
@@ -70,6 +55,16 @@
         "property": "collapsed",
         "title": "Maramee jalqabi",
         "description": "Yeroo maramuu danda'u, akka sarara cufamee gaaffii fi haala isaa qofa agarsiisu jalqabi."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Akkaataa qabxii kennuu",
+        "description": "OER Schema: akkaataa qabxii kennuu madaallii kanaa (fkn. qabxii, qubee, dhibbeentaa, xumuruu)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Kaayyoo barnootaa",
+        "description": "OER Schema: kaayyoo barnootaa madaallii kana wajjin walqabatu."
       }
     ],
     "developer": [
@@ -77,6 +72,11 @@
         "property": "quizName",
         "title": "Maqaa qormaata gabaabaa",
         "description": "Maqaa qormaata gabaabaa naannoo xAPI tiin oofamu keessatti wanta kana addaan baasuuf darbu"
+      },
+      {
+        "property": "forCourse",
+        "title": "Koorsii",
+        "description": "OER Schema: koorsii madaalliin kun itti yaadame."
       }
     ]
   }

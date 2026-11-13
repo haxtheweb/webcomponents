@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Sterrenbeoordeling",
-    "description": "Widget om een beoordeling te tonen of knop om te beoordelen."
+    "description": "Toon een sterbeoordeling of laat lezers er een kiezen."
   },
   "settings": {
     "configure": [
@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Interactief",
         "description": "Gebruikers toestaan de beoordeling in te stellen."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Rubricschaalmodus",

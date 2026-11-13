@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "进度环形图",
-    "description": "进度环形图"
+    "description": "显示相对于总数的进度的环形图。"
   },
   "settings": {
     "configure": [
@@ -26,11 +26,6 @@
         "description": "图片的替代文本。"
       },
       {
-        "property": "animated",
-        "title": "动画",
-        "description": "首次加载时是否播放进度动画"
-      },
-      {
         "property": "complete",
         "title": "已完成",
         "description": "已完成值的数组。"
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "总计",
         "description": "所有项目都完成时的总数。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "动画",
+        "description": "首次加载时是否播放进度动画"
       },
       {
         "property": "startAngle",

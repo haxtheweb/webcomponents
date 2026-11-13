@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Parallakspilt",
-    "description": "Kerimisel liikuv pilt"
+    "description": "Täislaiuses pilt, mis kerib lehest aeglasemalt ja mille peal on pealkiri."
   },
   "settings": {
     "configure": [

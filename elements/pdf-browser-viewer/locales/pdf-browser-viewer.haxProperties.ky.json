@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Колдоого алынбайт билдирүүсү",
-        "description": "Браузер PDF файлдарын көрсөтө албаганда чыккан билдирүү."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Колдоого алынбайт шилтеме билдирүүсү",
-        "description": "Браузер PDF файлдарын көрсөтө албаганда шилтеменин тексти."
-      },
-      {
         "property": "width",
         "title": "Туурасы",
         "description": "PDF көрүүчүнүн туурасы."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Бийиктиги",
         "description": "PDF көрүүчүнүн бийиктиги."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Колдоого алынбайт билдирүүсү",
+        "description": "Браузер PDF файлдарын көрсөтө албаганда чыккан билдирүү."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Колдоого алынбайт шилтеме билдирүүсү",
+        "description": "Браузер PDF файлдарын көрсөтө албаганда шилтеменин тексти."
       }
     ]
   }

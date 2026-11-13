@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Kopita",
         "description": "Njira yopita ku masewera opangidwa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "M'lifupi mwa Canvas",
+        "description": "M'lifupi mwa CSS mwa canvas (mwachitsanzo px kapena em)."
       },
+      {
+        "property": "height",
+        "title": "Kutalika kwa Canvas",
+        "description": "Kutalika kwa CSS kwa canvas (mwachitsanzo px kapena em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Njira yochepetsera kukula",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Mtundu wa Chinthu",
         "description": "Mtundu wotulutsidwa."
-      },
-      {
-        "property": "width",
-        "title": "M'lifupi mwa Canvas",
-        "description": "M'lifupi mwa CSS mwa canvas (mwachitsanzo px kapena em)."
-      },
-      {
-        "property": "height",
-        "title": "Kutalika kwa Canvas",
-        "description": "Kutalika kwa CSS kwa canvas (mwachitsanzo px kapena em)."
       },
       {
         "property": "background",

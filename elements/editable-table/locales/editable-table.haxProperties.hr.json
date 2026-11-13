@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Dopusti filtriranje",
         "description": "Dopusti filtriranje prema vrijednostima stupaca."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Brojčano oblikovanje",
-        "description": "Primijeni brojčano oblikovanje na brojčane stupce."
-      },
-      {
-        "property": "responsive",
-        "title": "Prilagodljivo",
-        "description": "Prilagodi raspored tablice na malim zaslonima."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Način rubrike",
-        "description": "Tumači ovu tablicu kao OER Schema Rubric kako bi se emitirali metapodaci Rubric, RubricScale, RubricCriterion i RubricLevel."
-      },
-      {
-        "property": "rubricType",
-        "title": "Vrsta rubrike",
-        "description": "Stil rubrike emitiran kao oer:rubricType (ima smisla samo kada je način rubrike uključen).",
-        "options": {
-          "": "(nijedno)",
-          "analytic": "Analitička",
-          "holistic": "Holistička",
-          "single-point": "Jednostruka",
-          "checklist": "Kontrolni popis"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Gumb za ispis",
         "description": "Dodaj gumb za ispis samo tablice."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Brojčano oblikovanje",
+        "description": "Primijeni brojčano oblikovanje na brojčane stupce."
+      },
+      {
+        "property": "responsive",
+        "title": "Prilagodljivo",
+        "description": "Prilagodi raspored tablice na malim zaslonima."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Način rubrike",
+        "description": "Tumači ovu tablicu kao OER Schema Rubric kako bi se emitirali metapodaci Rubric, RubricScale, RubricCriterion i RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "Vrsta rubrike",
+        "description": "Stil rubrike emitiran kao oer:rubricType (ima smisla samo kada je način rubrike uključen).",
+        "options": {
+          "": "(nijedno)",
+          "analytic": "Analitička",
+          "holistic": "Holistička",
+          "single-point": "Jednostruka",
+          "checklist": "Kontrolni popis"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "CSV podaci",
         "description": "Stvorite tablicu iz prenesene CSV datoteke."
       }
-    ]
+    ],
+    "developer": []
   }
 }

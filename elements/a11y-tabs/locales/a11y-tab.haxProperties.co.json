@@ -10,10 +10,6 @@
         "title": "Icona di l'unghjetta"
       },
       {
-        "property": "disabled",
-        "title": "Disattivatu"
-      },
-      {
         "property": "label",
         "title": "Etichetta di l'unghjetta"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "ID unicu"
-      },
-      {
         "property": "flag",
         "title": "Testu di bandera facultativu"
       },
       {
         "property": "flagIcon",
         "title": "Icona di bandera facultativa"
+      },
+      {
+        "property": "disabled",
+        "title": "Disattivatu"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "ID unicu"
       }
     ]
   }
