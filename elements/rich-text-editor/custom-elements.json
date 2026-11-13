@@ -148,7 +148,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "don't reveal toolbar on mouseover",
+              "description": "Keep the content read-only: focusing it does not start editing.",
               "default": "false",
               "attribute": "disabled",
               "reflects": true
@@ -190,7 +190,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "Maps to editing attribute",
+              "description": "Whether the region is being edited now; focusing the editor sets it\nto true.",
               "attribute": "contenteditable",
               "reflects": true
             },
@@ -201,7 +201,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "don't reveal toolbar on mouseover",
+              "description": "Do not reveal the toolbar when the pointer moves over the editor.",
               "attribute": "disable-hover"
             },
             {
@@ -275,7 +275,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "Maps to editing attribute",
+              "description": "Whether the region is being edited now; focusing the editor sets it\nto true.",
               "fieldName": "contenteditable"
             },
             {
@@ -283,7 +283,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "don't reveal toolbar on mouseover",
+              "description": "Keep the content read-only: focusing it does not start editing.",
               "default": "false",
               "fieldName": "disabled"
             },
@@ -292,7 +292,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "don't reveal toolbar on mouseover",
+              "description": "Do not reveal the toolbar when the pointer moves over the editor.",
               "fieldName": "disableHover"
             },
             {
@@ -423,7 +423,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "Maps to editing attribute",
+              "description": "Whether the region is being edited now; focusing the editor sets it\nto true.",
               "fieldName": "contenteditable",
               "inheritedFrom": {
                 "name": "RichTextEditorBehaviors",
@@ -435,7 +435,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "don't reveal toolbar on mouseover",
+              "description": "Keep the content read-only: focusing it does not start editing.",
               "default": "false",
               "fieldName": "disabled",
               "inheritedFrom": {
@@ -448,7 +448,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "don't reveal toolbar on mouseover",
+              "description": "Do not reveal the toolbar when the pointer moves over the editor.",
               "fieldName": "disableHover",
               "inheritedFrom": {
                 "name": "RichTextEditorBehaviors",
@@ -776,7 +776,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "don't reveal toolbar on mouseover",
+              "description": "Keep the content read-only: focusing it does not start editing.",
               "default": "false",
               "attribute": "disabled",
               "reflects": true,
@@ -834,7 +834,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "Maps to editing attribute",
+              "description": "Whether the region is being edited now; focusing the editor sets it\nto true.",
               "attribute": "contenteditable",
               "reflects": true,
               "inheritedFrom": {
@@ -849,7 +849,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "don't reveal toolbar on mouseover",
+              "description": "Do not reveal the toolbar when the pointer moves over the editor.",
               "attribute": "disable-hover",
               "inheritedFrom": {
                 "name": "RichTextEditorBehaviors",

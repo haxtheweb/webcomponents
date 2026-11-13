@@ -1064,7 +1064,8 @@ const ChartistRenderSuper = function (SuperClass) {
           attribute: "responsive-options",
         },
         /**
-    * The scale of the chart. (See https://gionkunz.github.io/chartist-js/api-documentation.html)```
+    * Aspect ratio of the chart, as a Chartist ct-* class such as ct-square.
+    * (See https://gionkunz.github.io/chartist-js/api-documentation.html)```
  Container class	Ratio
  .ct-square          1
  .ct-minor-second	  15:16
@@ -1088,7 +1089,8 @@ const ChartistRenderSuper = function (SuperClass) {
           type: String,
         },
         /**
-         * The show data in table form as well? Default is false.
+         * Show the data table below the chart; otherwise only screen readers
+         * get it.
          */
         showTable: {
           type: Boolean,
