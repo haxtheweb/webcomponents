@@ -16,7 +16,7 @@ A bridge makes an outside design system (PatternFly, Carbon, Spectrum, ...) **DD
 | `dtcg` | a [DTCG](https://www.designtokens.org/) token file, written as custom properties under `prefix` (Carbon's `blue.60` → `--carbon-blue-60`) | mode-free |
 | `scss-vars` | Sass `$name: value;` files, written under `prefix`; `module.$var` becomes `var(--module-var)` (Material's `md-ref-palette.$primary40` → `var(--md-ref-palette-primary40)`) | `file` for both, or `files: { light, dark }` |
 
-Colors may be hex, `rgb()` or `oklch()`; the generator converts them for contrast checks and DDD's rgb-channel tokens, and writes them out as the upstream wrote them.
+Lengths may be `px`, `rem`, `em` or `calc(<length> * <number>)`, so Tailwind's spacing steps stay multiples of `--spacing` (`calc(var(--spacing) * 6)`) and still face the guards. Colors may be hex, `rgb()` or `oklch()`; the generator converts them for contrast checks and DDD's rgb-channel tokens, and writes them out as the upstream wrote them.
 
 A map entry can take `"fromMode": "light"` (or `"dark"`) to write that mode's value as a constant. Use it for a named DDD color when the system's palette only exists per mode (Spectrum).
 

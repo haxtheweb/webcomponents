@@ -83,7 +83,7 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
       css`
         :host {
           display: block;
-          margin: var(--ddd-spacing-4) 0;
+          margin: var(--ddd-stack-gap, var(--ddd-spacing-4)) 0;
           /* chip colour follows accent-color like the old header bar did */
           --self-check-chip: var(
             --ddd-component-self-check-title-background,
@@ -137,7 +137,7 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
           );
         }
         #header_wrap {
-          padding-inline: var(--ddd-spacing-4);
+          padding-inline: var(--ddd-surface-padding, var(--ddd-spacing-4));
           border-color: var(--ddd-status-default-signal);
         }
         #title {
@@ -147,7 +147,7 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
         /* directions strip under the header, as on quiz questions */
         .directions {
           padding-block: var(--ddd-spacing-3);
-          padding-inline: var(--ddd-spacing-4);
+          padding-inline: var(--ddd-surface-padding, var(--ddd-spacing-4));
           border-bottom: var(--ddd-border-xs);
           border-color: var(--ddd-status-default-signal);
           font-size: var(--ddd-font-size-4xs);
@@ -184,7 +184,7 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
           max-height: var(--ddd-spacing-24);
         }
         #question_wrap {
-          padding: var(--ddd-spacing-4);
+          padding: var(--ddd-surface-padding, var(--ddd-spacing-4));
           color: var(
             --ddd-component-self-check-question-text,
             var(--ddd-status-default-ink)
@@ -211,7 +211,7 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
         }
         #answer_wrap {
           padding-block: var(--ddd-spacing-3);
-          padding-inline: var(--ddd-spacing-4);
+          padding-inline: var(--ddd-surface-padding, var(--ddd-spacing-4));
           border-top: var(--ddd-border-xs);
           border-color: var(--ddd-status-default-signal);
           color: var(
@@ -286,7 +286,10 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
           gap: var(--ddd-spacing-2);
           min-height: var(--ddd-control-height-sm);
           padding-block: 0;
-          padding-inline: var(--ddd-spacing-4);
+          padding-inline: var(
+            --ddd-control-padding-inline,
+            var(--ddd-spacing-4)
+          );
           border-radius: var(--ddd-radius-xs);
           font-family: var(--ddd-font-navigation);
           font-size: var(--ddd-font-size-4xs);

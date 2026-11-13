@@ -354,6 +354,26 @@
     },
     "--ddd-textfield-height-lg": {
       "token": "--spectrum-component-height-300"
+    },
+    "--ddd-surface-padding": {
+      "token": "--spectrum-spacing-400",
+      "note": "24px"
+    },
+    "--ddd-surface-padding-lg": {
+      "token": "--spectrum-spacing-500",
+      "note": "32px"
+    },
+    "--ddd-stack-gap": {
+      "token": "--spectrum-spacing-300",
+      "note": "16px"
+    },
+    "--ddd-inline-gap": {
+      "token": "--spectrum-spacing-100",
+      "note": "8px"
+    },
+    "--ddd-control-padding-inline": {
+      "token": "--spectrum-component-pill-edge-to-text-100",
+      "note": "Spectrum buttons are pills; 16px at the medium scale"
     }
   },
   "extraTokens": [

@@ -78,7 +78,7 @@ export class BibliographyBuilder extends SchemaBehaviors(
         :host {
           display: block;
           font-family: var(--ddd-font-primary);
-          margin-block: var(--ddd-spacing-4);
+          margin-block: var(--ddd-stack-gap, var(--ddd-spacing-4));
         }
         :host([hidden]) {
           display: none;

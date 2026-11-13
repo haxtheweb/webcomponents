@@ -67,6 +67,14 @@
       "format": "scss-vars",
       "prefix": "--md-ref-typeface-",
       "file": "tokens/versions/latest/sass/_md-ref-typeface.scss"
+    },
+    {
+      "package": "@material/web",
+      "version": "2.5.0",
+      "license": "Apache-2.0",
+      "format": "scss-vars",
+      "prefix": "--md-comp-button-",
+      "file": "tokens/versions/latest/sass/_md-comp-button.scss"
     }
   ],
   "fonts": [
@@ -351,6 +359,26 @@
     },
     "--ddd-state-disabled-opacity": {
       "token": "--md-sys-state-disabled-state-layer-opacity"
+    },
+    "--ddd-surface-padding": {
+      "value": "16px",
+      "note": "Material 3 card padding; @material/web has no spacing tokens"
+    },
+    "--ddd-surface-padding-lg": {
+      "value": "24px",
+      "note": "Material 3 layout margin at medium width"
+    },
+    "--ddd-stack-gap": {
+      "value": "16px",
+      "note": "Material 3 layout spacing"
+    },
+    "--ddd-inline-gap": {
+      "value": "8px",
+      "note": "Material 3 layout spacing"
+    },
+    "--ddd-control-padding-inline": {
+      "token": "--md-comp-button-leading-space",
+      "note": "24px"
     }
   },
   "extraTokens": [

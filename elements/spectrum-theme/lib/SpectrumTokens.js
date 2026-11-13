@@ -53,6 +53,7 @@ export const SpectrumTokens = css`
     --spectrum-component-height-200: 40px;
     --spectrum-component-height-300: 48px;
     --spectrum-component-height-400: 56px;
+    --spectrum-component-pill-edge-to-text-100: 16px;
     --spectrum-corner-radius-100: 8px;
     --spectrum-corner-radius-300: 6px;
     --spectrum-corner-radius-75: 4px;
@@ -110,6 +111,10 @@ export const SpectrumTokens = css`
     --spectrum-seafoam-100: light-dark(rgb(235, 251, 246), rgb(0, 30, 27));
     --spectrum-seafoam-300: light-dark(rgb(169, 237, 216), rgb(0, 50, 44));
     --spectrum-seafoam-900: light-dark(rgb(7, 129, 109), rgb(10, 154, 128));
+    --spectrum-spacing-100: 8px;
+    --spectrum-spacing-300: 16px;
+    --spectrum-spacing-400: 24px;
+    --spectrum-spacing-500: 32px;
     --spectrum-yellow-100: light-dark(rgb(255, 248, 204), rgb(37, 23, 0));
     --spectrum-yellow-1200: light-dark(rgb(93, 59, 0), rgb(235, 183, 0));
     --spectrum-yellow-200: light-dark(rgb(255, 241, 151), rgb(47, 29, 0));

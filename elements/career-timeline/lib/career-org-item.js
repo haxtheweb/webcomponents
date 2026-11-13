@@ -58,7 +58,7 @@ export class CareerOrgItem extends I18NMixin(DDDSuper(LitElement)) {
         :host {
           display: block;
           position: relative;
-          padding: var(--ddd-spacing-4);
+          padding: var(--ddd-surface-padding, var(--ddd-spacing-4));
           font-family: var(--ddd-font-primary, sans-serif);
         }
 

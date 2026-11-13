@@ -86,6 +86,11 @@ export const TailwindDDDMap = css`
     --ddd-radius-xl: var(--radius-2xl);
     --ddd-focus-ring: 2px solid var(--color-blue-600);
     --ddd-focus-offset: 2px;
+    --ddd-surface-padding: calc(var(--spacing) * 6);
+    --ddd-surface-padding-lg: calc(var(--spacing) * 8);
+    --ddd-stack-gap: calc(var(--spacing) * 4);
+    --ddd-inline-gap: calc(var(--spacing) * 2);
+    --ddd-control-padding-inline: calc(var(--spacing) * 4);
     /* rgb channels follow their mapped color */
     --ddd-primary-0-rgb: 142, 197, 255, 0.7;
     --ddd-primary-1-rgb: 21, 93, 252;

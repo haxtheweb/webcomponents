@@ -1236,7 +1236,7 @@ export class QuestionElement extends SchemaBehaviors(
           display: block;
           min-width: 160px;
           text-align: start;
-          padding: var(--ddd-spacing-4);
+          padding: var(--ddd-surface-padding, var(--ddd-spacing-4));
           border: var(--ddd-border-md);
           border-radius: var(--ddd-radius-sm);
           box-shadow: var(--ddd-boxShadow-sm);
@@ -1304,7 +1304,7 @@ export class QuestionElement extends SchemaBehaviors(
           padding: var(--ddd-spacing-2);
         }
         details[open] .container {
-          padding: var(--ddd-spacing-6);
+          padding: var(--ddd-surface-padding-lg, var(--ddd-spacing-6));
           margin: 0;
           border: var(--ddd-border-sm);
           border-top: none;
@@ -1569,7 +1569,7 @@ export class QuestionElement extends SchemaBehaviors(
         }
         .shell-strip {
           padding-block: var(--ddd-spacing-3);
-          padding-inline: var(--ddd-spacing-4);
+          padding-inline: var(--ddd-surface-padding, var(--ddd-spacing-4));
           border-bottom: var(--ddd-border-xs);
           border-color: light-dark(
             var(--ddd-theme-default-limestoneLight),
@@ -1596,7 +1596,7 @@ export class QuestionElement extends SchemaBehaviors(
           display: flex;
           flex-direction: column;
           gap: var(--ddd-spacing-3);
-          padding: var(--ddd-spacing-4);
+          padding: var(--ddd-surface-padding, var(--ddd-spacing-4));
         }
         .shell-body h3 {
           margin: 0;
@@ -1724,7 +1724,7 @@ export class QuestionElement extends SchemaBehaviors(
         }
         .shell-feedback-panel {
           padding-block: var(--ddd-spacing-2);
-          padding-inline: var(--ddd-spacing-4);
+          padding-inline: var(--ddd-surface-padding, var(--ddd-spacing-4));
           border-top: var(--ddd-border-xs);
           border-color: light-dark(
             var(--ddd-theme-default-limestoneLight),
@@ -1823,7 +1823,10 @@ export class QuestionElement extends SchemaBehaviors(
         .shell simple-toolbar-button::part(button) {
           min-height: var(--ddd-control-height-sm);
           padding-block: 0;
-          padding-inline: var(--ddd-spacing-4);
+          padding-inline: var(
+            --ddd-control-padding-inline,
+            var(--ddd-spacing-4)
+          );
           border-color: transparent;
         }
         .shell simple-toolbar-button[disabled]::part(button) {

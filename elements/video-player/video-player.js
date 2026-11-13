@@ -45,7 +45,7 @@ class VideoPlayer extends IntersectionObserverMixin(
       css`
         :host {
           display: block;
-          margin: var(--ddd-spacing-4) 0;
+          margin: var(--ddd-stack-gap, var(--ddd-spacing-4)) 0;
           /* same accent cascade as a11y-media-player: local accent-color,
              then the theme palette, then the DDD default */
           --ddd-block-chip-background: var(

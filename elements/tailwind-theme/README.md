@@ -19,7 +19,7 @@ The design system registers as `tailwind` with `extends: "ddd"` in `DesignSystem
 
 ## Coverage
 
-Checked against the shared [bridge contract](../d-d-d/design-system/bridge/README.md): identity 100%, feel 17%, semantic 0%, structure locked. Tailwind has no brand color, so blue-600 stands in. Only open-source values are used (no Tailwind Plus/UI), and authored content uses no utility classes. Kept as DDD on purpose: duration-normal/slow and emphasized easing (Tailwind defines one transition duration), state opacities and control heights (no tokens), border widths, and heading/body sizes.
+Checked against the shared [bridge contract](../d-d-d/design-system/bridge/README.md): identity 100%, feel 17%, semantic 42% (density as multiples of Tailwind's `--spacing`: p-6 surface padding, space-y-4 stack gap, gap-2 inline gap, px-4 control padding), structure locked. Tailwind has no brand color, so blue-600 stands in. Only open-source values are used (no Tailwind Plus/UI), and authored content uses no utility classes. Kept as DDD on purpose: duration-normal/slow and emphasized easing (Tailwind defines one transition duration), state opacities and control heights (no tokens), border widths, and heading/body sizes.
 
 ## Rebuilding the tokens
 

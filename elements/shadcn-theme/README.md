@@ -19,7 +19,7 @@ The design system registers as `shadcn` with `extends: "ddd"` in `DesignSystemMa
 
 ## Coverage
 
-Checked against the shared [bridge contract](../d-d-d/design-system/bridge/README.md): identity 100%, feel 17%, semantic 0%, structure locked. shadcn doesn't publish its theme to npm, so the bridge pins the file `shadcn init` writes to a repository commit and verifies it by sha256. Brand roles use neutral, as shadcn's primary does. The focus ring uses `--primary` because shadcn's 50% `--ring` gray is under 3:1 on white. Kept as DDD on purpose: duration-normal/slow and emphasized easing, state opacities and control heights (no tokens), border widths, and heading/body sizes.
+Checked against the shared [bridge contract](../d-d-d/design-system/bridge/README.md): identity 100%, feel 17%, semantic 42% (density as multiples of `--spacing`, matching shadcn's Card: px-6 padding and gap-6 between stacked parts; Button px-4), structure locked. shadcn doesn't publish its theme to npm, so the bridge pins the file `shadcn init` writes to a repository commit and verifies it by sha256. Brand roles use neutral, as shadcn's primary does. The focus ring uses `--primary` because shadcn's 50% `--ring` gray is under 3:1 on white. Kept as DDD on purpose: duration-normal/slow and emphasized easing, state opacities and control heights (no tokens), border widths, and heading/body sizes.
 
 ## Rebuilding the tokens
 

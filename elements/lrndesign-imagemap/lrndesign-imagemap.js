@@ -119,7 +119,7 @@ class LrndesignImagemap extends I18NMixin(DDD) {
             var(--ddd-theme-default-coalyGray),
             var(--ddd-theme-default-white)
           );
-          margin: var(--ddd-spacing-4) 0;
+          margin: var(--ddd-stack-gap, var(--ddd-spacing-4)) 0;
         }
         figure {
           margin: var(--ddd-spacing-0);

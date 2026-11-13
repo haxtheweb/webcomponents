@@ -359,7 +359,7 @@ class BulletCheckList extends SchemaBehaviors(I18NMixin(DDD)) {
         /* directions strip under the header, as on quiz questions */
         .directions {
           padding-block: var(--ddd-spacing-3);
-          padding-inline: var(--ddd-spacing-4);
+          padding-inline: var(--ddd-surface-padding, var(--ddd-spacing-4));
           border-bottom: var(--ddd-border-xs);
           border-color: var(--bcl-line);
           font-size: var(--ddd-font-size-4xs);

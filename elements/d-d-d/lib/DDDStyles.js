@@ -1708,7 +1708,7 @@ const DDDResetStart = css`
   ol[data-border]:not([data-padding]),
   ul[data-border]:not([data-padding]),
   div[data-border]:not([data-padding]) {
-    padding: var(--ddd-spacing-6);
+    padding: var(--ddd-surface-padding-lg, var(--ddd-spacing-6));
   }
   ol[data-accent],
   ul[data-accent] {

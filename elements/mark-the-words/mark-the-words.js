@@ -211,7 +211,7 @@ export class MarkTheWords extends QuestionElement {
 
         .text {
           margin: var(--ddd-spacing-4);
-          padding: var(--ddd-spacing-4);
+          padding: var(--ddd-surface-padding, var(--ddd-spacing-4));
           border: var(--ddd-border-sm);
           line-height: 2.2;
         }
