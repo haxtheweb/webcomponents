@@ -50,7 +50,18 @@ export class DddCard extends I18NMixin(DDDSuper(LitElement)) {
     return [
       super.styles,
       css`
+        /* image rule and button hover, last match wins: DDD primary 1, theme
+           primary, the palette accent (data-palette), a data-primary on the
+           card itself */
         :host {
+          --ddd-card-accent: var(
+            --ddd-palette-accent,
+            var(--ddd-theme-primary, var(--ddd-primary-1))
+          );
+          --ddd-card-accent-ink: var(
+            --ddd-palette-accent-ink,
+            var(--lowContrast-override, var(--ddd-card-button-color, white))
+          );
           --ddd-card-border-color: light-dark(
             var(--ddd-theme-default-limestoneLight),
             var(--ddd-theme-default-limestoneGray)
@@ -70,6 +81,14 @@ export class DddCard extends I18NMixin(DDDSuper(LitElement)) {
           margin: var(--ddd-spacing-2);
         }
 
+        :host([data-primary]) {
+          --ddd-card-accent: var(--ddd-theme-primary, var(--ddd-primary-1));
+          --ddd-card-accent-ink: var(
+            --lowContrast-override,
+            var(--ddd-card-button-color, white)
+          );
+        }
+
         @media (max-width: 600px) {
           :host {
             width: auto;
@@ -83,8 +102,7 @@ export class DddCard extends I18NMixin(DDDSuper(LitElement)) {
         }
 
         .image {
-          border-bottom: var(--ddd-spacing-3)
-            var(--ddd-theme-primary, var(--ddd-primary-1)) solid;
+          border-bottom: var(--ddd-spacing-3) var(--ddd-card-accent) solid;
           border-radius: var(--ddd-spacing-4) var(--ddd-spacing-4) 0 0;
           overflow: hidden;
           height: var(--ddd-card-img-height, 260px);
@@ -134,11 +152,8 @@ export class DddCard extends I18NMixin(DDDSuper(LitElement)) {
 
         .button-wrapper:hover .button,
         .button-wrapper:focus-within .button {
-          background-color: var(--ddd-theme-primary, var(--ddd-primary-1));
-          color: var(
-            --lowContrast-override,
-            var(--ddd-card-button-color, white)
-          );
+          background-color: var(--ddd-card-accent);
+          color: var(--ddd-card-accent-ink);
         }
 
         .button-wrapper a {

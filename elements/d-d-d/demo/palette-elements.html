@@ -1,0 +1,645 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes"
+    />
+    <title>DDD: palette reactive elements</title>
+    <script>
+      globalThis.process = globalThis.process || {
+        env: {
+          NODE_ENV: "production",
+        },
+      };
+    </script>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <script type="module">
+      import "../d-d-d.js";
+      import "../lib/hax-palette-picker.js";
+      import "../lib/ddd-card.js";
+      import "../lib/ddd-steps-list.js";
+      import "@haxtheweb/collection-list/collection-list.js";
+      import "@haxtheweb/collection-list/lib/collection-item.js";
+      import "@haxtheweb/haxcms-elements/lib/ui-components/magic/site-collection-list.js";
+      import "@haxtheweb/haxcms-elements/lib/ui-components/progress/my-learning.js";
+      import "@haxtheweb/bullet-check-list/bullet-check-list.js";
+      import "@haxtheweb/citation-element/citation-element.js";
+      import "@haxtheweb/career-timeline/career-timeline.js";
+      import "@haxtheweb/career-timeline/lib/career-org-item.js";
+      import "@haxtheweb/career-timeline/lib/career-role-item.js";
+      import "@haxtheweb/date-card/date-card.js";
+      import "@haxtheweb/course-design/lib/ebook-button.js";
+      import "@haxtheweb/course-design/lib/worksheet-download.js";
+      import "@haxtheweb/fill-in-the-blanks/fill-in-the-blanks.js";
+      import "@haxtheweb/h5p-element/h5p-element.js";
+      import "@haxtheweb/ics-render/ics-render.js";
+      import "@haxtheweb/image-compare-slider/image-compare-slider.js";
+      import "@haxtheweb/license-element/license-element.js";
+      import "@haxtheweb/lrn-table/lrn-table.js";
+      import "@haxtheweb/lrndesign-timeline/lrndesign-timeline.js";
+      import "@haxtheweb/mark-the-words/mark-the-words.js";
+      import "@haxtheweb/matching-question/matching-question.js";
+      import "@haxtheweb/media-image/media-image.js";
+      import "@haxtheweb/media-playlist/media-playlist.js";
+      import "@haxtheweb/music-player/music-player.js";
+      import "@haxtheweb/page-section/page-section.js";
+      import "@haxtheweb/person-testimonial/person-testimonial.js";
+      import "@haxtheweb/play-list/play-list.js";
+      import "@haxtheweb/product-glance/product-glance.js";
+      import "@haxtheweb/radar-chart/radar-chart.js";
+      import "@haxtheweb/slide-deck/slide-deck.js";
+      import "@haxtheweb/sorting-question/sorting-question.js";
+      import "@haxtheweb/video-player/video-player.js";
+      import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+
+      // a small outline so site-collection-list and my-learning have a
+      // site to read; nothing is fetched
+      const page = (id, title, description, order) => ({
+        id: id,
+        title: title,
+        description: description,
+        slug: id,
+        location: "pages/" + id + "/index.html",
+        parent: null,
+        indent: 0,
+        order: order,
+        metadata: { published: true, tags: "demo" },
+      });
+      store.manifest = {
+        id: "palette-demo",
+        title: "Palette demo site",
+        description: "",
+        items: [
+          page("water-cycle", "The water cycle", "Four stages that repeat", 0),
+          page("evaporation", "Evaporation", "From liquid to vapour", 1),
+          page("condensation", "Condensation", "Vapour into droplets", 2),
+          page("precipitation", "Precipitation", "Rain, snow and hail", 3),
+        ],
+        metadata: { site: { settings: {} }, theme: { variables: {} } },
+      };
+      store.activeId = "water-cycle";
+
+      const stage = globalThis.document.getElementById("stage");
+      const picker = globalThis.document.querySelector("hax-palette-picker");
+      const none = globalThis.document.getElementById("no-palette");
+      const scheme = globalThis.document.getElementById("scheme");
+      const theme = globalThis.document.getElementById("theme-primary");
+      const label = globalThis.document.getElementById("palette-attr");
+
+      function setPalette(value) {
+        if (value === null) {
+          stage.removeAttribute("data-palette");
+          label.textContent = "no data-palette";
+        } else {
+          stage.setAttribute("data-palette", value);
+          label.textContent = 'data-palette="' + value + '"';
+        }
+        none.setAttribute("aria-pressed", value === null ? "true" : "false");
+      }
+      picker.addEventListener("value-changed", (e) => {
+        setPalette(e.detail.value);
+      });
+      none.addEventListener("click", () => {
+        setPalette(null);
+      });
+      scheme.addEventListener("change", () => {
+        globalThis.document.documentElement.style.colorScheme = scheme.value;
+        stage.style.colorScheme = scheme.value;
+        stage.classList.toggle("dark", scheme.value === "dark");
+      });
+      theme.addEventListener("change", () => {
+        if (theme.checked) {
+          stage.parentNode.setAttribute("data-primary", "7");
+        } else {
+          stage.parentNode.removeAttribute("data-primary");
+        }
+      });
+      setPalette("0");
+
+    </script>
+<style>
+      html {
+        color-scheme: light dark;
+      }
+      body {
+        margin: 0;
+        font-family: var(--ddd-font-primary);
+        background-color: light-dark(
+          var(--ddd-theme-default-limestoneMaxLight),
+          var(--ddd-theme-default-coalyGray)
+        );
+        color: light-dark(
+          var(--ddd-theme-default-coalyGray),
+          var(--ddd-theme-default-white)
+        );
+      }
+      .layout {
+        display: grid;
+        grid-template-columns: minmax(260px, 340px) 1fr;
+        gap: var(--ddd-spacing-6);
+        padding: var(--ddd-spacing-6);
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+      @media (max-width: 900px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+      }
+      .controls {
+        display: flex;
+        flex-direction: column;
+        gap: var(--ddd-spacing-4);
+        align-self: start;
+        position: sticky;
+        top: var(--ddd-spacing-4);
+      }
+      .panel {
+        background-color: light-dark(
+          var(--ddd-theme-default-white),
+          var(--ddd-theme-default-potentialMidnight)
+        );
+        border: var(--ddd-border-xs);
+        border-color: light-dark(
+          var(--ddd-theme-default-limestoneLight),
+          var(--ddd-theme-default-slateGray)
+        );
+        border-radius: var(--ddd-radius-md);
+        padding: var(--ddd-spacing-4);
+      }
+      .panel h2 {
+        font-size: var(--ddd-font-size-4xs);
+        text-transform: uppercase;
+        letter-spacing: var(--ddd-ls-16-sm);
+        margin: 0 0 var(--ddd-spacing-3);
+      }
+      .panel p {
+        font-size: var(--ddd-font-size-4xs);
+        margin: 0 0 var(--ddd-spacing-3);
+      }
+      .row {
+        display: flex;
+        gap: var(--ddd-spacing-3);
+        align-items: center;
+        flex-wrap: wrap;
+        font-size: var(--ddd-font-size-4xs);
+        margin-bottom: var(--ddd-spacing-2);
+      }
+      .row select,
+      .row button {
+        font: inherit;
+        padding: var(--ddd-spacing-1) var(--ddd-spacing-3);
+        border-radius: var(--ddd-radius-xs);
+        border: var(--ddd-border-xs);
+        background: transparent;
+        color: inherit;
+        cursor: pointer;
+      }
+      .row button[aria-pressed="true"] {
+        font-weight: var(--ddd-font-weight-bold);
+        outline: var(--ddd-border-sm);
+      }
+      code {
+        font-family: var(--ddd-font-navigation);
+        font-size: 0.9em;
+      }
+      /* the stage is the page surface a site would be */
+      #stage {
+        background-color: var(--ddd-theme-default-white);
+        color: var(--ddd-theme-default-coalyGray);
+        border-radius: var(--ddd-radius-md);
+        padding: var(--ddd-spacing-8);
+      }
+      #stage.dark {
+        background-color: var(--ddd-theme-default-potentialMidnight);
+        color: var(--ddd-theme-default-white);
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: var(--ddd-spacing-6);
+        align-items: start;
+      }
+      .label {
+        font-size: var(--ddd-font-size-4xs);
+        text-transform: uppercase;
+        letter-spacing: var(--ddd-ls-16-sm);
+        font-weight: var(--ddd-font-weight-bold);
+        opacity: 0.7;
+        margin: var(--ddd-spacing-8) 0 var(--ddd-spacing-3);
+      }
+      .label:first-child {
+        margin-top: 0;
+      }
+      /* the live role values for the current palette */
+      .roles {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: var(--ddd-spacing-2) var(--ddd-spacing-3);
+        align-items: center;
+        font-size: var(--ddd-font-size-4xs);
+      }
+      .roles span.sw {
+        width: var(--ddd-icon-xs);
+        height: var(--ddd-icon-xs);
+        border-radius: var(--ddd-radius-xs);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: var(--ddd-font-weight-bold);
+        box-shadow: inset 0 0 0 1px rgb(0 0 0 / 15%);
+        background: repeating-linear-gradient(
+          45deg,
+          var(--ddd-theme-default-limestoneLight) 0 4px,
+          transparent 4px 8px
+        );
+      }
+      .roles .sw.accent {
+        background: var(--ddd-palette-accent);
+        color: var(--ddd-palette-accent-ink);
+      }
+      .roles .sw.marker {
+        background: var(--ddd-palette-marker);
+      }
+      .roles .sw.secondary {
+        background: var(--ddd-palette-secondary);
+      }
+      .roles .sw.chip {
+        background: var(--ddd-palette-chip);
+        color: var(--ddd-palette-chip-ink);
+      }
+      .roles .sw.tint {
+        background: var(--ddd-palette-tint);
+      }
+      .cards {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--ddd-spacing-6);
+      }
+      .cards ddd-card {
+        max-width: 100%;
+      }
+      /* each element is labelled with its tag so a mismatch is easy to name */
+      .item {
+        margin-bottom: var(--ddd-spacing-6);
+        min-width: 0;
+      }
+      .item::before {
+        content: attr(data-tag);
+        display: block;
+        font-family: var(--ddd-font-navigation);
+        font-size: var(--ddd-font-size-4xs);
+        opacity: 0.7;
+        margin-bottom: var(--ddd-spacing-1);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="layout">
+      <div class="controls">
+        <div class="panel">
+          <h2>Palette</h2>
+          <p>
+            Pick a palette. Decorative accents across these elements follow
+            it; colour that carries meaning does not.
+          </p>
+          <div class="row">
+            <button type="button" id="no-palette" aria-pressed="false">
+              No palette
+            </button>
+            <code id="palette-attr"></code>
+          </div>
+          <hax-palette-picker value="0"></hax-palette-picker>
+        </div>
+        <div class="panel">
+          <h2>Context</h2>
+          <div class="row">
+            <label for="scheme">Scheme</label>
+            <select id="scheme">
+              <option value="light">Light</option>
+              <option value="dark">Dark</option>
+            </select>
+          </div>
+          <div class="row">
+            <input type="checkbox" id="theme-primary" />
+            <label for="theme-primary"
+              >Theme sets <code>data-primary="7"</code></label
+            >
+          </div>
+          <p>
+            Last match wins: element default, theme default, theme palette,
+            instructional significance, then a colour picked on the element
+            itself. With a palette set, the theme primary only shows where
+            the palette has no role.
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <main id="stage" data-palette="0">
+          <div class="label">Collections and cards</div>
+          <div class="item" data-tag="collection-list / collection-item">
+            <collection-list responsive-size="xs">
+              <collection-item
+                line1="Astro 140"
+                line2="Life in the Universe"
+                line3="Dr. Eric Feigelson"
+                icon="hax:lesson"
+                url="#"
+              ></collection-item>
+              <collection-item
+                line1="Chem 110"
+                line2="Chemical Principles"
+                line3="Picks accent-color orange"
+                icon="hax:lesson"
+                accent-color="orange"
+                url="#"
+              ></collection-item>
+              <collection-item
+                line1="Phys 010"
+                line2="Physics Behind the Headlines"
+                line3="Dr. John Hopkins"
+                icon="hax:lesson"
+                url="#"
+              ></collection-item>
+            </collection-list>
+          </div>
+          <div class="item" data-tag="site-collection-list">
+            <site-collection-list limit="4" sort="title"></site-collection-list>
+          </div>
+          <div class="cards">
+            <div class="item" data-tag="ddd-card">
+              <ddd-card
+                src="../../video-player/demo/samples/stclair.jpg"
+                title="Abington"
+                href="#"
+              >
+                <p>A suburban campus close to Philadelphia.</p>
+              </ddd-card>
+            </div>
+            <div class="item" data-tag="ddd-card data-primary">
+              <ddd-card
+                src="../../video-player/demo/samples/stclair.jpg"
+                title="Altoona"
+                href="#"
+                data-primary="10"
+              >
+                <p>Picks its own data-primary, so it keeps it.</p>
+              </ddd-card>
+            </div>
+          </div>
+          <div class="grid">
+            <div class="item" data-tag="product-glance">
+              <product-glance
+                icon="grade"
+                title="Shareable Certificate"
+                subtitle="Earn a Certificate upon completion"
+              ></product-glance>
+              <product-glance
+                accent-color="orange"
+                icon="grade"
+                title="Picks accent-color orange"
+                subtitle="A local accent beats the palette"
+              ></product-glance>
+            </div>
+            <div class="item" data-tag="date-card">
+              <date-card
+                month="August"
+                date="2"
+                day="Wednesday"
+                title="First day of class"
+                start-time="2pm"
+                end-time="3pm"
+                location="Room 101"
+              ></date-card>
+            </div>
+            <div class="item" data-tag="person-testimonial">
+              <person-testimonial
+                image="../../person-testimonial/demo/headshot.jpg"
+                name="Someone Mc'HAX"
+                position="A HAX user"
+              >
+                <span>I know HAX. I have used HAX, I have written HAX.</span>
+              </person-testimonial>
+            </div>
+          </div>
+
+          <div class="label">Lists, steps and timelines</div>
+          <div class="grid">
+            <div class="item" data-tag="bullet-check-list">
+              <bullet-check-list
+                title="Before you begin"
+                storage-id="palette-demo-list"
+                items='[{"label":"Read the syllabus"},{"label":"Introduce yourself in the forum"},{"label":"Install the course software"}]'
+              ></bullet-check-list>
+            </div>
+            <div class="item" data-tag="ddd-steps-list">
+              <ddd-steps-list>
+                <ddd-steps-list-item title="Collect">
+                  <p>Collect a jar of water.</p>
+                </ddd-steps-list-item>
+                <ddd-steps-list-item title="Cover">
+                  <p>Cover it with plastic wrap.</p>
+                </ddd-steps-list-item>
+                <ddd-steps-list-item title="Watch">
+                  <p>Watch droplets form.</p>
+                </ddd-steps-list-item>
+              </ddd-steps-list>
+            </div>
+            <div class="item" data-tag="career-timeline">
+              <career-timeline title="My Career">
+                <career-org-item
+                  organization="HAX Lab"
+                  location="University Park, PA"
+                >
+                  <career-role-item title="Senior Web Developer">
+                    <p>Leads the design system work.</p>
+                  </career-role-item>
+                  <career-role-item title="Web Developer">
+                    <p>Builds web components.</p>
+                  </career-role-item>
+                </career-org-item>
+              </career-timeline>
+            </div>
+            <div class="item" data-tag="lrndesign-timeline">
+              <lrndesign-timeline>
+                <section>
+                  <h3>1855 - Charter</h3>
+                  <p>Charter signed by Governor Pollock.</p>
+                </section>
+                <section>
+                  <h3>1874 - The Pennsylvania State College</h3>
+                  <p>School renamed The Pennsylvania State College.</p>
+                </section>
+                <section>
+                  <h3>1953 - The Pennsylvania State University</h3>
+                  <p>The Pennsylvania State University became official name.</p>
+                </section>
+              </lrndesign-timeline>
+            </div>
+          </div>
+          <div class="item" data-tag="ics-render">
+            <ics-render
+              display-as="cards"
+              data-source="../../ics-render/demo/sample.ics"
+              debounce-delay="0"
+            ></ics-render>
+          </div>
+
+          <div class="label">Links, citations and tables</div>
+          <div class="grid">
+            <div class="item" data-tag="ebook-button">
+              <ebook-button
+                title="Check out the website text"
+                link="#"
+              ></ebook-button>
+            </div>
+            <div class="item" data-tag="worksheet-download">
+              <worksheet-download
+                title="Download site schema"
+                link="#"
+              ></worksheet-download>
+            </div>
+            <div class="item" data-tag="citation-element">
+              <citation-element
+                creator="Bryan Ollendyke"
+                license="by-sa"
+                title="The btopro blog"
+                source="https://btopro.com/"
+                date="02/01/2018"
+              ></citation-element>
+            </div>
+            <div class="item" data-tag="license-element">
+              <license-element
+                creator="Bryan Ollendyke"
+                license="by-sa"
+                title="The btopro blog"
+                source="https://btopro.com/"
+              ></license-element>
+            </div>
+          </div>
+          <div class="item" data-tag="lrn-table">
+            <lrn-table
+              csv-file="../../lrn-table/demo/demo.csv"
+              title="My cool table"
+              description="This has lots of student info"
+            ></lrn-table>
+          </div>
+
+          <div class="label">Media</div>
+          <div class="grid">
+            <div class="item" data-tag="media-image">
+              <media-image
+                source="../../video-player/demo/samples/stclair.jpg"
+                alt="A lake"
+                caption="Navigate to your course space."
+                figure-label-title="Figure 1.1"
+                figure-label-description="Step 1"
+              ></media-image>
+            </div>
+            <div class="item" data-tag="image-compare-slider">
+              <image-compare-slider
+                top-src="../../video-player/demo/samples/stclair.jpg"
+                top-alt="Lake, first photo"
+                bottom-src="../../person-testimonial/demo/headshot.jpg"
+                bottom-alt="Second photo"
+              >
+                <h2 slot="heading">Compare</h2>
+                <div slot="description">Slide to fade the top image.</div>
+              </image-compare-slider>
+            </div>
+            <div class="item" data-tag="music-player">
+              <music-player source=""></music-player>
+            </div>
+            <div class="item" data-tag="h5p-element">
+              <h5p-element source=""></h5p-element>
+            </div>
+          </div>
+          <div class="item" data-tag="media-playlist">
+            <media-playlist>
+              <video-player
+                source="https://media.aanda.psu.edu/sites/media/aa/files/video/card-mockup.mp4"
+                media-title="01 Card mockup"
+              ></video-player>
+              <video-player
+                source="https://media.aanda.psu.edu/sites/media/aa/files/video/card-mockup.mp4"
+                media-title="02 Card mockup again"
+              ></video-player>
+            </media-playlist>
+          </div>
+          <div class="item" data-tag="play-list">
+            <play-list pagination navigation>
+              <p>First slide of the play list.</p>
+              <p>Second slide of the play list.</p>
+              <p>Third slide of the play list.</p>
+            </play-list>
+          </div>
+          <div class="item" data-tag="slide-deck">
+            <slide-deck
+              source="../../slide-deck/demo/deck.json"
+              deck-id="palette-demo"
+            ></slide-deck>
+          </div>
+          <div class="item" data-tag="page-section">
+            <page-section>
+              <h2 data-design-treatment="horz-md">We will meet you where you are.</h2>
+              <p>From virtual tours to online orientation experiences.</p>
+            </page-section>
+          </div>
+
+          <div class="label">Charts and progress</div>
+          <div class="grid">
+            <div class="item" data-tag="radar-chart">
+              <radar-chart
+                title="Facet scores"
+                scores="3,2,4,3,2,3,5,4,2"
+              ></radar-chart>
+            </div>
+            <div class="item" data-tag="my-learning">
+              <my-learning scope="site" view="concepts"></my-learning>
+            </div>
+          </div>
+
+          <div class="label">
+            Questions: accents follow the palette, answer status does not
+          </div>
+          <div class="grid">
+            <div class="item" data-tag="fill-in-the-blanks">
+              <fill-in-the-blanks
+                statement="People tend to put [milk~milky] on their cereal. Some people do not eat a [traditional] breakfast."
+              ></fill-in-the-blanks>
+            </div>
+            <div class="item" data-tag="mark-the-words">
+              <mark-the-words
+                question="Mark the fruits but not the berries"
+                statement="Apples mostly come from up north. Pears and Raspberries are more southern."
+              >
+                <input data-correct="true" value="Apples" />
+                <input data-correct="true" value="Pears" />
+                <input value="Raspberries" />
+              </mark-the-words>
+            </div>
+            <div class="item" data-tag="sorting-question">
+              <sorting-question question="Put the following in order">
+                <input value="You woke up this morning." />
+                <input value="You brushed your teeth." />
+                <input value="You went to class." />
+                <input value="You go to bed." />
+              </sorting-question>
+            </div>
+            <div class="item" data-tag="matching-question">
+              <matching-question question="Match each term with its meaning">
+                <input data-correct="true" value="Evaporation" />
+                <input value="Liquid to vapour" />
+                <input data-correct="true" value="Condensation" />
+                <input value="Vapour to droplets" />
+              </matching-question>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

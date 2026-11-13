@@ -27,13 +27,21 @@ class PersonTestimonial extends SchemaBehaviors(DDD) {
             var(--ddd-theme-default-white),
             var(--ddd-theme-default-potentialMidnight)
           );
+          /* palette accent (data-palette), then theme primary; a
+             data-primary on the element itself wins (below) */
           --person-testimonial-color: var(
-            --ddd-theme-primary,
-            var(--ddd-theme-default-beaverBlue)
+            --ddd-palette-accent,
+            var(--ddd-theme-primary, var(--ddd-theme-default-beaverBlue))
           );
           --person-testimonial-text: light-dark(
             var(--ddd-theme-default-coalyGray),
             var(--ddd-theme-default-white)
+          );
+        }
+        :host([data-primary]) {
+          --person-testimonial-color: var(
+            --ddd-theme-primary,
+            var(--ddd-theme-default-beaverBlue)
           );
         }
 

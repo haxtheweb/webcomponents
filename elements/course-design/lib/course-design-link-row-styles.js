@@ -48,9 +48,12 @@ export const CourseDesignLinkRowStyles = css`
     }
   }
   .link-row:hover {
-    border-color: light-dark(
-      var(--ddd-theme-default-nittanyNavy),
-      var(--ddd-theme-default-linkLight)
+    border-color: var(
+      --ddd-palette-accent,
+      light-dark(
+        var(--ddd-theme-default-nittanyNavy),
+        var(--ddd-theme-default-linkLight)
+      )
     );
     cursor: pointer;
   }
@@ -66,13 +69,20 @@ export const CourseDesignLinkRowStyles = css`
     width: var(--ddd-icon-sm);
     height: var(--ddd-icon-sm);
     border-radius: var(--ddd-radius-sm);
-    background-color: light-dark(
-      var(--ddd-theme-default-skyMaxLight),
-      var(--ddd-theme-default-nittanyNavy)
+    /* the icon tile takes the palette chip (data-palette) */
+    background-color: var(
+      --ddd-palette-chip,
+      light-dark(
+        var(--ddd-theme-default-skyMaxLight),
+        var(--ddd-theme-default-nittanyNavy)
+      )
     );
-    color: light-dark(
-      var(--ddd-theme-default-nittanyNavy),
-      var(--ddd-theme-default-linkLight)
+    color: var(
+      --ddd-palette-chip-ink,
+      light-dark(
+        var(--ddd-theme-default-nittanyNavy),
+        var(--ddd-theme-default-linkLight)
+      )
     );
   }
   .tile simple-icon-lite {
@@ -135,9 +145,12 @@ export const CourseDesignLinkRowStyles = css`
   }
   .link-row:hover .action,
   .link-row:focus-visible .action {
-    border-color: light-dark(
-      var(--ddd-theme-default-nittanyNavy),
-      var(--ddd-theme-default-linkLight)
+    border-color: var(
+      --ddd-palette-accent,
+      light-dark(
+        var(--ddd-theme-default-nittanyNavy),
+        var(--ddd-theme-default-linkLight)
+      )
     );
   }
   /* label shown above the row, over the action, on hover / keyboard

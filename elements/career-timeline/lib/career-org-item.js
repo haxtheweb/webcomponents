@@ -95,6 +95,7 @@ export class CareerOrgItem extends I18NMixin(DDDSuper(LitElement)) {
         .border-line {
           position: relative;
           border-bottom: var(--ddd-border-sm);
+          border-bottom-color: var(--ddd-palette-accent, currentColor);
           width: 80%;
           margin-left: auto;
           margin-right: auto;

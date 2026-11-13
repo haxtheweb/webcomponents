@@ -65,6 +65,8 @@ export class CareerTimeline extends SchemaBehaviors(
           margin: var(--ddd-spacing-2);
           padding: var(--ddd-surface-padding, var(--ddd-spacing-4));
           border: var(--ddd-border-md);
+          /* the frame takes the palette accent (data-palette) */
+          border-color: var(--ddd-palette-accent, currentColor);
         }
       `,
     ];
