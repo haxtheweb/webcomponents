@@ -213,7 +213,7 @@
         },
         {
           "name": "scores",
-          "desc": "Scores"
+          "desc": "Comma separated numbers, one pe…"
         },
         {
           "name": "categories",
@@ -409,8 +409,8 @@
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set categories",
-      "text": "One category per line."
+      "title": "Set scores",
+      "text": "Comma separated numbers, one per category in the same order."
     },
     {
       "t": 14.8,

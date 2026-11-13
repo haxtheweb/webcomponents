@@ -152,16 +152,16 @@
       "in": 4.6,
       "rows": [
         {
+          "name": "source",
+          "desc": "Resource URL"
+        },
+        {
           "name": "height",
           "desc": "Content frame height."
         },
         {
           "name": "width",
           "desc": "Content frame width."
-        },
-        {
-          "name": "source",
-          "desc": "Resource URL"
         }
       ],
       "active": [
@@ -185,7 +185,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "height=\"500\""
+      "s": "source=\"Resource URL\""
     },
     {
       "type": "text",
@@ -193,7 +193,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "width=\"100%\""
+      "s": "height=\"500\""
     },
     {
       "type": "text",
@@ -201,7 +201,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "source=\"Resource URL\""
+      "s": "width=\"100%\""
     },
     {
       "type": "text",
@@ -271,8 +271,8 @@
       "py": 518,
       "ex": 616,
       "ey": 570,
-      "label": "height",
-      "sub": "\"500\"",
+      "label": "source",
+      "sub": "\"Resource URL\"",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -283,8 +283,8 @@
       "py": 518,
       "ex": 796,
       "ey": 570,
-      "label": "width",
-      "sub": "\"100%\"",
+      "label": "height",
+      "sub": "\"500\"",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -295,8 +295,8 @@
       "py": 518,
       "ex": 616,
       "ey": 570,
-      "label": "source",
-      "sub": "\"Resource URL\"",
+      "label": "width",
+      "sub": "\"100%\"",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -312,14 +312,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set height and width",
-      "text": "Content frame height. Content frame width."
+      "title": "Set resource url and height",
+      "text": "Discord channel link to show as a live widget. Content frame height."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set resource url",
-      "text": "Set Resource URL in the HAX sidebar."
+      "title": "Set width",
+      "text": "Content frame width."
     },
     {
       "t": 14.8,
