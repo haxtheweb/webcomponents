@@ -43,9 +43,12 @@ class FigureLabel extends DDD {
             --ddd-component-figure-label-title,
             var(
               --ddd-theme-accent,
-              light-dark(
-                var(--ddd-theme-default-limestoneLight),
-                var(--ddd-theme-default-limestoneGray)
+              var(
+                --ddd-palette-accent,
+                light-dark(
+                  var(--ddd-theme-default-limestoneLight),
+                  var(--ddd-theme-default-limestoneGray)
+                )
               )
             )
           );

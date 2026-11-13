@@ -331,13 +331,20 @@ export class SortingOption extends I18NMixin(DDDSuper(LitElement)) {
         :host(:not([disabled])) simple-icon-button-lite:hover,
         :host(:not([disabled])) simple-icon-button-lite:focus,
         :host(:not([disabled])) simple-icon-button-lite:focus-within {
-          background-color: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-linkLight)
+          /* the move arrows take the palette accent (data-palette) */
+          background-color: var(
+            --ddd-palette-accent,
+            light-dark(
+              var(--ddd-theme-default-nittanyNavy),
+              var(--ddd-theme-default-linkLight)
+            )
           );
-          color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-potentialMidnight)
+          color: var(
+            --ddd-palette-accent-ink,
+            light-dark(
+              var(--ddd-theme-default-white),
+              var(--ddd-theme-default-potentialMidnight)
+            )
           );
         }
         :host([disabled]) simple-icon-button-lite {

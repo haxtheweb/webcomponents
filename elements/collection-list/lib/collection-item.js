@@ -54,18 +54,23 @@ class CollectionItem extends DDD {
           display: block;
           height: fit-content;
           min-width: calc(var(--ddd-spacing-30) * 2);
+          /* a local accent-color wins, then the palette (data-palette),
+             then the DDD default */
           --collection-item-accent: var(
             --ddd-accent-color,
-            var(--ddd-theme-default-beaverBlue)
+            var(--ddd-palette-accent, var(--ddd-theme-default-beaverBlue))
           );
           --collection-item-tint: var(
             --ddd-accent-color-tint,
-            light-dark(
-              var(--ddd-theme-default-skyMaxLight),
-              color-mix(
-                in srgb,
-                var(--ddd-theme-default-pughBlue) 22%,
-                var(--ddd-theme-default-potentialMidnight)
+            var(
+              --ddd-palette-tint,
+              light-dark(
+                var(--ddd-theme-default-skyMaxLight),
+                color-mix(
+                  in srgb,
+                  var(--ddd-theme-default-pughBlue) 22%,
+                  var(--ddd-theme-default-potentialMidnight)
+                )
               )
             )
           );

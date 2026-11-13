@@ -3289,11 +3289,11 @@ export const DDDPaletteStyles = css`
     --ddd-palette-text-color-7: var(--simple-colors-default-theme-pink-1);
     /* accent roles: decorative accents only, never meaning (status) colours */
     --ddd-palette-accent: var(--ddd-palette-color-3);
-    --ddd-palette-accent-ink: var(--ddd-theme-default-nittanyNavy);
+    --ddd-palette-accent-ink: var(--ddd-theme-default-potentialMidnight);
     --ddd-palette-marker: var(--ddd-palette-color-3);
     --ddd-palette-secondary: var(--ddd-palette-color-7);
     --ddd-palette-chip: var(--ddd-palette-color-3);
-    --ddd-palette-chip-ink: var(--ddd-theme-default-nittanyNavy);
+    --ddd-palette-chip-ink: var(--ddd-theme-default-potentialMidnight);
     --ddd-palette-tint: light-dark(
       color-mix(
         in srgb,

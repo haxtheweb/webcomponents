@@ -189,17 +189,27 @@ export class IcsRender extends I18NMixin(IntersectionObserverMixin(DDD)) {
         /* grey is the SimpleColors default every element starts with, so
            it reads as no accent chosen: the band stays beaverBlue */
         :host([accent-color="grey"]) .tile .month {
-          --ddd-accent-color: var(--ddd-theme-default-beaverBlue);
-          --ddd-accent-color-ink: var(--ddd-theme-default-white);
+          --ddd-accent-color: var(
+            --ddd-palette-chip,
+            var(--ddd-theme-default-beaverBlue)
+          );
+          --ddd-accent-color-ink: var(
+            --ddd-palette-chip-ink,
+            var(--ddd-theme-default-white)
+          );
         }
         .tile .month {
           display: block;
           padding: var(--ddd-spacing-1) 0;
+          /* a local accent-color wins, then the palette (data-palette) */
           background-color: var(
             --ddd-accent-color,
-            var(--ddd-theme-default-beaverBlue)
+            var(--ddd-palette-chip, var(--ddd-theme-default-beaverBlue))
           );
-          color: var(--ddd-accent-color-ink, var(--ddd-theme-default-white));
+          color: var(
+            --ddd-accent-color-ink,
+            var(--ddd-palette-chip-ink, var(--ddd-theme-default-white))
+          );
           font-family: var(--ddd-font-navigation);
           font-size: var(--ddd-font-size-6xs);
           font-weight: var(--ddd-font-weight-bold);

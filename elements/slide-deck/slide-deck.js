@@ -527,9 +527,12 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
           --simple-icon-button-focus-opacity: 1;
         }
         .ddd-block-action:focus-within {
-          border-color: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-linkLight)
+          border-color: var(
+            --ddd-palette-accent,
+            light-dark(
+              var(--ddd-theme-default-nittanyNavy),
+              var(--ddd-theme-default-linkLight)
+            )
           );
           outline: none;
         }
@@ -539,17 +542,26 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
         }
         /* a toggle that is on is filled */
         .ddd-block-action[toggled] {
-          border-color: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-linkLight)
+          border-color: var(
+            --ddd-palette-accent,
+            light-dark(
+              var(--ddd-theme-default-nittanyNavy),
+              var(--ddd-theme-default-linkLight)
+            )
           );
-          background-color: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-linkLight)
+          background-color: var(
+            --ddd-palette-accent,
+            light-dark(
+              var(--ddd-theme-default-nittanyNavy),
+              var(--ddd-theme-default-linkLight)
+            )
           );
-          color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-potentialMidnight)
+          color: var(
+            --ddd-palette-accent-ink,
+            light-dark(
+              var(--ddd-theme-default-white),
+              var(--ddd-theme-default-potentialMidnight)
+            )
           );
         }
         .ddd-block #stage {
