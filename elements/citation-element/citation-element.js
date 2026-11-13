@@ -4,7 +4,10 @@
  */
 import { LitElement, html, css } from "lit";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
-import { licenseList } from "@haxtheweb/license-element/license-element.js";
+import {
+  licenseList,
+  licenseBadgeText,
+} from "@haxtheweb/license-element/license-element.js";
 import { generateResourceID } from "@haxtheweb/utils/lib/ids.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import "@haxtheweb/d-d-d/lib/DDDStyles.js";
@@ -107,10 +110,8 @@ class CitationElement extends I18NMixin(SchemaBehaviors(DDDSuper(LitElement))) {
           text-decoration-thickness: 1px;
           text-underline-offset: 0.2em;
         }
-        .license-link img {
-          margin-inline-end: var(--ddd-spacing-1);
-          vertical-align: middle;
-        }
+        /* the license code drawn with DDD tokens, the same badge
+           license-element and ai-usage-license draw, at citation scale */
         .license-badge {
           display: inline-flex;
           align-items: center;
@@ -118,10 +119,14 @@ class CitationElement extends I18NMixin(SchemaBehaviors(DDDSuper(LitElement))) {
           padding: 0 var(--ddd-spacing-1);
           border: var(--ddd-border-xs);
           border-color: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-theme-default-slateGray)
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-pughBlue)
           );
           border-radius: var(--ddd-radius-xs);
+          background-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
           font-family: var(--ddd-font-navigation);
           font-size: var(--ddd-font-size-6xs);
           font-weight: var(--ddd-font-weight-bold);
@@ -139,8 +144,7 @@ class CitationElement extends I18NMixin(SchemaBehaviors(DDDSuper(LitElement))) {
    * LitElement render
    */
   render() {
-    const showImage = Boolean(this.licenseImage) && !this._licenseImageFailed;
-    const badge = showImage ? "" : this._licenseBadgeText();
+    const badge = licenseBadgeText(this.license);
     return html`
       <meta
         about="${this.relatedResource}"
@@ -188,17 +192,7 @@ class CitationElement extends I18NMixin(SchemaBehaviors(DDDSuper(LitElement))) {
                 rel="noopener noreferrer"
                 target="_blank"
                 href="${this.licenseLink}"
-                ><img
-                  loading="lazy"
-                  alt="${this.t.licenseGraphic.replace("{license}", () =>
-                    this._licenseDisplayName(),
-                  )}"
-                  src="${this.licenseImage}"
-                  ?hidden="${!showImage}"
-                  width="44px"
-                  height="16px"
-                  @error="${this._licenseImageError}"
-                />${
+                >${
                   badge ? html`<span class="license-badge">${badge}</span>` : ""
                 }${this._licenseDisplayName()}</a
               >`,
@@ -208,33 +202,6 @@ class CitationElement extends I18NMixin(SchemaBehaviors(DDDSuper(LitElement))) {
         >
       </div>
     `;
-  }
-  /**
-   * the licence graphic failed to load; show the text badge instead of a
-   * broken image
-   */
-  _licenseImageError() {
-    if (this.licenseImage) {
-      this._licenseImageFailed = true;
-    }
-  }
-  /**
-   * short text for the licence badge shown when there is no licence
-   * graphic, e.g. "CC BY" or "CC0"; empty when the licence is unknown
-   */
-  _licenseBadgeText() {
-    const code = typeof this.license === "string" ? this.license.trim() : "";
-    const entry = code ? new licenseList()[code] : null;
-    if (!entry) {
-      return "";
-    }
-    if (entry.group === "creative-commons") {
-      return "CC " + code.toUpperCase();
-    }
-    if (code === "pdm") {
-      return "PD";
-    }
-    return code.toUpperCase();
   }
   /**
    * splits a translated sentence on {placeholders} and swaps in the
@@ -298,13 +265,6 @@ class CitationElement extends I18NMixin(SchemaBehaviors(DDDSuper(LitElement))) {
     }
     if (changedProperties.has("license")) {
       this._licenseUpdated(this.license);
-    }
-    // a new licence graphic gets a fresh chance to load
-    if (
-      changedProperties.has("licenseImage") ||
-      changedProperties.has("license")
-    ) {
-      this._licenseImageFailed = false;
     }
   }
   updated(changedProperties) {
@@ -407,13 +367,6 @@ class CitationElement extends I18NMixin(SchemaBehaviors(DDDSuper(LitElement))) {
       relatedResource: {
         type: String,
         attribute: "related-resource",
-      },
-      /**
-       * the licence graphic failed to load, so the text badge shows
-       */
-      _licenseImageFailed: {
-        type: Boolean,
-        state: true,
       },
     };
   }

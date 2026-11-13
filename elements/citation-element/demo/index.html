@@ -11,8 +11,21 @@
       import '../citation-element.js';
     </script>
     
+    <style>
+      /* same switch HAXcms themes use (body.dark-mode) to force dark */
+      .dark-mode {
+        color-scheme: only dark;
+        background-color: var(--ddd-theme-default-potentialMidnight);
+        color: var(--ddd-theme-default-white);
+        padding: var(--ddd-spacing-4);
+      }
+    </style>
   </head>
   <body>
+    <div class="dark-mode">
+      <h3>Dark mode</h3>
+      <citation-element creator="Bryan Ollendyke" license="by-sa" title="The btopro blog" source="https://btopro.com/" date="02/01/2018"></citation-element>
+    </div>
     <div class="vertical-section-container centered">
       <h3>Basic citation-element demo</h3>
       <demo-snippet>

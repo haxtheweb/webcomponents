@@ -67,6 +67,25 @@ export class licenseList {
     return list;
   }
 }
+/**
+ * Short text for the DDD license badge, e.g. "CC BY", "CC0" or "PD";
+ * empty when the code is not a known license. Shared with citation-element
+ * so the license family draws one badge.
+ */
+export function licenseBadgeText(code) {
+  const key = typeof code === "string" ? code.trim() : "";
+  const entry = key ? new licenseList()[key] : null;
+  if (!entry) {
+    return "";
+  }
+  if (entry.group === "creative-commons") {
+    return "CC " + key.toUpperCase();
+  }
+  if (key === "pdm") {
+    return "PD";
+  }
+  return key.toUpperCase();
+}
 
 import { LitElement, html, css } from "lit";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
@@ -90,22 +109,33 @@ class LicenseElement extends I18NMixin(SchemaBehaviors(DDDSuper(LitElement))) {
           line-height: var(--ddd-lh-140);
           background-color: var(--license-background-color);
         }
-        /* the "License" tag: real text (not CSS generated content) so it
-           can be translated and is read consistently by screen readers;
-           last in the shadow root, styled as the old :host::after was */
+        /* "License" uses the DDD eyebrow pattern (navigation font, bold,
+           uppercase) as the first line of the card, matching
+           ai-usage-license; real text so it is translated and read in
+           order */
         .license-label {
-          position: relative;
-          float: inline-end;
-          bottom: var(--ddd-spacing-9);
-          inset-inline-end: var(--ddd-spacing-2);
-          font-size: var(--ddd-font-size-ms);
-          color: var(--ddd-theme-default-slateGray);
-          font-style: italic;
+          display: block;
+          margin: 0 0 var(--ddd-spacing-3);
+          font-family: var(--ddd-eyebrow-font-family);
+          font-size: var(--ddd-eyebrow-font-size);
+          font-weight: var(--ddd-eyebrow-font-weight);
+          letter-spacing: var(--ddd-eyebrow-letter-spacing);
+          line-height: var(--ddd-eyebrow-line-height);
+          text-transform: var(--ddd-eyebrow-text-transform);
+          color: var(--ddd-eyebrow-color);
         }
+        /* light-dark() follows the page or theme color scheme (DDD sets
+           light dark on :root, body.dark-mode forces dark) */
         .license-body {
-          padding: var(--ddd-spacing-8);
-          background-color: var(--ddd-theme-default-limestoneMaxLight);
-          color: var(--ddd-theme-default-slateGray);
+          padding: var(--ddd-spacing-6) var(--ddd-spacing-8);
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight),
+            var(--ddd-theme-default-coalyGray)
+          );
+          color: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneMaxLight)
+          );
         }
 
         :host([display-method="footnote"]) {
@@ -121,22 +151,54 @@ class LicenseElement extends I18NMixin(SchemaBehaviors(DDDSuper(LitElement))) {
         a,
         a:any-link,
         a:-webkit-any-link {
-          color: var(--ddd-theme-default-link);
+          color: light-dark(
+            var(--ddd-theme-default-link),
+            var(--ddd-theme-default-linkLight)
+          );
           font-weight: var(--ddd-font-weight-bold);
         }
-        .big-license-link img {
+        a:focus-visible {
+          outline: var(--ddd-focus-ring);
+          outline-offset: var(--ddd-focus-offset);
+        }
+        /* the license code drawn with DDD tokens in place of the badge
+           image, the same badge ai-usage-license and citation-element
+           draw; decorative because the sentence names and links the
+           license */
+        .license-chip {
+          display: inline-flex;
           margin-inline-end: var(--ddd-spacing-2);
-          width: var(--ddd-icon-3xl);
-          height: var(--ddd-icon-xs);
+          padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
+          border: var(--ddd-border-sm);
+          border-color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-pughBlue)
+          );
+          border-radius: var(--ddd-radius-xs);
+          background-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+          color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-white)
+          );
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-4xs);
+          font-style: normal;
+          font-weight: var(--ddd-font-weight-bold);
+          line-height: var(--ddd-lh-120);
+          white-space: nowrap;
           vertical-align: middle;
         }
         .work-title {
-          font-weight: bold;
+          font-weight: var(--ddd-font-weight-bold);
         }
       `,
     ];
   }
   render() {
+    const badge = licenseBadgeText(this.license);
     return html`
       <meta
         rel="cc:license"
@@ -151,22 +213,12 @@ class LicenseElement extends I18NMixin(SchemaBehaviors(DDDSuper(LitElement))) {
       >
         <meta property="oer:name" content="${this.title}" />
         <meta property="oer:uri" content="${this.source}" />
+        <p class="license-label">${this.t.licenseLabel}</p>
         ${
-          this.licenseImage
-            ? html`
-                <a
-                  class="big-license-link"
-                  target="_blank"
-                  href="${this.licenseLink}"
-                  rel="noopener noreferrer"
-                  ><img
-                    loading="lazy"
-                    alt="${this.t.licenseGraphic.replace("{license}", () =>
-                      this._licenseDisplayName(),
-                    )}"
-                    src="${this.licenseImage}"
-                /></a>
-              `
+          badge
+            ? html`<span class="license-chip" aria-hidden="true"
+                >${badge}</span
+              >`
             : ``
         }
         ${this._fillTemplate(
@@ -209,7 +261,6 @@ class LicenseElement extends I18NMixin(SchemaBehaviors(DDDSuper(LitElement))) {
             : ``
         }
       </div>
-      <span class="license-label">${this.t.licenseLabel}</span>
     `;
   }
 
@@ -257,6 +308,10 @@ class LicenseElement extends I18NMixin(SchemaBehaviors(DDDSuper(LitElement))) {
         type: String,
         attribute: "license-name",
       },
+      /**
+       * URL of the license badge image. Kept as data for themes and
+       * integrations; the element draws its own DDD badge instead.
+       */
       licenseImage: {
         type: String,
         attribute: "license-image",
