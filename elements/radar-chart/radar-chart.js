@@ -157,13 +157,16 @@ export class RadarChart extends DDDSuper(I18NMixin(LitElement)) {
              palette (score, then target) and the rings use its grid colour,
              so a radar chart matches the other charts on the page; the
              public custom properties still win */
+          /* the score shape takes the palette accent and the target line
+             the palette secondary (data-palette); the two still differ by
+             line style and marker shape */
           --radar-chart-internal-score: var(
             --radar-chart-score-color,
-            var(--ddd-chart-1)
+            var(--ddd-palette-accent, var(--ddd-chart-1))
           );
           --radar-chart-internal-target: var(
             --radar-chart-target-color,
-            var(--ddd-chart-2)
+            var(--ddd-palette-secondary, var(--ddd-chart-2))
           );
           --radar-chart-internal-grid: var(
             --radar-chart-grid-color,

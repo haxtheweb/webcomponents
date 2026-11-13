@@ -337,10 +337,15 @@ export const DDDBlockStyles = css`
     --simple-icon-width: var(--ddd-icon-3xs);
     --simple-icon-height: var(--ddd-icon-3xs);
   }
+  /* hover ring and the pressed fill take the palette accent
+     (data-palette) when there is one */
   .ddd-block-action:hover {
-    border-color: light-dark(
-      var(--ddd-theme-default-nittanyNavy),
-      var(--ddd-theme-default-linkLight)
+    border-color: var(
+      --ddd-palette-accent,
+      light-dark(
+        var(--ddd-theme-default-nittanyNavy),
+        var(--ddd-theme-default-linkLight)
+      )
     );
   }
   .ddd-block-action:focus-visible {
@@ -349,17 +354,26 @@ export const DDDBlockStyles = css`
   }
   .ddd-block-action[aria-pressed="true"],
   .ddd-block-action[aria-expanded="true"] {
-    border-color: light-dark(
-      var(--ddd-theme-default-nittanyNavy),
-      var(--ddd-theme-default-linkLight)
+    border-color: var(
+      --ddd-palette-accent,
+      light-dark(
+        var(--ddd-theme-default-nittanyNavy),
+        var(--ddd-theme-default-linkLight)
+      )
     );
-    background-color: light-dark(
-      var(--ddd-theme-default-nittanyNavy),
-      var(--ddd-theme-default-linkLight)
+    background-color: var(
+      --ddd-palette-accent,
+      light-dark(
+        var(--ddd-theme-default-nittanyNavy),
+        var(--ddd-theme-default-linkLight)
+      )
     );
-    color: light-dark(
-      var(--ddd-theme-default-white),
-      var(--ddd-theme-default-potentialMidnight)
+    color: var(
+      --ddd-palette-accent-ink,
+      light-dark(
+        var(--ddd-theme-default-white),
+        var(--ddd-theme-default-potentialMidnight)
+      )
     );
   }
   .ddd-block-action[disabled],

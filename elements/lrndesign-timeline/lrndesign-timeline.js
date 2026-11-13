@@ -83,6 +83,20 @@ class LrndesignTimeline extends I18NMixin(SchemaBehaviors(SimpleColors)) {
           );
         }
 
+        /* no accent picked (grey is the SimpleColors default): the edge
+           takes the palette accent (data-palette) when there is one. The
+           headings stay as they are: they are text and need text contrast */
+        :host(:not([accent-color])),
+        :host([accent-color="grey"]) {
+          --lrndesign-timeline-accent-border: var(
+            --ddd-palette-accent,
+            var(
+              --simple-colors-default-theme-accent-8,
+              var(--ddd-theme-default-slateGray)
+            )
+          );
+        }
+
         /* the dark attribute drives color-scheme so the light-dark() token
            pairs above flip with it and with the system scheme */
         :host([dark]) {

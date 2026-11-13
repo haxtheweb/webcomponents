@@ -67,13 +67,20 @@ class CitationElement extends I18NMixin(SchemaBehaviors(DDDSuper(LitElement))) {
           height: var(--ddd-icon-xxs);
           margin-top: var(--ddd-spacing-0);
           border-radius: var(--ddd-radius-circle);
-          background-color: light-dark(
-            var(--ddd-theme-default-beaverBlue),
-            var(--ddd-theme-default-skyBlue)
+          /* the quote chip takes the palette chip (data-palette) */
+          background-color: var(
+            --ddd-palette-chip,
+            light-dark(
+              var(--ddd-theme-default-beaverBlue),
+              var(--ddd-theme-default-skyBlue)
+            )
           );
-          color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-potentialMidnight)
+          color: var(
+            --ddd-palette-chip-ink,
+            light-dark(
+              var(--ddd-theme-default-white),
+              var(--ddd-theme-default-potentialMidnight)
+            )
           );
           --simple-icon-color: currentColor;
           --simple-icon-width: var(--ddd-icon-4xs);

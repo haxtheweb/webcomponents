@@ -102,13 +102,18 @@ class DateCard extends I18NMixin(DDD) {
           align-items: stretch;
           max-width: 100%;
           font-family: var(--ddd-font-navigation, sans-serif);
+          /* a local accent-color wins, then the palette (data-palette),
+             then the DDD default */
           --date-card-accent: var(
             --ddd-accent-color,
-            var(--ddd-theme-default-skyBlue, #009cde)
+            var(--ddd-palette-chip, var(--ddd-theme-default-skyBlue, #009cde))
           );
           --date-card-ink: var(
             --ddd-accent-color-ink,
-            var(--ddd-theme-default-nittanyNavy, #001e44)
+            var(
+              --ddd-palette-chip-ink,
+              var(--ddd-theme-default-nittanyNavy, #001e44)
+            )
           );
           --date-card-surface: light-dark(
             var(--ddd-theme-default-white, #ffffff),
@@ -125,6 +130,18 @@ class DateCard extends I18NMixin(DDD) {
           --date-card-muted: light-dark(
             var(--ddd-theme-default-slateGray, #314d64),
             var(--ddd-theme-default-limestoneLight, #e4e5e7)
+          );
+        }
+        /* light-blue is the colour every date-card starts with, so it reads
+           as no accent chosen: the palette (data-palette) applies */
+        :host([accent-color="light-blue"]) {
+          --ddd-accent-color: var(
+            --ddd-palette-chip,
+            var(--ddd-theme-default-skyBlue, #009cde)
+          );
+          --ddd-accent-color-ink: var(
+            --ddd-palette-chip-ink,
+            var(--ddd-theme-default-nittanyNavy, #001e44)
           );
         }
         :host([dark]) {

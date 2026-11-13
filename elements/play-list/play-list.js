@@ -327,9 +327,13 @@ class PlayList extends I18NMixin(DDD) {
         }
         .pagination-dot[aria-selected="true"]::before {
           width: var(--ddd-spacing-6);
-          background-color: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-skyBlue)
+          /* the current dot takes the palette accent (data-palette) */
+          background-color: var(
+            --ddd-palette-accent,
+            light-dark(
+              var(--ddd-theme-default-nittanyNavy),
+              var(--ddd-theme-default-skyBlue)
+            )
           );
         }
         @media (prefers-reduced-motion: reduce) {
@@ -346,9 +350,12 @@ class PlayList extends I18NMixin(DDD) {
           --simple-icon-button-focus-opacity: 1;
         }
         .carousel-nav simple-icon-button-lite:focus-within {
-          border-color: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-linkLight)
+          border-color: var(
+            --ddd-palette-accent,
+            light-dark(
+              var(--ddd-theme-default-nittanyNavy),
+              var(--ddd-theme-default-linkLight)
+            )
           );
           outline: none;
         }

@@ -39,16 +39,58 @@ export class DddStepsListItem extends DDDSuper(LitElement) {
         :host {
           /* default primary when no data-primary is set: Beaver blue in light,
              Pugh blue in dark so the line and title stay readable on dark surfaces */
+          /* last match wins: that default, theme primary, the palette accent
+             (data-palette), a data-primary on the list or on this item */
           --ddd-steps-list-item-primary: var(
-            --ddd-theme-primary,
-            light-dark(
-              var(--ddd-theme-default-beaverBlue, #1e407c),
-              var(--ddd-theme-default-pughBlue, #96bee6)
+            --ddd-steps-list-item-local,
+            var(
+              --ddd-palette-accent,
+              var(
+                --ddd-theme-primary,
+                light-dark(
+                  var(--ddd-theme-default-beaverBlue, #1e407c),
+                  var(--ddd-theme-default-pughBlue, #96bee6)
+                )
+              )
+            )
+          );
+          --ddd-steps-list-item-ink: var(
+            --ddd-steps-list-item-local-ink,
+            var(
+              --ddd-palette-accent-ink,
+              var(
+                --lowContrast-override,
+                var(
+                  --ddd-theme-bgContrast,
+                  light-dark(
+                    var(--ddd-theme-default-white, #ffffff),
+                    var(--ddd-theme-default-coalyGray, #262626)
+                  )
+                )
+              )
+            )
+          );
+          --ddd-steps-list-item-title: var(
+            --ddd-steps-list-item-local-title,
+            var(
+              --ddd-palette-accent,
+              var(--lowContrast-override, var(--ddd-steps-list-item-primary))
             )
           );
           display: flex;
           border-inline-start: 2px dashed var(--ddd-steps-list-item-primary);
           padding-inline-start: 36px;
+        }
+        :host([data-primary]) {
+          --ddd-steps-list-item-local: var(--ddd-theme-primary);
+          --ddd-steps-list-item-local-ink: var(
+            --lowContrast-override,
+            var(--ddd-theme-bgContrast, var(--ddd-theme-default-white))
+          );
+          --ddd-steps-list-item-local-title: var(
+            --lowContrast-override,
+            var(--ddd-theme-primary)
+          );
         }
 
         .circle {
@@ -58,16 +100,7 @@ export class DddStepsListItem extends DDDSuper(LitElement) {
           background-color: var(--ddd-steps-list-item-primary);
           /* data-primary always sets bgContrast or lowContrast-override; without it
              the number is white on Beaver blue, or coaly gray on Pugh blue in dark */
-          color: var(
-            --lowContrast-override,
-            var(
-              --ddd-theme-bgContrast,
-              light-dark(
-                var(--ddd-theme-default-white, #ffffff),
-                var(--ddd-theme-default-coalyGray, #262626)
-              )
-            )
-          );
+          color: var(--ddd-steps-list-item-ink);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -90,10 +123,7 @@ export class DddStepsListItem extends DDDSuper(LitElement) {
 
         h3 {
           margin: 4px 0 0 0;
-          color: var(
-            --lowContrast-override,
-            var(--ddd-steps-list-item-primary)
-          );
+          color: var(--ddd-steps-list-item-title);
         }
 
         :host(:last-of-type) {
