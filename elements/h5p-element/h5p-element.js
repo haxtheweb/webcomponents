@@ -88,13 +88,19 @@ class H5PElement extends I18NMixin(LitElement) {
         width: var(--ddd-icon-xs);
         height: var(--ddd-icon-xs);
         border-radius: var(--ddd-radius-circle);
-        background-color: light-dark(
-          var(--ddd-theme-default-beaverBlue),
-          var(--ddd-theme-default-skyBlue)
+        background-color: var(
+          --ddd-palette-chip,
+          light-dark(
+            var(--ddd-theme-default-beaverBlue),
+            var(--ddd-theme-default-skyBlue)
+          )
         );
-        color: light-dark(
-          var(--ddd-theme-default-white),
-          var(--ddd-theme-default-potentialMidnight)
+        color: var(
+          --ddd-palette-chip-ink,
+          light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-potentialMidnight)
+          )
         );
         --simple-icon-width: var(--ddd-icon-3xs);
         --simple-icon-height: var(--ddd-icon-3xs);

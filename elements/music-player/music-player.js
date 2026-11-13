@@ -81,6 +81,10 @@ class MusicPlayer extends I18NMixin(LitElement) {
              below WCAG contrast requirements; keep it fully opaque */
           opacity: 1 !important;
         }
+        /* the seek bar takes the palette accent (data-palette) */
+        midi-player::part(seek-bar) {
+          accent-color: var(--ddd-palette-accent, auto);
+        }
         midi-player::part(control-panel) {
           /* the bundled control panel hardcodes light-only surface colors;
              follow DDD dark mode through its light-dark aware theme tokens */

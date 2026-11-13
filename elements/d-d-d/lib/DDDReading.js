@@ -46,6 +46,11 @@ const SAFE_TAG = /^[a-z][a-z0-9]*(-[a-z0-9]+)+$/;
  * @param {string} tag the theme's custom element name, ex: "clean-one"
  * @param {string} align "center" to center capped prose in the content column,
  *   "start" to keep it on the column's leading edge
+ *
+ * Running text is coaly gray / limestone, made for a white or near black
+ * content surface. A theme whose content sits on another surface (a palette
+ * fill, say) sets --ddd-reading-prose-color to the text color it pairs with
+ * that surface.
  */
 export function dddReadingProse(tag, align = "center") {
   if (!SAFE_TAG.test(tag)) {
@@ -78,9 +83,12 @@ export function dddReadingProse(tag, align = "center") {
     }
     ${quote}
     ${t} > :is(p, ul, ol, dl, blockquote) {
-      color: light-dark(
-        var(--ddd-theme-default-coalyGray),
-        var(--ddd-theme-default-limestoneMaxLight)
+      color: var(
+        --ddd-reading-prose-color,
+        light-dark(
+          var(--ddd-theme-default-coalyGray),
+          var(--ddd-theme-default-limestoneMaxLight)
+        )
       );
     }
     ${t} > p {

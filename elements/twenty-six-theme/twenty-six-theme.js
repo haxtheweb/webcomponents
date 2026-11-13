@@ -93,6 +93,7 @@ class TwentySixTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     this.nextPage = "";
     this.editMode = false;
     this.__contrastFrame = null;
+    this.__contrastResyncToken = 0;
     this.__contrastWatchersReady = false;
     this.__prefersDarkMedia = null;
     this.__prefersDarkMediaListener = null;
@@ -795,10 +796,40 @@ class TwentySixTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
       this.__contrastFrame = globalThis.requestAnimationFrame(() => {
         this.__contrastFrame = null;
         this.__syncContrastTextColors();
+        this.__resyncAfterTransitions();
       });
     } else {
       this.__syncContrastTextColors();
     }
+  }
+
+  // a palette or color scheme change can start color transitions on the
+  // surfaces measured below (under prefers-reduced-motion the catch-all
+  // transition-duration rule gives every property a 0.01ms transition), so
+  // the first sync can read the colors they are leaving and pick the wrong
+  // text color; measure again once those transitions have finished
+  __resyncAfterTransitions() {
+    if (
+      !this.shadowRoot ||
+      typeof this.shadowRoot.getAnimations !== "function"
+    ) {
+      return;
+    }
+    const running = this.shadowRoot
+      .getAnimations()
+      .filter((animation) => animation.transitionProperty);
+    if (!running.length) {
+      return;
+    }
+    this.__contrastResyncToken += 1;
+    const token = this.__contrastResyncToken;
+    Promise.all(
+      running.map((animation) => animation.finished.catch(() => null)),
+    ).then(() => {
+      if (token === this.__contrastResyncToken && this.isConnected) {
+        this.__syncContrastTextColors();
+      }
+    });
   }
 
   __syncContrastTextColors() {

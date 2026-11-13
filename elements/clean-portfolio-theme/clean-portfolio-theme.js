@@ -741,7 +741,12 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         /* Palette variables */
 
         :host([data-palette="6"]) header {
-          background-color: var(--ddd-palette-4);
+          --portfolio-header-bg: var(--ddd-palette-4);
+          background-color: var(--portfolio-header-bg);
+          --portfolio-header-text: var(
+            --ddd-palette-text-color-4,
+            var(--ddd-palette-light)
+          );
         }
 
         :host([data-palette="6"]) button,
@@ -758,9 +763,6 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
           color: var(--ddd-lightDark-4);
         }
 
-        :host([data-palette="6"]) #site-title:hover {
-          color: var(--ddd-lightDark-3);
-        }
         /* 
       ::slotted(a) {
         color: var(--ddd-lightDark-7) !important;
@@ -773,7 +775,14 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         }
 
         header {
-          background-color: var(--ddd-palette-2);
+          /* text on the header fill: the palette's paired text color */
+          --portfolio-header-text: var(
+            --ddd-palette-text-color-2,
+            var(--ddd-palette-light)
+          );
+          --portfolio-header-bg: var(--ddd-palette-2);
+          background-color: var(--portfolio-header-bg);
+          color: var(--portfolio-header-text);
           transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
           padding: 22px;
         }
@@ -839,7 +848,11 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
           justify-content: space-evenly;
           align-items: center;
           background-color: var(--ddd-lightDark-1);
-          color: var(--ddd-lightDark-5);
+          /* paired with the footer fill (color-1 light, color-5 dark) */
+          color: light-dark(
+            var(--ddd-palette-text-color-1, var(--ddd-palette-light)),
+            var(--ddd-palette-text-color-5, var(--ddd-palette-dark))
+          );
           font-family: var(--portfolio-font-body);
           font-size: clamp(11px, 2vw, 15px);
           padding: 40px 5vw;
@@ -848,6 +861,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         }
 
         .footer-link {
+          color: inherit;
           transition: color var(--ddd-duration-normal, 0.3s);
         }
 
@@ -871,19 +885,22 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         /* Site header elements */
         #site-title {
           padding: 0.5rem;
-          color: var(--ddd-palette-light);
+          color: var(--portfolio-header-text);
           font-family: var(--portfolio-font-header);
           font-weight: bold;
           font-size: var(--portfolio-fontsize-responsive);
           text-transform: uppercase;
           text-decoration: none;
-          border: 5px solid var(--ddd-palette-light);
+          border: 5px solid var(--portfolio-header-text);
           transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
         }
 
+        /* hover / focus swaps the header pair, so it stays readable in
+           every palette */
         #site-title:hover,
         #site-title:focus {
-          color: var(--ddd-lightDark-5);
+          color: var(--portfolio-header-bg);
+          background-color: var(--portfolio-header-text);
         }
 
         header a.menu-item {
@@ -892,7 +909,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
           margin: 10px;
           padding: 0 5px;
           white-space: nowrap;
-          color: var(--ddd-palette-light);
+          color: var(--portfolio-header-text);
           font-family: var(--portfolio-font-header);
           font-size: var(--portfolio-fontsize-responsive);
           font-weight: 450;
@@ -913,10 +930,13 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
           transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
         }
 
+        /* the bar under the item marks hover, focus and the active page;
+           the text keeps the header text color, which another palette fill
+           can not promise */
         .menu-item:hover,
         .menu-item:focus,
         .menu-item.active {
-          color: var(--ddd-palette-5);
+          color: var(--portfolio-header-text);
         }
 
         .menu-item:hover:after,

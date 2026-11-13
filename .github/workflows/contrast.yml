@@ -1,7 +1,9 @@
 name: contrast
 
 # Blocking for the elements a pull request touches: text in an element's demo
-# meets WCAG AA color contrast in light and in dark mode.
+# meets WCAG AA color contrast in light and in dark mode, and a theme that
+# takes DDD palettes meets it in every palette of the DDD palette registry
+# (every site theme its folder ships, each palette, light and dark).
 #
 # For every element folder the pull request changes, the repo's
 # web-dev-server config serves elements/<name>/demo/index.html locally (never

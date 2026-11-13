@@ -298,23 +298,26 @@ export class MediaPlaylist extends SchemaBehaviors(
           outline-offset: calc(-1 * var(--ddd-focus-offset));
         }
 
+        /* the active row tint and edge take the palette (data-palette) */
         .playlist-item.active {
-          background: light-dark(
-            var(--ddd-theme-default-skyMaxLight),
-            var(--ddd-theme-default-nittanyNavy)
-          );
-          box-shadow: inset 3px 0 0
+          --media-playlist-active-edge: var(
+            --ddd-palette-accent,
             light-dark(
               var(--ddd-theme-default-nittanyNavy),
               var(--ddd-theme-default-skyBlue)
-            );
+            )
+          );
+          background: var(
+            --ddd-palette-tint,
+            light-dark(
+              var(--ddd-theme-default-skyMaxLight),
+              var(--ddd-theme-default-nittanyNavy)
+            )
+          );
+          box-shadow: inset 3px 0 0 var(--media-playlist-active-edge);
         }
         :host(:dir(rtl)) .playlist-item.active {
-          box-shadow: inset -3px 0 0
-            light-dark(
-              var(--ddd-theme-default-nittanyNavy),
-              var(--ddd-theme-default-skyBlue)
-            );
+          box-shadow: inset -3px 0 0 var(--media-playlist-active-edge);
         }
 
         .playlist-number {

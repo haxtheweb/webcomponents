@@ -38,23 +38,37 @@ class a11yCompareImage extends LitElement {
            colour that follow the page colour scheme; the dark attribute
            inverts only these, as it always inverted the slider bar */
         :host {
-          --a11y-compare-image-control-fill: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-potentialMidnight)
+          /* a palette (data-palette) colours the controls; without one
+             they stay the neutral pair */
+          --a11y-compare-image-control-fill: var(
+            --ddd-palette-accent,
+            light-dark(
+              var(--ddd-theme-default-white),
+              var(--ddd-theme-default-potentialMidnight)
+            )
           );
-          --a11y-compare-image-control-ink: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-white)
+          --a11y-compare-image-control-ink: var(
+            --ddd-palette-accent-ink,
+            light-dark(
+              var(--ddd-theme-default-nittanyNavy),
+              var(--ddd-theme-default-white)
+            )
           );
         }
         :host([dark]) {
-          --a11y-compare-image-control-fill: light-dark(
-            var(--ddd-theme-default-potentialMidnight),
-            var(--ddd-theme-default-white)
+          --a11y-compare-image-control-fill: var(
+            --ddd-palette-accent,
+            light-dark(
+              var(--ddd-theme-default-potentialMidnight),
+              var(--ddd-theme-default-white)
+            )
           );
-          --a11y-compare-image-control-ink: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-nittanyNavy)
+          --a11y-compare-image-control-ink: var(
+            --ddd-palette-accent-ink,
+            light-dark(
+              var(--ddd-theme-default-white),
+              var(--ddd-theme-default-nittanyNavy)
+            )
           );
           /* inverted, the ink can match the page (navy on midnight), so
              the filled part of the fade track takes the fill colour */

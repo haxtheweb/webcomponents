@@ -2389,12 +2389,19 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
           font-size: var(--ddd-font-size-4xs);
           font-weight: var(--ddd-font-weight-medium);
         }
+        /* the picked group takes the palette accent (data-palette) */
         .chip input:checked + span {
-          background-color: var(--my-learning-heading);
-          border-color: var(--my-learning-heading);
-          color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-potentialMidnight)
+          background-color: var(
+            --ddd-palette-accent,
+            var(--my-learning-heading)
+          );
+          border-color: var(--ddd-palette-accent, var(--my-learning-heading));
+          color: var(
+            --ddd-palette-accent-ink,
+            light-dark(
+              var(--ddd-theme-default-white),
+              var(--ddd-theme-default-potentialMidnight)
+            )
           );
         }
         .chip input:focus-visible + span {
@@ -2435,7 +2442,9 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
         .fill {
           display: block;
           height: 100%;
-          background-color: var(--ddd-chart-1);
+          /* plain progress bars take the palette accent (data-palette);
+             the per-page bars keep their status colours */
+          background-color: var(--ddd-palette-accent, var(--ddd-chart-1));
         }
         .pages li {
           display: grid;
@@ -2963,7 +2972,10 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
           width: var(--ddd-icon-3xs);
           height: var(--ddd-icon-3xs);
           margin: 0;
-          accent-color: var(--ddd-theme-default-beaverBlue);
+          accent-color: var(
+            --ddd-palette-accent,
+            var(--ddd-theme-default-beaverBlue)
+          );
         }
         .map-legend {
           display: flex;

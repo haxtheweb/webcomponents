@@ -106,7 +106,10 @@ class MediaImage extends SchemaBehaviors(DDD) {
           border: var(--ddd-border-sm);
           border-color: var(
             --ddd-component-figure-label-title,
-            var(--ddd-theme-accent, var(--ddd-theme-default-limestoneLight))
+            var(
+              --ddd-theme-accent,
+              var(--ddd-palette-accent, var(--ddd-theme-default-limestoneLight))
+            )
           );
           background: var(
             --ddd-component-figure-label-description-background,

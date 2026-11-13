@@ -1832,14 +1832,22 @@ export class QuestionElement extends SchemaBehaviors(
         .shell #check {
           margin-inline-end: 0;
         }
+        /* the action buttons take the palette accent (data-palette); the
+           disabled state below keeps its status tokens */
         .shell simple-toolbar-button {
-          background-color: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-linkLight)
+          background-color: var(
+            --ddd-palette-accent,
+            light-dark(
+              var(--ddd-theme-default-nittanyNavy),
+              var(--ddd-theme-default-linkLight)
+            )
           );
-          color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-potentialMidnight)
+          color: var(
+            --ddd-palette-accent-ink,
+            light-dark(
+              var(--ddd-theme-default-white),
+              var(--ddd-theme-default-potentialMidnight)
+            )
           );
         }
         .shell simple-toolbar-button[disabled] {

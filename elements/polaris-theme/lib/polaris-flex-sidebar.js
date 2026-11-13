@@ -74,9 +74,11 @@ class PolarisFlexSidebar extends PolarisFlexTheme {
               var(--ddd-theme-default-skyBlue)
             )
             var(--ddd-border-size-md) solid;
+          /* dark: sky blue on the active wash is under 4.5:1, sky light is
+             not; the sky blue border still marks the active page */
           --site-children-block-link-active-color: light-dark(
             var(--ddd-theme-default-link),
-            var(--ddd-theme-default-skyBlue)
+            var(--ddd-theme-default-skyLight)
           );
           font-family: var(--ddd-font-navigation);
           --site-children-block-font-size: var(--ddd-font-size-4xs);

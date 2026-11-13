@@ -103,6 +103,16 @@ class CsvRender extends I18NMixin(IntersectionObserverMixin(DDD)) {
           padding: 0 1.125em;
           text-align: left;
         }
+        /* no accent picked: the header rule and the download link take the
+           palette accent (data-palette) when there is one */
+        :host(:not([accent-color])) .table thead th,
+        :host([accent-color="grey"]) .table thead th {
+          box-shadow: inset 0 -2px 0 var(--ddd-palette-accent, transparent);
+        }
+        :host(:not([accent-color])) #download,
+        :host([accent-color="grey"]) #download {
+          color: var(--ddd-palette-accent, LinkText);
+        }
         .table td {
           border-top: 1px solid var(--simple-colors-default-theme-accent-6);
           border-bottom: 1px solid var(--simple-colors-default-theme-accent-6);

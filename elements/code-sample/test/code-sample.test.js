@@ -643,4 +643,21 @@ describe("code-sample keyboard scrolling", () => {
     const shortContainer = short.shadowRoot.querySelector("#code-container");
     expect(shortContainer.hasAttribute("tabindex")).to.equal(false);
   });
+
+  it("keeps the theme background behind long lines that scroll", async () => {
+    const el = await fixture(html`<div style="width: 320px"></div>`);
+    el.innerHTML =
+      '<code-sample type="javascript"><template preserve-content="preserve-content">const x = "' +
+      "a".repeat(400) +
+      '";</template></code-sample>';
+    const sample = el.querySelector("code-sample");
+    await sample.updateComplete;
+    await new Promise((r) => setTimeout(r, 300));
+    const container = sample.shadowRoot.querySelector("#code-container");
+    const code = sample.shadowRoot.querySelector("#code code");
+    expect(container.scrollWidth).to.be.greaterThan(container.clientWidth);
+    // the element that paints the highlight background is as wide as its
+    // text, so no character scrolls out onto the frame behind it
+    expect(code.clientWidth).to.be.at.least(code.scrollWidth);
+  });
 });

@@ -128,9 +128,13 @@ class LicenseElement extends I18NMixin(SchemaBehaviors(DDDSuper(LitElement))) {
            light dark on :root, body.dark-mode forces dark) */
         .license-body {
           padding: var(--ddd-spacing-6) var(--ddd-spacing-8);
-          background-color: light-dark(
-            var(--ddd-theme-default-limestoneMaxLight),
-            var(--ddd-theme-default-coalyGray)
+          /* the body takes the palette tint (data-palette) */
+          background-color: var(
+            --ddd-palette-tint,
+            light-dark(
+              var(--ddd-theme-default-limestoneMaxLight),
+              var(--ddd-theme-default-coalyGray)
+            )
           );
           color: light-dark(
             var(--ddd-theme-default-slateGray),

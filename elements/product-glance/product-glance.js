@@ -48,12 +48,17 @@ export class ProductGlance extends SimpleColors {
           height: calc(var(--product-glance-icon-height) + 24px);
           margin: 0;
           border-radius: var(--ddd-radius-md, 12px);
-          background-color: light-dark(
-            var(--ddd-theme-default-skyMaxLight, #e6f7ff),
-            color-mix(
-              in srgb,
-              var(--ddd-theme-default-skyBlue, #009cde) 24%,
-              transparent
+          /* the tile takes the palette tint (data-palette) when there is
+             one */
+          background-color: var(
+            --ddd-palette-tint,
+            light-dark(
+              var(--ddd-theme-default-skyMaxLight, #e6f7ff),
+              color-mix(
+                in srgb,
+                var(--ddd-theme-default-skyBlue, #009cde) 24%,
+                transparent
+              )
             )
           );
           --simple-icon-color: light-dark(

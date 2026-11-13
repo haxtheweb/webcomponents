@@ -62,6 +62,8 @@ export class CareerRoleItem extends I18NMixin(DDDSuper(LitElement)) {
         :host {
           display: flex;
           border-inline-start: var(--ddd-border-sm);
+          /* the line and its dots take the palette (data-palette) */
+          border-inline-start-color: var(--ddd-palette-accent, currentColor);
           padding-inline-start: 45px;
           margin-inline-start: var(--ddd-spacing-6, 24px);
           position: relative;
@@ -80,7 +82,10 @@ export class CareerRoleItem extends I18NMixin(DDDSuper(LitElement)) {
           width: var(--ddd-icon-4xs, 16px);
           height: var(--ddd-icon-4xs, 16px);
           border-radius: 50%;
-          background-color: var(--ddd-theme-default-limestoneLight);
+          background-color: var(
+            --ddd-palette-marker,
+            var(--ddd-theme-default-limestoneLight)
+          );
           margin-inline-start: -50px;
           position: absolute;
         }

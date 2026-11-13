@@ -195,10 +195,23 @@ class BulletCheckList extends SchemaBehaviors(I18NMixin(DDD)) {
           );
           --on-accent-color: var(--ddd-theme-default-white);
         }
+        /* info is the status every list starts with, so it is the one
+           that takes the palette (data-palette); stop, warning and success
+           keep their meaning */
         :host([status="info"]) {
-          --accent-color: light-dark(
-            var(--ddd-theme-default-info),
-            var(--ddd-theme-default-skyBlue)
+          --accent-color: var(
+            --ddd-palette-chip,
+            light-dark(
+              var(--ddd-theme-default-info),
+              var(--ddd-theme-default-skyBlue)
+            )
+          );
+          --on-accent-color: var(
+            --ddd-palette-chip-ink,
+            light-dark(
+              var(--ddd-theme-default-white),
+              var(--ddd-theme-default-potentialMidnight)
+            )
           );
         }
 
@@ -247,8 +260,14 @@ class BulletCheckList extends SchemaBehaviors(I18NMixin(DDD)) {
         li:last-child {
           border-bottom: none;
         }
+        /* the current step edge and the open markers are decoration, so
+           they take the palette (data-palette); the header keeps its status
+           colour and a checked marker keeps its done colour */
         li[aria-current="step"] {
-          border-inline-start-color: var(--accent-color);
+          border-inline-start-color: var(
+            --ddd-palette-accent,
+            var(--accent-color)
+          );
           background-color: var(--bcl-current);
           font-weight: var(--ddd-font-weight-bold);
         }
@@ -287,7 +306,7 @@ class BulletCheckList extends SchemaBehaviors(I18NMixin(DDD)) {
           width: var(--ddd-icon-xs);
           height: var(--ddd-icon-xs);
           border: var(--ddd-border-sm);
-          border-color: var(--bcl-muted);
+          border-color: var(--ddd-palette-marker, var(--bcl-muted));
           border-radius: var(--ddd-radius-circle);
           color: var(--text-color);
           font-family: var(--ddd-font-navigation);
@@ -302,10 +321,13 @@ class BulletCheckList extends SchemaBehaviors(I18NMixin(DDD)) {
           width: var(--ddd-spacing-2);
           height: var(--ddd-spacing-2);
           border-radius: var(--ddd-radius-circle);
+          background-color: var(--ddd-palette-marker, currentColor);
+        }
+        li.checked .marker .dot {
           background-color: currentColor;
         }
         li[aria-current="step"] .marker {
-          border-color: var(--text-color);
+          border-color: var(--ddd-palette-marker, var(--text-color));
         }
         li.checked .marker {
           border-color: var(--bcl-done);
@@ -317,7 +339,7 @@ class BulletCheckList extends SchemaBehaviors(I18NMixin(DDD)) {
           outline-offset: var(--ddd-spacing-1);
         }
         input[type="checkbox"]:hover:not(:disabled) + .marker {
-          border-color: var(--text-color);
+          border-color: var(--ddd-palette-marker, var(--text-color));
         }
         .text {
           flex: 1 1 auto;

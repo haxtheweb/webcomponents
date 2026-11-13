@@ -40,6 +40,19 @@ export class DddStepsList extends DDDSuper(LitElement) {
           position: relative;
           padding: var(--ddd-surface-padding, var(--ddd-spacing-4));
         }
+        /* a primary picked on the list is a local choice: its items use it
+           instead of the palette */
+        :host([data-primary]) {
+          --ddd-steps-list-item-local: var(--ddd-theme-primary);
+          --ddd-steps-list-item-local-ink: var(
+            --lowContrast-override,
+            var(--ddd-theme-bgContrast, var(--ddd-theme-default-white))
+          );
+          --ddd-steps-list-item-local-title: var(
+            --lowContrast-override,
+            var(--ddd-theme-primary)
+          );
+        }
 
         .steps-container {
           position: relative;
