@@ -25,7 +25,7 @@
               "type": {
                 "text": "null"
               },
-              "description": "alt text",
+              "description": "Accessible name for the corner link, read in place of the logo.",
               "default": "null",
               "attribute": "alt"
             },
@@ -78,7 +78,7 @@
               "type": {
                 "text": "null"
               },
-              "description": "alt text",
+              "description": "Accessible name for the corner link, read in place of the logo.",
               "default": "null",
               "fieldName": "alt"
             },

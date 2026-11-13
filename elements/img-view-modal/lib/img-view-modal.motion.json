@@ -153,16 +153,11 @@
       "rows": [
         {
           "name": "title",
-          "desc": "title"
-        },
-        {
-          "name": "modal",
-          "desc": "modal"
+          "desc": "Heading of the modal the image…"
         }
       ],
       "active": [
         [5, 0],
-        [7.4, 1],
         [14.8, 0]
       ]
     },
@@ -180,15 +175,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "title=\"title\""
-    },
-    {
-      "type": "text",
-      "x": 1022,
-      "y": 304,
-      "c": "code",
-      "in": 7.4,
-      "s": "modal=\"modal\""
+      "s": "title=\"Demo\""
     },
     {
       "type": "text",
@@ -202,13 +189,6 @@
           5,
           {
             "y": 304
-          },
-          0.4
-        ],
-        [
-          7.4,
-          {
-            "y": 336
           },
           0.4
         ]
@@ -228,13 +208,6 @@
             "y": 336
           },
           0.4
-        ],
-        [
-          7.4,
-          {
-            "y": 368
-          },
-          0.4
         ]
       ]
     },
@@ -245,22 +218,10 @@
       "ex": 616,
       "ey": 560,
       "label": "title",
-      "sub": "\"title\"",
+      "sub": "\"Demo\"",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
-    },
-    {
-      "type": "callout",
-      "px": 770,
-      "py": 508,
-      "ex": 796,
-      "ey": 560,
-      "label": "modal",
-      "sub": "\"modal\"",
-      "dir": 1,
-      "in": 7.6000000000000005,
-      "out": 9.600000000000001
     }
   ],
   "beats": [
@@ -273,8 +234,8 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set title and modal",
-      "text": "Add title and modal attributes to the tag."
+      "title": "Set title",
+      "text": "Heading of the modal the image opens in."
     },
     {
       "t": 14.8,

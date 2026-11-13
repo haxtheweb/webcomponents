@@ -153,7 +153,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "hide-editor"
+      "s": "hide-editor=\"false\""
     },
     {
       "type": "text",
@@ -161,7 +161,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "hide-terminal"
+      "s": "hide-terminal=\"false\""
     },
     {
       "type": "text",
@@ -169,7 +169,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "hide-window"
+      "s": "hide-window=\"false\""
     },
     {
       "type": "text",

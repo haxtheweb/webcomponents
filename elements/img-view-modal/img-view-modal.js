@@ -38,6 +38,9 @@ class ImgViewModal extends LitElement {
     return {
       ...ImgViewViewer.properties,
       ...ImgPanZoom.properties,
+      /**
+       * Heading of the modal the image opens in.
+       */
       title: { type: String },
       modal: { type: Object },
     };

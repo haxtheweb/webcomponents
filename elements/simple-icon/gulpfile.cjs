@@ -46,6 +46,8 @@ gulp.task("iconset", (done) => {
     const manifestPath = iconset.manifestPath || `./lib`;
     const exportName = iconset.exportName || `${packageJson.wcfactory.className}IconsetsManifest`;
     const jsonContent = JSON.stringify(dirTree(path).icons, null, 2); 
+    // keep the license header every element source file carries; this file
+    // is rewritten on each build, so the header has to come from here
     const iconVar =  `/**
  * Copyright 2026 The Pennsylvania State University
  * @license Apache-2.0, see LICENSE for full text.

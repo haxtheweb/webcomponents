@@ -42,7 +42,7 @@
       "in": 1.7999999999999998,
       "states": [
         [1.4, "simple-toast"],
-        [7.4, "text"]
+        [7.4, "Hello from demo"]
       ],
       "typed": true
     },
@@ -130,7 +130,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "text=\"text\""
+      "s": "text=\"Hello from demo\""
     },
     {
       "type": "text",
@@ -243,7 +243,7 @@
       "ex": 796,
       "ey": 500,
       "label": "text",
-      "sub": "\"text\"",
+      "sub": "\"Hello from demo\"",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -283,7 +283,7 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set opened and text",
+      "title": "Set opened",
       "text": "Opened state of the toast, use event to change."
     },
     {

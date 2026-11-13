@@ -294,7 +294,7 @@
       "ex": 616,
       "ey": 570,
       "label": "source",
-      "sub": "googledocs · url · json …",
+      "sub": "Google Docs · URL endpoint (JSON)…",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -335,7 +335,7 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set source and source data",
-      "text": "Data source type (googledocs, url, json, filesystem)."
+      "text": "Data source type. URL or JSON data for the gradebook."
     },
     {
       "t": 10,
@@ -353,7 +353,7 @@
   "end": {
     "in": 17.8,
     "line": "A headless gradebook that supports multiple backends with r…",
-    "code": ""
+    "code": "<grade-book></grade-book>"
   },
   "surfaceHash": "a3c9946ef462",
   "review": {

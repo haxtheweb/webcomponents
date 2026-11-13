@@ -8,7 +8,17 @@ A bridge makes an outside design system (PatternFly, Carbon, Spectrum, ...) **DD
 
 ## Sources
 
-`bridge.json` lists one or more `sources`, each an npm package pinned to an exact version with its license. `format: "css"` reads compiled CSS custom properties, using `scopes.light` and `scopes.dark` (selectors merged in order) to resolve each mode. `format: "dtcg"` reads a [DTCG](https://www.designtokens.org/) token file and writes each token as a custom property under the source's `prefix` (for example, Carbon's palette `blue.60` becomes `--carbon-blue-60`). DTCG sources are treated as mode-free, which suits palettes and motion. Later sources override earlier ones on name clashes.
+`bridge.json` lists one or more `sources`. Each is an npm package pinned to an exact version with its license, or, for a system that doesn't publish its theme to npm, a raw URL pinned to a full commit sha with a `sha256` and a `licenseUrl` from the same commit (the generator verifies both). Later sources override earlier ones on name clashes. Formats:
+
+| `format` | Reads | Modes |
+|---|---|---|
+| `css` | compiled CSS custom properties; blocks may nest (Tailwind's `@theme`) | `scopes.light` / `scopes.dark`: selectors merged in order |
+| `dtcg` | a [DTCG](https://www.designtokens.org/) token file, written as custom properties under `prefix` (Carbon's `blue.60` → `--carbon-blue-60`) | mode-free |
+| `scss-vars` | Sass `$name: value;` files, written under `prefix`; `module.$var` becomes `var(--module-var)` (Material's `md-ref-palette.$primary40` → `var(--md-ref-palette-primary40)`) | `file` for both, or `files: { light, dark }` |
+
+Colors may be hex, `rgb()` or `oklch()`; the generator converts them for contrast checks and DDD's rgb-channel tokens, and writes them out as the upstream wrote them.
+
+A map entry can take `"fromMode": "light"` (or `"dark"`) to write that mode's value as a constant. Use it for a named DDD color when the system's palette only exists per mode (Spectrum).
 
 ## The contract
 

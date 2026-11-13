@@ -51,7 +51,7 @@
       "property": "fit",
       "type": "boolean",
       "default": "false",
-      "description": "fill the available height and fit the images without cropping (used for full screen)",
+      "description": "Fit both images to the available height without cropping, as in full screen.",
       "hax": null
     },
     {

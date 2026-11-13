@@ -19,7 +19,7 @@
       "property": "vanityname",
       "type": "string",
       "default": "\"btopro\"",
-      "description": "",
+      "description": "LinkedIn profile name from the profile address (linkedin.com/in/<name>).",
       "hax": null
     },
     {

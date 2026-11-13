@@ -543,7 +543,7 @@ class HexagonLoader extends LitElement {
         reflect: true,
       },
       /**
-       * Loading state
+       * Show the loader; set it while content loads and remove it when done.
        */
       loading: {
         name: "loading",

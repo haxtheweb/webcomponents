@@ -146,7 +146,7 @@
       "rows": [
         {
           "name": "goal",
-          "desc": "UN SDG number."
+          "desc": "Which of the 17 UN Sustainable…"
         },
         {
           "name": "color-only",
@@ -181,7 +181,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "color-only"
+      "s": "color-only=\"false\""
     },
     {
       "type": "text",
@@ -266,8 +266,8 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set goal and color only",
-      "text": "Fill in the Goal field in the sidebar. Show only the goal color."
+      "title": "Set goal",
+      "text": "Which of the 17 UN Sustainable Development Goals to show."
     },
     {
       "t": 14.8,

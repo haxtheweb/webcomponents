@@ -333,7 +333,7 @@ class CitationElement extends I18NMixin(SchemaBehaviors(DDDSuper(LitElement))) {
         type: String,
       },
       /**
-       * License scope
+       * The part of the page the license covers: sibling or parent content.
        */
       scope: {
         type: String,

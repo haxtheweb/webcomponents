@@ -40,7 +40,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "Format to output, see https://github.com/jacwright/date.format#supported-identifiers",
+              "description": "Date format, using the PHP date() letters, for example M jS, Y.",
               "default": "\"M jS, Y\"",
               "attribute": "format"
             },
@@ -90,7 +90,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "Format to output, see https://github.com/jacwright/date.format#supported-identifiers",
+              "description": "Date format, using the PHP date() letters, for example M jS, Y.",
               "default": "\"M jS, Y\"",
               "fieldName": "format"
             },

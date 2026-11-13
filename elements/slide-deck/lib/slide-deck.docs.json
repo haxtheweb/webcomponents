@@ -210,13 +210,13 @@
       "order": 0,
       "src": "slide-deck.motion.json",
       "file": "lib/slide-deck.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/slide-deck.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

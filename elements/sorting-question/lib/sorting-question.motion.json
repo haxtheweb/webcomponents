@@ -393,13 +393,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set question and collapsible",
-      "text": "Question Header. Switch Collapsible on or off in the sidebar."
+      "text": "Question Header. Show this question as a row that opens and closes."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set grading format",
-      "text": "Fill in the Grading format field in the sidebar."
+      "text": "OER Schema: grading format for this assessment."
     },
     {
       "t": 14.8,

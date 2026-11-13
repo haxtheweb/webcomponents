@@ -106,7 +106,7 @@ class MdBlock extends DDD {
           {
             property: "markdown",
             title: "Markdown",
-            description: "Raw markdown",
+            description: "Markdown text to show on the page as formatted content.",
             inputMethod: "textarea",
           },
           {

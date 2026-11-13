@@ -1,0 +1,58 @@
+{
+  "name": "@haxtheweb/material-theme",
+  "version": "26.8.0",
+  "description": "Material Design 3 theme for HAXcms, built on the DDD-capable Material design system bridge",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/haxtheweb/webcomponents.git"
+  },
+  "type": "module",
+  "main": "material-theme.js",
+  "module": "material-theme.js",
+  "scripts": {
+    "start": "yarn run dev",
+    "build": "prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && cem analyze --litelement --exclude \"(public|*.stories.js)\" --globs \"{*,lib/**}.js\" && node ../../scripts/extract-element-docs.mjs --write .",
+    "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
+    "watch": "gulp dev --gulpfile=gulpfile.cjs",
+    "serve": "web-dev-server -c ../../web-dev-server.config.mjs",
+    "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs",
+    "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium --watch",
+    "test": "web-test-runner \"test/**/*.test.js\" --coverage --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium",
+    "bridge": "node ../d-d-d/design-system/bridge/build-bridge.js ."
+  },
+  "author": {
+    "name": "haxtheweb",
+    "url": "https://hax.psu.edu/"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@haxtheweb/d-d-d": "^26.8.0",
+    "@haxtheweb/haxcms-elements": "^26.8.0",
+    "@haxtheweb/i18n-manager": "^26.8.0",
+    "@haxtheweb/simple-icon": "^26.8.0",
+    "lit": "3.3.3",
+    "mobx": "6.16.1"
+  },
+  "devDependencies": {
+    "@custom-elements-manifest/analyzer": "0.11.0",
+    "@haxtheweb/deduping-fix": "^26.8.0",
+    "@open-wc/testing": "4.0.0",
+    "@web/dev-server": "0.4.6",
+    "concurrently": "9.2.5"
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "customElements": "custom-elements.json",
+  "keywords": [
+    "webcomponents",
+    "html",
+    "haxtheweb",
+    "lit",
+    "haxcms",
+    "theme",
+    "material-design",
+    "design-system"
+  ]
+}

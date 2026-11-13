@@ -147,7 +147,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "value=\"Value\""
+      "s": "value=\"#000000FF\""
     },
     {
       "type": "text",
@@ -155,7 +155,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "disabled"
+      "s": "disabled=\"false\""
     },
     {
       "type": "text",
@@ -234,7 +234,7 @@
       "ex": 616,
       "ey": 434,
       "label": "value",
-      "sub": "\"Value\"",
+      "sub": "\"#000000FF\"",
       "dir": 1,
       "in": 5.2,
       "out": 7.2

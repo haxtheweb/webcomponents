@@ -188,7 +188,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "nudges=\"Nudges\""
+      "s": "nudges=\"[]\""
     },
     {
       "type": "text",
@@ -259,7 +259,7 @@
       "ex": 616,
       "ey": 500,
       "label": "input",
-      "sub": "grade · mood",
+      "sub": "Letter grade · Mood",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -283,7 +283,7 @@
       "ex": 616,
       "ey": 500,
       "label": "nudges",
-      "sub": "\"Nudges\"",
+      "sub": "\"[]\"",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -300,13 +300,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set input type and prompt",
-      "text": "Choose grade, mood for Input type."
+      "text": "How the student reports how they are doing. Question for the student."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set nudges",
-      "text": "Feedback shown for a range of responses. The first matching range is used."
+      "text": "Feedback shown for a range of responses."
     },
     {
       "t": 14.8,

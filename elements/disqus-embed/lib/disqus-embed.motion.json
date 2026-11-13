@@ -190,7 +190,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "short-name=\"Short name\""
+      "s": "short-name=\"null\""
     },
     {
       "type": "text",
@@ -198,7 +198,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "page-url=\"Page URL\""
+      "s": "page-url=\"null\""
     },
     {
       "type": "text",
@@ -206,7 +206,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "page-identifier=\"Page identifier\""
+      "s": "page-identifier=\"null\""
     },
     {
       "type": "text",
@@ -214,7 +214,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "page-title=\"Page title\""
+      "s": "page-title=\"null\""
     },
     {
       "type": "text",
@@ -299,7 +299,7 @@
       "ex": 616,
       "ey": 570,
       "label": "short-name",
-      "sub": "\"Short name\"",
+      "sub": "\"null\"",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -311,7 +311,7 @@
       "ex": 796,
       "ey": 570,
       "label": "page-url",
-      "sub": "\"Page URL\"",
+      "sub": "\"null\"",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -323,7 +323,7 @@
       "ex": 616,
       "ey": 570,
       "label": "page-identifier",
-      "sub": "\"Page identifier\"",
+      "sub": "\"null\"",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -335,7 +335,7 @@
       "ex": 796,
       "ey": 570,
       "label": "page-title",
-      "sub": "\"Page title\"",
+      "sub": "\"null\"",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -351,7 +351,7 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set short name and page url",
+      "title": "Set short name",
       "text": "The site short name, which drives the Disqus script host."
     },
     {

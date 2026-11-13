@@ -47,19 +47,19 @@
       "rows": [
         {
           "name": "contenteditable",
-          "desc": "Maps to editing attribute"
+          "desc": "Whether the region is being edi…"
         },
         {
           "name": "disabled",
-          "desc": "don't reveal toolbar on mouseov…"
+          "desc": "Keep the content read-only: foc…"
         },
         {
           "name": "disable-hover",
-          "desc": "don't reveal toolbar on mouseov…"
+          "desc": "Do not reveal the toolbar when…"
         },
         {
           "name": "toolbar-id",
-          "desc": "id for toolbar"
+          "desc": "Id of the rich-text-editor-tool…"
         }
       ],
       "active": [
@@ -246,13 +246,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set contenteditable",
-      "text": "Maps to editing attribute. Don't reveal toolbar on mouseover."
+      "text": "Whether the region is being edited now; focusing the editor sets it to true."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set disable hover",
-      "text": "Don't reveal toolbar on mouseover. Add a toolbar-id attribute to the tag."
+      "text": "Do not reveal the toolbar when the pointer moves over the editor."
     },
     {
       "t": 14.8,

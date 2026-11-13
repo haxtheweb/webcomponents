@@ -1678,7 +1678,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Is this an audio file?",
+              "description": "Treat the source as audio: no video area unless a thumbnail is set.",
               "default": "false",
               "attribute": "audio-only",
               "reflects": true
@@ -1701,7 +1701,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Allow this media to play concurrently with other a11y-media-players?\nDefault is to pause this a11y-media-player when other a11y-media-player starts playing.",
+              "description": "Keep playing when another player on the page starts, instead of\npausing.",
               "default": "false",
               "attribute": "allow-concurrent"
             },
@@ -2484,7 +2484,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Allow this media to play concurrently with other a11y-media-players?\nDefault is to pause this a11y-media-player when other a11y-media-player starts playing.",
+              "description": "Keep playing when another player on the page starts, instead of\npausing.",
               "default": "false",
               "fieldName": "allowConcurrent"
             },
@@ -2493,7 +2493,7 @@
               "type": {
                 "text": "boolean"
               },
-              "description": "Is this an audio file?",
+              "description": "Treat the source as audio: no video area unless a thumbnail is set.",
               "default": "false",
               "fieldName": "audioOnly"
             },

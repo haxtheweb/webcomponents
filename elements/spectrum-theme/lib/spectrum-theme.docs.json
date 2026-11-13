@@ -1,0 +1,43 @@
+{
+  "tag": "spectrum-theme",
+  "folder": "spectrum-theme",
+  "package": "@haxtheweb/spectrum-theme",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "spectrum-theme",
+  "description": "Adobe Spectrum theme for HAXcms, built on the DDD-capable Spectrum design system bridge",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/spectrum-theme/spectrum-theme.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/spectrum-theme/spectrum-theme.js",
+  "install": "npm i @haxtheweb/spectrum-theme",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "sidebar-open",
+      "property": "sidebarOpen",
+      "type": "boolean",
+      "default": "true",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "f20bcf4036e3",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/spectrum-theme",
+    "file": "spectrum-theme.js"
+  }
+}

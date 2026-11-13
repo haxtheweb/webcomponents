@@ -44,7 +44,7 @@
       "in": 1.7999999999999998,
       "states": [
         [1.4, "license-element"],
-        [5, "title"]
+        [5, "The btopro blog"]
       ],
       "typed": true
     },
@@ -87,19 +87,19 @@
       "rows": [
         {
           "name": "title",
-          "desc": "title"
+          "desc": "Title of the work."
         },
         {
           "name": "creator",
-          "desc": "creator"
+          "desc": "Person or group that owns / cre…"
         },
         {
           "name": "source",
-          "desc": "source"
+          "desc": "Address of the original work th…"
         },
         {
-          "name": "license-name",
-          "desc": "license name"
+          "name": "license",
+          "desc": "License short name such as by,…"
         }
       ],
       "active": [
@@ -124,7 +124,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "title=\"title\""
+      "s": "title=\"The btopro blog\""
     },
     {
       "type": "text",
@@ -132,7 +132,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "creator=\"creator\""
+      "s": "creator=\"Bryan Ollendyke\""
     },
     {
       "type": "text",
@@ -140,7 +140,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "source=\"source\""
+      "s": "source=\"https://btopro.com/\""
     },
     {
       "type": "text",
@@ -148,7 +148,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "license-name=\"license name\""
+      "s": "license=\"by\""
     },
     {
       "type": "text",
@@ -233,7 +233,7 @@
       "ex": 616,
       "ey": 500,
       "label": "title",
-      "sub": "\"title\"",
+      "sub": "\"The btopro blog\"",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -245,7 +245,7 @@
       "ex": 796,
       "ey": 500,
       "label": "creator",
-      "sub": "\"creator\"",
+      "sub": "\"Bryan Ollendyke\"",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -257,7 +257,7 @@
       "ex": 616,
       "ey": 500,
       "label": "source",
-      "sub": "\"source\"",
+      "sub": "text",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -268,8 +268,8 @@
       "py": 448,
       "ex": 796,
       "ey": 500,
-      "label": "license-name",
-      "sub": "\"license name\"",
+      "label": "license",
+      "sub": "\"by\"",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -286,13 +286,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set title and creator",
-      "text": "Add title and creator attributes to the tag."
+      "text": "Title of the work. Person or group that owns / created the work."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set source and license name",
-      "text": "Add source and license-name attributes to the tag."
+      "title": "Set source",
+      "text": "Address of the original work this content comes from."
     },
     {
       "t": 14.8,
@@ -306,7 +306,7 @@
     "line": "Semantically accurate license for a work",
     "code": ""
   },
-  "surfaceHash": "4123602f459f",
+  "surfaceHash": "691c1116f75c",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

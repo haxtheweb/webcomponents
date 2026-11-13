@@ -157,11 +157,11 @@
         },
         {
           "name": "height",
-          "desc": "Iframe height."
+          "desc": "Height of the embedded page."
         },
         {
           "name": "width",
-          "desc": "Iframe width."
+          "desc": "Width of the embedded page."
         }
       ],
       "active": [
@@ -313,13 +313,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set resource url and height",
-      "text": "Fill in the Resource URL and Height fields in the sidebar."
+      "text": "Address of the web page to embed. Height of the embedded page."
     },
     {
       "t": 10,
       "out": 14.6,
       "title": "Set width",
-      "text": "Fill in the Width field in the sidebar."
+      "text": "Width of the embedded page."
     },
     {
       "t": 14.8,

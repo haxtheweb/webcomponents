@@ -63,6 +63,7 @@
       {
         "property": "showLegend",
         "title": "Show legend",
+        "description": "Show a legend naming the scores and the targets.",
         "inputMethod": "boolean",
         "icon": "icons:list"
       },

@@ -23,7 +23,7 @@
       {
         "property": "source",
         "title": "Resource URL",
-        "description": "Resource URL.",
+        "description": "Discord channel link (discord.com/channels/\u2026) to show as a live widget.",
         "inputMethod": "textfield",
         "icon": "link",
         "required": true,

@@ -188,7 +188,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "shiny"
+      "s": "shiny=\"false\""
     },
     {
       "type": "text",

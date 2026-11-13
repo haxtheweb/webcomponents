@@ -100,12 +100,14 @@
         {
           "property": "openText",
           "title": "Optional summary text when details are open",
+          "description": "Button text while the description is hidden, such as Show description.",
           "inputMethod": "textfield",
           "required": false
         },
         {
           "property": "closeText",
           "title": "Optional summary text when details are closed",
+          "description": "Button text while the description is showing, such as Hide description.",
           "inputMethod": "textfield",
           "required": false
         }
