@@ -226,6 +226,19 @@ describe("design system setting in appearance", () => {
     );
   });
 
+  it("leaves the field out of a save that didn't change it", async () => {
+    store.manifest = makeManifest("patternfly");
+    const el = await appearance();
+    setTimeout(() => el.save());
+    const e = await oneEvent(globalThis, "haxcms-save-appearance-settings");
+    expect(
+      Object.prototype.hasOwnProperty.call(
+        e.detail.manifest.theme,
+        "manifest-metadata-theme-designSystem",
+      ),
+    ).to.equal(false);
+  });
+
   it("saves the choice and previews it before saving", async () => {
     store.manifest = makeManifest();
     const el = await appearance();

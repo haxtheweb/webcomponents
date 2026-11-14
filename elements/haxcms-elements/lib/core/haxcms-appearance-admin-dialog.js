@@ -1494,6 +1494,15 @@ class HAXCMSAppearanceAdminDialog extends HaxcmsAdminSectionMixin(
     this.groups.forEach((group) => {
       group.fields.forEach((field) => {
         const key = field.property;
+        // the design system goes only when edited, so a save that doesn't
+        // touch it is the same request older backends (which don't know
+        // the field) have always accepted
+        if (
+          key === "manifest-metadata-theme-designSystem" &&
+          !this._isChanged(key)
+        ) {
+          return;
+        }
         const value =
           typeof this.values[key] !== "undefined"
             ? this._cloneData(this.values[key])
