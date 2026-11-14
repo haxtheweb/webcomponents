@@ -103,6 +103,28 @@ class HAXCMSAppearanceAdminDialog extends HaxcmsAdminSectionMixin(
       iconDescription: "Icon to represent the site in themes that implement it",
       regions: "Regions",
       regionsDescription: "Assign pages to theme region slots.",
+      announcement: "Announcement",
+      announcementDescription:
+        "One line of news shown at the top of every page, in every theme. Visitors can dismiss it.",
+      announcementTitle: "Headline",
+      announcementTitleDescription: "Shown in bold first. Plain text.",
+      announcementText: "Text",
+      announcementTextDescription:
+        "Plain text, up to 500 characters. Leave headline and text empty to remove the announcement.",
+      announcementLink: "Link",
+      announcementLinkDescription: "Optional page or web address",
+      announcementLinkText: "Link text",
+      announcementLinkTextDescription: "What the link says, such as See dates",
+      announcementVariant: "Kind",
+      announcementVariantDescription: "Sets the color of the bar",
+      variantBrand: "Brand",
+      variantNeutral: "Neutral",
+      variantSuccess: "Success",
+      variantWarning: "Warning",
+      variantDanger: "Danger",
+      announcementEnds: "Show until",
+      announcementEndsDescription:
+        "It stops showing after this day. Leave empty to keep it until you remove it.",
       header: "Header",
       headerDescription: "Page shown in the header region",
       sidebarFirst: "Sidebar first",
@@ -960,6 +982,64 @@ class HAXCMSAppearanceAdminDialog extends HaxcmsAdminSectionMixin(
         ],
       },
       {
+        key: "announcement",
+        label: this.t.announcement,
+        icon: HaxUiAdminIcons.info,
+        description: this.t.announcementDescription,
+        open: false,
+        fields: [
+          {
+            property: "manifest-metadata-theme-announcement-title",
+            title: this.t.announcementTitle,
+            description: this.t.announcementTitleDescription,
+            inputMethod: "textfield",
+            required: false,
+          },
+          {
+            property: "manifest-metadata-theme-announcement-text",
+            title: this.t.announcementText,
+            description: this.t.announcementTextDescription,
+            inputMethod: "textarea",
+            required: false,
+          },
+          {
+            property: "manifest-metadata-theme-announcement-link",
+            title: this.t.announcementLink,
+            description: this.t.announcementLinkDescription,
+            inputMethod: "textfield",
+            required: false,
+          },
+          {
+            property: "manifest-metadata-theme-announcement-linkText",
+            title: this.t.announcementLinkText,
+            description: this.t.announcementLinkTextDescription,
+            inputMethod: "textfield",
+            required: false,
+          },
+          {
+            property: "manifest-metadata-theme-announcement-variant",
+            title: this.t.announcementVariant,
+            description: this.t.announcementVariantDescription,
+            inputMethod: "select",
+            required: false,
+            options: {
+              brand: this.t.variantBrand,
+              neutral: this.t.variantNeutral,
+              success: this.t.variantSuccess,
+              warning: this.t.variantWarning,
+              danger: this.t.variantDanger,
+            },
+          },
+          {
+            property: "manifest-metadata-theme-announcement-ends",
+            title: this.t.announcementEnds,
+            description: this.t.announcementEndsDescription,
+            inputMethod: "datepicker",
+            required: false,
+          },
+        ],
+      },
+      {
         key: "regions",
         label: this.t.regions,
         icon: HaxUiAdminIcons.regions,
@@ -1027,6 +1107,18 @@ class HAXCMSAppearanceAdminDialog extends HaxcmsAdminSectionMixin(
     );
     values["manifest-metadata-theme-designSystem"] =
       typeof metadata.designSystem === "string" ? metadata.designSystem : "";
+    const announcement =
+      metadata.announcement && typeof metadata.announcement === "object"
+        ? metadata.announcement
+        : {};
+    ["title", "text", "link", "linkText", "variant", "ends"].forEach((key) => {
+      values[`manifest-metadata-theme-announcement-${key}`] =
+        typeof announcement[key] === "string"
+          ? announcement[key]
+          : key === "variant"
+            ? "brand"
+            : "";
+    });
     values["manifest-metadata-theme-variables-image"] =
       this._normalizeFieldValue(
         "manifest-metadata-theme-variables-image",
@@ -1494,11 +1586,12 @@ class HAXCMSAppearanceAdminDialog extends HaxcmsAdminSectionMixin(
     this.groups.forEach((group) => {
       group.fields.forEach((field) => {
         const key = field.property;
-        // the design system goes only when edited, so a save that doesn't
-        // touch it is the same request older backends (which don't know
-        // the field) have always accepted
+        // the design system and announcement fields go only when edited,
+        // so a save that doesn't touch them is the same request older
+        // backends (which don't know them) have always accepted
         if (
-          key === "manifest-metadata-theme-designSystem" &&
+          (key === "manifest-metadata-theme-designSystem" ||
+            key.indexOf("manifest-metadata-theme-announcement-") === 0) &&
           !this._isChanged(key)
         ) {
           return;

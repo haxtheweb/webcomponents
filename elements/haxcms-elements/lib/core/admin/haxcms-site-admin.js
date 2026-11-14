@@ -174,6 +174,7 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
       palette: "Palette",
       branding: "Branding",
       regions: "Regions",
+      announcement: "Announcement",
       aboutCommunity: "HAX and community",
       aboutTutorials: "Tutorials and how-to",
       aboutApi: "API links",

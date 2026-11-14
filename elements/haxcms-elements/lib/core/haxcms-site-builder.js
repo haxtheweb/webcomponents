@@ -744,6 +744,9 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       // apply a class so that we can write generic CSS selectors in integrations
       store.themeElement.classList.add("haxcms-theme-element");
       this._applyThemePalette(store.themeElement, this.themeData);
+      // the site-wide announcement sits above every theme, so no theme has
+      // to render it; it stays an inert tag until a site has one
+      this.appendChild(globalThis.document.createElement("site-announcement"));
       this.appendChild(store.themeElement);
       this._scheduleThemePaletteReapply(this.themeData);
     }
@@ -1480,6 +1483,9 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       this.themeLoaded = false;
       let theme = newValue;
       this._applyDesignSystem(newValue);
+      if (newValue.announcement) {
+        import("../ui-components/site/site-announcement.js");
+      }
       // create the 'theme' as a new element
       // weird but definition already here so we should be able
       // to just use this without an import, it's possible..

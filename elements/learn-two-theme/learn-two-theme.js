@@ -129,8 +129,10 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
         }
         @media (min-width: 901px) {
           :host([is-logged-in]) .drawer {
-            top: 56px;
-            height: calc(100vh - 56px);
+            top: calc(56px + var(--haxcms-site-announcement-height, 0px));
+            height: calc(
+              100vh - 56px - var(--haxcms-site-announcement-height, 0px)
+            );
           }
         }
         site-git-corner {
@@ -216,10 +218,11 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
         .drawer {
           opacity: 1;
           position: fixed;
-          top: 0;
+          /* below the site announcement while it is in view */
+          top: var(--haxcms-site-announcement-height, 0px);
           left: 0;
           width: 300px;
-          height: 100vh;
+          height: calc(100vh - var(--haxcms-site-announcement-height, 0px));
           overflow-y: auto;
           transition: var(--ddd-duration-normal, 0.3s) linear all;
           box-shadow: var(

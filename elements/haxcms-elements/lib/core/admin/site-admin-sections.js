@@ -252,6 +252,12 @@ export const SITE_ADMIN_SECTIONS = [
         anchor: "branding",
       },
       {
+        key: "announcement",
+        labelKey: "announcement",
+        icon: HaxUiAdminIcons.info,
+        anchor: "announcement",
+      },
+      {
         key: "regions",
         labelKey: "regions",
         icon: HaxUiAdminIcons.regions,

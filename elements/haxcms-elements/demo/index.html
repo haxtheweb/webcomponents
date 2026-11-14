@@ -402,17 +402,23 @@
     // only changes the theme of the site.json this page loads; nothing is saved.
     // &designSystem=<name> previews a design system from ../lib/designSystems.json
     // on a theme that accepts one (clean-one, learn-two-theme).
+    // &announcement=<brand|neutral|success|warning|danger> shows a sample
+    // site-wide announcement in that variant.
     (function () {
       var params = new URLSearchParams(globalThis.location.search);
       var requested = params.get('theme');
       var system = params.get('designSystem');
+      var announce = params.get('announcement');
+      if (!announce || !/^(brand|neutral|success|warning|danger)$/.test(announce)) {
+        announce = null;
+      }
       if (!requested || !/^[a-z0-9-]+$/.test(requested)) {
         requested = null;
       }
       if (!system || !/^[a-z0-9-]+$/.test(system)) {
         system = null;
       }
-      if (!requested && !system) {
+      if (!requested && !system && !announce) {
         return;
       }
       var nativeFetch = globalThis.fetch.bind(globalThis);
@@ -428,7 +434,7 @@
         return Promise.all([nativeFetch(input, init), themes]).then(function (both) {
           var res = both[0];
           var theme = requested && Object.prototype.hasOwnProperty.call(both[1], requested) ? both[1][requested] : null;
-          if (!res.ok || (!system && (!theme || !theme.element || !theme.path))) {
+          if (!res.ok || (!system && !announce && (!theme || !theme.element || !theme.path))) {
             return res;
           }
           return res.clone().json().then(function (manifest) {
@@ -442,6 +448,16 @@
             }
             if (system) {
               manifest.metadata.theme.designSystem = system;
+            }
+            if (announce) {
+              manifest.metadata.theme.announcement = {
+                title: 'Spring sections open Monday.',
+                text: 'Registration closes January 9.',
+                link: '#',
+                linkText: 'See dates',
+                variant: announce,
+                ends: '',
+              };
             }
             return new Response(JSON.stringify(manifest), {
               status: res.status,

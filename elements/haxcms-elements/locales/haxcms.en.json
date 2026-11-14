@@ -733,5 +733,7 @@
   "previewShownAt": "{device}, shown at {percent}%",
   "previewDialogOpen": "Close the open dialog to preview the site",
   "shortcutPreview": "Preview the site as a visitor sees it",
-  "previewCloseDevice": "Close {device} view"
+  "previewCloseDevice": "Close {device} view",
+  "announcement": "Announcement",
+  "dismissAnnouncement": "Dismiss announcement"
 }
