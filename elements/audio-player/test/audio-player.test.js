@@ -566,7 +566,7 @@ describe("audio-player in the DDD player frame", () => {
       inner.shadowRoot
         .querySelector(".ddd-block-chip simple-icon-lite")
         .getAttribute("icon"),
-    ).to.equal("av:equalizer");
+    ).to.equal("hax:waveform");
     // no picture: no fullscreen, transcript always below
     expect(
       inner.shadowRoot.querySelector("#header-fullscreen").hidden,

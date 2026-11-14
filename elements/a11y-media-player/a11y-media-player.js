@@ -11,6 +11,7 @@ import {
 import { DDDAccentStyles } from "@haxtheweb/d-d-d/lib/DDDAccent.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import { FullscreenBehaviors } from "@haxtheweb/fullscreen-behaviors/fullscreen-behaviors.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
@@ -1540,7 +1541,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
         ${this.mediaCaption}
       </div>
       ${renderDDDBlockHeader({
-        icon: this.audioOnly ? "av:equalizer" : "av:play-arrow",
+        icon: this.audioOnly ? "hax:waveform" : "av:play-circle-filled",
         label: this._blockLabel,
         title: this.mediaTitle,
         part: "media-header",

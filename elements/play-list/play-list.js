@@ -9,6 +9,7 @@ import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import "./lib/play-list-slide.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import {
   DDDBlockStyles,
   renderDDDBlockHeader,
@@ -411,7 +412,7 @@ class PlayList extends I18NMixin(DDD) {
                 @touchend="${this._handleTouchEnd}"
               >
                 ${renderDDDBlockHeader({
-                  icon: "image:slideshow",
+                  icon: "hax:view-gallery",
                   label: html`${this.t.slides} ·
                   ${this.t.position
                     .replace("{number}", () =>

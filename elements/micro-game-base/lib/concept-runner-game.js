@@ -641,6 +641,7 @@ export class ConceptRunnerGame extends MicroGameBase {
     return html`
       <section class="frame ddd-block" role="group" aria-labelledby="game-hdr">
         ${this.renderGameHeader({
+          icon: "hax:game-runner",
           label: this.t.blockLabel,
           title: this.gameTitle || this.questTitle,
         })}

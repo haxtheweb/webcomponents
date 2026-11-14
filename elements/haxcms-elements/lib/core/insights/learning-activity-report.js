@@ -5,6 +5,7 @@
 import { LitElement, html, css, nothing } from "lit";
 import { styleMap } from "lit/directives/style-map.js";
 import { toJS } from "mobx";
+import { elementGizmo, ELEMENT_GIZMO_READY } from "../utils/ElementGizmo.js";
 import { store } from "../haxcms-site-store.js";
 import { HAXCMSI18NMixin } from "../utils/HAXCMSI18NMixin.js";
 import {
@@ -83,12 +84,9 @@ export function elementTitle(tag) {
         return String(g.title);
       }
     }
-    const ce = globalThis.customElements
-      ? globalThis.customElements.get(tag)
-      : null;
-    const hp = ce ? ce.haxProperties : null;
-    if (hp && typeof hp === "object" && hp.gizmo && hp.gizmo.title) {
-      return String(hp.gizmo.title);
+    const gizmo = elementGizmo(tag);
+    if (gizmo && gizmo.title) {
+      return String(gizmo.title);
     }
   } catch {
     // fall back to the tag
@@ -132,6 +130,20 @@ class HAXCMSLearningActivityReport extends HAXCMSI18NMixin(LitElement) {
       _allPages: { state: true },
       _withNone: { state: true },
     };
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    // element names that came from a schema file: draw again once read
+    if (!this._onGizmoReady) {
+      this._onGizmoReady = () => this.requestUpdate();
+    }
+    globalThis.addEventListener(ELEMENT_GIZMO_READY, this._onGizmoReady);
+  }
+
+  disconnectedCallback() {
+    globalThis.removeEventListener(ELEMENT_GIZMO_READY, this._onGizmoReady);
+    super.disconnectedCallback();
   }
 
   constructor() {

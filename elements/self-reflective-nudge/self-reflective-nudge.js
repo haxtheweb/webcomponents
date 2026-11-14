@@ -17,6 +17,7 @@ import {
   XAPI_EXTENSIONS,
 } from "@haxtheweb/user-action/lib/xapi.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 
 /**
  * Letter grades on the standard 0-4 scale (F = 0 ... A = 4)
@@ -381,7 +382,7 @@ export class SelfReflectiveNudge extends DDDSuper(I18NMixin(LitElement)) {
     return html`
       <div class="ddd-block">
         ${renderDDDBlockHeader({
-          icon: "icons:face",
+          icon: "hax:nudge",
           label: this.t.practice + " · " + this.t.reflect,
         })}
         <fieldset part="fieldset">

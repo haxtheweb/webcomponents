@@ -28,14 +28,15 @@
     "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium"
   },
   "dependencies": {
-    "lit": "3.3.3",
     "@haxtheweb/d-d-d": "^26.0.0",
+    "@haxtheweb/hax-iconset": "^26.0.0",
     "@haxtheweb/i18n-manager": "^26.0.0",
     "@haxtheweb/intersection-element": "^26.0.0",
     "@haxtheweb/multiple-choice": "^26.0.0",
     "@haxtheweb/rpg-character": "^26.0.0",
     "@haxtheweb/schema-behaviors": "^26.0.0",
-    "@haxtheweb/user-action": "^26.0.0"
+    "@haxtheweb/user-action": "^26.0.0",
+    "lit": "3.3.3"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.11.0",

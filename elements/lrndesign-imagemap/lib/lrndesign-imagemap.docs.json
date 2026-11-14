@@ -19,7 +19,7 @@
   "import": "@haxtheweb/lrndesign-imagemap/lrndesign-imagemap.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/lrndesign-imagemap/lrndesign-imagemap.js",
   "install": "npm i @haxtheweb/lrndesign-imagemap",
-  "demoHtml": "<lrndesign-imagemap></lrndesign-imagemap>",
+  "demoHtml": "<lrndesign-imagemap src=\"https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/lrndesign-imagemap/lib/design-process.svg\" label=\"Course design process\">\n  <div slot=\"desc\"><p>A diagram of the five steps of course design. Select a step to learn more.</p></div><lrndesign-imagemap-hotspot hotspot-id=\"plan\" label=\"Design plan\">Collaborators agree on the course goals, the assessment strategy and the timeline.</lrndesign-imagemap-hotspot><lrndesign-imagemap-hotspot hotspot-id=\"outline\" label=\"Course outline\">The course is broken into modules and lessons, each tied to a goal.</lrndesign-imagemap-hotspot><lrndesign-imagemap-hotspot hotspot-id=\"proto\" label=\"Prototype\">One lesson is built in full so the approach can be tried and adjusted.</lrndesign-imagemap-hotspot><lrndesign-imagemap-hotspot hotspot-id=\"prod\" label=\"Production\">The remaining lessons are built following the prototype.</lrndesign-imagemap-hotspot><lrndesign-imagemap-hotspot hotspot-id=\"qr\" label=\"Quality review\">The finished course is checked for accuracy, accessibility and consistency.</lrndesign-imagemap-hotspot>\n</lrndesign-imagemap>",
   "attributes": [
     {
       "name": "label",
@@ -142,12 +142,15 @@
     "demoSchema": [
       {
         "tag": "lrndesign-imagemap",
-        "content": "",
-        "properties": {}
+        "properties": {
+          "src": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/lrndesign-imagemap/lib/design-process.svg",
+          "label": "Course design process"
+        },
+        "content": "<div slot=\"desc\"><p>A diagram of the five steps of course design. Select a step to learn more.</p></div><lrndesign-imagemap-hotspot hotspot-id=\"plan\" label=\"Design plan\">Collaborators agree on the course goals, the assessment strategy and the timeline.</lrndesign-imagemap-hotspot><lrndesign-imagemap-hotspot hotspot-id=\"outline\" label=\"Course outline\">The course is broken into modules and lessons, each tied to a goal.</lrndesign-imagemap-hotspot><lrndesign-imagemap-hotspot hotspot-id=\"proto\" label=\"Prototype\">One lesson is built in full so the approach can be tried and adjusted.</lrndesign-imagemap-hotspot><lrndesign-imagemap-hotspot hotspot-id=\"prod\" label=\"Production\">The remaining lessons are built following the prototype.</lrndesign-imagemap-hotspot><lrndesign-imagemap-hotspot hotspot-id=\"qr\" label=\"Quality review\">The finished course is checked for accuracy, accessibility and consistency.</lrndesign-imagemap-hotspot>"
       }
     ]
   },
-  "surfaceHash": "6fde06583fc7",
+  "surfaceHash": "0edb95a5d44a",
   "walkthroughs": [
     {
       "id": "",

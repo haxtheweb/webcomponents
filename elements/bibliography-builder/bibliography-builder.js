@@ -122,7 +122,7 @@ export class BibliographyBuilder extends SchemaBehaviors(
       <meta property="oer:forCourse" content="${this.forCourse}" />
       ${renderDDDBlockHeader({
         id: "hdr",
-        icon: "icons:list",
+        icon: "hax:books",
         label: this.t.title,
         title: this._headerTitle(),
         titleTag: "h3",

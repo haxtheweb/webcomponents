@@ -7,6 +7,7 @@ import { LitElement, html, css } from "lit";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import {
   DDDBlockStyles,
   renderDDDBlockHeader,
@@ -164,7 +165,7 @@ export class TableauEmbed extends I18NMixin(LitElement) {
   render() {
     return html`<div class="ddd-block">
       ${renderDDDBlockHeader({
-        icon: "editor:insert-chart",
+        icon: "hax:graph",
         label: html`${this.t.dataVisualization} · Tableau`,
         actions: this.src
           ? html`<a

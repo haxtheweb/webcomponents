@@ -77,7 +77,7 @@ describe("a11y-media-player block header", () => {
       el.shadowRoot
         .querySelector(".ddd-block-chip simple-icon-lite")
         .getAttribute("icon"),
-    ).to.equal("av:play-arrow");
+    ).to.equal("av:play-circle-filled");
   });
 
   it("orders the header actions left to right with the existing labels", () => {

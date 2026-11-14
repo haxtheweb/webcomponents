@@ -7,6 +7,7 @@ import { LitElement, html, css } from "lit";
 import "@haxtheweb/iframe-loader/iframe-loader.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import {
   DDDBlockStyles,
   renderDDDBlockHeader,
@@ -110,7 +111,7 @@ class DiscordEmbed extends I18NMixin(LitElement) {
         ? html`
             <div class="ddd-block">
               ${renderDDDBlockHeader({
-                icon: "communication:forum",
+                icon: "hax:discord",
                 label: html`${this.t.chat} · Discord`,
                 actions: html`<a
                   class="ddd-block-action"

@@ -9,6 +9,7 @@ import {
   DDDBlockStyles,
   renderDDDBlockHeader,
 } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 
 /**
  * `lrn-table`
@@ -75,7 +76,7 @@ class LrnTable extends I18NMixin(SchemaBehaviors(LitElement)) {
         }"
       >
         ${renderDDDBlockHeader({
-          icon: "editor:border-all",
+          icon: "hax:file-csv",
           label: this.t.table,
           title: this.title
             ? html`<span aria-hidden="true">${this.title}</span>`
