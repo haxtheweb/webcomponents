@@ -4,51 +4,50 @@
   "description": "Project home and documentation for all things HAX",
   "icons": [
     {
-      "src": "files/haxcms-managed/36x36-3450183.png",
-      "sizes": "36x36",
-      "type": "image/png",
-      "density": "0.75"
-    },
-    {
-      "src": "files/haxcms-managed/48x48-3450183.png",
+      "src": "assets/icon-48x48.png",
       "sizes": "48x48",
       "type": "image/png",
-      "density": "1.0"
+      "purpose": "any"
     },
     {
-      "src": "files/haxcms-managed/72x72-3450183.png",
+      "src": "assets/icon-72x72.png",
       "sizes": "72x72",
       "type": "image/png",
-      "density": "1.5"
+      "purpose": "any"
     },
     {
-      "src": "files/haxcms-managed/96x96-3450183.png",
+      "src": "assets/icon-96x96.png",
       "sizes": "96x96",
       "type": "image/png",
-      "density": "2.0"
+      "purpose": "any"
     },
     {
-      "src": "files/haxcms-managed/144x144-3450183.png",
+      "src": "assets/icon-144x144.png",
       "sizes": "144x144",
       "type": "image/png",
-      "density": "3.0"
+      "purpose": "any"
     },
     {
-      "src": "files/haxcms-managed/192x192-3450183.png",
+      "src": "assets/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "density": "4.0",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
-      "src": "files/haxcms-managed/512x512-3450183.png",
+      "src": "assets/icon-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "density": "4.0"
+      "purpose": "any"
     }
   ],
-  "scope": "/sites/haxtheweb/",
-  "start_url": "/sites/haxtheweb/",
+  "scope": "./",
+  "start_url": "./",
   "display": "standalone",
   "theme_color": "#009dc7",
   "background_color": "#009dc7"
