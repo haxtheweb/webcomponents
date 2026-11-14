@@ -180,8 +180,8 @@
       "token": "--carbon-red-40"
     },
     "--ddd-theme-default-link": {
-      "token": "--carbon-blue-60",
-      "note": "Carbon link-primary (white theme)"
+      "token": "--carbon-blue-70",
+      "note": "Carbon link-primary-hover (white theme): link-primary (blue-60) is under 4.5:1 on the gray-20 surfaces HAX blocks put links on"
     },
     "--ddd-theme-default-linkLight": {
       "token": "--carbon-blue-40",

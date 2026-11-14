@@ -51,6 +51,7 @@ export const TailwindTokens = css`
     --color-red-800: oklch(44.4% 0.177 26.899);
     --color-sky-200: oklch(90.1% 0.058 230.902);
     --color-sky-300: oklch(82.8% 0.111 230.318);
+    --color-sky-400: oklch(74.6% 0.16 232.661);
     --color-sky-50: oklch(97.7% 0.013 236.62);
     --color-sky-500: oklch(68.5% 0.169 237.323);
     --color-sky-600: oklch(58.8% 0.158 241.966);
@@ -62,7 +63,7 @@ export const TailwindTokens = css`
     --color-stone-50: oklch(98.5% 0.001 106.423);
     --color-teal-200: oklch(91% 0.096 180.426);
     --color-teal-50: oklch(98.4% 0.014 180.72);
-    --color-teal-600: oklch(60% 0.118 184.704);
+    --color-teal-500: oklch(70.4% 0.14 182.503);
     --color-violet-300: oklch(81.1% 0.111 293.571);
     --color-white: #fff;
     --color-yellow-300: oklch(90.5% 0.182 98.111);

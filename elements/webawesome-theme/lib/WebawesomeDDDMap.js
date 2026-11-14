@@ -14,7 +14,7 @@ export const WebawesomeDDDMap = css`
     --ddd-theme-default-potentialMidnight: var(--wa-color-blue-10);
     --ddd-theme-default-pughBlue: var(--wa-color-blue-80);
     --ddd-theme-default-accent: var(--wa-color-blue-80);
-    --ddd-theme-default-skyBlue: var(--wa-color-blue-70);
+    --ddd-theme-default-skyBlue: var(--wa-color-blue-80);
     --ddd-theme-default-skyLight: var(--wa-color-blue-90);
     --ddd-theme-default-skyMaxLight: var(--wa-color-blue-95);
     --ddd-theme-default-slateGray: var(--wa-color-gray-40);
@@ -23,7 +23,7 @@ export const WebawesomeDDDMap = css`
     --ddd-theme-default-coalyGray: var(--wa-color-gray-10);
     --ddd-theme-default-black: black;
     --ddd-theme-default-white: white;
-    --ddd-theme-default-limestoneGray: var(--wa-color-gray-60);
+    --ddd-theme-default-limestoneGray: var(--wa-color-gray-80);
     --ddd-theme-default-limestoneLight: var(--wa-color-gray-90);
     --ddd-theme-default-limestoneMaxLight: var(--wa-color-gray-95);
     --ddd-theme-default-background: var(--wa-color-gray-95);
@@ -103,10 +103,10 @@ export const WebawesomeDDDMap = css`
     --ddd-primary-2-rgb: 0, 63, 156;
     --ddd-primary-3-rgb: 0, 26, 78;
     --ddd-primary-4-rgb: 27, 29, 38;
-    --ddd-primary-5-rgb: 145, 148, 162;
+    --ddd-primary-5-rgb: 199, 201, 208;
     --ddd-primary-6-rgb: 84, 88, 104;
     --ddd-primary-7-rgb: 47, 190, 220;
-    --ddd-primary-8-rgb: 110, 179, 255;
+    --ddd-primary-8-rgb: 159, 206, 255;
     --ddd-primary-9-rgb: 255, 187, 148;
     --ddd-primary-10-rgb: 239, 157, 0;
     --ddd-primary-11-rgb: 158, 42, 108, 0.7;

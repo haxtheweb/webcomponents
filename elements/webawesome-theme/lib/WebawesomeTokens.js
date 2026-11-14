@@ -36,7 +36,6 @@ export const WebawesomeTokens = css`
     --wa-color-focus: #3e96ff;
     --wa-color-gray-10: #1b1d26;
     --wa-color-gray-40: #545868;
-    --wa-color-gray-60: #9194a2;
     --wa-color-gray-80: #c7c9d0;
     --wa-color-gray-90: #e4e5e9;
     --wa-color-gray-95: #f1f2f3;

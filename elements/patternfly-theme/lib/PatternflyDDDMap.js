@@ -14,7 +14,7 @@ export const PatternflyDDDMap = css`
     --ddd-theme-default-potentialMidnight: var(--pf-t--color--blue--80);
     --ddd-theme-default-pughBlue: var(--pf-t--color--blue--30);
     --ddd-theme-default-accent: var(--pf-t--color--blue--30);
-    --ddd-theme-default-skyBlue: var(--pf-t--color--blue--40);
+    --ddd-theme-default-skyBlue: var(--pf-t--color--blue--30);
     --ddd-theme-default-skyLight: var(--pf-t--color--blue--20);
     --ddd-theme-default-skyMaxLight: var(--pf-t--color--blue--10);
     --ddd-theme-default-slateGray: var(--pf-t--color--gray--70);
@@ -46,7 +46,7 @@ export const PatternflyDDDMap = css`
     --ddd-theme-default-wonderPurple: var(--pf-t--color--purple--60);
     --ddd-theme-default-original87Pink: var(--pf-t--color--red--60);
     --ddd-theme-default-discoveryCoral: var(--pf-t--color--red--40);
-    --ddd-theme-default-link: var(--pf-t--color--blue--50);
+    --ddd-theme-default-link: var(--pf-t--color--blue--60);
     --ddd-theme-default-linkLight: var(--pf-t--color--blue--20);
     --ddd-theme-default-error: var(--pf-t--color--red--70);
     --ddd-theme-default-errorLight: var(--pf-t--color--red--10);
@@ -105,7 +105,7 @@ export const PatternflyDDDMap = css`
     --ddd-primary-5-rgb: 163, 163, 163;
     --ddd-primary-6-rgb: 56, 56, 56;
     --ddd-primary-7-rgb: 55, 163, 163;
-    --ddd-primary-8-rgb: 67, 148, 229;
+    --ddd-primary-8-rgb: 146, 197, 249;
     --ddd-primary-9-rgb: 202, 108, 15;
     --ddd-primary-10-rgb: 185, 132, 18;
     --ddd-primary-11-rgb: 166, 0, 0, 0.7;

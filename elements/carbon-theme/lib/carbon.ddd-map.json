@@ -182,7 +182,7 @@
     {
       "fg": "--ddd-theme-default-link",
       "bg": "--ddd-theme-default-white",
-      "ratio": 5,
+      "ratio": 7.79,
       "min": 4.5
     },
     {
@@ -237,6 +237,60 @@
       "fg": "--ddd-theme-default-coalyGray",
       "bg": "--ddd-theme-default-limestoneMaxLight",
       "ratio": 16.45,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-link",
+      "bg": "--ddd-theme-default-limestoneMaxLight",
+      "ratio": 7.09,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-link",
+      "bg": "--ddd-theme-default-limestoneLight",
+      "ratio": 5.9,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-limestoneGray",
+      "bg": "--ddd-theme-default-nittanyNavy",
+      "ratio": 4.76,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-limestoneGray",
+      "bg": "--ddd-theme-default-potentialMidnight",
+      "ratio": 6.34,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-nittanyNavy",
+      "bg": "--ddd-theme-default-skyBlue",
+      "ratio": 4.81,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-potentialMidnight",
+      "bg": "--ddd-theme-default-creekTeal",
+      "ratio": 4.52,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-potentialMidnight",
+      "bg": "--ddd-theme-default-inventOrange",
+      "ratio": 6.13,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-potentialMidnight",
+      "bg": "--ddd-theme-default-discoveryCoral",
+      "ratio": 6.36,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-potentialMidnight",
+      "bg": "--ddd-theme-default-keystoneYellow",
+      "ratio": 8.96,
       "min": 4.5
     }
   ],
@@ -742,10 +796,10 @@
     {
       "ddd": "--ddd-theme-default-link",
       "tier": "identity",
-      "token": "--carbon-blue-60",
-      "light": "#0f62fe",
-      "dark": "#0f62fe",
-      "note": "Carbon link-primary (white theme)"
+      "token": "--carbon-blue-70",
+      "light": "#0043ce",
+      "dark": "#0043ce",
+      "note": "Carbon link-primary-hover (white theme): link-primary (blue-60) is under 4.5:1 on the gray-20 surfaces HAX blocks put links on"
     },
     {
       "ddd": "--ddd-theme-default-linkLight",
