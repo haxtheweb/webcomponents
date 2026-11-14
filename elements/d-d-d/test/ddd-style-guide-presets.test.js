@@ -26,6 +26,7 @@ describe("DDDStyleGuidePresets data", () => {
     expect(DDDStyleGuidePresets.readingRequired).to.exist;
     expect(DDDStyleGuidePresets.readingOptional).to.exist;
     expect(DDDStyleGuidePresets.bannerHeading).to.exist;
+    expect(DDDStyleGuidePresets.keyPoints).to.exist;
   });
 
   it("offers at most five presets for any one tag", () => {
@@ -146,7 +147,21 @@ describe("getDDDStyleGuideOptionsForTag", () => {
         "readingOptional",
         "listDisc",
         "listCircle",
+        "keyPoints",
       ]);
+    });
+  });
+
+  it("key points boxes a bullet list with existing DDD attributes only", () => {
+    const keyPoints = DDDStyleGuidePresets.keyPoints;
+    expect(keyPoints.name).to.equal("Key points");
+    expect(keyPoints.allowedTags).to.deep.equal(["ul"]);
+    expect(keyPoints.default).to.be.false;
+    expect(keyPoints.properties).to.deep.equal({
+      "data-primary": "2",
+      "data-accent": "2",
+      "data-border-radius": "md",
+      "data-padding": "s",
     });
   });
 

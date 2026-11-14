@@ -1,0 +1,141 @@
+{
+  "meta": {
+    "name": "portfolio",
+    "machineName": "portfolio",
+    "priority": 0,
+    "description": "A professional portfolio on the Glossy Portfolio theme: summary, projects, experience, and education and certifications.",
+    "version": "1.0.0",
+    "created": "2026-03-05T20:54:02.636Z",
+    "type": "skeleton",
+    "useCaseTitle": "Portfolio",
+    "useCaseDescription": "A professional portfolio on the Glossy Portfolio theme: summary, projects, experience, and education and certifications.",
+    "useCaseImage": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-glossy-portfolio-theme-thumb.jpg",
+    "category": ["Website"],
+    "tags": ["portfolio", "career", "professional"],
+    "attributes": []
+  },
+  "site": {
+    "name": "portfolio",
+    "description": "Jordan Reyes, aspiring financial analyst in New York.",
+    "theme": "glossy-portfolio-theme",
+    "settings": {
+      "lang": "en-US",
+      "publishPagesOn": true,
+      "canonical": true
+    },
+    "platform": {
+      "audience": "novice",
+      "features": {
+        "addPage": false,
+        "deletePage": false,
+        "outlineDesigner": false,
+        "styleGuide": false,
+        "insights": false,
+        "manifest": false,
+        "pageBreak": false,
+        "addBlock": false,
+        "contentMap": false,
+        "viewSource": false,
+        "onlineSearch": false
+      },
+      "allowedBlocks": []
+    }
+  },
+  "build": {
+    "type": "skeleton",
+    "structure": "from-skeleton",
+    "items": [
+      {
+        "id": "f7ad95dc-5bc2-a26c-f736-8f8d963fe0cb",
+        "title": "Jordan Reyes",
+        "slug": "home",
+        "order": 0,
+        "parent": null,
+        "indent": 0,
+        "content": "<h2 data-style-guide=\"headline\" data-design-treatment=\"vert\" data-primary=\"8\" data-padding=\"xs\" data-border-radius=\"xs\">Aspiring Financial Analyst</h2><p data-font-size=\"s\"><em>Investment Banking · Asset Management · FinTech</em></p><ul><li><strong>Location:</strong> New York, NY</li><li><strong>Email:</strong> jordan.reyes@example.com</li><li><strong>LinkedIn:</strong> linkedin.com/in/example</li></ul><p data-style-guide=\"calloutInfo\" data-primary=\"24\" data-accent=\"9\" data-border-radius=\"md\" data-padding=\"s\" data-box-shadow=\"sm\">Start with my <a href=\"professional-summary\">Professional Summary</a>, or jump to <a href=\"projects\">Projects</a>.</p>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": []
+        }
+      },
+      {
+        "id": "6364a2d3-3f36-a6a7-d0f8-40e834d84643",
+        "title": "Professional Summary",
+        "slug": "professional-summary",
+        "order": 1,
+        "parent": null,
+        "indent": 0,
+        "content": "<h2 data-style-guide=\"headline\" data-design-treatment=\"vert\" data-primary=\"8\" data-padding=\"xs\" data-border-radius=\"xs\">Quantitative and detail-oriented finance student</h2><p data-accent=\"2\" data-border-radius=\"md\" data-padding=\"s\">Proven track record in <strong>Financial Modeling</strong>, <strong>Equity Research</strong>, and <strong>Valuation</strong> (DCF, Comps). Passionate about the intersection of macroeconomic trends and the New York capital markets, and looking to bring analytical skills to a fast-paced analyst role.</p><h2 data-style-guide=\"headline\" data-design-treatment=\"vert\" data-primary=\"8\" data-padding=\"xs\" data-border-radius=\"xs\">Technical Skills</h2><grid-plate disable-responsive layout=\"1-1-1\"><h3 slot=\"col-1\" data-style-guide=\"sectionDivider\" data-design-treatment=\"horz-md\" data-primary=\"2\" data-padding=\"xs\">Financial Modeling</h3><ul slot=\"col-1\"><li>DCF &amp; LBO modeling</li><li>3-statement integration</li><li>M&amp;A accretion/dilution</li><li>Sensitivity and scenario analysis</li></ul><h3 slot=\"col-2\" data-style-guide=\"sectionDivider\" data-design-treatment=\"horz-md\" data-primary=\"2\" data-padding=\"xs\">Data &amp; Analytics</h3><ul slot=\"col-2\"><li>Python (pandas, NumPy)</li><li>Bloomberg Terminal / FactSet</li><li>Advanced Excel (VBA, macros)</li><li>Tableau / Power BI</li></ul><h3 slot=\"col-3\" data-style-guide=\"sectionDivider\" data-design-treatment=\"horz-md\" data-primary=\"2\" data-padding=\"xs\">Professional Skills</h3><ul slot=\"col-3\"><li>CRM tools</li><li>Persuasive presentations</li><li>Decision making under pressure</li><li>Business writing</li></ul></grid-plate>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": []
+        }
+      },
+      {
+        "id": "d89827bc-9708-06b7-5093-04a444511d5c",
+        "title": "Projects",
+        "slug": "projects",
+        "order": 2,
+        "parent": null,
+        "indent": 0,
+        "content": "<h3 data-style-guide=\"sectionDivider\" data-design-treatment=\"horz-md\" data-primary=\"2\" data-padding=\"xs\">Equity Research Report · January 2024</h3><p><strong>Objective:</strong> Determine whether a large-cap bank stock was undervalued.</p><p><strong>Methodology:</strong> Built a 5-year <strong>Discounted Cash Flow (DCF)</strong> model and a <strong>Comparable Company Analysis</strong> against a 10-firm peer group.</p><p data-style-guide=\"calloutSuccess\" data-primary=\"25\" data-accent=\"10\" data-border-radius=\"md\" data-padding=\"s\" data-box-shadow=\"sm\"><strong>Result:</strong> Recommended a Buy with a 14% upside target, presented to the student investment club.</p><hr><h3 data-style-guide=\"sectionDivider\" data-design-treatment=\"horz-md\" data-primary=\"2\" data-padding=\"xs\">Algorithmic Trading Strategy (Python) · March 2024</h3><p><strong>Objective:</strong> Develop a mean-reversion strategy for S&amp;P 500 ETFs.</p><p><strong>Methodology:</strong> Backtested against 10 years of historical data and measured the <strong>Sharpe Ratio</strong>, <strong>Sortino Ratio</strong>, and <strong>Maximum Drawdown</strong>.</p><editable-table accent-color=\"grey\" column-header><table><thead><tr><th scope=\"col\">Metric</th><th scope=\"col\">Strategy</th><th scope=\"col\">S&amp;P 500</th></tr></thead><tbody><tr><td>Annual return</td><td>9.8%</td><td>8.1%</td></tr><tr><td>Sharpe Ratio</td><td>1.12</td><td>0.86</td></tr><tr><td>Max drawdown</td><td>-14%</td><td>-24%</td></tr></tbody></table></editable-table>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": []
+        }
+      },
+      {
+        "id": "6739cfe7-3859-47ba-1ea1-90a730fceb08",
+        "title": "Professional Experience",
+        "slug": "professional-experience",
+        "order": 3,
+        "parent": null,
+        "indent": 0,
+        "content": "<h3 data-style-guide=\"sectionDivider\" data-design-treatment=\"horz-md\" data-primary=\"2\" data-padding=\"xs\">Summer Analyst · Meridian Bank, New York, NY</h3><ul><li>Supported the deal team on $50M+ in mid-market M&amp;A transactions.</li><li>Automated weekly market update reports in Excel VBA, cutting manual entry time by 40%.</li><li>Performed due diligence on 5+ target companies, focusing on EBITDA adjustments and working capital trends.</li></ul><h3 data-style-guide=\"sectionDivider\" data-design-treatment=\"horz-md\" data-primary=\"2\" data-padding=\"xs\">Sales &amp; Trading Intern · Hudson Ridge Capital, Brooklyn, NY</h3><p><em>Rotated across the Fixed Income, Currencies, and Commodities (FICC) and Equity Derivatives desks.</em></p><ul><li><strong>Trade execution and support:</strong> Assisted senior traders with high-volume flow on books with daily notionals above <strong>$500M</strong>.</li><li><strong>Quantitative analysis:</strong> Built a Python dashboard tracking volatility spreads between S&amp;P 500 options and VIX futures, surfacing 3 actionable opportunities.</li><li><strong>Market intelligence:</strong> Turned macroeconomic news and Federal Reserve commentary into daily “Morning Run” briefings.</li><li><strong>Risk management:</strong> Monitored desk <strong>Value at Risk (VaR)</strong> and the Greeks (Delta, Gamma, Vega) to keep positions within risk limits.</li></ul>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": []
+        }
+      },
+      {
+        "id": "d974a095-e4c0-1f54-bd3f-85d7c83ada67",
+        "title": "Education & Certifications",
+        "slug": "education-certifications",
+        "order": 4,
+        "parent": null,
+        "indent": 0,
+        "content": "<h3 data-style-guide=\"sectionDivider\" data-design-treatment=\"horz-md\" data-primary=\"2\" data-padding=\"xs\">B.S. in Finance · Class of 2025</h3><p><strong>GPA:</strong> 3.8/4.0 · <strong>Honors:</strong> Dean’s List, Beta Gamma Sigma, Investment Club Sector Lead</p><ul><li><strong>Investment Analysis:</strong> Applied Modern Portfolio Theory and CAPM to optimize a mock $1M portfolio.</li><li><strong>Corporate Finance:</strong> Capital structure optimization, WACC calculation, and dividend policy analysis.</li><li><strong>Econometrics:</strong> Multiple regression on market volatility drivers in R and Python.</li></ul><h3 data-style-guide=\"sectionDivider\" data-design-treatment=\"horz-md\" data-primary=\"2\" data-padding=\"xs\">Professional Certifications</h3><ul><li><strong>Bloomberg Market Concepts (BMC):</strong> 8+ hours of interactive training on the Terminal across Economics, Currencies, Fixed Income, and Equities.</li><li><strong>CFA Investment Foundations:</strong> The investment chain, asset classes, regulation, and fiduciary responsibility.</li><li><strong>Wall Street Prep, Financial Modeling &amp; Valuation:</strong> 3-statement, DCF, and M&amp;A accretion/dilution models built from real case studies.</li></ul>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": []
+        }
+      }
+    ],
+    "files": []
+  },
+  "theme": {
+    "path": "@haxtheweb/glossy-portfolio-theme/glossy-portfolio-theme.js",
+    "name": "Glossy Portfolio",
+    "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-glossy-portfolio-theme-thumb.jpg",
+    "description": "Start with a blank site using the Glossy Portfolio",
+    "category": ["Website"],
+    "hidden": false,
+    "priority": 0,
+    "terrible": false
+  },
+  "_skeleton": {
+    "fullThemeConfig": {
+      "element": "glossy-portfolio-theme",
+      "variables": {
+        "hexCode": "#3f51b5",
+        "cssVariable": "--simple-colors-default-theme-light-blue-7",
+        "icon": "icons:work"
+      }
+    }
+  }
+}

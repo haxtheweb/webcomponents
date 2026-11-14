@@ -1,0 +1,109 @@
+{
+  "meta": {
+    "name": "online-course",
+    "description": "An online course on the Clean One theme, shown as a short orientation lesson that teaches learners how to find their way around a HAX site and edit a page.",
+    "version": "1.0.0",
+    "created": "2026-01-08T20:18:30Z",
+    "type": "skeleton",
+    "priority": -2,
+    "useCaseTitle": "Online Course",
+    "useCaseDescription": "An online course on the Clean One theme, shown as a short orientation lesson that teaches learners how to find their way around a HAX site and edit a page.",
+    "useCaseImage": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-clean-one-thumb.jpg",
+    "category": ["Course"],
+    "tags": ["online", "lesson", "orientation"],
+    "attributes": []
+  },
+  "site": {
+    "name": "online-course-clean-one",
+    "description": "Getting Started with HAX, a one-lesson orientation.",
+    "theme": "clean-one",
+    "settings": {
+      "lang": "en-US",
+      "publishPagesOn": true,
+      "canonical": true
+    }
+  },
+  "build": {
+    "type": "skeleton",
+    "structure": "from-skeleton",
+    "items": [
+      {
+        "id": "item-course-syllabus",
+        "title": "Start Here",
+        "slug": "start-here",
+        "order": 0,
+        "parent": null,
+        "indent": 0,
+        "content": "<h2 data-style-guide=\"headline\" data-design-treatment=\"vert\" data-primary=\"8\" data-padding=\"xs\" data-border-radius=\"xs\">Welcome to Getting Started with HAX</h2><p>This short course takes about 15 minutes. By the end you’ll know how to move around a HAX site, edit a page, and add your own content.</p><h3 data-style-guide=\"sectionDivider\" data-design-treatment=\"horz-md\" data-primary=\"2\" data-padding=\"xs\" data-instructional-action=\"objectives\">What you’ll be able to do</h3><ul><li>Find any page using the site menu</li><li>Turn on editing and change text on a page</li><li>Add a block, such as an image or a video</li><li>Save your work</li></ul><h3 data-style-guide=\"sectionDivider\" data-design-treatment=\"horz-md\" data-primary=\"2\" data-padding=\"xs\">How this course works</h3><ol><li><a href=\"lesson-1\">Lesson 1</a> introduces the editor.</li><li>Each page builds on the one before, so go in order.</li><li>Finish with a short self-check. It isn’t graded.</li></ol><stop-note title=\"Tip\" status=\"info\"><p slot=\"message\">You can’t break anything here. Try every button you see.</p></stop-note>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": ["syllabus", "overview"]
+        }
+      },
+      {
+        "id": "item-lesson-1",
+        "title": "Lesson 1: Finding Your Way Around HAX",
+        "slug": "lesson-1",
+        "order": 1,
+        "parent": null,
+        "indent": 0,
+        "content": "<h2 data-style-guide=\"headline\" data-design-treatment=\"vert\" data-primary=\"8\" data-padding=\"xs\" data-border-radius=\"xs\">Lesson 1 Overview</h2><p>HAX sites look like ordinary websites until you sign in. Then a bar at the top gives you tools to edit pages, add pages, and change the whole site. This lesson walks through those tools.</p><h3 data-style-guide=\"sectionDivider\" data-design-treatment=\"horz-md\" data-primary=\"2\" data-padding=\"xs\" data-instructional-action=\"read\">In this lesson</h3><ul data-style-guide=\"readingRequired\" data-design-treatment=\"reading-required\"><li><a href=\"lesson-1-introduction\">Reading a HAX Site</a></li><li><a href=\"lesson-1-content\">Editing a Page</a></li><li><a href=\"lesson-1-conclusion\">Check Your Understanding</a></li></ul>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": ["lesson", "overview"]
+        }
+      },
+      {
+        "id": "item-lesson-1-intro",
+        "title": "Reading a HAX Site",
+        "slug": "lesson-1-introduction",
+        "order": 2,
+        "parent": "item-lesson-1",
+        "indent": 1,
+        "content": "<p>Every HAX site is a set of pages arranged in an outline. Pages can sit under other pages, the way this page sits under Lesson 1.</p><h3 data-style-guide=\"sectionDivider\" data-design-treatment=\"horz-md\" data-primary=\"2\" data-padding=\"xs\" data-instructional-action=\"observe\">Look around</h3><ul><li><strong>Site menu:</strong> lists every page. Pages under another page are nested below it.</li><li><strong>Page title:</strong> the large heading at the top tells you where you are.</li><li><strong>Links in the text:</strong> take you to other pages in the site, like the ones in the Lesson 1 overview.</li></ul><p data-style-guide=\"calloutInfo\" data-primary=\"24\" data-accent=\"9\" data-border-radius=\"md\" data-padding=\"s\" data-box-shadow=\"sm\"><strong>Did you know?</strong> A HAX site is plain files: one <code>site.json</code> outline plus a folder of pages. You can copy it, publish it anywhere, and it keeps working.</p>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": ["intro", "context"]
+        }
+      },
+      {
+        "id": "item-lesson-1-content",
+        "title": "Editing a Page",
+        "slug": "lesson-1-content",
+        "order": 3,
+        "parent": "item-lesson-1",
+        "indent": 1,
+        "content": "<p>Once you’re signed in, the bar at the top of the page has everything you need. Follow these steps on this page.</p><h3 data-style-guide=\"sectionDivider\" data-design-treatment=\"horz-md\" data-primary=\"2\" data-padding=\"xs\" data-instructional-action=\"practice\">Try it</h3><ol><li>Select <strong>Edit</strong> in the top bar. The page becomes editable.</li><li>Click any paragraph and type. Text works like a word processor.</li><li>Click a block, then <strong>Configure</strong> to change its settings, such as an image’s size or a heading’s style.</li><li>Open <strong>Blocks</strong> to add something new: images, videos, tables, quizzes and more. You can also type <kbd>/</kbd> on an empty line to search for a block.</li><li>Select <strong>Save</strong>. Your changes are live.</li></ol><h3 data-style-guide=\"sectionDivider\" data-design-treatment=\"horz-md\" data-primary=\"2\" data-padding=\"xs\" data-instructional-action=\"knowledge\">Shortcuts worth knowing</h3><a11y-collapse-group><a11y-collapse heading=\"Ask Merlin for anything\"><p slot=\"content\">Press <kbd>Alt</kbd> + <kbd>Shift</kbd> (<kbd>Cmd</kbd> + <kbd>Shift</kbd> in Safari) to open Merlin, the HAX command search. Type what you want, like “add page” or “image”, and pick from the list.</p></a11y-collapse><a11y-collapse heading=\"Add or move pages\"><p slot=\"content\">Use <strong>Add page</strong> in the top bar for a new page next to this one. Open <strong>Outline</strong> to drag pages into a new order or nest them under each other.</p></a11y-collapse><a11y-collapse heading=\"Change how the whole site looks\"><p slot=\"content\">Open <strong>Site Settings</strong> and choose <strong>Appearance</strong> to switch the theme, colors and regions.</p></a11y-collapse></a11y-collapse-group><p data-style-guide=\"calloutWarning\" data-primary=\"23\" data-accent=\"8\" data-border-radius=\"md\" data-padding=\"s\" data-box-shadow=\"sm\">Leaving a page with unsaved edits asks whether to discard them. Save before you move on.</p>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": ["content", "instruction"]
+        }
+      },
+      {
+        "id": "item-lesson-1-conclusion",
+        "title": "Check Your Understanding",
+        "slug": "lesson-1-conclusion",
+        "order": 4,
+        "parent": "item-lesson-1",
+        "indent": 1,
+        "content": "<p>Two quick questions to make sure the big ideas stuck. They aren’t graded.</p><multiple-choice question=\"Where do you add a new image or video to a page?\" single-option randomize><input type=\"checkbox\" value=\"Blocks, or type / on an empty line\" data-correct=\"true\"><input type=\"checkbox\" value=\"Site Settings\"><input type=\"checkbox\" value=\"The site menu\"></multiple-choice><self-check title=\"Saving your work\" accent-color=\"primary\"><p slot=\"question\">You changed three paragraphs and added a table. What do you do before going to another page?</p><p>Select <strong>Save</strong> in the top bar. Unsaved edits are lost if you leave and choose to discard them.</p></self-check><h3 data-style-guide=\"sectionDivider\" data-design-treatment=\"horz-md\" data-primary=\"2\" data-padding=\"xs\" data-instructional-action=\"reflect\">Reflect</h3><p>What’s one page you’d like to build first? Add it now with <strong>Add page</strong>, then edit it using what you just learned.</p><p data-style-guide=\"calloutSuccess\" data-primary=\"25\" data-accent=\"10\" data-border-radius=\"md\" data-padding=\"s\" data-box-shadow=\"sm\"><strong>You finished the orientation.</strong> You’re ready to build your own course.</p>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": ["conclusion", "summary"]
+        }
+      }
+    ],
+    "files": []
+  },
+  "theme": {
+    "hexCode": "#3f51b5",
+    "cssVariable": "--simple-colors-default-theme-indigo-7",
+    "icon": "icons:school",
+    "image": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-clean-one-thumb.jpg"
+  }
+}

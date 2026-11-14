@@ -1,0 +1,133 @@
+{
+  "meta": {
+    "name": "resume-journey",
+    "description": "A resume told as a journey on the Journey theme: education, experience, projects, skills and a way to reach out.",
+    "version": "1.0.0",
+    "created": "2026-02-09T16:38:47.844Z",
+    "type": "skeleton",
+    "useCaseTitle": "Resume Journey",
+    "useCaseDescription": "A resume told as a journey on the Journey theme: education, experience, projects, skills and a way to reach out.",
+    "useCaseImage": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-journey-theme-thumb.jpg",
+    "category": ["Website"],
+    "tags": ["resume", "career", "skills"],
+    "attributes": []
+  },
+  "site": {
+    "name": "resume-journey",
+    "description": "Jamie Smith, business student focused on innovation and entrepreneurship.",
+    "theme": "journey-theme",
+    "settings": {
+      "lang": "en-US",
+      "publishPagesOn": true,
+      "canonical": true,
+      "private": false,
+      "pathauto": false,
+      "sw": false,
+      "forceUpgrade": false,
+      "gaID": null
+    },
+    "platform": {}
+  },
+  "build": {
+    "type": "skeleton",
+    "structure": "from-skeleton",
+    "items": [
+      {
+        "id": "0df70d5a-5aa9-80b3-1573-898b76f9bf68",
+        "title": "Education",
+        "slug": "education",
+        "order": 0,
+        "parent": null,
+        "indent": 0,
+        "content": "<h2 data-style-guide=\"headline\" data-design-treatment=\"vert\" data-primary=\"8\" data-padding=\"xs\" data-border-radius=\"xs\">University of Rhode Island, Kingston, RI</h2><p><strong>Bachelor of Science in Business Administration</strong>, Major: Innovation &amp; Entrepreneurship</p><grid-plate layout=\"1-1-1\" disable-responsive><div slot=\"col-1\" data-style-guide=\"statBlock\" data-primary=\"10\" data-accent=\"2\" data-padding=\"m\" data-border-radius=\"md\" data-box-shadow=\"sm\" data-text-align=\"center\"><strong>3.4</strong><br>GPA</div><div slot=\"col-2\" data-style-guide=\"statBlock\" data-primary=\"10\" data-accent=\"2\" data-padding=\"m\" data-border-radius=\"md\" data-box-shadow=\"sm\" data-text-align=\"center\"><strong>4</strong><br>semesters on the Dean’s List</div><div slot=\"col-3\" data-style-guide=\"statBlock\" data-primary=\"10\" data-accent=\"2\" data-padding=\"m\" data-border-radius=\"md\" data-box-shadow=\"sm\" data-text-align=\"center\"><strong>1</strong><br>academic scholarship</div></grid-plate><ul><li><strong>Scholarship:</strong> Kathleen Jackson Academic Scholarship</li><li><strong>Related coursework:</strong> Business of Innovation, Design Process, Lean Start-Up</li><li><strong>Certifications:</strong> Microsoft Office Specialist; Six Sigma Yellow Belt</li></ul>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": ["profile", "summary"]
+        }
+      },
+      {
+        "id": "c5ad3681-59aa-a86c-379c-758f74ae134d",
+        "title": "Related Experience",
+        "slug": "related-experience",
+        "order": 1,
+        "parent": null,
+        "indent": 0,
+        "content": "<h3 data-style-guide=\"sectionDivider\" data-design-treatment=\"horz-md\" data-primary=\"2\" data-padding=\"xs\">Innovation Ambassador · Launch Lab, University of Rhode Island</h3><p>May 2024 to present · Kingston, RI</p><ul><li>Promote Launch Lab’s resources and programming across the College of Business</li><li>Supervise the Launch Lab space in Carothers Library</li><li>Attend Innovate at URI events and recommend new workshops and hackathons</li><li>Share activity, successes, and challenges at weekly ambassador meetings</li><li>Onboard and mentor six new ambassadors</li></ul><h3 data-style-guide=\"sectionDivider\" data-design-treatment=\"horz-md\" data-primary=\"2\" data-padding=\"xs\">Office Assistant · Small Business Development Center</h3><p>June 2021 to April 2024 · Kingston, RI</p><ul><li>Observed consultations with local small businesses</li><li>Tracked small business interactions in Excel, analyzing needs and trends</li><li>Created a PowerPoint presentation showing how the center’s services are used</li><li>Attended Chamber of Commerce events promoting the SBDC</li></ul><h3 data-style-guide=\"sectionDivider\" data-design-treatment=\"horz-md\" data-primary=\"2\" data-padding=\"xs\">Mobile Unit Driver · Del’s Lemonade</h3><p>June 2020 to July 2021 · Narragansett, RI</p><ul><li>Sold product at Narragansett Beach during the summer, managing financial records and register receipts</li><li>Drove the truck to and from sales locations daily</li><li>Learned how pricing and positioning affect sales, and how family-owned franchises operate</li></ul>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": ["work", "history"]
+        }
+      },
+      {
+        "id": "9e41b3b1-4aa6-03b7-bae5-2d9680e814d0",
+        "title": "Personal Projects",
+        "slug": "personal-projects",
+        "order": 2,
+        "parent": null,
+        "indent": 0,
+        "content": "<h3 data-style-guide=\"sectionDivider\" data-design-treatment=\"horz-md\" data-primary=\"2\" data-padding=\"xs\">Campus Cold Brew Pop-Up</h3><p>Tested a weekend cold brew stand outside the library to learn lean start-up methods first-hand.</p><ul><li>Ran three weekend tests with a $150 budget</li><li>Interviewed 40 students about price and flavor</li><li>Broke even by the second weekend and documented the results for Launch Lab</li></ul><h3 data-style-guide=\"sectionDivider\" data-design-treatment=\"horz-md\" data-primary=\"2\" data-padding=\"xs\">Small Business Social Media Kit</h3><p>Designed a free template kit that helps local shops plan a month of posts in an afternoon.</p><ul><li>Built with three Kingston businesses as first users</li><li>Shared through the Small Business Development Center</li></ul><p data-style-guide=\"calloutInfo\" data-primary=\"24\" data-accent=\"9\" data-border-radius=\"md\" data-padding=\"s\" data-box-shadow=\"sm\">Want details on either project? <a href=\"reach-out\">Reach out</a>.</p>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": ["education", "degree"]
+        }
+      },
+      {
+        "id": "40b817c1-1777-a4cc-86f2-1194e5a0a2ae",
+        "title": "Skills & Tools",
+        "slug": "skills-tools",
+        "order": 3,
+        "parent": null,
+        "indent": 0,
+        "content": "<grid-plate layout=\"1-1\" disable-responsive><h3 slot=\"col-1\" data-style-guide=\"sectionDivider\" data-design-treatment=\"horz-md\" data-primary=\"2\" data-padding=\"xs\">Innovation</h3><ul slot=\"col-1\"><li>Systems thinking and strategic design</li><li>Opportunity recognition</li><li>Lean start-up and MVP development</li><li>Research and user discovery</li></ul><h3 slot=\"col-2\" data-style-guide=\"sectionDivider\" data-design-treatment=\"horz-md\" data-primary=\"2\" data-padding=\"xs\">Business</h3><ul slot=\"col-2\"><li>Community building and leadership</li><li>Market research</li><li>Content strategy and brand development</li><li>Financial and investment fundamentals</li></ul></grid-plate>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": ["skillset", "tools"]
+        }
+      },
+      {
+        "id": "89622fb4-d754-c4ac-1886-da4a0189be2a",
+        "title": "Reach Out",
+        "slug": "reach-out",
+        "order": 4,
+        "parent": null,
+        "indent": 0,
+        "content": "<h2 data-style-guide=\"headline\" data-design-treatment=\"vert\" data-primary=\"8\" data-padding=\"xs\" data-border-radius=\"xs\">Let’s Talk</h2><p>I’m looking for internships in innovation, start-ups, and small business development. I’m happy to share more about any project.</p><ul><li><strong>Phone:</strong> +1 (401) 555-1212</li><li><strong>Email:</strong> jamie.smith@example.com</li><li><strong>Location:</strong> Kingston, RI</li></ul><simple-cta label=\"Email me\" link=\"mailto:jamie.smith@example.com\"></simple-cta>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": ["projects", "contact"]
+        }
+      }
+    ],
+    "files": []
+  },
+  "theme": {
+    "imageAlt": null,
+    "imageLink": null,
+    "path": "@haxtheweb/journey-theme/journey-theme.js",
+    "name": "Journey Theme",
+    "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-journey-theme-thumb.jpg",
+    "description": "Start with a blank site using the Journey Theme",
+    "category": ["Website"],
+    "hidden": false,
+    "terrible": false,
+    "regions": {}
+  },
+  "_skeleton": {
+    "fullThemeConfig": {
+      "element": "journey-theme",
+      "variables": {
+        "image": "",
+        "imageAlt": null,
+        "imageLink": null,
+        "hexCode": "#3f51b5",
+        "cssVariable": "--simple-colors-default-theme-light-blue-7",
+        "icon": "icons:face"
+      }
+    }
+  }
+}

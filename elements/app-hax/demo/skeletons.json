@@ -2,28 +2,108 @@
   "status": 200,
   "data": [
     {
-      "title": "Course",
-      "priority": -2,
-      "description": "A structured template for online courses with lessons and modules",
+      "title": "Art Portfolio",
+      "description": "An artist portfolio on the Clean Portfolio theme: artist statement, featured works, two series and a contact page for commissions.",
+      "image": "/elements/haxcms-elements/lib/theme-screenshots/theme-clean-portfolio-theme-thumb.jpg",
+      "priority": 0,
+      "category": ["Website"],
+      "attributes": [],
+      "scope": "core",
+      "machineName": "art-portfolio",
+      "machine-name": "art-portfolio",
+      "demo-url": "#",
+      "skeleton-url": "skeletons/art-portfolio.json"
+    },
+    {
+      "title": "Blog",
+      "description": "A blog starter on the Clean One theme: posts, a journal and topic pages, shown with a sample coffee blog.",
       "image": "/elements/haxcms-elements/lib/theme-screenshots/theme-clean-one-thumb.jpg",
-      "category": ["course", "education"],
-      "attributes": [
-        { "icon": "hax:lesson", "tooltip": "Educational Content" }
-      ],
-      "demo-url": "https://oer.hax.psu.edu/bto108/sites/edtechjoker-course-skelton",
-      "skeleton-url": "skeletons/course-site-template.json"
+      "priority": 0,
+      "category": ["Website"],
+      "attributes": [],
+      "scope": "core",
+      "machineName": "blog",
+      "machine-name": "blog",
+      "demo-url": "#",
+      "skeleton-url": "skeletons/blog.json"
+    },
+    {
+      "title": "Club Website",
+      "description": "A website for a student club or organization on the Polaris Flex theme: about, events, a blog and a way to join, shown with a sample book club.",
+      "image": "/elements/haxcms-elements/lib/theme-screenshots/theme-polaris-flex-theme-thumb.jpg",
+      "priority": 0,
+      "category": ["Website"],
+      "attributes": [],
+      "scope": "core",
+      "machineName": "club-website",
+      "machine-name": "club-website",
+      "demo-url": "#",
+      "skeleton-url": "skeletons/club-website.json"
+    },
+    {
+      "title": "Documentation",
+      "description": "A documentation site on the HAXma theme, shown documenting the HAX command line tool (HAX create).",
+      "image": "/elements/haxcms-elements/lib/theme-screenshots/theme-haxma-theme-thumb.jpg",
+      "priority": 10,
+      "category": ["Website"],
+      "attributes": [],
+      "scope": "core",
+      "machineName": "docs",
+      "machine-name": "docs",
+      "demo-url": "#",
+      "skeleton-url": "skeletons/docs.json"
+    },
+    {
+      "title": "ISC Graduate Portfolio",
+      "description": "A graduate competency portfolio on the Clean Portfolio theme: About Me, Competencies, three domains, Specialization and Publications.",
+      "image": "/elements/haxcms-elements/lib/theme-screenshots/theme-clean-portfolio-theme-thumb.jpg",
+      "priority": 0,
+      "category": ["Website"],
+      "attributes": [],
+      "scope": "core",
+      "machineName": "isc-graduate-portfolio",
+      "machine-name": "isc-graduate-portfolio",
+      "demo-url": "#",
+      "skeleton-url": "skeletons/isc-graduate-portfolio.json"
+    },
+    {
+      "title": "Online Course",
+      "description": "An online course on the Clean One theme, shown as a short orientation lesson that teaches learners how to find their way around a HAX site and edit a page.",
+      "image": "/elements/haxcms-elements/lib/theme-screenshots/theme-clean-one-thumb.jpg",
+      "priority": -2,
+      "category": ["Course"],
+      "attributes": [],
+      "scope": "core",
+      "machineName": "online-course",
+      "machine-name": "online-course",
+      "demo-url": "#",
+      "skeleton-url": "skeletons/online-course.json"
     },
     {
       "title": "Portfolio",
-      "priority": -10,
-      "description": "A clean template for showcasing work and projects",
-      "image": "/elements/haxcms-elements/lib/theme-screenshots/theme-clean-portfolio-theme-thumb.jpg",
-      "category": ["portfolio", "showcase"],
-      "attributes": [
-        { "icon": "icons:perm-identity", "tooltip": "Personal Portfolio" }
-      ],
+      "description": "A professional portfolio on the Glossy Portfolio theme: summary, projects, experience, and education and certifications.",
+      "image": "/elements/haxcms-elements/lib/theme-screenshots/theme-glossy-portfolio-theme-thumb.jpg",
+      "priority": 0,
+      "category": ["Website"],
+      "attributes": [],
+      "scope": "core",
+      "machineName": "portfolio",
+      "machine-name": "portfolio",
       "demo-url": "#",
-      "skeleton-url": "skeletons/portfolio-site-template.json"
+      "skeleton-url": "skeletons/portfolio.json"
+    },
+    {
+      "title": "Resume Journey",
+      "description": "A resume told as a journey on the Journey theme: education, experience, projects, skills and a way to reach out.",
+      "image": "/elements/haxcms-elements/lib/theme-screenshots/theme-journey-theme-thumb.jpg",
+      "priority": 0,
+      "category": ["Website"],
+      "attributes": [],
+      "scope": "core",
+      "machineName": "resume-journey",
+      "machine-name": "resume-journey",
+      "demo-url": "#",
+      "skeleton-url": "skeletons/resume-journey.json"
     },
     {
       "title": "Studio Starter (User)",
@@ -34,31 +114,14 @@
       "category": ["custom", "user"],
       "scope": "user",
       "enabled": true,
-      "attributes": [{ "icon": "hax:hax2022", "tooltip": "User skeleton" }],
-      "demo-url": "#",
-      "skeleton-url": "skeletons/studio-user-template.json"
-    },
-    {
-      "title": "Blog",
-      "priority": 0,
-      "description": "A template for creating blog sites with posts and categories",
-      "image": "/elements/haxcms-elements/lib/theme-screenshots/theme-haxma-theme-thumb.jpg",
-      "category": ["blog", "writing"],
-      "attributes": [{ "icon": "lrn:write", "tooltip": "Blog Content" }],
-      "demo-url": "#",
-      "skeleton-url": "skeletons/blog-site-template.json"
-    },
-    {
-      "title": "Documentation",
-      "priority": 10,
-      "description": "Template for creating documentation and knowledge bases",
-      "image": "/elements/haxcms-elements/lib/theme-screenshots/theme-app-hax-theme-thumb.jpg",
-      "category": ["documentation", "reference"],
       "attributes": [
-        { "icon": "icons:description", "tooltip": "Documentation" }
+        {
+          "icon": "hax:hax2022",
+          "tooltip": "User skeleton"
+        }
       ],
       "demo-url": "#",
-      "skeleton-url": "skeletons/documentation-site-template.json"
+      "skeleton-url": "skeletons/studio-user-template.json"
     }
   ]
 }

@@ -1784,9 +1784,12 @@ const DDDResetStart = css`
   div[data-border]:not([data-padding]) {
     padding: var(--ddd-surface-padding-lg, var(--ddd-spacing-6));
   }
-  ol[data-accent],
-  ul[data-accent] {
-    padding-left: var(--ddd-spacing-9);
+  /* room for the markers inside an accent box; the :is() matches the
+     specificity of the surface padding rules above so this wins whether or
+     not the list sets data-padding */
+  ol[data-accent]:is([data-padding], :not([data-padding])),
+  ul[data-accent]:is([data-padding], :not([data-padding])) {
+    padding-inline-start: var(--ddd-spacing-9);
   }
   /* p uniformity but ignore if either is in a slot */
   p:not([slot]) + p:not([slot]) {

@@ -1,0 +1,81 @@
+{
+  "meta": {
+    "name": "docs",
+    "description": "A documentation site on the HAXma theme, shown documenting the HAX command line tool (HAX create).",
+    "version": "1.0.0",
+    "created": "2026-01-08T20:18:40Z",
+    "type": "skeleton",
+    "priority": 10,
+    "useCaseTitle": "Documentation",
+    "useCaseDescription": "A documentation site on the HAXma theme, shown documenting the HAX command line tool (HAX create).",
+    "useCaseImage": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-haxma-theme-thumb.jpg",
+    "category": ["Website"],
+    "tags": ["docs", "developer", "reference"],
+    "attributes": []
+  },
+  "site": {
+    "name": "docs-haxma-hax-create",
+    "description": "A documentation skeleton using the HAXma theme and HAX create as the sample project.",
+    "theme": "haxma-theme",
+    "settings": {
+      "lang": "en-US",
+      "publishPagesOn": true,
+      "canonical": true
+    }
+  },
+  "build": {
+    "type": "skeleton",
+    "structure": "from-skeleton",
+    "items": [
+      {
+        "id": "item-docs-overview",
+        "title": "Project Overview",
+        "slug": "index",
+        "order": 0,
+        "parent": null,
+        "indent": 0,
+        "content": "<h2 data-style-guide=\"headline\" data-design-treatment=\"vert\" data-primary=\"8\" data-padding=\"xs\" data-border-radius=\"xs\">What HAX create Does</h2><p><strong>HAX create</strong> (<code>@haxtheweb/create</code>) is the HAX command line tool. It scaffolds new web components and HAX sites, runs a local development server, audits components against the DDD design system, and publishes sites.</p><h3 data-style-guide=\"sectionDivider\" data-design-treatment=\"horz-md\" data-primary=\"2\" data-padding=\"xs\">Who It’s For</h3><ul><li><strong>Site authors</strong> who want a HAX site on their own computer</li><li><strong>Developers</strong> building web components for the HAX ecosystem</li><li><strong>AI agents</strong> that need a predictable command line to build and edit sites</li></ul><p data-style-guide=\"calloutInfo\" data-primary=\"24\" data-accent=\"9\" data-border-radius=\"md\" data-padding=\"s\" data-box-shadow=\"sm\">New to HAX create? Go to <a href=\"getting-started-hax-create\">Getting Started</a> to install it and make your first site.</p>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": ["overview", "context"]
+        }
+      },
+      {
+        "id": "item-docs-getting-started",
+        "title": "Getting Started with HAX create",
+        "slug": "getting-started-hax-create",
+        "order": 1,
+        "parent": null,
+        "indent": 0,
+        "content": "<h2 data-style-guide=\"headline\" data-design-treatment=\"vert\" data-primary=\"8\" data-padding=\"xs\" data-border-radius=\"xs\">Getting Started</h2><h3 data-style-guide=\"sectionDivider\" data-design-treatment=\"horz-md\" data-primary=\"2\" data-padding=\"xs\" data-instructional-action=\"task\">Install and run your first site</h3><ol><li>Install Node.js, then install HAX create globally: <code>npm install @haxtheweb/create --global</code></li><li>Create a site: <code>hax site mysite --y</code></li><li>Move into the folder and start it: <code>cd mysite</code>, then <code>hax serve</code></li><li>Open the address it prints in your browser and start editing.</li></ol><p data-style-guide=\"calloutWarning\" data-primary=\"23\" data-accent=\"8\" data-border-radius=\"md\" data-padding=\"s\" data-box-shadow=\"sm\">On Windows, if installing fails, set a custom npm cache: <code>npm config set cache C:\\tmp\\nodejs\\npm-cache --global</code></p><h3 data-style-guide=\"sectionDivider\" data-design-treatment=\"horz-md\" data-primary=\"2\" data-padding=\"xs\">No Global Install</h3><p>Run it once without installing: <code>npx @haxtheweb/create</code></p><h3 data-style-guide=\"sectionDivider\" data-design-treatment=\"horz-md\" data-primary=\"2\" data-padding=\"xs\">Keep It Up to Date</h3><p>Update to the latest version with <code>hax update</code>.</p>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": ["gettingstarted", "setup"]
+        }
+      },
+      {
+        "id": "item-docs-api-extensions",
+        "title": "Commands & Options",
+        "slug": "commands-options",
+        "order": 2,
+        "parent": null,
+        "indent": 0,
+        "content": "<h2 data-style-guide=\"headline\" data-design-treatment=\"vert\" data-primary=\"8\" data-padding=\"xs\" data-border-radius=\"xs\">Commands</h2><editable-table accent-color=\"grey\" column-header><table><thead><tr><th scope=\"col\">Command</th><th scope=\"col\">What it does</th></tr></thead><tbody><tr><td><code>hax start</code></td><td>Opens the interactive menu</td></tr><tr><td><code>hax site mysite --y</code></td><td>Creates a new HAX site</td></tr><tr><td><code>hax serve</code></td><td>Runs the site locally in development mode</td></tr><tr><td><code>hax webcomponent my-element --y</code></td><td>Creates a Lit web component with DDD and i18n wired in</td></tr><tr><td><code>hax audit</code></td><td>Checks a component’s CSS against the DDD design system</td></tr><tr><td><code>hax update</code></td><td>Updates HAX create</td></tr></tbody></table></editable-table><h2 data-style-guide=\"headline\" data-design-treatment=\"vert\" data-primary=\"8\" data-padding=\"xs\" data-border-radius=\"xs\">Common Options</h2><ul><li><code>--y</code> or <code>--auto</code>: accept every prompt</li><li><code>--path</code>: the folder to run in</li><li><code>--no-i</code>: no interactive steps, for scripts and agents</li><li><code>--format json</code>: machine-readable output</li></ul><h3 data-style-guide=\"sectionDivider\" data-design-treatment=\"horz-md\" data-primary=\"2\" data-padding=\"xs\">Site Structure</h3><p>Every HAX site keeps its structure in <code>site.json</code>. Each page is an item:</p><code-sample copy-clipboard-button type=\"json\"><template preserve-content=\"preserve-content\">{\n  \"id\": \"item-docs-overview\",\n  \"title\": \"Project Overview\",\n  \"slug\": \"index\",\n  \"location\": \"pages/index/index.html\",\n  \"parent\": null,\n  \"order\": 0\n}</template></code-sample><p data-style-guide=\"calloutInfo\" data-primary=\"24\" data-accent=\"9\" data-border-radius=\"md\" data-padding=\"s\" data-box-shadow=\"sm\">Run <code>hax help</code> or <code>hax site --help</code> for every option.</p>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": ["api", "extensions"]
+        }
+      }
+    ],
+    "files": []
+  },
+  "theme": {
+    "hexCode": "#607d8b",
+    "cssVariable": "--simple-colors-default-theme-blue-grey-6",
+    "icon": "icons:description",
+    "image": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-haxma-theme-thumb.jpg"
+  }
+}
