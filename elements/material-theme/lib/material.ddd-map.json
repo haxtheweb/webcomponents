@@ -188,26 +188,22 @@
     },
     "component": {
       "mapping": "optional",
-      "percent": 33,
+      "percent": 88,
       "families": {
         "card": {
-          "mapped": 1,
-          "total": 4,
-          "keptDDD": [
-            "--ddd-card-padding",
-            "--ddd-card-border-width",
-            "--ddd-card-shadow"
-          ]
+          "mapped": 4,
+          "total": 5,
+          "keptDDD": ["--ddd-card-background"]
         },
         "control": {
-          "mapped": 1,
-          "total": 1,
+          "mapped": 2,
+          "total": 2,
           "keptDDD": []
         },
         "tag": {
-          "mapped": 0,
+          "mapped": 1,
           "total": 1,
-          "keptDDD": ["--ddd-tag-radius"]
+          "keptDDD": []
         }
       }
     }
@@ -1194,6 +1190,46 @@
       "light": "9999px",
       "dark": "9999px",
       "note": "buttons are fully rounded"
+    },
+    {
+      "ddd": "--ddd-card-padding",
+      "tier": "component",
+      "token": null,
+      "light": "16px",
+      "dark": "16px",
+      "note": "card content padding"
+    },
+    {
+      "ddd": "--ddd-card-border-width",
+      "tier": "component",
+      "token": null,
+      "light": "1px",
+      "dark": "1px",
+      "note": "outlined card"
+    },
+    {
+      "ddd": "--ddd-card-shadow",
+      "tier": "component",
+      "token": null,
+      "light": "none",
+      "dark": "none",
+      "note": "outlined card has no elevation"
+    },
+    {
+      "ddd": "--ddd-control-height",
+      "tier": "component",
+      "token": null,
+      "light": "40px",
+      "dark": "40px",
+      "note": "common button container height"
+    },
+    {
+      "ddd": "--ddd-tag-radius",
+      "tier": "component",
+      "token": "--md-sys-shape-corner-small",
+      "light": "8px",
+      "dark": "8px",
+      "note": "chips, 8px"
     }
   ]
 }

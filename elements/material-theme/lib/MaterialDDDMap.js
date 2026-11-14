@@ -110,6 +110,11 @@ export const MaterialDDDMap = css`
     --ddd-control-padding-inline: var(--md-comp-button-leading-space);
     --ddd-card-radius: var(--md-sys-shape-corner-medium);
     --ddd-control-radius: var(--md-sys-shape-corner-full);
+    --ddd-card-padding: 16px;
+    --ddd-card-border-width: 1px;
+    --ddd-card-shadow: none;
+    --ddd-control-height: 40px;
+    --ddd-tag-radius: var(--md-sys-shape-corner-small);
     /* rgb channels follow their mapped color */
     --ddd-primary-0-rgb: 208, 188, 255, 0.7;
     --ddd-primary-1-rgb: 103, 80, 164;

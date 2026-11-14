@@ -391,6 +391,26 @@
     "--ddd-control-radius": {
       "token": "--md-sys-shape-corner-full",
       "note": "buttons are fully rounded"
+    },
+    "--ddd-card-padding": {
+      "value": "16px",
+      "note": "card content padding"
+    },
+    "--ddd-card-border-width": {
+      "value": "1px",
+      "note": "outlined card"
+    },
+    "--ddd-card-shadow": {
+      "value": "none",
+      "note": "outlined card has no elevation"
+    },
+    "--ddd-control-height": {
+      "value": "40px",
+      "note": "common button container height"
+    },
+    "--ddd-tag-radius": {
+      "token": "--md-sys-shape-corner-small",
+      "note": "chips, 8px"
     }
   },
   "extraTokens": [

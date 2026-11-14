@@ -147,26 +147,22 @@
     },
     "component": {
       "mapping": "optional",
-      "percent": 33,
+      "percent": 75,
       "families": {
         "card": {
-          "mapped": 1,
-          "total": 4,
-          "keptDDD": [
-            "--ddd-card-padding",
-            "--ddd-card-border-width",
-            "--ddd-card-shadow"
-          ]
+          "mapped": 3,
+          "total": 5,
+          "keptDDD": ["--ddd-card-shadow", "--ddd-card-background"]
         },
         "control": {
-          "mapped": 1,
-          "total": 1,
+          "mapped": 2,
+          "total": 2,
           "keptDDD": []
         },
         "tag": {
-          "mapped": 0,
+          "mapped": 1,
           "total": 1,
-          "keptDDD": ["--ddd-tag-radius"]
+          "keptDDD": []
         }
       }
     }
@@ -1097,6 +1093,38 @@
       "light": "calc(0.625rem * 0.8)",
       "dark": "calc(0.625rem * 0.8)",
       "note": "Button is rounded-md"
+    },
+    {
+      "ddd": "--ddd-card-padding",
+      "tier": "component",
+      "token": null,
+      "light": "24px",
+      "dark": "24px",
+      "note": "Card py-6 / px-6 (a px value: the upstream token is in rem, and HAX's root font size is 20px, not 16px)"
+    },
+    {
+      "ddd": "--ddd-card-border-width",
+      "tier": "component",
+      "token": null,
+      "light": "1px",
+      "dark": "1px",
+      "note": "Card border"
+    },
+    {
+      "ddd": "--ddd-control-height",
+      "tier": "component",
+      "token": null,
+      "light": "36px",
+      "dark": "36px",
+      "note": "Button h-9 (a px value: the upstream token is in rem, and HAX's root font size is 20px, not 16px)"
+    },
+    {
+      "ddd": "--ddd-tag-radius",
+      "tier": "component",
+      "token": null,
+      "light": "999px",
+      "dark": "999px",
+      "note": "Badge is rounded-full"
     }
   ]
 }

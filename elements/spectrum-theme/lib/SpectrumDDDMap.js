@@ -111,6 +111,13 @@ export const SpectrumDDDMap = css`
     --ddd-control-padding-inline: var(
       --spectrum-component-pill-edge-to-text-100
     );
+    --ddd-card-radius: var(--spectrum-corner-radius-medium-default);
+    --ddd-card-padding: var(--spectrum-spacing-400);
+    --ddd-card-border-width: 1px;
+    --ddd-card-shadow: none;
+    --ddd-control-radius: 999px;
+    --ddd-control-height: var(--spectrum-component-height-100);
+    --ddd-tag-radius: var(--spectrum-corner-radius-300);
     /* rgb channels follow their mapped color */
     --ddd-primary-0-rgb: 172, 207, 253, 0.7;
     --ddd-primary-1-rgb: 59, 99, 251;

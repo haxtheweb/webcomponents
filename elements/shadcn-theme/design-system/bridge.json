@@ -322,6 +322,22 @@
     "--ddd-control-radius": {
       "token": "--radius-md",
       "note": "Button is rounded-md"
+    },
+    "--ddd-card-padding": {
+      "value": "24px",
+      "note": "Card py-6 / px-6 (a px value: the upstream token is in rem, and HAX's root font size is 20px, not 16px)"
+    },
+    "--ddd-card-border-width": {
+      "value": "1px",
+      "note": "Card border"
+    },
+    "--ddd-control-height": {
+      "value": "36px",
+      "note": "Button h-9 (a px value: the upstream token is in rem, and HAX's root font size is 20px, not 16px)"
+    },
+    "--ddd-tag-radius": {
+      "value": "999px",
+      "note": "Badge is rounded-full"
     }
   },
   "extraTokens": [

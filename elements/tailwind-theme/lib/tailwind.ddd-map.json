@@ -129,18 +129,19 @@
       "families": {
         "card": {
           "mapped": 0,
-          "total": 4,
+          "total": 5,
           "keptDDD": [
             "--ddd-card-radius",
             "--ddd-card-padding",
             "--ddd-card-border-width",
-            "--ddd-card-shadow"
+            "--ddd-card-shadow",
+            "--ddd-card-background"
           ]
         },
         "control": {
           "mapped": 0,
-          "total": 1,
-          "keptDDD": ["--ddd-control-radius"]
+          "total": 2,
+          "keptDDD": ["--ddd-control-radius", "--ddd-control-height"]
         },
         "tag": {
           "mapped": 0,

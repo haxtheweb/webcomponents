@@ -136,26 +136,22 @@
     },
     "component": {
       "mapping": "optional",
-      "percent": 33,
+      "percent": 88,
       "families": {
         "card": {
-          "mapped": 1,
-          "total": 4,
-          "keptDDD": [
-            "--ddd-card-padding",
-            "--ddd-card-border-width",
-            "--ddd-card-shadow"
-          ]
+          "mapped": 4,
+          "total": 5,
+          "keptDDD": ["--ddd-card-background"]
         },
         "control": {
-          "mapped": 1,
-          "total": 1,
+          "mapped": 2,
+          "total": 2,
           "keptDDD": []
         },
         "tag": {
-          "mapped": 0,
+          "mapped": 1,
           "total": 1,
-          "keptDDD": ["--ddd-tag-radius"]
+          "keptDDD": []
         }
       }
     }
@@ -1094,6 +1090,46 @@
       "light": "999px",
       "dark": "999px",
       "note": "buttons are pills"
+    },
+    {
+      "ddd": "--ddd-card-padding",
+      "tier": "component",
+      "token": null,
+      "light": "24px",
+      "dark": "24px",
+      "note": "card body padding, spacer--lg (a px value: the upstream token is in rem, and HAX's root font size is 20px, not 16px)"
+    },
+    {
+      "ddd": "--ddd-card-border-width",
+      "tier": "component",
+      "token": null,
+      "light": "1px",
+      "dark": "1px",
+      "note": "card border"
+    },
+    {
+      "ddd": "--ddd-card-shadow",
+      "tier": "component",
+      "token": null,
+      "light": "none",
+      "dark": "none",
+      "note": "cards are bordered, not raised"
+    },
+    {
+      "ddd": "--ddd-control-height",
+      "tier": "component",
+      "token": null,
+      "light": "37px",
+      "dark": "37px",
+      "note": "PatternFly button: 6px block padding around 24px line height, 1px border"
+    },
+    {
+      "ddd": "--ddd-tag-radius",
+      "tier": "component",
+      "token": "--pf-t--global--border--radius--pill",
+      "light": "999px",
+      "dark": "999px",
+      "note": "labels are pills"
     }
   ]
 }

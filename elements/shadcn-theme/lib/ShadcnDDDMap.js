@@ -93,6 +93,10 @@ export const ShadcnDDDMap = css`
     --ddd-control-padding-inline: calc(var(--spacing) * 4);
     --ddd-card-radius: var(--radius-xl);
     --ddd-control-radius: var(--radius-md);
+    --ddd-card-padding: 24px;
+    --ddd-card-border-width: 1px;
+    --ddd-control-height: 36px;
+    --ddd-tag-radius: 999px;
     /* rgb channels follow their mapped color */
     --ddd-primary-0-rgb: 212, 212, 212, 0.7;
     --ddd-primary-1-rgb: 23, 23, 23;

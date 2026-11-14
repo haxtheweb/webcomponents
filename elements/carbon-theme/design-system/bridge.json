@@ -354,6 +354,30 @@
     "--ddd-control-padding-inline": {
       "value": "1rem",
       "note": "Carbon button inline-start padding, spacing-05"
+    },
+    "--ddd-card-padding": {
+      "value": "16px",
+      "note": "Carbon tile padding, spacing-05 (a px value: the upstream token is in rem, and HAX's root font size is 20px, not 16px)"
+    },
+    "--ddd-card-border-width": {
+      "value": "0",
+      "note": "Carbon tiles have no border; they sit on layer-01 (--ddd-card-background)"
+    },
+    "--ddd-card-shadow": {
+      "value": "none",
+      "note": "Carbon tiles are flat"
+    },
+    "--ddd-control-height": {
+      "value": "48px",
+      "note": "Carbon lg button, layout-size-height-lg (a px value: the upstream token is in rem, and HAX's root font size is 20px, not 16px)"
+    },
+    "--ddd-tag-radius": {
+      "value": "999px",
+      "note": "Carbon tags are the one rounded shape"
+    },
+    "--ddd-card-background": {
+      "token": "--cds-layer-01",
+      "note": "tiles sit on layer-01, #f4f4f4 light, #262626 dark"
     }
   },
   "extraTokens": [

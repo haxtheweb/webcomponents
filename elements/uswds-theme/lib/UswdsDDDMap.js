@@ -89,6 +89,13 @@ export const UswdsDDDMap = css`
     --ddd-stack-gap: 16px;
     --ddd-inline-gap: 8px;
     --ddd-control-padding-inline: 20px;
+    --ddd-card-radius: 8px;
+    --ddd-card-padding: 24px;
+    --ddd-card-border-width: 2px;
+    --ddd-card-shadow: none;
+    --ddd-control-radius: 4px;
+    --ddd-control-height: 44px;
+    --ddd-tag-radius: 2px;
     /* rgb channels follow their mapped color */
     --ddd-primary-0-rgb: 115, 179, 231, 0.7;
     --ddd-primary-1-rgb: 0, 94, 162;

@@ -374,6 +374,34 @@
     "--ddd-control-padding-inline": {
       "token": "--spectrum-component-pill-edge-to-text-100",
       "note": "Spectrum buttons are pills; 16px at the medium scale"
+    },
+    "--ddd-card-radius": {
+      "token": "--spectrum-corner-radius-medium-default",
+      "note": "cards, 8px"
+    },
+    "--ddd-card-padding": {
+      "token": "--spectrum-spacing-400",
+      "note": "card body padding, 24px"
+    },
+    "--ddd-card-border-width": {
+      "value": "1px",
+      "note": "card border"
+    },
+    "--ddd-card-shadow": {
+      "value": "none",
+      "note": "cards are bordered, not raised"
+    },
+    "--ddd-control-radius": {
+      "value": "999px",
+      "note": "buttons are pills"
+    },
+    "--ddd-control-height": {
+      "token": "--spectrum-component-height-100",
+      "note": "medium button, 32px"
+    },
+    "--ddd-tag-radius": {
+      "token": "--spectrum-corner-radius-300",
+      "note": "tags, 6px"
     }
   },
   "extraTokens": [
