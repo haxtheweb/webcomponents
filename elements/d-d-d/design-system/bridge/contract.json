@@ -101,15 +101,15 @@
       "id": "component",
       "title": "Component",
       "mapping": "optional",
-      "why": "Where a system gives a kind of component its own shape (square cards, pill buttons). Each defaults to a general DDD token; a bridge maps only the ones its system has an opinion on. Blocks with a deliberate design of their own, stop-note first among them, have no component token.",
+      "why": "Where a system gives a kind of component its own shape (square cards, pill buttons, a fixed button height). Each defaults to a general DDD token, or to nothing where DDD sizes the component by padding (control height); a bridge maps only the ones its system has an opinion on. Blocks with a deliberate design of their own, stop-note first among them, have no component token.",
       "families": {
-        "card": "^ddd-card-(radius|padding|border-width|shadow)$",
-        "control": "^ddd-control-radius$",
+        "card": "^ddd-card-(radius|padding|border-width|shadow|background)$",
+        "control": "^ddd-control-(radius|height)$",
         "tag": "^ddd-tag-radius$"
       },
       "patterns": [
-        "^ddd-card-(radius|padding|border-width|shadow)$",
-        "^ddd-control-radius$",
+        "^ddd-card-(radius|padding|border-width|shadow|background)$",
+        "^ddd-control-(radius|height)$",
         "^ddd-tag-radius$"
       ]
     }

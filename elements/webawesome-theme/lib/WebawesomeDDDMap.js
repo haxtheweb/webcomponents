@@ -97,6 +97,10 @@ export const WebawesomeDDDMap = css`
     --ddd-card-radius: var(--wa-panel-border-radius);
     --ddd-card-border-width: var(--wa-panel-border-width);
     --ddd-control-radius: var(--wa-form-control-border-radius);
+    --ddd-card-padding: 24px;
+    --ddd-card-shadow: none;
+    --ddd-control-height: 40px;
+    --ddd-tag-radius: var(--wa-border-radius-pill);
     /* rgb channels follow their mapped color */
     --ddd-primary-0-rgb: 159, 206, 255, 0.7;
     --ddd-primary-1-rgb: 0, 113, 236;

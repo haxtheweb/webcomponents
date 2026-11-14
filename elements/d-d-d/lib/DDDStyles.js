@@ -974,7 +974,15 @@ export const DDDVariables = css`
     --ddd-card-padding: var(--ddd-surface-padding, var(--ddd-spacing-4));
     --ddd-card-border-width: var(--ddd-border-size-sm);
     --ddd-card-shadow: var(--ddd-boxShadow-sm);
+    --ddd-card-background: light-dark(
+      var(--ddd-theme-default-white),
+      var(--ddd-theme-default-coalyGray)
+    );
     --ddd-control-radius: var(--ddd-radius-xs);
+    /* control height has no DDD value: buttons size themselves by padding,
+       as they always have. initial leaves it unset so var() fallbacks
+       apply; a bridge sets it when its system fixes button height. */
+    --ddd-control-height: initial;
     --ddd-tag-radius: var(--ddd-radius-rounded);
 
     /* ===========================================
