@@ -3,27 +3,24 @@
  * @license Apache-2.0, see LICENSE for full text.
  */
 /**
- * Generate a uinque ID
+ * Generate a unique ID: 32 random hex digits in 8-4-4-4-12 groups after `base`
  */
 export function generateResourceID(base = "#") {
-  function idPart() {
-    return Math.floor((1 + Math.random()) * 0x10000)
-      .toString(16)
-      .substring(1);
-  }
+  const bytes = new Uint8Array(16);
+  globalThis.crypto.getRandomValues(bytes);
+  const hex = Array.from(bytes, (byte) =>
+    byte.toString(16).padStart(2, "0"),
+  ).join("");
   return (
     base +
-    idPart() +
-    idPart() +
+    hex.slice(0, 8) +
     "-" +
-    idPart() +
+    hex.slice(8, 12) +
     "-" +
-    idPart() +
+    hex.slice(12, 16) +
     "-" +
-    idPart() +
+    hex.slice(16, 20) +
     "-" +
-    idPart() +
-    idPart() +
-    idPart()
+    hex.slice(20)
   );
 }
