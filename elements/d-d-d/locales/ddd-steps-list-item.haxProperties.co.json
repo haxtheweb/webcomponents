@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Elementu di tappe",
-    "description": "Elementu chì face parte d'una lista di tappe"
+    "description": "Una sola tappa in una lista di tappe."
   },
   "settings": {
     "configure": [

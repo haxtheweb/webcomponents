@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "星级评分",
-    "description": "评分显示小部件或者打分按钮。"
+    "description": "显示星级评分，或者让读者自家选。"
   },
   "settings": {
     "configure": [

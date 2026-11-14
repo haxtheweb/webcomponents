@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Ludo de koncepta mapo",
-    "description": "Mallonga klavara ludo. Figuro iras al ĉiu koncepto sur mapo kaj ĝi klarigas sin. Tuŝu ĉiujn por ricevi konfetojn kaj peton por kopii."
+    "description": "Mallonga klavara ludo, en kiu rolulo trairas mapon kaj ĉiu koncepto klarigas sin mem."
   },
   "settings": {
     "configure": [

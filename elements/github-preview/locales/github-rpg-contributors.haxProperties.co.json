@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Lista di cuntributori GitHub",
-    "description": "Affissati cum'è parsunaghji di RPG cù l'API GitHub."
+    "description": "Listate i cuntributori d'un repository cum'è persunagi RPG."
   },
   "settings": {
     "configure": [

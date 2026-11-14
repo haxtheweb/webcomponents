@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Dumanda à risposta corta",
-    "description": "Fà risponde l'utilizatore à una dumanda simplice"
+    "description": "Una dumanda à a quale l'amparante risponde in una o duie frase."
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "ਸਹੀ / ਗਲਤ ਸਵਾਲ",
-    "description": "ਸਹੀ ਗਲਤ ਸਵਾਲ"
+    "description": "ਬਿਆਨ ਜਿਸਨੂੰ ਸਿੱਖਣ ਵਾਲਾ ਸਹੀ ਜਾਂ ਗਲਤ ਚਿੰਨ੍ਹਿਤ ਕਰਦਾ ਹੈ।"
   },
   "settings": {
     "configure": [

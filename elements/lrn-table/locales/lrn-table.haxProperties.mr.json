@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "CSV तक्ता",
-    "description": "CSV फाइल कुठेही असली तरी यातून तक्ता तयार करता येतो."
+    "description": "CSV फाइल सुलभ तक्ता म्हणून दाखवा."
   },
   "settings": {
     "configure": [

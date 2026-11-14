@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Autoebaluazioa",
-    "description": "Erabiltzaileek autoebaluazio bat egin dezakete."
+    "description": "Erantzun ezkutua duen galdera; ikasleak agerian jartzen du bere burua egiaztatzeko."
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "CSV-talva",
-    "description": "Hetta kann gera eina talvu úr eini CSV-fílu, líkamikið hvar hon er."
+    "description": "Vís eina CSV-fílu sum eina atkomuliga talvu."
   },
   "settings": {
     "configure": [

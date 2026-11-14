@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "CSV ሰንጠረዥ",
-    "description": "ይህ የትም ቦታ ቢገኝ ከCSV ፋይል ሰንጠረዥ ማመንጨት ይችላል።"
+    "description": "የCSV ፋይልን እንደ ተደራሽ ሰንጠረዥ ያሳዩ።"
   },
   "settings": {
     "configure": [

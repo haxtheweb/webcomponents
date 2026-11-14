@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Gêm taith cysyniadau",
-    "description": "Byd agored i grwydro. Mae cysyniadau'n dod o hyd i chi ac yn gofyn cwestiwn. Atebwch yn gywir i drechu un a datgloi ei dŷ. Mae'r crynodeb yn dangos ymgeisiau a beth i'w adolygu."
+    "description": "Gêm byd agored lle mae cysyniadau'n gofyn cwestiynau ac atebion cywir yn datgloi'r map."
   },
   "settings": {
     "configure": [

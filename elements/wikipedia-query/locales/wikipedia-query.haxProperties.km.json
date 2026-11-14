@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Wikipedia",
-    "description": "នេះអាចបង្ហាញអត្ថបទ Wikipedia នៅក្នុងបរិបទក្នុងទម្រង់ជាច្រើន។"
+    "description": "បង្ហាញអត្ថបទវិគីភីឌាក្នុងទំព័រ។"
   },
   "settings": {
     "configure": [

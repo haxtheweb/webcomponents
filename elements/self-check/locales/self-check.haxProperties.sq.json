@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Vetëkontroll",
-    "description": "Përdoruesit mund të kryejnë një vetëkontroll."
+    "description": "Një pyetje me përgjigje të fshehur që nxënësi e zbulon për të kontrolluar veten."
   },
   "settings": {
     "configure": [

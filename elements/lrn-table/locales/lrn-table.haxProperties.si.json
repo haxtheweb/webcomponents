@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "CSV වගුව",
-    "description": "CSV ගොනුවක් කොතැනක තිබුණත් එයින් වගුවක් ජනනය කළ හැක."
+    "description": "CSV ගොනුවක් ප්‍රවේශ විය හැකි වගුවක් ලෙස පෙන්වන්න."
   },
   "settings": {
     "configure": [

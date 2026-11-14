@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "HAX-Link",
-    "description": "E Link op eng spezifesch Ressource am Site, un deem Dir schafft."
+    "title": "Säitelink",
+    "description": "E Link op eng Säit um Site, un deem Dir schafft."
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "CSV таблицасы",
-    "description": "Кайда гына урнашса да, CSV файлыннан таблица ясый ала."
+    "description": "CSV файлын уңайлы таблица итеп күрсәтегез."
   },
   "settings": {
     "configure": [

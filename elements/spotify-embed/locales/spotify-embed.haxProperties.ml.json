@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "Spotify പ്ലെയർ ഉൾച്ചേർക്കലുകൾക്കുള്ള റാപ്പർ."
+    "description": "Spotify ട്രാക്ക്, ആൽബം അല്ലെങ്കിൽ പ്ലേലിസ്റ്റ് എംബെഡ് ചെയ്യുക."
   },
   "settings": {
     "configure": [

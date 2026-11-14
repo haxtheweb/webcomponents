@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Lojë me misione konceptesh",
-    "description": "Një botë për t'u endur. Konceptet të gjejnë dhe të bëjnë një pyetje. Përgjigju saktë për të mundur një dhe për të hapur shtëpinë e tij. Përmbledhja tregon përpjekjet dhe çfarë duhet rishikuar."
+    "description": "Një lojë me hartë bote ku konceptet bëjnë pyetje dhe përgjigjet e sakta zhbllokojnë hartën."
   },
   "settings": {
     "configure": [

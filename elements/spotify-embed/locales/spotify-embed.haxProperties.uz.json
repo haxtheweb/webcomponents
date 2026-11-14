@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "Joylashtirilgan Spotify pleyerlari uchun qobiq."
+    "description": "Spotify treki, albomi yoki pleylistini joylashtiring."
   },
   "settings": {
     "configure": [

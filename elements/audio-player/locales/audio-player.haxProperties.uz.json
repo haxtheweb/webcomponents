@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Audio",
-    "description": "Bu videoni manbasidan qatʼi nazar juda qulay tarzda taqdim eta oladi."
+    "description": "Transkript qo'llab-quvvatlanadigan qulay audio pleyer."
   },
   "settings": {
     "configure": [

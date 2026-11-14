@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Wikipedia",
-    "description": "好勒多种格式里向显示维基百科个文章。"
+    "description": "勒页面里显示一篇维基百科文章。"
   },
   "settings": {
     "configure": [

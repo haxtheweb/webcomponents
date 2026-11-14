@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "CSV 表格",
-    "description": "勿管 CSV 文件勒啥地方，侪好生成表格。"
+    "description": "拿 CSV 文件显示成无障碍表格。"
   },
   "settings": {
     "configure": [

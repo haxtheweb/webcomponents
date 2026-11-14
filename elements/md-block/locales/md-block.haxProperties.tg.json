@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "Блоки мундариҷаи markdown, ки мустақиман ё аз дур бор карда мешавад"
+    "description": "Мундариҷаи Markdown, ки дар ҷояш навишта ё аз файл бор карда шудааст."
   },
   "settings": {
     "configure": [

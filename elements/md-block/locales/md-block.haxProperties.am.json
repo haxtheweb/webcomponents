@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "በቀጥታ ወይም በርቀት የተጫነ የmarkdown ይዘት ብሎክ"
+    "description": "በቀጥታ የተጻፈ ወይም ከፋይል የተጫነ የMarkdown ይዘት።"
   },
   "settings": {
     "configure": [

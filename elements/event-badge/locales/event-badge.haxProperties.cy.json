@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Bathodyn Digwyddiad",
-    "description": "Cydran bathodyn digwyddiad."
+    "description": "Bathodyn enw arddull cynhadledd gyda llun, enw a sefydliad."
   },
   "settings": {
     "configure": [

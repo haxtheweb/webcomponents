@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "د GitHub د مرستندویانو لېست",
-    "description": "د GitHub API په کارولو سره د RPG کرکټرونو په بڼه ښودل کېږي."
+    "description": "د زېرمتون ونډه اخیستونکي د RPG کرکټرونو په توګه لېست کړئ."
   },
   "settings": {
     "configure": [

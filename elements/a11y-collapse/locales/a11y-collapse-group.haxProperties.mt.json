@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "Grupp Espandi u Għalaq",
-    "description": "Grupp ta' elementi li jespandu u jingħalqu."
+    "title": "Grupp li jingħalaq",
+    "description": "Grupp ta' kontenituri li jistgħu jingħalqu."
   },
   "settings": {
     "configure": [

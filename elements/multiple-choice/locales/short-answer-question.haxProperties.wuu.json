@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "简答题",
-    "description": "让用户回答一只基本问题"
+    "description": "学习者用一两句闲话回答个问题。"
   },
   "settings": {
     "configure": [

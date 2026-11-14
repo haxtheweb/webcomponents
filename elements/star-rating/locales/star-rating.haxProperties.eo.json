@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Stela takso",
-    "description": "Fenestraĵo por montri takson aŭ butono por taksi."
+    "description": "Montru stelan taksadon, aŭ lasu legantojn elekti iun."
   },
   "settings": {
     "configure": [

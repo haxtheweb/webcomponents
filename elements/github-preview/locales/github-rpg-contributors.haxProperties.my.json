@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "GitHub ပါဝင်ကူညီသူများ စာရင်း",
-    "description": "GitHub API ကို အသုံးပြု၍ RPG ဇာတ်ကောင်များအဖြစ် ပြသထားသည်။"
+    "description": "သိုလှောင်ရုံ၏ ပါဝင်ကူညီသူများကို RPG ဇာတ်ကောင်များအဖြစ် ပြပါ။"
   },
   "settings": {
     "configure": [

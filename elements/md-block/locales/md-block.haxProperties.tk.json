@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "Göni ýa-da daşdan ýüklenen markdown mazmun bloky"
+    "description": "Göni ýazylan ýa-da faýldan ýüklenen Markdown mazmuny."
   },
   "settings": {
     "configure": [

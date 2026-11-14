@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Ludo de konceptoserĉo",
-    "description": "Malferma mondo por vagi. Konceptoj trovas vin kaj demandas. Respondu ĝuste por venki unu kaj malŝlosi ĝian domon. La resumo montras provojn kaj kion revizori."
+    "description": "Mondmapa ludo, en kiu konceptoj faras demandojn kaj ĝustaj respondoj malŝlosas la mapon."
   },
   "settings": {
     "configure": [

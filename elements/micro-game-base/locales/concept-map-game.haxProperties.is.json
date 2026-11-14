@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Hugtakakortaleikur",
-    "description": "Stuttur lyklaborðsleikur. Persóna gengur að hverju hugtaki á korti og það útskýrir sig sjálft. Snertu þau öll til að fá konfetti og fyrirmæli til að afrita."
+    "description": "Stuttur lyklaborðsleikur þar sem persóna gengur um kort og hvert hugtak útskýrir sig sjálft."
   },
   "settings": {
     "configure": [

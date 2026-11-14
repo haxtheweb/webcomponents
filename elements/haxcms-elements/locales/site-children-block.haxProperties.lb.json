@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "HAXcms: Kand-Block",
-    "description": "Dynamesche Block, deen d'Kanner vun der aktueller Säit weist"
+    "title": "Ënnersäiten",
+    "description": "Lëscht d'Ënnersäite vun der aktueller Säit op."
   },
   "settings": {
     "configure": [

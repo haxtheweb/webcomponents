@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Tabel CSV",
-    "description": "Iki bisa nggawe tabel saka berkas CSV ing ngendi wae panggonane."
+    "description": "Tuduhna berkas CSV minangka tabel sing gampang diakses."
   },
   "settings": {
     "configure": [

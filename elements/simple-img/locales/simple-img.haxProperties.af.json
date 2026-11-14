@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Eenvoudige prent",
-    "description": "Manipuleer prente met eenvoudige parameters."
+    "description": "'n Beeld wat met eenvoudige instellings geskaal, gesny of gedraai word."
   },
   "settings": {
     "configure": [

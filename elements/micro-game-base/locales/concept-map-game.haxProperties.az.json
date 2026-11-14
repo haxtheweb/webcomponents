@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Anlayış xəritəsi oyunu",
-    "description": "Qısa klaviatura oyunu. Personaj xəritədəki hər anlayışa gedir və anlayış özünü izah edir. Hamısına toxunun, konfeti və kopyalamaq üçün sorğu əldə edin."
+    "description": "Personajın xəritədə gəzdiyi və hər anlayışın özünü izah etdiyi qısa klaviatura oyunu."
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "HAX 链接",
-    "description": "链接到侬正在做个网站里某只资源。"
+    "title": "页面链接",
+    "description": "链接到侬正勒做个网站里个页面。"
   },
   "settings": {
     "configure": [

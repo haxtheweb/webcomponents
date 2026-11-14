@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Irudi sinplea",
-    "description": "Manipulatu irudiak parametro sinpleekin."
+    "description": "Ezarpen sinpleekin tamainaz aldatutako, moztutako edo biratutako irudia."
   },
   "settings": {
     "configure": [

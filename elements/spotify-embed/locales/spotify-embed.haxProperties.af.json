@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "Omhulsel vir Spotify-speler-inbeddings."
+    "description": "Sluit 'n Spotify-snit, -album of -snitlys in."
   },
   "settings": {
     "configure": [

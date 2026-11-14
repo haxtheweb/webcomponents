@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "გარსი Spotify-ის ფლეერის ჩასმებისთვის."
+    "description": "ჩასვით Spotify-ის ტრეკი, ალბომი ან დასაკრავი სია."
   },
   "settings": {
     "configure": [

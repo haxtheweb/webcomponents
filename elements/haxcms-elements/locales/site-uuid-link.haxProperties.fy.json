@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "HAX-keppeling",
-    "description": "In keppeling nei in spesifike boarne yn de webstee dêr't jo oan wurkje."
+    "title": "Sidekeppeling",
+    "description": "In keppeling nei in side yn de webside dêr't jo oan wurkje."
   },
   "settings": {
     "configure": [

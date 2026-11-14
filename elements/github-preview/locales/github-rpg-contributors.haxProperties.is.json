@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Listi yfir GitHub-þátttakendur",
-    "description": "Birtir sem RPG-persónur með GitHub API."
+    "description": "Sýndu þátttakendur í hugbúnaðarsafni sem RPG-persónur."
   },
   "settings": {
     "configure": [

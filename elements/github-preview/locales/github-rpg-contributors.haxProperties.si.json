@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "GitHub දායකයින් ලැයිස්තුව",
-    "description": "GitHub API භාවිතයෙන් RPG චරිත ලෙස විදහා දැක්වේ."
+    "description": "ගබඩාවක දායකයින් RPG චරිත ලෙස ලැයිස්තුගත කරන්න."
   },
   "settings": {
     "configure": [

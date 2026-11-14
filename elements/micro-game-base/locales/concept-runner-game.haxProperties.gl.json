@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Xogo de carreira de conceptos",
-    "description": "Un xogo de desprazamento lateral. O personaxe corre en chamas e nunca para. Salta para coller os bos conceptos e esquivar os malos, e despois mira un resumo do que foi bo e do que foi malo."
+    "description": "Un xogo de desprazamento lateral: salta para coller os conceptos correctos e eliminar os incorrectos."
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Hljóð",
-    "description": "Þetta getur birt myndband á mjög aðgengilegan hátt óháð uppruna."
+    "description": "Aðgengilegur hljóðspilari með stuðningi við afrit."
   },
   "settings": {
     "configure": [

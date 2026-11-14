@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Keldutilvísing",
-    "description": "Tilvísingarelement við trimum framsetingarháttum."
+    "description": "Vís á eina keldu við heiti, høvundi, loyvi og leinki."
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "'n Blok Markdown-inhoud, direk of afgeleë gelaai"
+    "description": "Markdown-inhoud, inlyn geskryf of van 'n lêer gelaai."
   },
   "settings": {
     "configure": [

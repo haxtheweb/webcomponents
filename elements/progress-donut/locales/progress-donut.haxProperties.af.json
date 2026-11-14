@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Vorderingsdonut",
-    "description": "Vorderingsdonut"
+    "description": "'n Ringgrafiek wat vordering na 'n totaal wys."
   },
   "settings": {
     "configure": [

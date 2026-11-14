@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Ripanga CSV",
-    "description": "Ka taea tēnei te hanga ripanga mai i tētahi kōnae CSV ahakoa kei hea."
+    "description": "Whakaatuhia tētahi kōnae CSV hei ripanga wātea."
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "د ګامونو توکی",
-    "description": "هغه توکی چې د ګامونو د لېست برخه ده"
+    "description": "د ګامونو په لړلیک کې یو ګام."
   },
   "settings": {
     "configure": [

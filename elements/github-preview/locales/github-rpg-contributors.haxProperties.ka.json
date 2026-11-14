@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "GitHub-ის კონტრიბუტორების სია",
-    "description": "ნაჩვენებია RPG პერსონაჟებად GitHub API-ის გამოყენებით."
+    "description": "აჩვენეთ რეპოზიტორიის კონტრიბუტორები RPG პერსონაჟებად."
   },
   "settings": {
     "configure": [

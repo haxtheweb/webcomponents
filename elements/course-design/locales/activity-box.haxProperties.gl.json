@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Caixa de actividade",
-    "description": "Pequeno bloque de título con estilo."
+    "description": "Un título con etiqueta que marca o comezo dunha actividade."
   },
   "settings": {
     "configure": [

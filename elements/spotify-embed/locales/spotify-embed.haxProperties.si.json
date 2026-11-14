@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "Spotify වාදක කාවැද්දීම් සඳහා ආවරණය."
+    "description": "Spotify ගීතයක්, ඇල්බමයක් හෝ ධාවන ලැයිස්තුවක් කාවද්දන්න."
   },
   "settings": {
     "configure": [

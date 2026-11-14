@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "CSV-tabel",
-    "description": "Dit kan 'n tabel genereer uit 'n CSV-lêer, maak nie saak waar dit geleë is nie."
+    "description": "Wys 'n CSV-lêer as 'n toeganklike tabel."
   },
   "settings": {
     "configure": [

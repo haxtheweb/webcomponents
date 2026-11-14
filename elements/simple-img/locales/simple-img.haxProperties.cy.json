@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Delwedd Syml",
-    "description": "Trin delweddau gyda pharamedrau syml."
+    "description": "Delwedd wedi'i newid maint, ei thocio neu ei chylchdroi drwy osodiadau syml."
   },
   "settings": {
     "configure": [

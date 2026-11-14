@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Stergradering",
-    "description": "Graderingsvertoonlegstuk of knoppie om te gradeer."
+    "description": "Wys 'n stergradering, of laat lesers een kies."
   },
   "settings": {
     "configure": [

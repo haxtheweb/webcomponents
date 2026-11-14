@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "自测",
-    "description": "用户好完成自测。"
+    "description": "带隐藏答案个问题，学习者揭开来自家检查。"
   },
   "settings": {
     "configure": [

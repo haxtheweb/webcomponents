@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Selftoets",
-    "description": "Gebruikers kan 'n selftoets voltooi."
+    "description": "'n Vraag met 'n versteekte antwoord wat die leerder onthul om hulself te toets."
   },
   "settings": {
     "configure": [

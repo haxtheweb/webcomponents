@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "የዘርጋ/ሰብስብ ቡድን",
-    "description": "የዘርጋ/ሰብስብ አካላት ቡድን።"
+    "title": "የሚታጠፍ ቡድን",
+    "description": "የሚታጠፉ መያዣዎች ቡድን።"
   },
   "settings": {
     "configure": [

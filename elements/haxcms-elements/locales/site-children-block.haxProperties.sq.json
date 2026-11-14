@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "HAXcms: bllok nënfaqesh",
-    "description": "Bllok dinamik për të shfaqur nënfaqet e faqes aktuale"
+    "title": "Faqe fëmijë",
+    "description": "Listoni faqet fëmijë të faqes aktuale."
   },
   "settings": {
     "configure": [

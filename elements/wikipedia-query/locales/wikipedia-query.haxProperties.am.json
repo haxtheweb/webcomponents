@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Wikipedia",
-    "description": "ይህ የዊኪፔዲያ መጣጥፊዎችን በተለያዩ ቅርጾች በአውድ ላይ ማሳየት ይችላል።"
+    "description": "በገጹ ውስጥ የዊኪፔዲያ ጽሑፍ ያሳዩ።"
   },
   "settings": {
     "configure": [

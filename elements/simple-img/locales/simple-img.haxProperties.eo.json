@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Simpla bildo",
-    "description": "Manipuli bildojn per simplaj parametroj."
+    "description": "Bildo regrandigita, stucita aŭ turnita per simplaj agordoj."
   },
   "settings": {
     "configure": [

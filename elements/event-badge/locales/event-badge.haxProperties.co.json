@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Badge d'avvenimentu",
-    "description": "Cumpunente di badge d'avvenimentu."
+    "description": "Un badge di nome in stile cunferenza cù foto, nome è urganizazione."
   },
   "settings": {
     "configure": [

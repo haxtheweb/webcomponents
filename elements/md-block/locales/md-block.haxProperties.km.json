@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "ប្លុកមាតិកា markdown ដោយផ្ទាល់ ឬផ្ទុកពីចម្ងាយ"
+    "description": "មាតិកា Markdown ដែលសរសេរផ្ទាល់ ឬផ្ទុកពីឯកសារ។"
   },
   "settings": {
     "configure": [

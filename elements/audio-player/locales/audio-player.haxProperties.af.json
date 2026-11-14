@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Oudio",
-    "description": "Dit kan video op 'n hoogs toeganklike manier aanbied, ongeag die bron."
+    "description": "Toeganklike oudiospeler met ondersteuning vir transkripsies."
   },
   "settings": {
     "configure": [

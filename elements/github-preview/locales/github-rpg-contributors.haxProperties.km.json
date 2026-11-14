@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "បញ្ជីអ្នករួមចំណែក GitHub",
-    "description": "បង្ហាញជាតួអង្គ RPG ដោយប្រើ GitHub API។"
+    "description": "រាយអ្នករួមចំណែករបស់ឃ្លាំងកូដជាតួអង្គ RPG។"
   },
   "settings": {
     "configure": [

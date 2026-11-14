@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Paralaks şəkli",
-    "description": "Sürüşdürmə ilə hərəkət edən şəkil"
+    "description": "Səhifədən daha yavaş sürüşən, üzərində başlıq olan tam enli şəkil."
   },
   "settings": {
     "configure": [

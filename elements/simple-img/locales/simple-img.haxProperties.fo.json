@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Einføld mynd",
-    "description": "Viðger myndir við einføldum stigum."
+    "description": "Ein mynd, sum er broytt í stødd, skorin ella snarað við einføldum stillingum."
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Tushunchalar xaritasi o'yini",
-    "description": "Klaviaturada qisqa o'yin. Qahramon xaritadagi har bir tushuncha oldiga boradi va u o'zini tushuntiradi. Hammasiga teging, konfetti va nusxalash uchun prompt oling."
+    "description": "Qahramon xarita bo'ylab yuradigan va har bir tushuncha o'zini tushuntiradigan qisqa klaviatura o'yini."
   },
   "settings": {
     "configure": [

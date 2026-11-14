@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Wikipedia",
-    "description": "Ĉi tio povas montri vikipedian artikolon en kunteksto en diversaj formatoj."
+    "description": "Montru Vikipedian artikolon en la paĝo."
   },
   "settings": {
     "configure": [

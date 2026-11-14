@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "出处",
-    "description": "有三种展示模式个引用元素。"
+    "description": "用标题、作者、许可搭链接注明来源。"
   },
   "settings": {
     "configure": [

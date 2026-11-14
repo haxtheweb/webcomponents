@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Hugtakaleiðangursleikur",
-    "description": "Heimur til að flakka um. Hugtökin finna þig og spyrja spurningar. Svaraðu rétt til að sigra eitt og opna húsið þess. Yfirlitið sýnir tilraunir og hvað á að skoða."
+    "description": "Heimskortsleikur þar sem hugtök spyrja spurninga og rétt svör opna kortið."
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "Zuzenean edo urrunetik kargatutako markdown eduki-blokea"
+    "description": "Markdown edukia, lerroan idatzia edo fitxategi batetik kargatua."
   },
   "settings": {
     "configure": [

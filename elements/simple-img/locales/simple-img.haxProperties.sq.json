@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Imazh i thjeshtë",
-    "description": "Manipulo imazhet me parametra të thjeshtë."
+    "description": "Një imazh i ripërmasuar, i prerë ose i rrotulluar me cilësime të thjeshta."
   },
   "settings": {
     "configure": [

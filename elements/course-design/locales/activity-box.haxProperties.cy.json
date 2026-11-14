@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Blwch Gweithgaredd",
-    "description": "Bloc pennawd bach wedi'i steilio."
+    "description": "Pennawd wedi'i labelu sy'n nodi dechrau gweithgaredd."
   },
   "settings": {
     "configure": [

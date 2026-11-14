@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Fontindiko",
-    "description": "Citaĵa elemento kun tri prezentaj reĝimoj."
+    "description": "Menciu fonton kun ĝia titolo, kreinto, permesilo kaj ligilo."
   },
   "settings": {
     "configure": [

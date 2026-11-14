@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "GitHub катнашучылары исемлеге",
-    "description": "GitHub API ярдәмендә RPG персонажлары итеп күрсәтелә."
+    "description": "Репозиторийга өлеш кертүчеләрне RPG каһарманнары итеп күрсәтегез."
   },
   "settings": {
     "configure": [

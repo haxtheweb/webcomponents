@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Izar bidezko balorazioa",
-    "description": "Balorazioa bistaratzeko widgeta edo baloratzeko botoia."
+    "description": "Erakutsi izar-balorazio bat, edo utzi irakurleei bat aukeratzen."
   },
   "settings": {
     "configure": [

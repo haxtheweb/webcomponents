@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "Ĉirkaŭaĵo por enkorpigoj de la Spotify-ludilo."
+    "description": "Enkorpigu Spotify-trakon, -albumon aŭ -ludliston."
   },
   "settings": {
     "configure": [

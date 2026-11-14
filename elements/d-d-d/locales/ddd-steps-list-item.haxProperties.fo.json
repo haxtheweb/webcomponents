@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Stig",
-    "description": "Lutur, sum er partur av einum stigalista"
+    "description": "Eitt einstakt stig í einum stigalista."
   },
   "settings": {
     "configure": [

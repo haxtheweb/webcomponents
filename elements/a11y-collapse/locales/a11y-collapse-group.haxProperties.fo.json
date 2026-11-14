@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "Bólkur at fálda út/saman",
-    "description": "Ein bólkur av eindum, sum kunnu faldast út og saman."
+    "title": "Samanfellingarbólkur",
+    "description": "Ein bólkur av íløtum, sum kunnu fellast saman."
   },
   "settings": {
     "configure": [

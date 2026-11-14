@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Addım elementi",
-    "description": "Addımlar siyahısının bir hissəsi olan element"
+    "description": "Addımlar siyahısında tək bir addım."
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "CSV tablisasy",
-    "description": "Bu, CSV faýly nirede ýerleşse-de, ondan tablisa döredip biler."
+    "description": "CSV faýlyny elýeterli tablisa hökmünde görkeziň."
   },
   "settings": {
     "configure": [

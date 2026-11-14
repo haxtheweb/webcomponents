@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Logħba tar-runner tal-kunċetti",
-    "description": "Logħba bi scroll bil-ġenb. Il-karattru jiġri fin-nar u qatt ma jieqaf. Aqbeż biex taqbad il-kunċetti tajbin u fuq il-ħżiena, imbagħad ara sommarju ta' dak li kien tajjeb u ħażin."
+    "description": "Logħba side-scrolling: aqbeż biex taqbad il-kunċetti t-tajbin u tneħħi l-ħżiena."
   },
   "settings": {
     "configure": [

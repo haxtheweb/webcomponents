@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Sadə şəkil",
-    "description": "Şəkilləri sadə parametrlərlə emal edin."
+    "description": "Sadə parametrlərlə ölçüsü dəyişdirilən, kəsilən və ya fırladılan şəkil."
   },
   "settings": {
     "configure": [

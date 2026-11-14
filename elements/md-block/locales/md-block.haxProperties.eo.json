@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "Bloko de Markdown-enhavo, rekta aŭ fore ŝargita"
+    "description": "Markdown-enhavo, skribita enlinie aŭ ŝargita el dosiero."
   },
   "settings": {
     "configure": [

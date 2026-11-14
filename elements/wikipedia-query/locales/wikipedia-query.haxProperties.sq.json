@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Wikipedia",
-    "description": "Ky mund të shfaqë një artikull të Wikipedisë në kontekst në një sërë formatesh."
+    "description": "Shfaqni një artikull të Wikipedia-s në faqe."
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "HAXcms: bloc plentyn",
-    "description": "Bloc dynamig i ddangos plentyn y dudalen gyfredol"
+    "title": "Is-dudalennau",
+    "description": "Rhestrwch is-dudalennau'r dudalen gyfredol."
   },
   "settings": {
     "configure": [

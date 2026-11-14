@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "讽刺",
-    "description": "用捣蛋个方式展示文字"
+    "description": "大小写交替个文字，带讽刺口气。"
   },
   "settings": {
     "configure": [

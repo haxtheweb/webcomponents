@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "ຮູບພາບ Parallax",
-    "description": "ຮູບພາບເລື່ອນຕາມ"
+    "description": "ຮູບເຕັມຄວາມກວ້າງທີ່ເລື່ອນຊ້າກວ່າໜ້າ, ມີຫົວຂໍ້ຢູ່ເທິງ."
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Virksemiskassi",
-    "description": "Lítil sniðgivin yvirskriftarblokkur."
+    "description": "Ein yvirskrift við merki, sum vísir byrjanina á einum virksemi."
   },
   "settings": {
     "configure": [

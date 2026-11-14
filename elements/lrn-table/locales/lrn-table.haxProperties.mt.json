@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Tabella CSV",
-    "description": "Dan jista' jiġġenera tabella minn fajl CSV ikun fejn ikun."
+    "description": "Uri fajl CSV bħala tabella aċċessibbli."
   },
   "settings": {
     "configure": [

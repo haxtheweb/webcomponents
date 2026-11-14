@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Cyfeiriad",
-    "description": "Elfen ddyfynnu gyda thri modd cyflwyno."
+    "description": "Rhowch gydnabyddiaeth i ffynhonnell gyda'i theitl, crëwr, trwydded a dolen."
   },
   "settings": {
     "configure": [

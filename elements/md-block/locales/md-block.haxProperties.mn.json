@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "Шууд эсвэл алсаас ачаалсан markdown агуулгын блок"
+    "description": "Шууд бичсэн эсвэл файлаас ачаалсан Markdown агуулга."
   },
   "settings": {
     "configure": [

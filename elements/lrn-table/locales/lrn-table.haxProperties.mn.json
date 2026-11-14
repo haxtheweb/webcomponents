@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "CSV хүснэгт",
-    "description": "CSV файл хаана ч байсан түүнээс хүснэгт үүсгэж чадна."
+    "description": "CSV файлыг хүртээмжтэй хүснэгт болгон харуулна."
   },
   "settings": {
     "configure": [

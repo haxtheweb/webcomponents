@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Parallaks rasm",
-    "description": "Aylantirilganda harakatlanuvchi rasm"
+    "description": "Sahifadan sekinroq aylanadigan, ustida sarlavhasi bor to'liq kenglikdagi rasm."
   },
   "settings": {
     "configure": [

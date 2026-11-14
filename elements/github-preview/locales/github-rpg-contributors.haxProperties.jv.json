@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Dhaptar kontributor GitHub",
-    "description": "Ditampilake minangka karakter RPG nganggo GitHub API."
+    "description": "Dhaptar kontributor repositori minangka paraga RPG."
   },
   "settings": {
     "configure": [

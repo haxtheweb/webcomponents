@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Háð",
-    "description": "Vísir tekst á ein ertandi hátt"
+    "description": "Tekstur við skiftandi stórum og smáum stavum til speiskan tóna."
   },
   "settings": {
     "configure": [

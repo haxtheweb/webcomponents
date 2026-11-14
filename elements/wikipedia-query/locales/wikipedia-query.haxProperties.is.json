@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Wikipedia",
-    "description": "Þetta getur birt Wikipedia-grein í samhengi í ýmsum sniðum."
+    "description": "Sýndu Wikipedia-grein á síðunni."
   },
   "settings": {
     "configure": [

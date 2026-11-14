@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "Amlap ar gyfer mewnosodiadau chwaraewr Spotify."
+    "description": "Mewnosodwch drac, albwm neu restr chwarae Spotify."
   },
   "settings": {
     "configure": [

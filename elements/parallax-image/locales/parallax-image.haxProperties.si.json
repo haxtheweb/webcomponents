@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Parallax රූපය",
-    "description": "රූපය අනුචලනය වේ"
+    "description": "පිටුවට වඩා සෙමින් අනුචලනය වන, ඉහළින් ශීර්ෂයක් සහිත සම්පූර්ණ පළල රූපයක්."
   },
   "settings": {
     "configure": [

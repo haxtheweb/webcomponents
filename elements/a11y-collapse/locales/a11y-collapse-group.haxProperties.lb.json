@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "Gruppe zum Op- an Zouklappen",
-    "description": "Eng Grupp vun Elementer zum Op- an Zouklappen."
+    "title": "Zesummeklappgrupp",
+    "description": "Eng Grupp vun zesummeklappbare Containeren."
   },
   "settings": {
     "configure": [

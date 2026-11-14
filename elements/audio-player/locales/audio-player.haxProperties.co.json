@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Audio",
-    "description": "Pò prisentà video in modu assai accessibile qualunque sia a fonte."
+    "description": "Lettore audio accessibile cù supportu di trascrizzione."
   },
   "settings": {
     "configure": [

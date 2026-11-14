@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "ድምፅ",
-    "description": "ይህ ምንጩ ምንም ይሁን ምን ቪዲዮን በከፍተኛ ተደራሽነት ማቅረብ ይችላል።"
+    "description": "የጽሑፍ ግልባጭ ድጋፍ ያለው ተደራሽ የድምፅ ማጫወቻ።"
   },
   "settings": {
     "configure": [

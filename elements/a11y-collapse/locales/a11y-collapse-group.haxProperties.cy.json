@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "Grŵp Ehangu a Chwympo",
-    "description": "Grŵp o elfennau ehangu a chwympo."
+    "title": "Grŵp cwympo",
+    "description": "Grŵp o gynwysyddion y gellir eu cwympo."
   },
   "settings": {
     "configure": [

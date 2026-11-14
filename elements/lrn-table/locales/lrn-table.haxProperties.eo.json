@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "CSV-tabelo",
-    "description": "Ĉi tio povas generi tabelon el CSV-dosiero, kie ajn ĝi troviĝas."
+    "description": "Montru CSV-dosieron kiel alireblan tabelon."
   },
   "settings": {
     "configure": [

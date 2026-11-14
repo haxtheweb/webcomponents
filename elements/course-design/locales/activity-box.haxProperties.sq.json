@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Kutia e aktivitetit",
-    "description": "Bllok i vogël titulli me stil."
+    "description": "Një titull me etiketë që shënon fillimin e një aktiviteti."
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "Spotify ойнатқышын енгізуге арналған қабықша."
+    "description": "Spotify трегін, альбомын немесе ойнату тізімін ендіріңіз."
   },
   "settings": {
     "configure": [

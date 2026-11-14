@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "ຕົວຫໍ່ສຳລັບການຝັງເຄື່ອງຫຼິ້ນ Spotify."
+    "description": "ຝັງເພງ, ອັນລະບັ້ມ ຫຼືລາຍການຫຼິ້ນຈາກ Spotify."
   },
   "settings": {
     "configure": [

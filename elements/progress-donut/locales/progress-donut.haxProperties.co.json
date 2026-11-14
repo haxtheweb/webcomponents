@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Ciambella di prugressu",
-    "description": "Ciambella di prugressione"
+    "description": "Un graficu à anellu chì mostra u prugressu versu un tutale."
   },
   "settings": {
     "configure": [

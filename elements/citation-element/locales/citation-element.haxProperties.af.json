@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Bronverwysing",
-    "description": "Aanhalingselement met drie aanbiedingsmodusse."
+    "description": "Gee erkenning aan 'n bron met sy titel, skepper, lisensie en skakel."
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Sjálvkanning",
-    "description": "Brúkarar kunnu gera eina sjálvkanning."
+    "description": "Ein spurningur við fjaldum svari, sum næmingurin avdúkar fyri at kanna seg sjálvan."
   },
   "settings": {
     "configure": [

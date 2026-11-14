@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "GitHub مددگارن جي لسٽ",
-    "description": "GitHub API استعمال ڪندي RPG ڪردارن طور ڏيکاريل."
+    "description": "ريپازٽري جي حصو وٺندڙن کي RPG ڪردارن طور ڏيکاريو."
   },
   "settings": {
     "configure": [

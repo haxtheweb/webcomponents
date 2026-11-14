@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Fəaliyyət qutusu",
-    "description": "Kiçik üslublu başlıq bloku."
+    "description": "Fəaliyyətin başlanğıcını göstərən etiketli başlıq."
   },
   "settings": {
     "configure": [

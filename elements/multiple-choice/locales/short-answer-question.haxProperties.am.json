@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "የአጭር መልስ ጥያቄ",
-    "description": "ተጠቃሚው መሠረታዊ ጥያቄ እንዲመልስ አድርግ"
+    "description": "ተማሪው በአንድ ወይም በሁለት ዓረፍተ ነገር የሚመልሰው ጥያቄ።"
   },
   "settings": {
     "configure": [

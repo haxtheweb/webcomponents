@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "တိုက်ရိုက် သို့မဟုတ် အဝေးမှ ဖွင့်ထားသော markdown အကြောင်းအရာ ဘလော့ခ်"
+    "description": "တိုက်ရိုက်ရေးထားသော သို့မဟုတ် ဖိုင်မှ တင်ထားသော Markdown အကြောင်းအရာ။"
   },
   "settings": {
     "configure": [

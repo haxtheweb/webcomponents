@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "Blokk ta' kontenut markdown direttament jew mgħobbi minn remot"
+    "description": "Kontenut Markdown, miktub inline jew mgħobbi minn fajl."
   },
   "settings": {
     "configure": [

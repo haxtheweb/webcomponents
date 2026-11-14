@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "CSV جدول",
-    "description": "هي CSV فائل مان جدول ٺاهي سگهي ٿو، چاهي اها ڪٿي به هجي."
+    "description": "CSV فائل کي رسائي لائق ٽيبل طور ڏيکاريو."
   },
   "settings": {
     "configure": [

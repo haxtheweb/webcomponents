@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Geleentheidskenteken",
-    "description": "Geleentheidskenteken-komponent."
+    "description": "'n Naamkenteken in konferensiestyl met foto, naam en organisasie."
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Viðburðarmerki",
-    "description": "Viðburðarmerkiseining."
+    "description": "Nafnspjald í ráðstefnustíl með mynd, nafni og stofnun."
   },
   "settings": {
     "configure": [

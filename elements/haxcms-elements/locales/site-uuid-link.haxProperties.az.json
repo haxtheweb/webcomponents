@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "HAX keçidi",
-    "description": "Üzərində işlədiyiniz saytdakı konkret resursa keçid."
+    "title": "Səhifə keçidi",
+    "description": "Üzərində işlədiyiniz saytdakı səhifəyə keçid."
   },
   "settings": {
     "configure": [

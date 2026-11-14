@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Parallax ပုံ",
-    "description": "ပုံ လှိမ့်ဖြတ်ခြင်း"
+    "description": "စာမျက်နှာထက် နှေးစွာရွေ့ပြီး အပေါ်တွင် ခေါင်းစဉ်ပါသော အကျယ်အပြည့် ပုံ။"
   },
   "settings": {
     "configure": [

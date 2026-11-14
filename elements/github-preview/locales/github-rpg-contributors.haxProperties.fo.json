@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Listi yvir GitHub-luttakarar",
-    "description": "Víst sum RPG-figurar við GitHub API."
+    "description": "Lista íkastarar til eitt goymslustað sum RPG-persónar."
   },
   "settings": {
     "configure": [

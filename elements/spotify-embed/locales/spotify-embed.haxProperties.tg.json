@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "Қабат барои плеерҳои ҷойгиршудаи Spotify."
+    "description": "Суруд, албом ё рӯйхати пахши Spotify-ро ҷойгир кунед."
   },
   "settings": {
     "configure": [

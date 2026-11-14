@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Tiltaksmerki",
-    "description": "Partur til tiltaksmerki."
+    "description": "Eitt navnamerki í ráðstevnustíli við mynd, navni og felagsskapi."
   },
   "settings": {
     "configure": [

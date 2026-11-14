@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Delwedd parallacs",
-    "description": "Delwedd yn sgrolio heibio"
+    "description": "Delwedd lled llawn sy'n sgrolio'n arafach na'r dudalen, gyda phennawd drosti."
   },
   "settings": {
     "configure": [

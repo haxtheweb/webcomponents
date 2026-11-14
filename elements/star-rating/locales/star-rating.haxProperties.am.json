@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "የኮከብ ደረጃ",
-    "description": "የደረጃ ማሳያ መግብር ወይም ደረጃ ለመስጠት አዝራር።"
+    "description": "የኮከብ ደረጃ ያሳዩ፣ ወይም አንባቢዎች እንዲመርጡ ይፍቀዱ።"
   },
   "settings": {
     "configure": [

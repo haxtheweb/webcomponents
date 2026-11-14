@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Imazh paralaks",
-    "description": "Imazh që lëviz me rrëshqitjen"
+    "description": "Një imazh me gjerësi të plotë që rrëshqet më ngadalë se faqja, me një titull sipër."
   },
   "settings": {
     "configure": [

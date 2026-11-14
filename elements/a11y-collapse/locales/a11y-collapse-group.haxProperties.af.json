@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "Uitvou-invougroep",
-    "description": "'n Groep uitvou-invou-elemente."
+    "title": "Invougroep",
+    "description": "'n Groep invoubare houers."
   },
   "settings": {
     "configure": [

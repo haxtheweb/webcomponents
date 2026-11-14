@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Ýönekeý surat",
-    "description": "Suratlary ýönekeý parametrler bilen üýtgediň."
+    "description": "Ýönekeý sazlamalar bilen ölçegi üýtgedilen, kesilen ýa-da aýlanan surat."
   },
   "settings": {
     "configure": [

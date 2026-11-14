@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Kontzeptu-bilaketaren jokoa",
-    "description": "Miatzeko mundu bat. Kontzeptuek aurkituko zaituzte eta galdera bat egingo dizute. Erantzun zuzen bat emanda, bat garaitu eta bere etxea irekiko duzu. Laburpenak saiakerak eta berrikusi beharrekoa erakusten ditu."
+    "description": "Mundu-mapako jokoa: kontzeptuek galderak egiten dituzte eta erantzun zuzenek mapa desblokeatzen dute."
   },
   "settings": {
     "configure": [

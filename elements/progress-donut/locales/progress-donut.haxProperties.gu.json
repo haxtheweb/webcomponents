@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "પ્રગતિ ડોનટ",
-    "description": "પ્રગતિ ડોનટ"
+    "description": "કુલ તરફની પ્રગતિ દર્શાવતો ડોનટ ચાર્ટ."
   },
   "settings": {
     "configure": [

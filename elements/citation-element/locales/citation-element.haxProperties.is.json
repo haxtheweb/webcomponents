@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Heimild",
-    "description": "Tilvitnunareining með þremur framsetningarhömum."
+    "description": "Vísaðu í heimild með titli, höfundi, leyfi og tengli."
   },
   "settings": {
     "configure": [

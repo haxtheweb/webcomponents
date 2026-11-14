@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Qadam elementi",
-    "description": "Qadamlar roʻyxatining bir qismi boʻlgan element"
+    "description": "Qadamlar ro'yxatidagi bitta qadam."
   },
   "settings": {
     "configure": [

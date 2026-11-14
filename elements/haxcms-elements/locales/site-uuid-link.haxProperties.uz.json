@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "HAX havolasi",
-    "description": "Siz ishlayotgan saytdagi muayyan resursga havola."
+    "title": "Sahifa havolasi",
+    "description": "Siz ishlayotgan saytdagi sahifaga havola."
   },
   "settings": {
     "configure": [

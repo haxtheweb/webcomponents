@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Skrefaatriði",
-    "description": "Atriði sem er hluti af skrefalista"
+    "description": "Eitt skref í skrefalista."
   },
   "settings": {
     "configure": [

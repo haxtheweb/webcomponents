@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Ճիշտ / Սխալ հարց",
-    "description": "Ճիշտ-սխալ հարց"
+    "description": "Պնդում, որը սովորողը նշում է որպես ճիշտ կամ սխալ։"
   },
   "settings": {
     "configure": [

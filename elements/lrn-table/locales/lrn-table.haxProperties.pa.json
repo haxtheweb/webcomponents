@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "CSV ਸਾਰਣੀ",
-    "description": "ਇਹ CSV ਫ਼ਾਈਲ ਤੋਂ ਸਾਰਣੀ ਬਣਾ ਸਕਦਾ ਹੈ, ਭਾਵੇਂ ਉਹ ਕਿਤੇ ਵੀ ਹੋਵੇ।"
+    "description": "CSV ਫਾਈਲ ਨੂੰ ਪਹੁੰਚਯੋਗ ਸਾਰਣੀ ਵਜੋਂ ਦਿਖਾਓ।"
   },
   "settings": {
     "configure": [

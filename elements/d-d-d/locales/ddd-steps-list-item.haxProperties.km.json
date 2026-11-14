@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "ធាតុជំហាន",
-    "description": "ធាតុដែលជាផ្នែកនៃបញ្ជីជំហាន"
+    "description": "ជំហានមួយក្នុងបញ្ជីជំហាន។"
   },
   "settings": {
     "configure": [

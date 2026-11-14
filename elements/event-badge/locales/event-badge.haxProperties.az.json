@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Tədbir nişanı",
-    "description": "Tədbir nişanı komponenti."
+    "description": "Foto, ad və təşkilat olan konfrans üslublu ad nişanı."
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Lojë me hartë konceptesh",
-    "description": "Një lojë e shkurtër me tastierë. Një personazh ecën te çdo koncept në një hartë dhe ai shpjegohet vetë. Prek të gjitha për konfeti dhe një kërkesë për ta kopjuar."
+    "description": "Një lojë e shkurtër me tastierë ku një personazh ecën në një hartë dhe çdo koncept shpjegon vetveten."
   },
   "settings": {
     "configure": [

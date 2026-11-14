@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Tabl CSV",
-    "description": "Gall hyn gynhyrchu tabl o ffeil CSV ble bynnag y mae wedi'i lleoli."
+    "description": "Dangoswch ffeil CSV fel tabl hygyrch."
   },
   "settings": {
     "configure": [

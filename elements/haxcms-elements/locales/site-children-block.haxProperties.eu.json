@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "HAXcms: ume-blokea",
-    "description": "Uneko orriaren umeak erakusteko bloke dinamikoa"
+    "title": "Azpiorriak",
+    "description": "Zerrendatu uneko orriaren azpiorriak."
   },
   "settings": {
     "configure": [

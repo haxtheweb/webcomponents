@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "سدھا یا دوروں لوڈ کیتا markdown مواد دا بلاک"
+    "description": "Markdown مواد، سدھا لکھیا یا فائل توں لوڈ کیتا ہویا۔"
   },
   "settings": {
     "configure": [

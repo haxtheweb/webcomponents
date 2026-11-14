@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Schrëtt-Element",
-    "description": "Element, dat Deel vun enger Schrëttlëscht ass"
+    "description": "Een eenzele Schrëtt an enger Schrëttlëscht."
   },
   "settings": {
     "configure": [

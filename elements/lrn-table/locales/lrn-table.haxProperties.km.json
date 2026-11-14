@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "តារាង CSV",
-    "description": "វាអាចបង្កើតតារាងពីឯកសារ CSV មិនថាវាស្ថិតនៅទីណាក៏ដោយ។"
+    "description": "បង្ហាញឯកសារ CSV ជាតារាងងាយប្រើ។"
   },
   "settings": {
     "configure": [

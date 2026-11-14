@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Cwestiwn Gwir / Gau",
-    "description": "Cwestiwn gwir neu gau"
+    "description": "Datganiad y mae'r dysgwr yn ei farcio'n wir neu'n anwir."
   },
   "settings": {
     "configure": [

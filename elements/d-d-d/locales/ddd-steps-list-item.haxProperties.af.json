@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Stap-item",
-    "description": "Item wat deel is van 'n stappelys"
+    "description": "'n Enkele stap in 'n stappelys."
   },
   "settings": {
     "configure": [

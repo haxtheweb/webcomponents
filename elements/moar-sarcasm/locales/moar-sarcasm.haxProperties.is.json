@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Kaldhæðni",
-    "description": "Birtir texta á stríðnislegan hátt"
+    "description": "Texti með há- og lágstöfum til skiptis fyrir kaldhæðinn tón."
   },
   "settings": {
     "configure": [

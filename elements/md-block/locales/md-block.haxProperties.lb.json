@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "E Block mat Markdown-Inhalt, direkt oder vu wäitem gelueden"
+    "description": "Markdown-Inhalt, inline geschriwwen oder aus enger Datei gelueden."
   },
   "settings": {
     "configure": [

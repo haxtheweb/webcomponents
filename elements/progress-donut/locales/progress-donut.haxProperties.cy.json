@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Toesen Cynnydd",
-    "description": "Toesen dilyniant"
+    "description": "Siart toesen sy'n dangos cynnydd tuag at gyfanswm."
   },
   "settings": {
     "configure": [

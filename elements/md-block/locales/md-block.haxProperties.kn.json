@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "ನೇರವಾಗಿ ಅಥವಾ ದೂರದಿಂದ ಲೋಡ್ ಮಾಡಿದ markdown ವಿಷಯದ ಬ್ಲಾಕ್"
+    "description": "Markdown ವಿಷಯ, ನೇರವಾಗಿ ಬರೆದದ್ದು ಅಥವಾ ಫೈಲ್‌ನಿಂದ ಲೋಡ್ ಮಾಡಿದ್ದು."
   },
   "settings": {
     "configure": [

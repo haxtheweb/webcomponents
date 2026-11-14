@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "HAXcms: فرعي بلاک",
-    "description": "د اوسنۍ پاڼې د فرعي پاڼو د ښودلو لپاره متحرک بلاک"
+    "title": "فرعي مخونه",
+    "description": "د اوسني مخ فرعي مخونه لېست کړئ."
   },
   "settings": {
     "configure": [

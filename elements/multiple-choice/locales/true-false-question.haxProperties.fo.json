@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Satt / ósatt-spurningur",
-    "description": "Spurningur um satt ella ósatt"
+    "description": "Ein útsøgn, sum næmingurin merkir sum sonn ella ósonn."
   },
   "settings": {
     "configure": [

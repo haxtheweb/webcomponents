@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Rating Lintang",
-    "description": "Widget tampilan rating utawa tombol kanggo menehi rating."
+    "description": "Tuduhna rating lintang, utawa supaya sing maca milih."
   },
   "settings": {
     "configure": [

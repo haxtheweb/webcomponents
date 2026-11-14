@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "ራስን መፈተሻ",
-    "description": "ተጠቃሚዎች ራስን መፈተሻ ማጠናቀቅ ይችላሉ።"
+    "description": "ተማሪው ራሱን ለመፈተሽ የሚገልጠው የተደበቀ መልስ ያለው ጥያቄ።"
   },
   "settings": {
     "configure": [

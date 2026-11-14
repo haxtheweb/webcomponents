@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "Fillteán do sheinnteoirí leabaithe Spotify."
+    "description": "Leabaigh rian, albam nó seinnliosta Spotify."
   },
   "settings": {
     "configure": [

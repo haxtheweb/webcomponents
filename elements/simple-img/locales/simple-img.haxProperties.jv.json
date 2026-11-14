@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Gambar Prasaja",
-    "description": "Olah gambar nganggo parameter prasaja."
+    "description": "Gambar sing diowahi ukurane, dipotong utawa diputer nganggo setelan prasaja."
   },
   "settings": {
     "configure": [

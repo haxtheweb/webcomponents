@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Wikipedia",
-    "description": "આ સંદર્ભમાં વિવિધ ફોર્મેટમાં વિકિપીડિયા લેખ દર્શાવી શકે છે."
+    "description": "પૃષ્ઠમાં વિકિપીડિયા લેખ બતાવો."
   },
   "settings": {
     "configure": [

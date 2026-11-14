@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Framvinduhringur",
-    "description": "Framvinduhringur"
+    "description": "Hringrit sem sýnir framvindu að heildartölu."
   },
   "settings": {
     "configure": [

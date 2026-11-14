@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "Spotify pleyer yerləşdirmələri üçün örtük."
+    "description": "Spotify treki, albomu və ya pleylistini yerləşdirin."
   },
   "settings": {
     "configure": [

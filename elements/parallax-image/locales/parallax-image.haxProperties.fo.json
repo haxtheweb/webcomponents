@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Parallaks-mynd",
-    "description": "Mynd rullar framvið"
+    "description": "Ein mynd í fullari breidd, sum skrullar seinni enn síðan, við yvirskrift omaná."
   },
   "settings": {
     "configure": [
