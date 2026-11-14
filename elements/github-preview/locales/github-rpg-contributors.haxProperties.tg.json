@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Рӯйхати саҳмгузорони GitHub",
-    "description": "Бо истифода аз GitHub API ҳамчун қаҳрамонҳои RPG намоиш дода мешавад."
+    "description": "Саҳмгузорони анборро ҳамчун қаҳрамонҳои RPG номбар кунед."
   },
   "settings": {
     "configure": [

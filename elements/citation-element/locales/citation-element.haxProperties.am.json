@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "ዋቢ",
-    "description": "ሦስት የአቀራረብ ሁነታዎች ያሉት የጥቅስ አካል።"
+    "description": "ምንጩን ከርዕሱ፣ ከፈጣሪው፣ ከፈቃዱ እና ከአገናኙ ጋር ይጥቀሱ።"
   },
   "settings": {
     "configure": [

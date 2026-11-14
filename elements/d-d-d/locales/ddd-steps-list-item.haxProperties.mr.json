@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "पायरी आयटम",
-    "description": "पायऱ्यांच्या सूचीचा भाग असलेला आयटम"
+    "description": "पायऱ्यांच्या यादीतील एक पायरी."
   },
   "settings": {
     "configure": [

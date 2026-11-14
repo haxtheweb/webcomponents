@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "Grup zgjerimi/palosjeje",
-    "description": "Një grup elementesh që zgjerohen dhe palosen."
+    "title": "Grup i palosshëm",
+    "description": "Një grup kontejnerësh të palosshëm."
   },
   "settings": {
     "configure": [

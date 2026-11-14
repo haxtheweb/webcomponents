@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Sjálfspróf",
-    "description": "Notendur geta tekið sjálfspróf."
+    "description": "Spurning með földu svari sem nemandinn birtir til að prófa sjálfan sig."
   },
   "settings": {
     "configure": [

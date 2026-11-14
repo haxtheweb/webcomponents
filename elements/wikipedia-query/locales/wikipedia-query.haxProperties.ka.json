@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Wikipedia",
-    "description": "ეს შეიძლება აჩვენოს Wikipedia-ს სტატია კონტექსტში სხვადასხვა ფორმატში."
+    "description": "აჩვენეთ ვიკიპედიის სტატია გვერდზე."
   },
   "settings": {
     "configure": [

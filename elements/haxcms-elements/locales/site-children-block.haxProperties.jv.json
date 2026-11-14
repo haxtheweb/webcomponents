@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "HAXcms: blok anak",
-    "description": "Blok dinamis kanggo nampilake anak saka kaca saiki"
+    "title": "Kaca anak",
+    "description": "Dhaptar kaca anak saka kaca saiki."
   },
   "settings": {
     "configure": [

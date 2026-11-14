@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "Spotify پلیئر ایمبیڈاں لئی ریپر۔"
+    "description": "Spotify دا گانا، البم یا پلے لسٹ شامل کرو۔"
   },
   "settings": {
     "configure": [

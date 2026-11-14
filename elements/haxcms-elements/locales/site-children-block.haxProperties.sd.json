@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "HAXcms: ذيلي بلاڪ",
-    "description": "موجوده صفحي جا ذيلي صفحا ڏيکارڻ لاءِ متحرڪ بلاڪ"
+    "title": "ذيلي صفحا",
+    "description": "موجوده صفحي جا ذيلي صفحا ڏيکاريو."
   },
   "settings": {
     "configure": [

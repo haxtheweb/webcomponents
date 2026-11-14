@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Credencial de evento",
-    "description": "Compoñente de credencial de evento."
+    "description": "Unha acreditación de estilo congreso con foto, nome e organización."
   },
   "settings": {
     "configure": [

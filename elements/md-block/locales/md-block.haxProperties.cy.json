@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "Bloc o gynnwys markdown yn uniongyrchol neu wedi'i lwytho o bell"
+    "description": "Cynnwys Markdown, wedi'i ysgrifennu mewn llinell neu wedi'i lwytho o ffeil."
   },
   "settings": {
     "configure": [

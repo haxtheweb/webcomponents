@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "የእንቅስቃሴ ሳጥን",
-    "description": "ትንሽ ቅጥ ያለው የርዕስ ብሎክ።"
+    "description": "የእንቅስቃሴ መጀመሪያን የሚያመለክት መለያ ያለው ርዕስ።"
   },
   "settings": {
     "configure": [

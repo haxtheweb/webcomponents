@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "ਕਦਮ ਆਈਟਮ",
-    "description": "ਕਦਮਾਂ ਦੀ ਸੂਚੀ ਦਾ ਹਿੱਸਾ ਆਈਟਮ"
+    "description": "ਕਦਮਾਂ ਦੀ ਸੂਚੀ ਵਿੱਚ ਇੱਕ ਕਦਮ।"
   },
   "settings": {
     "configure": [

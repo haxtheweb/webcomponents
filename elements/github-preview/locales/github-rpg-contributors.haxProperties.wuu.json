@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "GitHub 贡献者列表",
-    "description": "用 GitHub API 显示成 RPG 角色。"
+    "description": "拿仓库个贡献者列成 RPG 角色。"
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "Link HAX",
-    "description": "Link għal riżors speċifiku fis-sit li qed taħdem fuqu."
+    "title": "Link għal paġna",
+    "description": "Link għal paġna fis-sit li qed taħdem fuqu."
   },
   "settings": {
     "configure": [

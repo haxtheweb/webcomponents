@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "Markdown բովանդակության բլոկ՝ ուղղակի կամ հեռակա բեռնված"
+    "description": "Markdown բովանդակություն՝ գրված տեղում կամ բեռնված ֆայլից։"
   },
   "settings": {
     "configure": [

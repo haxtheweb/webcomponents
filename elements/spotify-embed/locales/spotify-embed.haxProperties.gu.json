@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "Spotify પ્લેયર એમ્બેડ માટે રૅપર."
+    "description": "Spotify ટ્રૅક, આલ્બમ અથવા પ્લેલિસ્ટ એમ્બેડ કરો."
   },
   "settings": {
     "configure": [

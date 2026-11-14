@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "Markdown კონტენტის ბლოკი, პირდაპირ ან დისტანციურად ჩატვირთული"
+    "description": "Markdown შიგთავსი, ადგილზე დაწერილი ან ფაილიდან ჩატვირთული."
   },
   "settings": {
     "configure": [

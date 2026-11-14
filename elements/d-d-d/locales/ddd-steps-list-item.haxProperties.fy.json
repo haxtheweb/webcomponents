@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Stapitem",
-    "description": "Item dat diel is fan in stappelist"
+    "description": "Ien stap yn in stappelist."
   },
   "settings": {
     "configure": [

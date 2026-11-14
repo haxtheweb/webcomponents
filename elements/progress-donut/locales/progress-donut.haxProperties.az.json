@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "İrəliləyiş halqası",
-    "description": "İrəliləyiş halqası"
+    "description": "Cəmə doğru irəliləyişi göstərən halqa diaqramı."
   },
   "settings": {
     "configure": [

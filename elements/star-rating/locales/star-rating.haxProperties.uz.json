@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Yulduzcha reyting",
-    "description": "Reytingni koʻrsatish vidjeti yoki baho berish tugmasi."
+    "description": "Yulduzli bahoni ko'rsating yoki o'quvchilarga tanlash imkonini bering."
   },
   "settings": {
     "configure": [

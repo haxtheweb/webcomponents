@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "HAX-skakel",
-    "description": "'n Skakel na 'n spesifieke hulpbron in die webwerf waaraan jy werk."
+    "title": "Bladsyskakel",
+    "description": "'n Skakel na 'n bladsy in die werf waaraan jy werk."
   },
   "settings": {
     "configure": [

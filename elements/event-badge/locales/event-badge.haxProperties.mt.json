@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Badge tal-Avveniment",
-    "description": "Komponent ta' badge tal-avveniment."
+    "description": "Beġġ tal-isem fl-istil ta' konferenza b'ritratt, isem u organizzazzjoni."
   },
   "settings": {
     "configure": [

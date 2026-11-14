@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "Genişləndir-yığ qrupu",
-    "description": "Genişləndirilən və yığılan elementlər qrupu."
+    "title": "Yığıla bilən qrup",
+    "description": "Yığıla bilən konteynerlər qrupu."
   },
   "settings": {
     "configure": [

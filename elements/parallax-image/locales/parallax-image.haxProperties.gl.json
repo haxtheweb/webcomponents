@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Imaxe con paralaxe",
-    "description": "Imaxe que se despraza"
+    "description": "Unha imaxe a todo o ancho que se despraza máis amodo ca a páxina, cun título por riba."
   },
   "settings": {
     "configure": [

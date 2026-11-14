@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "HAXcms: alt blok",
-    "description": "Cari səhifənin alt elementini göstərən dinamik blok"
+    "title": "Alt səhifələr",
+    "description": "Cari səhifənin alt səhifələrini sadalayın."
   },
   "settings": {
     "configure": [

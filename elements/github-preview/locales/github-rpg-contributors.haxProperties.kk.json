@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "GitHub үлес қосушылар тізімі",
-    "description": "GitHub API арқылы RPG кейіпкерлері ретінде көрсетіледі."
+    "description": "Репозиторий үлескерлерін RPG кейіпкерлері ретінде көрсетіңіз."
   },
   "settings": {
     "configure": [

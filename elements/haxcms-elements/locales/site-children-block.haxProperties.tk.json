@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "HAXcms: çaga bloky",
-    "description": "Häzirki sahypanyň çagasyny görkezýän dinamiki blok"
+    "title": "Aşaky sahypalar",
+    "description": "Häzirki sahypanyň aşaky sahypalaryny görkeziň."
   },
   "settings": {
     "configure": [

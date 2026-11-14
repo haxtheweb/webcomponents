@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "GitHub-ի ներդրողների ցանկ",
-    "description": "Ցուցադրվում են որպես RPG կերպարներ՝ GitHub API-ի միջոցով։"
+    "description": "Ցուցակագրեք պահոցի մասնակիցներին որպես RPG կերպարներ։"
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Burimi i citatit",
-    "description": "Element citimi me tre mënyra paraqitjeje."
+    "description": "Citoni një burim me titullin, krijuesin, licencën dhe lidhjen e tij."
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "Bevosita yoki masofadan yuklangan markdown kontent bloki"
+    "description": "To'g'ridan-to'g'ri yozilgan yoki fayldan yuklangan Markdown kontenti."
   },
   "settings": {
     "configure": [

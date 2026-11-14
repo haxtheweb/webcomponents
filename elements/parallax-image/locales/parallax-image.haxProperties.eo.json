@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Paralaksa bildo",
-    "description": "Bildo rulumanta preter"
+    "description": "Plenlarĝa bildo, kiu rulumiĝas pli malrapide ol la paĝo, kun titolo super ĝi."
   },
   "settings": {
     "configure": [

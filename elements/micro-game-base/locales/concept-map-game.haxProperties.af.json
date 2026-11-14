@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Konsepkaart-speletjie",
-    "description": "'n Kort sleutelbordspeletjie. 'n Karakter stap na elke konsep op 'n kaart en dit verduidelik homself. Raak aan almal vir confetti en 'n opdrag om te kopieer."
+    "description": "'n Kort sleutelbordspeletjie waar 'n karakter oor 'n kaart loop en elke konsep homself verduidelik."
   },
   "settings": {
     "configure": [

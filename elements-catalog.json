@@ -6743,6 +6743,16 @@
       "tags": []
     },
     {
+      "tag": "webawesome-theme",
+      "title": "",
+      "description": "A HAXcms theme laid out like Web Awesome's own documentation: a two-row header (site bar, then top-level section links), a sidebar for the outline, a reading column whose title carries the page's tags and lead text, and an \"On this page\" list. Built on the Web Awesome DDD bridge: every HAX block...",
+      "package": "@haxtheweb/webawesome-theme",
+      "import": "@haxtheweb/webawesome-theme/webawesome-theme.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
       "tag": "wikipedia-query",
       "title": "Wikipedia Query",
       "description": "Queries Wikipedia and presents the result with citation",

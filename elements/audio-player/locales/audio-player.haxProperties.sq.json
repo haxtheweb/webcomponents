@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Audio",
-    "description": "Ky mund të paraqesë video në mënyrë shumë të qasshme, pavarësisht burimit."
+    "description": "Luajtës audio i aksesueshëm me mbështetje për transkript."
   },
   "settings": {
     "configure": [

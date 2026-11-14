@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spurning með stuttu svari",
-    "description": "Láta notandann svara einfaldri spurningu"
+    "description": "Spurning sem nemandinn svarar í einni eða tveimur setningum."
   },
   "settings": {
     "configure": [

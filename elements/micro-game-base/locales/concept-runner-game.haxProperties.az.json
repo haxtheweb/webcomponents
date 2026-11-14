@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Anlayış qaçışı oyunu",
-    "description": "Yan sürüşməli oyun. Personaj alovla qaçır və dayanmır. Yaxşı anlayışları tutmaq, pisləri aşmaq üçün tullanın, sonra nəyin yaxşı, nəyin pis olduğunun xülasəsinə baxın."
+    "description": "Yana sürüşən oyun: düzgün anlayışları tutmaq və səhvləri təmizləmək üçün tullanın."
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Audioa",
-    "description": "Honek bideoa modu oso irisgarrian aurkez dezake, iturria edozein dela ere."
+    "description": "Audio-erreproduzitzaile irisgarria, transkripzio-euskarriarekin."
   },
   "settings": {
     "configure": [

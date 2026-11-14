@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "നേരിട്ടോ റിമോട്ടായോ ലോഡ് ചെയ്ത markdown ഉള്ളടക്കത്തിന്റെ ഒരു ബ്ലോക്ക്"
+    "description": "Markdown ഉള്ളടക്കം, നേരിട്ട് എഴുതിയതോ ഫയലിൽ നിന്ന് ലോഡ് ചെയ്തതോ."
   },
   "settings": {
     "configure": [

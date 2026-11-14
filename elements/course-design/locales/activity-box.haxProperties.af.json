@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Aktiwiteitsblok",
-    "description": "Klein gestileerde opskrifblok."
+    "description": "'n Opskrif met etiket wat die begin van 'n aktiwiteit aandui."
   },
   "settings": {
     "configure": [

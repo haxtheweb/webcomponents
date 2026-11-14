@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Rétt / rangt spurning",
-    "description": "Rétt eða rangt spurning"
+    "description": "Fullyrðing sem nemandinn merkir sem sanna eða ósanna."
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Gêm rhedwr cysyniadau",
-    "description": "Gêm sgrolio ochr. Mae'r cymeriad yn rhedeg ar dân ac byth yn stopio. Neidiwch i gipio'r cysyniadau da ac dros y rhai drwg, yna gwelwch grynodeb o'r hyn oedd yn dda a'r hyn oedd yn ddrwg."
+    "description": "Gêm sgrolio ochr: neidiwch i gipio'r cysyniadau cywir a chlirio'r rhai anghywir."
   },
   "settings": {
     "configure": [

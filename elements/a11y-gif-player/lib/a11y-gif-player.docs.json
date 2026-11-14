@@ -20,7 +20,7 @@
   "import": "@haxtheweb/a11y-gif-player/a11y-gif-player.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/a11y-gif-player/a11y-gif-player.js",
   "install": "npm i @haxtheweb/a11y-gif-player",
-  "demoHtml": "<a11y-gif-player alt=\"It's Always Sunny in Philadelphia Pepe Silvia Meme with GIFs\" src=\"https://media0.giphy.com/media/zHaPZZvl6cVHi/giphy.gif\" longdesc=\"Pepe Silvia scene from It's Always Sunny in Philadelphia. The GIF's don't stop.\" elementVisible media-title=\"The GIFs don't stop\">\n  <span slot=\"caption\">Pepe Silvia scene from It&#39;s Always Sunny in Philadelphia.</span>\n</a11y-gif-player>",
+  "demoHtml": "<a11y-gif-player alt=\"The HAX logo spinning in place\" src=\"https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/a11y-gif-player/lib/hax-logo-spin.gif\" src-without-animation=\"https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/a11y-gif-player/lib/hax-logo-still.png\" longdesc=\"The HAX logo, three linked squares holding the letters H, A and X, turns a full circle and repeats.\" elementVisible media-title=\"Spinning HAX logo\">\n  <span slot=\"caption\">The HAX logo, spinning.</span>\n</a11y-gif-player>",
   "attributes": [
     {
       "name": "alt",
@@ -211,17 +211,18 @@
       {
         "tag": "a11y-gif-player",
         "properties": {
-          "alt": "It's Always Sunny in Philadelphia Pepe Silvia Meme with GIFs",
-          "src": "https://media0.giphy.com/media/zHaPZZvl6cVHi/giphy.gif",
-          "longdesc": "Pepe Silvia scene from It's Always Sunny in Philadelphia. The GIF's don't stop.",
+          "alt": "The HAX logo spinning in place",
+          "src": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/a11y-gif-player/lib/hax-logo-spin.gif",
+          "srcWithoutAnimation": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/a11y-gif-player/lib/hax-logo-still.png",
+          "longdesc": "The HAX logo, three linked squares holding the letters H, A and X, turns a full circle and repeats.",
           "elementVisible": true,
-          "mediaTitle": "The GIFs don't stop"
+          "mediaTitle": "Spinning HAX logo"
         },
-        "content": "<span slot=\"caption\">Pepe Silvia scene from It&#39;s Always Sunny in Philadelphia.</span>"
+        "content": "<span slot=\"caption\">The HAX logo, spinning.</span>"
       }
     ]
   },
-  "surfaceHash": "f45bcc5ae51c",
+  "surfaceHash": "452c2672fd7d",
   "walkthroughs": [
     {
       "id": "",
@@ -229,13 +230,13 @@
       "order": 0,
       "src": "a11y-gif-player.motion.json",
       "file": "lib/a11y-gif-player.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/a11y-gif-player.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

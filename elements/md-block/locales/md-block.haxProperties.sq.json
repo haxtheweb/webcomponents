@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "Një bllok përmbajtjeje markdown, i drejtpërdrejtë ose i ngarkuar nga larg"
+    "description": "Përmbajtje Markdown, e shkruar brenda rreshtit ose e ngarkuar nga një skedar."
   },
   "settings": {
     "configure": [

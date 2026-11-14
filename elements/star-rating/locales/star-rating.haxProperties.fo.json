@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Stjørnumeting",
-    "description": "Vísingaramboð til meting ella knøttur til at meta."
+    "description": "Vís eina stjørnumeting, ella lat lesarar velja eina."
   },
   "settings": {
     "configure": [

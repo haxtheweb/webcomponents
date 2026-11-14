@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "PDF 浏览器查看器",
+    "title": "PDF 查看器",
     "description": "内嵌 PDF 文件，可选卡片布局搭下载按钮。"
   },
   "settings": {

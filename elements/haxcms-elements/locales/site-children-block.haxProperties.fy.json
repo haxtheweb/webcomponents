@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "HAXcms: ûnderside-blok",
-    "description": "Dynamysk blok om ûndersiden fan de hjoeddeiske side te toanen"
+    "title": "Underlizzende siden",
+    "description": "Lit de ûnderlizzende siden fan de aktuele side sjen."
   },
   "settings": {
     "configure": [

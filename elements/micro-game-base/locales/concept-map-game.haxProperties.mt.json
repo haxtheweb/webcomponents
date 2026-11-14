@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Logħba tal-mappa tal-kunċetti",
-    "description": "Logħba qasira bit-tastiera. Karattru jimxi lejn kull kunċett fuq mappa u dan jispjega lilu nnifsu. Mess-hom kollha għall-konfetti u prompt biex tikkopja."
+    "description": "Logħba qasira bit-tastiera fejn karattru jimxi fuq mappa u kull kunċett jispjega lilu nnifsu."
   },
   "settings": {
     "configure": [

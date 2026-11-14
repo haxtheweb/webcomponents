@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Алхмын зүйл",
-    "description": "Алхмын жагсаалтын нэг хэсэг болох зүйл"
+    "description": "Алхмын жагсаалтын нэг алхам."
   },
   "settings": {
     "configure": [

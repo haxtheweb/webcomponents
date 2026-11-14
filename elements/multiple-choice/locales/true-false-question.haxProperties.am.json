@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "እውነት / ሐሰት ጥያቄ",
-    "description": "የእውነት ሐሰት ጥያቄ"
+    "description": "ተማሪው እውነት ወይም ሐሰት ብሎ የሚያመለክተው መግለጫ።"
   },
   "settings": {
     "configure": [

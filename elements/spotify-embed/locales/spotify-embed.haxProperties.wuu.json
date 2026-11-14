@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "Spotify 播放器嵌入个包装器。"
+    "description": "嵌入 Spotify 个歌曲、专辑或者歌单。"
   },
   "settings": {
     "configure": [

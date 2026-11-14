@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "የዝግጅት ባጅ",
-    "description": "የዝግጅት ባጅ ክፍል።"
+    "description": "ፎቶ፣ ስም እና ድርጅት ያለው የጉባኤ ዓይነት የስም ባጅ።"
   },
   "settings": {
     "configure": [

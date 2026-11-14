@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Cita",
-    "description": "Elemento de cita con tres modos de presentación."
+    "description": "Acredita unha fonte co seu título, autor, licenza e ligazón."
   },
   "settings": {
     "configure": [

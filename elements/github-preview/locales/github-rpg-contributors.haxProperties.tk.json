@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "GitHub goşant goşanlarynyň sanawy",
-    "description": "GitHub API-ni ulanyp, RPG gahrymanlary hökmünde görkezilýär."
+    "description": "Ammaryň goşant goşujylaryny RPG gahrymanlary hökmünde görkeziň."
   },
   "settings": {
     "configure": [

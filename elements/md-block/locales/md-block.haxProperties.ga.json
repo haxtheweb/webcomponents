@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "Bloc d'ábhar markdown go díreach nó lódáilte go cianda"
+    "description": "Ábhar Markdown, scríofa inlíne nó lódáilte ó chomhad."
   },
   "settings": {
     "configure": [

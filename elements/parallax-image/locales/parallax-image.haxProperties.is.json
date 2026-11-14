@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Hliðrunarmynd (parallax)",
-    "description": "Mynd sem flettist"
+    "description": "Mynd í fullri breidd sem skrunar hægar en síðan, með fyrirsögn yfir."
   },
   "settings": {
     "configure": [

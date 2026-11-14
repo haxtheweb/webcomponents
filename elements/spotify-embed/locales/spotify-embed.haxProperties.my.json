@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "Spotify ပလေယာ embed များအတွက် wrapper။"
+    "description": "Spotify သီချင်း၊ အယ်လ်ဘမ် သို့မဟုတ် ဖွင့်စာရင်းကို ထည့်သွင်းပါ။"
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "HAXcms: kindblok",
-    "description": "Dinamiese blok om kinders van die huidige bladsy te wys"
+    "title": "Kinderbladsye",
+    "description": "Lys die kinderbladsye van die huidige bladsy."
   },
   "settings": {
     "configure": [

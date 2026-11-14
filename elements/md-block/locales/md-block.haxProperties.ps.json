@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "د markdown منځپانګې بلاک چې مستقیم یا له لرې ځای څخه پورته کېږي"
+    "description": "د Markdown منځپانګه، په ځای لیکل شوې یا له فایل څخه پورته شوې."
   },
   "settings": {
     "configure": [

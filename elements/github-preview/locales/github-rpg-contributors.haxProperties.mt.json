@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Lista tal-kontributuri ta' GitHub",
-    "description": "Murija bħala karattri RPG bl-użu tal-API ta' GitHub."
+    "description": "Elenka l-kontributuri ta' repożitorju bħala karattri RPG."
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "Chipika cha zomwe zili mu markdown cholembedwa mwachindunji kapena chotsegulidwa kuchokera kutali"
+    "description": "Zolemba za Markdown, zolembedwa mwachindunji kapena zotengedwa mu fayilo."
   },
   "settings": {
     "configure": [

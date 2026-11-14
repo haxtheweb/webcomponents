@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Petull progresi",
-    "description": "Petull e përparimit"
+    "description": "Një grafik unazë që tregon përparimin drejt një totali."
   },
   "settings": {
     "configure": [

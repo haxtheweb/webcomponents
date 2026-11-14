@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Hugtaksuppgávuspæl",
-    "description": "Ein heimur at ráfa í. Hugtøkini finna teg og spyrja ein spurning. Svara rætt fyri at sigra eitt og læsa húsið upp. Yvirlitið vísir royndir og hvat skal endurskoðast."
+    "description": "Eitt heimskortsspæl, har hugtøk seta spurningar og røtt svar lata kortið upp."
   },
   "settings": {
     "configure": [

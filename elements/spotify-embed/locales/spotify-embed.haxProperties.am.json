@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "ለSpotify ማጫወቻ መክተቻዎች መጠቅለያ።"
+    "description": "የSpotify ዘፈን፣ አልበም ወይም የአጫውት ዝርዝር ያካትቱ።"
   },
   "settings": {
     "configure": [

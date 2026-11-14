@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Wikipedia",
-    "description": "ਇਹ ਵੱਖ-ਵੱਖ ਫਾਰਮੈਟਾਂ ਵਿੱਚ ਸੰਦਰਭ ਵਿੱਚ ਵਿਕੀਪੀਡੀਆ ਲੇਖ ਵਿਖਾ ਸਕਦਾ ਹੈ।"
+    "description": "ਪੰਨੇ ਵਿੱਚ ਵਿਕੀਪੀਡੀਆ ਲੇਖ ਦਿਖਾਓ।"
   },
   "settings": {
     "configure": [

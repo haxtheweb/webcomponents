@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "HAXcms: ذیلی بلاک",
-    "description": "موجودہ صفحے دے ذیلی وکھاؤن لئی ڈائنامک بلاک"
+    "title": "ذیلی صفحے",
+    "description": "موجودہ صفحے دے ذیلی صفحے وکھاؤ۔"
   },
   "settings": {
     "configure": [

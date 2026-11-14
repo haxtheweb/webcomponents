@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Táboa CSV",
-    "description": "Pode xerar unha táboa a partir dun ficheiro CSV, estea onde estea."
+    "description": "Mostra un ficheiro CSV como unha táboa accesible."
   },
   "settings": {
     "configure": [

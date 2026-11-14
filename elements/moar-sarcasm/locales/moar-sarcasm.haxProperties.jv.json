@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Sarkasme",
-    "description": "Nampilake teks kanthi cara ngece"
+    "description": "Teks nganggo aksara gedhe gantian kanggo nada nyindir."
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Mallongresponda demando",
-    "description": "La uzanto respondu bazan demandon"
+    "description": "Demando, kiun la lernanto respondas per unu aŭ du frazoj."
   },
   "settings": {
     "configure": [

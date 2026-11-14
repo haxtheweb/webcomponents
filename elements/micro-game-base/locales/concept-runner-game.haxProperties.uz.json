@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Tushunchalar yugurish o'yini",
-    "description": "Yon tomonga siljiydigan o'yin. Qahramon olovda yuguradi va hech to'xtamaydi. Yaxshi tushunchalarni olish va yomonlari ustidan o'tish uchun sakrang, so'ng nima yaxshi va nima yomon bo'lgani haqida xulosani ko'ring."
+    "description": "Yon tomonga suriladigan o'yin: to'g'ri tushunchalarni ushlash va noto'g'rilarini yo'qotish uchun sakrang."
   },
   "settings": {
     "configure": [

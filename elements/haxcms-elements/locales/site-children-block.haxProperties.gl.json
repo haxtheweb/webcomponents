@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "HAXcms: bloque de fillas",
-    "description": "Bloque dinámico para mostrar as fillas da páxina actual"
+    "title": "Páxinas fillas",
+    "description": "Lista as páxinas fillas da páxina actual."
   },
   "settings": {
     "configure": [

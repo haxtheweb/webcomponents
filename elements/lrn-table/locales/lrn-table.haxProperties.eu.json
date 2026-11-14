@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "CSV taula",
-    "description": "CSV fitxategi batetik taula bat sor dezake, edonon dagoela ere."
+    "description": "Erakutsi CSV fitxategi bat taula irisgarri gisa."
   },
   "settings": {
     "configure": [

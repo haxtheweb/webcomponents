@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Sarkazëm",
-    "description": "Paraqitja e tekstit në mënyrë tallëse"
+    "description": "Tekst me shkronja të mëdha të alternuara për një ton sarkastik."
   },
   "settings": {
     "configure": [

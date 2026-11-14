@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "HAXcms: undirblokkur",
-    "description": "Dynamiskur blokkur til at vísa undirlutir á núverandi síðu"
+    "title": "Undirsíður",
+    "description": "Lista undirsíðurnar hjá núverandi síðu."
   },
   "settings": {
     "configure": [

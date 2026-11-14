@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Konsep-hardloopspeletjie",
-    "description": "'n Syrollende speletjie. Die karakter hardloop in vlamme en stop nooit. Spring om die goeie konsepte te gryp en oor die slegtes, en sien dan 'n opsomming van wat goed en wat sleg was."
+    "description": "'n Syrolspeletjie: spring om die regte konsepte te gryp en die verkeerdes uit te vee."
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "判断题",
-    "description": "对错判断题"
+    "description": "学习者标成对或者错个陈述。"
   },
   "settings": {
     "configure": [

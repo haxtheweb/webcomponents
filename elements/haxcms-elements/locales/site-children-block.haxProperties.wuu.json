@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "HAXcms:子块",
-    "description": "显示当前页面子页面个动态块"
+    "title": "子页面",
+    "description": "列出当前页面个子页面。"
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Wikipedia",
-    "description": "Энэ нь Википедиа нийтлэлийг олон төрлийн форматаар үзүүлэх боломжтой."
+    "description": "Хуудсанд Wikipedia нийтлэлийг харуулна."
   },
   "settings": {
     "configure": [

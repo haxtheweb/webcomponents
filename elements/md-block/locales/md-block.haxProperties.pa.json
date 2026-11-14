@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "ਸਿੱਧੀ ਜਾਂ ਰਿਮੋਟ ਤੋਂ ਲੋਡ ਕੀਤੀ markdown ਸਮੱਗਰੀ ਦਾ ਬਲਾਕ"
+    "description": "Markdown ਸਮੱਗਰੀ, ਸਿੱਧੀ ਲਿਖੀ ਜਾਂ ਫਾਈਲ ਤੋਂ ਲੋਡ ਕੀਤੀ।"
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "Ein blokkur við markdown-innihaldi, beinleiðis ella innlisið úr fjarstaði"
+    "description": "Markdown-innihald, skrivað beinleiðis ella heintað úr eini fílu."
   },
   "settings": {
     "configure": [

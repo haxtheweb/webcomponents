@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "CSV جدول",
-    "description": "دا کولی شي له CSV فایل څخه جدول جوړ کړي، که هر چېرې وي."
+    "description": "د CSV فایل د لاسرسي وړ جدول په توګه وښایئ."
   },
   "settings": {
     "configure": [

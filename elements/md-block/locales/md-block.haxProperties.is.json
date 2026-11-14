@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "Kubbur með markdown-efni, beint eða hlaðið úr fjarlægð"
+    "description": "Markdown-efni, skrifað beint eða hlaðið úr skrá."
   },
   "settings": {
     "configure": [

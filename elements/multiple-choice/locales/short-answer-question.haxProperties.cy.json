@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Cwestiwn Ateb Byr",
-    "description": "Gofyn i'r defnyddiwr ateb cwestiwn sylfaenol"
+    "description": "Cwestiwn y mae'r dysgwr yn ei ateb mewn brawddeg neu ddwy."
   },
   "settings": {
     "configure": [

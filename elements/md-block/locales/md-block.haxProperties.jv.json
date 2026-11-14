@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "Blok isi markdown langsung utawa diemot saka remote"
+    "description": "Isi Markdown, ditulis langsung utawa dimuat saka berkas."
   },
   "settings": {
     "configure": [

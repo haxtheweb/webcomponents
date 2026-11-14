@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "ಹಂತ ಐಟಂ",
-    "description": "ಹಂತಗಳ ಪಟ್ಟಿಯ ಭಾಗವಾಗಿರುವ ಐಟಂ"
+    "description": "ಹಂತಗಳ ಪಟ್ಟಿಯಲ್ಲಿನ ಒಂದು ಹಂತ."
   },
   "settings": {
     "configure": [

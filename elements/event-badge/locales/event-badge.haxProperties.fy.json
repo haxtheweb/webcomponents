@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Evenemintebadge",
-    "description": "Komponint foar evenemintebadges."
+    "description": "In nammebadge yn konferinsjestyl mei foto, namme en organisaasje."
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "HAXcms: የንዑስ ብሎክ",
-    "description": "የአሁኑን ገጽ ንዑሳን ለማሳየት ተለዋዋጭ ብሎክ"
+    "title": "ንዑስ ገጾች",
+    "description": "የአሁኑን ገጽ ንዑስ ገጾች ይዘርዝሩ።"
   },
   "settings": {
     "configure": [

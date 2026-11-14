@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "પગલાં આઇટમ",
-    "description": "પગલાંની સૂચિનો ભાગ હોય તેવી આઇટમ"
+    "description": "પગલાંની યાદીમાંનું એક પગલું."
   },
   "settings": {
     "configure": [

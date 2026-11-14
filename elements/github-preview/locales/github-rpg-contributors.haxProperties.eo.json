@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Listo de GitHub-kontribuantoj",
-    "description": "Montrataj kiel RPG-roluloj per la GitHub API."
+    "description": "Listigu la kontribuantojn de deponejo kiel RPG-rolulojn."
   },
   "settings": {
     "configure": [

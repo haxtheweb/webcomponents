@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "Spotify ਪਲੇਅਰ ਏਮਬੈਡਾਂ ਲਈ ਰੈਪਰ।"
+    "description": "Spotify ਟਰੈਕ, ਐਲਬਮ ਜਾਂ ਪਲੇਲਿਸਟ ਐਮਬੈੱਡ ਕਰੋ।"
   },
   "settings": {
     "configure": [

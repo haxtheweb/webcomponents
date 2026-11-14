@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "ລາຍຊື່ຜູ້ປະກອບສ່ວນ GitHub",
-    "description": "ສະແດງເປັນຕົວລະຄອນ RPG ໂດຍໃຊ້ GitHub API."
+    "description": "ສະແດງຜູ້ປະກອບສ່ວນຂອງຄັງເກັບເປັນຕົວລະຄອນ RPG."
   },
   "settings": {
     "configure": [

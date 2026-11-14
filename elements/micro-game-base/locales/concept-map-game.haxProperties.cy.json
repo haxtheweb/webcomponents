@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Gêm map cysyniadau",
-    "description": "Gêm fyr ar y bysellfwrdd. Mae cymeriad yn cerdded at bob cysyniad ar fap ac mae'n egluro ei hun. Cyffyrddwch â nhw i gyd i gael conffeti ac anogwr i'w gopïo."
+    "description": "Gêm bysellfwrdd fer lle mae cymeriad yn cerdded map a phob cysyniad yn ei egluro ei hun."
   },
   "settings": {
     "configure": [

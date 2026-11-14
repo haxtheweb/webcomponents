@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "ቀላል ምስል",
-    "description": "ምስሎችን በቀላል መለኪያዎች አስተካክል።"
+    "description": "በቀላል ቅንብሮች መጠኑ የተቀየረ፣ የተከረከመ ወይም የተሽከረከረ ምስል።"
   },
   "settings": {
     "configure": [

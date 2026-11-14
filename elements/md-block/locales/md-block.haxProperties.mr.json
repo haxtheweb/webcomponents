@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "थेट किंवा दूरस्थपणे लोड केलेला markdown मजकुराचा ब्लॉक"
+    "description": "Markdown मजकूर, थेट लिहिलेला किंवा फाइलमधून लोड केलेला."
   },
   "settings": {
     "configure": [

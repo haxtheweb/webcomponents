@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "Omhulsel foar ynsleatene Spotify-spilers."
+    "description": "Foegje in Spotify-nûmer, -album of -ôfspyllist yn."
   },
   "settings": {
     "configure": [

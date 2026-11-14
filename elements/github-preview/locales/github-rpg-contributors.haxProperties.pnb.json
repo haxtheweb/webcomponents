@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "GitHub یوگدان کاراں دی لسٹ",
-    "description": "GitHub API ورت کے RPG کرداراں دی شکل وچ وکھایا جاندا اے۔"
+    "description": "ریپازٹری دے حصہ پان والیاں نوں RPG کرداراں وانگ وکھاؤ۔"
   },
   "settings": {
     "configure": [

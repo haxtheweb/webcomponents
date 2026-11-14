@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "HAX-leinki",
-    "description": "Eitt leinki til eitt ávíst tilfeingi á vevstaðnum, tú arbeiðir við."
+    "title": "Síðuleinkja",
+    "description": "Ein leinkja til eina síðu á vevstaðnum, sum tú arbeiðir við."
   },
   "settings": {
     "configure": [

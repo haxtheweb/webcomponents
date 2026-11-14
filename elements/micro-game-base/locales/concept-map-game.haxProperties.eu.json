@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Kontzeptu-mapako jokoa",
-    "description": "Teklatuko joko laburra. Pertsonaia bat mapako kontzeptu bakoitzera doa eta kontzeptuak bere burua azaltzen du. Guztiak ukitzen badituzu, konfetia eta kopiatzeko prompt bat jasoko duzu."
+    "description": "Teklatuko joko laburra: pertsonaia batek mapa bat zeharkatzen du eta kontzeptu bakoitzak bere burua azaltzen du."
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Pyetje e vërtetë / e gabuar",
-    "description": "Pyetje e vërtetë ose e gabuar"
+    "description": "Një pohim që nxënësi e shënon si të vërtetë ose të rremë."
   },
   "settings": {
     "configure": [

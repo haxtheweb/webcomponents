@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "GitHub салым кошуучулар тизмеси",
-    "description": "GitHub API аркылуу RPG каармандары катары көрсөтүлөт."
+    "description": "Репозиторийдин салым кошуучуларын RPG каармандары катары көрсөтүңүз."
   },
   "settings": {
     "configure": [

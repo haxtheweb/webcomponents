@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "一块直接写或者远程载入个 markdown 内容"
+    "description": "Markdown 内容，直接写或者从文件载入。"
   },
   "settings": {
     "configure": [

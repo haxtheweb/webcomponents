@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "Grup Bukak Tutup",
-    "description": "Klompok unsur sing bisa dibukak lan ditutup."
+    "title": "Grup lempitan",
+    "description": "Grup wadhah sing bisa dilempit."
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "Lidhje HAX",
-    "description": "Një lidhje te një burim i caktuar në sajtin ku po punon."
+    "title": "Lidhje faqeje",
+    "description": "Një lidhje te një faqe në sajtin ku po punoni."
   },
   "settings": {
     "configure": [

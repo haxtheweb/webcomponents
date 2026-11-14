@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "HAXcms: blokk tas-sottopaġni",
-    "description": "Blokk dinamiku biex juri s-sottopaġni tal-paġna attwali"
+    "title": "Paġni sekondarji",
+    "description": "Elenka l-paġni sekondarji tal-paġna attwali."
   },
   "settings": {
     "configure": [

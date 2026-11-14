@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "የGitHub አስተዋጽዖ አድራጊዎች ዝርዝር",
-    "description": "GitHub APIን በመጠቀም እንደ RPG ገጸ-ባህሪያት ይታያል።"
+    "description": "የማከማቻ አበርካቾችን እንደ RPG ገጸ-ባህሪያት ይዘርዝሩ።"
   },
   "settings": {
     "configure": [

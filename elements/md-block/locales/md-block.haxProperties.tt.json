@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "Турыдан-туры яки читтән йөкләнгән markdown эчтәлеге блогы"
+    "description": "Турыдан-туры язылган яки файлдан йөкләнгән Markdown эчтәлеге."
   },
   "settings": {
     "configure": [

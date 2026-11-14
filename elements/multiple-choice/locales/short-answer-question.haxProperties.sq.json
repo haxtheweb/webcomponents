@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Pyetje me përgjigje të shkurtër",
-    "description": "Përdoruesi i përgjigjet një pyetjeje bazë"
+    "description": "Një pyetje së cilës nxënësi i përgjigjet me një ose dy fjali."
   },
   "settings": {
     "configure": [

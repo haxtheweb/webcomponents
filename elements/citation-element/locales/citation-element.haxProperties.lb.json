@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Quellenugab",
-    "description": "Zitatelement mat dräi Presentatiounsmodi."
+    "description": "Nennt eng Quell mat Titel, Auteur, Lizenz a Link."
   },
   "settings": {
     "configure": [

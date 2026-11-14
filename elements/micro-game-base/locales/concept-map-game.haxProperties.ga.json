@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Cluiche mapa coincheap",
-    "description": "Cluiche gearr méarchláir. Siúlann carachtar go dtí gach coincheap ar mhapa agus míníonn sé é féin. Bain leo uile le haghaidh confetti agus leid le cóipeáil."
+    "description": "Cluiche gearr méarchláir ina siúlann carachtar ar léarscáil agus ina míníonn gach coincheap é féin."
   },
   "settings": {
     "configure": [

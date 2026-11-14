@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "ഘട്ട ഇനം",
-    "description": "ഘട്ട ലിസ്റ്റിന്റെ ഭാഗമായ ഇനം"
+    "description": "ഘട്ടങ്ങളുടെ പട്ടികയിലെ ഒരു ഘട്ടം."
   },
   "settings": {
     "configure": [

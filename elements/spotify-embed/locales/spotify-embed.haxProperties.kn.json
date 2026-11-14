@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "Spotify ಪ್ಲೇಯರ್ ಎಂಬೆಡ್‌ಗಳಿಗಾಗಿ ವ್ರ್ಯಾಪರ್."
+    "description": "Spotify ಟ್ರ್ಯಾಕ್, ಆಲ್ಬಮ್ ಅಥವಾ ಪ್ಲೇಲಿಸ್ಟ್ ಎಂಬೆಡ್ ಮಾಡಿ."
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spurningur við stuttum svari",
-    "description": "Lat brúkaran svara einum einføldum spurningi"
+    "description": "Ein spurningur, sum næmingurin svarar í einum ella tveimum setningum."
   },
   "settings": {
     "configure": [

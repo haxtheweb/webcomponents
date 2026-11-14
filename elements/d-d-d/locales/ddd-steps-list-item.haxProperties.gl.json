@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Elemento de pasos",
-    "description": "Elemento que forma parte dunha lista de pasos"
+    "description": "Un único paso nunha lista de pasos."
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "Spotify тоглуулагч суулгацын бүрхүүл."
+    "description": "Spotify-ийн дуу, цомог эсвэл тоглуулах жагсаалтыг оруулна."
   },
   "settings": {
     "configure": [

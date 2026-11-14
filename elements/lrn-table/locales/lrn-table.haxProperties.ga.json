@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Tábla CSV",
-    "description": "Is féidir leis seo tábla a ghiniúint ó chomhad CSV is cuma cá bhfuil sé."
+    "description": "Taispeáin comhad CSV mar thábla inrochtana."
   },
   "settings": {
     "configure": [

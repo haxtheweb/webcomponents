@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "HAXcms: bloc linbh",
-    "description": "Bloc dinimiciúil chun leanbh an leathanaigh reatha a thaispeáint"
+    "title": "Leathanaigh linbh",
+    "description": "Liostaigh leathanaigh linbh an leathanaigh reatha."
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Sarkasme",
-    "description": "Bied teks op 'n terggerige manier aan"
+    "description": "Teks in afwisselende hoof- en kleinletters vir 'n sarkastiese toon."
   },
   "settings": {
     "configure": [

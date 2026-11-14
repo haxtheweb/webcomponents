@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "प्रगति डोनट",
-    "description": "प्रगति डोनट"
+    "description": "कुलतर्फको प्रगति देखाउने डोनट चार्ट।"
   },
   "settings": {
     "configure": [

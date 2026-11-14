@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Tavula CSV",
-    "description": "Pò generà una tavula da un schedariu CSV induve ch'ellu sia."
+    "description": "Mustrate un schedariu CSV cum'è una tavula accessibile."
   },
   "settings": {
     "configure": [

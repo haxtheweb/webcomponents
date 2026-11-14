@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Valutazione à stelle",
-    "description": "Widget d'affissera di valutazione o buttone per valutà."
+    "description": "Mustrate una valutazione à stelle, o lasciate i lettori sceglie ne una."
   },
   "settings": {
     "configure": [

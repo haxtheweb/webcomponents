@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "GitHub സംഭാവകരുടെ ലിസ്റ്റ്",
-    "description": "GitHub API ഉപയോഗിച്ച് RPG കഥാപാത്രങ്ങളായി പ്രദർശിപ്പിക്കുന്നു."
+    "description": "ഒരു റിപ്പോസിറ്ററിയുടെ സംഭാവകരെ RPG കഥാപാത്രങ്ങളായി കാണിക്കുക."
   },
   "settings": {
     "configure": [

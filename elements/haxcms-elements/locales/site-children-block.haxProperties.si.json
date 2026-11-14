@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "HAXcms: උප කොටස",
-    "description": "වත්මන් පිටුවේ උප අයිතම පෙන්වීමට ගතික කොටස"
+    "title": "උප පිටු",
+    "description": "වත්මන් පිටුවේ උප පිටු ලැයිස්තුගත කරන්න."
   },
   "settings": {
     "configure": [

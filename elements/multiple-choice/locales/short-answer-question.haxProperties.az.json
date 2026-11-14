@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Qısa cavablı sual",
-    "description": "İstifadəçidən sadə suala cavab verməsini istəyin"
+    "description": "Öyrənənin bir-iki cümlə ilə cavab verdiyi sual."
   },
   "settings": {
     "configure": [

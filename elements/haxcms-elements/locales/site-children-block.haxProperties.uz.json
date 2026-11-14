@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "HAXcms: ichki sahifalar bloki",
-    "description": "Joriy sahifaning ichki sahifalarini koʻrsatuvchi dinamik blok"
+    "title": "Ichki sahifalar",
+    "description": "Joriy sahifaning ichki sahifalarini ko'rsating."
   },
   "settings": {
     "configure": [

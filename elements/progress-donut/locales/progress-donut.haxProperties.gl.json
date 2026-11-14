@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Rosca de progreso",
-    "description": "Rosca de progresión"
+    "description": "Un gráfico de anel que mostra o progreso cara a un total."
   },
   "settings": {
     "configure": [

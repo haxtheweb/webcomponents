@@ -19,7 +19,7 @@
   "import": "@haxtheweb/audio-player/audio-player.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/audio-player/audio-player.js",
   "install": "npm i @haxtheweb/audio-player",
-  "demoHtml": "<audio-player mediaTitle=\"Jonny Quest Theme\" crossorigin=\"anonymous\" source=\"https://archive.org/download/tvtunes_4710/Jonny%20Quest.mp3\"></audio-player>",
+  "demoHtml": "<audio-player mediaTitle=\"Humans plus Agents\" crossorigin=\"anonymous\" source=\"https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/audio-player/lib/humans-plus-agents.mp3\"></audio-player>",
   "attributes": [],
   "slots": [],
   "events": [],
@@ -183,15 +183,15 @@
       {
         "tag": "audio-player",
         "properties": {
-          "mediaTitle": "Jonny Quest Theme",
+          "mediaTitle": "Humans plus Agents",
           "crossorigin": "anonymous",
-          "source": "https://archive.org/download/tvtunes_4710/Jonny%20Quest.mp3"
+          "source": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/audio-player/lib/humans-plus-agents.mp3"
         },
         "content": ""
       }
     ]
   },
-  "surfaceHash": "1ec69c698e66",
+  "surfaceHash": "138a37ef0929",
   "walkthroughs": [
     {
       "id": "",

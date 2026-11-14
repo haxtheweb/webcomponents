@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Tabelë CSV",
-    "description": "Kjo mund të gjenerojë një tabelë nga një skedar CSV pavarësisht se ku ndodhet."
+    "description": "Shfaqni një skedar CSV si tabelë të aksesueshme."
   },
   "settings": {
     "configure": [

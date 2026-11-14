@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Qisqa javobli savol",
-    "description": "Foydalanuvchiga oddiy savolga javob berishni taklif qilish"
+    "description": "O'quvchi bir-ikki gap bilan javob beradigan savol."
   },
   "settings": {
     "configure": [

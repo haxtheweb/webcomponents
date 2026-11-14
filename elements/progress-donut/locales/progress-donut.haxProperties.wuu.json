@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "进度环",
-    "description": "进度环形图"
+    "description": "显示朝总数进展个环形图。"
   },
   "settings": {
     "configure": [

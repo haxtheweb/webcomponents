@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "Markdown مواد جو بلاڪ، سڌو يا ريموٽ طور لوڊ ٿيل"
+    "description": "Markdown مواد، سڌو لکيل يا فائل مان لوڊ ٿيل."
   },
   "settings": {
     "configure": [

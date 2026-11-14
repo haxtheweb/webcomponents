@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "صحيح / غلط سوال",
-    "description": "صحيح غلط سوال"
+    "description": "بيان جنهن کي سکندڙ صحيح يا غلط طور نشان لڳائي ٿو."
   },
   "settings": {
     "configure": [

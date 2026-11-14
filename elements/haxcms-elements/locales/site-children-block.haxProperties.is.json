@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "HAXcms: undirkubbur",
-    "description": "Kvikur kubbur sem sýnir undirsíður núverandi síðu"
+    "title": "Undirsíður",
+    "description": "Sýndu undirsíður núverandi síðu."
   },
   "settings": {
     "configure": [

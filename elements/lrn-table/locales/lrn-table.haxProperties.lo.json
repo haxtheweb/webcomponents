@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "ຕາຕະລາງ CSV",
-    "description": "ສາມາດສ້າງຕາຕະລາງຈາກໄຟລ໌ CSV ບໍ່ວ່າຈະຢູ່ບ່ອນໃດ."
+    "description": "ສະແດງໄຟລ໌ CSV ເປັນຕາຕະລາງທີ່ເຂົ້າເຖິງໄດ້."
   },
   "settings": {
     "configure": [

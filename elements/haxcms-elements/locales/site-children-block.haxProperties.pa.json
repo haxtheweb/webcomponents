@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "HAXcms: ਉਪ ਬਲਾਕ",
-    "description": "ਮੌਜੂਦਾ ਪੰਨੇ ਦੇ ਉਪ-ਪੰਨੇ ਦਿਖਾਉਣ ਲਈ ਗਤੀਸ਼ੀਲ ਬਲਾਕ"
+    "title": "ਉਪ-ਪੰਨੇ",
+    "description": "ਮੌਜੂਦਾ ਪੰਨੇ ਦੇ ਉਪ-ਪੰਨੇ ਦਿਖਾਓ।"
   },
   "settings": {
     "configure": [

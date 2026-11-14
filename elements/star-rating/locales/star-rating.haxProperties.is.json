@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Stjörnugjöf",
-    "description": "Græja til að sýna einkunn eða hnappur til að gefa einkunn."
+    "description": "Sýndu stjörnugjöf, eða leyfðu lesendum að velja."
   },
   "settings": {
     "configure": [

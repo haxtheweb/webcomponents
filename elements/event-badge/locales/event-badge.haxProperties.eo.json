@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Eventa insigno",
-    "description": "Komponanto de eventa insigno."
+    "description": "Konferencstila nomŝildo kun foto, nomo kaj organizaĵo."
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Einföld mynd",
-    "description": "Vinna með myndir með einföldum færibreytum."
+    "description": "Mynd sem er stærðarbreytt, skorin eða snúið með einföldum stillingum."
   },
   "settings": {
     "configure": [

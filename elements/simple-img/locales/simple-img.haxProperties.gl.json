@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Imaxe simple",
-    "description": "Manipula imaxes con parámetros simples."
+    "description": "Unha imaxe redimensionada, recortada ou xirada con axustes sinxelos."
   },
   "settings": {
     "configure": [

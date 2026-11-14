@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "HAX-tengill",
-    "description": "Tengill á tiltekið tilfang á vefnum sem þú ert að vinna í."
+    "title": "Síðutengill",
+    "description": "Tengill á síðu á vefnum sem þú ert að vinna í."
   },
   "settings": {
     "configure": [

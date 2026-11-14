@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Audio",
-    "description": "Bu, mənbəyindən asılı olmayaraq videonu yüksək əlçatan şəkildə təqdim edə bilər."
+    "description": "Transkript dəstəyi olan əlçatan audio pleyer."
   },
   "settings": {
     "configure": [

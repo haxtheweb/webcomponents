@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "CSV-tabel",
-    "description": "Dit kin in tabel meitsje fan in CSV-bestân, wêr't it ek stiet."
+    "description": "Lit in CSV-bestân sjen as in tagonklike tabel."
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "Wrapper għall-embeds tal-plejer ta' Spotify."
+    "description": "Daħħal track, album jew playlist ta' Spotify."
   },
   "settings": {
     "configure": [

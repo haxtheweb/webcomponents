@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Քայլի տարր",
-    "description": "Քայլերի ցանկի մաս կազմող տարր"
+    "description": "Մեկ քայլ քայլերի ցանկում։"
   },
   "settings": {
     "configure": [

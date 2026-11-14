@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "CSV-tafla",
-    "description": "Þetta getur búið til töflu úr CSV-skrá óháð því hvar hún er staðsett."
+    "description": "Sýndu CSV-skrá sem aðgengilega töflu."
   },
   "settings": {
     "configure": [

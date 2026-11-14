@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "İstinad",
-    "description": "Üç təqdimat rejimi olan istinad elementi."
+    "description": "Mənbəni adı, müəllifi, lisenziyası və keçidi ilə göstərin."
   },
   "settings": {
     "configure": [

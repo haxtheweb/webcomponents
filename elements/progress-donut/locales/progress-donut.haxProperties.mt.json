@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Donut tal-Progress",
-    "description": "Donut tal-progressjoni"
+    "description": "Ċart ċirku li turi l-progress lejn total."
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "音频",
-    "description": "勿管来源,都可以用无障碍性老好个方式展示视频。"
+    "description": "支持文字稿个无障碍音频播放器。"
   },
   "settings": {
     "configure": [

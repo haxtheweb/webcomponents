@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Anlayış macərası oyunu",
-    "description": "Gəzmək üçün açıq dünya. Anlayışlar sizi tapır və sual verir. Düzgün cavab verib birini məğlub edin və evini açın. Xülasədə cəhdlər və baxılmalı olanlar göstərilir."
+    "description": "Anlayışların sual verdiyi və düzgün cavabların xəritəni açdığı dünya xəritəsi oyunu."
   },
   "settings": {
     "configure": [

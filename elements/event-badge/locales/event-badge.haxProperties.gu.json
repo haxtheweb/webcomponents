@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "ઇવેન્ટ બૅજ",
-    "description": "ઇવેન્ટ બૅજ ઘટક."
+    "description": "ફોટો, નામ અને સંસ્થા સાથેનો કોન્ફરન્સ શૈલીનો નામ બેજ."
   },
   "settings": {
     "configure": [

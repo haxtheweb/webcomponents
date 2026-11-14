@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Rhestr cyfranwyr GitHub",
-    "description": "Wedi'u dangos fel cymeriadau RPG gan ddefnyddio API GitHub."
+    "description": "Rhestrwch gyfranwyr ystorfa fel cymeriadau RPG."
   },
   "settings": {
     "configure": [

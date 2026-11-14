@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Vlerësim me yje",
-    "description": "Mjet për shfaqjen e vlerësimit ose buton për të vlerësuar."
+    "description": "Shfaqni një vlerësim me yje, ose lërini lexuesit të zgjedhin një."
   },
   "settings": {
     "configure": [

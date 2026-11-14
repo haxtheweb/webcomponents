@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "සෘජුව හෝ දුරස්ථව පූරණය කළ markdown අන්තර්ගත කොටසක්"
+    "description": "Markdown අන්තර්ගතය, කෙළින්ම ලියූ හෝ ගොනුවකින් පූරණය කළ."
   },
   "settings": {
     "configure": [

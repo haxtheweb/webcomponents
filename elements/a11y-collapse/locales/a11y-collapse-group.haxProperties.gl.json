@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "Grupo despregable",
-    "description": "Un grupo de elementos despregables."
+    "title": "Grupo pregable",
+    "description": "Un grupo de contedores pregables."
   },
   "settings": {
     "configure": [

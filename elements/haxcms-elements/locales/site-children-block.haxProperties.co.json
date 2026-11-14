@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "HAXcms: bloccu di figlioli",
-    "description": "Bloccu dinamicu per mustrà i figlioli di a pagina attuale"
+    "title": "Pagine figliole",
+    "description": "Listate e pagine figliole di a pagina attuale."
   },
   "settings": {
     "configure": [

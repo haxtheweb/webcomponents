@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "Mbështjellës për ngulitjet e luajtësit Spotify."
+    "description": "Ngulitni një këngë, album ose listë këngësh nga Spotify."
   },
   "settings": {
     "configure": [

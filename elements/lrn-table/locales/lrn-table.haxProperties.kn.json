@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "CSV ಕೋಷ್ಟಕ",
-    "description": "CSV ಫೈಲ್ ಎಲ್ಲೇ ಇದ್ದರೂ ಅದರಿಂದ ಕೋಷ್ಟಕವನ್ನು ರಚಿಸಬಹುದು."
+    "description": "CSV ಫೈಲ್ ಅನ್ನು ಸುಲಭ ಪ್ರವೇಶದ ಕೋಷ್ಟಕವಾಗಿ ತೋರಿಸಿ."
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "HAXcms: ບລັອກລູກ",
-    "description": "ບລັອກໄດນາມິກເພື່ອສະແດງລູກຂອງໜ້າປັດຈຸບັນ"
+    "title": "ໜ້າຍ່ອຍ",
+    "description": "ສະແດງໜ້າຍ່ອຍຂອງໜ້າປັດຈຸບັນ."
   },
   "settings": {
     "configure": [

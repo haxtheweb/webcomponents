@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "ບລັອກເນື້ອຫາ markdown ໂດຍກົງ ຫຼື ໂຫຼດຈາກທາງໄກ"
+    "description": "ເນື້ອຫາ Markdown, ຂຽນໂດຍກົງ ຫຼືໂຫຼດຈາກໄຟລ໌."
   },
   "settings": {
     "configure": [

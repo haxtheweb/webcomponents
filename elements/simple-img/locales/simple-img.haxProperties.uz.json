@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Oddiy rasm",
-    "description": "Rasmlarni oddiy parametrlar bilan boshqarish."
+    "description": "Oddiy sozlamalar bilan o'lchami o'zgartirilgan, kesilgan yoki aylantirilgan rasm."
   },
   "settings": {
     "configure": [

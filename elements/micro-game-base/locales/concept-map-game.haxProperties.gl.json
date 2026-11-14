@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Xogo do mapa de conceptos",
-    "description": "Un xogo curto de teclado. Un personaxe camiña ata cada concepto nun mapa e este explícase. Toca todos para ver confeti e un prompt para copiar."
+    "description": "Un xogo breve de teclado no que un personaxe percorre un mapa e cada concepto se explica a si mesmo."
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Lista e kontribuuesve në GitHub",
-    "description": "Shfaqur si personazhe RPG duke përdorur GitHub API."
+    "description": "Listoni kontribuesit e një depoje si personazhe RPG."
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Kortantwoordvraag",
-    "description": "Laat die gebruiker 'n basiese vraag beantwoord"
+    "description": "'n Vraag wat die leerder in 'n sin of twee beantwoord."
   },
   "settings": {
     "configure": [

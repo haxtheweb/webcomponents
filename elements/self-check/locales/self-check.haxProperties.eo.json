@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Memkontrolo",
-    "description": "Uzantoj povas plenumi memkontrolon."
+    "description": "Demando kun kaŝita respondo, kiun la lernanto malkaŝas por kontroli sin."
   },
   "settings": {
     "configure": [

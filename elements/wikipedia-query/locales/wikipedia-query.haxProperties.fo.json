@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Wikipedia",
-    "description": "Hetta kann vísa eina Wikipedia grein í samanhangi í ymsum sniðum."
+    "description": "Vís eina Wikipedia-grein á síðuni."
   },
   "settings": {
     "configure": [

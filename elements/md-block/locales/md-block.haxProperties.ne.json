@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "सिधै वा रिमोटबाट लोड गरिएको markdown सामग्रीको ब्लक"
+    "description": "Markdown सामग्री, सिधै लेखिएको वा फाइलबाट लोड गरिएको।"
   },
   "settings": {
     "configure": [

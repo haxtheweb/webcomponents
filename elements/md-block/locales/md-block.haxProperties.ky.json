@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "Түздөн-түз же алыстан жүктөлгөн markdown мазмунунун блогу"
+    "description": "Түз жазылган же файлдан жүктөлгөн Markdown мазмуну."
   },
   "settings": {
     "configure": [

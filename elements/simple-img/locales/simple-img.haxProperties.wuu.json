@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "简单图片",
-    "description": "用简单参数处理图片。"
+    "description": "用简单设置调整大小、裁剪或者旋转个图片。"
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Autoavaliación",
-    "description": "Os usuarios poden completar unha autoavaliación."
+    "description": "Unha pregunta cunha resposta oculta que o alumno descobre para comprobarse."
   },
   "settings": {
     "configure": [

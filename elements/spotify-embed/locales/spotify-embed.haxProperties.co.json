@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "Involucru per i lettori Spotify incrustati."
+    "description": "Incrustate una pista, un album o una playlist Spotify."
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Manba koʻrsatkichi",
-    "description": "Uchta taqdimot rejimiga ega iqtibos elementi."
+    "description": "Manbani nomi, muallifi, litsenziyasi va havolasi bilan ko'rsating."
   },
   "settings": {
     "configure": [

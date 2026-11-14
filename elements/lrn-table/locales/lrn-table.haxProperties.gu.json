@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "CSV કોષ્ટક",
-    "description": "આ CSV ફાઇલ ગમે ત્યાં હોય, તેમાંથી કોષ્ટક બનાવી શકે છે."
+    "description": "CSV ફાઇલને સુલભ કોષ્ટક તરીકે બતાવો."
   },
   "settings": {
     "configure": [

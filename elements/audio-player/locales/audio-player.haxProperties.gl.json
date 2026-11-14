@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Audio",
-    "description": "Isto pode presentar vídeo dun xeito moi accesible independentemente da fonte."
+    "description": "Reprodutor de audio accesible con soporte para transcricións."
   },
   "settings": {
     "configure": [
