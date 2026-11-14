@@ -82,26 +82,9 @@
               "description": "Redirect event we were monitoring into a trackable event"
             },
             {
-              "kind": "field",
-              "name": "haxProperties",
-              "static": true,
-              "description": "haxProperties integration via file reference",
-              "readonly": true
-            },
-            {
               "kind": "method",
               "name": "haxHooks",
               "description": "Implements haxHooks to tie into life-cycle if hax exists."
-            },
-            {
-              "kind": "method",
-              "name": "haxgizmoRegistration",
-              "parameters": [
-                {
-                  "name": "_store"
-                }
-              ],
-              "description": "Supply translations for the UI elements of HAX in meme-maker"
             },
             {
               "kind": "method",

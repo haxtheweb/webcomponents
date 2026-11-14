@@ -1,8 +1,8 @@
 {
   "_meta": {
-    "elementsScanned": 247,
-    "elementsWithTranslations": 157,
-    "translationFilesFound": 41245,
+    "elementsScanned": 249,
+    "elementsWithTranslations": 158,
+    "translationFilesFound": 40841,
     "languagesSupported": [
       "af",
       "am",
@@ -6808,6 +6808,7 @@
       "zh",
       "zu"
     ],
+    "block-quote": ["en"],
     "block-quote.haxProperties": [
       "af",
       "am",
@@ -8375,6 +8376,7 @@
       "zh",
       "zu"
     ],
+    "ddd-steps-list": ["en"],
     "ddd-steps-list.haxProperties": [
       "af",
       "am",
@@ -38706,6 +38708,7 @@
       "zh",
       "zu"
     ],
+    "stat-tile": ["en"],
     "stop-note-group": ["en"],
     "stop-note": [
       "af",
@@ -41428,6 +41431,7 @@
       "zh",
       "zu"
     ],
+    "webawesome-theme": ["en"],
     "wikipedia-query": [
       "af",
       "am",

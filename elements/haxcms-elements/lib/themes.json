@@ -514,5 +514,17 @@
     "priority": 0,
     "terrible": false,
     "supportedPalettes": null
+  },
+  "webawesome-theme": {
+    "element": "webawesome-theme",
+    "path": "@haxtheweb/webawesome-theme/webawesome-theme.js",
+    "name": "Web Awesome",
+    "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-webawesome-theme-thumb.jpg",
+    "description": "Start with a blank site using the Web Awesome",
+    "category": ["Website", "Course", "Documentation"],
+    "hidden": false,
+    "priority": 50,
+    "terrible": false,
+    "supportedPalettes": null
   }
 }

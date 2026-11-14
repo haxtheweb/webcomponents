@@ -27,13 +27,6 @@
             },
             {
               "kind": "field",
-              "name": "haxProperties",
-              "static": true,
-              "description": "haxProperties integration via file reference",
-              "readonly": true
-            },
-            {
-              "kind": "field",
               "name": "mode",
               "privacy": "public",
               "type": {

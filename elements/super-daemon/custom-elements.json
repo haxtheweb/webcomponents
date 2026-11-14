@@ -1830,8 +1830,8 @@
           "type": {
             "text": "array"
           },
-          "default": "[\"hax:future-traveler-plain\"]",
-          "description": "Icon names that mean Merlin wearing the Future Traveler: the HAX helmet,\ngoggles and idea bulb, in one ink (currentColor) with see-through\nlenses. A Merlin control given one of these draws him inline so his bulb\nand goggles can light: off at rest, on with hover or focus, glowing\nwhile Merlin listens or works. Same shapes as hax:future-traveler-plain."
+          "default": "[ \"hax:future-traveler-plain\", \"hax:world-traveler-plain\", ]",
+          "description": "Icon names that mean Merlin wearing the Future Traveler: the HAX helmet,\ngoggles and idea bulb, in one ink (currentColor) with see-through\nlenses. A Merlin control given one of these draws him inline so his bulb\nand goggles can light: off at rest, on with hover or focus, glowing\nwhile Merlin listens or works. Same shapes as hax:future-traveler-plain.\nhax:world-traveler-plain is the icon's old name, kept so a Merlin set up\nwith it still draws him."
         },
         {
           "kind": "function",
