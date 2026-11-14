@@ -258,3 +258,29 @@ describe("simple-fields-form", () => {
     expect(called).to.equal(true);
   });
 });
+
+describe("simple-fields-lite value paths", () => {
+  it("sets a nested value by its dotted path", async () => {
+    const form = await fixture(
+      html`<simple-fields-form-lite></simple-fields-form-lite>`,
+    );
+    await form.updateComplete;
+    const sf = form.shadowRoot.querySelector("simple-fields-lite");
+    sf.value = {};
+    sf._setValue("settings.title", "Hello");
+    expect(sf.value.settings.title).to.equal("Hello");
+  });
+
+  it("never writes through a path that reaches a prototype", async () => {
+    const form = await fixture(
+      html`<simple-fields-form-lite></simple-fields-form-lite>`,
+    );
+    await form.updateComplete;
+    const sf = form.shadowRoot.querySelector("simple-fields-lite");
+    sf.value = {};
+    sf._setValue("__proto__.polluted", "yes");
+    sf._setValue("constructor.prototype.polluted", "yes");
+    expect({}.polluted).to.equal(undefined);
+    expect(Object.keys(sf.value)).to.deep.equal([]);
+  });
+});

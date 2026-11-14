@@ -70,6 +70,8 @@ test("sweep flags new problems, honours exceptions and notices changes", () => {
           "LGPL-3.0-or-later",
         ),
         pkg("pkg:npm/%40haxtheweb/own@26.0.0", undefined),
+        // a workspace the lockfile lists by its folder
+        pkg("pkg:npm/elements/own-element@26.0.0", undefined),
         pkg("pkg:githubactions/actions/checkout@v7", undefined),
       ],
     },
@@ -102,6 +104,8 @@ test("reviewPr fails on unknown licenses and labels weak copyleft", () => {
     {
       unlicensed: [
         change("mystery", null),
+        // a workspace package a regenerated lockfile lists by its folder
+        change("elements/own-element", null),
         {
           name: "actions/checkout",
           license: null,

@@ -821,4 +821,20 @@ describe("AppHaxSiteCreationModal rendered focus", () => {
     expect(el.shadowRoot.activeElement).to.equal(input);
     el.closeModal();
   });
+
+  it("gives the dialog host the role its aria-modal needs", async () => {
+    const el = await fixture(
+      html`<app-hax-site-creation-modal></app-hax-site-creation-modal>`,
+    );
+    el.title = "Blog";
+    el.siteName = "Blog";
+    el.openModal();
+    await el.updateComplete;
+    const dialog = el.shadowRoot.querySelector("web-dialog");
+    await waitUntil(() => dialog.hasAttribute("aria-modal"));
+    // web-dialog sets aria-modal on its host but puts the role on an inner
+    // node; aria-modal is only allowed on an element with a dialog role
+    expect(dialog.getAttribute("role")).to.equal("dialog");
+    el.closeModal();
+  });
 });

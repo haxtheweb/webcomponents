@@ -13,6 +13,13 @@ describe("json-outline-schema test", () => {
   it("passes the a11y audit", async () => {
     await expect(element).shadowDom.to.be.accessible();
   });
+
+  it("paints debug output as text, not markup", async () => {
+    element.title = '<img src="x" id="debug-markup">';
+    element._triggerDebugPaint(true);
+    expect(element.shadowRoot.querySelector("#debug-markup")).to.equal(null);
+    expect(element.shadowRoot.textContent).to.contain("debug-markup");
+  });
 });
 
 /*

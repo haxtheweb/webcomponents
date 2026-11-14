@@ -1121,12 +1121,18 @@ class SimpleFieldsLite extends LitElement {
       newValue = this.value,
       props = propName ? propName.split(".") : [],
       l = props.length;
+    // a property path never reaches an object's prototype
+    const unsafe = (prop) =>
+      prop === "__proto__" || prop === "constructor" || prop === "prototype";
     for (let i = 0; i < l - 1; i++) {
       let pointer = props[i];
+      if (unsafe(pointer)) return;
       if (!newValue[pointer]) newValue[pointer] = {};
       newValue = newValue[pointer];
     }
-    newValue[props[l - 1]] = propVal;
+    let last = props[l - 1];
+    if (unsafe(last)) return;
+    newValue[last] = propVal;
     this._valueChanged(this.value, oldValue);
   }
 
