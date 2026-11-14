@@ -1,0 +1,119 @@
+name: contrast-design-systems
+
+# Every HAX block under every bridged design system (haxtheweb/issues#3339).
+#
+# A site can run any bridged design system (Carbon, PatternFly, ...), and a
+# bridge recolors and reshapes every HAX block at once, so a bridge can pass
+# its own contrast report and still break a block. For each bridge, each HAX
+# block's demo (an element folder with haxProperties) is served locally, the
+# bridge's activate<Prefix>DesignSystem() runs in the page (the call its
+# theme makes), and axe-core's color-contrast rule runs in Chromium with
+# prefers-color-scheme light, then dark.
+#
+# Only a failure missing from scripts/contrast.design-systems.baseline.json
+# (system -> element -> mode -> target) fails a job; the baseline only
+# shrinks. On a pull request a system's job checks every block when DDD or a
+# bridge changed, otherwise the changed blocks. Nightly checks every block
+# under every system. Each job uploads what it measured (JSON) for the per
+# system report (scripts/design-system-report.mjs). After fixing contrast,
+# run `yarn test:contrast --design-system <name> --update-baseline
+# --elements <name>` and commit the smaller baseline. See CONTRIBUTING.md,
+# "Color contrast check".
+#
+# Runs on pull_request (not pull_request_target): no secrets, read-only token.
+on:
+  # No branch filter: stacked PRs (base is another feature branch) must run too.
+  pull_request:
+    paths:
+      - "elements/**"
+      - "scripts/contrast*"
+      - "scripts/lib/contrast.mjs"
+      - "scripts/lib/demo-runner.mjs"
+      - "scripts/lib/design-systems.mjs"
+      - "web-dev-server.config.mjs"
+      - ".github/workflows/contrast-design-systems.yml"
+      - ".github/actions/setup-playwright/**"
+  schedule:
+    - cron: "37 7 * * *" # nightly, 07:37 UTC
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  baseline:
+    name: Design system baseline only shrinks
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 2
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+          cache: yarn
+      - name: Install
+        run: yarn install --frozen-lockfile
+      - name: Baseline only shrinks
+        run: node scripts/contrast-check.mjs --design-system all --check-baseline HEAD^1
+  contrast:
+    name: Blocks under ${{ matrix.system }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        system:
+          - carbon
+          - keepcase
+          - material
+          - patternfly
+          - shadcn
+          - spectrum
+          - tailwind
+          - uswds
+          - webawesome
+    steps:
+      # on a pull request, the merge commit with its base as first parent,
+      # so HEAD^1..HEAD is exactly this pull request's change
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 2
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+          cache: yarn
+      - name: Install
+        run: yarn install --frozen-lockfile
+      - name: Install Playwright Chromium
+        # same browser build and fonts as the contrast workflow
+        # the local path, not the $/ self-repository form: $/ downloads the
+        # whole repo as an action archive, and that extraction fails here
+        uses: ./.github/actions/setup-playwright # zizmor: ignore[self-repository]
+        timeout-minutes: 12
+        with:
+          fonts: "true"
+      - name: Blocks under the design system (changed)
+        if: github.event_name == 'pull_request'
+        env:
+          SYSTEM: ${{ matrix.system }}
+        run: node scripts/contrast-check.mjs --design-system "$SYSTEM" --base HEAD^1 --json "contrast-$SYSTEM.json"
+      - name: Blocks under the design system (all)
+        if: github.event_name != 'pull_request'
+        env:
+          SYSTEM: ${{ matrix.system }}
+        run: node scripts/contrast-check.mjs --design-system "$SYSTEM" --all --json "contrast-$SYSTEM.json"
+      - name: Upload measurements
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: contrast-${{ matrix.system }}
+          path: contrast-${{ matrix.system }}.json
+          if-no-files-found: ignore
+          retention-days: 14
