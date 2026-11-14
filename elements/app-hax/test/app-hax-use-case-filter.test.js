@@ -1495,3 +1495,29 @@ describe("AppHaxUseCaseFilter import cards", () => {
     );
   });
 });
+
+describe("AppHaxUseCaseFilter template cards", () => {
+  it("lists the starter cards as a list, each card a list item", async () => {
+    const el = createFilter();
+    globalThis.document.body.appendChild(el);
+    await el.updateComplete;
+    // set after connecting, which starts with an empty list
+    el.filteredItems = [
+      { dataType: "skeleton", useCaseTitle: "Course" },
+      { dataType: "skeleton", useCaseTitle: "Blog" },
+      { dataType: "blank", useCaseTitle: "Clean One" },
+    ];
+    await el.updateComplete;
+    const lists = el.shadowRoot.querySelectorAll(".template-results");
+    expect(lists.length).to.equal(2);
+    lists.forEach((list) => {
+      // a grid needs rows and arrow-key movement; these are cards in a list
+      expect(list.getAttribute("role")).to.equal("list");
+      Array.from(list.children).forEach((card) => {
+        expect(card.getAttribute("role")).to.equal("listitem");
+      });
+    });
+    expect(el.shadowRoot.querySelector('[role="gridcell"]')).to.equal(null);
+    el.remove();
+  });
+});
