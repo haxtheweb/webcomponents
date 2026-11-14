@@ -1060,6 +1060,20 @@ describe("SuperDaemon core behavior", () => {
     expect(element.loading).to.equal(false);
   });
 
+  it("inputfilterChanged drops a debounced run when the program closed meanwhile", async () => {
+    element.programName = "P";
+    element._programToRun = async () => [{ title: "never shown" }];
+    element._programValues = {};
+    element.programResults = [];
+    await element.inputfilterChanged({ detail: { value: "" } });
+    expect(element.loading).to.equal(true);
+    // the program goes away before the debounce fires
+    element._programToRun = null;
+    await aTimeout(200);
+    expect(element.loading).to.equal(false);
+    expect(element.programResults).to.deep.equal([]);
+  });
+
   it("inputfilterChanged outside a program refilters items", async () => {
     element.programName = null;
     element._programToRun = null;

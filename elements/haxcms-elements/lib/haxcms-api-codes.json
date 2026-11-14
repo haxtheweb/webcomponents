@@ -288,7 +288,7 @@
     {
       "code": "PAGE_LOCKED",
       "en": "This page is locked. Unlock it to change it.",
-      "match": ["page \"(?<idOrSlug>.*)\" is locked"]
+      "match": ["page \"(?<idOrSlug>.*)\" is locked", "page is locked"]
     },
     {
       "code": "BLOCK_STALE",

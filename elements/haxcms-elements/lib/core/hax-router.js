@@ -175,6 +175,14 @@ export class HaxRouter {
       pathname = "/" + pathname;
     }
     pathname = this._normalizeStaticPathname(pathname);
+    // the address bar percent-encodes letters outside ASCII, while a route
+    // is registered with the page's slug as stored, so compare both forms
+    let decodedPathname = pathname;
+    try {
+      decodedPathname = decodeURI(pathname);
+    } catch {
+      // not valid percent-encoding, only the raw form can match
+    }
 
     for (const route of this.routes) {
       const routePath = route.path;
@@ -201,7 +209,7 @@ export class HaxRouter {
         normalizedRoutePath.length > 1
           ? trimTrailingSlashes(normalizedRoutePath)
           : normalizedRoutePath;
-      if (exactRoutePath === pathname) {
+      if (exactRoutePath === pathname || exactRoutePath === decodedPathname) {
         return { route, params: [] };
       }
 
