@@ -268,6 +268,14 @@ class SiteMenuButton extends HAXCMSI18NMixin(
       link: {
         type: String,
       },
+      /**
+       * id of the page this button goes to instead of the previous / next
+       * page in the outline; unset means previous / next as usual
+       */
+      targetItemId: {
+        type: String,
+        attribute: "target-item-id",
+      },
       editMode: {
         type: Boolean,
         reflect: true,
@@ -344,23 +352,32 @@ class SiteMenuButton extends HAXCMSI18NMixin(
         this.direction = "";
       }
     }
+    // a theme can point the button at a specific page (targetItemId), for
+    // example the next page of a lesson shown on one page; otherwise
     // link/label derive from type/activeRouterManifestIndex/routerManifest
+    const target = this.targetItemId ? store.findItem(this.targetItemId) : null;
     if (
       (changedProperties.has("type") ||
         changedProperties.has("activeRouterManifestIndex") ||
-        changedProperties.has("routerManifest")) &&
-      this.routerManifest
+        changedProperties.has("routerManifest") ||
+        changedProperties.has("targetItemId")) &&
+      (this.routerManifest || target)
     ) {
-      this.link = this.pageLink(
-        this.type,
-        this.activeRouterManifestIndex,
-        this.routerManifest.items,
-      );
-      this.label = this.pageLinkLabel(
-        this.type,
-        this.activeRouterManifestIndex,
-        this.routerManifest.items,
-      );
+      if (target) {
+        this.link = target.slug;
+        this.label = target.title;
+      } else {
+        this.link = this.pageLink(
+          this.type,
+          this.activeRouterManifestIndex,
+          this.routerManifest.items,
+        );
+        this.label = this.pageLinkLabel(
+          this.type,
+          this.activeRouterManifestIndex,
+          this.routerManifest.items,
+        );
+      }
     }
     // disabled derives from type/activeRouterManifestIndex/routerManifest/editMode/link
     if (
@@ -368,16 +385,19 @@ class SiteMenuButton extends HAXCMSI18NMixin(
         changedProperties.has("activeRouterManifestIndex") ||
         changedProperties.has("routerManifest") ||
         changedProperties.has("editMode") ||
-        changedProperties.has("link")) &&
-      this.routerManifest
+        changedProperties.has("link") ||
+        changedProperties.has("targetItemId")) &&
+      (this.routerManifest || target)
     ) {
-      this.disabled = this.pageLinkStatus(
-        this.type,
-        this.activeRouterManifestIndex,
-        this.routerManifest.items,
-        this.editMode,
-        this.link,
-      );
+      this.disabled = target
+        ? !!this.editMode
+        : this.pageLinkStatus(
+            this.type,
+            this.activeRouterManifestIndex,
+            this.routerManifest.items,
+            this.editMode,
+            this.link,
+          );
     }
   }
   updated(changedProperties) {
