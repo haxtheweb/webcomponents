@@ -1904,8 +1904,14 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
         this.loading = true;
       }
       this._programDebounceTimeout = setTimeout(async () => {
+        // the program can be closed or swapped during the debounce window
+        const program = this._programToRun;
+        if (typeof program !== "function") {
+          this.loading = false;
+          return;
+        }
         this.loading = true;
-        this.programResults = await this._programToRun(
+        this.programResults = await program(
           e.detail.value,
           this._programValues,
         );
