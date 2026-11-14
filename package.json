@@ -104,6 +104,7 @@
     "vendor-copy-latex2html5": "gulp vendor-copy-latex2html5 --gulpfile=gulpfile.mjs",
     "wc-autoloader": "gulp wc-autoloader --gulpfile=gulpfile.mjs",
     "theme-discovery": "gulp theme-discovery --gulpfile=gulpfile.mjs",
+    "design-system-discovery": "node scripts/design-system-discovery.mjs",
     "theme-screenshots": "gulp theme-screenshots --gulpfile=gulpfile.mjs",
     "hax-elements-discovery": "gulp hax-elements-discovery --gulpfile=gulpfile.mjs",
     "elements-catalog": "node scripts/build-elements-catalog.mjs",

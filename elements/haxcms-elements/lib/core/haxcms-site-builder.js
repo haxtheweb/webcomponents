@@ -18,6 +18,10 @@ import {
 } from "@haxtheweb/utils/lib/sanitize.js";
 import { autorun, toJS } from "mobx";
 import { store, HAXcmsStore } from "./haxcms-site-store.js";
+import {
+  applySiteDesignSystem,
+  siteDesignSystemName,
+} from "./utils/HAXCMSDesignSystems.js";
 import "./haxcms-site-router.js";
 import "@haxtheweb/simple-progress/simple-progress.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
@@ -1475,6 +1479,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       this._scheduleThemePaletteReapply(newValue);
       this.themeLoaded = false;
       let theme = newValue;
+      this._applyDesignSystem(newValue);
       // create the 'theme' as a new element
       // weird but definition already here so we should be able
       // to just use this without an import, it's possible..
@@ -1485,12 +1490,12 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         // already registered (ex: a demo or page that imported the theme
         // itself), so there is nothing to import; reveal the slot
         this.__imported[theme.element] = theme.element;
-        this.themeLoaded = true;
+        this._revealTheme();
       } else {
         // global will handle this
         if (globalThis.WCAutoload) {
           this.__imported[theme.element] = theme.element;
-          this.themeLoaded = true;
+          this._revealTheme();
           setTimeout(() => {
             globalThis.WCAutoload.process();
           }, 5);
@@ -1501,7 +1506,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
             import(new URL("./../../../../../" + newValue.path, import.meta.url).href).then((_e) => {
               // add it into ourselves so it unpacks and we kick this off!
               this.__imported[theme.element] = theme.element;
-              this.themeLoaded = true;
+              this._revealTheme();
             }).catch((err) => {
               // the path did not resolve from here (ex: monorepo demos served
               // from the repo root). Rather than leaving the slot hidden
@@ -1509,17 +1514,54 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
               console.warn(`haxcms-site-builder: could not import theme ${theme.element} from ${newValue.path}`, err);
               globalThis.customElements.whenDefined(theme.element).then(() => {
                 this.__imported[theme.element] = theme.element;
-                this.themeLoaded = true;
+                this._revealTheme();
               });
             });
           } catch {
             // error in the event this is a double registration
             // also strange to be able to reach this but technically possible
-            this.themeLoaded = true;
+            this._revealTheme();
           }
         }
       }
     }
+  }
+  /**
+   * The site's design system (metadata.theme.designSystem), for themes that
+   * accept one. Its module loads alongside the theme; when the site has
+   * picked one, the theme is revealed once it is active (or after a short
+   * wait, so a slow network never hides the page), so there's no flash of
+   * DDD colors. Sites on DDD wait for nothing.
+   */
+  _applyDesignSystem(themeData) {
+    const name = siteDesignSystemName(themeData);
+    const applied = applySiteDesignSystem(name, themeData.element).catch(
+      (e) => {
+        console.warn(e);
+      },
+    );
+    this.__designSystemGate = name
+      ? Promise.race([
+          applied,
+          new Promise((resolve) => {
+            setTimeout(resolve, 1500);
+          }),
+        ])
+      : null;
+  }
+
+  /** show the theme, after the site's design system when it has one */
+  _revealTheme() {
+    const gate = this.__designSystemGate;
+    if (!gate) {
+      this.themeLoaded = true;
+      return;
+    }
+    gate.then(() => {
+      if (gate === this.__designSystemGate) {
+        this.themeLoaded = true;
+      }
+    });
   }
   /**
    * Idle-warm the HAX editor closure for logged-in users so entering edit
