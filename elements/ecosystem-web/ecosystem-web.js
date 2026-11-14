@@ -2121,7 +2121,7 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
       }
     } else if (doc.fullscreenElement === this) {
       try {
-        doc.exitFullscreen();
+        globalThis.document.exitFullscreen();
       } catch {
         // already out of full screen
       }
