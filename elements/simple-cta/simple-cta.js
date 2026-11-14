@@ -179,8 +179,8 @@ class SimpleCta extends DDDVocabulary(
         }
         /* size: l matches the existing large attribute */
         :host(:state(size-s)) .btn {
-          padding: var(--ddd-spacing-2) var(--ddd-spacing-3)
-            var(--ddd-spacing-2) var(--ddd-spacing-4);
+          padding-block: var(--ddd-spacing-2);
+          padding-inline: var(--ddd-spacing-4) var(--ddd-spacing-3);
           font-size: var(--ddd-font-size-4xs);
         }
         :host(:state(size-s)) .hideIcon {
