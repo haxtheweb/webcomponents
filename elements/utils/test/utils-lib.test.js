@@ -68,6 +68,12 @@ describe("lib/ids generateResourceID", () => {
     const b = generateResourceID();
     expect(a).to.not.equal(b);
   });
+
+  it("keeps the 8-4-4-4-12 hex shape existing content uses", () => {
+    expect(generateResourceID()).to.match(
+      /^#[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/,
+    );
+  });
 });
 
 // ---- url.js ----

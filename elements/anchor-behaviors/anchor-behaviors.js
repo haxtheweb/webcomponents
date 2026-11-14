@@ -16,6 +16,7 @@ globalThis.AnchorBehaviors.getTarget = (element = null) => {
           "",
         uri = str
           ? `{"${decodeURI(str)
+              .replace(/\\/g, "\\\\")
               .replace(/"/g, '\\"')
               .replace(/&/g, '","')
               .replace(/=/g, '":"')}"}`

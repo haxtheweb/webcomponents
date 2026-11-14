@@ -116,7 +116,7 @@ function openListFindings(minRatio) {
         break;
       }
     }
-    return parts.join(" ").replace(/ >> /g, " >> ");
+    return parts.join(" ");
   };
   const selects = [];
   const walk = (scope) => {

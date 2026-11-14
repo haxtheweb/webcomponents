@@ -89,6 +89,13 @@ describe("AnchorBehaviors.getTarget", () => {
     expect(globalThis.AnchorBehaviors.params.resource).to.equal(undefined);
   });
 
+  it("keeps a backslash in the hash as a backslash", () => {
+    globalThis.location.hash = "#a\\b";
+    globalThis.AnchorBehaviors.getTarget(null);
+    // without escaping, "\b" was read as a JSON backspace
+    expect(globalThis.AnchorBehaviors.params.id).to.equal("a\\b");
+  });
+
   it("treats an unparseable hash as empty params", () => {
     globalThis.location.hash = "#a=b=c";
     const target = globalThis.AnchorBehaviors.getTarget(null);
