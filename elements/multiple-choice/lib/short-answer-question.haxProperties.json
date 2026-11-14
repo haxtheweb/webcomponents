@@ -12,7 +12,7 @@
   "gizmo": {
     "title": "Short answer question",
     "description": "A question the learner answers in a sentence or two.",
-    "icon": "editor:short-text",
+    "icon": "hax:short-answer",
     "color": "purple",
     "tags": ["Instructional", "question", "quiz", "short answer"],
     "handles": [],

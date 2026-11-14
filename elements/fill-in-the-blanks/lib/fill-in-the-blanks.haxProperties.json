@@ -13,7 +13,7 @@
   "gizmo": {
     "title": "Fill in the blanks",
     "description": "Assessment activity where learners complete missing words in a statement.",
-    "icon": "editor:space-bar",
+    "icon": "hax:fill-blank",
     "color": "purple",
     "tags": [
       "Instructional",

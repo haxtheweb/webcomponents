@@ -6,7 +6,7 @@
   "license": "Apache-2.0",
   "title": "Image map",
   "description": "An accessible image map with interactive hotspots.",
-  "icon": "maps:place",
+  "icon": "hax:image-hotspot",
   "tags": [
     "Media",
     "image",
@@ -95,7 +95,7 @@
     "gizmo": {
       "title": "Image map",
       "description": "An accessible image map with interactive hotspots.",
-      "icon": "maps:place",
+      "icon": "hax:image-hotspot",
       "color": "blue",
       "tags": [
         "Media",

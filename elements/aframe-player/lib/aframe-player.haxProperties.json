@@ -5,7 +5,7 @@
   "gizmo": {
     "title": "3D player",
     "description": "A 3D file / augmented reality player.",
-    "icon": "hax:vr",
+    "icon": "hax:cube-3d",
     "color": "amber",
     "tags": [
       "Media",

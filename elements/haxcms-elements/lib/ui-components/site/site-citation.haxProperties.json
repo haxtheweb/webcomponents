@@ -5,7 +5,7 @@
   "gizmo": {
     "title": "Cite this page",
     "description": "Copyable APA, MLA, Chicago or BibTeX citation for this page or the whole site, built from site information",
-    "icon": "editor:format-quote",
+    "icon": "hax:page-quote",
     "color": "blue",
     "tags": ["Site", "citation", "reference", "apa", "mla"],
     "handles": [],

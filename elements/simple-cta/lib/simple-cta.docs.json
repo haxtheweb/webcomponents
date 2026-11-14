@@ -6,7 +6,7 @@
   "license": "Apache-2.0",
   "title": "Call to action",
   "description": "A simple button with a link to take action.",
-  "icon": "image:crop-16-9",
+  "icon": "hax:cta-button",
   "tags": [
     "Layout",
     "marketing",
@@ -134,7 +134,7 @@
     "gizmo": {
       "title": "Call to action",
       "description": "A simple button with a link to take action.",
-      "icon": "image:crop-16-9",
+      "icon": "hax:cta-button",
       "color": "orange",
       "tags": [
         "Layout",

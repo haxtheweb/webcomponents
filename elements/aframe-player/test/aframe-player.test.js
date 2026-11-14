@@ -493,7 +493,7 @@ describe("aframe-player test", () => {
     it("should have proper HAX gizmo configuration", () => {
       expect(haxProps.gizmo.title).to.equal("3D player");
       expect(haxProps.gizmo.description).to.contain("3D file");
-      expect(haxProps.gizmo.icon).to.equal("hax:vr");
+      expect(haxProps.gizmo.icon).to.equal("hax:cube-3d");
       expect(haxProps.gizmo.tags[0]).to.equal("Media");
       expect(haxProps.gizmo.tags).to.include("3d");
       expect(haxProps.gizmo.tags).to.include("ar");

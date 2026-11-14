@@ -123,7 +123,7 @@ describe("type-writer", () => {
     it("declares a gizmo with the expected metadata", async () => {
       const gizmo = (await haxSchema(element.constructor)).gizmo;
       expect(gizmo.title).to.equal("Typewriter");
-      expect(gizmo.icon).to.equal("hardware:keyboard");
+      expect(gizmo.icon).to.equal("hax:type-cursor");
       expect(gizmo.color).to.equal("green");
       expect(gizmo.tags).to.include.members([
         "typewriter",

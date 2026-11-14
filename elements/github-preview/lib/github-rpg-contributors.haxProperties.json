@@ -7,7 +7,7 @@
   "gizmo": {
     "title": "GitHub contributors list",
     "description": "List a repository's contributors as RPG characters.",
-    "icon": "mdi-social:github-circle",
+    "icon": "hax:pixel-party",
     "color": "light-blue",
     "tags": ["Other", "developer", "community", "git"],
     "handles": [],

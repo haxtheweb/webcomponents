@@ -11,7 +11,7 @@
   "gizmo": {
     "title": "Image map",
     "description": "An accessible image map with interactive hotspots.",
-    "icon": "maps:place",
+    "icon": "hax:image-hotspot",
     "color": "blue",
     "tags": ["Media", "image", "map", "hotspot", "accessibility", "images"],
     "handles": [],

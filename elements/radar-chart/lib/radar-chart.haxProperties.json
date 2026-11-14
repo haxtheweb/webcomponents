@@ -14,7 +14,7 @@
   "gizmo": {
     "title": "Radar chart",
     "description": "Radar (spider) chart for maturity models and facet scoring, such as HEOSAT. Includes a text alternative and data table.",
-    "icon": "editor:multiline-chart",
+    "icon": "hax:radar",
     "color": "blue",
     "tags": ["Media", "metrics", "data", "visualization"],
     "handles": [],

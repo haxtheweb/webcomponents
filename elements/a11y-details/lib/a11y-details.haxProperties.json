@@ -4,7 +4,7 @@
   "gizmo": {
     "title": "Details",
     "description": "Accessible progressive disclosure with detail and summary",
-    "icon": "icons:arrow-drop-down",
+    "icon": "hax:details",
     "color": "grey",
     "tags": ["Layout", "details", "summary", "button", "accessible"],
     "handles": [

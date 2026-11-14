@@ -5,7 +5,7 @@
   "gizmo": {
     "title": "Collapse group",
     "description": "A group of collapsible containers.",
-    "icon": "icons:view-agenda",
+    "icon": "hax:collapse-group",
     "color": "grey",
     "tags": ["Layout"]
   },

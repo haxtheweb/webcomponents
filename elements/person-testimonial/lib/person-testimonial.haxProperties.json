@@ -9,7 +9,7 @@
   "gizmo": {
     "title": "Testimonial",
     "description": "Stylized quote with an optional image.",
-    "icon": "editor:format-quote",
+    "icon": "hax:person-quote",
     "color": "orange",
     "tags": [
       "Content",

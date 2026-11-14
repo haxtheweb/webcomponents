@@ -6,7 +6,7 @@
   "license": "Apache-2.0",
   "title": "Typewriter",
   "description": "Text that types itself out one character at a time.",
-  "icon": "hardware:keyboard",
+  "icon": "hax:type-cursor",
   "tags": [
     "Text",
     "typewriter",
@@ -98,7 +98,7 @@
     "gizmo": {
       "title": "Typewriter",
       "description": "Text that types itself out one character at a time.",
-      "icon": "hardware:keyboard",
+      "icon": "hax:type-cursor",
       "color": "green",
       "tags": [
         "Text",

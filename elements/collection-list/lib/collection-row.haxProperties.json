@@ -9,7 +9,7 @@
   "gizmo": {
     "title": "Collection row",
     "description": "Row-style item for use inside a collection list, with text, link, icon, tags, and optional image.",
-    "icon": "hax:figure",
+    "icon": "hax:card-row",
     "color": "purple",
     "tags": ["Layout", "collection", "list", "row"],
     "handles": [],

@@ -4,7 +4,7 @@
   "gizmo": {
     "title": "Product glance",
     "description": "Quick product overview block.",
-    "icon": "communication:business",
+    "icon": "hax:glance",
     "color": "blue",
     "tags": ["Layout", "product", "marketing", "overview", "card"],
     "handles": [],

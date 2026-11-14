@@ -5,7 +5,7 @@
   "gizmo": {
     "title": "Simple image",
     "description": "An image resized, cropped or rotated by simple settings.",
-    "icon": "image:image",
+    "icon": "hax:image-crop",
     "color": "red",
     "tags": ["Media", "image"]
   },
