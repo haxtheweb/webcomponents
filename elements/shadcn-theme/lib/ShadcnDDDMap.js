@@ -91,6 +91,8 @@ export const ShadcnDDDMap = css`
     --ddd-stack-gap: calc(var(--spacing) * 6);
     --ddd-inline-gap: calc(var(--spacing) * 2);
     --ddd-control-padding-inline: calc(var(--spacing) * 4);
+    --ddd-card-radius: var(--radius-xl);
+    --ddd-control-radius: var(--radius-md);
     /* rgb channels follow their mapped color */
     --ddd-primary-0-rgb: 212, 212, 212, 0.7;
     --ddd-primary-1-rgb: 23, 23, 23;
@@ -118,5 +120,8 @@ export const ShadcnDDDMap = css`
     --ddd-primary-23-rgb: 151, 60, 0;
     --ddd-primary-24-rgb: 25, 60, 184;
     --ddd-primary-25-rgb: 1, 102, 48;
+    /* text color paired with each remapped palette, where DDD's own no longer reads */
+    --ddd-primary-17-on: white;
+    --ddd-primary-19-on: black;
   }
 `;

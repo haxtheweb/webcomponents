@@ -138,5 +138,8 @@ export const SpectrumDDDMap = css`
     --ddd-primary-23-rgb: 93, 59, 0;
     --ddd-primary-24-rgb: 29, 62, 207;
     --ddd-primary-25-rgb: 2, 93, 60;
+    /* text color paired with each remapped palette, where DDD's own no longer reads */
+    --ddd-primary-7-on: white;
+    --ddd-primary-17-on: white;
   }
 `;

@@ -37,7 +37,19 @@ Every bridge is checked against the same contract, so coverage is comparable acr
 | Identity  | expected   | named colors, font families, font weights, radius, shadows, focus ring                                                              | What makes the system recognizable                                                                                                                                                                                                                              |
 | Feel      | optional   | motion durations and easing, state opacities, control and text-field heights, border widths                                         | How the system behaves and how dense its controls are. Control heights never go below the 24px minimum target.                                                                                                                                                  |
 | Semantic  | optional   | heading and body text sizes; density: surface padding, stack gap, inline gap, control padding                                       | Roles a system can size without touching the scales. Body text never goes below 16px, headings never go below body text, and heading sizes never grow as the level goes down. Density has per-token floors (8px surface padding and stack gap, 4px inline gap). |
+| Component | optional   | card radius, padding, border width and shadow; control radius; tag radius                                                           | Where a system gives a kind of component its own shape (square cards, pill buttons). Each defaults to a general DDD token, so nothing changes until a bridge maps one. Blocks with a deliberate design of their own, stop-note first among them, have no component token.                 |
 
-The generator fails when a bridge maps a locked token, maps a token the contract doesn't list (add it to a tier first), breaks a guard, points a named DDD color at a value that changes between light and dark, drops a key DDD color pair below 4.5:1 contrast, or uses a license that can't ship with Apache-2.0. The `<system>.ddd-map.json` it writes reports coverage per tier and family, and lists which tokens stayed DDD.
+### Paired text colors
+
+DDD gives every primary palette (`data-primary="0"` to `"25"`) the text color that reads on it: `--ddd-primary-N-on`, black or white, chosen for DDD's own colors. A bridge that remaps a palette to a lighter or darker color can break that pair, so the generator re-checks every remapped palette in light and dark:
+
+- DDD's pair is kept when it still reaches 4.5:1.
+- When only the other color does, the pair flips and the map carries `--ddd-primary-N-on` for that palette.
+- A bridge may set a pair itself (`"--ddd-primary-7-on": { "value": "white" }`); it is checked as given.
+- A palette neither black nor white reads on fails the build.
+
+The report lists every checked pair under `pairs`, with its ratio and whether it is DDD's, paired by the generator, or set by the bridge.
+
+The generator fails when a bridge maps a locked token, maps a token the contract doesn't list (add it to a tier first), breaks a guard, points a named DDD color at a value that changes between light and dark, drops a key DDD color pair or a palette's text color pair below 4.5:1 contrast, or uses a license that can't ship with Apache-2.0. The `<system>.ddd-map.json` it writes reports coverage per tier and family, and lists which tokens stayed DDD.
 
 Changing the contract changes what every bridge may do. Do it in its own PR, then regenerate every bridge.

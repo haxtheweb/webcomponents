@@ -10,6 +10,7 @@ import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js
 import "@haxtheweb/simple-icon/simple-icon.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { DDDBlockStyles } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
+import { DDDVocabulary } from "@haxtheweb/d-d-d/lib/DDDVocabulary.js";
 
 // register the iconset
 SimpleIconsetStore.registerIconset(
@@ -35,7 +36,29 @@ export const StopNoteIconList = {
   new: "stopnoteicons:new-icon",
 };
 
-class StopNote extends SchemaBehaviors(I18NMixin(remoteLinkBehavior(DDD))) {
+class StopNote extends DDDVocabulary(
+  SchemaBehaviors(I18NMixin(remoteLinkBehavior(DDD))),
+) {
+  /**
+   * Shared DDD vocabulary, as names only: variant="danger" is read as
+   * status="stop" and so on, and the note draws exactly what that status
+   * draws. The icon, header cap and status word are this element's design
+   * and no shared word changes them. tip and new have no shared meaning and
+   * stay statuses.
+   */
+  static get dddVocabulary() {
+    return {
+      variant: {
+        from: "status",
+        values: {
+          stop: "danger",
+          warning: "warning",
+          success: "success",
+          info: "brand",
+        },
+      },
+    };
+  }
   /**
    * LitElement constructable styles enhancement
    */
@@ -446,6 +469,14 @@ class StopNote extends SchemaBehaviors(I18NMixin(remoteLinkBehavior(DDD))) {
     // url to remoteLinkURL in willUpdate so reactive sets batch into the
     // current update cycle. Setting them in updated()/firstUpdated scheduled
     // a redundant second update (Lit change-in-update warning).
+    // a shared-vocabulary variant is another way to name a status
+    if (changedProperties.has("variant") && this.variant) {
+      const status = this.dddLegacy("variant");
+      if (status && StopNoteIconList[status] && status !== this.status) {
+        this.status = status;
+        this.icon = StopNoteIconList[status];
+      }
+    }
     if (
       changedProperties.has("status") &&
       this.status &&

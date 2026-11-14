@@ -94,6 +94,8 @@ export const PatternflyDDDMap = css`
     --ddd-stack-gap: var(--pf-t--global--spacer--md);
     --ddd-inline-gap: var(--pf-t--global--spacer--sm);
     --ddd-control-padding-inline: var(--pf-t--global--spacer--md);
+    --ddd-card-radius: var(--pf-t--global--border--radius--medium);
+    --ddd-control-radius: var(--pf-t--global--border--radius--pill);
     /* rgb channels follow their mapped color */
     --ddd-primary-0-rgb: 146, 197, 249, 0.7;
     --ddd-primary-1-rgb: 0, 102, 204;
@@ -121,5 +123,8 @@ export const PatternflyDDDMap = css`
     --ddd-primary-23-rgb: 115, 72, 11;
     --ddd-primary-24-rgb: 0, 51, 102;
     --ddd-primary-25-rgb: 32, 77, 0;
+    /* text color paired with each remapped palette, where DDD's own no longer reads */
+    --ddd-primary-17-on: white;
+    --ddd-primary-19-on: black;
   }
 `;

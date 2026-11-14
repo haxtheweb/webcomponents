@@ -20,6 +20,39 @@ export class DddStepsListItem extends DDDSuper(LitElement) {
     super();
     this.step = 0;
     this.title = "";
+    this.horizontal = false;
+    this.progress = "";
+    this.doneLabel = "";
+    // layout and progress come from the list and show as custom states
+    // (:state(horizontal), :state(done), :state(current)), so they never
+    // become attributes in saved content
+    try {
+      this.__internals = this.attachInternals();
+    } catch {
+      this.__internals = null;
+    }
+  }
+
+  willUpdate(changedProperties) {
+    if (super.willUpdate) super.willUpdate(changedProperties);
+    const internals = this.__internals;
+    if (!internals || !internals.states) return;
+    try {
+      [
+        ["horizontal", this.horizontal],
+        ["done", this.progress === "done"],
+        ["current", this.progress === "current"],
+      ].forEach(([state, on]) => {
+        if (on) {
+          internals.states.add(state);
+        } else {
+          internals.states.delete(state);
+        }
+      });
+      internals.ariaCurrent = this.progress === "current" ? "step" : null;
+    } catch {
+      // engines without CustomStateSet keep the vertical list
+    }
   }
 
   // Lit reactive properties
@@ -28,6 +61,10 @@ export class DddStepsListItem extends DDDSuper(LitElement) {
       ...super.properties,
       step: { type: Number },
       title: { type: String },
+      // set by ddd-steps-list
+      horizontal: { type: Boolean },
+      progress: { type: String },
+      doneLabel: { type: String },
     };
   }
 
@@ -141,13 +178,101 @@ export class DddStepsListItem extends DDDSuper(LitElement) {
             margin-inline-start: unset;
           }
         }
+
+        .sr {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          overflow: hidden;
+          clip-path: inset(50%);
+          white-space: nowrap;
+        }
+
+        /* step indicator (horizontal list): a numbered circle above the
+           title, joined to the next step by a line; steps before the
+           current one are filled and checked */
+        :host(:state(horizontal)) {
+          --ddd-steps-list-item-line: light-dark(
+            var(--ddd-theme-default-limestoneGray),
+            var(--ddd-theme-default-slateLight)
+          );
+          display: flex;
+          flex-direction: column;
+          flex: 1 1 0;
+          min-width: 0;
+          position: relative;
+          gap: var(--ddd-spacing-2);
+          border-inline-start: unset;
+          padding-inline: 0 var(--ddd-spacing-2);
+          font-size: var(--ddd-font-size-4xs);
+        }
+        :host(:state(horizontal)) .circle {
+          position: relative;
+          z-index: 1;
+          box-sizing: border-box;
+          width: var(--ddd-icon-xs);
+          height: var(--ddd-icon-xs);
+          margin-inline-start: 0;
+          border: var(--ddd-border-size-sm) solid
+            var(--ddd-steps-list-item-line);
+          background-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-coalyGray)
+          );
+          color: inherit;
+          font-size: var(--ddd-font-size-4xs);
+        }
+        :host(:state(horizontal))::after {
+          content: "";
+          position: absolute;
+          top: calc(var(--ddd-icon-xs) / 2 - var(--ddd-border-size-sm) / 2);
+          inset-inline: var(--ddd-icon-xs) 0;
+          height: var(--ddd-border-size-sm);
+          background-color: var(--ddd-steps-list-item-line);
+        }
+        :host(:state(horizontal):last-of-type)::after {
+          display: none;
+        }
+        :host(:state(horizontal):state(current)) .circle {
+          border-color: var(--ddd-steps-list-item-primary);
+        }
+        :host(:state(horizontal):state(done)) .circle {
+          border-color: var(--ddd-steps-list-item-primary);
+          background-color: var(--ddd-steps-list-item-primary);
+          color: var(--ddd-steps-list-item-ink);
+        }
+        :host(:state(horizontal):state(done))::after {
+          background-color: var(--ddd-steps-list-item-primary);
+        }
+        :host(:state(horizontal)) h3 {
+          margin: 0;
+          font-size: inherit;
+          font-weight: var(--ddd-font-weight-regular);
+          line-height: var(--ddd-lh-120, 1.2);
+          color: inherit;
+          overflow-wrap: anywhere;
+        }
+        :host(:state(horizontal):state(current)) h3 {
+          font-weight: var(--ddd-font-weight-bold);
+        }
+        /* an indicator shows titles only */
+        :host(:state(horizontal)) .step-content div {
+          display: none;
+        }
       `,
     ];
   }
 
   render() {
     return html`
-      <div class="circle">${this.step}</div>
+      <div class="circle">
+        ${
+          this.horizontal && this.progress === "done"
+            ? html`<span aria-hidden="true">✓</span
+                ><span class="sr">${this.step}, ${this.doneLabel}</span>`
+            : this.step
+        }
+      </div>
       <div class="step-content">
         ${this.title ? html`<h3>${this.title}</h3>` : ""}
         <div><slot></slot></div>

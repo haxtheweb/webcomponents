@@ -4576,6 +4576,593 @@
     },
     {
       "kind": "javascript-module",
+      "path": "lib/hax-image-crop.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "CROP_ASPECTS",
+          "default": "ASPECTS",
+          "description": "The aspect choices, for hosts that offer them outside the editor (site\nadmin Files' crop-all). `ratio` is a number, \"original\" or null (free)."
+        },
+        {
+          "kind": "function",
+          "name": "cropOutputType",
+          "parameters": [
+            {
+              "name": "mime"
+            }
+          ],
+          "description": "the type a crop is saved in: the source's own when a canvas can write it"
+        },
+        {
+          "kind": "function",
+          "name": "canCropMime",
+          "parameters": [
+            {
+              "name": "mime"
+            }
+          ],
+          "description": "whether a file of this type can be cropped and saved back in its format"
+        },
+        {
+          "kind": "function",
+          "name": "croppedFileName",
+          "parameters": [
+            {
+              "name": "fileName"
+            },
+            {
+              "name": "mime"
+            }
+          ],
+          "description": "<name>-cropped.<ext of the output type>"
+        },
+        {
+          "kind": "function",
+          "name": "centeredCropRect",
+          "parameters": [
+            {
+              "name": "width"
+            },
+            {
+              "name": "height"
+            },
+            {
+              "name": "ratio"
+            }
+          ],
+          "description": "the largest box of `ratio` centered in a width x height image"
+        },
+        {
+          "kind": "function",
+          "name": "loadCropImage",
+          "parameters": [
+            {
+              "name": "src"
+            }
+          ],
+          "description": "load an image for cropping; rejects with Error(\"load-failed\")"
+        },
+        {
+          "kind": "function",
+          "name": "encodeCrop",
+          "parameters": [
+            {
+              "name": "img"
+            },
+            {
+              "name": "rect"
+            },
+            {
+              "name": "type"
+            },
+            {
+              "name": "quality",
+              "default": "0.9"
+            }
+          ],
+          "description": "Draw `rect` of `img` and encode it as `type`. Rejects with\nError(\"too-large\") past what browsers can draw, or Error(\"other-site\")\nwhen the canvas can't be read back."
+        },
+        {
+          "kind": "class",
+          "description": "`hax-image-crop`\nCrop an image in the browser (haxtheweb/issues#1149). Shows the image with\na crop box (drag it, drag a handle, or use the arrow keys), an aspect\nchoice and X / Y / Width / Height in image pixels. It only edits; the host\nputs its own buttons in the `actions` slot and calls `toBlob()` or\n`download()`. Used by Image info in the HAX editor and by site admin Files.\n\nStyling: HAX UI admin layer. The host provides the `--hax-ui-*` tokens.",
+          "name": "HaxImageCrop",
+          "slots": [
+            {
+              "description": "the host's buttons, laid out at the end",
+              "name": "actions"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "ratio",
+              "description": "the ratio the aspect choice locks the box to, or null when free",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "reset",
+              "description": "start over: the whole image, or the largest centered box of the ratio"
+            },
+            {
+              "kind": "method",
+              "name": "setAspect",
+              "parameters": [
+                {
+                  "name": "id"
+                }
+              ],
+              "description": "choose an aspect; the box keeps its center and fits the image"
+            },
+            {
+              "kind": "method",
+              "name": "_fit",
+              "parameters": [
+                {
+                  "name": "rect"
+                },
+                {
+                  "name": "grow"
+                }
+              ],
+              "description": "The largest box of the current ratio inside `rect`'s size, centered on\nit, kept inside the image. With no ratio, `rect` clamped."
+            },
+            {
+              "kind": "method",
+              "name": "_clamp",
+              "parameters": [
+                {
+                  "name": "rect"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_setRect",
+              "parameters": [
+                {
+                  "name": "rect"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_onImageLoad",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_onImageError"
+            },
+            {
+              "kind": "method",
+              "name": "_imagePoint",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "pointer position in image pixels"
+            },
+            {
+              "kind": "method",
+              "name": "_onPointerDown",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_onPointerMove",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_onPointerUp"
+            },
+            {
+              "kind": "method",
+              "name": "_onAreaKeydown",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_onNumberChange",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "outputType",
+              "description": "the output type: the source's own when the browser can encode it",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "croppedFileName",
+              "description": "name for the cropped file: <name>-cropped.<ext of the output type>",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "toBlob",
+              "parameters": [
+                {
+                  "name": "quality",
+                  "default": "0.9",
+                  "description": "JPG / WebP quality, 0 to 1 (default 0.9)",
+                  "optional": true,
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "Draw the crop and encode it in the output type.",
+              "return": {
+                "type": {
+                  "text": "Promise<Blob>"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "download",
+              "description": "save the crop to the user's computer as croppedFileName"
+            },
+            {
+              "kind": "field",
+              "name": "_crossOrigin",
+              "description": "load the image with CORS only when it lives on another origin",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_pct",
+              "parameters": [
+                {
+                  "name": "v"
+                },
+                {
+                  "name": "total"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "src",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "URL of the image to crop",
+              "default": "\"\"",
+              "attribute": "src"
+            },
+            {
+              "kind": "field",
+              "name": "fileName",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "File name, used to name the cropped file",
+              "default": "\"\"",
+              "attribute": "file-name"
+            },
+            {
+              "kind": "field",
+              "name": "mimeType",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "MIME type of the image; the crop keeps it when the browser can",
+              "default": "\"\"",
+              "attribute": "mime-type"
+            },
+            {
+              "kind": "field",
+              "name": "heading",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Title over the editor, defaults to \"Crop\"",
+              "default": "\"\"",
+              "attribute": "heading"
+            },
+            {
+              "kind": "field",
+              "name": "note",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Text under the fields, such as where the crop will be saved",
+              "default": "\"\"",
+              "attribute": "note"
+            },
+            {
+              "kind": "field",
+              "name": "aspect",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Aspect id: free, original, 1:1, 4:3 or 16:9",
+              "default": "\"free\"",
+              "attribute": "aspect",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "cropRect",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "description": "The crop box in image pixels",
+              "default": "{ x: 0, y: 0, width: 0, height: 0 }"
+            },
+            {
+              "kind": "field",
+              "name": "naturalWidth",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "naturalHeight",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "error",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\""
+            },
+            {
+              "kind": "field",
+              "name": "__narrow",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "__narrow"
+            },
+            {
+              "kind": "field",
+              "name": "__loaded",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "__loaded"
+            },
+            {
+              "kind": "field",
+              "name": "__drag",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ crop: \"Crop\", cropArea: \"Crop area. Arrow keys move it, Shift and arrow keys resize it, Alt moves one pixel.\", aspect: \"Aspect\", free: \"Free\", original: \"Original\", x: \"X\", y: \"Y\", width: \"Width\", height: \"Height\", pixels: \"px\", inPixels: \"{label} in pixels\", cropSize: \"{width} by {height} pixels at {x}, {y}\", loadFailed: \"This image could not be loaded.\", tooLarge: \"This crop is too large to make in the browser. Choose a smaller area.\", otherSite: \"This image is on another site, so the browser can't crop it.\", }"
+            }
+          ],
+          "events": [
+            {
+              "name": "crop-changed",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "the crop box moved or the aspect changed; detail is {x, y, width, height} and `aspect` is current on the element"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "src",
+              "type": {
+                "text": "string"
+              },
+              "description": "URL of the image to crop",
+              "default": "\"\"",
+              "fieldName": "src"
+            },
+            {
+              "name": "file-name",
+              "type": {
+                "text": "string"
+              },
+              "description": "File name, used to name the cropped file",
+              "default": "\"\"",
+              "fieldName": "fileName"
+            },
+            {
+              "name": "mime-type",
+              "type": {
+                "text": "string"
+              },
+              "description": "MIME type of the image; the crop keeps it when the browser can",
+              "default": "\"\"",
+              "fieldName": "mimeType"
+            },
+            {
+              "name": "heading",
+              "type": {
+                "text": "string"
+              },
+              "description": "Title over the editor, defaults to \"Crop\"",
+              "default": "\"\"",
+              "fieldName": "heading"
+            },
+            {
+              "name": "note",
+              "type": {
+                "text": "string"
+              },
+              "description": "Text under the fields, such as where the crop will be saved",
+              "default": "\"\"",
+              "fieldName": "note"
+            },
+            {
+              "name": "aspect",
+              "type": {
+                "text": "string"
+              },
+              "description": "Aspect id: free, original, 1:1, 4:3 or 16:9",
+              "default": "\"free\"",
+              "fieldName": "aspect"
+            },
+            {
+              "name": "__narrow",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "__narrow"
+            },
+            {
+              "name": "__loaded",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "__loaded"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "hax-image-crop",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "CROP_ASPECTS",
+          "declaration": {
+            "name": "CROP_ASPECTS",
+            "module": "lib/hax-image-crop.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "cropOutputType",
+          "declaration": {
+            "name": "cropOutputType",
+            "module": "lib/hax-image-crop.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "canCropMime",
+          "declaration": {
+            "name": "canCropMime",
+            "module": "lib/hax-image-crop.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "croppedFileName",
+          "declaration": {
+            "name": "croppedFileName",
+            "module": "lib/hax-image-crop.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "centeredCropRect",
+          "declaration": {
+            "name": "centeredCropRect",
+            "module": "lib/hax-image-crop.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "loadCropImage",
+          "declaration": {
+            "name": "loadCropImage",
+            "module": "lib/hax-image-crop.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "encodeCrop",
+          "declaration": {
+            "name": "encodeCrop",
+            "module": "lib/hax-image-crop.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "HaxImageCrop",
+            "module": "lib/hax-image-crop.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "HaxImageCrop",
+          "declaration": {
+            "name": "HaxImageCrop",
+            "module": "lib/hax-image-crop.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "lib/hax-map-tree.js",
       "declarations": [
         {
@@ -8410,41 +8997,8 @@
             },
             {
               "kind": "method",
-              "name": "_detectStyleGuideTemplates",
-              "description": "Check if style guide content is available and detect page-template elements\nThis is called during app store loading to register any available templates"
-            },
-            {
-              "kind": "method",
               "name": "forceAppStoreLoad",
-              "description": "Force app store loading if it hasn't loaded yet\nThis can be called from external contexts like the style guide route"
-            },
-            {
-              "kind": "method",
-              "name": "detectAndRegisterPageTemplateStax",
-              "parameters": [
-                {
-                  "name": "styleGuideContent",
-                  "description": "The HTML content of the style guide",
-                  "type": {
-                    "text": "string"
-                  }
-                }
-              ],
-              "description": "Detect page-template elements from style guide content and register them as stax or demoSchema\nMulti-child templates become stax, single-child templates replace demoSchema for that element\nUses the same HAX schema conversion approach as the style guide system"
-            },
-            {
-              "kind": "method",
-              "name": "_updateElementDemoSchema",
-              "parameters": [
-                {
-                  "name": "haxElement",
-                  "description": "HAX element schema from page-template content",
-                  "type": {
-                    "text": "Object"
-                  }
-                }
-              ],
-              "description": "Update the demoSchema for an element based on page-template content"
+              "description": "Force app store loading if it hasn't loaded yet"
             },
             {
               "kind": "method",
@@ -8617,7 +9171,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ close: \"Close\", uploadSuccessful: \"Upload successful!\", cantHandleLinkType: \"Sorry, HAX doesn't know how to handle that type of link yet.\", pickHowToPresent: \"Pick how to present this {type}\", transformFailedFileLink: \"Post-upload transform failed; inserted a file link.\", imageReplaced: \"Image replaced\", imageGalleryCreated: \"Image gallery created successfully!\", imageAddedToGallery: \"Image added to gallery successfully!\", mediaPlaylistCreated: \"Media playlist created successfully!\", mediaAddedToPlaylist: \"Media added to playlist successfully!\", imageGalleryCreatedAddMore: \"Image gallery created! Add more images by editing the gallery.\", notAValidTag: \"{tag} is not a valid tag\", termsOfService: \"Terms of service:\", searchApp: \"Search {title}\", insertEmoji: \"Insert emoji\", insertEmojiInline: \"Insert emoji (inline token)\", searchForEmoji: \"Search for an emoji\", insertSymbol: \"Insert symbol\", insertSymbolInline: \"Insert symbol (inline token)\", searchForSymbol: \"Search for a symbol\", joinOurCommunity: \"Join our Community\", userTutorials: \"User Tutorials\", userDocumentation: \"User Documentation\", haxTeachingExcellence: \"HAX Teaching Excellence\", reportAnIssueTogether: \"Report an issue together\", leaveWithoutSaving: \"Are you sure you want to leave? Your work will not be saved!\", letsLearnHax: \"Let's learn HAX\", }"
+              "default": "{ close: \"Close\", uploadSuccessful: \"Upload successful!\", cantHandleLinkType: \"Sorry, HAX doesn't know how to handle that type of link yet.\", pickHowToPresent: \"Pick how to present this {type}\", transformFailedFileLink: \"Post-upload transform failed; inserted a file link.\", imageReplaced: \"Image replaced\", imageGalleryCreated: \"Image gallery created successfully!\", imageAddedToGallery: \"Image added to gallery successfully!\", mediaPlaylistCreated: \"Media playlist created successfully!\", mediaAddedToPlaylist: \"Media added to playlist successfully!\", imageGalleryCreatedAddMore: \"Image gallery created! Add more images by editing the gallery.\", notAValidTag: \"{tag} is not a valid tag\", termsOfService: \"Terms of service:\", searchApp: \"Search {title}\", insertEmoji: \"Insert emoji\", insertEmojiInline: \"Insert emoji (inline token)\", searchForEmoji: \"Search for an emoji\", insertSymbol: \"Insert symbol\", insertSymbolInline: \"Insert symbol (inline token)\", searchForSymbol: \"Search for a symbol\", joinOurCommunity: \"Join our Community\", userTutorials: \"User Tutorials\", userDocumentation: \"User Documentation\", // no longer in Merlin; kept until the nightly translations drop it // from every locale (translated files may not have keys en lacks) haxTeachingExcellence: \"HAX Teaching Excellence\", reportAnIssueTogether: \"Report an issue together\", leaveWithoutSaving: \"Are you sure you want to leave? Your work will not be saved!\", letsLearnHax: \"Let's learn HAX\", }"
             },
             {
               "kind": "field",
@@ -9650,6 +10204,12 @@
             },
             {
               "kind": "field",
+              "name": "kbdButton",
+              "description": "default config for a keyboard key (kbd) button",
+              "readonly": true
+            },
+            {
+              "kind": "field",
               "name": "abbrButton",
               "description": "default config for a <code></code> button",
               "readonly": true
@@ -10173,7 +10733,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ undoButton: \"Undo\", redoButton: \"Redo\", formatButton: \"Format\", blockP: \"Paragraph\", blockH1: \"Heading 1\", blockH2: \"Heading 2\", blockH3: \"Heading 3\", blockH4: \"Heading 4\", blockH5: \"Heading 5\", blockH6: \"Heading 6\", blockPre: \"Preformatted\", h1Button: \"Header 1\", h2Button: \"Header 2\", italicButton: \"Italic\", boldButton: \"Bold\", underlineButton: \"Underline\", strikethroughButton: \"Cross out\", codeButton: \"Code\", markButton: \"Highlight\", abbrButton: \"Abbreviation\", removeFormatButton: \"Remove format\", linkButton: \"Link\", unlinkButton: \"Remove Link\", cutButton: \"Cut\", copyButton: \"Copy\", pasteButton: \"Paste Clipboard\", subscriptButton: \"Subscript\", superscriptButton: \"Superscript\", symbolButton: \"Insert Symbol\", emojiButton: \"Insert Emoticon\", imageButton: \"Insert Image\", orderedListButton: \"Numbered list\", unorderedListButton: \"Bulleted list\", blockquoteButton: \"Blockquote\", indentButton: \"Indent\", outdentButton: \"Outdent\", alignmentPicker: \"Text alignment\", moreFormats: \"More formats\", fewerFormats: \"Fewer formats\", addLink: \"Add link\", editLink: \"Edit link\", applyLink: \"Apply link\", updateLink: \"Update link\", linkAddress: \"Link address\", linkPlaceholder: \"Paste or type a link\", cancel: \"Cancel\", }"
+              "default": "{ undoButton: \"Undo\", redoButton: \"Redo\", formatButton: \"Format\", blockP: \"Paragraph\", blockH1: \"Heading 1\", blockH2: \"Heading 2\", blockH3: \"Heading 3\", blockH4: \"Heading 4\", blockH5: \"Heading 5\", blockH6: \"Heading 6\", blockPre: \"Preformatted\", h1Button: \"Header 1\", h2Button: \"Header 2\", italicButton: \"Italic\", boldButton: \"Bold\", underlineButton: \"Underline\", strikethroughButton: \"Cross out\", codeButton: \"Code\", markButton: \"Highlight\", kbdButton: \"Keyboard key\", abbrButton: \"Abbreviation\", removeFormatButton: \"Remove format\", linkButton: \"Link\", unlinkButton: \"Remove Link\", cutButton: \"Cut\", copyButton: \"Copy\", pasteButton: \"Paste Clipboard\", subscriptButton: \"Subscript\", superscriptButton: \"Superscript\", symbolButton: \"Insert Symbol\", emojiButton: \"Insert Emoticon\", imageButton: \"Insert Image\", orderedListButton: \"Numbered list\", unorderedListButton: \"Bulleted list\", blockquoteButton: \"Blockquote\", indentButton: \"Indent\", outdentButton: \"Outdent\", alignmentPicker: \"Text alignment\", moreFormats: \"More formats\", fewerFormats: \"Fewer formats\", addLink: \"Add link\", editLink: \"Edit link\", applyLink: \"Apply link\", updateLink: \"Update link\", linkAddress: \"Link address\", linkPlaceholder: \"Paste or type a link\", cancel: \"Cancel\", }"
             },
             {
               "kind": "field",
@@ -12264,6 +12824,219 @@
             },
             {
               "kind": "method",
+              "name": "_imageInfoTemplate",
+              "parameters": [
+                {
+                  "name": "f"
+                }
+              ],
+              "description": "facts, recommendations and edit actions, in the site admin Files style",
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_choiceTemplate",
+              "description": "site admin Files' chooser: a bold title, one button each, ghost Cancel",
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_cropTemplate",
+              "parameters": [
+                {
+                  "name": "f"
+                }
+              ],
+              "description": "the in-browser crop: hax-image-crop with this field's buttons",
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_toggleImageInfo",
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_openChoice",
+              "parameters": [
+                {
+                  "name": "action"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_closeChoice",
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_onChoiceKeydown",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_runChoice",
+              "parameters": [
+                {
+                  "name": "action"
+                },
+                {
+                  "name": "value"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_canCrop",
+              "parameters": [
+                {
+                  "name": "f"
+                }
+              ],
+              "description": "Crop works on JPG, PNG and WebP: the formats a browser canvas writes",
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_fileNameOf",
+              "parameters": [
+                {
+                  "name": "f"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_croppedName",
+              "parameters": [
+                {
+                  "name": "name"
+                },
+                {
+                  "name": "mime"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_openCrop",
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_closeCrop",
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_downloadCrop",
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_useCroppedImage",
+              "description": "Make the crop in the browser, upload it as a new file through the v1\ncreateFile endpoint, and point this field at it. The original file is\nleft as it was (haxtheweb/issues#1149).",
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_typeLabel",
+              "parameters": [
+                {
+                  "name": "f"
+                }
+              ],
+              "description": "\"Image · JPG\", the site admin Files type label",
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_dateMs",
+              "parameters": [
+                {
+                  "name": "v"
+                }
+              ],
+              "description": "seconds or ms since the epoch (backends differ) to ms",
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_fmtRelativeDate",
+              "parameters": [
+                {
+                  "name": "v"
+                }
+              ],
+              "description": "relative time in the site admin Files wording",
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "method",
               "name": "_maybeHydrateFromValue",
               "description": "If the field has a value that we haven't yet hydrated from, resolve the\nfile record (uuid/size/mimetype/dateCreated) via",
               "inheritedFrom": {
@@ -12390,7 +13163,7 @@
             {
               "kind": "method",
               "name": "_recomputeRecs",
-              "description": "Build the proactive recommendation list. Only compress / resize are\nsurfaced as chips; the full transform/compress/scale list lives in the\nembedded <hax-file-actions mode=\"field\"> bar.",
+              "description": "Build the proactive recommendation list. Only compress / resize are\nsurfaced as recommendations; every action sits in the Image info buttons.",
               "inheritedFrom": {
                 "name": "HaxUploadField",
                 "module": "lib/hax-upload-field.js"
@@ -12457,7 +13230,7 @@
                   "name": "e"
                 }
               ],
-              "description": "Handle a transform/compress/scale/rotate choice from the inline\n<hax-file-actions mode=\"field\"> bar. Maps the {action, value} event to\nthe",
+              "description": "Handle a transform/compress/scale/rotate choice from Image info's\nbuttons and choosers. Maps the {action, value} event to\nthe",
               "inheritedFrom": {
                 "name": "HaxUploadField",
                 "module": "lib/hax-upload-field.js"
@@ -12663,11 +13436,63 @@
             },
             {
               "kind": "field",
+              "name": "__infoOpen",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "__choice",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "__cropping",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "__savedName",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "t",
               "type": {
                 "text": "object"
               },
-              "default": "{ ...this.t, whereUpload: \"Where would you like to upload this\", serverStorageLocationCantHandle: \"Server storage location can't handle\", fileUploadsMustHaveAFileExtension: \"File uploads must have a file extension\", uploads: \"uploads\", dropMediaHereOr: \"Drop media here or\", selectMedia: \"Select media\", upload: \"Upload\", takePhoto: \"Take photo\", recordAudio: \"Record audio\", cancel: \"Cancel\", uploadMedia: \"Upload media\", uploadDisabled: \"Uploading media is disabled for this site\", imageInfo: \"Image info\", imageActions: \"Image actions\", imageRecommendations: \"Image recommendations\", compressImage: \"Compress image\", resizeTo: \"Resize to\", created: \"Created\", size: \"Size\", dimensions: \"Dimensions\", type: \"Type\", done: \"done\", noFileUuid: \"File reference unavailable; re-upload to enable actions.\", fileOpsUnavailable: \"File operations are not available for this site.\", fileOpFailed: \"File operation failed.\", fileExtensionNotAllowed: \"This field only accepts the following file types:\", fileTypeNotAllowed: \"This field only accepts the following media types:\", transformFailed: \"Post-upload transform failed; the original file was kept.\", imageGalleryCreated: \"Image gallery created successfully!\", }",
+              "default": "{ ...this.t, whereUpload: \"Where would you like to upload this\", serverStorageLocationCantHandle: \"Server storage location can't handle\", fileUploadsMustHaveAFileExtension: \"File uploads must have a file extension\", uploads: \"uploads\", dropMediaHereOr: \"Drop media here or\", selectMedia: \"Select media\", upload: \"Upload\", takePhoto: \"Take photo\", recordAudio: \"Record audio\", cancel: \"Cancel\", uploadMedia: \"Upload media\", uploadDisabled: \"Uploading media is disabled for this site\", imageInfo: \"Image info\", size: \"Size\", dimensions: \"Dimensions\", type: \"Type\", done: \"done\", noFileUuid: \"File reference unavailable; re-upload to enable actions.\", fileOpsUnavailable: \"File operations are not available for this site.\", fileOpFailed: \"File operation failed.\", fileExtensionNotAllowed: \"This field only accepts the following file types:\", fileTypeNotAllowed: \"This field only accepts the following media types:\", transformFailed: \"Post-upload transform failed; the original file was kept.\", imageGalleryCreated: \"Image gallery created successfully!\", updated: \"Updated\", kindImage: \"Image\", editImage: \"Edit image\", crop: \"Crop\", scale: \"Scale\", rotate: \"Rotate\", transform: \"Transform\", compress: \"Compress\", convertJpg: \"Convert to JPG\", sepia: \"Sepia\", blackAndWhite: \"Black and white\", chooseScale: \"Scale this image to\", chooseTransform: \"Transform this image\", chooseCompress: \"Compress this image\", recommendedScale: \"Recommended: {size} or smaller\", scaleTo: \"Scale to {size}\", recommendedCompress: \"Recommended: compress to load faster\", compressLevel: \"Compress ({quality})\", download: \"Download\", useCroppedImage: \"Use cropped image\", cropNote: \"Saves a new file, {name}, and uses it in this block. The original stays in Files.\", savedAs: \"Saved\", savedNote: \"{name}. The original is still in Files.\", cropFailed: \"Unable to save the cropped image.\", timeAgo: \"{time} ago\", justNow: \"Just now\", month: \"month\", months: \"months\", day: \"day\", days: \"days\", hour: \"hour\", hours: \"hours\", minute: \"minute\", minutes: \"minutes\", second: \"second\", seconds: \"seconds\", }",
               "inheritedFrom": {
                 "name": "HaxUploadField",
                 "module": "lib/hax-upload-field.js"
@@ -14208,6 +15033,147 @@
             },
             {
               "kind": "method",
+              "name": "_imageInfoTemplate",
+              "parameters": [
+                {
+                  "name": "f"
+                }
+              ],
+              "description": "facts, recommendations and edit actions, in the site admin Files style"
+            },
+            {
+              "kind": "method",
+              "name": "_choiceTemplate",
+              "description": "site admin Files' chooser: a bold title, one button each, ghost Cancel"
+            },
+            {
+              "kind": "method",
+              "name": "_cropTemplate",
+              "parameters": [
+                {
+                  "name": "f"
+                }
+              ],
+              "description": "the in-browser crop: hax-image-crop with this field's buttons"
+            },
+            {
+              "kind": "method",
+              "name": "_toggleImageInfo"
+            },
+            {
+              "kind": "method",
+              "name": "_openChoice",
+              "parameters": [
+                {
+                  "name": "action"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_closeChoice"
+            },
+            {
+              "kind": "method",
+              "name": "_onChoiceKeydown",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_runChoice",
+              "parameters": [
+                {
+                  "name": "action"
+                },
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_canCrop",
+              "parameters": [
+                {
+                  "name": "f"
+                }
+              ],
+              "description": "Crop works on JPG, PNG and WebP: the formats a browser canvas writes"
+            },
+            {
+              "kind": "method",
+              "name": "_fileNameOf",
+              "parameters": [
+                {
+                  "name": "f"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_croppedName",
+              "parameters": [
+                {
+                  "name": "name"
+                },
+                {
+                  "name": "mime"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_openCrop"
+            },
+            {
+              "kind": "method",
+              "name": "_closeCrop"
+            },
+            {
+              "kind": "method",
+              "name": "_downloadCrop"
+            },
+            {
+              "kind": "method",
+              "name": "_useCroppedImage",
+              "description": "Make the crop in the browser, upload it as a new file through the v1\ncreateFile endpoint, and point this field at it. The original file is\nleft as it was (haxtheweb/issues#1149)."
+            },
+            {
+              "kind": "method",
+              "name": "_typeLabel",
+              "parameters": [
+                {
+                  "name": "f"
+                }
+              ],
+              "description": "\"Image · JPG\", the site admin Files type label"
+            },
+            {
+              "kind": "method",
+              "name": "_dateMs",
+              "parameters": [
+                {
+                  "name": "v"
+                }
+              ],
+              "description": "seconds or ms since the epoch (backends differ) to ms"
+            },
+            {
+              "kind": "method",
+              "name": "_fmtRelativeDate",
+              "parameters": [
+                {
+                  "name": "v"
+                }
+              ],
+              "description": "relative time in the site admin Files wording"
+            },
+            {
+              "kind": "method",
               "name": "_maybeHydrateFromValue",
               "description": "If the field has a value that we haven't yet hydrated from, resolve the\nfile record (uuid/size/mimetype/dateCreated) via"
             },
@@ -14298,7 +15264,7 @@
             {
               "kind": "method",
               "name": "_recomputeRecs",
-              "description": "Build the proactive recommendation list. Only compress / resize are\nsurfaced as chips; the full transform/compress/scale list lives in the\nembedded <hax-file-actions mode=\"field\"> bar."
+              "description": "Build the proactive recommendation list. Only compress / resize are\nsurfaced as recommendations; every action sits in the Image info buttons."
             },
             {
               "kind": "method",
@@ -14345,7 +15311,7 @@
                   "name": "e"
                 }
               ],
-              "description": "Handle a transform/compress/scale/rotate choice from the inline\n<hax-file-actions mode=\"field\"> bar. Maps the {action, value} event to\nthe"
+              "description": "Handle a transform/compress/scale/rotate choice from Image info's\nbuttons and choosers. Maps the {action, value} event to\nthe"
             },
             {
               "kind": "method",
@@ -14507,11 +15473,47 @@
             },
             {
               "kind": "field",
+              "name": "__infoOpen",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "__choice",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\""
+            },
+            {
+              "kind": "field",
+              "name": "__cropping",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "__savedName",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\""
+            },
+            {
+              "kind": "field",
               "name": "t",
               "type": {
                 "text": "object"
               },
-              "default": "{ ...this.t, whereUpload: \"Where would you like to upload this\", serverStorageLocationCantHandle: \"Server storage location can't handle\", fileUploadsMustHaveAFileExtension: \"File uploads must have a file extension\", uploads: \"uploads\", dropMediaHereOr: \"Drop media here or\", selectMedia: \"Select media\", upload: \"Upload\", takePhoto: \"Take photo\", recordAudio: \"Record audio\", cancel: \"Cancel\", uploadMedia: \"Upload media\", uploadDisabled: \"Uploading media is disabled for this site\", imageInfo: \"Image info\", imageActions: \"Image actions\", imageRecommendations: \"Image recommendations\", compressImage: \"Compress image\", resizeTo: \"Resize to\", created: \"Created\", size: \"Size\", dimensions: \"Dimensions\", type: \"Type\", done: \"done\", noFileUuid: \"File reference unavailable; re-upload to enable actions.\", fileOpsUnavailable: \"File operations are not available for this site.\", fileOpFailed: \"File operation failed.\", fileExtensionNotAllowed: \"This field only accepts the following file types:\", fileTypeNotAllowed: \"This field only accepts the following media types:\", transformFailed: \"Post-upload transform failed; the original file was kept.\", imageGalleryCreated: \"Image gallery created successfully!\", }"
+              "default": "{ ...this.t, whereUpload: \"Where would you like to upload this\", serverStorageLocationCantHandle: \"Server storage location can't handle\", fileUploadsMustHaveAFileExtension: \"File uploads must have a file extension\", uploads: \"uploads\", dropMediaHereOr: \"Drop media here or\", selectMedia: \"Select media\", upload: \"Upload\", takePhoto: \"Take photo\", recordAudio: \"Record audio\", cancel: \"Cancel\", uploadMedia: \"Upload media\", uploadDisabled: \"Uploading media is disabled for this site\", imageInfo: \"Image info\", size: \"Size\", dimensions: \"Dimensions\", type: \"Type\", done: \"done\", noFileUuid: \"File reference unavailable; re-upload to enable actions.\", fileOpsUnavailable: \"File operations are not available for this site.\", fileOpFailed: \"File operation failed.\", fileExtensionNotAllowed: \"This field only accepts the following file types:\", fileTypeNotAllowed: \"This field only accepts the following media types:\", transformFailed: \"Post-upload transform failed; the original file was kept.\", imageGalleryCreated: \"Image gallery created successfully!\", updated: \"Updated\", kindImage: \"Image\", editImage: \"Edit image\", crop: \"Crop\", scale: \"Scale\", rotate: \"Rotate\", transform: \"Transform\", compress: \"Compress\", convertJpg: \"Convert to JPG\", sepia: \"Sepia\", blackAndWhite: \"Black and white\", chooseScale: \"Scale this image to\", chooseTransform: \"Transform this image\", chooseCompress: \"Compress this image\", recommendedScale: \"Recommended: {size} or smaller\", scaleTo: \"Scale to {size}\", recommendedCompress: \"Recommended: compress to load faster\", compressLevel: \"Compress ({quality})\", download: \"Download\", useCroppedImage: \"Use cropped image\", cropNote: \"Saves a new file, {name}, and uses it in this block. The original stays in Files.\", savedAs: \"Saved\", savedNote: \"{name}. The original is still in Files.\", cropFailed: \"Unable to save the cropped image.\", timeAgo: \"{time} ago\", justNow: \"Just now\", month: \"month\", months: \"months\", day: \"day\", days: \"days\", hour: \"hour\", hours: \"hours\", minute: \"minute\", minutes: \"minutes\", second: \"second\", seconds: \"seconds\", }"
             },
             {
               "kind": "field",

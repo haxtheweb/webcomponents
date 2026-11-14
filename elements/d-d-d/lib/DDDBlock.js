@@ -194,8 +194,10 @@ export const DDDBlockStyles = css`
     align-items: center;
     gap: var(--ddd-spacing-3);
     padding-block: var(--ddd-spacing-2);
+    /* the end padding can be widened by a container that lays controls
+       over the header, such as the pager of stop-note-group */
     padding-inline: var(--ddd-surface-padding, var(--ddd-spacing-4))
-      var(--ddd-spacing-2);
+      var(--ddd-block-header-end, var(--ddd-spacing-2));
     min-height: var(--ddd-control-height-sm);
     border-bottom: var(--ddd-border-xs);
     border-color: light-dark(

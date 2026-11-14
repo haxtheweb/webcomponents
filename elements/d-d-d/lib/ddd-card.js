@@ -21,6 +21,8 @@ export class DddCard extends I18NMixin(DDDSuper(LitElement)) {
     this.alt = "";
     this.label = null;
     this.noArrow = false;
+    this.horizontal = false;
+    this.clickable = false;
     this.t = {
       explore: "Explore",
     };
@@ -43,6 +45,10 @@ export class DddCard extends I18NMixin(DDDSuper(LitElement)) {
       target: { type: String },
       label: { type: String },
       noArrow: { type: Boolean, attribute: "no-arrow" },
+      // image beside the text instead of above it
+      horizontal: { type: Boolean, reflect: true },
+      // the whole card is the link (needs href); the button is not drawn
+      clickable: { type: Boolean, reflect: true },
     };
   }
 
@@ -74,10 +80,15 @@ export class DddCard extends I18NMixin(DDDSuper(LitElement)) {
           );
           color: light-dark(var(--ddd-theme-default-coalyGray), white);
           border: var(--ddd-border-sm);
+          border-width: var(--ddd-card-border-width, var(--ddd-border-size-sm));
           border-color: var(--ddd-card-border-color);
-          border-radius: var(--ddd-radius-xl);
+          border-radius: var(--ddd-card-radius, var(--ddd-radius-xl));
           font-family: var(--ddd-font-primary);
-          box-shadow: var(--ddd-boxShadow-sm);
+          box-shadow: var(--ddd-card-shadow, var(--ddd-boxShadow-sm));
+          --ddd-card-pad: var(
+            --ddd-card-padding,
+            var(--ddd-surface-padding, var(--ddd-spacing-4))
+          );
           margin: var(--ddd-spacing-2);
         }
 
@@ -103,7 +114,16 @@ export class DddCard extends I18NMixin(DDDSuper(LitElement)) {
 
         .image {
           border-bottom: var(--ddd-spacing-3) var(--ddd-card-accent) solid;
-          border-radius: var(--ddd-spacing-4) var(--ddd-spacing-4) 0 0;
+          /* follows a squarer card, never rounder than before */
+          border-radius: min(
+              var(--ddd-spacing-4),
+              var(--ddd-card-radius, var(--ddd-radius-xl))
+            )
+            min(
+              var(--ddd-spacing-4),
+              var(--ddd-card-radius, var(--ddd-radius-xl))
+            )
+            0 0;
           overflow: hidden;
           height: var(--ddd-card-img-height, 260px);
           background-color: var(
@@ -115,16 +135,102 @@ export class DddCard extends I18NMixin(DDDSuper(LitElement)) {
         .image img {
           width: 100%;
           height: var(--ddd-card-img-height, 260px);
-          border-radius: var(--ddd-spacing-5) var(--ddd-spacing-5) 0 0;
+          border-radius: min(
+              var(--ddd-spacing-5),
+              var(--ddd-card-radius, var(--ddd-radius-xl))
+            )
+            min(
+              var(--ddd-spacing-5),
+              var(--ddd-card-radius, var(--ddd-radius-xl))
+            )
+            0 0;
           object-fit: cover;
           display: block;
         }
+        /* no image: no empty image area, only the accent rule */
+        .image.empty {
+          height: 0;
+        }
+
+        .body {
+          display: flex;
+          flex-direction: column;
+          flex: 1 1 auto;
+          min-width: 0;
+        }
+
+        /* image beside the text, for lists of lessons */
+        :host([horizontal]) {
+          display: block;
+          width: auto;
+        }
+        @media (min-width: 601px) {
+          :host([horizontal]) .card {
+            flex-direction: row;
+          }
+          :host([horizontal]) .image:not(.empty) {
+            flex: 0 0 34%;
+            height: auto;
+            min-height: var(--ddd-spacing-28, 112px);
+            border-bottom: none;
+            border-inline-end: var(--ddd-spacing-3) var(--ddd-card-accent) solid;
+            border-radius: 0;
+          }
+          :host([horizontal]) .image.empty {
+            flex: none;
+            height: auto;
+            width: 0;
+            border-bottom: none;
+            border-inline-end: var(--ddd-spacing-3) var(--ddd-card-accent) solid;
+          }
+          :host([horizontal]) .image img {
+            height: 100%;
+            border-radius: 0;
+          }
+          :host([horizontal]) .card {
+            border-radius: inherit;
+            overflow: hidden;
+          }
+          :host([horizontal]) .description {
+            height: auto;
+          }
+        }
+
+        /* the whole card is the link: the anchor covers the card and the
+           button is not drawn */
+        :host([clickable]) .card {
+          position: relative;
+        }
+        :host([clickable]) .button-wrapper {
+          height: 0;
+          padding: 0;
+        }
+        :host([clickable]) .button {
+          height: 0;
+          padding: 0;
+          overflow: hidden;
+          opacity: 0;
+        }
+        :host([clickable]) .button-wrapper a::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          border-radius: inherit;
+        }
+        :host([clickable]) .button-wrapper a {
+          outline: none;
+        }
+        :host([clickable]:hover) {
+          border-color: var(--ddd-card-accent);
+        }
+        :host([clickable]:focus-within) {
+          outline: var(--ddd-focus-ring, 2px solid currentColor);
+          outline-offset: var(--ddd-focus-offset, 2px);
+        }
 
         .title {
-          padding: var(--ddd-surface-padding, var(--ddd-spacing-4))
-            var(--ddd-surface-padding, var(--ddd-spacing-4))
-            var(--ddd-spacing-0)
-            var(--ddd-surface-padding, var(--ddd-spacing-4));
+          padding: var(--ddd-card-pad) var(--ddd-card-pad) var(--ddd-spacing-0)
+            var(--ddd-card-pad);
           font-size: var(--ddd-font-size-s);
           font-weight: var(--ddd-font-weight-bold);
           color: light-dark(var(--ddd-theme-default-nittanyNavy), white);
@@ -132,7 +238,7 @@ export class DddCard extends I18NMixin(DDDSuper(LitElement)) {
 
         .description {
           flex-grow: 1;
-          padding: var(--ddd-surface-padding, var(--ddd-spacing-4));
+          padding: var(--ddd-card-pad);
           font-size: var(--ddd-font-size-4xs);
           height: var(--ddd-card-height, var(--ddd-spacing-22));
           overflow-y: auto;
@@ -145,7 +251,7 @@ export class DddCard extends I18NMixin(DDDSuper(LitElement)) {
         }
 
         .button-wrapper {
-          padding: var(--ddd-surface-padding, var(--ddd-spacing-4));
+          padding: var(--ddd-card-pad);
           text-align: center;
           height: 44px;
         }
@@ -187,7 +293,7 @@ export class DddCard extends I18NMixin(DDDSuper(LitElement)) {
   render() {
     return html`
       <div class="card">
-        <div class="image" part="image">
+        <div class="image ${this.src ? "" : "empty"}" part="image">
           ${
             this.src
               ? html`<img
@@ -201,33 +307,35 @@ export class DddCard extends I18NMixin(DDDSuper(LitElement)) {
               : nothing
           }
         </div>
-        <div class="title" part="title">${this.title}</div>
-        <div class="description" part="description">
-          <slot></slot>
-        </div>
-        <div class="button-wrapper" part="button-wrapper">
-          ${
-            this.href
-              ? html`
-                  <a
-                    @click="${this._clickCard}"
-                    href="${this.href}"
-                    rel="${this.rel}"
-                    target="${this.target}"
-                    part="a"
-                  >
-                    <span class="button" part="button">
-                      ${this.label || this.t.explore}
-                      ${
-                        !this.noArrow
-                          ? html`<span aria-hidden="true">&gt;</span>`
-                          : nothing
-                      }
-                    </span>
-                  </a>
-                `
-              : nothing
-          }
+        <div class="body">
+          <div class="title" part="title">${this.title}</div>
+          <div class="description" part="description">
+            <slot></slot>
+          </div>
+          <div class="button-wrapper" part="button-wrapper">
+            ${
+              this.href
+                ? html`
+                    <a
+                      @click="${this._clickCard}"
+                      href="${this.href}"
+                      rel="${this.rel}"
+                      target="${this.target}"
+                      part="a"
+                    >
+                      <span class="button" part="button">
+                        ${this.label || this.t.explore}
+                        ${
+                          !this.noArrow
+                            ? html`<span aria-hidden="true">&gt;</span>`
+                            : nothing
+                        }
+                      </span>
+                    </a>
+                  `
+                : nothing
+            }
+          </div>
         </div>
       </div>
     `;

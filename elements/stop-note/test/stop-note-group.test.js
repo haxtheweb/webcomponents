@@ -147,3 +147,38 @@ describe("stop-note tip and new statuses", () => {
     expect(el.status).to.equal("new");
   });
 });
+
+describe("stop-note-group with other framed blocks", () => {
+  it("stacks instruction cards and framed quotes with notes", async () => {
+    await import("@haxtheweb/course-design/lib/learning-component.js");
+    await import("@haxtheweb/course-design/lib/block-quote.js");
+    const el = await fixture(html`
+      <stop-note-group label="Before you start">
+        <stop-note status="warning"><p slot="message">One</p></stop-note>
+        <p>Not a member</p>
+        <learning-component type="takeaways"><p>Two</p></learning-component>
+        <block-quote>Plain quotes have no header to hold the pager</block-quote>
+        <block-quote framed>Three</block-quote>
+      </stop-note-group>
+    `);
+    await el.updateComplete;
+    const notes = el.notes;
+    expect(notes.map((n) => n.tagName.toLowerCase())).to.deep.equal([
+      "stop-note",
+      "learning-component",
+      "block-quote",
+    ]);
+    expect(notes.map(visible)).to.deep.equal([true, false, false]);
+    el.next();
+    await el.updateComplete;
+    expect(notes.map(visible)).to.deep.equal([false, true, false]);
+    el.next();
+    await el.updateComplete;
+    expect(notes.map(visible)).to.deep.equal([false, false, true]);
+    // children that are not part of the stack never show while paging
+    expect(visible(el.querySelector("p:not([slot])"))).to.equal(false);
+    expect(visible(el.querySelector("block-quote:not([framed])"))).to.equal(
+      false,
+    );
+  });
+});

@@ -1,0 +1,171 @@
+{
+  "tag": "stat-tile",
+  "folder": "stat-tile",
+  "package": "@haxtheweb/stat-tile",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Stat tile",
+  "description": "One number that matters, with its label and how it changed. Place several in a grid for a dashboard row.",
+  "icon": "editor:insert-chart",
+  "tags": [
+    "Content",
+    "data",
+    "number",
+    "stat",
+    "metric",
+    "dashboard",
+    "kpi"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/stat-tile/stat-tile.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/stat-tile/stat-tile.js",
+  "install": "npm i @haxtheweb/stat-tile",
+  "demoHtml": "<stat-tile label=\"Enrolled\" value=\"1284\" change=\"6% this term\" trend=\"up\"></stat-tile>",
+  "attributes": [
+    {
+      "name": "label",
+      "property": "label",
+      "type": "string",
+      "default": "\"\"",
+      "description": "what the number measures",
+      "hax": {
+        "title": "Label",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "value",
+      "property": "value",
+      "type": "string",
+      "default": "\"\"",
+      "description": "the number; a plain number is grouped for the page language",
+      "hax": {
+        "title": "Value",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "change",
+      "property": "change",
+      "type": "string",
+      "default": "\"\"",
+      "description": "how it changed, in words: \"6% this term\"",
+      "hax": {
+        "title": "Change",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "trend",
+      "property": "trend",
+      "type": "string",
+      "default": "\"\"",
+      "description": "direction of the change: \"up\" or \"down\"",
+      "hax": {
+        "title": "Direction",
+        "input": "select",
+        "options": {
+          "": "None",
+          "up": "Up",
+          "down": "Down"
+        }
+      }
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {
+    "api": "1",
+    "canScale": true,
+    "canEditSource": true,
+    "type": "element",
+    "gizmo": {
+      "title": "Stat tile",
+      "description": "One number that matters, with its label and how it changed. Place several in a grid for a dashboard row.",
+      "icon": "editor:insert-chart",
+      "color": "blue",
+      "tags": [
+        "Content",
+        "data",
+        "number",
+        "stat",
+        "metric",
+        "dashboard",
+        "kpi"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "label",
+          "title": "Label",
+          "description": "What the number measures.",
+          "inputMethod": "textfield",
+          "required": true
+        },
+        {
+          "property": "value",
+          "title": "Value",
+          "description": "The number. A plain number is grouped for the page language; anything else shows as written.",
+          "inputMethod": "textfield",
+          "required": true
+        },
+        {
+          "property": "change",
+          "title": "Change",
+          "description": "How it changed, in words, such as 6% this term.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "trend",
+          "title": "Direction",
+          "description": "Whether the change is up or down.",
+          "inputMethod": "select",
+          "options": {
+            "": "None",
+            "up": "Up",
+            "down": "Down"
+          }
+        }
+      ],
+      "advanced": [],
+      "developer": []
+    },
+    "saveOptions": {
+      "unsetAttributes": [
+        "t"
+      ]
+    },
+    "demoSchema": [
+      {
+        "tag": "stat-tile",
+        "properties": {
+          "label": "Enrolled",
+          "value": "1284",
+          "change": "6% this term",
+          "trend": "up"
+        },
+        "content": ""
+      }
+    ]
+  },
+  "surfaceHash": "6004837571f4",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/stat-tile",
+    "file": "stat-tile.js"
+  }
+}

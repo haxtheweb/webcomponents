@@ -207,3 +207,27 @@ describe("block-quote test", () => {
     });
   });
 });
+
+describe("block-quote framed", () => {
+  it("keeps the original look unless framed is set", async () => {
+    const el = await fixture(
+      html`<block-quote citation="A">Words</block-quote>`,
+    );
+    expect(el.shadowRoot.querySelector("#wrap")).to.exist;
+    expect(el.shadowRoot.querySelector(".ddd-block")).to.equal(null);
+  });
+
+  it("draws on the shared block frame when framed", async () => {
+    const el = await fixture(
+      html`<block-quote framed citation="A">Words</block-quote>`,
+    );
+    const root = el.shadowRoot;
+    expect(root.querySelector(".ddd-block-header")).to.exist;
+    expect(root.querySelector(".ddd-block-label").textContent.trim()).to.equal(
+      "Quote",
+    );
+    expect(root.querySelector("blockquote")).to.exist;
+    expect(root.querySelector(".framed-citation").textContent).to.contain("A");
+    await expect(el).shadowDom.to.be.accessible();
+  });
+});

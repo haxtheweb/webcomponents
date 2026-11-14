@@ -65,6 +65,18 @@
     ],
     "advanced": [
       {
+        "property": "horizontal",
+        "title": "Horizontal",
+        "description": "Place the image beside the text instead of above it.",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "clickable",
+        "title": "Whole card is the link",
+        "description": "Make the entire card the link and hide the button. Needs a link.",
+        "inputMethod": "boolean"
+      },
+      {
         "property": "label",
         "title": "Label",
         "description": "Button label.",

@@ -6,6 +6,7 @@ import { html, css } from "lit";
 import { remoteLinkBehavior } from "@haxtheweb/utils/lib/remoteLinkBehavior.js";
 import { activeStateBehavior } from "@haxtheweb/utils/lib/activeStateBehavior.js";
 import { DDD, DDDPulseEffectSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { DDDVocabulary } from "@haxtheweb/d-d-d/lib/DDDVocabulary.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 /**
  * `simple-cta`
@@ -13,9 +14,23 @@ import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
  * @demo demo/index.html
  * @element simple-cta
  */
-class SimpleCta extends DDDPulseEffectSuper(
-  activeStateBehavior(remoteLinkBehavior(DDD)),
+class SimpleCta extends DDDVocabulary(
+  DDDPulseEffectSuper(activeStateBehavior(remoteLinkBehavior(DDD))),
 ) {
+  /**
+   * Shared DDD vocabulary: the existing light and large attributes keep
+   * working and read as appearance="outlined" and size="l".
+   */
+  static get dddVocabulary() {
+    return {
+      appearance: {
+        from: "light",
+        values: { true: "outlined" },
+        default: "filled",
+      },
+      size: { from: "large", values: { true: "l" }, default: "m" },
+    };
+  }
   //styles function
   static get styles() {
     return [
@@ -33,7 +48,7 @@ class SimpleCta extends DDDPulseEffectSuper(
           width: fit-content;
           height: fit-content;
           margin: var(--ddd-stack-gap, var(--ddd-spacing-4)) 0 0;
-          border-radius: var(--ddd-radius-xs);
+          border-radius: var(--ddd-control-radius, var(--ddd-radius-xs));
           --component-color: var(
             --lowContrast-override,
             var(
@@ -66,7 +81,7 @@ class SimpleCta extends DDDPulseEffectSuper(
           display: none;
         }
 
-        :host([light]) {
+        :host([light]:not([appearance])) {
           --component-color: var(
             --ddd-theme-primary,
             var(--ddd-theme-default-link)
@@ -80,9 +95,9 @@ class SimpleCta extends DDDPulseEffectSuper(
             )
           );
         }
-        :host([light]:focus-within),
-        :host([light]) a:hover,
-        :host([light]) a:active {
+        :host([light]:not([appearance]):focus-within),
+        :host([light]:not([appearance])) a:hover,
+        :host([light]:not([appearance])) a:active {
           --component-color: var(
             --lowContrast-override,
             var(--ddd-theme-accent, var(--ddd-theme-bgContrast, white))
@@ -92,6 +107,91 @@ class SimpleCta extends DDDPulseEffectSuper(
             --ddd-theme-primary,
             var(--ddd-theme-default-link)
           );
+        }
+
+        /* shared vocabulary (DDDVocabulary): appearance as a custom state,
+           so the existing light attribute and appearance="outlined" draw
+           the same thing */
+        :host(:state(appearance-outlined)) {
+          --component-color: var(
+            --ddd-theme-primary,
+            var(--ddd-theme-default-link)
+          );
+          --component-border-color: var(--component-color);
+          --component-background-color: var(
+            --lowContrast-override,
+            var(
+              --ddd-theme-accent,
+              var(--ddd-theme-bgContrast, var(--ddd-theme-default-white))
+            )
+          );
+        }
+        :host(:state(appearance-outlined):focus-within),
+        :host(:state(appearance-outlined)) a:hover,
+        :host(:state(appearance-outlined)) a:active {
+          --component-color: var(
+            --lowContrast-override,
+            var(--ddd-theme-accent, var(--ddd-theme-bgContrast, white))
+          );
+          --component-border-color: var(--component-color);
+          --component-background-color: var(
+            --ddd-theme-primary,
+            var(--ddd-theme-default-link)
+          );
+        }
+
+        /* tonal: a soft fill of the button color */
+        :host(:state(appearance-tonal)) {
+          --component-color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
+          --component-border-color: transparent;
+          --component-background-color: color-mix(
+            in srgb,
+            var(--ddd-theme-primary, var(--ddd-theme-default-link)) 16%,
+            transparent
+          );
+        }
+        /* plain: text only */
+        :host(:state(appearance-plain)) {
+          --component-color: light-dark(
+            var(--ddd-theme-default-link),
+            var(--ddd-theme-default-linkLight)
+          );
+          --component-border-color: transparent;
+          --component-background-color: transparent;
+        }
+        :host(:state(appearance-tonal):hover),
+        :host(:state(appearance-tonal):focus-within),
+        :host(:state(appearance-plain):hover),
+        :host(:state(appearance-plain):focus-within) {
+          --component-color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
+          --component-border-color: transparent;
+          --component-background-color: color-mix(
+            in srgb,
+            var(--ddd-theme-primary, var(--ddd-theme-default-link)) 28%,
+            transparent
+          );
+        }
+        /* size: l matches the existing large attribute */
+        :host(:state(size-s)) .btn {
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-3)
+            var(--ddd-spacing-2) var(--ddd-spacing-4);
+          font-size: var(--ddd-font-size-4xs);
+        }
+        :host(:state(size-s)) .hideIcon {
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
+        }
+        :host(:state(size-l)) .btn {
+          padding-block: 1rem;
+          padding-inline: 3.25rem 2.75rem;
+        }
+        :host(:state(size-l)) .hideIcon {
+          padding: 1rem 3.25rem;
         }
 
         :host([hotline]) .btn {
@@ -123,7 +223,7 @@ class SimpleCta extends DDDPulseEffectSuper(
           text-decoration: none;
           height: fit-content;
           width: max-content;
-          border-radius: var(--ddd-radius-xs);
+          border-radius: var(--ddd-control-radius, var(--ddd-radius-xs));
           color: var(--component-color, var(--ddd-theme-default-link));
           border: var(--ddd-border-sm);
           border-color: var(

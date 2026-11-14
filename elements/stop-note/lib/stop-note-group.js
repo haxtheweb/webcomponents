@@ -14,7 +14,9 @@ import "../stop-note.js";
  * Stacks several `stop-note`s into one block that shows a note at a time,
  * with previous and next buttons and a count laid over the note's header
  * ("Did you know?  ← 2 / 5 →"). Made for Tips and What's new, but any
- * statuses can be mixed.
+ * statuses can be mixed. Other blocks drawn on the shared DDD block frame
+ * can be stacked with them: instruction cards (`learning-component`), side
+ * notes (`lrndesign-sidenote`) and framed quotes (`block-quote framed`).
  *
  * The notes stay ordinary light DOM children: the group never changes
  * them, it only hides the ones not showing, so saved content is exactly
@@ -87,7 +89,7 @@ class StopNoteGroup extends I18NMixin(DDD) {
         :host([hidden]) {
           display: none;
         }
-        ::slotted(stop-note:not(:last-child)) {
+        ::slotted(:not(:last-child)) {
           margin-bottom: var(--ddd-spacing-3);
         }
         .pager {
@@ -169,11 +171,20 @@ class StopNoteGroup extends I18NMixin(DDD) {
     ];
   }
 
-  /** the stop-notes this group pages through */
+  /**
+   * the blocks this group pages through: stop-notes, and the other blocks
+   * that share the DDD block frame (their header is where the pager sits)
+   */
   get notes() {
-    return Array.from(this.children).filter(
-      (el) => el.tagName && el.tagName.toLowerCase() === "stop-note",
-    );
+    return Array.from(this.children).filter((el) => {
+      const tag = el.tagName ? el.tagName.toLowerCase() : "";
+      if (tag === "block-quote") {
+        return el.hasAttribute("framed");
+      }
+      return ["stop-note", "learning-component", "lrndesign-sidenote"].includes(
+        tag,
+      );
+    });
   }
 
   get paged() {
@@ -240,13 +251,15 @@ class StopNoteGroup extends I18NMixin(DDD) {
    * own styles, so the notes themselves are never changed.
    */
   _pagedCSS(i) {
-    return `::slotted(:not(stop-note)),
-      ::slotted(stop-note:not(:nth-of-type(${i + 1}))) { display: none; }
-      ::slotted(stop-note) { margin: 0; --stop-note-header-end: var(--stop-note-group-pager-space); }
+    // the showing block by its place among all children, since the stack
+    // can mix tags; anything else (other blocks included) is hidden
+    const showing = this.notes[i];
+    const place = Array.from(this.children).indexOf(showing) + 1;
+    return `::slotted(:not(:nth-child(${place}))) { display: none; }
+      ::slotted(*) { margin: 0; --stop-note-header-end: var(--stop-note-group-pager-space); --ddd-block-header-end: var(--stop-note-group-pager-space); }
       @media print {
-        ::slotted(*) { display: block !important; }
-        ::slotted(stop-note) { --stop-note-header-end: initial; }
-        ::slotted(stop-note:not(:last-child)) { margin-bottom: var(--ddd-spacing-3); }
+        ::slotted(*) { display: block !important; --stop-note-header-end: initial; --ddd-block-header-end: initial; }
+        ::slotted(:not(:last-child)) { margin-bottom: var(--ddd-spacing-3); }
       }`;
   }
 

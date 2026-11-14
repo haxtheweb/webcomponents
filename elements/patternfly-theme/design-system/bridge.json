@@ -306,6 +306,14 @@
     "--ddd-control-padding-inline": {
       "token": "--pf-t--global--spacer--md",
       "note": "PatternFly button inline padding, 16px"
+    },
+    "--ddd-card-radius": {
+      "token": "--pf-t--global--border--radius--medium",
+      "note": "cards"
+    },
+    "--ddd-control-radius": {
+      "token": "--pf-t--global--border--radius--pill",
+      "note": "buttons are pills"
     }
   },
   "extraTokens": [

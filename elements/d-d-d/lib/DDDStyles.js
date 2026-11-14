@@ -34,6 +34,7 @@ export const learningComponentNouns = {
   practice: "Practice",
   unit: "Unit",
   objectives: "Learning Objectives",
+  takeaways: "Key Takeaways",
 };
 
 export const learningComponentVerbs = {
@@ -70,6 +71,7 @@ export const learningComponentColors = {
   practice: "brown",
   unit: "light-green",
   objectives: "indigo",
+  takeaways: "blue",
   connection: "green",
   knowledge: "cyan",
   strategy: "teal",
@@ -135,6 +137,8 @@ export function iconFromPageType(type) {
       return "courseicons:strategy";
     case "write":
       return "lrn:write";
+    case "takeaways":
+      return "editor:format-list-bulleted";
   }
   return "courseicons:learning-objectives";
 }
@@ -484,6 +488,36 @@ export const DDDVariables = css`
     --ddd-primary-23: var(--ddd-theme-default-warning);
     --ddd-primary-24: var(--ddd-theme-default-info);
     --ddd-primary-25: var(--ddd-theme-default-success);
+
+    /* the text color paired with each primary: what reads on that color as
+       a background. A design system bridge may remap a primary to a lighter
+       or darker color, so the pair travels with it (--ddd-primary-N-on). */
+    --ddd-primary-0-on: black;
+    --ddd-primary-1-on: white;
+    --ddd-primary-2-on: white;
+    --ddd-primary-3-on: white;
+    --ddd-primary-4-on: white;
+    --ddd-primary-5-on: black;
+    --ddd-primary-6-on: white;
+    --ddd-primary-7-on: black;
+    --ddd-primary-8-on: black;
+    --ddd-primary-9-on: black;
+    --ddd-primary-10-on: black;
+    --ddd-primary-11-on: white;
+    --ddd-primary-12-on: black;
+    --ddd-primary-13-on: white;
+    --ddd-primary-14-on: black;
+    --ddd-primary-15-on: black;
+    --ddd-primary-16-on: black;
+    --ddd-primary-17-on: black;
+    --ddd-primary-18-on: black;
+    --ddd-primary-19-on: white;
+    --ddd-primary-20-on: white;
+    --ddd-primary-21-on: black;
+    --ddd-primary-22-on: white;
+    --ddd-primary-23-on: white;
+    --ddd-primary-24-on: white;
+    --ddd-primary-25-on: white;
 
     /* accent colors */
 
@@ -932,6 +966,17 @@ export const DDDVariables = css`
     --ddd-target-min: 24px; /* WCAG 2.5.8 AA minimum target size */
     --ddd-target-comfortable: 44px; /* WCAG 2.5.5 AAA, preferred for touch */
 
+    /* component tokens: a design system can say cards are square while
+       buttons are pills. Each defaults to what the element used before the
+       token existed, so nothing changes until a bridge maps one. Blocks
+       with a deliberate design of their own (stop-note) have none. */
+    --ddd-card-radius: var(--ddd-radius-xl);
+    --ddd-card-padding: var(--ddd-surface-padding, var(--ddd-spacing-4));
+    --ddd-card-border-width: var(--ddd-border-size-sm);
+    --ddd-card-shadow: var(--ddd-boxShadow-sm);
+    --ddd-control-radius: var(--ddd-radius-xs);
+    --ddd-tag-radius: var(--ddd-radius-rounded);
+
     /* ===========================================
        DENSITY (semantic spacing)
        Named roles for the spacing a design system tunes: surface padding,
@@ -1222,107 +1267,133 @@ const DDDDataAttributesEnd = css`
   }
   [data-primary="0"] {
     --ddd-theme-primary: var(--ddd-primary-0);
-    --lowContrast-override: black;
+    --ddd-theme-on-primary: var(--ddd-primary-0-on);
+    --lowContrast-override: var(--ddd-primary-0-on);
   }
   [data-primary="1"] {
     --ddd-theme-primary: var(--ddd-primary-1);
-    --ddd-theme-bgContrast: white;
+    --ddd-theme-on-primary: var(--ddd-primary-1-on);
+    --ddd-theme-bgContrast: var(--ddd-primary-1-on);
   }
   [data-primary="2"] {
     --ddd-theme-primary: var(--ddd-primary-2);
-    --ddd-theme-bgContrast: white;
+    --ddd-theme-on-primary: var(--ddd-primary-2-on);
+    --ddd-theme-bgContrast: var(--ddd-primary-2-on);
   }
   [data-primary="3"] {
     --ddd-theme-primary: var(--ddd-primary-3);
-    --ddd-theme-bgContrast: white;
+    --ddd-theme-on-primary: var(--ddd-primary-3-on);
+    --ddd-theme-bgContrast: var(--ddd-primary-3-on);
   }
   [data-primary="4"] {
     --ddd-theme-primary: var(--ddd-primary-4);
-    --ddd-theme-bgContrast: white;
+    --ddd-theme-on-primary: var(--ddd-primary-4-on);
+    --ddd-theme-bgContrast: var(--ddd-primary-4-on);
   }
   [data-primary="5"] {
     --ddd-theme-primary: var(--ddd-primary-5);
-    --lowContrast-override: black;
+    --ddd-theme-on-primary: var(--ddd-primary-5-on);
+    --lowContrast-override: var(--ddd-primary-5-on);
   }
   [data-primary="6"] {
     --ddd-theme-primary: var(--ddd-primary-6);
-    --ddd-theme-bgContrast: white;
+    --ddd-theme-on-primary: var(--ddd-primary-6-on);
+    --ddd-theme-bgContrast: var(--ddd-primary-6-on);
   }
   [data-primary="7"] {
     --ddd-theme-primary: var(--ddd-primary-7);
-    --lowContrast-override: black;
+    --ddd-theme-on-primary: var(--ddd-primary-7-on);
+    --lowContrast-override: var(--ddd-primary-7-on);
   }
   [data-primary="8"] {
     --ddd-theme-primary: var(--ddd-primary-8);
-    --lowContrast-override: black;
+    --ddd-theme-on-primary: var(--ddd-primary-8-on);
+    --lowContrast-override: var(--ddd-primary-8-on);
   }
   [data-primary="9"] {
     --ddd-theme-primary: var(--ddd-primary-9);
-    --lowContrast-override: black;
+    --ddd-theme-on-primary: var(--ddd-primary-9-on);
+    --lowContrast-override: var(--ddd-primary-9-on);
   }
   [data-primary="10"] {
     --ddd-theme-primary: var(--ddd-primary-10);
-    --lowContrast-override: black;
+    --ddd-theme-on-primary: var(--ddd-primary-10-on);
+    --lowContrast-override: var(--ddd-primary-10-on);
   }
   [data-primary="11"] {
     --ddd-theme-primary: var(--ddd-primary-11);
-    --ddd-theme-bgContrast: white;
+    --ddd-theme-on-primary: var(--ddd-primary-11-on);
+    --ddd-theme-bgContrast: var(--ddd-primary-11-on);
   }
   [data-primary="12"] {
     --ddd-theme-primary: var(--ddd-primary-12);
-    --lowContrast-override: black;
+    --ddd-theme-on-primary: var(--ddd-primary-12-on);
+    --lowContrast-override: var(--ddd-primary-12-on);
   }
   [data-primary="13"] {
     --ddd-theme-primary: var(--ddd-primary-13);
-    --ddd-theme-bgContrast: white;
+    --ddd-theme-on-primary: var(--ddd-primary-13-on);
+    --ddd-theme-bgContrast: var(--ddd-primary-13-on);
   }
   [data-primary="14"] {
     --ddd-theme-primary: var(--ddd-primary-14);
-    --lowContrast-override: black;
+    --ddd-theme-on-primary: var(--ddd-primary-14-on);
+    --lowContrast-override: var(--ddd-primary-14-on);
   }
   [data-primary="15"] {
     --ddd-theme-primary: var(--ddd-primary-15);
-    --lowContrast-override: black;
+    --ddd-theme-on-primary: var(--ddd-primary-15-on);
+    --lowContrast-override: var(--ddd-primary-15-on);
   }
   [data-primary="16"] {
     --ddd-theme-primary: var(--ddd-primary-16);
-    --lowContrast-override: black;
+    --ddd-theme-on-primary: var(--ddd-primary-16-on);
+    --lowContrast-override: var(--ddd-primary-16-on);
   }
   [data-primary="17"] {
     --ddd-theme-primary: var(--ddd-primary-17);
-    --lowContrast-override: black;
+    --ddd-theme-on-primary: var(--ddd-primary-17-on);
+    --lowContrast-override: var(--ddd-primary-17-on);
   }
   [data-primary="18"] {
     --ddd-theme-primary: var(--ddd-primary-18);
-    --lowContrast-override: black;
+    --ddd-theme-on-primary: var(--ddd-primary-18-on);
+    --lowContrast-override: var(--ddd-primary-18-on);
   }
   [data-primary="19"] {
     --ddd-theme-primary: var(--ddd-primary-19);
-    --ddd-theme-bgContrast: white;
+    --ddd-theme-on-primary: var(--ddd-primary-19-on);
+    --ddd-theme-bgContrast: var(--ddd-primary-19-on);
   }
   [data-primary="20"] {
     --ddd-theme-primary: var(--ddd-primary-20);
-    --ddd-theme-bgContrast: white;
+    --ddd-theme-on-primary: var(--ddd-primary-20-on);
+    --ddd-theme-bgContrast: var(--ddd-primary-20-on);
   }
   [data-primary="21"] {
     --ddd-theme-primary: var(--ddd-primary-21);
-    --lowContrast-override: black;
+    --ddd-theme-on-primary: var(--ddd-primary-21-on);
+    --lowContrast-override: var(--ddd-primary-21-on);
   }
   [data-primary="22"] {
     --ddd-theme-primary: var(--ddd-primary-22);
-    --ddd-theme-bgContrast: white;
+    --ddd-theme-on-primary: var(--ddd-primary-22-on);
+    --ddd-theme-bgContrast: var(--ddd-primary-22-on);
   }
   [data-primary="23"] {
     --ddd-theme-primary: var(--ddd-primary-23);
-    --ddd-theme-bgContrast: white;
+    --ddd-theme-on-primary: var(--ddd-primary-23-on);
+    --ddd-theme-bgContrast: var(--ddd-primary-23-on);
   }
   [data-primary="24"] {
     --ddd-theme-primary: var(--ddd-primary-24);
-    --ddd-theme-bgContrast: white;
+    --ddd-theme-on-primary: var(--ddd-primary-24-on);
+    --ddd-theme-bgContrast: var(--ddd-primary-24-on);
   }
   [data-primary="25"] {
     --ddd-theme-primary: var(--ddd-primary-25);
-    --ddd-theme-bgContrast: white;
+    --ddd-theme-on-primary: var(--ddd-primary-25-on);
+    --ddd-theme-bgContrast: var(--ddd-primary-25-on);
   }
 
   /* accent color */
@@ -2559,6 +2630,31 @@ const DDDResetEnd = css`
     margin: var(--ddd-spacing-1) 0;
     white-space: pre-wrap;
     font-size: var(--ddd-theme-body-font-size);
+  }
+
+  /* a keyboard key: Save with <kbd>Ctrl</kbd> + <kbd>S</kbd> */
+  kbd {
+    display: inline-block;
+    padding: var(--ddd-spacing-0) var(--ddd-spacing-1);
+    font-family: var(--ddd-font-mono, monospace);
+    font-size: calc(var(--ddd-theme-body-font-size) - var(--ddd-spacing-1));
+    line-height: var(--ddd-lh-120);
+    white-space: nowrap;
+    color: light-dark(
+      var(--ddd-theme-default-coalyGray),
+      var(--ddd-theme-default-white)
+    );
+    background-color: light-dark(
+      var(--ddd-theme-default-limestoneMaxLight),
+      var(--ddd-theme-default-potentialMidnight)
+    );
+    border: var(--ddd-border-size-xs) solid
+      light-dark(
+        var(--ddd-theme-default-limestoneGray),
+        var(--ddd-theme-default-slateLight)
+      );
+    border-bottom-width: var(--ddd-border-size-md);
+    border-radius: var(--ddd-radius-xs);
   }
 
   mark {

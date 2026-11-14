@@ -774,6 +774,74 @@ const contrastReport = PAIRS.map(([fg, bg, min]) => {
   };
 });
 
+/*
+ * paired text colors: DDD gives every primary palette the text color that
+ * reads on it (--ddd-primary-N-on, black or white, chosen for DDD's own
+ * colors). A bridge that remaps a palette to a lighter or darker color can
+ * break that pair, so each remapped palette is re-checked in both modes:
+ * a pair the bridge sets itself is checked as given; otherwise DDD's pair is
+ * kept when it still passes and flipped when only the other one does. A
+ * palette neither black nor white reads on is a problem.
+ */
+const PAIR_MIN = 4.5;
+const pairRatio = (on, bgName) => {
+  const ratios = ["light", "dark"].map((mode) => {
+    const a = toHex(on);
+    const b = toHex(value(bgName, mode));
+    return a && b ? contrast(a, b) : null;
+  });
+  return ratios.includes(null) ? null : Math.min(...ratios);
+};
+const onRows = [];
+const pairsReport = [];
+ddd
+  .map((v) => /^ddd-primary-(\d+)$/.exec(v.name))
+  .filter((m) => m)
+  .forEach((m) => {
+    const n = m[1];
+    const alias = /^var\((--ddd-theme-default-[\w-]+)\)$/.exec(
+      dddByName[`--ddd-primary-${n}`].value.trim(),
+    );
+    const onName = `--ddd-primary-${n}-on`;
+    if (!alias || !dddByName[onName]) return;
+    const bg = alias[1];
+    // only palettes this bridge remaps can have drifted from their pair
+    if (!rows.some((r) => r.ddd === bg)) return;
+    const given = rows.find((r) => r.ddd === onName);
+    const dddOn = dddByName[onName].value.trim();
+    let on = given ? given.light : dddOn;
+    let source = given ? "bridge" : "ddd";
+    let ratio = pairRatio(on, bg);
+    if (ratio === null) {
+      problems.push(
+        `${onName} on ${bg}: can't read the mapped colors to check contrast`,
+      );
+      return;
+    }
+    if (!given && ratio < PAIR_MIN) {
+      const other = dddOn === "black" ? "white" : "black";
+      const otherRatio = pairRatio(other, bg);
+      if (otherRatio !== null && otherRatio > ratio) {
+        on = other;
+        ratio = otherRatio;
+        source = "paired";
+        onRows.push({ ddd: onName, css: other });
+      }
+    }
+    if (ratio < PAIR_MIN) {
+      problems.push(
+        `${onName} (${on}) on ${bg}: ${ratio.toFixed(2)} < ${PAIR_MIN}`,
+      );
+    }
+    pairsReport.push({
+      primary: Number(n),
+      color: bg,
+      on,
+      ratio: Number(ratio.toFixed(2)),
+      source,
+    });
+  });
+
 /* ------------------------------------------------------------------ output */
 
 const prefix = config.prefix;
@@ -927,6 +995,10 @@ const mapJs =
     ? "\n    /* rgb channels follow their mapped color */\n"
     : "\n") +
   rgbRows.map((r) => `    ${r.ddd}: ${r.css};`).join("\n") +
+  (onRows.length
+    ? "\n    /* text color paired with each remapped palette, where DDD's own no longer reads */\n"
+    : "") +
+  onRows.map((r) => `    ${r.ddd}: ${r.css};`).join("\n") +
   `\n  }\n\`;\n`;
 
 const report = {
@@ -940,6 +1012,7 @@ const report = {
   fonts: config.fonts || [],
   coverage,
   contrast: contrastReport,
+  pairs: pairsReport,
   problems,
   contract: contract.version,
   map: rows.map(({ ddd: d, tier, token, light: l, dark: dk, note }) => ({
