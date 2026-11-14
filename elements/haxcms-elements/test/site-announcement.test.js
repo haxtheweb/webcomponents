@@ -154,6 +154,12 @@ describe("announcement in appearance settings", () => {
     globalThis.document.body.appendChild(el);
     await new Promise((r) => setTimeout(r, 10));
     await el.updateComplete;
+    // the theme list loads after the first render and rebuilds the form;
+    // edits made while it holds its value lock are dropped, so wait for it
+    for (let i = 0; i < 100 && el.__valueChangeLock; i++) {
+      await new Promise((r) => setTimeout(r, 20));
+    }
+    await el.updateComplete;
     return el;
   }
 
@@ -188,6 +194,7 @@ describe("announcement in appearance settings", () => {
         detail: { value: { ...sf.value, [key]: "Now January 16." } },
       }),
     );
+    expect(el.values[key]).to.equal("Now January 16.");
     setTimeout(() => el.save());
     const e = await oneEvent(globalThis, "haxcms-save-appearance-settings");
     const sent = Object.keys(e.detail.manifest.theme).filter(
