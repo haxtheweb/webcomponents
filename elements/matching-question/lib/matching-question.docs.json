@@ -6,7 +6,7 @@
   "license": "Apache-2.0",
   "title": "Matching question",
   "description": "Drag-and-drop matching activity that pairs prompts with their correct responses.",
-  "icon": "icons:compare-arrows",
+  "icon": "hax:match-lines",
   "tags": [
     "Instructional",
     "matching",
@@ -71,7 +71,7 @@
     "gizmo": {
       "title": "Matching question",
       "description": "Drag-and-drop matching activity that pairs prompts with their correct responses.",
-      "icon": "icons:compare-arrows",
+      "icon": "hax:match-lines",
       "color": "purple",
       "tags": [
         "Instructional",

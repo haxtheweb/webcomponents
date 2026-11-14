@@ -6,7 +6,7 @@
   "license": "Apache-2.0",
   "title": "Media quote",
   "description": "Image with a quote, citation, and optional caption.",
-  "icon": "editor:format-quote",
+  "icon": "hax:image-quote",
   "tags": [
     "Media",
     "quote"
@@ -105,7 +105,7 @@
     "gizmo": {
       "title": "Media quote",
       "description": "Image with a quote, citation, and optional caption.",
-      "icon": "editor:format-quote",
+      "icon": "hax:image-quote",
       "color": "purple",
       "tags": [
         "Media",

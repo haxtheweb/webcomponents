@@ -6,7 +6,7 @@
   "license": "Apache-2.0",
   "title": "Bibliography builder",
   "description": "A tool for creating and managing bibliographies",
-  "icon": "icons:list",
+  "icon": "hax:books",
   "tags": [
     "Content",
     "portfolio",
@@ -73,7 +73,7 @@
     "gizmo": {
       "title": "Bibliography builder",
       "description": "A tool for creating and managing bibliographies",
-      "icon": "icons:list",
+      "icon": "hax:books",
       "color": "purple",
       "tags": [
         "Content",

@@ -6,7 +6,7 @@
   "license": "Apache-2.0",
   "title": "Collapsible container",
   "description": "Single expandable and collapsible container.",
-  "icon": "icons:view-day",
+  "icon": "hax:collapse",
   "tags": [
     "Layout"
   ],
@@ -163,7 +163,7 @@
     "gizmo": {
       "title": "Collapsible container",
       "description": "Single expandable and collapsible container.",
-      "icon": "icons:view-day",
+      "icon": "hax:collapse",
       "color": "grey",
       "tags": [
         "Layout"

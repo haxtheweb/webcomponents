@@ -5,7 +5,7 @@
   "gizmo": {
     "title": "RPG Character",
     "description": "Fun character from HAX.",
-    "icon": "hax:hax2022",
+    "icon": "hax:pixel-hero",
     "color": "red",
     "tags": ["Other", "fun", "8bit", "game"],
     "handles": [],

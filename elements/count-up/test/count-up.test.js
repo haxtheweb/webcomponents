@@ -328,7 +328,7 @@ describe("count-up HAX integration", () => {
     expect(haxProps.canScale).to.be.true;
     expect(haxProps.canEditSource).to.be.true;
     expect(haxProps.gizmo.title).to.equal("Count up");
-    expect(haxProps.gizmo.icon).to.equal("icons:trending-up");
+    expect(haxProps.gizmo.icon).to.equal("hax:counter");
   });
 
   it("has proper settings configuration", async () => {

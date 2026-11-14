@@ -7,7 +7,7 @@
   "gizmo": {
     "title": "Flash card",
     "description": "Practice concepts with front-and-back flash cards.",
-    "icon": "icons:flip-to-front",
+    "icon": "hax:flip-cards",
     "color": "blue",
     "tags": ["Instructional", "self check", "flash card", "quiz", "educational"]
   },

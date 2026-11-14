@@ -6,7 +6,7 @@
   "license": "Apache-2.0",
   "title": "Career timeline",
   "description": "A career timeline containing organizations, roles, and other data",
-  "icon": "icons:work",
+  "icon": "hax:career-path",
   "tags": [
     "Content",
     "portfolio",
@@ -60,7 +60,7 @@
     "gizmo": {
       "title": "Career timeline",
       "description": "A career timeline containing organizations, roles, and other data",
-      "icon": "icons:work",
+      "icon": "hax:career-path",
       "color": "purple",
       "tags": [
         "Content",

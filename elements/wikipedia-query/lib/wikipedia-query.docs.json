@@ -6,7 +6,7 @@
   "license": "Apache-2.0",
   "title": "Wikipedia",
   "description": "Show a Wikipedia article in the page.",
-  "icon": "book",
+  "icon": "hax:encyclopedia",
   "tags": [
     "Content",
     "creative commons",
@@ -92,7 +92,7 @@
     "gizmo": {
       "title": "Wikipedia",
       "description": "Show a Wikipedia article in the page.",
-      "icon": "book",
+      "icon": "hax:encyclopedia",
       "color": "green",
       "tags": [
         "Content",

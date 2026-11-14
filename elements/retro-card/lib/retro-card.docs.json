@@ -6,7 +6,7 @@
   "license": "Apache-2.0",
   "title": "Retro card",
   "description": "Simple card with a retro design.",
-  "icon": "icons:credit-card",
+  "icon": "hax:retro-card",
   "tags": [
     "Layout",
     "card"
@@ -118,7 +118,7 @@
     "gizmo": {
       "title": "Retro card",
       "description": "Simple card with a retro design.",
-      "icon": "icons:credit-card",
+      "icon": "hax:retro-card",
       "color": "purple",
       "tags": [
         "Layout",

@@ -14,7 +14,7 @@
   "gizmo": {
     "title": "Media quote",
     "description": "Image with a quote, citation, and optional caption.",
-    "icon": "editor:format-quote",
+    "icon": "hax:image-quote",
     "color": "purple",
     "tags": ["Media", "quote"],
     "handles": [],

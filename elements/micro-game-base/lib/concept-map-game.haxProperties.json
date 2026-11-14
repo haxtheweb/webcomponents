@@ -7,7 +7,7 @@
   "gizmo": {
     "title": "Concept map game",
     "description": "A short keyboard game where a character walks a map and each concept explains itself.",
-    "icon": "hardware:videogame-asset",
+    "icon": "hax:game-map",
     "color": "purple",
     "tags": ["Instructional", "interactive", "game"],
     "handles": [],

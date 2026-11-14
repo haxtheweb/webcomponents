@@ -9,7 +9,7 @@
   "gizmo": {
     "title": "Call to action",
     "description": "A simple button with a link to take action.",
-    "icon": "image:crop-16-9",
+    "icon": "hax:cta-button",
     "color": "orange",
     "tags": ["Layout", "marketing", "button", "link", "url", "design", "cta"],
     "handles": [
