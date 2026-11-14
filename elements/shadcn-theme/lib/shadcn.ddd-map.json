@@ -1098,5 +1098,12 @@
       "dark": "calc(0.625rem * 0.8)",
       "note": "Button is rounded-md"
     }
-  ]
+  ],
+  "icons": {
+    "package": "lucide-static",
+    "version": "1.73.0",
+    "license": "ISC",
+    "map": "lucide",
+    "mapped": 159
+  }
 }

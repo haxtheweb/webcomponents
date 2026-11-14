@@ -1195,5 +1195,12 @@
       "dark": "9999px",
       "note": "buttons are fully rounded"
     }
-  ]
+  ],
+  "icons": {
+    "package": "@material-symbols/svg-400",
+    "version": "0.49.0",
+    "license": "Apache-2.0",
+    "map": "material-symbols",
+    "mapped": 244
+  }
 }

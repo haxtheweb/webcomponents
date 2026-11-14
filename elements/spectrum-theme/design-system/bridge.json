@@ -31,6 +31,13 @@
       "url": "https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600&display=swap"
     }
   ],
+  "icons": {
+    "package": "@adobe/spectrum-css-workflow-icons",
+    "version": "5.0.0",
+    "license": "Apache-2.0",
+    "path": "dist/assets/svg/S2_Icon_{name}_20_N.svg",
+    "map": "spectrum"
+  },
   "ddd": {
     "--ddd-theme-default-beaverBlue": {
       "token": "--spectrum-blue-900",

@@ -1116,5 +1116,12 @@
       "dark": "16px",
       "note": "Spectrum buttons are pills; 16px at the medium scale"
     }
-  ]
+  ],
+  "icons": {
+    "package": "@adobe/spectrum-css-workflow-icons",
+    "version": "5.0.0",
+    "license": "Apache-2.0",
+    "map": "spectrum",
+    "mapped": 143
+  }
 }

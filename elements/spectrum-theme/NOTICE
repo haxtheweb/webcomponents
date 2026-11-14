@@ -11,6 +11,10 @@ This package contains design token values derived from Adobe Spectrum
 The token values were re-expressed as CSS custom properties by
 elements/d-d-d/design-system/bridge/build-bridge.js.
 
+Icons in icons/ are copied, unchanged, from @adobe/spectrum-css-workflow-icons
+5.0.0 (Copyright 2015-2024 Adobe), Apache License, Version 2.0. Only the
+icons HAX maps are included (elements/d-d-d/design-system/bridge/icon-maps.json).
+
 Fonts (loaded at runtime from Google Fonts, not distributed in this package,
 where any are loaded): Source Sans 3 and Source Code Pro, licensed under the SIL Open Font License 1.1. Spectrum's own face, Adobe Clean, is proprietary and is never loaded; Source Sans 3 is the open face its font stack falls back to.
 

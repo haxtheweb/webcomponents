@@ -20,6 +20,13 @@
     }
   ],
   "fonts": [],
+  "icons": {
+    "package": "heroicons",
+    "version": "2.2.0",
+    "license": "MIT",
+    "path": "24/outline/{name}.svg",
+    "map": "heroicons"
+  },
   "ddd": {
     "--ddd-theme-default-pughBlue": {
       "token": "--color-blue-300"

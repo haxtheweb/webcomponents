@@ -14,6 +14,10 @@ The token values were re-expressed as CSS custom properties by
 elements/d-d-d/design-system/bridge/build-bridge.js; font stacks and
 font weights were copied from @carbon/type (Apache-2.0).
 
+Icons in icons/ are copied, unchanged, from @carbon/icons 11.92.0
+(Copyright IBM Corp. 2016, 2026), Apache License, Version 2.0. Only the
+icons HAX maps are included (elements/d-d-d/design-system/bridge/icon-maps.json).
+
 Fonts (loaded at runtime from Google Fonts, not distributed in this package):
 IBM Plex Sans and IBM Plex Mono, SIL Open Font License 1.1.
 

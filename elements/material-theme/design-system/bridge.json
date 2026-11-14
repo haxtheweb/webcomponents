@@ -89,6 +89,13 @@
       "url": "https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap"
     }
   ],
+  "icons": {
+    "package": "@material-symbols/svg-400",
+    "version": "0.49.0",
+    "license": "Apache-2.0",
+    "path": "outlined/{name}.svg",
+    "map": "material-symbols"
+  },
   "ddd": {
     "--ddd-theme-default-beaverBlue": {
       "token": "--md-ref-palette-primary40",

@@ -179,11 +179,26 @@ export const SimpleIconBehaviors = function (SuperClass) {
       if (super.connectedCallback) {
         super.connectedCallback();
       }
+      // a design system switched which set draws HAX icon names
+      if (!this.__onAliases) {
+        this.__onAliases = () => {
+          if (this.icon) {
+            this.setSrcByIcon(this);
+          }
+        };
+      }
+      globalThis.addEventListener("simple-iconset-aliases", this.__onAliases);
       if (this.hasUpdated && this.icon && !this.src) {
         this.setSrcByIcon(this);
       }
     }
     disconnectedCallback() {
+      if (this.__onAliases) {
+        globalThis.removeEventListener(
+          "simple-iconset-aliases",
+          this.__onAliases,
+        );
+      }
       if (SimpleIconsetStore && SimpleIconsetStore.cancelHydration) {
         SimpleIconsetStore.cancelHydration(this);
       }

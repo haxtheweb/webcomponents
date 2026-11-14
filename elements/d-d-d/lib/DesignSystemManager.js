@@ -124,7 +124,7 @@ export class DesignSystem extends LitElement {
       if (system.fonts && system.fonts.length > 0) {
         resolved.fonts = system.fonts;
       }
-      ["hax", "onload"].forEach((key) => {
+      ["hax", "onload", "icons"].forEach((key) => {
         if (system[key] !== undefined) {
           resolved[key] = system[key];
         }
@@ -352,6 +352,31 @@ export class DesignSystem extends LitElement {
       if (newSystem.onload) {
         globalThis.document.onload = newSystem.onload();
       }
+    }
+    this.applyDesignSystemIcons(newSystem);
+  }
+  /**
+   * A system with its own icon set ({ set, basePath, aliases }) draws HAX
+   * icon names in that set while it is active (simple-icon reads the
+   * aliases); any other system puts HAX's icons back. Content always keeps
+   * HAX names, so it renders the same under every system.
+   * @param {Object|null} system the resolved system now active
+   */
+  applyDesignSystemIcons(system) {
+    const iconset =
+      globalThis.SimpleIconset &&
+      typeof globalThis.SimpleIconset.requestAvailability === "function"
+        ? globalThis.SimpleIconset.requestAvailability()
+        : null;
+    if (!iconset || typeof iconset.setAliases !== "function") {
+      return;
+    }
+    const icons = system && system.icons ? system.icons : null;
+    if (icons && icons.set && icons.basePath && icons.aliases) {
+      iconset.registerIconset(icons.set, icons.basePath);
+      iconset.setAliases(icons.aliases);
+    } else if (Object.keys(iconset.aliases || {}).length) {
+      iconset.setAliases({});
     }
   }
 }

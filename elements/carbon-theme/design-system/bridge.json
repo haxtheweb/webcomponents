@@ -54,6 +54,13 @@
       "url": "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
     }
   ],
+  "icons": {
+    "package": "@carbon/icons",
+    "version": "11.92.0",
+    "license": "Apache-2.0",
+    "path": "svg/32/{name}.svg",
+    "map": "carbon"
+  },
   "ddd": {
     "--ddd-theme-default-beaverBlue": {
       "token": "--carbon-blue-60",

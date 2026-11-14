@@ -1147,5 +1147,12 @@
       "dark": "1rem",
       "note": "Carbon button inline-start padding, spacing-05"
     }
-  ]
+  ],
+  "icons": {
+    "package": "@carbon/icons",
+    "version": "11.92.0",
+    "license": "Apache-2.0",
+    "map": "carbon",
+    "mapped": 159
+  }
 }

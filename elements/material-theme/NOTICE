@@ -11,6 +11,10 @@ This package contains design token values derived from Material Design 3
 The token values were re-expressed as CSS custom properties by
 elements/d-d-d/design-system/bridge/build-bridge.js.
 
+Icons in icons/ are copied, unchanged, from @material-symbols/svg-400 0.49.0
+(Material Symbols, Copyright Google LLC), Apache License, Version 2.0. Only the
+icons HAX maps are included (elements/d-d-d/design-system/bridge/icon-maps.json).
+
 Fonts (loaded at runtime from Google Fonts, not distributed in this package,
 where any are loaded): Roboto (SIL Open Font License 1.1) and Roboto Mono (Apache-2.0).
 

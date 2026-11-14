@@ -46,6 +46,13 @@
       "url": "https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;600&display=swap"
     }
   ],
+  "icons": {
+    "package": "lucide-static",
+    "version": "1.73.0",
+    "license": "ISC",
+    "path": "icons/{name}.svg",
+    "map": "lucide"
+  },
   "ddd": {
     "--ddd-theme-default-pughBlue": {
       "token": "--color-neutral-300",

@@ -1061,5 +1061,12 @@
       "dark": "calc(0.25rem * 4)",
       "note": "px-4, 16px"
     }
-  ]
+  ],
+  "icons": {
+    "package": "heroicons",
+    "version": "2.2.0",
+    "license": "MIT",
+    "map": "heroicons",
+    "mapped": 140
+  }
 }
