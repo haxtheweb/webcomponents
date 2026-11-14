@@ -13,6 +13,7 @@ import {
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import { sanitizedSvgFromMarkup } from "./lib/lrndesign-imagemap-sanitize.js";
 import {
   activityId,
@@ -313,7 +314,7 @@ class LrndesignImagemap extends I18NMixin(DDD) {
       <figure id="figure" class="ddd-block">
         <figcaption>
           ${renderDDDBlockHeader({
-            icon: "image:image",
+            icon: "hax:image-hotspot",
             label: `${this.t.imageMap} · ${this.t.interactive}`,
             done,
             doneLabel: this.t.explored,

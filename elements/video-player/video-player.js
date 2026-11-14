@@ -18,6 +18,7 @@ import { copyToClipboard } from "@haxtheweb/utils/lib/clipboard.js";
 import { removeThroughLast } from "@haxtheweb/utils/lib/safe-html.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import {
   DDDBlockStyles,
   renderDDDBlockHeader,
@@ -257,7 +258,7 @@ class VideoPlayer extends IntersectionObserverMixin(
           this.elementVisible && this.isA11yMedia
             ? ""
             : renderDDDBlockHeader({
-                icon: this.audioOnly ? "av:equalizer" : "av:play-arrow",
+                icon: this.audioOnly ? "hax:waveform" : "av:play-circle-filled",
                 label: this._frameLabel,
                 title: this.mediaTitle,
                 part: "frame-header",

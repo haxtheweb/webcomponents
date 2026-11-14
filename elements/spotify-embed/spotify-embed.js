@@ -6,6 +6,7 @@ import { LitElement, html, css } from "lit";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import {
   DDDBlockStyles,
   renderDDDBlockHeader,
@@ -90,7 +91,7 @@ class SpotifyEmbed extends I18NMixin(LitElement) {
     return html`
       <div class="container ddd-block">
         ${renderDDDBlockHeader({
-          icon: "av:library-music",
+          icon: "hax:spotify",
           label: `${this.t.audio} · ${this._embedTitle.replace(/ Embed$/, "")}`,
           actions: this.source
             ? html`<a

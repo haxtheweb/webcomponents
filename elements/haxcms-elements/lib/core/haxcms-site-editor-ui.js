@@ -20,6 +20,7 @@ import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import { HAXCMSThemeParts } from "./utils/HAXCMSThemeParts.js";
 import { HAXCMSI18NMixin } from "./utils/HAXCMSI18NMixin.js";
+import { loadElementGizmo } from "./utils/ElementGizmo.js";
 import "./ui/app-hax-top-bar.js";
 import "./ui/app-hax-user-menu.js";
 import "./ui/app-hax-user-menu-button.js";
@@ -5165,16 +5166,19 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         program: async (input, _values) => {
           const reg = globalThis.WCAutoload.requestAvailability();
           let results = [];
-          Object.keys(reg.registry.list).forEach(async (tag) => {
+          const tags = Object.keys(reg.registry.list);
+          // a schema is an object or the URL of its JSON file; read either
+          const gizmos = await Promise.all(
+            tags.map((tag) =>
+              globalThis.customElements.get(tag)
+                ? loadElementGizmo(tag)
+                : Promise.resolve(null),
+            ),
+          );
+          tags.forEach((tag, index) => {
             let icon = "hax:hax2022";
-            if (globalThis.customElements.get(tag)) {
-              if (
-                globalThis.customElements.get(tag).haxProperties &&
-                globalThis.customElements.get(tag).haxProperties.gizmo
-              ) {
-                icon =
-                  globalThis.customElements.get(tag).haxProperties.gizmo.icon;
-              }
+            if (gizmos[index] && gizmos[index].icon) {
+              icon = gizmos[index].icon;
             }
             if (input == "" || tag.includes(input)) {
               let tmp = {};

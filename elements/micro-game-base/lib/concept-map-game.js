@@ -501,6 +501,10 @@ export class ConceptMapGame extends MicroGameBase {
     return html`
       <section class="frame ddd-block" role="group" aria-labelledby="game-hdr">
         ${this.renderGameHeader({
+          icon:
+            this.tagName === "CONCEPT-QUEST-GAME"
+              ? "hax:game-quest"
+              : "hax:game-map",
           label: this.t.blockLabel,
           title: this.gameTitle || this.questTitle || this.hubLabel,
         })}

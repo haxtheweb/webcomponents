@@ -22,6 +22,7 @@ import {
   XAPI_ACTIVITY_TYPES,
   XAPI_EXTENSIONS,
 } from "@haxtheweb/user-action/lib/xapi.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 
 const KEYS = {
   ArrowLeft: "l",
@@ -803,13 +804,14 @@ export class MicroGameBase extends I18NMixin(
    * DDD block header above the game: a game chip, the type label (for
    * example "Game · Concept map") and the game's title when it has one. The
    * frame points aria-labelledby at id "game-hdr".
-   * @param {Object} o label: type label, title: optional title line
+   * @param {Object} o icon: the game's tray icon, label: type label,
+   * title: optional title line
    */
   renderGameHeader(o) {
     o = o || {};
     return renderDDDBlockHeader({
       id: "game-hdr",
-      icon: "hardware:videogame-asset",
+      icon: o.icon || "hardware:videogame-asset",
       label: o.label || "",
       title: o.title || "",
     });

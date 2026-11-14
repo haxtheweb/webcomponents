@@ -13,6 +13,7 @@ import { sanitizeHTMLString } from "@haxtheweb/utils/utils.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 /**
  * `wikipedia-query`
  * `Query and present information from wikipedia.`
@@ -145,7 +146,7 @@ class WikipediaQuery extends IntersectionObserverMixin(I18NMixin(DDD)) {
       this.elementVisible
         ? html`<div class="ddd-block">
             ${renderDDDBlockHeader({
-              chip: "W",
+              icon: "hax:encyclopedia",
               label: this.hideTitle ? this.t.fromWikipedia : this.t.reading,
               after: html`<h3
                 class="ddd-block-title"

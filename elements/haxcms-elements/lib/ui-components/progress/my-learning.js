@@ -32,6 +32,10 @@ import {
 } from "@haxtheweb/map-menu/lib/map-menu-progress.js";
 import { autorun, toJS } from "mobx";
 import {
+  elementGizmo,
+  ELEMENT_GIZMO_READY,
+} from "../../core/utils/ElementGizmo.js";
+import {
   store,
   iconFromPageType,
 } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
@@ -278,22 +282,15 @@ export function elementTitle(tag) {
   if (titleCache.has(t)) {
     return titleCache.get(t);
   }
-  let title = "";
-  try {
-    const C = globalThis.customElements ? customElements.get(t) : null;
-    const hp = C ? C.haxProperties : null;
-    if (hp && typeof hp === "object" && hp.gizmo && hp.gizmo.title) {
-      title = String(hp.gizmo.title);
-    }
-  } catch {
-    title = "";
+  const gizmo = elementGizmo(t);
+  if (gizmo && gizmo.title) {
+    const title = String(gizmo.title);
+    titleCache.set(t, title);
+    return title;
   }
-  if (!title) {
-    const words = t.replace(/-/g, " ").trim();
-    title = words ? words.charAt(0).toUpperCase() + words.slice(1) : t;
-  }
-  titleCache.set(t, title);
-  return title;
+  // not remembered: the gizmo may still be on its way from a schema file
+  const words = t.replace(/-/g, " ").trim();
+  return words ? words.charAt(0).toUpperCase() + words.slice(1) : t;
 }
 
 // a page or section state from the states of the pages it holds
@@ -1395,6 +1392,11 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
   }
   connectedCallback() {
     super.connectedCallback();
+    // element names that came from a schema file: draw again once read
+    if (!this._onGizmoReady) {
+      this._onGizmoReady = () => this.requestUpdate();
+    }
+    globalThis.addEventListener(ELEMENT_GIZMO_READY, this._onGizmoReady);
     LearnerProgress.start();
     // live: any change to the learner profile, the outline or the page
     this.__disposer.push(
@@ -1441,6 +1443,7 @@ export class MyLearning extends I18NMixin(DDDSuper(LitElement)) {
     ["learner-progress-cleared", "learner-progress-ready"].forEach((n) =>
       globalThis.removeEventListener(n, this._onWindowChange),
     );
+    globalThis.removeEventListener(ELEMENT_GIZMO_READY, this._onGizmoReady);
     clearTimeout(this.__refreshTimer);
     super.disconnectedCallback();
   }
