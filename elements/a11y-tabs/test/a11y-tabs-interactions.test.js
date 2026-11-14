@@ -5,6 +5,13 @@ import "../lib/a11y-tab.js";
 import { A11yTabs } from "../a11y-tabs.js";
 import { A11yTab } from "../lib/a11y-tab.js";
 
+// HAX schemas ship as JSON next to the element; read one whether the class
+// returns the object or the URL of its file
+const haxSchema = async (C) => {
+  const hp = C.haxProperties;
+  return typeof hp === "string" ? (await fetch(hp)).json() : hp;
+};
+
 // wait for tab registration (firstUpdated defers via setTimeout)
 const register = async (el) => {
   await el.updateComplete;
@@ -22,17 +29,18 @@ const threeTabs = () =>
   `);
 
 describe("a11y-tabs statics and helpers", () => {
-  it("haxProperties points at the lib schema file", () => {
+  it("haxProperties points at the lib schema file", async () => {
     expect(A11yTabs.haxProperties.includes("a11y-tabs.haxProperties.json")).to
       .be.true;
   });
 
-  it("a11y-tab haxProperties describe the gizmo", () => {
-    const props = A11yTab.haxProperties;
+  it("a11y-tab haxProperties describe the gizmo", async () => {
+    const props = await haxSchema(A11yTab);
     expect(props.canScale).to.equal(false);
     expect(props.canEditSource).to.equal(true);
     expect(props.gizmo.title).to.equal("Tab");
-    expect(props.gizmo.icon).to.equal("view-day");
+    expect(props.gizmo.icon).to.equal("icons:tab");
+    expect(props.gizmo.requiresParent).to.equal("a11y-tabs");
     const configure = props.settings.configure;
     expect(configure.some((s) => s.property === "icon")).to.be.true;
     expect(configure.some((s) => s.slot === "")).to.be.true;

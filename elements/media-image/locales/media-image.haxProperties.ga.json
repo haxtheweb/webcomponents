@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Fotheideal",
         "description": "Fotheideal don íomhá."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Teideal an Fhigiúir",
-        "description": "Teideal do lipéad an fhigiúir."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Cur Síos an Fhigiúir",
-        "description": "Cur síos do lipéad an fhigiúir."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Díchumasaigh dialóg na híomhá",
         "description": "Díchumasaigh cliceanna a osclaíonn an íomhá i ndialóg iniúchóra íomhánna."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Teideal an Fhigiúir",
+        "description": "Teideal do lipéad an fhigiúir."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Cur Síos an Fhigiúir",
+        "description": "Cur síos do lipéad an fhigiúir."
       }
     ],
     "developer": [

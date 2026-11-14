@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Izoh",
         "description": "Rasm uchun izoh."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Rasm sarlavhasi",
-        "description": "Rasm yorligʻi uchun sarlavha."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Rasm tavsifi",
-        "description": "Rasm yorligʻi uchun tavsif."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Rasm modal oynasini oʻchirish",
         "description": "Bosilganda rasmni rasm koʻruvchi oynasida ochishni oʻchirish."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Rasm sarlavhasi",
+        "description": "Rasm yorligʻi uchun sarlavha."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Rasm tavsifi",
+        "description": "Rasm yorligʻi uchun tavsif."
       }
     ],
     "developer": [

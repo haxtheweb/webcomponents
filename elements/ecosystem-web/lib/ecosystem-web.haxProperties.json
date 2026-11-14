@@ -13,13 +13,13 @@
   "gizmo": {
     "title": "Ecosystem web",
     "description": "An interactive web of how the parts of a project connect, with sub-webs and step-by-step tours.",
-    "icon": "social:share",
+    "icon": "hardware:device-hub",
     "color": "blue",
     "tags": [
       "Media",
-      "Data",
-      "Interactive",
-      "Visualization",
+      "data",
+      "interactive",
+      "visualization",
       "ecosystem",
       "graph",
       "tour"

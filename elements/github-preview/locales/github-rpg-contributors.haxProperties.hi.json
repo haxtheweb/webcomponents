@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "GitHub योगदानकर्ता सूची",
-    "description": "GitHub API का उपयोग करके RPG पात्रों के रूप में प्रदर्शित।"
+    "description": "किसी रिपॉज़िटरी के योगदानकर्ताओं को RPG पात्रों के रूप में सूचीबद्ध करता है।"
   },
   "settings": {
     "configure": [

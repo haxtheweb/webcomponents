@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Legendă",
         "description": "Legenda imaginii."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Titlul figurii",
-        "description": "Titlul pentru eticheta figurii."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Descrierea figurii",
-        "description": "Descrierea pentru eticheta figurii."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Dezactivează fereastra imaginii",
         "description": "Dezactivează deschiderea imaginii la clic într-un dialog de inspectare a imaginii."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Titlul figurii",
+        "description": "Titlul pentru eticheta figurii."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Descrierea figurii",
+        "description": "Descrierea pentru eticheta figurii."
       }
     ],
     "developer": [

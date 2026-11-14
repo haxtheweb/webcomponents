@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "ചിത്ര ഉറവിടം",
         "description": "കാർഡിനായി ഉപയോഗിക്കുന്ന ചിത്ര ഫയൽ. ചിത്ര കീവേഡിനെ മറികടക്കുന്നു."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "ചിത്ര കീവേഡ്",
+        "description": "ക്രമരഹിത ചിത്രത്തിനുള്ള കീവേഡ്. ചിത്ര ഉറവിടം ഇതിനെ മറികടക്കുന്നു."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "പഠന ലക്ഷ്യം",
         "description": "OER Schema: ഈ പരിശീലനം പിന്തുണയ്ക്കുന്ന പഠന ലക്ഷ്യത്തിന്റെ ID അല്ലെങ്കിൽ URL."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "ചിത്ര കീവേഡ്",
-        "description": "ക്രമരഹിത ചിത്രത്തിനുള്ള കീവേഡ്. ചിത്ര ഉറവിടം ഇതിനെ മറികടക്കുന്നു."
       }
     ]
   }

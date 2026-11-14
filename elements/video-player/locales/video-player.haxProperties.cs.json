@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Plakátový obrázek",
         "description": "URL plakátového obrázku."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Textové stopy",
         "description": "Skryté titulky, titulky, popisy a další textové stopy videa."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Čas začátku",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Stopa zvukového popisu",
         "description": "URL stopy zvukového popisu (soubor MP3), která poskytuje komentář k vizuálním prvkům."
+      },
+      {
+        "property": "accentColor",
+        "title": "Zvýrazňující barva",
+        "description": "(zastaralé) Vyberte barvu zvýraznění přehrávače."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Jazyk",
         "description": "Jazyk média."
-      },
-      {
-        "property": "accentColor",
-        "title": "Zvýrazňující barva",
-        "description": "(zastaralé) Vyberte barvu zvýraznění přehrávače."
       }
     ]
   }

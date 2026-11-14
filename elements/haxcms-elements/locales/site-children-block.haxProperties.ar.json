@@ -1,10 +1,10 @@
 {
   "gizmo": {
-    "title": "HAXcms: كتلة فرعية",
-    "description": "كتلة ديناميكية لعرض الصفحات الفرعية للصفحة الحالية"
+    "title": "الصفحات الفرعية",
+    "description": "يسرد الصفحات الفرعية للصفحة الحالية."
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "الطريقة الديناميكية",
@@ -14,7 +14,9 @@
           "parent": "العناصر الفرعية للأصل",
           "ancestor": "جميع العناصر الفرعية من أعلى سلف"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "مستوى البداية"

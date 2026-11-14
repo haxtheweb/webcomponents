@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "تیر کے بغیر",
         "description": "بٹن کا تیر چھپائیں۔"
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "لنک: ہدف",
@@ -54,7 +52,9 @@
           "_top": "اوپری ونڈو - _top",
           "_parent": "والد ونڈو - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "لنک: rel",

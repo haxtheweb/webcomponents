@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "GitHub līdzautoru saraksts",
-    "description": "Attēloti kā RPG tēli, izmantojot GitHub API."
+    "description": "Parāda repozitorija līdzautorus kā RPG tēlus."
   },
   "settings": {
     "configure": [

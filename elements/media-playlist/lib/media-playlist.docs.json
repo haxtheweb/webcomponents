@@ -4,7 +4,7 @@
   "package": "@haxtheweb/media-playlist",
   "version": "26.8.0",
   "license": "Apache-2.0",
-  "title": "Media Playlist",
+  "title": "Media playlist",
   "description": "A playlist that presents video and audio players in a player + sidebar layout.",
   "icon": "av:playlist-play",
   "tags": [
@@ -87,7 +87,7 @@
       "designTreatment": false
     },
     "gizmo": {
-      "title": "Media Playlist",
+      "title": "Media playlist",
       "description": "A playlist that presents video and audio players in a player + sidebar layout.",
       "icon": "av:playlist-play",
       "color": "red",
@@ -104,22 +104,15 @@
       }
     },
     "settings": {
-      "configure": [
+      "configure": [],
+      "advanced": [
         {
           "property": "activeIndex",
           "title": "Active index",
           "description": "Index of the active item to start on.",
           "inputMethod": "number"
-        },
-        {
-          "property": "forCourse",
-          "title": "Course",
-          "description": "The Course this playlist is meant for (course identifier or URL).",
-          "inputMethod": "textfield",
-          "validationType": "text"
         }
       ],
-      "advanced": [],
       "developer": [
         {
           "slot": "",
@@ -129,7 +122,15 @@
           "allowedSlotWrappers": [
             "video-player",
             "audio-player"
-          ]
+          ],
+          "inputMethod": "code-editor"
+        },
+        {
+          "property": "forCourse",
+          "title": "Course",
+          "description": "The Course this playlist is meant for (course identifier or URL).",
+          "inputMethod": "textfield",
+          "validationType": "text"
         }
       ]
     },
@@ -153,7 +154,7 @@
       }
     ]
   },
-  "surfaceHash": "e017920c9c11",
+  "surfaceHash": "9c0df5899452",
   "walkthroughs": [
     {
       "id": "",
@@ -161,13 +162,13 @@
       "order": 0,
       "src": "media-playlist.motion.json",
       "file": "lib/media-playlist.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/media-playlist.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Běžecká hra s pojmy",
-    "description": "Hra s bočním posunem. Postava běží v plamenech a nikdy se nezastaví. Skákej pro dobré pojmy a přes ty špatné, pak uvidíš shrnutí, co bylo dobré a co špatné."
+    "description": "Hra s bočním posouváním: skákejte, abyste chytili správné pojmy a vyhnuli se špatným."
   },
   "settings": {
     "configure": [
@@ -89,7 +89,9 @@
         "property": "gameTitle",
         "title": "Název hry",
         "description": "Pojmenuje tuto hru v událostech průběhu a ve značkování OER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "ID hry",

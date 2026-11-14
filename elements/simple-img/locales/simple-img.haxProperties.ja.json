@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "シンプル画像",
-    "description": "簡単なパラメーターで画像を加工します。"
+    "description": "簡単な設定でサイズ変更、切り抜き、回転ができる画像。"
   },
   "settings": {
     "configure": [
@@ -26,7 +26,8 @@
         "description": "スクリーンリーダーやSEOの向上に役立ちます。"
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "画質",

@@ -4,22 +4,23 @@
     "description": "Zoznam, ktorý zobrazuje video a audio prehrávače v rozložení prehrávač + bočný panel."
   },
   "settings": {
-    "configure": [
+    "configure": [],
+    "advanced": [
       {
         "property": "activeIndex",
         "title": "Aktívny index",
         "description": "Index aktívnej položky, ktorou sa začína."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kurz",
-        "description": "Kurz, pre ktorý je tento zoznam určený (identifikátor alebo URL kurzu)."
       }
     ],
     "developer": [
       {
         "title": "Médiá",
         "description": "Videá a zvuk v zozname skladieb. Tu sa neupravuje: štruktúra stránky to používa, aby vedela, ktoré bloky do nej možno pustiť."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurz",
+        "description": "Kurz, pre ktorý je tento zoznam určený (identifikátor alebo URL kurzu)."
       }
     ]
   }

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Jogo de missão de conceitos",
-    "description": "Um mundo para explorar. Os conceitos encontram-te e fazem uma pergunta. Responde bem para derrotar um e desbloquear a sua casa. O resumo mostra as tentativas e o que rever."
+    "description": "Um jogo de mundo aberto em que os conceitos fazem perguntas e as respostas corretas desbloqueiam o mapa."
   },
   "settings": {
     "configure": [
@@ -91,7 +91,9 @@
         "property": "gameTitle",
         "title": "Nome do jogo",
         "description": "Dá nome a este jogo nos eventos de progresso e na marcação OER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "ID do jogo",

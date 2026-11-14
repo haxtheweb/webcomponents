@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Bildquelle",
         "description": "Für die Karte verwendete Bilddatei. Überschreibt das Bild-Stichwort."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Bild-Stichwort",
+        "description": "Stichwort für ein zufälliges Bild. Wird durch die Bildquelle überschrieben."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Lernziel",
         "description": "OER Schema: ID oder URL des Lernziels, das diese Übung unterstützt."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Bild-Stichwort",
-        "description": "Stichwort für ein zufälliges Bild. Wird durch die Bildquelle überschrieben."
       }
     ]
   }

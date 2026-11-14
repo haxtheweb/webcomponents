@@ -4,7 +4,7 @@
     "description": "हालको पेजका उप-पेजहरू देखाउने गतिशील ब्लक"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "गतिशील विधि",
@@ -14,7 +14,9 @@
           "parent": "मूलका उप-वस्तुहरू",
           "ancestor": "सबैभन्दा माथिल्लो पुर्खाबाट सबै उप-वस्तुहरू"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "सुरु तह"

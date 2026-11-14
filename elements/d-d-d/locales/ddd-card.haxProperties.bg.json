@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Без стрелка",
         "description": "Скриване на стрелката на бутона."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Връзка: target",
@@ -54,7 +52,9 @@
           "_top": "Горен прозорец - _top",
           "_parent": "Родителски прозорец - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Връзка: rel",

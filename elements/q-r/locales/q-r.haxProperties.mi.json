@@ -14,16 +14,6 @@
         "property": "title",
         "title": "Taitara kē",
         "description": "He taitara kē e hono ana ki te pūtake o te waehere QR."
-      },
-      {
-        "property": "modulesize",
-        "title": "Rahi",
-        "description": "Te rahi o te waehere QR."
-      },
-      {
-        "property": "margin",
-        "title": "Tawhē",
-        "description": "Takai mō te waehere."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "Rahi",
+        "description": "Te rahi o te waehere QR."
+      },
+      {
+        "property": "margin",
+        "title": "Tawhē",
+        "description": "Takai mō te waehere."
       }
     ]
   }

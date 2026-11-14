@@ -1,10 +1,10 @@
 {
   "gizmo": {
-    "title": "HAXcms: చైల్డ్ బ్లాక్",
-    "description": "ప్రస్తుత పేజీ యొక్క చైల్డ్‌ను చూపించే డైనమిక్ బ్లాక్"
+    "title": "ఉప పేజీలు",
+    "description": "ప్రస్తుత పేజీ ఉప పేజీలను జాబితా చేస్తుంది."
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "డైనమిక్ పద్ధతి",
@@ -14,7 +14,9 @@
           "parent": "పేరెంట్ యొక్క చైల్డ్ అంశాలు",
           "ancestor": "అత్యున్నత పూర్వీకుడి నుండి అన్ని చైల్డ్ అంశాలు"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "ప్రారంభ స్థాయి"

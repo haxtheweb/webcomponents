@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Autoavaluació",
-    "description": "Els usuaris poden completar una autoavaluació."
+    "description": "Una pregunta amb una resposta oculta que l’estudiant revela per comprovar-se."
   },
   "settings": {
     "configure": [
@@ -27,6 +27,13 @@
       {
         "slot": "",
         "title": "Resposta"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Enllaç per saber-ne més",
+        "description": "Enllaç a informació addicional."
       },
       {
         "property": "hasLearningObjective",
@@ -37,13 +44,6 @@
         "property": "assessing",
         "title": "Avalua",
         "description": "Referència a l'activitat emesa com a oer:assessing."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "link",
-        "title": "Enllaç per saber-ne més",
-        "description": "Enllaç a informació addicional."
       }
     ]
   }

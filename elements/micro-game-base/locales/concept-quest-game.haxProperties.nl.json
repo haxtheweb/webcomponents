@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Conceptquest",
-    "description": "Een wereld om rond te dwalen. Concepten vinden je en stellen een vraag. Antwoord goed om er een te verslaan en zijn huis te ontgrendelen. Het overzicht toont pogingen en wat je moet herhalen."
+    "description": "Een bovenwereldspel waarin concepten vragen stellen en juiste antwoorden de kaart ontgrendelen."
   },
   "settings": {
     "configure": [
@@ -91,7 +91,9 @@
         "property": "gameTitle",
         "title": "Spelnaam",
         "description": "Geeft dit spel een naam in voortgangsgebeurtenissen en OER Schema-markup."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Spel-ID",

@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "क्याप्सन",
         "description": "छविको क्याप्सन।"
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "चित्रको शीर्षक",
-        "description": "चित्र लेबलको शीर्षक।"
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "चित्रको विवरण",
-        "description": "चित्र लेबलको विवरण।"
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "छवि मोडल असक्षम गर्नुहोस्",
         "description": "क्लिक गर्दा छवि निरीक्षक संवादमा छवि खुल्ने असक्षम गर्नुहोस्।"
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "चित्रको शीर्षक",
+        "description": "चित्र लेबलको शीर्षक।"
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "चित्रको विवरण",
+        "description": "चित्र लेबलको विवरण।"
       }
     ],
     "developer": [

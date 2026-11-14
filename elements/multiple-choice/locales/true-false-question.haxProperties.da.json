@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Sandt/falsk-spørgsmål",
-    "description": "Sandt/falsk-spørgsmål"
+    "description": "Et udsagn, som eleven markerer som sandt eller falsk."
   },
   "settings": {
     "configure": [

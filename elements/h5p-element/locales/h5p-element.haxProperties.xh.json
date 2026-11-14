@@ -4,17 +4,16 @@
     "description": "Idlala umxholo osebenzisanayo we-H5P kwifayile ye-.h5p elayishiweyo, ngaphandle kwemfuneko yeseva ye-H5P"
   },
   "settings": {
-    "configure": [
-      {
-        "slot": "",
-        "description": "Layisha okanye uqhagamshele ifayile ye-.h5p. Ivulwa kwibrawuza; akukho seva ye-H5P efunekayo.",
-        "title": "Ifayile ye-H5P"
-      }
-    ],
+    "configure": [],
     "advanced": [
       {
         "title": "Ikhowudi endala yokufakwa ye-iframe",
         "description": "Ngumxholo omdala kuphela ofaka i-iframe ye-H5P esuka kwenye indawo. Shiya ingenanto xa ifayile ye-.h5p isetwe ngentla."
+      },
+      {
+        "slot": "",
+        "description": "Layisha okanye uqhagamshele ifayile ye-.h5p. Ivulwa kwibrawuza; akukho seva ye-H5P efunekayo.",
+        "title": "Ifayile ye-H5P"
       }
     ]
   }

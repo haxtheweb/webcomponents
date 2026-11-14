@@ -9,7 +9,9 @@
         "property": "source",
         "title": "URL Rauemi",
         "description": "URL rauemi."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Teitei",

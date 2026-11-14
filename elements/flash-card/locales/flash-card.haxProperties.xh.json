@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Umthombo woMfanekiso",
         "description": "Ifayile yomfanekiso esetyenziselwa ikhadi. Ithatha indawo yeGama eliPhambili loMfanekiso."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Igama eliPhambili loMfanekiso",
+        "description": "Igama eliphambili lomfanekiso ongacwangciswanga. Lithathelwa indawo nguMthombo woMfanekiso."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Injongo yokuFunda",
         "description": "OER Schema: i-ID okanye i-URL yenjongo yokufunda exhaswa lolu qheliselo."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Igama eliPhambili loMfanekiso",
-        "description": "Igama eliphambili lomfanekiso ongacwangciswanga. Lithathelwa indawo nguMthombo woMfanekiso."
       }
     ]
   }

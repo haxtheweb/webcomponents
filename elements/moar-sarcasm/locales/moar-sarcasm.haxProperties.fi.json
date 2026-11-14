@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Sarkasmi",
-    "description": "Tekstin esittäminen trollaavaan tapaan"
+    "description": "Teksti vuorottelevin isoin ja pienin kirjaimin sarkastiseen sävyyn."
   },
   "settings": {
     "configure": [

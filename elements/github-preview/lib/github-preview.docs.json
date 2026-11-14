@@ -4,11 +4,11 @@
   "package": "@haxtheweb/github-preview",
   "version": "26.8.0",
   "license": "Apache-2.0",
-  "title": "Github Preview",
+  "title": "GitHub preview",
   "description": "Preview a GitHub repository: description, language, stars and forks.",
   "icon": "mdi-social:github-circle",
   "tags": [
-    "Other",
+    "Content",
     "git",
     "code",
     "github",
@@ -147,12 +147,12 @@
     "designSystem": false,
     "canEditSource": true,
     "gizmo": {
-      "title": "Github Preview",
+      "title": "GitHub preview",
       "description": "Preview a GitHub repository: description, language, stars and forks.",
       "icon": "mdi-social:github-circle",
       "color": "grey",
       "tags": [
-        "Other",
+        "Content",
         "git",
         "code",
         "github",

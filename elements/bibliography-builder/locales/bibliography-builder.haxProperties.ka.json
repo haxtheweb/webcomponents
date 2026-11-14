@@ -9,7 +9,9 @@
         "slot": "",
         "title": "ციტირებები",
         "description": "ამ ბიბლიოგრაფიის ციტირების ჩანაწერები"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "კურსი",

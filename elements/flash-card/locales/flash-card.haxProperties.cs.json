@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Zdroj obrázku",
         "description": "Soubor obrázku použitý pro kartičku. Má přednost před klíčovým slovem obrázku."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Klíčové slovo obrázku",
+        "description": "Klíčové slovo pro náhodný obrázek. Přepíše ho zdroj obrázku."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Výukový cíl",
         "description": "OER Schema: ID nebo URL výukového cíle, který toto procvičování podporuje."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Klíčové slovo obrázku",
-        "description": "Klíčové slovo pro náhodný obrázek. Přepíše ho zdroj obrázku."
       }
     ]
   }

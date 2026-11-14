@@ -10,10 +10,6 @@
         "title": "ট্যাব আইকন"
       },
       {
-        "property": "disabled",
-        "title": "নিষ্ক্রিয়"
-      },
-      {
         "property": "label",
         "title": "ট্যাব লেবেল"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "অনন্য ID"
-      },
-      {
         "property": "flag",
         "title": "ঐচ্ছিক ফ্ল্যাগ টেক্সট"
       },
       {
         "property": "flagIcon",
         "title": "ঐচ্ছিক ফ্ল্যাগ আইকন"
+      },
+      {
+        "property": "disabled",
+        "title": "নিষ্ক্রিয়"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "অনন্য ID"
       }
     ]
   }

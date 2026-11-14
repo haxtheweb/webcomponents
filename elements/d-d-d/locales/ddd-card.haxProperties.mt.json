@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Mingħajr vleġġa",
         "description": "Aħbi l-vleġġa tal-buttuna."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Link: target",
@@ -54,7 +52,9 @@
           "_top": "Tieqa ta' fuq nett - _top",
           "_parent": "Tieqa ġenitur - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Link: rel",

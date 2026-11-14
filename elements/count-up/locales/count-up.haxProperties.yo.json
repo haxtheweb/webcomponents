@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Ọ̀rọ̀ ìkẹ́yìn",
         "description": "Ọ̀rọ̀ tí a fi hàn lẹ́yìn nọ́mbà (fún àpẹẹrẹ '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Àyè ìṣáájú",
-        "description": "Àkóónú àṣàyàn ṣáájú nọ́mbà."
-      },
-      {
-        "slot": "suffix",
-        "title": "Àyè ìkẹ́yìn",
-        "description": "Àkóónú àṣàyàn lẹ́yìn nọ́mbà."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Láìsí ìrọ̀rùn",
         "description": "Mú ìrọ̀rùn kúrò kí kíkà lè jẹ́ déédé."
+      },
+      {
+        "slot": "prefix",
+        "title": "Àyè ìṣáájú",
+        "description": "Àkóónú àṣàyàn ṣáájú nọ́mbà."
+      },
+      {
+        "slot": "suffix",
+        "title": "Àyè ìkẹ́yìn",
+        "description": "Àkóónú àṣàyàn lẹ́yìn nọ́mbà."
       }
     ]
   }

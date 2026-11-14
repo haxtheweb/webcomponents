@@ -4,12 +4,11 @@
   "package": "@haxtheweb/person-testimonial",
   "version": "26.8.0",
   "license": "Apache-2.0",
-  "title": "Image Blockquote",
+  "title": "Testimonial",
   "description": "Stylized quote with an optional image.",
   "icon": "editor:format-quote",
   "tags": [
-    "Layout",
-    "content",
+    "Content",
     "presentation",
     "blockquote",
     "quote",
@@ -87,13 +86,12 @@
       "primary": true
     },
     "gizmo": {
-      "title": "Image Blockquote",
+      "title": "Testimonial",
       "description": "Stylized quote with an optional image.",
       "icon": "editor:format-quote",
       "color": "orange",
       "tags": [
-        "Layout",
-        "content",
+        "Content",
         "presentation",
         "blockquote",
         "quote",

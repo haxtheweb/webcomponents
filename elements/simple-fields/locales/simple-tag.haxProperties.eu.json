@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Nabarmentze kolore automatikoa",
         "description": "Atera nabarmentze kolorea etiketaren testutik automatikoki."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Ezeztatzeko botoia",
-        "description": "Erakutsi kentzeko/ezeztatzeko ikono-botoi bat pilularen barruan."
-      },
-      {
-        "property": "readonly",
-        "title": "Irakurtzeko soilik",
-        "description": "Ezkutatu ezeztatzeko botoia, pilula bistaratzeko soilik izan dadin."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Gris urdinxka",
           "grey": "Grisa"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Ezeztatzeko botoia",
+        "description": "Erakutsi kentzeko/ezeztatzeko ikono-botoi bat pilularen barruan."
+      },
+      {
+        "property": "readonly",
+        "title": "Irakurtzeko soilik",
+        "description": "Ezkutatu ezeztatzeko botoia, pilula bistaratzeko soilik izan dadin."
       }
     ]
   }

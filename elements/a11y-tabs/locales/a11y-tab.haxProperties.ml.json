@@ -10,10 +10,6 @@
         "title": "ടാബ് ഐക്കൺ"
       },
       {
-        "property": "disabled",
-        "title": "പ്രവർത്തനരഹിതം"
-      },
-      {
         "property": "label",
         "title": "ടാബ് ലേബൽ"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "അദ്വിതീയ ID"
-      },
-      {
         "property": "flag",
         "title": "ഓപ്ഷണൽ ഫ്ലാഗ് ടെക്സ്റ്റ്"
       },
       {
         "property": "flagIcon",
         "title": "ഓപ്ഷണൽ ഫ്ലാഗ് ഐക്കൺ"
+      },
+      {
+        "property": "disabled",
+        "title": "പ്രവർത്തനരഹിതം"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "അദ്വിതീയ ID"
       }
     ]
   }

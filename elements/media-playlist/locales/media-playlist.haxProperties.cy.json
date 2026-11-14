@@ -4,22 +4,23 @@
     "description": "Rhestr chwarae sy'n cyflwyno chwaraewyr fideo a sain mewn cynllun chwaraewr + bar ochr."
   },
   "settings": {
-    "configure": [
+    "configure": [],
+    "advanced": [
       {
         "property": "activeIndex",
         "title": "Eitem gychwynnol",
         "description": "Rhif yr eitem i ddechrau arni."
-      },
-      {
-        "property": "forCourse",
-        "title": "Cwrs",
-        "description": "Y cwrs y mae'r rhestr chwarae hon wedi'i bwriadu ar ei gyfer (dynodydd neu URL y cwrs)."
       }
     ],
     "developer": [
       {
         "title": "Cyfryngau",
         "description": "Y fideos a'r sain yn y rhestr chwarae. Ni chânt eu golygu yma: mae amlinelliad y dudalen yn eu defnyddio i wybod pa flociau y gellir eu gollwng i mewn."
+      },
+      {
+        "property": "forCourse",
+        "title": "Cwrs",
+        "description": "Y cwrs y mae'r rhestr chwarae hon wedi'i bwriadu ar ei gyfer (dynodydd neu URL y cwrs)."
       }
     ]
   }

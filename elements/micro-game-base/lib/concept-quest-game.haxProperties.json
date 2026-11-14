@@ -6,10 +6,10 @@
   "designSystem": false,
   "gizmo": {
     "title": "Concept quest game",
-    "description": "An overworld to wander. Concepts find you and ask a question. Answer right to defeat one and unlock its house. The recap shows tries and what to review.",
-    "icon": "hax:hax2022",
+    "description": "An overworld game where concepts ask questions and correct answers unlock the map.",
+    "icon": "hardware:videogame-asset",
     "color": "purple",
-    "tags": ["Other", "Interactive", "Game"],
+    "tags": ["Instructional", "interactive", "game"],
     "handles": [],
     "meta": {
       "author": "haxtheweb"
@@ -167,7 +167,9 @@
         "title": "Game name",
         "description": "Names this game in progress events and OER Schema markup.",
         "inputMethod": "textfield"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Game id",

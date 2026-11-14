@@ -14,28 +14,6 @@
         "property": "statement",
         "title": "विधान",
         "description": "शब्द चिन्हांकित करा परस्परसंवादात रूपांतरित होणारे विधान."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "श्रेणीकरण स्वरूप",
-        "description": "OER Schema: या मूल्यमापनासाठी श्रेणीकरण स्वरूप (उदा. गुण, अक्षर, टक्केवारी, पूर्णता)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "अध्ययन उद्दिष्ट",
-        "description": "OER Schema: या मूल्यमापनाशी संबंधित अध्ययन उद्दिष्ट."
-      },
-      {
-        "property": "forCourse",
-        "title": "अभ्यासक्रम",
-        "description": "OER Schema: हे मूल्यमापन ज्या अभ्यासक्रमासाठी आहे तो."
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "प्रश्नमंजुषेचे नाव",
-        "description": "xAPI-चालित वातावरणात या आयटमच्या ओळखीसाठी वापरले जाणारे प्रश्नमंजुषेचे नाव"
       }
     ],
     "advanced": [
@@ -46,6 +24,28 @@
       {
         "title": "संक्षिप्त स्थितीत सुरू करा",
         "description": "संक्षिप्त करता येणारे असल्यास, फक्त प्रश्न आणि त्याची स्थिती दाखवणारी बंद ओळ म्हणून सुरू करा."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "श्रेणीकरण स्वरूप",
+        "description": "OER Schema: या मूल्यमापनासाठी श्रेणीकरण स्वरूप (उदा. गुण, अक्षर, टक्केवारी, पूर्णता)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "अध्ययन उद्दिष्ट",
+        "description": "OER Schema: या मूल्यमापनाशी संबंधित अध्ययन उद्दिष्ट."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "प्रश्नमंजुषेचे नाव",
+        "description": "xAPI-चालित वातावरणात या आयटमच्या ओळखीसाठी वापरले जाणारे प्रश्नमंजुषेचे नाव"
+      },
+      {
+        "property": "forCourse",
+        "title": "अभ्यासक्रम",
+        "description": "OER Schema: हे मूल्यमापन ज्या अभ्यासक्रमासाठी आहे तो."
       }
     ]
   }

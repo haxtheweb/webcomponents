@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Mira",
         "description": "Mogħdija għall-build tal-logħba."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Wisa' tal-canvas",
+        "description": "Wisa' CSS tal-canvas (pereżempju px jew em)."
       },
+      {
+        "property": "height",
+        "title": "Għoli tal-canvas",
+        "description": "Għoli CSS tal-canvas (pereżempju px jew em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Metodu tal-kompressjoni",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Verżjoni tal-prodott",
         "description": "Verżjoni tar-rilaxx."
-      },
-      {
-        "property": "width",
-        "title": "Wisa' tal-canvas",
-        "description": "Wisa' CSS tal-canvas (pereżempju px jew em)."
-      },
-      {
-        "property": "height",
-        "title": "Għoli tal-canvas",
-        "description": "Għoli CSS tal-canvas (pereżempju px jew em)."
       },
       {
         "property": "background",

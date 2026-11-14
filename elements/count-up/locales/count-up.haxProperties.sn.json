@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Mavara ekupedzisira",
         "description": "Mavara anoratidzwa shure kwenhamba (semuenzaniso '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Nzvimbo yekutanga",
-        "description": "Zvirimo zvisingamanikidzwi pamberi penhamba."
-      },
-      {
-        "slot": "suffix",
-        "title": "Nzvimbo yekupedzisira",
-        "description": "Zvirimo zvisingamanikidzwi shure kwenhamba."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Pasina kunyorovesa",
         "description": "Dzima kunyorovesa kuitira kuti kuverenga kuenderere zvakaenzana."
+      },
+      {
+        "slot": "prefix",
+        "title": "Nzvimbo yekutanga",
+        "description": "Zvirimo zvisingamanikidzwi pamberi penhamba."
+      },
+      {
+        "slot": "suffix",
+        "title": "Nzvimbo yekupedzisira",
+        "description": "Zvirimo zvisingamanikidzwi shure kwenhamba."
       }
     ]
   }

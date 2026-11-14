@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Fallaar La'aan",
         "description": "Qari fallaarta badhanka."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Xiriiriye: target",
@@ -54,7 +52,9 @@
           "_top": "Daaqadda sare - _top",
           "_parent": "Daaqadda waalidka - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Xiriiriye: rel",

@@ -19,13 +19,15 @@
   "cssParts": [],
   "cssProperties": [],
   "hax": {
-    "schema": "elements/haxcms-elements/lib/ui-components/site/site-random-content.js",
+    "schema": "elements/haxcms-elements/lib/ui-components/site/site-random-content.haxProperties.json",
     "gizmo": true,
     "properties": [
       "page"
     ],
     "attributes": [],
     "slots": [],
-    "demoTags": []
+    "demoTags": [
+      "site-random-content"
+    ]
   }
 }

@@ -11,31 +11,9 @@
         "description": "Загаловак пытання."
       },
       {
-        "property": "gradingFormat",
-        "title": "Фармат ацэньвання",
-        "description": "OER Schema: фармат ацэньвання для гэтага задання (напр. балы, літара, працэнт, выкананне)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Вучэбная мэта",
-        "description": "OER Schema: вучэбная мэта, звязаная з гэтым заданнем."
-      },
-      {
-        "property": "forCourse",
-        "title": "Курс",
-        "description": "OER Schema: курс, для якога прызначана гэта заданне."
-      },
-      {
         "property": "answers",
         "title": "Адказы",
         "description": "Парадак адказаў вызначае правільную паслядоўнасць."
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Назва тэста",
-        "description": "Назва тэста для ідэнтыфікацыі xAPI у сістэмах аналітыкі."
       }
     ],
     "advanced": [
@@ -48,6 +26,28 @@
         "property": "collapsed",
         "title": "Пачынаць згорнутым",
         "description": "Калі пытанне складанае, яно пачынаецца як закрыты радок, што паказвае толькі пытанне і яго статус."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Фармат ацэньвання",
+        "description": "OER Schema: фармат ацэньвання для гэтага задання (напр. балы, літара, працэнт, выкананне)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Вучэбная мэта",
+        "description": "OER Schema: вучэбная мэта, звязаная з гэтым заданнем."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Назва тэста",
+        "description": "Назва тэста для ідэнтыфікацыі xAPI у сістэмах аналітыкі."
+      },
+      {
+        "property": "forCourse",
+        "title": "Курс",
+        "description": "OER Schema: курс, для якога прызначана гэта заданне."
       }
     ]
   }

@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Myndauppruni",
         "description": "Myndskrá sem notuð er fyrir spjaldið. Hnekkir myndleitarorði."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Myndleitarorð",
+        "description": "Leitarorð fyrir handahófskennda mynd. Myndauppruni hnekkir því."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Námsmarkmið",
         "description": "OER Schema: auðkenni (ID) eða URL námsmarkmiðsins sem þessi æfing styður."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Myndleitarorð",
-        "description": "Leitarorð fyrir handahófskennda mynd. Myndauppruni hnekkir því."
       }
     ]
   }

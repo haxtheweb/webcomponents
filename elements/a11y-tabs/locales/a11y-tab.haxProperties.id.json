@@ -10,10 +10,6 @@
         "title": "Ikon Tab"
       },
       {
-        "property": "disabled",
-        "title": "Nonaktif"
-      },
-      {
         "property": "label",
         "title": "Label Tab"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "ID Unik"
-      },
-      {
         "property": "flag",
         "title": "Teks Penanda Opsional"
       },
       {
         "property": "flagIcon",
         "title": "Ikon Penanda Opsional"
+      },
+      {
+        "property": "disabled",
+        "title": "Nonaktif"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "ID Unik"
       }
     ]
   }

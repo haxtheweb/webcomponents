@@ -16,30 +16,8 @@
         "description": "Frase che verrà convertita nell'interazione \"segna le parole\"."
       },
       {
-        "property": "gradingFormat",
-        "title": "Formato di valutazione",
-        "description": "OER Schema: formato di valutazione per questa verifica (es. punti, lettera, percentuale, completamento)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Obiettivo di apprendimento",
-        "description": "OER Schema: obiettivo di apprendimento associato a questa verifica."
-      },
-      {
-        "property": "forCourse",
-        "title": "Corso",
-        "description": "OER Schema: corso a cui è destinata questa verifica."
-      },
-      {
         "property": "answers",
         "title": "Risposte"
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Nome del quiz",
-        "description": "Nome del quiz passato per l'identificazione di questo elemento negli ambienti basati su xAPI"
       }
     ],
     "advanced": [
@@ -52,6 +30,28 @@
         "property": "collapsed",
         "title": "Inizia compresso",
         "description": "Se comprimibile, parte come una riga chiusa che mostra solo la domanda e il suo stato."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Formato di valutazione",
+        "description": "OER Schema: formato di valutazione per questa verifica (es. punti, lettera, percentuale, completamento)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Obiettivo di apprendimento",
+        "description": "OER Schema: obiettivo di apprendimento associato a questa verifica."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nome del quiz",
+        "description": "Nome del quiz passato per l'identificazione di questo elemento negli ambienti basati su xAPI"
+      },
+      {
+        "property": "forCourse",
+        "title": "Corso",
+        "description": "OER Schema: corso a cui è destinata questa verifica."
       }
     ]
   }

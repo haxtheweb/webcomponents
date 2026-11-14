@@ -91,7 +91,9 @@
         "property": "gameTitle",
         "title": "Igama lomdlalo",
         "description": "Kubiza lo mdlalo ezehlakalweni zenqubekelaphambili nasekumakeni kwe-OER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "I-ID yomdlalo",

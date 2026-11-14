@@ -9,7 +9,9 @@
         "slot": "",
         "title": "Citimet",
         "description": "Elementet e citimeve në këtë bibliografi"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "Kursi",

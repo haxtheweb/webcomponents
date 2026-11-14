@@ -1,0 +1,45 @@
+{
+  "canScale": false,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "Page link",
+    "description": "A link to a page in the site you're working on.",
+    "icon": "icons:link",
+    "color": "grey",
+    "tags": [
+      "Site",
+      "haxcms",
+      "content",
+      "remote",
+      "reference",
+      "url",
+      "resource"
+    ],
+    "handles": [
+      {
+        "type": "inline"
+      }
+    ],
+    "meta": {
+      "author": "HAXTheWeb core team",
+      "inlineOnly": true
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "uuid",
+        "title": "Item",
+        "description": "Item to render for the link / title data",
+        "inputMethod": "textfield"
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "tag": "site-uuid-link",
+      "properties": {},
+      "content": ""
+    }
+  ]
+}

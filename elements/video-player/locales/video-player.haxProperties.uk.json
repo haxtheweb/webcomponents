@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Постер",
         "description": "URL постера."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Текстові доріжки",
         "description": "Приховані субтитри, субтитри, описи та інші текстові доріжки для відео."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Час початку",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Доріжка аудіоопису",
         "description": "URL доріжки аудіоопису (файл MP3), що озвучує візуальні елементи."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцентний колір",
+        "description": "(застаріле) Виберіть акцентний колір для програвача."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Мова",
         "description": "Мова медіафайлу."
-      },
-      {
-        "property": "accentColor",
-        "title": "Акцентний колір",
-        "description": "(застаріле) Виберіть акцентний колір для програвача."
       }
     ]
   }

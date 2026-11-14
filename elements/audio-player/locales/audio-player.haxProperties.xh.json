@@ -46,6 +46,16 @@
         "property": "accentColor",
         "title": "Umbala ogqamisayo",
         "description": "Khetha umbala wogxininiso womdlali."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Fihla iitimestamp",
+        "description": "Fihla iitimestamp kumbhalo-mazwi."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Fihla uMbhalo-mazwi",
+        "description": "Fihla umbhalo-mazwi ngokungagqibekanga."
       }
     ],
     "developer": [
@@ -72,16 +82,6 @@
         "property": "disableInteractive",
         "title": "Vala Ukusebenzisana",
         "description": "Vala imo yokusebenzisana eyenza umbhalo-mazwi ucofeke."
-      },
-      {
-        "property": "hideTimestamps",
-        "title": "Fihla iitimestamp",
-        "description": "Fihla iitimestamp kumbhalo-mazwi."
-      },
-      {
-        "property": "hideTranscript",
-        "title": "Fihla uMbhalo-mazwi",
-        "description": "Fihla umbhalo-mazwi ngokungagqibekanga."
       },
       {
         "property": "lang",

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Konzeptkarten-Spiel",
-    "description": "Ein kurzes Tastaturspiel. Eine Figur läuft auf einer Karte zu jedem Konzept, und es erklärt sich selbst. Berühre alle für Konfetti und einen Prompt zum Kopieren."
+    "description": "Ein kurzes Tastaturspiel, in dem eine Figur über eine Karte läuft und sich jedes Konzept selbst erklärt."
   },
   "settings": {
     "configure": [
@@ -86,7 +86,9 @@
         "property": "gameTitle",
         "title": "Spielname",
         "description": "Benennt dieses Spiel in Fortschrittsereignissen und im OER Schema-Markup."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Spiel-ID",

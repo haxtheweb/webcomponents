@@ -35,7 +35,7 @@
   ],
   "cssProperties": [],
   "hax": {
-    "schema": "elements/haxcms-elements/lib/ui-components/progress/my-learning.js",
+    "schema": "elements/haxcms-elements/lib/ui-components/progress/my-learning.haxProperties.json",
     "gizmo": true,
     "properties": [
       "chart",
@@ -49,6 +49,8 @@
     ],
     "attributes": [],
     "slots": [],
-    "demoTags": []
+    "demoTags": [
+      "my-learning"
+    ]
   }
 }

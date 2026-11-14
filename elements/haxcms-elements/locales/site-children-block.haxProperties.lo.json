@@ -4,7 +4,7 @@
     "description": "ບລັອກໄດນາມິກເພື່ອສະແດງລູກຂອງໜ້າປັດຈຸບັນ"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "ວິທີໄດນາມິກ",
@@ -14,7 +14,9 @@
           "parent": "ລູກຂອງແມ່",
           "ancestor": "ລູກທັງໝົດຈາກບັນພະບຸລຸດສູງສຸດ"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "ລະດັບເລີ່ມຕົ້ນ"

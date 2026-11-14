@@ -11,20 +11,17 @@
         "description": "A lapcsoport akadálymentes címkéje."
       },
       {
-        "property": "disabled",
-        "title": "Letiltva",
-        "description": "Az összes lap letiltása."
-      },
-      {
-        "property": "hidden",
-        "title": "Rejtett",
-        "description": "A lapcsoport elrejtése."
-      },
-      {
         "property": "sticky",
         "title": "Rögzített",
         "description": "A vízszintes lapok görgetéskor a tetején maradnak."
       },
+      {
+        "slot": "",
+        "title": "Lapok",
+        "description": "<a11y-tab/> elemek sorozata."
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "Elrendezési töréspont",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "Ikon töréspontja",
         "description": "Töréspont a szöveg ikonokkal együtt való megjelenítéséhez. Az alapérték 0; a -1 csak ikonos módot jelent."
-      },
-      {
-        "slot": "",
-        "title": "Lapok",
-        "description": "<a11y-tab/> elemek sorozata."
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "Letiltva",
+        "description": "Az összes lap letiltása."
+      },
+      {
+        "property": "hidden",
+        "title": "Rejtett",
+        "description": "A lapcsoport elrejtése."
+      },
       {
         "property": "id",
         "title": "Egyedi azonosító",

@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "Butang",
         "description": "Kumpulan butang yang dipaparkan di bawah teks."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "Teks sauh",
         "description": "Label sauh yang dipaparkan dalam navigasi."
       }
-    ]
+    ],
+    "developer": []
   }
 }

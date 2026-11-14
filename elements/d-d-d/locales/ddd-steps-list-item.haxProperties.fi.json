@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Vaihe",
-    "description": "Vaiheluetteloon kuuluva kohde"
+    "description": "Yksittäinen vaihe vaiheluettelossa."
   },
   "settings": {
     "configure": [

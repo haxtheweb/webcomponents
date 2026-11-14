@@ -11,11 +11,6 @@
         "description": "अनियमित पात्र बनाउन प्रयोग हुने शब्द।"
       },
       {
-        "property": "code",
-        "title": "पात्र कोड",
-        "description": "त्यो पात्र फेरि बनाउन सुरक्षित गरिएको कोड टाँस्नुहोस्।"
-      },
-      {
         "property": "hat",
         "title": "टोपी",
         "description": "टोपीको शैली।",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "मुकुण्डो",
-        "description": "अनुहार वा टाउकोमा लगाइने मुकुण्डो।",
-        "options": {
-          "none": "कुनै छैन",
-          "lion": "सिंह",
-          "plague": "प्लेग डाक्टर",
-          "theater": "नाटक",
-          "pumpkin": "फर्सी",
-          "ghost": "भूत",
-          "mummy": "ममी",
-          "wrestler": "कुस्ती मुकुण्डो",
-          "block-head": "ब्लक टाउको",
-          "web": "जाल मुकुण्डो",
-          "werewolf": "ब्वाँसो-मानवको अनुहार",
-          "shadow": "छायाँ अनुहार"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "मेकअप",
-        "description": "अनुहारको रङ वा लिपस्टिक।",
-        "options": {
-          "none": "कुनै छैन",
-          "red-lipstick": "रातो लिपस्टिक",
-          "pink-lipstick": "गुलाबी लिपस्टिक",
-          "berry-lipstick": "बेरी रङको लिपस्टिक",
-          "clown": "जोकरको रङ",
-          "fangs": "लामो दाँत",
-          "skull": "खोपडीको रङ",
-          "zombie": "जोम्बीको रङ",
-          "red-nose": "रातो नाक",
-          "white-beard": "सेतो दाह्री",
-          "domino": "हिरो मुकुण्डो",
-          "carrot": "गाजरको नाक",
-          "bunny": "खरायोको नाक",
-          "mustache": "जुँगा",
-          "monster": "राक्षस अनुहार रङ",
-          "round-glasses": "गोलो चस्मा"
-        }
-      },
-      {
         "property": "expression",
         "title": "भाव",
         "description": "अनुहारको भाव।",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "घरपालुवा जनावर",
+        "description": "पात्रको छेउमा रहेको घरपालुवा जनावर।",
+        "options": {
+          "none": "कुनै छैन",
+          "cat": "बिरालो",
+          "dog": "कुकुर",
+          "bunny": "खरायो",
+          "goldfish": "सुनौलो माछा",
+          "slime": "स्लाइम",
+          "squirrel": "लोखर्के",
+          "dragon": "सानो ड्र्यागन",
+          "parrot": "सुगा",
+          "owl": "उल्लु",
+          "bat": "चमेरो"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "पात्र कोड",
+        "description": "त्यो पात्र फेरि बनाउन सुरक्षित गरिएको कोड टाँस्नुहोस्।"
+      },
+      {
+        "property": "mask",
+        "title": "मुकुण्डो",
+        "description": "अनुहार वा टाउकोमा लगाइने मुकुण्डो।",
+        "options": {
+          "none": "कुनै छैन",
+          "lion": "सिंह",
+          "plague": "प्लेग डाक्टर",
+          "theater": "नाटक",
+          "pumpkin": "फर्सी",
+          "ghost": "भूत",
+          "mummy": "ममी",
+          "wrestler": "कुस्ती मुकुण्डो",
+          "block-head": "ब्लक टाउको",
+          "web": "जाल मुकुण्डो",
+          "werewolf": "ब्वाँसो-मानवको अनुहार",
+          "shadow": "छायाँ अनुहार"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "मेकअप",
+        "description": "अनुहारको रङ वा लिपस्टिक।",
+        "options": {
+          "none": "कुनै छैन",
+          "red-lipstick": "रातो लिपस्टिक",
+          "pink-lipstick": "गुलाबी लिपस्टिक",
+          "berry-lipstick": "बेरी रङको लिपस्टिक",
+          "clown": "जोकरको रङ",
+          "fangs": "लामो दाँत",
+          "skull": "खोपडीको रङ",
+          "zombie": "जोम्बीको रङ",
+          "red-nose": "रातो नाक",
+          "white-beard": "सेतो दाह्री",
+          "domino": "हिरो मुकुण्डो",
+          "carrot": "गाजरको नाक",
+          "bunny": "खरायोको नाक",
+          "mustache": "जुँगा",
+          "monster": "राक्षस अनुहार रङ",
+          "round-glasses": "गोलो चस्मा"
+        }
+      },
+      {
         "property": "flagText",
         "title": "झन्डाको पाठ",
         "description": "झन्डामा देखिने बढीमा ४ अक्षर।"
@@ -310,24 +330,6 @@
           "skates": "स्केट",
           "skateboard": "स्केटबोर्ड",
           "hoverboard": "उड्ने बोर्ड"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "घरपालुवा जनावर",
-        "description": "पात्रको छेउमा रहेको घरपालुवा जनावर।",
-        "options": {
-          "none": "कुनै छैन",
-          "cat": "बिरालो",
-          "dog": "कुकुर",
-          "bunny": "खरायो",
-          "goldfish": "सुनौलो माछा",
-          "slime": "स्लाइम",
-          "squirrel": "लोखर्के",
-          "dragon": "सानो ड्र्यागन",
-          "parrot": "सुगा",
-          "owl": "उल्लु",
-          "bat": "चमेरो"
         }
       },
       {

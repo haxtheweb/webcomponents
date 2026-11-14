@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "مصدر الصورة",
         "description": "ملف الصورة المستخدم للبطاقة. يتجاوز الكلمة المفتاحية للصورة."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "الكلمة المفتاحية للصورة",
+        "description": "كلمة مفتاحية لصورة عشوائية. يتجاوزها مصدر الصورة."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "هدف التعلّم",
         "description": "OER Schema: ID أو URL هدف التعلّم الذي يدعمه هذا التدريب."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "الكلمة المفتاحية للصورة",
-        "description": "كلمة مفتاحية لصورة عشوائية. يتجاوزها مصدر الصورة."
       }
     ]
   }

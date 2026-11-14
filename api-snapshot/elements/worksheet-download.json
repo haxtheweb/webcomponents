@@ -12,7 +12,7 @@
   "cssParts": [],
   "cssProperties": [],
   "hax": {
-    "schema": "elements/course-design/lib/worksheet-download.js",
+    "schema": "elements/course-design/lib/worksheet-download.haxProperties.json",
     "gizmo": true,
     "properties": [
       "link",

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "רשימת תורמים ב-GitHub",
-    "description": "מוצגים כדמויות RPG באמצעות ה-API של GitHub."
+    "description": "מציג את התורמים למאגר כדמויות RPG."
   },
   "settings": {
     "configure": [

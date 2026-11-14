@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "Spotify oynatıcı yerleştirmeleri için sarmalayıcı."
+    "description": "Bir Spotify parçası, albümü veya çalma listesi yerleştirin."
   },
   "settings": {
     "configure": [

@@ -294,12 +294,6 @@ class CmsHax extends LitElement {
     this.bodyValue = "";
     this.hideMessage = false;
     this.__imported = false;
-    setTimeout(() => {
-      import("@haxtheweb/cms-hax/lib/cms-token.js");
-      import("@haxtheweb/cms-hax/lib/cms-block.js");
-      import("@haxtheweb/cms-hax/lib/cms-views.js");
-      import("@haxtheweb/cms-hax/lib/cms-entity.js");
-    }, 0);
   }
   _makeAppStore(val) {
     this.__appStore = this.decodeHTMLEntities(val);

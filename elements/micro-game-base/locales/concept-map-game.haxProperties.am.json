@@ -86,7 +86,9 @@
         "property": "gameTitle",
         "title": "የጨዋታ ስም",
         "description": "በሂደት ክስተቶች እና በ OER Schema ምልክት ማድረጊያ ውስጥ ይህን ጨዋታ ይሰይማል።"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "የጨዋታ መለያ",

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "בלוק של תוכן markdown, ישיר או נטען מרחוק"
+    "description": "תוכן Markdown, שנכתב במקום או נטען מקובץ."
   },
   "settings": {
     "configure": [

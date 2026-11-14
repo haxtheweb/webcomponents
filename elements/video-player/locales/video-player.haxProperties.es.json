@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Imagen de portada",
         "description": "URL de la imagen de portada."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Pistas de texto",
         "description": "Subtítulos para sordos, subtítulos, descripciones y otras pistas de texto del vídeo."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Tiempo de inicio",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Pista de audiodescripción",
         "description": "URL de una pista de audiodescripción (archivo MP3) que narra los elementos visuales."
+      },
+      {
+        "property": "accentColor",
+        "title": "Color de acento",
+        "description": "(obsoleto) Selecciona el color de acento del reproductor."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Idioma",
         "description": "Idioma del contenido multimedia."
-      },
-      {
-        "property": "accentColor",
-        "title": "Color de acento",
-        "description": "(obsoleto) Selecciona el color de acento del reproductor."
       }
     ]
   }

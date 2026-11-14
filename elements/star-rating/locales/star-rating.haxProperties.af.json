@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Interaktief",
         "description": "Laat gebruikersinteraksie toe om die gradering te stel."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Rubriekskaalmodus",

@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Чыпкалоого уруксат",
         "description": "Мамычалардын маанилери боюнча чыпкалоого уруксат берүү."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Сандык стиль",
-        "description": "Сандык мамычаларга сандык стиль колдонуу."
-      },
-      {
-        "property": "responsive",
-        "title": "Ыңгайлашуучу",
-        "description": "Кичине экрандарда таблицанын макетин ыңгайлаштыруу."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Рубрика режими",
-        "description": "Rubric, RubricScale, RubricCriterion жана RubricLevel метамаалыматтары чыгарылышы үчүн бул таблицаны OER Schema Rubric катары чечмелөө."
-      },
-      {
-        "property": "rubricType",
-        "title": "Рубрика түрү",
-        "description": "oer:rubricType катары чыгарылган рубрика стили (Рубрика режими күйгүзүлгөндө гана мааниси бар).",
-        "options": {
-          "": "(жок)",
-          "analytic": "Аналитикалык",
-          "holistic": "Холистикалык",
-          "single-point": "Бир упай",
-          "checklist": "Текшерүү тизмеси"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Басып чыгаруу баскычы",
         "description": "Таблицаны гана басып чыгаруу баскычын кошуу."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Сандык стиль",
+        "description": "Сандык мамычаларга сандык стиль колдонуу."
+      },
+      {
+        "property": "responsive",
+        "title": "Ыңгайлашуучу",
+        "description": "Кичине экрандарда таблицанын макетин ыңгайлаштыруу."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Рубрика режими",
+        "description": "Rubric, RubricScale, RubricCriterion жана RubricLevel метамаалыматтары чыгарылышы үчүн бул таблицаны OER Schema Rubric катары чечмелөө."
+      },
+      {
+        "property": "rubricType",
+        "title": "Рубрика түрү",
+        "description": "oer:rubricType катары чыгарылган рубрика стили (Рубрика режими күйгүзүлгөндө гана мааниси бар).",
+        "options": {
+          "": "(жок)",
+          "analytic": "Аналитикалык",
+          "holistic": "Холистикалык",
+          "single-point": "Бир упай",
+          "checklist": "Текшерүү тизмеси"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "CSV маалыматтары",
         "description": "Жүктөлгөн CSV файлынан таблица түзүү."
       }
-    ]
+    ],
+    "developer": []
   }
 }

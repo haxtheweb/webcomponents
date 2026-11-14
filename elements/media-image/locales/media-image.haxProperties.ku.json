@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Binnivîs",
         "description": "Binnivîs ji bo wêneyê."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Sernavê Wêneyê",
-        "description": "Sernav ji bo etîketa wêneyê."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Danasîna Wêneyê",
-        "description": "Danasîn ji bo etîketa wêneyê."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Modala wêneyê neçalak bike",
         "description": "Pêşî li tikandinên ku wêneyê di diyaloga venêrîna wêneyê de vedikin bigire."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Sernavê Wêneyê",
+        "description": "Sernav ji bo etîketa wêneyê."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Danasîna Wêneyê",
+        "description": "Danasîn ji bo etîketa wêneyê."
       }
     ],
     "developer": [

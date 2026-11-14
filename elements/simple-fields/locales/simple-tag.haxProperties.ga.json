@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Dath aibhsithe uathoibríoch",
         "description": "Faigh an dath aibhsithe ó théacs an lipéid go huathoibríoch."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Cnaipe cealaithe",
-        "description": "Taispeáin cnaipe deilbhín bainte/cealaithe laistigh den phiollaire."
-      },
-      {
-        "property": "readonly",
-        "title": "Inléite amháin",
-        "description": "Folaigh an cnaipe cealaithe ionas nach mbeidh an piollaire ann ach le taispeáint."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Liathghorm",
           "grey": "Liath"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Cnaipe cealaithe",
+        "description": "Taispeáin cnaipe deilbhín bainte/cealaithe laistigh den phiollaire."
+      },
+      {
+        "property": "readonly",
+        "title": "Inléite amháin",
+        "description": "Folaigh an cnaipe cealaithe ionas nach mbeidh an piollaire ann ach le taispeáint."
       }
     ]
   }

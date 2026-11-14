@@ -11,20 +11,17 @@
         "description": "ປ້າຍກຳກັບທີ່ເຂົ້າເຖິງໄດ້ສຳລັບຊຸດແຖບ."
       },
       {
-        "property": "disabled",
-        "title": "ປິດໃຊ້ງານ",
-        "description": "ປິດໃຊ້ງານແຖບທັງໝົດ."
-      },
-      {
-        "property": "hidden",
-        "title": "ເຊື່ອງໄວ້",
-        "description": "ເຊື່ອງຊຸດແຖບ."
-      },
-      {
         "property": "sticky",
         "title": "ຕິດຢູ່",
         "description": "ໃຫ້ແຖບແນວນອນຢູ່ດ້ານເທິງຂະນະເລື່ອນ."
       },
+      {
+        "slot": "",
+        "title": "ແຖບ",
+        "description": "ຊຸດຂອງອົງປະກອບ <a11y-tab/>."
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "ຈຸດປ່ຽນໂຄງຮ່າງ",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "ຈຸດປ່ຽນໄອຄອນ",
         "description": "ຈຸດປ່ຽນສຳລັບສະແດງຂໍ້ຄວາມພ້ອມໄອຄອນ. ຄ່າເລີ່ມຕົ້ນແມ່ນ 0; ໃຊ້ -1 ສຳລັບໂໝດໄອຄອນເທົ່ານັ້ນ."
-      },
-      {
-        "slot": "",
-        "title": "ແຖບ",
-        "description": "ຊຸດຂອງອົງປະກອບ <a11y-tab/>."
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "ປິດໃຊ້ງານ",
+        "description": "ປິດໃຊ້ງານແຖບທັງໝົດ."
+      },
+      {
+        "property": "hidden",
+        "title": "ເຊື່ອງໄວ້",
+        "description": "ເຊື່ອງຊຸດແຖບ."
+      },
       {
         "property": "id",
         "title": "ID ທີ່ບໍ່ຊ້ຳກັນ",

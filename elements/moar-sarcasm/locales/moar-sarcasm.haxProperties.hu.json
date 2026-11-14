@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Szarkazmus",
-    "description": "Szöveg trollkodó stílusú megjelenítése"
+    "description": "Váltakozó kis- és nagybetűs szöveg gúnyos hangnemhez."
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Õige / vale küsimus",
-    "description": "Õige või vale küsimus"
+    "description": "Väide, mille õppija märgib tõeseks või vääraks."
   },
   "settings": {
     "configure": [

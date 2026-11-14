@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Източник на цитата",
-    "description": "Елемент за цитиране с три режима на представяне."
+    "description": "Посочете източник със заглавие, автор, лиценз и връзка."
   },
   "settings": {
     "configure": [
@@ -21,15 +21,6 @@
         "description": "Дата, на която е достъпен източникът."
       },
       {
-        "property": "scope",
-        "title": "Обхват",
-        "description": "Обхват на елемента за цитиране.",
-        "options": {
-          "sibling": "Съседен елемент",
-          "parent": "Родителски елемент"
-        }
-      },
-      {
         "property": "license",
         "title": "Лиценз",
         "description": "Лиценз на цитираната творба."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Създател",
         "description": "Създател или собственик на цитираната творба."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Обхват",
+        "description": "Обхват на елемента за цитиране.",
+        "options": {
+          "sibling": "Съседен елемент",
+          "parent": "Родителски елемент"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "Тип в OER Schema",

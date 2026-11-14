@@ -14,16 +14,6 @@
         "property": "title",
         "title": "Alternatyvus pavadinimas",
         "description": "Alternatyvus pavadinimas, susietas su QR kodo šaltiniu."
-      },
-      {
-        "property": "modulesize",
-        "title": "Dydis",
-        "description": "QR kodo dydis."
-      },
-      {
-        "property": "margin",
-        "title": "Paraštė",
-        "description": "Tarpas aplink kodą."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "Dydis",
+        "description": "QR kodo dydis."
+      },
+      {
+        "property": "margin",
+        "title": "Paraštė",
+        "description": "Tarpas aplink kodą."
       }
     ]
   }

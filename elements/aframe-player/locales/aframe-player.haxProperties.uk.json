@@ -11,6 +11,13 @@
         "description": "URL цього AR-файлу."
       },
       {
+        "property": "skyColor",
+        "title": "Колір неба",
+        "description": "Виберіть колір неба на сцені."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "Положення елемента в AR за віссю X."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "Положення елемента в AR за віссю Z."
-      },
-      {
-        "property": "skyColor",
-        "title": "Колір неба",
-        "description": "Виберіть колір неба на сцені."
       }
     ]
   }

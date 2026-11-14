@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Viide",
-    "description": "Viite element kolme esitusrežiimiga."
+    "description": "Viidake allikale pealkirja, autori, litsentsi ja lingiga."
   },
   "settings": {
     "configure": [
@@ -21,15 +21,6 @@
         "description": "Kuupäev, millal allikat vaadati."
       },
       {
-        "property": "scope",
-        "title": "Ulatus",
-        "description": "Viidatava elemendi ulatus.",
-        "options": {
-          "sibling": "Sama taseme element",
-          "parent": "Ülemelement"
-        }
-      },
-      {
         "property": "license",
         "title": "Litsents",
         "description": "Viidatud teose litsents."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Looja",
         "description": "Viidatud teose looja või omanik."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Ulatus",
+        "description": "Viidatava elemendi ulatus.",
+        "options": {
+          "sibling": "Sama taseme element",
+          "parent": "Ülemelement"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "OER Schema tüüp",

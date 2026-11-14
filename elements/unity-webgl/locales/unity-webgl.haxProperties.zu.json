@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Okuhlosiwe",
         "description": "Indlela eya ekwakhiweni kwegeyimu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Ububanzi Bekhanvasi",
+        "description": "Ububanzi be-CSS bekhanvasi (isibonelo px noma em)."
       },
+      {
+        "property": "height",
+        "title": "Ubude Bekhanvasi",
+        "description": "Ubude be-CSS bekhanvasi (isibonelo px noma em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Indlela yokucindezela",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Inguqulo Yomkhiqizo",
         "description": "Inguqulo yokukhishwa."
-      },
-      {
-        "property": "width",
-        "title": "Ububanzi Bekhanvasi",
-        "description": "Ububanzi be-CSS bekhanvasi (isibonelo px noma em)."
-      },
-      {
-        "property": "height",
-        "title": "Ubude Bekhanvasi",
-        "description": "Ubude be-CSS bekhanvasi (isibonelo px noma em)."
       },
       {
         "property": "background",

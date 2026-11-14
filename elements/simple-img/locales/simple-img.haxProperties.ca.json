@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Imatge senzilla",
-    "description": "Manipula imatges amb paràmetres senzills."
+    "description": "Una imatge redimensionada, retallada o girada amb paràmetres senzills."
   },
   "settings": {
     "configure": [
@@ -26,7 +26,8 @@
         "description": "Útil per als lectors de pantalla i per millorar el SEO."
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "Qualitat",

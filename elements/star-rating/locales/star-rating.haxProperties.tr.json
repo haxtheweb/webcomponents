@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Yıldız Puanı",
-    "description": "Puan gösterme aracı veya puan verme düğmesi."
+    "description": "Yıldızlı bir puan gösterin veya okurların seçmesine izin verin."
   },
   "settings": {
     "configure": [
@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Etkileşimli",
         "description": "Kullanıcının puanı belirlemek için etkileşimde bulunmasına izin verin."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Değerlendirme Ölçeği Modu",

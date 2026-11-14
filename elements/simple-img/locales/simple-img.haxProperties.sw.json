@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Picha Rahisi",
-    "description": "Badilisha picha kwa vigezo rahisi."
+    "description": "Picha iliyobadilishwa ukubwa, kupunguzwa au kuzungushwa kwa mipangilio rahisi."
   },
   "settings": {
     "configure": [
@@ -26,7 +26,8 @@
         "description": "Muhimu kwa visoma skrini na SEO bora."
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "Ubora",

@@ -11,6 +11,13 @@
         "description": "URL ya faili hii ya AR."
       },
       {
+        "property": "skyColor",
+        "title": "Rangi ya anga",
+        "description": "Chagua rangi ya anga katika mandhari."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "Nafasi ya X ya kipengele katika AR."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "Nafasi ya Z ya kipengele katika AR."
-      },
-      {
-        "property": "skyColor",
-        "title": "Rangi ya anga",
-        "description": "Chagua rangi ya anga katika mandhari."
       }
     ]
   }

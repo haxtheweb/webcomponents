@@ -11,11 +11,6 @@
         "description": "રેન્ડમ પાત્ર બનાવવા માટે વપરાતો શબ્દ."
       },
       {
-        "property": "code",
-        "title": "પાત્ર કોડ",
-        "description": "તે પાત્ર ફરી બનાવવા માટે સાચવેલો કોડ પેસ્ટ કરો."
-      },
-      {
         "property": "hat",
         "title": "ટોપી",
         "description": "ટોપીની શૈલી.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "મુખવટો",
-        "description": "ચહેરા અથવા માથા પર પહેરવાનો મુખવટો.",
-        "options": {
-          "none": "કોઈ નહીં",
-          "lion": "સિંહ",
-          "plague": "પ્લેગ ડૉક્ટર",
-          "theater": "થિયેટર",
-          "pumpkin": "કોળું",
-          "ghost": "ભૂત",
-          "mummy": "મમી",
-          "wrestler": "કુસ્તી મહોરું",
-          "block-head": "બ્લોક માથું",
-          "web": "જાળી મહોરું",
-          "werewolf": "વરુ-માનવ ચહેરો",
-          "shadow": "છાયાવાળો ચહેરો"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "મેકઅપ",
-        "description": "ચહેરા પરનો રંગ અથવા લિપસ્ટિક.",
-        "options": {
-          "none": "કોઈ નહીં",
-          "red-lipstick": "લાલ લિપસ્ટિક",
-          "pink-lipstick": "ગુલાબી લિપસ્ટિક",
-          "berry-lipstick": "બેરી લિપસ્ટિક",
-          "clown": "જોકરનો રંગ",
-          "fangs": "દાંતિયા",
-          "skull": "ખોપરીનો રંગ",
-          "zombie": "ઝોમ્બીનો રંગ",
-          "red-nose": "લાલ નાક",
-          "white-beard": "સફેદ દાઢી",
-          "domino": "હીરો મુખવટો",
-          "carrot": "ગાજર નાક",
-          "bunny": "સસલાનું નાક",
-          "mustache": "મૂછ",
-          "monster": "રાક્ષસ ફેસ પેઇન્ટ",
-          "round-glasses": "ગોળ ચશ્મા"
-        }
-      },
-      {
         "property": "expression",
         "title": "અભિવ્યક્તિ",
         "description": "ચહેરાની અભિવ્યક્તિ.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "પાળતું પ્રાણી",
+        "description": "પાત્રની બાજુમાં પાળતું પ્રાણી.",
+        "options": {
+          "none": "કોઈ નહીં",
+          "cat": "બિલાડી",
+          "dog": "કૂતરો",
+          "bunny": "સસલું",
+          "goldfish": "ગોલ્ડફિશ",
+          "slime": "સ્લાઇમ",
+          "squirrel": "ખિસકોલી",
+          "dragon": "બાળ ડ્રેગન",
+          "parrot": "પોપટ",
+          "owl": "ઘુવડ",
+          "bat": "ચામાચીડિયું"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "પાત્ર કોડ",
+        "description": "તે પાત્ર ફરી બનાવવા માટે સાચવેલો કોડ પેસ્ટ કરો."
+      },
+      {
+        "property": "mask",
+        "title": "મુખવટો",
+        "description": "ચહેરા અથવા માથા પર પહેરવાનો મુખવટો.",
+        "options": {
+          "none": "કોઈ નહીં",
+          "lion": "સિંહ",
+          "plague": "પ્લેગ ડૉક્ટર",
+          "theater": "થિયેટર",
+          "pumpkin": "કોળું",
+          "ghost": "ભૂત",
+          "mummy": "મમી",
+          "wrestler": "કુસ્તી મહોરું",
+          "block-head": "બ્લોક માથું",
+          "web": "જાળી મહોરું",
+          "werewolf": "વરુ-માનવ ચહેરો",
+          "shadow": "છાયાવાળો ચહેરો"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "મેકઅપ",
+        "description": "ચહેરા પરનો રંગ અથવા લિપસ્ટિક.",
+        "options": {
+          "none": "કોઈ નહીં",
+          "red-lipstick": "લાલ લિપસ્ટિક",
+          "pink-lipstick": "ગુલાબી લિપસ્ટિક",
+          "berry-lipstick": "બેરી લિપસ્ટિક",
+          "clown": "જોકરનો રંગ",
+          "fangs": "દાંતિયા",
+          "skull": "ખોપરીનો રંગ",
+          "zombie": "ઝોમ્બીનો રંગ",
+          "red-nose": "લાલ નાક",
+          "white-beard": "સફેદ દાઢી",
+          "domino": "હીરો મુખવટો",
+          "carrot": "ગાજર નાક",
+          "bunny": "સસલાનું નાક",
+          "mustache": "મૂછ",
+          "monster": "રાક્ષસ ફેસ પેઇન્ટ",
+          "round-glasses": "ગોળ ચશ્મા"
+        }
+      },
+      {
         "property": "flagText",
         "title": "ધ્વજ પરનું લખાણ",
         "description": "ધ્વજ પર દેખાતા વધુમાં વધુ 4 અક્ષરો."
@@ -310,24 +330,6 @@
           "skates": "સ્કેટ્સ",
           "skateboard": "સ્કેટબોર્ડ",
           "hoverboard": "હોવરબોર્ડ"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "પાળતું પ્રાણી",
-        "description": "પાત્રની બાજુમાં પાળતું પ્રાણી.",
-        "options": {
-          "none": "કોઈ નહીં",
-          "cat": "બિલાડી",
-          "dog": "કૂતરો",
-          "bunny": "સસલું",
-          "goldfish": "ગોલ્ડફિશ",
-          "slime": "સ્લાઇમ",
-          "squirrel": "ખિસકોલી",
-          "dragon": "બાળ ડ્રેગન",
-          "parrot": "પોપટ",
-          "owl": "ઘુવડ",
-          "bat": "ચામાચીડિયું"
         }
       },
       {

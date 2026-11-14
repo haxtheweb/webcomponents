@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "છબી સ્રોત",
         "description": "કાર્ડ માટે વપરાતી છબી ફાઇલ. છબી કીવર્ડને ઓવરરાઇડ કરે છે."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "છબી કીવર્ડ",
+        "description": "રેન્ડમ છબી કીવર્ડ. છબી સ્રોત દ્વારા ઓવરરાઇડ થાય છે."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "શીખવાનો ઉદ્દેશ",
         "description": "OER Schema: આ અભ્યાસ જે શીખવાના ઉદ્દેશને સમર્થન આપે છે તેનું ID અથવા URL."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "છબી કીવર્ડ",
-        "description": "રેન્ડમ છબી કીવર્ડ. છબી સ્રોત દ્વારા ઓવરરાઇડ થાય છે."
       }
     ]
   }

@@ -1,10 +1,10 @@
 {
   "gizmo": {
-    "title": "HAXcms: 子ブロック",
-    "description": "現在のページの子を表示する動的ブロック"
+    "title": "子ページ",
+    "description": "現在のページの子ページを一覧表示します。"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "動的な方法",
@@ -14,7 +14,9 @@
           "parent": "親の子",
           "ancestor": "最上位の祖先からのすべての子"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "開始レベル"

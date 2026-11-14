@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Без стрілки",
         "description": "Приховати стрілку кнопки."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Посилання: ціль",
@@ -54,7 +52,9 @@
           "_top": "Верхнє вікно - _top",
           "_parent": "Батьківське вікно - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Посилання: rel",

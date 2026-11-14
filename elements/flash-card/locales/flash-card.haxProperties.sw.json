@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Chanzo cha Picha",
         "description": "Faili ya picha inayotumika kwa kadi. Inabatilisha Neno Kuu la Picha."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Neno Kuu la Picha",
+        "description": "Neno kuu la picha nasibu. Linabatilishwa na Chanzo cha Picha."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Lengo la Kujifunza",
         "description": "OER Schema: ID au URL ya lengo la kujifunza ambalo mazoezi haya yanaunga mkono."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Neno Kuu la Picha",
-        "description": "Neno kuu la picha nasibu. Linabatilishwa na Chanzo cha Picha."
       }
     ]
   }

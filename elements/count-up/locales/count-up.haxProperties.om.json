@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Barreeffama boodaa",
         "description": "Barreeffama lakkoofsa booda mul'atu (fkn. '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Bakka duraa",
-        "description": "Qabiyyee filannoo lakkoofsa dura."
-      },
-      {
-        "slot": "suffix",
-        "title": "Bakka boodaa",
-        "description": "Qabiyyee filannoo lakkoofsa booda."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Saffisa hin laaffisin",
         "description": "Akka lakkaa'insi walqixa ta'uuf laaffisuu dhaabi."
+      },
+      {
+        "slot": "prefix",
+        "title": "Bakka duraa",
+        "description": "Qabiyyee filannoo lakkoofsa dura."
+      },
+      {
+        "slot": "suffix",
+        "title": "Bakka boodaa",
+        "description": "Qabiyyee filannoo lakkoofsa booda."
       }
     ]
   }

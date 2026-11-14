@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Myndatexti",
         "description": "Myndatexti myndarinnar."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Titill myndar",
-        "description": "Titill myndamerkisins."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Lýsing myndar",
-        "description": "Lýsing myndamerkisins."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Slökkva á myndaglugga",
         "description": "Koma í veg fyrir að smellur opni myndina í myndskoðunarglugga."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Titill myndar",
+        "description": "Titill myndamerkisins."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Lýsing myndar",
+        "description": "Lýsing myndamerkisins."
       }
     ],
     "developer": [

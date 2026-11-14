@@ -10,10 +10,6 @@
         "title": "ටැබ නිරූපකය"
       },
       {
-        "property": "disabled",
-        "title": "අබල කර ඇත"
-      },
-      {
         "property": "label",
         "title": "ටැබ ලේබලය"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "අනන්‍ය ID"
-      },
-      {
         "property": "flag",
         "title": "විකල්ප ධජ පෙළ"
       },
       {
         "property": "flagIcon",
         "title": "විකල්ප ධජ නිරූපකය"
+      },
+      {
+        "property": "disabled",
+        "title": "අබල කර ඇත"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "අනන්‍ය ID"
       }
     ]
   }

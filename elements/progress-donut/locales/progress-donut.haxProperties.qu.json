@@ -26,11 +26,6 @@
         "description": "Siq'ipaq rantin qillqa."
       },
       {
-        "property": "animated",
-        "title": "Kuyuchisqa",
-        "description": "Ñawpaq apamuypi ñawpaqman puriy kuyunanchus"
-      },
-      {
         "property": "complete",
         "title": "Tukusqa",
         "description": "Tukusqa chaninkunap array-nin."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "Llapan",
         "description": "Llapan kaqkuna tukusqa kaptin llapan."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "Kuyuchisqa",
+        "description": "Ñawpaq apamuypi ñawpaqman puriy kuyunanchus"
       },
       {
         "property": "startAngle",

@@ -10,10 +10,6 @@
         "title": "טאַב־איקאָן"
       },
       {
-        "property": "disabled",
-        "title": "אויסגעשאַלטן"
-      },
-      {
         "property": "label",
         "title": "טאַב־עטיקעט"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "אייגנאַרטיקער ID"
-      },
-      {
         "property": "flag",
         "title": "אָפּציאָנעלער פֿאָן־טעקסט"
       },
       {
         "property": "flagIcon",
         "title": "אָפּציאָנעלער פֿאָן־איקאָן"
+      },
+      {
+        "property": "disabled",
+        "title": "אויסגעשאַלטן"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "אייגנאַרטיקער ID"
       }
     ]
   }

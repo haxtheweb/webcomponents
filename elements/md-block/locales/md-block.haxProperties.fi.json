@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "Suoraan tai etänä ladattu markdown-sisältölohko"
+    "description": "Markdown-sisältö suoraan kirjoitettuna tai tiedostosta ladattuna."
   },
   "settings": {
     "configure": [

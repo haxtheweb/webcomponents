@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Interaktiv",
         "description": "Dem Benotzer erlaben, d'Bewäertung festzeleeën."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Bewäertungsskala-Modus",

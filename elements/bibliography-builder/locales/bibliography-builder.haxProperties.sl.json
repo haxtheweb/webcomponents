@@ -9,7 +9,9 @@
         "slot": "",
         "title": "Citati",
         "description": "Citirani viri v tej bibliografiji"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "Predmet",

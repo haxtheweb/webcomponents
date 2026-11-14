@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Atzizkiaren testua",
         "description": "Zenbakiaren ondoren erakusten den testua (adib. '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Aurrizkiaren slot-a",
-        "description": "Zenbakiaren aurreko aukerako slot-edukia."
-      },
-      {
-        "slot": "suffix",
-        "title": "Atzizkiaren slot-a",
-        "description": "Zenbakiaren ondorengo aukerako slot-edukia."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Leuntzerik gabe",
         "description": "Desgaitu leuntzea, zenbaketa lineala izan dadin."
+      },
+      {
+        "slot": "prefix",
+        "title": "Aurrizkiaren slot-a",
+        "description": "Zenbakiaren aurreko aukerako slot-edukia."
+      },
+      {
+        "slot": "suffix",
+        "title": "Atzizkiaren slot-a",
+        "description": "Zenbakiaren ondorengo aukerako slot-edukia."
       }
     ]
   }

@@ -14,16 +14,6 @@
         "property": "title",
         "title": "Alternativer Titel",
         "description": "Alternativer Titel, der mit der Quelle des QR-Codes verlinkt ist."
-      },
-      {
-        "property": "modulesize",
-        "title": "Größe",
-        "description": "Größe des QR-Codes."
-      },
-      {
-        "property": "margin",
-        "title": "Rand",
-        "description": "Umrandung des Codes."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "Größe",
+        "description": "Größe des QR-Codes."
+      },
+      {
+        "property": "margin",
+        "title": "Rand",
+        "description": "Umrandung des Codes."
       }
     ]
   }

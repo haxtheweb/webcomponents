@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "概念探险游戏",
-    "description": "一个可以闲逛的大世界。概念会找到你并提出问题。答对就能击败它并解锁它的房子。回顾会显示尝试次数和需要复习的内容。"
+    "description": "一款大地图游戏，概念会提出问题，答对即可解锁地图。"
   },
   "settings": {
     "configure": [
@@ -91,7 +91,9 @@
         "property": "gameTitle",
         "title": "游戏名称",
         "description": "在进度事件和 OER Schema 标记中为这个游戏命名。"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "游戏 ID",

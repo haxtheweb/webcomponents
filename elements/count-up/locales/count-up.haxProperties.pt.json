@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Texto de sufixo",
         "description": "Texto mostrado depois do número (ex.: '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Slot de prefixo",
-        "description": "Conteúdo opcional no slot antes do número."
-      },
-      {
-        "slot": "suffix",
-        "title": "Slot de sufixo",
-        "description": "Conteúdo opcional no slot depois do número."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Sem suavização",
         "description": "Desativar a suavização para que a contagem seja linear."
+      },
+      {
+        "slot": "prefix",
+        "title": "Slot de prefixo",
+        "description": "Conteúdo opcional no slot antes do número."
+      },
+      {
+        "slot": "suffix",
+        "title": "Slot de sufixo",
+        "description": "Conteúdo opcional no slot depois do número."
       }
     ]
   }

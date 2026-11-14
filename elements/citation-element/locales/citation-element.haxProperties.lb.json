@@ -21,15 +21,6 @@
         "description": "Datum, op deem op d'Quell zougegraff gouf."
       },
       {
-        "property": "scope",
-        "title": "Ëmfang",
-        "description": "Elementëmfang fir ze zitéieren.",
-        "options": {
-          "sibling": "Nopeschelement",
-          "parent": "Iwwergeuerdent Element"
-        }
-      },
-      {
         "property": "license",
         "title": "Lizenz",
         "description": "Lizenz vum zitéierte Wierk."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Creator",
         "description": "Creator oder Besëtzer vum zitéierte Wierk."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Ëmfang",
+        "description": "Elementëmfang fir ze zitéieren.",
+        "options": {
+          "sibling": "Nopeschelement",
+          "parent": "Iwwergeuerdent Element"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "OER-Schema-Typ",

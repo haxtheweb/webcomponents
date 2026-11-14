@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "चरण आइटम",
-    "description": "चरण सूची का हिस्सा बनने वाला आइटम"
+    "description": "चरण सूची में एक चरण।"
   },
   "settings": {
     "configure": [

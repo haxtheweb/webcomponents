@@ -21,15 +21,6 @@
         "description": "سورس تک رسائی دی تاریخ۔"
       },
       {
-        "property": "scope",
-        "title": "دائرہ",
-        "description": "حوالہ دین لئی عنصر دا دائرہ۔",
-        "options": {
-          "sibling": "برابر دا عنصر",
-          "parent": "اُتلا عنصر"
-        }
-      },
-      {
         "property": "license",
         "title": "لائسنس",
         "description": "حوالہ دتے کم دا لائسنس۔"
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "بݨاؤن والا",
         "description": "حوالہ دتے کم دا بݨاؤن والا یا مالک۔"
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "دائرہ",
+        "description": "حوالہ دین لئی عنصر دا دائرہ۔",
+        "options": {
+          "sibling": "برابر دا عنصر",
+          "parent": "اُتلا عنصر"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "OER سکیما قسم",

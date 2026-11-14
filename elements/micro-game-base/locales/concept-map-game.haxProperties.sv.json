@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Begreppskartespel",
-    "description": "Ett kort tangentbordsspel. En figur går till varje begrepp på en karta och begreppet förklarar sig självt. Rör vid alla för konfetti och en prompt att kopiera."
+    "description": "Ett kort tangentbordsspel där en figur går över en karta och varje begrepp förklarar sig självt."
   },
   "settings": {
     "configure": [
@@ -86,7 +86,9 @@
         "property": "gameTitle",
         "title": "Spelets namn",
         "description": "Namnger spelet i förloppshändelser och OER Schema-markering."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Spel-id",

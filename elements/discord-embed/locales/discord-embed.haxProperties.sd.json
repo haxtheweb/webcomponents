@@ -9,7 +9,9 @@
         "property": "source",
         "title": "وسيلي جو URL",
         "description": "وسيلي جو URL."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "اوچائي",

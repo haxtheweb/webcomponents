@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Note par étoiles",
-    "description": "Widget d'affichage de note ou bouton pour noter."
+    "description": "Affichez une note en étoiles ou laissez les lecteurs en choisir une."
   },
   "settings": {
     "configure": [
@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Interactif",
         "description": "Permettre à l'utilisateur de définir la note."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Mode échelle de grille d'évaluation",

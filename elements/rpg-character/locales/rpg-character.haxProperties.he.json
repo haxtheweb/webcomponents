@@ -11,11 +11,6 @@
         "description": "מילה המשמשת ליצירת דמות אקראית."
       },
       {
-        "property": "code",
-        "title": "קוד הדמות",
-        "description": "הדביקו קוד שמור כדי ליצור מחדש את הדמות הזאת."
-      },
-      {
         "property": "hat",
         "title": "כובע",
         "description": "סגנון הכובע.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "מסיכה",
-        "description": "מסיכה הנלבשת על הפנים או הראש.",
-        "options": {
-          "none": "ללא",
-          "lion": "אריה",
-          "plague": "רופא מגפה",
-          "theater": "תיאטרון",
-          "pumpkin": "דלעת",
-          "ghost": "רוח רפאים",
-          "mummy": "מומיה",
-          "wrestler": "מסכת היאבקות",
-          "block-head": "ראש קוביות",
-          "web": "מסכת רשת עכביש",
-          "werewolf": "פני איש זאב",
-          "shadow": "פנים מוצלות"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "איפור",
-        "description": "צבע פנים או שפתון.",
-        "options": {
-          "none": "ללא",
-          "red-lipstick": "שפתון אדום",
-          "pink-lipstick": "שפתון ורוד",
-          "berry-lipstick": "שפתון פירות יער",
-          "clown": "איפור ליצן",
-          "fangs": "ניבים",
-          "skull": "צבע גולגולת",
-          "zombie": "צבע זומבי",
-          "red-nose": "אף אדום",
-          "white-beard": "זקן לבן",
-          "domino": "מסיכת גיבור",
-          "carrot": "אף גזר",
-          "bunny": "אף ארנב",
-          "mustache": "שפם",
-          "monster": "איפור מפלצת",
-          "round-glasses": "משקפיים עגולים"
-        }
-      },
-      {
         "property": "expression",
         "title": "הבעה",
         "description": "הבעת פנים.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "חיית מחמד",
+        "description": "חיית מחמד לצד הדמות.",
+        "options": {
+          "none": "ללא",
+          "cat": "חתול",
+          "dog": "כלב",
+          "bunny": "ארנבון",
+          "goldfish": "דג זהב",
+          "slime": "רפש",
+          "squirrel": "סנאי",
+          "dragon": "דרקון קטן",
+          "parrot": "תוכי",
+          "owl": "ינשוף",
+          "bat": "עטלף"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "קוד הדמות",
+        "description": "הדביקו קוד שמור כדי ליצור מחדש את הדמות הזאת."
+      },
+      {
+        "property": "mask",
+        "title": "מסיכה",
+        "description": "מסיכה הנלבשת על הפנים או הראש.",
+        "options": {
+          "none": "ללא",
+          "lion": "אריה",
+          "plague": "רופא מגפה",
+          "theater": "תיאטרון",
+          "pumpkin": "דלעת",
+          "ghost": "רוח רפאים",
+          "mummy": "מומיה",
+          "wrestler": "מסכת היאבקות",
+          "block-head": "ראש קוביות",
+          "web": "מסכת רשת עכביש",
+          "werewolf": "פני איש זאב",
+          "shadow": "פנים מוצלות"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "איפור",
+        "description": "צבע פנים או שפתון.",
+        "options": {
+          "none": "ללא",
+          "red-lipstick": "שפתון אדום",
+          "pink-lipstick": "שפתון ורוד",
+          "berry-lipstick": "שפתון פירות יער",
+          "clown": "איפור ליצן",
+          "fangs": "ניבים",
+          "skull": "צבע גולגולת",
+          "zombie": "צבע זומבי",
+          "red-nose": "אף אדום",
+          "white-beard": "זקן לבן",
+          "domino": "מסיכת גיבור",
+          "carrot": "אף גזר",
+          "bunny": "אף ארנב",
+          "mustache": "שפם",
+          "monster": "איפור מפלצת",
+          "round-glasses": "משקפיים עגולים"
+        }
+      },
+      {
         "property": "flagText",
         "title": "טקסט הדגל",
         "description": "עד 4 אותיות המוצגות על הדגל."
@@ -310,24 +330,6 @@
           "skates": "גלגיליות",
           "skateboard": "סקייטבורד",
           "hoverboard": "לוח ריחוף"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "חיית מחמד",
-        "description": "חיית מחמד לצד הדמות.",
-        "options": {
-          "none": "ללא",
-          "cat": "חתול",
-          "dog": "כלב",
-          "bunny": "ארנבון",
-          "goldfish": "דג זהב",
-          "slime": "רפש",
-          "squirrel": "סנאי",
-          "dragon": "דרקון קטן",
-          "parrot": "תוכי",
-          "owl": "ינשוף",
-          "bat": "עטלף"
         }
       },
       {

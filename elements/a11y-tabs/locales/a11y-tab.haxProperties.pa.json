@@ -10,10 +10,6 @@
         "title": "ਟੈਬ ਆਈਕਨ"
       },
       {
-        "property": "disabled",
-        "title": "ਅਯੋਗ"
-      },
-      {
         "property": "label",
         "title": "ਟੈਬ ਲੇਬਲ"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "ਵਿਲੱਖਣ ID"
-      },
-      {
         "property": "flag",
         "title": "ਵਿਕਲਪਿਕ ਝੰਡਾ ਟੈਕਸਟ"
       },
       {
         "property": "flagIcon",
         "title": "ਵਿਕਲਪਿਕ ਝੰਡਾ ਆਈਕਨ"
+      },
+      {
+        "property": "disabled",
+        "title": "ਅਯੋਗ"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "ਵਿਲੱਖਣ ID"
       }
     ]
   }

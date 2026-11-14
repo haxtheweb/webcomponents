@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Imatge de pòster",
         "description": "URL de la imatge de pòster."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Pistes de text",
         "description": "Subtítols tancats, subtítols, descripcions i altres pistes de text del vídeo."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Temps d'inici",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Pista d'audiodescripció",
         "description": "URL d'una pista d'audiodescripció (fitxer MP3) que narra els elements visuals."
+      },
+      {
+        "property": "accentColor",
+        "title": "Color d'accent",
+        "description": "(obsolet) Selecciona el color d'accent del reproductor."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Idioma",
         "description": "Idioma del contingut multimèdia."
-      },
-      {
-        "property": "accentColor",
-        "title": "Color d'accent",
-        "description": "(obsolet) Selecciona el color d'accent del reproductor."
       }
     ]
   }

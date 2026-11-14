@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "Ett block med Markdown-innehåll, direkt eller fjärrinläst"
+    "description": "Markdown-innehåll, skrivet direkt eller inläst från en fil."
   },
   "settings": {
     "configure": [

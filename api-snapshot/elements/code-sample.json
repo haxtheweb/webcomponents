@@ -21,7 +21,7 @@
   ],
   "cssProperties": [],
   "hax": {
-    "schema": "elements/code-sample/code-sample.js",
+    "schema": "elements/code-sample/lib/code-sample.haxProperties.json",
     "gizmo": true,
     "properties": [
       "copyClipboardButton",

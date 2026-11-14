@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "Botões",
         "description": "Grupo de botões mostrado abaixo do texto."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "Texto da âncora",
         "description": "Rótulo da âncora mostrado na navegação."
       }
-    ]
+    ],
+    "developer": []
   }
 }

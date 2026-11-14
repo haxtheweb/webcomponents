@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "CSV tablosu",
-    "description": "Nerede bulunursa bulunsun bir CSV dosyasından tablo oluşturabilir."
+    "description": "Bir CSV dosyasını erişilebilir bir tablo olarak gösterir."
   },
   "settings": {
     "configure": [

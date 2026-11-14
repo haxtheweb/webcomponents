@@ -4,17 +4,16 @@
     "description": "Lit du contenu interactif H5P à partir d'un fichier .h5p téléversé, sans serveur H5P"
   },
   "settings": {
-    "configure": [
-      {
-        "slot": "",
-        "description": "Téléversez ou liez un fichier .h5p. Il est décompressé dans le navigateur ; aucun serveur H5P n'est nécessaire.",
-        "title": "Fichier H5P"
-      }
-    ],
+    "configure": [],
     "advanced": [
       {
         "title": "Ancien code d'intégration iframe",
         "description": "Uniquement pour d'anciens contenus qui intègrent un iframe H5P depuis un autre site. Laissez vide lorsqu'un fichier .h5p est défini ci-dessus."
+      },
+      {
+        "slot": "",
+        "description": "Téléversez ou liez un fichier .h5p. Il est décompressé dans le navigateur ; aucun serveur H5P n'est nécessaire.",
+        "title": "Fichier H5P"
       }
     ]
   }

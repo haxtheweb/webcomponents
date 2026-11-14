@@ -11,6 +11,13 @@
         "description": "Selle AR-faili URL."
       },
       {
+        "property": "skyColor",
+        "title": "Taeva värv",
+        "description": "Vali stseeni taeva värv."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "Elemendi X-asukoht AR-is."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "Elemendi Z-asukoht AR-is."
-      },
-      {
-        "property": "skyColor",
-        "title": "Taeva värv",
-        "description": "Vali stseeni taeva värv."
       }
     ]
   }

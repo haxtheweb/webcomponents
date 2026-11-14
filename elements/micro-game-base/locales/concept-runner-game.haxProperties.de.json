@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Konzept-Runner-Spiel",
-    "description": "Ein Side-Scroller. Die Figur rennt in Flammen und hält nie an. Spring, um die guten Konzepte zu schnappen und über die schlechten hinweg, und sieh dir dann eine Zusammenfassung an, was gut und was schlecht war."
+    "description": "Ein Side-Scroller: Springen Sie, um die richtigen Konzepte einzusammeln und die falschen zu meiden."
   },
   "settings": {
     "configure": [
@@ -89,7 +89,9 @@
         "property": "gameTitle",
         "title": "Spielname",
         "description": "Benennt dieses Spiel in Fortschrittsereignissen und im OER Schema-Markup."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Spiel-ID",

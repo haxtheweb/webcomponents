@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Bildkälla",
         "description": "Bildfil som används för kortet. Åsidosätter Bildnyckelord."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Bildnyckelord",
+        "description": "Nyckelord för slumpmässig bild. Åsidosätts av Bildkälla."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Lärandemål",
         "description": "OER Schema: ID eller URL för lärandemålet som övningen stöder."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Bildnyckelord",
-        "description": "Nyckelord för slumpmässig bild. Åsidosätts av Bildkälla."
       }
     ]
   }

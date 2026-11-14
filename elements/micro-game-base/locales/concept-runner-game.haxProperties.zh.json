@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "概念跑酷游戏",
-    "description": "横向卷轴游戏。角色燃着火焰不停奔跑。跳起来接住好概念、跳过坏概念，然后查看好与坏的回顾。"
+    "description": "一款横向卷轴游戏：跳起来抓住正确的概念，避开错误的概念。"
   },
   "settings": {
     "configure": [
@@ -89,7 +89,9 @@
         "property": "gameTitle",
         "title": "游戏名称",
         "description": "在进度事件和 OER Schema 标记中为这个游戏命名。"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "游戏 ID",

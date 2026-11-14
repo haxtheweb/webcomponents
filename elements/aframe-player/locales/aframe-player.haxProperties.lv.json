@@ -11,6 +11,13 @@
         "description": "Šī AR faila URL."
       },
       {
+        "property": "skyColor",
+        "title": "Debesu krāsa",
+        "description": "Izvēlieties debesu krāsu ainā."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "Elementa X pozīcija AR vidē."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "Elementa Z pozīcija AR vidē."
-      },
-      {
-        "property": "skyColor",
-        "title": "Debesu krāsa",
-        "description": "Izvēlieties debesu krāsu ainā."
       }
     ]
   }

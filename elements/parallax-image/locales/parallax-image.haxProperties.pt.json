@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Imagem com paralaxe",
-    "description": "Imagem que rola com efeito"
+    "description": "Uma imagem de largura total que rola mais devagar que a página, com um título por cima."
   },
   "settings": {
     "configure": [

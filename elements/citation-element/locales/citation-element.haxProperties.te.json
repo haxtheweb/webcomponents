@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "ఆధారం",
-    "description": "మూడు ప్రదర్శన మోడ్‌లతో ఉల్లేఖన ఎలిమెంట్."
+    "description": "మూలాన్ని దాని శీర్షిక, సృష్టికర్త, లైసెన్స్, లింక్‌తో పేర్కొనండి."
   },
   "settings": {
     "configure": [
@@ -21,15 +21,6 @@
         "description": "మూలాన్ని యాక్సెస్ చేసిన తేదీ."
       },
       {
-        "property": "scope",
-        "title": "పరిధి",
-        "description": "ఉల్లేఖించాల్సిన ఎలిమెంట్ పరిధి.",
-        "options": {
-          "sibling": "సోదర ఎలిమెంట్",
-          "parent": "పేరెంట్ ఎలిమెంట్"
-        }
-      },
-      {
         "property": "license",
         "title": "లైసెన్స్",
         "description": "ఉల్లేఖించిన రచన కోసం లైసెన్స్."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "సృష్టికర్త",
         "description": "ఉల్లేఖించిన రచన యొక్క సృష్టికర్త లేదా యజమాని."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "పరిధి",
+        "description": "ఉల్లేఖించాల్సిన ఎలిమెంట్ పరిధి.",
+        "options": {
+          "sibling": "సోదర ఎలిమెంట్",
+          "parent": "పేరెంట్ ఎలిమెంట్"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "OER Schema రకం",

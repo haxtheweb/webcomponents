@@ -86,7 +86,9 @@
         "property": "gameTitle",
         "title": "游戏名称",
         "description": "勒进度事件同 OER Schema 标记里给这个游戏命名。"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "游戏 ID",

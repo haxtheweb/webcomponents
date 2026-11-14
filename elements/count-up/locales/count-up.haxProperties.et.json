@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Järelliide",
         "description": "Arvu järel kuvatav tekst (nt '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Eesliite pesa",
-        "description": "Valikuline arvu ette lisatav sisu."
-      },
-      {
-        "slot": "suffix",
-        "title": "Järelliite pesa",
-        "description": "Valikuline arvu järele lisatav sisu."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Sujuvuseta",
         "description": "Keela sujuvus, et loendamine oleks lineaarne."
+      },
+      {
+        "slot": "prefix",
+        "title": "Eesliite pesa",
+        "description": "Valikuline arvu ette lisatav sisu."
+      },
+      {
+        "slot": "suffix",
+        "title": "Järelliite pesa",
+        "description": "Valikuline arvu järele lisatav sisu."
       }
     ]
   }

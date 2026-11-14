@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "စစ်ထုတ်ခွင့်ပြုရန်",
         "description": "ကော်လံ တန်ဖိုးများအလိုက် စစ်ထုတ်ခွင့်ပြုရန်။"
-      },
-      {
-        "property": "numericStyles",
-        "title": "ဂဏန်း ပုံစံ",
-        "description": "ဂဏန်း ကော်လံများတွင် ဂဏန်းပုံစံ သက်ရောက်စေရန်။"
-      },
-      {
-        "property": "responsive",
-        "title": "တုံ့ပြန်မှုရှိသော",
-        "description": "မျက်နှာပြင်ငယ်များတွင် ဇယား အပြင်အဆင်ကို ချိန်ညှိရန်။"
-      },
-      {
-        "property": "rubricMode",
-        "title": "Rubric မုဒ်",
-        "description": "Rubric, RubricScale, RubricCriterion နှင့် RubricLevel metadata ထုတ်ပေးနိုင်ရန် ဤဇယားကို OER Schema Rubric အဖြစ် အဓိပ္ပာယ်ဖွင့်ရန်။"
-      },
-      {
-        "property": "rubricType",
-        "title": "Rubric အမျိုးအစား",
-        "description": "oer:rubricType အဖြစ် ထုတ်ပေးသော rubric ပုံစံ (Rubric မုဒ် ဖွင့်ထားမှသာ အဓိပ္ပာယ်ရှိသည်)။",
-        "options": {
-          "": "(မရှိ)",
-          "analytic": "ခွဲခြမ်းစိတ်ဖြာ",
-          "holistic": "ခြုံငုံ",
-          "single-point": "အမှတ်တစ်ခုတည်း",
-          "checklist": "စစ်ဆေးစာရင်း"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "ပရင့် ခလုတ်",
         "description": "ဇယားကိုသာ ပရင့်ထုတ်ရန် ခလုတ်ထည့်ပါ။"
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "ဂဏန်း ပုံစံ",
+        "description": "ဂဏန်း ကော်လံများတွင် ဂဏန်းပုံစံ သက်ရောက်စေရန်။"
+      },
+      {
+        "property": "responsive",
+        "title": "တုံ့ပြန်မှုရှိသော",
+        "description": "မျက်နှာပြင်ငယ်များတွင် ဇယား အပြင်အဆင်ကို ချိန်ညှိရန်။"
+      },
+      {
+        "property": "rubricMode",
+        "title": "Rubric မုဒ်",
+        "description": "Rubric, RubricScale, RubricCriterion နှင့် RubricLevel metadata ထုတ်ပေးနိုင်ရန် ဤဇယားကို OER Schema Rubric အဖြစ် အဓိပ္ပာယ်ဖွင့်ရန်။"
+      },
+      {
+        "property": "rubricType",
+        "title": "Rubric အမျိုးအစား",
+        "description": "oer:rubricType အဖြစ် ထုတ်ပေးသော rubric ပုံစံ (Rubric မုဒ် ဖွင့်ထားမှသာ အဓိပ္ပာယ်ရှိသည်)။",
+        "options": {
+          "": "(မရှိ)",
+          "analytic": "ခွဲခြမ်းစိတ်ဖြာ",
+          "holistic": "ခြုံငုံ",
+          "single-point": "အမှတ်တစ်ခုတည်း",
+          "checklist": "စစ်ဆေးစာရင်း"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "CSV ဒေတာ",
         "description": "အပ်လုဒ်လုပ်ထားသော CSV ဖိုင်မှ ဇယား ဖန်တီးရန်။"
       }
-    ]
+    ],
+    "developer": []
   }
 }

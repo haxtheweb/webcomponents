@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Etkinlik Rozeti",
-    "description": "Etkinlik rozeti bileşeni."
+    "description": "Fotoğraf, ad ve kurum içeren konferans tarzı bir yaka kartı."
   },
   "settings": {
     "configure": [

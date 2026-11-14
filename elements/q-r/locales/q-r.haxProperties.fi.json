@@ -14,16 +14,6 @@
         "property": "title",
         "title": "Vaihtoehtoinen otsikko",
         "description": "QR-koodin lähteeseen linkitetty vaihtoehtoinen otsikko."
-      },
-      {
-        "property": "modulesize",
-        "title": "Koko",
-        "description": "QR-koodin koko."
-      },
-      {
-        "property": "margin",
-        "title": "Marginaali",
-        "description": "Koodia ympäröivä reunus."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "Koko",
+        "description": "QR-koodin koko."
+      },
+      {
+        "property": "margin",
+        "title": "Marginaali",
+        "description": "Koodia ympäröivä reunus."
       }
     ]
   }

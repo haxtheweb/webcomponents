@@ -9,7 +9,9 @@
         "slot": "",
         "title": "引用",
         "description": "この参考文献リストの引用項目"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "コース",

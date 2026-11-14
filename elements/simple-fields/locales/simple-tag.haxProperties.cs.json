@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "Štítek / Pilulka",
+    "title": "Štítek",
     "description": "Kompaktní popisek ve tvaru pilulky s volitelnou zvýrazňující barvou, tlačítkem zrušení nebo přepínačem."
   },
   "settings": {
@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Automatická zvýrazňující barva",
         "description": "Automaticky odvodit zvýrazňující barvu z textu popisku."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Tlačítko zrušení",
-        "description": "Zobrazit uvnitř pilulky ikonové tlačítko odebrání/zrušení."
-      },
-      {
-        "property": "readonly",
-        "title": "Jen pro čtení",
-        "description": "Skrýt tlačítko zrušení, aby pilulka sloužila jen k zobrazení."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Modrošedá",
           "grey": "Šedá"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Tlačítko zrušení",
+        "description": "Zobrazit uvnitř pilulky ikonové tlačítko odebrání/zrušení."
+      },
+      {
+        "property": "readonly",
+        "title": "Jen pro čtení",
+        "description": "Skrýt tlačítko zrušení, aby pilulka sloužila jen k zobrazení."
       }
     ]
   }

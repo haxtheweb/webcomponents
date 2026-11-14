@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Wikipedia",
-    "description": "Αυτό μπορεί να εμφανίσει ένα άρθρο της Wikipedia στο πλαίσιο σε μια ποικιλία μορφών."
+    "description": "Εμφανίζει ένα άρθρο της Βικιπαίδειας στη σελίδα."
   },
   "settings": {
     "configure": [

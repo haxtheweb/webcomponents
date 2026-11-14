@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Gra z mapą pojęć",
-    "description": "Krótka gra klawiaturowa. Postać idzie do każdego pojęcia na mapie, a ono samo się wyjaśnia. Dotknij wszystkich, aby zobaczyć konfetti i polecenie do skopiowania."
+    "description": "Krótka gra klawiaturowa, w której postać chodzi po mapie, a każde pojęcie samo się objaśnia."
   },
   "settings": {
     "configure": [
@@ -86,7 +86,9 @@
         "property": "gameTitle",
         "title": "Nazwa gry",
         "description": "Nadaje nazwę tej grze w zdarzeniach postępu i znacznikach OER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Identyfikator gry",

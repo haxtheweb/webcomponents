@@ -16,30 +16,8 @@
         "description": "Simikunata chimpuy ruraymanm tikrakunqa kay rimay."
       },
       {
-        "property": "gradingFormat",
-        "title": "Chaninchay laya",
-        "description": "OER Schema: kay chaninchaypa chaninchay layan (kayhina chimpukuna, letra, porcentaje, tukusqa)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Yachana munay",
-        "description": "OER Schema: kay chaninchaywan t'inkisqa yachana munay."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kursu",
-        "description": "OER Schema: kay chaninchay mayqin kursupaq kasqan."
-      },
-      {
         "property": "answers",
         "title": "Kutichiykuna"
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Tapukuykunapa sutin",
-        "description": "xAPI pachakunapi kay itemta riqsichinapaq apachisqa tapukuy suti"
       }
     ],
     "advanced": [
@@ -52,6 +30,28 @@
         "property": "collapsed",
         "title": "Pukusqa qallariy",
         "description": "Pukukuy atiq kaptinqa, tapukuyllata hinaspa kay-kayninta rikuchiq wichq'asqa siq'i hina qallariy."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Chaninchay laya",
+        "description": "OER Schema: kay chaninchaypa chaninchay layan (kayhina chimpukuna, letra, porcentaje, tukusqa)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Yachana munay",
+        "description": "OER Schema: kay chaninchaywan t'inkisqa yachana munay."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Tapukuykunapa sutin",
+        "description": "xAPI pachakunapi kay itemta riqsichinapaq apachisqa tapukuy suti"
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursu",
+        "description": "OER Schema: kay chaninchay mayqin kursupaq kasqan."
       }
     ]
   }

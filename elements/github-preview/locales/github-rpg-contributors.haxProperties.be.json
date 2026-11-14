@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Спіс удзельнікаў GitHub",
-    "description": "Адлюстроўваюцца як персанажы RPG з дапамогай GitHub API."
+    "description": "Паказвае ўдзельнікаў рэпазіторыя як персанажаў RPG."
   },
   "settings": {
     "configure": [

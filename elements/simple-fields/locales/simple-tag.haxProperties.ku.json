@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Rengê balkêş ê otomatîk",
         "description": "Rengê balkêş bi otomatîkî ji nivîsa etîketê derxe."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Bişkoka betalkirinê",
-        "description": "Di nav hebikê de bişkokeke îkonê ya rakirin/betalkirinê nîşan bide."
-      },
-      {
-        "property": "readonly",
-        "title": "Tenê xwendin",
-        "description": "Bişkoka betalkirinê veşêre da ku hebik tenê ji bo nîşandanê be."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Gewrê Şînî",
           "grey": "Gewr"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Bişkoka betalkirinê",
+        "description": "Di nav hebikê de bişkokeke îkonê ya rakirin/betalkirinê nîşan bide."
+      },
+      {
+        "property": "readonly",
+        "title": "Tenê xwendin",
+        "description": "Bişkoka betalkirinê veşêre da ku hebik tenê ji bo nîşandanê be."
       }
     ]
   }

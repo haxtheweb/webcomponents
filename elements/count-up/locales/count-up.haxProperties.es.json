@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Texto de sufijo",
         "description": "Texto que se muestra después del número (p. ej., '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Ranura de prefijo",
-        "description": "Contenido opcional insertado antes del número."
-      },
-      {
-        "slot": "suffix",
-        "title": "Ranura de sufijo",
-        "description": "Contenido opcional insertado después del número."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Sin suavizado",
         "description": "Desactivar el suavizado para que el conteo sea lineal."
+      },
+      {
+        "slot": "prefix",
+        "title": "Ranura de prefijo",
+        "description": "Contenido opcional insertado antes del número."
+      },
+      {
+        "slot": "suffix",
+        "title": "Ranura de sufijo",
+        "description": "Contenido opcional insertado después del número."
       }
     ]
   }

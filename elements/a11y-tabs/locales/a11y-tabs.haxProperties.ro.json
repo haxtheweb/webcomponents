@@ -11,20 +11,17 @@
         "description": "Etichetă accesibilă pentru setul de file."
       },
       {
-        "property": "disabled",
-        "title": "Dezactivat",
-        "description": "Dezactivează toate filele."
-      },
-      {
-        "property": "hidden",
-        "title": "Ascuns",
-        "description": "Ascunde setul de file."
-      },
-      {
         "property": "sticky",
         "title": "Fixat",
         "description": "Păstrează filele orizontale în partea de sus la derulare."
       },
+      {
+        "slot": "",
+        "title": "File",
+        "description": "Serie de elemente <a11y-tab/>."
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "Prag de aspect",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "Prag pentru pictograme",
         "description": "Pragul pentru afișarea textului cu pictograme. Implicit este 0; folosiți -1 pentru modul doar cu pictograme."
-      },
-      {
-        "slot": "",
-        "title": "File",
-        "description": "Serie de elemente <a11y-tab/>."
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "Dezactivat",
+        "description": "Dezactivează toate filele."
+      },
+      {
+        "property": "hidden",
+        "title": "Ascuns",
+        "description": "Ascunde setul de file."
+      },
       {
         "property": "id",
         "title": "ID unic",

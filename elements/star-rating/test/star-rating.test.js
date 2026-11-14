@@ -3,6 +3,13 @@ import { fixture, expect, html } from "@open-wc/testing";
 import "../star-rating.js";
 import { StarRating } from "../star-rating.js";
 
+// HAX schemas ship as JSON next to the element; read one whether the class
+// returns the object or the URL of its file
+const haxSchema = async (C) => {
+  const hp = C.haxProperties;
+  return typeof hp === "string" ? (await fetch(hp)).json() : hp;
+};
+
 describe("star-rating test", () => {
   let element;
   beforeEach(async () => {
@@ -17,11 +24,11 @@ describe("star-rating test", () => {
 });
 
 describe("star-rating behavior", () => {
-  it("exposes haxProperties for the HAX editor", () => {
-    const props = StarRating.haxProperties;
+  it("exposes haxProperties for the HAX editor", async () => {
+    const props = await haxSchema(StarRating);
     expect(props).to.exist;
     expect(props.canScale).to.equal(true);
-    expect(props.gizmo.title).to.equal("Star Rating");
+    expect(props.gizmo.title).to.equal("Star rating");
     expect(props.gizmo.icon).to.equal("icons:star");
     expect(props.gizmo.handles).to.deep.equal([]);
     const configure = props.settings.configure.map((s) => s.property);
@@ -30,6 +37,8 @@ describe("star-rating behavior", () => {
       "possible",
       "numStars",
       "interactive",
+    ]);
+    expect(props.settings.advanced.map((s) => s.property)).to.deep.equal([
       "rubricScaleMode",
     ]);
   });

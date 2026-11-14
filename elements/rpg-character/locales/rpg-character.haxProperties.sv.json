@@ -11,11 +11,6 @@
         "description": "Ord som används för att generera en slumpmässig figur."
       },
       {
-        "property": "code",
-        "title": "Figurkod",
-        "description": "Klistra in en sparad kod för att återskapa den figuren."
-      },
-      {
         "property": "hat",
         "title": "Hatt",
         "description": "Hattstil.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Mask",
-        "description": "Mask som bärs över ansiktet eller huvudet.",
-        "options": {
-          "none": "Ingen",
-          "lion": "Lejon",
-          "plague": "Pestdoktor",
-          "theater": "Teater",
-          "pumpkin": "Pumpa",
-          "ghost": "Spöke",
-          "mummy": "Mumie",
-          "wrestler": "Brottarmask",
-          "block-head": "Blockhuvud",
-          "web": "Nätmask",
-          "werewolf": "Varulvsansikte",
-          "shadow": "Skuggansikte"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Smink",
-        "description": "Ansiktsfärg eller läppstift.",
-        "options": {
-          "none": "Inget",
-          "red-lipstick": "Rött läppstift",
-          "pink-lipstick": "Rosa läppstift",
-          "berry-lipstick": "Bärfärgat läppstift",
-          "clown": "Clownsmink",
-          "fangs": "Vampyrtänder",
-          "skull": "Dödskallesmink",
-          "zombie": "Zombiesmink",
-          "red-nose": "Röd näsa",
-          "white-beard": "Vitt skägg",
-          "domino": "Hjältemask",
-          "carrot": "Morotsnäsa",
-          "bunny": "Harnäsa",
-          "mustache": "Mustasch",
-          "monster": "Monstersminkning",
-          "round-glasses": "Runda glasögon"
-        }
-      },
-      {
         "property": "expression",
         "title": "Uttryck",
         "description": "Ansiktsuttryck.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Husdjur",
+        "description": "Husdjur bredvid figuren.",
+        "options": {
+          "none": "Inget",
+          "cat": "Katt",
+          "dog": "Hund",
+          "bunny": "Kanin",
+          "goldfish": "Guldfisk",
+          "slime": "Slem",
+          "squirrel": "Ekorre",
+          "dragon": "Drakunge",
+          "parrot": "Papegoja",
+          "owl": "Uggla",
+          "bat": "Fladdermus"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Figurkod",
+        "description": "Klistra in en sparad kod för att återskapa den figuren."
+      },
+      {
+        "property": "mask",
+        "title": "Mask",
+        "description": "Mask som bärs över ansiktet eller huvudet.",
+        "options": {
+          "none": "Ingen",
+          "lion": "Lejon",
+          "plague": "Pestdoktor",
+          "theater": "Teater",
+          "pumpkin": "Pumpa",
+          "ghost": "Spöke",
+          "mummy": "Mumie",
+          "wrestler": "Brottarmask",
+          "block-head": "Blockhuvud",
+          "web": "Nätmask",
+          "werewolf": "Varulvsansikte",
+          "shadow": "Skuggansikte"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Smink",
+        "description": "Ansiktsfärg eller läppstift.",
+        "options": {
+          "none": "Inget",
+          "red-lipstick": "Rött läppstift",
+          "pink-lipstick": "Rosa läppstift",
+          "berry-lipstick": "Bärfärgat läppstift",
+          "clown": "Clownsmink",
+          "fangs": "Vampyrtänder",
+          "skull": "Dödskallesmink",
+          "zombie": "Zombiesmink",
+          "red-nose": "Röd näsa",
+          "white-beard": "Vitt skägg",
+          "domino": "Hjältemask",
+          "carrot": "Morotsnäsa",
+          "bunny": "Harnäsa",
+          "mustache": "Mustasch",
+          "monster": "Monstersminkning",
+          "round-glasses": "Runda glasögon"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Flaggtext",
         "description": "Upp till 4 bokstäver visas på flaggan."
@@ -310,24 +330,6 @@
           "skates": "Skridskor",
           "skateboard": "Skateboard",
           "hoverboard": "Svävbräda"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Husdjur",
-        "description": "Husdjur bredvid figuren.",
-        "options": {
-          "none": "Inget",
-          "cat": "Katt",
-          "dog": "Hund",
-          "bunny": "Kanin",
-          "goldfish": "Guldfisk",
-          "slime": "Slem",
-          "squirrel": "Ekorre",
-          "dragon": "Drakunge",
-          "parrot": "Papegoja",
-          "owl": "Uggla",
-          "bat": "Fladdermus"
         }
       },
       {

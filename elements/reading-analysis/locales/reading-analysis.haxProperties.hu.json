@@ -38,21 +38,6 @@
         "slot": "",
         "title": "Szöveg",
         "description": "A szöveg, amelyben a tanulók dolgoznak. Bármilyen HTML: címsorok, bekezdések, listák és ábrák."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "Értékelési formátum",
-        "description": "OER Schema: az értékelés pontozási formátuma (pl. pont, érdemjegy, százalék, teljesítés)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Tanulási cél",
-        "description": "OER Schema: az értékeléshez kapcsolódó tanulási cél."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kurzus",
-        "description": "OER Schema: a kurzus, amelyhez az értékelés készült."
       }
     ],
     "advanced": [
@@ -70,6 +55,16 @@
         "property": "collapsed",
         "title": "Összecsukva induljon",
         "description": "Összecsukható esetén zárt sorként indul, amely csak a kérdést és az állapotát mutatja."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Értékelési formátum",
+        "description": "OER Schema: az értékelés pontozási formátuma (pl. pont, érdemjegy, százalék, teljesítés)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Tanulási cél",
+        "description": "OER Schema: az értékeléshez kapcsolódó tanulási cél."
       }
     ],
     "developer": [
@@ -77,6 +72,11 @@
         "property": "quizName",
         "title": "A kvíz neve",
         "description": "A kvíz neve, amely xAPI-alapú környezetekben az elem azonosítására szolgál"
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurzus",
+        "description": "OER Schema: a kurzus, amelyhez az értékelés készült."
       }
     ]
   }

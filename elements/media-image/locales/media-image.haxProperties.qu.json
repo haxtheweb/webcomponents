@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Rikch'a willay",
         "description": "Siq'ipaq willakuy qillqa."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Siq'ip Sutin",
-        "description": "Siq'i unanchapaq suti."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Siq'ip Willakuynin",
-        "description": "Siq'i unanchapaq willakuy."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Siq'i modalta wañuchiy",
         "description": "Ñit'iykunata wañuchiy siq'ita siq'i qhawaq willanakuypi mana kichananpaq."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Siq'ip Sutin",
+        "description": "Siq'i unanchapaq suti."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Siq'ip Willakuynin",
+        "description": "Siq'i unanchapaq willakuy."
       }
     ],
     "developer": [

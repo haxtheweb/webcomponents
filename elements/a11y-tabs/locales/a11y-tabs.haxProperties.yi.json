@@ -11,20 +11,17 @@
         "description": "צוטריטלעכע באַצייכענונג פֿאַרן סעט טאַבן."
       },
       {
-        "property": "disabled",
-        "title": "אויסגעשאַלטן",
-        "description": "אויסשאַלטן אַלע טאַבן."
-      },
-      {
-        "property": "hidden",
-        "title": "באַהאַלטן",
-        "description": "באַהאַלטן דעם סעט טאַבן."
-      },
-      {
         "property": "sticky",
         "title": "קלעפּיק",
         "description": "האַלטן די האָריזאָנטאַלע טאַבן אויבן בעתן סקראָלירן."
       },
+      {
+        "slot": "",
+        "title": "טאַבן",
+        "description": "א רייע <a11y-tab/> עלעמענטן."
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "אויסלייג־ברעכפּונקט",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "איקאָן־ברעכפּונקט",
         "description": "ברעכפּונקט פֿאַר ווײַזן טעקסט מיט איקאָנען. דעפֿאָלט איז 0; ניצט -1 פֿאַר נאָר איקאָנען."
-      },
-      {
-        "slot": "",
-        "title": "טאַבן",
-        "description": "א רייע <a11y-tab/> עלעמענטן."
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "אויסגעשאַלטן",
+        "description": "אויסשאַלטן אַלע טאַבן."
+      },
+      {
+        "property": "hidden",
+        "title": "באַהאַלטן",
+        "description": "באַהאַלטן דעם סעט טאַבן."
+      },
       {
         "property": "id",
         "title": "אייגנאַרטיקער ID",

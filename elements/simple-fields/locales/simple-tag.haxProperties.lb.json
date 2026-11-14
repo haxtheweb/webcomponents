@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Automatesch Akzentfaarf",
         "description": "D'Akzentfaarf automatesch aus dem Etiketttext ofleeden."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Ofbriechknäppchen",
-        "description": "En Ikon-Knäppchen zum Ewechhuelen/Ofbriechen an der Pëll weisen."
-      },
-      {
-        "property": "readonly",
-        "title": "Nëmme liesen",
-        "description": "Den Ofbriechknäppchen verstoppen, sou datt d'Pëll nëmmen ugewise gëtt."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Bloogro",
           "grey": "Gro"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Ofbriechknäppchen",
+        "description": "En Ikon-Knäppchen zum Ewechhuelen/Ofbriechen an der Pëll weisen."
+      },
+      {
+        "property": "readonly",
+        "title": "Nëmme liesen",
+        "description": "Den Ofbriechknäppchen verstoppen, sou datt d'Pëll nëmmen ugewise gëtt."
       }
     ]
   }

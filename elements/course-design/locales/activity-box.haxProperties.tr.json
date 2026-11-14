@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Etkinlik Kutusu",
-    "description": "Küçük, biçimlendirilmiş başlık bloğu."
+    "description": "Bir etkinliğin başlangıcını belirten etiketli başlık."
   },
   "settings": {
     "configure": [

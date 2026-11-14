@@ -89,7 +89,9 @@
         "property": "gameTitle",
         "title": "Ingoa kēmu",
         "description": "Ka tapaina tēnei kēmu i ngā takahanga ahunga whakamua me te tohu OER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Tohu kēmu",

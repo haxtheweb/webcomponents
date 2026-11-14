@@ -38,21 +38,6 @@
         "slot": "",
         "title": "পাঠ",
         "description": "যে পাঠে শিক্ষার্থীরা কাজ করে। যেকোনো HTML: শিরোনাম, অনুচ্ছেদ, তালিকা ও চিত্র।"
-      },
-      {
-        "property": "gradingFormat",
-        "title": "মূল্যায়ন পদ্ধতি",
-        "description": "OER Schema: এই মূল্যায়নের গ্রেডিং পদ্ধতি (যেমন পয়েন্ট, লেটার, শতাংশ, সম্পন্নতা)।"
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "শিখনফল",
-        "description": "OER Schema: এই মূল্যায়নের সাথে সম্পর্কিত শিখনফল।"
-      },
-      {
-        "property": "forCourse",
-        "title": "কোর্স",
-        "description": "OER Schema: যে কোর্সের জন্য এই মূল্যায়ন উদ্দিষ্ট।"
       }
     ],
     "advanced": [
@@ -70,6 +55,16 @@
         "property": "collapsed",
         "title": "ভাঁজ করা অবস্থায় শুরু করুন",
         "description": "ভাঁজযোগ্য হলে, শুধু প্রশ্ন ও তার অবস্থা দেখানো একটি বন্ধ সারি হিসেবে শুরু হবে।"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "মূল্যায়ন পদ্ধতি",
+        "description": "OER Schema: এই মূল্যায়নের গ্রেডিং পদ্ধতি (যেমন পয়েন্ট, লেটার, শতাংশ, সম্পন্নতা)।"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "শিখনফল",
+        "description": "OER Schema: এই মূল্যায়নের সাথে সম্পর্কিত শিখনফল।"
       }
     ],
     "developer": [
@@ -77,6 +72,11 @@
         "property": "quizName",
         "title": "কুইজের নাম",
         "description": "xAPI-চালিত পরিবেশে এই আইটেম শনাক্ত করতে ব্যবহৃত কুইজের নাম"
+      },
+      {
+        "property": "forCourse",
+        "title": "কোর্স",
+        "description": "OER Schema: যে কোর্সের জন্য এই মূল্যায়ন উদ্দিষ্ট।"
       }
     ]
   }

@@ -11,20 +11,17 @@
         "description": "Nhãn dễ tiếp cận cho bộ thẻ tab."
       },
       {
-        "property": "disabled",
-        "title": "Vô hiệu hóa",
-        "description": "Vô hiệu hóa tất cả các tab."
-      },
-      {
-        "property": "hidden",
-        "title": "Ẩn",
-        "description": "Ẩn bộ thẻ tab."
-      },
-      {
         "property": "sticky",
         "title": "Cố định",
         "description": "Giữ các tab ngang ở trên cùng khi cuộn."
       },
+      {
+        "slot": "",
+        "title": "Thẻ tab",
+        "description": "Chuỗi các phần tử <a11y-tab/>."
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "Điểm ngắt bố cục",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "Điểm ngắt biểu tượng",
         "description": "Điểm ngắt để hiển thị văn bản kèm biểu tượng. Mặc định là 0; dùng -1 cho chế độ chỉ biểu tượng."
-      },
-      {
-        "slot": "",
-        "title": "Thẻ tab",
-        "description": "Chuỗi các phần tử <a11y-tab/>."
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "Vô hiệu hóa",
+        "description": "Vô hiệu hóa tất cả các tab."
+      },
+      {
+        "property": "hidden",
+        "title": "Ẩn",
+        "description": "Ẩn bộ thẻ tab."
+      },
       {
         "property": "id",
         "title": "ID duy nhất",

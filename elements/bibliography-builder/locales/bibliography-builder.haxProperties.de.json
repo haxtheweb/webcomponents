@@ -9,7 +9,9 @@
         "slot": "",
         "title": "Quellenangaben",
         "description": "Quellenangaben in diesem Literaturverzeichnis"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "Kurs",

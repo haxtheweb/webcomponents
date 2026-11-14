@@ -4,17 +4,16 @@
     "description": "Yuklangan .h5p faylidan H5P interaktiv kontentini H5P serversiz ijro etadi"
   },
   "settings": {
-    "configure": [
-      {
-        "slot": "",
-        "description": ".h5p faylini yuklang yoki havolasini bering. U brauzerda ochiladi; H5P serveri talab qilinmaydi.",
-        "title": "H5P fayli"
-      }
-    ],
+    "configure": [],
     "advanced": [
       {
         "title": "Eski iframe joylash kodi",
         "description": "Faqat boshqa saytdan H5P iframe joylaydigan eski kontent uchun. Yuqorida .h5p fayli belgilangan bo'lsa, bo'sh qoldiring."
+      },
+      {
+        "slot": "",
+        "description": ".h5p faylini yuklang yoki havolasini bering. U brauzerda ochiladi; H5P serveri talab qilinmaydi.",
+        "title": "H5P fayli"
       }
     ]
   }

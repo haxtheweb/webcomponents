@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Tehtävälaatikko",
-    "description": "Pieni muotoiltu otsikkolohko."
+    "description": "Otsikko ja tunniste, joka merkitsee tehtävän alun."
   },
   "settings": {
     "configure": [

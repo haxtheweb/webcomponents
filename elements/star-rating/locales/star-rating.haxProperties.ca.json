@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Valoració amb estrelles",
-    "description": "Giny de visualització de valoració o botó per valorar."
+    "description": "Mostreu una valoració amb estrelles o deixeu que els lectors en triïn una."
   },
   "settings": {
     "configure": [
@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Interactiu",
         "description": "Permet que l'usuari interactuï per definir la valoració."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Mode d'escala de rúbrica",

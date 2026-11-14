@@ -6,11 +6,11 @@
   "license": "Apache-2.0",
   "title": "Side note",
   "description": "A note set apart from the surrounding content, with an optional icon and label.",
-  "icon": "icons:bookmark",
+  "icon": "editor:insert-comment",
   "tags": [
     "Instructional",
-    "Layout",
-    "Content"
+    "layout",
+    "content"
   ],
   "haxCapable": true,
   "import": "@haxtheweb/lrndesign-sidenote/lrndesign-sidenote.js",
@@ -79,12 +79,12 @@
     "gizmo": {
       "title": "Side note",
       "description": "A note set apart from the surrounding content, with an optional icon and label.",
-      "icon": "icons:bookmark",
+      "icon": "editor:insert-comment",
       "color": "blue",
       "tags": [
         "Instructional",
-        "Layout",
-        "Content"
+        "layout",
+        "content"
       ],
       "handles": [],
       "meta": {

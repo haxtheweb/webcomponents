@@ -11,6 +11,13 @@
         "description": "ایس AR فائل دا URL۔"
       },
       {
+        "property": "skyColor",
+        "title": "اسمان دا رنگ",
+        "description": "منظر وچ اسمان دا رنگ چݨو۔"
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "AR وچ عنصر دی X پوزیشن۔"
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "AR وچ عنصر دی Z پوزیشن۔"
-      },
-      {
-        "property": "skyColor",
-        "title": "اسمان دا رنگ",
-        "description": "منظر وچ اسمان دا رنگ چݨو۔"
       }
     ]
   }

@@ -11,20 +11,17 @@
         "description": "ট্যাব সেটের অ্যাক্সেসযোগ্য লেবেল।"
       },
       {
-        "property": "disabled",
-        "title": "নিষ্ক্রিয়",
-        "description": "সব ট্যাব নিষ্ক্রিয় করুন।"
-      },
-      {
-        "property": "hidden",
-        "title": "লুকানো",
-        "description": "ট্যাব সেটটি লুকান।"
-      },
-      {
         "property": "sticky",
         "title": "স্থির (স্টিকি)",
         "description": "স্ক্রল করার সময় অনুভূমিক ট্যাবগুলো উপরে রাখুন।"
       },
+      {
+        "slot": "",
+        "title": "ট্যাব",
+        "description": "<a11y-tab/> উপাদানের ধারাবাহিক তালিকা।"
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "লেআউট ব্রেকপয়েন্ট",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "আইকন ব্রেকপয়েন্ট",
         "description": "আইকনের সাথে টেক্সট দেখানোর ব্রেকপয়েন্ট। ডিফল্ট 0; শুধু আইকন মোডের জন্য -1 ব্যবহার করুন।"
-      },
-      {
-        "slot": "",
-        "title": "ট্যাব",
-        "description": "<a11y-tab/> উপাদানের ধারাবাহিক তালিকা।"
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "নিষ্ক্রিয়",
+        "description": "সব ট্যাব নিষ্ক্রিয় করুন।"
+      },
+      {
+        "property": "hidden",
+        "title": "লুকানো",
+        "description": "ট্যাব সেটটি লুকান।"
+      },
       {
         "property": "id",
         "title": "অনন্য ID",

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Sarcasme",
-    "description": "Presenta text d'una manera burleta"
+    "description": "Text amb majúscules alternades per a un to sarcàstic."
   },
   "settings": {
     "configure": [

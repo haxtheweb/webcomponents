@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Plakato paveikslėlis",
         "description": "Plakato paveikslėlio URL."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Teksto takeliai",
         "description": "Vaizdo įrašo titrai, subtitrai, aprašymai ir kiti teksto takeliai."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Pradžios laikas",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Garsinio vaizdavimo takelis",
         "description": "Garsinio vaizdavimo takelio (MP3 failo), kuriame įgarsinami vaizdiniai elementai, URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcento spalva",
+        "description": "(nebenaudojama) Pasirinkite grotuvo akcento spalvą."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Kalba",
         "description": "Medijos kalba."
-      },
-      {
-        "property": "accentColor",
-        "title": "Akcento spalva",
-        "description": "(nebenaudojama) Pasirinkite grotuvo akcento spalvą."
       }
     ]
   }

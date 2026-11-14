@@ -14,28 +14,6 @@
         "property": "statement",
         "title": "بیان",
         "description": "اوہ بیان جیہڑا لفظاں تے نشان لاوݨ والے تعامل وچ بدلیا جاوے گا۔"
-      },
-      {
-        "property": "gradingFormat",
-        "title": "گریڈنگ فارمیٹ",
-        "description": "OER Schema: ایس جائزے دا گریڈنگ فارمیٹ (جیویں پوائنٹ، حرف، فیصد، تکمیل)۔"
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "سکھݨ دا مقصد",
-        "description": "OER Schema: ایس جائزے نال جڑیا سکھݨ دا مقصد۔"
-      },
-      {
-        "property": "forCourse",
-        "title": "کورس",
-        "description": "OER Schema: اوہ کورس جیہدے لئی ایہہ جائزہ اے۔"
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "کوئز دا ناں",
-        "description": "xAPI والے ماحول وچ ایس آئٹم دی شناخت لئی بھیجیا جاوݨ والا کوئز دا ناں"
       }
     ],
     "advanced": [
@@ -46,6 +24,28 @@
       {
         "title": "سمیٹ کے شروع کرو",
         "description": "جدوں سمیٹن جوگا ہووے تاں بند قطار وجوں شروع ہووے جو صرف سوال تے اوہدی حالت وکھاندی اے۔"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "گریڈنگ فارمیٹ",
+        "description": "OER Schema: ایس جائزے دا گریڈنگ فارمیٹ (جیویں پوائنٹ، حرف، فیصد، تکمیل)۔"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "سکھݨ دا مقصد",
+        "description": "OER Schema: ایس جائزے نال جڑیا سکھݨ دا مقصد۔"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "کوئز دا ناں",
+        "description": "xAPI والے ماحول وچ ایس آئٹم دی شناخت لئی بھیجیا جاوݨ والا کوئز دا ناں"
+      },
+      {
+        "property": "forCourse",
+        "title": "کورس",
+        "description": "OER Schema: اوہ کورس جیہدے لئی ایہہ جائزہ اے۔"
       }
     ]
   }

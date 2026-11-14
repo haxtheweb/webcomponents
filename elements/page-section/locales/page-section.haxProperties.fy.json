@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "Knoppen",
         "description": "Knoppegroep ûnder de tekst."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "Ankertekst",
         "description": "Ankerlabel yn de navigaasje."
       }
-    ]
+    ],
+    "developer": []
   }
 }

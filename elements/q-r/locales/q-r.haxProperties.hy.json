@@ -14,16 +14,6 @@
         "property": "title",
         "title": "Այլընտրանքային վերնագիր",
         "description": "QR կոդի աղբյուրին կապված այլընտրանքային վերնագիր։"
-      },
-      {
-        "property": "modulesize",
-        "title": "Չափ",
-        "description": "QR կոդի չափը։"
-      },
-      {
-        "property": "margin",
-        "title": "Լուսանցք",
-        "description": "Կոդի շուրջը եղած տարածքը։"
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "Չափ",
+        "description": "QR կոդի չափը։"
+      },
+      {
+        "property": "margin",
+        "title": "Լուսանցք",
+        "description": "Կոդի շուրջը եղած տարածքը։"
       }
     ]
   }

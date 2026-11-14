@@ -4,7 +4,7 @@
     "description": "Bllok dinamik për të shfaqur nënfaqet e faqes aktuale"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "Metoda dinamike",
@@ -14,7 +14,9 @@
           "parent": "Nënfaqet e prindit",
           "ancestor": "Të gjitha nënfaqet nga paraardhësi më i lartë"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "Niveli i fillimit"

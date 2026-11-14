@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Parallaksebillede",
-    "description": "Billede, der ruller forbi"
+    "description": "Et billede i fuld bredde, der ruller langsommere end siden, med en overskrift ovenpå."
   },
   "settings": {
     "configure": [

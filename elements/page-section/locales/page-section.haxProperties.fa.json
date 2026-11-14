@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "دکمه‌ها",
         "description": "گروه دکمه‌هایی که زیر متن نمایش داده می‌شود."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "متن لنگر",
         "description": "برچسب لنگر که در ناوبری نمایش داده می‌شود."
       }
-    ]
+    ],
+    "developer": []
   }
 }

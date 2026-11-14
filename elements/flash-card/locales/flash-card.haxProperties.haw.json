@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Kumu Kiʻi",
         "description": "Faila kiʻi i hoʻohana ʻia no ke kāleka. Pani ʻo ia i ka Huaʻōlelo Kiʻi."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Huaʻōlelo Kiʻi",
+        "description": "Huaʻōlelo kiʻi kaulele. Pani ʻia e ke Kumu Kiʻi."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Pahuhopu Aʻo",
         "description": "OER Schema: ID a URL paha o ka pahuhopu aʻo i kākoʻo ʻia e kēia hoʻomaʻamaʻa."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Huaʻōlelo Kiʻi",
-        "description": "Huaʻōlelo kiʻi kaulele. Pani ʻia e ke Kumu Kiʻi."
       }
     ]
   }

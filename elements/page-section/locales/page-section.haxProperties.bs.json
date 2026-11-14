@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "Dugmad",
         "description": "Grupa dugmadi prikazana ispod teksta."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "Tekst sidra",
         "description": "Oznaka sidra prikazana u navigaciji."
       }
-    ]
+    ],
+    "developer": []
   }
 }

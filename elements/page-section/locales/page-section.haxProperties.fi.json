@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "Painikkeet",
         "description": "Tekstin alla näytettävä painikeryhmä."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "Ankkuriteksti",
         "description": "Navigaatiossa näytettävä ankkurin nimike."
       }
-    ]
+    ],
+    "developer": []
   }
 }

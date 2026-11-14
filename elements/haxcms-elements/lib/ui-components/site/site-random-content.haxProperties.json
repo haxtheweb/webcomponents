@@ -1,0 +1,37 @@
+{
+  "canScale": false,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "Random page content",
+    "description": "Display a random top-level element from a selected page",
+    "icon": "av:shuffle",
+    "color": "purple",
+    "tags": ["Site", "haxcms", "random", "page", "content"],
+    "handles": [],
+    "meta": {
+      "author": "HAXcms"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "page",
+        "title": "Page",
+        "description": "Select the page to draw random content from. The element will randomly display one of the top-level HTML elements from this page.",
+        "inputMethod": "select",
+        "itemsList": [],
+        "required": true
+      }
+    ],
+    "advanced": []
+  },
+  "demoSchema": [
+    {
+      "tag": "site-random-content",
+      "properties": {
+        "page": null
+      },
+      "content": ""
+    }
+  ]
+}

@@ -11,11 +11,6 @@
         "description": "Izwi rinoshandiswa kugadzira mutambi asina kurongwa."
       },
       {
-        "property": "code",
-        "title": "Kodhi yemunhu",
-        "description": "Namira kodhi yakachengetwa kuti ugadzire zvakare munhu iyeye."
-      },
-      {
         "property": "hat",
         "title": "Ngowani",
         "description": "Mhando yengowani.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Chifukidzo chemeso",
-        "description": "Chifukidzo chinopfekwa pameso kana pamusoro.",
-        "options": {
-          "none": "Hapana",
-          "lion": "Shumba",
-          "plague": "Chiremba wedenda",
-          "theater": "Teatari",
-          "pumpkin": "Manhanga",
-          "ghost": "Mweya",
-          "mummy": "Mummy",
-          "wrestler": "Masiki yemutsimba",
-          "block-head": "Musoro webhuroko",
-          "web": "Masiki yedandemutande",
-          "werewolf": "Chiso chemunhu-mhumhi",
-          "shadow": "Chiso chemumvuri"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Kuzora kumeso",
-        "description": "Penti yemeso kana lipsitiki.",
-        "options": {
-          "none": "Hapana",
-          "red-lipstick": "Lipsitiki tsvuku",
-          "pink-lipstick": "Lipsitiki pingi",
-          "berry-lipstick": "Lipsitiki yeberi",
-          "clown": "Penti yeclown",
-          "fangs": "Mazino marefu",
-          "skull": "Penti yebendekete",
-          "zombie": "Penti yezombie",
-          "red-nose": "Mhino tsvuku",
-          "white-beard": "Ndebvu chena",
-          "domino": "Chifukidzo chegamba",
-          "carrot": "Mhino yekaroti",
-          "bunny": "Mhino yetsuro",
-          "mustache": "Ndebvu dzepamuromo",
-          "monster": "Pendi yechiso chechikara",
-          "round-glasses": "Magirazi akatenderera"
-        }
-      },
-      {
         "property": "expression",
         "title": "Chimiro chechiso",
         "description": "Chimiro chechiso.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Mhuka yepamba",
+        "description": "Mhuka yepamba iri padivi pemutambi.",
+        "options": {
+          "none": "Hapana",
+          "cat": "Katsi",
+          "dog": "Imbwa",
+          "bunny": "Tsuro",
+          "goldfish": "Hove yegoridhe",
+          "slime": "Dope",
+          "squirrel": "Tsindi",
+          "dragon": "Dhiragoni diki",
+          "parrot": "Paroti",
+          "owl": "Zizi",
+          "bat": "Chiremwaremwa"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Kodhi yemunhu",
+        "description": "Namira kodhi yakachengetwa kuti ugadzire zvakare munhu iyeye."
+      },
+      {
+        "property": "mask",
+        "title": "Chifukidzo chemeso",
+        "description": "Chifukidzo chinopfekwa pameso kana pamusoro.",
+        "options": {
+          "none": "Hapana",
+          "lion": "Shumba",
+          "plague": "Chiremba wedenda",
+          "theater": "Teatari",
+          "pumpkin": "Manhanga",
+          "ghost": "Mweya",
+          "mummy": "Mummy",
+          "wrestler": "Masiki yemutsimba",
+          "block-head": "Musoro webhuroko",
+          "web": "Masiki yedandemutande",
+          "werewolf": "Chiso chemunhu-mhumhi",
+          "shadow": "Chiso chemumvuri"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Kuzora kumeso",
+        "description": "Penti yemeso kana lipsitiki.",
+        "options": {
+          "none": "Hapana",
+          "red-lipstick": "Lipsitiki tsvuku",
+          "pink-lipstick": "Lipsitiki pingi",
+          "berry-lipstick": "Lipsitiki yeberi",
+          "clown": "Penti yeclown",
+          "fangs": "Mazino marefu",
+          "skull": "Penti yebendekete",
+          "zombie": "Penti yezombie",
+          "red-nose": "Mhino tsvuku",
+          "white-beard": "Ndebvu chena",
+          "domino": "Chifukidzo chegamba",
+          "carrot": "Mhino yekaroti",
+          "bunny": "Mhino yetsuro",
+          "mustache": "Ndebvu dzepamuromo",
+          "monster": "Pendi yechiso chechikara",
+          "round-glasses": "Magirazi akatenderera"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Zvakanyorwa pamureza",
         "description": "Mavara anosvika mana anoratidzwa pamureza."
@@ -310,24 +330,6 @@
           "skates": "Skates",
           "skateboard": "Skateboard",
           "hoverboard": "Bhodhi rinobhururuka"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Mhuka yepamba",
-        "description": "Mhuka yepamba iri padivi pemutambi.",
-        "options": {
-          "none": "Hapana",
-          "cat": "Katsi",
-          "dog": "Imbwa",
-          "bunny": "Tsuro",
-          "goldfish": "Hove yegoridhe",
-          "slime": "Dope",
-          "squirrel": "Tsindi",
-          "dragon": "Dhiragoni diki",
-          "parrot": "Paroti",
-          "owl": "Zizi",
-          "bat": "Chiremwaremwa"
         }
       },
       {

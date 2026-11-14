@@ -26,11 +26,6 @@
         "description": "Test alternattiv għall-immaġni."
       },
       {
-        "property": "animated",
-        "title": "Animat",
-        "description": "Jekk il-progress jiġix animat meta jitgħabba l-ewwel darba"
-      },
-      {
         "property": "complete",
         "title": "Lest",
         "description": "Array ta' valuri lesti."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "Total",
         "description": "Total meta l-oġġetti kollha jkunu lesti."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "Animat",
+        "description": "Jekk il-progress jiġix animat meta jitgħabba l-ewwel darba"
       },
       {
         "property": "startAngle",

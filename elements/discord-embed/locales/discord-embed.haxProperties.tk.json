@@ -9,7 +9,9 @@
         "property": "source",
         "title": "Çeşmäniň URL-i",
         "description": "Çeşmäniň URL-i."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Beýiklik",

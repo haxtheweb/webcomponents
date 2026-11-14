@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "说明文字",
         "description": "图片的说明文字。"
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "图片标题",
-        "description": "图片标签的标题。"
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "图片描述",
-        "description": "图片标签的描述。"
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "禁用图片对话框",
         "description": "禁止点击后在图片查看器对话框中打开图片。"
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "图片标题",
+        "description": "图片标签的标题。"
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "图片描述",
+        "description": "图片标签的描述。"
       }
     ],
     "developer": [

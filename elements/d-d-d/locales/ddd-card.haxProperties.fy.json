@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Gjin pylk",
         "description": "De pylk fan de knop ferbergje."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Keppeling: doel",
@@ -54,7 +52,9 @@
           "_top": "Boppeste finster - _top",
           "_parent": "Aldersfinster - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Keppeling: rel",

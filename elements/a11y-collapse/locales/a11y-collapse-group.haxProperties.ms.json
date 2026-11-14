@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "Kumpulan Kembang Kuncup",
-    "description": "Sekumpulan elemen kembang kuncup."
+    "title": "Kumpulan boleh runtuh",
+    "description": "Sekumpulan bekas yang boleh diruntuhkan."
   },
   "settings": {
     "configure": [

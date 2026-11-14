@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Stavka koraka",
-    "description": "Stavka koja je dio popisa koraka"
+    "description": "Jedan korak na popisu koraka."
   },
   "settings": {
     "configure": [

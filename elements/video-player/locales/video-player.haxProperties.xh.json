@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Umfanekiso wepowusta",
         "description": "I-URL yomfanekiso wepowusta."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Iitreki zombhalo",
         "description": "Imibhalo engezantsi, imibhalo eguqulelweyo, iinkcazo nezinye iitreki zombhalo zevidiyo."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Ixesha lokuqala",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Itreki yenkcazo ngesandi",
         "description": "I-URL eya kwitreki yenkcazo ngesandi (ifayile ye-MP3) echaza izinto ezibonakalayo."
+      },
+      {
+        "property": "accentColor",
+        "title": "Umbala ogqamisayo",
+        "description": "(ayisasetyenziswa) Khetha umbala wogxininiso womdlali."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Ulwimi",
         "description": "Ulwimi lwemidiya."
-      },
-      {
-        "property": "accentColor",
-        "title": "Umbala ogqamisayo",
-        "description": "(ayisasetyenziswa) Khetha umbala wogxininiso womdlali."
       }
     ]
   }

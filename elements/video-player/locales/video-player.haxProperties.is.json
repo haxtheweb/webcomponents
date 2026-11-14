@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Forsíðumynd",
         "description": "URL forsíðumyndar."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Textarásir",
         "description": "Skjátextar, þýðingartextar, lýsingar og aðrar textarásir fyrir myndbandið."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Upphafstími",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Hljóðlýsingarrás",
         "description": "URL á hljóðlýsingarrás (MP3 skrá) sem segir frá sjónrænum atriðum."
+      },
+      {
+        "property": "accentColor",
+        "title": "Áherslulitur",
+        "description": "(úrelt) Veldu áherslulit spilarans."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Tungumál",
         "description": "Tungumál miðilsins."
-      },
-      {
-        "property": "accentColor",
-        "title": "Áherslulitur",
-        "description": "(úrelt) Veldu áherslulit spilarans."
       }
     ]
   }

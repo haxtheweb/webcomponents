@@ -286,12 +286,27 @@ export class IframeLoader extends LitElement {
   /**
    * HTMLElement lifecycle
    */
+  connectedCallback() {
+    super.connectedCallback();
+    // restore what disconnectedCallback released; the HAX editor moves
+    // elements by removing and re-adding them
+    this.__observer.observe(this, {
+      childList: true,
+    });
+    if (this.__iframe) {
+      this.__iframe.addEventListener("load", this.__iframeLoadingCallback);
+      this.__mutationObserver.observe(this.__iframe, {
+        attributes: true,
+      });
+    }
+  }
   disconnectedCallback() {
     super.disconnectedCallback();
     if (this.__iframe) {
       this.__iframe.removeEventListener("load", this.__iframeLoadingCallback);
     }
     this.__observer.disconnect();
+    this.__mutationObserver.disconnect();
   }
   /**
    * LitElement lifecycle — derive reactive state before render

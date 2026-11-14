@@ -10,10 +10,6 @@
         "title": "Lambang Tab"
       },
       {
-        "property": "disabled",
-        "title": "Dipateni"
-      },
-      {
         "property": "label",
         "title": "Label Tab"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "ID Unik"
-      },
-      {
         "property": "flag",
         "title": "Teks Gendera Opsional"
       },
       {
         "property": "flagIcon",
         "title": "Lambang Gendera Opsional"
+      },
+      {
+        "property": "disabled",
+        "title": "Dipateni"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "ID Unik"
       }
     ]
   }

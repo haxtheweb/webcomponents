@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Avtomatik urgʻu rangi",
         "description": "Urgʻu rangini yorliq matnidan avtomatik aniqlash."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Bekor qilish tugmasi",
-        "description": "Tabletka ichida olib tashlash/bekor qilish belgi tugmasini koʻrsatish."
-      },
-      {
-        "property": "readonly",
-        "title": "Faqat oʻqish uchun",
-        "description": "Tabletka faqat koʻrsatish uchun boʻlishi uchun bekor qilish tugmasini yashirish."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Koʻkimtir kulrang",
           "grey": "Kulrang"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Bekor qilish tugmasi",
+        "description": "Tabletka ichida olib tashlash/bekor qilish belgi tugmasini koʻrsatish."
+      },
+      {
+        "property": "readonly",
+        "title": "Faqat oʻqish uchun",
+        "description": "Tabletka faqat koʻrsatish uchun boʻlishi uchun bekor qilish tugmasini yashirish."
       }
     ]
   }

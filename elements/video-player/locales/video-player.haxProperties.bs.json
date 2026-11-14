@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Poster slika",
         "description": "URL poster slike."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Tekstualni zapisi",
         "description": "Titlovi za gluhe, prijevodni titlovi, opisi i drugi tekstualni zapisi za video."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Vrijeme početka",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Zapis audio opisa",
         "description": "URL zapisa audio opisa (MP3 datoteka) koji pruža naraciju vizuelnih elemenata."
+      },
+      {
+        "property": "accentColor",
+        "title": "Boja naglaska",
+        "description": "(zastarjelo) Odaberite boju naglaska za plejer."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Jezik",
         "description": "Jezik medija."
-      },
-      {
-        "property": "accentColor",
-        "title": "Boja naglaska",
-        "description": "(zastarjelo) Odaberite boju naglaska za plejer."
       }
     ]
   }

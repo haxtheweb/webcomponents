@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Ceadaigh Scagadh",
         "description": "Ceadaigh scagadh de réir luachanna colúin."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Stíliú Uimhriúil",
-        "description": "Cuir stíliú uimhriúil i bhfeidhm ar cholúin uimhriúla."
-      },
-      {
-        "property": "responsive",
-        "title": "Freagrúil",
-        "description": "Coigeartaigh leagan amach an tábla ar scáileáin bheaga."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Mód Rúibrice",
-        "description": "Léirigh an tábla seo mar Rubric de chuid OER Schema ionas go n-astaítear meiteashonraí Rubric, RubricScale, RubricCriterion agus RubricLevel."
-      },
-      {
-        "property": "rubricType",
-        "title": "Cineál Rúibrice",
-        "description": "Stíl rúibrice a astaítear mar oer:rubricType (níl brí leis ach nuair atá Mód Rúibrice ar siúl).",
-        "options": {
-          "": "(dada)",
-          "analytic": "Anailíseach",
-          "holistic": "Iomlánaíoch",
-          "single-point": "Pointe Aonair",
-          "checklist": "Seicliosta"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Cnaipe Priontála",
         "description": "Cuir cnaipe leis chun an tábla amháin a phriontáil."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Stíliú Uimhriúil",
+        "description": "Cuir stíliú uimhriúil i bhfeidhm ar cholúin uimhriúla."
+      },
+      {
+        "property": "responsive",
+        "title": "Freagrúil",
+        "description": "Coigeartaigh leagan amach an tábla ar scáileáin bheaga."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Mód Rúibrice",
+        "description": "Léirigh an tábla seo mar Rubric de chuid OER Schema ionas go n-astaítear meiteashonraí Rubric, RubricScale, RubricCriterion agus RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "Cineál Rúibrice",
+        "description": "Stíl rúibrice a astaítear mar oer:rubricType (níl brí leis ach nuair atá Mód Rúibrice ar siúl).",
+        "options": {
+          "": "(dada)",
+          "analytic": "Anailíseach",
+          "holistic": "Iomlánaíoch",
+          "single-point": "Pointe Aonair",
+          "checklist": "Seicliosta"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "Sonraí CSV",
         "description": "Cruthaigh tábla ó chomhad CSV uaslódáilte."
       }
-    ]
+    ],
+    "developer": []
   }
 }

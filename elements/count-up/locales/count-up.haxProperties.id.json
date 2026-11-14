@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Teks akhiran",
         "description": "Teks yang ditampilkan setelah angka (mis. '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Slot awalan",
-        "description": "Konten slot opsional sebelum angka."
-      },
-      {
-        "slot": "suffix",
-        "title": "Slot akhiran",
-        "description": "Konten slot opsional setelah angka."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Tanpa easing",
         "description": "Nonaktifkan easing agar hitungan berjalan linear."
+      },
+      {
+        "slot": "prefix",
+        "title": "Slot awalan",
+        "description": "Konten slot opsional sebelum angka."
+      },
+      {
+        "slot": "suffix",
+        "title": "Slot akhiran",
+        "description": "Konten slot opsional setelah angka."
       }
     ]
   }

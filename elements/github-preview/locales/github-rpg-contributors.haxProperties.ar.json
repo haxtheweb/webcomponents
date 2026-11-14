@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "قائمة المساهمين في GitHub",
-    "description": "يُعرضون كشخصيات RPG باستخدام GitHub API."
+    "description": "يعرض المساهمين في مستودع على هيئة شخصيات RPG."
   },
   "settings": {
     "configure": [

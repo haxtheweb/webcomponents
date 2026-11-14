@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Didascalia",
         "description": "Didascalia dell'immagine."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Titolo della figura",
-        "description": "Titolo per l'etichetta della figura."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Descrizione della figura",
-        "description": "Descrizione per l'etichetta della figura."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Disattiva finestra modale dell'immagine",
         "description": "Impedisce che il clic apra l'immagine in una finestra di ispezione."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Titolo della figura",
+        "description": "Titolo per l'etichetta della figura."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Descrizione della figura",
+        "description": "Descrizione per l'etichetta della figura."
       }
     ],
     "developer": [

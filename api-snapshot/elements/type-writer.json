@@ -18,7 +18,7 @@
   "cssParts": [],
   "cssProperties": [],
   "hax": {
-    "schema": "elements/type-writer/type-writer.js",
+    "schema": "elements/type-writer/lib/type-writer.haxProperties.json",
     "gizmo": true,
     "properties": [
       "cursorDuration",

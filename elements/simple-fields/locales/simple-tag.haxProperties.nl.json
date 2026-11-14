@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "Tag / pil",
+    "title": "Tag",
     "description": "Een compact pilvormig label met optionele accentkleur, annuleerknop of schakelaar."
   },
   "settings": {
@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Automatische accentkleur",
         "description": "Leid de accentkleur automatisch af uit de labeltekst."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Annuleerknop",
-        "description": "Toon een verwijder-/annuleerpictogramknop in de pil."
-      },
-      {
-        "property": "readonly",
-        "title": "Alleen-lezen",
-        "description": "Verberg de annuleerknop zodat de pil alleen ter weergave is."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Blauwgrijs",
           "grey": "Grijs"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Annuleerknop",
+        "description": "Toon een verwijder-/annuleerpictogramknop in de pil."
+      },
+      {
+        "property": "readonly",
+        "title": "Alleen-lezen",
+        "description": "Verberg de annuleerknop zodat de pil alleen ter weergave is."
       }
     ]
   }

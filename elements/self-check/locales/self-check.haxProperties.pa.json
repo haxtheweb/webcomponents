@@ -27,6 +27,13 @@
       {
         "slot": "",
         "title": "ਜਵਾਬ"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "ਹੋਰ ਲਿੰਕ",
+        "description": "ਵਾਧੂ ਜਾਣਕਾਰੀ ਲਈ ਲਿੰਕ।"
       },
       {
         "property": "hasLearningObjective",
@@ -37,13 +44,6 @@
         "property": "assessing",
         "title": "ਮੁਲਾਂਕਣ ਅਧੀਨ",
         "description": "oer:assessing ਵਜੋਂ ਜਾਰੀ ਗਤੀਵਿਧੀ ਦਾ ਹਵਾਲਾ।"
-      }
-    ],
-    "advanced": [
-      {
-        "property": "link",
-        "title": "ਹੋਰ ਲਿੰਕ",
-        "description": "ਵਾਧੂ ਜਾਣਕਾਰੀ ਲਈ ਲਿੰਕ।"
       }
     ]
   }

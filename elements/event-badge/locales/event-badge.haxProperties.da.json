@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Eventbadge",
-    "description": "Komponent til eventbadge."
+    "description": "Et navneskilt i konferencestil med foto, navn og organisation."
   },
   "settings": {
     "configure": [

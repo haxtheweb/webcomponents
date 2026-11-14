@@ -5,17 +5,20 @@
   "version": "26.8.0",
   "license": "Apache-2.0",
   "title": "Parallax image",
-  "description": "Image scroll by",
-  "icon": "av:play-circle-filled",
+  "description": "A full-width image that scrolls slower than the page, with a heading over it.",
+  "icon": "image:landscape",
   "tags": [
     "Media",
-    "style"
+    "image",
+    "parallax",
+    "scroll",
+    "banner"
   ],
   "haxCapable": true,
   "import": "@haxtheweb/parallax-image/parallax-image.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/parallax-image/parallax-image.js",
   "install": "npm i @haxtheweb/parallax-image",
-  "demoHtml": "<parallax-image></parallax-image>",
+  "demoHtml": "<parallax-image image-bg=\"https://placehold.co/1600x900\">\n  <span slot=\"parallax_heading\">Section heading</span>\n</parallax-image>",
   "attributes": [
     {
       "name": "image-bg",
@@ -47,12 +50,15 @@
     "canEditSource": true,
     "gizmo": {
       "title": "Parallax image",
-      "description": "Image scroll by",
-      "icon": "av:play-circle-filled",
+      "description": "A full-width image that scrolls slower than the page, with a heading over it.",
+      "icon": "image:landscape",
       "color": "grey",
       "tags": [
         "Media",
-        "style"
+        "image",
+        "parallax",
+        "scroll",
+        "banner"
       ],
       "handles": [
         {
@@ -88,12 +94,14 @@
     "demoSchema": [
       {
         "tag": "parallax-image",
-        "properties": {},
-        "content": ""
+        "properties": {
+          "imageBg": "https://placehold.co/1600x900"
+        },
+        "content": "<span slot=\"parallax_heading\">Section heading</span>"
       }
     ]
   },
-  "surfaceHash": "4f7bd7934ad6",
+  "surfaceHash": "16d2f5e56ae2",
   "walkthroughs": [
     {
       "id": "",
@@ -101,13 +109,13 @@
       "order": 0,
       "src": "parallax-image.motion.json",
       "file": "lib/parallax-image.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/parallax-image.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

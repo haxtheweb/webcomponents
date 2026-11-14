@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Bila Mshale",
         "description": "Ficha mshale wa kitufe."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Kiungo: lengo",
@@ -54,7 +52,9 @@
           "_top": "Dirisha la juu - _top",
           "_parent": "Dirisha mzazi - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Kiungo: rel",

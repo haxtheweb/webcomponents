@@ -11,30 +11,8 @@
         "description": "Spørsmål til brukerne. Marker slippmål, og list deretter opp svar frem til neste mål."
       },
       {
-        "property": "gradingFormat",
-        "title": "Vurderingsformat",
-        "description": "OER Schema: vurderingsformat for denne vurderingen (f.eks. poeng, bokstav, prosent, fullført)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Læringsmål",
-        "description": "OER Schema: læringsmål knyttet til denne vurderingen."
-      },
-      {
-        "property": "forCourse",
-        "title": "Emne",
-        "description": "OER Schema: emnet denne vurderingen er beregnet for."
-      },
-      {
         "property": "answers",
         "title": "Svar"
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Navn på quizen",
-        "description": "Quiznavn brukt til xAPI-identifikasjon i analysesystemer."
       }
     ],
     "advanced": [
@@ -47,6 +25,28 @@
         "property": "collapsed",
         "title": "Start sammenfoldet",
         "description": "Når det er sammenleggbart, start som en lukket rad som bare viser spørsmålet og statusen."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Vurderingsformat",
+        "description": "OER Schema: vurderingsformat for denne vurderingen (f.eks. poeng, bokstav, prosent, fullført)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Læringsmål",
+        "description": "OER Schema: læringsmål knyttet til denne vurderingen."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Navn på quizen",
+        "description": "Quiznavn brukt til xAPI-identifikasjon i analysesystemer."
+      },
+      {
+        "property": "forCourse",
+        "title": "Emne",
+        "description": "OER Schema: emnet denne vurderingen er beregnet for."
       }
     ]
   }

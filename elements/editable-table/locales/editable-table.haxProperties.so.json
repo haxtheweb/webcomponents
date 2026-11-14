@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Oggolow Shaandhaynta",
         "description": "Oggolow shaandhaynta qiimaha tiirarka."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Qaabka Tirooyinka",
-        "description": "Ku dabaq qaabka tirooyinka tiirarka tirooyinka leh."
-      },
-      {
-        "property": "responsive",
-        "title": "Jawaab-celin",
-        "description": "Hagaaji qaabka shaxda shaashadaha yaryar."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Habka Rubric",
-        "description": "U fasir shaxdan sidii OER Schema Rubric si loo soo saaro xogta Rubric, RubricScale, RubricCriterion, iyo RubricLevel."
-      },
-      {
-        "property": "rubricType",
-        "title": "Nooca Rubric",
-        "description": "Qaabka rubric-ga oo loo soo saaro oer:rubricType (macno keliya ayuu leeyahay marka Habka Rubric uu daaran yahay).",
-        "options": {
-          "": "(midna)",
-          "analytic": "Falanqayn",
-          "holistic": "Guud",
-          "single-point": "Hal Dhibic",
-          "checklist": "Liis hubin"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Badhanka Daabacaadda",
         "description": "Ku dar badhan lagu daabaco shaxda oo keliya."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Qaabka Tirooyinka",
+        "description": "Ku dabaq qaabka tirooyinka tiirarka tirooyinka leh."
+      },
+      {
+        "property": "responsive",
+        "title": "Jawaab-celin",
+        "description": "Hagaaji qaabka shaxda shaashadaha yaryar."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Habka Rubric",
+        "description": "U fasir shaxdan sidii OER Schema Rubric si loo soo saaro xogta Rubric, RubricScale, RubricCriterion, iyo RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "Nooca Rubric",
+        "description": "Qaabka rubric-ga oo loo soo saaro oer:rubricType (macno keliya ayuu leeyahay marka Habka Rubric uu daaran yahay).",
+        "options": {
+          "": "(midna)",
+          "analytic": "Falanqayn",
+          "holistic": "Guud",
+          "single-point": "Hal Dhibic",
+          "checklist": "Liis hubin"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "Xogta CSV",
         "description": "Ka samee shax fayl CSV ah oo la soo geliyay."
       }
-    ]
+    ],
+    "developer": []
   }
 }

@@ -9,7 +9,9 @@
         "property": "source",
         "title": "URL ทรัพยากร",
         "description": "URL ทรัพยากร"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "ความสูง",

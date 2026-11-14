@@ -14,16 +14,6 @@
         "property": "title",
         "title": "代替タイトル",
         "description": "QRコードのソースにリンクされた代替タイトル。"
-      },
-      {
-        "property": "modulesize",
-        "title": "サイズ",
-        "description": "QRコードのサイズ。"
-      },
-      {
-        "property": "margin",
-        "title": "余白",
-        "description": "コードの周囲の余白。"
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "サイズ",
+        "description": "QRコードのサイズ。"
+      },
+      {
+        "property": "margin",
+        "title": "余白",
+        "description": "コードの周囲の余白。"
       }
     ]
   }

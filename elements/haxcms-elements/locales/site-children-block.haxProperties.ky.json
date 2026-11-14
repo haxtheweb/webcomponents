@@ -4,7 +4,7 @@
     "description": "Учурдагы барактын балдарын көрсөтүүчү динамикалык блок"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "Динамикалык ыкма",
@@ -14,7 +14,9 @@
           "parent": "Ата-элементтин балдары",
           "ancestor": "Эң жогорку ата-бабанын бардык балдары"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "Баштапкы деңгээл"

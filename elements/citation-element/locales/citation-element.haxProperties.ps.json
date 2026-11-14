@@ -21,15 +21,6 @@
         "description": "هغه نېټه چې سرچینې ته لاسرسی شوی."
       },
       {
-        "property": "scope",
-        "title": "ساحه",
-        "description": "د حوالې لپاره د عنصر ساحه.",
-        "options": {
-          "sibling": "همکچه عنصر",
-          "parent": "اصلي عنصر"
-        }
-      },
-      {
         "property": "license",
         "title": "جواز",
         "description": "د حواله شوي کار جواز."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "جوړوونکی",
         "description": "د حواله شوي کار جوړوونکی یا مالک."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "ساحه",
+        "description": "د حوالې لپاره د عنصر ساحه.",
+        "options": {
+          "sibling": "همکچه عنصر",
+          "parent": "اصلي عنصر"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "د OER سکیما ډول",

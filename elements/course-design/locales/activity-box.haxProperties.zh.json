@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "活动框",
-    "description": "带样式的小标题块。"
+    "description": "带标签的标题，用于标记活动的开始。"
   },
   "settings": {
     "configure": [

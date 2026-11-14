@@ -14,16 +14,6 @@
         "property": "title",
         "title": "Alternatieve titel",
         "description": "Alternatieve titel gekoppeld aan de bron van de QR-code."
-      },
-      {
-        "property": "modulesize",
-        "title": "Grootte",
-        "description": "Grootte van de QR-code."
-      },
-      {
-        "property": "margin",
-        "title": "Marge",
-        "description": "Ruimte rond de code."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "Grootte",
+        "description": "Grootte van de QR-code."
+      },
+      {
+        "property": "margin",
+        "title": "Marge",
+        "description": "Ruimte rond de code."
       }
     ]
   }

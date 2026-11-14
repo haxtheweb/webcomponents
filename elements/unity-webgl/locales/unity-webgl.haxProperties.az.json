@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Hədəf",
         "description": "Oyun quruluşunun yolu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Kətanın eni",
+        "description": "Kətanın CSS eni (məsələn, px və ya em)."
       },
+      {
+        "property": "height",
+        "title": "Kətanın hündürlüyü",
+        "description": "Kətanın CSS hündürlüyü (məsələn, px və ya em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Sıxışdırma üsulu",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Məhsulun versiyası",
         "description": "Buraxılış versiyası."
-      },
-      {
-        "property": "width",
-        "title": "Kətanın eni",
-        "description": "Kətanın CSS eni (məsələn, px və ya em)."
-      },
-      {
-        "property": "height",
-        "title": "Kətanın hündürlüyü",
-        "description": "Kətanın CSS hündürlüyü (məsələn, px və ya em)."
       },
       {
         "property": "background",

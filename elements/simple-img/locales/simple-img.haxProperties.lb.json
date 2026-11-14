@@ -26,7 +26,8 @@
         "description": "Nëtzlech fir Ecranslieser a besser SEO."
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "Qualitéit",

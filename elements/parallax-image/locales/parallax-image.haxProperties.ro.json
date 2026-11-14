@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Imagine parallax",
-    "description": "Imagine cu derulare"
+    "description": "O imagine pe toată lățimea care derulează mai lent decât pagina, cu un titlu deasupra."
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Pergunta de resposta curta",
-    "description": "Peça ao usuário que responda a uma pergunta simples"
+    "description": "Uma pergunta que o aluno responde em uma ou duas frases."
   },
   "settings": {
     "configure": [

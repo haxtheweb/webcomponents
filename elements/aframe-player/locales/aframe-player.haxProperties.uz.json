@@ -11,6 +11,13 @@
         "description": "Ushbu AR faylining URL manzili."
       },
       {
+        "property": "skyColor",
+        "title": "Osmon rangi",
+        "description": "Sahnadagi osmon rangini tanlang."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "Elementning AR dagi X joylashuvi."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "Elementning AR dagi Z joylashuvi."
-      },
-      {
-        "property": "skyColor",
-        "title": "Osmon rangi",
-        "description": "Sahnadagi osmon rangini tanlang."
       }
     ]
   }

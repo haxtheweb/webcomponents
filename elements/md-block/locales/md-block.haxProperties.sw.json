@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "Kizuizi cha maudhui ya markdown moja kwa moja au yaliyopakiwa kutoka mbali"
+    "description": "Maudhui ya Markdown, yaliyoandikwa moja kwa moja au kupakiwa kutoka faili."
   },
   "settings": {
     "configure": [

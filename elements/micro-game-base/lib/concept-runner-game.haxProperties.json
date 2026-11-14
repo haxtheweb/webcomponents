@@ -6,10 +6,10 @@
   "designSystem": false,
   "gizmo": {
     "title": "Concept runner game",
-    "description": "A side scroller. The character runs on fire and never stops. Jump to grab the good concepts and over the bad ones, then see a recap of what was good and what was bad.",
-    "icon": "hax:hax2022",
+    "description": "A side-scrolling game: jump to grab the right concepts and clear the wrong ones.",
+    "icon": "hardware:videogame-asset",
     "color": "purple",
-    "tags": ["Other", "Interactive", "Game"],
+    "tags": ["Instructional", "interactive", "game"],
     "handles": [],
     "meta": {
       "author": "haxtheweb"
@@ -145,7 +145,9 @@
         "title": "Game name",
         "description": "Names this game in progress events and OER Schema markup.",
         "inputMethod": "textfield"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Game id",

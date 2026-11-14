@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "Utvidbar gruppe",
-    "description": "En gruppe elementer som kan utvides og skjules."
+    "title": "Sammenleggbar gruppe",
+    "description": "En gruppe sammenleggbare beholdere."
   },
   "settings": {
     "configure": [

@@ -10,10 +10,6 @@
         "title": "ໄອຄອນແຖບ"
       },
       {
-        "property": "disabled",
-        "title": "ປິດໃຊ້ງານ"
-      },
-      {
         "property": "label",
         "title": "ປ້າຍແຖບ"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "ID ທີ່ບໍ່ຊ້ຳກັນ"
-      },
-      {
         "property": "flag",
         "title": "ຂໍ້ຄວາມທຸງ (ບໍ່ບັງຄັບ)"
       },
       {
         "property": "flagIcon",
         "title": "ໄອຄອນທຸງ (ບໍ່ບັງຄັບ)"
+      },
+      {
+        "property": "disabled",
+        "title": "ປິດໃຊ້ງານ"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "ID ທີ່ບໍ່ຊ້ຳກັນ"
       }
     ]
   }

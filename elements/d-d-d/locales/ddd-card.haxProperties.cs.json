@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Bez šipky",
         "description": "Skrýt šipku tlačítka."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Odkaz: cíl",
@@ -54,7 +52,9 @@
           "_top": "Nejvyšší okno - _top",
           "_parent": "Nadřazené okno - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Odkaz: rel",

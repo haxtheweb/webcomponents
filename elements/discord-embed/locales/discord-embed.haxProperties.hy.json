@@ -9,7 +9,9 @@
         "property": "source",
         "title": "Ռեսուրսի URL",
         "description": "Ռեսուրսի URL-ը։"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Բարձրություն",

@@ -27,6 +27,13 @@
       {
         "slot": "",
         "title": "उत्तर"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "थप लिङ्क",
+        "description": "थप जानकारीको लिङ्क।"
       },
       {
         "property": "hasLearningObjective",
@@ -37,13 +44,6 @@
         "property": "assessing",
         "title": "मूल्याङ्कन गरिँदै",
         "description": "oer:assessing का रूपमा उत्पन्न हुने गतिविधि सन्दर्भ।"
-      }
-    ],
-    "advanced": [
-      {
-        "property": "link",
-        "title": "थप लिङ्क",
-        "description": "थप जानकारीको लिङ्क।"
       }
     ]
   }

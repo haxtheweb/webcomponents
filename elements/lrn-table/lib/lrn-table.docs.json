@@ -5,10 +5,10 @@
   "version": "26.8.0",
   "license": "Apache-2.0",
   "title": "CSV table",
-  "description": "This can generate a table from a CSV file no matter where it is located.",
-  "icon": "editor:border-all",
+  "description": "Show a CSV file as an accessible table.",
+  "icon": "hax:file-csv",
   "tags": [
-    "Instructional",
+    "Content",
     "presentation",
     "table",
     "data",
@@ -22,7 +22,7 @@
   "import": "@haxtheweb/lrn-table/lrn-table.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/lrn-table/lrn-table.js",
   "install": "npm i @haxtheweb/lrn-table",
-  "demoHtml": "<lrn-table csv-file=\"https://data.cityofnewyork.us/api/views/83z6-smyr/rows.csv?accessType=DOWNLOAD\" description=\"Public records showing recipients of NYC Capital Grant Awards in 2016.\" title=\"NYC Capital Grant Awards 2016\"></lrn-table>",
+  "demoHtml": "<lrn-table title=\"Table title\" description=\"Describe what the data shows.\"></lrn-table>",
   "attributes": [
     {
       "name": "title",
@@ -70,11 +70,11 @@
     "canEditSource": true,
     "gizmo": {
       "title": "CSV table",
-      "description": "This can generate a table from a CSV file no matter where it is located.",
-      "icon": "editor:border-all",
+      "description": "Show a CSV file as an accessible table.",
+      "icon": "hax:file-csv",
       "color": "green",
       "tags": [
-        "Instructional",
+        "Content",
         "presentation",
         "table",
         "data",
@@ -123,16 +123,15 @@
     "demoSchema": [
       {
         "tag": "lrn-table",
-        "content": "",
         "properties": {
-          "csvFile": "https://data.cityofnewyork.us/api/views/83z6-smyr/rows.csv?accessType=DOWNLOAD",
-          "description": "Public records showing recipients of NYC Capital Grant Awards in 2016.",
-          "title": "NYC Capital Grant Awards 2016"
-        }
+          "title": "Table title",
+          "description": "Describe what the data shows."
+        },
+        "content": ""
       }
     ]
   },
-  "surfaceHash": "8c8dba1207a3",
+  "surfaceHash": "9d7304c6b7e4",
   "walkthroughs": [
     {
       "id": "",
@@ -140,13 +139,13 @@
       "order": 0,
       "src": "lrn-table.motion.json",
       "file": "lib/lrn-table.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/lrn-table.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

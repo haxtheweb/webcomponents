@@ -14,16 +14,6 @@
         "property": "title",
         "title": "Балама атау",
         "description": "QR код дереккөзіне байланыстырылған балама атау."
-      },
-      {
-        "property": "modulesize",
-        "title": "Өлшемі",
-        "description": "QR кодтың өлшемі."
-      },
-      {
-        "property": "margin",
-        "title": "Шегініс",
-        "description": "Код айналасындағы жиек."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "Өлшемі",
+        "description": "QR кодтың өлшемі."
+      },
+      {
+        "property": "margin",
+        "title": "Шегініс",
+        "description": "Код айналасындағы жиек."
       }
     ]
   }

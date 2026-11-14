@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Görsel Kaynağı",
         "description": "Kart için kullanılan görsel dosyası. Görsel Anahtar Sözcüğü'nü geçersiz kılar."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Görsel Anahtar Sözcüğü",
+        "description": "Rastgele görsel anahtar sözcüğü. Görsel Kaynağı tarafından geçersiz kılınır."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Öğrenme Hedefi",
         "description": "OER Schema: bu alıştırmanın desteklediği öğrenme hedefinin ID'si veya URL'si."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Görsel Anahtar Sözcüğü",
-        "description": "Rastgele görsel anahtar sözcüğü. Görsel Kaynağı tarafından geçersiz kılınır."
       }
     ]
   }

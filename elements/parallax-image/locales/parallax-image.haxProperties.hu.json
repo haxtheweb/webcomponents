@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Parallax kép",
-    "description": "Görgetéssel mozgó kép"
+    "description": "Teljes szélességű kép, amely az oldalnál lassabban görög, rajta címsorral."
   },
   "settings": {
     "configure": [

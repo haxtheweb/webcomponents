@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Richtig-/Falsch-Frage",
-    "description": "Richtig-/Falsch-Frage"
+    "description": "Eine Aussage, die Lernende als wahr oder falsch markieren."
   },
   "settings": {
     "configure": [

@@ -14,16 +14,6 @@
         "property": "title",
         "title": "Alternativen Titel",
         "description": "Alternativen Titel, verlinkt mat der Quell vum QR-Code."
-      },
-      {
-        "property": "modulesize",
-        "title": "Gréisst",
-        "description": "Gréisst vum QR-Code."
-      },
-      {
-        "property": "margin",
-        "title": "Rand",
-        "description": "Ëmrandung vum Code."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "Gréisst",
+        "description": "Gréisst vum QR-Code."
+      },
+      {
+        "property": "margin",
+        "title": "Rand",
+        "description": "Ëmrandung vum Code."
       }
     ]
   }

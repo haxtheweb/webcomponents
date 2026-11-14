@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Tự kiểm tra",
-    "description": "Người dùng có thể hoàn thành bài tự kiểm tra."
+    "description": "Câu hỏi có đáp án ẩn mà người học mở ra để tự kiểm tra."
   },
   "settings": {
     "configure": [
@@ -27,6 +27,13 @@
       {
         "slot": "",
         "title": "Đáp án"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Liên kết thêm",
+        "description": "Liên kết đến thông tin bổ sung."
       },
       {
         "property": "hasLearningObjective",
@@ -37,13 +44,6 @@
         "property": "assessing",
         "title": "Đánh giá",
         "description": "Tham chiếu hoạt động được xuất dưới dạng oer:assessing."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "link",
-        "title": "Liên kết thêm",
-        "description": "Liên kết đến thông tin bổ sung."
       }
     ]
   }

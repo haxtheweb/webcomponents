@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "按钮",
         "description": "文字下头显示个按钮组。"
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "锚点文字",
         "description": "导航里显示个锚点标签。"
       }
-    ]
+    ],
+    "developer": []
   }
 }

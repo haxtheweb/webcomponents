@@ -38,21 +38,6 @@
         "slot": "",
         "title": "Bacaan",
         "description": "Bacaan tempat pelajar bekerja. HTML apa pun: judul, paragraf, daftar, dan gambar."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "Format penilaian",
-        "description": "OER Schema: format penilaian untuk asesmen ini (mis. poin, huruf, persen, penyelesaian)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Tujuan pembelajaran",
-        "description": "OER Schema: tujuan pembelajaran yang terkait dengan asesmen ini."
-      },
-      {
-        "property": "forCourse",
-        "title": "Mata kuliah",
-        "description": "OER Schema: mata kuliah yang dituju oleh asesmen ini."
       }
     ],
     "advanced": [
@@ -70,6 +55,16 @@
         "property": "collapsed",
         "title": "Mulai dalam keadaan diciutkan",
         "description": "Jika dapat diciutkan, mulai sebagai baris tertutup yang hanya menampilkan pertanyaan dan statusnya."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Format penilaian",
+        "description": "OER Schema: format penilaian untuk asesmen ini (mis. poin, huruf, persen, penyelesaian)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Tujuan pembelajaran",
+        "description": "OER Schema: tujuan pembelajaran yang terkait dengan asesmen ini."
       }
     ],
     "developer": [
@@ -77,6 +72,11 @@
         "property": "quizName",
         "title": "Nama kuis",
         "description": "Nama kuis yang diteruskan untuk digunakan di lingkungan berbasis xAPI guna mengidentifikasi item ini"
+      },
+      {
+        "property": "forCourse",
+        "title": "Mata kuliah",
+        "description": "OER Schema: mata kuliah yang dituju oleh asesmen ini."
       }
     ]
   }

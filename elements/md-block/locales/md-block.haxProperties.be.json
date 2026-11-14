@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "Блок змесціва markdown, уведзенага непасрэдна або загружанага аддалена"
+    "description": "Змесціва Markdown, напісанае на месцы або загружанае з файла."
   },
   "settings": {
     "configure": [

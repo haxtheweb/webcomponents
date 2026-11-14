@@ -4,7 +4,7 @@
     "description": "Хәзерге битнең балаларын күрсәтүче динамик блок"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "Динамик ысул",
@@ -14,7 +14,9 @@
           "parent": "Ата-ананың балалары",
           "ancestor": "Иң югары бабадан барлык балалар"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "Башлангыч дәрәҗә"

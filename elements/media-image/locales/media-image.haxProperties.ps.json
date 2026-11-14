@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "عنوان",
         "description": "د انځور لپاره سرلیک."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "د شکل سرلیک",
-        "description": "د شکل لېبل لپاره سرلیک."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "د شکل تشریح",
-        "description": "د شکل لېبل لپاره تشریح."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "د انځور مودال غیر فعال کړئ",
         "description": "هغه کلیکونه غیر فعال کړئ چې انځور د انځور کتونکي ډیالوګ کې پرانیزي."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "د شکل سرلیک",
+        "description": "د شکل لېبل لپاره سرلیک."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "د شکل تشریح",
+        "description": "د شکل لېبل لپاره تشریح."
       }
     ],
     "developer": [

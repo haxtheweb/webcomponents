@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Akukho Tolo",
         "description": "Fihla utolo lweqhosha."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Ikhonkco: ekujoliswe kuko",
@@ -54,7 +52,9 @@
           "_top": "Ifestile ephezulu - _top",
           "_parent": "Ifestile engumzali - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Ikhonkco: rel",

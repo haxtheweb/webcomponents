@@ -11,11 +11,6 @@
         "description": "Təsadüfi personaj yaratmaq üçün istifadə olunan söz."
       },
       {
-        "property": "code",
-        "title": "Personaj kodu",
-        "description": "Həmin personajı yenidən yaratmaq üçün saxlanmış kodu yapışdırın."
-      },
-      {
         "property": "hat",
         "title": "Papaq",
         "description": "Papaq üslubu.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Maska",
-        "description": "Üzə və ya başa taxılan maska.",
-        "options": {
-          "none": "Yoxdur",
-          "lion": "Aslan",
-          "plague": "Taun həkimi",
-          "theater": "Teatr",
-          "pumpkin": "Boranı",
-          "ghost": "Kabus",
-          "mummy": "Mumiya",
-          "wrestler": "Güləş maskası",
-          "block-head": "Kub baş",
-          "web": "Tor maskası",
-          "werewolf": "Qurdadam sifəti",
-          "shadow": "Kölgəli sifət"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Makiyaj",
-        "description": "Üz boyası və ya dodaq boyası.",
-        "options": {
-          "none": "Yoxdur",
-          "red-lipstick": "Qırmızı dodaq boyası",
-          "pink-lipstick": "Çəhrayı dodaq boyası",
-          "berry-lipstick": "Giləmeyvə rəngli dodaq boyası",
-          "clown": "Təlxək makiyajı",
-          "fangs": "Dişlər",
-          "skull": "Kəllə boyası",
-          "zombie": "Zombi boyası",
-          "red-nose": "Qırmızı burun",
-          "white-beard": "Ağ saqqal",
-          "domino": "Qəhrəman maskası",
-          "carrot": "Yerkökü burnu",
-          "bunny": "Dovşan burnu",
-          "mustache": "Bığ",
-          "monster": "Div üz boyası",
-          "round-glasses": "Dəyirmi eynək"
-        }
-      },
-      {
         "property": "expression",
         "title": "İfadə",
         "description": "Üz ifadəsi.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Ev heyvanı",
+        "description": "Personajın yanındakı ev heyvanı.",
+        "options": {
+          "none": "Yoxdur",
+          "cat": "Pişik",
+          "dog": "İt",
+          "bunny": "Dovşan",
+          "goldfish": "Qızıl balıq",
+          "slime": "Selik",
+          "squirrel": "Dələ",
+          "dragon": "Balaca əjdaha",
+          "parrot": "Tutuquşu",
+          "owl": "Bayquş",
+          "bat": "Yarasa"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Personaj kodu",
+        "description": "Həmin personajı yenidən yaratmaq üçün saxlanmış kodu yapışdırın."
+      },
+      {
+        "property": "mask",
+        "title": "Maska",
+        "description": "Üzə və ya başa taxılan maska.",
+        "options": {
+          "none": "Yoxdur",
+          "lion": "Aslan",
+          "plague": "Taun həkimi",
+          "theater": "Teatr",
+          "pumpkin": "Boranı",
+          "ghost": "Kabus",
+          "mummy": "Mumiya",
+          "wrestler": "Güləş maskası",
+          "block-head": "Kub baş",
+          "web": "Tor maskası",
+          "werewolf": "Qurdadam sifəti",
+          "shadow": "Kölgəli sifət"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Makiyaj",
+        "description": "Üz boyası və ya dodaq boyası.",
+        "options": {
+          "none": "Yoxdur",
+          "red-lipstick": "Qırmızı dodaq boyası",
+          "pink-lipstick": "Çəhrayı dodaq boyası",
+          "berry-lipstick": "Giləmeyvə rəngli dodaq boyası",
+          "clown": "Təlxək makiyajı",
+          "fangs": "Dişlər",
+          "skull": "Kəllə boyası",
+          "zombie": "Zombi boyası",
+          "red-nose": "Qırmızı burun",
+          "white-beard": "Ağ saqqal",
+          "domino": "Qəhrəman maskası",
+          "carrot": "Yerkökü burnu",
+          "bunny": "Dovşan burnu",
+          "mustache": "Bığ",
+          "monster": "Div üz boyası",
+          "round-glasses": "Dəyirmi eynək"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Bayraq mətni",
         "description": "Bayraqda 4 hərfə qədər göstərilir."
@@ -310,24 +330,6 @@
           "skates": "Konki",
           "skateboard": "Skeytbord",
           "hoverboard": "Uçan lövhə"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Ev heyvanı",
-        "description": "Personajın yanındakı ev heyvanı.",
-        "options": {
-          "none": "Yoxdur",
-          "cat": "Pişik",
-          "dog": "İt",
-          "bunny": "Dovşan",
-          "goldfish": "Qızıl balıq",
-          "slime": "Selik",
-          "squirrel": "Dələ",
-          "dragon": "Balaca əjdaha",
-          "parrot": "Tutuquşu",
-          "owl": "Bayquş",
-          "bat": "Yarasa"
         }
       },
       {

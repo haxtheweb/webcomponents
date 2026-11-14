@@ -9,7 +9,21 @@
         "property": "target",
         "title": "ٽارگيٽ",
         "description": "گيم بلڊ جو رستو."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "ڪينوس جي ويڪر",
+        "description": "ڪينوس جي CSS ويڪر (مثال طور px يا em)."
       },
+      {
+        "property": "height",
+        "title": "ڪينوس جي اوچائي",
+        "description": "ڪينوس جي CSS اوچائي (مثال طور px يا em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "ڪمپريشن جو طريقو",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "پراڊڪٽ جو ورزن",
         "description": "رليز ورزن."
-      },
-      {
-        "property": "width",
-        "title": "ڪينوس جي ويڪر",
-        "description": "ڪينوس جي CSS ويڪر (مثال طور px يا em)."
-      },
-      {
-        "property": "height",
-        "title": "ڪينوس جي اوچائي",
-        "description": "ڪينوس جي CSS اوچائي (مثال طور px يا em)."
       },
       {
         "property": "background",

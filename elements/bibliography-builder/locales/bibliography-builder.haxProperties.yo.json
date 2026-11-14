@@ -9,7 +9,9 @@
         "slot": "",
         "title": "Àwọn ìtọ́ka",
         "description": "Àwọn ohun ìtọ́ka nínú bibliografi yìí"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "Kọ́ọ̀sì",

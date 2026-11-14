@@ -10,10 +10,6 @@
         "title": "Icono de la pestaña"
       },
       {
-        "property": "disabled",
-        "title": "Desactivado"
-      },
-      {
         "property": "label",
         "title": "Etiqueta de la pestaña"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "ID único"
-      },
-      {
         "property": "flag",
         "title": "Texto de indicador opcional"
       },
       {
         "property": "flagIcon",
         "title": "Icono de indicador opcional"
+      },
+      {
+        "property": "disabled",
+        "title": "Desactivado"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "ID único"
       }
     ]
   }

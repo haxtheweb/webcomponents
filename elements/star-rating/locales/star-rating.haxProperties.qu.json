@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Kuyuq",
         "description": "Ruraqta chaninchayta churananpaq saqiy."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Rubrica Escala Kay",

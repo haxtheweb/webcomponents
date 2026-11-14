@@ -4,7 +4,7 @@
     "description": "Kunan p'anqap wawanta rikuchinapaq kuyuq t'aqa"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "Kuyuq ñan",
@@ -14,7 +14,9 @@
           "parent": "Taytap wawankuna",
           "ancestor": "Aswan hanaq ñawpaq taytamanta llapan wawakuna"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "Qallariy pata"

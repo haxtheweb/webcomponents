@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Jednoduchý obrázok",
-    "description": "Úprava obrázkov pomocou jednoduchých parametrov."
+    "description": "Obrázok, ktorého veľkosť, orezanie alebo otočenie určujú jednoduché nastavenia."
   },
   "settings": {
     "configure": [
@@ -26,7 +26,8 @@
         "description": "Užitočné pre čítačky obrazovky a lepšie SEO."
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "Kvalita",

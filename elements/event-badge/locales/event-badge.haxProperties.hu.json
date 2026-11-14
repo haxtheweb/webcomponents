@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Eseményjelvény",
-    "description": "Eseményjelvény-komponens."
+    "description": "Konferenciastílusú névkitűző fényképpel, névvel és szervezettel."
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "תמונה פשוטה",
-    "description": "עריכת תמונות באמצעות פרמטרים פשוטים."
+    "description": "תמונה שגודלה משתנה, נחתכת או מסתובבת בהגדרות פשוטות."
   },
   "settings": {
     "configure": [
@@ -26,7 +26,8 @@
         "description": "שימושי לקוראי מסך ולשיפור ה-SEO."
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "איכות",

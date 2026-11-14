@@ -21,15 +21,6 @@
         "description": "Datum wêrop't de boarne rieplachte is."
       },
       {
-        "property": "scope",
-        "title": "Berik",
-        "description": "Elemintberik om oan te heljen.",
-        "options": {
-          "sibling": "Njonkenlizzend elemint",
-          "parent": "Boppelizzend elemint"
-        }
-      },
-      {
         "property": "license",
         "title": "Lisinsje",
         "description": "Lisinsje fan it oanhelle wurk."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Makker",
         "description": "Makker of eigner fan it oanhelle wurk."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Berik",
+        "description": "Elemintberik om oan te heljen.",
+        "options": {
+          "sibling": "Njonkenlizzend elemint",
+          "parent": "Boppelizzend elemint"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "OER-skematype",

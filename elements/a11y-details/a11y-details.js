@@ -224,81 +224,8 @@ class A11yDetails extends I18NMixin(LitElement) {
 
   // haxProperty definition
   static get haxProperties() {
-    return {
-      canScale: true,
-
-      canEditSource: true,
-      gizmo: {
-        title: "Accessible Details Button",
-        description:
-          "Accessible progressive disclosure with detail and summary",
-        icon: "icons:arrow-drop-down",
-        color: "grey",
-        tags: ["Layout", "Details", "Summary", "Button", "Accessible"],
-        handles: [
-          {
-            type: "",
-          },
-        ],
-        meta: {
-          author: "HAXTheWeb core team",
-          owner: "The Pennsylvania State University",
-        },
-      },
-      settings: {
-        configure: [
-          {
-            slot: "summary",
-            title: "Button",
-            description:
-              'Summary of the content that if concealed, eg. "info", "medatadata", etc. ',
-            inputMethod: "code-editor",
-          },
-          {
-            slot: "details",
-            title: "Decription",
-            description: "Detailed description that can be hidden or shown",
-            inputMethod: "code-editor",
-          },
-          {
-            slot: "",
-            title: "Decription Button",
-            description:
-              'Default for button that shows/hides description text, eg. "info", "medatadata", etc. ',
-            inputMethod: "code-editor",
-          },
-        ],
-        advanced: [
-          {
-            property: "openText",
-            title: "Optional summary text when details are open",
-            description:
-              "Button text while the description is hidden, such as Show description.",
-            inputMethod: "textfield",
-            required: false,
-          },
-          {
-            property: "closeText",
-            title: "Optional summary text when details are closed",
-            description:
-              "Button text while the description is showing, such as Hide description.",
-            inputMethod: "textfield",
-            required: false,
-          },
-        ],
-      },
-      demoSchema: [
-        {
-          tag: "a11y-details",
-          properties: {
-            openText: "Show Aenean",
-            closeText: "Hide Aenean",
-          },
-          content:
-            '<div slot="summary">Show Aenean</div>\n<div slot="details">Aenean eget nisl volutpat, molestie purus eget, bibendum metus. Pellentesque magna velit, tincidunt quis pharetra id, gravida placerat erat. Maecenas id dui pretium risus pulvinar feugiat vel nec leo. Praesent non congue tellus. Suspendisse ac tincidunt purus. Donec eu dui a metus vehicula bibendum sed nec tortor. Nunc convallis justo sed nibh consectetur, at pharetra nulla accumsan.\n</div>',
-        },
-      ],
-    };
+    return new URL("./lib/a11y-details.haxProperties.json", import.meta.url)
+      .href;
   }
   // properties available to the custom element for data binding
   static get properties() {

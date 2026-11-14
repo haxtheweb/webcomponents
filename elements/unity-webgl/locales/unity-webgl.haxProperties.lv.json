@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Mērķis",
         "description": "Ceļš uz spēles būvējumu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Audekla platums",
+        "description": "Audekla CSS platums (piemēram, px vai em)."
       },
+      {
+        "property": "height",
+        "title": "Audekla augstums",
+        "description": "Audekla CSS augstums (piemēram, px vai em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Saspiešanas metode",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Produkta versija",
         "description": "Laidiena versija."
-      },
-      {
-        "property": "width",
-        "title": "Audekla platums",
-        "description": "Audekla CSS platums (piemēram, px vai em)."
-      },
-      {
-        "property": "height",
-        "title": "Audekla augstums",
-        "description": "Audekla CSS augstums (piemēram, px vai em)."
       },
       {
         "property": "background",

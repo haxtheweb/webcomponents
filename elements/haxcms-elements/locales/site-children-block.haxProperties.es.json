@@ -1,10 +1,10 @@
 {
   "gizmo": {
-    "title": "HAXcms: bloque de hijos",
-    "description": "Bloque dinámico para mostrar los hijos de la página actual"
+    "title": "Páginas hijas",
+    "description": "Lista las páginas hijas de la página actual."
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "Método dinámico",
@@ -14,7 +14,9 @@
           "parent": "Hijos del padre",
           "ancestor": "Todos los hijos desde el ancestro más alto"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "Nivel inicial"

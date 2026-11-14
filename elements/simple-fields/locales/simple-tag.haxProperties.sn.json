@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Ruvara rwekusimbisa rwega",
         "description": "Tora ruvara rwekusimbisa kubva kumavara ezita zvega."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Bhatani rekudzima",
-        "description": "Ratidza bhatani reaikoni rekubvisa/kudzima mukati mepiritsi."
-      },
-      {
-        "property": "readonly",
-        "title": "Kuverenga chete",
-        "description": "Viga bhatani rekudzima kuitira kuti piritsi rive rekuratidza chete."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Gireyi-bhuruu",
           "grey": "Gireyi"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Bhatani rekudzima",
+        "description": "Ratidza bhatani reaikoni rekubvisa/kudzima mukati mepiritsi."
+      },
+      {
+        "property": "readonly",
+        "title": "Kuverenga chete",
+        "description": "Viga bhatani rekudzima kuitira kuti piritsi rive rekuratidza chete."
       }
     ]
   }

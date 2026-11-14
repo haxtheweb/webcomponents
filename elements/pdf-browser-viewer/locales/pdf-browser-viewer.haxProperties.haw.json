@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Leka kākoʻo ʻole ʻia",
-        "description": "Leka ke hiki ʻole i ka polokalamu kele ke hōʻike i nā faila PDF."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Leka loulou kākoʻo ʻole ʻia",
-        "description": "Kikokikona loulou ke hiki ʻole i ka polokalamu kele ke hōʻike i nā faila PDF."
-      },
-      {
         "property": "width",
         "title": "Ākea",
         "description": "Ākea o ka mea nānā PDF."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Kiʻekiʻe",
         "description": "Kiʻekiʻe o ka mea nānā PDF."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Leka kākoʻo ʻole ʻia",
+        "description": "Leka ke hiki ʻole i ka polokalamu kele ke hōʻike i nā faila PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Leka loulou kākoʻo ʻole ʻia",
+        "description": "Kikokikona loulou ke hiki ʻole i ka polokalamu kele ke hōʻike i nā faila PDF."
       }
     ]
   }

@@ -4,17 +4,16 @@
     "description": "Prehráva interaktívny obsah H5P z nahraného súboru .h5p bez potreby servera H5P"
   },
   "settings": {
-    "configure": [
-      {
-        "slot": "",
-        "description": "Nahrajte súbor .h5p alebo naň vložte odkaz. Rozbalí sa v prehliadači; server H5P nie je potrebný.",
-        "title": "Súbor H5P"
-      }
-    ],
+    "configure": [],
     "advanced": [
       {
         "title": "Starší kód na vloženie iframe",
         "description": "Iba pre starší obsah, ktorý vkladá iframe H5P z iného webu. Ak je vyššie nastavený súbor .h5p, nechajte prázdne."
+      },
+      {
+        "slot": "",
+        "description": "Nahrajte súbor .h5p alebo naň vložte odkaz. Rozbalí sa v prehliadači; server H5P nie je potrebný.",
+        "title": "Súbor H5P"
       }
     ]
   }

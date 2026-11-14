@@ -4,7 +4,7 @@
     "description": "Uneko orriaren umeak erakusteko bloke dinamikoa"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "Metodo dinamikoa",
@@ -14,7 +14,9 @@
           "parent": "Gurasoaren umeak",
           "ancestor": "Arbaso gorenaren ume guztiak"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "Hasierako maila"

@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Culore d'accentu autumaticu",
         "description": "Ricavà autumaticamente u culore d'accentu da u testu di l'etichetta."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Buttone d'annullamentu",
-        "description": "Affissà un buttone icona per caccià/annullà in a pillula."
-      },
-      {
-        "property": "readonly",
-        "title": "Lettura sola",
-        "description": "Piattà u buttone d'annullamentu per chì a pillula sia solu d'affissera."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Grisgiu turchinu",
           "grey": "Grisgiu"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Buttone d'annullamentu",
+        "description": "Affissà un buttone icona per caccià/annullà in a pillula."
+      },
+      {
+        "property": "readonly",
+        "title": "Lettura sola",
+        "description": "Piattà u buttone d'annullamentu per chì a pillula sia solu d'affissera."
       }
     ]
   }

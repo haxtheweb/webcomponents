@@ -9,7 +9,9 @@
         "property": "source",
         "title": "ਸਰੋਤ URL",
         "description": "ਸਰੋਤ URL।"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "ਉਚਾਈ",

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Áudio",
-    "description": "Isto pode apresentar vídeo de forma altamente acessível, independentemente da fonte."
+    "description": "Reprodutor de áudio acessível com transcrição."
   },
   "settings": {
     "configure": [
@@ -46,6 +46,16 @@
         "property": "accentColor",
         "title": "Cor de destaque",
         "description": "Selecione a cor de destaque do player."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Ocultar marcações de tempo",
+        "description": "Ocultar as marcações de tempo na transcrição."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Ocultar transcrição",
+        "description": "Ocultar a transcrição por padrão."
       }
     ],
     "developer": [
@@ -72,16 +82,6 @@
         "property": "disableInteractive",
         "title": "Desativar interatividade",
         "description": "Desativar o modo interativo que torna a transcrição clicável."
-      },
-      {
-        "property": "hideTimestamps",
-        "title": "Ocultar marcações de tempo",
-        "description": "Ocultar as marcações de tempo na transcrição."
-      },
-      {
-        "property": "hideTranscript",
-        "title": "Ocultar transcrição",
-        "description": "Ocultar a transcrição por padrão."
       },
       {
         "property": "lang",

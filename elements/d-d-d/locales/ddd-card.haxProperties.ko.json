@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "화살표 없음",
         "description": "버튼 화살표를 숨깁니다."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "링크: 대상",
@@ -54,7 +52,9 @@
           "_top": "최상위 창 - _top",
           "_parent": "상위 창 - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "링크: rel",

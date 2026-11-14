@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Kavram koşu oyunu",
-    "description": "Yandan kaydırmalı bir oyun. Karakter alevler içinde koşar ve hiç durmaz. İyi kavramları yakalamak ve kötülerin üzerinden atlamak için zıpla, sonra neyin iyi neyin kötü olduğunun özetini gör."
+    "description": "Yandan kaydırmalı bir oyun: doğru kavramları yakalamak ve yanlışlardan kaçınmak için zıplayın."
   },
   "settings": {
     "configure": [
@@ -89,7 +89,9 @@
         "property": "gameTitle",
         "title": "Oyun adı",
         "description": "Bu oyuna ilerleme olaylarında ve OER Schema işaretlemesinde ad verir."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Oyun kimliği",

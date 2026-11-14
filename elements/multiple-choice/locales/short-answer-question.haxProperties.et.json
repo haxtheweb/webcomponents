@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Lühivastusega küsimus",
-    "description": "Lase kasutajal vastata lihtsale küsimusele"
+    "description": "Küsimus, millele õppija vastab ühe või kahe lausega."
   },
   "settings": {
     "configure": [

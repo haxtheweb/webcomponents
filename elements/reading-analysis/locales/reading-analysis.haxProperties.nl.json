@@ -38,21 +38,6 @@
         "slot": "",
         "title": "Leestekst",
         "description": "De tekst waarin leerlingen werken. Alle HTML: koppen, alinea's, lijsten en afbeeldingen."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "Beoordelingsformaat",
-        "description": "OER Schema: beoordelingsformaat voor deze toets (bijv. punten, letter, percentage, voltooiing)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Leerdoel",
-        "description": "OER Schema: leerdoel dat bij deze toets hoort."
-      },
-      {
-        "property": "forCourse",
-        "title": "Cursus",
-        "description": "OER Schema: cursus waarvoor deze toets bedoeld is."
       }
     ],
     "advanced": [
@@ -70,6 +55,16 @@
         "property": "collapsed",
         "title": "Begin ingeklapt",
         "description": "Begin bij inklapbaar als een gesloten rij die alleen de vraag en de status toont."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Beoordelingsformaat",
+        "description": "OER Schema: beoordelingsformaat voor deze toets (bijv. punten, letter, percentage, voltooiing)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Leerdoel",
+        "description": "OER Schema: leerdoel dat bij deze toets hoort."
       }
     ],
     "developer": [
@@ -77,6 +72,11 @@
         "property": "quizName",
         "title": "Naam van de quiz",
         "description": "Quiznaam die wordt doorgegeven in xAPI-omgevingen om dit item te identificeren"
+      },
+      {
+        "property": "forCourse",
+        "title": "Cursus",
+        "description": "OER Schema: cursus waarvoor deze toets bedoeld is."
       }
     ]
   }

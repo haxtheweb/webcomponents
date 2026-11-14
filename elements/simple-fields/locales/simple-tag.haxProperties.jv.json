@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Werna aksen otomatis",
         "description": "Jupuk werna aksen saka teks label kanthi otomatis."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Tombol batal",
-        "description": "Tampilake tombol ikon busak/batal ing njero pil."
-      },
-      {
-        "property": "readonly",
-        "title": "Mung diwaca",
-        "description": "Dhelikake tombol batal supaya pil mung kanggo tampilan."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Abu-abu Biru",
           "grey": "Abu-abu"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Tombol batal",
+        "description": "Tampilake tombol ikon busak/batal ing njero pil."
+      },
+      {
+        "property": "readonly",
+        "title": "Mung diwaca",
+        "description": "Dhelikake tombol batal supaya pil mung kanggo tampilan."
       }
     ]
   }

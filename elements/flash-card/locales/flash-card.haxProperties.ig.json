@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Isi Mmalite Onyonyo",
         "description": "Faịlụ onyonyo eji maka kaadị ahụ. Ọ na-anọchi Okwu Isi Onyonyo."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Okwu Isi Onyonyo",
+        "description": "Okwu isi onyonyo na-enweghị usoro. Isi Mmalite Onyonyo na-anọchi ya."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Ebumnuche Mmụta",
         "description": "OER Schema: ID ma ọ bụ URL nke ebumnuche mmụta mmụta a na-akwado."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Okwu Isi Onyonyo",
-        "description": "Okwu isi onyonyo na-enweghị usoro. Isi Mmalite Onyonyo na-anọchi ya."
       }
     ]
   }

@@ -86,7 +86,9 @@
         "property": "gameTitle",
         "title": "שפּיל־נאָמען",
         "description": "גיט אַ נאָמען צו דעם שפּיל אין פּראָגרעס־געשעענישן און OER Schema מאַרקאַפּ."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "שפּיל־ID",

@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Teiken",
         "description": "Pad na die speletjiebou."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Doekbreedte",
+        "description": "CSS-breedte van die doek (byvoorbeeld px of em)."
       },
+      {
+        "property": "height",
+        "title": "Doekhoogte",
+        "description": "CSS-hoogte van die doek (byvoorbeeld px of em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Kompressiemetode",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Produkweergawe",
         "description": "Vrystellingsweergawe."
-      },
-      {
-        "property": "width",
-        "title": "Doekbreedte",
-        "description": "CSS-breedte van die doek (byvoorbeeld px of em)."
-      },
-      {
-        "property": "height",
-        "title": "Doekhoogte",
-        "description": "CSS-hoogte van die doek (byvoorbeeld px of em)."
       },
       {
         "property": "background",

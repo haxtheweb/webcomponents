@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Cita bibliográfica",
-    "description": "Elemento de cita con tres modos de presentación."
+    "description": "Acredita una fuente con su título, autor, licencia y enlace."
   },
   "settings": {
     "configure": [
@@ -21,15 +21,6 @@
         "description": "Fecha en que se consultó la fuente."
       },
       {
-        "property": "scope",
-        "title": "Ámbito",
-        "description": "Ámbito del elemento que citar.",
-        "options": {
-          "sibling": "Elemento hermano",
-          "parent": "Elemento padre"
-        }
-      },
-      {
         "property": "license",
         "title": "Licencia",
         "description": "Licencia de la obra citada."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Creador",
         "description": "Creador o propietario de la obra citada."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Ámbito",
+        "description": "Ámbito del elemento que citar.",
+        "options": {
+          "sibling": "Elemento hermano",
+          "parent": "Elemento padre"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "Tipo de OER Schema",

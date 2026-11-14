@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Laro ng takbuhan ng konsepto",
-    "description": "Isang side scroller. Tumatakbo ang karakter na nasa apoy at hindi humihinto. Tumalon para kunin ang mabubuting konsepto at lampasan ang masasama, pagkatapos ay tingnan ang recap ng mabuti at masama."
+    "description": "Isang side-scrolling na laro: tumalon para saluhin ang mga tamang konsepto at iwasan ang mga mali."
   },
   "settings": {
     "configure": [
@@ -89,7 +89,9 @@
         "property": "gameTitle",
         "title": "Pangalan ng laro",
         "description": "Pinapangalanan ang larong ito sa mga progress event at OER Schema markup."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "ID ng laro",

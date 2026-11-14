@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "CSV tabela",
-    "description": "Može generisati tabelu iz CSV datoteke bez obzira gdje se nalazi."
+    "description": "Prikazuje CSV datoteku kao pristupačnu tabelu."
   },
   "settings": {
     "configure": [

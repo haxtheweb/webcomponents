@@ -21,15 +21,6 @@
         "description": "Data meta s-sors ġie aċċessat."
       },
       {
-        "property": "scope",
-        "title": "Ambitu",
-        "description": "Ambitu tal-element li jrid jiġi ċċitat.",
-        "options": {
-          "sibling": "Element fl-istess livell",
-          "parent": "Element ġenitur"
-        }
-      },
-      {
         "property": "license",
         "title": "Liċenzja",
         "description": "Liċenzja għax-xogħol iċċitat."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Kreatur",
         "description": "Kreatur jew sid tax-xogħol iċċitat."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Ambitu",
+        "description": "Ambitu tal-element li jrid jiġi ċċitat.",
+        "options": {
+          "sibling": "Element fl-istess livell",
+          "parent": "Element ġenitur"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "Tip ta' OER Schema",

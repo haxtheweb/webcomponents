@@ -9,7 +9,9 @@
         "property": "source",
         "title": "URL resursa",
         "description": "URL resursa."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Visina",

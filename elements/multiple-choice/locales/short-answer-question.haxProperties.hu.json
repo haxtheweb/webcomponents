@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Rövid válaszos kérdés",
-    "description": "A felhasználó válaszoljon egy egyszerű kérdésre"
+    "description": "Kérdés, amelyre a tanuló egy-két mondatban válaszol."
   },
   "settings": {
     "configure": [

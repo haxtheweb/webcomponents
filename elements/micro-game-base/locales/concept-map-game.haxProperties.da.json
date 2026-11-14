@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Begrebskortspil",
-    "description": "Et kort tastaturspil. En figur går hen til hvert begreb på et kort, og begrebet forklarer sig selv. Rør dem alle for konfetti og en prompt, du kan kopiere."
+    "description": "Et kort tastaturspil, hvor en figur går hen over et kort, og hvert begreb forklarer sig selv."
   },
   "settings": {
     "configure": [
@@ -86,7 +86,9 @@
         "property": "gameTitle",
         "title": "Spillets navn",
         "description": "Navngiver dette spil i fremskridtshændelser og OER Schema-markup."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Spil-id",

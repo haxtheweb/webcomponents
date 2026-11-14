@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Beschrëftung",
         "description": "Bildënnerschrëft fir d'Bild."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Figurtitel",
-        "description": "Titel fir d'Figurbezeechnung."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Figurbeschreiwung",
-        "description": "Beschreiwung fir d'Figurbezeechnung."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Bildmodal desaktivéieren",
         "description": "Verhënnert, datt Klicks d'Bild an engem Bildinspektor-Dialog opmaachen."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Figurtitel",
+        "description": "Titel fir d'Figurbezeechnung."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Figurbeschreiwung",
+        "description": "Beschreiwung fir d'Figurbezeechnung."
       }
     ],
     "developer": [

@@ -86,7 +86,9 @@
         "property": "gameTitle",
         "title": "Aha egwuregwu",
         "description": "Na-enye egwuregwu a aha n'ihe omume ọganihu na ntụpọ OER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Id egwuregwu",

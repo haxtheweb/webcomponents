@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Țintă",
         "description": "Calea către build-ul jocului."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Lățimea canvasului",
+        "description": "Lățimea CSS a canvasului (de exemplu px sau em)."
       },
+      {
+        "property": "height",
+        "title": "Înălțimea canvasului",
+        "description": "Înălțimea CSS a canvasului (de exemplu px sau em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Metodă de compresie",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Versiunea produsului",
         "description": "Versiunea lansării."
-      },
-      {
-        "property": "width",
-        "title": "Lățimea canvasului",
-        "description": "Lățimea CSS a canvasului (de exemplu px sau em)."
-      },
-      {
-        "property": "height",
-        "title": "Înălțimea canvasului",
-        "description": "Înălțimea CSS a canvasului (de exemplu px sau em)."
       },
       {
         "property": "background",

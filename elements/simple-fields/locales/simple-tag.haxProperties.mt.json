@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Kulur tal-enfasi awtomatiku",
         "description": "Oħroġ il-kulur tal-enfasi mit-test tat-tikketta awtomatikament."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Buttuna tal-kanċellazzjoni",
-        "description": "Uri buttuna b'ikona ta' tneħħija/kanċellazzjoni ġewwa l-pillola."
-      },
-      {
-        "property": "readonly",
-        "title": "Qari biss",
-        "description": "Aħbi l-buttuna tal-kanċellazzjoni sabiex il-pillola tkun għall-wiri biss."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Griż fil-blu",
           "grey": "Griż"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Buttuna tal-kanċellazzjoni",
+        "description": "Uri buttuna b'ikona ta' tneħħija/kanċellazzjoni ġewwa l-pillola."
+      },
+      {
+        "property": "readonly",
+        "title": "Qari biss",
+        "description": "Aħbi l-buttuna tal-kanċellazzjoni sabiex il-pillola tkun għall-wiri biss."
       }
     ]
   }

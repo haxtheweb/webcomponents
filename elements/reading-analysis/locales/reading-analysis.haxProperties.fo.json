@@ -38,21 +38,6 @@
         "slot": "",
         "title": "Tekstur",
         "description": "Teksturin, sum næmingar arbeiða í. Hvør sum helst HTML: yvirskriftir, stykki, listar og myndir."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "Einkunnasnið",
-        "description": "OER Schema: einkunnasnið til hesa metingina (t.d. stig, bókstavur, prosent, fullførd)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Lærumál",
-        "description": "OER Schema: lærumál knýtt at hesi metingini."
-      },
-      {
-        "property": "forCourse",
-        "title": "Skeið",
-        "description": "OER Schema: skeið, sum henda metingin er ætlað til."
       }
     ],
     "advanced": [
@@ -70,6 +55,16 @@
         "property": "collapsed",
         "title": "Byrja saman fellað",
         "description": "Tá spurningurin er fellandi, byrjar hann sum ein afturlatin røð, ið bert vísir spurningin og støðu hansara."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Einkunnasnið",
+        "description": "OER Schema: einkunnasnið til hesa metingina (t.d. stig, bókstavur, prosent, fullførd)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Lærumál",
+        "description": "OER Schema: lærumál knýtt at hesi metingini."
       }
     ],
     "developer": [
@@ -77,6 +72,11 @@
         "property": "quizName",
         "title": "Navn á spurnakappingini",
         "description": "Navn á spurnakappingini, sum verður latið inn til brúks í xAPI-stýrdum umhvørvum at eyðmerkja henda lutin"
+      },
+      {
+        "property": "forCourse",
+        "title": "Skeið",
+        "description": "OER Schema: skeið, sum henda metingin er ætlað til."
       }
     ]
   }

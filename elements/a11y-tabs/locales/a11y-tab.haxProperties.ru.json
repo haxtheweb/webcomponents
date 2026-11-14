@@ -10,10 +10,6 @@
         "title": "Значок вкладки"
       },
       {
-        "property": "disabled",
-        "title": "Отключено"
-      },
-      {
         "property": "label",
         "title": "Метка вкладки"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "Уникальный ID"
-      },
-      {
         "property": "flag",
         "title": "Необязательный текст флажка"
       },
       {
         "property": "flagIcon",
         "title": "Необязательный значок флажка"
+      },
+      {
+        "property": "disabled",
+        "title": "Отключено"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "Уникальный ID"
       }
     ]
   }

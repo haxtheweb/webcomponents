@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "כפתורים",
         "description": "קבוצת כפתורים המוצגת מתחת לטקסט."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "טקסט עוגן",
         "description": "תווית העוגן המוצגת בניווט."
       }
-    ]
+    ],
+    "developer": []
   }
 }

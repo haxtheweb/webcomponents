@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Neges dim cefnogaeth",
-        "description": "Neges pan na all y porwr ddangos ffeiliau PDF."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Neges dolen dim cefnogaeth",
-        "description": "Testun y ddolen pan na all y porwr ddangos ffeiliau PDF."
-      },
-      {
         "property": "width",
         "title": "Lled",
         "description": "Lled y gwyliwr PDF."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Uchder",
         "description": "Uchder y gwyliwr PDF."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Neges dim cefnogaeth",
+        "description": "Neges pan na all y porwr ddangos ffeiliau PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Neges dolen dim cefnogaeth",
+        "description": "Testun y ddolen pan na all y porwr ddangos ffeiliau PDF."
       }
     ]
   }

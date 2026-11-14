@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Opis slike",
         "description": "Natpis za sliku."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Naslov slike",
-        "description": "Naslov za oznaku slike."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Opis slike",
-        "description": "Opis za oznaku slike."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Onemogući modalni prozor slike",
         "description": "Onemogući da klik otvara sliku u dijalogu inspektora slika."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Naslov slike",
+        "description": "Naslov za oznaku slike."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Opis slike",
+        "description": "Opis za oznaku slike."
       }
     ],
     "developer": [

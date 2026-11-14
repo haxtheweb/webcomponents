@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Crachá de evento",
-    "description": "Componente de crachá de evento."
+    "description": "Um crachá no estilo de conferência com foto, nome e organização."
   },
   "settings": {
     "configure": [

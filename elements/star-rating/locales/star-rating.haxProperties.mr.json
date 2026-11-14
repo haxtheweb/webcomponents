@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "परस्परसंवादी",
         "description": "रेटिंग सेट करण्यासाठी वापरकर्त्याला परस्परसंवादाची परवानगी द्या."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "रुब्रिक स्केल मोड",

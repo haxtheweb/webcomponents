@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Question vrai / faux",
-    "description": "Question vrai ou faux"
+    "description": "Une affirmation que l’apprenant marque comme vraie ou fausse."
   },
   "settings": {
     "configure": [

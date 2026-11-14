@@ -11,20 +11,17 @@
         "description": "Lipéad inrochtana don tsraith cluaisíní."
       },
       {
-        "property": "disabled",
-        "title": "Díchumasaithe",
-        "description": "Díchumasaigh na cluaisíní ar fad."
-      },
-      {
-        "property": "hidden",
-        "title": "I bhfolach",
-        "description": "Folaigh an tsraith cluaisíní."
-      },
-      {
         "property": "sticky",
         "title": "Greamaitheach",
         "description": "Coinnigh cluaisíní cothrománacha ag an mbarr agus tú ag scrollú."
       },
+      {
+        "slot": "",
+        "title": "Cluaisíní",
+        "description": "Sraith eilimintí <a11y-tab/>."
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "Pointe Briste Leagain Amach",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "Pointe Briste Deilbhíní",
         "description": "Pointe briste chun téacs a thaispeáint le deilbhíní. Is é 0 an réamhshocrú; úsáid -1 do mhód deilbhíní amháin."
-      },
-      {
-        "slot": "",
-        "title": "Cluaisíní",
-        "description": "Sraith eilimintí <a11y-tab/>."
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "Díchumasaithe",
+        "description": "Díchumasaigh na cluaisíní ar fad."
+      },
+      {
+        "property": "hidden",
+        "title": "I bhfolach",
+        "description": "Folaigh an tsraith cluaisíní."
+      },
       {
         "property": "id",
         "title": "ID Uathúil",

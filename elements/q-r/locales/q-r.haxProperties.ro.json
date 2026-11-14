@@ -14,16 +14,6 @@
         "property": "title",
         "title": "Titlu alternativ",
         "description": "Titlu alternativ legat de sursa codului QR."
-      },
-      {
-        "property": "modulesize",
-        "title": "Dimensiune",
-        "description": "Dimensiunea codului QR."
-      },
-      {
-        "property": "margin",
-        "title": "Margine",
-        "description": "Spațiul din jurul codului."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "Dimensiune",
+        "description": "Dimensiunea codului QR."
+      },
+      {
+        "property": "margin",
+        "title": "Margine",
+        "description": "Spațiul din jurul codului."
       }
     ]
   }

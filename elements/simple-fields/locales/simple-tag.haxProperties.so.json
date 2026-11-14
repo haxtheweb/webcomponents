@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Midab xoojin toos ah",
         "description": "Si toos ah uga soo saar midabka xoojinta qoraalka calaamadda."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Badhanka joojinta",
-        "description": "Muuji badhan astaan ka saar/joojin ah gudaha kiniinka."
-      },
-      {
-        "property": "readonly",
-        "title": "Akhris keliya",
-        "description": "Qari badhanka joojinta si kiniinku u noqdo muujin keliya."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Cawl-buluug",
           "grey": "Cawl"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Badhanka joojinta",
+        "description": "Muuji badhan astaan ka saar/joojin ah gudaha kiniinka."
+      },
+      {
+        "property": "readonly",
+        "title": "Akhris keliya",
+        "description": "Qari badhanka joojinta si kiniinku u noqdo muujin keliya."
       }
     ]
   }

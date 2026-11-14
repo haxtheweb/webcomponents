@@ -26,11 +26,6 @@
         "description": "Зургийн alt текст."
       },
       {
-        "property": "animated",
-        "title": "Хөдөлгөөнт",
-        "description": "Анх ачаалахад явц хөдөлгөөнтэй харагдах эсэх"
-      },
-      {
         "property": "complete",
         "title": "Дууссан",
         "description": "Гүйцэтгэсэн утгуудын массив."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "Нийт",
         "description": "Бүх зүйл гүйцэтгэгдсэн үеийн нийт."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "Хөдөлгөөнт",
+        "description": "Анх ачаалахад явц хөдөлгөөнтэй харагдах эсэх"
       },
       {
         "property": "startAngle",

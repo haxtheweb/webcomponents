@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Irudi-oina",
         "description": "Irudiaren epigrafea."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Irudiaren izenburua",
-        "description": "Irudi-etiketaren izenburua."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Irudiaren deskribapena",
-        "description": "Irudi-etiketaren deskribapena."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Desgaitu irudiaren leiho modala",
         "description": "Desgaitu klik egitean irudia irudi-ikuskatzailearen elkarrizketa-koadroan irekitzea."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Irudiaren izenburua",
+        "description": "Irudi-etiketaren izenburua."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Irudiaren deskribapena",
+        "description": "Irudi-etiketaren deskribapena."
       }
     ],
     "developer": [

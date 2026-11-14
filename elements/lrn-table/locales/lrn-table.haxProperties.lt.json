@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "CSV lentelė",
-    "description": "Sugeneruoja lentelę iš CSV failo, kad ir kur jis būtų."
+    "description": "Rodo CSV failą kaip prieinamą lentelę."
   },
   "settings": {
     "configure": [

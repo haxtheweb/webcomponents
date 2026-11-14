@@ -9,7 +9,9 @@
         "property": "source",
         "title": "Pukyu URL",
         "description": "Pukyupa URL-nin."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Sayaynin",

@@ -4,22 +4,23 @@
     "description": "Lejátszási lista, amely a videó- és hanglejátszókat lejátszó + oldalsáv elrendezésben jeleníti meg."
   },
   "settings": {
-    "configure": [
+    "configure": [],
+    "advanced": [
       {
         "property": "activeIndex",
         "title": "Aktív index",
         "description": "A kezdéskor aktív elem sorszáma."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kurzus",
-        "description": "A kurzus, amelyhez ez a lejátszási lista készült (kurzusazonosító vagy URL)."
       }
     ],
     "developer": [
       {
         "title": "Média",
         "description": "A lejátszási lista videói és hangjai. Itt nem szerkeszthető: az oldalvázlat ebből tudja, mely blokkok ejthetők bele."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurzus",
+        "description": "A kurzus, amelyhez ez a lejátszási lista készült (kurzusazonosító vagy URL)."
       }
     ]
   }

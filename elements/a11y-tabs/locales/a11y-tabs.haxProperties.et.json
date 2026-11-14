@@ -11,20 +11,17 @@
         "description": "Vahekaartide komplekti ligipääsetav silt."
       },
       {
-        "property": "disabled",
-        "title": "Keelatud",
-        "description": "Keela kõik vahekaardid."
-      },
-      {
-        "property": "hidden",
-        "title": "Peidetud",
-        "description": "Peida vahekaartide komplekt."
-      },
-      {
         "property": "sticky",
         "title": "Kinnitatud",
         "description": "Hoia horisontaalsed vahekaardid kerimisel üleval."
       },
+      {
+        "slot": "",
+        "title": "Vahekaardid",
+        "description": "<a11y-tab/> elementide jada."
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "Paigutuse murdepunkt",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "Ikoonide murdepunkt",
         "description": "Murdepunkt teksti kuvamiseks koos ikoonidega. Vaikimisi 0; kasuta -1 ainult ikoonide režiimi jaoks."
-      },
-      {
-        "slot": "",
-        "title": "Vahekaardid",
-        "description": "<a11y-tab/> elementide jada."
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "Keelatud",
+        "description": "Keela kõik vahekaardid."
+      },
+      {
+        "property": "hidden",
+        "title": "Peidetud",
+        "description": "Peida vahekaartide komplekt."
+      },
       {
         "property": "id",
         "title": "Unikaalne ID",

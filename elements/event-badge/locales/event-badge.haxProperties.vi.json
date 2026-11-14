@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Huy hiệu sự kiện",
-    "description": "Thành phần huy hiệu sự kiện."
+    "description": "Thẻ tên kiểu hội nghị có ảnh, tên và tổ chức."
   },
   "settings": {
     "configure": [

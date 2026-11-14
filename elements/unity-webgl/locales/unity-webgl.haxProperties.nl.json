@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Doel",
         "description": "Pad naar de game-build."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Canvasbreedte",
+        "description": "CSS-breedte van het canvas (bijvoorbeeld px of em)."
       },
+      {
+        "property": "height",
+        "title": "Canvashoogte",
+        "description": "CSS-hoogte van het canvas (bijvoorbeeld px of em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Compressiemethode",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Productversie",
         "description": "Releaseversie."
-      },
-      {
-        "property": "width",
-        "title": "Canvasbreedte",
-        "description": "CSS-breedte van het canvas (bijvoorbeeld px of em)."
-      },
-      {
-        "property": "height",
-        "title": "Canvashoogte",
-        "description": "CSS-hoogte van het canvas (bijvoorbeeld px of em)."
       },
       {
         "property": "background",

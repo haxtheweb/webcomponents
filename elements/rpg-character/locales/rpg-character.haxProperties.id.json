@@ -11,11 +11,6 @@
         "description": "Kata yang digunakan untuk membuat karakter acak."
       },
       {
-        "property": "code",
-        "title": "Kode karakter",
-        "description": "Tempel kode yang tersimpan untuk membuat ulang karakter itu."
-      },
-      {
         "property": "hat",
         "title": "Topi",
         "description": "Gaya topi.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Topeng",
-        "description": "Topeng yang dikenakan di wajah atau kepala.",
-        "options": {
-          "none": "Tidak ada",
-          "lion": "Singa",
-          "plague": "Dokter wabah",
-          "theater": "Teater",
-          "pumpkin": "Labu",
-          "ghost": "Hantu",
-          "mummy": "Mumi",
-          "wrestler": "Topeng gulat",
-          "block-head": "Kepala balok",
-          "web": "Topeng jaring laba-laba",
-          "werewolf": "Wajah manusia serigala",
-          "shadow": "Wajah bayangan"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Riasan",
-        "description": "Cat wajah atau lipstik.",
-        "options": {
-          "none": "Tidak ada",
-          "red-lipstick": "Lipstik merah",
-          "pink-lipstick": "Lipstik merah muda",
-          "berry-lipstick": "Lipstik berry",
-          "clown": "Cat wajah badut",
-          "fangs": "Taring",
-          "skull": "Cat wajah tengkorak",
-          "zombie": "Cat wajah zombi",
-          "red-nose": "Hidung merah",
-          "white-beard": "Janggut putih",
-          "domino": "Topeng pahlawan",
-          "carrot": "Hidung wortel",
-          "bunny": "Hidung kelinci",
-          "mustache": "Kumis",
-          "monster": "Cat wajah monster",
-          "round-glasses": "Kacamata bundar"
-        }
-      },
-      {
         "property": "expression",
         "title": "Ekspresi",
         "description": "Ekspresi wajah.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Hewan peliharaan",
+        "description": "Hewan peliharaan di samping karakter.",
+        "options": {
+          "none": "Tidak ada",
+          "cat": "Kucing",
+          "dog": "Anjing",
+          "bunny": "Kelinci",
+          "goldfish": "Ikan mas koki",
+          "slime": "Lendir",
+          "squirrel": "Tupai",
+          "dragon": "Bayi naga",
+          "parrot": "Burung beo",
+          "owl": "Burung hantu",
+          "bat": "Kelelawar"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Kode karakter",
+        "description": "Tempel kode yang tersimpan untuk membuat ulang karakter itu."
+      },
+      {
+        "property": "mask",
+        "title": "Topeng",
+        "description": "Topeng yang dikenakan di wajah atau kepala.",
+        "options": {
+          "none": "Tidak ada",
+          "lion": "Singa",
+          "plague": "Dokter wabah",
+          "theater": "Teater",
+          "pumpkin": "Labu",
+          "ghost": "Hantu",
+          "mummy": "Mumi",
+          "wrestler": "Topeng gulat",
+          "block-head": "Kepala balok",
+          "web": "Topeng jaring laba-laba",
+          "werewolf": "Wajah manusia serigala",
+          "shadow": "Wajah bayangan"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Riasan",
+        "description": "Cat wajah atau lipstik.",
+        "options": {
+          "none": "Tidak ada",
+          "red-lipstick": "Lipstik merah",
+          "pink-lipstick": "Lipstik merah muda",
+          "berry-lipstick": "Lipstik berry",
+          "clown": "Cat wajah badut",
+          "fangs": "Taring",
+          "skull": "Cat wajah tengkorak",
+          "zombie": "Cat wajah zombi",
+          "red-nose": "Hidung merah",
+          "white-beard": "Janggut putih",
+          "domino": "Topeng pahlawan",
+          "carrot": "Hidung wortel",
+          "bunny": "Hidung kelinci",
+          "mustache": "Kumis",
+          "monster": "Cat wajah monster",
+          "round-glasses": "Kacamata bundar"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Teks bendera",
         "description": "Hingga 4 huruf ditampilkan pada bendera."
@@ -310,24 +330,6 @@
           "skates": "Sepatu seluncur",
           "skateboard": "Skateboard",
           "hoverboard": "Papan melayang"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Hewan peliharaan",
-        "description": "Hewan peliharaan di samping karakter.",
-        "options": {
-          "none": "Tidak ada",
-          "cat": "Kucing",
-          "dog": "Anjing",
-          "bunny": "Kelinci",
-          "goldfish": "Ikan mas koki",
-          "slime": "Lendir",
-          "squirrel": "Tupai",
-          "dragon": "Bayi naga",
-          "parrot": "Burung beo",
-          "owl": "Burung hantu",
-          "bat": "Kelelawar"
         }
       },
       {

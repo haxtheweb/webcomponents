@@ -4,22 +4,23 @@
     "description": "Daftar puter sing nampilaké pamuter video lan audio ing tata letak pamuter + bilah sisih."
   },
   "settings": {
-    "configure": [
+    "configure": [],
+    "advanced": [
       {
         "property": "activeIndex",
         "title": "Nomer wiwitan",
         "description": "Nomer item aktif kanggo wiwitan."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kursus",
-        "description": "Kursus sing dadi tujuan daftar puter iki (pangenal kursus utawa URL)."
       }
     ],
     "developer": [
       {
         "title": "Media",
         "description": "Video lan audio ing dhaptar puter. Ora disunting ing kene: garis gedhe kaca nggunakake iki kanggo ngerti blok endi sing bisa diselehake ing njero."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursus",
+        "description": "Kursus sing dadi tujuan daftar puter iki (pangenal kursus utawa URL)."
       }
     ]
   }

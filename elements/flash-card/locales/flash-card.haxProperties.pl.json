@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Źródło obrazu",
         "description": "Plik obrazu używany na karcie. Zastępuje słowo kluczowe obrazu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Słowo kluczowe obrazu",
+        "description": "Słowo kluczowe losowego obrazu. Zastępowane przez źródło obrazu."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Cel uczenia się",
         "description": "OER Schema: ID lub URL celu uczenia się, który wspiera to ćwiczenie."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Słowo kluczowe obrazu",
-        "description": "Słowo kluczowe losowego obrazu. Zastępowane przez źródło obrazu."
       }
     ]
   }

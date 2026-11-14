@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Progress Donut",
-    "description": "Donut ng pag-usad"
+    "description": "Isang donut chart na nagpapakita ng progreso patungo sa kabuuan."
   },
   "settings": {
     "configure": [
@@ -26,11 +26,6 @@
         "description": "Alt text para sa larawan."
       },
       {
-        "property": "animated",
-        "title": "Animated",
-        "description": "Kung mag-a-animate ang pag-usad sa unang pag-load"
-      },
-      {
         "property": "complete",
         "title": "Kumpleto",
         "description": "Isang array ng mga nakumpletong value."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "Kabuuan",
         "description": "Kabuuan kapag kumpleto na ang lahat ng item."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "Animated",
+        "description": "Kung mag-a-animate ang pag-usad sa unang pag-load"
       },
       {
         "property": "startAngle",

@@ -27,6 +27,13 @@
       {
         "slot": "",
         "title": "Svar"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Tengill á meira",
+        "description": "Tengill á frekari upplýsingar."
       },
       {
         "property": "hasLearningObjective",
@@ -37,13 +44,6 @@
         "property": "assessing",
         "title": "Metur",
         "description": "Tilvísun í virkni gefin út sem oer:assessing."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "link",
-        "title": "Tengill á meira",
-        "description": "Tengill á frekari upplýsingar."
       }
     ]
   }

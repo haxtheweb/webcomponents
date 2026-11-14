@@ -9,7 +9,9 @@
         "property": "source",
         "title": "Boarne-URL",
         "description": "Boarne-URL."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Hichte",

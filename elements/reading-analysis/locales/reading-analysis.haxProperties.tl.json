@@ -38,21 +38,6 @@
         "slot": "",
         "title": "Babasahin",
         "description": "Ang babasahing pinagtatrabahuhan ng mga mag-aaral. Anumang HTML: mga heading, talata, listahan at larawan."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "Format ng pagmamarka",
-        "description": "OER Schema: format ng pagmamarka para sa pagtatasang ito (hal. puntos, letra, porsyento, pagkumpleto)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Layunin sa pagkatuto",
-        "description": "OER Schema: layunin sa pagkatuto na kaugnay ng pagtatasang ito."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kurso",
-        "description": "OER Schema: kursong pinaglalaanan ng pagtatasang ito."
       }
     ],
     "advanced": [
@@ -70,6 +55,16 @@
         "property": "collapsed",
         "title": "Magsimulang nakatiklop",
         "description": "Kapag natitiklop, magsimula bilang saradong hilera na nagpapakita lamang ng tanong at ng katayuan nito."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Format ng pagmamarka",
+        "description": "OER Schema: format ng pagmamarka para sa pagtatasang ito (hal. puntos, letra, porsyento, pagkumpleto)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Layunin sa pagkatuto",
+        "description": "OER Schema: layunin sa pagkatuto na kaugnay ng pagtatasang ito."
       }
     ],
     "developer": [
@@ -77,6 +72,11 @@
         "property": "quizName",
         "title": "Pangalan ng quiz",
         "description": "Pangalan ng quiz na ipinapasa para gamitin sa mga environment na pinapatakbo ng xAPI upang matukoy ang item na ito"
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurso",
+        "description": "OER Schema: kursong pinaglalaanan ng pagtatasang ito."
       }
     ]
   }

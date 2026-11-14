@@ -9,7 +9,9 @@
         "property": "source",
         "title": "URL vira",
         "description": "URL vira."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Višina",

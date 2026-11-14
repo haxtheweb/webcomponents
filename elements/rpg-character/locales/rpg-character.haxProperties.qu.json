@@ -11,11 +11,6 @@
         "description": "Mana yuyasqa runata rurananpaq simi."
       },
       {
-        "property": "code",
-        "title": "Runa kaq código",
-        "description": "Waqaychasqa códigota k'askachiy chay runata wakmanta ruranaykipaq."
-      },
-      {
         "property": "hat",
         "title": "Chuku",
         "description": "Chukupa layan.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Uya pakana",
-        "description": "Uyapi icha umapi churakuq uya pakana.",
-        "options": {
-          "none": "Mana ima",
-          "lion": "Liyun",
-          "plague": "Onqoy hampiq",
-          "theater": "Teatro",
-          "pumpkin": "Zapallo",
-          "ghost": "Phantasma",
-          "mummy": "Momia",
-          "wrestler": "Maqanakuq saynata",
-          "block-head": "Rumi kuchu uma",
-          "web": "Llika saynata",
-          "werewolf": "Lobo-runa uya",
-          "shadow": "Llantu uya"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Llimp'ichay",
-        "description": "Uya llimp'i icha siminpaq llimp'i.",
-        "options": {
-          "none": "Mana ima",
-          "red-lipstick": "Puka siminpaq llimp'i",
-          "pink-lipstick": "Rosado siminpaq llimp'i",
-          "berry-lipstick": "Mora siminpaq llimp'i",
-          "clown": "Payaso llimp'i",
-          "fangs": "Kiru",
-          "skull": "Tullu uma llimp'i",
-          "zombie": "Zombi llimp'i",
-          "red-nose": "Puka sinqa",
-          "white-beard": "Yuraq sunkha",
-          "domino": "Hero uya pakana",
-          "carrot": "Zanahoria sinqa",
-          "bunny": "Quwi sinqa",
-          "mustache": "Wirpa sunkha",
-          "monster": "Supay uya llimp'i",
-          "round-glasses": "Muyu ñawi qhawanakuna"
-        }
-      },
-      {
         "property": "expression",
         "title": "Uya rikchay",
         "description": "Uyap rikchaynin.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Uywa",
+        "description": "Runapa ladonpi uywa.",
+        "options": {
+          "none": "Mana ima",
+          "cat": "Michi",
+          "dog": "Allqu",
+          "bunny": "Quwi",
+          "goldfish": "Quri challwa",
+          "slime": "Llawsa",
+          "squirrel": "Ardilla",
+          "dragon": "Uchuy amaru",
+          "parrot": "Uritu",
+          "owl": "Tuku",
+          "bat": "Masu"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Runa kaq código",
+        "description": "Waqaychasqa códigota k'askachiy chay runata wakmanta ruranaykipaq."
+      },
+      {
+        "property": "mask",
+        "title": "Uya pakana",
+        "description": "Uyapi icha umapi churakuq uya pakana.",
+        "options": {
+          "none": "Mana ima",
+          "lion": "Liyun",
+          "plague": "Onqoy hampiq",
+          "theater": "Teatro",
+          "pumpkin": "Zapallo",
+          "ghost": "Phantasma",
+          "mummy": "Momia",
+          "wrestler": "Maqanakuq saynata",
+          "block-head": "Rumi kuchu uma",
+          "web": "Llika saynata",
+          "werewolf": "Lobo-runa uya",
+          "shadow": "Llantu uya"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Llimp'ichay",
+        "description": "Uya llimp'i icha siminpaq llimp'i.",
+        "options": {
+          "none": "Mana ima",
+          "red-lipstick": "Puka siminpaq llimp'i",
+          "pink-lipstick": "Rosado siminpaq llimp'i",
+          "berry-lipstick": "Mora siminpaq llimp'i",
+          "clown": "Payaso llimp'i",
+          "fangs": "Kiru",
+          "skull": "Tullu uma llimp'i",
+          "zombie": "Zombi llimp'i",
+          "red-nose": "Puka sinqa",
+          "white-beard": "Yuraq sunkha",
+          "domino": "Hero uya pakana",
+          "carrot": "Zanahoria sinqa",
+          "bunny": "Quwi sinqa",
+          "mustache": "Wirpa sunkha",
+          "monster": "Supay uya llimp'i",
+          "round-glasses": "Muyu ñawi qhawanakuna"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Bandera qillqa",
         "description": "Banderapi 4 letrakama rikukun."
@@ -310,24 +330,6 @@
           "skates": "Patines",
           "skateboard": "Skateboard",
           "hoverboard": "Phawaq tabla"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Uywa",
-        "description": "Runapa ladonpi uywa.",
-        "options": {
-          "none": "Mana ima",
-          "cat": "Michi",
-          "dog": "Allqu",
-          "bunny": "Quwi",
-          "goldfish": "Quri challwa",
-          "slime": "Llawsa",
-          "squirrel": "Ardilla",
-          "dragon": "Uchuy amaru",
-          "parrot": "Uritu",
-          "owl": "Tuku",
-          "bat": "Masu"
         }
       },
       {

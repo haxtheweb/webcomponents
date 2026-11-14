@@ -14,16 +14,6 @@
         "property": "title",
         "title": "Hukniray sutichay",
         "description": "QR código pukyuwan t'inkisqa hukniray sutichay."
-      },
-      {
-        "property": "modulesize",
-        "title": "Sayay",
-        "description": "QR códigopa sayaynin."
-      },
-      {
-        "property": "margin",
-        "title": "Pata",
-        "description": "Códigopa muyuriqnin."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "Sayay",
+        "description": "QR códigopa sayaynin."
+      },
+      {
+        "property": "margin",
+        "title": "Pata",
+        "description": "Códigopa muyuriqnin."
       }
     ]
   }

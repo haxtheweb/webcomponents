@@ -46,6 +46,16 @@
         "property": "accentColor",
         "title": "Culore d'accentu",
         "description": "Selezziunate u culore d'accentu di u lettore."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Piattà l'indicazioni d'ora",
+        "description": "Piattà l'indicazioni d'ora nant'à a trascrizzione."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Piattà a trascrizzione",
+        "description": "Piattà a trascrizzione per difettu."
       }
     ],
     "developer": [
@@ -72,16 +82,6 @@
         "property": "disableInteractive",
         "title": "Disattivà l'interattività",
         "description": "Disattivà u modu interattivu chì rende a trascrizzione cliccabile."
-      },
-      {
-        "property": "hideTimestamps",
-        "title": "Piattà l'indicazioni d'ora",
-        "description": "Piattà l'indicazioni d'ora nant'à a trascrizzione."
-      },
-      {
-        "property": "hideTranscript",
-        "title": "Piattà a trascrizzione",
-        "description": "Piattà a trascrizzione per difettu."
       },
       {
         "property": "lang",

@@ -1,10 +1,10 @@
 {
   "gizmo": {
-    "title": "HAXcms: podrejeni blok",
-    "description": "Dinamični blok za prikaz podrejenih strani trenutne strani"
+    "title": "Podstrani",
+    "description": "Navede podstrani trenutne strani."
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "Dinamična metoda",
@@ -14,7 +14,9 @@
           "parent": "Podrejene nadrejenega",
           "ancestor": "Vse podrejene od najvišjega prednika"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "Začetna raven"

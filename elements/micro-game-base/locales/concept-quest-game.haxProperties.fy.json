@@ -91,7 +91,9 @@
         "property": "gameTitle",
         "title": "Spultsjenamme",
         "description": "Neamt dit spultsje yn foartgongsgebeurtenissen en OER Schema-markup."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Spultsje-id",

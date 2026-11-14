@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Фильтрлауга рөхсәт",
         "description": "Багана кыйммәтләре буенча фильтрларга рөхсәт итәргә."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Санлы бизәү",
-        "description": "Санлы баганаларга санлы бизәү кулланырга."
-      },
-      {
-        "property": "responsive",
-        "title": "Җайлашучан",
-        "description": "Кечкенә экраннарда таблица макетын җайлаштырырга."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Рубрика режимы",
-        "description": "Бу таблицаны OER Schema Rubric итеп аңларга, шулай итеп Rubric, RubricScale, RubricCriterion һәм RubricLevel метамәгълүматлары чыгарыла."
-      },
-      {
-        "property": "rubricType",
-        "title": "Рубрика төре",
-        "description": "oer:rubricType итеп чыгарыла торган рубрика стиле (Рубрика режимы кабызылганда гына мәгънәле).",
-        "options": {
-          "": "(юк)",
-          "analytic": "Аналитик",
-          "holistic": "Гомуми",
-          "single-point": "Бер нокталы",
-          "checklist": "Тикшерү исемлеге"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Бастыру төймәсе",
         "description": "Таблицаны гына бастыру өчен төймә өстәргә."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Санлы бизәү",
+        "description": "Санлы баганаларга санлы бизәү кулланырга."
+      },
+      {
+        "property": "responsive",
+        "title": "Җайлашучан",
+        "description": "Кечкенә экраннарда таблица макетын җайлаштырырга."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Рубрика режимы",
+        "description": "Бу таблицаны OER Schema Rubric итеп аңларга, шулай итеп Rubric, RubricScale, RubricCriterion һәм RubricLevel метамәгълүматлары чыгарыла."
+      },
+      {
+        "property": "rubricType",
+        "title": "Рубрика төре",
+        "description": "oer:rubricType итеп чыгарыла торган рубрика стиле (Рубрика режимы кабызылганда гына мәгънәле).",
+        "options": {
+          "": "(юк)",
+          "analytic": "Аналитик",
+          "holistic": "Гомуми",
+          "single-point": "Бер нокталы",
+          "checklist": "Тикшерү исемлеге"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "CSV мәгълүматлары",
         "description": "Йөкләнгән CSV файлыннан таблица ясарга."
       }
-    ]
+    ],
+    "developer": []
   }
 }

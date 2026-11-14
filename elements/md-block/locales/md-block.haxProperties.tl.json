@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "Isang block ng markdown na nilalaman, direkta o nilo-load mula sa remote"
+    "description": "Nilalamang Markdown, direktang isinulat o ni-load mula sa file."
   },
   "settings": {
     "configure": [

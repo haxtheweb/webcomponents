@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "బాణం లేదు",
         "description": "బటన్ బాణాన్ని దాచండి."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "లింక్: లక్ష్యం",
@@ -54,7 +52,9 @@
           "_top": "పై విండో - _top",
           "_parent": "పేరెంట్ విండో - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "లింక్: rel",

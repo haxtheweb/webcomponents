@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Tähtiarvio",
-    "description": "Arvion näyttöelementti tai painike arvion antamiseen."
+    "description": "Näytä tähtiarvio tai anna lukijoiden valita se."
   },
   "settings": {
     "configure": [
@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Interaktiivinen",
         "description": "Salli käyttäjän asettaa arvio."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Arviointiasteikkotila",

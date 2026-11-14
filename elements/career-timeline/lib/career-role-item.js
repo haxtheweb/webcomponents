@@ -336,70 +336,8 @@ export class CareerRoleItem extends I18NMixin(DDDSuper(LitElement)) {
   }
 
   static get haxProperties() {
-    return {
-      type: "grid",
-      canScale: false,
-      designSystem: false,
-      canEditSource: true,
-      contentEditable: false,
-      hideDefaultSettings: true,
-      gizmo: {
-        title: "Career Role",
-        description: "An individual role within an organization",
-        icon: "chrome-reader-mode",
-        color: "light-blue",
-        tags: ["Content", "list", "step"],
-        handles: [],
-        meta: {
-          author: "HAXTheWeb core team",
-        },
-      },
-      settings: {
-        configure: [
-          {
-            property: "title",
-            title: "Title",
-            inputMethod: "textfield",
-          },
-          {
-            property: "startDate",
-            title: "Start Date",
-            inputMethod: "datepicker",
-          },
-          {
-            property: "endDate",
-            title: "End Date (Optional)",
-            inputMethod: "datepicker",
-          },
-          {
-            property: "skills",
-            title: "Associated Skills",
-            description: "Select the + button to start adding skills",
-            inputMethod: "array",
-            itemLabel: "name",
-            hideReorder: true,
-            expanded: true,
-            hideDuplicate: true,
-            properties: [
-              {
-                property: "name",
-                title: "Skill",
-                inputMethod: "textfield",
-              },
-            ],
-          },
-        ],
-        advanced: [],
-        developer: [],
-      },
-      demoSchema: [
-        {
-          tag: "career-role-item",
-          properties: {},
-          content: "",
-        },
-      ],
-    };
+    return new URL("./career-role-item.haxProperties.json", import.meta.url)
+      .href;
   }
 }
 

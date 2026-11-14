@@ -11,11 +11,6 @@
         "description": "Збор што се користи за создавање случаен лик."
       },
       {
-        "property": "code",
-        "title": "Код на ликот",
-        "description": "Залепете зачуван код за повторно да го создадете тој лик."
-      },
-      {
         "property": "hat",
         "title": "Капа",
         "description": "Стил на капата.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Маска",
-        "description": "Маска што се носи на лицето или главата.",
-        "options": {
-          "none": "Нема",
-          "lion": "Лав",
-          "plague": "Чумен лекар",
-          "theater": "Театар",
-          "pumpkin": "Тиква",
-          "ghost": "Дух",
-          "mummy": "Мумија",
-          "wrestler": "Маска за борење",
-          "block-head": "Блоковска глава",
-          "web": "Маска со пајажина",
-          "werewolf": "Лице на врколак",
-          "shadow": "Лице во сенка"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Шминка",
-        "description": "Боја за лице или кармин.",
-        "options": {
-          "none": "Нема",
-          "red-lipstick": "Црвен кармин",
-          "pink-lipstick": "Розов кармин",
-          "berry-lipstick": "Бери кармин",
-          "clown": "Клоунска шминка",
-          "fangs": "Вампирски заби",
-          "skull": "Боја за череп",
-          "zombie": "Зомби боја",
-          "red-nose": "Црвен нос",
-          "white-beard": "Бела брада",
-          "domino": "Херојска маска",
-          "carrot": "Нос од морков",
-          "bunny": "Нос од зајаче",
-          "mustache": "Мустаќи",
-          "monster": "Чудовишна боја за лице",
-          "round-glasses": "Тркалезни очила"
-        }
-      },
-      {
         "property": "expression",
         "title": "Израз",
         "description": "Израз на лицето.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Миленик",
+        "description": "Миленик покрај ликот.",
+        "options": {
+          "none": "Нема",
+          "cat": "Мачка",
+          "dog": "Куче",
+          "bunny": "Зајаче",
+          "goldfish": "Златна рипка",
+          "slime": "Лигавец",
+          "squirrel": "Верверица",
+          "dragon": "Мал змеј",
+          "parrot": "Папагал",
+          "owl": "Був",
+          "bat": "Лилјак"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Код на ликот",
+        "description": "Залепете зачуван код за повторно да го создадете тој лик."
+      },
+      {
+        "property": "mask",
+        "title": "Маска",
+        "description": "Маска што се носи на лицето или главата.",
+        "options": {
+          "none": "Нема",
+          "lion": "Лав",
+          "plague": "Чумен лекар",
+          "theater": "Театар",
+          "pumpkin": "Тиква",
+          "ghost": "Дух",
+          "mummy": "Мумија",
+          "wrestler": "Маска за борење",
+          "block-head": "Блоковска глава",
+          "web": "Маска со пајажина",
+          "werewolf": "Лице на врколак",
+          "shadow": "Лице во сенка"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Шминка",
+        "description": "Боја за лице или кармин.",
+        "options": {
+          "none": "Нема",
+          "red-lipstick": "Црвен кармин",
+          "pink-lipstick": "Розов кармин",
+          "berry-lipstick": "Бери кармин",
+          "clown": "Клоунска шминка",
+          "fangs": "Вампирски заби",
+          "skull": "Боја за череп",
+          "zombie": "Зомби боја",
+          "red-nose": "Црвен нос",
+          "white-beard": "Бела брада",
+          "domino": "Херојска маска",
+          "carrot": "Нос од морков",
+          "bunny": "Нос од зајаче",
+          "mustache": "Мустаќи",
+          "monster": "Чудовишна боја за лице",
+          "round-glasses": "Тркалезни очила"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Текст на знамето",
         "description": "До 4 букви прикажани на знамето."
@@ -310,24 +330,6 @@
           "skates": "Лизгалки",
           "skateboard": "Скејтборд",
           "hoverboard": "Лебдечка даска"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Миленик",
-        "description": "Миленик покрај ликот.",
-        "options": {
-          "none": "Нема",
-          "cat": "Мачка",
-          "dog": "Куче",
-          "bunny": "Зајаче",
-          "goldfish": "Златна рипка",
-          "slime": "Лигавец",
-          "squirrel": "Верверица",
-          "dragon": "Мал змеј",
-          "parrot": "Папагал",
-          "owl": "Був",
-          "bat": "Лилјак"
         }
       },
       {

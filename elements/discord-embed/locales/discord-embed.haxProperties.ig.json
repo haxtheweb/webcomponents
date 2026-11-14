@@ -9,7 +9,9 @@
         "property": "source",
         "title": "URL Akụrụngwa",
         "description": "URL akụrụngwa."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Ogo",

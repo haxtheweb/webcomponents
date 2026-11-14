@@ -9,7 +9,21 @@
         "property": "target",
         "title": "টার্গেট",
         "description": "গেম বিল্ডের পাথ।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "ক্যানভাসের প্রস্থ",
+        "description": "ক্যানভাসের CSS প্রস্থ (যেমন px বা em)।"
       },
+      {
+        "property": "height",
+        "title": "ক্যানভাসের উচ্চতা",
+        "description": "ক্যানভাসের CSS উচ্চতা (যেমন px বা em)।"
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "কম্প্রেশন পদ্ধতি",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "পণ্যের সংস্করণ",
         "description": "রিলিজ সংস্করণ।"
-      },
-      {
-        "property": "width",
-        "title": "ক্যানভাসের প্রস্থ",
-        "description": "ক্যানভাসের CSS প্রস্থ (যেমন px বা em)।"
-      },
-      {
-        "property": "height",
-        "title": "ক্যানভাসের উচ্চতা",
-        "description": "ক্যানভাসের CSS উচ্চতা (যেমন px বা em)।"
       },
       {
         "property": "background",

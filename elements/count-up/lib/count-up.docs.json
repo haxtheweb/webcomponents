@@ -4,7 +4,7 @@
   "package": "@haxtheweb/count-up",
   "version": "26.8.0",
   "license": "Apache-2.0",
-  "title": "Count Up",
+  "title": "Count up",
   "description": "Animate a number counting up to a target value when it scrolls into view.",
   "icon": "icons:trending-up",
   "tags": [
@@ -172,7 +172,7 @@
     "canScale": true,
     "canEditSource": true,
     "gizmo": {
-      "title": "Count Up",
+      "title": "Count up",
       "description": "Animate a number counting up to a target value when it scrolls into view.",
       "icon": "icons:trending-up",
       "color": "green",
@@ -222,30 +222,6 @@
           "title": "Suffix text",
           "description": "Text shown after the number (e.g. '%').",
           "inputMethod": "textfield"
-        },
-        {
-          "slot": "prefix",
-          "title": "Prefix slot",
-          "description": "Optional slotted content before the number.",
-          "inputMethod": "textfield",
-          "slotWrapper": "span",
-          "allowedSlotWrappers": [
-            "span",
-            "div",
-            "p"
-          ]
-        },
-        {
-          "slot": "suffix",
-          "title": "Suffix slot",
-          "description": "Optional slotted content after the number.",
-          "inputMethod": "textfield",
-          "slotWrapper": "span",
-          "allowedSlotWrappers": [
-            "span",
-            "div",
-            "p"
-          ]
         }
       ],
       "advanced": [
@@ -274,6 +250,30 @@
           "title": "No easing",
           "description": "Disable easing so the count is linear.",
           "inputMethod": "boolean"
+        },
+        {
+          "slot": "prefix",
+          "title": "Prefix slot",
+          "description": "Optional slotted content before the number.",
+          "inputMethod": "textfield",
+          "slotWrapper": "span",
+          "allowedSlotWrappers": [
+            "span",
+            "div",
+            "p"
+          ]
+        },
+        {
+          "slot": "suffix",
+          "title": "Suffix slot",
+          "description": "Optional slotted content after the number.",
+          "inputMethod": "textfield",
+          "slotWrapper": "span",
+          "allowedSlotWrappers": [
+            "span",
+            "div",
+            "p"
+          ]
         }
       ]
     },
@@ -297,7 +297,7 @@
       }
     ]
   },
-  "surfaceHash": "9b3fd85216a3",
+  "surfaceHash": "26ef9a6425ce",
   "walkthroughs": [
     {
       "id": "",
@@ -305,13 +305,13 @@
       "order": 0,
       "src": "count-up.motion.json",
       "file": "lib/count-up.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/count-up.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

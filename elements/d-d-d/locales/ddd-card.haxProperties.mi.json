@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Kāore he Pere",
         "description": "Hunaia te pere o te pātene."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Hono: whāinga",
@@ -54,7 +52,9 @@
           "_top": "Matapihi runga - _top",
           "_parent": "Matapihi matua - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Hono: rel",

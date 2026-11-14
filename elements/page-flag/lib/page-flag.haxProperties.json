@@ -5,7 +5,7 @@
   "gizmo": {
     "title": "Page flag",
     "description": "Editorial note for page authors.",
-    "icon": "lrn:quiz",
+    "icon": "icons:flag",
     "color": "grey",
     "tags": ["Other", "workflow", "edit", "note", "flag", "page"]
   },
@@ -27,10 +27,11 @@
     {
       "tag": "page-flag",
       "properties": {
-        "accentColor": "blue",
+        "label": "Needs review",
+        "accentColor": "orange",
         "opened": true
       },
-      "content": ""
+      "content": "<page-flag-comment seed=\"Editor\">Check the dates in this section before publishing.</page-flag-comment>"
     }
   ]
 }

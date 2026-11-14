@@ -6,7 +6,7 @@
   "hideDefaultSettings": false,
   "gizmo": {
     "title": "GitHub contributors list",
-    "description": "Rendered as RPG characters using the GitHub API.",
+    "description": "List a repository's contributors as RPG characters.",
     "icon": "mdi-social:github-circle",
     "color": "light-blue",
     "tags": ["Other", "developer", "community", "git"],

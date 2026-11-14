@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Sarkazmus",
-    "description": "Prezentovanie textu provokatívnym spôsobom"
+    "description": "Text so striedaním veľkých a malých písmen pre sarkastický tón."
   },
   "settings": {
     "configure": [

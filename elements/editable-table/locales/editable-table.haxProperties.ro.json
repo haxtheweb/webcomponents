@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Permite filtrarea",
         "description": "Permite filtrarea după valorile coloanelor."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Stil numeric",
-        "description": "Aplică stil numeric coloanelor numerice."
-      },
-      {
-        "property": "responsive",
-        "title": "Adaptiv",
-        "description": "Ajustează aspectul tabelului pe ecrane mici."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Mod rubrică",
-        "description": "Interpretează acest tabel ca Rubric OER Schema, astfel încât să fie emise metadatele Rubric, RubricScale, RubricCriterion și RubricLevel."
-      },
-      {
-        "property": "rubricType",
-        "title": "Tip de rubrică",
-        "description": "Stilul rubricii emis ca oer:rubricType (are sens doar când Modul rubrică este activ).",
-        "options": {
-          "": "(niciunul)",
-          "analytic": "Analitică",
-          "holistic": "Holistică",
-          "single-point": "Cu un singur punct",
-          "checklist": "Listă de verificare"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Buton de imprimare",
         "description": "Adaugă un buton pentru imprimarea doar a tabelului."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Stil numeric",
+        "description": "Aplică stil numeric coloanelor numerice."
+      },
+      {
+        "property": "responsive",
+        "title": "Adaptiv",
+        "description": "Ajustează aspectul tabelului pe ecrane mici."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Mod rubrică",
+        "description": "Interpretează acest tabel ca Rubric OER Schema, astfel încât să fie emise metadatele Rubric, RubricScale, RubricCriterion și RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "Tip de rubrică",
+        "description": "Stilul rubricii emis ca oer:rubricType (are sens doar când Modul rubrică este activ).",
+        "options": {
+          "": "(niciunul)",
+          "analytic": "Analitică",
+          "holistic": "Holistică",
+          "single-point": "Cu un singur punct",
+          "checklist": "Listă de verificare"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "Date CSV",
         "description": "Creează un tabel dintr-un fișier CSV încărcat."
       }
-    ]
+    ],
+    "developer": []
   }
 }

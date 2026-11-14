@@ -4,7 +4,7 @@
     "description": "דינאַמישער בלאָק צו ווײַזן קינדער פֿון דער איצטיקער זײַט"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "דינאַמישער מעטאָד",
@@ -14,7 +14,9 @@
           "parent": "די קינדער פֿונעם עלטערן",
           "ancestor": "אַלע קינדער פֿונעם העכסטן אָבֿ"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "אָנהייב־שטאַפּל"

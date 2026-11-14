@@ -14,16 +14,6 @@
         "property": "title",
         "title": "Alternatif başlık",
         "description": "QR kodu kaynağına bağlı alternatif başlık."
-      },
-      {
-        "property": "modulesize",
-        "title": "Boyut",
-        "description": "QR kodunun boyutu."
-      },
-      {
-        "property": "margin",
-        "title": "Kenar boşluğu",
-        "description": "Kodun çevresindeki boşluk."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "Boyut",
+        "description": "QR kodunun boyutu."
+      },
+      {
+        "property": "margin",
+        "title": "Kenar boşluğu",
+        "description": "Kodun çevresindeki boşluk."
       }
     ]
   }

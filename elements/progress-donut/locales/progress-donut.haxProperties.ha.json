@@ -26,11 +26,6 @@
         "description": "Madadin rubutu don hoto."
       },
       {
-        "property": "animated",
-        "title": "Mai motsi",
-        "description": "Ko ci gaba zai yi motsi a lodawa ta farko"
-      },
-      {
         "property": "complete",
         "title": "An kammala",
         "description": "Tarin ƙimomin da aka kammala."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "Jimilla",
         "description": "Jimilla idan dukkan abubuwa sun kammala."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "Mai motsi",
+        "description": "Ko ci gaba zai yi motsi a lodawa ta farko"
       },
       {
         "property": "startAngle",

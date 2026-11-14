@@ -11,6 +11,13 @@
         "description": "URL барои ин файли AR."
       },
       {
+        "property": "skyColor",
+        "title": "Ранги осмон",
+        "description": "Ранги осмонро дар саҳна интихоб кунед."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "Мавқеи X-и унсур дар AR."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "Мавқеи Z-и унсур дар AR."
-      },
-      {
-        "property": "skyColor",
-        "title": "Ранги осмон",
-        "description": "Ранги осмонро дар саҳна интихоб кунед."
       }
     ]
   }

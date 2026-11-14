@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Vienkāršs attēls",
-    "description": "Apstrādājiet attēlus ar vienkāršiem parametriem."
+    "description": "Attēls, kura izmēru maina, to apgriež vai pagriež ar vienkāršiem iestatījumiem."
   },
   "settings": {
     "configure": [
@@ -26,7 +26,8 @@
         "description": "Noderīgs ekrāna lasītājiem un labākam SEO."
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "Kvalitāte",

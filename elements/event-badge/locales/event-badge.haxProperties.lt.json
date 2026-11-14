@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Renginio ženklelis",
-    "description": "Renginio ženklelio komponentas."
+    "description": "Konferencijos stiliaus vardo kortelė su nuotrauka, vardu ir organizacija."
   },
   "settings": {
     "configure": [

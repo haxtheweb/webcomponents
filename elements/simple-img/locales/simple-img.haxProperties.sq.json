@@ -26,7 +26,8 @@
         "description": "I dobishëm për lexuesit e ekranit dhe për SEO më të mirë."
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "Cilësia",

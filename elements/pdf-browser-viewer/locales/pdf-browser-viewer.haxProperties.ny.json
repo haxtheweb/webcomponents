@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Uthenga wosathandizidwa",
-        "description": "Uthenga pamene msakatuli sungathe kuwonetsa mafayilo a PDF."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Uthenga wa ulalo wosathandizidwa",
-        "description": "Mawu a ulalo pamene msakatuli sungathe kuwonetsa mafayilo a PDF."
-      },
-      {
         "property": "width",
         "title": "M'lifupi",
         "description": "M'lifupi mwa chowonera PDF."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Kutalika",
         "description": "Kutalika kwa chowonera PDF."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Uthenga wosathandizidwa",
+        "description": "Uthenga pamene msakatuli sungathe kuwonetsa mafayilo a PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Uthenga wa ulalo wosathandizidwa",
+        "description": "Mawu a ulalo pamene msakatuli sungathe kuwonetsa mafayilo a PDF."
       }
     ]
   }

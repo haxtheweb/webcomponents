@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "이미지 소스",
         "description": "카드에 사용되는 이미지 파일입니다. 이미지 키워드보다 우선합니다."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "이미지 키워드",
+        "description": "임의 이미지 키워드입니다. 이미지 소스가 우선합니다."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "학습 목표",
         "description": "OER Schema: 이 연습이 지원하는 학습 목표의 ID 또는 URL입니다."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "이미지 키워드",
-        "description": "임의 이미지 키워드입니다. 이미지 소스가 우선합니다."
       }
     ]
   }

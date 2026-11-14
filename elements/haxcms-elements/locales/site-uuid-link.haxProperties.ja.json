@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "HAX リンク",
-    "description": "作業中のサイト内の特定のリソースへのリンク。"
+    "title": "ページリンク",
+    "description": "作業中のサイト内のページへのリンク。"
   },
   "settings": {
     "configure": [

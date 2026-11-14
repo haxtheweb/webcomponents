@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Legenda",
         "description": "Legenda per l'imagine."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Titulu di a figura",
-        "description": "Titulu per l'etichetta di figura."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Descrizzione di a figura",
-        "description": "Descrizzione per l'etichetta di figura."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Disattivà a finestra di l'imagine",
         "description": "Disattivà i clicchi chì aprenu l'imagine in un dialogu d'ispezzione d'imagine."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Titulu di a figura",
+        "description": "Titulu per l'etichetta di figura."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Descrizzione di a figura",
+        "description": "Descrizzione per l'etichetta di figura."
       }
     ],
     "developer": [

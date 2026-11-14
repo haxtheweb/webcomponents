@@ -4,12 +4,11 @@
   "package": "@haxtheweb/media-image",
   "version": "26.8.0",
   "license": "Apache-2.0",
-  "title": "Enhanced Image",
+  "title": "Enhanced image",
   "description": "A way of presenting images with various enhancements.",
   "icon": "editor:insert-photo",
   "tags": [
     "Media",
-    "media",
     "core",
     "figure",
     "image",
@@ -21,7 +20,7 @@
   "import": "@haxtheweb/media-image/media-image.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/media-image/media-image.js",
   "install": "npm i @haxtheweb/media-image",
-  "demoHtml": "<media-image source=\"https://dummyimage.com/300x200/000/fff\" card citation=\"This is my citation.\"></media-image>",
+  "demoHtml": "<media-image source=\"https://dummyimage.com/300x200/000/fff\" card citation=\"This is my citation.\" alt=\"Black placeholder image, 300 by 200\"></media-image>",
   "attributes": [
     {
       "name": "typeof",
@@ -237,13 +236,12 @@
     "canScale": true,
     "canEditSource": true,
     "gizmo": {
-      "title": "Enhanced Image",
+      "title": "Enhanced image",
       "description": "A way of presenting images with various enhancements.",
       "icon": "editor:insert-photo",
       "color": "indigo",
       "tags": [
         "Media",
-        "media",
         "core",
         "figure",
         "image",
@@ -334,20 +332,6 @@
           "description": "Caption for the image.",
           "inputMethod": "textfield",
           "required": false
-        },
-        {
-          "property": "figureLabelTitle",
-          "title": "Figure Title",
-          "description": "Title for the figure label.",
-          "inputMethod": "textfield",
-          "required": false
-        },
-        {
-          "property": "figureLabelDescription",
-          "title": "Figure Description",
-          "description": "Description for the figure label.",
-          "inputMethod": "textfield",
-          "required": false
         }
       ],
       "advanced": [
@@ -375,6 +359,20 @@
           "description": "Disable clicks opening the image in an image inspector dialog.",
           "inputMethod": "boolean",
           "required": false
+        },
+        {
+          "property": "figureLabelTitle",
+          "title": "Figure Title",
+          "description": "Title for the figure label.",
+          "inputMethod": "textfield",
+          "required": false
+        },
+        {
+          "property": "figureLabelDescription",
+          "title": "Figure Description",
+          "description": "Description for the figure label.",
+          "inputMethod": "textfield",
+          "required": false
         }
       ],
       "developer": [
@@ -393,12 +391,13 @@
         "properties": {
           "source": "https://dummyimage.com/300x200/000/fff",
           "card": true,
-          "citation": "This is my citation."
+          "citation": "This is my citation.",
+          "alt": "Black placeholder image, 300 by 200"
         }
       }
     ]
   },
-  "surfaceHash": "3e1a851eac68",
+  "surfaceHash": "ba82f5803f43",
   "walkthroughs": [
     {
       "id": "",
@@ -406,13 +405,13 @@
       "order": 0,
       "src": "media-image.motion.json",
       "file": "lib/media-image.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/media-image.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

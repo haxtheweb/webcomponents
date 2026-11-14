@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "Birka / tablete",
+    "title": "Birka",
     "description": "Kompakta tabletes formas etiķete ar neobligātu akcenta krāsu, atcelšanas pogu vai pārslēgu."
   },
   "settings": {
@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Automātiska akcenta krāsa",
         "description": "Automātiski noteikt akcenta krāsu no etiķetes teksta."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Atcelšanas poga",
-        "description": "Rādīt noņemšanas/atcelšanas ikonas pogu tabletē."
-      },
-      {
-        "property": "readonly",
-        "title": "Tikai lasāms",
-        "description": "Paslēpt atcelšanas pogu, lai tablete būtu tikai attēlojama."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Zilganpelēka",
           "grey": "Pelēka"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Atcelšanas poga",
+        "description": "Rādīt noņemšanas/atcelšanas ikonas pogu tabletē."
+      },
+      {
+        "property": "readonly",
+        "title": "Tikai lasāms",
+        "description": "Paslēpt atcelšanas pogu, lai tablete būtu tikai attēlojama."
       }
     ]
   }

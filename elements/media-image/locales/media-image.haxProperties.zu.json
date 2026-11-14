@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Incazelo yesithombe",
         "description": "Incazelo yesithombe."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Isihloko Somfanekiso",
-        "description": "Isihloko selebula lomfanekiso."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Incazelo Yomfanekiso",
-        "description": "Incazelo yelebula lomfanekiso."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Vala iwindi lesithombe",
         "description": "Vala ukuchofoza okuvula isithombe ebhokisini lengxoxo lomhloli wesithombe."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Isihloko Somfanekiso",
+        "description": "Isihloko selebula lomfanekiso."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Incazelo Yomfanekiso",
+        "description": "Incazelo yelebula lomfanekiso."
       }
     ],
     "developer": [

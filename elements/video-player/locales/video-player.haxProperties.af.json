@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Plakkaatprent",
         "description": "Plakkaatprent-URL."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Teksspore",
         "description": "Onderskrifte, ondertitels, beskrywings en ander teksspore vir die video."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Begintyd",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Oudiobeskrywingspoor",
         "description": "URL na 'n oudiobeskrywingspoor (MP3-lêer) wat visuele elemente vertel."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksentkleur",
+        "description": "(verouderd) Kies die aksentkleur vir die speler."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Taal",
         "description": "Taal van die media."
-      },
-      {
-        "property": "accentColor",
-        "title": "Aksentkleur",
-        "description": "(verouderd) Kies die aksentkleur vir die speler."
       }
     ]
   }

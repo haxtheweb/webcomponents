@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Kiʻi pōpeli",
         "description": "URL kiʻi pōpeli."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Nā mele kikokikona",
         "description": "Nā lepe huaʻōlelo, nā unuhi lalo, nā wehewehe, a me nā mele kikokikona ʻē aʻe no ka wikiō."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Manawa hoʻomaka",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Mele wehewehe leo",
         "description": "URL i kahi mele wehewehe leo (faila MP3) e haʻi ana i nā mea ʻike maka."
+      },
+      {
+        "property": "accentColor",
+        "title": "Waihoʻoluʻu kiko",
+        "description": "(kahiko) Koho i ka waihoʻoluʻu kiko no ka mea hoʻokani."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "ʻŌlelo",
         "description": "ʻŌlelo o ka media."
-      },
-      {
-        "property": "accentColor",
-        "title": "Waihoʻoluʻu kiko",
-        "description": "(kahiko) Koho i ka waihoʻoluʻu kiko no ka mea hoʻokani."
       }
     ]
   }

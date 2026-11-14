@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "封面图片",
         "description": "封面图片 URL。"
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "文本轨道",
         "description": "视频的隐藏式字幕、字幕、描述及其他文本轨道。"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "开始时间",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "音频描述轨道",
         "description": "音频描述轨道（MP3 文件）的 URL，用于为视觉元素提供旁白。"
+      },
+      {
+        "property": "accentColor",
+        "title": "强调色",
+        "description": "（已弃用）选择播放器的强调色。"
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "语言",
         "description": "媒体的语言。"
-      },
-      {
-        "property": "accentColor",
-        "title": "强调色",
-        "description": "（已弃用）选择播放器的强调色。"
       }
     ]
   }

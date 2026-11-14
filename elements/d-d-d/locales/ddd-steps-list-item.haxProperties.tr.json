@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Adım öğesi",
-    "description": "Bir adım listesinin parçası olan öğe"
+    "description": "Adım listesindeki tek bir adım."
   },
   "settings": {
     "configure": [

@@ -11,20 +11,17 @@
         "description": "Нишонгаи дастрас барои маҷмӯи ҷадвалакҳо."
       },
       {
-        "property": "disabled",
-        "title": "Ғайрифаъол",
-        "description": "Ҳамаи ҷадвалакҳоро ғайрифаъол кунед."
-      },
-      {
-        "property": "hidden",
-        "title": "Пинҳон",
-        "description": "Маҷмӯи ҷадвалакҳоро пинҳон кунед."
-      },
-      {
         "property": "sticky",
         "title": "Часпанда",
         "description": "Ҳангоми варақзанӣ ҷадвалакҳои уфуқиро дар боло нигоҳ доред."
       },
+      {
+        "slot": "",
+        "title": "Ҷадвалакҳо",
+        "description": "Силсилаи унсурҳои <a11y-tab/>."
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "Нуқтаи гузариши тарҳ",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "Нуқтаи гузариши нишонаҳо",
         "description": "Нуқтаи гузариш барои нишон додани матн бо нишонаҳо. Пешфарз 0 аст; барои реҷаи танҳо нишона -1-ро истифода баред."
-      },
-      {
-        "slot": "",
-        "title": "Ҷадвалакҳо",
-        "description": "Силсилаи унсурҳои <a11y-tab/>."
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "Ғайрифаъол",
+        "description": "Ҳамаи ҷадвалакҳоро ғайрифаъол кунед."
+      },
+      {
+        "property": "hidden",
+        "title": "Пинҳон",
+        "description": "Маҷмӯи ҷадвалакҳоро пинҳон кунед."
+      },
       {
         "property": "id",
         "title": "ID-и ягона",

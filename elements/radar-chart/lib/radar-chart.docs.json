@@ -2,15 +2,16 @@
   "tag": "radar-chart",
   "folder": "radar-chart",
   "package": "@haxtheweb/radar-chart",
-  "version": "0.0.0",
+  "version": "26.8.0",
   "license": "Apache-2.0",
   "title": "Radar chart",
   "description": "Radar (spider) chart for maturity models and facet scoring, such as HEOSAT. Includes a text alternative and data table.",
   "icon": "editor:multiline-chart",
   "tags": [
-    "Visualization",
-    "Metrics",
-    "Data"
+    "Media",
+    "metrics",
+    "data",
+    "visualization"
   ],
   "haxCapable": true,
   "import": "@haxtheweb/radar-chart/radar-chart.js",
@@ -148,9 +149,10 @@
       "icon": "editor:multiline-chart",
       "color": "blue",
       "tags": [
-        "Visualization",
-        "Metrics",
-        "Data"
+        "Media",
+        "metrics",
+        "data",
+        "visualization"
       ],
       "handles": [],
       "meta": {

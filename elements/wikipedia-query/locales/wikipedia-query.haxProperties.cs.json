@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Wikipedia",
-    "description": "Toto může zobrazit článek z Wikipedie v kontextu v různých formátech."
+    "description": "Zobrazí článek z Wikipedie na stránce."
   },
   "settings": {
     "configure": [

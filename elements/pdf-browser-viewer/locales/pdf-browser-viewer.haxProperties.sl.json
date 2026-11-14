@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Sporočilo o nepodprtosti",
-        "description": "Sporočilo, ko brskalnik ne more prikazati datotek PDF."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Besedilo povezave ob nepodprtosti",
-        "description": "Besedilo povezave, ko brskalnik ne more prikazati datotek PDF."
-      },
-      {
         "property": "width",
         "title": "Širina",
         "description": "Širina pregledovalnika PDF."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Višina",
         "description": "Višina pregledovalnika PDF."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Sporočilo o nepodprtosti",
+        "description": "Sporočilo, ko brskalnik ne more prikazati datotek PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Besedilo povezave ob nepodprtosti",
+        "description": "Besedilo povezave, ko brskalnik ne more prikazati datotek PDF."
       }
     ]
   }

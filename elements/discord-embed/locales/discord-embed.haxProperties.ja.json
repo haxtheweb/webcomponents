@@ -9,7 +9,9 @@
         "property": "source",
         "title": "リソースURL",
         "description": "リソースURL。"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "高さ",

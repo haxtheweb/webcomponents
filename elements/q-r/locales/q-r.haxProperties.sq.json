@@ -14,16 +14,6 @@
         "property": "title",
         "title": "Titull alternativ",
         "description": "Titull alternativ i lidhur me burimin e kodit QR."
-      },
-      {
-        "property": "modulesize",
-        "title": "Madhësia",
-        "description": "Madhësia e kodit QR."
-      },
-      {
-        "property": "margin",
-        "title": "Hapësira anësore",
-        "description": "Mbështjellësi i kodit."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "Madhësia",
+        "description": "Madhësia e kodit QR."
+      },
+      {
+        "property": "margin",
+        "title": "Hapësira anësore",
+        "description": "Mbështjellësi i kodit."
       }
     ]
   }

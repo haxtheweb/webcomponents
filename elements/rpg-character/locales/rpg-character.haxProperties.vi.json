@@ -11,11 +11,6 @@
         "description": "Từ dùng để tạo nhân vật ngẫu nhiên."
       },
       {
-        "property": "code",
-        "title": "Mã nhân vật",
-        "description": "Dán mã đã lưu để tạo lại nhân vật đó."
-      },
-      {
         "property": "hat",
         "title": "Mũ",
         "description": "Kiểu mũ.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Mặt nạ",
-        "description": "Mặt nạ đeo trên mặt hoặc đầu.",
-        "options": {
-          "none": "Không",
-          "lion": "Sư tử",
-          "plague": "Bác sĩ dịch hạch",
-          "theater": "Sân khấu",
-          "pumpkin": "Bí ngô",
-          "ghost": "Con ma",
-          "mummy": "Xác ướp",
-          "wrestler": "Mặt nạ đô vật",
-          "block-head": "Đầu khối vuông",
-          "web": "Mặt nạ mạng nhện",
-          "werewolf": "Mặt người sói",
-          "shadow": "Khuôn mặt bóng tối"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Trang điểm",
-        "description": "Sơn mặt hoặc son môi.",
-        "options": {
-          "none": "Không",
-          "red-lipstick": "Son đỏ",
-          "pink-lipstick": "Son hồng",
-          "berry-lipstick": "Son màu mâm xôi",
-          "clown": "Sơn mặt chú hề",
-          "fangs": "Răng nanh",
-          "skull": "Sơn mặt đầu lâu",
-          "zombie": "Sơn mặt thây ma",
-          "red-nose": "Mũi đỏ",
-          "white-beard": "Râu trắng",
-          "domino": "Mặt nạ anh hùng",
-          "carrot": "Mũi cà rốt",
-          "bunny": "Mũi thỏ",
-          "mustache": "Ria mép",
-          "monster": "Sơn mặt quái vật",
-          "round-glasses": "Kính tròn"
-        }
-      },
-      {
         "property": "expression",
         "title": "Biểu cảm",
         "description": "Biểu cảm khuôn mặt.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Thú cưng",
+        "description": "Thú cưng bên cạnh nhân vật.",
+        "options": {
+          "none": "Không",
+          "cat": "Mèo",
+          "dog": "Chó",
+          "bunny": "Thỏ",
+          "goldfish": "Cá vàng",
+          "slime": "Chất nhờn",
+          "squirrel": "Sóc",
+          "dragon": "Rồng con",
+          "parrot": "Vẹt",
+          "owl": "Cú mèo",
+          "bat": "Dơi"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Mã nhân vật",
+        "description": "Dán mã đã lưu để tạo lại nhân vật đó."
+      },
+      {
+        "property": "mask",
+        "title": "Mặt nạ",
+        "description": "Mặt nạ đeo trên mặt hoặc đầu.",
+        "options": {
+          "none": "Không",
+          "lion": "Sư tử",
+          "plague": "Bác sĩ dịch hạch",
+          "theater": "Sân khấu",
+          "pumpkin": "Bí ngô",
+          "ghost": "Con ma",
+          "mummy": "Xác ướp",
+          "wrestler": "Mặt nạ đô vật",
+          "block-head": "Đầu khối vuông",
+          "web": "Mặt nạ mạng nhện",
+          "werewolf": "Mặt người sói",
+          "shadow": "Khuôn mặt bóng tối"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Trang điểm",
+        "description": "Sơn mặt hoặc son môi.",
+        "options": {
+          "none": "Không",
+          "red-lipstick": "Son đỏ",
+          "pink-lipstick": "Son hồng",
+          "berry-lipstick": "Son màu mâm xôi",
+          "clown": "Sơn mặt chú hề",
+          "fangs": "Răng nanh",
+          "skull": "Sơn mặt đầu lâu",
+          "zombie": "Sơn mặt thây ma",
+          "red-nose": "Mũi đỏ",
+          "white-beard": "Râu trắng",
+          "domino": "Mặt nạ anh hùng",
+          "carrot": "Mũi cà rốt",
+          "bunny": "Mũi thỏ",
+          "mustache": "Ria mép",
+          "monster": "Sơn mặt quái vật",
+          "round-glasses": "Kính tròn"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Chữ trên cờ",
         "description": "Tối đa 4 chữ cái hiển thị trên cờ."
@@ -310,24 +330,6 @@
           "skates": "Giày trượt",
           "skateboard": "Ván trượt",
           "hoverboard": "Ván bay"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Thú cưng",
-        "description": "Thú cưng bên cạnh nhân vật.",
-        "options": {
-          "none": "Không",
-          "cat": "Mèo",
-          "dog": "Chó",
-          "bunny": "Thỏ",
-          "goldfish": "Cá vàng",
-          "slime": "Chất nhờn",
-          "squirrel": "Sóc",
-          "dragon": "Rồng con",
-          "parrot": "Vẹt",
-          "owl": "Cú mèo",
-          "bat": "Dơi"
         }
       },
       {

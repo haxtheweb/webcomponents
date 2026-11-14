@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "自动强调色",
         "description": "根据标签文字自动得出强调色。"
-      },
-      {
-        "property": "cancelButton",
-        "title": "取消按钮",
-        "description": "勒胶囊里显示移除/取消图标按钮。"
-      },
-      {
-        "property": "readonly",
-        "title": "只读",
-        "description": "隐藏取消按钮，让胶囊只用来显示。"
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "蓝灰",
           "grey": "灰"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "取消按钮",
+        "description": "勒胶囊里显示移除/取消图标按钮。"
+      },
+      {
+        "property": "readonly",
+        "title": "只读",
+        "description": "隐藏取消按钮，让胶囊只用来显示。"
       }
     ]
   }

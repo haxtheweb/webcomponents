@@ -9,7 +9,21 @@
         "property": "target",
         "title": "இலக்கு",
         "description": "கேம் உருவாக்கத்திற்கான பாதை."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "கேன்வாஸ் அகலம்",
+        "description": "கேன்வாஸின் CSS அகலம் (எடுத்துக்காட்டாக px அல்லது em)."
       },
+      {
+        "property": "height",
+        "title": "கேன்வாஸ் உயரம்",
+        "description": "கேன்வாஸின் CSS உயரம் (எடுத்துக்காட்டாக px அல்லது em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "சுருக்க முறை",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "தயாரிப்புப் பதிப்பு",
         "description": "வெளியீட்டுப் பதிப்பு."
-      },
-      {
-        "property": "width",
-        "title": "கேன்வாஸ் அகலம்",
-        "description": "கேன்வாஸின் CSS அகலம் (எடுத்துக்காட்டாக px அல்லது em)."
-      },
-      {
-        "property": "height",
-        "title": "கேன்வாஸ் உயரம்",
-        "description": "கேன்வாஸின் CSS உயரம் (எடுத்துக்காட்டாக px அல்லது em)."
       },
       {
         "property": "background",

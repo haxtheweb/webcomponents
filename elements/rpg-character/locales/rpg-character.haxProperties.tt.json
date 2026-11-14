@@ -11,11 +11,6 @@
         "description": "Очраклы персонаж ясау өчен кулланыла торган сүз."
       },
       {
-        "property": "code",
-        "title": "Персонаж коды",
-        "description": "Шул персонажны яңадан ясау өчен сакланган кодны куегыз."
-      },
-      {
         "property": "hat",
         "title": "Эшләпә",
         "description": "Эшләпә стиле.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Маска",
-        "description": "Йөзгә яки башка киелә торган маска.",
-        "options": {
-          "none": "Юк",
-          "lion": "Арыслан",
-          "plague": "Чума табибы",
-          "theater": "Театр",
-          "pumpkin": "Кабак",
-          "ghost": "Призрак",
-          "mummy": "Мумия",
-          "wrestler": "Көрәшче битлеге",
-          "block-head": "Блок баш",
-          "web": "Пәрәвез битлеге",
-          "werewolf": "Бүре-кеше йөзе",
-          "shadow": "Күләгәле йөз"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Макияж",
-        "description": "Йөз буяуы яки иренбоя.",
-        "options": {
-          "none": "Юк",
-          "red-lipstick": "Кызыл иренбоя",
-          "pink-lipstick": "Алсу иренбоя",
-          "berry-lipstick": "Җиләкле иренбоя",
-          "clown": "Клоун буяуы",
-          "fangs": "Үткен тешләр",
-          "skull": "Баш сөяге буяуы",
-          "zombie": "Зомби буяуы",
-          "red-nose": "Кызыл борын",
-          "white-beard": "Ак сакал",
-          "domino": "Герой маскасы",
-          "carrot": "Кишер борын",
-          "bunny": "Куян борыны",
-          "mustache": "Мыек",
-          "monster": "Дию йөз буявы",
-          "round-glasses": "Түгәрәк күзлек"
-        }
-      },
-      {
         "property": "expression",
         "title": "Йөз чалымы",
         "description": "Йөз чалымы.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Йорт хайваны",
+        "description": "Персонаж янындагы йорт хайваны.",
+        "options": {
+          "none": "Юк",
+          "cat": "Мәче",
+          "dog": "Эт",
+          "bunny": "Куян",
+          "goldfish": "Алтын балык",
+          "slime": "Лайла",
+          "squirrel": "Тиен",
+          "dragon": "Кечкенә аждаһа",
+          "parrot": "Тутый кош",
+          "owl": "Ябалак",
+          "bat": "Ярканат"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Персонаж коды",
+        "description": "Шул персонажны яңадан ясау өчен сакланган кодны куегыз."
+      },
+      {
+        "property": "mask",
+        "title": "Маска",
+        "description": "Йөзгә яки башка киелә торган маска.",
+        "options": {
+          "none": "Юк",
+          "lion": "Арыслан",
+          "plague": "Чума табибы",
+          "theater": "Театр",
+          "pumpkin": "Кабак",
+          "ghost": "Призрак",
+          "mummy": "Мумия",
+          "wrestler": "Көрәшче битлеге",
+          "block-head": "Блок баш",
+          "web": "Пәрәвез битлеге",
+          "werewolf": "Бүре-кеше йөзе",
+          "shadow": "Күләгәле йөз"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Макияж",
+        "description": "Йөз буяуы яки иренбоя.",
+        "options": {
+          "none": "Юк",
+          "red-lipstick": "Кызыл иренбоя",
+          "pink-lipstick": "Алсу иренбоя",
+          "berry-lipstick": "Җиләкле иренбоя",
+          "clown": "Клоун буяуы",
+          "fangs": "Үткен тешләр",
+          "skull": "Баш сөяге буяуы",
+          "zombie": "Зомби буяуы",
+          "red-nose": "Кызыл борын",
+          "white-beard": "Ак сакал",
+          "domino": "Герой маскасы",
+          "carrot": "Кишер борын",
+          "bunny": "Куян борыны",
+          "mustache": "Мыек",
+          "monster": "Дию йөз буявы",
+          "round-glasses": "Түгәрәк күзлек"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Байрак язуы",
         "description": "Байракта күрсәтелә торган 4 хәрефкә кадәр."
@@ -310,24 +330,6 @@
           "skates": "Коньки",
           "skateboard": "Скейтборд",
           "hoverboard": "Очучы такта"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Йорт хайваны",
-        "description": "Персонаж янындагы йорт хайваны.",
-        "options": {
-          "none": "Юк",
-          "cat": "Мәче",
-          "dog": "Эт",
-          "bunny": "Куян",
-          "goldfish": "Алтын балык",
-          "slime": "Лайла",
-          "squirrel": "Тиен",
-          "dragon": "Кечкенә аждаһа",
-          "parrot": "Тутый кош",
-          "owl": "Ябалак",
-          "bat": "Ярканат"
         }
       },
       {

@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "Knappar",
         "description": "Knappgrupp som visas under texten."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "Ankartext",
         "description": "Ankaretikett som visas i navigeringen."
       }
-    ]
+    ],
+    "developer": []
   }
 }

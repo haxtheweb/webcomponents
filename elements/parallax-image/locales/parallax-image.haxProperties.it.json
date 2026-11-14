@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Immagine parallasse",
-    "description": "Immagine che scorre"
+    "description": "Un’immagine a tutta larghezza che scorre più lentamente della pagina, con un titolo sopra."
   },
   "settings": {
     "configure": [

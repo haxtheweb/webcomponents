@@ -21,54 +21,8 @@ export class WorksheetDownload extends I18NMixin(LitElement) {
   }
 
   static get haxProperties() {
-    return {
-      canScale: false,
-
-      canEditSource: false,
-      gizmo: {
-        title: "Worksheet Download",
-        description: "A button for displaying files available for download.",
-        icon: "icons:file-download",
-        color: "blue",
-        tags: ["Instructional", "link", "worksheet", "download", "url", "file"],
-        meta: {
-          author: "HAXTheWeb core team",
-        },
-      },
-      settings: {
-        configure: [
-          {
-            property: "title",
-            title: "Title",
-            description: "The title of the download.",
-            inputMethod: "textfield",
-            icon: "editor:title",
-          },
-          {
-            property: "link",
-            title: "Link",
-            description: "The link for the download.",
-            inputMethod: "haxupload",
-            noVoiceRecord: true,
-            noScreenRecord: true,
-            noCamera: true,
-            validationType: "url",
-            required: true,
-            icon: "editor:insert-link",
-          },
-        ],
-        advanced: [],
-      },
-      demoSchema: [
-        {
-          tag: "worksheet-download",
-          properties: {
-            title: "Download worksheet",
-          },
-          content: "",
-        },
-      ],
-    };
+    return new URL("./worksheet-download.haxProperties.json", import.meta.url)
+      .href;
   }
   /**
    * Implements haxHooks to tie into life-cycle if hax exists.

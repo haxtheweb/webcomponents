@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Պատկերի աղբյուր",
         "description": "Քարտի համար օգտագործվող պատկերի ֆայլը։ Գերակայում է Պատկերի բանալի բառի նկատմամբ։"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Պատկերի բանալի բառ",
+        "description": "Պատահական պատկերի բանալի բառ։ Գերակայվում է Պատկերի աղբյուրով։"
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Ուսումնական նպատակ",
         "description": "OER Schema՝ ուսումնական նպատակի ID-ն կամ URL-ը, որին աջակցում է այս վարժությունը։"
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Պատկերի բանալի բառ",
-        "description": "Պատահական պատկերի բանալի բառ։ Գերակայվում է Պատկերի աղբյուրով։"
       }
     ]
   }

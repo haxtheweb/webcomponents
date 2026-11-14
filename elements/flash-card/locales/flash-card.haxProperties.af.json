@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Prentbron",
         "description": "Prentlêer gebruik vir die kaart. Oorheers Prent-sleutelwoord."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Prent-sleutelwoord",
+        "description": "Sleutelwoord vir 'n ewekansige prent. Word oorheers deur Prentbron."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Leeruitkoms",
         "description": "OER Schema: ID of URL van die leeruitkoms wat hierdie oefening ondersteun."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Prent-sleutelwoord",
-        "description": "Sleutelwoord vir 'n ewekansige prent. Word oorheers deur Prentbron."
       }
     ]
   }

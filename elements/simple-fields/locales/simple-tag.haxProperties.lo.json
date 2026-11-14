@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "ສີເນັ້ນອັດຕະໂນມັດ",
         "description": "ກຳນົດສີເນັ້ນຈາກຂໍ້ຄວາມປ້າຍໂດຍອັດຕະໂນມັດ."
-      },
-      {
-        "property": "cancelButton",
-        "title": "ປຸ່ມຍົກເລີກ",
-        "description": "ສະແດງປຸ່ມໄອຄອນລຶບ/ຍົກເລີກໃນປ້າຍ."
-      },
-      {
-        "property": "readonly",
-        "title": "ອ່ານຢ່າງດຽວ",
-        "description": "ເຊື່ອງປຸ່ມຍົກເລີກ ເພື່ອໃຫ້ປ້າຍສະແດງຢ່າງດຽວ."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "ເທົາອົມຟ້າ",
           "grey": "ເທົາ"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "ປຸ່ມຍົກເລີກ",
+        "description": "ສະແດງປຸ່ມໄອຄອນລຶບ/ຍົກເລີກໃນປ້າຍ."
+      },
+      {
+        "property": "readonly",
+        "title": "ອ່ານຢ່າງດຽວ",
+        "description": "ເຊື່ອງປຸ່ມຍົກເລີກ ເພື່ອໃຫ້ປ້າຍສະແດງຢ່າງດຽວ."
       }
     ]
   }

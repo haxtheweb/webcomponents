@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Kavram macerası oyunu",
-    "description": "Gezilecek bir dünya. Kavramlar seni bulur ve bir soru sorar. Doğru cevap verirsen birini yenip evinin kilidini açarsın. Özet, denemeleri ve nelere göz atman gerektiğini gösterir."
+    "description": "Kavramların soru sorduğu ve doğru yanıtların haritayı açtığı bir açık dünya oyunu."
   },
   "settings": {
     "configure": [
@@ -91,7 +91,9 @@
         "property": "gameTitle",
         "title": "Oyun adı",
         "description": "Bu oyuna ilerleme olaylarında ve OER Schema işaretlemesinde ad verir."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Oyun kimliği",

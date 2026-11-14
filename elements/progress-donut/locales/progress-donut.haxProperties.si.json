@@ -26,11 +26,6 @@
         "description": "රූපය සඳහා alt පෙළ."
       },
       {
-        "property": "animated",
-        "title": "සජීවිකරණය",
-        "description": "පළමු පූරණයේදී ප්‍රගතිය සජීවිකරණය වේද යන්න"
-      },
-      {
         "property": "complete",
         "title": "සම්පූර්ණයි",
         "description": "සම්පූර්ණ කළ අගයන්ගේ අරාවක්."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "එකතුව",
         "description": "සියලු අයිතම සම්පූර්ණ වූ විට එකතුව."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "සජීවිකරණය",
+        "description": "පළමු පූරණයේදී ප්‍රගතිය සජීවිකරණය වේද යන්න"
       },
       {
         "property": "startAngle",

@@ -1,10 +1,10 @@
 {
   "gizmo": {
-    "title": "HAXcms: apakšlapu bloks",
-    "description": "Dinamisks bloks pašreizējās lapas apakšlapu rādīšanai"
+    "title": "Pakārtotās lapas",
+    "description": "Uzskaita pašreizējās lapas pakārtotās lapas."
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "Dinamiskā metode",
@@ -14,7 +14,9 @@
           "parent": "Vecāklapas apakšlapas",
           "ancestor": "Visas apakšlapas no augstākā priekšteča"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "Sākuma līmenis"

@@ -29,7 +29,7 @@
   ],
   "cssProperties": [],
   "hax": {
-    "schema": "elements/retro-card/retro-card.js",
+    "schema": "elements/retro-card/lib/retro-card.haxProperties.json",
     "gizmo": true,
     "properties": [
       "accentColor",

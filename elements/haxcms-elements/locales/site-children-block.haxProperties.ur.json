@@ -1,10 +1,10 @@
 {
   "gizmo": {
-    "title": "HAXcms: ذیلی بلاک",
-    "description": "موجودہ صفحے کے ذیلی صفحات دکھانے کے لیے متحرک بلاک"
+    "title": "ذیلی صفحات",
+    "description": "موجودہ صفحے کے ذیلی صفحات کی فہرست دیتا ہے۔"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "متحرک طریقہ",
@@ -14,7 +14,9 @@
           "parent": "بالائی صفحے کے ذیلی صفحات",
           "ancestor": "سب سے اونچے جد سے تمام ذیلی صفحات"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "ابتدائی سطح"

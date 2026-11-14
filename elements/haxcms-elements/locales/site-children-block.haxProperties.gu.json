@@ -4,7 +4,7 @@
     "description": "વર્તમાન પેજના ચાઇલ્ડ બતાવવા માટે ડાયનેમિક બ્લોક"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "ડાયનેમિક પદ્ધતિ",
@@ -14,7 +14,9 @@
           "parent": "પેરેન્ટના ચાઇલ્ડ",
           "ancestor": "સૌથી ઊંચા પૂર્વજથી બધા ચાઇલ્ડ"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "શરૂઆતનું સ્તર"

@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "د پوسټر انځور",
         "description": "د پوسټر انځور URL."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "متني ټریکونه",
         "description": "د ویډیو لپاره تړلې سرلیکونه، ژباړل شوي سرلیکونه، تشریحات او نور متني ټریکونه."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "د پیل وخت",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "د غږيز تشریح ټریک",
         "description": "د غږيز تشریح ټریک (MP3 فایل) URL چې د لیدنیزو عناصرو روایت وړاندې کوي."
+      },
+      {
+        "property": "accentColor",
+        "title": "تاکیدي رنګ",
+        "description": "(زوړ شوی) د پلیر لپاره د ټینګار رنګ وټاکئ."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "ژبه",
         "description": "د رسنۍ ژبه."
-      },
-      {
-        "property": "accentColor",
-        "title": "تاکیدي رنګ",
-        "description": "(زوړ شوی) د پلیر لپاره د ټینګار رنګ وټاکئ."
       }
     ]
   }

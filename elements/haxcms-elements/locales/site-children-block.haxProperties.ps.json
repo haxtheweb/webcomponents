@@ -4,7 +4,7 @@
     "description": "د اوسنۍ پاڼې د فرعي پاڼو د ښودلو لپاره متحرک بلاک"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "متحرکه طریقه",
@@ -14,7 +14,9 @@
           "parent": "د اصلي توکي فرعي توکي",
           "ancestor": "له لوړ نیکه څخه ټول فرعي توکي"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "د پیل کچه"

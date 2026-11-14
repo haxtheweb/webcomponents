@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Item langkah",
-    "description": "Item yang merupakan bagian dari daftar langkah"
+    "description": "Satu langkah dalam daftar langkah."
   },
   "settings": {
     "configure": [

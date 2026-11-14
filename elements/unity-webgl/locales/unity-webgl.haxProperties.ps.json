@@ -9,7 +9,21 @@
         "property": "target",
         "title": "هدف",
         "description": "د لوبې جوړښت ته لار."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "د کینوس پلنوالی",
+        "description": "د کینوس CSS پلنوالی (لکه px یا em)."
       },
+      {
+        "property": "height",
+        "title": "د کینوس لوړوالی",
+        "description": "د کینوس CSS لوړوالی (لکه px یا em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "د فشار طریقه",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "د محصول نسخه",
         "description": "د خپرېدو نسخه."
-      },
-      {
-        "property": "width",
-        "title": "د کینوس پلنوالی",
-        "description": "د کینوس CSS پلنوالی (لکه px یا em)."
-      },
-      {
-        "property": "height",
-        "title": "د کینوس لوړوالی",
-        "description": "د کینوس CSS لوړوالی (لکه px یا em)."
       },
       {
         "property": "background",

@@ -9,7 +9,9 @@
         "property": "source",
         "title": "URL mba'erepy",
         "description": "URL mba'erepy."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Yvatekue",

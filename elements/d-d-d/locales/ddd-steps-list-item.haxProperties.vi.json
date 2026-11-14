@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Mục bước",
-    "description": "Mục thuộc danh sách các bước"
+    "description": "Một bước trong danh sách các bước."
   },
   "settings": {
     "configure": [

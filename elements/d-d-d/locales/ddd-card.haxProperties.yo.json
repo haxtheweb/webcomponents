@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Láìsí ọfà",
         "description": "Fi ọfà bọ́tìnnì pamọ́."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Ìjápọ̀: ibi-àfojúsùn",
@@ -54,7 +52,9 @@
           "_top": "Fèrèsé òkè - _top",
           "_parent": "Fèrèsé òbí - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Ìjápọ̀: rel",

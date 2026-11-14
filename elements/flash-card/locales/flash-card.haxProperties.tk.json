@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Suratyň çeşmesi",
         "description": "Kartoçka üçin ulanylýan surat faýly. Surat açar sözüniň ýerine geçýär."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Suratyň açar sözi",
+        "description": "Tötänleýin surat üçin açar söz. Suratyň çeşmesi muňa garanyňda ileri tutulýar."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Okuw maksady",
         "description": "OER Schema: bu türgenleşigiň goldaýan okuw maksadynyň ID-si ýa-da URL-i."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Suratyň açar sözi",
-        "description": "Tötänleýin surat üçin açar söz. Suratyň çeşmesi muňa garanyňda ileri tutulýar."
       }
     ]
   }

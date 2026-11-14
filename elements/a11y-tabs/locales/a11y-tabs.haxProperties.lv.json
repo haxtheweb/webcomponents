@@ -11,20 +11,17 @@
         "description": "Piekļūstama ciļņu kopas etiķete."
       },
       {
-        "property": "disabled",
-        "title": "Atspējots",
-        "description": "Atspējot visas cilnes."
-      },
-      {
-        "property": "hidden",
-        "title": "Paslēpts",
-        "description": "Paslēpt ciļņu kopu."
-      },
-      {
         "property": "sticky",
         "title": "Piesprausts",
         "description": "Ritinot paturēt horizontālās cilnes augšā."
       },
+      {
+        "slot": "",
+        "title": "Cilnes",
+        "description": "<a11y-tab/> elementu virkne."
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "Izkārtojuma pārtraukumpunkts",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "Ikonu pārtraukumpunkts",
         "description": "Pārtraukumpunkts teksta rādīšanai kopā ar ikonām. Noklusējums ir 0; -1 — tikai ikonu režīms."
-      },
-      {
-        "slot": "",
-        "title": "Cilnes",
-        "description": "<a11y-tab/> elementu virkne."
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "Atspējots",
+        "description": "Atspējot visas cilnes."
+      },
+      {
+        "property": "hidden",
+        "title": "Paslēpts",
+        "description": "Paslēpt ciļņu kopu."
+      },
       {
         "property": "id",
         "title": "Unikāls ID",

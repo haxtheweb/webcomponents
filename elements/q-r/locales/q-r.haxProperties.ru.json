@@ -14,16 +14,6 @@
         "property": "title",
         "title": "Альтернативный заголовок",
         "description": "Альтернативный заголовок со ссылкой на источник QR-кода."
-      },
-      {
-        "property": "modulesize",
-        "title": "Размер",
-        "description": "Размер QR-кода."
-      },
-      {
-        "property": "margin",
-        "title": "Поля",
-        "description": "Отступ вокруг кода."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "Размер",
+        "description": "Размер QR-кода."
+      },
+      {
+        "property": "margin",
+        "title": "Поля",
+        "description": "Отступ вокруг кода."
       }
     ]
   }

@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Whāinga",
         "description": "Ara ki te hanganga kēmu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Whānui Kānawehi",
+        "description": "Whānui CSS o te kānawehi (hei tauira px, em rānei)."
       },
+      {
+        "property": "height",
+        "title": "Teitei Kānawehi",
+        "description": "Teitei CSS o te kānawehi (hei tauira px, em rānei)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Tikanga kōpeke",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Putanga Hua",
         "description": "Putanga tuku."
-      },
-      {
-        "property": "width",
-        "title": "Whānui Kānawehi",
-        "description": "Whānui CSS o te kānawehi (hei tauira px, em rānei)."
-      },
-      {
-        "property": "height",
-        "title": "Teitei Kānawehi",
-        "description": "Teitei CSS o te kānawehi (hei tauira px, em rānei)."
       },
       {
         "property": "background",

@@ -26,11 +26,6 @@
         "description": "Qoraal beddel ah oo sawirka ah."
       },
       {
-        "property": "animated",
-        "title": "Dhaqdhaqaaq leh",
-        "description": "In horumarku dhaqdhaqaaqo marka ugu horraysa ee la soo raro"
-      },
-      {
         "property": "complete",
         "title": "Dhammaaday",
         "description": "Saf qiimayaal dhammaystiran."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "Wadarta",
         "description": "Wadarta marka dhammaan shayadu dhammaystiran yihiin."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "Dhaqdhaqaaq leh",
+        "description": "In horumarku dhaqdhaqaaqo marka ugu horraysa ee la soo raro"
       },
       {
         "property": "startAngle",

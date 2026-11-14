@@ -89,7 +89,9 @@
         "property": "gameTitle",
         "title": "Оюндун аты",
         "description": "Прогресс окуяларында жана OER Schema белгилөөсүндө бул оюнга ат берет."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Оюндун id'си",

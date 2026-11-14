@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "直接入力またはリモートから読み込むMarkdownコンテンツのブロック"
+    "description": "直接記述するか、ファイルから読み込むMarkdownコンテンツ。"
   },
   "settings": {
     "configure": [

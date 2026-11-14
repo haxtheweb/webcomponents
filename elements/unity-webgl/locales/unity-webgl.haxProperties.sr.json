@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Циљ",
         "description": "Путања до верзије игре."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Ширина платна",
+        "description": "CSS ширина платна (на пример px или em)."
       },
+      {
+        "property": "height",
+        "title": "Висина платна",
+        "description": "CSS висина платна (на пример px или em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Метод компресије",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Верзија производа",
         "description": "Верзија издања."
-      },
-      {
-        "property": "width",
-        "title": "Ширина платна",
-        "description": "CSS ширина платна (на пример px или em)."
-      },
-      {
-        "property": "height",
-        "title": "Висина платна",
-        "description": "CSS висина платна (на пример px или em)."
       },
       {
         "property": "background",

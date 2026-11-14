@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "Grup Bentang Ciutkan",
-    "description": "Sekelompok elemen bentang-ciutkan."
+    "title": "Grup ciut",
+    "description": "Sekelompok wadah yang dapat diciutkan."
   },
   "settings": {
     "configure": [

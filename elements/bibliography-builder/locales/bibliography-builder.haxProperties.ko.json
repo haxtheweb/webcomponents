@@ -9,7 +9,9 @@
         "slot": "",
         "title": "인용",
         "description": "이 참고 문헌의 인용 항목"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "강좌",

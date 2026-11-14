@@ -38,21 +38,6 @@
         "slot": "",
         "title": "Wacan",
         "description": "Wacan sing digarap siswa. HTML apa waé: irah-irahan, paragraf, dhaptar lan gambar."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "Format biji",
-        "description": "OER Schema: format biji kanggo penilaian iki (contone poin, huruf, persen, rampung)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Tujuan sinau",
-        "description": "OER Schema: tujuan sinau sing ana gandhengane karo penilaian iki."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kursus",
-        "description": "OER Schema: kursus sing dituju penilaian iki."
       }
     ],
     "advanced": [
@@ -70,6 +55,16 @@
         "property": "collapsed",
         "title": "Wiwiti kanthi diciutake",
         "description": "Yen bisa diciutake, diwiwiti minangka baris tertutup sing mung nuduhake pitakonan lan statuse."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Format biji",
+        "description": "OER Schema: format biji kanggo penilaian iki (contone poin, huruf, persen, rampung)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Tujuan sinau",
+        "description": "OER Schema: tujuan sinau sing ana gandhengane karo penilaian iki."
       }
     ],
     "developer": [
@@ -77,6 +72,11 @@
         "property": "quizName",
         "title": "Jeneng kuis",
         "description": "Jeneng kuis sing dikirim kanggo digunakake ing lingkungan adhedhasar xAPI kanggo ngenali item iki"
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursus",
+        "description": "OER Schema: kursus sing dituju penilaian iki."
       }
     ]
   }

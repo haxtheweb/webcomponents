@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "स्वयं उठाव रंग",
         "description": "लेबल मजकुरावरून उठाव रंग आपोआप ठरवा."
-      },
-      {
-        "property": "cancelButton",
-        "title": "रद्द बटण",
-        "description": "पिलमध्ये काढा/रद्द आयकॉन बटण दाखवा."
-      },
-      {
-        "property": "readonly",
-        "title": "फक्त वाचनीय",
-        "description": "पिल फक्त प्रदर्शनासाठी राहावी म्हणून रद्द बटण लपवा."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "निळसर राखाडी",
           "grey": "राखाडी"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "रद्द बटण",
+        "description": "पिलमध्ये काढा/रद्द आयकॉन बटण दाखवा."
+      },
+      {
+        "property": "readonly",
+        "title": "फक्त वाचनीय",
+        "description": "पिल फक्त प्रदर्शनासाठी राहावी म्हणून रद्द बटण लपवा."
       }
     ]
   }

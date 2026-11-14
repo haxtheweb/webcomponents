@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "پوشش برای جاسازی پخش‌کنندهٔ Spotify."
+    "description": "یک قطعه، آلبوم یا فهرست پخش Spotify را جاسازی کنید."
   },
   "settings": {
     "configure": [

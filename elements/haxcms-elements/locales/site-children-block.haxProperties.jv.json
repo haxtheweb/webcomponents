@@ -4,7 +4,7 @@
     "description": "Blok dinamis kanggo nampilake anak saka kaca saiki"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "Metode dinamis",
@@ -14,7 +14,9 @@
           "parent": "Anak saka induk",
           "ancestor": "Kabeh anak saka leluhur paling dhuwur"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "Tingkat wiwitan"

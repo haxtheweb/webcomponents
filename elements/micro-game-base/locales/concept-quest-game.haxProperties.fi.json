@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Käsitetehtäväpeli",
-    "description": "Seikkailumaailma kuljeskeltavaksi. Käsitteet löytävät sinut ja esittävät kysymyksen. Vastaa oikein voittaaksesi yhden ja avataksesi sen talon. Yhteenveto näyttää yritykset ja kerrattavat asiat."
+    "description": "Maailmankarttapeli, jossa käsitteet esittävät kysymyksiä ja oikeat vastaukset avaavat karttaa."
   },
   "settings": {
     "configure": [
@@ -91,7 +91,9 @@
         "property": "gameTitle",
         "title": "Pelin nimi",
         "description": "Nimeää tämän pelin edistymistapahtumissa ja OER Schema -merkinnöissä."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Pelin tunnus",

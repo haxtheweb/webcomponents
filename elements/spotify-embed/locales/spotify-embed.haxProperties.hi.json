@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "Spotify प्लेयर एम्बेड के लिए रैपर।"
+    "description": "Spotify का ट्रैक, एल्बम या प्लेलिस्ट एम्बेड करें।"
   },
   "settings": {
     "configure": [

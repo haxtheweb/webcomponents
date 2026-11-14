@@ -9,7 +9,9 @@
         "slot": "",
         "title": "Alıntılar",
         "description": "Bu kaynakçadaki alıntı öğeleri"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "Ders",

@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "HAX saite",
-    "description": "Saite uz konkrētu resursu vietnē, pie kuras strādājat."
+    "title": "Lapas saite",
+    "description": "Saite uz lapu vietnē, pie kuras strādājat."
   },
   "settings": {
     "configure": [

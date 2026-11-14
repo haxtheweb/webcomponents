@@ -89,7 +89,9 @@
         "property": "gameTitle",
         "title": "Sunan wasa",
         "description": "Yana sanya wa wannan wasan suna a abubuwan ci gaba da alamar OER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "ID na wasa",

@@ -14,16 +14,6 @@
         "property": "title",
         "title": "Sernavê alternatîf",
         "description": "Sernavê alternatîf ê bi çavkaniya koda QR ve girêdayî."
-      },
-      {
-        "property": "modulesize",
-        "title": "Mezinahî",
-        "description": "Mezinahiya koda QR."
-      },
-      {
-        "property": "margin",
-        "title": "Kenar",
-        "description": "Valahiya dora kodê."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "Mezinahî",
+        "description": "Mezinahiya koda QR."
+      },
+      {
+        "property": "margin",
+        "title": "Kenar",
+        "description": "Valahiya dora kodê."
       }
     ]
   }

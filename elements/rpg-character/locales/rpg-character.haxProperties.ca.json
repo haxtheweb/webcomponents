@@ -11,11 +11,6 @@
         "description": "Paraula utilitzada per generar un personatge aleatori."
       },
       {
-        "property": "code",
-        "title": "Codi del personatge",
-        "description": "Enganxa un codi desat per recrear aquell personatge."
-      },
-      {
         "property": "hat",
         "title": "Barret",
         "description": "Estil del barret.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Màscara",
-        "description": "Màscara portada sobre la cara o el cap.",
-        "options": {
-          "none": "Cap",
-          "lion": "Lleó",
-          "plague": "Metge de la pesta",
-          "theater": "Teatre",
-          "pumpkin": "Carbassa",
-          "ghost": "Fantasma",
-          "mummy": "Mòmia",
-          "wrestler": "Màscara de lluitador",
-          "block-head": "Cap de bloc",
-          "web": "Màscara de teranyina",
-          "werewolf": "Cara d'home llop",
-          "shadow": "Cara ombrívola"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Maquillatge",
-        "description": "Pintura facial o pintallavis.",
-        "options": {
-          "none": "Cap",
-          "red-lipstick": "Pintallavis vermell",
-          "pink-lipstick": "Pintallavis rosa",
-          "berry-lipstick": "Pintallavis de baia",
-          "clown": "Pintura de pallasso",
-          "fangs": "Ullals",
-          "skull": "Pintura de calavera",
-          "zombie": "Pintura de zombi",
-          "red-nose": "Nas vermell",
-          "white-beard": "Barba blanca",
-          "domino": "Màscara d'heroi",
-          "carrot": "Nas de pastanaga",
-          "bunny": "Nas de conill",
-          "mustache": "Bigoti",
-          "monster": "Maquillatge de monstre",
-          "round-glasses": "Ulleres rodones"
-        }
-      },
-      {
         "property": "expression",
         "title": "Expressió",
         "description": "Expressió de la cara.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Mascota",
+        "description": "Mascota al costat del personatge.",
+        "options": {
+          "none": "Cap",
+          "cat": "Gat",
+          "dog": "Gos",
+          "bunny": "Conillet",
+          "goldfish": "Peix daurat",
+          "slime": "Llim",
+          "squirrel": "Esquirol",
+          "dragon": "Dragonet",
+          "parrot": "Lloro",
+          "owl": "Mussol",
+          "bat": "Ratpenat"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Codi del personatge",
+        "description": "Enganxa un codi desat per recrear aquell personatge."
+      },
+      {
+        "property": "mask",
+        "title": "Màscara",
+        "description": "Màscara portada sobre la cara o el cap.",
+        "options": {
+          "none": "Cap",
+          "lion": "Lleó",
+          "plague": "Metge de la pesta",
+          "theater": "Teatre",
+          "pumpkin": "Carbassa",
+          "ghost": "Fantasma",
+          "mummy": "Mòmia",
+          "wrestler": "Màscara de lluitador",
+          "block-head": "Cap de bloc",
+          "web": "Màscara de teranyina",
+          "werewolf": "Cara d'home llop",
+          "shadow": "Cara ombrívola"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Maquillatge",
+        "description": "Pintura facial o pintallavis.",
+        "options": {
+          "none": "Cap",
+          "red-lipstick": "Pintallavis vermell",
+          "pink-lipstick": "Pintallavis rosa",
+          "berry-lipstick": "Pintallavis de baia",
+          "clown": "Pintura de pallasso",
+          "fangs": "Ullals",
+          "skull": "Pintura de calavera",
+          "zombie": "Pintura de zombi",
+          "red-nose": "Nas vermell",
+          "white-beard": "Barba blanca",
+          "domino": "Màscara d'heroi",
+          "carrot": "Nas de pastanaga",
+          "bunny": "Nas de conill",
+          "mustache": "Bigoti",
+          "monster": "Maquillatge de monstre",
+          "round-glasses": "Ulleres rodones"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Text de la bandera",
         "description": "Fins a 4 lletres que es mostren a la bandera."
@@ -310,24 +330,6 @@
           "skates": "Patins",
           "skateboard": "Monopatí",
           "hoverboard": "Monopatí flotant"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Mascota",
-        "description": "Mascota al costat del personatge.",
-        "options": {
-          "none": "Cap",
-          "cat": "Gat",
-          "dog": "Gos",
-          "bunny": "Conillet",
-          "goldfish": "Peix daurat",
-          "slime": "Llim",
-          "squirrel": "Esquirol",
-          "dragon": "Dragonet",
-          "parrot": "Lloro",
-          "owl": "Mussol",
-          "bat": "Ratpenat"
         }
       },
       {

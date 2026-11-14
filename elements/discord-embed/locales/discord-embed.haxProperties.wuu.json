@@ -9,7 +9,9 @@
         "property": "source",
         "title": "资源 URL",
         "description": "资源 URL。"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "高度",

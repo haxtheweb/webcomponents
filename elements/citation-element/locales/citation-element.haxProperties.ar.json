@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "الاستشهاد",
-    "description": "عنصر استشهاد بثلاثة أوضاع عرض."
+    "description": "انسب المصدر بعنوانه ومنشئه وترخيصه ورابطه."
   },
   "settings": {
     "configure": [
@@ -21,15 +21,6 @@
         "description": "التاريخ الذي تم فيه الوصول إلى المصدر."
       },
       {
-        "property": "scope",
-        "title": "النطاق",
-        "description": "نطاق العنصر المراد الاستشهاد به.",
-        "options": {
-          "sibling": "العنصر الشقيق",
-          "parent": "العنصر الأصل"
-        }
-      },
-      {
         "property": "license",
         "title": "الترخيص",
         "description": "ترخيص العمل المستشهد به."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "المؤلف",
         "description": "مؤلف العمل المستشهد به أو مالكه."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "النطاق",
+        "description": "نطاق العنصر المراد الاستشهاد به.",
+        "options": {
+          "sibling": "العنصر الشقيق",
+          "parent": "العنصر الأصل"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "نوع OER Schema",

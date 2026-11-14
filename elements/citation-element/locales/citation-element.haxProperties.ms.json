@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Petikan sumber",
-    "description": "Elemen petikan dengan tiga mod persembahan."
+    "description": "Nyatakan sumber dengan tajuk, pencipta, lesen dan pautannya."
   },
   "settings": {
     "configure": [
@@ -21,15 +21,6 @@
         "description": "Tarikh sumber diakses."
       },
       {
-        "property": "scope",
-        "title": "Skop",
-        "description": "Skop elemen untuk dipetik.",
-        "options": {
-          "sibling": "Elemen adik-beradik",
-          "parent": "Elemen induk"
-        }
-      },
-      {
         "property": "license",
         "title": "Lesen",
         "description": "Lesen untuk karya yang dipetik."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Pencipta",
         "description": "Pencipta atau pemilik karya yang dipetik."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Skop",
+        "description": "Skop elemen untuk dipetik.",
+        "options": {
+          "sibling": "Elemen adik-beradik",
+          "parent": "Elemen induk"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "Jenis OER Schema",

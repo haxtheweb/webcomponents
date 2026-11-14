@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "HAX-link",
-    "description": "Een link naar een specifieke bron in de site waaraan je werkt."
+    "title": "Paginalink",
+    "description": "Een link naar een pagina op de site waaraan je werkt."
   },
   "settings": {
     "configure": [

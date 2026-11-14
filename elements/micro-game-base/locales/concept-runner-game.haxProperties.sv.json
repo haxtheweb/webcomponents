@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Begreppslöparspel",
-    "description": "Ett sidscrollande spel. Figuren springer i lågor och stannar aldrig. Hoppa för att ta de bra begreppen och över de dåliga, och se sedan en sammanfattning av vad som var bra och dåligt."
+    "description": "Ett sidscrollande spel: hoppa för att fånga rätt begrepp och undvika fel."
   },
   "settings": {
     "configure": [
@@ -89,7 +89,9 @@
         "property": "gameTitle",
         "title": "Spelets namn",
         "description": "Namnger spelet i förloppshändelser och OER Schema-markering."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Spel-id",

@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Без стрелице",
         "description": "Сакриј стрелицу дугмета."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Веза: target",
@@ -54,7 +52,9 @@
           "_top": "Највиши прозор - _top",
           "_parent": "Родитељски прозор - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Веза: rel",

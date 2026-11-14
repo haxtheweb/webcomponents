@@ -21,15 +21,6 @@
         "description": "Pukyu qhawasqa p'unchaw."
       },
       {
-        "property": "scope",
-        "title": "Chayana",
-        "description": "Citanapaq elementop chayanan.",
-        "options": {
-          "sibling": "Wawqi elemento",
-          "parent": "Tayta elemento"
-        }
-      },
-      {
         "property": "license",
         "title": "Licencia",
         "description": "Citasqa llamk'aypa licencian."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Ruraq",
         "description": "Citasqa llamk'aypa ruraqnin utaq dueñon."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Chayana",
+        "description": "Citanapaq elementop chayanan.",
+        "options": {
+          "sibling": "Wawqi elemento",
+          "parent": "Tayta elemento"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "OER Schema rikch'ay",

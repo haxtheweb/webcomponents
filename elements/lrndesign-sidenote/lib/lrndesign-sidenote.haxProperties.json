@@ -13,9 +13,9 @@
   "gizmo": {
     "title": "Side note",
     "description": "A note set apart from the surrounding content, with an optional icon and label.",
-    "icon": "icons:bookmark",
+    "icon": "editor:insert-comment",
     "color": "blue",
-    "tags": ["Instructional", "Layout", "Content"],
+    "tags": ["Instructional", "layout", "content"],
     "handles": [],
     "meta": {
       "author": "haxtheweb"

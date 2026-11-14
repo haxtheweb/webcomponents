@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "ধাপ আইটেম",
-    "description": "ধাপের তালিকার অংশ এমন আইটেম"
+    "description": "ধাপের তালিকার একটি ধাপ।"
   },
   "settings": {
     "configure": [

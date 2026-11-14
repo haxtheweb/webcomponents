@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Ok Yok",
         "description": "Düğme okunu gizle."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Bağlantı: hedef",
@@ -54,7 +52,9 @@
           "_top": "Üst pencere - _top",
           "_parent": "Ana pencere - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Bağlantı: rel",

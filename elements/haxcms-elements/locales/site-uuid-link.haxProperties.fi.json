@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "HAX-linkki",
-    "description": "Linkki tiettyyn resurssiin sivustolla, jota työstät."
+    "title": "Sivulinkki",
+    "description": "Linkki sivulle sivustossa, jota työstät."
   },
   "settings": {
     "configure": [

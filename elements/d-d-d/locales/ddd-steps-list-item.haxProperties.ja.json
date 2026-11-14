@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "ステップ項目",
-    "description": "ステップリストの一部となる項目"
+    "description": "手順リスト内の1つの手順。"
   },
   "settings": {
     "configure": [

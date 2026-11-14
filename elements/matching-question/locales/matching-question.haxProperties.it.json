@@ -11,30 +11,8 @@
         "description": "Domanda per gli utenti. Segna le aree di rilascio, poi elenca le risposte fino all'area successiva."
       },
       {
-        "property": "gradingFormat",
-        "title": "Formato di valutazione",
-        "description": "OER Schema: formato di valutazione per questa verifica (es. punti, lettera, percentuale, completamento)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Obiettivo di apprendimento",
-        "description": "OER Schema: obiettivo di apprendimento associato a questa verifica."
-      },
-      {
-        "property": "forCourse",
-        "title": "Corso",
-        "description": "OER Schema: corso a cui è destinata questa verifica."
-      },
-      {
         "property": "answers",
         "title": "Risposte"
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Nome del quiz",
-        "description": "Nome del quiz usato per l'identificazione xAPI nei sistemi di analisi."
       }
     ],
     "advanced": [
@@ -47,6 +25,28 @@
         "property": "collapsed",
         "title": "Inizia compresso",
         "description": "Se comprimibile, parte come una riga chiusa che mostra solo la domanda e il suo stato."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Formato di valutazione",
+        "description": "OER Schema: formato di valutazione per questa verifica (es. punti, lettera, percentuale, completamento)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Obiettivo di apprendimento",
+        "description": "OER Schema: obiettivo di apprendimento associato a questa verifica."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nome del quiz",
+        "description": "Nome del quiz usato per l'identificazione xAPI nei sistemi di analisi."
+      },
+      {
+        "property": "forCourse",
+        "title": "Corso",
+        "description": "OER Schema: corso a cui è destinata questa verifica."
       }
     ]
   }

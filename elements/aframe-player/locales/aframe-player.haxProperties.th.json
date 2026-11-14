@@ -11,6 +11,13 @@
         "description": "URL ของไฟล์ AR นี้"
       },
       {
+        "property": "skyColor",
+        "title": "สีท้องฟ้า",
+        "description": "เลือกสีของท้องฟ้าในฉาก"
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "ตำแหน่ง X ขององค์ประกอบใน AR"
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "ตำแหน่ง Z ขององค์ประกอบใน AR"
-      },
-      {
-        "property": "skyColor",
-        "title": "สีท้องฟ้า",
-        "description": "เลือกสีของท้องฟ้าในฉาก"
       }
     ]
   }

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "تصویر ساده",
-    "description": "دست‌کاری تصاویر با پارامترهای ساده."
+    "description": "تصویری که با تنظیمات ساده تغییر اندازه می‌یابد، بریده یا چرخانده می‌شود."
   },
   "settings": {
     "configure": [
@@ -26,7 +26,8 @@
         "description": "برای صفحه‌خوان‌ها و بهبود SEO مفید است."
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "کیفیت",

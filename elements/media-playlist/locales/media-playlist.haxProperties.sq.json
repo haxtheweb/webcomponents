@@ -4,22 +4,23 @@
     "description": "Një listë luajtjeje që paraqet luajtës video dhe audio në një paraqitje me luajtës dhe shirit anësor."
   },
   "settings": {
-    "configure": [
+    "configure": [],
+    "advanced": [
       {
         "property": "activeIndex",
         "title": "Indeksi fillestar",
         "description": "Indeksi i elementit aktiv nga i cili fillohet."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kursi",
-        "description": "Kursi për të cilin është menduar kjo listë (identifikuesi i kursit ose URL)."
       }
     ],
     "developer": [
       {
         "title": "Media",
         "description": "Videot dhe audioja në listën e luajtjes. Nuk redaktohet këtu: skica e faqes e përdor për të ditur cilat blloqe mund të lëshohen brenda."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursi",
+        "description": "Kursi për të cilin është menduar kjo listë (identifikuesi i kursit ose URL)."
       }
     ]
   }

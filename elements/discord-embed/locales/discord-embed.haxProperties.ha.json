@@ -9,7 +9,9 @@
         "property": "source",
         "title": "URL na Albarkatu",
         "description": "URL na albarkatu."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Tsawo",

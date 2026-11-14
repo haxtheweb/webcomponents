@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "Обгортка для вбудованих програвачів Spotify."
+    "description": "Вбудуйте трек, альбом або плейлист Spotify."
   },
   "settings": {
     "configure": [

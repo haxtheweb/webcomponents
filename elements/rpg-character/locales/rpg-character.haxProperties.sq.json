@@ -11,11 +11,6 @@
         "description": "Fjala e përdorur për të gjeneruar një personazh të rastësishëm."
       },
       {
-        "property": "code",
-        "title": "Kodi i personazhit",
-        "description": "Ngjit një kod të ruajtur për ta rikrijuar atë personazh."
-      },
-      {
         "property": "hat",
         "title": "Kapela",
         "description": "Stili i kapelës.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Maskë",
-        "description": "Maskë e veshur mbi fytyrë ose kokë.",
-        "options": {
-          "none": "Asnjë",
-          "lion": "Luan",
-          "plague": "Mjek i murtajës",
-          "theater": "Teatër",
-          "pumpkin": "Kungull",
-          "ghost": "Fantazmë",
-          "mummy": "Mumje",
-          "wrestler": "Maskë mundësi",
-          "block-head": "Kokë blloku",
-          "web": "Maskë rrjete",
-          "werewolf": "Fytyrë njeri-ujku",
-          "shadow": "Fytyrë hijeje"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Grimi",
-        "description": "Bojë fytyre ose buzëkuq.",
-        "options": {
-          "none": "Asnjë",
-          "red-lipstick": "Buzëkuq i kuq",
-          "pink-lipstick": "Buzëkuq rozë",
-          "berry-lipstick": "Buzëkuq me ngjyrë frutash të pyllit",
-          "clown": "Bojë klouni",
-          "fangs": "Dhëmbë vampiri",
-          "skull": "Bojë skeleti",
-          "zombie": "Bojë zombi",
-          "red-nose": "Hundë e kuqe",
-          "white-beard": "Mjekër e bardhë",
-          "domino": "Maskë heroi",
-          "carrot": "Hundë karote",
-          "bunny": "Hundë lepuri",
-          "mustache": "Mustaqe",
-          "monster": "Grim përbindëshi",
-          "round-glasses": "Syze të rrumbullakëta"
-        }
-      },
-      {
         "property": "expression",
         "title": "Shprehje",
         "description": "Shprehja e fytyrës.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Kafsha shtëpiake",
+        "description": "Kafshë shtëpiake pranë personazhit.",
+        "options": {
+          "none": "Asnjë",
+          "cat": "Mace",
+          "dog": "Qen",
+          "bunny": "Lepurush",
+          "goldfish": "Peshk i artë",
+          "slime": "Lëngatë",
+          "squirrel": "Ketër",
+          "dragon": "Dragua i vogël",
+          "parrot": "Papagall",
+          "owl": "Buf",
+          "bat": "Lakuriq nate"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Kodi i personazhit",
+        "description": "Ngjit një kod të ruajtur për ta rikrijuar atë personazh."
+      },
+      {
+        "property": "mask",
+        "title": "Maskë",
+        "description": "Maskë e veshur mbi fytyrë ose kokë.",
+        "options": {
+          "none": "Asnjë",
+          "lion": "Luan",
+          "plague": "Mjek i murtajës",
+          "theater": "Teatër",
+          "pumpkin": "Kungull",
+          "ghost": "Fantazmë",
+          "mummy": "Mumje",
+          "wrestler": "Maskë mundësi",
+          "block-head": "Kokë blloku",
+          "web": "Maskë rrjete",
+          "werewolf": "Fytyrë njeri-ujku",
+          "shadow": "Fytyrë hijeje"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Grimi",
+        "description": "Bojë fytyre ose buzëkuq.",
+        "options": {
+          "none": "Asnjë",
+          "red-lipstick": "Buzëkuq i kuq",
+          "pink-lipstick": "Buzëkuq rozë",
+          "berry-lipstick": "Buzëkuq me ngjyrë frutash të pyllit",
+          "clown": "Bojë klouni",
+          "fangs": "Dhëmbë vampiri",
+          "skull": "Bojë skeleti",
+          "zombie": "Bojë zombi",
+          "red-nose": "Hundë e kuqe",
+          "white-beard": "Mjekër e bardhë",
+          "domino": "Maskë heroi",
+          "carrot": "Hundë karote",
+          "bunny": "Hundë lepuri",
+          "mustache": "Mustaqe",
+          "monster": "Grim përbindëshi",
+          "round-glasses": "Syze të rrumbullakëta"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Teksti i flamurit",
         "description": "Deri në 4 shkronja shfaqen në flamur."
@@ -310,24 +330,6 @@
           "skates": "Patina",
           "skateboard": "Skateboard",
           "hoverboard": "Dërrasë fluturuese"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Kafsha shtëpiake",
-        "description": "Kafshë shtëpiake pranë personazhit.",
-        "options": {
-          "none": "Asnjë",
-          "cat": "Mace",
-          "dog": "Qen",
-          "bunny": "Lepurush",
-          "goldfish": "Peshk i artë",
-          "slime": "Lëngatë",
-          "squirrel": "Ketër",
-          "dragon": "Dragua i vogël",
-          "parrot": "Papagall",
-          "owl": "Buf",
-          "bat": "Lakuriq nate"
         }
       },
       {

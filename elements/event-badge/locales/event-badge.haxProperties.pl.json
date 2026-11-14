@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Identyfikator wydarzenia",
-    "description": "Komponent identyfikatora wydarzenia."
+    "description": "Identyfikator w stylu konferencyjnym ze zdjęciem, imieniem i organizacją."
   },
   "settings": {
     "configure": [

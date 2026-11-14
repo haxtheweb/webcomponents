@@ -11,20 +11,17 @@
         "description": "د ټبونو د ټولګې لپاره د لاسرسي وړ لیبل."
       },
       {
-        "property": "disabled",
-        "title": "غیر فعال",
-        "description": "ټول ټبونه غیر فعال کړئ."
-      },
-      {
-        "property": "hidden",
-        "title": "پټ",
-        "description": "د ټبونو ټولګه پټه کړئ."
-      },
-      {
         "property": "sticky",
         "title": "نښتی",
         "description": "د سکرول پر مهال افقي ټبونه په سر کې وساتئ."
       },
+      {
+        "slot": "",
+        "title": "ټبونه",
+        "description": "د <a11y-tab/> عناصرو لړۍ."
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "د ترتیب د بدلون نقطه",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "د آیکن د بدلون نقطه",
         "description": "له آیکنونو سره د متن ښودلو لپاره د بدلون نقطه. ډیفالټ 0 دی؛ یوازې د آیکن حالت لپاره -1 وکاروئ."
-      },
-      {
-        "slot": "",
-        "title": "ټبونه",
-        "description": "د <a11y-tab/> عناصرو لړۍ."
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "غیر فعال",
+        "description": "ټول ټبونه غیر فعال کړئ."
+      },
+      {
+        "property": "hidden",
+        "title": "پټ",
+        "description": "د ټبونو ټولګه پټه کړئ."
+      },
       {
         "property": "id",
         "title": "ځانګړی ID",

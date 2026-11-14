@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Prstenec priebehu",
-    "description": "Prstencový graf priebehu"
+    "description": "Prstencový graf zobrazujúci postup k celku."
   },
   "settings": {
     "configure": [
@@ -26,11 +26,6 @@
         "description": "Alternatívny text obrázka."
       },
       {
-        "property": "animated",
-        "title": "Animované",
-        "description": "Či sa priebeh pri prvom načítaní animuje"
-      },
-      {
         "property": "complete",
         "title": "Dokončené",
         "description": "Pole dokončených hodnôt."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "Celkom",
         "description": "Celková hodnota, keď sú všetky položky dokončené."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "Animované",
+        "description": "Či sa priebeh pri prvom načítaní animuje"
       },
       {
         "property": "startAngle",

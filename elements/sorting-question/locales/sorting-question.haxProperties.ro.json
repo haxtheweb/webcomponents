@@ -11,31 +11,9 @@
         "description": "Titlul întrebării."
       },
       {
-        "property": "gradingFormat",
-        "title": "Format de notare",
-        "description": "OER Schema: formatul de notare pentru această evaluare (de ex. puncte, literă, procent, finalizare)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Obiectiv de învățare",
-        "description": "OER Schema: obiectivul de învățare asociat acestei evaluări."
-      },
-      {
-        "property": "forCourse",
-        "title": "Curs",
-        "description": "OER Schema: cursul căruia îi este destinată această evaluare."
-      },
-      {
         "property": "answers",
         "title": "Răspunsuri",
         "description": "Ordinea răspunsurilor definește secvența corectă."
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Numele testului",
-        "description": "Numele testului folosit pentru identificarea xAPI în sistemele de analiză."
       }
     ],
     "advanced": [
@@ -48,6 +26,28 @@
         "property": "collapsed",
         "title": "Pornește pliat",
         "description": "Când este pliabil, pornește ca un rând închis care arată doar întrebarea și starea ei."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Format de notare",
+        "description": "OER Schema: formatul de notare pentru această evaluare (de ex. puncte, literă, procent, finalizare)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Obiectiv de învățare",
+        "description": "OER Schema: obiectivul de învățare asociat acestei evaluări."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Numele testului",
+        "description": "Numele testului folosit pentru identificarea xAPI în sistemele de analiză."
+      },
+      {
+        "property": "forCourse",
+        "title": "Curs",
+        "description": "OER Schema: cursul căruia îi este destinată această evaluare."
       }
     ]
   }

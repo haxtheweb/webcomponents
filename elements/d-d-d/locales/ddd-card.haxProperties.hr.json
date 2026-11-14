@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Bez strelice",
         "description": "Sakrij strelicu gumba."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Poveznica: cilj",
@@ -54,7 +52,9 @@
           "_top": "Gornji prozor - _top",
           "_parent": "Nadređeni prozor - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Poveznica: rel",

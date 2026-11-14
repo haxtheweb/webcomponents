@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "접미 텍스트",
         "description": "숫자 뒤에 표시되는 텍스트입니다(예: '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "접두 슬롯",
-        "description": "숫자 앞에 들어갈 선택적 슬롯 콘텐츠입니다."
-      },
-      {
-        "slot": "suffix",
-        "title": "접미 슬롯",
-        "description": "숫자 뒤에 들어갈 선택적 슬롯 콘텐츠입니다."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "이징 없음",
         "description": "이징을 끄고 카운트를 일정한 속도로 진행합니다."
+      },
+      {
+        "slot": "prefix",
+        "title": "접두 슬롯",
+        "description": "숫자 앞에 들어갈 선택적 슬롯 콘텐츠입니다."
+      },
+      {
+        "slot": "suffix",
+        "title": "접미 슬롯",
+        "description": "숫자 뒤에 들어갈 선택적 슬롯 콘텐츠입니다."
       }
     ]
   }

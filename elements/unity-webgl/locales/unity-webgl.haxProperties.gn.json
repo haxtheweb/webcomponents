@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Ohohápe",
         "description": "Ñembosarái ñemopu'ã rape."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Canvas pekue",
+        "description": "Canvas pekue CSS (techapyrã px térã em)."
       },
+      {
+        "property": "height",
+        "title": "Canvas yvatekue",
+        "description": "Canvas yvatekue CSS (techapyrã px térã em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Ñembopiko reko",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Mba'e jehai",
         "description": "Ñemosarambi jehai."
-      },
-      {
-        "property": "width",
-        "title": "Canvas pekue",
-        "description": "Canvas pekue CSS (techapyrã px térã em)."
-      },
-      {
-        "property": "height",
-        "title": "Canvas yvatekue",
-        "description": "Canvas yvatekue CSS (techapyrã px térã em)."
       },
       {
         "property": "background",

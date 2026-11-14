@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Cilj",
         "description": "Pot do gradnje igre."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Širina platna",
+        "description": "CSS širina platna (na primer px ali em)."
       },
+      {
+        "property": "height",
+        "title": "Višina platna",
+        "description": "CSS višina platna (na primer px ali em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Način stiskanja",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Različica izdelka",
         "description": "Različica izdaje."
-      },
-      {
-        "property": "width",
-        "title": "Širina platna",
-        "description": "CSS širina platna (na primer px ali em)."
-      },
-      {
-        "property": "height",
-        "title": "Višina platna",
-        "description": "CSS višina platna (na primer px ali em)."
       },
       {
         "property": "background",

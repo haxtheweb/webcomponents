@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "タグ / ピル",
+    "title": "タグ",
     "description": "アクセントカラー、キャンセルボタン、トグルを任意で付けられる、コンパクトな錠剤形のラベル。"
   },
   "settings": {
@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "自動アクセントカラー",
         "description": "ラベルのテキストからアクセントカラーを自動的に決定します。"
-      },
-      {
-        "property": "cancelButton",
-        "title": "キャンセルボタン",
-        "description": "ピルの中に削除/キャンセルのアイコンボタンを表示します。"
-      },
-      {
-        "property": "readonly",
-        "title": "読み取り専用",
-        "description": "キャンセルボタンを隠して、ピルを表示専用にします。"
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "ブルーグレー",
           "grey": "グレー"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "キャンセルボタン",
+        "description": "ピルの中に削除/キャンセルのアイコンボタンを表示します。"
+      },
+      {
+        "property": "readonly",
+        "title": "読み取り専用",
+        "description": "キャンセルボタンを隠して、ピルを表示専用にします。"
       }
     ]
   }

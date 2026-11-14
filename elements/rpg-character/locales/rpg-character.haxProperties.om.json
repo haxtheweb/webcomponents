@@ -11,11 +11,6 @@
         "description": "Jecha taphataa akkasumaa uumuuf fayyadamu."
       },
       {
-        "property": "code",
-        "title": "Koodii fakkii",
-        "description": "Fakkii sana irra deebi'uun uumuuf koodii kuufame maxxansi."
-      },
-      {
         "property": "hat",
         "title": "Koofiyaa",
         "description": "Akkaataa koofiyaa.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Maaskii",
-        "description": "Maaskiin fuula yookaan mataa irra uffatamu.",
-        "options": {
-          "none": "Hin jiru",
-          "lion": "Leenca",
-          "plague": "Doktora dhaʼicha",
-          "theater": "Tiyaatira",
-          "pumpkin": "Paampikiin",
-          "ghost": "Hafuura",
-          "mummy": "Mummii",
-          "wrestler": "Haguuggii fuulaa qabsoo",
-          "block-head": "Mataa bilookii",
-          "web": "Haguuggii fuulaa mana saphaphuu",
-          "werewolf": "Fuula nama-yeeyyii",
-          "shadow": "Fuula gaaddidduu"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Miidhagsa",
-        "description": "Fuula kalaquu yookaan lipistiikii.",
-        "options": {
-          "none": "Hin jiru",
-          "red-lipstick": "Lipistiikii diimaa",
-          "pink-lipstick": "Lipistiikii pinkii",
-          "berry-lipstick": "Lipistiikii barii",
-          "clown": "Kalaquu qoosaa",
-          "fangs": "Ilkaan qara",
-          "skull": "Dibata lafee mataa",
-          "zombie": "Dibata zombii",
-          "red-nose": "Funyaan diimaa",
-          "white-beard": "Areda adii",
-          "domino": "Maaskii gootaa",
-          "carrot": "Funyaan kaarotii",
-          "bunny": "Funyaan hantuutaa",
-          "mustache": "Areeda funyaan jalaa",
-          "monster": "Halluu fuulaa bineensa sodaachisaa",
-          "round-glasses": "Kofoo ijaa geengoo"
-        }
-      },
-      {
         "property": "expression",
         "title": "Bifa fuulaa",
         "description": "Bifa fuulaa.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Beelada manaa",
+        "description": "Beelada manaa taphataa bira jiru.",
+        "options": {
+          "none": "Hin jiru",
+          "cat": "Adurree",
+          "dog": "Saree",
+          "bunny": "Illeettii",
+          "goldfish": "Qurxummii warqee",
+          "slime": "Dhagaa jilba",
+          "squirrel": "Shiqishii",
+          "dragon": "Gaalee xiqqaa",
+          "parrot": "Simbirroo dubbattu",
+          "owl": "Urunguu",
+          "bat": "Simbirroo halkanii"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Koodii fakkii",
+        "description": "Fakkii sana irra deebi'uun uumuuf koodii kuufame maxxansi."
+      },
+      {
+        "property": "mask",
+        "title": "Maaskii",
+        "description": "Maaskiin fuula yookaan mataa irra uffatamu.",
+        "options": {
+          "none": "Hin jiru",
+          "lion": "Leenca",
+          "plague": "Doktora dhaʼicha",
+          "theater": "Tiyaatira",
+          "pumpkin": "Paampikiin",
+          "ghost": "Hafuura",
+          "mummy": "Mummii",
+          "wrestler": "Haguuggii fuulaa qabsoo",
+          "block-head": "Mataa bilookii",
+          "web": "Haguuggii fuulaa mana saphaphuu",
+          "werewolf": "Fuula nama-yeeyyii",
+          "shadow": "Fuula gaaddidduu"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Miidhagsa",
+        "description": "Fuula kalaquu yookaan lipistiikii.",
+        "options": {
+          "none": "Hin jiru",
+          "red-lipstick": "Lipistiikii diimaa",
+          "pink-lipstick": "Lipistiikii pinkii",
+          "berry-lipstick": "Lipistiikii barii",
+          "clown": "Kalaquu qoosaa",
+          "fangs": "Ilkaan qara",
+          "skull": "Dibata lafee mataa",
+          "zombie": "Dibata zombii",
+          "red-nose": "Funyaan diimaa",
+          "white-beard": "Areda adii",
+          "domino": "Maaskii gootaa",
+          "carrot": "Funyaan kaarotii",
+          "bunny": "Funyaan hantuutaa",
+          "mustache": "Areeda funyaan jalaa",
+          "monster": "Halluu fuulaa bineensa sodaachisaa",
+          "round-glasses": "Kofoo ijaa geengoo"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Barruu alaabaa",
         "description": "Qubee 4 hanga alaabaa irratti mul'atan."
@@ -310,24 +330,6 @@
           "skates": "Skeetii",
           "skateboard": "Iskeetboordii",
           "hoverboard": "Gabatee balali'u"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Beelada manaa",
-        "description": "Beelada manaa taphataa bira jiru.",
-        "options": {
-          "none": "Hin jiru",
-          "cat": "Adurree",
-          "dog": "Saree",
-          "bunny": "Illeettii",
-          "goldfish": "Qurxummii warqee",
-          "slime": "Dhagaa jilba",
-          "squirrel": "Shiqishii",
-          "dragon": "Gaalee xiqqaa",
-          "parrot": "Simbirroo dubbattu",
-          "owl": "Urunguu",
-          "bat": "Simbirroo halkanii"
         }
       },
       {

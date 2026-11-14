@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Suffikstekst",
         "description": "Tekst vist efter tallet (f.eks. '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Præfiks-slot",
-        "description": "Valgfrit indsat indhold før tallet."
-      },
-      {
-        "slot": "suffix",
-        "title": "Suffiks-slot",
-        "description": "Valgfrit indsat indhold efter tallet."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Ingen blødgøring",
         "description": "Deaktiver blødgøring, så optællingen er lineær."
+      },
+      {
+        "slot": "prefix",
+        "title": "Præfiks-slot",
+        "description": "Valgfrit indsat indhold før tallet."
+      },
+      {
+        "slot": "suffix",
+        "title": "Suffiks-slot",
+        "description": "Valgfrit indsat indhold efter tallet."
       }
     ]
   }

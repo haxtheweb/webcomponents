@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "Бутони",
         "description": "Група бутони, показана под текста."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "Текст на котвата",
         "description": "Етикет на котвата, показан в навигацията."
       }
-    ]
+    ],
+    "developer": []
   }
 }

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Enkel bild",
-    "description": "Bearbeta bilder med enkla parametrar."
+    "description": "En bild som storleksändras, beskärs eller roteras med enkla inställningar."
   },
   "settings": {
     "configure": [
@@ -26,7 +26,8 @@
         "description": "Användbar för skärmläsare och bättre SEO."
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "Kvalitet",

@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Sufiksa teksto",
         "description": "Teksto montrata post la nombro (ekz. '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Prefiksa ingo",
-        "description": "Nedeviga enigita enhavo antaŭ la nombro."
-      },
-      {
-        "slot": "suffix",
-        "title": "Sufiksa ingo",
-        "description": "Nedeviga enigita enhavo post la nombro."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Sen glatigo",
         "description": "Malŝalti glatigon por ke la kalkulado estu lineara."
+      },
+      {
+        "slot": "prefix",
+        "title": "Prefiksa ingo",
+        "description": "Nedeviga enigita enhavo antaŭ la nombro."
+      },
+      {
+        "slot": "suffix",
+        "title": "Sufiksa ingo",
+        "description": "Nedeviga enigita enhavo post la nombro."
       }
     ]
   }

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Wikipedia",
-    "description": "สามารถแสดงบทความวิกิพีเดียในบริบทในรูปแบบต่างๆ ได้"
+    "description": "แสดงบทความวิกิพีเดียในหน้า"
   },
   "settings": {
     "configure": [

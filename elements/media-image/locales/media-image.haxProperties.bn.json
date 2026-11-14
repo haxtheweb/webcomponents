@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "ক্যাপশন",
         "description": "ছবির ক্যাপশন।"
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "চিত্রের শিরোনাম",
-        "description": "চিত্র লেবেলের শিরোনাম।"
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "চিত্রের বিবরণ",
-        "description": "চিত্র লেবেলের বিবরণ।"
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "ছবির মোডাল বন্ধ করুন",
         "description": "ক্লিক করলে ছবি ইমেজ ইন্সপেক্টর ডায়ালগে খোলা বন্ধ করুন।"
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "চিত্রের শিরোনাম",
+        "description": "চিত্র লেবেলের শিরোনাম।"
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "চিত্রের বিবরণ",
+        "description": "চিত্র লেবেলের বিবরণ।"
       }
     ],
     "developer": [

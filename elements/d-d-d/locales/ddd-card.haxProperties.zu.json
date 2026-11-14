@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Awukho Umcibisholo",
         "description": "Fihla umcibisholo wenkinobho."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Isixhumanisi: target",
@@ -54,7 +52,9 @@
           "_top": "Iwindi eliphezulu - _top",
           "_parent": "Iwindi elingumzali - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Isixhumanisi: rel",

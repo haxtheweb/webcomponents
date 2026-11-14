@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Autoriser le filtrage",
         "description": "Permettre le filtrage selon les valeurs des colonnes."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Style numérique",
-        "description": "Appliquer un style numérique aux colonnes numériques."
-      },
-      {
-        "property": "responsive",
-        "title": "Adaptatif",
-        "description": "Ajuster la mise en page du tableau sur les petits écrans."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Mode grille d'évaluation",
-        "description": "Interpréter ce tableau comme une Rubric OER Schema afin d'émettre les métadonnées Rubric, RubricScale, RubricCriterion et RubricLevel."
-      },
-      {
-        "property": "rubricType",
-        "title": "Type de grille d'évaluation",
-        "description": "Style de grille émis en tant que oer:rubricType (pertinent uniquement lorsque le mode grille d'évaluation est activé).",
-        "options": {
-          "": "(aucun)",
-          "analytic": "Analytique",
-          "holistic": "Holistique",
-          "single-point": "Critère unique",
-          "checklist": "Liste de contrôle"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Bouton d'impression",
         "description": "Ajouter un bouton pour imprimer uniquement le tableau."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Style numérique",
+        "description": "Appliquer un style numérique aux colonnes numériques."
+      },
+      {
+        "property": "responsive",
+        "title": "Adaptatif",
+        "description": "Ajuster la mise en page du tableau sur les petits écrans."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Mode grille d'évaluation",
+        "description": "Interpréter ce tableau comme une Rubric OER Schema afin d'émettre les métadonnées Rubric, RubricScale, RubricCriterion et RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "Type de grille d'évaluation",
+        "description": "Style de grille émis en tant que oer:rubricType (pertinent uniquement lorsque le mode grille d'évaluation est activé).",
+        "options": {
+          "": "(aucun)",
+          "analytic": "Analytique",
+          "holistic": "Holistique",
+          "single-point": "Critère unique",
+          "checklist": "Liste de contrôle"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "Données CSV",
         "description": "Créer un tableau à partir d'un fichier CSV téléversé."
       }
-    ]
+    ],
+    "developer": []
   }
 }

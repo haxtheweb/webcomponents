@@ -9,7 +9,9 @@
         "property": "source",
         "title": "URL del recurs",
         "description": "URL del recurs."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Alçada",

@@ -91,7 +91,9 @@
         "property": "gameTitle",
         "title": "Уен исеме",
         "description": "Алгарыш вакыйгаларында һәм OER Schema билгеләмәсендә бу уенга исем бирә."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Уен идентификаторы",

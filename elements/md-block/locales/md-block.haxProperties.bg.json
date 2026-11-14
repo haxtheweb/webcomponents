@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "Блок с Markdown съдържание, въведено директно или заредено отдалечено"
+    "description": "Съдържание в Markdown, написано на място или заредено от файл."
   },
   "settings": {
     "configure": [

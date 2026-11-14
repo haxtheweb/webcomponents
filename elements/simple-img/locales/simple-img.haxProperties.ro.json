@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Imagine simplă",
-    "description": "Manipulați imagini cu parametri simpli."
+    "description": "O imagine redimensionată, decupată sau rotită prin setări simple."
   },
   "settings": {
     "configure": [
@@ -26,7 +26,8 @@
         "description": "Util pentru cititoarele de ecran și pentru un SEO mai bun."
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "Calitate",

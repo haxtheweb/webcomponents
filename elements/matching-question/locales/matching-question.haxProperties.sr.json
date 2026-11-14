@@ -11,30 +11,8 @@
         "description": "Питање за кориснике. Означите циљеве за отпуштање, затим наведите одговоре до следећег циља."
       },
       {
-        "property": "gradingFormat",
-        "title": "Формат оцењивања",
-        "description": "OER Schema: формат оцењивања за ову проверу знања (нпр. бодови, слово, проценат, завршеност)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Циљ учења",
-        "description": "OER Schema: циљ учења повезан са овом провером знања."
-      },
-      {
-        "property": "forCourse",
-        "title": "Курс",
-        "description": "OER Schema: курс за који је ова провера знања намењена."
-      },
-      {
         "property": "answers",
         "title": "Одговори"
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Назив квиза",
-        "description": "Назив квиза за xAPI идентификацију у системима аналитике."
       }
     ],
     "advanced": [
@@ -47,6 +25,28 @@
         "property": "collapsed",
         "title": "Почни склопљено",
         "description": "Када је склопиво, почни као затворен ред који приказује само питање и његов статус."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Формат оцењивања",
+        "description": "OER Schema: формат оцењивања за ову проверу знања (нпр. бодови, слово, проценат, завршеност)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Циљ учења",
+        "description": "OER Schema: циљ учења повезан са овом провером знања."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Назив квиза",
+        "description": "Назив квиза за xAPI идентификацију у системима аналитике."
+      },
+      {
+        "property": "forCourse",
+        "title": "Курс",
+        "description": "OER Schema: курс за који је ова провера знања намењена."
       }
     ]
   }

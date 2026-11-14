@@ -2,6 +2,13 @@ import { fixture, expect, html } from "@open-wc/testing";
 
 import { LrndesignTimeline } from "../lrndesign-timeline.js";
 
+// HAX schemas ship as JSON next to the element; read one whether the class
+// returns the object or the URL of its file
+const haxSchema = async (C) => {
+  const hp = C.haxProperties;
+  return typeof hp === "string" ? (await fetch(hp)).json() : hp;
+};
+
 const dataImg =
   "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
 
@@ -320,7 +327,7 @@ describe("lrndesign-timeline scrolling", () => {
 
 describe("lrndesign-timeline hax integration", () => {
   it("reports haxProperties with a demo schema", async () => {
-    const props = LrndesignTimeline.haxProperties;
+    const props = await haxSchema(LrndesignTimeline);
     expect(props.canScale).to.be.false;
     expect(props.canEditSource).to.be.true;
     expect(props.gizmo.title).to.equal("Timeline");
@@ -330,7 +337,7 @@ describe("lrndesign-timeline hax integration", () => {
   });
 
   it("exposes configure settings and accent color in advanced", async () => {
-    const props = LrndesignTimeline.haxProperties;
+    const props = await haxSchema(LrndesignTimeline);
     const configure = props.settings.configure.map((s) => s.property);
     expect(configure).to.include("timelineTitle");
     expect(configure).to.not.include("accentColor");

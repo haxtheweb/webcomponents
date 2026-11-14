@@ -10,10 +10,6 @@
         "title": "Ikona karty"
       },
       {
-        "property": "disabled",
-        "title": "Wyłączone"
-      },
-      {
         "property": "label",
         "title": "Etykieta karty"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "Unikalny ID"
-      },
-      {
         "property": "flag",
         "title": "Opcjonalny tekst flagi"
       },
       {
         "property": "flagIcon",
         "title": "Opcjonalna ikona flagi"
+      },
+      {
+        "property": "disabled",
+        "title": "Wyłączone"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "Unikalny ID"
       }
     ]
   }

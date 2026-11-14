@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Activiteitenblok",
-    "description": "Klein opgemaakt kopblok."
+    "description": "Een gelabelde kop die het begin van een activiteit markeert."
   },
   "settings": {
     "configure": [

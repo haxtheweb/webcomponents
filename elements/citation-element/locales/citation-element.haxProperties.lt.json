@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Šaltinio nuoroda",
-    "description": "Citatos elementas su trimis pateikimo režimais."
+    "description": "Nurodykite šaltinį: pavadinimą, autorių, licenciją ir nuorodą."
   },
   "settings": {
     "configure": [
@@ -21,15 +21,6 @@
         "description": "Data, kada šaltinis buvo pasiektas."
       },
       {
-        "property": "scope",
-        "title": "Apimtis",
-        "description": "Cituojamo elemento apimtis.",
-        "options": {
-          "sibling": "Gretimas elementas",
-          "parent": "Tėvinis elementas"
-        }
-      },
-      {
         "property": "license",
         "title": "Licencija",
         "description": "Cituojamo kūrinio licencija."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Kūrėjas",
         "description": "Cituojamo kūrinio kūrėjas arba savininkas."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Apimtis",
+        "description": "Cituojamo elemento apimtis.",
+        "options": {
+          "sibling": "Gretimas elementas",
+          "parent": "Tėvinis elementas"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "OER Schema tipas",

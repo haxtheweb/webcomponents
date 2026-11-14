@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Yzyndaky tekst",
         "description": "Sanyň yzynda görkezilýän tekst (meselem, '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Öň slot",
-        "description": "Sanyň öňündäki goşmaça slot mazmuny."
-      },
-      {
-        "slot": "suffix",
-        "title": "Yz slot",
-        "description": "Sanyň yzyndaky goşmaça slot mazmuny."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Ýumşatmasyz",
         "description": "Sanama çyzykly bolar ýaly ýumşatmany öçür."
+      },
+      {
+        "slot": "prefix",
+        "title": "Öň slot",
+        "description": "Sanyň öňündäki goşmaça slot mazmuny."
+      },
+      {
+        "slot": "suffix",
+        "title": "Yz slot",
+        "description": "Sanyň yzyndaky goşmaça slot mazmuny."
       }
     ]
   }

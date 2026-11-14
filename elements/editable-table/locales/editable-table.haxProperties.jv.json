@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Idini Saringan",
         "description": "Idini nyaring miturut nilai kolom."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Gaya Angka",
-        "description": "Trapake gaya angka marang kolom angka."
-      },
-      {
-        "property": "responsive",
-        "title": "Responsif",
-        "description": "Atur tata letak tabel ing layar cilik."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Mode Rubrik",
-        "description": "Tafsirake tabel iki minangka Rubric OER Schema supaya metadata Rubric, RubricScale, RubricCriterion, lan RubricLevel diasilake."
-      },
-      {
-        "property": "rubricType",
-        "title": "Jinis Rubrik",
-        "description": "Gaya rubrik sing diasilake minangka oer:rubricType (mung migunani nalika Mode Rubrik urip).",
-        "options": {
-          "": "(ora ana)",
-          "analytic": "Analitik",
-          "holistic": "Holistik",
-          "single-point": "Titik Tunggal",
-          "checklist": "Dhaptar priksa"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Tombol Cithak",
         "description": "Tambahake tombol kanggo nyithak tabel wae."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Gaya Angka",
+        "description": "Trapake gaya angka marang kolom angka."
+      },
+      {
+        "property": "responsive",
+        "title": "Responsif",
+        "description": "Atur tata letak tabel ing layar cilik."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Mode Rubrik",
+        "description": "Tafsirake tabel iki minangka Rubric OER Schema supaya metadata Rubric, RubricScale, RubricCriterion, lan RubricLevel diasilake."
+      },
+      {
+        "property": "rubricType",
+        "title": "Jinis Rubrik",
+        "description": "Gaya rubrik sing diasilake minangka oer:rubricType (mung migunani nalika Mode Rubrik urip).",
+        "options": {
+          "": "(ora ana)",
+          "analytic": "Analitik",
+          "holistic": "Holistik",
+          "single-point": "Titik Tunggal",
+          "checklist": "Dhaptar priksa"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "Data CSV",
         "description": "Gawe tabel saka berkas CSV sing diunggah."
       }
-    ]
+    ],
+    "developer": []
   }
 }

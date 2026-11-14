@@ -327,52 +327,7 @@ export class SiteCitation extends HAXCMSI18NMixin(DDD) {
    * HAX properties integration (inline schema)
    */
   static get haxProperties() {
-    return {
-      canScale: false,
-      canEditSource: false,
-      contentEditable: false,
-      gizmo: {
-        title: "Citation",
-        description:
-          "Copyable APA, MLA, Chicago or BibTeX citation for this page or the whole site, built from site information",
-        icon: "editor:format-quote",
-        color: "blue",
-        tags: ["Other", "citation", "reference", "apa", "mla"],
-        handles: [],
-        meta: { author: "HAXcms" },
-      },
-      settings: {
-        configure: [
-          {
-            property: "scope",
-            title: "What to cite",
-            description: "Cite the current page or the whole site",
-            inputMethod: "select",
-            options: { page: "This page", site: "Whole site" },
-          },
-          {
-            property: "format",
-            title: "Default style",
-            description: "Style shown first; visitors can switch styles",
-            inputMethod: "select",
-            options: {
-              apa: "APA",
-              mla: "MLA",
-              chicago: "Chicago",
-              bibtex: "BibTeX",
-            },
-          },
-        ],
-        advanced: [],
-      },
-      demoSchema: [
-        {
-          tag: this.tag,
-          properties: { scope: "page", format: "apa" },
-          content: "",
-        },
-      ],
-    };
+    return new URL("./site-citation.haxProperties.json", import.meta.url).href;
   }
 }
 

@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Манбаи тасвир",
         "description": "Файли тасвире, ки барои корт истифода мешавад. Калидвожаи тасвирро бекор мекунад."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Калидвожаи тасвир",
+        "description": "Калидвожа барои тасвири тасодуфӣ. Аз ҷониби Манбаи тасвир бекор карда мешавад."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Ҳадафи таълимӣ",
         "description": "OER Schema: ID ё URL-и ҳадафи таълимие, ки ин машқ онро дастгирӣ мекунад."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Калидвожаи тасвир",
-        "description": "Калидвожа барои тасвири тасодуфӣ. Аз ҷониби Манбаи тасвир бекор карда мешавад."
       }
     ]
   }

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "正誤問題",
-    "description": "正誤問題"
+    "description": "学習者が正誤を判定する文。"
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Konzept-Quest-Spiel",
-    "description": "Eine Oberwelt zum Erkunden. Konzepte finden dich und stellen eine Frage. Antworte richtig, um eines zu besiegen und sein Haus freizuschalten. Die Zusammenfassung zeigt die Versuche und was du wiederholen solltest."
+    "description": "Ein Oberwelt-Spiel, in dem Konzepte Fragen stellen und richtige Antworten die Karte freischalten."
   },
   "settings": {
     "configure": [
@@ -91,7 +91,9 @@
         "property": "gameTitle",
         "title": "Spielname",
         "description": "Benennt dieses Spiel in Fortschrittsereignissen und im OER Schema-Markup."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Spiel-ID",

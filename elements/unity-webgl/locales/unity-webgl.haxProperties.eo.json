@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Celo",
         "description": "Vojo al la konstruaĵo de la ludo."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Kanvasa larĝo",
+        "description": "CSS-larĝo de la kanvaso (ekzemple px aŭ em)."
       },
+      {
+        "property": "height",
+        "title": "Kanvasa alteco",
+        "description": "CSS-alteco de la kanvaso (ekzemple px aŭ em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Densiga metodo",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Produkta versio",
         "description": "Eldona versio."
-      },
-      {
-        "property": "width",
-        "title": "Kanvasa larĝo",
-        "description": "CSS-larĝo de la kanvaso (ekzemple px aŭ em)."
-      },
-      {
-        "property": "height",
-        "title": "Kanvasa alteco",
-        "description": "CSS-alteco de la kanvaso (ekzemple px aŭ em)."
       },
       {
         "property": "background",

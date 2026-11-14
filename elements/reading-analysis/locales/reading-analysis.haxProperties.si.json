@@ -38,21 +38,6 @@
         "slot": "",
         "title": "කියවීම",
         "description": "ඉගෙනුම්කරුවන් වැඩ කරන කියවීම. ඕනෑම HTML: ශීර්ෂ, ඡේද, ලැයිස්තු සහ රූප."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "ශ්‍රේණිගත කිරීමේ ආකෘතිය",
-        "description": "OER Schema: මෙම තක්සේරුව සඳහා ශ්‍රේණිගත කිරීමේ ආකෘතිය (උදා. ලකුණු, අකුරු ශ්‍රේණිය, ප්‍රතිශතය, සම්පූර්ණ කිරීම)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "ඉගෙනුම් අරමුණ",
-        "description": "OER Schema: මෙම තක්සේරුවට සම්බන්ධ ඉගෙනුම් අරමුණ."
-      },
-      {
-        "property": "forCourse",
-        "title": "පාඨමාලාව",
-        "description": "OER Schema: මෙම තක්සේරුව අදහස් කරන පාඨමාලාව."
       }
     ],
     "advanced": [
@@ -70,6 +55,16 @@
         "property": "collapsed",
         "title": "හකුළා ආරම්භ කරන්න",
         "description": "හකුළුවිය හැකි විට, ප්‍රශ්නය සහ එහි තත්ත්වය පමණක් පෙන්වන වැසූ පේළියක් ලෙස ආරම්භ කරන්න."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "ශ්‍රේණිගත කිරීමේ ආකෘතිය",
+        "description": "OER Schema: මෙම තක්සේරුව සඳහා ශ්‍රේණිගත කිරීමේ ආකෘතිය (උදා. ලකුණු, අකුරු ශ්‍රේණිය, ප්‍රතිශතය, සම්පූර්ණ කිරීම)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "ඉගෙනුම් අරමුණ",
+        "description": "OER Schema: මෙම තක්සේරුවට සම්බන්ධ ඉගෙනුම් අරමුණ."
       }
     ],
     "developer": [
@@ -77,6 +72,11 @@
         "property": "quizName",
         "title": "ප්‍රශ්නාවලියේ නම",
         "description": "මෙම අයිතමය හඳුනා ගැනීම සඳහා xAPI පදනම් වූ පරිසරවල භාවිතයට ලබා දෙන ප්‍රශ්නාවලි නම"
+      },
+      {
+        "property": "forCourse",
+        "title": "පාඨමාලාව",
+        "description": "OER Schema: මෙම තක්සේරුව අදහස් කරන පාඨමාලාව."
       }
     ]
   }

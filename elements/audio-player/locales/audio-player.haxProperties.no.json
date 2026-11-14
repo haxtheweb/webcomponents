@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Lyd",
-    "description": "Dette kan presentere video på en svært tilgjengelig måte uansett kilde."
+    "description": "Tilgjengelig lydspiller med støtte for transkripsjon."
   },
   "settings": {
     "configure": [
@@ -46,6 +46,16 @@
         "property": "accentColor",
         "title": "Aksentfarge",
         "description": "Velg aksentfargen for spilleren."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Skjul tidsstempler",
+        "description": "Skjul tidsstemplene i transkripsjonen."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Skjul transkripsjon",
+        "description": "Skjul transkripsjonen som standard."
       }
     ],
     "developer": [
@@ -72,16 +82,6 @@
         "property": "disableInteractive",
         "title": "Deaktiver interaktivitet",
         "description": "Deaktiver interaktiv modus som gjør transkripsjonen klikkbar."
-      },
-      {
-        "property": "hideTimestamps",
-        "title": "Skjul tidsstempler",
-        "description": "Skjul tidsstemplene i transkripsjonen."
-      },
-      {
-        "property": "hideTranscript",
-        "title": "Skjul transkripsjon",
-        "description": "Skjul transkripsjonen som standard."
       },
       {
         "property": "lang",

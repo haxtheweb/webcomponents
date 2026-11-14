@@ -9,7 +9,9 @@
         "property": "source",
         "title": "Ресурстун URL дареги",
         "description": "Ресурстун URL дареги."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Бийиктиги",

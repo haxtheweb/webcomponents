@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Kohde",
         "description": "Polku pelin koontiversioon."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Piirtoalueen leveys",
+        "description": "Piirtoalueen CSS-leveys (esimerkiksi px tai em)."
       },
+      {
+        "property": "height",
+        "title": "Piirtoalueen korkeus",
+        "description": "Piirtoalueen CSS-korkeus (esimerkiksi px tai em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Pakkausmenetelmä",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Tuotteen versio",
         "description": "Julkaisuversio."
-      },
-      {
-        "property": "width",
-        "title": "Piirtoalueen leveys",
-        "description": "Piirtoalueen CSS-leveys (esimerkiksi px tai em)."
-      },
-      {
-        "property": "height",
-        "title": "Piirtoalueen korkeus",
-        "description": "Piirtoalueen CSS-korkeus (esimerkiksi px tai em)."
       },
       {
         "property": "background",

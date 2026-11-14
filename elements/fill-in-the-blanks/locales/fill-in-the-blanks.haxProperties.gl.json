@@ -14,28 +14,6 @@
         "property": "statement",
         "title": "Enunciado",
         "description": "Enunciado que se converterá na interacción de marcar as palabras."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "Formato de cualificación",
-        "description": "OER Schema: formato de cualificación desta avaliación (p. ex. puntos, letra, porcentaxe, completado)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Obxectivo de aprendizaxe",
-        "description": "OER Schema: obxectivo de aprendizaxe asociado a esta avaliación."
-      },
-      {
-        "property": "forCourse",
-        "title": "Curso",
-        "description": "OER Schema: curso ao que se destina esta avaliación."
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Nome do cuestionario",
-        "description": "Nome do cuestionario que se pasa para usar en contornos baseados en xAPI e identificar este elemento"
       }
     ],
     "advanced": [
@@ -46,6 +24,28 @@
       {
         "title": "Comezar contraída",
         "description": "Se é contraíble, comeza como unha fila pechada que só mostra a pregunta e o seu estado."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Formato de cualificación",
+        "description": "OER Schema: formato de cualificación desta avaliación (p. ex. puntos, letra, porcentaxe, completado)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Obxectivo de aprendizaxe",
+        "description": "OER Schema: obxectivo de aprendizaxe asociado a esta avaliación."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nome do cuestionario",
+        "description": "Nome do cuestionario que se pasa para usar en contornos baseados en xAPI e identificar este elemento"
+      },
+      {
+        "property": "forCourse",
+        "title": "Curso",
+        "description": "OER Schema: curso ao que se destina esta avaliación."
       }
     ]
   }

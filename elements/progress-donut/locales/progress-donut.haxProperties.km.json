@@ -26,11 +26,6 @@
         "description": "អត្ថបទជំនួសសម្រាប់រូបភាព។"
       },
       {
-        "property": "animated",
-        "title": "មានចលនា",
-        "description": "ថាតើវឌ្ឍនភាពមានចលនាពេលផ្ទុកលើកដំបូងឬអត់"
-      },
-      {
         "property": "complete",
         "title": "បានបញ្ចប់",
         "description": "អារេនៃតម្លៃដែលបានបញ្ចប់។"
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "សរុប",
         "description": "សរុបពេលធាតុទាំងអស់បានបញ្ចប់។"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "មានចលនា",
+        "description": "ថាតើវឌ្ឍនភាពមានចលនាពេលផ្ទុកលើកដំបូងឬអត់"
       },
       {
         "property": "startAngle",

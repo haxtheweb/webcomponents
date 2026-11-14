@@ -4,22 +4,23 @@
     "description": "動画・音声プレーヤーをプレーヤーとサイドバーのレイアウトで表示するプレイリスト。"
   },
   "settings": {
-    "configure": [
+    "configure": [],
+    "advanced": [
       {
         "property": "activeIndex",
         "title": "開始項目番号",
         "description": "最初に表示するアクティブな項目の番号。"
-      },
-      {
-        "property": "forCourse",
-        "title": "コース",
-        "description": "このプレイリストの対象となるコース（コースの識別子またはURL）。"
       }
     ],
     "developer": [
       {
         "title": "メディア",
         "description": "プレイリストの動画と音声。ここでは編集しません: ページの構成がドロップできるブロックを判断するために使います。"
+      },
+      {
+        "property": "forCourse",
+        "title": "コース",
+        "description": "このプレイリストの対象となるコース（コースの識別子またはURL）。"
       }
     ]
   }

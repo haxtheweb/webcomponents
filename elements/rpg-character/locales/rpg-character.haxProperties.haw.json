@@ -11,11 +11,6 @@
         "description": "Huaʻōlelo i hoʻohana ʻia no ka hana ʻana i kekahi kanaka kaulele."
       },
       {
-        "property": "code",
-        "title": "Pāʻālua kiʻi",
-        "description": "E hoʻopili i kahi pāʻālua i mālama ʻia e hana hou i ua kiʻi lā."
-      },
-      {
         "property": "hat",
         "title": "Pāpale",
         "description": "Kaila pāpale.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Pale maka",
-        "description": "Pale maka i komo ʻia ma ka maka a i ʻole ke poʻo.",
-        "options": {
-          "none": "ʻAʻohe",
-          "lion": "Liona",
-          "plague": "Kauka maʻi ahulau",
-          "theater": "Hale keaka",
-          "pumpkin": "ʻAla",
-          "ghost": "ʻUhane",
-          "mummy": "Mummy",
-          "wrestler": "Uhi maka hākōkō",
-          "block-head": "Poʻo palaka",
-          "web": "Uhi maka pūnāwelewele",
-          "werewolf": "Helehelena ʻīlio hae kanaka",
-          "shadow": "Helehelena aka"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Hoʻonani maka",
-        "description": "Kala maka a i ʻole lipstick.",
-        "options": {
-          "none": "ʻAʻohe",
-          "red-lipstick": "Lipstick ʻulaʻula",
-          "pink-lipstick": "Lipstick ʻākala",
-          "berry-lipstick": "Lipstick berry",
-          "clown": "Kala maka clown",
-          "fangs": "Niho ʻoi",
-          "skull": "Pena iwi poʻo",
-          "zombie": "Pena zombie",
-          "red-nose": "ʻAhuʻaha ʻulaʻula",
-          "white-beard": "Umauma keʻokeʻo",
-          "domino": "Pale maka koa",
-          "carrot": "Ihu kāloti",
-          "bunny": "Ihu lāpaki",
-          "mustache": "ʻUmiʻumi",
-          "monster": "Pena helehelena weliweli",
-          "round-glasses": "Makaaniani poepoe"
-        }
-      },
-      {
         "property": "expression",
         "title": "Helehelena",
         "description": "Ke ʻano o ka helehelena.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Holoholona hānai",
+        "description": "Holoholona hānai ma ka ʻaoʻao o ke kanaka.",
+        "options": {
+          "none": "ʻAʻohe",
+          "cat": "Pōpoki",
+          "dog": "ʻĪlio",
+          "bunny": "Lāpaki",
+          "goldfish": "Iʻa gula",
+          "slime": "Mea pīlali",
+          "squirrel": "ʻIole lāʻau",
+          "dragon": "Kelekona liʻiliʻi",
+          "parrot": "Manu ʻōlelo",
+          "owl": "Pueo",
+          "bat": "ʻŌpeʻapeʻa"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Pāʻālua kiʻi",
+        "description": "E hoʻopili i kahi pāʻālua i mālama ʻia e hana hou i ua kiʻi lā."
+      },
+      {
+        "property": "mask",
+        "title": "Pale maka",
+        "description": "Pale maka i komo ʻia ma ka maka a i ʻole ke poʻo.",
+        "options": {
+          "none": "ʻAʻohe",
+          "lion": "Liona",
+          "plague": "Kauka maʻi ahulau",
+          "theater": "Hale keaka",
+          "pumpkin": "ʻAla",
+          "ghost": "ʻUhane",
+          "mummy": "Mummy",
+          "wrestler": "Uhi maka hākōkō",
+          "block-head": "Poʻo palaka",
+          "web": "Uhi maka pūnāwelewele",
+          "werewolf": "Helehelena ʻīlio hae kanaka",
+          "shadow": "Helehelena aka"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Hoʻonani maka",
+        "description": "Kala maka a i ʻole lipstick.",
+        "options": {
+          "none": "ʻAʻohe",
+          "red-lipstick": "Lipstick ʻulaʻula",
+          "pink-lipstick": "Lipstick ʻākala",
+          "berry-lipstick": "Lipstick berry",
+          "clown": "Kala maka clown",
+          "fangs": "Niho ʻoi",
+          "skull": "Pena iwi poʻo",
+          "zombie": "Pena zombie",
+          "red-nose": "ʻAhuʻaha ʻulaʻula",
+          "white-beard": "Umauma keʻokeʻo",
+          "domino": "Pale maka koa",
+          "carrot": "Ihu kāloti",
+          "bunny": "Ihu lāpaki",
+          "mustache": "ʻUmiʻumi",
+          "monster": "Pena helehelena weliweli",
+          "round-glasses": "Makaaniani poepoe"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Kikokiko hae",
         "description": "A hiki i 4 mau hua e hōʻike ʻia ana ma ka hae."
@@ -310,24 +330,6 @@
           "skates": "Kāmaʻa paheʻe",
           "skateboard": "Papa paheʻe",
           "hoverboard": "Papa lele"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Holoholona hānai",
-        "description": "Holoholona hānai ma ka ʻaoʻao o ke kanaka.",
-        "options": {
-          "none": "ʻAʻohe",
-          "cat": "Pōpoki",
-          "dog": "ʻĪlio",
-          "bunny": "Lāpaki",
-          "goldfish": "Iʻa gula",
-          "slime": "Mea pīlali",
-          "squirrel": "ʻIole lāʻau",
-          "dragon": "Kelekona liʻiliʻi",
-          "parrot": "Manu ʻōlelo",
-          "owl": "Pueo",
-          "bat": "ʻŌpeʻapeʻa"
         }
       },
       {

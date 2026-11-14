@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "진행률 도넛",
-    "description": "진행률 도넛"
+    "description": "전체 대비 진행 상황을 보여 주는 도넛 차트."
   },
   "settings": {
     "configure": [
@@ -26,11 +26,6 @@
         "description": "이미지의 대체 텍스트."
       },
       {
-        "property": "animated",
-        "title": "애니메이션",
-        "description": "처음 로드할 때 진행률 애니메이션 여부"
-      },
-      {
         "property": "complete",
         "title": "완료",
         "description": "완료된 값의 배열."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "합계",
         "description": "모든 항목이 완료되었을 때의 합계."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "애니메이션",
+        "description": "처음 로드할 때 진행률 애니메이션 여부"
       },
       {
         "property": "startAngle",

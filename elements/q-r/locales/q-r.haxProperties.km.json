@@ -14,16 +14,6 @@
         "property": "title",
         "title": "ចំណងជើងជំនួស",
         "description": "ចំណងជើងជំនួសដែលភ្ជាប់ទៅប្រភពកូដ QR។"
-      },
-      {
-        "property": "modulesize",
-        "title": "ទំហំ",
-        "description": "ទំហំកូដ QR។"
-      },
-      {
-        "property": "margin",
-        "title": "គម្លាត",
-        "description": "គែមព័ទ្ធជុំវិញកូដ។"
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "ទំហំ",
+        "description": "ទំហំកូដ QR។"
+      },
+      {
+        "property": "margin",
+        "title": "គម្លាត",
+        "description": "គែមព័ទ្ធជុំវិញកូដ។"
       }
     ]
   }

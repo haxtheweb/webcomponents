@@ -11,9 +11,9 @@
     "accent": true
   },
   "gizmo": {
-    "title": "Tagging Question",
+    "title": "Tagging question",
     "description": "Select tags to answer the question.",
-    "icon": "icons:line-style",
+    "icon": "icons:loyalty",
     "color": "purple",
     "tags": ["Instructional", "self check", "assessment", "tag"],
     "handles": [],
@@ -29,24 +29,7 @@
         "description": "Question for users to respond to.",
         "inputMethod": "textfield"
       },
-      {
-        "property": "gradingFormat",
-        "title": "Grading format",
-        "description": "OER Schema: grading format for this assessment (e.g. points, letter, percent, completion).",
-        "inputMethod": "textfield"
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Learning objective",
-        "description": "OER Schema: learning objective associated with this assessment.",
-        "inputMethod": "textfield"
-      },
-      {
-        "property": "forCourse",
-        "title": "Course",
-        "description": "OER Schema: course this assessment is intended for.",
-        "inputMethod": "textfield"
-      },
+
       {
         "property": "answers",
         "title": "Answers",
@@ -83,6 +66,18 @@
         "title": "Start collapsed",
         "description": "When collapsible, start as a closed row that shows only the question and its status.",
         "inputMethod": "boolean"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Grading format",
+        "description": "OER Schema: grading format for this assessment (e.g. points, letter, percent, completion).",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Learning objective",
+        "description": "OER Schema: learning objective associated with this assessment.",
+        "inputMethod": "textfield"
       }
     ],
     "developer": [
@@ -90,6 +85,12 @@
         "property": "quizName",
         "title": "Name of the quiz",
         "description": "Quiz name used for xAPI identification in analytics systems.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "forCourse",
+        "title": "Course",
+        "description": "OER Schema: course this assessment is intended for.",
         "inputMethod": "textfield"
       }
     ]

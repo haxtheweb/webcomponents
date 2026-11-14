@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Ffynhonnell y Ddelwedd",
         "description": "Ffeil delwedd a ddefnyddir ar gyfer y cerdyn. Yn diystyru Allweddair y Ddelwedd."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Allweddair y Ddelwedd",
+        "description": "Allweddair ar gyfer delwedd ar hap. Caiff ei ddiystyru gan Ffynhonnell y Ddelwedd."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Amcan Dysgu",
         "description": "OER Schema: ID neu URL yr amcan dysgu y mae'r ymarfer hwn yn ei gefnogi."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Allweddair y Ddelwedd",
-        "description": "Allweddair ar gyfer delwedd ar hap. Caiff ei ddiystyru gan Ffynhonnell y Ddelwedd."
       }
     ]
   }

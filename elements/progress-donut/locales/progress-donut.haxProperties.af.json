@@ -26,11 +26,6 @@
         "description": "Alt-teks vir prent."
       },
       {
-        "property": "animated",
-        "title": "Geanimeer",
-        "description": "Of vordering by eerste laai animeer"
-      },
-      {
         "property": "complete",
         "title": "Voltooi",
         "description": "'n Skikking van voltooide waardes."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "Totaal",
         "description": "Totaal wanneer alle items voltooi is."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "Geanimeer",
+        "description": "Of vordering by eerste laai animeer"
       },
       {
         "property": "startAngle",

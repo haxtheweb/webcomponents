@@ -21,15 +21,6 @@
         "description": "Tsiku lomwe gwero linapezeka."
       },
       {
-        "property": "scope",
-        "title": "Malire",
-        "description": "Malire a chinthu choti chigwidwe.",
-        "options": {
-          "sibling": "Chinthu chapafupi",
-          "parent": "Chinthu cha kholo"
-        }
-      },
-      {
         "property": "license",
         "title": "Layisensi",
         "description": "Chilolezo cha ntchito yogwidwa."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Wopanga",
         "description": "Wopanga kapena mwini wa ntchito yogwidwa."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Malire",
+        "description": "Malire a chinthu choti chigwidwe.",
+        "options": {
+          "sibling": "Chinthu chapafupi",
+          "parent": "Chinthu cha kholo"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "Mtundu wa OER Schema",

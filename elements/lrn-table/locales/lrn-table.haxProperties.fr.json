@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Tableau CSV",
-    "description": "Permet de générer un tableau à partir d'un fichier CSV, où qu'il se trouve."
+    "description": "Affiche un fichier CSV sous forme de tableau accessible."
   },
   "settings": {
     "configure": [

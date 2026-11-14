@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "フィルターを許可",
         "description": "列の値で絞り込めるようにします。"
-      },
-      {
-        "property": "numericStyles",
-        "title": "数値スタイル",
-        "description": "数値列に数値用のスタイルを適用します。"
-      },
-      {
-        "property": "responsive",
-        "title": "レスポンシブ",
-        "description": "小さい画面で表のレイアウトを調整します。"
-      },
-      {
-        "property": "rubricMode",
-        "title": "ルーブリックモード",
-        "description": "この表をOER SchemaのRubricとして解釈し、Rubric、RubricScale、RubricCriterion、RubricLevelのメタデータを出力します。"
-      },
-      {
-        "property": "rubricType",
-        "title": "ルーブリックの種類",
-        "description": "oer:rubricType として出力されるルーブリックの形式（ルーブリックモードがオンの場合のみ有効）。",
-        "options": {
-          "": "（なし）",
-          "analytic": "分析的",
-          "holistic": "全体的",
-          "single-point": "シングルポイント",
-          "checklist": "チェックリスト"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "印刷ボタン",
         "description": "表だけを印刷するボタンを追加します。"
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "数値スタイル",
+        "description": "数値列に数値用のスタイルを適用します。"
+      },
+      {
+        "property": "responsive",
+        "title": "レスポンシブ",
+        "description": "小さい画面で表のレイアウトを調整します。"
+      },
+      {
+        "property": "rubricMode",
+        "title": "ルーブリックモード",
+        "description": "この表をOER SchemaのRubricとして解釈し、Rubric、RubricScale、RubricCriterion、RubricLevelのメタデータを出力します。"
+      },
+      {
+        "property": "rubricType",
+        "title": "ルーブリックの種類",
+        "description": "oer:rubricType として出力されるルーブリックの形式（ルーブリックモードがオンの場合のみ有効）。",
+        "options": {
+          "": "（なし）",
+          "analytic": "分析的",
+          "holistic": "全体的",
+          "single-point": "シングルポイント",
+          "checklist": "チェックリスト"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "CSVデータ",
         "description": "アップロードしたCSVファイルから表を作成します。"
       }
-    ]
+    ],
+    "developer": []
   }
 }

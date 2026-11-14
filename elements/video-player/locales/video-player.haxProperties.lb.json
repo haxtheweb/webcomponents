@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Posterbild",
         "description": "URL vum Posterbild."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Textspueren",
         "description": "Ënnertitelen, Beschreiwungen an aner Textspuere fir de Video."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Startzäit",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Audiobeschreiwungsspuer",
         "description": "URL vun enger Audiobeschreiwungsspuer (MP3-Datei), déi visuell Elementer beschreift."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akzentfaarf",
+        "description": "(veraalt) Wielt d'Akzentfaarf fir de Player."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Sprooch",
         "description": "Sprooch vum Medium."
-      },
-      {
-        "property": "accentColor",
-        "title": "Akzentfaarf",
-        "description": "(veraalt) Wielt d'Akzentfaarf fir de Player."
       }
     ]
   }

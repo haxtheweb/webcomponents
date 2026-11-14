@@ -14,16 +14,6 @@
         "property": "title",
         "title": "Mumwe musoro",
         "description": "Mumwe musoro wakabatanidzwa nekwakabva QR kodhi."
-      },
-      {
-        "property": "modulesize",
-        "title": "Saizi",
-        "description": "Saizi yeQR kodhi."
-      },
-      {
-        "property": "margin",
-        "title": "Muganhu wekunze",
-        "description": "Nzvimbo yakatenderedza kodhi."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "Saizi",
+        "description": "Saizi yeQR kodhi."
+      },
+      {
+        "property": "margin",
+        "title": "Muganhu wekunze",
+        "description": "Nzvimbo yakatenderedza kodhi."
       }
     ]
   }

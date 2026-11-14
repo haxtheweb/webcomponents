@@ -9,7 +9,9 @@
         "property": "source",
         "title": "URL zdroje",
         "description": "URL zdroje."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Výška",

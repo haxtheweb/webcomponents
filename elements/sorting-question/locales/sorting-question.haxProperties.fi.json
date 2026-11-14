@@ -11,31 +11,9 @@
         "description": "Kysymyksen otsikko."
       },
       {
-        "property": "gradingFormat",
-        "title": "Arvostelumuoto",
-        "description": "OER Schema: tämän arvioinnin arvostelumuoto (esim. pisteet, kirjain, prosentti, suoritus)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Oppimistavoite",
-        "description": "OER Schema: tähän arviointiin liittyvä oppimistavoite."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kurssi",
-        "description": "OER Schema: kurssi, jolle tämä arviointi on tarkoitettu."
-      },
-      {
         "property": "answers",
         "title": "Vastaukset",
         "description": "Vastausten järjestys määrittää oikean järjestyksen."
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Tietovisan nimi",
-        "description": "Tietovisan nimi, jota käytetään xAPI-tunnistukseen analytiikkajärjestelmissä."
       }
     ],
     "advanced": [
@@ -48,6 +26,28 @@
         "property": "collapsed",
         "title": "Aloita kutistettuna",
         "description": "Kun kutistettava, kysymys alkaa suljettuna rivinä, jossa näkyy vain kysymys ja sen tila."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Arvostelumuoto",
+        "description": "OER Schema: tämän arvioinnin arvostelumuoto (esim. pisteet, kirjain, prosentti, suoritus)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Oppimistavoite",
+        "description": "OER Schema: tähän arviointiin liittyvä oppimistavoite."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Tietovisan nimi",
+        "description": "Tietovisan nimi, jota käytetään xAPI-tunnistukseen analytiikkajärjestelmissä."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurssi",
+        "description": "OER Schema: kurssi, jolle tämä arviointi on tarkoitettu."
       }
     ]
   }

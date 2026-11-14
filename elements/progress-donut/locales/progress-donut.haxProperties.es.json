@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Dona de progreso",
-    "description": "Dona de progresión"
+    "description": "Un gráfico de anillo que muestra el progreso hacia un total."
   },
   "settings": {
     "configure": [
@@ -26,11 +26,6 @@
         "description": "Texto alternativo de la imagen."
       },
       {
-        "property": "animated",
-        "title": "Animado",
-        "description": "Si el progreso se anima en la primera carga"
-      },
-      {
         "property": "complete",
         "title": "Completado",
         "description": "Una matriz de valores completados."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "Total",
         "description": "Total cuando todos los elementos están completados."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "Animado",
+        "description": "Si el progreso se anima en la primera carga"
       },
       {
         "property": "startAngle",

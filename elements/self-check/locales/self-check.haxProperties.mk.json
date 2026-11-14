@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Самопроверка",
-    "description": "Корисниците можат да направат самопроверка."
+    "description": "Прашање со скриен одговор што ученикот го открива за да се провери."
   },
   "settings": {
     "configure": [
@@ -27,6 +27,13 @@
       {
         "slot": "",
         "title": "Одговор"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Врска за повеќе",
+        "description": "Врска до дополнителни информации."
       },
       {
         "property": "hasLearningObjective",
@@ -37,13 +44,6 @@
         "property": "assessing",
         "title": "Оценува",
         "description": "Референца за активноста емитувана како oer:assessing."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "link",
-        "title": "Врска за повеќе",
-        "description": "Врска до дополнителни информации."
       }
     ]
   }

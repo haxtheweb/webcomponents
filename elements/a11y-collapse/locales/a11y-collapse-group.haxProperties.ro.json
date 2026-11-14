@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "Grup extindere/restrângere",
-    "description": "Un grup de elemente care se pot extinde și restrânge."
+    "title": "Grup restrângibil",
+    "description": "Un grup de containere restrângibile."
   },
   "settings": {
     "configure": [

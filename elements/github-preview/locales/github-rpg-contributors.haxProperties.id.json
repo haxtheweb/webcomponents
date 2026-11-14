@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Daftar kontributor GitHub",
-    "description": "Ditampilkan sebagai karakter RPG menggunakan API GitHub."
+    "description": "Menampilkan kontributor repositori sebagai karakter RPG."
   },
   "settings": {
     "configure": [

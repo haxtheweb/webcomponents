@@ -9,7 +9,9 @@
         "property": "source",
         "title": "Tilfeingis-URL",
         "description": "Tilfeingis-URL."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Hædd",

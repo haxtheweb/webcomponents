@@ -11,11 +11,6 @@
         "description": "Erayga loo isticmaalo samaynta jilaa aan kala horrayn."
       },
       {
-        "property": "code",
-        "title": "Koodhka jilaha",
-        "description": "Ku dheji kood la keydiyay si aad dib ugu abuurto jilahaas."
-      },
-      {
         "property": "hat",
         "title": "Koofiyad",
         "description": "Qaabka koofiyadda.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Maaskaro",
-        "description": "Maaskaro wajiga ama madaxa lagu xidho.",
-        "options": {
-          "none": "Midna",
-          "lion": "Libaax",
-          "plague": "Dhakhtarka daacuunka",
-          "theater": "Masrax",
-          "pumpkin": "Bambooyin",
-          "ghost": "Jinni",
-          "mummy": "Mummy",
-          "wrestler": "Waji-xidh legdan",
-          "block-head": "Madax bloog",
-          "web": "Waji-xidh shabakad",
-          "werewolf": "Wejiga yeey-nin",
-          "shadow": "Weji hadh leh"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Qurxin",
-        "description": "Rinji wajiga ama lipstik.",
-        "options": {
-          "none": "Midna",
-          "red-lipstick": "Lipstik cas",
-          "pink-lipstick": "Lipstik pink",
-          "berry-lipstick": "Lipstik berry",
-          "clown": "Rinjiga clown-ka",
-          "fangs": "Ilko dheer",
-          "skull": "Rinjiga lafdhabarka",
-          "zombie": "Rinjiga zombie",
-          "red-nose": "Sanka cas",
-          "white-beard": "Gadh cadaan",
-          "domino": "Maaskarada halyeeyga",
-          "carrot": "Sanka karootada",
-          "bunny": "Sanka bakayle",
-          "mustache": "Shaarubo",
-          "monster": "Rinjiga wejiga bahalka",
-          "round-glasses": "Muraayado wareeg ah"
-        }
-      },
-      {
         "property": "expression",
         "title": "Muuqaal",
         "description": "Muuqaalka wejiga.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Xayawaan guri",
+        "description": "Xayawaan guri oo ag taagan jilaaga.",
+        "options": {
+          "none": "Midna",
+          "cat": "Bisad",
+          "dog": "Eey",
+          "bunny": "Bakayle",
+          "goldfish": "Kalluun dahab",
+          "slime": "Dheecaan",
+          "squirrel": "Dabagaalle",
+          "dragon": "Masduulaa yar",
+          "parrot": "Baqbaqaa",
+          "owl": "Guumays",
+          "bat": "Fiidmeer"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Koodhka jilaha",
+        "description": "Ku dheji kood la keydiyay si aad dib ugu abuurto jilahaas."
+      },
+      {
+        "property": "mask",
+        "title": "Maaskaro",
+        "description": "Maaskaro wajiga ama madaxa lagu xidho.",
+        "options": {
+          "none": "Midna",
+          "lion": "Libaax",
+          "plague": "Dhakhtarka daacuunka",
+          "theater": "Masrax",
+          "pumpkin": "Bambooyin",
+          "ghost": "Jinni",
+          "mummy": "Mummy",
+          "wrestler": "Waji-xidh legdan",
+          "block-head": "Madax bloog",
+          "web": "Waji-xidh shabakad",
+          "werewolf": "Wejiga yeey-nin",
+          "shadow": "Weji hadh leh"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Qurxin",
+        "description": "Rinji wajiga ama lipstik.",
+        "options": {
+          "none": "Midna",
+          "red-lipstick": "Lipstik cas",
+          "pink-lipstick": "Lipstik pink",
+          "berry-lipstick": "Lipstik berry",
+          "clown": "Rinjiga clown-ka",
+          "fangs": "Ilko dheer",
+          "skull": "Rinjiga lafdhabarka",
+          "zombie": "Rinjiga zombie",
+          "red-nose": "Sanka cas",
+          "white-beard": "Gadh cadaan",
+          "domino": "Maaskarada halyeeyga",
+          "carrot": "Sanka karootada",
+          "bunny": "Sanka bakayle",
+          "mustache": "Shaarubo",
+          "monster": "Rinjiga wejiga bahalka",
+          "round-glasses": "Muraayado wareeg ah"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Qoraalka calanka",
         "description": "Ilaa 4 xaraf ayaa lagu muujiyaa calanka."
@@ -310,24 +330,6 @@
           "skates": "Isbaarooyin",
           "skateboard": "Skateboard",
           "hoverboard": "Loox duula"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Xayawaan guri",
-        "description": "Xayawaan guri oo ag taagan jilaaga.",
-        "options": {
-          "none": "Midna",
-          "cat": "Bisad",
-          "dog": "Eey",
-          "bunny": "Bakayle",
-          "goldfish": "Kalluun dahab",
-          "slime": "Dheecaan",
-          "squirrel": "Dabagaalle",
-          "dragon": "Masduulaa yar",
-          "parrot": "Baqbaqaa",
-          "owl": "Guumays",
-          "bat": "Fiidmeer"
         }
       },
       {

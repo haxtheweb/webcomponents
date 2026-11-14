@@ -4,7 +4,7 @@
     "description": "Pehẽ oku'éva ohechaukáva kuatiarogue ko'ag̃agua ra'y"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "Tape oku'éva",
@@ -14,7 +14,9 @@
           "parent": "Túva ra'ykuéra",
           "ancestor": "Opaite ra'y ypy yvatevévagui"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "Ñepyrũ rupa"

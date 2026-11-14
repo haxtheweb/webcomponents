@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "Povezava HAX",
-    "description": "Povezava do določenega vira na spletnem mestu, na katerem delate."
+    "title": "Povezava do strani",
+    "description": "Povezava do strani spletnega mesta, na katerem delate."
   },
   "settings": {
     "configure": [

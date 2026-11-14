@@ -347,71 +347,8 @@ class PlaceHolder extends I18NMixin(DDD) {
    * HAX
    */
   static get haxProperties() {
-    return {
-      canScale: false,
-      canEditSource: false,
-      gizmo: {
-        title: "Placeholder",
-        description:
-          "A place holder that can be converted into the media type that's been selected",
-        icon: "hax:placeholder-image",
-        color: "grey",
-        tags: [
-          "Text",
-          "development",
-          "authoring",
-          "media",
-          "image",
-          "video",
-          "audio",
-          "document",
-          "math",
-          "text",
-        ],
-        handles: [],
-        meta: {
-          author: "HAXTheWeb core team",
-        },
-      },
-      settings: {
-        configure: [
-          {
-            property: "type",
-            title: "Type",
-            description: "Type of gizmo that this accepts for replacement.",
-            inputMethod: "select",
-            options: {
-              text: "Text / content",
-              document: "Document / file",
-              audio: "Audio",
-              video: "Video",
-              image: "Image",
-              math: "Math",
-            },
-          },
-          {
-            property: "text",
-            title: "Text",
-            description: "Identify the place holder desired in greater detail",
-            inputMethod: "textfield",
-          },
-        ],
-        advanced: [],
-      },
-      saveOptions: {
-        unsetAttributes: ["icon-from-type", "calc-text", "colors"],
-        wipeSlot: true,
-      },
-      demoSchema: [
-        {
-          tag: "place-holder",
-          properties: {
-            type: "image",
-          },
-          content: "",
-        },
-      ],
-    };
+    return new URL("./lib/place-holder.haxProperties.json", import.meta.url)
+      .href;
   }
 }
 globalThis.customElements.define(PlaceHolder.tag, PlaceHolder);

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Käsitejuoksupeli",
-    "description": "Sivulle vieritettävä peli. Hahmo juoksee tulessa eikä pysähdy koskaan. Hyppää napataksesi hyvät käsitteet ja ylittääksesi huonot, ja katso sitten yhteenveto siitä, mikä oli hyvää ja mikä huonoa."
+    "description": "Sivuttain vierivä peli: hyppää napataksesi oikeat käsitteet ja väistääksesi väärät."
   },
   "settings": {
     "configure": [
@@ -89,7 +89,9 @@
         "property": "gameTitle",
         "title": "Pelin nimi",
         "description": "Nimeää tämän pelin edistymistapahtumissa ja OER Schema -merkinnöissä."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Pelin tunnus",

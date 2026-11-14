@@ -14,16 +14,6 @@
         "property": "title",
         "title": "Альтернативдик аталыш",
         "description": "QR код булагына байланган альтернативдик аталыш."
-      },
-      {
-        "property": "modulesize",
-        "title": "Өлчөм",
-        "description": "QR коддун өлчөмү."
-      },
-      {
-        "property": "margin",
-        "title": "Чет",
-        "description": "Коддун айланасындагы боштук."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "Өлчөм",
+        "description": "QR коддун өлчөмү."
+      },
+      {
+        "property": "margin",
+        "title": "Чет",
+        "description": "Коддун айланасындагы боштук."
       }
     ]
   }

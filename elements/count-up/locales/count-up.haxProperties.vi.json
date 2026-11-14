@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Văn bản hậu tố",
         "description": "Văn bản hiển thị sau số (ví dụ: '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Khe tiền tố",
-        "description": "Nội dung khe tùy chọn trước số."
-      },
-      {
-        "slot": "suffix",
-        "title": "Khe hậu tố",
-        "description": "Nội dung khe tùy chọn sau số."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Không giảm tốc",
         "description": "Tắt hiệu ứng giảm tốc để số đếm tăng tuyến tính."
+      },
+      {
+        "slot": "prefix",
+        "title": "Khe tiền tố",
+        "description": "Nội dung khe tùy chọn trước số."
+      },
+      {
+        "slot": "suffix",
+        "title": "Khe hậu tố",
+        "description": "Nội dung khe tùy chọn sau số."
       }
     ]
   }

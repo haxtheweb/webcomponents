@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Поничка на напредъка",
-    "description": "Поничка за напредък"
+    "description": "Пръстеновидна диаграма, показваща напредъка към общ сбор."
   },
   "settings": {
     "configure": [
@@ -26,11 +26,6 @@
         "description": "Алтернативен текст за изображението."
       },
       {
-        "property": "animated",
-        "title": "Анимирано",
-        "description": "Дали напредъкът да се анимира при първото зареждане"
-      },
-      {
         "property": "complete",
         "title": "Завършено",
         "description": "Масив от завършени стойности."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "Общо",
         "description": "Общо, когато всички елементи са завършени."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "Анимирано",
+        "description": "Дали напредъкът да се анимира при първото зареждане"
       },
       {
         "property": "startAngle",

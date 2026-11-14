@@ -9,7 +9,9 @@
         "slot": "",
         "title": "Mga sipi",
         "description": "Mga item ng sipi sa bibliograpiyang ito"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "Kurso",

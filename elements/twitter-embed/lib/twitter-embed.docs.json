@@ -4,11 +4,11 @@
   "package": "@haxtheweb/twitter-embed",
   "version": "26.8.0",
   "license": "Apache-2.0",
-  "title": "Twitter (X) embed",
+  "title": "X (Twitter)",
   "description": "Embed a tweet from X in context.",
   "icon": "hax:twitter",
   "tags": [
-    "Other",
+    "Media",
     "social media",
     "twitter",
     "embed",
@@ -84,12 +84,12 @@
     "canEditSource": true,
     "designSystem": false,
     "gizmo": {
-      "title": "Twitter (X) embed",
+      "title": "X (Twitter)",
       "description": "Embed a tweet from X in context.",
       "icon": "hax:twitter",
       "color": "blue",
       "tags": [
-        "Other",
+        "Media",
         "social media",
         "twitter",
         "embed",

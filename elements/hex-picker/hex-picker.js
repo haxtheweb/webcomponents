@@ -13,59 +13,6 @@ import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
  * @element hex-picker
  */
 class HexPicker extends I18NMixin(LitElement) {
-  static get haxProperties() {
-    return {
-      canScale: false,
-
-      canEditSource: true,
-      gizmo: {
-        title: "Hex Picker",
-        description: "Hexcode color picker",
-        icon: "image:colorize",
-        color: "grey",
-        tags: ["Other", "dev", "developer"],
-        handles: [],
-        meta: {
-          author: "collinkleest",
-          owner: "The Pennsylvania State University",
-        },
-      },
-      settings: {
-        configure: [
-          {
-            property: "value",
-            title: "Value",
-            description: "Default hex value",
-            inputMethod: "textfield",
-          },
-          {
-            property: "disabled",
-            title: "Disabled",
-            description: "Disable the text field",
-            inputMethod: "boolean",
-          },
-          {
-            property: "largeDisplay",
-            title: "Large Display",
-            description: "Include color in large display",
-            inputMethod: "boolean",
-          },
-        ],
-        advanced: [],
-      },
-      demoSchema: [
-        {
-          tag: "hex-picker",
-          properties: {
-            org: "haxtheweb",
-            repo: "webcomponents",
-          },
-          content: "",
-        },
-      ],
-    };
-  }
-
   static get properties() {
     return {
       ...super.properties,

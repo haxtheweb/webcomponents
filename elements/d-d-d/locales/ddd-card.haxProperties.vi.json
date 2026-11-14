@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Không có mũi tên",
         "description": "Ẩn mũi tên của nút."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Liên kết: đích",
@@ -54,7 +52,9 @@
           "_top": "Cửa sổ trên cùng - _top",
           "_parent": "Cửa sổ cha - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Liên kết: rel",

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Gra biegowa z pojęciami",
-    "description": "Gra przewijana w bok. Postać biegnie w ogniu i nigdy się nie zatrzymuje. Skacz, aby łapać dobre pojęcia i przeskakiwać złe, a potem zobacz podsumowanie tego, co było dobre, a co złe."
+    "description": "Gra z przewijaniem w bok: skacz, by łapać właściwe pojęcia i omijać błędne."
   },
   "settings": {
     "configure": [
@@ -89,7 +89,9 @@
         "property": "gameTitle",
         "title": "Nazwa gry",
         "description": "Nadaje nazwę tej grze w zdarzeniach postępu i znacznikach OER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Identyfikator gry",

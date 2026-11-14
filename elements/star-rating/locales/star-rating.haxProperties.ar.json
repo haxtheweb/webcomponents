@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "التقييم بالنجوم",
-    "description": "أداة لعرض التقييم أو زر لإجراء التقييم."
+    "description": "اعرض تقييمًا بالنجوم أو دع القراء يختارون تقييمًا."
   },
   "settings": {
     "configure": [
@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "تفاعلي",
         "description": "السماح للمستخدم بالتفاعل لتعيين التقييم."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "وضع مقياس معايير التقييم",

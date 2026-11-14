@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Постер",
         "description": "URL изображения-постера."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Текстовые дорожки",
         "description": "Скрытые субтитры, субтитры, описания и другие текстовые дорожки для видео."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Время начала",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Дорожка аудиоописания",
         "description": "URL дорожки аудиоописания (файл MP3), озвучивающей визуальные элементы."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцентный цвет",
+        "description": "(устарело) Выберите акцентный цвет проигрывателя."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Язык",
         "description": "Язык медиа."
-      },
-      {
-        "property": "accentColor",
-        "title": "Акцентный цвет",
-        "description": "(устарело) Выберите акцентный цвет проигрывателя."
       }
     ]
   }

@@ -9,7 +9,21 @@
         "property": "target",
         "title": "लक्ष्य",
         "description": "गेम बिल्डको पथ।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "क्यानभास चौडाइ",
+        "description": "क्यानभासको CSS चौडाइ (उदाहरणका लागि px वा em)।"
       },
+      {
+        "property": "height",
+        "title": "क्यानभास उचाइ",
+        "description": "क्यानभासको CSS उचाइ (उदाहरणका लागि px वा em)।"
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "कम्प्रेसन विधि",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "उत्पादन संस्करण",
         "description": "रिलिज संस्करण।"
-      },
-      {
-        "property": "width",
-        "title": "क्यानभास चौडाइ",
-        "description": "क्यानभासको CSS चौडाइ (उदाहरणका लागि px वा em)।"
-      },
-      {
-        "property": "height",
-        "title": "क्यानभास उचाइ",
-        "description": "क्यानभासको CSS उचाइ (उदाहरणका लागि px वा em)।"
       },
       {
         "property": "background",

@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Имза",
         "description": "Рәсем өчен язу."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Иллюстрация исеме",
-        "description": "Иллюстрация билгесе өчен исем."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Иллюстрация тасвирламасы",
-        "description": "Иллюстрация билгесе өчен тасвирлама."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Рәсемнең модаль тәрәзәсен сүндерү",
         "description": "Басканда рәсемне карау диалогында ачуны сүндерү."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Иллюстрация исеме",
+        "description": "Иллюстрация билгесе өчен исем."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Иллюстрация тасвирламасы",
+        "description": "Иллюстрация билгесе өчен тасвирлама."
       }
     ],
     "developer": [

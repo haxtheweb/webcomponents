@@ -26,11 +26,6 @@
         "description": "Barreeffama alt suuraaf."
       },
       {
-        "property": "animated",
-        "title": "Animeeshinii qabu",
-        "description": "Tarkaanfiin yeroo fe'iinsa jalqabaa animeeshinii godhuu fi dhiisuu"
-      },
-      {
         "property": "complete",
         "title": "Xumurame",
         "description": "Tarree gatiiwwan xumuramanii."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "Waliigala",
         "description": "Waliigala yeroo wantoonni hundi xumuraman."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "Animeeshinii qabu",
+        "description": "Tarkaanfiin yeroo fe'iinsa jalqabaa animeeshinii godhuu fi dhiisuu"
       },
       {
         "property": "startAngle",

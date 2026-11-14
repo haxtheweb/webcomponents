@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Capsiwn",
         "description": "Capsiwn ar gyfer y ddelwedd."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Teitl y Ffigur",
-        "description": "Teitl ar gyfer label y ffigur."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Disgrifiad y Ffigur",
-        "description": "Disgrifiad ar gyfer label y ffigur."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Analluogi moddol y ddelwedd",
         "description": "Analluogi cliciau sy'n agor y ddelwedd mewn deialog archwilio delweddau."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Teitl y Ffigur",
+        "description": "Teitl ar gyfer label y ffigur."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Disgrifiad y Ffigur",
+        "description": "Disgrifiad ar gyfer label y ffigur."
       }
     ],
     "developer": [

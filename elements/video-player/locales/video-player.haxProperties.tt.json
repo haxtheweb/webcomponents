@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Постер рәсеме",
         "description": "Постер рәсеменең URL'ы."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Текст юллары",
         "description": "Видео өчен яшерен субтитрлар, субтитрлар, тасвирламалар һәм башка текст юллары."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Башлану вакыты",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Аудиотасвирлама юлы",
         "description": "Визуаль элементларны сөйләп бирүче аудиотасвирлама юлының (MP3 файлы) URL'ы."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ассызык төсе",
+        "description": "(искергән) Плеер өчен акцент төсен сайлагыз."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Тел",
         "description": "Медиа теле."
-      },
-      {
-        "property": "accentColor",
-        "title": "Ассызык төсе",
-        "description": "(искергән) Плеер өчен акцент төсен сайлагыз."
       }
     ]
   }

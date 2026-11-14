@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "Botones",
         "description": "Grupo de botones que se muestra debajo del texto."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "Texto del ancla",
         "description": "Etiqueta del ancla que se muestra en la navegación."
       }
-    ]
+    ],
+    "developer": []
   }
 }

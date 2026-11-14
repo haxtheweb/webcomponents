@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Gioco della mappa dei concetti",
-    "description": "Un breve gioco da tastiera. Un personaggio raggiunge ogni concetto su una mappa e questo si spiega da solo. Toccali tutti per i coriandoli e un prompt da copiare."
+    "description": "Un breve gioco da tastiera in cui un personaggio percorre una mappa e ogni concetto si spiega da solo."
   },
   "settings": {
     "configure": [
@@ -86,7 +86,9 @@
         "property": "gameTitle",
         "title": "Nome del gioco",
         "description": "Dà un nome a questo gioco negli eventi di avanzamento e nel markup OER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "ID del gioco",

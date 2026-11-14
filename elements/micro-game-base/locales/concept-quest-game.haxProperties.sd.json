@@ -91,7 +91,9 @@
         "property": "gameTitle",
         "title": "راند جو نالو",
         "description": "هن راند کي ترقي جي واقعن ۽ OER Schema مارڪ اپ ۾ نالو ڏئي ٿو."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "راند جي ID",

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "Ένα μπλοκ περιεχομένου markdown, άμεσα ή με απομακρυσμένη φόρτωση"
+    "description": "Περιεχόμενο Markdown, γραμμένο απευθείας ή φορτωμένο από αρχείο."
   },
   "settings": {
     "configure": [

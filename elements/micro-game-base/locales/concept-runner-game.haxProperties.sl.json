@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Igra teka za pojme",
-    "description": "Igra s stranskim drsenjem. Lik teče v ognju in se nikoli ne ustavi. Skači, da ujameš dobre pojme in preskočiš slabe, nato si oglej povzetek, kaj je bilo dobro in kaj slabo."
+    "description": "Igra s stranskim pomikanjem: skačite, da ujamete prave pojme in se izognete napačnim."
   },
   "settings": {
     "configure": [
@@ -89,7 +89,9 @@
         "property": "gameTitle",
         "title": "Ime igre",
         "description": "Poimenuje to igro v dogodkih napredka in oznakah OER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "ID igre",

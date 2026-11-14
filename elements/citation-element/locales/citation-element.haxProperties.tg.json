@@ -21,15 +21,6 @@
         "description": "Санае, ки ба манбаъ дастрасӣ шуд."
       },
       {
-        "property": "scope",
-        "title": "Доира",
-        "description": "Доираи элемент барои иқтибос.",
-        "options": {
-          "sibling": "Элементи ҳамсоя",
-          "parent": "Элементи волидайн"
-        }
-      },
-      {
         "property": "license",
         "title": "Иҷозатнома",
         "description": "Иҷозатнома барои асари иқтибосшуда."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Эҷодкор",
         "description": "Эҷодкор ё соҳиби асари иқтибосшуда."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Доира",
+        "description": "Доираи элемент барои иқтибос.",
+        "options": {
+          "sibling": "Элементи ҳамсоя",
+          "parent": "Элементи волидайн"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "Навъи OER Schema",

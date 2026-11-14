@@ -382,71 +382,8 @@ class AiUsageLicense extends SchemaBehaviors(I18NMixin(DDDSuper(LitElement))) {
   }
 
   static get haxProperties() {
-    return {
-      canScale: false,
-      canEditSource: true,
-      gizmo: {
-        title: "AI Usage License",
-        description: "Display an AI Usage License (AIUL) badge for your work",
-        icon: "hardware:memory",
-        color: "grey",
-        tags: [
-          "Other",
-          "content",
-          "ai",
-          "license",
-          "aiul",
-          "ai-usage",
-          "attribution",
-        ],
-        handles: [],
-        meta: {
-          author: "HAXTheWeb core team",
-        },
-      },
-      settings: {
-        configure: [
-          {
-            property: "license",
-            title: "License",
-            description:
-              "The AI usage license level for this work. See https://dmd-program.github.io/aiul/ for details.",
-            inputMethod: "select",
-            options: {},
-            icon: "hardware:memory",
-          },
-          {
-            property: "modifier",
-            title: "Media Modifier",
-            description:
-              "Optional media domain modifier. Specifies the type of media this license applies to.",
-            inputMethod: "select",
-            options: {
-              "": "No modifier",
-            },
-            icon: "image:photo",
-          },
-          {
-            property: "uri",
-            title: "AIUL URI (OER Schema)",
-            description:
-              "OER Schema: URI for the AI Usage License reference page. Auto-populated from the license link when not set.",
-            inputMethod: "textfield",
-          },
-        ],
-        advanced: [],
-      },
-      demoSchema: [
-        {
-          tag: "ai-usage-license",
-          properties: {
-            license: "CD",
-            modifier: "IM",
-          },
-          content: "",
-        },
-      ],
-    };
+    return new URL("./lib/ai-usage-license.haxProperties.json", import.meta.url)
+      .href;
   }
 
   /**

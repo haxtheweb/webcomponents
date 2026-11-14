@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "HAX hivatkozás",
-    "description": "Hivatkozás egy adott erőforrásra azon a webhelyen, amelyen dolgozol."
+    "title": "Oldalhivatkozás",
+    "description": "Hivatkozás annak a webhelynek egy oldalára, amelyen dolgozik."
   },
   "settings": {
     "configure": [

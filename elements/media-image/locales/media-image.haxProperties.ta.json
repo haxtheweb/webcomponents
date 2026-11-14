@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "படக்குறிப்பு",
         "description": "படத்திற்கான தலைப்புரை."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "உருவத் தலைப்பு",
-        "description": "உருவ லேபிளுக்கான தலைப்பு."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "உருவ விவரம்",
-        "description": "உருவ லேபிளுக்கான விவரம்."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "பட மோடலை முடக்கு",
         "description": "சொடுக்கினால் படம் பட ஆய்வு உரையாடலில் திறப்பதை முடக்கவும்."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "உருவத் தலைப்பு",
+        "description": "உருவ லேபிளுக்கான தலைப்பு."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "உருவ விவரம்",
+        "description": "உருவ லேபிளுக்கான விவரம்."
       }
     ],
     "developer": [

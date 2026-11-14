@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "Laajennettava ryhmä",
-    "description": "Ryhmä laajennettavia ja tiivistettäviä elementtejä."
+    "title": "Tiivistettävä ryhmä",
+    "description": "Ryhmä tiivistettäviä säiliöitä."
   },
   "settings": {
     "configure": [

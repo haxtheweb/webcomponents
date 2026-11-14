@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Максат",
         "description": "Уен җыелмасына юл."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Киндер киңлеге",
+        "description": "Киндернең CSS киңлеге (мәсәлән, px яки em)."
       },
+      {
+        "property": "height",
+        "title": "Киндер биеклеге",
+        "description": "Киндернең CSS биеклеге (мәсәлән, px яки em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Кысу ысулы",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Продукт версиясе",
         "description": "Чыгарылыш версиясе."
-      },
-      {
-        "property": "width",
-        "title": "Киндер киңлеге",
-        "description": "Киндернең CSS киңлеге (мәсәлән, px яки em)."
-      },
-      {
-        "property": "height",
-        "title": "Киндер биеклеге",
-        "description": "Киндернең CSS биеклеге (мәсәлән, px яки em)."
       },
       {
         "property": "background",

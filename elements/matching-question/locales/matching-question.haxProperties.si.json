@@ -11,30 +11,8 @@
         "description": "පරිශීලකයින් සඳහා ප්‍රශ්නය. දැමීමේ ඉලක්ක සලකුණු කර, ඊළඟ ඉලක්කය දක්වා පිළිතුරු ලැයිස්තුගත කරන්න."
       },
       {
-        "property": "gradingFormat",
-        "title": "ශ්‍රේණිගත කිරීමේ ආකෘතිය",
-        "description": "OER Schema: මෙම තක්සේරුව සඳහා ශ්‍රේණිගත කිරීමේ ආකෘතිය (උදා. ලකුණු, අකුරු ශ්‍රේණිය, ප්‍රතිශතය, සම්පූර්ණ කිරීම)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "ඉගෙනුම් අරමුණ",
-        "description": "OER Schema: මෙම තක්සේරුවට සම්බන්ධ ඉගෙනුම් අරමුණ."
-      },
-      {
-        "property": "forCourse",
-        "title": "පාඨමාලාව",
-        "description": "OER Schema: මෙම තක්සේරුව අදහස් කරන පාඨමාලාව."
-      },
-      {
         "property": "answers",
         "title": "පිළිතුරු"
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "ප්‍රශ්නාවලියේ නම",
-        "description": "විශ්ලේෂණ පද්ධතිවල xAPI හඳුනා ගැනීම සඳහා භාවිත ප්‍රශ්නාවලි නම."
       }
     ],
     "advanced": [
@@ -47,6 +25,28 @@
         "property": "collapsed",
         "title": "හකුළා ආරම්භ කරන්න",
         "description": "හකුළුවිය හැකි විට, ප්‍රශ්නය සහ එහි තත්ත්වය පමණක් පෙන්වන වැසූ පේළියක් ලෙස ආරම්භ කරන්න."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "ශ්‍රේණිගත කිරීමේ ආකෘතිය",
+        "description": "OER Schema: මෙම තක්සේරුව සඳහා ශ්‍රේණිගත කිරීමේ ආකෘතිය (උදා. ලකුණු, අකුරු ශ්‍රේණිය, ප්‍රතිශතය, සම්පූර්ණ කිරීම)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "ඉගෙනුම් අරමුණ",
+        "description": "OER Schema: මෙම තක්සේරුවට සම්බන්ධ ඉගෙනුම් අරමුණ."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "ප්‍රශ්නාවලියේ නම",
+        "description": "විශ්ලේෂණ පද්ධතිවල xAPI හඳුනා ගැනීම සඳහා භාවිත ප්‍රශ්නාවලි නම."
+      },
+      {
+        "property": "forCourse",
+        "title": "පාඨමාලාව",
+        "description": "OER Schema: මෙම තක්සේරුව අදහස් කරන පාඨමාලාව."
       }
     ]
   }

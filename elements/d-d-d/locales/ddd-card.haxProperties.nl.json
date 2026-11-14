@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Geen pijl",
         "description": "Verberg de pijl op de knop."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Link: doel",
@@ -54,7 +52,9 @@
           "_top": "Bovenste venster - _top",
           "_parent": "Bovenliggend venster - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Link: rel",

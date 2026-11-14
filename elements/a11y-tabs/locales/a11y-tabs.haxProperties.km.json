@@ -11,20 +11,17 @@
         "description": "ស្លាកដែលអាចចូលប្រើបានសម្រាប់សំណុំផ្ទាំង។"
       },
       {
-        "property": "disabled",
-        "title": "បានបិទ",
-        "description": "បិទផ្ទាំងទាំងអស់។"
-      },
-      {
-        "property": "hidden",
-        "title": "លាក់",
-        "description": "លាក់សំណុំផ្ទាំង។"
-      },
-      {
         "property": "sticky",
         "title": "ខ្ទាស់",
         "description": "រក្សាផ្ទាំងផ្តេកនៅខាងលើពេលរំកិល។"
       },
+      {
+        "slot": "",
+        "title": "ផ្ទាំង",
+        "description": "ស៊េរីនៃធាតុ <a11y-tab/>។"
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "ចំណុចបំបែកប្លង់",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "ចំណុចបំបែករូបតំណាង",
         "description": "ចំណុចបំបែកសម្រាប់បង្ហាញអត្ថបទជាមួយរូបតំណាង។ លំនាំដើមគឺ 0; ប្រើ -1 សម្រាប់របៀបតែរូបតំណាង។"
-      },
-      {
-        "slot": "",
-        "title": "ផ្ទាំង",
-        "description": "ស៊េរីនៃធាតុ <a11y-tab/>។"
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "បានបិទ",
+        "description": "បិទផ្ទាំងទាំងអស់។"
+      },
+      {
+        "property": "hidden",
+        "title": "លាក់",
+        "description": "លាក់សំណុំផ្ទាំង។"
+      },
       {
         "property": "id",
         "title": "ID តែមួយគត់",

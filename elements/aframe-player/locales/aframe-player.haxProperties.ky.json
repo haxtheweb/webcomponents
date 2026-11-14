@@ -11,6 +11,13 @@
         "description": "Бул AR файлынын URL дареги."
       },
       {
+        "property": "skyColor",
+        "title": "Асмандын түсү",
+        "description": "Сахнадагы асмандын түсүн тандаңыз."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "Элементтин AR ичиндеги X абалы."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "Элементтин AR ичиндеги Z абалы."
-      },
-      {
-        "property": "skyColor",
-        "title": "Асмандын түсү",
-        "description": "Сахнадагы асмандын түсүн тандаңыз."
       }
     ]
   }

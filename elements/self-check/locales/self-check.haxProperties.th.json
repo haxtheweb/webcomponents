@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "ตรวจสอบตนเอง",
-    "description": "ผู้ใช้สามารถทำแบบตรวจสอบตนเองได้"
+    "description": "คำถามที่มีคำตอบซ่อนอยู่ ซึ่งผู้เรียนเปิดดูเพื่อตรวจสอบตนเอง"
   },
   "settings": {
     "configure": [
@@ -27,6 +27,13 @@
       {
         "slot": "",
         "title": "คำตอบ"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "ลิงก์เพิ่มเติม",
+        "description": "ลิงก์ไปยังข้อมูลเพิ่มเติม"
       },
       {
         "property": "hasLearningObjective",
@@ -37,13 +44,6 @@
         "property": "assessing",
         "title": "สิ่งที่ประเมิน",
         "description": "การอ้างอิงกิจกรรมที่สร้างเป็น oer:assessing"
-      }
-    ],
-    "advanced": [
-      {
-        "property": "link",
-        "title": "ลิงก์เพิ่มเติม",
-        "description": "ลิงก์ไปยังข้อมูลเพิ่มเติม"
       }
     ]
   }

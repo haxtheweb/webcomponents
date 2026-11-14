@@ -13,7 +13,7 @@
     "mathjax",
     "mathml",
     "latex",
-    "mathml"
+    "equation"
   ],
   "haxCapable": true,
   "import": "@haxtheweb/lrn-math/lrn-math.js",
@@ -45,7 +45,7 @@
         "mathjax",
         "mathml",
         "latex",
-        "mathml"
+        "equation"
       ],
       "handles": [
         {

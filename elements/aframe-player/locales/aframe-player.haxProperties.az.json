@@ -11,6 +11,13 @@
         "description": "Bu AR faylının URL-i."
       },
       {
+        "property": "skyColor",
+        "title": "Səmanın rəngi",
+        "description": "Səhnədəki səmanın rəngini seçin."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "Elementin AR-də X mövqeyi."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "Elementin AR-də Z mövqeyi."
-      },
-      {
-        "property": "skyColor",
-        "title": "Səmanın rəngi",
-        "description": "Səhnədəki səmanın rəngini seçin."
       }
     ]
   }

@@ -18,7 +18,7 @@
   "import": "@haxtheweb/code-sample/code-sample.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/code-sample/code-sample.js",
   "install": "npm i @haxtheweb/code-sample",
-  "demoHtml": "<code-sample type=\"javascript\" copy-clipboard-button>\n  <template preserve-content=\"preserve-content\">const great = \"example\";\n  const great = \"example\";\n  const great = \"example\";</template>\n</code-sample>",
+  "demoHtml": "<code-sample type=\"javascript\" copy-clipboard-button>\n  <template preserve-content=\"preserve-content\">const a = 2;\n  const b = 3;\n  const sum = a + b;</template>\n</code-sample>",
   "attributes": [
     {
       "name": "edit-mode",
@@ -167,15 +167,15 @@
     "demoSchema": [
       {
         "tag": "code-sample",
-        "content": "<template preserve-content=\"preserve-content\">const great = \"example\";\nconst great = \"example\";\nconst great = \"example\";</template>",
         "properties": {
           "type": "javascript",
-          "copy-clipboard-button": true
-        }
+          "copyClipboardButton": true
+        },
+        "content": "<template preserve-content=\"preserve-content\">const a = 2;\nconst b = 3;\nconst sum = a + b;</template>"
       }
     ]
   },
-  "surfaceHash": "9042cb3426fd",
+  "surfaceHash": "cf99f160343f",
   "walkthroughs": [
     {
       "id": "",
@@ -183,13 +183,13 @@
       "order": 0,
       "src": "code-sample.motion.json",
       "file": "lib/code-sample.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/code-sample.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

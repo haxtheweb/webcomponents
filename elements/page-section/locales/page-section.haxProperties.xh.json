@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "Amaqhosha",
         "description": "Iqela lamaqhosha eliboniswa phantsi kombhalo."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "Umbhalo we-ankile",
         "description": "Ileyibhile ye-ankile eboniswa kukhangelo."
       }
-    ]
+    ],
+    "developer": []
   }
 }

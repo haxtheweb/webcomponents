@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Geen pyl",
         "description": "Versteek die knoppie se pyl."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Skakel: teiken",
@@ -54,7 +52,9 @@
           "_top": "Boonste venster - _top",
           "_parent": "Ouervenster - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Skakel: rel",

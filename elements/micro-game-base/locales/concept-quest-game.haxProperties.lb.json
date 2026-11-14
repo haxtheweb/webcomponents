@@ -91,7 +91,9 @@
         "property": "gameTitle",
         "title": "Numm vum Spill",
         "description": "Benennt dëst Spill an de Fortschrëttsevenementer a bei der OER Schema-Markéierung."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Spill-ID",

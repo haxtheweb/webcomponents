@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "Hnappar",
         "description": "Hnappahópur sem birtist fyrir neðan textann."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "Akkeristexti",
         "description": "Akkerismerki sem birtist í leiðsögn."
       }
-    ]
+    ],
+    "developer": []
   }
 }

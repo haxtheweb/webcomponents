@@ -14,16 +14,6 @@
         "property": "title",
         "title": "Tajuk alternatif",
         "description": "Tajuk alternatif yang dipautkan ke sumber kod QR."
-      },
-      {
-        "property": "modulesize",
-        "title": "Saiz",
-        "description": "Saiz kod QR."
-      },
-      {
-        "property": "margin",
-        "title": "Jidar",
-        "description": "Pembalut kod."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "Saiz",
+        "description": "Saiz kod QR."
+      },
+      {
+        "property": "margin",
+        "title": "Jidar",
+        "description": "Pembalut kod."
       }
     ]
   }

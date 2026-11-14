@@ -14,16 +14,6 @@
         "property": "title",
         "title": "Madadin take",
         "description": "Madadin take da aka haɗa da tushen QR code."
-      },
-      {
-        "property": "modulesize",
-        "title": "Girma",
-        "description": "Girman QR code."
-      },
-      {
-        "property": "margin",
-        "title": "Gefe",
-        "description": "Mai naɗe lambar."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "Girma",
+        "description": "Girman QR code."
+      },
+      {
+        "property": "margin",
+        "title": "Gefe",
+        "description": "Mai naɗe lambar."
       }
     ]
   }

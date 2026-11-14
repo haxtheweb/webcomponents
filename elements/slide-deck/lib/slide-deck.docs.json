@@ -18,7 +18,7 @@
   "import": "@haxtheweb/slide-deck/slide-deck.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/slide-deck/slide-deck.js",
   "install": "npm i @haxtheweb/slide-deck",
-  "demoHtml": "<slide-deck source=\"files/decks/my-talk/deck.json\"></slide-deck>",
+  "demoHtml": "<slide-deck></slide-deck>",
   "attributes": [
     {
       "name": "source",
@@ -195,14 +195,12 @@
     "demoSchema": [
       {
         "tag": "slide-deck",
-        "properties": {
-          "source": "files/decks/my-talk/deck.json"
-        },
+        "properties": {},
         "content": ""
       }
     ]
   },
-  "surfaceHash": "76ea02867284",
+  "surfaceHash": "055a7ebe5eda",
   "walkthroughs": [
     {
       "id": "",
@@ -210,13 +208,13 @@
       "order": 0,
       "src": "slide-deck.motion.json",
       "file": "lib/slide-deck.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/slide-deck.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

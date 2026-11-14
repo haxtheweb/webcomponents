@@ -11,6 +11,13 @@
         "description": "URL của tệp AR này."
       },
       {
+        "property": "skyColor",
+        "title": "Màu bầu trời",
+        "description": "Chọn màu bầu trời trong cảnh."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "Vị trí X của phần tử trong AR."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "Vị trí Z của phần tử trong AR."
-      },
-      {
-        "property": "skyColor",
-        "title": "Màu bầu trời",
-        "description": "Chọn màu bầu trời trong cảnh."
       }
     ]
   }

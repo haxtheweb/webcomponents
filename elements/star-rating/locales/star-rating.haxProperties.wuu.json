@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "互动",
         "description": "允许用户互动来打分。"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "评分量规模式",

@@ -1,6 +1,13 @@
 import { fixture, expect, html, oneEvent } from "@open-wc/testing";
 import "@haxtheweb/type-writer/type-writer.js";
 
+// HAX schemas ship as JSON next to the element; read one whether the class
+// returns the object or the URL of its file
+const haxSchema = async (C) => {
+  const hp = C.haxProperties;
+  return typeof hp === "string" ? (await fetch(hp)).json() : hp;
+};
+
 describe("type-writer", () => {
   let element;
 
@@ -106,35 +113,42 @@ describe("type-writer", () => {
       element = await fixture(html`<type-writer></type-writer>`);
     });
 
-    it("exposes haxProperties", () => {
-      const hax = element.constructor.haxProperties;
+    it("exposes haxProperties", async () => {
+      const hax = await haxSchema(element.constructor);
       expect(hax).to.exist;
       expect(hax.canScale).to.equal(true);
       expect(hax.canEditSource).to.equal(true);
     });
 
-    it("declares a gizmo with the expected metadata", () => {
-      const gizmo = element.constructor.haxProperties.gizmo;
-      expect(gizmo.title).to.equal("Type writer");
+    it("declares a gizmo with the expected metadata", async () => {
+      const gizmo = (await haxSchema(element.constructor)).gizmo;
+      expect(gizmo.title).to.equal("Typewriter");
       expect(gizmo.icon).to.equal("hardware:keyboard");
       expect(gizmo.color).to.equal("green");
-      expect(gizmo.tags).to.include.members(["interactive", "Writer", "type"]);
-    });
-
-    it("exposes text / delay / speed / cursorDuration / typing as configure settings", () => {
-      const configure = element.constructor.haxProperties.settings.configure;
-      const names = configure.map((c) => c.property);
-      expect(names).to.include.members([
-        "delay",
-        "cursorDuration",
-        "text",
-        "speed",
-        "typing",
+      expect(gizmo.tags).to.include.members([
+        "typewriter",
+        "animation",
+        "effect",
       ]);
     });
 
-    it("strips element-visible attribute on save", () => {
-      const opts = element.constructor.haxProperties.saveOptions;
+    it("exposes text / typing as configure and the timing fields as advanced settings", async () => {
+      const settings = (await haxSchema(element.constructor)).settings;
+      expect(settings.configure.map((c) => c.property)).to.include.members([
+        "text",
+        "typing",
+      ]);
+      const advanced = settings.advanced;
+      expect(advanced.map((c) => c.property)).to.include.members([
+        "delay",
+        "cursorDuration",
+        "speed",
+      ]);
+      expect(advanced.every((c) => c.inputMethod === "number")).to.be.true;
+    });
+
+    it("strips element-visible attribute on save", async () => {
+      const opts = (await haxSchema(element.constructor)).saveOptions;
       expect(opts.unsetAttributes).to.include("element-visible");
     });
   });

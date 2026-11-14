@@ -9,7 +9,9 @@
         "property": "source",
         "title": "URL Sumber Daya",
         "description": "URL sumber daya."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Tinggi",

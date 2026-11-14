@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Poster suraty",
         "description": "Poster suratynyň URL-i."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Tekst ýollary",
         "description": "Wideo üçin ýapyk ýazgylar, subtitrler, düşündirişler we beýleki tekst ýollary."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Başlangyç wagty",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Sesli düşündiriş ýoly",
         "description": "Wizual elementleri beýan edýän sesli düşündiriş ýolunyň (MP3 faýly) URL salgysy."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksent reňki",
+        "description": "(könelişen) Pleýer üçin aksent reňkini saýlaň."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Dil",
         "description": "Medianyň dili."
-      },
-      {
-        "property": "accentColor",
-        "title": "Aksent reňki",
-        "description": "(könelişen) Pleýer üçin aksent reňkini saýlaň."
       }
     ]
   }

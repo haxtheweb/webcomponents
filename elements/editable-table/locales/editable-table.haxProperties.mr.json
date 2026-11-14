@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "फिल्टरला अनुमती द्या",
         "description": "स्तंभ मूल्यांनुसार फिल्टर करण्यास अनुमती द्या."
-      },
-      {
-        "property": "numericStyles",
-        "title": "अंकी शैली",
-        "description": "अंकी स्तंभांवर अंकी शैली लागू करा."
-      },
-      {
-        "property": "responsive",
-        "title": "प्रतिसादात्मक",
-        "description": "लहान स्क्रीनवर तक्त्याचा लेआउट समायोजित करा."
-      },
-      {
-        "property": "rubricMode",
-        "title": "रुब्रिक मोड",
-        "description": "Rubric, RubricScale, RubricCriterion आणि RubricLevel मेटाडेटा तयार व्हावा म्हणून हा तक्ता OER Schema Rubric म्हणून समजा."
-      },
-      {
-        "property": "rubricType",
-        "title": "रुब्रिक प्रकार",
-        "description": "oer:rubricType म्हणून तयार होणारी रुब्रिक शैली (फक्त रुब्रिक मोड चालू असतानाच अर्थपूर्ण).",
-        "options": {
-          "": "(काहीही नाही)",
-          "analytic": "विश्लेषणात्मक",
-          "holistic": "समग्र",
-          "single-point": "एकल बिंदू",
-          "checklist": "तपासणी सूची"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "प्रिंट बटण",
         "description": "फक्त तक्ता प्रिंट करण्यासाठी बटण जोडा."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "अंकी शैली",
+        "description": "अंकी स्तंभांवर अंकी शैली लागू करा."
+      },
+      {
+        "property": "responsive",
+        "title": "प्रतिसादात्मक",
+        "description": "लहान स्क्रीनवर तक्त्याचा लेआउट समायोजित करा."
+      },
+      {
+        "property": "rubricMode",
+        "title": "रुब्रिक मोड",
+        "description": "Rubric, RubricScale, RubricCriterion आणि RubricLevel मेटाडेटा तयार व्हावा म्हणून हा तक्ता OER Schema Rubric म्हणून समजा."
+      },
+      {
+        "property": "rubricType",
+        "title": "रुब्रिक प्रकार",
+        "description": "oer:rubricType म्हणून तयार होणारी रुब्रिक शैली (फक्त रुब्रिक मोड चालू असतानाच अर्थपूर्ण).",
+        "options": {
+          "": "(काहीही नाही)",
+          "analytic": "विश्लेषणात्मक",
+          "holistic": "समग्र",
+          "single-point": "एकल बिंदू",
+          "checklist": "तपासणी सूची"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "CSV डेटा",
         "description": "अपलोड केलेल्या CSV फाइलमधून तक्ता तयार करा."
       }
-    ]
+    ],
+    "developer": []
   }
 }

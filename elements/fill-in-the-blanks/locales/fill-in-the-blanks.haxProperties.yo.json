@@ -14,28 +14,6 @@
         "property": "statement",
         "title": "Gbólóhùn",
         "description": "Gbólóhùn tí a ó yí padà sí ìbáṣepọ̀ sàmì sí àwọn ọ̀rọ̀."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "Ọ̀nà ìfúnmáàkì",
-        "description": "OER Schema: ọ̀nà ìfúnmáàkì fún ìgbéléwọ̀n yìí (fún àpẹẹrẹ máàkì, lẹ́tà, ìdá-ọgọ́rùn-ún, ìparí)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Àfojúsùn ẹ̀kọ́",
-        "description": "OER Schema: àfojúsùn ẹ̀kọ́ tí ó jẹmọ́ ìgbéléwọ̀n yìí."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kọ́ọ̀sì",
-        "description": "OER Schema: kọ́ọ̀sì tí a pète ìgbéléwọ̀n yìí fún."
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Orúkọ ìdánwò kékeré náà",
-        "description": "Orúkọ ìdánwò kékeré tí a fi ránṣẹ́ fún lílò ní àwọn àyíká tí xAPI ń darí láti dá ẹyọ yìí mọ̀"
       }
     ],
     "advanced": [
@@ -46,6 +24,28 @@
       {
         "title": "Bẹ̀rẹ̀ ní pípa dé",
         "description": "Nígbà tí ó bá ṣeé pa dé, bẹ̀rẹ̀ gẹ́gẹ́ bí ìlà tí a ti pa tí ó fi ìbéèrè àti ipò rẹ̀ nìkan hàn."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Ọ̀nà ìfúnmáàkì",
+        "description": "OER Schema: ọ̀nà ìfúnmáàkì fún ìgbéléwọ̀n yìí (fún àpẹẹrẹ máàkì, lẹ́tà, ìdá-ọgọ́rùn-ún, ìparí)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Àfojúsùn ẹ̀kọ́",
+        "description": "OER Schema: àfojúsùn ẹ̀kọ́ tí ó jẹmọ́ ìgbéléwọ̀n yìí."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Orúkọ ìdánwò kékeré náà",
+        "description": "Orúkọ ìdánwò kékeré tí a fi ránṣẹ́ fún lílò ní àwọn àyíká tí xAPI ń darí láti dá ẹyọ yìí mọ̀"
+      },
+      {
+        "property": "forCourse",
+        "title": "Kọ́ọ̀sì",
+        "description": "OER Schema: kọ́ọ̀sì tí a pète ìgbéléwọ̀n yìí fún."
       }
     ]
   }

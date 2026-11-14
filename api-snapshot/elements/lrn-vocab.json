@@ -16,7 +16,7 @@
   "cssParts": [],
   "cssProperties": [],
   "hax": {
-    "schema": "elements/lrn-vocab/lrn-vocab.js",
+    "schema": "elements/lrn-vocab/lib/lrn-vocab.haxProperties.json",
     "gizmo": true,
     "properties": [
       "description",

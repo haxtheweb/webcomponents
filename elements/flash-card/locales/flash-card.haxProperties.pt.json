@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Origem da imagem",
         "description": "Arquivo de imagem usado no cartão. Substitui a palavra-chave da imagem."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Palavra-chave da imagem",
+        "description": "Palavra-chave para imagem aleatória. Substituída pela origem da imagem."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Objetivo de aprendizagem",
         "description": "OER Schema: ID ou URL do objetivo de aprendizagem que esta prática apoia."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Palavra-chave da imagem",
-        "description": "Palavra-chave para imagem aleatória. Substituída pela origem da imagem."
       }
     ]
   }

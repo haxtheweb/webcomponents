@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Permette u filtru",
         "description": "Permette di filtrà secondu i valori di e culonne."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Stile numericu",
-        "description": "Applicà u stile numericu à e culonne numeriche."
-      },
-      {
-        "property": "responsive",
-        "title": "Adattativu",
-        "description": "Adattà a dispusizione di a tavula nant'à i screni chjuchi."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Modu rubrica",
-        "description": "Interpretà sta tavula cum'è una Rubric OER Schema per chì e metadate Rubric, RubricScale, RubricCriterion è RubricLevel sianu emesse."
-      },
-      {
-        "property": "rubricType",
-        "title": "Tipu di rubrica",
-        "description": "Stile di rubrica emessu cum'è oer:rubricType (hà sensu solu quandu u modu rubrica hè attivu).",
-        "options": {
-          "": "(nisunu)",
-          "analytic": "Analitica",
-          "holistic": "Olistica",
-          "single-point": "À puntu unicu",
-          "checklist": "Lista di cuntrollu"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Buttone di stampa",
         "description": "Aghjunghje un buttone per stampà solu a tavula."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Stile numericu",
+        "description": "Applicà u stile numericu à e culonne numeriche."
+      },
+      {
+        "property": "responsive",
+        "title": "Adattativu",
+        "description": "Adattà a dispusizione di a tavula nant'à i screni chjuchi."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Modu rubrica",
+        "description": "Interpretà sta tavula cum'è una Rubric OER Schema per chì e metadate Rubric, RubricScale, RubricCriterion è RubricLevel sianu emesse."
+      },
+      {
+        "property": "rubricType",
+        "title": "Tipu di rubrica",
+        "description": "Stile di rubrica emessu cum'è oer:rubricType (hà sensu solu quandu u modu rubrica hè attivu).",
+        "options": {
+          "": "(nisunu)",
+          "analytic": "Analitica",
+          "holistic": "Olistica",
+          "single-point": "À puntu unicu",
+          "checklist": "Lista di cuntrollu"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "Dati CSV",
         "description": "Creà una tavula da un schedariu CSV caricatu."
       }
-    ]
+    ],
+    "developer": []
   }
 }

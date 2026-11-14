@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Test ta' wara",
         "description": "Test li jintwera wara n-numru (eż. '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Slot ta' qabel",
-        "description": "Kontenut fakultattiv fis-slot qabel in-numru."
-      },
-      {
-        "slot": "suffix",
-        "title": "Slot ta' wara",
-        "description": "Kontenut fakultattiv fis-slot wara n-numru."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Mingħajr easing",
         "description": "Iddiżattiva l-easing biex l-għadd ikun lineari."
+      },
+      {
+        "slot": "prefix",
+        "title": "Slot ta' qabel",
+        "description": "Kontenut fakultattiv fis-slot qabel in-numru."
+      },
+      {
+        "slot": "suffix",
+        "title": "Slot ta' wara",
+        "description": "Kontenut fakultattiv fis-slot wara n-numru."
       }
     ]
   }

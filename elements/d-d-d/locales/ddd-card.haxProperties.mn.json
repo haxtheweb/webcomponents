@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Сумгүй",
         "description": "Товчны сумыг нуух."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Холбоос: зорилт",
@@ -54,7 +52,9 @@
           "_top": "Дээд цонх - _top",
           "_parent": "Эх цонх - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Холбоос: rel",

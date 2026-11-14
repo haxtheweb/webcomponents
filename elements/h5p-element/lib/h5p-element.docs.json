@@ -6,10 +6,10 @@
   "license": "Apache-2.0",
   "title": "H5P",
   "description": "Plays H5P interactive content from an uploaded .h5p file, with no H5P server needed",
-  "icon": "icons:android",
+  "icon": "icons:extension",
   "tags": [
     "Instructional",
-    "Interactive",
+    "interactive",
     "media"
   ],
   "haxCapable": true,
@@ -60,11 +60,11 @@
     "gizmo": {
       "title": "H5P",
       "description": "Plays H5P interactive content from an uploaded .h5p file, with no H5P server needed",
-      "icon": "icons:android",
+      "icon": "icons:extension",
       "color": "green",
       "tags": [
         "Instructional",
-        "Interactive",
+        "interactive",
         "media"
       ],
       "meta": {

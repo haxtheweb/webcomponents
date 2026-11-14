@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Destinazione",
         "description": "Percorsu versu a cumpilazione di u ghjocu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Larghezza di a tela",
+        "description": "Larghezza CSS di a tela (per esempiu px o em)."
       },
+      {
+        "property": "height",
+        "title": "Altezza di a tela",
+        "description": "Altezza CSS di a tela (per esempiu px o em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Metodu di cumpressione",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Versione di u pruduttu",
         "description": "Versione di publicazione."
-      },
-      {
-        "property": "width",
-        "title": "Larghezza di a tela",
-        "description": "Larghezza CSS di a tela (per esempiu px o em)."
-      },
-      {
-        "property": "height",
-        "title": "Altezza di a tela",
-        "description": "Altezza CSS di a tela (per esempiu px o em)."
       },
       {
         "property": "background",

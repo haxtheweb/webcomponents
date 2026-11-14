@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "کیپشن",
         "description": "تصویر دا کیپشن۔"
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "شکل دا سرناواں",
-        "description": "شکل لیبل لئی سرناواں۔"
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "شکل دی تفصیل",
-        "description": "شکل لیبل لئی تفصیل۔"
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "تصویر موڈل بند کرو",
         "description": "کلک کرن تے تصویر انسپکٹر ڈائیلاگ وچ کھلن نوں بند کرو۔"
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "شکل دا سرناواں",
+        "description": "شکل لیبل لئی سرناواں۔"
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "شکل دی تفصیل",
+        "description": "شکل لیبل لئی تفصیل۔"
       }
     ],
     "developer": [

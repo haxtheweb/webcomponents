@@ -1,10 +1,10 @@
 {
   "gizmo": {
-    "title": "HAXcms: בלוק צאצאים",
-    "description": "בלוק דינמי להצגת צאצאי הדף הנוכחי"
+    "title": "עמודי משנה",
+    "description": "מפרט את עמודי המשנה של העמוד הנוכחי."
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "שיטה דינמית",
@@ -14,7 +14,9 @@
           "parent": "צאצאי ההורה",
           "ancestor": "כל הצאצאים מהאב הקדמון הגבוה ביותר"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "רמת התחלה"

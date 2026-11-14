@@ -4,12 +4,12 @@
   "package": "@haxtheweb/post-card",
   "version": "26.8.0",
   "license": "Apache-2.0",
-  "title": "Post Card",
+  "title": "Post card",
   "description": "A playful media piece meant to look like a physical post card from somewhere",
-  "icon": "credit-card",
+  "icon": "maps:local-post-office",
   "tags": [
-    "Layout",
-    "Fun",
+    "Other",
+    "fun",
     "extra",
     "postcard",
     "card",
@@ -21,7 +21,7 @@
   "import": "@haxtheweb/post-card/post-card.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/post-card/post-card.js",
   "install": "npm i @haxtheweb/post-card",
-  "demoHtml": "<post-card to=\"btopro\" from=\"everyone\" post-mark-locations=\"state college\" message=\"Look more enthused at work\" photo-src=\"https://btopro.com/assets/banner.jpg\" stamp-src=\"https://pbs.twimg.com/profile_images/1556675960635891713/ONMPLfPT_400x400.jpg\"></post-card>",
+  "demoHtml": "<post-card to=\"A friend\" from=\"State College\" post-mark-locations=\"State College\" message=\"Wish you were here!\" photo-src=\"https://placehold.co/600x400\" stamp-src=\"https://placehold.co/100x120\"></post-card>",
   "attributes": [
     {
       "name": "t",
@@ -114,13 +114,13 @@
     "canScale": true,
     "canEditSource": true,
     "gizmo": {
-      "title": "Post Card",
+      "title": "Post card",
       "description": "A playful media piece meant to look like a physical post card from somewhere",
-      "icon": "credit-card",
+      "icon": "maps:local-post-office",
       "color": "blue",
       "tags": [
-        "Layout",
-        "Fun",
+        "Other",
+        "fun",
         "extra",
         "postcard",
         "card",
@@ -174,17 +174,18 @@
       {
         "tag": "post-card",
         "properties": {
-          "to": "btopro",
-          "from": "everyone",
-          "postMarkLocations": "state college",
-          "message": "Look more enthused at work",
-          "photoSrc": "https://btopro.com/assets/banner.jpg",
-          "stampSrc": "https://pbs.twimg.com/profile_images/1556675960635891713/ONMPLfPT_400x400.jpg"
-        }
+          "to": "A friend",
+          "from": "State College",
+          "postMarkLocations": "State College",
+          "message": "Wish you were here!",
+          "photoSrc": "https://placehold.co/600x400",
+          "stampSrc": "https://placehold.co/100x120"
+        },
+        "content": ""
       }
     ]
   },
-  "surfaceHash": "820ebcbfddae",
+  "surfaceHash": "d67e3cae0aab",
   "walkthroughs": [
     {
       "id": "",
@@ -192,13 +193,13 @@
       "order": 0,
       "src": "post-card.motion.json",
       "file": "lib/post-card.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/post-card.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

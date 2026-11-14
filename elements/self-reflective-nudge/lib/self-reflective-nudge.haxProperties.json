@@ -13,7 +13,7 @@
   "gizmo": {
     "title": "Self-reflective nudge",
     "description": "Ask a student to reflect on a grade or mood and offer a self-corrective nudge based on the answer.",
-    "icon": "hax:multiple-choice",
+    "icon": "icons:face",
     "color": "purple",
     "tags": [
       "Instructional",

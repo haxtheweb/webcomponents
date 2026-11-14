@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "HAX link",
-    "description": "Link na određeni resurs na sajtu na kojem radite."
+    "title": "Link na stranicu",
+    "description": "Link na stranicu web-mjesta na kojem radite."
   },
   "settings": {
     "configure": [

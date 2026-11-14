@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "غلاف لتضمين مشغّل Spotify."
+    "description": "ضمّن مقطعًا أو ألبومًا أو قائمة تشغيل من Spotify."
   },
   "settings": {
     "configure": [

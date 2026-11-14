@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Hoton fosta",
         "description": "URL na hoton fosta."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Waƙoƙin rubutu",
         "description": "Rubutun ƙasa, fassarori, bayanai, da sauran waƙoƙin rubutu na bidiyon."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Lokacin farawa",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Waƙar bayanin sauti",
         "description": "URL zuwa waƙar bayanin sauti (fayil ɗin MP3) da ke ba da labarin abubuwan gani."
+      },
+      {
+        "property": "accentColor",
+        "title": "Launin ƙawa",
+        "description": "(an daina amfani) Zaɓi launin accent na mai kunnawa."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Harshe",
         "description": "Harshen kafar watsa labarai."
-      },
-      {
-        "property": "accentColor",
-        "title": "Launin ƙawa",
-        "description": "(an daina amfani) Zaɓi launin accent na mai kunnawa."
       }
     ]
   }

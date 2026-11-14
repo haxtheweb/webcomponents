@@ -26,11 +26,6 @@
         "description": "Nivîsa alt ji bo wêneyê."
       },
       {
-        "property": "animated",
-        "title": "Anîmasyonkirî",
-        "description": "Gelo pêşveçûn di barkirina yekem de anîmasyon dibe an na"
-      },
-      {
         "property": "complete",
         "title": "Temam",
         "description": "Rêzikek ji nirxên qediyayî."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "Giştî",
         "description": "Giştî dema hemû tişt qediyane."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "Anîmasyonkirî",
+        "description": "Gelo pêşveçûn di barkirina yekem de anîmasyon dibe an na"
       },
       {
         "property": "startAngle",

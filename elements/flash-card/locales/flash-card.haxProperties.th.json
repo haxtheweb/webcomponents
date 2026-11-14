@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "แหล่งที่มาของรูปภาพ",
         "description": "ไฟล์รูปภาพที่ใช้สำหรับการ์ด ใช้แทนคำสำคัญของรูปภาพ"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "คำสำคัญของรูปภาพ",
+        "description": "คำสำคัญสำหรับรูปภาพแบบสุ่ม จะถูกแทนที่ด้วยแหล่งที่มาของรูปภาพ"
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "วัตถุประสงค์การเรียนรู้",
         "description": "OER Schema: ID หรือ URL ของวัตถุประสงค์การเรียนรู้ที่การฝึกนี้สนับสนุน"
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "คำสำคัญของรูปภาพ",
-        "description": "คำสำคัญสำหรับรูปภาพแบบสุ่ม จะถูกแทนที่ด้วยแหล่งที่มาของรูปภาพ"
       }
     ]
   }

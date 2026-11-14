@@ -4,22 +4,23 @@
     "description": "En spilleliste som viser video- og lydspillere i et oppsett med spiller og sidefelt."
   },
   "settings": {
-    "configure": [
+    "configure": [],
+    "advanced": [
       {
         "property": "activeIndex",
         "title": "Aktiv indeks",
         "description": "Indeksen til det aktive elementet det skal startes på."
-      },
-      {
-        "property": "forCourse",
-        "title": "Emne",
-        "description": "Emnet denne spillelisten er ment for (emneidentifikator eller URL)."
       }
     ],
     "developer": [
       {
         "title": "Medier",
         "description": "Videoene og lyden i spillelisten. Redigeres ikke her: sideoversikten bruker dette for å vite hvilke blokker som kan slippes inn."
+      },
+      {
+        "property": "forCourse",
+        "title": "Emne",
+        "description": "Emnet denne spillelisten er ment for (emneidentifikator eller URL)."
       }
     ]
   }

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "پیش رفت ڈونٹ",
-    "description": "پیش رفت کا ڈونٹ"
+    "description": "ڈونٹ چارٹ جو کل کی طرف پیش رفت دکھاتا ہے۔"
   },
   "settings": {
     "configure": [
@@ -26,11 +26,6 @@
         "description": "تصویر کا متبادل متن۔"
       },
       {
-        "property": "animated",
-        "title": "متحرک",
-        "description": "کیا پہلی بار لوڈ ہونے پر پیش رفت متحرک ہو"
-      },
-      {
         "property": "complete",
         "title": "مکمل",
         "description": "مکمل شدہ قدروں کا ارے۔"
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "کل",
         "description": "تمام آئٹمز مکمل ہونے پر کل۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "متحرک",
+        "description": "کیا پہلی بار لوڈ ہونے پر پیش رفت متحرک ہو"
       },
       {
         "property": "startAngle",

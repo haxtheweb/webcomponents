@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Pūtake Whakaahua",
         "description": "Kōnae whakaahua mō te kāri. Ka whakakapi i te Kupu Matua Whakaahua."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Kupu Matua Whakaahua",
+        "description": "Kupu matua mō tētahi whakaahua matapōkere. Ka whakakapia e te Pūtake Whakaahua."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Whāinga Ako",
         "description": "OER Schema: te ID, te URL rānei o te whāinga ako e tautokona ana e tēnei whakaharatau."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Kupu Matua Whakaahua",
-        "description": "Kupu matua mō tētahi whakaahua matapōkere. Ka whakakapia e te Pūtake Whakaahua."
       }
     ]
   }

@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Mål",
         "description": "Sti til spillbygget."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Lerretsbredde",
+        "description": "CSS-bredde for lerretet (for eksempel px eller em)."
       },
+      {
+        "property": "height",
+        "title": "Lerretshøyde",
+        "description": "CSS-høyde for lerretet (for eksempel px eller em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Komprimeringsmetode",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Produktversjon",
         "description": "Utgivelsesversjon."
-      },
-      {
-        "property": "width",
-        "title": "Lerretsbredde",
-        "description": "CSS-bredde for lerretet (for eksempel px eller em)."
-      },
-      {
-        "property": "height",
-        "title": "Lerretshøyde",
-        "description": "CSS-høyde for lerretet (for eksempel px eller em)."
       },
       {
         "property": "background",

@@ -14,16 +14,6 @@
         "property": "title",
         "title": "Título alternativo",
         "description": "Título alternativo vinculado à origem do código QR."
-      },
-      {
-        "property": "modulesize",
-        "title": "Tamanho",
-        "description": "Tamanho do código QR."
-      },
-      {
-        "property": "margin",
-        "title": "Margem",
-        "description": "Margem em volta do código."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "Tamanho",
+        "description": "Tamanho do código QR."
+      },
+      {
+        "property": "margin",
+        "title": "Margem",
+        "description": "Margem em volta do código."
       }
     ]
   }

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Sarkasmo",
-    "description": "Pagpapakita ng teksto sa paraang pang-trolling"
+    "description": "Tekstong salit-salit ang malaki at maliit na titik para sa sarkastikong tono."
   },
   "settings": {
     "configure": [

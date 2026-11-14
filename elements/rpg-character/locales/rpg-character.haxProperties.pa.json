@@ -11,11 +11,6 @@
         "description": "ਬੇਤਰਤੀਬ ਪਾਤਰ ਬਣਾਉਣ ਲਈ ਵਰਤਿਆ ਸ਼ਬਦ।"
       },
       {
-        "property": "code",
-        "title": "ਪਾਤਰ ਕੋਡ",
-        "description": "ਉਸ ਪਾਤਰ ਨੂੰ ਦੁਬਾਰਾ ਬਣਾਉਣ ਲਈ ਸੰਭਾਲਿਆ ਕੋਡ ਪੇਸਟ ਕਰੋ।"
-      },
-      {
         "property": "hat",
         "title": "ਟੋਪੀ",
         "description": "ਟੋਪੀ ਦੀ ਸ਼ੈਲੀ।",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "ਮਾਸਕ",
-        "description": "ਚਿਹਰੇ ਜਾਂ ਸਿਰ ਉੱਤੇ ਪਹਿਨਿਆ ਮਾਸਕ।",
-        "options": {
-          "none": "ਕੋਈ ਨਹੀਂ",
-          "lion": "ਸ਼ੇਰ",
-          "plague": "ਪਲੇਗ ਡਾਕਟਰ",
-          "theater": "ਥੀਏਟਰ",
-          "pumpkin": "ਕੱਦੂ",
-          "ghost": "ਭੂਤ",
-          "mummy": "ਮਮੀ",
-          "wrestler": "ਕੁਸ਼ਤੀ ਦਾ ਨਕਾਬ",
-          "block-head": "ਬਲਾਕ ਸਿਰ",
-          "web": "ਜਾਲ ਵਾਲਾ ਨਕਾਬ",
-          "werewolf": "ਬਘਿਆੜ-ਮਨੁੱਖ ਦਾ ਚਿਹਰਾ",
-          "shadow": "ਪਰਛਾਵੇਂ ਵਾਲਾ ਚਿਹਰਾ"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "ਮੇਕਅਪ",
-        "description": "ਚਿਹਰੇ ਦਾ ਰੰਗ ਜਾਂ ਲਿਪਸਟਿਕ।",
-        "options": {
-          "none": "ਕੋਈ ਨਹੀਂ",
-          "red-lipstick": "ਲਾਲ ਲਿਪਸਟਿਕ",
-          "pink-lipstick": "ਗੁਲਾਬੀ ਲਿਪਸਟਿਕ",
-          "berry-lipstick": "ਬੇਰੀ ਲਿਪਸਟਿਕ",
-          "clown": "ਜੋਕਰ ਦਾ ਰੰਗ",
-          "fangs": "ਲੰਮੇ ਦੰਦ",
-          "skull": "ਖੋਪੜੀ ਦਾ ਰੰਗ",
-          "zombie": "ਜ਼ੋਂਬੀ ਰੰਗ",
-          "red-nose": "ਲਾਲ ਨੱਕ",
-          "white-beard": "ਚਿੱਟੀ ਦਾੜ੍ਹੀ",
-          "domino": "ਹੀਰੋ ਮਾਸਕ",
-          "carrot": "ਗਾਜਰ ਵਰਗਾ ਨੱਕ",
-          "bunny": "ਖ਼ਰਗੋਸ਼ ਦਾ ਨੱਕ",
-          "mustache": "ਮੁੱਛਾਂ",
-          "monster": "ਦੈਂਤ ਵਾਲਾ ਚਿਹਰਾ ਰੰਗ",
-          "round-glasses": "ਗੋਲ ਐਨਕਾਂ"
-        }
-      },
-      {
         "property": "expression",
         "title": "ਭਾਵ",
         "description": "ਚਿਹਰੇ ਦਾ ਭਾਵ।",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "ਪਾਲਤੂ ਜਾਨਵਰ",
+        "description": "ਪਾਤਰ ਦੇ ਨਾਲ ਪਾਲਤੂ ਜਾਨਵਰ।",
+        "options": {
+          "none": "ਕੋਈ ਨਹੀਂ",
+          "cat": "ਬਿੱਲੀ",
+          "dog": "ਕੁੱਤਾ",
+          "bunny": "ਖਰਗੋਸ਼",
+          "goldfish": "ਸੁਨਹਿਰੀ ਮੱਛੀ",
+          "slime": "ਸਲਾਈਮ",
+          "squirrel": "ਗਲਹਿਰੀ",
+          "dragon": "ਨਿੱਕਾ ਡਰੈਗਨ",
+          "parrot": "ਤੋਤਾ",
+          "owl": "ਉੱਲੂ",
+          "bat": "ਚਮਗਿੱਦੜ"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "ਪਾਤਰ ਕੋਡ",
+        "description": "ਉਸ ਪਾਤਰ ਨੂੰ ਦੁਬਾਰਾ ਬਣਾਉਣ ਲਈ ਸੰਭਾਲਿਆ ਕੋਡ ਪੇਸਟ ਕਰੋ।"
+      },
+      {
+        "property": "mask",
+        "title": "ਮਾਸਕ",
+        "description": "ਚਿਹਰੇ ਜਾਂ ਸਿਰ ਉੱਤੇ ਪਹਿਨਿਆ ਮਾਸਕ।",
+        "options": {
+          "none": "ਕੋਈ ਨਹੀਂ",
+          "lion": "ਸ਼ੇਰ",
+          "plague": "ਪਲੇਗ ਡਾਕਟਰ",
+          "theater": "ਥੀਏਟਰ",
+          "pumpkin": "ਕੱਦੂ",
+          "ghost": "ਭੂਤ",
+          "mummy": "ਮਮੀ",
+          "wrestler": "ਕੁਸ਼ਤੀ ਦਾ ਨਕਾਬ",
+          "block-head": "ਬਲਾਕ ਸਿਰ",
+          "web": "ਜਾਲ ਵਾਲਾ ਨਕਾਬ",
+          "werewolf": "ਬਘਿਆੜ-ਮਨੁੱਖ ਦਾ ਚਿਹਰਾ",
+          "shadow": "ਪਰਛਾਵੇਂ ਵਾਲਾ ਚਿਹਰਾ"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "ਮੇਕਅਪ",
+        "description": "ਚਿਹਰੇ ਦਾ ਰੰਗ ਜਾਂ ਲਿਪਸਟਿਕ।",
+        "options": {
+          "none": "ਕੋਈ ਨਹੀਂ",
+          "red-lipstick": "ਲਾਲ ਲਿਪਸਟਿਕ",
+          "pink-lipstick": "ਗੁਲਾਬੀ ਲਿਪਸਟਿਕ",
+          "berry-lipstick": "ਬੇਰੀ ਲਿਪਸਟਿਕ",
+          "clown": "ਜੋਕਰ ਦਾ ਰੰਗ",
+          "fangs": "ਲੰਮੇ ਦੰਦ",
+          "skull": "ਖੋਪੜੀ ਦਾ ਰੰਗ",
+          "zombie": "ਜ਼ੋਂਬੀ ਰੰਗ",
+          "red-nose": "ਲਾਲ ਨੱਕ",
+          "white-beard": "ਚਿੱਟੀ ਦਾੜ੍ਹੀ",
+          "domino": "ਹੀਰੋ ਮਾਸਕ",
+          "carrot": "ਗਾਜਰ ਵਰਗਾ ਨੱਕ",
+          "bunny": "ਖ਼ਰਗੋਸ਼ ਦਾ ਨੱਕ",
+          "mustache": "ਮੁੱਛਾਂ",
+          "monster": "ਦੈਂਤ ਵਾਲਾ ਚਿਹਰਾ ਰੰਗ",
+          "round-glasses": "ਗੋਲ ਐਨਕਾਂ"
+        }
+      },
+      {
         "property": "flagText",
         "title": "ਝੰਡੇ ਦਾ ਲਿਖਤ",
         "description": "ਝੰਡੇ ਉੱਤੇ ਦਿਖਾਏ ਜਾਣ ਵਾਲੇ ਵੱਧ ਤੋਂ ਵੱਧ 4 ਅੱਖਰ।"
@@ -310,24 +330,6 @@
           "skates": "ਸਕੇਟਸ",
           "skateboard": "ਸਕੇਟਬੋਰਡ",
           "hoverboard": "ਹਵਾਈ ਤਖ਼ਤਾ"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "ਪਾਲਤੂ ਜਾਨਵਰ",
-        "description": "ਪਾਤਰ ਦੇ ਨਾਲ ਪਾਲਤੂ ਜਾਨਵਰ।",
-        "options": {
-          "none": "ਕੋਈ ਨਹੀਂ",
-          "cat": "ਬਿੱਲੀ",
-          "dog": "ਕੁੱਤਾ",
-          "bunny": "ਖਰਗੋਸ਼",
-          "goldfish": "ਸੁਨਹਿਰੀ ਮੱਛੀ",
-          "slime": "ਸਲਾਈਮ",
-          "squirrel": "ਗਲਹਿਰੀ",
-          "dragon": "ਨਿੱਕਾ ਡਰੈਗਨ",
-          "parrot": "ਤੋਤਾ",
-          "owl": "ਉੱਲੂ",
-          "bat": "ਚਮਗਿੱਦੜ"
         }
       },
       {

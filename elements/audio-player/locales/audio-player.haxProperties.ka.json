@@ -46,6 +46,16 @@
         "property": "accentColor",
         "title": "აქცენტის ფერი",
         "description": "აირჩიეთ პლეერის აქცენტის ფერი."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "დროის ნიშნულების დამალვა",
+        "description": "ტრანსკრიპტში დროის ნიშნულების დამალვა."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "ტრანსკრიპტის დამალვა",
+        "description": "ტრანსკრიპტის ნაგულისხმევად დამალვა."
       }
     ],
     "developer": [
@@ -72,16 +82,6 @@
         "property": "disableInteractive",
         "title": "ინტერაქტიულობის გამორთვა",
         "description": "ინტერაქტიული რეჟიმის გამორთვა, რომელიც ტრანსკრიპტს დაწკაპუნებადს ხდის."
-      },
-      {
-        "property": "hideTimestamps",
-        "title": "დროის ნიშნულების დამალვა",
-        "description": "ტრანსკრიპტში დროის ნიშნულების დამალვა."
-      },
-      {
-        "property": "hideTranscript",
-        "title": "ტრანსკრიპტის დამალვა",
-        "description": "ტრანსკრიპტის ნაგულისხმევად დამალვა."
       },
       {
         "property": "lang",

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Csillagos értékelés",
-    "description": "Értékelést megjelenítő modul vagy értékelőgomb."
+    "description": "Jelenítsen meg csillagos értékelést, vagy hagyja, hogy az olvasók válasszanak."
   },
   "settings": {
     "configure": [
@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Interaktív",
         "description": "A felhasználó maga állíthatja be az értékelést."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Értékelési skála mód",

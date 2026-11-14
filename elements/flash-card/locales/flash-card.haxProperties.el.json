@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Πηγή εικόνας",
         "description": "Αρχείο εικόνας για την κάρτα. Υπερισχύει της λέξης-κλειδιού εικόνας."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Λέξη-κλειδί εικόνας",
+        "description": "Λέξη-κλειδί για τυχαία εικόνα. Η πηγή εικόνας υπερισχύει."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Μαθησιακός στόχος",
         "description": "OER Schema: ID ή URL του μαθησιακού στόχου που υποστηρίζει αυτή η εξάσκηση."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Λέξη-κλειδί εικόνας",
-        "description": "Λέξη-κλειδί για τυχαία εικόνα. Η πηγή εικόνας υπερισχύει."
       }
     ]
   }

@@ -9,7 +9,9 @@
         "slot": "",
         "title": "Zvitaurwa",
         "description": "Zvitaurwa zviri mubibliography iyi"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "Kosi",

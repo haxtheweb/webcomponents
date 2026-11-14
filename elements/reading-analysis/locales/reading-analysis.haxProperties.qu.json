@@ -38,21 +38,6 @@
         "slot": "",
         "title": "Ñawinchay",
         "description": "Yachaqkuna llamk'anku ñawinchay. Ima HTML pas: umanchakuna, parrafokuna, sutisqakuna, siq'ikunapas."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "Chaninchay laya",
-        "description": "OER Schema: kay chaninchaypa chaninchay layan (kayhina chimpukuna, letra, porcentaje, tukusqa)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Yachana munay",
-        "description": "OER Schema: kay chaninchaywan t'inkisqa yachana munay."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kursu",
-        "description": "OER Schema: kay chaninchay mayqin kursupaq kasqan."
       }
     ],
     "advanced": [
@@ -70,6 +55,16 @@
         "property": "collapsed",
         "title": "Pukusqa qallariy",
         "description": "Pukukuy atiq kaptinqa, tapukuyllata hinaspa kay-kayninta rikuchiq wichq'asqa siq'i hina qallariy."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Chaninchay laya",
+        "description": "OER Schema: kay chaninchaypa chaninchay layan (kayhina chimpukuna, letra, porcentaje, tukusqa)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Yachana munay",
+        "description": "OER Schema: kay chaninchaywan t'inkisqa yachana munay."
       }
     ],
     "developer": [
@@ -77,6 +72,11 @@
         "property": "quizName",
         "title": "Tapukuykunapa sutin",
         "description": "xAPI pachakunapi kay itemta riqsichinapaq apachisqa tapukuy suti"
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursu",
+        "description": "OER Schema: kay chaninchay mayqin kursupaq kasqan."
       }
     ]
   }

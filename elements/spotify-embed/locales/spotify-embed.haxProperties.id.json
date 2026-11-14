@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "Pembungkus untuk sematan pemutar Spotify."
+    "description": "Sematkan lagu, album, atau daftar putar Spotify."
   },
   "settings": {
     "configure": [

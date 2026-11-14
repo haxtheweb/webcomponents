@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Plakāta attēls",
         "description": "Plakāta attēla URL."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Teksta celiņi",
         "description": "Slēptie titri, subtitri, apraksti un citi video teksta celiņi."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Sākuma laiks",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Audioapraksta celiņš",
         "description": "Audioapraksta celiņa (MP3 faila) URL, kas sniedz vizuālo elementu stāstījumu."
+      },
+      {
+        "property": "accentColor",
+        "title": "Akcenta krāsa",
+        "description": "(novecojis) Izvēlieties atskaņotāja akcenta krāsu."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Valoda",
         "description": "Multivides valoda."
-      },
-      {
-        "property": "accentColor",
-        "title": "Akcenta krāsa",
-        "description": "(novecojis) Izvēlieties atskaņotāja akcenta krāsu."
       }
     ]
   }

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Valoración con estrellas",
-    "description": "Widget de visualización de valoraciones o botón para valorar."
+    "description": "Muestra una valoración con estrellas o deja que los lectores elijan una."
   },
   "settings": {
     "configure": [
@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Interactivo",
         "description": "Permite que el usuario establezca la valoración."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Modo de escala de rúbrica",

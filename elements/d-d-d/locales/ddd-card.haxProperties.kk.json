@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Көрсеткісіз",
         "description": "Түйме көрсеткісін жасыру."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Сілтеме: target",
@@ -54,7 +52,9 @@
           "_top": "Жоғарғы терезе - _top",
           "_parent": "Аталық терезе - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Сілтеме: rel",

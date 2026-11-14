@@ -9,7 +9,9 @@
         "slot": "",
         "title": "Citakuna",
         "description": "Kay bibliografíapi citakuna"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "Yachay kurso",

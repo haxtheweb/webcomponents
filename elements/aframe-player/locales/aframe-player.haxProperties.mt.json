@@ -11,6 +11,13 @@
         "description": "Il-URL għal dan il-fajl AR."
       },
       {
+        "property": "skyColor",
+        "title": "Kulur tas-sema",
+        "description": "Agħżel il-kulur tas-sema fix-xena."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "Pożizzjoni X tal-element fl-AR."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "Pożizzjoni Z tal-element fl-AR."
-      },
-      {
-        "property": "skyColor",
-        "title": "Kulur tas-sema",
-        "description": "Agħżel il-kulur tas-sema fix-xena."
       }
     ]
   }

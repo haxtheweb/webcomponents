@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Бе тир",
         "description": "Тири тугмаро пинҳон кунед."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Пайванд: target",
@@ -54,7 +52,9 @@
           "_top": "Равзанаи болоӣ - _top",
           "_parent": "Равзанаи волидайн - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Пайванд: rel",

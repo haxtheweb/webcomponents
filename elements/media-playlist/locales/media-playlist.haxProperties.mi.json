@@ -4,22 +4,23 @@
     "description": "He rārangi pāho e whakaatu ana i ngā kaipāho ataata me te oro i tētahi tahora kaipāho + paeteha."
   },
   "settings": {
-    "configure": [
+    "configure": [],
+    "advanced": [
       {
         "property": "activeIndex",
         "title": "Tūemi tīmatanga",
         "description": "Te tau o te tūemi hei tīmatanga."
-      },
-      {
-        "property": "forCourse",
-        "title": "Akoranga",
-        "description": "Te akoranga mō tēnei rārangi pāho (tohu tautuhi akoranga, URL rānei)."
       }
     ],
     "developer": [
       {
         "title": "Pāpāho",
         "description": "Ngā ataata me te oro i te rārangi whakatangi. Kāore e whakatikaina ki konei: ka whakamahia e te whakahuahua whārangi kia mōhio ai ko ēhea paraka ka taea te whakataka ki roto."
+      },
+      {
+        "property": "forCourse",
+        "title": "Akoranga",
+        "description": "Te akoranga mō tēnei rārangi pāho (tohu tautuhi akoranga, URL rānei)."
       }
     ]
   }

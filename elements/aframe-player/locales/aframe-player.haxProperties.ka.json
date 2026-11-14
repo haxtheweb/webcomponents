@@ -11,6 +11,13 @@
         "description": "ამ AR ფაილის URL."
       },
       {
+        "property": "skyColor",
+        "title": "ცის ფერი",
+        "description": "აირჩიეთ ცის ფერი სცენაში."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "ელემენტის X პოზიცია AR-ში."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "ელემენტის Z პოზიცია AR-ში."
-      },
-      {
-        "property": "skyColor",
-        "title": "ცის ფერი",
-        "description": "აირჩიეთ ცის ფერი სცენაში."
       }
     ]
   }

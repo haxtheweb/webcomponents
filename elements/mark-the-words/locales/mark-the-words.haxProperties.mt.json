@@ -16,30 +16,8 @@
         "description": "Stqarrija li tiġi kkonvertita fl-interazzjoni ta' mmarka l-kliem."
       },
       {
-        "property": "gradingFormat",
-        "title": "Format tal-gradi",
-        "description": "OER Schema: format tal-gradi għal din il-valutazzjoni (eż. punti, ittra, perċentwal, tlestija)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Għan tat-tagħlim",
-        "description": "OER Schema: għan tat-tagħlim assoċjat ma' din il-valutazzjoni."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kors",
-        "description": "OER Schema: il-kors li għalih hija maħsuba din il-valutazzjoni."
-      },
-      {
         "property": "answers",
         "title": "Tweġibiet"
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Isem il-kwizz",
-        "description": "Isem il-kwizz mgħoddi għall-użu f'ambjenti mmexxija minn xAPI għall-identifikazzjoni ta' dan l-oġġett"
       }
     ],
     "advanced": [
@@ -52,6 +30,28 @@
         "property": "collapsed",
         "title": "Ibda mitwi",
         "description": "Meta jista' jintwi, ibda bħala ringiela magħluqa li turi biss il-mistoqsija u l-istatus tagħha."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Format tal-gradi",
+        "description": "OER Schema: format tal-gradi għal din il-valutazzjoni (eż. punti, ittra, perċentwal, tlestija)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Għan tat-tagħlim",
+        "description": "OER Schema: għan tat-tagħlim assoċjat ma' din il-valutazzjoni."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Isem il-kwizz",
+        "description": "Isem il-kwizz mgħoddi għall-użu f'ambjenti mmexxija minn xAPI għall-identifikazzjoni ta' dan l-oġġett"
+      },
+      {
+        "property": "forCourse",
+        "title": "Kors",
+        "description": "OER Schema: il-kors li għalih hija maħsuba din il-valutazzjoni."
       }
     ]
   }

@@ -4,7 +4,7 @@
     "description": "වත්මන් පිටුවේ උප අයිතම පෙන්වීමට ගතික කොටස"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "ගතික ක්‍රමය",
@@ -14,7 +14,9 @@
           "parent": "මාපියගේ උප අයිතම",
           "ancestor": "ඉහළම මුතුන්මිත්තාගෙන් සියලු උප අයිතම"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "ආරම්භක මට්ටම"

@@ -9,7 +9,9 @@
         "slot": "",
         "title": "Citace",
         "description": "Citace v této bibliografii"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "Kurz",

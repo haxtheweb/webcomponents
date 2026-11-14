@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "ارجاع",
-    "description": "عنصر استناد با سه حالت نمایش."
+    "description": "منبع را با عنوان، پدیدآور، مجوز و پیوند آن ذکر کنید."
   },
   "settings": {
     "configure": [
@@ -21,15 +21,6 @@
         "description": "تاریخی که به منبع دسترسی پیدا شد."
       },
       {
-        "property": "scope",
-        "title": "دامنه",
-        "description": "دامنه عنصری که باید به آن استناد شود.",
-        "options": {
-          "sibling": "عنصر هم‌سطح",
-          "parent": "عنصر والد"
-        }
-      },
-      {
         "property": "license",
         "title": "مجوز",
         "description": "مجوز اثر مورد استناد."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "پدیدآورنده",
         "description": "پدیدآورنده یا مالک اثر مورد استناد."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "دامنه",
+        "description": "دامنه عنصری که باید به آن استناد شود.",
+        "options": {
+          "sibling": "عنصر هم‌سطح",
+          "parent": "عنصر والد"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "نوع OER Schema",

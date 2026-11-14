@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Mål",
         "description": "Sti til spillets build."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Lærredsbredde",
+        "description": "Lærredets CSS-bredde (f.eks. px eller em)."
       },
+      {
+        "property": "height",
+        "title": "Lærredshøjde",
+        "description": "Lærredets CSS-højde (f.eks. px eller em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Komprimeringsmetode",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Produktversion",
         "description": "Udgivelsesversion."
-      },
-      {
-        "property": "width",
-        "title": "Lærredsbredde",
-        "description": "Lærredets CSS-bredde (f.eks. px eller em)."
-      },
-      {
-        "property": "height",
-        "title": "Lærredshøjde",
-        "description": "Lærredets CSS-højde (f.eks. px eller em)."
       },
       {
         "property": "background",

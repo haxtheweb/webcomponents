@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Teksti prapashtesë",
         "description": "Teksti i shfaqur pas numrit (p.sh. '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Foleja e parashtesës",
-        "description": "Përmbajtje opsionale në fole para numrit."
-      },
-      {
-        "slot": "suffix",
-        "title": "Foleja e prapashtesës",
-        "description": "Përmbajtje opsionale në fole pas numrit."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Pa zbutje",
         "description": "Çaktivizo zbutjen që numërimi të jetë linear."
+      },
+      {
+        "slot": "prefix",
+        "title": "Foleja e parashtesës",
+        "description": "Përmbajtje opsionale në fole para numrit."
+      },
+      {
+        "slot": "suffix",
+        "title": "Foleja e prapashtesës",
+        "description": "Përmbajtje opsionale në fole pas numrit."
       }
     ]
   }

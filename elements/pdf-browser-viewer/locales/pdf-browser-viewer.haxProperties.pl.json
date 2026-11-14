@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Komunikat o braku obsługi",
-        "description": "Komunikat, gdy przeglądarka nie może wyświetlać plików PDF."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Tekst linku przy braku obsługi",
-        "description": "Tekst linku, gdy przeglądarka nie może wyświetlać plików PDF."
-      },
-      {
         "property": "width",
         "title": "Szerokość",
         "description": "Szerokość przeglądarki PDF."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Wysokość",
         "description": "Wysokość przeglądarki PDF."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Komunikat o braku obsługi",
+        "description": "Komunikat, gdy przeglądarka nie może wyświetlać plików PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Tekst linku przy braku obsługi",
+        "description": "Tekst linku, gdy przeglądarka nie może wyświetlać plików PDF."
       }
     ]
   }

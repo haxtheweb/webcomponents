@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Posterôfbylding",
         "description": "URL fan posterôfbylding."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Tekstspoaren",
         "description": "Ûndertiteling foar dôven, ûndertitels, beskriuwings en oare tekstspoaren foar de fideo."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Begjintiid",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Audiobeskriuwingsspoar",
         "description": "URL nei in audiobeskriuwingsspoar (MP3-triem) dat fisuele eleminten fertelt."
+      },
+      {
+        "property": "accentColor",
+        "title": "Aksintkleur",
+        "description": "(ferâldere) Selektearje de aksintkleur foar de spiler."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Taal",
         "description": "Taal fan de media."
-      },
-      {
-        "property": "accentColor",
-        "title": "Aksintkleur",
-        "description": "(ferâldere) Selektearje de aksintkleur foar de spiler."
       }
     ]
   }

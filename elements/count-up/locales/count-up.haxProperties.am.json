@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "የድህረ-ቅጥያ ጽሑፍ",
         "description": "ከቁጥሩ በኋላ የሚታይ ጽሑፍ (ለምሳሌ '%')።"
-      },
-      {
-        "slot": "prefix",
-        "title": "የቅድመ-ቅጥያ ቦታ",
-        "description": "ከቁጥሩ በፊት የሚገባ አማራጭ ይዘት።"
-      },
-      {
-        "slot": "suffix",
-        "title": "የድህረ-ቅጥያ ቦታ",
-        "description": "ከቁጥሩ በኋላ የሚገባ አማራጭ ይዘት።"
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "ማቅለል የለም",
         "description": "ቆጠራው ቀጥተኛ እንዲሆን ማቅለልን አሰናክል።"
+      },
+      {
+        "slot": "prefix",
+        "title": "የቅድመ-ቅጥያ ቦታ",
+        "description": "ከቁጥሩ በፊት የሚገባ አማራጭ ይዘት።"
+      },
+      {
+        "slot": "suffix",
+        "title": "የድህረ-ቅጥያ ቦታ",
+        "description": "ከቁጥሩ በኋላ የሚገባ አማራጭ ይዘት።"
       }
     ]
   }

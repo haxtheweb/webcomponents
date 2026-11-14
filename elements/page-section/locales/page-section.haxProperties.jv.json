@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "Tombol-tombol",
         "description": "Klompok tombol sing katon ing sangisore teks."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "Teks jangkar",
         "description": "Label jangkar sing katon ing navigasi."
       }
-    ]
+    ],
+    "developer": []
   }
 }

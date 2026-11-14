@@ -14,16 +14,6 @@
         "property": "title",
         "title": "Títol alternatiu",
         "description": "Títol alternatiu enllaçat a l'origen del codi QR."
-      },
-      {
-        "property": "modulesize",
-        "title": "Mida",
-        "description": "Mida del codi QR."
-      },
-      {
-        "property": "margin",
-        "title": "Marge",
-        "description": "Espai al voltant del codi."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "Mida",
+        "description": "Mida del codi QR."
+      },
+      {
+        "property": "margin",
+        "title": "Marge",
+        "description": "Espai al voltant del codi."
       }
     ]
   }

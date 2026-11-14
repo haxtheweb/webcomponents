@@ -11,30 +11,8 @@
         "description": "Funso kwa ogwiritsa ntchito. Lembani malo oponyera, kenako lembani mayankho mpaka malo otsatira."
       },
       {
-        "property": "gradingFormat",
-        "title": "Njira yopatsira maksi",
-        "description": "OER Schema: njira yopatsira maksi pa mayeso awa (mwachitsanzo mfundo, chilembo, peresenti, kumaliza)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Cholinga cha maphunziro",
-        "description": "OER Schema: cholinga cha maphunziro chokhudzana ndi mayeso awa."
-      },
-      {
-        "property": "forCourse",
-        "title": "Maphunziro",
-        "description": "OER Schema: maphunziro omwe mayeso awa akukonzedwera."
-      },
-      {
         "property": "answers",
         "title": "Mayankho"
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Dzina la mayeso",
-        "description": "Dzina la mayeso logwiritsidwa ntchito pozindikira mu xAPI m'machitidwe owunika."
       }
     ],
     "advanced": [
@@ -47,6 +25,28 @@
         "property": "collapsed",
         "title": "Yambani yopindidwa",
         "description": "Ikapindika, yambani ngati mzere wotsekedwa womwe umangowonetsa funso ndi momwe lilili."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Njira yopatsira maksi",
+        "description": "OER Schema: njira yopatsira maksi pa mayeso awa (mwachitsanzo mfundo, chilembo, peresenti, kumaliza)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Cholinga cha maphunziro",
+        "description": "OER Schema: cholinga cha maphunziro chokhudzana ndi mayeso awa."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Dzina la mayeso",
+        "description": "Dzina la mayeso logwiritsidwa ntchito pozindikira mu xAPI m'machitidwe owunika."
+      },
+      {
+        "property": "forCourse",
+        "title": "Maphunziro",
+        "description": "OER Schema: maphunziro omwe mayeso awa akukonzedwera."
       }
     ]
   }

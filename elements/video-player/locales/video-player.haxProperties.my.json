@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "ပိုစတာ ပုံ",
         "description": "ပိုစတာ ပုံ URL။"
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "စာသား တရက်များ",
         "description": "ဗီဒီယိုအတွက် စာတန်းများ၊ စာတန်းထိုးများ၊ ဖော်ပြချက်များနှင့် အခြား စာသား တရက်များ။"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "စတင်ချိန်",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "အသံဖြင့် ဖော်ပြချက် တရက်",
         "description": "မြင်ကွင်းဆိုင်ရာ အစိတ်အပိုင်းများကို ပြောပြပေးသည့် အသံဖြင့် ဖော်ပြချက် တရက် (MP3 ဖိုင်) သို့ URL။"
+      },
+      {
+        "property": "accentColor",
+        "title": "အထူးပြု အရောင်",
+        "description": "(ရပ်ဆိုင်းထားသည်) ဖွင့်စက်အတွက် accent အရောင်ကို ရွေးပါ။"
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "ဘာသာစကား",
         "description": "မီဒီယာ၏ ဘာသာစကား။"
-      },
-      {
-        "property": "accentColor",
-        "title": "အထူးပြု အရောင်",
-        "description": "(ရပ်ဆိုင်းထားသည်) ဖွင့်စက်အတွက် accent အရောင်ကို ရွေးပါ။"
       }
     ]
   }

@@ -9,7 +9,21 @@
         "property": "target",
         "title": "ターゲット",
         "description": "ゲームビルドへのパス。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "キャンバスの幅",
+        "description": "キャンバスのCSSの幅（例: px や em）。"
       },
+      {
+        "property": "height",
+        "title": "キャンバスの高さ",
+        "description": "キャンバスのCSSの高さ（例: px や em）。"
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "圧縮方式",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "製品バージョン",
         "description": "リリースバージョン。"
-      },
-      {
-        "property": "width",
-        "title": "キャンバスの幅",
-        "description": "キャンバスのCSSの幅（例: px や em）。"
-      },
-      {
-        "property": "height",
-        "title": "キャンバスの高さ",
-        "description": "キャンバスのCSSの高さ（例: px や em）。"
       },
       {
         "property": "background",

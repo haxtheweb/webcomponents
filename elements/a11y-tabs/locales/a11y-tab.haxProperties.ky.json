@@ -10,10 +10,6 @@
         "title": "Өтмөктүн сөлөкөтү"
       },
       {
-        "property": "disabled",
-        "title": "Өчүрүлгөн"
-      },
-      {
         "property": "label",
         "title": "Өтмөктүн белгиси"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "Уникалдуу ID"
-      },
-      {
         "property": "flag",
         "title": "Кошумча белги тексти"
       },
       {
         "property": "flagIcon",
         "title": "Кошумча белги сөлөкөтү"
+      },
+      {
+        "property": "disabled",
+        "title": "Өчүрүлгөн"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "Уникалдуу ID"
       }
     ]
   }

@@ -8,7 +8,7 @@
   "description": "Embed external web content in an iframe.",
   "icon": "hax:iframe",
   "tags": [
-    "Other",
+    "Media",
     "iframe",
     "embed",
     "web",
@@ -18,7 +18,7 @@
   "import": "@haxtheweb/iframe-loader/iframe-loader.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/iframe-loader/iframe-loader.js",
   "install": "npm i @haxtheweb/iframe-loader",
-  "demoHtml": "<iframe src=\"https://haxtheweb.org\" sandbox=\"allow-scripts allow-same-origin\"></iframe>",
+  "demoHtml": "<iframe-loader source=\"https://haxtheweb.org/\" height=\"500px\" width=\"100%\"></iframe-loader>",
   "attributes": [
     {
       "name": "loading",
@@ -99,7 +99,7 @@
       "icon": "hax:iframe",
       "color": "blue-grey",
       "tags": [
-        "Other",
+        "Media",
         "iframe",
         "embed",
         "web",
@@ -163,16 +163,17 @@
     },
     "demoSchema": [
       {
-        "tag": "iframe",
+        "tag": "iframe-loader",
         "properties": {
-          "src": "https://haxtheweb.org",
-          "sandbox": "allow-scripts allow-same-origin"
+          "source": "https://haxtheweb.org/",
+          "height": "500px",
+          "width": "100%"
         },
         "content": ""
       }
     ]
   },
-  "surfaceHash": "98a75f4af676",
+  "surfaceHash": "a901671875cc",
   "walkthroughs": [
     {
       "id": "",
@@ -180,13 +181,13 @@
       "order": 0,
       "src": "iframe-loader.motion.json",
       "file": "lib/iframe-loader.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/iframe-loader.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

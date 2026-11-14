@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Kupu i muri",
         "description": "Kupu ka whakaaturia i muri i te tau (hei tauira '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Mokamoka i mua",
-        "description": "He ihirangi mokamoka kōwhiri i mua i te tau."
-      },
-      {
-        "slot": "suffix",
-        "title": "Mokamoka i muri",
-        "description": "He ihirangi mokamoka kōwhiri i muri i te tau."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Kāore he whakangāwari",
         "description": "Monokia te whakangāwari kia rārangi tōtika te tatau."
+      },
+      {
+        "slot": "prefix",
+        "title": "Mokamoka i mua",
+        "description": "He ihirangi mokamoka kōwhiri i mua i te tau."
+      },
+      {
+        "slot": "suffix",
+        "title": "Mokamoka i muri",
+        "description": "He ihirangi mokamoka kōwhiri i muri i te tau."
       }
     ]
   }

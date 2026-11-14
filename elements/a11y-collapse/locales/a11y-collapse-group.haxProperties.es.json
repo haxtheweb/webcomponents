@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "Grupo expandible/contraíble",
-    "description": "Un grupo de elementos expandibles y contraíbles."
+    "title": "Grupo plegable",
+    "description": "Un grupo de contenedores plegables."
   },
   "settings": {
     "configure": [

@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "ფილტრის დაშვება",
         "description": "სვეტის მნიშვნელობებით გაფილტვრის დაშვება."
-      },
-      {
-        "property": "numericStyles",
-        "title": "რიცხვითი სტილი",
-        "description": "რიცხვითი სვეტებისთვის რიცხვითი სტილის გამოყენება."
-      },
-      {
-        "property": "responsive",
-        "title": "ადაპტური",
-        "description": "ცხრილის განლაგების მორგება პატარა ეკრანებზე."
-      },
-      {
-        "property": "rubricMode",
-        "title": "რუბრიკის რეჟიმი",
-        "description": "ამ ცხრილის OER Schema Rubric-ად ინტერპრეტაცია, რათა გამოიცეს Rubric, RubricScale, RubricCriterion და RubricLevel მეტამონაცემები."
-      },
-      {
-        "property": "rubricType",
-        "title": "რუბრიკის ტიპი",
-        "description": "რუბრიკის სტილი, რომელიც გამოიცემა როგორც oer:rubricType (აზრი აქვს მხოლოდ რუბრიკის რეჟიმის ჩართვისას).",
-        "options": {
-          "": "(არცერთი)",
-          "analytic": "ანალიტიკური",
-          "holistic": "ჰოლისტიკური",
-          "single-point": "ერთქულიანი",
-          "checklist": "საკონტროლო სია"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "ბეჭდვის ღილაკი",
         "description": "მხოლოდ ცხრილის დასაბეჭდი ღილაკის დამატება."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "რიცხვითი სტილი",
+        "description": "რიცხვითი სვეტებისთვის რიცხვითი სტილის გამოყენება."
+      },
+      {
+        "property": "responsive",
+        "title": "ადაპტური",
+        "description": "ცხრილის განლაგების მორგება პატარა ეკრანებზე."
+      },
+      {
+        "property": "rubricMode",
+        "title": "რუბრიკის რეჟიმი",
+        "description": "ამ ცხრილის OER Schema Rubric-ად ინტერპრეტაცია, რათა გამოიცეს Rubric, RubricScale, RubricCriterion და RubricLevel მეტამონაცემები."
+      },
+      {
+        "property": "rubricType",
+        "title": "რუბრიკის ტიპი",
+        "description": "რუბრიკის სტილი, რომელიც გამოიცემა როგორც oer:rubricType (აზრი აქვს მხოლოდ რუბრიკის რეჟიმის ჩართვისას).",
+        "options": {
+          "": "(არცერთი)",
+          "analytic": "ანალიტიკური",
+          "holistic": "ჰოლისტიკური",
+          "single-point": "ერთქულიანი",
+          "checklist": "საკონტროლო სია"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "CSV მონაცემები",
         "description": "ცხრილის შექმნა ატვირთული CSV ფაილიდან."
       }
-    ]
+    ],
+    "developer": []
   }
 }

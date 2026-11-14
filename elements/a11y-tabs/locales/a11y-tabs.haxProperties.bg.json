@@ -11,20 +11,17 @@
         "description": "Достъпен етикет за набора от раздели."
       },
       {
-        "property": "disabled",
-        "title": "Деактивирано",
-        "description": "Деактивиране на всички раздели."
-      },
-      {
-        "property": "hidden",
-        "title": "Скрито",
-        "description": "Скриване на набора от раздели."
-      },
-      {
         "property": "sticky",
         "title": "Закрепени",
         "description": "Хоризонталните раздели да остават горе при превъртане."
       },
+      {
+        "slot": "",
+        "title": "Раздели",
+        "description": "Поредица от елементи <a11y-tab/>."
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "Точка на прекъсване на оформлението",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "Точка на прекъсване на иконите",
         "description": "Точка на прекъсване за показване на текст с икони. По подразбиране е 0; -1 за режим само с икони."
-      },
-      {
-        "slot": "",
-        "title": "Раздели",
-        "description": "Поредица от елементи <a11y-tab/>."
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "Деактивирано",
+        "description": "Деактивиране на всички раздели."
+      },
+      {
+        "property": "hidden",
+        "title": "Скрито",
+        "description": "Скриване на набора от раздели."
+      },
       {
         "property": "id",
         "title": "Уникален ID",

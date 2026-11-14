@@ -26,7 +26,8 @@
         "description": "സ്ക്രീൻ റീഡറുകൾക്കും മെച്ചപ്പെട്ട SEO-യ്ക്കും ഉപയോഗപ്രദം."
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "ഗുണനിലവാരം",

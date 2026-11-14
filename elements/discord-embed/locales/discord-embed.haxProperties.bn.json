@@ -9,7 +9,9 @@
         "property": "source",
         "title": "রিসোর্স URL",
         "description": "রিসোর্স URL।"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "উচ্চতা",

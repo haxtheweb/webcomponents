@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "ಬಾಣ ಇಲ್ಲ",
         "description": "ಬಟನ್ ಬಾಣವನ್ನು ಮರೆಮಾಡಿ."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "ಲಿಂಕ್: ಗುರಿ",
@@ -54,7 +52,9 @@
           "_top": "ಮೇಲಿನ ವಿಂಡೋ - _top",
           "_parent": "ಮೂಲ ವಿಂಡೋ - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "ಲಿಂಕ್: rel",

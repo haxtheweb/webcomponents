@@ -4,7 +4,7 @@
     "description": "Chipika chosintha choonetsa ana a tsamba lino"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "Njira yosintha",
@@ -14,7 +14,9 @@
           "parent": "Ana a kholo",
           "ancestor": "Ana onse kuchokera kwa kholo lapamwamba kwambiri"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "Mlingo woyambira"

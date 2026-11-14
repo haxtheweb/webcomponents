@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Kapsyen",
         "description": "Kapsyen untuk imej."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Tajuk Rajah",
-        "description": "Tajuk untuk label rajah."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Perihalan Rajah",
-        "description": "Perihalan untuk label rajah."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Lumpuhkan modal imej",
         "description": "Lumpuhkan klik yang membuka imej dalam dialog pemeriksa imej."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Tajuk Rajah",
+        "description": "Tajuk untuk label rajah."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Perihalan Rajah",
+        "description": "Perihalan untuk label rajah."
       }
     ],
     "developer": [

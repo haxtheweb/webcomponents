@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "Πρόγραμμα προβολής PDF",
+    "title": "Προβολή PDF",
     "description": "Ενσωμάτωση αρχείου PDF στη σελίδα με προαιρετική διάταξη κάρτας και κουμπί λήψης."
   },
   "settings": {
@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Μήνυμα μη υποστήριξης",
-        "description": "Μήνυμα όταν το πρόγραμμα περιήγησης δεν μπορεί να εμφανίσει αρχεία PDF."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Μήνυμα συνδέσμου μη υποστήριξης",
-        "description": "Κείμενο συνδέσμου όταν το πρόγραμμα περιήγησης δεν μπορεί να εμφανίσει αρχεία PDF."
-      },
-      {
         "property": "width",
         "title": "Πλάτος",
         "description": "Πλάτος του προγράμματος προβολής PDF."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Ύψος",
         "description": "Ύψος του προγράμματος προβολής PDF."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Μήνυμα μη υποστήριξης",
+        "description": "Μήνυμα όταν το πρόγραμμα περιήγησης δεν μπορεί να εμφανίσει αρχεία PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Μήνυμα συνδέσμου μη υποστήριξης",
+        "description": "Κείμενο συνδέσμου όταν το πρόγραμμα περιήγησης δεν μπορεί να εμφανίσει αρχεία PDF."
       }
     ]
   }

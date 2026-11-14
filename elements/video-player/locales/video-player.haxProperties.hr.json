@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Naslovna slika",
         "description": "URL naslovne slike."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Tekstni zapisi",
         "description": "Titlovi za gluhe, podnapisi, opisi i drugi tekstni zapisi za video."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Vrijeme početka",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Zapis zvučnog opisa",
         "description": "URL zapisa zvučnog opisa (MP3 datoteka) koji pripovijeda vizualne elemente."
+      },
+      {
+        "property": "accentColor",
+        "title": "Boja isticanja",
+        "description": "(zastarjelo) Odaberite naglasnu boju playera."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Jezik",
         "description": "Jezik medija."
-      },
-      {
-        "property": "accentColor",
-        "title": "Boja isticanja",
-        "description": "(zastarjelo) Odaberite naglasnu boju playera."
       }
     ]
   }

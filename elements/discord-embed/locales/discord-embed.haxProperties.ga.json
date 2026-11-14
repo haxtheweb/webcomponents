@@ -9,7 +9,9 @@
         "property": "source",
         "title": "URL na hAcmhainne",
         "description": "URL na hacmhainne."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Airde",

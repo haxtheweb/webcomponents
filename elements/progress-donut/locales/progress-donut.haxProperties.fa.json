@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "دونات پیشرفت",
-    "description": "دونات پیشرفت"
+    "description": "نمودار حلقه‌ای که پیشرفت به سوی مجموع را نشان می‌دهد."
   },
   "settings": {
     "configure": [
@@ -26,11 +26,6 @@
         "description": "متن جایگزین تصویر."
       },
       {
-        "property": "animated",
-        "title": "متحرک",
-        "description": "آیا پیشرفت در اولین بارگذاری متحرک باشد"
-      },
-      {
         "property": "complete",
         "title": "کامل",
         "description": "آرایه‌ای از مقادیر تکمیل‌شده."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "کل",
         "description": "مقدار کل وقتی همه موارد کامل شده‌اند."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "متحرک",
+        "description": "آیا پیشرفت در اولین بارگذاری متحرک باشد"
       },
       {
         "property": "startAngle",

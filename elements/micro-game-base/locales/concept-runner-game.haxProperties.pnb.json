@@ -89,7 +89,9 @@
         "property": "gameTitle",
         "title": "گیم دا ناں",
         "description": "پیش رفت دے ایونٹس تے OER Schema مارک اپ وچ اس گیم دا ناں رکھدا اے۔"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "گیم آئی ڈی",

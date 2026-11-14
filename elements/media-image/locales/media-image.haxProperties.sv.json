@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Bildtext",
         "description": "Bildtext för bilden."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Figurtitel",
-        "description": "Titel för figuretiketten."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Figurbeskrivning",
-        "description": "Beskrivning för figuretiketten."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Inaktivera bilddialog",
         "description": "Förhindra att klick öppnar bilden i en dialogruta för bildgranskning."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Figurtitel",
+        "description": "Titel för figuretiketten."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Figurbeskrivning",
+        "description": "Beskrivning för figuretiketten."
       }
     ],
     "developer": [

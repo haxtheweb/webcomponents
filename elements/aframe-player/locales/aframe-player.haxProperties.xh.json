@@ -11,6 +11,13 @@
         "description": "I-URL yale fayile ye-AR."
       },
       {
+        "property": "skyColor",
+        "title": "Umbala wesibhakabhaka",
+        "description": "Khetha umbala wesibhakabhaka kumboniso."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "Indawo ye-X yento kwi-AR."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "Indawo ye-Z yento kwi-AR."
-      },
-      {
-        "property": "skyColor",
-        "title": "Umbala wesibhakabhaka",
-        "description": "Khetha umbala wesibhakabhaka kumboniso."
       }
     ]
   }

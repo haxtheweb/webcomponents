@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Encadré d'activité",
-    "description": "Petit bloc de titre stylisé."
+    "description": "Un titre étiqueté qui marque le début d’une activité."
   },
   "settings": {
     "configure": [

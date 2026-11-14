@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Bảng CSV",
-    "description": "Có thể tạo bảng từ tệp CSV bất kể tệp nằm ở đâu."
+    "description": "Hiển thị tệp CSV dưới dạng bảng dễ tiếp cận."
   },
   "settings": {
     "configure": [

@@ -27,7 +27,7 @@
   ],
   "cssProperties": [],
   "hax": {
-    "schema": "elements/simple-cta/simple-cta.js",
+    "schema": "elements/simple-cta/lib/simple-cta.haxProperties.json",
     "gizmo": true,
     "properties": [
       "hideIcon",

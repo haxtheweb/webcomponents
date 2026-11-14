@@ -89,7 +89,9 @@
         "property": "gameTitle",
         "title": "ဂိမ်းအမည်",
         "description": "တိုးတက်မှုဖြစ်ရပ်များနှင့် OER Schema မှတ်သားချက်တွင် ဤဂိမ်းကို အမည်ပေးသည်။"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "ဂိမ်း ID",

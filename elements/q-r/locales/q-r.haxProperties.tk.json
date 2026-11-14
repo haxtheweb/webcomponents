@@ -14,16 +14,6 @@
         "property": "title",
         "title": "Alternatiw at",
         "description": "QR kodunyň çeşmesine baglanan alternatiw at."
-      },
-      {
-        "property": "modulesize",
-        "title": "Ölçeg",
-        "description": "QR kodunyň ölçegi."
-      },
-      {
-        "property": "margin",
-        "title": "Gyra boşlugy",
-        "description": "Koduň daşyndaky boşluk."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "Ölçeg",
+        "description": "QR kodunyň ölçegi."
+      },
+      {
+        "property": "margin",
+        "title": "Gyra boşlugy",
+        "description": "Koduň daşyndaky boşluk."
       }
     ]
   }

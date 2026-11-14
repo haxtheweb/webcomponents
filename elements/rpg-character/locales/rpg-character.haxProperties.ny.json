@@ -11,11 +11,6 @@
         "description": "Liwu logwiritsidwa ntchito kupanga munthu mwachisawawa."
       },
       {
-        "property": "code",
-        "title": "Khodi ya munthu",
-        "description": "Matani khodi yosungidwa kuti mupangenso munthu ameneyo."
-      },
-      {
         "property": "hat",
         "title": "Chipewa",
         "description": "Mtundu wa chipewa.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Chigoba",
-        "description": "Chigoba chovala kumaso kapena kumutu.",
-        "options": {
-          "none": "Palibe",
-          "lion": "Mkango",
-          "plague": "Dokotala wa mliri",
-          "theater": "Zisudzo",
-          "pumpkin": "Dzungu",
-          "ghost": "Mzimu",
-          "mummy": "Mummy",
-          "wrestler": "Chigoba cha wolimbana",
-          "block-head": "Mutu wa njerwa",
-          "web": "Chigoba cha ukonde",
-          "werewolf": "Nkhope ya munthu-mmbulu",
-          "shadow": "Nkhope yamthunzi"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Zodzoladzola",
-        "description": "Utoto wa kumaso kapena lipisitiki.",
-        "options": {
-          "none": "Palibe",
-          "red-lipstick": "Lipisitiki yofiira",
-          "pink-lipstick": "Lipisitiki ya pinki",
-          "berry-lipstick": "Lipisitiki ya berry",
-          "clown": "Utoto wa woseketsa",
-          "fangs": "Mano aatali",
-          "skull": "Utoto wa chigaza",
-          "zombie": "Utoto wa zombi",
-          "red-nose": "Mphuno yofiira",
-          "white-beard": "Ndevu zoyera",
-          "domino": "Chigoba cha ngwazi",
-          "carrot": "Mphuno ya karoti",
-          "bunny": "Mphuno ya kalulu",
-          "mustache": "Ndevu za pamlomo",
-          "monster": "Utoto wa nkhope wa chilombo",
-          "round-glasses": "Magalasi ozungulira"
-        }
-      },
-      {
         "property": "expression",
         "title": "Mawonekedwe a nkhope",
         "description": "Mawonekedwe a nkhope.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Chiweto",
+        "description": "Chiweto pafupi ndi munthuyo.",
+        "options": {
+          "none": "Palibe",
+          "cat": "Mphaka",
+          "dog": "Galu",
+          "bunny": "Kalulu",
+          "goldfish": "Nsomba yagolide",
+          "slime": "Matope",
+          "squirrel": "Gologolo",
+          "dragon": "Chinjoka chaching'ono",
+          "parrot": "Pakeke",
+          "owl": "Kadzidzi",
+          "bat": "Mileme"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Khodi ya munthu",
+        "description": "Matani khodi yosungidwa kuti mupangenso munthu ameneyo."
+      },
+      {
+        "property": "mask",
+        "title": "Chigoba",
+        "description": "Chigoba chovala kumaso kapena kumutu.",
+        "options": {
+          "none": "Palibe",
+          "lion": "Mkango",
+          "plague": "Dokotala wa mliri",
+          "theater": "Zisudzo",
+          "pumpkin": "Dzungu",
+          "ghost": "Mzimu",
+          "mummy": "Mummy",
+          "wrestler": "Chigoba cha wolimbana",
+          "block-head": "Mutu wa njerwa",
+          "web": "Chigoba cha ukonde",
+          "werewolf": "Nkhope ya munthu-mmbulu",
+          "shadow": "Nkhope yamthunzi"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Zodzoladzola",
+        "description": "Utoto wa kumaso kapena lipisitiki.",
+        "options": {
+          "none": "Palibe",
+          "red-lipstick": "Lipisitiki yofiira",
+          "pink-lipstick": "Lipisitiki ya pinki",
+          "berry-lipstick": "Lipisitiki ya berry",
+          "clown": "Utoto wa woseketsa",
+          "fangs": "Mano aatali",
+          "skull": "Utoto wa chigaza",
+          "zombie": "Utoto wa zombi",
+          "red-nose": "Mphuno yofiira",
+          "white-beard": "Ndevu zoyera",
+          "domino": "Chigoba cha ngwazi",
+          "carrot": "Mphuno ya karoti",
+          "bunny": "Mphuno ya kalulu",
+          "mustache": "Ndevu za pamlomo",
+          "monster": "Utoto wa nkhope wa chilombo",
+          "round-glasses": "Magalasi ozungulira"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Mawu a pa mbendera",
         "description": "Zilembo zofika 4 zowonekera pa mbendera."
@@ -310,24 +330,6 @@
           "skates": "Nsapato za skate",
           "skateboard": "Skateboard",
           "hoverboard": "Bolodi louluka"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Chiweto",
-        "description": "Chiweto pafupi ndi munthuyo.",
-        "options": {
-          "none": "Palibe",
-          "cat": "Mphaka",
-          "dog": "Galu",
-          "bunny": "Kalulu",
-          "goldfish": "Nsomba yagolide",
-          "slime": "Matope",
-          "squirrel": "Gologolo",
-          "dragon": "Chinjoka chaching'ono",
-          "parrot": "Pakeke",
-          "owl": "Kadzidzi",
-          "bat": "Mileme"
         }
       },
       {

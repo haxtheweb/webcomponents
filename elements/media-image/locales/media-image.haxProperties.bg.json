@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Надпис",
         "description": "Надпис за изображението."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Заглавие на фигурата",
-        "description": "Заглавие за етикета на фигурата."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Описание на фигурата",
-        "description": "Описание за етикета на фигурата."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Изключване на модалния прозорец за изображението",
         "description": "Изключване на отварянето на изображението в диалог за разглеждане при щракване."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Заглавие на фигурата",
+        "description": "Заглавие за етикета на фигурата."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Описание на фигурата",
+        "description": "Описание за етикета на фигурата."
       }
     ],
     "developer": [

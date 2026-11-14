@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Permet filtrar",
         "description": "Permet filtrar pels valors de les columnes."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Estil numèric",
-        "description": "Aplica estil numèric a les columnes numèriques."
-      },
-      {
-        "property": "responsive",
-        "title": "Adaptable",
-        "description": "Ajusta la disposició de la taula a les pantalles petites."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Mode rúbrica",
-        "description": "Interpreta aquesta taula com una Rubric d'OER Schema perquè s'emetin les metadades Rubric, RubricScale, RubricCriterion i RubricLevel."
-      },
-      {
-        "property": "rubricType",
-        "title": "Tipus de rúbrica",
-        "description": "Estil de rúbrica emès com a oer:rubricType (només té sentit quan el mode rúbrica està activat).",
-        "options": {
-          "": "(cap)",
-          "analytic": "Analítica",
-          "holistic": "Holística",
-          "single-point": "De punt únic",
-          "checklist": "Llista de comprovació"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Botó d'impressió",
         "description": "Afegeix un botó per imprimir només la taula."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Estil numèric",
+        "description": "Aplica estil numèric a les columnes numèriques."
+      },
+      {
+        "property": "responsive",
+        "title": "Adaptable",
+        "description": "Ajusta la disposició de la taula a les pantalles petites."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Mode rúbrica",
+        "description": "Interpreta aquesta taula com una Rubric d'OER Schema perquè s'emetin les metadades Rubric, RubricScale, RubricCriterion i RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "Tipus de rúbrica",
+        "description": "Estil de rúbrica emès com a oer:rubricType (només té sentit quan el mode rúbrica està activat).",
+        "options": {
+          "": "(cap)",
+          "analytic": "Analítica",
+          "holistic": "Holística",
+          "single-point": "De punt únic",
+          "checklist": "Llista de comprovació"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "Dades CSV",
         "description": "Crea una taula a partir d'un fitxer CSV pujat."
       }
-    ]
+    ],
+    "developer": []
   }
 }

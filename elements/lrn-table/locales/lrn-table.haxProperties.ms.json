@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Jadual CSV",
-    "description": "Ini boleh menjana jadual daripada fail CSV tidak kira di mana ia terletak."
+    "description": "Memaparkan fail CSV sebagai jadual boleh akses."
   },
   "settings": {
     "configure": [

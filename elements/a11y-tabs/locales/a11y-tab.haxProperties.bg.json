@@ -10,10 +10,6 @@
         "title": "Икона на раздела"
       },
       {
-        "property": "disabled",
-        "title": "Деактивирано"
-      },
-      {
         "property": "label",
         "title": "Етикет на раздела"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "Уникален ID"
-      },
-      {
         "property": "flag",
         "title": "Незадължителен текст на флага"
       },
       {
         "property": "flagIcon",
         "title": "Незадължителна икона на флага"
+      },
+      {
+        "property": "disabled",
+        "title": "Деактивирано"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "Уникален ID"
       }
     ]
   }

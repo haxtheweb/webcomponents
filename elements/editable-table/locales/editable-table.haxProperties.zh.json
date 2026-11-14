@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "允许筛选",
         "description": "允许按列值筛选。"
-      },
-      {
-        "property": "numericStyles",
-        "title": "数字样式",
-        "description": "对数字列应用数字样式。"
-      },
-      {
-        "property": "responsive",
-        "title": "响应式",
-        "description": "在小屏幕上调整表格布局。"
-      },
-      {
-        "property": "rubricMode",
-        "title": "评分量规模式",
-        "description": "将此表格解释为 OER Schema Rubric，以输出 Rubric、RubricScale、RubricCriterion 和 RubricLevel 元数据。"
-      },
-      {
-        "property": "rubricType",
-        "title": "量规类型",
-        "description": "以 oer:rubricType 输出的量规样式（仅在启用评分量规模式时有效）。",
-        "options": {
-          "": "（无）",
-          "analytic": "分析型",
-          "holistic": "整体型",
-          "single-point": "单点型",
-          "checklist": "核对清单"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "打印按钮",
         "description": "添加仅打印表格的按钮。"
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "数字样式",
+        "description": "对数字列应用数字样式。"
+      },
+      {
+        "property": "responsive",
+        "title": "响应式",
+        "description": "在小屏幕上调整表格布局。"
+      },
+      {
+        "property": "rubricMode",
+        "title": "评分量规模式",
+        "description": "将此表格解释为 OER Schema Rubric，以输出 Rubric、RubricScale、RubricCriterion 和 RubricLevel 元数据。"
+      },
+      {
+        "property": "rubricType",
+        "title": "量规类型",
+        "description": "以 oer:rubricType 输出的量规样式（仅在启用评分量规模式时有效）。",
+        "options": {
+          "": "（无）",
+          "analytic": "分析型",
+          "holistic": "整体型",
+          "single-point": "单点型",
+          "checklist": "核对清单"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "CSV 数据",
         "description": "从上传的 CSV 文件创建表格。"
       }
-    ]
+    ],
+    "developer": []
   }
 }

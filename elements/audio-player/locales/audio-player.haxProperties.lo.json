@@ -46,6 +46,16 @@
         "property": "accentColor",
         "title": "ສີເນັ້ນ",
         "description": "ເລືອກສີເນັ້ນສຳລັບເຄື່ອງຫຼິ້ນ."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "ເຊື່ອງເວລາ",
+        "description": "ເຊື່ອງເວລາໃນບົດຖອດຄວາມ."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "ເຊື່ອງບົດຖອດຄວາມ",
+        "description": "ເຊື່ອງບົດຖອດຄວາມເປັນຄ່າເລີ່ມຕົ້ນ."
       }
     ],
     "developer": [
@@ -72,16 +82,6 @@
         "property": "disableInteractive",
         "title": "ປິດການໂຕ້ຕອບ",
         "description": "ປິດໂໝດໂຕ້ຕອບທີ່ເຮັດໃຫ້ບົດຖອດຄວາມຄລິກໄດ້."
-      },
-      {
-        "property": "hideTimestamps",
-        "title": "ເຊື່ອງເວລາ",
-        "description": "ເຊື່ອງເວລາໃນບົດຖອດຄວາມ."
-      },
-      {
-        "property": "hideTranscript",
-        "title": "ເຊື່ອງບົດຖອດຄວາມ",
-        "description": "ເຊື່ອງບົດຖອດຄວາມເປັນຄ່າເລີ່ມຕົ້ນ."
       },
       {
         "property": "lang",

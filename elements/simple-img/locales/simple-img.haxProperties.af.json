@@ -26,7 +26,8 @@
         "description": "Nuttig vir skermlesers en beter SEO."
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "Kwaliteit",

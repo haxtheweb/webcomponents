@@ -4,7 +4,7 @@
     "description": "Ағымдағы беттің еншілес беттерін көрсететін динамикалық блок"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "Динамикалық әдіс",
@@ -14,7 +14,9 @@
           "parent": "Ата-ана беттің еншілес беттері",
           "ancestor": "Ең жоғарғы ата беттің барлық еншілес беттері"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "Бастапқы деңгей"

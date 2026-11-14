@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Eenvoudige afbeelding",
-    "description": "Bewerk afbeeldingen met eenvoudige parameters."
+    "description": "Een afbeelding die met eenvoudige instellingen wordt geschaald, bijgesneden of gedraaid."
   },
   "settings": {
     "configure": [
@@ -26,7 +26,8 @@
         "description": "Handig voor schermlezers en betere SEO."
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "Kwaliteit",

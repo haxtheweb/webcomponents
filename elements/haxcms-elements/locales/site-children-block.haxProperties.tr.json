@@ -1,10 +1,10 @@
 {
   "gizmo": {
-    "title": "HAXcms: alt blok",
-    "description": "Geçerli sayfanın alt sayfalarını gösteren dinamik blok"
+    "title": "Alt sayfalar",
+    "description": "Geçerli sayfanın alt sayfalarını listeler."
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "Dinamik yöntem",
@@ -14,7 +14,9 @@
           "parent": "Üst öğenin alt öğeleri",
           "ancestor": "En üst atadan itibaren tüm alt öğeler"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "Başlangıç düzeyi"

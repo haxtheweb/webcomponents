@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "Badhamada",
         "description": "Koox badhamo ah oo ka muuqda qoraalka hoostiisa."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "Qoraalka barroosinka",
         "description": "Calaamadda barroosinka ee ka muuqata socodka."
       }
-    ]
+    ],
+    "developer": []
   }
 }

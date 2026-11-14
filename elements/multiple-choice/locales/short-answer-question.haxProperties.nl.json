@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Open vraag met kort antwoord",
-    "description": "Laat de gebruiker een eenvoudige vraag beantwoorden"
+    "description": "Een vraag die de leerling in een of twee zinnen beantwoordt."
   },
   "settings": {
     "configure": [

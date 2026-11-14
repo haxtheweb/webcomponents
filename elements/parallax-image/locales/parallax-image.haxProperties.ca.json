@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Imatge amb paral·laxi",
-    "description": "Imatge que es desplaça"
+    "description": "Una imatge d’amplada completa que es desplaça més a poc a poc que la pàgina, amb un títol al damunt."
   },
   "settings": {
     "configure": [

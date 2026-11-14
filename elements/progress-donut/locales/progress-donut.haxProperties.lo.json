@@ -26,11 +26,6 @@
         "description": "ຂໍ້ຄວາມແທນສຳລັບຮູບພາບ."
       },
       {
-        "property": "animated",
-        "title": "ມີພາບເຄື່ອນໄຫວ",
-        "description": "ຄວາມຄືບໜ້າຈະເຄື່ອນໄຫວເມື່ອໂຫຼດຄັ້ງທຳອິດຫຼືບໍ່"
-      },
-      {
         "property": "complete",
         "title": "ສຳເລັດ",
         "description": "ອາເຣຂອງຄ່າທີ່ສຳເລັດແລ້ວ."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "ທັງໝົດ",
         "description": "ຈຳນວນທັງໝົດເມື່ອທຸກລາຍການສຳເລັດ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "ມີພາບເຄື່ອນໄຫວ",
+        "description": "ຄວາມຄືບໜ້າຈະເຄື່ອນໄຫວເມື່ອໂຫຼດຄັ້ງທຳອິດຫຼືບໍ່"
       },
       {
         "property": "startAngle",

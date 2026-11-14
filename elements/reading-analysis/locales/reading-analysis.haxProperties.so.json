@@ -38,21 +38,6 @@
         "slot": "",
         "title": "Qoraal",
         "description": "Qoraalka ardaydu ka shaqeeyaan. HTML kasta: cinwaanno, baaragaraafyo, liisas iyo sawirro."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "Qaabka dhibcaha",
-        "description": "OER Schema: qaabka dhibcaha qiimayntan (tusaale dhibco, xaraf, boqolkiiba, dhammaystir)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Ujeeddada waxbarasho",
-        "description": "OER Schema: ujeeddada waxbarasho ee la xiriirta qiimayntan."
-      },
-      {
-        "property": "forCourse",
-        "title": "Koorso",
-        "description": "OER Schema: koorsada loogu talagalay qiimayntan."
       }
     ],
     "advanced": [
@@ -70,6 +55,16 @@
         "property": "collapsed",
         "title": "Ku bilow isku laaban",
         "description": "Marka la isku laaban karo, ku bilow saf xiran oo muujinaya su'aasha iyo xaaladeeda oo keliya."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Qaabka dhibcaha",
+        "description": "OER Schema: qaabka dhibcaha qiimayntan (tusaale dhibco, xaraf, boqolkiiba, dhammaystir)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Ujeeddada waxbarasho",
+        "description": "OER Schema: ujeeddada waxbarasho ee la xiriirta qiimayntan."
       }
     ],
     "developer": [
@@ -77,6 +72,11 @@
         "property": "quizName",
         "title": "Magaca imtixaanka",
         "description": "Magaca imtixaanka loo gudbiyo deegaannada xAPI si loo aqoonsado walaxdan"
+      },
+      {
+        "property": "forCourse",
+        "title": "Koorso",
+        "description": "OER Schema: koorsada loogu talagalay qiimayntan."
       }
     ]
   }

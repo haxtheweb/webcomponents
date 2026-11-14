@@ -21,15 +21,6 @@
         "description": "Дереккөз қаралған күн."
       },
       {
-        "property": "scope",
-        "title": "Аумақ",
-        "description": "Дәйексөз келтірілетін элемент аумағы.",
-        "options": {
-          "sibling": "Көршілес элемент",
-          "parent": "Ата-ана элемент"
-        }
-      },
-      {
         "property": "license",
         "title": "Лицензия",
         "description": "Дәйексөз алынған жұмыстың лицензиясы."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Авторы",
         "description": "Дәйексөз алынған жұмыстың авторы немесе иесі."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Аумақ",
+        "description": "Дәйексөз келтірілетін элемент аумағы.",
+        "options": {
+          "sibling": "Көршілес элемент",
+          "parent": "Ата-ана элемент"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "OER Schema түрі",

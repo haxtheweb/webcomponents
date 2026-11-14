@@ -4,17 +4,16 @@
     "description": "Idoqq kontenut interattiv H5P minn fajl .h5p mgħoddi, mingħajr bżonn ta' server H5P"
   },
   "settings": {
-    "configure": [
-      {
-        "slot": "",
-        "description": "Ittrasferixxi jew illinkja fajl .h5p. Jinfetaħ fil-browser; ma hemm bżonn ta' ebda server H5P.",
-        "title": "Fajl H5P"
-      }
-    ],
+    "configure": [],
     "advanced": [
       {
         "title": "Kodiċi tal-embed iframe antik",
         "description": "Biss għal kontenut eqdem li jinkorpora iframe H5P minn sit ieħor. Ħalliha vojta meta jkun issettjat fajl .h5p hawn fuq."
+      },
+      {
+        "slot": "",
+        "description": "Ittrasferixxi jew illinkja fajl .h5p. Jinfetaħ fil-browser; ma hemm bżonn ta' ebda server H5P.",
+        "title": "Fajl H5P"
       }
     ]
   }

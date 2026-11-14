@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Póster ta'ãnga",
         "description": "Póster ta'ãnga URL."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Moñe'ẽrã rape",
         "description": "Subtítulo, myesakã ha ambue moñe'ẽrã rape ta'ãngamýi rehegua."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Ñepyrũ aravo",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Myesakã ñe'ẽme rape",
         "description": "URL peteĩ myesakã ñe'ẽme rape (marandurenda MP3) omombe'úva mba'e ojehecháva."
+      },
+      {
+        "property": "accentColor",
+        "title": "Sa'y ojehechaukavéva",
+        "description": "(ojeporuvéma'ỹva) Eiporavo sa'y jehechaukaha mboguatahápe g̃uarã."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Ñe'ẽ",
         "description": "Momarandu ñemyasãi ñe'ẽ."
-      },
-      {
-        "property": "accentColor",
-        "title": "Sa'y ojehechaukavéva",
-        "description": "(ojeporuvéma'ỹva) Eiporavo sa'y jehechaukaha mboguatahápe g̃uarã."
       }
     ]
   }

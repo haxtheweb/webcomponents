@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Fogalmi küldetés-játék",
-    "description": "Bebarangolható felvilág. A fogalmak megtalálnak, és kérdést tesznek fel. Válaszolj helyesen, hogy legyőzz egyet és feloldd a házát. Az összefoglaló mutatja a próbálkozásokat és az átnézendőket."
+    "description": "Világtérképes játék, amelyben a fogalmak kérdeznek, a helyes válaszok pedig megnyitják a térképet."
   },
   "settings": {
     "configure": [
@@ -91,7 +91,9 @@
         "property": "gameTitle",
         "title": "Játék neve",
         "description": "Ezen a néven szerepel a játék az előrehaladási eseményekben és az OER Schema jelölésben."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Játék azonosítója",

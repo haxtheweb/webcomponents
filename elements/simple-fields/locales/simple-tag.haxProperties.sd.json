@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "خودڪار نمايان رنگ",
         "description": "ليبل جي متن مان نمايان رنگ خودڪار طور حاصل ڪريو."
-      },
-      {
-        "property": "cancelButton",
-        "title": "منسوخ بٽڻ",
-        "description": "گولي اندر هٽائڻ/منسوخ ڪرڻ وارو آئڪن بٽڻ ڏيکاريو."
-      },
-      {
-        "property": "readonly",
-        "title": "صرف پڙهڻ لاءِ",
-        "description": "منسوخ بٽڻ لڪايو ته جيئن گولي صرف ڏيکارڻ لاءِ هجي."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "نيرو ڀورو",
           "grey": "ڀورو"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "منسوخ بٽڻ",
+        "description": "گولي اندر هٽائڻ/منسوخ ڪرڻ وارو آئڪن بٽڻ ڏيکاريو."
+      },
+      {
+        "property": "readonly",
+        "title": "صرف پڙهڻ لاءِ",
+        "description": "منسوخ بٽڻ لڪايو ته جيئن گولي صرف ڏيکارڻ لاءِ هجي."
       }
     ]
   }

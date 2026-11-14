@@ -14,28 +14,6 @@
         "property": "statement",
         "title": "Պնդում",
         "description": "Պնդում, որը կվերածվի «նշիր բառերը» փոխազդեցության։"
-      },
-      {
-        "property": "gradingFormat",
-        "title": "Գնահատման ձևաչափ",
-        "description": "OER Schema՝ այս գնահատման ձևաչափը (օր.՝ միավորներ, տառ, տոկոս, ավարտվածություն)։"
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Ուսումնական նպատակ",
-        "description": "OER Schema՝ այս գնահատման հետ կապված ուսումնական նպատակը։"
-      },
-      {
-        "property": "forCourse",
-        "title": "Դասընթաց",
-        "description": "OER Schema՝ դասընթացը, որի համար նախատեսված է այս գնահատումը։"
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Թեստի անվանում",
-        "description": "Թեստի անվանում, որը փոխանցվում է xAPI-ով աշխատող միջավայրերում այս տարրը նույնականացնելու համար"
       }
     ],
     "advanced": [
@@ -46,6 +24,28 @@
       {
         "title": "Սկսել ծալված վիճակում",
         "description": "Ծալվող լինելու դեպքում սկսել որպես փակ տող, որը ցույց է տալիս միայն հարցը և դրա կարգավիճակը։"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Գնահատման ձևաչափ",
+        "description": "OER Schema՝ այս գնահատման ձևաչափը (օր.՝ միավորներ, տառ, տոկոս, ավարտվածություն)։"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Ուսումնական նպատակ",
+        "description": "OER Schema՝ այս գնահատման հետ կապված ուսումնական նպատակը։"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Թեստի անվանում",
+        "description": "Թեստի անվանում, որը փոխանցվում է xAPI-ով աշխատող միջավայրերում այս տարրը նույնականացնելու համար"
+      },
+      {
+        "property": "forCourse",
+        "title": "Դասընթաց",
+        "description": "OER Schema՝ դասընթացը, որի համար նախատեսված է այս գնահատումը։"
       }
     ]
   }

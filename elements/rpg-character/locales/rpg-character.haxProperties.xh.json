@@ -11,11 +11,6 @@
         "description": "Igama elisetyenziselwa ukwenza umlinganiswa ongacwangciswanga."
       },
       {
-        "property": "code",
-        "title": "Ikhowudi yomlinganiswa",
-        "description": "Ncamathisela ikhowudi egciniweyo ukuze wenze kwakhona loo mlinganiswa."
-      },
-      {
         "property": "hat",
         "title": "Umnqwazi",
         "description": "Isitayile somnqwazi.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Imaski",
-        "description": "Imaski ethwalwa ebusweni okanye entloko.",
-        "options": {
-          "none": "Akukho",
-          "lion": "Ingonyama",
-          "plague": "Ugqirha wesibetho",
-          "theater": "Ithiyetha",
-          "pumpkin": "Ithanga",
-          "ghost": "Isithunzi",
-          "mummy": "Imamume",
-          "wrestler": "Imaski yokubambana",
-          "block-head": "Intloko yebhloko",
-          "web": "Imaski yomnatha",
-          "werewolf": "Ubuso bomntu-ngcuka",
-          "shadow": "Ubuso besithunzi"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Izithambiso",
-        "description": "Imibala yobuso okanye ilipstick.",
-        "options": {
-          "none": "Akukho",
-          "red-lipstick": "Ilipstick ebomvu",
-          "pink-lipstick": "Ilipstick epinki",
-          "berry-lipstick": "Ilipstick yebheri",
-          "clown": "Ipeyinti yekhlowuni",
-          "fangs": "Amazinyo amde",
-          "skull": "Upeyinti wesikhakha",
-          "zombie": "Upeyinti wesombi",
-          "red-nose": "Impumlo ebomvu",
-          "white-beard": "Intshebe emhlophe",
-          "domino": "Imaski yeqhawe",
-          "carrot": "Impumlo yekherothi",
-          "bunny": "Impumlo yomvundla",
-          "mustache": "Amabhovu",
-          "monster": "Ipeyinti yobuso yerhamncwa",
-          "round-glasses": "Iiglasi ezingqukuva"
-        }
-      },
-      {
         "property": "expression",
         "title": "Imbonakalo",
         "description": "Imbonakalo yobuso.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Isilwanyana sasekhaya",
+        "description": "Isilwanyana esikufutshane nomlinganiswa.",
+        "options": {
+          "none": "Akukho",
+          "cat": "Ikati",
+          "dog": "Inja",
+          "bunny": "Umvundla",
+          "goldfish": "Intlanzi yegolide",
+          "slime": "Udaka",
+          "squirrel": "Unomatse",
+          "dragon": "Inamba encinci",
+          "parrot": "Isikhwenene",
+          "owl": "Isikhova",
+          "bat": "Ilulwane"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Ikhowudi yomlinganiswa",
+        "description": "Ncamathisela ikhowudi egciniweyo ukuze wenze kwakhona loo mlinganiswa."
+      },
+      {
+        "property": "mask",
+        "title": "Imaski",
+        "description": "Imaski ethwalwa ebusweni okanye entloko.",
+        "options": {
+          "none": "Akukho",
+          "lion": "Ingonyama",
+          "plague": "Ugqirha wesibetho",
+          "theater": "Ithiyetha",
+          "pumpkin": "Ithanga",
+          "ghost": "Isithunzi",
+          "mummy": "Imamume",
+          "wrestler": "Imaski yokubambana",
+          "block-head": "Intloko yebhloko",
+          "web": "Imaski yomnatha",
+          "werewolf": "Ubuso bomntu-ngcuka",
+          "shadow": "Ubuso besithunzi"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Izithambiso",
+        "description": "Imibala yobuso okanye ilipstick.",
+        "options": {
+          "none": "Akukho",
+          "red-lipstick": "Ilipstick ebomvu",
+          "pink-lipstick": "Ilipstick epinki",
+          "berry-lipstick": "Ilipstick yebheri",
+          "clown": "Ipeyinti yekhlowuni",
+          "fangs": "Amazinyo amde",
+          "skull": "Upeyinti wesikhakha",
+          "zombie": "Upeyinti wesombi",
+          "red-nose": "Impumlo ebomvu",
+          "white-beard": "Intshebe emhlophe",
+          "domino": "Imaski yeqhawe",
+          "carrot": "Impumlo yekherothi",
+          "bunny": "Impumlo yomvundla",
+          "mustache": "Amabhovu",
+          "monster": "Ipeyinti yobuso yerhamncwa",
+          "round-glasses": "Iiglasi ezingqukuva"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Isicatshulwa seflegi",
         "description": "Ukuya kuthi ga kwiileta ezi-4 ezibonakalayo kwiflegi."
@@ -310,24 +330,6 @@
           "skates": "Iiskeyiti",
           "skateboard": "Iskeyibhodi",
           "hoverboard": "Ibhodi ebhabhayo"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Isilwanyana sasekhaya",
-        "description": "Isilwanyana esikufutshane nomlinganiswa.",
-        "options": {
-          "none": "Akukho",
-          "cat": "Ikati",
-          "dog": "Inja",
-          "bunny": "Umvundla",
-          "goldfish": "Intlanzi yegolide",
-          "slime": "Udaka",
-          "squirrel": "Unomatse",
-          "dragon": "Inamba encinci",
-          "parrot": "Isikhwenene",
-          "owl": "Isikhova",
-          "bat": "Ilulwane"
         }
       },
       {

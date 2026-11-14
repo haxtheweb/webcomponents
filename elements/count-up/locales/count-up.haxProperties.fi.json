@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Jälkiliiteteksti",
         "description": "Luvun jälkeen näytettävä teksti (esim. '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Etuliitepaikka",
-        "description": "Valinnainen sisältö ennen lukua."
-      },
-      {
-        "slot": "suffix",
-        "title": "Jälkiliitepaikka",
-        "description": "Valinnainen sisältö luvun jälkeen."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Ei pehmennystä",
         "description": "Poista pehmennys, jotta laskenta on lineaarinen."
+      },
+      {
+        "slot": "prefix",
+        "title": "Etuliitepaikka",
+        "description": "Valinnainen sisältö ennen lukua."
+      },
+      {
+        "slot": "suffix",
+        "title": "Jälkiliitepaikka",
+        "description": "Valinnainen sisältö luvun jälkeen."
       }
     ]
   }

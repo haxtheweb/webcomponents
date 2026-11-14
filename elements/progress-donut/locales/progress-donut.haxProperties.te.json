@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "ప్రోగ్రెస్ డోనట్",
-    "description": "పురోగతి డోనట్"
+    "description": "మొత్తం వైపు పురోగతిని చూపే డోనట్ చార్ట్."
   },
   "settings": {
     "configure": [
@@ -26,11 +26,6 @@
         "description": "చిత్రం కోసం ప్రత్యామ్నాయ వచనం."
       },
       {
-        "property": "animated",
-        "title": "యానిమేటెడ్",
-        "description": "మొదటి లోడ్‌లో పురోగతి యానిమేట్ అవ్వాలో లేదో"
-      },
-      {
         "property": "complete",
         "title": "పూర్తయింది",
         "description": "పూర్తయిన విలువల శ్రేణి."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "మొత్తం",
         "description": "అన్ని అంశాలు పూర్తయినప్పుడు మొత్తం."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "యానిమేటెడ్",
+        "description": "మొదటి లోడ్‌లో పురోగతి యానిమేట్ అవ్వాలో లేదో"
       },
       {
         "property": "startAngle",

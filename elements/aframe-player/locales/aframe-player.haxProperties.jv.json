@@ -11,6 +11,13 @@
         "description": "URL kanggo berkas AR iki."
       },
       {
+        "property": "skyColor",
+        "title": "Werna langit",
+        "description": "Pilih werna langit ing adegan."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "Posisi X unsur ing AR."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "Posisi Z unsur ing AR."
-      },
-      {
-        "property": "skyColor",
-        "title": "Werna langit",
-        "description": "Pilih werna langit ing adegan."
       }
     ]
   }

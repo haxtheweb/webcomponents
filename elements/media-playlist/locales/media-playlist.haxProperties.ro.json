@@ -4,22 +4,23 @@
     "description": "O listă de redare care prezintă playere video și audio într-un aspect player + bară laterală."
   },
   "settings": {
-    "configure": [
+    "configure": [],
+    "advanced": [
       {
         "property": "activeIndex",
         "title": "Index activ",
         "description": "Indexul elementului activ de la care se începe."
-      },
-      {
-        "property": "forCourse",
-        "title": "Curs",
-        "description": "Cursul căruia îi este destinată această listă de redare (identificatorul sau URL-ul cursului)."
       }
     ],
     "developer": [
       {
         "title": "Media",
         "description": "Videoclipurile și sunetul din lista de redare. Nu se editează aici: structura paginii o folosește pentru a ști ce blocuri pot fi plasate în ea."
+      },
+      {
+        "property": "forCourse",
+        "title": "Curs",
+        "description": "Cursul căruia îi este destinată această listă de redare (identificatorul sau URL-ul cursului)."
       }
     ]
   }

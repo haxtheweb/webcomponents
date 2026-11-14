@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "सही / गलत प्रश्न",
-    "description": "सही-गलत प्रश्न"
+    "description": "ऐसा कथन जिसे शिक्षार्थी सही या गलत चिह्नित करता है।"
   },
   "settings": {
     "configure": [

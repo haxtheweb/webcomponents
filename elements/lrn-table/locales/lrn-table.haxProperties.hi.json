@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "CSV तालिका",
-    "description": "यह किसी CSV फ़ाइल से तालिका बना सकता है, चाहे वह कहीं भी स्थित हो।"
+    "description": "CSV फ़ाइल को सुलभ तालिका के रूप में दिखाता है।"
   },
   "settings": {
     "configure": [

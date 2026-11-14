@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Game peta konsep",
-    "description": "Game keyboard singkat. Sebuah karakter berjalan ke setiap konsep di peta dan konsep itu menjelaskan dirinya. Sentuh semuanya untuk mendapat konfeti dan prompt untuk disalin."
+    "description": "Permainan papan ketik singkat tempat karakter berjalan di peta dan setiap konsep menjelaskan dirinya sendiri."
   },
   "settings": {
     "configure": [
@@ -86,7 +86,9 @@
         "property": "gameTitle",
         "title": "Nama game",
         "description": "Menamai game ini dalam event kemajuan dan markup OER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "ID game",

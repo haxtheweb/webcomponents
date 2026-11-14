@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "ಚಿತ್ರದ ಮೂಲ",
         "description": "ಕಾರ್ಡ್‌ಗೆ ಬಳಸುವ ಚಿತ್ರ ಫೈಲ್. ಚಿತ್ರ ಕೀವರ್ಡ್ ಅನ್ನು ಅತಿಕ್ರಮಿಸುತ್ತದೆ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "ಚಿತ್ರ ಕೀವರ್ಡ್",
+        "description": "ಯಾದೃಚ್ಛಿಕ ಚಿತ್ರ ಕೀವರ್ಡ್. ಚಿತ್ರದ ಮೂಲ ಇದನ್ನು ಅತಿಕ್ರಮಿಸುತ್ತದೆ."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "ಕಲಿಕಾ ಉದ್ದೇಶ",
         "description": "OER Schema: ಈ ಅಭ್ಯಾಸ ಬೆಂಬಲಿಸುವ ಕಲಿಕಾ ಉದ್ದೇಶದ ID ಅಥವಾ URL."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "ಚಿತ್ರ ಕೀವರ್ಡ್",
-        "description": "ಯಾದೃಚ್ಛಿಕ ಚಿತ್ರ ಕೀವರ್ಡ್. ಚಿತ್ರದ ಮೂಲ ಇದನ್ನು ಅತಿಕ್ರಮಿಸುತ್ತದೆ."
       }
     ]
   }

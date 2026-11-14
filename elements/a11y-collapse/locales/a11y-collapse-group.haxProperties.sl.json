@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "Skupina razširljivih elementov",
-    "description": "Skupina razširljivih in strnljivih elementov."
+    "title": "Strnljiva skupina",
+    "description": "Skupina strnljivih vsebnikov."
   },
   "settings": {
     "configure": [

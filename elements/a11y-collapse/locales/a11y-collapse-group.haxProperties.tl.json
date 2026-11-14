@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "Grupo ng Expand Collapse",
-    "description": "Isang grupo ng mga elementong nae-expand at nako-collapse."
+    "title": "Pangkat na natitiklop",
+    "description": "Isang pangkat ng mga lalagyang natitiklop."
   },
   "settings": {
     "configure": [

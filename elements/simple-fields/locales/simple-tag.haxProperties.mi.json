@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Tae arotahi aunoa",
         "description": "Tīkina aunoatia te tae arotahi mai i te kupu tapanga."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Pātene whakakore",
-        "description": "Whakaaturia tētahi pātene ata tohu tango/whakakore i roto i te pire."
-      },
-      {
-        "property": "readonly",
-        "title": "Pānui anake",
-        "description": "Hunaia te pātene whakakore kia whakaatu noa te pire."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Kiwikiwi Kahurangi",
           "grey": "Kiwikiwi"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Pātene whakakore",
+        "description": "Whakaaturia tētahi pātene ata tohu tango/whakakore i roto i te pire."
+      },
+      {
+        "property": "readonly",
+        "title": "Pānui anake",
+        "description": "Hunaia te pātene whakakore kia whakaatu noa te pire."
       }
     ]
   }

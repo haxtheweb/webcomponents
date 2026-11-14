@@ -9,7 +9,9 @@
         "slot": "",
         "title": "Nā kuhikuhi",
         "description": "Nā mea kuhikuhi ma kēia papa kumu kuhikuhi"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "Papa",

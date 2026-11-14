@@ -11,11 +11,6 @@
         "description": "අහඹු චරිතයක් ජනනය කිරීමට භාවිත වචනය."
       },
       {
-        "property": "code",
-        "title": "චරිත කේතය",
-        "description": "එම චරිතය නැවත සෑදීමට සුරැකි කේතයක් අලවන්න."
-      },
-      {
         "property": "hat",
         "title": "තොප්පිය",
         "description": "තොප්පි ශෛලිය.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "මුහුණු ආවරණය",
-        "description": "මුහුණේ හෝ හිසෙහි පළඳින ආවරණය.",
-        "options": {
-          "none": "කිසිවක් නැත",
-          "lion": "සිංහයා",
-          "plague": "වසංගත වෛද්‍යවරයා",
-          "theater": "රඟහල",
-          "pumpkin": "වට්ටක්කා",
-          "ghost": "අවතාරය",
-          "mummy": "මමිය",
-          "wrestler": "මල්ලව පොර වෙස් මුහුණ",
-          "block-head": "කුට්ටි හිස",
-          "web": "දැල් වෙස් මුහුණ",
-          "werewolf": "වෘක මිනිසාගේ මුහුණ",
-          "shadow": "සෙවණැලි මුහුණ"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "රූපලාවණ්‍ය",
-        "description": "මුහුණු සායම් හෝ ලිප්ස්ටික්.",
-        "options": {
-          "none": "කිසිවක් නැත",
-          "red-lipstick": "රතු ලිප්ස්ටික්",
-          "pink-lipstick": "රෝස ලිප්ස්ටික්",
-          "berry-lipstick": "බෙරි ලිප්ස්ටික්",
-          "clown": "විකටයාගේ සායම්",
-          "fangs": "දළ",
-          "skull": "හිස්කබල් සායම්",
-          "zombie": "සොම්බි සායම්",
-          "red-nose": "රතු නාසය",
-          "white-beard": "සුදු රැවුල",
-          "domino": "වීර වෙස් මුහුණ",
-          "carrot": "කැරට් නාසය",
-          "bunny": "හාවා නාසය",
-          "mustache": "උඩු රැවුල",
-          "monster": "රාක්ෂ මුහුණු වර්ණ",
-          "round-glasses": "රවුම් කණ්ණාඩි"
-        }
-      },
-      {
         "property": "expression",
         "title": "මුහුණේ ඉරියව්ව",
         "description": "මුහුණේ ඉරියව්ව.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "ගෘහ සතා",
+        "description": "චරිතය අසල සිටින ගෘහ සතා.",
+        "options": {
+          "none": "කිසිවක් නැත",
+          "cat": "බළලා",
+          "dog": "බල්ලා",
+          "bunny": "හාවා",
+          "goldfish": "රන්මාළුවා",
+          "slime": "ස්ලයිම්",
+          "squirrel": "ලේනා",
+          "dragon": "කුඩා මකරා",
+          "parrot": "ගිරවා",
+          "owl": "බකමූණා",
+          "bat": "වවුලා"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "චරිත කේතය",
+        "description": "එම චරිතය නැවත සෑදීමට සුරැකි කේතයක් අලවන්න."
+      },
+      {
+        "property": "mask",
+        "title": "මුහුණු ආවරණය",
+        "description": "මුහුණේ හෝ හිසෙහි පළඳින ආවරණය.",
+        "options": {
+          "none": "කිසිවක් නැත",
+          "lion": "සිංහයා",
+          "plague": "වසංගත වෛද්‍යවරයා",
+          "theater": "රඟහල",
+          "pumpkin": "වට්ටක්කා",
+          "ghost": "අවතාරය",
+          "mummy": "මමිය",
+          "wrestler": "මල්ලව පොර වෙස් මුහුණ",
+          "block-head": "කුට්ටි හිස",
+          "web": "දැල් වෙස් මුහුණ",
+          "werewolf": "වෘක මිනිසාගේ මුහුණ",
+          "shadow": "සෙවණැලි මුහුණ"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "රූපලාවණ්‍ය",
+        "description": "මුහුණු සායම් හෝ ලිප්ස්ටික්.",
+        "options": {
+          "none": "කිසිවක් නැත",
+          "red-lipstick": "රතු ලිප්ස්ටික්",
+          "pink-lipstick": "රෝස ලිප්ස්ටික්",
+          "berry-lipstick": "බෙරි ලිප්ස්ටික්",
+          "clown": "විකටයාගේ සායම්",
+          "fangs": "දළ",
+          "skull": "හිස්කබල් සායම්",
+          "zombie": "සොම්බි සායම්",
+          "red-nose": "රතු නාසය",
+          "white-beard": "සුදු රැවුල",
+          "domino": "වීර වෙස් මුහුණ",
+          "carrot": "කැරට් නාසය",
+          "bunny": "හාවා නාසය",
+          "mustache": "උඩු රැවුල",
+          "monster": "රාක්ෂ මුහුණු වර්ණ",
+          "round-glasses": "රවුම් කණ්ණාඩි"
+        }
+      },
+      {
         "property": "flagText",
         "title": "කොඩි පාඨය",
         "description": "කොඩියේ පෙන්වන අකුරු 4ක් දක්වා."
@@ -310,24 +330,6 @@
           "skates": "ස්කේට්ස්",
           "skateboard": "ස්කේට්බෝඩ්",
           "hoverboard": "පාවෙන පුවරුව"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "ගෘහ සතා",
-        "description": "චරිතය අසල සිටින ගෘහ සතා.",
-        "options": {
-          "none": "කිසිවක් නැත",
-          "cat": "බළලා",
-          "dog": "බල්ලා",
-          "bunny": "හාවා",
-          "goldfish": "රන්මාළුවා",
-          "slime": "ස්ලයිම්",
-          "squirrel": "ලේනා",
-          "dragon": "කුඩා මකරා",
-          "parrot": "ගිරවා",
-          "owl": "බකමූණා",
-          "bat": "වවුලා"
         }
       },
       {

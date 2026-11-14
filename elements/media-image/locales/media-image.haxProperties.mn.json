@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Тайлбар",
         "description": "Зургийн тайлбар."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Зургийн гарчиг",
-        "description": "Зургийн шошгын гарчиг."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Зургийн тайлбар",
-        "description": "Зургийн шошгын тайлбар."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Зургийн модал цонхыг идэвхгүй болгох",
         "description": "Товшиход зургийг зураг шалгагч цонхонд нээхийг идэвхгүй болгох."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Зургийн гарчиг",
+        "description": "Зургийн шошгын гарчиг."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Зургийн тайлбар",
+        "description": "Зургийн шошгын тайлбар."
       }
     ],
     "developer": [

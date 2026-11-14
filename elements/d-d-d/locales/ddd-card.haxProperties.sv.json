@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Ingen pil",
         "description": "Dölj knappens pil."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Länk: mål",
@@ -54,7 +52,9 @@
           "_top": "Översta fönstret - _top",
           "_parent": "Överordnat fönster - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Länk: rel",

@@ -4,7 +4,7 @@
   "package": "@haxtheweb/pdf-browser-viewer",
   "version": "26.8.0",
   "license": "Apache-2.0",
-  "title": "PDF Browser Viewer",
+  "title": "PDF viewer",
   "description": "Embed a PDF file inline with an optional card layout and download button.",
   "icon": "image:picture-as-pdf",
   "tags": [
@@ -28,7 +28,7 @@
       "description": "The location of the PDF file.",
       "hax": {
         "title": "PDF URL",
-        "input": "textfield",
+        "input": "haxupload",
         "options": null
       }
     },
@@ -136,7 +136,7 @@
     "canEditSource": false,
     "contentEditable": false,
     "gizmo": {
-      "title": "PDF Browser Viewer",
+      "title": "PDF viewer",
       "description": "Embed a PDF file inline with an optional card layout and download button.",
       "icon": "image:picture-as-pdf",
       "color": "blue",
@@ -158,7 +158,7 @@
           "property": "file",
           "title": "PDF URL",
           "description": "Location of the PDF file.",
-          "inputMethod": "textfield",
+          "inputMethod": "haxupload",
           "icon": "link",
           "required": true,
           "validationType": "url"
@@ -185,18 +185,6 @@
       ],
       "advanced": [
         {
-          "property": "notSupportedMessage",
-          "title": "Not supported message",
-          "description": "Message when the browser cannot display PDF files.",
-          "inputMethod": "textfield"
-        },
-        {
-          "property": "notSupportedLinkMessage",
-          "title": "Not supported link message",
-          "description": "Link text when the browser cannot display PDF files.",
-          "inputMethod": "textfield"
-        },
-        {
           "property": "width",
           "title": "Width",
           "description": "Width of the PDF viewer.",
@@ -206,6 +194,20 @@
           "property": "height",
           "title": "Height",
           "description": "Height of the PDF viewer.",
+          "inputMethod": "textfield"
+        }
+      ],
+      "developer": [
+        {
+          "property": "notSupportedMessage",
+          "title": "Not supported message",
+          "description": "Message when the browser cannot display PDF files.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "notSupportedLinkMessage",
+          "title": "Not supported link message",
+          "description": "Link text when the browser cannot display PDF files.",
           "inputMethod": "textfield"
         }
       ]
@@ -227,7 +229,7 @@
       }
     ]
   },
-  "surfaceHash": "5ae3e1f51608",
+  "surfaceHash": "b9b65f7ccfe3",
   "walkthroughs": [
     {
       "id": "",
@@ -235,13 +237,13 @@
       "order": 0,
       "src": "pdf-browser-viewer.motion.json",
       "file": "lib/pdf-browser-viewer.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/pdf-browser-viewer.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

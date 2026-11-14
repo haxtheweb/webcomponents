@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Samoověření",
-    "description": "Uživatelé si mohou ověřit své znalosti."
+    "description": "Otázka se skrytou odpovědí, kterou si student odkryje, aby se zkontroloval."
   },
   "settings": {
     "configure": [
@@ -27,6 +27,13 @@
       {
         "slot": "",
         "title": "Odpověď"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Odkaz Více",
+        "description": "Odkaz na další informace."
       },
       {
         "property": "hasLearningObjective",
@@ -37,13 +44,6 @@
         "property": "assessing",
         "title": "Hodnotí",
         "description": "Odkaz na aktivitu generovaný jako oer:assessing."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "link",
-        "title": "Odkaz Více",
-        "description": "Odkaz na další informace."
       }
     ]
   }

@@ -38,21 +38,6 @@
         "slot": "",
         "title": "Bài đọc",
         "description": "Bài đọc người học làm việc. Bất kỳ HTML nào: tiêu đề, đoạn văn, danh sách và hình."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "Hình thức chấm điểm",
-        "description": "OER Schema: hình thức chấm điểm cho bài đánh giá này (ví dụ: điểm số, điểm chữ, phần trăm, hoàn thành)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Mục tiêu học tập",
-        "description": "OER Schema: mục tiêu học tập gắn với bài đánh giá này."
-      },
-      {
-        "property": "forCourse",
-        "title": "Khóa học",
-        "description": "OER Schema: khóa học mà bài đánh giá này dành cho."
       }
     ],
     "advanced": [
@@ -70,6 +55,16 @@
         "property": "collapsed",
         "title": "Bắt đầu ở trạng thái thu gọn",
         "description": "Khi có thể thu gọn, bắt đầu dưới dạng hàng đóng chỉ hiển thị câu hỏi và trạng thái của nó."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Hình thức chấm điểm",
+        "description": "OER Schema: hình thức chấm điểm cho bài đánh giá này (ví dụ: điểm số, điểm chữ, phần trăm, hoàn thành)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Mục tiêu học tập",
+        "description": "OER Schema: mục tiêu học tập gắn với bài đánh giá này."
       }
     ],
     "developer": [
@@ -77,6 +72,11 @@
         "property": "quizName",
         "title": "Tên bài kiểm tra",
         "description": "Tên bài kiểm tra được truyền vào để nhận dạng mục này trong các môi trường dựa trên xAPI"
+      },
+      {
+        "property": "forCourse",
+        "title": "Khóa học",
+        "description": "OER Schema: khóa học mà bài đánh giá này dành cho."
       }
     ]
   }

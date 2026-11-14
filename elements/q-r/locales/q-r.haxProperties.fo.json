@@ -14,16 +14,6 @@
         "property": "title",
         "title": "Annað heiti",
         "description": "Annað heiti leinkjað til keldu QR-kotunnar."
-      },
-      {
-        "property": "modulesize",
-        "title": "Stødd",
-        "description": "Stødd á QR-kotuni."
-      },
-      {
-        "property": "margin",
-        "title": "Breddi",
-        "description": "Umbúgv um kotuna."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "Stødd",
+        "description": "Stødd á QR-kotuni."
+      },
+      {
+        "property": "margin",
+        "title": "Breddi",
+        "description": "Umbúgv um kotuna."
       }
     ]
   }

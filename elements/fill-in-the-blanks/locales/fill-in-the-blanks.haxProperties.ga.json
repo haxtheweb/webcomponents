@@ -14,28 +14,6 @@
         "property": "statement",
         "title": "Ráiteas",
         "description": "Ráiteas a thiontófar san idirghníomhaíocht marcáil na bhfocal."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "Formáid ghrádaithe",
-        "description": "OER Schema: formáid ghrádaithe don mheasúnú seo (m.sh. pointí, litir, céatadán, críochnú)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Cuspóir foghlama",
-        "description": "OER Schema: cuspóir foghlama a bhaineann leis an measúnú seo."
-      },
-      {
-        "property": "forCourse",
-        "title": "Cúrsa",
-        "description": "OER Schema: an cúrsa a bhfuil an measúnú seo beartaithe dó."
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Ainm an tráth na gceist",
-        "description": "Ainm an tráth na gceist a sheoltar isteach le húsáid i dtimpeallachtaí xAPI chun an mhír seo a aithint"
       }
     ],
     "advanced": [
@@ -46,6 +24,28 @@
       {
         "title": "Tosaigh fillte",
         "description": "Nuair atá sé infhillte, tosaigh mar shraith dúnta nach dtaispeánann ach an cheist agus a stádas."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Formáid ghrádaithe",
+        "description": "OER Schema: formáid ghrádaithe don mheasúnú seo (m.sh. pointí, litir, céatadán, críochnú)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Cuspóir foghlama",
+        "description": "OER Schema: cuspóir foghlama a bhaineann leis an measúnú seo."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Ainm an tráth na gceist",
+        "description": "Ainm an tráth na gceist a sheoltar isteach le húsáid i dtimpeallachtaí xAPI chun an mhír seo a aithint"
+      },
+      {
+        "property": "forCourse",
+        "title": "Cúrsa",
+        "description": "OER Schema: an cúrsa a bhfuil an measúnú seo beartaithe dó."
       }
     ]
   }

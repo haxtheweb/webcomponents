@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Mbishkrimi",
         "description": "Legjenda për imazhin."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Titulli i figurës",
-        "description": "Titulli për etiketën e figurës."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Përshkrimi i figurës",
-        "description": "Përshkrimi për etiketën e figurës."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Çaktivizo dritaren e imazhit",
         "description": "Çaktivizo hapjen e imazhit me klikim në dialogun e inspektuesit të imazheve."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Titulli i figurës",
+        "description": "Titulli për etiketën e figurës."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Përshkrimi i figurës",
+        "description": "Përshkrimi për etiketën e figurës."
       }
     ],
     "developer": [

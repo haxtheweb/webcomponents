@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Înteraktîf",
         "description": "Destûrê bide bikarhêner ku nirxandinê diyar bike."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Moda Pîvana Rubrîkê",

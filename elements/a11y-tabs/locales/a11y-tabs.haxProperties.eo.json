@@ -11,20 +11,17 @@
         "description": "Alirebla etikedo por la langetaro."
       },
       {
-        "property": "disabled",
-        "title": "Malŝaltita",
-        "description": "Malŝalti ĉiujn langetojn."
-      },
-      {
-        "property": "hidden",
-        "title": "Kaŝita",
-        "description": "Kaŝi la langetaron."
-      },
-      {
         "property": "sticky",
         "title": "Fiksita",
         "description": "Teni horizontalajn langetojn supre dum rulumado."
       },
+      {
+        "slot": "",
+        "title": "Langetoj",
+        "description": "Serio de <a11y-tab/>-elementoj."
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "Aranĝa rompopunkto",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "Piktograma rompopunkto",
         "description": "Rompopunkto por montri tekston kun piktogramoj. Defaŭlte 0; uzu -1 por nur-piktograma reĝimo."
-      },
-      {
-        "slot": "",
-        "title": "Langetoj",
-        "description": "Serio de <a11y-tab/>-elementoj."
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "Malŝaltita",
+        "description": "Malŝalti ĉiujn langetojn."
+      },
+      {
+        "property": "hidden",
+        "title": "Kaŝita",
+        "description": "Kaŝi la langetaron."
+      },
       {
         "property": "id",
         "title": "Unika ID",

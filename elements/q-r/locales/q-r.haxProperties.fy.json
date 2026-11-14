@@ -14,16 +14,6 @@
         "property": "title",
         "title": "Alternative titel",
         "description": "Alternative titel keppele oan de boarne fan de QR-koade."
-      },
-      {
-        "property": "modulesize",
-        "title": "Grutte",
-        "description": "Grutte fan de QR-koade."
-      },
-      {
-        "property": "margin",
-        "title": "Marzje",
-        "description": "Romte om de koade hinne."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "Grutte",
+        "description": "Grutte fan de QR-koade."
+      },
+      {
+        "property": "margin",
+        "title": "Marzje",
+        "description": "Romte om de koade hinne."
       }
     ]
   }

@@ -10,10 +10,6 @@
         "title": "Sekme Simgesi"
       },
       {
-        "property": "disabled",
-        "title": "Devre dışı"
-      },
-      {
         "property": "label",
         "title": "Sekme Etiketi"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "Benzersiz ID"
-      },
-      {
         "property": "flag",
         "title": "İsteğe Bağlı İşaret Metni"
       },
       {
         "property": "flagIcon",
         "title": "İsteğe Bağlı İşaret Simgesi"
+      },
+      {
+        "property": "disabled",
+        "title": "Devre dışı"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "Benzersiz ID"
       }
     ]
   }

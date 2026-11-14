@@ -4,22 +4,23 @@
     "description": "Ñembopu rysýi ohechaukáva ta'angamýi ha ñe'ẽpu mboputaha peteĩ mboputaha + yke rysýi ñemohenda'ípe."
   },
   "settings": {
-    "configure": [
+    "configure": [],
+    "advanced": [
       {
         "property": "activeIndex",
         "title": "Papapy ojepurúva",
         "description": "Mba'e ojepurúva papapy oñepyrũ hag̃ua."
-      },
-      {
-        "property": "forCourse",
-        "title": "Mbo'esyry",
-        "description": "Mbo'esyry ojeguerekóva ko ñembopu rysýi rehe (mbo'esyry ñemoha'ãnga térã URL)."
       }
     ],
     "developer": [
       {
         "title": "Mba'e'apopyre",
         "description": "Video ha ñe'ẽpu ñembosarái listape. Ndojehaíri ko'ápe: kuatiarogue ñemohenda oipuru oikuaa hag̃ua mba'e bloque ikatu oñemoĩ ipype."
+      },
+      {
+        "property": "forCourse",
+        "title": "Mbo'esyry",
+        "description": "Mbo'esyry ojeguerekóva ko ñembopu rysýi rehe (mbo'esyry ñemoha'ãnga térã URL)."
       }
     ]
   }

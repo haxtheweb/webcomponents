@@ -9,7 +9,9 @@
         "slot": "",
         "title": "Aanhalings",
         "description": "Aanhalingsitems in hierdie bibliografie"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "Kursus",

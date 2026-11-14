@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "Pemapar PDF Pelayar",
+    "title": "Pemapar PDF",
     "description": "Benamkan fail PDF sebaris dengan susun atur kad dan butang muat turun pilihan."
   },
   "settings": {
@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Mesej tidak disokong",
-        "description": "Mesej apabila pelayar tidak dapat memaparkan fail PDF."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Mesej pautan tidak disokong",
-        "description": "Teks pautan apabila pelayar tidak dapat memaparkan fail PDF."
-      },
-      {
         "property": "width",
         "title": "Lebar",
         "description": "Lebar pemapar PDF."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Ketinggian",
         "description": "Ketinggian pemapar PDF."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Mesej tidak disokong",
+        "description": "Mesej apabila pelayar tidak dapat memaparkan fail PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Mesej pautan tidak disokong",
+        "description": "Teks pautan apabila pelayar tidak dapat memaparkan fail PDF."
       }
     ]
   }

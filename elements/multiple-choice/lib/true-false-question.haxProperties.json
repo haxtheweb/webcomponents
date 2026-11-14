@@ -10,9 +10,9 @@
     "editMode": true
   },
   "gizmo": {
-    "title": "True / False Question",
-    "description": "True false question",
-    "icon": "hax:multiple-choice",
+    "title": "True / false question",
+    "description": "A statement the learner marks true or false.",
+    "icon": "icons:thumbs-up-down",
     "color": "purple",
     "tags": ["Instructional", "quiz", "question", "true false"],
     "handles": [],

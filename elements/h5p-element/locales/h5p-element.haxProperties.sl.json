@@ -4,17 +4,16 @@
     "description": "Predvaja interaktivno vsebino H5P iz naložene datoteke .h5p brez strežnika H5P"
   },
   "settings": {
-    "configure": [
-      {
-        "slot": "",
-        "description": "Naložite datoteko .h5p ali vstavite povezavo do nje. Razpakira se v brskalniku; strežnik H5P ni potreben.",
-        "title": "Datoteka H5P"
-      }
-    ],
+    "configure": [],
     "advanced": [
       {
         "title": "Stara koda za vdelavo iframe",
         "description": "Samo za starejšo vsebino, ki vdeluje iframe H5P z drugega spletnega mesta. Pustite prazno, če je zgoraj nastavljena datoteka .h5p."
+      },
+      {
+        "slot": "",
+        "description": "Naložite datoteko .h5p ali vstavite povezavo do nje. Razpakira se v brskalniku; strežnik H5P ni potreben.",
+        "title": "Datoteka H5P"
       }
     ]
   }

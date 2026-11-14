@@ -11,6 +11,13 @@
         "description": "URL'en til denne AR-fil."
       },
       {
+        "property": "skyColor",
+        "title": "Himmelfarve",
+        "description": "Vælg farven på himlen i scenen."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "Elementets X-position i AR."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "Elementets Z-position i AR."
-      },
-      {
-        "property": "skyColor",
-        "title": "Himmelfarve",
-        "description": "Vælg farven på himlen i scenen."
       }
     ]
   }

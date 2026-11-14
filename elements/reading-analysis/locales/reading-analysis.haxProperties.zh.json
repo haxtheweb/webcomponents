@@ -38,21 +38,6 @@
         "slot": "",
         "title": "阅读材料",
         "description": "学习者使用的阅读材料。任意 HTML：标题、段落、列表和图片。"
-      },
-      {
-        "property": "gradingFormat",
-        "title": "评分格式",
-        "description": "OER Schema：此测评的评分格式（例如分数、等级、百分比、完成度）。"
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "学习目标",
-        "description": "OER Schema：与此测评关联的学习目标。"
-      },
-      {
-        "property": "forCourse",
-        "title": "课程",
-        "description": "OER Schema：此测评所面向的课程。"
       }
     ],
     "advanced": [
@@ -70,6 +55,16 @@
         "property": "collapsed",
         "title": "默认折叠",
         "description": "可折叠时,默认显示为仅包含问题及其状态的收起行。"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "评分格式",
+        "description": "OER Schema：此测评的评分格式（例如分数、等级、百分比、完成度）。"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "学习目标",
+        "description": "OER Schema：与此测评关联的学习目标。"
       }
     ],
     "developer": [
@@ -77,6 +72,11 @@
         "property": "quizName",
         "title": "测验名称",
         "description": "传入的测验名称，用于在 xAPI 驱动的环境中识别此项目"
+      },
+      {
+        "property": "forCourse",
+        "title": "课程",
+        "description": "OER Schema：此测评所面向的课程。"
       }
     ]
   }

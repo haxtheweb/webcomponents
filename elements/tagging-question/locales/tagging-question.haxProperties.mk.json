@@ -11,30 +11,8 @@
         "description": "Прашање на кое корисниците треба да одговорат."
       },
       {
-        "property": "gradingFormat",
-        "title": "Формат на оценување",
-        "description": "OER Schema: формат на оценување за оваа проценка (на пр. поени, буква, процент, завршеност)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Цел на учење",
-        "description": "OER Schema: цел на учење поврзана со оваа проценка."
-      },
-      {
-        "property": "forCourse",
-        "title": "Курс",
-        "description": "OER Schema: курс за кој е наменета оваа проценка."
-      },
-      {
         "property": "answers",
         "title": "Одговори"
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Име на квизот",
-        "description": "Име на квизот што се користи за xAPI идентификација во аналитичките системи."
       }
     ],
     "advanced": [
@@ -47,6 +25,28 @@
         "property": "collapsed",
         "title": "Започни склопено",
         "description": "Кога е склопливо, започни како затворен ред што го прикажува само прашањето и неговиот статус."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Формат на оценување",
+        "description": "OER Schema: формат на оценување за оваа проценка (на пр. поени, буква, процент, завршеност)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Цел на учење",
+        "description": "OER Schema: цел на учење поврзана со оваа проценка."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Име на квизот",
+        "description": "Име на квизот што се користи за xAPI идентификација во аналитичките системи."
+      },
+      {
+        "property": "forCourse",
+        "title": "Курс",
+        "description": "OER Schema: курс за кој е наменета оваа проценка."
       }
     ]
   }

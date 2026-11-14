@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Wikipedia",
-    "description": "זה יכול להציג ערך ויקיפדיה בהקשר במגוון פורמטים."
+    "description": "מציג ערך מוויקיפדיה בעמוד."
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "প্রগ্রেস ডোনাট",
-    "description": "অগ্রগতির ডোনাট"
+    "description": "মোটের দিকে অগ্রগতি দেখানো ডোনাট চার্ট।"
   },
   "settings": {
     "configure": [
@@ -26,11 +26,6 @@
         "description": "ছবির বিকল্প টেক্সট।"
       },
       {
-        "property": "animated",
-        "title": "অ্যানিমেটেড",
-        "description": "প্রথম লোডে অগ্রগতি অ্যানিমেট হবে কিনা"
-      },
-      {
         "property": "complete",
         "title": "সম্পন্ন",
         "description": "সম্পন্ন মানগুলোর একটি অ্যারে।"
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "মোট",
         "description": "সব আইটেম সম্পন্ন হলে মোট।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "অ্যানিমেটেড",
+        "description": "প্রথম লোডে অগ্রগতি অ্যানিমেট হবে কিনা"
       },
       {
         "property": "startAngle",

@@ -1,10 +1,10 @@
 {
   "gizmo": {
-    "title": "HAXcms: บล็อกลูก",
-    "description": "บล็อกแบบไดนามิกที่แสดงหน้าลูกของหน้าปัจจุบัน"
+    "title": "หน้าย่อย",
+    "description": "แสดงรายการหน้าย่อยของหน้าปัจจุบัน"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "วิธีแบบไดนามิก",
@@ -14,7 +14,9 @@
           "parent": "หน้าลูกของหน้าแม่",
           "ancestor": "หน้าลูกทั้งหมดจากหน้าบรรพบุรุษสูงสุด"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "ระดับเริ่มต้น"

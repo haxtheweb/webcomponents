@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Progresa virtulis",
-    "description": "Progresa virtuļa diagramma"
+    "description": "Gredzena diagramma, kas parāda progresu līdz kopsummai."
   },
   "settings": {
     "configure": [
@@ -26,11 +26,6 @@
         "description": "Attēla alternatīvais teksts."
       },
       {
-        "property": "animated",
-        "title": "Animēts",
-        "description": "Vai progress tiek animēts pirmajā ielādē"
-      },
-      {
         "property": "complete",
         "title": "Pabeigts",
         "description": "Pabeigto vērtību masīvs."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "Kopā",
         "description": "Kopsumma, kad visi vienumi ir pabeigti."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "Animēts",
+        "description": "Vai progress tiek animēts pirmajā ielādē"
       },
       {
         "property": "startAngle",

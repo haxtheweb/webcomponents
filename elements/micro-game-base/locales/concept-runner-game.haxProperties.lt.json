@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Sąvokų bėgimo žaidimas",
-    "description": "Šoninio slinkimo žaidimas. Veikėjas bėga liepsnodamas ir niekada nesustoja. Šok, kad pagautum geras sąvokas ir peršoktum blogas, tada pamatyk santrauką, kas buvo gera ir kas bloga."
+    "description": "Šoninio slinkimo žaidimas: šokinėkite, kad pagautumėte teisingas sąvokas ir išvengtumėte klaidingų."
   },
   "settings": {
     "configure": [
@@ -89,7 +89,9 @@
         "property": "gameTitle",
         "title": "Žaidimo pavadinimas",
         "description": "Įvardija šį žaidimą eigos įvykiuose ir OER Schema žymėjime."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Žaidimo ID",

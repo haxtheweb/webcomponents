@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Brez puščice",
         "description": "Skrij puščico gumba."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Povezava: cilj",
@@ -54,7 +52,9 @@
           "_top": "Najvišje okno - _top",
           "_parent": "Nadrejeno okno - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Povezava: rel",

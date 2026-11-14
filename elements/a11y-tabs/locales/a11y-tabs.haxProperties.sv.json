@@ -11,20 +11,17 @@
         "description": "Tillgänglig etikett för flikuppsättningen."
       },
       {
-        "property": "disabled",
-        "title": "Inaktiverad",
-        "description": "Inaktivera alla flikar."
-      },
-      {
-        "property": "hidden",
-        "title": "Dold",
-        "description": "Dölj flikuppsättningen."
-      },
-      {
         "property": "sticky",
         "title": "Fäst",
         "description": "Håll vågräta flikar högst upp vid rullning."
       },
+      {
+        "slot": "",
+        "title": "Flikar",
+        "description": "En serie <a11y-tab/>-element."
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "Brytpunkt för layout",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "Brytpunkt för ikoner",
         "description": "Brytpunkt för att visa text med ikoner. Standard är 0; använd -1 för endast ikoner."
-      },
-      {
-        "slot": "",
-        "title": "Flikar",
-        "description": "En serie <a11y-tab/>-element."
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "Inaktiverad",
+        "description": "Inaktivera alla flikar."
+      },
+      {
+        "property": "hidden",
+        "title": "Dold",
+        "description": "Dölj flikuppsättningen."
+      },
       {
         "property": "id",
         "title": "Unikt ID",

@@ -10,10 +10,6 @@
         "title": "Faneikon"
       },
       {
-        "property": "disabled",
-        "title": "Deaktivert"
-      },
-      {
         "property": "label",
         "title": "Faneetikett"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "Unik ID"
-      },
-      {
         "property": "flag",
         "title": "Valgfri merketekst"
       },
       {
         "property": "flagIcon",
         "title": "Valgfritt merkeikon"
+      },
+      {
+        "property": "disabled",
+        "title": "Deaktivert"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "Unik ID"
       }
     ]
   }

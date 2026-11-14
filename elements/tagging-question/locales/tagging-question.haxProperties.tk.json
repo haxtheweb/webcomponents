@@ -11,30 +11,8 @@
         "description": "Ulanyjylaryň jogap bermeli soragy."
       },
       {
-        "property": "gradingFormat",
-        "title": "Baha beriş formaty",
-        "description": "OER Schema: bu baha beriş üçin baha formaty (meselem, ballar, harp, göterim, tamamlama)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Okuw maksady",
-        "description": "OER Schema: bu baha beriş bilen baglanyşykly okuw maksady."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kurs",
-        "description": "OER Schema: bu baha berişiň niýetlenen kursy."
-      },
-      {
         "property": "answers",
         "title": "Jogaplar"
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Testiň ady",
-        "description": "Analitika ulgamlarynda xAPI arkaly kesgitlemek üçin ulanylýan testiň ady."
       }
     ],
     "advanced": [
@@ -47,6 +25,28 @@
         "property": "collapsed",
         "title": "Epilen başla",
         "description": "Epilýän bolanda, diňe soragy we onuň ýagdaýyny görkezýän ýapyk setir hökmünde başlaň."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Baha beriş formaty",
+        "description": "OER Schema: bu baha beriş üçin baha formaty (meselem, ballar, harp, göterim, tamamlama)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Okuw maksady",
+        "description": "OER Schema: bu baha beriş bilen baglanyşykly okuw maksady."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Testiň ady",
+        "description": "Analitika ulgamlarynda xAPI arkaly kesgitlemek üçin ulanylýan testiň ady."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurs",
+        "description": "OER Schema: bu baha berişiň niýetlenen kursy."
       }
     ]
   }

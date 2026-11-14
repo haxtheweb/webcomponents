@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "İğneleme",
-    "description": "Metni alaycı bir şekilde sunma"
+    "description": "Alaycı bir ton için büyük-küçük harfleri değişen metin."
   },
   "settings": {
     "configure": [

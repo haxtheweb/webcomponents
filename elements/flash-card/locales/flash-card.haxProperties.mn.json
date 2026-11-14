@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Зургийн эх сурвалж",
         "description": "Картад ашиглах зургийн файл. Зургийн түлхүүр үгийг дарж хэрэглэнэ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Зургийн түлхүүр үг",
+        "description": "Санамсаргүй зургийн түлхүүр үг. Зургийн эх сурвалж үүнийг дарж хэрэглэнэ."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Сургалтын зорилт",
         "description": "OER Schema: энэ дадлагын дэмжих сургалтын зорилтын ID эсвэл URL."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Зургийн түлхүүр үг",
-        "description": "Санамсаргүй зургийн түлхүүр үг. Зургийн эх сурвалж үүнийг дарж хэрэглэнэ."
       }
     ]
   }

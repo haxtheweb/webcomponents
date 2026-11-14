@@ -4,23 +4,15 @@
   "package": "@haxtheweb/doodle-board",
   "version": "26.8.0",
   "license": "Apache-2.0",
-  "title": "Doodle board",
-  "description": "Draw a picture, mark up an image with feedback, or collect a signature.",
-  "icon": "image:brush",
-  "tags": [
-    "Media",
-    "Interactive",
-    "drawing",
-    "annotation",
-    "feedback",
-    "signature",
-    "canvas"
-  ],
-  "haxCapable": true,
+  "title": "doodle-board",
+  "description": "Draw, mark up an image with feedback, or sign: a canvas element with a HAX doodle input",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
   "import": "@haxtheweb/doodle-board/doodle-board.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/doodle-board/doodle-board.js",
   "install": "npm i @haxtheweb/doodle-board",
-  "demoHtml": "<doodle-board mode=\"draw\" alt=\"An empty drawing\"></doodle-board>\n<doodle-board mode=\"signature\" alt=\"Signature\"></doodle-board>",
+  "demoHtml": "",
   "attributes": [
     {
       "name": "mode",
@@ -28,15 +20,7 @@
       "type": "string",
       "default": "\"draw\"",
       "description": "draw, feedback or signature",
-      "hax": {
-        "title": "Use",
-        "input": "select",
-        "options": {
-          "draw": "Drawing",
-          "feedback": "Feedback",
-          "signature": "Signature"
-        }
-      }
+      "hax": null
     },
     {
       "name": "src",
@@ -44,11 +28,7 @@
       "type": "string",
       "default": "\"\"",
       "description": "background image: a submission to mark up, or a picture to draw on",
-      "hax": {
-        "title": "Background image",
-        "input": "haxupload",
-        "options": null
-      }
+      "hax": null
     },
     {
       "name": "drawing",
@@ -56,11 +36,7 @@
       "type": "string",
       "default": "\"\"",
       "description": "the marks, a transparent PNG data URL",
-      "hax": {
-        "title": "Drawing",
-        "input": "doodle",
-        "options": null
-      }
+      "hax": null
     },
     {
       "name": "alt",
@@ -68,11 +44,7 @@
       "type": "string",
       "default": "\"\"",
       "description": "describes the drawing and its background for people who cannot see it",
-      "hax": {
-        "title": "Alt text",
-        "input": "alt",
-        "options": null
-      }
+      "hax": null
     },
     {
       "name": "caption",
@@ -80,11 +52,7 @@
       "type": "string",
       "default": "\"\"",
       "description": "",
-      "hax": {
-        "title": "Caption",
-        "input": "textfield",
-        "options": null
-      }
+      "hax": null
     },
     {
       "name": "interactive",
@@ -92,11 +60,7 @@
       "type": "boolean",
       "default": "false",
       "description": "visitors draw on the published page and can download their picture",
-      "hax": {
-        "title": "Visitors can draw",
-        "input": "boolean",
-        "options": null
-      }
+      "hax": null
     },
     {
       "name": "width",
@@ -104,11 +68,7 @@
       "type": "number",
       "default": "0",
       "description": "surface size when there is no background image",
-      "hax": {
-        "title": "Width",
-        "input": "number",
-        "options": null
-      }
+      "hax": null
     },
     {
       "name": "height",
@@ -116,145 +76,13 @@
       "type": "number",
       "default": "0",
       "description": "",
-      "hax": {
-        "title": "Height",
-        "input": "number",
-        "options": null
-      }
+      "hax": null
     }
   ],
   "slots": [],
   "events": [],
-  "hax": {
-    "api": "1",
-    "type": "element",
-    "editingElement": "core",
-    "hideDefaultSettings": false,
-    "canScale": true,
-    "canEditSource": true,
-    "contentEditable": false,
-    "designSystem": {
-      "primary": false,
-      "accent": false,
-      "text": false
-    },
-    "gizmo": {
-      "title": "Doodle board",
-      "description": "Draw a picture, mark up an image with feedback, or collect a signature.",
-      "icon": "image:brush",
-      "color": "blue",
-      "tags": [
-        "Media",
-        "Interactive",
-        "drawing",
-        "annotation",
-        "feedback",
-        "signature",
-        "canvas"
-      ],
-      "handles": [
-        {
-          "type": "image",
-          "type_exclusive": false,
-          "source": "src",
-          "alt": "alt"
-        }
-      ],
-      "meta": {
-        "author": "HAXTheWeb core team"
-      }
-    },
-    "settings": {
-      "configure": [
-        {
-          "property": "mode",
-          "title": "Use",
-          "description": "Drawing for pictures, Feedback to mark up a submission, Signature for a signature pad.",
-          "inputMethod": "select",
-          "options": {
-            "draw": "Drawing",
-            "feedback": "Feedback",
-            "signature": "Signature"
-          }
-        },
-        {
-          "property": "drawing",
-          "title": "Drawing",
-          "description": "Opens the editor. Pen, highlighter, boxes, circles, arrows and text.",
-          "inputMethod": "doodle",
-          "backgroundProperty": "src",
-          "modeProperty": "mode",
-          "noVoiceRecord": true
-        },
-        {
-          "property": "src",
-          "title": "Background image",
-          "description": "A submission to give feedback on, or a picture to draw over.",
-          "inputMethod": "haxupload",
-          "noVoiceRecord": true
-        },
-        {
-          "property": "alt",
-          "title": "Alt text",
-          "description": "Describe the drawing and what it marks for people who cannot see it.",
-          "inputMethod": "alt"
-        },
-        {
-          "property": "caption",
-          "title": "Caption",
-          "description": "Shown under the drawing.",
-          "inputMethod": "textfield"
-        }
-      ],
-      "advanced": [
-        {
-          "property": "interactive",
-          "title": "Visitors can draw",
-          "description": "Shows the editor on the published page so visitors can draw and download their picture. Nothing they draw is saved to the site.",
-          "inputMethod": "boolean"
-        },
-        {
-          "property": "width",
-          "title": "Width",
-          "description": "Surface width in pixels when there is no background image.",
-          "inputMethod": "number"
-        },
-        {
-          "property": "height",
-          "title": "Height",
-          "description": "Surface height in pixels when there is no background image.",
-          "inputMethod": "number"
-        }
-      ],
-      "developer": []
-    },
-    "saveOptions": {
-      "unsetAttributes": []
-    },
-    "documentation": {
-      "howTo": null,
-      "purpose": "Lets authors and visitors draw, mark up a submission with feedback, or sign, in one element."
-    },
-    "demoSchema": [
-      {
-        "tag": "doodle-board",
-        "content": "",
-        "properties": {
-          "mode": "draw",
-          "alt": "An empty drawing"
-        }
-      },
-      {
-        "tag": "doodle-board",
-        "content": "",
-        "properties": {
-          "mode": "signature",
-          "alt": "Signature"
-        }
-      }
-    ]
-  },
-  "surfaceHash": "2b3308f43024",
+  "hax": {},
+  "surfaceHash": "269cbec45f52",
   "walkthroughs": [],
   "videos": [],
   "motion": {

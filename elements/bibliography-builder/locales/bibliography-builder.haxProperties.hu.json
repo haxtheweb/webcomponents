@@ -9,7 +9,9 @@
         "slot": "",
         "title": "Hivatkozások",
         "description": "Az irodalomjegyzék hivatkozási tételei"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "Kurzus",

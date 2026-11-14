@@ -1,0 +1,53 @@
+{
+  "canScale": false,
+  "canEditSource": false,
+  "contentEditable": false,
+  "gizmo": {
+    "title": "Cite this page",
+    "description": "Copyable APA, MLA, Chicago or BibTeX citation for this page or the whole site, built from site information",
+    "icon": "editor:format-quote",
+    "color": "blue",
+    "tags": ["Site", "citation", "reference", "apa", "mla"],
+    "handles": [],
+    "meta": {
+      "author": "HAXcms"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "scope",
+        "title": "What to cite",
+        "description": "Cite the current page or the whole site",
+        "inputMethod": "select",
+        "options": {
+          "page": "This page",
+          "site": "Whole site"
+        }
+      },
+      {
+        "property": "format",
+        "title": "Default style",
+        "description": "Style shown first; visitors can switch styles",
+        "inputMethod": "select",
+        "options": {
+          "apa": "APA",
+          "mla": "MLA",
+          "chicago": "Chicago",
+          "bibtex": "BibTeX"
+        }
+      }
+    ],
+    "advanced": []
+  },
+  "demoSchema": [
+    {
+      "tag": "site-citation",
+      "properties": {
+        "scope": "page",
+        "format": "apa"
+      },
+      "content": ""
+    }
+  ]
+}

@@ -27,6 +27,13 @@
       {
         "slot": "",
         "title": "Deebii"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Hidhoo dabalataa",
+        "description": "Hidhoo odeeffannoo dabalataa."
       },
       {
         "property": "hasLearningObjective",
@@ -37,13 +44,6 @@
         "property": "assessing",
         "title": "Kan madaalamu",
         "description": "Wabii sochii kan akka oer:assessing tti ba'u."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "link",
-        "title": "Hidhoo dabalataa",
-        "description": "Hidhoo odeeffannoo dabalataa."
       }
     ]
   }

@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "Nhóm mở rộng/thu gọn",
-    "description": "Một nhóm các phần tử mở rộng/thu gọn."
+    "title": "Nhóm thu gọn",
+    "description": "Một nhóm các vùng chứa có thể thu gọn."
   },
   "settings": {
     "configure": [

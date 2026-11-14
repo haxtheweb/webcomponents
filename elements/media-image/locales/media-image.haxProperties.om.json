@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Ibsa suuraa",
         "description": "Ibsa suuraa."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Mata Duree Fakkii",
-        "description": "Mata duree maqaa fakkiitiif."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Ibsa Fakkii",
-        "description": "Ibsa maqaa fakkiitiif."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Moodaalii suuraa dhorki",
         "description": "Cuqaasni suuraa diyaaloogii qoraa suuraa keessatti akka hin banne dhorki."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Mata Duree Fakkii",
+        "description": "Mata duree maqaa fakkiitiif."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Ibsa Fakkii",
+        "description": "Ibsa maqaa fakkiitiif."
       }
     ],
     "developer": [

@@ -10,7 +10,7 @@
   "cssParts": [],
   "cssProperties": [],
   "hax": {
-    "schema": "elements/lrn-math/lrn-math.js",
+    "schema": "elements/lrn-math/lib/lrn-math.haxProperties.json",
     "gizmo": true,
     "properties": [
       "mathtext"

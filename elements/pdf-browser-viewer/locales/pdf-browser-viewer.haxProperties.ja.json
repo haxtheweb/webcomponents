@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "ブラウザーPDFビューアー",
+    "title": "PDFビューアー",
     "description": "PDFファイルをインラインで埋め込みます。カードレイアウトとダウンロードボタンは任意です。"
   },
   "settings": {
@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "非対応メッセージ",
-        "description": "ブラウザーがPDFファイルを表示できないときのメッセージ。"
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "非対応リンクのメッセージ",
-        "description": "ブラウザーがPDFファイルを表示できないときのリンクテキスト。"
-      },
-      {
         "property": "width",
         "title": "幅",
         "description": "PDFビューアーの幅。"
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "高さ",
         "description": "PDFビューアーの高さ。"
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "非対応メッセージ",
+        "description": "ブラウザーがPDFファイルを表示できないときのメッセージ。"
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "非対応リンクのメッセージ",
+        "description": "ブラウザーがPDFファイルを表示できないときのリンクテキスト。"
       }
     ]
   }

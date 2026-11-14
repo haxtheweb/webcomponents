@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Filtrə icazə ver",
         "description": "Sütun dəyərlərinə görə filtrləməyə icazə ver."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Rəqəmsal üslub",
-        "description": "Rəqəmsal sütunlara rəqəmsal üslub tətbiq et."
-      },
-      {
-        "property": "responsive",
-        "title": "Adaptiv",
-        "description": "Kiçik ekranlarda cədvəlin düzənini uyğunlaşdır."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Rubrika rejimi",
-        "description": "Bu cədvəli OER Schema Rubric kimi şərh et ki, Rubric, RubricScale, RubricCriterion və RubricLevel metaməlumatları yaradılsın."
-      },
-      {
-        "property": "rubricType",
-        "title": "Rubrika növü",
-        "description": "oer:rubricType kimi ötürülən rubrika üslubu (yalnız Rubrika rejimi aktiv olduqda mənalıdır).",
-        "options": {
-          "": "(heç biri)",
-          "analytic": "Analitik",
-          "holistic": "Holistik",
-          "single-point": "Tək xal",
-          "checklist": "Yoxlama siyahısı"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Çap düyməsi",
         "description": "Yalnız cədvəli çap etmək üçün düymə əlavə et."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Rəqəmsal üslub",
+        "description": "Rəqəmsal sütunlara rəqəmsal üslub tətbiq et."
+      },
+      {
+        "property": "responsive",
+        "title": "Adaptiv",
+        "description": "Kiçik ekranlarda cədvəlin düzənini uyğunlaşdır."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Rubrika rejimi",
+        "description": "Bu cədvəli OER Schema Rubric kimi şərh et ki, Rubric, RubricScale, RubricCriterion və RubricLevel metaməlumatları yaradılsın."
+      },
+      {
+        "property": "rubricType",
+        "title": "Rubrika növü",
+        "description": "oer:rubricType kimi ötürülən rubrika üslubu (yalnız Rubrika rejimi aktiv olduqda mənalıdır).",
+        "options": {
+          "": "(heç biri)",
+          "analytic": "Analitik",
+          "holistic": "Holistik",
+          "single-point": "Tək xal",
+          "checklist": "Yoxlama siyahısı"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "CSV məlumatları",
         "description": "Yüklənmiş CSV faylından cədvəl yarat."
       }
-    ]
+    ],
+    "developer": []
   }
 }

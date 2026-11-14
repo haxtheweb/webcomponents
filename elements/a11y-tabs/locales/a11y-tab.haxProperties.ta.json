@@ -10,10 +10,6 @@
         "title": "தாவல் சின்னம்"
       },
       {
-        "property": "disabled",
-        "title": "முடக்கப்பட்டது"
-      },
-      {
         "property": "label",
         "title": "தாவல் லேபிள்"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "தனித்துவ ID"
-      },
-      {
         "property": "flag",
         "title": "விருப்பக் கொடி உரை"
       },
       {
         "property": "flagIcon",
         "title": "விருப்பக் கொடிச் சின்னம்"
+      },
+      {
+        "property": "disabled",
+        "title": "முடக்கப்பட்டது"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "தனித்துவ ID"
       }
     ]
   }

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Pregunta de verdadero / falso",
-    "description": "Pregunta de verdadero o falso"
+    "description": "Una afirmación que el estudiante marca como verdadera o falsa."
   },
   "settings": {
     "configure": [

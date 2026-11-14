@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "อนุญาตให้กรอง",
         "description": "อนุญาตให้กรองตามค่าในคอลัมน์"
-      },
-      {
-        "property": "numericStyles",
-        "title": "รูปแบบตัวเลข",
-        "description": "ใช้รูปแบบตัวเลขกับคอลัมน์ที่เป็นตัวเลข"
-      },
-      {
-        "property": "responsive",
-        "title": "ปรับตามหน้าจอ",
-        "description": "ปรับเลย์เอาต์ตารางบนหน้าจอขนาดเล็ก"
-      },
-      {
-        "property": "rubricMode",
-        "title": "โหมดรูบริก",
-        "description": "ตีความตารางนี้เป็น Rubric ของ OER Schema เพื่อสร้างเมทาดาทา Rubric, RubricScale, RubricCriterion และ RubricLevel"
-      },
-      {
-        "property": "rubricType",
-        "title": "ประเภทรูบริก",
-        "description": "รูปแบบรูบริกที่สร้างเป็น oer:rubricType (มีผลเฉพาะเมื่อเปิดโหมดรูบริก)",
-        "options": {
-          "": "(ไม่มี)",
-          "analytic": "แบบแยกส่วน",
-          "holistic": "แบบองค์รวม",
-          "single-point": "แบบจุดเดียว",
-          "checklist": "รายการตรวจสอบ"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "ปุ่มพิมพ์",
         "description": "เพิ่มปุ่มสำหรับพิมพ์เฉพาะตาราง"
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "รูปแบบตัวเลข",
+        "description": "ใช้รูปแบบตัวเลขกับคอลัมน์ที่เป็นตัวเลข"
+      },
+      {
+        "property": "responsive",
+        "title": "ปรับตามหน้าจอ",
+        "description": "ปรับเลย์เอาต์ตารางบนหน้าจอขนาดเล็ก"
+      },
+      {
+        "property": "rubricMode",
+        "title": "โหมดรูบริก",
+        "description": "ตีความตารางนี้เป็น Rubric ของ OER Schema เพื่อสร้างเมทาดาทา Rubric, RubricScale, RubricCriterion และ RubricLevel"
+      },
+      {
+        "property": "rubricType",
+        "title": "ประเภทรูบริก",
+        "description": "รูปแบบรูบริกที่สร้างเป็น oer:rubricType (มีผลเฉพาะเมื่อเปิดโหมดรูบริก)",
+        "options": {
+          "": "(ไม่มี)",
+          "analytic": "แบบแยกส่วน",
+          "holistic": "แบบองค์รวม",
+          "single-point": "แบบจุดเดียว",
+          "checklist": "รายการตรวจสอบ"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "ข้อมูล CSV",
         "description": "สร้างตารางจากไฟล์ CSV ที่อัปโหลด"
       }
-    ]
+    ],
+    "developer": []
   }
 }

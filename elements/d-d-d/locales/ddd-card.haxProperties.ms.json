@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Tanpa Anak Panah",
         "description": "Sembunyikan anak panah butang."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Pautan: sasaran",
@@ -54,7 +52,9 @@
           "_top": "Tetingkap teratas - _top",
           "_parent": "Tetingkap induk - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Pautan: rel",

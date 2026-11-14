@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Zpráva o nepodporování",
-        "description": "Zpráva, když prohlížeč nedokáže zobrazit soubory PDF."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Text odkazu při nepodporování",
-        "description": "Text odkazu, když prohlížeč nedokáže zobrazit soubory PDF."
-      },
-      {
         "property": "width",
         "title": "Šířka",
         "description": "Šířka prohlížeče PDF."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Výška",
         "description": "Výška prohlížeče PDF."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Zpráva o nepodporování",
+        "description": "Zpráva, když prohlížeč nedokáže zobrazit soubory PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Text odkazu při nepodporování",
+        "description": "Text odkazu, když prohlížeč nedokáže zobrazit soubory PDF."
       }
     ]
   }

@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Sumber Imej",
         "description": "Fail imej yang digunakan untuk kad. Mengatasi Kata Kunci Imej."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Kata Kunci Imej",
+        "description": "Kata kunci imej rawak. Diatasi oleh Sumber Imej."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Objektif Pembelajaran",
         "description": "OER Schema: ID atau URL objektif pembelajaran yang disokong oleh latihan ini."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Kata Kunci Imej",
-        "description": "Kata kunci imej rawak. Diatasi oleh Sumber Imej."
       }
     ]
   }

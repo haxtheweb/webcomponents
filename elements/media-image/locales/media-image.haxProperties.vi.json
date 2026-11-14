@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Chú thích",
         "description": "Chú thích cho hình ảnh."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Tiêu đề hình",
-        "description": "Tiêu đề cho nhãn hình."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Mô tả hình",
-        "description": "Mô tả cho nhãn hình."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Tắt hộp thoại hình ảnh",
         "description": "Tắt việc nhấp để mở hình ảnh trong hộp thoại xem ảnh."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Tiêu đề hình",
+        "description": "Tiêu đề cho nhãn hình."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Mô tả hình",
+        "description": "Mô tả cho nhãn hình."
       }
     ],
     "developer": [

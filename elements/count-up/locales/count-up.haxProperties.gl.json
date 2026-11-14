@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Texto de sufixo",
         "description": "Texto que se mostra despois do número (p. ex. '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Rañura de prefixo",
-        "description": "Contido opcional na rañura antes do número."
-      },
-      {
-        "slot": "suffix",
-        "title": "Rañura de sufixo",
-        "description": "Contido opcional na rañura despois do número."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Sen suavizado",
         "description": "Desactivar o suavizado para que a conta sexa lineal."
+      },
+      {
+        "slot": "prefix",
+        "title": "Rañura de prefixo",
+        "description": "Contido opcional na rañura antes do número."
+      },
+      {
+        "slot": "suffix",
+        "title": "Rañura de sufixo",
+        "description": "Contido opcional na rañura despois do número."
       }
     ]
   }

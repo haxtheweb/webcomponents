@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Audio",
-    "description": "Dies kann Video unabhängig von der Quelle hochgradig barrierefrei darstellen."
+    "description": "Barrierefreier Audioplayer mit Transkript."
   },
   "settings": {
     "configure": [
@@ -46,6 +46,16 @@
         "property": "accentColor",
         "title": "Akzentfarbe",
         "description": "Wähle die Akzentfarbe für den Player."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Zeitstempel ausblenden",
+        "description": "Die Zeitstempel im Transkript ausblenden."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Transkript ausblenden",
+        "description": "Transkript standardmäßig ausblenden."
       }
     ],
     "developer": [
@@ -72,16 +82,6 @@
         "property": "disableInteractive",
         "title": "Interaktivität deaktivieren",
         "description": "Interaktiven Modus deaktivieren, der das Transkript anklickbar macht."
-      },
-      {
-        "property": "hideTimestamps",
-        "title": "Zeitstempel ausblenden",
-        "description": "Die Zeitstempel im Transkript ausblenden."
-      },
-      {
-        "property": "hideTranscript",
-        "title": "Transkript ausblenden",
-        "description": "Transkript standardmäßig ausblenden."
       },
       {
         "property": "lang",

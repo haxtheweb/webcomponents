@@ -11,30 +11,8 @@
         "description": "Klausimas naudotojams. Pažymėkite numetimo vietas, tada išvardykite atsakymus iki kitos vietos."
       },
       {
-        "property": "gradingFormat",
-        "title": "Vertinimo formatas",
-        "description": "OER Schema: šio vertinimo formatas (pvz., taškai, raidė, procentai, atlikimas)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Mokymosi tikslas",
-        "description": "OER Schema: su šiuo vertinimu susijęs mokymosi tikslas."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kursas",
-        "description": "OER Schema: kursas, kuriam skirtas šis vertinimas."
-      },
-      {
         "property": "answers",
         "title": "Atsakymai"
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Testo pavadinimas",
-        "description": "Testo pavadinimas, naudojamas xAPI identifikavimui analitikos sistemose."
       }
     ],
     "advanced": [
@@ -47,6 +25,28 @@
         "property": "collapsed",
         "title": "Pradėti sutrauktą",
         "description": "Kai sutraukiama, pradedama kaip uždara eilutė, rodanti tik klausimą ir jo būseną."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Vertinimo formatas",
+        "description": "OER Schema: šio vertinimo formatas (pvz., taškai, raidė, procentai, atlikimas)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Mokymosi tikslas",
+        "description": "OER Schema: su šiuo vertinimu susijęs mokymosi tikslas."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Testo pavadinimas",
+        "description": "Testo pavadinimas, naudojamas xAPI identifikavimui analitikos sistemose."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursas",
+        "description": "OER Schema: kursas, kuriam skirtas šis vertinimas."
       }
     ]
   }

@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Testun ôl-ddodiad",
         "description": "Testun a ddangosir ar ôl y rhif (e.e. '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Slot rhagddodiad",
-        "description": "Cynnwys dewisol mewn slot cyn y rhif."
-      },
-      {
-        "slot": "suffix",
-        "title": "Slot ôl-ddodiad",
-        "description": "Cynnwys dewisol mewn slot ar ôl y rhif."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Dim llyfnhau",
         "description": "Analluogi llyfnhau fel bod y cyfrif yn llinol."
+      },
+      {
+        "slot": "prefix",
+        "title": "Slot rhagddodiad",
+        "description": "Cynnwys dewisol mewn slot cyn y rhif."
+      },
+      {
+        "slot": "suffix",
+        "title": "Slot ôl-ddodiad",
+        "description": "Cynnwys dewisol mewn slot ar ôl y rhif."
       }
     ]
   }

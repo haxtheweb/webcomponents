@@ -20,7 +20,7 @@
   "cssParts": [],
   "cssProperties": [],
   "hax": {
-    "schema": "elements/relative-heading/relative-heading.js",
+    "schema": "elements/relative-heading/lib/relative-heading.haxProperties.json",
     "gizmo": true,
     "properties": [
       "closeIcon",

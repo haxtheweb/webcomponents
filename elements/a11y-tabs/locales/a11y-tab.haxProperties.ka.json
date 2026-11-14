@@ -10,10 +10,6 @@
         "title": "ჩანართის ხატულა"
       },
       {
-        "property": "disabled",
-        "title": "გამორთული"
-      },
-      {
         "property": "label",
         "title": "ჩანართის წარწერა"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "უნიკალური ID"
-      },
-      {
         "property": "flag",
         "title": "არასავალდებულო დროშის ტექსტი"
       },
       {
         "property": "flagIcon",
         "title": "არასავალდებულო დროშის ხატულა"
+      },
+      {
+        "property": "disabled",
+        "title": "გამორთული"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "უნიკალური ID"
       }
     ]
   }

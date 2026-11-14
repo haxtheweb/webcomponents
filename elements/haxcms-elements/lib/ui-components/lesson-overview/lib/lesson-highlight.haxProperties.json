@@ -2,16 +2,17 @@
   "canScale": false,
   "canEditSource": true,
   "gizmo": {
-    "title": "Lesson Highlight",
-    "description": "Quick lesson overview block.",
-    "icon": "communication:business",
+    "title": "Lesson highlight",
+    "description": "A single highlight inside a lesson overview.",
+    "icon": "icons:lightbulb-outline",
     "color": "blue",
     "tags": ["Instructional", "layout", "highlight", "summary", "overview"],
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team"
     },
-    "allowedParents": ["lesson-overview"]
+
+    "requiresParent": "lesson-overview"
   },
   "settings": {
     "configure": [
@@ -33,12 +34,7 @@
         "description": "Additional detail.",
         "inputMethod": "textfield"
       },
-      {
-        "property": "disabled",
-        "title": "Disabled",
-        "description": "Disable this highlight.",
-        "inputMethod": "boolean"
-      },
+
       {
         "property": "smart",
         "title": "Smart data",
@@ -62,6 +58,12 @@
         "title": "Accent color",
         "description": "Accent color for the icon.",
         "inputMethod": "colorpicker"
+      },
+      {
+        "property": "disabled",
+        "title": "Disabled",
+        "description": "Disable this highlight.",
+        "inputMethod": "boolean"
       }
     ]
   },

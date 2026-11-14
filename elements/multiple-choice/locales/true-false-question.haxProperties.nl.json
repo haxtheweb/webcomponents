@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Waar / onwaar-vraag",
-    "description": "Waar-onwaarvraag"
+    "description": "Een bewering die de leerling als waar of onwaar markeert."
   },
   "settings": {
     "configure": [

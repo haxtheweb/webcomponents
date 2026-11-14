@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "कैप्शन",
         "description": "छवि के लिए कैप्शन।"
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "चित्र शीर्षक",
-        "description": "चित्र लेबल के लिए शीर्षक।"
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "चित्र विवरण",
-        "description": "चित्र लेबल के लिए विवरण।"
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "छवि मोडल अक्षम करें",
         "description": "क्लिक करने पर छवि को इमेज इंस्पेक्टर डायलॉग में खुलने से रोकें।"
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "चित्र शीर्षक",
+        "description": "चित्र लेबल के लिए शीर्षक।"
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "चित्र विवरण",
+        "description": "चित्र लेबल के लिए विवरण।"
       }
     ],
     "developer": [

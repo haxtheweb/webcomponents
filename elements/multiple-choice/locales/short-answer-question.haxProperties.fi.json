@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Lyhyen vastauksen kysymys",
-    "description": "Pyydä käyttäjää vastaamaan peruskysymykseen"
+    "description": "Kysymys, johon oppija vastaa lauseella tai kahdella."
   },
   "settings": {
     "configure": [

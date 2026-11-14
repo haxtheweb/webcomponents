@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "አዝራሮች",
         "description": "ከጽሑፉ በታች የሚታይ የአዝራሮች ቡድን።"
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "የመልህቅ ጽሑፍ",
         "description": "በአሰሳ ውስጥ የሚታይ የመልህቅ መለያ።"
       }
-    ]
+    ],
+    "developer": []
   }
 }

@@ -26,7 +26,8 @@
         "description": "Utli għall-qarrejja tal-iskrin u għal SEO aħjar."
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "Kwalità",

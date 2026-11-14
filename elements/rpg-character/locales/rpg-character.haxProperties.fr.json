@@ -11,11 +11,6 @@
         "description": "Mot utilisé pour générer un personnage aléatoire."
       },
       {
-        "property": "code",
-        "title": "Code du personnage",
-        "description": "Collez un code enregistré pour recréer ce personnage."
-      },
-      {
         "property": "hat",
         "title": "Chapeau",
         "description": "Style de chapeau.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Masque",
-        "description": "Masque porté sur le visage ou la tête.",
-        "options": {
-          "none": "Aucun",
-          "lion": "Lion",
-          "plague": "Médecin de la peste",
-          "theater": "Théâtre",
-          "pumpkin": "Citrouille",
-          "ghost": "Fantôme",
-          "mummy": "Momie",
-          "wrestler": "Masque de catch",
-          "block-head": "Tête cubique",
-          "web": "Masque à toile",
-          "werewolf": "Visage de loup-garou",
-          "shadow": "Visage d'ombre"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Maquillage",
-        "description": "Peinture faciale ou rouge à lèvres.",
-        "options": {
-          "none": "Aucun",
-          "red-lipstick": "Rouge à lèvres rouge",
-          "pink-lipstick": "Rouge à lèvres rose",
-          "berry-lipstick": "Rouge à lèvres baie",
-          "clown": "Maquillage de clown",
-          "fangs": "Crocs",
-          "skull": "Maquillage de crâne",
-          "zombie": "Maquillage de zombie",
-          "red-nose": "Nez rouge",
-          "white-beard": "Barbe blanche",
-          "domino": "Masque de héros",
-          "carrot": "Nez de carotte",
-          "bunny": "Nez de lapin",
-          "mustache": "Moustache",
-          "monster": "Maquillage de monstre",
-          "round-glasses": "Lunettes rondes"
-        }
-      },
-      {
         "property": "expression",
         "title": "Expression",
         "description": "Expression du visage.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Animal de compagnie",
+        "description": "Animal de compagnie à côté du personnage.",
+        "options": {
+          "none": "Aucun",
+          "cat": "Chat",
+          "dog": "Chien",
+          "bunny": "Lapin",
+          "goldfish": "Poisson rouge",
+          "slime": "Slime",
+          "squirrel": "Écureuil",
+          "dragon": "Bébé dragon",
+          "parrot": "Perroquet",
+          "owl": "Hibou",
+          "bat": "Chauve-souris"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Code du personnage",
+        "description": "Collez un code enregistré pour recréer ce personnage."
+      },
+      {
+        "property": "mask",
+        "title": "Masque",
+        "description": "Masque porté sur le visage ou la tête.",
+        "options": {
+          "none": "Aucun",
+          "lion": "Lion",
+          "plague": "Médecin de la peste",
+          "theater": "Théâtre",
+          "pumpkin": "Citrouille",
+          "ghost": "Fantôme",
+          "mummy": "Momie",
+          "wrestler": "Masque de catch",
+          "block-head": "Tête cubique",
+          "web": "Masque à toile",
+          "werewolf": "Visage de loup-garou",
+          "shadow": "Visage d'ombre"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Maquillage",
+        "description": "Peinture faciale ou rouge à lèvres.",
+        "options": {
+          "none": "Aucun",
+          "red-lipstick": "Rouge à lèvres rouge",
+          "pink-lipstick": "Rouge à lèvres rose",
+          "berry-lipstick": "Rouge à lèvres baie",
+          "clown": "Maquillage de clown",
+          "fangs": "Crocs",
+          "skull": "Maquillage de crâne",
+          "zombie": "Maquillage de zombie",
+          "red-nose": "Nez rouge",
+          "white-beard": "Barbe blanche",
+          "domino": "Masque de héros",
+          "carrot": "Nez de carotte",
+          "bunny": "Nez de lapin",
+          "mustache": "Moustache",
+          "monster": "Maquillage de monstre",
+          "round-glasses": "Lunettes rondes"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Texte du drapeau",
         "description": "Jusqu'à 4 lettres affichées sur le drapeau."
@@ -310,24 +330,6 @@
           "skates": "Patins",
           "skateboard": "Skateboard",
           "hoverboard": "Planche volante"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Animal de compagnie",
-        "description": "Animal de compagnie à côté du personnage.",
-        "options": {
-          "none": "Aucun",
-          "cat": "Chat",
-          "dog": "Chien",
-          "bunny": "Lapin",
-          "goldfish": "Poisson rouge",
-          "slime": "Slime",
-          "squirrel": "Écureuil",
-          "dragon": "Bébé dragon",
-          "parrot": "Perroquet",
-          "owl": "Hibou",
-          "bat": "Chauve-souris"
         }
       },
       {

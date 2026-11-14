@@ -4,22 +4,23 @@
     "description": "Grojaraštis, pateikiantis vaizdo ir garso grotuvus grotuvo ir šoninės juostos išdėstymu."
   },
   "settings": {
-    "configure": [
+    "configure": [],
+    "advanced": [
       {
         "property": "activeIndex",
         "title": "Pradinis elementas",
         "description": "Elemento, nuo kurio pradedama, numeris."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kursas",
-        "description": "Kursas, kuriam skirtas šis grojaraštis (kurso identifikatorius arba URL)."
       }
     ],
     "developer": [
       {
         "title": "Medija",
         "description": "Grojaraščio vaizdo įrašai ir garsas. Čia neredaguojama: puslapio struktūra tai naudoja, kad žinotų, kuriuos blokus galima įmesti."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursas",
+        "description": "Kursas, kuriam skirtas šis grojaraštis (kurso identifikatorius arba URL)."
       }
     ]
   }

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "Burkoló beágyazott Spotify-lejátszókhoz."
+    "description": "Ágyazzon be egy Spotify-számot, -albumot vagy -lejátszási listát."
   },
   "settings": {
     "configure": [

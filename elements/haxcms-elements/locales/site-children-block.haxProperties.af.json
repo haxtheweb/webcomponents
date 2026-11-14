@@ -4,7 +4,7 @@
     "description": "Dinamiese blok om kinders van die huidige bladsy te wys"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "Dinamiese metode",
@@ -14,7 +14,9 @@
           "parent": "Ouer se kinders",
           "ancestor": "Alle kinders van die hoogste voorouer"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "Beginvlak"

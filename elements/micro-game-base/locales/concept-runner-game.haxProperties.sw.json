@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Mchezo wa mkimbiaji wa dhana",
-    "description": "Mchezo wa kusogea pembeni. Mhusika anakimbia kwa moto na hasimami kamwe. Ruka ili kunyakua dhana nzuri na kuruka juu ya mbaya, kisha uone muhtasari wa yaliyokuwa mazuri na mabaya."
+    "description": "Mchezo wa kusogea kando: ruka ili kunasa dhana sahihi na kuepuka zisizo sahihi."
   },
   "settings": {
     "configure": [
@@ -89,7 +89,9 @@
         "property": "gameTitle",
         "title": "Jina la mchezo",
         "description": "Hupa mchezo huu jina katika matukio ya maendeleo na alama za OER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Kitambulisho cha mchezo",

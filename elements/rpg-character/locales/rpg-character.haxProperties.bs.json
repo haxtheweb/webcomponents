@@ -11,11 +11,6 @@
         "description": "Riječ koja se koristi za generisanje nasumičnog lika."
       },
       {
-        "property": "code",
-        "title": "Kod lika",
-        "description": "Zalijepite sačuvani kod da ponovo napravite tog lika."
-      },
-      {
         "property": "hat",
         "title": "Šešir",
         "description": "Stil šešira.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Maska",
-        "description": "Maska koja se nosi preko lica ili glave.",
-        "options": {
-          "none": "Nema",
-          "lion": "Lav",
-          "plague": "Doktor kuge",
-          "theater": "Pozorište",
-          "pumpkin": "Bundeva",
-          "ghost": "Duh",
-          "mummy": "Mumija",
-          "wrestler": "Hrvačka maska",
-          "block-head": "Kockasta glava",
-          "web": "Maska s mrežom",
-          "werewolf": "Lice vukodlaka",
-          "shadow": "Sjenovito lice"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Šminka",
-        "description": "Boja za lice ili ruž.",
-        "options": {
-          "none": "Nema",
-          "red-lipstick": "Crveni ruž",
-          "pink-lipstick": "Roze ruž",
-          "berry-lipstick": "Ruž boje bobica",
-          "clown": "Šminka klauna",
-          "fangs": "Očnjaci",
-          "skull": "Boja za lobanju",
-          "zombie": "Boja za zombija",
-          "red-nose": "Crveni nos",
-          "white-beard": "Bijela brada",
-          "domino": "Maska heroja",
-          "carrot": "Nos od mrkve",
-          "bunny": "Zečji nos",
-          "mustache": "Brkovi",
-          "monster": "Boja za lice čudovišta",
-          "round-glasses": "Okrugle naočale"
-        }
-      },
-      {
         "property": "expression",
         "title": "Izraz",
         "description": "Izraz lica.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Ljubimac",
+        "description": "Ljubimac pored lika.",
+        "options": {
+          "none": "Nema",
+          "cat": "Mačka",
+          "dog": "Pas",
+          "bunny": "Zečić",
+          "goldfish": "Zlatna ribica",
+          "slime": "Sluz",
+          "squirrel": "Vjeverica",
+          "dragon": "Mali zmaj",
+          "parrot": "Papagaj",
+          "owl": "Sova",
+          "bat": "Šišmiš"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Kod lika",
+        "description": "Zalijepite sačuvani kod da ponovo napravite tog lika."
+      },
+      {
+        "property": "mask",
+        "title": "Maska",
+        "description": "Maska koja se nosi preko lica ili glave.",
+        "options": {
+          "none": "Nema",
+          "lion": "Lav",
+          "plague": "Doktor kuge",
+          "theater": "Pozorište",
+          "pumpkin": "Bundeva",
+          "ghost": "Duh",
+          "mummy": "Mumija",
+          "wrestler": "Hrvačka maska",
+          "block-head": "Kockasta glava",
+          "web": "Maska s mrežom",
+          "werewolf": "Lice vukodlaka",
+          "shadow": "Sjenovito lice"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Šminka",
+        "description": "Boja za lice ili ruž.",
+        "options": {
+          "none": "Nema",
+          "red-lipstick": "Crveni ruž",
+          "pink-lipstick": "Roze ruž",
+          "berry-lipstick": "Ruž boje bobica",
+          "clown": "Šminka klauna",
+          "fangs": "Očnjaci",
+          "skull": "Boja za lobanju",
+          "zombie": "Boja za zombija",
+          "red-nose": "Crveni nos",
+          "white-beard": "Bijela brada",
+          "domino": "Maska heroja",
+          "carrot": "Nos od mrkve",
+          "bunny": "Zečji nos",
+          "mustache": "Brkovi",
+          "monster": "Boja za lice čudovišta",
+          "round-glasses": "Okrugle naočale"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Tekst zastave",
         "description": "Do 4 slova prikazana na zastavi."
@@ -310,24 +330,6 @@
           "skates": "Klizaljke",
           "skateboard": "Skejtbord",
           "hoverboard": "Lebdeća daska"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Ljubimac",
-        "description": "Ljubimac pored lika.",
-        "options": {
-          "none": "Nema",
-          "cat": "Mačka",
-          "dog": "Pas",
-          "bunny": "Zečić",
-          "goldfish": "Zlatna ribica",
-          "slime": "Sluz",
-          "squirrel": "Vjeverica",
-          "dragon": "Mali zmaj",
-          "parrot": "Papagaj",
-          "owl": "Sova",
-          "bat": "Šišmiš"
         }
       },
       {

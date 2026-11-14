@@ -89,7 +89,9 @@
         "property": "gameTitle",
         "title": "O'yin nomi",
         "description": "Bu o'yinni jarayon hodisalarida va OER Schema belgilashida nomlaydi."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "O'yin ID si",

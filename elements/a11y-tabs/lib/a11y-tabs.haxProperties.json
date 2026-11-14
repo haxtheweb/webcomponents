@@ -4,9 +4,9 @@
   "gizmo": {
     "title": "Tabs",
     "description": "Set of tabs.",
-    "icon": "view-day",
+    "icon": "icons:tab",
     "color": "grey",
-    "tags": ["Layout", "tabs", "display", "layout"],
+    "tags": ["Layout", "tabs", "display"],
     "shortcut": [
       {
         "type": "markdown",
@@ -23,6 +23,36 @@
         "description": "Accessible label for the tab set.",
         "inputMethod": "textfield"
       },
+
+      {
+        "property": "sticky",
+        "title": "Sticky",
+        "description": "Keep horizontal tabs at the top while scrolling.",
+        "inputMethod": "boolean"
+      },
+
+      {
+        "slot": "",
+        "title": "Tabs",
+        "description": "Series of <a11y-tab/> elements.",
+        "inputMethod": "code-editor"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "layoutBreakpoint",
+        "title": "Layout Breakpoint",
+        "inputMethod": "number",
+        "description": "Breakpoint for horizontal tabs; use -1 for vertical-only."
+      },
+      {
+        "property": "iconBreakpoint",
+        "title": "Icon Breakpoint",
+        "inputMethod": "number",
+        "description": "Breakpoint for showing text with icons. Default is 0; use -1 for icon-only mode."
+      }
+    ],
+    "developer": [
       {
         "property": "disabled",
         "title": "Disabled",
@@ -36,32 +66,6 @@
         "inputMethod": "boolean"
       },
       {
-        "property": "sticky",
-        "title": "Sticky",
-        "description": "Keep horizontal tabs at the top while scrolling.",
-        "inputMethod": "boolean"
-      },
-      {
-        "property": "layoutBreakpoint",
-        "title": "Layout Breakpoint",
-        "inputMethod": "number",
-        "description": "Breakpoint for horizontal tabs; use -1 for vertical-only."
-      },
-      {
-        "property": "iconBreakpoint",
-        "title": "Icon Breakpoint",
-        "inputMethod": "number",
-        "description": "Breakpoint for showing text with icons. Default is 0; use -1 for icon-only mode."
-      },
-      {
-        "slot": "",
-        "title": "Tabs",
-        "description": "Series of <a11y-tab/> elements.",
-        "inputMethod": "code-editor"
-      }
-    ],
-    "advanced": [
-      {
         "property": "id",
         "title": "Unique ID",
         "description": "Unique ID for this tab set.",
@@ -72,8 +76,10 @@
   "demoSchema": [
     {
       "tag": "a11y-tabs",
-      "properties": {},
-      "content": ""
+      "properties": {
+        "ariaLabel": "Unit overview"
+      },
+      "content": "<a11y-tab label=\"Overview\" icon=\"icons:info\"><p>What this unit covers and why it matters.</p></a11y-tab><a11y-tab label=\"Readings\" icon=\"icons:book\"><p>Read chapter 2 before the next class.</p></a11y-tab><a11y-tab label=\"Activity\" icon=\"icons:assignment\"><p>Complete the practice set and bring one question.</p></a11y-tab>"
     }
   ]
 }

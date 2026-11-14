@@ -10,10 +10,6 @@
         "title": "Skirtuko piktograma"
       },
       {
-        "property": "disabled",
-        "title": "Išjungta"
-      },
-      {
         "property": "label",
         "title": "Skirtuko pavadinimas"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "Unikalus ID"
-      },
-      {
         "property": "flag",
         "title": "Neprivalomas žymos tekstas"
       },
       {
         "property": "flagIcon",
         "title": "Neprivaloma žymos piktograma"
+      },
+      {
+        "property": "disabled",
+        "title": "Išjungta"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "Unikalus ID"
       }
     ]
   }

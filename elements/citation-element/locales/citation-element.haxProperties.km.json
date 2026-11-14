@@ -21,15 +21,6 @@
         "description": "កាលបរិច្ឆេទដែលបានចូលមើលប្រភព។"
       },
       {
-        "property": "scope",
-        "title": "វិសាលភាព",
-        "description": "វិសាលភាពធាតុដែលត្រូវដកស្រង់។",
-        "options": {
-          "sibling": "ធាតុបងប្អូន",
-          "parent": "ធាតុមេ"
-        }
-      },
-      {
         "property": "license",
         "title": "អាជ្ញាប័ណ្ណ",
         "description": "អាជ្ញាប័ណ្ណសម្រាប់ស្នាដៃដែលបានដកស្រង់។"
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "អ្នកបង្កើត",
         "description": "អ្នកបង្កើត ឬម្ចាស់នៃស្នាដៃដែលបានដកស្រង់។"
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "វិសាលភាព",
+        "description": "វិសាលភាពធាតុដែលត្រូវដកស្រង់។",
+        "options": {
+          "sibling": "ធាតុបងប្អូន",
+          "parent": "ធាតុមេ"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "ប្រភេទ OER Schema",

@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "Przyciski",
         "description": "Grupa przycisków wyświetlana pod tekstem."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "Tekst kotwicy",
         "description": "Etykieta kotwicy wyświetlana w nawigacji."
       }
-    ]
+    ],
+    "developer": []
   }
 }

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Cuadro de actividad",
-    "description": "Pequeño bloque de encabezado con estilo."
+    "description": "Un encabezado con etiqueta que marca el inicio de una actividad."
   },
   "settings": {
     "configure": [

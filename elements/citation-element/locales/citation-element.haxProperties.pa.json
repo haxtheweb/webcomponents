@@ -21,15 +21,6 @@
         "description": "ਸਰੋਤ ਤੱਕ ਪਹੁੰਚ ਕਰਨ ਦੀ ਮਿਤੀ।"
       },
       {
-        "property": "scope",
-        "title": "ਦਾਇਰਾ",
-        "description": "ਹਵਾਲਾ ਦੇਣ ਲਈ ਐਲੀਮੈਂਟ ਦਾਇਰਾ।",
-        "options": {
-          "sibling": "ਸਹਿ ਐਲੀਮੈਂਟ",
-          "parent": "ਮੂਲ ਐਲੀਮੈਂਟ"
-        }
-      },
-      {
         "property": "license",
         "title": "ਲਾਇਸੈਂਸ",
         "description": "ਹਵਾਲਾ ਦਿੱਤੀ ਰਚਨਾ ਦਾ ਲਾਇਸੈਂਸ।"
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "ਸਿਰਜਣਹਾਰ",
         "description": "ਹਵਾਲਾ ਦਿੱਤੀ ਰਚਨਾ ਦਾ ਸਿਰਜਣਹਾਰ ਜਾਂ ਮਾਲਕ।"
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "ਦਾਇਰਾ",
+        "description": "ਹਵਾਲਾ ਦੇਣ ਲਈ ਐਲੀਮੈਂਟ ਦਾਇਰਾ।",
+        "options": {
+          "sibling": "ਸਹਿ ਐਲੀਮੈਂਟ",
+          "parent": "ਮੂਲ ਐਲੀਮੈਂਟ"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "OER ਸਕੀਮਾ ਕਿਸਮ",

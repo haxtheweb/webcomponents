@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "Переглядач PDF у браузері",
+    "title": "Переглядач PDF",
     "description": "Вбудувати PDF-файл на сторінку з необов'язковим макетом картки та кнопкою завантаження."
   },
   "settings": {
@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Повідомлення про непідтримку",
-        "description": "Повідомлення, коли браузер не може показати PDF-файли."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Текст посилання про непідтримку",
-        "description": "Текст посилання, коли браузер не може показати PDF-файли."
-      },
-      {
         "property": "width",
         "title": "Ширина",
         "description": "Ширина переглядача PDF."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Висота",
         "description": "Висота переглядача PDF."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Повідомлення про непідтримку",
+        "description": "Повідомлення, коли браузер не може показати PDF-файли."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Текст посилання про непідтримку",
+        "description": "Текст посилання, коли браузер не може показати PDF-файли."
       }
     ]
   }

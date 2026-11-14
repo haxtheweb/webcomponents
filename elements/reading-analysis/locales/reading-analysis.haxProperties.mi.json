@@ -38,21 +38,6 @@
         "slot": "",
         "title": "Pānui",
         "description": "Te pānui e mahi ai ngā ākonga. Ko tētahi HTML: ngā upoko, ngā kōwae, ngā rārangi me ngā whakaahua."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "Hōputu kōeke",
-        "description": "OER Schema: hōputu kōeke mō tēnei aromatawai (hei tauira, piro, reta, ōrau, whakaotinga)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Whāinga ako",
-        "description": "OER Schema: te whāinga ako e hono ana ki tēnei aromatawai."
-      },
-      {
-        "property": "forCourse",
-        "title": "Akoranga",
-        "description": "OER Schema: te akoranga i hangaia ai tēnei aromatawai."
       }
     ],
     "advanced": [
@@ -70,6 +55,16 @@
         "property": "collapsed",
         "title": "Tīmata ka hinga",
         "description": "Ina taea te hinga, tīmata hei rarangi kati e whakaatu ana i te pātai me tōna āhua anake."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Hōputu kōeke",
+        "description": "OER Schema: hōputu kōeke mō tēnei aromatawai (hei tauira, piro, reta, ōrau, whakaotinga)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Whāinga ako",
+        "description": "OER Schema: te whāinga ako e hono ana ki tēnei aromatawai."
       }
     ],
     "developer": [
@@ -77,6 +72,11 @@
         "property": "quizName",
         "title": "Ingoa o te pātaitai",
         "description": "Ingoa pātaitai ka tukuna atu hei whakamahi i ngā taiao e ārahina ana e xAPI, hei tautuhi i tēnei tūemi"
+      },
+      {
+        "property": "forCourse",
+        "title": "Akoranga",
+        "description": "OER Schema: te akoranga i hangaia ai tēnei aromatawai."
       }
     ]
   }

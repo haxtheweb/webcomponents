@@ -420,9 +420,7 @@
           "noVoiceRecord": true,
           "noScreenRecord": true,
           "validationType": "url"
-        }
-      ],
-      "advanced": [
+        },
         {
           "property": "tracks",
           "title": "Text tracks",
@@ -468,7 +466,9 @@
               }
             }
           ]
-        },
+        }
+      ],
+      "advanced": [
         {
           "property": "startTime",
           "title": "Start time",
@@ -520,6 +520,12 @@
           "noVoiceRecord": true,
           "noScreenRecord": true,
           "validationType": "url"
+        },
+        {
+          "property": "accentColor",
+          "title": "Accent color",
+          "description": "(deprecated) Select the accent color for the player.",
+          "inputMethod": "colorpicker"
         }
       ],
       "developer": [
@@ -558,12 +564,6 @@
           "description": "Language of the media.",
           "inputMethod": "textfield",
           "validationType": "text"
-        },
-        {
-          "property": "accentColor",
-          "title": "Accent color",
-          "description": "(deprecated) Select the accent color for the player.",
-          "inputMethod": "colorpicker"
         }
       ]
     },
@@ -590,7 +590,7 @@
       }
     ]
   },
-  "surfaceHash": "ab1410e46a31",
+  "surfaceHash": "e796fecd60f2",
   "walkthroughs": [
     {
       "id": "",
@@ -598,13 +598,13 @@
       "order": 0,
       "src": "video-player.motion.json",
       "file": "lib/video-player.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/video-player.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

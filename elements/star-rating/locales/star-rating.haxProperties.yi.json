@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "אינטעראַקטיוו",
         "description": "דערלויב דעם באַניצער צו באַשטימען די אָפּשאַצונג."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "רובריק־סקאַלע־מאָדוס",

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "GitHub معاونین کی فہرست",
-    "description": "GitHub API کے ذریعے RPG کرداروں کی صورت میں دکھائے جاتے ہیں۔"
+    "description": "کسی ریپوزٹری کے شراکت داروں کو RPG کرداروں کی صورت میں دکھاتا ہے۔"
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "Omslag for innebygde Spotify-spillere."
+    "description": "Bygg inn et spor, et album eller en spilleliste fra Spotify."
   },
   "settings": {
     "configure": [

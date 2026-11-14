@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Wikipedia",
-    "description": "다양한 형식으로 위키피디아 문서를 문맥에 맞게 표시할 수 있습니다."
+    "description": "페이지에 위키백과 문서를 표시합니다."
   },
   "settings": {
     "configure": [

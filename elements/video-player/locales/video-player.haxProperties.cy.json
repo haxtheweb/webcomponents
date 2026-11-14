@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Delwedd poster",
         "description": "URL delwedd y poster."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Traciau testun",
         "description": "Capsiynau caeedig, isdeitlau, disgrifiadau a thraciau testun eraill ar gyfer y fideo."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Amser dechrau",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Trac disgrifiad sain",
         "description": "URL i drac disgrifiad sain (ffeil MP3) sy'n darparu naratif o elfennau gweledol."
+      },
+      {
+        "property": "accentColor",
+        "title": "Lliw acen",
+        "description": "(anghymeradwy) Dewiswch liw acen y chwaraewr."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Iaith",
         "description": "Iaith y cyfryngau."
-      },
-      {
-        "property": "accentColor",
-        "title": "Lliw acen",
-        "description": "(anghymeradwy) Dewiswch liw acen y chwaraewr."
       }
     ]
   }

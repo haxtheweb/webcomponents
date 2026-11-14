@@ -11,30 +11,8 @@
         "description": "السؤال الذي يجيب عنه المستخدمون."
       },
       {
-        "property": "gradingFormat",
-        "title": "صيغة التقدير",
-        "description": "OER Schema: صيغة تقدير هذا التقييم (مثل النقاط أو الحرف أو النسبة المئوية أو الإكمال)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "هدف التعلّم",
-        "description": "OER Schema: هدف التعلّم المرتبط بهذا التقييم."
-      },
-      {
-        "property": "forCourse",
-        "title": "المقرر",
-        "description": "OER Schema: المقرر المخصص له هذا التقييم."
-      },
-      {
         "property": "answers",
         "title": "الإجابات"
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "اسم الاختبار",
-        "description": "اسم الاختبار المستخدم لتعريف xAPI في أنظمة التحليلات."
       }
     ],
     "advanced": [
@@ -47,6 +25,28 @@
         "property": "collapsed",
         "title": "ابدأ مطويًا",
         "description": "عند تفعيل الطي، يبدأ كصف مغلق يعرض السؤال وحالته فقط."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "صيغة التقدير",
+        "description": "OER Schema: صيغة تقدير هذا التقييم (مثل النقاط أو الحرف أو النسبة المئوية أو الإكمال)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "هدف التعلّم",
+        "description": "OER Schema: هدف التعلّم المرتبط بهذا التقييم."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "اسم الاختبار",
+        "description": "اسم الاختبار المستخدم لتعريف xAPI في أنظمة التحليلات."
+      },
+      {
+        "property": "forCourse",
+        "title": "المقرر",
+        "description": "OER Schema: المقرر المخصص له هذا التقييم."
       }
     ]
   }

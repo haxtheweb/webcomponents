@@ -9,7 +9,21 @@
         "property": "target",
         "title": "יעד",
         "description": "הנתיב לגרסת הבנייה של המשחק."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "רוחב הקנבס",
+        "description": "רוחב ה-CSS של הקנבס (למשל px או em)."
       },
+      {
+        "property": "height",
+        "title": "גובה הקנבס",
+        "description": "גובה ה-CSS של הקנבס (למשל px או em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "שיטת דחיסה",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "גרסת המוצר",
         "description": "גרסת השחרור."
-      },
-      {
-        "property": "width",
-        "title": "רוחב הקנבס",
-        "description": "רוחב ה-CSS של הקנבס (למשל px או em)."
-      },
-      {
-        "property": "height",
-        "title": "גובה הקנבס",
-        "description": "גובה ה-CSS של הקנבס (למשל px או em)."
       },
       {
         "property": "background",

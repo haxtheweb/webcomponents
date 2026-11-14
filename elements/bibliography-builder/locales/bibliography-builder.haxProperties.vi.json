@@ -9,7 +9,9 @@
         "slot": "",
         "title": "Trích dẫn",
         "description": "Các mục trích dẫn trong thư mục tham khảo này"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "Khóa học",

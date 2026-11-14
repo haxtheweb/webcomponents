@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Kildehenvisning",
-    "description": "Kildehenvisningselement med tre visningstilstande."
+    "description": "Krediter en kilde med titel, ophavsperson, licens og link."
   },
   "settings": {
     "configure": [
@@ -21,15 +21,6 @@
         "description": "Dato, hvor kilden blev tilgået."
       },
       {
-        "property": "scope",
-        "title": "Omfang",
-        "description": "Elementomfang, der skal citeres.",
-        "options": {
-          "sibling": "Søskendeelement",
-          "parent": "Overordnet element"
-        }
-      },
-      {
         "property": "license",
         "title": "Licens",
         "description": "Licens for det citerede værk."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Ophavsperson",
         "description": "Ophavsperson eller ejer af det citerede værk."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Omfang",
+        "description": "Elementomfang, der skal citeres.",
+        "options": {
+          "sibling": "Søskendeelement",
+          "parent": "Overordnet element"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "OER Schema-type",

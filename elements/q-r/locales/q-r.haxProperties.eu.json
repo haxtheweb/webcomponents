@@ -14,16 +14,6 @@
         "property": "title",
         "title": "Izenburu alternatiboa",
         "description": "QR kodearen iturburuari estekatutako izenburu alternatiboa."
-      },
-      {
-        "property": "modulesize",
-        "title": "Tamaina",
-        "description": "QR kodearen tamaina."
-      },
-      {
-        "property": "margin",
-        "title": "Marjina",
-        "description": "Kodearen inguruko bilgarria."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "Tamaina",
+        "description": "QR kodearen tamaina."
+      },
+      {
+        "property": "margin",
+        "title": "Marjina",
+        "description": "Kodearen inguruko bilgarria."
       }
     ]
   }

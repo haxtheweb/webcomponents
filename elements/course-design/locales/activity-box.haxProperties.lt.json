@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Veiklos langelis",
-    "description": "Nedidelis stilizuotos antraštės blokas."
+    "description": "Antraštė su žyma, žyminti veiklos pradžią."
   },
   "settings": {
     "configure": [

@@ -83,7 +83,8 @@
       ],
       "meta": {
         "author": "HAXTheWeb core team",
-        "inlineOnly": true
+        "inlineOnly": true,
+        "hidden": true
       }
     },
     "settings": {

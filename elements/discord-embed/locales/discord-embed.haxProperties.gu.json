@@ -9,7 +9,9 @@
         "property": "source",
         "title": "સંસાધન URL",
         "description": "સંસાધન URL."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "ઊંચાઈ",

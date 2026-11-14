@@ -2,6 +2,13 @@ import { fixture, expect, html } from "@open-wc/testing";
 
 import "../parallax-image.js";
 
+// HAX schemas ship as JSON next to the element; read one whether the class
+// returns the object or the URL of its file
+const haxSchema = async (C) => {
+  const hp = C.haxProperties;
+  return typeof hp === "string" ? (await fetch(hp)).json() : hp;
+};
+
 describe("parallax-image test", () => {
   let element;
   beforeEach(async () => {
@@ -140,9 +147,9 @@ describe("parallax-image behavior", () => {
     });
   });
 
-  it("haxProperties exposes the gizmo and settings", () => {
+  it("haxProperties exposes the gizmo and settings", async () => {
     const Ctor = globalThis.customElements.get("parallax-image");
-    const props = Ctor.haxProperties;
+    const props = await haxSchema(Ctor);
     expect(props.gizmo.title).to.equal("Parallax image");
     expect(props.gizmo.handles[0].type).to.equal("image");
     expect(props.settings.configure[0].property).to.equal("imageBg");

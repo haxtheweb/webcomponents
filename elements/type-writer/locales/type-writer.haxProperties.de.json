@@ -1,6 +1,6 @@
 {
   "gizmo": {
     "title": "Schreibmaschine",
-    "description": "Schreibmaschineneffekt"
+    "description": "Text, der sich Zeichen für Zeichen selbst tippt."
   }
 }

@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "PDF براؤزر ویور",
+    "title": "PDF ویور",
     "description": "اختیاری کارڈ لے آؤٹ اور ڈاؤن لوڈ بٹن کے ساتھ PDF فائل ان لائن ایمبیڈ کریں۔"
   },
   "settings": {
@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "غیر معاون پیغام",
-        "description": "جب براؤزر PDF فائلیں نہ دکھا سکے تو پیغام۔"
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "غیر معاون لنک پیغام",
-        "description": "جب براؤزر PDF فائلیں نہ دکھا سکے تو لنک کا متن۔"
-      },
-      {
         "property": "width",
         "title": "چوڑائی",
         "description": "PDF ویور کی چوڑائی۔"
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "اونچائی",
         "description": "PDF ویور کی اونچائی۔"
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "غیر معاون پیغام",
+        "description": "جب براؤزر PDF فائلیں نہ دکھا سکے تو پیغام۔"
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "غیر معاون لنک پیغام",
+        "description": "جب براؤزر PDF فائلیں نہ دکھا سکے تو لنک کا متن۔"
       }
     ]
   }

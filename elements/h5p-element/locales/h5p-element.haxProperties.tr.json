@@ -4,17 +4,16 @@
     "description": "Yüklenen bir .h5p dosyasındaki H5P etkileşimli içeriği, H5P sunucusuna gerek kalmadan oynatır"
   },
   "settings": {
-    "configure": [
-      {
-        "slot": "",
-        "description": "Bir .h5p dosyası yükleyin veya bağlayın. Dosya tarayıcıda açılır; H5P sunucusu gerekmez.",
-        "title": "H5P dosyası"
-      }
-    ],
+    "configure": [],
     "advanced": [
       {
         "title": "Eski iframe gömme kodu",
         "description": "Yalnızca başka bir siteden H5P iframe'i gömen eski içerik için. Yukarıda bir .h5p dosyası ayarlıysa boş bırakın."
+      },
+      {
+        "slot": "",
+        "description": "Bir .h5p dosyası yükleyin veya bağlayın. Dosya tarayıcıda açılır; H5P sunucusu gerekmez.",
+        "title": "H5P dosyası"
       }
     ]
   }

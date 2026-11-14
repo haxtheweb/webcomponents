@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "ຄຳບັນຍາຍ",
         "description": "ຄຳບັນຍາຍສຳລັບຮູບພາບ."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "ຫົວຂໍ້ຮູບ",
-        "description": "ຫົວຂໍ້ສຳລັບປ້າຍຮູບ."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "ຄຳອະທິບາຍຮູບ",
-        "description": "ຄຳອະທິບາຍສຳລັບປ້າຍຮູບ."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "ປິດກ່ອງໂຕ້ຕອບຮູບພາບ",
         "description": "ປິດການຄລິກທີ່ເປີດຮູບພາບໃນກ່ອງໂຕ້ຕອບກວດກາຮູບພາບ."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "ຫົວຂໍ້ຮູບ",
+        "description": "ຫົວຂໍ້ສຳລັບປ້າຍຮູບ."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "ຄຳອະທິບາຍຮູບ",
+        "description": "ຄຳອະທິບາຍສຳລັບປ້າຍຮູບ."
       }
     ],
     "developer": [

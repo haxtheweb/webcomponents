@@ -70,9 +70,7 @@
   "demoSchema": [
     {
       "tag": "slide-deck",
-      "properties": {
-        "source": "files/decks/my-talk/deck.json"
-      },
+      "properties": {},
       "content": ""
     }
   ]

@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "Visionneuse PDF du navigateur",
+    "title": "Visionneuse PDF",
     "description": "Intégrer un fichier PDF dans la page avec une mise en page de carte et un bouton de téléchargement facultatifs."
   },
   "settings": {
@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Message de non-prise en charge",
-        "description": "Message affiché lorsque le navigateur ne peut pas afficher les fichiers PDF."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Texte du lien de non-prise en charge",
-        "description": "Texte du lien affiché lorsque le navigateur ne peut pas afficher les fichiers PDF."
-      },
-      {
         "property": "width",
         "title": "Largeur",
         "description": "Largeur de la visionneuse PDF."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Hauteur",
         "description": "Hauteur de la visionneuse PDF."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Message de non-prise en charge",
+        "description": "Message affiché lorsque le navigateur ne peut pas afficher les fichiers PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Texte du lien de non-prise en charge",
+        "description": "Texte du lien affiché lorsque le navigateur ne peut pas afficher les fichiers PDF."
       }
     ]
   }

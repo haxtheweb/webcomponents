@@ -86,7 +86,9 @@
         "property": "gameTitle",
         "title": "Maqaa taphaa",
         "description": "Taphicha kana taateewwan adeemsaa fi mallattoo OER Schema keessatti moggaasa."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "ID taphaa",

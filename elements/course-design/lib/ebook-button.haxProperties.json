@@ -1,0 +1,57 @@
+{
+  "canScale": false,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "Ebook button",
+    "description": "A button that links to an Ebook.",
+    "icon": "icons:book",
+    "color": "blue",
+    "tags": ["Instructional", "link", "ebook", "book"],
+    "handles": [
+      {
+        "type": "link",
+        "source": "link",
+        "title": "title"
+      }
+    ],
+    "meta": {
+      "author": "HAXTheWeb core team"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Title",
+        "description": "The title of the button.",
+        "inputMethod": "textfield",
+        "icon": "editor:title"
+      },
+      {
+        "property": "link",
+        "title": "Link",
+        "description": "The link to redirect to on click.",
+        "inputMethod": "haxupload",
+        "icon": "editor:insert-link"
+      },
+      {
+        "property": "icon",
+        "title": "Icon",
+        "description": "Icon to represent this link",
+        "inputMethod": "iconpicker",
+        "icon": "editor:insert-link"
+      }
+    ],
+    "advanced": []
+  },
+  "demoSchema": [
+    {
+      "tag": "ebook-button",
+      "properties": {
+        "title": "Access Ebook",
+        "icon": "icons:book"
+      },
+      "content": ""
+    }
+  ]
+}

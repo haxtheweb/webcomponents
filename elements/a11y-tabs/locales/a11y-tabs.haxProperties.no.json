@@ -11,20 +11,17 @@
         "description": "Tilgjengelig etikett for fanesettet."
       },
       {
-        "property": "disabled",
-        "title": "Deaktivert",
-        "description": "Deaktiver alle faner."
-      },
-      {
-        "property": "hidden",
-        "title": "Skjult",
-        "description": "Skjul fanesettet."
-      },
-      {
         "property": "sticky",
         "title": "Fast",
         "description": "Hold horisontale faner øverst ved rulling."
       },
+      {
+        "slot": "",
+        "title": "Faner",
+        "description": "Serie med <a11y-tab/>-elementer."
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "Bruddpunkt for oppsett",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "Bruddpunkt for ikoner",
         "description": "Bruddpunkt for å vise tekst med ikoner. Standard er 0; bruk -1 for bare ikoner."
-      },
-      {
-        "slot": "",
-        "title": "Faner",
-        "description": "Serie med <a11y-tab/>-elementer."
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "Deaktivert",
+        "description": "Deaktiver alle faner."
+      },
+      {
+        "property": "hidden",
+        "title": "Skjult",
+        "description": "Skjul fanesettet."
+      },
       {
         "property": "id",
         "title": "Unik ID",

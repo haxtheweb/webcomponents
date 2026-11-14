@@ -86,7 +86,9 @@
         "property": "gameTitle",
         "title": "ឈ្មោះហ្គេម",
         "description": "ដាក់ឈ្មោះហ្គេមនេះក្នុងព្រឹត្តិការណ៍វឌ្ឍនភាព និងការសម្គាល់ OER Schema។"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "លេខសម្គាល់ហ្គេម",

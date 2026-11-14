@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Ses",
-    "description": "Bu, kaynağı ne olursa olsun videoyu son derece erişilebilir bir şekilde sunabilir."
+    "description": "Döküm destekli erişilebilir ses oynatıcı."
   },
   "settings": {
     "configure": [
@@ -46,6 +46,16 @@
         "property": "accentColor",
         "title": "Vurgu rengi",
         "description": "Oynatıcı için vurgu rengini seçin."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Zaman damgalarını gizle",
+        "description": "Transkriptteki zaman damgalarını gizle."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Transkripti Gizle",
+        "description": "Transkripti varsayılan olarak gizle."
       }
     ],
     "developer": [
@@ -72,16 +82,6 @@
         "property": "disableInteractive",
         "title": "Etkileşimi Devre Dışı Bırak",
         "description": "Transkripti tıklanabilir yapan etkileşimli modu devre dışı bırak."
-      },
-      {
-        "property": "hideTimestamps",
-        "title": "Zaman damgalarını gizle",
-        "description": "Transkriptteki zaman damgalarını gizle."
-      },
-      {
-        "property": "hideTranscript",
-        "title": "Transkripti Gizle",
-        "description": "Transkripti varsayılan olarak gizle."
       },
       {
         "property": "lang",

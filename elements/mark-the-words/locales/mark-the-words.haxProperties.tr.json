@@ -16,30 +16,8 @@
         "description": "Sözcükleri işaretleme etkileşimine dönüştürülecek ifade."
       },
       {
-        "property": "gradingFormat",
-        "title": "Notlandırma biçimi",
-        "description": "OER Schema: bu değerlendirmenin notlandırma biçimi (ör. puan, harf, yüzde, tamamlama)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Öğrenme hedefi",
-        "description": "OER Schema: bu değerlendirmeyle ilişkili öğrenme hedefi."
-      },
-      {
-        "property": "forCourse",
-        "title": "Ders",
-        "description": "OER Schema: bu değerlendirmenin amaçlandığı ders."
-      },
-      {
         "property": "answers",
         "title": "Yanıtlar"
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Sınavın adı",
-        "description": "Bu öğenin tanımlanması için xAPI tabanlı ortamlarda kullanılan sınav adı"
       }
     ],
     "advanced": [
@@ -52,6 +30,28 @@
         "property": "collapsed",
         "title": "Katlanmış başla",
         "description": "Katlanabilir olduğunda, yalnızca soruyu ve durumunu gösteren kapalı bir satır olarak başla."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Notlandırma biçimi",
+        "description": "OER Schema: bu değerlendirmenin notlandırma biçimi (ör. puan, harf, yüzde, tamamlama)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Öğrenme hedefi",
+        "description": "OER Schema: bu değerlendirmeyle ilişkili öğrenme hedefi."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Sınavın adı",
+        "description": "Bu öğenin tanımlanması için xAPI tabanlı ortamlarda kullanılan sınav adı"
+      },
+      {
+        "property": "forCourse",
+        "title": "Ders",
+        "description": "OER Schema: bu değerlendirmenin amaçlandığı ders."
       }
     ]
   }

@@ -11,6 +11,13 @@
         "description": "La URL de ĉi tiu AR-dosiero."
       },
       {
+        "property": "skyColor",
+        "title": "Ĉielkoloro",
+        "description": "Elektu la koloron de la ĉielo en la sceno."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "X-pozicio de la elemento en AR."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "Z-pozicio de la elemento en AR."
-      },
-      {
-        "property": "skyColor",
-        "title": "Ĉielkoloro",
-        "description": "Elektu la koloron de la ĉielo en la sceno."
       }
     ]
   }

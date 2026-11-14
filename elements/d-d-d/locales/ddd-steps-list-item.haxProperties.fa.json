@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "مورد گام‌ها",
-    "description": "موردی که بخشی از فهرست گام‌ها است"
+    "description": "یک گام در فهرست گام‌ها."
   },
   "settings": {
     "configure": [

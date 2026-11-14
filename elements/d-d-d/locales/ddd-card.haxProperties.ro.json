@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Fără săgeată",
         "description": "Ascunde săgeata butonului."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Link: țintă",
@@ -54,7 +52,9 @@
           "_top": "Fereastra de sus - _top",
           "_parent": "Fereastra părinte - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Link: rel",

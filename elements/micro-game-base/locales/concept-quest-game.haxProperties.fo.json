@@ -91,7 +91,9 @@
         "property": "gameTitle",
         "title": "Spælanavn",
         "description": "Nevnir hetta spælið í framgongdarhendingum og OER Schema-markup."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Spæl-ID",

@@ -11,11 +11,6 @@
         "description": "Wuert, dat benotzt gëtt fir en zoufällege Personnage ze generéieren."
       },
       {
-        "property": "code",
-        "title": "Figurecode",
-        "description": "Fügt e gespäicherte Code an, fir dës Figur nei ze maachen."
-      },
-      {
         "property": "hat",
         "title": "Hutt",
         "description": "Hutt-Stil.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Mask",
-        "description": "Mask, déi iwwer d'Gesiicht oder de Kapp gedroe gëtt.",
-        "options": {
-          "none": "Keng",
-          "lion": "Léiw",
-          "plague": "Pestdokter",
-          "theater": "Theater",
-          "pumpkin": "Kürbis",
-          "ghost": "Geescht",
-          "mummy": "Mumie",
-          "wrestler": "Ringermask",
-          "block-head": "Klotzkapp",
-          "web": "Spannennetzmask",
-          "werewolf": "Wäerwollefsgesiicht",
-          "shadow": "Schiet-Gesiicht"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Schminn",
-        "description": "Gesiichtsfaarf oder Lippestëft.",
-        "options": {
-          "none": "Keng",
-          "red-lipstick": "Rouden Lippestëft",
-          "pink-lipstick": "Rosa Lippestëft",
-          "berry-lipstick": "Beereroude Lippestëft",
-          "clown": "Clownsschminn",
-          "fangs": "Vampirzänn",
-          "skull": "Totekäppschminn",
-          "zombie": "Zombieschminn",
-          "red-nose": "Rout Nues",
-          "white-beard": "Wäisse Baart",
-          "domino": "Heldemask",
-          "carrot": "Karottenues",
-          "bunny": "Hueseknues",
-          "mustache": "Schnauz",
-          "monster": "Monster-Gesiichtsfaarf",
-          "round-glasses": "Ronn Brëll"
-        }
-      },
-      {
         "property": "expression",
         "title": "Ausdrock",
         "description": "Gesiichtsausdrock.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Haustéier",
+        "description": "Haustéier niewent dem Personnage.",
+        "options": {
+          "none": "Keen",
+          "cat": "Kaz",
+          "dog": "Hond",
+          "bunny": "Kanéngchen",
+          "goldfish": "Goldfësch",
+          "slime": "Schläim",
+          "squirrel": "Kaweechelchen",
+          "dragon": "Bébé-Draach",
+          "parrot": "Papagei",
+          "owl": "Eil",
+          "bat": "Fliedermaus"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Figurecode",
+        "description": "Fügt e gespäicherte Code an, fir dës Figur nei ze maachen."
+      },
+      {
+        "property": "mask",
+        "title": "Mask",
+        "description": "Mask, déi iwwer d'Gesiicht oder de Kapp gedroe gëtt.",
+        "options": {
+          "none": "Keng",
+          "lion": "Léiw",
+          "plague": "Pestdokter",
+          "theater": "Theater",
+          "pumpkin": "Kürbis",
+          "ghost": "Geescht",
+          "mummy": "Mumie",
+          "wrestler": "Ringermask",
+          "block-head": "Klotzkapp",
+          "web": "Spannennetzmask",
+          "werewolf": "Wäerwollefsgesiicht",
+          "shadow": "Schiet-Gesiicht"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Schminn",
+        "description": "Gesiichtsfaarf oder Lippestëft.",
+        "options": {
+          "none": "Keng",
+          "red-lipstick": "Rouden Lippestëft",
+          "pink-lipstick": "Rosa Lippestëft",
+          "berry-lipstick": "Beereroude Lippestëft",
+          "clown": "Clownsschminn",
+          "fangs": "Vampirzänn",
+          "skull": "Totekäppschminn",
+          "zombie": "Zombieschminn",
+          "red-nose": "Rout Nues",
+          "white-beard": "Wäisse Baart",
+          "domino": "Heldemask",
+          "carrot": "Karottenues",
+          "bunny": "Hueseknues",
+          "mustache": "Schnauz",
+          "monster": "Monster-Gesiichtsfaarf",
+          "round-glasses": "Ronn Brëll"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Fändeltext",
         "description": "Bis zu 4 Buschtawen, déi um Fändel ugewise ginn."
@@ -310,24 +330,6 @@
           "skates": "Schlittschong",
           "skateboard": "Skateboard",
           "hoverboard": "Schwiefbriet"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Haustéier",
-        "description": "Haustéier niewent dem Personnage.",
-        "options": {
-          "none": "Keen",
-          "cat": "Kaz",
-          "dog": "Hond",
-          "bunny": "Kanéngchen",
-          "goldfish": "Goldfësch",
-          "slime": "Schläim",
-          "squirrel": "Kaweechelchen",
-          "dragon": "Bébé-Draach",
-          "parrot": "Papagei",
-          "owl": "Eil",
-          "bat": "Fliedermaus"
         }
       },
       {

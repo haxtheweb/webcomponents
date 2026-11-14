@@ -4,22 +4,23 @@
     "description": "Mndandanda wosewera umene umaonetsa zosewerera makanema ndi mawu m'kapangidwe ka chosewerera ndi mbali."
   },
   "settings": {
-    "configure": [
+    "configure": [],
+    "advanced": [
       {
         "property": "activeIndex",
         "title": "Nambala yoyambira",
         "description": "Nambala ya chinthu choyambira."
-      },
-      {
-        "property": "forCourse",
-        "title": "Maphunziro",
-        "description": "Maphunziro amene mndandanda uwu ndi wawo (chizindikiro cha maphunziro kapena URL)."
       }
     ],
     "developer": [
       {
         "title": "Zofalitsa",
         "description": "Mavidiyo ndi mawu omwe ali mu playlist. Sizisinthidwa apa: ndondomeko ya tsamba imazigwiritsa ntchito kuti idziwe mabuloko omwe angaikidwe mkati."
+      },
+      {
+        "property": "forCourse",
+        "title": "Maphunziro",
+        "description": "Maphunziro amene mndandanda uwu ndi wawo (chizindikiro cha maphunziro kapena URL)."
       }
     ]
   }

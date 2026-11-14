@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Hu'y'ỹre",
         "description": "Emokañy votõ hu'y."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Joajuha: ohohápe",
@@ -54,7 +52,9 @@
           "_top": "Ovetã yvategua - _top",
           "_parent": "Ovetã ru - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Joajuha: rel",

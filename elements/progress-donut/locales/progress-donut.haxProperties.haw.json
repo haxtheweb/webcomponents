@@ -26,11 +26,6 @@
         "description": "Kikokikona alt no ke kiʻi."
       },
       {
-        "property": "animated",
-        "title": "Hoʻonaueue ʻia",
-        "description": "Inā e hoʻonaueue ka holomua i ka hoʻouka mua ʻana"
-      },
-      {
         "property": "complete",
         "title": "Ua pau",
         "description": "He papa o nā waiwai i pau."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "Huina",
         "description": "Huina ke pau nā mea a pau."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "Hoʻonaueue ʻia",
+        "description": "Inā e hoʻonaueue ka holomua i ka hoʻouka mua ʻana"
       },
       {
         "property": "startAngle",

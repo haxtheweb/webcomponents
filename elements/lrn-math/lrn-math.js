@@ -339,51 +339,7 @@ class LrnMath extends HTMLElement {
   }
 
   static get haxProperties() {
-    return {
-      canScale: false,
-      canEditSource: true,
-      gizmo: {
-        title: "Math",
-        description: "Present math in a nice looking way.",
-        icon: "hax:pi",
-        color: "grey",
-        tags: ["Instructional", "math", "mathjax", "mathml", "latex", "mathml"],
-        handles: [
-          {
-            type: "math",
-            math: "mathtext",
-          },
-          {
-            type: "inline",
-            text: "mathtext",
-          },
-        ],
-        meta: {
-          author: "HAXTheWeb core team",
-          inlineOnly: true,
-          selectionRequired: false,
-        },
-      },
-      settings: {
-        inline: [],
-        configure: [
-          {
-            property: "mathtext",
-            title: "Math",
-            description: "Enter equation as LaTeX",
-            inputMethod: "textarea",
-          },
-        ],
-        advanced: [],
-      },
-      demoSchema: [
-        {
-          tag: "lrn-math",
-          properties: {},
-          content: "",
-        },
-      ],
-    };
+    return new URL("./lib/lrn-math.haxProperties.json", import.meta.url).href;
   }
 }
 

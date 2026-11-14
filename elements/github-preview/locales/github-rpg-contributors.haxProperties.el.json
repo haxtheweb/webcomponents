@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Λίστα συνεισφερόντων GitHub",
-    "description": "Εμφανίζονται ως χαρακτήρες RPG μέσω του GitHub API."
+    "description": "Εμφανίζει τους συνεισφέροντες ενός αποθετηρίου ως χαρακτήρες RPG."
   },
   "settings": {
     "configure": [

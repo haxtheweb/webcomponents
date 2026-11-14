@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Jēdzienu skriešanas spēle",
-    "description": "Sānu ritināšanas spēle. Tēls skrien ugunī un nekad neapstājas. Lec, lai satvertu labos jēdzienus un pārlēktu sliktos, tad apskati kopsavilkumu par to, kas bija labs un kas slikts."
+    "description": "Sānu ritināšanas spēle: lēciet, lai noķertu pareizos jēdzienus un izvairītos no nepareizajiem."
   },
   "settings": {
     "configure": [
@@ -89,7 +89,9 @@
         "property": "gameTitle",
         "title": "Spēles nosaukums",
         "description": "Nosauc šo spēli progresa notikumos un OER Schema marķējumā."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Spēles id",

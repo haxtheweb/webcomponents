@@ -90,17 +90,18 @@ class OerSchemaElement extends SchemaBehaviors(LitElement) {
 
       canEditSource: true,
       gizmo: {
-        title: "Schema",
-        description: "Schematized element area",
+        title: "OER schema",
+        description:
+          "Wrap text in OER Schema metadata so search engines and tools can read it.",
         icon: "hax:oerschema",
         color: "blue",
         tags: [
           "Other",
           "developer",
-          "Instructional",
+          "instructional",
           "pedagogical",
-          "SEO",
-          "Search engine",
+          "seo",
+          "search engine",
         ],
         handles: [],
         meta: {
@@ -171,8 +172,10 @@ class OerSchemaElement extends SchemaBehaviors(LitElement) {
       demoSchema: [
         {
           tag: "oer-schema",
-          properties: {},
-          content: "",
+          properties: {
+            oerProperty: "name",
+          },
+          content: "Learning objective",
         },
       ],
     };

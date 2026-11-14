@@ -4,7 +4,7 @@
     "description": "ਮੌਜੂਦਾ ਪੰਨੇ ਦੇ ਉਪ-ਪੰਨੇ ਦਿਖਾਉਣ ਲਈ ਗਤੀਸ਼ੀਲ ਬਲਾਕ"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "ਗਤੀਸ਼ੀਲ ਵਿਧੀ",
@@ -14,7 +14,9 @@
           "parent": "ਮੂਲ ਦੇ ਉਪ-ਪੰਨੇ",
           "ancestor": "ਸਭ ਤੋਂ ਉੱਚੇ ਪੂਰਵਜ ਤੋਂ ਸਾਰੇ ਉਪ-ਪੰਨੇ"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "ਸ਼ੁਰੂਆਤੀ ਪੱਧਰ"

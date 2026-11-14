@@ -14,28 +14,6 @@
         "property": "statement",
         "title": "Chiganizo",
         "description": "Chiganizo chomwe chidzasinthidwa kukhala ntchito yolemba mawu."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "Njira yopatsira maksi",
-        "description": "OER Schema: njira yopatsira maksi pa mayeso awa (mwachitsanzo mfundo, chilembo, peresenti, kumaliza)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Cholinga cha maphunziro",
-        "description": "OER Schema: cholinga cha maphunziro chokhudzana ndi mayeso awa."
-      },
-      {
-        "property": "forCourse",
-        "title": "Maphunziro",
-        "description": "OER Schema: maphunziro omwe mayeso awa akukonzedwera."
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Dzina la mayeso",
-        "description": "Dzina la mayeso loperekedwa kuti ligwiritsidwe ntchito m'malo oyendetsedwa ndi xAPI pozindikira chinthuchi"
       }
     ],
     "advanced": [
@@ -46,6 +24,28 @@
       {
         "title": "Yambani yopindika",
         "description": "Ikakhala yopindika, yambani ngati mzere wotsekedwa wosonyeza funso ndi mkhalidwe wake zokha."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Njira yopatsira maksi",
+        "description": "OER Schema: njira yopatsira maksi pa mayeso awa (mwachitsanzo mfundo, chilembo, peresenti, kumaliza)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Cholinga cha maphunziro",
+        "description": "OER Schema: cholinga cha maphunziro chokhudzana ndi mayeso awa."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Dzina la mayeso",
+        "description": "Dzina la mayeso loperekedwa kuti ligwiritsidwe ntchito m'malo oyendetsedwa ndi xAPI pozindikira chinthuchi"
+      },
+      {
+        "property": "forCourse",
+        "title": "Maphunziro",
+        "description": "OER Schema: maphunziro omwe mayeso awa akukonzedwera."
       }
     ]
   }

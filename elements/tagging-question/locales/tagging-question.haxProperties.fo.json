@@ -11,30 +11,8 @@
         "description": "Spurningur, sum brúkarar skulu svara."
       },
       {
-        "property": "gradingFormat",
-        "title": "Einkunnasnið",
-        "description": "OER Schema: einkunnasnið til hesa metingina (t.d. stig, bókstavur, prosent, fullførd)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Lærumál",
-        "description": "OER Schema: lærumál knýtt at hesi metingini."
-      },
-      {
-        "property": "forCourse",
-        "title": "Skeið",
-        "description": "OER Schema: skeið, sum henda metingin er ætlað til."
-      },
-      {
         "property": "answers",
         "title": "Svar"
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Navn á spurnakappingini",
-        "description": "Navn á spurnakappingini, nýtt til xAPI-eyðmerking í greiningarskipanum."
       }
     ],
     "advanced": [
@@ -47,6 +25,28 @@
         "property": "collapsed",
         "title": "Byrja saman fellað",
         "description": "Tá spurningurin er fellandi, byrjar hann sum ein afturlatin røð, ið bert vísir spurningin og støðu hansara."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Einkunnasnið",
+        "description": "OER Schema: einkunnasnið til hesa metingina (t.d. stig, bókstavur, prosent, fullførd)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Lærumál",
+        "description": "OER Schema: lærumál knýtt at hesi metingini."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Navn á spurnakappingini",
+        "description": "Navn á spurnakappingini, nýtt til xAPI-eyðmerking í greiningarskipanum."
+      },
+      {
+        "property": "forCourse",
+        "title": "Skeið",
+        "description": "OER Schema: skeið, sum henda metingin er ætlað til."
       }
     ]
   }

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Lencana Acara",
-    "description": "Komponen lencana acara."
+    "description": "Lencana nama gaya persidangan dengan foto, nama dan organisasi."
   },
   "settings": {
     "configure": [

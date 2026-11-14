@@ -86,7 +86,9 @@
         "property": "gameTitle",
         "title": "Oýnuň ady",
         "description": "Bu oýna ösüş wakalarynda we OER Schema bellikleriniň içinde at berýär."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Oýnuň ID-si",

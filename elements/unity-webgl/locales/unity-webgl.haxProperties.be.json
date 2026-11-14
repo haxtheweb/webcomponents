@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Мэта",
         "description": "Шлях да зборкі гульні."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Шырыня палатна",
+        "description": "CSS-шырыня палатна (напрыклад, px або em)."
       },
+      {
+        "property": "height",
+        "title": "Вышыня палатна",
+        "description": "CSS-вышыня палатна (напрыклад, px або em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Спосаб сціскання",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Версія прадукту",
         "description": "Версія выпуску."
-      },
-      {
-        "property": "width",
-        "title": "Шырыня палатна",
-        "description": "CSS-шырыня палатна (напрыклад, px або em)."
-      },
-      {
-        "property": "height",
-        "title": "Вышыня палатна",
-        "description": "CSS-вышыня палатна (напрыклад, px або em)."
       },
       {
         "property": "background",

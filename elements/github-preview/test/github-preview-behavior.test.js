@@ -5,6 +5,13 @@ import { GithubPreview } from "../github-preview.js";
 import { WCMarkdown } from "../lib/wc-markdown.js";
 import { GithubRpgContributors } from "../lib/github-rpg-contributors.js";
 
+// HAX schemas ship as JSON next to the element; read one whether the class
+// returns the object or the URL of its file
+const haxSchema = async (C) => {
+  const hp = C.haxProperties;
+  return typeof hp === "string" ? (await fetch(hp)).json() : hp;
+};
+
 // NEVER hit real networks: every fetch this element family makes
 // (github api repo info, raw readme text, contributors list) is stubbed.
 const originalFetch = globalThis.fetch;
@@ -93,10 +100,10 @@ describe("github-preview", () => {
     expect(hooks.editModeChanged).to.equal("haxeditModeChanged");
     expect(hooks.activeElementChanged).to.equal("haxactiveElementChanged");
     expect(hooks.gizmoRegistration).to.equal("haxgizmoRegistration");
-    const hax = GithubPreview.haxProperties;
+    const hax = await haxSchema(GithubPreview);
     expect(hax.canScale).to.equal(false);
     expect(hax.canEditSource).to.equal(true);
-    expect(hax.gizmo.title).to.equal("Github Preview");
+    expect(hax.gizmo.title).to.equal("GitHub preview");
     expect(hax.gizmo.tags).to.include("github");
     expect(hax.demoSchema[0].tag).to.equal("github-preview");
     expect(hax.demoSchema[0].properties.org).to.equal("haxtheweb");
@@ -288,8 +295,8 @@ describe("github-preview", () => {
     ).to.equal("No such repo");
   });
 
-  it("describes the repo preview in the gizmo", () => {
-    expect(GithubPreview.haxProperties.gizmo.description).to.not.include(
+  it("describes the repo preview in the gizmo", async () => {
+    expect((await haxSchema(GithubPreview)).gizmo.description).to.not.include(
       "long description",
     );
   });

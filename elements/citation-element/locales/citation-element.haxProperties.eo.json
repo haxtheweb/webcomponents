@@ -21,15 +21,6 @@
         "description": "Dato kiam la fonto estis alirita."
       },
       {
-        "property": "scope",
-        "title": "Amplekso",
-        "description": "Elementa amplekso por citi.",
-        "options": {
-          "sibling": "Samnivela elemento",
-          "parent": "Gepatra elemento"
-        }
-      },
-      {
         "property": "license",
         "title": "Permesilo",
         "description": "Permesilo de la citita verko."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Kreinto",
         "description": "Kreinto aŭ posedanto de la citita verko."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Amplekso",
+        "description": "Elementa amplekso por citi.",
+        "options": {
+          "sibling": "Samnivela elemento",
+          "parent": "Gepatra elemento"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "OER Schema-tipo",

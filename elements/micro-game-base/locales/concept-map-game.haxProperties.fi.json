@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Käsitekarttapeli",
-    "description": "Lyhyt näppäimistöpeli. Hahmo kävelee kartalla jokaisen käsitteen luo, ja käsite kertoo itsestään. Kosketa niitä kaikkia saadaksesi konfettia ja kopioitavan kehotteen."
+    "description": "Lyhyt näppäimistöpeli, jossa hahmo kulkee kartalla ja jokainen käsite selittää itsensä."
   },
   "settings": {
     "configure": [
@@ -86,7 +86,9 @@
         "property": "gameTitle",
         "title": "Pelin nimi",
         "description": "Nimeää tämän pelin edistymistapahtumissa ja OER Schema -merkinnöissä."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Pelin tunnus",

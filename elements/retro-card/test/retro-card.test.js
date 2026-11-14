@@ -4,6 +4,13 @@ import "../retro-card.js";
 import { RetroCard } from "../retro-card.js";
 import { SimpleColorsSharedStylesGlobal } from "@haxtheweb/simple-colors-shared-styles/simple-colors-shared-styles.js";
 
+// HAX schemas ship as JSON next to the element; read one whether the class
+// returns the object or the URL of its file
+const haxSchema = async (C) => {
+  const hp = C.haxProperties;
+  return typeof hp === "string" ? (await fetch(hp)).json() : hp;
+};
+
 // covers the legacy "source" property branch in updated() that stock
 // retro-card no longer exposes (media-source replaced it)
 class TestRetroSource extends RetroCard {
@@ -44,9 +51,9 @@ describe("retro-card defaults and statics", () => {
     expect(el.__source).to.equal(undefined);
   });
 
-  it("has the conventional tag and hax wiring", () => {
+  it("has the conventional tag and hax wiring", async () => {
     expect(RetroCard.tag).to.equal("retro-card");
-    const props = RetroCard.haxProperties;
+    const props = await haxSchema(RetroCard);
     expect(props.canScale).to.equal(false);
     expect(props.canEditSource).to.equal(true);
     // intentional retro aesthetic, not a DDD-based element

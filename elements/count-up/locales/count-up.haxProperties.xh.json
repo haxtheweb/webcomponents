@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Umbhalo wasemva",
         "description": "Umbhalo oboniswa emva kwenani (umz. '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Isithuba sangaphambili",
-        "description": "Umxholo okhethwayo ofakwe phambi kwenani."
-      },
-      {
-        "slot": "suffix",
-        "title": "Isithuba sasemva",
-        "description": "Umxholo okhethwayo ofakwe emva kwenani."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Akukho kuthambisa",
         "description": "Cima ukuthambisa ukuze ukubala kuhambe ngokulinganayo."
+      },
+      {
+        "slot": "prefix",
+        "title": "Isithuba sangaphambili",
+        "description": "Umxholo okhethwayo ofakwe phambi kwenani."
+      },
+      {
+        "slot": "suffix",
+        "title": "Isithuba sasemva",
+        "description": "Umxholo okhethwayo ofakwe emva kwenani."
       }
     ]
   }

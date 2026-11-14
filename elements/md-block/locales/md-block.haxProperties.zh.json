@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "直接编写或远程加载的 Markdown 内容区块"
+    "description": "Markdown 内容，可直接编写或从文件加载。"
   },
   "settings": {
     "configure": [

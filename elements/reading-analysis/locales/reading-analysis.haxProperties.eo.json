@@ -38,21 +38,6 @@
         "slot": "",
         "title": "Teksto",
         "description": "La teksto en kiu lernantoj laboras. Ajna HTML: titoloj, alineoj, listoj kaj figuroj."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "Taksa formato",
-        "description": "OER Schema: taksa formato por ĉi tiu takso (ekz. poentoj, litero, procento, kompletigo)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Lerncelo",
-        "description": "OER Schema: lerncelo asociita kun ĉi tiu takso."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kurso",
-        "description": "OER Schema: kurso, por kiu ĉi tiu takso estas celita."
       }
     ],
     "advanced": [
@@ -70,6 +55,16 @@
         "property": "collapsed",
         "title": "Komenci faldita",
         "description": "Kiam faldebla, komenci kiel fermita vico, kiu montras nur la demandon kaj ĝian staton."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Taksa formato",
+        "description": "OER Schema: taksa formato por ĉi tiu takso (ekz. poentoj, litero, procento, kompletigo)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Lerncelo",
+        "description": "OER Schema: lerncelo asociita kun ĉi tiu takso."
       }
     ],
     "developer": [
@@ -77,6 +72,11 @@
         "property": "quizName",
         "title": "Nomo de la kvizo",
         "description": "Nomo de la kvizo transdonata por uzo en xAPI-medioj por identigi ĉi tiun elementon"
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurso",
+        "description": "OER Schema: kurso, por kiu ĉi tiu takso estas celita."
       }
     ]
   }

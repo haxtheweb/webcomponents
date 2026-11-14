@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Geziarik ez",
         "description": "Ezkutatu botoiaren gezia."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Esteka: helburua",
@@ -54,7 +52,9 @@
           "_top": "Goiko leihoa - _top",
           "_parent": "Leiho gurasoa - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Esteka: rel",

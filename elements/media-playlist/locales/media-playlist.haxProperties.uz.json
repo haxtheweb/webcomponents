@@ -4,22 +4,23 @@
     "description": "Video va audio pleyerlarni pleyer + yon panel ko‘rinishida taqdim etadigan pleylist."
   },
   "settings": {
-    "configure": [
+    "configure": [],
+    "advanced": [
       {
         "property": "activeIndex",
         "title": "Faol indeks",
         "description": "Boshlanadigan faol element indeksi."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kurs",
-        "description": "Ushbu pleylist mo‘ljallangan kurs (kurs identifikatori yoki URL)."
       }
     ],
     "developer": [
       {
         "title": "Media",
         "description": "Ijro ro'yxatidagi videolar va audio. Bu yerda tahrirlanmaydi: sahifa tuzilmasi ichiga qaysi bloklarni tashlash mumkinligini bilish uchun undan foydalanadi."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurs",
+        "description": "Ushbu pleylist mo‘ljallangan kurs (kurs identifikatori yoki URL)."
       }
     ]
   }

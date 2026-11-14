@@ -8,7 +8,7 @@
     "description": "Display a themed Polaris call-to-action button.",
     "icon": "link",
     "color": "blue",
-    "tags": ["Action", "Button", "Link", "Polaris"],
+    "tags": ["Layout", "button", "link", "polaris", "action"],
     "handles": [
       {
         "type": "link",

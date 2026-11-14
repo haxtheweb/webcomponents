@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "תמונת פוסטר",
         "description": "כתובת URL של תמונת הפוסטר."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "רצועות טקסט",
         "description": "כתוביות סגורות, כתוביות תרגום, תיאורים ורצועות טקסט אחרות עבור הווידאו."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "זמן התחלה",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "רצועת תיאור קולי",
         "description": "URL לרצועת תיאור קולי (קובץ MP3) המספקת קריינות של רכיבים חזותיים."
+      },
+      {
+        "property": "accentColor",
+        "title": "צבע הדגשה",
+        "description": "(הוצא משימוש) בחרו את צבע ההדגשה של הנגן."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "שפה",
         "description": "שפת המדיה."
-      },
-      {
-        "property": "accentColor",
-        "title": "צבע הדגשה",
-        "description": "(הוצא משימוש) בחרו את צבע ההדגשה של הנגן."
       }
     ]
   }

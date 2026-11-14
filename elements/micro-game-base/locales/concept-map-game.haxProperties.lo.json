@@ -86,7 +86,9 @@
         "property": "gameTitle",
         "title": "ຊື່ເກມ",
         "description": "ຕັ້ງຊື່ເກມນີ້ໃນເຫດການຄວາມຄືບໜ້າ ແລະ ມາກອັບ OER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "ID ເກມ",

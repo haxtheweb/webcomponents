@@ -364,67 +364,8 @@ class GithubPreview extends I18NMixin(
   }
 
   static get haxProperties() {
-    return {
-      canScale: false,
-      // element ships its own styling (github language colors) and does not
-      // consume DDD design tokens
-      designSystem: false,
-
-      canEditSource: true,
-      gizmo: {
-        title: "Github Preview",
-        description:
-          "Preview a GitHub repository: description, language, stars and forks.",
-        icon: "mdi-social:github-circle",
-        color: "grey",
-        tags: ["Other", "git", "code", "github", "repo", "organization"],
-        handles: [
-          {
-            type: "github",
-            type_exclusive: true,
-            repo: "repo",
-            org: "org",
-          },
-        ],
-        meta: {
-          author: "collinkleest",
-          owner: "The Pennsylvania State University",
-        },
-      },
-      settings: {
-        configure: [
-          {
-            property: "org",
-            title: "Organization",
-            description: "Github organization machine name",
-            inputMethod: "textfield",
-          },
-          {
-            property: "repo",
-            title: "Repository",
-            description: "Repo machine name",
-            inputMethod: "textfield",
-          },
-          {
-            property: "extended",
-            title: "Extended View",
-            description: "Includes readme in element",
-            inputMethod: "boolean",
-          },
-        ],
-        advanced: [],
-      },
-      demoSchema: [
-        {
-          tag: "github-preview",
-          properties: {
-            org: "haxtheweb",
-            repo: "webcomponents",
-          },
-          content: "",
-        },
-      ],
-    };
+    return new URL("./lib/github-preview.haxProperties.json", import.meta.url)
+      .href;
   }
 
   get haxAppDetails() {

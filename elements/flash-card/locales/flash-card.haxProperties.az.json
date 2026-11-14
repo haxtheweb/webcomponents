@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Şəkil mənbəyi",
         "description": "Kart üçün istifadə olunan şəkil faylı. Şəkil açar sözünü əvəz edir."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Şəkil açar sözü",
+        "description": "Təsadüfi şəkil açar sözü. Şəkil mənbəyi tərəfindən əvəz olunur."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Öyrənmə məqsədi",
         "description": "OER Schema: bu məşqin dəstəklədiyi öyrənmə məqsədinin ID-si və ya URL-i."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Şəkil açar sözü",
-        "description": "Təsadüfi şəkil açar sözü. Şəkil mənbəyi tərəfindən əvəz olunur."
       }
     ]
   }

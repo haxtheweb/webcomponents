@@ -11,6 +11,13 @@
         "description": "URL faayilii AR kanaa."
       },
       {
+        "property": "skyColor",
+        "title": "Halluu samii",
+        "description": "Halluu samii mul'ata keessaa filadhu."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "Bakka X wantichaa AR keessatti."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "Bakka Z wantichaa AR keessatti."
-      },
-      {
-        "property": "skyColor",
-        "title": "Halluu samii",
-        "description": "Halluu samii mul'ata keessaa filadhu."
       }
     ]
   }

@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Text de sufix",
         "description": "Text que es mostra després del nombre (p. ex. '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Espai de prefix",
-        "description": "Contingut opcional inserit abans del nombre."
-      },
-      {
-        "slot": "suffix",
-        "title": "Espai de sufix",
-        "description": "Contingut opcional inserit després del nombre."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Sense suavitzat",
         "description": "Desactiva el suavitzat perquè el compte sigui lineal."
+      },
+      {
+        "slot": "prefix",
+        "title": "Espai de prefix",
+        "description": "Contingut opcional inserit abans del nombre."
+      },
+      {
+        "slot": "suffix",
+        "title": "Espai de sufix",
+        "description": "Contingut opcional inserit després del nombre."
       }
     ]
   }

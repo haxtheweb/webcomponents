@@ -11,11 +11,6 @@
         "description": "Palabra usada para xerar un personaxe aleatorio."
       },
       {
-        "property": "code",
-        "title": "Código do personaxe",
-        "description": "Pega un código gardado para recrear ese personaxe."
-      },
-      {
         "property": "hat",
         "title": "Chapeu",
         "description": "Estilo do chapeu.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Máscara",
-        "description": "Máscara que se leva sobre a cara ou a cabeza.",
-        "options": {
-          "none": "Ningunha",
-          "lion": "León",
-          "plague": "Médico da peste",
-          "theater": "Teatro",
-          "pumpkin": "Cabaza",
-          "ghost": "Pantasma",
-          "mummy": "Momia",
-          "wrestler": "Máscara de loitador",
-          "block-head": "Cabeza de bloque",
-          "web": "Máscara de arañeira",
-          "werewolf": "Cara de lobishome",
-          "shadow": "Rostro sombrío"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Maquillaxe",
-        "description": "Pintura facial ou carmín.",
-        "options": {
-          "none": "Ningunha",
-          "red-lipstick": "Carmín vermello",
-          "pink-lipstick": "Carmín rosa",
-          "berry-lipstick": "Carmín de froitos do bosque",
-          "clown": "Pintura de pallaso",
-          "fangs": "Colmillos",
-          "skull": "Pintura de caveira",
-          "zombie": "Pintura de zombi",
-          "red-nose": "Nariz vermella",
-          "white-beard": "Barba branca",
-          "domino": "Máscara de heroe",
-          "carrot": "Nariz de cenoria",
-          "bunny": "Nariz de coello",
-          "mustache": "Bigote",
-          "monster": "Maquillaxe de monstro",
-          "round-glasses": "Lentes redondas"
-        }
-      },
-      {
         "property": "expression",
         "title": "Expresión",
         "description": "Expresión da cara.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Mascota",
+        "description": "Mascota ao carón do personaxe.",
+        "options": {
+          "none": "Ningunha",
+          "cat": "Gato",
+          "dog": "Can",
+          "bunny": "Coelliño",
+          "goldfish": "Peixe dourado",
+          "slime": "Lama",
+          "squirrel": "Esquío",
+          "dragon": "Dragonciño",
+          "parrot": "Papagaio",
+          "owl": "Moucho",
+          "bat": "Morcego"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Código do personaxe",
+        "description": "Pega un código gardado para recrear ese personaxe."
+      },
+      {
+        "property": "mask",
+        "title": "Máscara",
+        "description": "Máscara que se leva sobre a cara ou a cabeza.",
+        "options": {
+          "none": "Ningunha",
+          "lion": "León",
+          "plague": "Médico da peste",
+          "theater": "Teatro",
+          "pumpkin": "Cabaza",
+          "ghost": "Pantasma",
+          "mummy": "Momia",
+          "wrestler": "Máscara de loitador",
+          "block-head": "Cabeza de bloque",
+          "web": "Máscara de arañeira",
+          "werewolf": "Cara de lobishome",
+          "shadow": "Rostro sombrío"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Maquillaxe",
+        "description": "Pintura facial ou carmín.",
+        "options": {
+          "none": "Ningunha",
+          "red-lipstick": "Carmín vermello",
+          "pink-lipstick": "Carmín rosa",
+          "berry-lipstick": "Carmín de froitos do bosque",
+          "clown": "Pintura de pallaso",
+          "fangs": "Colmillos",
+          "skull": "Pintura de caveira",
+          "zombie": "Pintura de zombi",
+          "red-nose": "Nariz vermella",
+          "white-beard": "Barba branca",
+          "domino": "Máscara de heroe",
+          "carrot": "Nariz de cenoria",
+          "bunny": "Nariz de coello",
+          "mustache": "Bigote",
+          "monster": "Maquillaxe de monstro",
+          "round-glasses": "Lentes redondas"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Texto da bandeira",
         "description": "Ata 4 letras que se amosan na bandeira."
@@ -310,24 +330,6 @@
           "skates": "Patíns",
           "skateboard": "Monopatín",
           "hoverboard": "Táboa flotante"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Mascota",
-        "description": "Mascota ao carón do personaxe.",
-        "options": {
-          "none": "Ningunha",
-          "cat": "Gato",
-          "dog": "Can",
-          "bunny": "Coelliño",
-          "goldfish": "Peixe dourado",
-          "slime": "Lama",
-          "squirrel": "Esquío",
-          "dragon": "Dragonciño",
-          "parrot": "Papagaio",
-          "owl": "Moucho",
-          "bat": "Morcego"
         }
       },
       {

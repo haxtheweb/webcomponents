@@ -21,15 +21,6 @@
         "description": "Guyyaa maddi itti argame."
       },
       {
-        "property": "scope",
-        "title": "Daangaa",
-        "description": "Daangaa elementii wabeeffamu.",
-        "options": {
-          "sibling": "Elementii cinaa",
-          "parent": "Elementii maatii"
-        }
-      },
-      {
         "property": "license",
         "title": "Hayyama",
         "description": "Hayyama hojii wabeeffamee."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Uumaa",
         "description": "Uumaa yookaan abbaa hojii wabeeffamee."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Daangaa",
+        "description": "Daangaa elementii wabeeffamu.",
+        "options": {
+          "sibling": "Elementii cinaa",
+          "parent": "Elementii maatii"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "Gosa OER Schema",

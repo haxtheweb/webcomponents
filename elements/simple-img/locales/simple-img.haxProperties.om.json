@@ -26,7 +26,8 @@
         "description": "Dubbistoota iskiriiniitii fi SEO fooyya'eef gargaara."
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "Qulqullina",

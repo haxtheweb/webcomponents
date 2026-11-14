@@ -27,6 +27,13 @@
       {
         "slot": "",
         "title": "Ateb"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Dolen Mwy",
+        "description": "Dolen at ragor o wybodaeth."
       },
       {
         "property": "hasLearningObjective",
@@ -37,13 +44,6 @@
         "property": "assessing",
         "title": "Yn asesu",
         "description": "Cyfeiriad at weithgaredd a allyrrir fel oer:assessing."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "link",
-        "title": "Dolen Mwy",
-        "description": "Dolen at ragor o wybodaeth."
       }
     ]
   }

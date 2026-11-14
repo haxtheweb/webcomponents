@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Liste der GitHub-Mitwirkenden",
-    "description": "Als RPG-Figuren über die GitHub-API dargestellt."
+    "description": "Listet die Mitwirkenden eines Repositorys als RPG-Figuren auf."
   },
   "settings": {
     "configure": [

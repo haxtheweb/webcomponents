@@ -21,15 +21,6 @@
         "description": "Эх сурвалжид хандсан огноо."
       },
       {
-        "property": "scope",
-        "title": "Хамрах хүрээ",
-        "description": "Иш татах элементийн хамрах хүрээ.",
-        "options": {
-          "sibling": "Хөрш элемент",
-          "parent": "Эцэг элемент"
-        }
-      },
-      {
         "property": "license",
         "title": "Лиценз",
         "description": "Иш татсан бүтээлийн лиценз."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Бүтээгч",
         "description": "Иш татсан бүтээлийн бүтээгч эсвэл эзэмшигч."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Хамрах хүрээ",
+        "description": "Иш татах элементийн хамрах хүрээ.",
+        "options": {
+          "sibling": "Хөрш элемент",
+          "parent": "Эцэг элемент"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "OER Schema төрөл",

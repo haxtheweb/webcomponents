@@ -11,11 +11,6 @@
         "description": "यादृच्छिक पात्र बनाने के लिए प्रयुक्त शब्द।"
       },
       {
-        "property": "code",
-        "title": "पात्र कोड",
-        "description": "उस पात्र को फिर से बनाने के लिए सहेजा गया कोड चिपकाएँ।"
-      },
-      {
         "property": "hat",
         "title": "टोपी",
         "description": "टोपी की शैली।",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "मुखौटा",
-        "description": "चेहरे या सिर पर पहना जाने वाला मुखौटा।",
-        "options": {
-          "none": "कोई नहीं",
-          "lion": "शेर",
-          "plague": "प्लेग डॉक्टर",
-          "theater": "थिएटर",
-          "pumpkin": "कद्दू",
-          "ghost": "भूत",
-          "mummy": "ममी",
-          "wrestler": "कुश्ती मुखौटा",
-          "block-head": "ब्लॉक सिर",
-          "web": "जाल मुखौटा",
-          "werewolf": "भेड़िया-मानव चेहरा",
-          "shadow": "छायादार चेहरा"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "मेकअप",
-        "description": "चेहरे का रंग या लिपस्टिक।",
-        "options": {
-          "none": "कोई नहीं",
-          "red-lipstick": "लाल लिपस्टिक",
-          "pink-lipstick": "गुलाबी लिपस्टिक",
-          "berry-lipstick": "बेरी लिपस्टिक",
-          "clown": "जोकर का रंग",
-          "fangs": "नुकीले दाँत",
-          "skull": "खोपड़ी का रंग",
-          "zombie": "ज़ॉम्बी का रंग",
-          "red-nose": "लाल नाक",
-          "white-beard": "सफ़ेद दाढ़ी",
-          "domino": "हीरो मुखौटा",
-          "carrot": "गाजर नाक",
-          "bunny": "खरगोश नाक",
-          "mustache": "मूँछ",
-          "monster": "राक्षस फ़ेस पेंट",
-          "round-glasses": "गोल चश्मा"
-        }
-      },
-      {
         "property": "expression",
         "title": "भाव",
         "description": "चेहरे का भाव।",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "पालतू जानवर",
+        "description": "पात्र के पास पालतू जानवर।",
+        "options": {
+          "none": "कोई नहीं",
+          "cat": "बिल्ली",
+          "dog": "कुत्ता",
+          "bunny": "खरगोश",
+          "goldfish": "गोल्डफ़िश",
+          "slime": "स्लाइम",
+          "squirrel": "गिलहरी",
+          "dragon": "नन्हा ड्रैगन",
+          "parrot": "तोता",
+          "owl": "उल्लू",
+          "bat": "चमगादड़"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "पात्र कोड",
+        "description": "उस पात्र को फिर से बनाने के लिए सहेजा गया कोड चिपकाएँ।"
+      },
+      {
+        "property": "mask",
+        "title": "मुखौटा",
+        "description": "चेहरे या सिर पर पहना जाने वाला मुखौटा।",
+        "options": {
+          "none": "कोई नहीं",
+          "lion": "शेर",
+          "plague": "प्लेग डॉक्टर",
+          "theater": "थिएटर",
+          "pumpkin": "कद्दू",
+          "ghost": "भूत",
+          "mummy": "ममी",
+          "wrestler": "कुश्ती मुखौटा",
+          "block-head": "ब्लॉक सिर",
+          "web": "जाल मुखौटा",
+          "werewolf": "भेड़िया-मानव चेहरा",
+          "shadow": "छायादार चेहरा"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "मेकअप",
+        "description": "चेहरे का रंग या लिपस्टिक।",
+        "options": {
+          "none": "कोई नहीं",
+          "red-lipstick": "लाल लिपस्टिक",
+          "pink-lipstick": "गुलाबी लिपस्टिक",
+          "berry-lipstick": "बेरी लिपस्टिक",
+          "clown": "जोकर का रंग",
+          "fangs": "नुकीले दाँत",
+          "skull": "खोपड़ी का रंग",
+          "zombie": "ज़ॉम्बी का रंग",
+          "red-nose": "लाल नाक",
+          "white-beard": "सफ़ेद दाढ़ी",
+          "domino": "हीरो मुखौटा",
+          "carrot": "गाजर नाक",
+          "bunny": "खरगोश नाक",
+          "mustache": "मूँछ",
+          "monster": "राक्षस फ़ेस पेंट",
+          "round-glasses": "गोल चश्मा"
+        }
+      },
+      {
         "property": "flagText",
         "title": "झंडे का पाठ",
         "description": "झंडे पर दिखने वाले अधिकतम 4 अक्षर।"
@@ -310,24 +330,6 @@
           "skates": "स्केट्स",
           "skateboard": "स्केटबोर्ड",
           "hoverboard": "होवरबोर्ड"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "पालतू जानवर",
-        "description": "पात्र के पास पालतू जानवर।",
-        "options": {
-          "none": "कोई नहीं",
-          "cat": "बिल्ली",
-          "dog": "कुत्ता",
-          "bunny": "खरगोश",
-          "goldfish": "गोल्डफ़िश",
-          "slime": "स्लाइम",
-          "squirrel": "गिलहरी",
-          "dragon": "नन्हा ड्रैगन",
-          "parrot": "तोता",
-          "owl": "उल्लू",
-          "bat": "चमगादड़"
         }
       },
       {

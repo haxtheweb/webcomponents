@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Interattivu",
         "description": "Permette à l'utilizatore di definisce a valutazione."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Modu di scala di griglia di valutazione",

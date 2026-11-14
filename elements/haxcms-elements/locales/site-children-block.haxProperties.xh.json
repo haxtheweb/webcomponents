@@ -4,7 +4,7 @@
     "description": "Ibhloko etshintshayo yokubonisa umntwana wephepha langoku"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "Indlela etshintshayo",
@@ -14,7 +14,9 @@
           "parent": "Abantwana bomzali",
           "ancestor": "Bonke abantwana ukusuka kukhokho ophezulu"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "Inqanaba lokuqala"

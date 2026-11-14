@@ -11,6 +11,13 @@
         "description": "Энэ AR файлын URL."
       },
       {
+        "property": "skyColor",
+        "title": "Тэнгэрийн өнгө",
+        "description": "Үзэгдэл дэх тэнгэрийн өнгийг сонгоно уу."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "AR дахь элементийн X байрлал."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "AR дахь элементийн Z байрлал."
-      },
-      {
-        "property": "skyColor",
-        "title": "Тэнгэрийн өнгө",
-        "description": "Үзэгдэл дэх тэнгэрийн өнгийг сонгоно уу."
       }
     ]
   }

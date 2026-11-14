@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Launa",
         "description": "ʻAe i ka launa ʻana o ka mea hoʻohana e hoʻonoho ai i ka helu."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "ʻAno pālākiō rubric",

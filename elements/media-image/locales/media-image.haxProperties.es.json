@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Pie de foto",
         "description": "Pie de la imagen."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Título de la figura",
-        "description": "Título de la etiqueta de figura."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Descripción de la figura",
-        "description": "Descripción de la etiqueta de figura."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Desactivar la ventana modal de la imagen",
         "description": "Desactiva que los clics abran la imagen en un diálogo de inspección de imágenes."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Título de la figura",
+        "description": "Título de la etiqueta de figura."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Descripción de la figura",
+        "description": "Descripción de la etiqueta de figura."
       }
     ],
     "developer": [

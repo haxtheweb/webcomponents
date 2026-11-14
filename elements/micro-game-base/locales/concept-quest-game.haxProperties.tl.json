@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Laro ng quest ng konsepto",
-    "description": "Isang overworld na malalakad. Hahanapin ka ng mga konsepto at magtatanong. Sumagot nang tama para talunin ang isa at buksan ang bahay nito. Ipinapakita ng recap ang mga subok at ang uulitin."
+    "description": "Isang overworld na laro kung saan nagtatanong ang mga konsepto at binubuksan ng tamang sagot ang mapa."
   },
   "settings": {
     "configure": [
@@ -91,7 +91,9 @@
         "property": "gameTitle",
         "title": "Pangalan ng laro",
         "description": "Pinapangalanan ang larong ito sa mga progress event at OER Schema markup."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "ID ng laro",

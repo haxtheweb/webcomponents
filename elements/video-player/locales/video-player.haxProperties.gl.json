@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Imaxe de póster",
         "description": "URL da imaxe de póster."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Pistas de texto",
         "description": "Subtítulos pechados, subtítulos, descricións e outras pistas de texto do vídeo."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Tempo de inicio",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Pista de audiodescrición",
         "description": "URL dunha pista de audiodescrición (ficheiro MP3) que narra os elementos visuais."
+      },
+      {
+        "property": "accentColor",
+        "title": "Cor de realce",
+        "description": "(obsoleto) Selecciona a cor de acento do reprodutor."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Idioma",
         "description": "Idioma do multimedia."
-      },
-      {
-        "property": "accentColor",
-        "title": "Cor de realce",
-        "description": "(obsoleto) Selecciona a cor de acento do reprodutor."
       }
     ]
   }

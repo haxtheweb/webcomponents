@@ -178,73 +178,8 @@ class MeritBadge extends I18NMixin(SchemaBehaviors(LitElement)) {
   }
 
   static get haxProperties() {
-    return {
-      canScale: true,
-      canEditSource: true,
-      gizmo: {
-        title: "Merit Badge",
-        description: "Visual badge to communicate obtaining a skill.",
-        icon: "icons:verified",
-        color: "green",
-        tags: ["Instructional", "badge", "skill", "achievement"],
-        handles: [],
-        meta: {
-          author: "HAXTheWeb core team",
-        },
-      },
-      settings: {
-        configure: [
-          {
-            property: "badgeTitle",
-            title: "Badge Title",
-            description: "Title displayed on the badge.",
-            inputMethod: "textfield",
-          },
-          {
-            property: "badgeImage",
-            title: "Badge Image",
-            description: "Image URL for the badge.",
-            inputMethod: "haxupload",
-            noVoiceRecord: true,
-            noCamera: true,
-            noScreenRecord: true,
-          },
-          {
-            property: "badgeDetails",
-            title: "Badge Details",
-            description: "Details about the badge.",
-            inputMethod: "textfield",
-          },
-          {
-            property: "hyperLink",
-            title: "Hyperlink",
-            description: "Link associated with the badge.",
-            inputMethod: "textfield",
-          },
-          {
-            property: "badgeSkills",
-            title: "Badge Skills",
-            description: "Skills displayed on the badge.",
-            inputMethod: "textfield",
-          },
-          {
-            property: "skill",
-            title: "Skill (OER Schema)",
-            description:
-              "OER Schema: a learned skill obtained by completion of this learning objective.",
-            inputMethod: "textfield",
-          },
-        ],
-        advanced: [],
-      },
-      demoSchema: [
-        {
-          tag: "merit-badge",
-          properties: {},
-          content: "",
-        },
-      ],
-    };
+    return new URL("./lib/merit-badge.haxProperties.json", import.meta.url)
+      .href;
   }
 
   unlockButtonClicked() {

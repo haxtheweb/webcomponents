@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Igra s pojmovnim zemljevidom",
-    "description": "Kratka igra s tipkovnico. Lik hodi do vsakega pojma na zemljevidu in ta se sam razloži. Dotakni se vseh za konfete in poziv za kopiranje."
+    "description": "Kratka igra s tipkovnico, v kateri lik hodi po zemljevidu in vsak pojem razloži samega sebe."
   },
   "settings": {
     "configure": [
@@ -86,7 +86,9 @@
         "property": "gameTitle",
         "title": "Ime igre",
         "description": "Poimenuje to igro v dogodkih napredka in oznakah OER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "ID igre",

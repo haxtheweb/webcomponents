@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "Omotač za ugrađene Spotify reproduktore."
+    "description": "Ugradite pjesmu, album ili popis za reprodukciju sa Spotifyja."
   },
   "settings": {
     "configure": [

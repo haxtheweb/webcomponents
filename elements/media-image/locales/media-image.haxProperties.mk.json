@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Опис",
         "description": "Легенда за сликата."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Наслов на фигурата",
-        "description": "Наслов за ознаката на фигурата."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Опис на фигурата",
-        "description": "Опис за ознаката на фигурата."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Оневозможи модален прозорец за сликата",
         "description": "Оневозможи кликовите да ја отвораат сликата во дијалог за преглед на слики."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Наслов на фигурата",
+        "description": "Наслов за ознаката на фигурата."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Опис на фигурата",
+        "description": "Опис за ознаката на фигурата."
       }
     ],
     "developer": [

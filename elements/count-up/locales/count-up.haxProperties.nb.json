@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Suffikstekst",
         "description": "Tekst som vises etter tallet (f.eks. '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Prefiksplass",
-        "description": "Valgfritt innsatt innhold foran tallet."
-      },
-      {
-        "slot": "suffix",
-        "title": "Suffiksplass",
-        "description": "Valgfritt innsatt innhold etter tallet."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Ingen myk overgang",
         "description": "Slå av myk overgang slik at tellingen blir lineær."
+      },
+      {
+        "slot": "prefix",
+        "title": "Prefiksplass",
+        "description": "Valgfritt innsatt innhold foran tallet."
+      },
+      {
+        "slot": "suffix",
+        "title": "Suffiksplass",
+        "description": "Valgfritt innsatt innhold etter tallet."
       }
     ]
   }

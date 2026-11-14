@@ -4,17 +4,16 @@
     "description": "Ludas interagan H5P-enhavon el alŝutita .h5p-dosiero, sen bezono de H5P-servilo"
   },
   "settings": {
-    "configure": [
-      {
-        "slot": "",
-        "description": "Alŝutu aŭ ligu .h5p-dosieron. Ĝi estas malpakata en la retumilo; H5P-servilo ne necesas.",
-        "title": "H5P-dosiero"
-      }
-    ],
+    "configure": [],
     "advanced": [
       {
         "title": "Malnova enkorpiga kodo de iframe",
         "description": "Nur por pli malnova enhavo, kiu enkorpigas H5P-iframe el alia retejo. Lasu malplena kiam .h5p-dosiero estas agordita supre."
+      },
+      {
+        "slot": "",
+        "description": "Alŝutu aŭ ligu .h5p-dosieron. Ĝi estas malpakata en la retumilo; H5P-servilo ne necesas.",
+        "title": "H5P-dosiero"
       }
     ]
   }

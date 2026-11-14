@@ -5,14 +5,13 @@
   "version": "26.8.0",
   "license": "Apache-2.0",
   "title": "Markdown",
-  "description": "A block of markdown content directly or remote loaded",
-  "icon": "icons:code",
+  "description": "Markdown content, written inline or loaded from a file.",
+  "icon": "hax:markdown",
   "tags": [
-    "Other",
+    "Text",
     "md",
     "markdown",
     "content",
-    "text",
     "code",
     "codeblock",
     "code-block",
@@ -23,7 +22,7 @@
   "import": "@haxtheweb/md-block/md-block.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/md-block/md-block.js",
   "install": "npm i @haxtheweb/md-block",
-  "demoHtml": "<md-block markdown=\"- The first bulleted item in a long list..\"></md-block>",
+  "demoHtml": "<md-block markdown=\"## Heading\n\n- First item\n- Second item\n\nSome **bold** text.\"></md-block>",
   "attributes": [
     {
       "name": "source",
@@ -57,15 +56,14 @@
     "canEditSource": true,
     "gizmo": {
       "title": "Markdown",
-      "description": "A block of markdown content directly or remote loaded",
-      "icon": "icons:code",
+      "description": "Markdown content, written inline or loaded from a file.",
+      "icon": "hax:markdown",
       "color": "yellow",
       "tags": [
-        "Other",
+        "Text",
         "md",
         "markdown",
         "content",
-        "text",
         "code",
         "codeblock",
         "code-block",
@@ -101,13 +99,13 @@
       {
         "tag": "md-block",
         "properties": {
-          "markdown": "- The first bulleted item in a long list.."
+          "markdown": "## Heading\n\n- First item\n- Second item\n\nSome **bold** text."
         },
         "content": ""
       }
     ]
   },
-  "surfaceHash": "5c85ebdaa2ab",
+  "surfaceHash": "45e668d01064",
   "walkthroughs": [
     {
       "id": "",
@@ -115,13 +113,13 @@
       "order": 0,
       "src": "md-block.motion.json",
       "file": "lib/md-block.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/md-block.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

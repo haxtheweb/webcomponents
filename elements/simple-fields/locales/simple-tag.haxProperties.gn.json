@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Sa'y ojehechaukavéva ijeheguíva",
         "description": "Eguenohẽ sa'y ojehechaukavéva teramoĩ moñe'ẽrãgui ijeheguiete."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Votõ jeheja",
-        "description": "Ehechauka votõ ta'ãnga'i mboguete/jeheja píldora ryepýpe."
-      },
-      {
-        "property": "readonly",
-        "title": "Moñe'ẽrã añoite",
-        "description": "Emokañy votõ jeheja ikatu hag̃uáicha píldora ojehechauka añoite."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Hovy hũngy",
           "grey": "Hũngy"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Votõ jeheja",
+        "description": "Ehechauka votõ ta'ãnga'i mboguete/jeheja píldora ryepýpe."
+      },
+      {
+        "property": "readonly",
+        "title": "Moñe'ẽrã añoite",
+        "description": "Emokañy votõ jeheja ikatu hag̃uáicha píldora ojehechauka añoite."
       }
     ]
   }

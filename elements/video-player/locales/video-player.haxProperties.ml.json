@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "പോസ്റ്റർ ചിത്രം",
         "description": "പോസ്റ്റർ ചിത്ര URL."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "ടെക്സ്റ്റ് ട്രാക്കുകൾ",
         "description": "വീഡിയോയ്ക്കുള്ള ക്ലോസ്ഡ് ക്യാപ്ഷനുകൾ, സബ്ടൈറ്റിലുകൾ, വിവരണങ്ങൾ, മറ്റ് ടെക്സ്റ്റ് ട്രാക്കുകൾ."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "ആരംഭ സമയം",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "ഓഡിയോ വിവരണ ട്രാക്ക്",
         "description": "ദൃശ്യ ഘടകങ്ങളുടെ വിവരണം നൽകുന്ന ഓഡിയോ വിവരണ ട്രാക്കിലേക്കുള്ള URL (MP3 ഫയൽ)."
+      },
+      {
+        "property": "accentColor",
+        "title": "ആക്സന്റ് നിറം",
+        "description": "(ഒഴിവാക്കിയത്) പ്ലെയറിനുള്ള ആക്സന്റ് നിറം തിരഞ്ഞെടുക്കുക."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "ഭാഷ",
         "description": "മീഡിയയുടെ ഭാഷ."
-      },
-      {
-        "property": "accentColor",
-        "title": "ആക്സന്റ് നിറം",
-        "description": "(ഒഴിവാക്കിയത്) പ്ലെയറിനുള്ള ആക്സന്റ് നിറം തിരഞ്ഞെടുക്കുക."
       }
     ]
   }

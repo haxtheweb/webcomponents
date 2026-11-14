@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "তীরচিহ্ন নেই",
         "description": "বোতামের তীরচিহ্ন লুকান।"
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "লিংক: টার্গেট",
@@ -54,7 +52,9 @@
           "_top": "শীর্ষ উইন্ডো - _top",
           "_parent": "প্যারেন্ট উইন্ডো - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "লিংক: rel",

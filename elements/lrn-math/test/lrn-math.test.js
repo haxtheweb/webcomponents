@@ -2,6 +2,13 @@ import { fixture, expect, html } from "@open-wc/testing";
 
 import { LrnMath, LrnMathController } from "../lrn-math.js";
 
+// HAX schemas ship as JSON next to the element; read one whether the class
+// returns the object or the URL of its file
+const haxSchema = async (C) => {
+  const hp = C.haxProperties;
+  return typeof hp === "string" ? (await fetch(hp)).json() : hp;
+};
+
 // The module appends a <script src="https://cdnjs.../MathJax.js"> to load the
 // real MathJax library. Tests must never hit the network, so intercept any
 // script whose src references mathjax and silently drop it. Everything else
@@ -191,7 +198,7 @@ describe("lrn-math test", () => {
   });
 
   it("reports haxProperties for the editor", async () => {
-    const props = LrnMath.haxProperties;
+    const props = await haxSchema(LrnMath);
     expect(props.canScale).to.be.false;
     expect(props.canEditSource).to.be.true;
     expect(props.gizmo.title).to.equal("Math");

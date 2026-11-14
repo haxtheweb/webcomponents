@@ -26,7 +26,8 @@
         "description": "Экран окугучтар жана жакшыртылган SEO үчүн пайдалуу."
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "Сапаты",

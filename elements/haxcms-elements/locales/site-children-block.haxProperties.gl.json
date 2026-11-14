@@ -4,7 +4,7 @@
     "description": "Bloque dinámico para mostrar as fillas da páxina actual"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "Método dinámico",
@@ -14,7 +14,9 @@
           "parent": "Fillas da páxina pai",
           "ancestor": "Todas as fillas desde o antepasado máis alto"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "Nivel inicial"

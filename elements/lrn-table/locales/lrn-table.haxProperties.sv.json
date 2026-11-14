@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "CSV-tabell",
-    "description": "Kan generera en tabell från en CSV-fil oavsett var den finns."
+    "description": "Visar en CSV-fil som en tillgänglig tabell."
   },
   "settings": {
     "configure": [

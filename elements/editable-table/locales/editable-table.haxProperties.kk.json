@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Сүзуге рұқсат беру",
         "description": "Баған мәндері бойынша сүзуге рұқсат беру."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Сандық безендіру",
-        "description": "Сандық бағандарға сандық безендіруді қолдану."
-      },
-      {
-        "property": "responsive",
-        "title": "Бейімделгіш",
-        "description": "Шағын экрандарда кесте макетін бейімдеу."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Рубрика режимі",
-        "description": "Rubric, RubricScale, RubricCriterion және RubricLevel метадеректері шығарылуы үшін осы кестені OER Schema Rubric ретінде түсіндіру."
-      },
-      {
-        "property": "rubricType",
-        "title": "Рубрика түрі",
-        "description": "oer:rubricType ретінде шығарылатын рубрика стилі (тек Рубрика режимі қосулы болғанда маңызды).",
-        "options": {
-          "": "(жоқ)",
-          "analytic": "Аналитикалық",
-          "holistic": "Тұтас",
-          "single-point": "Бір нүктелі",
-          "checklist": "Бақылау тізімі"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Басып шығару түймесі",
         "description": "Тек кестені басып шығару түймесін қосу."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Сандық безендіру",
+        "description": "Сандық бағандарға сандық безендіруді қолдану."
+      },
+      {
+        "property": "responsive",
+        "title": "Бейімделгіш",
+        "description": "Шағын экрандарда кесте макетін бейімдеу."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Рубрика режимі",
+        "description": "Rubric, RubricScale, RubricCriterion және RubricLevel метадеректері шығарылуы үшін осы кестені OER Schema Rubric ретінде түсіндіру."
+      },
+      {
+        "property": "rubricType",
+        "title": "Рубрика түрі",
+        "description": "oer:rubricType ретінде шығарылатын рубрика стилі (тек Рубрика режимі қосулы болғанда маңызды).",
+        "options": {
+          "": "(жоқ)",
+          "analytic": "Аналитикалық",
+          "holistic": "Тұтас",
+          "single-point": "Бір нүктелі",
+          "checklist": "Бақылау тізімі"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "CSV деректері",
         "description": "Жүктелген CSV файлынан кесте жасау."
       }
-    ]
+    ],
+    "developer": []
   }
 }

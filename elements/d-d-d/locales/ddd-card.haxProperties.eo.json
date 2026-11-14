@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Sen sago",
         "description": "Kaŝi la sagon de la butono."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Ligilo: celo",
@@ -54,7 +52,9 @@
           "_top": "Supra fenestro - _top",
           "_parent": "Gepatra fenestro - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Ligilo: rel",

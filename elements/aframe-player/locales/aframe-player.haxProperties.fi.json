@@ -11,6 +11,13 @@
         "description": "Tämän AR-tiedoston URL."
       },
       {
+        "property": "skyColor",
+        "title": "Taivaan väri",
+        "description": "Valitse taivaan väri näkymässä."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "Elementin X-sijainti AR-näkymässä."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "Elementin Z-sijainti AR-näkymässä."
-      },
-      {
-        "property": "skyColor",
-        "title": "Taivaan väri",
-        "description": "Valitse taivaan väri näkymässä."
       }
     ]
   }

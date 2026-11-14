@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Savitikra",
-    "description": "Naudotojai gali atlikti savitikrą."
+    "description": "Klausimas su paslėptu atsakymu, kurį besimokantysis atskleidžia, kad pasitikrintų."
   },
   "settings": {
     "configure": [
@@ -27,6 +27,13 @@
       {
         "slot": "",
         "title": "Atsakymas"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Daugiau informacijos nuoroda",
+        "description": "Nuoroda į papildomą informaciją."
       },
       {
         "property": "hasLearningObjective",
@@ -37,13 +44,6 @@
         "property": "assessing",
         "title": "Vertinama",
         "description": "Veiklos nuoroda, pateikiama kaip oer:assessing."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "link",
-        "title": "Daugiau informacijos nuoroda",
-        "description": "Nuoroda į papildomą informaciją."
       }
     ]
   }

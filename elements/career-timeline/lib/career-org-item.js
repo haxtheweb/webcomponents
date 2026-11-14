@@ -259,53 +259,8 @@ export class CareerOrgItem extends I18NMixin(DDDSuper(LitElement)) {
    * haxProperties integration via file reference
    */
   static get haxProperties() {
-    return {
-      type: "grid",
-      canScale: false,
-      designSystem: false,
-      canEditSource: false,
-      contentEditable: false,
-      hideDefaultSettings: true,
-      gizmo: {
-        title: "Career Item",
-        description: "An individual organization and its affiliated roles",
-        icon: "chrome-reader-mode",
-        color: "light-blue",
-        tags: ["Content", "list", "step"],
-        handles: [],
-        meta: {
-          author: "HAXTheWeb core team",
-        },
-      },
-      settings: {
-        configure: [
-          {
-            property: "organization",
-            title: "Organization Name",
-            inputMethod: "textfield",
-          },
-          {
-            property: "location",
-            title: "Location",
-            inputMethod: "textfield",
-          },
-          {
-            property: "source",
-            title: "Source",
-            inputMethod: "haxupload",
-          },
-        ],
-        advanced: [],
-        developer: [],
-      },
-      demoSchema: [
-        {
-          tag: "career-org-item",
-          properties: {},
-          content: "",
-        },
-      ],
-    };
+    return new URL("./career-org-item.haxProperties.json", import.meta.url)
+      .href;
   }
 }
 

@@ -11,20 +11,17 @@
         "description": "Etiqueta accesible del conjunto de pestañas."
       },
       {
-        "property": "disabled",
-        "title": "Desactivado",
-        "description": "Desactivar todas las pestañas."
-      },
-      {
-        "property": "hidden",
-        "title": "Oculto",
-        "description": "Ocultar el conjunto de pestañas."
-      },
-      {
         "property": "sticky",
         "title": "Fijo",
         "description": "Mantener las pestañas horizontales arriba al desplazarse."
       },
+      {
+        "slot": "",
+        "title": "Pestañas",
+        "description": "Serie de elementos <a11y-tab/>."
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "Punto de corte del diseño",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "Punto de corte de los iconos",
         "description": "Punto de corte para mostrar texto con los iconos. El valor predeterminado es 0; usa -1 para el modo de solo iconos."
-      },
-      {
-        "slot": "",
-        "title": "Pestañas",
-        "description": "Serie de elementos <a11y-tab/>."
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "Desactivado",
+        "description": "Desactivar todas las pestañas."
+      },
+      {
+        "property": "hidden",
+        "title": "Oculto",
+        "description": "Ocultar el conjunto de pestañas."
+      },
       {
         "property": "id",
         "title": "ID único",

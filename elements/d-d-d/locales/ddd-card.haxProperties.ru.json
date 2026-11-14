@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Без стрелки",
         "description": "Скрыть стрелку кнопки."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Ссылка: target",
@@ -54,7 +52,9 @@
           "_top": "Окно верхнего уровня - _top",
           "_parent": "Родительское окно - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Ссылка: rel",

@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Paraksts",
         "description": "Attēla paraksts."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Attēla nosaukums",
-        "description": "Attēla etiķetes nosaukums."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Attēla apraksts",
-        "description": "Attēla etiķetes apraksts."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Atspējot attēla modālo logu",
         "description": "Atspējot attēla atvēršanu attēlu inspektora dialogā, noklikšķinot uz tā."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Attēla nosaukums",
+        "description": "Attēla etiķetes nosaukums."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Attēla apraksts",
+        "description": "Attēla etiķetes apraksts."
       }
     ],
     "developer": [

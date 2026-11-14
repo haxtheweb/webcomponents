@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Podpis",
         "description": "Podpis obrazu."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Tytuł ilustracji",
-        "description": "Tytuł etykiety ilustracji."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Opis ilustracji",
-        "description": "Opis etykiety ilustracji."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Wyłącz okno obrazu",
         "description": "Wyłącz otwieranie obrazu w oknie inspektora po kliknięciu."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Tytuł ilustracji",
+        "description": "Tytuł etykiety ilustracji."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Opis ilustracji",
+        "description": "Opis etykiety ilustracji."
       }
     ],
     "developer": [

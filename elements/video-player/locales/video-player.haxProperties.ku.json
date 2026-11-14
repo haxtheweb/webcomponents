@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Wêneyê posterê",
         "description": "URLa wêneyê posterê."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Rêçên nivîsê",
         "description": "Binnivîsên girtî, binnivîs, danasîn û rêçên din ên nivîsê ji bo vîdyoyê."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Dema destpêkê",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Rêça danasîna dengî",
         "description": "URL ji bo rêça danasîna dengî (pelê MP3) ku hêmanên dîtbarî vedibêje."
+      },
+      {
+        "property": "accentColor",
+        "title": "Rengê balkêş",
+        "description": "(kevnbûyî) Rengê aksentê ji bo lêdêrê hilbijêre."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Ziman",
         "description": "Zimanê medyayê."
-      },
-      {
-        "property": "accentColor",
-        "title": "Rengê balkêş",
-        "description": "(kevnbûyî) Rengê aksentê ji bo lêdêrê hilbijêre."
       }
     ]
   }

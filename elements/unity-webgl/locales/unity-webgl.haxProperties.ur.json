@@ -9,7 +9,21 @@
         "property": "target",
         "title": "ہدف",
         "description": "گیم بلڈ کا پاتھ۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "کینوس کی چوڑائی",
+        "description": "کینوس کی CSS چوڑائی (مثلاً px یا em)۔"
       },
+      {
+        "property": "height",
+        "title": "کینوس کی اونچائی",
+        "description": "کینوس کی CSS اونچائی (مثلاً px یا em)۔"
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "کمپریشن کا طریقہ",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "پروڈکٹ ورژن",
         "description": "ریلیز ورژن۔"
-      },
-      {
-        "property": "width",
-        "title": "کینوس کی چوڑائی",
-        "description": "کینوس کی CSS چوڑائی (مثلاً px یا em)۔"
-      },
-      {
-        "property": "height",
-        "title": "کینوس کی اونچائی",
-        "description": "کینوس کی CSS اونچائی (مثلاً px یا em)۔"
       },
       {
         "property": "background",

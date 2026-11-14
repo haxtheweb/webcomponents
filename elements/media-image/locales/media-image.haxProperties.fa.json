@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "زیرنویس",
         "description": "زیرنویس برای تصویر."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "عنوان شکل",
-        "description": "عنوان برای برچسب شکل."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "توضیحات شکل",
-        "description": "توضیحات برای برچسب شکل."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "غیرفعال کردن پنجره تصویر",
         "description": "غیرفعال کردن باز شدن تصویر در پنجره بازرس تصویر با کلیک."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "عنوان شکل",
+        "description": "عنوان برای برچسب شکل."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "توضیحات شکل",
+        "description": "توضیحات برای برچسب شکل."
       }
     ],
     "developer": [

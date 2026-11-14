@@ -14,28 +14,6 @@
         "property": "statement",
         "title": "Ñe'ẽjoaju",
         "description": "Ñe'ẽjoaju oñemoambuéta ñe'ẽ ñemomarca rembiapópe."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "Jehechakuaa reko",
-        "description": "OER Schema: jehechakuaa reko ko ñeha'ãme g̃uarã (techapyrã kyta, tai, porcentaje, ñemohu'ã)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Ñembo'e jehupytyrã",
-        "description": "OER Schema: ñembo'e jehupytyrã ojoajúva ko ñeha'ã ndive."
-      },
-      {
-        "property": "forCourse",
-        "title": "Mbo'esyry",
-        "description": "OER Schema: mbo'esyry ko ñeha'ã oñembosako'iha."
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Ñeha'ã réra",
-        "description": "Ñeha'ã réra oñembohasáva ojeporu hag̃ua tenda xAPI rehegua ojeikuaa hag̃ua ko mba'e"
       }
     ],
     "advanced": [
@@ -46,6 +24,28 @@
       {
         "title": "Eñepyrũ mbokirirĩme",
         "description": "Oĩrõ mbokirirĩ ikatúva, oñepyrũ tysýi ojejokóvaramo ohechaukáva añoite porandu ha hembiapo."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Jehechakuaa reko",
+        "description": "OER Schema: jehechakuaa reko ko ñeha'ãme g̃uarã (techapyrã kyta, tai, porcentaje, ñemohu'ã)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Ñembo'e jehupytyrã",
+        "description": "OER Schema: ñembo'e jehupytyrã ojoajúva ko ñeha'ã ndive."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Ñeha'ã réra",
+        "description": "Ñeha'ã réra oñembohasáva ojeporu hag̃ua tenda xAPI rehegua ojeikuaa hag̃ua ko mba'e"
+      },
+      {
+        "property": "forCourse",
+        "title": "Mbo'esyry",
+        "description": "OER Schema: mbo'esyry ko ñeha'ã oñembosako'iha."
       }
     ]
   }

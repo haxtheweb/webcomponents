@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "నేరుగా లేదా రిమోట్‌గా లోడ్ చేయబడిన markdown కంటెంట్ బ్లాక్"
+    "description": "నేరుగా రాసిన లేదా ఫైల్ నుండి లోడ్ చేసిన Markdown కంటెంట్."
   },
   "settings": {
     "configure": [

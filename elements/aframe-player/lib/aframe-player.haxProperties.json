@@ -5,17 +5,18 @@
   "gizmo": {
     "title": "3D player",
     "description": "A 3D file / augmented reality player.",
-    "icon": "av:play-circle-filled",
+    "icon": "hax:vr",
     "color": "amber",
     "tags": [
-      "3D",
+      "Media",
       "augmented reality",
-      "AR",
-      "VR",
+      "ar",
+      "vr",
       "video",
       "aframe",
       "webxr",
-      "webvr"
+      "webvr",
+      "3d"
     ],
     "handles": [
       {
@@ -38,33 +39,7 @@
         "icon": "link",
         "required": true
       },
-      {
-        "property": "x",
-        "title": "X",
-        "description": "X position of the element in AR.",
-        "inputMethod": "textfield",
-        "type": "bar",
-        "icon": "communication:location-on",
-        "required": true
-      },
-      {
-        "property": "y",
-        "title": "Y",
-        "description": "Y position of the element in AR.",
-        "inputMethod": "textfield",
-        "type": "bar",
-        "icon": "communication:location-on",
-        "required": true
-      },
-      {
-        "property": "z",
-        "title": "Z",
-        "description": "Z position of the element in AR.",
-        "inputMethod": "textfield",
-        "type": "bar",
-        "icon": "communication:location-on",
-        "required": true
-      },
+
       {
         "property": "skyColor",
         "title": "Sky color",
@@ -74,7 +49,35 @@
         "icon": "editor:format-color-fill"
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "x",
+        "title": "X",
+        "description": "X position of the element in AR.",
+        "inputMethod": "number",
+        "type": "bar",
+        "icon": "communication:location-on",
+        "required": true
+      },
+      {
+        "property": "y",
+        "title": "Y",
+        "description": "Y position of the element in AR.",
+        "inputMethod": "number",
+        "type": "bar",
+        "icon": "communication:location-on",
+        "required": true
+      },
+      {
+        "property": "z",
+        "title": "Z",
+        "description": "Z position of the element in AR.",
+        "inputMethod": "number",
+        "type": "bar",
+        "icon": "communication:location-on",
+        "required": true
+      }
+    ]
   },
   "demoSchema": [
     {

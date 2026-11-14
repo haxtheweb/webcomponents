@@ -21,12 +21,7 @@
         "description": "Word used to generate a random character.",
         "inputMethod": "textfield"
       },
-      {
-        "property": "code",
-        "title": "Character code",
-        "description": "Paste a saved character code to recreate that character.",
-        "inputMethod": "textfield"
-      },
+
       {
         "property": "hat",
         "title": "Hat",
@@ -180,50 +175,7 @@
           "future-traveler": "Future Traveler"
         }
       },
-      {
-        "property": "mask",
-        "title": "Mask",
-        "description": "Mask worn over the face or head.",
-        "inputMethod": "select",
-        "options": {
-          "none": "None",
-          "lion": "Lion",
-          "plague": "Plague doctor",
-          "theater": "Theater",
-          "pumpkin": "Pumpkin",
-          "ghost": "Ghost",
-          "mummy": "Mummy",
-          "wrestler": "Wrestling mask",
-          "block-head": "Block head",
-          "web": "Web mask",
-          "werewolf": "Werewolf face",
-          "shadow": "Shadowy face"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Makeup",
-        "description": "Face paint or lipstick.",
-        "inputMethod": "select",
-        "options": {
-          "none": "None",
-          "red-lipstick": "Red lipstick",
-          "pink-lipstick": "Pink lipstick",
-          "berry-lipstick": "Berry lipstick",
-          "clown": "Clown paint",
-          "fangs": "Fangs",
-          "skull": "Skull paint",
-          "zombie": "Zombie paint",
-          "red-nose": "Red nose",
-          "white-beard": "White beard",
-          "domino": "Hero mask",
-          "carrot": "Carrot nose",
-          "bunny": "Bunny nose",
-          "mustache": "Mustache",
-          "monster": "Monster face paint",
-          "round-glasses": "Round glasses"
-        }
-      },
+
       {
         "property": "expression",
         "title": "Expression",
@@ -304,6 +256,78 @@
           "sparkle-flag": "Sparkle Selects (flag)"
         }
       },
+
+      {
+        "property": "pet",
+        "title": "Pet",
+        "description": "Pet beside the character.",
+        "inputMethod": "select",
+        "options": {
+          "none": "None",
+          "cat": "Cat",
+          "dog": "Dog",
+          "bunny": "Bunny",
+          "goldfish": "Goldfish",
+          "slime": "Slime",
+          "squirrel": "Squirrel",
+          "dragon": "Baby dragon",
+          "parrot": "Parrot",
+          "owl": "Owl",
+          "bat": "Bat"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Character code",
+        "description": "Paste a saved character code to recreate that character.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "mask",
+        "title": "Mask",
+        "description": "Mask worn over the face or head.",
+        "inputMethod": "select",
+        "options": {
+          "none": "None",
+          "lion": "Lion",
+          "plague": "Plague doctor",
+          "theater": "Theater",
+          "pumpkin": "Pumpkin",
+          "ghost": "Ghost",
+          "mummy": "Mummy",
+          "wrestler": "Wrestling mask",
+          "block-head": "Block head",
+          "web": "Web mask",
+          "werewolf": "Werewolf face",
+          "shadow": "Shadowy face"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Makeup",
+        "description": "Face paint or lipstick.",
+        "inputMethod": "select",
+        "options": {
+          "none": "None",
+          "red-lipstick": "Red lipstick",
+          "pink-lipstick": "Pink lipstick",
+          "berry-lipstick": "Berry lipstick",
+          "clown": "Clown paint",
+          "fangs": "Fangs",
+          "skull": "Skull paint",
+          "zombie": "Zombie paint",
+          "red-nose": "Red nose",
+          "white-beard": "White beard",
+          "domino": "Hero mask",
+          "carrot": "Carrot nose",
+          "bunny": "Bunny nose",
+          "mustache": "Mustache",
+          "monster": "Monster face paint",
+          "round-glasses": "Round glasses"
+        }
+      },
       {
         "property": "flagText",
         "title": "Flag text",
@@ -332,25 +356,6 @@
           "skates": "Skates",
           "skateboard": "Skateboard",
           "hoverboard": "Hoverboard"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Pet",
-        "description": "Pet beside the character.",
-        "inputMethod": "select",
-        "options": {
-          "none": "None",
-          "cat": "Cat",
-          "dog": "Dog",
-          "bunny": "Bunny",
-          "goldfish": "Goldfish",
-          "slime": "Slime",
-          "squirrel": "Squirrel",
-          "dragon": "Baby dragon",
-          "parrot": "Parrot",
-          "owl": "Owl",
-          "bat": "Bat"
         }
       },
       {

@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Kuvateksti",
         "description": "Kuvan kuvateksti."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Kuvion otsikko",
-        "description": "Kuvion nimikkeen otsikko."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Kuvion kuvaus",
-        "description": "Kuvion nimikkeen kuvaus."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Poista kuvan modaali-ikkuna käytöstä",
         "description": "Estä napsautuksia avaamasta kuvaa kuvatarkastimen valintaikkunassa."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Kuvion otsikko",
+        "description": "Kuvion nimikkeen otsikko."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Kuvion kuvaus",
+        "description": "Kuvion nimikkeen kuvaus."
       }
     ],
     "developer": [

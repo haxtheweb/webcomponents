@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Filteren toestaan",
         "description": "Filteren op kolomwaarden toestaan."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Numerieke opmaak",
-        "description": "Pas numerieke opmaak toe op numerieke kolommen."
-      },
-      {
-        "property": "responsive",
-        "title": "Responsief",
-        "description": "Pas de tabelindeling aan op kleine schermen."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Rubric-modus",
-        "description": "Interpreteer deze tabel als een OER Schema Rubric zodat metadata voor Rubric, RubricScale, RubricCriterion en RubricLevel wordt uitgevoerd."
-      },
-      {
-        "property": "rubricType",
-        "title": "Rubric-type",
-        "description": "Rubric-stijl die wordt uitgevoerd als oer:rubricType (alleen relevant als Rubric-modus aan staat).",
-        "options": {
-          "": "(geen)",
-          "analytic": "Analytisch",
-          "holistic": "Holistisch",
-          "single-point": "Eén punt",
-          "checklist": "Checklist"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Afdrukknop",
         "description": "Voeg een knop toe om alleen de tabel af te drukken."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Numerieke opmaak",
+        "description": "Pas numerieke opmaak toe op numerieke kolommen."
+      },
+      {
+        "property": "responsive",
+        "title": "Responsief",
+        "description": "Pas de tabelindeling aan op kleine schermen."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Rubric-modus",
+        "description": "Interpreteer deze tabel als een OER Schema Rubric zodat metadata voor Rubric, RubricScale, RubricCriterion en RubricLevel wordt uitgevoerd."
+      },
+      {
+        "property": "rubricType",
+        "title": "Rubric-type",
+        "description": "Rubric-stijl die wordt uitgevoerd als oer:rubricType (alleen relevant als Rubric-modus aan staat).",
+        "options": {
+          "": "(geen)",
+          "analytic": "Analytisch",
+          "holistic": "Holistisch",
+          "single-point": "Eén punt",
+          "checklist": "Checklist"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "CSV-gegevens",
         "description": "Maak een tabel van een geüpload CSV-bestand."
       }
-    ]
+    ],
+    "developer": []
   }
 }

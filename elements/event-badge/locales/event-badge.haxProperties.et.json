@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Sündmuse märk",
-    "description": "Sündmuse märgi komponent."
+    "description": "Konverentsistiilis nimesilt foto, nime ja organisatsiooniga."
   },
   "settings": {
     "configure": [

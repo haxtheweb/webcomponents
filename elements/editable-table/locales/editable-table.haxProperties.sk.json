@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Povoliť filter",
         "description": "Povoliť filtrovanie podľa hodnôt stĺpca."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Číselné štýlovanie",
-        "description": "Použiť číselné štýlovanie na číselné stĺpce."
-      },
-      {
-        "property": "responsive",
-        "title": "Responzívne",
-        "description": "Prispôsobiť rozloženie tabuľky na malých obrazovkách."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Režim hodnotiacej škály",
-        "description": "Interpretovať túto tabuľku ako OER Schema Rubric, aby sa generovali metaúdaje Rubric, RubricScale, RubricCriterion a RubricLevel."
-      },
-      {
-        "property": "rubricType",
-        "title": "Typ hodnotiacej škály",
-        "description": "Štýl hodnotiacej škály generovaný ako oer:rubricType (má význam iba pri zapnutom režime hodnotiacej škály).",
-        "options": {
-          "": "(žiadny)",
-          "analytic": "Analytická",
-          "holistic": "Holistická",
-          "single-point": "Jednobodová",
-          "checklist": "Kontrolný zoznam"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Tlačidlo tlače",
         "description": "Pridať tlačidlo na tlač iba tabuľky."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Číselné štýlovanie",
+        "description": "Použiť číselné štýlovanie na číselné stĺpce."
+      },
+      {
+        "property": "responsive",
+        "title": "Responzívne",
+        "description": "Prispôsobiť rozloženie tabuľky na malých obrazovkách."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Režim hodnotiacej škály",
+        "description": "Interpretovať túto tabuľku ako OER Schema Rubric, aby sa generovali metaúdaje Rubric, RubricScale, RubricCriterion a RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "Typ hodnotiacej škály",
+        "description": "Štýl hodnotiacej škály generovaný ako oer:rubricType (má význam iba pri zapnutom režime hodnotiacej škály).",
+        "options": {
+          "": "(žiadny)",
+          "analytic": "Analytická",
+          "holistic": "Holistická",
+          "single-point": "Jednobodová",
+          "checklist": "Kontrolný zoznam"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "Údaje CSV",
         "description": "Vytvoriť tabuľku z nahraného súboru CSV."
       }
-    ]
+    ],
+    "developer": []
   }
 }

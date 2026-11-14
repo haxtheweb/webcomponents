@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Rating Bintang",
-    "description": "Widget tampilan rating atau tombol untuk memberi rating."
+    "description": "Tampilkan penilaian bintang atau biarkan pembaca memilihnya."
   },
   "settings": {
     "configure": [
@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Interaktif",
         "description": "Izinkan interaksi pengguna untuk menetapkan rating."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Mode Skala Rubrik",

@@ -4,17 +4,16 @@
     "description": "Yn chwarae cynnwys rhyngweithiol H5P o ffeil .h5p a uwchlwythwyd, heb angen gweinydd H5P"
   },
   "settings": {
-    "configure": [
-      {
-        "slot": "",
-        "description": "Uwchlwythwch neu gysylltwch ffeil .h5p. Caiff ei datgywasgu yn y porwr; nid oes angen gweinydd H5P.",
-        "title": "Ffeil H5P"
-      }
-    ],
+    "configure": [],
     "advanced": [
       {
         "title": "Cod mewnosod iframe etifeddol",
         "description": "Ar gyfer cynnwys hŷn sy'n mewnosod iframe H5P o wefan arall yn unig. Gadewch yn wag pan fydd ffeil .h5p wedi'i gosod uchod."
+      },
+      {
+        "slot": "",
+        "description": "Uwchlwythwch neu gysylltwch ffeil .h5p. Caiff ei datgywasgu yn y porwr; nid oes angen gweinydd H5P.",
+        "title": "Ffeil H5P"
       }
     ]
   }

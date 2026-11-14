@@ -21,15 +21,6 @@
         "description": "Iturria kontsultatu zen data."
       },
       {
-        "property": "scope",
-        "title": "Esparrua",
-        "description": "Aipatu beharreko elementuaren esparrua.",
-        "options": {
-          "sibling": "Elementu anaia",
-          "parent": "Elementu gurasoa"
-        }
-      },
-      {
         "property": "license",
         "title": "Lizentzia",
         "description": "Aipatutako lanaren lizentzia."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Sortzailea",
         "description": "Aipatutako lanaren sortzailea edo jabea."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Esparrua",
+        "description": "Aipatu beharreko elementuaren esparrua.",
+        "options": {
+          "sibling": "Elementu anaia",
+          "parent": "Elementu gurasoa"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "OER Schema mota",

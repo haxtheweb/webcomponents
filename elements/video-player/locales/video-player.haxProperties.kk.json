@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Постер суреті",
         "description": "Постер суретінің URL мекенжайы."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Мәтіндік жолдар",
         "description": "Бейнеге арналған субтитрлер, сипаттамалар және басқа мәтіндік жолдар."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Басталу уақыты",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Аудиосипаттама жолы",
         "description": "Көрнекі элементтерді баяндайтын аудиосипаттама жолының (MP3 файлы) URL мекенжайы."
+      },
+      {
+        "property": "accentColor",
+        "title": "Екпін түсі",
+        "description": "(ескірген) Ойнатқыштың акцент түсін таңдаңыз."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Тіл",
         "description": "Медианың тілі."
-      },
-      {
-        "property": "accentColor",
-        "title": "Екпін түсі",
-        "description": "(ескірген) Ойнатқыштың акцент түсін таңдаңыз."
       }
     ]
   }

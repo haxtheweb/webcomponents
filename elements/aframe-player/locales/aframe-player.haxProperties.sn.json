@@ -11,6 +11,13 @@
         "description": "URL yefaira iri reAR."
       },
       {
+        "property": "skyColor",
+        "title": "Ruvara rwedenga",
+        "description": "Sarudza ruvara rwedenga muchiitiko."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "Nzvimbo yeX yechinhu muAR."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "Nzvimbo yeZ yechinhu muAR."
-      },
-      {
-        "property": "skyColor",
-        "title": "Ruvara rwedenga",
-        "description": "Sarudza ruvara rwedenga muchiitiko."
       }
     ]
   }

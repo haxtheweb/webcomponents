@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Qhipa qillqa",
         "description": "Yupaypa qhipanpi rikukuq qillqa (kayhina '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Ñawpaq slot",
-        "description": "Yupaypa ñawpaqninpi akllanalla slot ukhunpi kaq."
-      },
-      {
-        "slot": "suffix",
-        "title": "Qhipa slot",
-        "description": "Yupaypa qhipanpi akllanalla slot ukhunpi kaq."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Mana llamp'uyachiy",
         "description": "Llamp'uyachiyta hark'ay, yupay chiqanlla kananpaq."
+      },
+      {
+        "slot": "prefix",
+        "title": "Ñawpaq slot",
+        "description": "Yupaypa ñawpaqninpi akllanalla slot ukhunpi kaq."
+      },
+      {
+        "slot": "suffix",
+        "title": "Qhipa slot",
+        "description": "Yupaypa qhipanpi akllanalla slot ukhunpi kaq."
       }
     ]
   }

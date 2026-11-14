@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Ciambella di avanzamento",
-    "description": "Ciambella di avanzamento"
+    "description": "Un grafico ad anello che mostra l’avanzamento verso un totale."
   },
   "settings": {
     "configure": [
@@ -26,11 +26,6 @@
         "description": "Testo alternativo per l'immagine."
       },
       {
-        "property": "animated",
-        "title": "Animato",
-        "description": "Indica se l'avanzamento è animato al primo caricamento"
-      },
-      {
         "property": "complete",
         "title": "Completato",
         "description": "Un array di valori completati."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "Totale",
         "description": "Totale quando tutti gli elementi sono completati."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "Animato",
+        "description": "Indica se l'avanzamento è animato al primo caricamento"
       },
       {
         "property": "startAngle",

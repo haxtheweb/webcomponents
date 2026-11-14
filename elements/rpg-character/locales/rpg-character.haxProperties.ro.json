@@ -11,11 +11,6 @@
         "description": "Cuvânt folosit pentru generarea unui personaj aleatoriu."
       },
       {
-        "property": "code",
-        "title": "Codul personajului",
-        "description": "Lipește un cod salvat pentru a recrea acel personaj."
-      },
-      {
         "property": "hat",
         "title": "Pălărie",
         "description": "Stilul pălăriei.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Mască",
-        "description": "Mască purtată pe față sau pe cap.",
-        "options": {
-          "none": "Niciuna",
-          "lion": "Leu",
-          "plague": "Doctor de ciumă",
-          "theater": "Teatru",
-          "pumpkin": "Dovleac",
-          "ghost": "Fantomă",
-          "mummy": "Mumie",
-          "wrestler": "Mască de lupte",
-          "block-head": "Cap de cub",
-          "web": "Mască cu pânză de păianjen",
-          "werewolf": "Față de vârcolac",
-          "shadow": "Față întunecată"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Machiaj",
-        "description": "Vopsea de față sau ruj.",
-        "options": {
-          "none": "Niciunul",
-          "red-lipstick": "Ruj roșu",
-          "pink-lipstick": "Ruj roz",
-          "berry-lipstick": "Ruj de culoarea fructelor de pădure",
-          "clown": "Machiaj de clovn",
-          "fangs": "Colți",
-          "skull": "Pictură de craniu",
-          "zombie": "Pictură de zombi",
-          "red-nose": "Nas roșu",
-          "white-beard": "Barbă albă",
-          "domino": "Mască de erou",
-          "carrot": "Nas de morcov",
-          "bunny": "Nas de iepuraș",
-          "mustache": "Mustață",
-          "monster": "Machiaj de monstru",
-          "round-glasses": "Ochelari rotunzi"
-        }
-      },
-      {
         "property": "expression",
         "title": "Expresie",
         "description": "Expresia feței.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Animal de companie",
+        "description": "Animal de companie lângă personaj.",
+        "options": {
+          "none": "Niciunul",
+          "cat": "Pisică",
+          "dog": "Câine",
+          "bunny": "Iepuraș",
+          "goldfish": "Peștișor auriu",
+          "slime": "Mâzgă",
+          "squirrel": "Veveriță",
+          "dragon": "Pui de dragon",
+          "parrot": "Papagal",
+          "owl": "Bufniță",
+          "bat": "Liliac"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Codul personajului",
+        "description": "Lipește un cod salvat pentru a recrea acel personaj."
+      },
+      {
+        "property": "mask",
+        "title": "Mască",
+        "description": "Mască purtată pe față sau pe cap.",
+        "options": {
+          "none": "Niciuna",
+          "lion": "Leu",
+          "plague": "Doctor de ciumă",
+          "theater": "Teatru",
+          "pumpkin": "Dovleac",
+          "ghost": "Fantomă",
+          "mummy": "Mumie",
+          "wrestler": "Mască de lupte",
+          "block-head": "Cap de cub",
+          "web": "Mască cu pânză de păianjen",
+          "werewolf": "Față de vârcolac",
+          "shadow": "Față întunecată"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Machiaj",
+        "description": "Vopsea de față sau ruj.",
+        "options": {
+          "none": "Niciunul",
+          "red-lipstick": "Ruj roșu",
+          "pink-lipstick": "Ruj roz",
+          "berry-lipstick": "Ruj de culoarea fructelor de pădure",
+          "clown": "Machiaj de clovn",
+          "fangs": "Colți",
+          "skull": "Pictură de craniu",
+          "zombie": "Pictură de zombi",
+          "red-nose": "Nas roșu",
+          "white-beard": "Barbă albă",
+          "domino": "Mască de erou",
+          "carrot": "Nas de morcov",
+          "bunny": "Nas de iepuraș",
+          "mustache": "Mustață",
+          "monster": "Machiaj de monstru",
+          "round-glasses": "Ochelari rotunzi"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Text pe steag",
         "description": "Până la 4 litere afișate pe steag."
@@ -310,24 +330,6 @@
           "skates": "Patine",
           "skateboard": "Skateboard",
           "hoverboard": "Placă plutitoare"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Animal de companie",
-        "description": "Animal de companie lângă personaj.",
-        "options": {
-          "none": "Niciunul",
-          "cat": "Pisică",
-          "dog": "Câine",
-          "bunny": "Iepuraș",
-          "goldfish": "Peștișor auriu",
-          "slime": "Mâzgă",
-          "squirrel": "Veveriță",
-          "dragon": "Pui de dragon",
-          "parrot": "Papagal",
-          "owl": "Bufniță",
-          "bat": "Liliac"
         }
       },
       {

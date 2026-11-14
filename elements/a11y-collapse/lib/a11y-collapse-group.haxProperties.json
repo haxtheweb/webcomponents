@@ -3,9 +3,9 @@
   "canEditSource": true,
   "type": "grid",
   "gizmo": {
-    "title": "Expand Collapse Group",
-    "description": "A group of expand collapse elements.",
-    "icon": "icons:view-day",
+    "title": "Collapse group",
+    "description": "A group of collapsible containers.",
+    "icon": "icons:view-agenda",
     "color": "grey",
     "tags": ["Layout"]
   },

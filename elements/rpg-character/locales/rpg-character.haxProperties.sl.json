@@ -11,11 +11,6 @@
         "description": "Beseda, uporabljena za ustvarjanje naključnega lika."
       },
       {
-        "property": "code",
-        "title": "Koda lika",
-        "description": "Prilepite shranjeno kodo, da znova ustvarite ta lik."
-      },
-      {
         "property": "hat",
         "title": "Klobuk",
         "description": "Slog klobuka.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Maska",
-        "description": "Maska na obrazu ali glavi.",
-        "options": {
-          "none": "Brez",
-          "lion": "Lev",
-          "plague": "Kužni zdravnik",
-          "theater": "Gledališka",
-          "pumpkin": "Buča",
-          "ghost": "Duh",
-          "mummy": "Mumija",
-          "wrestler": "Rokoborska maska",
-          "block-head": "Kockasta glava",
-          "web": "Maska s pajčevino",
-          "werewolf": "Obraz volkodlaka",
-          "shadow": "Senčni obraz"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Ličila",
-        "description": "Barva za obraz ali šminka.",
-        "options": {
-          "none": "Brez",
-          "red-lipstick": "Rdeča šminka",
-          "pink-lipstick": "Roza šminka",
-          "berry-lipstick": "Jagodna šminka",
-          "clown": "Klovnovo ličenje",
-          "fangs": "Podočnika",
-          "skull": "Barva lobanje",
-          "zombie": "Zombijeva barva",
-          "red-nose": "Rdeč nos",
-          "white-beard": "Bela brada",
-          "domino": "Junaška maska",
-          "carrot": "Korenast nos",
-          "bunny": "Zajčji nos",
-          "mustache": "Brki",
-          "monster": "Pošastna poslikava obraza",
-          "round-glasses": "Okrogla očala"
-        }
-      },
-      {
         "property": "expression",
         "title": "Izraz",
         "description": "Izraz obraza.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Hišni ljubljenček",
+        "description": "Ljubljenček ob liku.",
+        "options": {
+          "none": "Brez",
+          "cat": "Mačka",
+          "dog": "Pes",
+          "bunny": "Zajček",
+          "goldfish": "Zlata ribica",
+          "slime": "Sluz",
+          "squirrel": "Veverica",
+          "dragon": "Zmajček",
+          "parrot": "Papiga",
+          "owl": "Sova",
+          "bat": "Netopir"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Koda lika",
+        "description": "Prilepite shranjeno kodo, da znova ustvarite ta lik."
+      },
+      {
+        "property": "mask",
+        "title": "Maska",
+        "description": "Maska na obrazu ali glavi.",
+        "options": {
+          "none": "Brez",
+          "lion": "Lev",
+          "plague": "Kužni zdravnik",
+          "theater": "Gledališka",
+          "pumpkin": "Buča",
+          "ghost": "Duh",
+          "mummy": "Mumija",
+          "wrestler": "Rokoborska maska",
+          "block-head": "Kockasta glava",
+          "web": "Maska s pajčevino",
+          "werewolf": "Obraz volkodlaka",
+          "shadow": "Senčni obraz"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Ličila",
+        "description": "Barva za obraz ali šminka.",
+        "options": {
+          "none": "Brez",
+          "red-lipstick": "Rdeča šminka",
+          "pink-lipstick": "Roza šminka",
+          "berry-lipstick": "Jagodna šminka",
+          "clown": "Klovnovo ličenje",
+          "fangs": "Podočnika",
+          "skull": "Barva lobanje",
+          "zombie": "Zombijeva barva",
+          "red-nose": "Rdeč nos",
+          "white-beard": "Bela brada",
+          "domino": "Junaška maska",
+          "carrot": "Korenast nos",
+          "bunny": "Zajčji nos",
+          "mustache": "Brki",
+          "monster": "Pošastna poslikava obraza",
+          "round-glasses": "Okrogla očala"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Besedilo zastave",
         "description": "Do 4 črke, prikazane na zastavi."
@@ -310,24 +330,6 @@
           "skates": "Drsalke",
           "skateboard": "Rolka",
           "hoverboard": "Lebdeča deska"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Hišni ljubljenček",
-        "description": "Ljubljenček ob liku.",
-        "options": {
-          "none": "Brez",
-          "cat": "Mačka",
-          "dog": "Pes",
-          "bunny": "Zajček",
-          "goldfish": "Zlata ribica",
-          "slime": "Sluz",
-          "squirrel": "Veverica",
-          "dragon": "Zmajček",
-          "parrot": "Papiga",
-          "owl": "Sova",
-          "bat": "Netopir"
         }
       },
       {

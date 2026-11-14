@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Poszterkép",
         "description": "A poszterkép URL-je."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Szövegsávok",
         "description": "Feliratok, leírások és egyéb szövegsávok a videóhoz."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Kezdési idő",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Hangalámondásos leírás sávja",
         "description": "Egy hangalámondásos leírás sávjának (MP3-fájl) URL-je, amely a vizuális elemeket narrálja."
+      },
+      {
+        "property": "accentColor",
+        "title": "Kiemelőszín",
+        "description": "(elavult) Válaszd ki a lejátszó kiemelőszínét."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Nyelv",
         "description": "A média nyelve."
-      },
-      {
-        "property": "accentColor",
-        "title": "Kiemelőszín",
-        "description": "(elavult) Válaszd ki a lejátszó kiemelőszínét."
       }
     ]
   }

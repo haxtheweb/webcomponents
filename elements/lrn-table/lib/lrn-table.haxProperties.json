@@ -4,11 +4,11 @@
   "canEditSource": true,
   "gizmo": {
     "title": "CSV table",
-    "description": "This can generate a table from a CSV file no matter where it is located.",
-    "icon": "editor:border-all",
+    "description": "Show a CSV file as an accessible table.",
+    "icon": "hax:file-csv",
     "color": "green",
     "tags": [
-      "Instructional",
+      "Content",
       "presentation",
       "table",
       "data",
@@ -57,12 +57,11 @@
   "demoSchema": [
     {
       "tag": "lrn-table",
-      "content": "",
       "properties": {
-        "csvFile": "https://data.cityofnewyork.us/api/views/83z6-smyr/rows.csv?accessType=DOWNLOAD",
-        "description": "Public records showing recipients of NYC Capital Grant Awards in 2016.",
-        "title": "NYC Capital Grant Awards 2016"
-      }
+        "title": "Table title",
+        "description": "Describe what the data shows."
+      },
+      "content": ""
     }
   ]
 }

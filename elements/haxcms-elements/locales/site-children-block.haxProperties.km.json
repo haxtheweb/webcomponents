@@ -4,7 +4,7 @@
     "description": "ប្លុកថាមវន្តដើម្បីបង្ហាញកូននៃទំព័របច្ចុប្បន្ន"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "វិធីសាស្ត្រថាមវន្ត",
@@ -14,7 +14,9 @@
           "parent": "កូនរបស់មេ",
           "ancestor": "កូនទាំងអស់ពីបុព្វបុរសខ្ពស់បំផុត"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "កម្រិតចាប់ផ្ដើម"

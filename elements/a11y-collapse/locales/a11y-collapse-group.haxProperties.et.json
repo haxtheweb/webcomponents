@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "Laiendatavate ja ahendatavate rühm",
-    "description": "Laiendatavate ja ahendatavate elementide rühm."
+    "title": "Ahendatav rühm",
+    "description": "Ahendatavate konteinerite rühm."
   },
   "settings": {
     "configure": [

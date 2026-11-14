@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "Link HAX",
-    "description": "Um link para um recurso específico do site em que você está trabalhando."
+    "title": "Link da página",
+    "description": "Um link para uma página do site em que você está trabalhando."
   },
   "settings": {
     "configure": [

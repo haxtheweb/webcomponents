@@ -14,28 +14,6 @@
         "property": "statement",
         "title": "Apgalvojums",
         "description": "Apgalvojums, kas tiks pārveidots par vārdu atzīmēšanas uzdevumu."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "Vērtēšanas formāts",
-        "description": "OER Schema: šī vērtējuma formāts (piem., punkti, burts, procenti, izpilde)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Mācību mērķis",
-        "description": "OER Schema: ar šo vērtējumu saistītais mācību mērķis."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kurss",
-        "description": "OER Schema: kurss, kuram paredzēts šis vērtējums."
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Testa nosaukums",
-        "description": "Testa nosaukums, ko nodod xAPI vidēm šī elementa identificēšanai"
       }
     ],
     "advanced": [
@@ -46,6 +24,28 @@
       {
         "title": "Sākt sakļautu",
         "description": "Ja sakļaujams, sākt kā aizvērtu rindu, kurā redzams tikai jautājums un tā statuss."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Vērtēšanas formāts",
+        "description": "OER Schema: šī vērtējuma formāts (piem., punkti, burts, procenti, izpilde)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Mācību mērķis",
+        "description": "OER Schema: ar šo vērtējumu saistītais mācību mērķis."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Testa nosaukums",
+        "description": "Testa nosaukums, ko nodod xAPI vidēm šī elementa identificēšanai"
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurss",
+        "description": "OER Schema: kurss, kuram paredzēts šis vērtējums."
       }
     ]
   }

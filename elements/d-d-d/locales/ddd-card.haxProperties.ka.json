@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "ისრის გარეშე",
         "description": "ღილაკის ისრის დამალვა."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "ბმული: target",
@@ -54,7 +52,9 @@
           "_top": "ზედა ფანჯარა - _top",
           "_parent": "მშობელი ფანჯარა - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "ბმული: rel",

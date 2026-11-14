@@ -4,7 +4,7 @@
     "description": "Dinamika bloko por montri idojn de la nuna paĝo"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "Dinamika metodo",
@@ -14,7 +14,9 @@
           "parent": "Idoj de la gepatro",
           "ancestor": "Ĉiuj idoj de la plej alta praulo"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "Komenca nivelo"

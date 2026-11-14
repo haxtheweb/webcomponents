@@ -38,21 +38,6 @@
         "slot": "",
         "title": "متن",
         "description": "وہ متن جس میں سیکھنے والے کام کرتے ہیں۔ کوئی بھی HTML: سرخیاں، پیراگراف، فہرستیں اور اشکال۔"
-      },
-      {
-        "property": "gradingFormat",
-        "title": "درجہ بندی کا فارمیٹ",
-        "description": "OER Schema: اس جانچ کا درجہ بندی فارمیٹ (مثلاً پوائنٹس، حرفی گریڈ، فیصد، تکمیل)۔"
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "تعلیمی مقصد",
-        "description": "OER Schema: اس جانچ سے وابستہ تعلیمی مقصد۔"
-      },
-      {
-        "property": "forCourse",
-        "title": "کورس",
-        "description": "OER Schema: وہ کورس جس کے لیے یہ جانچ ہے۔"
       }
     ],
     "advanced": [
@@ -70,6 +55,16 @@
         "property": "collapsed",
         "title": "سمٹی ہوئی حالت میں شروع کریں",
         "description": "سمیٹنے کے قابل ہونے پر، ایک بند قطار کے طور پر شروع کریں جو صرف سوال اور اس کی حالت دکھائے۔"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "درجہ بندی کا فارمیٹ",
+        "description": "OER Schema: اس جانچ کا درجہ بندی فارمیٹ (مثلاً پوائنٹس، حرفی گریڈ، فیصد، تکمیل)۔"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "تعلیمی مقصد",
+        "description": "OER Schema: اس جانچ سے وابستہ تعلیمی مقصد۔"
       }
     ],
     "developer": [
@@ -77,6 +72,11 @@
         "property": "quizName",
         "title": "کوئز کا نام",
         "description": "xAPI پر مبنی ماحول میں اس آئٹم کی شناخت کے لیے دیا جانے والا کوئز کا نام"
+      },
+      {
+        "property": "forCourse",
+        "title": "کورس",
+        "description": "OER Schema: وہ کورس جس کے لیے یہ جانچ ہے۔"
       }
     ]
   }

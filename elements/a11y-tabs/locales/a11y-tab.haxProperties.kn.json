@@ -10,10 +10,6 @@
         "title": "ಟ್ಯಾಬ್ ಐಕಾನ್"
       },
       {
-        "property": "disabled",
-        "title": "ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ"
-      },
-      {
         "property": "label",
         "title": "ಟ್ಯಾಬ್ ಲೇಬಲ್"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "ಅನನ್ಯ ID"
-      },
-      {
         "property": "flag",
         "title": "ಐಚ್ಛಿಕ ಫ್ಲ್ಯಾಗ್ ಪಠ್ಯ"
       },
       {
         "property": "flagIcon",
         "title": "ಐಚ್ಛಿಕ ಫ್ಲ್ಯಾಗ್ ಐಕಾನ್"
+      },
+      {
+        "property": "disabled",
+        "title": "ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "ಅನನ್ಯ ID"
       }
     ]
   }

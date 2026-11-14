@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Danh sách người đóng góp GitHub",
-    "description": "Hiển thị dưới dạng nhân vật RPG bằng GitHub API."
+    "description": "Liệt kê những người đóng góp của kho mã dưới dạng nhân vật RPG."
   },
   "settings": {
     "configure": [

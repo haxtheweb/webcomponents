@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "Mga Button",
         "description": "Grupo ng button na ipinapakita sa ibaba ng teksto."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "Teksto ng anchor",
         "description": "Label ng anchor na ipinapakita sa nabigasyon."
       }
-    ]
+    ],
+    "developer": []
   }
 }

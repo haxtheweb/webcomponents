@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "Ein Block mit Markdown-Inhalt, direkt oder extern geladen"
+    "description": "Markdown-Inhalt, direkt geschrieben oder aus einer Datei geladen."
   },
   "settings": {
     "configure": [

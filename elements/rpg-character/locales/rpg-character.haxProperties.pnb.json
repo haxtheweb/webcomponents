@@ -11,11 +11,6 @@
         "description": "بے ترتیب کردار بناوݨ لئی ورتیا جاوݨ والا لفظ۔"
       },
       {
-        "property": "code",
-        "title": "کردار کوڈ",
-        "description": "اوس کردار نوں دوبارہ بنان لئی سانبھیا ہویا کوڈ پیسٹ کرو۔"
-      },
-      {
         "property": "hat",
         "title": "ٹوپی",
         "description": "ٹوپی دا سٹائل۔",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "ماسک",
-        "description": "منہ یا سر اتے پایا ماسک۔",
-        "options": {
-          "none": "کوئی نہیں",
-          "lion": "شیر",
-          "plague": "طاعون ڈاکٹر",
-          "theater": "تھیٹر",
-          "pumpkin": "کدو",
-          "ghost": "بھوت",
-          "mummy": "ممی",
-          "wrestler": "کشتی دا نقاب",
-          "block-head": "بلاک سر",
-          "web": "جال والا نقاب",
-          "werewolf": "بگھیاڑ بندے دا چہرہ",
-          "shadow": "پرچھاویں والا چہرہ"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "میک اپ",
-        "description": "چہرے دا رنگ یا لپ سٹک۔",
-        "options": {
-          "none": "کوئی نہیں",
-          "red-lipstick": "لال لپ سٹک",
-          "pink-lipstick": "گلابی لپ سٹک",
-          "berry-lipstick": "بیری لپ سٹک",
-          "clown": "مسخرے دا رنگ",
-          "fangs": "نوکیلے دند",
-          "skull": "کھوپڑی دا رنگ",
-          "zombie": "زومبی رنگ",
-          "red-nose": "لال ناک",
-          "white-beard": "چٹی داڑھی",
-          "domino": "ہیرو ماسک",
-          "carrot": "گاجر ورگی ناک",
-          "bunny": "خرگوش دی ناک",
-          "mustache": "مچھاں",
-          "monster": "دیو والا چہرہ رنگ",
-          "round-glasses": "گول عینکاں"
-        }
-      },
-      {
         "property": "expression",
         "title": "تاثر",
         "description": "چہرے دا تاثر۔",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "پالتو جانور",
+        "description": "کردار دے نال پالتو جانور۔",
+        "options": {
+          "none": "کوئی نہیں",
+          "cat": "بلی",
+          "dog": "کتا",
+          "bunny": "خرگوش",
+          "goldfish": "سنہری مچھی",
+          "slime": "سلائم",
+          "squirrel": "گلہری",
+          "dragon": "نکا ڈریگن",
+          "parrot": "طوطا",
+          "owl": "الو",
+          "bat": "چمگادڑ"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "کردار کوڈ",
+        "description": "اوس کردار نوں دوبارہ بنان لئی سانبھیا ہویا کوڈ پیسٹ کرو۔"
+      },
+      {
+        "property": "mask",
+        "title": "ماسک",
+        "description": "منہ یا سر اتے پایا ماسک۔",
+        "options": {
+          "none": "کوئی نہیں",
+          "lion": "شیر",
+          "plague": "طاعون ڈاکٹر",
+          "theater": "تھیٹر",
+          "pumpkin": "کدو",
+          "ghost": "بھوت",
+          "mummy": "ممی",
+          "wrestler": "کشتی دا نقاب",
+          "block-head": "بلاک سر",
+          "web": "جال والا نقاب",
+          "werewolf": "بگھیاڑ بندے دا چہرہ",
+          "shadow": "پرچھاویں والا چہرہ"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "میک اپ",
+        "description": "چہرے دا رنگ یا لپ سٹک۔",
+        "options": {
+          "none": "کوئی نہیں",
+          "red-lipstick": "لال لپ سٹک",
+          "pink-lipstick": "گلابی لپ سٹک",
+          "berry-lipstick": "بیری لپ سٹک",
+          "clown": "مسخرے دا رنگ",
+          "fangs": "نوکیلے دند",
+          "skull": "کھوپڑی دا رنگ",
+          "zombie": "زومبی رنگ",
+          "red-nose": "لال ناک",
+          "white-beard": "چٹی داڑھی",
+          "domino": "ہیرو ماسک",
+          "carrot": "گاجر ورگی ناک",
+          "bunny": "خرگوش دی ناک",
+          "mustache": "مچھاں",
+          "monster": "دیو والا چہرہ رنگ",
+          "round-glasses": "گول عینکاں"
+        }
+      },
+      {
         "property": "flagText",
         "title": "جھنڈے دا متن",
         "description": "جھنڈے اتے دکھائے جان والے ودھ توں ودھ 4 حرف۔"
@@ -310,24 +330,6 @@
           "skates": "سکیٹس",
           "skateboard": "سکیٹ بورڈ",
           "hoverboard": "ہوائی تختہ"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "پالتو جانور",
-        "description": "کردار دے نال پالتو جانور۔",
-        "options": {
-          "none": "کوئی نہیں",
-          "cat": "بلی",
-          "dog": "کتا",
-          "bunny": "خرگوش",
-          "goldfish": "سنہری مچھی",
-          "slime": "سلائم",
-          "squirrel": "گلہری",
-          "dragon": "نکا ڈریگن",
-          "parrot": "طوطا",
-          "owl": "الو",
-          "bat": "چمگادڑ"
         }
       },
       {

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Jednostavna slika",
-    "description": "Obrađujte slike pomoću jednostavnih parametara."
+    "description": "Slika kojoj se jednostavnim postavkama mijenja veličina, obrezuje se ili rotira."
   },
   "settings": {
     "configure": [
@@ -26,7 +26,8 @@
         "description": "Korisno za čitače ekrana i bolji SEO."
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "Kvalitet",

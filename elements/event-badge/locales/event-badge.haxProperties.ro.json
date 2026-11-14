@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Ecuson de eveniment",
-    "description": "Componentă ecuson de eveniment."
+    "description": "Un ecuson în stil de conferință cu fotografie, nume și organizație."
   },
   "settings": {
     "configure": [

@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "ອະນຸຍາດໃຫ້ກັ່ນຕອງ",
         "description": "ອະນຸຍາດໃຫ້ກັ່ນຕອງຕາມຄ່າໃນຖັນ."
-      },
-      {
-        "property": "numericStyles",
-        "title": "ຮູບແບບຕົວເລກ",
-        "description": "ນຳໃຊ້ຮູບແບບຕົວເລກກັບຖັນທີ່ເປັນຕົວເລກ."
-      },
-      {
-        "property": "responsive",
-        "title": "ຕອບສະໜອງຂະໜາດໜ້າຈໍ",
-        "description": "ປັບໂຄງຮ່າງຕາຕະລາງໃນໜ້າຈໍນ້ອຍ."
-      },
-      {
-        "property": "rubricMode",
-        "title": "ໂໝດເກນການໃຫ້ຄະແນນ",
-        "description": "ຕີຄວາມໝາຍຕາຕະລາງນີ້ເປັນ OER Schema Rubric ເພື່ອໃຫ້ສົ່ງອອກ metadata ຂອງ Rubric, RubricScale, RubricCriterion ແລະ RubricLevel."
-      },
-      {
-        "property": "rubricType",
-        "title": "ປະເພດເກນການໃຫ້ຄະແນນ",
-        "description": "ຮູບແບບເກນການໃຫ້ຄະແນນທີ່ສົ່ງອອກເປັນ oer:rubricType (ມີຄວາມໝາຍສະເພາະເມື່ອເປີດໂໝດເກນການໃຫ້ຄະແນນ).",
-        "options": {
-          "": "(ບໍ່ມີ)",
-          "analytic": "ແບບວິເຄາະ",
-          "holistic": "ແບບອົງລວມ",
-          "single-point": "ແບບຈຸດດຽວ",
-          "checklist": "ລາຍການກວດສອບ"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "ປຸ່ມພິມ",
         "description": "ເພີ່ມປຸ່ມເພື່ອພິມສະເພາະຕາຕະລາງ."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "ຮູບແບບຕົວເລກ",
+        "description": "ນຳໃຊ້ຮູບແບບຕົວເລກກັບຖັນທີ່ເປັນຕົວເລກ."
+      },
+      {
+        "property": "responsive",
+        "title": "ຕອບສະໜອງຂະໜາດໜ້າຈໍ",
+        "description": "ປັບໂຄງຮ່າງຕາຕະລາງໃນໜ້າຈໍນ້ອຍ."
+      },
+      {
+        "property": "rubricMode",
+        "title": "ໂໝດເກນການໃຫ້ຄະແນນ",
+        "description": "ຕີຄວາມໝາຍຕາຕະລາງນີ້ເປັນ OER Schema Rubric ເພື່ອໃຫ້ສົ່ງອອກ metadata ຂອງ Rubric, RubricScale, RubricCriterion ແລະ RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "ປະເພດເກນການໃຫ້ຄະແນນ",
+        "description": "ຮູບແບບເກນການໃຫ້ຄະແນນທີ່ສົ່ງອອກເປັນ oer:rubricType (ມີຄວາມໝາຍສະເພາະເມື່ອເປີດໂໝດເກນການໃຫ້ຄະແນນ).",
+        "options": {
+          "": "(ບໍ່ມີ)",
+          "analytic": "ແບບວິເຄາະ",
+          "holistic": "ແບບອົງລວມ",
+          "single-point": "ແບບຈຸດດຽວ",
+          "checklist": "ລາຍການກວດສອບ"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "ຂໍ້ມູນ CSV",
         "description": "ສ້າງຕາຕະລາງຈາກໄຟລ໌ CSV ທີ່ອັບໂຫຼດ."
       }
-    ]
+    ],
+    "developer": []
   }
 }

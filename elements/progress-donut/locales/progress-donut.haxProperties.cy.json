@@ -26,11 +26,6 @@
         "description": "Testun amgen ar gyfer y ddelwedd."
       },
       {
-        "property": "animated",
-        "title": "Animeiddiedig",
-        "description": "A yw'r cynnydd yn animeiddio wrth lwytho gyntaf"
-      },
-      {
         "property": "complete",
         "title": "Wedi'i gwblhau",
         "description": "Arae o werthoedd wedi'u cwblhau."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "Cyfanswm",
         "description": "Cyfanswm pan fydd pob eitem wedi'i chwblhau."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "Animeiddiedig",
+        "description": "A yw'r cynnydd yn animeiddio wrth lwytho gyntaf"
       },
       {
         "property": "startAngle",

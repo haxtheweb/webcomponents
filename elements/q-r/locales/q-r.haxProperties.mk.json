@@ -14,16 +14,6 @@
         "property": "title",
         "title": "Алтернативен наслов",
         "description": "Алтернативен наслов поврзан со изворот на QR-кодот."
-      },
-      {
-        "property": "modulesize",
-        "title": "Големина",
-        "description": "Големина на QR-кодот."
-      },
-      {
-        "property": "margin",
-        "title": "Маргина",
-        "description": "Обвивка околу кодот."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "Големина",
+        "description": "Големина на QR-кодот."
+      },
+      {
+        "property": "margin",
+        "title": "Маргина",
+        "description": "Обвивка околу кодот."
       }
     ]
   }

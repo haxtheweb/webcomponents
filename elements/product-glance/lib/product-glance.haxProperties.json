@@ -6,7 +6,7 @@
     "description": "Quick product overview block.",
     "icon": "communication:business",
     "color": "blue",
-    "tags": ["Other", "product", "marketing", "overview", "card"],
+    "tags": ["Layout", "product", "marketing", "overview", "card"],
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team"

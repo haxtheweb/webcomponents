@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "Pogas",
         "description": "Zem teksta rādītā pogu grupa."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "Enkura teksts",
         "description": "Navigācijā rādītā enkura etiķete."
       }
-    ]
+    ],
+    "developer": []
   }
 }

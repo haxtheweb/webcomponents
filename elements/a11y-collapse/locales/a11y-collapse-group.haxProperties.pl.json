@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "Grupa rozwijanych sekcji",
-    "description": "Grupa elementów do rozwijania i zwijania."
+    "title": "Grupa zwijana",
+    "description": "Grupa zwijanych kontenerów."
   },
   "settings": {
     "configure": [

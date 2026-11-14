@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "لاحقہ متن",
         "description": "عدد کے بعد دکھایا جانے والا متن (مثلاً '%')۔"
-      },
-      {
-        "slot": "prefix",
-        "title": "سابقہ سلاٹ",
-        "description": "عدد سے پہلے اختیاری سلاٹ مواد۔"
-      },
-      {
-        "slot": "suffix",
-        "title": "لاحقہ سلاٹ",
-        "description": "عدد کے بعد اختیاری سلاٹ مواد۔"
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "ایزنگ کے بغیر",
         "description": "ایزنگ غیر فعال کریں تاکہ گنتی یکساں رفتار سے ہو۔"
+      },
+      {
+        "slot": "prefix",
+        "title": "سابقہ سلاٹ",
+        "description": "عدد سے پہلے اختیاری سلاٹ مواد۔"
+      },
+      {
+        "slot": "suffix",
+        "title": "لاحقہ سلاٹ",
+        "description": "عدد کے بعد اختیاری سلاٹ مواد۔"
       }
     ]
   }

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Simpleng Larawan",
-    "description": "Baguhin ang mga larawan gamit ang mga simpleng parameter."
+    "description": "Isang larawang binago ang laki, na-crop o inikot gamit ang mga simpleng setting."
   },
   "settings": {
     "configure": [
@@ -26,7 +26,8 @@
         "description": "Kapaki-pakinabang para sa mga screen reader at mas mahusay na SEO."
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "Kalidad",

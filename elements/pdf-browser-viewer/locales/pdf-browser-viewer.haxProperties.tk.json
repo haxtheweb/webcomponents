@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Goldanmaýar habary",
-        "description": "Brauzer PDF faýllaryny görkezip bilmeýän wagty habar."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Goldanmaýar baglanyşyk habary",
-        "description": "Brauzer PDF faýllaryny görkezip bilmeýän wagty baglanyşyk teksti."
-      },
-      {
         "property": "width",
         "title": "Giňlik",
         "description": "PDF görkezijisiniň giňligi."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Beýiklik",
         "description": "PDF görkezijisiniň beýikligi."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Goldanmaýar habary",
+        "description": "Brauzer PDF faýllaryny görkezip bilmeýän wagty habar."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Goldanmaýar baglanyşyk habary",
+        "description": "Brauzer PDF faýllaryny görkezip bilmeýän wagty baglanyşyk teksti."
       }
     ]
   }

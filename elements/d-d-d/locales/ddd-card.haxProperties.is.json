@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Engin ör",
         "description": "Fela ör hnappsins."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Tengill: markmið",
@@ -54,7 +52,9 @@
           "_top": "Efsti gluggi - _top",
           "_parent": "Yfirgluggi - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Tengill: rel",

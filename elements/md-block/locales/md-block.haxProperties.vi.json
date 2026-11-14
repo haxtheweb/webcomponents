@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "Khối nội dung markdown nhập trực tiếp hoặc tải từ xa"
+    "description": "Nội dung Markdown, viết trực tiếp hoặc tải từ tệp."
   },
   "settings": {
     "configure": [

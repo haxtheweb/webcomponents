@@ -26,11 +26,6 @@
         "description": "Umbhalo ongenye womfanekiso."
       },
       {
-        "property": "animated",
-        "title": "Oshukumayo",
-        "description": "Nokuba inkqubela iyashukuma na xa kulayishwa okokuqala"
-      },
-      {
         "property": "complete",
         "title": "Igqityiwe",
         "description": "Uluhlu lwamaxabiso agqityiweyo."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "Iyonke",
         "description": "Iyonke xa zonke izinto zigqityiwe."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "Oshukumayo",
+        "description": "Nokuba inkqubela iyashukuma na xa kulayishwa okokuqala"
       },
       {
         "property": "startAngle",

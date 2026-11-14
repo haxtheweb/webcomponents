@@ -38,21 +38,6 @@
         "slot": "",
         "title": "Унших текст",
         "description": "Суралцагчдын ажиллах текст. Дурын HTML: гарчиг, догол мөр, жагсаалт, зураг."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "Дүгнэх хэлбэр",
-        "description": "OER Schema: энэ үнэлгээний дүгнэх хэлбэр (жишээ нь оноо, үсэг, хувь, гүйцэтгэл)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Сургалтын зорилт",
-        "description": "OER Schema: энэ үнэлгээтэй холбоотой сургалтын зорилт."
-      },
-      {
-        "property": "forCourse",
-        "title": "Хичээл",
-        "description": "OER Schema: энэ үнэлгээг зориулсан хичээл."
       }
     ],
     "advanced": [
@@ -70,6 +55,16 @@
         "property": "collapsed",
         "title": "Эвхсэн байдлаар эхлэх",
         "description": "Эвхэгдэх үед зөвхөн асуулт болон түүний төлөвийг харуулсан хаалттай мөр байдлаар эхэлнэ."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Дүгнэх хэлбэр",
+        "description": "OER Schema: энэ үнэлгээний дүгнэх хэлбэр (жишээ нь оноо, үсэг, хувь, гүйцэтгэл)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Сургалтын зорилт",
+        "description": "OER Schema: энэ үнэлгээтэй холбоотой сургалтын зорилт."
       }
     ],
     "developer": [
@@ -77,6 +72,11 @@
         "property": "quizName",
         "title": "Шалгалтын нэр",
         "description": "xAPI-д суурилсан орчинд энэ зүйлийг танихад ашиглахаар дамжуулах шалгалтын нэр"
+      },
+      {
+        "property": "forCourse",
+        "title": "Хичээл",
+        "description": "OER Schema: энэ үнэлгээг зориулсан хичээл."
       }
     ]
   }

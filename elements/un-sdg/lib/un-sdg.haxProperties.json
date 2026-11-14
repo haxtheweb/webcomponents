@@ -6,11 +6,11 @@
   "hideDefaultSettings": true,
   "designSystem": false,
   "gizmo": {
-    "title": "UN SDG",
+    "title": "UN Sustainable Development Goal",
     "description": "United Nations Sustainable Development Goal.",
-    "icon": "hax:apps",
+    "icon": "hax:globe",
     "color": "purple",
-    "tags": ["Other", "sustainable"],
+    "tags": ["Content", "sdg", "united nations", "sustainable", "goal"],
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team"

@@ -10,10 +10,6 @@
         "title": "Кыстыргыч иконкасы"
       },
       {
-        "property": "disabled",
-        "title": "Сүндерелгән"
-      },
-      {
         "property": "label",
         "title": "Кыстыргыч исеме"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "Уникаль ID"
-      },
-      {
         "property": "flag",
         "title": "Ихтыяри билге тексты"
       },
       {
         "property": "flagIcon",
         "title": "Ихтыяри билге иконкасы"
+      },
+      {
+        "property": "disabled",
+        "title": "Сүндерелгән"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "Уникаль ID"
       }
     ]
   }

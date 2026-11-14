@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "بٽڻ",
         "description": "متن هيٺان ڏيکاريل بٽڻن جو گروپ."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "اينڪر متن",
         "description": "نيويگيشن ۾ ڏيکاريل اينڪر ليبل."
       }
-    ]
+    ],
+    "developer": []
   }
 }

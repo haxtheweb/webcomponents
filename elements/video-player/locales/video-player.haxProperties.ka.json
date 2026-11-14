@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "პოსტერის სურათი",
         "description": "პოსტერის სურათის URL."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "ტექსტური ტრეკები",
         "description": "ვიდეოს დახურული ტიტრები, სუბტიტრები, აღწერები და სხვა ტექსტური ტრეკები."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "დაწყების დრო",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "აუდიოაღწერის ტრეკი",
         "description": "აუდიოაღწერის ტრეკის (MP3 ფაილი) URL, რომელიც ვიზუალურ ელემენტებს ახმოვანებს."
+      },
+      {
+        "property": "accentColor",
+        "title": "აქცენტის ფერი",
+        "description": "(მოძველებული) აირჩიეთ პლეერის აქცენტის ფერი."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "ენა",
         "description": "მედიის ენა."
-      },
-      {
-        "property": "accentColor",
-        "title": "აქცენტის ფერი",
-        "description": "(მოძველებული) აირჩიეთ პლეერის აქცენტის ფერი."
       }
     ]
   }

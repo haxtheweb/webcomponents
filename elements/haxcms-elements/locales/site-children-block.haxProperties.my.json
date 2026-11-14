@@ -4,7 +4,7 @@
     "description": "လက်ရှိ စာမျက်နှာ၏ လက်အောက်ခံကို ပြသော dynamic ဘလော့ခ်"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "Dynamic နည်းလမ်း",
@@ -14,7 +14,9 @@
           "parent": "မိခင်၏ လက်အောက်ခံများ",
           "ancestor": "အမြင့်ဆုံး ဘိုးဘေးမှ လက်အောက်ခံအားလုံး"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "စတင်အဆင့်"

@@ -21,15 +21,6 @@
         "description": "Tanggal sumber diakses."
       },
       {
-        "property": "scope",
-        "title": "Cakupan",
-        "description": "Cakupan elemen sing dikutip.",
-        "options": {
-          "sibling": "Elemen sedulur",
-          "parent": "Elemen induk"
-        }
-      },
-      {
         "property": "license",
         "title": "Lisènsi",
         "description": "Lisensi kanggo karya sing dikutip."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Pangripta",
         "description": "Pangripta utawa pemilik karya sing dikutip."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Cakupan",
+        "description": "Cakupan elemen sing dikutip.",
+        "options": {
+          "sibling": "Elemen sedulur",
+          "parent": "Elemen induk"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "Jinis OER Schema",

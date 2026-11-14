@@ -9,7 +9,9 @@
         "slot": "",
         "title": "Iqtiboslar",
         "description": "Ushbu bibliografiyadagi iqtibos elementlari"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "Kurs",

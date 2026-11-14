@@ -16,30 +16,8 @@
         "description": "اهو بيان جيڪو لفظ نشان لڳايو انٽرايڪشن ۾ تبديل ٿيندو."
       },
       {
-        "property": "gradingFormat",
-        "title": "گريڊنگ فارميٽ",
-        "description": "OER Schema: هن جائزي لاءِ گريڊنگ فارميٽ (مثال طور پوائنٽس، اکر، سيڪڙو، مڪمل ٿيڻ)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "سکيا جو مقصد",
-        "description": "OER Schema: هن جائزي سان لاڳاپيل سکيا جو مقصد."
-      },
-      {
-        "property": "forCourse",
-        "title": "ڪورس",
-        "description": "OER Schema: اهو ڪورس جنهن لاءِ هي جائزو آهي."
-      },
-      {
         "property": "answers",
         "title": "جواب"
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "ڪوئز جو نالو",
-        "description": "xAPI تي ٻڌل ماحول ۾ هن شيءِ جي سڃاڻپ لاءِ موڪليل ڪوئز جو نالو"
       }
     ],
     "advanced": [
@@ -52,6 +30,28 @@
         "property": "collapsed",
         "title": "ويڙهيل شروع ڪريو",
         "description": "جڏهن ويڙهڻ جوڳو هجي، بند قطار طور شروع ڪريو جيڪا رڳو سوال ۽ ان جي حالت ڏيکاري."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "گريڊنگ فارميٽ",
+        "description": "OER Schema: هن جائزي لاءِ گريڊنگ فارميٽ (مثال طور پوائنٽس، اکر، سيڪڙو، مڪمل ٿيڻ)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "سکيا جو مقصد",
+        "description": "OER Schema: هن جائزي سان لاڳاپيل سکيا جو مقصد."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "ڪوئز جو نالو",
+        "description": "xAPI تي ٻڌل ماحول ۾ هن شيءِ جي سڃاڻپ لاءِ موڪليل ڪوئز جو نالو"
+      },
+      {
+        "property": "forCourse",
+        "title": "ڪورس",
+        "description": "OER Schema: اهو ڪورس جنهن لاءِ هي جائزو آهي."
       }
     ]
   }

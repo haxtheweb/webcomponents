@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Citare",
-    "description": "Element de citare cu trei moduri de prezentare."
+    "description": "Creditați o sursă cu titlul, autorul, licența și linkul ei."
   },
   "settings": {
     "configure": [
@@ -21,15 +21,6 @@
         "description": "Data la care a fost accesată sursa."
       },
       {
-        "property": "scope",
-        "title": "Domeniu",
-        "description": "Domeniul elementului de citat.",
-        "options": {
-          "sibling": "Element frate",
-          "parent": "Element părinte"
-        }
-      },
-      {
         "property": "license",
         "title": "Licență",
         "description": "Licența lucrării citate."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Creator",
         "description": "Creatorul sau proprietarul lucrării citate."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Domeniu",
+        "description": "Domeniul elementului de citat.",
+        "options": {
+          "sibling": "Element frate",
+          "parent": "Element părinte"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "Tip OER Schema",

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Evenementbadge",
-    "description": "Component voor een evenementbadge."
+    "description": "Een naambadge in conferentiestijl met foto, naam en organisatie."
   },
   "settings": {
     "configure": [

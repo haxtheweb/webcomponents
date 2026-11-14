@@ -11,20 +11,17 @@
         "description": "Tilgængelig etiket til fanebladssættet."
       },
       {
-        "property": "disabled",
-        "title": "Deaktiveret",
-        "description": "Deaktiver alle faneblade."
-      },
-      {
-        "property": "hidden",
-        "title": "Skjult",
-        "description": "Skjul fanebladssættet."
-      },
-      {
         "property": "sticky",
         "title": "Fastgjort",
         "description": "Hold vandrette faneblade øverst under rulning."
       },
+      {
+        "slot": "",
+        "title": "Faneblade",
+        "description": "Række af <a11y-tab/>-elementer."
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "Layoutbrudpunkt",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "Ikonbrudpunkt",
         "description": "Brudpunkt for visning af tekst med ikoner. Standard er 0; brug -1 for kun ikoner."
-      },
-      {
-        "slot": "",
-        "title": "Faneblade",
-        "description": "Række af <a11y-tab/>-elementer."
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "Deaktiveret",
+        "description": "Deaktiver alle faneblade."
+      },
+      {
+        "property": "hidden",
+        "title": "Skjult",
+        "description": "Skjul fanebladssættet."
+      },
       {
         "property": "id",
         "title": "Unikt ID",

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "בדיקה עצמית",
-    "description": "המשתמשים יכולים לבצע בדיקה עצמית."
+    "description": "שאלה עם תשובה מוסתרת שהלומד חושף כדי לבדוק את עצמו."
   },
   "settings": {
     "configure": [
@@ -27,6 +27,13 @@
       {
         "slot": "",
         "title": "תשובה"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "קישור למידע נוסף",
+        "description": "קישור למידע נוסף."
       },
       {
         "property": "hasLearningObjective",
@@ -37,13 +44,6 @@
         "property": "assessing",
         "title": "מעריך",
         "description": "הפניה לפעילות המופקת כ-oer:assessing."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "link",
-        "title": "קישור למידע נוסף",
-        "description": "קישור למידע נוסף."
       }
     ]
   }

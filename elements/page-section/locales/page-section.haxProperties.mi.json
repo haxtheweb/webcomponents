@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "Ngā Pātene",
         "description": "Rōpū pātene ka whakaaturia i raro i te kupu."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "Kupu punga",
         "description": "Tapanga punga ka whakaaturia i te whakaterenga."
       }
-    ]
+    ],
+    "developer": []
   }
 }

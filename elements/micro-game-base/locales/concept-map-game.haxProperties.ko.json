@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "개념 지도 게임",
-    "description": "짧은 키보드 게임이에요. 캐릭터가 지도의 각 개념으로 걸어가면 개념이 스스로를 설명해요. 모두 만나면 색종이 조각과 복사할 프롬프트가 나와요."
+    "description": "캐릭터가 지도를 걸으며 각 개념이 스스로 설명하는 짧은 키보드 게임."
   },
   "settings": {
     "configure": [
@@ -86,7 +86,9 @@
         "property": "gameTitle",
         "title": "게임 이름",
         "description": "진행 이벤트와 OER Schema 마크업에서 이 게임의 이름으로 쓰여요."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "게임 ID",

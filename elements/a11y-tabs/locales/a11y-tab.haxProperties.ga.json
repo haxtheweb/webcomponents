@@ -10,10 +10,6 @@
         "title": "Deilbhín an Chluaisín"
       },
       {
-        "property": "disabled",
-        "title": "Díchumasaithe"
-      },
-      {
         "property": "label",
         "title": "Lipéad an Chluaisín"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "ID Uathúil"
-      },
-      {
         "property": "flag",
         "title": "Téacs Bratóige Roghnach"
       },
       {
         "property": "flagIcon",
         "title": "Deilbhín Bratóige Roghnach"
+      },
+      {
+        "property": "disabled",
+        "title": "Díchumasaithe"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "ID Uathúil"
       }
     ]
   }

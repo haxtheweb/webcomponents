@@ -11,11 +11,6 @@
         "description": "Perkataan yang digunakan untuk menjana watak rawak."
       },
       {
-        "property": "code",
-        "title": "Kod watak",
-        "description": "Tampal kod yang disimpan untuk mencipta semula watak itu."
-      },
-      {
         "property": "hat",
         "title": "Topi",
         "description": "Gaya topi.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Topeng",
-        "description": "Topeng yang dipakai pada muka atau kepala.",
-        "options": {
-          "none": "Tiada",
-          "lion": "Singa",
-          "plague": "Doktor wabak",
-          "theater": "Teater",
-          "pumpkin": "Labu",
-          "ghost": "Hantu",
-          "mummy": "Mumia",
-          "wrestler": "Topeng gusti",
-          "block-head": "Kepala blok",
-          "web": "Topeng sarang labah-labah",
-          "werewolf": "Wajah serigala jadian",
-          "shadow": "Wajah bayangan"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Solekan",
-        "description": "Cat muka atau gincu.",
-        "options": {
-          "none": "Tiada",
-          "red-lipstick": "Gincu merah",
-          "pink-lipstick": "Gincu merah jambu",
-          "berry-lipstick": "Gincu beri",
-          "clown": "Cat badut",
-          "fangs": "Taring",
-          "skull": "Cat tengkorak",
-          "zombie": "Cat zombi",
-          "red-nose": "Hidung merah",
-          "white-beard": "Janggut putih",
-          "domino": "Topeng wira",
-          "carrot": "Hidung lobak merah",
-          "bunny": "Hidung arnab",
-          "mustache": "Misai",
-          "monster": "Cat muka raksasa",
-          "round-glasses": "Cermin mata bulat"
-        }
-      },
-      {
         "property": "expression",
         "title": "Ekspresi",
         "description": "Ekspresi muka.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Haiwan peliharaan",
+        "description": "Haiwan peliharaan di sebelah watak.",
+        "options": {
+          "none": "Tiada",
+          "cat": "Kucing",
+          "dog": "Anjing",
+          "bunny": "Arnab",
+          "goldfish": "Ikan emas",
+          "slime": "Lendir",
+          "squirrel": "Tupai",
+          "dragon": "Naga kecil",
+          "parrot": "Burung kakak tua",
+          "owl": "Burung hantu",
+          "bat": "Kelawar"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Kod watak",
+        "description": "Tampal kod yang disimpan untuk mencipta semula watak itu."
+      },
+      {
+        "property": "mask",
+        "title": "Topeng",
+        "description": "Topeng yang dipakai pada muka atau kepala.",
+        "options": {
+          "none": "Tiada",
+          "lion": "Singa",
+          "plague": "Doktor wabak",
+          "theater": "Teater",
+          "pumpkin": "Labu",
+          "ghost": "Hantu",
+          "mummy": "Mumia",
+          "wrestler": "Topeng gusti",
+          "block-head": "Kepala blok",
+          "web": "Topeng sarang labah-labah",
+          "werewolf": "Wajah serigala jadian",
+          "shadow": "Wajah bayangan"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Solekan",
+        "description": "Cat muka atau gincu.",
+        "options": {
+          "none": "Tiada",
+          "red-lipstick": "Gincu merah",
+          "pink-lipstick": "Gincu merah jambu",
+          "berry-lipstick": "Gincu beri",
+          "clown": "Cat badut",
+          "fangs": "Taring",
+          "skull": "Cat tengkorak",
+          "zombie": "Cat zombi",
+          "red-nose": "Hidung merah",
+          "white-beard": "Janggut putih",
+          "domino": "Topeng wira",
+          "carrot": "Hidung lobak merah",
+          "bunny": "Hidung arnab",
+          "mustache": "Misai",
+          "monster": "Cat muka raksasa",
+          "round-glasses": "Cermin mata bulat"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Teks bendera",
         "description": "Sehingga 4 huruf dipaparkan pada bendera."
@@ -310,24 +330,6 @@
           "skates": "Kasut luncur",
           "skateboard": "Papan selaju",
           "hoverboard": "Papan terapung"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Haiwan peliharaan",
-        "description": "Haiwan peliharaan di sebelah watak.",
-        "options": {
-          "none": "Tiada",
-          "cat": "Kucing",
-          "dog": "Anjing",
-          "bunny": "Arnab",
-          "goldfish": "Ikan emas",
-          "slime": "Lendir",
-          "squirrel": "Tupai",
-          "dragon": "Naga kecil",
-          "parrot": "Burung kakak tua",
-          "owl": "Burung hantu",
-          "bat": "Kelawar"
         }
       },
       {

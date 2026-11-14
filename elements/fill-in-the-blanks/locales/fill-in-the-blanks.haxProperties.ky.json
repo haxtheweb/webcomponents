@@ -14,28 +14,6 @@
         "property": "statement",
         "title": "Сүйлөм",
         "description": "Сөздөрдү белгилөө аракеттешүүсүнө айландырыла турган сүйлөм."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "Баалоо форматы",
-        "description": "OER Schema: бул баалоонун баалоо форматы (мисалы, упайлар, тамга, пайыз, аткаруу)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Окуу максаты",
-        "description": "OER Schema: бул баалоого байланыштуу окуу максаты."
-      },
-      {
-        "property": "forCourse",
-        "title": "Курс",
-        "description": "OER Schema: бул баалоо арналган курс."
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Тесттин аталышы",
-        "description": "xAPI негизиндеги чөйрөлөрдө бул элементти аныктоо үчүн берилген тест аталышы"
       }
     ],
     "advanced": [
@@ -46,6 +24,28 @@
       {
         "title": "Жыйылган абалда баштоо",
         "description": "Жыйылуучу болгондо, суроону жана анын абалын гана көрсөткөн жабык катар катары башталат."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Баалоо форматы",
+        "description": "OER Schema: бул баалоонун баалоо форматы (мисалы, упайлар, тамга, пайыз, аткаруу)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Окуу максаты",
+        "description": "OER Schema: бул баалоого байланыштуу окуу максаты."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Тесттин аталышы",
+        "description": "xAPI негизиндеги чөйрөлөрдө бул элементти аныктоо үчүн берилген тест аталышы"
+      },
+      {
+        "property": "forCourse",
+        "title": "Курс",
+        "description": "OER Schema: бул баалоо арналган курс."
       }
     ]
   }

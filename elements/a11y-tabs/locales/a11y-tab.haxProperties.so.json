@@ -10,10 +10,6 @@
         "title": "Astaanta Tab-ka"
       },
       {
-        "property": "disabled",
-        "title": "La damiyay"
-      },
-      {
         "property": "label",
         "title": "Calaamadda Tab-ka"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "ID Gaar ah"
-      },
-      {
         "property": "flag",
         "title": "Qoraal Calan Ikhtiyaari ah"
       },
       {
         "property": "flagIcon",
         "title": "Astaan Calan Ikhtiyaari ah"
+      },
+      {
+        "property": "disabled",
+        "title": "La damiyay"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "ID Gaar ah"
       }
     ]
   }

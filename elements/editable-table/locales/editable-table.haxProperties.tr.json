@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Filtrelemeye İzin Ver",
         "description": "Sütun değerlerine göre filtrelemeye izin ver."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Sayısal Biçimlendirme",
-        "description": "Sayısal sütunlara sayısal biçimlendirme uygula."
-      },
-      {
-        "property": "responsive",
-        "title": "Duyarlı",
-        "description": "Küçük ekranlarda tablo düzenini uyarla."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Rubrik Modu",
-        "description": "Bu tabloyu OER Schema Rubric olarak yorumla; böylece Rubric, RubricScale, RubricCriterion ve RubricLevel meta verileri üretilir."
-      },
-      {
-        "property": "rubricType",
-        "title": "Rubrik Türü",
-        "description": "oer:rubricType olarak üretilen rubrik stili (yalnızca Rubrik Modu açıkken anlamlıdır).",
-        "options": {
-          "": "(yok)",
-          "analytic": "Analitik",
-          "holistic": "Bütüncül",
-          "single-point": "Tek Noktalı",
-          "checklist": "Kontrol Listesi"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Yazdırma Düğmesi",
         "description": "Yalnızca tabloyu yazdırmak için bir düğme ekle."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Sayısal Biçimlendirme",
+        "description": "Sayısal sütunlara sayısal biçimlendirme uygula."
+      },
+      {
+        "property": "responsive",
+        "title": "Duyarlı",
+        "description": "Küçük ekranlarda tablo düzenini uyarla."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Rubrik Modu",
+        "description": "Bu tabloyu OER Schema Rubric olarak yorumla; böylece Rubric, RubricScale, RubricCriterion ve RubricLevel meta verileri üretilir."
+      },
+      {
+        "property": "rubricType",
+        "title": "Rubrik Türü",
+        "description": "oer:rubricType olarak üretilen rubrik stili (yalnızca Rubrik Modu açıkken anlamlıdır).",
+        "options": {
+          "": "(yok)",
+          "analytic": "Analitik",
+          "holistic": "Bütüncül",
+          "single-point": "Tek Noktalı",
+          "checklist": "Kontrol Listesi"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "CSV Verisi",
         "description": "Yüklenen bir CSV dosyasından tablo oluştur."
       }
-    ]
+    ],
+    "developer": []
   }
 }

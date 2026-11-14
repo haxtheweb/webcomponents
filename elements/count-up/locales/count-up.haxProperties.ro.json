@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Text sufix",
         "description": "Text afișat după număr (de ex. '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Slot prefix",
-        "description": "Conținut opțional plasat înaintea numărului."
-      },
-      {
-        "slot": "suffix",
-        "title": "Slot sufix",
-        "description": "Conținut opțional plasat după număr."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Fără atenuare",
         "description": "Dezactivează atenuarea pentru o numărare liniară."
+      },
+      {
+        "slot": "prefix",
+        "title": "Slot prefix",
+        "description": "Conținut opțional plasat înaintea numărului."
+      },
+      {
+        "slot": "suffix",
+        "title": "Slot sufix",
+        "description": "Conținut opțional plasat după număr."
       }
     ]
   }

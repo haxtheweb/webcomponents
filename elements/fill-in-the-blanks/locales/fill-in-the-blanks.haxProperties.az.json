@@ -14,28 +14,6 @@
         "property": "statement",
         "title": "İfadə",
         "description": "Sözləri işarələmə qarşılıqlı əlaqəsinə çevriləcək ifadə."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "Qiymətləndirmə formatı",
-        "description": "OER Schema: bu qiymətləndirmənin qiymətləndirmə formatı (məs. xal, hərf, faiz, tamamlanma)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Öyrənmə məqsədi",
-        "description": "OER Schema: bu qiymətləndirmə ilə əlaqəli öyrənmə məqsədi."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kurs",
-        "description": "OER Schema: bu qiymətləndirmənin nəzərdə tutulduğu kurs."
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Testin adı",
-        "description": "Bu elementin identifikasiyası üçün xAPI əsaslı mühitlərdə istifadəyə ötürülən test adı"
       }
     ],
     "advanced": [
@@ -46,6 +24,28 @@
       {
         "title": "Yığılmış başlasın",
         "description": "Yığılan olduqda, yalnız sualı və statusu göstərən bağlı sətir kimi başlasın."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Qiymətləndirmə formatı",
+        "description": "OER Schema: bu qiymətləndirmənin qiymətləndirmə formatı (məs. xal, hərf, faiz, tamamlanma)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Öyrənmə məqsədi",
+        "description": "OER Schema: bu qiymətləndirmə ilə əlaqəli öyrənmə məqsədi."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Testin adı",
+        "description": "Bu elementin identifikasiyası üçün xAPI əsaslı mühitlərdə istifadəyə ötürülən test adı"
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurs",
+        "description": "OER Schema: bu qiymətləndirmənin nəzərdə tutulduğu kurs."
       }
     ]
   }

@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "Butonat",
         "description": "Grupi i butonave i shfaqur poshtë tekstit."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "Teksti i spirancës",
         "description": "Etiketa e spirancës e shfaqur në navigim."
       }
-    ]
+    ],
+    "developer": []
   }
 }

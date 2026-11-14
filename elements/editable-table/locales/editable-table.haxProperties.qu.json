@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Suysuyta atichiy",
         "description": "Kulumna chaninkunawan suysuyta atichiy."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Yupay sumaqchay",
-        "description": "Yupay kulumnakunaman yupay sumaqchayta churay."
-      },
-      {
-        "property": "responsive",
-        "title": "Tupachikuq",
-        "description": "Huch'uy pantallakunapi tablapa layoutninta tupachiy."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Rúbrica modo",
-        "description": "Kay tablata OER Schema Rubric hina hap'iy, Rubric, RubricScale, RubricCriterion, RubricLevel metadatakuna lluqsinanpaq."
-      },
-      {
-        "property": "rubricType",
-        "title": "Rúbrica laya",
-        "description": "oer:rubricType hina lluqsiq rúbrica laya (Rúbrica modo kawsachisqa kaqtinlla).",
-        "options": {
-          "": "(mana imapas)",
-          "analytic": "T'aqwiq",
-          "holistic": "Llapanmanta",
-          "single-point": "Huk chimpulla",
-          "checklist": "Qhawana lista"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Imprimiy ñit'ina",
         "description": "Tablallata imprimiypaq ñit'inata yapay."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Yupay sumaqchay",
+        "description": "Yupay kulumnakunaman yupay sumaqchayta churay."
+      },
+      {
+        "property": "responsive",
+        "title": "Tupachikuq",
+        "description": "Huch'uy pantallakunapi tablapa layoutninta tupachiy."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Rúbrica modo",
+        "description": "Kay tablata OER Schema Rubric hina hap'iy, Rubric, RubricScale, RubricCriterion, RubricLevel metadatakuna lluqsinanpaq."
+      },
+      {
+        "property": "rubricType",
+        "title": "Rúbrica laya",
+        "description": "oer:rubricType hina lluqsiq rúbrica laya (Rúbrica modo kawsachisqa kaqtinlla).",
+        "options": {
+          "": "(mana imapas)",
+          "analytic": "T'aqwiq",
+          "holistic": "Llapanmanta",
+          "single-point": "Huk chimpulla",
+          "checklist": "Qhawana lista"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "CSV willakuykuna",
         "description": "Wicharichisqa CSV willañiqimanta tablata ruray."
       }
-    ]
+    ],
+    "developer": []
   }
 }

@@ -1,6 +1,13 @@
 import { html, fixture, expect } from "@open-wc/testing";
 import { CareerRoleItem } from "../lib/career-role-item.js";
 
+// HAX schemas ship as JSON next to the element; read one whether the class
+// returns the object or the URL of its file
+const haxSchema = async (C) => {
+  const hp = C.haxProperties;
+  return typeof hp === "string" ? (await fetch(hp)).json() : hp;
+};
+
 describe("CareerRoleItem test", () => {
   let element;
   beforeEach(async () => {
@@ -184,10 +191,10 @@ describe("CareerRoleItem test", () => {
   });
 
   it("reports inline haxProperties for the editor", async () => {
-    const props = CareerRoleItem.haxProperties;
+    const props = await haxSchema(CareerRoleItem);
     expect(props.designSystem).to.be.false;
     expect(props.canEditSource).to.be.true;
-    expect(props.gizmo.title).to.equal("Career Role");
+    expect(props.gizmo.title).to.equal("Career role");
     expect(props.settings.configure[0].property).to.equal("title");
     expect(props.settings.configure[1].inputMethod).to.equal("datepicker");
     expect(props.settings.configure[3].property).to.equal("skills");

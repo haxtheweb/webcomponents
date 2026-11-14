@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Vaizdo šaltinis",
         "description": "Kortelei naudojamas vaizdo failas. Turi pirmenybę prieš vaizdo raktažodį."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Vaizdo raktažodis",
+        "description": "Atsitiktinio vaizdo raktažodis. Vaizdo šaltinis turi pirmenybę."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Mokymosi tikslas",
         "description": "OER Schema: mokymosi tikslo, kurį palaiko ši praktika, ID arba URL."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Vaizdo raktažodis",
-        "description": "Atsitiktinio vaizdo raktažodis. Vaizdo šaltinis turi pirmenybę."
       }
     ]
   }

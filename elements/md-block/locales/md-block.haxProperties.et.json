@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "Markdowni sisu plokk, otse sisestatud või kaugelt laaditud"
+    "description": "Markdowni sisu, kirjutatud kohapeal või laaditud failist."
   },
   "settings": {
     "configure": [

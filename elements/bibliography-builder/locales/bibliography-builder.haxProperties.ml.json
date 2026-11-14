@@ -9,7 +9,9 @@
         "slot": "",
         "title": "ഉദ്ധരണികൾ",
         "description": "ഈ ഗ്രന്ഥസൂചിയിലെ ഉദ്ധരണി ഇനങ്ങൾ"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "കോഴ്സ്",

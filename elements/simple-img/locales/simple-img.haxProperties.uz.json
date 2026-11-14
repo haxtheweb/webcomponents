@@ -26,7 +26,8 @@
         "description": "Ekran oʻqish dasturlari uchun foydali va SEO ni yaxshilaydi."
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "Sifat",

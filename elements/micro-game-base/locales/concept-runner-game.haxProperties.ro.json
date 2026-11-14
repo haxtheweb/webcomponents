@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Joc de alergare cu concepte",
-    "description": "Un joc cu derulare laterală. Personajul aleargă în flăcări și nu se oprește niciodată. Sari ca să prinzi conceptele bune și peste cele rele, apoi vezi o recapitulare a ce a fost bun și ce a fost rău."
+    "description": "Un joc cu derulare laterală: săriți pentru a prinde conceptele corecte și a le evita pe cele greșite."
   },
   "settings": {
     "configure": [
@@ -89,7 +89,9 @@
         "property": "gameTitle",
         "title": "Numele jocului",
         "description": "Denumește acest joc în evenimentele de progres și în marcajul OER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "ID-ul jocului",

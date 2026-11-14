@@ -4,17 +4,16 @@
     "description": "Esitab interaktiivset H5P-sisu üleslaaditud .h5p-failist ilma H5P-serverita"
   },
   "settings": {
-    "configure": [
-      {
-        "slot": "",
-        "description": "Laadi üles .h5p-fail või lisa selle link. See pakitakse lahti brauseris; H5P-serverit pole vaja.",
-        "title": "H5P-fail"
-      }
-    ],
+    "configure": [],
     "advanced": [
       {
         "title": "Vana iframe'i manustamiskood",
         "description": "Ainult vanema sisu jaoks, mis manustab H5P iframe'i mõnelt teiselt saidilt. Jäta tühjaks, kui ülal on .h5p-fail määratud."
+      },
+      {
+        "slot": "",
+        "description": "Laadi üles .h5p-fail või lisa selle link. See pakitakse lahti brauseris; H5P-serverit pole vaja.",
+        "title": "H5P-fail"
       }
     ]
   }

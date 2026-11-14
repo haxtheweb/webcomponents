@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Pas",
-    "description": "Element care face parte dintr-o listă de pași"
+    "description": "Un singur pas dintr-o listă de pași."
   },
   "settings": {
     "configure": [

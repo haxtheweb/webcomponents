@@ -10,10 +10,6 @@
         "title": "Aikoni yeTebhu"
       },
       {
-        "property": "disabled",
-        "title": "Zvakadzimwa"
-      },
-      {
         "property": "label",
         "title": "Zita reTebhu"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "ID Yakasiyana"
-      },
-      {
         "property": "flag",
         "title": "Mavara eMureza Asingamanikidzwe"
       },
       {
         "property": "flagIcon",
         "title": "Aikoni yeMureza Isingamanikidzwe"
+      },
+      {
+        "property": "disabled",
+        "title": "Zvakadzimwa"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "ID Yakasiyana"
       }
     ]
   }

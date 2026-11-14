@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Afbeeldingsbron",
         "description": "Afbeeldingsbestand voor de kaart. Heeft voorrang op het afbeeldingstrefwoord."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Afbeeldingstrefwoord",
+        "description": "Trefwoord voor een willekeurige afbeelding. Afbeeldingsbron heeft voorrang."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Leerdoel",
         "description": "OER Schema: ID of URL van het leerdoel dat deze oefening ondersteunt."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Afbeeldingstrefwoord",
-        "description": "Trefwoord voor een willekeurige afbeelding. Afbeeldingsbron heeft voorrang."
       }
     ]
   }

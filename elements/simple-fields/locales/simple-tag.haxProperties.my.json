@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "အလိုအလျောက် အထူးပြု အရောင်",
         "description": "အညွှန်း စာသားမှ အထူးပြု အရောင်ကို အလိုအလျောက် ရယူရန်။"
-      },
-      {
-        "property": "cancelButton",
-        "title": "ပယ်ဖျက် ခလုတ်",
-        "description": "Pill အတွင်း ဖယ်ရှား/ပယ်ဖျက် အိုင်ကွန် ခလုတ်ကို ပြရန်။"
-      },
-      {
-        "property": "readonly",
-        "title": "ဖတ်ရန်သာ",
-        "description": "Pill ကို ပြသရန်သာ ဖြစ်စေရန် ပယ်ဖျက် ခလုတ်ကို ဝှက်ရန်။"
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "ပြာမီးခိုး",
           "grey": "မီးခိုးရောင်"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "ပယ်ဖျက် ခလုတ်",
+        "description": "Pill အတွင်း ဖယ်ရှား/ပယ်ဖျက် အိုင်ကွန် ခလုတ်ကို ပြရန်။"
+      },
+      {
+        "property": "readonly",
+        "title": "ဖတ်ရန်သာ",
+        "description": "Pill ကို ပြသရန်သာ ဖြစ်စေရန် ပယ်ဖျက် ခလုတ်ကို ဝှက်ရန်။"
       }
     ]
   }

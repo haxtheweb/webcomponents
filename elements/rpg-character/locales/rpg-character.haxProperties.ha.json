@@ -11,11 +11,6 @@
         "description": "Kalmar da ake amfani da ita don ƙirƙirar hali na bazuwar."
       },
       {
-        "property": "code",
-        "title": "Lambar hali",
-        "description": "Liƙa lambar da aka ajiye don sake ƙirƙirar wannan hali."
-      },
-      {
         "property": "hat",
         "title": "Hula",
         "description": "Salon hula.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Abin rufe fuska",
-        "description": "Abin rufe fuska da ake sawa a fuska ko kai.",
-        "options": {
-          "none": "Babu",
-          "lion": "Zaki",
-          "plague": "Likitan annoba",
-          "theater": "Gidan wasan kwaikwayo",
-          "pumpkin": "Kabewa",
-          "ghost": "Fatalwa",
-          "mummy": "Gawar da aka adana",
-          "wrestler": "Abin rufe fuska na kokawa",
-          "block-head": "Kai mai siffar bulo",
-          "web": "Abin rufe fuska na gizo",
-          "werewolf": "Fuskar mutum-kerkeci",
-          "shadow": "Fuskar inuwa"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Kwalliya",
-        "description": "Launin fuska ko jan baki.",
-        "options": {
-          "none": "Babu",
-          "red-lipstick": "Jan baki ja",
-          "pink-lipstick": "Jan baki ruwan hoda",
-          "berry-lipstick": "Jan baki launin berry",
-          "clown": "Launin fuskar ɗan wasan barkwanci",
-          "fangs": "Haƙora masu kaifi",
-          "skull": "Fentin ƙoƙon kai",
-          "zombie": "Fentin aljan",
-          "red-nose": "Hanci ja",
-          "white-beard": "Farin gemu",
-          "domino": "Abin rufe fuskar gwarzo",
-          "carrot": "Hancin karas",
-          "bunny": "Hancin zomo",
-          "mustache": "Gashin baki",
-          "monster": "Fentin fuska na dodo",
-          "round-glasses": "Gilashin ido zagaye"
-        }
-      },
-      {
         "property": "expression",
         "title": "Fuska",
         "description": "Yanayin fuska.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Dabba na gida",
+        "description": "Dabbar gida kusa da hali.",
+        "options": {
+          "none": "Babu",
+          "cat": "Kyanwa",
+          "dog": "Kare",
+          "bunny": "Zomo",
+          "goldfish": "Kifin zinariya",
+          "slime": "Majina",
+          "squirrel": "Kurege",
+          "dragon": "Ƙaramin dodo",
+          "parrot": "Aku",
+          "owl": "Mujiya",
+          "bat": "Jemage"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Lambar hali",
+        "description": "Liƙa lambar da aka ajiye don sake ƙirƙirar wannan hali."
+      },
+      {
+        "property": "mask",
+        "title": "Abin rufe fuska",
+        "description": "Abin rufe fuska da ake sawa a fuska ko kai.",
+        "options": {
+          "none": "Babu",
+          "lion": "Zaki",
+          "plague": "Likitan annoba",
+          "theater": "Gidan wasan kwaikwayo",
+          "pumpkin": "Kabewa",
+          "ghost": "Fatalwa",
+          "mummy": "Gawar da aka adana",
+          "wrestler": "Abin rufe fuska na kokawa",
+          "block-head": "Kai mai siffar bulo",
+          "web": "Abin rufe fuska na gizo",
+          "werewolf": "Fuskar mutum-kerkeci",
+          "shadow": "Fuskar inuwa"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Kwalliya",
+        "description": "Launin fuska ko jan baki.",
+        "options": {
+          "none": "Babu",
+          "red-lipstick": "Jan baki ja",
+          "pink-lipstick": "Jan baki ruwan hoda",
+          "berry-lipstick": "Jan baki launin berry",
+          "clown": "Launin fuskar ɗan wasan barkwanci",
+          "fangs": "Haƙora masu kaifi",
+          "skull": "Fentin ƙoƙon kai",
+          "zombie": "Fentin aljan",
+          "red-nose": "Hanci ja",
+          "white-beard": "Farin gemu",
+          "domino": "Abin rufe fuskar gwarzo",
+          "carrot": "Hancin karas",
+          "bunny": "Hancin zomo",
+          "mustache": "Gashin baki",
+          "monster": "Fentin fuska na dodo",
+          "round-glasses": "Gilashin ido zagaye"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Rubutun tuta",
         "description": "Haruffa har 4 da ake nunawa a kan tuta."
@@ -310,24 +330,6 @@
           "skates": "Takalman skate",
           "skateboard": "Allon skate",
           "hoverboard": "Allon shawagi"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Dabba na gida",
-        "description": "Dabbar gida kusa da hali.",
-        "options": {
-          "none": "Babu",
-          "cat": "Kyanwa",
-          "dog": "Kare",
-          "bunny": "Zomo",
-          "goldfish": "Kifin zinariya",
-          "slime": "Majina",
-          "squirrel": "Kurege",
-          "dragon": "Ƙaramin dodo",
-          "parrot": "Aku",
-          "owl": "Mujiya",
-          "bat": "Jemage"
         }
       },
       {

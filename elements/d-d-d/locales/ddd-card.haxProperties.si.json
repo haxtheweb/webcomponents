@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "ඊතලයක් නැත",
         "description": "බොත්තමේ ඊතලය සඟවන්න."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "සබැඳිය: ඉලක්කය",
@@ -54,7 +52,9 @@
           "_top": "ඉහළම කවුළුව - _top",
           "_parent": "මාපිය කවුළුව - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "සබැඳිය: rel",

@@ -11,20 +11,17 @@
         "description": "Пристапна ознака за збирот јазичиња."
       },
       {
-        "property": "disabled",
-        "title": "Оневозможено",
-        "description": "Оневозможи ги сите јазичиња."
-      },
-      {
-        "property": "hidden",
-        "title": "Скриено",
-        "description": "Скриј го збирот јазичиња."
-      },
-      {
         "property": "sticky",
         "title": "Залепено",
         "description": "Хоризонталните јазичиња да останат горе при лизгање."
       },
+      {
+        "slot": "",
+        "title": "Јазичиња",
+        "description": "Низа елементи <a11y-tab/>."
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "Точка на прекин за распоред",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "Точка на прекин за икони",
         "description": "Точка на прекин за прикажување текст со икони. Стандардно е 0; користете -1 за режим само со икони."
-      },
-      {
-        "slot": "",
-        "title": "Јазичиња",
-        "description": "Низа елементи <a11y-tab/>."
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "Оневозможено",
+        "description": "Оневозможи ги сите јазичиња."
+      },
+      {
+        "property": "hidden",
+        "title": "Скриено",
+        "description": "Скриј го збирот јазичиња."
+      },
       {
         "property": "id",
         "title": "Уникатен ID",

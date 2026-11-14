@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "Nhãn / Viên thuốc",
+    "title": "Thẻ",
     "description": "Nhãn nhỏ gọn hình viên thuốc với màu nhấn, nút hủy hoặc nút bật/tắt tùy chọn."
   },
   "settings": {
@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Màu nhấn tự động",
         "description": "Tự động lấy màu nhấn từ văn bản nhãn."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Nút hủy",
-        "description": "Hiện nút biểu tượng xóa/hủy bên trong nhãn."
-      },
-      {
-        "property": "readonly",
-        "title": "Chỉ đọc",
-        "description": "Ẩn nút hủy để nhãn chỉ dùng để hiển thị."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Xám xanh",
           "grey": "Xám"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Nút hủy",
+        "description": "Hiện nút biểu tượng xóa/hủy bên trong nhãn."
+      },
+      {
+        "property": "readonly",
+        "title": "Chỉ đọc",
+        "description": "Ẩn nút hủy để nhãn chỉ dùng để hiển thị."
       }
     ]
   }

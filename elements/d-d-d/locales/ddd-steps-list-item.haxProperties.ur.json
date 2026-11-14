@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "مرحلہ آئٹم",
-    "description": "مراحل کی فہرست کا حصہ بننے والا آئٹم"
+    "description": "مراحل کی فہرست میں ایک مرحلہ۔"
   },
   "settings": {
     "configure": [

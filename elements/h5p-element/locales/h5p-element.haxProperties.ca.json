@@ -4,17 +4,16 @@
     "description": "Reprodueix contingut interactiu H5P d'un fitxer .h5p pujat, sense necessitat d'un servidor H5P"
   },
   "settings": {
-    "configure": [
-      {
-        "slot": "",
-        "description": "Puja o enllaça un fitxer .h5p. Es desempaqueta al navegador; no cal cap servidor H5P.",
-        "title": "Fitxer H5P"
-      }
-    ],
+    "configure": [],
     "advanced": [
       {
         "title": "Codi d'incrustació iframe antic",
         "description": "Només per a contingut antic que incrusta un iframe H5P d'un altre lloc. Deixa-ho buit quan hi hagi un fitxer .h5p a dalt."
+      },
+      {
+        "slot": "",
+        "description": "Puja o enllaça un fitxer .h5p. Es desempaqueta al navegador; no cal cap servidor H5P.",
+        "title": "Fitxer H5P"
       }
     ]
   }

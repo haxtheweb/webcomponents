@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "GitHub-osallistujaluettelo",
-    "description": "Näytetään RPG-hahmoina GitHub API:n avulla."
+    "description": "Näyttää tietovaraston osallistujat RPG-hahmoina."
   },
   "settings": {
     "configure": [

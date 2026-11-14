@@ -9,7 +9,9 @@
         "property": "source",
         "title": "URL рэсурсу",
         "description": "URL рэсурсу."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Вышыня",

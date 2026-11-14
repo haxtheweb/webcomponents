@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Kikokikona hope",
         "description": "Kikokikona i hōʻike ʻia ma hope o ka helu (e laʻa me '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Wahi mua",
-        "description": "ʻIkepili koho i hoʻokomo ʻia ma mua o ka helu."
-      },
-      {
-        "slot": "suffix",
-        "title": "Wahi hope",
-        "description": "ʻIkepili koho i hoʻokomo ʻia ma hope o ka helu."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "ʻAʻohe hoʻomāmā",
         "description": "E hoʻopio i ka hoʻomāmā i laina pololei ka helu ʻana."
+      },
+      {
+        "slot": "prefix",
+        "title": "Wahi mua",
+        "description": "ʻIkepili koho i hoʻokomo ʻia ma mua o ka helu."
+      },
+      {
+        "slot": "suffix",
+        "title": "Wahi hope",
+        "description": "ʻIkepili koho i hoʻokomo ʻia ma hope o ka helu."
       }
     ]
   }

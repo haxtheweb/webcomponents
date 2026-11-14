@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Parallax-afbeelding",
-    "description": "Afbeelding scrolt mee"
+    "description": "Een afbeelding over de volle breedte die langzamer scrolt dan de pagina, met een kop eroverheen."
   },
   "settings": {
     "configure": [

@@ -11,20 +11,17 @@
         "description": "Dzina lofikika la gulu la ma tabu."
       },
       {
-        "property": "disabled",
-        "title": "Zoletsedwa",
-        "description": "Letsani ma tabu onse."
-      },
-      {
-        "property": "hidden",
-        "title": "Zobisika",
-        "description": "Bisani gulu la ma tabu."
-      },
-      {
         "property": "sticky",
         "title": "Zokhazikika",
         "description": "Sungani ma tabu opingasa pamwamba popukusa."
       },
+      {
+        "slot": "",
+        "title": "Ma Tabu",
+        "description": "Mndandanda wa zinthu za <a11y-tab/>."
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "Malire a Kapangidwe",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "Malire a Zizindikiro",
         "description": "Malire owonetsera mawu pamodzi ndi zizindikiro. Mwachisawawa ndi 0; gwiritsani ntchito -1 kuti muwonetse zizindikiro zokha."
-      },
-      {
-        "slot": "",
-        "title": "Ma Tabu",
-        "description": "Mndandanda wa zinthu za <a11y-tab/>."
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "Zoletsedwa",
+        "description": "Letsani ma tabu onse."
+      },
+      {
+        "property": "hidden",
+        "title": "Zobisika",
+        "description": "Bisani gulu la ma tabu."
+      },
       {
         "property": "id",
         "title": "ID Yapadera",

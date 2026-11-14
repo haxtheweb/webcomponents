@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Posterafbeelding",
         "description": "URL van posterafbeelding."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Tekstsporen",
         "description": "Ondertiteling, beschrijvingen en andere tekstsporen voor de video."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Starttijd",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Audiodescriptiespoor",
         "description": "URL naar een audiodescriptiespoor (MP3-bestand) dat visuele elementen beschrijft."
+      },
+      {
+        "property": "accentColor",
+        "title": "Accentkleur",
+        "description": "(verouderd) Selecteer de accentkleur van de speler."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Taal",
         "description": "Taal van de media."
-      },
-      {
-        "property": "accentColor",
-        "title": "Accentkleur",
-        "description": "(verouderd) Selecteer de accentkleur van de speler."
       }
     ]
   }

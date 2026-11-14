@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Umyalezo wokungaxhaswa",
-        "description": "Umyalezo xa ibhrawuza ingakwazi ukubonisa iifayile ze-PDF."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Umyalezo wekhonkco wokungaxhaswa",
-        "description": "Umbhalo wekhonkco xa ibhrawuza ingakwazi ukubonisa iifayile ze-PDF."
-      },
-      {
         "property": "width",
         "title": "Ububanzi",
         "description": "Ububanzi bomboniseli we-PDF."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Ubude",
         "description": "Ubude bomboniseli we-PDF."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Umyalezo wokungaxhaswa",
+        "description": "Umyalezo xa ibhrawuza ingakwazi ukubonisa iifayile ze-PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Umyalezo wekhonkco wokungaxhaswa",
+        "description": "Umbhalo wekhonkco xa ibhrawuza ingakwazi ukubonisa iifayile ze-PDF."
       }
     ]
   }

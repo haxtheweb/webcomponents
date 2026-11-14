@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Paskirtis",
         "description": "Kelias į žaidimo versiją."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Drobės plotis",
+        "description": "Drobės CSS plotis (pvz., px arba em)."
       },
+      {
+        "property": "height",
+        "title": "Drobės aukštis",
+        "description": "Drobės CSS aukštis (pvz., px arba em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Glaudinimo būdas",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Produkto versija",
         "description": "Leidimo versija."
-      },
-      {
-        "property": "width",
-        "title": "Drobės plotis",
-        "description": "Drobės CSS plotis (pvz., px arba em)."
-      },
-      {
-        "property": "height",
-        "title": "Drobės aukštis",
-        "description": "Drobės CSS aukštis (pvz., px arba em)."
       },
       {
         "property": "background",

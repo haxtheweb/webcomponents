@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Garso įrašai",
-    "description": "Leidžia pateikti vaizdo įrašą labai prieinamu būdu, nepriklausomai nuo šaltinio."
+    "description": "Prieinamas garso grotuvas su transkripcijos palaikymu."
   },
   "settings": {
     "configure": [
@@ -46,6 +46,16 @@
         "property": "accentColor",
         "title": "Akcento spalva",
         "description": "Pasirinkite grotuvo akcento spalvą."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Slėpti laiko žymas",
+        "description": "Slėpti laiko žymas nuoraše."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Slėpti nuorašą",
+        "description": "Pagal numatytuosius nustatymus slėpti nuorašą."
       }
     ],
     "developer": [
@@ -72,16 +82,6 @@
         "property": "disableInteractive",
         "title": "Išjungti interaktyvumą",
         "description": "Išjungti interaktyvų režimą, kuriame nuorašą galima spustelėti."
-      },
-      {
-        "property": "hideTimestamps",
-        "title": "Slėpti laiko žymas",
-        "description": "Slėpti laiko žymas nuoraše."
-      },
-      {
-        "property": "hideTranscript",
-        "title": "Slėpti nuorašą",
-        "description": "Pagal numatytuosius nustatymus slėpti nuorašą."
       },
       {
         "property": "lang",

@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Taken hoto",
         "description": "Taken bayani don hoton."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Taken Hoto",
-        "description": "Take don lakabin hoto."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Bayanin Hoto",
-        "description": "Bayani don lakabin hoto."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Kashe tagar hoto",
         "description": "Kashe dannawa da ke buɗe hoton a akwatin mai duba hoto."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Taken Hoto",
+        "description": "Take don lakabin hoto."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Bayanin Hoto",
+        "description": "Bayani don lakabin hoto."
       }
     ],
     "developer": [

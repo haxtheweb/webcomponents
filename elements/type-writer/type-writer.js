@@ -111,77 +111,8 @@ class TypeWriter extends IntersectionObserverMixin(LitElement) {
 
   // haxProperty definition
   static get haxProperties() {
-    return {
-      canScale: true,
-
-      canEditSource: true,
-      gizmo: {
-        title: "Type writer",
-        description: "typewritter effect",
-        icon: "hardware:keyboard",
-        color: "green",
-        tags: ["Other", "interactive", "fancy", "Writer", "type"],
-        handles: [],
-        meta: {
-          author: "HAXTheWeb",
-          owner: "The Pennsylvania State University",
-        },
-      },
-      settings: {
-        configure: [
-          {
-            property: "delay",
-            title: "Delay",
-            description: "Milliseconds to wait before typing starts.",
-            inputMethod: "textfield",
-            required: false,
-          },
-          {
-            property: "cursorDuration",
-            title: "Cursor duration",
-            description:
-              "Milliseconds the cursor keeps blinking after the text is typed.",
-            inputMethod: "textfield",
-            required: false,
-          },
-          {
-            property: "text",
-            title: "Text",
-            description:
-              "The text to type out once the element scrolls into view.",
-            inputMethod: "textfield",
-            required: false,
-          },
-          {
-            property: "speed",
-            title: "Speed",
-            description:
-              "Milliseconds per character; lower numbers type faster.",
-            inputMethod: "textfield",
-            required: false,
-          },
-          {
-            property: "typing",
-            title: "Typing",
-            description:
-              "Show the blinking cursor; the element sets this while it types.",
-            inputMethod: "boolean",
-            required: false,
-          },
-        ],
-        advanced: [],
-      },
-      saveOptions: {
-        unsetAttributes: ["element-visible"],
-      },
-      demoSchema: [
-        {
-          tag: "type-writer",
-          properties: {},
-          content: "",
-        },
-      ],
-    };
+    return new URL("./lib/type-writer.haxProperties.json", import.meta.url)
+      .href;
   }
   // properties available to the custom element for data binding
   static get properties() {
@@ -240,6 +171,32 @@ class TypeWriter extends IntersectionObserverMixin(LitElement) {
     this.typing = false;
   }
 
+  connectedCallback() {
+    super.connectedCallback();
+    // pick typing back up after a move (the HAX editor moves elements by
+    // removing and re-adding them)
+    if (this.__resumeTyping) {
+      this.__resumeTyping = false;
+      const text = this.shadowRoot && this.shadowRoot.querySelector("#text");
+      if (text && this.text && text.textContent !== this.text) {
+        this._length = text.textContent.length;
+        this.type();
+      }
+    }
+  }
+
+  disconnectedCallback() {
+    // pending typing timers would keep a removed element alive
+    this.__resumeTyping = !!(this._start || this._cancel);
+    clearTimeout(this._start);
+    clearTimeout(this._cancel);
+    clearTimeout(this._end);
+    this._start = null;
+    this._cancel = null;
+    this._end = null;
+    super.disconnectedCallback();
+  }
+
   _observeText(text, delay, elementVisible) {
     if (text && delay !== undefined && elementVisible) {
       if (this.shadowRoot.querySelector("#text").textContent) {
@@ -251,7 +208,7 @@ class TypeWriter extends IntersectionObserverMixin(LitElement) {
         return this.erase();
       }
       this._length = 0;
-      setTimeout(() => {
+      this._start = setTimeout(() => {
         this.type();
       }, this.delay);
     }
@@ -272,7 +229,7 @@ class TypeWriter extends IntersectionObserverMixin(LitElement) {
       );
       return;
     }
-    setTimeout(() => {
+    this._end = setTimeout(() => {
       this.typing = false;
       this.dispatchEvent(
         new CustomEvent("type-writer-end", {

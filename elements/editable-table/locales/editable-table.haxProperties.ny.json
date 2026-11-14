@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Lolani Kusefa",
         "description": "Lolani kusefa potsatira zomwe zili mu mzati."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Kapangidwe ka Manambala",
-        "description": "Ikani kapangidwe ka manambala pa mizati ya manambala."
-      },
-      {
-        "property": "responsive",
-        "title": "Yogwirizana ndi Zenera",
-        "description": "Sinthani kapangidwe ka tebulo pazenera zing'onozing'ono."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Njira ya Rubric",
-        "description": "Tengani tebulo ili ngati Rubric ya OER Schema kuti zambiri za Rubric, RubricScale, RubricCriterion, ndi RubricLevel zitulutsidwe."
-      },
-      {
-        "property": "rubricType",
-        "title": "Mtundu wa Rubric",
-        "description": "Mtundu wa rubric wotulutsidwa ngati oer:rubricType (umagwira ntchito pokhapokha Njira ya Rubric yayatsidwa).",
-        "options": {
-          "": "(palibe)",
-          "analytic": "Wosanthula",
-          "holistic": "Wathunthu",
-          "single-point": "Mfundo Imodzi",
-          "checklist": "Mndandanda Woyang'anira"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Batani Losindikiza",
         "description": "Onjezani batani losindikiza tebulo lokha."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Kapangidwe ka Manambala",
+        "description": "Ikani kapangidwe ka manambala pa mizati ya manambala."
+      },
+      {
+        "property": "responsive",
+        "title": "Yogwirizana ndi Zenera",
+        "description": "Sinthani kapangidwe ka tebulo pazenera zing'onozing'ono."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Njira ya Rubric",
+        "description": "Tengani tebulo ili ngati Rubric ya OER Schema kuti zambiri za Rubric, RubricScale, RubricCriterion, ndi RubricLevel zitulutsidwe."
+      },
+      {
+        "property": "rubricType",
+        "title": "Mtundu wa Rubric",
+        "description": "Mtundu wa rubric wotulutsidwa ngati oer:rubricType (umagwira ntchito pokhapokha Njira ya Rubric yayatsidwa).",
+        "options": {
+          "": "(palibe)",
+          "analytic": "Wosanthula",
+          "holistic": "Wathunthu",
+          "single-point": "Mfundo Imodzi",
+          "checklist": "Mndandanda Woyang'anira"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "Zambiri za CSV",
         "description": "Pangani tebulo kuchokera ku fayilo ya CSV yokwezedwa."
       }
-    ]
+    ],
+    "developer": []
   }
 }

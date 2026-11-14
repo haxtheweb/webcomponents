@@ -4,17 +4,16 @@
     "description": "用上传额 .h5p 文件放 H5P 互动内容，覅 H5P 服务器"
   },
   "settings": {
-    "configure": [
-      {
-        "slot": "",
-        "description": "上传或者链接一个 .h5p 文件。伊会勒浏览器里解开，覅 H5P 服务器。",
-        "title": "H5P 文件"
-      }
-    ],
+    "configure": [],
     "advanced": [
       {
         "title": "老式 iframe 嵌入代码",
         "description": "只用来搞嵌入别额网站 H5P iframe 额老内容。上头设好 .h5p 文件额辰光请空勒。"
+      },
+      {
+        "slot": "",
+        "description": "上传或者链接一个 .h5p 文件。伊会勒浏览器里解开，覅 H5P 服务器。",
+        "title": "H5P 文件"
       }
     ]
   }

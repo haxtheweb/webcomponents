@@ -11,30 +11,8 @@
         "description": "Tanong para sa mga user. Markahan ang mga drop target, pagkatapos ay ilista ang mga sagot hanggang sa susunod na target."
       },
       {
-        "property": "gradingFormat",
-        "title": "Format ng pagmamarka",
-        "description": "OER Schema: format ng pagmamarka para sa pagtatasang ito (hal. puntos, letra, porsyento, pagkumpleto)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Layunin sa pagkatuto",
-        "description": "OER Schema: layunin sa pagkatuto na kaugnay ng pagtatasang ito."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kurso",
-        "description": "OER Schema: kursong pinaglalaanan ng pagtatasang ito."
-      },
-      {
         "property": "answers",
         "title": "Mga Sagot"
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Pangalan ng quiz",
-        "description": "Pangalan ng quiz na ginagamit para sa pagkakakilanlan sa xAPI sa mga analytics system."
       }
     ],
     "advanced": [
@@ -47,6 +25,28 @@
         "property": "collapsed",
         "title": "Magsimulang nakatiklop",
         "description": "Kapag natitiklop, magsimula bilang saradong hilera na nagpapakita lamang ng tanong at ng katayuan nito."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Format ng pagmamarka",
+        "description": "OER Schema: format ng pagmamarka para sa pagtatasang ito (hal. puntos, letra, porsyento, pagkumpleto)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Layunin sa pagkatuto",
+        "description": "OER Schema: layunin sa pagkatuto na kaugnay ng pagtatasang ito."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Pangalan ng quiz",
+        "description": "Pangalan ng quiz na ginagamit para sa pagkakakilanlan sa xAPI sa mga analytics system."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurso",
+        "description": "OER Schema: kursong pinaglalaanan ng pagtatasang ito."
       }
     ]
   }

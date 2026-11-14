@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Cieľ",
         "description": "Cesta k zostaveniu hry."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Šírka plátna",
+        "description": "CSS šírka plátna (napríklad px alebo em)."
       },
+      {
+        "property": "height",
+        "title": "Výška plátna",
+        "description": "CSS výška plátna (napríklad px alebo em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Metóda kompresie",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Verzia produktu",
         "description": "Verzia vydania."
-      },
-      {
-        "property": "width",
-        "title": "Šírka plátna",
-        "description": "CSS šírka plátna (napríklad px alebo em)."
-      },
-      {
-        "property": "height",
-        "title": "Výška plátna",
-        "description": "CSS výška plátna (napríklad px alebo em)."
       },
       {
         "property": "background",

@@ -14,16 +14,6 @@
         "property": "title",
         "title": "மாற்றுத் தலைப்பு",
         "description": "QR குறியீட்டு மூலத்துடன் இணைக்கப்பட்ட மாற்றுத் தலைப்பு."
-      },
-      {
-        "property": "modulesize",
-        "title": "அளவு",
-        "description": "QR குறியீட்டின் அளவு."
-      },
-      {
-        "property": "margin",
-        "title": "ஓரம்",
-        "description": "குறியீட்டைச் சுற்றியுள்ள இடைவெளி."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "அளவு",
+        "description": "QR குறியீட்டின் அளவு."
+      },
+      {
+        "property": "margin",
+        "title": "ஓரம்",
+        "description": "குறியீட்டைச் சுற்றியுள்ள இடைவெளி."
       }
     ]
   }

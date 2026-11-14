@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Pasina Museve",
         "description": "Viga museve webhatani."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Chinongedzo: target",
@@ -54,7 +52,9 @@
           "_top": "Hwindo repamusoro - _top",
           "_parent": "Hwindo remubereki - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Chinongedzo: rel",

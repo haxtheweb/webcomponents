@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Уксыз",
         "description": "Төймә угын яшерергә."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Сылтама: максат",
@@ -54,7 +52,9 @@
           "_top": "Өске тәрәзә - _top",
           "_parent": "Ата-ана тәрәзә - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Сылтама: rel",

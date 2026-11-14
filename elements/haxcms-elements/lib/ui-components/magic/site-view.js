@@ -397,9 +397,9 @@ export class SiteView extends I18NMixin(DDD) {
         title: "Site View",
         description:
           "A dynamic block that queries and displays site data based on criteria",
-        icon: "hax:view-gallery",
+        icon: "hax:admin-views",
         color: "grey",
-        tags: ["Other", "site", "views", "data", "display", "filter", "view"],
+        tags: ["Site", "views", "data", "display", "filter", "view"],
         handles: [],
         meta: {
           author: "HAXTheWeb core team",

@@ -9,7 +9,9 @@
         "slot": "",
         "title": "ਹਵਾਲੇ",
         "description": "ਇਸ ਪੁਸਤਕ-ਸੂਚੀ ਵਿਚਲੀਆਂ ਹਵਾਲਾ ਆਈਟਮਾਂ"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "ਕੋਰਸ",

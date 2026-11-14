@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "ไม่มีลูกศร",
         "description": "ซ่อนลูกศรของปุ่ม"
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "ลิงก์: target",
@@ -54,7 +52,9 @@
           "_top": "หน้าต่างบนสุด - _top",
           "_parent": "หน้าต่างหลัก - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "ลิงก์: rel",

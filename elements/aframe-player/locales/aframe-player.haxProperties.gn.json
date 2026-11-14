@@ -11,6 +11,13 @@
         "description": "URL ko marandurenda AR rehegua."
       },
       {
+        "property": "skyColor",
+        "title": "Ára sa'y",
+        "description": "Eiporavo ára sa'y ko jehechaukápe."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "Mba'e oĩha X AR-pe."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "Mba'e oĩha Z AR-pe."
-      },
-      {
-        "property": "skyColor",
-        "title": "Ára sa'y",
-        "description": "Eiporavo ára sa'y ko jehechaukápe."
       }
     ]
   }

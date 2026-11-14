@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Saƙon rashin tallafi",
-        "description": "Saƙo idan burauza ba ta iya nuna fayilolin PDF."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Saƙon mahaɗin rashin tallafi",
-        "description": "Rubutun mahaɗi idan burauza ba ta iya nuna fayilolin PDF."
-      },
-      {
         "property": "width",
         "title": "Faɗi",
         "description": "Faɗin mai duba PDF."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Tsawo",
         "description": "Tsawon mai duba PDF."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Saƙon rashin tallafi",
+        "description": "Saƙo idan burauza ba ta iya nuna fayilolin PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Saƙon mahaɗin rashin tallafi",
+        "description": "Rubutun mahaɗi idan burauza ba ta iya nuna fayilolin PDF."
       }
     ]
   }

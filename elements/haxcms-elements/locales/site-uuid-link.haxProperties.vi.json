@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "Liên kết HAX",
-    "description": "Liên kết đến một tài nguyên cụ thể trong trang web bạn đang làm việc."
+    "title": "Liên kết trang",
+    "description": "Liên kết tới một trang trong trang web bạn đang làm việc."
   },
   "settings": {
     "configure": [

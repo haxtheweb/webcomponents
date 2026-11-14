@@ -1,10 +1,10 @@
 {
   "gizmo": {
-    "title": "HAXcms: vaikinis blokas",
-    "description": "Dinaminis blokas, rodantis dabartinio puslapio vaikinius puslapius"
+    "title": "Antriniai puslapiai",
+    "description": "Pateikia dabartinio puslapio antrinius puslapius."
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "Dinaminis metodas",
@@ -14,7 +14,9 @@
           "parent": "Tėvinio elemento vaikiniai elementai",
           "ancestor": "Visi aukščiausio protėvio vaikiniai elementai"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "Pradžios lygis"

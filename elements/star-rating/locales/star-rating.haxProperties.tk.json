@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Interaktiw",
         "description": "Ulanyja baha bellemäge rugsat ber."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Rubrika şkalasy tertibi",

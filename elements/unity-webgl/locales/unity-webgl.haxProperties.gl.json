@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Destino",
         "description": "Ruta á compilación do xogo."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Largura do lenzo",
+        "description": "Largura CSS do lenzo (por exemplo, px ou em)."
       },
+      {
+        "property": "height",
+        "title": "Altura do lenzo",
+        "description": "Altura CSS do lenzo (por exemplo, px ou em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Método de compresión",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Versión do produto",
         "description": "Versión da publicación."
-      },
-      {
-        "property": "width",
-        "title": "Largura do lenzo",
-        "description": "Largura CSS do lenzo (por exemplo, px ou em)."
-      },
-      {
-        "property": "height",
-        "title": "Altura do lenzo",
-        "description": "Altura CSS do lenzo (por exemplo, px ou em)."
       },
       {
         "property": "background",

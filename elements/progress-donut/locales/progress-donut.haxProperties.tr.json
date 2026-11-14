@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "İlerleme Halkası",
-    "description": "İlerleme halkası"
+    "description": "Toplama doğru ilerlemeyi gösteren bir halka grafik."
   },
   "settings": {
     "configure": [
@@ -26,11 +26,6 @@
         "description": "Görsel için alternatif metin."
       },
       {
-        "property": "animated",
-        "title": "Animasyonlu",
-        "description": "İlerlemenin ilk yüklemede canlandırılıp canlandırılmayacağı"
-      },
-      {
         "property": "complete",
         "title": "Tamamlandı",
         "description": "Tamamlanan değerlerden oluşan bir dizi."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "Toplam",
         "description": "Tüm öğeler tamamlandığındaki toplam."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "Animasyonlu",
+        "description": "İlerlemenin ilk yüklemede canlandırılıp canlandırılmayacağı"
       },
       {
         "property": "startAngle",

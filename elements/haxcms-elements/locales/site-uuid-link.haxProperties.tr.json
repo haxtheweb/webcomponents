@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "HAX bağlantısı",
-    "description": "Üzerinde çalıştığınız sitedeki belirli bir kaynağa bağlantı."
+    "title": "Sayfa bağlantısı",
+    "description": "Üzerinde çalıştığınız sitedeki bir sayfaya bağlantı."
   },
   "settings": {
     "configure": [

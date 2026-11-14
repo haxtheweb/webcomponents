@@ -9,7 +9,21 @@
         "property": "target",
         "title": "ٹارگٹ",
         "description": "گیم بلڈ دا راہ۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "کینوس دی چوڑائی",
+        "description": "کینوس دی CSS چوڑائی (جیویں px یا em)۔"
       },
+      {
+        "property": "height",
+        "title": "کینوس دی اُچائی",
+        "description": "کینوس دی CSS اُچائی (جیویں px یا em)۔"
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "کمپریشن طریقہ",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "پراڈکٹ ورژن",
         "description": "ریلیز ورژن۔"
-      },
-      {
-        "property": "width",
-        "title": "کینوس دی چوڑائی",
-        "description": "کینوس دی CSS چوڑائی (جیویں px یا em)۔"
-      },
-      {
-        "property": "height",
-        "title": "کینوس دی اُچائی",
-        "description": "کینوس دی CSS اُچائی (جیویں px یا em)۔"
       },
       {
         "property": "background",

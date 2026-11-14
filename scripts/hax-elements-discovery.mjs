@@ -210,6 +210,10 @@ export const EXCLUDED_ELEMENT_TAGS = new Set([
   // developer tooling, not page content
   "web-container",
   "web-container-doc-player",
+  "d-d-docs",
+  "example-hax-element",
+  // an application with its own interface, not a block placed in a page
+  "grade-book",
   // chart family intentionally kept out of the registry
   "lrndesign-bar",
   "lrndesign-chart",

@@ -4,7 +4,7 @@
     "description": "Joriy sahifaning ichki sahifalarini koʻrsatuvchi dinamik blok"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "Dinamik usul",
@@ -14,7 +14,9 @@
           "parent": "Yuqori sahifaning ichki sahifalari",
           "ancestor": "Eng yuqori ajdoddan boshlab barcha ichki sahifalar"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "Boshlangʻich daraja"

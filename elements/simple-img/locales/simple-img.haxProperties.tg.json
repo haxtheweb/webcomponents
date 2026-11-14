@@ -26,7 +26,8 @@
         "description": "Барои хонандагони экран ва беҳтар кардани SEO муфид аст."
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "Сифат",

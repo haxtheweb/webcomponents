@@ -21,15 +21,6 @@
         "description": "ഉറവിടം ആക്സസ് ചെയ്ത തീയതി."
       },
       {
-        "property": "scope",
-        "title": "സ്കോപ്പ്",
-        "description": "ഉദ്ധരിക്കേണ്ട എലമെന്റ് സ്കോപ്പ്.",
-        "options": {
-          "sibling": "സിബ്ലിംഗ് എലമെന്റ്",
-          "parent": "പാരന്റ് എലമെന്റ്"
-        }
-      },
-      {
         "property": "license",
         "title": "ലൈസൻസ്",
         "description": "ഉദ്ധരിച്ച കൃതിയുടെ ലൈസൻസ്."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "സ്രഷ്ടാവ്",
         "description": "ഉദ്ധരിച്ച കൃതിയുടെ സ്രഷ്ടാവ് അല്ലെങ്കിൽ ഉടമ."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "സ്കോപ്പ്",
+        "description": "ഉദ്ധരിക്കേണ്ട എലമെന്റ് സ്കോപ്പ്.",
+        "options": {
+          "sibling": "സിബ്ലിംഗ് എലമെന്റ്",
+          "parent": "പാരന്റ് എലമെന്റ്"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "OER Schema തരം",

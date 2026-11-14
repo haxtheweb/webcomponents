@@ -1,10 +1,10 @@
 {
   "gizmo": {
-    "title": "HAXcms: bloc de fills",
-    "description": "Bloc dinàmic per mostrar els fills de la pàgina actual"
+    "title": "Pàgines filles",
+    "description": "Llista les pàgines filles de la pàgina actual."
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "Mètode dinàmic",
@@ -14,7 +14,9 @@
           "parent": "Fills del pare",
           "ancestor": "Tots els fills des de l'avantpassat més alt"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "Nivell inicial"

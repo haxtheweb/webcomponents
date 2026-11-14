@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "ਸਮਰਥਿਤ ਨਹੀਂ ਸੁਨੇਹਾ",
-        "description": "ਜਦੋਂ ਬ੍ਰਾਊਜ਼ਰ PDF ਫ਼ਾਈਲਾਂ ਨਹੀਂ ਦਿਖਾ ਸਕਦਾ ਤਾਂ ਸੁਨੇਹਾ।"
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "ਸਮਰਥਿਤ ਨਹੀਂ ਲਿੰਕ ਸੁਨੇਹਾ",
-        "description": "ਜਦੋਂ ਬ੍ਰਾਊਜ਼ਰ PDF ਫ਼ਾਈਲਾਂ ਨਹੀਂ ਦਿਖਾ ਸਕਦਾ ਤਾਂ ਲਿੰਕ ਲਿਖਤ।"
-      },
-      {
         "property": "width",
         "title": "ਚੌੜਾਈ",
         "description": "PDF ਵਿਊਅਰ ਦੀ ਚੌੜਾਈ।"
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "ਉਚਾਈ",
         "description": "PDF ਵਿਊਅਰ ਦੀ ਉਚਾਈ।"
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "ਸਮਰਥਿਤ ਨਹੀਂ ਸੁਨੇਹਾ",
+        "description": "ਜਦੋਂ ਬ੍ਰਾਊਜ਼ਰ PDF ਫ਼ਾਈਲਾਂ ਨਹੀਂ ਦਿਖਾ ਸਕਦਾ ਤਾਂ ਸੁਨੇਹਾ।"
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "ਸਮਰਥਿਤ ਨਹੀਂ ਲਿੰਕ ਸੁਨੇਹਾ",
+        "description": "ਜਦੋਂ ਬ੍ਰਾਊਜ਼ਰ PDF ਫ਼ਾਈਲਾਂ ਨਹੀਂ ਦਿਖਾ ਸਕਦਾ ਤਾਂ ਲਿੰਕ ਲਿਖਤ।"
       }
     ]
   }

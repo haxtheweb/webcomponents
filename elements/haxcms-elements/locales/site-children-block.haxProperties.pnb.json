@@ -4,7 +4,7 @@
     "description": "موجودہ صفحے دے ذیلی وکھاؤن لئی ڈائنامک بلاک"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "ڈائنامک طریقہ",
@@ -14,7 +14,9 @@
           "parent": "اُتلے دے ذیلی",
           "ancestor": "سب توں اُچے وڈکے دے سارے ذیلی"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "شروع درجہ"

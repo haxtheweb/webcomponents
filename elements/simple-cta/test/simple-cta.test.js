@@ -3,6 +3,13 @@ import { fixture, expect, html } from "@open-wc/testing";
 import "../simple-cta.js";
 import { SimpleCta } from "../simple-cta.js";
 
+// HAX schemas ship as JSON next to the element; read one whether the class
+// returns the object or the URL of its file
+const haxSchema = async (C) => {
+  const hp = C.haxProperties;
+  return typeof hp === "string" ? (await fetch(hp)).json() : hp;
+};
+
 describe("simple-cta test", () => {
   let element;
   beforeEach(async () => {
@@ -143,7 +150,7 @@ describe("simple-cta aria label computation", () => {
 
 describe("simple-cta hax integration", () => {
   it("exposes haxProperties for the HAX editor", async () => {
-    const props = SimpleCta.haxProperties;
+    const props = await haxSchema(SimpleCta);
     expect(props).to.exist;
     expect(props.type).to.equal("element");
     expect(props.canScale).to.be.true;

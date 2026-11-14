@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "Spotify பிளேயர் உட்பொதிவுகளுக்கான உறை."
+    "description": "Spotify பாடல், ஆல்பம் அல்லது பிளேலிஸ்டை உட்பொதிக்கவும்."
   },
   "settings": {
     "configure": [

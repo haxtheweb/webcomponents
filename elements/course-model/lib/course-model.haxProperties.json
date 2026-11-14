@@ -5,11 +5,11 @@
   "canEditSource": true,
   "contentEditable": false,
   "gizmo": {
-    "title": "course model",
+    "title": "Course model",
     "description": "Interactive layout for course concepts with details, animation, and knowledge checks.",
     "icon": "3d-rotation",
     "color": "purple",
-    "tags": ["Other", "Course", "Model", "Eberly"],
+    "tags": ["Instructional", "course", "model", "3d"],
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team"

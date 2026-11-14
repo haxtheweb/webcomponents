@@ -1,6 +1,6 @@
 {
   "gizmo": {
     "title": "タイプライター",
-    "description": "タイプライター効果"
+    "description": "1文字ずつ自動で入力されるテキスト。"
   }
 }

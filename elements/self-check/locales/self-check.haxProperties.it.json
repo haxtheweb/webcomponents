@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Autoverifica",
-    "description": "Gli utenti possono completare un'autoverifica."
+    "description": "Una domanda con una risposta nascosta che lo studente rivela per verificarsi."
   },
   "settings": {
     "configure": [
@@ -27,6 +27,13 @@
       {
         "slot": "",
         "title": "Risposta"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Link di approfondimento",
+        "description": "Link a informazioni aggiuntive."
       },
       {
         "property": "hasLearningObjective",
@@ -37,13 +44,6 @@
         "property": "assessing",
         "title": "Valuta",
         "description": "Riferimento all'attività emesso come oer:assessing."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "link",
-        "title": "Link di approfondimento",
-        "description": "Link a informazioni aggiuntive."
       }
     ]
   }

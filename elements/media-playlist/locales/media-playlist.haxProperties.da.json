@@ -4,22 +4,23 @@
     "description": "En playliste, der viser video- og lydafspillere i et layout med afspiller og sidepanel."
   },
   "settings": {
-    "configure": [
+    "configure": [],
+    "advanced": [
       {
         "property": "activeIndex",
         "title": "Startelement",
         "description": "Nummeret på det element, der startes med."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kursus",
-        "description": "Det kursus, som denne playliste er beregnet til (kursus-id eller URL)."
       }
     ],
     "developer": [
       {
         "title": "Medier",
         "description": "Videoerne og lyden i afspilningslisten. Redigeres ikke her: sideoversigten bruger dem til at vide, hvilke blokke der kan slippes ind."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursus",
+        "description": "Det kursus, som denne playliste er beregnet til (kursus-id eller URL)."
       }
     ]
   }

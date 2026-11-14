@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "স্টার রেটিং",
-    "description": "রেটিং দেখানোর উইজেট বা রেটিং দেওয়ার বাটন।"
+    "description": "তারকা রেটিং দেখান বা পাঠকদের বেছে নিতে দিন।"
   },
   "settings": {
     "configure": [
@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "ইন্টারঅ্যাকটিভ",
         "description": "ব্যবহারকারীকে রেটিং দেওয়ার অনুমতি দিন।"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "রুব্রিক স্কেল মোড",

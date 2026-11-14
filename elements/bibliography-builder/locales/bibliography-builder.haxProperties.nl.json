@@ -9,7 +9,9 @@
         "slot": "",
         "title": "Citaties",
         "description": "Citatie-items in deze bibliografie"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "Cursus",

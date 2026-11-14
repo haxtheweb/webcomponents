@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "كتلة من محتوى Markdown مباشرة أو محمّلة عن بُعد"
+    "description": "محتوى Markdown مكتوب مباشرة أو محمّل من ملف."
   },
   "settings": {
     "configure": [

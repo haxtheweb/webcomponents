@@ -26,11 +26,6 @@
         "description": "تصوير لاءِ متبادل متن."
       },
       {
-        "property": "animated",
-        "title": "متحرڪ",
-        "description": "ڇا پهرين لوڊ تي پيش رفت متحرڪ ٿئي"
-      },
-      {
         "property": "complete",
         "title": "مڪمل",
         "description": "مڪمل ٿيل قدرن جي قطار."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "ڪل",
         "description": "جڏهن سڀ شيون مڪمل هجن ته ڪل."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "متحرڪ",
+        "description": "ڇا پهرين لوڊ تي پيش رفت متحرڪ ٿئي"
       },
       {
         "property": "startAngle",

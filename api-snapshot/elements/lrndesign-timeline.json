@@ -23,7 +23,7 @@
   "cssParts": [],
   "cssProperties": [],
   "hax": {
-    "schema": "elements/lrndesign-timeline/lrndesign-timeline.js",
+    "schema": "elements/lrndesign-timeline/lib/lrndesign-timeline.haxProperties.json",
     "gizmo": true,
     "properties": [
       "accentColor",

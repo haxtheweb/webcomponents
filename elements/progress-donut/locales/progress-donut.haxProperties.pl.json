@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Pierścień postępu",
-    "description": "Pierścieniowy wskaźnik postępu"
+    "description": "Wykres pierścieniowy pokazujący postęp względem całości."
   },
   "settings": {
     "configure": [
@@ -26,11 +26,6 @@
         "description": "Tekst alternatywny obrazu."
       },
       {
-        "property": "animated",
-        "title": "Animowany",
-        "description": "Czy postęp jest animowany przy pierwszym wczytaniu"
-      },
-      {
         "property": "complete",
         "title": "Ukończono",
         "description": "Tablica ukończonych wartości."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "Suma",
         "description": "Suma, gdy wszystkie elementy są ukończone."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "Animowany",
+        "description": "Czy postęp jest animowany przy pierwszym wczytaniu"
       },
       {
         "property": "startAngle",

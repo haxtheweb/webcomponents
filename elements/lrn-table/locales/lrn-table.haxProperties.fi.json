@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "CSV-taulukko",
-    "description": "Luo taulukon CSV-tiedostosta riippumatta sen sijainnista."
+    "description": "Näyttää CSV-tiedoston saavutettavana taulukkona."
   },
   "settings": {
     "configure": [

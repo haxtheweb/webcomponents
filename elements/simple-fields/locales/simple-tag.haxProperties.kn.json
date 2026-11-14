@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "ಸ್ವಯಂ ಒತ್ತು ಬಣ್ಣ",
         "description": "ಲೇಬಲ್ ಪಠ್ಯದಿಂದ ಒತ್ತು ಬಣ್ಣವನ್ನು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಪಡೆಯಿರಿ."
-      },
-      {
-        "property": "cancelButton",
-        "title": "ರದ್ದು ಬಟನ್",
-        "description": "ಪಿಲ್ ಒಳಗೆ ತೆಗೆದುಹಾಕು/ರದ್ದು ಐಕಾನ್ ಬಟನ್ ತೋರಿಸಿ."
-      },
-      {
-        "property": "readonly",
-        "title": "ಓದಲು ಮಾತ್ರ",
-        "description": "ಪಿಲ್ ಪ್ರದರ್ಶನಕ್ಕೆ ಮಾತ್ರ ಆಗುವಂತೆ ರದ್ದು ಬಟನ್ ಮರೆಮಾಡಿ."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "ನೀಲಿ ಬೂದು",
           "grey": "ಬೂದು"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "ರದ್ದು ಬಟನ್",
+        "description": "ಪಿಲ್ ಒಳಗೆ ತೆಗೆದುಹಾಕು/ರದ್ದು ಐಕಾನ್ ಬಟನ್ ತೋರಿಸಿ."
+      },
+      {
+        "property": "readonly",
+        "title": "ಓದಲು ಮಾತ್ರ",
+        "description": "ಪಿಲ್ ಪ್ರದರ್ಶನಕ್ಕೆ ಮಾತ್ರ ಆಗುವಂತೆ ರದ್ದು ಬಟನ್ ಮರೆಮಾಡಿ."
       }
     ]
   }

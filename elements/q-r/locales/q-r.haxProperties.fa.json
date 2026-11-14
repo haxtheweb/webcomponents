@@ -14,16 +14,6 @@
         "property": "title",
         "title": "عنوان جایگزین",
         "description": "عنوان جایگزین پیوندشده به منبع کد QR."
-      },
-      {
-        "property": "modulesize",
-        "title": "اندازه",
-        "description": "اندازهٔ کد QR."
-      },
-      {
-        "property": "margin",
-        "title": "حاشیه",
-        "description": "فاصلهٔ پیرامون کد."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "اندازه",
+        "description": "اندازهٔ کد QR."
+      },
+      {
+        "property": "margin",
+        "title": "حاشیه",
+        "description": "فاصلهٔ پیرامون کد."
       }
     ]
   }

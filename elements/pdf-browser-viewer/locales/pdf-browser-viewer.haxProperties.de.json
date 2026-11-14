@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "PDF-Browseransicht",
+    "title": "PDF-Betrachter",
     "description": "Eine PDF-Datei inline einbetten, mit optionalem Kartenlayout und Download-Schaltfläche."
   },
   "settings": {
@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Meldung bei fehlender Unterstützung",
-        "description": "Meldung, wenn der Browser keine PDF-Dateien anzeigen kann."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Link-Meldung bei fehlender Unterstützung",
-        "description": "Linktext, wenn der Browser keine PDF-Dateien anzeigen kann."
-      },
-      {
         "property": "width",
         "title": "Breite",
         "description": "Breite der PDF-Ansicht."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Höhe",
         "description": "Höhe der PDF-Ansicht."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Meldung bei fehlender Unterstützung",
+        "description": "Meldung, wenn der Browser keine PDF-Dateien anzeigen kann."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Link-Meldung bei fehlender Unterstützung",
+        "description": "Linktext, wenn der Browser keine PDF-Dateien anzeigen kann."
       }
     ]
   }

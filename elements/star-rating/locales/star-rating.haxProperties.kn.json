@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "ಸಂವಾದಾತ್ಮಕ",
         "description": "ರೇಟಿಂಗ್ ಹೊಂದಿಸಲು ಬಳಕೆದಾರರ ಸಂವಹನವನ್ನು ಅನುಮತಿಸಿ."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "ರೂಬ್ರಿಕ್ ಮಾಪಕ ಮೋಡ್",

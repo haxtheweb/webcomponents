@@ -2,6 +2,13 @@ import { fixture, expect, html } from "@open-wc/testing";
 
 import "../progress-donut.js";
 
+// HAX schemas ship as JSON next to the element; read one whether the class
+// returns the object or the URL of its file
+const haxSchema = async (C) => {
+  const hp = C.haxProperties;
+  return typeof hp === "string" ? (await fetch(hp)).json() : hp;
+};
+
 describe("progress-donut test", () => {
   let element;
   beforeEach(async () => {
@@ -123,11 +130,12 @@ describe("progress-donut data model", () => {
     expect(el.options.startAngle).to.equal(0);
   });
 
-  it("registers haxProperties for the HAX editor", () => {
-    const hax = customElements.get("progress-donut").haxProperties;
-    expect(hax.gizmo.title).to.equal("Progress Donut");
-    expect(hax.gizmo.icon).to.equal("av:play-circle-filled");
-    expect(hax.settings.configure).to.have.lengthOf(8);
+  it("registers haxProperties for the HAX editor", async () => {
+    const hax = await haxSchema(customElements.get("progress-donut"));
+    expect(hax.gizmo.title).to.equal("Progress donut");
+    expect(hax.gizmo.icon).to.equal("device:data-usage");
+    expect(hax.settings.configure).to.have.lengthOf(6);
+    expect(hax.settings.advanced).to.have.lengthOf(2);
     const totalSetting = hax.settings.configure.find(
       (setting) => setting.property === "total",
     );

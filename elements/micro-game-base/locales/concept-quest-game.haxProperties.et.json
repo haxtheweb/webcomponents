@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Mõistete seiklusmäng",
-    "description": "Maailm avastamiseks. Mõisted leiavad sind ja esitavad küsimuse. Vasta õigesti, et üks võita ja selle maja avada. Kokkuvõte näitab katseid ja mida kordada."
+    "description": "Avatud kaardiga mäng, kus mõisted esitavad küsimusi ja õiged vastused avavad kaardi."
   },
   "settings": {
     "configure": [
@@ -91,7 +91,9 @@
         "property": "gameTitle",
         "title": "Mängu nimi",
         "description": "Annab sellele mängule nime edenemissündmustes ja OER Schema märgistuses."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Mängu ID",

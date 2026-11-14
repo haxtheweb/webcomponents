@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Sąvokų žemėlapio žaidimas",
-    "description": "Trumpas žaidimas klaviatūra. Veikėjas eina prie kiekvienos sąvokos žemėlapyje, o ji pati save paaiškina. Paliesk visas ir gausi konfeti bei užklausą nukopijuoti."
+    "description": "Trumpas klaviatūros žaidimas, kuriame veikėjas eina žemėlapiu, o kiekviena sąvoka paaiškina save."
   },
   "settings": {
     "configure": [
@@ -86,7 +86,9 @@
         "property": "gameTitle",
         "title": "Žaidimo pavadinimas",
         "description": "Įvardija šį žaidimą eigos įvykiuose ir OER Schema žymėjime."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Žaidimo ID",

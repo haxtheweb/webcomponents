@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Kikinmanta rikchachiq llimpi",
         "description": "Sutichay qillqamanta rikchachiq llimpita kikinmanta hurquy."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Chinkachiy ñit'ina",
-        "description": "Pastilla ukhupi qichuy/chinkachiy unancha ñit'inata rikuchiy."
-      },
-      {
-        "property": "readonly",
-        "title": "Ñawirinallapaq",
-        "description": "Chinkachiy ñit'inata pakay, pastilla rikuchinallapaq kananpaq."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Anqas uqi",
           "grey": "Uqi"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Chinkachiy ñit'ina",
+        "description": "Pastilla ukhupi qichuy/chinkachiy unancha ñit'inata rikuchiy."
+      },
+      {
+        "property": "readonly",
+        "title": "Ñawirinallapaq",
+        "description": "Chinkachiy ñit'inata pakay, pastilla rikuchinallapaq kananpaq."
       }
     ]
   }

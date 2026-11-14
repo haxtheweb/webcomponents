@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "خودسنجی",
-    "description": "کاربران می‌توانند یک خودسنجی را انجام دهند."
+    "description": "پرسشی با پاسخ پنهان که یادگیرنده برای سنجش خود آن را آشکار می‌کند."
   },
   "settings": {
     "configure": [
@@ -27,6 +27,13 @@
       {
         "slot": "",
         "title": "پاسخ"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "پیوند بیشتر",
+        "description": "پیوند به اطلاعات بیشتر."
       },
       {
         "property": "hasLearningObjective",
@@ -37,13 +44,6 @@
         "property": "assessing",
         "title": "در حال سنجش",
         "description": "ارجاع فعالیت که به‌صورت oer:assessing تولید می‌شود."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "link",
-        "title": "پیوند بیشتر",
-        "description": "پیوند به اطلاعات بیشتر."
       }
     ]
   }

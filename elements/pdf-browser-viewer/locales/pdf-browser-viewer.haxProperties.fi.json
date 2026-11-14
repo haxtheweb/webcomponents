@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "PDF-katseluohjelma",
+    "title": "PDF-katselin",
     "description": "Upota PDF-tiedosto sivulle valinnaisella korttiasettelulla ja latauspainikkeella."
   },
   "settings": {
@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Ei tuettu -viesti",
-        "description": "Viesti, kun selain ei pysty näyttämään PDF-tiedostoja."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Ei tuettu -linkkiviesti",
-        "description": "Linkkiteksti, kun selain ei pysty näyttämään PDF-tiedostoja."
-      },
-      {
         "property": "width",
         "title": "Leveys",
         "description": "PDF-katseluohjelman leveys."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Korkeus",
         "description": "PDF-katseluohjelman korkeus."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Ei tuettu -viesti",
+        "description": "Viesti, kun selain ei pysty näyttämään PDF-tiedostoja."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Ei tuettu -linkkiviesti",
+        "description": "Linkkiteksti, kun selain ei pysty näyttämään PDF-tiedostoja."
       }
     ]
   }

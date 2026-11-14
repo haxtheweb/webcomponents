@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Evaluare cu stele",
-    "description": "Widget de afișare a evaluării sau buton pentru evaluare."
+    "description": "Afișați o evaluare cu stele sau lăsați cititorii să aleagă una."
   },
   "settings": {
     "configure": [
@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Interactiv",
         "description": "Permite interacțiunea utilizatorului pentru setarea evaluării."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Mod scară de rubrică",

@@ -9,7 +9,21 @@
         "property": "target",
         "title": "ציל",
         "description": "וועג צום שפּיל־בויונג."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "ברייט פֿון לײַוונט",
+        "description": "CSS־ברייט פֿון דער לײַוונט (למשל px אָדער em)."
       },
+      {
+        "property": "height",
+        "title": "הייך פֿון לײַוונט",
+        "description": "CSS־הייך פֿון דער לײַוונט (למשל px אָדער em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "קאָמפּרעסיע־מעטאָד",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "פּראָדוקט־ווערסיע",
         "description": "ווערסיע פֿון דער אַרויסגאַבע."
-      },
-      {
-        "property": "width",
-        "title": "ברייט פֿון לײַוונט",
-        "description": "CSS־ברייט פֿון דער לײַוונט (למשל px אָדער em)."
-      },
-      {
-        "property": "height",
-        "title": "הייך פֿון לײַוונט",
-        "description": "CSS־הייך פֿון דער לײַוונט (למשל px אָדער em)."
       },
       {
         "property": "background",

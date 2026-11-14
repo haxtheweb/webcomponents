@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "Izinkinobho",
         "description": "Iqembu lezinkinobho eliboniswa ngaphansi kombhalo."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "Umbhalo wehange",
         "description": "Ilebula yehange eboniswa ekuzulazuleni."
       }
-    ]
+    ],
+    "developer": []
   }
 }

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Tapahtumamerkki",
-    "description": "Tapahtumamerkkikomponentti."
+    "description": "Konferenssityylinen nimikyltti, jossa on kuva, nimi ja organisaatio."
   },
   "settings": {
     "configure": [

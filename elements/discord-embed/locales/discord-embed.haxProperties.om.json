@@ -9,7 +9,9 @@
         "property": "source",
         "title": "URL Qabeenyaa",
         "description": "URL qabeenyaa."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Dheerina",

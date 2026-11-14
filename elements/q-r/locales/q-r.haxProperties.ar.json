@@ -14,16 +14,6 @@
         "property": "title",
         "title": "عنوان بديل",
         "description": "عنوان بديل مرتبط بمصدر رمز QR."
-      },
-      {
-        "property": "modulesize",
-        "title": "الحجم",
-        "description": "حجم رمز QR."
-      },
-      {
-        "property": "margin",
-        "title": "الهامش",
-        "description": "الإطار المحيط بالرمز."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "الحجم",
+        "description": "حجم رمز QR."
+      },
+      {
+        "property": "margin",
+        "title": "الهامش",
+        "description": "الإطار المحيط بالرمز."
       }
     ]
   }

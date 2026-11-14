@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "अन्तरक्रियात्मक",
         "description": "मूल्याङ्कन सेट गर्न प्रयोगकर्ता अन्तरक्रिया अनुमति दिनुहोस्।"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "रुब्रिक मापन मोड",

@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "අන්තර්ක්‍රියාකාරී",
         "description": "ශ්‍රේණිගත කිරීම සැකසීමට පරිශීලක අන්තර්ක්‍රියාවට ඉඩ දෙන්න."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Rubric පරිමාණ ප්‍රකාරය",

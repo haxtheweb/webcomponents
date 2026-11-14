@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Аудио",
-    "description": "Ово може приказати видео на веома приступачан начин без обзира на извор."
+    "description": "Приступачан аудио плејер са подршком за транскрипт."
   },
   "settings": {
     "configure": [
@@ -46,6 +46,16 @@
         "property": "accentColor",
         "title": "Акцентна боја",
         "description": "Изаберите боју акцента за плејер."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Сакриј временске ознаке",
+        "description": "Сакриј временске ознаке у транскрипту."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Сакриј транскрипт",
+        "description": "Подразумевано сакриј транскрипт."
       }
     ],
     "developer": [
@@ -72,16 +82,6 @@
         "property": "disableInteractive",
         "title": "Онемогући интерактивност",
         "description": "Онемогући интерактивни режим који транскрипт чини кликабилним."
-      },
-      {
-        "property": "hideTimestamps",
-        "title": "Сакриј временске ознаке",
-        "description": "Сакриј временске ознаке у транскрипту."
-      },
-      {
-        "property": "hideTranscript",
-        "title": "Сакриј транскрипт",
-        "description": "Подразумевано сакриј транскрипт."
       },
       {
         "property": "lang",

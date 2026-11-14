@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Paralakso paveikslėlis",
-    "description": "Paveikslėlio slinkimas"
+    "description": "Viso pločio vaizdas, slenkantis lėčiau nei puslapis, su antrašte ant jo."
   },
   "settings": {
     "configure": [

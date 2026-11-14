@@ -29,7 +29,7 @@
   ],
   "cssProperties": [],
   "hax": {
-    "schema": "elements/github-preview/github-preview.js",
+    "schema": "elements/github-preview/lib/github-preview.haxProperties.json",
     "gizmo": true,
     "properties": [
       "extended",

@@ -12,7 +12,7 @@
   "cssParts": [],
   "cssProperties": [],
   "hax": {
-    "schema": "elements/html-block/html-block.js",
+    "schema": "elements/html-block/lib/html-block.haxProperties.json",
     "gizmo": true,
     "properties": [],
     "attributes": [],

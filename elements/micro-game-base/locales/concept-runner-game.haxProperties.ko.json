@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "개념 러너 게임",
-    "description": "횡스크롤 게임이에요. 캐릭터는 불타며 멈추지 않고 달려요. 점프해서 좋은 개념은 잡고 나쁜 개념은 뛰어넘은 다음, 무엇이 좋았고 나빴는지 요약을 확인하세요."
+    "description": "횡스크롤 게임: 점프해서 올바른 개념을 잡고 틀린 개념을 피하세요."
   },
   "settings": {
     "configure": [
@@ -89,7 +89,9 @@
         "property": "gameTitle",
         "title": "게임 이름",
         "description": "진행 이벤트와 OER Schema 마크업에서 이 게임의 이름으로 쓰여요."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "게임 ID",

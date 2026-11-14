@@ -11,31 +11,9 @@
         "description": "Суроонун аталышы."
       },
       {
-        "property": "gradingFormat",
-        "title": "Баалоо форматы",
-        "description": "OER Schema: бул баалоонун баалоо форматы (мисалы, упайлар, тамга, пайыз, аткаруу)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Окуу максаты",
-        "description": "OER Schema: бул баалоого байланыштуу окуу максаты."
-      },
-      {
-        "property": "forCourse",
-        "title": "Курс",
-        "description": "OER Schema: бул баалоо арналган курс."
-      },
-      {
         "property": "answers",
         "title": "Жооптор",
         "description": "Жооптордун тартиби туура ырааттуулукту аныктайт."
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Тесттин аталышы",
-        "description": "Аналитика системаларында xAPI идентификациясы үчүн колдонулган тест аталышы."
       }
     ],
     "advanced": [
@@ -48,6 +26,28 @@
         "property": "collapsed",
         "title": "Жыйылган абалда баштоо",
         "description": "Жыйыла турган болгондо, суроону жана анын абалын гана көрсөткөн жабык сап катары башталат."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Баалоо форматы",
+        "description": "OER Schema: бул баалоонун баалоо форматы (мисалы, упайлар, тамга, пайыз, аткаруу)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Окуу максаты",
+        "description": "OER Schema: бул баалоого байланыштуу окуу максаты."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Тесттин аталышы",
+        "description": "Аналитика системаларында xAPI идентификациясы үчүн колдонулган тест аталышы."
+      },
+      {
+        "property": "forCourse",
+        "title": "Курс",
+        "description": "OER Schema: бул баалоо арналган курс."
       }
     ]
   }

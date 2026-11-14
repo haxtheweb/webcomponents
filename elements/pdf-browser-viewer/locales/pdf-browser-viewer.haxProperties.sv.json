@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "PDF-visare i webbläsaren",
+    "title": "PDF-visare",
     "description": "Bädda in en PDF-fil i sidan med valfri kortlayout och nedladdningsknapp."
   },
   "settings": {
@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Meddelande om att det inte stöds",
-        "description": "Meddelande när webbläsaren inte kan visa PDF-filer."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Länkmeddelande om att det inte stöds",
-        "description": "Länktext när webbläsaren inte kan visa PDF-filer."
-      },
-      {
         "property": "width",
         "title": "Bredd",
         "description": "PDF-visarens bredd."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Höjd",
         "description": "PDF-visarens höjd."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Meddelande om att det inte stöds",
+        "description": "Meddelande när webbläsaren inte kan visa PDF-filer."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Länkmeddelande om att det inte stöds",
+        "description": "Länktext när webbläsaren inte kan visa PDF-filer."
       }
     ]
   }

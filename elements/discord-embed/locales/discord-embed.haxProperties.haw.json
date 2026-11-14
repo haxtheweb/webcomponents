@@ -9,7 +9,9 @@
         "property": "source",
         "title": "URL Kumuwaiwai",
         "description": "URL kumuwaiwai."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Kiʻekiʻe",

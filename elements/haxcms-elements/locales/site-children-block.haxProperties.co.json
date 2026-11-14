@@ -4,7 +4,7 @@
     "description": "Bloccu dinamicu per mustrà i figlioli di a pagina attuale"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "Metodu dinamicu",
@@ -14,7 +14,9 @@
           "parent": "Figlioli di u parente",
           "ancestor": "Tutti i figlioli da l'antenatu più altu"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "Livellu d'iniziu"

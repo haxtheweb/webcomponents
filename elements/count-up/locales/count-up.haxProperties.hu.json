@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Utótag szövege",
         "description": "A szám után megjelenő szöveg (pl. '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Előtag helye",
-        "description": "Opcionális beillesztett tartalom a szám előtt."
-      },
-      {
-        "slot": "suffix",
-        "title": "Utótag helye",
-        "description": "Opcionális beillesztett tartalom a szám után."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Nincs gyorsítás",
         "description": "A gyorsítás kikapcsolása, hogy a számlálás egyenletes legyen."
+      },
+      {
+        "slot": "prefix",
+        "title": "Előtag helye",
+        "description": "Opcionális beillesztett tartalom a szám előtt."
+      },
+      {
+        "slot": "suffix",
+        "title": "Utótag helye",
+        "description": "Opcionális beillesztett tartalom a szám után."
       }
     ]
   }

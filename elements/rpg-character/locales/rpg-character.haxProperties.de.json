@@ -11,11 +11,6 @@
         "description": "Wort, aus dem eine zufällige Figur erzeugt wird."
       },
       {
-        "property": "code",
-        "title": "Figurencode",
-        "description": "Füge einen gespeicherten Code ein, um diese Figur wiederherzustellen."
-      },
-      {
         "property": "hat",
         "title": "Hut",
         "description": "Hutstil.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Maske",
-        "description": "Maske über Gesicht oder Kopf.",
-        "options": {
-          "none": "Keine",
-          "lion": "Löwe",
-          "plague": "Pestarzt",
-          "theater": "Theatermaske",
-          "pumpkin": "Kürbis",
-          "ghost": "Geist",
-          "mummy": "Mumie",
-          "wrestler": "Ringermaske",
-          "block-head": "Klotzkopf",
-          "web": "Netzmaske",
-          "werewolf": "Werwolfgesicht",
-          "shadow": "Schattengesicht"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Make-up",
-        "description": "Gesichtsbemalung oder Lippenstift.",
-        "options": {
-          "none": "Keins",
-          "red-lipstick": "Roter Lippenstift",
-          "pink-lipstick": "Rosa Lippenstift",
-          "berry-lipstick": "Beerenfarbener Lippenstift",
-          "clown": "Clownschminke",
-          "fangs": "Reißzähne",
-          "skull": "Totenkopf-Schminke",
-          "zombie": "Zombie-Schminke",
-          "red-nose": "Rote Nase",
-          "white-beard": "Weißer Bart",
-          "domino": "Heldenmaske",
-          "carrot": "Karottennase",
-          "bunny": "Hasennase",
-          "mustache": "Schnurrbart",
-          "monster": "Monster-Schminke",
-          "round-glasses": "Runde Brille"
-        }
-      },
-      {
         "property": "expression",
         "title": "Gesichtsausdruck",
         "description": "Ausdruck des Gesichts.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Haustier",
+        "description": "Haustier neben der Figur.",
+        "options": {
+          "none": "Keins",
+          "cat": "Katze",
+          "dog": "Hund",
+          "bunny": "Häschen",
+          "goldfish": "Goldfisch",
+          "slime": "Schleim",
+          "squirrel": "Eichhörnchen",
+          "dragon": "Babydrache",
+          "parrot": "Papagei",
+          "owl": "Eule",
+          "bat": "Fledermaus"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Figurencode",
+        "description": "Füge einen gespeicherten Code ein, um diese Figur wiederherzustellen."
+      },
+      {
+        "property": "mask",
+        "title": "Maske",
+        "description": "Maske über Gesicht oder Kopf.",
+        "options": {
+          "none": "Keine",
+          "lion": "Löwe",
+          "plague": "Pestarzt",
+          "theater": "Theatermaske",
+          "pumpkin": "Kürbis",
+          "ghost": "Geist",
+          "mummy": "Mumie",
+          "wrestler": "Ringermaske",
+          "block-head": "Klotzkopf",
+          "web": "Netzmaske",
+          "werewolf": "Werwolfgesicht",
+          "shadow": "Schattengesicht"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Make-up",
+        "description": "Gesichtsbemalung oder Lippenstift.",
+        "options": {
+          "none": "Keins",
+          "red-lipstick": "Roter Lippenstift",
+          "pink-lipstick": "Rosa Lippenstift",
+          "berry-lipstick": "Beerenfarbener Lippenstift",
+          "clown": "Clownschminke",
+          "fangs": "Reißzähne",
+          "skull": "Totenkopf-Schminke",
+          "zombie": "Zombie-Schminke",
+          "red-nose": "Rote Nase",
+          "white-beard": "Weißer Bart",
+          "domino": "Heldenmaske",
+          "carrot": "Karottennase",
+          "bunny": "Hasennase",
+          "mustache": "Schnurrbart",
+          "monster": "Monster-Schminke",
+          "round-glasses": "Runde Brille"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Flaggentext",
         "description": "Bis zu 4 Buchstaben auf der Flagge."
@@ -310,24 +330,6 @@
           "skates": "Schlittschuhe",
           "skateboard": "Skateboard",
           "hoverboard": "Schwebebrett"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Haustier",
-        "description": "Haustier neben der Figur.",
-        "options": {
-          "none": "Keins",
-          "cat": "Katze",
-          "dog": "Hund",
-          "bunny": "Häschen",
-          "goldfish": "Goldfisch",
-          "slime": "Schleim",
-          "squirrel": "Eichhörnchen",
-          "dragon": "Babydrache",
-          "parrot": "Papagei",
-          "owl": "Eule",
-          "bat": "Fledermaus"
         }
       },
       {

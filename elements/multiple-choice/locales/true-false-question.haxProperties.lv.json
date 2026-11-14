@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Jautājums „Patiess / nepatiess”",
-    "description": "Jautājums „patiess vai nepatiess”"
+    "description": "Apgalvojums, ko izglītojamais atzīmē kā patiesu vai nepatiesu."
   },
   "settings": {
     "configure": [

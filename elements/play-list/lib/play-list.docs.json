@@ -15,8 +15,7 @@
     "grid",
     "player",
     "slideshow",
-    "carousel",
-    "player"
+    "carousel"
   ],
   "haxCapable": true,
   "import": "@haxtheweb/play-list/play-list.js",
@@ -148,8 +147,7 @@
         "grid",
         "player",
         "slideshow",
-        "carousel",
-        "player"
+        "carousel"
       ],
       "handles": [],
       "meta": {

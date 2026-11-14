@@ -11,11 +11,6 @@
         "description": "Реч која се користи за генерисање насумичног лика."
       },
       {
-        "property": "code",
-        "title": "Код лика",
-        "description": "Налепите сачувани код да поново направите тог лика."
-      },
-      {
         "property": "hat",
         "title": "Шешир",
         "description": "Стил шешира.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Маска",
-        "description": "Маска која се носи преко лица или главе.",
-        "options": {
-          "none": "Ништа",
-          "lion": "Лав",
-          "plague": "Лекар из доба куге",
-          "theater": "Позориште",
-          "pumpkin": "Бундева",
-          "ghost": "Дух",
-          "mummy": "Мумија",
-          "wrestler": "Рвачка маска",
-          "block-head": "Глава од блокова",
-          "web": "Маска мреже",
-          "werewolf": "Лице вукодлака",
-          "shadow": "Сеновито лице"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Шминка",
-        "description": "Боја за лице или кармин.",
-        "options": {
-          "none": "Ништа",
-          "red-lipstick": "Црвени кармин",
-          "pink-lipstick": "Розе кармин",
-          "berry-lipstick": "Кармин боје бобица",
-          "clown": "Клоунска боја",
-          "fangs": "Очњаци",
-          "skull": "Шминка лобање",
-          "zombie": "Зомби шминка",
-          "red-nose": "Црвени нос",
-          "white-beard": "Бела брада",
-          "domino": "Маска хероја",
-          "carrot": "Нос од шаргарепе",
-          "bunny": "Зечји нос",
-          "mustache": "Бркови",
-          "monster": "Шминка чудовишта",
-          "round-glasses": "Округле наочаре"
-        }
-      },
-      {
         "property": "expression",
         "title": "Израз",
         "description": "Израз лица.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Љубимац",
+        "description": "Љубимац поред лика.",
+        "options": {
+          "none": "Ништа",
+          "cat": "Мачка",
+          "dog": "Пас",
+          "bunny": "Зечић",
+          "goldfish": "Златна рибица",
+          "slime": "Слуз",
+          "squirrel": "Веверица",
+          "dragon": "Мали змај",
+          "parrot": "Папагај",
+          "owl": "Сова",
+          "bat": "Слепи миш"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Код лика",
+        "description": "Налепите сачувани код да поново направите тог лика."
+      },
+      {
+        "property": "mask",
+        "title": "Маска",
+        "description": "Маска која се носи преко лица или главе.",
+        "options": {
+          "none": "Ништа",
+          "lion": "Лав",
+          "plague": "Лекар из доба куге",
+          "theater": "Позориште",
+          "pumpkin": "Бундева",
+          "ghost": "Дух",
+          "mummy": "Мумија",
+          "wrestler": "Рвачка маска",
+          "block-head": "Глава од блокова",
+          "web": "Маска мреже",
+          "werewolf": "Лице вукодлака",
+          "shadow": "Сеновито лице"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Шминка",
+        "description": "Боја за лице или кармин.",
+        "options": {
+          "none": "Ништа",
+          "red-lipstick": "Црвени кармин",
+          "pink-lipstick": "Розе кармин",
+          "berry-lipstick": "Кармин боје бобица",
+          "clown": "Клоунска боја",
+          "fangs": "Очњаци",
+          "skull": "Шминка лобање",
+          "zombie": "Зомби шминка",
+          "red-nose": "Црвени нос",
+          "white-beard": "Бела брада",
+          "domino": "Маска хероја",
+          "carrot": "Нос од шаргарепе",
+          "bunny": "Зечји нос",
+          "mustache": "Бркови",
+          "monster": "Шминка чудовишта",
+          "round-glasses": "Округле наочаре"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Текст на застави",
         "description": "До 4 слова приказана на застави."
@@ -310,24 +330,6 @@
           "skates": "Клизаљке",
           "skateboard": "Скејтборд",
           "hoverboard": "Летећа даска"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Љубимац",
-        "description": "Љубимац поред лика.",
-        "options": {
-          "none": "Ништа",
-          "cat": "Мачка",
-          "dog": "Пас",
-          "bunny": "Зечић",
-          "goldfish": "Златна рибица",
-          "slime": "Слуз",
-          "squirrel": "Веверица",
-          "dragon": "Мали змај",
-          "parrot": "Папагај",
-          "owl": "Сова",
-          "bat": "Слепи миш"
         }
       },
       {

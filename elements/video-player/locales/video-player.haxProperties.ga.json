@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Íomhá phóstaeir",
         "description": "URL na híomhá póstaeir."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Rianta téacs",
         "description": "Fotheidil dúnta, fotheidil, cur síos agus rianta téacs eile don fhíseán."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Am tosaigh",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Rian closcuir",
         "description": "URL chuig rian closcuir (comhad MP3) a thugann insint ar na gnéithe amhairc."
+      },
+      {
+        "property": "accentColor",
+        "title": "Dath aibhsithe",
+        "description": "(dímholta) Roghnaigh an dath aiceanta don seinnteoir."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Teanga",
         "description": "Teanga na meán."
-      },
-      {
-        "property": "accentColor",
-        "title": "Dath aibhsithe",
-        "description": "(dímholta) Roghnaigh an dath aiceanta don seinnteoir."
       }
     ]
   }

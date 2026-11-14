@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "コンセプトランナーゲーム",
-    "description": "横スクロールゲーム。キャラクターは炎をまとって止まらずに走ります。ジャンプして良いコンセプトを取り、悪いものを飛び越えたあと、何が良くて何が悪かったかの振り返りを見ましょう。"
+    "description": "横スクロールゲーム：ジャンプして正しい概念を集め、間違った概念を避けます。"
   },
   "settings": {
     "configure": [
@@ -89,7 +89,9 @@
         "property": "gameTitle",
         "title": "ゲーム名",
         "description": "進捗イベントと OER Schema マークアップでこのゲームの名前になります。"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "ゲーム ID",

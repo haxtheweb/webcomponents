@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Target",
         "description": "Path papunta sa build ng laro."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Lapad ng Canvas",
+        "description": "CSS na lapad ng canvas (halimbawa px o em)."
       },
+      {
+        "property": "height",
+        "title": "Taas ng Canvas",
+        "description": "CSS na taas ng canvas (halimbawa px o em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Paraan ng compression",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Bersyon ng Produkto",
         "description": "Bersyon ng release."
-      },
-      {
-        "property": "width",
-        "title": "Lapad ng Canvas",
-        "description": "CSS na lapad ng canvas (halimbawa px o em)."
-      },
-      {
-        "property": "height",
-        "title": "Taas ng Canvas",
-        "description": "CSS na taas ng canvas (halimbawa px o em)."
       },
       {
         "property": "background",

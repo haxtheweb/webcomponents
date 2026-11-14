@@ -3,6 +3,13 @@ import { fixture, expect, html } from "@open-wc/testing";
 import "../lib/ebook-button.js";
 import { EbookButton } from "../lib/ebook-button.js";
 
+// HAX schemas ship as JSON next to the element; read one whether the class
+// returns the object or the URL of its file
+const haxSchema = async (C) => {
+  const hp = C.haxProperties;
+  return typeof hp === "string" ? (await fetch(hp)).json() : hp;
+};
+
 describe("ebook-button", () => {
   it("registers the custom element", () => {
     expect(globalThis.customElements.get("ebook-button")).to.exist;
@@ -86,8 +93,8 @@ describe("ebook-button", () => {
     ).to.equal("icons:auto-stories");
   });
 
-  it("exposes haxProperties with configure settings and a demo schema", () => {
-    const props = EbookButton.haxProperties;
+  it("exposes haxProperties with configure settings and a demo schema", async () => {
+    const props = await haxSchema(EbookButton);
     expect(props.canScale).to.be.false;
     expect(props.gizmo.title).to.equal("Ebook button");
     expect(props.gizmo.handles[0].type).to.equal("link");

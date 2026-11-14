@@ -4,12 +4,15 @@
   "package": "@haxtheweb/un-sdg",
   "version": "26.8.0",
   "license": "Apache-2.0",
-  "title": "UN SDG",
+  "title": "UN Sustainable Development Goal",
   "description": "United Nations Sustainable Development Goal.",
-  "icon": "hax:apps",
+  "icon": "hax:globe",
   "tags": [
-    "Other",
-    "sustainable"
+    "Content",
+    "sdg",
+    "united nations",
+    "sustainable",
+    "goal"
   ],
   "haxCapable": true,
   "import": "@haxtheweb/un-sdg/un-sdg.js",
@@ -84,13 +87,16 @@
     "hideDefaultSettings": true,
     "designSystem": false,
     "gizmo": {
-      "title": "UN SDG",
+      "title": "UN Sustainable Development Goal",
       "description": "United Nations Sustainable Development Goal.",
-      "icon": "hax:apps",
+      "icon": "hax:globe",
       "color": "purple",
       "tags": [
-        "Other",
-        "sustainable"
+        "Content",
+        "sdg",
+        "united nations",
+        "sustainable",
+        "goal"
       ],
       "handles": [],
       "meta": {

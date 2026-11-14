@@ -1,0 +1,40 @@
+{
+  "canScale": true,
+  "canEditSource": true,
+  "gizmo": {
+    "title": "HTML block",
+    "description": "A basic HTML block that provides HAXschema wiring",
+    "icon": "hax:html-code",
+    "color": "red",
+    "tags": ["Other", "developer", "html"],
+    "handles": [
+      {
+        "type": "html",
+        "content": "slot"
+      }
+    ],
+    "meta": {
+      "author": "HAXTheWeb",
+      "owner": "The Pennsylvania State University",
+      "hidden": true
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "HTML",
+        "description": "HTML code you want to present in content",
+        "inputMethod": "code-editor"
+      }
+    ],
+    "advanced": []
+  },
+  "demoSchema": [
+    {
+      "tag": "html-block",
+      "properties": {},
+      "content": ""
+    }
+  ]
+}

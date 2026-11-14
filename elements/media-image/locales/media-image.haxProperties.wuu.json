@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "说明",
         "description": "图片个说明。"
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "图标题",
-        "description": "图标签个标题。"
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "图描述",
-        "description": "图标签个描述。"
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "停用图片弹窗",
         "description": "停用点一记就辣图片查看对话框里打开图片。"
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "图标题",
+        "description": "图标签个标题。"
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "图描述",
+        "description": "图标签个描述。"
       }
     ],
     "developer": [

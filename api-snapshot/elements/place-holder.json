@@ -22,7 +22,7 @@
   "cssParts": [],
   "cssProperties": [],
   "hax": {
-    "schema": "elements/place-holder/place-holder.js",
+    "schema": "elements/place-holder/lib/place-holder.haxProperties.json",
     "gizmo": true,
     "properties": [
       "text",

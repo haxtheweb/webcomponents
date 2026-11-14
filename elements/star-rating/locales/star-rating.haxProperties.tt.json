@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Интерактив",
         "description": "Кулланучыга рейтинг куярга рөхсәт итү."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Рубрика шкаласы режимы",

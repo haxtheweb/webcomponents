@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Caixa de atividade",
-    "description": "Pequeno bloco de título estilizado."
+    "description": "Um título rotulado que marca o início de uma atividade."
   },
   "settings": {
     "configure": [

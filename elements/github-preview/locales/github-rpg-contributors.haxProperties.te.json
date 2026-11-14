@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "GitHub సహకారుల జాబితా",
-    "description": "GitHub API ఉపయోగించి RPG పాత్రలుగా ప్రదర్శించబడుతుంది."
+    "description": "రిపాజిటరీ సహకారులను RPG పాత్రలుగా జాబితా చేస్తుంది."
   },
   "settings": {
     "configure": [

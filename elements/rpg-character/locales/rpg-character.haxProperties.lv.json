@@ -11,11 +11,6 @@
         "description": "Vārds, ko izmanto nejauša tēla ģenerēšanai."
       },
       {
-        "property": "code",
-        "title": "Tēla kods",
-        "description": "Ielīmējiet saglabātu kodu, lai atjaunotu šo tēlu."
-      },
-      {
         "property": "hat",
         "title": "Cepure",
         "description": "Cepures stils.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Maska",
-        "description": "Maska, ko nēsā uz sejas vai galvas.",
-        "options": {
-          "none": "Nav",
-          "lion": "Lauva",
-          "plague": "Mēra ārsts",
-          "theater": "Teātris",
-          "pumpkin": "Ķirbis",
-          "ghost": "Spoks",
-          "mummy": "Mūmija",
-          "wrestler": "Cīkstoņa maska",
-          "block-head": "Kluču galva",
-          "web": "Zirnekļtīkla maska",
-          "werewolf": "Vilkača seja",
-          "shadow": "Ēnaina seja"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Grims",
-        "description": "Sejas krāsa vai lūpu krāsa.",
-        "options": {
-          "none": "Nav",
-          "red-lipstick": "Sarkana lūpu krāsa",
-          "pink-lipstick": "Rozā lūpu krāsa",
-          "berry-lipstick": "Ogu toņa lūpu krāsa",
-          "clown": "Klauna grims",
-          "fangs": "Ilkņi",
-          "skull": "Galvaskausa grims",
-          "zombie": "Zombija grims",
-          "red-nose": "Sarkans deguns",
-          "white-beard": "Balta bārda",
-          "domino": "Varoņa maska",
-          "carrot": "Burkāna deguns",
-          "bunny": "Zaķa deguns",
-          "mustache": "Ūsas",
-          "monster": "Briesmoņa sejas krāsojums",
-          "round-glasses": "Apaļas brilles"
-        }
-      },
-      {
         "property": "expression",
         "title": "Izteiksme",
         "description": "Sejas izteiksme.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Mājdzīvnieks",
+        "description": "Mājdzīvnieks blakus tēlam.",
+        "options": {
+          "none": "Nav",
+          "cat": "Kaķis",
+          "dog": "Suns",
+          "bunny": "Zaķītis",
+          "goldfish": "Zelta zivtiņa",
+          "slime": "Gļotas",
+          "squirrel": "Vāvere",
+          "dragon": "Pūķēns",
+          "parrot": "Papagailis",
+          "owl": "Pūce",
+          "bat": "Sikspārnis"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Tēla kods",
+        "description": "Ielīmējiet saglabātu kodu, lai atjaunotu šo tēlu."
+      },
+      {
+        "property": "mask",
+        "title": "Maska",
+        "description": "Maska, ko nēsā uz sejas vai galvas.",
+        "options": {
+          "none": "Nav",
+          "lion": "Lauva",
+          "plague": "Mēra ārsts",
+          "theater": "Teātris",
+          "pumpkin": "Ķirbis",
+          "ghost": "Spoks",
+          "mummy": "Mūmija",
+          "wrestler": "Cīkstoņa maska",
+          "block-head": "Kluču galva",
+          "web": "Zirnekļtīkla maska",
+          "werewolf": "Vilkača seja",
+          "shadow": "Ēnaina seja"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Grims",
+        "description": "Sejas krāsa vai lūpu krāsa.",
+        "options": {
+          "none": "Nav",
+          "red-lipstick": "Sarkana lūpu krāsa",
+          "pink-lipstick": "Rozā lūpu krāsa",
+          "berry-lipstick": "Ogu toņa lūpu krāsa",
+          "clown": "Klauna grims",
+          "fangs": "Ilkņi",
+          "skull": "Galvaskausa grims",
+          "zombie": "Zombija grims",
+          "red-nose": "Sarkans deguns",
+          "white-beard": "Balta bārda",
+          "domino": "Varoņa maska",
+          "carrot": "Burkāna deguns",
+          "bunny": "Zaķa deguns",
+          "mustache": "Ūsas",
+          "monster": "Briesmoņa sejas krāsojums",
+          "round-glasses": "Apaļas brilles"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Karoga teksts",
         "description": "Uz karoga redzami līdz 4 burtiem."
@@ -310,24 +330,6 @@
           "skates": "Slidas",
           "skateboard": "Skrituļdēlis",
           "hoverboard": "Lidojošais dēlis"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Mājdzīvnieks",
-        "description": "Mājdzīvnieks blakus tēlam.",
-        "options": {
-          "none": "Nav",
-          "cat": "Kaķis",
-          "dog": "Suns",
-          "bunny": "Zaķītis",
-          "goldfish": "Zelta zivtiņa",
-          "slime": "Gļotas",
-          "squirrel": "Vāvere",
-          "dragon": "Pūķēns",
-          "parrot": "Papagailis",
-          "owl": "Pūce",
-          "bat": "Sikspārnis"
         }
       },
       {

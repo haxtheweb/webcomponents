@@ -6,18 +6,17 @@
   "license": "Apache-2.0",
   "title": "Tabs",
   "description": "Set of tabs.",
-  "icon": "view-day",
+  "icon": "icons:tab",
   "tags": [
     "Layout",
     "tabs",
-    "display",
-    "layout"
+    "display"
   ],
   "haxCapable": true,
   "import": "@haxtheweb/a11y-tabs/a11y-tabs.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/a11y-tabs/a11y-tabs.js",
   "install": "npm i @haxtheweb/a11y-tabs",
-  "demoHtml": "<a11y-tabs></a11y-tabs>",
+  "demoHtml": "<a11y-tabs aria-label=\"Unit overview\">\n  <a11y-tab label=\"Overview\" icon=\"icons:info\"><p>What this unit covers and why it matters.</p></a11y-tab><a11y-tab label=\"Readings\" icon=\"icons:book\"><p>Read chapter 2 before the next class.</p></a11y-tab><a11y-tab label=\"Activity\" icon=\"icons:assignment\"><p>Complete the practice set and bring one question.</p></a11y-tab>\n</a11y-tabs>",
   "attributes": [
     {
       "name": "show-tooltip",
@@ -148,13 +147,12 @@
     "gizmo": {
       "title": "Tabs",
       "description": "Set of tabs.",
-      "icon": "view-day",
+      "icon": "icons:tab",
       "color": "grey",
       "tags": [
         "Layout",
         "tabs",
-        "display",
-        "layout"
+        "display"
       ],
       "shortcut": [
         {
@@ -173,6 +171,34 @@
           "inputMethod": "textfield"
         },
         {
+          "property": "sticky",
+          "title": "Sticky",
+          "description": "Keep horizontal tabs at the top while scrolling.",
+          "inputMethod": "boolean"
+        },
+        {
+          "slot": "",
+          "title": "Tabs",
+          "description": "Series of <a11y-tab/> elements.",
+          "inputMethod": "code-editor"
+        }
+      ],
+      "advanced": [
+        {
+          "property": "layoutBreakpoint",
+          "title": "Layout Breakpoint",
+          "inputMethod": "number",
+          "description": "Breakpoint for horizontal tabs; use -1 for vertical-only."
+        },
+        {
+          "property": "iconBreakpoint",
+          "title": "Icon Breakpoint",
+          "inputMethod": "number",
+          "description": "Breakpoint for showing text with icons. Default is 0; use -1 for icon-only mode."
+        }
+      ],
+      "developer": [
+        {
           "property": "disabled",
           "title": "Disabled",
           "description": "Disable all tabs.",
@@ -185,32 +211,6 @@
           "inputMethod": "boolean"
         },
         {
-          "property": "sticky",
-          "title": "Sticky",
-          "description": "Keep horizontal tabs at the top while scrolling.",
-          "inputMethod": "boolean"
-        },
-        {
-          "property": "layoutBreakpoint",
-          "title": "Layout Breakpoint",
-          "inputMethod": "number",
-          "description": "Breakpoint for horizontal tabs; use -1 for vertical-only."
-        },
-        {
-          "property": "iconBreakpoint",
-          "title": "Icon Breakpoint",
-          "inputMethod": "number",
-          "description": "Breakpoint for showing text with icons. Default is 0; use -1 for icon-only mode."
-        },
-        {
-          "slot": "",
-          "title": "Tabs",
-          "description": "Series of <a11y-tab/> elements.",
-          "inputMethod": "code-editor"
-        }
-      ],
-      "advanced": [
-        {
           "property": "id",
           "title": "Unique ID",
           "description": "Unique ID for this tab set.",
@@ -221,12 +221,14 @@
     "demoSchema": [
       {
         "tag": "a11y-tabs",
-        "properties": {},
-        "content": ""
+        "properties": {
+          "ariaLabel": "Unit overview"
+        },
+        "content": "<a11y-tab label=\"Overview\" icon=\"icons:info\"><p>What this unit covers and why it matters.</p></a11y-tab><a11y-tab label=\"Readings\" icon=\"icons:book\"><p>Read chapter 2 before the next class.</p></a11y-tab><a11y-tab label=\"Activity\" icon=\"icons:assignment\"><p>Complete the practice set and bring one question.</p></a11y-tab>"
       }
     ]
   },
-  "surfaceHash": "b3bd76e5b7ac",
+  "surfaceHash": "43821e0d892c",
   "walkthroughs": [
     {
       "id": "",
@@ -234,13 +236,13 @@
       "order": 0,
       "src": "a11y-tabs.motion.json",
       "file": "lib/a11y-tabs.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/a11y-tabs.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

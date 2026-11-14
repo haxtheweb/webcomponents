@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "ללא חץ",
         "description": "הסתרת החץ של הכפתור."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "קישור: יעד",
@@ -54,7 +52,9 @@
           "_top": "חלון עליון - _top",
           "_parent": "חלון הורה - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "קישור: rel",

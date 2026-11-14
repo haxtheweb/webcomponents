@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Cita bibliogràfica",
-    "description": "Element de cita amb tres modes de presentació."
+    "description": "Acrediteu una font amb el títol, l’autor, la llicència i l’enllaç."
   },
   "settings": {
     "configure": [
@@ -21,15 +21,6 @@
         "description": "Data en què es va consultar la font."
       },
       {
-        "property": "scope",
-        "title": "Abast",
-        "description": "Abast de l'element que es cita.",
-        "options": {
-          "sibling": "Element germà",
-          "parent": "Element pare"
-        }
-      },
-      {
         "property": "license",
         "title": "Llicència",
         "description": "Llicència de l'obra citada."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Creador",
         "description": "Creador o propietari de l'obra citada."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Abast",
+        "description": "Abast de l'element que es cita.",
+        "options": {
+          "sibling": "Element germà",
+          "parent": "Element pare"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "Tipus d'OER Schema",

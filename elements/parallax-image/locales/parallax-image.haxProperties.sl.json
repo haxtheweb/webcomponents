@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Paralaksna slika",
-    "description": "Pomikanje slike"
+    "description": "Slika polne širine, ki se pomika počasneje od strani, z naslovom čez njo."
   },
   "settings": {
     "configure": [

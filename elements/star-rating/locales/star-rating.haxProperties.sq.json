@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Interaktiv",
         "description": "Lejo ndërveprimin e përdoruesit për të vendosur vlerësimin."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Modaliteti i shkallës së rubrikës",

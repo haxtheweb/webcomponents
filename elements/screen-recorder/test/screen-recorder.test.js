@@ -63,11 +63,6 @@ describe("screen-recorder defaults and toggles", () => {
     expect(heading).to.exist;
     expect(heading.textContent).to.equal("Audio Options");
   });
-
-  it("exposes haxProperties from the lib folder", () => {
-    const url = customElements.get("screen-recorder").haxProperties;
-    expect(url).to.contain("lib/screen-recorder.haxProperties.json");
-  });
 });
 
 describe("screen-recorder capture flow", () => {

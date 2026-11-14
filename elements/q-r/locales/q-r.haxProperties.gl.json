@@ -14,16 +14,6 @@
         "property": "title",
         "title": "Título alternativo",
         "description": "Título alternativo ligado á orixe do código QR."
-      },
-      {
-        "property": "modulesize",
-        "title": "Tamaño",
-        "description": "Tamaño do código QR."
-      },
-      {
-        "property": "margin",
-        "title": "Marxe",
-        "description": "Envoltorio do código."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "Tamaño",
+        "description": "Tamaño do código QR."
+      },
+      {
+        "property": "margin",
+        "title": "Marxe",
+        "description": "Envoltorio do código."
       }
     ]
   }

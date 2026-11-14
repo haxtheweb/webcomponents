@@ -10,10 +10,6 @@
         "title": "Pictograma filei"
       },
       {
-        "property": "disabled",
-        "title": "Dezactivat"
-      },
-      {
         "property": "label",
         "title": "Eticheta filei"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "ID unic"
-      },
-      {
         "property": "flag",
         "title": "Text opțional de marcaj"
       },
       {
         "property": "flagIcon",
         "title": "Pictogramă opțională de marcaj"
+      },
+      {
+        "property": "disabled",
+        "title": "Dezactivat"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "ID unic"
       }
     ]
   }

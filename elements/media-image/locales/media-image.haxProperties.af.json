@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Onderskrif",
         "description": "Onderskrif vir die prent."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Figuurtitel",
-        "description": "Titel vir die figuuretiket."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Figuurbeskrywing",
-        "description": "Beskrywing vir die figuuretiket."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Deaktiveer prent-modaal",
         "description": "Deaktiveer klikke wat die prent in 'n prentinspekteur-dialoog oopmaak."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Figuurtitel",
+        "description": "Titel vir die figuuretiket."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Figuurbeskrywing",
+        "description": "Beskrywing vir die figuuretiket."
       }
     ],
     "developer": [

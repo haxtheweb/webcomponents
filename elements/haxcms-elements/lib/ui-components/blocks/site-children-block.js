@@ -19,57 +19,8 @@ class SiteChildrenBlock extends LitElement {
     return "site-children-block";
   }
   static get haxProperties() {
-    return {
-      canScale: false,
-
-      canEditSource: true,
-      gizmo: {
-        title: "HAXcms: child block",
-        description: "Dynamic block to show child of the current page",
-        icon: "av:call-to-action",
-        color: "grey",
-        tags: ["Other", "haxcms"],
-        handles: [],
-        meta: {
-          author: "HAXTheWeb core team",
-          owner: "The Pennsylvania State University",
-        },
-      },
-      settings: {
-        configure: [],
-        advanced: [
-          {
-            property: "dynamicMethodology",
-            title: "Dynamic method",
-            description:
-              "How to calculate the children relative to this element",
-            inputMethod: "select",
-            options: {
-              active: "Active children",
-              parent: "Parent's children",
-              ancestor: "All children from the highest ancestor",
-            },
-          },
-          {
-            property: "start",
-            title: "Start level",
-            inputMethod: "number",
-          },
-          {
-            property: "end",
-            title: "End level",
-            inputMethod: "number",
-          },
-        ],
-      },
-      demoSchema: [
-        {
-          tag: "site-children-block",
-          properties: {},
-          content: "",
-        },
-      ],
-    };
+    return new URL("./site-children-block.haxProperties.json", import.meta.url)
+      .href;
   }
   constructor() {
     super();

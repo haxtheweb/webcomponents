@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "ራስ-ሰር የአጽንዖት ቀለም",
         "description": "የአጽንዖት ቀለሙን ከመለያው ጽሑፍ በራስ-ሰር አውጣ።"
-      },
-      {
-        "property": "cancelButton",
-        "title": "የመሰረዣ አዝራር",
-        "description": "በክኒኑ ውስጥ የማስወገጃ/የመሰረዣ አዶ አዝራር አሳይ።"
-      },
-      {
-        "property": "readonly",
-        "title": "ለንባብ ብቻ",
-        "description": "ክኒኑ ለማሳያ ብቻ እንዲሆን የመሰረዣ አዝራሩን ደብቅ።"
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "ሰማያዊ ግራጫ",
           "grey": "ግራጫ"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "የመሰረዣ አዝራር",
+        "description": "በክኒኑ ውስጥ የማስወገጃ/የመሰረዣ አዶ አዝራር አሳይ።"
+      },
+      {
+        "property": "readonly",
+        "title": "ለንባብ ብቻ",
+        "description": "ክኒኑ ለማሳያ ብቻ እንዲሆን የመሰረዣ አዝራሩን ደብቅ።"
       }
     ]
   }

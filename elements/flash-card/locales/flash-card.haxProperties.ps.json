@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "د انځور سرچینه",
         "description": "هغه انځوري فایل چې په کارت کې کارول کېږي. د انځور پر کلیدي کلمې غالب دی."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "د انځور کلیدي کلمه",
+        "description": "د تصادفي انځور کلیدي کلمه. د انځور سرچینه پرې غالبه ده."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "د زده کړې موخه",
         "description": "OER Schema: د هغې زده کړې موخې ID یا URL چې دا تمرین یې ملاتړ کوي."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "د انځور کلیدي کلمه",
-        "description": "د تصادفي انځور کلیدي کلمه. د انځور سرچینه پرې غالبه ده."
       }
     ]
   }

@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "矢印なし",
         "description": "ボタンの矢印を非表示にします。"
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "リンク: ターゲット",
@@ -54,7 +52,9 @@
           "_top": "最上位ウィンドウ - _top",
           "_parent": "親ウィンドウ - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "リンク: rel",

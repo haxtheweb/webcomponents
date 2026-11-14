@@ -5,13 +5,12 @@
   "version": "26.8.0",
   "license": "Apache-2.0",
   "title": "Sarcasm",
-  "description": "Presenting text in a trolly way",
+  "description": "Text in alternating caps for a sarcastic tone.",
   "icon": "hax:case-sensitive-alt",
   "tags": [
-    "Other",
+    "Text",
     "troll",
     "sarcasm",
-    "text",
     "funny"
   ],
   "haxCapable": true,
@@ -56,14 +55,13 @@
     "contentEditable": true,
     "gizmo": {
       "title": "Sarcasm",
-      "description": "Presenting text in a trolly way",
+      "description": "Text in alternating caps for a sarcastic tone.",
       "icon": "hax:case-sensitive-alt",
       "color": "purple",
       "tags": [
-        "Other",
+        "Text",
         "troll",
         "sarcasm",
-        "text",
         "funny"
       ],
       "handles": [

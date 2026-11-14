@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "Votõ",
         "description": "Votõ aty ojehechaukáva moñe'ẽrã guýpe."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "Jokoha moñe'ẽrã",
         "description": "Jokoha teramoĩ ojehechaukáva jeguatápe."
       }
-    ]
+    ],
+    "developer": []
   }
 }

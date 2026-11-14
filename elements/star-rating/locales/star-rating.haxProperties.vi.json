@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Đánh giá sao",
-    "description": "Tiện ích hiển thị đánh giá hoặc nút để đánh giá."
+    "description": "Hiển thị xếp hạng sao hoặc để người đọc chọn."
   },
   "settings": {
     "configure": [
@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Tương tác",
         "description": "Cho phép người dùng tương tác để đánh giá."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Chế độ thang tiêu chí",

@@ -9,7 +9,9 @@
         "slot": "",
         "title": "Citări",
         "description": "Elementele de citare din această bibliografie"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "Curs",

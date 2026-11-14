@@ -9,7 +9,9 @@
         "slot": "",
         "title": "Citaĵoj",
         "description": "Citaĵeroj en ĉi tiu bibliografio"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "Kurso",

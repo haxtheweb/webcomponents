@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Poster rasmi",
         "description": "Poster rasmi URL manzili."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Matn treklari",
         "description": "Video uchun yopiq subtitrlar, subtitrlar, tavsiflar va boshqa matn treklari."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Boshlanish vaqti",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Audio tavsif treki",
         "description": "Vizual elementlarni ovozli izohlab beruvchi audio tavsif trekining (MP3 fayl) URL manzili."
+      },
+      {
+        "property": "accentColor",
+        "title": "Urgʻu rangi",
+        "description": "(eskirgan) Pleyer uchun urgʻu rangini tanlang."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Til",
         "description": "Media tili."
-      },
-      {
-        "property": "accentColor",
-        "title": "Urgʻu rangi",
-        "description": "(eskirgan) Pleyer uchun urgʻu rangini tanlang."
       }
     ]
   }

@@ -11,20 +11,17 @@
         "description": "ടാബ് കൂട്ടത്തിനുള്ള പ്രാപ്യ ലേബൽ."
       },
       {
-        "property": "disabled",
-        "title": "പ്രവർത്തനരഹിതം",
-        "description": "എല്ലാ ടാബുകളും പ്രവർത്തനരഹിതമാക്കുക."
-      },
-      {
-        "property": "hidden",
-        "title": "മറച്ചത്",
-        "description": "ടാബ് കൂട്ടം മറയ്ക്കുക."
-      },
-      {
         "property": "sticky",
         "title": "സ്റ്റിക്കി",
         "description": "സ്ക്രോൾ ചെയ്യുമ്പോൾ തിരശ്ചീന ടാബുകൾ മുകളിൽ നിലനിർത്തുക."
       },
+      {
+        "slot": "",
+        "title": "ടാബുകൾ",
+        "description": "<a11y-tab/> ഘടകങ്ങളുടെ ഒരു ശ്രേണി."
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "ലേഔട്ട് ബ്രേക്ക്‌പോയിന്റ്",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "ഐക്കൺ ബ്രേക്ക്‌പോയിന്റ്",
         "description": "ഐക്കണുകൾക്കൊപ്പം വാചകം കാണിക്കാനുള്ള ബ്രേക്ക്‌പോയിന്റ്. സ്ഥിരമൂല്യം 0 ആണ്; ഐക്കൺ മാത്രം മോഡിന് -1 ഉപയോഗിക്കുക."
-      },
-      {
-        "slot": "",
-        "title": "ടാബുകൾ",
-        "description": "<a11y-tab/> ഘടകങ്ങളുടെ ഒരു ശ്രേണി."
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "പ്രവർത്തനരഹിതം",
+        "description": "എല്ലാ ടാബുകളും പ്രവർത്തനരഹിതമാക്കുക."
+      },
+      {
+        "property": "hidden",
+        "title": "മറച്ചത്",
+        "description": "ടാബ് കൂട്ടം മറയ്ക്കുക."
+      },
       {
         "property": "id",
         "title": "അദ്വിതീയ ID",

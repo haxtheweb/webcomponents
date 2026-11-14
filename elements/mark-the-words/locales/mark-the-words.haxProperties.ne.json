@@ -16,30 +16,8 @@
         "description": "\"शब्दहरू चिन्ह लगाउनुहोस्\" अन्तरक्रियामा रूपान्तरण गरिने कथन।"
       },
       {
-        "property": "gradingFormat",
-        "title": "ग्रेडिङ ढाँचा",
-        "description": "OER Schema: यस मूल्याङ्कनको ग्रेडिङ ढाँचा (जस्तै अङ्क, अक्षर, प्रतिशत, पूर्णता)।"
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "सिकाइ उद्देश्य",
-        "description": "OER Schema: यस मूल्याङ्कनसँग सम्बन्धित सिकाइ उद्देश्य।"
-      },
-      {
-        "property": "forCourse",
-        "title": "पाठ्यक्रम",
-        "description": "OER Schema: यो मूल्याङ्कन लक्षित पाठ्यक्रम।"
-      },
-      {
         "property": "answers",
         "title": "उत्तरहरू"
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "क्विजको नाम",
-        "description": "xAPI-सञ्चालित वातावरणमा यस वस्तुको पहिचानका लागि पठाइने क्विजको नाम"
       }
     ],
     "advanced": [
@@ -52,6 +30,28 @@
         "property": "collapsed",
         "title": "खुम्चिएको अवस्थामा सुरु गर्नुहोस्",
         "description": "खुम्चिन मिल्ने हुँदा, प्रश्न र यसको स्थिति मात्र देखाउने बन्द पङ्क्तिको रूपमा सुरु गर्नुहोस्।"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "ग्रेडिङ ढाँचा",
+        "description": "OER Schema: यस मूल्याङ्कनको ग्रेडिङ ढाँचा (जस्तै अङ्क, अक्षर, प्रतिशत, पूर्णता)।"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "सिकाइ उद्देश्य",
+        "description": "OER Schema: यस मूल्याङ्कनसँग सम्बन्धित सिकाइ उद्देश्य।"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "क्विजको नाम",
+        "description": "xAPI-सञ्चालित वातावरणमा यस वस्तुको पहिचानका लागि पठाइने क्विजको नाम"
+      },
+      {
+        "property": "forCourse",
+        "title": "पाठ्यक्रम",
+        "description": "OER Schema: यो मूल्याङ्कन लक्षित पाठ्यक्रम।"
       }
     ]
   }

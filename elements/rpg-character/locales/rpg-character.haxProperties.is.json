@@ -11,11 +11,6 @@
         "description": "Orð notað til að búa til handahófskennda persónu."
       },
       {
-        "property": "code",
-        "title": "Persónukóði",
-        "description": "Límdu vistaðan kóða til að endurskapa þessa persónu."
-      },
-      {
         "property": "hat",
         "title": "Hattur",
         "description": "Hattastíll.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Gríma",
-        "description": "Gríma yfir andliti eða höfði.",
-        "options": {
-          "none": "Engin",
-          "lion": "Ljón",
-          "plague": "Pestarlæknir",
-          "theater": "Leikhús",
-          "pumpkin": "Grasker",
-          "ghost": "Draugur",
-          "mummy": "Múmía",
-          "wrestler": "Glímugríma",
-          "block-head": "Kubbahöfuð",
-          "web": "Köngulóarvefsgríma",
-          "werewolf": "Varúlfsandlit",
-          "shadow": "Skuggalegt andlit"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Förðun",
-        "description": "Andlitsmálning eða varalitur.",
-        "options": {
-          "none": "Engin",
-          "red-lipstick": "Rauður varalitur",
-          "pink-lipstick": "Bleikur varalitur",
-          "berry-lipstick": "Berjalitaður varalitur",
-          "clown": "Trúðamálning",
-          "fangs": "Vígtennur",
-          "skull": "Hauskúpumálning",
-          "zombie": "Uppvakningamálning",
-          "red-nose": "Rautt nef",
-          "white-beard": "Hvítt skegg",
-          "domino": "Ofurhetjugríma",
-          "carrot": "Gulrótarnef",
-          "bunny": "Kanínunef",
-          "mustache": "Yfirvaraskegg",
-          "monster": "Skrímslaandlitsmálning",
-          "round-glasses": "Kringlótt gleraugu"
-        }
-      },
-      {
         "property": "expression",
         "title": "Svipur",
         "description": "Andlitssvipur.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Gæludýr",
+        "description": "Gæludýr við hlið persónunnar.",
+        "options": {
+          "none": "Ekkert",
+          "cat": "Köttur",
+          "dog": "Hundur",
+          "bunny": "Kanína",
+          "goldfish": "Gullfiskur",
+          "slime": "Slím",
+          "squirrel": "Íkorni",
+          "dragon": "Drekaungi",
+          "parrot": "Páfagaukur",
+          "owl": "Ugla",
+          "bat": "Leðurblaka"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Persónukóði",
+        "description": "Límdu vistaðan kóða til að endurskapa þessa persónu."
+      },
+      {
+        "property": "mask",
+        "title": "Gríma",
+        "description": "Gríma yfir andliti eða höfði.",
+        "options": {
+          "none": "Engin",
+          "lion": "Ljón",
+          "plague": "Pestarlæknir",
+          "theater": "Leikhús",
+          "pumpkin": "Grasker",
+          "ghost": "Draugur",
+          "mummy": "Múmía",
+          "wrestler": "Glímugríma",
+          "block-head": "Kubbahöfuð",
+          "web": "Köngulóarvefsgríma",
+          "werewolf": "Varúlfsandlit",
+          "shadow": "Skuggalegt andlit"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Förðun",
+        "description": "Andlitsmálning eða varalitur.",
+        "options": {
+          "none": "Engin",
+          "red-lipstick": "Rauður varalitur",
+          "pink-lipstick": "Bleikur varalitur",
+          "berry-lipstick": "Berjalitaður varalitur",
+          "clown": "Trúðamálning",
+          "fangs": "Vígtennur",
+          "skull": "Hauskúpumálning",
+          "zombie": "Uppvakningamálning",
+          "red-nose": "Rautt nef",
+          "white-beard": "Hvítt skegg",
+          "domino": "Ofurhetjugríma",
+          "carrot": "Gulrótarnef",
+          "bunny": "Kanínunef",
+          "mustache": "Yfirvaraskegg",
+          "monster": "Skrímslaandlitsmálning",
+          "round-glasses": "Kringlótt gleraugu"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Texti á fána",
         "description": "Allt að 4 stafir sýndir á fánanum."
@@ -310,24 +330,6 @@
           "skates": "Skautar",
           "skateboard": "Hjólabretti",
           "hoverboard": "Svifbretti"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Gæludýr",
-        "description": "Gæludýr við hlið persónunnar.",
-        "options": {
-          "none": "Ekkert",
-          "cat": "Köttur",
-          "dog": "Hundur",
-          "bunny": "Kanína",
-          "goldfish": "Gullfiskur",
-          "slime": "Slím",
-          "squirrel": "Íkorni",
-          "dragon": "Drekaungi",
-          "parrot": "Páfagaukur",
-          "owl": "Ugla",
-          "bat": "Leðurblaka"
         }
       },
       {

@@ -11,11 +11,6 @@
         "description": "Parola usata per generare un personaggio casuale."
       },
       {
-        "property": "code",
-        "title": "Codice del personaggio",
-        "description": "Incolla un codice salvato per ricreare quel personaggio."
-      },
-      {
         "property": "hat",
         "title": "Cappello",
         "description": "Stile del cappello.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Maschera",
-        "description": "Maschera indossata sul viso o sulla testa.",
-        "options": {
-          "none": "Nessuna",
-          "lion": "Leone",
-          "plague": "Medico della peste",
-          "theater": "Teatro",
-          "pumpkin": "Zucca",
-          "ghost": "Fantasma",
-          "mummy": "Mummia",
-          "wrestler": "Maschera da lottatore",
-          "block-head": "Testa a blocchi",
-          "web": "Maschera a ragnatela",
-          "werewolf": "Volto da lupo mannaro",
-          "shadow": "Volto d'ombra"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Trucco",
-        "description": "Trucco per il viso o rossetto.",
-        "options": {
-          "none": "Nessuno",
-          "red-lipstick": "Rossetto rosso",
-          "pink-lipstick": "Rossetto rosa",
-          "berry-lipstick": "Rossetto bacca",
-          "clown": "Trucco da clown",
-          "fangs": "Zanne",
-          "skull": "Trucco da teschio",
-          "zombie": "Trucco da zombie",
-          "red-nose": "Naso rosso",
-          "white-beard": "Barba bianca",
-          "domino": "Mascherina da eroe",
-          "carrot": "Naso a carota",
-          "bunny": "Naso da coniglietto",
-          "mustache": "Baffi",
-          "monster": "Trucco da mostro",
-          "round-glasses": "Occhiali tondi"
-        }
-      },
-      {
         "property": "expression",
         "title": "Espressione",
         "description": "Espressione del viso.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Animale domestico",
+        "description": "Animale domestico accanto al personaggio.",
+        "options": {
+          "none": "Nessuno",
+          "cat": "Gatto",
+          "dog": "Cane",
+          "bunny": "Coniglietto",
+          "goldfish": "Pesce rosso",
+          "slime": "Slime",
+          "squirrel": "Scoiattolo",
+          "dragon": "Draghetto",
+          "parrot": "Pappagallo",
+          "owl": "Gufo",
+          "bat": "Pipistrello"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Codice del personaggio",
+        "description": "Incolla un codice salvato per ricreare quel personaggio."
+      },
+      {
+        "property": "mask",
+        "title": "Maschera",
+        "description": "Maschera indossata sul viso o sulla testa.",
+        "options": {
+          "none": "Nessuna",
+          "lion": "Leone",
+          "plague": "Medico della peste",
+          "theater": "Teatro",
+          "pumpkin": "Zucca",
+          "ghost": "Fantasma",
+          "mummy": "Mummia",
+          "wrestler": "Maschera da lottatore",
+          "block-head": "Testa a blocchi",
+          "web": "Maschera a ragnatela",
+          "werewolf": "Volto da lupo mannaro",
+          "shadow": "Volto d'ombra"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Trucco",
+        "description": "Trucco per il viso o rossetto.",
+        "options": {
+          "none": "Nessuno",
+          "red-lipstick": "Rossetto rosso",
+          "pink-lipstick": "Rossetto rosa",
+          "berry-lipstick": "Rossetto bacca",
+          "clown": "Trucco da clown",
+          "fangs": "Zanne",
+          "skull": "Trucco da teschio",
+          "zombie": "Trucco da zombie",
+          "red-nose": "Naso rosso",
+          "white-beard": "Barba bianca",
+          "domino": "Mascherina da eroe",
+          "carrot": "Naso a carota",
+          "bunny": "Naso da coniglietto",
+          "mustache": "Baffi",
+          "monster": "Trucco da mostro",
+          "round-glasses": "Occhiali tondi"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Testo della bandiera",
         "description": "Fino a 4 lettere mostrate sulla bandierina."
@@ -310,24 +330,6 @@
           "skates": "Pattini",
           "skateboard": "Skateboard",
           "hoverboard": "Hoverboard"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Animale domestico",
-        "description": "Animale domestico accanto al personaggio.",
-        "options": {
-          "none": "Nessuno",
-          "cat": "Gatto",
-          "dog": "Cane",
-          "bunny": "Coniglietto",
-          "goldfish": "Pesce rosso",
-          "slime": "Slime",
-          "squirrel": "Scoiattolo",
-          "dragon": "Draghetto",
-          "parrot": "Pappagallo",
-          "owl": "Gufo",
-          "bat": "Pipistrello"
         }
       },
       {

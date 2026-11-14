@@ -21,15 +21,6 @@
         "description": "Umhla omthombo ufikelelwe ngawo."
       },
       {
-        "property": "scope",
-        "title": "Ububanzi",
-        "description": "Ububanzi bento eza kucatshulwa.",
-        "options": {
-          "sibling": "Into engumzalwana",
-          "parent": "Into engumzali"
-        }
-      },
-      {
         "property": "license",
         "title": "Ilayisensi",
         "description": "Ilayisensi yomsebenzi ocatshulweyo."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Umyili",
         "description": "Umyili okanye umnini womsebenzi ocatshulweyo."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Ububanzi",
+        "description": "Ububanzi bento eza kucatshulwa.",
+        "options": {
+          "sibling": "Into engumzalwana",
+          "parent": "Into engumzali"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "Uhlobo lweSkimu se-OER",

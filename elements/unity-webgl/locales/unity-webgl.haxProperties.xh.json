@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Ekujoliswe kuko",
         "description": "Indlela eya kulwakhiwo lomdlalo."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Ububanzi beCanvas",
+        "description": "Ububanzi be-CSS be-canvas (umzekelo px okanye em)."
       },
+      {
+        "property": "height",
+        "title": "Ubude beCanvas",
+        "description": "Ubude be-CSS be-canvas (umzekelo px okanye em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Indlela yokucinezela",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Inguqulelo yeMveliso",
         "description": "Inguqulelo ekhutshiweyo."
-      },
-      {
-        "property": "width",
-        "title": "Ububanzi beCanvas",
-        "description": "Ububanzi be-CSS be-canvas (umzekelo px okanye em)."
-      },
-      {
-        "property": "height",
-        "title": "Ubude beCanvas",
-        "description": "Ubude be-CSS be-canvas (umzekelo px okanye em)."
       },
       {
         "property": "background",

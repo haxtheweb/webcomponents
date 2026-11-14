@@ -14,28 +14,6 @@
         "property": "statement",
         "title": "Útsagn",
         "description": "Útsagn, sum verður umskapað til eina uppgávu, har orð skulu merkjast."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "Einkunnasnið",
-        "description": "OER Schema: einkunnasnið til hesa metingina (t.d. stig, bókstavur, prosent, fullførd)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Lærumál",
-        "description": "OER Schema: lærumál knýtt at hesi metingini."
-      },
-      {
-        "property": "forCourse",
-        "title": "Skeið",
-        "description": "OER Schema: skeið, sum henda metingin er ætlað til."
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Navn á spurnakappingini",
-        "description": "Navn á spurnakappingini, sum verður latið inn til brúks í xAPI-stýrdum umhvørvum at eyðmerkja henda lutin"
       }
     ],
     "advanced": [
@@ -46,6 +24,28 @@
       {
         "title": "Byrja minkað",
         "description": "Tá ið tað kann minkast, byrjar tað sum ein læst røð, ið bert vísir spurningin og støðuna á honum."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Einkunnasnið",
+        "description": "OER Schema: einkunnasnið til hesa metingina (t.d. stig, bókstavur, prosent, fullførd)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Lærumál",
+        "description": "OER Schema: lærumál knýtt at hesi metingini."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Navn á spurnakappingini",
+        "description": "Navn á spurnakappingini, sum verður latið inn til brúks í xAPI-stýrdum umhvørvum at eyðmerkja henda lutin"
+      },
+      {
+        "property": "forCourse",
+        "title": "Skeið",
+        "description": "OER Schema: skeið, sum henda metingin er ætlað til."
       }
     ]
   }

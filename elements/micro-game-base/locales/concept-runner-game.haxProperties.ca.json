@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Joc de cursa de conceptes",
-    "description": "Un joc de desplaçament lateral. El personatge corre en flames i no s'atura mai. Salta per agafar els conceptes bons i esquivar els dolents, i després mira un resum del que era bo i del que era dolent."
+    "description": "Un joc de desplaçament lateral: salteu per atrapar els conceptes correctes i evitar els incorrectes."
   },
   "settings": {
     "configure": [
@@ -89,7 +89,9 @@
         "property": "gameTitle",
         "title": "Nom del joc",
         "description": "Dona nom a aquest joc als esdeveniments de progrés i al marcatge d'OER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Identificador del joc",

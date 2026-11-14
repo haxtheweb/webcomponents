@@ -10,10 +10,6 @@
         "title": "Икона на картичката"
       },
       {
-        "property": "disabled",
-        "title": "Оневозможено"
-      },
-      {
         "property": "label",
         "title": "Ознака на картичката"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "Уникатен ID"
-      },
-      {
         "property": "flag",
         "title": "Изборен текст на знаменцето"
       },
       {
         "property": "flagIcon",
         "title": "Изборна икона на знаменцето"
+      },
+      {
+        "property": "disabled",
+        "title": "Оневозможено"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "Уникатен ID"
       }
     ]
   }

@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Tanpa Panah",
         "description": "Sembunyikan panah tombol."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Tautan: target",
@@ -54,7 +52,9 @@
           "_top": "Jendela teratas - _top",
           "_parent": "Jendela induk - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Tautan: rel",

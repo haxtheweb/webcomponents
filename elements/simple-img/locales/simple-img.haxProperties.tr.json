@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Basit Görsel",
-    "description": "Görselleri basit parametrelerle düzenleyin."
+    "description": "Basit ayarlarla yeniden boyutlandırılan, kırpılan veya döndürülen bir görsel."
   },
   "settings": {
     "configure": [
@@ -26,7 +26,8 @@
         "description": "Ekran okuyucular ve daha iyi SEO için yararlıdır."
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "Kalite",

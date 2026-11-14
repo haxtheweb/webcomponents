@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "Cnaipí",
         "description": "Grúpa cnaipí a thaispeántar faoin téacs."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "Téacs ancaire",
         "description": "Lipéad ancaire a thaispeántar sa nascleanúint."
       }
-    ]
+    ],
+    "developer": []
   }
 }

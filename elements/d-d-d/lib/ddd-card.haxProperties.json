@@ -12,7 +12,7 @@
     "description": "Card component styled with the DDD design system.",
     "icon": "chrome-reader-mode",
     "color": "light-blue",
-    "tags": ["Layout", "content", "card", "Image"],
+    "tags": ["Layout", "content", "card", "image"],
     "handles": [
       {
         "type": "image",
@@ -75,9 +75,7 @@
         "title": "No Arrow",
         "description": "Hide the button arrow.",
         "inputMethod": "boolean"
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Link: target",
@@ -89,7 +87,9 @@
           "_top": "Top window - _top",
           "_parent": "Parent window - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Link: rel",
@@ -103,10 +103,11 @@
       "tag": "ddd-card",
       "properties": {
         "src": "https://placehold.co/400x300",
-        "title": "Title",
-        "link": "https://hax.cloud"
+        "alt": "",
+        "title": "Card title",
+        "href": "https://haxtheweb.org/"
       },
-      "content": "<p>The card content</p>"
+      "content": "<p>A sentence or two about where this card leads.</p>"
     }
   ]
 }

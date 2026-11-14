@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "CSV-táblázat",
-    "description": "Táblázatot hoz létre egy CSV-fájlból, bárhol is legyen az."
+    "description": "CSV-fájlt jelenít meg akadálymentes táblázatként."
   },
   "settings": {
     "configure": [

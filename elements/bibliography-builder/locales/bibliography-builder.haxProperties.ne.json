@@ -9,7 +9,9 @@
         "slot": "",
         "title": "उद्धरणहरू",
         "description": "यस सन्दर्भसूचीका उद्धरण वस्तुहरू"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "पाठ्यक्रम",

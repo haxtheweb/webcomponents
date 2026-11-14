@@ -21,15 +21,6 @@
         "description": "Dîroka ku çavkanî lê hat gihîştin."
       },
       {
-        "property": "scope",
-        "title": "Qada",
-        "description": "Qada hêmanê ya ku were jêgirtin.",
-        "options": {
-          "sibling": "Hêmana hevrêz",
-          "parent": "Hêmana dêûbav"
-        }
-      },
-      {
         "property": "license",
         "title": "Lîsans",
         "description": "Lîsansa berhema jêgirtî."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Afirîner",
         "description": "Afirîner an xwediyê berhema jêgirtî."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Qada",
+        "description": "Qada hêmanê ya ku were jêgirtin.",
+        "options": {
+          "sibling": "Hêmana hevrêz",
+          "parent": "Hêmana dêûbav"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "Cureya OER Schema",

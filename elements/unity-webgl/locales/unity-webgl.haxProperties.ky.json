@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Максат",
         "description": "Оюндун жыйнагына жол."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Канвастын туурасы",
+        "description": "Канвастын CSS туурасы (мисалы, px же em)."
       },
+      {
+        "property": "height",
+        "title": "Канвастын бийиктиги",
+        "description": "Канвастын CSS бийиктиги (мисалы, px же em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Кысуу ыкмасы",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Продукциянын версиясы",
         "description": "Чыгаруу версиясы."
-      },
-      {
-        "property": "width",
-        "title": "Канвастын туурасы",
-        "description": "Канвастын CSS туурасы (мисалы, px же em)."
-      },
-      {
-        "property": "height",
-        "title": "Канвастын бийиктиги",
-        "description": "Канвастын CSS бийиктиги (мисалы, px же em)."
       },
       {
         "property": "background",

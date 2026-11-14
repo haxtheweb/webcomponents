@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Bvumira Kusefa",
         "description": "Bvumira kusefa nemhando dzekoramu."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Marongerwo eNhamba",
-        "description": "Shandisa marongerwo enhamba pamakoramu ane nhamba."
-      },
-      {
-        "property": "responsive",
-        "title": "Zvinochinja",
-        "description": "Gadzirisa marongerwo etafura pazviratidziro zvidiki."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Mamiriro eRubric",
-        "description": "Tora tafura iyi seOER Schema Rubric kuitira kuti metadata yeRubric, RubricScale, RubricCriterion, neRubricLevel ibudiswe."
-      },
-      {
-        "property": "rubricType",
-        "title": "Mhando yeRubric",
-        "description": "Mhando yerubric inobudiswa seoer:rubricType (inoshanda chete kana Mamiriro eRubric akabatidzwa).",
-        "options": {
-          "": "(hapana)",
-          "analytic": "Yekuongorora zvikamu",
-          "holistic": "Yakazara",
-          "single-point": "Yepoindi Imwe",
-          "checklist": "Rondedzero yekutarisa"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Bhatani Rekudhinda",
         "description": "Wedzera bhatani rekudhinda tafura chete."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Marongerwo eNhamba",
+        "description": "Shandisa marongerwo enhamba pamakoramu ane nhamba."
+      },
+      {
+        "property": "responsive",
+        "title": "Zvinochinja",
+        "description": "Gadzirisa marongerwo etafura pazviratidziro zvidiki."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Mamiriro eRubric",
+        "description": "Tora tafura iyi seOER Schema Rubric kuitira kuti metadata yeRubric, RubricScale, RubricCriterion, neRubricLevel ibudiswe."
+      },
+      {
+        "property": "rubricType",
+        "title": "Mhando yeRubric",
+        "description": "Mhando yerubric inobudiswa seoer:rubricType (inoshanda chete kana Mamiriro eRubric akabatidzwa).",
+        "options": {
+          "": "(hapana)",
+          "analytic": "Yekuongorora zvikamu",
+          "holistic": "Yakazara",
+          "single-point": "Yepoindi Imwe",
+          "checklist": "Rondedzero yekutarisa"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "Dhata yeCSV",
         "description": "Gadzira tafura kubva kufaira reCSV rakaiswa."
       }
-    ]
+    ],
+    "developer": []
   }
 }

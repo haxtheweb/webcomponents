@@ -9,7 +9,9 @@
         "property": "source",
         "title": "Kaynak URL'si",
         "description": "Kaynak URL'si."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Yükseklik",

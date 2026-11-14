@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Enweghị Akụ",
         "description": "Zoo akụ bọtịnụ ahụ."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Njikọ: ebe ọ ga-emepe",
@@ -54,7 +52,9 @@
           "_top": "Windo kachasị elu - _top",
           "_parent": "Windo nne - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Njikọ: rel",

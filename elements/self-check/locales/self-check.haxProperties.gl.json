@@ -27,6 +27,13 @@
       {
         "slot": "",
         "title": "Resposta"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Ligazón para saber máis",
+        "description": "Ligazón a información adicional."
       },
       {
         "property": "hasLearningObjective",
@@ -37,13 +44,6 @@
         "property": "assessing",
         "title": "Avalía",
         "description": "Referencia á actividade emitida como oer:assessing."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "link",
-        "title": "Ligazón para saber máis",
-        "description": "Ligazón a información adicional."
       }
     ]
   }

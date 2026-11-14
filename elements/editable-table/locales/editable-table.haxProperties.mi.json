@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Tukuna te Tātari",
         "description": "Tukuna te tātari mā ngā uara tīwae."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Kāhua Tau",
-        "description": "Whakahāngaitia te kāhua tau ki ngā tīwae tau."
-      },
-      {
-        "property": "responsive",
-        "title": "Urutau",
-        "description": "Whakaritea te tahora o te ripanga i ngā mata iti."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Aratau Rūpiri",
-        "description": "Whakamāoritia tēnei ripanga hei OER Schema Rubric kia tukuna ai ngā raraunga tāhuhu Rubric, RubricScale, RubricCriterion, me RubricLevel."
-      },
-      {
-        "property": "rubricType",
-        "title": "Momo Rūpiri",
-        "description": "Te kāhua rūpiri ka tukuna hei oer:rubricType (he whai tikanga anake ina hohe te Aratau Rūpiri).",
-        "options": {
-          "": "(kore)",
-          "analytic": "Ā-tātari",
-          "holistic": "Ā-katoa",
-          "single-point": "Pito Kotahi",
-          "checklist": "Rārangi Taki"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Pātene Tā",
         "description": "Tāpiritia tētahi pātene hei tā i te ripanga anake."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Kāhua Tau",
+        "description": "Whakahāngaitia te kāhua tau ki ngā tīwae tau."
+      },
+      {
+        "property": "responsive",
+        "title": "Urutau",
+        "description": "Whakaritea te tahora o te ripanga i ngā mata iti."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Aratau Rūpiri",
+        "description": "Whakamāoritia tēnei ripanga hei OER Schema Rubric kia tukuna ai ngā raraunga tāhuhu Rubric, RubricScale, RubricCriterion, me RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "Momo Rūpiri",
+        "description": "Te kāhua rūpiri ka tukuna hei oer:rubricType (he whai tikanga anake ina hohe te Aratau Rūpiri).",
+        "options": {
+          "": "(kore)",
+          "analytic": "Ā-tātari",
+          "holistic": "Ā-katoa",
+          "single-point": "Pito Kotahi",
+          "checklist": "Rārangi Taki"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "Raraunga CSV",
         "description": "Hangaia he ripanga mai i tētahi kōnae CSV kua tukuake."
       }
-    ]
+    ],
+    "developer": []
   }
 }

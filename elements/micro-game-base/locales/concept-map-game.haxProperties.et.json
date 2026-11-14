@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Mõistekaardi mäng",
-    "description": "Lühike klaviatuurimäng. Tegelane kõnnib kaardil iga mõisteni ja see selgitab end ise. Puuduta kõiki, et saada konfetid ja kopeeritav viip."
+    "description": "Lühike klaviatuurimäng, kus tegelane kõnnib kaardil ja iga mõiste selgitab ennast ise."
   },
   "settings": {
     "configure": [
@@ -86,7 +86,9 @@
         "property": "gameTitle",
         "title": "Mängu nimi",
         "description": "Annab sellele mängule nime edenemissündmustes ja OER Schema märgistuses."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Mängu ID",

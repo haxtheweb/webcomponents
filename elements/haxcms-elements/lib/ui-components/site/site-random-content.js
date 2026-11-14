@@ -533,45 +533,8 @@ export class SiteRandomContent extends HAXCMSI18NMixin(DDD) {
    * HAX properties integration
    */
   static get haxProperties() {
-    return {
-      canScale: false,
-      canEditSource: false,
-      gizmo: {
-        title: "Random Page Content",
-        description: "Display a random top-level element from a selected page",
-        icon: "av:shuffle",
-        color: "purple",
-        tags: ["Other"],
-        handles: [],
-        meta: {
-          author: "HAXcms",
-        },
-      },
-      settings: {
-        configure: [
-          {
-            property: "page",
-            title: "Page",
-            description:
-              "Select the page to draw random content from. The element will randomly display one of the top-level HTML elements from this page.",
-            inputMethod: "select",
-            // filled with the site's pages when the editor opens (haxHooks)
-            itemsList: [],
-            required: true,
-          },
-        ],
-        advanced: [],
-      },
-      demoSchema: [
-        {
-          tag: this.tag,
-          properties: {
-            page: null,
-          },
-          content: "",
-        },
-      ],
-    };
+    return new URL("./site-random-content.haxProperties.json", import.meta.url)
+      .href;
   }
 }
 

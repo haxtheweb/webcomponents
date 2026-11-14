@@ -2,6 +2,13 @@ import { fixture, expect, html } from "@open-wc/testing";
 import "../merit-badge.js";
 import { MeritBadge } from "../merit-badge.js";
 
+// HAX schemas ship as JSON next to the element; read one whether the class
+// returns the object or the URL of its file
+const haxSchema = async (C) => {
+  const hp = C.haxProperties;
+  return typeof hp === "string" ? (await fetch(hp)).json() : hp;
+};
+
 // tiny inline 1x1 gif so the badge image fixture resolves without any
 // network or 404 noise on the local WTR dev server
 const DATA_URI = "data:image/gif;base64,R0lGODlhAQABAAAAACw=";
@@ -245,11 +252,11 @@ describe("merit-badge element", () => {
     expect(el.shadowRoot.querySelector("locked-badge")).to.exist;
   });
 
-  it("exposes haxProperties with badge settings", () => {
-    const props = MeritBadge.haxProperties;
+  it("exposes haxProperties with badge settings", async () => {
+    const props = await haxSchema(MeritBadge);
     expect(props.canScale).to.be.true;
-    expect(props.gizmo.title).to.equal("Merit Badge");
-    expect(props.gizmo.icon).to.equal("icons:verified");
+    expect(props.gizmo.title).to.equal("Merit badge");
+    expect(props.gizmo.icon).to.equal("icons:card-membership");
     expect(props.settings.configure.length).to.equal(6);
     expect(props.settings.configure[5].property).to.equal("skill");
     expect(props.settings.configure[5].inputMethod).to.equal("textfield");

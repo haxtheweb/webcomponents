@@ -9,7 +9,9 @@
         "slot": "",
         "title": "ఉల్లేఖనాలు",
         "description": "ఈ గ్రంథసూచిలోని ఉల్లేఖన అంశాలు"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "కోర్సు",

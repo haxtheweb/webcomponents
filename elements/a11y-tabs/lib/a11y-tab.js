@@ -115,67 +115,7 @@ class A11yTab extends I18NMixin(LitElement) {
   }
   // haxProperty definition
   static get haxProperties() {
-    return {
-      canScale: false,
-
-      canEditSource: true,
-      gizmo: {
-        title: "Tab",
-        description: "A single tab.",
-        icon: "view-day",
-        color: "grey",
-        tags: ["Layout", "a11y", "presentation", "tab", "layout", "tabs"],
-      },
-      settings: {
-        configure: [
-          {
-            property: "icon",
-            title: "Tab Icon",
-            inputMethod: "iconpicker",
-          },
-          {
-            property: "disabled",
-            title: "Disabled",
-            inputMethod: "boolean",
-          },
-          {
-            property: "label",
-            title: "Tab Label",
-            inputMethod: "textfield",
-          },
-          {
-            slot: "",
-            title: "Tab Content",
-            description: "A content of the tab.",
-            inputMethod: "code-editor",
-          },
-        ],
-        advanced: [
-          {
-            property: "id",
-            title: "Unique ID",
-            inputMethod: "textfield",
-          },
-          {
-            property: "flag",
-            title: "Optional Flag Text",
-            inputMethod: "textfield",
-          },
-          {
-            property: "flagIcon",
-            title: "Optional Flag Icon",
-            inputMethod: "iconpicker",
-          },
-        ],
-      },
-      demoSchema: [
-        {
-          tag: "a11y-tab",
-          properties: {},
-          content: "",
-        },
-      ],
-    };
+    return new URL("./a11y-tab.haxProperties.json", import.meta.url).href;
   }
   // properties available to the custom element for data binding
   static get properties() {

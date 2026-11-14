@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Табліца CSV",
-    "description": "Можа стварыць табліцу з файла CSV, дзе б ён ні знаходзіўся."
+    "description": "Паказвае файл CSV як даступную табліцу."
   },
   "settings": {
     "configure": [

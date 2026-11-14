@@ -21,30 +21,8 @@
         "description": "Tillåt endast ett svar."
       },
       {
-        "property": "gradingFormat",
-        "title": "Bedömningsformat",
-        "description": "OER Schema: bedömningsformat för den här bedömningen (t.ex. poäng, betyg, procent, slutförande)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Lärandemål",
-        "description": "OER Schema: lärandemål som hör till den här bedömningen."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kurs",
-        "description": "OER Schema: kurs som den här bedömningen är avsedd för."
-      },
-      {
         "property": "answers",
         "title": "Svar"
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Quizets namn",
-        "description": "Quiznamn som används för xAPI-identifiering i analyssystem."
       }
     ],
     "advanced": [
@@ -57,6 +35,28 @@
         "property": "collapsed",
         "title": "Börja hopfälld",
         "description": "När den är hopfällbar, börja som en stängd rad som bara visar frågan och dess status."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Bedömningsformat",
+        "description": "OER Schema: bedömningsformat för den här bedömningen (t.ex. poäng, betyg, procent, slutförande)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Lärandemål",
+        "description": "OER Schema: lärandemål som hör till den här bedömningen."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Quizets namn",
+        "description": "Quiznamn som används för xAPI-identifiering i analyssystem."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurs",
+        "description": "OER Schema: kurs som den här bedömningen är avsedd för."
       }
     ]
   }

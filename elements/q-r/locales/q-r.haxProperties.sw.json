@@ -14,16 +14,6 @@
         "property": "title",
         "title": "Kichwa mbadala",
         "description": "Kichwa mbadala kilichounganishwa na chanzo cha msimbo wa QR."
-      },
-      {
-        "property": "modulesize",
-        "title": "Ukubwa",
-        "description": "Ukubwa wa msimbo wa QR."
-      },
-      {
-        "property": "margin",
-        "title": "Pambizo",
-        "description": "Nafasi inayozunguka msimbo."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "Ukubwa",
+        "description": "Ukubwa wa msimbo wa QR."
+      },
+      {
+        "property": "margin",
+        "title": "Pambizo",
+        "description": "Nafasi inayozunguka msimbo."
       }
     ]
   }

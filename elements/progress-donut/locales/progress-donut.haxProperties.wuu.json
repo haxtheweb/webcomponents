@@ -26,11 +26,6 @@
         "description": "图片个替代文字。"
       },
       {
-        "property": "animated",
-        "title": "动画",
-        "description": "第一趟载入辰光进度有勿有动画"
-      },
-      {
         "property": "complete",
         "title": "完成",
         "description": "已完成数值个数组。"
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "总数",
         "description": "所有项目全部完成辰光个总数。"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "动画",
+        "description": "第一趟载入辰光进度有勿有动画"
       },
       {
         "property": "startAngle",

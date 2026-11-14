@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Joc de missió de conceptes",
-    "description": "Un món per explorar. Els conceptes et troben i et fan una pregunta. Respon bé per derrotar-ne un i desbloquejar-ne la casa. El resum mostra els intents i què cal repassar."
+    "description": "Un joc de món obert en què els conceptes fan preguntes i les respostes correctes desbloquegen el mapa."
   },
   "settings": {
     "configure": [
@@ -91,7 +91,9 @@
         "property": "gameTitle",
         "title": "Nom del joc",
         "description": "Dona nom a aquest joc als esdeveniments de progrés i al marcatge d'OER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Identificador del joc",

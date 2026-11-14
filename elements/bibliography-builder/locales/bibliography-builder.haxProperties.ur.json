@@ -9,7 +9,9 @@
         "slot": "",
         "title": "حوالے",
         "description": "اس کتابیات میں حوالہ آئٹمز"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "کورس",

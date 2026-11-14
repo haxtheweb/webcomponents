@@ -11,11 +11,6 @@
         "description": "Slovo použité k vygenerování náhodné postavy."
       },
       {
-        "property": "code",
-        "title": "Kód postavy",
-        "description": "Vložte uložený kód a znovu vytvořte tuto postavu."
-      },
-      {
         "property": "hat",
         "title": "Klobouk",
         "description": "Styl klobouku.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Maska",
-        "description": "Maska nošená přes obličej nebo hlavu.",
-        "options": {
-          "none": "Žádná",
-          "lion": "Lev",
-          "plague": "Morový doktor",
-          "theater": "Divadelní maska",
-          "pumpkin": "Dýně",
-          "ghost": "Duch",
-          "mummy": "Mumie",
-          "wrestler": "Zápasnická maska",
-          "block-head": "Kostičková hlava",
-          "web": "Pavučinová maska",
-          "werewolf": "Tvář vlkodlaka",
-          "shadow": "Stínová tvář"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Líčení",
-        "description": "Malování obličeje nebo rtěnka.",
-        "options": {
-          "none": "Žádné",
-          "red-lipstick": "Červená rtěnka",
-          "pink-lipstick": "Růžová rtěnka",
-          "berry-lipstick": "Rtěnka v barvě lesního ovoce",
-          "clown": "Klaunovo líčení",
-          "fangs": "Tesáky",
-          "skull": "Malba lebky",
-          "zombie": "Zombie malba",
-          "red-nose": "Červený nos",
-          "white-beard": "Bílý vous",
-          "domino": "Maska hrdiny",
-          "carrot": "Mrkvový nos",
-          "bunny": "Zaječí nos",
-          "mustache": "Knír",
-          "monster": "Líčení monstra",
-          "round-glasses": "Kulaté brýle"
-        }
-      },
-      {
         "property": "expression",
         "title": "Výraz",
         "description": "Výraz obličeje.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Mazlíček",
+        "description": "Mazlíček vedle postavy.",
+        "options": {
+          "none": "Žádný",
+          "cat": "Kočka",
+          "dog": "Pes",
+          "bunny": "Zajíček",
+          "goldfish": "Zlatá rybka",
+          "slime": "Sliz",
+          "squirrel": "Veverka",
+          "dragon": "Dráček",
+          "parrot": "Papoušek",
+          "owl": "Sova",
+          "bat": "Netopýr"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Kód postavy",
+        "description": "Vložte uložený kód a znovu vytvořte tuto postavu."
+      },
+      {
+        "property": "mask",
+        "title": "Maska",
+        "description": "Maska nošená přes obličej nebo hlavu.",
+        "options": {
+          "none": "Žádná",
+          "lion": "Lev",
+          "plague": "Morový doktor",
+          "theater": "Divadelní maska",
+          "pumpkin": "Dýně",
+          "ghost": "Duch",
+          "mummy": "Mumie",
+          "wrestler": "Zápasnická maska",
+          "block-head": "Kostičková hlava",
+          "web": "Pavučinová maska",
+          "werewolf": "Tvář vlkodlaka",
+          "shadow": "Stínová tvář"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Líčení",
+        "description": "Malování obličeje nebo rtěnka.",
+        "options": {
+          "none": "Žádné",
+          "red-lipstick": "Červená rtěnka",
+          "pink-lipstick": "Růžová rtěnka",
+          "berry-lipstick": "Rtěnka v barvě lesního ovoce",
+          "clown": "Klaunovo líčení",
+          "fangs": "Tesáky",
+          "skull": "Malba lebky",
+          "zombie": "Zombie malba",
+          "red-nose": "Červený nos",
+          "white-beard": "Bílý vous",
+          "domino": "Maska hrdiny",
+          "carrot": "Mrkvový nos",
+          "bunny": "Zaječí nos",
+          "mustache": "Knír",
+          "monster": "Líčení monstra",
+          "round-glasses": "Kulaté brýle"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Text na vlajce",
         "description": "Až 4 písmena zobrazená na vlajce."
@@ -310,24 +330,6 @@
           "skates": "Brusle",
           "skateboard": "Skateboard",
           "hoverboard": "Létající prkno"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Mazlíček",
-        "description": "Mazlíček vedle postavy.",
-        "options": {
-          "none": "Žádný",
-          "cat": "Kočka",
-          "dog": "Pes",
-          "bunny": "Zajíček",
-          "goldfish": "Zlatá rybka",
-          "slime": "Sliz",
-          "squirrel": "Veverka",
-          "dragon": "Dráček",
-          "parrot": "Papoušek",
-          "owl": "Sova",
-          "bat": "Netopýr"
         }
       },
       {

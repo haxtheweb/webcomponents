@@ -11,30 +11,8 @@
         "description": "Soalan untuk pengguna. Tandakan sasaran lepas, kemudian senaraikan jawapan sehingga sasaran seterusnya."
       },
       {
-        "property": "gradingFormat",
-        "title": "Format penggredan",
-        "description": "OER Schema: format penggredan untuk pentaksiran ini (cth. mata, huruf, peratus, penyiapan)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Objektif pembelajaran",
-        "description": "OER Schema: objektif pembelajaran yang berkaitan dengan pentaksiran ini."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kursus",
-        "description": "OER Schema: kursus yang dimaksudkan untuk pentaksiran ini."
-      },
-      {
         "property": "answers",
         "title": "Jawapan"
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Nama kuiz",
-        "description": "Nama kuiz yang digunakan untuk pengenalan xAPI dalam sistem analitik."
       }
     ],
     "advanced": [
@@ -47,6 +25,28 @@
         "property": "collapsed",
         "title": "Mula dalam keadaan dilipat",
         "description": "Apabila boleh dilipat, mula sebagai baris tertutup yang hanya menunjukkan soalan dan statusnya."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Format penggredan",
+        "description": "OER Schema: format penggredan untuk pentaksiran ini (cth. mata, huruf, peratus, penyiapan)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Objektif pembelajaran",
+        "description": "OER Schema: objektif pembelajaran yang berkaitan dengan pentaksiran ini."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nama kuiz",
+        "description": "Nama kuiz yang digunakan untuk pengenalan xAPI dalam sistem analitik."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursus",
+        "description": "OER Schema: kursus yang dimaksudkan untuk pentaksiran ini."
       }
     ]
   }

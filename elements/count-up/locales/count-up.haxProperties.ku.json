@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Nivîsa paşgir",
         "description": "Nivîsa piştî hejmarê tê nîşandan (mînak '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Slota pêşgir",
-        "description": "Naveroka slotê ya vebijarkî berî hejmarê."
-      },
-      {
-        "slot": "suffix",
-        "title": "Slota paşgir",
-        "description": "Naveroka slotê ya vebijarkî piştî hejmarê."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Bê nermkirin",
         "description": "Nermkirinê neçalak bike da ku hejmartin xêzî be."
+      },
+      {
+        "slot": "prefix",
+        "title": "Slota pêşgir",
+        "description": "Naveroka slotê ya vebijarkî berî hejmarê."
+      },
+      {
+        "slot": "suffix",
+        "title": "Slota paşgir",
+        "description": "Naveroka slotê ya vebijarkî piştî hejmarê."
       }
     ]
   }

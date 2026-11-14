@@ -9,7 +9,21 @@
         "property": "target",
         "title": "ඉලක්කය",
         "description": "ක්‍රීඩා ගොඩනැගීමට මාර්ගය."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "කැන්වස් පළල",
+        "description": "කැන්වස් CSS පළල (උදාහරණයක් ලෙස px හෝ em)."
       },
+      {
+        "property": "height",
+        "title": "කැන්වස් උස",
+        "description": "කැන්වස් CSS උස (උදාහරණයක් ලෙස px හෝ em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "සම්පීඩන ක්‍රමය",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "නිෂ්පාදන අනුවාදය",
         "description": "නිකුතු අනුවාදය."
-      },
-      {
-        "property": "width",
-        "title": "කැන්වස් පළල",
-        "description": "කැන්වස් CSS පළල (උදාහරණයක් ලෙස px හෝ em)."
-      },
-      {
-        "property": "height",
-        "title": "කැන්වස් උස",
-        "description": "කැන්වස් CSS උස (උදාහරණයක් ලෙස px හෝ em)."
       },
       {
         "property": "background",

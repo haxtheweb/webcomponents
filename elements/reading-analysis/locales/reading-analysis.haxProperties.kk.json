@@ -38,21 +38,6 @@
         "slot": "",
         "title": "Оқу мәтіні",
         "description": "Оқушылар жұмыс істейтін мәтін. Кез келген HTML: тақырыптар, абзацтар, тізімдер және суреттер."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "Бағалау пішімі",
-        "description": "OER Schema: осы бағалаудың бағалау пішімі (мысалы, ұпай, әріп, пайыз, орындалу)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Оқу мақсаты",
-        "description": "OER Schema: осы бағалаумен байланысты оқу мақсаты."
-      },
-      {
-        "property": "forCourse",
-        "title": "Курс",
-        "description": "OER Schema: осы бағалау арналған курс."
       }
     ],
     "advanced": [
@@ -70,6 +55,16 @@
         "property": "collapsed",
         "title": "Жиналған күйде бастау",
         "description": "Жиналмалы болғанда, тек сұрақ пен оның күйін көрсететін жабық жол ретінде басталады."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Бағалау пішімі",
+        "description": "OER Schema: осы бағалаудың бағалау пішімі (мысалы, ұпай, әріп, пайыз, орындалу)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Оқу мақсаты",
+        "description": "OER Schema: осы бағалаумен байланысты оқу мақсаты."
       }
     ],
     "developer": [
@@ -77,6 +72,11 @@
         "property": "quizName",
         "title": "Тест атауы",
         "description": "Осы элементті сәйкестендіру үшін xAPI негізіндегі орталарда қолданылатын тест атауы"
+      },
+      {
+        "property": "forCourse",
+        "title": "Курс",
+        "description": "OER Schema: осы бағалау арналған курс."
       }
     ]
   }

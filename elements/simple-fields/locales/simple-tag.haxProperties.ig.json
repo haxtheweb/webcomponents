@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Agba mkpụrụ akpaaka",
         "description": "Wepụta agba mkpụrụ site n'ederede akara aha na-akpaghị aka."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Bọtịnụ kagbuo",
-        "description": "Gosi bọtịnụ akara ngosi wepụ/kagbuo n'ime pill ahụ."
-      },
-      {
-        "property": "readonly",
-        "title": "Naanị ịgụ",
-        "description": "Zoo bọtịnụ kagbuo ka pill ahụ bụrụ naanị maka ngosi."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Isi awọ anụnụ anụnụ",
           "grey": "Isi awọ"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Bọtịnụ kagbuo",
+        "description": "Gosi bọtịnụ akara ngosi wepụ/kagbuo n'ime pill ahụ."
+      },
+      {
+        "property": "readonly",
+        "title": "Naanị ịgụ",
+        "description": "Zoo bọtịnụ kagbuo ka pill ahụ bụrụ naanị maka ngosi."
       }
     ]
   }

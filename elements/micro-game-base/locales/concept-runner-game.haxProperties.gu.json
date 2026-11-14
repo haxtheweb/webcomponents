@@ -89,7 +89,9 @@
         "property": "gameTitle",
         "title": "રમતનું નામ",
         "description": "પ્રગતિ ઇવેન્ટ અને OER Schema માર્કઅપમાં આ રમતને નામ આપે છે."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "રમત id",

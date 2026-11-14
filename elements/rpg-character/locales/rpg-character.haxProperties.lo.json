@@ -11,11 +11,6 @@
         "description": "ຄຳທີ່ໃຊ້ສ້າງຕົວລະຄອນແບບສຸ່ມ."
       },
       {
-        "property": "code",
-        "title": "ລະຫັດຕົວລະຄອນ",
-        "description": "ວາງລະຫັດທີ່ບັນທຶກໄວ້ ເພື່ອສ້າງຕົວລະຄອນນັ້ນຄືນໃໝ່."
-      },
-      {
         "property": "hat",
         "title": "ໝວກ",
         "description": "ຮູບແບບໝວກ.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "ໜ້າກາກ",
-        "description": "ໜ້າກາກທີ່ສວມໃສ່ໜ້າ ຫຼື ຫົວ.",
-        "options": {
-          "none": "ບໍ່ມີ",
-          "lion": "ສິງ",
-          "plague": "ໝໍໂລກລະບາດ",
-          "theater": "ລະຄອນ",
-          "pumpkin": "ໝາກອຶ",
-          "ghost": "ຜີ",
-          "mummy": "ມຳມີ່",
-          "wrestler": "ໜ້າກາກມວຍປ້ຳ",
-          "block-head": "ຫົວບລັອກ",
-          "web": "ໜ້າກາກໃຍແມງມຸມ",
-          "werewolf": "ໜ້າມະນຸດໝາປ່າ",
-          "shadow": "ໜ້າເງົາ"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "ເຄື່ອງສຳອາງ",
-        "description": "ສີທາໜ້າ ຫຼື ລິບສະຕິກ.",
-        "options": {
-          "none": "ບໍ່ມີ",
-          "red-lipstick": "ລິບສະຕິກສີແດງ",
-          "pink-lipstick": "ລິບສະຕິກສີບົວ",
-          "berry-lipstick": "ລິບສະຕິກສີເບີຣີ",
-          "clown": "ສີທາໜ້າຕະຫຼົກ",
-          "fangs": "ເຂ້ຍແວມໄພ",
-          "skull": "ສີທາໜ້າຫົວກະໂຫຼກ",
-          "zombie": "ສີທາໜ້າຊອມບີ",
-          "red-nose": "ດັງແດງ",
-          "white-beard": "ໜວດຂາວ",
-          "domino": "ໜ້າກາກຮີໂຣ",
-          "carrot": "ດັງແຄລອດ",
-          "bunny": "ດັງກະຕ່າຍ",
-          "mustache": "ໜວດ",
-          "monster": "ທາໜ້າສັດປະຫຼາດ",
-          "round-glasses": "ແວ່ນຕາມົນ"
-        }
-      },
-      {
         "property": "expression",
         "title": "ສີໜ້າ",
         "description": "ສີໜ້າ.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "ສັດລ້ຽງ",
+        "description": "ສັດລ້ຽງຢູ່ຂ້າງຕົວລະຄອນ.",
+        "options": {
+          "none": "ບໍ່ມີ",
+          "cat": "ແມວ",
+          "dog": "ໝາ",
+          "bunny": "ກະຕ່າຍ",
+          "goldfish": "ປາຄຳ",
+          "slime": "ເມືອກ",
+          "squirrel": "ກະຮອກ",
+          "dragon": "ລູກມັງກອນ",
+          "parrot": "ນົກແກ້ວ",
+          "owl": "ນົກເຄົ້າ",
+          "bat": "ເຈຍ"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "ລະຫັດຕົວລະຄອນ",
+        "description": "ວາງລະຫັດທີ່ບັນທຶກໄວ້ ເພື່ອສ້າງຕົວລະຄອນນັ້ນຄືນໃໝ່."
+      },
+      {
+        "property": "mask",
+        "title": "ໜ້າກາກ",
+        "description": "ໜ້າກາກທີ່ສວມໃສ່ໜ້າ ຫຼື ຫົວ.",
+        "options": {
+          "none": "ບໍ່ມີ",
+          "lion": "ສິງ",
+          "plague": "ໝໍໂລກລະບາດ",
+          "theater": "ລະຄອນ",
+          "pumpkin": "ໝາກອຶ",
+          "ghost": "ຜີ",
+          "mummy": "ມຳມີ່",
+          "wrestler": "ໜ້າກາກມວຍປ້ຳ",
+          "block-head": "ຫົວບລັອກ",
+          "web": "ໜ້າກາກໃຍແມງມຸມ",
+          "werewolf": "ໜ້າມະນຸດໝາປ່າ",
+          "shadow": "ໜ້າເງົາ"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "ເຄື່ອງສຳອາງ",
+        "description": "ສີທາໜ້າ ຫຼື ລິບສະຕິກ.",
+        "options": {
+          "none": "ບໍ່ມີ",
+          "red-lipstick": "ລິບສະຕິກສີແດງ",
+          "pink-lipstick": "ລິບສະຕິກສີບົວ",
+          "berry-lipstick": "ລິບສະຕິກສີເບີຣີ",
+          "clown": "ສີທາໜ້າຕະຫຼົກ",
+          "fangs": "ເຂ້ຍແວມໄພ",
+          "skull": "ສີທາໜ້າຫົວກະໂຫຼກ",
+          "zombie": "ສີທາໜ້າຊອມບີ",
+          "red-nose": "ດັງແດງ",
+          "white-beard": "ໜວດຂາວ",
+          "domino": "ໜ້າກາກຮີໂຣ",
+          "carrot": "ດັງແຄລອດ",
+          "bunny": "ດັງກະຕ່າຍ",
+          "mustache": "ໜວດ",
+          "monster": "ທາໜ້າສັດປະຫຼາດ",
+          "round-glasses": "ແວ່ນຕາມົນ"
+        }
+      },
+      {
         "property": "flagText",
         "title": "ຂໍ້ຄວາມເທິງທຸງ",
         "description": "ສູງສຸດ 4 ຕົວອັກສອນທີ່ສະແດງເທິງທຸງ."
@@ -310,24 +330,6 @@
           "skates": "ສະເກັດ",
           "skateboard": "ສະເກັດບອດ",
           "hoverboard": "ກະດານລອຍ"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "ສັດລ້ຽງ",
-        "description": "ສັດລ້ຽງຢູ່ຂ້າງຕົວລະຄອນ.",
-        "options": {
-          "none": "ບໍ່ມີ",
-          "cat": "ແມວ",
-          "dog": "ໝາ",
-          "bunny": "ກະຕ່າຍ",
-          "goldfish": "ປາຄຳ",
-          "slime": "ເມືອກ",
-          "squirrel": "ກະຮອກ",
-          "dragon": "ລູກມັງກອນ",
-          "parrot": "ນົກແກ້ວ",
-          "owl": "ນົກເຄົ້າ",
-          "bat": "ເຈຍ"
         }
       },
       {

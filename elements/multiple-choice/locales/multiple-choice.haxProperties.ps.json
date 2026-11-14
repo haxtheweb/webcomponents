@@ -21,30 +21,8 @@
         "description": "یوازې یو ځواب ته اجازه ورکړئ."
       },
       {
-        "property": "gradingFormat",
-        "title": "د نمرو بڼه",
-        "description": "OER Schema: د دې ارزونې د نمرو بڼه (لکه نمرې، توری، سلنه، بشپړتیا)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "د زده کړې موخه",
-        "description": "OER Schema: د دې ارزونې پورې تړلې د زده کړې موخه."
-      },
-      {
-        "property": "forCourse",
-        "title": "کورس",
-        "description": "OER Schema: هغه کورس چې دا ارزونه ورته ټاکل شوې."
-      },
-      {
         "property": "answers",
         "title": "ځوابونه"
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "د ازموینې نوم",
-        "description": "د ازموینې نوم چې د تحلیلي سیسټمونو په xAPI پېژندنه کې کارول کېږي."
       }
     ],
     "advanced": [
@@ -57,6 +35,28 @@
         "property": "collapsed",
         "title": "ټول شوی پیل کړئ",
         "description": "کله چې د ټولیدو وړ وي، د بند قطار په توګه پیل کړئ چې یوازې پوښتنه او د هغې حالت ښیي."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "د نمرو بڼه",
+        "description": "OER Schema: د دې ارزونې د نمرو بڼه (لکه نمرې، توری، سلنه، بشپړتیا)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "د زده کړې موخه",
+        "description": "OER Schema: د دې ارزونې پورې تړلې د زده کړې موخه."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "د ازموینې نوم",
+        "description": "د ازموینې نوم چې د تحلیلي سیسټمونو په xAPI پېژندنه کې کارول کېږي."
+      },
+      {
+        "property": "forCourse",
+        "title": "کورس",
+        "description": "OER Schema: هغه کورس چې دا ارزونه ورته ټاکل شوې."
       }
     ]
   }

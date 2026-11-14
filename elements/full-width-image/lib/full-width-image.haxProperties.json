@@ -5,9 +5,9 @@
   "gizmo": {
     "title": "Image section",
     "description": "Full-width image that breaks up a page section.",
-    "icon": "image:image",
+    "icon": "image:panorama",
     "color": "green",
-    "tags": ["Layout", "image", "layout", "section", "heading"],
+    "tags": ["Layout", "image", "section", "heading"],
     "handles": [
       {
         "type": "image",

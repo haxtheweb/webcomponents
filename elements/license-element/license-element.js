@@ -414,8 +414,7 @@ class LicenseElement extends I18NMixin(SchemaBehaviors(DDDSuper(LitElement))) {
         icon: "icons:copyright",
         color: "grey",
         tags: [
-          "Other",
-          "content",
+          "Content",
           "copyright",
           "license",
           "cc0",

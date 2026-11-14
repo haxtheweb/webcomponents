@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Ảnh parallax",
-    "description": "Ảnh cuộn theo trang"
+    "description": "Hình ảnh toàn chiều rộng cuộn chậm hơn trang, có tiêu đề phía trên."
   },
   "settings": {
     "configure": [

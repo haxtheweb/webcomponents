@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "Lebo / Kidonge",
+    "title": "Lebo",
     "description": "Lebo fupi yenye umbo la kidonge yenye rangi ya msisitizo ya hiari, kitufe cha kughairi au kigeuzi."
   },
   "settings": {
@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Rangi ya msisitizo ya kiotomatiki",
         "description": "Pata rangi ya msisitizo kutoka kwa maandishi ya lebo kiotomatiki."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Kitufe cha kughairi",
-        "description": "Onyesha kitufe cha aikoni cha kuondoa/kughairi ndani ya kidonge."
-      },
-      {
-        "property": "readonly",
-        "title": "Kusoma pekee",
-        "description": "Ficha kitufe cha kughairi ili kidonge kiwe cha kuonyesha pekee."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Kijivu-bluu",
           "grey": "Kijivu"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Kitufe cha kughairi",
+        "description": "Onyesha kitufe cha aikoni cha kuondoa/kughairi ndani ya kidonge."
+      },
+      {
+        "property": "readonly",
+        "title": "Kusoma pekee",
+        "description": "Ficha kitufe cha kughairi ili kidonge kiwe cha kuonyesha pekee."
       }
     ]
   }

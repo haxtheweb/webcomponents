@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "คำบรรยาย",
         "description": "คำบรรยายสำหรับรูปภาพ"
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "ชื่อรูป",
-        "description": "ชื่อเรื่องสำหรับป้ายกำกับรูป"
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "คำอธิบายรูป",
-        "description": "คำอธิบายสำหรับป้ายกำกับรูป"
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "ปิดใช้หน้าต่างโมดัลของรูปภาพ",
         "description": "ปิดใช้การคลิกเพื่อเปิดรูปภาพในกล่องโต้ตอบตรวจสอบรูปภาพ"
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "ชื่อรูป",
+        "description": "ชื่อเรื่องสำหรับป้ายกำกับรูป"
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "คำอธิบายรูป",
+        "description": "คำอธิบายสำหรับป้ายกำกับรูป"
       }
     ],
     "developer": [

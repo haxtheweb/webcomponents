@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Gra z questem pojęć",
-    "description": "Otwarty świat do zwiedzania. Pojęcia znajdują cię i zadają pytanie. Odpowiedz dobrze, aby pokonać jedno i odblokować jego dom. Podsumowanie pokazuje próby i co warto powtórzyć."
+    "description": "Gra z otwartą mapą, w której pojęcia zadają pytania, a poprawne odpowiedzi odblokowują mapę."
   },
   "settings": {
     "configure": [
@@ -91,7 +91,9 @@
         "property": "gameTitle",
         "title": "Nazwa gry",
         "description": "Nadaje nazwę tej grze w zdarzeniach postępu i znacznikach OER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Identyfikator gry",

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Permainan peta konsep",
-    "description": "Permainan papan kekunci yang ringkas. Seorang watak berjalan ke setiap konsep pada peta dan konsep itu menerangkan dirinya. Sentuh semuanya untuk konfeti dan gesaan untuk disalin."
+    "description": "Permainan papan kekunci ringkas di mana watak berjalan di atas peta dan setiap konsep menerangkan dirinya sendiri."
   },
   "settings": {
     "configure": [
@@ -86,7 +86,9 @@
         "property": "gameTitle",
         "title": "Nama permainan",
         "description": "Menamakan permainan ini dalam acara kemajuan dan markup OER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "ID permainan",

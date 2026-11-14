@@ -9,7 +9,9 @@
         "slot": "",
         "title": "استنادها",
         "description": "موارد استناد در این کتاب‌نامه"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "درس",

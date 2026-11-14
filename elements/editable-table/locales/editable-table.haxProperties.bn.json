@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "ফিল্টারের অনুমতি",
         "description": "কলামের মান অনুযায়ী ফিল্টারের অনুমতি দিন।"
-      },
-      {
-        "property": "numericStyles",
-        "title": "সাংখ্যিক স্টাইল",
-        "description": "সাংখ্যিক কলামে সাংখ্যিক স্টাইল প্রয়োগ করুন।"
-      },
-      {
-        "property": "responsive",
-        "title": "রেসপন্সিভ",
-        "description": "ছোট স্ক্রিনে টেবিলের লেআউট সামঞ্জস্য করুন।"
-      },
-      {
-        "property": "rubricMode",
-        "title": "রুব্রিক মোড",
-        "description": "এই টেবিলকে OER Schema Rubric হিসেবে ব্যাখ্যা করুন, যাতে Rubric, RubricScale, RubricCriterion ও RubricLevel মেটাডেটা তৈরি হয়।"
-      },
-      {
-        "property": "rubricType",
-        "title": "রুব্রিকের ধরন",
-        "description": "oer:rubricType হিসেবে প্রকাশিত রুব্রিক স্টাইল (শুধু রুব্রিক মোড চালু থাকলে অর্থবহ)।",
-        "options": {
-          "": "(কোনোটি নয়)",
-          "analytic": "বিশ্লেষণাত্মক",
-          "holistic": "সামগ্রিক",
-          "single-point": "একক পয়েন্ট",
-          "checklist": "চেকলিস্ট"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "প্রিন্ট বোতাম",
         "description": "শুধু টেবিলটি প্রিন্ট করার একটি বোতাম যোগ করুন।"
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "সাংখ্যিক স্টাইল",
+        "description": "সাংখ্যিক কলামে সাংখ্যিক স্টাইল প্রয়োগ করুন।"
+      },
+      {
+        "property": "responsive",
+        "title": "রেসপন্সিভ",
+        "description": "ছোট স্ক্রিনে টেবিলের লেআউট সামঞ্জস্য করুন।"
+      },
+      {
+        "property": "rubricMode",
+        "title": "রুব্রিক মোড",
+        "description": "এই টেবিলকে OER Schema Rubric হিসেবে ব্যাখ্যা করুন, যাতে Rubric, RubricScale, RubricCriterion ও RubricLevel মেটাডেটা তৈরি হয়।"
+      },
+      {
+        "property": "rubricType",
+        "title": "রুব্রিকের ধরন",
+        "description": "oer:rubricType হিসেবে প্রকাশিত রুব্রিক স্টাইল (শুধু রুব্রিক মোড চালু থাকলে অর্থবহ)।",
+        "options": {
+          "": "(কোনোটি নয়)",
+          "analytic": "বিশ্লেষণাত্মক",
+          "holistic": "সামগ্রিক",
+          "single-point": "একক পয়েন্ট",
+          "checklist": "চেকলিস্ট"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "CSV ডেটা",
         "description": "আপলোড করা CSV ফাইল থেকে টেবিল তৈরি করুন।"
       }
-    ]
+    ],
+    "developer": []
   }
 }

@@ -11,20 +11,17 @@
         "description": "Prieinama kortelių rinkinio etiketė."
       },
       {
-        "property": "disabled",
-        "title": "Išjungta",
-        "description": "Išjungti visas korteles."
-      },
-      {
-        "property": "hidden",
-        "title": "Paslėpta",
-        "description": "Paslėpti kortelių rinkinį."
-      },
-      {
         "property": "sticky",
         "title": "Prisegta",
         "description": "Slenkant laikyti horizontalias korteles viršuje."
       },
+      {
+        "slot": "",
+        "title": "Kortelės",
+        "description": "<a11y-tab/> elementų seka."
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "Išdėstymo lūžio taškas",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "Piktogramų lūžio taškas",
         "description": "Lūžio taškas, nuo kurio rodomas tekstas su piktogramomis. Numatytasis – 0; -1 – tik piktogramos."
-      },
-      {
-        "slot": "",
-        "title": "Kortelės",
-        "description": "<a11y-tab/> elementų seka."
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "Išjungta",
+        "description": "Išjungti visas korteles."
+      },
+      {
+        "property": "hidden",
+        "title": "Paslėpta",
+        "description": "Paslėpti kortelių rinkinį."
+      },
       {
         "property": "id",
         "title": "Unikalus ID",

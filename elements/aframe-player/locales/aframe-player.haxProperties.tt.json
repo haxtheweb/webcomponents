@@ -11,6 +11,13 @@
         "description": "Бу AR файлының URL адресы."
       },
       {
+        "property": "skyColor",
+        "title": "Күк төсе",
+        "description": "Сәхнәдәге күк төсен сайлагыз."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "Элементның AR-дагы X позициясе."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "Элементның AR-дагы Z позициясе."
-      },
-      {
-        "property": "skyColor",
-        "title": "Күк төсе",
-        "description": "Сәхнәдәге күк төсен сайлагыз."
       }
     ]
   }

@@ -91,7 +91,9 @@
         "property": "gameTitle",
         "title": "Orúkọ eré",
         "description": "Ó fún eré yìí lórúkọ nínú àwọn ìṣẹ̀lẹ̀ ìlọsíwájú àti àmì OER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Id eré",

@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "Etiqueta / Píndola",
+    "title": "Etiqueta",
     "description": "Una etiqueta compacta en forma de píndola amb color d'accent, botó de cancel·lació o commutador opcionals."
   },
   "settings": {
@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Color d'accent automàtic",
         "description": "Obté automàticament el color d'accent a partir del text de l'etiqueta."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Botó de cancel·lació",
-        "description": "Mostra un botó d'icona per eliminar/cancel·lar dins de la píndola."
-      },
-      {
-        "property": "readonly",
-        "title": "Només lectura",
-        "description": "Amaga el botó de cancel·lació perquè la píndola sigui només de visualització."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Gris blavós",
           "grey": "Gris"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Botó de cancel·lació",
+        "description": "Mostra un botó d'icona per eliminar/cancel·lar dins de la píndola."
+      },
+      {
+        "property": "readonly",
+        "title": "Només lectura",
+        "description": "Amaga el botó de cancel·lació perquè la píndola sigui només de visualització."
       }
     ]
   }

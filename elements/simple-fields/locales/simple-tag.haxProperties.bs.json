@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "Oznaka / pilula",
+    "title": "Oznaka",
     "description": "Kompaktna oznaka u obliku pilule s opcionalnom bojom naglaska, dugmetom za otkazivanje ili prekidačem."
   },
   "settings": {
@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Automatska boja naglaska",
         "description": "Automatski izvedi boju naglaska iz teksta oznake."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Dugme za otkazivanje",
-        "description": "Prikaži dugme s ikonom za uklanjanje/otkazivanje unutar pilule."
-      },
-      {
-        "property": "readonly",
-        "title": "Samo za čitanje",
-        "description": "Sakrij dugme za otkazivanje tako da pilula služi samo za prikaz."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Plavosiva",
           "grey": "Siva"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Dugme za otkazivanje",
+        "description": "Prikaži dugme s ikonom za uklanjanje/otkazivanje unutar pilule."
+      },
+      {
+        "property": "readonly",
+        "title": "Samo za čitanje",
+        "description": "Sakrij dugme za otkazivanje tako da pilula služi samo za prikaz."
       }
     ]
   }

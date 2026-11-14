@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Odznak udalosti",
-    "description": "Komponent odznaku udalosti."
+    "description": "Menovka v konferenčnom štýle s fotkou, menom a organizáciou."
   },
   "settings": {
     "configure": [

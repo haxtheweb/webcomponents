@@ -4,17 +4,16 @@
     "description": "Toistaa H5P-vuorovaikutteista sisältöä ladatusta .h5p-tiedostosta ilman H5P-palvelinta"
   },
   "settings": {
-    "configure": [
-      {
-        "slot": "",
-        "description": "Lataa tai linkitä .h5p-tiedosto. Se puretaan selaimessa; H5P-palvelinta ei tarvita.",
-        "title": "H5P-tiedosto"
-      }
-    ],
+    "configure": [],
     "advanced": [
       {
         "title": "Vanha iframe-upotuskoodi",
         "description": "Vain vanhalle sisällölle, joka upottaa H5P-iframen toiselta sivustolta. Jätä tyhjäksi, kun .h5p-tiedosto on asetettu yllä."
+      },
+      {
+        "slot": "",
+        "description": "Lataa tai linkitä .h5p-tiedosto. Se puretaan selaimessa; H5P-palvelinta ei tarvita.",
+        "title": "H5P-tiedosto"
       }
     ]
   }

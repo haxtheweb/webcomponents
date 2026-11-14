@@ -9,7 +9,9 @@
         "slot": "",
         "title": "Sitaasjes",
         "description": "Sitaasje-items yn dizze bibliografy"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "Kursus",

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Žvaigždučių įvertinimas",
-    "description": "Įvertinimo rodymo valdiklis arba vertinimo mygtukas."
+    "description": "Rodykite įvertinimą žvaigždutėmis arba leiskite skaitytojams jį pasirinkti."
   },
   "settings": {
     "configure": [
@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Interaktyvus",
         "description": "Leisti naudotojui nustatyti įvertinimą."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Vertinimo skalės režimas",

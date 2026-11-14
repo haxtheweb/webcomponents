@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Źródło cytatu",
-    "description": "Element cytowania z trzema trybami prezentacji."
+    "description": "Podaj źródło wraz z tytułem, autorem, licencją i linkiem."
   },
   "settings": {
     "configure": [
@@ -21,15 +21,6 @@
         "description": "Data, w której uzyskano dostęp do źródła."
       },
       {
-        "property": "scope",
-        "title": "Zakres",
-        "description": "Zakres elementu do cytowania.",
-        "options": {
-          "sibling": "Element równorzędny",
-          "parent": "Element nadrzędny"
-        }
-      },
-      {
         "property": "license",
         "title": "Licencja",
         "description": "Licencja cytowanego dzieła."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Twórca",
         "description": "Twórca lub właściciel cytowanego dzieła."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Zakres",
+        "description": "Zakres elementu do cytowania.",
+        "options": {
+          "sibling": "Element równorzędny",
+          "parent": "Element nadrzędny"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "Typ OER Schema",

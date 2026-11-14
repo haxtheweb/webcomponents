@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "Trình bao bọc cho trình phát Spotify được nhúng."
+    "description": "Nhúng bài hát, album hoặc danh sách phát Spotify."
   },
   "settings": {
     "configure": [

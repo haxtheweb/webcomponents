@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "ශීර්ෂ පාඨය",
         "description": "රූපය සඳහා සිරස්තලය."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "රූප සටහන් මාතෘකාව",
-        "description": "රූප සටහන් ලේබලය සඳහා මාතෘකාව."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "රූප සටහන් විස්තරය",
-        "description": "රූප සටහන් ලේබලය සඳහා විස්තරය."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "රූප මාදිලිය අක්‍රිය කරන්න",
         "description": "ක්ලික් කිරීමෙන් රූපය රූප පරීක්ෂක සංවාදයක විවෘත වීම අක්‍රිය කරන්න."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "රූප සටහන් මාතෘකාව",
+        "description": "රූප සටහන් ලේබලය සඳහා මාතෘකාව."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "රූප සටහන් විස්තරය",
+        "description": "රූප සටහන් ලේබලය සඳහා විස්තරය."
       }
     ],
     "developer": [

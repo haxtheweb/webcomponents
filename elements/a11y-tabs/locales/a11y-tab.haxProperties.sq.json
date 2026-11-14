@@ -10,10 +10,6 @@
         "title": "Ikona e skedës"
       },
       {
-        "property": "disabled",
-        "title": "I çaktivizuar"
-      },
-      {
         "property": "label",
         "title": "Etiketa e skedës"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "ID unike"
-      },
-      {
         "property": "flag",
         "title": "Tekst opsional flamuri"
       },
       {
         "property": "flagIcon",
         "title": "Ikonë opsionale flamuri"
+      },
+      {
+        "property": "disabled",
+        "title": "I çaktivizuar"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "ID unike"
       }
     ]
   }

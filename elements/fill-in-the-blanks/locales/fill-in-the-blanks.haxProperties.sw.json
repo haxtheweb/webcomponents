@@ -14,28 +14,6 @@
         "property": "statement",
         "title": "Sentensi",
         "description": "Sentensi itakayobadilishwa kuwa shughuli ya kuweka alama kwenye maneno."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "Muundo wa kupanga alama",
-        "description": "OER Schema: muundo wa kupanga alama wa tathmini hii (k.m. pointi, herufi, asilimia, ukamilishaji)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Lengo la kujifunza",
-        "description": "OER Schema: lengo la kujifunza linalohusiana na tathmini hii."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kozi",
-        "description": "OER Schema: kozi ambayo tathmini hii imekusudiwa."
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Jina la jaribio",
-        "description": "Jina la jaribio linalopitishwa kwa matumizi katika mazingira yanayoendeshwa na xAPI ili kutambulisha kipengee hiki"
       }
     ],
     "advanced": [
@@ -46,6 +24,28 @@
       {
         "title": "Anza ikiwa imekunjwa",
         "description": "Inapokunjika, huanza kama safu iliyofungwa inayoonyesha swali na hali yake pekee."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Muundo wa kupanga alama",
+        "description": "OER Schema: muundo wa kupanga alama wa tathmini hii (k.m. pointi, herufi, asilimia, ukamilishaji)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Lengo la kujifunza",
+        "description": "OER Schema: lengo la kujifunza linalohusiana na tathmini hii."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Jina la jaribio",
+        "description": "Jina la jaribio linalopitishwa kwa matumizi katika mazingira yanayoendeshwa na xAPI ili kutambulisha kipengee hiki"
+      },
+      {
+        "property": "forCourse",
+        "title": "Kozi",
+        "description": "OER Schema: kozi ambayo tathmini hii imekusudiwa."
       }
     ]
   }

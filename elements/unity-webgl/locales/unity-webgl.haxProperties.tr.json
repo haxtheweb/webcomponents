@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Hedef",
         "description": "Oyun derlemesinin yolu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Tuval Genişliği",
+        "description": "Tuvalin CSS genişliği (örneğin px veya em)."
       },
+      {
+        "property": "height",
+        "title": "Tuval Yüksekliği",
+        "description": "Tuvalin CSS yüksekliği (örneğin px veya em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Sıkıştırma yöntemi",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Ürün Sürümü",
         "description": "Yayın sürümü."
-      },
-      {
-        "property": "width",
-        "title": "Tuval Genişliği",
-        "description": "Tuvalin CSS genişliği (örneğin px veya em)."
-      },
-      {
-        "property": "height",
-        "title": "Tuval Yüksekliği",
-        "description": "Tuvalin CSS yüksekliği (örneğin px veya em)."
       },
       {
         "property": "background",

@@ -6,7 +6,7 @@
   "license": "Apache-2.0",
   "title": "Relative heading",
   "description": "outputs the correct heading hierarchy based on parent's heading",
-  "icon": "icons:android",
+  "icon": "editor:title",
   "tags": [
     "Text",
     "heading",
@@ -148,7 +148,7 @@
     "gizmo": {
       "title": "Relative heading",
       "description": "outputs the correct heading hierarchy based on parent's heading",
-      "icon": "icons:android",
+      "icon": "editor:title",
       "color": "green",
       "tags": [
         "Text",
@@ -164,7 +164,8 @@
       "handles": [],
       "meta": {
         "author": "HAXTheWeb core team",
-        "owner": "The Pennsylvania State University"
+        "owner": "The Pennsylvania State University",
+        "hidden": true
       }
     },
     "settings": {

@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "PDF 브라우저 뷰어",
+    "title": "PDF 뷰어",
     "description": "선택적 카드 레이아웃과 다운로드 버튼으로 PDF 파일을 인라인 삽입합니다."
   },
   "settings": {
@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "지원되지 않음 메시지",
-        "description": "브라우저가 PDF 파일을 표시할 수 없을 때의 메시지입니다."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "지원되지 않음 링크 메시지",
-        "description": "브라우저가 PDF 파일을 표시할 수 없을 때의 링크 텍스트입니다."
-      },
-      {
         "property": "width",
         "title": "너비",
         "description": "PDF 뷰어의 너비입니다."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "높이",
         "description": "PDF 뷰어의 높이입니다."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "지원되지 않음 메시지",
+        "description": "브라우저가 PDF 파일을 표시할 수 없을 때의 메시지입니다."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "지원되지 않음 링크 메시지",
+        "description": "브라우저가 PDF 파일을 표시할 수 없을 때의 링크 텍스트입니다."
       }
     ]
   }

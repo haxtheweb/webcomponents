@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "Абалонка для ўбудаваных прайгравальнікаў Spotify."
+    "description": "Убудуйце трэк, альбом або плэйліст Spotify."
   },
   "settings": {
     "configure": [

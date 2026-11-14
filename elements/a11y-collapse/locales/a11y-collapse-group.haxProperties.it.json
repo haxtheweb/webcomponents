@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "Gruppo espandi/comprimi",
-    "description": "Un gruppo di elementi espandibili e comprimibili."
+    "title": "Gruppo comprimibile",
+    "description": "Un gruppo di contenitori comprimibili."
   },
   "settings": {
     "configure": [

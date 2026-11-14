@@ -38,21 +38,6 @@
         "slot": "",
         "title": "વાંચન",
         "description": "શીખનારાઓ જેમાં કામ કરે છે તે વાંચન. કોઈપણ HTML: શીર્ષકો, ફકરા, યાદીઓ અને આકૃતિઓ."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "ગ્રેડિંગ ફૉર્મેટ",
-        "description": "OER Schema: આ મૂલ્યાંકન માટે ગ્રેડિંગ ફૉર્મેટ (દા.ત. પોઇન્ટ, અક્ષર, ટકા, પૂર્ણતા)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "શીખવાનો ઉદ્દેશ",
-        "description": "OER Schema: આ મૂલ્યાંકન સાથે સંકળાયેલ શીખવાનો ઉદ્દેશ."
-      },
-      {
-        "property": "forCourse",
-        "title": "અભ્યાસક્રમ",
-        "description": "OER Schema: આ મૂલ્યાંકન જે અભ્યાસક્રમ માટે છે."
       }
     ],
     "advanced": [
@@ -70,6 +55,16 @@
         "property": "collapsed",
         "title": "સંકેલેલું શરૂ કરો",
         "description": "સંકેલી શકાય તેવું હોય ત્યારે, ફક્ત પ્રશ્ન અને તેની સ્થિતિ બતાવતી બંધ હરોળ તરીકે શરૂ થાય છે."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "ગ્રેડિંગ ફૉર્મેટ",
+        "description": "OER Schema: આ મૂલ્યાંકન માટે ગ્રેડિંગ ફૉર્મેટ (દા.ત. પોઇન્ટ, અક્ષર, ટકા, પૂર્ણતા)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "શીખવાનો ઉદ્દેશ",
+        "description": "OER Schema: આ મૂલ્યાંકન સાથે સંકળાયેલ શીખવાનો ઉદ્દેશ."
       }
     ],
     "developer": [
@@ -77,6 +72,11 @@
         "property": "quizName",
         "title": "ક્વિઝનું નામ",
         "description": "આ આઇટમની ઓળખ માટે xAPI આધારિત વાતાવરણમાં વાપરવા માટે પસાર કરાતું ક્વિઝનું નામ"
+      },
+      {
+        "property": "forCourse",
+        "title": "અભ્યાસક્રમ",
+        "description": "OER Schema: આ મૂલ્યાંકન જે અભ્યાસક્રમ માટે છે."
       }
     ]
   }

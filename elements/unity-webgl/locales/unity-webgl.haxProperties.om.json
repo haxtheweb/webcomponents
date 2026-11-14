@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Kaayyoo",
         "description": "Karaa ijaarsa taphichaa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Bal'ina Canvas",
+        "description": "Bal'ina CSS canvas (fkn. px ykn em)."
       },
+      {
+        "property": "height",
+        "title": "Dheerina Canvas",
+        "description": "Dheerina CSS canvas (fkn. px ykn em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Mala cuqaasuu",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Fooyya'iinsa Oomishaa",
         "description": "Fooyya'iinsa gadi lakkifame."
-      },
-      {
-        "property": "width",
-        "title": "Bal'ina Canvas",
-        "description": "Bal'ina CSS canvas (fkn. px ykn em)."
-      },
-      {
-        "property": "height",
-        "title": "Dheerina Canvas",
-        "description": "Dheerina CSS canvas (fkn. px ykn em)."
       },
       {
         "property": "background",

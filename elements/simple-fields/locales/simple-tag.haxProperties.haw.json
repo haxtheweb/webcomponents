@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Waihoʻoluʻu kiko ʻakomi",
         "description": "E kiʻi ʻakomi i ka waihoʻoluʻu kiko mai ke kikokikona lepili."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Pihi hoʻopau",
-        "description": "E hōʻike i kekahi pihi hōʻailona wehe/hoʻopau i loko o ka huaale."
-      },
-      {
-        "property": "readonly",
-        "title": "Heluhelu wale nō",
-        "description": "E hūnā i ke pihi hoʻopau i mea hōʻike wale nō ka huaale."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Hina Uliuli",
           "grey": "Hina"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Pihi hoʻopau",
+        "description": "E hōʻike i kekahi pihi hōʻailona wehe/hoʻopau i loko o ka huaale."
+      },
+      {
+        "property": "readonly",
+        "title": "Heluhelu wale nō",
+        "description": "E hūnā i ke pihi hoʻopau i mea hōʻike wale nō ka huaale."
       }
     ]
   }

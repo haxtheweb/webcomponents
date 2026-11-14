@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Klausimas „Tiesa / netiesa“",
-    "description": "Klausimas „tiesa ar netiesa“"
+    "description": "Teiginys, kurį besimokantysis pažymi kaip teisingą arba klaidingą."
   },
   "settings": {
     "configure": [

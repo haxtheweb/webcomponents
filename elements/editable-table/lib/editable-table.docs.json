@@ -8,7 +8,7 @@
   "description": "Table-based data for the web.",
   "icon": "editor:border-all",
   "tags": [
-    "Instructional",
+    "Content",
     "presentation",
     "table",
     "data",
@@ -22,7 +22,7 @@
   "import": "@haxtheweb/editable-table/editable-table.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/editable-table/editable-table.js",
   "install": "npm i @haxtheweb/editable-table",
-  "demoHtml": "<editable-table copyable downloadable printable bordered striped condensed>\n  <table><tr><td>one</td><td>two</td></tr><tr><td>three</td><td>four</td></tr></table>\n</editable-table>",
+  "demoHtml": "<editable-table columnHeader bordered striped>\n  <table><tr><th>Week</th><th>Topic</th><th>Due</th></tr><tr><td>1</td><td>Introduction</td><td>Reading response</td></tr><tr><td>2</td><td>Core concepts</td><td>Quiz 1</td></tr></table>\n</editable-table>",
   "attributes": [
     {
       "name": "edit-mode",
@@ -99,7 +99,7 @@
       "icon": "editor:border-all",
       "color": "purple",
       "tags": [
-        "Instructional",
+        "Content",
         "presentation",
         "table",
         "data",
@@ -146,37 +146,6 @@
           "title": "Allow Filter",
           "description": "Allow filtering by column values.",
           "inputMethod": "boolean"
-        },
-        {
-          "property": "numericStyles",
-          "title": "Numeric Styling",
-          "description": "Apply numeric styling to numeric columns.",
-          "inputMethod": "boolean"
-        },
-        {
-          "property": "responsive",
-          "title": "Responsive",
-          "description": "Adjust table layout on small screens.",
-          "inputMethod": "boolean"
-        },
-        {
-          "property": "rubricMode",
-          "title": "Rubric Mode",
-          "description": "Interpret this table as an OER Schema Rubric so that Rubric, RubricScale, RubricCriterion, and RubricLevel metadata is emitted.",
-          "inputMethod": "boolean"
-        },
-        {
-          "property": "rubricType",
-          "title": "Rubric Type",
-          "description": "Rubric style emitted as oer:rubricType (only meaningful when Rubric Mode is on).",
-          "inputMethod": "select",
-          "options": {
-            "": "(none)",
-            "analytic": "Analytic",
-            "holistic": "Holistic",
-            "single-point": "Single Point",
-            "checklist": "Checklist"
-          }
         }
       ],
       "advanced": [
@@ -214,12 +183,41 @@
           "title": "Print Button",
           "description": "Add a button to print only the table.",
           "inputMethod": "boolean"
-        }
-      ],
-      "developer": [
+        },
+        {
+          "property": "numericStyles",
+          "title": "Numeric Styling",
+          "description": "Apply numeric styling to numeric columns.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "responsive",
+          "title": "Responsive",
+          "description": "Adjust table layout on small screens.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "rubricMode",
+          "title": "Rubric Mode",
+          "description": "Interpret this table as an OER Schema Rubric so that Rubric, RubricScale, RubricCriterion, and RubricLevel metadata is emitted.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "rubricType",
+          "title": "Rubric Type",
+          "description": "Rubric style emitted as oer:rubricType (only meaningful when Rubric Mode is on).",
+          "inputMethod": "select",
+          "options": {
+            "": "(none)",
+            "analytic": "Analytic",
+            "holistic": "Holistic",
+            "single-point": "Single Point",
+            "checklist": "Checklist"
+          }
+        },
         {
           "property": "dataCsv",
-          "title": "CSV Data",
+          "title": "Import CSV",
           "description": "Create a table from an uploaded CSV file.",
           "inputMethod": "fileupload",
           "noScreenRecord": true,
@@ -227,7 +225,8 @@
           "noCamera": true,
           "accepts": "csv"
         }
-      ]
+      ],
+      "developer": []
     },
     "saveOptions": {
       "unsetAttributes": [
@@ -241,19 +240,16 @@
     "demoSchema": [
       {
         "tag": "editable-table",
-        "content": "<table><tr><td>one</td><td>two</td></tr><tr><td>three</td><td>four</td></tr></table>",
         "properties": {
-          "copyable": true,
-          "downloadable": true,
-          "printable": true,
+          "columnHeader": true,
           "bordered": true,
-          "striped": true,
-          "condensed": true
-        }
+          "striped": true
+        },
+        "content": "<table><tr><th>Week</th><th>Topic</th><th>Due</th></tr><tr><td>1</td><td>Introduction</td><td>Reading response</td></tr><tr><td>2</td><td>Core concepts</td><td>Quiz 1</td></tr></table>"
       }
     ]
   },
-  "surfaceHash": "7348f68e04e2",
+  "surfaceHash": "e3529735449c",
   "walkthroughs": [
     {
       "id": "",
@@ -261,13 +257,13 @@
       "order": 0,
       "src": "editable-table.motion.json",
       "file": "lib/editable-table.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/editable-table.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

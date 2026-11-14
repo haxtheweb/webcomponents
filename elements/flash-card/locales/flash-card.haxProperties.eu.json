@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Irudiaren iturburua",
         "description": "Txartelerako erabilitako irudi fitxategia. Irudiaren gako-hitza gainidazten du."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Irudiaren gako-hitza",
+        "description": "Ausazko irudiaren gako-hitza. Irudiaren iturburuak gainidazten du."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Ikaskuntza helburua",
         "description": "OER Schema: praktika honek babesten duen ikaskuntza helburuaren IDa edo URLa."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Irudiaren gako-hitza",
-        "description": "Ausazko irudiaren gako-hitza. Irudiaren iturburuak gainidazten du."
       }
     ]
   }

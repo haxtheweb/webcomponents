@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Кальцавы індыкатар прагрэсу",
-    "description": "Кальцавая дыяграма прагрэсу"
+    "description": "Кальцавая дыяграма, якая паказвае прагрэс да агульнай сумы."
   },
   "settings": {
     "configure": [
@@ -26,11 +26,6 @@
         "description": "Альтэрнатыўны тэкст для выявы."
       },
       {
-        "property": "animated",
-        "title": "Анімаваны",
-        "description": "Ці анімуецца прагрэс пры першай загрузцы"
-      },
-      {
         "property": "complete",
         "title": "Выканана",
         "description": "Масіў выкананых значэнняў."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "Усяго",
         "description": "Агульная колькасць, калі ўсе пункты выкананы."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "Анімаваны",
+        "description": "Ці анімуецца прагрэс пры першай загрузцы"
       },
       {
         "property": "startAngle",

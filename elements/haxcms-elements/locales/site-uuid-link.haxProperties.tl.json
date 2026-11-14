@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "HAX link",
-    "description": "Isang link sa isang partikular na resource sa site na ginagawa mo."
+    "title": "Link ng pahina",
+    "description": "Isang link sa pahina sa site na ginagawa mo."
   },
   "settings": {
     "configure": [

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Zvok",
-    "description": "To lahko predstavi video na zelo dostopen način ne glede na vir."
+    "description": "Dostopen predvajalnik zvoka s podporo za prepis."
   },
   "settings": {
     "configure": [
@@ -46,6 +46,16 @@
         "property": "accentColor",
         "title": "Poudarna barva",
         "description": "Izberite poudarjeno barvo predvajalnika."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Skrij časovne žige",
+        "description": "Skrij časovne žige v prepisu."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Skrij prepis",
+        "description": "Privzeto skrij prepis."
       }
     ],
     "developer": [
@@ -72,16 +82,6 @@
         "property": "disableInteractive",
         "title": "Onemogoči interaktivnost",
         "description": "Onemogoči interaktivni način, v katerem je prepis mogoče klikniti."
-      },
-      {
-        "property": "hideTimestamps",
-        "title": "Skrij časovne žige",
-        "description": "Skrij časovne žige v prepisu."
-      },
-      {
-        "property": "hideTranscript",
-        "title": "Skrij prepis",
-        "description": "Privzeto skrij prepis."
       },
       {
         "property": "lang",

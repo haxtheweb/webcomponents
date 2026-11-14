@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Sarkasm",
-    "description": "Presenterar text på ett trollande sätt"
+    "description": "Text med växlande versaler för en sarkastisk ton."
   },
   "settings": {
     "configure": [

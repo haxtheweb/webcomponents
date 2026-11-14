@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Položka kroků",
-    "description": "Položka, která je součástí seznamu kroků"
+    "description": "Jeden krok v seznamu kroků."
   },
   "settings": {
     "configure": [

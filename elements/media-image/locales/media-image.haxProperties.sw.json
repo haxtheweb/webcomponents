@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Maelezo mafupi",
         "description": "Maelezo mafupi ya picha."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Kichwa cha Kielelezo",
-        "description": "Kichwa cha lebo ya kielelezo."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Maelezo ya Kielelezo",
-        "description": "Maelezo ya lebo ya kielelezo."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Zima modali ya picha",
         "description": "Zima mibofyo inayofungua picha katika kidirisha cha kikaguzi cha picha."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Kichwa cha Kielelezo",
+        "description": "Kichwa cha lebo ya kielelezo."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Maelezo ya Kielelezo",
+        "description": "Maelezo ya lebo ya kielelezo."
       }
     ],
     "developer": [

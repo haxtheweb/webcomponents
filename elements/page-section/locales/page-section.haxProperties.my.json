@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "ခလုတ်များ",
         "description": "စာသား၏ အောက်တွင် ပြသော ခလုတ် အုပ်စု။"
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "Anchor စာသား",
         "description": "လမ်းညွှန်တွင် ပြသော anchor အညွှန်း။"
       }
-    ]
+    ],
+    "developer": []
   }
 }

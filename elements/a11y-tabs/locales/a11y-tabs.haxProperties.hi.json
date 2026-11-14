@@ -11,20 +11,17 @@
         "description": "टैब समूह के लिए सुलभ लेबल।"
       },
       {
-        "property": "disabled",
-        "title": "अक्षम",
-        "description": "सभी टैब अक्षम करें।"
-      },
-      {
-        "property": "hidden",
-        "title": "छिपा हुआ",
-        "description": "टैब समूह छिपाएँ।"
-      },
-      {
         "property": "sticky",
         "title": "स्थिर (स्टिकी)",
         "description": "स्क्रॉल करते समय क्षैतिज टैब को ऊपर रखें।"
       },
+      {
+        "slot": "",
+        "title": "टैब",
+        "description": "<a11y-tab/> तत्वों की श्रृंखला।"
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "लेआउट ब्रेकपॉइंट",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "आइकन ब्रेकपॉइंट",
         "description": "आइकन के साथ टेक्स्ट दिखाने के लिए ब्रेकपॉइंट। डिफ़ॉल्ट 0 है; केवल-आइकन मोड के लिए -1 का उपयोग करें।"
-      },
-      {
-        "slot": "",
-        "title": "टैब",
-        "description": "<a11y-tab/> तत्वों की श्रृंखला।"
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "अक्षम",
+        "description": "सभी टैब अक्षम करें।"
+      },
+      {
+        "property": "hidden",
+        "title": "छिपा हुआ",
+        "description": "टैब समूह छिपाएँ।"
+      },
       {
         "property": "id",
         "title": "अद्वितीय ID",

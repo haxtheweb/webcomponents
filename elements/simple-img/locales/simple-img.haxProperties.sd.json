@@ -26,7 +26,8 @@
         "description": "اسڪرين ريڊرن ۽ بهتر SEO لاءِ ڪارائتو."
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "معيار",

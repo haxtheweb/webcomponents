@@ -9,7 +9,9 @@
         "slot": "",
         "title": "Manukuu",
         "description": "Vipengee vya manukuu katika bibliografia hii"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "Kozi",

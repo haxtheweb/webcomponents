@@ -20,7 +20,7 @@
   "cssParts": [],
   "cssProperties": [],
   "hax": {
-    "schema": "elements/haxcms-elements/lib/ui-components/site/site-remote-content.js",
+    "schema": "elements/haxcms-elements/lib/ui-components/site/site-remote-content.haxProperties.json",
     "gizmo": true,
     "properties": [
       "breakreference",

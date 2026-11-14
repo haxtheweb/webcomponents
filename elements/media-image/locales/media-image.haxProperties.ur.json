@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "کیپشن",
         "description": "تصویر کا کیپشن۔"
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "شکل کا عنوان",
-        "description": "شکل کے لیبل کا عنوان۔"
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "شکل کی وضاحت",
-        "description": "شکل کے لیبل کی وضاحت۔"
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "تصویری موڈل غیر فعال کریں",
         "description": "کلک کرنے پر تصویر کو تصویری معائنہ ڈائیلاگ میں کھلنے سے روکیں۔"
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "شکل کا عنوان",
+        "description": "شکل کے لیبل کا عنوان۔"
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "شکل کی وضاحت",
+        "description": "شکل کے لیبل کی وضاحت۔"
       }
     ],
     "developer": [

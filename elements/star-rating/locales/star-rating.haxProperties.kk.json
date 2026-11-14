@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Интерактивті",
         "description": "Пайдаланушыға рейтинг қоюға рұқсат беру."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Рубрика шкаласы режимі",

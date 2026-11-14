@@ -1,6 +1,6 @@
 {
   "gizmo": {
     "title": "Máquina de escrever",
-    "description": "efeito de máquina de escrever"
+    "description": "Texto que se digita sozinho, um caractere de cada vez."
   }
 }

@@ -21,15 +21,6 @@
         "description": "Y dyddiad y cyrchwyd y ffynhonnell."
       },
       {
-        "property": "scope",
-        "title": "Cwmpas",
-        "description": "Cwmpas yr elfen i'w dyfynnu.",
-        "options": {
-          "sibling": "Elfen gyfochrog",
-          "parent": "Elfen riant"
-        }
-      },
-      {
         "property": "license",
         "title": "Trwydded",
         "description": "Trwydded y gwaith a ddyfynnir."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Crëwr",
         "description": "Crëwr neu berchennog y gwaith a ddyfynnir."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Cwmpas",
+        "description": "Cwmpas yr elfen i'w dyfynnu.",
+        "options": {
+          "sibling": "Elfen gyfochrog",
+          "parent": "Elfen riant"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "Math OER Schema",

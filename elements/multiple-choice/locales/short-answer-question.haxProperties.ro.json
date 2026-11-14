@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Întrebare cu răspuns scurt",
-    "description": "Utilizatorul răspunde la o întrebare simplă"
+    "description": "O întrebare la care cursantul răspunde într-una sau două propoziții."
   },
   "settings": {
     "configure": [

@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Pesen ora didhukung",
-        "description": "Pesen nalika browser ora bisa nampilake berkas PDF."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Pesen pranala ora didhukung",
-        "description": "Teks pranala nalika browser ora bisa nampilake berkas PDF."
-      },
-      {
         "property": "width",
         "title": "Amba",
         "description": "Ambane pamirsa PDF."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Dhuwur",
         "description": "Dhuwure pamirsa PDF."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Pesen ora didhukung",
+        "description": "Pesen nalika browser ora bisa nampilake berkas PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Pesen pranala ora didhukung",
+        "description": "Teks pranala nalika browser ora bisa nampilake berkas PDF."
       }
     ]
   }

@@ -9,7 +9,9 @@
         "slot": "",
         "title": "ጥቅሶች",
         "description": "በዚህ የዋቢ ዝርዝር ውስጥ ያሉ የጥቅስ ንጥሎች"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "ኮርስ",

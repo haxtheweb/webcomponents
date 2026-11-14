@@ -21,15 +21,6 @@
         "description": "Çeşmä girilen sene."
       },
       {
-        "property": "scope",
-        "title": "Gerim",
-        "description": "Salgylanjak elementiň gerimi.",
-        "options": {
-          "sibling": "Gonşy element",
-          "parent": "Ene element"
-        }
-      },
-      {
         "property": "license",
         "title": "Ygtyýarnama",
         "description": "Salgylanýan işiň ygtyýarnamasy."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Döredijisi",
         "description": "Salgylanýan işiň döredijisi ýa-da eýesi."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Gerim",
+        "description": "Salgylanjak elementiň gerimi.",
+        "options": {
+          "sibling": "Gonşy element",
+          "parent": "Ene element"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "OER Schema görnüşi",

@@ -11,20 +11,17 @@
         "description": "தாவல் தொகுப்பிற்கான அணுகக்கூடிய லேபிள்."
       },
       {
-        "property": "disabled",
-        "title": "முடக்கப்பட்டது",
-        "description": "அனைத்து தாவல்களையும் முடக்கவும்."
-      },
-      {
-        "property": "hidden",
-        "title": "மறைக்கப்பட்டது",
-        "description": "தாவல் தொகுப்பை மறைக்கவும்."
-      },
-      {
         "property": "sticky",
         "title": "ஒட்டியிருக்கும்",
         "description": "உருட்டும்போது கிடைமட்ட தாவல்களை மேலே வைத்திருக்கவும்."
       },
+      {
+        "slot": "",
+        "title": "தாவல்கள்",
+        "description": "<a11y-tab/> கூறுகளின் வரிசை."
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "தளவமைப்பு முறிவுப்புள்ளி",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "ஐகான் முறிவுப்புள்ளி",
         "description": "ஐகான்களுடன் உரையைக் காட்டுவதற்கான முறிவுப்புள்ளி. இயல்புநிலை 0; ஐகான் மட்டும் பயன்முறைக்கு -1 பயன்படுத்தவும்."
-      },
-      {
-        "slot": "",
-        "title": "தாவல்கள்",
-        "description": "<a11y-tab/> கூறுகளின் வரிசை."
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "முடக்கப்பட்டது",
+        "description": "அனைத்து தாவல்களையும் முடக்கவும்."
+      },
+      {
+        "property": "hidden",
+        "title": "மறைக்கப்பட்டது",
+        "description": "தாவல் தொகுப்பை மறைக்கவும்."
+      },
       {
         "property": "id",
         "title": "தனித்துவ ID",

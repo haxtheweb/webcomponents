@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Ongin pílur",
         "description": "Fjal pílin á knøttinum."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Leinki: mál",
@@ -54,7 +52,9 @@
           "_top": "Ovasta vindeyga - _top",
           "_parent": "Yvirskipað vindeyga - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Leinki: rel",

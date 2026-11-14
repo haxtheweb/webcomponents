@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Laro ng mapa ng konsepto",
-    "description": "Isang maikling laro sa keyboard. Lumalakad ang karakter sa bawat konsepto sa mapa at ipinapaliwanag nito ang sarili. Hawakan silang lahat para sa confetti at prompt na makokopya."
+    "description": "Isang maikling laro sa keyboard kung saan naglalakad ang karakter sa mapa at ipinapaliwanag ng bawat konsepto ang sarili nito."
   },
   "settings": {
     "configure": [
@@ -86,7 +86,9 @@
         "property": "gameTitle",
         "title": "Pangalan ng laro",
         "description": "Pinapangalanan ang larong ito sa mga progress event at OER Schema markup."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "ID ng laro",

@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "キャプション",
         "description": "画像のキャプション。"
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "図のタイトル",
-        "description": "図ラベルのタイトル。"
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "図の説明",
-        "description": "図ラベルの説明。"
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "画像モーダルを無効化",
         "description": "クリックで画像インスペクターダイアログが開かないようにします。"
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "図のタイトル",
+        "description": "図ラベルのタイトル。"
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "図の説明",
+        "description": "図ラベルの説明。"
       }
     ],
     "developer": [

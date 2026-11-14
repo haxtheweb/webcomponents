@@ -11,20 +11,17 @@
         "description": "搿组标签页个无障碍标签。"
       },
       {
-        "property": "disabled",
-        "title": "禁用",
-        "description": "禁用所有标签页。"
-      },
-      {
-        "property": "hidden",
-        "title": "隐藏",
-        "description": "隐藏搿组标签页。"
-      },
-      {
         "property": "sticky",
         "title": "固定",
         "description": "滚动辰光拿横向标签页固定勒顶上。"
       },
+      {
+        "slot": "",
+        "title": "标签页",
+        "description": "一串 <a11y-tab/> 元素。"
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "布局断点",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "图标断点",
         "description": "图标搭文字一道显示个断点。默认是 0；用 -1 表示只显示图标。"
-      },
-      {
-        "slot": "",
-        "title": "标签页",
-        "description": "一串 <a11y-tab/> 元素。"
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "禁用",
+        "description": "禁用所有标签页。"
+      },
+      {
+        "property": "hidden",
+        "title": "隐藏",
+        "description": "隐藏搿组标签页。"
+      },
       {
         "property": "id",
         "title": "唯一 ID",

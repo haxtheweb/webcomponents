@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Ocena w gwiazdkach",
-    "description": "Widżet wyświetlający ocenę lub przycisk do oceniania."
+    "description": "Pokaż ocenę gwiazdkową lub pozwól czytelnikom ją wybrać."
   },
   "settings": {
     "configure": [
@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Interaktywny",
         "description": "Zezwól użytkownikowi na ustawienie oceny."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Tryb skali rubryki",

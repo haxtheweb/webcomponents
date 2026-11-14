@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Vumela ukuHluza",
         "description": "Vumela ukuhluza ngamaxabiso ekholamu."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Isitayile samaNani",
-        "description": "Sebenzisa isitayile samanani kwiikholamu zamanani."
-      },
-      {
-        "property": "responsive",
-        "title": "Iyaziqhelanisa",
-        "description": "Lungelelanisa ulwakhiwo lwetheyibhile kwizikrini ezincinci."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Imowudi ye-Rubric",
-        "description": "Tolika le theyibhile njenge-OER Schema Rubric ukuze kukhutshwe imetadata ye-Rubric, RubricScale, RubricCriterion, ne-RubricLevel."
-      },
-      {
-        "property": "rubricType",
-        "title": "Uhlobo lwe-Rubric",
-        "description": "Isitayile se-rubric esikhutshwa njenge-oer:rubricType (sinentsingiselo kuphela xa iMowudi ye-Rubric ivuliwe).",
-        "options": {
-          "": "(akukho)",
-          "analytic": "Yohlalutyo",
-          "holistic": "Epheleleyo",
-          "single-point": "Yenqaku elinye",
-          "checklist": "Uluhlu lokujonga"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Iqhosha lokuPrinta",
         "description": "Yongeza iqhosha lokuprinta itheyibhile kuphela."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Isitayile samaNani",
+        "description": "Sebenzisa isitayile samanani kwiikholamu zamanani."
+      },
+      {
+        "property": "responsive",
+        "title": "Iyaziqhelanisa",
+        "description": "Lungelelanisa ulwakhiwo lwetheyibhile kwizikrini ezincinci."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Imowudi ye-Rubric",
+        "description": "Tolika le theyibhile njenge-OER Schema Rubric ukuze kukhutshwe imetadata ye-Rubric, RubricScale, RubricCriterion, ne-RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "Uhlobo lwe-Rubric",
+        "description": "Isitayile se-rubric esikhutshwa njenge-oer:rubricType (sinentsingiselo kuphela xa iMowudi ye-Rubric ivuliwe).",
+        "options": {
+          "": "(akukho)",
+          "analytic": "Yohlalutyo",
+          "holistic": "Epheleleyo",
+          "single-point": "Yenqaku elinye",
+          "checklist": "Uluhlu lokujonga"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "Idatha ye-CSV",
         "description": "Yenza itheyibhile ukusuka kwifayile ye-CSV efakiweyo."
       }
-    ]
+    ],
+    "developer": []
   }
 }

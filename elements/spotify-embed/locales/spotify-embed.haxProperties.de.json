@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "Wrapper für eingebettete Spotify-Player."
+    "description": "Betten Sie einen Spotify-Titel, ein Album oder eine Playlist ein."
   },
   "settings": {
     "configure": [

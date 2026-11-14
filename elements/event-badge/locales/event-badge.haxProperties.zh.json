@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "活动徽章",
-    "description": "活动徽章组件。"
+    "description": "会议风格的姓名徽章，包含照片、姓名和机构。"
   },
   "settings": {
     "configure": [

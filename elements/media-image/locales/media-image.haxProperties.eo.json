@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Apudskribo",
         "description": "Apudskribo por la bildo."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Figura titolo",
-        "description": "Titolo por la figura etikedo."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Figura priskribo",
-        "description": "Priskribo por la figura etikedo."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Malŝalti bildan dialogon",
         "description": "Malŝalti, ke klakoj malfermu la bildon en bildinspektila dialogo."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Figura titolo",
+        "description": "Titolo por la figura etikedo."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Figura priskribo",
+        "description": "Priskribo por la figura etikedo."
       }
     ],
     "developer": [

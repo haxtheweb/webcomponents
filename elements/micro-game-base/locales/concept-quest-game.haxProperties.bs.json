@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Igra potrage za pojmovima",
-    "description": "Otvoreni svijet za lutanje. Pojmovi te nađu i postave pitanje. Odgovori tačno da ga poraziš i otključaš njegovu kuću. Pregled prikazuje pokušaje i šta treba ponoviti."
+    "description": "Igra s otvorenom mapom u kojoj pojmovi postavljaju pitanja, a tačni odgovori otključavaju mapu."
   },
   "settings": {
     "configure": [
@@ -91,7 +91,9 @@
         "property": "gameTitle",
         "title": "Naziv igre",
         "description": "Imenuje ovu igru u događajima napretka i OER Schema oznakama."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "ID igre",

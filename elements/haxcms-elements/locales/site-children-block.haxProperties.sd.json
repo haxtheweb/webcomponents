@@ -4,7 +4,7 @@
     "description": "موجوده صفحي جا ذيلي صفحا ڏيکارڻ لاءِ متحرڪ بلاڪ"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "متحرڪ طريقو",
@@ -14,7 +14,9 @@
           "parent": "مٿئين صفحي جا ذيلي صفحا",
           "ancestor": "سڀ کان مٿئين اباڻي صفحي جا سڀ ذيلي صفحا"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "شروعاتي سطح"

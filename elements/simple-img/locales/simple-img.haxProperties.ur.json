@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "سادہ تصویر",
-    "description": "سادہ پیرامیٹرز کے ساتھ تصاویر میں تبدیلی کریں۔"
+    "description": "سادہ ترتیبات سے سائز بدلی، تراشی یا گھمائی گئی تصویر۔"
   },
   "settings": {
     "configure": [
@@ -26,7 +26,8 @@
         "description": "اسکرین ریڈرز اور بہتر SEO کے لیے مفید۔"
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "معیار",

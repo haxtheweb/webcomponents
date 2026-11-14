@@ -11,30 +11,8 @@
         "description": "사용자가 답할 질문입니다."
       },
       {
-        "property": "gradingFormat",
-        "title": "채점 형식",
-        "description": "OER Schema: 이 평가의 채점 형식입니다(예: 점수, 등급, 백분율, 이수 여부)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "학습 목표",
-        "description": "OER Schema: 이 평가와 연결된 학습 목표입니다."
-      },
-      {
-        "property": "forCourse",
-        "title": "강좌",
-        "description": "OER Schema: 이 평가가 대상으로 하는 강좌입니다."
-      },
-      {
         "property": "answers",
         "title": "정답"
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "퀴즈 이름",
-        "description": "분석 시스템에서 xAPI 식별에 사용되는 퀴즈 이름입니다."
       }
     ],
     "advanced": [
@@ -47,6 +25,28 @@
         "property": "collapsed",
         "title": "접은 상태로 시작",
         "description": "접을 수 있는 경우, 질문과 상태만 보여 주는 닫힌 행으로 시작합니다."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "채점 형식",
+        "description": "OER Schema: 이 평가의 채점 형식입니다(예: 점수, 등급, 백분율, 이수 여부)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "학습 목표",
+        "description": "OER Schema: 이 평가와 연결된 학습 목표입니다."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "퀴즈 이름",
+        "description": "분석 시스템에서 xAPI 식별에 사용되는 퀴즈 이름입니다."
+      },
+      {
+        "property": "forCourse",
+        "title": "강좌",
+        "description": "OER Schema: 이 평가가 대상으로 하는 강좌입니다."
       }
     ]
   }

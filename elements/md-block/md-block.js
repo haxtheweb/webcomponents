@@ -74,62 +74,7 @@ class MdBlock extends DDD {
 
   // haxProperty definition
   static get haxProperties() {
-    return {
-      canScale: false,
-
-      canEditSource: true,
-      gizmo: {
-        title: "Markdown",
-        description: "A block of markdown content directly or remote loaded",
-        icon: "icons:code",
-        color: "yellow",
-        tags: [
-          "Other",
-          "md",
-          "markdown",
-          "content",
-          "text",
-          "code",
-          "codeblock",
-          "code-block",
-          "code block",
-          "html",
-        ],
-        handles: [],
-        meta: {
-          author: "HAXTheWeb",
-          owner: "The Pennsylvania State University",
-        },
-      },
-      settings: {
-        configure: [
-          {
-            property: "markdown",
-            title: "Markdown",
-            description: "Markdown text to show on the page as formatted content.",
-            inputMethod: "textarea",
-          },
-          {
-            property: "source",
-            title: "Source",
-            description: "Source file for markdown",
-            inputMethod: "haxupload",
-            noVoiceRecord: true,
-            noCamera: true,
-          },
-        ],
-        advanced: [],
-      },
-      demoSchema: [
-        {
-          tag: "md-block",
-          properties: {
-            markdown: "- The first bulleted item in a long list..",
-          },
-          content: "",
-        },
-      ],
-    };
+    return new URL("./lib/md-block.haxProperties.json", import.meta.url).href;
   }
   // properties available to the custom element for data binding
   static get properties() {

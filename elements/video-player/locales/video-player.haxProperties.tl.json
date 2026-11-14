@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Poster na larawan",
         "description": "URL ng poster na larawan."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Mga text track",
         "description": "Mga closed caption, subtitle, paglalarawan, at iba pang text track para sa video."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Oras ng simula",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Track ng Audio Description",
         "description": "URL sa isang audio description track (MP3 file) na nagsasalaysay ng mga biswal na elemento."
+      },
+      {
+        "property": "accentColor",
+        "title": "Accent na kulay",
+        "description": "(deprecated) Piliin ang accent na kulay para sa player."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Wika",
         "description": "Wika ng media."
-      },
-      {
-        "property": "accentColor",
-        "title": "Accent na kulay",
-        "description": "(deprecated) Piliin ang accent na kulay para sa player."
       }
     ]
   }

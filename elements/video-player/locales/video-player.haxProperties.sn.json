@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Mufananidzo weposter",
         "description": "URL yemufananidzo weposter."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Mitsetse yemavara",
         "description": "Mazwi ari pasi, shanduro, tsananguro, nedzimwe mitsetse yemavara yevhidhiyo."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Nguva yekutanga",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Mutsetse weTsananguro Yeodhiyo",
         "description": "URL kumutsetse wetsananguro yeodhiyo (faira reMP3) unotsanangura zvinoonekwa."
+      },
+      {
+        "property": "accentColor",
+        "title": "Ruvara rwekusimbisa",
+        "description": "(yakasiiwa) Sarudza ruvara rweaccent rwemutambi."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Mutauro",
         "description": "Mutauro wemidhiya."
-      },
-      {
-        "property": "accentColor",
-        "title": "Ruvara rwekusimbisa",
-        "description": "(yakasiiwa) Sarudza ruvara rweaccent rwemutambi."
       }
     ]
   }

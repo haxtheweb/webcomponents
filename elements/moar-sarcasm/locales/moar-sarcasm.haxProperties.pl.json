@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Sarkazm",
-    "description": "Prezentowanie tekstu w prześmiewczy sposób"
+    "description": "Tekst z naprzemiennymi wielkimi literami dla sarkastycznego tonu."
   },
   "settings": {
     "configure": [

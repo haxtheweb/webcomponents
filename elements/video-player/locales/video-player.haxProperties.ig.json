@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Onyonyo poster",
         "description": "URL onyonyo poster."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Ụzọ ederede",
         "description": "Ndepụta okwu, ntụgharị okwu, nkọwa, na ụzọ ederede ndị ọzọ maka vidiyo ahụ."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Oge mbido",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Ụzọ nkọwa ụda",
         "description": "URL nye ụzọ nkọwa ụda (faịlụ MP3) nke na-akọwa ihe ndị a na-ahụ anya."
+      },
+      {
+        "property": "accentColor",
+        "title": "Agba mkpụrụ",
+        "description": "(akwụsịla) Họrọ agba accent maka ihe ọkpụkpọ."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Asụsụ",
         "description": "Asụsụ nke mgbasa ozi."
-      },
-      {
-        "property": "accentColor",
-        "title": "Agba mkpụrụ",
-        "description": "(akwụsịla) Họrọ agba accent maka ihe ọkpụkpọ."
       }
     ]
   }

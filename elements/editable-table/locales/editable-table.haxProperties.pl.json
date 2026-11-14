@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Zezwól na filtrowanie",
         "description": "Zezwól na filtrowanie według wartości kolumn."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Styl liczbowy",
-        "description": "Zastosuj styl liczbowy do kolumn liczbowych."
-      },
-      {
-        "property": "responsive",
-        "title": "Responsywna",
-        "description": "Dostosuj układ tabeli na małych ekranach."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Tryb rubryki",
-        "description": "Interpretuj tę tabelę jako OER Schema Rubric, aby emitowane były metadane Rubric, RubricScale, RubricCriterion i RubricLevel."
-      },
-      {
-        "property": "rubricType",
-        "title": "Typ rubryki",
-        "description": "Styl rubryki emitowany jako oer:rubricType (ma znaczenie tylko przy włączonym trybie rubryki).",
-        "options": {
-          "": "(brak)",
-          "analytic": "Analityczna",
-          "holistic": "Holistyczna",
-          "single-point": "Jednopunktowa",
-          "checklist": "Lista kontrolna"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Przycisk drukowania",
         "description": "Dodaj przycisk do drukowania tylko tabeli."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Styl liczbowy",
+        "description": "Zastosuj styl liczbowy do kolumn liczbowych."
+      },
+      {
+        "property": "responsive",
+        "title": "Responsywna",
+        "description": "Dostosuj układ tabeli na małych ekranach."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Tryb rubryki",
+        "description": "Interpretuj tę tabelę jako OER Schema Rubric, aby emitowane były metadane Rubric, RubricScale, RubricCriterion i RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "Typ rubryki",
+        "description": "Styl rubryki emitowany jako oer:rubricType (ma znaczenie tylko przy włączonym trybie rubryki).",
+        "options": {
+          "": "(brak)",
+          "analytic": "Analityczna",
+          "holistic": "Holistyczna",
+          "single-point": "Jednopunktowa",
+          "checklist": "Lista kontrolna"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "Dane CSV",
         "description": "Utwórz tabelę z przesłanego pliku CSV."
       }
-    ]
+    ],
+    "developer": []
   }
 }

@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Objektivi",
         "description": "Shtegu për ndërtimin e lojës."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Gjerësia e kanavacës",
+        "description": "Gjerësia CSS e kanavacës (për shembull px ose em)."
       },
+      {
+        "property": "height",
+        "title": "Lartësia e kanavacës",
+        "description": "Lartësia CSS e kanavacës (për shembull px ose em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Metoda e ngjeshjes",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Versioni i produktit",
         "description": "Versioni i publikimit."
-      },
-      {
-        "property": "width",
-        "title": "Gjerësia e kanavacës",
-        "description": "Gjerësia CSS e kanavacës (për shembull px ose em)."
-      },
-      {
-        "property": "height",
-        "title": "Lartësia e kanavacës",
-        "description": "Lartësia CSS e kanavacës (për shembull px ose em)."
       },
       {
         "property": "background",

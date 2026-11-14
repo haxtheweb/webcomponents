@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Sarcasmo",
-    "description": "Presenta il testo in modo provocatorio"
+    "description": "Testo a maiuscole alternate per un tono sarcastico."
   },
   "settings": {
     "configure": [

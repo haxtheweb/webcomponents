@@ -14,16 +14,6 @@
         "property": "title",
         "title": "বিকল্প শিরোনাম",
         "description": "QR কোডের উৎসের সাথে লিংক করা বিকল্প শিরোনাম।"
-      },
-      {
-        "property": "modulesize",
-        "title": "আকার",
-        "description": "QR কোডের আকার।"
-      },
-      {
-        "property": "margin",
-        "title": "মার্জিন",
-        "description": "কোডের চারপাশের ফাঁকা জায়গা।"
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "আকার",
+        "description": "QR কোডের আকার।"
+      },
+      {
+        "property": "margin",
+        "title": "মার্জিন",
+        "description": "কোডের চারপাশের ফাঁকা জায়গা।"
       }
     ]
   }

@@ -11,11 +11,6 @@
         "description": "Parolla aduprata per generà un parsunaghju à l'azardu."
       },
       {
-        "property": "code",
-        "title": "Codice di u persunagiu",
-        "description": "Incullate un codice salvatu per ricreà quellu persunagiu."
-      },
-      {
         "property": "hat",
         "title": "Cappellu",
         "description": "Stile di u cappellu.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Maschera",
-        "description": "Maschera purtata nantu à a faccia o à u capu.",
-        "options": {
-          "none": "Nisunu",
-          "lion": "Leone",
-          "plague": "Duttore di a pesta",
-          "theater": "Teatru",
-          "pumpkin": "Zucca",
-          "ghost": "Fantasima",
-          "mummy": "Mummia",
-          "wrestler": "Maschera di lottatore",
-          "block-head": "Capu di bloccu",
-          "web": "Maschera di tela",
-          "werewolf": "Faccia di lupu mannaru",
-          "shadow": "Faccia d'ombra"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Trucco",
-        "description": "Pittura di a faccia o rossettu.",
-        "options": {
-          "none": "Nisunu",
-          "red-lipstick": "Rossettu rossu",
-          "pink-lipstick": "Rossettu rosa",
-          "berry-lipstick": "Rossettu di frutti di machja",
-          "clown": "Pittura di pagliacciu",
-          "fangs": "Zanne",
-          "skull": "Pittura di teschju",
-          "zombie": "Pittura di zombi",
-          "red-nose": "Nasu rossu",
-          "white-beard": "Barba bianca",
-          "domino": "Maschera d'eroe",
-          "carrot": "Nasu di carota",
-          "bunny": "Nasu di cunigliulu",
-          "mustache": "Mustacci",
-          "monster": "Truccu di mostru",
-          "round-glasses": "Occhjali tondi"
-        }
-      },
-      {
         "property": "expression",
         "title": "Spressione",
         "description": "Spressione di a faccia.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Animale",
+        "description": "Animale accantu à u parsunaghju.",
+        "options": {
+          "none": "Nisunu",
+          "cat": "Ghjattu",
+          "dog": "Cane",
+          "bunny": "Cunigliulu",
+          "goldfish": "Pesciu rossu",
+          "slime": "Melma",
+          "squirrel": "Scuiattulu",
+          "dragon": "Dragulinu",
+          "parrot": "Pappagallu",
+          "owl": "Ciocciu",
+          "bat": "Topu pinnutu"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Codice di u persunagiu",
+        "description": "Incullate un codice salvatu per ricreà quellu persunagiu."
+      },
+      {
+        "property": "mask",
+        "title": "Maschera",
+        "description": "Maschera purtata nantu à a faccia o à u capu.",
+        "options": {
+          "none": "Nisunu",
+          "lion": "Leone",
+          "plague": "Duttore di a pesta",
+          "theater": "Teatru",
+          "pumpkin": "Zucca",
+          "ghost": "Fantasima",
+          "mummy": "Mummia",
+          "wrestler": "Maschera di lottatore",
+          "block-head": "Capu di bloccu",
+          "web": "Maschera di tela",
+          "werewolf": "Faccia di lupu mannaru",
+          "shadow": "Faccia d'ombra"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Trucco",
+        "description": "Pittura di a faccia o rossettu.",
+        "options": {
+          "none": "Nisunu",
+          "red-lipstick": "Rossettu rossu",
+          "pink-lipstick": "Rossettu rosa",
+          "berry-lipstick": "Rossettu di frutti di machja",
+          "clown": "Pittura di pagliacciu",
+          "fangs": "Zanne",
+          "skull": "Pittura di teschju",
+          "zombie": "Pittura di zombi",
+          "red-nose": "Nasu rossu",
+          "white-beard": "Barba bianca",
+          "domino": "Maschera d'eroe",
+          "carrot": "Nasu di carota",
+          "bunny": "Nasu di cunigliulu",
+          "mustache": "Mustacci",
+          "monster": "Truccu di mostru",
+          "round-glasses": "Occhjali tondi"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Testu di a bandiera",
         "description": "Finu à 4 lettere mostre nantu à a bandiera."
@@ -310,24 +330,6 @@
           "skates": "Pattini",
           "skateboard": "Skateboard",
           "hoverboard": "Tavula vulante"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Animale",
-        "description": "Animale accantu à u parsunaghju.",
-        "options": {
-          "none": "Nisunu",
-          "cat": "Ghjattu",
-          "dog": "Cane",
-          "bunny": "Cunigliulu",
-          "goldfish": "Pesciu rossu",
-          "slime": "Melma",
-          "squirrel": "Scuiattulu",
-          "dragon": "Dragulinu",
-          "parrot": "Pappagallu",
-          "owl": "Ciocciu",
-          "bat": "Topu pinnutu"
         }
       },
       {

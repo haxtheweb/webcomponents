@@ -9,7 +9,9 @@
         "property": "source",
         "title": "URL de rimedo",
         "description": "URL de rimedo."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Alteco",

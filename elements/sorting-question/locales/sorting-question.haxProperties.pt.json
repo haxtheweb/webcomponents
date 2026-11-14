@@ -11,31 +11,9 @@
         "description": "Cabeçalho da pergunta."
       },
       {
-        "property": "gradingFormat",
-        "title": "Formato de avaliação",
-        "description": "OER Schema: formato de avaliação desta atividade (ex.: pontos, letra, porcentagem, conclusão)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Objetivo de aprendizagem",
-        "description": "OER Schema: objetivo de aprendizagem associado a esta avaliação."
-      },
-      {
-        "property": "forCourse",
-        "title": "Curso",
-        "description": "OER Schema: curso ao qual esta avaliação se destina."
-      },
-      {
         "property": "answers",
         "title": "Respostas",
         "description": "A ordem das respostas define a sequência correta."
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Nome do questionário",
-        "description": "Nome do questionário usado para identificação xAPI em sistemas de análise."
       }
     ],
     "advanced": [
@@ -48,6 +26,28 @@
         "property": "collapsed",
         "title": "Começar recolhido",
         "description": "Quando recolhível, começar como uma linha fechada que mostra apenas a pergunta e o seu estado."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Formato de avaliação",
+        "description": "OER Schema: formato de avaliação desta atividade (ex.: pontos, letra, porcentagem, conclusão)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Objetivo de aprendizagem",
+        "description": "OER Schema: objetivo de aprendizagem associado a esta avaliação."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nome do questionário",
+        "description": "Nome do questionário usado para identificação xAPI em sistemas de análise."
+      },
+      {
+        "property": "forCourse",
+        "title": "Curso",
+        "description": "OER Schema: curso ao qual esta avaliação se destina."
       }
     ]
   }

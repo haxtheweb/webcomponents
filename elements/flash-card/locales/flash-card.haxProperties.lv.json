@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Attēla avots",
         "description": "Kartītei izmantotais attēla fails. Ignorē attēla atslēgvārdu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Attēla atslēgvārds",
+        "description": "Nejauša attēla atslēgvārds. Attēla avots to ignorē."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Mācību mērķis",
         "description": "OER Schema: tā mācību mērķa ID vai URL, ko atbalsta šī prakse."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Attēla atslēgvārds",
-        "description": "Nejauša attēla atslēgvārds. Attēla avots to ignorē."
       }
     ]
   }

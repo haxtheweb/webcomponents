@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Messaghju micca suppurtatu",
-        "description": "Messaghju quandu u navigatore ùn pò affissà i schedarii PDF."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Messaghju di ligame micca suppurtatu",
-        "description": "Testu di u ligame quandu u navigatore ùn pò affissà i schedarii PDF."
-      },
-      {
         "property": "width",
         "title": "Larghezza",
         "description": "Larghezza di u visualizatore PDF."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Altezza",
         "description": "Altezza di u visualizatore PDF."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Messaghju micca suppurtatu",
+        "description": "Messaghju quandu u navigatore ùn pò affissà i schedarii PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Messaghju di ligame micca suppurtatu",
+        "description": "Testu di u ligame quandu u navigatore ùn pò affissà i schedarii PDF."
       }
     ]
   }

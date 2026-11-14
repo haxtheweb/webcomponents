@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "HAX-link",
-    "description": "Et link til en bestemt ressource på det websted, du arbejder på."
+    "title": "Sidelink",
+    "description": "Et link til en side på det websted, du arbejder på."
   },
   "settings": {
     "configure": [

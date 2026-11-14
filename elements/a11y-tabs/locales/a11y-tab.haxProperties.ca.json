@@ -10,10 +10,6 @@
         "title": "Icona de la pestanya"
       },
       {
-        "property": "disabled",
-        "title": "Desactivat"
-      },
-      {
         "property": "label",
         "title": "Etiqueta de la pestanya"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "ID únic"
-      },
-      {
         "property": "flag",
         "title": "Text de distintiu opcional"
       },
       {
         "property": "flagIcon",
         "title": "Icona de distintiu opcional"
+      },
+      {
+        "property": "disabled",
+        "title": "Desactivat"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "ID únic"
       }
     ]
   }

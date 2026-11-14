@@ -5,7 +5,7 @@
   "version": "26.8.0",
   "license": "Apache-2.0",
   "title": "Spotify",
-  "description": "Wrapper for Spotify player embeds.",
+  "description": "Embed a Spotify track, album or playlist.",
   "icon": "hax:spotify",
   "tags": [
     "Media",
@@ -78,7 +78,7 @@
     "contentEditable": false,
     "gizmo": {
       "title": "Spotify",
-      "description": "Wrapper for Spotify player embeds.",
+      "description": "Embed a Spotify track, album or playlist.",
       "icon": "hax:spotify",
       "color": "green",
       "tags": [

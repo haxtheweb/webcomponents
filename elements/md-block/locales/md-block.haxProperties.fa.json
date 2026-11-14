@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "بلوکی از محتوای markdown، مستقیم یا بارگذاری‌شده از راه دور"
+    "description": "محتوای Markdown که مستقیم نوشته یا از پرونده بار شده است."
   },
   "settings": {
     "configure": [

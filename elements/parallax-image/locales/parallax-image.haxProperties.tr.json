@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Paralaks görsel",
-    "description": "Kaydırmalı görsel"
+    "description": "Sayfadan daha yavaş kayan, üzerinde başlık bulunan tam genişlikte bir görsel."
   },
   "settings": {
     "configure": [

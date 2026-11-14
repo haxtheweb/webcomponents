@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "イベントバッジ",
-    "description": "イベントバッジのコンポーネント。"
+    "description": "写真、名前、所属を載せたカンファレンス風の名札。"
   },
   "settings": {
     "configure": [

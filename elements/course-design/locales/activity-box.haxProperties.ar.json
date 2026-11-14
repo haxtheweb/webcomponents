@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "صندوق النشاط",
-    "description": "كتلة عنوان صغيرة منسَّقة."
+    "description": "عنوان موسوم يحدد بداية نشاط."
   },
   "settings": {
     "configure": [

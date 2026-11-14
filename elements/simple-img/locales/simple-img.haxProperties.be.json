@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Простая выява",
-    "description": "Апрацоўка выяў з дапамогай простых параметраў."
+    "description": "Выява, памер, абрэзка або паварот якой задаюцца простымі наладамі."
   },
   "settings": {
     "configure": [
@@ -26,7 +26,8 @@
         "description": "Карысна для чытачоў экрана і лепшага SEO."
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "Якасць",

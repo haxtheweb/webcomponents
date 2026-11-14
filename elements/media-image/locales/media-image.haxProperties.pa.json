@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "ਕੈਪਸ਼ਨ",
         "description": "ਚਿੱਤਰ ਲਈ ਕੈਪਸ਼ਨ।"
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "ਚਿੱਤਰ ਸਿਰਲੇਖ",
-        "description": "ਚਿੱਤਰ ਲੇਬਲ ਲਈ ਸਿਰਲੇਖ।"
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "ਚਿੱਤਰ ਵਰਣਨ",
-        "description": "ਚਿੱਤਰ ਲੇਬਲ ਲਈ ਵਰਣਨ।"
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "ਚਿੱਤਰ ਮੋਡਲ ਬੰਦ ਕਰੋ",
         "description": "ਕਲਿੱਕ ਕਰਨ 'ਤੇ ਚਿੱਤਰ ਨੂੰ ਚਿੱਤਰ ਨਿਰੀਖਕ ਡਾਇਲਾਗ ਵਿੱਚ ਖੁੱਲ੍ਹਣ ਤੋਂ ਰੋਕੋ।"
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "ਚਿੱਤਰ ਸਿਰਲੇਖ",
+        "description": "ਚਿੱਤਰ ਲੇਬਲ ਲਈ ਸਿਰਲੇਖ।"
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "ਚਿੱਤਰ ਵਰਣਨ",
+        "description": "ਚਿੱਤਰ ਲੇਬਲ ਲਈ ਵਰਣਨ।"
       }
     ],
     "developer": [

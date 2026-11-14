@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Edenemise rõngas",
-    "description": "Edenemise rõngasdiagramm"
+    "description": "Rõngasdiagramm, mis näitab edenemist kogusumma suunas."
   },
   "settings": {
     "configure": [
@@ -26,11 +26,6 @@
         "description": "Pildi alt-tekst."
       },
       {
-        "property": "animated",
-        "title": "Animeeritud",
-        "description": "Kas edenemine animeeritakse esmakordsel laadimisel"
-      },
-      {
         "property": "complete",
         "title": "Valmis",
         "description": "Lõpetatud väärtuste massiiv."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "Kokku",
         "description": "Koguarv, kui kõik üksused on lõpetatud."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "Animeeritud",
+        "description": "Kas edenemine animeeritakse esmakordsel laadimisel"
       },
       {
         "property": "startAngle",

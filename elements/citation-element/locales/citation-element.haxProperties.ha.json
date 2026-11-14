@@ -21,15 +21,6 @@
         "description": "Ranar da aka sami damar tushen."
       },
       {
-        "property": "scope",
-        "title": "Iyaka",
-        "description": "Iyakar abun da za a ambata.",
-        "options": {
-          "sibling": "Abu ɗan'uwa",
-          "parent": "Abu mahaifi"
-        }
-      },
-      {
         "property": "license",
         "title": "Lasisi",
         "description": "Lasisin aikin da aka ambata."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Mahalicci",
         "description": "Mahalicci ko mai aikin da aka ambata."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Iyaka",
+        "description": "Iyakar abun da za a ambata.",
+        "options": {
+          "sibling": "Abu ɗan'uwa",
+          "parent": "Abu mahaifi"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "Nau'in OER Schema",

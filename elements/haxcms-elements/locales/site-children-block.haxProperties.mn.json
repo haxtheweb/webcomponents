@@ -4,7 +4,7 @@
     "description": "Одоогийн хуудасны дэд хуудсыг харуулах динамик блок"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "Динамик арга",
@@ -14,7 +14,9 @@
           "parent": "Эцгийн дэд хуудсууд",
           "ancestor": "Хамгийн дээд өвөг эцгээс эхлэх бүх дэд хуудсууд"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "Эхлэх түвшин"

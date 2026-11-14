@@ -11,6 +11,13 @@
         "description": "Bu AR faýlynyň URL-i."
       },
       {
+        "property": "skyColor",
+        "title": "Asmanyň reňki",
+        "description": "Sahnadaky asmanyň reňkini saýlaň."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "Elementiň AR-daky X ýagdaýy."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "Elementiň AR-daky Z ýagdaýy."
-      },
-      {
-        "property": "skyColor",
-        "title": "Asmanyň reňki",
-        "description": "Sahnadaky asmanyň reňkini saýlaň."
       }
     ]
   }

@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Billedtekst",
         "description": "Billedtekst til billedet."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Figurtitel",
-        "description": "Titel til figurmærkaten."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Figurbeskrivelse",
-        "description": "Beskrivelse til figurmærkaten."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Deaktiver billeddialog",
         "description": "Deaktiver, at klik åbner billedet i en billedinspektørdialog."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Figurtitel",
+        "description": "Titel til figurmærkaten."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Figurbeskrivelse",
+        "description": "Beskrivelse til figurmærkaten."
       }
     ],
     "developer": [

@@ -9,7 +9,6 @@
   "icon": "image:compare",
   "tags": [
     "Media",
-    "media",
     "comparison",
     "slider",
     "swipe",
@@ -20,7 +19,7 @@
   "import": "@haxtheweb/image-compare-slider/image-compare-slider.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/image-compare-slider/image-compare-slider.js",
   "install": "npm i @haxtheweb/image-compare-slider",
-  "demoHtml": "<image-compare-slider opacity top-src=\"https://cdn2.thecatapi.com/images/bjj.jpg\" top-alt=\"\" bottom-src=\"https://cdn2.thecatapi.com/images/9j5.jpg\" bottom-alt=\"\"></image-compare-slider>",
+  "demoHtml": "<image-compare-slider opacity top-src=\"https://cdn2.thecatapi.com/images/bjj.jpg\" top-alt=\"Before: the original photo\" bottom-src=\"https://cdn2.thecatapi.com/images/9j5.jpg\" bottom-alt=\"After: the edited photo\"></image-compare-slider>",
   "attributes": [
     {
       "name": "dark",
@@ -147,7 +146,6 @@
       "color": "orange",
       "tags": [
         "Media",
-        "media",
         "comparison",
         "slider",
         "swipe",
@@ -227,15 +225,15 @@
         "properties": {
           "opacity": true,
           "topSrc": "https://cdn2.thecatapi.com/images/bjj.jpg",
-          "topAlt": "",
+          "topAlt": "Before: the original photo",
           "bottomSrc": "https://cdn2.thecatapi.com/images/9j5.jpg",
-          "bottomAlt": ""
+          "bottomAlt": "After: the edited photo"
         },
         "content": ""
       }
     ]
   },
-  "surfaceHash": "7f59a44b6d96",
+  "surfaceHash": "c9d7a1789153",
   "walkthroughs": [
     {
       "id": "",
@@ -243,13 +241,13 @@
       "order": 0,
       "src": "image-compare-slider.motion.json",
       "file": "lib/image-compare-slider.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/image-compare-slider.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

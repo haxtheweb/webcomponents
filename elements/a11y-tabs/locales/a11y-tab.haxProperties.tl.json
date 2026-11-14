@@ -10,10 +10,6 @@
         "title": "Icon ng Tab"
       },
       {
-        "property": "disabled",
-        "title": "Naka-disable"
-      },
-      {
         "property": "label",
         "title": "Label ng Tab"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "Natatanging ID"
-      },
-      {
         "property": "flag",
         "title": "Opsyonal na Teksto ng Flag"
       },
       {
         "property": "flagIcon",
         "title": "Opsyonal na Icon ng Flag"
+      },
+      {
+        "property": "disabled",
+        "title": "Naka-disable"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "Natatanging ID"
       }
     ]
   }

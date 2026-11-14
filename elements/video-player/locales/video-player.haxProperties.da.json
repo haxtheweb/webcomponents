@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Plakatbillede",
         "description": "URL til plakatbillede."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Tekstspor",
         "description": "Undertekster for hørehæmmede, undertekster, beskrivelser og andre tekstspor til videoen."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Starttid",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Synstolkningsspor",
         "description": "URL til et synstolkningsspor (MP3-fil), der indeholder fortælling af visuelle elementer."
+      },
+      {
+        "property": "accentColor",
+        "title": "Accentfarve",
+        "description": "(forældet) Vælg afspillerens accentfarve."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Sprog",
         "description": "Mediets sprog."
-      },
-      {
-        "property": "accentColor",
-        "title": "Accentfarve",
-        "description": "(forældet) Vælg afspillerens accentfarve."
       }
     ]
   }

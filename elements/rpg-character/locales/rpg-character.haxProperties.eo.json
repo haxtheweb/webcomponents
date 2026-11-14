@@ -11,11 +11,6 @@
         "description": "Vorto uzata por generi hazardan rolulon."
       },
       {
-        "property": "code",
-        "title": "Rolula kodo",
-        "description": "Algluu konservitan kodon por rekrei tiun rolulon."
-      },
-      {
         "property": "hat",
         "title": "Ĉapelo",
         "description": "Ĉapela stilo.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Masko",
-        "description": "Masko portata sur la vizaĝo aŭ la kapo.",
-        "options": {
-          "none": "Neniu",
-          "lion": "Leono",
-          "plague": "Pestdoktoro",
-          "theater": "Teatro",
-          "pumpkin": "Kukurbo",
-          "ghost": "Fantomo",
-          "mummy": "Mumio",
-          "wrestler": "Luktista masko",
-          "block-head": "Bloka kapo",
-          "web": "Reta masko",
-          "werewolf": "Vizaĝo de homlupo",
-          "shadow": "Ombra vizaĝo"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Ŝminko",
-        "description": "Vizaĝpentraĵo aŭ lipruĝo.",
-        "options": {
-          "none": "Neniu",
-          "red-lipstick": "Ruĝa lipruĝo",
-          "pink-lipstick": "Rozkolora lipruĝo",
-          "berry-lipstick": "Beroklora lipruĝo",
-          "clown": "Klaŭna ŝminko",
-          "fangs": "Dentegoj",
-          "skull": "Kranio-farbo",
-          "zombie": "Zombia farbo",
-          "red-nose": "Ruĝa nazo",
-          "white-beard": "Blanka barbo",
-          "domino": "Heroa masko",
-          "carrot": "Karota nazo",
-          "bunny": "Kunikla nazo",
-          "mustache": "Lipharoj",
-          "monster": "Monstra vizaĝfarbo",
-          "round-glasses": "Rondaj okulvitroj"
-        }
-      },
-      {
         "property": "expression",
         "title": "Esprimo",
         "description": "Vizaĝa esprimo.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Dombesto",
+        "description": "Dombesto apud la rolulo.",
+        "options": {
+          "none": "Neniu",
+          "cat": "Kato",
+          "dog": "Hundo",
+          "bunny": "Kuniklo",
+          "goldfish": "Orfiŝo",
+          "slime": "Mukaĵo",
+          "squirrel": "Sciuro",
+          "dragon": "Drakido",
+          "parrot": "Papago",
+          "owl": "Strigo",
+          "bat": "Vesperto"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Rolula kodo",
+        "description": "Algluu konservitan kodon por rekrei tiun rolulon."
+      },
+      {
+        "property": "mask",
+        "title": "Masko",
+        "description": "Masko portata sur la vizaĝo aŭ la kapo.",
+        "options": {
+          "none": "Neniu",
+          "lion": "Leono",
+          "plague": "Pestdoktoro",
+          "theater": "Teatro",
+          "pumpkin": "Kukurbo",
+          "ghost": "Fantomo",
+          "mummy": "Mumio",
+          "wrestler": "Luktista masko",
+          "block-head": "Bloka kapo",
+          "web": "Reta masko",
+          "werewolf": "Vizaĝo de homlupo",
+          "shadow": "Ombra vizaĝo"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Ŝminko",
+        "description": "Vizaĝpentraĵo aŭ lipruĝo.",
+        "options": {
+          "none": "Neniu",
+          "red-lipstick": "Ruĝa lipruĝo",
+          "pink-lipstick": "Rozkolora lipruĝo",
+          "berry-lipstick": "Beroklora lipruĝo",
+          "clown": "Klaŭna ŝminko",
+          "fangs": "Dentegoj",
+          "skull": "Kranio-farbo",
+          "zombie": "Zombia farbo",
+          "red-nose": "Ruĝa nazo",
+          "white-beard": "Blanka barbo",
+          "domino": "Heroa masko",
+          "carrot": "Karota nazo",
+          "bunny": "Kunikla nazo",
+          "mustache": "Lipharoj",
+          "monster": "Monstra vizaĝfarbo",
+          "round-glasses": "Rondaj okulvitroj"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Flagteksto",
         "description": "Ĝis 4 literoj montrataj sur la flago."
@@ -310,24 +330,6 @@
           "skates": "Glitiloj",
           "skateboard": "Rulplanko",
           "hoverboard": "Ŝvebtabulo"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Dombesto",
-        "description": "Dombesto apud la rolulo.",
-        "options": {
-          "none": "Neniu",
-          "cat": "Kato",
-          "dog": "Hundo",
-          "bunny": "Kuniklo",
-          "goldfish": "Orfiŝo",
-          "slime": "Mukaĵo",
-          "squirrel": "Sciuro",
-          "dragon": "Drakido",
-          "parrot": "Papago",
-          "owl": "Strigo",
-          "bat": "Vesperto"
         }
       },
       {

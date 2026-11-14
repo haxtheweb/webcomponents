@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "Etiqueta / Píldora",
+    "title": "Etiqueta",
     "description": "Una etiqueta compacta en forma de píldora con color de acento opcional, botón de cancelar o alternancia."
   },
   "settings": {
@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Color de acento automático",
         "description": "Derivar automáticamente el color de acento a partir del texto de la etiqueta."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Botón de cancelar",
-        "description": "Mostrar un botón de icono para quitar/cancelar dentro de la píldora."
-      },
-      {
-        "property": "readonly",
-        "title": "Solo lectura",
-        "description": "Ocultar el botón de cancelar para que la píldora sea solo de visualización."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Gris azulado",
           "grey": "Gris"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Botón de cancelar",
+        "description": "Mostrar un botón de icono para quitar/cancelar dentro de la píldora."
+      },
+      {
+        "property": "readonly",
+        "title": "Solo lectura",
+        "description": "Ocultar el botón de cancelar para que la píldora sea solo de visualización."
       }
     ]
   }

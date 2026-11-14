@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "Étiquette / pastille",
+    "title": "Étiquette",
     "description": "Un libellé compact en forme de pastille avec couleur d'accent, bouton d'annulation ou bascule facultatifs."
   },
   "settings": {
@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Couleur d'accent automatique",
         "description": "Déduire automatiquement la couleur d'accent du texte du libellé."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Bouton d'annulation",
-        "description": "Afficher une icône de suppression/annulation dans la pastille."
-      },
-      {
-        "property": "readonly",
-        "title": "Lecture seule",
-        "description": "Masquer le bouton d'annulation pour que la pastille soit uniquement affichée."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Gris bleu",
           "grey": "Gris"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Bouton d'annulation",
+        "description": "Afficher une icône de suppression/annulation dans la pastille."
+      },
+      {
+        "property": "readonly",
+        "title": "Lecture seule",
+        "description": "Masquer le bouton d'annulation pour que la pastille soit uniquement affichée."
       }
     ]
   }

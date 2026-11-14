@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "పోస్టర్ చిత్రం",
         "description": "పోస్టర్ చిత్ర URL."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "టెక్స్ట్ ట్రాక్‌లు",
         "description": "వీడియో కోసం క్లోజ్డ్ క్యాప్షన్‌లు, ఉపశీర్షికలు, వివరణలు మరియు ఇతర టెక్స్ట్ ట్రాక్‌లు."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "ప్రారంభ సమయం",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "ఆడియో వివరణ ట్రాక్",
         "description": "దృశ్య అంశాలను వివరించే ఆడియో వివరణ ట్రాక్ (MP3 ఫైల్) యొక్క URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "యాక్సెంట్ రంగు",
+        "description": "(విస్మరించబడింది) ప్లేయర్ కోసం యాక్సెంట్ రంగును ఎంచుకోండి."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "భాష",
         "description": "మీడియా యొక్క భాష."
-      },
-      {
-        "property": "accentColor",
-        "title": "యాక్సెంట్ రంగు",
-        "description": "(విస్మరించబడింది) ప్లేయర్ కోసం యాక్సెంట్ రంగును ఎంచుకోండి."
       }
     ]
   }

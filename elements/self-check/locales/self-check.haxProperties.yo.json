@@ -27,6 +27,13 @@
       {
         "slot": "",
         "title": "Ìdáhùn"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Ìjápọ̀ síwájú síi",
+        "description": "Ìjápọ̀ sí ìsọfúnni àfikún."
       },
       {
         "property": "hasLearningObjective",
@@ -37,13 +44,6 @@
         "property": "assessing",
         "title": "Ìgbéléwọ̀n",
         "description": "Ìtọ́kasí iṣẹ́ tí a gbé jáde gẹ́gẹ́ bí oer:assessing."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "link",
-        "title": "Ìjápọ̀ síwájú síi",
-        "description": "Ìjápọ̀ sí ìsọfúnni àfikún."
       }
     ]
   }

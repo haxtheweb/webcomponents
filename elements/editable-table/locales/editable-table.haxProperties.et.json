@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Luba filtreerimine",
         "description": "Luba filtreerimine veergude väärtuste järgi."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Numbriline kujundus",
-        "description": "Rakenda numbrilistele veergudele numbrilist kujundust."
-      },
-      {
-        "property": "responsive",
-        "title": "Kohanduv",
-        "description": "Kohanda tabeli paigutust väikestel ekraanidel."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Hindamismaatriksi režiim",
-        "description": "Tõlgenda seda tabelit OER Schema Rubric-ina, et väljastataks Rubric, RubricScale, RubricCriterion ja RubricLevel metaandmed."
-      },
-      {
-        "property": "rubricType",
-        "title": "Hindamismaatriksi tüüp",
-        "description": "Hindamismaatriksi stiil, mis väljastatakse kui oer:rubricType (mõjub ainult siis, kui hindamismaatriksi režiim on sees).",
-        "options": {
-          "": "(puudub)",
-          "analytic": "Analüütiline",
-          "holistic": "Terviklik",
-          "single-point": "Ühe punktiga",
-          "checklist": "Kontroll-loend"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Printimisnupp",
         "description": "Lisa nupp ainult tabeli printimiseks."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Numbriline kujundus",
+        "description": "Rakenda numbrilistele veergudele numbrilist kujundust."
+      },
+      {
+        "property": "responsive",
+        "title": "Kohanduv",
+        "description": "Kohanda tabeli paigutust väikestel ekraanidel."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Hindamismaatriksi režiim",
+        "description": "Tõlgenda seda tabelit OER Schema Rubric-ina, et väljastataks Rubric, RubricScale, RubricCriterion ja RubricLevel metaandmed."
+      },
+      {
+        "property": "rubricType",
+        "title": "Hindamismaatriksi tüüp",
+        "description": "Hindamismaatriksi stiil, mis väljastatakse kui oer:rubricType (mõjub ainult siis, kui hindamismaatriksi režiim on sees).",
+        "options": {
+          "": "(puudub)",
+          "analytic": "Analüütiline",
+          "holistic": "Terviklik",
+          "single-point": "Ühe punktiga",
+          "checklist": "Kontroll-loend"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "CSV-andmed",
         "description": "Loo tabel üleslaaditud CSV-failist."
       }
-    ]
+    ],
+    "developer": []
   }
 }

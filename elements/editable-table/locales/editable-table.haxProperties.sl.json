@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Dovoli filter",
         "description": "Dovoli filtriranje po vrednostih stolpca."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Številsko oblikovanje",
-        "description": "Uporabi številsko oblikovanje za številske stolpce."
-      },
-      {
-        "property": "responsive",
-        "title": "Odzivno",
-        "description": "Prilagodi postavitev tabele na majhnih zaslonih."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Način ocenjevalne lestvice",
-        "description": "To tabelo obravnavaj kot OER Schema Rubric, da se ustvarijo metapodatki Rubric, RubricScale, RubricCriterion in RubricLevel."
-      },
-      {
-        "property": "rubricType",
-        "title": "Vrsta ocenjevalne lestvice",
-        "description": "Slog ocenjevalne lestvice, ustvarjen kot oer:rubricType (smiselno le, ko je vklopljen način ocenjevalne lestvice).",
-        "options": {
-          "": "(brez)",
-          "analytic": "Analitična",
-          "holistic": "Celostna",
-          "single-point": "Enotočkovna",
-          "checklist": "Kontrolni seznam"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Gumb za tiskanje",
         "description": "Dodaj gumb za tiskanje samo tabele."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Številsko oblikovanje",
+        "description": "Uporabi številsko oblikovanje za številske stolpce."
+      },
+      {
+        "property": "responsive",
+        "title": "Odzivno",
+        "description": "Prilagodi postavitev tabele na majhnih zaslonih."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Način ocenjevalne lestvice",
+        "description": "To tabelo obravnavaj kot OER Schema Rubric, da se ustvarijo metapodatki Rubric, RubricScale, RubricCriterion in RubricLevel."
+      },
+      {
+        "property": "rubricType",
+        "title": "Vrsta ocenjevalne lestvice",
+        "description": "Slog ocenjevalne lestvice, ustvarjen kot oer:rubricType (smiselno le, ko je vklopljen način ocenjevalne lestvice).",
+        "options": {
+          "": "(brez)",
+          "analytic": "Analitična",
+          "holistic": "Celostna",
+          "single-point": "Enotočkovna",
+          "checklist": "Kontrolni seznam"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "Podatki CSV",
         "description": "Ustvari tabelo iz naložene datoteke CSV."
       }
-    ]
+    ],
+    "developer": []
   }
 }

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "תג אירוע",
-    "description": "רכיב תג אירוע."
+    "description": "תג שם בסגנון כנס עם תמונה, שם וארגון."
   },
   "settings": {
     "configure": [

@@ -720,12 +720,10 @@ describe("citation-element test", () => {
       expect(haxProps.canScale).to.be.false;
       expect(haxProps.canEditSource).to.be.true;
       expect(haxProps.gizmo.title).to.equal("Citation");
-      // description is mixed-case in the source ("Citation element ..."); do
-      // a case-insensitive comparison so the assertion survives copy edits.
       expect(haxProps.gizmo.description.toLowerCase()).to.include(
-        "citation element",
+        "credit a source",
       );
-      expect(haxProps.gizmo.icon).to.equal("editor:title");
+      expect(haxProps.gizmo.icon).to.equal("communication:import-contacts");
       expect(haxProps.gizmo.color).to.equal("grey");
     });
 
@@ -760,7 +758,10 @@ describe("citation-element test", () => {
       const sourceConfig = configure.find((c) => c.property === "source");
       expect(sourceConfig.validationType).to.equal("url");
 
-      const scopeConfig = configure.find((c) => c.property === "scope");
+      // scope is an Advanced setting
+      const scopeConfig = haxProps.settings.advanced.find(
+        (c) => c.property === "scope",
+      );
       expect(scopeConfig.inputMethod).to.equal("select");
       expect(scopeConfig.options.sibling).to.exist;
       expect(scopeConfig.options.parent).to.exist;

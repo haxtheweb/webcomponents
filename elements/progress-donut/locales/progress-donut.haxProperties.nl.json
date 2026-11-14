@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Voortgangsdonut",
-    "description": "Donut voor voortgang"
+    "description": "Een ringdiagram dat de voortgang naar een totaal toont."
   },
   "settings": {
     "configure": [
@@ -26,11 +26,6 @@
         "description": "Alt-tekst voor de afbeelding."
       },
       {
-        "property": "animated",
-        "title": "Geanimeerd",
-        "description": "Of de voortgang bij de eerste keer laden wordt geanimeerd"
-      },
-      {
         "property": "complete",
         "title": "Voltooid",
         "description": "Een array met voltooide waarden."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "Totaal",
         "description": "Totaal wanneer alle items voltooid zijn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "Geanimeerd",
+        "description": "Of de voortgang bij de eerste keer laden wordt geanimeerd"
       },
       {
         "property": "startAngle",

@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "بې غشي",
         "description": "د تڼۍ غشی پټ کړئ."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "لینک: هدف",
@@ -54,7 +52,9 @@
           "_top": "پورتنۍ کړکۍ - _top",
           "_parent": "مورنۍ کړکۍ - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "لینک: rel",

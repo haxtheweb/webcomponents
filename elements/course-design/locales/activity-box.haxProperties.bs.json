@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Okvir aktivnosti",
-    "description": "Mali stilizovani blok naslova."
+    "description": "Označeni naslov koji označava početak aktivnosti."
   },
   "settings": {
     "configure": [

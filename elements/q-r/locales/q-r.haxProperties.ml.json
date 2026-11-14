@@ -14,16 +14,6 @@
         "property": "title",
         "title": "പകരം ശീർഷകം",
         "description": "QR കോഡ് ഉറവിടവുമായി ലിങ്ക് ചെയ്ത പകരം ശീർഷകം."
-      },
-      {
-        "property": "modulesize",
-        "title": "വലുപ്പം",
-        "description": "QR കോഡിന്റെ വലുപ്പം."
-      },
-      {
-        "property": "margin",
-        "title": "മാർജിൻ",
-        "description": "കോഡിന് ചുറ്റുമുള്ള ഇടം."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "വലുപ്പം",
+        "description": "QR കോഡിന്റെ വലുപ്പം."
+      },
+      {
+        "property": "margin",
+        "title": "മാർജിൻ",
+        "description": "കോഡിന് ചുറ്റുമുള്ള ഇടം."
       }
     ]
   }

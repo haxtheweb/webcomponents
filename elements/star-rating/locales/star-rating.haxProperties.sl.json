@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Ocena z zvezdicami",
-    "description": "Gradnik za prikaz ocene ali gumb za ocenjevanje."
+    "description": "Prikažite oceno z zvezdicami ali pustite bralcem, da jo izberejo."
   },
   "settings": {
     "configure": [
@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Interaktivno",
         "description": "Dovoli uporabniku, da nastavi oceno."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Način lestvice rubrike",

@@ -10,10 +10,6 @@
         "title": "Ikona karty"
       },
       {
-        "property": "disabled",
-        "title": "Zakázané"
-      },
-      {
         "property": "label",
         "title": "Označenie karty"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "Jedinečné ID"
-      },
-      {
         "property": "flag",
         "title": "Voliteľný text príznaku"
       },
       {
         "property": "flagIcon",
         "title": "Voliteľná ikona príznaku"
+      },
+      {
+        "property": "disabled",
+        "title": "Zakázané"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "Jedinečné ID"
       }
     ]
   }

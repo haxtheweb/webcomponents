@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "פריט שלבים",
-    "description": "פריט שהוא חלק מרשימת שלבים"
+    "description": "שלב יחיד ברשימת שלבים."
   },
   "settings": {
     "configure": [

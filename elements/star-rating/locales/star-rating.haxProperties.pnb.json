@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "انٹرایکٹو",
         "description": "ریٹنگ سیٹ کرن لئی صارف نوں انٹرایکشن دی اجازت دیو۔"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "روبرک پیمانہ موڈ",

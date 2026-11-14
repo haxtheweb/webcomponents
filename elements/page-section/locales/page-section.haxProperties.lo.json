@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "ປຸ່ມ",
         "description": "ກຸ່ມປຸ່ມທີ່ສະແດງຢູ່ກ້ອງຂໍ້ຄວາມ."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "ຂໍ້ຄວາມຈຸດຍຶດ",
         "description": "ປ້າຍຈຸດຍຶດທີ່ສະແດງໃນການນຳທາງ."
       }
-    ]
+    ],
+    "developer": []
   }
 }

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Fråga med kort svar",
-    "description": "Låt användaren svara på en enkel fråga"
+    "description": "En fråga som eleven besvarar med en eller två meningar."
   },
   "settings": {
     "configure": [

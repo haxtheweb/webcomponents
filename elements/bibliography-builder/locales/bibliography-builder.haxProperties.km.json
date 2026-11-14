@@ -9,7 +9,9 @@
         "slot": "",
         "title": "ការដកស្រង់",
         "description": "ធាតុដកស្រង់នៅក្នុងគន្ថនិទ្ទេសនេះ"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "វគ្គសិក្សា",

@@ -16,30 +16,8 @@
         "description": "Zdanie, które zostanie przekształcone w interakcję zaznaczania słów."
       },
       {
-        "property": "gradingFormat",
-        "title": "Format oceniania",
-        "description": "OER Schema: format oceniania tego sprawdzianu (np. punkty, litera, procent, ukończenie)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Cel uczenia się",
-        "description": "OER Schema: cel uczenia się powiązany z tym sprawdzianem."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kurs",
-        "description": "OER Schema: kurs, dla którego przeznaczony jest ten sprawdzian."
-      },
-      {
         "property": "answers",
         "title": "Odpowiedzi"
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Nazwa quizu",
-        "description": "Nazwa quizu przekazywana do środowisk opartych na xAPI w celu identyfikacji tego elementu"
       }
     ],
     "advanced": [
@@ -52,6 +30,28 @@
         "property": "collapsed",
         "title": "Zacznij zwinięte",
         "description": "Gdy pytanie jest zwijane, zacznij od zamkniętego wiersza pokazującego tylko pytanie i jego status."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Format oceniania",
+        "description": "OER Schema: format oceniania tego sprawdzianu (np. punkty, litera, procent, ukończenie)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Cel uczenia się",
+        "description": "OER Schema: cel uczenia się powiązany z tym sprawdzianem."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Nazwa quizu",
+        "description": "Nazwa quizu przekazywana do środowisk opartych na xAPI w celu identyfikacji tego elementu"
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurs",
+        "description": "OER Schema: kurs, dla którego przeznaczony jest ten sprawdzian."
       }
     ]
   }

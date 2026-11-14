@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "درست / غلط سوال",
-    "description": "درست غلط سوال"
+    "description": "ایسا بیان جسے سیکھنے والا درست یا غلط نشان زد کرتا ہے۔"
   },
   "settings": {
     "configure": [

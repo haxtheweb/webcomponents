@@ -9,7 +9,9 @@
         "slot": "",
         "title": "Մեջբերումներ",
         "description": "Այս մատենագիտության մեջբերման տարրերը"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "Դասընթաց",

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Mchezo wa ramani ya dhana",
-    "description": "Mchezo mfupi wa kibodi. Mhusika anatembea hadi kila dhana kwenye ramani nayo inajieleza. Zigusa zote upate confetti na maelekezo ya kunakili."
+    "description": "Mchezo mfupi wa kibodi ambapo mhusika anatembea kwenye ramani na kila dhana inajieleza yenyewe."
   },
   "settings": {
     "configure": [
@@ -86,7 +86,9 @@
         "property": "gameTitle",
         "title": "Jina la mchezo",
         "description": "Hupa mchezo huu jina katika matukio ya maendeleo na alama za OER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Kitambulisho cha mchezo",

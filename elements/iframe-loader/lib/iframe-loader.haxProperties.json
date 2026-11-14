@@ -11,7 +11,7 @@
     "description": "Embed external web content in an iframe.",
     "icon": "hax:iframe",
     "color": "blue-grey",
-    "tags": ["Other", "iframe", "embed", "web", "link"],
+    "tags": ["Media", "iframe", "embed", "web", "link"],
     "handles": [
       {
         "type": "link",
@@ -70,10 +70,11 @@
   },
   "demoSchema": [
     {
-      "tag": "iframe",
+      "tag": "iframe-loader",
       "properties": {
-        "src": "https://haxtheweb.org",
-        "sandbox": "allow-scripts allow-same-origin"
+        "source": "https://haxtheweb.org/",
+        "height": "500px",
+        "width": "100%"
       },
       "content": ""
     }

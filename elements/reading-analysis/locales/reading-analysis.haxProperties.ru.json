@@ -38,21 +38,6 @@
         "slot": "",
         "title": "Текст",
         "description": "Текст, с которым работают учащиеся. Любой HTML: заголовки, абзацы, списки и рисунки."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "Формат оценивания",
-        "description": "OER Schema: формат оценивания для этого задания (например, баллы, буква, процент, выполнение)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Учебная цель",
-        "description": "OER Schema: учебная цель, связанная с этим заданием."
-      },
-      {
-        "property": "forCourse",
-        "title": "Курс",
-        "description": "OER Schema: курс, для которого предназначено это задание."
       }
     ],
     "advanced": [
@@ -70,6 +55,16 @@
         "property": "collapsed",
         "title": "Начинать свернутым",
         "description": "Если вопрос сворачиваемый, начинать с закрытой строки, где видны только вопрос и его статус."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Формат оценивания",
+        "description": "OER Schema: формат оценивания для этого задания (например, баллы, буква, процент, выполнение)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Учебная цель",
+        "description": "OER Schema: учебная цель, связанная с этим заданием."
       }
     ],
     "developer": [
@@ -77,6 +72,11 @@
         "property": "quizName",
         "title": "Название теста",
         "description": "Название теста, передаваемое для идентификации этого элемента в средах на основе xAPI"
+      },
+      {
+        "property": "forCourse",
+        "title": "Курс",
+        "description": "OER Schema: курс, для которого предназначено это задание."
       }
     ]
   }

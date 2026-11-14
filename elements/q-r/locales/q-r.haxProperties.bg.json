@@ -14,16 +14,6 @@
         "property": "title",
         "title": "Алтернативно заглавие",
         "description": "Алтернативно заглавие, свързано с източника на QR кода."
-      },
-      {
-        "property": "modulesize",
-        "title": "Размер",
-        "description": "Размер на QR кода."
-      },
-      {
-        "property": "margin",
-        "title": "Поле",
-        "description": "Рамка около кода."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "Размер",
+        "description": "Размер на QR кода."
+      },
+      {
+        "property": "margin",
+        "title": "Поле",
+        "description": "Рамка около кода."
       }
     ]
   }

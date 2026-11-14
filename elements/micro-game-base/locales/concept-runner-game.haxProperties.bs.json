@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Igra trkača pojmova",
-    "description": "Bočni skrolajući platformer. Lik trči u plamenu i nikad ne staje. Skači da pokupiš dobre pojmove i preskočiš loše, pa pogledaj pregled šta je bilo dobro, a šta loše."
+    "description": "Igra s bočnim pomjeranjem: skačite da uhvatite tačne pojmove i izbjegnete pogrešne."
   },
   "settings": {
     "configure": [
@@ -89,7 +89,9 @@
         "property": "gameTitle",
         "title": "Naziv igre",
         "description": "Imenuje ovu igru u događajima napretka i OER Schema oznakama."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "ID igre",

@@ -11,6 +11,13 @@
         "description": "此 AR 文件的 URL。"
       },
       {
+        "property": "skyColor",
+        "title": "天空颜色",
+        "description": "选择场景中天空的颜色。"
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "元素在 AR 中的 X 位置。"
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "元素在 AR 中的 Z 位置。"
-      },
-      {
-        "property": "skyColor",
-        "title": "天空颜色",
-        "description": "选择场景中天空的颜色。"
       }
     ]
   }

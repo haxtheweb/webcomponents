@@ -14,16 +14,6 @@
         "property": "title",
         "title": "כותרת חלופית",
         "description": "כותרת חלופית המקושרת למקור קוד ה-QR."
-      },
-      {
-        "property": "modulesize",
-        "title": "גודל",
-        "description": "גודל קוד ה-QR."
-      },
-      {
-        "property": "margin",
-        "title": "שוליים",
-        "description": "המעטפת של הקוד."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "גודל",
+        "description": "גודל קוד ה-QR."
+      },
+      {
+        "property": "margin",
+        "title": "שוליים",
+        "description": "המעטפת של הקוד."
       }
     ]
   }

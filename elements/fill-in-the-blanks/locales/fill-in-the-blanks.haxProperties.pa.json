@@ -14,28 +14,6 @@
         "property": "statement",
         "title": "ਕਥਨ",
         "description": "ਕਥਨ ਜੋ ਸ਼ਬਦ-ਨਿਸ਼ਾਨ ਲਗਾਓ ਪਰਸਪਰ ਕਿਰਿਆ ਵਿੱਚ ਬਦਲਿਆ ਜਾਵੇਗਾ।"
-      },
-      {
-        "property": "gradingFormat",
-        "title": "ਗ੍ਰੇਡਿੰਗ ਫਾਰਮੈਟ",
-        "description": "OER Schema: ਇਸ ਮੁਲਾਂਕਣ ਲਈ ਗ੍ਰੇਡਿੰਗ ਫਾਰਮੈਟ (ਜਿਵੇਂ ਅੰਕ, ਅੱਖਰ, ਪ੍ਰਤੀਸ਼ਤ, ਪੂਰਤੀ)।"
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "ਸਿੱਖਣ ਦਾ ਉਦੇਸ਼",
-        "description": "OER Schema: ਇਸ ਮੁਲਾਂਕਣ ਨਾਲ ਜੁੜਿਆ ਸਿੱਖਣ ਦਾ ਉਦੇਸ਼।"
-      },
-      {
-        "property": "forCourse",
-        "title": "ਕੋਰਸ",
-        "description": "OER Schema: ਉਹ ਕੋਰਸ ਜਿਸ ਲਈ ਇਹ ਮੁਲਾਂਕਣ ਹੈ।"
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "ਕੁਇਜ਼ ਦਾ ਨਾਮ",
-        "description": "xAPI-ਆਧਾਰਿਤ ਵਾਤਾਵਰਣਾਂ ਵਿੱਚ ਇਸ ਆਈਟਮ ਦੀ ਪਛਾਣ ਲਈ ਭੇਜਿਆ ਕੁਇਜ਼ ਨਾਮ"
       }
     ],
     "advanced": [
@@ -46,6 +24,28 @@
       {
         "title": "ਸਮੇਟ ਕੇ ਸ਼ੁਰੂ ਕਰੋ",
         "description": "ਸਮੇਟਣਯੋਗ ਹੋਣ 'ਤੇ, ਬੰਦ ਕਤਾਰ ਵਜੋਂ ਸ਼ੁਰੂ ਹੋਵੇ ਜੋ ਸਿਰਫ਼ ਸਵਾਲ ਅਤੇ ਉਸਦੀ ਸਥਿਤੀ ਦਿਖਾਉਂਦੀ ਹੈ।"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "ਗ੍ਰੇਡਿੰਗ ਫਾਰਮੈਟ",
+        "description": "OER Schema: ਇਸ ਮੁਲਾਂਕਣ ਲਈ ਗ੍ਰੇਡਿੰਗ ਫਾਰਮੈਟ (ਜਿਵੇਂ ਅੰਕ, ਅੱਖਰ, ਪ੍ਰਤੀਸ਼ਤ, ਪੂਰਤੀ)।"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "ਸਿੱਖਣ ਦਾ ਉਦੇਸ਼",
+        "description": "OER Schema: ਇਸ ਮੁਲਾਂਕਣ ਨਾਲ ਜੁੜਿਆ ਸਿੱਖਣ ਦਾ ਉਦੇਸ਼।"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "ਕੁਇਜ਼ ਦਾ ਨਾਮ",
+        "description": "xAPI-ਆਧਾਰਿਤ ਵਾਤਾਵਰਣਾਂ ਵਿੱਚ ਇਸ ਆਈਟਮ ਦੀ ਪਛਾਣ ਲਈ ਭੇਜਿਆ ਕੁਇਜ਼ ਨਾਮ"
+      },
+      {
+        "property": "forCourse",
+        "title": "ਕੋਰਸ",
+        "description": "OER Schema: ਉਹ ਕੋਰਸ ਜਿਸ ਲਈ ਇਹ ਮੁਲਾਂਕਣ ਹੈ।"
       }
     ]
   }

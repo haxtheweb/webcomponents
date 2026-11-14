@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Паём дар бораи дастгирӣ нашудан",
-        "description": "Паём, вақте ки браузер файлҳои PDF-ро нишон дода наметавонад."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Паёми пайванд дар бораи дастгирӣ нашудан",
-        "description": "Матни пайванд, вақте ки браузер файлҳои PDF-ро нишон дода наметавонад."
-      },
-      {
         "property": "width",
         "title": "Паҳноӣ",
         "description": "Паҳноии намоишгари PDF."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Баландӣ",
         "description": "Баландии намоишгари PDF."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Паём дар бораи дастгирӣ нашудан",
+        "description": "Паём, вақте ки браузер файлҳои PDF-ро нишон дода наметавонад."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Паёми пайванд дар бораи дастгирӣ нашудан",
+        "description": "Матни пайванд, вақте ки браузер файлҳои PDF-ро нишон дода наметавонад."
       }
     ]
   }

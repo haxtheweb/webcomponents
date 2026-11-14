@@ -9,7 +9,21 @@
         "property": "target",
         "title": "లక్ష్యం",
         "description": "గేమ్ బిల్డ్‌కు మార్గం."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "కాన్వాస్ వెడల్పు",
+        "description": "కాన్వాస్ CSS వెడల్పు (ఉదాహరణకు px లేదా em)."
       },
+      {
+        "property": "height",
+        "title": "కాన్వాస్ ఎత్తు",
+        "description": "కాన్వాస్ CSS ఎత్తు (ఉదాహరణకు px లేదా em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "కుదింపు పద్ధతి",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "ఉత్పత్తి వెర్షన్",
         "description": "విడుదల వెర్షన్."
-      },
-      {
-        "property": "width",
-        "title": "కాన్వాస్ వెడల్పు",
-        "description": "కాన్వాస్ CSS వెడల్పు (ఉదాహరణకు px లేదా em)."
-      },
-      {
-        "property": "height",
-        "title": "కాన్వాస్ ఎత్తు",
-        "description": "కాన్వాస్ CSS ఎత్తు (ఉదాహరణకు px లేదా em)."
       },
       {
         "property": "background",

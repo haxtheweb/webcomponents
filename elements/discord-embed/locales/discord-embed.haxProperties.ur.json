@@ -9,7 +9,9 @@
         "property": "source",
         "title": "وسیلے کا URL",
         "description": "وسیلے کا URL۔"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "اونچائی",

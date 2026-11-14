@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "오디오",
-    "description": "출처와 관계없이 동영상을 높은 접근성으로 표시할 수 있습니다."
+    "description": "대본을 지원하는 접근성 높은 오디오 플레이어."
   },
   "settings": {
     "configure": [
@@ -46,6 +46,16 @@
         "property": "accentColor",
         "title": "강조 색상",
         "description": "플레이어의 강조 색상을 선택하세요."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "타임스탬프 숨기기",
+        "description": "대본의 타임스탬프를 숨깁니다."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "대본 숨기기",
+        "description": "기본적으로 대본을 숨깁니다."
       }
     ],
     "developer": [
@@ -72,16 +82,6 @@
         "property": "disableInteractive",
         "title": "상호작용 비활성화",
         "description": "대본을 클릭할 수 있게 하는 상호작용 모드를 비활성화합니다."
-      },
-      {
-        "property": "hideTimestamps",
-        "title": "타임스탬프 숨기기",
-        "description": "대본의 타임스탬프를 숨깁니다."
-      },
-      {
-        "property": "hideTranscript",
-        "title": "대본 숨기기",
-        "description": "기본적으로 대본을 숨깁니다."
       },
       {
         "property": "lang",

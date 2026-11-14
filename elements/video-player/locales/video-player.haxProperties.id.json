@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Gambar poster",
         "description": "URL gambar poster."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Trek teks",
         "description": "Teks tertutup, subtitel, deskripsi, dan trek teks lain untuk video."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Waktu mulai",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Trek Deskripsi Audio",
         "description": "URL ke trek deskripsi audio (berkas MP3) yang menarasikan elemen visual."
+      },
+      {
+        "property": "accentColor",
+        "title": "Warna aksen",
+        "description": "(usang) Pilih warna aksen untuk pemutar."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Bahasa",
         "description": "Bahasa media."
-      },
-      {
-        "property": "accentColor",
-        "title": "Warna aksen",
-        "description": "(usang) Pilih warna aksen untuk pemutar."
       }
     ]
   }

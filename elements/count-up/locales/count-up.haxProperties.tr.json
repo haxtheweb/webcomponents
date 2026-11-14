@@ -29,16 +29,6 @@
         "property": "suffixtext",
         "title": "Son ek metni",
         "description": "Sayıdan sonra gösterilen metin (ör. '%')."
-      },
-      {
-        "slot": "prefix",
-        "title": "Ön ek yuvası",
-        "description": "Sayıdan önce isteğe bağlı yuva içeriği."
-      },
-      {
-        "slot": "suffix",
-        "title": "Son ek yuvası",
-        "description": "Sayıdan sonra isteğe bağlı yuva içeriği."
       }
     ],
     "advanced": [
@@ -61,6 +51,16 @@
         "property": "noeasing",
         "title": "Yumuşatma yok",
         "description": "Sayma doğrusal olsun diye yumuşatmayı devre dışı bırak."
+      },
+      {
+        "slot": "prefix",
+        "title": "Ön ek yuvası",
+        "description": "Sayıdan önce isteğe bağlı yuva içeriği."
+      },
+      {
+        "slot": "suffix",
+        "title": "Son ek yuvası",
+        "description": "Sayıdan sonra isteğe bağlı yuva içeriği."
       }
     ]
   }

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "皮肉",
-    "description": "テキストを茶化して表示します"
+    "description": "皮肉な口調を表す、大文字と小文字が交互のテキスト。"
   },
   "settings": {
     "configure": [

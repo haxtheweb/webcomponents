@@ -11,20 +11,17 @@
         "description": "Libellé accessible de l'ensemble d'onglets."
       },
       {
-        "property": "disabled",
-        "title": "Désactivé",
-        "description": "Désactiver tous les onglets."
-      },
-      {
-        "property": "hidden",
-        "title": "Masqué",
-        "description": "Masquer l'ensemble d'onglets."
-      },
-      {
         "property": "sticky",
         "title": "Fixe",
         "description": "Garder les onglets horizontaux en haut pendant le défilement."
       },
+      {
+        "slot": "",
+        "title": "Onglets",
+        "description": "Série d'éléments <a11y-tab/>."
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "Point de rupture de la mise en page",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "Point de rupture des icônes",
         "description": "Point de rupture pour afficher le texte avec les icônes. La valeur par défaut est 0 ; utilisez -1 pour le mode icônes seules."
-      },
-      {
-        "slot": "",
-        "title": "Onglets",
-        "description": "Série d'éléments <a11y-tab/>."
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "Désactivé",
+        "description": "Désactiver tous les onglets."
+      },
+      {
+        "property": "hidden",
+        "title": "Masqué",
+        "description": "Masquer l'ensemble d'onglets."
+      },
       {
         "property": "id",
         "title": "ID unique",

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "ตัวครอบสำหรับเครื่องเล่น Spotify ที่ฝัง"
+    "description": "ฝังเพลง อัลบั้ม หรือเพลย์ลิสต์ของ Spotify"
   },
   "settings": {
     "configure": [

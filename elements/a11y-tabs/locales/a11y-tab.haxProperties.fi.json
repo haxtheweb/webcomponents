@@ -10,10 +10,6 @@
         "title": "Välilehden kuvake"
       },
       {
-        "property": "disabled",
-        "title": "Pois käytöstä"
-      },
-      {
         "property": "label",
         "title": "Välilehden nimi"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "Yksilöllinen ID"
-      },
-      {
         "property": "flag",
         "title": "Valinnainen merkintäteksti"
       },
       {
         "property": "flagIcon",
         "title": "Valinnainen merkintäkuvake"
+      },
+      {
+        "property": "disabled",
+        "title": "Pois käytöstä"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "Yksilöllinen ID"
       }
     ]
   }

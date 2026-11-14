@@ -10,10 +10,6 @@
         "title": "Faneikon"
       },
       {
-        "property": "disabled",
-        "title": "Deaktiveret"
-      },
-      {
         "property": "label",
         "title": "Fanenavn"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "Unikt ID"
-      },
-      {
         "property": "flag",
         "title": "Valgfri flagtekst"
       },
       {
         "property": "flagIcon",
         "title": "Valgfrit flagikon"
+      },
+      {
+        "property": "disabled",
+        "title": "Deaktiveret"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "Unikt ID"
       }
     ]
   }

@@ -4,22 +4,23 @@
     "description": "Senarai main yang membentangkan pemain video dan audio dalam susun atur pemain + bar sisi."
   },
   "settings": {
-    "configure": [
+    "configure": [],
+    "advanced": [
       {
         "property": "activeIndex",
         "title": "Indeks aktif",
         "description": "Indeks item aktif untuk dimulakan."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kursus",
-        "description": "Kursus yang menjadi sasaran senarai main ini (pengecam kursus atau URL)."
       }
     ],
     "developer": [
       {
         "title": "Media",
         "description": "Video dan audio dalam senarai main. Tidak disunting di sini: rangka halaman menggunakannya untuk mengetahui blok yang boleh dilepaskan ke dalamnya."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursus",
+        "description": "Kursus yang menjadi sasaran senarai main ini (pengecam kursus atau URL)."
       }
     ]
   }

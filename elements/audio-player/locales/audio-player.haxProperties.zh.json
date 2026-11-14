@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "音频",
-    "description": "无论来源如何，都能以高度无障碍的方式呈现视频。"
+    "description": "支持文字记录的无障碍音频播放器。"
   },
   "settings": {
     "configure": [
@@ -46,6 +46,16 @@
         "property": "accentColor",
         "title": "强调色",
         "description": "选择播放器的强调色。"
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "隐藏时间戳",
+        "description": "隐藏文字稿上的时间戳。"
+      },
+      {
+        "property": "hideTranscript",
+        "title": "隐藏文字稿",
+        "description": "默认隐藏文字稿。"
       }
     ],
     "developer": [
@@ -72,16 +82,6 @@
         "property": "disableInteractive",
         "title": "禁用互动",
         "description": "禁用使文字稿可点击的互动模式。"
-      },
-      {
-        "property": "hideTimestamps",
-        "title": "隐藏时间戳",
-        "description": "隐藏文字稿上的时间戳。"
-      },
-      {
-        "property": "hideTranscript",
-        "title": "隐藏文字稿",
-        "description": "默认隐藏文字稿。"
       },
       {
         "property": "lang",

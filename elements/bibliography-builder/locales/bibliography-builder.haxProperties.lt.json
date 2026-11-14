@@ -9,7 +9,9 @@
         "slot": "",
         "title": "Citatos",
         "description": "Šios bibliografijos citavimo elementai"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "Kursas",

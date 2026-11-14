@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Paralakses attēls",
-    "description": "Attēls, kas ritinās"
+    "description": "Pilna platuma attēls, kas ritinās lēnāk par lapu, ar virsrakstu pāri."
   },
   "settings": {
     "configure": [

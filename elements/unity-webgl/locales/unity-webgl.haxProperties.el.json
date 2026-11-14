@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Στόχος",
         "description": "Διαδρομή προς το build του παιχνιδιού."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Πλάτος καμβά",
+        "description": "Πλάτος CSS του καμβά (για παράδειγμα px ή em)."
       },
+      {
+        "property": "height",
+        "title": "Ύψος καμβά",
+        "description": "Ύψος CSS του καμβά (για παράδειγμα px ή em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Μέθοδος συμπίεσης",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Έκδοση προϊόντος",
         "description": "Έκδοση κυκλοφορίας."
-      },
-      {
-        "property": "width",
-        "title": "Πλάτος καμβά",
-        "description": "Πλάτος CSS του καμβά (για παράδειγμα px ή em)."
-      },
-      {
-        "property": "height",
-        "title": "Ύψος καμβά",
-        "description": "Ύψος CSS του καμβά (για παράδειγμα px ή em)."
       },
       {
         "property": "background",

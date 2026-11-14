@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "ຮູບໂປສເຕີ",
         "description": "URL ຮູບໂປສເຕີ."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "ແທຣັກຂໍ້ຄວາມ",
         "description": "ຄຳບັນຍາຍ, ຄຳແປບັນຍາຍ, ຄຳອະທິບາຍ ແລະ ແທຣັກຂໍ້ຄວາມອື່ນໆສຳລັບວິດີໂອ."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "ເວລາເລີ່ມຕົ້ນ",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "ແທຣັກຄຳອະທິບາຍດ້ວຍສຽງ",
         "description": "URL ຂອງແທຣັກຄຳອະທິບາຍດ້ວຍສຽງ (ໄຟລ໌ MP3) ທີ່ບັນຍາຍອົງປະກອບທາງພາບ."
+      },
+      {
+        "property": "accentColor",
+        "title": "ສີເນັ້ນ",
+        "description": "(ເຊົາໃຊ້ແລ້ວ) ເລືອກສີເນັ້ນສຳລັບເຄື່ອງຫຼິ້ນ."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "ພາສາ",
         "description": "ພາສາຂອງສື່."
-      },
-      {
-        "property": "accentColor",
-        "title": "ສີເນັ້ນ",
-        "description": "(ເຊົາໃຊ້ແລ້ວ) ເລືອກສີເນັ້ນສຳລັບເຄື່ອງຫຼິ້ນ."
       }
     ]
   }

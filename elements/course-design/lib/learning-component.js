@@ -231,7 +231,7 @@ class LearningComponent extends I18NMixin(DDD) {
         accent: true,
       },
       gizmo: {
-        title: "Learning Component",
+        title: "Learning component",
         description:
           "A card for instructors to communicate pedagogy and instructional strategies.",
         icon: "icons:bookmark",
@@ -289,6 +289,7 @@ class LearningComponent extends I18NMixin(DDD) {
           {
             slot: "",
             title: "Contents",
+            inputMethod: "code-editor",
           },
         ],
         advanced: [

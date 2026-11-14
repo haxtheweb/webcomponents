@@ -14,16 +14,6 @@
         "property": "title",
         "title": "ಪರ್ಯಾಯ ಶೀರ್ಷಿಕೆ",
         "description": "QR ಕೋಡ್ ಮೂಲಕ್ಕೆ ಲಿಂಕ್ ಮಾಡಿದ ಪರ್ಯಾಯ ಶೀರ್ಷಿಕೆ."
-      },
-      {
-        "property": "modulesize",
-        "title": "ಗಾತ್ರ",
-        "description": "QR ಕೋಡ್‌ನ ಗಾತ್ರ."
-      },
-      {
-        "property": "margin",
-        "title": "ಅಂಚು",
-        "description": "ಕೋಡ್‌ನ ಸುತ್ತಲಿನ ಅಂಚು."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "ಗಾತ್ರ",
+        "description": "QR ಕೋಡ್‌ನ ಗಾತ್ರ."
+      },
+      {
+        "property": "margin",
+        "title": "ಅಂಚು",
+        "description": "ಕೋಡ್‌ನ ಸುತ್ತಲಿನ ಅಂಚು."
       }
     ]
   }

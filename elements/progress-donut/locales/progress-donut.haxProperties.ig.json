@@ -26,11 +26,6 @@
         "description": "Ederede alt maka onyonyo."
       },
       {
-        "property": "animated",
-        "title": "Na-emegharị emegharị",
-        "description": "Ma ọganihu ọ na-emegharị mgbe mbụ ebudatara ya"
-      },
-      {
         "property": "complete",
         "title": "Agwụla",
         "description": "Ndepụta nke uru emechara."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "Mkpokọta",
         "description": "Mkpokọta mgbe ihe niile zuru ezu."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "Na-emegharị emegharị",
+        "description": "Ma ọganihu ọ na-emegharị mgbe mbụ ebudatara ya"
       },
       {
         "property": "startAngle",

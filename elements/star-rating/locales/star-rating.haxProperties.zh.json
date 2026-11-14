@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "星级评分",
-    "description": "评分显示组件或用于评分的按钮。"
+    "description": "显示星级评分，或让读者选择评分。"
   },
   "settings": {
     "configure": [
@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "可互动",
         "description": "允许用户通过互动设置评分。"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "评分量规模式",

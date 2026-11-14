@@ -9,7 +9,9 @@
         "slot": "",
         "title": "حوالے",
         "description": "ایس کتابیات وچ حوالیاں دیاں آئٹماں"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "کورس",

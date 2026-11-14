@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "การอ้างอิง",
-    "description": "องค์ประกอบการอ้างอิงที่มีโหมดการนำเสนอสามแบบ"
+    "description": "ให้เครดิตแหล่งที่มาด้วยชื่อเรื่อง ผู้สร้าง สัญญาอนุญาต และลิงก์"
   },
   "settings": {
     "configure": [
@@ -21,15 +21,6 @@
         "description": "วันที่เข้าถึงแหล่งที่มา"
       },
       {
-        "property": "scope",
-        "title": "ขอบเขต",
-        "description": "ขอบเขตองค์ประกอบที่จะอ้างอิง",
-        "options": {
-          "sibling": "องค์ประกอบพี่น้อง",
-          "parent": "องค์ประกอบแม่"
-        }
-      },
-      {
         "property": "license",
         "title": "สัญญาอนุญาต",
         "description": "สัญญาอนุญาตของผลงานที่อ้างอิง"
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "ผู้สร้าง",
         "description": "ผู้สร้างหรือเจ้าของผลงานที่อ้างอิง"
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "ขอบเขต",
+        "description": "ขอบเขตองค์ประกอบที่จะอ้างอิง",
+        "options": {
+          "sibling": "องค์ประกอบพี่น้อง",
+          "parent": "องค์ประกอบแม่"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "ประเภท OER Schema",

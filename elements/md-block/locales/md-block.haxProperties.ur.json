@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "براہ راست یا ریموٹ سے لوڈ کیے گئے markdown مواد کا بلاک"
+    "description": "Markdown مواد، براہِ راست لکھا ہوا یا فائل سے لوڈ کیا ہوا۔"
   },
   "settings": {
     "configure": [

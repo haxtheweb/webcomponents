@@ -11,6 +11,13 @@
         "description": "URL на оваа AR датотека."
       },
       {
+        "property": "skyColor",
+        "title": "Боја на небото",
+        "description": "Изберете ја бојата на небото во сцената."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "X позиција на елементот во AR."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "Z позиција на елементот во AR."
-      },
-      {
-        "property": "skyColor",
-        "title": "Боја на небото",
-        "description": "Изберете ја бојата на небото во сцената."
       }
     ]
   }

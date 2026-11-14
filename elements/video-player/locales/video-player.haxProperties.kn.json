@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "ಪೋಸ್ಟರ್ ಚಿತ್ರ",
         "description": "ಪೋಸ್ಟರ್ ಚಿತ್ರದ URL."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "ಪಠ್ಯ ಟ್ರ್ಯಾಕ್‌ಗಳು",
         "description": "ವೀಡಿಯೊಗಾಗಿ ಕ್ಲೋಸ್ಡ್ ಕ್ಯಾಪ್ಶನ್‌ಗಳು, ಉಪಶೀರ್ಷಿಕೆಗಳು, ವಿವರಣೆಗಳು ಮತ್ತು ಇತರ ಪಠ್ಯ ಟ್ರ್ಯಾಕ್‌ಗಳು."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "ಪ್ರಾರಂಭ ಸಮಯ",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "ಆಡಿಯೋ ವಿವರಣೆ ಟ್ರ್ಯಾಕ್",
         "description": "ದೃಶ್ಯ ಅಂಶಗಳ ನಿರೂಪಣೆ ಒದಗಿಸುವ ಆಡಿಯೋ ವಿವರಣೆ ಟ್ರ್ಯಾಕ್‌ನ (MP3 ಫೈಲ್) URL."
+      },
+      {
+        "property": "accentColor",
+        "title": "ಒತ್ತು ಬಣ್ಣ",
+        "description": "(ಹಳತಾಗಿದೆ) ಪ್ಲೇಯರ್‌ಗೆ ಆಕ್ಸೆಂಟ್ ಬಣ್ಣವನ್ನು ಆಯ್ಕೆಮಾಡಿ."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "ಭಾಷೆ",
         "description": "ಮೀಡಿಯಾದ ಭಾಷೆ."
-      },
-      {
-        "property": "accentColor",
-        "title": "ಒತ್ತು ಬಣ್ಣ",
-        "description": "(ಹಳತಾಗಿದೆ) ಪ್ಲೇಯರ್‌ಗೆ ಆಕ್ಸೆಂಟ್ ಬಣ್ಣವನ್ನು ಆಯ್ಕೆಮಾಡಿ."
       }
     ]
   }

@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "Tag / Pil",
+    "title": "Tag",
     "description": "Label ringkas berbentuk pil dengan warna aksen, tombol batal, atau sakelar opsional."
   },
   "settings": {
@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Warna aksen otomatis",
         "description": "Turunkan warna aksen dari teks label secara otomatis."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Tombol batal",
-        "description": "Tampilkan tombol ikon hapus/batal di dalam pil."
-      },
-      {
-        "property": "readonly",
-        "title": "Hanya baca",
-        "description": "Sembunyikan tombol batal sehingga pil hanya untuk tampilan."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Abu-abu Kebiruan",
           "grey": "Abu-abu"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Tombol batal",
+        "description": "Tampilkan tombol ikon hapus/batal di dalam pil."
+      },
+      {
+        "property": "readonly",
+        "title": "Hanya baca",
+        "description": "Sembunyikan tombol batal sehingga pil hanya untuk tampilan."
       }
     ]
   }

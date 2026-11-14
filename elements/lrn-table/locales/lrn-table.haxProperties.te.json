@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "CSV పట్టిక",
-    "description": "CSV ఫైల్ ఎక్కడ ఉన్నా దాని నుండి పట్టికను రూపొందించగలదు."
+    "description": "CSV ఫైల్‌ను ప్రాప్యత గల పట్టికగా చూపిస్తుంది."
   },
   "settings": {
     "configure": [

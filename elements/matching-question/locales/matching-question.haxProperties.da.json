@@ -11,30 +11,8 @@
         "description": "Spørgsmål til brugerne. Markér slipmål, og angiv derefter svar indtil næste mål."
       },
       {
-        "property": "gradingFormat",
-        "title": "Bedømmelsesformat",
-        "description": "OER Schema: bedømmelsesformat for denne vurdering (f.eks. point, bogstav, procent, gennemførelse)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Læringsmål",
-        "description": "OER Schema: læringsmål knyttet til denne vurdering."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kursus",
-        "description": "OER Schema: kursus, som denne vurdering er beregnet til."
-      },
-      {
         "property": "answers",
         "title": "Svar"
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Quizzens navn",
-        "description": "Quiznavn brugt til xAPI-identifikation i analysesystemer."
       }
     ],
     "advanced": [
@@ -47,6 +25,28 @@
         "property": "collapsed",
         "title": "Start sammenfoldet",
         "description": "Når det er sammenfoldeligt, starter det som en lukket række, der kun viser spørgsmålet og dets status."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Bedømmelsesformat",
+        "description": "OER Schema: bedømmelsesformat for denne vurdering (f.eks. point, bogstav, procent, gennemførelse)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Læringsmål",
+        "description": "OER Schema: læringsmål knyttet til denne vurdering."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Quizzens navn",
+        "description": "Quiznavn brugt til xAPI-identifikation i analysesystemer."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kursus",
+        "description": "OER Schema: kursus, som denne vurdering er beregnet til."
       }
     ]
   }

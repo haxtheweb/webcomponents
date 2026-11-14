@@ -56,7 +56,7 @@
   "cssParts": [],
   "cssProperties": [],
   "hax": {
-    "schema": "elements/progress-donut/progress-donut.js",
+    "schema": "elements/progress-donut/lib/progress-donut.haxProperties.json",
     "gizmo": true,
     "properties": [
       "animated",

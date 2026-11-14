@@ -26,7 +26,8 @@
         "description": "სასარგებლოა ეკრანის წამკითხველებისთვის და SEO-ს გასაუმჯობესებლად."
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "ხარისხი",

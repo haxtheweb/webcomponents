@@ -21,7 +21,7 @@
   "cssParts": [],
   "cssProperties": [],
   "hax": {
-    "schema": "elements/ai-usage-license/ai-usage-license.js",
+    "schema": "elements/ai-usage-license/lib/ai-usage-license.haxProperties.json",
     "gizmo": true,
     "properties": [
       "license",

@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "અસમર્થિત સંદેશ",
-        "description": "બ્રાઉઝર PDF ફાઇલો બતાવી ન શકે ત્યારેનો સંદેશ."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "અસમર્થિત લિંક સંદેશ",
-        "description": "બ્રાઉઝર PDF ફાઇલો બતાવી ન શકે ત્યારેનું લિંક લખાણ."
-      },
-      {
         "property": "width",
         "title": "પહોળાઈ",
         "description": "PDF વ્યૂઅરની પહોળાઈ."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "ઊંચાઈ",
         "description": "PDF વ્યૂઅરની ઊંચાઈ."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "અસમર્થિત સંદેશ",
+        "description": "બ્રાઉઝર PDF ફાઇલો બતાવી ન શકે ત્યારેનો સંદેશ."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "અસમર્થિત લિંક સંદેશ",
+        "description": "બ્રાઉઝર PDF ફાઇલો બતાવી ન શકે ત્યારેનું લિંક લખાણ."
       }
     ]
   }

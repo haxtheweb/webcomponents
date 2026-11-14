@@ -9,7 +9,9 @@
         "slot": "",
         "title": "Lähdeviitteet",
         "description": "Tämän lähdeluettelon lähdeviitteet"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "Kurssi",

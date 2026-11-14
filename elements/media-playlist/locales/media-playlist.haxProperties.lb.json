@@ -4,22 +4,23 @@
     "description": "Eng Playlist, déi Video- an Audioplayer an engem Layout mat Player a Säiteleescht weist."
   },
   "settings": {
-    "configure": [
+    "configure": [],
+    "advanced": [
       {
         "property": "activeIndex",
         "title": "Startelement",
         "description": "Nummer vum Element, mat deem ugefaange gëtt."
-      },
-      {
-        "property": "forCourse",
-        "title": "Cours",
-        "description": "De Cours, fir deen dës Playlist geduecht ass (Cours-Identifiant oder URL)."
       }
     ],
     "developer": [
       {
         "title": "Medien",
         "description": "D'Videoen an den Audio an der Playlist. Gëtt hei net geännert: d'Säiteniwwersiicht benotzt et fir ze wëssen, wéi eng Blocken do kënnen erafale gelooss ginn."
+      },
+      {
+        "property": "forCourse",
+        "title": "Cours",
+        "description": "De Cours, fir deen dës Playlist geduecht ass (Cours-Identifiant oder URL)."
       }
     ]
   }

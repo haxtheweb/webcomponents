@@ -46,6 +46,16 @@
         "property": "accentColor",
         "title": "Akcenta koloro",
         "description": "Elektu la akcentan koloron por la ludilo."
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "Kaŝi tempomarkojn",
+        "description": "Kaŝi la tempomarkojn en la transskribo."
+      },
+      {
+        "property": "hideTranscript",
+        "title": "Kaŝi transskribon",
+        "description": "Kaŝi la transskribon defaŭlte."
       }
     ],
     "developer": [
@@ -72,16 +82,6 @@
         "property": "disableInteractive",
         "title": "Malŝalti interagecon",
         "description": "Malŝalti interagan reĝimon, kiu igas la transskribon alklakebla."
-      },
-      {
-        "property": "hideTimestamps",
-        "title": "Kaŝi tempomarkojn",
-        "description": "Kaŝi la tempomarkojn en la transskribo."
-      },
-      {
-        "property": "hideTranscript",
-        "title": "Kaŝi transskribon",
-        "description": "Kaŝi la transskribon defaŭlte."
       },
       {
         "property": "lang",

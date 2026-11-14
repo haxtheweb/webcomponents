@@ -9,7 +9,9 @@
         "slot": "",
         "title": "Izicatshulwa",
         "description": "Izinto zezicatshulwa kule bhibliyografi"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "Ikhosi",

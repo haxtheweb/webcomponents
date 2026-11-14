@@ -86,7 +86,9 @@
         "property": "gameTitle",
         "title": "Zita remutambo",
         "description": "Inopa mutambo uyu zita muzviitiko zvekufambira mberi uye pamarkup yeOER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Id yemutambo",

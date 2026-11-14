@@ -3,13 +3,13 @@
 
   "canEditSource": true,
   "gizmo": {
-    "title": "Post Card",
+    "title": "Post card",
     "description": "A playful media piece meant to look like a physical post card from somewhere",
-    "icon": "credit-card",
+    "icon": "maps:local-post-office",
     "color": "blue",
     "tags": [
-      "Layout",
-      "Fun",
+      "Other",
+      "fun",
       "extra",
       "postcard",
       "card",
@@ -63,13 +63,14 @@
     {
       "tag": "post-card",
       "properties": {
-        "to": "btopro",
-        "from": "everyone",
-        "postMarkLocations": "state college",
-        "message": "Look more enthused at work",
-        "photoSrc": "https://btopro.com/assets/banner.jpg",
-        "stampSrc": "https://pbs.twimg.com/profile_images/1556675960635891713/ONMPLfPT_400x400.jpg"
-      }
+        "to": "A friend",
+        "from": "State College",
+        "postMarkLocations": "State College",
+        "message": "Wish you were here!",
+        "photoSrc": "https://placehold.co/600x400",
+        "stampSrc": "https://placehold.co/100x120"
+      },
+      "content": ""
     }
   ]
 }

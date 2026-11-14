@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Λεζάντα",
         "description": "Λεζάντα για την εικόνα."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Τίτλος εικόνας",
-        "description": "Τίτλος για την ετικέτα εικόνας."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Περιγραφή εικόνας",
-        "description": "Περιγραφή για την ετικέτα εικόνας."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Απενεργοποίηση παραθύρου εικόνας",
         "description": "Απενεργοποίηση του ανοίγματος της εικόνας σε παράθυρο επιθεώρησης εικόνας με κλικ."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Τίτλος εικόνας",
+        "description": "Τίτλος για την ετικέτα εικόνας."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Περιγραφή εικόνας",
+        "description": "Περιγραφή για την ετικέτα εικόνας."
       }
     ],
     "developer": [

@@ -34,7 +34,7 @@
   "cssParts": [],
   "cssProperties": [],
   "hax": {
-    "schema": "elements/media-image/media-image.js",
+    "schema": "elements/media-image/lib/media-image.haxProperties.json",
     "gizmo": true,
     "properties": [
       "alt",

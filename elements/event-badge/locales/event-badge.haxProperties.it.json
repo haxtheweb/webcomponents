@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Badge evento",
-    "description": "Componente badge per eventi."
+    "description": "Un badge nominativo in stile conferenza con foto, nome e organizzazione."
   },
   "settings": {
     "configure": [

@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Ngjyrë theksuese automatike",
         "description": "Nxirre ngjyrën theksuese automatikisht nga teksti i etiketës."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Butoni i anulimit",
-        "description": "Shfaq një buton ikone për heqje/anulim brenda kapsulës."
-      },
-      {
-        "property": "readonly",
-        "title": "Vetëm për lexim",
-        "description": "Fshih butonin e anulimit që kapsula të jetë vetëm për shfaqje."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Gri në blu",
           "grey": "Gri"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Butoni i anulimit",
+        "description": "Shfaq një buton ikone për heqje/anulim brenda kapsulës."
+      },
+      {
+        "property": "readonly",
+        "title": "Vetëm për lexim",
+        "description": "Fshih butonin e anulimit që kapsula të jetë vetëm për shfaqje."
       }
     ]
   }

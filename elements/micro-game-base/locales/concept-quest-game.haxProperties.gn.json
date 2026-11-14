@@ -91,7 +91,9 @@
         "property": "gameTitle",
         "title": "Ñembosarai téra",
         "description": "Omotéra ko ñembosarai-pe ñepyrũ rembiapo ha OER Schema markup-pe."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "Ñembosarai id",

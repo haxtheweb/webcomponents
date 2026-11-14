@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Targed",
         "description": "Llwybr at adeiliad y gêm."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Lled y Cynfas",
+        "description": "Lled CSS y cynfas (er enghraifft px neu em)."
       },
+      {
+        "property": "height",
+        "title": "Uchder y Cynfas",
+        "description": "Uchder CSS y cynfas (er enghraifft px neu em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Dull cywasgu",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Fersiwn y Cynnyrch",
         "description": "Fersiwn y rhyddhad."
-      },
-      {
-        "property": "width",
-        "title": "Lled y Cynfas",
-        "description": "Lled CSS y cynfas (er enghraifft px neu em)."
-      },
-      {
-        "property": "height",
-        "title": "Uchder y Cynfas",
-        "description": "Uchder CSS y cynfas (er enghraifft px neu em)."
       },
       {
         "property": "background",

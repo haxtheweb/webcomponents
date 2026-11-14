@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "উৎসনির্দেশ",
-    "description": "তিনটি উপস্থাপন মোডসহ সাইটেশন এলিমেন্ট।"
+    "description": "উৎসের শিরোনাম, নির্মাতা, লাইসেন্স ও লিংকসহ কৃতিত্ব দিন।"
   },
   "settings": {
     "configure": [
@@ -21,15 +21,6 @@
         "description": "যে তারিখে সোর্সটি দেখা হয়েছে।"
       },
       {
-        "property": "scope",
-        "title": "পরিধি",
-        "description": "যে এলিমেন্ট পরিধি উদ্ধৃত করা হবে।",
-        "options": {
-          "sibling": "সিবলিং এলিমেন্ট",
-          "parent": "প্যারেন্ট এলিমেন্ট"
-        }
-      },
-      {
         "property": "license",
         "title": "লাইসেন্স",
         "description": "উদ্ধৃত কাজের লাইসেন্স।"
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "স্রষ্টা",
         "description": "উদ্ধৃত কাজের স্রষ্টা বা মালিক।"
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "পরিধি",
+        "description": "যে এলিমেন্ট পরিধি উদ্ধৃত করা হবে।",
+        "options": {
+          "sibling": "সিবলিং এলিমেন্ট",
+          "parent": "প্যারেন্ট এলিমেন্ট"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "OER Schema ধরন",

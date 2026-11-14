@@ -4,7 +4,7 @@
     "description": "Bhuroko rinochinja rinoratidza mwana wepeji riripo"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "Nzira inochinja",
@@ -14,7 +14,9 @@
           "parent": "Vana vemubereki",
           "ancestor": "Vana vose kubva kumudzitateguru wepamusoro"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "Danho rekutanga"

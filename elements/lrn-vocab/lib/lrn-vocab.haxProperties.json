@@ -1,0 +1,71 @@
+{
+  "canScale": false,
+  "canEditSource": true,
+  "designSystem": {
+    "primary": true
+  },
+  "gizmo": {
+    "title": "Vocab",
+    "description": "Vocabulary term",
+    "icon": "hax:vocab",
+    "color": "red",
+    "tags": ["Instructional", "vocab", "term", "definition", "glossary"],
+    "handles": [
+      {
+        "type": "inline",
+        "text": "term"
+      }
+    ],
+    "meta": {
+      "author": "HAXTheWeb core team",
+      "inlineOnly": true,
+      "hidden": true
+    }
+  },
+  "settings": {
+    "inline": [
+      {
+        "property": "term",
+        "title": "Term",
+        "description": "The word or phrase readers click to see its definition.",
+        "inputMethod": "textfield",
+        "icon": "editor:title",
+        "required": true
+      }
+    ],
+    "configure": [
+      {
+        "property": "term",
+        "title": "Term",
+        "description": "The word or phrase readers click to see its definition.",
+        "inputMethod": "textfield",
+        "icon": "editor:title",
+        "required": true
+      },
+      {
+        "slot": "",
+        "title": "Definition",
+        "description": "The definitition to display when the term is clicked.",
+        "inputMethod": "textarea",
+        "required": true
+      },
+      {
+        "property": "description",
+        "title": "Description (OER Schema)",
+        "description": "OER Schema: a short description of the vocabulary term. Auto-populated from the definition text if left blank.",
+        "inputMethod": "textfield"
+      }
+    ],
+    "advanced": []
+  },
+  "saveOptions": {
+    "unsetAttributes": ["t"]
+  },
+  "demoSchema": [
+    {
+      "tag": "lrn-vocab",
+      "properties": {},
+      "content": ""
+    }
+  ]
+}

@@ -10,10 +10,6 @@
         "title": "Icona da lapela"
       },
       {
-        "property": "disabled",
-        "title": "Desactivado"
-      },
-      {
         "property": "label",
         "title": "Etiqueta da lapela"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "ID único"
-      },
-      {
         "property": "flag",
         "title": "Texto de marca opcional"
       },
       {
         "property": "flagIcon",
         "title": "Icona de marca opcional"
+      },
+      {
+        "property": "disabled",
+        "title": "Desactivado"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "ID único"
       }
     ]
   }

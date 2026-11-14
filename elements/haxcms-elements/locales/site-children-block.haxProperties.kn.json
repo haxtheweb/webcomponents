@@ -4,7 +4,7 @@
     "description": "ಪ್ರಸ್ತುತ ಪುಟದ ಉಪಪುಟಗಳನ್ನು ತೋರಿಸುವ ಡೈನಾಮಿಕ್ ಬ್ಲಾಕ್"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "ಡೈನಾಮಿಕ್ ವಿಧಾನ",
@@ -14,7 +14,9 @@
           "parent": "ಮೂಲ ಪುಟದ ಉಪಪುಟಗಳು",
           "ancestor": "ಅತ್ಯುನ್ನತ ಪೂರ್ವಜನಿಂದ ಎಲ್ಲಾ ಉಪಪುಟಗಳು"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "ಪ್ರಾರಂಭ ಮಟ್ಟ"

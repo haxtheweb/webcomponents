@@ -4,7 +4,7 @@
     "description": "Poloka loli e hōʻike ai i ke keiki o ka ʻaoʻao o kēia manawa"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "Ala loli",
@@ -14,7 +14,9 @@
           "parent": "Nā keiki o ka makua",
           "ancestor": "Nā keiki a pau mai ke kupuna kiʻekiʻe loa"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "Pae hoʻomaka"

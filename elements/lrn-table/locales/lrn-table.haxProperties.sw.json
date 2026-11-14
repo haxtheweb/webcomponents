@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Jedwali la CSV",
-    "description": "Hiki kinaweza kutengeneza jedwali kutoka kwa faili ya CSV popote ilipo."
+    "description": "Huonyesha faili ya CSV kama jedwali linalofikika."
   },
   "settings": {
     "configure": [

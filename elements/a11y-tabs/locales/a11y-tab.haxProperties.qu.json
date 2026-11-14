@@ -10,10 +10,6 @@
         "title": "Pestañap Iconon"
       },
       {
-        "property": "disabled",
-        "title": "Hark'asqa"
-      },
-      {
         "property": "label",
         "title": "Pestañap Sutin"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "Sapalla ID"
-      },
-      {
         "property": "flag",
         "title": "Munaspalla Unancha Qillqa"
       },
       {
         "property": "flagIcon",
         "title": "Munaspalla Unancha Icono"
+      },
+      {
+        "property": "disabled",
+        "title": "Hark'asqa"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "Sapalla ID"
       }
     ]
   }

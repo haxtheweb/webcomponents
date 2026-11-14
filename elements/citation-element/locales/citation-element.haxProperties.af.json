@@ -21,15 +21,6 @@
         "description": "Datum waarop die bron geraadpleeg is."
       },
       {
-        "property": "scope",
-        "title": "Omvang",
-        "description": "Elementomvang om aan te haal.",
-        "options": {
-          "sibling": "Sibbe-element",
-          "parent": "Ouer-element"
-        }
-      },
-      {
         "property": "license",
         "title": "Lisensie",
         "description": "Lisensie vir die aangehaalde werk."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Skepper",
         "description": "Skepper of eienaar van die aangehaalde werk."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Omvang",
+        "description": "Elementomvang om aan te haal.",
+        "options": {
+          "sibling": "Sibbe-element",
+          "parent": "Ouer-element"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "OER Schema-tipe",

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Lihtne pilt",
-    "description": "Töötle pilte lihtsate parameetritega."
+    "description": "Pilt, mille suurust muudetakse, mida kärbitakse või pööratakse lihtsate seadetega."
   },
   "settings": {
     "configure": [
@@ -26,7 +26,8 @@
         "description": "Kasulik ekraanilugejatele ja parema SEO jaoks."
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "Kvaliteet",

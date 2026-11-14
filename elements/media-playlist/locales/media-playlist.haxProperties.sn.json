@@ -4,22 +4,23 @@
     "description": "Rondedzero yekuridza inoratidza zviridzi zvevhidhiyo neodhiyo murongedzo wechiridzi nebhari yepadivi."
   },
   "settings": {
-    "configure": [
+    "configure": [],
+    "advanced": [
       {
         "property": "activeIndex",
         "title": "Nhamba yekutanga",
         "description": "Nhamba yechinhu chekutanga nacho."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kosi",
-        "description": "Kosi iyo rondedzero iyi yakagadzirirwa (chiziviso chekosi kana URL)."
       }
     ],
     "developer": [
       {
         "title": "Midhiya",
         "description": "Mavhidhiyo neodhiyo zviri munyorwa yekuridza. Haigadziriswe pano: rondedzero yepeji inoishandisa kuziva kuti zvidhinha zvipi zvinogona kuiswa mukati."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kosi",
+        "description": "Kosi iyo rondedzero iyi yakagadzirirwa (chiziviso chekosi kana URL)."
       }
     ]
   }

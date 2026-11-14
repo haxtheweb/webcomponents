@@ -11,20 +11,17 @@
         "description": "Dostępna etykieta zestawu kart."
       },
       {
-        "property": "disabled",
-        "title": "Wyłączone",
-        "description": "Wyłącz wszystkie karty."
-      },
-      {
-        "property": "hidden",
-        "title": "Ukryte",
-        "description": "Ukryj zestaw kart."
-      },
-      {
         "property": "sticky",
         "title": "Przyklejone",
         "description": "Utrzymuj poziome karty u góry podczas przewijania."
       },
+      {
+        "slot": "",
+        "title": "Karty",
+        "description": "Seria elementów <a11y-tab/>."
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "Punkt przełamania układu",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "Punkt przełamania ikon",
         "description": "Punkt przełamania dla wyświetlania tekstu z ikonami. Domyślnie 0; użyj -1 dla trybu tylko ikon."
-      },
-      {
-        "slot": "",
-        "title": "Karty",
-        "description": "Seria elementów <a11y-tab/>."
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "Wyłączone",
+        "description": "Wyłącz wszystkie karty."
+      },
+      {
+        "property": "hidden",
+        "title": "Ukryte",
+        "description": "Ukryj zestaw kart."
+      },
       {
         "property": "id",
         "title": "Unikalny ID",

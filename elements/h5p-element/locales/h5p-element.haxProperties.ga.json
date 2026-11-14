@@ -4,17 +4,16 @@
     "description": "Seinneann sé inneachar idirghníomhach H5P ó chomhad .h5p uaslódáilte, gan freastalaí H5P ar bith"
   },
   "settings": {
-    "configure": [
-      {
-        "slot": "",
-        "description": "Uaslódáil nó nasc comhad .h5p. Díphacáiltear é sa bhrabhsálaí; níl freastalaí H5P ag teastáil.",
-        "title": "Comhad H5P"
-      }
-    ],
+    "configure": [],
     "advanced": [
       {
         "title": "Cód leabaithe iframe oidhreachta",
         "description": "Le haghaidh seanábhar amháin a leabaíonn iframe H5P ó shuíomh eile. Fág folamh nuair atá comhad .h5p socraithe thuas."
+      },
+      {
+        "slot": "",
+        "description": "Uaslódáil nó nasc comhad .h5p. Díphacáiltear é sa bhrabhsálaí; níl freastalaí H5P ag teastáil.",
+        "title": "Comhad H5P"
       }
     ]
   }

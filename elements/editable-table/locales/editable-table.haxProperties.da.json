@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Tillad filtrering",
         "description": "Tillad filtrering efter kolonneværdier."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Numerisk formatering",
-        "description": "Anvend numerisk formatering på numeriske kolonner."
-      },
-      {
-        "property": "responsive",
-        "title": "Responsiv",
-        "description": "Tilpas tabellens layout på små skærme."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Rubrik-tilstand",
-        "description": "Fortolk denne tabel som en OER Schema Rubric, så der udsendes Rubric-, RubricScale-, RubricCriterion- og RubricLevel-metadata."
-      },
-      {
-        "property": "rubricType",
-        "title": "Rubriktype",
-        "description": "Rubrikstil udsendt som oer:rubricType (har kun betydning, når Rubrik-tilstand er slået til).",
-        "options": {
-          "": "(ingen)",
-          "analytic": "Analytisk",
-          "holistic": "Holistisk",
-          "single-point": "Enkeltpunkt",
-          "checklist": "Tjekliste"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Udskriftsknap",
         "description": "Tilføj en knap til kun at udskrive tabellen."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Numerisk formatering",
+        "description": "Anvend numerisk formatering på numeriske kolonner."
+      },
+      {
+        "property": "responsive",
+        "title": "Responsiv",
+        "description": "Tilpas tabellens layout på små skærme."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Rubrik-tilstand",
+        "description": "Fortolk denne tabel som en OER Schema Rubric, så der udsendes Rubric-, RubricScale-, RubricCriterion- og RubricLevel-metadata."
+      },
+      {
+        "property": "rubricType",
+        "title": "Rubriktype",
+        "description": "Rubrikstil udsendt som oer:rubricType (har kun betydning, når Rubrik-tilstand er slået til).",
+        "options": {
+          "": "(ingen)",
+          "analytic": "Analytisk",
+          "holistic": "Holistisk",
+          "single-point": "Enkeltpunkt",
+          "checklist": "Tjekliste"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "CSV-data",
         "description": "Opret en tabel ud fra en uploadet CSV-fil."
       }
-    ]
+    ],
+    "developer": []
   }
 }

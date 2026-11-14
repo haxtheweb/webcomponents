@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Peýkamsyz",
         "description": "Düwmäniň peýkamyny gizle."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Baglanyşyk: target",
@@ -54,7 +52,9 @@
           "_top": "Ýokarky penjire - _top",
           "_parent": "Ene penjire - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Baglanyşyk: rel",

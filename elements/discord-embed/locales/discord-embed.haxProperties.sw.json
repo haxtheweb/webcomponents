@@ -9,7 +9,9 @@
         "property": "source",
         "title": "URL ya Rasilimali",
         "description": "URL ya rasilimali."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Urefu",

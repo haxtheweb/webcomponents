@@ -5,11 +5,11 @@
   "canScale": false,
   "canEditSource": false,
   "gizmo": {
-    "title": "Awesome Explosion",
+    "title": "Awesome explosion",
     "description": "Interactive explosion animation with optional sound effects.",
-    "icon": "av:fiber-manual-record",
+    "icon": "image:flare",
     "color": "orange",
-    "tags": ["Other", "Animation", "Interactive", "Sound", "Effect"],
+    "tags": ["Other", "animation", "interactive", "sound", "effect"],
     "handles": [],
     "meta": {
       "author": "HAX The Web",

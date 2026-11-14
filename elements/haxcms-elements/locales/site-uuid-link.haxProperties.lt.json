@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "HAX nuoroda",
-    "description": "Nuoroda į konkretų išteklių svetainėje, kurią kuriate."
+    "title": "Puslapio nuoroda",
+    "description": "Nuoroda į svetainės, su kuria dirbate, puslapį."
   },
   "settings": {
     "configure": [

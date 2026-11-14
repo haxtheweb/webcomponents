@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Spotify",
-    "description": "Spotify প্লেয়ার এমবেডের র‍্যাপার।"
+    "description": "Spotify-এর ট্র্যাক, অ্যালবাম বা প্লেলিস্ট এম্বেড করুন।"
   },
   "settings": {
     "configure": [

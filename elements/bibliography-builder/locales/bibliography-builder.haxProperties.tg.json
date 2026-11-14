@@ -9,7 +9,9 @@
         "slot": "",
         "title": "Иқтибосҳо",
         "description": "Унсурҳои иқтибос дар ин библиография"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "Курс",

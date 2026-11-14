@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "پوسٹر تصویر",
         "description": "پوسٹر تصویر کا URL۔"
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "ٹیکسٹ ٹریکس",
         "description": "ویڈیو کے لیے بند کیپشنز، سب ٹائٹلز، وضاحتیں اور دیگر ٹیکسٹ ٹریکس۔"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "آغاز کا وقت",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "آڈیو وضاحت ٹریک",
         "description": "آڈیو وضاحت ٹریک (MP3 فائل) کا URL جو بصری عناصر کی بیان کاری فراہم کرتا ہے۔"
+      },
+      {
+        "property": "accentColor",
+        "title": "نمایاں رنگ",
+        "description": "(فرسودہ) پلیئر کے لیے ایکسنٹ رنگ منتخب کریں۔"
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "زبان",
         "description": "میڈیا کی زبان۔"
-      },
-      {
-        "property": "accentColor",
-        "title": "نمایاں رنگ",
-        "description": "(فرسودہ) پلیئر کے لیے ایکسنٹ رنگ منتخب کریں۔"
       }
     ]
   }

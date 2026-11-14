@@ -11,6 +11,13 @@
         "description": "Ka URL no kēia faila AR."
       },
       {
+        "property": "skyColor",
+        "title": "Waihoʻoluʻu lani",
+        "description": "E koho i ka waihoʻoluʻu o ka lani ma ke kahua."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "Kūlana X o ka mea ma AR."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "Kūlana Z o ka mea ma AR."
-      },
-      {
-        "property": "skyColor",
-        "title": "Waihoʻoluʻu lani",
-        "description": "E koho i ka waihoʻoluʻu o ka lani ma ke kahua."
       }
     ]
   }

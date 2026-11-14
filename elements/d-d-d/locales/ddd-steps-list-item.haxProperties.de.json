@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Schrittelement",
-    "description": "Element, das Teil einer Schrittliste ist"
+    "description": "Ein einzelner Schritt in einer Schrittliste."
   },
   "settings": {
     "configure": [

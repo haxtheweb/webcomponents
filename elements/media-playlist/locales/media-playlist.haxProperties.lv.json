@@ -4,22 +4,23 @@
     "description": "Atskaņošanas saraksts, kas attēlo video un audio atskaņotājus izkārtojumā ar atskaņotāju un sānjoslu."
   },
   "settings": {
-    "configure": [
+    "configure": [],
+    "advanced": [
       {
         "property": "activeIndex",
         "title": "Sākuma vienums",
         "description": "Vienuma numurs, ar kuru sākt."
-      },
-      {
-        "property": "forCourse",
-        "title": "Kurss",
-        "description": "Kurss, kuram paredzēts šis atskaņošanas saraksts (kursa identifikators vai URL)."
       }
     ],
     "developer": [
       {
         "title": "Multivide",
         "description": "Atskaņošanas saraksta video un audio. Šeit netiek rediģēts: lapas struktūra to izmanto, lai zinātu, kurus blokus var tajā nomest."
+      },
+      {
+        "property": "forCourse",
+        "title": "Kurss",
+        "description": "Kurss, kuram paredzēts šis atskaņošanas saraksts (kursa identifikators vai URL)."
       }
     ]
   }

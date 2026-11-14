@@ -21,15 +21,6 @@
         "description": "Булакка кирилген күн."
       },
       {
-        "property": "scope",
-        "title": "Чөйрө",
-        "description": "Цитаталануучу элементтин чөйрөсү.",
-        "options": {
-          "sibling": "Коңшу элемент",
-          "parent": "Ата-элемент"
-        }
-      },
-      {
         "property": "license",
         "title": "Лицензия",
         "description": "Цитаталанган чыгарманын лицензиясы."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Автор",
         "description": "Цитаталанган чыгарманын автору же ээси."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Чөйрө",
+        "description": "Цитаталануучу элементтин чөйрөсү.",
+        "options": {
+          "sibling": "Коңшу элемент",
+          "parent": "Ата-элемент"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "OER Schema түрү",

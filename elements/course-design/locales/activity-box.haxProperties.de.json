@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Aktivitätsbox",
-    "description": "Kleiner gestalteter Überschriftenblock."
+    "description": "Eine beschriftete Überschrift, die den Beginn einer Aktivität markiert."
   },
   "settings": {
     "configure": [

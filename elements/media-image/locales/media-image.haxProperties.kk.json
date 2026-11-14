@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Жазу",
         "description": "Суреттің жазуы."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Сурет атауы",
-        "description": "Сурет белгісінің атауы."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Сурет сипаттамасы",
-        "description": "Сурет белгісінің сипаттамасы."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Суреттің модальді терезесін өшіру",
         "description": "Басқанда суреттің сурет қарау диалогында ашылуын өшіру."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Сурет атауы",
+        "description": "Сурет белгісінің атауы."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Сурет сипаттамасы",
+        "description": "Сурет белгісінің сипаттамасы."
       }
     ],
     "developer": [

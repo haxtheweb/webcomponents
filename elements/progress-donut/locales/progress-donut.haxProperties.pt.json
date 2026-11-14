@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Rosca de progresso",
-    "description": "Rosca de progressão"
+    "description": "Um gráfico de rosca que mostra o progresso em direção a um total."
   },
   "settings": {
     "configure": [
@@ -26,11 +26,6 @@
         "description": "Texto alternativo da imagem."
       },
       {
-        "property": "animated",
-        "title": "Animado",
-        "description": "Se o progresso é animado no primeiro carregamento"
-      },
-      {
         "property": "complete",
         "title": "Concluído",
         "description": "Um array de valores concluídos."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "Total",
         "description": "Total quando todos os itens estiverem concluídos."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "Animado",
+        "description": "Se o progresso é animado no primeiro carregamento"
       },
       {
         "property": "startAngle",

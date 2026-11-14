@@ -89,7 +89,9 @@
         "property": "gameTitle",
         "title": "Emri i lojës",
         "description": "I jep emër kësaj loje në ngjarjet e progresit dhe në shënimin OER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "ID e lojës",

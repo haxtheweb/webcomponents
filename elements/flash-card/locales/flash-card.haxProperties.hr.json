@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Izvor slike",
         "description": "Slikovna datoteka korištena za karticu. Nadjačava ključnu riječ slike."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Ključna riječ slike",
+        "description": "Ključna riječ za nasumičnu sliku. Nadjačava je izvor slike."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Ishod učenja",
         "description": "OER Schema: ID ili URL ishoda učenja koji ova vježba podržava."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Ključna riječ slike",
-        "description": "Ključna riječ za nasumičnu sliku. Nadjačava je izvor slike."
       }
     ]
   }

@@ -1,6 +1,13 @@
 import { fixture, expect, html } from "@open-wc/testing";
 import "../figure-label.js";
 
+// HAX schemas ship as JSON next to the element; read one whether the class
+// returns the object or the URL of its file
+const haxSchema = async (C) => {
+  const hp = C.haxProperties;
+  return typeof hp === "string" ? (await fetch(hp)).json() : hp;
+};
+
 describe("FigureLabel test", () => {
   let element;
 
@@ -82,8 +89,8 @@ describe("FigureLabel test", () => {
   });
 
   // HAX integration tests
-  it("has proper HAX properties configuration", () => {
-    const haxProps = element.constructor.haxProperties;
+  it("has proper HAX properties configuration", async () => {
+    const haxProps = await haxSchema(element.constructor);
 
     expect(haxProps).to.exist;
     expect(haxProps.gizmo.title).to.equal("Figure label");
@@ -92,8 +99,8 @@ describe("FigureLabel test", () => {
     expect(haxProps.settings.configure).to.have.length(2);
   });
 
-  it("configures title and description in HAX settings", () => {
-    const haxProps = element.constructor.haxProperties;
+  it("configures title and description in HAX settings", async () => {
+    const haxProps = await haxSchema(element.constructor);
     const configure = haxProps.settings.configure;
 
     const titleConfig = configure.find((c) => c.property === "title");
@@ -107,8 +114,8 @@ describe("FigureLabel test", () => {
     expect(descriptionConfig.inputMethod).to.equal("textfield");
   });
 
-  it("labels its HAX settings and uses a figure gizmo icon", () => {
-    const haxProps = element.constructor.haxProperties;
+  it("labels its HAX settings and uses a figure gizmo icon", async () => {
+    const haxProps = await haxSchema(element.constructor);
     const configure = haxProps.settings.configure;
     expect(configure.find((c) => c.property === "title").title).to.equal(
       "Figure number",

@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Plakatmynd",
         "description": "URL til plakatmynd."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Tekstspor",
         "description": "Undirtekstir, týðingar, lýsingar og onnur tekstspor til videoina."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Byrjanartíð",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Ljóðlýsingarspor",
         "description": "URL til eitt ljóðlýsingarspor (MP3-fíla), sum greiðir frá sjónligum lutum."
+      },
+      {
+        "property": "accentColor",
+        "title": "Dámlitur",
+        "description": "(úrelt) Vel dámlitin fyri spælaran."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Mál",
         "description": "Mál miðilsins."
-      },
-      {
-        "property": "accentColor",
-        "title": "Dámlitur",
-        "description": "(úrelt) Vel dámlitin fyri spælaran."
       }
     ]
   }

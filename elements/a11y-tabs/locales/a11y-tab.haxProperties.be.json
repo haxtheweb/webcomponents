@@ -10,10 +10,6 @@
         "title": "Значок укладкі"
       },
       {
-        "property": "disabled",
-        "title": "Адключана"
-      },
-      {
         "property": "label",
         "title": "Подпіс укладкі"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "Унікальны ID"
-      },
-      {
         "property": "flag",
         "title": "Неабавязковы тэкст сцяжка"
       },
       {
         "property": "flagIcon",
         "title": "Неабавязковы значок сцяжка"
+      },
+      {
+        "property": "disabled",
+        "title": "Адключана"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "Унікальны ID"
       }
     ]
   }

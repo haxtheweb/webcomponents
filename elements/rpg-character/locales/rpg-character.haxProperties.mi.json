@@ -11,11 +11,6 @@
         "description": "Kupu ka whakamahia hei hanga kiripuaki matapōkere."
       },
       {
-        "property": "code",
-        "title": "Waehere kiripuaki",
-        "description": "Whakapiria tētahi waehere kua tiakina hei waihanga anō i taua kiripuaki."
-      },
-      {
         "property": "hat",
         "title": "Pōtae",
         "description": "Kāhua pōtae.",
@@ -167,48 +162,6 @@
         }
       },
       {
-        "property": "mask",
-        "title": "Kopare",
-        "description": "Kopare e ahu ana ki runga i te kanohi, i te māhunga rānei.",
-        "options": {
-          "none": "Kāore",
-          "lion": "Raiona",
-          "plague": "Rata mate urutā",
-          "theater": "Whare tapere",
-          "pumpkin": "Paukena",
-          "ghost": "Wairua",
-          "mummy": "Tūpāpaku takai",
-          "wrestler": "Kopare mamau",
-          "block-head": "Māhunga poraka",
-          "web": "Kopare tukutuku",
-          "werewolf": "Kanohi wuruhi-tangata",
-          "shadow": "Kanohi atarangi"
-        }
-      },
-      {
-        "property": "makeup",
-        "title": "Whakapaipai",
-        "description": "Peita kanohi, pani ngutu rānei.",
-        "options": {
-          "none": "Kāore",
-          "red-lipstick": "Pani ngutu whero",
-          "pink-lipstick": "Pani ngutu mawhero",
-          "berry-lipstick": "Pani ngutu hua rākau",
-          "clown": "Peita kanohi kaitākaro",
-          "fangs": "Niho roa",
-          "skull": "Peita kōiwi",
-          "zombie": "Peita zombie",
-          "red-nose": "Ihu whero",
-          "white-beard": "Pāhau ma",
-          "domino": "Kopare toa",
-          "carrot": "Ihu kāreti",
-          "bunny": "Ihu rāpeti",
-          "mustache": "Pāhau ngutu",
-          "monster": "Peita kanohi taniwha",
-          "round-glasses": "Mōhiti porowhita"
-        }
-      },
-      {
         "property": "expression",
         "title": "Āhua kanohi",
         "description": "Te āhua o te kanohi.",
@@ -286,6 +239,73 @@
         }
       },
       {
+        "property": "pet",
+        "title": "Mōkai",
+        "description": "Mōkai i te taha o te kiripuaki.",
+        "options": {
+          "none": "Kāore",
+          "cat": "Ngeru",
+          "dog": "Kurī",
+          "bunny": "Rāpeti",
+          "goldfish": "Ika kōura",
+          "slime": "Tāwhetawheta",
+          "squirrel": "Tāmuri",
+          "dragon": "Tarakona iti",
+          "parrot": "Kākā",
+          "owl": "Ruru",
+          "bat": "Pekapeka"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "property": "code",
+        "title": "Waehere kiripuaki",
+        "description": "Whakapiria tētahi waehere kua tiakina hei waihanga anō i taua kiripuaki."
+      },
+      {
+        "property": "mask",
+        "title": "Kopare",
+        "description": "Kopare e ahu ana ki runga i te kanohi, i te māhunga rānei.",
+        "options": {
+          "none": "Kāore",
+          "lion": "Raiona",
+          "plague": "Rata mate urutā",
+          "theater": "Whare tapere",
+          "pumpkin": "Paukena",
+          "ghost": "Wairua",
+          "mummy": "Tūpāpaku takai",
+          "wrestler": "Kopare mamau",
+          "block-head": "Māhunga poraka",
+          "web": "Kopare tukutuku",
+          "werewolf": "Kanohi wuruhi-tangata",
+          "shadow": "Kanohi atarangi"
+        }
+      },
+      {
+        "property": "makeup",
+        "title": "Whakapaipai",
+        "description": "Peita kanohi, pani ngutu rānei.",
+        "options": {
+          "none": "Kāore",
+          "red-lipstick": "Pani ngutu whero",
+          "pink-lipstick": "Pani ngutu mawhero",
+          "berry-lipstick": "Pani ngutu hua rākau",
+          "clown": "Peita kanohi kaitākaro",
+          "fangs": "Niho roa",
+          "skull": "Peita kōiwi",
+          "zombie": "Peita zombie",
+          "red-nose": "Ihu whero",
+          "white-beard": "Pāhau ma",
+          "domino": "Kopare toa",
+          "carrot": "Ihu kāreti",
+          "bunny": "Ihu rāpeti",
+          "mustache": "Pāhau ngutu",
+          "monster": "Peita kanohi taniwha",
+          "round-glasses": "Mōhiti porowhita"
+        }
+      },
+      {
         "property": "flagText",
         "title": "Kupu haki",
         "description": "Tae atu ki te 4 ngā reta e kitea ana i te haki."
@@ -310,24 +330,6 @@
           "skates": "Pūkoro tio",
           "skateboard": "Papa retireti",
           "hoverboard": "Papa rere"
-        }
-      },
-      {
-        "property": "pet",
-        "title": "Mōkai",
-        "description": "Mōkai i te taha o te kiripuaki.",
-        "options": {
-          "none": "Kāore",
-          "cat": "Ngeru",
-          "dog": "Kurī",
-          "bunny": "Rāpeti",
-          "goldfish": "Ika kōura",
-          "slime": "Tāwhetawheta",
-          "squirrel": "Tāmuri",
-          "dragon": "Tarakona iti",
-          "parrot": "Kākā",
-          "owl": "Ruru",
-          "bat": "Pekapeka"
         }
       },
       {

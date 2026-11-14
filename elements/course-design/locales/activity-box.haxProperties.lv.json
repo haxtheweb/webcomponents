@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Aktivitātes lodziņš",
-    "description": "Neliels stilizēta virsraksta bloks."
+    "description": "Virsraksts ar iezīmi, kas iezīmē aktivitātes sākumu."
   },
   "settings": {
     "configure": [

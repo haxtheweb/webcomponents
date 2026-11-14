@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Soal Jawaban Singkat",
-    "description": "Minta pengguna menjawab pertanyaan sederhana"
+    "description": "Pertanyaan yang dijawab pelajar dalam satu atau dua kalimat."
   },
   "settings": {
     "configure": [

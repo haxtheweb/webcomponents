@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Tegevuskast",
-    "description": "Väike kujundatud pealkirjaplokk."
+    "description": "Sildiga pealkiri, mis tähistab tegevuse algust."
   },
   "settings": {
     "configure": [

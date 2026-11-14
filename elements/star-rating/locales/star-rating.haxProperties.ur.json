@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "اسٹار ریٹنگ",
-    "description": "ریٹنگ دکھانے والا ویجٹ یا ریٹنگ دینے کا بٹن۔"
+    "description": "ستاروں کی درجہ بندی دکھائیں یا قارئین کو منتخب کرنے دیں۔"
   },
   "settings": {
     "configure": [
@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "تعاملی",
         "description": "صارف کو ریٹنگ دینے کی اجازت دیں۔"
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "روبرک اسکیل موڈ",

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Pregunta de vertader o fals",
-    "description": "Pregunta de vertader o fals"
+    "description": "Una afirmació que l’estudiant marca com a certa o falsa."
   },
   "settings": {
     "configure": [

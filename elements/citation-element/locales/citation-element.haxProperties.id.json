@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Sitasi",
-    "description": "Elemen kutipan dengan tiga mode penyajian."
+    "description": "Cantumkan sumber dengan judul, pembuat, lisensi, dan tautannya."
   },
   "settings": {
     "configure": [
@@ -21,15 +21,6 @@
         "description": "Tanggal sumber diakses."
       },
       {
-        "property": "scope",
-        "title": "Cakupan",
-        "description": "Cakupan elemen yang dikutip.",
-        "options": {
-          "sibling": "Elemen saudara",
-          "parent": "Elemen induk"
-        }
-      },
-      {
         "property": "license",
         "title": "Lisensi",
         "description": "Lisensi untuk karya yang dikutip."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Pembuat",
         "description": "Pembuat atau pemilik karya yang dikutip."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Cakupan",
+        "description": "Cakupan elemen yang dikutip.",
+        "options": {
+          "sibling": "Elemen saudara",
+          "parent": "Elemen induk"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "Jenis OER Schema",

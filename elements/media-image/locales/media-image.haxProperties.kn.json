@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "ಚಿತ್ರ ಶೀರ್ಷಿಕೆ",
         "description": "ಚಿತ್ರದ ಶೀರ್ಷಿಕೆ."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "ಚಿತ್ರದ ಶೀರ್ಷಿಕೆ",
-        "description": "ಚಿತ್ರ ಲೇಬಲ್‌ನ ಶೀರ್ಷಿಕೆ."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "ಚಿತ್ರದ ವಿವರಣೆ",
-        "description": "ಚಿತ್ರ ಲೇಬಲ್‌ನ ವಿವರಣೆ."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "ಚಿತ್ರ ಮೋಡಲ್ ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿ",
         "description": "ಕ್ಲಿಕ್‌ಗಳು ಚಿತ್ರವನ್ನು ಚಿತ್ರ ಪರೀಕ್ಷಕ ಡೈಲಾಗ್‌ನಲ್ಲಿ ತೆರೆಯುವುದನ್ನು ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿ."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "ಚಿತ್ರದ ಶೀರ್ಷಿಕೆ",
+        "description": "ಚಿತ್ರ ಲೇಬಲ್‌ನ ಶೀರ್ಷಿಕೆ."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "ಚಿತ್ರದ ವಿವರಣೆ",
+        "description": "ಚಿತ್ರ ಲೇಬಲ್‌ನ ವಿವರಣೆ."
       }
     ],
     "developer": [

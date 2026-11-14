@@ -9,7 +9,9 @@
         "property": "source",
         "title": "URL do recurso",
         "description": "URL do recurso."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Altura",

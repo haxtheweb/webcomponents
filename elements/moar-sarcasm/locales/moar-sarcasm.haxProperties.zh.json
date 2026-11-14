@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "反讽",
-    "description": "以调侃的方式呈现文本"
+    "description": "用大小写交替的文字表达讽刺语气。"
   },
   "settings": {
     "configure": [

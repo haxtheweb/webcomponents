@@ -11,30 +11,8 @@
         "description": "Umbuzo abasebenzisi okufanele bawuphendule."
       },
       {
-        "property": "gradingFormat",
-        "title": "Ifomethi yokumaka",
-        "description": "OER Schema: ifomethi yokumaka yalokhu kuhlola (isb. amaphuzu, uhlamvu, iphesenti, ukuphothula)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Inhloso yokufunda",
-        "description": "OER Schema: inhloso yokufunda ehlobene nalokhu kuhlola."
-      },
-      {
-        "property": "forCourse",
-        "title": "Isifundo",
-        "description": "OER Schema: isifundo lokhu kuhlola okuhloselwe sona."
-      },
-      {
         "property": "answers",
         "title": "Izimpendulo"
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Igama lemibuzo",
-        "description": "Igama lemibuzo elisetshenziselwa ukuhlonza kwe-xAPI ezinhlelweni zokuhlaziya."
       }
     ],
     "advanced": [
@@ -47,6 +25,28 @@
         "property": "collapsed",
         "title": "Qala igoqiwe",
         "description": "Uma igoqeka, qala njengomugqa ovaliwe obonisa umbuzo nesimo sawo kuphela."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Ifomethi yokumaka",
+        "description": "OER Schema: ifomethi yokumaka yalokhu kuhlola (isb. amaphuzu, uhlamvu, iphesenti, ukuphothula)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Inhloso yokufunda",
+        "description": "OER Schema: inhloso yokufunda ehlobene nalokhu kuhlola."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Igama lemibuzo",
+        "description": "Igama lemibuzo elisetshenziselwa ukuhlonza kwe-xAPI ezinhlelweni zokuhlaziya."
+      },
+      {
+        "property": "forCourse",
+        "title": "Isifundo",
+        "description": "OER Schema: isifundo lokhu kuhlola okuhloselwe sona."
       }
     ]
   }

@@ -46,6 +46,16 @@
         "property": "accentColor",
         "title": "ពណ៌សង្កត់",
         "description": "ជ្រើសរើសពណ៌សង្កត់សម្រាប់កម្មវិធីចាក់។"
+      },
+      {
+        "property": "hideTimestamps",
+        "title": "លាក់ត្រាពេលវេលា",
+        "description": "លាក់ត្រាពេលវេលានៅលើប្រតិចារិក។"
+      },
+      {
+        "property": "hideTranscript",
+        "title": "លាក់ប្រតិចារិក",
+        "description": "លាក់ប្រតិចារិកតាមលំនាំដើម។"
       }
     ],
     "developer": [
@@ -72,16 +82,6 @@
         "property": "disableInteractive",
         "title": "បិទអន្តរកម្ម",
         "description": "បិទរបៀបអន្តរកម្មដែលធ្វើឱ្យប្រតិចារិកអាចចុចបាន។"
-      },
-      {
-        "property": "hideTimestamps",
-        "title": "លាក់ត្រាពេលវេលា",
-        "description": "លាក់ត្រាពេលវេលានៅលើប្រតិចារិក។"
-      },
-      {
-        "property": "hideTranscript",
-        "title": "លាក់ប្រតិចារិក",
-        "description": "លាក់ប្រតិចារិកតាមលំនាំដើម។"
       },
       {
         "property": "lang",

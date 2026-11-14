@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "Skupina rozbaľovacích prvkov",
-    "description": "Skupina rozbaľovacích a zbaľovacích prvkov."
+    "title": "Zbaliteľná skupina",
+    "description": "Skupina zbaliteľných kontajnerov."
   },
   "settings": {
     "configure": [

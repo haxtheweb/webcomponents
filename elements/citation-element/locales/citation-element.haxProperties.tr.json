@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Kaynak",
-    "description": "Üç sunum modu olan kaynakça öğesi."
+    "description": "Bir kaynağı başlığı, oluşturanı, lisansı ve bağlantısıyla belirtin."
   },
   "settings": {
     "configure": [
@@ -21,15 +21,6 @@
         "description": "Kaynağa erişilen tarih."
       },
       {
-        "property": "scope",
-        "title": "Kapsam",
-        "description": "Alıntılanacak öğe kapsamı.",
-        "options": {
-          "sibling": "Kardeş öğe",
-          "parent": "Üst öğe"
-        }
-      },
-      {
         "property": "license",
         "title": "Lisans",
         "description": "Alıntılanan eserin lisansı."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Oluşturan",
         "description": "Alıntılanan eserin oluşturucusu veya sahibi."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Kapsam",
+        "description": "Alıntılanacak öğe kapsamı.",
+        "options": {
+          "sibling": "Kardeş öğe",
+          "parent": "Üst öğe"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "OER Şeması türü",

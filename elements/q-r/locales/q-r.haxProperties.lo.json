@@ -14,16 +14,6 @@
         "property": "title",
         "title": "ຫົວຂໍ້ທາງເລືອກ",
         "description": "ຫົວຂໍ້ທາງເລືອກທີ່ລິ້ງກັບແຫຼ່ງລະຫັດ QR."
-      },
-      {
-        "property": "modulesize",
-        "title": "ຂະໜາດ",
-        "description": "ຂະໜາດຂອງລະຫັດ QR."
-      },
-      {
-        "property": "margin",
-        "title": "ຂອບ",
-        "description": "ຂອບອ້ອມລະຫັດ."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "ຂະໜາດ",
+        "description": "ຂະໜາດຂອງລະຫັດ QR."
+      },
+      {
+        "property": "margin",
+        "title": "ຂອບ",
+        "description": "ຂອບອ້ອມລະຫັດ."
       }
     ]
   }

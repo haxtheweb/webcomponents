@@ -21,15 +21,6 @@
         "description": "Data kur u qas burimi."
       },
       {
-        "property": "scope",
-        "title": "Fusha",
-        "description": "Fusha e elementit për t'u cituar.",
-        "options": {
-          "sibling": "Element vëlla",
-          "parent": "Element prind"
-        }
-      },
-      {
         "property": "license",
         "title": "Licenca",
         "description": "Licenca e veprës së cituar."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Krijuesi",
         "description": "Krijuesi ose pronari i veprës së cituar."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Fusha",
+        "description": "Fusha e elementit për t'u cituar.",
+        "options": {
+          "sibling": "Element vëlla",
+          "parent": "Element prind"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "Lloji i Skemës OER",

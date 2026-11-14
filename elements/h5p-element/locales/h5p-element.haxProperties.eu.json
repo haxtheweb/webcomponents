@@ -4,17 +4,16 @@
     "description": "H5P eduki interaktiboa erreproduzitzen du igotako .h5p fitxategi batetik, H5P zerbitzaririk gabe"
   },
   "settings": {
-    "configure": [
-      {
-        "slot": "",
-        "description": "Igo edo lotu .h5p fitxategi bat. Nabigatzailean deskonprimitzen da; ez da H5P zerbitzaririk behar.",
-        "title": "H5P fitxategia"
-      }
-    ],
+    "configure": [],
     "advanced": [
       {
         "title": "iframe txertatzeko kode zaharra",
         "description": "Beste gune batetik H5P iframe bat txertatzen duen eduki zaharrerako soilik. Utzi hutsik goian .h5p fitxategi bat ezarrita dagoenean."
+      },
+      {
+        "slot": "",
+        "description": "Igo edo lotu .h5p fitxategi bat. Nabigatzailean deskonprimitzen da; ez da H5P zerbitzaririk behar.",
+        "title": "H5P fitxategia"
       }
     ]
   }

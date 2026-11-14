@@ -9,7 +9,9 @@
         "property": "source",
         "title": "URL-ka Kheyraadka",
         "description": "URL-ka kheyraadka."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Dherer",

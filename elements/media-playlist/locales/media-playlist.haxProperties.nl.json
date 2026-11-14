@@ -4,22 +4,23 @@
     "description": "Een afspeellijst die video- en audiospelers toont in een indeling met speler en zijbalk."
   },
   "settings": {
-    "configure": [
+    "configure": [],
+    "advanced": [
       {
         "property": "activeIndex",
         "title": "Actieve index",
         "description": "Index van het actieve item waarmee wordt begonnen."
-      },
-      {
-        "property": "forCourse",
-        "title": "Cursus",
-        "description": "De cursus waarvoor deze afspeellijst bedoeld is (cursus-ID of URL)."
       }
     ],
     "developer": [
       {
         "title": "Media",
         "description": "De video's en audio in de afspeellijst. Wordt hier niet bewerkt: het paginaoverzicht gebruikt het om te weten welke blokken erin kunnen worden neergezet."
+      },
+      {
+        "property": "forCourse",
+        "title": "Cursus",
+        "description": "De cursus waarvoor deze afspeellijst bedoeld is (cursus-ID of URL)."
       }
     ]
   }

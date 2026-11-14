@@ -14,16 +14,6 @@
         "property": "title",
         "title": "Titlu alternattiv",
         "description": "Titlu alternattiv marbut mas-sors tal-kodiċi QR."
-      },
-      {
-        "property": "modulesize",
-        "title": "Daqs",
-        "description": "Id-daqs tal-kodiċi QR."
-      },
-      {
-        "property": "margin",
-        "title": "Marġni",
-        "description": "Spazju madwar il-kodiċi."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "Daqs",
+        "description": "Id-daqs tal-kodiċi QR."
+      },
+      {
+        "property": "margin",
+        "title": "Marġni",
+        "description": "Spazju madwar il-kodiċi."
       }
     ]
   }

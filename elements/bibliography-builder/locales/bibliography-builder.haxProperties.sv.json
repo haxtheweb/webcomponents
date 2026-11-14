@@ -9,7 +9,9 @@
         "slot": "",
         "title": "Källhänvisningar",
         "description": "Källhänvisningar i den här bibliografin"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "Kurs",

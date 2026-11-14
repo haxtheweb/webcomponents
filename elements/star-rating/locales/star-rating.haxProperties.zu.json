@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Kuyasebenzisana",
         "description": "Vumela umsebenzisi ukuthi asebenzisane ukuze asethe isilinganiso."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Imodi Yesikali Se-Rubric",

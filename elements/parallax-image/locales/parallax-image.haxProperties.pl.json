@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Obraz paralaksy",
-    "description": "Przewijanie obrazu"
+    "description": "Obraz na pełną szerokość, który przewija się wolniej niż strona, z nagłówkiem na wierzchu."
   },
   "settings": {
     "configure": [

@@ -4,17 +4,16 @@
     "description": "Spiller av interaktivt H5P-innhold fra en opplastet .h5p-fil, uten behov for H5P-server"
   },
   "settings": {
-    "configure": [
-      {
-        "slot": "",
-        "description": "Last opp eller lenk til en .h5p-fil. Den pakkes ut i nettleseren; ingen H5P-server er nødvendig.",
-        "title": "H5P-fil"
-      }
-    ],
+    "configure": [],
     "advanced": [
       {
         "title": "Eldre iframe-innbyggingskode",
         "description": "Bare for eldre innhold som bygger inn en H5P-iframe fra et annet nettsted. La stå tomt når en .h5p-fil er angitt ovenfor."
+      },
+      {
+        "slot": "",
+        "description": "Last opp eller lenk til en .h5p-fil. Den pakkes ut i nettleseren; ingen H5P-server er nødvendig.",
+        "title": "H5P-fil"
       }
     ]
   }

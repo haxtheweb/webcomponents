@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Pahuhopu",
         "description": "Ala i ke kūkulu pāʻani."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Ākea Kanawaʻa",
+        "description": "Ākea CSS o ke kanawaʻa (e laʻa me px a em paha)."
       },
+      {
+        "property": "height",
+        "title": "Kiʻekiʻe Kanawaʻa",
+        "description": "Kiʻekiʻe CSS o ke kanawaʻa (e laʻa me px a em paha)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Ala hoʻopaʻapū",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Mana Huahana",
         "description": "Mana hoʻokuʻu."
-      },
-      {
-        "property": "width",
-        "title": "Ākea Kanawaʻa",
-        "description": "Ākea CSS o ke kanawaʻa (e laʻa me px a em paha)."
-      },
-      {
-        "property": "height",
-        "title": "Kiʻekiʻe Kanawaʻa",
-        "description": "Kiʻekiʻe CSS o ke kanawaʻa (e laʻa me px a em paha)."
       },
       {
         "property": "background",

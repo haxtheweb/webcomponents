@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "সরাসরি বা রিমোট থেকে লোড করা markdown কনটেন্টের একটি ব্লক"
+    "description": "Markdown কনটেন্ট, সরাসরি লেখা বা ফাইল থেকে লোড করা।"
   },
   "settings": {
     "configure": [

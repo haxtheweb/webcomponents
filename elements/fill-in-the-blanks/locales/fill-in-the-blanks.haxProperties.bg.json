@@ -14,28 +14,6 @@
         "property": "statement",
         "title": "Твърдение",
         "description": "Твърдение, което ще бъде превърнато във взаимодействие за маркиране на думи."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "Формат на оценяване",
-        "description": "OER Schema: формат на оценяване за това задание (напр. точки, буква, процент, изпълнение)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "Учебна цел",
-        "description": "OER Schema: учебна цел, свързана с това задание."
-      },
-      {
-        "property": "forCourse",
-        "title": "Курс",
-        "description": "OER Schema: курс, за който е предназначено това задание."
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "Име на теста",
-        "description": "Име на теста, подавано за идентифициране на този елемент в среди, базирани на xAPI"
       }
     ],
     "advanced": [
@@ -46,6 +24,28 @@
       {
         "title": "Начало в сгънато състояние",
         "description": "Когато е сгъваем, започва като затворен ред, който показва само въпроса и неговия статус."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Формат на оценяване",
+        "description": "OER Schema: формат на оценяване за това задание (напр. точки, буква, процент, изпълнение)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Учебна цел",
+        "description": "OER Schema: учебна цел, свързана с това задание."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Име на теста",
+        "description": "Име на теста, подавано за идентифициране на този елемент в среди, базирани на xAPI"
+      },
+      {
+        "property": "forCourse",
+        "title": "Курс",
+        "description": "OER Schema: курс, за който е предназначено това задание."
       }
     ]
   }

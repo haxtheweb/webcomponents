@@ -21,30 +21,8 @@
         "description": "მხოლოდ ერთი პასუხის დაშვება."
       },
       {
-        "property": "gradingFormat",
-        "title": "შეფასების ფორმატი",
-        "description": "OER Schema: ამ შეფასების ფორმატი (მაგ. ქულები, ასო, პროცენტი, შესრულება)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "სასწავლო მიზანი",
-        "description": "OER Schema: ამ შეფასებასთან დაკავშირებული სასწავლო მიზანი."
-      },
-      {
-        "property": "forCourse",
-        "title": "კურსი",
-        "description": "OER Schema: კურსი, რომლისთვისაც ეს შეფასებაა განკუთვნილი."
-      },
-      {
         "property": "answers",
         "title": "პასუხები"
-      }
-    ],
-    "developer": [
-      {
-        "property": "quizName",
-        "title": "ქვიზის სახელი",
-        "description": "ქვიზის სახელი, რომელიც ანალიტიკურ სისტემებში xAPI იდენტიფიკაციისთვის გამოიყენება."
       }
     ],
     "advanced": [
@@ -57,6 +35,28 @@
         "property": "collapsed",
         "title": "დაწყება ჩაკეცილად",
         "description": "ჩაკეცვადობისას იწყება როგორც დახურული მწკრივი, რომელიც მხოლოდ კითხვას და მის სტატუსს აჩვენებს."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "შეფასების ფორმატი",
+        "description": "OER Schema: ამ შეფასების ფორმატი (მაგ. ქულები, ასო, პროცენტი, შესრულება)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "სასწავლო მიზანი",
+        "description": "OER Schema: ამ შეფასებასთან დაკავშირებული სასწავლო მიზანი."
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "ქვიზის სახელი",
+        "description": "ქვიზის სახელი, რომელიც ანალიტიკურ სისტემებში xAPI იდენტიფიკაციისთვის გამოიყენება."
+      },
+      {
+        "property": "forCourse",
+        "title": "კურსი",
+        "description": "OER Schema: კურსი, რომლისთვისაც ეს შეფასებაა განკუთვნილი."
       }
     ]
   }

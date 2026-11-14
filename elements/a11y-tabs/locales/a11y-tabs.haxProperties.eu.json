@@ -11,20 +11,17 @@
         "description": "Fitxa multzoaren etiketa irisgarria."
       },
       {
-        "property": "disabled",
-        "title": "Desgaituta",
-        "description": "Desgaitu fitxa guztiak."
-      },
-      {
-        "property": "hidden",
-        "title": "Ezkutuan",
-        "description": "Ezkutatu fitxa multzoa."
-      },
-      {
         "property": "sticky",
         "title": "Finkoa",
         "description": "Mantendu fitxa horizontalak goian korritzean."
       },
+      {
+        "slot": "",
+        "title": "Fitxak",
+        "description": "<a11y-tab/> elementuen segida."
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "Diseinuaren eten-puntua",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "Ikonoen eten-puntua",
         "description": "Testua ikonoekin erakusteko eten-puntua. Lehenetsia 0 da; erabili -1 ikonoak soilik erakusteko."
-      },
-      {
-        "slot": "",
-        "title": "Fitxak",
-        "description": "<a11y-tab/> elementuen segida."
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "Desgaituta",
+        "description": "Desgaitu fitxa guztiak."
+      },
+      {
+        "property": "hidden",
+        "title": "Ezkutuan",
+        "description": "Ezkutatu fitxa multzoa."
+      },
       {
         "property": "id",
         "title": "ID bakarra",

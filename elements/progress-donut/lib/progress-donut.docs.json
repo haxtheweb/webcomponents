@@ -4,18 +4,21 @@
   "package": "@haxtheweb/progress-donut",
   "version": "26.8.0",
   "license": "Apache-2.0",
-  "title": "Progress Donut",
-  "description": "Progression donut",
-  "icon": "av:play-circle-filled",
+  "title": "Progress donut",
+  "description": "A donut chart showing progress toward a total.",
+  "icon": "device:data-usage",
   "tags": [
-    "Other",
-    "Data"
+    "Media",
+    "progress",
+    "chart",
+    "donut",
+    "data"
   ],
   "haxCapable": true,
   "import": "@haxtheweb/progress-donut/progress-donut.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/progress-donut/progress-donut.js",
   "install": "npm i @haxtheweb/progress-donut",
-  "demoHtml": "<progress-donut></progress-donut>",
+  "demoHtml": "<progress-donut title=\"Your progress\" desc=\"You have completed 30 of 50 points: 10 from readings, 8 from quizzes and 12 from projects.\" complete=\"10,8,12\" total=\"50\" animated></progress-donut>",
   "attributes": [
     {
       "name": "animated",
@@ -112,13 +115,16 @@
     "canScale": true,
     "canEditSource": true,
     "gizmo": {
-      "title": "Progress Donut",
-      "description": "Progression donut",
-      "icon": "av:play-circle-filled",
+      "title": "Progress donut",
+      "description": "A donut chart showing progress toward a total.",
+      "icon": "device:data-usage",
       "color": "grey",
       "tags": [
-        "Other",
-        "Data"
+        "Media",
+        "progress",
+        "chart",
+        "donut",
+        "data"
       ],
       "handles": [],
       "meta": {
@@ -158,12 +164,6 @@
           "inputMethod": "alt"
         },
         {
-          "property": "animated",
-          "title": "Animated",
-          "description": "Whether progress animates on first load",
-          "inputMethod": "boolean"
-        },
-        {
           "property": "complete",
           "title": "Complete",
           "description": "An array of completed values.",
@@ -174,6 +174,14 @@
           "title": "Total",
           "description": "Total when all items are complete.",
           "inputMethod": "number"
+        }
+      ],
+      "advanced": [
+        {
+          "property": "animated",
+          "title": "Animated",
+          "description": "Whether progress animates on first load",
+          "inputMethod": "boolean"
         },
         {
           "property": "startAngle",
@@ -181,18 +189,27 @@
           "description": "Donut angle where progress starts",
           "inputMethod": "number"
         }
-      ],
-      "advanced": []
+      ]
     },
     "demoSchema": [
       {
         "tag": "progress-donut",
-        "properties": {},
+        "properties": {
+          "title": "Your progress",
+          "desc": "You have completed 30 of 50 points: 10 from readings, 8 from quizzes and 12 from projects.",
+          "complete": [
+            10,
+            8,
+            12
+          ],
+          "total": 50,
+          "animated": true
+        },
         "content": ""
       }
     ]
   },
-  "surfaceHash": "6ab97c2168b3",
+  "surfaceHash": "5e0ba42c8bf8",
   "walkthroughs": [
     {
       "id": "",
@@ -200,13 +217,13 @@
       "order": 0,
       "src": "progress-donut.motion.json",
       "file": "lib/progress-donut.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/progress-donut.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "HAX-i link",
-    "description": "Link konkreetsele ressursile saidil, millega töötad."
+    "title": "Lehe link",
+    "description": "Link lehele saidil, millega töötate."
   },
   "settings": {
     "configure": [

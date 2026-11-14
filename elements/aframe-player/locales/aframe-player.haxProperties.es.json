@@ -11,6 +11,13 @@
         "description": "La URL de este archivo AR."
       },
       {
+        "property": "skyColor",
+        "title": "Color del cielo",
+        "description": "Selecciona el color del cielo en la escena."
+      }
+    ],
+    "advanced": [
+      {
         "property": "x",
         "title": "X",
         "description": "Posición X del elemento en AR."
@@ -24,11 +31,6 @@
         "property": "z",
         "title": "Z",
         "description": "Posición Z del elemento en AR."
-      },
-      {
-        "property": "skyColor",
-        "title": "Color del cielo",
-        "description": "Selecciona el color del cielo en la escena."
       }
     ]
   }

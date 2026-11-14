@@ -2,6 +2,13 @@ import { fixture, expect, html } from "@open-wc/testing";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import "../a11y-figure.js";
 
+// HAX schemas ship as JSON next to the element; read one whether the class
+// returns the object or the URL of its file
+const haxSchema = async (C) => {
+  const hp = C.haxProperties;
+  return typeof hp === "string" ? (await fetch(hp)).json() : hp;
+};
+
 // inline data-URL SVG placeholders keep the fixtures external-request-free
 // (the original fixtures pointed at placehold.co) while preserving their
 // dimensions and intent
@@ -525,15 +532,15 @@ describe("a11y-figure test", () => {
   });
 
   describe("HAX Properties and Integration", () => {
-    it("should have haxProperties defined", () => {
-      expect(element.constructor.haxProperties).to.exist;
-      expect(element.constructor.haxProperties.gizmo).to.exist;
-      expect(element.constructor.haxProperties.settings).to.exist;
-      expect(element.constructor.haxProperties.demoSchema).to.exist;
+    it("should have haxProperties defined", async () => {
+      expect(await haxSchema(element.constructor)).to.exist;
+      expect((await haxSchema(element.constructor)).gizmo).to.exist;
+      expect((await haxSchema(element.constructor)).settings).to.exist;
+      expect((await haxSchema(element.constructor)).demoSchema).to.exist;
     });
 
-    it("should handle HAX image upload integration", () => {
-      const haxProps = element.constructor.haxProperties;
+    it("should handle HAX image upload integration", async () => {
+      const haxProps = await haxSchema(element.constructor);
       const configItems = haxProps.settings.configure;
 
       // Verify imgSrc property has haxupload input method
@@ -548,7 +555,7 @@ describe("a11y-figure test", () => {
     });
 
     it("should maintain accessibility with HAX demo schema", async () => {
-      const demoSchema = element.constructor.haxProperties.demoSchema[0];
+      const demoSchema = (await haxSchema(element.constructor)).demoSchema[0];
       const haxTestElement = await fixture(html`
         <a11y-figure
           img-src="${demoSchema.properties.imgSrc}"

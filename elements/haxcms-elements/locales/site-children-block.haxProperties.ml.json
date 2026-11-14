@@ -4,7 +4,7 @@
     "description": "നിലവിലെ പേജിന്റെ ചൈൽഡ് കാണിക്കാനുള്ള ഡൈനാമിക് ബ്ലോക്ക്"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "ഡൈനാമിക് രീതി",
@@ -14,7 +14,9 @@
           "parent": "പാരന്റിന്റെ ചൈൽഡുകൾ",
           "ancestor": "ഏറ്റവും ഉയർന്ന പൂർവ്വികനിൽ നിന്നുള്ള എല്ലാ ചൈൽഡുകളും"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "ആരംഭ ലെവൽ"

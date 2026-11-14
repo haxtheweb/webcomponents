@@ -9,7 +9,21 @@
         "property": "target",
         "title": "Цел",
         "description": "Път до компилацията на играта."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "width",
+        "title": "Ширина на платното",
+        "description": "CSS ширина на платното (например px или em)."
       },
+      {
+        "property": "height",
+        "title": "Височина на платното",
+        "description": "CSS височина на платното (например px или em)."
+      }
+    ],
+    "developer": [
       {
         "property": "compression",
         "title": "Метод на компресия",
@@ -34,16 +48,6 @@
         "property": "productversion",
         "title": "Версия на продукта",
         "description": "Версия на изданието."
-      },
-      {
-        "property": "width",
-        "title": "Ширина на платното",
-        "description": "CSS ширина на платното (например px или em)."
-      },
-      {
-        "property": "height",
-        "title": "Височина на платното",
-        "description": "CSS височина на платното (например px или em)."
       },
       {
         "property": "background",

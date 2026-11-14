@@ -10,10 +10,6 @@
         "title": "ٹیب آئیکن"
       },
       {
-        "property": "disabled",
-        "title": "غیر فعال"
-      },
-      {
         "property": "label",
         "title": "ٹیب لیبل"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "منفرد ID"
-      },
-      {
         "property": "flag",
         "title": "اختیاری جھنڈا متن"
       },
       {
         "property": "flagIcon",
         "title": "اختیاری جھنڈا آئیکن"
+      },
+      {
+        "property": "disabled",
+        "title": "غیر فعال"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "منفرد ID"
       }
     ]
   }

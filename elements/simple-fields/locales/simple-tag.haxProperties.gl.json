@@ -14,16 +14,6 @@
         "property": "autoAccentColor",
         "title": "Cor de realce automática",
         "description": "Obter automaticamente a cor de realce a partir do texto da etiqueta."
-      },
-      {
-        "property": "cancelButton",
-        "title": "Botón de cancelar",
-        "description": "Mostrar un botón de icona para quitar/cancelar dentro da píldora."
-      },
-      {
-        "property": "readonly",
-        "title": "Só lectura",
-        "description": "Ocultar o botón de cancelar para que a píldora sexa só de visualización."
       }
     ],
     "advanced": [
@@ -73,6 +63,16 @@
           "blue-grey": "Gris azulado",
           "grey": "Gris"
         }
+      },
+      {
+        "property": "cancelButton",
+        "title": "Botón de cancelar",
+        "description": "Mostrar un botón de icona para quitar/cancelar dentro da píldora."
+      },
+      {
+        "property": "readonly",
+        "title": "Só lectura",
+        "description": "Ocultar o botón de cancelar para que a píldora sexa só de visualización."
       }
     ]
   }

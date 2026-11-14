@@ -9,7 +9,9 @@
         "slot": "",
         "title": "ການອ້າງອີງ",
         "description": "ລາຍການອ້າງອີງໃນບັນນານຸກົມນີ້"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "ວິຊາຮຽນ",

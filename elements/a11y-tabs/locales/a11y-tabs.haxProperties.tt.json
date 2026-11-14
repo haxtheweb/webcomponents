@@ -11,20 +11,17 @@
         "description": "Кыстыргычлар җыелмасы өчен үтемле тамга."
       },
       {
-        "property": "disabled",
-        "title": "Сүндерелгән",
-        "description": "Барлык кыстыргычларны сүндерергә."
-      },
-      {
-        "property": "hidden",
-        "title": "Яшерен",
-        "description": "Кыстыргычлар җыелмасын яшерергә."
-      },
-      {
         "property": "sticky",
         "title": "Беркетелгән",
         "description": "Әйләндергәндә горизонталь кыстыргычларны өстә калдырырга."
       },
+      {
+        "slot": "",
+        "title": "Кыстыргычлар",
+        "description": "<a11y-tab/> элементлары рәте."
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "Макет чик ноктасы",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "Иконка чик ноктасы",
         "description": "Иконкалар белән бергә текстны күрсәтү чик ноктасы. Килешү буенча 0; бары иконка режимы өчен -1 кулланыгыз."
-      },
-      {
-        "slot": "",
-        "title": "Кыстыргычлар",
-        "description": "<a11y-tab/> элементлары рәте."
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "Сүндерелгән",
+        "description": "Барлык кыстыргычларны сүндерергә."
+      },
+      {
+        "property": "hidden",
+        "title": "Яшерен",
+        "description": "Кыстыргычлар җыелмасын яшерергә."
+      },
       {
         "property": "id",
         "title": "Уникаль ID",

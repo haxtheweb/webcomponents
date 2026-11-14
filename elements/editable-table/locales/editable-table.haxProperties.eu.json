@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Baimendu iragazkia",
         "description": "Baimendu zutabeen balioen arabera iragaztea."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Zenbakizko estiloa",
-        "description": "Aplikatu zenbakizko estiloa zenbakizko zutabeei."
-      },
-      {
-        "property": "responsive",
-        "title": "Moldakorra",
-        "description": "Egokitu taularen diseinua pantaila txikietan."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Errubrika modua",
-        "description": "Interpretatu taula hau OER Schema Rubric gisa, Rubric, RubricScale, RubricCriterion eta RubricLevel metadatuak sor daitezen."
-      },
-      {
-        "property": "rubricType",
-        "title": "Errubrika mota",
-        "description": "oer:rubricType gisa sortzen den errubrika estiloa (Errubrika modua aktibatuta dagoenean soilik du zentzua).",
-        "options": {
-          "": "(bat ere ez)",
-          "analytic": "Analitikoa",
-          "holistic": "Holistikoa",
-          "single-point": "Puntu bakarrekoa",
-          "checklist": "Egiaztapen zerrenda"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Inprimatzeko botoia",
         "description": "Gehitu taula soilik inprimatzeko botoi bat."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Zenbakizko estiloa",
+        "description": "Aplikatu zenbakizko estiloa zenbakizko zutabeei."
+      },
+      {
+        "property": "responsive",
+        "title": "Moldakorra",
+        "description": "Egokitu taularen diseinua pantaila txikietan."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Errubrika modua",
+        "description": "Interpretatu taula hau OER Schema Rubric gisa, Rubric, RubricScale, RubricCriterion eta RubricLevel metadatuak sor daitezen."
+      },
+      {
+        "property": "rubricType",
+        "title": "Errubrika mota",
+        "description": "oer:rubricType gisa sortzen den errubrika estiloa (Errubrika modua aktibatuta dagoenean soilik du zentzua).",
+        "options": {
+          "": "(bat ere ez)",
+          "analytic": "Analitikoa",
+          "holistic": "Holistikoa",
+          "single-point": "Puntu bakarrekoa",
+          "checklist": "Egiaztapen zerrenda"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "CSV datuak",
         "description": "Sortu taula bat igotako CSV fitxategi batetik."
       }
-    ]
+    ],
+    "developer": []
   }
 }

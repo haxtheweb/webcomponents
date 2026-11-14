@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Mai mu'amala",
         "description": "Ba da izinin mu'amalar mai amfani don saita ƙima."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Yanayin Sikelin Rubric",

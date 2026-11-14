@@ -9,8 +9,8 @@
   "icon": "image:music-note",
   "tags": [
     "Media",
-    "Music",
-    "Instructional"
+    "music",
+    "instructional"
   ],
   "haxCapable": true,
   "import": "@haxtheweb/sheet-music/sheet-music.js",
@@ -99,8 +99,8 @@
       "color": "purple",
       "tags": [
         "Media",
-        "Music",
-        "Instructional"
+        "music",
+        "instructional"
       ],
       "handles": [
         {

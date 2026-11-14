@@ -4,22 +4,23 @@
     "description": "የቪዲዮ እና የድምፅ አጫዋቾችን በአጫዋች እና የጎን አሞሌ አቀማመጥ የሚያቀርብ የአጫዋች ዝርዝር።"
   },
   "settings": {
-    "configure": [
+    "configure": [],
+    "advanced": [
       {
         "property": "activeIndex",
         "title": "ንቁ ማውጫ",
         "description": "የሚጀመርበት ንቁ ንጥል ቁጥር።"
-      },
-      {
-        "property": "forCourse",
-        "title": "ኮርስ",
-        "description": "ይህ የአጫዋች ዝርዝር የተዘጋጀለት ኮርስ (የኮርስ መለያ ወይም URL)።"
       }
     ],
     "developer": [
       {
         "title": "ሚዲያ",
         "description": "በአጫዋች ዝርዝሩ ውስጥ ያሉ ቪዲዮዎችና ድምጾች። እዚህ አይስተካከልም፦ የገጽ ዝርዝሩ የትኞቹ ብሎኮች ሊጣሉ እንደሚችሉ ለማወቅ ይጠቀምበታል።"
+      },
+      {
+        "property": "forCourse",
+        "title": "ኮርስ",
+        "description": "ይህ የአጫዋች ዝርዝር የተዘጋጀለት ኮርስ (የኮርስ መለያ ወይም URL)።"
       }
     ]
   }

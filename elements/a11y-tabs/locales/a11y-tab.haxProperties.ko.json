@@ -10,10 +10,6 @@
         "title": "탭 아이콘"
       },
       {
-        "property": "disabled",
-        "title": "비활성화"
-      },
-      {
         "property": "label",
         "title": "탭 레이블"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "고유 ID"
-      },
-      {
         "property": "flag",
         "title": "선택적 플래그 텍스트"
       },
       {
         "property": "flagIcon",
         "title": "선택적 플래그 아이콘"
+      },
+      {
+        "property": "disabled",
+        "title": "비활성화"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "고유 ID"
       }
     ]
   }

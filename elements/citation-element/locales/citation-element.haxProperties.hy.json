@@ -21,15 +21,6 @@
         "description": "Աղբյուրը դիտելու ամսաթիվը։"
       },
       {
-        "property": "scope",
-        "title": "Շրջանակ",
-        "description": "Հղվող տարրի շրջանակը։",
-        "options": {
-          "sibling": "Հարևան տարր",
-          "parent": "Ծնող տարր"
-        }
-      },
-      {
         "property": "license",
         "title": "Լիցենզիա",
         "description": "Հղվող աշխատանքի լիցենզիան։"
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "Ստեղծող",
         "description": "Հղվող աշխատանքի ստեղծողը կամ սեփականատերը։"
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "Շրջանակ",
+        "description": "Հղվող տարրի շրջանակը։",
+        "options": {
+          "sibling": "Հարևան տարր",
+          "parent": "Ծնող տարր"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "OER Schema տեսակ",

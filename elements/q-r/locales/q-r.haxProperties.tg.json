@@ -14,16 +14,6 @@
         "property": "title",
         "title": "Унвони алтернативӣ",
         "description": "Унвони алтернативӣ, ки ба манбаи рамзи QR пайваст аст."
-      },
-      {
-        "property": "modulesize",
-        "title": "Андоза",
-        "description": "Андозаи рамзи QR."
-      },
-      {
-        "property": "margin",
-        "title": "Ҳошия",
-        "description": "Фосилаи атрофи рамз."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "Андоза",
+        "description": "Андозаи рамзи QR."
+      },
+      {
+        "property": "margin",
+        "title": "Ҳошия",
+        "description": "Фосилаи атрофи рамз."
       }
     ]
   }

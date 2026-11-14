@@ -54,46 +54,6 @@ export function lrsEmitterVerb(verb) {
  * @demo demo/index.html
  */
 class LrsEmitter extends IntersectionObserverMixin(LitElement) {
-  // haxProperty definition
-  static get haxProperties() {
-    return {
-      canScale: true,
-
-      canEditSource: true,
-      gizmo: {
-        title: "Lrs emitter",
-        description: "Emit learning statements occuring in your app.",
-        icon: "icons:android",
-        color: "green",
-        tags: ["Other", "lrs", "xapi", "statement", "emit", "send"],
-        handles: [],
-        meta: {
-          author: "HAXTheWeb core team",
-          owner: "Penn State",
-        },
-      },
-      settings: {
-        configure: [
-          {
-            property: "verb",
-            description:
-              "experienced, interacted, answered, progressed, attempted or completed",
-            inputMethod: "textfield",
-            required: false,
-            icon: "icons:android",
-          },
-        ],
-        advanced: [],
-      },
-      demoSchema: [
-        {
-          tag: "lrs-emitter",
-          properties: {},
-          content: "",
-        },
-      ],
-    };
-  }
   // properties available to the custom element for data binding
   static get properties() {
     return {

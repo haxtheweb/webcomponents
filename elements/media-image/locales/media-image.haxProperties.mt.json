@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Didaskalija",
         "description": "Caption għall-immaġni."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Titlu tal-Figura",
-        "description": "Titlu għat-tikketta tal-figura."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Deskrizzjoni tal-Figura",
-        "description": "Deskrizzjoni għat-tikketta tal-figura."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Iddiżattiva l-modal tal-immaġni",
         "description": "Iddiżattiva l-klikks li jiftħu l-immaġni f'djalogu tal-ispettur tal-immaġnijiet."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Titlu tal-Figura",
+        "description": "Titlu għat-tikketta tal-figura."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Deskrizzjoni tal-Figura",
+        "description": "Deskrizzjoni għat-tikketta tal-figura."
       }
     ],
     "developer": [

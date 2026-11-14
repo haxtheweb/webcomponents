@@ -9,7 +9,9 @@
         "slot": "",
         "title": "Цитати",
         "description": "Ставке цитата у овој библиографији"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "Курс",

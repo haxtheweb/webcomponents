@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Tabuľka CSV",
-    "description": "Dokáže vygenerovať tabuľku zo súboru CSV bez ohľadu na to, kde sa nachádza."
+    "description": "Zobrazí súbor CSV ako prístupnú tabuľku."
   },
   "settings": {
     "configure": [

@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "അമ്പടയാളം ഇല്ല",
         "description": "ബട്ടൺ അമ്പടയാളം മറയ്ക്കുക."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "ലിങ്ക്: ലക്ഷ്യം",
@@ -54,7 +52,9 @@
           "_top": "മുകളിലെ വിൻഡോ - _top",
           "_parent": "പാരന്റ് വിൻഡോ - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "ലിങ്ക്: rel",

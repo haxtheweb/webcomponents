@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Қолдау көрсетілмейді хабары",
-        "description": "Браузер PDF файлдарын көрсете алмаған кездегі хабар."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Қолдау көрсетілмейді сілтеме хабары",
-        "description": "Браузер PDF файлдарын көрсете алмаған кездегі сілтеме мәтіні."
-      },
-      {
         "property": "width",
         "title": "Ені",
         "description": "PDF қарау құралының ені."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Биіктігі",
         "description": "PDF қарау құралының биіктігі."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Қолдау көрсетілмейді хабары",
+        "description": "Браузер PDF файлдарын көрсете алмаған кездегі хабар."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Қолдау көрсетілмейді сілтеме хабары",
+        "description": "Браузер PDF файлдарын көрсете алмаған кездегі сілтеме мәтіні."
       }
     ]
   }

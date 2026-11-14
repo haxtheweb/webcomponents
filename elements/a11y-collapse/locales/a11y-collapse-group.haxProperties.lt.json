@@ -1,7 +1,7 @@
 {
   "gizmo": {
-    "title": "Išskleidžiamų elementų grupė",
-    "description": "Išskleidžiamų ir suskleidžiamų elementų grupė."
+    "title": "Suskleidžiama grupė",
+    "description": "Suskleidžiamų konteinerių grupė."
   },
   "settings": {
     "configure": [

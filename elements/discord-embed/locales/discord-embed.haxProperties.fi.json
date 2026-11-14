@@ -9,7 +9,9 @@
         "property": "source",
         "title": "Resurssin URL",
         "description": "Resurssin URL."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "height",
         "title": "Korkeus",

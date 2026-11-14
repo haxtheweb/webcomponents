@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Samvirkið",
         "description": "Loyv brúkaranum at seta metingina."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Háttur við metingarleistaskala",

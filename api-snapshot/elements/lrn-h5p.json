@@ -12,7 +12,7 @@
   "cssParts": [],
   "cssProperties": [],
   "hax": {
-    "schema": "elements/course-design/lib/lrn-h5p.js",
+    "schema": "elements/course-design/lib/lrn-h5p.haxProperties.json",
     "gizmo": true,
     "properties": [],
     "attributes": [],

@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "सरल छवि",
-    "description": "सरल पैरामीटर से छवियों में बदलाव करें।"
+    "description": "सरल सेटिंग्स से आकार बदली, काटी या घुमाई गई छवि।"
   },
   "settings": {
     "configure": [
@@ -26,7 +26,8 @@
         "description": "स्क्रीन रीडर और बेहतर SEO के लिए उपयोगी।"
       }
     ],
-    "advanced": [
+    "advanced": [],
+    "developer": [
       {
         "property": "quality",
         "title": "गुणवत्ता",

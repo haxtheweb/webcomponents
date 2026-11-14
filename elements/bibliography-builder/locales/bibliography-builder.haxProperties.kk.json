@@ -9,7 +9,9 @@
         "slot": "",
         "title": "Дәйексөздер",
         "description": "Осы библиографиядағы дәйексөз жазбалары"
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "forCourse",
         "title": "Курс",

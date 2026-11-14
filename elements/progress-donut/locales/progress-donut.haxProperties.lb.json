@@ -26,11 +26,6 @@
         "description": "Alt-Text fir d'Bild."
       },
       {
-        "property": "animated",
-        "title": "Animéiert",
-        "description": "Ob de Fortschrëtt beim éischte Lueden animéiert gëtt"
-      },
-      {
         "property": "complete",
         "title": "Fäerdeg",
         "description": "Eng Lëscht vun ofgeschlossene Wäerter."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "Total",
         "description": "Total, wann all Elementer ofgeschloss sinn."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "Animéiert",
+        "description": "Ob de Fortschrëtt beim éischte Lueden animéiert gëtt"
       },
       {
         "property": "startAngle",

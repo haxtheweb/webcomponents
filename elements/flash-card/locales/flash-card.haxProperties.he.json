@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "מקור התמונה",
         "description": "קובץ התמונה המשמש לכרטיס. גובר על מילת המפתח לתמונה."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "מילת מפתח לתמונה",
+        "description": "מילת מפתח לתמונה אקראית. מקור התמונה גובר עליה."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "מטרת למידה",
         "description": "OER Schema: מזהה או URL של מטרת הלמידה שתרגול זה תומך בה."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "מילת מפתח לתמונה",
-        "description": "מילת מפתח לתמונה אקראית. מקור התמונה גובר עליה."
       }
     ]
   }

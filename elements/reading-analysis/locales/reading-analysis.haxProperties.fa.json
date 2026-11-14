@@ -38,21 +38,6 @@
         "slot": "",
         "title": "متن",
         "description": "متنی که فراگیران روی آن کار می‌کنند. هر HTML: عنوان‌ها، پاراگراف‌ها، فهرست‌ها و شکل‌ها."
-      },
-      {
-        "property": "gradingFormat",
-        "title": "قالب نمره‌دهی",
-        "description": "OER Schema: قالب نمره‌دهی این ارزشیابی (مثلاً امتیاز، حرفی، درصدی، تکمیل)."
-      },
-      {
-        "property": "hasLearningObjective",
-        "title": "هدف یادگیری",
-        "description": "OER Schema: هدف یادگیری مرتبط با این ارزشیابی."
-      },
-      {
-        "property": "forCourse",
-        "title": "درس",
-        "description": "OER Schema: درسی که این ارزشیابی برای آن در نظر گرفته شده است."
       }
     ],
     "advanced": [
@@ -70,6 +55,16 @@
         "property": "collapsed",
         "title": "شروع به‌صورت جمع‌شده",
         "description": "در حالت قابل جمع‌شدن، به‌صورت ردیفی بسته شروع می‌شود که فقط پرسش و وضعیت آن را نشان می‌دهد."
+      },
+      {
+        "property": "gradingFormat",
+        "title": "قالب نمره‌دهی",
+        "description": "OER Schema: قالب نمره‌دهی این ارزشیابی (مثلاً امتیاز، حرفی، درصدی، تکمیل)."
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "هدف یادگیری",
+        "description": "OER Schema: هدف یادگیری مرتبط با این ارزشیابی."
       }
     ],
     "developer": [
@@ -77,6 +72,11 @@
         "property": "quizName",
         "title": "نام آزمونک",
         "description": "نام آزمونک که در محیط‌های مبتنی بر xAPI برای شناسایی این مورد ارسال می‌شود"
+      },
+      {
+        "property": "forCourse",
+        "title": "درس",
+        "description": "OER Schema: درسی که این ارزشیابی برای آن در نظر گرفته شده است."
       }
     ]
   }

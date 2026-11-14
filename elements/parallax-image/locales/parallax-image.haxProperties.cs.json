@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Paralaxní obrázek",
-    "description": "Obrázek posouvaný při rolování"
+    "description": "Obrázek na celou šířku, který se posouvá pomaleji než stránka, s nadpisem přes něj."
   },
   "settings": {
     "configure": [

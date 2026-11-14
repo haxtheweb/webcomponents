@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Joc de misiune cu concepte",
-    "description": "O lume deschisă de explorat. Conceptele te găsesc și îți pun o întrebare. Răspunde corect ca să învingi unul și să-i deblochezi casa. Recapitularea arată încercările și ce trebuie recapitulat."
+    "description": "Un joc cu hartă deschisă în care conceptele pun întrebări, iar răspunsurile corecte deblochează harta."
   },
   "settings": {
     "configure": [
@@ -91,7 +91,9 @@
         "property": "gameTitle",
         "title": "Numele jocului",
         "description": "Denumește acest joc în evenimentele de progres și în marcajul OER Schema."
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "gameId",
         "title": "ID-ul jocului",

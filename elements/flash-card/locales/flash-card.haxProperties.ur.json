@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "تصویر کا ماخذ",
         "description": "کارڈ کے لیے استعمال ہونے والی تصویری فائل۔ تصویری کلیدی لفظ پر فوقیت رکھتی ہے۔"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "تصویری کلیدی لفظ",
+        "description": "بے ترتیب تصویر کا کلیدی لفظ۔ تصویر کا ماخذ اس پر فوقیت رکھتا ہے۔"
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "تعلیمی مقصد",
         "description": "OER Schema: اس تعلیمی مقصد کی ID یا URL جس کی یہ مشق معاونت کرتی ہے۔"
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "تصویری کلیدی لفظ",
-        "description": "بے ترتیب تصویر کا کلیدی لفظ۔ تصویر کا ماخذ اس پر فوقیت رکھتا ہے۔"
       }
     ]
   }

@@ -29,33 +29,6 @@
         "property": "filter",
         "title": "Atļaut filtrēšanu",
         "description": "Atļaut filtrēt pēc kolonnu vērtībām."
-      },
-      {
-        "property": "numericStyles",
-        "title": "Skaitliskais stils",
-        "description": "Piemērot skaitlisko stilu skaitliskām kolonnām."
-      },
-      {
-        "property": "responsive",
-        "title": "Adaptīva",
-        "description": "Pielāgot tabulas izkārtojumu maziem ekrāniem."
-      },
-      {
-        "property": "rubricMode",
-        "title": "Vērtēšanas kritēriju režīms",
-        "description": "Interpretēt šo tabulu kā OER Schema Rubric, lai tiktu izvadīti Rubric, RubricScale, RubricCriterion un RubricLevel metadati."
-      },
-      {
-        "property": "rubricType",
-        "title": "Vērtēšanas kritēriju veids",
-        "description": "Vērtēšanas kritēriju stils, kas tiek izvadīts kā oer:rubricType (nozīmīgs tikai tad, ja ieslēgts vērtēšanas kritēriju režīms).",
-        "options": {
-          "": "(nav)",
-          "analytic": "Analītisks",
-          "holistic": "Holistisks",
-          "single-point": "Viena punkta",
-          "checklist": "Kontrolsaraksts"
-        }
       }
     ],
     "advanced": [
@@ -87,14 +60,40 @@
         "property": "printable",
         "title": "Drukāšanas poga",
         "description": "Pievienot pogu, kas drukā tikai tabulu."
-      }
-    ],
-    "developer": [
+      },
+      {
+        "property": "numericStyles",
+        "title": "Skaitliskais stils",
+        "description": "Piemērot skaitlisko stilu skaitliskām kolonnām."
+      },
+      {
+        "property": "responsive",
+        "title": "Adaptīva",
+        "description": "Pielāgot tabulas izkārtojumu maziem ekrāniem."
+      },
+      {
+        "property": "rubricMode",
+        "title": "Vērtēšanas kritēriju režīms",
+        "description": "Interpretēt šo tabulu kā OER Schema Rubric, lai tiktu izvadīti Rubric, RubricScale, RubricCriterion un RubricLevel metadati."
+      },
+      {
+        "property": "rubricType",
+        "title": "Vērtēšanas kritēriju veids",
+        "description": "Vērtēšanas kritēriju stils, kas tiek izvadīts kā oer:rubricType (nozīmīgs tikai tad, ja ieslēgts vērtēšanas kritēriju režīms).",
+        "options": {
+          "": "(nav)",
+          "analytic": "Analītisks",
+          "holistic": "Holistisks",
+          "single-point": "Viena punkta",
+          "checklist": "Kontrolsaraksts"
+        }
+      },
       {
         "property": "dataCsv",
         "title": "CSV dati",
         "description": "Izveidot tabulu no augšupielādēta CSV faila."
       }
-    ]
+    ],
+    "developer": []
   }
 }

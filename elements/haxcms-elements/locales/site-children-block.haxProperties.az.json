@@ -4,7 +4,7 @@
     "description": "Cari səhifənin alt elementini göstərən dinamik blok"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "Dinamik metod",
@@ -14,7 +14,9 @@
           "parent": "Üst elementin alt elementləri",
           "ancestor": "Ən yuxarı əcdaddan bütün alt elementlər"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "Başlanğıc səviyyə"

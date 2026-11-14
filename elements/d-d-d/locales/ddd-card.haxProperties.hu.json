@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "Nyíl nélkül",
         "description": "A gomb nyilának elrejtése."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "Hivatkozás: cél",
@@ -54,7 +52,9 @@
           "_top": "Legfelső ablak - _top",
           "_parent": "Szülőablak - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "Hivatkozás: rel",

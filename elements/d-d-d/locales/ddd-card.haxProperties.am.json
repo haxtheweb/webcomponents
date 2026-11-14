@@ -41,9 +41,7 @@
         "property": "noArrow",
         "title": "ቀስት የለም",
         "description": "የአዝራሩን ቀስት ደብቅ።"
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "target",
         "title": "አገናኝ፦ ዒላማ",
@@ -54,7 +52,9 @@
           "_top": "የላይኛው መስኮት - _top",
           "_parent": "ወላጅ መስኮት - _parent"
         }
-      },
+      }
+    ],
+    "developer": [
       {
         "property": "rel",
         "title": "አገናኝ፦ rel",

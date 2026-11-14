@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Markdown",
-    "description": "บล็อกเนื้อหา Markdown ที่ใส่โดยตรงหรือโหลดจากระยะไกล"
+    "description": "เนื้อหา Markdown ที่เขียนโดยตรงหรือโหลดจากไฟล์"
   },
   "settings": {
     "configure": [

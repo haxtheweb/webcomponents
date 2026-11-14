@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Qoraal hoosaad",
         "description": "Cinwaan-hoosaadka sawirka."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Cinwaanka Sawirka",
-        "description": "Cinwaanka calaamadda sawirka."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Sharraxaadda Sawirka",
-        "description": "Sharraxaadda calaamadda sawirka."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Dami daaqadda sawirka",
         "description": "Dami gujinta ku furta sawirka wada-hadalka baadhaha sawirka."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Cinwaanka Sawirka",
+        "description": "Cinwaanka calaamadda sawirka."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Sharraxaadda Sawirka",
+        "description": "Sharraxaadda calaamadda sawirka."
       }
     ],
     "developer": [

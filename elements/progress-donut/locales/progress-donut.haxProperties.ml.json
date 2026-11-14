@@ -26,11 +26,6 @@
         "description": "ചിത്രത്തിനുള്ള Alt ടെക്സ്റ്റ്."
       },
       {
-        "property": "animated",
-        "title": "ആനിമേറ്റഡ്",
-        "description": "ആദ്യ ലോഡിൽ പുരോഗതി ആനിമേറ്റ് ചെയ്യണോ എന്ന്"
-      },
-      {
         "property": "complete",
         "title": "പൂർത്തിയായി",
         "description": "പൂർത്തിയായ മൂല്യങ്ങളുടെ ഒരു അറേ."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "ആകെ",
         "description": "എല്ലാ ഇനങ്ങളും പൂർത്തിയാകുമ്പോഴുള്ള ആകെ."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "ആനിമേറ്റഡ്",
+        "description": "ആദ്യ ലോഡിൽ പുരോഗതി ആനിമേറ്റ് ചെയ്യണോ എന്ന്"
       },
       {
         "property": "startAngle",

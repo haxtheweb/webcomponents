@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Atahanga pānui",
         "description": "URL atahanga pānui."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Ngā ara kuputuhi",
         "description": "Ngā kupu hauraro, ngā whakamāoritanga, ngā whakaahuatanga, me ētahi atu ara kuputuhi mō te ataata."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Wā tīmata",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Ara Whakaahuatanga ā-oro",
         "description": "URL ki tētahi ara whakaahuatanga ā-oro (kōnae MP3) e kōrero ana i ngā huānga ataata."
+      },
+      {
+        "property": "accentColor",
+        "title": "Tae arotahi",
+        "description": "(kua whakarērea) Tīpakohia te tae arotahi mō te kaitākaro."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Reo",
         "description": "Te reo o te pāpāho."
-      },
-      {
-        "property": "accentColor",
-        "title": "Tae arotahi",
-        "description": "(kua whakarērea) Tīpakohia te tae arotahi mō te kaitākaro."
       }
     ]
   }

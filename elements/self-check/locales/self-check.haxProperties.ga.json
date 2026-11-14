@@ -27,6 +27,13 @@
       {
         "slot": "",
         "title": "Freagra"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "link",
+        "title": "Nasc breise",
+        "description": "Nasc chuig tuilleadh eolais."
       },
       {
         "property": "hasLearningObjective",
@@ -37,13 +44,6 @@
         "property": "assessing",
         "title": "Ag measúnú",
         "description": "Tagairt do ghníomhaíocht a astaítear mar oer:assessing."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "link",
-        "title": "Nasc breise",
-        "description": "Nasc chuig tuilleadh eolais."
       }
     ]
   }

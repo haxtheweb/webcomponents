@@ -5,15 +5,15 @@
   "version": "26.8.0",
   "license": "Apache-2.0",
   "title": "Documentation player",
-  "description": "Animated walkthrough, video tutorial, demo, documentation and schema for a web component, with copy buttons for HTML, import, npm and CDN.",
-  "icon": "av:play-circle-filled",
+  "description": "Walkthrough, demo and reference for a web component, with copy buttons for HTML, import, npm and CDN.",
+  "icon": "av:video-library",
   "tags": [
-    "Documentation",
+    "Media",
     "developer",
-    "media",
     "demo",
     "video",
-    "tutorial"
+    "tutorial",
+    "documentation"
   ],
   "haxCapable": true,
   "import": "@haxtheweb/documentation-player/documentation-player.js",
@@ -227,16 +227,16 @@
     },
     "gizmo": {
       "title": "Documentation player",
-      "description": "Animated walkthrough, video tutorial, demo, documentation and schema for a web component, with copy buttons for HTML, import, npm and CDN.",
-      "icon": "av:play-circle-filled",
+      "description": "Walkthrough, demo and reference for a web component, with copy buttons for HTML, import, npm and CDN.",
+      "icon": "av:video-library",
       "color": "blue",
       "tags": [
-        "Documentation",
+        "Media",
         "developer",
-        "media",
         "demo",
         "video",
-        "tutorial"
+        "tutorial",
+        "documentation"
       ],
       "handles": [],
       "meta": {

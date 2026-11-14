@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Mmekọrịta",
         "description": "Kwe ka onye ọrụ mekọrịta iji tọọ ọkwa."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Ọnọdụ ọ̀tụ̀tụ̀ rubric",

@@ -19,14 +19,14 @@
         "property": "thumbnailSrc",
         "title": "Слика-постер",
         "description": "URL на сликата-постер."
-      }
-    ],
-    "advanced": [
+      },
       {
         "property": "tracks",
         "title": "Текстуални записи",
         "description": "Затворени титлови, преводи, описи и други текстуални записи за видеото."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "startTime",
         "title": "Време на почеток",
@@ -66,6 +66,11 @@
         "property": "audioDescriptionSource",
         "title": "Запис со аудио опис",
         "description": "URL до запис со аудио опис (MP3 датотека) што дава нарација на визуелните елементи."
+      },
+      {
+        "property": "accentColor",
+        "title": "Акцентна боја",
+        "description": "(застарено) Изберете ја бојата за акцент на плеерот."
       }
     ],
     "developer": [
@@ -97,11 +102,6 @@
         "property": "lang",
         "title": "Јазик",
         "description": "Јазик на медиумот."
-      },
-      {
-        "property": "accentColor",
-        "title": "Акцентна боја",
-        "description": "(застарено) Изберете ја бојата за акцент на плеерот."
       }
     ]
   }

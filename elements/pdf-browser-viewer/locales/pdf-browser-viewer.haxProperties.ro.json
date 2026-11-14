@@ -1,6 +1,6 @@
 {
   "gizmo": {
-    "title": "Vizualizator PDF în browser",
+    "title": "Vizualizator PDF",
     "description": "Încorporează un fișier PDF în pagină, cu aspect opțional de card și buton de descărcare."
   },
   "settings": {
@@ -28,16 +28,6 @@
     ],
     "advanced": [
       {
-        "property": "notSupportedMessage",
-        "title": "Mesaj de incompatibilitate",
-        "description": "Mesajul afișat când browserul nu poate afișa fișiere PDF."
-      },
-      {
-        "property": "notSupportedLinkMessage",
-        "title": "Mesaj link de incompatibilitate",
-        "description": "Textul linkului când browserul nu poate afișa fișiere PDF."
-      },
-      {
         "property": "width",
         "title": "Lățime",
         "description": "Lățimea vizualizatorului PDF."
@@ -46,6 +36,18 @@
         "property": "height",
         "title": "Înălțime",
         "description": "Înălțimea vizualizatorului PDF."
+      }
+    ],
+    "developer": [
+      {
+        "property": "notSupportedMessage",
+        "title": "Mesaj de incompatibilitate",
+        "description": "Mesajul afișat când browserul nu poate afișa fișiere PDF."
+      },
+      {
+        "property": "notSupportedLinkMessage",
+        "title": "Mesaj link de incompatibilitate",
+        "description": "Textul linkului când browserul nu poate afișa fișiere PDF."
       }
     ]
   }

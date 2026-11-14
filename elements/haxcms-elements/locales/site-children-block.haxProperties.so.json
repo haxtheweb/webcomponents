@@ -4,7 +4,7 @@
     "description": "Qayb firfircoon oo muujisa carruurta bogga hadda"
   },
   "settings": {
-    "advanced": [
+    "configure": [
       {
         "property": "dynamicMethodology",
         "title": "Habka firfircoon",
@@ -14,7 +14,9 @@
           "parent": "Carruurta waalidka",
           "ancestor": "Dhammaan carruurta laga bilaabo awoowga ugu sarreeya"
         }
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "start",
         "title": "Heerka bilowga"

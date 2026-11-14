@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Isha Sawirka",
         "description": "Faylka sawirka loo isticmaalo kaarka. Wuxuu ka mudnaan badan yahay Ereyga Sawirka."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Ereyga Sawirka",
+        "description": "Erey sawir aan kala horrayn. Waxaa ka mudnaan badan Isha Sawirka."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Ujeeddada Waxbarasho",
         "description": "OER Schema: ID ama URL-ka ujeeddada waxbarasho ee tababarkani taageerayo."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Ereyga Sawirka",
-        "description": "Erey sawir aan kala horrayn. Waxaa ka mudnaan badan Isha Sawirka."
       }
     ]
   }

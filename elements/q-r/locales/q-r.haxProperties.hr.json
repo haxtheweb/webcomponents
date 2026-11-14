@@ -14,16 +14,6 @@
         "property": "title",
         "title": "Zamjenski naslov",
         "description": "Zamjenski naslov povezan s izvorom QR koda."
-      },
-      {
-        "property": "modulesize",
-        "title": "Veličina",
-        "description": "Veličina QR koda."
-      },
-      {
-        "property": "margin",
-        "title": "Margina",
-        "description": "Okvir oko koda."
       }
     ],
     "advanced": [
@@ -36,6 +26,16 @@
           "html": "HTML",
           "svg": "SVG"
         }
+      },
+      {
+        "property": "modulesize",
+        "title": "Veličina",
+        "description": "Veličina QR koda."
+      },
+      {
+        "property": "margin",
+        "title": "Margina",
+        "description": "Okvir oko koda."
       }
     ]
   }

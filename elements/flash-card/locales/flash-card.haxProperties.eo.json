@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "Bilda fonto",
         "description": "Bilddosiero uzata por la karto. Superregas la bildan ŝlosilvorton."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "Bilda ŝlosilvorto",
+        "description": "Ŝlosilvorto por hazarda bildo. Superregata de la bilda fonto."
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "Lerncelo",
         "description": "OER Schema: ID aŭ URL de la lerncelo, kiun ĉi tiu ekzercado subtenas."
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "Bilda ŝlosilvorto",
-        "description": "Ŝlosilvorto por hazarda bildo. Superregata de la bilda fonto."
       }
     ]
   }

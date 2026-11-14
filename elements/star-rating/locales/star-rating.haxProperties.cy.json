@@ -24,7 +24,9 @@
         "property": "interactive",
         "title": "Rhyngweithiol",
         "description": "Caniatáu i'r defnyddiwr ryngweithio i osod y sgôr."
-      },
+      }
+    ],
+    "advanced": [
       {
         "property": "rubricScaleMode",
         "title": "Modd Graddfa Cyfarwyddyd Marcio",

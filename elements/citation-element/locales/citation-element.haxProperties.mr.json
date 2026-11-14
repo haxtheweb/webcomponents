@@ -21,15 +21,6 @@
         "description": "स्रोत पाहिल्याची तारीख."
       },
       {
-        "property": "scope",
-        "title": "व्याप्ती",
-        "description": "संदर्भ द्यायच्या घटकाची व्याप्ती.",
-        "options": {
-          "sibling": "समस्तरीय घटक",
-          "parent": "पालक घटक"
-        }
-      },
-      {
         "property": "license",
         "title": "परवाना",
         "description": "संदर्भित कार्याचा परवाना."
@@ -38,7 +29,20 @@
         "property": "creator",
         "title": "निर्माता",
         "description": "संदर्भित कार्याचा निर्माता किंवा मालक."
-      },
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scope",
+        "title": "व्याप्ती",
+        "description": "संदर्भ द्यायच्या घटकाची व्याप्ती.",
+        "options": {
+          "sibling": "समस्तरीय घटक",
+          "parent": "पालक घटक"
+        }
+      }
+    ],
+    "developer": [
       {
         "property": "typeof",
         "title": "OER Schema प्रकार",

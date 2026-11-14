@@ -11,20 +11,17 @@
         "description": "Өтмөктөр топтомунун жеткиликтүү энбелгиси."
       },
       {
-        "property": "disabled",
-        "title": "Өчүрүлгөн",
-        "description": "Бардык өтмөктөрдү өчүрүү."
-      },
-      {
-        "property": "hidden",
-        "title": "Жашыруун",
-        "description": "Өтмөктөр топтомун жашыруу."
-      },
-      {
         "property": "sticky",
         "title": "Бекитилген",
         "description": "Сыдырганда горизонталдык өтмөктөрдү жогоруда калтыруу."
       },
+      {
+        "slot": "",
+        "title": "Өтмөктөр",
+        "description": "<a11y-tab/> элементтеринин тизмеги."
+      }
+    ],
+    "advanced": [
       {
         "property": "layoutBreakpoint",
         "title": "Макет чеги",
@@ -34,14 +31,19 @@
         "property": "iconBreakpoint",
         "title": "Сөлөкөт чеги",
         "description": "Сөлөкөттөр менен текстти көрсөтүү чеги. Демейки 0; сөлөкөт гана режими үчүн -1 колдонуңуз."
-      },
-      {
-        "slot": "",
-        "title": "Өтмөктөр",
-        "description": "<a11y-tab/> элементтеринин тизмеги."
       }
     ],
-    "advanced": [
+    "developer": [
+      {
+        "property": "disabled",
+        "title": "Өчүрүлгөн",
+        "description": "Бардык өтмөктөрдү өчүрүү."
+      },
+      {
+        "property": "hidden",
+        "title": "Жашыруун",
+        "description": "Өтмөктөр топтомун жашыруу."
+      },
       {
         "property": "id",
         "title": "Уникалдуу ID",

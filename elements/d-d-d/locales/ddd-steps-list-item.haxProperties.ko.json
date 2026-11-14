@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "단계 항목",
-    "description": "단계 목록에 속한 항목"
+    "description": "단계 목록의 단일 단계."
   },
   "settings": {
     "configure": [

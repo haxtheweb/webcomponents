@@ -56,14 +56,13 @@
         "slot": "buttons",
         "title": "Àwọn bọ́tìnnì",
         "description": "Àkójọ bọ́tìnnì tí a fi hàn lábẹ́ ọ̀rọ̀."
-      }
-    ],
-    "developer": [
+      },
       {
         "property": "anchor",
         "title": "Ọ̀rọ̀ ìdákọ̀ró",
         "description": "Àmì-orúkọ ìdákọ̀ró tí a fi hàn nínú ìlọ-kiri."
       }
-    ]
+    ],
+    "developer": []
   }
 }

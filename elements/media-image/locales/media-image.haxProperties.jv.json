@@ -49,16 +49,6 @@
         "property": "caption",
         "title": "Katrangan gambar",
         "description": "Katrangan kanggo gambar."
-      },
-      {
-        "property": "figureLabelTitle",
-        "title": "Judhul Gambar",
-        "description": "Judhul kanggo label gambar."
-      },
-      {
-        "property": "figureLabelDescription",
-        "title": "Katrangan Gambar",
-        "description": "Katrangan kanggo label gambar."
       }
     ],
     "advanced": [
@@ -76,6 +66,16 @@
         "property": "disableZoom",
         "title": "Pateni modal gambar",
         "description": "Pateni klik sing mbukak gambar ing dialog pamriksa gambar."
+      },
+      {
+        "property": "figureLabelTitle",
+        "title": "Judhul Gambar",
+        "description": "Judhul kanggo label gambar."
+      },
+      {
+        "property": "figureLabelDescription",
+        "title": "Katrangan Gambar",
+        "description": "Katrangan kanggo label gambar."
       }
     ],
     "developer": [

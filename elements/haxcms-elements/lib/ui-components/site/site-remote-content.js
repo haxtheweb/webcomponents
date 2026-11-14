@@ -347,75 +347,8 @@ class SiteRemoteContent extends HAXCMSI18NMixin(
    * haxProperties integration via file reference
    */
   static get haxProperties() {
-    return {
-      type: "grid",
-      canScale: false,
-
-      canEditSource: false,
-      gizmo: {
-        title: "Remote Content",
-        description: "Reuse content from one site in another.",
-        icon: "hax:remote",
-        color: "grey",
-        tags: [
-          "Other",
-          "haxcms",
-          "content",
-          "remote",
-          "reference",
-          "url",
-          "resource",
-        ],
-        handles: [],
-        meta: {
-          author: "HAXTheWeb core team",
-        },
-      },
-      settings: {
-        configure: [
-          {
-            property: "siteurl",
-            title: "Site address",
-            description:
-              "Paste address to reference content from if not the current site",
-            inputMethod: "textfield",
-          },
-          {
-            property: "uuid",
-            title: "Item",
-            description: "Item to render for the link / title data",
-            inputMethod: "textfield",
-          },
-          {
-            property: "breakreference",
-            title: "Break reference",
-            description:
-              "Checking this box copies the remote content for editing locally but removes the association. It will no longer get updates when the reference material updates.",
-            inputMethod: "boolean",
-          },
-          {
-            property: "showTitle",
-            title: "Show title",
-            description:
-              "Toggle on to render the title of the resource being displayed",
-            inputMethod: "boolean",
-          },
-        ],
-      },
-      demoSchema: [
-        {
-          tag: "site-remote-content",
-          properties: {
-            showTitle: true,
-            _remoteTitle: "Select content",
-          },
-          content: "<div>Select content to load</div>",
-        },
-      ],
-      saveOptions: {
-        unsetAttributes: ["t", "_remote-title"],
-      },
-    };
+    return new URL("./site-remote-content.haxProperties.json", import.meta.url)
+      .href;
   }
   /**
    * Implements haxHooks to tie into life-cycle if hax exists.

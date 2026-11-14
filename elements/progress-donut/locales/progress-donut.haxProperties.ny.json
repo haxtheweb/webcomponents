@@ -26,11 +26,6 @@
         "description": "Mawu ena a chithunzi."
       },
       {
-        "property": "animated",
-        "title": "Choyenda",
-        "description": "Ngati kupita patsogolo kumayenda pakutsegula koyamba"
-      },
-      {
         "property": "complete",
         "title": "Yatha",
         "description": "Gulu la mitengo yomalizidwa."
@@ -39,6 +34,13 @@
         "property": "total",
         "title": "Zonse",
         "description": "Chiwerengero chonse zinthu zonse zikamalizidwa."
+      }
+    ],
+    "advanced": [
+      {
+        "property": "animated",
+        "title": "Choyenda",
+        "description": "Ngati kupita patsogolo kumayenda pakutsegula koyamba"
       },
       {
         "property": "startAngle",

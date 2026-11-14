@@ -1,7 +1,7 @@
 {
   "gizmo": {
     "title": "Igaz / hamis kérdés",
-    "description": "Igaz-hamis kérdés"
+    "description": "Állítás, amelyet a tanuló igaznak vagy hamisnak jelöl."
   },
   "settings": {
     "configure": [

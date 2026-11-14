@@ -10,10 +10,6 @@
         "title": "Εικονίδιο καρτέλας"
       },
       {
-        "property": "disabled",
-        "title": "Απενεργοποιημένο"
-      },
-      {
         "property": "label",
         "title": "Ετικέτα καρτέλας"
       },
@@ -25,16 +21,22 @@
     ],
     "advanced": [
       {
-        "property": "id",
-        "title": "Μοναδικό ID"
-      },
-      {
         "property": "flag",
         "title": "Προαιρετικό κείμενο σήμανσης"
       },
       {
         "property": "flagIcon",
         "title": "Προαιρετικό εικονίδιο σήμανσης"
+      },
+      {
+        "property": "disabled",
+        "title": "Απενεργοποιημένο"
+      }
+    ],
+    "developer": [
+      {
+        "property": "id",
+        "title": "Μοναδικό ID"
       }
     ]
   }

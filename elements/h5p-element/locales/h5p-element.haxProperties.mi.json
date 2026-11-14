@@ -4,17 +4,16 @@
     "description": "Ka purei i ngā ihirangi whakawhitiwhiti H5P mai i tētahi kōnae .h5p kua tukuna ake, kāore he tūmau H5P e hiahiatia"
   },
   "settings": {
-    "configure": [
-      {
-        "slot": "",
-        "description": "Tukuna ake, hono rānei he kōnae .h5p. Ka wetekina ki te pūtirotiro; kāore he tūmau H5P e hiahiatia.",
-        "title": "Kōnae H5P"
-      }
-    ],
+    "configure": [],
     "advanced": [
       {
         "title": "Waehere iframe tāmi tawhito",
         "description": "Mō ngā ihirangi tawhito anake e tāmi ana i tētahi iframe H5P mai i tētahi atu pae. Waiho kia putua ina tautuhia he kōnae .h5p i runga ake nei."
+      },
+      {
+        "slot": "",
+        "description": "Tukuna ake, hono rānei he kōnae .h5p. Ka wetekina ki te pūtirotiro; kāore he tūmau H5P e hiahiatia.",
+        "title": "Kōnae H5P"
       }
     ]
   }

@@ -19,6 +19,13 @@
         "property": "imgSource",
         "title": "ছবির উৎস",
         "description": "কার্ডে ব্যবহৃত ছবির ফাইল। এটি ছবির কীওয়ার্ডকে অগ্রাহ্য করে।"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "imgKeyword",
+        "title": "ছবির কীওয়ার্ড",
+        "description": "এলোমেলো ছবির কীওয়ার্ড। ছবির উৎস দিলে এটি অগ্রাহ্য হয়।"
       },
       {
         "property": "typeOfAction",
@@ -29,13 +36,6 @@
         "property": "hasLearningObjective",
         "title": "শিখনফল",
         "description": "OER Schema: এই অনুশীলন যে শিখনফলকে সমর্থন করে তার ID বা URL।"
-      }
-    ],
-    "advanced": [
-      {
-        "property": "imgKeyword",
-        "title": "ছবির কীওয়ার্ড",
-        "description": "এলোমেলো ছবির কীওয়ার্ড। ছবির উৎস দিলে এটি অগ্রাহ্য হয়।"
       }
     ]
   }
