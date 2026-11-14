@@ -28,6 +28,8 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
       ...HaxTrayBrowserStyles,
       css`
         :host {
+          /* a HAX UI surface: light-dark() tokens follow the HAX UI theme */
+          color-scheme: var(--hax-ui-color-scheme);
           display: flex;
           flex-direction: column;
           align-items: stretch;

@@ -12,7 +12,7 @@ import {
   renderDDDBlockHeader,
 } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 import { DDDStatusTokens } from "@haxtheweb/d-d-d/lib/DDDStatusTokens.js";
-import "@haxtheweb/simple-icon/simple-icon.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import {
   activityId,
@@ -235,7 +235,8 @@ class BulletCheckList extends SchemaBehaviors(I18NMixin(DDD)) {
         .ddd-block-label {
           color: var(--bcl-muted);
         }
-        .ddd-block-chip simple-icon {
+        /* the icon takes the chip's text color, in every color mode */
+        .ddd-block-chip simple-icon-lite {
           --simple-icon-height: var(--ddd-icon-3xs);
           --simple-icon-width: var(--ddd-icon-3xs);
           color: var(--on-accent-color);
@@ -830,11 +831,10 @@ class BulletCheckList extends SchemaBehaviors(I18NMixin(DDD)) {
     return html`
       <div class="ddd-block" ?data-complete="${complete}">
         ${renderDDDBlockHeader({
-          chip: html`<simple-icon
+          chip: html`<simple-icon-lite
             icon="hax:clipboard-pulse"
-            no-colorize
             aria-hidden="true"
-          ></simple-icon>`,
+          ></simple-icon-lite>`,
           label: this.t.blockLabel
             .replace("{done}", done)
             .replace("{total}", items.length),

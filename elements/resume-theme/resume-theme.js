@@ -278,6 +278,8 @@ export class ResumeTheme extends DDDSuper(HAXCMSLitElementTheme) {
           color: var(--ddd-theme-default-white);
           text-decoration: none;
           transition: color 0.2s ease;
+          /* a long address or URL wraps instead of being cut off */
+          overflow-wrap: anywhere;
         }
 
         .contact-item a:hover {
@@ -418,7 +420,10 @@ export class ResumeTheme extends DDDSuper(HAXCMSLitElementTheme) {
             flex-direction: column;
           }
           .sidebar {
+            /* the full row, padding included, however narrow the screen */
+            box-sizing: border-box;
             width: 100%;
+            min-width: 0;
             max-width: 100%;
             padding: var(--ddd-spacing-8) var(--ddd-spacing-6);
           }

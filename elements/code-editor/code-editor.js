@@ -31,6 +31,9 @@ class CodeEditor extends I18NMixin(SchemaBehaviors(LitElement)) {
           align-items: stretch;
           margin: var(--code-pen-margin, 16px 0);
           width: calc(100% - 2px);
+          /* the editor paints its own theme, so controls and scrollbars
+             inside follow that theme and not the page */
+          color-scheme: dark;
           background-color: var(--code-editor-bg-color, #1e1e1e);
           color: var(--code-editor-text-color, #c6c6c6);
           border: var(--code-editor-code-border);
@@ -38,11 +41,13 @@ class CodeEditor extends I18NMixin(SchemaBehaviors(LitElement)) {
           border: 1px solid var(--code-editor-label-color, #ddd);
         }
         :host([theme-colors="vs-dark"]) {
+          color-scheme: dark;
           background-color: var(--code-editor-bg-color, #1e1e1e);
           color: var(--code-editor-text-color, #c6c6c6);
           border: 1px solid var(--code-editor-label-color, #000);
         }
         :host([theme-colors="vs"]) {
+          color-scheme: light;
           background-color: #fffffe;
           color: #000;
           border: 1px solid var(--code-editor-label-color, #ddd);

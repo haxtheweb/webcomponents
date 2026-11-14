@@ -31,6 +31,10 @@ class MemeMaker extends LitElement {
           padding: 0;
           font-size: 20px;
           overflow: hidden;
+          /* room for a line of each caption even when the picture is very
+             short or has not loaded, so the two never sit on each other */
+          --meme-maker-caption-size: var(--meme-maker-font-size, 36px);
+          min-height: calc(var(--meme-maker-caption-size) * 2.4 + 24px);
         }
         img {
           width: 100%;
@@ -57,7 +61,7 @@ class MemeMaker extends LitElement {
           font-weight: 900;
           font-family: "Impact", "Arial Black", "sans serif";
           line-height: 1.2;
-          font-size: var(--meme-maker-font-size, 36px);
+          font-size: var(--meme-maker-caption-size);
           color: white;
           text-shadow:
             -1px -1px 0 #000,
@@ -73,15 +77,13 @@ class MemeMaker extends LitElement {
           bottom: 0;
         }
         @media (max-width: 800px) {
-          .top-text,
-          .bottom-text {
-            font-size: var(--meme-maker-font-size-medium, 20px);
+          figure {
+            --meme-maker-caption-size: var(--meme-maker-font-size-medium, 20px);
           }
         }
         @media (max-width: 600px) {
-          .top-text,
-          .bottom-text {
-            font-size: var(--meme-maker-font-size-small, 20px);
+          figure {
+            --meme-maker-caption-size: var(--meme-maker-font-size-small, 20px);
           }
         }
       `,

@@ -94,9 +94,6 @@ class PageContentsMenu extends SchemaBehaviors(DDD) {
           margin: 0;
           display: block;
           padding: 0;
-          overflow: hidden;
-          white-space: nowrap;
-          text-overflow: ellipsis;
         }
         .link {
           display: flex;
@@ -110,9 +107,9 @@ class PageContentsMenu extends SchemaBehaviors(DDD) {
           align-items: center;
           vertical-align: middle;
           -webkit-box-align: center;
-          overflow: hidden;
-          white-space: nowrap;
-          text-overflow: ellipsis;
+          /* a long heading wraps: an ellipsis hid the rest of it on a
+             narrow screen */
+          overflow-wrap: anywhere;
           transition:
             font var(--ddd-duration-normal, 0.3s) ease-in-out,
             border var(--ddd-duration-normal, 0.3s) ease-in-out;

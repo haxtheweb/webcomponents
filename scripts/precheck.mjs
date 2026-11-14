@@ -81,6 +81,13 @@ const CONFIG = {
       changedFiles: /^elements\/[^/]+\/package\.json$/,
     },
     {
+      // Admin surfaces build on the HAX UI layer: its tokens and type scale,
+      // the one dialog frame and the one confirm card. Known cases live in
+      // scripts/hax-ui-admin-contract.baseline.json; a new one blocks.
+      label: "HAX UI admin contract",
+      args: ["scripts/hax-ui-admin-contract-check.mjs"],
+    },
+    {
       // elements/user-action/lib/xapi-vocabulary.{json,js} must match the
       // static xapiVocabulary getters on the elements that send statements
       label: "xAPI vocabulary is up to date",

@@ -364,6 +364,8 @@ class JourneyTheme extends HAXCMSLitElementTheme {
         /* nothing moves with prefers-reduced-motion */
         @media (prefers-reduced-motion: reduce) {
           :host,
+          :host::before,
+          :host::after,
           *,
           *::before,
           *::after {
@@ -843,6 +845,12 @@ class JourneyTheme extends HAXCMSLitElementTheme {
           }
           .article-wrap {
             padding: var(--ddd-spacing-5);
+          }
+          /* the icon link no longer hangs outside its row */
+          .even .article-link-icon,
+          .odd .article-link-icon {
+            margin-left: 0;
+            margin-right: 0;
           }
           .even .article-wrap p {
             margin-left: unset;
