@@ -4,7 +4,7 @@
   "type": "grid",
   "gizmo": {
     "title": "Stop Note Group",
-    "description": "Stack several stop notes into one block that shows a note at a time, such as Tips or What's new.",
+    "description": "Stack several stop notes into one block that shows a note at a time, such as Tips or What's new. Instruction cards, side notes and framed quotes can be stacked with them.",
     "icon": "icons:view-carousel",
     "color": "orange",
     "tags": ["Instructional", "content", "layout", "note", "tip", "what's new"],
@@ -23,7 +23,7 @@
       {
         "slot": "",
         "title": "Notes",
-        "description": "The stop notes in the group.",
+        "description": "The stop notes in the group. Instruction cards, side notes and framed quotes can be added too.",
         "inputMethod": "code-editor",
         "slotWrapper": "stop-note",
         "editMode": {

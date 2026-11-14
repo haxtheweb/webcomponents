@@ -118,5 +118,8 @@ export const KeepcaseDDDMap = css`
     --ddd-primary-23-rgb: 90, 44, 20;
     --ddd-primary-24-rgb: 29, 53, 87;
     --ddd-primary-25-rgb: 27, 110, 53;
+    /* text color paired with each remapped palette, where DDD's own no longer reads */
+    --ddd-primary-11-on: black;
+    --ddd-primary-17-on: white;
   }
 `;

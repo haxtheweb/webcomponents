@@ -108,6 +108,8 @@ export const MaterialDDDMap = css`
     --ddd-stack-gap: 16px;
     --ddd-inline-gap: 8px;
     --ddd-control-padding-inline: var(--md-comp-button-leading-space);
+    --ddd-card-radius: var(--md-sys-shape-corner-medium);
+    --ddd-control-radius: var(--md-sys-shape-corner-full);
     /* rgb channels follow their mapped color */
     --ddd-primary-0-rgb: 208, 188, 255, 0.7;
     --ddd-primary-1-rgb: 103, 80, 164;
@@ -135,5 +137,8 @@ export const MaterialDDDMap = css`
     --ddd-primary-23-rgb: 109, 58, 1;
     --ddd-primary-24-rgb: 4, 64, 159;
     --ddd-primary-25-rgb: 0, 82, 44;
+    /* text color paired with each remapped palette, where DDD's own no longer reads */
+    --ddd-primary-7-on: white;
+    --ddd-primary-17-on: white;
   }
 `;

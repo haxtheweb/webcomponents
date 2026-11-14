@@ -314,6 +314,14 @@
     "--ddd-control-padding-inline": {
       "value": "calc(var(--spacing) * 4)",
       "note": "Button px-4, 16px"
+    },
+    "--ddd-card-radius": {
+      "token": "--radius-xl",
+      "note": "Card is rounded-xl"
+    },
+    "--ddd-control-radius": {
+      "token": "--radius-md",
+      "note": "Button is rounded-md"
     }
   },
   "extraTokens": [

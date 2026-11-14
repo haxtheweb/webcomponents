@@ -36,6 +36,7 @@
   "strikethroughButton": "Cross out",
   "codeButton": "Code",
   "markButton": "Highlight",
+  "kbdButton": "Keyboard key",
   "abbrButton": "Abbreviation",
   "removeFormatButton": "Remove format",
   "linkButton": "Link",

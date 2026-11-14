@@ -46,7 +46,8 @@
         "^ddd-font-weight-",
         "^ddd-radius-",
         "^ddd-boxShadow-",
-        "^ddd-focus-"
+        "^ddd-focus-",
+        "^ddd-primary-\\d+-on$"
       ]
     },
     {
@@ -95,6 +96,22 @@
           "--ddd-control-padding-inline": 8
         }
       }
+    },
+    {
+      "id": "component",
+      "title": "Component",
+      "mapping": "optional",
+      "why": "Where a system gives a kind of component its own shape (square cards, pill buttons). Each defaults to a general DDD token; a bridge maps only the ones its system has an opinion on. Blocks with a deliberate design of their own, stop-note first among them, have no component token.",
+      "families": {
+        "card": "^ddd-card-(radius|padding|border-width|shadow)$",
+        "control": "^ddd-control-radius$",
+        "tag": "^ddd-tag-radius$"
+      },
+      "patterns": [
+        "^ddd-card-(radius|padding|border-width|shadow)$",
+        "^ddd-control-radius$",
+        "^ddd-tag-radius$"
+      ]
     }
   ]
 }

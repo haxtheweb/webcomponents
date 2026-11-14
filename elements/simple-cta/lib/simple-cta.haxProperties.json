@@ -47,6 +47,29 @@
         "title": "Hide icon",
         "description": "Hide the icon used to accent text",
         "inputMethod": "boolean"
+      },
+      {
+        "property": "appearance",
+        "title": "Appearance",
+        "description": "How much emphasis the button has.",
+        "inputMethod": "select",
+        "options": {
+          "": "Filled",
+          "tonal": "Tonal",
+          "outlined": "Outlined",
+          "plain": "Plain"
+        }
+      },
+      {
+        "property": "size",
+        "title": "Size",
+        "description": "Button size.",
+        "inputMethod": "select",
+        "options": {
+          "s": "Small",
+          "": "Medium",
+          "l": "Large"
+        }
       }
     ],
     "advanced": [

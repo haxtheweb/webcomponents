@@ -25429,6 +25429,10 @@
           ],
           "mixins": [
             {
+              "name": "DDDVocabulary",
+              "package": "@haxtheweb/d-d-d/lib/DDDVocabulary.js"
+            },
+            {
               "name": "SimpleTagLiteSuper",
               "module": "/lib/simple-tag-lite.js"
             }

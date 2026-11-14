@@ -383,6 +383,14 @@
     "--ddd-control-padding-inline": {
       "token": "--md-comp-button-leading-space",
       "note": "24px"
+    },
+    "--ddd-card-radius": {
+      "token": "--md-sys-shape-corner-medium",
+      "note": "cards use the medium corner, 12px"
+    },
+    "--ddd-control-radius": {
+      "token": "--md-sys-shape-corner-full",
+      "note": "buttons are fully rounded"
     }
   },
   "extraTokens": [

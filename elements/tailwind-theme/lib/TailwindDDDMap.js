@@ -118,5 +118,8 @@ export const TailwindDDDMap = css`
     --ddd-primary-23-rgb: 151, 60, 0;
     --ddd-primary-24-rgb: 25, 60, 184;
     --ddd-primary-25-rgb: 1, 102, 48;
+    /* text color paired with each remapped palette, where DDD's own no longer reads */
+    --ddd-primary-17-on: white;
+    --ddd-primary-19-on: black;
   }
 `;

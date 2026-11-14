@@ -27,6 +27,19 @@
         "title": "Auto accent color",
         "description": "Derive the accent color from the label text automatically.",
         "inputMethod": "boolean"
+      },
+      {
+        "property": "variant",
+        "title": "Meaning",
+        "description": "Give the tag a meaning color. Leave empty for a neutral tag.",
+        "inputMethod": "select",
+        "options": {
+          "": "Neutral",
+          "brand": "Brand",
+          "success": "Success",
+          "warning": "Warning",
+          "danger": "Danger"
+        }
       }
     ],
     "advanced": [

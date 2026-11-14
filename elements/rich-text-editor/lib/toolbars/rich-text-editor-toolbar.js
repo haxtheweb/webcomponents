@@ -287,6 +287,20 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       };
     }
     /**
+     * default config for a keyboard key (kbd) format button
+     *
+     * @readonly
+     */
+    get kbdButton() {
+      return {
+        command: "wrapRange",
+        commandVal: "KBD",
+        toggles: true,
+        label: "Keyboard key",
+        type: "rich-text-editor-button",
+      };
+    }
+    /**
      * default config for a span format button
      *
      * @readonly

@@ -371,3 +371,83 @@ describe('Test Desktop Responsiveness', () => {
       expect(hidden).to.equal(true);
     })
 }) */
+
+describe("simple-cta shared vocabulary", () => {
+  it("reads light and large as appearance outlined and size l", async () => {
+    const legacy = await fixture(
+      html`<simple-cta link="#a" label="Go" light large></simple-cta>`,
+    );
+    expect(legacy.dddWord("appearance")).to.equal("outlined");
+    expect(legacy.dddWord("size")).to.equal("l");
+    expect(legacy.matches(":state(appearance-outlined)")).to.equal(true);
+    // nothing is added to or removed from the author's markup
+    expect(legacy.hasAttribute("appearance")).to.equal(false);
+    expect(legacy.hasAttribute("light")).to.equal(true);
+  });
+
+  it("draws the new words the same as the existing attributes", async () => {
+    const legacy = await fixture(
+      html`<simple-cta link="#a" label="Go" light large></simple-cta>`,
+    );
+    const modern = await fixture(
+      html`<simple-cta
+        link="#a"
+        label="Go"
+        appearance="outlined"
+        size="l"
+      ></simple-cta>`,
+    );
+    const pick = (el) => {
+      const s = globalThis.getComputedStyle(
+        el.shadowRoot.querySelector(".btn"),
+      );
+      return [
+        s.color,
+        s.backgroundColor,
+        s.borderTopColor,
+        s.paddingTop,
+        s.paddingLeft,
+        s.paddingRight,
+      ];
+    };
+    expect(pick(modern)).to.deep.equal(pick(legacy));
+  });
+
+  it("defaults to filled, medium", async () => {
+    const el = await fixture(
+      html`<simple-cta link="#a" label="Go"></simple-cta>`,
+    );
+    expect(el.dddWord("appearance")).to.equal("filled");
+    expect(el.dddWord("size")).to.equal("m");
+  });
+
+  it("offers tonal and plain", async () => {
+    const tonal = await fixture(
+      html`<simple-cta link="#a" label="Go" appearance="tonal"></simple-cta>`,
+    );
+    const plain = await fixture(
+      html`<simple-cta link="#a" label="Go" appearance="plain"></simple-cta>`,
+    );
+    expect(tonal.matches(":state(appearance-tonal)")).to.equal(true);
+    expect(
+      globalThis.getComputedStyle(plain.shadowRoot.querySelector(".btn"))
+        .backgroundColor,
+    ).to.equal("rgba(0, 0, 0, 0)");
+    await expect(tonal).shadowDom.to.be.accessible();
+    await expect(plain).shadowDom.to.be.accessible();
+  });
+
+  it("follows the control radius token", async () => {
+    const el = await fixture(
+      html`<simple-cta
+        link="#a"
+        label="Go"
+        style="--ddd-control-radius: 999px"
+      ></simple-cta>`,
+    );
+    expect(
+      globalThis.getComputedStyle(el.shadowRoot.querySelector(".btn"))
+        .borderTopLeftRadius,
+    ).to.equal("999px");
+  });
+});

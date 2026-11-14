@@ -43,6 +43,7 @@ const rules = [
   ],
   [/^ddd-theme-default-(.+)$/, (m) => ["color", m[1]], "color"],
   [/^ddd-primary-(\d+)-rgb$/, null],
+  [/^ddd-primary-(\d+)-on$/, (m) => ["color", "primary-on", m[1]], "color"],
   [/^ddd-primary-(\d+)$/, (m) => ["color", "primary", m[1]], "color"],
   [/^ddd-accent-(\d+)$/, (m) => ["color", "accent", m[1]], "color"],
   [

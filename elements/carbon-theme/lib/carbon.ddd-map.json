@@ -144,6 +144,32 @@
           "keptDDD": []
         }
       }
+    },
+    "component": {
+      "mapping": "optional",
+      "percent": 0,
+      "families": {
+        "card": {
+          "mapped": 0,
+          "total": 4,
+          "keptDDD": [
+            "--ddd-card-radius",
+            "--ddd-card-padding",
+            "--ddd-card-border-width",
+            "--ddd-card-shadow"
+          ]
+        },
+        "control": {
+          "mapped": 0,
+          "total": 1,
+          "keptDDD": ["--ddd-control-radius"]
+        },
+        "tag": {
+          "mapped": 0,
+          "total": 1,
+          "keptDDD": ["--ddd-tag-radius"]
+        }
+      }
     }
   },
   "contrast": [
@@ -212,6 +238,190 @@
       "bg": "--ddd-theme-default-limestoneMaxLight",
       "ratio": 16.45,
       "min": 4.5
+    }
+  ],
+  "pairs": [
+    {
+      "primary": 0,
+      "color": "--ddd-theme-default-pughBlue",
+      "on": "black",
+      "ratio": 12.33,
+      "source": "ddd"
+    },
+    {
+      "primary": 1,
+      "color": "--ddd-theme-default-beaverBlue",
+      "on": "white",
+      "ratio": 5,
+      "source": "ddd"
+    },
+    {
+      "primary": 2,
+      "color": "--ddd-theme-default-nittanyNavy",
+      "on": "white",
+      "ratio": 11.32,
+      "source": "ddd"
+    },
+    {
+      "primary": 3,
+      "color": "--ddd-theme-default-potentialMidnight",
+      "on": "white",
+      "ratio": 15.08,
+      "source": "ddd"
+    },
+    {
+      "primary": 4,
+      "color": "--ddd-theme-default-coalyGray",
+      "on": "white",
+      "ratio": 18.1,
+      "source": "ddd"
+    },
+    {
+      "primary": 5,
+      "color": "--ddd-theme-default-limestoneGray",
+      "on": "black",
+      "ratio": 8.83,
+      "source": "ddd"
+    },
+    {
+      "primary": 6,
+      "color": "--ddd-theme-default-slateGray",
+      "on": "white",
+      "ratio": 7.8,
+      "source": "ddd"
+    },
+    {
+      "primary": 7,
+      "color": "--ddd-theme-default-creekTeal",
+      "on": "black",
+      "ratio": 6.29,
+      "source": "ddd"
+    },
+    {
+      "primary": 8,
+      "color": "--ddd-theme-default-skyBlue",
+      "on": "black",
+      "ratio": 8.92,
+      "source": "ddd"
+    },
+    {
+      "primary": 9,
+      "color": "--ddd-theme-default-shrineTan",
+      "on": "black",
+      "ratio": 6.23,
+      "source": "ddd"
+    },
+    {
+      "primary": 10,
+      "color": "--ddd-theme-default-roarGolden",
+      "on": "black",
+      "ratio": 6.3,
+      "source": "ddd"
+    },
+    {
+      "primary": 11,
+      "color": "--ddd-theme-default-original87Pink",
+      "on": "white",
+      "ratio": 5.01,
+      "source": "ddd"
+    },
+    {
+      "primary": 12,
+      "color": "--ddd-theme-default-discoveryCoral",
+      "on": "black",
+      "ratio": 8.86,
+      "source": "ddd"
+    },
+    {
+      "primary": 13,
+      "color": "--ddd-theme-default-wonderPurple",
+      "on": "white",
+      "ratio": 7.74,
+      "source": "ddd"
+    },
+    {
+      "primary": 14,
+      "color": "--ddd-theme-default-athertonViolet",
+      "on": "black",
+      "ratio": 8.93,
+      "source": "ddd"
+    },
+    {
+      "primary": 15,
+      "color": "--ddd-theme-default-inventOrange",
+      "on": "black",
+      "ratio": 8.53,
+      "source": "ddd"
+    },
+    {
+      "primary": 16,
+      "color": "--ddd-theme-default-keystoneYellow",
+      "on": "black",
+      "ratio": 12.47,
+      "source": "ddd"
+    },
+    {
+      "primary": 17,
+      "color": "--ddd-theme-default-opportunityGreen",
+      "on": "white",
+      "ratio": 5.02,
+      "source": "paired"
+    },
+    {
+      "primary": 18,
+      "color": "--ddd-theme-default-futureLime",
+      "on": "black",
+      "ratio": 8.78,
+      "source": "ddd"
+    },
+    {
+      "primary": 19,
+      "color": "--ddd-theme-default-forestGreen",
+      "on": "black",
+      "ratio": 6.27,
+      "source": "paired"
+    },
+    {
+      "primary": 20,
+      "color": "--ddd-theme-default-landgrantBrown",
+      "on": "white",
+      "ratio": 11.71,
+      "source": "ddd"
+    },
+    {
+      "primary": 21,
+      "color": "--ddd-theme-default-globalNeon",
+      "on": "black",
+      "ratio": 15.62,
+      "source": "ddd"
+    },
+    {
+      "primary": 22,
+      "color": "--ddd-theme-default-error",
+      "on": "white",
+      "ratio": 7.79,
+      "source": "ddd"
+    },
+    {
+      "primary": 23,
+      "color": "--ddd-theme-default-warning",
+      "on": "white",
+      "ratio": 7.84,
+      "source": "ddd"
+    },
+    {
+      "primary": 24,
+      "color": "--ddd-theme-default-info",
+      "on": "white",
+      "ratio": 7.79,
+      "source": "ddd"
+    },
+    {
+      "primary": 25,
+      "color": "--ddd-theme-default-success",
+      "on": "white",
+      "ratio": 7.72,
+      "source": "ddd"
     }
   ],
   "problems": [],

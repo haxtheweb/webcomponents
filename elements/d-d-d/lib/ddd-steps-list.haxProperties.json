@@ -20,7 +20,20 @@
     }
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "property": "horizontal",
+        "title": "Step indicator",
+        "description": "Show the steps as a compact row of titles that marks progress. Step content is not shown in this layout.",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "current",
+        "title": "Current step",
+        "description": "The step the reader is on, counting from 1. Earlier steps show as completed. Used by the step indicator.",
+        "inputMethod": "number"
+      }
+    ],
     "advanced": [],
     "developer": []
   },

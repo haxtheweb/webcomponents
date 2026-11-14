@@ -5,21 +5,25 @@
 import { css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { SimpleTagLiteSuper } from "./simple-tag-lite.js";
+import { DDDVocabulary } from "@haxtheweb/d-d-d/lib/DDDVocabulary.js";
 import {
   SimpleFieldsButtonStyles,
   SimpleFieldsTooltipStyles,
 } from "./simple-fields-ui.js";
 
-export class SimpleTag extends SimpleTagLiteSuper(DDD) {
+export class SimpleTag extends DDDVocabulary(SimpleTagLiteSuper(DDD)) {
   constructor() {
     super();
     this.autoAccentColor = false;
     // toggled is not reflected, so expose it to CSS as a custom state
     // (:state(toggled)) without adding attributes to saved content
-    try {
-      this.__internals = this.attachInternals();
-    } catch {
-      this.__internals = null;
+    // (DDDVocabulary attaches the internals; this is the fallback)
+    if (!this.__internals) {
+      try {
+        this.__internals = this.attachInternals();
+      } catch {
+        this.__internals = null;
+      }
     }
   }
   updated(changedProperties) {
@@ -142,7 +146,7 @@ export class SimpleTag extends SimpleTagLiteSuper(DDD) {
             calc(2 * var(--simple-fields-button-padding, 6px));
           border-radius: var(
             --simple-fields-tag-border-radius,
-            var(--ddd-radius-rounded)
+            var(--ddd-tag-radius, var(--ddd-radius-rounded))
           );
           font-family: var(
             --simple-fields-font-family,
@@ -185,6 +189,53 @@ export class SimpleTag extends SimpleTagLiteSuper(DDD) {
         }
       `,
       css`
+        /* shared vocabulary (DDDVocabulary): a variant gives the tag a
+           meaning color; neutral is the tag as it always was. Meaning wins
+           over an accent color. */
+        :host(:state(variant-brand)) {
+          --simple-fields-button-background-color: light-dark(
+            var(--ddd-theme-default-infoLight),
+            var(--ddd-theme-default-info)
+          );
+          --simple-fields-button-color: light-dark(
+            var(--ddd-theme-default-info),
+            var(--ddd-theme-default-infoLight)
+          );
+          --simple-fields-fieldset-border-color: transparent;
+        }
+        :host(:state(variant-success)) {
+          --simple-fields-button-background-color: light-dark(
+            var(--ddd-theme-default-successLight),
+            var(--ddd-theme-default-success)
+          );
+          --simple-fields-button-color: light-dark(
+            var(--ddd-theme-default-success),
+            var(--ddd-theme-default-successLight)
+          );
+          --simple-fields-fieldset-border-color: transparent;
+        }
+        :host(:state(variant-warning)) {
+          --simple-fields-button-background-color: light-dark(
+            var(--ddd-theme-default-warningLight),
+            var(--ddd-theme-default-warning)
+          );
+          --simple-fields-button-color: light-dark(
+            var(--ddd-theme-default-warning),
+            var(--ddd-theme-default-warningLight)
+          );
+          --simple-fields-fieldset-border-color: transparent;
+        }
+        :host(:state(variant-danger)) {
+          --simple-fields-button-background-color: light-dark(
+            var(--ddd-theme-default-errorLight),
+            var(--ddd-theme-default-error)
+          );
+          --simple-fields-button-color: light-dark(
+            var(--ddd-theme-default-error),
+            var(--ddd-theme-default-errorLight)
+          );
+          --simple-fields-fieldset-border-color: transparent;
+        }
         :host(:state(toggled)) {
           --simple-fields-button-background-color: light-dark(
             var(--ddd-theme-default-nittanyNavy),

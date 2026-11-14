@@ -133,6 +133,31 @@
           "keptDDD": []
         }
       }
+    },
+    "component": {
+      "mapping": "optional",
+      "percent": 33,
+      "families": {
+        "card": {
+          "mapped": 1,
+          "total": 4,
+          "keptDDD": [
+            "--ddd-card-padding",
+            "--ddd-card-border-width",
+            "--ddd-card-shadow"
+          ]
+        },
+        "control": {
+          "mapped": 1,
+          "total": 1,
+          "keptDDD": []
+        },
+        "tag": {
+          "mapped": 0,
+          "total": 1,
+          "keptDDD": ["--ddd-tag-radius"]
+        }
+      }
     }
   },
   "contrast": [
@@ -201,6 +226,190 @@
       "bg": "--ddd-theme-default-limestoneMaxLight",
       "ratio": 16.31,
       "min": 4.5
+    }
+  ],
+  "pairs": [
+    {
+      "primary": 0,
+      "color": "--ddd-theme-default-pughBlue",
+      "on": "black",
+      "ratio": 11.58,
+      "source": "ddd"
+    },
+    {
+      "primary": 1,
+      "color": "--ddd-theme-default-beaverBlue",
+      "on": "white",
+      "ratio": 5.57,
+      "source": "ddd"
+    },
+    {
+      "primary": 2,
+      "color": "--ddd-theme-default-nittanyNavy",
+      "on": "white",
+      "ratio": 12.61,
+      "source": "ddd"
+    },
+    {
+      "primary": 3,
+      "color": "--ddd-theme-default-potentialMidnight",
+      "on": "white",
+      "ratio": 16.15,
+      "source": "ddd"
+    },
+    {
+      "primary": 4,
+      "color": "--ddd-theme-default-coalyGray",
+      "on": "white",
+      "ratio": 18.26,
+      "source": "ddd"
+    },
+    {
+      "primary": 5,
+      "color": "--ddd-theme-default-limestoneGray",
+      "on": "black",
+      "ratio": 8.33,
+      "source": "ddd"
+    },
+    {
+      "primary": 6,
+      "color": "--ddd-theme-default-slateGray",
+      "on": "white",
+      "ratio": 11.73,
+      "source": "ddd"
+    },
+    {
+      "primary": 7,
+      "color": "--ddd-theme-default-creekTeal",
+      "on": "black",
+      "ratio": 6.93,
+      "source": "ddd"
+    },
+    {
+      "primary": 8,
+      "color": "--ddd-theme-default-skyBlue",
+      "on": "black",
+      "ratio": 6.61,
+      "source": "ddd"
+    },
+    {
+      "primary": 9,
+      "color": "--ddd-theme-default-shrineTan",
+      "on": "black",
+      "ratio": 5.66,
+      "source": "ddd"
+    },
+    {
+      "primary": 10,
+      "color": "--ddd-theme-default-roarGolden",
+      "on": "black",
+      "ratio": 6.37,
+      "source": "ddd"
+    },
+    {
+      "primary": 11,
+      "color": "--ddd-theme-default-original87Pink",
+      "on": "white",
+      "ratio": 8.01,
+      "source": "ddd"
+    },
+    {
+      "primary": 12,
+      "color": "--ddd-theme-default-discoveryCoral",
+      "on": "black",
+      "ratio": 7.34,
+      "source": "ddd"
+    },
+    {
+      "primary": 13,
+      "color": "--ddd-theme-default-wonderPurple",
+      "on": "white",
+      "ratio": 11.49,
+      "source": "ddd"
+    },
+    {
+      "primary": 14,
+      "color": "--ddd-theme-default-athertonViolet",
+      "on": "black",
+      "ratio": 9.62,
+      "source": "ddd"
+    },
+    {
+      "primary": 15,
+      "color": "--ddd-theme-default-inventOrange",
+      "on": "black",
+      "ratio": 9.01,
+      "source": "ddd"
+    },
+    {
+      "primary": 16,
+      "color": "--ddd-theme-default-keystoneYellow",
+      "on": "black",
+      "ratio": 13.9,
+      "source": "ddd"
+    },
+    {
+      "primary": 17,
+      "color": "--ddd-theme-default-opportunityGreen",
+      "on": "white",
+      "ratio": 5.73,
+      "source": "paired"
+    },
+    {
+      "primary": 18,
+      "color": "--ddd-theme-default-futureLime",
+      "on": "black",
+      "ratio": 9.31,
+      "source": "ddd"
+    },
+    {
+      "primary": 19,
+      "color": "--ddd-theme-default-forestGreen",
+      "on": "black",
+      "ratio": 6.15,
+      "source": "paired"
+    },
+    {
+      "primary": 20,
+      "color": "--ddd-theme-default-landgrantBrown",
+      "on": "white",
+      "ratio": 9.91,
+      "source": "ddd"
+    },
+    {
+      "primary": 21,
+      "color": "--ddd-theme-default-globalNeon",
+      "on": "black",
+      "ratio": 16.16,
+      "source": "ddd"
+    },
+    {
+      "primary": 22,
+      "color": "--ddd-theme-default-error",
+      "on": "white",
+      "ratio": 14.13,
+      "source": "ddd"
+    },
+    {
+      "primary": 23,
+      "color": "--ddd-theme-default-warning",
+      "on": "white",
+      "ratio": 7.89,
+      "source": "ddd"
+    },
+    {
+      "primary": 24,
+      "color": "--ddd-theme-default-info",
+      "on": "white",
+      "ratio": 12.61,
+      "source": "ddd"
+    },
+    {
+      "primary": 25,
+      "color": "--ddd-theme-default-success",
+      "on": "white",
+      "ratio": 9.89,
+      "source": "ddd"
     }
   ],
   "problems": [],
@@ -869,6 +1078,22 @@
       "light": "1rem",
       "dark": "1rem",
       "note": "PatternFly button inline padding, 16px"
+    },
+    {
+      "ddd": "--ddd-card-radius",
+      "tier": "component",
+      "token": "--pf-t--global--border--radius--medium",
+      "light": "16px",
+      "dark": "16px",
+      "note": "cards"
+    },
+    {
+      "ddd": "--ddd-control-radius",
+      "tier": "component",
+      "token": "--pf-t--global--border--radius--pill",
+      "light": "999px",
+      "dark": "999px",
+      "note": "buttons are pills"
     }
   ]
 }

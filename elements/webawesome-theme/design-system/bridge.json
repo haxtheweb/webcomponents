@@ -389,6 +389,18 @@
     "--ddd-control-padding-inline": {
       "token": "--wa-space-m",
       "note": "form-control-padding-inline is 1em; space-m is the same 16px at body size"
+    },
+    "--ddd-card-radius": {
+      "token": "--wa-panel-border-radius",
+      "note": "panels and cards"
+    },
+    "--ddd-card-border-width": {
+      "token": "--wa-panel-border-width",
+      "note": "panel border"
+    },
+    "--ddd-control-radius": {
+      "token": "--wa-form-control-border-radius",
+      "note": "buttons and form controls"
     }
   },
   "extraTokens": [
