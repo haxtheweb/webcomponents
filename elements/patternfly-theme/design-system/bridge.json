@@ -314,6 +314,26 @@
     "--ddd-control-radius": {
       "token": "--pf-t--global--border--radius--pill",
       "note": "buttons are pills"
+    },
+    "--ddd-card-padding": {
+      "value": "24px",
+      "note": "card body padding, spacer--lg (a px value: the upstream token is in rem, and HAX's root font size is 20px, not 16px)"
+    },
+    "--ddd-card-border-width": {
+      "value": "1px",
+      "note": "card border"
+    },
+    "--ddd-card-shadow": {
+      "value": "none",
+      "note": "cards are bordered, not raised"
+    },
+    "--ddd-control-height": {
+      "value": "37px",
+      "note": "PatternFly button: 6px block padding around 24px line height, 1px border"
+    },
+    "--ddd-tag-radius": {
+      "token": "--pf-t--global--border--radius--pill",
+      "note": "labels are pills"
     }
   },
   "extraTokens": [

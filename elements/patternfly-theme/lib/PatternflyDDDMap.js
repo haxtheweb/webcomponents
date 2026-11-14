@@ -96,6 +96,11 @@ export const PatternflyDDDMap = css`
     --ddd-control-padding-inline: var(--pf-t--global--spacer--md);
     --ddd-card-radius: var(--pf-t--global--border--radius--medium);
     --ddd-control-radius: var(--pf-t--global--border--radius--pill);
+    --ddd-card-padding: 24px;
+    --ddd-card-border-width: 1px;
+    --ddd-card-shadow: none;
+    --ddd-control-height: 37px;
+    --ddd-tag-radius: var(--pf-t--global--border--radius--pill);
     /* rgb channels follow their mapped color */
     --ddd-primary-0-rgb: 146, 197, 249, 0.7;
     --ddd-primary-1-rgb: 0, 102, 204;

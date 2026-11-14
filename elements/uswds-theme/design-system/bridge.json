@@ -351,6 +351,34 @@
     "--ddd-control-padding-inline": {
       "value": "20px",
       "note": "usa-button padding: units(1.5) units(2.5)"
+    },
+    "--ddd-card-radius": {
+      "value": "8px",
+      "note": "usa-card, $theme-card-border-radius lg"
+    },
+    "--ddd-card-padding": {
+      "value": "24px",
+      "note": "usa-card body padding, units(3)"
+    },
+    "--ddd-card-border-width": {
+      "value": "2px",
+      "note": "usa-card border, $theme-card-border-width"
+    },
+    "--ddd-card-shadow": {
+      "value": "none",
+      "note": "usa-card is bordered, not raised"
+    },
+    "--ddd-control-radius": {
+      "value": "4px",
+      "note": "usa-button, $theme-button-border-radius md"
+    },
+    "--ddd-control-height": {
+      "value": "44px",
+      "note": "usa-button, touch target"
+    },
+    "--ddd-tag-radius": {
+      "value": "2px",
+      "note": "usa-tag, $theme-border-radius-sm"
     }
   }
 }

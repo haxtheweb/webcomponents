@@ -702,7 +702,7 @@ if (guards.densityMinPx) {
 }
 if (guards.controlMinPx) {
   rows
-    .filter((row) => /^--ddd-(control|textfield)-height-/.test(row.ddd))
+    .filter((row) => /^--ddd-(control|textfield)-height(-|$)/.test(row.ddd))
     .forEach((row) => {
       const size = px(row.light);
       if (size !== null && size < guards.controlMinPx) {
