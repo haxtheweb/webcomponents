@@ -109,6 +109,16 @@ jobs:
         env:
           SYSTEM: ${{ matrix.system }}
         run: node scripts/contrast-check.mjs --design-system "$SYSTEM" --all --json "contrast-$SYSTEM.json"
+      - name: Print what still fails
+        # the failures, complete, in the log as well (a baseline can be
+        # rebuilt from it when the artifact can't be fetched)
+        if: always()
+        env:
+          SYSTEM: ${{ matrix.system }}
+        run: |
+          if [ -f "contrast-$SYSTEM.json" ]; then
+            node -e 'const r=JSON.parse(require("fs").readFileSync(process.argv[1],"utf8"));const o={};for(const s of Object.keys(r)){for(const [e,m] of Object.entries(r[s].results||{})){for(const [mode,k] of Object.entries(m)){if(Object.keys(k).length){((o[s]=o[s]||{})[e]=o[s][e]||{})[mode]=k}}}}console.log("::group::failures json");console.log(JSON.stringify(o));console.log("::endgroup::")' "contrast-$SYSTEM.json"
+          fi
       - name: Upload measurements
         if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
