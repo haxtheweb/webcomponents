@@ -1380,6 +1380,7 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
       <web-dialog
         .open="${this.open}"
         center
+        role="dialog"
         aria-label="${this._getDialogLabel()}"
         @open="${this._onDialogOpened}"
         @close="${this.handleModalClosed}"

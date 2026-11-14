@@ -1531,12 +1531,8 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
 
                     const renderEntries = (entries) => {
                       return entries.map(
-                        (entry, gridIndex) => html`
-                          <div
-                            role="gridcell"
-                            aria-rowindex="${gridIndex + 1}"
-                            aria-colindex="1"
-                          >
+                        (entry) => html`
+                          <div role="listitem">
                             <app-hax-use-case
                               data-item-index="${entry.index}"
                               data-data-type="${entry.item.dataType}"
@@ -1575,7 +1571,7 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
                           skeletonEntries.length > 0
                             ? html`<div
                                 class="template-results"
-                                role="grid"
+                                role="list"
                                 aria-label="${this.t.templateBasedStarters}"
                                 aria-describedby="template-count"
                               >
@@ -1607,7 +1603,7 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
                           blankEntries.length > 0
                             ? html`<div
                                 class="template-results"
-                                role="grid"
+                                role="list"
                                 aria-label="${this.t.themeBasedStarters}"
                                 aria-describedby="template-count"
                               >

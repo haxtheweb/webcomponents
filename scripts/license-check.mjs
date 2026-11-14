@@ -155,14 +155,24 @@ export function purlKey(purl) {
 }
 
 // only third-party npm packages are in scope: workspace packages are our own
-// Apache-2.0 code and GitHub Actions carry no license in the graph
+// Apache-2.0 code and GitHub Actions carry no license in the graph. A
+// workspace the lockfile lists by its folder ("elements/<name>") reaches the
+// graph under that path, which no registry package can be named: an npm name
+// only holds a "/" after an "@scope".
 function inScope(purl) {
-  return (
-    typeof purl === "string" &&
-    purl.startsWith("pkg:npm/") &&
-    !purl.startsWith("pkg:npm/%40haxtheweb/") &&
-    !purl.startsWith("pkg:npm/@haxtheweb/")
+  if (typeof purl !== "string" || !purl.startsWith("pkg:npm/")) {
+    return false;
+  }
+  if (
+    purl.startsWith("pkg:npm/%40haxtheweb/") ||
+    purl.startsWith("pkg:npm/@haxtheweb/")
+  ) {
+    return false;
+  }
+  const name = decodeURIComponent(
+    purl.slice("pkg:npm/".length).split(/[?#]/)[0],
   );
+  return name.startsWith("@") || !name.includes("/");
 }
 
 function accepted(policy, key, license) {

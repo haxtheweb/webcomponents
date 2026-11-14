@@ -340,7 +340,8 @@ class JsonOutlineSchema extends HTMLElement {
         items: this.items,
       };
       let span = globalThis.document.createElement("span");
-      span.innerHTML = JSON.stringify(obj, null, 2);
+      // the outline holds author-supplied text: show it as text, never markup
+      span.textContent = JSON.stringify(obj, null, 2);
       this.shadowRoot.appendChild(span.cloneNode(true));
     } else {
       this.render();
