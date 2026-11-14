@@ -23,9 +23,18 @@ import {
   HaxElementizer,
 } from "@haxtheweb/hax-body-behaviors/lib/HAXFields.js";
 import { waitForHAXCMSSiteApiRegistryReady } from "./utils/haxcms-site-api-registry.js";
+import {
+  DEFAULT_DESIGN_SYSTEM,
+  HAXCMS_DESIGN_SYSTEMS,
+  siteDesignSystemName,
+  themeSupportsDesignSystems,
+} from "./utils/haxcms-design-systems.js";
 import "@haxtheweb/simple-fields/simple-fields.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
+
+// haxtheweb/issues#3350: the design system, picked separately from the theme
+const DESIGN_SYSTEM_FIELD = "manifest-metadata-theme-designSystem";
 
 /**
  * `haxcms-appearance-admin-dialog`
@@ -76,6 +85,12 @@ class HAXCMSAppearanceAdminDialog extends HaxcmsAdminSectionMixin(
       theme: "Theme",
       themeGroupDescription: "Choose the active theme for your site.",
       themeFieldDescription: "Design and presentation layer for your site",
+      designSystem: "Design system",
+      designSystemDescription:
+        "Color, type, corners and density. The theme still decides the layout.",
+      designSystemDefault: "DDD (default)",
+      designSystemThemeOwn:
+        "This theme comes with its own design system, so it can't be changed here.",
       paletteGroupDescription: "Control accent colors and DDD palette tokens.",
       accentColor: "Accent color",
       accentColorDescription:
@@ -537,6 +552,11 @@ class HAXCMSAppearanceAdminDialog extends HaxcmsAdminSectionMixin(
     if (key === "manifest-metadata-theme-variables-cssVariable") {
       return this._normalizeCssVariable(this._extractScalarValue(value));
     }
+    if (key === DESIGN_SYSTEM_FIELD) {
+      return siteDesignSystemName({
+        designSystem: this._extractScalarValue(value),
+      });
+    }
     return this._extractScalarValue(value);
   }
 
@@ -820,6 +840,13 @@ class HAXCMSAppearanceAdminDialog extends HaxcmsAdminSectionMixin(
             showAllThemes: store.showAllThemes,
             activeValue: themeElement,
           },
+          {
+            property: DESIGN_SYSTEM_FIELD,
+            title: this.t.designSystem,
+            description: this.t.designSystemDescription,
+            inputMethod: "designsystem",
+            required: false,
+          },
         ],
       },
       {
@@ -947,6 +974,7 @@ class HAXCMSAppearanceAdminDialog extends HaxcmsAdminSectionMixin(
       "manifest-metadata-theme-element",
       metadata.element,
     );
+    values[DESIGN_SYSTEM_FIELD] = siteDesignSystemName(metadata);
     values["manifest-metadata-theme-variables-image"] =
       this._normalizeFieldValue(
         "manifest-metadata-theme-variables-image",
@@ -1067,6 +1095,11 @@ class HAXCMSAppearanceAdminDialog extends HaxcmsAdminSectionMixin(
     const hasTheme =
       typeof selection.theme !== "undefined" && selection.theme !== null;
     const hasPalette = typeof selection.palette !== "undefined";
+    if (typeof selection.designSystem === "string") {
+      this.values[DESIGN_SYSTEM_FIELD] = siteDesignSystemName({
+        designSystem: selection.designSystem,
+      });
+    }
     if (hasTheme) {
       this.values["manifest-metadata-theme-element"] =
         this._normalizeFieldValue(
@@ -1099,6 +1132,9 @@ class HAXCMSAppearanceAdminDialog extends HaxcmsAdminSectionMixin(
     }
     if (hasPalette) {
       this.__themePreviewSelection.palette = selection.palette;
+    }
+    if (typeof selection.designSystem === "string") {
+      this.__themePreviewSelection.designSystem = selection.designSystem;
     }
     this.__valueChangeLock = true;
     this._applyStoredThemePreviewSelection();
@@ -1458,14 +1494,16 @@ class HAXCMSAppearanceAdminDialog extends HaxcmsAdminSectionMixin(
       ${
         field.inputMethod === "colorpicker"
           ? this._renderAccentField(field)
-          : html`<simple-fields
-              data-group="${group.key}"
-              .fields="${this._fieldList(field)}"
-              .value="${this._fieldValue(field)}"
-              .schematizer="${HaxSchematizer}"
-              .elementizer="${HaxElementizer}"
-              @value-changed="${this._onFieldValueChanged}"
-            ></simple-fields>`
+          : field.inputMethod === "designsystem"
+            ? this._renderDesignSystemField(field)
+            : html`<simple-fields
+                data-group="${group.key}"
+                .fields="${this._fieldList(field)}"
+                .value="${this._fieldValue(field)}"
+                .schematizer="${HaxSchematizer}"
+                .elementizer="${HaxElementizer}"
+                @value-changed="${this._onFieldValueChanged}"
+              ></simple-fields>`
       }
     </div>`;
   }
@@ -1535,6 +1573,63 @@ class HAXCMSAppearanceAdminDialog extends HaxcmsAdminSectionMixin(
           )}
         </select>
       </div>
+    </div>`;
+  }
+
+  /**
+   * The design system as the HAX UI select (haxtheweb/issues#3350). Only
+   * themes that opt in take a site design system; for the rest it is shown
+   * disabled with a note, and the stored value is kept as it is.
+   */
+  _renderDesignSystemField(field) {
+    const key = field.property;
+    const id = "design-system";
+    const current = this._fieldValue(field)[key] || DEFAULT_DESIGN_SYSTEM;
+    const themeElement = this.values["manifest-metadata-theme-element"];
+    const supported = themeSupportsDesignSystems(themeElement);
+    if (
+      !supported &&
+      themeElement &&
+      globalThis.customElements &&
+      !globalThis.customElements.get(themeElement)
+    ) {
+      globalThis.customElements.whenDefined(themeElement).then(() => {
+        this.requestUpdate();
+      });
+    }
+    return html`<div class="accent-field">
+      <label for="${id}">${field.title}</label>
+      <p class="help" id="${id}-help">
+        ${supported ? field.description : this.t.designSystemThemeOwn}
+      </p>
+      <select
+        id="${id}"
+        class="hax-ui-select"
+        name="${key}"
+        .value="${live(current)}"
+        ?disabled="${!supported}"
+        aria-describedby="${id}-help"
+        @change="${(e) =>
+          this._onFieldValueChanged({
+            detail: { value: { [key]: e.target.value } },
+          })}"
+      >
+        <option
+          value="${DEFAULT_DESIGN_SYSTEM}"
+          ?selected="${current === DEFAULT_DESIGN_SYSTEM}"
+        >
+          ${this.t.designSystemDefault}
+        </option>
+        ${HAXCMS_DESIGN_SYSTEMS.map(
+          (system) =>
+            html`<option
+              value="${system.name}"
+              ?selected="${current === system.name}"
+            >
+              ${system.title}
+            </option>`,
+        )}
+      </select>
     </div>`;
   }
 

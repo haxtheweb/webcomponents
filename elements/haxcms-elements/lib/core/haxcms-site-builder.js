@@ -13,6 +13,13 @@ import {
 } from "@haxtheweb/utils/lib/storage.js";
 import { buildPageContentHTML } from "./utils/page-content-html.js";
 import {
+  DEFAULT_DESIGN_SYSTEM,
+  activateSiteDesignSystem,
+  getDesignSystemEntry,
+  siteDesignSystemName,
+  themeSupportsDesignSystems,
+} from "./utils/haxcms-design-systems.js";
+import {
   neutralizeStrayScripts,
   sanitizeNodeTree,
 } from "@haxtheweb/utils/lib/sanitize.js";
@@ -736,13 +743,88 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       }
       // wipe out what we got
       wipeSlot(this, "*");
+      // the next theme starts from plain DDD: a bridged theme activates its
+      // own system as it is created, any other is DDD until the site's
+      // design system is applied to it below
+      this._releaseSiteDesignSystem();
       store.themeElement = globalThis.document.createElement(newValue);
       // apply a class so that we can write generic CSS selectors in integrations
       store.themeElement.classList.add("haxcms-theme-element");
       this._applyThemePalette(store.themeElement, this.themeData);
       this.appendChild(store.themeElement);
       this._scheduleThemePaletteReapply(this.themeData);
+      this._applySiteDesignSystem(this.themeData);
     }
+  }
+
+  _designSystemManager() {
+    if (
+      globalThis.DesignSystemManager &&
+      typeof globalThis.DesignSystemManager.requestAvailability === "function"
+    ) {
+      return globalThis.DesignSystemManager.requestAvailability();
+    }
+    return null;
+  }
+
+  /** hand the page back to plain DDD if the site set a design system */
+  _releaseSiteDesignSystem() {
+    if (!this.__siteDesignSystem) {
+      return;
+    }
+    this.__siteDesignSystem = "";
+    const manager = this._designSystemManager();
+    if (manager && manager.systems && manager.systems[DEFAULT_DESIGN_SYSTEM]) {
+      manager.active = DEFAULT_DESIGN_SYSTEM;
+    }
+  }
+
+  /**
+   * Apply the site's design system (metadata.theme.designSystem,
+   * haxtheweb/issues#3350) once the theme is defined. Only themes that opt
+   * in (`static get designSystems() { return "any"; }`) take it; bridged
+   * themes keep their own. With no setting nothing happens, so a site
+   * without one behaves exactly as before, and only the chosen system's
+   * module is ever fetched.
+   */
+  async _applySiteDesignSystem(themeData) {
+    this.__designSystemStamp = this.__designSystemStamp + 1;
+    const stamp = this.__designSystemStamp;
+    const name = siteDesignSystemName(themeData);
+    const tag =
+      themeData && typeof themeData.element === "string" && themeData.element
+        ? themeData.element
+        : this.themeName;
+    if (name === DEFAULT_DESIGN_SYSTEM && !this.__siteDesignSystem) {
+      return;
+    }
+    if (
+      tag &&
+      globalThis.customElements &&
+      !globalThis.customElements.get(tag)
+    ) {
+      await globalThis.customElements.whenDefined(tag);
+    }
+    if (stamp !== this.__designSystemStamp) {
+      return;
+    }
+    if (name !== DEFAULT_DESIGN_SYSTEM && themeSupportsDesignSystems(tag)) {
+      if (
+        (await activateSiteDesignSystem(name)) &&
+        stamp === this.__designSystemStamp
+      ) {
+        this.__siteDesignSystem = name;
+      }
+      return;
+    }
+    // no setting any more, or a theme that keeps its own: release ours
+    // unless this theme is the bridge that system belongs to
+    const entry = getDesignSystemEntry(this.__siteDesignSystem);
+    if (entry && entry.theme === tag) {
+      this.__siteDesignSystem = "";
+      return;
+    }
+    this._releaseSiteDesignSystem();
   }
 
   _getThemePalette(themeData) {
@@ -943,6 +1025,10 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     this.themeLoaded = false;
     this.__themePaletteReapplyTimer = null;
     this.__themePaletteReapplyStamp = 0;
+    // haxtheweb/issues#3350: the design system this site set over its
+    // theme ("" when the theme's own, or plain DDD, is in effect)
+    this.__siteDesignSystem = "";
+    this.__designSystemStamp = 0;
     this.outlineLocation = "";
     this.activeItemLocation = "";
     if (HAXcmsStore.storePieces) {
@@ -1473,6 +1559,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     if (newValue) {
       this._applyThemePalette(store.themeElement, newValue);
       this._scheduleThemePaletteReapply(newValue);
+      this._applySiteDesignSystem(newValue);
       this.themeLoaded = false;
       let theme = newValue;
       // create the 'theme' as a new element

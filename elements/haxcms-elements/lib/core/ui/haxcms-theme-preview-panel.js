@@ -18,6 +18,12 @@ import {
 } from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";
 import { HaxUiAdminControls } from "@haxtheweb/d-d-d/lib/HaxUiAdminControls.js";
 import "@haxtheweb/d-d-d/lib/hax-palette-picker.js";
+import {
+  DEFAULT_DESIGN_SYSTEM,
+  HAXCMS_DESIGN_SYSTEMS,
+  siteDesignSystemName,
+  themeSupportsDesignSystems,
+} from "../utils/haxcms-design-systems.js";
 
 class HAXCMSThemePreviewPanel extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
   static get tag() {
@@ -32,6 +38,10 @@ class HAXCMSThemePreviewPanel extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
       activePalette: { type: String, attribute: "active-palette" },
       selectedTheme: { type: String, attribute: "selected-theme" },
       selectedPalette: { type: String, attribute: "selected-palette" },
+      selectedDesignSystem: {
+        type: String,
+        attribute: "selected-design-system",
+      },
       themeOptions: { type: Array, attribute: false },
       loadingThemes: {
         type: Boolean,
@@ -51,6 +61,7 @@ class HAXCMSThemePreviewPanel extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
     this.activePalette = "";
     this.selectedTheme = "";
     this.selectedPalette = "";
+    this.selectedDesignSystem = DEFAULT_DESIGN_SYSTEM;
     this.themeOptions = [];
     this.loadingThemes = false;
     this.showAllThemes = false;
@@ -70,6 +81,12 @@ class HAXCMSThemePreviewPanel extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
       loadingThemes: "Loading themes...",
       theme: "Theme",
       palette: "Palette",
+      designSystem: "Design system",
+      designSystemDefault: "DDD (default)",
+      designSystemHelp:
+        "Color, type, corners and density. The theme still decides the layout.",
+      designSystemThemeOwn:
+        "This theme comes with its own design system, so it can't be changed here.",
       cancel: "Cancel",
       openAppearanceSettings: "Open Appearance Settings",
     };
@@ -222,6 +239,15 @@ class HAXCMSThemePreviewPanel extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
           text-transform: uppercase;
           color: var(--hax-ui-text-muted);
         }
+        .design-system {
+          margin-bottom: var(--hax-ui-gap-lg);
+        }
+        .design-system .picker-heading {
+          display: block;
+        }
+        .design-system select {
+          width: 100%;
+        }
         .theme-picker {
           --haxcms-theme-picker-min-card-width: 120px;
           --haxcms-theme-picker-mini-preview-height: 64px;
@@ -337,6 +363,10 @@ class HAXCMSThemePreviewPanel extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
     }
     this.selectedTheme = activeTheme;
     this.selectedPalette = activePalette;
+    this.selectedDesignSystem = siteDesignSystemName(
+      manifest && manifest.metadata ? manifest.metadata.theme : null,
+    );
+    this._whenThemeDefined(this.selectedTheme);
     if (!this.selectedTheme && this.activeTheme) {
       this.selectedTheme = this.activeTheme;
     }
@@ -572,6 +602,14 @@ class HAXCMSThemePreviewPanel extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
     if (this.selectedTheme) {
       previewTheme.element = this.selectedTheme;
     }
+    if (
+      this.selectedDesignSystem &&
+      this.selectedDesignSystem !== DEFAULT_DESIGN_SYSTEM
+    ) {
+      previewTheme.designSystem = this.selectedDesignSystem;
+    } else {
+      delete previewTheme.designSystem;
+    }
     store.manifest.metadata.theme = previewTheme;
   }
 
@@ -600,6 +638,72 @@ class HAXCMSThemePreviewPanel extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
     }
     this.selectedTheme = value;
     this._applyPreviewToManifest();
+    this._whenThemeDefined(value);
+  }
+
+  /** re-render once a theme is defined, so its design system support shows */
+  _whenThemeDefined(themeTag) {
+    if (
+      themeTag &&
+      globalThis.customElements &&
+      !globalThis.customElements.get(themeTag)
+    ) {
+      globalThis.customElements.whenDefined(themeTag).then(() => {
+        this.requestUpdate();
+      });
+    }
+  }
+
+  _designSystemValueChanged(e) {
+    const value =
+      e && e.target && typeof e.target.value === "string"
+        ? e.target.value
+        : DEFAULT_DESIGN_SYSTEM;
+    if (value === this.selectedDesignSystem) {
+      return;
+    }
+    this.selectedDesignSystem = value;
+    this._applyPreviewToManifest();
+  }
+
+  _renderDesignSystemPicker() {
+    const supported = themeSupportsDesignSystems(this.selectedTheme);
+    return html`<div class="design-system">
+      <label class="picker-heading" for="design-system"
+        >${this.t.designSystem}</label
+      >
+      <select
+        id="design-system"
+        class="hax-ui-select"
+        aria-describedby="design-system-help"
+        .value=${supported ? this.selectedDesignSystem : DEFAULT_DESIGN_SYSTEM}
+        ?disabled=${!supported}
+        @change=${this._designSystemValueChanged}
+      >
+        <option
+          value="${DEFAULT_DESIGN_SYSTEM}"
+          ?selected=${
+            !supported || this.selectedDesignSystem === DEFAULT_DESIGN_SYSTEM
+          }
+        >
+          ${this.t.designSystemDefault}
+        </option>
+        ${HAXCMS_DESIGN_SYSTEMS.map(
+          (system) =>
+            html`<option
+              value="${system.name}"
+              ?selected=${
+                supported && this.selectedDesignSystem === system.name
+              }
+            >
+              ${system.title}
+            </option>`,
+        )}
+      </select>
+      <p class="description" id="design-system-help">
+        ${supported ? this.t.designSystemHelp : this.t.designSystemThemeOwn}
+      </p>
+    </div>`;
   }
 
   _paletteValueChanged(e) {
@@ -644,6 +748,7 @@ class HAXCMSThemePreviewPanel extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
         detail: {
           theme: this.selectedTheme,
           palette: this.selectedPalette,
+          designSystem: this.selectedDesignSystem,
         },
       }),
     );
@@ -684,6 +789,7 @@ class HAXCMSThemePreviewPanel extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
             }
           </div>
           <div class="picker-column">
+            ${this._renderDesignSystemPicker()}
             <h3 class="picker-heading">${this.t.palette}</h3>
             <hax-palette-picker
               .label=${this.t.palette}

@@ -8938,11 +8938,19 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         typeof e.detail.palette === "undefined" || e.detail.palette === null
           ? ""
           : `${e.detail.palette}`.trim();
+      const selectedDesignSystem =
+        typeof e.detail.designSystem === "string"
+          ? e.detail.designSystem.trim()
+          : "";
       if (selectedTheme !== "" || selectedPalette !== "") {
         previewSelection = {
           theme: selectedTheme,
           palette: selectedPalette,
         };
+        // haxtheweb/issues#3350: the design system picked in the preview
+        if (selectedDesignSystem !== "") {
+          previewSelection.designSystem = selectedDesignSystem;
+        }
       }
     }
     this.__appearancePreviewSelection = previewSelection;

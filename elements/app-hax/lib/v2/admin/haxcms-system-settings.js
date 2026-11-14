@@ -419,7 +419,7 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
       serverUploadLimitNote:
         "The server only accepts uploads up to {limit}, so files larger than that will still fail. See Status.",
       acceptedFormatsHelp:
-        "File extensions people can upload. Type one and press Enter to add it.",
+        "File extensions people can upload. Type one and press Enter to add it. Only formats HAXcms can store safely are ever accepted; remove one to turn it off.",
       addFileFormat: "Add a file format",
       removeFileFormat: "Remove {format}",
       resetToDefaults: "Reset to defaults",
@@ -1267,7 +1267,9 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
                 property: "acceptedFormats",
                 title: this.t.acceptedFileFormats,
                 inputMethod: "textarea",
-                default: "jpg,jpeg,png,webp,gif",
+                // the backends' safe upload list (haxtheweb/issues#3054)
+                default:
+                  "jpg,jpeg,png,gif,webm,webp,mp4,mp3,mov,csv,ppt,pptx,xlsx,doc,xls,docx,pdf,rtf,txt,vtt,html,md,xml,ics,vcf,h5p",
               },
             ],
           },
