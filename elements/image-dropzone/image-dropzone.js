@@ -272,6 +272,15 @@ export class ImageDropzone extends QuestionElement {
           outline: var(--ddd-focus-ring);
           outline-offset: var(--ddd-focus-offset);
         }
+        /* a zone sits on the author's image, so in forced colors the ring
+           needs its own solid ground to stand out from the picture */
+        @media (forced-colors: active) {
+          :host .dz-zone:focus-visible {
+            background-color: Canvas;
+            outline: var(--ddd-border-size-md) solid Highlight;
+            outline-offset: calc(-1 * var(--ddd-border-size-md));
+          }
+        }
         /* targeting: the outline takes the palette marker, the fill the
            palette tint */
         :host .dz-stage[data-targeting] .dz-zone {
