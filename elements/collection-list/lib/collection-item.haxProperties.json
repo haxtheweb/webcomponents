@@ -10,7 +10,7 @@
   "gizmo": {
     "title": "Collection item",
     "description": "Card-style item for use inside a collection list, with text, link, and optional media.",
-    "icon": "hax:figure",
+    "icon": "hax:card-item",
     "color": "purple",
     "tags": ["Layout", "collection", "list", "card"],
     "handles": [],

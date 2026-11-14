@@ -6,7 +6,7 @@
   "license": "Apache-2.0",
   "title": "Count up",
   "description": "Animate a number counting up to a target value when it scrolls into view.",
-  "icon": "icons:trending-up",
+  "icon": "hax:counter",
   "tags": [
     "Media",
     "data",
@@ -174,7 +174,7 @@
     "gizmo": {
       "title": "Count up",
       "description": "Animate a number counting up to a target value when it scrolls into view.",
-      "icon": "icons:trending-up",
+      "icon": "hax:counter",
       "color": "green",
       "tags": [
         "Media",

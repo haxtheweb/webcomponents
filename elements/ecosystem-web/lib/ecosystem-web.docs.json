@@ -6,7 +6,7 @@
   "license": "Apache-2.0",
   "title": "Ecosystem web",
   "description": "An interactive web of how the parts of a project connect, with sub-webs and step-by-step tours.",
-  "icon": "hardware:device-hub",
+  "icon": "hax:node-web",
   "tags": [
     "Media",
     "data",
@@ -150,7 +150,7 @@
     "gizmo": {
       "title": "Ecosystem web",
       "description": "An interactive web of how the parts of a project connect, with sub-webs and step-by-step tours.",
-      "icon": "hardware:device-hub",
+      "icon": "hax:node-web",
       "color": "blue",
       "tags": [
         "Media",

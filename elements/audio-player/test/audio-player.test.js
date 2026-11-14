@@ -275,7 +275,7 @@ describe("audio-player test", function () {
       const haxProps = await haxSchema(element.constructor);
       expect(haxProps.gizmo.title).to.equal("Audio");
       expect(haxProps.gizmo.description).to.contain("Accessible");
-      expect(haxProps.gizmo.icon).to.equal("av:equalizer");
+      expect(haxProps.gizmo.icon).to.equal("hax:waveform");
       expect(haxProps.gizmo.color).to.equal("green");
       expect(haxProps.gizmo.tags).to.include("Media");
       expect(haxProps.gizmo.tags).to.include("mp3");

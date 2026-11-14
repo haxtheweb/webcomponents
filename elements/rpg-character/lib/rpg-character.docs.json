@@ -6,7 +6,7 @@
   "license": "Apache-2.0",
   "title": "RPG Character",
   "description": "Fun character from HAX.",
-  "icon": "hax:hax2022",
+  "icon": "hax:pixel-hero",
   "tags": [
     "Other",
     "fun",
@@ -635,7 +635,7 @@
     "gizmo": {
       "title": "RPG Character",
       "description": "Fun character from HAX.",
-      "icon": "hax:hax2022",
+      "icon": "hax:pixel-hero",
       "color": "red",
       "tags": [
         "Other",

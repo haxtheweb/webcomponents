@@ -6,7 +6,7 @@
   "license": "Apache-2.0",
   "title": "Details",
   "description": "Accessible progressive disclosure with detail and summary",
-  "icon": "icons:arrow-drop-down",
+  "icon": "hax:details",
   "tags": [
     "Layout",
     "details",
@@ -56,7 +56,7 @@
     "gizmo": {
       "title": "Details",
       "description": "Accessible progressive disclosure with detail and summary",
-      "icon": "icons:arrow-drop-down",
+      "icon": "hax:details",
       "color": "grey",
       "tags": [
         "Layout",

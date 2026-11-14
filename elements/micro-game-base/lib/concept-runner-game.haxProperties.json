@@ -7,7 +7,7 @@
   "gizmo": {
     "title": "Concept runner game",
     "description": "A side-scrolling game: jump to grab the right concepts and clear the wrong ones.",
-    "icon": "hardware:videogame-asset",
+    "icon": "hax:game-runner",
     "color": "purple",
     "tags": ["Instructional", "interactive", "game"],
     "handles": [],

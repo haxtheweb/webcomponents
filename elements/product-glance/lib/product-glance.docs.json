@@ -6,7 +6,7 @@
   "license": "Apache-2.0",
   "title": "Product glance",
   "description": "Quick product overview block.",
-  "icon": "communication:business",
+  "icon": "hax:glance",
   "tags": [
     "Layout",
     "product",
@@ -68,7 +68,7 @@
     "gizmo": {
       "title": "Product glance",
       "description": "Quick product overview block.",
-      "icon": "communication:business",
+      "icon": "hax:glance",
       "color": "blue",
       "tags": [
         "Layout",

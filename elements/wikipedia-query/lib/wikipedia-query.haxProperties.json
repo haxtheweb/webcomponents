@@ -5,7 +5,7 @@
   "gizmo": {
     "title": "Wikipedia",
     "description": "Show a Wikipedia article in the page.",
-    "icon": "book",
+    "icon": "hax:encyclopedia",
     "color": "green",
     "tags": [
       "Content",

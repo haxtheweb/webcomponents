@@ -7,7 +7,7 @@
   "gizmo": {
     "title": "Audio",
     "description": "Accessible audio player with transcript support.",
-    "icon": "av:equalizer",
+    "icon": "hax:waveform",
     "color": "green",
     "tags": ["Media", "audio", "listen", "mp3", "podcast", "sound"],
     "handles": [

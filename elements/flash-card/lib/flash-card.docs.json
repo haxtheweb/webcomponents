@@ -6,7 +6,7 @@
   "license": "Apache-2.0",
   "title": "Flash card",
   "description": "Practice concepts with front-and-back flash cards.",
-  "icon": "icons:flip-to-front",
+  "icon": "hax:flip-cards",
   "tags": [
     "Instructional",
     "self check",
@@ -110,7 +110,7 @@
     "gizmo": {
       "title": "Flash card",
       "description": "Practice concepts with front-and-back flash cards.",
-      "icon": "icons:flip-to-front",
+      "icon": "hax:flip-cards",
       "color": "blue",
       "tags": [
         "Instructional",

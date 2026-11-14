@@ -7,7 +7,7 @@
   "gizmo": {
     "title": "Concept quest game",
     "description": "An overworld game where concepts ask questions and correct answers unlock the map.",
-    "icon": "hardware:videogame-asset",
+    "icon": "hax:game-quest",
     "color": "purple",
     "tags": ["Instructional", "interactive", "game"],
     "handles": [],

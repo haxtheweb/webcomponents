@@ -234,7 +234,7 @@ class LearningComponent extends I18NMixin(DDD) {
         title: "Learning component",
         description:
           "A card for instructors to communicate pedagogy and instructional strategies.",
-        icon: "icons:bookmark",
+        icon: "hax:objective",
         color: "orange",
         tags: [
           "Instructional",

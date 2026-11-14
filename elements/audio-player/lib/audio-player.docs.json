@@ -6,7 +6,7 @@
   "license": "Apache-2.0",
   "title": "Audio",
   "description": "Accessible audio player with transcript support.",
-  "icon": "av:equalizer",
+  "icon": "hax:waveform",
   "tags": [
     "Media",
     "audio",
@@ -32,7 +32,7 @@
     "gizmo": {
       "title": "Audio",
       "description": "Accessible audio player with transcript support.",
-      "icon": "av:equalizer",
+      "icon": "hax:waveform",
       "color": "green",
       "tags": [
         "Media",
