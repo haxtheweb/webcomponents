@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>MemoryMatch: memory-match Demo</title>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <script type="module">
+      import '../memory-match.js';
+    </script>
+    <style>
+      html {
+        color-scheme: light dark;
+      }
+      .demo {
+        max-width: 640px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="demo">
+      <h1>memory-match</h1>
+      <h2>Term and meaning (default)</h2>
+      <memory-match title="Match the term to its job">
+        <dl>
+          <dt>alt</dt>
+          <dd>Text alternative for an image</dd>
+          <dt>aria-live</dt>
+          <dd>Announces changes to screen readers</dd>
+          <dt>&lt;nav&gt;</dt>
+          <dd>Landmark for the main links</dd>
+          <dt>lang</dt>
+          <dd>Sets the page's language</dd>
+        </dl>
+      </memory-match>
+      <h2>Image and name, with an accent color</h2>
+      <memory-match title="Match the shape to its name" accent-color="purple">
+        <dl>
+          <dt><img src="circle.svg" alt="A round outline"></dt>
+          <dd>Circle</dd>
+          <dt><img src="triangle.svg" alt="An outline with three sides"></dt>
+          <dd>Triangle</dd>
+          <dt><img src="square.svg" alt="An outline with four equal sides"></dt>
+          <dd>Square</dd>
+        </dl>
+      </memory-match>
+    </div>
+  </body>
+</html>

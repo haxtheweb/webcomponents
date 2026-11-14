@@ -1,0 +1,140 @@
+{
+  "api": "1",
+  "type": "grid",
+  "editingElement": "core",
+  "hideDefaultSettings": false,
+  "canScale": true,
+  "canEditSource": true,
+  "contentEditable": false,
+  "designSystem": {
+    "primary": true,
+    "accent": false
+  },
+  "gizmo": {
+    "title": "Crossword",
+    "description": "A crossword made from a list of words and clues. The grid is generated for you; learners type the words and check them.",
+    "icon": "image:grid-on",
+    "color": "blue",
+    "tags": [
+      "Instructional",
+      "crossword",
+      "puzzle",
+      "vocabulary",
+      "game",
+      "question",
+      "assessment"
+    ],
+    "handles": [],
+    "meta": {
+      "author": "HAXTheWeb core team"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Title",
+        "description": "The title or question shown above the crossword.",
+        "inputMethod": "textfield",
+        "required": true
+      },
+      {
+        "property": "answers",
+        "title": "Words",
+        "description": "Each word and its clue. The grid is generated from this list: the longest word is placed first and the others cross it on shared letters.",
+        "inputMethod": "array",
+        "itemLabel": "label",
+        "hideDuplicate": true,
+        "expanded": true,
+        "properties": [
+          {
+            "property": "label",
+            "title": "Word",
+            "description": "The answer. Spaces and punctuation are left out of the grid.",
+            "inputMethod": "textfield",
+            "required": true
+          },
+          {
+            "property": "clue",
+            "title": "Clue",
+            "description": "What learners read to work out the word.",
+            "inputMethod": "textfield",
+            "required": true
+          }
+        ]
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Attempts",
+        "description": "How many times a learner can check. 0 means unlimited.",
+        "inputMethod": "number"
+      },
+      {
+        "property": "accentColor",
+        "title": "Accent color",
+        "description": "Optional color for the header chip, the active word and the action buttons.",
+        "inputMethod": "colorpicker",
+        "icon": "editor:format-color-fill"
+      },
+      {
+        "property": "collapsible",
+        "title": "Collapsible",
+        "description": "Show this crossword as a row that opens and closes. Opening one closes the other collapsible questions beside it.",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "collapsed",
+        "title": "Start collapsed",
+        "description": "When collapsible, start as a closed row that shows only the title and its status.",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Grading format",
+        "description": "OER Schema: grading format for this assessment (e.g. points, letter, percent, completion).",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Learning objective",
+        "description": "OER Schema: learning objective associated with this assessment.",
+        "inputMethod": "textfield"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Name of the quiz",
+        "description": "Quiz name used for xAPI identification in analytics systems.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "forCourse",
+        "title": "Course",
+        "description": "OER Schema: course this assessment is intended for.",
+        "inputMethod": "textfield"
+      }
+    ]
+  },
+  "saveOptions": {
+    "unsetAttributes": [
+      "attempts",
+      "answers",
+      "displayed-answers",
+      "t",
+      "show-answer",
+      "edit"
+    ]
+  },
+  "demoSchema": [
+    {
+      "tag": "crossword-puzzle",
+      "properties": {
+        "question": "Web basics mini"
+      },
+      "content": "<input value=\"HTML\" data-clue=\"Markup language of the web\" /><input value=\"HREF\" data-clue=\"Attribute that holds a link's destination\" /><input value=\"LINK\" data-clue=\"Element that loads a stylesheet\" /><input value=\"FORK\" data-clue=\"Copy a repo to your own account\" />"
+    }
+  ]
+}

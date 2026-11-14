@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes"
+    />
+    <title>QuickPoll: quick-poll Demo</title>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <script type="module">
+      import "../quick-poll.js";
+
+      // What a host or plugin does: listen for the vote, keep the counts,
+      // hand them back through the results property. The earlier votes
+      // here are sample data.
+      const poll = document.querySelector("#hosted");
+      const sample = [14, 4, 5, 9];
+      const counts = {};
+      customElements.whenDefined("quick-poll").then(async () => {
+        await poll.updateComplete;
+        // wait for the options to be read from the light DOM
+        while (!poll.choices.length) {
+          await new Promise((r) => requestAnimationFrame(r));
+        }
+        poll.choices.forEach((choice, i) => {
+          counts[choice.id] = sample[i] || 0;
+        });
+        poll.results = { ...counts };
+      });
+      poll.addEventListener("quick-poll-vote", (e) => {
+        const { choice, previous } = e.detail;
+        counts[choice] = (counts[choice] || 0) + 1;
+        if (previous) {
+          counts[previous] = Math.max(0, (counts[previous] || 0) - 1);
+        }
+        poll.results = { ...counts };
+      });
+    </script>
+    <style>
+      html {
+        color-scheme: light dark;
+      }
+      .centered {
+        max-width: 720px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Results from a host (the earlier votes are sample data)</h3>
+      <quick-poll
+        id="hosted"
+        question="When a layout breaks, what do you do first?"
+        allow-change
+      >
+        <input value="Open DevTools" />
+        <input value="Rewrite the CSS" />
+        <input value="Ask a classmate" />
+        <input value="Search the error" />
+      </quick-poll>
+
+      <h3>Standalone: no results source, your vote only</h3>
+      <quick-poll question="Which do you reach for first, grid or flexbox?">
+        <input value="Grid" />
+        <input value="Flexbox" />
+        <input value="Whichever the last project used" />
+      </quick-poll>
+
+      <h3>Results after the poll closes</h3>
+      <quick-poll
+        question="How confident are you with semantic HTML?"
+        show-results="closed"
+        closes="2099-12-31T17:00"
+      >
+        <input value="Very" />
+        <input value="Somewhat" />
+        <input value="Not yet" />
+      </quick-poll>
+
+      <h3>Instructor only, with an accent colour</h3>
+      <quick-poll
+        question="Should next week's lab be in pairs?"
+        show-results="never"
+        accent-color="teal"
+      >
+        <input value="Yes" />
+        <input value="No" />
+      </quick-poll>
+    </div>
+  </body>
+</html>

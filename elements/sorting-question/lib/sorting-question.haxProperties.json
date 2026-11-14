@@ -28,7 +28,16 @@
         "description": "Question Header.",
         "inputMethod": "textfield"
       },
-
+      {
+        "property": "layout",
+        "title": "Layout",
+        "description": "List: answers stacked in rows. Image cards: a row of cards that wraps, each with its image and move earlier / later buttons.",
+        "inputMethod": "select",
+        "options": {
+          "": "List",
+          "cards": "Image cards"
+        }
+      },
       {
         "property": "answers",
         "title": "Answers",

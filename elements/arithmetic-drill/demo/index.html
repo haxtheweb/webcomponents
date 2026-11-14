@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes"
+    />
+    <title>ArithmeticDrill: arithmetic-drill Demo</title>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <script type="module">
+      import "../arithmetic-drill.js";
+    </script>
+    <style>
+      body {
+        color-scheme: light dark;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Quick math: add, subtract and multiply, no timer</h3>
+      <arithmetic-drill title="Quick math" count="5"></arithmetic-drill>
+
+      <h3>Division facts with a timer the learner can turn off</h3>
+      <arithmetic-drill
+        title="Division facts"
+        operations="multiply divide"
+        min="1"
+        max="10"
+        count="8"
+        time-limit="60"
+        accent-color="orange"
+      ></arithmetic-drill>
+    </div>
+  </body>
+</html>

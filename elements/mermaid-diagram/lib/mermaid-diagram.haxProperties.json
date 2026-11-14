@@ -1,0 +1,93 @@
+{
+  "api": "1",
+  "type": "element",
+  "canScale": true,
+  "canEditSource": true,
+  "designSystem": {
+    "primary": false,
+    "accent": false
+  },
+  "gizmo": {
+    "title": "Diagram from text",
+    "description": "Write a diagram as text (Mermaid): a flowchart, sequence, timeline and more. It is drawn in the page with a text alternative.",
+    "icon": "hardware:device-hub",
+    "color": "blue",
+    "tags": ["Media", "diagram", "mermaid", "flowchart", "chart"],
+    "handles": [],
+    "meta": {
+      "author": "HAXTheWeb core team",
+      "anchorLabel": "diagramTitle"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "diagramTitle",
+        "title": "Title",
+        "description": "Shown above the diagram and used as its name.",
+        "inputMethod": "textfield",
+        "required": true
+      },
+      {
+        "property": "code",
+        "title": "Diagram source",
+        "description": "Mermaid text, for example: flowchart TD, then one line per link such as A[Draft] --> B{Ready?}. Add |label| after an arrow to label it. The drawing updates as you type.",
+        "inputMethod": "textarea",
+        "required": true
+      },
+      {
+        "property": "description",
+        "title": "Text alternative",
+        "description": "Describe what the diagram shows for people who cannot see it. Leave empty on a flowchart to have its steps listed for you.",
+        "inputMethod": "textarea"
+      },
+      {
+        "slot": "caption",
+        "title": "Caption",
+        "description": "Optional caption shown below the diagram.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "showSource",
+        "title": "Show the source",
+        "description": "Show the diagram text next to the drawing.",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "showDescription",
+        "title": "Show the text alternative",
+        "description": "Show the text alternative below the drawing. It is always available to screen readers.",
+        "inputMethod": "boolean"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "src",
+        "title": "Source file",
+        "description": "Address of a .mmd file to draw instead of the text above (https or a path on this site).",
+        "inputMethod": "textfield",
+        "validationType": "url"
+      },
+      {
+        "property": "accentColor",
+        "title": "Accent color",
+        "description": "Color of the icon chip in the header.",
+        "inputMethod": "colorpicker"
+      }
+    ],
+    "developer": []
+  },
+  "saveOptions": {
+    "wipeSlot": false,
+    "unsetAttributes": ["code"]
+  },
+  "demoSchema": [
+    {
+      "tag": "mermaid-diagram",
+      "properties": {
+        "diagramTitle": "Publishing checklist"
+      },
+      "content": "<pre>flowchart TD\n  A[Draft the page] --&gt; B{Has media?}\n  B --&gt;|Yes| C[Add captions and alt text]\n  B --&gt;|No| D[Run the a11y audit]\n  C --&gt; D\n  D --&gt; E((Publish))</pre>"
+    }
+  ]
+}

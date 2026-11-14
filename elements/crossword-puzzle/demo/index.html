@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes"
+    />
+    <title>CrosswordPuzzle: crossword-puzzle Demo</title>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <script type="module">
+      import "@haxtheweb/demo-snippet/demo-snippet.js";
+      import "../crossword-puzzle.js";
+    </script>
+    <style>
+      body {
+        color-scheme: light dark;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Web basics mini</h3>
+      <demo-snippet>
+        <template>
+          <crossword-puzzle question="Web basics mini">
+            <input value="HTML" data-clue="Markup language of the web" />
+            <input
+              value="HREF"
+              data-clue="Attribute that holds a link's destination"
+            />
+            <input value="LINK" data-clue="Element that loads a stylesheet" />
+            <input value="FORK" data-clue="Copy a repo to your own account" />
+          </crossword-puzzle>
+        </template>
+      </demo-snippet>
+      <h3>Web component vocabulary, three attempts, with an accent color</h3>
+      <demo-snippet>
+        <template>
+          <crossword-puzzle
+            question="Web component vocabulary"
+            max-attempts="3"
+            accent-color="teal"
+          >
+            <input
+              value="component"
+              data-clue="A reusable custom element with its own markup, style and behavior"
+            />
+            <input
+              value="attribute"
+              data-clue="A name and value written on a tag in HTML"
+            />
+            <input
+              value="shadow"
+              data-clue="The kind of DOM that keeps an element's insides private"
+            />
+            <input
+              value="slot"
+              data-clue="Placeholder where an element shows the content placed inside it"
+            />
+            <input
+              value="template"
+              data-clue="Tag that holds markup the browser does not render until it is used"
+            />
+            <input
+              value="event"
+              data-clue="What an element dispatches to say something happened"
+            />
+            <input
+              value="property"
+              data-clue="A value set on an element with JavaScript"
+            />
+            <input
+              value="render"
+              data-clue="Lit method that returns what an element draws"
+            />
+            <input value="style" data-clue="Tag or attribute that carries CSS" />
+            <input
+              value="import"
+              data-clue="Keyword that loads another JavaScript module"
+            />
+            <p slot="hint">
+              Start with the longest word: it names what all of these are parts
+              of.
+            </p>
+          </crossword-puzzle>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,209 @@
+{
+  "api": "1",
+  "type": "element",
+  "editingElement": "core",
+  "hideDefaultSettings": false,
+  "canScale": true,
+  "canEditSource": true,
+  "contentEditable": false,
+  "designSystem": {
+    "primary": true,
+    "accent": true
+  },
+  "gizmo": {
+    "title": "Image dropzone",
+    "description": "Learners place labels onto zones laid over an image, then check their answer.",
+    "icon": "image:photo-size-select-large",
+    "color": "blue",
+    "tags": [
+      "Instructional",
+      "drag and drop",
+      "label",
+      "image",
+      "matching",
+      "knowledge check",
+      "assessment"
+    ],
+    "handles": [],
+    "meta": {
+      "author": "HAXTheWeb core team"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Image",
+        "description": "The image learners place labels on.",
+        "inputMethod": "haxupload",
+        "noVoiceRecord": true,
+        "noScreenRecord": true,
+        "required": true
+      },
+      {
+        "property": "alt",
+        "title": "Alternative text",
+        "description": "Describes the image for people who cannot see it. Do not give away where the labels go.",
+        "inputMethod": "alt",
+        "required": true
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Image title",
+        "description": "A short visible title for the image, shown above it.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "question",
+        "title": "Question",
+        "description": "What learners are asked to do with the labels.",
+        "inputMethod": "textfield",
+        "required": true
+      },
+      {
+        "property": "answers",
+        "title": "Labels and zones",
+        "description": "Each item is a label learners can place. Give a label a zone name to put its zone on the image; a label with no zone name is an extra that belongs nowhere. Zone numbers are percentages of the image.",
+        "inputMethod": "array",
+        "itemLabel": "label",
+        "hideDuplicate": true,
+        "expanded": true,
+        "properties": [
+          {
+            "property": "label",
+            "title": "Label",
+            "description": "The text learners place.",
+            "inputMethod": "textfield",
+            "required": true
+          },
+          {
+            "property": "zone",
+            "title": "Zone name",
+            "description": "What screen readers call this label's zone, such as Top band. Describe where it is, not what goes there. Leave empty for an extra label.",
+            "inputMethod": "textfield"
+          },
+          {
+            "property": "x",
+            "title": "Left (%)",
+            "description": "Distance of the zone from the left edge of the image.",
+            "inputMethod": "number",
+            "min": 0,
+            "max": 99
+          },
+          {
+            "property": "y",
+            "title": "Top (%)",
+            "description": "Distance of the zone from the top edge of the image.",
+            "inputMethod": "number",
+            "min": 0,
+            "max": 99
+          },
+          {
+            "property": "width",
+            "title": "Width (%)",
+            "description": "Width of the zone.",
+            "inputMethod": "number",
+            "min": 1,
+            "max": 100
+          },
+          {
+            "property": "height",
+            "title": "Height (%)",
+            "description": "Height of the zone.",
+            "inputMethod": "number",
+            "min": 1,
+            "max": 100
+          }
+        ]
+      },
+      {
+        "slot": "caption",
+        "title": "Caption",
+        "description": "Optional caption shown below the image.",
+        "inputMethod": "code-editor"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Attempts",
+        "description": "How many times a learner can check. 0 means unlimited.",
+        "inputMethod": "number"
+      },
+      {
+        "property": "randomize",
+        "title": "Shuffle labels",
+        "description": "Show the labels in a different order each visit.",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "collapsible",
+        "title": "Collapsible",
+        "description": "Show this question as a row that opens and closes. Opening one closes the other collapsible questions beside it.",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "collapsed",
+        "title": "Start collapsed",
+        "description": "When collapsible, start as a closed row that shows only the question and its status.",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Grading format",
+        "description": "OER Schema: grading format for this assessment (e.g. points, letter, percent, completion).",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Learning objective",
+        "description": "OER Schema: learning objective associated with this assessment.",
+        "inputMethod": "textfield"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Name of the quiz",
+        "description": "Quiz name used for xAPI identification in analytics systems.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "forCourse",
+        "title": "Course",
+        "description": "OER Schema: course this assessment is intended for.",
+        "inputMethod": "textfield"
+      }
+    ]
+  },
+  "saveOptions": {
+    "unsetAttributes": [
+      "edit",
+      "attempts",
+      "answers",
+      "displayed-answers",
+      "t",
+      "show-answer",
+      "placed",
+      "held"
+    ]
+  },
+  "documentation": {
+    "howTo": null,
+    "purpose": null
+  },
+  "demoSchema": [
+    {
+      "tag": "image-dropzone",
+      "properties": {
+        "src": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/image-dropzone/lib/page-wireframe.svg",
+        "alt": "Wireframe of a web page with five empty regions",
+        "mediaTitle": "Page wireframe",
+        "question": "Label the page regions",
+        "maxAttempts": 3,
+        "randomize": true
+      },
+      "content": "<input type=\"checkbox\" value=\"&lt;header&gt;\" data-zone=\"Top band\" data-x=\"3\" data-y=\"12.3\" data-width=\"94\" data-height=\"13.8\">\n<input type=\"checkbox\" value=\"&lt;nav&gt;\" data-zone=\"Left column\" data-x=\"3\" data-y=\"29.2\" data-width=\"22.5\" data-height=\"52.3\">\n<input type=\"checkbox\" value=\"&lt;main&gt;\" data-zone=\"Center column\" data-x=\"27.5\" data-y=\"29.2\" data-width=\"47.5\" data-height=\"52.3\">\n<input type=\"checkbox\" value=\"&lt;aside&gt;\" data-zone=\"Right column\" data-x=\"77\" data-y=\"29.2\" data-width=\"20\" data-height=\"52.3\">\n<input type=\"checkbox\" value=\"&lt;footer&gt;\" data-zone=\"Bottom band\" data-x=\"3\" data-y=\"84.6\" data-width=\"94\" data-height=\"11.5\">\n<input type=\"checkbox\" value=\"&lt;section&gt;\">"
+    }
+  ]
+}

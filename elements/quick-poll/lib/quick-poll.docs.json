@@ -1,0 +1,244 @@
+{
+  "tag": "quick-poll",
+  "folder": "quick-poll",
+  "package": "@haxtheweb/quick-poll",
+  "version": "0.0.0",
+  "license": "Apache-2.0",
+  "title": "Poll",
+  "description": "A question with no right answer, where the point is seeing how everyone answered.",
+  "icon": "social:poll",
+  "tags": [
+    "Instructional",
+    "poll",
+    "survey",
+    "vote",
+    "ungraded",
+    "discussion",
+    "question"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/quick-poll/quick-poll.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/quick-poll/quick-poll.js",
+  "install": "npm i @haxtheweb/quick-poll",
+  "demoHtml": "<quick-poll question=\"When a layout breaks, what do you do first?\">\n  <input value=\"Open DevTools\"><input value=\"Rewrite the CSS\"><input value=\"Ask a classmate\"><input value=\"Search the error\">\n</quick-poll>",
+  "attributes": [
+    {
+      "name": "typeof",
+      "property": "typeof",
+      "type": "string",
+      "default": "\"oer:Activity\"",
+      "description": "OER Schema type. Reflected so it is also in server rendered HTML.",
+      "hax": null
+    },
+    {
+      "name": "question",
+      "property": "question",
+      "type": "string",
+      "default": "\"\"",
+      "description": "The question, shown as the title of the block.",
+      "hax": {
+        "title": "Question",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "options",
+      "property": "options",
+      "type": "array",
+      "default": "[]",
+      "description": "The options, [{ label }]. Read from and written to the light DOM `<input value=\"...\">` children.",
+      "hax": {
+        "title": "Options",
+        "input": "array",
+        "options": null
+      }
+    },
+    {
+      "name": "show-results",
+      "property": "showResults",
+      "type": "string",
+      "default": "\"after\"",
+      "description": "When the learner sees results: \"after\" (after voting), \"closed\" (after the closes date-time passes) or \"never\" (instructor only).",
+      "hax": {
+        "title": "Results show",
+        "input": "select",
+        "options": {
+          "after": "After voting",
+          "closed": "After the poll closes",
+          "never": "Instructor only"
+        }
+      }
+    },
+    {
+      "name": "closes",
+      "property": "closes",
+      "type": "string",
+      "default": "\"\"",
+      "description": "Date-time the poll closes (anything Date.parse reads, e.g. 2026-12-01T17:00). Voting stops then.",
+      "hax": {
+        "title": "Closes",
+        "input": "date-time",
+        "options": null
+      }
+    },
+    {
+      "name": "allow-change",
+      "property": "allowChange",
+      "type": "boolean",
+      "default": "false",
+      "description": "Let the learner change their vote in the same visit.",
+      "hax": {
+        "title": "Allow changing a vote",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "endpoint",
+      "property": "endpoint",
+      "type": "string",
+      "default": "\"\"",
+      "description": "Optional http(s) address that counts votes. POST { activityId, choice } on vote, GET ?activityId=... on load; both answer { counts: { <optionId>: <number> } }.",
+      "hax": {
+        "title": "Results address",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "accent-color",
+      "property": "accentColor",
+      "type": "string",
+      "default": "",
+      "description": "Optional accent for the chip, markers and Vote button, using the accent-color names DDD maps (see DDDAccent.js).",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [
+    "learner-progress-request",
+    "quick-poll-vote",
+    "user-engagement"
+  ],
+  "hax": {
+    "api": "1",
+    "canScale": false,
+    "canEditSource": true,
+    "type": "element",
+    "designSystem": {
+      "accent": false,
+      "primary": false
+    },
+    "gizmo": {
+      "title": "Poll",
+      "description": "A question with no right answer, where the point is seeing how everyone answered.",
+      "icon": "social:poll",
+      "color": "blue",
+      "tags": [
+        "Instructional",
+        "poll",
+        "survey",
+        "vote",
+        "ungraded",
+        "discussion",
+        "question"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "question",
+          "title": "Question",
+          "description": "What everyone is asked. There is no right answer.",
+          "inputMethod": "textfield",
+          "required": true
+        },
+        {
+          "property": "options",
+          "title": "Options",
+          "description": "The choices to vote on. Add at least two.",
+          "inputMethod": "array",
+          "itemLabel": "label",
+          "hideReorder": false,
+          "expanded": false,
+          "hideDuplicate": true,
+          "required": true,
+          "properties": [
+            {
+              "property": "label",
+              "title": "Option",
+              "inputMethod": "textfield",
+              "required": true
+            }
+          ]
+        },
+        {
+          "property": "showResults",
+          "title": "Results show",
+          "description": "When a learner sees how everyone voted.",
+          "inputMethod": "select",
+          "options": {
+            "after": "After voting",
+            "closed": "After the poll closes",
+            "never": "Instructor only"
+          }
+        }
+      ],
+      "advanced": [
+        {
+          "property": "closes",
+          "title": "Closes",
+          "description": "Date and time voting stops. Leave empty for a poll that stays open.",
+          "inputMethod": "date-time"
+        },
+        {
+          "property": "allowChange",
+          "title": "Allow changing a vote",
+          "description": "Let a learner change their vote during the same visit.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "endpoint",
+          "title": "Results address",
+          "description": "Optional web address (http or https) that counts votes and answers with the totals. Leave empty when a plugin supplies results or none are shown.",
+          "inputMethod": "textfield"
+        }
+      ],
+      "developer": []
+    },
+    "saveOptions": {
+      "wipeSlot": false,
+      "unsetAttributes": [
+        "options",
+        "results",
+        "t"
+      ]
+    },
+    "demoSchema": [
+      {
+        "tag": "quick-poll",
+        "properties": {
+          "question": "When a layout breaks, what do you do first?"
+        },
+        "content": "<input value=\"Open DevTools\"><input value=\"Rewrite the CSS\"><input value=\"Ask a classmate\"><input value=\"Search the error\">"
+      }
+    ]
+  },
+  "surfaceHash": "811f32814c65",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/quick-poll",
+    "file": "quick-poll.js"
+  }
+}

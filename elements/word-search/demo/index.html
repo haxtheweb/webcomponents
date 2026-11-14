@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>WordSearch: word-search Demo</title>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <script type="module">
+      import '../word-search.js';
+    </script>
+    <style>
+      html {
+        color-scheme: light dark;
+      }
+      .demo {
+        max-width: 640px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="demo">
+      <h1>word-search</h1>
+      <h2>Across and down (default)</h2>
+      <word-search title="Find six web words">
+        <ul>
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>DOM</li>
+          <li>SLOT</li>
+          <li>ARIA</li>
+          <li>LIT</li>
+        </ul>
+      </word-search>
+      <h2>Diagonal and backwards, with an accent color</h2>
+      <word-search title="Find the parts of a cell" diagonal backwards accent-color="teal">
+        <ul>
+          <li>nucleus</li>
+          <li>ribosome</li>
+          <li>membrane</li>
+          <li>cytoplasm</li>
+          <li>vacuole</li>
+        </ul>
+      </word-search>
+    </div>
+  </body>
+</html>

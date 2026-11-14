@@ -1,0 +1,150 @@
+{
+  "tag": "branching-scenario",
+  "folder": "branching-scenario",
+  "package": "@haxtheweb/branching-scenario",
+  "version": "0.0.0",
+  "license": "Apache-2.0",
+  "title": "Branching scenario",
+  "description": "A story where each choice leads to a different scene and ending. Learners can step back and try other paths; the ending reached sets the score.",
+  "icon": "communication:call-split",
+  "tags": [
+    "Instructional",
+    "scenario",
+    "branching",
+    "story",
+    "decision",
+    "activity",
+    "h5p"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/branching-scenario/branching-scenario.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/branching-scenario/branching-scenario.js",
+  "install": "npm i @haxtheweb/branching-scenario",
+  "demoHtml": "<branching-scenario title=\"The missing blade guard\">\n  <branching-scene scene-id=\"start\" id=\"start\" heading=\"The blade guard is off\"><p>You arrive for your shift. The table saw's blade guard is off, and a coworker says, &quot;Just one quick cut, it's fine.&quot;</p><ul><li><a href=\"#cut\">Make the cut carefully</a></li><li><a href=\"#guard\">Refit the guard first</a></li><li><a href=\"#supervisor\">Ask the supervisor</a></li></ul></branching-scene>\n  <branching-scene scene-id=\"cut\" id=\"cut\" heading=\"Kickback\"><p>The board kicks back and hits the wall beside you. Nobody is hurt.</p><ul><li><a href=\"#injury\">Keep going, it was a fluke</a></li><li><a href=\"#report\">Shut the saw down and report it</a></li></ul></branching-scene>\n  <branching-scene scene-id=\"guard\" id=\"guard\" heading=\"A missing screw\"><p>You find the guard, but one mounting screw is missing.</p><ul><li><a href=\"#shifted\">Use it, it mostly holds</a></li><li><a href=\"#tagged\">Tag the saw out of service</a></li></ul></branching-scene>\n  <branching-scene scene-id=\"supervisor\" id=\"supervisor\" heading=\"The supervisor\"><p>Your supervisor thanks you and asks you to tag the saw out of service.</p><ul><li><a href=\"#tagged\">Tag it and log it</a></li></ul></branching-scene>\n  <branching-scene scene-id=\"report\" id=\"report\" heading=\"The report\"><p>Your supervisor tags the saw out and asks what happened.</p><ul><li><a href=\"#warning\">Explain what you did</a></li></ul></branching-scene>\n  <branching-scene scene-id=\"tagged\" id=\"tagged\" heading=\"Safe call\" ending=\"good\" score=\"3\"><p>Best outcome. The saw is tagged out and logged before anyone uses it.</p></branching-scene>\n  <branching-scene scene-id=\"shifted\" id=\"shifted\" heading=\"Partly safe\" ending=\"mixed\" score=\"1\"><p>The guard shifted during the next cut. A guard with missing hardware is the same as no guard.</p></branching-scene>\n  <branching-scene scene-id=\"warning\" id=\"warning\" heading=\"Partly safe\" ending=\"mixed\" score=\"2\"><p>Reporting it was right. The kickback was the warning you didn't need to get.</p></branching-scene>\n  <branching-scene scene-id=\"injury\" id=\"injury\" heading=\"Injury\" ending=\"poor\" score=\"0\"><p>A second kickback breaks your thumb. Near misses are the cheapest lesson the shop offers.</p></branching-scene>\n</branching-scenario>",
+  "attributes": [
+    {
+      "name": "title",
+      "property": "title",
+      "type": "string",
+      "default": "\"\"",
+      "description": "Title of the scenario, shown in the header",
+      "hax": {
+        "title": "Title",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "start",
+      "property": "start",
+      "type": "string",
+      "default": "\"\"",
+      "description": "scene-id of the scene to start at; the first scene when empty",
+      "hax": {
+        "title": "Start scene",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "accent-color",
+      "property": "accentColor",
+      "type": "null",
+      "default": "null",
+      "description": "Optional accent for the chip, buttons and choice edge",
+      "hax": {
+        "title": "Accent color",
+        "input": "colorpicker",
+        "options": null
+      }
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [
+    "user-engagement"
+  ],
+  "hax": {
+    "api": "1",
+    "type": "grid",
+    "canScale": true,
+    "canEditSource": true,
+    "designSystem": {
+      "primary": true,
+      "accent": true
+    },
+    "gizmo": {
+      "title": "Branching scenario",
+      "description": "A story where each choice leads to a different scene and ending. Learners can step back and try other paths; the ending reached sets the score.",
+      "icon": "communication:call-split",
+      "color": "blue",
+      "tags": [
+        "Instructional",
+        "scenario",
+        "branching",
+        "story",
+        "decision",
+        "activity",
+        "h5p"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb core team",
+        "owner": "The Pennsylvania State University"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "title",
+          "title": "Title",
+          "description": "Name of the scenario, shown in its header.",
+          "inputMethod": "textfield",
+          "icon": "editor:title",
+          "required": true
+        },
+        {
+          "property": "start",
+          "title": "Start scene",
+          "description": "Scene id of the scene learners start at. Leave empty to start at the first scene.",
+          "inputMethod": "textfield"
+        }
+      ],
+      "advanced": [
+        {
+          "property": "accentColor",
+          "title": "Accent color",
+          "description": "Optional color for the header chip, buttons and the edge of a choice.",
+          "inputMethod": "colorpicker"
+        }
+      ],
+      "developer": []
+    },
+    "saveOptions": {
+      "wipeSlot": false,
+      "unsetAttributes": []
+    },
+    "demoSchema": [
+      {
+        "tag": "branching-scenario",
+        "properties": {
+          "title": "The missing blade guard"
+        },
+        "content": "<branching-scene scene-id=\"start\" id=\"start\" heading=\"The blade guard is off\"><p>You arrive for your shift. The table saw's blade guard is off, and a coworker says, &quot;Just one quick cut, it's fine.&quot;</p><ul><li><a href=\"#cut\">Make the cut carefully</a></li><li><a href=\"#guard\">Refit the guard first</a></li><li><a href=\"#supervisor\">Ask the supervisor</a></li></ul></branching-scene>\n<branching-scene scene-id=\"cut\" id=\"cut\" heading=\"Kickback\"><p>The board kicks back and hits the wall beside you. Nobody is hurt.</p><ul><li><a href=\"#injury\">Keep going, it was a fluke</a></li><li><a href=\"#report\">Shut the saw down and report it</a></li></ul></branching-scene>\n<branching-scene scene-id=\"guard\" id=\"guard\" heading=\"A missing screw\"><p>You find the guard, but one mounting screw is missing.</p><ul><li><a href=\"#shifted\">Use it, it mostly holds</a></li><li><a href=\"#tagged\">Tag the saw out of service</a></li></ul></branching-scene>\n<branching-scene scene-id=\"supervisor\" id=\"supervisor\" heading=\"The supervisor\"><p>Your supervisor thanks you and asks you to tag the saw out of service.</p><ul><li><a href=\"#tagged\">Tag it and log it</a></li></ul></branching-scene>\n<branching-scene scene-id=\"report\" id=\"report\" heading=\"The report\"><p>Your supervisor tags the saw out and asks what happened.</p><ul><li><a href=\"#warning\">Explain what you did</a></li></ul></branching-scene>\n<branching-scene scene-id=\"tagged\" id=\"tagged\" heading=\"Safe call\" ending=\"good\" score=\"3\"><p>Best outcome. The saw is tagged out and logged before anyone uses it.</p></branching-scene>\n<branching-scene scene-id=\"shifted\" id=\"shifted\" heading=\"Partly safe\" ending=\"mixed\" score=\"1\"><p>The guard shifted during the next cut. A guard with missing hardware is the same as no guard.</p></branching-scene>\n<branching-scene scene-id=\"warning\" id=\"warning\" heading=\"Partly safe\" ending=\"mixed\" score=\"2\"><p>Reporting it was right. The kickback was the warning you didn't need to get.</p></branching-scene>\n<branching-scene scene-id=\"injury\" id=\"injury\" heading=\"Injury\" ending=\"poor\" score=\"0\"><p>A second kickback breaks your thumb. Near misses are the cheapest lesson the shop offers.</p></branching-scene>"
+      }
+    ]
+  },
+  "surfaceHash": "99a39c8238b0",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/branching-scenario",
+    "file": "branching-scenario.js"
+  }
+}

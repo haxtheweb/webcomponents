@@ -40,5 +40,7 @@
   "hideDirections": "Hide directions",
   "showRelatedContent": "Show related content",
   "hideRelatedContent": "Hide related content",
-  "notAttempted": "Not attempted"
+  "notAttempted": "Not attempted",
+  "cardsDirections": "Put the cards in the correct order with the move earlier and move later buttons on each card, or drag them with a mouse. When you believe you have them in the correct order, test your answer by selecting {checkAnswer}.",
+  "movedToPosition": "{item} moved to position {position} of {total}"
 }

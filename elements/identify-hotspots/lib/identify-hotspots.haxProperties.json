@@ -1,0 +1,218 @@
+{
+  "api": "1",
+  "type": "element",
+  "editingElement": "core",
+  "hideDefaultSettings": false,
+  "canScale": true,
+  "canEditSource": true,
+  "contentEditable": false,
+  "designSystem": {
+    "primary": true,
+    "accent": true
+  },
+  "gizmo": {
+    "title": "Identify hotspots",
+    "description": "Learners find the right spots on an image by clicking, tapping or moving a keyboard crosshair. The graded counterpart to an image map.",
+    "icon": "image:center-focus-strong",
+    "color": "blue",
+    "tags": [
+      "Instructional",
+      "image",
+      "hotspot",
+      "find",
+      "activity",
+      "knowledge check",
+      "assessment"
+    ],
+    "handles": [
+      {
+        "type": "image",
+        "source": "src",
+        "alt": "alt",
+        "title": "mediaTitle"
+      }
+    ],
+    "meta": {
+      "author": "HAXTheWeb core team"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Image",
+        "description": "The picture learners search.",
+        "inputMethod": "haxupload",
+        "noVoiceRecord": true,
+        "noScreenRecord": true,
+        "icon": "link",
+        "validationType": "url",
+        "required": true
+      },
+      {
+        "property": "alt",
+        "title": "Alternative text",
+        "description": "Describes the picture for people who cannot see it. It is never shown as the title.",
+        "inputMethod": "alt",
+        "required": true
+      },
+      {
+        "property": "mediaTitle",
+        "title": "Title",
+        "description": "A short visible title shown above the picture.",
+        "inputMethod": "textfield",
+        "required": true
+      },
+      {
+        "property": "question",
+        "title": "Question",
+        "description": "What learners are asked to find in the picture.",
+        "inputMethod": "textfield",
+        "required": true
+      },
+      {
+        "property": "answers",
+        "title": "Answers",
+        "description": "Each answer is a named oval on the picture. Position and size are percentages of the picture, measured from its top left corner. While editing, every answer is outlined on the picture.",
+        "inputMethod": "array",
+        "itemLabel": "label",
+        "hideDuplicate": true,
+        "expanded": true,
+        "properties": [
+          {
+            "property": "label",
+            "title": "Name",
+            "description": "Announced when a learner finds or selects this area.",
+            "inputMethod": "textfield",
+            "required": true
+          },
+          {
+            "property": "x",
+            "title": "Left (%)",
+            "description": "Left edge of the area.",
+            "inputMethod": "number",
+            "min": 0,
+            "max": 100,
+            "step": 0.1,
+            "required": true
+          },
+          {
+            "property": "y",
+            "title": "Top (%)",
+            "description": "Top edge of the area.",
+            "inputMethod": "number",
+            "min": 0,
+            "max": 100,
+            "step": 0.1,
+            "required": true
+          },
+          {
+            "property": "width",
+            "title": "Width (%)",
+            "description": "How wide the area is.",
+            "inputMethod": "number",
+            "min": 0,
+            "max": 100,
+            "step": 0.1,
+            "required": true
+          },
+          {
+            "property": "height",
+            "title": "Height (%)",
+            "description": "How tall the area is.",
+            "inputMethod": "number",
+            "min": 0,
+            "max": 100,
+            "step": 0.1,
+            "required": true
+          },
+          {
+            "property": "correct",
+            "title": "Hotspot to find",
+            "description": "On: learners must find this area. Off: a named decoy that counts as a miss.",
+            "inputMethod": "boolean"
+          }
+        ]
+      }
+    ],
+    "advanced": [
+      {
+        "property": "maxAttempts",
+        "title": "Attempts",
+        "description": "How many times a learner can try. 0 means unlimited.",
+        "inputMethod": "number"
+      },
+      {
+        "property": "maxMisses",
+        "title": "Misses allowed",
+        "description": "How many misses end an attempt. 0 means unlimited, and learners get a Finish button.",
+        "inputMethod": "number"
+      },
+      {
+        "property": "collapsible",
+        "title": "Collapsible",
+        "description": "Show this question as a row that opens and closes. Opening one closes the other collapsible questions beside it.",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "collapsed",
+        "title": "Start collapsed",
+        "description": "When collapsible, start as a closed row that shows only the question and its status.",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "gradingFormat",
+        "title": "Grading format",
+        "description": "OER Schema: grading format for this assessment (e.g. points, letter, percent, completion).",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "hasLearningObjective",
+        "title": "Learning objective",
+        "description": "OER Schema: learning objective associated with this assessment.",
+        "inputMethod": "textfield"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Name of the quiz",
+        "description": "Quiz name passed in for use in xAPI driven environments for identification of this item",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "forCourse",
+        "title": "Course",
+        "description": "OER Schema: course this assessment is intended for.",
+        "inputMethod": "textfield"
+      }
+    ]
+  },
+  "saveOptions": {
+    "unsetAttributes": [
+      "edit",
+      "attempts",
+      "answers",
+      "displayed-answers",
+      "t",
+      "show-answer"
+    ]
+  },
+  "documentation": {
+    "howTo": null,
+    "purpose": null
+  },
+  "demoSchema": [
+    {
+      "tag": "identify-hotspots",
+      "properties": {
+        "question": "Spot the three hazards",
+        "mediaTitle": "Workshop floor",
+        "alt": "A workshop: a workbench with a power tool whose cord trails across the floor on the left, a wall outlet above a puddle in the middle, and a space heater with a paint can next to it on the right.",
+        "src": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/identify-hotspots/lib/workshop-scene.svg",
+        "maxMisses": 4
+      },
+      "content": "<input type=\"checkbox\" value=\"Frayed power cord\" data-correct=\"true\" data-x=\"25.5\" data-y=\"56.4\" data-width=\"11\" data-height=\"12.8\">\n<input type=\"checkbox\" value=\"Water by the outlet\" data-correct=\"true\" data-x=\"43\" data-y=\"69.2\" data-width=\"22\" data-height=\"17.6\">\n<input type=\"checkbox\" value=\"Paint can beside the heater\" data-correct=\"true\" data-x=\"79.5\" data-y=\"62.4\" data-width=\"12\" data-height=\"16\">\n<input type=\"checkbox\" value=\"Workbench\" data-x=\"5\" data-y=\"44\" data-width=\"38\" data-height=\"11\">\n<input type=\"checkbox\" value=\"Wall chart\" data-x=\"65.5\" data-y=\"24\" data-width=\"15\" data-height=\"16\">"
+    }
+  ]
+}

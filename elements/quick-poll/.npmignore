@@ -1,0 +1,17 @@
+node_modules
+# Development-only files: nothing that installs this element loads them,
+# so they stay out of the npm package (and the CDNs that mirror it).
+/test/
+# the demo pages and the root index.html that redirects to them: for
+# development, never loaded by anything that installs the element
+/demo/
+/index.html
+/gulpfile.cjs
+/gulpfile.js
+/gulpfile.mjs
+/rollup.config.js
+/web-dev-server.config.mjs
+/web-test-runner.config.mjs
+/.travis.yml
+/.editorconfig
+/.surgeignore

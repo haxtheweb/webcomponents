@@ -1,0 +1,114 @@
+{
+  "api": "1",
+  "type": "element",
+  "editingElement": "core",
+  "hideDefaultSettings": false,
+  "canScale": true,
+  "canEditSource": true,
+  "contentEditable": false,
+  "designSystem": {
+    "primary": false,
+    "accent": false
+  },
+  "gizmo": {
+    "title": "Memory game",
+    "description": "Turn over cards to find pairs. Pair a term with its meaning so a match shows understanding, or use two matching texts or images.",
+    "icon": "icons:view-module",
+    "color": "blue",
+    "tags": [
+      "Instructional",
+      "game",
+      "memory",
+      "matching",
+      "vocabulary",
+      "activity"
+    ],
+    "handles": [],
+    "meta": {
+      "author": "HAXTheWeb core team"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Title",
+        "description": "The prompt shown in the header, for example: Match the term to its job.",
+        "inputMethod": "textfield",
+        "required": true
+      },
+      {
+        "property": "pairs",
+        "title": "Pairs",
+        "description": "Each pair is two cards that belong together, usually a term and its meaning. A side needs text, an image, or both.",
+        "inputMethod": "array",
+        "itemLabel": "a",
+        "required": true,
+        "properties": [
+          {
+            "property": "a",
+            "title": "First card text",
+            "description": "For example the term.",
+            "inputMethod": "textfield"
+          },
+          {
+            "property": "aImage",
+            "title": "First card image",
+            "description": "Optional small image.",
+            "inputMethod": "haxupload",
+            "noVoiceRecord": true,
+            "noCamera": true
+          },
+          {
+            "property": "aAlt",
+            "title": "First card image description",
+            "description": "Alternative text for the image. Needed when the card has no text.",
+            "inputMethod": "textfield"
+          },
+          {
+            "property": "b",
+            "title": "Second card text",
+            "description": "For example the meaning.",
+            "inputMethod": "textfield"
+          },
+          {
+            "property": "bImage",
+            "title": "Second card image",
+            "description": "Optional small image.",
+            "inputMethod": "haxupload",
+            "noVoiceRecord": true,
+            "noCamera": true
+          },
+          {
+            "property": "bAlt",
+            "title": "Second card image description",
+            "description": "Alternative text for the image. Needed when the card has no text.",
+            "inputMethod": "textfield"
+          }
+        ]
+      }
+    ],
+    "advanced": [
+      {
+        "property": "accentColor",
+        "title": "Accent color",
+        "description": "Optional color for the header chip, the card backs and the button.",
+        "inputMethod": "colorpicker"
+      }
+    ],
+    "developer": []
+  },
+  "saveOptions": {
+    "wipeSlot": false,
+    "unsetAttributes": ["pairs", "t"]
+  },
+  "demoSchema": [
+    {
+      "tag": "memory-match",
+      "properties": {
+        "title": "Match the term to its job"
+      },
+      "content": "<dl><dt>alt</dt><dd>Text alternative for an image</dd><dt>aria-live</dt><dd>Announces changes to screen readers</dd><dt>&lt;nav&gt;</dt><dd>Landmark for the main links</dd><dt>lang</dt><dd>Sets the page's language</dd></dl>"
+    }
+  ]
+}

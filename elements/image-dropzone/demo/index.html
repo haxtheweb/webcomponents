@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes"
+    />
+    <title>ImageDropzone: image-dropzone Demo</title>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <script type="module">
+      import "@haxtheweb/demo-snippet/demo-snippet.js";
+      import "../image-dropzone.js";
+    </script>
+    <style>
+      :root {
+        color-scheme: light dark;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Label the regions of a page</h3>
+      <demo-snippet>
+        <template>
+          <image-dropzone
+            src="../lib/page-wireframe.svg"
+            alt="Wireframe of a web page with five empty regions"
+            media-title="Page wireframe"
+            question="Label the page regions"
+            max-attempts="3"
+            randomize
+          >
+            <input type="checkbox" value="&lt;header&gt;" data-zone="Top band" data-x="3" data-y="12.3" data-width="94" data-height="13.8" />
+            <input type="checkbox" value="&lt;nav&gt;" data-zone="Left column" data-x="3" data-y="29.2" data-width="22.5" data-height="52.3" />
+            <input type="checkbox" value="&lt;main&gt;" data-zone="Center column" data-x="27.5" data-y="29.2" data-width="47.5" data-height="52.3" />
+            <input type="checkbox" value="&lt;aside&gt;" data-zone="Right column" data-x="77" data-y="29.2" data-width="20" data-height="52.3" />
+            <input type="checkbox" value="&lt;footer&gt;" data-zone="Bottom band" data-x="3" data-y="84.6" data-width="94" data-height="11.5" />
+            <input type="checkbox" value="&lt;section&gt;" />
+            <p slot="feedbackIncorrect">
+              Think about what each landmark is for: one of these labels does
+              not name a region of this page.
+            </p>
+          </image-dropzone>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

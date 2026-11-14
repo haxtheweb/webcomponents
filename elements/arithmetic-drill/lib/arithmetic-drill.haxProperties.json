@@ -1,0 +1,123 @@
+{
+  "api": "1",
+  "type": "element",
+  "canScale": true,
+  "canEditSource": true,
+  "contentEditable": false,
+  "designSystem": {
+    "primary": false,
+    "accent": false
+  },
+  "gizmo": {
+    "title": "Arithmetic drill",
+    "description": "A short run of generated arithmetic problems with instant feedback. Pick the operations and the number range; every run is new.",
+    "icon": "image:exposure",
+    "color": "brown",
+    "tags": [
+      "Instructional",
+      "math",
+      "arithmetic",
+      "practice",
+      "game",
+      "drill"
+    ],
+    "handles": [],
+    "meta": {
+      "author": "HAXTheWeb core team",
+      "anchorLabel": "title"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Title",
+        "description": "Name of this drill, shown in its header.",
+        "inputMethod": "textfield",
+        "required": true
+      },
+      {
+        "property": "operations",
+        "title": "Operations",
+        "description": "Which kinds of problems are asked. Learners can switch any of these off before they start.",
+        "inputMethod": "select",
+        "options": {
+          "add": "Addition",
+          "subtract": "Subtraction",
+          "multiply": "Multiplication",
+          "divide": "Division",
+          "add subtract": "Addition and subtraction",
+          "multiply divide": "Multiplication and division",
+          "add multiply": "Addition and multiplication",
+          "add divide": "Addition and division",
+          "subtract multiply": "Subtraction and multiplication",
+          "subtract divide": "Subtraction and division",
+          "add subtract multiply": "Addition, subtraction and multiplication",
+          "add subtract divide": "Addition, subtraction and division",
+          "add multiply divide": "Addition, multiplication and division",
+          "subtract multiply divide": "Subtraction, multiplication and division",
+          "add subtract multiply divide": "All four"
+        }
+      },
+      {
+        "property": "min",
+        "title": "Smallest number",
+        "description": "The smallest number used in a problem. Whole numbers, 0 or more.",
+        "inputMethod": "number",
+        "min": 0,
+        "max": 9999
+      },
+      {
+        "property": "max",
+        "title": "Largest number",
+        "description": "The largest number used in a problem. Division answers and divisors stay in this range too.",
+        "inputMethod": "number",
+        "min": 0,
+        "max": 9999
+      },
+      {
+        "property": "count",
+        "title": "Number of problems",
+        "description": "How many problems are in one run (1 to 100).",
+        "inputMethod": "number",
+        "min": 1,
+        "max": 100
+      }
+    ],
+    "advanced": [
+      {
+        "property": "timeLimit",
+        "title": "Time limit",
+        "description": "Seconds allowed for a whole run. 0 means no timer, which is the default: timed drills fail learners who need more time. When set, learners can still turn the timer off for themselves.",
+        "inputMethod": "number",
+        "min": 0,
+        "max": 3600,
+        "suffix": "s"
+      },
+      {
+        "property": "accentColor",
+        "title": "Accent color",
+        "description": "Color of the header chip and buttons. Leave empty to follow the theme.",
+        "inputMethod": "colorpicker"
+      }
+    ],
+    "developer": []
+  },
+  "saveOptions": {
+    "wipeSlot": false,
+    "unsetAttributes": ["t"]
+  },
+  "demoSchema": [
+    {
+      "tag": "arithmetic-drill",
+      "properties": {
+        "title": "Quick math",
+        "operations": "add subtract multiply",
+        "min": 2,
+        "max": 12,
+        "count": 10
+      },
+      "content": ""
+    }
+  ]
+}

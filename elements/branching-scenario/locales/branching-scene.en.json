@@ -1,0 +1,14 @@
+{
+  "scene": "Scene",
+  "ending": "Ending",
+  "goodEnding": "Good ending",
+  "mixedEnding": "Mixed ending",
+  "poorEnding": "Poor ending",
+  "scoreOf": "Score {score} of {max}",
+  "scoreOnly": "Score {score}",
+  "startScene": "Start",
+  "sceneIdLabel": "Scene id",
+  "needsId": "Add a scene id so choices can link to this scene.",
+  "orphan": "No choice links to this scene.",
+  "deadLinks": "These links point to a scene that does not exist:"
+}

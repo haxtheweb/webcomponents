@@ -1,0 +1,177 @@
+{
+  "api": "1",
+  "type": "grid",
+  "canScale": false,
+  "canEditSource": true,
+  "designSystem": {
+    "primary": true,
+    "accent": true
+  },
+  "gizmo": {
+    "title": "Numeric question",
+    "description": "A question answered with a number. The answer is a fixed number or a formula worked out from variables, and counts when it is within a tolerance.",
+    "icon": "editor:functions",
+    "color": "blue",
+    "tags": [
+      "Instructional",
+      "question",
+      "quiz",
+      "numeric",
+      "formula",
+      "math",
+      "assessment"
+    ],
+    "handles": [],
+    "meta": {
+      "author": "HAXTheWeb core team"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "question",
+        "title": "Question",
+        "description": "What learners are asked. Write a variable name in braces, like {d}, to show its value.",
+        "inputMethod": "textfield",
+        "required": true
+      },
+      {
+        "property": "unit",
+        "title": "Unit",
+        "description": "Shown as text beside the answer field, for example km/h.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "answer",
+        "title": "Answer",
+        "description": "The correct number. Leave empty when a formula works the answer out.",
+        "inputMethod": "number"
+      },
+      {
+        "property": "formula",
+        "title": "Formula",
+        "description": "Works the answer out from the variables, for example d / (t / 60). Can use + - * / ^, parentheses, sqrt() and abs(). Used instead of the answer when set.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "variables",
+        "title": "Variables",
+        "description": "Numbers the formula and the question use. Each one takes a value between its lowest and highest, in steps.",
+        "inputMethod": "array",
+        "itemLabel": "name",
+        "hideReorder": true,
+        "hideDuplicate": true,
+        "expanded": true,
+        "properties": [
+          {
+            "property": "name",
+            "title": "Name",
+            "description": "Letters, digits and underscores, starting with a letter.",
+            "inputMethod": "textfield",
+            "required": true
+          },
+          {
+            "property": "min",
+            "title": "Lowest",
+            "inputMethod": "number"
+          },
+          {
+            "property": "max",
+            "title": "Highest",
+            "inputMethod": "number"
+          },
+          {
+            "property": "step",
+            "title": "Step",
+            "inputMethod": "number"
+          }
+        ]
+      }
+    ],
+    "advanced": [
+      {
+        "property": "tolerance",
+        "title": "Tolerance",
+        "description": "How far from the exact answer still counts. 0 means exact, or rounded to the decimal places below.",
+        "inputMethod": "number"
+      },
+      {
+        "property": "toleranceType",
+        "title": "Tolerance type",
+        "description": "Absolute: plus or minus the tolerance. Percent: plus or minus that percent of the exact answer.",
+        "inputMethod": "select",
+        "options": {
+          "absolute": "Absolute",
+          "percent": "Percent"
+        }
+      },
+      {
+        "property": "decimals",
+        "title": "Decimal places",
+        "description": "Learners are asked to round to this many places, and the answer is shown rounded to it. Leave empty for no rounding.",
+        "inputMethod": "number"
+      },
+      {
+        "property": "maxAttempts",
+        "title": "Attempts",
+        "description": "How many times a learner can check. 0 means unlimited.",
+        "inputMethod": "number"
+      },
+      {
+        "property": "reroll",
+        "title": "New numbers on every try",
+        "description": "Draw new variable values each time a learner tries again. Their earlier answer is then not shown when they come back, only whether they got it right.",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "collapsible",
+        "title": "Collapsible",
+        "description": "Show this question as a row that opens and closes. Opening one closes the other collapsible questions beside it.",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "collapsed",
+        "title": "Start collapsed",
+        "description": "When collapsible, start as a closed row that shows only the question and its status.",
+        "inputMethod": "boolean"
+      }
+    ],
+    "developer": [
+      {
+        "property": "quizName",
+        "title": "Name of the quiz",
+        "description": "Quiz name used for xAPI identification in analytics systems.",
+        "inputMethod": "textfield"
+      }
+    ]
+  },
+  "saveOptions": {
+    "unsetAttributes": [
+      "__utils",
+      "answers",
+      "displayed-answers",
+      "answer",
+      "formula",
+      "variables",
+      "typed",
+      "show-answer",
+      "attempts",
+      "t",
+      "edit"
+    ]
+  },
+  "demoSchema": [
+    {
+      "tag": "numeric-question",
+      "properties": {
+        "question": "A cyclist rides {d} km in {t} minutes. What is her average speed?",
+        "unit": "km/h",
+        "tolerance": 1,
+        "toleranceType": "percent",
+        "decimals": 1,
+        "maxAttempts": 3
+      },
+      "content": "<p slot=\"hint\">The time is in minutes but the answer is per hour.</p><p slot=\"evidence\">Speed is distance divided by time in hours.</p><input type=\"checkbox\" value=\"d / (t / 60)\" data-correct=\"true\"><input type=\"checkbox\" data-variable=\"d\" data-min=\"12\" data-max=\"30\" data-step=\"1\"><input type=\"checkbox\" data-variable=\"t\" data-min=\"30\" data-max=\"90\" data-step=\"5\">"
+    }
+  ]
+}
