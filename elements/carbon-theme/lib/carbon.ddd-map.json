@@ -147,27 +147,22 @@
     },
     "component": {
       "mapping": "optional",
-      "percent": 0,
+      "percent": 75,
       "families": {
         "card": {
-          "mapped": 0,
-          "total": 4,
-          "keptDDD": [
-            "--ddd-card-radius",
-            "--ddd-card-padding",
-            "--ddd-card-border-width",
-            "--ddd-card-shadow"
-          ]
+          "mapped": 4,
+          "total": 5,
+          "keptDDD": ["--ddd-card-radius"]
         },
         "control": {
-          "mapped": 0,
-          "total": 1,
+          "mapped": 1,
+          "total": 2,
           "keptDDD": ["--ddd-control-radius"]
         },
         "tag": {
-          "mapped": 0,
+          "mapped": 1,
           "total": 1,
-          "keptDDD": ["--ddd-tag-radius"]
+          "keptDDD": []
         }
       }
     }
@@ -1146,6 +1141,54 @@
       "light": "1rem",
       "dark": "1rem",
       "note": "Carbon button inline-start padding, spacing-05"
+    },
+    {
+      "ddd": "--ddd-card-padding",
+      "tier": "component",
+      "token": null,
+      "light": "16px",
+      "dark": "16px",
+      "note": "Carbon tile padding, spacing-05 (a px value: the upstream token is in rem, and HAX's root font size is 20px, not 16px)"
+    },
+    {
+      "ddd": "--ddd-card-border-width",
+      "tier": "component",
+      "token": null,
+      "light": "0",
+      "dark": "0",
+      "note": "Carbon tiles have no border; they sit on layer-01 (--ddd-card-background)"
+    },
+    {
+      "ddd": "--ddd-card-shadow",
+      "tier": "component",
+      "token": null,
+      "light": "none",
+      "dark": "none",
+      "note": "Carbon tiles are flat"
+    },
+    {
+      "ddd": "--ddd-control-height",
+      "tier": "component",
+      "token": null,
+      "light": "48px",
+      "dark": "48px",
+      "note": "Carbon lg button, layout-size-height-lg (a px value: the upstream token is in rem, and HAX's root font size is 20px, not 16px)"
+    },
+    {
+      "ddd": "--ddd-tag-radius",
+      "tier": "component",
+      "token": null,
+      "light": "999px",
+      "dark": "999px",
+      "note": "Carbon tags are the one rounded shape"
+    },
+    {
+      "ddd": "--ddd-card-background",
+      "tier": "component",
+      "token": "--cds-layer-01",
+      "light": "#f4f4f4",
+      "dark": "#262626",
+      "note": "tiles sit on layer-01, #f4f4f4 light, #262626 dark"
     }
   ]
 }

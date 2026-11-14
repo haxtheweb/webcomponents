@@ -124,27 +124,22 @@
     },
     "component": {
       "mapping": "optional",
-      "percent": 0,
+      "percent": 88,
       "families": {
         "card": {
-          "mapped": 0,
-          "total": 4,
-          "keptDDD": [
-            "--ddd-card-radius",
-            "--ddd-card-padding",
-            "--ddd-card-border-width",
-            "--ddd-card-shadow"
-          ]
+          "mapped": 4,
+          "total": 5,
+          "keptDDD": ["--ddd-card-background"]
         },
         "control": {
-          "mapped": 0,
-          "total": 1,
-          "keptDDD": ["--ddd-control-radius"]
+          "mapped": 2,
+          "total": 2,
+          "keptDDD": []
         },
         "tag": {
-          "mapped": 0,
+          "mapped": 1,
           "total": 1,
-          "keptDDD": ["--ddd-tag-radius"]
+          "keptDDD": []
         }
       }
     }
@@ -1115,6 +1110,62 @@
       "light": "16px",
       "dark": "16px",
       "note": "Spectrum buttons are pills; 16px at the medium scale"
+    },
+    {
+      "ddd": "--ddd-card-radius",
+      "tier": "component",
+      "token": "--spectrum-corner-radius-medium-default",
+      "light": "8px",
+      "dark": "8px",
+      "note": "cards, 8px"
+    },
+    {
+      "ddd": "--ddd-card-padding",
+      "tier": "component",
+      "token": "--spectrum-spacing-400",
+      "light": "24px",
+      "dark": "24px",
+      "note": "card body padding, 24px"
+    },
+    {
+      "ddd": "--ddd-card-border-width",
+      "tier": "component",
+      "token": null,
+      "light": "1px",
+      "dark": "1px",
+      "note": "card border"
+    },
+    {
+      "ddd": "--ddd-card-shadow",
+      "tier": "component",
+      "token": null,
+      "light": "none",
+      "dark": "none",
+      "note": "cards are bordered, not raised"
+    },
+    {
+      "ddd": "--ddd-control-radius",
+      "tier": "component",
+      "token": null,
+      "light": "999px",
+      "dark": "999px",
+      "note": "buttons are pills"
+    },
+    {
+      "ddd": "--ddd-control-height",
+      "tier": "component",
+      "token": "--spectrum-component-height-100",
+      "light": "32px",
+      "dark": "32px",
+      "note": "medium button, 32px"
+    },
+    {
+      "ddd": "--ddd-tag-radius",
+      "tier": "component",
+      "token": "--spectrum-corner-radius-300",
+      "light": "6px",
+      "dark": "6px",
+      "note": "tags, 6px"
     }
   ]
 }

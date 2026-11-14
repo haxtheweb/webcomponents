@@ -74,9 +74,9 @@ export class DddCard extends I18NMixin(DDDSuper(LitElement)) {
           );
           display: inline-block;
           width: 400px;
-          background-color: light-dark(
-            white,
-            var(--ddd-theme-default-coalyGray)
+          background-color: var(
+            --ddd-card-background,
+            light-dark(white, var(--ddd-theme-default-coalyGray))
           );
           color: light-dark(var(--ddd-theme-default-coalyGray), white);
           border: var(--ddd-border-sm);

@@ -164,27 +164,22 @@
     },
     "component": {
       "mapping": "optional",
-      "percent": 0,
+      "percent": 88,
       "families": {
         "card": {
-          "mapped": 0,
-          "total": 4,
-          "keptDDD": [
-            "--ddd-card-radius",
-            "--ddd-card-padding",
-            "--ddd-card-border-width",
-            "--ddd-card-shadow"
-          ]
+          "mapped": 4,
+          "total": 5,
+          "keptDDD": ["--ddd-card-background"]
         },
         "control": {
-          "mapped": 0,
-          "total": 1,
-          "keptDDD": ["--ddd-control-radius"]
+          "mapped": 2,
+          "total": 2,
+          "keptDDD": []
         },
         "tag": {
-          "mapped": 0,
+          "mapped": 1,
           "total": 1,
-          "keptDDD": ["--ddd-tag-radius"]
+          "keptDDD": []
         }
       }
     }
@@ -1043,6 +1038,62 @@
       "light": "20px",
       "dark": "20px",
       "note": "usa-button padding: units(1.5) units(2.5)"
+    },
+    {
+      "ddd": "--ddd-card-radius",
+      "tier": "component",
+      "token": null,
+      "light": "8px",
+      "dark": "8px",
+      "note": "usa-card, $theme-card-border-radius lg"
+    },
+    {
+      "ddd": "--ddd-card-padding",
+      "tier": "component",
+      "token": null,
+      "light": "24px",
+      "dark": "24px",
+      "note": "usa-card body padding, units(3)"
+    },
+    {
+      "ddd": "--ddd-card-border-width",
+      "tier": "component",
+      "token": null,
+      "light": "2px",
+      "dark": "2px",
+      "note": "usa-card border, $theme-card-border-width"
+    },
+    {
+      "ddd": "--ddd-card-shadow",
+      "tier": "component",
+      "token": null,
+      "light": "none",
+      "dark": "none",
+      "note": "usa-card is bordered, not raised"
+    },
+    {
+      "ddd": "--ddd-control-radius",
+      "tier": "component",
+      "token": null,
+      "light": "4px",
+      "dark": "4px",
+      "note": "usa-button, $theme-button-border-radius md"
+    },
+    {
+      "ddd": "--ddd-control-height",
+      "tier": "component",
+      "token": null,
+      "light": "44px",
+      "dark": "44px",
+      "note": "usa-button, touch target"
+    },
+    {
+      "ddd": "--ddd-tag-radius",
+      "tier": "component",
+      "token": null,
+      "light": "2px",
+      "dark": "2px",
+      "note": "usa-tag, $theme-border-radius-sm"
     }
   ]
 }

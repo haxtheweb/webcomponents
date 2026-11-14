@@ -401,6 +401,22 @@
     "--ddd-control-radius": {
       "token": "--wa-form-control-border-radius",
       "note": "buttons and form controls"
+    },
+    "--ddd-card-padding": {
+      "value": "24px",
+      "note": "card spacing, space-l (a px value: the upstream token is in rem, and HAX's root font size is 20px, not 16px)"
+    },
+    "--ddd-card-shadow": {
+      "value": "none",
+      "note": "cards are bordered, not raised"
+    },
+    "--ddd-control-height": {
+      "value": "40px",
+      "note": "form controls and buttons at medium size"
+    },
+    "--ddd-tag-radius": {
+      "token": "--wa-border-radius-pill",
+      "note": "tags and badges are pills"
     }
   },
   "extraTokens": [
