@@ -79,8 +79,8 @@
       "note": "primary-light"
     },
     "--ddd-theme-default-skyBlue": {
-      "token": "--usa-cyan-vivid-30",
-      "note": "accent-cool"
+      "token": "--usa-cyan-vivid-20",
+      "note": "accent-cool; one step lighter than usa-cyan-vivid-30 so DDD's nittanyNavy ink reads on it (4.5:1), as blocks pair them"
     },
     "--ddd-theme-default-skyLight": {
       "token": "--usa-cyan-20"
@@ -110,7 +110,8 @@
       "token": "--usa-white"
     },
     "--ddd-theme-default-limestoneGray": {
-      "token": "--usa-gray-cool-40"
+      "token": "--usa-gray-cool-20",
+      "note": "muted text on the dark brand surfaces needs 4.5:1; gray-cool-40 and the next step are under it"
     },
     "--ddd-theme-default-limestoneLight": {
       "token": "--usa-gray-cool-10",
@@ -165,7 +166,8 @@
       "token": "--usa-orange-warm-70"
     },
     "--ddd-theme-default-creekTeal": {
-      "token": "--usa-mint-cool-vivid-50"
+      "token": "--usa-mint-cool-vivid-30",
+      "note": "one step lighter than usa-mint-cool-vivid-50 so DDD's potentialMidnight ink reads on it (4.5:1), as blocks pair them"
     },
     "--ddd-theme-default-creekLight": {
       "token": "--usa-mint-cool-20"

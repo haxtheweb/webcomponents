@@ -267,6 +267,60 @@
       "bg": "--ddd-theme-default-limestoneMaxLight",
       "ratio": 14.98,
       "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-link",
+      "bg": "--ddd-theme-default-limestoneMaxLight",
+      "ratio": 6.25,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-link",
+      "bg": "--ddd-theme-default-limestoneLight",
+      "ratio": 5.56,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-limestoneGray",
+      "bg": "--ddd-theme-default-nittanyNavy",
+      "ratio": 5.79,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-limestoneGray",
+      "bg": "--ddd-theme-default-potentialMidnight",
+      "ratio": 10.09,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-nittanyNavy",
+      "bg": "--ddd-theme-default-skyBlue",
+      "ratio": 5.82,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-potentialMidnight",
+      "bg": "--ddd-theme-default-creekTeal",
+      "ratio": 7.57,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-potentialMidnight",
+      "bg": "--ddd-theme-default-inventOrange",
+      "ratio": 7.6,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-potentialMidnight",
+      "bg": "--ddd-theme-default-discoveryCoral",
+      "ratio": 7.56,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-potentialMidnight",
+      "bg": "--ddd-theme-default-keystoneYellow",
+      "ratio": 10.19,
+      "min": 4.5
     }
   ],
   "pairs": [
@@ -309,7 +363,7 @@
       "primary": 5,
       "color": "--ddd-theme-default-limestoneGray",
       "on": "black",
-      "ratio": 6.96,
+      "ratio": 12.69,
       "source": "ddd"
     },
     {
@@ -330,7 +384,7 @@
       "primary": 8,
       "color": "--ddd-theme-default-skyBlue",
       "on": "black",
-      "ratio": 9.56,
+      "ratio": 12.75,
       "source": "ddd"
     },
     {
@@ -499,10 +553,10 @@
     {
       "ddd": "--ddd-theme-default-skyBlue",
       "tier": "identity",
-      "token": "--wa-color-blue-70",
-      "light": "#6eb3ff",
-      "dark": "#6eb3ff",
-      "note": ""
+      "token": "--wa-color-blue-80",
+      "light": "#9fceff",
+      "dark": "#9fceff",
+      "note": "one step lighter than wa-color-blue-70 so DDD's nittanyNavy ink reads on it (4.5:1), as blocks pair them"
     },
     {
       "ddd": "--ddd-theme-default-skyLight",
@@ -571,10 +625,10 @@
     {
       "ddd": "--ddd-theme-default-limestoneGray",
       "tier": "identity",
-      "token": "--wa-color-gray-60",
-      "light": "#9194a2",
-      "dark": "#9194a2",
-      "note": ""
+      "token": "--wa-color-gray-80",
+      "light": "#c7c9d0",
+      "dark": "#c7c9d0",
+      "note": "muted text on the dark brand surfaces needs 4.5:1; gray-60 and the next step are under it"
     },
     {
       "ddd": "--ddd-theme-default-limestoneLight",

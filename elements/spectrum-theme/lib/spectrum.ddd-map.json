@@ -210,6 +210,60 @@
       "bg": "--ddd-theme-default-limestoneMaxLight",
       "ratio": 13.7,
       "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-link",
+      "bg": "--ddd-theme-default-limestoneMaxLight",
+      "ratio": 5.93,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-link",
+      "bg": "--ddd-theme-default-limestoneLight",
+      "ratio": 4.81,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-limestoneGray",
+      "bg": "--ddd-theme-default-nittanyNavy",
+      "ratio": 5.88,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-limestoneGray",
+      "bg": "--ddd-theme-default-potentialMidnight",
+      "ratio": 8.68,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-nittanyNavy",
+      "bg": "--ddd-theme-default-skyBlue",
+      "ratio": 5.02,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-potentialMidnight",
+      "bg": "--ddd-theme-default-creekTeal",
+      "ratio": 4.61,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-potentialMidnight",
+      "bg": "--ddd-theme-default-inventOrange",
+      "ratio": 5.7,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-potentialMidnight",
+      "bg": "--ddd-theme-default-discoveryCoral",
+      "ratio": 5.67,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-potentialMidnight",
+      "bg": "--ddd-theme-default-keystoneYellow",
+      "ratio": 9.22,
+      "min": 4.5
     }
   ],
   "pairs": [
@@ -252,7 +306,7 @@
       "primary": 5,
       "color": "--ddd-theme-default-limestoneGray",
       "on": "black",
-      "ratio": 6.49,
+      "ratio": 12.29,
       "source": "ddd"
     },
     {
@@ -265,15 +319,15 @@
     {
       "primary": 7,
       "color": "--ddd-theme-default-creekTeal",
-      "on": "white",
-      "ratio": 4.81,
-      "source": "paired"
+      "on": "black",
+      "ratio": 6.53,
+      "source": "ddd"
     },
     {
       "primary": 8,
       "color": "--ddd-theme-default-skyBlue",
       "on": "black",
-      "ratio": 8.02,
+      "ratio": 10.5,
       "source": "ddd"
     },
     {
@@ -442,10 +496,10 @@
     {
       "ddd": "--ddd-theme-default-skyBlue",
       "tier": "identity",
-      "token": "--spectrum-blue-600",
-      "light": "rgb(114, 158, 253)",
-      "dark": "rgb(114, 158, 253)",
-      "note": ""
+      "token": "--spectrum-blue-500",
+      "light": "rgb(142, 185, 252)",
+      "dark": "rgb(142, 185, 252)",
+      "note": "one step lighter than spectrum-blue-600 so DDD's nittanyNavy ink reads on it (4.5:1), as blocks pair them"
     },
     {
       "ddd": "--ddd-theme-default-skyLight",
@@ -514,10 +568,10 @@
     {
       "ddd": "--ddd-theme-default-limestoneGray",
       "tier": "identity",
-      "token": "--spectrum-gray-500",
-      "light": "rgb(143, 143, 143)",
-      "dark": "rgb(143, 143, 143)",
-      "note": ""
+      "token": "--spectrum-gray-400",
+      "light": "rgb(198, 198, 198)",
+      "dark": "rgb(198, 198, 198)",
+      "note": "muted text on the dark brand surfaces needs 4.5:1; gray-500 is under it on blue-1200"
     },
     {
       "ddd": "--ddd-theme-default-limestoneLight",
@@ -634,10 +688,10 @@
     {
       "ddd": "--ddd-theme-default-creekTeal",
       "tier": "identity",
-      "token": "--spectrum-seafoam-900",
-      "light": "rgb(7, 129, 109)",
-      "dark": "rgb(7, 129, 109)",
-      "note": ""
+      "token": "--spectrum-seafoam-700",
+      "light": "rgb(11, 162, 134)",
+      "dark": "rgb(11, 162, 134)",
+      "note": "one step lighter than spectrum-seafoam-900 so DDD's potentialMidnight ink reads on it (4.5:1), as blocks pair them"
     },
     {
       "ddd": "--ddd-theme-default-creekLight",

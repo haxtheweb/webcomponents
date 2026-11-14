@@ -903,9 +903,12 @@ export class MicroGameBase extends I18NMixin(
             var(--ddd-theme-default-white),
             var(--ddd-theme-default-potentialMidnight)
           );
+          /* dark: limestoneLight, so it still reads where a design
+             system's navy is lighter than DDD's and the overlay mixes in
+             the stage below */
           --micro-game-soft: light-dark(
             var(--ddd-theme-default-slateGray),
-            var(--ddd-theme-default-limestoneGray)
+            var(--ddd-theme-default-limestoneLight)
           );
           --micro-game-accent: light-dark(
             var(--ddd-theme-default-beaverBlue),

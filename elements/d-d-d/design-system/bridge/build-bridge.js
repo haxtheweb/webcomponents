@@ -763,6 +763,41 @@ const PAIRS = [
     "--ddd-theme-default-limestoneMaxLight",
     4.5,
   ],
+  // blocks put links on their light gray surfaces too (citation, cards,
+  // license and demo panels), not only on white
+  ["--ddd-theme-default-link", "--ddd-theme-default-limestoneMaxLight", 4.5],
+  ["--ddd-theme-default-link", "--ddd-theme-default-limestoneLight", 4.5],
+  // muted labels on the dark brand surfaces (block labels, quiz pills,
+  // player metadata in dark mode)
+  ["--ddd-theme-default-limestoneGray", "--ddd-theme-default-nittanyNavy", 4.5],
+  [
+    "--ddd-theme-default-limestoneGray",
+    "--ddd-theme-default-potentialMidnight",
+    4.5,
+  ],
+  // dark ink on the light accent fills (date-card month, reading-analysis
+  // flags, chips)
+  ["--ddd-theme-default-nittanyNavy", "--ddd-theme-default-skyBlue", 4.5],
+  [
+    "--ddd-theme-default-potentialMidnight",
+    "--ddd-theme-default-creekTeal",
+    4.5,
+  ],
+  [
+    "--ddd-theme-default-potentialMidnight",
+    "--ddd-theme-default-inventOrange",
+    4.5,
+  ],
+  [
+    "--ddd-theme-default-potentialMidnight",
+    "--ddd-theme-default-discoveryCoral",
+    4.5,
+  ],
+  [
+    "--ddd-theme-default-potentialMidnight",
+    "--ddd-theme-default-keystoneYellow",
+    4.5,
+  ],
 ];
 const contrastReport = PAIRS.map(([fg, bg, min]) => {
   const a = value(fg, "light");

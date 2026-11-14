@@ -48,7 +48,7 @@ export const CarbonDDDMap = css`
     --ddd-theme-default-wonderPurple: var(--carbon-purple-70);
     --ddd-theme-default-original87Pink: var(--carbon-magenta-60);
     --ddd-theme-default-discoveryCoral: var(--carbon-red-40);
-    --ddd-theme-default-link: var(--carbon-blue-60);
+    --ddd-theme-default-link: var(--carbon-blue-70);
     --ddd-theme-default-linkLight: var(--carbon-blue-40);
     --ddd-theme-default-error: var(--carbon-red-70);
     --ddd-theme-default-errorLight: var(--carbon-red-10);

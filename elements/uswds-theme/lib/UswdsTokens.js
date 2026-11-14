@@ -21,6 +21,7 @@ export const UswdsTokens = css`
     --usa-blue-warm-vivid-80: #162e51;
     --usa-cyan-20: #99deea;
     --usa-cyan-5: #e7f6f8;
+    --usa-cyan-vivid-20: #52daf2;
     --usa-cyan-vivid-30: #00bde3;
     --usa-gold-10: #f1e5cd;
     --usa-gold-30: #c7a97b;
@@ -35,8 +36,8 @@ export const UswdsTokens = css`
     --usa-gray-80: #2e2e2e;
     --usa-gray-90: #1b1b1b;
     --usa-gray-cool-10: #dfe1e2;
+    --usa-gray-cool-20: #c6cace;
     --usa-gray-cool-30: #a9aeb1;
-    --usa-gray-cool-40: #8d9297;
     --usa-gray-cool-5: #edeff0;
     --usa-gray-cool-60: #565c65;
     --usa-gray-cool-80: #2d2e2f;
@@ -48,7 +49,7 @@ export const UswdsTokens = css`
     --usa-magenta-vivid-60: #ab2165;
     --usa-mint-cool-20: #9bd4cf;
     --usa-mint-cool-5: #e0f7f6;
-    --usa-mint-cool-vivid-50: #008480;
+    --usa-mint-cool-vivid-30: #1dc2ae;
     --usa-orange-vivid-30: #fa9441;
     --usa-orange-warm-70: #633a32;
     --usa-red-vivid-60: #b50909;

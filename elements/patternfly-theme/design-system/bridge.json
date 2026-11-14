@@ -57,7 +57,8 @@
       "token": "--pf-t--color--blue--30"
     },
     "--ddd-theme-default-skyBlue": {
-      "token": "--pf-t--color--blue--40"
+      "token": "--pf-t--color--blue--30",
+      "note": "one step lighter than pf-t--color--blue--40 so DDD's nittanyNavy ink reads on it (4.5:1), as blocks pair them"
     },
     "--ddd-theme-default-skyLight": {
       "token": "--pf-t--color--blue--20"
@@ -160,8 +161,8 @@
       "token": "--pf-t--color--red--40"
     },
     "--ddd-theme-default-link": {
-      "token": "--pf-t--color--blue--50",
-      "note": "PatternFly light link color"
+      "token": "--pf-t--color--blue--60",
+      "note": "PatternFly link hover color: the light link color (blue-50) is under 4.5:1 on the gray-20 surfaces HAX blocks put links on"
     },
     "--ddd-theme-default-linkLight": {
       "token": "--pf-t--color--blue--20",
