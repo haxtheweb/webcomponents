@@ -239,7 +239,7 @@ export const HAX_NETWORK_DESTINATIONS = [
   {
     title: "goDemo",
     about: "goDemoAbout",
-    href: "https://webcomponents.hax.cloud/elements/haxcms-elements/demo/index.html",
+    href: "https://demo.hax.cloud",
     icon: "hax:wand",
   },
   {
