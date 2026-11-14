@@ -134,7 +134,13 @@ describe("DDD style guide presets for lists in the HAX settings form", () => {
   registerWithStore(store);
 
   const listPresets = {
-    ul: ["readingRequired", "readingOptional", "listDisc", "listCircle"],
+    ul: [
+      "readingRequired",
+      "readingOptional",
+      "listDisc",
+      "listCircle",
+      "keyPoints",
+    ],
     ol: [
       "readingRequired",
       "readingOptional",

@@ -1,0 +1,133 @@
+{
+  "meta": {
+    "name": "art-portfolio",
+    "description": "An artist portfolio on the Clean Portfolio theme: artist statement, featured works, two series and a contact page for commissions.",
+    "version": "1.0.0",
+    "created": "2026-02-09T16:56:56.978Z",
+    "type": "skeleton",
+    "useCaseTitle": "Art Portfolio",
+    "useCaseDescription": "An artist portfolio on the Clean Portfolio theme: artist statement, featured works, two series and a contact page for commissions.",
+    "useCaseImage": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-clean-portfolio-theme-thumb.jpg",
+    "category": ["Website"],
+    "tags": ["art", "gallery", "portfolio"],
+    "attributes": []
+  },
+  "site": {
+    "name": "knox-studio",
+    "description": "Knox Studio, the portfolio of multidisciplinary artist Aurelian Knox.",
+    "theme": "clean-portfolio-theme",
+    "settings": {
+      "lang": "en-US",
+      "publishPagesOn": true,
+      "canonical": true,
+      "private": false,
+      "pathauto": false,
+      "sw": false,
+      "forceUpgrade": false,
+      "gaID": ""
+    },
+    "platform": {}
+  },
+  "build": {
+    "type": "skeleton",
+    "structure": "from-skeleton",
+    "items": [
+      {
+        "id": "0e12439d-1aca-0087-663d-ac8089a5b769",
+        "title": "Aurelian Knox",
+        "slug": "index",
+        "order": 0,
+        "parent": null,
+        "indent": 0,
+        "content": "<h2 data-style-guide=\"headline\" data-design-treatment=\"vert\" data-primary=\"8\" data-padding=\"xs\" data-border-radius=\"xs\">Knox Studio</h2><p>Aurelian Knox is a multidisciplinary artist exploring the intersection of <strong>abstraction, enlightenment, and presence</strong>. The work investigates the human journey through life and how pressure, discipline, and pain shape identity.</p><p>Rooted in symbolism and modern life, Aurelian’s art reflects a belief that <strong>growth only occurs under tension</strong>. Each piece functions as a visual meditation, inviting the viewer to slow down and confront their own being.</p><h3 data-style-guide=\"sectionDivider\" data-design-treatment=\"horz-md\" data-primary=\"2\" data-padding=\"xs\">Artist Statement</h3><blockquote data-style-guide=\"pullQuote\" data-design-treatment=\"dropCap-sm\" data-primary=\"2\" data-accent=\"2\" data-border-radius=\"xs\" data-padding=\"s\">I began creating art during periods of intense transformation: long nights, slow days, engulfed in passion, solitude, and self-revelation. What began as private sketches evolved into a visual language for transcendence.</blockquote><p data-style-guide=\"calloutInfo\" data-primary=\"24\" data-accent=\"9\" data-border-radius=\"md\" data-padding=\"s\" data-box-shadow=\"sm\">See the newest pieces in <a href=\"gallery-featured\">Featured Works</a>, or <a href=\"contact-commissions\">get in touch</a> about a commission.</p>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": ["introduction"]
+        }
+      },
+      {
+        "id": "b1544796-7b9f-bc67-82c9-82e6aef1ce75",
+        "title": "Gallery: Featured Works",
+        "slug": "gallery-featured",
+        "order": 1,
+        "parent": null,
+        "indent": 0,
+        "content": "<h2 data-style-guide=\"headline\" data-design-treatment=\"vert\" data-primary=\"8\" data-padding=\"xs\" data-border-radius=\"xs\">Featured Works</h2><p>Four recent pieces that carry the studio’s central question: what does a person become under pressure? Each is available as a limited print.</p><grid-plate layout=\"1-1\" disable-responsive><media-image slot=\"col-1\" source=\"https://media.surrealismtoday.com/wp-content/uploads/2020/07/12183324/Iteration-29-Age-of-Enlightenment-2-vincent-fink.jpg\" card alt=\"Sacred Mind, featured work\" citation=\"Sacred Mind\" accent-color=\"grey\" size=\"wide\"></media-image><media-image slot=\"col-2\" source=\"https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTExL3BkbWlzYzctd2szODY1ODEyNS1pbWFnZV8xLmpwZw.jpg\" card alt=\"Formed / Shaped, featured work\" citation=\"Formed / Shaped\" accent-color=\"grey\" size=\"wide\"></media-image><media-image slot=\"col-1\" source=\"https://images.zenmuseum.com/page/generic/art-movements/49088374138_162d554940_c.jpg\" card alt=\"Simplicity, featured work\" citation=\"Simplicity\" accent-color=\"grey\" size=\"wide\"></media-image><media-image slot=\"col-2\" source=\"https://media.easy-peasy.ai/27feb2bb-aeb4-4a83-9fb6-8f3f2a15885e/bc4f430d-50d6-4c70-86be-f6b874604fa0.png\" card alt=\"Diluted, featured work\" citation=\"Diluted\" accent-color=\"grey\" size=\"wide\"></media-image></grid-plate>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": ["featured", "highlight"]
+        }
+      },
+      {
+        "id": "88e2d5e8-9f8d-9fde-9920-063f377a4830",
+        "title": "Gallery: Series One",
+        "slug": "gallery-series-one",
+        "order": 2,
+        "parent": null,
+        "indent": 0,
+        "content": "<h2 data-style-guide=\"headline\" data-design-treatment=\"vert\" data-primary=\"8\" data-padding=\"xs\" data-border-radius=\"xs\">Series One</h2><media-image source=\"https://www.galleryone.com/Merchant5/graphics/00000001/packard-pacan1_500x401.jpg\" card alt=\"Freedom, a still ocean scene\" citation=\"Freedom\" accent-color=\"grey\" size=\"wide\"></media-image><h3 data-style-guide=\"sectionDivider\" data-design-treatment=\"horz-md\" data-primary=\"2\" data-padding=\"xs\">Be Still</h3><p><em>Freedom</em> is a representation of stillness. The ocean mirrors life’s quiet truth: I am not merely a drop in the sea, but the sea within a single drop.</p>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": ["series", "collection"]
+        }
+      },
+      {
+        "id": "0a4b997d-2dd4-cf51-1663-35de1768cdab",
+        "title": "Gallery: Series Two",
+        "slug": "gallery-series-two",
+        "order": 3,
+        "parent": null,
+        "indent": 0,
+        "content": "<h2 data-style-guide=\"headline\" data-design-treatment=\"vert\" data-primary=\"8\" data-padding=\"xs\" data-border-radius=\"xs\">Series Two</h2><p>This work explores the world through a child’s eyes: first contact with color, imagination, and presence.</p><media-image source=\"https://d7hftxdivxxvm.cloudfront.net/?quality=80&resize_to=width&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2F4H7Xsg7mSdX7nn55b31JnQ%2Fnormalized.jpg&width=910\" card alt=\"Kolor, a bright abstract painting\" citation=\"Kolor\" accent-color=\"grey\" size=\"wide\"></media-image>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": ["series", "experiment"]
+        }
+      },
+      {
+        "id": "5482971f-5995-116e-db40-d4afc87a973b",
+        "title": "Contact & Commissions",
+        "slug": "contact-commissions",
+        "order": 4,
+        "parent": null,
+        "indent": 0,
+        "content": "<p>Reach out for commissions, exhibitions, prints, or collaboration inquiries. Please include timelines and project details.</p><ul><li><strong>Phone:</strong> +1 (201) 555-0147</li><li><strong>Email:</strong> studio@example.com</li><li><strong>Studio visits:</strong> by appointment</li></ul><p data-style-guide=\"calloutInfo\" data-primary=\"24\" data-accent=\"9\" data-border-radius=\"md\" data-padding=\"s\" data-box-shadow=\"sm\">Commissions usually take six to eight weeks from sketch to finished piece.</p>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": ["contact", "commission"]
+        }
+      }
+    ],
+    "files": []
+  },
+  "theme": {
+    "imageAlt": "",
+    "imageLink": "",
+    "path": "@haxtheweb/clean-portfolio-theme/clean-portfolio-theme.js",
+    "name": "Clean Portfolio Theme",
+    "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-clean-portfolio-theme-thumb.jpg",
+    "description": "Start with a blank site using the Clean Portfolio Theme",
+    "category": ["Website"],
+    "hidden": false,
+    "terrible": false,
+    "regions": {}
+  },
+  "_skeleton": {
+    "fullThemeConfig": {
+      "element": "clean-portfolio-theme",
+      "variables": {
+        "image": "",
+        "imageAlt": "",
+        "imageLink": "",
+        "hexCode": "#aeff00",
+        "cssVariable": "--simple-colors-default-theme-light-blue-7",
+        "icon": "image:brush"
+      }
+    }
+  }
+}

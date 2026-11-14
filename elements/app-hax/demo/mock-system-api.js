@@ -391,7 +391,7 @@
     async (req) => [
       200,
       ok({
-        link: `${DEMO_DIR}skeletons/course-site-template.json`,
+        link: `${DEMO_DIR}skeletons/online-course.json`,
         name: `${req.path.siteName}-skeleton.json`,
       }),
     ],
