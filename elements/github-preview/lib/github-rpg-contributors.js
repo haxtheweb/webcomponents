@@ -63,6 +63,10 @@ export class GithubRpgContributors extends I18NMixin(DDDSuper(LitElement)) {
           margin: var(--ddd-spacing-2);
           padding: var(--ddd-spacing-4);
         }
+        /* a long org/repo name wraps instead of widening the page */
+        h3 {
+          overflow-wrap: anywhere;
+        }
         h3 span {
           font-size: var(
             --github-rpg-contributors-label-font-size,

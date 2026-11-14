@@ -169,7 +169,9 @@ describe("bullet-check-list test", () => {
   });
 
   it("shows the clipboard-pulse icon decoratively", () => {
-    const icon = element.shadowRoot.querySelector("simple-icon");
+    const icon = element.shadowRoot.querySelector(
+      ".ddd-block-chip simple-icon-lite",
+    );
     expect(icon.getAttribute("icon")).to.equal("hax:clipboard-pulse");
     expect(icon.getAttribute("aria-hidden")).to.equal("true");
   });

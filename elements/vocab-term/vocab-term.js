@@ -226,6 +226,9 @@ class VocabTerm extends SchemaBehaviors(I18NMixin(LitElement)) {
            definition, in modal and popover mode alike */
         .vocab-term-trigger > summary {
           cursor: pointer;
+          /* a 24px tall pointer target without moving the line it sits in */
+          padding-block: 1px;
+          margin-block: -1px;
           text-decoration-line: underline;
           text-decoration-style: dotted;
           text-decoration-thickness: var(--ddd-border-size-sm, 2px);

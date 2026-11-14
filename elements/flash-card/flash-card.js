@@ -110,7 +110,8 @@ export class FlashCard extends I18NMixin(SchemaBehaviors(DDD)) {
           border-radius: var(--ddd-radius-md);
           box-shadow: none;
           overflow: hidden;
-          min-width: 320px;
+          /* 320px wide where there is room, never wider than its container */
+          min-width: min(320px, calc(100% - (var(--ddd-spacing-4) * 2) - 2px));
           min-height: 155px;
           padding: 0;
           margin: var(--ddd-stack-gap, var(--ddd-spacing-4))

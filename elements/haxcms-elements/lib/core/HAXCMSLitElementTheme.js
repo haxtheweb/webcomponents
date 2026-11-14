@@ -456,6 +456,8 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
              collapses to an instant reveal for reduced-motion users (the
              wildcard only reaches shadow content, the host fade was missed) */
           :host,
+          :host::before,
+          :host::after,
           *,
           *::before,
           *::after {

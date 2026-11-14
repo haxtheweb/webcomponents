@@ -132,6 +132,8 @@ class PolarisStoryCard extends I18NMixin(LitElement) {
         .label {
           padding: 0;
           margin: 20px 10px;
+          /* a long word wraps inside a narrow card instead of being cut off */
+          overflow-wrap: anywhere;
         }
 
         .pillar {
@@ -143,6 +145,7 @@ class PolarisStoryCard extends I18NMixin(LitElement) {
           padding: 4px 10px;
           background-color: var(--ddd-theme-default-nittanyNavy, #001e44);
           font-weight: 500;
+          overflow-wrap: anywhere;
         }
         /* Keep the pillar's layout box when empty so the relative offset
            is preserved and cards line up correctly when placed side by side. */

@@ -769,7 +769,7 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
           gap: var(--hax-ui-gap-md);
         }
         .update-version {
-          font-size: 15px;
+          font-size: var(--hax-ui-admin-font-size);
           font-weight: var(--ddd-font-weight-bold, 700);
           font-variant-numeric: tabular-nums;
         }
@@ -796,7 +796,7 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
           margin: 0;
         }
         .update-how h4 {
-          font-size: var(--ddd-font-size-4xs, 16px);
+          font-size: var(--hax-ui-admin-font-size);
         }
         .update-security ul,
         .update-steps {

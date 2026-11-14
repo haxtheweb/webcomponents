@@ -22,8 +22,22 @@ import {
   composedContains,
   expectGoodFocusStop,
   hasVisibleFocusIndicator,
+  hiddenReason,
   describeEl,
 } from "../../../scripts/test-setup/keyboard-flow.js";
+
+// Wait on what a key press does, not on the clock: focus has moved (per
+// `moved`) and rests on a stop that is shown with its focus indicator. A
+// loaded machine takes longer to get there; the assertions that follow say
+// what is wrong when it never does.
+async function focusMoved(moved, timeout = 3000) {
+  await waitFor(() => {
+    const el = deepActiveElement();
+    return (
+      !!el && moved(el) && !hiddenReason(el) && hasVisibleFocusIndicator(el)
+    );
+  }, timeout);
+}
 
 async function shiftTab(ms = 150) {
   await sendKeys({ down: "Shift" });
@@ -123,6 +137,7 @@ describe("keyboard flow: the hax-body editing area", function () {
   // a text block is active and holds the selection, as after typing in it
   async function activateText(el) {
     HAXStore.activeNode = el;
+    await waitFor(() => body.activeNode === el, 2000);
     await settle(100);
     caretIn(el);
   }
@@ -136,7 +151,8 @@ describe("keyboard flow: the hax-body editing area", function () {
       await activateText(p);
       const was = blocks(body);
       before.focus();
-      await press("Tab", 150);
+      await press("Tab", 0);
+      await focusMoved((at) => at !== before);
       const el = expectGoodFocusStop(expect, "Tab from #before");
       expect(
         composedContains(tray, el),
@@ -180,7 +196,8 @@ describe("keyboard flow: the hax-body editing area", function () {
       await activateText(li);
       const was = blocks(body);
       await press("Escape", 50);
-      await press("Tab", 150);
+      await press("Tab", 0);
+      await focusMoved((at) => at !== body && !body.contains(at));
       expect(
         passedThrough("Tab"),
         "Escape, then Tab is the browser's",
@@ -199,7 +216,8 @@ describe("keyboard flow: the hax-body editing area", function () {
       caretIn(li);
       keys.length = 0;
       await press("Escape", 50);
-      await shiftTab();
+      await shiftTab(0);
+      await focusMoved((at) => at !== body && !composedContains(body, at));
       expect(passedThrough("Tab"), "Escape, then Shift+Tab").to.equal(1);
       const el = deepActiveElement();
       expect(
