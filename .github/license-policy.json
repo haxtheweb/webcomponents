@@ -59,7 +59,6 @@
     "pkg:npm/bootstrap": ["CC-BY-3.0 AND MIT"],
     "pkg:npm/caniuse-lite": ["CC-BY-4.0"],
     "pkg:npm/chartist": ["MIT AND WTFPL"],
-    "pkg:npm/chartist-plugin-accessibility": ["WTFPL"],
     "pkg:npm/chartist-plugin-pointlabels": ["WTFPL"],
     "pkg:npm/editions": ["Artistic-2.0"],
     "pkg:npm/jsbn": ["MIT AND MIT-Wu"],
