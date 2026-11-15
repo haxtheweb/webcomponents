@@ -177,6 +177,21 @@ class PolarisFlexTheme extends HAXCMSOperationButtons(
           padding: var(--ddd-spacing-12) 0 0;
         }
 
+        /* Outline Actions for the current page. The flex menu cannot carry
+           them (they overlap its labels), so they sit by the breadcrumb. */
+        .page-path {
+          display: flex;
+          align-items: flex-end;
+          gap: var(--ddd-spacing-2);
+        }
+        .page-path site-breadcrumb {
+          flex: 1 1 auto;
+          min-width: 0;
+        }
+        .page-ops {
+          flex: 0 0 auto;
+        }
+
         /* Theme Header Section */
         header:not(:empty) {
           background-color: var(--polaris-header-bg-color);
@@ -986,7 +1001,10 @@ class PolarisFlexTheme extends HAXCMSOperationButtons(
         <main id="main" tabindex="-1">
           <article id="contentcontainer">
             <site-region name="contentTop"></site-region>
-            <site-breadcrumb part="page-breadcrumb"></site-breadcrumb>
+            <div class="page-path">
+              <site-breadcrumb part="page-breadcrumb"></site-breadcrumb>
+              ${this.renderPageOperations()}
+            </div>
             <site-active-tags
               part="page-tags"
               auto-accent-color
@@ -1057,7 +1075,27 @@ class PolarisFlexTheme extends HAXCMSOperationButtons(
       __navStuck: {
         type: Boolean,
       },
+      __pageOpsId: {
+        type: String,
+      },
     };
+  }
+
+  /**
+   * Outline Actions (move, indent, lock, delete...) for the current page.
+   * Sidebar themes get them from site-menu on the active item; the flex menu
+   * leaves them out, so this theme shows them by the breadcrumb, to the same
+   * people site-menu would: signed in and not previewing as a visitor.
+   */
+  renderPageOperations() {
+    if (!this.__pageOpsId) {
+      return ``;
+    }
+    return html`<div class="page-ops">
+      <haxcms-page-operations
+        action-id="${this.__pageOpsId}"
+      ></haxcms-page-operations>
+    </div>`;
   }
 
   /**
@@ -1125,6 +1163,7 @@ class PolarisFlexTheme extends HAXCMSOperationButtons(
     // sticky-nav mirror is hidden until the IntersectionObserver fires; give it
     // a deterministic falsy default so the template never reads as undefined
     this.__navStuck = false;
+    this.__pageOpsId = null;
     this.__disposer = this.__disposer ? this.__disposer : [];
 
     this.__disposer.push(
@@ -1177,9 +1216,37 @@ class PolarisFlexTheme extends HAXCMSOperationButtons(
   }
 
   /**
+   * Outline Actions follow sign-in, preview and the current page while the
+   * theme is on the page.
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    if (!this.__pageOpsDisposer) {
+      this.__pageOpsDisposer = autorun((_reaction) => {
+        const show = toJS(store.isLoggedIn) && !toJS(store.previewMode);
+        const id = toJS(store.activeId);
+        const item = store.activeItem;
+        // internal routes (search, 404, ...) are not pages of the outline
+        const pageId = show && id && item && !item._internalRoute ? id : null;
+        Promise.resolve().then(() => {
+          if (pageId && !this.__pageOpsLoaded) {
+            this.__pageOpsLoaded = true;
+            import("@haxtheweb/haxcms-elements/lib/core/micros/haxcms-page-operations.js");
+          }
+          this.__pageOpsId = pageId;
+        });
+      });
+    }
+  }
+
+  /**
    * Clean up the sticky-nav IntersectionObserver when the theme is removed.
    */
   disconnectedCallback() {
+    if (this.__pageOpsDisposer) {
+      this.__pageOpsDisposer();
+      this.__pageOpsDisposer = null;
+    }
     if (this.__navIO) {
       this.__navIO.disconnect();
       this.__navIO = null;
