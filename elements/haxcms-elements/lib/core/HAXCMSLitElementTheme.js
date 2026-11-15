@@ -233,6 +233,16 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
             filter: invert(1);
           }
         }
+        /* Inline SVG in page content keeps a light background in dark mode.
+           Diagrams often hard-code dark strokes and fills with no background
+           of their own, so they vanish against a dark page. color keeps
+           currentColor strokes dark on that background. Light mode is
+           unchanged. */
+        body.dark-mode haxcms-site-builder svg {
+          background-color: var(--ddd-theme-default-white, #ffffff);
+          color: var(--ddd-theme-default-coalyGray, #262626);
+          border-radius: var(--ddd-radius-xs, 4px);
+        }
       `,
       editableTableDisplayStyles,
     ];
