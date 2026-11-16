@@ -109,6 +109,11 @@ export const mapMenuActiveRingStyles = [
     .active-ring.on-expand .ddd-ring-glyph {
       display: none;
     }
+    /* the glyph sits dead center in the ring: the spacing a row gives its
+       own icon (margin beside the title) does not apply inside the ring */
+    .active-ring .ddd-ring-glyph simple-icon-lite {
+      margin: 0;
+    }
   `,
 ];
 

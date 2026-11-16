@@ -287,9 +287,14 @@ export class InstructionalCadence extends DDDSuper(I18NMixin(LitElement)) {
           clip: rect(0 0 0 0);
           white-space: nowrap;
         }
+        /* the score grows with the page or panel it sits in, so it never
+           becomes a second scroll area inside that one (a long course is
+           many lines tall); only a line wider than the space scrolls */
         .score {
           display: block;
           min-height: var(--ddd-spacing-20);
+          max-width: 100%;
+          --sheet-music-viewport-max-height: none;
         }
       `,
     ];

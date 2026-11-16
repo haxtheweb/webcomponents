@@ -122,6 +122,7 @@ test("yarn.lock versions, patch names and shipping rules", () => {
   assert.equal(shippableSource("x", "x.js"), true);
   assert.equal(shippableSource("x", "lib/a/b.svg"), true);
   assert.equal(shippableSource("x", "locales/x.es.json"), true);
+  assert.equal(shippableSource("x", "icons/close.svg"), true);
   assert.equal(shippableSource("x", "x.stories.js"), false);
   assert.equal(shippableSource("x", "test/x.test.js"), false);
   assert.equal(shippableSource("x", "demo/index.html"), false);

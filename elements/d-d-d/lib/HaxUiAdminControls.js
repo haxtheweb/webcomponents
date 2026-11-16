@@ -92,10 +92,25 @@ export const HaxUiAdminControls = [
     /* danger buttons carry the hatch as well as the color, so Delete
        never reads as a second Save in greyscale or with red/green color
        vision (primary and danger-fill are under 3:1 apart by luminance) */
+    /* the hatch fills only the leading band (the icon well, or the start
+       padding when there is no icon) so the words always sit on the plain
+       surface: danger text over danger stripes is hard to read */
     .hax-ui-btn.danger {
       color: var(--hax-ui-danger);
       border-color: var(--hax-ui-danger);
       background-image: var(--hax-ui-danger-hatch);
+      background-repeat: no-repeat;
+      background-position: left center;
+      background-size: var(--hax-ui-gap-lg) 100%;
+    }
+    .hax-ui-btn.danger:has(> simple-icon-lite:first-child) {
+      background-size: calc(
+          var(--hax-ui-gap-lg) + var(--hax-ui-icon) + var(--hax-ui-gap) / 2
+        )
+        100%;
+    }
+    .hax-ui-btn.danger:dir(rtl) {
+      background-position: right center;
     }
     .hax-ui-btn.danger:hover {
       background-color: var(--hax-ui-danger-soft);

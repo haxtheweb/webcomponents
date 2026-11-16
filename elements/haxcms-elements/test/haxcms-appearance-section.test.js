@@ -155,6 +155,41 @@ describe("haxcms-appearance-admin-dialog", () => {
     store.playSound = savedSound;
   });
 
+  describe("palettes a theme supports", () => {
+    const PALETTE = "manifest-metadata-theme-variables-palette";
+    const THEME = "manifest-metadata-theme-element";
+    async function withRegistry() {
+      const el = await appearance({ inShell: true });
+      el.__themesRegistry = {
+        "clean-one": { element: "clean-one", supportedPalettes: ["4", "5"] },
+        "polaris-flex-theme": { element: "polaris-flex-theme" },
+      };
+      return el;
+    }
+
+    it("drops a palette kept from a theme the new one does not support", async () => {
+      const el = await withRegistry();
+      setField(el, THEME, "polaris-flex-theme");
+      await settle(el);
+      setField(el, PALETTE, "2");
+      await settle(el);
+      setField(el, THEME, "clean-one");
+      await settle(el);
+      expect(el.values[PALETTE]).to.equal("");
+    });
+
+    it("keeps a palette the new theme supports", async () => {
+      const el = await withRegistry();
+      setField(el, THEME, "polaris-flex-theme");
+      await settle(el);
+      setField(el, PALETTE, "4");
+      await settle(el);
+      setField(el, THEME, "clean-one");
+      await settle(el);
+      expect(el.values[PALETTE]).to.equal("4");
+    });
+  });
+
   describe("save payload parity", () => {
     it("sends the loaded values unchanged", async () => {
       const el = await appearance({ inShell: true });

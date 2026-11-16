@@ -1344,12 +1344,24 @@ class HAXCMSAppearanceAdminDialog extends HaxcmsAdminSectionMixin(
         "manifest-metadata-theme-element",
       )
     ) {
-      this._updatePaletteFieldOptions(
-        this.values["manifest-metadata-theme-element"],
-      );
-      this._updateDesignSystemField(
-        this.values["manifest-metadata-theme-element"],
-      );
+      const themeTag = this.values["manifest-metadata-theme-element"];
+      this._updatePaletteFieldOptions(themeTag);
+      this._updateDesignSystemField(themeTag);
+      // without a backend registry, the palettes a theme supports are known
+      // once its class loads; check the palette again then
+      if (
+        themeTag &&
+        !this.__themesRegistry[themeTag] &&
+        globalThis.customElements &&
+        !globalThis.customElements.get(themeTag)
+      ) {
+        globalThis.customElements.whenDefined(themeTag).then(() => {
+          if (this.values["manifest-metadata-theme-element"] === themeTag) {
+            this._updatePaletteFieldOptions(themeTag);
+            this._emitState();
+          }
+        });
+      }
     }
     if (
       Object.prototype.hasOwnProperty.call(
@@ -1470,6 +1482,20 @@ class HAXCMSAppearanceAdminDialog extends HaxcmsAdminSectionMixin(
     const paletteField = { ...paletteGroup.fields[paletteFieldIndex] };
     if (paletteOptions) {
       paletteField.options = paletteOptions;
+      // a palette kept from the previous theme that this one does not
+      // support goes back to the theme's default, so it cannot be saved
+      const paletteKey = "manifest-metadata-theme-variables-palette";
+      const current = this.values[paletteKey];
+      if (
+        current !== undefined &&
+        current !== null &&
+        current !== "" &&
+        !paletteOptions.map((p) => String(p)).includes(String(current))
+      ) {
+        this.values[paletteKey] = "";
+        // a new value object, so the picker redraws with no palette chosen
+        this.__fieldValues[paletteKey] = { [paletteKey]: "" };
+      }
     } else if (Object.prototype.hasOwnProperty.call(paletteField, "options")) {
       delete paletteField.options;
     }
