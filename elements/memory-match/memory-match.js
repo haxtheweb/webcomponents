@@ -401,8 +401,12 @@ export class MemoryMatch extends DDDSuper(I18NMixin(LitElement)) {
           --simple-icon-height: var(--ddd-icon-3xs);
           vertical-align: text-bottom;
         }
+        /* the button keeps one place: the message wraps in its own column
+           and only grows downward, so a longer message never moves it */
         .ddd-block-footer {
-          justify-content: space-between;
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) auto;
+          align-items: start;
           background-color: var(--ddd-status-answered-bg);
         }
         .ddd-block[data-complete] .ddd-block-footer {
@@ -413,9 +417,8 @@ export class MemoryMatch extends DDDSuper(I18NMixin(LitElement)) {
           display: flex;
           align-items: center;
           gap: var(--ddd-spacing-2);
-          flex: 1 1 auto;
           min-width: 0;
-          min-height: var(--ddd-icon-xxs);
+          min-height: var(--ddd-control-height-sm);
           margin: var(--ddd-spacing-0);
         }
         .status-chip {

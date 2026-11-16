@@ -476,6 +476,41 @@ describe("memory-match", () => {
     expect(wrap.scrollWidth).to.be.at.most(wrap.clientWidth);
   });
 
+  it("Start over stays in place whatever the message length", async () => {
+    for (const width of ["720px", "328px"]) {
+      const wrap = await fixture(
+        html`<div style="width: ${width}">
+          <memory-match title="Steady"
+            ><dl>
+              <dt>a</dt>
+              <dd>1</dd>
+              <dt>b</dt>
+              <dd>2</dd>
+            </dl></memory-match
+          >
+        </div>`,
+      );
+      const el = wrap.querySelector("memory-match");
+      await dealt(el);
+      const spots = [];
+      for (const text of [
+        "",
+        "Matched.",
+        "No match: a very long first card and a very long second card. Choose any card to turn them back.",
+      ]) {
+        el._status = text;
+        await el.updateComplete;
+        const b = el.shadowRoot.querySelector(".start-over");
+        const r = b.getBoundingClientRect();
+        const h = el.getBoundingClientRect();
+        spots.push(
+          `${Math.round(r.left - h.left)},${Math.round(r.top - h.top)}`,
+        );
+      }
+      expect(new Set(spots).size, `${width}: ${spots.join(" / ")}`).to.equal(1);
+    }
+  });
+
   it("has no transition or animation on the cards", async () => {
     const el = await make();
     await dealt(el);

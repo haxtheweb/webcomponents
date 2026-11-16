@@ -116,6 +116,8 @@ Build it with `buildStatement` from `@haxtheweb/user-action/lib/xapi.js` so it c
 
 ## HAX
 
+Marked experimental (`gizmo.meta.lifecycle`), so the block browser shows it as Beta until the platform back end above exists.
+
 Configure: title, description, launch URL, open in. Advanced: LTI login URL, client ID, deployment ID, issuer, height on the page, accent color. Developer: the two hints. While editing, the button does not launch and nothing is sent.
 
 ## Commands

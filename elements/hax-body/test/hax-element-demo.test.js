@@ -73,4 +73,15 @@ describe("hax-element-demo", () => {
     expect(icon).to.exist;
     expect(icon.getAttribute("icon")).to.equal("icons:add");
   });
+
+  it("shows the lifecycle word next to the title when given", async () => {
+    el.gizmoTitle = "T";
+    await el.updateComplete;
+    expect(el.shadowRoot.querySelector(".badge")).to.not.exist;
+    el.gizmoBadge = "Beta";
+    await el.updateComplete;
+    const badge = el.shadowRoot.querySelector(".title .badge");
+    expect(badge).to.exist;
+    expect(badge.textContent.trim()).to.equal("Beta");
+  });
 });

@@ -558,7 +558,7 @@
           }
         },
         "meta": {
-          "description": "Free-form metadata. Keys with editor meaning: `author`, `hidden` (do not list), `inlineOnly` (only offered in inline contexts), `selectionRequired`, `requiresParent`, `outlineDesigner`, `owner`.",
+          "description": "Free-form metadata. Keys with editor meaning: `author`, `hidden` (do not list), `inlineOnly` (only offered in inline contexts), `selectionRequired`, `requiresParent`, `outlineDesigner`, `owner`, `lifecycle` (with `lifecycleLink`).",
           "type": "object",
           "properties": {
             "author": {
@@ -582,6 +582,15 @@
             "requiresParent": {
               "description": "Same effect as `gizmo.requiresParent` in the HAXcms allowed-blocks UI.",
               "type": ["boolean", "string"]
+            },
+            "lifecycle": {
+              "description": "How settled the block is, in the same terms as a HAXcms plugin's lifecycle. `experimental`: usable, but its settings or saved markup may still change, or it needs a backend that is not generally available yet; the block browser marks it Beta. `deprecated`: kept so existing content keeps working, not for new content; give `lifecycleLink`. Omit for stable.",
+              "enum": ["stable", "experimental", "deprecated"],
+              "default": "stable"
+            },
+            "lifecycleLink": {
+              "description": "Page that explains the lifecycle: what is unfinished, or what to use instead of a deprecated block.",
+              "type": "string"
             }
           }
         },

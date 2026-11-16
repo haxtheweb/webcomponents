@@ -24,7 +24,8 @@
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team",
-      "anchorLabel": "title"
+      "anchorLabel": "title",
+      "lifecycle": "experimental"
     }
   },
   "settings": {
