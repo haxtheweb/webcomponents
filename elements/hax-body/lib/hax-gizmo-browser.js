@@ -168,6 +168,8 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
       filterContentTypes: "Filter Blocks",
       recent: "Recent",
       popular: "Popular",
+      beta: "Beta",
+      deprecated: "Deprecated",
     };
     this.registerLocalization({
       context: this,
@@ -251,7 +253,29 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
     if (gizmo.meta && gizmo.meta.author) {
       index += " " + gizmo.meta.author;
     }
+    if (this._lifecycleBadge(gizmo)) {
+      index += " " + this._lifecycleBadge(gizmo) + " " + gizmo.meta.lifecycle;
+    }
     return index;
+  }
+  /**
+   * Word shown with a block that is not stable (gizmo.meta.lifecycle):
+   * experimental blocks are marked Beta, deprecated ones Deprecated.
+   */
+  _lifecycleBadge(gizmo) {
+    const lifecycle = gizmo && gizmo.meta ? gizmo.meta.lifecycle : "";
+    if (lifecycle === "experimental") {
+      return this.t.beta;
+    }
+    if (lifecycle === "deprecated") {
+      return this.t.deprecated;
+    }
+    return "";
+  }
+  // tile label: the title, plus the lifecycle word when there is one
+  _tileLabel(gizmo) {
+    const badge = this._lifecycleBadge(gizmo);
+    return badge ? `${gizmo.title} (${badge})` : gizmo.title;
   }
   /**
    * Filter an auxiliary gizmo list (recent / popular) using the same
@@ -323,7 +347,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
                               draggable="true"
                               @dragstart="${this._dragStart}"
                               index="popular-${i}"
-                              label="${gizmo.title}"
+                              label="${this._tileLabel(gizmo)}"
                               event-name="insert-tag"
                               event-data="${gizmo.tag}"
                               data-demo-schema="true"
@@ -340,6 +364,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
                                       gizmo-title="${gizmo.title}"
                                       gizmo-description="${gizmo.description || ""}"
                                       gizmo-icon="${gizmo.icon}"
+                                      gizmo-badge="${this._lifecycleBadge(gizmo)}"
                                       slot="options"
                                     ></hax-element-demo>
                                   `
@@ -375,7 +400,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
                               draggable="true"
                               @dragstart="${this._dragStart}"
                               index="${i}"
-                              label="${gizmo.title}"
+                              label="${this._tileLabel(gizmo)}"
                               event-name="insert-tag"
                               event-data="${gizmo.tag}"
                               data-demo-schema="true"
@@ -392,6 +417,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
                                       gizmo-title="${gizmo.title}"
                                       gizmo-description="${gizmo.description || ""}"
                                       gizmo-icon="${gizmo.icon}"
+                                      gizmo-badge="${this._lifecycleBadge(gizmo)}"
                                       slot="options"
                                     ></hax-element-demo>
                                   `
@@ -429,7 +455,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
                                       draggable="true"
                                       @dragstart="${this._dragStart}"
                                       index="${i}"
-                                      label="${gizmo.title}"
+                                      label="${this._tileLabel(gizmo)}"
                                       event-name="insert-tag"
                                       event-data="${gizmo.tag}"
                                       data-demo-schema="true"
@@ -448,6 +474,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
                                                 gizmo.description || ""
                                               }"
                                               gizmo-icon="${gizmo.icon}"
+                                              gizmo-badge="${this._lifecycleBadge(gizmo)}"
                                               slot="options"
                                             ></hax-element-demo>
                                           `
@@ -675,6 +702,10 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
         }
         if (gizmo.meta && gizmo.meta.author) {
           items[i].index += " " + gizmo.meta.author;
+        }
+        if (this._lifecycleBadge(gizmo)) {
+          items[i].index +=
+            " " + this._lifecycleBadge(gizmo) + " " + gizmo.meta.lifecycle;
         }
       });
       this.items = [...items];

@@ -76,5 +76,18 @@
         </sorting-question>
       </template>
     </demo-snippet>
+
+    <h2>Card layout (layout="cards")</h2>
+    <demo-snippet>
+      <template>
+        <sorting-question id="plant-growth" question="How a plant grows: put the pictures in order from first to last" layout="cards" max-attempts="3">
+          <p slot="hint">A plant starts small and ends with a flower.</p>
+          <input value="Seed" data-image="images/plant-seed.svg" data-image-alt="Seed in soil" />
+          <input value="Sprout" data-image="images/plant-sprout.svg" data-image-alt="Sprout with two leaves" />
+          <input value="Leafy stem" data-image="images/plant-stem.svg" data-image-alt="Stem with several leaves" />
+          <input value="Flower" data-image="images/plant-flower.svg" data-image-alt="Flowering plant" />
+        </sorting-question>
+      </template>
+    </demo-snippet>
   </body>
 </html>

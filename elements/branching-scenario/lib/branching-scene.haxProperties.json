@@ -1,0 +1,74 @@
+{
+  "api": "1",
+  "type": "grid",
+  "canScale": false,
+  "canEditSource": true,
+  "contentEditable": true,
+  "hideDefaultSettings": true,
+  "designSystem": false,
+  "gizmo": {
+    "title": "Scenario scene",
+    "description": "One scene of a branching scenario. Link each choice to another scene with # followed by its scene id.",
+    "icon": "communication:call-split",
+    "color": "blue",
+    "tags": ["Instructional", "scenario", "scene"],
+    "handles": [],
+    "meta": {
+      "author": "HAXTheWeb core team",
+      "owner": "The Pennsylvania State University"
+    },
+    "requiresParent": "branching-scenario"
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "sceneId",
+        "title": "Scene id",
+        "description": "What choices link to: a link to # followed by this id leads to this scene. Letters, numbers and hyphens.",
+        "inputMethod": "textfield",
+        "required": true
+      },
+      {
+        "property": "heading",
+        "title": "Heading",
+        "description": "Heading of the scene.",
+        "inputMethod": "textfield",
+        "required": true
+      },
+      {
+        "property": "ending",
+        "title": "Ending",
+        "description": "Whether this scene ends a path, and how it turned out.",
+        "inputMethod": "select",
+        "options": {
+          "": "Not an ending",
+          "good": "Good ending",
+          "mixed": "Mixed ending",
+          "poor": "Poor ending"
+        }
+      },
+      {
+        "property": "score",
+        "title": "Score",
+        "description": "Score for reaching this ending. The highest ending score in the scenario is the maximum.",
+        "inputMethod": "number"
+      }
+    ],
+    "advanced": [],
+    "developer": []
+  },
+  "saveOptions": {
+    "wipeSlot": false,
+    "unsetAttributes": []
+  },
+  "demoSchema": [
+    {
+      "tag": "branching-scene",
+      "properties": {
+        "sceneId": "start",
+        "heading": "The blade guard is off"
+      },
+      "content": "<p>You arrive for your shift. The table saw's blade guard is off.</p>"
+    }
+  ]
+}

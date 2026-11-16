@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes"
+    />
+    <title>BranchingScenario: branching-scenario Demo</title>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <script type="module">
+      import "../branching-scenario.js";
+    </script>
+    <style>
+      html {
+        color-scheme: light dark;
+      }
+      body {
+        background-color: light-dark(white, black);
+        color: light-dark(black, white);
+      }
+      main {
+        max-width: 760px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+    <h1>branching-scenario</h1>
+    <p>
+      Each choice is an ordinary link to another scene. Without JavaScript
+      every scene below is on the page and the links are page anchors.
+    </p>
+    <branching-scenario title="The missing blade guard">
+      <branching-scene scene-id="start" id="start" heading="The blade guard is off">
+        <p>You arrive for your shift. The table saw's blade guard is off, and a coworker says, &quot;Just one quick cut, it's fine.&quot;</p>
+        <ul>
+          <li><a href="#cut">Make the cut carefully</a></li>
+          <li><a href="#guard">Refit the guard first</a></li>
+          <li><a href="#supervisor">Ask the supervisor</a></li>
+        </ul>
+      </branching-scene>
+      <branching-scene scene-id="cut" id="cut" heading="Kickback">
+        <p>The board kicks back and hits the wall beside you. Nobody is hurt.</p>
+        <ul>
+          <li><a href="#injury">Keep going, it was a fluke</a></li>
+          <li><a href="#report">Shut the saw down and report it</a></li>
+        </ul>
+      </branching-scene>
+      <branching-scene scene-id="guard" id="guard" heading="A missing screw">
+        <p>You find the guard, but one mounting screw is missing.</p>
+        <ul>
+          <li><a href="#shifted">Use it, it mostly holds</a></li>
+          <li><a href="#tagged">Tag the saw out of service</a></li>
+        </ul>
+      </branching-scene>
+      <branching-scene scene-id="supervisor" id="supervisor" heading="The supervisor">
+        <p>Your supervisor thanks you and asks you to tag the saw out of service.</p>
+        <ul>
+          <li><a href="#tagged">Tag it and log it</a></li>
+        </ul>
+      </branching-scene>
+      <branching-scene scene-id="report" id="report" heading="The report">
+        <p>Your supervisor tags the saw out and asks what happened.</p>
+        <ul>
+          <li><a href="#warning">Explain what you did</a></li>
+        </ul>
+      </branching-scene>
+      <branching-scene scene-id="tagged" id="tagged" heading="Safe call" ending="good" score="3">
+        <p>Best outcome. The saw is tagged out and logged before anyone uses it.</p>
+      </branching-scene>
+      <branching-scene scene-id="shifted" id="shifted" heading="Partly safe" ending="mixed" score="1">
+        <p>The guard shifted during the next cut. A guard with missing hardware is the same as no guard.</p>
+      </branching-scene>
+      <branching-scene scene-id="warning" id="warning" heading="Partly safe" ending="mixed" score="2">
+        <p>Reporting it was right. The kickback was the warning you didn't need to get.</p>
+      </branching-scene>
+      <branching-scene scene-id="injury" id="injury" heading="Injury" ending="poor" score="0">
+        <p>A second kickback breaks your thumb. Near misses are the cheapest lesson the shop offers.</p>
+      </branching-scene>
+    </branching-scenario>
+    </main>
+  </body>
+</html>

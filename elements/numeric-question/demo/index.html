@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>NumericQuestion: numeric-question Demo</title>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <script type="module">
+      import '../numeric-question.js';
+    </script>
+    <style>
+      :root {
+        color-scheme: light dark;
+      }
+      body {
+        padding: var(--ddd-spacing-4);
+        font-family: var(--ddd-font-primary);
+      }
+      .demo {
+        max-width: var(--ddd-breakpoint-sm, 720px);
+      }
+      numeric-question {
+        margin-block-end: var(--ddd-spacing-6);
+      }
+      body {
+        background-color: light-dark(
+          var(--ddd-theme-default-white),
+          var(--ddd-theme-default-coalyGray)
+        );
+        color: light-dark(
+          var(--ddd-theme-default-coalyGray),
+          var(--ddd-theme-default-white)
+        );
+      }
+    </style>
+  </head>
+  <body>
+    <div class="demo">
+      <h1>numeric-question</h1>
+      <h2>Formula with variables</h2>
+      <p>The numbers come from the variables and are the same on every visit.</p>
+      <numeric-question
+        id="average-speed"
+        typeof="oer:Practice"
+        question="A cyclist rides {d} km in {t} minutes. What is her average speed?"
+        unit="km/h"
+        tolerance="1"
+        tolerance-type="percent"
+        decimals="1"
+        max-attempts="3"
+      >
+        <p slot="hint">The time is in minutes but the answer is per hour.</p>
+        <p slot="evidence">Speed is distance divided by time in hours.</p>
+        <input type="checkbox" value="d / (t / 60)" data-correct="true">
+        <input type="checkbox" data-variable="d" data-min="12" data-max="30" data-step="1">
+        <input type="checkbox" data-variable="t" data-min="30" data-max="90" data-step="5">
+      </numeric-question>
+
+      <h2>Fixed answer</h2>
+      <numeric-question
+        id="boiling-point"
+        question="At sea level, at what temperature does water boil?"
+        unit="°C"
+        tolerance="0.5"
+      >
+        <p slot="feedbackIncorrect">Think about the Celsius scale: it was defined around water.</p>
+        <input type="checkbox" value="100" data-correct="true">
+      </numeric-question>
+
+      <h2>New numbers on every try</h2>
+      <numeric-question
+        id="rectangle-area"
+        question="A rectangle is {w} m wide and {h} m high. What is its area?"
+        unit="m²"
+        reroll
+      >
+        <p slot="hint">Area is width times height.</p>
+        <input type="checkbox" value="w * h" data-correct="true">
+        <input type="checkbox" data-variable="w" data-min="2" data-max="12" data-step="1">
+        <input type="checkbox" data-variable="h" data-min="2" data-max="9" data-step="0.5">
+      </numeric-question>
+    </div>
+  </body>
+</html>

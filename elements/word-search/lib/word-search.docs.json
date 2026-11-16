@@ -1,0 +1,205 @@
+{
+  "tag": "word-search",
+  "folder": "word-search",
+  "package": "@haxtheweb/word-search",
+  "version": "0.0.0",
+  "license": "Apache-2.0",
+  "title": "Word search",
+  "description": "A letter grid with hidden words. Learners tap the first and last letter of each word. Practices spotting how a term is spelled, not what it means.",
+  "icon": "icons:search",
+  "tags": [
+    "Instructional",
+    "game",
+    "word search",
+    "vocabulary",
+    "activity",
+    "puzzle"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/word-search/word-search.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/word-search/word-search.js",
+  "install": "npm i @haxtheweb/word-search",
+  "demoHtml": "<word-search title=\"Find six web words\">\n  <ul><li>HTML</li><li>CSS</li><li>DOM</li><li>SLOT</li><li>ARIA</li><li>LIT</li></ul>\n</word-search>",
+  "attributes": [
+    {
+      "name": "title",
+      "property": "title",
+      "type": "string",
+      "default": "\"\"",
+      "description": "Visible title of the puzzle",
+      "hax": {
+        "title": "Title",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "size",
+      "property": "size",
+      "type": "null",
+      "default": "null",
+      "description": "Cells per side (4 to 16). Leave empty to fit the longest word.",
+      "hax": {
+        "title": "Grid size",
+        "input": "number",
+        "options": null
+      }
+    },
+    {
+      "name": "diagonal",
+      "property": "diagonal",
+      "type": "boolean",
+      "default": "false",
+      "description": "Also hide words diagonally",
+      "hax": {
+        "title": "Diagonal words",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "backwards",
+      "property": "backwards",
+      "type": "boolean",
+      "default": "false",
+      "description": "Also hide words written backwards",
+      "hax": {
+        "title": "Backwards words",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "accent-color",
+      "property": "accentColor",
+      "type": "string",
+      "default": "\"\"",
+      "description": "Optional accent for the chip, the start letter and the button (the names DDDAccent maps, e.g. blue, teal, purple)",
+      "hax": {
+        "title": "Accent color",
+        "input": "colorpicker",
+        "options": null
+      }
+    }
+  ],
+  "slots": [],
+  "events": [
+    "learner-progress-request",
+    "user-engagement"
+  ],
+  "hax": {
+    "api": "1",
+    "type": "element",
+    "editingElement": "core",
+    "hideDefaultSettings": false,
+    "canScale": true,
+    "canEditSource": true,
+    "contentEditable": false,
+    "designSystem": {
+      "primary": false,
+      "accent": false
+    },
+    "gizmo": {
+      "title": "Word search",
+      "description": "A letter grid with hidden words. Learners tap the first and last letter of each word. Practices spotting how a term is spelled, not what it means.",
+      "icon": "icons:search",
+      "color": "blue",
+      "tags": [
+        "Instructional",
+        "game",
+        "word search",
+        "vocabulary",
+        "activity",
+        "puzzle"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb core team"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "title",
+          "title": "Title",
+          "description": "What learners are asked to find, shown in the header.",
+          "inputMethod": "textfield",
+          "required": true
+        },
+        {
+          "property": "words",
+          "title": "Words",
+          "description": "The words to hide. Spaces and punctuation are left out of the grid. Words that do not fit are listed while you edit and left out for learners.",
+          "inputMethod": "array",
+          "itemLabel": "word",
+          "required": true,
+          "properties": [
+            {
+              "property": "word",
+              "title": "Word",
+              "inputMethod": "textfield",
+              "required": true
+            }
+          ]
+        }
+      ],
+      "advanced": [
+        {
+          "property": "size",
+          "title": "Grid size",
+          "description": "Letters per side, 4 to 16. Leave empty to fit the longest word (up to 12). More than 12 scrolls sideways on a phone.",
+          "inputMethod": "number",
+          "min": 4,
+          "max": 16
+        },
+        {
+          "property": "diagonal",
+          "title": "Diagonal words",
+          "description": "Also hide words diagonally. Harder.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "backwards",
+          "title": "Backwards words",
+          "description": "Also hide words written backwards. Harder.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "accentColor",
+          "title": "Accent color",
+          "description": "Optional color for the header chip, the chosen first letter and the button.",
+          "inputMethod": "colorpicker"
+        }
+      ],
+      "developer": []
+    },
+    "saveOptions": {
+      "wipeSlot": false,
+      "unsetAttributes": [
+        "words",
+        "t"
+      ]
+    },
+    "demoSchema": [
+      {
+        "tag": "word-search",
+        "properties": {
+          "title": "Find six web words"
+        },
+        "content": "<ul><li>HTML</li><li>CSS</li><li>DOM</li><li>SLOT</li><li>ARIA</li><li>LIT</li></ul>"
+      }
+    ]
+  },
+  "surfaceHash": "ccfdcb69469e",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/word-search",
+    "file": "word-search.js"
+  }
+}

@@ -28,6 +28,21 @@
       "default": "0",
       "description": "",
       "hax": null
+    },
+    {
+      "name": "layout",
+      "property": "layout",
+      "type": "string",
+      "default": "",
+      "description": "How the answers are shown. \"cards\" presents them as a wrapping row of image cards; anything else (the default) is the vertical list.",
+      "hax": {
+        "title": "Layout",
+        "input": "select",
+        "options": {
+          "": "List",
+          "cards": "Image cards"
+        }
+      }
     }
   ],
   "slots": [
@@ -67,6 +82,16 @@
           "title": "Question",
           "description": "Question Header.",
           "inputMethod": "textfield"
+        },
+        {
+          "property": "layout",
+          "title": "Layout",
+          "description": "List: answers stacked in rows. Image cards: a row of cards that wraps, each with its image and move earlier / later buttons.",
+          "inputMethod": "select",
+          "options": {
+            "": "List",
+            "cards": "Image cards"
+          }
         },
         {
           "property": "answers",
@@ -168,7 +193,7 @@
       }
     ]
   },
-  "surfaceHash": "c25fe0e06f2c",
+  "surfaceHash": "f7d12c9aa09d",
   "walkthroughs": [
     {
       "id": "",

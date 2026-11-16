@@ -162,6 +162,30 @@ describe("hax-gizmo-browser", () => {
     });
   });
 
+  describe("lifecycle", () => {
+    it("marks experimental blocks Beta and deprecated ones Deprecated", () => {
+      const beta = { title: "Poll", meta: { lifecycle: "experimental" } };
+      const old = { title: "Old", meta: { lifecycle: "deprecated" } };
+      const plain = { title: "Text", meta: { lifecycle: "stable" } };
+      expect(el._lifecycleBadge(beta)).to.equal("Beta");
+      expect(el._lifecycleBadge(old)).to.equal("Deprecated");
+      expect(el._lifecycleBadge(plain)).to.equal("");
+      expect(el._lifecycleBadge({ title: "No meta" })).to.equal("");
+      expect(el._tileLabel(beta)).to.equal("Poll (Beta)");
+      expect(el._tileLabel(plain)).to.equal("Text");
+    });
+
+    it("finds experimental blocks by searching for beta", () => {
+      const index = el._gizmoSearchIndex({
+        title: "Launch",
+        tag: "lti-launch",
+        meta: { lifecycle: "experimental" },
+      });
+      expect(index).to.contain("Beta");
+      expect(index).to.contain("experimental");
+    });
+  });
+
   describe("_gizmoAllowedInTray", () => {
     beforeEach(() => {
       // Ensure platformAllows returns true for our tests

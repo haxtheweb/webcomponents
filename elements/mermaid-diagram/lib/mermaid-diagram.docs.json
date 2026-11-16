@@ -1,0 +1,230 @@
+{
+  "tag": "mermaid-diagram",
+  "folder": "mermaid-diagram",
+  "package": "@haxtheweb/mermaid-diagram",
+  "version": "0.0.0",
+  "license": "Apache-2.0",
+  "title": "Diagram from text",
+  "description": "Write a diagram as text (Mermaid): a flowchart, sequence, timeline and more. It is drawn in the page with a text alternative.",
+  "icon": "hardware:device-hub",
+  "tags": [
+    "Media",
+    "diagram",
+    "mermaid",
+    "flowchart",
+    "chart"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/mermaid-diagram/mermaid-diagram.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/mermaid-diagram/mermaid-diagram.js",
+  "install": "npm i @haxtheweb/mermaid-diagram",
+  "demoHtml": "<mermaid-diagram diagram-title=\"Publishing checklist\">\n  <pre>flowchart TD\n    A[Draft the page] --&gt; B{Has media?}\n    B --&gt;|Yes| C[Add captions and alt text]\n    B --&gt;|No| D[Run the a11y audit]\n    C --&gt; D\n    D --&gt; E((Publish))</pre>\n</mermaid-diagram>",
+  "attributes": [
+    {
+      "name": "diagram-title",
+      "property": "diagramTitle",
+      "type": "string",
+      "default": "\"\"",
+      "description": "visible title of the diagram, shown in the block header",
+      "hax": {
+        "title": "Title",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "code",
+      "property": "code",
+      "type": "string",
+      "default": "\"\"",
+      "description": "the Mermaid source. It mirrors the pre in the light DOM: setting it writes the pre, and it is never saved as an attribute.",
+      "hax": {
+        "title": "Diagram source",
+        "input": "textarea",
+        "options": null
+      }
+    },
+    {
+      "name": "description",
+      "property": "description",
+      "type": "string",
+      "default": "\"\"",
+      "description": "authored text alternative; the description slot wins over it",
+      "hax": {
+        "title": "Text alternative",
+        "input": "textarea",
+        "options": null
+      }
+    },
+    {
+      "name": "src",
+      "property": "src",
+      "type": "string",
+      "default": "\"\"",
+      "description": "optional .mmd file to load the source from (http, https or relative)",
+      "hax": {
+        "title": "Source file",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "show-source",
+      "property": "showSource",
+      "type": "boolean",
+      "default": "false",
+      "description": "show the source next to the drawing",
+      "hax": {
+        "title": "Show the source",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "show-description",
+      "property": "showDescription",
+      "type": "boolean",
+      "default": "false",
+      "description": "show the text alternative below the drawing",
+      "hax": {
+        "title": "Show the text alternative",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
+      "name": "accent-color",
+      "property": "accentColor",
+      "type": "string",
+      "default": "\"\"",
+      "description": "colour of the header chip (DDD accent names)",
+      "hax": {
+        "title": "Accent color",
+        "input": "colorpicker",
+        "options": null
+      }
+    }
+  ],
+  "slots": [
+    "(default)",
+    "caption",
+    "description"
+  ],
+  "events": [
+    "mermaid-diagram-error",
+    "mermaid-diagram-rendered"
+  ],
+  "hax": {
+    "api": "1",
+    "type": "element",
+    "canScale": true,
+    "canEditSource": true,
+    "designSystem": {
+      "primary": false,
+      "accent": false
+    },
+    "gizmo": {
+      "title": "Diagram from text",
+      "description": "Write a diagram as text (Mermaid): a flowchart, sequence, timeline and more. It is drawn in the page with a text alternative.",
+      "icon": "hardware:device-hub",
+      "color": "blue",
+      "tags": [
+        "Media",
+        "diagram",
+        "mermaid",
+        "flowchart",
+        "chart"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb core team",
+        "anchorLabel": "diagramTitle"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "diagramTitle",
+          "title": "Title",
+          "description": "Shown above the diagram and used as its name.",
+          "inputMethod": "textfield",
+          "required": true
+        },
+        {
+          "property": "code",
+          "title": "Diagram source",
+          "description": "Mermaid text, for example: flowchart TD, then one line per link such as A[Draft] --> B{Ready?}. Add |label| after an arrow to label it. The drawing updates as you type.",
+          "inputMethod": "textarea",
+          "required": true
+        },
+        {
+          "property": "description",
+          "title": "Text alternative",
+          "description": "Describe what the diagram shows for people who cannot see it. Leave empty on a flowchart to have its steps listed for you.",
+          "inputMethod": "textarea"
+        },
+        {
+          "slot": "caption",
+          "title": "Caption",
+          "description": "Optional caption shown below the diagram.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "showSource",
+          "title": "Show the source",
+          "description": "Show the diagram text next to the drawing.",
+          "inputMethod": "boolean"
+        },
+        {
+          "property": "showDescription",
+          "title": "Show the text alternative",
+          "description": "Show the text alternative below the drawing. It is always available to screen readers.",
+          "inputMethod": "boolean"
+        }
+      ],
+      "advanced": [
+        {
+          "property": "src",
+          "title": "Source file",
+          "description": "Address of a .mmd file to draw instead of the text above (https or a path on this site).",
+          "inputMethod": "textfield",
+          "validationType": "url"
+        },
+        {
+          "property": "accentColor",
+          "title": "Accent color",
+          "description": "Color of the icon chip in the header.",
+          "inputMethod": "colorpicker"
+        }
+      ],
+      "developer": []
+    },
+    "saveOptions": {
+      "wipeSlot": false,
+      "unsetAttributes": [
+        "code"
+      ]
+    },
+    "demoSchema": [
+      {
+        "tag": "mermaid-diagram",
+        "properties": {
+          "diagramTitle": "Publishing checklist"
+        },
+        "content": "<pre>flowchart TD\n  A[Draft the page] --&gt; B{Has media?}\n  B --&gt;|Yes| C[Add captions and alt text]\n  B --&gt;|No| D[Run the a11y audit]\n  C --&gt; D\n  D --&gt; E((Publish))</pre>"
+      }
+    ]
+  },
+  "surfaceHash": "6ab7e32062e2",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/mermaid-diagram",
+    "file": "mermaid-diagram.js"
+  }
+}

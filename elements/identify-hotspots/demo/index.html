@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes"
+    />
+    <title>IdentifyHotspots: identify-hotspots Demo</title>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <script type="module">
+      import "@haxtheweb/demo-snippet/demo-snippet.js";
+      import "../identify-hotspots.js";
+    </script>
+    <style>
+      :root {
+        color-scheme: light dark;
+      }
+      body {
+        background-color: light-dark(
+          var(--ddd-theme-default-white),
+          var(--ddd-theme-default-coalyGray)
+        );
+        color: light-dark(
+          var(--ddd-theme-default-coalyGray),
+          var(--ddd-theme-default-white)
+        );
+      }
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Find three hazards, four misses allowed</h3>
+      <demo-snippet>
+        <template>
+          <identify-hotspots
+            question="Spot the three hazards"
+            media-title="Workshop floor"
+            src="../lib/workshop-scene.svg"
+            alt="A workshop: a workbench with a power tool whose cord trails across the floor on the left, a wall outlet above a puddle in the middle, and a space heater with a paint can next to it on the right."
+            max-misses="4"
+          >
+            <input
+              type="checkbox"
+              value="Frayed power cord"
+              data-correct="true"
+              data-x="25.5"
+              data-y="56.4"
+              data-width="11"
+              data-height="12.8"
+            />
+            <input
+              type="checkbox"
+              value="Water by the outlet"
+              data-correct="true"
+              data-x="43"
+              data-y="69.2"
+              data-width="22"
+              data-height="17.6"
+            />
+            <input
+              type="checkbox"
+              value="Paint can beside the heater"
+              data-correct="true"
+              data-x="79.5"
+              data-y="62.4"
+              data-width="12"
+              data-height="16"
+            />
+            <input
+              type="checkbox"
+              value="Workbench"
+              data-x="5"
+              data-y="44"
+              data-width="38"
+              data-height="11"
+            />
+            <input
+              type="checkbox"
+              value="Wall chart"
+              data-x="65.5"
+              data-y="24"
+              data-width="15"
+              data-height="16"
+            />
+          </identify-hotspots>
+        </template>
+      </demo-snippet>
+      <h3>Unlimited misses, two attempts</h3>
+      <demo-snippet>
+        <template>
+          <identify-hotspots
+            question="Where could someone slip?"
+            media-title="Workshop floor"
+            src="../lib/workshop-scene.svg"
+            alt="A workshop: a workbench with a power tool whose cord trails across the floor on the left, a wall outlet above a puddle in the middle, and a space heater with a paint can next to it on the right."
+            max-misses="0"
+            max-attempts="2"
+          >
+            <input
+              type="checkbox"
+              value="Water by the outlet"
+              data-correct="true"
+              data-x="43"
+              data-y="69.2"
+              data-width="22"
+              data-height="17.6"
+            />
+            <input
+              type="checkbox"
+              value="Workbench"
+              data-x="5"
+              data-y="44"
+              data-width="38"
+              data-height="11"
+            />
+            <p slot="feedbackIncorrect">
+              Look at the floor under the wall outlet.
+            </p>
+          </identify-hotspots>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

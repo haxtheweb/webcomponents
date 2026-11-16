@@ -21,31 +21,41 @@
  *
  * Node built-ins only. Run: node scripts/build-elements-catalog.mjs
  */
-import fs from 'node:fs';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
-const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const ELEMENTS = path.join(ROOT, 'elements');
-const OUTPUT = path.join(ROOT, 'elements-catalog.json');
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const ELEMENTS = path.join(ROOT, "elements");
+const OUTPUT = path.join(ROOT, "elements-catalog.json");
 
 // Human-maintained "reach for these first" list. Keep it short.
 const PREFERRED = [
-  { tag: 'simple-fields-field', useFor: 'form inputs (text, select, checkbox, textarea, ...) instead of raw <input> / <select>' },
-  { tag: 'simple-tooltip', useFor: 'tooltips, attached with for="<id>"' },
-  { tag: 'simple-icon', useFor: 'icons' },
-  { tag: 'simple-icon-button', useFor: 'icon-only buttons' },
-  { tag: 'a11y-collapse', useFor: 'expand / collapse sections (set heading-button)' },
-  { tag: 'a11y-tabs', useFor: 'tabbed content' },
-  { tag: 'ddd-card', useFor: 'cards' },
-  { tag: 'ddd-steps-list', useFor: 'numbered steps; reference grid parent/child pattern' },
-  { tag: 'video-player', useFor: 'video' },
-  { tag: 'multiple-choice', useFor: 'quiz questions; reference for haxHooks' },
+  {
+    tag: "simple-fields-field",
+    useFor:
+      "form inputs (text, select, checkbox, textarea, ...) instead of raw <input> / <select>",
+  },
+  { tag: "simple-tooltip", useFor: 'tooltips, attached with for="<id>"' },
+  { tag: "simple-icon", useFor: "icons" },
+  { tag: "simple-icon-button", useFor: "icon-only buttons" },
+  {
+    tag: "a11y-collapse",
+    useFor: "expand / collapse sections (set heading-button)",
+  },
+  { tag: "a11y-tabs", useFor: "tabbed content" },
+  { tag: "ddd-card", useFor: "cards" },
+  {
+    tag: "ddd-steps-list",
+    useFor: "numbered steps; reference grid parent/child pattern",
+  },
+  { tag: "video-player", useFor: "video" },
+  { tag: "multiple-choice", useFor: "quiz questions; reference for haxHooks" },
 ];
 
 function readJSON(file) {
   try {
-    return JSON.parse(fs.readFileSync(file, 'utf8'));
+    return JSON.parse(fs.readFileSync(file, "utf8"));
   } catch (e) {
     return null;
   }
@@ -53,30 +63,47 @@ function readJSON(file) {
 
 function cleanDescription(text, tag) {
   if (!text) {
-    return '';
+    return "";
   }
   let t = String(text);
   // drop the conventional leading "`tag-name`" line and any section headings onward
-  t = t.replace(/^\s*`[a-z0-9-]+`\s*/, '');
+  t = t.replace(/^\s*`[a-z0-9-]+`\s*/, "");
   t = t.split(/(?:^|\n)\s*#{2,}\s/)[0];
-  t = t.replace(/`/g, '').replace(/\s+/g, ' ').trim();
+  t = t.replace(/`/g, "").replace(/\s+/g, " ").trim();
   if (/^start of /i.test(t)) {
-    return '';
+    return "";
   }
-  return t.length > 300 ? t.substring(0, 297).trim() + '...' : t;
+  return t.length > 300 ? t.substring(0, 297).trim() + "..." : t;
 }
 
-const SKIP_DIRS = new Set(['node_modules', 'test', 'demo', 'locales', 'build', 'dist', 'server', 'docs']);
+const SKIP_DIRS = new Set([
+  "node_modules",
+  "test",
+  "demo",
+  "locales",
+  "build",
+  "dist",
+  "server",
+  "docs",
+]);
 function elementSourceFiles(dir, depth = 0) {
   let files = [];
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
     if (entry.isDirectory()) {
       // top level files plus lib/ (and its subfolders)
-      if ((depth === 0 && entry.name === 'lib') || (depth > 0 && !SKIP_DIRS.has(entry.name))) {
-        files = files.concat(elementSourceFiles(path.join(dir, entry.name), depth + 1));
+      if (
+        (depth === 0 && entry.name === "lib") ||
+        (depth > 0 && !SKIP_DIRS.has(entry.name))
+      ) {
+        files = files.concat(
+          elementSourceFiles(path.join(dir, entry.name), depth + 1),
+        );
       }
-    }
-    else if (entry.name.endsWith('.js') && !entry.name.endsWith('.test.js') && !entry.name.endsWith('.stories.js')) {
+    } else if (
+      entry.name.endsWith(".js") &&
+      !entry.name.endsWith(".test.js") &&
+      !entry.name.endsWith(".stories.js")
+    ) {
       files.push(path.join(dir, entry.name));
     }
   }
@@ -93,20 +120,21 @@ function haxPropertiesFiles(dir) {
     }
     for (const f of fs.readdirSync(d, { withFileTypes: true })) {
       if (f.isDirectory()) {
-        if (deep && f.name !== 'node_modules') {
+        if (deep && f.name !== "node_modules") {
           walk(path.join(d, f.name), true);
         }
-      } else if (f.name.endsWith('.haxProperties.json')) {
+      } else if (f.name.endsWith(".haxProperties.json")) {
         found.push(path.join(d, f.name));
       }
     }
   };
   walk(dir, false);
-  walk(path.join(dir, 'lib'), true);
+  walk(path.join(dir, "lib"), true);
   return found;
 }
 
-const registryTitles = readJSON(path.join(ROOT, 'hax-elements-registry.json')) || {};
+const registryTitles =
+  readJSON(path.join(ROOT, "hax-elements-registry.json")) || {};
 const byTag = new Map();
 
 for (const pkgDir of fs.readdirSync(ELEMENTS).sort()) {
@@ -114,7 +142,7 @@ for (const pkgDir of fs.readdirSync(ELEMENTS).sort()) {
   if (!fs.statSync(dir).isDirectory()) {
     continue;
   }
-  const pkg = readJSON(path.join(dir, 'package.json')) || {};
+  const pkg = readJSON(path.join(dir, "package.json")) || {};
   const packageName = pkg.name || `@haxtheweb/${pkgDir}`;
   const add = (tag, modulePath, description) => {
     if (!tag || byTag.has(tag)) {
@@ -122,11 +150,11 @@ for (const pkgDir of fs.readdirSync(ELEMENTS).sort()) {
     }
     byTag.set(tag, {
       tag,
-      title: registryTitles[tag] || '',
+      title: registryTitles[tag] || "",
       description: cleanDescription(description, tag),
       package: packageName,
-      import: `${packageName}/${modulePath.replace(/^\.\//, '')}`,
-      type: 'element',
+      import: `${packageName}/${modulePath.replace(/^\.\//, "")}`,
+      type: "element",
       haxCapable: Object.prototype.hasOwnProperty.call(registryTitles, tag),
       tags: [],
     });
@@ -135,7 +163,7 @@ for (const pkgDir of fs.readdirSync(ELEMENTS).sort()) {
   // (many declarations there lack tagName when the tag comes from `static get tag()`)
   const manifestByTag = {};
   const manifestByClass = {};
-  const manifest = readJSON(path.join(dir, 'custom-elements.json'));
+  const manifest = readJSON(path.join(dir, "custom-elements.json"));
   if (manifest && Array.isArray(manifest.modules)) {
     for (const mod of manifest.modules) {
       for (const dec of mod.declarations || []) {
@@ -150,40 +178,59 @@ for (const pkgDir of fs.readdirSync(ELEMENTS).sort()) {
   }
   // the source of truth for tags is `static get tag() { return "x"; }`
   for (const file of elementSourceFiles(dir)) {
-    const src = fs.readFileSync(file, 'utf8');
-    const rel = path.relative(dir, file).split(path.sep).join('/');
-    const tagRe = /static\s+get\s+tag\(\)\s*\{\s*return\s+['"`]([a-z0-9]+-[a-z0-9-]+)['"`]/g;
+    const src = fs.readFileSync(file, "utf8");
+    const rel = path.relative(dir, file).split(path.sep).join("/");
+    const tagRe =
+      /static\s+get\s+tag\(\)\s*\{\s*return\s+['"`]([a-z0-9]+-[a-z0-9-]+)['"`]/g;
     let m;
     while ((m = tagRe.exec(src)) !== null) {
       const before = src.substring(0, m.index);
       const classMatches = [...before.matchAll(/class\s+([A-Za-z0-9_$]+)/g)];
-      const className = classMatches.length ? classMatches[classMatches.length - 1][1] : '';
-      let doc = '';
+      const className = classMatches.length
+        ? classMatches[classMatches.length - 1][1]
+        : "";
+      let doc = "";
       if (classMatches.length) {
         const classIndex = classMatches[classMatches.length - 1].index;
-        const docMatch = before.substring(0, classIndex).match(/\/\*\*((?:(?!\*\/)[\s\S])*)\*\/\s*(?:export\s+)?$/);
+        const docMatch = before
+          .substring(0, classIndex)
+          .match(/\/\*\*((?:(?!\*\/)[\s\S])*)\*\/\s*(?:export\s+)?$/);
         if (docMatch) {
-          doc = docMatch[1].replace(/^\s*\*\s?/gm, '').replace(/^@.*$/gm, '');
+          doc = docMatch[1].replace(/^\s*\*\s?/gm, "").replace(/^@.*$/gm, "");
         }
       }
-      const description = manifestByTag[m[1]] || manifestByClass[className] || doc || (m[1] === pkgDir ? pkg.description : '');
+      const description =
+        manifestByTag[m[1]] ||
+        manifestByClass[className] ||
+        doc ||
+        (m[1] === pkgDir ? pkg.description : "");
       add(m[1], rel, description);
     }
     // inline `static get haxProperties()` (no .haxProperties.json): only
     // trusted when the file defines a single element
     const tagsInFile = [...src.matchAll(/static\s+get\s+tag\(\)/g)].length;
-    const fileTag = (src.match(/static\s+get\s+tag\(\)\s*\{\s*return\s+['"`]([a-z0-9]+-[a-z0-9-]+)['"`]/) || [])[1];
-    if (tagsInFile === 1 && fileTag && byTag.has(fileTag) && /static\s+get\s+haxProperties\s*\(/.test(src)) {
+    const fileTag = (src.match(
+      /static\s+get\s+tag\(\)\s*\{\s*return\s+['"`]([a-z0-9]+-[a-z0-9-]+)['"`]/,
+    ) || [])[1];
+    if (
+      tagsInFile === 1 &&
+      fileTag &&
+      byTag.has(fileTag) &&
+      /static\s+get\s+haxProperties\s*\(/.test(src)
+    ) {
       const entry = byTag.get(fileTag);
       if (/\btype:\s*['"]grid['"]/.test(src)) {
-        entry.type = 'grid';
+        entry.type = "grid";
       }
     }
   }
   // animated walkthrough storyboards ship next to the element as
   // lib/<tag>.motion.json; the gallery and docs player pick them up
   for (const entry of byTag.values()) {
-    if (entry.package === packageName && fs.existsSync(path.join(dir, 'lib', `${entry.tag}.motion.json`))) {
+    if (
+      entry.package === packageName &&
+      fs.existsSync(path.join(dir, "lib", `${entry.tag}.motion.json`))
+    ) {
       entry.walkthrough = true;
     }
   }
@@ -193,7 +240,7 @@ for (const pkgDir of fs.readdirSync(ELEMENTS).sort()) {
     if (!hax) {
       continue;
     }
-    const tag = path.basename(file).replace('.haxProperties.json', '');
+    const tag = path.basename(file).replace(".haxProperties.json", "");
     const entry = byTag.get(tag);
     if (!entry) {
       continue;
@@ -211,18 +258,34 @@ for (const pkgDir of fs.readdirSync(ELEMENTS).sort()) {
       if (Array.isArray(hax.gizmo.tags)) {
         entry.tags = hax.gizmo.tags;
       }
+      // only blocks that are not stable carry a lifecycle (experimental shows as Beta)
+      const meta = hax.gizmo.meta || {};
+      if (
+        meta.lifecycle === "experimental" ||
+        meta.lifecycle === "deprecated"
+      ) {
+        entry.lifecycle = meta.lifecycle;
+        if (meta.lifecycleLink) {
+          entry.lifecycleLink = meta.lifecycleLink;
+        }
+      }
     }
   }
 }
 
-const elements = Array.from(byTag.values()).sort((a, b) => a.tag.localeCompare(b.tag));
+const elements = Array.from(byTag.values()).sort((a, b) =>
+  a.tag.localeCompare(b.tag),
+);
 const known = new Set(elements.map((e) => e.tag));
 const catalog = {
-  description: 'Elements in the haxtheweb/webcomponents monorepo. Search with `hax wc --search <query>`. Generated by scripts/build-elements-catalog.mjs; do not edit by hand.',
+  description:
+    "Elements in the haxtheweb/webcomponents monorepo. Search with `hax wc --search <query>`. Generated by scripts/build-elements-catalog.mjs; do not edit by hand.",
   preferred: PREFERRED.filter((p) => known.has(p.tag)),
   elements,
 };
-fs.writeFileSync(OUTPUT, JSON.stringify(catalog, null, 2) + '\n');
+fs.writeFileSync(OUTPUT, JSON.stringify(catalog, null, 2) + "\n");
 const registryTotal = Object.keys(registryTitles).length;
 const haxCapable = elements.filter((e) => e.haxCapable).length;
-console.log(`elements-catalog.json: ${elements.length} elements (${haxCapable} HAX-capable, ${elements.filter((e) => e.type === 'grid').length} grid); the other ${registryTotal - haxCapable} of ${registryTotal} hax-elements-registry tags are HTML primitives or defined outside elements/`);
+console.log(
+  `elements-catalog.json: ${elements.length} elements (${haxCapable} HAX-capable, ${elements.filter((e) => e.type === "grid").length} grid); the other ${registryTotal - haxCapable} of ${registryTotal} hax-elements-registry tags are HTML primitives or defined outside elements/`,
+);

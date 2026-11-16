@@ -18,6 +18,7 @@ export class HaxElementDemo extends IntersectionObserverMixin(LitElement) {
     this.gizmoTitle = "";
     this.gizmoDescription = "";
     this.gizmoIcon = "";
+    this.gizmoBadge = "";
   }
   static get properties() {
     return {
@@ -27,6 +28,8 @@ export class HaxElementDemo extends IntersectionObserverMixin(LitElement) {
       gizmoTitle: { type: String, attribute: "gizmo-title" },
       gizmoDescription: { type: String, attribute: "gizmo-description" },
       gizmoIcon: { type: String, attribute: "gizmo-icon" },
+      // lifecycle word for a block that is not stable ("Beta")
+      gizmoBadge: { type: String, attribute: "gizmo-badge" },
     };
   }
   static get styles() {
@@ -76,6 +79,17 @@ export class HaxElementDemo extends IntersectionObserverMixin(LitElement) {
           margin-bottom: var(--ddd-spacing-1);
           color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
         }
+        .badge {
+          flex-shrink: 0;
+          margin-inline-start: auto;
+          padding-inline: var(--ddd-spacing-2);
+          border: var(--ddd-border-size-xs) solid currentColor;
+          border-radius: var(--ddd-radius-rounded);
+          font-size: var(--ddd-font-size-5xs);
+          font-weight: var(--ddd-font-weight-medium);
+          text-transform: uppercase;
+          letter-spacing: 0.04em;
+        }
         .title simple-icon {
           --simple-icon-height: var(--ddd-spacing-4);
           --simple-icon-width: var(--ddd-spacing-4);
@@ -121,6 +135,13 @@ export class HaxElementDemo extends IntersectionObserverMixin(LitElement) {
                               : ""
                           }
                           <span>${this.gizmoTitle}</span>
+                          ${
+                            this.gizmoBadge
+                              ? html`<span class="badge"
+                                  >${this.gizmoBadge}</span
+                                >`
+                              : ""
+                          }
                         </div>
                       `
                     : ""

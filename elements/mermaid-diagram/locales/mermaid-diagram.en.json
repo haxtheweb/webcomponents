@@ -1,0 +1,21 @@
+{
+  "diagram": "Diagram",
+  "flowchart": "flowchart",
+  "sequence": "sequence",
+  "source": "Source",
+  "textAlternative": "Text alternative",
+  "present": "Present",
+  "exitPresent": "Exit presentation",
+  "loading": "Loading the diagram",
+  "empty": "Nothing to draw yet. Add the diagram source.",
+  "error": "Error",
+  "parseError": "This diagram could not be drawn. Check the source.",
+  "loadError": "The diagram library could not be loaded.",
+  "srcError": "The diagram file could not be loaded.",
+  "decision": "decision",
+  "end": "end",
+  "goTo": "go to {target}",
+  "ifGoTo": "if {label}, go to {target}",
+  "describedBySource": "Diagram described by its source.",
+  "scrollable": "Diagram, scrollable"
+}

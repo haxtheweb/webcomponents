@@ -1,0 +1,329 @@
+{
+  "tag": "lti-launch",
+  "folder": "lti-launch",
+  "package": "@haxtheweb/lti-launch",
+  "version": "0.0.0",
+  "license": "Apache-2.0",
+  "title": "External tool launch",
+  "description": "A block that opens an external learning tool in a new window or on the page, as a plain link or with an LTI 1.3 login request.",
+  "icon": "icons:extension",
+  "tags": [
+    "Instructional",
+    "LTI",
+    "external tool",
+    "launch",
+    "link",
+    "embed"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/lti-launch/lti-launch.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/lti-launch/lti-launch.js",
+  "install": "npm i @haxtheweb/lti-launch",
+  "demoHtml": "<lti-launch title=\"Lab 4 autograder\" description=\"Submit your code to the autograder. It runs the tests and shows your results.\" launch-url=\"https://tool.example/lab4\" display=\"window\">\n  <a slot=\"fallback\" href=\"https://tool.example/lab4\">Lab 4 autograder</a>\n</lti-launch>",
+  "attributes": [
+    {
+      "name": "title",
+      "property": "title",
+      "type": "string",
+      "default": "\"\"",
+      "description": "Name of the tool, shown in the header and on the button",
+      "hax": {
+        "title": "Title",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "description",
+      "property": "description",
+      "type": "string",
+      "default": "\"\"",
+      "description": "What the tool is for, shown above the button",
+      "hax": {
+        "title": "Description",
+        "input": "textarea",
+        "options": null
+      }
+    },
+    {
+      "name": "launch-url",
+      "property": "launchUrl",
+      "type": "string",
+      "default": "\"\"",
+      "description": "Address of the tool (absolute http or https)",
+      "hax": {
+        "title": "Launch URL",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "display",
+      "property": "display",
+      "type": "string",
+      "default": "\"window\"",
+      "description": "window (a new window) or embed (a frame on this page)",
+      "hax": {
+        "title": "Open in",
+        "input": "select",
+        "options": {
+          "window": "A new window",
+          "embed": "On this page"
+        }
+      }
+    },
+    {
+      "name": "login-url",
+      "property": "loginUrl",
+      "type": "string",
+      "default": "\"\"",
+      "description": "LTI 1.3: the tool's login initiation address",
+      "hax": {
+        "title": "LTI login URL",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "client-id",
+      "property": "clientId",
+      "type": "string",
+      "default": "\"\"",
+      "description": "LTI 1.3: client id the tool gave this site (a public identifier)",
+      "hax": {
+        "title": "LTI client ID",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "deployment-id",
+      "property": "deploymentId",
+      "type": "string",
+      "default": "\"\"",
+      "description": "LTI 1.3: deployment id (a public identifier)",
+      "hax": {
+        "title": "LTI deployment ID",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "issuer",
+      "property": "issuer",
+      "type": "string",
+      "default": "\"\"",
+      "description": "LTI 1.3: issuer; the page origin when empty",
+      "hax": {
+        "title": "LTI issuer",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "login-hint",
+      "property": "loginHint",
+      "type": "string",
+      "default": "\"\"",
+      "description": "LTI 1.3: opaque login hint for the platform back end",
+      "hax": {
+        "title": "LTI login hint",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "lti-message-hint",
+      "property": "ltiMessageHint",
+      "type": "string",
+      "default": "\"\"",
+      "description": "LTI 1.3: opaque message hint for the platform back end",
+      "hax": {
+        "title": "LTI message hint",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "embed-height",
+      "property": "embedHeight",
+      "type": "number",
+      "default": "DEFAULT_HEIGHT",
+      "description": "Height of the embedded frame in pixels (200 to 2000)",
+      "hax": {
+        "title": "Height on the page",
+        "input": "number",
+        "options": null
+      }
+    },
+    {
+      "name": "accent-color",
+      "property": "accentColor",
+      "type": "string",
+      "default": "",
+      "description": "Accent for the chip and button (a SimpleColors name)",
+      "hax": {
+        "title": "Accent color",
+        "input": "colorpicker",
+        "options": null
+      }
+    }
+  ],
+  "slots": [
+    "fallback"
+  ],
+  "events": [
+    "lti-launch-request",
+    "user-engagement"
+  ],
+  "hax": {
+    "api": "1",
+    "type": "element",
+    "canScale": true,
+    "canEditSource": true,
+    "contentEditable": false,
+    "designSystem": {
+      "primary": false,
+      "accent": false
+    },
+    "gizmo": {
+      "title": "External tool launch",
+      "description": "A block that opens an external learning tool in a new window or on the page, as a plain link or with an LTI 1.3 login request.",
+      "icon": "icons:extension",
+      "color": "orange",
+      "tags": [
+        "Instructional",
+        "LTI",
+        "external tool",
+        "launch",
+        "link",
+        "embed"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb core team",
+        "anchorLabel": "title",
+        "lifecycle": "experimental"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "title",
+          "title": "Title",
+          "description": "Name of the tool. It is shown in the header and on the button.",
+          "inputMethod": "textfield",
+          "required": true
+        },
+        {
+          "property": "description",
+          "title": "Description",
+          "description": "What learners do in the tool, shown above the button.",
+          "inputMethod": "textarea"
+        },
+        {
+          "property": "launchUrl",
+          "title": "Launch URL",
+          "description": "Address of the tool. It must be a full address that starts with https:// or http://.",
+          "inputMethod": "textfield",
+          "required": true
+        },
+        {
+          "property": "display",
+          "title": "Open in",
+          "description": "A new window works with every tool. On this page only works with tools that allow being shown inside another site.",
+          "inputMethod": "select",
+          "options": {
+            "window": "A new window",
+            "embed": "On this page"
+          }
+        }
+      ],
+      "advanced": [
+        {
+          "property": "loginUrl",
+          "title": "LTI login URL",
+          "description": "LTI 1.3 only: the tool's login initiation address. With this, a client ID and a deployment ID the button sends an LTI login request instead of opening a plain link. Finishing the launch needs this site's LTI service.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "clientId",
+          "title": "LTI client ID",
+          "description": "The client ID the tool gave this site. A public identifier, not a secret: never put keys or secrets here.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "deploymentId",
+          "title": "LTI deployment ID",
+          "description": "The deployment ID the tool gave this site. A public identifier, not a secret.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "issuer",
+          "title": "LTI issuer",
+          "description": "The address that identifies this site to the tool. Leave empty to use the address of the site the page is on.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "embedHeight",
+          "title": "Height on the page",
+          "description": "Height of the tool when it opens on this page, in pixels (200 to 2000).",
+          "inputMethod": "number",
+          "min": 200,
+          "max": 2000,
+          "suffix": "px"
+        },
+        {
+          "property": "accentColor",
+          "title": "Accent color",
+          "description": "Color of the header chip and the button. Leave empty to follow the theme.",
+          "inputMethod": "colorpicker"
+        }
+      ],
+      "developer": [
+        {
+          "property": "loginHint",
+          "title": "LTI login hint",
+          "description": "An opaque value this site's LTI service uses to recognize the learner. Usually supplied by the site through the lti-launch-request event rather than saved here. Never a password or key.",
+          "inputMethod": "textfield"
+        },
+        {
+          "property": "ltiMessageHint",
+          "title": "LTI message hint",
+          "description": "An opaque value this site's LTI service uses to recognize this launch. Usually supplied by the site rather than saved here.",
+          "inputMethod": "textfield"
+        }
+      ]
+    },
+    "saveOptions": {
+      "wipeSlot": false,
+      "unsetAttributes": [
+        "t"
+      ]
+    },
+    "demoSchema": [
+      {
+        "tag": "lti-launch",
+        "properties": {
+          "title": "Lab 4 autograder",
+          "description": "Submit your code to the autograder. It runs the tests and shows your results.",
+          "launchUrl": "https://tool.example/lab4",
+          "display": "window"
+        },
+        "content": "<a slot=\"fallback\" href=\"https://tool.example/lab4\">Lab 4 autograder</a>"
+      }
+    ]
+  },
+  "surfaceHash": "37d636cdf717",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/lti-launch",
+    "file": "lti-launch.js"
+  }
+}

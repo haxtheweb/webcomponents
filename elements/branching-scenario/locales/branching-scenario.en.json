@@ -1,0 +1,22 @@
+{
+  "scenario": "Scenario",
+  "directions": "Directions",
+  "showDirections": "Show directions",
+  "hideDirections": "Hide directions",
+  "directionsRead": "Read each scene and choose what you would do.",
+  "directionsEndings": "There are several endings. Try another path after you finish.",
+  "startOver": "Start over",
+  "back": "Back one step",
+  "tryAnother": "Try another path",
+  "path": "Path",
+  "scene": "Scene",
+  "ending": "Ending",
+  "end": "end",
+  "scenesSeen": "{seen} of {total} scenes seen",
+  "endingReached": "Ending reached",
+  "addScene": "Add scene",
+  "newScene": "New scene",
+  "newSceneText": "Describe what happens, then link each choice to a scene.",
+  "editingNote": "Editing: every scene is shown. A choice is a link to # followed by a scene id.",
+  "noScenes": "Add a scene to start the scenario."
+}

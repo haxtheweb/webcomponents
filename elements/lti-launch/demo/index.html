@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes"
+    />
+    <title>LtiLaunch: lti-launch Demo</title>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <script type="module">
+      import "../lti-launch.js";
+      // the sample tool lives beside this page; launch addresses must be
+      // absolute, so they are filled in here
+      const tool = new URL("./tool.html", import.meta.url).href;
+      document.querySelectorAll("[data-sample-tool]").forEach((el) => {
+        el.setAttribute("launch-url", tool);
+        const link = el.querySelector("a[slot='fallback']");
+        if (link) {
+          link.setAttribute("href", tool);
+        }
+      });
+      // what a platform back end would do: supply the hints for this learner
+      document.addEventListener("lti-launch-request", (e) => {
+        e.detail.params.login_hint = "demo-learner";
+        e.detail.params.lti_message_hint = "demo-launch";
+        document.querySelector("#log").textContent = JSON.stringify(
+          e.detail,
+          null,
+          2,
+        );
+        // the demo has no tool to post to
+        e.preventDefault();
+      });
+    </script>
+    <style>
+      body {
+        color-scheme: light dark;
+      }
+      pre {
+        overflow: auto;
+      }
+      body {
+        background-color: light-dark(
+          var(--ddd-theme-default-white),
+          var(--ddd-theme-default-coalyGray)
+        );
+        color: light-dark(
+          var(--ddd-theme-default-coalyGray),
+          var(--ddd-theme-default-white)
+        );
+      }
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Plain link, new window</h3>
+      <lti-launch
+        data-sample-tool
+        title="Lab 4 autograder"
+        description="Submit your code to the autograder. It runs the tests and shows your results."
+      >
+        <a slot="fallback" href="tool.html">Lab 4 autograder</a>
+      </lti-launch>
+
+      <h3>Plain link, on this page</h3>
+      <lti-launch
+        data-sample-tool
+        title="Sample tool"
+        description="Opens in a frame on this page, with a link to open it in a new window instead."
+        display="embed"
+        embed-height="240"
+        accent-color="orange"
+      >
+        <a slot="fallback" href="tool.html">Sample tool</a>
+      </lti-launch>
+
+      <h3>LTI 1.3 login request</h3>
+      <p>
+        This page answers <code>lti-launch-request</code> with sample hints,
+        shows the request below and cancels it, because there is no tool to
+        post to.
+      </p>
+      <lti-launch
+        title="Lab 4 autograder"
+        description="Signs you in through this site, then opens the autograder."
+        launch-url="https://tool.example/lab4"
+        login-url="https://tool.example/lti/login"
+        client-id="hax-8c1f"
+        deployment-id="dep-001"
+      >
+        <a slot="fallback" href="https://tool.example/lab4">Lab 4 autograder</a>
+      </lti-launch>
+      <pre id="log"></pre>
+    </div>
+  </body>
+</html>

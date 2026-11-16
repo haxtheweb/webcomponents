@@ -35,6 +35,7 @@ const vendored = {
   "la-tex": ["lib/latex2html5.js"],
   "music-player": ["lib/html-midi-player.js"],
   "sheet-music": ["lib/alphatab/**"],
+  "mermaid-diagram": ["lib/mermaid/**"],
 };
 
 // tools and build inputs inside an element that are run by path, not

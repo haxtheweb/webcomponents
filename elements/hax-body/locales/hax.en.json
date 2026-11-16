@@ -120,6 +120,8 @@
   "unlockContent": "Unlock content",
   "viewPageSource": "View Page Source",
   "filterContentTypes": "Filter Blocks",
+  "beta": "Beta",
+  "deprecated": "Deprecated",
   "recent": "Recent",
   "popular": "Popular",
   "copiedToClipboard": "Copied to clipboard",

@@ -1,0 +1,267 @@
+{
+  "tag": "arithmetic-drill",
+  "folder": "arithmetic-drill",
+  "package": "@haxtheweb/arithmetic-drill",
+  "version": "0.0.0",
+  "license": "Apache-2.0",
+  "title": "Arithmetic drill",
+  "description": "A short run of generated arithmetic problems with instant feedback. Pick the operations and the number range; every run is new.",
+  "icon": "image:exposure",
+  "tags": [
+    "Instructional",
+    "math",
+    "arithmetic",
+    "practice",
+    "game",
+    "drill"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/arithmetic-drill/arithmetic-drill.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/arithmetic-drill/arithmetic-drill.js",
+  "install": "npm i @haxtheweb/arithmetic-drill",
+  "demoHtml": "<arithmetic-drill title=\"Quick math\" operations=\"add subtract multiply\" min=\"2\" max=\"12\" count=\"10\"></arithmetic-drill>",
+  "attributes": [
+    {
+      "name": "title",
+      "property": "title",
+      "type": "string",
+      "default": "\"\"",
+      "description": "Name of this drill, shown in the header",
+      "hax": {
+        "title": "Title",
+        "input": "textfield",
+        "options": null
+      }
+    },
+    {
+      "name": "operations",
+      "property": "operations",
+      "type": "string",
+      "default": "\"add subtract multiply\"",
+      "description": "Operations asked, space separated: any of add, subtract, multiply, divide",
+      "hax": {
+        "title": "Operations",
+        "input": "select",
+        "options": {
+          "add": "Addition",
+          "subtract": "Subtraction",
+          "multiply": "Multiplication",
+          "divide": "Division",
+          "add subtract": "Addition and subtraction",
+          "multiply divide": "Multiplication and division",
+          "add multiply": "Addition and multiplication",
+          "add divide": "Addition and division",
+          "subtract multiply": "Subtraction and multiplication",
+          "subtract divide": "Subtraction and division",
+          "add subtract multiply": "Addition, subtraction and multiplication",
+          "add subtract divide": "Addition, subtraction and division",
+          "add multiply divide": "Addition, multiplication and division",
+          "subtract multiply divide": "Subtraction, multiplication and division",
+          "add subtract multiply divide": "All four"
+        }
+      }
+    },
+    {
+      "name": "min",
+      "property": "min",
+      "type": "number",
+      "default": "2",
+      "description": "Smallest operand (a whole number, 0 or more)",
+      "hax": {
+        "title": "Smallest number",
+        "input": "number",
+        "options": null
+      }
+    },
+    {
+      "name": "max",
+      "property": "max",
+      "type": "number",
+      "default": "12",
+      "description": "Largest operand",
+      "hax": {
+        "title": "Largest number",
+        "input": "number",
+        "options": null
+      }
+    },
+    {
+      "name": "count",
+      "property": "count",
+      "type": "number",
+      "default": "10",
+      "description": "Number of problems in a run",
+      "hax": {
+        "title": "Number of problems",
+        "input": "number",
+        "options": null
+      }
+    },
+    {
+      "name": "time-limit",
+      "property": "timeLimit",
+      "type": "number",
+      "default": "0",
+      "description": "Seconds allowed for a whole run. 0 means no timer. Learners can always turn the timer off for themselves.",
+      "hax": {
+        "title": "Time limit",
+        "input": "number",
+        "options": null
+      }
+    },
+    {
+      "name": "accent-color",
+      "property": "accentColor",
+      "type": "string",
+      "default": "",
+      "description": "Accent for the chip and buttons (a SimpleColors name)",
+      "hax": {
+        "title": "Accent color",
+        "input": "colorpicker",
+        "options": null
+      }
+    }
+  ],
+  "slots": [],
+  "events": [
+    "learner-progress-request",
+    "user-engagement"
+  ],
+  "hax": {
+    "api": "1",
+    "type": "element",
+    "canScale": true,
+    "canEditSource": true,
+    "contentEditable": false,
+    "designSystem": {
+      "primary": false,
+      "accent": false
+    },
+    "gizmo": {
+      "title": "Arithmetic drill",
+      "description": "A short run of generated arithmetic problems with instant feedback. Pick the operations and the number range; every run is new.",
+      "icon": "image:exposure",
+      "color": "brown",
+      "tags": [
+        "Instructional",
+        "math",
+        "arithmetic",
+        "practice",
+        "game",
+        "drill"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "HAXTheWeb core team",
+        "anchorLabel": "title"
+      }
+    },
+    "settings": {
+      "configure": [
+        {
+          "property": "title",
+          "title": "Title",
+          "description": "Name of this drill, shown in its header.",
+          "inputMethod": "textfield",
+          "required": true
+        },
+        {
+          "property": "operations",
+          "title": "Operations",
+          "description": "Which kinds of problems are asked. Learners can switch any of these off before they start.",
+          "inputMethod": "select",
+          "options": {
+            "add": "Addition",
+            "subtract": "Subtraction",
+            "multiply": "Multiplication",
+            "divide": "Division",
+            "add subtract": "Addition and subtraction",
+            "multiply divide": "Multiplication and division",
+            "add multiply": "Addition and multiplication",
+            "add divide": "Addition and division",
+            "subtract multiply": "Subtraction and multiplication",
+            "subtract divide": "Subtraction and division",
+            "add subtract multiply": "Addition, subtraction and multiplication",
+            "add subtract divide": "Addition, subtraction and division",
+            "add multiply divide": "Addition, multiplication and division",
+            "subtract multiply divide": "Subtraction, multiplication and division",
+            "add subtract multiply divide": "All four"
+          }
+        },
+        {
+          "property": "min",
+          "title": "Smallest number",
+          "description": "The smallest number used in a problem. Whole numbers, 0 or more.",
+          "inputMethod": "number",
+          "min": 0,
+          "max": 9999
+        },
+        {
+          "property": "max",
+          "title": "Largest number",
+          "description": "The largest number used in a problem. Division answers and divisors stay in this range too.",
+          "inputMethod": "number",
+          "min": 0,
+          "max": 9999
+        },
+        {
+          "property": "count",
+          "title": "Number of problems",
+          "description": "How many problems are in one run (1 to 100).",
+          "inputMethod": "number",
+          "min": 1,
+          "max": 100
+        }
+      ],
+      "advanced": [
+        {
+          "property": "timeLimit",
+          "title": "Time limit",
+          "description": "Seconds allowed for a whole run. 0 means no timer, which is the default: timed drills fail learners who need more time. When set, learners can still turn the timer off for themselves.",
+          "inputMethod": "number",
+          "min": 0,
+          "max": 3600,
+          "suffix": "s"
+        },
+        {
+          "property": "accentColor",
+          "title": "Accent color",
+          "description": "Color of the header chip and buttons. Leave empty to follow the theme.",
+          "inputMethod": "colorpicker"
+        }
+      ],
+      "developer": []
+    },
+    "saveOptions": {
+      "wipeSlot": false,
+      "unsetAttributes": [
+        "t"
+      ]
+    },
+    "demoSchema": [
+      {
+        "tag": "arithmetic-drill",
+        "properties": {
+          "title": "Quick math",
+          "operations": "add subtract multiply",
+          "min": 2,
+          "max": 12,
+          "count": 10
+        },
+        "content": ""
+      }
+    ]
+  },
+  "surfaceHash": "7563c10e5b87",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/arithmetic-drill",
+    "file": "arithmetic-drill.js"
+  }
+}

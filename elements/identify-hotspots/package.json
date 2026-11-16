@@ -1,0 +1,49 @@
+{
+  "name": "@haxtheweb/identify-hotspots",
+  "version": "0.0.0",
+  "description": "Graded find-the-hotspot activity: learners find the right spots on an image",
+  "license": "Apache-2.0",
+  "author": {
+    "name": "haxtheweb"
+  },
+  "keywords": [
+    "webcomponents",
+    "lit",
+    "haxtheweb"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/haxtheweb/webcomponents.git"
+  },
+  "type": "module",
+  "main": "identify-hotspots.js",
+  "module": "identify-hotspots.js",
+  "scripts": {
+    "start": "yarn run dev",
+    "build": "prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && cem analyze --litelement --exclude \"(public|*.stories.js)\" --globs \"{*,lib/**}.js\" && node ../../scripts/extract-element-docs.mjs --write .",
+    "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
+    "watch": "gulp dev --gulpfile=gulpfile.cjs",
+    "serve": "web-dev-server -c ../../web-dev-server.config.mjs",
+    "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium"
+  },
+  "dependencies": {
+    "@haxtheweb/multiple-choice": "^26.8.0",
+    "lit": "3.3.3"
+  },
+  "devDependencies": {
+    "@custom-elements-manifest/analyzer": "0.10.4",
+    "@haxtheweb/deduping-fix": "^26.8.0",
+    "@web/dev-server": "0.4.6",
+    "concurrently": "9.1.2",
+    "@open-wc/testing": "4.0.0",
+    "@haxtheweb/user-action": "^26.8.0"
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "hax": {
+    "cli": true
+  },
+  "customElements": "custom-elements.json"
+}

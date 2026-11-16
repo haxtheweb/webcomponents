@@ -118,6 +118,9 @@ export class SortingQuestion extends QuestionElement {
         "Place the items in the correct order either by clicking the up and down arrows or drag and drop. When you believe you have them in the correct order, test your answer by selecting {checkAnswer}. You will get feedback just below here indicating correctness of your answer.",
       numCorrectOfTotal: "You have {correct} of {total} correct",
       numCorrectOutOfTotal: "You have {correct} out of {total} correct",
+      cardsDirections:
+        "Put the cards in the correct order with the move earlier and move later buttons on each card, or drag them with a mouse. When you believe you have them in the correct order, test your answer by selecting {checkAnswer}.",
+      movedToPosition: "{item} moved to position {position} of {total}",
     };
     this.registerLocalization({
       context: this,
@@ -182,6 +185,12 @@ export class SortingQuestion extends QuestionElement {
     return {
       ...super.properties,
       numberCorrect: { type: Number },
+      /**
+       * How the answers are shown. "cards" presents them as a wrapping row
+       * of image cards; anything else (the default) is the vertical list.
+       */
+      layout: { type: String, reflect: true },
+      _moveStatus: { type: String, state: true },
     };
   }
 
@@ -402,6 +411,23 @@ export class SortingQuestion extends QuestionElement {
           border: var(--ddd-border-xs);
           border-radius: var(--ddd-radius-sm);
         }
+        /* card layout: a row of image cards that wraps to fewer columns */
+        :host([layout="cards"]) fieldset.options,
+        :host([layout="cards"]) .shell fieldset.options {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+          gap: var(--ddd-spacing-2);
+          padding: var(--ddd-spacing-0);
+        }
+        :host([layout="cards"]) sorting-option img {
+          box-sizing: border-box;
+          width: 100%;
+          max-width: 150px;
+          height: auto;
+        }
+        :host([layout="cards"]) .shell sorting-option::before {
+          letter-spacing: var(--ddd-ls-16-sm, 0.08px);
+        }
       `,
     ];
   }
@@ -409,11 +435,14 @@ export class SortingQuestion extends QuestionElement {
   // render the area the user will interact with the question
   // our default implementation is a multiple-choice element
   renderInteraction() {
+    const cards = this.layout === "cards";
     return html`
-      <fieldset class="options">
+      <fieldset class="options" @sorting-option-moved="${this._optionMoved}">
         ${this.displayedAnswers.map(
           (answer) =>
-            html`<sorting-option ?disabled="${this.disabled}"
+            html`<sorting-option
+              ?disabled="${this.disabled}"
+              layout="${cards ? "cards" : nothing}"
               >${
                 answer.image
                   ? html`<img src="${answer.image}" alt="${answer.alt}" />`
@@ -422,7 +451,28 @@ export class SortingQuestion extends QuestionElement {
             >`,
         )}
       </fieldset>
+      ${
+        cards
+          ? html`<div
+              class="sr-only"
+              id="move-status"
+              role="status"
+              aria-live="polite"
+            >
+              ${this._moveStatus}
+            </div>`
+          : nothing
+      }
     `;
+  }
+  // card layout: say where a moved card ended up
+  _optionMoved(e) {
+    const d = e.detail || {};
+    this._moveStatus = this.t.movedToPosition
+      .replace("{item}", () => d.label || "")
+      .replace("{position}", () => d.position)
+      .replace("{total}", () => d.total)
+      .trim();
   }
   // the visitor shell status comes from the order check, not the
   // per-option guesses the base class reads
@@ -443,9 +493,14 @@ export class SortingQuestion extends QuestionElement {
   // this manages the directions that are rendered and hard coded for the interaction
   renderDirections() {
     return html`<p>
-      ${this._tParts(this.t.sortingDirections, {
-        checkAnswer: html`<strong>${this.t.checkAnswer}</strong>`,
-      })}
+      ${this._tParts(
+        this.layout === "cards"
+          ? this.t.cardsDirections
+          : this.t.sortingDirections,
+        {
+          checkAnswer: html`<strong>${this.t.checkAnswer}</strong>`,
+        },
+      )}
     </p>`;
   }
 
