@@ -63,6 +63,19 @@ import "./hax-app.js";
 /**
  * @element hax-store
  */
+
+/**
+ * The text "null" in an attribute is how an unset property reflects, so it is
+ * not saved. A page's title is the exception: "null" there is what the
+ * author typed, and dropping it renamed the page on the next save.
+ */
+function isNullText(tag, attribute, value) {
+  if (value !== "null") {
+    return false;
+  }
+  return !(tag === "page-break" && attribute === "title");
+}
+
 class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
   /**
    * test a hook's existence in a target
@@ -5938,7 +5951,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         );
       }
       // only write things that aren't empty
-      else if (value != null && value != "null") {
+      else if (value != null && !isNullText(tag, nodeName, value)) {
         if (value === true || value === "true") {
           propvals[nodeName] = true;
         } else if (value === false) {
@@ -6026,7 +6039,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             }
           }
           // only write things that aren't empty
-          else if (value != null && value != "null") {
+          else if (value != null && !isNullText(tag, nodeName, value)) {
             if (value === true || value === "true") {
               propvals[nodeName] = true;
             } else if (value === false) {

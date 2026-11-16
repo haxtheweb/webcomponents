@@ -176,6 +176,31 @@ describe("keyboard flow: the hax-body editing area", function () {
     });
   });
 
+  describe("Select all in a text block", () => {
+    it("Ctrl+A selects the active block's text, and typing replaces only that", async () => {
+      const p = body.querySelector("p");
+      body.focus();
+      await activateText(p);
+      const was = blocks(body);
+      await sendKeys({ down: "Control" });
+      await sendKeys({ press: "a" });
+      await sendKeys({ up: "Control" });
+      await settle(150);
+      expect(
+        String(HAXStore.getSelection()),
+        "the selection is the paragraph's text",
+      ).to.equal("First paragraph");
+      await sendKeys({ type: "xyz" });
+      await settle(150);
+      const now = blocks(body);
+      expect(now[1], "typing replaced the paragraph's text").to.equal("p:xyz");
+      expect(
+        now.filter((b, i) => i !== 1),
+        "every other block is untouched",
+      ).to.deep.equal(was.filter((b, i) => i !== 1));
+    });
+  });
+
   describe("Tab with focus inside the editing area", () => {
     it("Tab in a list item still indents it", async () => {
       const second = body.querySelectorAll("li")[1];

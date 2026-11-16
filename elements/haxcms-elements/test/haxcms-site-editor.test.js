@@ -613,6 +613,51 @@ describe("haxcms-site-editor event handlers", () => {
     });
   });
 
+  describe("_handleNodeDetailsResponse", () => {
+    it("patches the item's place and the page-break a content save would send", () => {
+      const pageBreak = globalThis.document.createElement("page-break");
+      pageBreak.setAttribute("item-id", "page-1");
+      pageBreak.setAttribute("slug", "page-1");
+      pageBreak.setAttribute("order", "1");
+      globalThis.document.body.appendChild(pageBreak);
+      try {
+        element._handleNodeDetailsResponse({
+          detail: {
+            response: {
+              data: {
+                id: "page-1",
+                slug: "parent/page-1",
+                parent: "page-0",
+                order: 3,
+                indent: 1,
+              },
+            },
+          },
+        });
+        const item = store.findItem("page-1");
+        expect(item.parent).to.equal("page-0");
+        expect(item.order).to.equal(3);
+        expect(item.indent).to.equal(1);
+        expect(pageBreak.getAttribute("parent")).to.equal("page-0");
+        expect(pageBreak.getAttribute("order")).to.equal("3");
+        expect(pageBreak.getAttribute("slug")).to.equal("parent/page-1");
+        // back to the top level: the page-break carries no parent
+        element._handleNodeDetailsResponse({
+          detail: {
+            response: {
+              data: { id: "page-1", slug: "page-1", parent: null, order: 0 },
+            },
+          },
+        });
+        expect(store.findItem("page-1").parent).to.equal(null);
+        expect(pageBreak.hasAttribute("parent")).to.equal(false);
+        expect(pageBreak.getAttribute("order")).to.equal("0");
+      } finally {
+        pageBreak.remove();
+      }
+    });
+  });
+
   describe("_handleContentSearchResponse", () => {
     it("dispatches search results with matches from results array", () => {
       let received = null;

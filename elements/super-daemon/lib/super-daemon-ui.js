@@ -1543,6 +1543,11 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
       case "\\":
       case ">":
       case "<":
+        // inside a program the field is that program's input (a page title,
+        // tags, a search), so these are characters to type, not a context
+        if (this.programName) {
+          break;
+        }
         // support variations on "slash" and developer commands that should interpret as same thing
         if (e.key === "\\" && this.like == "") {
           this.commandContext = "/";
