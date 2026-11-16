@@ -30,7 +30,7 @@ import { css, unsafeCSS } from "lit";
 
 /**
  * SimpleColors name -> [DDD colour, DDD colour in dark mode, ink on colour]
- * Ink: "light" = white text on the colour, "dark" = navy text on it.
+ * Ink: "light" = white text on the colour, "dark" = midnight navy text on it.
  */
 export const DDDAccentMap = {
   red: ["original87Pink", "discoveryCoral", "light"],
@@ -73,7 +73,9 @@ const rules = Object.keys(DDDAccentMap)
     const inkColor =
       ink === "light"
         ? `light-dark(${t("white")}, ${t("potentialMidnight")})`
-        : t("nittanyNavy");
+        : // the darkest navy: design-system bridges remap nittanyNavy to a
+          // mid blue that loses contrast on light accents (orange, teal)
+          t("potentialMidnight");
     return `:host([accent-color="${name}"]) {
   --ddd-accent-color: ${color};
   --ddd-accent-color-tint: light-dark(color-mix(in srgb, ${t(light)} 14%, ${t("white")}), color-mix(in srgb, ${t(dark)} 22%, ${t("potentialMidnight")}));
