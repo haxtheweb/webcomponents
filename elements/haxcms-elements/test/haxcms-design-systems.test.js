@@ -1,6 +1,7 @@
 import { expect, oneEvent } from "@open-wc/testing";
 import { store } from "../lib/core/haxcms-site-store.js";
 import "../lib/core/haxcms-appearance-admin-dialog.js";
+import "../lib/core/ui/haxcms-theme-preview-panel.js";
 import {
   applySiteDesignSystem,
   loadDesignSystemRegistry,
@@ -254,5 +255,83 @@ describe("design system setting in appearance", () => {
     el.discard();
     await new Promise((r) => setTimeout(r, 200));
     expect(DesignSystemManager.active).to.equal("ddd");
+  });
+  it("takes the design system picked in Theme Preview", async () => {
+    store.manifest = makeManifest();
+    const el = await appearance();
+    el.applyThemePreviewSelection({
+      theme: "ds-accepting-theme",
+      palette: "",
+      designSystem: "patternfly",
+    });
+    setTimeout(() => el.save());
+    const e = await oneEvent(globalThis, "haxcms-save-appearance-settings");
+    expect(
+      e.detail.manifest.theme["manifest-metadata-theme-designSystem"],
+    ).to.equal("patternfly");
+  });
+});
+
+describe("design system in Theme Preview (the quick switch)", () => {
+  let savedManifest;
+  beforeEach(() => {
+    savedManifest = store.manifest;
+  });
+  afterEach(() => {
+    globalThis.document
+      .querySelectorAll("haxcms-theme-preview-panel")
+      .forEach((el) => el.remove());
+    store.manifest = savedManifest;
+  });
+
+  async function panel() {
+    const el = globalThis.document.createElement("haxcms-theme-preview-panel");
+    globalThis.document.body.appendChild(el);
+    await loadDesignSystemRegistry();
+    await new Promise((r) => setTimeout(r, 50));
+    await el.updateComplete;
+    return el;
+  }
+
+  it("offers the select for a theme that takes one, starting on the site's choice", async () => {
+    store.manifest = makeManifest("carbon");
+    const el = await panel();
+    const select = el.shadowRoot.querySelector("#design-system");
+    expect(select).to.exist;
+    expect(select.value).to.equal("carbon");
+    expect(select.options[0].value).to.equal("");
+  });
+
+  it("hides the select for a theme that takes none", async () => {
+    store.manifest = makeManifest();
+    store.manifest.metadata.theme.element = "ds-plain-theme";
+    const el = await panel();
+    expect(el.shadowRoot.querySelector("#design-system")).to.equal(null);
+  });
+
+  it("previews a pick on the site and hands it to Appearance", async () => {
+    store.manifest = makeManifest();
+    const el = await panel();
+    const select = el.shadowRoot.querySelector("#design-system");
+    select.value = "patternfly";
+    select.dispatchEvent(new Event("change"));
+    expect(store.manifest.metadata.theme.designSystem).to.equal("patternfly");
+    setTimeout(() => el._openAdminTheme());
+    const e = await oneEvent(globalThis, "haxcms-theme-preview-open-admin");
+    expect(e.detail.designSystem).to.equal("patternfly");
+  });
+
+  it("clearing the pick previews DDD", async () => {
+    store.manifest = makeManifest("carbon");
+    const el = await panel();
+    const select = el.shadowRoot.querySelector("#design-system");
+    select.value = "";
+    select.dispatchEvent(new Event("change"));
+    expect(
+      Object.prototype.hasOwnProperty.call(
+        store.manifest.metadata.theme,
+        "designSystem",
+      ),
+    ).to.equal(false);
   });
 });

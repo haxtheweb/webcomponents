@@ -8,5 +8,8 @@
   "theme": "Theme",
   "palette": "Palette",
   "cancel": "Cancel",
-  "openAppearanceSettings": "Open Appearance Settings"
+  "openAppearanceSettings": "Open Appearance Settings",
+  "designSystem": "Design system",
+  "designSystemDefault": "DDD (default)",
+  "designSystemHelp": "Color, type, corners and density. The theme still decides the layout."
 }

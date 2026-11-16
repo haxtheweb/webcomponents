@@ -8952,6 +8952,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           theme: selectedTheme,
           palette: selectedPalette,
         };
+        // the design system picked in Theme Preview (haxtheweb/issues#3350)
+        if (typeof e.detail.designSystem === "string") {
+          previewSelection.designSystem = e.detail.designSystem.trim();
+        }
       }
     }
     this.__appearancePreviewSelection = previewSelection;

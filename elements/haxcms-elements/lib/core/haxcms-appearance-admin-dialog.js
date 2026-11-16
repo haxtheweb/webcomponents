@@ -26,6 +26,7 @@ import { waitForHAXCMSSiteApiRegistryReady } from "./utils/haxcms-site-api-regis
 import {
   applySiteDesignSystem,
   loadDesignSystemRegistry,
+  siteDesignSystemName,
   themeAcceptsDesignSystems,
 } from "./utils/HAXCMSDesignSystems.js";
 import "@haxtheweb/simple-fields/simple-fields.js";
@@ -1174,6 +1175,11 @@ class HAXCMSAppearanceAdminDialog extends HaxcmsAdminSectionMixin(
           selection.palette,
         );
     }
+    // the design system picked in Theme Preview (haxtheweb/issues#3350)
+    if (typeof selection.designSystem === "string") {
+      this.values["manifest-metadata-theme-designSystem"] =
+        siteDesignSystemName({ designSystem: selection.designSystem });
+    }
   }
 
   applyThemePreviewSelection(selection = {}) {
@@ -1193,8 +1199,19 @@ class HAXCMSAppearanceAdminDialog extends HaxcmsAdminSectionMixin(
     if (hasPalette) {
       this.__themePreviewSelection.palette = selection.palette;
     }
+    if (typeof selection.designSystem === "string") {
+      this.__themePreviewSelection.designSystem = selection.designSystem;
+    }
     this.__valueChangeLock = true;
     this._applyStoredThemePreviewSelection();
+    this._updateDesignSystemField(
+      this.values["manifest-metadata-theme-element"],
+    );
+    if (typeof selection.designSystem === "string") {
+      this._previewDesignSystem(
+        this.values["manifest-metadata-theme-designSystem"],
+      );
+    }
     this._resetFieldValues();
     this.requestUpdate();
     this._emitState();
