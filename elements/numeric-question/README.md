@@ -65,7 +65,7 @@ With `reroll`, values are drawn from `crypto.getRandomValues` when the question 
 
 ## Learner data
 
-One xAPI `answered` statement per check, declared in `static get xapiVocabulary()`: interaction type `numeric`, `correctResponsesPattern` the accepted range as `min[:]max`, `result.response` the number typed. The variable values are not in the statement.
+One xAPI `answered` statement per check, declared in `static get xapiVocabulary()`: interaction type `numeric`, `correctResponsesPattern` the accepted range as `min[:]max`, `result.response` the number typed. With variables, `context.extensions` carries `https://haxtheweb.org/xapi/extensions/variables`: the values this attempt drew (`{ "d": 18, "t": 45 }`), so the answer can be checked against the numbers the learner saw.
 
 ## Keyboard and accessibility
 

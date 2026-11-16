@@ -113,6 +113,16 @@ export const XAPI_EXTENSIONS = {
   // the xAPI video profile IRI (XAPI_VIDEO_PROGRESS), which means "share of
   // the media consumed" and so is not used for anything else.
   progress: "https://haxtheweb.org/xapi/extensions/progress",
+  // context: the values a question drew for this attempt, an object of
+  // variable name to number (numeric-question with variables), so an answer
+  // can be checked against the numbers the learner actually saw
+  variables: "https://haxtheweb.org/xapi/extensions/variables",
+  // result: how many wrong picks the learner made, a whole number
+  // (identify-hotspots)
+  misses: "https://haxtheweb.org/xapi/extensions/misses",
+  // result: how many turns the learner has taken, a whole number
+  // (memory-match: one move is turning over two cards)
+  moves: "https://haxtheweb.org/xapi/extensions/moves",
 };
 
 /**

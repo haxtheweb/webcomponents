@@ -191,7 +191,7 @@ export class WordSearch extends DDDSuper(I18NMixin(LitElement)) {
           margin: var(--ddd-spacing-5) 0;
           /* accent roles: DDD default, then the palette, then accent-color
              on the element */
-          --word-search-marker: var(
+          --ddd-component-word-search-marker: var(
             --ddd-accent-color,
             var(
               --ddd-palette-marker,
@@ -201,7 +201,7 @@ export class WordSearch extends DDDSuper(I18NMixin(LitElement)) {
               )
             )
           );
-          --word-search-tint: var(
+          --ddd-component-word-search-tint: var(
             --ddd-accent-color-tint,
             var(
               --ddd-palette-tint,
@@ -211,7 +211,7 @@ export class WordSearch extends DDDSuper(I18NMixin(LitElement)) {
               )
             )
           );
-          --word-search-accent: var(
+          --ddd-component-word-search-accent: var(
             --ddd-accent-color,
             var(
               --ddd-palette-accent,
@@ -221,7 +221,7 @@ export class WordSearch extends DDDSuper(I18NMixin(LitElement)) {
               )
             )
           );
-          --word-search-accent-ink: var(
+          --ddd-component-word-search-accent-ink: var(
             --ddd-accent-color-ink,
             var(
               --ddd-palette-accent-ink,
@@ -231,11 +231,11 @@ export class WordSearch extends DDDSuper(I18NMixin(LitElement)) {
               )
             )
           );
-          --word-search-line: light-dark(
+          --ddd-component-word-search-line: light-dark(
             var(--ddd-theme-default-limestoneGray),
             var(--ddd-theme-default-slateGray)
           );
-          --word-search-surface: light-dark(
+          --ddd-component-word-search-surface: light-dark(
             var(--ddd-theme-default-white),
             var(--ddd-theme-default-coalyGray)
           );
@@ -272,7 +272,7 @@ export class WordSearch extends DDDSuper(I18NMixin(LitElement)) {
           padding-inline-start: var(--ddd-spacing-5);
         }
         .directions li::marker {
-          color: var(--word-search-marker);
+          color: var(--ddd-component-word-search-marker);
         }
         .ddd-block-body {
           padding: var(--ddd-surface-padding, var(--ddd-spacing-4));
@@ -303,19 +303,21 @@ export class WordSearch extends DDDSuper(I18NMixin(LitElement)) {
         .grid {
           display: grid;
           grid-template-columns: repeat(
-            var(--word-search-size),
+            var(--ddd-component-word-search-size),
             minmax(var(--ddd-spacing-6), 1fr)
           );
           gap: var(--ddd-border-size-sm);
           box-sizing: border-box;
           width: 100%;
           min-width: calc(
-            var(--word-search-size) * var(--ddd-spacing-6) +
-              (var(--word-search-size) - 1) * var(--ddd-border-size-sm)
+            var(--ddd-component-word-search-size) * var(--ddd-spacing-6) +
+              (var(--ddd-component-word-search-size) - 1) *
+              var(--ddd-border-size-sm)
           );
           max-width: calc(
-            var(--word-search-size) * var(--ddd-spacing-10) +
-              (var(--word-search-size) - 1) * var(--ddd-border-size-sm)
+            var(--ddd-component-word-search-size) * var(--ddd-spacing-10) +
+              (var(--ddd-component-word-search-size) - 1) *
+              var(--ddd-border-size-sm)
           );
           user-select: none;
         }
@@ -332,9 +334,9 @@ export class WordSearch extends DDDSuper(I18NMixin(LitElement)) {
           min-width: var(--ddd-spacing-6);
           min-height: var(--ddd-spacing-6);
           border: var(--ddd-border-xs);
-          border-color: var(--word-search-line);
+          border-color: var(--ddd-component-word-search-line);
           border-radius: var(--ddd-radius-xs);
-          background-color: var(--word-search-surface);
+          background-color: var(--ddd-component-word-search-surface);
           color: var(--ddd-status-default-ink);
           font-family: var(--ddd-font-navigation);
           font-size: var(--ddd-font-size-4xs);
@@ -352,17 +354,19 @@ export class WordSearch extends DDDSuper(I18NMixin(LitElement)) {
         }
         /* the pending first letter: a thick edge in the palette marker */
         .cell[aria-selected="true"] {
-          border: var(--ddd-border-size-md) solid var(--word-search-marker);
-          background-color: var(--word-search-tint);
+          border: var(--ddd-border-size-md) solid
+            var(--ddd-component-word-search-marker);
+          background-color: var(--ddd-component-word-search-tint);
           font-weight: var(--ddd-font-weight-black);
         }
         /* found words are told apart by their number, not only the colour */
         .cell.found {
-          border: var(--ddd-border-size-sm) solid var(--word-search-series);
+          border: var(--ddd-border-size-sm) solid
+            var(--ddd-component-word-search-series);
           background-color: color-mix(
             in srgb,
-            var(--word-search-series) 16%,
-            var(--word-search-surface)
+            var(--ddd-component-word-search-series) 16%,
+            var(--ddd-component-word-search-surface)
           );
         }
         .cell .number {
@@ -373,28 +377,28 @@ export class WordSearch extends DDDSuper(I18NMixin(LitElement)) {
           font-weight: var(--ddd-font-weight-bold);
         }
         .series-1 {
-          --word-search-series: var(--ddd-chart-1);
+          --ddd-component-word-search-series: var(--ddd-chart-1);
         }
         .series-2 {
-          --word-search-series: var(--ddd-chart-2);
+          --ddd-component-word-search-series: var(--ddd-chart-2);
         }
         .series-3 {
-          --word-search-series: var(--ddd-chart-3);
+          --ddd-component-word-search-series: var(--ddd-chart-3);
         }
         .series-4 {
-          --word-search-series: var(--ddd-chart-4);
+          --ddd-component-word-search-series: var(--ddd-chart-4);
         }
         .series-5 {
-          --word-search-series: var(--ddd-chart-5);
+          --ddd-component-word-search-series: var(--ddd-chart-5);
         }
         .series-6 {
-          --word-search-series: var(--ddd-chart-6);
+          --ddd-component-word-search-series: var(--ddd-chart-6);
         }
         .series-7 {
-          --word-search-series: var(--ddd-chart-7);
+          --ddd-component-word-search-series: var(--ddd-chart-7);
         }
         .series-8 {
-          --word-search-series: var(--ddd-chart-8);
+          --ddd-component-word-search-series: var(--ddd-chart-8);
         }
         .words {
           display: flex;
@@ -424,16 +428,17 @@ export class WordSearch extends DDDSuper(I18NMixin(LitElement)) {
           min-width: var(--ddd-icon-xxs);
           height: var(--ddd-icon-xxs);
           border: var(--ddd-border-xs);
-          border-color: var(--word-search-line);
+          border-color: var(--ddd-component-word-search-line);
           border-radius: var(--ddd-radius-circle);
           font-size: var(--ddd-font-size-6xs);
         }
         .words .found .number {
-          border: var(--ddd-border-size-sm) solid var(--word-search-series);
+          border: var(--ddd-border-size-sm) solid
+            var(--ddd-component-word-search-series);
           background-color: color-mix(
             in srgb,
-            var(--word-search-series) 16%,
-            var(--word-search-surface)
+            var(--ddd-component-word-search-series) 16%,
+            var(--ddd-component-word-search-surface)
           );
         }
         .words .found .word {
@@ -482,10 +487,10 @@ export class WordSearch extends DDDSuper(I18NMixin(LitElement)) {
           padding-block: var(--ddd-spacing-0);
           padding-inline: var(--ddd-spacing-4);
           border: var(--ddd-border-xs);
-          border-color: var(--word-search-accent);
+          border-color: var(--ddd-component-word-search-accent);
           border-radius: var(--ddd-radius-xs);
-          background-color: var(--word-search-accent);
-          color: var(--word-search-accent-ink);
+          background-color: var(--ddd-component-word-search-accent);
+          color: var(--ddd-component-word-search-accent-ink);
           font-family: var(--ddd-font-navigation);
           font-size: var(--ddd-font-size-4xs);
           font-weight: var(--ddd-font-weight-medium);
@@ -1017,7 +1022,7 @@ export class WordSearch extends DDDSuper(I18NMixin(LitElement)) {
         role="grid"
         aria-label="${this.t.letterGrid}"
         aria-disabled="${editing ? "true" : "false"}"
-        style="--word-search-size: ${puzzle.size}"
+        style="--ddd-component-word-search-size: ${puzzle.size}"
         @click="${this._onClick}"
         @keydown="${this._onKeydown}"
         @pointerdown="${this._onPointerDown}"

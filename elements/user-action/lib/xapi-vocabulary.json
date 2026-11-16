@@ -199,7 +199,8 @@
       "response",
       "score",
       "extensions.attempts",
-      "extensions.max-attempts"
+      "extensions.max-attempts",
+      "extensions.misses"
     ],
     "countsTowardCompletion": true,
     "done": "every hotspot found, or out of attempts",
@@ -338,7 +339,8 @@
     "result": [
       "completion",
       "response",
-      "extensions.https://haxtheweb.org/xapi/extensions/progress"
+      "extensions.https://haxtheweb.org/xapi/extensions/progress",
+      "extensions.https://haxtheweb.org/xapi/extensions/moves"
     ],
     "countsTowardCompletion": true,
     "done": "every pair matched",
@@ -385,6 +387,7 @@
       "extensions.attempts",
       "extensions.max-attempts"
     ],
+    "context": ["extensions.variables"],
     "countsTowardCompletion": true,
     "done": "answered correctly or out of attempts",
     "source": "elements/numeric-question/numeric-question.js"

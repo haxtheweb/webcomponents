@@ -88,7 +88,7 @@ Selecting a square that is already active also switches direction. Selecting a c
 
 ## Styling
 
-`--crossword-puzzle-tint` (active word and clue) and `--crossword-puzzle-line` (square borders) can be set from outside. Status colors come from the `--ddd-status-*` tokens.
+`--ddd-component-crossword-puzzle-tint` (active word and clue) and `--ddd-component-crossword-puzzle-line` (square borders) can be set from outside. Status colors come from the `--ddd-status-*` tokens.
 
 # Credits
 

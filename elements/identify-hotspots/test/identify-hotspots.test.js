@@ -5,6 +5,7 @@ import {
   componentId,
   deviceActor,
   setActorProvider,
+  XAPI_EXTENSIONS,
 } from "@haxtheweb/user-action/lib/xapi.js";
 import {
   normalizeRegion,
@@ -602,8 +603,8 @@ describe("identify-hotspots", () => {
       expect(statement.result.success).to.equal(true);
       expect(statement.result.completion).to.equal(true);
       expect(statement.result.score).to.include({ raw: 3, max: 3, min: 0 });
-      const iris = JSON.stringify(statement);
-      expect(iris).to.not.include("misses");
+      // one wrong pick (the bench) on the way
+      expect(statement.result.extensions[XAPI_EXTENSIONS.misses]).to.equal(1);
       const r = await executeServerCommand("xapi-validate", statement);
       expect(r.errors).to.deep.equal([]);
     });
@@ -621,6 +622,13 @@ describe("identify-hotspots", () => {
       expect(statement.result.success).to.equal(false);
       expect(statement.result.response).to.equal(WATER);
       expect(statement.result.score).to.include({ raw: 1, max: 3 });
+      // the wrong picks this attempt took
+      expect(statement.result.extensions[XAPI_EXTENSIONS.misses]).to.equal(4);
+      expect(
+        el.shadowRoot
+          .querySelector(".ddd-block-chip simple-icon-lite")
+          .getAttribute("icon"),
+      ).to.equal("image:center-focus-strong");
       const r = await executeServerCommand("xapi-validate", statement);
       expect(r.errors).to.deep.equal([]);
       // nothing found at all is still a valid statement

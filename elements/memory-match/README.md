@@ -17,7 +17,7 @@ A pair is usually a **term and its meaning**, so a match shows the learner knows
 </memory-match>
 ```
 
-It is ungraded: there is no wrong answer to record, only pairs found. The number of moves is shown to the learner and is not sent anywhere.
+It is ungraded: there is no wrong answer to record, only pairs found. The number of moves is shown to the learner and sent with each statement (below).
 
 ## How it plays
 
@@ -70,7 +70,7 @@ It also listens for `learner-progress-cleared` on `window` and clears itself.
 | Activity type | `http://adlnet.gov/expapi/activities/simulation` |
 | `result.response` | Ids of the pairs matched so far, joined by `[,]`. An id is `c-` plus 8 hex of the pair's content; never the text. |
 | `result.completion` | `true` when every pair is matched. |
-| `result.extensions` | `https://haxtheweb.org/xapi/extensions/progress` = pairs matched / pairs. |
+| `result.extensions` | `https://haxtheweb.org/xapi/extensions/progress` = pairs matched / pairs; `https://haxtheweb.org/xapi/extensions/moves` = turns taken so far (one turn is two cards). |
 | Counts toward completion | Yes. Done = every pair matched. |
 
 Moves are not in the statement: there is no existing extension for them and this element does not create one.

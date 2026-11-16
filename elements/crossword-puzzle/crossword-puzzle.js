@@ -271,6 +271,11 @@ export class CrosswordPuzzle extends QuestionElement {
     return Boolean(store && store.editMode);
   }
 
+  // the header chip matches the block's icon in the block list
+  get questionIcon() {
+    return "image:grid-on";
+  }
+
   // ---------- xAPI ----------
   // fill-in: one item per clue, in clue order (across, then down). The
   // typed word is the answer, so there are no component ids.
@@ -866,7 +871,7 @@ export class CrosswordPuzzle extends QuestionElement {
         :host {
           /* accent priority: accent-color on the element, then the
              palette (data-palette), then the DDD default */
-          --crossword-puzzle-tint: var(
+          --ddd-component-crossword-puzzle-tint: var(
             --ddd-accent-color-tint,
             var(
               --ddd-palette-tint,
@@ -880,7 +885,7 @@ export class CrosswordPuzzle extends QuestionElement {
               )
             )
           );
-          --crossword-puzzle-line: light-dark(
+          --ddd-component-crossword-puzzle-line: light-dark(
             var(--ddd-theme-default-slateGray),
             var(--ddd-theme-default-limestoneGray)
           );
@@ -953,7 +958,7 @@ export class CrosswordPuzzle extends QuestionElement {
           padding-block: var(--ddd-spacing-1);
           padding-inline: var(--ddd-spacing-2);
           border-radius: var(--ddd-radius-xs);
-          background-color: var(--crossword-puzzle-tint);
+          background-color: var(--ddd-component-crossword-puzzle-tint);
         }
         /* a grid too wide for the page scrolls here, never the page */
         .xw-scroll {
@@ -1005,7 +1010,7 @@ export class CrosswordPuzzle extends QuestionElement {
           margin: var(--ddd-spacing-0);
           padding: var(--ddd-spacing-0);
           border: var(--ddd-border-xs);
-          border-color: var(--crossword-puzzle-line);
+          border-color: var(--ddd-component-crossword-puzzle-line);
           border-radius: var(--ddd-radius-xs);
           background-color: var(--ddd-status-default-bg);
           color: var(--ddd-status-default-ink);
@@ -1026,7 +1031,7 @@ export class CrosswordPuzzle extends QuestionElement {
           justify-content: center;
         }
         .xw-cell.xw-in-word input {
-          background-color: var(--crossword-puzzle-tint);
+          background-color: var(--ddd-component-crossword-puzzle-tint);
         }
         .xw-cell input:focus-visible {
           outline: var(--ddd-focus-ring);
@@ -1055,31 +1060,37 @@ export class CrosswordPuzzle extends QuestionElement {
           border-width: var(--ddd-border-size-sm);
         }
         .xw-cell[data-status="correct"] {
-          --_xw-signal: var(--ddd-status-correct-signal);
-          --_xw-ink: var(--ddd-status-correct-ink);
+          --ddd-component-crossword-puzzle-signal: var(
+            --ddd-status-correct-signal
+          );
+          --ddd-component-crossword-puzzle-ink: var(--ddd-status-correct-ink);
           --_xw-line: var(--ddd-status-correct-line);
         }
         .xw-cell[data-status="incorrect"] {
-          --_xw-signal: var(--ddd-status-incorrect-signal);
-          --_xw-ink: var(--ddd-status-incorrect-ink);
+          --ddd-component-crossword-puzzle-signal: var(
+            --ddd-status-incorrect-signal
+          );
+          --ddd-component-crossword-puzzle-ink: var(--ddd-status-incorrect-ink);
           --_xw-line: var(--ddd-status-incorrect-line);
         }
         .xw-cell[data-status="missing"] {
-          --_xw-signal: var(--ddd-status-missing-signal);
-          --_xw-ink: var(--ddd-status-missing-ink);
+          --ddd-component-crossword-puzzle-signal: var(
+            --ddd-status-missing-signal
+          );
+          --ddd-component-crossword-puzzle-ink: var(--ddd-status-missing-ink);
           --_xw-line: var(--ddd-status-missing-line);
         }
         .xw-cell[data-status] input {
           border-style: var(--_xw-line);
-          border-color: var(--_xw-signal);
-          color: var(--_xw-ink);
+          border-color: var(--ddd-component-crossword-puzzle-signal);
+          color: var(--ddd-component-crossword-puzzle-ink);
         }
         .xw-mark {
           position: absolute;
           z-index: 2;
           top: 4cqi;
           inset-inline-end: 4cqi;
-          color: var(--_xw-ink);
+          color: var(--ddd-component-crossword-puzzle-ink);
           --simple-icon-color: currentColor;
           --simple-icon-width: clamp(
             calc(var(--ddd-icon-4xs) * 0.55),
@@ -1130,10 +1141,10 @@ export class CrosswordPuzzle extends QuestionElement {
           cursor: pointer;
         }
         :host button.xw-clue:hover {
-          border-color: var(--crossword-puzzle-line);
+          border-color: var(--ddd-component-crossword-puzzle-line);
         }
         :host button.xw-clue[aria-current="true"] {
-          background-color: var(--crossword-puzzle-tint);
+          background-color: var(--ddd-component-crossword-puzzle-tint);
           font-weight: var(--ddd-font-weight-bold);
         }
         :host button.xw-clue:focus-visible {
@@ -1167,7 +1178,7 @@ export class CrosswordPuzzle extends QuestionElement {
           padding: var(--ddd-spacing-3);
           border: var(--ddd-border-sm);
           border-style: dashed;
-          border-color: var(--crossword-puzzle-line);
+          border-color: var(--ddd-component-crossword-puzzle-line);
           border-radius: var(--ddd-radius-sm);
           background-color: var(--ddd-status-answered-bg);
           color: var(--ddd-status-default-ink);

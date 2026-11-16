@@ -350,7 +350,7 @@ describe("memory-match", () => {
     });
     afterEach(() => setActorProvider(null));
 
-    it("sends progressed per pair and completed once, all conformant, no moves", async () => {
+    it("sends progressed per pair and completed once, all conformant, with moves", async () => {
       const el = await make("mm-x");
       await dealt(el);
       const seen = [];
@@ -372,9 +372,9 @@ describe("memory-match", () => {
       for (const d of seen) {
         const r = await executeServerCommand("xapi-validate", d.statement);
         expect(r.errors).to.deep.equal([]);
-        expect(JSON.stringify(d.statement)).to.not.contain("moves");
         expect(Object.keys(d.statement.result.extensions)).to.deep.equal([
           XAPI_EXTENSIONS.progress,
+          XAPI_EXTENSIONS.moves,
         ]);
       }
       const first = seen[0].statement;
@@ -389,6 +389,10 @@ describe("memory-match", () => {
       expect(first.context.extensions[XAPI_EXTENSIONS.element]).to.equal(
         "memory-match",
       );
+      // moves: the mismatched turn, then one per pair
+      expect(
+        seen.map((d) => d.statement.result.extensions[XAPI_EXTENSIONS.moves]),
+      ).to.deep.equal([2, 3, 4, 4]);
       const last = seen[3].statement;
       expect(last.verb.id).to.equal(XAPI_VERBS.completed);
       expect(last.result.completion).to.equal(true);
