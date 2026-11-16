@@ -118,6 +118,7 @@ export class MemoryMatch extends DDDSuper(I18NMixin(LitElement)) {
         "completion",
         "response",
         "extensions.https://haxtheweb.org/xapi/extensions/progress",
+        "extensions.https://haxtheweb.org/xapi/extensions/moves",
       ],
       countsTowardCompletion: true,
       done: "every pair matched",
@@ -221,7 +222,7 @@ export class MemoryMatch extends DDDSuper(I18NMixin(LitElement)) {
           margin: var(--ddd-spacing-5) 0;
           /* accent roles: DDD default, then the palette, then accent-color
              on the element */
-          --memory-match-marker: var(
+          --ddd-component-memory-match-marker: var(
             --ddd-accent-color,
             var(
               --ddd-palette-marker,
@@ -231,7 +232,7 @@ export class MemoryMatch extends DDDSuper(I18NMixin(LitElement)) {
               )
             )
           );
-          --memory-match-accent: var(
+          --ddd-component-memory-match-accent: var(
             --ddd-accent-color,
             var(
               --ddd-palette-accent,
@@ -241,7 +242,7 @@ export class MemoryMatch extends DDDSuper(I18NMixin(LitElement)) {
               )
             )
           );
-          --memory-match-accent-ink: var(
+          --ddd-component-memory-match-accent-ink: var(
             --ddd-accent-color-ink,
             var(
               --ddd-palette-accent-ink,
@@ -251,7 +252,7 @@ export class MemoryMatch extends DDDSuper(I18NMixin(LitElement)) {
               )
             )
           );
-          --memory-match-surface: light-dark(
+          --ddd-component-memory-match-surface: light-dark(
             var(--ddd-theme-default-white),
             var(--ddd-theme-default-coalyGray)
           );
@@ -288,7 +289,7 @@ export class MemoryMatch extends DDDSuper(I18NMixin(LitElement)) {
           padding-inline-start: var(--ddd-spacing-5);
         }
         .directions li::marker {
-          color: var(--memory-match-marker);
+          color: var(--ddd-component-memory-match-marker);
         }
         .ddd-block-body {
           padding: var(--ddd-surface-padding, var(--ddd-spacing-4));
@@ -326,9 +327,10 @@ export class MemoryMatch extends DDDSuper(I18NMixin(LitElement)) {
           min-height: var(--ddd-spacing-22);
           margin: var(--ddd-spacing-0);
           padding: var(--ddd-spacing-2);
-          border: var(--ddd-border-size-sm) solid var(--memory-match-accent);
+          border: var(--ddd-border-size-sm) solid
+            var(--ddd-component-memory-match-accent);
           border-radius: var(--ddd-radius-sm);
-          background-color: var(--memory-match-surface);
+          background-color: var(--ddd-component-memory-match-surface);
           color: var(--ddd-status-default-ink);
           font-family: var(--ddd-font-primary);
           font-size: var(--ddd-font-size-4xs);
@@ -345,8 +347,8 @@ export class MemoryMatch extends DDDSuper(I18NMixin(LitElement)) {
         }
         /* card backs are decoration: they take the accent */
         .card.down {
-          background-color: var(--memory-match-accent);
-          color: var(--memory-match-accent-ink);
+          background-color: var(--ddd-component-memory-match-accent);
+          color: var(--ddd-component-memory-match-accent-ink);
           font-size: var(--ddd-font-size-s);
           font-weight: var(--ddd-font-weight-bold);
         }
@@ -447,10 +449,10 @@ export class MemoryMatch extends DDDSuper(I18NMixin(LitElement)) {
           padding-block: var(--ddd-spacing-0);
           padding-inline: var(--ddd-spacing-4);
           border: var(--ddd-border-xs);
-          border-color: var(--memory-match-accent);
+          border-color: var(--ddd-component-memory-match-accent);
           border-radius: var(--ddd-radius-xs);
-          background-color: var(--memory-match-accent);
-          color: var(--memory-match-accent-ink);
+          background-color: var(--ddd-component-memory-match-accent);
+          color: var(--ddd-component-memory-match-accent-ink);
           font-family: var(--ddd-font-navigation);
           font-size: var(--ddd-font-size-4xs);
           font-weight: var(--ddd-font-weight-medium);
@@ -776,6 +778,7 @@ export class MemoryMatch extends DDDSuper(I18NMixin(LitElement)) {
           [XAPI_EXTENSIONS.progress]: pairs.length
             ? ids.length / pairs.length
             : 0,
+          [XAPI_EXTENSIONS.moves]: this._moves,
         },
       },
       context: { extensions: { [XAPI_EXTENSIONS.element]: MemoryMatch.tag } },

@@ -3322,6 +3322,9 @@ class DDDocs extends I18NMixin(DDD) {
         handles: [],
         meta: {
           author: "HAXTheWeb core team",
+          // the design system's own documentation: kept working where it is
+          // used, but not offered to authors in the block list
+          hidden: true,
         },
       },
       settings: {

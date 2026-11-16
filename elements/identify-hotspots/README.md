@@ -65,7 +65,7 @@ One `answered` statement per finished attempt, as a `choice` interaction:
 - `correctResponsesPattern`: the hotspot ids joined by `[,]`.
 - `result.response`: ids of the hotspots found (never names), joined by `[,]`.
 - `result.score`: `raw` = found, `max` = hotspots to find.
-- `result.extensions`: attempts and max attempts. The number of misses is not recorded.
+- `result.extensions`: attempts, max attempts, and `https://haxtheweb.org/xapi/extensions/misses`, the number of wrong picks in the attempt.
 
 Nothing is sent while HAX is editing. On a return visit the hotspots found come back from the saved response (unknown ids are ignored); where the misses landed is not part of the record.
 

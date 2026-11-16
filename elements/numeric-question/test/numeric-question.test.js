@@ -4,6 +4,7 @@ import "../numeric-question.js";
 import {
   deviceActor,
   setActorProvider,
+  XAPI_EXTENSIONS,
   XAPI_VERBS,
 } from "@haxtheweb/user-action/lib/xapi.js";
 
@@ -387,6 +388,10 @@ describe("numeric-question", () => {
         });
         expect(def.extensions).to.equal(undefined);
         expect(s.object.id).to.match(/#speed$/);
+        // the numbers this attempt drew, so the answer can be checked
+        const drawn = s.context.extensions[XAPI_EXTENSIONS.variables];
+        expect(Object.keys(drawn).sort()).to.deep.equal(["d", "t"]);
+        expect(drawn).to.deep.equal(el._values);
       }
       expect(wrong.result.response).to.equal("3.5");
       expect(wrong.result.success).to.equal(false);
@@ -401,6 +406,23 @@ describe("numeric-question", () => {
       expect(right.object.id).to.equal(wrong.object.id);
       expect(events[1].activityDisplay).to.equal("answered");
       expect(events[1].resultSuccess).to.equal(true);
+    });
+    it("a question with no variables sends no variables extension", async () => {
+      const el = await fixture(
+        html`<numeric-question question="What is 6 times 7?"
+          ><input type="checkbox" value="42" data-correct="true"
+        /></numeric-question>`,
+      );
+      await waitUntil(() => el._range(), "the key was read");
+      expect(el.xapiContextExtensions()).to.deep.equal({});
+    });
+    it("the header chip uses the block's own icon", async () => {
+      const el = await speed();
+      expect(
+        el.shadowRoot
+          .querySelector(".ddd-block-chip simple-icon-lite")
+          .getAttribute("icon"),
+      ).to.equal("editor:functions");
     });
     it("sends nothing while HAX is editing", async () => {
       const el = await speed();

@@ -322,7 +322,11 @@ export class SortingQuestion extends QuestionElement {
         :host(:focus),
         :host(:focus-within),
         :host(:hover) {
-          border-color: var(--simple-colors-default-theme-accent-12);
+          /* a DDD component hook first; the SimpleColors value it has always used after */
+          border-color: var(
+            --ddd-component-sorting-question-hover-border,
+            var(--simple-colors-default-theme-accent-12)
+          );
         }
 
         simple-toolbar-button {
@@ -347,7 +351,10 @@ export class SortingQuestion extends QuestionElement {
             var(--ddd-theme-default-limestoneLight),
             var(--ddd-theme-default-slateGray)
           );
-          color: light-dark(black, white);
+          color: light-dark(
+            var(--ddd-theme-default-black),
+            var(--ddd-theme-default-white)
+          );
           opacity: var(--ddd-opacity-80, 0.7);
         }
         :host simple-toolbar-button:hover::part(button),
@@ -356,7 +363,7 @@ export class SortingQuestion extends QuestionElement {
         :host simple-toolbar-button:active::part(button) {
           cursor: pointer;
           box-shadow: var(--ddd-boxShadow-sm);
-          border-color: black;
+          border-color: var(--ddd-theme-default-black);
         }
         simple-toolbar-button::part(button) {
           border: var(--ddd-border-sm);
@@ -366,8 +373,8 @@ export class SortingQuestion extends QuestionElement {
         simple-toolbar-button::part(label) {
           font-size: var(--ddd-font-size-s);
           font-family: var(--ddd-font-navigation);
-          padding: 0;
-          margin: 0;
+          padding: var(--ddd-spacing-0);
+          margin: var(--ddd-spacing-0);
         }
         #check {
           margin-inline-end: var(--ddd-spacing-4);
@@ -384,14 +391,15 @@ export class SortingQuestion extends QuestionElement {
           align-items: center;
         }
         h3 {
-          padding: 0;
-          margin: 0 0 var(--ddd-spacing-8) 0;
+          padding: var(--ddd-spacing-0);
+          margin: var(--ddd-spacing-0) var(--ddd-spacing-0) var(--ddd-spacing-8)
+            var(--ddd-spacing-0);
           font-family: var(--ddd-font-navigation);
         }
         /* position numbers for the visitor rows */
         .shell fieldset.options {
           counter-reset: sorting-position;
-          margin-bottom: 0;
+          margin-bottom: var(--ddd-spacing-0);
           border: none;
         }
         .shell sorting-option::before {

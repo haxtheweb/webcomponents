@@ -366,7 +366,7 @@ export class SortingOption extends I18NMixin(DDDSuper(LitElement)) {
           box-sizing: border-box;
           width: 100%;
           min-height: var(--ddd-control-height-md);
-          margin: 0;
+          margin: var(--ddd-spacing-0);
           padding-block: var(--ddd-spacing-1);
           padding-inline: var(--ddd-spacing-3) var(--ddd-spacing-1);
           z-index: 1;

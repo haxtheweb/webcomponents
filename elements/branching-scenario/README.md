@@ -64,6 +64,8 @@ The object is a `sequencing` interaction whose `choices` are the scenes. Scene i
 
 ## Editing in HAX
 
+Marked experimental (`gizmo.meta.lifecycle`), so the block browser shows it as Beta: how a scene's id and heading are saved may still change.
+
 The scenario is a grid element: add scenes from its context menu ("Add scene") and write each scene in place. Link choices with the normal link tool, using `#scene-id` as the address. While editing, every scene is shown with its scene id, the start scene is marked, and scenes that no choice links to and links that point to a missing scene are flagged. Where a learner was on the path is never saved.
 
 ## Keyboard and accessibility

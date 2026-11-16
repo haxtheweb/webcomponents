@@ -61,9 +61,9 @@ function sceneScore(scene) {
 }
 
 const MARKER =
-  "var(--branching-scenario-marker, light-dark(var(--ddd-theme-default-beaverBlue), var(--ddd-theme-default-skyBlue)))";
+  "var(--ddd-component-branching-scenario-marker, light-dark(var(--ddd-theme-default-beaverBlue), var(--ddd-theme-default-skyBlue)))";
 const TINT =
-  "var(--branching-scenario-tint, light-dark(var(--ddd-theme-default-skyMaxLight), var(--ddd-theme-default-nittanyNavy)))";
+  "var(--ddd-component-branching-scenario-tint, light-dark(var(--ddd-theme-default-skyMaxLight), var(--ddd-theme-default-nittanyNavy)))";
 
 /**
  * `branching-scenario`
@@ -163,28 +163,28 @@ export class BranchingScenario extends DDDSuper(I18NMixin(LitElement)) {
           margin: var(--ddd-stack-gap, var(--ddd-spacing-4)) 0;
           /* accent roles: the palette when the page has one, then the DDD
              defaults; a colour picked on the element wins (below) */
-          --branching-scenario-accent: var(
+          --ddd-component-branching-scenario-accent: var(
             --ddd-palette-accent,
             light-dark(
               var(--ddd-theme-default-nittanyNavy),
               var(--ddd-theme-default-linkLight)
             )
           );
-          --branching-scenario-accent-ink: var(
+          --ddd-component-branching-scenario-accent-ink: var(
             --ddd-palette-accent-ink,
             light-dark(
               var(--ddd-theme-default-white),
               var(--ddd-theme-default-potentialMidnight)
             )
           );
-          --branching-scenario-marker: var(
+          --ddd-component-branching-scenario-marker: var(
             --ddd-palette-marker,
             light-dark(
               var(--ddd-theme-default-beaverBlue),
               var(--ddd-theme-default-skyBlue)
             )
           );
-          --branching-scenario-tint: var(
+          --ddd-component-branching-scenario-tint: var(
             --ddd-palette-tint,
             light-dark(
               var(--ddd-theme-default-skyMaxLight),
@@ -193,7 +193,7 @@ export class BranchingScenario extends DDDSuper(I18NMixin(LitElement)) {
           );
         }
         :host([accent-color]) {
-          --branching-scenario-accent: var(
+          --ddd-component-branching-scenario-accent: var(
             --ddd-accent-color,
             var(
               --ddd-palette-accent,
@@ -203,7 +203,7 @@ export class BranchingScenario extends DDDSuper(I18NMixin(LitElement)) {
               )
             )
           );
-          --branching-scenario-accent-ink: var(
+          --ddd-component-branching-scenario-accent-ink: var(
             --ddd-accent-color-ink,
             var(
               --ddd-palette-accent-ink,
@@ -213,7 +213,7 @@ export class BranchingScenario extends DDDSuper(I18NMixin(LitElement)) {
               )
             )
           );
-          --branching-scenario-marker: var(
+          --ddd-component-branching-scenario-marker: var(
             --ddd-accent-color,
             var(
               --ddd-palette-marker,
@@ -223,7 +223,7 @@ export class BranchingScenario extends DDDSuper(I18NMixin(LitElement)) {
               )
             )
           );
-          --branching-scenario-tint: var(
+          --ddd-component-branching-scenario-tint: var(
             --ddd-accent-color-tint,
             var(
               --ddd-palette-tint,
@@ -265,17 +265,6 @@ export class BranchingScenario extends DDDSuper(I18NMixin(LitElement)) {
           flex-direction: column;
           color: var(--ddd-status-default-ink);
           --ddd-block-background: var(--ddd-status-default-bg);
-        }
-        .vh {
-          position: absolute;
-          width: 1px;
-          height: 1px;
-          margin: -1px;
-          padding: var(--ddd-spacing-0);
-          overflow: hidden;
-          clip: rect(0 0 0 0);
-          white-space: nowrap;
-          border: 0;
         }
         .directions {
           padding-block: var(--ddd-spacing-3);
@@ -355,7 +344,7 @@ export class BranchingScenario extends DDDSuper(I18NMixin(LitElement)) {
           color: var(--ddd-status-default-ink);
         }
         .trail-item[aria-current] .stop {
-          border-color: var(--branching-scenario-marker);
+          border-color: var(--ddd-component-branching-scenario-marker);
           border-inline-start-width: var(--ddd-border-size-lg);
         }
         .note {
@@ -390,9 +379,9 @@ export class BranchingScenario extends DDDSuper(I18NMixin(LitElement)) {
         }
         :host .action-bar #again {
           border: var(--ddd-border-xs);
-          border-color: var(--branching-scenario-accent);
-          background-color: var(--branching-scenario-accent);
-          color: var(--branching-scenario-accent-ink);
+          border-color: var(--ddd-component-branching-scenario-accent);
+          background-color: var(--ddd-component-branching-scenario-accent);
+          color: var(--ddd-component-branching-scenario-accent-ink);
         }
         :host .action-bar #back {
           border: var(--ddd-border-xs);
@@ -906,8 +895,8 @@ export class BranchingScenario extends DDDSuper(I18NMixin(LitElement)) {
                 aria-current="${i === this._path.length - 1 ? "step" : nothing}"
               >
                 <span class="stop"
-                  ><span class="vh">${this.t.scene} </span>${i + 1}<span
-                    class="vh"
+                  ><span class="sr-only">${this.t.scene} </span>${i + 1}<span
+                    class="sr-only"
                     >: ${scene.getAttribute("heading") || ""}</span
                   >${sceneEnding(scene) ? ` · ${this.t.end}` : ""}</span
                 >
@@ -982,14 +971,14 @@ export class BranchingScenario extends DDDSuper(I18NMixin(LitElement)) {
         class="directions"
         ?hidden="${!this._directionsOpen}"
       >
-        <span class="vh">${this.t.directions}: </span>
+        <span class="sr-only">${this.t.directions}: </span>
         <ul>
           <li>${this.t.directionsRead}</li>
           <li>${this.t.directionsEndings}</li>
         </ul>
       </div>
       <div class="ddd-block-body scenes"><slot></slot></div>
-      <div class="vh" id="status" role="status">${this._status}</div>
+      <div class="sr-only" id="status" role="status">${this._status}</div>
       <div class="ddd-block-footer action-bar" ?hidden="${!this._graph}">
         ${
           this._editing || empty

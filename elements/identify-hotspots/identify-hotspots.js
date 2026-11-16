@@ -9,6 +9,7 @@ import {
   choiceResponse,
   XAPI_ITEM_DELIMITER,
 } from "@haxtheweb/multiple-choice/lib/QuestionElement.js";
+import { XAPI_EXTENSIONS } from "@haxtheweb/user-action/lib/xapi.js";
 import {
   clampNumber,
   normalizeRegion,
@@ -70,6 +71,7 @@ export class IdentifyHotspots extends QuestionElement {
         "score",
         "extensions.attempts",
         "extensions.max-attempts",
+        "extensions.misses",
       ],
       countsTowardCompletion: true,
       done: "every hotspot found, or out of attempts",
@@ -386,6 +388,14 @@ export class IdentifyHotspots extends QuestionElement {
         .filter((r) => found.includes(r.id))
         .map((r) => r.id),
     );
+  }
+  // how many wrong picks this attempt took
+  xapiResultExtensions(_correct, _attempt) {
+    return { [XAPI_EXTENSIONS.misses]: this._misses.length };
+  }
+  // the header chip matches the block's icon in the block list
+  get questionIcon() {
+    return "image:center-focus-strong";
   }
   learnerScore(_correct) {
     return {

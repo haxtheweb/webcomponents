@@ -4,7 +4,11 @@
  */
 import { html, css, nothing } from "lit";
 import { QuestionElement } from "@haxtheweb/multiple-choice/lib/QuestionElement.js";
-import { activityKey, xapiHash } from "@haxtheweb/user-action/lib/xapi.js";
+import {
+  activityKey,
+  xapiHash,
+  XAPI_EXTENSIONS,
+} from "@haxtheweb/user-action/lib/xapi.js";
 import {
   cleanVariables,
   evaluateFormula,
@@ -72,6 +76,7 @@ export class NumericQuestion extends QuestionElement {
         "extensions.attempts",
         "extensions.max-attempts",
       ],
+      context: ["extensions.variables"],
       countsTowardCompletion: true,
       done: "answered correctly or out of attempts",
     };
@@ -394,6 +399,23 @@ export class NumericQuestion extends QuestionElement {
     return range
       ? { correctResponsesPattern: [`${n(range.min)}[:]${n(range.max)}`] }
       : {};
+  }
+  // the numbers this attempt drew, so the answer can be checked against
+  // what the learner saw; nothing when the question has no variables
+  xapiContextExtensions() {
+    const names = Object.keys(this._values || {});
+    if (!names.length) {
+      return {};
+    }
+    const values = {};
+    names.forEach((name) => {
+      values[name] = this._values[name];
+    });
+    return { [XAPI_EXTENSIONS.variables]: values };
+  }
+  // the header chip matches the block's icon in the block list
+  get questionIcon() {
+    return "editor:functions";
   }
   // the number typed is the answer, so it is the response
   learnerResponse() {

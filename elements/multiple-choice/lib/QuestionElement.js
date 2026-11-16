@@ -882,6 +882,33 @@ export class QuestionElement extends SchemaBehaviors(
     return { raw: correct ? 1 : 0, max: 1 };
   }
   /**
+   * Icon in the block header chip. Question types that have their own icon
+   * in the block list return it here so the two match; the default is the
+   * shared question icon.
+   * @returns {String} simple-icon name
+   */
+  get questionIcon() {
+    return "hax:head-question";
+  }
+  /**
+   * Extra result.extensions for an answer check, after attempts and
+   * max-attempts (keys from XAPI_EXTENSIONS). None by default.
+   * @param {boolean} _correct
+   * @param {number} _attempt
+   * @returns {Object}
+   */
+  xapiResultExtensions(_correct, _attempt) {
+    return {};
+  }
+  /**
+   * Extra context.extensions for an answer check, after element (keys from
+   * XAPI_EXTENSIONS). None by default.
+   * @returns {Object}
+   */
+  xapiContextExtensions() {
+    return {};
+  }
+  /**
    * user-engagement detail for an answer check: the fields this event has
    * always carried plus `statement`, an xAPI statement (verb answered).
    * @param {boolean} correct
@@ -905,11 +932,13 @@ export class QuestionElement extends SchemaBehaviors(
         extensions: {
           [XAPI_EXTENSIONS.attempts]: attempt,
           [XAPI_EXTENSIONS.maxAttempts]: max,
+          ...this.xapiResultExtensions(correct, attempt),
         },
       },
       context: {
         extensions: {
           [XAPI_EXTENSIONS.element]: this.tagName.toLowerCase(),
+          ...this.xapiContextExtensions(),
         },
       },
     });
@@ -2363,7 +2392,7 @@ export class QuestionElement extends SchemaBehaviors(
           @click="${this._toggleCollapsed}"
         >
           ${renderDDDBlockChip({
-            icon: "hax:head-question",
+            icon: this.questionIcon,
             done: this._chipDone(),
             doneLabel: this.t.correct,
           })}
@@ -2501,7 +2530,7 @@ export class QuestionElement extends SchemaBehaviors(
               ? this.renderStackHeader(status, expanded, hasRelated)
               : renderDDDBlockHeader({
                   id: "eyebrow",
-                  icon: "hax:head-question",
+                  icon: this.questionIcon,
                   // the feedback region already says it was correct
                   done: this._chipDone(),
                   doneLabel: this.t.correct,

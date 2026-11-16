@@ -705,6 +705,10 @@ export class ImageDropzone extends QuestionElement {
     );
     return { source, target };
   }
+  // the header chip matches the block's icon in the block list
+  get questionIcon() {
+    return "image:photo-size-select-large";
+  }
   xapiDefinition() {
     const m = this._xapiMatching();
     const out = {
