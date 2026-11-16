@@ -160,6 +160,21 @@ export const HAXCMS_API_MESSAGES_EN = Object.freeze({
   PARAM_REQUIRED: "A required value is missing: {param}.",
   INVALID_REQUEST: "Invalid request.",
   PARAM_INVALID: "Invalid value: {param}.",
+  PLUGIN_NOT_ACTIVE: "The {plugin} plugin isn't running ({status}).",
+  PLUGIN_NOT_INSTALLED: "That plugin isn't installed.",
+  PLUGIN_REQUIRED: "Required plugins can't be turned off.",
+  PLUGIN_HAS_DEPENDENTS:
+    "Other plugins depend on this one. Turn them off first.",
+  PLUGIN_RUNTIME_MISSING:
+    "This plugin doesn't run on this server: it ships {runtimes} only.",
+  PLUGIN_OPERATION_NOT_IMPLEMENTED:
+    "This plugin doesn't offer that action on this server.",
+  PLUGIN_NO_IMPLEMENTER: "No enabled plugin provides {contract}.",
+  PLUGIN_SCHEDULE_UNKNOWN:
+    "The {plugin} plugin has no scheduled job named {job}.",
+  PLUGIN_IMPORT_EMPTY: "The importer didn't return anything to import.",
+  PLUGIN_SITE_REQUIRED: "This needs a site, and it was run without one.",
+  PLUGIN_HOST_UNREACHABLE: "Unable to reach {host}.",
 });
 
 // translations land in `t` when the language changes (i18n-manager)

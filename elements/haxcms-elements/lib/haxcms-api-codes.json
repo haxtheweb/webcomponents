@@ -41,7 +41,8 @@
         "login is required",
         "authenticated site access is required for this endpoint",
         "authorization bearer token (?:or basic credentials )?(?:is|are) required(?: for this endpoint)?",
-        "missing_jwt"
+        "missing_jwt",
+        "unauthorized"
       ]
     },
     {
@@ -259,7 +260,8 @@
       "match": [
         "server error",
         "request failed",
-        "unable to evaluate site api access policy"
+        "unable to evaluate site api access policy",
+        "internal error"
       ]
     },
     {
@@ -946,6 +948,67 @@
         "unknown security level",
         "invalid (?<param>.+)"
       ]
+    },
+    {
+      "code": "PLUGIN_NOT_ACTIVE",
+      "en": "The {plugin} plugin isn't running ({status}).",
+      "match": [
+        "(?<plugin>[a-z0-9][a-z0-9-]*) is (?<status>enabled|inactive|disabled|failed|refused)"
+      ]
+    },
+    {
+      "code": "PLUGIN_NOT_INSTALLED",
+      "en": "That plugin isn't installed.",
+      "match": ["not installed"]
+    },
+    {
+      "code": "PLUGIN_REQUIRED",
+      "en": "Required plugins can't be turned off.",
+      "match": ["required plugins cannot be disabled"]
+    },
+    {
+      "code": "PLUGIN_HAS_DEPENDENTS",
+      "en": "Other plugins depend on this one. Turn them off first.",
+      "match": ["other plugins depend on it"]
+    },
+    {
+      "code": "PLUGIN_RUNTIME_MISSING",
+      "en": "This plugin doesn't run on this server: it ships {runtimes} only.",
+      "match": [
+        "no (?<runtime>nodejs|php) implementation: this plugin ships (?<runtimes>.+) only"
+      ]
+    },
+    {
+      "code": "PLUGIN_OPERATION_NOT_IMPLEMENTED",
+      "en": "This plugin doesn't offer that action on this server.",
+      "match": [
+        "operation (?<operation>\\S+) is not implemented in (?<runtime>\\S+)"
+      ]
+    },
+    {
+      "code": "PLUGIN_NO_IMPLEMENTER",
+      "en": "No enabled plugin provides {contract}.",
+      "match": ["no active implementer of (?<contract>\\S+)"]
+    },
+    {
+      "code": "PLUGIN_SCHEDULE_UNKNOWN",
+      "en": "The {plugin} plugin has no scheduled job named {job}.",
+      "match": ["no schedule (?<job>\\S+) in (?<plugin>\\S+)"]
+    },
+    {
+      "code": "PLUGIN_IMPORT_EMPTY",
+      "en": "The importer didn't return anything to import.",
+      "match": ["the importer returned nothing"]
+    },
+    {
+      "code": "PLUGIN_SITE_REQUIRED",
+      "en": "This needs a site, and it was run without one.",
+      "match": ["(?<what>.+): needs a site; this is the system engine"]
+    },
+    {
+      "code": "PLUGIN_HOST_UNREACHABLE",
+      "en": "Unable to reach {host}.",
+      "match": ["(?<host>[a-z0-9.-]+) could not be reached"]
     }
   ]
 }
