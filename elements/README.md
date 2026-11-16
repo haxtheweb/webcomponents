@@ -3,7 +3,7 @@
 <!-- GENERATED FILE: do not edit by hand. Run `yarn run elements-readme` -->
 <!-- Descriptions come from each element's package.json; edit them there. -->
 
-Every element in this monorepo (239 packages). Browse them live with `yarn gallery`, or open an element's folder for its own README.
+Every element in this monorepo (249 packages). Browse them live with `yarn gallery`, or open an element's folder for its own README.
 
 | Element | Description | Package | Demo |
 | --- | --- | --- | --- |
@@ -23,6 +23,7 @@ Every element in this monorepo (239 packages). Browse them live with `yarn galle
 | [air-horn](./air-horn/) | demonstrative purposes via meme | `@haxtheweb/air-horn` | [demo](./air-horn/demo/) |
 | [anchor-behaviors](./anchor-behaviors/) | handles anchors and params in the url | `@haxtheweb/anchor-behaviors` |  |
 | [app-hax](./app-hax/) | HAX+HAXcms as a full app experience | `@haxtheweb/app-hax` | [demo](./app-hax/demo/) |
+| [arithmetic-drill](./arithmetic-drill/) | A short run of generated arithmetic problems with instant feedback | `@haxtheweb/arithmetic-drill` | [demo](./arithmetic-drill/demo/) |
 | [audio-player](./audio-player/) | simple audio web component to match video | `@haxtheweb/audio-player` | [demo](./audio-player/demo/) |
 | [author-card](./author-card/) | Webcomponent author-card following hax / open-wc recommendations | `@haxtheweb/author-card` | [demo](./author-card/demo/) |
 | [awesome-explosion](./awesome-explosion/) | An awesome, explosion. | `@haxtheweb/awesome-explosion` | [demo](./awesome-explosion/demo/) |
@@ -31,6 +32,7 @@ Every element in this monorepo (239 packages). Browse them live with `yarn galle
 | [beaker-broker](./beaker-broker/) | A broker element to make working with Beaker Browser's API even easier. | `@haxtheweb/beaker-broker` | [demo](./beaker-broker/demo/) |
 | [bibliography-builder](./bibliography-builder/) | Webcomponent bibliography-builder following hax / open-wc recommendations | `@haxtheweb/bibliography-builder` | [demo](./bibliography-builder/demo/) |
 | [bootstrap-theme](./bootstrap-theme/) | Hax bootstrap themeing | `@haxtheweb/bootstrap-theme` | [demo](./bootstrap-theme/demo/) |
+| [branching-scenario](./branching-scenario/) | A story where each choice leads to a different scene and ending | `@haxtheweb/branching-scenario` | [demo](./branching-scenario/demo/) |
 | [bullet-check-list](./bullet-check-list/) | Bulleted or numbered list of checkboxes whose state is remembered on this machine | `@haxtheweb/bullet-check-list` | [demo](./bullet-check-list/demo/) |
 | [carbon-theme](./carbon-theme/) | IBM Carbon theme for HAXcms, built on the DDD-capable Carbon design system bridge | `@haxtheweb/carbon-theme` | [demo](./carbon-theme/demo/) |
 | [career-timeline](./career-timeline/) | Webcomponent career-timeline following hax / open-wc recommendations | `@haxtheweb/career-timeline` | [demo](./career-timeline/demo/) |
@@ -47,6 +49,7 @@ Every element in this monorepo (239 packages). Browse them live with `yarn galle
 | [count-up](./count-up/) | count up js wrapper with minimal styling | `@haxtheweb/count-up` | [demo](./count-up/demo/) |
 | [course-design](./course-design/) | some different elements specific to the design of educational materials. Lots of small elements and a catch all repo | `@haxtheweb/course-design` | [demo](./course-design/demo/) |
 | [course-model](./course-model/) | view 3d models with multiple angel rotation for a course experience | `@haxtheweb/course-model` | [demo](./course-model/demo/) |
+| [crossword-puzzle](./crossword-puzzle/) | A crossword generated from a list of words and clues, checked like the other HAX question types | `@haxtheweb/crossword-puzzle` | [demo](./crossword-puzzle/demo/) |
 | [csv-render](./csv-render/) | Remote render a CSV file in place as an accessible table. | `@haxtheweb/csv-render` | [demo](./csv-render/demo/) |
 | [d-d-d](./d-d-d/) | design, develop, deliver | `@haxtheweb/d-d-d` | [demo](./d-d-d/demo/) |
 | [d-d-docs](./d-d-docs/) | Webcomponent d-d-docs following hax / open-wc recommendations | `@haxtheweb/d-d-docs` | [demo](./d-d-docs/demo/) |
@@ -96,8 +99,10 @@ Every element in this monorepo (239 packages). Browse them live with `yarn galle
 | [html-block](./html-block/) | A basic HTML block that provides HAXschema wiring | `@haxtheweb/html-block` | [demo](./html-block/demo/) |
 | [i18n-manager](./i18n-manager/) | Internationalization management singleton and helper mixin to allow shipping localizations with elements in an app agnostic manner | `@haxtheweb/i18n-manager` | [demo](./i18n-manager/demo/) |
 | [ics-render](./ics-render/) | Render a calendar file (.ics) in place as date cards, a timeline, a table or a list. | `@haxtheweb/ics-render` | [demo](./ics-render/demo/) |
+| [identify-hotspots](./identify-hotspots/) | Graded find-the-hotspot activity: learners find the right spots on an image | `@haxtheweb/identify-hotspots` | [demo](./identify-hotspots/demo/) |
 | [iframe-loader](./iframe-loader/) | Adds a loading indicator for iframes. | `@haxtheweb/iframe-loader` | [demo](./iframe-loader/demo/) |
 | [image-compare-slider](./image-compare-slider/) | Slider that allows comparison of two images | `@haxtheweb/image-compare-slider` | [demo](./image-compare-slider/demo/) |
+| [image-dropzone](./image-dropzone/) | Learners place labels onto zones laid over an image, then check their answer | `@haxtheweb/image-dropzone` | [demo](./image-dropzone/demo/) |
 | [image-gallery](./image-gallery/) | Webcomponent image-gallery following hax / open-wc recommendations | `@haxtheweb/image-gallery` | [demo](./image-gallery/demo/) |
 | [image-inspector](./image-inspector/) | Inspector tools on an image wrapping open seadragon library | `@haxtheweb/image-inspector` | [demo](./image-inspector/demo/) |
 | [img-pan-zoom](./img-pan-zoom/) | Image viewer with pan and zoom, including Deep Zoom image support | `@haxtheweb/img-pan-zoom` | [demo](./img-pan-zoom/demo/) |
@@ -124,6 +129,7 @@ Every element in this monorepo (239 packages). Browse them live with `yarn galle
 | [lrndesign-sidenote](./lrndesign-sidenote/) | Webcomponent lrndesign-sidenote following hax / open-wc recommendations | `@haxtheweb/lrndesign-sidenote` | [demo](./lrndesign-sidenote/demo/) |
 | [lrndesign-timeline](./lrndesign-timeline/) | an element that displays events on a timeline | `@haxtheweb/lrndesign-timeline` | [demo](./lrndesign-timeline/demo/) |
 | [lrs-elements](./lrs-elements/) | elements for interfacing with learning record stores | `@haxtheweb/lrs-elements` | [demo](./lrs-elements/demo/) |
+| [lti-launch](./lti-launch/) | A block that opens an external learning tool, as a plain link or an LTI 1.3 login request | `@haxtheweb/lti-launch` | [demo](./lti-launch/demo/) |
 | [lunr-search](./lunr-search/) | LunrJS search element | `@haxtheweb/lunr-search` | [demo](./lunr-search/demo/) |
 | [map-menu](./map-menu/) | Hierarchical navigation menu built from a site outline | `@haxtheweb/map-menu` | [demo](./map-menu/demo/) |
 | [mark-the-words](./mark-the-words/) | Mark desired words in a sentence | `@haxtheweb/mark-the-words` | [demo](./mark-the-words/demo/) |
@@ -135,7 +141,9 @@ Every element in this monorepo (239 packages). Browse them live with `yarn galle
 | [media-playlist](./media-playlist/) | Webcomponent media-playlist following hax / open-wc recommendations | `@haxtheweb/media-playlist` | [demo](./media-playlist/demo/) |
 | [media-quote](./media-quote/) | A quote focused around a piece of media with citation | `@haxtheweb/media-quote` | [demo](./media-quote/demo/) |
 | [meme-maker](./meme-maker/) | Overlays top and bottom caption text on an image, meme style | `@haxtheweb/meme-maker` | [demo](./meme-maker/demo/) |
+| [memory-match](./memory-match/) | A memory game: turn over cards to find pairs, such as a term and its meaning | `@haxtheweb/memory-match` | [demo](./memory-match/demo/) |
 | [merit-badge](./merit-badge/) | visual badge to communicate obtaining a skill | `@haxtheweb/merit-badge` | [demo](./merit-badge/demo/) |
+| [mermaid-diagram](./mermaid-diagram/) | A diagram written as text (Mermaid), drawn in the page with a text alternative | `@haxtheweb/mermaid-diagram` | [demo](./mermaid-diagram/demo/) |
 | [micro-frontend-registry](./micro-frontend-registry/) | A singleton for registration and managing access to leverage microservices for web components | `@haxtheweb/micro-frontend-registry` |  |
 | [micro-game-base](./micro-game-base/) | Shared shell for short browser games that live inside a page: input, pause rules, progress events, OER Schema, player character, finish panel with slots, and i18n | `@haxtheweb/micro-game-base` | [demo](./micro-game-base/demo/) |
 | [moar-sarcasm](./moar-sarcasm/) | Provide a laugh and a good example of VanillaJS for demos | `@haxtheweb/moar-sarcasm` | [demo](./moar-sarcasm/demo/) |
@@ -143,6 +151,7 @@ Every element in this monorepo (239 packages). Browse them live with `yarn galle
 | [multiple-choice](./multiple-choice/) | Multiple choice question with feedback for correct and incorrect answers | `@haxtheweb/multiple-choice` | [demo](./multiple-choice/demo/) |
 | [music-player](./music-player/) | Visualize different types of music and simple format player | `@haxtheweb/music-player` | [demo](./music-player/demo/) |
 | [mutation-observer-import-mixin](./mutation-observer-import-mixin/) | a SuperClass mixin that dynamically imports undefined custom element definitions | `@haxtheweb/mutation-observer-import-mixin` |  |
+| [numeric-question](./numeric-question/) | A question answered with a number, from a fixed answer or a formula with variables, correct within a tolerance | `@haxtheweb/numeric-question` | [demo](./numeric-question/demo/) |
 | [oer-schema](./oer-schema/) | Wraps content in schema.org / OER metadata markup | `@haxtheweb/oer-schema` | [demo](./oer-schema/demo/) |
 | [outline-designer](./outline-designer/) | tools to modify and visualize JSON Outline Schema for editing | `@haxtheweb/outline-designer` | [demo](./outline-designer/demo/) |
 | [outline-player](./outline-player/) | Presents a site outline as a navigable, page-by-page player | `@haxtheweb/outline-player` | [demo](./outline-player/demo/) |
@@ -245,4 +254,5 @@ Every element in this monorepo (239 packages). Browse them live with `yarn galle
 | [webawesome-theme](./webawesome-theme/) | Web Awesome theme for HAXcms, built on the DDD-capable Web Awesome design system bridge | `@haxtheweb/webawesome-theme` | [demo](./webawesome-theme/demo/) |
 | [wikipedia-query](./wikipedia-query/) | Queries Wikipedia and presents the result with citation | `@haxtheweb/wikipedia-query` | [demo](./wikipedia-query/demo/) |
 | [word-count](./word-count/) | Counts the words in slotted text and shows a small badge | `@haxtheweb/word-count` | [demo](./word-count/demo/) |
+| [word-search](./word-search/) | A word search: a letter grid generated from an authored word list, played with two taps or the keyboard | `@haxtheweb/word-search` | [demo](./word-search/demo/) |
 | [wysiwyg-hax](./wysiwyg-hax/) | Integrates HAX as the editor inside a page's form field | `@haxtheweb/wysiwyg-hax` | [demo](./wysiwyg-hax/demo/) |

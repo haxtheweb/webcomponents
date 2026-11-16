@@ -1,8 +1,8 @@
 {
   "_meta": {
-    "elementsScanned": 249,
-    "elementsWithTranslations": 158,
-    "translationFilesFound": 40841,
+    "elementsScanned": 259,
+    "elementsWithTranslations": 168,
+    "translationFilesFound": 40852,
     "languagesSupported": [
       "af",
       "am",
@@ -3252,6 +3252,7 @@
       "zh",
       "zu"
     ],
+    "arithmetic-drill": ["en"],
     "audio-player.haxProperties": [
       "af",
       "am",
@@ -4507,6 +4508,8 @@
       "zh",
       "zu"
     ],
+    "branching-scenario": ["en"],
+    "branching-scene": ["en"],
     "bullet-check-list": [
       "af",
       "am",
@@ -7958,6 +7961,7 @@
       "zh",
       "zu"
     ],
+    "crossword-puzzle": ["en"],
     "csv-render": [
       "af",
       "am",
@@ -24063,6 +24067,7 @@
       "zh",
       "zu"
     ],
+    "identify-hotspots": ["en"],
     "iframe-loader.haxProperties": [
       "af",
       "am",
@@ -24376,6 +24381,7 @@
       "zh",
       "zu"
     ],
+    "image-dropzone": ["en"],
     "image-gallery": [
       "af",
       "am",
@@ -27411,6 +27417,7 @@
       "zh",
       "zu"
     ],
+    "lti-launch": ["en"],
     "lunr-search": [
       "af",
       "am",
@@ -28875,6 +28882,7 @@
       "zh",
       "zu"
     ],
+    "memory-match": ["en"],
     "badge-sticker": [
       "af",
       "am",
@@ -29294,6 +29302,7 @@
       "zh",
       "zu"
     ],
+    "mermaid-diagram": ["en"],
     "concept-map-game": [
       "af",
       "am",
@@ -30966,6 +30975,7 @@
       "zh",
       "zu"
     ],
+    "numeric-question": ["en"],
     "outline-designer": [
       "af",
       "am",
@@ -41744,6 +41754,7 @@
       "yo",
       "zh",
       "zu"
-    ]
+    ],
+    "word-search": ["en"]
   }
 }

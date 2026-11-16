@@ -574,6 +574,23 @@
       "tags": []
     },
     {
+      "tag": "arithmetic-drill",
+      "title": "Arithmetic Drill",
+      "description": "A short run of generated arithmetic problems with instant feedback: a start screen, one problem at a time, then the score. Practice, not a test: nothing is authored but the settings, and every run is new. - Subtraction never goes below zero; division always has a whole number answer and never div...",
+      "package": "@haxtheweb/arithmetic-drill",
+      "import": "@haxtheweb/arithmetic-drill/arithmetic-drill.js",
+      "type": "element",
+      "haxCapable": true,
+      "tags": [
+        "Instructional",
+        "math",
+        "arithmetic",
+        "practice",
+        "game",
+        "drill"
+      ]
+    },
+    {
       "tag": "audio-player",
       "title": "Audio Player",
       "description": "simple audio web component to match video",
@@ -706,6 +723,35 @@
       "type": "element",
       "haxCapable": false,
       "tags": []
+    },
+    {
+      "tag": "branching-scenario",
+      "title": "Branching Scenario",
+      "description": "A story where each choice leads to a different scene and ending The scenes are branching-scene children. A choice is an ordinary link in a scene whose href is \"#\" plus the scene-id of another scene here. Without JavaScript every scene is on the page and those links are page anchors; once this ele...",
+      "package": "@haxtheweb/branching-scenario",
+      "import": "@haxtheweb/branching-scenario/branching-scenario.js",
+      "type": "grid",
+      "haxCapable": true,
+      "tags": [
+        "Instructional",
+        "scenario",
+        "branching",
+        "story",
+        "decision",
+        "activity",
+        "h5p"
+      ],
+      "lifecycle": "experimental"
+    },
+    {
+      "tag": "branching-scene",
+      "title": "Branching Scene",
+      "description": "One scene of a branching-scenario The scene content is whatever is slotted into it. A choice is an ordinary link in that content whose href is \"#\" plus the scene-id of another scene in the same scenario. A scene with an ending (good, mixed or poor) closes a path and carries the score for it.",
+      "package": "@haxtheweb/branching-scenario",
+      "import": "@haxtheweb/branching-scenario/lib/branching-scene.js",
+      "type": "grid",
+      "haxCapable": true,
+      "tags": ["Instructional", "scenario", "scene"]
     },
     {
       "tag": "bullet-check-list",
@@ -1034,6 +1080,24 @@
       "haxCapable": true,
       "tags": ["Instructional", "course", "model", "3d"],
       "walkthrough": true
+    },
+    {
+      "tag": "crossword-puzzle",
+      "title": "Crossword Puzzle",
+      "description": "A crossword generated from a list of words and clues Words are light DOM inputs, one per word, with the clue beside it: <input value=\"HTML\" data-clue=\"Markup language of the web\" />. The grid is generated from them (lib/crossword-layout.js); nothing is hand placed.",
+      "package": "@haxtheweb/crossword-puzzle",
+      "import": "@haxtheweb/crossword-puzzle/crossword-puzzle.js",
+      "type": "grid",
+      "haxCapable": true,
+      "tags": [
+        "Instructional",
+        "crossword",
+        "puzzle",
+        "vocabulary",
+        "game",
+        "question",
+        "assessment"
+      ]
     },
     {
       "tag": "csv-render",
@@ -2792,6 +2856,24 @@
       "walkthrough": true
     },
     {
+      "tag": "identify-hotspots",
+      "title": "Identify Hotspots",
+      "description": "The learner finds the right spots on an image: the assessed counterpart to an informational image map. Every answer is a named region (an ellipse inside a box given in percent of the image) that is either a hotspot to find or a named decoy. A click, tap or keyboard probe on a hotspot not found ye...",
+      "package": "@haxtheweb/identify-hotspots",
+      "import": "@haxtheweb/identify-hotspots/identify-hotspots.js",
+      "type": "element",
+      "haxCapable": true,
+      "tags": [
+        "Instructional",
+        "image",
+        "hotspot",
+        "find",
+        "activity",
+        "knowledge check",
+        "assessment"
+      ]
+    },
+    {
       "tag": "iframe-loader",
       "title": "Iframe Loader",
       "description": "Adds a loading indicator for iframes.",
@@ -2819,6 +2901,24 @@
         "instructional"
       ],
       "walkthrough": true
+    },
+    {
+      "tag": "image-dropzone",
+      "title": "Image Dropzone",
+      "description": "Learners place text labels onto zones laid over an image, then check. The answer key lives in light dom inputs like every QuestionElement: one input per label. A label with a zone is correct on that zone (<input value=\"header\" data-zone=\"Top band\" data-x=\"3\" data-y=\"12\" data-width=\"94\" data-heigh...",
+      "package": "@haxtheweb/image-dropzone",
+      "import": "@haxtheweb/image-dropzone/image-dropzone.js",
+      "type": "element",
+      "haxCapable": true,
+      "tags": [
+        "Instructional",
+        "drag and drop",
+        "label",
+        "image",
+        "matching",
+        "knowledge check",
+        "assessment"
+      ]
     },
     {
       "tag": "image-gallery",
@@ -3459,6 +3559,24 @@
       "tags": []
     },
     {
+      "tag": "lti-launch",
+      "title": "Lti Launch",
+      "description": "A block that opens an external learning tool: the tool's title and description with a launch button, in a new window or embedded. - Plain link: launch-url opens the tool. - LTI 1.3: with login-url, client-id and deployment-id set, the button posts the third-party-initiated login request (iss, tar...",
+      "package": "@haxtheweb/lti-launch",
+      "import": "@haxtheweb/lti-launch/lti-launch.js",
+      "type": "element",
+      "haxCapable": true,
+      "tags": [
+        "Instructional",
+        "LTI",
+        "external tool",
+        "launch",
+        "link",
+        "embed"
+      ],
+      "lifecycle": "experimental"
+    },
+    {
       "tag": "lunr-search",
       "title": "",
       "description": "LunrJS search element",
@@ -3671,6 +3789,23 @@
       "walkthrough": true
     },
     {
+      "tag": "memory-match",
+      "title": "Memory Match",
+      "description": "Turn over two cards at a time to find the pairs. A pair is a term and its meaning (so a match shows understanding), or two matching texts or images. Pairs are authored in light DOM as a description list, a dt and the dd after it for each pair, and are never changed by play. Cards are dealt in a n...",
+      "package": "@haxtheweb/memory-match",
+      "import": "@haxtheweb/memory-match/memory-match.js",
+      "type": "element",
+      "haxCapable": true,
+      "tags": [
+        "Instructional",
+        "game",
+        "memory",
+        "matching",
+        "vocabulary",
+        "activity"
+      ]
+    },
+    {
       "tag": "merit-badge",
       "title": "Merit Badge",
       "description": "visual badge to communicate obtaining a skill",
@@ -3680,6 +3815,16 @@
       "haxCapable": true,
       "tags": ["Instructional", "badge", "skill", "achievement"],
       "walkthrough": true
+    },
+    {
+      "tag": "mermaid-diagram",
+      "title": "Mermaid Diagram",
+      "description": "A diagram written as text (Mermaid), drawn in the page with a text alternative. The source is the element's own content: a <pre> in the light DOM, saved exactly as written, so without JavaScript, in a feed or under server side rendering the diagram is still readable text. Mermaid is loaded only w...",
+      "package": "@haxtheweb/mermaid-diagram",
+      "import": "@haxtheweb/mermaid-diagram/mermaid-diagram.js",
+      "type": "element",
+      "haxCapable": true,
+      "tags": ["Media", "diagram", "mermaid", "flowchart", "chart"]
     },
     {
       "tag": "micro-frontend-registry",
@@ -3818,6 +3963,24 @@
       "type": "element",
       "haxCapable": false,
       "tags": []
+    },
+    {
+      "tag": "numeric-question",
+      "title": "Numeric Question",
+      "description": "A question answered with a number, correct within a tolerance. The answer is a fixed number or a formula worked out from variables, so it covers the Numerical and Formula question types of an LMS. The question text can show the variable values with {name} tokens. The key (answer or formula, and t...",
+      "package": "@haxtheweb/numeric-question",
+      "import": "@haxtheweb/numeric-question/numeric-question.js",
+      "type": "grid",
+      "haxCapable": true,
+      "tags": [
+        "Instructional",
+        "question",
+        "quiz",
+        "numeric",
+        "formula",
+        "math",
+        "assessment"
+      ]
     },
     {
       "tag": "oer-schema",
@@ -6800,6 +6963,23 @@
       "haxCapable": false,
       "tags": [],
       "walkthrough": true
+    },
+    {
+      "tag": "word-search",
+      "title": "Word Search",
+      "description": "A letter grid with hidden words. The learner taps the first letter of a word and then its last letter (or uses the arrow keys with Enter / Space). The words are authored as list items in light DOM and are never changed. The grid is generated from them with a seeded generator, so the same words al...",
+      "package": "@haxtheweb/word-search",
+      "import": "@haxtheweb/word-search/word-search.js",
+      "type": "element",
+      "haxCapable": true,
+      "tags": [
+        "Instructional",
+        "game",
+        "word search",
+        "vocabulary",
+        "activity",
+        "puzzle"
+      ]
     },
     {
       "tag": "worksheet-download",
