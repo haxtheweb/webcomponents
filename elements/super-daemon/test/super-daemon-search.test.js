@@ -319,6 +319,30 @@ describe("super-daemon-search behavior", () => {
     expect(e.target.value).to.equal("");
   });
 
+  it("context keys are typed text while a program runs", () => {
+    // a program's field takes a page title, tags or a search: "<script>"
+    // as a title must keep its "<"
+    element.programName = "Create a page";
+    element.value = "";
+    element.commandContext = "*";
+    ["<", ">", "/", "!", "\\"].forEach((key) => {
+      const down = new KeyboardEvent("keydown", { key, cancelable: true });
+      element._inputKeydown(down);
+      expect(down.defaultPrevented).to.equal(false);
+      expect(element.commandContext).to.equal("*");
+    });
+    const e = {
+      target: { value: "<" },
+      stopPropagation: () => {},
+      stopImmediatePropagation: () => {},
+      preventDefault: () => {},
+    };
+    element.inputfilterChanged(e);
+    expect(e.target.value).to.equal("<");
+    expect(element.value).to.equal("<");
+    expect(element.commandContext).to.equal("*");
+  });
+
   it("inputfilterChanged does nothing while disabled", () => {
     element.disabled = true;
     const e = {

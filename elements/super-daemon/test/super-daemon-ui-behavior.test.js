@@ -52,6 +52,31 @@ describe("super-daemon-ui behavior", () => {
     expect(element.where).to.equal("index");
   });
 
+  it("shows a program's rows when the text it started with was replaced", async () => {
+    // edit tags starts with the page's current tags ("week0") in the field;
+    // select all and typing "week1" makes the program offer to save week1,
+    // and that row must show so Enter can save it
+    element.programName = "Edit tags";
+    // super-daemon hands the starting text down as `like` (it fills the field)
+    element.like = "week0";
+    element.setupProgram("week0");
+    element.programSearch = "week1";
+    element.items = [{ title: "Save tags: week1", path: "CMS/edit/tags" }];
+    await element.updateComplete;
+    expect(element.filtered.length).to.equal(1);
+    expect(element.filtered[0].title).to.equal("Save tags: week1");
+    // outside a program, typed text still filters the command list
+    element.programName = null;
+    element.items = [
+      { title: "Alpha", index: "alpha" },
+      { title: "Beta", index: "beta" },
+    ];
+    element.like = "beta";
+    await aTimeout(300);
+    await element.updateComplete;
+    expect(element.filtered.map((item) => item.title)).to.deep.equal(["Beta"]);
+  });
+
   it("renders rows in the mini results list", async () => {
     const el = await fixture(html`<super-daemon-ui mini></super-daemon-ui>`);
     el.loading = false;

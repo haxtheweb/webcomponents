@@ -520,12 +520,28 @@ describe("page-break hax hooks", () => {
     expect(dropped.locked).to.equal(true);
   });
 
+  it("does not offer parent or order as settings", async () => {
+    // a content save never moves a page; pages move through the outline
+    // operations, so the page-break's schema leaves these two out
+    const url = customElements.get("page-break").haxProperties;
+    const schema = await (await fetch(url)).json();
+    const offered = Object.values(schema.settings)
+      .flat()
+      .map((field) => field.property);
+    expect(offered.includes("parent")).to.equal(false);
+    expect(offered.includes("order")).to.equal(false);
+    expect(offered.includes("noderefs")).to.equal(true);
+  });
+
   it("skips building the form lists without a loaded manifest", async () => {
     const el = await fixture(
       html`<page-break title="No manifest"></page-break>`,
     );
     const props = {
-      settings: { advanced: [{ property: "parent" }], developer: [] },
+      settings: {
+        advanced: [{ property: "noderefs", properties: [{}] }],
+        developer: [],
+      },
     };
     // page-break.js guards the manifest items directly (importing the site
     // store always defines globalThis.HAXCMS so the old guard never failed)
@@ -538,11 +554,13 @@ describe("page-break hax hooks", () => {
       threw = e.message;
     }
     expect(threw).to.equal(null);
-    // no manifest means no parent select gets wired up
-    expect(props.settings.advanced[0].inputMethod === undefined).to.equal(true);
+    // no manifest means no related-items select gets wired up
+    expect(
+      props.settings.advanced[0].properties[0].inputMethod === undefined,
+    ).to.equal(true);
   });
 
-  it("builds parent and theme select lists for the active element form", async () => {
+  it("builds related-items and theme select lists for the active element form", async () => {
     const savedCms = globalThis.HAXCMS;
     globalThis.HAXCMS = {
       requestAvailability: () => ({
@@ -570,7 +588,6 @@ describe("page-break hax hooks", () => {
     const props = {
       settings: {
         advanced: [
-          { property: "parent" },
           { property: "noderefs", properties: [{}] },
           { property: "slug" },
         ],
@@ -578,7 +595,9 @@ describe("page-break hax hooks", () => {
       },
     };
     el.haxsetupActiveElementForm(props);
-    const parentInput = props.settings.advanced[0];
+    // parent and order are not settings (pages move through the outline
+    // operations), so the page list feeds related items
+    const parentInput = props.settings.advanced[0].properties[0];
     expect(parentInput.inputMethod).to.equal("select");
     expect(parentInput.itemsList.length).to.equal(5);
     expect(parentInput.itemsList[0].text).to.equal("-- No parent --");
@@ -607,10 +626,6 @@ describe("page-break hax hooks", () => {
         .find((i) => i.value === "item-3")
         .text.startsWith("----"),
     ).to.equal(true);
-    // noderefs shares the same select wiring
-    const noderefsInput = props.settings.advanced[1];
-    expect(noderefsInput.properties[0].inputMethod).to.equal("select");
-    expect(noderefsInput.properties[0].itemsList.length).to.equal(5);
     // the theme list comes from appSettings
     const themeInput = props.settings.developer[0];
     expect(themeInput.inputMethod).to.equal("select");
@@ -620,12 +635,11 @@ describe("page-break hax hooks", () => {
     expect(el.author).to.equal("form-user");
     expect(props.settings.developer[1].value).to.equal("form-user");
     // slug is disabled while pathauto is on without an override
-    expect(props.settings.advanced[2].disabled).to.equal(true);
+    expect(props.settings.advanced[1].disabled).to.equal(true);
     el.overridePathauto = true;
     const props2 = {
       settings: {
         advanced: [
-          { property: "parent" },
           { property: "noderefs", properties: [{}] },
           { property: "slug" },
         ],
@@ -633,7 +647,7 @@ describe("page-break hax hooks", () => {
       },
     };
     el.haxsetupActiveElementForm(props2);
-    expect(props2.settings.advanced[2].disabled).to.equal(false);
+    expect(props2.settings.advanced[1].disabled).to.equal(false);
     store.manifest = savedManifest;
     store.activeId = savedActiveId;
     globalThis.HAXCMS = savedCms;

@@ -677,12 +677,16 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
    * ordered by their best-ranked result and results keeping their order
    * inside a group, so a heading never repeats. Programs and short lists
    * are left as they are.
+   * A running program filters its own results from what is typed, so its
+   * rows are never filtered by `like` here. `like` still holds the text a
+   * program started with (the page's current tags, say): filtering by it
+   * hid the program's row once that text was replaced, and Enter did nothing.
    */
   _computeFiltered(items, where, like, caseSensitive, multiMatch) {
     const list = super._computeFiltered(
       items,
       where,
-      like,
+      this.programName ? "" : like,
       caseSensitive,
       multiMatch,
     );

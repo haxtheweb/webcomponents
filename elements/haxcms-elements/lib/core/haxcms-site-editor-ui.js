@@ -8622,6 +8622,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       if (modalOpen) {
         return;
       }
+      this._refreshActivePageFromSource();
       if (routePath) {
         this._clearAdminRoutePathFromLocation("replace");
       } else {
@@ -8629,6 +8630,34 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         store.adminMode = false;
       }
     }, 40);
+  }
+  /**
+   * The admin dialog (outline designer, files, settings) can change what the
+   * page on screen shows: its place in the outline, its files, its parent.
+   * When the dialog closes, load the site and the page again from source so
+   * the page and its page-break match what the backend holds. Not while
+   * editing: that would throw away the author's unsaved work.
+   */
+  _refreshActivePageFromSource() {
+    if (store.editMode) {
+      return;
+    }
+    globalThis.dispatchEvent(
+      new CustomEvent("haxcms-trigger-update", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: true,
+      }),
+    );
+    globalThis.dispatchEvent(
+      new CustomEvent("haxcms-trigger-update-node", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: true,
+      }),
+    );
   }
   _reportsButtonTap(e, _fromSiteSettings = false, routeOptions = {}) {
     // a Reports screen route (reports-accessibility, ...) or the overview

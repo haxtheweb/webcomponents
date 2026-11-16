@@ -1317,8 +1317,8 @@ export class PageBreak extends IntersectionObserverMixin(
     }
   }
   /**
-   * Allow for dynamic setting of the parent field if we have the store around
-   * with values to do so
+   * Fill the related-items field with the site's pages when the store is
+   * around to supply them
    */
   haxsetupActiveElementForm(props) {
     // Guard the manifest items directly. Importing the site store always
@@ -1365,13 +1365,10 @@ export class PageBreak extends IntersectionObserverMixin(
           disabled: el.id === this.itemId || descendantIds.has(el.id),
         });
       });
-      // apply same logic of the items in the active site to
-      // parent and related items
+      // related items pick from the pages in the active site. Parent and
+      // order are not settings: a page moves through the outline operations,
+      // and a content save leaves its place alone
       props.settings.advanced.forEach((attr, index) => {
-        if (attr.property === "parent") {
-          props.settings.advanced[index].inputMethod = "select";
-          props.settings.advanced[index].itemsList = items;
-        }
         if (attr.property === "noderefs") {
           props.settings.advanced[index].properties[0].inputMethod = "select";
           props.settings.advanced[index].properties[0].itemsList = items;

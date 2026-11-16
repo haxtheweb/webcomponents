@@ -126,6 +126,11 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
         case "\\":
         case ">":
         case "<":
+          // inside a program the field is that program's input (a page title,
+          // tags, a search), so these are characters to type, not a context
+          if (this.programName) {
+            break;
+          }
           // support variations on "slash" and developer commands that should interpret as same thing
           if (e.key === "\\" && this.value == "") {
             this.commandContext = "/";
@@ -175,6 +180,16 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
       case "\\":
       case ">":
       case "<":
+        // inside a program the field is that program's input: a title may
+        // be just "<" (or start with it), so keep it as typed
+        if (this.programName) {
+          if (!this.disabled) {
+            e.stopPropagation();
+            e.stopImmediatePropagation();
+            this.value = e.target.value;
+          }
+          break;
+        }
         // support variations on "slash" and developer commands that should interpret as same thing
         if (e.target.value === "\\" && this.value == "") {
           this.commandContext = "/";

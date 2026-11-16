@@ -115,12 +115,6 @@
         "noVoiceRecord": true
       },
       {
-        "property": "parent",
-        "title": "Parent",
-        "description": "Path of the parent page.",
-        "inputMethod": "textfield"
-      },
-      {
         "property": "noderefs",
         "title": "Related content",
         "description": "Pages related to this page.",
@@ -175,12 +169,6 @@
         "title": "Hide in menu",
         "description": "Hide this page from menus while keeping its URL.",
         "inputMethod": "boolean"
-      },
-      {
-        "property": "order",
-        "title": "Order",
-        "description": "Order relative to sibling pages.",
-        "inputMethod": "number"
       },
       {
         "property": "developerTheme",
