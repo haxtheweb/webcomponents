@@ -1,6 +1,7 @@
 import { fixture, expect, html } from "@open-wc/testing";
 
-import "../fullscreen-behaviors.js";
+import { LitElement } from "lit";
+import { FullscreenBehaviors } from "../fullscreen-behaviors.js";
 
 describe("fullscreen-behaviors test", () => {
   let element;
@@ -173,6 +174,119 @@ describe("fullscreen-behaviors toggleFullscreen", () => {
     element.toggleFullscreen(true);
     expect(exited).to.equal(0);
     expect(requested).to.equal(0);
+  });
+});
+
+// a target inside the element's own shadow root, the way a11y-media-player
+// (#player-section) and img-view-viewer (#container) override fullscreenTarget
+class FullscreenShadowTarget extends FullscreenBehaviors(LitElement) {
+  render() {
+    return html`<div id="target"></div>`;
+  }
+  get fullscreenTarget() {
+    return this.shadowRoot && this.shadowRoot.querySelector("#target")
+      ? this.shadowRoot.querySelector("#target")
+      : this;
+  }
+}
+globalThis.customElements.define(
+  "fullscreen-shadow-target",
+  FullscreenShadowTarget,
+);
+
+describe("fullscreen-behaviors with a target inside a shadow root", () => {
+  let element;
+  let target;
+  let requested;
+  let exited;
+
+  beforeEach(async () => {
+    element = await fixture(
+      html`<fullscreen-shadow-target></fullscreen-shadow-target>`,
+    );
+    target = element.fullscreenTarget;
+    requested = 0;
+    exited = 0;
+    target.requestFullscreen = () => {
+      requested++;
+    };
+    Object.defineProperty(globalThis.document, "exitFullscreen", {
+      value: () => {
+        exited++;
+      },
+      configurable: true,
+      writable: true,
+    });
+    // the browser retargets document.fullscreenElement to the shadow host
+    // and reports the real element on the shadow root that holds it
+    Object.defineProperty(globalThis.document, "fullscreenElement", {
+      get: () => element,
+      configurable: true,
+    });
+    Object.defineProperty(element.shadowRoot, "fullscreenElement", {
+      get: () => target,
+      configurable: true,
+    });
+  });
+
+  afterEach(() => {
+    delete globalThis.document.exitFullscreen;
+    delete globalThis.document.fullscreenElement;
+    delete element.shadowRoot.fullscreenElement;
+  });
+
+  it("targets an element inside the shadow root", () => {
+    expect(target === element).to.be.false;
+    expect(target.getRootNode() === element.shadowRoot).to.be.true;
+  });
+
+  it("tracks fullscreen through the shadow root, not the document", async () => {
+    globalThis.document.dispatchEvent(new Event("fullscreenchange"));
+    await element.updateComplete;
+    expect(element.fullscreen).to.be.true;
+    expect(element.hasAttribute("fullscreen")).to.be.true;
+  });
+
+  it("toggles out of fullscreen instead of requesting it again", () => {
+    element.toggleFullscreen();
+    expect(exited).to.equal(1);
+    expect(requested).to.equal(0);
+  });
+
+  it("requests fullscreen when the shadow root reports nothing", () => {
+    Object.defineProperty(element.shadowRoot, "fullscreenElement", {
+      get: () => null,
+      configurable: true,
+    });
+    element.toggleFullscreen();
+    expect(requested).to.equal(1);
+    expect(exited).to.equal(0);
+  });
+});
+
+describe("fullscreen-behaviors quiets the exitFullscreen promise", () => {
+  afterEach(() => {
+    delete globalThis.document.exitFullscreen;
+  });
+
+  it("does not leave a rejected exitFullscreen promise unhandled", async () => {
+    const element = await fixture(
+      html`<fullscreen-behaviors></fullscreen-behaviors>`,
+    );
+    let caught = false;
+    const rejected = Promise.reject(new TypeError("not in full screen"));
+    const realCatch = rejected.catch.bind(rejected);
+    rejected.catch = (fn) => {
+      caught = true;
+      return realCatch(fn);
+    };
+    Object.defineProperty(globalThis.document, "exitFullscreen", {
+      value: () => rejected,
+      configurable: true,
+      writable: true,
+    });
+    element.toggleFullscreen(false);
+    expect(caught).to.be.true;
   });
 });
 

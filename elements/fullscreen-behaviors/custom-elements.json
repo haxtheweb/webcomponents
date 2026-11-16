@@ -31,6 +31,16 @@
             },
             {
               "kind": "method",
+              "name": "_isFullscreenTarget",
+              "description": "whether fullscreenTarget is the full screen element. Asks the\ntarget's own root (document or shadow root): document.fullscreenElement\nis retargeted to the outermost shadow host, so it never equals a\ntarget that lives inside a shadow root.",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              }
+            },
+            {
+              "kind": "method",
               "name": "_handleFullscreenChange",
               "parameters": [
                 {
@@ -44,7 +54,7 @@
               "parameters": [
                 {
                   "name": "mode",
-                  "default": "globalThis.document.fullscreenElement !== this.fullscreenTarget"
+                  "default": "!this._isFullscreenTarget()"
                 }
               ]
             },
@@ -175,6 +185,20 @@
             },
             {
               "kind": "method",
+              "name": "_isFullscreenTarget",
+              "description": "whether fullscreenTarget is the full screen element. Asks the\ntarget's own root (document or shadow root): document.fullscreenElement\nis retargeted to the outermost shadow host, so it never equals a\ntarget that lives inside a shadow root.",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "FullscreenBehaviors",
+                "module": "fullscreen-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
               "name": "_handleFullscreenChange",
               "parameters": [
                 {
@@ -192,7 +216,7 @@
               "parameters": [
                 {
                   "name": "mode",
-                  "default": "globalThis.document.fullscreenElement !== this.fullscreenTarget"
+                  "default": "!this._isFullscreenTarget()"
                 }
               ],
               "inheritedFrom": {

@@ -5,6 +5,7 @@
 import { LitElement, html, svg, css, nothing } from "lit";
 import { repeat } from "lit/directives/repeat.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { isDDDBlockFullscreen } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
@@ -2119,7 +2120,9 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
       } catch {
         // full screen refused: the fixed layout still fills the window
       }
-    } else if (doc.fullscreenElement) {
+    } else if (isDDDBlockFullscreen(this.getRootNode(), this)) {
+      // ask this element's own root: document.fullscreenElement is
+      // retargeted to the outermost shadow host (ecosystem-theme nests us)
       try {
         const r = doc.exitFullscreen();
         if (r && r.catch) r.catch(() => {});

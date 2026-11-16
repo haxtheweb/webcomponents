@@ -670,7 +670,7 @@ export function toggleDDDBlockFullscreen(target, active, opts) {
       d.webkitExitFullscreen();
     }
   } else if (!webkit && active && d.exitFullscreen) {
-    d.exitFullscreen();
+    _quiet(d.exitFullscreen());
   } else if (target && target.requestFullscreen) {
     _quiet(target.requestFullscreen());
   } else if (webkit && target && target.webkitRequestFullscreen) {
