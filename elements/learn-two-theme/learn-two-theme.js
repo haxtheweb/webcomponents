@@ -514,6 +514,14 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
     });
   }
   /**
+   * The chrome reads only --ddd-* tokens, so a site can give this theme
+   * another design system (metadata.theme.designSystem: carbon, ...)
+   */
+  static get acceptsDesignSystems() {
+    return true;
+  }
+
+  /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */
