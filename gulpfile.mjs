@@ -308,7 +308,8 @@ gulp.task(
     // "vendor-copy-xterm" and should not be re-parsed/minified here.
     return gulp.src([
       './build/es6/**/*.js',
-      '!./build/es6/node_modules/@xterm/**/*.js'
+      '!./build/es6/node_modules/@xterm/**/*.js',
+      '!./build/es6/node_modules/@haxtheweb/mermaid-diagram/lib/mermaid/mermaid.min.js'
     ]).pipe(terser({
         ecma: 2022,
         keep_fnames: true,
@@ -344,6 +345,17 @@ gulp.task("vendor-copy-xterm", () => {
 gulp.task("vendor-copy-latex2html5", () => {
   return gulp.src([
     './node_modules/@haxtheweb/la-tex/lib/latex2html5.js',
+  ], { base: '.' }).pipe(gulp.dest('./build/es6/'));
+});
+// @haxtheweb/mermaid-diagram/lib/mermaid/mermaid.min.js is the unmodified,
+// already-minified mermaid dist bundle (see its README for version and
+// sha256). It uses class static blocks, which polymer-build's babylon parser
+// rejects ("js-transform: Unable to optimize"), and it is loaded as a classic
+// script through es-global-bridge, so there is nothing for Babel or terser to
+// do. Copy it verbatim so the shipped file matches the recorded hash.
+gulp.task("vendor-copy-mermaid", () => {
+  return gulp.src([
+    './node_modules/@haxtheweb/mermaid-diagram/lib/mermaid/mermaid.min.js',
   ], { base: '.' }).pipe(gulp.dest('./build/es6/'));
 });
 // https://html.spec.whatwg.org/multipage/scripting.html#valid-custom-element-name

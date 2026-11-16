@@ -90,3 +90,19 @@ test("templates whose only warning sits on an expression line are left alone as 
     "uncheckable",
   );
 });
+
+test("an expression after a comment still stands where declarations go", () => {
+  const source = [
+    "const s = css`",
+    "  :host {",
+    "    margin: 0;",
+    "    /* shared dark chrome */",
+    "    ${Declarations}",
+    "    font-family: var(--f);",
+    "  }",
+    "`;",
+  ].join("\n");
+  const [t] = findCssTemplates(source);
+  assert.ok(!t.css.includes("x-hax-expr"));
+  assert.ok(one(source).raws);
+});
