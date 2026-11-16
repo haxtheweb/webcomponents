@@ -1021,7 +1021,7 @@ export class CrosswordPuzzle extends QuestionElement {
             var(--ddd-font-size-xs)
           );
           font-weight: var(--ddd-font-weight-bold);
-          line-height: 1;
+          line-height: var(--ddd-lh-100);
           text-align: center;
           text-transform: uppercase;
         }
@@ -1042,15 +1042,15 @@ export class CrosswordPuzzle extends QuestionElement {
         .xw-num {
           position: absolute;
           z-index: 2;
-          top: 6cqi;
-          inset-inline-start: 10cqi;
+          top: var(--ddd-cell-inset-sm);
+          inset-inline-start: var(--ddd-cell-inset-md);
           font-family: var(--ddd-font-navigation);
           font-size: clamp(
             calc(var(--ddd-font-size-6xs) * 0.7),
             26cqi,
             var(--ddd-font-size-6xs)
           );
-          line-height: 1;
+          line-height: var(--ddd-lh-100);
           color: var(--ddd-status-default-ink);
           pointer-events: none;
         }
@@ -1088,8 +1088,8 @@ export class CrosswordPuzzle extends QuestionElement {
         .xw-mark {
           position: absolute;
           z-index: 2;
-          top: 4cqi;
-          inset-inline-end: 4cqi;
+          top: var(--ddd-cell-inset-xs);
+          inset-inline-end: var(--ddd-cell-inset-xs);
           color: var(--ddd-component-crossword-puzzle-ink);
           --simple-icon-color: currentColor;
           --simple-icon-width: clamp(

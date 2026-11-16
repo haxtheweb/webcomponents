@@ -147,7 +147,7 @@ export const DDDProgressRingStyles = [
       font-size: var(--ddd-font-size-4xs);
       font-weight: var(--ddd-font-weight-bold);
       font-variant-numeric: tabular-nums;
-      line-height: 1;
+      line-height: var(--ddd-lh-100, 1);
     }
     @media (prefers-reduced-motion: reduce) {
       .ddd-ring-fill {

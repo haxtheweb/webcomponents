@@ -1560,6 +1560,15 @@
             }
           }
         },
+        "annotation": {
+          "$type": "dimension",
+          "$value": "0.6em",
+          "$extensions": {
+            "org.haxtheweb.ddd": {
+              "cssVar": "--ddd-font-size-annotation"
+            }
+          }
+        },
         "type1-s": {
           "$type": "dimension",
           "$value": "80px",
@@ -1886,9 +1895,27 @@
             "cssVar": "--ddd-ls-72-lg"
           }
         }
+      },
+      "label": {
+        "$type": "dimension",
+        "$value": "0.06em",
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-label-letter-spacing"
+          }
+        }
       }
     },
     "lineHeight": {
+      "100": {
+        "$type": "number",
+        "$value": 1,
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-lh-100"
+          }
+        }
+      },
       "120": {
         "$type": "number",
         "$value": 1.2,
@@ -2211,6 +2238,32 @@
         "$extensions": {
           "org.haxtheweb.ddd": {
             "cssVar": "--ddd-spacing-30"
+          }
+        }
+      },
+      "cellInset": {
+        "xs": {
+          "$value": "4cqi",
+          "$extensions": {
+            "org.haxtheweb.ddd": {
+              "cssVar": "--ddd-cell-inset-xs"
+            }
+          }
+        },
+        "sm": {
+          "$value": "6cqi",
+          "$extensions": {
+            "org.haxtheweb.ddd": {
+              "cssVar": "--ddd-cell-inset-sm"
+            }
+          }
+        },
+        "md": {
+          "$value": "10cqi",
+          "$extensions": {
+            "org.haxtheweb.ddd": {
+              "cssVar": "--ddd-cell-inset-md"
+            }
           }
         }
       }

@@ -116,7 +116,7 @@ class A11yMediaButton extends LitElement {
         #button {
           margin: 0;
           padding: 8px;
-          line-height: 1;
+          line-height: var(--ddd-lh-100, 1);
           border: none;
           border-radius: var(--a11y-media-button-border-radius, 0);
           transition:

@@ -160,7 +160,7 @@ export const gameChromeStyles = css`
     font-family: var(--ddd-font-navigation);
     font-size: calc(var(--ddd-font-size-4xs) * 0.875);
     font-weight: var(--ddd-font-weight-bold);
-    letter-spacing: 0.06em;
+    letter-spacing: var(--ddd-label-letter-spacing);
     text-transform: uppercase;
   }
 
@@ -192,7 +192,7 @@ export const gameChromeStyles = css`
     font-family: var(--ddd-font-navigation);
     font-size: calc(var(--ddd-font-size-4xs) * 0.85);
     font-weight: var(--ddd-font-weight-bold);
-    letter-spacing: 0.06em;
+    letter-spacing: var(--ddd-label-letter-spacing);
     text-transform: uppercase;
   }
 
@@ -259,7 +259,7 @@ export const gameChromeStyles = css`
     color: var(--cmg-on-gold);
     font-family: var(--ddd-font-navigation);
     font-weight: var(--ddd-font-weight-bold);
-    letter-spacing: 0.06em;
+    letter-spacing: var(--ddd-label-letter-spacing);
     text-transform: uppercase;
   }
 

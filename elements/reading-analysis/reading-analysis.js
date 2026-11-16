@@ -1736,7 +1736,7 @@ export class ReadingAnalysis extends QuestionElement {
           place-items: center;
           font-size: var(--ddd-font-size-5xs);
           font-weight: var(--ddd-font-weight-bold);
-          line-height: 1;
+          line-height: var(--ddd-lh-100);
           color: var(--ddd-status-default-bg);
         }
         .margin .tab.res-correct .res {

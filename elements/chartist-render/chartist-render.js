@@ -17,7 +17,7 @@ const ChartistRenderSuper = function (SuperClass) {
             fill: rgba(0, 0, 0, 0.4);
             color: rgba(0, 0, 0, 0.4);
             font-size: 0.75rem;
-            line-height: 1;
+            line-height: var(--ddd-lh-100, 1);
           }
 
           .ct-chart-line .ct-label,

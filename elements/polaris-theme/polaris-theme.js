@@ -124,7 +124,7 @@ class PolarisTheme extends HAXCMSOperationButtons(
 
         site-active-title {
           font-size: 28px;
-          line-height: 1;
+          line-height: var(--ddd-lh-100);
           font-family: "Open Sans", sans-serif;
           font-weight: 300;
         }
@@ -328,7 +328,7 @@ class PolarisTheme extends HAXCMSOperationButtons(
           font-family: "Lato", sans-serif;
           font-size: 28px;
           font-weight: 300;
-          line-height: 1;
+          line-height: var(--ddd-lh-100);
           margin: 0 0 8px;
           margin: 0 0 8px;
           text-transform: uppercase;
@@ -338,7 +338,7 @@ class PolarisTheme extends HAXCMSOperationButtons(
           font-family: "Lato", sans-serif;
           font-size: 16px;
           font-weight: 300;
-          line-height: 1;
+          line-height: var(--ddd-lh-100);
           margin: 0 0 24px;
         }
         :host([dark-mode]) .site-description {

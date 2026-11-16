@@ -256,7 +256,7 @@ export class PostCard extends I18NMixin(LitElement) {
         font-size: 22px;
         font-weight: bolder;
         letter-spacing: 1px;
-        line-height: 1;
+        line-height: var(--ddd-lh-100, 1);
         margin-top: 8px;
         overflow: hidden;
         display: flex;

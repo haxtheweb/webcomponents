@@ -193,7 +193,7 @@ class CollectionRow extends DDD {
           font-family: var(--ddd-font-navigation);
           font-size: var(--ddd-font-size-4xs);
           font-weight: var(--ddd-font-weight-medium);
-          line-height: 1;
+          line-height: var(--ddd-lh-100, 1);
         }
 
         .image {

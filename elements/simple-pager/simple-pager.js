@@ -129,7 +129,7 @@ export class SimplePager extends I18NMixin(DDD) {
           font-family: var(--ddd-font-navigation);
           padding: 0 var(--ddd-spacing-1);
           cursor: pointer;
-          line-height: 1;
+          line-height: var(--ddd-lh-100);
         }
         .page-btn:hover {
           border-color: light-dark(

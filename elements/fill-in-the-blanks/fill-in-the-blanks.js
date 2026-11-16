@@ -141,7 +141,7 @@ class FillInTheBlanks extends MarkTheWords {
             var(--ddd-theme-default-limestoneLight)
           );
           align-self: flex-start;
-          line-height: 1;
+          line-height: var(--ddd-lh-100);
         }
         .blank input,
         .blank select {

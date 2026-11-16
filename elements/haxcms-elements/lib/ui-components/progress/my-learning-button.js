@@ -240,7 +240,7 @@ export class MyLearningButton extends I18NMixin(DDDSuper(LitElement)) {
           font-family: var(--ddd-font-navigation);
           font-size: var(--ddd-font-size-4xs);
           font-weight: var(--ddd-font-weight-medium);
-          line-height: 1;
+          line-height: var(--ddd-lh-100, 1);
           white-space: nowrap;
           cursor: pointer;
           box-shadow: var(--my-learning-button-shadow, var(--ddd-boxShadow-sm));
