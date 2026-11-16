@@ -116,6 +116,16 @@ class ImgViewViewer extends I18NMixin(FullscreenBehaviors(ImgPanZoom)) {
         #container > * {
           flex: 1 1 auto;
         }
+        /* the image fills the height the toolbars leave, so the bottom
+           toolbar is never pushed out of the modal */
+        #container > .viewer-frame {
+          flex: 1 1 0;
+          min-height: 0;
+        }
+        .viewer-frame > #viewer {
+          max-height: 100%;
+          box-sizing: border-box;
+        }
         .misc-item,
         .button-group {
           display: flex;
@@ -129,7 +139,9 @@ class ImgViewViewer extends I18NMixin(FullscreenBehaviors(ImgPanZoom)) {
         #top,
         #bottom {
           margin: 0;
-          flex: 1 0 52px;
+          /* toolbars keep their own height; the image takes the rest */
+          flex: 0 0 auto;
+          min-height: 52px;
           border: 1px solid
             var(
               --img-view-viewer-borderColor,
@@ -350,7 +362,7 @@ class ImgViewViewer extends I18NMixin(FullscreenBehaviors(ImgPanZoom)) {
       }
       <div id="container">
         ${this.getToolbars("top")}
-        <div>
+        <div class="viewer-frame">
           <div
             id="viewer"
             style="height:calc(var(--img-view-viewer-height, 500px) - ${

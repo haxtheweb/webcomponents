@@ -9,5 +9,7 @@
   "slidePages": "Slide pages",
   "goToSlide": "Go to slide {number}",
   "slides": "Slides",
-  "position": "{number} of {total}"
+  "position": "{number} of {total}",
+  "fullScreen": "Full screen",
+  "exitFullScreen": "Exit full screen"
 }
