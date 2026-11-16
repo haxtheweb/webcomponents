@@ -65,24 +65,46 @@ const FullscreenBehaviors = function (SuperClass) {
       return this;
     }
 
-    _handleFullscreenChange(_e) {
-      this.fullscreen =
-        globalThis.document.fullscreenElement === this.fullscreenTarget;
+    /**
+     * whether fullscreenTarget is the full screen element. Asks the
+     * target's own root (document or shadow root): document.fullscreenElement
+     * is retargeted to the outermost shadow host, so it never equals a
+     * target that lives inside a shadow root.
+     *
+     * @returns {boolean}
+     */
+    _isFullscreenTarget() {
+      const target = this.fullscreenTarget;
+      if (!target) return false;
+      const root = target.getRootNode ? target.getRootNode() : null;
+      const current =
+        root && root.fullscreenElement !== undefined
+          ? root.fullscreenElement
+          : globalThis.document.fullscreenElement;
+      return !!current && current === target;
     }
 
-    toggleFullscreen(
-      mode = globalThis.document.fullscreenElement !== this.fullscreenTarget,
-    ) {
+    _handleFullscreenChange(_e) {
+      this.fullscreen = this._isFullscreenTarget();
+    }
+
+    toggleFullscreen(mode = !this._isFullscreenTarget()) {
+      const doc = globalThis.document;
       if (!mode) {
-        // exit; safe to request even when we are not the fullscreen element
-        if (globalThis.document.exitFullscreen)
-          globalThis.document.exitFullscreen();
-      } else if (
-        globalThis.document.fullscreenElement !== this.fullscreenTarget
-      ) {
+        // safe to request even when nothing is full screen; exitFullscreen
+        // then rejects asynchronously, so quiet that promise
+        if (doc.exitFullscreen) {
+          const r = doc.exitFullscreen();
+          if (r && r.catch) r.catch(() => {});
+        }
+      } else if (!this._isFullscreenTarget()) {
         // only request when we are not already the fullscreen element so
         // an already-fullscreen target does not race exit against request
-        this.fullscreenTarget.requestFullscreen();
+        const target = this.fullscreenTarget;
+        if (target && target.requestFullscreen) {
+          const r = target.requestFullscreen();
+          if (r && r.catch) r.catch(() => {});
+        }
       }
     }
   };

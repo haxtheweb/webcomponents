@@ -59,21 +59,22 @@ describe("img-view-modal modalOpen", () => {
     expect(viewer.toolbars).to.deep.equal(TOOLBARS);
     // the detached viewer must not receive the delayed bridge loaded event
     viewer.windowControllers.abort();
-    // inline viewer styles are applied
+    // inline viewer styles are applied; colors default to light-dark pairs
+    // so the viewer follows the page color scheme
     expect(viewer.style.getPropertyValue("--img-view-viewer-height")).to.equal(
       "calc(var(--simple-modal-height) - var(--simple-modal-titlebar-height))",
     );
     expect(
       viewer.style.getPropertyValue("--img-view-viewer-color").trim(),
-    ).to.equal("black");
+    ).to.match(/^light-dark\(/);
     expect(
       viewer.style.getPropertyValue("--img-view-viewer-borderColor").trim(),
-    ).to.equal("#ddd");
+    ).to.match(/^light-dark\(/);
     expect(
       viewer.style
         .getPropertyValue("--img-view-viewer-toggled-backgroundColor")
         .trim(),
-    ).to.equal("#eee");
+    ).to.match(/^light-dark\(/);
     // modal styles read from the host css variables
     expect(detail.styles["--simple-modal-titlebar-height"].trim()).to.equal(
       "40px",
@@ -100,6 +101,34 @@ describe("img-view-modal modalOpen", () => {
     expect(
       viewer.style.getPropertyValue("--img-view-viewer-backgroundColor").trim(),
     ).to.equal("purple");
+  });
+
+  it("follows the page color scheme when no colors are set", async () => {
+    const shown = [];
+    element.addEventListener("simple-modal-show", (e) => shown.push(e.detail));
+    element.click();
+    const viewer = shown[0].elements.content;
+    viewer.windowControllers.abort();
+    const bg = viewer.style
+      .getPropertyValue("--img-view-viewer-backgroundColor")
+      .trim();
+    const fg = viewer.style.getPropertyValue("--img-view-viewer-color").trim();
+    expect(bg.startsWith("light-dark(")).to.be.true;
+    expect(fg.startsWith("light-dark(")).to.be.true;
+    expect(shown[0].styles["--simple-modal-header-background"]).to.include(
+      "light-dark(",
+    );
+    // the same value resolves dark on a dark page instead of forcing white
+    const probe = globalThis.document.createElement("div");
+    probe.style.colorScheme = "only dark";
+    probe.style.backgroundColor = bg;
+    globalThis.document.body.appendChild(probe);
+    const dark = getComputedStyle(probe).backgroundColor;
+    probe.style.colorScheme = "only light";
+    const light = getComputedStyle(probe).backgroundColor;
+    probe.remove();
+    expect(light).to.equal("rgb(255, 255, 255)");
+    expect(dark).to.not.equal(light);
   });
 
   it("opens a viewer with the default toolbar when none are configured", async () => {
@@ -148,7 +177,8 @@ describe("img-view-modal modalOpen", () => {
   it("_getCssVar reads computed custom properties", () => {
     const value = element._getCssVar("--img-view-viewer-color");
     expect(typeof value).to.equal("string");
-    expect(value.trim()).to.equal("black");
+    // defaults follow the page color scheme instead of a fixed black
+    expect(value.trim()).to.match(/^light-dark\(/);
     expect(element._getCssVar("--not-a-real-var")).to.equal("");
   });
 });

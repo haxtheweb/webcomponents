@@ -15,6 +15,10 @@ import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import {
   DDDBlockStyles,
   renderDDDBlockHeader,
+  canDDDBlockFullscreen,
+  isDDDBlockFullscreen,
+  toggleDDDBlockFullscreen,
+  listenDDDBlockFullscreen,
 } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 
 /**
@@ -48,6 +52,8 @@ export class MediaPlaylist extends SchemaBehaviors(
       position: "{current} of {total}",
       previousItem: "Previous item",
       nextItem: "Next item",
+      fullScreen: "Full screen",
+      exitFullScreen: "Exit full screen",
     };
     this.registerLocalization({
       context: this,
@@ -71,6 +77,8 @@ export class MediaPlaylist extends SchemaBehaviors(
     };
     this._lastMediaElement = null;
     this._haxState = false;
+    this._fullscreen = false;
+    this._fullscreenChanged = this._fullscreenChanged.bind(this);
   }
 
   connectedCallback() {
@@ -87,9 +95,11 @@ export class MediaPlaylist extends SchemaBehaviors(
     };
     this._darkModeQuery.addEventListener("change", this._darkModeHandler);
     this._setDarkMode(this._darkModeQuery.matches);
+    listenDDDBlockFullscreen(this._fullscreenChanged, true);
   }
 
   disconnectedCallback() {
+    listenDDDBlockFullscreen(this._fullscreenChanged, false);
     this._observer.disconnect();
     this.removeEventListener("keydown", this._handleKeydown);
     this.removeEventListener("drop", this._onDrop, true);
@@ -113,6 +123,22 @@ export class MediaPlaylist extends SchemaBehaviors(
     super.disconnectedCallback();
   }
 
+  /**
+   * The whole playlist block goes full screen, header and item list
+   * included, so the controls stay reachable (like slide-deck)
+   */
+  get _frame() {
+    return this.shadowRoot ? this.shadowRoot.querySelector(".ddd-block") : null;
+  }
+
+  _fullscreenChanged() {
+    this._fullscreen = isDDDBlockFullscreen(this.shadowRoot, this._frame);
+  }
+
+  _toggleFullscreen() {
+    toggleDDDBlockFullscreen(this._frame, this._fullscreen);
+  }
+
   _setDarkMode(isDark) {
     this.mediaItems.forEach((item) => {
       item.element.toggleAttribute("dark", isDark);
@@ -132,6 +158,7 @@ export class MediaPlaylist extends SchemaBehaviors(
       mediaItems: { type: Array },
       forCourse: { type: String, attribute: "for-course" },
       _haxState: { type: Boolean },
+      _fullscreen: { type: Boolean, state: true },
     };
   }
 
@@ -164,6 +191,36 @@ export class MediaPlaylist extends SchemaBehaviors(
            grid-plate column, a sidebar), not only on a narrow viewport */
         .ddd-block {
           container: media-playlist / inline-size;
+        }
+        /* full screen keeps the block rim: header, player, item list */
+        .ddd-block:fullscreen {
+          display: flex;
+          flex-direction: column;
+          width: 100vw;
+          height: 100vh;
+          max-height: 100vh;
+          border: none;
+          border-radius: var(--ddd-radius-0);
+          background-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-coalyGray)
+          );
+        }
+        .ddd-block:fullscreen .layout {
+          flex: 1 1 auto;
+          min-height: 0;
+          align-items: stretch;
+        }
+        .ddd-block:fullscreen .player-area {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          min-height: 0;
+          overflow: auto;
+        }
+        .ddd-block:fullscreen .playlist {
+          min-height: 0;
+          max-height: none;
         }
         .layout {
           display: grid;
@@ -468,7 +525,36 @@ export class MediaPlaylist extends SchemaBehaviors(
                 icon="icons:chevron-right"
                 aria-hidden="true"
               ></simple-icon-lite>
-            </button>`,
+            </button>
+            ${
+              canDDDBlockFullscreen()
+                ? html`<button
+                    class="ddd-block-action"
+                    type="button"
+                    aria-label="${
+                      this._fullscreen
+                        ? this.t.exitFullScreen
+                        : this.t.fullScreen
+                    }"
+                    title="${
+                      this._fullscreen
+                        ? this.t.exitFullScreen
+                        : this.t.fullScreen
+                    }"
+                    aria-pressed="${this._fullscreen ? "true" : "false"}"
+                    @click="${this._toggleFullscreen}"
+                  >
+                    <simple-icon-lite
+                      icon="${
+                        this._fullscreen
+                          ? "icons:fullscreen-exit"
+                          : "icons:fullscreen"
+                      }"
+                      aria-hidden="true"
+                    ></simple-icon-lite>
+                  </button>`
+                : ""
+            }`,
         })}
         <div class="layout">
           <div class="player-area">

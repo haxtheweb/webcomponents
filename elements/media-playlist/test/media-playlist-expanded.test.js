@@ -550,3 +550,73 @@ describe("media-playlist HAX integration", () => {
     expect(el._lastMediaElement).to.be.null;
   });
 });
+
+describe("media-playlist full screen", () => {
+  let element;
+  let frame;
+  let requests;
+  let exits;
+
+  beforeEach(async () => {
+    element = await fixture(html`
+      <media-playlist>
+        <video-player source="clip.mp4" media-title="Video One"></video-player>
+      </media-playlist>
+    `);
+    await element.updateComplete;
+    await sleep(150);
+    await element.updateComplete;
+    frame = element.shadowRoot.querySelector(".ddd-block");
+    requests = 0;
+    exits = 0;
+    frame.requestFullscreen = () => {
+      requests += 1;
+      return Promise.resolve();
+    };
+    Object.defineProperty(globalThis.document, "exitFullscreen", {
+      value: () => {
+        exits += 1;
+        return Promise.resolve();
+      },
+      configurable: true,
+      writable: true,
+    });
+  });
+
+  afterEach(() => {
+    delete globalThis.document.exitFullscreen;
+    delete element.shadowRoot.fullscreenElement;
+  });
+
+  const fsButton = () =>
+    Array.from(
+      element.shadowRoot.querySelectorAll("button.ddd-block-action"),
+    ).find((b) => b.hasAttribute("aria-pressed"));
+
+  it("offers a full screen action in the block header", () => {
+    const button = fsButton();
+    expect(button).to.exist;
+    expect(button.getAttribute("aria-label")).to.equal("Full screen");
+    expect(button.getAttribute("aria-pressed")).to.equal("false");
+  });
+
+  it("puts the whole playlist block, header and list included, in full screen", () => {
+    fsButton().click();
+    expect(requests).to.equal(1);
+    expect(exits).to.equal(0);
+  });
+
+  it("tracks full screen from its shadow root and exits from the button", async () => {
+    Object.defineProperty(element.shadowRoot, "fullscreenElement", {
+      get: () => frame,
+      configurable: true,
+    });
+    globalThis.document.dispatchEvent(new Event("fullscreenchange"));
+    await element.updateComplete;
+    const button = fsButton();
+    expect(button.getAttribute("aria-pressed")).to.equal("true");
+    expect(button.getAttribute("aria-label")).to.equal("Exit full screen");
+    button.click();
+    expect(exits).to.equal(1);
+  });
+});

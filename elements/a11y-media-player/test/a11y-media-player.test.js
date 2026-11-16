@@ -450,10 +450,10 @@ describe("a11y-media-player calculated getters", () => {
     globalThis.AnchorBehaviors = original;
   });
 
-  it("fullscreenTarget is the shadow player section", () => {
-    const target = video.fullscreenTarget;
-    expect(target).to.exist;
-    expect(target.id).to.equal("player-section");
+  it("fullscreenTarget is the whole player so its header stays usable", () => {
+    // full screen keeps the header actions, settings tray and transcript,
+    // like slide-deck, instead of only the media section
+    expect(video.fullscreenTarget === video).to.be.true;
   });
 
   it("_getHHMMSS formats seconds", () => {

@@ -5,5 +5,7 @@
   "editModeLabel": "Media playlist edit mode",
   "position": "{current} of {total}",
   "previousItem": "Previous item",
-  "nextItem": "Next item"
+  "nextItem": "Next item",
+  "fullScreen": "Full screen",
+  "exitFullScreen": "Exit full screen"
 }

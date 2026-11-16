@@ -13,6 +13,10 @@ import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import {
   DDDBlockStyles,
   renderDDDBlockHeader,
+  canDDDBlockFullscreen,
+  isDDDBlockFullscreen,
+  toggleDDDBlockFullscreen,
+  listenDDDBlockFullscreen,
 } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 import {
   haxElementToNode,
@@ -47,6 +51,8 @@ class PlayList extends I18NMixin(DDD) {
       goToSlide: "Go to slide {number}",
       slides: "Slides",
       position: "{number} of {total}",
+      fullScreen: "Full screen",
+      exitFullScreen: "Exit full screen",
     };
     this.registerLocalization({
       context: this,
@@ -60,6 +66,8 @@ class PlayList extends I18NMixin(DDD) {
     this.aspectRatio = "16:9";
     this.slide = 0;
     this.orientation = "horizontal";
+    this._fullscreen = false;
+    this._fullscreenChanged = this._fullscreenChanged.bind(this);
     this._touchStartX = 0;
     this._touchStartY = 0;
     this._touchCurrentX = 0;
@@ -139,11 +147,33 @@ class PlayList extends I18NMixin(DDD) {
     return this.t.slideNumber.replace("{number}", () => index + 1);
   }
 
+  connectedCallback() {
+    super.connectedCallback();
+    listenDDDBlockFullscreen(this._fullscreenChanged, true);
+  }
+
   disconnectedCallback() {
+    listenDDDBlockFullscreen(this._fullscreenChanged, false);
     if (this._observer) {
       this._observer.disconnect();
     }
     super.disconnectedCallback();
+  }
+
+  /**
+   * The whole carousel block goes full screen, header and pagination
+   * included, so the controls stay reachable (like slide-deck)
+   */
+  get _carousel() {
+    return this.shadowRoot ? this.shadowRoot.querySelector(".carousel") : null;
+  }
+
+  _fullscreenChanged() {
+    this._fullscreen = isDDDBlockFullscreen(this.shadowRoot, this._carousel);
+  }
+
+  _toggleFullscreen() {
+    toggleDDDBlockFullscreen(this._carousel, this._fullscreen);
   }
 
   /**
@@ -165,6 +195,7 @@ class PlayList extends I18NMixin(DDD) {
       aspectRatio: { type: String, reflect: true, attribute: "aspect-ratio" },
       orientation: { type: String, reflect: true },
       slide: { type: Number, reflect: true },
+      _fullscreen: { type: Boolean, state: true },
     };
   }
 
@@ -224,6 +255,46 @@ class PlayList extends I18NMixin(DDD) {
         }
         .carousel:focus {
           outline: none;
+        }
+        /* full screen keeps the block rim: header, slides, pagination */
+        .carousel:fullscreen {
+          display: flex;
+          flex-direction: column;
+          width: 100vw;
+          height: 100vh;
+          max-height: 100vh;
+          border: none;
+          border-radius: var(--ddd-radius-0);
+          background-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-coalyGray)
+          );
+        }
+        .carousel:fullscreen .carousel-viewport {
+          flex: 1 1 auto;
+          min-height: 0;
+          max-height: none;
+        }
+        .carousel:fullscreen .carousel-track,
+        .carousel:fullscreen .carousel-item {
+          height: 100%;
+          max-height: none;
+        }
+        .carousel:fullscreen .carousel-pagination {
+          flex: 0 0 auto;
+        }
+        /* a media slide keeps its own controls on screen: its width
+           follows the height left under the block and player headers, at
+           the 16:9 frame the players use */
+        .carousel:fullscreen .carousel-item > video-player,
+        .carousel:fullscreen .carousel-item > audio-player {
+          width: min(100%, calc((100vh - var(--ddd-spacing-16) * 4) * 16 / 9));
+        }
+        :host([orientation="vertical"]) .carousel:fullscreen,
+        :host([orientation="vertical"]) .carousel:fullscreen .carousel-viewport,
+        :host([orientation="vertical"]) .carousel:fullscreen .carousel-track,
+        :host([orientation="vertical"]) .carousel:fullscreen .carousel-item {
+          max-height: none;
         }
         .carousel:focus-visible {
           outline: 2px solid var(--ddd-theme-primary, currentColor);
@@ -419,7 +490,7 @@ class PlayList extends I18NMixin(DDD) {
                       Math.min(this.slide + 1, this.items.length),
                     )
                     .replace("{total}", () => this.items.length)}`,
-                  actions:
+                  actions: html`${
                     this.navigation && this.orientation === "horizontal"
                       ? html`<span class="carousel-nav">
                           <simple-icon-button-lite
@@ -437,7 +508,32 @@ class PlayList extends I18NMixin(DDD) {
                             @click="${this._goToNext}"
                           ></simple-icon-button-lite>
                         </span>`
-                      : null,
+                      : nothing
+                  }${
+                    canDDDBlockFullscreen()
+                      ? html`<simple-icon-button-lite
+                          class="ddd-block-action"
+                          icon="${
+                            this._fullscreen
+                              ? "icons:fullscreen-exit"
+                              : "icons:fullscreen"
+                          }"
+                          label="${
+                            this._fullscreen
+                              ? this.t.exitFullScreen
+                              : this.t.fullScreen
+                          }"
+                          title="${
+                            this._fullscreen
+                              ? this.t.exitFullScreen
+                              : this.t.fullScreen
+                          }"
+                          toggles
+                          ?toggled="${this._fullscreen}"
+                          @click="${this._toggleFullscreen}"
+                        ></simple-icon-button-lite>`
+                      : nothing
+                  }`,
                 })}
                 <div
                   class="carousel-viewport"

@@ -292,3 +292,61 @@ describe("ecosystem-web", () => {
     await expect(element).shadowDom.to.be.accessible();
   });
 });
+
+describe("ecosystem-web full screen inside a shadow root", () => {
+  let host;
+  let web;
+  let exits;
+
+  beforeEach(async () => {
+    // ecosystem-theme renders the web inside its own shadow root
+    host = await fixture(html`<div></div>`);
+    host.attachShadow({ mode: "open" });
+    web = globalThis.document.createElement("ecosystem-web");
+    host.shadowRoot.appendChild(web);
+    web.loadBundle(BUNDLE);
+    await web.updateComplete;
+    web.requestFullscreen = () => Promise.resolve();
+    exits = 0;
+    Object.defineProperty(globalThis.document, "exitFullscreen", {
+      value: () => {
+        exits += 1;
+        return Promise.resolve();
+      },
+      configurable: true,
+      writable: true,
+    });
+    // the browser retargets document.fullscreenElement to the shadow host
+    Object.defineProperty(globalThis.document, "fullscreenElement", {
+      get: () => host,
+      configurable: true,
+    });
+  });
+
+  afterEach(() => {
+    delete globalThis.document.exitFullscreen;
+    delete globalThis.document.fullscreenElement;
+    delete host.shadowRoot.fullscreenElement;
+  });
+
+  it("leaves full screen from the exit button when nested", async () => {
+    Object.defineProperty(host.shadowRoot, "fullscreenElement", {
+      get: () => web,
+      configurable: true,
+    });
+    web.present(true);
+    web.present(false);
+    expect(exits).to.equal(1);
+    expect(web.hasAttribute("data-presenting")).to.be.false;
+  });
+
+  it("leaves another element's full screen alone", async () => {
+    Object.defineProperty(host.shadowRoot, "fullscreenElement", {
+      get: () => null,
+      configurable: true,
+    });
+    web.present(true);
+    web.present(false);
+    expect(exits).to.equal(0);
+  });
+});

@@ -1000,16 +1000,47 @@ class A11yMediaPlayer extends SchemaBehaviors(
             border-radius: 3.2px;
           }
 
-          :host([fullscreen]) #player-section {
-            width: 100%;
+          /* full screen takes the whole block, like slide-deck: the
+             header, settings tray and transcript stay usable and the
+             media fills the space left over */
+          :host([fullscreen]) {
+            display: flex;
+            flex-direction: column;
+            width: 100vw;
             height: 100vh;
+            max-height: 100vh;
+            border: none;
+            border-radius: var(--ddd-radius-0);
+          }
+          :host([fullscreen]) #body {
+            flex: 1 1 auto;
+            min-height: 0;
+          }
+          :host([fullscreen]) #player-section,
+          :host([fullscreen]) #player-and-controls {
+            flex: 1 1 auto;
+            min-height: 0;
             max-width: 100vw;
-            position: absolute;
-            position: sticky;
-            left: 0;
-            top: 0;
-            z-index: 100000;
-            transition: all var(--ddd-duration-slow, 0.6s) ease-in-out;
+          }
+          :host([fullscreen]) #player-and-controls {
+            flex-direction: column;
+          }
+          :host([fullscreen]) #player {
+            flex: 1 1 auto;
+            height: auto;
+            min-height: 0;
+          }
+          :host([fullscreen]) #player > * {
+            width: 100%;
+          }
+          /* stacked transcript gets a share of the screen and scrolls */
+          :host([fullscreen]:not([full-flex])) #transcript-section {
+            flex: 0 0 auto;
+            max-height: 35vh;
+            min-height: 0;
+          }
+          :host([fullscreen]:not([full-flex])) #transcript-and-controls {
+            overflow: auto;
           }
 
           :host([dark][sticky-mode]) #player-section {
@@ -3863,18 +3894,9 @@ class A11yMediaPlayer extends SchemaBehaviors(
     );
   }
   /**
-   * element to make fullscreen, can be overidden
-   *
-   * @readonly
-   */
-  get fullscreenTarget() {
-    return this.shadowRoot && this.shadowRoot.querySelector("#player-section")
-      ? this.shadowRoot.querySelector("#player-section")
-      : this;
-  }
-
-  /**
-   * toggles fullscreen
+   * toggles fullscreen (the whole player, via the FullscreenBehaviors
+   * default target, so the header actions, settings tray and transcript
+   * stay reachable in full screen)
    * @param {boolean} Toggle fullscreen on? `true` is on, `false` is off, and `null` toggles based on current state.
    */
   toggleFullscreen(mode) {

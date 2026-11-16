@@ -38,6 +38,20 @@
             },
             {
               "kind": "field",
+              "name": "_carousel",
+              "description": "The whole carousel block goes full screen, header and pagination\nincluded, so the controls stay reachable (like slide-deck)",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_fullscreenChanged"
+            },
+            {
+              "kind": "method",
+              "name": "_toggleFullscreen"
+            },
+            {
+              "kind": "field",
               "name": "haxProperties",
               "static": true,
               "description": "haxProperties integration via file reference",
@@ -164,7 +178,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ ...this.t, playlist: \"Playlist\", carousel: \"carousel\", slide: \"slide\", slideNumber: \"Slide {number}\", slideOfTotal: \"Slide {number} of {total}\", previousSlide: \"Previous slide\", nextSlide: \"Next slide\", slidePages: \"Slide pages\", goToSlide: \"Go to slide {number}\", slides: \"Slides\", position: \"{number} of {total}\", }"
+              "default": "{ ...this.t, playlist: \"Playlist\", carousel: \"carousel\", slide: \"slide\", slideNumber: \"Slide {number}\", slideOfTotal: \"Slide {number} of {total}\", previousSlide: \"Previous slide\", nextSlide: \"Next slide\", slidePages: \"Slide pages\", goToSlide: \"Go to slide {number}\", slides: \"Slides\", position: \"{number} of {total}\", fullScreen: \"Full screen\", exitFullScreen: \"Exit full screen\", }"
             },
             {
               "kind": "field",
@@ -252,6 +266,16 @@
               "default": "\"horizontal\"",
               "attribute": "orientation",
               "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "_fullscreen",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "_fullscreen"
             },
             {
               "kind": "field",
@@ -370,6 +394,14 @@
               },
               "default": "0",
               "fieldName": "slide"
+            },
+            {
+              "name": "_fullscreen",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "_fullscreen"
             }
           ],
           "mixins": [

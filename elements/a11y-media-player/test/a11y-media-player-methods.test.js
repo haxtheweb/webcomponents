@@ -839,7 +839,7 @@ describe("a11y-media-player settings and sticky", () => {
     expect(el.sticky).to.equal(false);
   });
 
-  it("toggleFullscreen requests fullscreen on the player section", async () => {
+  it("toggleFullscreen requests fullscreen on the fullscreen target", async () => {
     const requested = [];
     Object.defineProperty(el, "fullscreenTarget", {
       value: { requestFullscreen: () => requested.push("requested") },

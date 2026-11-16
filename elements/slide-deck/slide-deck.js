@@ -6,7 +6,10 @@
 import { LitElement, html, css, nothing } from "lit";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
-import { DDDBlockStyles } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
+import {
+  DDDBlockStyles,
+  isDDDBlockFullscreen,
+} from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 import { DDDReadingListStyles } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { sanitizeHTMLString } from "@haxtheweb/utils/utils.js";
@@ -335,11 +338,17 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
   }
 
   async togglePresenting() {
-    if (globalThis.document.fullscreenElement === this) {
-      await globalThis.document.exitFullscreen();
-    } else if (this.requestFullscreen) {
-      this.mode = "slide";
-      await this.requestFullscreen();
+    // ask this deck's own root: document.fullscreenElement is retargeted to
+    // the outermost shadow host when the deck sits inside a shadow root
+    try {
+      if (isDDDBlockFullscreen(this.getRootNode(), this)) {
+        await globalThis.document.exitFullscreen();
+      } else if (this.requestFullscreen) {
+        this.mode = "slide";
+        await this.requestFullscreen();
+      }
+    } catch {
+      // full screen refused or already left; fullscreenchange keeps state
     }
   }
 
@@ -404,7 +413,7 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
   }
 
   _onFullscreenChange() {
-    this.presenting = globalThis.document.fullscreenElement === this;
+    this.presenting = isDDDBlockFullscreen(this.getRootNode(), this);
   }
 
   _onHashChange() {

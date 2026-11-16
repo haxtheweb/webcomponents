@@ -1085,3 +1085,75 @@ describe("play-list test", () => {
     });
   });
 });
+
+describe("play-list full screen", () => {
+  let element;
+  let carousel;
+  let requests;
+  let exits;
+
+  beforeEach(async () => {
+    element = await fixture(html`<play-list></play-list>`);
+    element.items = [
+      { tag: "div", properties: {}, content: "One" },
+      { tag: "div", properties: {}, content: "Two" },
+    ];
+    await element.updateComplete;
+    carousel = element.shadowRoot.querySelector(".carousel");
+    requests = 0;
+    exits = 0;
+    carousel.requestFullscreen = () => {
+      requests += 1;
+      return Promise.resolve();
+    };
+    Object.defineProperty(globalThis.document, "exitFullscreen", {
+      value: () => {
+        exits += 1;
+        return Promise.resolve();
+      },
+      configurable: true,
+      writable: true,
+    });
+  });
+
+  afterEach(() => {
+    delete globalThis.document.exitFullscreen;
+    delete element.shadowRoot.fullscreenElement;
+  });
+
+  const fsButton = () =>
+    Array.from(
+      element.shadowRoot.querySelectorAll(
+        "simple-icon-button-lite.ddd-block-action",
+      ),
+    ).find((b) =>
+      (b.getAttribute("icon") || "").startsWith("icons:fullscreen"),
+    );
+
+  it("offers a full screen action in the block header", () => {
+    const button = fsButton();
+    expect(button).to.exist;
+    expect(button.getAttribute("label")).to.equal("Full screen");
+  });
+
+  it("puts the whole carousel block, header included, in full screen", () => {
+    fsButton().click();
+    expect(requests).to.equal(1);
+    expect(exits).to.equal(0);
+  });
+
+  it("tracks full screen from its shadow root and exits from the button", async () => {
+    Object.defineProperty(element.shadowRoot, "fullscreenElement", {
+      get: () => carousel,
+      configurable: true,
+    });
+    globalThis.document.dispatchEvent(new Event("fullscreenchange"));
+    await element.updateComplete;
+    const button = fsButton();
+    expect(button.getAttribute("icon")).to.equal("icons:fullscreen-exit");
+    expect(button.getAttribute("label")).to.equal("Exit full screen");
+    expect(button.hasAttribute("toggled")).to.be.true;
+    button.click();
+    expect(exits).to.equal(1);
+  });
+});

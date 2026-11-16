@@ -946,12 +946,6 @@
               "description": "toggles captions"
             },
             {
-              "kind": "field",
-              "name": "fullscreenTarget",
-              "description": "element to make fullscreen, can be overidden",
-              "readonly": true
-            },
-            {
               "kind": "method",
               "name": "toggleFullscreen",
               "parameters": [
@@ -966,7 +960,7 @@
                   }
                 }
               ],
-              "description": "toggles fullscreen"
+              "description": "toggles fullscreen (the whole player, via the FullscreenBehaviors\ndefault target, so the header actions, settings tray and transcript\nstay reachable in full screen)"
             },
             {
               "kind": "method",

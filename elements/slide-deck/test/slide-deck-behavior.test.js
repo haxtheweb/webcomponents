@@ -536,6 +536,61 @@ describe("slide-deck behavior", () => {
     }
   });
 
+  it("exits full screen when nested inside another shadow root", async () => {
+    const host = await fixture(html`<div></div>`);
+    host.attachShadow({ mode: "open" });
+    const element = globalThis.document.createElement("slide-deck");
+    element.setAttribute("deck-id", "nested");
+    host.shadowRoot.appendChild(element);
+    await element.updateComplete;
+    let exits = 0;
+    let requests = 0;
+    globalThis.document.exitFullscreen = () => {
+      exits += 1;
+      return Promise.resolve();
+    };
+    element.requestFullscreen = () => {
+      requests += 1;
+      return Promise.resolve();
+    };
+    // the browser retargets document.fullscreenElement to the shadow host
+    // and reports the deck itself on the shadow root that holds it
+    stubFullscreenElement(host);
+    Object.defineProperty(host.shadowRoot, "fullscreenElement", {
+      get: () => element,
+      configurable: true,
+    });
+    try {
+      element.dispatchEvent(new Event("fullscreenchange"));
+      await element.updateComplete;
+      expect(element.presenting).to.be.true;
+      await element.togglePresenting();
+      expect(exits).to.equal(1);
+      expect(requests).to.equal(0);
+    } finally {
+      delete globalThis.document.fullscreenElement;
+      delete globalThis.document.exitFullscreen;
+      delete host.shadowRoot.fullscreenElement;
+      delete element.requestFullscreen;
+    }
+  });
+
+  it("swallows a refused full screen request", async () => {
+    const element = await fixture(
+      html`<slide-deck deck-id="refused"></slide-deck>`,
+    );
+    element.requestFullscreen = () =>
+      Promise.reject(new TypeError("Permissions check failed"));
+    stubFullscreenElement(null);
+    try {
+      await element.togglePresenting();
+      expect(element.presenting).to.be.false;
+    } finally {
+      delete globalThis.document.fullscreenElement;
+      delete element.requestFullscreen;
+    }
+  });
+
   it("does nothing when full screen is unavailable", async () => {
     const element = await fixture(
       html`<slide-deck deck-id="nofs"></slide-deck>`,
