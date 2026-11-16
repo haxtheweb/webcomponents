@@ -43,47 +43,80 @@ export const HaxUiColors = [
        theme instead of the OS preference. */
     body {
       --hax-ui-color-scheme: light;
-      --hax-ui-color: #222;
-      --hax-ui-color-focus: #000;
-      --hax-ui-color-faded: #444;
-      --hax-ui-disabled-color: #bbb;
+      --hax-ui-color: var(--simple-colors-fixed-theme-grey-10, #222222);
+      --hax-ui-color-focus: var(--ddd-theme-default-black, #000000);
+      --hax-ui-color-faded: var(--simple-colors-fixed-theme-grey-8, #444444);
+      --hax-ui-disabled-color: var(--simple-colors-fixed-theme-grey-5, #bbbbbb);
 
-      --hax-ui-background-color: #fff;
-      --hax-ui-background-color-secondary: #e8e8e8;
-      --hax-ui-background-color-faded: #b0b8bb;
+      --hax-ui-background-color: var(--ddd-theme-default-white, #ffffff);
+      --hax-ui-background-color-secondary: var(
+        --ddd-theme-default-limestoneLight,
+        #e4e5e7
+      );
+      --hax-ui-background-color-faded: var(
+        --ddd-theme-default-limestoneGray,
+        #a2aaad
+      );
 
       /* beaverBlue keeps 4.5:1 contrast both as white-text background and
          as text on white (skyBlue failed at 3.08:1) */
       --hax-ui-color-accent: var(--ddd-theme-default-beaverBlue, #1e407c);
-      --hax-ui-color-accent-secondary: #007999;
-      --hax-ui-background-color-accent: #e5f6fd;
+      --hax-ui-color-accent-secondary: var(
+        --simple-colors-fixed-theme-cyan-8,
+        #007999
+      );
+      --hax-ui-background-color-accent: var(
+        --ddd-theme-default-infoLight,
+        #e5f6fd
+      );
 
-      --hax-ui-color-danger: #ee0000;
-      --hax-ui-color-danger-secondary: #850000;
-      --hax-ui-background-color-danger: #fdeded;
+      --hax-ui-color-danger: var(--simple-colors-fixed-theme-red-7, #ee0000);
+      --hax-ui-color-danger-secondary: var(
+        --simple-colors-fixed-theme-red-9,
+        #850000
+      );
+      --hax-ui-background-color-danger: var(
+        --ddd-theme-default-errorLight,
+        #fdeded
+      );
 
-      --hax-ui-border-color: #ddd;
+      --hax-ui-border-color: var(--simple-colors-fixed-theme-grey-3, #dddddd);
     }
     body[hax-ui-theme="haxdark"] {
       --hax-ui-color-scheme: dark;
-      --hax-ui-color: #eeeae6;
-      --hax-ui-color-focus: #fff;
-      --hax-ui-color-faded: #c5c3be;
+      --hax-ui-color: var(--ddd-theme-default-shrineLight, #f7f2ee);
+      --hax-ui-color-focus: var(--ddd-theme-default-white, #ffffff);
+      --hax-ui-color-faded: var(--simple-colors-fixed-theme-grey-5, #bbbbbb);
 
-      --hax-ui-background-color: #111;
-      --hax-ui-background-color-secondary: #111;
-      --hax-ui-background-color-faded: #222;
+      --hax-ui-background-color: var(
+        --simple-colors-fixed-theme-grey-11,
+        #111111
+      );
+      --hax-ui-background-color-secondary: var(
+        --simple-colors-fixed-theme-grey-11,
+        #111111
+      );
+      --hax-ui-background-color-faded: var(
+        --simple-colors-fixed-theme-grey-10,
+        #222222
+      );
 
       /* light cyan keeps 4.5:1 on dark backgrounds in both accent roles */
-      --hax-ui-color-accent: #00c9ff;
-      --hax-ui-color-accent-secondary: #00c9ff;
-      --hax-ui-background-color-accent: #000;
+      --hax-ui-color-accent: var(--simple-colors-fixed-theme-cyan-6, #00c9ff);
+      --hax-ui-color-accent-secondary: var(
+        --simple-colors-fixed-theme-cyan-6,
+        #00c9ff
+      );
+      --hax-ui-background-color-accent: var(--ddd-theme-default-black, #000000);
 
-      --hax-ui-color-danger: #ff8f8f;
-      --hax-ui-color-danger-secondary: #ff2222;
-      --hax-ui-background-color-danger: #000;
+      --hax-ui-color-danger: var(--simple-colors-fixed-theme-red-3, #ff8f8f);
+      --hax-ui-color-danger-secondary: var(
+        --simple-colors-fixed-theme-red-6,
+        #ff2222
+      );
+      --hax-ui-background-color-danger: var(--ddd-theme-default-black, #000000);
 
-      --hax-ui-border-color: #000;
+      --hax-ui-border-color: var(--ddd-theme-default-black, #000000);
     }
     /* system follows the OS for both tokens and light-dark() */
     body[hax-ui-theme="system"] {
@@ -92,24 +125,45 @@ export const HaxUiColors = [
 
     @media (prefers-color-scheme: dark) {
       body[hax-ui-theme="system"] {
-        --hax-ui-color: #eeeae6;
-        --hax-ui-color-focus: #fff;
-        --hax-ui-color-faded: #c5c3be;
+        --hax-ui-color: var(--ddd-theme-default-shrineLight, #f7f2ee);
+        --hax-ui-color-focus: var(--ddd-theme-default-white, #ffffff);
+        --hax-ui-color-faded: var(--simple-colors-fixed-theme-grey-5, #bbbbbb);
 
-        --hax-ui-background-color: #111;
-        --hax-ui-background-color-secondary: #111;
-        --hax-ui-background-color-faded: #222;
+        --hax-ui-background-color: var(
+          --simple-colors-fixed-theme-grey-11,
+          #111111
+        );
+        --hax-ui-background-color-secondary: var(
+          --simple-colors-fixed-theme-grey-11,
+          #111111
+        );
+        --hax-ui-background-color-faded: var(
+          --simple-colors-fixed-theme-grey-10,
+          #222222
+        );
 
         /* light cyan keeps 4.5:1 on dark backgrounds in both accent roles */
-        --hax-ui-color-accent: #00c9ff;
-        --hax-ui-color-accent-secondary: #00c9ff;
-        --hax-ui-background-color-accent: #000;
+        --hax-ui-color-accent: var(--simple-colors-fixed-theme-cyan-6, #00c9ff);
+        --hax-ui-color-accent-secondary: var(
+          --simple-colors-fixed-theme-cyan-6,
+          #00c9ff
+        );
+        --hax-ui-background-color-accent: var(
+          --ddd-theme-default-black,
+          #000000
+        );
 
-        --hax-ui-color-danger: #ff8f8f;
-        --hax-ui-color-danger-secondary: #ff2222;
-        --hax-ui-background-color-danger: #000;
+        --hax-ui-color-danger: var(--simple-colors-fixed-theme-red-3, #ff8f8f);
+        --hax-ui-color-danger-secondary: var(
+          --simple-colors-fixed-theme-red-6,
+          #ff2222
+        );
+        --hax-ui-background-color-danger: var(
+          --ddd-theme-default-black,
+          #000000
+        );
 
-        --hax-ui-border-color: #000;
+        --hax-ui-border-color: var(--ddd-theme-default-black, #000000);
       }
     }
   `,

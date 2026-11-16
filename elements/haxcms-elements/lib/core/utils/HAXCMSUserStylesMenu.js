@@ -58,38 +58,95 @@ const HAXCMSUserStylesMenuMixin = function (SuperClass) {
         styles,
         css`
           :host([color-theme="0"]) {
-            --haxcms-user-styles-color-theme-color-color: #000000;
-            --haxcms-user-styles-color-theme-color-background: #ffffff;
-            --haxcms-user-styles-color-theme-color-1: #252737;
-            --haxcms-user-styles-color-theme-color-2: #f5f5f5;
-            --haxcms-user-styles-color-theme-color-3: #f5f5f5;
+            --haxcms-user-styles-color-theme-color-color: var(
+              --ddd-theme-default-black,
+              #000000
+            );
+            --haxcms-user-styles-color-theme-color-background: var(
+              --ddd-theme-default-white,
+              #ffffff
+            );
+            --haxcms-user-styles-color-theme-color-1: var(
+              --simple-colors-fixed-theme-light-blue-12,
+              #001b36
+            );
+            --haxcms-user-styles-color-theme-color-2: var(
+              --ddd-theme-default-disabled,
+              #f4f4f4
+            );
+            --haxcms-user-styles-color-theme-color-3: var(
+              --ddd-theme-default-disabled,
+              #f4f4f4
+            );
             --haxcms-user-styles-color-theme-color-4: var(
               --simple-colors-default-theme-blue-8,
               #4183c4
             );
           }
           :host([color-theme="1"]) {
-            --haxcms-user-styles-color-theme-color-color: #704214;
-            --haxcms-user-styles-color-theme-color-background: #f3eacb;
-            --haxcms-user-styles-color-theme-color-1: #704214;
-            --haxcms-user-styles-color-theme-color-2: #f3eacb;
-            --haxcms-user-styles-color-theme-color-3: #1c1c1c;
-            --haxcms-user-styles-color-theme-color-4: #eee8e0;
+            --haxcms-user-styles-color-theme-color-color: var(
+              --ddd-theme-default-warning,
+              #663c00
+            );
+            --haxcms-user-styles-color-theme-color-background: var(
+              --simple-colors-fixed-theme-amber-1,
+              #fff2d4
+            );
+            --haxcms-user-styles-color-theme-color-1: var(
+              --ddd-theme-default-warning,
+              #663c00
+            );
+            --haxcms-user-styles-color-theme-color-2: var(
+              --simple-colors-fixed-theme-amber-1,
+              #fff2d4
+            );
+            --haxcms-user-styles-color-theme-color-3: var(
+              --simple-colors-fixed-theme-grey-10,
+              #222222
+            );
+            --haxcms-user-styles-color-theme-color-4: var(
+              --ddd-theme-default-shrineLight,
+              #f7f2ee
+            );
           }
           :host([color-theme="2"]) {
-            --haxcms-user-styles-color-theme-color-color: #cfd4e3;
-            --haxcms-user-styles-color-theme-color-background: #1c1f2b;
-            --haxcms-user-styles-color-theme-color-1: #a6a6a6;
-            --haxcms-user-styles-color-theme-color-2: #252737;
-            --haxcms-user-styles-color-theme-color-3: #252737;
-            --haxcms-user-styles-color-theme-color-4: #f4f4f5;
+            --haxcms-user-styles-color-theme-color-color: var(
+              --ddd-theme-default-slateLight,
+              #ccdae6
+            );
+            --haxcms-user-styles-color-theme-color-background: var(
+              --simple-colors-fixed-theme-blue-grey-12,
+              #0f1518
+            );
+            --haxcms-user-styles-color-theme-color-1: var(
+              --ddd-theme-default-limestoneGray,
+              #a2aaad
+            );
+            --haxcms-user-styles-color-theme-color-2: var(
+              --simple-colors-fixed-theme-light-blue-12,
+              #001b36
+            );
+            --haxcms-user-styles-color-theme-color-3: var(
+              --simple-colors-fixed-theme-light-blue-12,
+              #001b36
+            );
+            --haxcms-user-styles-color-theme-color-4: var(
+              --ddd-theme-default-disabled,
+              #f4f4f4
+            );
           }
           :host([color-theme="0"]) .hcusm {
-            border-color: #222222;
+            border-color: var(--simple-colors-fixed-theme-grey-10, #222222);
           }
           :host([color-theme="0"]) .hcusm simple-popover {
-            --simple-popover-color: #222222;
-            --simple-popover-background-color: #fafafa;
+            --simple-popover-color: var(
+              --simple-colors-fixed-theme-grey-10,
+              #222222
+            );
+            --simple-popover-background-color: var(
+              --ddd-theme-default-white,
+              #ffffff
+            );
           }
           #slot ::slotted(*) {
             color: var(--haxcms-user-styles-color-theme-color-color);
@@ -108,7 +165,7 @@ const HAXCMSUserStylesMenuMixin = function (SuperClass) {
           .hcusm .hcusm-buttons .hcusm-button {
             border: 0;
             background-color: transparent;
-            color: #a6a6a6;
+            color: var(--ddd-theme-default-limestoneGray, #a2aaad);
             width: 100%;
             text-align: center;
             float: left;
@@ -147,8 +204,8 @@ const HAXCMSUserStylesMenuMixin = function (SuperClass) {
           .hcusm-button {
             border: 0;
             background-color: transparent;
-            background: #eee;
-            color: #666;
+            background: var(--simple-colors-fixed-theme-grey-2, #eeeeee);
+            color: var(--simple-colors-fixed-theme-grey-7, #666666);
             width: 100%;
             text-align: center;
             float: left;
@@ -186,49 +243,69 @@ const HAXCMSUserStylesMenuMixin = function (SuperClass) {
           * Theme 1
           */
           :host([color-theme="1"]) .hcusm {
-            border-color: #222222;
+            border-color: var(--simple-colors-fixed-theme-grey-10, #222222);
           }
           :host([color-theme="1"]) simple-popover {
-            --simple-popover-color: #afa790;
-            --simple-popover-background-color: #111111;
+            --simple-popover-color: var(
+              --simple-colors-fixed-theme-grey-6,
+              #999999
+            );
+            --simple-popover-background-color: var(
+              --simple-colors-fixed-theme-grey-11,
+              #111111
+            );
           }
           :host([color-theme="1"]) .hcusm .dropdown-caret .caret-inner {
-            border-bottom: 9px solid #111111;
+            border-bottom: 9px solid
+              var(--simple-colors-fixed-theme-grey-11, #111111);
           }
           :host([color-theme="1"]) .hcusm .hcusm-buttons {
-            border-color: #7e888b;
+            border-color: var(--simple-colors-fixed-theme-blue-grey-5, #7a8f98);
           }
           :host([color-theme="1"]) .hcusm .hcusm-button {
-            color: #afa790;
+            color: var(--simple-colors-fixed-theme-grey-6, #999999);
           }
           :host([color-theme="1"]) .hcusm .hcusm-button:hover,
           :host([color-theme="1"]) .hcusm .hcusm-button:focus,
           :host([color-theme="1"]) .hcusm .hcusm-button:active {
-            color: #eee8e0;
+            color: var(--ddd-theme-default-shrineLight, #f7f2ee);
           }
           /*
           * Theme 2
           */
           :host([color-theme="2"]) simple-popover {
-            --simple-popover-color: #cccccc;
-            --simple-popover-background-color: #2d3143;
+            --simple-popover-color: var(
+              --simple-colors-fixed-theme-grey-4,
+              #cccccc
+            );
+            --simple-popover-background-color: var(
+              --simple-colors-fixed-theme-light-blue-12,
+              #001b36
+            );
           }
           :host([color-theme="2"]) .hcusm {
-            border-color: #272a3a;
+            border-color: var(
+              --simple-colors-fixed-theme-light-blue-12,
+              #001b36
+            );
           }
           :host([color-theme="2"]) .hcusm .dropdown-caret .caret-inner {
-            border-bottom: 9px solid #2d3143;
+            border-bottom: 9px solid
+              var(--simple-colors-fixed-theme-light-blue-12, #001b36);
           }
           :host([color-theme="2"]) .hcusm .hcusm-buttons {
-            border-color: #272a3a;
+            border-color: var(
+              --simple-colors-fixed-theme-light-blue-12,
+              #001b36
+            );
           }
           :host([color-theme="2"]) .hcusm .hcusm-button {
-            color: #cccccc;
+            color: var(--simple-colors-fixed-theme-grey-4, #cccccc);
           }
           :host([color-theme="2"]) .hcusm .hcusm-button:hover,
           :host([color-theme="2"]) .hcusm .hcusm-button:focus,
           :host([color-theme="2"]) .hcusm .hcusm-button:active {
-            color: #f4f4f5;
+            color: var(--ddd-theme-default-disabled, #f4f4f4);
           }
           simple-icon-button-lite {
             color: inherit;
