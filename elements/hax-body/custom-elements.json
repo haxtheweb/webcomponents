@@ -9804,7 +9804,6 @@
             "name": "LitElement",
             "package": "lit"
           },
-          "tagName": "hax-store",
           "customElement": true
         },
         {
