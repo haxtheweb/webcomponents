@@ -63,8 +63,6 @@ const BASELINE_PAYLOAD = {
   manifest: {
     theme: {
       "manifest-metadata-theme-element": "clean-one",
-      // haxtheweb/issues#3350: no setting is plain DDD
-      "manifest-metadata-theme-designSystem": "ddd",
       "manifest-metadata-theme-variables-palette": "2",
       "manifest-metadata-theme-variables-cssVariable": "blue",
       "manifest-metadata-theme-variables-image": "files/banner.jpg",
@@ -200,56 +198,6 @@ describe("haxcms-appearance-admin-dialog", () => {
         "manifest-metadata-theme-regions-header": [],
       });
       expect(e.detail).to.deep.equal(expected);
-    });
-
-    it("sends the design system picked in its select (haxtheweb/issues#3350)", async () => {
-      const el = await appearance({ inShell: true });
-      const select = el.shadowRoot.querySelector(
-        'select[name="manifest-metadata-theme-designSystem"]',
-      );
-      expect(select).to.exist;
-      // the first option is plain DDD, then every registry system
-      expect(select.options[0].value).to.equal("ddd");
-      expect([...select.options].map((o) => o.value)).to.include("carbon");
-      select.value = "patternfly";
-      select.dispatchEvent(new Event("change"));
-      setTimeout(() => triggerSave(el));
-      const e = await oneEvent(globalThis, "haxcms-save-appearance-settings");
-      expect(
-        e.detail.manifest.theme["manifest-metadata-theme-designSystem"],
-      ).to.equal("patternfly");
-    });
-
-    it("loads a stored design system and keeps an unknown one as DDD", async () => {
-      store.manifest.metadata.theme.designSystem = "carbon";
-      const el = await appearance({ inShell: true });
-      setTimeout(() => triggerSave(el));
-      let e = await oneEvent(globalThis, "haxcms-save-appearance-settings");
-      expect(
-        e.detail.manifest.theme["manifest-metadata-theme-designSystem"],
-      ).to.equal("carbon");
-      store.manifest = makeManifest();
-      store.manifest.metadata.theme.designSystem = "not-shipped";
-      const el2 = await appearance({ inShell: true });
-      setTimeout(() => triggerSave(el2));
-      e = await oneEvent(globalThis, "haxcms-save-appearance-settings");
-      expect(
-        e.detail.manifest.theme["manifest-metadata-theme-designSystem"],
-      ).to.equal("ddd");
-    });
-
-    it("carries the design system from a theme preview selection", async () => {
-      const el = await appearance({ inShell: true });
-      el.applyThemePreviewSelection({
-        theme: "clean-one",
-        palette: "2",
-        designSystem: "material",
-      });
-      setTimeout(() => triggerSave(el));
-      const e = await oneEvent(globalThis, "haxcms-save-appearance-settings");
-      expect(
-        e.detail.manifest.theme["manifest-metadata-theme-designSystem"],
-      ).to.equal("material");
     });
 
     it("sends a theme preview selection the same way", async () => {

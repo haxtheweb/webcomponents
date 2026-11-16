@@ -27,15 +27,9 @@
             },
             {
               "kind": "field",
-              "name": "designSystems",
-              "static": true,
-              "description": "The site can pick this theme's design system separately (Carbon,\nPatternFly, ...): its chrome reads only --ddd-* tokens, so any\nDDD-capable system restyles it (haxtheweb/issues#3350).",
-              "readonly": true
-            },
-            {
-              "kind": "field",
               "name": "tag",
               "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
               "readonly": true
             },
             {

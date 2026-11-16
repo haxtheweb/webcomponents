@@ -14,6 +14,7 @@ import {
   CarbonFonts,
 } from "@haxtheweb/carbon-theme/lib/CarbonTokens.js";
 import { CarbonDDDMap } from "@haxtheweb/carbon-theme/lib/CarbonDDDMap.js";
+import { CarbonIcons } from "@haxtheweb/carbon-theme/lib/CarbonIcons.js";
 
 export const CARBON_SYSTEM = "carbon";
 
@@ -25,6 +26,8 @@ export function registerCarbonDesignSystem(manager = DesignSystemManager) {
       extends: "ddd",
       styles: [CarbonTokens, CarbonDDDMap],
       fonts: CarbonFonts,
+      // HAX icon names drawn in Carbon's own icon set while it is active
+      icons: CarbonIcons,
     });
   }
   return manager;

@@ -422,7 +422,7 @@
   },
   "elements/hax-body/lib/hax-store.js": {
     "eqeqeq": {
-      "count": 40
+      "count": 38
     },
     "haxtheweb-leaks/autorun-in-constructor": {
       "count": 4

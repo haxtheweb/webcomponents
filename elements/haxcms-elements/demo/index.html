@@ -400,9 +400,19 @@
     // ?theme=<machine name> previews this demo site in any theme listed in
     // ../lib/themes.json (theme preview links from app-hax and hax.cloud). It
     // only changes the theme of the site.json this page loads; nothing is saved.
+    // &designSystem=<name> previews a design system from ../lib/designSystems.json
+    // on a theme that accepts one (clean-one, learn-two-theme).
     (function () {
-      var requested = new URLSearchParams(globalThis.location.search).get('theme');
+      var params = new URLSearchParams(globalThis.location.search);
+      var requested = params.get('theme');
+      var system = params.get('designSystem');
       if (!requested || !/^[a-z0-9-]+$/.test(requested)) {
+        requested = null;
+      }
+      if (!system || !/^[a-z0-9-]+$/.test(system)) {
+        system = null;
+      }
+      if (!requested && !system) {
         return;
       }
       var nativeFetch = globalThis.fetch.bind(globalThis);
@@ -417,18 +427,22 @@
         }
         return Promise.all([nativeFetch(input, init), themes]).then(function (both) {
           var res = both[0];
-          var theme = Object.prototype.hasOwnProperty.call(both[1], requested) ? both[1][requested] : null;
-          if (!res.ok || !theme || !theme.element || !theme.path) {
+          var theme = requested && Object.prototype.hasOwnProperty.call(both[1], requested) ? both[1][requested] : null;
+          if (!res.ok || (!system && (!theme || !theme.element || !theme.path))) {
             return res;
           }
           return res.clone().json().then(function (manifest) {
             var current = manifest.metadata && manifest.metadata.theme ? manifest.metadata.theme : {};
             manifest.metadata = manifest.metadata || {};
-            manifest.metadata.theme = Object.assign({}, current, {
-              element: theme.element,
-              path: theme.path,
-              name: theme.name || theme.element,
-            });
+            manifest.metadata.theme = Object.assign({}, current);
+            if (theme && theme.element && theme.path) {
+              manifest.metadata.theme.element = theme.element;
+              manifest.metadata.theme.path = theme.path;
+              manifest.metadata.theme.name = theme.name || theme.element;
+            }
+            if (system) {
+              manifest.metadata.theme.designSystem = system;
+            }
             return new Response(JSON.stringify(manifest), {
               status: res.status,
               headers: { 'Content-Type': 'application/json' },

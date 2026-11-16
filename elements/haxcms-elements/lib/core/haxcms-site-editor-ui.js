@@ -1915,8 +1915,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     if (item) {
       if (type === "sibling") {
         parent = item.parent;
-        // same so its put right next to it
-        order = parseInt(item.order);
+        // one past it, so the new page is put right after it
+        order = parseInt(item.order) + 1;
       } else if (type === "child") {
         parent = item.id;
         // find last child, or just be the 1st one.
@@ -6110,6 +6110,15 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     ) {
       // Wait for the store and UI to be fully ready
       const triggerWelcome = () => {
+        // this runs on a timer, so look again: the welcome may have been
+        // dismissed since it was scheduled, and Merlin may already be open
+        // with a prompt the welcome list must not replace
+        if (
+          UserScaffoldInstance.readMemory("hasSeenHaxWelcome") ||
+          SuperDaemonInstance.opened
+        ) {
+          return;
+        }
         const merlinButton =
           this.shadowRoot && this.shadowRoot.querySelector("#merlin");
         if (store.appReady && merlinButton) {
@@ -8938,18 +8947,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         typeof e.detail.palette === "undefined" || e.detail.palette === null
           ? ""
           : `${e.detail.palette}`.trim();
-      const selectedDesignSystem =
-        typeof e.detail.designSystem === "string"
-          ? e.detail.designSystem.trim()
-          : "";
       if (selectedTheme !== "" || selectedPalette !== "") {
         previewSelection = {
           theme: selectedTheme,
           palette: selectedPalette,
         };
-        // haxtheweb/issues#3350: the design system picked in the preview
-        if (selectedDesignSystem !== "") {
-          previewSelection.designSystem = selectedDesignSystem;
+        // the design system picked in Theme Preview (haxtheweb/issues#3350)
+        if (typeof e.detail.designSystem === "string") {
+          previewSelection.designSystem = e.detail.designSystem.trim();
         }
       }
     }

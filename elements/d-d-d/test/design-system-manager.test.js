@@ -355,6 +355,67 @@ describe("DesignSystem.applyDesignSystem", () => {
   });
 });
 
+describe("DesignSystem icons", () => {
+  // a stand-in for simple-icon's store
+  let saved;
+  let iconset;
+  beforeEach(() => {
+    saved = globalThis.SimpleIconset;
+    iconset = {
+      iconsets: {},
+      aliases: {},
+      registerIconset(name, base) {
+        this.iconsets[name] = base;
+      },
+      setAliases(map) {
+        this.aliases = { ...map };
+      },
+    };
+    globalThis.SimpleIconset = { requestAvailability: () => iconset };
+  });
+  afterEach(() => {
+    globalThis.SimpleIconset = saved;
+  });
+
+  it("hands a system's icon aliases to simple-icon", async () => {
+    const el = await fixture(html`<design-system></design-system>`);
+    el.applyDesignSystem(null, {
+      styles: [],
+      fonts: [],
+      icons: {
+        set: "test-icons",
+        basePath: "/test/icons/",
+        aliases: { "icons:search": "test-icons:find" },
+      },
+    });
+    expect(iconset.iconsets["test-icons"]).to.equal("/test/icons/");
+    expect(iconset.aliases).to.deep.equal({
+      "icons:search": "test-icons:find",
+    });
+  });
+
+  it("puts HAX icons back for a system without a set", async () => {
+    const el = await fixture(html`<design-system></design-system>`);
+    iconset.aliases = { "icons:search": "test-icons:find" };
+    el.applyDesignSystem(null, { styles: [], fonts: [] });
+    expect(iconset.aliases).to.deep.equal({});
+  });
+
+  it("passes a dialect's icons through resolvedSystem", async () => {
+    const el = await fixture(html`<design-system></design-system>`);
+    el.addDesignSystem({ name: "base-x", styles: [], fonts: [] });
+    el.addDesignSystem({
+      name: "dialect-x",
+      extends: "base-x",
+      styles: [],
+      fonts: [],
+      icons: { set: "d", basePath: "/d/", aliases: {} },
+    });
+    expect(el.resolvedSystem("dialect-x").icons.set).to.equal("d");
+    expect(el.resolvedSystem("base-x").icons).to.equal(undefined);
+  });
+});
+
 describe("DesignSystemManager global singleton", () => {
   it("exposes DesignSystemManager on globalThis", () => {
     expect(globalThis.DesignSystemManager).to.exist;

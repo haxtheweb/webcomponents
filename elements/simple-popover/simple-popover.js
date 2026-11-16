@@ -100,7 +100,10 @@ class SimplePopover extends AbsolutePositionBehavior {
           min-height: var(--simple-popover-min-height, 20px);
           max-height: var(--simple-popover-max-height, auto);
           scroll-behavior: smooth;
-          border-radius: var(--simple-popover-border-radius, 4px);
+          border-radius: var(
+            --simple-popover-border-radius,
+            var(--ddd-radius-xs, 4px)
+          );
           border: var(
             --simple-popover-border,
             1px solid

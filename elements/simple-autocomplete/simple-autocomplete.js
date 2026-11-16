@@ -34,8 +34,9 @@ class SimpleAutocomplete extends I18NMixin(SimpleFilterMixin(LitElement)) {
           padding: 0 2px;
         }
         #input:focus {
-          outline: 2px solid var(--simple-autocomplete-focus-color, #3f51b5);
-          outline-offset: 2px;
+          outline: var(--ddd-border-size-sm, 2px) solid
+            var(--simple-autocomplete-focus-color, #3f51b5);
+          outline-offset: var(--ddd-border-size-sm, 2px);
         }
         simple-popover {
           max-width: var(--simple-autocomplete-popover-max-width, 50vw);
@@ -48,7 +49,10 @@ class SimpleAutocomplete extends I18NMixin(SimpleFilterMixin(LitElement)) {
         ul {
           margin: 0;
           padding: 0;
-          border: var(--simple-autocomplete-ul-border, 1px solid #eeeeee);
+          border: var(
+            --simple-autocomplete-ul-border,
+            var(--ddd-border-size-xs, 1px) solid #eeeeee
+          );
         }
         li {
           list-style: none;
@@ -57,16 +61,19 @@ class SimpleAutocomplete extends I18NMixin(SimpleFilterMixin(LitElement)) {
           display: block;
         }
         button {
-          font-size: var(--simple-autocomplete-font-size, 14px);
+          font-size: var(
+            --simple-autocomplete-font-size,
+            var(--ddd-font-size-5xs, 14px)
+          );
           line-height: var(--simple-autocomplete-line-height, 1.5);
           display: block;
           border: none;
           border-bottom: var(
             --simple-autocomplete-border-bottom,
-            1px solid #eeeeee
+            var(--ddd-border-size-xs, 1px) solid #eeeeee
           );
-          padding: 6px 12px;
-          font-weight: 500;
+          padding: 6px var(--ddd-spacing-3, 12px);
+          font-weight: var(--ddd-font-weight-medium, 500);
           width: 100%;
           background-color: transparent;
           max-height: var(
@@ -92,8 +99,11 @@ class SimpleAutocomplete extends I18NMixin(SimpleFilterMixin(LitElement)) {
           outline: none;
         }
         .no-results {
-          font-size: var(--simple-autocomplete-font-size, 16px);
-          padding: 4px 8px;
+          font-size: var(
+            --simple-autocomplete-font-size,
+            var(--ddd-font-size-4xs, 16px)
+          );
+          padding: var(--ddd-spacing-1, 4px) var(--ddd-spacing-2, 8px);
         }
         simple-icon-lite {
           color: var(--simple-autocomplete-color, #333333);

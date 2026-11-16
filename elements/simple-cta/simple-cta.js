@@ -179,19 +179,47 @@ class SimpleCta extends DDDVocabulary(
         }
         /* size: l matches the existing large attribute */
         :host(:state(size-s)) .btn {
-          padding-block: var(--ddd-spacing-2);
+          --simple-cta-padding-block: max(
+            0px,
+            min(
+              var(--ddd-spacing-2),
+              calc(1000px - var(--ddd-control-height, 0px) * 1000)
+            )
+          );
+          min-height: max(
+            0px,
+            calc(
+              var(--ddd-control-height, -64px) - 8px - 2 *
+                var(--ddd-border-size-sm)
+            )
+          );
+          padding-block: var(--simple-cta-padding-block);
           padding-inline: var(--ddd-spacing-4) var(--ddd-spacing-3);
           font-size: var(--ddd-font-size-4xs);
         }
         :host(:state(size-s)) .hideIcon {
-          padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
+          padding: var(--simple-cta-padding-block) var(--ddd-spacing-4);
+        }
+        :host(:state(size-l)) .btn,
+        .btn.large {
+          --simple-cta-padding-block: max(
+            0px,
+            min(1rem, calc(1000px - var(--ddd-control-height, 0px) * 1000))
+          );
+          min-height: max(
+            0px,
+            calc(
+              var(--ddd-control-height, -64px) + 8px - 2 *
+                var(--ddd-border-size-sm)
+            )
+          );
         }
         :host(:state(size-l)) .btn {
-          padding-block: 1rem;
+          padding-block: var(--simple-cta-padding-block);
           padding-inline: 3.25rem 2.75rem;
         }
         :host(:state(size-l)) .hideIcon {
-          padding: 1rem 3.25rem;
+          padding: var(--simple-cta-padding-block) 3.25rem;
         }
 
         :host([hotline]) .btn {
@@ -230,9 +258,25 @@ class SimpleCta extends DDDVocabulary(
             --component-border-color,
             var(--ddd-theme-default-link)
           );
+          /* a design system that fixes button height (--ddd-control-height,
+            set by a bridge) gets it: block padding turns off and min-height
+            holds the height. DDD sets no control height, so 1000px - 0 keeps
+            exactly the padding buttons always had; any height set makes it
+            negative, which max() turns into 0. */
+          --simple-cta-padding-block: max(
+            0px,
+            min(0.75rem, calc(1000px - var(--ddd-control-height, 0px) * 1000))
+          );
+          min-height: max(
+            0px,
+            calc(
+              var(--ddd-control-height, -64px) - 2 * var(--ddd-border-size-sm)
+            )
+          );
           padding: var(
             --simple-cta-button-padding,
-            0.75rem 0.75rem 0.75rem 1.5rem
+            var(--simple-cta-padding-block) 0.75rem
+              var(--simple-cta-padding-block) 1.5rem
           );
           transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
           background-color: var(--component-background-color, transparent);
@@ -240,15 +284,15 @@ class SimpleCta extends DDDVocabulary(
         }
 
         .hideIcon {
-          padding: 0.75rem 1.5rem;
+          padding: var(--simple-cta-padding-block) 1.5rem;
         }
 
         .large {
-          padding-block: 1rem;
+          padding-block: var(--simple-cta-padding-block);
           padding-inline: 3.25rem 2.75rem;
         }
         .large.hideIcon {
-          padding: 1rem 3.25rem;
+          padding: var(--simple-cta-padding-block) 3.25rem;
         }
 
         .icon {

@@ -31,6 +31,13 @@
       "url": "https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600&display=swap"
     }
   ],
+  "icons": {
+    "package": "@adobe/spectrum-css-workflow-icons",
+    "version": "5.0.0",
+    "license": "Apache-2.0",
+    "path": "dist/assets/svg/S2_Icon_{name}_20_N.svg",
+    "map": "spectrum"
+  },
   "ddd": {
     "--ddd-theme-default-beaverBlue": {
       "token": "--spectrum-blue-900",
@@ -54,8 +61,9 @@
       "fromMode": "light"
     },
     "--ddd-theme-default-skyBlue": {
-      "token": "--spectrum-blue-600",
-      "fromMode": "light"
+      "token": "--spectrum-blue-500",
+      "fromMode": "light",
+      "note": "one step lighter than spectrum-blue-600 so DDD's nittanyNavy ink reads on it (4.5:1), as blocks pair them"
     },
     "--ddd-theme-default-skyLight": {
       "token": "--spectrum-blue-300",
@@ -92,8 +100,9 @@
       "fromMode": "light"
     },
     "--ddd-theme-default-limestoneGray": {
-      "token": "--spectrum-gray-500",
-      "fromMode": "light"
+      "token": "--spectrum-gray-400",
+      "fromMode": "light",
+      "note": "muted text on the dark brand surfaces needs 4.5:1; gray-500 is under it on blue-1200"
     },
     "--ddd-theme-default-limestoneLight": {
       "token": "--spectrum-gray-200",
@@ -153,8 +162,9 @@
       "fromMode": "light"
     },
     "--ddd-theme-default-creekTeal": {
-      "token": "--spectrum-seafoam-900",
-      "fromMode": "light"
+      "token": "--spectrum-seafoam-700",
+      "fromMode": "light",
+      "note": "one step lighter than spectrum-seafoam-900 so DDD's potentialMidnight ink reads on it (4.5:1), as blocks pair them"
     },
     "--ddd-theme-default-creekLight": {
       "token": "--spectrum-seafoam-300",
@@ -374,6 +384,34 @@
     "--ddd-control-padding-inline": {
       "token": "--spectrum-component-pill-edge-to-text-100",
       "note": "Spectrum buttons are pills; 16px at the medium scale"
+    },
+    "--ddd-card-radius": {
+      "token": "--spectrum-corner-radius-medium-default",
+      "note": "cards, 8px"
+    },
+    "--ddd-card-padding": {
+      "token": "--spectrum-spacing-400",
+      "note": "card body padding, 24px"
+    },
+    "--ddd-card-border-width": {
+      "value": "1px",
+      "note": "card border"
+    },
+    "--ddd-card-shadow": {
+      "value": "none",
+      "note": "cards are bordered, not raised"
+    },
+    "--ddd-control-radius": {
+      "value": "999px",
+      "note": "buttons are pills"
+    },
+    "--ddd-control-height": {
+      "token": "--spectrum-component-height-100",
+      "note": "medium button, 32px"
+    },
+    "--ddd-tag-radius": {
+      "token": "--spectrum-corner-radius-300",
+      "note": "tags, 6px"
     }
   },
   "extraTokens": [

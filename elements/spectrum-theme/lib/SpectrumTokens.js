@@ -44,7 +44,7 @@ export const SpectrumTokens = css`
     --spectrum-blue-200: light-dark(rgb(229, 240, 254), rgb(15, 28, 82));
     --spectrum-blue-300: light-dark(rgb(203, 226, 254), rgb(12, 33, 117));
     --spectrum-blue-400: light-dark(rgb(172, 207, 253), rgb(18, 45, 154));
-    --spectrum-blue-600: light-dark(rgb(114, 158, 253), rgb(37, 73, 229));
+    --spectrum-blue-500: light-dark(rgb(142, 185, 252), rgb(26, 58, 195));
     --spectrum-blue-900: light-dark(rgb(59, 99, 251), rgb(86, 129, 255));
     --spectrum-body-color: light-dark(rgb(41, 41, 41), rgb(219, 219, 219));
     --spectrum-bold-font-weight: 700;
@@ -78,8 +78,8 @@ export const SpectrumTokens = css`
     --spectrum-gray-200: light-dark(rgb(225, 225, 225), rgb(50, 50, 50));
     --spectrum-gray-25: light-dark(rgb(255, 255, 255), rgb(17, 17, 17));
     --spectrum-gray-300: light-dark(rgb(218, 218, 218), rgb(57, 57, 57));
+    --spectrum-gray-400: light-dark(rgb(198, 198, 198), rgb(68, 68, 68));
     --spectrum-gray-50: light-dark(rgb(248, 248, 248), rgb(27, 27, 27));
-    --spectrum-gray-500: light-dark(rgb(143, 143, 143), rgb(109, 109, 109));
     --spectrum-gray-700: light-dark(rgb(80, 80, 80), rgb(175, 175, 175));
     --spectrum-gray-75: light-dark(rgb(243, 243, 243), rgb(34, 34, 34));
     --spectrum-gray-800: light-dark(rgb(41, 41, 41), rgb(219, 219, 219));
@@ -110,7 +110,7 @@ export const SpectrumTokens = css`
     --spectrum-regular-font-weight: 400;
     --spectrum-seafoam-100: light-dark(rgb(235, 251, 246), rgb(0, 30, 27));
     --spectrum-seafoam-300: light-dark(rgb(169, 237, 216), rgb(0, 50, 44));
-    --spectrum-seafoam-900: light-dark(rgb(7, 129, 109), rgb(10, 154, 128));
+    --spectrum-seafoam-700: light-dark(rgb(11, 162, 134), rgb(6, 122, 103));
     --spectrum-spacing-100: 8px;
     --spectrum-spacing-300: 16px;
     --spectrum-spacing-400: 24px;

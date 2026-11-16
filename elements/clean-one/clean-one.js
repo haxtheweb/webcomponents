@@ -935,6 +935,14 @@ class CleanOne extends LTIResizingMixin(
     }
   }
   // properties available to the custom element for data binding
+  /**
+   * The chrome reads only --ddd-* tokens, so a site can give this theme
+   * another design system (metadata.theme.designSystem: carbon, ...)
+   */
+  static get acceptsDesignSystems() {
+    return true;
+  }
+
   static get supportedPalettes() {
     return ["4", "5"];
   }
@@ -953,14 +961,6 @@ class CleanOne extends LTIResizingMixin(
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */
-  /**
-   * The site can pick this theme's design system separately (Carbon,
-   * PatternFly, ...): its chrome reads only --ddd-* tokens, so any
-   * DDD-capable system restyles it (haxtheweb/issues#3350).
-   */
-  static get designSystems() {
-    return "any";
-  }
   static get tag() {
     return "clean-one";
   }

@@ -373,6 +373,19 @@ describe("super-daemon-ui behavior", () => {
     expect(evt).to.equal(null);
   });
 
+  it("_inputKeydown leaves context keys alone inside a program, so they can be typed", () => {
+    element.programName = "edit-title";
+    element.programSearch = "Title with ";
+    element.like = "";
+    element.commandContext = "*";
+    ["!", "/", "\\", ">", "<"].forEach((key) => {
+      const evt = new KeyboardEvent("keydown", { key: key, cancelable: true });
+      element._inputKeydown(evt);
+      expect(evt.defaultPrevented, key).to.equal(false);
+      expect(element.commandContext, key).to.equal("*");
+    });
+  });
+
   it("_inputKeydown context keys switch the command context", () => {
     const cases = [
       ["!", "/"],

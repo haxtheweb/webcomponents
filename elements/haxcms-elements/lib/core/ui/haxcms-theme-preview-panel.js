@@ -19,11 +19,10 @@ import {
 import { HaxUiAdminControls } from "@haxtheweb/d-d-d/lib/HaxUiAdminControls.js";
 import "@haxtheweb/d-d-d/lib/hax-palette-picker.js";
 import {
-  DEFAULT_DESIGN_SYSTEM,
-  HAXCMS_DESIGN_SYSTEMS,
+  loadDesignSystemRegistry,
   siteDesignSystemName,
-  themeSupportsDesignSystems,
-} from "../utils/haxcms-design-systems.js";
+  themeAcceptsDesignSystems,
+} from "../utils/HAXCMSDesignSystems.js";
 
 class HAXCMSThemePreviewPanel extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
   static get tag() {
@@ -42,6 +41,7 @@ class HAXCMSThemePreviewPanel extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
         type: String,
         attribute: "selected-design-system",
       },
+      _designSystems: { type: Object, state: true },
       themeOptions: { type: Array, attribute: false },
       loadingThemes: {
         type: Boolean,
@@ -61,7 +61,9 @@ class HAXCMSThemePreviewPanel extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
     this.activePalette = "";
     this.selectedTheme = "";
     this.selectedPalette = "";
-    this.selectedDesignSystem = DEFAULT_DESIGN_SYSTEM;
+    // haxtheweb/issues#3350: "" is DDD
+    this.selectedDesignSystem = "";
+    this._designSystems = {};
     this.themeOptions = [];
     this.loadingThemes = false;
     this.showAllThemes = false;
@@ -85,8 +87,6 @@ class HAXCMSThemePreviewPanel extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
       designSystemDefault: "DDD (default)",
       designSystemHelp:
         "Color, type, corners and density. The theme still decides the layout.",
-      designSystemThemeOwn:
-        "This theme comes with its own design system, so it can't be changed here.",
       cancel: "Cancel",
       openAppearanceSettings: "Open Appearance Settings",
     };
@@ -367,6 +367,10 @@ class HAXCMSThemePreviewPanel extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
       manifest && manifest.metadata ? manifest.metadata.theme : null,
     );
     this._whenThemeDefined(this.selectedTheme);
+    loadDesignSystemRegistry().then((registry) => {
+      this._designSystems =
+        registry && typeof registry === "object" ? registry : {};
+    });
     if (!this.selectedTheme && this.activeTheme) {
       this.selectedTheme = this.activeTheme;
     }
@@ -602,10 +606,7 @@ class HAXCMSThemePreviewPanel extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
     if (this.selectedTheme) {
       previewTheme.element = this.selectedTheme;
     }
-    if (
-      this.selectedDesignSystem &&
-      this.selectedDesignSystem !== DEFAULT_DESIGN_SYSTEM
-    ) {
+    if (this.selectedDesignSystem) {
       previewTheme.designSystem = this.selectedDesignSystem;
     } else {
       delete previewTheme.designSystem;
@@ -641,7 +642,7 @@ class HAXCMSThemePreviewPanel extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
     this._whenThemeDefined(value);
   }
 
-  /** re-render once a theme is defined, so its design system support shows */
+  /** re-render once a theme is defined, so whether it takes a design system shows */
   _whenThemeDefined(themeTag) {
     if (
       themeTag &&
@@ -656,9 +657,7 @@ class HAXCMSThemePreviewPanel extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
 
   _designSystemValueChanged(e) {
     const value =
-      e && e.target && typeof e.target.value === "string"
-        ? e.target.value
-        : DEFAULT_DESIGN_SYSTEM;
+      e && e.target && typeof e.target.value === "string" ? e.target.value : "";
     if (value === this.selectedDesignSystem) {
       return;
     }
@@ -666,8 +665,16 @@ class HAXCMSThemePreviewPanel extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
     this._applyPreviewToManifest();
   }
 
+  /**
+   * The design system select (haxtheweb/issues#3350), shown like the
+   * Appearance setting: only for a theme that takes one. The pick previews
+   * live through the site builder, which applies manifest changes.
+   */
   _renderDesignSystemPicker() {
-    const supported = themeSupportsDesignSystems(this.selectedTheme);
+    const names = Object.keys(this._designSystems || {});
+    if (names.length === 0 || !themeAcceptsDesignSystems(this.selectedTheme)) {
+      return "";
+    }
     return html`<div class="design-system">
       <label class="picker-heading" for="design-system"
         >${this.t.designSystem}</label
@@ -676,32 +683,24 @@ class HAXCMSThemePreviewPanel extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
         id="design-system"
         class="hax-ui-select"
         aria-describedby="design-system-help"
-        .value=${supported ? this.selectedDesignSystem : DEFAULT_DESIGN_SYSTEM}
-        ?disabled=${!supported}
+        .value=${this.selectedDesignSystem}
         @change=${this._designSystemValueChanged}
       >
-        <option
-          value="${DEFAULT_DESIGN_SYSTEM}"
-          ?selected=${
-            !supported || this.selectedDesignSystem === DEFAULT_DESIGN_SYSTEM
-          }
-        >
+        <option value="" ?selected=${this.selectedDesignSystem === ""}>
           ${this.t.designSystemDefault}
         </option>
-        ${HAXCMS_DESIGN_SYSTEMS.map(
-          (system) =>
+        ${names.map(
+          (name) =>
             html`<option
-              value="${system.name}"
-              ?selected=${
-                supported && this.selectedDesignSystem === system.name
-              }
+              value="${name}"
+              ?selected=${this.selectedDesignSystem === name}
             >
-              ${system.title}
+              ${this._designSystems[name].title || name}
             </option>`,
         )}
       </select>
       <p class="description" id="design-system-help">
-        ${supported ? this.t.designSystemHelp : this.t.designSystemThemeOwn}
+        ${this.t.designSystemHelp}
       </p>
     </div>`;
   }

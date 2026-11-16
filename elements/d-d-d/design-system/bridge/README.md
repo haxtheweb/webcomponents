@@ -31,13 +31,13 @@ A design system that lives in its theme rather than on npm (for example Keepcase
 
 Every bridge is checked against the same contract, so coverage is comparable across systems.
 
-| Tier      | Mapping    | What it covers                                                                                                                      | Why                                                                                                                                                                                                                                                             |
-| --------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Structure | **locked** | spacing, font-size scale, line height, letter spacing, icon sizes, z-index, breakpoints, opacity scale, target sizes, layout widths | Authored content and block layouts are built on these numbers. Remapping them reflows existing content, and reading sizes and target sizes are accessibility decisions. A system's own spacing belongs in its theme chrome, using its own tokens.               |
-| Identity  | expected   | named colors, font families, font weights, radius, shadows, focus ring                                                              | What makes the system recognizable                                                                                                                                                                                                                              |
-| Feel      | optional   | motion durations and easing, state opacities, control and text-field heights, border widths                                         | How the system behaves and how dense its controls are. Control heights never go below the 24px minimum target.                                                                                                                                                  |
-| Semantic  | optional   | heading and body text sizes; density: surface padding, stack gap, inline gap, control padding                                       | Roles a system can size without touching the scales. Body text never goes below 16px, headings never go below body text, and heading sizes never grow as the level goes down. Density has per-token floors (8px surface padding and stack gap, 4px inline gap). |
-| Component | optional   | card radius, padding, border width and shadow; control radius; tag radius                                                           | Where a system gives a kind of component its own shape (square cards, pill buttons). Each defaults to a general DDD token, so nothing changes until a bridge maps one. Blocks with a deliberate design of their own, stop-note first among them, have no component token.                 |
+| Tier      | Mapping    | What it covers                                                                                                                      | Why                                                                                                                                                                                                                                                                                                                                                                                    |
+| --------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Structure | **locked** | spacing, font-size scale, line height, letter spacing, icon sizes, z-index, breakpoints, opacity scale, target sizes, layout widths | Authored content and block layouts are built on these numbers. Remapping them reflows existing content, and reading sizes and target sizes are accessibility decisions. A system's own spacing belongs in its theme chrome, using its own tokens.                                                                                                                                      |
+| Identity  | expected   | named colors, font families, font weights, radius, shadows, focus ring                                                              | What makes the system recognizable                                                                                                                                                                                                                                                                                                                                                     |
+| Feel      | optional   | motion durations and easing, state opacities, control and text-field heights, border widths                                         | How the system behaves and how dense its controls are. Control heights never go below the 24px minimum target.                                                                                                                                                                                                                                                                         |
+| Semantic  | optional   | heading and body text sizes; density: surface padding, stack gap, inline gap, control padding                                       | Roles a system can size without touching the scales. Body text never goes below 16px, headings never go below body text, and heading sizes never grow as the level goes down. Density has per-token floors (8px surface padding and stack gap, 4px inline gap).                                                                                                                        |
+| Component | optional   | card radius, padding, border width, shadow and background; control radius and height; tag radius                                    | Where a system gives a kind of component its own shape (square cards, pill buttons). Each defaults to a general DDD token (control height to nothing: DDD buttons size by padding), so nothing changes until a bridge maps one. Control height faces the 24px minimum target guard. Blocks with a deliberate design of their own, stop-note first among them, have no component token. |
 
 ### Paired text colors
 
@@ -53,3 +53,33 @@ The report lists every checked pair under `pairs`, with its ratio and whether it
 The generator fails when a bridge maps a locked token, maps a token the contract doesn't list (add it to a tier first), breaks a guard, points a named DDD color at a value that changes between light and dark, drops a key DDD color pair or a palette's text color pair below 4.5:1 contrast, or uses a license that can't ship with Apache-2.0. The `<system>.ddd-map.json` it writes reports coverage per tier and family, and lists which tokens stayed DDD.
 
 Changing the contract changes what every bridge may do. Do it in its own PR, then regenerate every bridge.
+
+## Icons
+
+HAX blocks and themes draw icons by name (`icons:search`, `editor:format-bold`) through `simple-icon`. A bridge whose system ships an icon set under a shippable license can draw those names in its own set while it is active:
+
+```json
+"icons": {
+  "package": "@carbon/icons",
+  "version": "11.92.0",
+  "license": "Apache-2.0",
+  "path": "svg/32/{name}.svg",
+  "map": "carbon"
+}
+```
+
+- `map` names a column of [`icon-maps.json`](icon-maps.json): HAX icon name → the set's closest icon **by meaning**. Material Symbols map by name (HAX's Material icons share their lineage); the other columns are a reviewed table of the names blocks and themes use.
+- The generator packs the icon package at its pinned version, checks its license like any source, refuses an SVG with script, event handlers or external links, copies only the mapped icons into `<theme>/icons/` and writes `lib/<Prefix>Icons.js`. `--check` also fails when an icon is out of date or no longer mapped.
+- `lib/<Prefix>DesignSystem.js` passes `icons: <Prefix>Icons` to `addDesignSystem`. The design system manager hands the aliases to `SimpleIconset.setAliases()` while that system is active, and clears them for any other.
+- Content keeps storing HAX names, so it renders the same in every theme. A name the column doesn't list keeps HAX's own icon, so nothing ever disappears. HAX's own sets (`hax:`, `lrn:`, brand logos, stop-note icons) are never mapped.
+- Credit the set in the theme's `NOTICE`.
+
+| System     | Set                                    | License                         |
+| ---------- | -------------------------------------- | ------------------------------- |
+| Carbon     | `@carbon/icons`                        | Apache-2.0                      |
+| Material 3 | `@material-symbols/svg-400` (outlined) | Apache-2.0                      |
+| Spectrum 2 | `@adobe/spectrum-css-workflow-icons`   | Apache-2.0                      |
+| shadcn/ui  | `lucide-static`                        | ISC (Feather-derived icons MIT) |
+| Tailwind   | `heroicons` (24 outline)               | MIT                             |
+
+PatternFly, USWDS, Web Awesome and Keepcase keep HAX's icons: PatternFly's icons are Font Awesome and Red Hat Design System icons, both Creative Commons licensed, and the others have no icon set of their own that can ship.

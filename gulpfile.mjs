@@ -586,6 +586,8 @@ import { execSync } from 'child_process';
 gulp.task("theme-discovery", async () => {
   try {
     execSync('node scripts/theme-discovery.mjs', { stdio: 'inherit' });
+    // design systems a site can pick separately from its theme
+    execSync('node scripts/design-system-discovery.mjs', { stdio: 'inherit' });
     console.log('✅ Theme discovery completed successfully');
     console.log('');
     console.log('📷 Theme Screenshots:');

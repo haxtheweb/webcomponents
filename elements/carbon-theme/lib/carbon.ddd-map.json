@@ -147,27 +147,22 @@
     },
     "component": {
       "mapping": "optional",
-      "percent": 0,
+      "percent": 75,
       "families": {
         "card": {
-          "mapped": 0,
-          "total": 4,
-          "keptDDD": [
-            "--ddd-card-radius",
-            "--ddd-card-padding",
-            "--ddd-card-border-width",
-            "--ddd-card-shadow"
-          ]
+          "mapped": 4,
+          "total": 5,
+          "keptDDD": ["--ddd-card-radius"]
         },
         "control": {
-          "mapped": 0,
-          "total": 1,
+          "mapped": 1,
+          "total": 2,
           "keptDDD": ["--ddd-control-radius"]
         },
         "tag": {
-          "mapped": 0,
+          "mapped": 1,
           "total": 1,
-          "keptDDD": ["--ddd-tag-radius"]
+          "keptDDD": []
         }
       }
     }
@@ -182,7 +177,7 @@
     {
       "fg": "--ddd-theme-default-link",
       "bg": "--ddd-theme-default-white",
-      "ratio": 5,
+      "ratio": 7.79,
       "min": 4.5
     },
     {
@@ -237,6 +232,60 @@
       "fg": "--ddd-theme-default-coalyGray",
       "bg": "--ddd-theme-default-limestoneMaxLight",
       "ratio": 16.45,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-link",
+      "bg": "--ddd-theme-default-limestoneMaxLight",
+      "ratio": 7.09,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-link",
+      "bg": "--ddd-theme-default-limestoneLight",
+      "ratio": 5.9,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-limestoneGray",
+      "bg": "--ddd-theme-default-nittanyNavy",
+      "ratio": 4.76,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-limestoneGray",
+      "bg": "--ddd-theme-default-potentialMidnight",
+      "ratio": 6.34,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-nittanyNavy",
+      "bg": "--ddd-theme-default-skyBlue",
+      "ratio": 4.81,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-potentialMidnight",
+      "bg": "--ddd-theme-default-creekTeal",
+      "ratio": 4.52,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-potentialMidnight",
+      "bg": "--ddd-theme-default-inventOrange",
+      "ratio": 6.13,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-potentialMidnight",
+      "bg": "--ddd-theme-default-discoveryCoral",
+      "ratio": 6.36,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-potentialMidnight",
+      "bg": "--ddd-theme-default-keystoneYellow",
+      "ratio": 8.96,
       "min": 4.5
     }
   ],
@@ -742,10 +791,10 @@
     {
       "ddd": "--ddd-theme-default-link",
       "tier": "identity",
-      "token": "--carbon-blue-60",
-      "light": "#0f62fe",
-      "dark": "#0f62fe",
-      "note": "Carbon link-primary (white theme)"
+      "token": "--carbon-blue-70",
+      "light": "#0043ce",
+      "dark": "#0043ce",
+      "note": "Carbon link-primary-hover (white theme): link-primary (blue-60) is under 4.5:1 on the gray-20 surfaces HAX blocks put links on"
     },
     {
       "ddd": "--ddd-theme-default-linkLight",
@@ -1146,6 +1195,61 @@
       "light": "1rem",
       "dark": "1rem",
       "note": "Carbon button inline-start padding, spacing-05"
+    },
+    {
+      "ddd": "--ddd-card-padding",
+      "tier": "component",
+      "token": null,
+      "light": "16px",
+      "dark": "16px",
+      "note": "Carbon tile padding, spacing-05 (a px value: the upstream token is in rem, and HAX's root font size is 20px, not 16px)"
+    },
+    {
+      "ddd": "--ddd-card-border-width",
+      "tier": "component",
+      "token": null,
+      "light": "0",
+      "dark": "0",
+      "note": "Carbon tiles have no border; they sit on layer-01 (--ddd-card-background)"
+    },
+    {
+      "ddd": "--ddd-card-shadow",
+      "tier": "component",
+      "token": null,
+      "light": "none",
+      "dark": "none",
+      "note": "Carbon tiles are flat"
+    },
+    {
+      "ddd": "--ddd-control-height",
+      "tier": "component",
+      "token": null,
+      "light": "48px",
+      "dark": "48px",
+      "note": "Carbon lg button, layout-size-height-lg (a px value: the upstream token is in rem, and HAX's root font size is 20px, not 16px)"
+    },
+    {
+      "ddd": "--ddd-tag-radius",
+      "tier": "component",
+      "token": null,
+      "light": "999px",
+      "dark": "999px",
+      "note": "Carbon tags are the one rounded shape"
+    },
+    {
+      "ddd": "--ddd-card-background",
+      "tier": "component",
+      "token": "--cds-layer-01",
+      "light": "#f4f4f4",
+      "dark": "#262626",
+      "note": "tiles sit on layer-01, #f4f4f4 light, #262626 dark"
     }
-  ]
+  ],
+  "icons": {
+    "package": "@carbon/icons",
+    "version": "11.92.0",
+    "license": "Apache-2.0",
+    "map": "carbon",
+    "mapped": 159
+  }
 }

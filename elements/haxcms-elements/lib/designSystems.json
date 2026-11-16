@@ -1,0 +1,66 @@
+{
+  "carbon": {
+    "name": "carbon",
+    "title": "Carbon",
+    "homepage": "https://carbondesignsystem.com",
+    "theme": "carbon-theme",
+    "path": "@haxtheweb/carbon-theme/lib/CarbonDesignSystem.js",
+    "activate": "activateCarbonDesignSystem"
+  },
+  "material": {
+    "name": "material",
+    "title": "Material 3",
+    "homepage": "https://m3.material.io",
+    "theme": "material-theme",
+    "path": "@haxtheweb/material-theme/lib/MaterialDesignSystem.js",
+    "activate": "activateMaterialDesignSystem"
+  },
+  "patternfly": {
+    "name": "patternfly",
+    "title": "PatternFly",
+    "homepage": "https://www.patternfly.org",
+    "theme": "patternfly-theme",
+    "path": "@haxtheweb/patternfly-theme/lib/PatternflyDesignSystem.js",
+    "activate": "activatePatternflyDesignSystem"
+  },
+  "shadcn": {
+    "name": "shadcn",
+    "title": "shadcn/ui",
+    "homepage": "https://ui.shadcn.com",
+    "theme": "shadcn-theme",
+    "path": "@haxtheweb/shadcn-theme/lib/ShadcnDesignSystem.js",
+    "activate": "activateShadcnDesignSystem"
+  },
+  "spectrum": {
+    "name": "spectrum",
+    "title": "Spectrum",
+    "homepage": "https://spectrum.adobe.com",
+    "theme": "spectrum-theme",
+    "path": "@haxtheweb/spectrum-theme/lib/SpectrumDesignSystem.js",
+    "activate": "activateSpectrumDesignSystem"
+  },
+  "tailwind": {
+    "name": "tailwind",
+    "title": "Tailwind",
+    "homepage": "https://tailwindcss.com",
+    "theme": "tailwind-theme",
+    "path": "@haxtheweb/tailwind-theme/lib/TailwindDesignSystem.js",
+    "activate": "activateTailwindDesignSystem"
+  },
+  "uswds": {
+    "name": "uswds",
+    "title": "USWDS",
+    "homepage": "https://designsystem.digital.gov",
+    "theme": "uswds-theme",
+    "path": "@haxtheweb/uswds-theme/lib/UswdsDesignSystem.js",
+    "activate": "activateUswdsDesignSystem"
+  },
+  "webawesome": {
+    "name": "webawesome",
+    "title": "Web Awesome",
+    "homepage": "https://webawesome.com",
+    "theme": "webawesome-theme",
+    "path": "@haxtheweb/webawesome-theme/lib/WebawesomeDesignSystem.js",
+    "activate": "activateWebawesomeDesignSystem"
+  }
+}

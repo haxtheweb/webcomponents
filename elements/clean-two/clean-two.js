@@ -950,14 +950,6 @@ class CleanTwo extends LTIResizingMixin(
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */
-  /**
-   * The site can pick this theme's design system separately (Carbon,
-   * PatternFly, ...): its chrome reads only --ddd-* tokens, so any
-   * DDD-capable system restyles it (haxtheweb/issues#3350).
-   */
-  static get designSystems() {
-    return "any";
-  }
   static get tag() {
     return "clean-two";
   }

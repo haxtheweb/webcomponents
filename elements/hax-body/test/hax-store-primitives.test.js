@@ -865,6 +865,25 @@ describe("hax-store primitives + registration wiring", () => {
       expect(content).to.contain('sandbox="allow-scripts allow-same-origin"');
     });
 
+    it("drops attributes whose value is the text null", async () => {
+      const div = globalThis.document.createElement("div");
+      div.setAttribute("data-thing", "null");
+      div.setAttribute("title", "null");
+      div.textContent = "x";
+      const content = await HAXStore.nodeToContent(div);
+      expect(content).to.not.contain("data-thing");
+      expect(content).to.not.contain('title="null"');
+    });
+
+    it("keeps a page-break title that is the text null", async () => {
+      const pb = globalThis.document.createElement("page-break");
+      pb.setAttribute("title", "null");
+      pb.setAttribute("data-other", "null");
+      const content = await HAXStore.nodeToContent(pb);
+      expect(content).to.contain('title="null"');
+      expect(content).to.not.contain("data-other");
+    });
+
     it("unset saveOptions attributes are dropped from output", async () => {
       HAXStore.elementList = {
         h2: { saveOptions: { unsetAttributes: ["data-original-level"] } },

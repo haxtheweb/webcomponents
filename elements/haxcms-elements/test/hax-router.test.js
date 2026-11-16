@@ -43,6 +43,17 @@ describe("HaxRouter route matching", () => {
     expect(match.route.name).to.equal("about");
   });
 
+  it("_matchRoute matches a slug with letters outside ASCII from its percent-encoded address", () => {
+    router.routes = [
+      { path: "caf\u00e9/\u65e5\u672c", component: "page-e", name: "item-1" },
+      { path: "/(.*)", component: "notfound-e", name: "404" },
+    ];
+    const match = router._matchRoute("/caf%C3%A9/%E6%97%A5%E6%9C%AC");
+    expect(match.route.name).to.equal("item-1");
+    // a path that is not valid percent-encoding falls through, without a throw
+    expect(router._matchRoute("/caf%E9%").route.name).to.equal("404");
+  });
+
   it("_matchRoute matches wildcard /(.*) with remaining params", () => {
     router.routes = [{ path: "/(.*)", component: "notfound-e", name: "404" }];
     const match = router._matchRoute("/deep/path/here");

@@ -11,6 +11,5 @@
   "openAppearanceSettings": "Open Appearance Settings",
   "designSystem": "Design system",
   "designSystemDefault": "DDD (default)",
-  "designSystemHelp": "Color, type, corners and density. The theme still decides the layout.",
-  "designSystemThemeOwn": "This theme comes with its own design system, so it can't be changed here."
+  "designSystemHelp": "Color, type, corners and density. The theme still decides the layout."
 }

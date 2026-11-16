@@ -150,18 +150,19 @@
       "families": {
         "card": {
           "mapped": 0,
-          "total": 4,
+          "total": 5,
           "keptDDD": [
             "--ddd-card-radius",
             "--ddd-card-padding",
             "--ddd-card-border-width",
-            "--ddd-card-shadow"
+            "--ddd-card-shadow",
+            "--ddd-card-background"
           ]
         },
         "control": {
           "mapped": 0,
-          "total": 1,
-          "keptDDD": ["--ddd-control-radius"]
+          "total": 2,
+          "keptDDD": ["--ddd-control-radius", "--ddd-control-height"]
         },
         "tag": {
           "mapped": 0,
@@ -236,6 +237,60 @@
       "fg": "--ddd-theme-default-coalyGray",
       "bg": "--ddd-theme-default-limestoneMaxLight",
       "ratio": 15.33,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-link",
+      "bg": "--ddd-theme-default-limestoneMaxLight",
+      "ratio": 8.91,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-link",
+      "bg": "--ddd-theme-default-limestoneLight",
+      "ratio": 7.87,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-limestoneGray",
+      "bg": "--ddd-theme-default-nittanyNavy",
+      "ratio": 5.59,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-limestoneGray",
+      "bg": "--ddd-theme-default-potentialMidnight",
+      "ratio": 8.69,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-nittanyNavy",
+      "bg": "--ddd-theme-default-skyBlue",
+      "ratio": 8.3,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-potentialMidnight",
+      "bg": "--ddd-theme-default-creekTeal",
+      "ratio": 7.8,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-potentialMidnight",
+      "bg": "--ddd-theme-default-inventOrange",
+      "ratio": 7.37,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-potentialMidnight",
+      "bg": "--ddd-theme-default-discoveryCoral",
+      "ratio": 4.61,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-potentialMidnight",
+      "bg": "--ddd-theme-default-keystoneYellow",
+      "ratio": 11.55,
       "min": 4.5
     }
   ],

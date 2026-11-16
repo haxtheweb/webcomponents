@@ -13,18 +13,15 @@ import {
 } from "@haxtheweb/utils/lib/storage.js";
 import { buildPageContentHTML } from "./utils/page-content-html.js";
 import {
-  DEFAULT_DESIGN_SYSTEM,
-  activateSiteDesignSystem,
-  getDesignSystemEntry,
-  siteDesignSystemName,
-  themeSupportsDesignSystems,
-} from "./utils/haxcms-design-systems.js";
-import {
   neutralizeStrayScripts,
   sanitizeNodeTree,
 } from "@haxtheweb/utils/lib/sanitize.js";
 import { autorun, toJS } from "mobx";
 import { store, HAXcmsStore } from "./haxcms-site-store.js";
+import {
+  applySiteDesignSystem,
+  siteDesignSystemName,
+} from "./utils/HAXCMSDesignSystems.js";
 import "./haxcms-site-router.js";
 import "@haxtheweb/simple-progress/simple-progress.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
@@ -743,88 +740,13 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       }
       // wipe out what we got
       wipeSlot(this, "*");
-      // the next theme starts from plain DDD: a bridged theme activates its
-      // own system as it is created, any other is DDD until the site's
-      // design system is applied to it below
-      this._releaseSiteDesignSystem();
       store.themeElement = globalThis.document.createElement(newValue);
       // apply a class so that we can write generic CSS selectors in integrations
       store.themeElement.classList.add("haxcms-theme-element");
       this._applyThemePalette(store.themeElement, this.themeData);
       this.appendChild(store.themeElement);
       this._scheduleThemePaletteReapply(this.themeData);
-      this._applySiteDesignSystem(this.themeData);
     }
-  }
-
-  _designSystemManager() {
-    if (
-      globalThis.DesignSystemManager &&
-      typeof globalThis.DesignSystemManager.requestAvailability === "function"
-    ) {
-      return globalThis.DesignSystemManager.requestAvailability();
-    }
-    return null;
-  }
-
-  /** hand the page back to plain DDD if the site set a design system */
-  _releaseSiteDesignSystem() {
-    if (!this.__siteDesignSystem) {
-      return;
-    }
-    this.__siteDesignSystem = "";
-    const manager = this._designSystemManager();
-    if (manager && manager.systems && manager.systems[DEFAULT_DESIGN_SYSTEM]) {
-      manager.active = DEFAULT_DESIGN_SYSTEM;
-    }
-  }
-
-  /**
-   * Apply the site's design system (metadata.theme.designSystem,
-   * haxtheweb/issues#3350) once the theme is defined. Only themes that opt
-   * in (`static get designSystems() { return "any"; }`) take it; bridged
-   * themes keep their own. With no setting nothing happens, so a site
-   * without one behaves exactly as before, and only the chosen system's
-   * module is ever fetched.
-   */
-  async _applySiteDesignSystem(themeData) {
-    this.__designSystemStamp = this.__designSystemStamp + 1;
-    const stamp = this.__designSystemStamp;
-    const name = siteDesignSystemName(themeData);
-    const tag =
-      themeData && typeof themeData.element === "string" && themeData.element
-        ? themeData.element
-        : this.themeName;
-    if (name === DEFAULT_DESIGN_SYSTEM && !this.__siteDesignSystem) {
-      return;
-    }
-    if (
-      tag &&
-      globalThis.customElements &&
-      !globalThis.customElements.get(tag)
-    ) {
-      await globalThis.customElements.whenDefined(tag);
-    }
-    if (stamp !== this.__designSystemStamp) {
-      return;
-    }
-    if (name !== DEFAULT_DESIGN_SYSTEM && themeSupportsDesignSystems(tag)) {
-      if (
-        (await activateSiteDesignSystem(name)) &&
-        stamp === this.__designSystemStamp
-      ) {
-        this.__siteDesignSystem = name;
-      }
-      return;
-    }
-    // no setting any more, or a theme that keeps its own: release ours
-    // unless this theme is the bridge that system belongs to
-    const entry = getDesignSystemEntry(this.__siteDesignSystem);
-    if (entry && entry.theme === tag) {
-      this.__siteDesignSystem = "";
-      return;
-    }
-    this._releaseSiteDesignSystem();
   }
 
   _getThemePalette(themeData) {
@@ -1025,10 +947,6 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     this.themeLoaded = false;
     this.__themePaletteReapplyTimer = null;
     this.__themePaletteReapplyStamp = 0;
-    // haxtheweb/issues#3350: the design system this site set over its
-    // theme ("" when the theme's own, or plain DDD, is in effect)
-    this.__siteDesignSystem = "";
-    this.__designSystemStamp = 0;
     this.outlineLocation = "";
     this.activeItemLocation = "";
     if (HAXcmsStore.storePieces) {
@@ -1559,9 +1477,9 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     if (newValue) {
       this._applyThemePalette(store.themeElement, newValue);
       this._scheduleThemePaletteReapply(newValue);
-      this._applySiteDesignSystem(newValue);
       this.themeLoaded = false;
       let theme = newValue;
+      this._applyDesignSystem(newValue);
       // create the 'theme' as a new element
       // weird but definition already here so we should be able
       // to just use this without an import, it's possible..
@@ -1572,12 +1490,12 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         // already registered (ex: a demo or page that imported the theme
         // itself), so there is nothing to import; reveal the slot
         this.__imported[theme.element] = theme.element;
-        this.themeLoaded = true;
+        this._revealTheme();
       } else {
         // global will handle this
         if (globalThis.WCAutoload) {
           this.__imported[theme.element] = theme.element;
-          this.themeLoaded = true;
+          this._revealTheme();
           setTimeout(() => {
             globalThis.WCAutoload.process();
           }, 5);
@@ -1588,7 +1506,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
             import(new URL("./../../../../../" + newValue.path, import.meta.url).href).then((_e) => {
               // add it into ourselves so it unpacks and we kick this off!
               this.__imported[theme.element] = theme.element;
-              this.themeLoaded = true;
+              this._revealTheme();
             }).catch((err) => {
               // the path did not resolve from here (ex: monorepo demos served
               // from the repo root). Rather than leaving the slot hidden
@@ -1596,17 +1514,54 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
               console.warn(`haxcms-site-builder: could not import theme ${theme.element} from ${newValue.path}`, err);
               globalThis.customElements.whenDefined(theme.element).then(() => {
                 this.__imported[theme.element] = theme.element;
-                this.themeLoaded = true;
+                this._revealTheme();
               });
             });
           } catch {
             // error in the event this is a double registration
             // also strange to be able to reach this but technically possible
-            this.themeLoaded = true;
+            this._revealTheme();
           }
         }
       }
     }
+  }
+  /**
+   * The site's design system (metadata.theme.designSystem), for themes that
+   * accept one. Its module loads alongside the theme; when the site has
+   * picked one, the theme is revealed once it is active (or after a short
+   * wait, so a slow network never hides the page), so there's no flash of
+   * DDD colors. Sites on DDD wait for nothing.
+   */
+  _applyDesignSystem(themeData) {
+    const name = siteDesignSystemName(themeData);
+    const applied = applySiteDesignSystem(name, themeData.element).catch(
+      (e) => {
+        console.warn(e);
+      },
+    );
+    this.__designSystemGate = name
+      ? Promise.race([
+          applied,
+          new Promise((resolve) => {
+            setTimeout(resolve, 1500);
+          }),
+        ])
+      : null;
+  }
+
+  /** show the theme, after the site's design system when it has one */
+  _revealTheme() {
+    const gate = this.__designSystemGate;
+    if (!gate) {
+      this.themeLoaded = true;
+      return;
+    }
+    gate.then(() => {
+      if (gate === this.__designSystemGate) {
+        this.themeLoaded = true;
+      }
+    });
   }
   /**
    * Idle-warm the HAX editor closure for logged-in users so entering edit
