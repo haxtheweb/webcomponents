@@ -450,4 +450,51 @@ describe("simple-cta shared vocabulary", () => {
         .borderTopLeftRadius,
     ).to.equal("999px");
   });
+
+  it("keeps its padding when no control height is set", async () => {
+    const el = await fixture(
+      html`<simple-cta link="#a" label="Go"></simple-cta>`,
+    );
+    const btn = el.shadowRoot.querySelector(".btn");
+    const style = globalThis.getComputedStyle(btn);
+    // 0.75rem, whatever the root font size is
+    const rem = parseFloat(
+      globalThis.getComputedStyle(globalThis.document.documentElement).fontSize,
+    );
+    expect(parseFloat(style.paddingTop)).to.equal(0.75 * rem);
+    expect(style.minHeight).to.equal("0px");
+  });
+
+  it("takes a design system's control height, at every size", async () => {
+    const el = await fixture(
+      html`<simple-cta
+        link="#a"
+        label="Go"
+        style="--ddd-control-height: 64px"
+      ></simple-cta>`,
+    );
+    const small = await fixture(
+      html`<simple-cta
+        link="#a"
+        label="Go"
+        size="s"
+        style="--ddd-control-height: 64px"
+      ></simple-cta>`,
+    );
+    const large = await fixture(
+      html`<simple-cta
+        link="#a"
+        label="Go"
+        large
+        style="--ddd-control-height: 64px"
+      ></simple-cta>`,
+    );
+    const height = (cta) =>
+      Math.round(
+        cta.shadowRoot.querySelector(".btn").getBoundingClientRect().height,
+      );
+    expect(height(el)).to.equal(64);
+    expect(height(small)).to.equal(56);
+    expect(height(large)).to.equal(72);
+  });
 });

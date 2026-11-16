@@ -136,26 +136,22 @@
     },
     "component": {
       "mapping": "optional",
-      "percent": 33,
+      "percent": 88,
       "families": {
         "card": {
-          "mapped": 1,
-          "total": 4,
-          "keptDDD": [
-            "--ddd-card-padding",
-            "--ddd-card-border-width",
-            "--ddd-card-shadow"
-          ]
+          "mapped": 4,
+          "total": 5,
+          "keptDDD": ["--ddd-card-background"]
         },
         "control": {
-          "mapped": 1,
-          "total": 1,
+          "mapped": 2,
+          "total": 2,
           "keptDDD": []
         },
         "tag": {
-          "mapped": 0,
+          "mapped": 1,
           "total": 1,
-          "keptDDD": ["--ddd-tag-radius"]
+          "keptDDD": []
         }
       }
     }
@@ -170,7 +166,7 @@
     {
       "fg": "--ddd-theme-default-link",
       "bg": "--ddd-theme-default-white",
-      "ratio": 5.57,
+      "ratio": 8.33,
       "min": 4.5
     },
     {
@@ -225,6 +221,60 @@
       "fg": "--ddd-theme-default-coalyGray",
       "bg": "--ddd-theme-default-limestoneMaxLight",
       "ratio": 16.31,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-link",
+      "bg": "--ddd-theme-default-limestoneMaxLight",
+      "ratio": 7.44,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-link",
+      "bg": "--ddd-theme-default-limestoneLight",
+      "ratio": 6.31,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-limestoneGray",
+      "bg": "--ddd-theme-default-nittanyNavy",
+      "ratio": 5,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-limestoneGray",
+      "bg": "--ddd-theme-default-potentialMidnight",
+      "ratio": 6.4,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-nittanyNavy",
+      "bg": "--ddd-theme-default-skyBlue",
+      "ratio": 6.95,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-potentialMidnight",
+      "bg": "--ddd-theme-default-creekTeal",
+      "ratio": 5.33,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-potentialMidnight",
+      "bg": "--ddd-theme-default-inventOrange",
+      "ratio": 6.93,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-potentialMidnight",
+      "bg": "--ddd-theme-default-discoveryCoral",
+      "ratio": 5.64,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-potentialMidnight",
+      "bg": "--ddd-theme-default-keystoneYellow",
+      "ratio": 10.69,
       "min": 4.5
     }
   ],
@@ -289,7 +339,7 @@
       "primary": 8,
       "color": "--ddd-theme-default-skyBlue",
       "on": "black",
-      "ratio": 6.61,
+      "ratio": 11.58,
       "source": "ddd"
     },
     {
@@ -458,10 +508,10 @@
     {
       "ddd": "--ddd-theme-default-skyBlue",
       "tier": "identity",
-      "token": "--pf-t--color--blue--40",
-      "light": "#4394e5",
-      "dark": "#4394e5",
-      "note": ""
+      "token": "--pf-t--color--blue--30",
+      "light": "#92c5f9",
+      "dark": "#92c5f9",
+      "note": "one step lighter than pf-t--color--blue--40 so DDD's nittanyNavy ink reads on it (4.5:1), as blocks pair them"
     },
     {
       "ddd": "--ddd-theme-default-skyLight",
@@ -714,10 +764,10 @@
     {
       "ddd": "--ddd-theme-default-link",
       "tier": "identity",
-      "token": "--pf-t--color--blue--50",
-      "light": "#0066cc",
-      "dark": "#0066cc",
-      "note": "PatternFly light link color"
+      "token": "--pf-t--color--blue--60",
+      "light": "#004d99",
+      "dark": "#004d99",
+      "note": "PatternFly link hover color: the light link color (blue-50) is under 4.5:1 on the gray-20 surfaces HAX blocks put links on"
     },
     {
       "ddd": "--ddd-theme-default-linkLight",
@@ -1094,6 +1144,46 @@
       "light": "999px",
       "dark": "999px",
       "note": "buttons are pills"
+    },
+    {
+      "ddd": "--ddd-card-padding",
+      "tier": "component",
+      "token": null,
+      "light": "24px",
+      "dark": "24px",
+      "note": "card body padding, spacer--lg (a px value: the upstream token is in rem, and HAX's root font size is 20px, not 16px)"
+    },
+    {
+      "ddd": "--ddd-card-border-width",
+      "tier": "component",
+      "token": null,
+      "light": "1px",
+      "dark": "1px",
+      "note": "card border"
+    },
+    {
+      "ddd": "--ddd-card-shadow",
+      "tier": "component",
+      "token": null,
+      "light": "none",
+      "dark": "none",
+      "note": "cards are bordered, not raised"
+    },
+    {
+      "ddd": "--ddd-control-height",
+      "tier": "component",
+      "token": null,
+      "light": "37px",
+      "dark": "37px",
+      "note": "PatternFly button: 6px block padding around 24px line height, 1px border"
+    },
+    {
+      "ddd": "--ddd-tag-radius",
+      "tier": "component",
+      "token": "--pf-t--global--border--radius--pill",
+      "light": "999px",
+      "dark": "999px",
+      "note": "labels are pills"
     }
   ]
 }

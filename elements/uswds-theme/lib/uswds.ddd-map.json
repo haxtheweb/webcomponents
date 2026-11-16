@@ -164,27 +164,22 @@
     },
     "component": {
       "mapping": "optional",
-      "percent": 0,
+      "percent": 88,
       "families": {
         "card": {
-          "mapped": 0,
-          "total": 4,
-          "keptDDD": [
-            "--ddd-card-radius",
-            "--ddd-card-padding",
-            "--ddd-card-border-width",
-            "--ddd-card-shadow"
-          ]
+          "mapped": 4,
+          "total": 5,
+          "keptDDD": ["--ddd-card-background"]
         },
         "control": {
-          "mapped": 0,
-          "total": 1,
-          "keptDDD": ["--ddd-control-radius"]
+          "mapped": 2,
+          "total": 2,
+          "keptDDD": []
         },
         "tag": {
-          "mapped": 0,
+          "mapped": 1,
           "total": 1,
-          "keptDDD": ["--ddd-tag-radius"]
+          "keptDDD": []
         }
       }
     }
@@ -255,6 +250,60 @@
       "bg": "--ddd-theme-default-limestoneMaxLight",
       "ratio": 15.11,
       "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-link",
+      "bg": "--ddd-theme-default-limestoneMaxLight",
+      "ratio": 5.9,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-link",
+      "bg": "--ddd-theme-default-limestoneLight",
+      "ratio": 5.13,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-limestoneGray",
+      "bg": "--ddd-theme-default-nittanyNavy",
+      "ratio": 5.84,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-limestoneGray",
+      "bg": "--ddd-theme-default-potentialMidnight",
+      "ratio": 8.25,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-nittanyNavy",
+      "bg": "--ddd-theme-default-skyBlue",
+      "ratio": 5.81,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-potentialMidnight",
+      "bg": "--ddd-theme-default-creekTeal",
+      "ratio": 6.08,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-potentialMidnight",
+      "bg": "--ddd-theme-default-inventOrange",
+      "ratio": 6.07,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-potentialMidnight",
+      "bg": "--ddd-theme-default-discoveryCoral",
+      "ratio": 5.91,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-potentialMidnight",
+      "bg": "--ddd-theme-default-keystoneYellow",
+      "ratio": 8.2,
+      "min": 4.5
     }
   ],
   "pairs": [
@@ -297,7 +346,7 @@
       "primary": 5,
       "color": "--ddd-theme-default-limestoneGray",
       "on": "black",
-      "ratio": 6.69,
+      "ratio": 12.74,
       "source": "ddd"
     },
     {
@@ -311,14 +360,14 @@
       "primary": 7,
       "color": "--ddd-theme-default-creekTeal",
       "on": "black",
-      "ratio": 4.61,
+      "ratio": 9.38,
       "source": "ddd"
     },
     {
       "primary": 8,
       "color": "--ddd-theme-default-skyBlue",
       "on": "black",
-      "ratio": 9.39,
+      "ratio": 12.67,
       "source": "ddd"
     },
     {
@@ -463,10 +512,10 @@
     {
       "ddd": "--ddd-theme-default-skyBlue",
       "tier": "identity",
-      "token": "--usa-cyan-vivid-30",
-      "light": "#00bde3",
-      "dark": "#00bde3",
-      "note": "accent-cool"
+      "token": "--usa-cyan-vivid-20",
+      "light": "#52daf2",
+      "dark": "#52daf2",
+      "note": "accent-cool; one step lighter than usa-cyan-vivid-30 so DDD's nittanyNavy ink reads on it (4.5:1), as blocks pair them"
     },
     {
       "ddd": "--ddd-theme-default-skyLight",
@@ -535,10 +584,10 @@
     {
       "ddd": "--ddd-theme-default-limestoneGray",
       "tier": "identity",
-      "token": "--usa-gray-cool-40",
-      "light": "#8d9297",
-      "dark": "#8d9297",
-      "note": ""
+      "token": "--usa-gray-cool-20",
+      "light": "#c6cace",
+      "dark": "#c6cace",
+      "note": "muted text on the dark brand surfaces needs 4.5:1; gray-cool-40 and the next step are under it"
     },
     {
       "ddd": "--ddd-theme-default-limestoneLight",
@@ -655,10 +704,10 @@
     {
       "ddd": "--ddd-theme-default-creekTeal",
       "tier": "identity",
-      "token": "--usa-mint-cool-vivid-50",
-      "light": "#008480",
-      "dark": "#008480",
-      "note": ""
+      "token": "--usa-mint-cool-vivid-30",
+      "light": "#1dc2ae",
+      "dark": "#1dc2ae",
+      "note": "one step lighter than usa-mint-cool-vivid-50 so DDD's potentialMidnight ink reads on it (4.5:1), as blocks pair them"
     },
     {
       "ddd": "--ddd-theme-default-creekLight",
@@ -1043,6 +1092,62 @@
       "light": "20px",
       "dark": "20px",
       "note": "usa-button padding: units(1.5) units(2.5)"
+    },
+    {
+      "ddd": "--ddd-card-radius",
+      "tier": "component",
+      "token": null,
+      "light": "8px",
+      "dark": "8px",
+      "note": "usa-card, $theme-card-border-radius lg"
+    },
+    {
+      "ddd": "--ddd-card-padding",
+      "tier": "component",
+      "token": null,
+      "light": "24px",
+      "dark": "24px",
+      "note": "usa-card body padding, units(3)"
+    },
+    {
+      "ddd": "--ddd-card-border-width",
+      "tier": "component",
+      "token": null,
+      "light": "2px",
+      "dark": "2px",
+      "note": "usa-card border, $theme-card-border-width"
+    },
+    {
+      "ddd": "--ddd-card-shadow",
+      "tier": "component",
+      "token": null,
+      "light": "none",
+      "dark": "none",
+      "note": "usa-card is bordered, not raised"
+    },
+    {
+      "ddd": "--ddd-control-radius",
+      "tier": "component",
+      "token": null,
+      "light": "4px",
+      "dark": "4px",
+      "note": "usa-button, $theme-button-border-radius md"
+    },
+    {
+      "ddd": "--ddd-control-height",
+      "tier": "component",
+      "token": null,
+      "light": "44px",
+      "dark": "44px",
+      "note": "usa-button, touch target"
+    },
+    {
+      "ddd": "--ddd-tag-radius",
+      "tier": "component",
+      "token": null,
+      "light": "2px",
+      "dark": "2px",
+      "note": "usa-tag, $theme-border-radius-sm"
     }
   ]
 }

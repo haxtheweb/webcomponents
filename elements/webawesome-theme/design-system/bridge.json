@@ -123,7 +123,8 @@
       "token": "--wa-color-blue-80"
     },
     "--ddd-theme-default-skyBlue": {
-      "token": "--wa-color-blue-70"
+      "token": "--wa-color-blue-80",
+      "note": "one step lighter than wa-color-blue-70 so DDD's nittanyNavy ink reads on it (4.5:1), as blocks pair them"
     },
     "--ddd-theme-default-skyLight": {
       "token": "--wa-color-blue-90"
@@ -152,7 +153,8 @@
       "value": "white"
     },
     "--ddd-theme-default-limestoneGray": {
-      "token": "--wa-color-gray-60"
+      "token": "--wa-color-gray-80",
+      "note": "muted text on the dark brand surfaces needs 4.5:1; gray-60 and the next step are under it"
     },
     "--ddd-theme-default-limestoneLight": {
       "token": "--wa-color-gray-90"
@@ -401,6 +403,22 @@
     "--ddd-control-radius": {
       "token": "--wa-form-control-border-radius",
       "note": "buttons and form controls"
+    },
+    "--ddd-card-padding": {
+      "value": "24px",
+      "note": "card spacing, space-l (a px value: the upstream token is in rem, and HAX's root font size is 20px, not 16px)"
+    },
+    "--ddd-card-shadow": {
+      "value": "none",
+      "note": "cards are bordered, not raised"
+    },
+    "--ddd-control-height": {
+      "value": "40px",
+      "note": "form controls and buttons at medium size"
+    },
+    "--ddd-tag-radius": {
+      "token": "--wa-border-radius-pill",
+      "note": "tags and badges are pills"
     }
   },
   "extraTokens": [

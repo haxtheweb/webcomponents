@@ -129,18 +129,19 @@
       "families": {
         "card": {
           "mapped": 0,
-          "total": 4,
+          "total": 5,
           "keptDDD": [
             "--ddd-card-radius",
             "--ddd-card-padding",
             "--ddd-card-border-width",
-            "--ddd-card-shadow"
+            "--ddd-card-shadow",
+            "--ddd-card-background"
           ]
         },
         "control": {
           "mapped": 0,
-          "total": 1,
-          "keptDDD": ["--ddd-control-radius"]
+          "total": 2,
+          "keptDDD": ["--ddd-control-radius", "--ddd-control-height"]
         },
         "tag": {
           "mapped": 0,
@@ -216,6 +217,60 @@
       "bg": "--ddd-theme-default-limestoneMaxLight",
       "ratio": 16.98,
       "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-link",
+      "bg": "--ddd-theme-default-limestoneMaxLight",
+      "ratio": 6.54,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-link",
+      "bg": "--ddd-theme-default-limestoneLight",
+      "ratio": 5.52,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-limestoneGray",
+      "bg": "--ddd-theme-default-nittanyNavy",
+      "ratio": 7.04,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-limestoneGray",
+      "bg": "--ddd-theme-default-potentialMidnight",
+      "ratio": 10.04,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-nittanyNavy",
+      "bg": "--ddd-theme-default-skyBlue",
+      "ratio": 4.76,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-potentialMidnight",
+      "bg": "--ddd-theme-default-creekTeal",
+      "ratio": 6.1,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-potentialMidnight",
+      "bg": "--ddd-theme-default-inventOrange",
+      "ratio": 5.12,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-potentialMidnight",
+      "bg": "--ddd-theme-default-discoveryCoral",
+      "ratio": 5.12,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-potentialMidnight",
+      "bg": "--ddd-theme-default-keystoneYellow",
+      "ratio": 9.39,
+      "min": 4.5
     }
   ],
   "pairs": [
@@ -258,7 +313,7 @@
       "primary": 5,
       "color": "--ddd-theme-default-limestoneGray",
       "on": "black",
-      "ratio": 8.07,
+      "ratio": 14.26,
       "source": "ddd"
     },
     {
@@ -272,14 +327,14 @@
       "primary": 7,
       "color": "--ddd-theme-default-creekTeal",
       "on": "black",
-      "ratio": 5.72,
+      "ratio": 8.67,
       "source": "ddd"
     },
     {
       "primary": 8,
       "color": "--ddd-theme-default-skyBlue",
       "on": "black",
-      "ratio": 7.76,
+      "ratio": 9.64,
       "source": "ddd"
     },
     {
@@ -424,10 +479,10 @@
     {
       "ddd": "--ddd-theme-default-skyBlue",
       "tier": "identity",
-      "token": "--color-sky-500",
-      "light": "oklch(68.5% 0.169 237.323)",
-      "dark": "oklch(68.5% 0.169 237.323)",
-      "note": ""
+      "token": "--color-sky-400",
+      "light": "oklch(74.6% 0.16 232.661)",
+      "dark": "oklch(74.6% 0.16 232.661)",
+      "note": "one step lighter than color-sky-500 so DDD's nittanyNavy ink reads on it (4.5:1), as blocks pair them"
     },
     {
       "ddd": "--ddd-theme-default-skyLight",
@@ -496,10 +551,10 @@
     {
       "ddd": "--ddd-theme-default-limestoneGray",
       "tier": "identity",
-      "token": "--color-gray-400",
-      "light": "oklch(70.7% 0.022 261.325)",
-      "dark": "oklch(70.7% 0.022 261.325)",
-      "note": ""
+      "token": "--color-gray-300",
+      "light": "oklch(87.2% 0.01 258.338)",
+      "dark": "oklch(87.2% 0.01 258.338)",
+      "note": "muted text on the dark brand surfaces needs 4.5:1; gray-400 is under it on blue-900"
     },
     {
       "ddd": "--ddd-theme-default-limestoneLight",
@@ -616,10 +671,10 @@
     {
       "ddd": "--ddd-theme-default-creekTeal",
       "tier": "identity",
-      "token": "--color-teal-600",
-      "light": "oklch(60% 0.118 184.704)",
-      "dark": "oklch(60% 0.118 184.704)",
-      "note": ""
+      "token": "--color-teal-500",
+      "light": "oklch(70.4% 0.14 182.503)",
+      "dark": "oklch(70.4% 0.14 182.503)",
+      "note": "one step lighter than color-teal-600 so DDD's potentialMidnight ink reads on it (4.5:1), as blocks pair them"
     },
     {
       "ddd": "--ddd-theme-default-creekLight",
@@ -1061,5 +1116,12 @@
       "dark": "calc(0.25rem * 4)",
       "note": "px-4, 16px"
     }
-  ]
+  ],
+  "icons": {
+    "package": "heroicons",
+    "version": "2.2.0",
+    "license": "MIT",
+    "map": "heroicons",
+    "mapped": 140
+  }
 }

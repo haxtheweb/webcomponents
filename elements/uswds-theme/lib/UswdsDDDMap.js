@@ -11,7 +11,7 @@ export const UswdsDDDMap = css`
   :host {
     --ddd-theme-default-pughBlue: var(--usa-blue-30);
     --ddd-theme-default-accent: var(--usa-blue-30);
-    --ddd-theme-default-skyBlue: var(--usa-cyan-vivid-30);
+    --ddd-theme-default-skyBlue: var(--usa-cyan-vivid-20);
     --ddd-theme-default-skyLight: var(--usa-cyan-20);
     --ddd-theme-default-skyMaxLight: var(--usa-cyan-5);
     --ddd-theme-default-slateGray: var(--usa-gray-cool-60);
@@ -20,7 +20,7 @@ export const UswdsDDDMap = css`
     --ddd-theme-default-coalyGray: var(--usa-gray-90);
     --ddd-theme-default-black: var(--usa-black);
     --ddd-theme-default-white: var(--usa-white);
-    --ddd-theme-default-limestoneGray: var(--usa-gray-cool-40);
+    --ddd-theme-default-limestoneGray: var(--usa-gray-cool-20);
     --ddd-theme-default-limestoneLight: var(--usa-gray-cool-10);
     --ddd-theme-default-limestoneMaxLight: var(--usa-gray-5);
     --ddd-theme-default-background: var(--usa-gray-5);
@@ -35,7 +35,7 @@ export const UswdsDDDMap = css`
     --ddd-theme-default-shrineMaxLight: var(--usa-gold-5);
     --ddd-theme-default-inventOrange: var(--usa-orange-vivid-30);
     --ddd-theme-default-landgrantBrown: var(--usa-orange-warm-70);
-    --ddd-theme-default-creekTeal: var(--usa-mint-cool-vivid-50);
+    --ddd-theme-default-creekTeal: var(--usa-mint-cool-vivid-30);
     --ddd-theme-default-creekLight: var(--usa-mint-cool-20);
     --ddd-theme-default-creekMaxLight: var(--usa-mint-cool-5);
     --ddd-theme-default-opportunityGreen: var(--usa-green-cool-vivid-60);
@@ -89,16 +89,23 @@ export const UswdsDDDMap = css`
     --ddd-stack-gap: 16px;
     --ddd-inline-gap: 8px;
     --ddd-control-padding-inline: 20px;
+    --ddd-card-radius: 8px;
+    --ddd-card-padding: 24px;
+    --ddd-card-border-width: 2px;
+    --ddd-card-shadow: none;
+    --ddd-control-radius: 4px;
+    --ddd-control-height: 44px;
+    --ddd-tag-radius: 2px;
     /* rgb channels follow their mapped color */
     --ddd-primary-0-rgb: 115, 179, 231, 0.7;
     --ddd-primary-1-rgb: 0, 94, 162;
     --ddd-primary-2-rgb: 26, 68, 128;
     --ddd-primary-3-rgb: 22, 46, 81;
     --ddd-primary-4-rgb: 27, 27, 27;
-    --ddd-primary-5-rgb: 141, 146, 151;
+    --ddd-primary-5-rgb: 198, 202, 206;
     --ddd-primary-6-rgb: 86, 92, 101;
-    --ddd-primary-7-rgb: 0, 132, 128;
-    --ddd-primary-8-rgb: 0, 189, 227;
+    --ddd-primary-7-rgb: 29, 194, 174;
+    --ddd-primary-8-rgb: 82, 218, 242;
     --ddd-primary-9-rgb: 199, 169, 123;
     --ddd-primary-10-rgb: 229, 160, 0;
     --ddd-primary-11-rgb: 171, 33, 101, 0.7;

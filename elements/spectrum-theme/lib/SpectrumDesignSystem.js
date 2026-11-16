@@ -14,6 +14,7 @@ import {
   SpectrumFonts,
 } from "@haxtheweb/spectrum-theme/lib/SpectrumTokens.js";
 import { SpectrumDDDMap } from "@haxtheweb/spectrum-theme/lib/SpectrumDDDMap.js";
+import { SpectrumIcons } from "@haxtheweb/spectrum-theme/lib/SpectrumIcons.js";
 
 export const SPECTRUM_SYSTEM = "spectrum";
 
@@ -25,6 +26,8 @@ export function registerSpectrumDesignSystem(manager = DesignSystemManager) {
       extends: "ddd",
       styles: [SpectrumTokens, SpectrumDDDMap],
       fonts: SpectrumFonts,
+      // HAX icon names drawn in Spectrum's own icon set while it is active
+      icons: SpectrumIcons,
     });
   }
   return manager;

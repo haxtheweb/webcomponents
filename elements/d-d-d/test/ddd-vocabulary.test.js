@@ -122,6 +122,18 @@ describe("paired text colors", () => {
 });
 
 describe("ddd-card options", () => {
+  it("follows the card background token", async () => {
+    const el = await fixture(
+      html`<ddd-card
+        title="Tile"
+        style="--ddd-card-background: rgb(244, 244, 244)"
+      ></ddd-card>`,
+    );
+    expect(globalThis.getComputedStyle(el).backgroundColor).to.equal(
+      "rgb(244, 244, 244)",
+    );
+  });
+
   it("draws no image area without an image", async () => {
     const el = await fixture(
       html`<ddd-card title="No image"><p>Text</p></ddd-card>`,

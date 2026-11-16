@@ -14,6 +14,7 @@ import {
   ShadcnFonts,
 } from "@haxtheweb/shadcn-theme/lib/ShadcnTokens.js";
 import { ShadcnDDDMap } from "@haxtheweb/shadcn-theme/lib/ShadcnDDDMap.js";
+import { ShadcnIcons } from "@haxtheweb/shadcn-theme/lib/ShadcnIcons.js";
 
 export const SHADCN_SYSTEM = "shadcn";
 
@@ -25,6 +26,8 @@ export function registerShadcnDesignSystem(manager = DesignSystemManager) {
       extends: "ddd",
       styles: [ShadcnTokens, ShadcnDDDMap],
       fonts: ShadcnFonts,
+      // HAX icon names drawn in Shadcn's own icon set while it is active
+      icons: ShadcnIcons,
     });
   }
   return manager;

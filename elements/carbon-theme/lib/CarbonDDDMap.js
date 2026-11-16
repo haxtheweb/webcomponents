@@ -48,7 +48,7 @@ export const CarbonDDDMap = css`
     --ddd-theme-default-wonderPurple: var(--carbon-purple-70);
     --ddd-theme-default-original87Pink: var(--carbon-magenta-60);
     --ddd-theme-default-discoveryCoral: var(--carbon-red-40);
-    --ddd-theme-default-link: var(--carbon-blue-60);
+    --ddd-theme-default-link: var(--carbon-blue-70);
     --ddd-theme-default-linkLight: var(--carbon-blue-40);
     --ddd-theme-default-error: var(--carbon-red-70);
     --ddd-theme-default-errorLight: var(--carbon-red-10);
@@ -107,6 +107,12 @@ export const CarbonDDDMap = css`
     --ddd-stack-gap: 1rem;
     --ddd-inline-gap: 0.5rem;
     --ddd-control-padding-inline: 1rem;
+    --ddd-card-padding: 16px;
+    --ddd-card-border-width: 0;
+    --ddd-card-shadow: none;
+    --ddd-control-height: 48px;
+    --ddd-tag-radius: 999px;
+    --ddd-card-background: var(--cds-layer-01);
     /* rgb channels follow their mapped color */
     --ddd-primary-0-rgb: 166, 200, 255, 0.7;
     --ddd-primary-1-rgb: 15, 98, 254;

@@ -71,9 +71,12 @@ export class StatTile extends DDDSuper(I18NMixin(LitElement)) {
             );
           border-radius: var(--ddd-card-radius, var(--ddd-radius-xl));
           box-shadow: var(--ddd-card-shadow, var(--ddd-boxShadow-sm));
-          background-color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-coalyGray)
+          background-color: var(
+            --ddd-card-background,
+            light-dark(
+              var(--ddd-theme-default-white),
+              var(--ddd-theme-default-coalyGray)
+            )
           );
           color: light-dark(
             var(--ddd-theme-default-coalyGray),

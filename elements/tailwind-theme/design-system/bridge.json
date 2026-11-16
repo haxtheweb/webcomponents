@@ -20,6 +20,13 @@
     }
   ],
   "fonts": [],
+  "icons": {
+    "package": "heroicons",
+    "version": "2.2.0",
+    "license": "MIT",
+    "path": "24/outline/{name}.svg",
+    "map": "heroicons"
+  },
   "ddd": {
     "--ddd-theme-default-pughBlue": {
       "token": "--color-blue-300"
@@ -28,7 +35,8 @@
       "token": "--color-blue-300"
     },
     "--ddd-theme-default-skyBlue": {
-      "token": "--color-sky-500"
+      "token": "--color-sky-400",
+      "note": "one step lighter than color-sky-500 so DDD's nittanyNavy ink reads on it (4.5:1), as blocks pair them"
     },
     "--ddd-theme-default-skyLight": {
       "token": "--color-sky-200"
@@ -55,7 +63,8 @@
       "token": "--color-white"
     },
     "--ddd-theme-default-limestoneGray": {
-      "token": "--color-gray-400"
+      "token": "--color-gray-300",
+      "note": "muted text on the dark brand surfaces needs 4.5:1; gray-400 is under it on blue-900"
     },
     "--ddd-theme-default-limestoneLight": {
       "token": "--color-gray-200"
@@ -101,7 +110,8 @@
       "token": "--color-orange-900"
     },
     "--ddd-theme-default-creekTeal": {
-      "token": "--color-teal-600"
+      "token": "--color-teal-500",
+      "note": "one step lighter than color-teal-600 so DDD's potentialMidnight ink reads on it (4.5:1), as blocks pair them"
     },
     "--ddd-theme-default-creekLight": {
       "token": "--color-teal-200"
