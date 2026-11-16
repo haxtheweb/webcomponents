@@ -13,20 +13,20 @@ const FADES = ["blue", "bottom", "none"];
 const HEIGHTS = ["short", "medium", "tall"];
 
 /**
- * `polaris-hero`
- * The Polaris flex header hero (site-active-media-banner) as a block an
- * author places in page content: an image, GIF or video with an optional
+ * `ddd-hero`
+ * A hero: the look of the HAXcms header banner (site-active-media-banner)
+ * as a block an author places in page content: an image, GIF or video with an optional
  * heading and text over it, a fade under the text, and a focal point that
  * keeps the subject in view however the hero is cropped. Works in any
  * theme; full-width breaks out of the content column
  * (haxtheweb/issues#2953, haxtheweb/issues#2976).
  *
- * @demo ../demo/polaris-hero.html
- * @element polaris-hero
+ * @demo ../demo/ddd-hero.html
+ * @element ddd-hero
  */
-export class PolarisHero extends DDDSuper(I18NMixin(LitElement)) {
+export class DDDHero extends DDDSuper(I18NMixin(LitElement)) {
   static get tag() {
-    return "polaris-hero";
+    return "ddd-hero";
   }
 
   constructor() {
@@ -41,7 +41,7 @@ export class PolarisHero extends DDDSuper(I18NMixin(LitElement)) {
     this.focalX = 50;
     this.focalY = 50;
     // background motion starts paused when the visitor asks for less motion
-    this.playing = !PolarisHero.prefersReducedMotion();
+    this.playing = !DDDHero.prefersReducedMotion();
     this.t = this.t || {};
     this.t = {
       ...this.t,
@@ -93,14 +93,17 @@ export class PolarisHero extends DDDSuper(I18NMixin(LitElement)) {
       css`
         :host {
           display: block;
-          --polaris-hero-height: 540px;
+          --ddd-hero-height: 540px;
+          /* page styles on ddd-hero override these */
+          --ddd-hero-fade-color: rgba(30, 64, 124, 0.7);
+          --ddd-hero-max-width: 1080px;
           margin-block: var(--ddd-spacing-6);
         }
         :host([height="medium"]) {
-          --polaris-hero-height: 400px;
+          --ddd-hero-height: 400px;
         }
         :host([height="short"]) {
-          --polaris-hero-height: 280px;
+          --ddd-hero-height: 280px;
         }
         /* edge to edge: 100cqi is the nearest container's width (a theme can
            make its content area the container), else the viewport */
@@ -110,7 +113,7 @@ export class PolarisHero extends DDDSuper(I18NMixin(LitElement)) {
         }
         .hero {
           position: relative;
-          height: var(--polaris-hero-height);
+          height: var(--ddd-hero-height);
           width: 100%;
           overflow: hidden;
           z-index: 1;
@@ -127,10 +130,7 @@ export class PolarisHero extends DDDSuper(I18NMixin(LitElement)) {
           pointer-events: none;
         }
         .hero[data-fade="blue"]::before {
-          background-color: var(
-            --polaris-hero-fade-color,
-            rgba(30, 64, 124, 0.7)
-          );
+          background-color: var(--ddd-hero-fade-color);
         }
         .hero[data-fade="bottom"]::before {
           background: linear-gradient(
@@ -153,7 +153,7 @@ export class PolarisHero extends DDDSuper(I18NMixin(LitElement)) {
           position: relative;
           z-index: 2;
           height: 100%;
-          max-width: var(--polaris-hero-max-width, 1080px);
+          max-width: var(--ddd-hero-max-width);
           margin: 0 auto;
           padding: 0 var(--ddd-spacing-12);
           display: flex;
@@ -216,10 +216,10 @@ export class PolarisHero extends DDDSuper(I18NMixin(LitElement)) {
         @media only screen and (max-width: 1023px) {
           :host,
           :host([height="medium"]) {
-            --polaris-hero-height: 320px;
+            --ddd-hero-height: 320px;
           }
           :host([height="short"]) {
-            --polaris-hero-height: 220px;
+            --ddd-hero-height: 220px;
           }
           .content {
             padding: 0 var(--ddd-spacing-5);
@@ -390,7 +390,7 @@ export class PolarisHero extends DDDSuper(I18NMixin(LitElement)) {
     globalThis.dispatchEvent(
       new CustomEvent("i18n-manager-register-element", {
         detail: {
-          namespace: `polaris-hero.haxProperties`,
+          namespace: `ddd-hero.haxProperties`,
           localesPath: new URL(`../locales`, import.meta.url).href,
         },
       }),
@@ -405,4 +405,4 @@ export class PolarisHero extends DDDSuper(I18NMixin(LitElement)) {
   }
 }
 
-globalThis.customElements.define(PolarisHero.tag, PolarisHero);
+globalThis.customElements.define(DDDHero.tag, DDDHero);

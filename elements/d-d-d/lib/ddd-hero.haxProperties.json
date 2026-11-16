@@ -4,11 +4,11 @@
   "canScale": false,
   "canEditSource": true,
   "gizmo": {
-    "title": "Polaris hero",
-    "description": "A large image, GIF or video with a heading and text over it, like the Polaris header hero, placed anywhere in a page.",
+    "title": "Hero",
+    "description": "A large image, GIF or video with a heading and text over it, placed anywhere in a page.",
     "icon": "image:panorama",
     "color": "blue",
-    "tags": ["Media", "Layout", "hero", "banner", "image", "video", "polaris"],
+    "tags": ["Media", "Layout", "hero", "banner", "image", "video"],
     "handles": [
       {
         "type": "image",
@@ -116,7 +116,7 @@
   },
   "demoSchema": [
     {
-      "tag": "polaris-hero",
+      "tag": "ddd-hero",
       "properties": {
         "source": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-polaris-flex-theme.jpg",
         "alt": "",

@@ -2016,7 +2016,7 @@
         {
           "kind": "variable",
           "name": "DDDGlobalStyles",
-          "default": "css` :root { color-scheme: light dark; scroll-behavior: smooth; font-family: var(--ddd-font-primary); font-size: var(--ddd-theme-body-font-size); font-weight: var(--ddd-font-weight-regular); letter-spacing: normal; } body.dark-mode .haxcms-theme-element, body.dark-mode { color-scheme: only dark; } `"
+          "default": "css` :root { color-scheme: light dark; scroll-behavior: smooth; font-family: var(--ddd-font-primary); font-size: var(--ddd-theme-body-font-size); font-weight: var(--ddd-font-weight-regular); letter-spacing: normal; } body.dark-mode .haxcms-theme-element, body.dark-mode { color-scheme: only dark; } /* a footnote whose element has not loaded (or never will) still reads as a note where it was written, instead of running into the sentence */ a11y-footnote:not(:defined) { font-size: 0.85em; } a11y-footnote:not(:defined)::before { content: \" [\"; } a11y-footnote:not(:defined)::after { content: \"]\"; } `"
         },
         {
           "kind": "variable",
@@ -4252,6 +4252,385 @@
           "declaration": {
             "name": "DddCard",
             "module": "lib/ddd-card.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/ddd-hero.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "`ddd-hero`\nA hero: the look of the HAXcms header banner (site-active-media-banner)\nas a block an author places in page content: an image, GIF or video with an optional\nheading and text over it, a fade under the text, and a focal point that\nkeeps the subject in view however the hero is cropped. Works in any\ntheme; full-width breaks out of the content column\n(haxtheweb/issues#2953, haxtheweb/issues#2976).",
+          "name": "DDDHero",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "prefersReducedMotion",
+              "static": true
+            },
+            {
+              "kind": "field",
+              "name": "mediaType",
+              "description": "The file type of the source, without query or hash",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_effectiveFade",
+              "description": "The fade actually drawn: with text over the media there is always one,\nso the text keeps its contrast"
+            },
+            {
+              "kind": "method",
+              "name": "_focalPosition"
+            },
+            {
+              "kind": "method",
+              "name": "_slotChanged",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_toggleVideo"
+            },
+            {
+              "kind": "method",
+              "name": "haxHooks",
+              "description": "HAX hooks this element implements"
+            },
+            {
+              "kind": "method",
+              "name": "haxgizmoRegistration",
+              "parameters": [
+                {
+                  "name": "_store"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "haxProperties integration via file reference",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "source",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Image, GIF or video file",
+              "default": "\"\"",
+              "attribute": "source"
+            },
+            {
+              "kind": "field",
+              "name": "alt",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Text alternative for an image; leave empty when it is decorative",
+              "default": "\"\"",
+              "attribute": "alt"
+            },
+            {
+              "kind": "field",
+              "name": "heading",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Heading over the media",
+              "default": "\"\"",
+              "attribute": "heading"
+            },
+            {
+              "kind": "field",
+              "name": "fade",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Fade under the text: blue (the header look), bottom, none",
+              "default": "\"blue\"",
+              "attribute": "fade"
+            },
+            {
+              "kind": "field",
+              "name": "textPosition",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Where the text sits: bottom or middle",
+              "default": "\"bottom\"",
+              "attribute": "text-position",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "height",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "short, medium or tall (the header banner's height)",
+              "default": "\"tall\"",
+              "attribute": "height",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "fullWidth",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Run edge to edge instead of sitting in the content column",
+              "default": "false",
+              "attribute": "full-width",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "focalX",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "Focal point, 0-100 from the left",
+              "default": "50",
+              "attribute": "focal-x"
+            },
+            {
+              "kind": "field",
+              "name": "focalY",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "Focal point, 0-100 from the top",
+              "default": "50",
+              "attribute": "focal-y"
+            },
+            {
+              "kind": "field",
+              "name": "playing",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "!DDDHero.prefersReducedMotion()",
+              "attribute": "playing"
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, pauseVideo: \"Pause background video\", playVideo: \"Play background video\", }"
+            },
+            {
+              "kind": "field",
+              "name": "_hasText",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "_hasText"
+            },
+            {
+              "kind": "field",
+              "name": "properties",
+              "static": true,
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "DDDSuper",
+                "module": "d-d-d.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "description": "LitElement style callback",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "DDDSuper",
+                "module": "d-d-d.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "isSafari",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "is-safari",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "DDDSuper",
+                "module": "d-d-d.js"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "source",
+              "type": {
+                "text": "string"
+              },
+              "description": "Image, GIF or video file",
+              "default": "\"\"",
+              "fieldName": "source"
+            },
+            {
+              "name": "alt",
+              "type": {
+                "text": "string"
+              },
+              "description": "Text alternative for an image; leave empty when it is decorative",
+              "default": "\"\"",
+              "fieldName": "alt"
+            },
+            {
+              "name": "heading",
+              "type": {
+                "text": "string"
+              },
+              "description": "Heading over the media",
+              "default": "\"\"",
+              "fieldName": "heading"
+            },
+            {
+              "name": "fade",
+              "type": {
+                "text": "string"
+              },
+              "description": "Fade under the text: blue (the header look), bottom, none",
+              "default": "\"blue\"",
+              "fieldName": "fade"
+            },
+            {
+              "name": "text-position",
+              "type": {
+                "text": "string"
+              },
+              "description": "Where the text sits: bottom or middle",
+              "default": "\"bottom\"",
+              "fieldName": "textPosition"
+            },
+            {
+              "name": "height",
+              "type": {
+                "text": "string"
+              },
+              "description": "short, medium or tall (the header banner's height)",
+              "default": "\"tall\"",
+              "fieldName": "height"
+            },
+            {
+              "name": "full-width",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Run edge to edge instead of sitting in the content column",
+              "default": "false",
+              "fieldName": "fullWidth"
+            },
+            {
+              "name": "focal-x",
+              "type": {
+                "text": "number"
+              },
+              "description": "Focal point, 0-100 from the left",
+              "default": "50",
+              "fieldName": "focalX"
+            },
+            {
+              "name": "focal-y",
+              "type": {
+                "text": "number"
+              },
+              "description": "Focal point, 0-100 from the top",
+              "default": "50",
+              "fieldName": "focalY"
+            },
+            {
+              "name": "playing",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "!DDDHero.prefersReducedMotion()",
+              "fieldName": "playing"
+            },
+            {
+              "name": "_hasText",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "_hasText"
+            },
+            {
+              "name": "is-safari",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "isSafari",
+              "inheritedFrom": {
+                "name": "DDDSuper",
+                "module": "d-d-d.js"
+              }
+            }
+          ],
+          "mixins": [
+            {
+              "name": "DDDSuper",
+              "package": "@haxtheweb/d-d-d/d-d-d.js"
+            },
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "ddd-hero",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DDDHero",
+          "declaration": {
+            "name": "DDDHero",
+            "module": "lib/ddd-hero.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "DDDHero",
+            "module": "lib/ddd-hero.js"
           }
         }
       ]

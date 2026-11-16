@@ -1,10 +1,10 @@
 import { fixture, expect, html } from "@open-wc/testing";
-import { PolarisHero } from "../lib/polaris-hero.js";
+import { DDDHero } from "../lib/ddd-hero.js";
 
-describe("polaris-hero", () => {
+describe("ddd-hero", () => {
   it("registers and has the header banner's defaults", async () => {
-    const el = await fixture(html`<polaris-hero></polaris-hero>`);
-    expect(PolarisHero.tag).to.equal("polaris-hero");
+    const el = await fixture(html`<ddd-hero></ddd-hero>`);
+    expect(DDDHero.tag).to.equal("ddd-hero");
     expect(el.fade).to.equal("blue");
     expect(el.height).to.equal("tall");
     expect(el.fullWidth).to.equal(false);
@@ -13,12 +13,12 @@ describe("polaris-hero", () => {
 
   it("draws an image with the focal point as its object-position", async () => {
     const el = await fixture(
-      html`<polaris-hero
+      html`<ddd-hero
         source="photo.png"
         alt="Rows of crops"
         focal-x="76"
         focal-y="28"
-      ></polaris-hero>`,
+      ></ddd-hero>`,
     );
     const img = el.shadowRoot.querySelector("img");
     expect(img).to.exist;
@@ -28,11 +28,7 @@ describe("polaris-hero", () => {
 
   it("clamps the focal point to the image", async () => {
     const el = await fixture(
-      html`<polaris-hero
-        source="a.jpg"
-        focal-x="140"
-        focal-y="-5"
-      ></polaris-hero>`,
+      html`<ddd-hero source="a.jpg" focal-x="140" focal-y="-5"></ddd-hero>`,
     );
     expect(el.shadowRoot.querySelector("img").style.objectPosition).to.equal(
       "100% 0%",
@@ -41,8 +37,8 @@ describe("polaris-hero", () => {
 
   it("shows the heading and slotted text over the media", async () => {
     const el = await fixture(
-      html`<polaris-hero source="a.webp" heading="Open house"
-        ><p>Tour the plots.</p></polaris-hero
+      html`<ddd-hero source="a.webp" heading="Open house"
+        ><p>Tour the plots.</p></ddd-hero
       >`,
     );
     await el.updateComplete;
@@ -54,20 +50,14 @@ describe("polaris-hero", () => {
   });
 
   it("hides the text area when there is no heading or text", async () => {
-    const el = await fixture(
-      html`<polaris-hero source="a.jpg"></polaris-hero>`,
-    );
+    const el = await fixture(html`<ddd-hero source="a.jpg"></ddd-hero>`);
     await el.updateComplete;
     expect(el.shadowRoot.querySelector(".content").hidden).to.equal(true);
   });
 
   it("keeps a fade under text even when the fade is set to none", async () => {
     const el = await fixture(
-      html`<polaris-hero
-        source="a.jpg"
-        heading="Hi"
-        fade="none"
-      ></polaris-hero>`,
+      html`<ddd-hero source="a.jpg" heading="Hi" fade="none"></ddd-hero>`,
     );
     await el.updateComplete;
     expect(el.shadowRoot.querySelector(".hero").dataset.fade).to.equal(
@@ -81,9 +71,7 @@ describe("polaris-hero", () => {
   });
 
   it("plays a video with a pause button", async () => {
-    const el = await fixture(
-      html`<polaris-hero source="clip.mp4"></polaris-hero>`,
-    );
+    const el = await fixture(html`<ddd-hero source="clip.mp4"></ddd-hero>`);
     expect(el.mediaType).to.equal("video");
     const video = el.shadowRoot.querySelector("video");
     expect(video).to.exist;
@@ -100,15 +88,15 @@ describe("polaris-hero", () => {
 
   it("reflects full-width so it can break out of the content column", async () => {
     const el = await fixture(
-      html`<polaris-hero source="a.jpg" full-width></polaris-hero>`,
+      html`<ddd-hero source="a.jpg" full-width></ddd-hero>`,
     );
     expect(el.hasAttribute("full-width")).to.equal(true);
   });
 
   it("passes the a11y audit", async () => {
     const el = await fixture(
-      html`<polaris-hero source="photo.png" heading="Open house"
-        ><p>Tour the plots.</p></polaris-hero
+      html`<ddd-hero source="photo.png" heading="Open house"
+        ><p>Tour the plots.</p></ddd-hero
       >`,
     );
     await expect(el).shadowDom.to.be.accessible();

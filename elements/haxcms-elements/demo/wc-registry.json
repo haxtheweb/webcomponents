@@ -642,5 +642,5 @@
   "web-dialog": "web-dialog/web-dialog.js",
   "a11y-footnote": "@haxtheweb/a11y-footnote/a11y-footnote.js",
   "a11y-footnotes": "@haxtheweb/a11y-footnote/lib/a11y-footnotes.js",
-  "polaris-hero": "@haxtheweb/polaris-theme/lib/polaris-hero.js"
+  "ddd-hero": "@haxtheweb/d-d-d/lib/ddd-hero.js"
 }
