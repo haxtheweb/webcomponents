@@ -18,7 +18,7 @@
       "title": "Blog",
       "description": "A blog starter on the Clean One theme: posts, a journal and topic pages, shown with a sample coffee blog.",
       "image": "/elements/haxcms-elements/lib/theme-screenshots/theme-clean-one-thumb.jpg",
-      "priority": 0,
+      "priority": -1,
       "category": ["Website"],
       "attributes": [],
       "scope": "core",
