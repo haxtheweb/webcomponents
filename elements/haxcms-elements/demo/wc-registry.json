@@ -639,5 +639,8 @@
   "wysiwyg-hax": "@haxtheweb/wysiwyg-hax/wysiwyg-hax.js",
   "lit-virtualizer": "@lit-labs/virtualizer/lit-virtualizer.js",
   "scrollable-component": "scrollable-component/index.js",
-  "web-dialog": "web-dialog/web-dialog.js"
+  "web-dialog": "web-dialog/web-dialog.js",
+  "a11y-footnote": "@haxtheweb/a11y-footnote/a11y-footnote.js",
+  "a11y-footnotes": "@haxtheweb/a11y-footnote/lib/a11y-footnotes.js",
+  "polaris-hero": "@haxtheweb/polaris-theme/lib/polaris-hero.js"
 }

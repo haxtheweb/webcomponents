@@ -1,0 +1,83 @@
+{
+  "tag": "writing-theme",
+  "folder": "writing-theme",
+  "package": "@haxtheweb/writing-theme",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "writing-theme",
+  "description": "A HAXcms theme with nothing but the writing: recent posts, a plain post page and an archive by year",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/writing-theme/writing-theme.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/writing-theme/writing-theme.js",
+  "install": "npm i @haxtheweb/writing-theme",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "siteTitle",
+      "property": "siteTitle",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "topLevel",
+      "property": "topLevel",
+      "type": "array",
+      "default": "[]",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "posts",
+      "property": "posts",
+      "type": "array",
+      "default": "[]",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "activeItem",
+      "property": "activeItem",
+      "type": "null",
+      "default": "null",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "homeId",
+      "property": "homeId",
+      "type": "null",
+      "default": "null",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "tagFilter",
+      "property": "tagFilter",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "ba01ef6712e9",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/writing-theme",
+    "file": "writing-theme.js"
+  }
+}

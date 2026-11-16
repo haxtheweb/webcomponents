@@ -41,6 +41,23 @@ class SiteActiveTitle extends I18NMixin(LitElement) {
           transition: 0.3s outline-width ease-in-out;
           outline-offset: 8px;
         }
+        /* the page's "Hide page title" setting: still the page's h1 for
+           screen readers and the outline, just not drawn; while editing it
+           stays visible (dimmed) so the author can reach it */
+        site-active-title[hide-title]:not([edit-mode]) h1 {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          margin: -1px;
+          padding: 0;
+          overflow: hidden;
+          clip-path: inset(50%);
+          white-space: nowrap;
+          border: 0;
+        }
+        site-active-title[hide-title][edit-mode] h1 {
+          opacity: 0.5;
+        }
         site-active-title h1 {
           margin: 0;
           display: flex;
@@ -88,6 +105,7 @@ class SiteActiveTitle extends I18NMixin(LitElement) {
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "dynamicMethodology") {
+        this._applyHideTitle();
         this.__title = this._makeTitle(
           this.dynamicMethodology,
           this.activeTitle,
@@ -136,6 +154,15 @@ class SiteActiveTitle extends I18NMixin(LitElement) {
                         }
                         break;
                       }
+                      case "hide-title": {
+                        const pageBreakHide =
+                          haxStore.activeHaxBody.querySelector("page-break");
+                        this._activeHideTitle = !!(
+                          pageBreakHide && pageBreakHide.hideTitle
+                        );
+                        this._applyHideTitle();
+                        break;
+                      }
                       case "icon":
                       case "page-type": {
                         const pageBreakIcon =
@@ -158,7 +185,7 @@ class SiteActiveTitle extends I18NMixin(LitElement) {
               haxStore.activeHaxBody.querySelector("page-break");
             if (pageBreak) {
               this._inProgressPageBreak.observe(pageBreak, {
-                attributeFilter: ["title", "page-type", "icon"],
+                attributeFilter: ["title", "page-type", "icon", "hide-title"],
                 attributes: true,
               });
             }
@@ -199,10 +226,27 @@ class SiteActiveTitle extends I18NMixin(LitElement) {
         reflect: true,
         attribute: "active-pagebreak",
       },
+      /**
+       * The active page's "Hide page title" setting (metadata.hideTitle).
+       * Only applies to the active page's own title.
+       */
+      hideTitle: {
+        type: Boolean,
+        reflect: true,
+        attribute: "hide-title",
+      },
       t: {
         type: Object,
       },
     };
+  }
+  /**
+   * Hide only when this shows the active page's own title, not a parent's
+   */
+  _applyHideTitle() {
+    this.hideTitle =
+      !!this._activeHideTitle &&
+      (!this.dynamicMethodology || this.dynamicMethodology === "active");
   }
   /**
    * Generate title based on context
@@ -233,6 +277,8 @@ class SiteActiveTitle extends I18NMixin(LitElement) {
     this.dynamicMethodology = "active";
     this.__title = "";
     this.icon = null;
+    this.hideTitle = false;
+    this._activeHideTitle = false;
     this.activePageBreak = store.platformAllows("pageBreak");
     this.__disposer = [];
     this.registerLocalization({
@@ -252,6 +298,12 @@ class SiteActiveTitle extends I18NMixin(LitElement) {
         const _mobx_val_0 = toJS(store.activeItem);
         Promise.resolve().then(() => {
           const activeItem = _mobx_val_0;
+          this._activeHideTitle = !!(
+            activeItem &&
+            activeItem.metadata &&
+            activeItem.metadata.hideTitle === true
+          );
+          this._applyHideTitle();
           if (activeItem && activeItem.metadata && activeItem.metadata.icon) {
             this.icon = activeItem.metadata.icon;
           } else {

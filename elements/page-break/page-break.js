@@ -107,6 +107,7 @@ export class PageBreak extends IntersectionObserverMixin(
     });
     this.description = null;
     this.hideInMenu = false;
+    this.hideTitle = false;
     this.noderefs = [];
     this.developerTheme = null;
     this.tags = null;
@@ -257,6 +258,7 @@ export class PageBreak extends IntersectionObserverMixin(
       description: { type: String },
       order: { type: Number },
       hideInMenu: { type: Boolean, reflect: true, attribute: "hide-in-menu" },
+      hideTitle: { type: Boolean, reflect: true, attribute: "hide-title" },
       tags: { type: String, reflect: true },
       developerTheme: { type: String, attribute: "developer-theme" },
       title: { type: String, reflect: true },

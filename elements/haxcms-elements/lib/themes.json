@@ -526,5 +526,17 @@
     "priority": 50,
     "terrible": false,
     "supportedPalettes": null
+  },
+  "writing-theme": {
+    "element": "writing-theme",
+    "path": "@haxtheweb/writing-theme/writing-theme.js",
+    "name": "Writing",
+    "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-writing-theme-thumb.jpg",
+    "description": "Nothing but the writing: recent posts, a plain post page and an archive by year",
+    "category": ["Website"],
+    "hidden": false,
+    "priority": 5,
+    "terrible": false,
+    "supportedPalettes": null
   }
 }

@@ -1,0 +1,129 @@
+{
+  "tag": "a11y-footnote",
+  "folder": "a11y-footnote",
+  "package": "@haxtheweb/a11y-footnote",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Footnote",
+  "description": "A note written where it belongs in the text. It shows as a number, and the numbered list of notes builds itself at the bottom of the page.",
+  "icon": "editor:format-list-numbered",
+  "tags": [
+    "Instructional",
+    "footnote",
+    "citation",
+    "note",
+    "reference"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/a11y-footnote/a11y-footnote.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/a11y-footnote/a11y-footnote.js",
+  "install": "npm i @haxtheweb/a11y-footnote",
+  "demoHtml": "<a11y-footnote>\n  Morrill Land-Grant Act, 7 U.S.C. § 301 et seq. (1862).\n</a11y-footnote>",
+  "attributes": [
+    {
+      "name": "number",
+      "property": "number",
+      "type": "number",
+      "default": "0",
+      "description": "Reading-order number, set by the footnotes manager",
+      "hax": null
+    },
+    {
+      "name": "no-preview",
+      "property": "noPreview",
+      "type": "boolean",
+      "default": "false",
+      "description": "Turn off the note preview shown on hover and focus",
+      "hax": {
+        "title": "No preview",
+        "input": "boolean",
+        "options": null
+      }
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {
+    "api": "1",
+    "type": "element",
+    "canScale": false,
+    "canEditSource": false,
+    "gizmo": {
+      "title": "Footnote",
+      "description": "A note written where it belongs in the text. It shows as a number, and the numbered list of notes builds itself at the bottom of the page.",
+      "icon": "editor:format-list-numbered",
+      "color": "blue",
+      "tags": [
+        "Instructional",
+        "footnote",
+        "citation",
+        "note",
+        "reference"
+      ],
+      "handles": [
+        {
+          "type": "inline",
+          "text": ""
+        }
+      ],
+      "meta": {
+        "author": "HAXTheWeb core team",
+        "inlineOnly": true
+      }
+    },
+    "settings": {
+      "inline": [
+        {
+          "slot": "",
+          "title": "Note",
+          "description": "The text of the footnote.",
+          "inputMethod": "textarea",
+          "required": true
+        }
+      ],
+      "configure": [
+        {
+          "slot": "",
+          "title": "Note",
+          "description": "The text of the footnote.",
+          "inputMethod": "textarea",
+          "required": true
+        },
+        {
+          "property": "noPreview",
+          "title": "No preview",
+          "description": "Don't show the note when a reader hovers or focuses the number.",
+          "inputMethod": "boolean"
+        }
+      ],
+      "advanced": []
+    },
+    "saveOptions": {
+      "wipeSlot": false,
+      "unsetAttributes": [
+        "number"
+      ]
+    },
+    "demoSchema": [
+      {
+        "tag": "a11y-footnote",
+        "properties": {},
+        "content": "Morrill Land-Grant Act, 7 U.S.C. § 301 et seq. (1862)."
+      }
+    ]
+  },
+  "surfaceHash": "a6f642356b48",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/a11y-footnote",
+    "file": "a11y-footnote.js"
+  }
+}
