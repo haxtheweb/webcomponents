@@ -143,6 +143,11 @@ export default [
       // --prune-suppressions` drops entries that no longer apply.
       eqeqeq: ["error", "always", { null: "ignore" }],
       "no-var": "error",
+      // HAX UI convention: no browser alert() / confirm() / prompt(); use
+      // the HAX UI confirm and prompt (haxcms-admin-confirm.js, hax-confirm-
+      // dialog) so they follow HAX UI styling and stay accessible
+      // (haxtheweb/issues#3295)
+      "no-alert": "error",
     },
   },
   {

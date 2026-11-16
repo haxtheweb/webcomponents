@@ -122,6 +122,33 @@
           "keptDDD": []
         }
       }
+    },
+    "component": {
+      "mapping": "optional",
+      "percent": 0,
+      "families": {
+        "card": {
+          "mapped": 0,
+          "total": 5,
+          "keptDDD": [
+            "--ddd-card-radius",
+            "--ddd-card-padding",
+            "--ddd-card-border-width",
+            "--ddd-card-shadow",
+            "--ddd-card-background"
+          ]
+        },
+        "control": {
+          "mapped": 0,
+          "total": 2,
+          "keptDDD": ["--ddd-control-radius", "--ddd-control-height"]
+        },
+        "tag": {
+          "mapped": 0,
+          "total": 1,
+          "keptDDD": ["--ddd-tag-radius"]
+        }
+      }
     }
   },
   "contrast": [
@@ -190,6 +217,244 @@
       "bg": "--ddd-theme-default-limestoneMaxLight",
       "ratio": 16.98,
       "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-link",
+      "bg": "--ddd-theme-default-limestoneMaxLight",
+      "ratio": 6.54,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-link",
+      "bg": "--ddd-theme-default-limestoneLight",
+      "ratio": 5.52,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-limestoneGray",
+      "bg": "--ddd-theme-default-nittanyNavy",
+      "ratio": 7.04,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-limestoneGray",
+      "bg": "--ddd-theme-default-potentialMidnight",
+      "ratio": 10.04,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-nittanyNavy",
+      "bg": "--ddd-theme-default-skyBlue",
+      "ratio": 4.76,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-potentialMidnight",
+      "bg": "--ddd-theme-default-creekTeal",
+      "ratio": 6.1,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-potentialMidnight",
+      "bg": "--ddd-theme-default-inventOrange",
+      "ratio": 5.12,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-potentialMidnight",
+      "bg": "--ddd-theme-default-discoveryCoral",
+      "ratio": 5.12,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-potentialMidnight",
+      "bg": "--ddd-theme-default-keystoneYellow",
+      "ratio": 9.39,
+      "min": 4.5
+    }
+  ],
+  "pairs": [
+    {
+      "primary": 0,
+      "color": "--ddd-theme-default-pughBlue",
+      "on": "black",
+      "ratio": 11.58,
+      "source": "ddd"
+    },
+    {
+      "primary": 1,
+      "color": "--ddd-theme-default-beaverBlue",
+      "on": "white",
+      "ratio": 5.25,
+      "source": "ddd"
+    },
+    {
+      "primary": 2,
+      "color": "--ddd-theme-default-nittanyNavy",
+      "on": "white",
+      "ratio": 10.37,
+      "source": "ddd"
+    },
+    {
+      "primary": 3,
+      "color": "--ddd-theme-default-potentialMidnight",
+      "on": "white",
+      "ratio": 14.78,
+      "source": "ddd"
+    },
+    {
+      "primary": 4,
+      "color": "--ddd-theme-default-coalyGray",
+      "on": "white",
+      "ratio": 17.75,
+      "source": "ddd"
+    },
+    {
+      "primary": 5,
+      "color": "--ddd-theme-default-limestoneGray",
+      "on": "black",
+      "ratio": 14.26,
+      "source": "ddd"
+    },
+    {
+      "primary": 6,
+      "color": "--ddd-theme-default-slateGray",
+      "on": "white",
+      "ratio": 7.58,
+      "source": "ddd"
+    },
+    {
+      "primary": 7,
+      "color": "--ddd-theme-default-creekTeal",
+      "on": "black",
+      "ratio": 8.67,
+      "source": "ddd"
+    },
+    {
+      "primary": 8,
+      "color": "--ddd-theme-default-skyBlue",
+      "on": "black",
+      "ratio": 9.64,
+      "source": "ddd"
+    },
+    {
+      "primary": 9,
+      "color": "--ddd-theme-default-shrineTan",
+      "on": "black",
+      "ratio": 8.12,
+      "source": "ddd"
+    },
+    {
+      "primary": 10,
+      "color": "--ddd-theme-default-roarGolden",
+      "on": "black",
+      "ratio": 6.56,
+      "source": "ddd"
+    },
+    {
+      "primary": 11,
+      "color": "--ddd-theme-default-original87Pink",
+      "on": "white",
+      "ratio": 5.91,
+      "source": "ddd"
+    },
+    {
+      "primary": 12,
+      "color": "--ddd-theme-default-discoveryCoral",
+      "on": "black",
+      "ratio": 7.27,
+      "source": "ddd"
+    },
+    {
+      "primary": 13,
+      "color": "--ddd-theme-default-wonderPurple",
+      "on": "white",
+      "ratio": 8.86,
+      "source": "ddd"
+    },
+    {
+      "primary": 14,
+      "color": "--ddd-theme-default-athertonViolet",
+      "on": "black",
+      "ratio": 11.32,
+      "source": "ddd"
+    },
+    {
+      "primary": 15,
+      "color": "--ddd-theme-default-inventOrange",
+      "on": "black",
+      "ratio": 7.27,
+      "source": "ddd"
+    },
+    {
+      "primary": 16,
+      "color": "--ddd-theme-default-keystoneYellow",
+      "on": "black",
+      "ratio": 13.35,
+      "source": "ddd"
+    },
+    {
+      "primary": 17,
+      "color": "--ddd-theme-default-opportunityGreen",
+      "on": "white",
+      "ratio": 4.95,
+      "source": "paired"
+    },
+    {
+      "primary": 18,
+      "color": "--ddd-theme-default-futureLime",
+      "on": "black",
+      "ratio": 13.69,
+      "source": "ddd"
+    },
+    {
+      "primary": 19,
+      "color": "--ddd-theme-default-forestGreen",
+      "on": "black",
+      "ratio": 6.52,
+      "source": "paired"
+    },
+    {
+      "primary": 20,
+      "color": "--ddd-theme-default-landgrantBrown",
+      "on": "white",
+      "ratio": 9.44,
+      "source": "ddd"
+    },
+    {
+      "primary": 21,
+      "color": "--ddd-theme-default-globalNeon",
+      "on": "black",
+      "ratio": 15.83,
+      "source": "ddd"
+    },
+    {
+      "primary": 22,
+      "color": "--ddd-theme-default-error",
+      "on": "white",
+      "ratio": 8.36,
+      "source": "ddd"
+    },
+    {
+      "primary": 23,
+      "color": "--ddd-theme-default-warning",
+      "on": "white",
+      "ratio": 7.09,
+      "source": "ddd"
+    },
+    {
+      "primary": 24,
+      "color": "--ddd-theme-default-info",
+      "on": "white",
+      "ratio": 8.82,
+      "source": "ddd"
+    },
+    {
+      "primary": 25,
+      "color": "--ddd-theme-default-success",
+      "on": "white",
+      "ratio": 7.13,
+      "source": "ddd"
     }
   ],
   "problems": [],
@@ -214,10 +479,10 @@
     {
       "ddd": "--ddd-theme-default-skyBlue",
       "tier": "identity",
-      "token": "--color-sky-500",
-      "light": "oklch(68.5% 0.169 237.323)",
-      "dark": "oklch(68.5% 0.169 237.323)",
-      "note": ""
+      "token": "--color-sky-400",
+      "light": "oklch(74.6% 0.16 232.661)",
+      "dark": "oklch(74.6% 0.16 232.661)",
+      "note": "one step lighter than color-sky-500 so DDD's nittanyNavy ink reads on it (4.5:1), as blocks pair them"
     },
     {
       "ddd": "--ddd-theme-default-skyLight",
@@ -286,10 +551,10 @@
     {
       "ddd": "--ddd-theme-default-limestoneGray",
       "tier": "identity",
-      "token": "--color-gray-400",
-      "light": "oklch(70.7% 0.022 261.325)",
-      "dark": "oklch(70.7% 0.022 261.325)",
-      "note": ""
+      "token": "--color-gray-300",
+      "light": "oklch(87.2% 0.01 258.338)",
+      "dark": "oklch(87.2% 0.01 258.338)",
+      "note": "muted text on the dark brand surfaces needs 4.5:1; gray-400 is under it on blue-900"
     },
     {
       "ddd": "--ddd-theme-default-limestoneLight",
@@ -406,10 +671,10 @@
     {
       "ddd": "--ddd-theme-default-creekTeal",
       "tier": "identity",
-      "token": "--color-teal-600",
-      "light": "oklch(60% 0.118 184.704)",
-      "dark": "oklch(60% 0.118 184.704)",
-      "note": ""
+      "token": "--color-teal-500",
+      "light": "oklch(70.4% 0.14 182.503)",
+      "dark": "oklch(70.4% 0.14 182.503)",
+      "note": "one step lighter than color-teal-600 so DDD's potentialMidnight ink reads on it (4.5:1), as blocks pair them"
     },
     {
       "ddd": "--ddd-theme-default-creekLight",
@@ -851,5 +1116,12 @@
       "dark": "calc(0.25rem * 4)",
       "note": "px-4, 16px"
     }
-  ]
+  ],
+  "icons": {
+    "package": "heroicons",
+    "version": "2.2.0",
+    "license": "MIT",
+    "map": "heroicons",
+    "mapped": 140
+  }
 }

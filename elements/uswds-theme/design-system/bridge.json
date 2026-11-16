@@ -79,8 +79,8 @@
       "note": "primary-light"
     },
     "--ddd-theme-default-skyBlue": {
-      "token": "--usa-cyan-vivid-30",
-      "note": "accent-cool"
+      "token": "--usa-cyan-vivid-20",
+      "note": "accent-cool; one step lighter than usa-cyan-vivid-30 so DDD's nittanyNavy ink reads on it (4.5:1), as blocks pair them"
     },
     "--ddd-theme-default-skyLight": {
       "token": "--usa-cyan-20"
@@ -110,7 +110,8 @@
       "token": "--usa-white"
     },
     "--ddd-theme-default-limestoneGray": {
-      "token": "--usa-gray-cool-40"
+      "token": "--usa-gray-cool-20",
+      "note": "muted text on the dark brand surfaces needs 4.5:1; gray-cool-40 and the next step are under it"
     },
     "--ddd-theme-default-limestoneLight": {
       "token": "--usa-gray-cool-10",
@@ -165,7 +166,8 @@
       "token": "--usa-orange-warm-70"
     },
     "--ddd-theme-default-creekTeal": {
-      "token": "--usa-mint-cool-vivid-50"
+      "token": "--usa-mint-cool-vivid-30",
+      "note": "one step lighter than usa-mint-cool-vivid-50 so DDD's potentialMidnight ink reads on it (4.5:1), as blocks pair them"
     },
     "--ddd-theme-default-creekLight": {
       "token": "--usa-mint-cool-20"
@@ -351,6 +353,34 @@
     "--ddd-control-padding-inline": {
       "value": "20px",
       "note": "usa-button padding: units(1.5) units(2.5)"
+    },
+    "--ddd-card-radius": {
+      "value": "8px",
+      "note": "usa-card, $theme-card-border-radius lg"
+    },
+    "--ddd-card-padding": {
+      "value": "24px",
+      "note": "usa-card body padding, units(3)"
+    },
+    "--ddd-card-border-width": {
+      "value": "2px",
+      "note": "usa-card border, $theme-card-border-width"
+    },
+    "--ddd-card-shadow": {
+      "value": "none",
+      "note": "usa-card is bordered, not raised"
+    },
+    "--ddd-control-radius": {
+      "value": "4px",
+      "note": "usa-button, $theme-button-border-radius md"
+    },
+    "--ddd-control-height": {
+      "value": "44px",
+      "note": "usa-button, touch target"
+    },
+    "--ddd-tag-radius": {
+      "value": "2px",
+      "note": "usa-tag, $theme-border-radius-sm"
     }
   }
 }

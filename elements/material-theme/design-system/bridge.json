@@ -89,6 +89,13 @@
       "url": "https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap"
     }
   ],
+  "icons": {
+    "package": "@material-symbols/svg-400",
+    "version": "0.49.0",
+    "license": "Apache-2.0",
+    "path": "outlined/{name}.svg",
+    "map": "material-symbols"
+  },
   "ddd": {
     "--ddd-theme-default-beaverBlue": {
       "token": "--md-ref-palette-primary40",
@@ -107,7 +114,8 @@
       "token": "--md-ref-palette-primary80"
     },
     "--ddd-theme-default-skyBlue": {
-      "token": "--md-ref-palette-blue60"
+      "token": "--md-ref-palette-blue70",
+      "note": "one step lighter than md-ref-palette-blue60 so DDD's nittanyNavy ink reads on it (4.5:1), as blocks pair them"
     },
     "--ddd-theme-default-skyLight": {
       "token": "--md-ref-palette-blue90"
@@ -135,7 +143,8 @@
       "token": "--md-ref-palette-neutral100"
     },
     "--ddd-theme-default-limestoneGray": {
-      "token": "--md-ref-palette-neutral60"
+      "token": "--md-ref-palette-neutral70",
+      "note": "muted text on the dark brand surfaces needs 4.5:1; neutral60 is under it on primary20"
     },
     "--ddd-theme-default-limestoneLight": {
       "token": "--md-ref-palette-neutral90"
@@ -181,7 +190,8 @@
       "token": "--md-ref-palette-orange20"
     },
     "--ddd-theme-default-creekTeal": {
-      "token": "--md-ref-palette-cyan40"
+      "token": "--md-ref-palette-cyan60",
+      "note": "one step lighter than md-ref-palette-cyan40 so DDD's potentialMidnight ink reads on it (4.5:1), as blocks pair them"
     },
     "--ddd-theme-default-creekLight": {
       "token": "--md-ref-palette-cyan90"
@@ -383,6 +393,34 @@
     "--ddd-control-padding-inline": {
       "token": "--md-comp-button-leading-space",
       "note": "24px"
+    },
+    "--ddd-card-radius": {
+      "token": "--md-sys-shape-corner-medium",
+      "note": "cards use the medium corner, 12px"
+    },
+    "--ddd-control-radius": {
+      "token": "--md-sys-shape-corner-full",
+      "note": "buttons are fully rounded"
+    },
+    "--ddd-card-padding": {
+      "value": "16px",
+      "note": "card content padding"
+    },
+    "--ddd-card-border-width": {
+      "value": "1px",
+      "note": "outlined card"
+    },
+    "--ddd-card-shadow": {
+      "value": "none",
+      "note": "outlined card has no elevation"
+    },
+    "--ddd-control-height": {
+      "value": "40px",
+      "note": "common button container height"
+    },
+    "--ddd-tag-radius": {
+      "token": "--md-sys-shape-corner-small",
+      "note": "chips, 8px"
     }
   },
   "extraTokens": [

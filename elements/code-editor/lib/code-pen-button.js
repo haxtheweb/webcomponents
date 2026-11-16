@@ -19,6 +19,11 @@ class CodePenButton extends LitElement {
         :host {
           display: block;
         }
+        /* the alt text, shown when the image is unavailable, takes the
+           color of the surface the button sits on */
+        .codepen-mover-button {
+          color: inherit;
+        }
       `,
     ];
   }

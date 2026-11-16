@@ -357,6 +357,57 @@ describe("simple-iconset", () => {
     });
   });
 
+  describe("aliases (design system icon sets)", () => {
+    afterEach(() => {
+      SimpleIconsetStore.setAliases({});
+    });
+
+    it("draws a HAX name from the aliased set when it is registered", () => {
+      SimpleIconsetStore.registerIconset("icons", "/hax/icons/");
+      SimpleIconsetStore.registerIconset("carbon-icons", "/carbon/icons/");
+      SimpleIconsetStore.setAliases({
+        "icons:search": "carbon-icons:search",
+      });
+      expect(SimpleIconsetStore.getIcon("icons:search")).to.equal(
+        "/carbon/icons/search.svg",
+      );
+      // the legacy bare name resolves the same way
+      expect(SimpleIconsetStore.getIcon("search")).to.equal(
+        "/carbon/icons/search.svg",
+      );
+      // names not aliased keep the HAX icon
+      expect(SimpleIconsetStore.getIcon("icons:close")).to.equal(
+        "/hax/icons/close.svg",
+      );
+    });
+
+    it("keeps the HAX icon when the aliased set isn't registered", () => {
+      SimpleIconsetStore.registerIconset("icons", "/hax/icons/");
+      SimpleIconsetStore.setAliases({ "icons:search": "nope-icons:search" });
+      expect(SimpleIconsetStore.getIcon("icons:search")).to.equal(
+        "/hax/icons/search.svg",
+      );
+    });
+
+    it("never chains aliases", () => {
+      SimpleIconsetStore.registerIconset("a", "/a/");
+      SimpleIconsetStore.registerIconset("b", "/b/");
+      SimpleIconsetStore.setAliases({ "a:x": "b:y", "b:y": "a:z" });
+      expect(SimpleIconsetStore.getIcon("a:x")).to.equal("/b/y.svg");
+    });
+
+    it("tells icons on the page to redraw", () => {
+      let heard = 0;
+      const listen = () => heard++;
+      globalThis.addEventListener("simple-iconset-aliases", listen);
+      SimpleIconsetStore.setAliases({ "icons:search": "b:search" });
+      SimpleIconsetStore.setAliases({});
+      globalThis.removeEventListener("simple-iconset-aliases", listen);
+      expect(heard).to.equal(2);
+      expect(SimpleIconsetStore.aliases).to.deep.equal({});
+    });
+  });
+
   describe("requestAvailability", () => {
     it("returns the singleton instance", () => {
       const inst = globalThis.SimpleIconset.requestAvailability();

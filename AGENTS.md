@@ -38,9 +38,9 @@ Before starting any work, check the unified issue queue:
   ```bash
   npm install @haxtheweb/create --global
   ```
-- **Install project dependencies** (run from the project root):
+- **Install project dependencies** (run from the project root; this repo uses yarn and `yarn.lock`):
   ```bash
-  npm install
+  yarn install
   ```
 - **Start interactive CLI** (for web components or HAXsites):
   ```bash
@@ -240,7 +240,7 @@ LICENSE
 ## Security Considerations
 
 - **Security Audits**: For recurring security audits of this repo, start with `SECURITY-AUDIT.md` — it defines the read order, scope, commands, regression guards, and reporting convention
-- **Dependencies**: Keep dependencies updated before running `npm install`
+- **Dependencies**: Keep dependencies updated before running `yarn install`
 - **Sensitive Data**: Avoid committing API keys or sensitive data to `package.json`, `site.json`, or public files
 - **Site Imports**: Validate source URLs when using `--import-site` to prevent malicious content
 - **File Permissions**: Ensure scripts have correct execution permissions (`chmod +x script.sh`)

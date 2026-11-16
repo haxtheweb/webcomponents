@@ -22,6 +22,13 @@
             },
             {
               "kind": "field",
+              "name": "acceptsDesignSystems",
+              "static": true,
+              "description": "The chrome reads only --ddd-* tokens, so a site can give this theme\nanother design system (metadata.theme.designSystem: carbon, ...)",
+              "readonly": true
+            },
+            {
+              "kind": "field",
               "name": "supportedPalettes",
               "static": true,
               "readonly": true

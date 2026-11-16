@@ -14,7 +14,7 @@ export const MaterialDDDMap = css`
     --ddd-theme-default-potentialMidnight: var(--md-ref-palette-primary10);
     --ddd-theme-default-pughBlue: var(--md-ref-palette-primary80);
     --ddd-theme-default-accent: var(--md-ref-palette-primary80);
-    --ddd-theme-default-skyBlue: var(--md-ref-palette-blue60);
+    --ddd-theme-default-skyBlue: var(--md-ref-palette-blue70);
     --ddd-theme-default-skyLight: var(--md-ref-palette-blue90);
     --ddd-theme-default-skyMaxLight: var(--md-ref-palette-blue95);
     --ddd-theme-default-slateGray: var(--md-ref-palette-neutral-variant40);
@@ -23,7 +23,7 @@ export const MaterialDDDMap = css`
     --ddd-theme-default-coalyGray: var(--md-ref-palette-neutral10);
     --ddd-theme-default-black: var(--md-ref-palette-neutral0);
     --ddd-theme-default-white: var(--md-ref-palette-neutral100);
-    --ddd-theme-default-limestoneGray: var(--md-ref-palette-neutral60);
+    --ddd-theme-default-limestoneGray: var(--md-ref-palette-neutral70);
     --ddd-theme-default-limestoneLight: var(--md-ref-palette-neutral90);
     --ddd-theme-default-limestoneMaxLight: var(--md-ref-palette-neutral95);
     --ddd-theme-default-background: var(--md-ref-palette-neutral98);
@@ -38,7 +38,7 @@ export const MaterialDDDMap = css`
     --ddd-theme-default-shrineMaxLight: var(--md-ref-palette-tertiary95);
     --ddd-theme-default-inventOrange: var(--md-ref-palette-orange70);
     --ddd-theme-default-landgrantBrown: var(--md-ref-palette-orange20);
-    --ddd-theme-default-creekTeal: var(--md-ref-palette-cyan40);
+    --ddd-theme-default-creekTeal: var(--md-ref-palette-cyan60);
     --ddd-theme-default-creekLight: var(--md-ref-palette-cyan90);
     --ddd-theme-default-creekMaxLight: var(--md-ref-palette-cyan95);
     --ddd-theme-default-opportunityGreen: var(--md-ref-palette-green30);
@@ -108,16 +108,23 @@ export const MaterialDDDMap = css`
     --ddd-stack-gap: 16px;
     --ddd-inline-gap: 8px;
     --ddd-control-padding-inline: var(--md-comp-button-leading-space);
+    --ddd-card-radius: var(--md-sys-shape-corner-medium);
+    --ddd-control-radius: var(--md-sys-shape-corner-full);
+    --ddd-card-padding: 16px;
+    --ddd-card-border-width: 1px;
+    --ddd-card-shadow: none;
+    --ddd-control-height: 40px;
+    --ddd-tag-radius: var(--md-sys-shape-corner-small);
     /* rgb channels follow their mapped color */
     --ddd-primary-0-rgb: 208, 188, 255, 0.7;
     --ddd-primary-1-rgb: 103, 80, 164;
     --ddd-primary-2-rgb: 56, 30, 114;
     --ddd-primary-3-rgb: 33, 0, 93;
     --ddd-primary-4-rgb: 29, 27, 32;
-    --ddd-primary-5-rgb: 147, 143, 150;
+    --ddd-primary-5-rgb: 174, 169, 177;
     --ddd-primary-6-rgb: 96, 93, 102;
-    --ddd-primary-7-rgb: 0, 104, 124;
-    --ddd-primary-8-rgb: 78, 143, 248;
+    --ddd-primary-7-rgb: 0, 158, 187;
+    --ddd-primary-8-rgb: 118, 172, 255;
     --ddd-primary-9-rgb: 181, 131, 146;
     --ddd-primary-10-rgb: 177, 99, 0;
     --ddd-primary-11-rgb: 182, 13, 110, 0.7;
@@ -135,5 +142,7 @@ export const MaterialDDDMap = css`
     --ddd-primary-23-rgb: 109, 58, 1;
     --ddd-primary-24-rgb: 4, 64, 159;
     --ddd-primary-25-rgb: 0, 82, 44;
+    /* text color paired with each remapped palette, where DDD's own no longer reads */
+    --ddd-primary-17-on: white;
   }
 `;

@@ -94,3 +94,22 @@ describe("learning-component", () => {
     expect(props.demoSchema[0].properties.subtitle).to.equal("Unit 1");
   });
 });
+
+describe("learning-component key takeaways", () => {
+  it("has a Key Takeaways type with its own icon", async () => {
+    expect(learningComponentTypes.takeaways).to.equal("Key Takeaways");
+    expect(learningComponentColors.takeaways).to.be.a("string");
+    expect(iconFromPageType("takeaways")).to.equal(
+      "editor:format-list-bulleted",
+    );
+    const el = await fixture(
+      html`<learning-component type="takeaways"
+        ><p>Point</p></learning-component
+      >`,
+    );
+    await el.updateComplete;
+    expect(el.title).to.equal("Key Takeaways");
+    expect(el.icon).to.equal("editor:format-list-bulleted");
+    await expect(el).shadowDom.to.be.accessible();
+  });
+});

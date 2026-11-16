@@ -23,6 +23,12 @@ import {
   HaxElementizer,
 } from "@haxtheweb/hax-body-behaviors/lib/HAXFields.js";
 import { waitForHAXCMSSiteApiRegistryReady } from "./utils/haxcms-site-api-registry.js";
+import {
+  applySiteDesignSystem,
+  loadDesignSystemRegistry,
+  siteDesignSystemName,
+  themeAcceptsDesignSystems,
+} from "./utils/HAXCMSDesignSystems.js";
 import "@haxtheweb/simple-fields/simple-fields.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
@@ -66,6 +72,7 @@ class HAXCMSAppearanceAdminDialog extends HaxcmsAdminSectionMixin(
     this.__themesRegistry = {};
     this.__themesRegistryLoaded = false;
     this.__themePreviewSelection = null;
+    this.__designSystems = {};
     this.t = this.t || {};
     this.t = {
       ...this.t,
@@ -76,6 +83,10 @@ class HAXCMSAppearanceAdminDialog extends HaxcmsAdminSectionMixin(
       theme: "Theme",
       themeGroupDescription: "Choose the active theme for your site.",
       themeFieldDescription: "Design and presentation layer for your site",
+      designSystem: "Design system",
+      designSystemDescription:
+        "Color, type, corners and density for this theme. The theme keeps its layout.",
+      designSystemDefault: "DDD (default)",
       paletteGroupDescription: "Control accent colors and DDD palette tokens.",
       accentColor: "Accent color",
       accentColorDescription:
@@ -580,6 +591,11 @@ class HAXCMSAppearanceAdminDialog extends HaxcmsAdminSectionMixin(
     }
     this.__themesRegistryLoaded = true;
     try {
+      this.__designSystems = await loadDesignSystemRegistry();
+    } catch {
+      this.__designSystems = {};
+    }
+    try {
       await waitForHAXCMSSiteApiRegistryReady();
       if (
         MicroFrontendRegistry &&
@@ -780,6 +796,68 @@ class HAXCMSAppearanceAdminDialog extends HaxcmsAdminSectionMixin(
     return null;
   }
 
+  /**
+   * The design system select, for a theme whose chrome takes one (only a
+   * theme already loaded can say so), or null
+   */
+  _designSystemField(themeElement) {
+    const names = Object.keys(this.__designSystems || {});
+    if (names.length === 0 || !themeAcceptsDesignSystems(themeElement)) {
+      return null;
+    }
+    const options = { "": this.t.designSystemDefault };
+    names.forEach((name) => {
+      options[name] = this.__designSystems[name].title || name;
+    });
+    return {
+      property: "manifest-metadata-theme-designSystem",
+      title: this.t.designSystem,
+      description: this.t.designSystemDescription,
+      inputMethod: "select",
+      required: false,
+      options: options,
+    };
+  }
+
+  /** show or hide the design system select for the theme now chosen */
+  _updateDesignSystemField(themeElement) {
+    const index = this.groups.findIndex((g) => g.key === "theme");
+    if (index === -1) {
+      return;
+    }
+    const fields = this.groups[index].fields.filter(
+      (f) => f.property !== "manifest-metadata-theme-designSystem",
+    );
+    const field = this._designSystemField(themeElement);
+    if (field) {
+      fields.push(field);
+    }
+    this.groups = [
+      ...this.groups.slice(0, index),
+      { ...this.groups[index], fields: fields },
+      ...this.groups.slice(index + 1),
+    ];
+    this.requestUpdate();
+  }
+
+  /**
+   * Preview a design system on the theme showing now; nothing is saved
+   * until Save. Only the theme on screen can show it.
+   */
+  _previewDesignSystem(name) {
+    const showing =
+      store.themeElement && store.themeElement.tagName
+        ? store.themeElement.tagName.toLowerCase()
+        : "";
+    if (
+      showing &&
+      showing === this.values["manifest-metadata-theme-element"] &&
+      themeAcceptsDesignSystems(showing)
+    ) {
+      applySiteDesignSystem(name || "", showing);
+    }
+  }
+
   _buildAppearanceGroups(manifest) {
     const themeElement = this._normalizeFieldValue(
       "manifest-metadata-theme-element",
@@ -820,6 +898,7 @@ class HAXCMSAppearanceAdminDialog extends HaxcmsAdminSectionMixin(
             showAllThemes: store.showAllThemes,
             activeValue: themeElement,
           },
+          ...[this._designSystemField(themeElement)].filter((f) => f),
         ],
       },
       {
@@ -947,6 +1026,8 @@ class HAXCMSAppearanceAdminDialog extends HaxcmsAdminSectionMixin(
       "manifest-metadata-theme-element",
       metadata.element,
     );
+    values["manifest-metadata-theme-designSystem"] =
+      typeof metadata.designSystem === "string" ? metadata.designSystem : "";
     values["manifest-metadata-theme-variables-image"] =
       this._normalizeFieldValue(
         "manifest-metadata-theme-variables-image",
@@ -1055,6 +1136,19 @@ class HAXCMSAppearanceAdminDialog extends HaxcmsAdminSectionMixin(
     }, 0);
   }
 
+  /** closing without saving drops a design system preview */
+  disconnectedCallback() {
+    if (
+      this.groups.length > 0 &&
+      this._isChanged("manifest-metadata-theme-designSystem")
+    ) {
+      this._previewDesignSystem(
+        this.__baseline["manifest-metadata-theme-designSystem"],
+      );
+    }
+    super.disconnectedCallback();
+  }
+
   _applyStoredThemePreviewSelection() {
     if (
       !this.__themePreviewSelection ||
@@ -1081,6 +1175,11 @@ class HAXCMSAppearanceAdminDialog extends HaxcmsAdminSectionMixin(
           selection.palette,
         );
     }
+    // the design system picked in Theme Preview (haxtheweb/issues#3350)
+    if (typeof selection.designSystem === "string") {
+      this.values["manifest-metadata-theme-designSystem"] =
+        siteDesignSystemName({ designSystem: selection.designSystem });
+    }
   }
 
   applyThemePreviewSelection(selection = {}) {
@@ -1100,8 +1199,19 @@ class HAXCMSAppearanceAdminDialog extends HaxcmsAdminSectionMixin(
     if (hasPalette) {
       this.__themePreviewSelection.palette = selection.palette;
     }
+    if (typeof selection.designSystem === "string") {
+      this.__themePreviewSelection.designSystem = selection.designSystem;
+    }
     this.__valueChangeLock = true;
     this._applyStoredThemePreviewSelection();
+    this._updateDesignSystemField(
+      this.values["manifest-metadata-theme-element"],
+    );
+    if (typeof selection.designSystem === "string") {
+      this._previewDesignSystem(
+        this.values["manifest-metadata-theme-designSystem"],
+      );
+    }
     this._resetFieldValues();
     this.requestUpdate();
     this._emitState();
@@ -1226,7 +1336,8 @@ class HAXCMSAppearanceAdminDialog extends HaxcmsAdminSectionMixin(
     if (!changed) {
       return;
     }
-    // if the theme changed, update the palette field options
+    // if the theme changed, update the palette field options and whether
+    // it takes a design system
     if (
       Object.prototype.hasOwnProperty.call(
         incoming,
@@ -1235,6 +1346,19 @@ class HAXCMSAppearanceAdminDialog extends HaxcmsAdminSectionMixin(
     ) {
       this._updatePaletteFieldOptions(
         this.values["manifest-metadata-theme-element"],
+      );
+      this._updateDesignSystemField(
+        this.values["manifest-metadata-theme-element"],
+      );
+    }
+    if (
+      Object.prototype.hasOwnProperty.call(
+        incoming,
+        "manifest-metadata-theme-designSystem",
+      )
+    ) {
+      this._previewDesignSystem(
+        this.values["manifest-metadata-theme-designSystem"],
       );
     }
     this.requestUpdate();
@@ -1303,10 +1427,19 @@ class HAXCMSAppearanceAdminDialog extends HaxcmsAdminSectionMixin(
   discard() {
     this.__themePreviewSelection = null;
     this.__valueChangeLock = true;
+    const previewed = this._isChanged("manifest-metadata-theme-designSystem");
     this.values = this._cloneData(this.__baseline) || {};
     this._updatePaletteFieldOptions(
       this.values["manifest-metadata-theme-element"],
     );
+    this._updateDesignSystemField(
+      this.values["manifest-metadata-theme-element"],
+    );
+    if (previewed) {
+      this._previewDesignSystem(
+        this.values["manifest-metadata-theme-designSystem"],
+      );
+    }
     this._resetFieldValues();
     this.requestUpdate();
     this._emitState();
@@ -1378,6 +1511,15 @@ class HAXCMSAppearanceAdminDialog extends HaxcmsAdminSectionMixin(
     this.groups.forEach((group) => {
       group.fields.forEach((field) => {
         const key = field.property;
+        // the design system goes only when edited, so a save that doesn't
+        // touch it is the same request older backends (which don't know
+        // the field) have always accepted
+        if (
+          key === "manifest-metadata-theme-designSystem" &&
+          !this._isChanged(key)
+        ) {
+          return;
+        }
         const value =
           typeof this.values[key] !== "undefined"
             ? this._cloneData(this.values[key])

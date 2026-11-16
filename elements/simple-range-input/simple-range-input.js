@@ -111,6 +111,9 @@ class SimpleRangeInput extends DDD {
           margin: 0;
           padding: 0;
           width: 100%;
+          /* a 24px tall pointer target around the track */
+          min-height: 24px;
+          background: transparent;
         }
         input[type="range"]:focus {
           outline: none;
@@ -413,6 +416,34 @@ class SimpleRangeInput extends DDD {
               )
             )
           );
+        }
+        /* high contrast: the track and thumb are drawn with fills, which
+           forced colors removes, so draw them in system colors */
+        @media (forced-colors: active) {
+          input[type="range"]::-webkit-slider-runnable-track {
+            forced-color-adjust: none;
+            background: Canvas;
+            border: 1px solid CanvasText;
+            box-shadow: none;
+          }
+          input[type="range"]::-webkit-slider-thumb {
+            forced-color-adjust: none;
+            background: Highlight;
+            border: 1px solid CanvasText;
+            box-shadow: none;
+          }
+          input[type="range"]::-moz-range-track {
+            forced-color-adjust: none;
+            background: Canvas;
+            border: 1px solid CanvasText;
+            box-shadow: none;
+          }
+          input[type="range"]::-moz-range-thumb {
+            forced-color-adjust: none;
+            background: Highlight;
+            border: 1px solid CanvasText;
+            box-shadow: none;
+          }
         }
         #label {
           position: absolute;

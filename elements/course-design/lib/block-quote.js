@@ -6,8 +6,13 @@ import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import { css, html } from "lit";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import {
+  DDDBlockStyles,
+  renderDDDBlockHeader,
+} from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 
-export class BlockQuote extends DDD {
+export class BlockQuote extends I18NMixin(DDD) {
   static get properties() {
     return {
       ...super.properties,
@@ -20,6 +25,9 @@ export class BlockQuote extends DDD {
         reflect: true,
       },
       noBorder: { type: Boolean, attribute: "no-border", reflect: true },
+      // opt-in: draw the quote on the shared DDD block frame (icon chip and
+      // label above the quote), so it sits with notes and instruction cards
+      framed: { type: Boolean, reflect: true },
     };
   }
 
@@ -34,9 +42,43 @@ export class BlockQuote extends DDD {
     this.alt = "";
     this.dataTextAlign = "center";
     this.noBorder = false;
+    this.framed = false;
+    this.t = {
+      ...super.t,
+      quote: "Quote",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
   }
 
   render() {
+    if (this.framed) {
+      return html`
+        <div class="ddd-block" role="group" aria-labelledby="hdr">
+          ${renderDDDBlockHeader({
+            id: "hdr",
+            icon: "editor:format-quote",
+            label: this.t.quote,
+          })}
+          <div class="ddd-block-body framed-body">
+            <blockquote>
+              <slot></slot>
+              <slot name="quote"></slot>
+            </blockquote>
+            ${
+              this.citation
+                ? html`<p class="framed-citation">
+                    <span class="dash" aria-hidden="true">--</span>
+                    ${this.citation}
+                  </p>`
+                : ""
+            }
+          </div>
+        </div>
+      `;
+    }
     return html`
       <div id="wrap">
         ${
@@ -73,7 +115,46 @@ export class BlockQuote extends DDD {
   static get styles() {
     return [
       super.styles,
+      DDDBlockStyles,
       css`
+        /* framed: the shared DDD block frame; the existing look is the
+           default and is untouched */
+        :host([framed]) {
+          display: block;
+          background-color: transparent;
+        }
+        :host([framed]) .ddd-block {
+          --ddd-block-background: light-dark(
+            var(
+              --ddd-component-block-quote-background,
+              var(--ddd-theme-default-limestoneMaxLight)
+            ),
+            var(
+              --ddd-component-block-quote-background,
+              var(--ddd-theme-default-coalyGray)
+            )
+          );
+          --ddd-block-accent: var(
+            --ddd-component-block-quote-border-color,
+            var(--ddd-component-block-quote-border-color-default)
+          );
+          border-top: var(--ddd-border-size-md) solid var(--ddd-block-accent);
+        }
+        :host([framed]) .ddd-block-header {
+          text-align: start;
+        }
+        .framed-body {
+          padding-block: var(--ddd-spacing-3) var(--ddd-spacing-4);
+        }
+        .framed-body blockquote {
+          margin: 0;
+          font-style: italic;
+          line-height: var(--ddd-lh-140);
+        }
+        .framed-citation {
+          margin: var(--ddd-spacing-2) 0 0;
+          font-size: var(--ddd-font-size-4xs);
+        }
         :host {
           background-color: light-dark(
             var(

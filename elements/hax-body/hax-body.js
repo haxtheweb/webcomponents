@@ -2951,6 +2951,26 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
         if (sel.anchorNode != null) {
           switch (e.key) {
+            case "A":
+            case "a":
+              // select all stays inside the text block being edited. The
+              // browser's own select all takes every block on the page, the
+              // page-break included, and typing over that either does
+              // nothing or replaces the whole page.
+              if (
+                (e.ctrlKey || e.metaKey) &&
+                !e.altKey &&
+                this.activeNode &&
+                HAXStore.isTextElement(this.activeNode) &&
+                this._isFocusInEditableContent(e)
+              ) {
+                e.preventDefault();
+                const blockRange = globalThis.document.createRange();
+                blockRange.selectNodeContents(this.activeNode);
+                sel.removeAllRanges();
+                sel.addRange(blockRange);
+              }
+              break;
             case "Z":
             case "z":
               // trab for undo / redo

@@ -17,11 +17,12 @@
       html,
       body {
         margin: 0;
-        padding: 50px;
+        /* roomy on a desktop, out of the way on a phone */
+        padding: clamp(4px, 4vw, 50px);
         font-family: sans-serif;
       }
       .wrapper {
-        margin: 100px;
+        margin: clamp(0px, 8vw, 100px);
       }
     </style>
       <style>

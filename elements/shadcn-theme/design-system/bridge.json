@@ -46,6 +46,13 @@
       "url": "https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;600&display=swap"
     }
   ],
+  "icons": {
+    "package": "lucide-static",
+    "version": "1.73.0",
+    "license": "ISC",
+    "path": "icons/{name}.svg",
+    "map": "lucide"
+  },
   "ddd": {
     "--ddd-theme-default-pughBlue": {
       "token": "--color-neutral-300",
@@ -314,6 +321,30 @@
     "--ddd-control-padding-inline": {
       "value": "calc(var(--spacing) * 4)",
       "note": "Button px-4, 16px"
+    },
+    "--ddd-card-radius": {
+      "token": "--radius-xl",
+      "note": "Card is rounded-xl"
+    },
+    "--ddd-control-radius": {
+      "token": "--radius-md",
+      "note": "Button is rounded-md"
+    },
+    "--ddd-card-padding": {
+      "value": "24px",
+      "note": "Card py-6 / px-6 (a px value: the upstream token is in rem, and HAX's root font size is 20px, not 16px)"
+    },
+    "--ddd-card-border-width": {
+      "value": "1px",
+      "note": "Card border"
+    },
+    "--ddd-control-height": {
+      "value": "36px",
+      "note": "Button h-9 (a px value: the upstream token is in rem, and HAX's root font size is 20px, not 16px)"
+    },
+    "--ddd-tag-radius": {
+      "value": "999px",
+      "note": "Badge is rounded-full"
     }
   },
   "extraTokens": [

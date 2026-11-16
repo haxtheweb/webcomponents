@@ -288,6 +288,10 @@ class DDDocs extends I18NMixin(DDD) {
         :host {
           display: block;
         }
+        /* long token names wrap instead of being cut off on a narrow screen */
+        summary {
+          overflow-wrap: anywhere;
+        }
         /** some specific hacks for presenting things nicer */
         .radius {
           overflow-x: auto;

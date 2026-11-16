@@ -46,7 +46,8 @@
     </script>
     <style>
       .container {
-        margin: 64px;
+        /* roomy on a desktop, out of the way on a phone */
+        margin: clamp(0px, 5vw, 64px);
       }
       h3 {
         font-family: "Roboto", Arial, Helvetica, sans-serif;

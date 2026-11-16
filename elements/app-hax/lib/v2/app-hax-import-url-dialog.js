@@ -5,6 +5,7 @@
 import { LitElement, html, css, nothing } from "lit";
 import { HaxUiAdminStyles } from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
 import { HaxUiAdminIcons } from "@haxtheweb/d-d-d/lib/HaxUiAdminIcons.js";
+import { HaxUiDialogTitlebarStyles } from "@haxtheweb/d-d-d/lib/HaxUiDialogFrame.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 
@@ -28,8 +29,8 @@ export function isImportUrl(value) {
 /**
  * `app-hax-import-url-dialog`
  * The From a URL import: one HAX UI dialog that takes the URL and asks
- * what kind of site it is, which picks the importer. Same card as the
- * HAX UI confirm (haxcms-admin-confirm) on a native modal dialog.
+ * what kind of site it is, which picks the importer. The HAX UI dialog
+ * frame (titlebar, title, close button) on a native modal dialog.
  *
  * Use the helper rather than the element:
  *
@@ -54,7 +55,10 @@ export class AppHaxImportUrlDialog extends LitElement {
     return {
       /** [{ importType, title, description, icon }] */
       kinds: { type: Array },
-      /** { title, url, kind, cancel, continue } (translated by the caller) */
+      /**
+       * { title, url, kind, cancel, continue, close } (translated by the
+       * caller); the close button is named by cancel when close is not set
+       */
       labels: { type: Object },
       url: { type: String },
       importType: { type: String, attribute: "import-type" },
@@ -63,6 +67,7 @@ export class AppHaxImportUrlDialog extends LitElement {
   static get styles() {
     return [
       ...HaxUiAdminStyles,
+      ...HaxUiDialogTitlebarStyles,
       css`
         :host {
           display: contents;
@@ -72,9 +77,10 @@ export class AppHaxImportUrlDialog extends LitElement {
           max-height: calc(100dvh - 32px);
           box-sizing: border-box;
           margin: auto;
-          padding: var(--ddd-spacing-4, 16px);
+          padding: 0;
+          overflow: hidden;
           border: 1px solid var(--hax-ui-line-strong);
-          border-radius: var(--hax-ui-radius-lg);
+          border-radius: var(--ddd-radius-sm, 8px);
           background-color: var(--hax-ui-surface);
           color: var(--hax-ui-text);
           box-shadow: var(--hax-ui-shadow-popover);
@@ -85,16 +91,17 @@ export class AppHaxImportUrlDialog extends LitElement {
         dialog::backdrop {
           background-color: rgba(0, 3, 33, 0.32);
         }
+        dialog[open] {
+          display: flex;
+          flex-direction: column;
+        }
         form {
           display: flex;
           flex-direction: column;
           gap: var(--hax-ui-gap-lg);
-        }
-        h3 {
-          margin: 0;
-          font-size: 15px;
-          font-weight: var(--ddd-font-weight-bold, 700);
-          line-height: 1.3;
+          min-height: 0;
+          overflow: auto;
+          padding: var(--ddd-spacing-4, 16px);
         }
         .field {
           display: flex;
@@ -104,7 +111,6 @@ export class AppHaxImportUrlDialog extends LitElement {
         .field label,
         legend {
           font-weight: var(--ddd-font-weight-bold, 700);
-          font-size: 13px;
         }
         .field .hax-ui-input {
           width: 100%;
@@ -251,8 +257,21 @@ export class AppHaxImportUrlDialog extends LitElement {
     const l = this.labels || {};
     return html`
       <dialog aria-labelledby="title" @cancel="${this._cancel}">
+        <div class="hax-ui-dialog-titlebar">
+          <h2 id="title" class="hax-ui-dialog-title">${l.title}</h2>
+          <button
+            type="button"
+            class="hax-ui-dialog-close"
+            aria-label="${l.close || l.cancel || "Close"}"
+            @click="${this._cancel}"
+          >
+            <simple-icon-lite
+              icon="${HaxUiAdminIcons.close}"
+              aria-hidden="true"
+            ></simple-icon-lite>
+          </button>
+        </div>
         <form method="dialog" @submit="${this._continue}">
-          <h3 id="title">${l.title}</h3>
           <div class="field">
             <label for="url">${l.url}</label>
             <input

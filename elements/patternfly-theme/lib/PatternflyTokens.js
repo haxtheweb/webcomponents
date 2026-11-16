@@ -13,8 +13,8 @@ export const PatternflyTokens = css`
     --pf-t--color--blue--10: #e0f0ff;
     --pf-t--color--blue--20: #b9dafc;
     --pf-t--color--blue--30: #92c5f9;
-    --pf-t--color--blue--40: #4394e5;
     --pf-t--color--blue--50: #0066cc;
+    --pf-t--color--blue--60: #004d99;
     --pf-t--color--blue--70: #003366;
     --pf-t--color--blue--80: #032142;
     --pf-t--color--gray--10: #f2f2f2;

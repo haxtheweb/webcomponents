@@ -170,6 +170,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       strikethroughButton: "Cross out",
       codeButton: "Code",
       markButton: "Highlight",
+      kbdButton: "Keyboard key",
       abbrButton: "Abbreviation",
       removeFormatButton: "Remove format",
       linkButton: "Link",
@@ -376,6 +377,19 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
     };
   }
   /**
+   * default config for a keyboard key (kbd) button
+   *
+   * @readonly
+   */
+  get kbdButton() {
+    return {
+      ...super.kbdButton,
+      tag: "kbd",
+      icon: "hardware:keyboard",
+      label: this.t.kbdButton,
+    };
+  }
+  /**
    * default config for a <code></code> button
    *
    * @readonly
@@ -409,6 +423,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       this.markButton,
       this.abbrButton,
       this.codeButton,
+      this.kbdButton,
       this.underlineButton,
     ];
 
@@ -780,6 +795,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
             this.markButton,
             this.abbrButton,
             this.codeButton,
+            this.kbdButton,
             this.subscriptButton,
             this.superscriptButton,
             this.removeFormatButton,

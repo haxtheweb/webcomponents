@@ -120,7 +120,11 @@ export class LrndesignSidenote extends DDD {
         #header {
           /* a slim bar: a note has no header actions to size for */
           min-height: 0;
-          padding-inline: var(--ddd-surface-padding, var(--ddd-spacing-4));
+          padding-inline: var(--ddd-surface-padding, var(--ddd-spacing-4))
+            var(
+              --ddd-block-header-end,
+              var(--ddd-surface-padding, var(--ddd-spacing-4))
+            );
           /* the header bar tees up the note in light blue; dark mode
              keeps a dark bar so the label stays legible */
           background-color: light-dark(

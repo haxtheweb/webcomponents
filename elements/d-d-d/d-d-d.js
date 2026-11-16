@@ -18,6 +18,7 @@ import { DesignSystemManager } from "./lib/DesignSystemManager.js";
  * `d-d-d`
  * `design, develop, deliver`
  * @demo demo/index.html
+ * @demo demo/ddd-next.html Blocks under each design system
  */
 
 // will have just pulse effect

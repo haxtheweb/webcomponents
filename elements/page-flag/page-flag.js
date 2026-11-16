@@ -70,6 +70,12 @@ class PageFlag extends SimpleColors {
         :host([show]) {
           display: block;
         }
+        /* no page margin to hang in on a narrow screen: stay inside it */
+        @media (max-width: 600px) {
+          :host {
+            margin-inline-end: 0;
+          }
+        }
         .arrow {
           border: 3px solid var(--simple-colors-default-theme-accent-4, #97d4e8);
           border-radius: 4px;

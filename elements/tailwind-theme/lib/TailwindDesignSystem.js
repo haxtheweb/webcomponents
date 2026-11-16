@@ -14,6 +14,7 @@ import {
   TailwindFonts,
 } from "@haxtheweb/tailwind-theme/lib/TailwindTokens.js";
 import { TailwindDDDMap } from "@haxtheweb/tailwind-theme/lib/TailwindDDDMap.js";
+import { TailwindIcons } from "@haxtheweb/tailwind-theme/lib/TailwindIcons.js";
 
 export const TAILWIND_SYSTEM = "tailwind";
 
@@ -25,6 +26,8 @@ export function registerTailwindDesignSystem(manager = DesignSystemManager) {
       extends: "ddd",
       styles: [TailwindTokens, TailwindDDDMap],
       fonts: TailwindFonts,
+      // HAX icon names drawn in Tailwind's own icon set while it is active
+      icons: TailwindIcons,
     });
   }
   return manager;

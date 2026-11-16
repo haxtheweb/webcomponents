@@ -25,7 +25,10 @@ class MapMenu extends SchemaBehaviors(LitElement) {
       css`
         :host {
           --map-menu-item-icon-height: 18px;
-          --map-menu-item-active-item-color: rgba(100, 100, 255, 0.1);
+          --map-menu-item-active-item-color: light-dark(
+            rgba(100, 100, 255, 0.1),
+            rgba(160, 160, 255, 0.2)
+          );
           --map-menu-item-button-height: 20px;
           --map-menu-item-height: 20px;
           --map-menu-gap: 10px;

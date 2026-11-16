@@ -5,6 +5,7 @@
  */
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "./ddd-steps-list-item.js";
 
 /**
@@ -13,13 +14,24 @@ import "./ddd-steps-list-item.js";
  * @demo index.html
  * @element ddd-steps-list
  */
-export class DddStepsList extends DDDSuper(LitElement) {
+export class DddStepsList extends I18NMixin(DDDSuper(LitElement)) {
   static get tag() {
     return "ddd-steps-list";
   }
 
   constructor() {
     super();
+    this.horizontal = false;
+    this.current = 0;
+    this.t = {
+      completed: "completed",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath:
+        new URL(`../locales/${this.tag}.es.json`, import.meta.url).href +
+        "/../",
+    });
   }
 
   // Lit reactive properties
@@ -27,6 +39,10 @@ export class DddStepsList extends DDDSuper(LitElement) {
     return {
       ...super.properties,
       dddPrimary: { type: String, attribute: "ddd-primary" },
+      // a compact row of step titles that shows progress ("step 2 of 4")
+      horizontal: { type: Boolean, reflect: true },
+      // the step the reader is on, counting from 1; earlier steps are done
+      current: { type: Number, reflect: true },
     };
   }
 
@@ -59,6 +75,12 @@ export class DddStepsList extends DDDSuper(LitElement) {
           padding-inline-start: calc(var(--ddd-icon-lg) + var(--ddd-spacing-4));
         }
 
+        /* step indicator: titles in a row, joined by a progress line */
+        :host([horizontal]) .steps-container {
+          display: flex;
+          padding-inline-start: 0;
+        }
+
         @media (max-width: 768px) {
           :host {
             padding: 0px;
@@ -78,14 +100,40 @@ export class DddStepsList extends DDDSuper(LitElement) {
     this.updateNumbers();
   }
 
+  updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
+    if (
+      changedProperties.has("horizontal") ||
+      changedProperties.has("current") ||
+      changedProperties.has("t")
+    ) {
+      this.updateNumbers();
+    }
+  }
+
   updateNumbers() {
     const children = Array.from(this.children);
+    const current = Number(this.current) || 0;
     let step = 0;
     children.forEach((child) => {
       const tag = child.tagName.toLowerCase();
       if (tag === "ddd-steps-list-item") {
         step++;
         child.step = step;
+        // layout and progress are passed as properties, never as attributes,
+        // so nothing is added to the saved content
+        child.horizontal = Boolean(this.horizontal);
+        child.progress =
+          this.horizontal && current > 0
+            ? step < current
+              ? "done"
+              : step === current
+                ? "current"
+                : ""
+            : "";
+        child.doneLabel = this.t.completed;
       }
     });
   }

@@ -11,7 +11,7 @@ export const TailwindDDDMap = css`
   :host {
     --ddd-theme-default-pughBlue: var(--color-blue-300);
     --ddd-theme-default-accent: var(--color-blue-300);
-    --ddd-theme-default-skyBlue: var(--color-sky-500);
+    --ddd-theme-default-skyBlue: var(--color-sky-400);
     --ddd-theme-default-skyLight: var(--color-sky-200);
     --ddd-theme-default-skyMaxLight: var(--color-sky-50);
     --ddd-theme-default-slateGray: var(--color-slate-600);
@@ -20,7 +20,7 @@ export const TailwindDDDMap = css`
     --ddd-theme-default-coalyGray: var(--color-gray-900);
     --ddd-theme-default-black: var(--color-black);
     --ddd-theme-default-white: var(--color-white);
-    --ddd-theme-default-limestoneGray: var(--color-gray-400);
+    --ddd-theme-default-limestoneGray: var(--color-gray-300);
     --ddd-theme-default-limestoneLight: var(--color-gray-200);
     --ddd-theme-default-limestoneMaxLight: var(--color-gray-50);
     --ddd-theme-default-background: var(--color-gray-50);
@@ -35,7 +35,7 @@ export const TailwindDDDMap = css`
     --ddd-theme-default-shrineMaxLight: var(--color-stone-50);
     --ddd-theme-default-inventOrange: var(--color-orange-500);
     --ddd-theme-default-landgrantBrown: var(--color-orange-900);
-    --ddd-theme-default-creekTeal: var(--color-teal-600);
+    --ddd-theme-default-creekTeal: var(--color-teal-500);
     --ddd-theme-default-creekLight: var(--color-teal-200);
     --ddd-theme-default-creekMaxLight: var(--color-teal-50);
     --ddd-theme-default-opportunityGreen: var(--color-green-700);
@@ -97,10 +97,10 @@ export const TailwindDDDMap = css`
     --ddd-primary-2-rgb: 28, 57, 142;
     --ddd-primary-3-rgb: 22, 36, 86;
     --ddd-primary-4-rgb: 16, 24, 40;
-    --ddd-primary-5-rgb: 153, 161, 175;
+    --ddd-primary-5-rgb: 209, 213, 220;
     --ddd-primary-6-rgb: 69, 85, 108;
-    --ddd-primary-7-rgb: 0, 150, 137;
-    --ddd-primary-8-rgb: 0, 166, 244;
+    --ddd-primary-7-rgb: 0, 187, 167;
+    --ddd-primary-8-rgb: 0, 188, 255;
     --ddd-primary-9-rgb: 166, 160, 155;
     --ddd-primary-10-rgb: 225, 113, 0;
     --ddd-primary-11-rgb: 198, 0, 92, 0.7;
@@ -118,5 +118,8 @@ export const TailwindDDDMap = css`
     --ddd-primary-23-rgb: 151, 60, 0;
     --ddd-primary-24-rgb: 25, 60, 184;
     --ddd-primary-25-rgb: 1, 102, 48;
+    /* text color paired with each remapped palette, where DDD's own no longer reads */
+    --ddd-primary-17-on: white;
+    --ddd-primary-19-on: black;
   }
 `;

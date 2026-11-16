@@ -116,6 +116,41 @@ describe("polaris-flex-theme", () => {
     expect(element.__navStuck).to.equal(false);
   });
 
+  it("shows Outline Actions for the current page by the breadcrumb when signed in", async () => {
+    // isLoggedIn is computed from the jwt (no connection test configured)
+    const savedJwt = store.jwt;
+    const savedSettings = store.appSettings;
+    const savedPreview = store.previewMode;
+    const ops = () =>
+      element.shadowRoot.querySelector(".page-path haxcms-page-operations");
+    const settle = async () => {
+      await Promise.resolve();
+      await Promise.resolve();
+      await element.updateComplete;
+    };
+    try {
+      store.appSettings = {};
+      store.jwt = null;
+      store.previewMode = false;
+      store.activeId = "p1";
+      await settle();
+      expect(ops(), "not for visitors").to.equal(null);
+
+      store.jwt = "test-jwt";
+      await settle();
+      expect(ops()).to.exist;
+      expect(ops().getAttribute("action-id")).to.equal("p1");
+
+      store.previewMode = true;
+      await settle();
+      expect(ops(), "not while previewing as a visitor").to.equal(null);
+    } finally {
+      store.jwt = savedJwt;
+      store.appSettings = savedSettings;
+      store.previewMode = savedPreview;
+    }
+  });
+
   it("renders the in-flow header scaffold", () => {
     const sr = element.shadowRoot;
     expect(sr.querySelector("header")).to.exist;

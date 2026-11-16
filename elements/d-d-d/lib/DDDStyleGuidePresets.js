@@ -198,6 +198,18 @@ export const DDDStyleGuidePresets = {
       "data-design-treatment": "list-circle",
     },
   },
+  // a boxed summary list, such as the key points at the end of a lesson
+  keyPoints: {
+    name: "Key points",
+    allowedTags: ["ul"],
+    default: false,
+    properties: {
+      "data-primary": "2",
+      "data-accent": "2",
+      "data-border-radius": "md",
+      "data-padding": "s",
+    },
+  },
   listLowerAlpha: {
     name: "Letters (a, b, c)",
     allowedTags: ["ol"],

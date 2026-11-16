@@ -14,7 +14,7 @@ export const SpectrumDDDMap = css`
     --ddd-theme-default-potentialMidnight: rgb(12, 31, 105);
     --ddd-theme-default-pughBlue: rgb(172, 207, 253);
     --ddd-theme-default-accent: rgb(172, 207, 253);
-    --ddd-theme-default-skyBlue: rgb(114, 158, 253);
+    --ddd-theme-default-skyBlue: rgb(142, 185, 252);
     --ddd-theme-default-skyLight: rgb(203, 226, 254);
     --ddd-theme-default-skyMaxLight: rgb(245, 249, 255);
     --ddd-theme-default-slateGray: rgb(80, 80, 80);
@@ -23,7 +23,7 @@ export const SpectrumDDDMap = css`
     --ddd-theme-default-coalyGray: rgb(41, 41, 41);
     --ddd-theme-default-black: rgb(0, 0, 0);
     --ddd-theme-default-white: rgb(255, 255, 255);
-    --ddd-theme-default-limestoneGray: rgb(143, 143, 143);
+    --ddd-theme-default-limestoneGray: rgb(198, 198, 198);
     --ddd-theme-default-limestoneLight: rgb(225, 225, 225);
     --ddd-theme-default-limestoneMaxLight: rgb(248, 248, 248);
     --ddd-theme-default-background: rgb(248, 248, 248);
@@ -38,7 +38,7 @@ export const SpectrumDDDMap = css`
     --ddd-theme-default-shrineMaxLight: rgb(255, 246, 231);
     --ddd-theme-default-inventOrange: rgb(252, 125, 0);
     --ddd-theme-default-landgrantBrown: rgb(95, 32, 0);
-    --ddd-theme-default-creekTeal: rgb(7, 129, 109);
+    --ddd-theme-default-creekTeal: rgb(11, 162, 134);
     --ddd-theme-default-creekLight: rgb(169, 237, 216);
     --ddd-theme-default-creekMaxLight: rgb(235, 251, 246);
     --ddd-theme-default-opportunityGreen: rgb(3, 110, 69);
@@ -111,16 +111,23 @@ export const SpectrumDDDMap = css`
     --ddd-control-padding-inline: var(
       --spectrum-component-pill-edge-to-text-100
     );
+    --ddd-card-radius: var(--spectrum-corner-radius-medium-default);
+    --ddd-card-padding: var(--spectrum-spacing-400);
+    --ddd-card-border-width: 1px;
+    --ddd-card-shadow: none;
+    --ddd-control-radius: 999px;
+    --ddd-control-height: var(--spectrum-component-height-100);
+    --ddd-tag-radius: var(--spectrum-corner-radius-300);
     /* rgb channels follow their mapped color */
     --ddd-primary-0-rgb: 172, 207, 253, 0.7;
     --ddd-primary-1-rgb: 59, 99, 251;
     --ddd-primary-2-rgb: 21, 50, 173;
     --ddd-primary-3-rgb: 12, 31, 105;
     --ddd-primary-4-rgb: 41, 41, 41;
-    --ddd-primary-5-rgb: 143, 143, 143;
+    --ddd-primary-5-rgb: 198, 198, 198;
     --ddd-primary-6-rgb: 80, 80, 80;
-    --ddd-primary-7-rgb: 7, 129, 109;
-    --ddd-primary-8-rgb: 114, 158, 253;
+    --ddd-primary-7-rgb: 11, 162, 134;
+    --ddd-primary-8-rgb: 142, 185, 252;
     --ddd-primary-9-rgb: 212, 91, 0;
     --ddd-primary-10-rgb: 175, 116, 0;
     --ddd-primary-11-rgb: 186, 22, 80, 0.7;
@@ -138,5 +145,7 @@ export const SpectrumDDDMap = css`
     --ddd-primary-23-rgb: 93, 59, 0;
     --ddd-primary-24-rgb: 29, 62, 207;
     --ddd-primary-25-rgb: 2, 93, 60;
+    /* text color paired with each remapped palette, where DDD's own no longer reads */
+    --ddd-primary-17-on: white;
   }
 `;

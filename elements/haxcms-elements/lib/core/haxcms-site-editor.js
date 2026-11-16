@@ -2595,6 +2595,18 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
         if (typeof data.description === "string") {
           item.description = data.description;
         }
+        // outline operations (move, indent, change parent) answer with the
+        // page's new place; a null parent is the top level
+        if (Object.prototype.hasOwnProperty.call(data, "parent")) {
+          item.parent = data.parent ? data.parent : null;
+        }
+        if (Number.isFinite(Number(data.order)) && data.order !== null) {
+          item.order = Number(data.order);
+        }
+        if (Number.isFinite(Number(data.indent)) && data.indent !== null) {
+          item.indent = Number(data.indent);
+        }
+        this._syncPageBreakPlacement(item);
         if (data.metadata && typeof data.metadata === "object") {
           if (!item.metadata || typeof item.metadata !== "object") {
             item.metadata = {};
@@ -2654,6 +2666,44 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
         globalThis.dispatchEvent(new PopStateEvent("popstate"));
       }
     }, 300);
+  }
+  /**
+   * The page-break in the page was built when the content loaded. A content
+   * save sends that page-break back, and the backend applies its parent,
+   * order and slug, so after an outline operation it has to carry the page's
+   * new place or the save would move the page back.
+   */
+  _syncPageBreakPlacement(item) {
+    if (!item || !item.id) {
+      return;
+    }
+    const roots = [globalThis.document];
+    if (HAXStore.activeHaxBody) {
+      roots.push(HAXStore.activeHaxBody);
+    }
+    const seen = [];
+    roots.forEach((root) => {
+      Array.from(root.querySelectorAll("page-break")).forEach((pageBreak) => {
+        if (
+          seen.includes(pageBreak) ||
+          pageBreak.getAttribute("item-id") !== String(item.id)
+        ) {
+          return;
+        }
+        seen.push(pageBreak);
+        if (item.parent) {
+          pageBreak.setAttribute("parent", String(item.parent));
+        } else {
+          pageBreak.removeAttribute("parent");
+        }
+        if (Number.isFinite(Number(item.order)) && item.order !== null) {
+          pageBreak.setAttribute("order", String(item.order));
+        }
+        if (typeof item.slug === "string" && item.slug !== "") {
+          pageBreak.setAttribute("slug", item.slug);
+        }
+      });
+    });
   }
   _handleRestoreNodeRevisionResponse(e) {
     const response = e && e.detail ? e.detail.response : null;

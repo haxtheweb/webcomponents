@@ -172,7 +172,8 @@ describe("FlashCard test", () => {
   it("has correct card styling", () => {
     const styles = element.constructor.styles.toString();
     expect(styles).to.include("border-radius: var(--ddd-radius-md)");
-    expect(styles).to.include("min-width: 320px");
+    // 320px, less when the space the card sits in is narrower (reflow)
+    expect(styles).to.match(/min-width:\s*min\(\s*320px,/);
     expect(styles).to.include("min-height: 155px");
     expect(styles).to.include("ddd-block-header");
   });

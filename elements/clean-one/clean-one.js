@@ -935,6 +935,14 @@ class CleanOne extends LTIResizingMixin(
     }
   }
   // properties available to the custom element for data binding
+  /**
+   * The chrome reads only --ddd-* tokens, so a site can give this theme
+   * another design system (metadata.theme.designSystem: carbon, ...)
+   */
+  static get acceptsDesignSystems() {
+    return true;
+  }
+
   static get supportedPalettes() {
     return ["4", "5"];
   }

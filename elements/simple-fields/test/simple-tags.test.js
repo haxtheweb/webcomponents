@@ -200,3 +200,38 @@ describe("simple-tags", () => {
     expect(cls.haxProperties).to.exist;
   });
 });
+
+describe("simple-tag shared vocabulary", () => {
+  it("gives a variant a meaning color and leaves a plain tag alone", async () => {
+    const plain = await fixture(
+      html`<simple-tag value="Neutral"></simple-tag>`,
+    );
+    const ok = await fixture(
+      html`<simple-tag value="Stable" variant="success"></simple-tag>`,
+    );
+    expect(plain.dddWord("variant")).to.equal(null);
+    expect(ok.matches(":state(variant-success)")).to.equal(true);
+    expect(globalThis.getComputedStyle(ok).backgroundColor).to.not.equal(
+      globalThis.getComputedStyle(plain).backgroundColor,
+    );
+    await expect(ok).shadowDom.to.be.accessible();
+  });
+
+  it("still exposes the toggled state", async () => {
+    const el = await fixture(
+      html`<simple-tag value="Pick" toggles toggled></simple-tag>`,
+    );
+    await el.updateComplete;
+    expect(el.matches(":state(toggled)")).to.equal(true);
+  });
+
+  it("follows the tag radius token", async () => {
+    const el = await fixture(
+      html`<simple-tag
+        value="Square"
+        style="--ddd-tag-radius: 2px"
+      ></simple-tag>`,
+    );
+    expect(globalThis.getComputedStyle(el).borderTopLeftRadius).to.equal("2px");
+  });
+});

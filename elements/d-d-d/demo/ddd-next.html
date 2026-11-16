@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes"
+    />
+    <title>DDD: blocks under each design system</title>
+    <script>
+      globalThis.process = globalThis.process || {
+        env: {
+          NODE_ENV: "production",
+        },
+      };
+    </script>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <script type="module">
+      import "../d-d-d.js";
+      import "../lib/ddd-card.js";
+      import "../lib/ddd-steps-list.js";
+      import "@haxtheweb/stat-tile/stat-tile.js";
+      import "@haxtheweb/simple-cta/simple-cta.js";
+      import "@haxtheweb/simple-fields/lib/simple-tag.js";
+      import "@haxtheweb/stop-note/stop-note.js";
+      import "@haxtheweb/stop-note/lib/stop-note-group.js";
+      import "@haxtheweb/course-design/lib/learning-component.js";
+      import "@haxtheweb/course-design/lib/block-quote.js";
+      import "@haxtheweb/lrndesign-sidenote/lrndesign-sidenote.js";
+      import { DesignSystemManager } from "../lib/DesignSystemManager.js";
+
+      // each bridge is one small module; only the chosen one is imported
+      const SYSTEMS = {
+        carbon: ["carbon-theme", "Carbon"],
+        patternfly: ["patternfly-theme", "Patternfly"],
+        spectrum: ["spectrum-theme", "Spectrum"],
+        material: ["material-theme", "Material"],
+        uswds: ["uswds-theme", "Uswds"],
+        tailwind: ["tailwind-theme", "Tailwind"],
+        shadcn: ["shadcn-theme", "Shadcn"],
+        webawesome: ["webawesome-theme", "Webawesome"],
+      };
+      const bar = globalThis.document.querySelector("#systems");
+      bar.addEventListener("click", async (e) => {
+        const button = e.target.closest("button[data-system]");
+        if (!button) return;
+        const name = button.getAttribute("data-system");
+        if (name === "ddd") {
+          DesignSystemManager.active = "ddd";
+        } else {
+          const [pkg, prefix] = SYSTEMS[name];
+          const mod = await import(
+            `../../${pkg}/lib/${prefix}DesignSystem.js`
+          );
+          mod[`activate${prefix}DesignSystem`]();
+        }
+        bar
+          .querySelectorAll("button")
+          .forEach((b) =>
+            b.setAttribute("aria-pressed", String(b === button)),
+          );
+      });
+      globalThis.document
+        .querySelector("#dark")
+        .addEventListener("click", (e) => {
+          const on = e.target.getAttribute("aria-pressed") !== "true";
+          e.target.setAttribute("aria-pressed", String(on));
+          globalThis.document.documentElement.style.colorScheme = on
+            ? "dark"
+            : "light";
+          globalThis.document.body.classList.toggle("dark-mode", on);
+        });
+    </script>
+    <style>
+      body {
+        margin: 0;
+        padding: var(--ddd-spacing-4);
+        font-family: var(--ddd-font-primary);
+        background-color: light-dark(
+          var(--ddd-theme-default-white),
+          var(--ddd-theme-default-coalyGray)
+        );
+        color: light-dark(
+          var(--ddd-theme-default-coalyGray),
+          var(--ddd-theme-default-white)
+        );
+      }
+      main {
+        max-width: 960px;
+        margin: 0 auto;
+      }
+      .bar {
+        position: sticky;
+        top: 0;
+        z-index: 2;
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--ddd-spacing-2);
+        padding: var(--ddd-spacing-2) 0;
+        background-color: inherit;
+      }
+      .bar button {
+        font: inherit;
+        padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
+        border: var(--ddd-border-xs);
+        border-radius: var(--ddd-radius-rounded);
+        background: transparent;
+        color: inherit;
+        cursor: pointer;
+      }
+      .bar button[aria-pressed="true"] {
+        background-color: var(--ddd-theme-default-nittanyNavy);
+        color: var(--ddd-theme-default-white);
+      }
+      .row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: var(--ddd-spacing-4);
+        align-items: start;
+      }
+      .row ddd-card {
+        width: auto;
+        margin: 0;
+      }
+      .swatches {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: var(--ddd-spacing-2);
+      }
+      .swatches div {
+        text-align: center;
+      }
+      section {
+        margin-block: var(--ddd-spacing-8);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Blocks under each design system</h1>
+      <p>
+        Switch the design system and every block follows. Only the chosen
+        bridge is loaded. Authored markup never changes.
+      </p>
+      <div class="bar" id="systems" role="group" aria-label="Design system">
+        <button type="button" data-system="ddd" aria-pressed="true">DDD</button>
+        <button type="button" data-system="carbon" aria-pressed="false">Carbon</button>
+        <button type="button" data-system="patternfly" aria-pressed="false">PatternFly</button>
+        <button type="button" data-system="spectrum" aria-pressed="false">Spectrum 2</button>
+        <button type="button" data-system="material" aria-pressed="false">Material 3</button>
+        <button type="button" data-system="uswds" aria-pressed="false">USWDS</button>
+        <button type="button" data-system="tailwind" aria-pressed="false">Tailwind</button>
+        <button type="button" data-system="shadcn" aria-pressed="false">shadcn/ui</button>
+        <button type="button" data-system="webawesome" aria-pressed="false">Web Awesome</button>
+        <button type="button" id="dark" aria-pressed="false">Dark</button>
+      </div>
+
+      <section>
+        <h2>stat-tile (new)</h2>
+        <div class="row">
+          <stat-tile label="Enrolled" value="1284" change="6% this term" trend="up"></stat-tile>
+          <stat-tile label="Completion" value="87%" change="3 points" trend="up"></stat-tile>
+          <stat-tile label="Open issues" value="14" change="5 since Monday" trend="down"></stat-tile>
+        </div>
+      </section>
+
+      <section>
+        <h2>ddd-steps-list: step indicator</h2>
+        <ddd-steps-list horizontal current="2">
+          <ddd-steps-list-item title="Choose theme"><p>Pick a theme in site settings.</p></ddd-steps-list-item>
+          <ddd-steps-list-item title="Write a page"><p>Use blocks.</p></ddd-steps-list-item>
+          <ddd-steps-list-item title="Check dark mode"><p>Toggle it.</p></ddd-steps-list-item>
+          <ddd-steps-list-item title="Publish"><p>Ship it.</p></ddd-steps-list-item>
+        </ddd-steps-list>
+        <h3>The list as it was (unchanged)</h3>
+        <ddd-steps-list>
+          <ddd-steps-list-item title="Choose theme"><p>Pick a theme in site settings.</p></ddd-steps-list-item>
+          <ddd-steps-list-item title="Write a page"><p>Use headings, cards, notes and tabs.</p></ddd-steps-list-item>
+        </ddd-steps-list>
+      </section>
+
+      <section>
+        <h2>Keyboard key</h2>
+        <p>Save with <kbd>Ctrl</kbd> + <kbd>S</kbd>. Open Merlin with <kbd>Alt</kbd> + <kbd>Shift</kbd>, then press <kbd>Enter</kbd>.</p>
+      </section>
+
+      <section>
+        <h2>ddd-card</h2>
+        <div class="row">
+          <ddd-card title="No image" href="#card" clickable><p>No empty image area. The whole card is the link.</p></ddd-card>
+          <ddd-card title="No image, with a button" href="#card" label="Open reading"><p>Only the accent rule shows above the title.</p></ddd-card>
+        </div>
+        <ddd-card horizontal title="Horizontal" href="#card" label="Open lesson" src="../../video-player/demo/samples/stclair.jpg" alt=""><p>Image beside the text, for lists of lessons.</p></ddd-card>
+      </section>
+
+      <section>
+        <h2>simple-tag: meaning colors</h2>
+        <p>
+          <simple-tag value="Neutral"></simple-tag>
+          <simple-tag value="Brand" variant="brand"></simple-tag>
+          <simple-tag value="Stable" variant="success"></simple-tag>
+          <simple-tag value="Beta" variant="warning"></simple-tag>
+          <simple-tag value="Deprecated" variant="danger"></simple-tag>
+        </p>
+      </section>
+
+      <section>
+        <h2>simple-cta: appearance and size</h2>
+        <p>
+          <simple-cta link="#cta" label="Filled" hide-icon></simple-cta>
+          <simple-cta link="#cta" label="Tonal" appearance="tonal" hide-icon></simple-cta>
+          <simple-cta link="#cta" label="Outlined" appearance="outlined" hide-icon></simple-cta>
+          <simple-cta link="#cta" label="Plain" appearance="plain" hide-icon></simple-cta>
+        </p>
+        <p>
+          <simple-cta link="#cta" label="Small" size="s" hide-icon></simple-cta>
+          <simple-cta link="#cta" label="Medium" hide-icon></simple-cta>
+          <simple-cta link="#cta" label="Large" size="l" hide-icon></simple-cta>
+        </p>
+        <h3>Existing content and new vocabulary draw the same</h3>
+        <p>
+          <simple-cta link="#cta" label="light large" light large hide-icon></simple-cta>
+          <simple-cta link="#cta" label="outlined l" appearance="outlined" size="l" hide-icon></simple-cta>
+        </p>
+      </section>
+
+      <section>
+        <h2>stop-note (unchanged)</h2>
+        <stop-note status="warning" title="The quiz closes at midnight"><span slot="message">Answers save as you go.</span></stop-note>
+        <stop-note status="success"><span slot="message">Your project was submitted.</span></stop-note>
+        <stop-note status="stop"><span slot="message">Do not share your exam link.</span></stop-note>
+        <h3>variant="danger" is read as status="stop"</h3>
+        <stop-note variant="danger"><span slot="message">Do not share your exam link.</span></stop-note>
+      </section>
+
+      <section>
+        <h2>The callout family</h2>
+        <div class="row">
+          <learning-component type="objectives"><ul><li>Name a token by its role.</li><li>Swap a palette safely.</li></ul></learning-component>
+          <learning-component type="takeaways"><ul><li>Blocks read tokens.</li><li>Tokens name decisions.</li><li>Never rely on color alone.</li></ul></learning-component>
+        </div>
+        <div class="row">
+          <lrndesign-sidenote label="Side note" icon="icons:bookmark"><p>The word "token" comes from the design tools, not from code.</p></lrndesign-sidenote>
+          <block-quote framed citation="William Ollendyke">With the right tools, you can do anything.</block-quote>
+        </div>
+        <h3>block-quote as it was (unchanged)</h3>
+        <block-quote citation="William Ollendyke">With the right tools, you can do anything.</block-quote>
+        <h3>A mixed stack</h3>
+        <stop-note-group label="Before you start">
+          <stop-note status="warning"><span slot="message">The quiz closes at midnight.</span></stop-note>
+          <learning-component type="objectives"><ul><li>Name a token by its role.</li><li>Swap a palette safely.</li></ul></learning-component>
+          <learning-component type="takeaways"><ul><li>Blocks read tokens.</li><li>Tokens name decisions.</li></ul></learning-component>
+          <block-quote framed citation="William Ollendyke">With the right tools, you can do anything.</block-quote>
+        </stop-note-group>
+      </section>
+
+      <section>
+        <h2>Paired text colors</h2>
+        <p>Every palette carries the text color that reads on it. Try Carbon (17, 19) or Material 3 (7, 17).</p>
+        <div class="swatches" id="swatches"></div>
+        <script>
+          (function () {
+            const host = globalThis.document.querySelector("#swatches");
+            for (let n = 0; n <= 25; n++) {
+              const d = globalThis.document.createElement("div");
+              d.setAttribute("data-primary", String(n));
+              d.setAttribute("data-design-treatment", "bg");
+              d.textContent = "Primary " + n;
+              host.appendChild(d);
+            }
+          })();
+        </script>
+      </section>
+    </main>
+  </body>
+</html>

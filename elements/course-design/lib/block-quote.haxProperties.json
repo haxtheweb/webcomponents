@@ -44,7 +44,14 @@
         "validationType": "url"
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "framed",
+        "title": "Framed",
+        "description": "Draw the quote on the shared block frame, with an icon and label above it, so it matches notes and instruction cards.",
+        "inputMethod": "boolean"
+      }
+    ]
   },
   "saveOptions": {
     "wipeSlot": false,

@@ -14,6 +14,7 @@ import {
   MaterialFonts,
 } from "@haxtheweb/material-theme/lib/MaterialTokens.js";
 import { MaterialDDDMap } from "@haxtheweb/material-theme/lib/MaterialDDDMap.js";
+import { MaterialIcons } from "@haxtheweb/material-theme/lib/MaterialIcons.js";
 
 export const MATERIAL_SYSTEM = "material";
 
@@ -25,6 +26,8 @@ export function registerMaterialDesignSystem(manager = DesignSystemManager) {
       extends: "ddd",
       styles: [MaterialTokens, MaterialDDDMap],
       fonts: MaterialFonts,
+      // HAX icon names drawn in Material's own icon set while it is active
+      icons: MaterialIcons,
     });
   }
   return manager;

@@ -250,3 +250,45 @@ describe("stop-note gap coverage", () => {
     expect(StopNote.haxProperties).to.include("haxProperties.json");
   });
 });
+
+describe("stop-note shared vocabulary", () => {
+  it("reads a status as a variant, as a name only", async () => {
+    const el = await fixture(html`<stop-note status="stop"></stop-note>`);
+    expect(el.dddWord("variant")).to.equal("danger");
+    expect(el.hasAttribute("variant")).to.equal(false);
+  });
+
+  it("draws variant=danger exactly as status=stop", async () => {
+    const byStatus = await fixture(
+      html`<stop-note status="stop" title="Stop"
+        ><span slot="message">m</span></stop-note
+      >`,
+    );
+    const byVariant = await fixture(
+      html`<stop-note variant="danger" title="Stop"
+        ><span slot="message">m</span></stop-note
+      >`,
+    );
+    expect(byVariant.status).to.equal("stop");
+    expect(byVariant.icon).to.equal(StopNoteIconList.stop);
+    const pick = (el) => {
+      const block = el.shadowRoot.querySelector(".ddd-block");
+      const header = el.shadowRoot.querySelector(".ddd-block-header");
+      const label = el.shadowRoot.querySelector(".status-label");
+      return [
+        globalThis.getComputedStyle(block).borderTopColor,
+        globalThis.getComputedStyle(header).backgroundColor,
+        globalThis.getComputedStyle(label).color,
+        label.textContent.trim(),
+        el.shadowRoot.querySelector("simple-icon").getAttribute("icon"),
+      ];
+    };
+    expect(pick(byVariant)).to.deep.equal(pick(byStatus));
+  });
+
+  it("keeps tip and new as statuses with no variant", async () => {
+    const el = await fixture(html`<stop-note status="tip"></stop-note>`);
+    expect(el.dddWord("variant")).to.equal(null);
+    expect(el.icon).to.equal(StopNoteIconList.tip);
+  });
+});

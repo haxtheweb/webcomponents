@@ -3,7 +3,7 @@
 <!-- GENERATED FILE: do not edit by hand. Run `yarn run elements-readme` -->
 <!-- Descriptions come from each element's package.json; edit them there. -->
 
-Every element in this monorepo (237 packages). Browse them live with `yarn gallery`, or open an element's folder for its own README.
+Every element in this monorepo (239 packages). Browse them live with `yarn gallery`, or open an element's folder for its own README.
 
 | Element | Description | Package | Demo |
 | --- | --- | --- | --- |
@@ -216,6 +216,7 @@ Every element in this monorepo (237 packages). Browse them live with `yarn galle
 | [spectrum-theme](./spectrum-theme/) | Adobe Spectrum theme for HAXcms, built on the DDD-capable Spectrum design system bridge | `@haxtheweb/spectrum-theme` | [demo](./spectrum-theme/demo/) |
 | [spotify-embed](./spotify-embed/) | embed spotify playlists | `@haxtheweb/spotify-embed` | [demo](./spotify-embed/demo/) |
 | [star-rating](./star-rating/) | rating display and interaction widget | `@haxtheweb/star-rating` | [demo](./star-rating/demo/) |
+| [stat-tile](./stat-tile/) | One number that matters, with its label and how it changed | `@haxtheweb/stat-tile` | [demo](./stat-tile/demo/) |
 | [stop-note](./stop-note/) | Callout note that directs people to an action at different warning levels | `@haxtheweb/stop-note` | [demo](./stop-note/demo/) |
 | [super-daemon](./super-daemon/) | Keyboard-driven command palette for searching and running programs across HAX | `@haxtheweb/super-daemon` | [demo](./super-daemon/demo/) |
 | [tableau-embed](./tableau-embed/) | Tableau visualization embed wrapper with HAX capabilities. | `@haxtheweb/tableau-embed` | [demo](./tableau-embed/demo/) |
@@ -241,6 +242,7 @@ Every element in this monorepo (237 packages). Browse them live with `yarn galle
 | [wc-autoload](./wc-autoload/) | automatically load new tags in the dom | `@haxtheweb/wc-autoload` |  |
 | [web-baseline-status](./web-baseline-status/) | Wrapper that makes the web-platform-dx baseline-status widget usable in HAX | `@haxtheweb/web-baseline-status` | [demo](./web-baseline-status/demo/) |
 | [web-container](./web-container/) | Webcomponent web-container following hax / open-wc recommendations | `@haxtheweb/web-container` | [demo](./web-container/demo/) |
+| [webawesome-theme](./webawesome-theme/) | Web Awesome theme for HAXcms, built on the DDD-capable Web Awesome design system bridge | `@haxtheweb/webawesome-theme` | [demo](./webawesome-theme/demo/) |
 | [wikipedia-query](./wikipedia-query/) | Queries Wikipedia and presents the result with citation | `@haxtheweb/wikipedia-query` | [demo](./wikipedia-query/demo/) |
 | [word-count](./word-count/) | Counts the words in slotted text and shows a small badge | `@haxtheweb/word-count` | [demo](./word-count/demo/) |
 | [wysiwyg-hax](./wysiwyg-hax/) | Integrates HAX as the editor inside a page's form field | `@haxtheweb/wysiwyg-hax` | [demo](./wysiwyg-hax/demo/) |

@@ -64,6 +64,8 @@ class WordCount extends I18NMixin(LitElement) {
         /* nothing moves with prefers-reduced-motion */
         @media (prefers-reduced-motion: reduce) {
           :host,
+          :host::before,
+          :host::after,
           *,
           *::before,
           *::after {

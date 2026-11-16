@@ -21,6 +21,13 @@
           "name": "StopNote",
           "members": [
             {
+              "kind": "field",
+              "name": "dddVocabulary",
+              "static": true,
+              "description": "Shared DDD vocabulary, as names only: variant=\"danger\" is read as\nstatus=\"stop\" and so on, and the note draws exactly what that status\ndraws. The icon, header cap and status word are this element's design\nand no shared word changes them. tip and new have no shared meaning and\nstay statuses.",
+              "readonly": true
+            },
+            {
               "kind": "method",
               "name": "_handleSlotChange"
             },
@@ -200,6 +207,10 @@
           ],
           "mixins": [
             {
+              "name": "DDDVocabulary",
+              "package": "@haxtheweb/d-d-d/lib/DDDVocabulary.js"
+            },
+            {
               "name": "SchemaBehaviors",
               "package": "@haxtheweb/schema-behaviors/schema-behaviors.js"
             },
@@ -250,7 +261,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "`stop-note-group`\nStacks several `stop-note`s into one block that shows a note at a time,\nwith previous and next buttons and a count laid over the note's header\n(\"Did you know?  ← 2 / 5 →\"). Made for Tips and What's new, but any\nstatuses can be mixed.\n\nThe notes stay ordinary light DOM children: the group never changes\nthem, it only hides the ones not showing, so saved content is exactly\nwhat the author wrote. While HAX is editing, and when printing, every\nnote shows.",
+          "description": "`stop-note-group`\nStacks several `stop-note`s into one block that shows a note at a time,\nwith previous and next buttons and a count laid over the note's header\n(\"Did you know?  ← 2 / 5 →\"). Made for Tips and What's new, but any\nstatuses can be mixed. Other blocks drawn on the shared DDD block frame\ncan be stacked with them: instruction cards (`learning-component`), side\nnotes (`lrndesign-sidenote`) and framed quotes (`block-quote framed`).\n\nThe notes stay ordinary light DOM children: the group never changes\nthem, it only hides the ones not showing, so saved content is exactly\nwhat the author wrote. While HAX is editing, and when printing, every\nnote shows.",
           "name": "StopNoteGroup",
           "members": [
             {
@@ -262,7 +273,7 @@
             {
               "kind": "field",
               "name": "notes",
-              "description": "the stop-notes this group pages through",
+              "description": "the blocks this group pages through: stop-notes, and the other blocks\nthat share the DDD block frame (their header is where the pager sits)",
               "readonly": true
             },
             {

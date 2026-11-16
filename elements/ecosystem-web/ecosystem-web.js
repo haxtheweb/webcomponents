@@ -2119,9 +2119,10 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
       } catch {
         // full screen refused: the fixed layout still fills the window
       }
-    } else if (doc.fullscreenElement === this) {
+    } else if (doc.fullscreenElement) {
       try {
-        doc.exitFullscreen();
+        const r = doc.exitFullscreen();
+        if (r && r.catch) r.catch(() => {});
       } catch {
         // already out of full screen
       }

@@ -1,0 +1,240 @@
+{
+  "meta": {
+    "name": "isc-graduate-portfolio",
+    "machineName": "isc-graduate-portfolio",
+    "priority": 0,
+    "description": "A graduate competency portfolio on the Clean Portfolio theme: About Me, Competencies, three domains, Specialization and Publications.",
+    "version": "1.0.0",
+    "created": "2026-06-04T21:12:28.776Z",
+    "type": "skeleton",
+    "useCaseTitle": "ISC Graduate Portfolio",
+    "useCaseDescription": "A graduate competency portfolio on the Clean Portfolio theme: About Me, Competencies, three domains, Specialization and Publications.",
+    "useCaseImage": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-clean-portfolio-theme-thumb.jpg",
+    "category": ["Website"],
+    "tags": ["portfolio", "graduate", "competencies"],
+    "attributes": []
+  },
+  "site": {
+    "name": "iscgraduateportfolio-2",
+    "description": "A graduate competency portfolio: about me, competencies, specialization and publications.",
+    "theme": "clean-portfolio-theme",
+    "settings": {
+      "lang": "en-US",
+      "publishPagesOn": true,
+      "canonical": true,
+      "private": false,
+      "pathauto": true,
+      "sw": true,
+      "forceUpgrade": false
+    },
+    "platform": {
+      "audience": "novice",
+      "features": {
+        "deletePage": false,
+        "outlineDesigner": false,
+        "styleGuide": false,
+        "insights": false,
+        "themeManifest": false,
+        "seoManifest": false,
+        "popularGizmos": false,
+        "contentMap": false,
+        "viewSource": false,
+        "onlineMedia": false,
+        "community": false
+      },
+      "allowedBlocks": [
+        "a11y-collapse",
+        "a11y-gif-player",
+        "ai-usage-license",
+        "audio-player",
+        "bibliography-builder",
+        "bibliography-item",
+        "career-org-item",
+        "career-role-item",
+        "career-timeline",
+        "citation-element",
+        "code-sample",
+        "collection-item",
+        "collection-list",
+        "editable-table",
+        "grid-plate",
+        "h3",
+        "hr",
+        "iframe-loader",
+        "image-compare-slider",
+        "license-element",
+        "media-image",
+        "play-list",
+        "pre",
+        "simple-cta",
+        "video-player",
+        "wikipedia-query"
+      ]
+    }
+  },
+  "build": {
+    "type": "skeleton",
+    "structure": "from-skeleton",
+    "items": [
+      {
+        "id": "c466d26a-0c12-48bd-ef65-646b29c87001",
+        "title": "About Me",
+        "slug": "about",
+        "order": 0,
+        "parent": null,
+        "indent": 0,
+        "content": "<h2 data-style-guide=\"headline\" data-design-treatment=\"vert\" data-primary=\"8\" data-padding=\"xs\" data-border-radius=\"xs\" id=\"h2-1029919739\">Name · Major</h2>\n<grid-plate item-margin=\"16\" item-padding=\"16\" layout=\"1-1\" disable-responsive=\"\">\n<p slot=\"col-1\" data-style-guide=\"style-1\" data-design-treatment=\"dropCap-sm\" data-accent=\"2\" data-border-radius=\"md\">Use this page to provide a brief, friendly introduction to yourself. Share your name, your field of study, and what defines your academic identity.</p><media-image source=\"https://dummyimage.com/300x200/000/fff\" card=\"\" accent-color=\"grey\" size=\"wide\" offset=\"none\" slot=\"col-2\" caption=\"Provide a professional headshot here!\" modal-title=\"Provide a professional headshot here!\" _has-caption=\"\"></media-image>\n</grid-plate>\n<h2 data-style-guide=\"headline\" data-design-treatment=\"vert\" data-primary=\"8\" data-padding=\"xs\" data-border-radius=\"xs\" id=\"h2--1145405553\">Personal Statement</h2>\n<p>Describe where you're coming from: your educational background, the experiences that shaped your path, and what led you to your current field. This is your chance to tell your story in your own voice.</p>\n<h2 data-style-guide=\"headline\" data-design-treatment=\"vert\" data-primary=\"8\" data-padding=\"xs\" data-border-radius=\"xs\" id=\"h2-1052047729\">Social Media</h2>\n<p>Share some links to the social media profiles that build up your online presence! LinkedIn, Instagram, and Twitter are included as optional starting points.</p>\n<collection-list accent-color=\"grey\"><collection-item url=\"https://www.linkedin.com/\" icon=\"hax:hax2022\" image=\"https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/LinkedIn_icon.svg/1280px-LinkedIn_icon.svg.png\" line1=\"Linkedin\"></collection-item>\n<collection-item icon=\"hax:hax2022\" line1=\"Instagram\" image=\"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/1280px-Instagram_logo_2016.svg.png\" url=\"https://instagram.com\"></collection-item>\n<collection-item url=\"https://x.com\" icon=\"hax:hax2022\" line1=\"X\" image=\"https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Logo_of_Twitter.svg/1280px-Logo_of_Twitter.svg.png\"></collection-item>\n</collection-list>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "created": 1780604132,
+          "updated": 1780604204,
+          "locked": false,
+          "readtime": 1,
+          "videos": [],
+          "images": [],
+          "tags": []
+        }
+      },
+      {
+        "id": "94f63cb4-7f37-a5e4-3c4c-d9e67b2b6d32",
+        "title": "Competencies",
+        "slug": "competencies",
+        "order": 1,
+        "parent": null,
+        "indent": 0,
+        "content": "<p data-style-guide=\"style-1\" data-design-treatment=\"dropCap-sm\" data-accent=\"2\" data-border-radius=\"md\">Describe a snapshot of your academic and professional development. This page should highlight: your prior experience, what you've mastered, and what your plans are. Keep your content current and revisit it each semester!</p>\n<h2 data-style-guide=\"headline\" data-design-treatment=\"vert\" data-primary=\"8\" data-padding=\"xs\" data-border-radius=\"xs\" id=\"h2--2012006303\">Your Career Timeline</h2>\n<p>Build a visual timeline of your affiliations and achievements over the years. Include any professional, research, and volunteer work! The system allows you to connect locations, responsibilities, and skills to particular roles.&nbsp;</p>\n<career-timeline title=\"Career timeline\"><career-org-item source=\"https://avatars.githubusercontent.com/u/170651362\" organization=\"Organization Name\" location=\"Location, Place\"><career-role-item title=\"Role Title\" start-date=\"&quot;2026-06-04T20:27:53.449Z&quot;\" end-date=\"&quot;2026-06-04T20:27:53.449Z&quot;\" skills=\"[{&quot;name&quot;:&quot;Skill 1&quot;}]\"><p>Describe your role here...</p></career-role-item>\n</career-org-item>\n</career-timeline>\n<h2 data-style-guide=\"headline\" data-design-treatment=\"vert\" data-primary=\"8\" data-padding=\"xs\" data-border-radius=\"xs\" id=\"h2-492572441\">Curriculum Vitae</h2>\n<p>Provide your most up-to-date CV in NIH-style!</p>\n<ul><li><a href=\"https://hax.psu.edu\">Create a link accessible by Penn State members on OneDrive</a></li>\n</ul>\n<grid-plate item-margin=\"16\" item-padding=\"16\" layout=\"1-1\" disable-responsive=\"\"><h2 data-style-guide=\"headline\" data-design-treatment=\"vert\" data-primary=\"8\" data-padding=\"xs\" data-border-radius=\"xs\" slot=\"col-1\">Areas of Expertise</h2><ul slot=\"col-1\"><li>Share a list of the theoretical orientation, methodological approaches, technical competencies, and/or professional competencies that you feel strongest in!</li></ul>\n<h2 data-style-guide=\"headline\" data-design-treatment=\"vert\" data-primary=\"8\" data-padding=\"xs\" data-border-radius=\"xs\" slot=\"col-2\">Certifications</h2><ul slot=\"col-2\"><li>Include links to any formal certifications or licenses you have earned. This includes SARI and CITI training programs!</li></ul>\n</grid-plate>\n<h2 data-style-guide=\"headline\" data-design-treatment=\"vert\" data-primary=\"8\" data-padding=\"xs\" data-border-radius=\"xs\" id=\"h2-555753100\">Future Aspirations</h2>\n<p>Where are you going from here? Describe your short-term and long-term professional goals. What roles, projects, or impact are you working toward?</p>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "created": 1780604132,
+          "updated": 1780607498,
+          "locked": false,
+          "readtime": 1,
+          "videos": [],
+          "images": [],
+          "tags": []
+        }
+      },
+      {
+        "id": "78bece7c-e2a2-922c-b89c-1bfa009c8afc",
+        "title": "Domain 1",
+        "slug": "competencies/domain-1",
+        "order": 0,
+        "parent": "94f63cb4-7f37-a5e4-3c4c-d9e67b2b6d32",
+        "indent": 1,
+        "content": "<p data-style-guide=\"style-1\" data-design-treatment=\"dropCap-sm\" data-accent=\"2\" data-border-radius=\"md\">Tell us about the core domains in your program and how you shine in them! These areas may be drawn from your program's standards or discussed with your advisor. Domains cover a wide breadth of material, not all of which must be technical. For example: Academic Success, Social Interaction, and CACREP Training. Start off by briefly describing your understanding of the domain, how you connect to it, and such.</p>\n<h2 data-style-guide=\"headline\" data-design-treatment=\"vert\" data-primary=\"8\" data-padding=\"xs\" data-border-radius=\"xs\" id=\"h2--2015156918\">Sample of Evidence</h2>\n<p>You may demonstrate how you meet the standards of each domain through a mix of coursework, independent studies, and projects. Share 1 to 3 samples of evidence. Describe how each sample of evidence reflects the attributes of your given domain. If applicable, please include relevant links, documents, or media files.</p>\n<ul><li><a href=\"https://hax.psu.edu\">Links are one of many ways to share your evidence!</a></li>\n</ul>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": [],
+          "created": 1780604132,
+          "updated": 1780604132
+        }
+      },
+      {
+        "id": "66c34760-3142-190f-8731-f1c25bbe5fa8",
+        "title": "Domain 2",
+        "slug": "competencies/domain-2",
+        "order": 1,
+        "parent": "94f63cb4-7f37-a5e4-3c4c-d9e67b2b6d32",
+        "indent": 1,
+        "content": "<p data-style-guide=\"style-1\" data-design-treatment=\"dropCap-sm\" data-accent=\"2\" data-border-radius=\"md\">Tell us about the core domains in your program and how you shine in them! These areas may be drawn from your program's standards or discussed with your advisor. Domains cover a wide breadth of material, not all of which must be technical. For example: Academic Success, Social Interaction, and CACREP Training. Start off by briefly describing your understanding of the domain, how you connect to it, and such.</p>\n<h2 data-style-guide=\"headline\" data-design-treatment=\"vert\" data-primary=\"8\" data-padding=\"xs\" data-border-radius=\"xs\" id=\"h2--2015156918\">Sample of Evidence</h2>\n<p>You may demonstrate how you meet the standards of each domain through a mix of coursework, independent studies, and projects. Share 1 to 3 samples of evidence. Describe how each sample of evidence reflects the attributes of your given domain. If applicable, please include relevant links, documents, or media files.</p>\n<ul><li><a href=\"https://hax.psu.edu\">Links are one of many ways to share your evidence!</a></li>\n</ul>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": [],
+          "created": 1780604132,
+          "updated": 1780604132
+        }
+      },
+      {
+        "id": "493f87ab-01de-9b34-931b-4aa448a19de7",
+        "title": "Domain 3",
+        "slug": "competencies/domain-3",
+        "order": 2,
+        "parent": "94f63cb4-7f37-a5e4-3c4c-d9e67b2b6d32",
+        "indent": 1,
+        "content": "<p data-style-guide=\"style-1\" data-design-treatment=\"dropCap-sm\" data-accent=\"2\" data-border-radius=\"md\">Tell us about the core domains in your program and how you shine in them! These areas may be drawn from your program's standards or discussed with your advisor. Domains cover a wide breadth of material, not all of which must be technical. For example: Academic Success, Social Interaction, and CACREP Training. Start off by briefly describing your understanding of the domain, how you connect to it, and such.</p>\n<h2 data-style-guide=\"headline\" data-design-treatment=\"vert\" data-primary=\"8\" data-padding=\"xs\" data-border-radius=\"xs\" id=\"h2--2015156918\">Sample of Evidence</h2>\n<p>You may demonstrate how you meet the standards of each domain through a mix of coursework, independent studies, and projects. Share 1 to 3 samples of evidence. Describe how each sample of evidence reflects the attributes of your given domain. If applicable, please include relevant links, documents, or media files.</p>\n<ul><li><a href=\"https://hax.psu.edu\">Links are one of many ways to share your evidence!</a></li>\n</ul>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": [],
+          "created": 1780604132,
+          "updated": 1780604132
+        }
+      },
+      {
+        "id": "09448614-220f-0065-95b2-00a89e45e5f6",
+        "title": "Specialization",
+        "slug": "specialization",
+        "order": 2,
+        "parent": null,
+        "indent": 0,
+        "content": "<p data-style-guide=\"style-1\" data-design-treatment=\"dropCap-sm\" data-accent=\"2\" data-border-radius=\"md\">Showcase the depth of your knowledge and the quality of your work. Describe the specific topics you have explored through research, advanced coursework, or independent study. Be sure to include relevant figures and links to enhance each statement!</p>\n<grid-plate item-margin=\"16\" item-padding=\"16\" layout=\"1-1\" disable-responsive=\"\"><h2 data-style-guide=\"headline\" data-design-treatment=\"vert\" data-primary=\"8\" data-padding=\"xs\" data-border-radius=\"xs\" slot=\"col-1\">Area of Specialization</h2><p slot=\"col-1\">Tell us about your current research focus, state of projects, and your desired end goal for each!</p><h2 data-style-guide=\"headline\" data-design-treatment=\"vert\" data-primary=\"8\" data-padding=\"xs\" data-border-radius=\"xs\" slot=\"col-2\">Best Example of Work</h2><p slot=\"col-2\">Tell us about your most impressive research contribution! What are you proud of as a portfolio piece?</p></grid-plate>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": [],
+          "created": 1780604132,
+          "updated": 1780604132
+        }
+      },
+      {
+        "id": "6ca5630e-0d02-3b43-2f27-3b77fb522e4c",
+        "title": "Publications",
+        "slug": "publications",
+        "order": 3,
+        "parent": null,
+        "indent": 0,
+        "content": "<p data-style-guide=\"style-1\" data-design-treatment=\"dropCap-sm\" data-accent=\"2\" data-border-radius=\"md\">Share what you've published, which journals you publish to, and the organizations you work with! We want to hear the impact factor of your works. Make sure to include both a DOI and direct link to each item (when possible)!</p>\n<bibliography-builder citation-arr=\"[&quot;Select a citation format below&quot;]\"><bibliography-item citation-type=\"web\" title=\"HAX The Web\" publisher=\"HAX PSU\" authors=\"[{&quot;given&quot;:&quot;John&quot;,&quot;surname&quot;:&quot;Doe&quot;}]\"></bibliography-item>\n</bibliography-builder>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "created": 1780604132,
+          "updated": 1780604246,
+          "locked": false,
+          "readtime": 1,
+          "videos": [],
+          "images": [],
+          "tags": []
+        }
+      }
+    ],
+    "files": []
+  },
+  "theme": {
+    "element": "clean-portfolio-theme",
+    "path": "@haxtheweb/clean-portfolio-theme/clean-portfolio-theme.js",
+    "name": "Clean Portfolio",
+    "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-clean-portfolio-theme-thumb.jpg",
+    "description": "Start with a blank site using the Clean Portfolio",
+    "category": ["Website"],
+    "hidden": false,
+    "priority": -10,
+    "terrible": false,
+    "regions": {
+      "header": [],
+      "sidebarFirst": [],
+      "sidebarSecond": [],
+      "contentTop": [],
+      "contentBottom": [],
+      "footerPrimary": [],
+      "footerSecondary": []
+    }
+  },
+  "_skeleton": {
+    "fullThemeConfig": {
+      "element": "clean-portfolio-theme",
+      "variables": {
+        "image": "",
+        "imageAlt": "",
+        "imageLink": "",
+        "cssVariable": "--simple-colors-default-theme-light-blue-7",
+        "palette": "3",
+        "icon": "icons:record-voice-over",
+        "hexCode": "#3f51b5"
+      }
+    }
+  }
+}

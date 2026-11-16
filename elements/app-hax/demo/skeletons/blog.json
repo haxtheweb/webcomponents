@@ -1,0 +1,164 @@
+{
+  "meta": {
+    "name": "blog",
+    "description": "A blog starter on the Clean One theme: posts, a journal and topic pages, shown with a sample coffee blog.",
+    "version": "1.0.0",
+    "created": "2026-02-09T16:45:47.565Z",
+    "type": "skeleton",
+    "useCaseTitle": "Blog",
+    "useCaseDescription": "A blog starter on the Clean One theme: posts, a journal and topic pages, shown with a sample coffee blog.",
+    "useCaseImage": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-clean-one-thumb.jpg",
+    "category": ["Website"],
+    "tags": ["blog", "journal", "writing"],
+    "attributes": []
+  },
+  "site": {
+    "name": "daily-roast",
+    "description": "Daily Roast, a coffee blog about beans, brewing and the places we drink it.",
+    "theme": "clean-one",
+    "settings": {
+      "lang": "en-US",
+      "publishPagesOn": true,
+      "canonical": true
+    },
+    "platform": {}
+  },
+  "build": {
+    "type": "skeleton",
+    "structure": "from-skeleton",
+    "items": [
+      {
+        "id": "57ac5d3c-5db6-e3eb-58f9-5973a2f469a6",
+        "title": "Daily Roast: Bean Edition",
+        "slug": "home",
+        "order": 0,
+        "parent": null,
+        "indent": 0,
+        "content": "<p data-text-align=\"center\" data-font-size=\"s\"><strong>Decoding the Bean.</strong></p><p data-text-align=\"center\">Exploring the science, the stories, and the perfect pours behind the world’s most popular fuel.</p><media-image source=\"https://prettybombcoffee.com/wp-content/uploads/2025/09/Best-Rated-Coffee-Beans.webp\" card citation=\"Freshly ground coffee beans\" alt=\"A pile of freshly roasted coffee beans\" accent-color=\"grey\" size=\"wide\" offset=\"none\"></media-image><h3 data-style-guide=\"sectionDivider\" data-design-treatment=\"horz-md\" data-primary=\"2\" data-padding=\"xs\">Latest from the Journal</h3><ul><li><a href=\"the-journal/third-space\"><strong>Third Space:</strong></a> Why we build businesses in coffee shops</li><li><a href=\"the-journal/science-of-bloom\"><strong>Science of Bloom:</strong></a> Why your coffee needs to breathe</li><li><a href=\"the-journal/washed-vs-natural\"><strong>Washed vs. Natural:</strong></a> Finding your flavor identity</li></ul><p data-style-guide=\"calloutInfo\" data-primary=\"24\" data-accent=\"9\" data-border-radius=\"md\" data-padding=\"s\" data-box-shadow=\"sm\">New here? Start with <a href=\"coffee-compass\">The Coffee Compass</a> to find a bean that matches how you like your cup.</p>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": []
+        }
+      },
+      {
+        "id": "25dc88e3-5732-02ba-9640-5cd50eaf569c",
+        "title": "The Coffee Compass: Types & Profiles",
+        "slug": "coffee-compass",
+        "order": 1,
+        "parent": null,
+        "indent": 0,
+        "content": "<p>Four coffees I keep coming back to, what they taste like, and where to find them around State College.</p><editable-table accent-color=\"grey\" column-header><table>\n\t<thead class=\"thead\">\n\t\t<tr class=\"thead-tr tr\">\n\t\t\t<th scope=\"col\" class=\"th th-or-td\"><strong>Coffee Type</strong></th>\n\t\t\t<th scope=\"col\" class=\"th th-or-td\"><strong>Why I Love It</strong></th>\n\t\t\t<th scope=\"col\" class=\"th th-or-td\"><strong>Sensory Notes</strong></th>\n\t\t\t<th scope=\"col\" class=\"th th-or-td\"><strong>Where to Get It</strong></th>\n\t\t</tr>\n\t</thead>\n\t<tbody class=\"tbody\">\n\t\t<tr class=\"tbody-tr tr\">\n\t\t\t<td class=\"td th-or-td\"><strong>Ethiopian Yirgacheffe</strong></td>\n\t\t\t<td class=\"td th-or-td\">It tastes more like tea than coffee; it’s elegant and bright.</td>\n\t\t\t<td class=\"td th-or-td\">Jasmine, Lemon, Blueberry</td>\n\t\t\t<td class=\"td th-or-td\"><strong>Rothrock Coffee</strong> (State College)</td>\n\t\t</tr>\n\t\t<tr class=\"tbody-tr tr\">\n\t\t\t<td class=\"td th-or-td\"><strong>Colombian Supremo</strong></td>\n\t\t\t<td class=\"td th-or-td\">The \"Old Reliable.\" It’s the perfect, comforting morning cup.</td>\n\t\t\t<td class=\"td th-or-td\">Chocolate, Caramel, Nutty</td>\n\t\t\t<td class=\"td th-or-td\"><strong>The Founder's Roast</strong> (Online)</td>\n\t\t</tr>\n\t\t<tr class=\"tbody-tr tr\">\n\t\t\t<td class=\"td th-or-td\"><strong>Sumatran Mandheling</strong></td>\n\t\t\t<td class=\"td th-or-td\">For when I want something heavy, earthy, and intense.</td>\n\t\t\t<td class=\"td th-or-td\">Cedar, Spice, Low Acid</td>\n\t\t\t<td class=\"td th-or-td\"><strong>Webster’s Bookstore Café</strong></td>\n\t\t</tr>\n\t\t<tr class=\"tbody-tr tr\">\n\t\t\t<td class=\"td th-or-td\"><strong>Nitro Cold Brew</strong></td>\n\t\t\t<td class=\"td th-or-td\">That creamy, Guinness-like texture without needing any milk.</td>\n\t\t\t<td class=\"td th-or-td\">Velvet, Malt, Stout</td>\n\t\t\t<td class=\"td th-or-td\"><strong>Sowers Coffee</strong></td>\n\t\t</tr>\n\t</tbody>\n</table>\n</editable-table><p data-style-guide=\"calloutInfo\" data-primary=\"24\" data-accent=\"9\" data-border-radius=\"md\" data-padding=\"s\" data-box-shadow=\"sm\"><strong>Tip:</strong> Tasting notes describe flavors the beans suggest, not added flavorings. A “blueberry” Yirgacheffe is still just coffee.</p>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": []
+        }
+      },
+      {
+        "id": "70e4ddde-34c8-1689-8ee3-c9c7dbacdb82",
+        "title": "Coffee Talk",
+        "slug": "coffee-talk",
+        "order": 2,
+        "parent": null,
+        "indent": 0,
+        "content": "<p data-style-guide=\"calloutInfo\" data-primary=\"24\" data-accent=\"9\" data-border-radius=\"md\" data-padding=\"s\" data-box-shadow=\"sm\"><strong>Topic of the Week:</strong> <em>Is “Bulletproof Coffee” (butter or oil) still a thing, or are we back to black coffee?</em></p><ul><li><strong>Ask a Roaster:</strong> Submit your brewing fails and I’ll help you troubleshoot your extraction.</li><li><strong>Member Polls:</strong> “What’s your go-to study drink at the library?”</li><li><strong>The Coffee Swap:</strong> A thread for members to trade bags of beans they’ve found on their travels.</li></ul><h3 data-style-guide=\"sectionDivider\" data-design-treatment=\"horz-md\" data-primary=\"2\" data-padding=\"xs\">Ask a Roaster: Common Questions</h3><a11y-collapse-group><a11y-collapse heading=\"Why does my coffee taste sour?\"><p slot=\"content\">Sour coffee is usually under-extracted. Grind a little finer, use water just off the boil (about 93°C / 200°F), or let it brew 30 seconds longer.</p></a11y-collapse><a11y-collapse heading=\"Why does my coffee taste bitter?\"><p slot=\"content\">Bitterness usually means over-extraction. Go a little coarser, shorten the brew, or check that your beans aren’t roasted darker than you like.</p></a11y-collapse><a11y-collapse heading=\"How long do beans stay fresh?\"><p slot=\"content\">Whole beans are at their best from about 4 days to 4 weeks after roasting. Store them in an airtight bag away from light and heat, and grind just before brewing.</p></a11y-collapse></a11y-collapse-group>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": []
+        }
+      },
+      {
+        "id": "36366686-4250-f436-fdaf-4f0aee38f10f",
+        "title": "The Sourcing",
+        "slug": "the-sourcing",
+        "order": 3,
+        "parent": null,
+        "indent": 0,
+        "content": "<h3 data-style-guide=\"sectionDivider\" data-design-treatment=\"horz-md\" data-primary=\"2\" data-padding=\"xs\">Top Picks Across the USA</h3>\n<ul><li><strong>Sightglass Coffee (San Francisco):</strong> A 1920s warehouse conversion featuring open mezzanine levels and \"Shou-sugi-ban\" burnt wood. You can watch the entire roasting process from above in a massive, industrial-chic setting.</li>\n<li><strong>Intelligentsia (Chicago):</strong> Located in the historic Monadnock skyscraper, this bar preserves 1891 marble trim and hand-carved details. It&#8217;s a perfect bridge between Gilded Age architecture and modern espresso science.</li>\n<li><strong>Coava Coffee (Portland):</strong> An industrial workshop shared with a design-build firm. The space features bamboo-clad walls and custom cabinetry crafted by local artisans, highlighting Portland&#8217;s obsession with craftsmanship.</li>\n<li><strong>Panther Coffee (Miami):</strong> The heart of the Wynwood art district, blending industrial-rustic vibes with world-class street art. Its outdoor patio is the ultimate perch for enjoying small-batch roasts amidst vibrant murals.</li>\n<li><strong>Milstead &amp; Co. (Seattle):</strong> Tucked under the Aurora Bridge, this shop features geometric, high-ceiling architecture that mimics the engineering of the bridge above, offering a moody, intellectual atmosphere.</li>\n</ul>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": []
+        }
+      },
+      {
+        "id": "b9f33e46-9b91-6a49-95f9-42ee22832376",
+        "title": "The Journal",
+        "slug": "the-journal",
+        "order": 4,
+        "parent": null,
+        "indent": 0,
+        "content": "<h3 data-style-guide=\"sectionDivider\" data-design-treatment=\"horz-md\" data-primary=\"2\" data-padding=\"xs\">Sips &amp; Stories</h3><p>Welcome to <strong>The Journal</strong>, where we go beyond the cup to explore the culture, craft, and community of coffee. As an entrepreneur and lifelong caffeine enthusiast, I’ve found that the best ideas don’t just happen. They’re brewed.</p><blockquote data-style-guide=\"pullQuote\" data-design-treatment=\"dropCap-sm\" data-primary=\"2\" data-accent=\"2\" data-border-radius=\"xs\" data-padding=\"s\">The best ideas don’t just happen. They’re brewed.</blockquote><p>This space is dedicated to the “Daily Grind” in every sense of the word. From the technical science behind a perfect 18-gram espresso pull to the architectural beauty of the world’s most iconic cafes, these entries are designed to fuel your curiosity as much as your morning. Whether you’re a home barista looking to master the pour-over or a traveler seeking the best “Third Space” in a new city, you’ll find your ritual here.</p><p>Grab a mug, find a comfortable seat, and let’s dive into the stories behind the beans.</p>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": []
+        }
+      },
+      {
+        "id": "f55208f1-67cf-c16e-60bf-b2883c94f29f",
+        "title": "Third Space",
+        "slug": "the-journal/third-space",
+        "order": 0,
+        "parent": "b9f33e46-9b91-6a49-95f9-42ee22832376",
+        "indent": 1,
+        "content": "<h4 data-style-guide=\"byline\" data-design-treatment=\"horz-10p\" data-primary=\"8\" data-border-radius=\"xs\">Why We Build Businesses in Coffee Shops</h4>\n<p>There is a sociological concept called the \"Third Space\"&#8212;a place that isn't home (the first space) and isn't the office (the second space). For entrepreneurs and students alike, the coffee shop is the ultimate Third Space. There is something about the ambient hum of an espresso machine and the \"white noise\" of strangers&#8217; conversations that triggers a flow state in the brain. It&#8217;s a low-stakes environment that allows for high-stakes thinking, where the pressure of the boardroom is replaced by the comfort of a ceramic mug.</p>\n<blockquote data-style-guide=\"pullQuote\" data-design-treatment=\"dropCap-sm\" data-primary=\"2\" data-accent=\"2\" data-border-radius=\"xs\" data-padding=\"s\">The coffee shop is the original social network.</blockquote><p>What I love most about this culture is the \"Coffee Talk\" that happens at the communal table. You can walk into a shop as a stranger and leave with a business partner, a mentor, or a new favorite book. The coffee shop is the original social network. It&#8217;s where the \"Blue, White, and Read\" members find their next favorite chapter and where startup founders sketch their first logos on the back of a napkin. It is the fuel of the community, both literally and figuratively.</p>\n<p>If you are looking for that perfect \"Third Space\" vibe in State College, you can&#8217;t beat <strong>Webster’s Bookstore Café</strong>. It combines the smell of old books with the aroma of freshly roasted beans, creating an atmosphere that practically forces you to be productive. Whether you're grinding through a syllabus or a business plan, the right environment is just as important as the right caffeine.</p>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": []
+        }
+      },
+      {
+        "id": "f0232548-1c63-70fa-641e-a5aa87a80087",
+        "title": "Science of Bloom",
+        "slug": "the-journal/science-of-bloom",
+        "order": 1,
+        "parent": "b9f33e46-9b91-6a49-95f9-42ee22832376",
+        "indent": 1,
+        "content": "<h4 data-style-guide=\"byline\" data-design-treatment=\"horz-10p\" data-primary=\"8\" data-border-radius=\"xs\">Why Your Coffee Needs to Breathe</h4>\n<p>There is a fleeting, magical moment that happens about thirty seconds into a pour-over: the \"bloom.\" As you pour the first splash of hot water over the fresh grounds, the coffee begins to swell and bubble like a living thing. This isn&#8217;t just a cool visual; it&#8217;s a vital chemical release. Roasted coffee beans trap carbon dioxide inside their cellular structure, and if you don&#8217;t let that gas escape before you start your full brew, it creates a literal \"gas shield\" that prevents water from fully extracting the flavor.</p>\n<div data-style-guide=\"statBlock\" data-primary=\"10\" data-accent=\"2\" data-padding=\"m\" data-border-radius=\"md\" data-box-shadow=\"sm\" data-text-align=\"center\"><strong>30 seconds</strong><br>is all a bloom needs before the rest of the pour</div><p>I love the bloom because it is the ultimate test of freshness. If your coffee doesn&#8217;t bubble and rise, it&#8217;s a sign the beans are stale and the soul of the coffee has already evaporated. When you see a vigorous bloom, you know you&#8217;re about to experience the peak profile of that bean. It&#8217;s a 30-second pause that teaches us a lesson in entrepreneurship: sometimes you have to slow down and let the \"noise\" escape before you can produce something of real value.</p>\n<p>To experience a perfect bloom yourself, I recommend grabbing a bag of <strong>The Seed Round Light Roast</strong> or visiting <strong>Rothrock Coffee</strong> in State College. Ask for their freshest single-origin Ethiopian; the high gas content in a fresh light roast makes for a spectacular bloom and a cup that tastes like a floral, citrusy dream rather than a bitter sludge.</p>\n<h3 data-style-guide=\"sectionDivider\" data-design-treatment=\"horz-md\" data-primary=\"2\" data-padding=\"xs\">Try It: A Basic Bloom</h3><ol><li>Grind fresh beans to a medium-fine texture, like sea salt.</li><li>Pour just enough hot water to wet all the grounds, about twice their weight.</li><li>Wait 30 to 45 seconds and watch the bed rise and bubble.</li><li>Finish the pour slowly in circles.</li></ol><p data-style-guide=\"calloutWarning\" data-primary=\"23\" data-accent=\"8\" data-border-radius=\"md\" data-padding=\"s\" data-box-shadow=\"sm\">If nothing bubbles, your beans are probably stale. Check the roast date on the bag.</p>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": []
+        }
+      },
+      {
+        "id": "c2ca6b74-665e-0a14-0ccc-1452f1343227",
+        "title": "Washed vs. Natural",
+        "slug": "the-journal/washed-vs-natural",
+        "order": 2,
+        "parent": "b9f33e46-9b91-6a49-95f9-42ee22832376",
+        "indent": 1,
+        "content": "<h4 data-style-guide=\"byline\" data-design-treatment=\"horz-10p\" data-primary=\"8\" data-border-radius=\"xs\">Finding Your Flavor Identity</h4>\n<p>If you’ve ever looked at a bag of specialty coffee and seen the words \"Washed\" or \"Natural\" and felt confused, you aren’t alone. These terms refer to how the coffee cherry is processed after being picked. In \"Washed\" coffee, the fruit is stripped away before drying, leading to a clean, bright, and acidic cup. I love Washed coffees when I’m in a high-focus \"deep work\" mode; they are sharp and intellectually stimulating, offering clear notes of jasmine or lime that don't weigh down your palate.</p>\n<p>On the flip side, \"Natural\" processing involves drying the entire coffee cherry with the bean still inside. This allows the sugars from the fruit to ferment and soak into the seed, creating what I call \"Fruit Bombs.\" These coffees are wild, funky, and often taste like strawberry jam or red wine. I reach for a Natural process bean on a slow Sunday morning or when I&#8217;m brainstorming creative ideas. It&#8217;s a polarizing flavor&#8212;people usually either love the funk or find it too intense&#8212;but it represents the beautiful diversity of the coffee world.</p>\n<p>For a clean, crisp Washed experience, look for a <strong>Honduran or Guatemalan bean</strong>. If you want to try the wild side of Natural processing, seek out a <strong>Natural Processed Sidama</strong> from a local roaster like <strong>Sowers</strong>. It will completely redefine what you thought coffee was supposed to taste like.</p>\n<h3 data-style-guide=\"sectionDivider\" data-design-treatment=\"horz-md\" data-primary=\"2\" data-padding=\"xs\">At a Glance</h3><editable-table accent-color=\"grey\" column-header><table><thead><tr><th scope=\"col\">Process</th><th scope=\"col\">Tastes like</th><th scope=\"col\">Reach for it when</th></tr></thead><tbody><tr><td><strong>Washed</strong></td><td>Clean, bright, acidic: jasmine, lime</td><td>You need focus for deep work</td></tr><tr><td><strong>Natural</strong></td><td>Wild, fruity, funky: strawberry jam, red wine</td><td>A slow morning or a brainstorm</td></tr></tbody></table></editable-table>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": []
+        }
+      }
+    ],
+    "files": []
+  },
+  "theme": {
+    "path": "@haxtheweb/clean-one/clean-one.js",
+    "name": "Clean One",
+    "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-clean-one-thumb.jpg",
+    "description": "Start with a blank site using the Clean One",
+    "category": ["Course"],
+    "hidden": false,
+    "terrible": false
+  },
+  "_skeleton": {
+    "fullThemeConfig": {
+      "element": "clean-one",
+      "variables": {
+        "icon": "maps:local-cafe",
+        "hexCode": "#aeff00",
+        "cssVariable": "--simple-colors-default-theme-light-blue-7"
+      }
+    }
+  }
+}

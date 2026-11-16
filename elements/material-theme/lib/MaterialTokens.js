@@ -11,10 +11,10 @@ export const MaterialTokens = css`
   :host {
     --md-comp-button-leading-space: 24px;
     --md-ref-palette-blue30: #04409f;
-    --md-ref-palette-blue60: #4e8ff8;
+    --md-ref-palette-blue70: #76acff;
     --md-ref-palette-blue90: #d0e4ff;
     --md-ref-palette-blue95: #e7f2ff;
-    --md-ref-palette-cyan40: #00687c;
+    --md-ref-palette-cyan60: #009ebb;
     --md-ref-palette-cyan90: #acedff;
     --md-ref-palette-cyan95: #d8f6ff;
     --md-ref-palette-error30: #8c1d18;
@@ -31,7 +31,7 @@ export const MaterialTokens = css`
     --md-ref-palette-neutral0: #000;
     --md-ref-palette-neutral10: #1d1b20;
     --md-ref-palette-neutral100: #fff;
-    --md-ref-palette-neutral60: #938f96;
+    --md-ref-palette-neutral70: #aea9b1;
     --md-ref-palette-neutral90: #e6e0e9;
     --md-ref-palette-neutral94: #f3edf7;
     --md-ref-palette-neutral95: #f5eff7;

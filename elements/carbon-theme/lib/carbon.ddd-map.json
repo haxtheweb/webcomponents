@@ -144,6 +144,27 @@
           "keptDDD": []
         }
       }
+    },
+    "component": {
+      "mapping": "optional",
+      "percent": 75,
+      "families": {
+        "card": {
+          "mapped": 4,
+          "total": 5,
+          "keptDDD": ["--ddd-card-radius"]
+        },
+        "control": {
+          "mapped": 1,
+          "total": 2,
+          "keptDDD": ["--ddd-control-radius"]
+        },
+        "tag": {
+          "mapped": 1,
+          "total": 1,
+          "keptDDD": []
+        }
+      }
     }
   },
   "contrast": [
@@ -156,7 +177,7 @@
     {
       "fg": "--ddd-theme-default-link",
       "bg": "--ddd-theme-default-white",
-      "ratio": 5,
+      "ratio": 7.79,
       "min": 4.5
     },
     {
@@ -212,6 +233,244 @@
       "bg": "--ddd-theme-default-limestoneMaxLight",
       "ratio": 16.45,
       "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-link",
+      "bg": "--ddd-theme-default-limestoneMaxLight",
+      "ratio": 7.09,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-link",
+      "bg": "--ddd-theme-default-limestoneLight",
+      "ratio": 5.9,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-limestoneGray",
+      "bg": "--ddd-theme-default-nittanyNavy",
+      "ratio": 4.76,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-limestoneGray",
+      "bg": "--ddd-theme-default-potentialMidnight",
+      "ratio": 6.34,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-nittanyNavy",
+      "bg": "--ddd-theme-default-skyBlue",
+      "ratio": 4.81,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-potentialMidnight",
+      "bg": "--ddd-theme-default-creekTeal",
+      "ratio": 4.52,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-potentialMidnight",
+      "bg": "--ddd-theme-default-inventOrange",
+      "ratio": 6.13,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-potentialMidnight",
+      "bg": "--ddd-theme-default-discoveryCoral",
+      "ratio": 6.36,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-potentialMidnight",
+      "bg": "--ddd-theme-default-keystoneYellow",
+      "ratio": 8.96,
+      "min": 4.5
+    }
+  ],
+  "pairs": [
+    {
+      "primary": 0,
+      "color": "--ddd-theme-default-pughBlue",
+      "on": "black",
+      "ratio": 12.33,
+      "source": "ddd"
+    },
+    {
+      "primary": 1,
+      "color": "--ddd-theme-default-beaverBlue",
+      "on": "white",
+      "ratio": 5,
+      "source": "ddd"
+    },
+    {
+      "primary": 2,
+      "color": "--ddd-theme-default-nittanyNavy",
+      "on": "white",
+      "ratio": 11.32,
+      "source": "ddd"
+    },
+    {
+      "primary": 3,
+      "color": "--ddd-theme-default-potentialMidnight",
+      "on": "white",
+      "ratio": 15.08,
+      "source": "ddd"
+    },
+    {
+      "primary": 4,
+      "color": "--ddd-theme-default-coalyGray",
+      "on": "white",
+      "ratio": 18.1,
+      "source": "ddd"
+    },
+    {
+      "primary": 5,
+      "color": "--ddd-theme-default-limestoneGray",
+      "on": "black",
+      "ratio": 8.83,
+      "source": "ddd"
+    },
+    {
+      "primary": 6,
+      "color": "--ddd-theme-default-slateGray",
+      "on": "white",
+      "ratio": 7.8,
+      "source": "ddd"
+    },
+    {
+      "primary": 7,
+      "color": "--ddd-theme-default-creekTeal",
+      "on": "black",
+      "ratio": 6.29,
+      "source": "ddd"
+    },
+    {
+      "primary": 8,
+      "color": "--ddd-theme-default-skyBlue",
+      "on": "black",
+      "ratio": 8.92,
+      "source": "ddd"
+    },
+    {
+      "primary": 9,
+      "color": "--ddd-theme-default-shrineTan",
+      "on": "black",
+      "ratio": 6.23,
+      "source": "ddd"
+    },
+    {
+      "primary": 10,
+      "color": "--ddd-theme-default-roarGolden",
+      "on": "black",
+      "ratio": 6.3,
+      "source": "ddd"
+    },
+    {
+      "primary": 11,
+      "color": "--ddd-theme-default-original87Pink",
+      "on": "white",
+      "ratio": 5.01,
+      "source": "ddd"
+    },
+    {
+      "primary": 12,
+      "color": "--ddd-theme-default-discoveryCoral",
+      "on": "black",
+      "ratio": 8.86,
+      "source": "ddd"
+    },
+    {
+      "primary": 13,
+      "color": "--ddd-theme-default-wonderPurple",
+      "on": "white",
+      "ratio": 7.74,
+      "source": "ddd"
+    },
+    {
+      "primary": 14,
+      "color": "--ddd-theme-default-athertonViolet",
+      "on": "black",
+      "ratio": 8.93,
+      "source": "ddd"
+    },
+    {
+      "primary": 15,
+      "color": "--ddd-theme-default-inventOrange",
+      "on": "black",
+      "ratio": 8.53,
+      "source": "ddd"
+    },
+    {
+      "primary": 16,
+      "color": "--ddd-theme-default-keystoneYellow",
+      "on": "black",
+      "ratio": 12.47,
+      "source": "ddd"
+    },
+    {
+      "primary": 17,
+      "color": "--ddd-theme-default-opportunityGreen",
+      "on": "white",
+      "ratio": 5.02,
+      "source": "paired"
+    },
+    {
+      "primary": 18,
+      "color": "--ddd-theme-default-futureLime",
+      "on": "black",
+      "ratio": 8.78,
+      "source": "ddd"
+    },
+    {
+      "primary": 19,
+      "color": "--ddd-theme-default-forestGreen",
+      "on": "black",
+      "ratio": 6.27,
+      "source": "paired"
+    },
+    {
+      "primary": 20,
+      "color": "--ddd-theme-default-landgrantBrown",
+      "on": "white",
+      "ratio": 11.71,
+      "source": "ddd"
+    },
+    {
+      "primary": 21,
+      "color": "--ddd-theme-default-globalNeon",
+      "on": "black",
+      "ratio": 15.62,
+      "source": "ddd"
+    },
+    {
+      "primary": 22,
+      "color": "--ddd-theme-default-error",
+      "on": "white",
+      "ratio": 7.79,
+      "source": "ddd"
+    },
+    {
+      "primary": 23,
+      "color": "--ddd-theme-default-warning",
+      "on": "white",
+      "ratio": 7.84,
+      "source": "ddd"
+    },
+    {
+      "primary": 24,
+      "color": "--ddd-theme-default-info",
+      "on": "white",
+      "ratio": 7.79,
+      "source": "ddd"
+    },
+    {
+      "primary": 25,
+      "color": "--ddd-theme-default-success",
+      "on": "white",
+      "ratio": 7.72,
+      "source": "ddd"
     }
   ],
   "problems": [],
@@ -532,10 +791,10 @@
     {
       "ddd": "--ddd-theme-default-link",
       "tier": "identity",
-      "token": "--carbon-blue-60",
-      "light": "#0f62fe",
-      "dark": "#0f62fe",
-      "note": "Carbon link-primary (white theme)"
+      "token": "--carbon-blue-70",
+      "light": "#0043ce",
+      "dark": "#0043ce",
+      "note": "Carbon link-primary-hover (white theme): link-primary (blue-60) is under 4.5:1 on the gray-20 surfaces HAX blocks put links on"
     },
     {
       "ddd": "--ddd-theme-default-linkLight",
@@ -936,6 +1195,61 @@
       "light": "1rem",
       "dark": "1rem",
       "note": "Carbon button inline-start padding, spacing-05"
+    },
+    {
+      "ddd": "--ddd-card-padding",
+      "tier": "component",
+      "token": null,
+      "light": "16px",
+      "dark": "16px",
+      "note": "Carbon tile padding, spacing-05 (a px value: the upstream token is in rem, and HAX's root font size is 20px, not 16px)"
+    },
+    {
+      "ddd": "--ddd-card-border-width",
+      "tier": "component",
+      "token": null,
+      "light": "0",
+      "dark": "0",
+      "note": "Carbon tiles have no border; they sit on layer-01 (--ddd-card-background)"
+    },
+    {
+      "ddd": "--ddd-card-shadow",
+      "tier": "component",
+      "token": null,
+      "light": "none",
+      "dark": "none",
+      "note": "Carbon tiles are flat"
+    },
+    {
+      "ddd": "--ddd-control-height",
+      "tier": "component",
+      "token": null,
+      "light": "48px",
+      "dark": "48px",
+      "note": "Carbon lg button, layout-size-height-lg (a px value: the upstream token is in rem, and HAX's root font size is 20px, not 16px)"
+    },
+    {
+      "ddd": "--ddd-tag-radius",
+      "tier": "component",
+      "token": null,
+      "light": "999px",
+      "dark": "999px",
+      "note": "Carbon tags are the one rounded shape"
+    },
+    {
+      "ddd": "--ddd-card-background",
+      "tier": "component",
+      "token": "--cds-layer-01",
+      "light": "#f4f4f4",
+      "dark": "#262626",
+      "note": "tiles sit on layer-01, #f4f4f4 light, #262626 dark"
     }
-  ]
+  ],
+  "icons": {
+    "package": "@carbon/icons",
+    "version": "11.92.0",
+    "license": "Apache-2.0",
+    "map": "carbon",
+    "mapped": 159
+  }
 }

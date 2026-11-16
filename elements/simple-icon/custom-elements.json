@@ -2743,6 +2743,21 @@
             },
             {
               "kind": "method",
+              "name": "setAliases",
+              "parameters": [
+                {
+                  "name": "aliases",
+                  "default": "{}",
+                  "description": "{ \"icons:search\": \"carbon-icons:search\", ... }",
+                  "type": {
+                    "text": "Object"
+                  }
+                }
+              ],
+              "description": "Draw some icons from another set: a design system (Carbon, Material\nSymbols, ...) maps HAX icon names to its own icons while it is active.\nContent keeps storing HAX names, so it renders the same in every\ntheme; an alias whose set isn't registered, or a name not listed,\nkeeps the HAX icon. Icons on the page redraw (simple-iconset-aliases\nevent)."
+            },
+            {
+              "kind": "method",
               "name": "registerManifest",
               "parameters": [
                 {
@@ -2826,6 +2841,14 @@
                 "text": "array"
               },
               "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "aliases",
+              "type": {
+                "text": "object"
+              },
+              "default": "{}"
             }
           ],
           "superclass": {

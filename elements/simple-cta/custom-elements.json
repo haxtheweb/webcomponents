@@ -12,6 +12,13 @@
           "name": "SimpleCta",
           "members": [
             {
+              "kind": "field",
+              "name": "dddVocabulary",
+              "static": true,
+              "description": "Shared DDD vocabulary: the existing light and large attributes keep\nworking and read as appearance=\"outlined\" and size=\"l\".",
+              "readonly": true
+            },
+            {
               "kind": "method",
               "name": "_computeAriaLabel",
               "description": "Compute an accessible name for the rendered anchor.\n\nPriority: explicit `label` property, then the host element's `title`\nattribute (the most common fallback consumers already supply), then the\ntarget URL so the link is at least self-describing. An empty `link=\"#\"`\nplaceholder falls through to a generic call-to-action string.",
@@ -260,6 +267,10 @@
           ],
           "mixins": [
             {
+              "name": "DDDVocabulary",
+              "package": "@haxtheweb/d-d-d/lib/DDDVocabulary.js"
+            },
+            {
               "name": "DDDPulseEffectSuper",
               "package": "@haxtheweb/d-d-d/d-d-d.js"
             },
@@ -326,6 +337,17 @@
                 "text": "string"
               },
               "attribute": "href"
+            },
+            {
+              "kind": "field",
+              "name": "dddVocabulary",
+              "static": true,
+              "description": "Shared DDD vocabulary: the existing light and large attributes keep\nworking and read as appearance=\"outlined\" and size=\"l\".",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "SimpleCta",
+                "module": "simple-cta.js"
+              }
             },
             {
               "kind": "method",

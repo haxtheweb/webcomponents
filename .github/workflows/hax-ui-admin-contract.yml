@@ -1,0 +1,26 @@
+name: hax-ui-admin-contract
+
+# Fails when an admin surface leaves the HAX UI layer: a font size outside the
+# admin scale, a hand-drawn dialog without the shared frame, a browser dialog.
+# Existing findings are listed in scripts/hax-ui-admin-contract.baseline.json;
+# fix one, then run `yarn lint:hax-ui-admin --update-baseline` to drop it.
+on:
+  push:
+    branches: [master]
+  # No branch filter: stacked PRs (base is another feature branch) must run too.
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  hax-ui-admin-contract:
+    name: HAX UI admin contract
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+      - name: Check admin surfaces against the HAX UI contract
+        run: node scripts/hax-ui-admin-contract-check.mjs

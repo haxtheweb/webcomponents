@@ -40,9 +40,12 @@ class RetroCard extends SimpleColors {
           );
           --retro-card-light-color: #f4f1d0;
           --retro-card-dark-color: #212121;
+          /* the card paints its own fill and text in both page schemes */
+          color-scheme: light;
         }
 
         :host([dark]) {
+          color-scheme: dark;
           --retro-card-dark-color: #f4f1d0;
           --retro-card-light-color: #212121;
         }

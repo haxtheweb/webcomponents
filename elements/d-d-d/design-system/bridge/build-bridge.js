@@ -27,6 +27,15 @@
  *   <Prefix>Tokens.js        upstream tokens as CSS (light-dark() pairs)
  *   <Prefix>DDDMap.js        --ddd-* → upstream token remap as CSS
  *   <system>.ddd-map.json    machine-readable map + per-tier coverage + contrast report
+ *   <Prefix>Icons.js         (with "icons" in bridge.json) HAX icon name → this
+ *                            system's icon, for simple-icon; the icons it
+ *                            names are copied to <theme>/icons/
+ *
+ * Icons: a bridge whose system has an icon set under a shippable license
+ * names its npm package, version, license, the file path pattern inside it
+ * ("svg/32/{name}.svg") and a column of icon-maps.json (HAX icon name →
+ * that set's closest icon by meaning). Only the mapped icons are copied.
+ * Names not in the column keep HAX's own icon, so nothing disappears.
  *
  * What a bridge may map is set by contract.json (structure is locked;
  * identity is expected; feel and semantic are optional and guarded).
@@ -89,6 +98,12 @@ sources.forEach((source) => {
     process.exit(1);
   }
 });
+if (config.icons && !SHIPPABLE.includes(config.icons.license)) {
+  console.error(
+    `Icons ${config.icons.package} are ${config.icons.license}, which can't ship (${SHIPPABLE.join(", ")}).`,
+  );
+  process.exit(1);
+}
 (config.fonts || []).forEach((font) => {
   if (!SHIPPABLE_FONTS.includes(font.license)) {
     console.error(`Font ${font.family} is ${font.license}, which can't ship.`);
@@ -687,7 +702,7 @@ if (guards.densityMinPx) {
 }
 if (guards.controlMinPx) {
   rows
-    .filter((row) => /^--ddd-(control|textfield)-height-/.test(row.ddd))
+    .filter((row) => /^--ddd-(control|textfield)-height(-|$)/.test(row.ddd))
     .forEach((row) => {
       const size = px(row.light);
       if (size !== null && size < guards.controlMinPx) {
@@ -748,6 +763,41 @@ const PAIRS = [
     "--ddd-theme-default-limestoneMaxLight",
     4.5,
   ],
+  // blocks put links on their light gray surfaces too (citation, cards,
+  // license and demo panels), not only on white
+  ["--ddd-theme-default-link", "--ddd-theme-default-limestoneMaxLight", 4.5],
+  ["--ddd-theme-default-link", "--ddd-theme-default-limestoneLight", 4.5],
+  // muted labels on the dark brand surfaces (block labels, quiz pills,
+  // player metadata in dark mode)
+  ["--ddd-theme-default-limestoneGray", "--ddd-theme-default-nittanyNavy", 4.5],
+  [
+    "--ddd-theme-default-limestoneGray",
+    "--ddd-theme-default-potentialMidnight",
+    4.5,
+  ],
+  // dark ink on the light accent fills (date-card month, reading-analysis
+  // flags, chips)
+  ["--ddd-theme-default-nittanyNavy", "--ddd-theme-default-skyBlue", 4.5],
+  [
+    "--ddd-theme-default-potentialMidnight",
+    "--ddd-theme-default-creekTeal",
+    4.5,
+  ],
+  [
+    "--ddd-theme-default-potentialMidnight",
+    "--ddd-theme-default-inventOrange",
+    4.5,
+  ],
+  [
+    "--ddd-theme-default-potentialMidnight",
+    "--ddd-theme-default-discoveryCoral",
+    4.5,
+  ],
+  [
+    "--ddd-theme-default-potentialMidnight",
+    "--ddd-theme-default-keystoneYellow",
+    4.5,
+  ],
 ];
 const contrastReport = PAIRS.map(([fg, bg, min]) => {
   const a = value(fg, "light");
@@ -773,6 +823,74 @@ const contrastReport = PAIRS.map(([fg, bg, min]) => {
     min,
   };
 });
+
+/*
+ * paired text colors: DDD gives every primary palette the text color that
+ * reads on it (--ddd-primary-N-on, black or white, chosen for DDD's own
+ * colors). A bridge that remaps a palette to a lighter or darker color can
+ * break that pair, so each remapped palette is re-checked in both modes:
+ * a pair the bridge sets itself is checked as given; otherwise DDD's pair is
+ * kept when it still passes and flipped when only the other one does. A
+ * palette neither black nor white reads on is a problem.
+ */
+const PAIR_MIN = 4.5;
+const pairRatio = (on, bgName) => {
+  const ratios = ["light", "dark"].map((mode) => {
+    const a = toHex(on);
+    const b = toHex(value(bgName, mode));
+    return a && b ? contrast(a, b) : null;
+  });
+  return ratios.includes(null) ? null : Math.min(...ratios);
+};
+const onRows = [];
+const pairsReport = [];
+ddd
+  .map((v) => /^ddd-primary-(\d+)$/.exec(v.name))
+  .filter((m) => m)
+  .forEach((m) => {
+    const n = m[1];
+    const alias = /^var\((--ddd-theme-default-[\w-]+)\)$/.exec(
+      dddByName[`--ddd-primary-${n}`].value.trim(),
+    );
+    const onName = `--ddd-primary-${n}-on`;
+    if (!alias || !dddByName[onName]) return;
+    const bg = alias[1];
+    // only palettes this bridge remaps can have drifted from their pair
+    if (!rows.some((r) => r.ddd === bg)) return;
+    const given = rows.find((r) => r.ddd === onName);
+    const dddOn = dddByName[onName].value.trim();
+    let on = given ? given.light : dddOn;
+    let source = given ? "bridge" : "ddd";
+    let ratio = pairRatio(on, bg);
+    if (ratio === null) {
+      problems.push(
+        `${onName} on ${bg}: can't read the mapped colors to check contrast`,
+      );
+      return;
+    }
+    if (!given && ratio < PAIR_MIN) {
+      const other = dddOn === "black" ? "white" : "black";
+      const otherRatio = pairRatio(other, bg);
+      if (otherRatio !== null && otherRatio > ratio) {
+        on = other;
+        ratio = otherRatio;
+        source = "paired";
+        onRows.push({ ddd: onName, css: other });
+      }
+    }
+    if (ratio < PAIR_MIN) {
+      problems.push(
+        `${onName} (${on}) on ${bg}: ${ratio.toFixed(2)} < ${PAIR_MIN}`,
+      );
+    }
+    pairsReport.push({
+      primary: Number(n),
+      color: bg,
+      on,
+      ratio: Number(ratio.toFixed(2)),
+      source,
+    });
+  });
 
 /* ------------------------------------------------------------------ output */
 
@@ -927,6 +1045,10 @@ const mapJs =
     ? "\n    /* rgb channels follow their mapped color */\n"
     : "\n") +
   rgbRows.map((r) => `    ${r.ddd}: ${r.css};`).join("\n") +
+  (onRows.length
+    ? "\n    /* text color paired with each remapped palette, where DDD's own no longer reads */\n"
+    : "") +
+  onRows.map((r) => `    ${r.ddd}: ${r.css};`).join("\n") +
   `\n  }\n\`;\n`;
 
 const report = {
@@ -940,6 +1062,7 @@ const report = {
   fonts: config.fonts || [],
   coverage,
   contrast: contrastReport,
+  pairs: pairsReport,
   problems,
   contract: contract.version,
   map: rows.map(({ ddd: d, tier, token, light: l, dark: dk, note }) => ({
@@ -971,7 +1094,97 @@ const outputs = {
   ),
 };
 
+/* ------------------------------------------------------------------ icons */
+
+// files under <theme>/icons/ this run would remove (no longer mapped)
+const removals = [];
+if (config.icons) {
+  const icons = config.icons;
+  const table = JSON.parse(
+    fs.readFileSync(new URL("./icon-maps.json", import.meta.url), "utf8"),
+  );
+  const column = table.sets[icons.map];
+  if (!column) {
+    console.error(
+      `icons.map "${icons.map}" is not a column of icon-maps.json (${Object.keys(table.sets).join(", ")}).`,
+    );
+    process.exit(1);
+  }
+  if (!/^[\w./-]*\{name\}[\w./-]*$/.test(icons.path || "")) {
+    console.error(`icons.path must contain {name}: ${icons.path}`);
+    process.exit(1);
+  }
+  const pkgDir = fetchSource(icons, -1);
+  const set = `${config.system}-icons`;
+  const iconDir = path.join(themeDir, "icons");
+  const aliases = {};
+  const files = {};
+  Object.keys(column)
+    .sort()
+    .forEach((haxName) => {
+      const name = column[haxName];
+      if (!/^[\w-]+$/.test(name)) {
+        problems.push(
+          `icon name ${name} for ${haxName} is not a plain file name`,
+        );
+        return;
+      }
+      const from = path.join(pkgDir, icons.path.replace("{name}", name));
+      if (!fs.existsSync(from)) {
+        problems.push(
+          `${icons.package} has no ${icons.path.replace("{name}", name)} (for ${haxName})`,
+        );
+        return;
+      }
+      const svg = fs.readFileSync(from, "utf8");
+      // drawn as an <image>, which never runs script, but nothing active
+      // or external is copied into the repo either
+      if (/<script|\son\w+\s*=|href\s*=\s*["'](?!#)/i.test(svg)) {
+        problems.push(
+          `${name}.svg has script, an event handler or an external link`,
+        );
+        return;
+      }
+      files[path.join(iconDir, `${name}.svg`)] = svg;
+      aliases[haxName] = `${set}:${name}`;
+    });
+  const iconsJs =
+    `/**\n * Generated by elements/d-d-d/design-system/bridge/build-bridge.js from\n` +
+    ` * ${icons.package}@${icons.version} (${icons.license}). Do not edit.\n` +
+    ` *\n * HAX icon name → ${config.title}'s closest icon (icon-maps.json, column\n` +
+    ` * "${icons.map}"). The design system manager hands this to simple-icon while\n` +
+    ` * ${config.title} is active; names not listed keep HAX's own icon.\n */\n` +
+    `export const ${prefix}Icons = {\n` +
+    `  set: ${JSON.stringify(set)},\n` +
+    `  basePath: new URL("../icons/", import.meta.url).href,\n` +
+    `  aliases: ${JSON.stringify(aliases, null, 2).replace(/\n/g, "\n  ")},\n` +
+    `};\n`;
+  outputs[path.join(themeDir, "lib", `${prefix}Icons.js`)] = await format(
+    iconsJs,
+    "babel",
+  );
+  Object.assign(outputs, files);
+  if (fs.existsSync(iconDir)) {
+    fs.readdirSync(iconDir)
+      .filter((f) => f.endsWith(".svg") && !files[path.join(iconDir, f)])
+      .forEach((f) => removals.push(path.join(iconDir, f)));
+  }
+  report.icons = {
+    package: icons.package,
+    version: icons.version,
+    license: icons.license,
+    map: icons.map,
+    mapped: Object.keys(aliases).length,
+  };
+  outputs[path.join(themeDir, "lib", `${config.system}.ddd-map.json`)] =
+    await format(JSON.stringify(report, null, 2) + "\n", "json");
+}
+
 if (flag("--check")) {
+  if (removals.length) {
+    console.error("No longer mapped:\n  " + removals.join("\n  "));
+    process.exit(1);
+  }
   const stale = Object.keys(outputs).filter(
     (file) =>
       !fs.existsSync(file) || fs.readFileSync(file, "utf8") !== outputs[file],
@@ -985,6 +1198,7 @@ if (flag("--check")) {
     fs.mkdirSync(path.dirname(file), { recursive: true });
     fs.writeFileSync(file, content);
   });
+  removals.forEach((file) => fs.unlinkSync(file));
 }
 
 console.log(

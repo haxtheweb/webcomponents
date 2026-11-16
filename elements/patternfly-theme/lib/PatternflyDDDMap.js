@@ -14,7 +14,7 @@ export const PatternflyDDDMap = css`
     --ddd-theme-default-potentialMidnight: var(--pf-t--color--blue--80);
     --ddd-theme-default-pughBlue: var(--pf-t--color--blue--30);
     --ddd-theme-default-accent: var(--pf-t--color--blue--30);
-    --ddd-theme-default-skyBlue: var(--pf-t--color--blue--40);
+    --ddd-theme-default-skyBlue: var(--pf-t--color--blue--30);
     --ddd-theme-default-skyLight: var(--pf-t--color--blue--20);
     --ddd-theme-default-skyMaxLight: var(--pf-t--color--blue--10);
     --ddd-theme-default-slateGray: var(--pf-t--color--gray--70);
@@ -46,7 +46,7 @@ export const PatternflyDDDMap = css`
     --ddd-theme-default-wonderPurple: var(--pf-t--color--purple--60);
     --ddd-theme-default-original87Pink: var(--pf-t--color--red--60);
     --ddd-theme-default-discoveryCoral: var(--pf-t--color--red--40);
-    --ddd-theme-default-link: var(--pf-t--color--blue--50);
+    --ddd-theme-default-link: var(--pf-t--color--blue--60);
     --ddd-theme-default-linkLight: var(--pf-t--color--blue--20);
     --ddd-theme-default-error: var(--pf-t--color--red--70);
     --ddd-theme-default-errorLight: var(--pf-t--color--red--10);
@@ -94,6 +94,13 @@ export const PatternflyDDDMap = css`
     --ddd-stack-gap: var(--pf-t--global--spacer--md);
     --ddd-inline-gap: var(--pf-t--global--spacer--sm);
     --ddd-control-padding-inline: var(--pf-t--global--spacer--md);
+    --ddd-card-radius: var(--pf-t--global--border--radius--medium);
+    --ddd-control-radius: var(--pf-t--global--border--radius--pill);
+    --ddd-card-padding: 24px;
+    --ddd-card-border-width: 1px;
+    --ddd-card-shadow: none;
+    --ddd-control-height: 37px;
+    --ddd-tag-radius: var(--pf-t--global--border--radius--pill);
     /* rgb channels follow their mapped color */
     --ddd-primary-0-rgb: 146, 197, 249, 0.7;
     --ddd-primary-1-rgb: 0, 102, 204;
@@ -103,7 +110,7 @@ export const PatternflyDDDMap = css`
     --ddd-primary-5-rgb: 163, 163, 163;
     --ddd-primary-6-rgb: 56, 56, 56;
     --ddd-primary-7-rgb: 55, 163, 163;
-    --ddd-primary-8-rgb: 67, 148, 229;
+    --ddd-primary-8-rgb: 146, 197, 249;
     --ddd-primary-9-rgb: 202, 108, 15;
     --ddd-primary-10-rgb: 185, 132, 18;
     --ddd-primary-11-rgb: 166, 0, 0, 0.7;
@@ -121,5 +128,8 @@ export const PatternflyDDDMap = css`
     --ddd-primary-23-rgb: 115, 72, 11;
     --ddd-primary-24-rgb: 0, 51, 102;
     --ddd-primary-25-rgb: 32, 77, 0;
+    /* text color paired with each remapped palette, where DDD's own no longer reads */
+    --ddd-primary-17-on: white;
+    --ddd-primary-19-on: black;
   }
 `;

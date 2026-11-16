@@ -23,6 +23,21 @@ class SimpleIconset extends LitElement {
     this.iconlist = [];
     this.manifest = {};
     this.needsHydrated = [];
+    // "set:name" -> "otherset:othername", checked before the icon itself
+    this.aliases = {};
+  }
+  /**
+   * Draw some icons from another set: a design system (Carbon, Material
+   * Symbols, ...) maps HAX icon names to its own icons while it is active.
+   * Content keeps storing HAX names, so it renders the same in every
+   * theme; an alias whose set isn't registered, or a name not listed,
+   * keeps the HAX icon. Icons on the page redraw (simple-iconset-aliases
+   * event).
+   * @param {Object} aliases { "icons:search": "carbon-icons:search", ... }
+   */
+  setAliases(aliases = {}) {
+    this.aliases = aliases && typeof aliases === "object" ? { ...aliases } : {};
+    globalThis.dispatchEvent(new CustomEvent("simple-iconset-aliases"));
   }
   /**
    * Manifest.js files can register themselves to create an icon list.
@@ -87,6 +102,19 @@ class SimpleIconset extends LitElement {
     // legacy API used to fill in icons: for lazy devs so let's mirror
     if (ary.length === 1) {
       ary = ["icons", val];
+    }
+    // an active design system's own icon for this name, when its set is
+    // registered; one step only, so aliases never chain or loop
+    const alias = ary.length === 2 ? this.aliases[`${ary[0]}:${ary[1]}`] : null;
+    if (typeof alias === "string") {
+      const to = alias.split(":");
+      const location = to.length === 2 ? this.iconsets[to[0]] : null;
+      if (typeof location === "string") {
+        return `${location}${to[1]}.svg`;
+      }
+      if (location && typeof location[to[1]] === "string") {
+        return location[to[1]];
+      }
     }
     if (ary.length === 2 && this.iconsets[ary[0]]) {
       if (

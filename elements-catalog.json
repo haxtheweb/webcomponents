@@ -396,7 +396,7 @@
     {
       "tag": "app-hax-import-url-dialog",
       "title": "",
-      "description": "The From a URL import: one HAX UI dialog that takes the URL and asks what kind of site it is, which picks the importer. Same card as the HAX UI confirm (haxcms-admin-confirm) on a native modal dialog. Use the helper rather than the element: const answer = await askImportUrl({ kinds, labels }); //...",
+      "description": "The From a URL import: one HAX UI dialog that takes the URL and asks what kind of site it is, which picks the importer. The HAX UI dialog frame (titlebar, title, close button) on a native modal dialog. Use the helper rather than the element: const answer = await askImportUrl({ kinds, labels }); /...",
       "package": "@haxtheweb/app-hax",
       "import": "@haxtheweb/app-hax/lib/v2/app-hax-import-url-dialog.js",
       "type": "element",
@@ -1388,7 +1388,7 @@
     {
       "tag": "elmsln-loading",
       "title": "",
-      "description": "A spinner to tell the user that something is loading. This is just the spinner though and doesn't provide any text or anything else. - elmsln - an open source NGDLE to save education",
+      "description": "A spinner to tell the user that something is loading. This is just the spinner though and doesn't provide any text or anything else.",
       "package": "@haxtheweb/elmsln-loading",
       "import": "@haxtheweb/elmsln-loading/elmsln-loading.js",
       "type": "element",
@@ -1431,7 +1431,7 @@
     {
       "tag": "example-haxcms-theme",
       "title": "example-haxcms-theme",
-      "description": "ExampleHaxcmsTheme ExampleHaxcmsTheme based on HAXCMS theming ecosystem This theme is an example of extending an existing theme component - HAXcms - A headless content management system - HAXCMSLitElementTheme - A class that provides correct baseline wiring to build a new theme that HAX can use -...",
+      "description": "ExampleHaxcmsTheme ExampleHaxcmsTheme based on HAXCMS theming ecosystem This theme is an example of extending an existing theme component",
       "package": "@haxtheweb/example-haxcms-theme",
       "import": "@haxtheweb/example-haxcms-theme/example-haxcms-theme.js",
       "type": "element",
@@ -1778,7 +1778,7 @@
     {
       "tag": "h5p-element",
       "title": "H5p Element",
-      "description": "h5p wrapper for loading and presenting .h5p files - h5p is it's own eco system, we're just trying to wrap it a bit",
+      "description": "Plays H5P interactive content from an uploaded .h5p file, with no H5P server needed",
       "package": "@haxtheweb/h5p-element",
       "import": "@haxtheweb/h5p-element/h5p-element.js",
       "type": "element",
@@ -3126,7 +3126,7 @@
     {
       "tag": "lazy-import-discover",
       "title": "",
-      "description": "Break peoples' brains on simplifying webcomponent integrations",
+      "description": "",
       "package": "@haxtheweb/lazy-import-discover",
       "import": "@haxtheweb/lazy-import-discover/lazy-import-discover.js",
       "type": "element",
@@ -3349,7 +3349,7 @@
     {
       "tag": "lrndesign-imagemap",
       "title": "Lrndesign Imagemap",
-      "description": "creates an accessible image map Learner data: opening a hotspot for the first time sends progressed (one step of exploring the map); opening the last unseen one sends completed. Each statement carries the ids of the hotspots opened so far as its result.response, so the learner profile can hand th...",
+      "description": "An accessible image map with interactive hotspots.",
       "package": "@haxtheweb/lrndesign-imagemap",
       "import": "@haxtheweb/lrndesign-imagemap/lrndesign-imagemap.js",
       "type": "element",
@@ -3946,7 +3946,7 @@
     {
       "tag": "paper-input-flagged",
       "title": "",
-      "description": "A LRN element - flagged - a piece of content with a status message indicating there's an issue with the input by the user. This isn't formal validation but more of feedback or suggestions about what they are entering. The default is feedback for alt metadata, useful for images.",
+      "description": "A LRN element",
       "package": "@haxtheweb/paper-input-flagged",
       "import": "@haxtheweb/paper-input-flagged/paper-input-flagged.js",
       "type": "element",
@@ -4244,7 +4244,7 @@
     {
       "tag": "progress-donut",
       "title": "Progress Donut",
-      "description": "shows progress in as a rounded shape w/ hollow middle",
+      "description": "A donut chart showing progress toward a total.",
       "package": "@haxtheweb/progress-donut",
       "import": "@haxtheweb/progress-donut/progress-donut.js",
       "type": "element",
@@ -6233,6 +6233,24 @@
       "walkthrough": true
     },
     {
+      "tag": "stat-tile",
+      "title": "Stat Tile",
+      "description": "One number that matters, with its label and how it changed: \"Enrolled, 1,284, up 6% this term\". Place several in a grid for a dashboard row.",
+      "package": "@haxtheweb/stat-tile",
+      "import": "@haxtheweb/stat-tile/stat-tile.js",
+      "type": "element",
+      "haxCapable": true,
+      "tags": [
+        "Content",
+        "data",
+        "number",
+        "stat",
+        "metric",
+        "dashboard",
+        "kpi"
+      ]
+    },
+    {
       "tag": "stop-note",
       "title": "Stop Note",
       "description": "Callout note that directs people to an action at different warning levels",
@@ -6255,7 +6273,7 @@
     {
       "tag": "stop-note-group",
       "title": "Stop Note Group",
-      "description": "Stacks several stop-notes into one block that shows a note at a time, with previous and next buttons and a count laid over the note's header (\"Did you know? ← 2 / 5 →\"). Made for Tips and What's new, but any statuses can be mixed. The notes stay ordinary light DOM children: the group never change...",
+      "description": "Stacks several stop-notes into one block that shows a note at a time, with previous and next buttons and a count laid over the note's header (\"Did you know? ← 2 / 5 →\"). Made for Tips and What's new, but any statuses can be mixed. Other blocks drawn on the shared DDD block frame can be stacked wi...",
       "package": "@haxtheweb/stop-note",
       "import": "@haxtheweb/stop-note/lib/stop-note-group.js",
       "type": "grid",

@@ -185,6 +185,27 @@
           "keptDDD": []
         }
       }
+    },
+    "component": {
+      "mapping": "optional",
+      "percent": 88,
+      "families": {
+        "card": {
+          "mapped": 4,
+          "total": 5,
+          "keptDDD": ["--ddd-card-background"]
+        },
+        "control": {
+          "mapped": 2,
+          "total": 2,
+          "keptDDD": []
+        },
+        "tag": {
+          "mapped": 1,
+          "total": 1,
+          "keptDDD": []
+        }
+      }
     }
   },
   "contrast": [
@@ -253,6 +274,244 @@
       "bg": "--ddd-theme-default-limestoneMaxLight",
       "ratio": 15.1,
       "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-link",
+      "bg": "--ddd-theme-default-limestoneMaxLight",
+      "ratio": 5.7,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-link",
+      "bg": "--ddd-theme-default-limestoneLight",
+      "ratio": 4.97,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-limestoneGray",
+      "bg": "--ddd-theme-default-nittanyNavy",
+      "ratio": 5.7,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-limestoneGray",
+      "bg": "--ddd-theme-default-potentialMidnight",
+      "ratio": 7.45,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-nittanyNavy",
+      "bg": "--ddd-theme-default-skyBlue",
+      "ratio": 5.71,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-potentialMidnight",
+      "bg": "--ddd-theme-default-creekTeal",
+      "ratio": 5.4,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-potentialMidnight",
+      "bg": "--ddd-theme-default-inventOrange",
+      "ratio": 7.47,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-potentialMidnight",
+      "bg": "--ddd-theme-default-discoveryCoral",
+      "ratio": 7.49,
+      "min": 4.5
+    },
+    {
+      "fg": "--ddd-theme-default-potentialMidnight",
+      "bg": "--ddd-theme-default-keystoneYellow",
+      "ratio": 10.16,
+      "min": 4.5
+    }
+  ],
+  "pairs": [
+    {
+      "primary": 0,
+      "color": "--ddd-theme-default-pughBlue",
+      "on": "black",
+      "ratio": 12.32,
+      "source": "ddd"
+    },
+    {
+      "primary": 1,
+      "color": "--ddd-theme-default-beaverBlue",
+      "on": "white",
+      "ratio": 6.44,
+      "source": "ddd"
+    },
+    {
+      "primary": 2,
+      "color": "--ddd-theme-default-nittanyNavy",
+      "on": "white",
+      "ratio": 13.15,
+      "source": "ddd"
+    },
+    {
+      "primary": 3,
+      "color": "--ddd-theme-default-potentialMidnight",
+      "on": "white",
+      "ratio": 17.17,
+      "source": "ddd"
+    },
+    {
+      "primary": 4,
+      "color": "--ddd-theme-default-coalyGray",
+      "on": "white",
+      "ratio": 17.07,
+      "source": "ddd"
+    },
+    {
+      "primary": 5,
+      "color": "--ddd-theme-default-limestoneGray",
+      "on": "black",
+      "ratio": 9.11,
+      "source": "ddd"
+    },
+    {
+      "primary": 6,
+      "color": "--ddd-theme-default-slateGray",
+      "on": "white",
+      "ratio": 6.45,
+      "source": "ddd"
+    },
+    {
+      "primary": 7,
+      "color": "--ddd-theme-default-creekTeal",
+      "on": "black",
+      "ratio": 6.61,
+      "source": "ddd"
+    },
+    {
+      "primary": 8,
+      "color": "--ddd-theme-default-skyBlue",
+      "on": "black",
+      "ratio": 9.12,
+      "source": "ddd"
+    },
+    {
+      "primary": 9,
+      "color": "--ddd-theme-default-shrineTan",
+      "on": "black",
+      "ratio": 6.63,
+      "source": "ddd"
+    },
+    {
+      "primary": 10,
+      "color": "--ddd-theme-default-roarGolden",
+      "on": "black",
+      "ratio": 4.65,
+      "source": "ddd"
+    },
+    {
+      "primary": 11,
+      "color": "--ddd-theme-default-original87Pink",
+      "on": "white",
+      "ratio": 6.42,
+      "source": "ddd"
+    },
+    {
+      "primary": 12,
+      "color": "--ddd-theme-default-discoveryCoral",
+      "on": "black",
+      "ratio": 9.16,
+      "source": "ddd"
+    },
+    {
+      "primary": 13,
+      "color": "--ddd-theme-default-wonderPurple",
+      "on": "white",
+      "ratio": 9.34,
+      "source": "ddd"
+    },
+    {
+      "primary": 14,
+      "color": "--ddd-theme-default-athertonViolet",
+      "on": "black",
+      "ratio": 12.39,
+      "source": "ddd"
+    },
+    {
+      "primary": 15,
+      "color": "--ddd-theme-default-inventOrange",
+      "on": "black",
+      "ratio": 9.14,
+      "source": "ddd"
+    },
+    {
+      "primary": 16,
+      "color": "--ddd-theme-default-keystoneYellow",
+      "on": "black",
+      "ratio": 12.42,
+      "source": "ddd"
+    },
+    {
+      "primary": 17,
+      "color": "--ddd-theme-default-opportunityGreen",
+      "on": "white",
+      "ratio": 9.36,
+      "source": "paired"
+    },
+    {
+      "primary": 18,
+      "color": "--ddd-theme-default-futureLime",
+      "on": "black",
+      "ratio": 12.3,
+      "source": "ddd"
+    },
+    {
+      "primary": 19,
+      "color": "--ddd-theme-default-forestGreen",
+      "on": "white",
+      "ratio": 6.57,
+      "source": "ddd"
+    },
+    {
+      "primary": 20,
+      "color": "--ddd-theme-default-landgrantBrown",
+      "on": "white",
+      "ratio": 13.12,
+      "source": "ddd"
+    },
+    {
+      "primary": 21,
+      "color": "--ddd-theme-default-globalNeon",
+      "on": "black",
+      "ratio": 16.21,
+      "source": "ddd"
+    },
+    {
+      "primary": 22,
+      "color": "--ddd-theme-default-error",
+      "on": "white",
+      "ratio": 9.11,
+      "source": "ddd"
+    },
+    {
+      "primary": 23,
+      "color": "--ddd-theme-default-warning",
+      "on": "white",
+      "ratio": 9.31,
+      "source": "ddd"
+    },
+    {
+      "primary": 24,
+      "color": "--ddd-theme-default-info",
+      "on": "white",
+      "ratio": 9.38,
+      "source": "ddd"
+    },
+    {
+      "primary": 25,
+      "color": "--ddd-theme-default-success",
+      "on": "white",
+      "ratio": 9.36,
+      "source": "ddd"
     }
   ],
   "problems": [],
@@ -301,10 +560,10 @@
     {
       "ddd": "--ddd-theme-default-skyBlue",
       "tier": "identity",
-      "token": "--md-ref-palette-blue60",
-      "light": "#4e8ff8",
-      "dark": "#4e8ff8",
-      "note": ""
+      "token": "--md-ref-palette-blue70",
+      "light": "#76acff",
+      "dark": "#76acff",
+      "note": "one step lighter than md-ref-palette-blue60 so DDD's nittanyNavy ink reads on it (4.5:1), as blocks pair them"
     },
     {
       "ddd": "--ddd-theme-default-skyLight",
@@ -373,10 +632,10 @@
     {
       "ddd": "--ddd-theme-default-limestoneGray",
       "tier": "identity",
-      "token": "--md-ref-palette-neutral60",
-      "light": "#938f96",
-      "dark": "#938f96",
-      "note": ""
+      "token": "--md-ref-palette-neutral70",
+      "light": "#aea9b1",
+      "dark": "#aea9b1",
+      "note": "muted text on the dark brand surfaces needs 4.5:1; neutral60 is under it on primary20"
     },
     {
       "ddd": "--ddd-theme-default-limestoneLight",
@@ -493,10 +752,10 @@
     {
       "ddd": "--ddd-theme-default-creekTeal",
       "tier": "identity",
-      "token": "--md-ref-palette-cyan40",
-      "light": "#00687c",
-      "dark": "#00687c",
-      "note": ""
+      "token": "--md-ref-palette-cyan60",
+      "light": "#009ebb",
+      "dark": "#009ebb",
+      "note": "one step lighter than md-ref-palette-cyan40 so DDD's potentialMidnight ink reads on it (4.5:1), as blocks pair them"
     },
     {
       "ddd": "--ddd-theme-default-creekLight",
@@ -969,6 +1228,69 @@
       "light": "24px",
       "dark": "24px",
       "note": "24px"
+    },
+    {
+      "ddd": "--ddd-card-radius",
+      "tier": "component",
+      "token": "--md-sys-shape-corner-medium",
+      "light": "12px",
+      "dark": "12px",
+      "note": "cards use the medium corner, 12px"
+    },
+    {
+      "ddd": "--ddd-control-radius",
+      "tier": "component",
+      "token": "--md-sys-shape-corner-full",
+      "light": "9999px",
+      "dark": "9999px",
+      "note": "buttons are fully rounded"
+    },
+    {
+      "ddd": "--ddd-card-padding",
+      "tier": "component",
+      "token": null,
+      "light": "16px",
+      "dark": "16px",
+      "note": "card content padding"
+    },
+    {
+      "ddd": "--ddd-card-border-width",
+      "tier": "component",
+      "token": null,
+      "light": "1px",
+      "dark": "1px",
+      "note": "outlined card"
+    },
+    {
+      "ddd": "--ddd-card-shadow",
+      "tier": "component",
+      "token": null,
+      "light": "none",
+      "dark": "none",
+      "note": "outlined card has no elevation"
+    },
+    {
+      "ddd": "--ddd-control-height",
+      "tier": "component",
+      "token": null,
+      "light": "40px",
+      "dark": "40px",
+      "note": "common button container height"
+    },
+    {
+      "ddd": "--ddd-tag-radius",
+      "tier": "component",
+      "token": "--md-sys-shape-corner-small",
+      "light": "8px",
+      "dark": "8px",
+      "note": "chips, 8px"
     }
-  ]
+  ],
+  "icons": {
+    "package": "@material-symbols/svg-400",
+    "version": "0.49.0",
+    "license": "Apache-2.0",
+    "map": "material-symbols",
+    "mapped": 244
+  }
 }
