@@ -13,7 +13,10 @@ import {
   UswdsTokens,
   UswdsFonts,
 } from "@haxtheweb/uswds-theme/lib/UswdsTokens.js";
-import { UswdsDDDMap } from "@haxtheweb/uswds-theme/lib/UswdsDDDMap.js";
+import {
+  UswdsDDDMap,
+  UswdsColorNames,
+} from "@haxtheweb/uswds-theme/lib/UswdsDDDMap.js";
 
 export const USWDS_SYSTEM = "uswds";
 
@@ -25,6 +28,8 @@ export function registerUswdsDesignSystem(manager = DesignSystemManager) {
       extends: "ddd",
       styles: [UswdsTokens, UswdsDDDMap],
       fonts: UswdsFonts,
+      // the color pickers name each option after the token it now shows
+      colorNames: UswdsColorNames,
     });
   }
   return manager;

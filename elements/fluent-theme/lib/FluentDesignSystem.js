@@ -13,7 +13,10 @@ import {
   FluentTokens,
   FluentFonts,
 } from "@haxtheweb/fluent-theme/lib/FluentTokens.js";
-import { FluentDDDMap } from "@haxtheweb/fluent-theme/lib/FluentDDDMap.js";
+import {
+  FluentDDDMap,
+  FluentColorNames,
+} from "@haxtheweb/fluent-theme/lib/FluentDDDMap.js";
 import { FluentIcons } from "@haxtheweb/fluent-theme/lib/FluentIcons.js";
 
 export const FLUENT_SYSTEM = "fluent";
@@ -26,6 +29,8 @@ export function registerFluentDesignSystem(manager = DesignSystemManager) {
       extends: "ddd",
       styles: [FluentTokens, FluentDDDMap],
       fonts: FluentFonts,
+      // the color pickers name each option after the token it now shows
+      colorNames: FluentColorNames,
       // HAX icon names drawn in Fluent's own icon set while it is active
       icons: FluentIcons,
     });

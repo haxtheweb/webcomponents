@@ -473,6 +473,40 @@
       "source": "ddd"
     }
   ],
+  "colorNames": {
+    "primary": {
+      "0": "Blue 30",
+      "1": "Blue 60",
+      "2": "Blue 80",
+      "3": "Blue 90",
+      "4": "Gray 100",
+      "5": "Gray 40",
+      "6": "Cool Gray 70",
+      "7": "Teal 50",
+      "8": "Blue 40",
+      "9": "Warm Gray 50",
+      "10": "Yellow 50",
+      "11": "Magenta 60",
+      "12": "Red 40",
+      "13": "Purple 70",
+      "14": "Purple 40",
+      "15": "Orange 40",
+      "16": "Yellow 30",
+      "17": "Green 60",
+      "18": "Green 40",
+      "19": "Green 50",
+      "20": "Orange 80",
+      "21": "Yellow 20"
+    },
+    "accent": {
+      "0": "Blue 10",
+      "1": "Cool Gray 10",
+      "2": "Gray 10",
+      "3": "Warm Gray 10",
+      "4": "Yellow 10",
+      "5": "Teal 10"
+    }
+  },
   "problems": [],
   "contract": 1,
   "map": [

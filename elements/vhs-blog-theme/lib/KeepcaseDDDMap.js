@@ -123,3 +123,42 @@ export const KeepcaseDDDMap = css`
     --ddd-primary-17-on: white;
   }
 `;
+
+/**
+ * What the color pickers call each primary / accent option while
+ * Keepcase is active: the Keepcase token that option now shows.
+ */
+export const KeepcaseColorNames = {
+  primary: {
+    0: "Case Ice",
+    1: "Case Violet",
+    2: "Case Navy",
+    3: "Room Floor",
+    4: "Room Panel",
+    5: "Room Muted",
+    6: "Case Plum",
+    7: "Case Teal",
+    8: "Case Sky",
+    9: "Room Brass",
+    10: "Case Gold",
+    11: "Case Magenta",
+    12: "Case Crimson",
+    13: "Case Plum",
+    14: "Case Mauve",
+    15: "Room Sticker",
+    16: "Case Yellow",
+    17: "Case Green",
+    18: "Case Lime",
+    19: "Case Olive",
+    20: "Room Walnut",
+    21: "Room Focus",
+  },
+  accent: {
+    0: "Case Frost",
+    1: "Room Dust",
+    2: "Room Paper",
+    3: "Room Paper",
+    4: "Case Cream",
+    5: "Case Frost",
+  },
+};

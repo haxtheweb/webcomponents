@@ -130,3 +130,42 @@ export const WebawesomeDDDMap = css`
     --ddd-primary-25-rgb: 3, 103, 48;
   }
 `;
+
+/**
+ * What the color pickers call each primary / accent option while
+ * Web Awesome is active: the Web Awesome token that option now shows.
+ */
+export const WebawesomeColorNames = {
+  primary: {
+    0: "Blue 80",
+    1: "Blue 50",
+    2: "Blue 30",
+    3: "Blue 10",
+    4: "Gray 10",
+    5: "Gray 80",
+    6: "Gray 40",
+    7: "Cyan 70",
+    8: "Blue 80",
+    9: "Orange 80",
+    10: "Yellow 70",
+    11: "Pink 40",
+    12: "Red 70",
+    13: "Purple 40",
+    14: "Purple 80",
+    15: "Orange 70",
+    16: "Yellow 80",
+    17: "Green 70",
+    18: "Green 80",
+    19: "Green 30",
+    20: "Orange 30",
+    21: "Yellow 90",
+  },
+  accent: {
+    0: "Blue 95",
+    1: "Gray 95",
+    2: "Gray 95",
+    3: "Orange 95",
+    4: "Yellow 95",
+    5: "Cyan 95",
+  },
+};

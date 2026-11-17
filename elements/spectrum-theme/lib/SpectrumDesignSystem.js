@@ -13,7 +13,10 @@ import {
   SpectrumTokens,
   SpectrumFonts,
 } from "@haxtheweb/spectrum-theme/lib/SpectrumTokens.js";
-import { SpectrumDDDMap } from "@haxtheweb/spectrum-theme/lib/SpectrumDDDMap.js";
+import {
+  SpectrumDDDMap,
+  SpectrumColorNames,
+} from "@haxtheweb/spectrum-theme/lib/SpectrumDDDMap.js";
 import { SpectrumIcons } from "@haxtheweb/spectrum-theme/lib/SpectrumIcons.js";
 
 export const SPECTRUM_SYSTEM = "spectrum";
@@ -26,6 +29,8 @@ export function registerSpectrumDesignSystem(manager = DesignSystemManager) {
       extends: "ddd",
       styles: [SpectrumTokens, SpectrumDDDMap],
       fonts: SpectrumFonts,
+      // the color pickers name each option after the token it now shows
+      colorNames: SpectrumColorNames,
       // HAX icon names drawn in Spectrum's own icon set while it is active
       icons: SpectrumIcons,
     });

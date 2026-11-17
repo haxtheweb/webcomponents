@@ -252,6 +252,47 @@ export const ApplicationAttributeData = {
   "instructional-action": learningComponentTypes,
 };
 
+// primary / accent options named for what they mean rather than for a DDD
+// color; these labels hold in every design system
+export const DDDMeaningColorOptions = {
+  primary: ["22", "23", "24", "25"],
+  accent: ["6", "7", "8", "9", "10", "11", "12", "13", "14"],
+};
+
+/**
+ * What a color picker calls a primary / accent option. Under DDD it is
+ * DDD's own name ("Nittany navy"). Under a design system that remaps DDD's
+ * colors the option shows that system's color, so it takes the name that
+ * system gives it ("Blue 80"), or a numbered one ("Primary 2") when the
+ * system has no name for it. Options named for their meaning keep it.
+ * @param {String} type "primary" or "accent"
+ * @param {String|Number} option the data-primary / data-accent value
+ * @returns {String}
+ */
+export function DDDColorOptionLabel(type, option) {
+  const options = ApplicationAttributeData[type];
+  const dddLabel = options && options[option] != null ? options[option] : "";
+  if (!dddLabel || !DDDMeaningColorOptions[type]) {
+    return dddLabel;
+  }
+  const manager =
+    globalThis.DesignSystemManager && globalThis.DesignSystemManager.instance;
+  const names =
+    manager && typeof manager.activeColorNames === "function"
+      ? manager.activeColorNames()
+      : null;
+  if (!names) {
+    return dddLabel;
+  }
+  if (names[type] && names[type][option]) {
+    return names[type][option];
+  }
+  if (DDDMeaningColorOptions[type].includes(String(option))) {
+    return dddLabel;
+  }
+  return `${type === "primary" ? "Primary" : "Accent"} ${option}`;
+}
+
 // ensure we get keys back in the right format
 export function HAXOptionSampleFactory(type) {
   return Object.keys(ApplicationAttributeData[type]).map((key) => {

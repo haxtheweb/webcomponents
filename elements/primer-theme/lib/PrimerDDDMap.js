@@ -145,3 +145,42 @@ export const PrimerDDDMap = css`
     --ddd-primary-17-on: white;
   }
 `;
+
+/**
+ * What the color pickers call each primary / accent option while
+ * Primer is active: the Primer token that option now shows.
+ */
+export const PrimerColorNames = {
+  primary: {
+    0: "Blue Scale 2",
+    1: "fgColor-accent",
+    2: "Blue Scale 9",
+    3: "bgColor-emphasis",
+    4: "fgColor-default",
+    5: "Gray Scale 3",
+    6: "Gray Scale 7",
+    7: "Teal Scale 3",
+    8: "Blue Scale 3",
+    9: "Brown Scale 3",
+    10: "Yellow Scale 2",
+    11: "Pink Scale 7",
+    12: "Coral Scale 3",
+    13: "fgColor-done",
+    14: "Purple Scale 3",
+    15: "Orange Scale 3",
+    16: "Yellow Scale 1",
+    17: "fgColor-success",
+    18: "Green Scale 3",
+    19: "Green Scale 7",
+    20: "Brown Scale 7",
+    21: "Lemon Scale 1",
+  },
+  accent: {
+    0: "bgColor-accent-muted",
+    1: "bgColor-muted",
+    2: "bgColor-muted",
+    3: "Brown Scale 0",
+    4: "bgColor-attention-muted",
+    5: "Teal Scale 0",
+  },
+};

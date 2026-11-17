@@ -473,6 +473,40 @@
       "source": "ddd"
     }
   ],
+  "colorNames": {
+    "primary": {
+      "0": "Neutral 300",
+      "1": "Neutral 900",
+      "2": "Neutral 800",
+      "3": "Neutral 950",
+      "4": "Neutral 900",
+      "5": "Neutral 400",
+      "6": "Slate 600",
+      "7": "Teal 600",
+      "8": "Sky 500",
+      "9": "Stone 400",
+      "10": "Amber 600",
+      "11": "Pink 700",
+      "12": "Red 400",
+      "13": "Purple 800",
+      "14": "Violet 300",
+      "15": "Orange 500",
+      "16": "Yellow 400",
+      "17": "Green 700",
+      "18": "Lime 400",
+      "19": "Green 600",
+      "20": "Orange 900",
+      "21": "Yellow 300"
+    },
+    "accent": {
+      "0": "Sky 50",
+      "1": "Slate 50",
+      "2": "Neutral 50",
+      "3": "Stone 50",
+      "4": "Amber 50",
+      "5": "Teal 50"
+    }
+  },
   "problems": [],
   "contract": 1,
   "map": [

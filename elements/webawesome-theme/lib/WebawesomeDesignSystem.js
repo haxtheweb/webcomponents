@@ -13,7 +13,10 @@ import {
   WebawesomeTokens,
   WebawesomeFonts,
 } from "@haxtheweb/webawesome-theme/lib/WebawesomeTokens.js";
-import { WebawesomeDDDMap } from "@haxtheweb/webawesome-theme/lib/WebawesomeDDDMap.js";
+import {
+  WebawesomeDDDMap,
+  WebawesomeColorNames,
+} from "@haxtheweb/webawesome-theme/lib/WebawesomeDDDMap.js";
 
 export const WEBAWESOME_SYSTEM = "webawesome";
 
@@ -25,6 +28,8 @@ export function registerWebawesomeDesignSystem(manager = DesignSystemManager) {
       extends: "ddd",
       styles: [WebawesomeTokens, WebawesomeDDDMap],
       fonts: WebawesomeFonts,
+      // the color pickers name each option after the token it now shows
+      colorNames: WebawesomeColorNames,
     });
   }
   return manager;

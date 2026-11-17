@@ -18,7 +18,10 @@ import {
   BootstrapTokens,
   BootstrapFonts,
 } from "@haxtheweb/bootstrap-theme/lib/BootstrapTokens.js";
-import { BootstrapDDDMap } from "@haxtheweb/bootstrap-theme/lib/BootstrapDDDMap.js";
+import {
+  BootstrapDDDMap,
+  BootstrapColorNames,
+} from "@haxtheweb/bootstrap-theme/lib/BootstrapDDDMap.js";
 import { BootstrapIcons } from "@haxtheweb/bootstrap-theme/lib/BootstrapIcons.js";
 import { BootstrapDesignSystemStyles } from "@haxtheweb/bootstrap-theme/lib/BootstrapDesignSystemStyles.js";
 
@@ -36,6 +39,8 @@ export function registerBootstrapDesignSystem(manager = DesignSystemManager) {
         ...BootstrapDesignSystemStyles,
       ],
       fonts: BootstrapFonts,
+      // the color pickers name each option after the token it now shows
+      colorNames: BootstrapColorNames,
       // HAX icon names drawn in Bootstrap Icons while it is active
       icons: BootstrapIcons,
       integrations: {

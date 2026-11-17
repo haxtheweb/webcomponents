@@ -3,6 +3,7 @@
   "system": "bootstrap",
   "title": "Bootstrap",
   "prefix": "Bootstrap",
+  "colorNames": { "strip": ["--bs-"] },
   "homepage": "https://getbootstrap.com",
   "sources": [
     {

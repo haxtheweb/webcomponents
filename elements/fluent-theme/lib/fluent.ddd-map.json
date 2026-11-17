@@ -466,6 +466,40 @@
       "source": "ddd"
     }
   ],
+  "colorNames": {
+    "primary": {
+      "0": "Brand Web 130",
+      "1": "Brand Web 80",
+      "2": "Brand Web 30",
+      "3": "Brand Web 20",
+      "4": "Grey 14",
+      "5": "Grey 66",
+      "6": "Grey 26",
+      "7": "Teal Tint 20",
+      "8": "Brand Web 100",
+      "9": "Beige Tint 20",
+      "10": "Marigold Primary",
+      "11": "Pink Shade 20",
+      "12": "Red Tint 30",
+      "13": "Purple Primary",
+      "14": "Lavender Tint 30",
+      "15": "Dark Orange Tint 20",
+      "16": "Yellow Primary",
+      "17": "Green Primary",
+      "18": "Light Green Tint 30",
+      "19": "Forest Shade 10",
+      "20": "Brown Shade 20",
+      "21": "Yellow Tint 40"
+    },
+    "accent": {
+      "0": "Brand Web 160",
+      "1": "Grey 96",
+      "2": "Grey 96",
+      "3": "Beige Tint 60",
+      "4": "Marigold Tint 60",
+      "5": "Teal Tint 60"
+    }
+  },
   "problems": [],
   "contract": 1,
   "map": [
