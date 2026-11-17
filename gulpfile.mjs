@@ -283,8 +283,6 @@ function getInputMethodFromType(type) {
 
 // HAX BUILD ROUTINE FOR CLEANING UP ASSETS AFTER BUILD
 
-import * as tmp4 from "gulp-terser";
-const terser = tmp4.default;
 import * as tmp5 from "glob";
 const glob = tmp5.default;
 import * as tmp6 from "path";
@@ -301,24 +299,10 @@ gulp.task(
     execSync('node scripts/check-ecosystem-version.mjs', { stdio: 'inherit' });
   }
 );
-gulp.task(
-  "terser", () => {
-    // now work on all the other files
-    // @xterm is a pre-minified vendor bundle; it's copied verbatim via
-    // "vendor-copy-xterm" and should not be re-parsed/minified here.
-    return gulp.src([
-      './build/es6/**/*.js',
-      '!./build/es6/node_modules/@xterm/**/*.js',
-      '!./build/es6/node_modules/@haxtheweb/mermaid-diagram/lib/mermaid/mermaid.min.js'
-    ]).pipe(terser({
-        ecma: 2022,
-        keep_fnames: true,
-        mangle: true,
-        module: true,
-      }))
-      .pipe(gulp.dest('./build/es6/'));
-  }
-);
+// JS minification of the build is scripts/terser-build.mjs (`yarn run terser`):
+// the same terser options the gulp task here used, on every core, with results
+// remembered between builds. It skips @xterm and the vendored mermaid bundle,
+// which the vendor-copy tasks below copy in as they are.
 // @xterm/xterm and @xterm/addon-fit ship as pre-built, pre-minified vendor
 // bundles. Modern esbuild output (e.g. class static initialization blocks)
 // isn't understood by polymer-build's bundled babylon parser, which caused
