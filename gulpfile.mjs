@@ -301,8 +301,9 @@ gulp.task(
 );
 // JS minification of the build is scripts/terser-build.mjs (`yarn run terser`):
 // the same terser options the gulp task here used, on every core, with results
-// remembered between builds. It skips @xterm, monaco-editor and the vendored
-// mermaid bundle, which the vendor-copy tasks below copy in as they are.
+// remembered between builds. It skips @xterm, monaco-editor, h5p-standalone
+// and the vendored mermaid bundle, which the vendor-copy tasks below copy in
+// as they are.
 // @xterm/xterm and @xterm/addon-fit ship as pre-built, pre-minified vendor
 // bundles. Modern esbuild output (e.g. class static initialization blocks)
 // isn't understood by polymer-build's bundled babylon parser, which caused
@@ -326,6 +327,15 @@ gulp.task("vendor-copy-monaco", () => {
   return gulp.src([
     './node_modules/monaco-editor/min/**',
     '!./node_modules/monaco-editor/min/vs/language/typescript/*'
+  ], { base: '.', encoding: false }).pipe(gulp.dest('./build/es6/'));
+});
+// h5p-element loads the h5p-standalone player at runtime from
+// node_modules/h5p-standalone/dist (scripts, styles, fonts and images). No
+// module imports it, so the polymer build never saw it; copy the dist as shipped.
+gulp.task("vendor-copy-h5p", () => {
+  return gulp.src([
+    './node_modules/h5p-standalone/dist/**',
+    '!./node_modules/h5p-standalone/dist/**/*.d.ts'
   ], { base: '.', encoding: false }).pipe(gulp.dest('./build/es6/'));
 });
 // @haxtheweb/la-tex/lib/latex2html5.js is a pre-transpiled browserify UMD
