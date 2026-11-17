@@ -2306,7 +2306,7 @@
   },
   "tags": {
     "focus-trap": 1,
-    "model-viewer": 10,
+    "extra-model": 10,
     "a11y-carousel": 11,
     "a11y-carousel-button": 16,
     "a11y-collapse": 17,

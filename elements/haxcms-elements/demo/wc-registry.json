@@ -1,6 +1,6 @@
 {
   "focus-trap": "@a11y/focus-trap/focus-trap.js",
-  "model-viewer": "@google/model-viewer/dist/model-viewer.js",
+  "extra-model": "@google/model-viewer/dist/model-viewer.js",
   "a11y-carousel": "@haxtheweb/a11y-carousel/a11y-carousel.js",
   "a11y-carousel-button": "@haxtheweb/a11y-carousel/lib/a11y-carousel-button.js",
   "a11y-collapse": "@haxtheweb/a11y-collapse/a11y-collapse.js",
