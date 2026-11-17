@@ -249,7 +249,7 @@ class MediaImage extends SchemaBehaviors(DDD) {
           ? html`
               <media-image-caption>
                 <slot name="caption">
-                  >${
+                  ${
                     this.caption && this.asMd
                       ? html`<md-block
                           style="--ddd-spacing-6:0px;"

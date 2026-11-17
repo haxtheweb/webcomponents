@@ -2,7 +2,7 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see LICENSE for full text.
  */
-import { html, css } from "lit";
+import { html, css, nothing } from "lit";
 import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
@@ -262,8 +262,8 @@ class SiteSearch extends HAXCMSI18NMixin(DDD) {
         type="text"
         value="${this.search}"
         role="searchbox"
-        aria-expanded="${this.__results.length > 0 ? "true" : "false"}"
-        aria-owns="search-results"
+        aria-label="${this.t.search}"
+        aria-controls="${this.__results.length > 0 ? "search-results" : nothing}"
         aria-describedby="search-status"
         @value-changed="${this._searchValueChanged}"
       >

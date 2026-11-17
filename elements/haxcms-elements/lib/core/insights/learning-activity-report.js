@@ -208,6 +208,7 @@ class HAXCMSLearningActivityReport extends HAXCMSI18NMixin(LitElement) {
       laShowPagesWithout: "Show pages without activities",
       laHidePagesWithout: "Hide pages without activities",
       laSectionCounts: "{pages} with activities · {count} trackable",
+      laShowTracked: "Open {title} with What's tracked on",
     };
   }
 
@@ -217,6 +218,29 @@ class HAXCMSLearningActivityReport extends HAXCMSI18NMixin(LitElement) {
       DDDTableStyles,
       DDDChartStyles,
       css`
+        .page-cell {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--ddd-spacing-2);
+        }
+        .lens-link {
+          display: inline-grid;
+          place-items: center;
+          width: 28px;
+          height: 28px;
+          border-radius: var(--ddd-radius-xs);
+          color: inherit;
+          --simple-icon-width: 18px;
+          --simple-icon-height: 18px;
+        }
+        .lens-link:hover,
+        .lens-link:focus-visible {
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight),
+            var(--ddd-theme-default-slateGray)
+          );
+        }
+
         :host {
           display: block;
           container: la-report / inline-size;
@@ -971,12 +995,41 @@ class HAXCMSLearningActivityReport extends HAXCMSI18NMixin(LitElement) {
     if (!row.href) {
       return title;
     }
-    return html`<a
-      href="${row.href}"
-      data-slug="${row.item.slug || ""}"
-      @click="${this._pageLinkClicked}"
-      >${title}</a
-    >`;
+    return html`<span class="page-cell"
+      ><a
+        href="${row.href}"
+        data-slug="${row.item.slug || ""}"
+        @click="${this._pageLinkClicked}"
+        >${title}</a
+      ><a
+        class="lens-link"
+        href="${row.href}"
+        data-slug="${row.item.slug || ""}"
+        title="${this._fmt(this.t.laShowTracked, { title })}"
+        aria-label="${this._fmt(this.t.laShowTracked, { title })}"
+        @click="${this._lensLinkClicked}"
+        ><simple-icon-lite icon="icons:visibility"></simple-icon-lite></a
+    ></span>`;
+  }
+
+  // PROTOTYPE (tracking lens): open the page with What's tracked on
+  async _lensLinkClicked(e) {
+    e.preventDefault();
+    const a = e.currentTarget;
+    const mod =
+      await import("../../ui-components/progress/haxcms-tracking-lens.js");
+    mod.TrackingLens.set(true);
+    const detail = { slug: a.getAttribute("data-slug") || "", handled: false };
+    this.dispatchEvent(
+      new CustomEvent("insights-open-page", {
+        bubbles: true,
+        composed: true,
+        detail,
+      }),
+    );
+    if (!detail.handled) {
+      globalThis.location.href = a.href;
+    }
   }
 
   renderPageCounts(counts) {

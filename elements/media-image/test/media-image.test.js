@@ -33,6 +33,22 @@ describe("media-image test", () => {
     await expect(element).shadowDom.to.be.accessible();
   });
 
+  it("renders the caption without stray template text", async () => {
+    const el = await fixture(
+      html`<media-image
+        source="https://placehold.co/300x200.png"
+        alt="A placeholder"
+        caption="Leaf cross section"
+      ></media-image>`,
+    );
+    await el.updateComplete;
+    const cap = el.shadowRoot.querySelector("media-image-caption");
+    expect(cap).to.exist;
+    await cap.updateComplete;
+    const text = cap.textContent.trim();
+    expect(text).to.equal("Leaf cross section");
+  });
+
   describe("Accessibility - Image Attributes", () => {
     it("has proper alt text support", async () => {
       const testElement = await fixture(html`
