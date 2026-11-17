@@ -229,3 +229,21 @@ describe("getDDDPaletteKey", () => {
     expect(getDDDPaletteKey("nonexistent", "5")).to.equal("monotone");
   });
 });
+
+describe("renamed palettes keep their keys", () => {
+  // the label is only what the picker shows; sites and themes refer to a
+  // palette by number or key, so those must not move with a rename
+  [
+    ["offbrand-nittany-blue", "3", "Offbrand Blue"],
+    ["polaris-invent", "8", "Sky and Ember"],
+    ["boldly-lion", "11", "Boldly Blue"],
+  ].forEach(([key, dataPalette, label]) => {
+    it(`${key} is still palette ${dataPalette}, shown as ${label}`, () => {
+      const option = getDDDPaletteOptionByValue(key);
+      expect(option.key).to.equal(key);
+      expect(option.dataPalette).to.equal(dataPalette);
+      expect(option.label).to.equal(label);
+      expect(getDDDPaletteOptionByValue(dataPalette).label).to.equal(label);
+    });
+  });
+});

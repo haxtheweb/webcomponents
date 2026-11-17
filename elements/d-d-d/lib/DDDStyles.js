@@ -3200,7 +3200,7 @@ export const DDDPaletteStyles = css`
     );
   }
 
-  /* Offbrand Nittany Blue */
+  /* Offbrand Blue */
   [data-palette="offbrand-nittany-blue"],
   [data-palette="3"] {
     --ddd-palette-color-1: var(--ddd-theme-default-nittanyNavy);
@@ -3481,7 +3481,7 @@ export const DDDPaletteStyles = css`
     );
   }
 
-  /* Polaris Invent */
+  /* Sky and Ember */
   [data-palette="polaris-invent"],
   [data-palette="8"] {
     /* Derived from colors in polaris-invent-theme */

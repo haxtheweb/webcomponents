@@ -89,7 +89,7 @@ describe("d-d-docs wiring", function () {
     ).to.equal("8");
     expect(
       element.shadowRoot.querySelector(".palette-picker-meta").textContent,
-    ).to.include("Polaris Invent");
+    ).to.include("Sky and Ember");
     // the literal "0" string is a real value, not the fallback
     element._onPalettePickerValueChanged({ detail: { value: "0" } });
     expect(element.palettePickerValue).to.equal("0");
