@@ -49,6 +49,54 @@ describe("media-image test", () => {
     expect(text).to.equal("Leaf cross section");
   });
 
+  describe("learner data", () => {
+    const opened = (el) => {
+      const sent = [];
+      el.addEventListener("user-engagement", (e) => sent.push(e.detail));
+      return sent;
+    };
+    const image = (el) => el.shadowRoot.querySelector("media-image-image");
+
+    it("records that the image was opened, once per visit", async () => {
+      const el = await fixture(
+        html`<media-image
+          source="https://placehold.co/300x200.png"
+          alt="A leaf"
+        ></media-image>`,
+      );
+      await el.updateComplete;
+      const sent = opened(el);
+      el._handleClick(new Event("click"));
+      el._handleClick(new Event("click"));
+      expect(sent.length).to.equal(1);
+      expect(sent[0].activityDisplay).to.equal("experienced");
+      expect(sent[0].objectName).to.equal("A leaf");
+      expect(sent[0].statement.verb.display["en-US"]).to.equal("experienced");
+      expect(image(el)).to.exist;
+      // it never holds a page back from being done
+      expect(el.constructor.xapiVocabulary.countsTowardCompletion).to.equal(
+        false,
+      );
+    });
+
+    it("records nothing when it cannot be opened, or while editing", async () => {
+      const el = await fixture(
+        html`<media-image
+          source="https://placehold.co/300x200.png"
+          alt="A leaf"
+          disable-zoom
+        ></media-image>`,
+      );
+      await el.updateComplete;
+      const sent = opened(el);
+      el._handleClick(new Event("click"));
+      el.disableZoom = false;
+      el._haxState = true;
+      el._handleClick(new Event("click"));
+      expect(sent.length).to.equal(0);
+    });
+  });
+
   describe("Accessibility - Image Attributes", () => {
     it("has proper alt text support", async () => {
       const testElement = await fixture(html`

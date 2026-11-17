@@ -36,8 +36,11 @@
  *   tracked (haxcms-reading-progress.js) and sent as xAPI about the page
  *   activity the visit used: progressed with the HAX progress extension as
  *   the share read crosses 25 / 50 / 75 % (and when the visit ends part
- *   way), completed once the end of the content was seen. Never while
- *   editing, and not again on a page already read.
+ *   way), completed once 90% of the content was scrolled through and,
+ *   on a page with reading checkpoints (silent elements that declare
+ *   readingCheckpoint), 80% of them were looked at; the statement carries
+ *   that count in the HAX checkpoints extension. Never while editing, and
+ *   not again on a page already read.
  * - Elements that cannot be tracked as authored leave themselves out of the
  *   count: an upgraded element whose xapiCountsTowardCompletion() returns
  *   false (video-player showing a plain iframe) is not a trackable item. The
@@ -69,6 +72,7 @@ import {
 import {
   XAPI_VOCABULARY,
   XAPI_TRACKABLE_TAGS,
+  XAPI_READING_CHECKPOINT_TAGS,
 } from "@haxtheweb/user-action/lib/xapi-vocabulary.js";
 
 // wrappers that report learner data for a player authored inside them
@@ -95,8 +99,11 @@ class HAXCMSLearnerProgress {
     // activity id -> the element on the page open now that sent it
     this._engaged = new Map();
     this.reading = new HAXCMSReadingProgress({
-      report: (verb, share, page) => this._reportReading(verb, share, page),
+      report: (verb, share, page, evidence) =>
+        this._reportReading(verb, share, page, evidence),
       enabled: () => !store.editMode,
+      checkpoints: () => this.readingCheckpoints(),
+      onCheckpoint: (indexes, page) => this._rememberCheckpoints(indexes, page),
     });
   }
   /**
@@ -284,6 +291,41 @@ class HAXCMSLearnerProgress {
     return c && typeof c.getBoundingClientRect === "function" ? c : theme;
   }
   /**
+   * The reading checkpoints of the page open now, in page order: elements
+   * that send nothing of their own but declare readingCheckpoint, which
+   * page reading notes as seen (see haxcms-reading-progress.js)
+   * @returns {Element[]}
+   */
+  readingCheckpoints() {
+    const scope = store.themeElement;
+    if (!scope || !XAPI_READING_CHECKPOINT_TAGS.length) {
+      return [];
+    }
+    return Array.from(
+      scope.querySelectorAll(XAPI_READING_CHECKPOINT_TAGS.join(",")),
+    );
+  }
+  // checkpoints seen are kept on the page's reading activity as state, not
+  // as statements, so a page read over two visits adds up
+  _rememberCheckpoints(indexes, page) {
+    const key = this.siteKey;
+    if (!key || !page || !page.url || store.editMode) {
+      return;
+    }
+    this.profile.updateActivityState(
+      key,
+      page.url,
+      { covered: indexes.map((i) => [i, i]) },
+      {
+        page: page.id,
+        tag: PAGE_ELEMENT,
+        name: page.title,
+        trackable: false,
+        reading: true,
+      },
+    );
+  }
+  /**
    * Start tracking how far the page open now is read (default: the active
    * one), unless it is read already
    */
@@ -298,23 +340,39 @@ class HAXCMSLearnerProgress {
       this.reading.end();
       return;
     }
+    const pageUrl = String(url || "")
+      .split("#")[0]
+      .split("?")[0];
+    // checkpoints seen on an earlier visit still count
+    const read = this.profile.readActivity(key, pageUrl);
+    const seen = [];
+    const covered =
+      read && read.state && Array.isArray(read.state.covered)
+        ? read.state.covered
+        : [];
+    covered.forEach((range) => {
+      const from = Number(range[0]);
+      const to = Math.min(Number(range[1]), from + 200);
+      for (let i = from; i <= to; i++) {
+        seen.push(i);
+      }
+    });
     this.reading.begin(
       {
         id,
-        url: String(url || "")
-          .split("#")[0]
-          .split("?")[0],
+        url: pageUrl,
         title: item && item.title ? item.title : "",
         started: Date.now(),
       },
       () => this.contentRegion(),
+      { seen },
     );
   }
   /**
    * A reading statement about the page the tracker was given (the page the
    * learner was on, even when the visit ended by opening another one)
    */
-  _reportReading(verb, share, page) {
+  _reportReading(verb, share, page, evidence) {
     if (!page || !page.url || store.editMode) {
       return;
     }
@@ -349,7 +407,12 @@ class HAXCMSLearnerProgress {
             result: {
               completion: done,
               duration: xapiDuration(Date.now() - page.started),
-              extensions: { [XAPI_EXTENSIONS.progress]: share },
+              extensions: evidence
+                ? {
+                    [XAPI_EXTENSIONS.progress]: share,
+                    [XAPI_EXTENSIONS.checkpoints]: evidence,
+                  }
+                : { [XAPI_EXTENSIONS.progress]: share },
             },
             context: {
               pageId: page.url,

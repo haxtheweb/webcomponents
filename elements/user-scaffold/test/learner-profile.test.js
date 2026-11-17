@@ -954,6 +954,30 @@ describe("user-scaffold activity state (where the learner is)", () => {
     expect(us.updateActivityState(SITE, "vid", null)).to.equal(null);
   });
 
+  it("state saved for page reading is the reading item, not an activity", () => {
+    // reading checkpoints seen, before any reading statement was sent
+    us.updateActivityState(
+      SITE,
+      "https://x.test/p9",
+      { covered: [[1, 1]] },
+      { page: "p9", tag: "haxcms-page", trackable: false, reading: true },
+    );
+    us.updateActivityState(
+      SITE,
+      "https://x.test/p9",
+      { covered: [[0, 0]] },
+      { page: "p9", reading: true },
+    );
+    const act = us.readActivity(SITE, "https://x.test/p9");
+    expect(act.reading).to.equal(true);
+    expect(act.state.covered).to.deep.equal([[0, 1]]);
+    const pp = us.pageProgress(SITE, "p9");
+    expect(pp.itemsTotal).to.equal(1);
+    expect(pp.trackable).to.equal(0);
+    expect(pp.reading.key).to.equal("https://x.test/p9");
+    expect(pp.reading.done).to.equal(false);
+  });
+
   it("keeps state when the activity is rebuilt from its statements", () => {
     us.updateActivityState(SITE, "vid", {
       covered: [[0, 50]],

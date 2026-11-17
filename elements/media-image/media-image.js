@@ -8,6 +8,12 @@ import { SimpleModalHandler } from "@haxtheweb/simple-modal/lib/simple-modal-han
 import "@haxtheweb/figure-label/figure-label.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { HaxUiDialogFrame } from "@haxtheweb/d-d-d/lib/HaxUiDialogFrame.js";
+import {
+  activityId,
+  buildStatement,
+  XAPI_ACTIVITY_TYPES,
+  XAPI_EXTENSIONS,
+} from "@haxtheweb/user-action/lib/xapi.js";
 /**
  * `media-image`
  * `A simple image presentaiton with minor documented options`
@@ -289,11 +295,60 @@ class MediaImage extends SchemaBehaviors(DDD) {
     }
     store._pokeMatchingImgs(this.shadowRoot, path);
   }
+  /**
+   * xAPI statements this element sends (see scripts/generate-xapi-vocabulary.mjs)
+   */
+  static get xapiVocabulary() {
+    return {
+      tag: "media-image",
+      event: "user-engagement",
+      verbs: ["experienced"],
+      objectType: "http://adlnet.gov/expapi/activities/interaction",
+      result: [],
+      countsTowardCompletion: false,
+      done: "never required; records that the image was opened to look at it closely",
+    };
+  }
+  // learner data: the image was opened. Once per visit, never while HAX is
+  // editing; it does not hold a page back from being done.
+  _announceOpen() {
+    if (this._openSent || this._haxState || this.disableZoom) {
+      return;
+    }
+    this._openSent = true;
+    const name =
+      String(this.modalTitle || this.alt || this.caption || "").trim() ||
+      "Image";
+    this.dispatchEvent(
+      new CustomEvent("user-engagement", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: {
+          activityDisplay: "experienced",
+          objectName: name.slice(0, 120),
+          statement: buildStatement({
+            verb: "experienced",
+            object: {
+              id: activityId(this, `media-image\u0001${this.source || ""}`),
+              name: name.slice(0, 120),
+              type: XAPI_ACTIVITY_TYPES.interactionGeneric,
+            },
+            context: {
+              extensions: { [XAPI_EXTENSIONS.element]: "media-image" },
+            },
+          }),
+        },
+      }),
+    );
+  }
   _handleClick(event) {
     if (this._haxState || this.disableZoom) {
       event.preventDefault();
       event.stopPropagation();
       event.stopImmediatePropagation();
+    } else {
+      this._announceOpen();
     }
     // not editing, and we have a link, and disabled zoom
     // click the link

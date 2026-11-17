@@ -378,6 +378,18 @@ class GridPlate extends LitElement {
   static get tag() {
     return "grid-plate";
   }
+  /**
+   * Sends no xAPI statements on purpose (see
+   * scripts/generate-xapi-vocabulary.mjs). Page reading notes when it was on screen, as evidence for the page's one reading record.
+   */
+  static get xapiVocabulary() {
+    return {
+      tag: "grid-plate",
+      tracks: false,
+      readingCheckpoint: true,
+      reason: "a layout wrapper; what is inside it reports for itself",
+    };
+  }
   willUpdate(changedProperties) {
     if (super.willUpdate) super.willUpdate(changedProperties);
     // Derive __columnWidths from layout/responsiveSize/layouts/disableResponsive

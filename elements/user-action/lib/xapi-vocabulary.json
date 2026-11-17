@@ -174,10 +174,11 @@
     "result": [
       "completion",
       "duration",
-      "extensions.https://haxtheweb.org/xapi/extensions/progress"
+      "extensions.https://haxtheweb.org/xapi/extensions/progress",
+      "extensions.https://haxtheweb.org/xapi/extensions/checkpoints"
     ],
     "countsTowardCompletion": false,
-    "done": "page content scrolled through to its end (each page counts its reading toward being done on its own)",
+    "done": "90% of the page content scrolled through and, when the page has reading checkpoints, 80% of them seen on screen (each page counts its reading toward being done on its own)",
     "source": "elements/haxcms-elements/lib/core/haxcms-reading-progress.js"
   },
   "identify-hotspots": {
@@ -329,6 +330,16 @@
     "countsTowardCompletion": true,
     "done": "answered correctly or out of attempts",
     "source": "elements/matching-question/matching-question.js"
+  },
+  "media-image": {
+    "tag": "media-image",
+    "event": "user-engagement",
+    "verbs": ["experienced"],
+    "objectType": "http://adlnet.gov/expapi/activities/interaction",
+    "result": [],
+    "countsTowardCompletion": false,
+    "done": "never required; records that the image was opened to look at it closely",
+    "source": "elements/media-image/media-image.js"
   },
   "memory-match": {
     "tag": "memory-match",

@@ -11,6 +11,20 @@
  * viewport, kept as the highest value seen during the visit. Content that is
  * shorter than the viewport counts as read once all of it is on screen.
  *
+ * Read is forgiving on purpose, like media that is done at 90% of its
+ * seconds: the page is read once READ_ENOUGH (90%) of the content was
+ * scrolled through, never "the last pixel was on screen".
+ *
+ * Checkpoints validate that position. Elements that declare
+ * readingCheckpoint (a note, a card, a layout block; see
+ * scripts/generate-xapi-vocabulary.mjs) send no statement of their own: the
+ * tracker notes each one that stayed on screen for dwellMs. When the page
+ * has checkpoints, it is only read once CHECKPOINT_GATE (80%) of the ones
+ * laid out were seen, so flinging to the bottom does not read a page. One
+ * hidden inside a closed collapse or tab is not laid out and is never
+ * required; seen ones are remembered across visits (onCheckpoint / begin),
+ * and scrolling back up to them completes the page from wherever it is.
+ *
  * Cheap: one passive scroll listener on the window (capture, so a theme
  * that scrolls an inner element is seen too), a ResizeObserver on the region
  * (content growing as it loads) and an IntersectionObserver on the region's
@@ -23,10 +37,18 @@
  * The tracker never builds statements: it calls report(verb, share, page)
  * with verb "progressed" (share crossed 25 / 50 / 75 %, coalesced into one
  * call however many it crossed, or the visit ended part way) or "completed"
- * (the end of the content was seen), once per visit each.
+ * (read, as above), once per visit each. The fourth argument is the
+ * checkpoint evidence { seen, total, missed: [tag, ...] }, or null when the
+ * page has none, so the one reading record of a page carries it.
  */
 // shares that send a progressed statement as they are crossed
 export const READING_THRESHOLDS = [0.25, 0.5, 0.75];
+// share of the content scrolled through that counts as read to the end
+export const READ_ENOUGH = 0.9;
+// share of the checkpoints laid out that must have been seen to be read
+export const CHECKPOINT_GATE = 0.8;
+// checkpoints looked at per page, at most
+const CHECKPOINT_LIMIT = 200;
 // pixels of slack at the end of the content (bottom padding, rounding)
 const END_SLACK = 8;
 
@@ -58,6 +80,35 @@ export function readShare(rect, viewportHeight) {
 
 const round = (n) => Math.round(n * 100) / 100;
 
+/**
+ * Whether a checkpoint is on screen enough to be looked at: half of it, or
+ * a quarter of the viewport for one taller than that. null when it is not
+ * laid out (display none, inside a closed collapse or tab).
+ * @param {{top: number, bottom: number, width: number, height: number}} rect
+ * @param {number} viewportHeight
+ * @returns {boolean|null}
+ */
+export function checkpointInView(rect, viewportHeight) {
+  if (!rect || !(rect.height > 0) || !(rect.width > 0)) {
+    return null;
+  }
+  if (!(viewportHeight > 0)) {
+    return false;
+  }
+  const visible = Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0);
+  return visible >= Math.min(rect.height / 2, viewportHeight / 4);
+}
+
+/**
+ * Whether enough checkpoints were seen for the page to be read
+ * @param {number} seen
+ * @param {number} total
+ * @returns {boolean}
+ */
+export function checkpointGateMet(seen, total) {
+  return !(total > 0) || seen / total >= CHECKPOINT_GATE;
+}
+
 export class HAXCMSReadingProgress {
   /**
    * xAPI statements HAXcms sends about a page (see
@@ -77,25 +128,43 @@ export class HAXCMSReadingProgress {
         "completion",
         "duration",
         "extensions.https://haxtheweb.org/xapi/extensions/progress",
+        "extensions.https://haxtheweb.org/xapi/extensions/checkpoints",
       ],
       countsTowardCompletion: false,
-      done: "page content scrolled through to its end (each page counts its reading toward being done on its own)",
+      done: "90% of the page content scrolled through and, when the page has reading checkpoints, 80% of them seen on screen (each page counts its reading toward being done on its own)",
     };
   }
   /**
    * @param {Object} o
-   * @param {Function} o.report (verb, share, page) => void
+   * @param {Function} o.report (verb, share, page, evidence) => void
+   * @param {Function} [o.checkpoints] () => Element[]: the reading
+   *   checkpoints of the page, in page order
+   * @param {Function} [o.onCheckpoint] (indexes, page) => void: checkpoints
+   *   (by their place in that list) seen just now, to remember them
+   * @param {number} [o.dwellMs] how long a checkpoint must stay on screen
    * @param {Function} [o.enabled] () => boolean; false (edit mode) measures
    *   and reports nothing
    * @param {number} [o.throttleMs] at most one measurement per this long
    * @param {number} [o.settleMs] how long after ready() the end of the
    *   content must still be in view to call the page read
    */
-  constructor({ report, enabled, throttleMs = 200, settleMs = 1000 } = {}) {
+  constructor({
+    report,
+    enabled,
+    checkpoints,
+    onCheckpoint,
+    throttleMs = 200,
+    settleMs = 1000,
+    dwellMs = 1000,
+  } = {}) {
     this.report = typeof report === "function" ? report : () => {};
     this.enabled = typeof enabled === "function" ? enabled : () => true;
+    this.checkpoints = typeof checkpoints === "function" ? checkpoints : null;
+    this.onCheckpoint =
+      typeof onCheckpoint === "function" ? onCheckpoint : () => {};
     this.throttleMs = throttleMs;
     this.settleMs = settleMs;
+    this.dwellMs = dwellMs;
     this.page = null;
     this.region = null;
     this._reset();
@@ -107,19 +176,30 @@ export class HAXCMSReadingProgress {
     this.completed = false;
     this.isReady = false;
     this._readyAt = 0;
+    // checkpoints, by their place in the list: seen, and on screen since
+    this._seen = new Set();
+    this._since = new Map();
     clearTimeout(this._timer);
     clearTimeout(this._settleTimer);
+    clearTimeout(this._dwellTimer);
     this._timer = null;
     this._settleTimer = null;
+    this._dwellTimer = null;
   }
   /**
    * Start a visit: page is what report() gets back (the outline item id,
    * url, title), region a function returning the element whose box is the
-   * page content. Ends (flushes) the visit before it.
+   * page content. Ends (flushes) the visit before it. seen: the checkpoints
+   * (places in the list) the learner saw on an earlier visit.
    */
-  begin(page, region) {
+  begin(page, region, { seen } = {}) {
     this.end();
     this.page = page || null;
+    (Array.isArray(seen) ? seen : []).forEach((i) => {
+      if (Number.isInteger(i) && i >= 0 && i < CHECKPOINT_LIMIT) {
+        this._seen.add(i);
+      }
+    });
     this.region = typeof region === "function" ? region : () => region;
     this._listen();
   }
@@ -164,11 +244,97 @@ export class HAXCMSReadingProgress {
       !this.completed &&
       this.enabled() &&
       this.share > 0 &&
-      round(this.share) > this.reported
+      this._progress() > this.reported
     ) {
-      this.reported = round(this.share);
-      this.report("progressed", this.reported, this.page);
+      this.reported = this._progress();
+      this.report(
+        "progressed",
+        this.reported,
+        this.page,
+        this._evidence(this.checkpointStatus()),
+      );
     }
+  }
+  // the share to report while the page is not read: never past READ_ENOUGH,
+  // so a page scrolled through with its checkpoints skipped is not "100%"
+  _progress() {
+    return round(Math.min(this.share, READ_ENOUGH));
+  }
+  _evidence(status) {
+    return status && status.total > 0
+      ? { seen: status.seen, total: status.total, missed: status.missed }
+      : null;
+  }
+  /**
+   * Look at the checkpoints of the page now: note the ones that stayed on
+   * screen for dwellMs, and say where that stands. Checkpoints not laid out
+   * are left out unless they were seen before.
+   * @returns {{seen: number, total: number, missed: string[], met: boolean,
+   *   items: {el: Element, seen: boolean}[]}}
+   */
+  checkpointStatus() {
+    let list = [];
+    try {
+      list = this.checkpoints ? Array.from(this.checkpoints() || []) : [];
+    } catch {
+      list = [];
+    }
+    list = list.slice(0, CHECKPOINT_LIMIT);
+    const vh = globalThis.innerHeight || 0;
+    const now = Date.now();
+    const track = Boolean(this.page && this.isReady && !this.completed);
+    const fresh = [];
+    const items = [];
+    let waiting = Infinity;
+    list.forEach((el, i) => {
+      let inView = null;
+      try {
+        inView = checkpointInView(el.getBoundingClientRect(), vh);
+      } catch {
+        inView = null;
+      }
+      if (track && !this._seen.has(i)) {
+        if (inView) {
+          if (!this._since.has(i)) {
+            this._since.set(i, now);
+          }
+          const left = this._since.get(i) + this.dwellMs - now;
+          if (left <= 0) {
+            this._seen.add(i);
+            this._since.delete(i);
+            fresh.push(i);
+          } else {
+            waiting = Math.min(waiting, left);
+          }
+        } else {
+          this._since.delete(i);
+        }
+      }
+      const seen = this._seen.has(i);
+      if (seen || inView !== null) {
+        items.push({ el, seen });
+      }
+    });
+    clearTimeout(this._dwellTimer);
+    this._dwellTimer = null;
+    if (track && waiting !== Infinity) {
+      // nothing scrolls while a learner reads: look again once the dwell is up
+      this._dwellTimer = setTimeout(() => this.measure(), waiting + 20);
+    }
+    if (fresh.length && this.page) {
+      this.onCheckpoint(fresh, this.page);
+    }
+    const seen = items.filter((c) => c.seen).length;
+    return {
+      seen,
+      total: items.length,
+      missed: items
+        .filter((c) => !c.seen)
+        .slice(0, 20)
+        .map((c) => String(c.el.tagName || "").toLowerCase()),
+      met: checkpointGateMet(seen, items.length),
+      items,
+    };
   }
   /**
    * One measurement soon (throttled)
@@ -204,22 +370,29 @@ export class HAXCMSReadingProgress {
     if (share === null) {
       return this.share;
     }
-    if (share >= 1) {
+    const status = this.checkpointStatus();
+    if (Math.max(share, this.share) >= READ_ENOUGH) {
       const wait = this._readyAt + this.settleMs - Date.now();
       if (wait > 0) {
         // the end is in view but the content may still be loading: look
         // again once it settled
         clearTimeout(this._settleTimer);
         this._settleTimer = setTimeout(() => this.measure(), wait);
-        this.share = Math.max(this.share, Math.min(share, 0.99));
+        this.share = Math.max(this.share, Math.min(share, READ_ENOUGH - 0.01));
         return this.share;
       }
-      this.share = 1;
-      this.completed = true;
-      this.reported = 1;
-      this._unlisten();
-      this.report("completed", 1, this.page);
-      return 1;
+      if (status.met) {
+        this.share = 1;
+        this.completed = true;
+        this.reported = 1;
+        this._unlisten();
+        clearTimeout(this._dwellTimer);
+        this._dwellTimer = null;
+        this.report("completed", 1, this.page, this._evidence(status));
+        return 1;
+      }
+      // scrolled through, but too few checkpoints were looked at: keep
+      // watching, the page is read as soon as enough of them were seen
     }
     if (share > this.share) {
       this.share = share;
@@ -228,8 +401,13 @@ export class HAXCMSReadingProgress {
       (t) => this.share >= t && t > this.reported,
     );
     if (crossed.length) {
-      this.reported = round(this.share);
-      this.report("progressed", this.reported, this.page);
+      this.reported = this._progress();
+      this.report(
+        "progressed",
+        this.reported,
+        this.page,
+        this._evidence(status),
+      );
     }
     return this.share;
   }

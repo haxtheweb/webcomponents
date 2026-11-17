@@ -1,0 +1,30 @@
+{
+  "accent-card": {
+    "tag": "accent-card",
+    "tracks": false,
+    "reason": "content to read; there is nothing to answer or finish",
+    "readingCheckpoint": true,
+    "source": "elements/accent-card/accent-card.js"
+  },
+  "grid-plate": {
+    "tag": "grid-plate",
+    "tracks": false,
+    "reason": "a layout wrapper; what is inside it reports for itself",
+    "readingCheckpoint": true,
+    "source": "elements/grid-plate/grid-plate.js"
+  },
+  "page-break": {
+    "tag": "page-break",
+    "tracks": false,
+    "reason": "marks where a page starts; there is nothing to do with it",
+    "readingCheckpoint": false,
+    "source": "elements/page-break/page-break.js"
+  },
+  "stop-note": {
+    "tag": "stop-note",
+    "tracks": false,
+    "reason": "a note to read; there is nothing to answer or finish",
+    "readingCheckpoint": true,
+    "source": "elements/stop-note/stop-note.js"
+  }
+}

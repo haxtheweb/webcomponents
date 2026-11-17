@@ -21,7 +21,10 @@ import { LearnerProgress } from "@haxtheweb/haxcms-elements/lib/core/haxcms-lear
 import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js";
 import { UABroker } from "@haxtheweb/user-action/lib/UserActionBroker.js";
 import { describeResponse } from "@haxtheweb/user-action/lib/xapi.js";
-import { XAPI_VOCABULARY } from "@haxtheweb/user-action/lib/xapi-vocabulary.js";
+import {
+  XAPI_VOCABULARY,
+  XAPI_DECLARED_SILENT,
+} from "@haxtheweb/user-action/lib/xapi-vocabulary.js";
 import {
   LEARNER_ITEM_ICONS,
   learnerItemKind,
@@ -30,20 +33,14 @@ import {
   pairLearnerItems,
 } from "@haxtheweb/haxcms-elements/lib/ui-components/progress/my-learning-panel.js";
 
-/**
- * PROPOSAL (prototype only): elements that say they send nothing on
- * purpose. In the real version each element declares it next to its code,
- *   an xapiVocabulary getter returning tag, tracks: false and a reason,
- * and generate-xapi-vocabulary.mjs writes these into the vocabulary, so
- * "not declared" means nobody has decided yet.
- */
-export const XAPI_DECLARED_NONE = {
-  "media-image": "an image; nothing to do but look at it",
-  "grid-plate": "layout only",
-  "accent-card": "presentation only",
-  "stop-note": "presentation only",
-  "page-break": "page structure",
-};
+// An element that sends nothing on purpose says so next to its code (an
+// xapiVocabulary getter with tracks: false and a reason), and
+// generate-xapi-vocabulary.mjs collects those as XAPI_DECLARED_SILENT, so
+// "not declared" means nobody has decided yet.
+const silentEntry = (tag) =>
+  Object.prototype.hasOwnProperty.call(XAPI_DECLARED_SILENT, tag)
+    ? XAPI_DECLARED_SILENT[tag]
+    : null;
 // never drawn: structure, not blocks
 const SKIP = ["page-break", "replace-tag", "haxcms-site-builder"];
 // an authorable block: a defined element HAX can edit (it has haxProperties)
@@ -78,7 +75,7 @@ export function trackingCategory(el) {
       el.xapiCountsTowardCompletion() === false;
     return v.countsTowardCompletion && !opted ? "counts" : "tracked";
   }
-  if (Object.prototype.hasOwnProperty.call(XAPI_DECLARED_NONE, tag)) {
+  if (silentEntry(tag)) {
     return "none";
   }
   return "undeclared";
@@ -161,7 +158,13 @@ export class HAXCMSTrackingLens extends I18NMixin(DDDSuper(LitElement)) {
         "Fix: add static get xapiVocabulary() to the element, or declare { tracks: false } if it should stay silent.",
       noneText: "Declared to send nothing: {reason}.",
       readingText:
-        "Scrolling through the page's content counts as one item, the same as each block that counts.",
+        "Scrolling through the page's content counts as one item, the same as each block that counts. It is read at 90% scrolled, not the last pixel.",
+      checkpointText:
+        "It is a reading checkpoint: Reading this page notes when it stayed on screen, without a statement of its own.",
+      checkpointSeen: "Seen on this visit or before.",
+      checkpointNotSeen: "Not seen yet.",
+      checkpointLine:
+        "Reading checkpoints seen: {seen} of {total}. The page is read once 80% of them were on screen for a moment.",
       mathTitle: "How this page's percent works",
       mathLine: "{items} ÷ {total} items",
       copyJson: "Copy JSON",
@@ -1367,9 +1370,29 @@ export class HAXCMSTrackingLens extends I18NMixin(DDDSuper(LitElement)) {
         </div>
         <div class="tagname">${this.t.undeclaredFix}</div>`;
     } else if (b.cat === "none") {
+      const silent = silentEntry(b.tag) || {};
+      const seen = this._checkpointSeen(b.el);
       body = html`<div>
-        ${fill(this.t.noneText, { reason: XAPI_DECLARED_NONE[b.tag] })}
-      </div>`;
+          ${fill(this.t.noneText, { reason: silent.reason || "" })}
+        </div>
+        ${
+          silent.readingCheckpoint
+            ? html`<div>
+                ${this.t.checkpointText}
+                ${
+                  seen === null
+                    ? nothing
+                    : html`<strong
+                        >${
+                          seen
+                            ? this.t.checkpointSeen
+                            : this.t.checkpointNotSeen
+                        }</strong
+                      >`
+                }
+              </div>`
+            : nothing
+        }`;
     } else if (v) {
       body = html`${
           b.cat === "counts"
@@ -1394,7 +1417,12 @@ export class HAXCMSTrackingLens extends I18NMixin(DDDSuper(LitElement)) {
               </div>`
             : nothing
         }
-        ${b.id === "reading" ? html`<div>${this.t.readingText}</div>` : nothing}
+        ${
+          b.id === "reading"
+            ? html`<div>${this.t.readingText}</div>
+                ${this.renderCheckpointLine()}`
+            : nothing
+        }
         <div>
           <span class="lbl">${this.t.verbs}</span>
           <div class="row">
@@ -1467,6 +1495,31 @@ export class HAXCMSTrackingLens extends I18NMixin(DDDSuper(LitElement)) {
       ${renderDDDProgressRing({ percent: page.percent, icon: "icons:visibility" })}
       ${this.t.lens} · ${this._feed.filter((f) => !f.ghost).length}
     </button>`;
+  }
+  // where page reading stands with its checkpoints (it stops looking once
+  // the page is read, so a read page has nothing to show here)
+  _checkpoints() {
+    const reading = LearnerProgress.reading;
+    return reading && reading.page && !reading.completed
+      ? reading.checkpointStatus()
+      : null;
+  }
+  // true / false for a checkpoint element, null when reading is not looking
+  _checkpointSeen(el) {
+    const status = this._checkpoints();
+    const item = status ? status.items.find((c) => c.el === el) : null;
+    return item ? item.seen : null;
+  }
+  renderCheckpointLine() {
+    const status = this._checkpoints();
+    return status && status.total
+      ? html`<div>
+          ${fill(this.t.checkpointLine, {
+            seen: status.seen,
+            total: status.total,
+          })}
+        </div>`
+      : nothing;
   }
   renderPanel() {
     const page = this._page || { percent: 0, itemsDone: 0, itemsTotal: 0 };

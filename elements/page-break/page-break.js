@@ -48,6 +48,17 @@ export class PageBreak extends IntersectionObserverMixin(
   static get tag() {
     return "page-break";
   }
+  /**
+   * Sends no xAPI statements on purpose (see
+   * scripts/generate-xapi-vocabulary.mjs)
+   */
+  static get xapiVocabulary() {
+    return {
+      tag: "page-break",
+      tracks: false,
+      reason: "marks where a page starts; there is nothing to do with it",
+    };
+  }
   constructor() {
     super();
     this.relatedItems = null;
