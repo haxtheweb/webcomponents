@@ -78,6 +78,45 @@ describe("simple-fields-upload integration with simple-file-upload", () => {
     expect(addedFile.name).to.include(".webm");
   });
 
+  it("names a screen recording for the container that was recorded", async () => {
+    const upload = element.shadowRoot.querySelector("simple-file-upload");
+    let addedFile = null;
+    upload.addFile = (file) => {
+      addedFile = file;
+    };
+    element.__newScreenRecordingShowedUp({
+      detail: {
+        blob: new Blob(["fake-video"]),
+        mimeType: "video/mp4",
+        extension: "mp4",
+      },
+      timeStamp: 22831.900000000373,
+    });
+    expect(addedFile.name).to.equal("screen-recording-22832.mp4");
+    expect(addedFile.type).to.equal("video/mp4");
+  });
+
+  it("returns to the upload options once a recording is handed off", async () => {
+    const upload = element.shadowRoot.querySelector("simple-file-upload");
+    upload.addFile = () => {};
+    upload.uploadFiles = () => {};
+    element.option = "screenrecord";
+    element.__newScreenRecordingShowedUp({
+      detail: { blob: new Blob(["fake-video"]) },
+      timeStamp: 1,
+    });
+    expect(element.option).to.equal("fileupload");
+    element.option = "audio";
+    element.__newAudioShowedUp({
+      detail: { value: new Blob(["fake-audio"]) },
+      timeStamp: 2,
+    });
+    expect(element.option).to.equal("fileupload");
+    await element.updateComplete;
+    // the cancel button no longer sits over the queued file's actions
+    expect(element.shadowRoot.querySelector("#cancel").hidden).to.be.true;
+  });
+
   it("_handleCancel resets option to 'fileupload'", async () => {
     element.option = "selfie";
     element._handleCancel({ preventDefault: () => {} });
