@@ -130,7 +130,7 @@ describe("hax-palette-picker rows", () => {
     const peek = el.shadowRoot.querySelector(".peek");
     expect(peek.hidden).to.equal(false);
     expect(input.getAttribute("aria-describedby")).to.equal(peek.id);
-    expect(peek.textContent).to.contain("Offbrand Nittany Blue");
+    expect(peek.textContent).to.contain("Offbrand Blue");
     await sendKeys({ press: "Escape" });
     await settle(el);
     expect(peek.hidden).to.equal(true);

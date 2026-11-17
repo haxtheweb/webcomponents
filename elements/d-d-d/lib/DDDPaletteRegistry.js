@@ -25,7 +25,7 @@ export const DDDPaletteRegistry = Object.freeze([
   },
   {
     key: "offbrand-nittany-blue",
-    label: "Offbrand Nittany Blue",
+    label: "Offbrand Blue",
     dataPalette: "3",
     aliases: Object.freeze(["offbrand-nittany-blue", "3"]),
   },
@@ -55,7 +55,7 @@ export const DDDPaletteRegistry = Object.freeze([
   },
   {
     key: "polaris-invent",
-    label: "Polaris Invent",
+    label: "Sky and Ember",
     dataPalette: "8",
     aliases: Object.freeze(["polaris-invent", "8"]),
   },
@@ -73,7 +73,7 @@ export const DDDPaletteRegistry = Object.freeze([
   },
   {
     key: "boldly-lion",
-    label: "Boldly Lion",
+    label: "Boldly Blue",
     dataPalette: "11",
     aliases: Object.freeze(["boldly-lion", "11"]),
   },

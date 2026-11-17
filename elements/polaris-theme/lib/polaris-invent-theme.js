@@ -38,12 +38,12 @@ import { LTIResizingMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/LTIR
  *
  * Working palettes:
  * - 0 (Default)
- * - 3 (Offbrand Nittany Blue)
+ * - 3 (Offbrand Blue)
  * - 4 (Boring Blue Grey)
  * - 5 (Monotone)
  * - 7 (Tweedle Dee)
- * - 8 (Polaris)
- * - 11 (Boldly Lion)
+ * - 8 (Sky and Ember)
+ * - 11 (Boldly Blue)
  *
  * @haxcms-theme-category Website
  * @haxcms-theme-internal false
