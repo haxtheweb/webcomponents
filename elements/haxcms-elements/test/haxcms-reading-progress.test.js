@@ -577,6 +577,59 @@ describe("HAXcms learner progress: reading and page completion", () => {
     }
   });
 
+  const visits = async (pageId) =>
+    (await UserScaffoldInstance.statements("rp-site")).filter(
+      (x) =>
+        x.object.id === urlOf(pageId) &&
+        x.verb.display["en-US"] === "experienced",
+    );
+
+  it("sends one experienced per time a page is opened, not per outline change", async () => {
+    await goTo("r2");
+    showContent(host, "r2", `<div style="height:${vh() * 4}px"></div>`);
+    await flush(100);
+    expect(await visits("r2")).to.have.length(1);
+    // the outline is replaced and the item changes while the page is open
+    // (a save, a refresh of site.json): still the same visit
+    store.manifest = JSON.parse(JSON.stringify(MANIFEST));
+    await flush(100);
+    const next = JSON.parse(JSON.stringify(MANIFEST));
+    next.items[1].title = "Long read, renamed";
+    store.manifest = next;
+    await flush(100);
+    expect(await visits("r2")).to.have.length(1);
+    // reading was not started over either
+    expect(LearnerProgress.reading.page.id).to.equal("r2");
+    // leaving and coming back to a page not done yet is another visit
+    await goTo("r3");
+    await goTo("r2");
+    await flush(100);
+    expect(await visits("r2")).to.have.length(2);
+  });
+
+  it("sends nothing for opening a page that is already done", async () => {
+    await goTo("r1");
+    showContent(host, "r1", "<p>Short page of text.</p>");
+    await until(() => LearnerProgress.pageProgress().status === "done");
+    const before = (await UserScaffoldInstance.statements("rp-site")).length;
+    expect(await visits("r1")).to.have.length(1);
+    await goTo("r3");
+    await goTo("r1");
+    showContent(host, "r1", "<p>Short page of text.</p>");
+    await flush(200);
+    expect(await visits("r1")).to.have.length(1);
+    // nothing about r1 at all: only the visit to r3 was added
+    const after = await UserScaffoldInstance.statements("rp-site");
+    expect(
+      after.slice(before).every((x) => x.object.id === urlOf("r3")),
+    ).to.equal(true);
+    // the visit is still counted in the learner profile
+    expect(
+      UserScaffoldInstance.readSite("rp-site").pages.r1.visits,
+    ).to.be.at.least(2);
+    expect(LearnerProgress.pageProgress().status).to.equal("done");
+  });
+
   it("reports reading once per page, ever: only past where the learner got", async () => {
     const r3 = { id: "r3", url: urlOf("r3"), title: "R3", started: Date.now() };
     LearnerProgress._reportReading("progressed", 0.5, r3);

@@ -14,7 +14,11 @@
  *   outline item id of the page) and records it in the learner profile kept
  *   by user-scaffold (UserScaffoldInstance.recordStatement).
  * - Pages: each page opened is recorded as a visit plus an `experienced`
- *   statement for the page, and the trackable elements on it are counted
+ *   statement for the page: one per time the page is opened (the outline
+ *   or the page's own data changing while it is open is not another visit),
+ *   and none once the page is done (read, and every trackable item on it
+ *   done), since there is nothing left to learn from it. The trackable
+ *   elements on it are counted
  *   using the generated xAPI vocabulary (user-action/lib/xapi-vocabulary.js).
  * - Read back: answers `learner-progress-request` window events (questions
  *   and checklists asking for their saved result) from the profile, moving
@@ -96,6 +100,8 @@ class HAXCMSLearnerProgress {
     this._disposers = [];
     this._scanTimer = null;
     this._waiting = new WeakSet();
+    // site key + id of the page open now, once its visit was recorded
+    this._openPage = "";
     // activity id -> the element on the page open now that sent it
     this._engaged = new Map();
     this.reading = new HAXCMSReadingProgress({
@@ -174,6 +180,9 @@ class HAXCMSLearnerProgress {
         const key = this.siteKey;
         if (id && item && !item._internalRoute && key) {
           Promise.resolve().then(() => this._visit(id, toJS(item)));
+        } else {
+          // no page open (or an internal route): coming back is a new visit
+          this._openPage = "";
         }
       }),
     );
@@ -228,6 +237,7 @@ class HAXCMSLearnerProgress {
     }
     this._disposers.forEach((d) => d());
     this._disposers = [];
+    this._openPage = "";
     if (this._unsubscribe) {
       this._unsubscribe();
     }
@@ -431,18 +441,38 @@ class HAXCMSLearnerProgress {
       return;
     }
     const key = this.siteKey;
-    this._engaged.clear();
     let url = "";
     try {
       url = new URL(item.slug || "", globalThis.document.baseURI).href;
     } catch {
       url = "";
     }
+    // the same page still open (its item or the outline changed under it,
+    // which runs this again) is not another visit: nothing is recorded, and
+    // reading only starts if it is not under way (back from editing)
+    const open = `${key}\u0001${id}`;
+    if (this._openPage === open) {
+      if (!this.reading.page) {
+        this._beginReading(id, item, url);
+      }
+      this._scheduleScan();
+      return;
+    }
+    this._openPage = open;
+    this._engaged.clear();
+    // a page already done has nothing more to report: no statement for
+    // opening it again (the visit is still counted in the profile)
+    const done = this.profile.pageProgress(key, id).status === "done";
     this.profile.recordPageVisit(key, id, {
       title: item.title,
       url,
       site: this.siteInfo,
     });
+    if (done) {
+      this.reading.end();
+      this._scheduleScan();
+      return;
+    }
     // the visit as a statement too, so an LRS sees pages read
     globalThis.dispatchEvent(
       new CustomEvent("user-engagement", {
