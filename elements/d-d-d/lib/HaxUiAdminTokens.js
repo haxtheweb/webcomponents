@@ -355,6 +355,21 @@ export const HaxUiAdminTokens = [
       }
     }
   `,
+  /* Held down: every button on a surface that takes these tokens shows the
+     pressed overlay while it is pushed, so a push is confirmed before it is
+     let go. :where() keeps this under any rule a control writes for its own
+     held-down state (.hax-ui-btn, a selected segment), and above the
+     all: unset resets local buttons start from. Never on a disabled
+     button. simple-toolbar-button and simple-icon-button(-lite) carry the
+     same look in their own styles. */
+  css`
+    :where(button, [role="button"], summary):active:not(
+        [disabled],
+        [aria-disabled="true"]
+      ) {
+      box-shadow: inset 0 0 0 999px var(--hax-ui-pressed);
+    }
+  `,
 ];
 /**
  * Small pieces every admin surface repeats, built on HaxUiAdminTokens:

@@ -508,6 +508,9 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
         .toggle[aria-checked="true"] .track::after {
           left: 14px;
         }
+        .toggle:hover {
+          background-color: var(--hax-ui-control-hover);
+        }
         .toggle:focus-visible,
         .sort:focus-visible,
         a:focus-visible {

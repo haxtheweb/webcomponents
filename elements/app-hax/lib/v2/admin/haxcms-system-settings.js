@@ -5526,9 +5526,13 @@ class HAXCMSSystemSettings extends I18NMixin(LitElement) {
             </button>
             <button
               type="button"
-              class="hax-ui-btn"
+              class="hax-ui-btn danger discard-leave"
               @click="${this._leaveDiscard}"
             >
+              <simple-icon-lite
+                icon="${HaxUiAdminIcons.delete}"
+                aria-hidden="true"
+              ></simple-icon-lite>
               ${this.t.discardAndContinue}
             </button>
             <button
