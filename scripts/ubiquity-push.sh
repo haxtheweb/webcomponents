@@ -22,7 +22,8 @@ git commit -m "ubiquity publish"
 # run new build routine in webcomponents
 cd ~/haxtheweb/webcomponents
 # this makes a new build available
-yarn run ubiquity
+# a release is built from scratch: no stored transform or terser results
+HAX_BUILD_CACHE=0 yarn run ubiquity
 # .version now holds the release version (version-match). Stop here, before
 # anything is copied into the sibling repos, unless it is past every package
 # (e.g. a haxcms-nodejs hotfix): --release-as in STEP 5 would tag backwards

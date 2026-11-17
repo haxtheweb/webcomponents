@@ -301,8 +301,8 @@ gulp.task(
 );
 // JS minification of the build is scripts/terser-build.mjs (`yarn run terser`):
 // the same terser options the gulp task here used, on every core, with results
-// remembered between builds. It skips @xterm and the vendored mermaid bundle,
-// which the vendor-copy tasks below copy in as they are.
+// remembered between builds. It skips @xterm, monaco-editor and the vendored
+// mermaid bundle, which the vendor-copy tasks below copy in as they are.
 // @xterm/xterm and @xterm/addon-fit ship as pre-built, pre-minified vendor
 // bundles. Modern esbuild output (e.g. class static initialization blocks)
 // isn't understood by polymer-build's bundled babylon parser, which caused
@@ -316,6 +316,17 @@ gulp.task("vendor-copy-xterm", () => {
     './node_modules/@xterm/xterm/css/*',
     './node_modules/@xterm/addon-fit/lib/*'
   ], { base: '.' }).pipe(gulp.dest('./build/es6/'));
+});
+// monaco-editor/min is Monaco's own minified build: workers and editor chunks
+// that code-editor loads by path at runtime. Parsing and re-minifying 18MB of
+// already minified code was the slowest part of a build and made the largest
+// file bigger, so it is copied as Monaco ships it. The TypeScript language
+// service is left out, as before.
+gulp.task("vendor-copy-monaco", () => {
+  return gulp.src([
+    './node_modules/monaco-editor/min/**',
+    '!./node_modules/monaco-editor/min/vs/language/typescript/*'
+  ], { base: '.', encoding: false }).pipe(gulp.dest('./build/es6/'));
 });
 // @haxtheweb/la-tex/lib/latex2html5.js is a pre-transpiled browserify UMD
 // bundle loaded as a classic script via es-global-bridge (no ESM

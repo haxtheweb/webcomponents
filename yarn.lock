@@ -2093,24 +2093,6 @@
     xml2js "^0.6.2"
     yaml "^2.9.0"
 
-"@haxtheweb/lrn-icons@9.0.1":
-  version "9.0.1"
-  resolved "https://registry.npmjs.org/@haxtheweb/lrn-icons/-/lrn-icons-9.0.1.tgz"
-  integrity sha512-umPzMHlF0D5PmRij81x/dJPFAygw9pKIh2uJCIuVTH0URJwr+ikAQyDZJRqUu5Pgnw6tF4eFZF6laXARGdQ7eQ==
-  dependencies:
-    "@polymer/iron-icon" "^3.0.1"
-    "@polymer/iron-iconset-svg" "^3.0.0"
-    "@polymer/polymer" "^3.5.1"
-
-"@haxtheweb/md-extra-icons@9.0.1":
-  version "9.0.1"
-  resolved "https://registry.npmjs.org/@haxtheweb/md-extra-icons/-/md-extra-icons-9.0.1.tgz"
-  integrity sha512-EbAX+o5pdWcI7adCVfgBWyqkBo6noDBmdC1tOxauk9Oydm7P97+oRKznJxlGDweKO0OpgcSesW9guGg9ngmNEQ==
-  dependencies:
-    "@polymer/iron-icon" "^3.0.1"
-    "@polymer/iron-iconset-svg" "^3.0.0"
-    "@polymer/polymer" "^3.5.1"
-
 "@humanfs/core@^0.19.2":
   version "0.19.2"
   resolved "https://registry.npmjs.org/@humanfs/core/-/core-0.19.2.tgz"
@@ -4192,44 +4174,6 @@
   version "1.0.4"
   resolved "https://registry.npmjs.org/@polymer/esm-amd-loader/-/esm-amd-loader-1.0.4.tgz"
   integrity sha512-h+hqYkL+tQV/y2ESD5gFXMl5z4cC+XY1jTlBeGSBaTcj3VbB5OBEScbvRXm63NcEbBneQQYbHfBAXAkF9i9wIA==
-
-"@polymer/iron-flex-layout@^3.0.0-pre.26":
-  version "3.0.1"
-  resolved "https://registry.npmjs.org/@polymer/iron-flex-layout/-/iron-flex-layout-3.0.1.tgz"
-  integrity sha512-7gB869czArF+HZcPTVSgvA7tXYFze9EKckvM95NB7SqYF+NnsQyhoXgKnpFwGyo95lUjUW9TFDLUwDXnCYFtkw==
-  dependencies:
-    "@polymer/polymer" "^3.0.0"
-
-"@polymer/iron-icon@^3.0.1":
-  version "3.0.1"
-  resolved "https://registry.npmjs.org/@polymer/iron-icon/-/iron-icon-3.0.1.tgz"
-  integrity sha512-QLPwirk+UPZNaLnMew9VludXA4CWUCenRewgEcGYwdzVgDPCDbXxy6vRJjmweZobMQv/oVLppT2JZtJFnPxX6g==
-  dependencies:
-    "@polymer/iron-flex-layout" "^3.0.0-pre.26"
-    "@polymer/iron-meta" "^3.0.0-pre.26"
-    "@polymer/polymer" "^3.0.0"
-
-"@polymer/iron-iconset-svg@^3.0.0":
-  version "3.0.1"
-  resolved "https://registry.npmjs.org/@polymer/iron-iconset-svg/-/iron-iconset-svg-3.0.1.tgz"
-  integrity sha512-XNwURbNHRw6u2fJe05O5fMYye6GSgDlDqCO+q6K1zAnKIrpgZwf2vTkBd5uCcZwsN0FyCB3mvNZx4jkh85dRDw==
-  dependencies:
-    "@polymer/iron-meta" "^3.0.0-pre.26"
-    "@polymer/polymer" "^3.0.0"
-
-"@polymer/iron-meta@^3.0.0-pre.26":
-  version "3.0.1"
-  resolved "https://registry.npmjs.org/@polymer/iron-meta/-/iron-meta-3.0.1.tgz"
-  integrity sha512-pWguPugiLYmWFV9UWxLWzZ6gm4wBwQdDy4VULKwdHCqR7OP7u98h+XDdGZsSlDPv6qoryV/e3tGHlTIT0mbzJA==
-  dependencies:
-    "@polymer/polymer" "^3.0.0"
-
-"@polymer/polymer@^3.0.0", "@polymer/polymer@^3.5.1":
-  version "3.5.2"
-  resolved "https://registry.npmjs.org/@polymer/polymer/-/polymer-3.5.2.tgz"
-  integrity sha512-fWwImY/UH4bb2534DVSaX+Azs2yKg8slkMBHOyGeU2kKx7Xmxp6Lee0jP8p6B3d7c1gFUPB2Z976dTUtX81pQA==
-  dependencies:
-    "@webcomponents/shadycss" "^1.9.1"
 
 "@polymer/sinonjs@^1.14.1":
   version "1.17.1"
@@ -6348,7 +6292,7 @@
   resolved "https://registry.npmjs.org/@webcomponents/scoped-custom-element-registry/-/scoped-custom-element-registry-0.0.10.tgz"
   integrity sha512-wP4LF28aysE2Pq3NQRNQxko7Q0vOOwcoOSMg8FFI4S6z76UuXkYIc5ndC31dJMwso1/vSteL75LW2CEKedAJbA==
 
-"@webcomponents/shadycss@^1.10.2", "@webcomponents/shadycss@^1.11.0", "@webcomponents/shadycss@^1.9.1":
+"@webcomponents/shadycss@^1.10.2", "@webcomponents/shadycss@^1.11.0":
   version "1.11.2"
   resolved "https://registry.npmjs.org/@webcomponents/shadycss/-/shadycss-1.11.2.tgz"
   integrity sha512-vRq+GniJAYSBmTRnhCYPAPq6THYqovJ/gzGThWbgEZUQaBccndGTi1hdiUP15HzEco0I6t4RCtXyX0rsSmwgPw==
