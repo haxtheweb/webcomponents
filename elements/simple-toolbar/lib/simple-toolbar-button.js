@@ -962,6 +962,16 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
             background-color: var(--simple-toolbar-button-toggled-bg);
             opacity: var(--simple-toolbar-button-toggled-opacity, 0.8);
           }
+          /* held down: an overlay over the button's own fill, so a push is
+             confirmed before it is let go (the HAX UI pressed token where
+             there is one) */
+          *[part="button"]:active:not([disabled]) {
+            box-shadow: inset 0 0 0 999px
+              var(
+                --simple-toolbar-button-pressed-overlay,
+                var(--hax-ui-pressed, rgba(128, 128, 128, 0.28))
+              );
+          }
           *[part="button"]:focus,
           *[part="button"]:hover {
             color: var(--simple-toolbar-button-hover-color);

@@ -260,12 +260,48 @@ export const InsightsStyles = [
       transform: translateY(1px);
       box-shadow: inset 0 0 0 999px var(--hax-ui-pressed);
     }
+    /* the action that saves, and the one that throws work away: the same
+       signifiers as .hax-ui-btn.primary and .hax-ui-btn.danger (fill and
+       bold; danger color, trash icon and the hatch behind the icon) */
+    .sbtn.primary {
+      font-weight: var(--ddd-font-weight-bold, 700);
+      color: var(--hax-ui-on-primary);
+      background-color: var(--hax-ui-primary);
+      border-color: var(--hax-ui-primary);
+    }
+    .sbtn.primary:hover {
+      background-color: var(--hax-ui-primary-hover);
+      box-shadow: 0 0 0 3px
+        color-mix(in srgb, var(--hax-ui-primary) 35%, transparent);
+    }
+    .sbtn.danger {
+      color: var(--hax-ui-danger);
+      border-color: var(--hax-ui-danger);
+      background-image: var(--hax-ui-danger-hatch);
+      background-repeat: no-repeat;
+      background-position: left center;
+      background-size: calc(
+          var(--hax-ui-gap-md) + var(--hax-ui-icon) + var(--hax-ui-gap) / 2
+        )
+        100%;
+      --simple-icon-width: var(--hax-ui-icon);
+      --simple-icon-height: var(--hax-ui-icon);
+    }
+    .sbtn.danger:dir(rtl) {
+      background-position: right center;
+    }
     .sbtn[disabled],
-    .sbtn[aria-disabled="true"] {
+    .sbtn[aria-disabled="true"],
+    .sbtn[disabled]:hover,
+    .sbtn[aria-disabled="true"]:hover {
       cursor: default;
+      font-weight: inherit;
       color: var(--hax-ui-text-muted);
+      border-color: var(--hax-ui-line-strong);
       border-style: dashed;
       background-color: transparent;
+      background-image: none;
+      box-shadow: none;
     }
     .soon-panel {
       padding: var(--hax-ui-gap-lg);

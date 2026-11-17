@@ -97,7 +97,15 @@ export const HaxUiAdminShell = [
       color: var(--hax-ui-text);
     }
     .rail-item:hover {
-      background-color: var(--hax-ui-hover);
+      background-color: var(--hax-ui-control-hover);
+    }
+    /* the current page keeps its selected fill, so its hover is half the
+       pressed overlay over it (and its edge bar) */
+    .rail-item[aria-current="page"]:hover {
+      box-shadow:
+        inset 3px 0 0 var(--hax-ui-accent-strong),
+        inset 0 0 0 999px
+          color-mix(in srgb, var(--hax-ui-pressed) 50%, transparent);
     }
     .rail-item:focus-visible {
       outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
@@ -125,7 +133,7 @@ export const HaxUiAdminShell = [
       color: var(--hax-ui-text-muted);
     }
     .rail-toggle:hover {
-      background-color: var(--hax-ui-hover);
+      background-color: var(--hax-ui-control-hover);
       color: var(--hax-ui-text);
     }
     .rail-toggle:focus-visible {

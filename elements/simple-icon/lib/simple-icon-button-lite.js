@@ -85,6 +85,15 @@ export const SimpleIconButtonBehaviors = function (SuperClass) {
               --simple-icon-button-focus-background-color
             );
           }
+          /* held down: an overlay over the button's own fill (the HAX UI
+             pressed token where there is one) */
+          button:active:not([disabled]) {
+            box-shadow: inset 0 0 0 999px
+              var(
+                --simple-icon-button-pressed-overlay,
+                var(--hax-ui-pressed, rgba(128, 128, 128, 0.28))
+              );
+          }
           button:disabled,
           button[disabled] {
             opacity: var(--simple-icon-button-disabled-opacity, 0.5);

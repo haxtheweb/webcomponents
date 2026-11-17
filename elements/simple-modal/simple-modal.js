@@ -251,6 +251,12 @@ class SimpleModal extends I18NMixin(LitElement) {
           outline-offset: var(--ddd-spacing-1, 4px);
           border-radius: var(--ddd-radius-xs, 4px);
         }
+        /* held down: an overlay over the title bar button */
+        .breadcrumb-button:active {
+          box-shadow: inset 0 0 0 999px
+            var(--hax-ui-pressed, rgba(128, 128, 128, 0.28));
+          border-radius: var(--ddd-radius-xs, 4px);
+        }
 
         #headerbar {
           margin: 0;

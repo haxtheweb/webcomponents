@@ -187,6 +187,85 @@
           "text": "border-color: var(--hax-ui-accent-strong)"
         }
       ]
+    },
+    {
+      "id": "system-settings-leave-prompt",
+      "where": "elements/app-hax/lib/v2/admin/haxcms-system-settings.js (leave prompt: Save and continue vs .discard-leave)",
+      "background": "--hax-ui-surface",
+      "accept": {
+        "label": "Save and continue",
+        "fill": "--hax-ui-primary",
+        "cues": ["label"]
+      },
+      "reject": {
+        "label": "Discard and continue",
+        "fill": "background",
+        "cues": ["outline", "pattern", "label", "icon"]
+      },
+      "evidence": [
+        {
+          "file": "elements/app-hax/lib/v2/admin/haxcms-system-settings.js",
+          "text": "class=\"hax-ui-btn danger discard-leave\""
+        },
+        {
+          "file": "elements/d-d-d/lib/HaxUiAdminControls.js",
+          "text": "background-image: var(--hax-ui-danger-hatch);"
+        }
+      ]
+    },
+    {
+      "id": "insights-save-discard",
+      "where": "elements/haxcms-elements/lib/core/insights (insights-block-editor.js and sections/insights-accessibility.js: .sbtn.primary save vs .sbtn.danger.discard)",
+      "background": "--hax-ui-surface",
+      "accept": {
+        "label": "Save",
+        "fill": "--hax-ui-primary",
+        "cues": ["label"]
+      },
+      "reject": {
+        "label": "Discard",
+        "fill": "background",
+        "cues": ["outline", "pattern", "label", "icon"]
+      },
+      "evidence": [
+        {
+          "file": "elements/haxcms-elements/lib/core/insights/insights-block-editor.js",
+          "text": "class=\"sbtn danger discard\""
+        },
+        {
+          "file": "elements/haxcms-elements/lib/core/insights/sections/insights-accessibility.js",
+          "text": "class=\"sbtn danger discard\""
+        },
+        {
+          "file": "elements/haxcms-elements/lib/core/insights/insights-styles.js",
+          "text": "background-image: var(--hax-ui-danger-hatch);"
+        }
+      ]
+    },
+    {
+      "id": "outline-designer-delete-selected",
+      "where": "elements/outline-designer/outline-designer.js (toolbar: Delete selected .control.danger vs Collapse all / Expand all .control)",
+      "background": "--hax-ui-surface",
+      "accept": {
+        "label": "Expand all",
+        "fill": "background",
+        "cues": ["label"]
+      },
+      "reject": {
+        "label": "Delete selected",
+        "fill": "background",
+        "cues": ["outline", "pattern", "label", "icon"]
+      },
+      "evidence": [
+        {
+          "file": "elements/outline-designer/outline-designer.js",
+          "text": "class=\"control danger\""
+        },
+        {
+          "file": "elements/outline-designer/outline-designer.js",
+          "text": "background-image: var(--hax-ui-danger-hatch);"
+        }
+      ]
     }
   ]
 }

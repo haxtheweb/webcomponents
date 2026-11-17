@@ -268,6 +268,10 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
         .ii-head:hover {
           background-color: var(--hax-ui-hover);
         }
+        .ii-head:active {
+          box-shadow: inset 0 0 0 999px
+            var(--hax-ui-pressed, rgba(128, 128, 128, 0.28));
+        }
         .ii-head:focus-visible {
           outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
           outline-offset: calc(-1 * var(--hax-ui-focus-width));

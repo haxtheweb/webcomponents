@@ -1031,26 +1031,33 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
           outline-offset: 2px;
         }
+        /* Deleting: the same signifiers as .hax-ui-btn.danger (danger
+           color and edge, trash icon, the hatch behind the icon) */
+        .controls simple-toolbar-button.control.danger {
+          color: var(--hax-ui-danger);
+          --simple-toolbar-border-color: var(--hax-ui-danger);
+          background-image: var(--hax-ui-danger-hatch);
+          background-repeat: no-repeat;
+          background-position: left center;
+          background-size: calc(var(--hax-ui-gap-md) + var(--hax-ui-icon)) 100%;
+        }
+        .controls simple-toolbar-button.control.danger:dir(rtl) {
+          background-position: right center;
+        }
+        .content-operation.del {
+          color: var(--hax-ui-danger);
+        }
         /* Held down: the pressed overlay, so a push is confirmed before it
            is let go; never on a disabled button */
         .act:active:not([disabled]),
         .collapse-btn:active:not([disabled]),
         .nudge-btn:active:not([disabled]),
-        .undo-btn:active,
-        .controls simple-toolbar-button.control:active:not([disabled]),
-        .content-operation:active:not([disabled]),
-        .content-adding-operations .operation:active:not([disabled]),
-        .close-btn:active {
+        .undo-btn:active {
           box-shadow: inset 0 0 0 999px var(--hax-ui-pressed);
         }
         .act:active:not([disabled]),
         .nudge-btn:active:not([disabled]) {
           transform: translateY(1px);
-        }
-        .content-operation:active,
-        .content-adding-operations .operation:active,
-        .close-btn:active {
-          border-radius: var(--hax-ui-radius);
         }
         /* Disabled: dimmed, no pointer, and no hover of its own (a locked
            page's fold chevron and content toggle looked available) */
@@ -1727,7 +1734,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
               ? html`<simple-toolbar-button
                   icon="delete"
                   @click="${this._deleteSelectedShown}"
-                  class="control"
+                  class="control danger"
                   show-text-label
                   label="${this.t.deleteSelected.replace(
                     "{count}",

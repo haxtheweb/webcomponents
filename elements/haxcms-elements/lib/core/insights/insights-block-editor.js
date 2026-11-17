@@ -5,6 +5,8 @@
 import { LitElement, html, css, nothing } from "lit";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { InsightsStyles } from "./insights-styles.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import { HaxUiAdminIcons } from "@haxtheweb/d-d-d/lib/HaxUiAdminIcons.js";
 import {
   BLOCK_SAVE_MAX_PAGES,
   blockSaveAvailable,
@@ -694,7 +696,7 @@ class InsightsBlockEditor extends I18NMixin(LitElement) {
                 </button>`
             : html`<button
                 type="button"
-                class="sbtn discard"
+                class="sbtn danger discard"
                 ?disabled="${!pending || this._saving}"
                 @click="${() => {
                   this._edits = {};
@@ -703,12 +705,16 @@ class InsightsBlockEditor extends I18NMixin(LitElement) {
                   this._announce = "";
                 }}"
               >
-                ${this.t.discard}
+                <simple-icon-lite
+                  icon="${HaxUiAdminIcons.delete}"
+                  aria-hidden="true"
+                ></simple-icon-lite
+                >${this.t.discard}
               </button>`
         }
         <button
           type="button"
-          class="sbtn save-rows"
+          class="sbtn primary save-rows"
           ?disabled="${!pending || !this._canSave || this._saving}"
           aria-describedby="block-save-hint"
           @click="${this._askSave}"
@@ -842,7 +848,11 @@ class InsightsBlockEditor extends I18NMixin(LitElement) {
         }
         <p class="meta">${this.t.confirmEditor}</p>
         <div class="actions">
-          <button type="button" class="sbtn save-now" @click="${this._runSave}">
+          <button
+            type="button"
+            class="sbtn primary save-now"
+            @click="${this._runSave}"
+          >
             ${this.t.saveNow}
           </button>
           <button

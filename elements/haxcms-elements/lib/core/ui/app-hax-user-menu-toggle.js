@@ -186,6 +186,12 @@ export class AppHaxUserMenuToggle extends DDDSuper(LitElement) {
           outline-offset: 2px;
         }
 
+        /* held down: an overlay over the toggle */
+        button:active {
+          box-shadow: inset 0 0 0 999px
+            var(--hax-ui-pressed, rgba(128, 128, 128, 0.28));
+        }
+
         rpg-character {
           --simple-toolbar-border-radius: var(--ddd-radius-md);
           border-radius: var(--ddd-radius-md);
