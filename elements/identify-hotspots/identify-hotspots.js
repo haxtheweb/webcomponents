@@ -946,7 +946,7 @@ export class IdentifyHotspots extends QuestionElement {
           border-inline-width: var(--ddd-spacing-3);
         }
         .hs-cross::after {
-          left: calc(50% - var(--ddd-border-size-sm) / 2);
+          inset-inline-start: calc(50% - var(--ddd-border-size-sm) / 2);
           inset-block: calc(-1 * var(--ddd-spacing-4));
           width: var(--ddd-border-size-sm);
           border-block-width: var(--ddd-spacing-3);
