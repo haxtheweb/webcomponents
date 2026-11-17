@@ -20,7 +20,7 @@
     "sharedStyles": []
   },
   "version": "26.8.0",
-  "description": "Hax bootstrap themeing",
+  "description": "Bootstrap 5 theme for HAXcms, built on the DDD-capable Bootstrap design system bridge",
   "repository": {
     "type": "git",
     "url": "https://github.com/haxtheweb/webcomponents.git"
@@ -36,7 +36,8 @@
     "serve": "web-dev-server -c ../../web-dev-server.config.mjs",
     "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs",
     "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium --watch",
-    "test": "web-test-runner \"test/**/*.test.js\" --coverage --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium"
+    "test": "web-test-runner \"test/**/*.test.js\" --coverage --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium",
+    "bridge": "node ../d-d-d/design-system/bridge/build-bridge.js ."
   },
   "author": {
     "name": "haxtheweb",
@@ -45,7 +46,6 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@haxtheweb/d-d-d": "^26.8.0",
-    "@haxtheweb/es-global-bridge": "^26.8.0",
     "@haxtheweb/haxcms-elements": "^26.8.0",
     "@haxtheweb/i18n-manager": "^26.8.0",
     "@haxtheweb/map-menu": "^26.8.0",
@@ -53,8 +53,7 @@
     "@haxtheweb/simple-popover": "^26.8.0",
     "@haxtheweb/simple-tooltip": "^26.8.0",
     "@haxtheweb/utils": "^26.8.0",
-    "bootstrap": "4.6.0",
-    "jquery": "3.7.1",
+    "bootstrap": "5.3.9",
     "lit": "3.3.3",
     "mobx": "6.16.1"
   },
@@ -74,7 +73,11 @@
     "webcomponents",
     "html",
     "haxtheweb",
-    "lit"
+    "lit",
+    "theme",
+    "bootstrap",
+    "design-system",
+    "haxcms"
   ],
   "gitHead": "245e0cd5ba8ffa15c755a58abc4f60f74a2f876c"
 }

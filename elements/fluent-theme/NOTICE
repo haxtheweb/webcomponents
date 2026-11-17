@@ -1,0 +1,44 @@
+fluent-theme
+Copyright 2026 The Pennsylvania State University
+Licensed under the Apache License, Version 2.0 (see LICENSE).
+
+This package contains design token values derived from Microsoft Fluent UI
+(https://github.com/microsoft/fluentui), licensed under the MIT License:
+
+  @fluentui/tokens 1.0.0-alpha.24  Copyright (c) Microsoft Corporation
+
+The token values were read from the package's JavaScript modules as literal
+values and re-expressed as CSS custom properties by
+elements/d-d-d/design-system/bridge/build-bridge.js.
+
+Icons in icons/ are copied, unchanged, from @fluentui/svg-icons 1.1.346
+(Fluent UI System Icons, Copyright (c) Microsoft Corporation), MIT License.
+Only the icons HAX maps are included
+(elements/d-d-d/design-system/bridge/icon-maps.json).
+
+MIT License (Fluent UI)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+Fonts: none are distributed or loaded. Segoe UI is named in the font stack
+and used only where the platform provides it.
+
+Microsoft and Fluent are trademarks of Microsoft Corporation. This package is
+an independent integration and is not affiliated with or endorsed by
+Microsoft.

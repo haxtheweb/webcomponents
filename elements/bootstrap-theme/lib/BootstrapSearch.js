@@ -92,7 +92,7 @@ class BootstrapSearch extends I18NMixin(LitElement) {
         >
         <input
           id="bootstrap-search-input"
-          class="form-control mr-2"
+          class="form-control me-2"
           type="search"
           placeholder="${this.t.typeToSearch}"
           aria-label="${this.t.searchSiteContent}"

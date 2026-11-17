@@ -496,7 +496,7 @@ describe("BootstrapStyleGuideAuthoring registration", () => {
     globalThis.HaxStore = { requestAvailability: () => st };
   };
 
-  it("wraps designSystemHAXProperties and injects bootstrap sections", () => {
+  it("wraps designSystemHAXProperties and injects the Bootstrap-only sections", () => {
     const st = makeStore({
       elementList: { "media-image": { settings: { configure: [] } } },
     });
@@ -513,31 +513,18 @@ describe("BootstrapStyleGuideAuthoring registration", () => {
     expect(collapse === undefined).to.equal(false);
     expect(collapse.inputMethod).to.equal("collapse");
     expect(collapse.title).to.equal("Bootstrap styles");
+    // alignment, float, spacing, radius and shadow come from DDD's own
+    // authoring now that Bootstrap is a DDD dialect
     expect(collapse.properties.map((s) => s.title).join(",")).to.equal(
-      "Layout,Spacing,Surface,Typography,Box appearance",
+      "Surface,Typography",
     );
-    // the float field is only offered for media-image / img
-    const layout = collapse.properties.find((s) => s.title === "Layout");
-    expect(
-      layout.properties.map((p) => p.attribute).includes("data-float-position"),
-    ).to.equal(true);
-  });
-
-  it("hides layout and spacing for inline-only gizmos", () => {
-    const st = makeStore({ isInlineElement: () => true });
-    install(st);
-    registerBootstrapStyleGuideAuthoring({ manager: { active: "bootstrap" } });
-    const out = st.designSystemHAXProperties(
-      { gizmo: { meta: { inlineOnly: true } } },
-      "some-tag",
-    );
-    const collapse = out.settings.configure.find(
-      (s) => s.property === "bootstrap-styles",
-    );
-    const titles = collapse.properties.map((s) => s.title);
-    expect(titles.includes("Layout")).to.equal(false);
-    expect(titles.includes("Spacing")).to.equal(false);
-    expect(titles.includes("Surface")).to.equal(true);
+    const attrs = collapse.properties
+      .flatMap((s) => s.properties)
+      .map((p) => p.attribute);
+    expect(attrs).to.deep.equal([
+      "data-bootstrap-surface",
+      "data-bootstrap-emphasis",
+    ]);
   });
 
   it("designSystem false opts the element out entirely", () => {
@@ -551,7 +538,7 @@ describe("BootstrapStyleGuideAuthoring registration", () => {
     ).to.equal(true);
   });
 
-  it("hideDefaultSettings drops layout and spacing but keeps the rest", () => {
+  it("hideDefaultSettings keeps the Bootstrap-only sections", () => {
     const st = makeStore({});
     install(st);
     registerBootstrapStyleGuideAuthoring({ manager: { active: "bootstrap" } });
@@ -563,7 +550,7 @@ describe("BootstrapStyleGuideAuthoring registration", () => {
       (s) => s.property === "bootstrap-styles",
     );
     const titles = collapse.properties.map((s) => s.title);
-    expect(titles.join(",")).to.equal("Surface,Typography,Box appearance");
+    expect(titles.join(",")).to.equal("Surface,Typography");
   });
 
   it("skips sections when bootstrap is not the active system", () => {
@@ -658,6 +645,7 @@ describe("bootstrap design system integration", () => {
     expect(DesignSystemManager.systems.bootstrap === undefined).to.equal(false);
     expect(DesignSystemManager.active).to.equal("bootstrap");
     const system = DesignSystemManager.systems.bootstrap;
+    expect(system.extends).to.equal("ddd");
     expect(system.integrations.hax.exportName).to.equal(
       "registerBootstrapStyleGuideAuthoring",
     );
@@ -704,17 +692,6 @@ const makeFreshStore = () => ({
   elementList: {},
   isInlineElement: () => false,
   designSystemHAXProperties: (props) => props,
-});
-
-describe("bootstrap-theme vendor script loading", () => {
-  it("wires jquery and bootstrap bridge events", async () => {
-    const el = await fixture(html`<bootstrap-theme></bootstrap-theme>`);
-    await el.updateComplete;
-    globalThis.dispatchEvent(new CustomEvent("es-bridge-jquery-loaded"));
-    expect(el._jquery).to.equal(true);
-    globalThis.dispatchEvent(new CustomEvent("es-bridge-bootstrap-loaded"));
-    expect(el._bootstrap).to.equal(true);
-  });
 });
 
 describe("BootstrapStylesheetManager", () => {

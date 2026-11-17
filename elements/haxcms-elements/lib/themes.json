@@ -119,6 +119,18 @@
     "terrible": false,
     "supportedPalettes": null
   },
+  "fluent-theme": {
+    "element": "fluent-theme",
+    "path": "@haxtheweb/fluent-theme/fluent-theme.js",
+    "name": "Fluent 2",
+    "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-fluent-theme-thumb.jpg",
+    "description": "Start with a blank site using the Fluent 2",
+    "category": ["Website", "Course", "Documentation"],
+    "hidden": false,
+    "priority": 50,
+    "terrible": false,
+    "supportedPalettes": null
+  },
   "glossy-portfolio-theme": {
     "element": "glossy-portfolio-theme",
     "path": "@haxtheweb/glossy-portfolio-theme/glossy-portfolio-theme.js",
@@ -332,6 +344,18 @@
     "category": ["Website"],
     "hidden": false,
     "priority": 10,
+    "terrible": false,
+    "supportedPalettes": null
+  },
+  "primer-theme": {
+    "element": "primer-theme",
+    "path": "@haxtheweb/primer-theme/primer-theme.js",
+    "name": "Primer",
+    "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-primer-theme-thumb.jpg",
+    "description": "Start with a blank site using the Primer",
+    "category": ["Website", "Course", "Documentation"],
+    "hidden": false,
+    "priority": 50,
     "terrible": false,
     "supportedPalettes": null
   },

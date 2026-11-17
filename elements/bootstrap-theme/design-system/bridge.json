@@ -1,0 +1,518 @@
+{
+  "$comment": "DDD bridge for Bootstrap 5.3. Tiers follow elements/d-d-d/design-system/bridge/contract.json. Bootstrap writes its CSS variables in :root / [data-bs-theme=light] and [data-bs-theme=dark]; its tint and shade scales ($blue-100 ... $blue-900) only exist in Sass, so named DDD colors use the base colors, the grays and the per-mode subtle and emphasis tokens taken from one mode as constants (fromMode). Bootstrap's sizes are rem, and HAX's root font size is 20px, not 16px, so radii, shadows, control heights and density are written in px with the Bootstrap variable named in the note. Kept as DDD on purpose: state opacities, border widths, heading/body sizes, and enter/exit easing (Bootstrap has one transition easing). Bootstrap's spacers (4, 8, 16, 24, 48px) sit on DDD's 4px grid, so theme chrome uses DDD spacing tokens. Every Bootstrap root variable is exported (extraTokens) so the Bootstrap component CSS the theme chrome adopts in its shadow roots resolves them, in light and dark, through light-dark(); the -rgb channel variables that differ between modes can't be written that way and are left out.",
+  "system": "bootstrap",
+  "title": "Bootstrap",
+  "prefix": "Bootstrap",
+  "homepage": "https://getbootstrap.com",
+  "sources": [
+    {
+      "package": "bootstrap",
+      "version": "5.3.9",
+      "license": "MIT",
+      "copyright": "Copyright (c) 2011-2026 The Bootstrap Authors",
+      "homepage": "https://getbootstrap.com",
+      "repository": "https://github.com/twbs/bootstrap",
+      "format": "css",
+      "file": "dist/css/bootstrap.css",
+      "scopes": {
+        "light": [":root"],
+        "dark": [":root", "[data-bs-theme=dark]"]
+      }
+    }
+  ],
+  "fonts": [],
+  "icons": {
+    "package": "bootstrap-icons",
+    "version": "1.13.2",
+    "license": "MIT",
+    "path": "icons/{name}.svg",
+    "map": "bootstrap-icons"
+  },
+  "ddd": {
+    "--ddd-theme-default-beaverBlue": {
+      "token": "--bs-link-hover-color",
+      "fromMode": "light",
+      "note": "$blue-600: Bootstrap's primary (#0d6efd) is under 4.5:1 as text on the gray-100 and gray-300 surfaces HAX blocks use; the theme chrome keeps --bs-primary"
+    },
+    "--ddd-theme-default-nittanyNavy": {
+      "token": "--bs-primary-text-emphasis",
+      "fromMode": "light",
+      "note": "$blue-800"
+    },
+    "--ddd-theme-default-potentialMidnight": {
+      "token": "--bs-primary-bg-subtle",
+      "fromMode": "dark",
+      "note": "$blue-900 (dark primary-bg-subtle)"
+    },
+    "--ddd-theme-default-pughBlue": {
+      "token": "--bs-primary-border-subtle",
+      "fromMode": "light",
+      "note": "$blue-200"
+    },
+    "--ddd-theme-default-accent": {
+      "token": "--bs-primary-border-subtle",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-skyBlue": {
+      "token": "--bs-link-color",
+      "fromMode": "dark",
+      "note": "$blue-300 (dark link color)"
+    },
+    "--ddd-theme-default-skyLight": {
+      "token": "--bs-primary-border-subtle",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-skyMaxLight": {
+      "token": "--bs-primary-bg-subtle",
+      "fromMode": "light",
+      "note": "$blue-100"
+    },
+    "--ddd-theme-default-slateGray": {
+      "token": "--bs-gray-700",
+      "note": "gray-600 (secondary text) is under 4.5:1 on the gray-300 surfaces block labels sit on"
+    },
+    "--ddd-theme-default-slateLight": {
+      "token": "--bs-gray-400"
+    },
+    "--ddd-theme-default-slateMaxLight": {
+      "token": "--bs-gray-100"
+    },
+    "--ddd-theme-default-coalyGray": {
+      "token": "--bs-gray-900",
+      "note": "Bootstrap body color / dark body background"
+    },
+    "--ddd-theme-default-black": {
+      "token": "--bs-black"
+    },
+    "--ddd-theme-default-white": {
+      "token": "--bs-white"
+    },
+    "--ddd-theme-default-limestoneGray": {
+      "token": "--bs-gray-500"
+    },
+    "--ddd-theme-default-limestoneLight": {
+      "token": "--bs-gray-300",
+      "note": "Bootstrap border color (light)"
+    },
+    "--ddd-theme-default-limestoneMaxLight": {
+      "token": "--bs-gray-100"
+    },
+    "--ddd-theme-default-background": {
+      "token": "--bs-gray-100",
+      "note": "bg-light / tertiary background"
+    },
+    "--ddd-theme-default-disabled": {
+      "token": "--bs-gray-200"
+    },
+    "--ddd-theme-default-keystoneYellow": {
+      "token": "--bs-yellow"
+    },
+    "--ddd-theme-default-globalNeon": {
+      "token": "--bs-warning-border-subtle",
+      "fromMode": "light",
+      "note": "$yellow-200"
+    },
+    "--ddd-theme-default-roarGolden": {
+      "token": "--bs-orange"
+    },
+    "--ddd-theme-default-roarLight": {
+      "token": "--bs-warning-border-subtle",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-roarMaxlight": {
+      "token": "--bs-warning-bg-subtle",
+      "fromMode": "light",
+      "note": "$yellow-100"
+    },
+    "--ddd-theme-default-shrineTan": {
+      "token": "--bs-gray-500",
+      "note": "Bootstrap has no tan; the neutral grays stand in"
+    },
+    "--ddd-theme-default-shrineLight": {
+      "token": "--bs-gray-200"
+    },
+    "--ddd-theme-default-shrineMaxLight": {
+      "token": "--bs-gray-100"
+    },
+    "--ddd-theme-default-inventOrange": {
+      "token": "--bs-orange"
+    },
+    "--ddd-theme-default-landgrantBrown": {
+      "token": "--bs-warning-text-emphasis",
+      "fromMode": "light",
+      "note": "$yellow-800"
+    },
+    "--ddd-theme-default-creekTeal": {
+      "token": "--bs-teal"
+    },
+    "--ddd-theme-default-creekLight": {
+      "token": "--bs-success-border-subtle",
+      "fromMode": "light",
+      "note": "$green-200"
+    },
+    "--ddd-theme-default-creekMaxLight": {
+      "token": "--bs-success-bg-subtle",
+      "fromMode": "light",
+      "note": "$green-100"
+    },
+    "--ddd-theme-default-opportunityGreen": {
+      "token": "--bs-green",
+      "note": "correct signal (light)"
+    },
+    "--ddd-theme-default-forestGreen": {
+      "token": "--bs-success-text-emphasis",
+      "fromMode": "light",
+      "note": "$green-800"
+    },
+    "--ddd-theme-default-futureLime": {
+      "token": "--bs-success-text-emphasis",
+      "fromMode": "dark",
+      "note": "$green-300, correct signal (dark)"
+    },
+    "--ddd-theme-default-athertonViolet": {
+      "value": "#a98eda",
+      "note": "$purple-300 (Bootstrap builds its tints in Sass; this is tint-color($purple, 40%)); incorrect signal (dark)"
+    },
+    "--ddd-theme-default-wonderPurple": {
+      "token": "--bs-purple",
+      "note": "incorrect signal (light); keeps HAX purple-for-incorrect"
+    },
+    "--ddd-theme-default-original87Pink": {
+      "value": "#801f4f",
+      "note": "$pink-700 (Sass only; shade-color($pink, 40%)): $pink is under 4.5:1 as the stop-note ink on its tint"
+    },
+    "--ddd-theme-default-discoveryCoral": {
+      "token": "--bs-danger-border-subtle",
+      "fromMode": "light",
+      "note": "$red-200"
+    },
+    "--ddd-theme-default-link": {
+      "token": "--bs-link-hover-color",
+      "fromMode": "light",
+      "note": "$blue-600: Bootstrap's link color (#0d6efd) is under 4.5:1 on the gray surfaces HAX blocks put links on"
+    },
+    "--ddd-theme-default-linkLight": {
+      "token": "--bs-link-color",
+      "fromMode": "dark",
+      "note": "Bootstrap link color (dark)"
+    },
+    "--ddd-theme-default-error": {
+      "token": "--bs-danger-text-emphasis",
+      "fromMode": "light",
+      "note": "$red-800"
+    },
+    "--ddd-theme-default-errorLight": {
+      "token": "--bs-danger-bg-subtle",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-warning": {
+      "token": "--bs-warning-text-emphasis",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-warningLight": {
+      "token": "--bs-warning-bg-subtle",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-info": {
+      "token": "--bs-info-text-emphasis",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-infoLight": {
+      "token": "--bs-info-bg-subtle",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-success": {
+      "token": "--bs-success-text-emphasis",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-successLight": {
+      "token": "--bs-success-bg-subtle",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-alertImmediate": {
+      "token": "--bs-danger-border-subtle",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-alertUrgent": {
+      "token": "--bs-warning-bg-subtle",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-alertAllClear": {
+      "token": "--bs-success-bg-subtle",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-alertNonEmergency": {
+      "token": "--bs-info-bg-subtle",
+      "fromMode": "light"
+    },
+    "--ddd-font-primary": {
+      "token": "--bs-font-sans-serif",
+      "note": "Bootstrap's native system font stack"
+    },
+    "--ddd-font-secondary": {
+      "token": "--bs-font-sans-serif"
+    },
+    "--ddd-font-navigation": {
+      "token": "--bs-font-sans-serif"
+    },
+    "--ddd-font-mono": {
+      "token": "--bs-font-monospace"
+    },
+    "--ddd-font-weight-light": {
+      "value": "300",
+      "note": "$font-weight-light"
+    },
+    "--ddd-font-weight-regular": {
+      "value": "400",
+      "note": "$font-weight-normal"
+    },
+    "--ddd-font-weight-medium": {
+      "value": "500",
+      "note": "$font-weight-medium, Bootstrap's heading weight"
+    },
+    "--ddd-font-weight-bold": {
+      "value": "700",
+      "note": "$font-weight-bold"
+    },
+    "--ddd-radius-xs": {
+      "value": "4px",
+      "note": "border-radius-sm, .25rem (a px value: HAX's root font size is 20px, not 16px)"
+    },
+    "--ddd-radius-sm": {
+      "value": "6px",
+      "note": "border-radius, .375rem"
+    },
+    "--ddd-radius-md": {
+      "value": "8px",
+      "note": "border-radius-lg, .5rem"
+    },
+    "--ddd-radius-lg": {
+      "value": "16px",
+      "note": "border-radius-xl, 1rem"
+    },
+    "--ddd-radius-xl": {
+      "value": "32px",
+      "note": "border-radius-xxl, 2rem"
+    },
+    "--ddd-boxShadow-sm": {
+      "value": "0 2px 4px rgba(0, 0, 0, 0.075)",
+      "note": "box-shadow-sm in px"
+    },
+    "--ddd-boxShadow-md": {
+      "value": "0 8px 16px rgba(0, 0, 0, 0.15)",
+      "note": "box-shadow in px"
+    },
+    "--ddd-boxShadow-lg": {
+      "value": "0 16px 48px rgba(0, 0, 0, 0.175)",
+      "note": "box-shadow-lg in px"
+    },
+    "--ddd-boxShadow-xl": {
+      "value": "0 16px 48px rgba(0, 0, 0, 0.175)",
+      "note": "Bootstrap has no larger shadow"
+    },
+    "--ddd-focus-ring": {
+      "value": "3px solid var(--bs-blue)",
+      "note": "Bootstrap's focus ring is a 25%-alpha primary glow, under the 3:1 a focus indicator needs; this keeps its color, opaque"
+    },
+    "--ddd-focus-offset": {
+      "value": "1px"
+    },
+    "--ddd-duration-fast": {
+      "value": "150ms",
+      "note": "Bootstrap's component transitions (.15s)"
+    },
+    "--ddd-duration-normal": {
+      "value": "300ms",
+      "note": "collapse and modal transitions (.3s)"
+    },
+    "--ddd-timing-ease": {
+      "value": "ease-in-out",
+      "note": "Bootstrap's transition easing"
+    },
+    "--ddd-control-height-sm": {
+      "value": "31px",
+      "note": "btn-sm: .25rem .5rem padding at 14px text"
+    },
+    "--ddd-control-height-md": {
+      "value": "38px",
+      "note": "btn: .375rem .75rem padding at 16px text"
+    },
+    "--ddd-control-height-lg": {
+      "value": "48px",
+      "note": "btn-lg"
+    },
+    "--ddd-textfield-height-sm": {
+      "value": "31px",
+      "note": "form-control-sm"
+    },
+    "--ddd-textfield-height-md": {
+      "value": "38px",
+      "note": "form-control"
+    },
+    "--ddd-textfield-height-lg": {
+      "value": "48px",
+      "note": "form-control-lg"
+    },
+    "--ddd-surface-padding": {
+      "value": "16px",
+      "note": "card-spacer, $spacer"
+    },
+    "--ddd-surface-padding-lg": {
+      "value": "24px",
+      "note": "$spacer * 1.5"
+    },
+    "--ddd-stack-gap": {
+      "value": "16px",
+      "note": "$spacer"
+    },
+    "--ddd-inline-gap": {
+      "value": "8px",
+      "note": "$spacer * .5"
+    },
+    "--ddd-control-padding-inline": {
+      "value": "12px",
+      "note": "btn-padding-x, .75rem"
+    },
+    "--ddd-card-padding": {
+      "value": "16px",
+      "note": "card-spacer-x"
+    },
+    "--ddd-card-border-width": {
+      "value": "1px",
+      "note": "card border, var(--bs-border-width)"
+    },
+    "--ddd-card-shadow": {
+      "value": "none",
+      "note": "Bootstrap cards are flat"
+    },
+    "--ddd-card-radius": {
+      "value": "6px",
+      "note": "card border-radius, .375rem"
+    },
+    "--ddd-card-background": {
+      "token": "--bs-body-bg"
+    },
+    "--ddd-control-radius": {
+      "value": "6px",
+      "note": "btn and form-control border-radius"
+    },
+    "--ddd-control-height": {
+      "value": "38px",
+      "note": "Bootstrap's default button"
+    },
+    "--ddd-tag-radius": {
+      "value": "6px",
+      "note": "badge border-radius, .375rem"
+    }
+  },
+  "extraTokens": [
+    "--bs-black",
+    "--bs-black-rgb",
+    "--bs-blue",
+    "--bs-body-bg",
+    "--bs-body-color",
+    "--bs-body-font-family",
+    "--bs-body-font-size",
+    "--bs-body-font-weight",
+    "--bs-body-line-height",
+    "--bs-border-color",
+    "--bs-border-color-translucent",
+    "--bs-border-radius",
+    "--bs-border-radius-2xl",
+    "--bs-border-radius-lg",
+    "--bs-border-radius-pill",
+    "--bs-border-radius-sm",
+    "--bs-border-radius-xl",
+    "--bs-border-radius-xxl",
+    "--bs-border-style",
+    "--bs-border-width",
+    "--bs-box-shadow",
+    "--bs-box-shadow-inset",
+    "--bs-box-shadow-lg",
+    "--bs-box-shadow-sm",
+    "--bs-code-color",
+    "--bs-cyan",
+    "--bs-danger",
+    "--bs-danger-bg-subtle",
+    "--bs-danger-border-subtle",
+    "--bs-danger-rgb",
+    "--bs-danger-text-emphasis",
+    "--bs-dark",
+    "--bs-dark-bg-subtle",
+    "--bs-dark-border-subtle",
+    "--bs-dark-rgb",
+    "--bs-dark-text-emphasis",
+    "--bs-emphasis-color",
+    "--bs-focus-ring-color",
+    "--bs-focus-ring-opacity",
+    "--bs-focus-ring-width",
+    "--bs-font-monospace",
+    "--bs-font-sans-serif",
+    "--bs-form-invalid-border-color",
+    "--bs-form-invalid-color",
+    "--bs-form-valid-border-color",
+    "--bs-form-valid-color",
+    "--bs-gradient",
+    "--bs-gray",
+    "--bs-gray-100",
+    "--bs-gray-200",
+    "--bs-gray-300",
+    "--bs-gray-400",
+    "--bs-gray-500",
+    "--bs-gray-600",
+    "--bs-gray-700",
+    "--bs-gray-800",
+    "--bs-gray-900",
+    "--bs-gray-dark",
+    "--bs-green",
+    "--bs-heading-color",
+    "--bs-highlight-bg",
+    "--bs-highlight-color",
+    "--bs-indigo",
+    "--bs-info",
+    "--bs-info-bg-subtle",
+    "--bs-info-border-subtle",
+    "--bs-info-rgb",
+    "--bs-info-text-emphasis",
+    "--bs-light",
+    "--bs-light-bg-subtle",
+    "--bs-light-border-subtle",
+    "--bs-light-rgb",
+    "--bs-light-text-emphasis",
+    "--bs-link-color",
+    "--bs-link-decoration",
+    "--bs-link-hover-color",
+    "--bs-orange",
+    "--bs-pink",
+    "--bs-primary",
+    "--bs-primary-bg-subtle",
+    "--bs-primary-border-subtle",
+    "--bs-primary-rgb",
+    "--bs-primary-text-emphasis",
+    "--bs-purple",
+    "--bs-red",
+    "--bs-secondary",
+    "--bs-secondary-bg",
+    "--bs-secondary-bg-subtle",
+    "--bs-secondary-border-subtle",
+    "--bs-secondary-color",
+    "--bs-secondary-rgb",
+    "--bs-secondary-text-emphasis",
+    "--bs-success",
+    "--bs-success-bg-subtle",
+    "--bs-success-border-subtle",
+    "--bs-success-rgb",
+    "--bs-success-text-emphasis",
+    "--bs-teal",
+    "--bs-tertiary-bg",
+    "--bs-tertiary-color",
+    "--bs-warning",
+    "--bs-warning-bg-subtle",
+    "--bs-warning-border-subtle",
+    "--bs-warning-rgb",
+    "--bs-warning-text-emphasis",
+    "--bs-white",
+    "--bs-white-rgb",
+    "--bs-yellow"
+  ]
+}
