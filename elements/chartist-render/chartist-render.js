@@ -5,6 +5,7 @@
 import { LitElement, html, css } from "lit";
 import { generateResourceID } from "@haxtheweb/utils/lib/ids.js";
 import { CSVtoArray } from "@haxtheweb/utils/utils.js";
+import { sanitizeHTMLString } from "@haxtheweb/utils/lib/sanitize.js";
 import "@haxtheweb/es-global-bridge/es-global-bridge.js";
 
 const ChartistRenderSuper = function (SuperClass) {
@@ -1522,6 +1523,11 @@ const ChartistRenderSuper = function (SuperClass) {
         }
         const filled = (cell) =>
           cell !== undefined && cell !== null && cell !== "";
+        // Security (chart data is never markup we trust): cells come from
+        // the data attribute or a remote CSV, so each one is sanitized
+        // before the table is written as HTML.
+        const safe = (cell) =>
+          filled(cell) ? sanitizeHTMLString(String(cell)) : "";
         table = table || globalThis.document.createElement("table");
         // with row headings the header row keeps its corner cell even when
         // it is empty (a CSV header like ",Q1,Q2"): dropping it shifts every
@@ -1531,14 +1537,16 @@ const ChartistRenderSuper = function (SuperClass) {
            <thead><tr>
              ${
                filled(thead.row)
-                 ? `<th scope="row">${thead.row}</th>`
+                 ? `<th scope="row">${safe(thead.row)}</th>`
                  : rowHeads && thead.col
                    ? `<td></td>`
                    : ``
              }
              ${
                thead.col
-                 ? thead.col.map((th) => `<th scope="col">${th}</th>`).join("")
+                 ? thead.col
+                     .map((th) => `<th scope="col">${safe(th)}</th>`)
+                     .join("")
                  : ``
              }
            </tr></thead>`;
@@ -1551,12 +1559,12 @@ const ChartistRenderSuper = function (SuperClass) {
                <tr>
                  ${
                    filled(tr.th)
-                     ? `<th scope="row">${tr.th}</th>`
+                     ? `<th scope="row">${safe(tr.th)}</th>`
                      : rowHeads && tr.td
                        ? `<td></td>`
                        : ``
                  }
-                 ${tr.td ? tr.td.map((td) => `<td>${td}</td>`).join("") : ``}
+                 ${tr.td ? tr.td.map((td) => `<td>${safe(td)}</td>`).join("") : ``}
                </tr>
              `,
                )

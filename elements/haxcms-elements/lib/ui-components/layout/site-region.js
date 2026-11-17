@@ -5,6 +5,7 @@
 import { html, LitElement } from "lit";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
+import { sanitizeHTMLString } from "@haxtheweb/utils/lib/sanitize.js";
 class SiteRegion extends LitElement {
   static get tag() {
     return "site-region";
@@ -67,7 +68,9 @@ class SiteRegion extends LitElement {
                   .then((data) => {
                     // region data found
                     let div = globalThis.document.createElement("div");
-                    div.innerHTML = data;
+                    // Security (page content is sanitized before it is rendered): the
+                    // same rule the site builder keeps for the active page.
+                    div.innerHTML = sanitizeHTMLString(data || "");
                     div.classList.add("site-region-wrapper");
                     // set a part to improve shadowRoot targetting from outside the theme
                     // css vars still based way to penetrate this
