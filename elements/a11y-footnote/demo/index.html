@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>a11y-footnote demo</title>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <script type="module">
+      import '../a11y-footnote.js';
+    </script>
+    <style>
+      body { font-family: var(--ddd-font-primary, sans-serif); }
+      main { max-width: 68ch; margin: 0 auto; padding: 1rem; line-height: 1.6; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Why the land-grant mission still matters</h1>
+      <p>The Morrill Act of 1862 granted each state federal land to fund colleges teaching agriculture and the mechanic arts<a11y-footnote>Morrill Land-Grant Act, 7 U.S.C. § 301 et seq. (1862).</a11y-footnote>, alongside the classical curriculum.</p>
+      <p>Pennsylvania designated its Farmers' High School<a11y-footnote>Chartered in 1855; renamed the Agricultural College of Pennsylvania in 1862 and <em>The Pennsylvania State College</em> in 1874.</a11y-footnote> as its land-grant institution.</p>
+      <p>The second Morrill Act of 1890<a11y-footnote>Second Morrill Act, 26 Stat. 417 (1890).</a11y-footnote> extended the mission.</p>
+      <p>Nobody placed the numbered list below; it assembles itself from the notes above.</p>
+    </main>
+  </body>
+</html>

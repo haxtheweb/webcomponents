@@ -1,0 +1,188 @@
+{
+  "id": "writing-theme-demo",
+  "title": "Back forty notes",
+  "author": "",
+  "description": "Demonstration site for writing-theme: a home page of recent posts, a plain post page and an archive by year.",
+  "license": "by-sa",
+  "metadata": {
+    "author": {
+      "image": "",
+      "name": "",
+      "email": "",
+      "socialLink": ""
+    },
+    "site": {
+      "name": "writing-theme",
+      "logo": "",
+      "lang": "en",
+      "created": 1736889000,
+      "updated": 1736889000,
+      "git": {},
+      "version": "9.0.6",
+      "domain": "",
+      "static": {},
+      "settings": {
+        "pathauto": false,
+        "publishPagesOn": true,
+        "sw": false,
+        "forceUpgrade": false,
+        "lang": "",
+        "gaID": ""
+      },
+      "tags": ""
+    },
+    "theme": {
+      "element": "writing-theme",
+      "path": "@haxtheweb/writing-theme/writing-theme.js",
+      "name": "Writing",
+      "variables": {}
+    },
+    "node": {
+      "fields": {}
+    },
+    "build": {
+      "version": "6.0.1",
+      "structure": "course",
+      "type": "Create Your Own"
+    }
+  },
+  "items": [
+    {
+      "id": "item-writing-home",
+      "title": "Home",
+      "slug": "home",
+      "order": 0,
+      "parent": null,
+      "indent": 0,
+      "location": "pages/item-writing-home/index.html",
+      "description": "",
+      "metadata": {
+        "created": 1794830400,
+        "updated": 1794830400,
+        "published": true,
+        "hideInMenu": false,
+        "tags": [],
+        "hideTitle": true
+      }
+    },
+    {
+      "id": "item-writing-about",
+      "title": "About",
+      "slug": "about",
+      "order": 1,
+      "parent": null,
+      "indent": 0,
+      "location": "pages/item-writing-about/index.html",
+      "description": "",
+      "metadata": {
+        "created": 1794830400,
+        "updated": 1794830400,
+        "published": true,
+        "hideInMenu": false,
+        "tags": []
+      }
+    },
+    {
+      "id": "item-writing-archive",
+      "title": "Archive",
+      "slug": "archive",
+      "order": 2,
+      "parent": null,
+      "indent": 0,
+      "location": "pages/item-writing-archive/index.html",
+      "description": "",
+      "metadata": {
+        "created": 1794830400,
+        "updated": 1794830400,
+        "published": true,
+        "hideInMenu": false,
+        "tags": []
+      }
+    },
+    {
+      "id": "item-writing-posts",
+      "title": "Posts",
+      "slug": "posts",
+      "order": 3,
+      "parent": null,
+      "indent": 0,
+      "location": "pages/item-writing-posts/index.html",
+      "description": "",
+      "metadata": {
+        "created": 1794830400,
+        "updated": 1794830400,
+        "published": true,
+        "hideInMenu": true,
+        "tags": []
+      }
+    },
+    {
+      "id": "item-writing-p1",
+      "title": "Planting the north beds",
+      "slug": "posts/planting-the-north-beds",
+      "order": 0,
+      "parent": "item-writing-posts",
+      "indent": 1,
+      "location": "pages/item-writing-p1/index.html",
+      "description": "",
+      "metadata": {
+        "created": 1793620800,
+        "updated": 1794225600,
+        "published": true,
+        "hideInMenu": false,
+        "tags": ["garlic", "planting"]
+      }
+    },
+    {
+      "id": "item-writing-p2",
+      "title": "What the soil test said",
+      "slug": "posts/what-the-soil-test-said",
+      "order": 1,
+      "parent": "item-writing-posts",
+      "indent": 1,
+      "location": "pages/item-writing-p2/index.html",
+      "description": "",
+      "metadata": {
+        "created": 1792411200,
+        "updated": 1792411200,
+        "published": true,
+        "hideInMenu": false,
+        "tags": ["soil"]
+      }
+    },
+    {
+      "id": "item-writing-p3",
+      "title": "Saving tomato seed",
+      "slug": "posts/saving-tomato-seed",
+      "order": 2,
+      "parent": "item-writing-posts",
+      "indent": 1,
+      "location": "pages/item-writing-p3/index.html",
+      "description": "",
+      "metadata": {
+        "created": 1790596800,
+        "updated": 1790596800,
+        "published": true,
+        "hideInMenu": false,
+        "tags": ["seed saving", "tomatoes"]
+      }
+    },
+    {
+      "id": "item-writing-p4",
+      "title": "Mulch, measured",
+      "slug": "posts/mulch-measured",
+      "order": 3,
+      "parent": "item-writing-posts",
+      "indent": 1,
+      "location": "pages/item-writing-p4/index.html",
+      "description": "",
+      "metadata": {
+        "created": 1764849600,
+        "updated": 1764849600,
+        "published": true,
+        "hideInMenu": false,
+        "tags": ["soil", "mulch"]
+      }
+    }
+  ]
+}

@@ -1145,6 +1145,17 @@ export const DDDGlobalStyles = css`
   body.dark-mode {
     color-scheme: only dark;
   }
+  /* a footnote whose element has not loaded (or never will) still reads as
+     a note where it was written, instead of running into the sentence */
+  a11y-footnote:not(:defined) {
+    font-size: 0.85em;
+  }
+  a11y-footnote:not(:defined)::before {
+    content: " [";
+  }
+  a11y-footnote:not(:defined)::after {
+    content: "]";
+  }
 `;
 /* Data Attributes used by HAX */
 /* Data Attributes used by HAX, in two parts around DDDSkeleton so the
