@@ -218,6 +218,17 @@ export const HaxUiAdminShell = [
       background-color: var(--hax-ui-selected);
       box-shadow: inset 3px 0 0 var(--hax-ui-accent-strong);
     }
+    /* held down: the same pressed overlay as the admin controls; the
+       current page keeps its edge bar under it */
+    .rail-item:active,
+    .rail-toggle:active {
+      box-shadow: inset 0 0 0 999px var(--hax-ui-pressed);
+    }
+    .rail-item[aria-current="page"]:active {
+      box-shadow:
+        inset 3px 0 0 var(--hax-ui-accent-strong),
+        inset 0 0 0 999px var(--hax-ui-pressed);
+    }
     .rail-collapse {
       margin-bottom: var(--hax-ui-gap);
       color: var(--hax-ui-text-muted);

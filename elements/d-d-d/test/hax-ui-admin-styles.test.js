@@ -355,4 +355,42 @@ describe("HaxUiAdminStyles: the one HAX UI admin layer", () => {
       ).to.equal(true, `outline-offset ${offset}`);
     });
   });
+
+  it("gives the switch a hover state and every control a held-down state", () => {
+    const rules = [];
+    HaxUiAdminControls.forEach((sheet) => {
+      Array.from(sheet.styleSheet.cssRules).forEach((rule) => {
+        if (rule.selectorText) {
+          rules.push(rule);
+        }
+      });
+    });
+    const styled = (selector, property) =>
+      rules.some(
+        (rule) =>
+          rule.selectorText
+            .split(",")
+            .some((part) => part.trim().startsWith(selector)) &&
+          rule.style[property] &&
+          rule.style[property] !== "none",
+      );
+    expect(styled(".hax-ui-switch:hover", "boxShadow")).to.equal(true);
+    [
+      ".hax-ui-btn:active",
+      ".hax-ui-icon-btn:active",
+      ".hax-ui-chip:active",
+      ".hax-ui-seg button:active",
+      ".hax-ui-switch:active",
+    ].forEach((selector) => {
+      expect(styled(selector, "boxShadow"), selector).to.equal(true);
+    });
+    // a disabled control never shows the held-down state
+    rules
+      .filter((rule) => rule.selectorText.includes(":active"))
+      .forEach((rule) => {
+        rule.selectorText.split(/,(?![^(]*\))/).forEach((part) => {
+          expect(part.includes(":not("), part.trim()).to.equal(true);
+        });
+      });
+  });
 });

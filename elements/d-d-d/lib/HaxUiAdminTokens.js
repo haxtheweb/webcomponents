@@ -76,6 +76,20 @@ export const HaxUiAdminTokens = [
           transparent
         )
       );
+      /* laid over a control's own fill while it is held down (see the
+         pressed rule in HaxUiAdminControls): a mid gray, so a light fill
+         darkens and a dark fill lightens, whatever color a design system
+         gives it and in either color scheme */
+      --hax-ui-pressed: rgba(128, 128, 128, 0.28);
+      /* hover for a control (button, chip, segment): a tint of the text
+         color instead of a fixed gray, so it shows on every admin
+         background (the fixed gray is the sunken and hover background
+         itself) and under a design system that maps that gray to white.
+         On the plain surface it matches --hax-ui-hover. */
+      --hax-ui-control-hover: light-dark(
+        color-mix(in srgb, var(--hax-ui-text) 6%, transparent),
+        var(--hax-ui-hover)
+      );
       /* rows that belong to the row above (a page's content structure):
          a lighter wash than hover, so hovering one still shows */
       --hax-ui-content-group: light-dark(

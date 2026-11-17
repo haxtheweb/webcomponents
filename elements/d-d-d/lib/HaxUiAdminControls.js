@@ -69,14 +69,14 @@ export const HaxUiAdminControls = [
         border-color var(--hax-ui-duration) var(--hax-ui-easing);
     }
     .hax-ui-btn:hover {
-      background-color: var(--hax-ui-hover);
+      background-color: var(--hax-ui-control-hover);
     }
     .hax-ui-btn.ghost {
       border-color: transparent;
       background-color: transparent;
     }
     .hax-ui-btn.ghost:hover {
-      background-color: var(--hax-ui-hover);
+      background-color: var(--hax-ui-control-hover);
     }
     .hax-ui-btn.primary {
       min-width: 88px;
@@ -132,6 +132,7 @@ export const HaxUiAdminControls = [
       color: var(--hax-ui-text-muted);
       background-color: var(--hax-ui-surface);
       background-image: none;
+      box-shadow: none;
       border-color: var(--hax-ui-line-strong);
     }
     .hax-ui-btn.hax-ui-btn.ghost:is([disabled], [aria-disabled="true"]),
@@ -162,7 +163,7 @@ export const HaxUiAdminControls = [
     }
     .hax-ui-icon-btn:hover {
       color: var(--hax-ui-text);
-      background-color: var(--hax-ui-hover);
+      background-color: var(--hax-ui-control-hover);
     }
     .hax-ui-icon-btn.danger:hover {
       color: var(--hax-ui-danger);
@@ -196,7 +197,7 @@ export const HaxUiAdminControls = [
       border-left: 1px solid var(--hax-ui-line-strong);
     }
     .hax-ui-seg button:hover {
-      background-color: var(--hax-ui-hover);
+      background-color: var(--hax-ui-control-hover);
     }
     /* pressed also gets an underline bar: bold type and a 12% wash alone
        are close to invisible in greyscale */
@@ -226,7 +227,7 @@ export const HaxUiAdminControls = [
     }
     .hax-ui-chip:hover {
       color: var(--hax-ui-text);
-      background-color: var(--hax-ui-hover);
+      background-color: var(--hax-ui-control-hover);
     }
     .hax-ui-chip[data-set] {
       border-style: solid;
@@ -246,8 +247,17 @@ export const HaxUiAdminControls = [
       border-radius: var(--hax-ui-radius-pill);
       /* off: text-muted, not line-strong; limestoneGray on white is about
          2.4:1, under the 3:1 non-text minimum (WCAG 1.4.11) */
-      background-color: var(--hax-ui-text-muted);
-      transition: background-color var(--hax-ui-duration) var(--hax-ui-easing);
+      --hax-ui-switch-track: var(--hax-ui-text-muted);
+      background-color: var(--hax-ui-switch-track);
+      transition:
+        background-color var(--hax-ui-duration) var(--hax-ui-easing),
+        box-shadow var(--hax-ui-duration) var(--hax-ui-easing);
+    }
+    /* hover: a halo in the track's own color, so it shows on every admin
+       background, on and off, in light and dark */
+    .hax-ui-switch:hover {
+      box-shadow: 0 0 0 4px
+        color-mix(in srgb, var(--hax-ui-switch-track) 30%, transparent);
     }
     .hax-ui-switch::after {
       content: "";
@@ -263,7 +273,7 @@ export const HaxUiAdminControls = [
       transition: left var(--hax-ui-duration) var(--hax-ui-easing);
     }
     .hax-ui-switch[aria-checked="true"] {
-      background-color: var(--hax-ui-accent-strong);
+      --hax-ui-switch-track: var(--hax-ui-accent-strong);
     }
     .hax-ui-switch[aria-checked="true"]::after {
       left: 18px;
@@ -272,6 +282,57 @@ export const HaxUiAdminControls = [
     .hax-ui-switch[aria-disabled="true"] {
       cursor: default;
       opacity: 0.5;
+      box-shadow: none;
+    }
+    /* filled buttons show hover as a halo in their own color, like the
+       switch: a design system can map the primary and its hover color to
+       the same value, and a halo cannot cancel out against the fill */
+    .hax-ui-btn.primary:hover {
+      box-shadow: 0 0 0 3px
+        color-mix(in srgb, var(--hax-ui-primary) 35%, transparent);
+    }
+    .hax-ui-btn.danger-fill:hover {
+      box-shadow: 0 0 0 3px
+        color-mix(in srgb, var(--hax-ui-danger) 35%, transparent);
+    }
+    /* a selected chip or segment keeps its fill on hover, so it takes half
+       the pressed overlay (a segment group clips anything outside it); the
+       doubled class outweighs the plain chip hover further down */
+    .hax-ui-chip.hax-ui-chip[aria-pressed="true"]:hover {
+      background-color: var(--hax-ui-accent-soft);
+      box-shadow: inset 0 0 0 999px
+        color-mix(in srgb, var(--hax-ui-pressed) 50%, transparent);
+    }
+    .hax-ui-seg button[aria-pressed="true"]:hover {
+      box-shadow:
+        inset 0 -3px 0 var(--hax-ui-accent-strong),
+        inset 0 0 0 999px
+          color-mix(in srgb, var(--hax-ui-pressed) 50%, transparent);
+    }
+    /* Held down (mouse, touch, or Space and Enter on a button): the control
+       drops 1px and its fill takes the pressed overlay, so a push is
+       confirmed before it is let go. No transition, so it is instant and
+       does not animate; nothing changes on a disabled control. */
+    .hax-ui-btn:active:not([disabled], [aria-disabled="true"]),
+    .hax-ui-icon-btn:active:not([disabled], [aria-disabled="true"]),
+    .hax-ui-chip:active:not([disabled], [aria-disabled="true"]),
+    .hax-ui-token button:active:not([disabled]),
+    .hax-ui-seg button:active:not([disabled]) {
+      transform: translateY(1px);
+      box-shadow: inset 0 0 0 999px var(--hax-ui-pressed);
+    }
+    /* a selected segment keeps its underline bar under the overlay */
+    .hax-ui-seg button[aria-pressed="true"]:active:not([disabled]) {
+      box-shadow:
+        inset 0 -3px 0 var(--hax-ui-accent-strong),
+        inset 0 0 0 999px var(--hax-ui-pressed);
+    }
+    /* the switch keeps its hover halo and stays put: its thumb moves */
+    .hax-ui-switch:active:not([disabled], [aria-disabled="true"]) {
+      box-shadow:
+        inset 0 0 0 999px var(--hax-ui-pressed),
+        0 0 0 4px
+          color-mix(in srgb, var(--hax-ui-switch-track) 45%, transparent);
     }
     .hax-ui-input,
     .hax-ui-select {
@@ -496,7 +557,7 @@ export const HaxUiAdminControls = [
       background-color: var(--hax-ui-surface);
     }
     .hax-ui-chip[aria-pressed]:hover {
-      background-color: var(--hax-ui-hover);
+      background-color: var(--hax-ui-control-hover);
     }
     .hax-ui-chip[aria-pressed="true"] {
       font-weight: var(--ddd-font-weight-bold, 700);

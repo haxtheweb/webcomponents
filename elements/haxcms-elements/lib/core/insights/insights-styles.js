@@ -255,6 +255,11 @@ export const InsightsStyles = [
     .sbtn:hover {
       background-color: var(--hax-ui-hover);
     }
+    /* held down: the same pressed look as .hax-ui-btn */
+    .sbtn:active:not([disabled], [aria-disabled="true"]) {
+      transform: translateY(1px);
+      box-shadow: inset 0 0 0 999px var(--hax-ui-pressed);
+    }
     .sbtn[disabled],
     .sbtn[aria-disabled="true"] {
       cursor: default;
