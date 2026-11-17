@@ -4324,7 +4324,7 @@
     {
       "tag": "polaris-invent-theme",
       "title": "",
-      "description": "A 2nd polaris theme customized for Invent PSU - HAXcms - A headless content management system - HAXCMSTheme - A super class that provides correct baseline wiring to build a new theme Working palettes: - 0 (Default) - 3 (Offbrand Nittany Blue) - 4 (Boring Blue Grey) - 5 (Monotone) - 7 (Tweedle Dee...",
+      "description": "A 2nd polaris theme customized for Invent PSU - HAXcms - A headless content management system - HAXCMSTheme - A super class that provides correct baseline wiring to build a new theme Working palettes: - 0 (Default) - 3 (Offbrand Blue) - 4 (Boring Blue Grey) - 5 (Monotone) - 7 (Tweedle Dee) - 8 (S...",
       "package": "@haxtheweb/polaris-theme",
       "import": "@haxtheweb/polaris-theme/lib/polaris-invent-theme.js",
       "type": "element",
