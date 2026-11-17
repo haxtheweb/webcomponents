@@ -53,6 +53,10 @@ for (const project of listDirs(".")) {
 
   symlinkDir("lib", symlinkRoot);
   symlinkDir("locales", symlinkRoot);
+  // design system bridges keep their icon SVGs here; without the link the
+  // node_modules/@haxtheweb/*/icons/*.svg entry in polymer.json matches
+  // nothing and no icon reaches a build or the dev server
+  symlinkDir("icons", symlinkRoot);
   symlinkDir("server", symlinkRoot);
   symlinkDir("build", symlinkRoot);
   symlinkDir("dist", symlinkRoot);
