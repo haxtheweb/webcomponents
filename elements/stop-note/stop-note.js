@@ -407,6 +407,18 @@ class StopNote extends DDDVocabulary(
   static get tag() {
     return "stop-note";
   }
+  /**
+   * Sends no xAPI statements on purpose (see
+   * scripts/generate-xapi-vocabulary.mjs). Page reading notes when it was on screen, as evidence for the page's one reading record.
+   */
+  static get xapiVocabulary() {
+    return {
+      tag: "stop-note",
+      tracks: false,
+      readingCheckpoint: true,
+      reason: "a note to read; there is nothing to answer or finish",
+    };
+  }
   constructor() {
     super();
     this.typeof = "oer:LearningComponent";

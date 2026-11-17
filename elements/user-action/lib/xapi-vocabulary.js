@@ -179,9 +179,10 @@ export const XAPI_VOCABULARY = {
       "completion",
       "duration",
       "extensions.https://haxtheweb.org/xapi/extensions/progress",
+      "extensions.https://haxtheweb.org/xapi/extensions/checkpoints",
     ],
     countsTowardCompletion: false,
-    done: "page content scrolled through to its end (each page counts its reading toward being done on its own)",
+    done: "90% of the page content scrolled through and, when the page has reading checkpoints, 80% of them seen on screen (each page counts its reading toward being done on its own)",
     source: "elements/haxcms-elements/lib/core/haxcms-reading-progress.js",
   },
   "identify-hotspots": {
@@ -333,6 +334,16 @@ export const XAPI_VOCABULARY = {
     countsTowardCompletion: true,
     done: "answered correctly or out of attempts",
     source: "elements/matching-question/matching-question.js",
+  },
+  "media-image": {
+    tag: "media-image",
+    event: "user-engagement",
+    verbs: ["experienced"],
+    objectType: "http://adlnet.gov/expapi/activities/interaction",
+    result: [],
+    countsTowardCompletion: false,
+    done: "never required; records that the image was opened to look at it closely",
+    source: "elements/media-image/media-image.js",
   },
   "memory-match": {
     tag: "memory-match",
@@ -605,3 +616,41 @@ export const XAPI_VOCABULARY = {
 export const XAPI_TRACKABLE_TAGS = Object.keys(XAPI_VOCABULARY).filter(
   (tag) => XAPI_VOCABULARY[tag].countsTowardCompletion,
 );
+
+// elements that send nothing on purpose (tracks: false), with the reason.
+// A HAX element in neither list has not said what it tracks yet.
+export const XAPI_DECLARED_SILENT = {
+  "accent-card": {
+    tag: "accent-card",
+    tracks: false,
+    reason: "content to read; there is nothing to answer or finish",
+    readingCheckpoint: true,
+    source: "elements/accent-card/accent-card.js",
+  },
+  "grid-plate": {
+    tag: "grid-plate",
+    tracks: false,
+    reason: "a layout wrapper; what is inside it reports for itself",
+    readingCheckpoint: true,
+    source: "elements/grid-plate/grid-plate.js",
+  },
+  "page-break": {
+    tag: "page-break",
+    tracks: false,
+    reason: "marks where a page starts; there is nothing to do with it",
+    readingCheckpoint: false,
+    source: "elements/page-break/page-break.js",
+  },
+  "stop-note": {
+    tag: "stop-note",
+    tracks: false,
+    reason: "a note to read; there is nothing to answer or finish",
+    readingCheckpoint: true,
+    source: "elements/stop-note/stop-note.js",
+  },
+};
+
+// silent elements page reading notes as seen (no statement of their own)
+export const XAPI_READING_CHECKPOINT_TAGS = Object.keys(
+  XAPI_DECLARED_SILENT,
+).filter((tag) => XAPI_DECLARED_SILENT[tag].readingCheckpoint);

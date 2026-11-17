@@ -3,6 +3,8 @@ import { store } from "../lib/core/haxcms-site-store.js";
 import { LearnerProgress } from "../lib/core/haxcms-learner-progress.js";
 import {
   HAXCMSReadingProgress,
+  checkpointGateMet,
+  checkpointInView,
   readShare,
 } from "../lib/core/haxcms-reading-progress.js";
 import "../lib/ui-components/navigation/site-menu.js";
@@ -17,7 +19,11 @@ import {
   XAPI_VERBS,
   XAPI_VIDEO_PROGRESS,
 } from "@haxtheweb/user-action/lib/xapi.js";
-import { XAPI_VOCABULARY } from "@haxtheweb/user-action/lib/xapi-vocabulary.js";
+import {
+  XAPI_VOCABULARY,
+  XAPI_DECLARED_SILENT,
+  XAPI_READING_CHECKPOINT_TAGS,
+} from "@haxtheweb/user-action/lib/xapi-vocabulary.js";
 import "@haxtheweb/a11y-collapse/a11y-collapse.js";
 
 const flush = (ms = 40) => new Promise((r) => setTimeout(r, ms));
@@ -226,6 +232,199 @@ describe("HAXCMSReadingProgress tracker", () => {
   });
 });
 
+describe("reading checkpoints", () => {
+  let region;
+  let marks;
+  let reports;
+  let remembered;
+  let tracker;
+  // a long region with five checkpoints spread through it
+  beforeEach(async () => {
+    region = await fixture(
+      html`<div style="height: ${vh() * 5}px; margin: 0; position: relative;">
+        ${[0.1, 0.3, 0.5, 0.7, 0.9].map(
+          (at) =>
+            html`<div
+              class="mark"
+              style="position: absolute; left: 0; width: 200px; height: 80px; top: ${
+                vh() * 5 * at
+              }px;"
+            ></div>`,
+        )}
+      </div>`,
+    );
+    marks = Array.from(region.querySelectorAll(".mark"));
+    globalThis.scrollTo(0, 0);
+    reports = [];
+    remembered = [];
+    tracker = new HAXCMSReadingProgress({
+      report: (verb, share, p, evidence) =>
+        reports.push({ verb, share, evidence }),
+      checkpoints: () => marks,
+      onCheckpoint: (indexes) => remembered.push(...indexes),
+      throttleMs: 0,
+      settleMs: 0,
+      dwellMs: 40,
+    });
+  });
+  afterEach(() => {
+    tracker.end();
+    globalThis.scrollTo(0, 0);
+  });
+  const bottom = () => globalThis.scrollTo(0, document.body.scrollHeight);
+  const lookAt = async (mark) => {
+    mark.scrollIntoView({ block: "center" });
+    tracker.measure();
+    await flush(120);
+    tracker.measure();
+  };
+
+  it("says when a checkpoint is on screen enough, or not laid out", () => {
+    const h = 800;
+    const box = (top, height, width = 100) => ({
+      top,
+      bottom: top + height,
+      height,
+      width,
+    });
+    expect(checkpointInView(box(100, 80), h)).to.equal(true);
+    // half of it on screen is enough, a sliver is not
+    expect(checkpointInView(box(h - 40, 80), h)).to.equal(true);
+    expect(checkpointInView(box(h - 10, 80), h)).to.equal(false);
+    expect(checkpointInView(box(-70, 80), h)).to.equal(false);
+    // taller than the screen: a quarter of the screen is enough
+    expect(checkpointInView(box(h - 200, 3000), h)).to.equal(true);
+    expect(checkpointInView(box(h - 100, 3000), h)).to.equal(false);
+    // closed collapse, unselected tab, display none
+    expect(checkpointInView(box(100, 0), h)).to.equal(null);
+    expect(checkpointInView(box(100, 80, 0), h)).to.equal(null);
+  });
+
+  it("asks for 80% of the checkpoints, and nothing of a page without any", () => {
+    expect(checkpointGateMet(0, 0)).to.equal(true);
+    expect(checkpointGateMet(4, 5)).to.equal(true);
+    expect(checkpointGateMet(3, 5)).to.equal(false);
+    expect(checkpointGateMet(1, 1)).to.equal(true);
+  });
+
+  it("is read at 90% scrolled, not at the last pixel", async () => {
+    marks = [];
+    tracker.begin({ id: "a" }, region);
+    tracker.ready();
+    const top = region.getBoundingClientRect().top + globalThis.scrollY;
+    globalThis.scrollTo(0, top + region.offsetHeight * 0.92 - vh());
+    await until(() => reports.some((r) => r.verb === "completed"));
+    const done = reports.find((r) => r.verb === "completed");
+    expect(done.share).to.equal(1);
+    // no checkpoints on the page: no evidence to carry
+    expect(done.evidence).to.equal(null);
+  });
+
+  it("does not read a page flung to the bottom past its checkpoints", async () => {
+    tracker.begin({ id: "a" }, region);
+    tracker.ready();
+    bottom();
+    await flush(200);
+    tracker.measure();
+    expect(tracker.completed).to.equal(false);
+    // the share reported stops short of read, with what was seen
+    tracker.flush();
+    const last = reports[reports.length - 1];
+    expect(last.verb).to.equal("progressed");
+    expect(last.share).to.equal(0.9);
+    expect(last.evidence.total).to.equal(5);
+    expect(last.evidence.seen).to.be.below(4);
+    expect(reports.some((r) => r.verb === "completed")).to.equal(false);
+  });
+
+  it("reads the page from anywhere once enough checkpoints were looked at", async () => {
+    tracker.begin({ id: "a" }, region);
+    tracker.ready();
+    bottom();
+    await flush(120);
+    tracker.measure();
+    expect(tracker.completed).to.equal(false);
+    // going back up to them is enough: no need to be at the bottom again
+    for (const mark of marks.slice(0, 4)) {
+      if (!tracker.completed) {
+        await lookAt(mark);
+      }
+    }
+    await until(() => tracker.completed);
+    const done = reports[reports.length - 1];
+    expect(done.verb).to.equal("completed");
+    expect(done.share).to.equal(1);
+    expect(done.evidence.total).to.equal(5);
+    expect(done.evidence.seen).to.be.at.least(4);
+    expect(done.evidence.missed.length).to.equal(5 - done.evidence.seen);
+    // each one is remembered once, and nothing more is looked at once read
+    expect(new Set(remembered).size).to.equal(remembered.length);
+    const count = reports.length;
+    await lookAt(marks[2]);
+    expect(reports.length).to.equal(count);
+  });
+
+  it("needs a checkpoint to stay on screen, not to flash by", async () => {
+    tracker.dwellMs = 5000;
+    tracker.begin({ id: "a" }, region);
+    tracker.ready();
+    for (const mark of marks) {
+      mark.scrollIntoView({ block: "center" });
+      tracker.measure();
+    }
+    expect(tracker.checkpointStatus().seen).to.equal(0);
+  });
+
+  it("never requires a checkpoint that is not laid out", async () => {
+    // two of five are inside something closed: 3 of 3 is enough
+    marks[0].style.display = "none";
+    marks[1].style.display = "none";
+    tracker.begin({ id: "a" }, region);
+    tracker.ready();
+    expect(tracker.checkpointStatus().total).to.equal(3);
+    for (const mark of marks.slice(2)) {
+      await lookAt(mark);
+    }
+    bottom();
+    await until(() => tracker.completed);
+    expect(reports[reports.length - 1].evidence).to.deep.equal({
+      seen: 3,
+      total: 3,
+      missed: [],
+    });
+  });
+
+  it("counts checkpoints seen on an earlier visit", async () => {
+    tracker.begin({ id: "a" }, region, { seen: [0, 1, 2, 3] });
+    tracker.ready();
+    bottom();
+    await until(() => tracker.completed);
+    const done = reports[reports.length - 1];
+    expect(done.verb).to.equal("completed");
+    expect(done.evidence.seen).to.be.at.least(4);
+  });
+
+  it("is declared by the silent elements, next to their code", () => {
+    expect(XAPI_READING_CHECKPOINT_TAGS).to.include.members([
+      "accent-card",
+      "grid-plate",
+      "stop-note",
+    ]);
+    expect(XAPI_DECLARED_SILENT["page-break"].readingCheckpoint).to.equal(
+      false,
+    );
+    Object.keys(XAPI_DECLARED_SILENT).forEach((tag) => {
+      expect(XAPI_DECLARED_SILENT[tag].reason).to.be.a("string").that.is.not
+        .empty;
+      // silent elements are never in the list of what sends statements
+      expect(XAPI_VOCABULARY[tag]).to.equal(undefined);
+    });
+    expect(XAPI_VOCABULARY["haxcms-page"].result).to.include(
+      `extensions.${XAPI_EXTENSIONS.checkpoints}`,
+    );
+  });
+});
+
 describe("HAXcms learner progress: reading and page completion", () => {
   let saved;
   let host;
@@ -333,6 +532,102 @@ describe("HAXcms learner progress: reading and page completion", () => {
     await goTo("r2");
     await goTo("r1");
     expect(LearnerProgress.reading.page).to.equal(null);
+  });
+
+  it("a page with checkpoints is one reading record that carries what was seen", async () => {
+    const dwell = LearnerProgress.reading.dwellMs;
+    LearnerProgress.reading.dwellMs = 40;
+    try {
+      await goTo("r2");
+      showContent(
+        host,
+        "r2",
+        `<p>Intro</p>
+        <stop-note title="One" style="display:block;height:80px"></stop-note>
+        <div style="height:${vh() * 3}px"></div>
+        <stop-note title="Two" style="display:block;height:80px"></stop-note>`,
+      );
+      await until(() => LearnerProgress.reading.isReady);
+      expect(LearnerProgress.readingCheckpoints().length).to.equal(2);
+      // flung to the bottom: the first note was never looked at
+      globalThis.scrollTo(0, document.body.scrollHeight);
+      await flush(200);
+      LearnerProgress.reading.measure();
+      expect(LearnerProgress.pageProgress().reading.done).to.equal(false);
+      // what was seen is kept as state, not as a statement of its own
+      const state = UserScaffoldInstance.readActivity("rp-site", urlOf("r2"));
+      expect(state.reading).to.equal(true);
+      expect(state.state.covered).to.deep.equal([[1, 1]]);
+      // back up to the first note: the page is read from where it is
+      host.querySelector("stop-note").scrollIntoView({ block: "center" });
+      await until(() => LearnerProgress.pageProgress().reading.done);
+      expect(LearnerProgress.pageProgress().status).to.equal("done");
+      const sent = await readingStatements("r2");
+      const done = sent[sent.length - 1];
+      expect(done.verb.id).to.equal(XAPI_VERBS.completed);
+      expect(done.result.extensions).to.deep.equal({
+        [XAPI_EXTENSIONS.progress]: 1,
+        [XAPI_EXTENSIONS.checkpoints]: { seen: 2, total: 2, missed: [] },
+      });
+      // nothing but page statements: the notes sent none
+      const all = await UserScaffoldInstance.statements("rp-site");
+      expect(all.every((x) => x.object.id === urlOf("r2"))).to.equal(true);
+    } finally {
+      LearnerProgress.reading.dwellMs = dwell;
+    }
+  });
+
+  const visits = async (pageId) =>
+    (await UserScaffoldInstance.statements("rp-site")).filter(
+      (x) =>
+        x.object.id === urlOf(pageId) &&
+        x.verb.display["en-US"] === "experienced",
+    );
+
+  it("sends one experienced per time a page is opened, not per outline change", async () => {
+    await goTo("r2");
+    showContent(host, "r2", `<div style="height:${vh() * 4}px"></div>`);
+    await flush(100);
+    expect(await visits("r2")).to.have.length(1);
+    // the outline is replaced and the item changes while the page is open
+    // (a save, a refresh of site.json): still the same visit
+    store.manifest = JSON.parse(JSON.stringify(MANIFEST));
+    await flush(100);
+    const next = JSON.parse(JSON.stringify(MANIFEST));
+    next.items[1].title = "Long read, renamed";
+    store.manifest = next;
+    await flush(100);
+    expect(await visits("r2")).to.have.length(1);
+    // reading was not started over either
+    expect(LearnerProgress.reading.page.id).to.equal("r2");
+    // leaving and coming back to a page not done yet is another visit
+    await goTo("r3");
+    await goTo("r2");
+    await flush(100);
+    expect(await visits("r2")).to.have.length(2);
+  });
+
+  it("sends nothing for opening a page that is already done", async () => {
+    await goTo("r1");
+    showContent(host, "r1", "<p>Short page of text.</p>");
+    await until(() => LearnerProgress.pageProgress().status === "done");
+    const before = (await UserScaffoldInstance.statements("rp-site")).length;
+    expect(await visits("r1")).to.have.length(1);
+    await goTo("r3");
+    await goTo("r1");
+    showContent(host, "r1", "<p>Short page of text.</p>");
+    await flush(200);
+    expect(await visits("r1")).to.have.length(1);
+    // nothing about r1 at all: only the visit to r3 was added
+    const after = await UserScaffoldInstance.statements("rp-site");
+    expect(
+      after.slice(before).every((x) => x.object.id === urlOf("r3")),
+    ).to.equal(true);
+    // the visit is still counted in the learner profile
+    expect(
+      UserScaffoldInstance.readSite("rp-site").pages.r1.visits,
+    ).to.be.at.least(2);
+    expect(LearnerProgress.pageProgress().status).to.equal("done");
   });
 
   it("reports reading once per page, ever: only past where the learner got", async () => {

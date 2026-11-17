@@ -32,6 +32,18 @@ class AccentCard extends I18NMixin(IntersectionObserverMixin(DDD)) {
   static get tag() {
     return "accent-card";
   }
+  /**
+   * Sends no xAPI statements on purpose (see
+   * scripts/generate-xapi-vocabulary.mjs). Page reading notes when it was on screen, as evidence for the page's one reading record.
+   */
+  static get xapiVocabulary() {
+    return {
+      tag: "accent-card",
+      tracks: false,
+      readingCheckpoint: true,
+      reason: "content to read; there is nothing to answer or finish",
+    };
+  }
   // render function
   static get styles() {
     return [

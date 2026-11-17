@@ -231,7 +231,9 @@
     "(default)",
     "caption"
   ],
-  "events": [],
+  "events": [
+    "user-engagement"
+  ],
   "hax": {
     "canScale": true,
     "canEditSource": true,
@@ -397,7 +399,7 @@
       }
     ]
   },
-  "surfaceHash": "ba82f5803f43",
+  "surfaceHash": "33825aa84c63",
   "walkthroughs": [
     {
       "id": "",

@@ -29,6 +29,17 @@
               "description": "#3050: a file backing this image was modified in place (rotate / compress /\nscale / transform). Refresh the live preview by cache-busting the inner\nshadow <img> src directly — the ?t= stays in shadow DOM so the persisted\n`source` / `thumbnail` properties (and saved content) stay clean."
             },
             {
+              "kind": "field",
+              "name": "xapiVocabulary",
+              "static": true,
+              "description": "xAPI statements this element sends (see scripts/generate-xapi-vocabulary.mjs)",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_announceOpen"
+            },
+            {
               "kind": "method",
               "name": "_handleClick",
               "parameters": [
@@ -313,6 +324,14 @@
                 "text": "boolean"
               },
               "attribute": "_hasCaption"
+            }
+          ],
+          "events": [
+            {
+              "name": "user-engagement",
+              "type": {
+                "text": "CustomEvent"
+              }
             }
           ],
           "attributes": [

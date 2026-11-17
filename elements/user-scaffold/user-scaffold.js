@@ -874,7 +874,8 @@ export class UserScaffold extends HTMLElement {
    * @param {Object} state { covered: [[from, to], ...] whole-number inclusive
    *   ranges (seconds, slide indexes), resume: number (where to pick up),
    *   progress: 0 to 1 }
-   * @param {Object} meta { page, tag, name, trackable }
+   * @param {Object} meta { page, tag, name, trackable, reading (the page's
+   *   own reading activity; covered is then the reading checkpoints seen) }
    * @returns {Object|null} the activity summary, or null when skipped
    */
   updateActivityState(site, activityId, state = {}, meta = {}) {
@@ -912,6 +913,11 @@ export class UserScaffold extends HTMLElement {
     }
     if (typeof act.trackable !== "boolean") {
       act.trackable = meta.trackable !== false;
+    }
+    // the page's own reading activity (as recordStatement marks it), so
+    // state saved before its first statement is not taken for an element
+    if (meta.reading) {
+      act.reading = true;
     }
     const prev = act.state && typeof act.state === "object" ? act.state : {};
     const next = { ...prev };

@@ -15,6 +15,21 @@ test("every xapiVocabulary getter parses and names a tag", () => {
   assert.equal(vocab["user-action"].countsTowardCompletion, false);
 });
 
+test("elements that send nothing on purpose say so, with a reason", () => {
+  const { vocab, silent, errors } = collectVocabulary();
+  assert.deepEqual(errors, []);
+  for (const [tag, v] of Object.entries(silent)) {
+    assert.equal(v.tag, tag);
+    assert.equal(v.tracks, false);
+    assert.ok(v.reason.length > 0, `${tag} reason`);
+    assert.equal(typeof v.readingCheckpoint, "boolean", tag);
+    // never also in the list of what sends statements
+    assert.equal(vocab[tag], undefined, tag);
+  }
+  assert.equal(silent["page-break"].readingCheckpoint, false);
+  assert.equal(silent["stop-note"].readingCheckpoint, true);
+});
+
 test("elements/user-action/lib/xapi-vocabulary.{json,js} are up to date", () => {
   assert.ok(
     isUpToDate(),
