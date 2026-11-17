@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes"
+    />
+    <title>HAX admin focus rings</title>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <style>
+      html {
+        color-scheme: light dark;
+      }
+      body {
+        margin: 0;
+        padding: var(--ddd-spacing-6, 24px);
+        font-family: var(--ddd-font-navigation, sans-serif);
+        color: light-dark(#262626, #ffffff);
+        background-color: light-dark(#ffffff, #000321);
+      }
+      header {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--ddd-spacing-4, 16px);
+        align-items: end;
+        margin-bottom: var(--ddd-spacing-6, 24px);
+      }
+      h1 {
+        flex: 1 1 100%;
+        margin: 0;
+        font-size: var(--ddd-font-size-ms, 28px);
+      }
+      header p {
+        flex: 1 1 100%;
+        margin: 0;
+        max-width: 70ch;
+      }
+      header label {
+        display: grid;
+        gap: var(--ddd-spacing-1, 4px);
+        font-size: var(--ddd-font-size-4xs, 16px);
+      }
+      header select {
+        font: inherit;
+        min-height: 40px;
+        padding: 0 var(--ddd-spacing-2, 8px);
+      }
+      main {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+        gap: var(--ddd-spacing-6, 24px);
+      }
+    </style>
+    <script type="module">
+      import { LitElement, html, css } from "lit";
+      import "../d-d-d.js";
+      import { DesignSystemManager } from "../lib/DesignSystemManager.js";
+      import {
+        HaxUiAdminStyles,
+        HAX_UI_DARK_CHROME,
+      } from "../lib/HaxUiAdminStyles.js";
+      import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+      import "@haxtheweb/simple-icon/lib/simple-icons.js";
+      import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
+      import { registerCarbonDesignSystem } from "@haxtheweb/carbon-theme/lib/CarbonDesignSystem.js";
+      import { registerMaterialDesignSystem } from "@haxtheweb/material-theme/lib/MaterialDesignSystem.js";
+      import { registerPatternflyDesignSystem } from "@haxtheweb/patternfly-theme/lib/PatternflyDesignSystem.js";
+      import { registerShadcnDesignSystem } from "@haxtheweb/shadcn-theme/lib/ShadcnDesignSystem.js";
+      import { registerSpectrumDesignSystem } from "@haxtheweb/spectrum-theme/lib/SpectrumDesignSystem.js";
+      import { registerTailwindDesignSystem } from "@haxtheweb/tailwind-theme/lib/TailwindDesignSystem.js";
+      import { registerUswdsDesignSystem } from "@haxtheweb/uswds-theme/lib/UswdsDesignSystem.js";
+      import { registerKeepcaseDesignSystem } from "@haxtheweb/vhs-blog-theme/lib/KeepcaseDesignSystem.js";
+      import { registerWebawesomeDesignSystem } from "@haxtheweb/webawesome-theme/lib/WebawesomeDesignSystem.js";
+
+      [
+        registerCarbonDesignSystem,
+        registerMaterialDesignSystem,
+        registerPatternflyDesignSystem,
+        registerShadcnDesignSystem,
+        registerSpectrumDesignSystem,
+        registerTailwindDesignSystem,
+        registerUswdsDesignSystem,
+        registerKeepcaseDesignSystem,
+        registerWebawesomeDesignSystem,
+      ].forEach((register) => register(DesignSystemManager));
+
+      /**
+       * One of each HAX admin control on one admin background, to tab
+       * through and see (or measure) the focus ring. background: surface
+       * (a dialog), sunken (an inset well), selected (the tint of a
+       * selected row), hover (a hovered row) or dark-chrome (the editor
+       * top bar, dark in every theme).
+       */
+      class AdminFocusPanel extends LitElement {
+        static get properties() {
+          return {
+            background: { type: String, reflect: true },
+            on: { type: Boolean },
+          };
+        }
+        constructor() {
+          super();
+          this.background = "surface";
+          this.on = true;
+        }
+        static get styles() {
+          return [
+            ...HaxUiAdminStyles,
+            css`
+              :host {
+                display: block;
+                color: var(--hax-ui-text);
+                font-family: var(--hax-ui-admin-font-family);
+                font-size: var(--hax-ui-admin-font-size);
+                background-color: var(--hax-ui-surface);
+                border: 1px solid var(--hax-ui-line);
+              }
+              .well {
+                display: grid;
+                gap: 20px;
+                padding: 20px;
+              }
+              :host([background="sunken"]) .well {
+                background-color: var(--hax-ui-sunken);
+              }
+              :host([background="selected"]) .well {
+                background-color: var(--hax-ui-selected);
+              }
+              :host([background="hover"]) .well {
+                background-color: var(--hax-ui-hover);
+              }
+              h2 {
+                margin: 0;
+                font-size: var(--hax-ui-admin-font-size);
+              }
+              .row {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px;
+                align-items: center;
+              }
+              .hax-ui-input,
+              .hax-ui-select,
+              .hax-ui-tokens,
+              simple-fields-field {
+                width: 180px;
+              }
+            `,
+          ];
+        }
+        firstUpdated() {
+          if (this.background === "dark-chrome") {
+            Object.keys(HAX_UI_DARK_CHROME).forEach((name) =>
+              this.style.setProperty(name, HAX_UI_DARK_CHROME[name]),
+            );
+          }
+        }
+        render() {
+          return html`<div class="well">
+            <h2>${this.background}</h2>
+            <div class="row">
+              <button type="button" class="hax-ui-btn">Secondary</button>
+              <button type="button" class="hax-ui-btn primary">Primary</button>
+              <button type="button" class="hax-ui-btn ghost">Ghost</button>
+              <button type="button" class="hax-ui-btn danger">
+                <simple-icon-lite icon="icons:delete"></simple-icon-lite>Danger
+              </button>
+              <button type="button" class="hax-ui-btn danger-fill">
+                Danger fill
+              </button>
+            </div>
+            <div class="row">
+              <button
+                type="button"
+                class="hax-ui-icon-btn"
+                aria-label="Icon button"
+              >
+                <simple-icon-lite icon="icons:settings"></simple-icon-lite>
+              </button>
+              <button
+                type="button"
+                class="hax-ui-switch"
+                role="switch"
+                aria-label="Switch"
+                aria-checked="${this.on ? "true" : "false"}"
+                @click="${() => (this.on = !this.on)}"
+              ></button>
+              <button
+                type="button"
+                class="hax-ui-switch"
+                role="switch"
+                aria-label="Switch, off"
+                aria-checked="false"
+              ></button>
+              <button type="button" class="hax-ui-chip" aria-pressed="true">
+                Chip on
+              </button>
+              <button type="button" class="hax-ui-chip" aria-pressed="false">
+                Chip off
+              </button>
+              <div class="hax-ui-seg" role="group" aria-label="Segmented">
+                <button type="button" aria-pressed="true">One</button>
+                <button type="button" aria-pressed="false">Two</button>
+              </div>
+            </div>
+            <div class="row">
+              <input
+                class="hax-ui-input"
+                aria-label="Input"
+                value="Text input"
+              />
+              <select class="hax-ui-select" aria-label="Select">
+                <option>Select</option>
+                <option>Other</option>
+              </select>
+              <label class="hax-ui-tool-field">
+                <span>Sort</span>
+                <select>
+                  <option>Title</option>
+                  <option>Date</option>
+                </select>
+              </label>
+              <span class="hax-ui-input-group">
+                <input aria-label="Number with unit" value="84" size="3" />
+                <span class="unit">%</span>
+              </span>
+            </div>
+            <div class="row">
+              <div class="hax-ui-tokens">
+                <span class="hax-ui-token"
+                  >png
+                  <button type="button" aria-label="Remove png">
+                    <simple-icon-lite icon="icons:close"></simple-icon-lite>
+                  </button>
+                </span>
+                <input aria-label="Add a format" />
+              </div>
+              <simple-fields-field
+                class="hax-ui-simple-field"
+                type="text"
+                label="Simple field"
+                value="Text"
+              ></simple-fields-field>
+              <simple-fields-field
+                class="hax-ui-simple-field"
+                type="checkbox"
+                label="Simple checkbox"
+              ></simple-fields-field>
+              <input type="checkbox" aria-label="Native checkbox" />
+            </div>
+          </div>`;
+        }
+      }
+      globalThis.customElements.define("admin-focus-panel", AdminFocusPanel);
+
+      // ?designSystem=carbon&scheme=dark, and the two selects, pick what
+      // is shown; scheme "auto" follows the operating system
+      const params = new URLSearchParams(globalThis.location.search);
+      const systemSelect = globalThis.document.querySelector("#system");
+      const schemeSelect = globalThis.document.querySelector("#scheme");
+      Object.keys(DesignSystemManager.systems)
+        .filter((name) => name !== "ddd")
+        .sort()
+        .forEach((name) => {
+          const option = globalThis.document.createElement("option");
+          option.value = option.textContent = name;
+          systemSelect.append(option);
+        });
+      const apply = () => {
+        DesignSystemManager.active = systemSelect.value;
+        globalThis.document.documentElement.style.colorScheme =
+          schemeSelect.value === "auto" ? "light dark" : schemeSelect.value;
+      };
+      const wanted = params.get("designSystem");
+      if (wanted && DesignSystemManager.systems[wanted]) {
+        systemSelect.value = wanted;
+      }
+      if (["light", "dark"].includes(params.get("scheme"))) {
+        schemeSelect.value = params.get("scheme");
+      }
+      systemSelect.addEventListener("change", apply);
+      schemeSelect.addEventListener("change", apply);
+      apply();
+    </script>
+  </head>
+  <body>
+    <header>
+      <h1>HAX admin focus rings</h1>
+      <p>
+        One of each admin control on each admin background. Tab through a panel:
+        every control shows a focus ring that stands out from what is behind it,
+        under each design system, in light and dark.
+      </p>
+      <label
+        >Design system
+        <select id="system">
+          <option value="ddd">ddd</option>
+        </select>
+      </label>
+      <label
+        >Color scheme
+        <select id="scheme">
+          <option value="auto">auto</option>
+          <option value="light">light</option>
+          <option value="dark">dark</option>
+        </select>
+      </label>
+    </header>
+    <main>
+      <admin-focus-panel background="surface"></admin-focus-panel>
+      <admin-focus-panel background="sunken"></admin-focus-panel>
+      <admin-focus-panel background="selected"></admin-focus-panel>
+      <admin-focus-panel background="hover"></admin-focus-panel>
+      <admin-focus-panel background="dark-chrome"></admin-focus-panel>
+    </main>
+  </body>
+</html>

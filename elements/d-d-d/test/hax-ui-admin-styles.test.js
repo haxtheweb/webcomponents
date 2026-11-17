@@ -333,4 +333,26 @@ describe("HaxUiAdminStyles: the one HAX UI admin layer", () => {
     expect(HaxUiAdminIcons.structure).to.equal("hax:admin-structure");
     expect(HaxUiAdminIcons.importExport).to.equal("hax:admin-import-export");
   });
+
+  it("keeps a segmented button's focus ring inside the group, which clips", () => {
+    // .hax-ui-seg hides its overflow, so a ring outside a button is cut off
+    const offsets = [];
+    HaxUiAdminControls.forEach((sheet) => {
+      Array.from(sheet.styleSheet.cssRules).forEach((rule) => {
+        if (
+          rule.selectorText &&
+          rule.selectorText.includes(".hax-ui-seg button:focus-visible") &&
+          rule.style.outlineOffset
+        ) {
+          offsets.push(rule.style.outlineOffset);
+        }
+      });
+    });
+    expect(offsets.length).to.be.greaterThan(0);
+    offsets.forEach((offset) => {
+      expect(
+        offset.trim().startsWith("calc(-1") || offset.trim().startsWith("-"),
+      ).to.equal(true, `outline-offset ${offset}`);
+    });
+  });
 });

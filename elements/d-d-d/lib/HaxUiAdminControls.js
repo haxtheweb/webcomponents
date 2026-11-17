@@ -508,8 +508,9 @@ export const HaxUiAdminControls = [
       font-weight: var(--ddd-font-weight-regular, 400);
       color: var(--hax-ui-text-muted);
     }
-    .hax-ui-chip:focus-visible,
-    .hax-ui-seg button:focus-visible {
+    /* a segmented button keeps its ring inside (the inset rule above): the
+       group clips its overflow, so a ring outside the button is cut off */
+    .hax-ui-chip:focus-visible {
       outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
       outline-offset: 2px;
     }
