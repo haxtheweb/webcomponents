@@ -333,7 +333,7 @@
         },
         "author": {
           "manifest.license": "by-sa",
-          "manifest.metadata.author.image": "files/headshot.jpg",
+          "manifest.metadata.author.image": "assets/placeholders/person-1.svg",
           "manifest.metadata.author.name": "Bryan Ollendyke",
           "manifest.metadata.author.socialLink": "https://twitter.com/btopro"
         },

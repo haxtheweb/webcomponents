@@ -14,7 +14,7 @@
     "site": {
       "name": "haxcellence",
       "homePageId": "item-d131e688-d93c-4cbc-b32d-f0d052aeb8d0",
-      "logo": "files/banner.jpg",
+      "logo": "assets/banner.jpg",
       "lang": "en",
       "created": 1683137556,
       "updated": 1736889447,
@@ -92,15 +92,7 @@
         "status": "",
         "videos": [],
         "images": [],
-        "files": [
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/HAX.psu World changer-circle.png",
-            "url": "files/HAX.psu World changer-circle.png",
-            "type": "image/png",
-            "name": "HAX.psu World changer-circle.png",
-            "size": "1172092"
-          }
-        ],
+        "files": [],
         "hideInMenu": ""
       }
     },
@@ -158,35 +150,13 @@
       "metadata": {
         "created": "1687956682",
         "updated": 1736889443,
-        "images": ["files/HAX-The-Web.jpg", "files/hax-ecosystem-concepts.jpg"],
+        "images": ["assets/banner.jpg", "assets/placeholders/chart-2.svg"],
         "videos": ["https://www.youtube.com/watch?v=iPGgdRGyUtM"],
         "published": "1",
         "locked": "",
         "readtime": "3",
         "status": "",
-        "files": [
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/HAX-The-Web.jpg",
-            "url": "files/HAX-The-Web.jpg",
-            "type": "image/jpeg",
-            "name": "HAX-The-Web.jpg",
-            "size": "602062"
-          },
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/hax-ecosystem-concepts.jpg",
-            "url": "files/hax-ecosystem-concepts.jpg",
-            "type": "image/jpeg",
-            "name": "hax-ecosystem-concepts.jpg",
-            "size": "186035"
-          },
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/image82.png",
-            "url": "files/image82.png",
-            "type": "image/png",
-            "name": "image82.png",
-            "size": "17947"
-          }
-        ],
+        "files": [],
         "hideInMenu": ""
       }
     },
@@ -225,15 +195,7 @@
         "updated": 1736889443,
         "images": [],
         "videos": [],
-        "files": [
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/giphy.gif",
-            "url": "files/giphy.gif",
-            "type": "image/gif",
-            "name": "giphy.gif",
-            "size": "484000"
-          }
-        ],
+        "files": [],
         "published": "1",
         "hideInMenu": "",
         "locked": "",
@@ -325,17 +287,9 @@
         "hideInMenu": "",
         "readtime": "1",
         "tags": "a11y,accessibility",
-        "image": "files/CopyQ.vWFmgL.png",
+        "image": "assets/placeholders/screen-3.svg",
         "icon": "icons:accessibility",
-        "files": [
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/CopyQ.vWFmgL.png",
-            "url": "files/CopyQ.vWFmgL.png",
-            "type": "image/png",
-            "name": "CopyQ.vWFmgL.png",
-            "size": "359159"
-          }
-        ]
+        "files": []
       }
     },
     {
@@ -378,17 +332,9 @@
         "updated": 1736889444,
         "published": "1",
         "status": "",
-        "files": [
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/CopyQ.YGHozZ.png",
-            "url": "files/CopyQ.YGHozZ.png",
-            "type": "image/png",
-            "name": "CopyQ.YGHozZ.png",
-            "size": "480582"
-          }
-        ],
+        "files": [],
         "hideInMenu": "",
-        "image": "files/CopyQ.YGHozZ.png",
+        "image": "assets/placeholders/screen-1.svg",
         "readtime": "1",
         "tags": "foss, open"
       }
@@ -410,17 +356,9 @@
         "updated": 1736889444,
         "published": "1",
         "status": "",
-        "files": [
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/CopyQ.LchTVs.png",
-            "url": "files/CopyQ.LchTVs.png",
-            "type": "image/png",
-            "name": "CopyQ.LchTVs.png",
-            "size": "516783"
-          }
-        ],
+        "files": [],
         "hideInMenu": "",
-        "image": "files/CopyQ.LchTVs.png",
+        "image": "assets/placeholders/screen-1.svg",
         "readtime": "1",
         "tags": "performance"
       }
@@ -444,16 +382,8 @@
         "status": "",
         "hideInMenu": "",
         "readtime": "1",
-        "files": [
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/CopyQ.TbvtjA.png",
-            "url": "files/CopyQ.TbvtjA.png",
-            "type": "image/png",
-            "name": "CopyQ.TbvtjA.png",
-            "size": "432418"
-          }
-        ],
-        "image": "files/CopyQ.TbvtjA.png",
+        "files": [],
+        "image": "assets/placeholders/screen-3.svg",
         "tags": "works anywhere"
       }
     },
@@ -474,17 +404,9 @@
         "updated": 1736889444,
         "published": false,
         "status": "",
-        "files": [
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/CopyQ.pRVKqr.png",
-            "url": "files/CopyQ.pRVKqr.png",
-            "type": "image/png",
-            "name": "CopyQ.pRVKqr.png",
-            "size": "427319"
-          }
-        ],
+        "files": [],
         "hideInMenu": true,
-        "image": "files/CopyQ.pRVKqr.png",
+        "image": "assets/placeholders/screen-1.svg",
         "readtime": "1",
         "tags": "remix"
       }
@@ -508,23 +430,8 @@
         "status": "",
         "hideInMenu": "",
         "readtime": "2",
-        "files": [
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/woods.png",
-            "url": "files/woods.png",
-            "type": "image/png",
-            "name": "woods.png",
-            "size": "481769"
-          },
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/CopyQ.AQQQjY.png",
-            "url": "files/CopyQ.AQQQjY.png",
-            "type": "image/png",
-            "name": "CopyQ.AQQQjY.png",
-            "size": "433313"
-          }
-        ],
-        "image": "files/CopyQ.AQQQjY.png",
+        "files": [],
+        "image": "assets/placeholders/screen-3.svg",
         "tags": "environment, community"
       }
     },
@@ -542,46 +449,10 @@
         "updated": 1736889444,
         "images": [],
         "videos": [],
-        "files": [
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/CopyQ.ZcOCVW.png",
-            "url": "files/CopyQ.ZcOCVW.png",
-            "type": "image/png",
-            "name": "CopyQ.ZcOCVW.png",
-            "size": "463392"
-          },
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/CopyQ.wRrLph.png",
-            "url": "files/CopyQ.wRrLph.png",
-            "type": "image/png",
-            "name": "CopyQ.wRrLph.png",
-            "size": "490733"
-          },
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/CopyQ.wKAPJI.png",
-            "url": "files/CopyQ.wKAPJI.png",
-            "type": "image/png",
-            "name": "CopyQ.wKAPJI.png",
-            "size": "427252"
-          },
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/CopyQ.allSms.png",
-            "url": "files/CopyQ.allSms.png",
-            "type": "image/png",
-            "name": "CopyQ.allSms.png",
-            "size": "423822"
-          },
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/CopyQ.AApGdq.png",
-            "url": "files/CopyQ.AApGdq.png",
-            "type": "image/png",
-            "name": "CopyQ.AApGdq.png",
-            "size": "411968"
-          }
-        ],
+        "files": [],
         "published": "1",
         "hideInMenu": "",
-        "image": "files/CopyQ.ZcOCVW.png",
+        "image": "assets/placeholders/screen-2.svg",
         "tags": "persona",
         "locked": "",
         "readtime": "2",
@@ -628,16 +499,8 @@
         "readtime": "1",
         "status": "",
         "hideInMenu": "",
-        "files": [
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/CopyQ.sztLns.png",
-            "url": "files/CopyQ.sztLns.png",
-            "type": "image/png",
-            "name": "CopyQ.sztLns.png",
-            "size": "508780"
-          }
-        ],
-        "image": "files/CopyQ.sztLns.png"
+        "files": [],
+        "image": "assets/placeholders/screen-1.svg"
       }
     },
     {
@@ -659,16 +522,8 @@
         "readtime": "1",
         "status": "",
         "hideInMenu": "",
-        "files": [
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/CopyQ.nGnEzH.png",
-            "url": "files/CopyQ.nGnEzH.png",
-            "type": "image/png",
-            "name": "CopyQ.nGnEzH.png",
-            "size": "412156"
-          }
-        ],
-        "image": "files/CopyQ.nGnEzH.png"
+        "files": [],
+        "image": "assets/placeholders/screen-3.svg"
       }
     },
     {
@@ -704,17 +559,9 @@
       "metadata": {
         "created": "1729106012",
         "updated": 1736889444,
-        "images": ["files/hax-governance.jpg"],
+        "images": ["assets/placeholders/chart-1.svg"],
         "videos": [],
-        "files": [
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/hax-governance.jpg",
-            "url": "files/hax-governance.jpg",
-            "type": "image/jpeg",
-            "name": "hax-governance.jpg",
-            "size": "230744"
-          }
-        ],
+        "files": [],
         "published": "1",
         "hideInMenu": "",
         "locked": "",
@@ -739,22 +586,7 @@
         "published": "1",
         "locked": "",
         "readtime": "1",
-        "files": [
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/HAXTheWeb.pdf",
-            "url": "files/HAXTheWeb.pdf",
-            "type": "application/pdf",
-            "name": "HAXTheWeb.pdf",
-            "size": "1144573"
-          },
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/hax (1).png",
-            "url": "files/hax (1).png",
-            "type": "image/png",
-            "name": "hax (1).png",
-            "size": "343118"
-          }
-        ],
+        "files": [],
         "status": ""
       }
     },
@@ -836,29 +668,7 @@
         "images": [],
         "videos": [],
         "updated": 1736889444,
-        "files": [
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/hax-white-paper-02-27-2018.pdf",
-            "url": "files/hax-white-paper-02-27-2018.pdf",
-            "type": "application/pdf",
-            "name": "hax-white-paper-02-27-2018.pdf",
-            "size": "962228"
-          },
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/ELMSLN-sustaining-innovation-05-08-2015.pdf",
-            "url": "files/ELMSLN-sustaining-innovation-05-08-2015.pdf",
-            "type": "application/pdf",
-            "name": "ELMSLN-sustaining-innovation-05-08-2015.pdf",
-            "size": "160809"
-          },
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/ELMSLN-whitepaper-08-28-2014.pdf",
-            "url": "files/ELMSLN-whitepaper-08-28-2014.pdf",
-            "type": "application/pdf",
-            "name": "ELMSLN-whitepaper-08-28-2014.pdf",
-            "size": "106357"
-          }
-        ],
+        "files": [],
         "published": "1",
         "readtime": "1",
         "status": ""
@@ -876,7 +686,7 @@
       "metadata": {
         "created": "1726600645",
         "updated": 1736889444,
-        "images": ["files/image82.png"],
+        "images": ["assets/placeholders/screen-3.svg"],
         "videos": [],
         "published": "1",
         "hideInMenu": "",
@@ -963,15 +773,7 @@
         "images": [],
         "videos": ["https://www.youtube.com/watch?v=PBnd7A0OmhU"],
         "updated": 1736889444,
-        "files": [
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/image31.png",
-            "url": "files/image31.png",
-            "type": "image/png",
-            "name": "image31.png",
-            "size": "30911"
-          }
-        ],
+        "files": [],
         "published": "1",
         "readtime": "1",
         "status": "",
@@ -1019,16 +821,8 @@
         "published": "1",
         "hideInMenu": "",
         "readtime": "1",
-        "files": [
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/Screenshot from 2024-07-25 10-51-51.png",
-            "url": "files/Screenshot from 2024-07-25 10-51-51.png",
-            "type": "image/png",
-            "name": "Screenshot from 2024-07-25 10-51-51.png",
-            "size": "24119"
-          }
-        ],
-        "image": "files/Screenshot from 2024-07-25 10-51-51.png",
+        "files": [],
+        "image": "assets/placeholders/screen-1.svg",
         "tags": "instructional, question, fill",
         "status": ""
       }
@@ -1051,16 +845,8 @@
         "published": "1",
         "hideInMenu": "",
         "readtime": "1",
-        "files": [
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/Screenshot from 2024-07-25 10-56-44.png",
-            "url": "files/Screenshot from 2024-07-25 10-56-44.png",
-            "type": "image/png",
-            "name": "Screenshot from 2024-07-25 10-56-44.png",
-            "size": "33515"
-          }
-        ],
-        "image": "files/Screenshot from 2024-07-25 10-56-44.png",
+        "files": [],
+        "image": "assets/placeholders/screen-2.svg",
         "tags": "instructional, question, mark",
         "status": ""
       }
@@ -1083,16 +869,8 @@
         "published": "1",
         "hideInMenu": "",
         "readtime": "1",
-        "files": [
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/Screenshot from 2024-07-25 11-09-09.png",
-            "url": "files/Screenshot from 2024-07-25 11-09-09.png",
-            "type": "image/png",
-            "name": "Screenshot from 2024-07-25 11-09-09.png",
-            "size": "54826"
-          }
-        ],
-        "image": "files/Screenshot from 2024-07-25 11-09-09.png",
+        "files": [],
+        "image": "assets/placeholders/screen-2.svg",
         "tags": "instructional, question, matching",
         "status": ""
       }
@@ -1116,23 +894,8 @@
         "readtime": "1",
         "status": "",
         "hideInMenu": "",
-        "files": [
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/Screenshot from 2024-07-25 10-36-03.png",
-            "url": "files/Screenshot from 2024-07-25 10-36-03.png",
-            "type": "image/png",
-            "name": "Screenshot from 2024-07-25 10-36-03.png",
-            "size": "40949"
-          },
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/Screenshot from 2024-07-25 10-36-031.png",
-            "url": "files/Screenshot from 2024-07-25 10-36-031.png",
-            "type": "image/png",
-            "name": "Screenshot from 2024-07-25 10-36-031.png",
-            "size": "40949"
-          }
-        ],
-        "image": "files/Screenshot from 2024-07-25 10-36-031.png",
+        "files": [],
+        "image": "assets/placeholders/screen-2.svg",
         "tags": "instructional, question"
       }
     },
@@ -1154,16 +917,8 @@
         "published": "1",
         "hideInMenu": "",
         "readtime": "1",
-        "files": [
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/Screenshot from 2024-07-25 11-13-35.png",
-            "url": "files/Screenshot from 2024-07-25 11-13-35.png",
-            "type": "image/png",
-            "name": "Screenshot from 2024-07-25 11-13-35.png",
-            "size": "28400"
-          }
-        ],
-        "image": "files/Screenshot from 2024-07-25 11-13-35.png",
+        "files": [],
+        "image": "assets/placeholders/screen-2.svg",
         "tags": "instructional, question",
         "status": ""
       }
@@ -1186,23 +941,8 @@
         "published": "1",
         "hideInMenu": "",
         "readtime": "1",
-        "files": [
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/Screenshot from 2024-07-25 10-13-13.png",
-            "url": "files/Screenshot from 2024-07-25 10-13-13.png",
-            "type": "image/png",
-            "name": "Screenshot from 2024-07-25 10-13-13.png",
-            "size": "29333"
-          },
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/image81.png",
-            "url": "files/image81.png",
-            "type": "image/png",
-            "name": "image81.png",
-            "size": "29333"
-          }
-        ],
-        "image": "files/Screenshot from 2024-07-25 10-13-13.png",
+        "files": [],
+        "image": "assets/placeholders/screen-3.svg",
         "tags": "instructional, question, sorting",
         "status": ""
       }
@@ -1225,23 +965,8 @@
         "published": "1",
         "hideInMenu": "",
         "readtime": "1",
-        "files": [
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/Screenshot from 2024-07-25 10-22-59.png",
-            "url": "files/Screenshot from 2024-07-25 10-22-59.png",
-            "type": "image/png",
-            "name": "Screenshot from 2024-07-25 10-22-59.png",
-            "size": "26579"
-          },
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/Screenshot from 2024-07-25 10-22-591.png",
-            "url": "files/Screenshot from 2024-07-25 10-22-591.png",
-            "type": "image/png",
-            "name": "Screenshot from 2024-07-25 10-22-591.png",
-            "size": "26579"
-          }
-        ],
-        "image": "files/Screenshot from 2024-07-25 10-22-591.png",
+        "files": [],
+        "image": "assets/placeholders/screen-2.svg",
         "tags": "instructional, question, tagging",
         "status": ""
       }
@@ -1265,16 +990,8 @@
         "tags": "question, true false",
         "locked": "",
         "readtime": "1",
-        "files": [
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/Screenshot from 2024-07-25 12-18-15.png",
-            "url": "files/Screenshot from 2024-07-25 12-18-15.png",
-            "type": "image/png",
-            "name": "Screenshot from 2024-07-25 12-18-15.png",
-            "size": "25561"
-          }
-        ],
-        "image": "files/Screenshot from 2024-07-25 12-18-15.png",
+        "files": [],
+        "image": "assets/placeholders/screen-3.svg",
         "status": ""
       }
     },
@@ -1418,36 +1135,7 @@
         "readtime": "8",
         "status": "",
         "hideInMenu": "",
-        "files": [
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/book-7647732_640.png",
-            "url": "files/book-7647732_640.png",
-            "type": "image/png",
-            "name": "book-7647732_640.png",
-            "size": "115874"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Book at 50.png",
-            "url": "files/Book at 50.png",
-            "type": "image/png",
-            "name": "Book at 50.png",
-            "size": "73360"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Book_at_50_percent.png",
-            "url": "files/Book_at_50_percent.png",
-            "type": "image/png",
-            "name": "Book_at_50_percent.png",
-            "size": "73360"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Book_at_15_percent.png",
-            "url": "files/Book_at_15_percent.png",
-            "type": "image/png",
-            "name": "Book_at_15_percent.png",
-            "size": "11282"
-          }
-        ]
+        "files": []
       }
     },
     {
@@ -1485,8 +1173,8 @@
         "created": "1701372747",
         "updated": 1736889446,
         "images": [
-          "files/Scorecard for Calatravas Bridges (Part 1).png",
-          "files/Scorecard for Calatravas Bridges (Part 2).png"
+          "assets/placeholders/chart-3.svg",
+          "assets/placeholders/chart-1.svg"
         ],
         "videos": [
           "https://youtu.be/9_nO9mtTnWw",
@@ -1498,120 +1186,7 @@
         "readtime": "5",
         "status": "",
         "hideInMenu": "",
-        "files": [
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/voice-recording-1017381.7000000477.mp3",
-            "url": "files/voice-recording-1017381.7000000477.mp3",
-            "type": "audio/mpeg",
-            "name": "voice-recording-1017381.7000000477.mp3",
-            "size": "38328"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Peter 1.png",
-            "url": "files/Peter 1.png",
-            "type": "image/png",
-            "name": "Peter 1.png",
-            "size": "689080"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Peter 11.png",
-            "url": "files/Peter 11.png",
-            "type": "image/png",
-            "name": "Peter 11.png",
-            "size": "689080"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Peter 1.jpg",
-            "url": "files/Peter 1.jpg",
-            "type": "image/jpeg",
-            "name": "Peter 1.jpg",
-            "size": "285922"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Peter 2.jpg",
-            "url": "files/Peter 2.jpg",
-            "type": "image/jpeg",
-            "name": "Peter 2.jpg",
-            "size": "505979"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Peter 3.jpg",
-            "url": "files/Peter 3.jpg",
-            "type": "image/jpeg",
-            "name": "Peter 3.jpg",
-            "size": "228514"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Scorecard for Design-Art-Science.png",
-            "url": "files/Scorecard for Design-Art-Science.png",
-            "type": "image/png",
-            "name": "Scorecard for Design-Art-Science.png",
-            "size": "110823"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Scorecard for Calatravas Bridges (Part 1).png",
-            "url": "files/Scorecard for Calatravas Bridges (Part 1).png",
-            "type": "image/png",
-            "name": "Scorecard for Calatravas Bridges (Part 1).png",
-            "size": "110425"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Scorecard for Calatravas Bridges (Part 2).png",
-            "url": "files/Scorecard for Calatravas Bridges (Part 2).png",
-            "type": "image/png",
-            "name": "Scorecard for Calatravas Bridges (Part 2).png",
-            "size": "109724"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/image71.png",
-            "url": "files/image71.png",
-            "type": "image/png",
-            "name": "image71.png",
-            "size": "6464"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/image72.png",
-            "url": "files/image72.png",
-            "type": "image/png",
-            "name": "image72.png",
-            "size": "17363"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Scorecard for Calatravas Bridges (Part 2).png",
-            "url": "files/Scorecard for Calatravas Bridges (Part 2).png",
-            "type": "image/png",
-            "name": "Scorecard for Calatravas Bridges (Part 2).png",
-            "size": "109538"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Scorecard for Calatravas Bridges (Part 2).png",
-            "url": "files/Scorecard for Calatravas Bridges (Part 2).png",
-            "type": "image/png",
-            "name": "Scorecard for Calatravas Bridges (Part 2).png",
-            "size": "109538"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Scorecard for Calatravas Bridges (Part 2).png",
-            "url": "files/Scorecard for Calatravas Bridges (Part 2).png",
-            "type": "image/png",
-            "name": "Scorecard for Calatravas Bridges (Part 2).png",
-            "size": "109538"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Scorecard for Calatravas Bridges (Part 2) EDITED.png",
-            "url": "files/Scorecard for Calatravas Bridges (Part 2) EDITED.png",
-            "type": "image/png",
-            "name": "Scorecard for Calatravas Bridges (Part 2) EDITED.png",
-            "size": "109538"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Scorecard for Calatravas Bridges (Part 2).png",
-            "url": "files/Scorecard for Calatravas Bridges (Part 2).png",
-            "type": "image/png",
-            "name": "Scorecard for Calatravas Bridges (Part 2).png",
-            "size": "109756"
-          }
-        ]
+        "files": []
       }
     },
     {
@@ -1632,16 +1207,8 @@
         "hideInMenu": "",
         "locked": "",
         "readtime": "1",
-        "files": [
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/Screenshot from 2024-09-19 15-30-43.png",
-            "url": "files/Screenshot from 2024-09-19 15-30-43.png",
-            "type": "image/png",
-            "name": "Screenshot from 2024-09-19 15-30-43.png",
-            "size": "59769"
-          }
-        ],
-        "image": "files/Screenshot from 2024-09-19 15-30-43.png",
+        "files": [],
+        "image": "assets/placeholders/screen-3.svg",
         "tags": "code example",
         "status": ""
       }
@@ -1719,43 +1286,7 @@
           "elements": "2"
         },
         "status": "",
-        "files": [
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/New User Tutorial Part 1.mp4",
-            "url": "files/New User Tutorial Part 1.mp4",
-            "type": "video/mp4",
-            "name": "New User Tutorial Part 1.mp4",
-            "size": "46983347"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/New User Tutorial Part 11.mp4",
-            "url": "files/New User Tutorial Part 11.mp4",
-            "type": "video/mp4",
-            "name": "New User Tutorial Part 11.mp4",
-            "size": "21736701"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/New User Tutorial.mp4",
-            "url": "files/New User Tutorial.mp4",
-            "type": "video/mp4",
-            "name": "New User Tutorial.mp4",
-            "size": "251315464"
-          },
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/First-Time HAX User Tutorial Content.docx",
-            "url": "files/First-Time HAX User Tutorial Content.docx",
-            "type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-            "name": "First-Time HAX User Tutorial Content.docx",
-            "size": "1265112"
-          },
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/New User Script.docx",
-            "url": "files/New User Script.docx",
-            "type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-            "name": "New User Script.docx",
-            "size": "29729"
-          }
-        ],
+        "files": [],
         "videos": ["https://www.youtube.com/watch?v=bmsHBhGC8_Q"],
         "images": [],
         "hideInMenu": ""
@@ -1773,18 +1304,10 @@
       "metadata": {
         "locked": "",
         "created": "1697036006",
-        "images": ["files/hax-horizon-report-oct-2023.jpg"],
+        "images": ["assets/placeholders/chart-1.svg"],
         "videos": ["https://youtu.be/bX04I1Cw9FA"],
         "updated": 1736889446,
-        "files": [
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/hax-horizon-report-oct-2023.jpg",
-            "url": "files/hax-horizon-report-oct-2023.jpg",
-            "type": "image/jpeg",
-            "name": "hax-horizon-report-oct-2023.jpg",
-            "size": "175019"
-          }
-        ],
+        "files": [],
         "published": "1",
         "readtime": "1",
         "status": ""
@@ -1991,15 +1514,7 @@
         "locked": "",
         "readtime": "1",
         "status": "",
-        "files": [
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/1_The Core.png",
-            "url": "files/1_The Core.png",
-            "type": "image/png",
-            "name": "1_The Core.png",
-            "size": "346696"
-          }
-        ]
+        "files": []
       }
     },
     {
@@ -2056,28 +1571,13 @@
       "metadata": {
         "locked": "",
         "created": "1726501298",
-        "images": ["files/HAXCms workflow.jpg"],
+        "images": ["assets/placeholders/chart-1.svg"],
         "videos": [],
         "updated": 1736889445,
         "published": "1",
         "hideInMenu": "",
         "readtime": "1",
-        "files": [
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/HAXCms workflow.jpg",
-            "url": "files/HAXCms workflow.jpg",
-            "type": "image/jpeg",
-            "name": "HAXCms workflow.jpg",
-            "size": "72736"
-          },
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/2019-03-12_16-45-51.png",
-            "url": "files/2019-03-12_16-45-51.png",
-            "type": "image/png",
-            "name": "2019-03-12_16-45-51.png",
-            "size": "212153"
-          }
-        ],
+        "files": [],
         "status": ""
       }
     },
@@ -2123,29 +1623,7 @@
         "status": "",
         "relatedItems": "item-b1cf2586-d6a6-44b7-ba16-82fdfee99f01",
         "tags": "pedagogy,video",
-        "files": [
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Peter_Aeschbacher.jpeg",
-            "url": "files/Peter_Aeschbacher.jpeg",
-            "type": "image/jpeg",
-            "name": "Peter_Aeschbacher.jpeg",
-            "size": "4156"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Bonj_Szczygiel.png",
-            "url": "files/Bonj_Szczygiel.png",
-            "type": "image/png",
-            "name": "Bonj_Szczygiel.png",
-            "size": "22510"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Ben_Andrew.jpeg",
-            "url": "files/Ben_Andrew.jpeg",
-            "type": "image/jpeg",
-            "name": "Ben_Andrew.jpeg",
-            "size": "6528"
-          }
-        ]
+        "files": []
       }
     },
     {
@@ -2167,29 +1645,7 @@
         "readtime": "5",
         "status": "",
         "hideInMenu": "",
-        "files": [
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Featured_Article_Alert_Immediate.png",
-            "url": "files/Featured_Article_Alert_Immediate.png",
-            "type": "image/png",
-            "name": "Featured_Article_Alert_Immediate.png",
-            "size": "1893"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Featured_Article_Alert_Immediate1.png",
-            "url": "files/Featured_Article_Alert_Immediate1.png",
-            "type": "image/png",
-            "name": "Featured_Article_Alert_Immediate1.png",
-            "size": "1893"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Featured_Article_Blue.png",
-            "url": "files/Featured_Article_Blue.png",
-            "type": "image/png",
-            "name": "Featured_Article_Blue.png",
-            "size": "1910"
-          }
-        ]
+        "files": []
       }
     },
     {
@@ -2211,64 +1667,7 @@
         "status": "",
         "hideInMenu": "",
         "readtime": "4",
-        "files": [
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/image73.png",
-            "url": "files/image73.png",
-            "type": "image/png",
-            "name": "image73.png",
-            "size": "6642"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/image74.png",
-            "url": "files/image74.png",
-            "type": "image/png",
-            "name": "image74.png",
-            "size": "9063"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/image75.png",
-            "url": "files/image75.png",
-            "type": "image/png",
-            "name": "image75.png",
-            "size": "9063"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/image76.png",
-            "url": "files/image76.png",
-            "type": "image/png",
-            "name": "image76.png",
-            "size": "41371"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/image77.png",
-            "url": "files/image77.png",
-            "type": "image/png",
-            "name": "image77.png",
-            "size": "41371"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/image78.png",
-            "url": "files/image78.png",
-            "type": "image/png",
-            "name": "image78.png",
-            "size": "35390"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/image79.png",
-            "url": "files/image79.png",
-            "type": "image/png",
-            "name": "image79.png",
-            "size": "44311"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/image80.png",
-            "url": "files/image80.png",
-            "type": "image/png",
-            "name": "image80.png",
-            "size": "65734"
-          }
-        ]
+        "files": []
       }
     },
     {
@@ -2290,22 +1689,7 @@
         "locked": "",
         "readtime": "3",
         "status": "",
-        "files": [
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Median Engagement by Duration.png",
-            "url": "files/Median Engagement by Duration.png",
-            "type": "image/png",
-            "name": "Median Engagement by Duration.png",
-            "size": "299792"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Median Engagement by Duration.jpg",
-            "url": "files/Median Engagement by Duration.jpg",
-            "type": "image/jpeg",
-            "name": "Median Engagement by Duration.jpg",
-            "size": "90040"
-          }
-        ]
+        "files": []
       }
     },
     {
@@ -2347,106 +1731,7 @@
         "locked": "",
         "readtime": "1",
         "status": "",
-        "files": [
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/image53.png",
-            "url": "files/image53.png",
-            "type": "image/png",
-            "name": "image53.png",
-            "size": "5559"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/image54.png",
-            "url": "files/image54.png",
-            "type": "image/png",
-            "name": "image54.png",
-            "size": "17988"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/image55.png",
-            "url": "files/image55.png",
-            "type": "image/png",
-            "name": "image55.png",
-            "size": "17988"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/image56.png",
-            "url": "files/image56.png",
-            "type": "image/png",
-            "name": "image56.png",
-            "size": "8910"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/image57.png",
-            "url": "files/image57.png",
-            "type": "image/png",
-            "name": "image57.png",
-            "size": "7767"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/image58.png",
-            "url": "files/image58.png",
-            "type": "image/png",
-            "name": "image58.png",
-            "size": "5463"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/image59.png",
-            "url": "files/image59.png",
-            "type": "image/png",
-            "name": "image59.png",
-            "size": "6005"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/image60.png",
-            "url": "files/image60.png",
-            "type": "image/png",
-            "name": "image60.png",
-            "size": "5848"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Evidence-Based Guidelines for Recording Slide-Based Lectures.pdf",
-            "url": "files/Evidence-Based Guidelines for Recording Slide-Based Lectures.pdf",
-            "type": "application/pdf",
-            "name": "Evidence-Based Guidelines for Recording Slide-Based Lectures.pdf",
-            "size": "248011"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Evidence-Based Guidelines for Recording Slide-Based Lectures1.pdf",
-            "url": "files/Evidence-Based Guidelines for Recording Slide-Based Lectures1.pdf",
-            "type": "application/pdf",
-            "name": "Evidence-Based Guidelines for Recording Slide-Based Lectures1.pdf",
-            "size": "248011"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/image62.png",
-            "url": "files/image62.png",
-            "type": "image/png",
-            "name": "image62.png",
-            "size": "23428"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Featured_Article.png",
-            "url": "files/Featured_Article.png",
-            "type": "image/png",
-            "name": "Featured_Article.png",
-            "size": "2203"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Featured_Article1.png",
-            "url": "files/Featured_Article1.png",
-            "type": "image/png",
-            "name": "Featured_Article1.png",
-            "size": "2448"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Featured_Article2.png",
-            "url": "files/Featured_Article2.png",
-            "type": "image/png",
-            "name": "Featured_Article2.png",
-            "size": "1890"
-          }
-        ],
+        "files": [],
         "hideInMenu": ""
       }
     },
@@ -2510,50 +1795,7 @@
         "locked": "",
         "status": "",
         "readtime": "1",
-        "files": [
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Peter Montage.png",
-            "url": "files/Peter Montage.png",
-            "type": "image/png",
-            "name": "Peter Montage.png",
-            "size": "682130"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Peter Aeschbacher.png",
-            "url": "files/Peter Aeschbacher.png",
-            "type": "image/png",
-            "name": "Peter Aeschbacher.png",
-            "size": "682130"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Bonj Szczygiel.png",
-            "url": "files/Bonj Szczygiel.png",
-            "type": "image/png",
-            "name": "Bonj Szczygiel.png",
-            "size": "2614095"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Ben Andrew 1.png",
-            "url": "files/Ben Andrew 1.png",
-            "type": "image/png",
-            "name": "Ben Andrew 1.png",
-            "size": "2190204"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Ben Andrew 2.png",
-            "url": "files/Ben Andrew 2.png",
-            "type": "image/png",
-            "name": "Ben Andrew 2.png",
-            "size": "1552766"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Peter 11.jpg",
-            "url": "files/Peter 11.jpg",
-            "type": "image/jpeg",
-            "name": "Peter 11.jpg",
-            "size": "285922"
-          }
-        ],
+        "files": [],
         "hideInMenu": ""
       }
     },
@@ -2570,8 +1812,8 @@
         "created": "1701372742",
         "updated": 1736889446,
         "images": [
-          "files/Scorecard for Monticello1.png",
-          "files/Scorecard for Versailles2.png"
+          "assets/placeholders/chart-1.svg",
+          "assets/placeholders/chart-3.svg"
         ],
         "videos": [
           "https://youtu.be/WQGzmmf8Xbo",
@@ -2582,99 +1824,7 @@
         "readtime": "4",
         "status": "",
         "hideInMenu": "",
-        "files": [
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Bonj 1.jpg",
-            "url": "files/Bonj 1.jpg",
-            "type": "image/jpeg",
-            "name": "Bonj 1.jpg",
-            "size": "375393"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Bonj 2.jpg",
-            "url": "files/Bonj 2.jpg",
-            "type": "image/jpeg",
-            "name": "Bonj 2.jpg",
-            "size": "456622"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/image67.png",
-            "url": "files/image67.png",
-            "type": "image/png",
-            "name": "image67.png",
-            "size": "4253"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/image68.png",
-            "url": "files/image68.png",
-            "type": "image/png",
-            "name": "image68.png",
-            "size": "4253"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/image69.png",
-            "url": "files/image69.png",
-            "type": "image/png",
-            "name": "image69.png",
-            "size": "4367"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/image70.png",
-            "url": "files/image70.png",
-            "type": "image/png",
-            "name": "image70.png",
-            "size": "4147"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Scorecard for Monticello.png",
-            "url": "files/Scorecard for Monticello.png",
-            "type": "image/png",
-            "name": "Scorecard for Monticello.png",
-            "size": "109780"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Scorecard for Monticello (50).png",
-            "url": "files/Scorecard for Monticello (50).png",
-            "type": "image/png",
-            "name": "Scorecard for Monticello (50).png",
-            "size": "81239"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Test1.png",
-            "url": "files/Test1.png",
-            "type": "image/png",
-            "name": "Test1.png",
-            "size": "118556"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Scorecard for Versailles.png",
-            "url": "files/Scorecard for Versailles.png",
-            "type": "image/png",
-            "name": "Scorecard for Versailles.png",
-            "size": "106132"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Scorecard for Versailles1.png",
-            "url": "files/Scorecard for Versailles1.png",
-            "type": "image/png",
-            "name": "Scorecard for Versailles1.png",
-            "size": "106928"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Scorecard for Monticello1.png",
-            "url": "files/Scorecard for Monticello1.png",
-            "type": "image/png",
-            "name": "Scorecard for Monticello1.png",
-            "size": "109637"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Scorecard for Versailles2.png",
-            "url": "files/Scorecard for Versailles2.png",
-            "type": "image/png",
-            "name": "Scorecard for Versailles2.png",
-            "size": "106553"
-          }
-        ]
+        "files": []
       }
     },
     {
@@ -2690,8 +1840,8 @@
         "created": "1701372752",
         "updated": 1736889446,
         "images": [
-          "files/Scorecard for Saul Bass2.png",
-          "files/Scorecard for Super Metroid1.png"
+          "assets/placeholders/chart-2.svg",
+          "assets/placeholders/chart-1.svg"
         ],
         "videos": [
           "https://youtu.be/O63CgSG_Rzg",
@@ -2702,57 +1852,7 @@
         "readtime": "4",
         "status": "",
         "hideInMenu": "",
-        "files": [
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Ben 1.jpg",
-            "url": "files/Ben 1.jpg",
-            "type": "image/jpeg",
-            "name": "Ben 1.jpg",
-            "size": "401424"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Ben 2.jpg",
-            "url": "files/Ben 2.jpg",
-            "type": "image/jpeg",
-            "name": "Ben 2.jpg",
-            "size": "655747"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Scorecard for Saul Bass.png",
-            "url": "files/Scorecard for Saul Bass.png",
-            "type": "image/png",
-            "name": "Scorecard for Saul Bass.png",
-            "size": "108891"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Scorecard for Super Metroid.png",
-            "url": "files/Scorecard for Super Metroid.png",
-            "type": "image/png",
-            "name": "Scorecard for Super Metroid.png",
-            "size": "109352"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Scorecard for Saul Bass1.png",
-            "url": "files/Scorecard for Saul Bass1.png",
-            "type": "image/png",
-            "name": "Scorecard for Saul Bass1.png",
-            "size": "109118"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Scorecard for Saul Bass2.png",
-            "url": "files/Scorecard for Saul Bass2.png",
-            "type": "image/png",
-            "name": "Scorecard for Saul Bass2.png",
-            "size": "108624"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Scorecard for Super Metroid1.png",
-            "url": "files/Scorecard for Super Metroid1.png",
-            "type": "image/png",
-            "name": "Scorecard for Super Metroid1.png",
-            "size": "108973"
-          }
-        ]
+        "files": []
       }
     },
     {
@@ -2795,23 +1895,8 @@
         "locked": "",
         "readtime": "3",
         "status": "",
-        "files": [
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/image66.png",
-            "url": "files/image66.png",
-            "type": "image/png",
-            "name": "image66.png",
-            "size": "10509"
-          },
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/horsedev.jpeg",
-            "url": "files/horsedev.jpeg",
-            "type": "image/jpeg",
-            "name": "horsedev.jpeg",
-            "size": "35600"
-          }
-        ],
-        "image": "files/horsedev.jpeg"
+        "files": [],
+        "image": "assets/placeholders/scene-1.svg"
       }
     },
     {
@@ -2847,32 +1932,10 @@
       "metadata": {
         "locked": "",
         "created": "1706291665",
-        "images": ["files/hax.png"],
+        "images": ["assets/icon-512x512.png"],
         "videos": [],
         "updated": 1736889446,
-        "files": [
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/psu-mark.png",
-            "url": "files/psu-mark.png",
-            "type": "image/png",
-            "name": "psu-mark.png",
-            "size": "25571"
-          },
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/PSU_ARC_RGB_REV_2C.svg",
-            "url": "files/PSU_ARC_RGB_REV_2C.svg",
-            "type": "image/svg+xml",
-            "name": "PSU_ARC_RGB_REV_2C.svg",
-            "size": "14283"
-          },
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/hax.png",
-            "url": "files/hax.png",
-            "type": "image/png",
-            "name": "hax.png",
-            "size": "343118"
-          }
-        ],
+        "files": [],
         "published": "1",
         "hideInMenu": "",
         "readtime": "1",
@@ -2891,39 +1954,10 @@
       "metadata": {
         "locked": "",
         "created": "1706291665",
-        "images": ["files/HAX.psu World changer-circle1.png"],
+        "images": ["assets/icon-512x512.png"],
         "videos": [],
         "updated": 1736889446,
-        "files": [
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/hax-footer.jpg",
-            "url": "files/hax-footer.jpg",
-            "type": "image/jpeg",
-            "name": "hax-footer.jpg",
-            "size": "16806"
-          },
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/eberly-logo.png",
-            "url": "files/eberly-logo.png",
-            "type": "image/png",
-            "name": "eberly-logo.png",
-            "size": "8969"
-          },
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/ist-logo.png",
-            "url": "files/ist-logo.png",
-            "type": "image/png",
-            "name": "ist-logo.png",
-            "size": "62252"
-          },
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/HAX.psu World changer-circle1.png",
-            "url": "files/HAX.psu World changer-circle1.png",
-            "type": "image/png",
-            "name": "HAX.psu World changer-circle1.png",
-            "size": "1172092"
-          }
-        ],
+        "files": [],
         "published": "1",
         "hideInMenu": "",
         "readtime": "1",
@@ -3047,31 +2081,7 @@
           },
           "elements": "3"
         },
-        "files": [
-          {
-            "path": "/var/www/iam/users/bto108/sites/haxcellence/files/image1.png",
-            "fullUrl": "/bto108/sites/haxcellence/files/image1.png",
-            "url": "files/image1.png",
-            "type": "image/png",
-            "name": "image1.png",
-            "size": "128013"
-          },
-          {
-            "path": "/var/www/iam/users/bto108/sites/haxcellence/files/image3.png",
-            "fullUrl": "/bto108/sites/haxcellence/files/image3.png",
-            "url": "files/image3.png",
-            "type": "image/png",
-            "name": "image3.png",
-            "size": "109622"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/2_Outcomes.png",
-            "url": "files/2_Outcomes.png",
-            "type": "image/png",
-            "name": "2_Outcomes.png",
-            "size": "389419"
-          }
-        ],
+        "files": [],
         "videos": ["https://www.youtube.com/watch?v=msETqDgyFzI"],
         "images": [],
         "tags": "ontology, outcomes"
@@ -3138,16 +2148,8 @@
         "status": "",
         "hideInMenu": "",
         "readtime": "1",
-        "files": [
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/Gemini_Generated_Image_55tdtf55tdtf55td-min.jpeg",
-            "url": "files/Gemini_Generated_Image_55tdtf55tdtf55td-min.jpeg",
-            "type": "image/jpeg",
-            "name": "Gemini_Generated_Image_55tdtf55tdtf55td-min.jpeg",
-            "size": "32963"
-          }
-        ],
-        "image": "files/Gemini_Generated_Image_55tdtf55tdtf55td-min.jpeg"
+        "files": [],
+        "image": "assets/placeholders/scene-2.svg"
       }
     },
     {
@@ -3393,18 +2395,10 @@
         "updated": 1736889445,
         "images": [],
         "videos": [],
-        "files": [
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/Screenshot from 2024-09-19 15-35-26.png",
-            "url": "files/Screenshot from 2024-09-19 15-35-26.png",
-            "type": "image/png",
-            "name": "Screenshot from 2024-09-19 15-35-26.png",
-            "size": "90798"
-          }
-        ],
+        "files": [],
         "published": "1",
         "hideInMenu": "",
-        "image": "files/Screenshot from 2024-09-19 15-35-26.png",
+        "image": "assets/placeholders/screen-3.svg",
         "tags": "code sample",
         "locked": "",
         "readtime": "5",
@@ -3425,18 +2419,10 @@
         "updated": 1736889445,
         "images": [],
         "videos": [],
-        "files": [
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/Screenshot from 2024-09-19 15-41-24.png",
-            "url": "files/Screenshot from 2024-09-19 15-41-24.png",
-            "type": "image/png",
-            "name": "Screenshot from 2024-09-19 15-41-24.png",
-            "size": "52180"
-          }
-        ],
+        "files": [],
         "published": "1",
         "hideInMenu": "",
-        "image": "files/Screenshot from 2024-09-19 15-41-24.png",
+        "image": "assets/placeholders/screen-1.svg",
         "locked": "",
         "readtime": "1",
         "tags": "code sample",
@@ -3462,16 +2448,8 @@
         "tags": "api",
         "locked": "",
         "readtime": "1",
-        "files": [
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/Screenshot from 2024-09-23 16-15-32.png",
-            "url": "files/Screenshot from 2024-09-23 16-15-32.png",
-            "type": "image/png",
-            "name": "Screenshot from 2024-09-23 16-15-32.png",
-            "size": "57090"
-          }
-        ],
-        "image": "files/Screenshot from 2024-09-23 16-15-32.png",
+        "files": [],
+        "image": "assets/placeholders/screen-3.svg",
         "status": ""
       }
     },
@@ -3529,7 +2507,7 @@
       "metadata": {
         "created": "1727122062",
         "updated": 1736889445,
-        "images": ["files/2019-03-12_16-45-51.png"],
+        "images": ["assets/placeholders/screen-3.svg"],
         "videos": [],
         "published": "1",
         "hideInMenu": "",
@@ -3653,29 +2631,7 @@
         "updated": 1736889444,
         "published": "1",
         "readtime": "1",
-        "files": [
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/voice-recording-110659.80000000075.mp3",
-            "url": "files/voice-recording-110659.80000000075.mp3",
-            "type": "audio/mpeg",
-            "name": "voice-recording-110659.80000000075.mp3",
-            "size": "111364"
-          },
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/voice-recording-159216.70000000298.mp3",
-            "url": "files/voice-recording-159216.70000000298.mp3",
-            "type": "audio/mpeg",
-            "name": "voice-recording-159216.70000000298.mp3",
-            "size": "39758"
-          },
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/voice-recording-51645.89999999851.mp3",
-            "url": "files/voice-recording-51645.89999999851.mp3",
-            "type": "audio/mpeg",
-            "name": "voice-recording-51645.89999999851.mp3",
-            "size": "104279"
-          }
-        ],
+        "files": [],
         "status": ""
       }
     },
@@ -3899,38 +2855,7 @@
         "updated": 1736889446,
         "published": "1",
         "status": "",
-        "files": [
-          {
-            "path": "/var/www/iam/users/bto108/sites/haxcellence/files/Screenshot from 2023-05-03 14-18-10.png",
-            "fullUrl": "/bto108/sites/haxcellence/files/Screenshot from 2023-05-03 14-18-10.png",
-            "url": "files/Screenshot from 2023-05-03 14-18-10.png",
-            "type": "image/png",
-            "name": "Screenshot from 2023-05-03 14-18-10.png",
-            "size": "73304"
-          },
-          {
-            "path": "/var/www/iam/users/bto108/sites/haxcellence/files/image.png",
-            "fullUrl": "/bto108/sites/haxcellence/files/image.png",
-            "url": "files/image.png",
-            "type": "image/png",
-            "name": "image.png",
-            "size": "75798"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/image23.png",
-            "url": "files/image23.png",
-            "type": "image/png",
-            "name": "image23.png",
-            "size": "32146"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/4_Pedagogy2.png",
-            "url": "files/4_Pedagogy2.png",
-            "type": "image/png",
-            "name": "4_Pedagogy2.png",
-            "size": "160827"
-          }
-        ],
+        "files": [],
         "readtime": "1",
         "contentDetails": {
           "headings": "0",
@@ -3992,16 +2917,8 @@
         "locked": "",
         "readtime": "3",
         "status": "",
-        "files": [
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/Gemini_Generated_Image_xgwbmtxgwbmtxgwb-min.jpeg",
-            "url": "files/Gemini_Generated_Image_xgwbmtxgwbmtxgwb-min.jpeg",
-            "type": "image/jpeg",
-            "name": "Gemini_Generated_Image_xgwbmtxgwbmtxgwb-min.jpeg",
-            "size": "50350"
-          }
-        ],
-        "image": "files/Gemini_Generated_Image_xgwbmtxgwbmtxgwb-min.jpeg"
+        "files": [],
+        "image": "assets/placeholders/scene-2.svg"
       }
     },
     {
@@ -4105,100 +3022,11 @@
           },
           "elements": "7"
         },
-        "files": [
-          {
-            "path": "/var/www/iam/users/bto108/sites/haxcellence/files/image13.png",
-            "fullUrl": "/bto108/sites/haxcellence/files/image13.png",
-            "url": "files/image13.png",
-            "type": "image/png",
-            "name": "image13.png",
-            "size": "193305"
-          },
-          {
-            "path": "/var/www/iam/users/bmr1/sites/haxcellence/files/HAX Course Ontology Draft Version.png",
-            "fullUrl": "/bmr1/sites/haxcellence/files/HAX Course Ontology Draft Version.png",
-            "url": "files/HAX Course Ontology Draft Version.png",
-            "type": "image/png",
-            "name": "HAX Course Ontology Draft Version.png",
-            "size": "769447"
-          },
-          {
-            "path": "/var/www/iam/users/bmr1/sites/haxcellence/files/HAX_Ontology.mp4",
-            "fullUrl": "/bmr1/sites/haxcellence/files/HAX_Ontology.mp4",
-            "url": "files/HAX_Ontology.mp4",
-            "type": "video/mp4",
-            "name": "HAX_Ontology.mp4",
-            "size": "209088025"
-          },
-          {
-            "path": "/var/www/iam/users/bmr1/sites/haxcellence/files/image14.png",
-            "fullUrl": "/bmr1/sites/haxcellence/files/image14.png",
-            "url": "files/image14.png",
-            "type": "image/png",
-            "name": "image14.png",
-            "size": "128093"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/image17.png",
-            "url": "files/image17.png",
-            "type": "image/png",
-            "name": "image17.png",
-            "size": "9329"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/image18.png",
-            "url": "files/image18.png",
-            "type": "image/png",
-            "name": "image18.png",
-            "size": "29317"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/image19.png",
-            "url": "files/image19.png",
-            "type": "image/png",
-            "name": "image19.png",
-            "size": "9059"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/image20.png",
-            "url": "files/image20.png",
-            "type": "image/png",
-            "name": "image20.png",
-            "size": "9692"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/image21.png",
-            "url": "files/image21.png",
-            "type": "image/png",
-            "name": "image21.png",
-            "size": "30941"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/image22.png",
-            "url": "files/image22.png",
-            "type": "image/png",
-            "name": "image22.png",
-            "size": "30941"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/6_Instruction1.png",
-            "url": "files/6_Instruction1.png",
-            "type": "image/png",
-            "name": "6_Instruction1.png",
-            "size": "469571"
-          },
-          {
-            "fullUrl": "/bto108/sites/haxcellence/files/Gemini_Generated_Image_l7n6aol7n6aol7n6-min.jpeg",
-            "url": "files/Gemini_Generated_Image_l7n6aol7n6aol7n6-min.jpeg",
-            "type": "image/jpeg",
-            "name": "Gemini_Generated_Image_l7n6aol7n6aol7n6-min.jpeg",
-            "size": "82386"
-          }
-        ],
+        "files": [],
         "videos": ["https://www.youtube.com/watch?v=iF4UZKcAWmw"],
-        "images": ["files/HAX Course Ontology Draft Version.png"],
+        "images": ["assets/placeholders/chart-1.svg"],
         "hideInMenu": "",
-        "image": "files/Gemini_Generated_Image_l7n6aol7n6aol7n6-min.jpeg"
+        "image": "assets/placeholders/scene-1.svg"
       }
     },
     {
@@ -4233,23 +3061,7 @@
           },
           "elements": "3"
         },
-        "files": [
-          {
-            "path": "/var/www/iam/users/bto108/sites/haxcellence/files/image2.png",
-            "fullUrl": "/bto108/sites/haxcellence/files/image2.png",
-            "url": "files/image2.png",
-            "type": "image/png",
-            "name": "image2.png",
-            "size": "58057"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/5_Structure.png",
-            "url": "files/5_Structure.png",
-            "type": "image/png",
-            "name": "5_Structure.png",
-            "size": "352193"
-          }
-        ],
+        "files": [],
         "videos": ["https://www.youtube.com/watch?v=XIZelr4Lg98"],
         "images": []
       }
@@ -4286,23 +3098,7 @@
           },
           "elements": "3"
         },
-        "files": [
-          {
-            "path": "/var/www/iam/users/bto108/sites/haxcellence/files/image5.png",
-            "fullUrl": "/bto108/sites/haxcellence/files/image5.png",
-            "url": "files/image5.png",
-            "type": "image/png",
-            "name": "image5.png",
-            "size": "136023"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/7_Instruction2.png",
-            "url": "files/7_Instruction2.png",
-            "type": "image/png",
-            "name": "7_Instruction2.png",
-            "size": "429816"
-          }
-        ],
+        "files": [],
         "videos": ["https://www.youtube.com/watch?v=G5dYdOHLajY"],
         "images": []
       }
@@ -4339,51 +3135,7 @@
           },
           "elements": "3"
         },
-        "files": [
-          {
-            "path": "/var/www/iam/users/bto108/sites/haxcellence/files/image4.png",
-            "fullUrl": "/bto108/sites/haxcellence/files/image4.png",
-            "url": "files/image4.png",
-            "type": "image/png",
-            "name": "image4.png",
-            "size": "90868"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/image24.png",
-            "url": "files/image24.png",
-            "type": "image/png",
-            "name": "image24.png",
-            "size": "22222"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/image25.png",
-            "url": "files/image25.png",
-            "type": "image/png",
-            "name": "image25.png",
-            "size": "22222"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/image26.png",
-            "url": "files/image26.png",
-            "type": "image/png",
-            "name": "image26.png",
-            "size": "27601"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/image27.png",
-            "url": "files/image27.png",
-            "type": "image/png",
-            "name": "image27.png",
-            "size": "28033"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/14_Content1.png",
-            "url": "files/14_Content1.png",
-            "type": "image/png",
-            "name": "14_Content1.png",
-            "size": "438314"
-          }
-        ],
+        "files": [],
         "videos": ["https://www.youtube.com/watch?v=NBsjGPIf1tQ"],
         "images": []
       }
@@ -4420,23 +3172,7 @@
           },
           "elements": "3"
         },
-        "files": [
-          {
-            "path": "/var/www/iam/users/bto108/sites/haxcellence/files/image6.png",
-            "fullUrl": "/bto108/sites/haxcellence/files/image6.png",
-            "url": "files/image6.png",
-            "type": "image/png",
-            "name": "image6.png",
-            "size": "42041"
-          },
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/17_Assessment1.png",
-            "url": "files/17_Assessment1.png",
-            "type": "image/png",
-            "name": "17_Assessment1.png",
-            "size": "515064"
-          }
-        ],
+        "files": [],
         "videos": ["https://www.youtube.com/watch?v=i9paCj1Kya4"],
         "images": []
       }
@@ -4647,15 +3383,7 @@
         "readtime": "1",
         "status": "",
         "hideInMenu": "",
-        "files": [
-          {
-            "fullUrl": "/bmr1/sites/haxcellence/files/Featured_Article_Blue1.png",
-            "url": "files/Featured_Article_Blue1.png",
-            "type": "image/png",
-            "name": "Featured_Article_Blue1.png",
-            "size": "1910"
-          }
-        ]
+        "files": []
       }
     },
     {
