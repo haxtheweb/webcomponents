@@ -2,8 +2,9 @@
  * Minify the JS of a build folder with terser, in place, on every CPU core.
  *
  * Does what the old `gulp terser` task did (terser.minify on each *.js file
- * with the same options) and writes the same bytes, but spreads the files
- * over worker threads and remembers results between runs:
+ * with the same options), but minifies classic scripts as scripts and not as
+ * modules (see isModuleSource), spreads the files over worker threads and
+ * remembers results between runs:
  *
  * - each file is minified on its own, so the order and the worker it lands on
  *   cannot change its output;
@@ -38,13 +39,52 @@ import {
 const require = createRequire(import.meta.url);
 const { minify } = require("terser");
 
-// the options the build has always used; they are part of the cache key
+// the options the build has always used; they are part of the cache key.
+// `module` is added per file by optionsFor().
 export const TERSER_OPTIONS = {
   ecma: 2022,
   keep_fnames: true,
   mangle: true,
-  module: true,
 };
+
+/**
+ * Is this source an ES module, or a classic script?
+ *
+ * The build holds both: our elements are modules, but libraries loaded with a
+ * plain script tag (through es-global-bridge, or from a site's index.html) are
+ * classic scripts, whose top-level names are globals. Minified as a module, a
+ * classic script gets those names shortened to `e`, `t`, `r`, and the first
+ * one to declare `const e` makes every later script with a top-level `var e`
+ * fail with "Identifier 'e' has already been declared".
+ *
+ * A file is a module when it has an import or export statement, or uses
+ * import.meta. Anything else is minified as a script, which leaves its
+ * top-level names alone and is also correct for a module with no imports or
+ * exports.
+ */
+export async function isModuleSource(source) {
+  if (!/\b(?:import|export)\b/.test(source)) {
+    return false;
+  }
+  if (/\bimport\.meta\b/.test(source)) {
+    return true;
+  }
+  // the words can sit in a string or comment, so ask the parser
+  const parsed = await minify(source, {
+    parse: { module: true },
+    compress: false,
+    mangle: false,
+    format: { ast: true, code: false },
+  });
+  return parsed.ast.body.some(
+    (node) => node.TYPE === "Import" || node.TYPE === "Export",
+  );
+}
+
+/** the terser options for one file */
+export async function optionsFor(source) {
+  return { ...TERSER_OPTIONS, module: await isModuleSource(source) };
+}
 
 /** every *.js under dir, skipping dot files and dot folders like gulp.src */
 export function listJs(dir, excludes, out = []) {
@@ -67,7 +107,7 @@ export function listJs(dir, excludes, out = []) {
 
 async function minifyFile(file, cachePath) {
   const source = fs.readFileSync(file, "utf8");
-  const result = await minify(source, { ...TERSER_OPTIONS });
+  const result = await minify(source, await optionsFor(source));
   // an empty result leaves the file as it was, as gulp-terser did
   const code = result.code ? result.code : null;
   if (code !== null) {
@@ -119,9 +159,12 @@ if (!isMainThread) {
   if (useCache) {
     fs.mkdirSync(cacheDir, { recursive: true });
   }
+  // "per-file-module" marks results made since classic scripts stopped being
+  // minified as modules, so older stored results are not reused
   const salt = JSON.stringify([
     require("terser/package.json").version,
     TERSER_OPTIONS,
+    "per-file-module",
   ]);
   const jobs = [];
   let files = 0;
