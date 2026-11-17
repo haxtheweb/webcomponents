@@ -1,0 +1,92 @@
+name: admin-contrast
+
+# The HAXcms admin under DDD and every bridged design system.
+#
+# The admin builds its colors from DDD tokens that a design system bridge
+# remaps, so a bridge recolors the admin too. For each system, the editor
+# demo (elements/haxcms-elements/demo) is served locally, the bridge is
+# activated, and the editor top bar, every site admin section, the
+# unsaved-changes card and the confirm and prompt cards are opened in turn
+# with prefers-color-scheme light, then dark. On each: axe-core's
+# color-contrast rule (text) and a WCAG 1.4.11 check that fields, switches
+# and icon-only buttons show 3:1 against what is around them.
+#
+# Only a finding missing from scripts/admin-contrast.baseline.json
+# (system -> surface -> mode -> finding) fails a job; the baseline only
+# shrinks. After a fix, run `yarn test:admin-contrast --design-system
+# <name> --update-baseline` and commit the smaller baseline.
+#
+# Runs on pull_request (not pull_request_target): no secrets, read-only token.
+on:
+  # No branch filter: stacked PRs (base is another feature branch) must run too.
+  pull_request:
+    paths:
+      - "elements/d-d-d/**"
+      - "elements/*/design-system/**"
+      - "elements/*/lib/*DesignSystem.js"
+      - "elements/haxcms-elements/lib/core/**"
+      - "elements/simple-fields/**"
+      - "elements/super-daemon/**"
+      - "elements/outline-designer/**"
+      - "elements/simple-modal/**"
+      - "scripts/admin-contrast*"
+      - "scripts/lib/contrast.mjs"
+      - "scripts/lib/demo-runner.mjs"
+      - "scripts/lib/design-systems.mjs"
+      - "web-dev-server.config.mjs"
+      - ".github/workflows/admin-contrast.yml"
+      - ".github/actions/setup-playwright/**"
+  schedule:
+    - cron: "52 7 * * *" # nightly, 07:52 UTC
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  admin:
+    name: Admin under ${{ matrix.system }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        system:
+          - ddd
+          - carbon
+          - keepcase
+          - material
+          - patternfly
+          - shadcn
+          - spectrum
+          - tailwind
+          - uswds
+          - webawesome
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+          cache: yarn
+      - name: Install
+        run: yarn install --frozen-lockfile
+      - name: Install Playwright Chromium
+        # same browser build and fonts as the contrast workflows
+        uses: ./.github/actions/setup-playwright # zizmor: ignore[self-repository]
+        timeout-minutes: 12
+        with:
+          fonts: "true"
+      - name: Admin surfaces under the design system
+        env:
+          SYSTEM: ${{ matrix.system }}
+        run: node scripts/admin-contrast-check.mjs --design-system "$SYSTEM" --json "admin-contrast-$SYSTEM.json"
+      - name: Upload measurements
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: admin-contrast-${{ matrix.system }}
+          path: admin-contrast-${{ matrix.system }}.json
+          if-no-files-found: ignore
+          retention-days: 14

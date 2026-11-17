@@ -243,6 +243,14 @@ class SimpleModal extends I18NMixin(LitElement) {
           text-decoration: underline;
           outline: none;
         }
+        /* keyboard focus gets a ring in the title's own color (an underline
+           alone is the hover look, and easy to miss): it contrasts with the
+           title bar in every theme because the title text does */
+        .breadcrumb-button:focus-visible {
+          outline: var(--ddd-border-size-sm, 2px) solid currentColor;
+          outline-offset: var(--ddd-spacing-1, 4px);
+          border-radius: var(--ddd-radius-xs, 4px);
+        }
 
         #headerbar {
           margin: 0;

@@ -65,6 +65,7 @@
     "node_modules/@haxtheweb/stop-note/lib/svgs/*/*.svg",
     "node_modules/@haxtheweb/simple-icon/lib/svgs/*/*.svg",
     "node_modules/@haxtheweb/hax-iconset/lib/svgs/*/*.svg",
+    "node_modules/@haxtheweb/*/icons/*.svg",
     "node_modules/monaco-editor/min/**",
     "!node_modules/monaco-editor/min/vs/language/typescript/*",
     "!node_modules/monaco-editor/min-maps/**",

@@ -230,7 +230,13 @@ class PolarisInventTheme extends LTIResizingMixin(
             --polaris-header-bg-color
           );
 
-          --map-menu-item-button-active-color: white;
+          /* the open item sits on palette color-7, so its text is the
+             palette's text color for color-7 (white on the light orange of
+             palette 8 was under 3:1) */
+          --map-menu-item-button-active-color: var(
+            --ddd-palette-text-color-7,
+            white
+          );
           --map-menu-item-button-active-background-color: var(
             --ddd-palette-color-7,
             var(--ddd-theme-default-inventOrange)

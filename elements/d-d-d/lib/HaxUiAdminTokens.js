@@ -51,11 +51,20 @@ export const HaxUiAdminTokens = [
           transparent
         )
       );
+      /* the edge that shows where a field, select or switch is (WCAG
+         1.4.11): 3:1 against the surface and the sunken well in light
+         (DDD has no mid grey, so slate is mixed with white; limestone gray
+         was 2.4:1), and 45% white over the dark surfaces (40% fell just under 3:1 on
+         the Spectrum top bar) */
       --hax-ui-line-strong: light-dark(
-        var(--ddd-theme-default-limestoneGray, #a2aaad),
         color-mix(
           in srgb,
-          var(--ddd-theme-default-white, #ffffff) 40%,
+          var(--ddd-theme-default-slateGray, #314d64) 70%,
+          var(--ddd-theme-default-white, #ffffff)
+        ),
+        color-mix(
+          in srgb,
+          var(--ddd-theme-default-white, #ffffff) 45%,
           transparent
         )
       );
@@ -66,6 +75,20 @@ export const HaxUiAdminTokens = [
           var(--ddd-theme-default-white, #ffffff) 8%,
           transparent
         )
+      );
+      /* laid over a control's own fill while it is held down (see the
+         pressed rule in HaxUiAdminControls): a mid gray, so a light fill
+         darkens and a dark fill lightens, whatever color a design system
+         gives it and in either color scheme */
+      --hax-ui-pressed: rgba(128, 128, 128, 0.28);
+      /* hover for a control (button, chip, segment): a tint of the text
+         color instead of a fixed gray, so it shows on every admin
+         background (the fixed gray is the sunken and hover background
+         itself) and under a design system that maps that gray to white.
+         On the plain surface it matches --hax-ui-hover. */
+      --hax-ui-control-hover: light-dark(
+        color-mix(in srgb, var(--hax-ui-text) 6%, transparent),
+        var(--hax-ui-hover)
       );
       /* rows that belong to the row above (a page's content structure):
          a lighter wash than hover, so hovering one still shows */
@@ -244,6 +267,92 @@ export const HaxUiAdminTokens = [
       --hax-ui-action-bar-height: 56px;
       --hax-ui-rail-width: 192px;
       --hax-ui-rail-width-collapsed: 56px;
+      /* accent text that sits on an accent tint (a badge on the selected
+         row, an accent pill); see the clamp below */
+      --hax-ui-accent-text: var(--hax-ui-accent);
+    }
+  `,
+  /* A design system bridge remaps the DDD colors these tokens read, often
+     to a lighter brand color (Carbon and Spectrum blues, a Web Awesome
+     green, a Keepcase magenta) that holds 4.5:1 on white but not on a
+     tint or a warm surface. In light mode each text color keeps its hue
+     and chroma and is only darkened when it is lighter than oklch
+     lightness 0.5 (about 4.5:1 on the admin surfaces); text on an accent
+     tint is held to 0.45. The DDD values already sit under those, so DDD
+     looks the same. The field edge is held to 0.6 (3:1). Browsers without
+     relative color syntax keep the plain values above. */
+  css`
+    @supports (color: oklch(from red l c h)) {
+      :host {
+        --hax-ui-text-muted: light-dark(
+          oklch(
+            from var(--ddd-theme-default-slateGray, #314d64) min(l, 0.5) c h
+          ),
+          var(--ddd-theme-default-white65, rgba(255, 255, 255, 0.65))
+        );
+        /* a bridge sets --hax-ui-color-accent to its brand color, so the
+           clamp reads it first */
+        --hax-ui-accent: light-dark(
+          oklch(
+            from
+              var(
+                --hax-ui-color-accent,
+                var(--ddd-theme-default-beaverBlue, #1e407c)
+              )
+              min(l, 0.5) c h
+          ),
+          var(--hax-ui-color-accent, var(--ddd-theme-default-skyLight, #ccf0ff))
+        );
+        --hax-ui-accent-strong: light-dark(
+          oklch(from var(--ddd-theme-default-link, #005fa9) min(l, 0.5) c h),
+          var(--ddd-theme-default-skyBlue, #009cde)
+        );
+        --hax-ui-accent-text: light-dark(
+          oklch(
+            from
+              var(
+                --hax-ui-color-accent,
+                var(--ddd-theme-default-beaverBlue, #1e407c)
+              )
+              min(l, 0.45) c h
+          ),
+          var(--hax-ui-color-accent, var(--ddd-theme-default-skyLight, #ccf0ff))
+        );
+        --hax-ui-danger: light-dark(
+          oklch(
+            from var(--ddd-theme-default-original87Pink, #bc204b) min(l, 0.5) c
+              h
+          ),
+          var(--ddd-theme-default-discoveryCoral, #f2665e)
+        );
+        --hax-ui-success: light-dark(
+          oklch(
+            from var(--ddd-theme-default-opportunityGreen, #008755) min(l, 0.5)
+              c h
+          ),
+          var(--ddd-theme-default-creekLight, #cfeceb)
+        );
+        --hax-ui-info: light-dark(
+          oklch(from var(--ddd-theme-default-info, #014361) min(l, 0.5) c h),
+          var(--ddd-theme-default-infoLight, #e5f6fd)
+        );
+        --hax-ui-line-strong: light-dark(
+          oklch(
+            from
+              color-mix(
+                in srgb,
+                var(--ddd-theme-default-slateGray, #314d64) 70%,
+                var(--ddd-theme-default-white, #ffffff)
+              )
+              min(l, 0.6) c h
+          ),
+          color-mix(
+            in srgb,
+            var(--ddd-theme-default-white, #ffffff) 45%,
+            transparent
+          )
+        );
+      }
     }
   `,
 ];
@@ -295,7 +404,7 @@ export const HaxUiAdminPrimitives = [
       box-shadow: inset 0 0 0 1px var(--hax-ui-line-strong);
     }
     .hax-ui-pill[data-tone="accent"] {
-      color: var(--hax-ui-accent);
+      color: var(--hax-ui-accent-text);
       background-color: var(--hax-ui-accent-soft);
     }
     /* not built yet: a dashed outline, as the dashboard's coming soon */
@@ -306,7 +415,7 @@ export const HaxUiAdminPrimitives = [
     }
     /* works, still changing */
     .hax-ui-pill[data-tone="beta"] {
-      color: var(--hax-ui-accent-strong);
+      color: var(--hax-ui-accent-text);
       background-color: transparent;
       box-shadow: inset 0 0 0 1px currentColor;
     }
