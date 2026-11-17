@@ -92,7 +92,12 @@ class SimpleFileUpload extends I18NMixin(DDD) {
           opacity: 0.85;
         }
         .file-error {
-          color: var(--ddd-theme-default-error, #b40000);
+          color: light-dark(
+            var(--ddd-theme-default-error, #5f2120),
+            var(--ddd-theme-default-errorLight, #fdeded)
+          );
+          opacity: 1;
+          word-break: break-word;
         }
         .file-progress {
           inline-size: 100%;
@@ -647,6 +652,10 @@ class SimpleFileUpload extends I18NMixin(DDD) {
             "{status}",
             () => xhr.status,
           );
+          const reason = this._responseMessage(xhr);
+          if (reason) {
+            file.error += " (" + reason + ")";
+          }
         }
         this.dispatchEvent(
           new CustomEvent("upload-response", {
@@ -711,6 +720,31 @@ class SimpleFileUpload extends I18NMixin(DDD) {
 
       xhr.send(formData);
     });
+  }
+
+  /**
+   * The reason a failed upload's JSON response gives ({data:{message}} or
+   * {message}), so the row can say why and not only the status code.
+   * @param {XMLHttpRequest} xhr
+   * @returns {String} the message, or "" when the response has none
+   */
+  _responseMessage(xhr) {
+    let body = null;
+    try {
+      body = JSON.parse(xhr.responseText);
+    } catch {
+      return "";
+    }
+    if (!body || typeof body !== "object") {
+      return "";
+    }
+    let message = "";
+    if (body.data && typeof body.data.message === "string") {
+      message = body.data.message;
+    } else if (typeof body.message === "string") {
+      message = body.message;
+    }
+    return message.trim().slice(0, 200);
   }
 
   _abortFile(index) {

@@ -20,6 +20,52 @@ export class ScreenRecorder extends DDDSuper(I18NMixin(LitElement)) {
     return "screen-recorder";
   }
 
+  /**
+   * Containers to record into, in order of preference. A browser's own
+   * default can be a container the file name does not describe (Chrome may
+   * pick Matroska with H.264, Safari MP4), which other browsers cannot play
+   * and upload checks that compare content to extension refuse. WebM first
+   * because it plays everywhere; MP4 for browsers that cannot record WebM.
+   */
+  static get recordingFormats() {
+    return [
+      { mimeType: "video/webm", extension: "webm" },
+      { mimeType: "video/mp4", extension: "mp4" },
+    ];
+  }
+
+  /**
+   * First entry of recordingFormats this browser can record, or null when
+   * it reports none (the browser default is used).
+   */
+  static supportedRecordingFormat() {
+    const Recorder = globalThis.MediaRecorder;
+    if (!Recorder || typeof Recorder.isTypeSupported !== "function") {
+      return null;
+    }
+    const formats = ScreenRecorder.recordingFormats;
+    for (let i = 0; i < formats.length; i++) {
+      if (Recorder.isTypeSupported(formats[i].mimeType)) {
+        return formats[i];
+      }
+    }
+    return null;
+  }
+
+  /**
+   * File extension that matches a recorded MIME type.
+   */
+  static extensionForMimeType(mimeType) {
+    const type = String(mimeType || "").toLowerCase();
+    if (type.indexOf("mp4") !== -1) {
+      return "mp4";
+    }
+    if (type.indexOf("matroska") !== -1) {
+      return "mkv";
+    }
+    return "webm";
+  }
+
   constructor() {
     super();
     this.recording = false;
@@ -33,6 +79,8 @@ export class ScreenRecorder extends DDDSuper(I18NMixin(LitElement)) {
     this.audioStream = null;
     this.includeSystemAudio = true;
     this.includeMicrophoneAudio = true;
+    // file extension of the last recording's container; names the download
+    this.recordingExtension = "webm";
 
     this.t = this.t || {};
     this.t = {
@@ -249,7 +297,7 @@ export class ScreenRecorder extends DDDSuper(I18NMixin(LitElement)) {
           <a
             class="download-link ${this.downloadUrl ? "" : "hidden"}"
             href="${this.downloadUrl}"
-            download="screen-recording-${Date.now()}.webm"
+            download="screen-recording-${Date.now()}.${this.recordingExtension}"
           >
             <simple-icon-button-lite
               icon="icons:file-download"
@@ -336,7 +384,10 @@ export class ScreenRecorder extends DDDSuper(I18NMixin(LitElement)) {
         }
       }
 
-      this.recorder = new MediaRecorder(finalStream);
+      const format = ScreenRecorder.supportedRecordingFormat();
+      this.recorder = format
+        ? new MediaRecorder(finalStream, { mimeType: format.mimeType })
+        : new MediaRecorder(finalStream);
       this.chunks = [];
 
       this.recorder.ondataavailable = (e) => {
@@ -383,8 +434,13 @@ export class ScreenRecorder extends DDDSuper(I18NMixin(LitElement)) {
    * Handle recording stop event
    */
   _onRecordingStop() {
+    const mimeType =
+      (this.recorder && this.recorder.mimeType) ||
+      (this.chunks.length > 0 && this.chunks[0].type) ||
+      "video/webm";
+    this.recordingExtension = ScreenRecorder.extensionForMimeType(mimeType);
     this.completeBlob = new Blob(this.chunks, {
-      type: this.chunks.length > 0 ? this.chunks[0].type : "video/webm",
+      type: mimeType,
     });
 
     this.videoSrc = URL.createObjectURL(this.completeBlob);
@@ -398,6 +454,8 @@ export class ScreenRecorder extends DDDSuper(I18NMixin(LitElement)) {
         cancelable: true,
         detail: {
           blob: this.completeBlob,
+          mimeType: mimeType,
+          extension: this.recordingExtension,
         },
       }),
     );

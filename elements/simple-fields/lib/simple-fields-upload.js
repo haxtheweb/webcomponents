@@ -833,6 +833,9 @@ class SimpleFieldsUpload extends I18NMixin(
     );
     this.shadowRoot.querySelector("#fileupload").addFile(file);
     this.shadowRoot.querySelector("#fileupload").uploadFiles();
+    // the recorder is gone, so show the upload options again; left on
+    // "audio", the cancel button would sit over the queued file's actions
+    this.option = "fileupload";
     // voice may not exist yet (recorder was never instantiated, e.g. in
     // unit tests where this handler is dispatched directly); only tear it
     // down if it's actually attached.
@@ -847,12 +850,23 @@ class SimpleFieldsUpload extends I18NMixin(
    * We got a new screen recording
    */
   __newScreenRecordingShowedUp(e) {
+    // name the file for the container that was recorded so the extension
+    // matches the content; whole milliseconds keep a single dot in the name
+    const extension =
+      e.detail && /^[a-z0-9]+$/.test(e.detail.extension || "")
+        ? e.detail.extension
+        : "webm";
     let file = new File(
       [e.detail.blob],
-      "screen-recording-" + e.timeStamp + ".webm",
+      "screen-recording-" + Math.round(e.timeStamp) + "." + extension,
+      { type: (e.detail && e.detail.mimeType) || "" },
     );
     this.shadowRoot.querySelector("#fileupload").addFile(file);
     this.shadowRoot.querySelector("#fileupload").uploadFiles();
+    // the recorder is gone, so show the upload options again; left on
+    // "screenrecord", the cancel button would sit over the queued file's
+    // actions
+    this.option = "fileupload";
     if (this.screenRecorder) {
       this.screenRecorder.remove();
       setTimeout(() => {

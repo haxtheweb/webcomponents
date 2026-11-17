@@ -24,6 +24,65 @@ describe("ScreenRecorder test", () => {
   });
 });
 
+describe("screen-recorder recording format", () => {
+  let savedRecorder;
+  beforeEach(() => {
+    savedRecorder = globalThis.MediaRecorder;
+  });
+  afterEach(() => {
+    globalThis.MediaRecorder = savedRecorder;
+  });
+
+  it("prefers WebM, then MP4, over the browser default container", () => {
+    const Recorder = customElements.get("screen-recorder");
+    globalThis.MediaRecorder = { isTypeSupported: () => true };
+    expect(Recorder.supportedRecordingFormat().mimeType).to.equal("video/webm");
+    globalThis.MediaRecorder = {
+      isTypeSupported: (type) => type === "video/mp4",
+    };
+    expect(Recorder.supportedRecordingFormat().extension).to.equal("mp4");
+    globalThis.MediaRecorder = { isTypeSupported: () => false };
+    expect(Recorder.supportedRecordingFormat()).to.equal(null);
+    globalThis.MediaRecorder = undefined;
+    expect(Recorder.supportedRecordingFormat()).to.equal(null);
+  });
+
+  it("maps a recorded MIME type to its file extension", () => {
+    const Recorder = customElements.get("screen-recorder");
+    expect(Recorder.extensionForMimeType("video/webm;codecs=vp8")).to.equal(
+      "webm",
+    );
+    expect(Recorder.extensionForMimeType("video/mp4;codecs=avc1")).to.equal(
+      "mp4",
+    );
+    expect(
+      Recorder.extensionForMimeType("video/x-matroska;codecs=avc1"),
+    ).to.equal("mkv");
+    expect(Recorder.extensionForMimeType("")).to.equal("webm");
+  });
+
+  it("reports the recorded container with the blob", async () => {
+    const el = await fixture(html`<screen-recorder></screen-recorder>`);
+    el.recorder = { mimeType: "video/mp4;codecs=avc1" };
+    el.chunks = [new Blob(["chunk"])];
+    const details = [];
+    el.addEventListener("screen-recorder-blob", (event) => {
+      details.push(event.detail);
+    });
+    el._onRecordingStop();
+    await el.updateComplete;
+    expect(details[0].extension).to.equal("mp4");
+    expect(details[0].mimeType).to.equal("video/mp4;codecs=avc1");
+    expect(details[0].blob.type).to.equal("video/mp4;codecs=avc1");
+    expect(
+      el.shadowRoot
+        .querySelector(".download-link")
+        .getAttribute("download")
+        .endsWith(".mp4"),
+    ).to.be.true;
+  });
+});
+
 describe("screen-recorder defaults and toggles", () => {
   it("has sensible defaults", async () => {
     const el = await fixture(html`<screen-recorder></screen-recorder>`);

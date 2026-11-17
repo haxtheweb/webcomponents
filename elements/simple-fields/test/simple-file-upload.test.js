@@ -132,6 +132,29 @@ describe("simple-file-upload", () => {
     expect(element.files.length).to.equal(0);
   });
 
+  it("reads the reason out of a failed upload's JSON response", () => {
+    expect(
+      element._responseMessage({
+        responseText:
+          '{"status":500,"data":{"message":"File type not allowed"}}',
+      }),
+    ).to.equal("File type not allowed");
+    expect(
+      element._responseMessage({ responseText: '{"message":"Too large"}' }),
+    ).to.equal("Too large");
+    expect(
+      element._responseMessage({ responseText: "<html>500</html>" }),
+    ).to.equal("");
+    expect(element._responseMessage({ responseText: '{"data":{}}' })).to.equal(
+      "",
+    );
+    expect(
+      element._responseMessage({
+        responseText: JSON.stringify({ data: { message: "x".repeat(500) } }),
+      }),
+    ).to.have.lengthOf(200);
+  });
+
   it("exposes _retryFile as a method", async () => {
     const file = new File(["blob"], "retry.png", { type: "image/png" });
     element.addFile(file);
