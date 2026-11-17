@@ -346,6 +346,19 @@ export class DDDHero extends DDDSuper(I18NMixin(LitElement)) {
     }
   }
 
+  /** a picture source for each screen size framed by hand */
+  _cutSources(custom) {
+    return FRAMING_SIZES.filter((size) => custom[size.id]).map((size) => ({
+      media: size.media,
+      srcset: framingCutWidths(size.id)
+        .map(
+          (w) =>
+            `${framingCutUrl(this.source, size.id, custom[size.id], w)} ${w}w`,
+        )
+        .join(", "),
+    }));
+  }
+
   _renderImage(position) {
     const custom = parseFraming(this.framing);
     if (this._useCuts()) {
@@ -353,18 +366,11 @@ export class DDDHero extends DDDSuper(I18NMixin(LitElement)) {
         (w) => `${framingFullUrl(this.source, w)} ${w}w`,
       ).join(", ");
       return html`<picture>
-        ${FRAMING_SIZES.filter((size) => custom[size.id]).map(
-          (size) =>
+        ${this._cutSources(custom).map(
+          (cut) =>
             html`<source
-              media="${size.media}"
-              srcset="
-                ${framingCutWidths(size.id)
-                  .map(
-                    (w) =>
-                      `${framingCutUrl(this.source, size.id, custom[size.id], w)} ${w}w`,
-                  )
-                  .join(", ")}
-              "
+              media="${cut.media}"
+              srcset="${cut.srcset}"
               sizes="100vw"
             />`,
         )}

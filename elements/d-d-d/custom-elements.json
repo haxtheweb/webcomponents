@@ -4661,6 +4661,16 @@
             },
             {
               "kind": "method",
+              "name": "_cutSources",
+              "parameters": [
+                {
+                  "name": "custom"
+                }
+              ],
+              "description": "a picture source for each screen size framed by hand"
+            },
+            {
+              "kind": "method",
               "name": "_renderImage",
               "parameters": [
                 {
