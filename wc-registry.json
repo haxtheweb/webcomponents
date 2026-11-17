@@ -56,6 +56,7 @@
   "beaker-broker": "@haxtheweb/beaker-broker/beaker-broker.js",
   "bibliography-builder": "@haxtheweb/bibliography-builder/bibliography-builder.js",
   "bibliography-item": "@haxtheweb/bibliography-builder/lib/bibliography-item.js",
+  "book-theme": "@haxtheweb/book-theme/book-theme.js",
   "bootstrap-theme": "@haxtheweb/bootstrap-theme/bootstrap-theme.js",
   "bootstrap-breadcrumb": "@haxtheweb/bootstrap-theme/lib/BootstrapBreadcrumb.js",
   "bootstrap-footer": "@haxtheweb/bootstrap-theme/lib/BootstrapFooter.js",

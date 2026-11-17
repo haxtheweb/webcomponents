@@ -1,0 +1,13 @@
+book-theme
+Copyright 2026 The Pennsylvania State University
+Licensed under the Apache License, Version 2.0 (see LICENSE).
+
+The layout of this theme (site menu on the left, page in the middle, the
+headings of the page on the right) pays homage to the Hugo Book theme
+(https://github.com/alex-shpak/hugo-book), MIT License, Copyright (c) 2018
+Alex Shpak.
+
+This package contains no code, styles, templates, fonts, icons or other
+assets from Hugo Book. It is written for HAXcms from DDD design tokens and
+HAXcms theme parts. It is an independent work and is not affiliated with or
+endorsed by the author of Hugo Book.

@@ -11,6 +11,18 @@
     "terrible": false,
     "supportedPalettes": null
   },
+  "book-theme": {
+    "element": "book-theme",
+    "path": "@haxtheweb/book-theme/book-theme.js",
+    "name": "Book",
+    "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-book-theme-thumb.jpg",
+    "description": "Start with a blank site using the Book",
+    "category": ["Documentation", "Course", "Website"],
+    "hidden": false,
+    "priority": 0,
+    "terrible": false,
+    "supportedPalettes": null
+  },
   "bootstrap-theme": {
     "element": "bootstrap-theme",
     "path": "@haxtheweb/bootstrap-theme/bootstrap-theme.js",
