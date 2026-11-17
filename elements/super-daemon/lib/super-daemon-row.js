@@ -232,7 +232,7 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
         .result-textCharacter {
           display: inline-flex;
           font-size: 18px;
-          line-height: 1;
+          line-height: var(--ddd-lh-100, 1);
         }
         :host([mini]) .result-textCharacter {
           font-size: var(--hax-ui-icon);
@@ -279,7 +279,7 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
           font-family: inherit;
           font-size: 11px;
           font-weight: var(--ddd-font-weight-bold, 700);
-          line-height: 1;
+          line-height: var(--ddd-lh-100, 1);
           white-space: nowrap;
           border-radius: var(--hax-ui-radius);
           border: 1px solid var(--hax-ui-line-strong);

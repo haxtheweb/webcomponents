@@ -60,7 +60,10 @@ const rules = [
   ],
   [/^ddd-lh-(\d+)$/, (m) => ["lineHeight", m[1]], "number"],
   [/^ddd-ls-(.+)$/, (m) => ["letterSpacing", m[1]], "dimension"],
+  [/^ddd-label-letter-spacing$/, () => ["letterSpacing", "label"], "dimension"],
   [/^ddd-spacing-(\d+)$/, (m) => ["spacing", m[1]], "dimension"],
+  // container query units (cqi) are not a DTCG dimension: kept as strings
+  [/^ddd-cell-inset-(.+)$/, (m) => ["spacing", "cellInset", m[1]], null],
   [/^ddd-border-size-(.+)$/, (m) => ["border", "width", m[1]], "dimension"],
   [/^ddd-border-(xs|sm|md|lg)$/, (m) => ["border", m[1]], "border"],
   [

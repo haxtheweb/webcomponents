@@ -571,6 +571,9 @@ export const DDDVariables = css`
     --ddd-font-size-xxl: 56px;
     --ddd-font-size-3xl: 64px;
     --ddd-font-size-4xl: 72px;
+    /* a mark set inside another glyph's box (a number in a grid cell, a
+       count on a badge): relative, so it scales with the text it sits in */
+    --ddd-font-size-annotation: 0.6em;
 
     --ddd-font-size-type1-s: 80px;
     --ddd-font-size-type1-m: 150px;
@@ -618,6 +621,9 @@ export const DDDVariables = css`
     --ddd-lh-140: 140%;
     --ddd-lh-150: 150%;
     --ddd-lh-170: 170%; /* long-form reading body copy */
+    /* single-line UI: icon buttons, chips, badges, grid cells. Unitless so
+       each child keeps the same ratio to its own font size */
+    --ddd-lh-100: 1;
 
     /* spacing */
     --ddd-spacing-0: 0px;
@@ -651,6 +657,12 @@ export const DDDVariables = css`
     --ddd-spacing-28: 112px;
     --ddd-spacing-29: 116px;
     --ddd-spacing-30: 120px;
+    /* insets inside a grid cell that is a size container (crossword
+       squares, game boards): a share of the cell's width, so marks and
+       numbers stay in place as the cell grows or shrinks */
+    --ddd-cell-inset-xs: 4cqi;
+    --ddd-cell-inset-sm: 6cqi;
+    --ddd-cell-inset-md: 10cqi;
 
     /* borders */
     --ddd-border-xs: 1px solid var(--ddd-theme-default-limestoneLight);
@@ -1061,6 +1073,9 @@ export const DDDVariables = css`
     --ddd-eyebrow-font-size: var(--ddd-font-size-4xs);
     --ddd-eyebrow-font-weight: var(--ddd-font-weight-bold);
     --ddd-eyebrow-letter-spacing: 0.12em;
+    /* small uppercase labels (block type labels, chips, tags): half the
+       eyebrow's tracking, for text that sits inside a component */
+    --ddd-label-letter-spacing: 0.06em;
     --ddd-eyebrow-line-height: var(--ddd-lh-120);
     --ddd-eyebrow-text-transform: uppercase;
     --ddd-eyebrow-color: light-dark(
@@ -1129,6 +1144,17 @@ export const DDDGlobalStyles = css`
   body.dark-mode .haxcms-theme-element,
   body.dark-mode {
     color-scheme: only dark;
+  }
+  /* a footnote whose element has not loaded (or never will) still reads as
+     a note where it was written, instead of running into the sentence */
+  a11y-footnote:not(:defined) {
+    font-size: 0.85em;
+  }
+  a11y-footnote:not(:defined)::before {
+    content: " [";
+  }
+  a11y-footnote:not(:defined)::after {
+    content: "]";
   }
 `;
 /* Data Attributes used by HAX */
@@ -2547,7 +2573,7 @@ const DDDResetEnd = css`
     text-align: right;
     font-weight: var(--ddd-font-weight-regular);
     font-size: var(--ddd-font-size-m);
-    line-height: 1;
+    line-height: var(--ddd-lh-100, 1);
   }
   details {
     overflow: hidden;
@@ -2607,7 +2633,7 @@ const DDDResetEnd = css`
       --ddd-theme-code-color,
       light-dark(black, var(--ddd-theme-default-limestoneLight))
     );
-    line-height: 1;
+    line-height: var(--ddd-lh-100, 1);
     border-radius: var(--ddd-radius-xs);
     border: var(--ddd-border-md);
     border-style: groove;

@@ -15,6 +15,7 @@ A bridge makes an outside design system (PatternFly, Carbon, Spectrum, ...) **DD
 | `css`       | compiled CSS custom properties; blocks may nest (Tailwind's `@theme`)                                                                                                                                        | `scopes.light` / `scopes.dark`: selectors merged in order |
 | `dtcg`      | a [DTCG](https://www.designtokens.org/) token file, written as custom properties under `prefix` (Carbon's `blue.60` → `--carbon-blue-60`)                                                                    | mode-free                                                 |
 | `scss-vars` | Sass `$name: value;` files, written under `prefix`; `module.$var` becomes `var(--module-var)` (Material's `md-ref-palette.$primary40` → `var(--md-ref-palette-primary40)`)                                   | `file` for both, or `files: { light, dark }`              |
+| `js-literals` | JavaScript token modules (Fluent publishes its tokens only as JS), read as text for literal values: `palettes` files' `const` objects become `<palettePrefix><name>-<key>` (`--fluent-grey-14`), and `files` objects' keys become `<prefix><key>` as written (`--colorNeutralForeground1`). A value is kept only when it is a string or number literal or a palette reference (`mod.grey[14]`, `mod.white`, `brand[80]`, with `refs` naming a parameter that stands for a palette); spreads, calls and computed keys are skipped, and nothing is evaluated | `files: { light: [...], dark: [...] }`; palettes mode-free |
 | `scss-map`  | Sass map files (`$name: ("blue": (5: #eff6fb, "vivid": (60: #005ea2)))`), flattened under `prefix` by key path (`--usa-blue-5`, `--usa-blue-vivid-60`); `false` entries are skipped and nothing is evaluated | mode-free; `files: [ ... ]` merged in order               |
 
 Lengths may be `px`, `rem`, `em` or `calc(<length> * <number>)`, so Tailwind's spacing steps stay multiples of `--spacing` (`calc(var(--spacing) * 6)`) and still face the guards. Colors may be hex, `rgb()` or `oklch()`; the generator converts them for contrast checks and DDD's rgb-channel tokens, and writes them out as the upstream wrote them.
@@ -81,5 +82,8 @@ HAX blocks and themes draw icons by name (`icons:search`, `editor:format-bold`) 
 | Spectrum 2 | `@adobe/spectrum-css-workflow-icons`   | Apache-2.0                      |
 | shadcn/ui  | `lucide-static`                        | ISC (Feather-derived icons MIT) |
 | Tailwind   | `heroicons` (24 outline)               | MIT                             |
+| Fluent 2   | `@fluentui/svg-icons` (24 regular)     | MIT                             |
+| Primer     | `@primer/octicons` (24)                | MIT                             |
+| Bootstrap  | `bootstrap-icons`                      | MIT                             |
 
 PatternFly, USWDS, Web Awesome and Keepcase keep HAX's icons: PatternFly's icons are Font Awesome and Red Hat Design System icons, both Creative Commons licensed, and the others have no icon set of their own that can ship.

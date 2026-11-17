@@ -1,0 +1,405 @@
+{
+  "$comment": "DDD bridge for Microsoft Fluent 2 (web). Tiers follow elements/d-d-d/design-system/bridge/contract.json. Fluent publishes its tokens only as JavaScript (@fluentui/tokens, the token package @fluentui/react-components 9 depends on), so the source is read with the js-literals format: palettes and token objects are read for literal values and palette references, nothing is evaluated. Token names keep Fluent's own CSS names (--colorNeutralBackground1, as @fluentui/web-components writes them); palettes are written under --fluent-. Named DDD colors point at fixed Fluent shared colors and the web brand ramp by role. Kept as DDD on purpose: light and black font weights (Fluent has regular, medium, semibold and bold), state opacities (Fluent uses hover and pressed colors), border widths, and heading/body sizes (Fluent body1 is 14px, below the 16px floor). Fluent's spacing steps (2, 4, 6, 8, 10, 12, 16, 20, 24, 32px) sit close to DDD's 4px grid, so the theme chrome uses DDD spacing tokens.",
+  "system": "fluent",
+  "title": "Fluent 2",
+  "prefix": "Fluent",
+  "homepage": "https://fluent2.microsoft.design",
+  "sources": [
+    {
+      "package": "@fluentui/tokens",
+      "version": "1.0.0-alpha.24",
+      "license": "MIT",
+      "copyright": "Copyright (c) Microsoft Corporation",
+      "homepage": "https://fluent2.microsoft.design",
+      "repository": "https://github.com/microsoft/fluentui",
+      "format": "js-literals",
+      "palettePrefix": "--fluent-",
+      "prefix": "--",
+      "palettes": [
+        "lib-commonjs/global/colors.cjs",
+        "lib-commonjs/global/brandColors.cjs"
+      ],
+      "refs": {
+        "brand": "brandWeb"
+      },
+      "files": {
+        "light": [
+          "lib-commonjs/global/borderRadius.cjs",
+          "lib-commonjs/global/fonts.cjs",
+          "lib-commonjs/global/durations.cjs",
+          "lib-commonjs/global/curves.cjs",
+          "lib-commonjs/global/strokeWidths.cjs",
+          "lib-commonjs/alias/lightColor.cjs"
+        ],
+        "dark": [
+          "lib-commonjs/global/borderRadius.cjs",
+          "lib-commonjs/global/fonts.cjs",
+          "lib-commonjs/global/durations.cjs",
+          "lib-commonjs/global/curves.cjs",
+          "lib-commonjs/global/strokeWidths.cjs",
+          "lib-commonjs/alias/darkColor.cjs"
+        ]
+      }
+    }
+  ],
+  "fonts": [],
+  "icons": {
+    "package": "@fluentui/svg-icons",
+    "version": "1.1.346",
+    "license": "MIT",
+    "path": "icons/{name}_24_regular.svg",
+    "map": "fluent"
+  },
+  "ddd": {
+    "--ddd-theme-default-beaverBlue": {
+      "token": "--fluent-brand-web-80",
+      "note": "Fluent brand (web) 80, colorBrandBackground in light"
+    },
+    "--ddd-theme-default-nittanyNavy": {
+      "token": "--fluent-brand-web-30"
+    },
+    "--ddd-theme-default-potentialMidnight": {
+      "token": "--fluent-brand-web-20"
+    },
+    "--ddd-theme-default-pughBlue": {
+      "token": "--fluent-brand-web-130"
+    },
+    "--ddd-theme-default-accent": {
+      "token": "--fluent-brand-web-130"
+    },
+    "--ddd-theme-default-skyBlue": {
+      "token": "--fluent-brand-web-100"
+    },
+    "--ddd-theme-default-skyLight": {
+      "token": "--fluent-brand-web-150"
+    },
+    "--ddd-theme-default-skyMaxLight": {
+      "token": "--fluent-brand-web-160"
+    },
+    "--ddd-theme-default-slateGray": {
+      "token": "--fluent-grey-26",
+      "note": "colorNeutralForeground2 (light)"
+    },
+    "--ddd-theme-default-slateLight": {
+      "token": "--fluent-grey-82"
+    },
+    "--ddd-theme-default-slateMaxLight": {
+      "token": "--fluent-grey-96"
+    },
+    "--ddd-theme-default-coalyGray": {
+      "token": "--fluent-grey-14",
+      "note": "colorNeutralForeground1 (light) / colorNeutralBackground1 (dark)"
+    },
+    "--ddd-theme-default-black": {
+      "token": "--fluent-black"
+    },
+    "--ddd-theme-default-white": {
+      "token": "--fluent-white"
+    },
+    "--ddd-theme-default-limestoneGray": {
+      "token": "--fluent-grey-66"
+    },
+    "--ddd-theme-default-limestoneLight": {
+      "token": "--fluent-grey-92",
+      "note": "grey 88 is under 4.5:1 behind beaverBlue icons"
+    },
+    "--ddd-theme-default-limestoneMaxLight": {
+      "token": "--fluent-grey-96"
+    },
+    "--ddd-theme-default-background": {
+      "token": "--fluent-grey-96",
+      "note": "colorNeutralBackground2-ish page wash"
+    },
+    "--ddd-theme-default-disabled": {
+      "token": "--fluent-grey-94",
+      "note": "colorNeutralBackgroundDisabled (light)"
+    },
+    "--ddd-theme-default-keystoneYellow": {
+      "token": "--fluent-yellow-primary"
+    },
+    "--ddd-theme-default-globalNeon": {
+      "token": "--fluent-yellow-tint40"
+    },
+    "--ddd-theme-default-roarGolden": {
+      "token": "--fluent-marigold-primary"
+    },
+    "--ddd-theme-default-roarLight": {
+      "token": "--fluent-marigold-tint40"
+    },
+    "--ddd-theme-default-roarMaxlight": {
+      "token": "--fluent-marigold-tint60"
+    },
+    "--ddd-theme-default-shrineTan": {
+      "token": "--fluent-beige-tint20",
+      "note": "Fluent has no tan; beige tint 20 keeps 4.5:1 against potentialMidnight"
+    },
+    "--ddd-theme-default-shrineLight": {
+      "token": "--fluent-beige-tint40"
+    },
+    "--ddd-theme-default-shrineMaxLight": {
+      "token": "--fluent-beige-tint60"
+    },
+    "--ddd-theme-default-inventOrange": {
+      "token": "--fluent-dark-orange-tint20",
+      "note": "dark orange primary is under 4.5:1 against potentialMidnight"
+    },
+    "--ddd-theme-default-landgrantBrown": {
+      "token": "--fluent-brown-shade20"
+    },
+    "--ddd-theme-default-creekTeal": {
+      "token": "--fluent-teal-tint20",
+      "note": "teal primary is under 4.5:1 against potentialMidnight"
+    },
+    "--ddd-theme-default-creekLight": {
+      "token": "--fluent-teal-tint40"
+    },
+    "--ddd-theme-default-creekMaxLight": {
+      "token": "--fluent-teal-tint60"
+    },
+    "--ddd-theme-default-opportunityGreen": {
+      "token": "--fluent-green-primary",
+      "note": "correct signal (light)"
+    },
+    "--ddd-theme-default-forestGreen": {
+      "token": "--fluent-forest-shade10"
+    },
+    "--ddd-theme-default-futureLime": {
+      "token": "--fluent-light-green-tint30",
+      "note": "correct signal (dark)"
+    },
+    "--ddd-theme-default-athertonViolet": {
+      "token": "--fluent-lavender-tint30",
+      "note": "incorrect signal (dark)"
+    },
+    "--ddd-theme-default-wonderPurple": {
+      "token": "--fluent-purple-primary",
+      "note": "incorrect signal (light); keeps HAX purple-for-incorrect"
+    },
+    "--ddd-theme-default-original87Pink": {
+      "token": "--fluent-pink-shade20",
+      "note": "pink primary is under 4.5:1 as the stop-note ink on errorLight"
+    },
+    "--ddd-theme-default-discoveryCoral": {
+      "token": "--fluent-red-tint30"
+    },
+    "--ddd-theme-default-link": {
+      "token": "--fluent-brand-web-70",
+      "note": "colorBrandForegroundLink (light)"
+    },
+    "--ddd-theme-default-linkLight": {
+      "token": "--fluent-brand-web-110",
+      "note": "colorBrandForegroundLink (dark) is brand 100; 110 keeps 4.5:1 on dark surfaces"
+    },
+    "--ddd-theme-default-error": {
+      "token": "--fluent-red-shade10",
+      "note": "colorStatusDangerForeground1 (light)"
+    },
+    "--ddd-theme-default-errorLight": {
+      "token": "--fluent-red-tint60",
+      "note": "colorStatusDangerBackground1 (light)"
+    },
+    "--ddd-theme-default-warning": {
+      "token": "--fluent-dark-orange-shade20",
+      "note": "colorStatusWarningForeground3 (light)"
+    },
+    "--ddd-theme-default-warningLight": {
+      "token": "--fluent-dark-orange-tint60"
+    },
+    "--ddd-theme-default-info": {
+      "token": "--fluent-brand-web-70"
+    },
+    "--ddd-theme-default-infoLight": {
+      "token": "--fluent-brand-web-160"
+    },
+    "--ddd-theme-default-success": {
+      "token": "--fluent-green-shade20",
+      "note": "colorStatusSuccessForeground (light)"
+    },
+    "--ddd-theme-default-successLight": {
+      "token": "--fluent-green-tint60"
+    },
+    "--ddd-theme-default-alertImmediate": {
+      "token": "--fluent-red-tint40"
+    },
+    "--ddd-theme-default-alertUrgent": {
+      "token": "--fluent-yellow-tint60"
+    },
+    "--ddd-theme-default-alertAllClear": {
+      "token": "--fluent-green-tint60"
+    },
+    "--ddd-theme-default-alertNonEmergency": {
+      "token": "--fluent-brand-web-160"
+    },
+    "--ddd-font-primary": {
+      "token": "--fontFamilyBase",
+      "note": "Segoe UI on Windows, the platform UI font elsewhere; Fluent loads no web font"
+    },
+    "--ddd-font-secondary": {
+      "token": "--fontFamilyBase",
+      "note": "Fluent sets headings in the same family"
+    },
+    "--ddd-font-navigation": {
+      "token": "--fontFamilyBase"
+    },
+    "--ddd-font-mono": {
+      "token": "--fontFamilyMonospace"
+    },
+    "--ddd-font-weight-regular": {
+      "token": "--fontWeightRegular"
+    },
+    "--ddd-font-weight-medium": {
+      "token": "--fontWeightMedium"
+    },
+    "--ddd-font-weight-bold": {
+      "token": "--fontWeightSemibold",
+      "note": "Fluent titles and buttons are semibold"
+    },
+    "--ddd-radius-xs": {
+      "token": "--borderRadiusSmall"
+    },
+    "--ddd-radius-sm": {
+      "token": "--borderRadiusMedium",
+      "note": "Fluent's default control and card radius"
+    },
+    "--ddd-radius-md": {
+      "token": "--borderRadiusLarge"
+    },
+    "--ddd-radius-lg": {
+      "token": "--borderRadiusXLarge"
+    },
+    "--ddd-radius-xl": {
+      "token": "--borderRadius2XLarge"
+    },
+    "--ddd-boxShadow-sm": {
+      "value": "0 0 2px var(--colorNeutralShadowAmbient), 0 1px 2px var(--colorNeutralShadowKey)",
+      "note": "Fluent shadow2 (createShadowTokens)"
+    },
+    "--ddd-boxShadow-md": {
+      "value": "0 0 2px var(--colorNeutralShadowAmbient), 0 2px 4px var(--colorNeutralShadowKey)",
+      "note": "shadow4"
+    },
+    "--ddd-boxShadow-lg": {
+      "value": "0 0 2px var(--colorNeutralShadowAmbient), 0 8px 16px var(--colorNeutralShadowKey)",
+      "note": "shadow16"
+    },
+    "--ddd-boxShadow-xl": {
+      "value": "0 0 8px var(--colorNeutralShadowAmbient), 0 14px 28px var(--colorNeutralShadowKey)",
+      "note": "shadow28"
+    },
+    "--ddd-focus-ring": {
+      "value": "2px solid var(--colorStrokeFocus2)",
+      "note": "Fluent's focus indicator: colorStrokeFocus2 (black in light, white in dark)"
+    },
+    "--ddd-focus-offset": {
+      "value": "2px"
+    },
+    "--ddd-duration-fast": {
+      "token": "--durationFaster"
+    },
+    "--ddd-duration-normal": {
+      "token": "--durationNormal"
+    },
+    "--ddd-duration-slow": {
+      "token": "--durationSlow"
+    },
+    "--ddd-timing-ease": {
+      "token": "--curveEasyEase"
+    },
+    "--ddd-timing-enter": {
+      "token": "--curveDecelerateMid"
+    },
+    "--ddd-timing-exit": {
+      "token": "--curveAccelerateMid"
+    },
+    "--ddd-timing-emphasized": {
+      "token": "--curveEasyEaseMax"
+    },
+    "--ddd-control-height-xs": {
+      "value": "24px",
+      "note": "Fluent small button"
+    },
+    "--ddd-control-height-sm": {
+      "value": "32px",
+      "note": "Fluent medium button"
+    },
+    "--ddd-control-height-md": {
+      "value": "40px",
+      "note": "Fluent large button"
+    },
+    "--ddd-textfield-height-sm": {
+      "value": "24px",
+      "note": "Fluent small input"
+    },
+    "--ddd-textfield-height-md": {
+      "value": "32px",
+      "note": "Fluent medium input"
+    },
+    "--ddd-textfield-height-lg": {
+      "value": "40px",
+      "note": "Fluent large input"
+    },
+    "--ddd-surface-padding": {
+      "value": "12px",
+      "note": "Fluent card padding, spacingHorizontalM"
+    },
+    "--ddd-surface-padding-lg": {
+      "value": "24px",
+      "note": "spacingHorizontalXXL"
+    },
+    "--ddd-stack-gap": {
+      "value": "12px",
+      "note": "spacingVerticalM"
+    },
+    "--ddd-inline-gap": {
+      "value": "8px",
+      "note": "spacingHorizontalS"
+    },
+    "--ddd-control-padding-inline": {
+      "value": "12px",
+      "note": "Fluent medium button inline padding, spacingHorizontalM"
+    },
+    "--ddd-card-padding": {
+      "value": "12px",
+      "note": "Fluent card padding (a px value: HAX's root font size is 20px)"
+    },
+    "--ddd-card-border-width": {
+      "value": "1px",
+      "note": "Fluent cards draw a 1px stroke (transparent on the filled card, colorNeutralStroke1 on the outline card)"
+    },
+    "--ddd-card-shadow": {
+      "value": "0 0 2px var(--colorNeutralShadowAmbient), 0 2px 4px var(--colorNeutralShadowKey)",
+      "note": "the filled card's shadow4"
+    },
+    "--ddd-card-background": {
+      "token": "--colorNeutralCardBackground"
+    },
+    "--ddd-control-height": {
+      "value": "32px",
+      "note": "Fluent medium button"
+    },
+    "--ddd-tag-radius": {
+      "token": "--borderRadiusCircular",
+      "note": "Fluent tags and badges are pills"
+    }
+  },
+  "extraTokens": [
+    "--colorNeutralBackground1",
+    "--colorNeutralBackground2",
+    "--colorNeutralBackground1Hover",
+    "--colorNeutralForeground1",
+    "--colorNeutralForeground2",
+    "--colorNeutralForeground3",
+    "--colorNeutralStroke2",
+    "--colorBrandForeground1",
+    "--colorBrandForegroundLink",
+    "--colorBrandForegroundLinkHover",
+    "--colorSubtleBackgroundHover",
+    "--colorSubtleBackgroundSelected",
+    "--colorStrokeFocus2",
+    "--colorNeutralShadowAmbient",
+    "--colorNeutralShadowKey",
+    "--borderRadiusMedium",
+    "--borderRadiusXLarge",
+    "--fontWeightSemibold"
+  ]
+}

@@ -219,7 +219,7 @@ export const mapMenuProgressStyles = css`
     border-style: solid;
     border-color: var(--map-menu-progress-empty);
     align-self: center;
-    line-height: 1;
+    line-height: var(--ddd-lh-100, 1);
     font-size: 11px;
     font-weight: var(--ddd-font-weight-bold, 700);
   }

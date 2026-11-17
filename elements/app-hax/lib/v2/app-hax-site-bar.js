@@ -726,7 +726,7 @@ export class AppHaxSiteBars extends I18NMixin(SimpleColors) {
           font-size: var(--app-hax-site-date-font-size);
           color: var(--hax-ui-text-muted);
           align-items: center;
-          line-height: 1;
+          line-height: var(--ddd-lh-100, 1);
         }
 
         .date simple-icon {

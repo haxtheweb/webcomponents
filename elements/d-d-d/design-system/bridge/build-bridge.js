@@ -20,8 +20,10 @@
  * A system that lives in the theme itself (no npm package) is a "local"
  * source: its file is read from the theme folder, under the theme's own
  * license.
- * Sources are compiled CSS (custom properties per light/dark selector) or
- * DTCG token JSON (written out as custom properties under a given prefix).
+ * Sources are compiled CSS (custom properties per light/dark selector),
+ * DTCG token JSON (written out as custom properties under a given prefix),
+ * Sass variables or maps, or JavaScript token modules read for literal
+ * values only (js-literals; nothing upstream is ever executed).
  *
  * Output (in <theme>/lib/):
  *   <Prefix>Tokens.js        upstream tokens as CSS (light-dark() pairs)
@@ -390,6 +392,167 @@ function parseScssMaps(text, prefix) {
   return out;
 }
 
+/**
+ * JavaScript token modules (Fluent publishes its tokens only as JS), read
+ * for literal values. Nothing is evaluated: object literals are found by
+ * text (`const name = {`, `return {`, `=>({`) and each `key: value` entry
+ * is kept only when its value is a literal (a quoted string, a template
+ * literal without ${}, a number) or a reference into a palette
+ * (`mod.grey[14]`, `mod.white`, `brand[80]`). Entries computed any other
+ * way (spreads, function calls, computed keys) are skipped.
+ *
+ * Palette files: every `const` object (one level of nesting allowed:
+ * `red: { primary: ... }`) and string `const` becomes
+ * <palettePrefix><name>-<key> (--fluent-grey-14, --fluent-red-primary,
+ * --fluent-white). Token files: every object's keys become
+ * <tokenPrefix><key> as written (Fluent's own CSS names keep camelCase:
+ * --colorNeutralForeground1). `refs` names a function parameter that
+ * stands for a palette (Fluent's `brand` → "brandWeb").
+ */
+function jsObjectBodies(text) {
+  const out = [];
+  const re = /(?:const\s+([A-Za-z_$][\w$]*)\s*=\s*|return\s*|=>\s*\(\s*)\{/g;
+  let m;
+  while ((m = re.exec(text))) {
+    const start = re.lastIndex;
+    let depth = 1;
+    let quote = null;
+    let i = start;
+    for (; i < text.length && depth > 0; i++) {
+      const c = text[i];
+      if (quote) {
+        if (c === "\\") i++;
+        else if (c === quote) quote = null;
+      } else if (c === '"' || c === "'" || c === "`") quote = c;
+      else if (c === "{") depth++;
+      else if (c === "}") depth--;
+    }
+    out.push({ name: m[1] || null, body: text.slice(start, i - 1) });
+    re.lastIndex = i;
+  }
+  return out;
+}
+
+function jsEntries(body) {
+  const parts = [];
+  let depth = 0;
+  let quote = null;
+  let start = 0;
+  for (let i = 0; i < body.length; i++) {
+    const c = body[i];
+    if (quote) {
+      if (c === "\\") i++;
+      else if (c === quote) quote = null;
+    } else if (c === '"' || c === "'" || c === "`") quote = c;
+    else if (c === "{" || c === "(" || c === "[") depth++;
+    else if (c === "}" || c === ")" || c === "]") depth--;
+    else if (c === "," && depth === 0) {
+      parts.push(body.slice(start, i));
+      start = i + 1;
+    }
+  }
+  parts.push(body.slice(start));
+  const entries = [];
+  parts.forEach((part) => {
+    const m =
+      /^(?:([A-Za-z_$][\w$]*)|(['"])([\w-]+)\2|(\d+))[ \t]*:([\s\S]*)$/.exec(
+        part.trim(),
+      );
+    if (m && m[5].trim()) entries.push([m[1] || m[3] || m[4], m[5].trim()]);
+  });
+  return entries;
+}
+
+/** a literal value as CSS text, or null when it isn't a literal */
+function jsLiteral(value) {
+  const str =
+    /^'([^'\\]*)'$/.exec(value) ||
+    /^"([^"\\]*)"$/.exec(value) ||
+    /^`([^`\\]*)`$/.exec(value);
+  if (str) return value[0] === "`" && str[1].includes("${") ? null : str[1];
+  if (/^-?\d+(\.\d+)?$/.test(value)) return value;
+  return null;
+}
+
+function stripJsComments(text) {
+  // block comments, and line comments that start a line or follow code
+  // after whitespace (token files hold no URLs in strings)
+  return text
+    .replace(/\/\*[\s\S]*?\*\//g, "")
+    .replace(/(^|\s)\/\/[^\n]*/g, "$1");
+}
+
+function parseJsPalettes(texts, prefix) {
+  const out = {};
+  const names = new Set();
+  texts.forEach((raw) => {
+    const text = stripJsComments(raw);
+    const strConst =
+      /const\s+([A-Za-z_$][\w$]*)\s*=\s*('[^'\\]*'|"[^"\\]*"|`[^`\\]*`)\s*;/g;
+    let m;
+    while ((m = strConst.exec(text))) {
+      const v = jsLiteral(m[2]);
+      if (v !== null) {
+        out[`${prefix}${kebab(m[1])}`] = v;
+        names.add(m[1]);
+      }
+    }
+    jsObjectBodies(text)
+      .filter((o) => o.name)
+      .forEach((o) => {
+        names.add(o.name);
+        jsEntries(o.body).forEach(([key, value]) => {
+          if (value.startsWith("{")) {
+            jsEntries(value.slice(1, -1)).forEach(([sub, v]) => {
+              const lit = jsLiteral(v);
+              if (lit !== null) {
+                out[`${prefix}${kebab(o.name)}-${kebab(key)}-${kebab(sub)}`] =
+                  lit;
+              }
+            });
+            return;
+          }
+          const lit = jsLiteral(value);
+          if (lit !== null)
+            out[`${prefix}${kebab(o.name)}-${kebab(key)}`] = lit;
+        });
+      });
+  });
+  return { tokens: out, names };
+}
+
+function parseJsTokens(texts, tokenPrefix, palette, refs = {}) {
+  const out = {};
+  const ref = (value) => {
+    // mod.name[key] | name[key] | mod.name.key | mod.name | name
+    const m =
+      /^(?:([A-Za-z_$][\w$]*)\.)?([A-Za-z_$][\w$]*)(?:\[\s*(['"]?)([\w-]+)\3\s*\]|\.([A-Za-z_$][\w$]*))?$/.exec(
+        value,
+      );
+    if (!m) return null;
+    let [, mod, name, , bracket, dotted] = m;
+    // `mod` is a module alias unless it is itself a palette (`red.primary`)
+    if (mod && palette.names.has(mod) && !bracket && !dotted) {
+      dotted = name;
+      name = mod;
+    }
+    name = refs[name] || name;
+    if (!palette.names.has(name)) return null;
+    const key = bracket || dotted;
+    const token = `${palette.prefix}${kebab(name)}${key ? `-${kebab(key)}` : ""}`;
+    return palette.tokens[token] === undefined ? null : `var(${token})`;
+  };
+  texts.forEach((raw) => {
+    jsObjectBodies(stripJsComments(raw)).forEach((o) => {
+      jsEntries(o.body).forEach(([key, value]) => {
+        const css = jsLiteral(value) ?? ref(value);
+        if (css !== null) out[`${tokenPrefix}${key}`] = css;
+      });
+    });
+  });
+  return out;
+}
+
 function scopeEnv(blocks, selectors) {
   const env = {};
   selectors.forEach((sel) => {
@@ -493,6 +656,34 @@ sources.forEach((source, index) => {
       Object.assign(light, flat);
       Object.assign(dark, flat);
     });
+  } else if (source.format === "js-literals") {
+    // palettes are mode-free; token files per mode: files: { light, dark }
+    const read = (files) => files.map((f) => readSource(source, index, f));
+    const palette = parseJsPalettes(
+      read(source.palettes || []),
+      source.palettePrefix,
+    );
+    palette.prefix = source.palettePrefix;
+    Object.assign(light, palette.tokens);
+    Object.assign(dark, palette.tokens);
+    Object.assign(
+      light,
+      parseJsTokens(
+        read(source.files.light),
+        source.prefix,
+        palette,
+        source.refs,
+      ),
+    );
+    Object.assign(
+      dark,
+      parseJsTokens(
+        read(source.files.dark),
+        source.prefix,
+        palette,
+        source.refs,
+      ),
+    );
   } else if (source.format === "scss-vars") {
     // one file for both modes, or files: { light, dark }
     const files = source.files || { light: source.file, dark: source.file };

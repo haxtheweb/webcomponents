@@ -67,10 +67,13 @@ jobs:
       fail-fast: false
       matrix:
         system:
+          - bootstrap
           - carbon
+          - fluent
           - keepcase
           - material
           - patternfly
+          - primer
           - shadcn
           - spectrum
           - tailwind

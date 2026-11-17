@@ -270,7 +270,7 @@ export const DDDBlockStyles = css`
     font-family: var(--ddd-font-navigation);
     font-size: var(--ddd-font-size-4xs);
     font-weight: var(--ddd-font-weight-medium);
-    letter-spacing: 0.06em;
+    letter-spacing: var(--ddd-label-letter-spacing, 0.06em);
     text-transform: uppercase;
     line-height: var(--ddd-lh-120);
     /* a long (translated) word breaks instead of spilling under the actions */

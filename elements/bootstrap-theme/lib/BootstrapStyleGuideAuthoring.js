@@ -43,168 +43,49 @@ function bootstrapSelectField(
   };
 }
 
-function getBootstrapConfigureSections(HAXStore, tag, props) {
-  const layoutProps = [];
-  const spacingProps = [];
+/**
+ * Bootstrap is a DDD dialect, so DDD's authoring already offers text
+ * alignment, float, padding, margin, radius and shadow (the same data
+ * attributes). This section adds only what DDD has no attribute for.
+ */
+function getBootstrapConfigureSections(_HAXStore, _tag, props) {
   const surfaceProps = [];
   const textProps = [];
-  const boxProps = [];
 
-  let inline = false;
-  if (HAXStore && typeof HAXStore.isInlineElement === "function") {
-    inline = HAXStore.isInlineElement(tag);
+  if (props.designSystem === false) {
+    return [];
   }
-  if (props.gizmo && props.gizmo.meta && props.gizmo.meta.inlineOnly) {
-    inline = true;
-  }
-
-  if (!props.hideDefaultSettings && !inline && props.designSystem !== false) {
-    // designSystem.textAlign: false opts a block out of text alignment
-    const textAlign = !(
-      props.designSystem &&
-      typeof props.designSystem === "object" &&
-      props.designSystem.textAlign === false
-    );
-    if (textAlign) {
-      layoutProps.push(
-        bootstrapSelectField(
-          "data-text-align",
-          "Text align",
-          "Control text alignment",
-          {
-            "": "-- default --",
-            left: "Left",
-            center: "Center",
-            right: "Right",
-            justify: "Justify",
-          },
-          "icons:format-align-left",
-        ),
-      );
-    }
-    if (["media-image", "img"].includes(tag)) {
-      layoutProps.push(
-        bootstrapSelectField(
-          "data-float-position",
-          "Float",
-          "Float block alignment (desktop)",
-          {
-            "": "-- default --",
-            left: "Left",
-            right: "Right",
-            center: "Center",
-          },
-          "editor:insert-photo",
-        ),
-      );
-    }
-    spacingProps.push(
-      bootstrapSelectField(
-        "data-padding",
-        "Padding",
-        "Apply consistent interior spacing",
-        {
-          "": "-- default --",
-          xs: "XS",
-          s: "S",
-          m: "M",
-          l: "L",
-          xl: "XL",
-        },
-        "editor:format-indent-increase",
-      ),
-      bootstrapSelectField(
-        "data-margin",
-        "Margin",
-        "Apply exterior spacing",
-        {
-          "": "-- default --",
-          center: "Center",
-          xs: "XS",
-          s: "S",
-          m: "M",
-          l: "L",
-          xl: "XL",
-        },
-        "editor:format-indent-decrease",
-      ),
-    );
-  }
-
-  if (props.designSystem !== false) {
-    surfaceProps.push(
-      bootstrapSelectField(
-        "data-bootstrap-surface",
-        "Surface",
-        "Apply bootstrap surface style",
-        {
-          "": "-- default --",
-          subtle: "Subtle",
-          strong: "Strong",
-          outline: "Outline",
-        },
-        "editor:format-color-fill",
-      ),
-    );
-    textProps.push(
-      bootstrapSelectField(
-        "data-bootstrap-emphasis",
-        "Emphasis",
-        "Apply text emphasis treatment",
-        {
-          "": "-- default --",
-          lead: "Lead",
-          small: "Small",
-          muted: "Muted",
-          strong: "Strong",
-        },
-        "editor:format-bold",
-      ),
-    );
-    boxProps.push(
-      bootstrapSelectField(
-        "data-border-radius",
-        "Border radius",
-        "Round edges with bootstrap-like scale",
-        {
-          "": "-- default --",
-          xs: "XS",
-          sm: "S",
-          md: "M",
-          lg: "L",
-        },
-        "image:crop-free",
-      ),
-      bootstrapSelectField(
-        "data-box-shadow",
-        "Shadow",
-        "Apply depth",
-        {
-          "": "-- default --",
-          sm: "S",
-          md: "M",
-          lg: "L",
-        },
-        "icons:flip-to-front",
-      ),
-    );
-  }
+  surfaceProps.push(
+    bootstrapSelectField(
+      "data-bootstrap-surface",
+      "Surface",
+      "Apply bootstrap surface style",
+      {
+        "": "-- default --",
+        subtle: "Subtle",
+        strong: "Strong",
+        outline: "Outline",
+      },
+      "editor:format-color-fill",
+    ),
+  );
+  textProps.push(
+    bootstrapSelectField(
+      "data-bootstrap-emphasis",
+      "Emphasis",
+      "Apply text emphasis treatment",
+      {
+        "": "-- default --",
+        lead: "Lead",
+        small: "Small",
+        muted: "Muted",
+        strong: "Strong",
+      },
+      "editor:format-bold",
+    ),
+  );
 
   return [
-    {
-      title: "Layout",
-      collapsed: true,
-      accordion: true,
-      property: "bootstrap-layout",
-      properties: layoutProps,
-    },
-    {
-      title: "Spacing",
-      collapsed: true,
-      accordion: true,
-      property: "bootstrap-spacing",
-      properties: spacingProps,
-    },
     {
       title: "Surface",
       collapsed: true,
@@ -218,13 +99,6 @@ function getBootstrapConfigureSections(HAXStore, tag, props) {
       accordion: true,
       property: "bootstrap-typography",
       properties: textProps,
-    },
-    {
-      title: "Box appearance",
-      collapsed: true,
-      accordion: true,
-      property: "bootstrap-box",
-      properties: boxProps,
     },
   ].filter(
     (section) =>

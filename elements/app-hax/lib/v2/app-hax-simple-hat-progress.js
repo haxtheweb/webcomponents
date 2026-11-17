@@ -112,7 +112,7 @@ export class AppHaxSimpleHatProgress extends I18NMixin(DDDSuper(LitElement)) {
           color: var(--ddd-theme-default-white, white);
           font-family: var(--ddd-font-navigation, sans-serif);
           font-size: 12cqw;
-          line-height: 1;
+          line-height: var(--ddd-lh-100, 1);
           font-weight: var(--ddd-font-weight-bold, 700);
           text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
           white-space: nowrap;

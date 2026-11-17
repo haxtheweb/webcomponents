@@ -113,6 +113,18 @@
       }
     },
     {
+      "name": "hide-title",
+      "property": "hideTitle",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": {
+        "title": "Hide page title",
+        "input": "boolean",
+        "options": null
+      }
+    },
+    {
       "name": "tags",
       "property": "tags",
       "type": "null",
@@ -525,6 +537,12 @@
           "inputMethod": "boolean"
         },
         {
+          "property": "hideTitle",
+          "title": "Hide page title",
+          "description": "The page title shows by default. Hide it when the page starts with its own heading, such as a hero.",
+          "inputMethod": "boolean"
+        },
+        {
           "property": "developerTheme",
           "title": "Page theme",
           "description": "Override theme for this page only.",
@@ -564,7 +582,7 @@
       }
     ]
   },
-  "surfaceHash": "94124790e102",
+  "surfaceHash": "be666ba5a492",
   "walkthroughs": [],
   "videos": [],
   "motion": {

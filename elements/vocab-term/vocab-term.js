@@ -120,7 +120,7 @@ class VocabTerm extends SchemaBehaviors(I18NMixin(LitElement)) {
   renderLabel() {
     return html`<div
       class="vocab-label"
-      style="display: flex; align-items: center; gap: var(--ddd-spacing-2, 8px); margin: 0 0 var(--ddd-spacing-2, 8px); font-family: var(--ddd-font-navigation, sans-serif); font-size: var(--ddd-font-size-4xs, 16px); font-weight: var(--ddd-font-weight-bold, 700); letter-spacing: 0.06em; text-transform: uppercase; color: light-dark(var(--ddd-theme-default-nittanyNavy, #001e44), var(--ddd-theme-default-linkLight, #cfeceb));"
+      style="display: flex; align-items: center; gap: var(--ddd-spacing-2, 8px); margin: 0 0 var(--ddd-spacing-2, 8px); font-family: var(--ddd-font-navigation, sans-serif); font-size: var(--ddd-font-size-4xs, 16px); font-weight: var(--ddd-font-weight-bold, 700); letter-spacing: var(--ddd-label-letter-spacing, 0.06em); text-transform: uppercase; color: light-dark(var(--ddd-theme-default-nittanyNavy, #001e44), var(--ddd-theme-default-linkLight, #cfeceb));"
     >
       <span
         aria-hidden="true"

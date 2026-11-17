@@ -1,0 +1,139 @@
+{
+  "api": "1",
+  "type": "element",
+  "canScale": false,
+  "canEditSource": true,
+  "gizmo": {
+    "title": "Hero",
+    "description": "A large image, GIF or video with a heading and text over it, placed anywhere in a page.",
+    "icon": "image:panorama",
+    "color": "blue",
+    "tags": ["Media", "Layout", "hero", "banner", "image", "video"],
+    "handles": [
+      {
+        "type": "image",
+        "type_exclusive": false,
+        "source": "source",
+        "alt": "alt",
+        "title": "heading"
+      },
+      {
+        "type": "video",
+        "source": "source",
+        "title": "heading"
+      }
+    ],
+    "meta": {
+      "author": "HAXTheWeb core team"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Image or video",
+        "description": "A JPG, PNG, WebP, GIF, MP4 or WebM file.",
+        "inputMethod": "haxupload",
+        "noVoiceRecord": true,
+        "required": true
+      },
+      {
+        "property": "alt",
+        "title": "Alternative text",
+        "description": "Describe the image. Leave empty when it is only decoration.",
+        "inputMethod": "alt"
+      },
+      {
+        "property": "heading",
+        "title": "Heading",
+        "description": "Heading shown over the media. Leave empty for none.",
+        "inputMethod": "textfield"
+      },
+      {
+        "slot": "",
+        "title": "Text",
+        "description": "Text shown under the heading, over the media.",
+        "inputMethod": "code-editor"
+      },
+      {
+        "property": "fullWidth",
+        "title": "Full width",
+        "description": "Run edge to edge instead of sitting in the content column.",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "height",
+        "title": "Height",
+        "inputMethod": "select",
+        "options": {
+          "tall": "Tall",
+          "medium": "Medium",
+          "short": "Short"
+        }
+      },
+      {
+        "property": "framing",
+        "title": "Framing",
+        "description": "How the photo sits at each screen size",
+        "inputMethod": "image-framing",
+        "sourceProperty": "source",
+        "focalXProperty": "focalX",
+        "focalYProperty": "focalY"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "fade",
+        "title": "Fade",
+        "description": "Color laid over the media. With a heading or text there is always one, so the text stays readable.",
+        "inputMethod": "select",
+        "options": {
+          "blue": "Blue",
+          "bottom": "Dark at the bottom",
+          "none": "None"
+        }
+      },
+      {
+        "property": "textPosition",
+        "title": "Text position",
+        "inputMethod": "select",
+        "options": {
+          "bottom": "Bottom",
+          "middle": "Middle"
+        }
+      },
+      {
+        "property": "focalX",
+        "title": "Focal point across",
+        "description": "Part of the image that stays in view when it is cropped, from 0 (left) to 100 (right).",
+        "inputMethod": "number",
+        "min": 0,
+        "max": 100
+      },
+      {
+        "property": "focalY",
+        "title": "Focal point down",
+        "description": "Part of the image that stays in view when it is cropped, from 0 (top) to 100 (bottom).",
+        "inputMethod": "number",
+        "min": 0,
+        "max": 100
+      }
+    ]
+  },
+  "saveOptions": {
+    "unsetAttributes": ["playing", "preview-size"]
+  },
+  "demoSchema": [
+    {
+      "tag": "ddd-hero",
+      "properties": {
+        "source": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-polaris-flex-theme.jpg",
+        "alt": "",
+        "heading": "Open house, May 9",
+        "fade": "bottom",
+        "height": "medium"
+      },
+      "content": "<p>Tour the research plots and meet the graduate students.</p>"
+    }
+  ]
+}

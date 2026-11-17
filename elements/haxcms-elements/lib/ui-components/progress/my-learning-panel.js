@@ -418,6 +418,10 @@ export class MyLearningPanel extends I18NMixin(DDDSuper(LitElement)) {
       percent: "{percent}%",
       goTo: "Go to {name}",
       openMyLearning: "Open My learning",
+      editorTools: "Editor tools",
+      showTracked: "Show what's tracked",
+      showTrackedDetail:
+        "Flags every block on the page: what counts toward progress, what sends data and what nobody has declared. Only people who can edit this site see this.",
       savedOnDevice:
         "Saved on this device only. Your instructor can't see it unless your course connects a learning record store.",
       reading: "Reading",
@@ -461,6 +465,8 @@ export class MyLearningPanel extends I18NMixin(DDDSuper(LitElement)) {
       _rows: { type: Array, state: true },
       _outline: { type: Object, state: true },
       _pageTitle: { type: String, state: true },
+      _editor: { type: Boolean, state: true },
+      _lensOn: { type: Boolean, state: true },
     };
   }
   connectedCallback() {
@@ -472,7 +478,12 @@ export class MyLearningPanel extends I18NMixin(DDDSuper(LitElement)) {
         const site = LearnerProgress.siteProgress();
         const manifest = toJS(store.manifest);
         const title = store.activeTitle || "";
+        const editor = Boolean(store.isLoggedIn);
         Promise.resolve().then(() => {
+          this._editor = editor;
+          this._lensOn = Boolean(
+            globalThis.HAXCMSTrackingLens && globalThis.HAXCMSTrackingLens.on,
+          );
           this._page = page;
           this._site = site;
           this._pageTitle = title;
@@ -492,6 +503,9 @@ export class MyLearningPanel extends I18NMixin(DDDSuper(LitElement)) {
    * calls it as the panel opens)
    */
   refresh() {
+    this._lensOn = Boolean(
+      globalThis.HAXCMSTrackingLens && globalThis.HAXCMSTrackingLens.on,
+    );
     const page = this._page || LearnerProgress.pageProgress();
     const items = page && Array.isArray(page.items) ? page.items : [];
     const key = LearnerProgress.siteKey;
@@ -779,6 +793,106 @@ export class MyLearningPanel extends I18NMixin(DDDSuper(LitElement)) {
             var(--ddd-theme-default-limestoneLight)
           );
         }
+        .lp-editor {
+          display: flex;
+          flex-direction: column;
+          gap: var(--ddd-spacing-2);
+          margin: 0 var(--ddd-spacing-4) var(--ddd-spacing-3);
+          padding: var(--ddd-spacing-3);
+          border: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneGray),
+            var(--ddd-theme-default-slateGray)
+          );
+          border-radius: var(--ddd-radius-sm);
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+        }
+        .lp-editor-h {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--ddd-spacing-1);
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-weight-bold);
+          color: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
+          --simple-icon-width: var(--ddd-icon-4xs);
+          --simple-icon-height: var(--ddd-icon-4xs);
+        }
+        .lp-switch {
+          position: relative;
+          display: flex;
+          align-items: flex-start;
+          gap: var(--ddd-spacing-3);
+          cursor: pointer;
+        }
+        .lp-switch input {
+          position: absolute;
+          opacity: 0;
+          width: 44px;
+          height: 24px;
+          margin: 0;
+        }
+        .lp-track {
+          flex: none;
+          position: relative;
+          width: 44px;
+          height: 24px;
+          margin-top: 2px;
+          border-radius: var(--ddd-radius-rounded);
+          background-color: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneGray)
+          );
+          transition: background-color var(--ddd-duration-fast, 150ms) ease;
+        }
+        .lp-track::after {
+          content: "";
+          position: absolute;
+          top: 3px;
+          left: 3px;
+          width: 18px;
+          height: 18px;
+          border-radius: 50%;
+          background-color: var(--ddd-theme-default-white);
+          transition: left var(--ddd-duration-fast, 150ms) ease;
+        }
+        .lp-switch input:checked + .lp-track {
+          background-color: light-dark(
+            var(--ddd-theme-default-beaverBlue),
+            var(--ddd-theme-default-skyBlue)
+          );
+        }
+        .lp-switch input:checked + .lp-track::after {
+          left: 23px;
+        }
+        .lp-switch input:focus-visible + .lp-track {
+          outline: var(--ddd-focus-ring);
+          outline-offset: var(--ddd-focus-offset);
+        }
+        .lp-switch-text {
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
+          font-size: var(--ddd-font-size-4xs);
+        }
+        .lp-switch-text span {
+          color: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
+          line-height: var(--ddd-lh-140);
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .lp-track,
+          .lp-track::after {
+            transition: none;
+          }
+        }
         .lp-foot {
           display: flex;
           flex-wrap: wrap;
@@ -949,6 +1063,7 @@ export class MyLearningPanel extends I18NMixin(DDDSuper(LitElement)) {
           onGo: (e, row) => this._goPage(e, row),
         })}
       </div>
+      ${this._editor ? this.renderEditorTools() : nothing}
       <div class="ddd-block-footer lp-foot">
         <p>${t.savedOnDevice}</p>
         <button
@@ -962,6 +1077,41 @@ export class MyLearningPanel extends I18NMixin(DDDSuper(LitElement)) {
         </button>
       </div>
     </section>`;
+  }
+  // PROTOTYPE (tracking lens): only people who can edit the site see this
+  renderEditorTools() {
+    return html`<div
+      class="lp-editor"
+      role="group"
+      aria-labelledby="lp-editor-h"
+    >
+      <span class="lp-editor-h" id="lp-editor-h">
+        <simple-icon-lite icon="hax:admin-edit"></simple-icon-lite>
+        ${this.t.editorTools}
+      </span>
+      <label class="lp-switch">
+        <input
+          type="checkbox"
+          role="switch"
+          .checked="${this._lensOn}"
+          @change="${this._lensChanged}"
+        />
+        <span class="lp-track" aria-hidden="true"></span>
+        <span class="lp-switch-text"
+          ><strong>${this.t.showTracked}</strong
+          ><span>${this.t.showTrackedDetail}</span></span
+        >
+      </label>
+    </div>`;
+  }
+  async _lensChanged(e) {
+    const on = e.target.checked;
+    const mod = await import("./haxcms-tracking-lens.js");
+    mod.TrackingLens.set(on);
+    this._lensOn = on;
+    if (on) {
+      this.close(false);
+    }
   }
   renderRow(r) {
     const icon = LEARNER_ITEM_ICONS[r.kind] || LEARNER_ITEM_ICONS.activity;

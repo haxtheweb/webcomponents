@@ -361,7 +361,9 @@ describe("learning activity: report element", () => {
 
   it("links every page row to a same-site page URL", async () => {
     const { el } = await report();
-    const links = Array.from(el.shadowRoot.querySelectorAll("tbody a"));
+    const links = Array.from(
+      el.shadowRoot.querySelectorAll("tbody a:not(.lens-link)"),
+    );
     // pages with activities only, by default
     expect(links.length).to.equal(3);
     links.forEach((a) => {
@@ -371,6 +373,21 @@ describe("learning activity: report element", () => {
       expect(a.hasAttribute("target")).to.equal(false);
     });
     expect(links[2].getAttribute("href")).to.equal(`${BASE_URL}p2/p3`);
+  });
+
+  it("gives every page row a What's tracked link to the same page", async () => {
+    const { el } = await report();
+    const rows = Array.from(el.shadowRoot.querySelectorAll("tbody tr"));
+    const lens = Array.from(
+      el.shadowRoot.querySelectorAll("tbody a.lens-link"),
+    );
+    expect(lens.length).to.equal(3);
+    lens.forEach((a) => {
+      const page = a.parentElement.querySelector("a:not(.lens-link)");
+      expect(a.getAttribute("href")).to.equal(page.getAttribute("href"));
+      expect(a.getAttribute("aria-label")).to.contain(page.textContent.trim());
+    });
+    expect(rows.length).to.equal(3);
   });
 
   it("follows the page / branch scope", async () => {

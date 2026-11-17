@@ -161,15 +161,21 @@ describe("buildPageContentHTML", () => {
         published: false,
         locked: true,
         hideInMenu: true,
+        hideTitle: true,
         overridePathauto: true,
       }),
       { pageBreakHidden: true },
     );
+    expect(html).to.contain('hide-title="hide-title"');
     expect(html).to.not.contain(" published=");
     expect(html).to.contain('locked="locked"');
     expect(html).to.contain('hide-in-menu="hide-in-menu"');
     expect(html).to.contain('platform-hidden="platform-hidden"');
     expect(html).to.contain('override-pathauto="override-pathauto"');
+  });
+
+  it("leaves the page title shown unless the page hides it", () => {
+    expect(buildPageContentHTML("", item({}))).to.not.contain("hide-title");
   });
 
   it("adds a sanitized link and hint for link-out pages", () => {
