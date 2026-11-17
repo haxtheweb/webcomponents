@@ -4,6 +4,7 @@ import {
   settleThemeFade,
   lockLightThemeEnvironment,
 } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeA11yTestHelpers.js";
+import { DesignSystemManager } from "@haxtheweb/d-d-d/lib/DesignSystemManager.js";
 import "../bootstrap-theme.js";
 
 // The headless session can start under either OS color scheme and the DDD
@@ -60,10 +61,6 @@ beforeEach(() => {
       unloadElement: () => {},
     }),
   };
-
-  // Mock jQuery and Bootstrap loading
-  globalThis.jQuery = globalThis.$ = {};
-  globalThis.bootstrap = {};
 });
 
 afterEach(() => {
@@ -254,24 +251,34 @@ describe("bootstrap-theme test", () => {
   });
 
   describe("Bootstrap integration and styling", () => {
-    it("should load Bootstrap CSS", () => {
+    it("adopts Bootstrap 5 CSS into the chrome only", () => {
       expect(element._bootstrapPath).to.include("bootstrap.min.css");
-
-      // _generateBootstrapLink appends the link to document.head (not the
-      // shadow root), so look for it there.
+      // page content is styled by DDD through the bridge, so no Bootstrap
+      // stylesheet lands in the document
       const linkElement = globalThis.document.head.querySelector(
         'link[rel="stylesheet"][href*="bootstrap.min.css"]',
       );
-      expect(linkElement).to.exist;
+      expect(linkElement).to.not.exist;
     });
 
-    it("should load Bootstrap and jQuery scripts", async () => {
-      // ESGlobalBridge.load is mocked as a no-op, so _jquery and _bootstrap
-      // flags are set by the element's own event handlers which never fire.
-      // Verify the element attempted to load scripts by checking _loadScripts
-      // was called during firstUpdated (indirectly via _bootstrapPath).
-      expect(element._bootstrapPath).to.include("bootstrap.min.css");
-      expect(typeof element._loadScripts).to.equal("function");
+    it("makes Bootstrap the active design system as a DDD dialect", () => {
+      expect(DesignSystemManager.active).to.equal("bootstrap");
+      expect(DesignSystemManager.systems.bootstrap.extends).to.equal("ddd");
+      expect(DesignSystemManager.isActiveCompatible("ddd")).to.be.true;
+    });
+
+    it("points DDD tokens at Bootstrap 5 tokens", () => {
+      const styles = globalThis.getComputedStyle(element);
+      expect(
+        styles.getPropertyValue("--ddd-theme-default-beaverBlue").trim(),
+      ).to.equal("#0a58ca");
+      expect(styles.getPropertyValue("--bs-border-radius").trim()).to.equal(
+        "0.375rem",
+      );
+      // structure stays DDD
+      expect(styles.getPropertyValue("--ddd-spacing-4").trim()).to.equal(
+        "16px",
+      );
     });
 
     it("should have responsive design classes", async () => {
@@ -582,10 +589,6 @@ describe("bootstrap-theme test", () => {
     });
 
     it("should handle disconnectedCallback", () => {
-      // Mock the Bootstrap link
-      element._bootstrapLink = globalThis.document.createElement("link");
-      globalThis.document.head.appendChild(element._bootstrapLink);
-
       // Mock disposer functions
       element.__disposer = [{ dispose: () => {} }];
 
@@ -619,26 +622,6 @@ describe("bootstrap-theme test", () => {
         "dist/css/bootstrap.min.css",
       );
       expect(path).to.include("bootstrap.min.css");
-    });
-
-    it("should generate Bootstrap link", () => {
-      const link = element._generateBootstrapLink();
-
-      expect(link).to.exist;
-      expect(link.getAttribute("rel")).to.equal("stylesheet");
-      expect(link.getAttribute("href")).to.include("bootstrap.min.css");
-    });
-
-    it("should remove old Bootstrap link when generating new one", () => {
-      // _generateBootstrapLink removes the previous link before creating a
-      // new one. Set _bootstrapLink first so the removal path is exercised.
-      const firstLink = element._generateBootstrapLink();
-      element._bootstrapLink = firstLink;
-      const secondLink = element._generateBootstrapLink();
-
-      expect(firstLink).to.not.equal(secondLink);
-      expect(globalThis.document.head.contains(firstLink)).to.be.false;
-      expect(globalThis.document.head.contains(secondLink)).to.be.true;
     });
   });
 
@@ -712,19 +695,16 @@ describe("bootstrap-theme test", () => {
     });
 
     it("should cleanup resources on disconnect", () => {
-      // Set up resources to be cleaned
-      element._bootstrapLink = globalThis.document.createElement("link");
-      globalThis.document.head.appendChild(element._bootstrapLink);
-      element.__disposer = [{ dispose: () => {} }];
-
-      const linkCount =
-        globalThis.document.head.querySelectorAll("link").length;
-
+      let disposed = false;
+      element.__disposer = [
+        {
+          dispose: () => {
+            disposed = true;
+          },
+        },
+      ];
       element.disconnectedCallback();
-
-      const newLinkCount =
-        globalThis.document.head.querySelectorAll("link").length;
-      expect(newLinkCount).to.be.lessThan(linkCount);
+      expect(disposed).to.be.true;
     });
   });
 });

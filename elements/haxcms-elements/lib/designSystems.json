@@ -1,4 +1,12 @@
 {
+  "bootstrap": {
+    "name": "bootstrap",
+    "title": "Bootstrap",
+    "homepage": "https://getbootstrap.com",
+    "theme": "bootstrap-theme",
+    "path": "@haxtheweb/bootstrap-theme/lib/BootstrapDesignSystem.js",
+    "activate": "activateBootstrapDesignSystem"
+  },
   "carbon": {
     "name": "carbon",
     "title": "Carbon",
@@ -6,6 +14,14 @@
     "theme": "carbon-theme",
     "path": "@haxtheweb/carbon-theme/lib/CarbonDesignSystem.js",
     "activate": "activateCarbonDesignSystem"
+  },
+  "fluent": {
+    "name": "fluent",
+    "title": "Fluent 2",
+    "homepage": "https://fluent2.microsoft.design",
+    "theme": "fluent-theme",
+    "path": "@haxtheweb/fluent-theme/lib/FluentDesignSystem.js",
+    "activate": "activateFluentDesignSystem"
   },
   "material": {
     "name": "material",
@@ -22,6 +38,14 @@
     "theme": "patternfly-theme",
     "path": "@haxtheweb/patternfly-theme/lib/PatternflyDesignSystem.js",
     "activate": "activatePatternflyDesignSystem"
+  },
+  "primer": {
+    "name": "primer",
+    "title": "Primer",
+    "homepage": "https://primer.style",
+    "theme": "primer-theme",
+    "path": "@haxtheweb/primer-theme/lib/PrimerDesignSystem.js",
+    "activate": "activatePrimerDesignSystem"
   },
   "shadcn": {
     "name": "shadcn",

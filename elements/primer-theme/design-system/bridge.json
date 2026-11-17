@@ -1,0 +1,498 @@
+{
+  "$comment": "DDD bridge for GitHub Primer (@primer/primitives). Tiers follow elements/d-d-d/design-system/bridge/contract.json. Primer's color tokens only exist per theme (light.css, dark.css), so named DDD colors take the light theme's value as a constant (fromMode), the way the Spectrum bridge does; theme chrome uses the functional tokens, which follow light and dark. Primer's size tokens are rem, and HAX's root font size is 20px, not 16px, so radii, control heights and density are written as px values with the upstream token named in the note. Kept as DDD on purpose: black font weight (Primer's heaviest is semibold), state opacities (Primer uses hover colors), border widths and heading/body sizes (Primer body is 14px, below the 16px floor). Primer's spacing steps (4, 8, 12, 16, 24, 32px) sit on DDD's 4px grid, so the theme chrome uses DDD spacing tokens.",
+  "system": "primer",
+  "title": "Primer",
+  "prefix": "Primer",
+  "homepage": "https://primer.style",
+  "sources": [
+    {
+      "package": "@primer/primitives",
+      "version": "11.10.0",
+      "license": "MIT",
+      "copyright": "Copyright (c) 2018 GitHub Inc.",
+      "homepage": "https://primer.style",
+      "repository": "https://github.com/primer/primitives",
+      "format": "css",
+      "file": "dist/css/functional/themes/light.css",
+      "scopes": {
+        "light": ["[data-color-mode=\"light\"][data-light-theme=\"light\"]"],
+        "dark": ["[data-color-mode=\"light\"][data-light-theme=\"light\"]"]
+      }
+    },
+    {
+      "package": "@primer/primitives",
+      "version": "11.10.0",
+      "license": "MIT",
+      "copyright": "Copyright (c) 2018 GitHub Inc.",
+      "homepage": "https://primer.style",
+      "repository": "https://github.com/primer/primitives",
+      "format": "css",
+      "file": "dist/css/functional/themes/dark.css",
+      "scopes": {
+        "light": ["[data-color-mode=\"light\"][data-light-theme=\"light\"]"],
+        "dark": ["[data-color-mode=\"dark\"][data-dark-theme=\"dark\"]"]
+      }
+    },
+    {
+      "package": "@primer/primitives",
+      "version": "11.10.0",
+      "license": "MIT",
+      "copyright": "Copyright (c) 2018 GitHub Inc.",
+      "homepage": "https://primer.style",
+      "repository": "https://github.com/primer/primitives",
+      "format": "css",
+      "file": "dist/css/functional/typography/typography.css",
+      "scopes": {
+        "light": [":root"],
+        "dark": [":root"]
+      }
+    },
+    {
+      "package": "@primer/primitives",
+      "version": "11.10.0",
+      "license": "MIT",
+      "copyright": "Copyright (c) 2018 GitHub Inc.",
+      "homepage": "https://primer.style",
+      "repository": "https://github.com/primer/primitives",
+      "format": "css",
+      "file": "dist/css/base/typography/typography.css",
+      "scopes": {
+        "light": [":root"],
+        "dark": [":root"]
+      }
+    },
+    {
+      "package": "@primer/primitives",
+      "version": "11.10.0",
+      "license": "MIT",
+      "copyright": "Copyright (c) 2018 GitHub Inc.",
+      "homepage": "https://primer.style",
+      "repository": "https://github.com/primer/primitives",
+      "format": "css",
+      "file": "dist/css/base/motion/motion.css",
+      "scopes": {
+        "light": [":root"],
+        "dark": [":root"]
+      }
+    }
+  ],
+  "fonts": [
+    {
+      "family": "Mona Sans",
+      "license": "OFL-1.1",
+      "url": "https://fonts.googleapis.com/css2?family=Mona+Sans:wght@300..600&display=swap"
+    }
+  ],
+  "icons": {
+    "package": "@primer/octicons",
+    "version": "19.42.0",
+    "license": "MIT",
+    "path": "build/svg/{name}-24.svg",
+    "map": "octicons"
+  },
+  "ddd": {
+    "--ddd-theme-default-beaverBlue": {
+      "token": "--fgColor-accent",
+      "fromMode": "light",
+      "note": "Primer accent blue (light theme)"
+    },
+    "--ddd-theme-default-nittanyNavy": {
+      "token": "--display-blue-scale-9",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-potentialMidnight": {
+      "token": "--bgColor-emphasis",
+      "fromMode": "light",
+      "note": "Primer's emphasis surface (light), the darkest blue-gray"
+    },
+    "--ddd-theme-default-pughBlue": {
+      "token": "--display-blue-scale-2",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-accent": {
+      "token": "--display-blue-scale-2",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-skyBlue": {
+      "token": "--display-blue-scale-3",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-skyLight": {
+      "token": "--display-blue-scale-1",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-skyMaxLight": {
+      "token": "--bgColor-accent-muted",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-slateGray": {
+      "token": "--display-gray-scale-7",
+      "fromMode": "light",
+      "note": "fgColor-muted (#59636e) is under 4.5:1 on the borderColor-default gray that block labels sit on"
+    },
+    "--ddd-theme-default-slateLight": {
+      "token": "--display-gray-scale-2",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-slateMaxLight": {
+      "token": "--bgColor-muted",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-coalyGray": {
+      "token": "--fgColor-default",
+      "fromMode": "light",
+      "note": "Primer default text (light)"
+    },
+    "--ddd-theme-default-black": {
+      "token": "--fgColor-black",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-white": {
+      "token": "--fgColor-white",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-limestoneGray": {
+      "token": "--display-gray-scale-3",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-limestoneLight": {
+      "token": "--control-bgColor-hover",
+      "fromMode": "light",
+      "note": "borderColor-default (#d1d9e0) is under 4.5:1 behind accent, success and danger text that blocks place on this gray"
+    },
+    "--ddd-theme-default-limestoneMaxLight": {
+      "token": "--bgColor-muted",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-background": {
+      "token": "--bgColor-muted",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-disabled": {
+      "token": "--bgColor-disabled",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-keystoneYellow": {
+      "token": "--display-yellow-scale-1",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-globalNeon": {
+      "token": "--display-lemon-scale-1",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-roarGolden": {
+      "token": "--display-yellow-scale-2",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-roarLight": {
+      "token": "--display-yellow-scale-0",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-roarMaxlight": {
+      "token": "--bgColor-attention-muted",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-shrineTan": {
+      "token": "--display-brown-scale-3",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-shrineLight": {
+      "token": "--display-brown-scale-1",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-shrineMaxLight": {
+      "token": "--display-brown-scale-0",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-inventOrange": {
+      "token": "--display-orange-scale-3",
+      "fromMode": "light",
+      "note": "orange scale 4 is under 4.5:1 against potentialMidnight"
+    },
+    "--ddd-theme-default-landgrantBrown": {
+      "token": "--display-brown-scale-7",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-creekTeal": {
+      "token": "--display-teal-scale-3",
+      "fromMode": "light",
+      "note": "teal scale 4 is under 4.5:1 against potentialMidnight"
+    },
+    "--ddd-theme-default-creekLight": {
+      "token": "--display-teal-scale-1",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-creekMaxLight": {
+      "token": "--display-teal-scale-0",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-opportunityGreen": {
+      "token": "--fgColor-success",
+      "fromMode": "light",
+      "note": "correct signal (light)"
+    },
+    "--ddd-theme-default-forestGreen": {
+      "token": "--display-green-scale-7",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-futureLime": {
+      "token": "--display-green-scale-3",
+      "fromMode": "light",
+      "note": "correct signal (dark)"
+    },
+    "--ddd-theme-default-athertonViolet": {
+      "token": "--display-purple-scale-3",
+      "fromMode": "light",
+      "note": "incorrect signal (dark)"
+    },
+    "--ddd-theme-default-wonderPurple": {
+      "token": "--fgColor-done",
+      "fromMode": "light",
+      "note": "incorrect signal (light); Primer's done purple keeps HAX purple-for-incorrect"
+    },
+    "--ddd-theme-default-original87Pink": {
+      "token": "--display-pink-scale-7",
+      "fromMode": "light",
+      "note": "lighter pinks are under 4.5:1 as the stop-note ink on its tint"
+    },
+    "--ddd-theme-default-discoveryCoral": {
+      "token": "--display-coral-scale-3",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-link": {
+      "token": "--display-blue-scale-7",
+      "fromMode": "light",
+      "note": "Primer's accent (#0969da) is under 4.5:1 on the gray-20-style surfaces HAX blocks put links on; the next darker blue"
+    },
+    "--ddd-theme-default-linkLight": {
+      "token": "--fgColor-accent",
+      "fromMode": "dark",
+      "note": "Primer link color (dark)"
+    },
+    "--ddd-theme-default-error": {
+      "token": "--fgColor-danger",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-errorLight": {
+      "token": "--bgColor-danger-muted",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-warning": {
+      "token": "--fgColor-attention",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-warningLight": {
+      "token": "--bgColor-attention-muted",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-info": {
+      "token": "--fgColor-accent",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-infoLight": {
+      "token": "--bgColor-accent-muted",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-success": {
+      "token": "--fgColor-success",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-successLight": {
+      "token": "--bgColor-success-muted",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-alertImmediate": {
+      "token": "--display-red-scale-1",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-alertUrgent": {
+      "token": "--display-yellow-scale-0",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-alertAllClear": {
+      "token": "--display-green-scale-0",
+      "fromMode": "light"
+    },
+    "--ddd-theme-default-alertNonEmergency": {
+      "token": "--display-blue-scale-0",
+      "fromMode": "light"
+    },
+    "--ddd-font-primary": {
+      "value": "'Mona Sans', 'Mona Sans VF', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif",
+      "note": "Primer's --fontStack-sansSerif, with Mona Sans as Google Fonts serves it ahead of Primer's self-hosted Mona Sans VF"
+    },
+    "--ddd-font-secondary": {
+      "value": "'Mona Sans', 'Mona Sans VF', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif",
+      "note": "--fontStack-sansSerifDisplay (same stack)"
+    },
+    "--ddd-font-navigation": {
+      "value": "'Mona Sans', 'Mona Sans VF', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif"
+    },
+    "--ddd-font-mono": {
+      "token": "--fontStack-monospace"
+    },
+    "--ddd-font-weight-light": {
+      "token": "--base-text-weight-light"
+    },
+    "--ddd-font-weight-regular": {
+      "token": "--base-text-weight-normal"
+    },
+    "--ddd-font-weight-medium": {
+      "token": "--base-text-weight-medium"
+    },
+    "--ddd-font-weight-bold": {
+      "token": "--base-text-weight-semibold",
+      "note": "Primer headings and buttons are semibold"
+    },
+    "--ddd-radius-xs": {
+      "value": "3px",
+      "note": "borderRadius-small (a px value: Primer's tokens are rem, and HAX's root font size is 20px)"
+    },
+    "--ddd-radius-sm": {
+      "value": "6px",
+      "note": "borderRadius-medium, Primer's default"
+    },
+    "--ddd-radius-md": {
+      "value": "6px",
+      "note": "borderRadius-medium"
+    },
+    "--ddd-radius-lg": {
+      "value": "12px",
+      "note": "borderRadius-large"
+    },
+    "--ddd-radius-xl": {
+      "value": "12px",
+      "note": "borderRadius-large; Primer has no larger step"
+    },
+    "--ddd-boxShadow-sm": {
+      "token": "--shadow-resting-xsmall"
+    },
+    "--ddd-boxShadow-md": {
+      "token": "--shadow-resting-medium"
+    },
+    "--ddd-boxShadow-lg": {
+      "token": "--shadow-floating-small"
+    },
+    "--ddd-boxShadow-xl": {
+      "token": "--shadow-floating-medium",
+      "note": "floating-large and -xlarge change shape between light and dark, which light-dark() can't express"
+    },
+    "--ddd-focus-ring": {
+      "value": "2px solid var(--focus-outlineColor)",
+      "note": "Primer focus outline: 2px in the accent emphasis color"
+    },
+    "--ddd-focus-offset": {
+      "value": "0px",
+      "note": "Primer draws focus at -2px on controls; 0 keeps it visible around inline links"
+    },
+    "--ddd-duration-fast": {
+      "token": "--base-duration-100"
+    },
+    "--ddd-duration-normal": {
+      "token": "--base-duration-200"
+    },
+    "--ddd-duration-slow": {
+      "token": "--base-duration-300"
+    },
+    "--ddd-timing-ease": {
+      "token": "--base-easing-ease"
+    },
+    "--ddd-timing-enter": {
+      "token": "--base-easing-easeOut"
+    },
+    "--ddd-timing-exit": {
+      "token": "--base-easing-easeIn"
+    },
+    "--ddd-timing-emphasized": {
+      "token": "--base-easing-easeInOut"
+    },
+    "--ddd-control-height-xs": {
+      "value": "24px",
+      "note": "Primer control-xsmall-size"
+    },
+    "--ddd-control-height-sm": {
+      "value": "28px",
+      "note": "control-small-size"
+    },
+    "--ddd-control-height-md": {
+      "value": "32px",
+      "note": "control-medium-size"
+    },
+    "--ddd-control-height-lg": {
+      "value": "40px",
+      "note": "control-large-size"
+    },
+    "--ddd-textfield-height-sm": {
+      "value": "28px"
+    },
+    "--ddd-textfield-height-md": {
+      "value": "32px"
+    },
+    "--ddd-textfield-height-lg": {
+      "value": "40px"
+    },
+    "--ddd-surface-padding": {
+      "value": "16px",
+      "note": "Primer Box padding, base-size-16"
+    },
+    "--ddd-surface-padding-lg": {
+      "value": "24px",
+      "note": "base-size-24"
+    },
+    "--ddd-stack-gap": {
+      "value": "16px",
+      "note": "Stack gap normal"
+    },
+    "--ddd-inline-gap": {
+      "value": "8px",
+      "note": "base-size-8"
+    },
+    "--ddd-control-padding-inline": {
+      "value": "12px",
+      "note": "control-medium-paddingInline-normal"
+    },
+    "--ddd-card-padding": {
+      "value": "16px",
+      "note": "Primer Box padding"
+    },
+    "--ddd-card-border-width": {
+      "value": "1px",
+      "note": "Primer Box: 1px borderColor-default"
+    },
+    "--ddd-card-shadow": {
+      "value": "none",
+      "note": "Primer Box is flat; it is defined by its border"
+    },
+    "--ddd-card-radius": {
+      "value": "6px",
+      "note": "Primer Box radius, borderRadius-medium"
+    },
+    "--ddd-card-background": {
+      "token": "--bgColor-default"
+    },
+    "--ddd-control-radius": {
+      "value": "6px",
+      "note": "Primer buttons and inputs, borderRadius-medium"
+    },
+    "--ddd-control-height": {
+      "value": "32px",
+      "note": "Primer medium button"
+    },
+    "--ddd-tag-radius": {
+      "value": "999px",
+      "note": "Primer Labels and counters are pills"
+    }
+  },
+  "extraTokens": [
+    "--fgColor-default",
+    "--fgColor-muted",
+    "--fgColor-accent",
+    "--bgColor-default",
+    "--borderColor-default",
+    "--borderColor-muted",
+    "--focus-outlineColor",
+    "--control-transparent-bgColor-hover",
+    "--control-transparent-bgColor-selected",
+    "--button-default-bgColor-hover"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "tag": "primer-theme",
+  "folder": "primer-theme",
+  "package": "@haxtheweb/primer-theme",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "primer-theme",
+  "description": "GitHub Primer theme for HAXcms, built on the DDD-capable Primer design system bridge",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/primer-theme/primer-theme.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/primer-theme/primer-theme.js",
+  "install": "npm i @haxtheweb/primer-theme",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "sidebar-open",
+      "property": "sidebarOpen",
+      "type": "boolean",
+      "default": "true",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "1045619d39dd",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/primer-theme",
+    "file": "primer-theme.js"
+  }
+}

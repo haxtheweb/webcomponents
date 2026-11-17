@@ -1,35 +1,53 @@
-# &lt;bootstrap-theme&gt;
+# bootstrap-theme
 
-Theme
-> Hax bootstrap themeing
+A HAXcms theme built on **Bootstrap 5** through the **Bootstrap DDD bridge**. It keeps the layout it has always had: a site menu beside the page, a search box, a breadcrumb bar, the page in a Bootstrap card, previous and next as outline buttons, and a reader menu for font size, font family and the light, dark and palenight color themes.
 
-## Usage
-To use this web component in your project you can utilize one of the following styles of syntax.
+## What the bridge does
 
-```js
-/* In an existing JS module / web component */
-import '@haxtheweb/bootstrap-theme/bootstrap-theme.js';
+HAX blocks only read DDD tokens (`--ddd-*`). This package re-expresses Bootstrap's own CSS variables (`--bs-*`, from `bootstrap/dist/css/bootstrap.css`, light and `[data-bs-theme=dark]`) and points every DDD token a block reads at the closest Bootstrap variable. While Bootstrap is active, blocks take on Bootstrap's colors, its native font stack, its corner radii and shadows, a focus ring in Bootstrap's primary blue, and Bootstrap Icons. Authored content stays plain DDD content that renders in any other theme.
 
-/* CDN */
-<script type="module" src="https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/bootstrap-theme/bootstrap-theme.js"></script>
+The design system registers as `bootstrap` with `extends: "ddd"` in `DesignSystemManager`, so DDD's styles, data attributes and HAX authoring options stay in place. A site can also keep another theme and choose Bootstrap as its design system.
+
+The theme chrome uses Bootstrap's component classes (`btn`, `breadcrumb`, `card`, `form-control`). The Bootstrap 5 stylesheet is adopted into those shadow roots only; every Bootstrap root variable comes from the bridge, so the chrome follows light and dark mode. No Bootstrap stylesheet is added to the page, and no Bootstrap or jQuery script is loaded.
+
+| File | What it is |
+|---|---|
+| `design-system/bridge.json` | The authored mapping: the `bootstrap` CSS source, icons, and each DDD token → Bootstrap variable |
+| `lib/BootstrapTokens.js` | Generated: Bootstrap's root variables as `light-dark()` pairs |
+| `lib/BootstrapDDDMap.js` | Generated: the `--ddd-*` → Bootstrap remap |
+| `lib/BootstrapIcons.js`, `icons/` | Generated: HAX icon names drawn in Bootstrap Icons |
+| `lib/bootstrap.ddd-map.json` | Generated: the full map with resolved values, coverage per contract tier and a contrast report |
+| `lib/BootstrapDesignSystem.js` | Registers and activates the `bootstrap` design system |
+| `lib/BootstrapDesignSystemStyles.js` | The two Bootstrap-only content attributes, `data-bootstrap-surface` and `data-bootstrap-emphasis` |
+| `bootstrap-theme.js` | The theme |
+
+## Content made with the earlier Bootstrap theme
+
+Text alignment, float, padding, margin, radius and shadow use DDD's data attributes, which are the attribute names this theme always wrote, so that content keeps working. `data-bootstrap-surface` and `data-bootstrap-emphasis` keep rendering, now in Bootstrap 5 colors, and the editor still offers them under "Bootstrap styles".
+
+## Coverage
+
+Checked against the shared [bridge contract](../d-d-d/design-system/bridge/README.md): identity 97%, feel 39% (Bootstrap has one transition easing and no state opacities), semantic 42% (density at Bootstrap's spacers: 16px surface padding and stack gap, 8px inline gap), component 100%, structure locked. Bootstrap's tints and shades (`$blue-100` ... `$blue-900`) only exist in Sass, so named DDD colors use the base colors, the grays and the subtle and emphasis variables taken from one mode. Two are a step darker than Bootstrap's base color so they keep 4.5:1 as text on Bootstrap's gray surfaces: the primary blue that blocks use for text and accents is `$blue-600` (the link hover blue), and the pink stop-note ink is `$pink-700`. The theme chrome keeps `--bs-primary`. Bootstrap's sizes are rem and HAX's root font size is 20px, so radii, shadows and control heights are written in px.
+
+## Rebuilding the tokens
+
+```
+yarn ddd:bridge elements/bootstrap-theme          # from the monorepo root
+yarn ddd:bridge elements/bootstrap-theme --check  # fail if the generated files are stale
 ```
 
-## Develop / Demo
-Running `npm start` will start a local development server and open your default browser to display it. It will start watching *.js and lib/*.js files for changes automatically for your demo.
-```bash
-$ npm start
-```
+## Attribution
 
-
-## Contributing
-
-1. Fork it! `git clone https://github.com/haxtheweb/webcomponents.git`
-2. Create your feature branch: `git checkout -b my-new-feature`
-3. Commit your changes: `git commit -m 'Add some feature'`
-4. Push to the branch: `git push origin my-new-feature`
-5. Submit a pull request :D
-
-Theme
+See `NOTICE`. This is an independent HAX integration, not affiliated with or endorsed by the Bootstrap team.
 
 ## License
-[MIT License](http://opensource.org/licenses/MIT)
+
+[Apache-2.0](LICENSE)
+
+<!-- block-review -->
+## Block review
+
+Every HAX block's demo is measured with Bootstrap active, in light and dark mode, by the `contrast-design-systems` workflow (axe-core color contrast, WCAG AA). Generated by `node scripts/design-system-report.mjs` from `scripts/contrast.design-systems.baseline.json`; see CONTRIBUTING.md, "Color contrast check".
+
+**123 of 123** HAX blocks pass in light and dark.
+<!-- /block-review -->

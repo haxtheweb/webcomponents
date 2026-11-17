@@ -9,10 +9,14 @@ import { HAXCMSMobileMenuMixin } from "@haxtheweb/haxcms-elements/lib/core/utils
 import { BootstrapUserStylesMenuMixin } from "@haxtheweb/bootstrap-theme/lib/BootstrapUserStylesMenuMixin.js";
 import "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSUserStylesMenu.js";
 import { HAXCMSThemeParts } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
-import { DesignSystemManager } from "@haxtheweb/d-d-d/lib/DesignSystemManager.js";
-import { BootstrapDesignSystemStyles } from "@haxtheweb/bootstrap-theme/lib/BootstrapDesignSystemStyles.js";
+import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { BootstrapTokens } from "@haxtheweb/bootstrap-theme/lib/BootstrapTokens.js";
+import { BootstrapDDDMap } from "@haxtheweb/bootstrap-theme/lib/BootstrapDDDMap.js";
+import {
+  registerBootstrapDesignSystem,
+  activateBootstrapDesignSystem,
+} from "@haxtheweb/bootstrap-theme/lib/BootstrapDesignSystem.js";
 import { adoptBootstrapStylesheet } from "@haxtheweb/bootstrap-theme/lib/BootstrapStylesheetManager.js";
-import "@haxtheweb/es-global-bridge/es-global-bridge.js";
 import "@haxtheweb/map-menu/map-menu.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
@@ -24,13 +28,21 @@ import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js"
 import { autorun, toJS } from "mobx";
 /**
  * @title Bootstrap
- * `Hax bootstrap`
+ * `bootstrap-theme`
+ * A HAXcms theme built on Bootstrap 5 through the Bootstrap DDD bridge:
+ * every HAX block reads --ddd-* tokens, which point at Bootstrap's own
+ * --bs-* variables while this theme is active. The theme chrome (search,
+ * breadcrumb, buttons, footer) uses Bootstrap's component classes; the
+ * Bootstrap stylesheet is adopted into those shadow roots only, and its
+ * variables come from the bridge so they follow light and dark mode.
  * @haxcms-theme-priority 100
  * @demo demo/index.html
  * @element bootstrap-theme
  */
 class BootstrapTheme extends HAXCMSThemeParts(
-  BootstrapUserStylesMenuMixin(HAXCMSMobileMenuMixin(HAXCMSLitElementTheme)),
+  BootstrapUserStylesMenuMixin(
+    HAXCMSMobileMenuMixin(DDDSuper(HAXCMSLitElementTheme)),
+  ),
 ) {
   /**
    * Convention we use
@@ -40,32 +52,42 @@ class BootstrapTheme extends HAXCMSThemeParts(
   }
 
   _registerBootstrapDesignSystem() {
-    if (!DesignSystemManager.systems.bootstrap) {
-      DesignSystemManager.addDesignSystem({
-        name: "bootstrap",
-        styles: BootstrapDesignSystemStyles,
-        fonts: [],
-        hax: true,
-        integrations: {
-          hax: {
-            importer: () =>
-              import("@haxtheweb/bootstrap-theme/lib/BootstrapStyleGuideAuthoring.js"),
-            exportName: "registerBootstrapStyleGuideAuthoring",
-            shouldLoad: (context = {}) =>
-              !!context.editMode && context.isAuthenticated !== false,
-          },
-        },
-      });
-    }
+    registerBootstrapDesignSystem();
+  }
+
+  HAXCMSGlobalStyleSheetContent() {
+    return [
+      ...super.HAXCMSGlobalStyleSheetContent(),
+      css`
+        body {
+          margin: 0;
+        }
+      `,
+    ];
   }
 
   static get styles() {
     return [
       super.styles,
+      BootstrapTokens,
+      BootstrapDDDMap,
       css`
         /* var declaration and default styles */
         :host {
           color-scheme: light;
+          /* Bootstrap's rgb channel variables differ between its light and
+             dark modes in a way light-dark() can't express, so the bridge
+             leaves them out; the adopted Bootstrap component CSS reads them
+             for link and text colors, so they follow the color theme here */
+          --bs-body-color-rgb: 33, 37, 41;
+          --bs-body-bg-rgb: 255, 255, 255;
+          --bs-emphasis-color-rgb: 0, 0, 0;
+          --bs-secondary-color-rgb: 33, 37, 41;
+          --bs-secondary-bg-rgb: 233, 236, 239;
+          --bs-tertiary-color-rgb: 33, 37, 41;
+          --bs-tertiary-bg-rgb: 248, 249, 250;
+          --bs-link-color-rgb: 10, 88, 202;
+          --bs-link-hover-color-rgb: 5, 44, 101;
           /* Bootstrap-family blues that keep 4.5:1 on every light surface
              (white, #f2f4f4, #e9ecef) and on the dark surfaces */
           --bootstrap-theme-link-color: #0a58ca;
@@ -365,6 +387,20 @@ class BootstrapTheme extends HAXCMSThemeParts(
 
         /* Dark Theme */
         :host([color-theme="1"]),
+        :host([dark-mode][color-theme="0"]),
+        :host([color-theme="2"]) {
+          color-scheme: dark;
+          --bs-body-color-rgb: 222, 226, 230;
+          --bs-body-bg-rgb: 33, 37, 41;
+          --bs-emphasis-color-rgb: 255, 255, 255;
+          --bs-secondary-color-rgb: 222, 226, 230;
+          --bs-secondary-bg-rgb: 52, 58, 64;
+          --bs-tertiary-color-rgb: 222, 226, 230;
+          --bs-tertiary-bg-rgb: 43, 48, 53;
+          --bs-link-color-rgb: 110, 168, 254;
+          --bs-link-hover-color-rgb: 139, 185, 254;
+        }
+        :host([color-theme="1"]),
         :host([dark-mode][color-theme="0"]) {
           background-color: var(--bootstrap-theme-dark-background-color);
           --simple-fields-background-color: transparent;
@@ -465,6 +501,16 @@ class BootstrapTheme extends HAXCMSThemeParts(
 
         @media (prefers-color-scheme: dark) {
           :host([color-theme="0"]) {
+            color-scheme: dark;
+            --bs-body-color-rgb: 222, 226, 230;
+            --bs-body-bg-rgb: 33, 37, 41;
+            --bs-emphasis-color-rgb: 255, 255, 255;
+            --bs-secondary-color-rgb: 222, 226, 230;
+            --bs-secondary-bg-rgb: 52, 58, 64;
+            --bs-tertiary-color-rgb: 222, 226, 230;
+            --bs-tertiary-bg-rgb: 43, 48, 53;
+            --bs-link-color-rgb: 110, 168, 254;
+            --bs-link-hover-color-rgb: 139, 185, 254;
             background-color: var(--bootstrap-theme-dark-background-color);
             --map-menu-item-a-color: var(--bootstrap-theme-dark-color);
             --map-menu-item-a-active-color: var(--bootstrap-theme-dark-color);
@@ -647,9 +693,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
     import(
       "@haxtheweb/haxcms-elements/lib/ui-components/site/site-print-button.js"
     );
-    if (DesignSystemManager.active !== "bootstrap") {
-      DesignSystemManager.active = "bootstrap";
-    }
+    activateBootstrapDesignSystem();
     this.__disposer = this.__disposer || [];
     this.__disposer.push(
       autorun((_reaction) => {
@@ -733,7 +777,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
                   part="print-btn"
                 ></replace-tag>
                 ${this.BootstrapUserStylesMenu()}
-                <h1 class="display-6 page-title">${this.__pageTitle}</h1>
+                <h1 class="page-title">${this.__pageTitle}</h1>
               </div>
               <article class="shadow main-content container card mb-3">
                 <div class="normal main-section">
@@ -792,24 +836,10 @@ class BootstrapTheme extends HAXCMSThemeParts(
     this.searchTerm = "";
   }
 
-  _generateBootstrapLink() {
-    if (this._bootstrapLink && this._bootstrapLink.parentNode) {
-      this._bootstrapLink.parentNode.removeChild(this._bootstrapLink);
-    }
-    let link = globalThis.document.createElement("link");
-    link.setAttribute("rel", "stylesheet");
-    link.setAttribute("href", this._bootstrapPath);
-    globalThis.document.head.appendChild(link);
-    return link;
-  }
-
   /**
    * life cycle, element is removed from the DOM
    */
   disconnectedCallback() {
-    if (this._bootstrapLink && this._bootstrapLink.parentNode) {
-      this._bootstrapLink.parentNode.removeChild(this._bootstrapLink);
-    }
     for (let i in this.__disposer) {
       const disposer = this.__disposer[i];
       if (typeof disposer === "function") {
@@ -830,49 +860,17 @@ class BootstrapTheme extends HAXCMSThemeParts(
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    this._loadScripts();
     globalThis.document.body.style.overflow = "hidden";
     this.HAXCMSThemeSettings.scrollTarget =
       this.shadowRoot.querySelector(".site-body");
     globalThis.AbsolutePositionStateManager.requestAvailability().scrollTarget =
       this.HAXCMSThemeSettings.scrollTarget;
 
-    this._bootstrapLink = this._generateBootstrapLink();
+    // Bootstrap's component CSS styles the chrome in this shadow root only;
+    // page content is styled by DDD through the bridge, as in any theme
     adoptBootstrapStylesheet(this, this._bootstrapPath);
   }
 
-  /*
-   * Loads jquery first because bootstrap requires jquery to be present first
-   * Jquery callback function then loads bootstrap
-   */
-  _loadScripts() {
-    globalThis.ESGlobalBridge.requestAvailability().load(
-      "jquery",
-      this._resolveVendorAssetPath("jquery", "dist/jquery.min.js"),
-    );
-    globalThis.addEventListener(
-      `es-bridge-jquery-loaded`,
-      this._jqueryLoaded.bind(this),
-    );
-  }
-
-  _bootstrapLoaded(_e) {
-    this._bootstrap = true;
-  }
-
-  _loadBootstrap() {
-    globalThis.ESGlobalBridge.requestAvailability().load(
-      "bootstrap",
-      this._resolveVendorAssetPath(
-        "bootstrap",
-        "dist/js/bootstrap.bundle.min.js",
-      ),
-    );
-    globalThis.addEventListener(
-      `es-bridge-bootstrap-loaded`,
-      this._bootstrapLoaded.bind(this),
-    );
-  }
   _resolveVendorAssetPath(packageName, packagePath) {
     const packageURL = decodeURIComponent(import.meta.url);
     if (packageURL.indexOf("/node_modules/@haxtheweb/") !== -1) {
@@ -882,11 +880,6 @@ class BootstrapTheme extends HAXCMSThemeParts(
       `../../node_modules/${packageName}/${packagePath}`,
       packageURL,
     ).href;
-  }
-
-  _jqueryLoaded(_e) {
-    this._jquery = true;
-    this._loadBootstrap();
   }
 
   /**

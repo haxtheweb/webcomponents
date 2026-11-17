@@ -1,0 +1,231 @@
+{
+  "id": "f1e0b2c3-0000-4000-8000-fluent000001",
+  "title": "Design system site",
+  "author": "",
+  "description": "A demo site for fluent-theme in the layout of the Fluent 2 documentation, built from HAX blocks.",
+  "license": "by-sa",
+  "metadata": {
+    "author": {
+      "image": "",
+      "name": "",
+      "email": "",
+      "socialLink": ""
+    },
+    "site": {
+      "name": "fluent-theme",
+      "logo": "",
+      "lang": "en",
+      "created": 1736889000,
+      "updated": 1736889000,
+      "git": {},
+      "version": "9.0.6",
+      "domain": "",
+      "static": {},
+      "settings": {
+        "pathauto": false,
+        "publishPagesOn": true,
+        "sw": false,
+        "forceUpgrade": false,
+        "lang": "",
+        "gaID": ""
+      },
+      "tags": ""
+    },
+    "theme": {
+      "element": "fluent-theme",
+      "path": "@haxtheweb/fluent-theme/fluent-theme.js",
+      "name": "fluent-theme",
+      "regions": {}
+    },
+    "node": {
+      "fields": {}
+    },
+    "build": {
+      "version": "6.0.1",
+      "structure": "flat",
+      "type": ""
+    }
+  },
+  "items": [
+    {
+      "id": "item-f1e0b2c3-get-started",
+      "indent": 0,
+      "location": "pages/item-f1e0b2c3-get-started/index.html",
+      "slug": "get-started",
+      "order": 0,
+      "parent": null,
+      "title": "Get started",
+      "description": "Fluent 2 is a design system for building experiences that feel familiar and coherent across platforms. This demo shows it through HAX blocks.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-f1e0b2c3-get-started-develop",
+      "indent": 1,
+      "location": "pages/item-f1e0b2c3-get-started-develop/index.html",
+      "slug": "get-started/develop",
+      "order": 0,
+      "parent": "item-f1e0b2c3-get-started",
+      "title": "Develop",
+      "description": "Use Fluent 2 as a whole theme, or keep your theme and pick Fluent 2 as the site's design system.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-f1e0b2c3-design-language",
+      "indent": 0,
+      "location": "pages/item-f1e0b2c3-design-language/index.html",
+      "slug": "design-language",
+      "order": 1,
+      "parent": null,
+      "title": "Design language",
+      "description": "The foundations that make Fluent recognizable: a calm neutral palette, the brand ramp, rounded shapes and layered elevation.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-f1e0b2c3-design-language-color",
+      "indent": 1,
+      "location": "pages/item-f1e0b2c3-design-language-color/index.html",
+      "slug": "design-language/color",
+      "order": 0,
+      "parent": "item-f1e0b2c3-design-language",
+      "title": "Color",
+      "description": "Fluent's palette pairs a neutral ramp for surfaces and text with a brand ramp for emphasis and shared colors for status and categories.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-f1e0b2c3-design-language-typography",
+      "indent": 1,
+      "location": "pages/item-f1e0b2c3-design-language-typography/index.html",
+      "slug": "design-language/typography",
+      "order": 1,
+      "parent": "item-f1e0b2c3-design-language",
+      "title": "Typography",
+      "description": "Fluent sets interfaces in Segoe UI with a regular, semibold and bold ramp.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-f1e0b2c3-components",
+      "indent": 0,
+      "location": "pages/item-f1e0b2c3-components/index.html",
+      "slug": "components",
+      "order": 2,
+      "parent": null,
+      "title": "Components",
+      "description": "How HAX blocks look in Fluent 2: buttons, cards, notes, tables and learning checks.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-f1e0b2c3-components-button",
+      "indent": 1,
+      "location": "pages/item-f1e0b2c3-components-button/index.html",
+      "slug": "components/button",
+      "order": 0,
+      "parent": "item-f1e0b2c3-components",
+      "title": "Button",
+      "description": "Buttons start actions. Use one primary button per view.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-f1e0b2c3-components-learning-checks",
+      "indent": 1,
+      "location": "pages/item-f1e0b2c3-components-learning-checks/index.html",
+      "slug": "components/learning-checks",
+      "order": 1,
+      "parent": "item-f1e0b2c3-components",
+      "title": "Learning checks",
+      "description": "Answer states keep the HAX meaning channels: label, icon, line style and color.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-f1e0b2c3-about",
+      "indent": 0,
+      "location": "pages/item-f1e0b2c3-about/index.html",
+      "slug": "about",
+      "order": 3,
+      "parent": null,
+      "title": "About the bridge",
+      "description": "Where the Fluent 2 values on this site come from, and what stays DDD.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    }
+  ]
+}
