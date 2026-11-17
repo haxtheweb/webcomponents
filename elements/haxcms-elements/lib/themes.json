@@ -556,7 +556,7 @@
     "path": "@haxtheweb/writing-theme/writing-theme.js",
     "name": "Writing",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-writing-theme-thumb.jpg",
-    "description": "Nothing but the writing: recent posts, a plain post page and an archive by year",
+    "description": "Start with a blank site using the Writing",
     "category": ["Website"],
     "hidden": false,
     "priority": 5,

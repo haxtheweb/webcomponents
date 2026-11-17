@@ -3,7 +3,7 @@
 <!-- GENERATED FILE: do not edit by hand. Run `yarn run elements-readme` -->
 <!-- Descriptions come from each element's package.json; edit them there. -->
 
-Every element in this monorepo (249 packages). Browse them live with `yarn gallery`, or open an element's folder for its own README.
+Every element in this monorepo (253 packages). Browse them live with `yarn gallery`, or open an element's folder for its own README.
 
 | Element | Description | Package | Demo |
 | --- | --- | --- | --- |
@@ -12,6 +12,7 @@ Every element in this monorepo (249 packages). Browse them live with `yarn galle
 | [a11y-compare-image](./a11y-compare-image/) | Slider that allows comparison of two images | `@haxtheweb/a11y-compare-image` | [demo](./a11y-compare-image/demo/) |
 | [a11y-details](./a11y-details/) | accessible progressive disclosure with detail and summary | `@haxtheweb/a11y-details` | [demo](./a11y-details/demo/) |
 | [a11y-figure](./a11y-figure/) | accessible figure with image description in details | `@haxtheweb/a11y-figure` | [demo](./a11y-figure/demo/) |
+| [a11y-footnote](./a11y-footnote/) | Accessible inline footnotes; the numbered list of notes assembles itself at the bottom of the content | `@haxtheweb/a11y-footnote` | [demo](./a11y-footnote/demo/) |
 | [a11y-gif-player](./a11y-gif-player/) | Play gifs in an accessible way by having the user click to play their animation | `@haxtheweb/a11y-gif-player` | [demo](./a11y-gif-player/demo/) |
 | [a11y-media-player](./a11y-media-player/) | A feature rich, highly accessible video player | `@haxtheweb/a11y-media-player` | [demo](./a11y-media-player/demo/) |
 | [a11y-menu-button](./a11y-menu-button/) | Accessible menu button | `@haxtheweb/a11y-menu-button` | [demo](./a11y-menu-button/demo/) |
@@ -31,7 +32,7 @@ Every element in this monorepo (249 packages). Browse them live with `yarn galle
 | [baseline-build-hax](./baseline-build-hax/) | create an inflexible baseline build of hax with all elements | `@haxtheweb/baseline-build-hax` |  |
 | [beaker-broker](./beaker-broker/) | A broker element to make working with Beaker Browser's API even easier. | `@haxtheweb/beaker-broker` | [demo](./beaker-broker/demo/) |
 | [bibliography-builder](./bibliography-builder/) | Webcomponent bibliography-builder following hax / open-wc recommendations | `@haxtheweb/bibliography-builder` | [demo](./bibliography-builder/demo/) |
-| [bootstrap-theme](./bootstrap-theme/) | Hax bootstrap themeing | `@haxtheweb/bootstrap-theme` | [demo](./bootstrap-theme/demo/) |
+| [bootstrap-theme](./bootstrap-theme/) | Bootstrap 5 theme for HAXcms, built on the DDD-capable Bootstrap design system bridge | `@haxtheweb/bootstrap-theme` | [demo](./bootstrap-theme/demo/) |
 | [branching-scenario](./branching-scenario/) | A story where each choice leads to a different scene and ending | `@haxtheweb/branching-scenario` | [demo](./branching-scenario/demo/) |
 | [bullet-check-list](./bullet-check-list/) | Bulleted or numbered list of checkboxes whose state is remembered on this machine | `@haxtheweb/bullet-check-list` | [demo](./bullet-check-list/demo/) |
 | [carbon-theme](./carbon-theme/) | IBM Carbon theme for HAXcms, built on the DDD-capable Carbon design system bridge | `@haxtheweb/carbon-theme` | [demo](./carbon-theme/demo/) |
@@ -74,6 +75,7 @@ Every element in this monorepo (249 packages). Browse them live with `yarn galle
 | [file-system-broker](./file-system-broker/) | singleton to simplify interactions with the file system on a user&#39;s device | `@haxtheweb/file-system-broker` | [demo](./file-system-broker/demo/) |
 | [fill-in-the-blanks](./fill-in-the-blanks/) | Fill in the blanks question | `@haxtheweb/fill-in-the-blanks` | [demo](./fill-in-the-blanks/demo/) |
 | [flash-card](./flash-card/) | self check for a card that has a definition on the back | `@haxtheweb/flash-card` | [demo](./flash-card/demo/) |
+| [fluent-theme](./fluent-theme/) | Microsoft Fluent 2 theme for HAXcms, built on the DDD-capable Fluent 2 design system bridge | `@haxtheweb/fluent-theme` | [demo](./fluent-theme/demo/) |
 | [full-width-image](./full-width-image/) | full width image that flows beyond boundaries | `@haxtheweb/full-width-image` | [demo](./full-width-image/demo/) |
 | [fullscreen-behaviors](./fullscreen-behaviors/) | Mixin that lets an element toggle into and out of fullscreen mode | `@haxtheweb/fullscreen-behaviors` |  |
 | [future-terminal-text](./future-terminal-text/) | cyberpunk 2077 inspired text for robots presentation | `@haxtheweb/future-terminal-text` | [demo](./future-terminal-text/demo/) |
@@ -170,6 +172,7 @@ Every element in this monorepo (249 packages). Browse them live with `yarn galle
 | [portal-launcher](./portal-launcher/) | silly thing to play with portal tag and progressive enhancement | `@haxtheweb/portal-launcher` | [demo](./portal-launcher/demo/) |
 | [post-card](./post-card/) | sending you mail from afar, or the browser. | `@haxtheweb/post-card` | [demo](./post-card/demo/) |
 | [pouch-db](./pouch-db/) | read and write localized data elements | `@haxtheweb/pouch-db` |  |
+| [primer-theme](./primer-theme/) | GitHub Primer theme for HAXcms, built on the DDD-capable Primer design system bridge | `@haxtheweb/primer-theme` | [demo](./primer-theme/demo/) |
 | [product-glance](./product-glance/) | glance / overview of a product feature | `@haxtheweb/product-glance` | [demo](./product-glance/demo/) |
 | [product-offering](./product-offering/) | Simple card for displaying product info | `@haxtheweb/product-offering` | [demo](./product-offering/demo/) |
 | [progress-donut](./progress-donut/) | Donut chart that visualizes progress or proportions | `@haxtheweb/progress-donut` | [demo](./progress-donut/demo/) |
@@ -255,4 +258,5 @@ Every element in this monorepo (249 packages). Browse them live with `yarn galle
 | [wikipedia-query](./wikipedia-query/) | Queries Wikipedia and presents the result with citation | `@haxtheweb/wikipedia-query` | [demo](./wikipedia-query/demo/) |
 | [word-count](./word-count/) | Counts the words in slotted text and shows a small badge | `@haxtheweb/word-count` | [demo](./word-count/demo/) |
 | [word-search](./word-search/) | A word search: a letter grid generated from an authored word list, played with two taps or the keyboard | `@haxtheweb/word-search` | [demo](./word-search/demo/) |
+| [writing-theme](./writing-theme/) | A HAXcms theme with nothing but the writing: recent posts, a plain post page and an archive by year | `@haxtheweb/writing-theme` | [demo](./writing-theme/demo/) |
 | [wysiwyg-hax](./wysiwyg-hax/) | Integrates HAX as the editor inside a page's form field | `@haxtheweb/wysiwyg-hax` | [demo](./wysiwyg-hax/demo/) |

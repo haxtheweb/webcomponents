@@ -1,8 +1,8 @@
 {
   "_meta": {
-    "elementsScanned": 259,
-    "elementsWithTranslations": 168,
-    "translationFilesFound": 40852,
+    "elementsScanned": 263,
+    "elementsWithTranslations": 172,
+    "translationFilesFound": 40858,
     "languagesSupported": [
       "af",
       "am",
@@ -737,6 +737,8 @@
       "zh",
       "zu"
     ],
+    "a11y-footnote": ["en"],
+    "a11y-footnotes": ["en"],
     "a11y-gif-player": [
       "af",
       "am",
@@ -8276,6 +8278,7 @@
       "zh",
       "zu"
     ],
+    "ddd-hero": ["en"],
     "ddd-steps-list-item.haxProperties": [
       "af",
       "am",
@@ -11000,6 +11003,7 @@
       "zh",
       "zu"
     ],
+    "fluent-theme": ["en"],
     "full-width-image": [
       "af",
       "am",
@@ -33799,6 +33803,7 @@
       "zh",
       "zu"
     ],
+    "primer-theme": ["en"],
     "product-glance.haxProperties": [
       "af",
       "am",
@@ -41755,6 +41760,7 @@
       "zh",
       "zu"
     ],
-    "word-search": ["en"]
+    "word-search": ["en"],
+    "writing-theme": ["en"]
   }
 }
