@@ -55,7 +55,7 @@ class WikipediaQuery extends IntersectionObserverMixin(I18NMixin(DDD)) {
           font-family: Georgia, "Times New Roman", serif;
           font-size: var(--ddd-font-size-4xs);
           font-weight: var(--ddd-font-weight-bold);
-          line-height: 1;
+          line-height: var(--ddd-lh-100);
         }
         :host([data-primary]) h3 {
           color: var(--ddd-theme-primary);

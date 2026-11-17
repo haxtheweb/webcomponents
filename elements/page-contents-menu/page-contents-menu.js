@@ -78,7 +78,7 @@ class PageContentsMenu extends SchemaBehaviors(DDD) {
           );
           padding: 0;
           margin: 0;
-          line-height: 1;
+          line-height: var(--ddd-lh-100, 1);
           letter-spacing: 1.2px;
           text-transform: uppercase;
         }

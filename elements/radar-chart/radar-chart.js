@@ -494,7 +494,7 @@ export class RadarChart extends DDDSuper(I18NMixin(LitElement)) {
           font-family: var(--ddd-font-navigation);
           font-size: var(--ddd-font-size-6xs);
           font-weight: var(--ddd-font-weight-medium);
-          letter-spacing: 0.06em;
+          letter-spacing: var(--ddd-label-letter-spacing, 0.06em);
           text-transform: uppercase;
           color: var(--radar-chart-internal-muted);
         }

@@ -313,7 +313,7 @@ class BulletCheckList extends SchemaBehaviors(I18NMixin(DDD)) {
           font-family: var(--ddd-font-navigation);
           font-size: var(--ddd-font-size-5xs);
           font-weight: var(--ddd-font-weight-bold);
-          line-height: 1;
+          line-height: var(--ddd-lh-100, 1);
           --simple-icon-color: currentColor;
           --simple-icon-width: var(--ddd-icon-4xs);
           --simple-icon-height: var(--ddd-icon-4xs);

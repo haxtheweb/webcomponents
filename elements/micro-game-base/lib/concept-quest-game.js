@@ -754,7 +754,7 @@ export class ConceptQuestGame extends ConceptMapGame {
           color: var(--cmg-c3);
           font-size: var(--ddd-font-size-xs);
           letter-spacing: 0.1em;
-          line-height: 1;
+          line-height: var(--ddd-lh-100);
         }
         /* sprites are placed by transform from screen x/y; left stays
            physical on purpose (the board does not mirror) */

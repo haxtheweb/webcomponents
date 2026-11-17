@@ -141,7 +141,7 @@ class SimpleModal extends I18NMixin(LitElement) {
           align-items: center;
           gap: var(--ddd-spacing-2);
           flex-wrap: wrap;
-          line-height: 1;
+          line-height: var(--ddd-lh-100, 1);
         }
         .title-inline {
           display: inline-flex;

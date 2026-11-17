@@ -222,7 +222,7 @@ export class SuperDaemonToast extends I18NMixin(SimpleToastEl) {
         .who {
           font-size: var(--hax-ui-admin-font-size-xs);
           font-weight: var(--ddd-font-weight-bold, 700);
-          letter-spacing: 0.06em;
+          letter-spacing: var(--ddd-label-letter-spacing, 0.06em);
           text-transform: uppercase;
           color: var(--hax-ui-text-muted);
         }

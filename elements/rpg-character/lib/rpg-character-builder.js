@@ -288,7 +288,7 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
           width: var(--hax-ui-row-height);
           padding: 0;
           font-size: 16px;
-          line-height: 1;
+          line-height: var(--ddd-lh-100, 1);
         }
         .variant {
           flex: none;

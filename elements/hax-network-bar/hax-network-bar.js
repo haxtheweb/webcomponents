@@ -688,7 +688,7 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
           font-family: inherit;
           font-size: 11px;
           font-weight: var(--ddd-font-weight-bold);
-          line-height: 1;
+          line-height: var(--ddd-lh-100, 1);
           white-space: nowrap;
           border-radius: var(--hax-ui-radius);
           border: 1px solid var(--hax-ui-line-strong);
