@@ -1,0 +1,39 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R /Lang (en) >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 309 >>
+stream
+BT /F1 26 Tf 72 700 Td (Sample document) Tj ET
+BT /F1 13 Tf 72 660 Td (This file stands in for a document that was uploaded to the original site.) Tj ET
+BT /F1 13 Tf 72 638 Td (It ships with the HAXcms demo so that links and embedded viewers have) Tj ET
+BT /F1 13 Tf 72 616 Td (something real to open.) Tj ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+6 0 obj
+<< /Title (Sample document) /Producer (HAX demo placeholder) >>
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000009 00000 n 
+0000000069 00000 n 
+0000000126 00000 n 
+0000000252 00000 n 
+0000000611 00000 n 
+0000000681 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R /Info 6 0 R >>
+startxref
+760
+%%EOF

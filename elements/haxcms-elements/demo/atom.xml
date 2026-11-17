@@ -231,8 +231,8 @@ Code example</h2>
     <content type="html">
       <![CDATA[ <p>Block settings will change contextually based on which block has been selected in the editable area of the page. In this screenshot, a paragraph has been selected and so the icon associated with it is shown as well as the name of the element. If we selected a meme or other tag we'd see contextual settings based on what that HTML element tells HAX should be the editing interface.</p>
 <h2 id="header-30577c15-3b3d-70b7-754f-6b516814252c">Normal HTML Paragraph Tag</h2>
-<img src="files/Screenshot from 2020-08-17 14-42-07.png" alt="Showing the form displayed when working with a paragraph tag"/><h2 id="header-b3f65a8c-82f8-2774-8405-e8821a3892a7">Meme Tag</h2>
-<img src="files/Screenshot from 2020-08-17 14-43-47.png" alt="Screenshot of the meme-maker tag and the form exposed when editing one"/><p>Notice with the meme element that it now has additional fields which when changed are reflected in the page instantly!</p>
+<img src="assets/placeholders/screen-1.svg" alt="Showing the form displayed when working with a paragraph tag"/><h2 id="header-b3f65a8c-82f8-2774-8405-e8821a3892a7">Meme Tag</h2>
+<img src="assets/placeholders/screen-3.svg" alt="Screenshot of the meme-maker tag and the form exposed when editing one"/><p>Notice with the meme element that it now has additional fields which when changed are reflected in the page instantly!</p>
  ]]>
     </content>
   </entry>
@@ -246,7 +246,7 @@ Code example</h2>
     
     <content type="html">
       <![CDATA[ <p>Templates and layouts allow you to drop in pre-built pieces of content structure. This might be a series of images or an example of content that could be written.</p>
-<img src="files/Screenshot from 2020-08-17 14-46-06.png"/> ]]>
+<img src="assets/placeholders/screen-1.svg"/> ]]>
     </content>
   </entry>
   <entry>
@@ -260,12 +260,12 @@ Code example</h2>
     <content type="html">
       <![CDATA[ <h3>HAX encompasses many different projects</h3>
 <p>This roadmap illustrates all the projects related to HAX and ELMS:LN, which HAX comes from. The little settings gears found throughout illustrate enhancements and next steps for the different projects in our wheel house.</p>
-<img src="files/Roadmap.jpg" style="width: 100%;"/><p>As you can see, there's a lot of planned enhancements to HAXeditor and HAXcms with a lot of additional future capabilities in ELMS:LN as a result of these projects. It's important to understand these relationships through and how innovations flow between them.</p>
+<img src="assets/placeholders/chart-2.svg" style="width: 100%;"/><p>As you can see, there's a lot of planned enhancements to HAXeditor and HAXcms with a lot of additional future capabilities in ELMS:LN as a result of these projects. It's important to understand these relationships through and how innovations flow between them.</p>
 <h3 class="hax-active">Relationships of major pieces</h3>
 <p>HAX has many different parts detailed here, so let's look at the relationship between these pieces before getting into the roadmap. HAX projects are part of the ELMS:LN organization and so ELMS:LN is also included in these roadmap details.</p>
 <p>HAXiam, HAXcms, HAXeditor are three projects that make up the "HAX" name space, all of which benefit from being built on web components. HAXiam is a server technology while HAXcms is a mix of server and front end assets. HAXeditor is fully front-end code which then requires a backend to save and load pages from.</p>
 <p>Below is an image consolidating information found on this site with arrows illustrating flow of innovation. Web components are always our building blocks, usually bubbling up as a need in either ELMS:LN, HAXcms or HAXeditor. From there, HAXeditor influences and improves ELMS:LN and HAXcms. ELMS:LN has a copy of HAXcms inside of it so sees improvements from both platforms. HAXiam just makes sure that copies of HAXcms are generated.</p>
-<img src="files/haxrelationships.jpg" style="width: 100%;"/><p>Now with this foundation you can dig into the different pieces of the project roadmaps.</p>
+<img src="assets/placeholders/chart-2.svg" style="width: 100%;"/><p>Now with this foundation you can dig into the different pieces of the project roadmaps.</p>
  ]]>
     </content>
   </entry>
@@ -340,7 +340,7 @@ Code example</h2>
 <li><a href="/f-a-q-">See F.A.Q.</a>
  for a more detailed break out of stats</li>
 </ul>
-<img src="files/2019-01-29_22-47-53.png" alt="Browser support chart showing that web components are natively supported on almost all platforms" style="width: 75%; margin: 0px auto; display: block;"/><h4>No content lock-in</h4>
+<img src="assets/placeholders/screen-1.svg" alt="Browser support chart showing that web components are natively supported on almost all platforms" style="width: 75%; margin: 0px auto; display: block;"/><h4>No content lock-in</h4>
 <p>The elements that make up HAX can be delivered via a CDN or installed locally. This means that the functionality is tied <b>to the browser</b>
 
  and <b>NOT</b>
@@ -725,7 +725,7 @@ or know how to use javascript in order to bind the results to visual output</li>
 that are 2 to 4 levels deep.</span>
 </lrndesign-blockquote>
 <h3>Delivered results</h3>
-<self-check title="Paying attention check" image="files/2019-03-23_10-51-10.jpg" alt="Another part of the same site illustrating that the theme block is generated by the type of query we're talking about." link="elements" accent-color="purple" resource="#d81c3a76-d1d3-2817-d2d8" prefix="oer:http://oerschema.org/ schema:http://schema.org/ dc:http://purl.org/dc/terms/ foaf:http://xmlns.com/foaf/0.1/ cc:http://creativecommons.org/ns# bib:http://bib.schema.org " style="width: 75%; margin: 0px auto; display: block;">  <span slot="question">What type of query is this leveraging again?</span>
+<self-check title="Paying attention check" image="assets/placeholders/screen-2.svg" alt="Another part of the same site illustrating that the theme block is generated by the type of query we're talking about." link="elements" accent-color="purple" resource="#d81c3a76-d1d3-2817-d2d8" prefix="oer:http://oerschema.org/ schema:http://schema.org/ dc:http://purl.org/dc/terms/ foaf:http://xmlns.com/foaf/0.1/ cc:http://creativecommons.org/ns# bib:http://bib.schema.org " style="width: 75%; margin: 0px auto; display: block;">  <span slot="question">What type of query is this leveraging again?</span>
   <span>site-query-menu-slice</span>
 </self-check>
 <h3 class="hax-active">Dynamic leveling</h3>
@@ -910,7 +910,7 @@ import "@haxtheweb/hax-body/lib/hax-shared-styles.js";</template>
 <p>HAXcms seeks to apply the SDS pattern, a technique we made up just for this sentence, for <i>dramatic effect</i>
 . As everyone knows who is about to read the next heading, SDS stands for:</p>
 <h2>So. Damn. Semantic.</h2>
-<img src="files/2019-03-12_16-45-51.png" alt="Learn two theme code view with arrows pointing out all the different HAXcms theme level elements" style="width: 100%;"/><p>Whew, I need an ice cold drink to wash away the semantic sweats.</p>
+<img src="assets/placeholders/screen-3.svg" alt="Learn two theme code view with arrows pointing out all the different HAXcms theme level elements" style="width: 100%;"/><p>Whew, I need an ice cold drink to wash away the semantic sweats.</p>
 <p>Yes, that's right, HAXcms allows you to theme a complex state managed system without needing to understand state management... like... at all.</p>
 <h3>"But I understand state management and it's important to me"</h3>
 <p>That's awesome, four people on twitter, but most designers just want to design! They don't need or want to understand the intricacies of making a collapsed field area expand relative to what item has been dictated as active in the store*.</p>
@@ -1008,12 +1008,12 @@ the title of the active item wrapped in a h1 tag
 <h2>Setting up publishing</h2>
 <p>From the HAXcms <i>site listing</i>
  page, click the settings gear in the top right corner.</p>
-<img src="files/pubwork1.jpg" style="width: 100%;"/><p>Next you'll see a modal that has options for plugging in your github credentials. We don't save your password and this aspect is optional. If you do enter your password, a one time API call is made on your behalf from your container which will setup an ssh key pair. This allows for all future requests to publish to happen automatically on your behalf. Your password is not stored. If you don't want to set this part up, you can plug in the rest of the git settings, save, and then manually publish files after using the UI (see last heading on this page).<br/></p>
-N<img src="files/pubwork2.jpg" style="width: 100%;"/><h2>Publishing from your sites / new sites</h2>
+<img src="assets/placeholders/screen-1.svg" style="width: 100%;"/><p>Next you'll see a modal that has options for plugging in your github credentials. We don't save your password and this aspect is optional. If you do enter your password, a one time API call is made on your behalf from your container which will setup an ssh key pair. This allows for all future requests to publish to happen automatically on your behalf. Your password is not stored. If you don't want to set this part up, you can plug in the rest of the git settings, save, and then manually publish files after using the UI (see last heading on this page).<br/></p>
+N<img src="assets/placeholders/screen-2.svg" style="width: 100%;"/><h2>Publishing from your sites / new sites</h2>
 <p>When you want to share your site with people or update your website, hitting the Publish button inside of your site is how to do this. Click the settings gear in the bottom right to get started.<br/></p>
-<img src="files/2019-02-20_01-26-01.png" alt="Select the settings gear under the additional menu options as an editor." style="width: 25%;"/><p>Currently GitHub is the only provider supported in the local installation method (or from DDEV / one of the supported container providers). In the future hitting publish will have additional development flexibility.</p>
-<img src="files/2019-02-20_01-26-10.png" alt="Edit site settings modal showing the Publish button." style="width: 75%; margin: 0px auto; display: block;"/><h2>Understanding what's actually happening</h2>
-<media-image source="files/gitpublishingdata.jpg" caption="This is a typical publishing area within your site.json file" alt="Screenshot of a piece of a JSON file that's powering the publishing settings for the workflow" size="wide" card box resource="#f73a7020-4b02-7471-fa7c" prefix="oer:http://oerschema.org/ schema:http://schema.org/ dc:http://purl.org/dc/terms/ foaf:http://xmlns.com/foaf/0.1/ cc:http://creativecommons.org/ns# bib:http://bib.schema.org " style="width: 75%; margin: 0px auto; display: block;"></media-image>
+<img src="assets/placeholders/screen-1.svg" alt="Select the settings gear under the additional menu options as an editor." style="width: 25%;"/><p>Currently GitHub is the only provider supported in the local installation method (or from DDEV / one of the supported container providers). In the future hitting publish will have additional development flexibility.</p>
+<img src="assets/placeholders/screen-1.svg" alt="Edit site settings modal showing the Publish button." style="width: 75%; margin: 0px auto; display: block;"/><h2>Understanding what's actually happening</h2>
+<media-image source="assets/placeholders/chart-1.svg" caption="This is a typical publishing area within your site.json file" alt="Screenshot of a piece of a JSON file that's powering the publishing settings for the workflow" size="wide" card box resource="#f73a7020-4b02-7471-fa7c" prefix="oer:http://oerschema.org/ schema:http://schema.org/ dc:http://purl.org/dc/terms/ foaf:http://xmlns.com/foaf/0.1/ cc:http://creativecommons.org/ns# bib:http://bib.schema.org " style="width: 75%; margin: 0px auto; display: block;"></media-image>
 <p>When you hit publish, a few things happen to make your site "web ready". This is the general order of those operations:</p>
 <ol><li>HAXcms takes the underlying files and commits them all to version control (though they already should be)</li>
 
@@ -1066,7 +1066,7 @@ git push origin master</template>
 
 , HAXcms is for anyone to publish a website, not just those that understand command line. HAXcms is intended to be installed and then allow users to entirely use a UI to create, publish and manage micro-sites.</p>
 <h2>Visualization</h2>
-<img src="files/HAXCms workflow.jpg" alt="HAXcms visualization of publishing workflow at a data layer. Static sites are published from the files you work with yet whatever you edit via the UI is always saved into a static format that works anywhere." style="width: 75%; margin: 0px auto; display: block;"/> ]]>
+<img src="assets/placeholders/chart-1.svg" alt="HAXcms visualization of publishing workflow at a data layer. Static sites are published from the files you work with yet whatever you edit via the UI is always saved into a static format that works anywhere." style="width: 75%; margin: 0px auto; display: block;"/> ]]>
     </content>
   </entry>
   <entry>
@@ -1088,7 +1088,7 @@ git push origin master</template>
 <li>service-worker.js - makes it a PWA, no need to edi this</li>
 </ul>
 <h3><span style="caret-color: rgb(0, 0, 0);">Screen grab of a microsite</span></h3>
-<img src="files/2019-02-25_16-22-25.png" alt="File structure of a typical HAXcms micro-site after being generated." style="width: 25%; margin: 0px auto; display: block;"/> ]]>
+<img src="assets/placeholders/screen-2.svg" alt="File structure of a typical HAXcms micro-site after being generated." style="width: 25%; margin: 0px auto; display: block;"/> ]]>
     </content>
   </entry>
   <entry>
@@ -1133,19 +1133,19 @@ bash scripts/haxtheweb.sh</template>
  and<span style="caret-color: rgb(0, 0, 0);"> p</span><span style="caret-color: rgb(0, 0, 0);">lace this in </span><i style="caret-color: rgb(0, 0, 0);">MAMP/htdocs </i>
 
 <span style="caret-color: rgb(0, 0, 0);">either at the root level (as in copying the files you download into htdocs as shown in the image below) or by placing the folder in the directory (in the case where you have MAMP already installed / want to keep things tidy).</span></p>
-<media-image source="files/mampstructure.jpg" caption="MAMP file structure under htdocs directory" size="wide" card box resource="#990ebe5c-04c8-58b2-385a" prefix="oer:http://oerschema.org/ schema:http://schema.org/ dc:http://purl.org/dc/terms/ foaf:http://xmlns.com/foaf/0.1/ cc:http://creativecommons.org/ns# bib:http://bib.schema.org " style="width: 25%; margin: 0px auto; display: block;" offset="none" schema-resource-id="#990ebe5c-04c8-58b2-385a"></media-image>
+<media-image source="assets/placeholders/screen-1.svg" caption="MAMP file structure under htdocs directory" size="wide" card box resource="#990ebe5c-04c8-58b2-385a" prefix="oer:http://oerschema.org/ schema:http://schema.org/ dc:http://purl.org/dc/terms/ foaf:http://xmlns.com/foaf/0.1/ cc:http://creativecommons.org/ns# bib:http://bib.schema.org " style="width: 25%; margin: 0px auto; display: block;" offset="none" schema-resource-id="#990ebe5c-04c8-58b2-385a"></media-image>
 <p><i>Open MAMP and hit the Start Servers Button</i>
 
 
 
 </p>
-<media-image source="files/mampstart.jpg" caption="MAMP start page when opening the application (image 2)" size="wide" card box resource="#4e5cac2b-786f-596c-b394" prefix="oer:http://oerschema.org/ schema:http://schema.org/ dc:http://purl.org/dc/terms/ foaf:http://xmlns.com/foaf/0.1/ cc:http://creativecommons.org/ns# bib:http://bib.schema.org " style="width: 25%; margin: 0px auto; display: block;" offset="none" schema-resource-id="#4e5cac2b-786f-596c-b394"></media-image>
+<media-image source="assets/placeholders/screen-3.svg" caption="MAMP start page when opening the application (image 2)" size="wide" card box resource="#4e5cac2b-786f-596c-b394" prefix="oer:http://oerschema.org/ schema:http://schema.org/ dc:http://purl.org/dc/terms/ foaf:http://xmlns.com/foaf/0.1/ cc:http://creativecommons.org/ns# bib:http://bib.schema.org " style="width: 25%; margin: 0px auto; display: block;" offset="none" schema-resource-id="#4e5cac2b-786f-596c-b394"></media-image>
 <p><i>Click MY WEBSITE in MAMP start page to get started</i>
 
 
 
 </p>
-<img src="files/mamppage.jpg" alt="MAMP starting page top menu bar screenshot." style="width: 50%; margin: 0px auto; display: block;"/><p>Now you can build website organically off of MAMP!</p>
+<img src="assets/placeholders/screen-2.svg" alt="MAMP starting page top menu bar screenshot." style="width: 50%; margin: 0px auto; display: block;"/><p>Now you can build website organically off of MAMP!</p>
 <h2>DDEV / Docksal / Lando / Vagrant</h2>
 <p>We recommend using HAXcms in a docker container manager like <a href="https://www.drud.com/what-is-ddev/">ddev</a>
 

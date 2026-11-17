@@ -283,8 +283,6 @@ function getInputMethodFromType(type) {
 
 // HAX BUILD ROUTINE FOR CLEANING UP ASSETS AFTER BUILD
 
-import * as tmp4 from "gulp-terser";
-const terser = tmp4.default;
 import * as tmp5 from "glob";
 const glob = tmp5.default;
 import * as tmp6 from "path";
@@ -301,23 +299,11 @@ gulp.task(
     execSync('node scripts/check-ecosystem-version.mjs', { stdio: 'inherit' });
   }
 );
-gulp.task(
-  "terser", () => {
-    // now work on all the other files
-    // @xterm is a pre-minified vendor bundle; it's copied verbatim via
-    // "vendor-copy-xterm" and should not be re-parsed/minified here.
-    return gulp.src([
-      './build/es6/**/*.js',
-      '!./build/es6/node_modules/@xterm/**/*.js'
-    ]).pipe(terser({
-        ecma: 2022,
-        keep_fnames: true,
-        mangle: true,
-        module: true,
-      }))
-      .pipe(gulp.dest('./build/es6/'));
-  }
-);
+// JS minification of the build is scripts/terser-build.mjs (`yarn run terser`):
+// the same terser options the gulp task here used, on every core, with results
+// remembered between builds. It skips @xterm, monaco-editor, h5p-standalone
+// and the vendored mermaid bundle, which the vendor-copy tasks below copy in
+// as they are.
 // @xterm/xterm and @xterm/addon-fit ship as pre-built, pre-minified vendor
 // bundles. Modern esbuild output (e.g. class static initialization blocks)
 // isn't understood by polymer-build's bundled babylon parser, which caused
@@ -332,6 +318,26 @@ gulp.task("vendor-copy-xterm", () => {
     './node_modules/@xterm/addon-fit/lib/*'
   ], { base: '.' }).pipe(gulp.dest('./build/es6/'));
 });
+// monaco-editor/min is Monaco's own minified build: workers and editor chunks
+// that code-editor loads by path at runtime. Parsing and re-minifying 18MB of
+// already minified code was the slowest part of a build and made the largest
+// file bigger, so it is copied as Monaco ships it. The TypeScript language
+// service is left out, as before.
+gulp.task("vendor-copy-monaco", () => {
+  return gulp.src([
+    './node_modules/monaco-editor/min/**',
+    '!./node_modules/monaco-editor/min/vs/language/typescript/*'
+  ], { base: '.', encoding: false }).pipe(gulp.dest('./build/es6/'));
+});
+// h5p-element loads the h5p-standalone player at runtime from
+// node_modules/h5p-standalone/dist (scripts, styles, fonts and images). No
+// module imports it, so the polymer build never saw it; copy the dist as shipped.
+gulp.task("vendor-copy-h5p", () => {
+  return gulp.src([
+    './node_modules/h5p-standalone/dist/**',
+    '!./node_modules/h5p-standalone/dist/**/*.d.ts'
+  ], { base: '.', encoding: false }).pipe(gulp.dest('./build/es6/'));
+});
 // @haxtheweb/la-tex/lib/latex2html5.js is a pre-transpiled browserify UMD
 // bundle loaded as a classic script via es-global-bridge (no ESM
 // imports/import.meta), so polymer-build's Babel pass has nothing useful to
@@ -344,6 +350,17 @@ gulp.task("vendor-copy-xterm", () => {
 gulp.task("vendor-copy-latex2html5", () => {
   return gulp.src([
     './node_modules/@haxtheweb/la-tex/lib/latex2html5.js',
+  ], { base: '.' }).pipe(gulp.dest('./build/es6/'));
+});
+// @haxtheweb/mermaid-diagram/lib/mermaid/mermaid.min.js is the unmodified,
+// already-minified mermaid dist bundle (see its README for version and
+// sha256). It uses class static blocks, which polymer-build's babylon parser
+// rejects ("js-transform: Unable to optimize"), and it is loaded as a classic
+// script through es-global-bridge, so there is nothing for Babel or terser to
+// do. Copy it verbatim so the shipped file matches the recorded hash.
+gulp.task("vendor-copy-mermaid", () => {
+  return gulp.src([
+    './node_modules/@haxtheweb/mermaid-diagram/lib/mermaid/mermaid.min.js',
   ], { base: '.' }).pipe(gulp.dest('./build/es6/'));
 });
 // https://html.spec.whatwg.org/multipage/scripting.html#valid-custom-element-name

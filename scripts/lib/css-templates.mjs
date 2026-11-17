@@ -61,7 +61,11 @@ export function placeholderFor(before, after) {
   if (UNIT_AFTER.test(after)) {
     return "0";
   }
-  const statementBefore = /(^|[{};])\s*$/.test(before);
+  // a CSS comment between the last declaration and the expression does not
+  // change where the expression stands, so look past it
+  const statementBefore = /(^|[{};])\s*$/.test(
+    before.replace(/\/\*[\s\S]*?\*\//g, ""),
+  );
   const statementAfter = /^\s*(;|$|\n|})/.test(after);
   if (statementBefore && statementAfter) {
     return "";

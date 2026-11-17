@@ -2124,24 +2124,6 @@
     xml2js "^0.6.2"
     yaml "^2.9.0"
 
-"@haxtheweb/lrn-icons@9.0.1":
-  version "9.0.1"
-  resolved "https://registry.npmjs.org/@haxtheweb/lrn-icons/-/lrn-icons-9.0.1.tgz"
-  integrity sha512-umPzMHlF0D5PmRij81x/dJPFAygw9pKIh2uJCIuVTH0URJwr+ikAQyDZJRqUu5Pgnw6tF4eFZF6laXARGdQ7eQ==
-  dependencies:
-    "@polymer/iron-icon" "^3.0.1"
-    "@polymer/iron-iconset-svg" "^3.0.0"
-    "@polymer/polymer" "^3.5.1"
-
-"@haxtheweb/md-extra-icons@9.0.1":
-  version "9.0.1"
-  resolved "https://registry.npmjs.org/@haxtheweb/md-extra-icons/-/md-extra-icons-9.0.1.tgz"
-  integrity sha512-EbAX+o5pdWcI7adCVfgBWyqkBo6noDBmdC1tOxauk9Oydm7P97+oRKznJxlGDweKO0OpgcSesW9guGg9ngmNEQ==
-  dependencies:
-    "@polymer/iron-icon" "^3.0.1"
-    "@polymer/iron-iconset-svg" "^3.0.0"
-    "@polymer/polymer" "^3.5.1"
-
 "@humanfs/core@^0.19.2":
   version "0.19.2"
   resolved "https://registry.npmjs.org/@humanfs/core/-/core-0.19.2.tgz"
@@ -4223,44 +4205,6 @@
   version "1.0.4"
   resolved "https://registry.npmjs.org/@polymer/esm-amd-loader/-/esm-amd-loader-1.0.4.tgz"
   integrity sha512-h+hqYkL+tQV/y2ESD5gFXMl5z4cC+XY1jTlBeGSBaTcj3VbB5OBEScbvRXm63NcEbBneQQYbHfBAXAkF9i9wIA==
-
-"@polymer/iron-flex-layout@^3.0.0-pre.26":
-  version "3.0.1"
-  resolved "https://registry.npmjs.org/@polymer/iron-flex-layout/-/iron-flex-layout-3.0.1.tgz"
-  integrity sha512-7gB869czArF+HZcPTVSgvA7tXYFze9EKckvM95NB7SqYF+NnsQyhoXgKnpFwGyo95lUjUW9TFDLUwDXnCYFtkw==
-  dependencies:
-    "@polymer/polymer" "^3.0.0"
-
-"@polymer/iron-icon@^3.0.1":
-  version "3.0.1"
-  resolved "https://registry.npmjs.org/@polymer/iron-icon/-/iron-icon-3.0.1.tgz"
-  integrity sha512-QLPwirk+UPZNaLnMew9VludXA4CWUCenRewgEcGYwdzVgDPCDbXxy6vRJjmweZobMQv/oVLppT2JZtJFnPxX6g==
-  dependencies:
-    "@polymer/iron-flex-layout" "^3.0.0-pre.26"
-    "@polymer/iron-meta" "^3.0.0-pre.26"
-    "@polymer/polymer" "^3.0.0"
-
-"@polymer/iron-iconset-svg@^3.0.0":
-  version "3.0.1"
-  resolved "https://registry.npmjs.org/@polymer/iron-iconset-svg/-/iron-iconset-svg-3.0.1.tgz"
-  integrity sha512-XNwURbNHRw6u2fJe05O5fMYye6GSgDlDqCO+q6K1zAnKIrpgZwf2vTkBd5uCcZwsN0FyCB3mvNZx4jkh85dRDw==
-  dependencies:
-    "@polymer/iron-meta" "^3.0.0-pre.26"
-    "@polymer/polymer" "^3.0.0"
-
-"@polymer/iron-meta@^3.0.0-pre.26":
-  version "3.0.1"
-  resolved "https://registry.npmjs.org/@polymer/iron-meta/-/iron-meta-3.0.1.tgz"
-  integrity sha512-pWguPugiLYmWFV9UWxLWzZ6gm4wBwQdDy4VULKwdHCqR7OP7u98h+XDdGZsSlDPv6qoryV/e3tGHlTIT0mbzJA==
-  dependencies:
-    "@polymer/polymer" "^3.0.0"
-
-"@polymer/polymer@^3.0.0", "@polymer/polymer@^3.5.1":
-  version "3.5.2"
-  resolved "https://registry.npmjs.org/@polymer/polymer/-/polymer-3.5.2.tgz"
-  integrity sha512-fWwImY/UH4bb2534DVSaX+Azs2yKg8slkMBHOyGeU2kKx7Xmxp6Lee0jP8p6B3d7c1gFUPB2Z976dTUtX81pQA==
-  dependencies:
-    "@webcomponents/shadycss" "^1.9.1"
 
 "@polymer/sinonjs@^1.14.1":
   version "1.17.1"
@@ -6380,7 +6324,7 @@
   resolved "https://registry.npmjs.org/@webcomponents/scoped-custom-element-registry/-/scoped-custom-element-registry-0.0.10.tgz"
   integrity sha512-wP4LF28aysE2Pq3NQRNQxko7Q0vOOwcoOSMg8FFI4S6z76UuXkYIc5ndC31dJMwso1/vSteL75LW2CEKedAJbA==
 
-"@webcomponents/shadycss@^1.10.2", "@webcomponents/shadycss@^1.11.0", "@webcomponents/shadycss@^1.9.1":
+"@webcomponents/shadycss@^1.10.2", "@webcomponents/shadycss@^1.11.0":
   version "1.11.2"
   resolved "https://registry.npmjs.org/@webcomponents/shadycss/-/shadycss-1.11.2.tgz"
   integrity sha512-vRq+GniJAYSBmTRnhCYPAPq6THYqovJ/gzGThWbgEZUQaBccndGTi1hdiUP15HzEco0I6t4RCtXyX0rsSmwgPw==
@@ -12536,16 +12480,6 @@ gulp-svg-sprite@2.0.3:
     plugin-error "^2.0.1"
     svg-sprite "^2.0.2"
 
-gulp-terser@2.1.0:
-  version "2.1.0"
-  resolved "https://registry.npmjs.org/gulp-terser/-/gulp-terser-2.1.0.tgz"
-  integrity sha512-lQ3+JUdHDVISAlUIUSZ/G9Dz/rBQHxOiYDQ70IVWFQeh4b33TC1MCIU+K18w07PS3rq/CVc34aQO4SUbdaNMPQ==
-  dependencies:
-    plugin-error "^1.0.1"
-    terser "^5.9.0"
-    through2 "^4.0.2"
-    vinyl-sourcemaps-apply "^0.2.1"
-
 gulp-trim@1.0.2:
   version "1.0.2"
   resolved "https://registry.npmjs.org/gulp-trim/-/gulp-trim-1.0.2.tgz"
@@ -18620,7 +18554,7 @@ read@^6.0.0:
     string_decoder "~1.1.1"
     util-deprecate "~1.0.1"
 
-readable-stream@3, readable-stream@3.6.2, readable-stream@^3.0.0, readable-stream@^3.0.2, readable-stream@^3.1.1, readable-stream@^3.4.0, readable-stream@^3.6.2:
+readable-stream@3.6.2, readable-stream@^3.0.0, readable-stream@^3.0.2, readable-stream@^3.1.1, readable-stream@^3.4.0, readable-stream@^3.6.2:
   version "3.6.2"
   resolved "https://registry.npmjs.org/readable-stream/-/readable-stream-3.6.2.tgz"
   integrity sha512-9u/sniCrY3D5WdsERHzHE4G2YCXqoG5FTHUiCC4SIbr6XcLZBY05ya9EKjYek9O5xOAwjGq+1JdGBAS7Q9ScoA==
@@ -20813,16 +20747,7 @@ ternary-stream@^2.0.1:
     merge-stream "^1.0.0"
     through2 "^2.0.1"
 
-terser@^4.6.3, terser@^4.8.1:
-  version "4.8.1"
-  resolved "https://registry.npmjs.org/terser/-/terser-4.8.1.tgz"
-  integrity sha512-4GnLC0x667eJG0ewJTa6z/yXrbLGv80D9Ru6HIpCQmO+Q4PfEtBFi0ObSckqwL6VyQv/7ENJieXHo2ANmdQwgw==
-  dependencies:
-    commander "^2.20.0"
-    source-map "~0.6.1"
-    source-map-support "~0.5.12"
-
-terser@^5.14.2, terser@^5.15.1, terser@^5.17.4, terser@^5.49.2, terser@^5.9.0:
+terser@5.51.2, terser@^5.14.2, terser@^5.15.1, terser@^5.17.4, terser@^5.49.2:
   version "5.51.2"
   resolved "https://registry.npmjs.org/terser/-/terser-5.51.2.tgz"
   integrity sha512-bWnjSNscmuI+GJze6ZupnHP8G/cTcsJF+bXCeQknk2SHQsgbNJnLrqiH9jZ2W4STPVXH2mDKKRX3iwPhc9Cn/Q==
@@ -20831,6 +20756,15 @@ terser@^5.14.2, terser@^5.15.1, terser@^5.17.4, terser@^5.49.2, terser@^5.9.0:
     acorn "^8.15.0"
     commander "^2.20.0"
     source-map-support "~0.5.20"
+
+terser@^4.6.3, terser@^4.8.1:
+  version "4.8.1"
+  resolved "https://registry.npmjs.org/terser/-/terser-4.8.1.tgz"
+  integrity sha512-4GnLC0x667eJG0ewJTa6z/yXrbLGv80D9Ru6HIpCQmO+Q4PfEtBFi0ObSckqwL6VyQv/7ENJieXHo2ANmdQwgw==
+  dependencies:
+    commander "^2.20.0"
+    source-map "~0.6.1"
+    source-map-support "~0.5.12"
 
 test-exclude@^7.0.1:
   version "7.0.2"
@@ -20958,13 +20892,6 @@ through2@^3.0.0:
   dependencies:
     inherits "^2.0.4"
     readable-stream "2 || 3"
-
-through2@^4.0.2:
-  version "4.0.2"
-  resolved "https://registry.npmjs.org/through2/-/through2-4.0.2.tgz"
-  integrity sha512-iOqSav00cVxEEICeD7TjLB1sueEL+81Wpzp2bY17uZjZN0pWZPuo4suZ/61VujxmqSGFfgOcNuTZ85QJwNZQpw==
-  dependencies:
-    readable-stream "3"
 
 through@2, "through@>=2.2.7 <3", through@^2.3.6:
   version "2.3.8"

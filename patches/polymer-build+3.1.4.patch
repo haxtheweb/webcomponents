@@ -1,5 +1,5 @@
 diff --git a/node_modules/polymer-build/lib/js-transform.js b/node_modules/polymer-build/lib/js-transform.js
-index 00b71cb..f1eb2e3 100644
+index 00b71cb..408f462 100644
 --- a/node_modules/polymer-build/lib/js-transform.js
 +++ b/node_modules/polymer-build/lib/js-transform.js
 @@ -15,7 +15,7 @@
@@ -79,6 +79,124 @@ index 00b71cb..f1eb2e3 100644
                  ],
              });
          }
+@@ -250,3 +282,117 @@ function replaceTemplateObjectNames(js) {
+     return js.replace(searchValueRegex, replaceValue);
+ }
+ //# sourceMappingURL=js-transform.js.map
++// HAX: remember jsTransform results between builds.
++// A result is stored under a key made of everything it is computed from: the
++// source text, the options (file path included), the versions of the tools
++// that do the transform, and what bare import specifiers resolve against
++// (yarn.lock and each workspace package's entry fields). So a stored result is exactly
++// what jsTransform would return again; anything else misses the store and is
++// transformed as usual. The store lives in
++// node_modules/.cache/hax-ubiquity/js-transform and is safe to delete.
++// HAX_BUILD_CACHE=0 turns it off.
++{
++    const fs = require("fs");
++    const path = require("path");
++    const crypto = require("crypto");
++    const uncached = exports.jsTransform;
++    const salts = new Map();
++    const saltFor = (rootDir) => {
++        if (!salts.has(rootDir)) {
++            const hash = crypto.createHash("sha256");
++            hash.update(JSON.stringify([
++                require("../package.json").version,
++                require("@babel/core/package.json").version,
++                require("babylon/package.json").version,
++                process.version.split(".")[0],
++            ]));
++            const add = (file) => {
++                try {
++                    hash.update(file + "\0").update(fs.readFileSync(file));
++                }
++                catch (e) {
++                    hash.update(file + "\0missing");
++                }
++            };
++            add(path.join(rootDir, "yarn.lock"));
++            add(path.join(rootDir, "patches", "polymer-build+3.1.4.patch"));
++            // of a workspace package.json only the fields module resolution
++            // reads count, so a version bump does not empty the store
++            const addEntryFields = (file) => {
++                let fields = "missing";
++                try {
++                    const pkg = JSON.parse(fs.readFileSync(file, "utf8"));
++                    fields = JSON.stringify([pkg.name, pkg.main, pkg.module, pkg["jsnext:main"]]);
++                }
++                catch (e) { }
++                hash.update(file + "\0" + fields);
++            };
++            let workspaces = [];
++            try {
++                const pkg = JSON.parse(fs.readFileSync(path.join(rootDir, "package.json"), "utf8"));
++                workspaces = Array.isArray(pkg.workspaces) ? pkg.workspaces : (pkg.workspaces && pkg.workspaces.packages) || [];
++            }
++            catch (e) { }
++            workspaces.forEach((pattern) => {
++                if (!pattern.endsWith("/*")) {
++                    return;
++                }
++                const dir = path.join(rootDir, pattern.slice(0, -2));
++                let names = [];
++                try {
++                    names = fs.readdirSync(dir).sort();
++                }
++                catch (e) { }
++                names.forEach((name) => addEntryFields(path.join(dir, name, "package.json")));
++            });
++            salts.set(rootDir, hash.digest("hex"));
++        }
++        return salts.get(rootDir);
++    };
++    exports.jsTransform = function (js, options) {
++        if (process.env.HAX_BUILD_CACHE === "0" || !options || !options.rootDir) {
++            return uncached(js, options);
++        }
++        const dir = path.join(options.rootDir, "node_modules", ".cache", "hax-ubiquity", "js-transform");
++        const key = crypto.createHash("sha256")
++            .update(saltFor(options.rootDir))
++            .update(JSON.stringify(options))
++            .update("\0")
++            .update(js)
++            .digest("hex");
++        const file = path.join(dir, key);
++        try {
++            return fs.readFileSync(file, "utf8");
++        }
++        catch (e) { }
++        // a transform that warned (an import that did not resolve, a file that
++        // did not parse) is not stored, so the warning shows on every build
++        let warned = false;
++        const warn = console.warn;
++        const error = console.error;
++        // Babel's note that it stopped pretty-printing a file over 500KB is
++        // not a problem with the file, so it does not count
++        const note = (args) => typeof args[0] === "string" && args[0].indexOf("[BABEL] Note:") === 0;
++        console.warn = function () { warned = warned || !note(arguments); return warn.apply(console, arguments); };
++        console.error = function () { warned = warned || !note(arguments); return error.apply(console, arguments); };
++        let out;
++        try {
++            out = uncached(js, options);
++        }
++        finally {
++            console.warn = warn;
++            console.error = error;
++        }
++        if (warned) {
++            return out;
++        }
++        try {
++            fs.mkdirSync(dir, { recursive: true });
++            const tmp = file + "." + process.pid;
++            fs.writeFileSync(tmp, out);
++            fs.renameSync(tmp, file);
++        }
++        catch (e) { }
++        return out;
++    };
++}
 diff --git a/node_modules/polymer-build/src/js-transform.ts b/node_modules/polymer-build/src/js-transform.ts
 index 91e6a8b..dbef4ac 100644
 --- a/node_modules/polymer-build/src/js-transform.ts
