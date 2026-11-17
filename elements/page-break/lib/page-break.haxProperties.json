@@ -115,12 +115,6 @@
         "noVoiceRecord": true
       },
       {
-        "property": "parent",
-        "title": "Parent",
-        "description": "Path of the parent page.",
-        "inputMethod": "textfield"
-      },
-      {
         "property": "noderefs",
         "title": "Related content",
         "description": "Pages related to this page.",
@@ -181,12 +175,6 @@
         "title": "Hide page title",
         "description": "The page title shows by default. Hide it when the page starts with its own heading, such as a hero.",
         "inputMethod": "boolean"
-      },
-      {
-        "property": "order",
-        "title": "Order",
-        "description": "Order relative to sibling pages.",
-        "inputMethod": "number"
       },
       {
         "property": "developerTheme",

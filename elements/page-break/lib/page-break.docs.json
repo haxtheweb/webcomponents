@@ -98,11 +98,7 @@
       "type": "null",
       "default": "null",
       "description": "",
-      "hax": {
-        "title": "Order",
-        "input": "number",
-        "options": null
-      }
+      "hax": null
     },
     {
       "name": "hide-in-menu",
@@ -194,11 +190,7 @@
       "type": "string",
       "default": "",
       "description": "",
-      "hax": {
-        "title": "Parent",
-        "input": "textfield",
-        "options": null
-      }
+      "hax": null
     },
     {
       "name": "published",
@@ -489,12 +481,6 @@
           "noVoiceRecord": true
         },
         {
-          "property": "parent",
-          "title": "Parent",
-          "description": "Path of the parent page.",
-          "inputMethod": "textfield"
-        },
-        {
           "property": "noderefs",
           "title": "Related content",
           "description": "Pages related to this page.",
@@ -557,12 +543,6 @@
           "inputMethod": "boolean"
         },
         {
-          "property": "order",
-          "title": "Order",
-          "description": "Order relative to sibling pages.",
-          "inputMethod": "number"
-        },
-        {
           "property": "developerTheme",
           "title": "Page theme",
           "description": "Override theme for this page only.",
@@ -602,7 +582,7 @@
       }
     ]
   },
-  "surfaceHash": "58b1892fb5b7",
+  "surfaceHash": "be666ba5a492",
   "walkthroughs": [],
   "videos": [],
   "motion": {
