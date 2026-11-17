@@ -244,7 +244,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         }
         .controls simple-toolbar-button.control:hover,
         .controls ::slotted(simple-toolbar-button:hover) {
-          background-color: var(--hax-ui-hover);
+          background-color: var(--hax-ui-control-hover);
           --simple-toolbar-border-color: var(--hax-ui-line-strong);
         }
         @media screen and (max-width: 900px) {
@@ -336,7 +336,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           touch-action: pan-y;
         }
         li.item:hover {
-          background-color: var(--hax-ui-hover);
+          background-color: var(--hax-ui-control-hover);
         }
         /* the selector column: a checkbox in the row's left padding, so the
            indent columns and the drop line (measured from the padding)
@@ -1008,6 +1008,61 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         .undo-btn:focus-visible {
           outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
         }
+        .undo-btn:hover {
+          background-color: var(--hax-ui-control-hover);
+        }
+        /* Button states, the same as the HAX UI admin controls
+           (HaxUiAdminControls). These are looks only: no handler, event or
+           data path reads them.
+           Hover: the fold chevron keeps its own hover inside a hovered row
+           (the row rule cleared it). */
+        li.item:hover .collapse-btn:hover:not([disabled]) {
+          background-color: var(--hax-ui-line);
+          color: var(--hax-ui-text);
+        }
+        /* Keyboard focus: row buttons are not tab stops (the row is, and its
+           keys run them), but focus lands on one when its menu closes */
+        .act:focus-visible,
+        .collapse-btn:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: calc(-1 * var(--hax-ui-focus-width));
+        }
+        .controls simple-toolbar-button.control::part(button):focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 2px;
+        }
+        /* Held down: the pressed overlay, so a push is confirmed before it
+           is let go; never on a disabled button */
+        .act:active:not([disabled]),
+        .collapse-btn:active:not([disabled]),
+        .nudge-btn:active:not([disabled]),
+        .undo-btn:active,
+        .controls simple-toolbar-button.control:active:not([disabled]),
+        .content-operation:active:not([disabled]),
+        .content-adding-operations .operation:active:not([disabled]),
+        .close-btn:active {
+          box-shadow: inset 0 0 0 999px var(--hax-ui-pressed);
+        }
+        .act:active:not([disabled]),
+        .nudge-btn:active:not([disabled]) {
+          transform: translateY(1px);
+        }
+        .content-operation:active,
+        .content-adding-operations .operation:active,
+        .close-btn:active {
+          border-radius: var(--hax-ui-radius);
+        }
+        /* Disabled: dimmed, no pointer, and no hover of its own (a locked
+           page's fold chevron and content toggle looked available) */
+        .act[disabled],
+        .collapse-btn[disabled] {
+          cursor: default;
+          opacity: var(--ddd-state-disabled-opacity, 0.4);
+        }
+        .act[disabled]:hover {
+          color: var(--hax-ui-text-muted);
+          background-color: transparent;
+        }
         :host([data-modality="touch"]) .undo-btn {
           text-decoration: none;
           min-height: var(--hax-ui-row-height);
@@ -1052,7 +1107,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           background-color: var(--hax-ui-line);
         }
         li.content-child:hover {
-          background-color: var(--hax-ui-hover);
+          background-color: var(--hax-ui-control-hover);
         }
         li.content-child .label.shown,
         li.content-child .label-edit.shown {
@@ -1102,7 +1157,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           color: var(--hax-ui-text);
         }
         .content-adding-operations .operation:hover {
-          background-color: var(--hax-ui-hover);
+          background-color: var(--hax-ui-control-hover);
         }
         /* a block's own operations: 32px HAX UI icon buttons, 16px icons */
         .content-operation {
@@ -1115,7 +1170,9 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           --simple-icon-height: var(--hax-ui-icon);
           --simple-icon-button-border-radius: var(--hax-ui-radius);
           --simple-icon-button-focus-opacity: 1;
-          --simple-icon-button-focus-background-color: var(--hax-ui-hover);
+          --simple-icon-button-focus-background-color: var(
+            --hax-ui-control-hover
+          );
           margin: 0;
           color: var(--hax-ui-text-muted);
         }

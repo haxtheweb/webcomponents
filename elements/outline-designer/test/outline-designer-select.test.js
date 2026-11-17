@@ -185,6 +185,12 @@ describe("outline-designer page menu design", () => {
     expect(getComputedStyle(lock).paddingRight).to.not.equal("16px");
     const sheet = el.constructor.styles.map((s) => s.cssText || "").join("\n");
     expect(sheet).to.not.contain("actions-menu simple-toolbar-button");
-    expect(sheet).to.not.contain("::part(button)");
+    // no ::part(button) rule reaches the menu or its items (the toolbar's
+    // own Collapse all and Expand all take their focus ring that way)
+    const partRules = sheet.match(/[^{}]*::part\(button\)[^{}]*\{/g) || [];
+    partRules.forEach((rule) => {
+      expect(rule).to.not.match(/actions-menu|simple-context-menu/);
+      expect(rule).to.contain(".controls simple-toolbar-button.control");
+    });
   });
 });
