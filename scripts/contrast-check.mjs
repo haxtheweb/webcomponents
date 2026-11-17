@@ -24,7 +24,8 @@
  * site, demo/site.json, and its own source reads --ddd-palette-* tokens or
  * reflects data-palette), the same page is measured again in each color
  * scheme with every palette in the DDD palette registry
- * (elements/d-d-d/lib/DDDPaletteRegistry.js) set on the theme element.
+ * (elements/d-d-d/lib/DDDPaletteRegistry.js) it supports set on the theme
+ * element.
  * Those results use the mode "<scheme>@<palette key>", e.g.
  * "dark@salmon-season"; the palette the demo already shows is the plain
  * "light" / "dark" run and is not measured twice. When the folder ships more
@@ -50,8 +51,14 @@
  * once. --design-system <name|a,b|all> measures HAX block demos (element
  * folders with haxProperties) again with that bridge active: the demo loads,
  * the bridge's activate<Prefix>DesignSystem() runs in the page (the call its
- * theme makes), and the color-contrast rule runs in light and dark. Palettes
- * and sibling themes are not repeated. Results go to their own shrink-only
+ * theme makes), and the color-contrast rule runs in light and dark. A site
+ * theme whose chrome takes a design system (static acceptsDesignSystems,
+ * e.g. clean-one) is measured too, in every palette it supports, so each
+ * theme x design system x palette combination a site can pick is covered;
+ * sibling themes are not repeated. Palette runs, with or without a design
+ * system, use only the palettes a theme lists in supportedPalettes
+ * (haxcms-elements/lib/themes.json), the only ones the site builder applies
+ * to it. Results go to their own shrink-only
  * baseline, scripts/contrast.design-systems.baseline.json, keyed system ->
  * element -> mode -> target. Without --elements or --all, every block is
  * measured when DDD or any bridge changed, otherwise the changed blocks.
@@ -255,21 +262,59 @@ function isPaletteTheme(element) {
 }
 
 /**
- * other site themes the element folder ships, from the theme registry:
- * [{ tag, src }] where src is the module's path on the local server
+ * a palette theme whose chrome takes a design system (static
+ * acceptsDesignSystems returns true), so each bridge recolors the theme
+ * itself and theme x design system x palette is a matrix to measure
  */
-function siblingThemes(element) {
-  let themes = {};
+function isDesignSystemTheme(element) {
+  return (
+    isPaletteTheme(element) &&
+    ownSources(element).some((src) =>
+      /static\s+get\s+acceptsDesignSystems\s*\(\s*\)\s*\{\s*return\s+true/.test(
+        src,
+      ),
+    )
+  );
+}
+
+function themeRegistry() {
   try {
-    themes = JSON.parse(
+    return JSON.parse(
       fs.readFileSync(
         path.join(root, "elements", "haxcms-elements", "lib", "themes.json"),
         "utf8",
       ),
     );
   } catch {
-    return [];
+    return {};
   }
+}
+
+/**
+ * the palettes a theme can be shown in: the ones its registry entry lists
+ * (supportedPalettes; the site builder never applies any other), or every
+ * DDD palette when it lists none
+ */
+function themePalettes(tag) {
+  const entry = themeRegistry()[tag];
+  const supported =
+    entry && Array.isArray(entry.supportedPalettes)
+      ? entry.supportedPalettes.map((p) => String(p))
+      : null;
+  if (!supported || !supported.length) {
+    return PALETTES;
+  }
+  return PALETTES.filter(
+    (p) => supported.includes(String(p.value)) || supported.includes(p.key),
+  );
+}
+
+/**
+ * other site themes the element folder ships, from the theme registry:
+ * [{ tag, src }] where src is the module's path on the local server
+ */
+function siblingThemes(element) {
+  const themes = themeRegistry();
   const prefix = `@haxtheweb/${element}/`;
   return Object.keys(themes)
     .filter(
@@ -290,7 +335,10 @@ const PALETTES = DDDPaletteRegistry.map((p) => ({
 
 function selectElements(all) {
   if (DESIGN_SYSTEM) {
-    return selectBlocks(all.filter((e) => isHaxBlock(root, e)));
+    // HAX blocks, and the site themes whose chrome takes a design system
+    return selectBlocks(
+      all.filter((e) => isHaxBlock(root, e) || isDesignSystemTheme(e)),
+    );
   }
   if (ELEMENTS) {
     const want = new Set(ELEMENTS.split(",").map((t) => t.trim()));
@@ -486,13 +534,13 @@ async function switchTheme({ tag, src }) {
  * palette is applied to the theme element and measured as scheme@key
  * (scheme@theme:key for a sibling theme)
  */
-async function auditPalettes(page, scheme, theme) {
+async function auditPalettes(page, scheme, theme, element) {
   const current = await page.evaluate(() => {
     const theme = document.querySelector(".haxcms-theme-element");
     return theme ? theme.getAttribute("data-palette") : null;
   });
   const out = {};
-  for (const palette of PALETTES) {
+  for (const palette of themePalettes(theme || element)) {
     if (
       current !== null &&
       (current === palette.value || current === palette.key)
@@ -546,7 +594,7 @@ async function auditDemo(
       [mode]: countViolations(await page.evaluate(runContrastRule)),
     };
     if (palettes) {
-      Object.assign(counts, await auditPalettes(page, mode, null));
+      Object.assign(counts, await auditPalettes(page, mode, null, element));
       for (const theme of palettes.siblings) {
         if (!(await page.evaluate(switchTheme, theme))) {
           throw new Error(`site theme ${theme.tag} did not render on the demo`);
@@ -555,7 +603,10 @@ async function auditDemo(
         counts[paletteMode(mode, null, theme.tag)] = countViolations(
           await page.evaluate(runContrastRule),
         );
-        Object.assign(counts, await auditPalettes(page, mode, theme.tag));
+        Object.assign(
+          counts,
+          await auditPalettes(page, mode, theme.tag, element),
+        );
       }
     }
     return { counts };
@@ -581,11 +632,14 @@ async function runAudits(picked, system = null) {
     throw e;
   }
   const jobs = [];
-  // palettes and sibling themes are DDD's own runs, not repeated per system
-  const paletteThemes = system ? [] : picked.filter(isPaletteTheme);
+  // under a design system only the themes whose chrome takes one are
+  // measured in their palettes; sibling themes stay DDD's own runs
+  const paletteThemes = system
+    ? picked.filter(isDesignSystemTheme)
+    : picked.filter(isPaletteTheme);
   for (const element of picked) {
     const palettes = paletteThemes.includes(element)
-      ? { siblings: siblingThemes(element) }
+      ? { siblings: system ? [] : siblingThemes(element) }
       : null;
     for (const mode of MODES) {
       jobs.push({ element, mode, palettes });
@@ -596,7 +650,7 @@ async function runAudits(picked, system = null) {
   );
   if (paletteThemes.length) {
     console.log(
-      `contrast: palette themes, also measured in each of ${PALETTES.length} DDD palettes: ${paletteThemes
+      `contrast: palette themes, also measured in each palette they support (up to ${PALETTES.length} DDD palettes): ${paletteThemes
         .map((e) => {
           const more = siblingThemes(e);
           return more.length

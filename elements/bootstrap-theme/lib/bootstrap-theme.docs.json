@@ -5,7 +5,7 @@
   "version": "26.8.0",
   "license": "Apache-2.0",
   "title": "bootstrap-theme",
-  "description": "Hax bootstrap themeing",
+  "description": "Bootstrap 5 theme for HAXcms, built on the DDD-capable Bootstrap design system bridge",
   "icon": "",
   "tags": [],
   "haxCapable": false,

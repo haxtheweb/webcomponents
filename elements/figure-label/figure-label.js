@@ -57,7 +57,7 @@ class FigureLabel extends DDD {
           font-family: var(--ddd-font-navigation);
           font-size: var(--ddd-font-size-4xs);
           font-weight: var(--ddd-font-weight-bold);
-          letter-spacing: 0.06em;
+          letter-spacing: var(--ddd-label-letter-spacing);
           text-transform: uppercase;
           /* an authored colour applies in both schemes; light-dark() only
              supplies the DDD default */

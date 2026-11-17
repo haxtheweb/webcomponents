@@ -582,7 +582,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
           font-family: inherit;
           font-size: 11px;
           font-weight: var(--ddd-font-weight-bold, 700);
-          line-height: 1;
+          line-height: var(--ddd-lh-100, 1);
           white-space: nowrap;
           border-radius: var(--hax-ui-radius);
           border: 1px solid var(--hax-ui-line-strong);
@@ -608,7 +608,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
           border-radius: var(--hax-ui-radius);
           font-size: 13px;
           font-weight: var(--ddd-font-weight-bold, 700);
-          line-height: 1;
+          line-height: var(--ddd-lh-100, 1);
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;

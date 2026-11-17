@@ -125,6 +125,8 @@ export function shippableSource(dirName, rel) {
   if (dirName === "haxcms-elements") return !base.startsWith(".");
   if (/^[^/]+\.js$/.test(rel)) return true;
   if (/^locales\/[^/]+\.json$/.test(rel)) return true;
+  // a design system bridge draws HAX icon names from its own icons/ set
+  if (/^icons\/[^/]+\.svg$/.test(rel)) return true;
   if (rel.startsWith("lib/")) return !base.startsWith(".");
   return false;
 }

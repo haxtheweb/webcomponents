@@ -71,10 +71,26 @@ function optimizeSvg(filePath) {
   }
 }
 
+/**
+ * Icons a DDD design system bridge copies from its upstream icon set
+ * (elements/<theme>/icons/ next to design-system/bridge.json) are kept
+ * byte for byte as published: the bridge generator's --check compares
+ * them with the pinned package, and the NOTICE says they are unchanged.
+ */
+function isBridgeIcon(filePath) {
+  const parts = path.resolve(filePath).split(path.sep);
+  const i = parts.lastIndexOf("icons");
+  if (i < 1 || parts[i - 2] !== "elements") {
+    return false;
+  }
+  const themeDir = parts.slice(0, i).join(path.sep);
+  return fs.existsSync(path.join(themeDir, "design-system", "bridge.json"));
+}
+
 async function run() {
   const files = process.argv.slice(2);
   for (const filePath of files) {
-    if (!fs.existsSync(filePath)) {
+    if (!fs.existsSync(filePath) || isBridgeIcon(filePath)) {
       continue;
     }
     const ext = path.extname(filePath).toLowerCase();

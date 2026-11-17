@@ -109,6 +109,11 @@ export const mapMenuActiveRingStyles = [
     .active-ring.on-expand .ddd-ring-glyph {
       display: none;
     }
+    /* the glyph sits dead center in the ring: the spacing a row gives its
+       own icon (margin beside the title) does not apply inside the ring */
+    .active-ring .ddd-ring-glyph simple-icon-lite {
+      margin: 0;
+    }
   `,
 ];
 
@@ -219,7 +224,7 @@ export const mapMenuProgressStyles = css`
     border-style: solid;
     border-color: var(--map-menu-progress-empty);
     align-self: center;
-    line-height: 1;
+    line-height: var(--ddd-lh-100, 1);
     font-size: 11px;
     font-weight: var(--ddd-font-weight-bold, 700);
   }

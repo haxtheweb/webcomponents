@@ -743,6 +743,9 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       store.themeElement = globalThis.document.createElement(newValue);
       // apply a class so that we can write generic CSS selectors in integrations
       store.themeElement.classList.add("haxcms-theme-element");
+      // the palette the theme starts with, before a site palette is set on
+      // it (data-palette reflects, so dataPalette changes after that)
+      this.__themeDefaultPalette = store.themeElement.dataPalette;
       this._applyThemePalette(store.themeElement, this.themeData);
       this.appendChild(store.themeElement);
       this._scheduleThemePaletteReapply(this.themeData);
@@ -780,7 +783,39 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     ) {
       palette = String(store.themeElement.dataPalette).trim();
     }
-    return palette;
+    return this._allowedThemePalette(store.themeElement, palette);
+  }
+
+  /**
+   * A theme that lists supportedPalettes only ever draws one of them: a
+   * site palette the theme does not support (often one kept from the
+   * theme it used before) gives way to the theme's own default, or else
+   * its first supported palette. Any palette goes for themes with no list.
+   * @param {HTMLElement} themeElement the active theme
+   * @param {String|null} palette the palette the site asked for
+   * @returns {String|null}
+   */
+  _allowedThemePalette(themeElement, palette) {
+    const ThemeClass =
+      themeElement && themeElement.constructor
+        ? themeElement.constructor
+        : null;
+    const supported =
+      ThemeClass && Array.isArray(ThemeClass.supportedPalettes)
+        ? ThemeClass.supportedPalettes.map((p) => String(p))
+        : null;
+    if (!supported || supported.length === 0 || palette === null) {
+      return palette;
+    }
+    if (palette === "" || supported.includes(palette)) {
+      return palette;
+    }
+    const fallback =
+      this.__themeDefaultPalette !== undefined &&
+      this.__themeDefaultPalette !== null
+        ? String(this.__themeDefaultPalette)
+        : null;
+    return fallback && supported.includes(fallback) ? fallback : supported[0];
   }
 
   _applyThemePalette(themeElement, themeData, forceReapply = false) {

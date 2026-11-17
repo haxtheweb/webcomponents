@@ -123,7 +123,7 @@ class SimpleFileUpload extends I18NMixin(DDD) {
           cursor: pointer;
           padding: var(--ddd-spacing-1, 4px);
           font-size: var(--ddd-font-size-5xs);
-          line-height: 1;
+          line-height: var(--ddd-lh-100, 1);
           border-radius: var(--ddd-radius-xs, 2px);
         }
         .file-actions button:focus-visible {

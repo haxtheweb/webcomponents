@@ -119,6 +119,29 @@ globalThis.customElements.define(
   HaxUiAdminStylesProbe,
 );
 
+// a computed color as [r, g, b], whatever form the browser serializes it in
+// (rgb(), or oklch() when a token darkens a color with relative color
+// syntax), so a test checks the color and not its notation
+function channels(color) {
+  const canvas = globalThis.document.createElement("canvas");
+  canvas.width = canvas.height = 1;
+  const cx = canvas.getContext("2d", { willReadFrequently: true });
+  cx.fillStyle = "#000";
+  cx.fillStyle = color;
+  cx.fillRect(0, 0, 1, 1);
+  const d = cx.getImageData(0, 0, 1, 1).data;
+  return [d[0], d[1], d[2]];
+}
+// the two colors match to within a step of rounding per channel
+function sameColor(actual, expected) {
+  const a = channels(actual);
+  const b = channels(expected);
+  expect(
+    a.every((v, i) => Math.abs(v - b[i]) <= 1),
+    `${actual} (${a}) is not ${expected} (${b})`,
+  ).to.equal(true);
+}
+
 describe("HaxUiAdminStyles: the one HAX UI admin layer", () => {
   let el;
   const box = (id) => el.shadowRoot.querySelector(`#${id}`);
@@ -160,7 +183,7 @@ describe("HaxUiAdminStyles: the one HAX UI admin layer", () => {
 
   it("a checked switch uses the accent", () => {
     // --hax-ui-accent-strong in light is DDD link #005fa9
-    expect(style("switch-on").backgroundColor).to.equal("rgb(0, 95, 169)");
+    sameColor(style("switch-on").backgroundColor, "rgb(0, 95, 169)");
   });
 
   it("shared toolbar field, tokens and input group take the HAX UI sizes", () => {
@@ -202,7 +225,7 @@ describe("HaxUiAdminStyles: the one HAX UI admin layer", () => {
   });
 
   it("a pressed toggle chip takes the accent; an unpressed one is solid", () => {
-    expect(style("chip-on").borderTopColor).to.equal("rgb(0, 95, 169)");
+    sameColor(style("chip-on").borderTopColor, "rgb(0, 95, 169)");
     expect(style("chip-off").borderTopStyle).to.equal("solid");
     expect(style("chip-on").fontWeight).to.equal("700");
   });
@@ -252,13 +275,17 @@ describe("HaxUiAdminStyles: the one HAX UI admin layer", () => {
     await aTimeout(300);
     // surface white, not the nittanyNavy primary fill
     expect(style("save-off").backgroundColor).to.equal("rgb(255, 255, 255)");
-    expect(style("save-off").borderColor).to.equal("rgb(162, 170, 173)");
+    // the field edge: slate mixed with white, 3:1 on the admin surfaces
+    sameColor(
+      style("save-off").borderColor,
+      "color-mix(in srgb, rgb(49, 77, 100) 70%, rgb(255, 255, 255))",
+    );
     await resetMouse();
   });
 
   it("an off switch has a 3:1 track, and the thumb is the panel color", () => {
     // --hax-ui-text-muted (slateGray #314d64), 8.8:1 on white
-    expect(style("switch-off").backgroundColor).to.equal("rgb(49, 77, 100)");
+    sameColor(style("switch-off").backgroundColor, "rgb(49, 77, 100)");
     const thumb = globalThis.getComputedStyle(box("switch-off"), "::after");
     expect(thumb.backgroundColor).to.equal("rgb(255, 255, 255)");
   });
@@ -305,5 +332,65 @@ describe("HaxUiAdminStyles: the one HAX UI admin layer", () => {
     // section icons have keys too
     expect(HaxUiAdminIcons.structure).to.equal("hax:admin-structure");
     expect(HaxUiAdminIcons.importExport).to.equal("hax:admin-import-export");
+  });
+
+  it("keeps a segmented button's focus ring inside the group, which clips", () => {
+    // .hax-ui-seg hides its overflow, so a ring outside a button is cut off
+    const offsets = [];
+    HaxUiAdminControls.forEach((sheet) => {
+      Array.from(sheet.styleSheet.cssRules).forEach((rule) => {
+        if (
+          rule.selectorText &&
+          rule.selectorText.includes(".hax-ui-seg button:focus-visible") &&
+          rule.style.outlineOffset
+        ) {
+          offsets.push(rule.style.outlineOffset);
+        }
+      });
+    });
+    expect(offsets.length).to.be.greaterThan(0);
+    offsets.forEach((offset) => {
+      expect(
+        offset.trim().startsWith("calc(-1") || offset.trim().startsWith("-"),
+      ).to.equal(true, `outline-offset ${offset}`);
+    });
+  });
+
+  it("gives the switch a hover state and every control a held-down state", () => {
+    const rules = [];
+    HaxUiAdminControls.forEach((sheet) => {
+      Array.from(sheet.styleSheet.cssRules).forEach((rule) => {
+        if (rule.selectorText) {
+          rules.push(rule);
+        }
+      });
+    });
+    const styled = (selector, property) =>
+      rules.some(
+        (rule) =>
+          rule.selectorText
+            .split(",")
+            .some((part) => part.trim().startsWith(selector)) &&
+          rule.style[property] &&
+          rule.style[property] !== "none",
+      );
+    expect(styled(".hax-ui-switch:hover", "boxShadow")).to.equal(true);
+    [
+      ".hax-ui-btn:active",
+      ".hax-ui-icon-btn:active",
+      ".hax-ui-chip:active",
+      ".hax-ui-seg button:active",
+      ".hax-ui-switch:active",
+    ].forEach((selector) => {
+      expect(styled(selector, "boxShadow"), selector).to.equal(true);
+    });
+    // a disabled control never shows the held-down state
+    rules
+      .filter((rule) => rule.selectorText.includes(":active"))
+      .forEach((rule) => {
+        rule.selectorText.split(/,(?![^(]*\))/).forEach((part) => {
+          expect(part.includes(":not("), part.trim()).to.equal(true);
+        });
+      });
   });
 });

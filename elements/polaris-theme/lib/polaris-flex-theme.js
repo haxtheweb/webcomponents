@@ -152,6 +152,9 @@ class PolarisFlexTheme extends HAXCMSOperationButtons(
 
         main {
           width: 100%;
+          /* a full-width ddd-hero in the content measures itself
+             against this, so it spans the content area, not the sidebar */
+          container-type: inline-size;
         }
 
         article {

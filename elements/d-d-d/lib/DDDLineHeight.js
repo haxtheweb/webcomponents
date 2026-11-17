@@ -5,6 +5,9 @@
 import { css } from "lit";
 
 export const DDDLineHeight = css`
+  .lh-100 {
+    line-height: var(--ddd-lh-100);
+  }
   .lh-120 {
     line-height: var(--ddd-lh-120);
   }

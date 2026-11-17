@@ -218,6 +218,17 @@ export const HaxUiAdminShell = [
       background-color: var(--hax-ui-selected);
       box-shadow: inset 3px 0 0 var(--hax-ui-accent-strong);
     }
+    /* held down: the same pressed overlay as the admin controls; the
+       current page keeps its edge bar under it */
+    .rail-item:active,
+    .rail-toggle:active {
+      box-shadow: inset 0 0 0 999px var(--hax-ui-pressed);
+    }
+    .rail-item[aria-current="page"]:active {
+      box-shadow:
+        inset 3px 0 0 var(--hax-ui-accent-strong),
+        inset 0 0 0 999px var(--hax-ui-pressed);
+    }
     .rail-collapse {
       margin-bottom: var(--hax-ui-gap);
       color: var(--hax-ui-text-muted);
@@ -301,9 +312,11 @@ export const HaxUiAdminShell = [
       background-color: var(--hax-ui-warning);
     }
     /* Beta and Soon name a section's state, not a count */
+    /* accent text made for tints: the badge also sits on the selected
+       row's tint, where accent-strong falls under 4.5:1 */
     .rail-badge[data-tone="beta"],
     .rail-badge[data-tone="soon"] {
-      color: var(--hax-ui-accent-strong);
+      color: var(--hax-ui-accent-text);
       background-color: transparent;
       box-shadow: inset 0 0 0 1px currentColor;
       font-weight: var(--ddd-font-weight-medium, 500);

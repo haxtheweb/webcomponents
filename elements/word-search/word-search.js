@@ -341,7 +341,7 @@ export class WordSearch extends DDDSuper(I18NMixin(LitElement)) {
           font-family: var(--ddd-font-navigation);
           font-size: var(--ddd-font-size-4xs);
           font-weight: var(--ddd-font-weight-medium);
-          line-height: 1;
+          line-height: var(--ddd-lh-100, 1);
           cursor: pointer;
         }
         .grid[aria-disabled="true"] .cell {
@@ -373,7 +373,7 @@ export class WordSearch extends DDDSuper(I18NMixin(LitElement)) {
           position: absolute;
           top: var(--ddd-spacing-0);
           inset-inline-end: var(--ddd-border-size-sm);
-          font-size: 0.6em;
+          font-size: var(--ddd-font-size-annotation);
           font-weight: var(--ddd-font-weight-bold);
         }
         .series-1 {

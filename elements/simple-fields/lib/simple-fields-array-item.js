@@ -61,9 +61,12 @@ class SimpleFieldsArrayItem extends I18NMixin(
           border-radius: var(--simple-fields-border-radius, 4px);
           display: block;
           border: none;
-          transform: rotate(0deg);
-          transition: all var(--ddd-duration-slow, 0.6s) ease-in-out;
           z-index: 1;
+          /* opening and closing is quick and does not resize the whole
+             item, like every other disclosure in the HAX admin: only the
+             outline fades in */
+          transition: outline-color var(--ddd-duration-fast, 150ms)
+            var(--ddd-timing-ease, ease);
           position: relative;
         }
         :host([disabled]) {
@@ -73,11 +76,9 @@ class SimpleFieldsArrayItem extends I18NMixin(
           padding: var(--simple-fields-margin, 16px)
             var(--simple-fields-margin-small, 8px);
           outline: 1px solid var(--simple-fields-border-color-light, #ccc);
-          transition: all var(--ddd-duration-slow, 0.6s) ease-in-out;
         }
         :host([error]) {
           outline: 1px solid var(--simple-fields-error-color, #b40000);
-          transition: border var(--ddd-duration-slow, 0.6s) ease;
         }
         *[aria-controls="content"][disabled] {
           cursor: not-allowed;
@@ -124,14 +125,11 @@ class SimpleFieldsArrayItem extends I18NMixin(
           flex-wrap: wrap;
           overflow: hidden;
           max-height: 0;
-          transition: max-height var(--ddd-duration-slow, 0.6s) ease-in-out;
         }
-        :host([aria-expanded="true"]) #content {
-          max-height: 20000vh;
-          transition: max-height var(--ddd-duration-slow, 0.6s) ease-in-out;
-        }
+        :host([aria-expanded="true"]) #content,
         :host([aria-expanded="true"]) #content-inner {
-          max-height: 20000vh;
+          max-height: none;
+          overflow: visible;
         }
         #content-inner > * {
           flex: 1 1 auto;
@@ -201,9 +199,12 @@ class SimpleFieldsArrayItem extends I18NMixin(
           height: 80px;
         }
 
+        #expand::part(icon) {
+          transition: transform var(--ddd-duration-fast, 150ms)
+            var(--ddd-timing-ease, ease);
+        }
         :host([aria-expanded="true"]) #expand::part(icon) {
           transform: rotate(90deg);
-          transition: all var(--ddd-duration-slow, 0.6s) ease-in-out;
         }
         ::slotted([slot="preview"]),
         ::slotted(*:first-child) {

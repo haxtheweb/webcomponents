@@ -1,0 +1,14 @@
+<ddd-steps-list>
+<ddd-steps-list-item title="As a theme"><p>Choose Primer from the theme list in site settings. The layout and the blocks both take on Primer.</p></ddd-steps-list-item>
+<ddd-steps-list-item title="As a design system"><p>Keep your theme and pick Primer as the design system. Blocks take on Primer colors, type and corners inside your layout.</p></ddd-steps-list-item>
+<ddd-steps-list-item title="Author as usual"><p>Blocks read DDD tokens and the bridge answers with Primer values.</p></ddd-steps-list-item>
+</ddd-steps-list>
+<h2>Set it in site.json</h2>
+<code-sample type="json"><template preserve-content="preserve-content">{
+  "metadata": {
+    "theme": {
+      "element": "primer-theme",
+      "path": "@haxtheweb/primer-theme/primer-theme.js"
+    }
+  }
+}</template></code-sample>

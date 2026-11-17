@@ -46,7 +46,7 @@ class SimpleTooltip extends LitElement {
           display: block;
           outline: none;
           font-size: var(--simple-tooltip-font-size, 10px);
-          line-height: 1;
+          line-height: var(--ddd-lh-100, 1);
           background-color: var(--simple-tooltip-background, #616161);
           color: var(--simple-tooltip-text-color, white);
           padding: var(--simple-tooltip-padding, 8px);

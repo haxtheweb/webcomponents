@@ -695,7 +695,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
             font-family: inherit;
             font-size: 11px;
             font-weight: var(--ddd-font-weight-bold, 700);
-            line-height: 1;
+            line-height: var(--ddd-lh-100, 1);
             white-space: nowrap;
             border-radius: var(--hax-ui-radius, 4px);
             border: 1px solid

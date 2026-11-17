@@ -95,6 +95,12 @@ export const HaxSchematizer = {
         format: "doodle",
       },
     },
+    "image-framing": {
+      defaultSettings: {
+        type: "string",
+        format: "image-framing",
+      },
+    },
     iconpicker: {
       defaultSettings: {
         type: "string",
@@ -629,6 +635,18 @@ export const HaxElementizer = {
             import: "@haxtheweb/hax-body/lib/simple-fields-srcset.js",
             element: "simple-fields-srcset",
             noWrap: true,
+          },
+        },
+        "image-framing": {
+          defaultSettings: {
+            import: "@haxtheweb/hax-body/lib/simple-fields-image-framing.js",
+            element: "simple-fields-image-framing",
+            noWrap: true,
+            properties: {
+              sourceProperty: "sourceProperty",
+              focalXProperty: "focalXProperty",
+              focalYProperty: "focalYProperty",
+            },
           },
         },
       },

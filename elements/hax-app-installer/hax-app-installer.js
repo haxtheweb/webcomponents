@@ -613,7 +613,7 @@ export class HaxAppInstaller extends I18NMixin(LitElement) {
           font-size: var(--hax-ui-admin-font-size-xs);
           font-weight: var(--ddd-font-weight-bold, 700);
           text-transform: uppercase;
-          letter-spacing: 0.06em;
+          letter-spacing: var(--ddd-label-letter-spacing, 0.06em);
           color: var(--hax-ui-text-muted);
         }
         haxcms-language-picker {
@@ -931,7 +931,7 @@ export class HaxAppInstaller extends I18NMixin(LitElement) {
           font-size: var(--hax-ui-admin-font-size-xs);
           font-weight: var(--ddd-font-weight-bold, 700);
           text-transform: uppercase;
-          letter-spacing: 0.06em;
+          letter-spacing: var(--ddd-label-letter-spacing, 0.06em);
           color: var(--hax-ui-text-muted);
         }
         retro-tv {
@@ -1286,7 +1286,7 @@ export class HaxAppInstaller extends I18NMixin(LitElement) {
           white-space: nowrap;
           color: #5dff8a;
           text-shadow: 0 0 6px rgba(93, 255, 138, 0.7);
-          letter-spacing: 0.06em;
+          letter-spacing: var(--ddd-label-letter-spacing, 0.06em);
         }
         .bnr .bsub {
           grid-column: 1 / -1;

@@ -954,7 +954,7 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
         .title {
           font-family: "Monoton", "Archivo Black", sans-serif;
           font-size: 40px;
-          line-height: 1;
+          line-height: var(--ddd-lh-100, 1);
           letter-spacing: 0.04em;
           color: var(--vhs-neon);
           text-shadow:
@@ -1163,7 +1163,7 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           text-transform: var(--vhs-case-transform);
           letter-spacing: var(--vhs-case-spacing);
           font-size: var(--vhs-tape-size);
-          line-height: 1;
+          line-height: var(--ddd-lh-100, 1);
         }
         .tape .stk {
           flex: none;
@@ -1305,7 +1305,7 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           font-weight: var(--vhs-case-weight);
           text-transform: var(--vhs-case-transform);
           font-size: 20px;
-          line-height: 1;
+          line-height: var(--ddd-lh-100, 1);
           overflow: hidden;
         }
         .fly .mouth {

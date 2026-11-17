@@ -138,6 +138,17 @@ class CleanOne extends LTIResizingMixin(
           color: var(--ddd-lightDark-text);
           color-scheme: light dark;
         }
+        /* dark mode reads palette steps 6 and 2 as the light accents, and
+           palette 4 has a dark slate at step 6 (its other steps run light
+           to dark), which gave dark breadcrumb links and hover states on
+           the dark page; use the matching light blue grey so palette 4
+           follows the same ladder as palette 5 */
+        :host([data-palette="4"]) {
+          --ddd-palette-6: var(
+            --simple-colors-fixed-theme-blue-grey-3,
+            #9badb6
+          );
+        }
         :host([is-logged-in]) {
           min-height: calc(100vh - 56px);
         }
@@ -173,8 +184,12 @@ class CleanOne extends LTIResizingMixin(
           --site-menu-active-color: var(--ddd-lightDark-2);
           --site-menu-item-active-item-color: var(--ddd-lightDark-7);
           --map-menu-item-a-color: var(--ddd-lightDark-1);
-          --map-menu-item-a-active-color: var(--ddd-lightDark-5);
-          --map-menu-item-a-active-background-color: var(--ddd-lightDark-2);
+          /* the open page is the rail inverted (its text color as the
+             background, its background as the text), so it has the same
+             contrast as every other row in each palette and color scheme;
+             palette accents gave dark on dark in some palettes */
+          --map-menu-item-a-active-color: var(--ddd-lightDark-7);
+          --map-menu-item-a-active-background-color: var(--ddd-lightDark-1);
           --map-menu-item-icon-active-color: var(--ddd-lightDark-1);
           --site-menu-container-background-color: var(--ddd-lightDark-7);
           font-family: var(--ddd-font-navigation);

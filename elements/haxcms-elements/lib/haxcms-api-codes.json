@@ -967,6 +967,36 @@
       "match": ["required plugins cannot be disabled"]
     },
     {
+      "code": "PLUGIN_BLOCKED",
+      "en": "This plugin is blocked for this HAXcms.",
+      "match": ["blocked by deployment config"]
+    },
+    {
+      "code": "PLUGIN_LOCKED",
+      "en": "This plugin is locked on for this HAXcms and can't be turned off.",
+      "match": ["locked by deployment config"]
+    },
+    {
+      "code": "PLUGIN_SYSTEM_ENABLED",
+      "en": "This plugin is on for every site, so a site can't turn it off.",
+      "match": ["enabled for the whole system; a site cannot turn it off"]
+    },
+    {
+      "code": "PLUGIN_SETTINGS_SCOPE",
+      "en": "This plugin's settings aren't saved here.",
+      "match": ["these settings are not saved in this scope"]
+    },
+    {
+      "code": "PLUGIN_RATE_LIMITED",
+      "en": "Too many requests. Try again shortly.",
+      "match": ["too many requests"]
+    },
+    {
+      "code": "PLUGIN_DEPENDENCIES_OFF",
+      "en": "Turn on the plugins this one depends on first.",
+      "match": ["enable its dependencies first"]
+    },
+    {
       "code": "PLUGIN_HAS_DEPENDENTS",
       "en": "Other plugins depend on this one. Turn them off first.",
       "match": ["other plugins depend on it"]

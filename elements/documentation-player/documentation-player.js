@@ -224,7 +224,7 @@ export class DocumentationPlayer extends DDDSuper(I18NMixin(LitElement)) {
         }
         .badge {
           font-size: var(--ddd-font-size-4xs);
-          letter-spacing: 0.06em;
+          letter-spacing: var(--ddd-label-letter-spacing, 0.06em);
           text-transform: uppercase;
           color: var(--dp-second);
           border: 1px solid var(--dp-line);

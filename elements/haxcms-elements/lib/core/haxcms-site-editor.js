@@ -2320,6 +2320,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
             "locked",
             "published",
             "hideInMenu",
+            "hideTitle",
             "overridePathauto",
             "pageType",
             "theme",
@@ -2622,6 +2623,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
             "locked",
             "published",
             "hideInMenu",
+            "hideTitle",
             "overridePathauto",
           ];
           metadataKeys.forEach((key) => {

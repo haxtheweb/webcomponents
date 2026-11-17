@@ -1,0 +1,61 @@
+{
+  "api": "1",
+  "type": "element",
+  "canScale": false,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "Footnote",
+    "description": "A note written where it belongs in the text. It shows as a number, and the numbered list of notes builds itself at the bottom of the page.",
+    "icon": "editor:format-list-numbered",
+    "color": "blue",
+    "tags": ["Instructional", "footnote", "citation", "note", "reference"],
+    "handles": [
+      {
+        "type": "inline",
+        "text": ""
+      }
+    ],
+    "meta": {
+      "author": "HAXTheWeb core team",
+      "inlineOnly": true
+    }
+  },
+  "settings": {
+    "inline": [
+      {
+        "slot": "",
+        "title": "Note",
+        "description": "The text of the footnote.",
+        "inputMethod": "textarea",
+        "required": true
+      }
+    ],
+    "configure": [
+      {
+        "slot": "",
+        "title": "Note",
+        "description": "The text of the footnote.",
+        "inputMethod": "textarea",
+        "required": true
+      },
+      {
+        "property": "noPreview",
+        "title": "No preview",
+        "description": "Don't show the note when a reader hovers or focuses the number.",
+        "inputMethod": "boolean"
+      }
+    ],
+    "advanced": []
+  },
+  "saveOptions": {
+    "wipeSlot": false,
+    "unsetAttributes": ["number"]
+  },
+  "demoSchema": [
+    {
+      "tag": "a11y-footnote",
+      "properties": {},
+      "content": "Morrill Land-Grant Act, 7 U.S.C. § 301 et seq. (1862)."
+    }
+  ]
+}

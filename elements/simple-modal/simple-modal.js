@@ -141,7 +141,7 @@ class SimpleModal extends I18NMixin(LitElement) {
           align-items: center;
           gap: var(--ddd-spacing-2);
           flex-wrap: wrap;
-          line-height: 1;
+          line-height: var(--ddd-lh-100, 1);
         }
         .title-inline {
           display: inline-flex;
@@ -242,6 +242,14 @@ class SimpleModal extends I18NMixin(LitElement) {
         .breadcrumb-button:focus-visible {
           text-decoration: underline;
           outline: none;
+        }
+        /* keyboard focus gets a ring in the title's own color (an underline
+           alone is the hover look, and easy to miss): it contrasts with the
+           title bar in every theme because the title text does */
+        .breadcrumb-button:focus-visible {
+          outline: var(--ddd-border-size-sm, 2px) solid currentColor;
+          outline-offset: var(--ddd-spacing-1, 4px);
+          border-radius: var(--ddd-radius-xs, 4px);
         }
 
         #headerbar {

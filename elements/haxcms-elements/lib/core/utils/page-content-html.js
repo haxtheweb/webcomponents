@@ -75,6 +75,9 @@ export function buildPageContentHTML(htmlcontent, activeItem, options = {}) {
   if (metadata.hideInMenu) {
     pageBreak.setAttribute("hide-in-menu", "hide-in-menu");
   }
+  if (metadata.hideTitle) {
+    pageBreak.setAttribute("hide-title", "hide-title");
+  }
   if (metadata.locked) {
     pageBreak.setAttribute("locked", "locked");
   }

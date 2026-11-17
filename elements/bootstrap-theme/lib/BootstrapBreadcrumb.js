@@ -50,6 +50,13 @@ class BootstrapBreadcrumb extends I18NMixin(LitElement) {
           list-style-type: none;
           display: flex;
         }
+        /* Bootstrap 5 dropped the breadcrumb's own padding (it is 0 unless
+           set); keep the 0.75rem 1rem bar Bootstrap 4 drew. :host outranks
+           the adopted Bootstrap sheet, which loads after these styles */
+        :host .breadcrumb {
+          --bs-breadcrumb-padding-x: 1rem;
+          --bs-breadcrumb-padding-y: 0.75rem;
+        }
         .breadcrumb-item {
           padding: 0.5rem 0.75rem;
           color: light-dark(black, white);

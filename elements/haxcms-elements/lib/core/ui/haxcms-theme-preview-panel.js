@@ -638,6 +638,15 @@ class HAXCMSThemePreviewPanel extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
       return;
     }
     this.selectedTheme = value;
+    // a palette this theme does not support goes back to its default
+    const supported = this._getSupportedPalettesForTheme(value);
+    if (
+      supported &&
+      this.selectedPalette &&
+      !supported.map((p) => String(p)).includes(String(this.selectedPalette))
+    ) {
+      this.selectedPalette = "";
+    }
     this._applyPreviewToManifest();
     this._whenThemeDefined(value);
   }

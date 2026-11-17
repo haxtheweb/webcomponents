@@ -1,0 +1,43 @@
+{
+  "tag": "fluent-theme",
+  "folder": "fluent-theme",
+  "package": "@haxtheweb/fluent-theme",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "fluent-theme",
+  "description": "Microsoft Fluent 2 theme for HAXcms, built on the DDD-capable Fluent 2 design system bridge",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/fluent-theme/fluent-theme.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/fluent-theme/fluent-theme.js",
+  "install": "npm i @haxtheweb/fluent-theme",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "sidebar-open",
+      "property": "sidebarOpen",
+      "type": "boolean",
+      "default": "true",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "ce8c2663acfd",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/fluent-theme",
+    "file": "fluent-theme.js"
+  }
+}

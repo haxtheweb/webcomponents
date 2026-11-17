@@ -209,6 +209,22 @@ mirror_from_nodejs src/coreConfig system/coreConfig
 # create cli needs wc-reg for validation purposes
 cp ~/haxtheweb/webcomponents/wc-registry.json ~/haxtheweb/create/src/lib/wc-registry.json
 
+## STEP 4.5 RELEASE GATE (haxtheweb/issues#3334)
+# Before anything is committed, tagged or published: both backends must serve
+# the same OpenAPI contract, and every golden parity case must match on
+# haxcms-nodejs, haxcms-php and the CLI running on this haxcms-nodejs (the
+# snapshots in create are the expected output). It builds haxcms-nodejs and
+# the CLI from the trees about to ship and links the CLI to this
+# haxcms-nodejs for the run only. It logs in to the local haxcms-php as
+# HAX_PARITY_PHP_USER / HAX_PARITY_PHP_PASS (default admin / admin).
+# A failure is a parity break to fix, or an intended output change: refresh
+# the snapshots in create (--update-golden), review and commit them, rerun.
+cd ~/haxtheweb/create
+if ! npm run test:parity:release -- --nodejs ~/haxtheweb/haxcms-nodejs --php ~/haxtheweb/haxcms-php --build --link-cli; then
+  echo "ERROR: release gate failed, nothing was committed or tagged. Report: ~/haxtheweb/create/parity-results/release-gate.md"
+  exit 1
+fi
+
 
 ## STEP 4 COMPONENT GALLERY NEEDS REBUILT FOR CDN PUBLISHING
 cd ~/haxtheweb/webcomponents
