@@ -249,7 +249,6 @@ function adminRootsSource() {
 
 // runs in the page: axe's color-contrast rule, kept to admin chrome
 async function runTextRule(rootsSource) {
-  // eslint-disable-next-line no-new-func
   const roots = new Function(`${rootsSource}; return roots;`)();
   const inAdmin = (node) => {
     let el = node;
@@ -288,7 +287,6 @@ async function runTextRule(rootsSource) {
 
 // runs in the page: WCAG 1.4.11 for the controls in admin chrome
 function runNonTextRule(rootsSource) {
-  // eslint-disable-next-line no-new-func
   const roots = new Function(`${rootsSource}; return roots;`)();
   const canvas = document.createElement("canvas");
   canvas.width = canvas.height = 1;
