@@ -14,6 +14,7 @@ import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import { DDDSuper } from "../d-d-d.js";
 import {
   ApplicationAttributeData,
+  DDDColorOptionLabel,
   DDDDataAttributes,
   DDDReadingList,
 } from "./DDDStyles.js";
@@ -290,6 +291,24 @@ export class DDDSample extends DDDSuper(LitElement) {
     ];
   }
 
+  connectedCallback() {
+    super.connectedCallback();
+    // color names follow the active design system
+    this.__designSystemChanged = () => this.requestUpdate();
+    globalThis.addEventListener(
+      "design-system-active-changed",
+      this.__designSystemChanged,
+    );
+  }
+
+  disconnectedCallback() {
+    globalThis.removeEventListener(
+      "design-system-active-changed",
+      this.__designSystemChanged,
+    );
+    super.disconnectedCallback();
+  }
+
   updated(changedProperties) {
     if (super.updated) {
       super.updated(changedProperties);
@@ -376,6 +395,10 @@ export class DDDSample extends DDDSuper(LitElement) {
     const options = this.type ? ApplicationAttributeData[this.type] : null;
     if (!options || options[this.option] == null) {
       return "";
+    }
+    // a color is named by the active design system, not always by DDD
+    if (this.type === "primary" || this.type === "accent") {
+      return DDDColorOptionLabel(this.type, this.option);
     }
     return options[this.option];
   }

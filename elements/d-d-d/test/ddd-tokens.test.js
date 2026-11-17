@@ -12,6 +12,8 @@ import {
   iconFromPageType,
   HAXOptionSampleFactory,
   ApplicationAttributeData,
+  DDDColorOptionLabel,
+  DDDMeaningColorOptions,
   learningComponentNouns,
   learningComponentVerbs,
   learningComponentTypes,
@@ -332,6 +334,78 @@ describe("d-d-d-sample label", () => {
     expect(el.sampleLabel).to.equal(ApplicationAttributeData.margin.s);
     expect(el.shadowRoot.querySelector(".label").textContent).to.contain(
       ApplicationAttributeData.margin.s,
+    );
+  });
+});
+
+describe("color option names follow the active design system", () => {
+  const manager = globalThis.DesignSystemManager.requestAvailability();
+  let previous;
+  beforeEach(() => {
+    previous = manager.active;
+    manager.addDesignSystem({
+      name: "test-bridge",
+      extends: "ddd",
+      styles: [],
+      fonts: [],
+      colorNames: { primary: { 2: "Blue 80" }, accent: { 0: "Blue 10" } },
+    });
+  });
+  afterEach(() => {
+    manager.active = previous;
+    delete manager.systems["test-bridge"];
+  });
+
+  it("keeps DDD names under DDD", () => {
+    manager.active = "ddd";
+    expect(DDDColorOptionLabel("primary", "2")).to.equal("Nittany navy");
+    expect(DDDColorOptionLabel("accent", "0")).to.equal("Sky Max");
+  });
+
+  it("uses the bridged system's token name", () => {
+    manager.active = "test-bridge";
+    expect(DDDColorOptionLabel("primary", "2")).to.equal("Blue 80");
+    expect(DDDColorOptionLabel("accent", 0)).to.equal("Blue 10");
+  });
+
+  it("numbers an option the bridged system has no name for", () => {
+    manager.active = "test-bridge";
+    expect(DDDColorOptionLabel("primary", "15")).to.equal("Primary 15");
+    expect(DDDColorOptionLabel("accent", "3")).to.equal("Accent 3");
+  });
+
+  it("never shows a DDD color name under a bridge", () => {
+    manager.active = "test-bridge";
+    ["primary", "accent"].forEach((type) => {
+      Object.keys(ApplicationAttributeData[type])
+        .filter((key) => !DDDMeaningColorOptions[type].includes(key))
+        .forEach((key) => {
+          expect(DDDColorOptionLabel(type, key)).to.not.equal(
+            ApplicationAttributeData[type][key],
+          );
+        });
+    });
+  });
+
+  it("keeps labels that name a meaning", () => {
+    manager.active = "test-bridge";
+    expect(DDDColorOptionLabel("primary", "22")).to.equal("Error");
+    expect(DDDColorOptionLabel("accent", "6")).to.equal("White");
+  });
+
+  it("leaves other option types alone", () => {
+    manager.active = "test-bridge";
+    expect(DDDColorOptionLabel("margin", "s")).to.equal("Small");
+  });
+
+  it("d-d-d-sample shows the active system's name", async () => {
+    manager.active = "test-bridge";
+    const el = await fixture(
+      html`<d-d-d-sample type="primary" option="2"></d-d-d-sample>`,
+    );
+    expect(el.sampleLabel).to.equal("Blue 80");
+    expect(el.shadowRoot.querySelector(".label").textContent).to.contain(
+      "Blue 80",
     );
   });
 });

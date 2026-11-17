@@ -450,6 +450,40 @@
       "source": "ddd"
     }
   ],
+  "colorNames": {
+    "primary": {
+      "0": "Blue 400",
+      "1": "Blue 900",
+      "2": "Blue 1200",
+      "3": "Blue 1400",
+      "4": "Gray 800",
+      "5": "Gray 400",
+      "6": "Gray 700",
+      "7": "Seafoam 700",
+      "8": "Blue 500",
+      "9": "Orange 800",
+      "10": "Yellow 800",
+      "11": "Magenta 1000",
+      "12": "Red 600",
+      "13": "Purple 1100",
+      "14": "Purple 400",
+      "15": "Orange 600",
+      "16": "Yellow 400",
+      "17": "Green 1000",
+      "18": "Celery 400",
+      "19": "Green 900",
+      "20": "Orange 1300",
+      "21": "Yellow 300"
+    },
+    "accent": {
+      "0": "Blue 100",
+      "1": "Gray 75",
+      "2": "Gray 50",
+      "3": "Orange 100",
+      "4": "Yellow 100",
+      "5": "Seafoam 100"
+    }
+  },
   "problems": [],
   "contract": 1,
   "map": [

@@ -6,6 +6,7 @@ globalThis.process = globalThis.process || {
 import { fixture, expect, html } from "@open-wc/testing";
 import { CarbonTheme } from "../carbon-theme.js";
 import { DesignSystemManager } from "@haxtheweb/d-d-d/lib/DesignSystemManager.js";
+import { DDDColorOptionLabel } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
 import { CARBON_SYSTEM } from "../lib/CarbonDesignSystem.js";
 
 describe("carbon-theme", () => {
@@ -32,6 +33,12 @@ describe("carbon-theme", () => {
     expect(DesignSystemManager.active).to.equal(CARBON_SYSTEM);
     expect(DesignSystemManager.systems[CARBON_SYSTEM].extends).to.equal("ddd");
     expect(DesignSystemManager.isActiveCompatible("ddd")).to.be.true;
+  });
+
+  it("names picker colors after Carbon tokens, not DDD colors", () => {
+    expect(DDDColorOptionLabel("primary", "2")).to.equal("Blue 80");
+    expect(DDDColorOptionLabel("accent", "1")).to.equal("Cool Gray 10");
+    expect(DDDColorOptionLabel("primary", "22")).to.equal("Error");
   });
 
   it("points DDD tokens at Carbon tokens", () => {

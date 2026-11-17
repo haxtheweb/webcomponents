@@ -13,7 +13,10 @@ import {
   PatternflyTokens,
   PatternflyFonts,
 } from "@haxtheweb/patternfly-theme/lib/PatternflyTokens.js";
-import { PatternflyDDDMap } from "@haxtheweb/patternfly-theme/lib/PatternflyDDDMap.js";
+import {
+  PatternflyDDDMap,
+  PatternflyColorNames,
+} from "@haxtheweb/patternfly-theme/lib/PatternflyDDDMap.js";
 
 export const PATTERNFLY_SYSTEM = "patternfly";
 
@@ -25,6 +28,8 @@ export function registerPatternflyDesignSystem(manager = DesignSystemManager) {
       extends: "ddd",
       styles: [PatternflyTokens, PatternflyDDDMap],
       fonts: PatternflyFonts,
+      // the color pickers name each option after the token it now shows
+      colorNames: PatternflyColorNames,
     });
   }
   return manager;

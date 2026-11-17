@@ -3,6 +3,7 @@
   "system": "tailwind",
   "title": "Tailwind",
   "prefix": "Tailwind",
+  "colorNames": { "strip": ["--color-"] },
   "homepage": "https://tailwindcss.com",
   "sources": [
     {

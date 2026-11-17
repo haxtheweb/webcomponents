@@ -3,6 +3,7 @@
   "system": "primer",
   "title": "Primer",
   "prefix": "Primer",
+  "colorNames": { "strip": ["--display-"] },
   "homepage": "https://primer.style",
   "sources": [
     {

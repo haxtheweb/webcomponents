@@ -13,7 +13,10 @@ import {
   PrimerTokens,
   PrimerFonts,
 } from "@haxtheweb/primer-theme/lib/PrimerTokens.js";
-import { PrimerDDDMap } from "@haxtheweb/primer-theme/lib/PrimerDDDMap.js";
+import {
+  PrimerDDDMap,
+  PrimerColorNames,
+} from "@haxtheweb/primer-theme/lib/PrimerDDDMap.js";
 import { PrimerIcons } from "@haxtheweb/primer-theme/lib/PrimerIcons.js";
 
 export const PRIMER_SYSTEM = "primer";
@@ -26,6 +29,8 @@ export function registerPrimerDesignSystem(manager = DesignSystemManager) {
       extends: "ddd",
       styles: [PrimerTokens, PrimerDDDMap],
       fonts: PrimerFonts,
+      // the color pickers name each option after the token it now shows
+      colorNames: PrimerColorNames,
       // HAX icon names drawn in Primer's own icon set while it is active
       icons: PrimerIcons,
     });

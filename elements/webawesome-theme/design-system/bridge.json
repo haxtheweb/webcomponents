@@ -3,6 +3,7 @@
   "system": "webawesome",
   "title": "Web Awesome",
   "prefix": "Webawesome",
+  "colorNames": { "strip": ["--wa-color-"] },
   "homepage": "https://webawesome.com",
   "sources": [
     {

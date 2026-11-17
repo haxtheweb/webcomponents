@@ -3,6 +3,7 @@
   "system": "shadcn",
   "title": "shadcn/ui",
   "prefix": "Shadcn",
+  "colorNames": { "strip": ["--color-"] },
   "homepage": "https://ui.shadcn.com",
   "sources": [
     {

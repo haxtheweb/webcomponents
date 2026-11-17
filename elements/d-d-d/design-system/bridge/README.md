@@ -55,6 +55,17 @@ The generator fails when a bridge maps a locked token, maps a token the contract
 
 Changing the contract changes what every bridge may do. Do it in its own PR, then regenerate every bridge.
 
+## Color names in the pickers
+
+HAX's primary and accent color pickers list options by number (`data-primary="2"`) and DDD names each one after its own color ("Nittany navy"). Under a bridge that option shows another system's color, so the generator names it after the token it now points at and writes the names to `<Prefix>ColorNames` in `lib/<Prefix>DDDMap.js` (and `colorNames` in the report):
+
+- A token name is cleaned up for reading: `--carbon-blue-80` is "Blue 80", `--md-ref-palette-primary40` is "Primary 40". `"colorNames": { "strip": ["--pf-t--color--"] }` in `bridge.json` lists the leading part to drop when it isn't `--<system>-`. A camelCase name (Primer's `fgColor-accent`) is kept as written.
+- A map entry can set `"name"` to say it another way.
+- An option the bridge answers with a literal value has no token to name it, so the picker shows a numbered name ("Primary 11", "Accent 3"). A DDD color name never shows under a bridge.
+- Options named for what they mean (Error, Warning, Info, Success, the alert colors, White) keep that label in every system.
+
+`lib/<Prefix>DesignSystem.js` passes `colorNames: <Prefix>ColorNames` to `addDesignSystem`. `DDDColorOptionLabel(type, option)` in `DDDStyles.js` is what the pickers read.
+
 ## Icons
 
 HAX blocks and themes draw icons by name (`icons:search`, `editor:format-bold`) through `simple-icon`. A bridge whose system ships an icon set under a shippable license can draw those names in its own set while it is active:

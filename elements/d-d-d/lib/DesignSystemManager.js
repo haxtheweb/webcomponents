@@ -124,7 +124,7 @@ export class DesignSystem extends LitElement {
       if (system.fonts && system.fonts.length > 0) {
         resolved.fonts = system.fonts;
       }
-      ["hax", "onload", "icons"].forEach((key) => {
+      ["hax", "onload", "icons", "colorNames"].forEach((key) => {
         if (system[key] !== undefined) {
           resolved[key] = system[key];
         }
@@ -134,6 +134,26 @@ export class DesignSystem extends LitElement {
       resolved.fonts = [];
     }
     return resolved;
+  }
+  /**
+   * A dialect that remaps DDD's colors says what each primary / accent
+   * option is called in its own terms ({ primary: { 2: "Blue 80" },
+   * accent: {...} }), so the color pickers don't show a DDD color name
+   * over another system's color. The most specific system in the active
+   * chain wins; null means the active system keeps DDD's names.
+   * @returns {Object|null}
+   */
+  activeColorNames() {
+    if (!this.active) {
+      return null;
+    }
+    const chain = this.systemChain(this.active);
+    for (let i = chain.length - 1; i >= 0; i--) {
+      if (chain[i].colorNames) {
+        return chain[i].colorNames;
+      }
+    }
+    return null;
   }
   _integrationContextFromRuntime() {
     let editMode = false;

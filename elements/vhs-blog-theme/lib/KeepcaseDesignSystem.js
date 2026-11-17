@@ -14,7 +14,10 @@ import {
   KeepcaseTokens,
   KeepcaseFonts,
 } from "@haxtheweb/vhs-blog-theme/lib/KeepcaseTokens.js";
-import { KeepcaseDDDMap } from "@haxtheweb/vhs-blog-theme/lib/KeepcaseDDDMap.js";
+import {
+  KeepcaseDDDMap,
+  KeepcaseColorNames,
+} from "@haxtheweb/vhs-blog-theme/lib/KeepcaseDDDMap.js";
 
 export const KEEPCASE_SYSTEM = "keepcase";
 
@@ -26,6 +29,8 @@ export function registerKeepcaseDesignSystem(manager = DesignSystemManager) {
       extends: "ddd",
       styles: [KeepcaseTokens, KeepcaseDDDMap],
       fonts: KeepcaseFonts,
+      // the color pickers name each option after the token it now shows
+      colorNames: KeepcaseColorNames,
     });
   }
   return manager;

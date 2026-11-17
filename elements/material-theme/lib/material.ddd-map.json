@@ -514,6 +514,40 @@
       "source": "ddd"
     }
   ],
+  "colorNames": {
+    "primary": {
+      "0": "Primary 80",
+      "1": "Primary 40",
+      "2": "Primary 20",
+      "3": "Primary 10",
+      "4": "Neutral 10",
+      "5": "Neutral 70",
+      "6": "Neutral Variant 40",
+      "7": "Cyan 60",
+      "8": "Blue 70",
+      "9": "Tertiary 60",
+      "10": "Yellow 50",
+      "11": "Pink 40",
+      "12": "Red 70",
+      "13": "Purple 30",
+      "14": "Purple 80",
+      "15": "Orange 70",
+      "16": "Yellow 80",
+      "17": "Green 30",
+      "18": "Green 80",
+      "19": "Green 40",
+      "20": "Orange 20",
+      "21": "Yellow 90"
+    },
+    "accent": {
+      "0": "Blue 95",
+      "1": "Neutral Variant 95",
+      "2": "Neutral 95",
+      "3": "Tertiary 95",
+      "4": "Yellow 95",
+      "5": "Cyan 95"
+    }
+  },
   "problems": [],
   "contract": 1,
   "map": [

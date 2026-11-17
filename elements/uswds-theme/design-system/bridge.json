@@ -3,6 +3,7 @@
   "system": "uswds",
   "title": "USWDS",
   "prefix": "Uswds",
+  "colorNames": { "strip": ["--usa-"] },
   "homepage": "https://designsystem.digital.gov",
   "sources": [
     {

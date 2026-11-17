@@ -3,6 +3,7 @@
   "system": "patternfly",
   "title": "PatternFly",
   "prefix": "Patternfly",
+  "colorNames": { "strip": ["--pf-t--color--"] },
   "homepage": "https://www.patternfly.org",
   "sources": [
     {

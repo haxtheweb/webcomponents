@@ -13,7 +13,10 @@ import {
   MaterialTokens,
   MaterialFonts,
 } from "@haxtheweb/material-theme/lib/MaterialTokens.js";
-import { MaterialDDDMap } from "@haxtheweb/material-theme/lib/MaterialDDDMap.js";
+import {
+  MaterialDDDMap,
+  MaterialColorNames,
+} from "@haxtheweb/material-theme/lib/MaterialDDDMap.js";
 import { MaterialIcons } from "@haxtheweb/material-theme/lib/MaterialIcons.js";
 
 export const MATERIAL_SYSTEM = "material";
@@ -26,6 +29,8 @@ export function registerMaterialDesignSystem(manager = DesignSystemManager) {
       extends: "ddd",
       styles: [MaterialTokens, MaterialDDDMap],
       fonts: MaterialFonts,
+      // the color pickers name each option after the token it now shows
+      colorNames: MaterialColorNames,
       // HAX icon names drawn in Material's own icon set while it is active
       icons: MaterialIcons,
     });

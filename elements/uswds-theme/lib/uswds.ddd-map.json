@@ -490,6 +490,40 @@
       "source": "ddd"
     }
   ],
+  "colorNames": {
+    "primary": {
+      "0": "Blue 30",
+      "1": "Blue Vivid 60",
+      "2": "Blue Warm Vivid 70",
+      "3": "Blue Warm Vivid 80",
+      "4": "Gray 90",
+      "5": "Gray Cool 20",
+      "6": "Gray Cool 60",
+      "7": "Mint Cool Vivid 30",
+      "8": "Cyan Vivid 20",
+      "9": "Gold 30",
+      "10": "Gold Vivid 30",
+      "11": "Magenta Vivid 60",
+      "12": "Red Warm Vivid 30",
+      "13": "Violet Vivid 70",
+      "14": "Violet 30",
+      "15": "Orange Vivid 30",
+      "16": "Gold Vivid 20",
+      "17": "Green Cool Vivid 60",
+      "18": "Green Cool Vivid 20",
+      "19": "Green Cool Vivid 50",
+      "20": "Orange Warm 70",
+      "21": "Yellow Vivid 10"
+    },
+    "accent": {
+      "0": "Cyan 5",
+      "1": "Gray Cool 5",
+      "2": "Gray 5",
+      "3": "Gold 5",
+      "4": "Yellow 5",
+      "5": "Mint Cool 5"
+    }
+  },
   "problems": [],
   "contract": 1,
   "map": [

@@ -3,6 +3,7 @@
   "system": "material",
   "title": "Material 3",
   "prefix": "Material",
+  "colorNames": { "strip": ["--md-ref-palette-"] },
   "homepage": "https://m3.material.io",
   "sources": [
     {

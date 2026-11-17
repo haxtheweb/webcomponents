@@ -13,7 +13,10 @@ import {
   ShadcnTokens,
   ShadcnFonts,
 } from "@haxtheweb/shadcn-theme/lib/ShadcnTokens.js";
-import { ShadcnDDDMap } from "@haxtheweb/shadcn-theme/lib/ShadcnDDDMap.js";
+import {
+  ShadcnDDDMap,
+  ShadcnColorNames,
+} from "@haxtheweb/shadcn-theme/lib/ShadcnDDDMap.js";
 import { ShadcnIcons } from "@haxtheweb/shadcn-theme/lib/ShadcnIcons.js";
 
 export const SHADCN_SYSTEM = "shadcn";
@@ -26,6 +29,8 @@ export function registerShadcnDesignSystem(manager = DesignSystemManager) {
       extends: "ddd",
       styles: [ShadcnTokens, ShadcnDDDMap],
       fonts: ShadcnFonts,
+      // the color pickers name each option after the token it now shows
+      colorNames: ShadcnColorNames,
       // HAX icon names drawn in Shadcn's own icon set while it is active
       icons: ShadcnIcons,
     });

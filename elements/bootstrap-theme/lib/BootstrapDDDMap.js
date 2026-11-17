@@ -132,3 +132,40 @@ export const BootstrapDDDMap = css`
     --ddd-primary-25-rgb: 10, 54, 34;
   }
 `;
+
+/**
+ * What the color pickers call each primary / accent option while
+ * Bootstrap is active: the Bootstrap token that option now shows.
+ */
+export const BootstrapColorNames = {
+  primary: {
+    0: "Primary Border Subtle",
+    1: "Link Hover Color",
+    2: "Primary Text Emphasis",
+    3: "Primary Bg Subtle",
+    4: "Gray 900",
+    5: "Gray 500",
+    6: "Gray 700",
+    7: "Teal",
+    8: "Link Color",
+    9: "Gray 500",
+    10: "Orange",
+    12: "Danger Border Subtle",
+    13: "Purple",
+    15: "Orange",
+    16: "Yellow",
+    17: "Green",
+    18: "Success Text Emphasis",
+    19: "Success Text Emphasis",
+    20: "Warning Text Emphasis",
+    21: "Warning Border Subtle",
+  },
+  accent: {
+    0: "Primary Bg Subtle",
+    1: "Gray 100",
+    2: "Gray 100",
+    3: "Gray 100",
+    4: "Warning Bg Subtle",
+    5: "Success Bg Subtle",
+  },
+};

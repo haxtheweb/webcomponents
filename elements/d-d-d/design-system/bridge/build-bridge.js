@@ -27,7 +27,9 @@
  *
  * Output (in <theme>/lib/):
  *   <Prefix>Tokens.js        upstream tokens as CSS (light-dark() pairs)
- *   <Prefix>DDDMap.js        --ddd-* → upstream token remap as CSS
+ *   <Prefix>DDDMap.js        --ddd-* → upstream token remap as CSS, plus
+ *                            <Prefix>ColorNames: what the color pickers call
+ *                            each remapped primary / accent option
  *   <system>.ddd-map.json    machine-readable map + per-tier coverage + contrast report
  *   <Prefix>Icons.js         (with "icons" in bridge.json) HAX icon name → this
  *                            system's icon, for simple-icon; the icons it
@@ -780,6 +782,7 @@ const rows = Object.keys(map).map((dddName) => {
     light: lightValue,
     dark: darkValue,
     note: entry.note || "",
+    name: entry.name || "",
   };
 });
 
@@ -1083,6 +1086,54 @@ ddd
     });
   });
 
+/*
+ * Color picker names. The primary / accent pickers list options by number
+ * (data-primary="2"), and DDD names each one after its own color ("Nittany
+ * navy"). Under a bridge that option shows another system's color, so it
+ * takes that system's token name ("Blue 80"). An entry can set "name"
+ * itself. Options a bridge answers with a literal value get no name here
+ * and the picker falls back to a numbered one ("Primary 2"). Options that
+ * are named for what they mean (error, warning, info, success, alerts,
+ * white) keep DDD's label in every system and are left out.
+ */
+const MEANING_COLOR =
+  /^--ddd-theme-default-(error|warning|info|success|alert|white)/;
+const nameStrip = [
+  ...((config.colorNames && config.colorNames.strip) || []),
+  `--${config.system}-`,
+  "--",
+].sort((a, b) => b.length - a.length);
+const tokenLabel = (token) => {
+  const strip = nameStrip.find((start) => token.startsWith(start));
+  const bare = token.slice(strip.length);
+  // a camelCase name (Primer's fgColor-accent) reads best as written
+  if (/[A-Z]/.test(bare)) return bare;
+  return bare
+    .split(/-+/)
+    .filter((word) => word)
+    .flatMap((word) => word.split(/(?<=[a-z])(?=\d)/))
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+};
+const colorNames = {};
+["primary", "accent"].forEach((type) => {
+  const names = {};
+  ddd
+    .map((v) => new RegExp(`^ddd-${type}-(\\d+)$`).exec(v.name))
+    .filter((m) => m)
+    .forEach((m) => {
+      const alias = /var\(\s*(--ddd-theme-default-[\w-]+)/.exec(
+        dddByName[`--ddd-${type}-${m[1]}`].value,
+      );
+      if (!alias || MEANING_COLOR.test(alias[1])) return;
+      const row = rows.find((r) => r.ddd === alias[1]);
+      if (!row) return;
+      if (row.name) names[m[1]] = row.name;
+      else if (row.token) names[m[1]] = tokenLabel(row.token);
+    });
+  colorNames[type] = names;
+});
+
 /* ------------------------------------------------------------------ output */
 
 const prefix = config.prefix;
@@ -1240,7 +1291,10 @@ const mapJs =
     ? "\n    /* text color paired with each remapped palette, where DDD's own no longer reads */\n"
     : "") +
   onRows.map((r) => `    ${r.ddd}: ${r.css};`).join("\n") +
-  `\n  }\n\`;\n`;
+  `\n  }\n\`;\n\n` +
+  `/**\n * What the color pickers call each primary / accent option while\n` +
+  ` * ${config.title} is active: the ${config.title} token that option now shows.\n */\n` +
+  `export const ${prefix}ColorNames = ${JSON.stringify(colorNames, null, 2)};\n`;
 
 const report = {
   system: config.system,
@@ -1254,6 +1308,7 @@ const report = {
   coverage,
   contrast: contrastReport,
   pairs: pairsReport,
+  colorNames,
   problems,
   contract: contract.version,
   map: rows.map(({ ddd: d, tier, token, light: l, dark: dk, note }) => ({
