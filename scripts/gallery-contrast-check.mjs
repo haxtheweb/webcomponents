@@ -75,14 +75,18 @@ function pickElement(html) {
 // runs in the page: options of every select, shadow DOM included, whose
 // background is not opaque or whose text is under minRatio on it
 function openListFindings(minRatio) {
+  // any CSS color the browser reports (rgb(), or oklch() when a token is
+  // built with relative color syntax) to { r, g, b, a } by painting it
+  const canvas = document.createElement("canvas");
+  canvas.width = canvas.height = 1;
+  const cx = canvas.getContext("2d", { willReadFrequently: true });
   const parse = (value) => {
-    const m = /rgba?\(([^)]+)\)/.exec(value || "");
-    if (!m) return null;
-    const p = m[1]
-      .split(/[\s,/]+/)
-      .filter(Boolean)
-      .map(Number);
-    return { r: p[0], g: p[1], b: p[2], a: p.length > 3 ? p[3] : 1 };
+    if (!value || !globalThis.CSS.supports("color", value)) return null;
+    cx.clearRect(0, 0, 1, 1);
+    cx.fillStyle = value;
+    cx.fillRect(0, 0, 1, 1);
+    const d = cx.getImageData(0, 0, 1, 1).data;
+    return { r: d[0], g: d[1], b: d[2], a: d[3] / 255 };
   };
   const lum = (c) => {
     const ch = [c.r, c.g, c.b].map((v) => {
