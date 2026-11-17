@@ -70,6 +70,15 @@
           "medium": "Medium",
           "short": "Short"
         }
+      },
+      {
+        "property": "framing",
+        "title": "Framing",
+        "description": "How the photo sits at each screen size",
+        "inputMethod": "image-framing",
+        "sourceProperty": "source",
+        "focalXProperty": "focalX",
+        "focalYProperty": "focalY"
       }
     ],
     "advanced": [
@@ -112,7 +121,7 @@
     ]
   },
   "saveOptions": {
-    "unsetAttributes": ["playing"]
+    "unsetAttributes": ["playing", "preview-size"]
   },
   "demoSchema": [
     {

@@ -6,6 +6,24 @@ import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
+import {
+  FRAMING_SIZES,
+  FRAMING_FULL_WIDTHS,
+  parseFraming,
+  framingSource,
+  framingFullUrl,
+  framingCutUrl,
+  framingCutWidths,
+} from "./ImageFraming.js";
+
+// the hero's height at each screen size for each Height setting, and the
+// width each size is drawn at, for the frames authors frame against
+const HERO_SHAPES = {
+  tall: { sm: 320, md: 320, lg: 540, xl: 540 },
+  medium: { sm: 320, md: 320, lg: 400, xl: 400 },
+  short: { sm: 220, md: 220, lg: 280, xl: 280 },
+};
+const HERO_WIDTHS = { sm: 390, md: 768, lg: 1280, xl: 1920 };
 
 const VIDEO_TYPES = ["mp4", "webm", "ogg"];
 const IMAGE_TYPES = ["png", "jpg", "jpeg", "gif", "webp"];
@@ -40,6 +58,10 @@ export class DDDHero extends DDDSuper(I18NMixin(LitElement)) {
     this.fullWidth = false;
     this.focalX = 50;
     this.focalY = 50;
+    this.framing = "";
+    this.previewSize = "";
+    this._editing = false;
+    this._cutsFailed = false;
     // background motion starts paused when the visitor asks for less motion
     this.playing = !DDDHero.prefersReducedMotion();
     this.t = this.t || {};
@@ -47,6 +69,7 @@ export class DDDHero extends DDDSuper(I18NMixin(LitElement)) {
       ...this.t,
       pauseVideo: "Pause background video",
       playVideo: "Play background video",
+      frame: "Frame",
     };
     this.registerLocalization({
       context: this,
@@ -82,8 +105,21 @@ export class DDDHero extends DDDSuper(I18NMixin(LitElement)) {
       focalX: { type: Number, attribute: "focal-x" },
       /** Focal point, 0-100 from the top */
       focalY: { type: Number, attribute: "focal-y" },
+      /**
+       * How the photo is framed at each screen size, custom sizes only:
+       * JSON of { sm|md|lg|xl: { x, y, w, h } } in fractions of the photo.
+       * Edited with the image-framing field; see ImageFraming.js.
+       */
+      framing: { type: String },
+      /**
+       * Draw one screen size's framing whatever the screen is (the framing
+       * dialog's preview); not saved
+       */
+      previewSize: { type: String, attribute: "preview-size" },
       playing: { type: Boolean, state: true },
       _hasText: { type: Boolean, state: true },
+      _editing: { type: Boolean, state: true },
+      _cutsFailed: { type: Boolean, state: true },
     };
   }
 
@@ -139,6 +175,9 @@ export class DDDHero extends DDDSuper(I18NMixin(LitElement)) {
             rgba(0, 3, 33, 0.45) 45%,
             rgba(0, 3, 33, 0) 80%
           );
+        }
+        picture {
+          display: contents;
         }
         img,
         video {
@@ -213,7 +252,7 @@ export class DDDHero extends DDDSuper(I18NMixin(LitElement)) {
             var(--ddd-theme-default-keystoneYellow);
           outline-offset: 2px;
         }
-        @media only screen and (max-width: 1023px) {
+        @media only screen and (max-width: 899px) {
           :host,
           :host([height="medium"]) {
             --ddd-hero-height: 320px;
@@ -254,6 +293,103 @@ export class DDDHero extends DDDSuper(I18NMixin(LitElement)) {
       return "image";
     }
     return "";
+  }
+
+  /**
+   * The frames an author frames this hero against: each screen size with
+   * the hero's width and height there (used by the image-framing field)
+   */
+  framingFrames() {
+    const heights = HERO_SHAPES[this.height] || HERO_SHAPES.tall;
+    return FRAMING_SIZES.map((size) => ({
+      ...size,
+      width: HERO_WIDTHS[size.id],
+      height: heights[size.id],
+    }));
+  }
+
+  /**
+   * Cuts made by the server, when there can be any: a still image under
+   * files/, outside the editor, and none of them failed to load
+   */
+  _useCuts() {
+    return (
+      !this._editing &&
+      !this.previewSize &&
+      !this._cutsFailed &&
+      this.mediaType === "image" &&
+      !!framingSource(this.source)
+    );
+  }
+
+  /**
+   * CSS that shows custom framings without cuts (in the editor, the dialog
+   * preview, or when the cuts are missing): per screen size, the photo is
+   * scaled and moved so the framed part fills the hero
+   */
+  _framingCss(custom) {
+    const rule = (r) =>
+      `img.photo { width: calc(100% / ${r.w}); height: calc(100% / ${r.h}); left: calc(-100% * ${r.x} / ${r.w}); top: calc(-100% * ${r.y} / ${r.h}); inset-inline-end: auto; inset-block-end: auto; object-position: 50% 50%; }`;
+    if (this.previewSize) {
+      return custom[this.previewSize] ? rule(custom[this.previewSize]) : "";
+    }
+    return FRAMING_SIZES.filter((size) => custom[size.id])
+      .map((size) => `@media ${size.media} { ${rule(custom[size.id])} }`)
+      .join("\n");
+  }
+
+  _imgError() {
+    // a cut that isn't there (an old static copy, a file added by hand):
+    // show the original and frame it with CSS instead
+    if (this._useCuts()) {
+      this._cutsFailed = true;
+    }
+  }
+
+  _renderImage(position) {
+    const custom = parseFraming(this.framing);
+    if (this._useCuts()) {
+      const fullSet = FRAMING_FULL_WIDTHS.map(
+        (w) => `${framingFullUrl(this.source, w)} ${w}w`,
+      ).join(", ");
+      return html`<picture>
+        ${FRAMING_SIZES.filter((size) => custom[size.id]).map(
+          (size) =>
+            html`<source
+              media="${size.media}"
+              srcset="
+                ${framingCutWidths(size.id)
+                  .map(
+                    (w) =>
+                      `${framingCutUrl(this.source, size.id, custom[size.id], w)} ${w}w`,
+                  )
+                  .join(", ")}
+              "
+              sizes="100vw"
+            />`,
+        )}
+        <img
+          class="photo"
+          src="${this.source}"
+          srcset="${fullSet}"
+          sizes="100vw"
+          alt="${this.alt || ""}"
+          style="object-position: ${position}"
+          fetchpriority="high"
+          @error="${this._imgError}"
+        />
+      </picture>`;
+    }
+    const framingCss = this._framingCss(custom);
+    // set as a property: Lit doesn't bind inside style text
+    return html`<style .textContent="${framingCss}"></style
+      ><img
+        class="photo"
+        src="${this.source}"
+        alt="${this.alt || ""}"
+        style="object-position: ${position}"
+        fetchpriority="high"
+      />`;
   }
 
   /**
@@ -326,16 +462,7 @@ export class DDDHero extends DDDSuper(I18NMixin(LitElement)) {
       data-fade="${this._effectiveFade()}"
       ?data-has-control="${type === "video"}"
     >
-      ${
-        type === "image"
-          ? html`<img
-              src="${this.source}"
-              alt="${this.alt || ""}"
-              style="object-position: ${position}"
-              fetchpriority="high"
-            />`
-          : ``
-      }
+      ${type === "image" ? this._renderImage(position) : ``}
       ${
         type === "video"
           ? html`<video
@@ -383,7 +510,43 @@ export class DDDHero extends DDDSuper(I18NMixin(LitElement)) {
   haxHooks() {
     return {
       gizmoRegistration: "haxgizmoRegistration",
+      editModeChanged: "haxeditModeChanged",
+      inlineContextMenu: "haxinlineContextMenu",
     };
+  }
+
+  /**
+   * In the editor the cuts for a new framing don't exist until the page is
+   * saved, so framings are drawn with CSS while editing
+   */
+  haxeditModeChanged(value) {
+    this._editing = !!value;
+  }
+
+  /**
+   * Frame on the block toolbar, for images: opens the framing dialog (the
+   * same one the Framing setting opens)
+   */
+  haxinlineContextMenu(ceMenu) {
+    if (this.mediaType !== "image") {
+      return;
+    }
+    ceMenu.ceButtons = [
+      {
+        icon: "image:crop",
+        callback: "haxFrame",
+        label: this.t.frame,
+      },
+    ];
+  }
+
+  haxFrame() {
+    globalThis.dispatchEvent(
+      new CustomEvent("hax-image-framing-open", {
+        detail: { element: this, property: "framing" },
+      }),
+    );
+    return true;
   }
 
   haxgizmoRegistration(_store) {

@@ -2152,6 +2152,12 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           );
         }
       }
+      // an element's Frame button (block toolbar) opens the image framing
+      // dialog; the image-framing field opens the same one
+      globalThis.addEventListener(
+        "hax-image-framing-open",
+        this._openImageFraming.bind(this),
+      );
       this.ready = true;
       // load previously stored user preferences from local storage
       try {
@@ -2163,6 +2169,50 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       }
       // register built in primitive definitions
       this._buildPrimitiveDefinitions();
+    }
+  }
+  /**
+   * Frame an element's photo for each screen size from its toolbar, then
+   * write the framing and focal point back and refresh its settings
+   */
+  async _openImageFraming(e) {
+    const detail = e && e.detail ? e.detail : {};
+    const el = detail.element;
+    if (!el || !this.editMode) return;
+    const property = detail.property || "framing";
+    const { ImageFramingDialog } = await import("./image-framing-dialog.js");
+    const gizmo =
+      this.activeNode === el && this.activeGizmo ? this.activeGizmo : null;
+    const result = await ImageFramingDialog.open({
+      element: el,
+      source: el.source || el.src || "",
+      framing: el[property] || "",
+      focalX: el.focalX,
+      focalY: el.focalY,
+      frames: typeof el.framingFrames === "function" ? el.framingFrames() : [],
+      title: gizmo && gizmo.title ? gizmo.title : "",
+      size:
+        globalThis.matchMedia &&
+        globalThis.matchMedia("(max-width: 599px)").matches
+          ? "sm"
+          : "lg",
+    });
+    if (!result) return;
+    el[property] = result.framing;
+    if (result.framing) {
+      el.setAttribute(property, result.framing);
+    } else {
+      el.removeAttribute(property);
+    }
+    el.focalX = result.focalX;
+    el.focalY = result.focalY;
+    el.setAttribute("focal-x", result.focalX);
+    el.setAttribute("focal-y", result.focalY);
+    if (
+      this.activeNode === el &&
+      typeof this.refreshActiveNodeForm === "function"
+    ) {
+      await this.refreshActiveNodeForm();
     }
   }
   _handleConfirmCancel(e) {

@@ -3619,6 +3619,359 @@
     },
     {
       "kind": "javascript-module",
+      "path": "lib/ImageFraming.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "FRAMING_SIZES",
+          "description": "The screen sizes: the DDD breakpoints (sm 600, md 900, xl 1440).\n`cut` is the width each size is shown up to, so its cuts are made at 1x\nand 2x of it; `media` picks the size in a picture source."
+        },
+        {
+          "kind": "variable",
+          "name": "FRAMING_FULL_WIDTHS",
+          "description": "widths of the original made for the automatic sizes"
+        },
+        {
+          "kind": "variable",
+          "name": "FRAMING_FORMATS",
+          "description": "files the backends can cut: still images only"
+        },
+        {
+          "kind": "variable",
+          "name": "FRAMING_DIR",
+          "type": {
+            "text": "string"
+          },
+          "default": "\"files/haxcms-managed/framing/\"",
+          "description": "where cuts live, inside the site"
+        },
+        {
+          "kind": "variable",
+          "name": "FRAMING_MIN_SCALE",
+          "description": "the smallest frame, as a share of the widest one (300% zoom)"
+        },
+        {
+          "kind": "function",
+          "name": "roundFraming",
+          "parameters": [
+            {
+              "name": "n"
+            }
+          ],
+          "description": "round to the 3 decimals framings are saved with"
+        },
+        {
+          "kind": "function",
+          "name": "parseFraming",
+          "parameters": [
+            {
+              "name": "value"
+            }
+          ],
+          "description": "Parse a framing attribute into { sizeId: rect }, keeping only well-formed\nrects inside the photo. Anything else (bad JSON, unknown sizes) is dropped."
+        },
+        {
+          "kind": "function",
+          "name": "serializeFraming",
+          "parameters": [
+            {
+              "name": "custom"
+            }
+          ],
+          "description": "the framing attribute for these custom rects, sizes in order; \"\" if none"
+        },
+        {
+          "kind": "function",
+          "name": "maxFrame",
+          "parameters": [
+            {
+              "name": "aspect"
+            },
+            {
+              "name": "photoAspect"
+            }
+          ],
+          "description": "The widest frame of shape `aspect` (width / height) that fits a photo of\n`photoAspect`, as fractions of the photo"
+        },
+        {
+          "kind": "function",
+          "name": "placeFrame",
+          "parameters": [
+            {
+              "name": "aspect"
+            },
+            {
+              "name": "photoAspect"
+            },
+            {
+              "name": "cx"
+            },
+            {
+              "name": "cy"
+            },
+            {
+              "name": "zoom"
+            }
+          ],
+          "description": "A frame of shape `aspect`, `zoom` times closer than the widest one\n(1 = widest), centered on (cx, cy) and kept inside the photo"
+        },
+        {
+          "kind": "function",
+          "name": "autoFrame",
+          "parameters": [
+            {
+              "name": "aspect"
+            },
+            {
+              "name": "photoAspect"
+            },
+            {
+              "name": "fx"
+            },
+            {
+              "name": "fy"
+            }
+          ],
+          "description": "The automatic frame: the widest frame of the shape, placed the way CSS\nobject-position puts a focal point of (fx, fy) (0-1) in a cover-fit box,\nso a frame drawn from it and the photo shown with object-fit: cover and\nobject-position: fx% fy% are the same picture"
+        },
+        {
+          "kind": "function",
+          "name": "frameZoom",
+          "parameters": [
+            {
+              "name": "rect"
+            },
+            {
+              "name": "aspect"
+            },
+            {
+              "name": "photoAspect"
+            }
+          ],
+          "description": "how close a rect is, 1 = the widest frame of its shape"
+        },
+        {
+          "kind": "function",
+          "name": "fnv1a",
+          "parameters": [
+            {
+              "name": "str"
+            }
+          ],
+          "description": "32-bit FNV-1a of an ASCII string, as 8 hex digits"
+        },
+        {
+          "kind": "function",
+          "name": "framingKey",
+          "parameters": [
+            {
+              "name": "rect"
+            }
+          ],
+          "description": "the rect as the backends hash it: 3 decimals, comma separated"
+        },
+        {
+          "kind": "function",
+          "name": "framingSource",
+          "parameters": [
+            {
+              "name": "source"
+            }
+          ],
+          "description": "The photo's path split for naming: { stem, ext } for a still image under\nfiles/ (not already a managed file), else null. Only these get cuts."
+        },
+        {
+          "kind": "function",
+          "name": "framingFullUrl",
+          "parameters": [
+            {
+              "name": "source"
+            },
+            {
+              "name": "width"
+            }
+          ],
+          "description": "the width variant of the original at `width`"
+        },
+        {
+          "kind": "function",
+          "name": "framingCutUrl",
+          "parameters": [
+            {
+              "name": "source"
+            },
+            {
+              "name": "sizeId"
+            },
+            {
+              "name": "rect"
+            },
+            {
+              "name": "width"
+            }
+          ],
+          "description": "the cut of `rect` for screen size `sizeId` at `width`"
+        },
+        {
+          "kind": "function",
+          "name": "framingCutWidths",
+          "parameters": [
+            {
+              "name": "sizeId"
+            }
+          ],
+          "description": "the widths a size's cuts are made at"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "FRAMING_SIZES",
+          "declaration": {
+            "name": "FRAMING_SIZES",
+            "module": "lib/ImageFraming.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "FRAMING_FULL_WIDTHS",
+          "declaration": {
+            "name": "FRAMING_FULL_WIDTHS",
+            "module": "lib/ImageFraming.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "FRAMING_FORMATS",
+          "declaration": {
+            "name": "FRAMING_FORMATS",
+            "module": "lib/ImageFraming.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "FRAMING_DIR",
+          "declaration": {
+            "name": "FRAMING_DIR",
+            "module": "lib/ImageFraming.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "FRAMING_MIN_SCALE",
+          "declaration": {
+            "name": "FRAMING_MIN_SCALE",
+            "module": "lib/ImageFraming.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "roundFraming",
+          "declaration": {
+            "name": "roundFraming",
+            "module": "lib/ImageFraming.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "parseFraming",
+          "declaration": {
+            "name": "parseFraming",
+            "module": "lib/ImageFraming.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "serializeFraming",
+          "declaration": {
+            "name": "serializeFraming",
+            "module": "lib/ImageFraming.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "maxFrame",
+          "declaration": {
+            "name": "maxFrame",
+            "module": "lib/ImageFraming.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "placeFrame",
+          "declaration": {
+            "name": "placeFrame",
+            "module": "lib/ImageFraming.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "autoFrame",
+          "declaration": {
+            "name": "autoFrame",
+            "module": "lib/ImageFraming.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "frameZoom",
+          "declaration": {
+            "name": "frameZoom",
+            "module": "lib/ImageFraming.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "fnv1a",
+          "declaration": {
+            "name": "fnv1a",
+            "module": "lib/ImageFraming.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "framingKey",
+          "declaration": {
+            "name": "framingKey",
+            "module": "lib/ImageFraming.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "framingSource",
+          "declaration": {
+            "name": "framingSource",
+            "module": "lib/ImageFraming.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "framingFullUrl",
+          "declaration": {
+            "name": "framingFullUrl",
+            "module": "lib/ImageFraming.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "framingCutUrl",
+          "declaration": {
+            "name": "framingCutUrl",
+            "module": "lib/ImageFraming.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "framingCutWidths",
+          "declaration": {
+            "name": "framingCutWidths",
+            "module": "lib/ImageFraming.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "lib/d-d-d-sample.js",
       "declarations": [
         {
@@ -4284,6 +4637,39 @@
             },
             {
               "kind": "method",
+              "name": "framingFrames",
+              "description": "The frames an author frames this hero against: each screen size with\nthe hero's width and height there (used by the image-framing field)"
+            },
+            {
+              "kind": "method",
+              "name": "_useCuts",
+              "description": "Cuts made by the server, when there can be any: a still image under\nfiles/, outside the editor, and none of them failed to load"
+            },
+            {
+              "kind": "method",
+              "name": "_framingCss",
+              "parameters": [
+                {
+                  "name": "custom"
+                }
+              ],
+              "description": "CSS that shows custom framings without cuts (in the editor, the dialog\npreview, or when the cuts are missing): per screen size, the photo is\nscaled and moved so the framed part fills the hero"
+            },
+            {
+              "kind": "method",
+              "name": "_imgError"
+            },
+            {
+              "kind": "method",
+              "name": "_renderImage",
+              "parameters": [
+                {
+                  "name": "position"
+                }
+              ]
+            },
+            {
+              "kind": "method",
               "name": "_effectiveFade",
               "description": "The fade actually drawn: with text over the media there is always one,\nso the text keeps its contrast"
             },
@@ -4308,6 +4694,30 @@
               "kind": "method",
               "name": "haxHooks",
               "description": "HAX hooks this element implements"
+            },
+            {
+              "kind": "method",
+              "name": "haxeditModeChanged",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ],
+              "description": "In the editor the cuts for a new framing don't exist until the page is\nsaved, so framings are drawn with CSS while editing"
+            },
+            {
+              "kind": "method",
+              "name": "haxinlineContextMenu",
+              "parameters": [
+                {
+                  "name": "ceMenu"
+                }
+              ],
+              "description": "Frame on the block toolbar, for images: opens the framing dialog (the\nsame one the Framing setting opens)"
+            },
+            {
+              "kind": "method",
+              "name": "haxFrame"
             },
             {
               "kind": "method",
@@ -4429,6 +4839,48 @@
             },
             {
               "kind": "field",
+              "name": "framing",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "How the photo is framed at each screen size, custom sizes only:\nJSON of { sm|md|lg|xl: { x, y, w, h } } in fractions of the photo.\nEdited with the image-framing field; see ImageFraming.js.",
+              "default": "\"\"",
+              "attribute": "framing"
+            },
+            {
+              "kind": "field",
+              "name": "previewSize",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Draw one screen size's framing whatever the screen is (the framing\ndialog's preview); not saved",
+              "default": "\"\"",
+              "attribute": "preview-size"
+            },
+            {
+              "kind": "field",
+              "name": "_editing",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "_editing"
+            },
+            {
+              "kind": "field",
+              "name": "_cutsFailed",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "_cutsFailed"
+            },
+            {
+              "kind": "field",
               "name": "playing",
               "privacy": "public",
               "type": {
@@ -4443,7 +4895,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ ...this.t, pauseVideo: \"Pause background video\", playVideo: \"Play background video\", }"
+              "default": "{ ...this.t, pauseVideo: \"Pause background video\", playVideo: \"Play background video\", frame: \"Frame\", }"
             },
             {
               "kind": "field",
@@ -4573,6 +5025,24 @@
               "fieldName": "focalY"
             },
             {
+              "name": "framing",
+              "type": {
+                "text": "string"
+              },
+              "description": "How the photo is framed at each screen size, custom sizes only:\nJSON of { sm|md|lg|xl: { x, y, w, h } } in fractions of the photo.\nEdited with the image-framing field; see ImageFraming.js.",
+              "default": "\"\"",
+              "fieldName": "framing"
+            },
+            {
+              "name": "preview-size",
+              "type": {
+                "text": "string"
+              },
+              "description": "Draw one screen size's framing whatever the screen is (the framing\ndialog's preview); not saved",
+              "default": "\"\"",
+              "fieldName": "previewSize"
+            },
+            {
               "name": "playing",
               "type": {
                 "text": "boolean"
@@ -4586,6 +5056,22 @@
                 "text": "boolean"
               },
               "fieldName": "_hasText"
+            },
+            {
+              "name": "_editing",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "_editing"
+            },
+            {
+              "name": "_cutsFailed",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "_cutsFailed"
             },
             {
               "name": "is-safari",
