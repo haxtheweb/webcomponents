@@ -43,7 +43,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@google/model-viewer": "3.5.0",
+    "@google/model-viewer": "4.4.0",
     "@haxtheweb/i18n-manager": "^26.8.0",
     "@haxtheweb/schema-behaviors": "^26.8.0",
     "lit": "3.3.3"
@@ -58,7 +58,7 @@
     "concurrently": "9.2.5"
   },
   "resolutions": {
-    "@google/model-viewer": "3.5.0"
+    "@google/model-viewer": "4.4.0"
   },
   "private": false,
   "publishConfig": {
