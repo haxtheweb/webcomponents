@@ -304,4 +304,32 @@ console.log(
     rewriteCount +
     " had node_modules paths rewritten)",
 );
+// MathJax 4 is loaded by path from node_modules (lrn-math/lib/mathjax-loader.js),
+// which this deploy does not upload, and the CDN only has it after a
+// ubiquity release. Copy the same runtime files ubiquity ships into
+// _vendor/node_modules/; vercel.json sends /node_modules/mathjax/ and
+// /node_modules/@mathjax/ there, so a preview runs the MathJax this branch
+// depends on.
+var mathjaxFiles = JSON.parse(
+  fs.readFileSync("./scripts/mathjax-runtime-files.json", "utf8"),
+).paths;
+var mathjaxCopied = 0;
+mathjaxFiles.forEach(function (rel) {
+  var from = path.join("node_modules", rel);
+  if (!fs.existsSync(from)) {
+    console.warn("MathJax: missing " + from);
+    return;
+  }
+  fs.cpSync(from, path.join("_vendor", "node_modules", rel), {
+    recursive: true,
+  });
+  mathjaxCopied++;
+});
+console.log(
+  "MathJax: copied " +
+    mathjaxCopied +
+    " of " +
+    mathjaxFiles.length +
+    " runtime paths into _vendor/node_modules",
+);
 console.log("Done: Vercel deploy preparation complete");

@@ -1,8 +1,8 @@
 {
   "_meta": {
-    "elementsScanned": 263,
-    "elementsWithTranslations": 172,
-    "translationFilesFound": 40858,
+    "elementsScanned": 266,
+    "elementsWithTranslations": 175,
+    "translationFilesFound": 40862,
     "languagesSupported": [
       "af",
       "am",
@@ -484,6 +484,7 @@
     "block-quote": 2,
     "block-quote.haxProperties": 0,
     "blockquote.haxProperties": 0,
+    "book-theme": 2,
     "bootstrap-breadcrumb": 1,
     "bootstrap-footer": 1,
     "bootstrap-search": 1,
@@ -601,6 +602,7 @@
     "haxcms-allowed-blocks-ui": 1,
     "haxcms-api": 1,
     "haxcms-appearance-admin-dialog": 1,
+    "haxcms-appearance-switcher": 2,
     "haxcms-backend-beaker": 1,
     "haxcms-backend-userfs": 1,
     "haxcms-content-admin-dialog": 1,
@@ -720,6 +722,7 @@
     "page-section": 1,
     "page-section.haxProperties": 0,
     "page-template": 1,
+    "papermod-theme": 2,
     "parallax-image.haxProperties": 0,
     "patternfly-theme": 2,
     "pdf-browser-viewer": 1,
@@ -863,6 +866,7 @@
     "word-search": 2,
     "worksheet-download": 1,
     "worksheet-download.haxProperties": 0,
-    "writing-theme": 2
+    "writing-theme": 2,
+    "wysiwyg96-theme": 2
   }
 }

@@ -1,0 +1,22 @@
+{
+  "description": "What MathJax 4 loads at run time in HAX (lrn-math/lib/mathjax-loader.js), relative to node_modules. A folder means everything in it. Read by the vendor-copy-mathjax gulp task (ubiquity) and by scripts/prepare-vercel-deploy.js (PR previews), so both ship the same files.",
+  "paths": [
+    "mathjax/LICENSE",
+    "mathjax/tex-svg.js",
+    "mathjax/a11y",
+    "mathjax/input/tex/extensions",
+    "mathjax/sre/mathmaps",
+    "mathjax/sre/speech-worker.js",
+    "mathjax/ui",
+    "@mathjax/mathjax-newcm-font/package.json",
+    "@mathjax/mathjax-newcm-font/svg",
+    "@mathjax/mathjax-bbm-font-extension/package.json",
+    "@mathjax/mathjax-bbm-font-extension/svg.js",
+    "@mathjax/mathjax-bboldx-font-extension/package.json",
+    "@mathjax/mathjax-bboldx-font-extension/svg.js",
+    "@mathjax/mathjax-dsfont-font-extension/package.json",
+    "@mathjax/mathjax-dsfont-font-extension/svg.js",
+    "@mathjax/mathjax-mhchem-font-extension/package.json",
+    "@mathjax/mathjax-mhchem-font-extension/svg.js"
+  ]
+}

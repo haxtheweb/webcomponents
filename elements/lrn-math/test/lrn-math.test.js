@@ -1,4 +1,5 @@
-import { fixture, expect, html } from "@open-wc/testing";
+import { fixture, expect, html, waitUntil } from "@open-wc/testing";
+import { loadMathJax } from "../lib/mathjax-loader.js";
 
 import { LrnMath, LrnMathController } from "../lrn-math.js";
 
@@ -9,69 +10,27 @@ const haxSchema = async (C) => {
   return typeof hp === "string" ? (await fetch(hp)).json() : hp;
 };
 
-// The module appends a <script src="https://cdnjs.../MathJax.js"> to load the
-// real MathJax library. Tests must never hit the network, so intercept any
-// script whose src references mathjax and silently drop it. Everything else
-// still appends normally.
-const origAppendChild = document.head.appendChild.bind(document.head);
-document.head.appendChild = function (node) {
-  if (
-    node &&
-    node.tagName === "SCRIPT" &&
-    node.getAttribute &&
-    String(node.getAttribute("src")).indexOf("mathjax") !== -1
-  ) {
-    return node;
-  }
-  return origAppendChild(node);
-};
+// MathJax 4 is served from this repository's node_modules (the same files
+// ubiquity ships), so these tests typeset with the real library and never
+// touch the network.
+const rendered = (el) =>
+  waitUntil(
+    () => el.shadowRoot.querySelector("mjx-container svg"),
+    "MathJax did not render",
+    { timeout: 10000 },
+  );
 
-// getStyleNode() looks for a <style> element whose stylesheet has 100+ rules
-// and a first rule of .mjx-chtml. Provide one so the typeset callback has a
-// style node to clone into the shadow DOM.
-const mjxStyle = document.createElement("style");
-let mjxCss = ".mjx-chtml { font-size: 1em }";
-for (let i = 0; i < 105; i++) {
-  mjxCss += "\n.mjx-fake-rule-" + i + " { color: red }";
-}
-mjxStyle.textContent = mjxCss;
-origAppendChild(mjxStyle);
-
+// count the equations MathJax renders, once it has loaded
 let typesetCalls = 0;
-function makeFakeHub() {
-  return {
-    Queue(item) {
-      if (typeof item === "function") {
-        item();
-      } else if (Array.isArray(item) && item[0] === "Typeset") {
-        typesetCalls++;
-        item[2].forEach((script) => {
-          const span = document.createElement("span");
-          span.className = "mjx-chtml";
-          span.setAttribute("data-fake-typeset", "true");
-          script.parentNode.insertBefore(span, script);
-        });
-      }
-    },
-    Register: {
-      StartupHook(name, fn) {
-        fn();
-      },
-    },
-  };
-}
-
-let fakeHubReady = false;
-async function ensureFakeHub() {
-  if (fakeHubReady) return;
-  // the first <lrn-math> connection auto-creates the controller, which calls
-  // load_library() and defines globalThis.MathJax (with the module's own
-  // AuthorInit). Drive AuthorInit with a fake Hub so state becomes ready and
-  // flush_typesets() runs without any network.
-  if (globalThis.MathJax && globalThis.MathJax.AuthorInit) {
-    globalThis.MathJax.Hub = makeFakeHub();
-    globalThis.MathJax.AuthorInit();
-    fakeHubReady = true;
+async function countTypesets() {
+  const MathJax = await loadMathJax();
+  if (!MathJax.__counted) {
+    const tex2svgPromise = MathJax.tex2svgPromise;
+    MathJax.tex2svgPromise = (...args) => {
+      typesetCalls++;
+      return tex2svgPromise(...args);
+    };
+    MathJax.__counted = true;
   }
 }
 
@@ -79,8 +38,8 @@ describe("lrn-math test", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(html` <lrn-math>c = \\sqrt{a^2 + b^2}</lrn-math> `);
-    await ensureFakeHub();
-    await new Promise((resolve) => setTimeout(resolve, 50));
+    await countTypesets();
+    await rendered(element);
   });
 
   it("passes the a11y audit", async () => {
@@ -103,12 +62,34 @@ describe("lrn-math test", () => {
     expect(document.head.contains(handler)).to.be.true;
   });
 
-  it("typesets inline math into the shadow DOM", async () => {
+  it("typesets inline math into the shadow DOM as SVG", async () => {
     const sdom = element.shadowRoot;
-    expect(sdom.querySelector("span[data-fake-typeset]")).to.exist;
+    const container = sdom.querySelector("mjx-container");
+    expect(container.getAttribute("jax")).to.equal("SVG");
+    expect(container.hasAttribute("display")).to.be.false;
+    // the CSS MathJax's SVG output needs travels into the shadow root
     const style = sdom.querySelector("style");
-    expect(style).to.exist;
-    expect(style.textContent.indexOf(".mjx-chtml")).to.not.equal(-1);
+    expect(style.textContent).to.contain("mjx-container");
+  });
+
+  it("gives screen readers the spoken math", async () => {
+    await waitUntil(
+      () =>
+        element.shadowRoot
+          .querySelector("mjx-container")
+          .outerHTML.includes("square root"),
+      "no speech",
+      { timeout: 10000 },
+    );
+  });
+
+  it("loads MathJax 4 from the packages lrn-math depends on", async () => {
+    const MathJax = await loadMathJax();
+    expect(MathJax.version.split(".")[0]).to.equal("4");
+    const script = [...document.querySelectorAll("script[src]")].find((s) =>
+      s.src.includes("tex-svg.js"),
+    );
+    expect(script.src).to.contain("/node_modules/mathjax/tex-svg.js");
   });
 
   it("caches typesets so identical math is not re-typeset", async () => {
@@ -121,19 +102,23 @@ describe("lrn-math test", () => {
   it("re-typesets when the light DOM math changes", async () => {
     const before = typesetCalls;
     element.textContent = "a + b";
-    await new Promise((resolve) => setTimeout(resolve, 100));
-    expect(typesetCalls).to.equal(before + 1);
-    const span = element.shadowRoot.querySelector("span[data-fake-typeset]");
-    expect(span).to.exist;
+    await waitUntil(() => typesetCalls === before + 1, "no re-typeset");
+    await rendered(element);
+    expect(
+      element.shadowRoot.querySelectorAll("mjx-container").length,
+    ).to.equal(1);
   });
 
   it("typesets display-mode math via the mode attribute", async () => {
     const displayEl = await fixture(html`
       <lrn-math mode="display">\\sum_{k=1}^n k</lrn-math>
     `);
-    await new Promise((resolve) => setTimeout(resolve, 50));
-    expect(displayEl.shadowRoot.querySelector("span[data-fake-typeset]")).to
-      .exist;
+    await rendered(displayEl);
+    expect(
+      displayEl.shadowRoot
+        .querySelector("mjx-container")
+        .getAttribute("display"),
+    ).to.equal("true");
     // the D-prefixed cache key separates display from inline content
     expect(displayEl.getAttribute("mathtext")).to.exist;
   });
@@ -209,20 +194,21 @@ describe("lrn-math test", () => {
     const handler = document.querySelector("lrn-math-controller");
     expect(handler instanceof LrnMathController).to.be.true;
     const before = typesetCalls;
-    const cbResults = [];
-    handler.typeset("z^2", false, function (melem, styleNode) {
-      cbResults.push(typeof melem === "object" && styleNode !== undefined);
+    const result = await new Promise((resolve) => {
+      handler.typeset("z^2", false, (melem, styleNode) =>
+        resolve([melem, styleNode]),
+      );
     });
     expect(typesetCalls).to.equal(before + 1);
-    expect(cbResults.length).to.equal(1);
-    expect(cbResults[0]).to.be.true;
+    expect(result[0].localName).to.equal("mjx-container");
+    expect(result[1].localName).to.equal("style");
   });
 
   it("does not typeset empty math", async () => {
     const before = typesetCalls;
     const emptyEl = await fixture(html` <lrn-math></lrn-math> `);
     await new Promise((resolve) => setTimeout(resolve, 100));
-    expect(emptyEl.shadowRoot.querySelector("span")).to.not.exist;
+    expect(emptyEl.shadowRoot.querySelector("mjx-container")).to.not.exist;
     expect(typesetCalls).to.equal(before);
   });
 
@@ -230,7 +216,7 @@ describe("lrn-math test", () => {
     const lazy = document.createElement("lrn-math-controller");
     lazy.setAttribute("src", "mathjax-fake-src.js");
     lazy.setAttribute("lazy", "lazy");
-    origAppendChild(lazy);
+    document.head.appendChild(lazy);
     await new Promise((resolve) => setTimeout(resolve, 50));
     // lazy controller never loads a library and the src is only stored
     expect(lazy.hasAttribute("lazy")).to.be.true;

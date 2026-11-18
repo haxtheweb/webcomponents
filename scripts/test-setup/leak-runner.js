@@ -18,7 +18,9 @@
  * For each HAX-capable tag (haxProperties on the class or an ancestor, or a
  * setHaxProperties(schema, "<tag>") call), its first demoSchema entry is
  * built, attached, awaited and removed WARMUP times, then CYCLES more times.
- * Whatever a single instance or a singleton creates lands in the warm-up.
+ * Whatever a single instance or a singleton creates lands in the warm-up,
+ * which also waits for the page to stop fetching, so a library loaded
+ * lazily finishes setting itself up before anything is measured.
  * Only what is left over from the measured cycles is reported, and only when
  * it grew with at least half of them, so a constant amount (one global
  * store, a shared audio context, a registration per tag) never counts.
@@ -588,6 +590,40 @@ async function quiet() {
   await collectGarbage();
 }
 
+// resources the page has fetched, counted as they arrive (the resource timing
+// buffer stops growing once full, so its length can not be used for this)
+let resourcesFetched = 0;
+try {
+  new PerformanceObserver((list) => {
+    resourcesFetched += list.getEntries().length;
+  }).observe({ type: "resource", buffered: true });
+} catch {
+  // no resource timing: networkIdle() just waits its idle time
+}
+const NETWORK_IDLE = 500;
+const NETWORK_TIMEOUT = 8000;
+/**
+ * Wait until the page has fetched nothing new for NETWORK_IDLE ms (at most
+ * NETWORK_TIMEOUT). Run after the warm-up, so a library an element loads
+ * lazily (a script, then the files that script loads) has arrived and built
+ * its one-time state before the measured cycles start: MathJax filling in
+ * MathJax.config once it has downloaded is a singleton, not growth.
+ */
+async function networkIdle() {
+  const deadline = performance.now() + NETWORK_TIMEOUT;
+  let seen = resourcesFetched;
+  let since = performance.now();
+  while (performance.now() < deadline) {
+    await sleep(100);
+    if (resourcesFetched !== seen) {
+      seen = resourcesFetched;
+      since = performance.now();
+    } else if (performance.now() - since >= NETWORK_IDLE) {
+      return;
+    }
+  }
+}
+
 /** one attach/detach cycle; returns the instance it made (or null) */
 async function cycle(stage, tag, markup) {
   const tpl = globalThis.document.createElement("template");
@@ -635,6 +671,7 @@ async function measureTag(stage, entry) {
     await cycle(stage, tag, markup);
   }
   phase = "idle";
+  await networkIdle();
   await quiet();
   const storesBefore = storeSizes();
   const rafBefore = await rafPerFrame();
