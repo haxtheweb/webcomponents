@@ -32,6 +32,12 @@ import "@haxtheweb/papermod-theme/lib/homage-page-list.js";
 class HomageThemeBase extends HAXCMSOperationButtons(
   HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)),
 ) {
+  // the chrome reads only --ddd-* tokens, so a site can pair any of these
+  // layouts with any design system
+  static get acceptsDesignSystems() {
+    return true;
+  }
+
   HAXCMSGlobalStyleSheetContent() {
     return [
       ...super.HAXCMSGlobalStyleSheetContent(),

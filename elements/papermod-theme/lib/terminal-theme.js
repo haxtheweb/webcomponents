@@ -19,7 +19,7 @@ import { HomageColumnTheme } from "@haxtheweb/papermod-theme/lib/HomageColumnThe
  * @title Terminal
  * @haxcms-theme-category Blog, Website
  * @haxcms-theme-priority 0
- * @demo ../demo/index.html
+ * @demo ../demo/terminal-theme/index.html
  * @element terminal-theme
  */
 class TerminalTheme extends HomageColumnTheme {

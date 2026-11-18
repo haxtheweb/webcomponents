@@ -61,6 +61,14 @@
       "default": "false",
       "description": "The demo strip: a thin bar for a HAXcms demo with no backend (demo.hax.cloud). It says nothing is saved, links HAXcms in the browser and Install HAX, and has no Merlin of its own (the editor under it has him). It keeps --haxcms-top-offset on the page set to its height so the HAXcms editor bar sits under it.",
       "hax": null
+    },
+    {
+      "name": "has-pre",
+      "property": "hasPre",
+      "type": "boolean",
+      "default": "false",
+      "description": "the demo strip's pre slot holds something (a page's own controls)",
+      "hax": null
     }
   ],
   "slots": [
@@ -71,7 +79,7 @@
     "hax-network-merlin"
   ],
   "hax": {},
-  "surfaceHash": "a08dec54127b",
+  "surfaceHash": "1ea7b157423d",
   "walkthroughs": [],
   "videos": [],
   "motion": {

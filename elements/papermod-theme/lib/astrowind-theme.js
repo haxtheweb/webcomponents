@@ -19,7 +19,7 @@ import { HomageColumnTheme } from "@haxtheweb/papermod-theme/lib/HomageColumnThe
  * @title AstroWind
  * @haxcms-theme-category Website
  * @haxcms-theme-priority 0
- * @demo ../demo/index.html
+ * @demo ../demo/astrowind-theme/index.html
  * @element astrowind-theme
  */
 class AstrowindTheme extends HomageColumnTheme {

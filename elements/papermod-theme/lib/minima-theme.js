@@ -20,7 +20,7 @@ import { HomageColumnTheme } from "@haxtheweb/papermod-theme/lib/HomageColumnThe
  * @title Minima
  * @haxcms-theme-category Blog, Website
  * @haxcms-theme-priority 0
- * @demo ../demo/index.html
+ * @demo ../demo/minima-theme/index.html
  * @element minima-theme
  */
 class MinimaTheme extends HomageColumnTheme {

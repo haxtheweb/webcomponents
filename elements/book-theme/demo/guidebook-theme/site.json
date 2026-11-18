@@ -1,0 +1,211 @@
+{
+  "id": "book-theme-guidebook-theme",
+  "title": "Guidebook Docs",
+  "author": "",
+  "description": "A versioned documentation site, to show the version switcher.",
+  "license": "by-sa",
+  "metadata": {
+    "author": {
+      "image": "",
+      "name": "",
+      "email": "",
+      "socialLink": ""
+    },
+    "site": {
+      "name": "guidebook-theme",
+      "logo": "",
+      "lang": "en",
+      "created": 1736889000,
+      "updated": 1736889000,
+      "git": {},
+      "version": "9.0.6",
+      "domain": "",
+      "static": {},
+      "settings": {
+        "pathauto": false,
+        "publishPagesOn": true,
+        "sw": false,
+        "forceUpgrade": false,
+        "lang": "",
+        "gaID": ""
+      },
+      "tags": ""
+    },
+    "theme": {
+      "element": "guidebook-theme",
+      "path": "@haxtheweb/book-theme/lib/guidebook-theme.js",
+      "name": "guidebook-theme",
+      "regions": {}
+    },
+    "node": {
+      "fields": {}
+    },
+    "build": {
+      "version": "6.0.1",
+      "structure": "flat",
+      "type": ""
+    }
+  },
+  "items": [
+    {
+      "id": "item-d0c5v3r5-v2",
+      "indent": 0,
+      "location": "../pages/item-d0c5v3r5-v2/index.html",
+      "slug": "v2",
+      "order": 0,
+      "parent": null,
+      "title": "2.0 (current)",
+      "description": "What is new in 2.0 and where to start.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "version",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-d0c5v3r5-v2-start",
+      "indent": 1,
+      "location": "../pages/item-d0c5v3r5-v2-start/index.html",
+      "slug": "v2/getting-started",
+      "order": 0,
+      "parent": "item-d0c5v3r5-v2",
+      "title": "Getting started",
+      "description": "Install and run 2.0.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-d0c5v3r5-v2-config",
+      "indent": 1,
+      "location": "../pages/item-d0c5v3r5-v2-config/index.html",
+      "slug": "v2/configuration",
+      "order": 1,
+      "parent": "item-d0c5v3r5-v2",
+      "title": "Configuration",
+      "description": "Every setting, in one file.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-d0c5v3r5-v2-upgrade",
+      "indent": 1,
+      "location": "../pages/item-d0c5v3r5-v2-upgrade/index.html",
+      "slug": "v2/upgrading",
+      "order": 2,
+      "parent": "item-d0c5v3r5-v2",
+      "title": "Upgrading from 1.0",
+      "description": "One command, and what it changes.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-d0c5v3r5-v1",
+      "indent": 0,
+      "location": "../pages/item-d0c5v3r5-v1/index.html",
+      "slug": "v1",
+      "order": 1,
+      "parent": null,
+      "title": "1.0",
+      "description": "The previous release.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "version",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-d0c5v3r5-v1-start",
+      "indent": 1,
+      "location": "../pages/item-d0c5v3r5-v1-start/index.html",
+      "slug": "v1/getting-started",
+      "order": 0,
+      "parent": "item-d0c5v3r5-v1",
+      "title": "Getting started",
+      "description": "Install and run 1.0.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-d0c5v3r5-v1-config",
+      "indent": 1,
+      "location": "../pages/item-d0c5v3r5-v1-config/index.html",
+      "slug": "v1/configuration",
+      "order": 1,
+      "parent": "item-d0c5v3r5-v1",
+      "title": "Configuration",
+      "description": "Settings, across three files.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-d0c5v3r5-community",
+      "indent": 0,
+      "location": "../pages/item-d0c5v3r5-community/index.html",
+      "slug": "community",
+      "order": 2,
+      "parent": null,
+      "title": "Community",
+      "description": "Where to ask and how to help.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    }
+  ]
+}

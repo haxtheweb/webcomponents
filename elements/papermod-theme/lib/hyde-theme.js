@@ -19,7 +19,7 @@ import { HomageSidebarTheme } from "@haxtheweb/papermod-theme/lib/HomageSidebarT
  * @title Hyde
  * @haxcms-theme-category Blog, Website
  * @haxcms-theme-priority 0
- * @demo ../demo/index.html
+ * @demo ../demo/hyde-theme/index.html
  * @element hyde-theme
  */
 class HydeTheme extends HomageSidebarTheme {

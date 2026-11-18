@@ -20,7 +20,7 @@ import { BookTheme } from "@haxtheweb/book-theme/book-theme.js";
  * @title Handbook
  * @haxcms-theme-category Documentation, Course, Website
  * @haxcms-theme-priority 0
- * @demo ../demo/index.html
+ * @demo ../demo/handbook-theme/index.html
  * @element handbook-theme
  */
 class HandbookTheme extends BookTheme {

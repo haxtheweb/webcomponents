@@ -19,7 +19,7 @@ import { BookTheme } from "@haxtheweb/book-theme/book-theme.js";
  * @title Just the Docs
  * @haxcms-theme-category Documentation, Course, Website
  * @haxcms-theme-priority 0
- * @demo ../demo/index.html
+ * @demo ../demo/just-the-docs-theme/index.html
  * @element just-the-docs-theme
  */
 class JustTheDocsTheme extends BookTheme {

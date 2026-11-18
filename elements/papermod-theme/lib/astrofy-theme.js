@@ -20,7 +20,7 @@ import { HomageSidebarTheme } from "@haxtheweb/papermod-theme/lib/HomageSidebarT
  * @title Astrofy
  * @haxcms-theme-category Website
  * @haxcms-theme-priority 0
- * @demo ../demo/index.html
+ * @demo ../demo/astrofy-theme/index.html
  * @element astrofy-theme
  */
 class AstrofyTheme extends HomageSidebarTheme {

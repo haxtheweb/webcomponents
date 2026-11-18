@@ -40,6 +40,14 @@ Sidebar: a fixed column with the site name, its description, the site menu and t
 
 A page with pages under it lists them after its own content, so a "Posts" page becomes the post index with no block to add. A page inside a section shows the date it was written under its title.
 
+## Design systems
+
+The chrome reads only DDD tokens, so every theme here takes a site's design system (`acceptsDesignSystems`).
+
+## Demos
+
+`demo/index.html` is PaperMod on a small blog. Each other theme has its own at `demo/<tag>/index.html`: the blog themes show the same blog under their own name, al-folio shows a research group site and AstroWind a small business landing page (the same content as the Academic and Landing Page skeletons).
+
 ## Attribution
 
 Each theme credits the theme it honors in its source and in `NOTICE`. No code, styles or assets from those themes are used. These are independent HAX themes, not affiliated with or endorsed by their authors.

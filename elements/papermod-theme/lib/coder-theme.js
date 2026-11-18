@@ -19,7 +19,7 @@ import { HomageColumnTheme } from "@haxtheweb/papermod-theme/lib/HomageColumnThe
  * @title Coder
  * @haxcms-theme-category Blog, Website
  * @haxcms-theme-priority 0
- * @demo ../demo/index.html
+ * @demo ../demo/coder-theme/index.html
  * @element coder-theme
  */
 class CoderTheme extends HomageColumnTheme {

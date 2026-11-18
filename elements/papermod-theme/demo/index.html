@@ -40,6 +40,9 @@
     </script>
     <script type="module">
       import "@haxtheweb/haxcms-elements/lib/core/haxcms-site-builder.js";
+      // a HAXcms site always carries the autoloader that defines the blocks
+      // a page uses; a bare demo page has to ask for it
+      import "@haxtheweb/wc-autoload/wc-autoload.js";
       import '../papermod-theme.js';
     </script>
   </head>

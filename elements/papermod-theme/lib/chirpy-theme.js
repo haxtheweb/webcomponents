@@ -19,7 +19,7 @@ import { HomageSidebarTheme } from "@haxtheweb/papermod-theme/lib/HomageSidebarT
  * @title Chirpy
  * @haxcms-theme-category Blog, Website
  * @haxcms-theme-priority 0
- * @demo ../demo/index.html
+ * @demo ../demo/chirpy-theme/index.html
  * @element chirpy-theme
  */
 class ChirpyTheme extends HomageSidebarTheme {

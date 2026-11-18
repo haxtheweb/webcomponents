@@ -20,7 +20,7 @@ import { HomageColumnTheme } from "@haxtheweb/papermod-theme/lib/HomageColumnThe
  * @title al-folio
  * @haxcms-theme-category Website
  * @haxcms-theme-priority 0
- * @demo ../demo/index.html
+ * @demo ../demo/al-folio-theme/index.html
  * @element al-folio-theme
  */
 class AlFolioTheme extends HomageColumnTheme {

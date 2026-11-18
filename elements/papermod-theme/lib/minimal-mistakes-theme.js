@@ -21,7 +21,7 @@ import { HomageSidebarTheme } from "@haxtheweb/papermod-theme/lib/HomageSidebarT
  * @title Minimal Mistakes
  * @haxcms-theme-category Blog, Website, Documentation
  * @haxcms-theme-priority 0
- * @demo ../demo/index.html
+ * @demo ../demo/minimal-mistakes-theme/index.html
  * @element minimal-mistakes-theme
  */
 class MinimalMistakesTheme extends HomageSidebarTheme {

@@ -19,7 +19,7 @@ import { HomageColumnTheme } from "@haxtheweb/papermod-theme/lib/HomageColumnThe
  * @title Astro Cactus
  * @haxcms-theme-category Blog, Website
  * @haxcms-theme-priority 0
- * @demo ../demo/index.html
+ * @demo ../demo/astro-cactus-theme/index.html
  * @element astro-cactus-theme
  */
 class AstroCactusTheme extends HomageColumnTheme {

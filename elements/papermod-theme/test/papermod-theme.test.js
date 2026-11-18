@@ -63,6 +63,10 @@ async function make(tag) {
       expect(root.querySelector("homage-page-list")).to.exist;
     });
 
+    it("says it takes a site's design system", () => {
+      expect(element.constructor.acceptsDesignSystems).to.be.true;
+    });
+
     it("passes the a11y audit", async () => {
       // with no site loaded the site title is empty, and axe can't follow a
       // skip link into the shadow root; both are covered in a loaded site
