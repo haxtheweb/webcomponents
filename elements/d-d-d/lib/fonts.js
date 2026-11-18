@@ -127,6 +127,8 @@ export function resolveFontURLs(fonts) {
  * @param {Object} [options]
  * @param {Document} [options.document] defaults to the global document
  * @param {String} [options.spec] css2 axes for the Google fallback
+ * @param {String} [options.priority] fetchpriority for a new link
+ *   ("low" for a face that can arrive after first paint)
  * @returns {HTMLLinkElement|null} the link, new or already there
  */
 export function loadFontFamily(family, options) {
@@ -146,6 +148,9 @@ export function loadFontFamily(family, options) {
   link.rel = "stylesheet";
   link.href = href;
   link.setAttribute("data-hax-font", family);
+  if (opts.priority) {
+    link.setAttribute("fetchpriority", opts.priority);
+  }
   doc.head.appendChild(link);
   return link;
 }

@@ -20,8 +20,8 @@ globalThis.document.startViewTransition = (cb) => {
 };
 
 // register a fonts-less "clean-portfolio-theme" system and activate it
-// BEFORE the first theme fixture so the googleapis font stylesheet from
-// firstUpdated is never injected in this test session
+// BEFORE the first theme fixture, so the theme's own system (and its font
+// stylesheets) never takes over in this test session
 DesignSystemManager.addDesignSystem({
   name: "clean-portfolio-theme",
   styles: [],

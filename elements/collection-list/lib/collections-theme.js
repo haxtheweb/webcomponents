@@ -21,7 +21,7 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-top-menu.js
 import "@haxtheweb/scroll-button/scroll-button.js";
 import "./collections-theme-banner.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
-import { fontStylesheetURL } from "@haxtheweb/d-d-d/lib/fonts.js";
+import { loadFontFamily } from "@haxtheweb/d-d-d/lib/fonts.js";
 
 /**
  * @title Collections
@@ -414,15 +414,8 @@ class CollectionsTheme extends HAXCMSOperationButtons(
         const badDevice = _mobx_val_0;
         // good device, we can inject font we use
         if (badDevice === false) {
-          const link = globalThis.document.createElement("link");
-          link.setAttribute(
-            "href",
-            // HAX ships Roboto: it loads from HAX, not Google
-            fontStylesheetURL("Roboto"),
-          );
-          link.setAttribute("rel", "stylesheet");
-          link.setAttribute("fetchpriority", "low");
-          globalThis.document.head.appendChild(link);
+          // HAX ships Roboto (d-d-d/lib/fonts): once per page, never Google
+          loadFontFamily("Roboto", { priority: "low" });
         }
       });
     });

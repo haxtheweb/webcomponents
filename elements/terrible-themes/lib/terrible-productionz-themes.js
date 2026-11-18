@@ -11,7 +11,7 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
 import "@haxtheweb/scroll-button/scroll-button.js";
 import { autorun, toJS } from "mobx";
-import { fontStylesheetURL } from "@haxtheweb/d-d-d/lib/fonts.js";
+import { loadFontFamily } from "@haxtheweb/d-d-d/lib/fonts.js";
 /**
  * @title Terrible Productionz
  * `themes inspired by creations by btopro from his youth. legitimate, terrible websites.`
@@ -400,11 +400,8 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    this.__link = globalThis.document.createElement("link");
-    this.__link.rel = "stylesheet";
-    // HAX ships Caveat: it loads from HAX, not Google
-    this.__link.href = fontStylesheetURL("Caveat");
-    globalThis.document.head.appendChild(this.__link);
+    // HAX ships Caveat (d-d-d/lib/fonts): once per page, never Google
+    this.__link = loadFontFamily("Caveat");
   }
   /**
    * life cycle, element is removed from the DOM
