@@ -132,6 +132,10 @@ function isElementHaxCapable(elementPath, elementName, haxDemoSchema) {
   return false;
 }
 
+// The HAX platform itself, as opposed to blocks and themes: the full HAXcms
+// system demo and the AppHax dashboard. The Platform filter lists these.
+const PLATFORM_ELEMENTS = ["haxcms-elements", "app-hax"];
+
 // HAXcms theme registry; a package whose own tag is a registered theme is a
 // theme even when its name does not end in -theme (clean-one, simple-blog)
 let THEME_TAGS = null;
@@ -310,6 +314,7 @@ function getComponentInfo() {
             elementPath,
             elementName,
           );
+          const isPlatform = PLATFORM_ELEMENTS.includes(elementName);
 
           // Documentation data and walkthrough storyboard, when present
           let docs = null;
@@ -354,6 +359,7 @@ function getComponentInfo() {
             isTheme,
             isInstructional,
             isDesignSystem,
+            isPlatform,
             additionalDemos: demoFiles
               .filter((f) => f !== "index.html")
               .map((f) => ({
@@ -566,10 +572,6 @@ function copyAppearanceModule() {
 
 function generateHTML(components) {
   const totalComponents = components.length;
-  // shortcut to the full system demo, used to review everything working together
-  const haxcmsDemo = components.find((c) => c.name === "haxcms-elements");
-  // and to the AppHax dashboard, which boots the same way
-  const appHaxDemo = components.find((c) => c.name === "app-hax");
   const walkthroughCount = components.filter(
     (c) => c.motionStatus && c.motionStatus !== "none",
   ).length;
@@ -739,30 +741,10 @@ ${loader.styles}
       display: none;
     }
 
-    .shortcuts {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--hax-ui-gap-md);
-    }
-
     hax-network-bar {
       flex: none;
       --hax-network-bar-max-width: none;
       --hax-network-bar-gutter: var(--ddd-spacing-4, 16px);
-    }
-
-    /* the live demo is the gallery's main call to action, in the same
-       Keystone yellow as hax.cloud's "Try the live demo" */
-    body a.hax-ui-btn#haxcmsDemoBtn,
-    body a.hax-ui-btn#haxcmsDemoBtn:any-link {
-      font-weight: var(--ddd-font-weight-bold, 700);
-      color: var(--ddd-theme-default-nittanyNavy);
-      background-color: var(--ddd-theme-default-keystoneYellow);
-      border-color: var(--ddd-theme-default-keystoneYellow);
-    }
-
-    body a.hax-ui-btn#haxcmsDemoBtn:hover {
-      background-color: var(--ddd-theme-default-white);
     }
 
     .titlebar .hax-ui-btn {
@@ -1254,15 +1236,6 @@ ${loader.styles}
         display: none;
       }
 
-      .shortcuts {
-        order: 3;
-        width: 100%;
-      }
-
-      .shortcuts .hax-ui-btn {
-        flex: 1;
-      }
-
       .gallery-container {
         display: block;
       }
@@ -1367,23 +1340,7 @@ ${loader.markup}
       <span class="mobile-title" id="mobileTitle">Component gallery</span>
     </div>
     <button class="hax-ui-btn" id="listToggle" aria-expanded="false" aria-controls="sidebar">Components</button>
-${
-  haxcmsDemo || appHaxDemo
-    ? `    <nav class="shortcuts" aria-label="System demos">
-${
-  haxcmsDemo
-    ? `      <a class="hax-ui-btn" id="haxcmsDemoBtn" href="${haxcmsDemo.demoPath}" target="haxcms-demo" rel="noopener" title="Open the full HAXcms system demo (haxcms-elements) in its own window">Try HAXcms</a>
-`
-    : ""
-}${
-        appHaxDemo
-          ? `      <a class="hax-ui-btn" id="appHaxDemoBtn" href="${appHaxDemo.demoPath}" target="_blank" rel="noopener" title="Open the AppHax dashboard demo (app-hax) in a new tab">Open AppHax demo</a>
-`
-          : ""
-      }    </nav>
-`
-    : ""
-}  </header>
+  </header>
 
   <div class="gallery-container">
     <!-- Sidebar with component list -->
@@ -1399,8 +1356,11 @@ ${
           <button class="hax-ui-chip filter-btn" aria-pressed="true" data-filter="all" title="Show all components">
             All <span class="n">${totalComponents}</span>
           </button>
-          <button class="hax-ui-chip filter-btn" aria-pressed="false" data-filter="hax" title="Show only HAX-capable components">
-            HAX <span class="n">${components.filter((c) => c.isHaxCapable).length}</span>
+          <button class="hax-ui-chip filter-btn" aria-pressed="false" data-filter="platform" title="The HAX platform: try HAXcms and the AppHax dashboard">
+            Platform <span class="n">${components.filter((c) => c.isPlatform).length}</span>
+          </button>
+          <button class="hax-ui-chip filter-btn" aria-pressed="false" data-filter="hax" title="Blocks you can place in a page with HAX">
+            HAX Blocks <span class="n">${components.filter((c) => c.isHaxCapable).length}</span>
           </button>
           <button class="hax-ui-chip filter-btn" aria-pressed="false" data-filter="theme" title="Show HAXcms themes">
             Themes <span class="n">${components.filter((c) => c.isTheme).length}</span>
@@ -1484,7 +1444,7 @@ ${
         <div class="welcome-message" id="welcomeMessage">
           <div class="hax-ui-empty">
             <strong>Welcome to the HAX web components gallery</strong>
-            <p>Choose a component to see its demo, documentation and walkthrough.</p>
+            <p>Choose a component to see its demo, documentation and walkthrough. To try HAXcms or the AppHax dashboard, filter by Platform.</p>
           </div>
         </div>
         <div class="stage-progress" aria-hidden="true"></div>
@@ -1602,6 +1562,9 @@ ${
       let components = [];
       
       switch (currentFilter) {
+        case 'platform':
+          components = COMPONENTS.filter(c => c.isPlatform);
+          break;
         case 'hax':
           components = COMPONENTS.filter(c => c.isHaxCapable);
           break;
@@ -1700,7 +1663,8 @@ ${
 
         // [label, tone] pairs; built as text nodes, never HTML strings
         const tags = [];
-        if (component.isHaxCapable) tags.push(['HAX', 'accent']);
+        if (component.isPlatform) tags.push(['Platform', 'info']);
+        if (component.isHaxCapable) tags.push(['HAX Block', 'accent']);
         if (component.isTheme) tags.push(['Theme', '']);
         if (component.isInstructional) tags.push(['Instructional', 'success']);
         if (component.isDesignSystem) tags.push(['Design system', 'muted']);
