@@ -181,7 +181,10 @@ class HaxStyleSwitcher extends I18NMixin(DDD) {
         :host([hidden]) {
           display: none;
         }
+        /* DDD clips details (overflow: hidden), which hides the summary's
+           focus ring; the palette list scrolls inside its own box */
         details {
+          overflow: visible;
           border: var(--ddd-border-size-xs) solid
             light-dark(
               var(--ddd-theme-default-slateGray),
