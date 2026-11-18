@@ -7,6 +7,8 @@ import {
   loadDesignSystemRegistry,
   siteDesignSystemName,
   themeAcceptsDesignSystems,
+  themeDefaultDesignSystem,
+  themeDefaultDesignSystemTitle,
 } from "../lib/core/utils/HAXCMSDesignSystems.js";
 import { DesignSystemManager } from "@haxtheweb/d-d-d/lib/DesignSystemManager.js";
 
@@ -17,8 +19,25 @@ class DsAcceptingTheme extends HTMLElement {
   }
 }
 class DsPlainTheme extends HTMLElement {}
+// takes any system and starts on one of its own
+class DsDefaultTheme extends HTMLElement {
+  static get acceptsDesignSystems() {
+    return true;
+  }
+  static get defaultDesignSystem() {
+    return "carbon";
+  }
+}
+// names a default but takes no system: the default means nothing
+class DsDefaultPlainTheme extends HTMLElement {
+  static get defaultDesignSystem() {
+    return "carbon";
+  }
+}
 globalThis.customElements.define("ds-accepting-theme", DsAcceptingTheme);
 globalThis.customElements.define("ds-plain-theme", DsPlainTheme);
+globalThis.customElements.define("ds-default-theme", DsDefaultTheme);
+globalThis.customElements.define("ds-default-plain-theme", DsDefaultPlainTheme);
 
 /** a stand-in for the design system manager */
 function fakeManager() {
@@ -111,6 +130,38 @@ describe("site design systems", () => {
     await applySiteDesignSystem("carbon", "ds-accepting-theme", manager);
     await applySiteDesignSystem("carbon", "ds-plain-theme", manager);
     expect(manager.active).to.equal("ddd");
+  });
+
+  it("reads the system a theme starts on", async () => {
+    expect(themeDefaultDesignSystem("ds-default-theme")).to.equal("carbon");
+    expect(themeDefaultDesignSystem("ds-accepting-theme")).to.equal("");
+    expect(themeDefaultDesignSystem("ds-default-plain-theme")).to.equal("");
+    expect(themeDefaultDesignSystem("not-defined-theme")).to.equal("");
+    const registry = await loadDesignSystemRegistry();
+    expect(
+      themeDefaultDesignSystemTitle("ds-default-theme", registry),
+    ).to.equal("Carbon");
+    expect(
+      themeDefaultDesignSystemTitle("ds-accepting-theme", registry),
+    ).to.equal("");
+  });
+
+  it("starts a theme on its own system when the site picked none", async () => {
+    const manager = fakeManager();
+    const result = await applySiteDesignSystem("", "ds-default-theme", manager);
+    expect(result).to.equal("carbon");
+    expect(manager.active).to.equal("carbon");
+  });
+
+  it("keeps the site's choice over the theme's default", async () => {
+    const manager = fakeManager();
+    const result = await applySiteDesignSystem(
+      "patternfly",
+      "ds-default-theme",
+      manager,
+    );
+    expect(result).to.equal("patternfly");
+    expect(manager.active).to.equal("patternfly");
   });
 
   it("lets the newest choice win a quick switch", async () => {

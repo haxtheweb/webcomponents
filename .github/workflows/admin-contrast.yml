@@ -24,6 +24,7 @@ on:
       - "elements/d-d-d/**"
       - "elements/*/design-system/**"
       - "elements/*/lib/*DesignSystem.js"
+      - "elements/*/lib/*HaxUiSkin.js"
       - "elements/haxcms-elements/lib/core/**"
       - "elements/simple-fields/**"
       - "elements/super-daemon/**"
@@ -52,6 +53,7 @@ jobs:
         system:
           - ddd
           - carbon
+          - classic-desktop
           - keepcase
           - material
           - patternfly

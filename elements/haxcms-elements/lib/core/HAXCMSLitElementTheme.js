@@ -63,25 +63,45 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
     this.__disposer.push(
       autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.activeItemContent);
+        const activeId = toJS(store.activeId);
         Promise.resolve().then(() => {
           let tmp = _mobx_val_0;
           this.emptyContent = !tmp || tmp.trim() === "";
+          const scrollTarget = this.HAXCMSThemeSettings.scrollTarget;
           if (
             this.HAXCMSThemeSettings.autoScroll &&
             this.shadowRoot &&
-            this.HAXCMSThemeSettings.scrollTarget &&
-            this.HAXCMSThemeSettings.scrollTarget.scrollIntoView
+            scrollTarget &&
+            scrollTarget.scrollIntoView
           ) {
             if (this.isSafari) {
-              this.HAXCMSThemeSettings.scrollTarget.scrollIntoView();
+              scrollTarget.scrollIntoView();
             } else {
               setTimeout(() => {
-                this.HAXCMSThemeSettings.scrollTarget.scrollIntoView(
+                scrollTarget.scrollIntoView(
                   this.HAXCMSThemeSettings.scrollSettings,
                 );
               }, 0);
             }
+          } else if (
+            this.HAXCMSThemeSettings.autoScroll &&
+            this.shadowRoot &&
+            scrollTarget &&
+            typeof scrollTarget.scrollTo === "function" &&
+            activeId !== this.__autoScrolledId &&
+            !(this._location && this._location.hash)
+          ) {
+            // the default target is the window, which has no scrollIntoView:
+            // a new page starts at its top instead of where the last page
+            // was scrolled to (saving the same page does not move it, and a
+            // #hash link is scrolled to by the location handler)
+            scrollTarget.scrollTo({
+              top: 0,
+              left: 0,
+              behavior: this.HAXCMSThemeSettings.scrollSettings.behavior,
+            });
           }
+          this.__autoScrolledId = activeId;
           // idle time bc this shouldn't block page load in any way; a newer
           // page replaces a still-pending refresh instead of queuing another
           if (this.__cancelHeadingRefresh) {
@@ -570,7 +590,42 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
     // delay for pages that are not rendering at all.
     globalThis.setTimeout(() => revealTheme(true), 500);
   }
+  connectedCallback() {
+    super.connectedCallback();
+    // --haxcms-theme-offset-top: how far down the page the theme starts
+    // (the editor's top bar keeps 64px for itself when someone is logged
+    // in). A theme that fills the screen sizes itself with
+    // min-height: calc(100dvh - var(--haxcms-theme-offset-top, 0px))
+    // so it does not leave a strip of scroll below its design.
+    if (globalThis.ResizeObserver && globalThis.document.body) {
+      this.__offsetObserver = new globalThis.ResizeObserver(() => {
+        this._syncThemeOffsetTop();
+      });
+      this.__offsetObserver.observe(globalThis.document.body);
+    }
+  }
+  /**
+   * Publish the theme's distance from the top of the document as
+   * --haxcms-theme-offset-top on the theme element
+   */
+  _syncThemeOffsetTop() {
+    if (!this.isConnected) {
+      return;
+    }
+    const top = Math.max(
+      0,
+      Math.round(this.getBoundingClientRect().top + globalThis.scrollY),
+    );
+    if (this.__themeOffsetTop !== top) {
+      this.__themeOffsetTop = top;
+      this.style.setProperty("--haxcms-theme-offset-top", `${top}px`);
+    }
+  }
   disconnectedCallback() {
+    if (this.__offsetObserver) {
+      this.__offsetObserver.disconnect();
+      this.__offsetObserver = null;
+    }
     if (this.__cancelHeadingRefresh) {
       this.__cancelHeadingRefresh();
       this.__cancelHeadingRefresh = null;
