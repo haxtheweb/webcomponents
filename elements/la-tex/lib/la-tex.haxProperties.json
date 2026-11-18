@@ -19,7 +19,20 @@
     }
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "property": "backdrop",
+        "title": "Picture backdrop",
+        "description": "Background behind drawn pictures. Automatic adds one only when the drawing would be hard to see on the page, such as dark lines in dark mode.",
+        "inputMethod": "select",
+        "options": {
+          "auto": "Automatic",
+          "light": "Light",
+          "dark": "Dark",
+          "none": "None"
+        }
+      }
+    ],
     "advanced": [],
     "developer": []
   },

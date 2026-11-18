@@ -64,4 +64,39 @@ describe("la-tex with MathJax 4", () => {
       expect(el.shadowRoot.querySelector("style[data-mathjax-svg]")).to.exist;
     });
   });
+
+  it("boxes a picture whose author color is lost on a dark page", async function () {
+    this.timeout(20000);
+    const host = await fixture(
+      html`<div style="background:#262626;color:#e4e5e7"></div>`,
+    );
+    const make = (backdrop) => {
+      const el = globalThis.document.createElement("la-tex");
+      if (backdrop) {
+        el.setAttribute("backdrop", backdrop);
+      }
+      el.textContent =
+        "\n\\begin{pspicture}(0,-1)(4,1)\n\\psline[linecolor=black](0,0)(3,0)\n\\end{pspicture}\n";
+      host.appendChild(el);
+      return el;
+    };
+    const auto = make();
+    const none = make("none");
+    const picture = (el) => el.shadowRoot.querySelector(".pspicture");
+    await waitUntil(
+      () => [auto, none].every((el) => el.hydrated && picture(el)),
+      "la-tex did not render",
+      { timeout: 15000 },
+    );
+    await waitUntil(
+      () => picture(auto).getAttribute("data-hax-contrast") === "light",
+      "no backdrop for black lines on a dark page",
+      { timeout: 5000 },
+    );
+    expect(picture(none).hasAttribute("data-hax-contrast")).to.be.false;
+    // the author can switch it at any time
+    auto.backdrop = "none";
+    await auto.updateComplete;
+    expect(picture(auto).hasAttribute("data-hax-contrast")).to.be.false;
+  });
 });

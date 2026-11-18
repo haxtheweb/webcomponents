@@ -13,6 +13,11 @@ import {
   loadMathJax,
   typesetIn,
 } from "@haxtheweb/lrn-math/lib/mathjax-loader.js";
+import {
+  applySvgContrast,
+  watchSvgContrast,
+  OVERRIDE_ATTRIBUTE,
+} from "@haxtheweb/utils/lib/svg-contrast.js";
 
 /**
  * `la-tex`
@@ -128,6 +133,19 @@ class LaTex extends I18NMixin(LitElement) {
           position: relative;
           margin: auto;
         }
+        /* a picture whose drawing would be hard to see where it lands (an
+           author color like linecolor=black on a dark page), or the backdrop
+           the author picked */
+        .pspicture[data-hax-contrast="light"] {
+          background-color: var(--ddd-theme-default-white);
+          color: var(--ddd-theme-default-coalyGray);
+          border-radius: var(--ddd-radius-xs);
+        }
+        .pspicture[data-hax-contrast="dark"] {
+          background-color: var(--ddd-theme-default-coalyGray);
+          color: var(--ddd-theme-default-white);
+          border-radius: var(--ddd-radius-xs);
+        }
 
         /* pspicture slider controls sit side by side under the picture,
            which keeps its own (often wide) width. In a narrow block, stack
@@ -211,6 +229,12 @@ class LaTex extends I18NMixin(LitElement) {
   static get properties() {
     return {
       hydrated: { type: Boolean, reflect: true },
+      /**
+       * background behind drawn (pspicture) pictures: "auto" (the default)
+       * adds one only when the drawing would be hard to see where it is,
+       * "light" or "dark" always, "none" never
+       */
+      backdrop: { type: String, reflect: true },
       initialText: { type: String },
       _inline: { type: Boolean, state: true },
     };
@@ -256,10 +280,65 @@ class LaTex extends I18NMixin(LitElement) {
     if (changedProperties.has("hydrated") && this.hydrated) {
       const wrapper = this.shadowRoot.querySelector(".wrapper");
       if (wrapper) {
-        typesetIn(wrapper).catch((error) => {
-          console.warn(error.message);
-        });
+        typesetIn(wrapper)
+          .catch((error) => {
+            console.warn(error.message);
+          })
+          .then(() => this._checkContrast());
       }
+    } else if (changedProperties.has("backdrop")) {
+      this._checkContrast();
+    }
+  }
+  /**
+   * give a picture a backdrop when its drawing would be hard to see on the
+   * page behind it (or as the author chose); the backdrop goes on the whole
+   * picture so the math placed on it changes color with the lines
+   */
+  _checkContrast() {
+    const wrapper =
+      this.shadowRoot && this.shadowRoot.querySelector(".wrapper");
+    if (!wrapper) {
+      return;
+    }
+    const choice = ["light", "dark", "none"].includes(this.backdrop)
+      ? this.backdrop
+      : null;
+    wrapper.querySelectorAll(".pspicture > svg").forEach((svg) => {
+      if (choice) {
+        svg.setAttribute(OVERRIDE_ATTRIBUTE, choice);
+      } else {
+        svg.removeAttribute(OVERRIDE_ATTRIBUTE);
+      }
+    });
+    applySvgContrast(wrapper, { target: this._pictureOf });
+  }
+  _pictureOf(svg) {
+    return svg.closest(".pspicture");
+  }
+  connectedCallback() {
+    super.connectedCallback();
+    // re-check when the page switches between light and dark
+    if (this.shadowRoot) {
+      this._startContrastWatch();
+    }
+  }
+  disconnectedCallback() {
+    if (this._stopContrastWatch) {
+      this._stopContrastWatch();
+      this._stopContrastWatch = null;
+    }
+    super.disconnectedCallback();
+  }
+  _startContrastWatch() {
+    if (this._stopContrastWatch) {
+      this._stopContrastWatch();
+    }
+    const wrapper = this.shadowRoot.querySelector(".wrapper");
+    if (wrapper) {
+      this._stopContrastWatch = watchSvgContrast(wrapper, {
+        target: this._pictureOf,
+      });
     }
   }
   firstUpdated(changedProperties) {
@@ -267,6 +346,7 @@ class LaTex extends I18NMixin(LitElement) {
       super.firstUpdated(changedProperties);
     }
     this._checkInline();
+    this._startContrastWatch();
   }
   /**
    * Convention we use

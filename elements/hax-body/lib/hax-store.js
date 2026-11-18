@@ -5993,6 +5993,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       "data-hax-active",
       "data-hax-empty",
       "data-hax-auto",
+      // contrast backdrop measured at run time (@haxtheweb/utils/lib/svg-contrast.js)
+      "data-hax-contrast",
       '="true"',
       "contenteditable",
       "draggable",
@@ -6287,6 +6289,10 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       crossLines: true,
     });
     content = replaceLazyRun(content, [' data-hax-active="', '"'], {
+      ignoreCase: true,
+      crossLines: true,
+    });
+    content = replaceLazyRun(content, [' data-hax-contrast="', '"'], {
       ignoreCase: true,
       crossLines: true,
     });
