@@ -12906,8 +12906,10 @@
                   if ((bottom = y >= (ym = (y0 + y1) / 2))) y0 = ym;
                   else y1 = ym;
                   if (
-                    !((parent = node),
-                    (node = node[(i = (bottom << 1) | right)]))
+                    !(
+                      (parent = node),
+                      (node = node[(i = (bottom << 1) | right)])
+                    )
                   )
                     return this;
                   if (!node.length) break;
@@ -20524,8 +20526,10 @@
                   if ((bottom = y >= (ym = (y0 + y1) / 2))) y0 = ym;
                   else y1 = ym;
                   if (
-                    !((parent = node),
-                    (node = node[(i = (bottom << 1) | right)]))
+                    !(
+                      (parent = node),
+                      (node = node[(i = (bottom << 1) | right)])
+                    )
                   )
                     return this;
                   if (!node.length) break;
@@ -42993,22 +42997,35 @@
             (0, _latex2jsMathjax.loadMathJax)(done);
           }
 
+          // @hack added for la-tex: render one element. la-tex calls this
+          // for itself, so a page with many la-tex elements parses each once
+          // instead of every element re-scanning (and re-rendering) every
+          // unhydrated la-tex on the page, and la-tex inside a shadow root
+          // (where the document query in init cannot see it) renders too.
+          var hydrate = function hydrate(el) {
+            render(el.innerHTML, function (div) {
+              var wrapper = el.shadowRoot
+                ? el.shadowRoot.querySelector(".wrapper")
+                : null;
+              if (!wrapper) {
+                return;
+              }
+              wrapper.innerHTML = "";
+              wrapper.appendChild(div);
+              el.hydrated = true;
+            });
+          };
+
           var init = function init() {
             (0, _latex2jsMathjax.loadMathJax)();
             // @hack modified line to ensure selector is scoped
             document
               .querySelectorAll("la-tex:not([hydrated])")
-              .forEach(function (el) {
-                render(el.innerHTML, function (div) {
-                  el.shadowRoot.querySelector(".wrapper").innerHTML = "";
-                  el.shadowRoot.querySelector(".wrapper").appendChild(div);
-                  el.hydrated = true;
-                  // el.parentNode.insertBefore(div, el.nextSibling);
-                });
-              });
+              .forEach(hydrate);
           };
 
           exports.init = init;
+          exports.hydrate = hydrate;
         },
         {
           "./components/enumerate": 111,

@@ -13,7 +13,8 @@
  * declared from a template such as `--ddd-primary-${i}:`.
  * Used = any `var(--ddd-x` that is not itself built from a template.
  * Override hooks (`--ddd-component-*`, `--ddd-card-*`, `--ddd-button-*`,
- * `--ddd-table-*`) are set by consumers, so they are never flagged.
+ * `--ddd-table-*`, the per-palette `--ddd-palette-N-text-color-K` a bridge
+ * sets) are set by consumers, so they are never flagged.
  *
  * It also fails on `var(--ddd-border-xs) solid <colour>` (with or without a
  * fallback inside the var()): --ddd-border-xs…lg already include width,
@@ -66,6 +67,11 @@ const HOOK_TOKENS = new Set([
   "--ddd-theme-code-background-color",
   "--ddd-app-color-icons",
 ]);
+
+// Per-palette text color hooks (--ddd-palette-N-text-color-K): DDDPaletteStyles
+// reads one before each palette text color, and only a design system bridge
+// sets it (design-system/bridge/build-bridge.js), so DDD never declares them.
+const HOOK_PATTERNS = [/^--ddd-palette-\d+-text-color-\d+$/];
 
 const args = new Set(process.argv.slice(2));
 const asJson = args.has("--json");
@@ -176,6 +182,7 @@ function isDeclared(token) {
   if (declared.has(token)) return true;
   if (HOOK_PREFIXES.some((prefix) => token.startsWith(prefix))) return true;
   if (HOOK_TOKENS.has(token)) return true;
+  if (HOOK_PATTERNS.some((pattern) => pattern.test(token))) return true;
   for (const prefix of declaredPrefixes) {
     if (token.startsWith(prefix)) return true;
   }

@@ -46,6 +46,9 @@ class SimpleCta extends DDDVocabulary(
         :host {
           display: inline-block;
           width: fit-content;
+          /* never wider than its container: a long label wraps instead of
+            pushing the page sideways on a narrow screen (WCAG 1.4.10) */
+          max-width: 100%;
           height: fit-content;
           margin: var(--ddd-stack-gap, var(--ddd-spacing-4)) 0 0;
           border-radius: var(--ddd-control-radius, var(--ddd-radius-xs));
@@ -186,13 +189,7 @@ class SimpleCta extends DDDVocabulary(
               calc(1000px - var(--ddd-control-height, 0px) * 1000)
             )
           );
-          min-height: max(
-            0px,
-            calc(
-              var(--ddd-control-height, -64px) - 8px - 2 *
-                var(--ddd-border-size-sm)
-            )
-          );
+          min-height: max(0px, calc(var(--ddd-control-height, -64px) - 8px));
           padding-block: var(--simple-cta-padding-block);
           padding-inline: var(--ddd-spacing-4) var(--ddd-spacing-3);
           font-size: var(--ddd-font-size-4xs);
@@ -206,13 +203,7 @@ class SimpleCta extends DDDVocabulary(
             0px,
             min(1rem, calc(1000px - var(--ddd-control-height, 0px) * 1000))
           );
-          min-height: max(
-            0px,
-            calc(
-              var(--ddd-control-height, -64px) + 8px - 2 *
-                var(--ddd-border-size-sm)
-            )
-          );
+          min-height: max(0px, calc(var(--ddd-control-height, -64px) + 8px));
         }
         :host(:state(size-l)) .btn {
           padding-block: var(--simple-cta-padding-block);
@@ -251,6 +242,10 @@ class SimpleCta extends DDDVocabulary(
           text-decoration: none;
           height: fit-content;
           width: max-content;
+          max-width: 100%;
+          /* border-box, so max-width holds the border and padding too;
+            min-height below is the whole height for the same reason */
+          box-sizing: border-box;
           border-radius: var(--ddd-control-radius, var(--ddd-radius-xs));
           color: var(--component-color, var(--ddd-theme-default-link));
           border: var(--ddd-border-sm);
@@ -267,12 +262,7 @@ class SimpleCta extends DDDVocabulary(
             0px,
             min(0.75rem, calc(1000px - var(--ddd-control-height, 0px) * 1000))
           );
-          min-height: max(
-            0px,
-            calc(
-              var(--ddd-control-height, -64px) - 2 * var(--ddd-border-size-sm)
-            )
-          );
+          min-height: max(0px, calc(var(--ddd-control-height, -64px)));
           padding: var(
             --simple-cta-button-padding,
             var(--simple-cta-padding-block) 0.75rem
@@ -295,8 +285,18 @@ class SimpleCta extends DDDVocabulary(
           padding: var(--simple-cta-padding-block) 3.25rem;
         }
 
+        /* one line while it fits; two even lines when it does not */
+        .label {
+          min-width: 0;
+          white-space: normal;
+          overflow-wrap: break-word;
+          text-wrap: balance;
+          text-align: center;
+        }
+
         .icon {
           display: inline-flex;
+          flex-shrink: 0;
           --simple-icon-width: var(--simple-cta-font-size, var(--ddd-icon-3xs));
           --simple-icon-height: var(
             --simple-cta-font-size,

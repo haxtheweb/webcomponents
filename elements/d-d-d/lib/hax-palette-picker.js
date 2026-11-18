@@ -5,6 +5,7 @@
 import { css, html } from "lit";
 import { DDD } from "../d-d-d.js";
 import {
+  DDDPaletteRegistry,
   DDDPaletteSwatches,
   getDDDPaletteOptionByValue,
   getDDDPaletteOptions,
@@ -20,7 +21,17 @@ import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
  * - `value` is the canonical `data-palette` attribute value (for example `"5"`).
  * - `selectedKey` is the associated palette key (for example `"monotone"`).
  * - Emits `value-changed` with `{ value, key, dataPalette, option }`.
+ *
+ * Names: under a design system bridge (a system that remaps DDD's colors,
+ * such as Carbon or USWDS) the swatches show that system's colors, so a DDD
+ * palette name ("Sky and Ember") would describe colors that are not there.
+ * There each palette is named by the bridge (`colorNames.palette`) or by
+ * number ("Palette 8"). The system is `design-system` when set, otherwise
+ * the active one in DesignSystemManager. Override `labelFor(option)` to name
+ * options another way.
  */
+// one id per picker for its inputs and peek (a counter, not random)
+let pickerCount = 0;
 class HaxPalettePicker extends I18NMixin(DDD) {
   static get tag() {
     return "hax-palette-picker";
@@ -40,6 +51,7 @@ class HaxPalettePicker extends I18NMixin(DDD) {
       fallbackValue: { type: String, attribute: "fallback-value" },
       disabled: { type: Boolean, reflect: true },
       required: { type: Boolean, reflect: true },
+      designSystem: { type: String, attribute: "design-system" },
     };
   }
 
@@ -86,9 +98,9 @@ class HaxPalettePicker extends I18NMixin(DDD) {
         /* one row per palette: a disc cut into its colours, the name and
            an Active pill; wide pickers list rows in a grid with the chosen
            palette in full below, narrow ones preview a palette beside the
-           row on mouse hover or keyboard focus. A narrow picker with no
-           room beside it (a phone) shows the chosen palette below, like a
-           wide one: a preview there would cover the rows */
+           row on hover or focus. A narrow picker with no room beside it (a
+           phone) shows the chosen palette below, like a wide one: a
+           preview there would cover the rows */
         .options {
           display: grid;
           grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -361,6 +373,7 @@ class HaxPalettePicker extends I18NMixin(DDD) {
       selectedPaletteToApply: "Selected palette to apply",
       activePaletteLabel: "Active palette",
       colorNumber: "Colour {number}",
+      paletteNumber: "Palette {number}",
     };
     this.registerLocalization({
       context: this,
@@ -378,11 +391,17 @@ class HaxPalettePicker extends I18NMixin(DDD) {
     const fallback = getDDDPaletteOptionByValue(this.fallbackValue);
     this.value = fallback ? fallback.dataPalette : this.fallbackValue;
     this.selectedKey = fallback ? fallback.key : "";
-    this.__inputId = `hax-palette-picker-${Math.random()
-      .toString(36)
-      .slice(2, 10)}`;
+    pickerCount += 1;
+    this.__inputId = `hax-palette-picker-${pickerCount}`;
+    this.designSystem = "";
     this._peekKey = "";
     this._onScroll = this._onScroll.bind(this);
+    this._onOutsidePointer = this._onOutsidePointer.bind(this);
+    this._onDocumentKeydown = this._onDocumentKeydown.bind(this);
+    this._onDesignSystemChanged = this._onDesignSystemChanged.bind(this);
+    // the last way the options were reached: "touch" after a tap, until a
+    // key is pressed
+    this.__pointerType = "";
   }
 
   static get NARROW_WIDTH() {
@@ -408,10 +427,69 @@ class HaxPalettePicker extends I18NMixin(DDD) {
     if (this.__resize) {
       this.__resize.observe(this);
     }
+    // the room beside the picker changes with the window, not its own size
     if (!this.__onViewport) {
       this.__onViewport = () => this._setNarrow(this._narrow);
     }
     globalThis.addEventListener("resize", this.__onViewport);
+    globalThis.addEventListener(
+      "design-system-active-changed",
+      this._onDesignSystemChanged,
+    );
+  }
+
+  _onDesignSystemChanged() {
+    this.requestUpdate();
+  }
+
+  /**
+   * The names the design system in use gives DDD's colors, or null when it
+   * keeps DDD's own (DDD itself, or a system that doesn't remap colors).
+   */
+  _bridgeColorNames() {
+    const manager =
+      globalThis.DesignSystemManager && globalThis.DesignSystemManager.instance;
+    if (!manager) {
+      return null;
+    }
+    const name = this.designSystem || manager.active;
+    if (!name || typeof manager.systemChain !== "function") {
+      return null;
+    }
+    const chain = manager.systemChain(name);
+    for (let i = chain.length - 1; i >= 0; i--) {
+      if (chain[i].colorNames) {
+        return chain[i].colorNames;
+      }
+    }
+    return null;
+  }
+
+  /**
+   * What an option is called: its own label, except that a DDD palette
+   * name gives way under a bridge to the bridge's name or a numbered one.
+   * @param {Object} option a normalized option
+   * @returns {String}
+   */
+  labelFor(option) {
+    if (!option) {
+      return "";
+    }
+    const names = this._bridgeColorNames();
+    if (!names) {
+      return option.label;
+    }
+    if (names.palette && names.palette[option.dataPalette]) {
+      return names.palette[option.dataPalette];
+    }
+    const ddd = DDDPaletteRegistry.find(
+      (entry) => entry.dataPalette === option.dataPalette,
+    );
+    // a label the caller gave the option itself is kept
+    if (!ddd || option.label !== ddd.label) {
+      return option.label;
+    }
+    return this.t.paletteNumber.replace("{number}", () => option.dataPalette);
   }
 
   disconnectedCallback() {
@@ -421,6 +499,10 @@ class HaxPalettePicker extends I18NMixin(DDD) {
     if (this.__onViewport) {
       globalThis.removeEventListener("resize", this.__onViewport);
     }
+    globalThis.removeEventListener(
+      "design-system-active-changed",
+      this._onDesignSystemChanged,
+    );
     this._hidePeek();
     super.disconnectedCallback();
   }
@@ -452,7 +534,7 @@ class HaxPalettePicker extends I18NMixin(DDD) {
     return this.hasAttribute("data-narrow");
   }
 
-  /** narrow and previewing beside the picker (there is room for it) */
+  /** narrow, with room to preview a palette beside the picker */
   get _peeks() {
     return this._narrow && !this.hasAttribute("data-peek-below");
   }
@@ -730,7 +812,7 @@ class HaxPalettePicker extends I18NMixin(DDD) {
       ${this._renderDisc(option)}
       <div>
         <p class="specimen-name">
-          ${option.label}${
+          ${this.labelFor(option)}${
             active && this.showStatusFlags ? ` · ${this.t.active}` : ""
           }
         </p>
@@ -755,7 +837,7 @@ class HaxPalettePicker extends I18NMixin(DDD) {
           ? html`<div class="peek-head">
                 ${this._renderDisc(option)}
                 <div>
-                  <p class="peek-name">${option.label}</p>
+                  <p class="peek-name">${this.labelFor(option)}</p>
                   <span class="peek-sub"
                     >${active ? this.t.activePaletteLabel : this.t.palette}</span
                   >
@@ -767,13 +849,22 @@ class HaxPalettePicker extends I18NMixin(DDD) {
     </div>`;
   }
 
+  /**
+   * The colours beside a row, on hover or keyboard focus. Not after a tap:
+   * touch has no hover-out, so it would stay over the neighbouring options
+   * (WCAG 1.4.13). Escape, a scroll or a press anywhere else closes it.
+   */
   _showPeek(option, row) {
-    if (!this._peeks || !option || !row) {
+    if (!this._peeks || !option || !row || this.__pointerType === "touch") {
       return;
+    }
+    if (!this._peekKey) {
+      globalThis.addEventListener("scroll", this._onScroll, true);
+      globalThis.addEventListener("pointerdown", this._onOutsidePointer, true);
+      globalThis.addEventListener("keydown", this._onDocumentKeydown, true);
     }
     this._peekKey = option.key;
     this.__peekRow = row;
-    globalThis.addEventListener("scroll", this._onScroll, true);
     this.requestUpdate();
     this.updateComplete.then(() => this._placePeek());
   }
@@ -785,7 +876,33 @@ class HaxPalettePicker extends I18NMixin(DDD) {
     this._peekKey = "";
     this.__peekRow = null;
     globalThis.removeEventListener("scroll", this._onScroll, true);
+    globalThis.removeEventListener("pointerdown", this._onOutsidePointer, true);
+    globalThis.removeEventListener("keydown", this._onDocumentKeydown, true);
     this.requestUpdate();
+  }
+
+  /** a press on another row, or anywhere outside the row, closes the peek */
+  _onOutsidePointer(e) {
+    const row = this.__peekRow;
+    const path = typeof e.composedPath === "function" ? e.composedPath() : [];
+    if (!row || !path.includes(row)) {
+      this._hidePeek();
+    }
+  }
+
+  /** Escape closes the peek wherever focus is (hover leaves it elsewhere) */
+  _onDocumentKeydown(e) {
+    if (e.key === "Escape" && this._peekKey) {
+      this._hidePeek();
+    }
+  }
+
+  /** remember how the options were reached, so a tap shows no peek */
+  _onOptionsPointerdown(e) {
+    this.__pointerType = e.pointerType || "";
+    if (this.__pointerType === "touch") {
+      this._hidePeek();
+    }
   }
 
   _onScroll() {
@@ -824,32 +941,11 @@ class HaxPalettePicker extends I18NMixin(DDD) {
   }
 
   _onKeydown(e) {
-    this.__touchFocus = false;
+    // a key press is keyboard use again: focus shows the peek
+    this.__pointerType = "";
     if (e.key === "Escape" && this._peekKey) {
       this._hidePeek();
     }
-  }
-
-  // a mouse (or pen hovering) previews the row under it; a touch never
-  // hovers, so it never opens a preview
-  _onPointerEnter(e, option) {
-    if (e.pointerType !== "touch") {
-      this._showPeek(option, e.currentTarget);
-    }
-  }
-
-  // a tap focuses the radio; that focus must not open a preview that then
-  // stays over the rows until focus moves, so it is skipped
-  _onPointerDown(e) {
-    this.__touchFocus = e.pointerType === "touch" || e.pointerType === "pen";
-  }
-
-  _onFocus(e, option) {
-    if (this.__touchFocus) {
-      this.__touchFocus = false;
-      return;
-    }
-    this._showPeek(option, e.target.closest("label"));
   }
 
   _renderOption(option, index) {
@@ -861,9 +957,8 @@ class HaxPalettePicker extends I18NMixin(DDD) {
       <label
         class="option ${checked ? "selected" : ""}"
         data-palette="${option.dataPalette}"
-        @pointerenter="${(e) => this._onPointerEnter(e, option)}"
-        @pointerleave="${() => this._hidePeek()}"
-        @pointerdown="${this._onPointerDown}"
+        @mouseenter="${(e) => this._showPeek(option, e.currentTarget)}"
+        @mouseleave="${() => this._hidePeek()}"
       >
         <input
           id="${id}"
@@ -875,11 +970,11 @@ class HaxPalettePicker extends I18NMixin(DDD) {
           ?required="${this.required}"
           ?disabled="${this.disabled}"
           @change="${() => this._handleSelection(option)}"
-          @focus="${(e) => this._onFocus(e, option)}"
+          @focus="${(e) => this._showPeek(option, e.target.closest("label"))}"
           @blur="${() => this._hidePeek()}"
         />
         ${this._renderDisc(option)}
-        <span class="option-label">${option.label}</span>
+        <span class="option-label">${this.labelFor(option)}</span>
         <span
           class="flag active"
           ?hidden="${!this.showStatusFlags || !active}"
@@ -926,7 +1021,11 @@ class HaxPalettePicker extends I18NMixin(DDD) {
         >
           ${this.description}
         </p>
-        <div class="options" @keydown="${this._onKeydown}">
+        <div
+          class="options"
+          @keydown="${this._onKeydown}"
+          @pointerdown="${this._onOptionsPointerdown}"
+        >
           ${this._pickerOptions.map((option, index) =>
             this._renderOption(option, index),
           )}

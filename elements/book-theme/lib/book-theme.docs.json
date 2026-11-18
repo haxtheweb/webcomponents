@@ -1,0 +1,91 @@
+{
+  "tag": "book-theme",
+  "folder": "book-theme",
+  "package": "@haxtheweb/book-theme",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "book-theme",
+  "description": "Book, a quiet three-column documentation theme for HAXcms: site menu, page, on-this-page headings",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/book-theme/book-theme.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/book-theme/book-theme.js",
+  "install": "npm i @haxtheweb/book-theme",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "menu-open",
+      "property": "menuOpen",
+      "type": "boolean",
+      "default": "true",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "book-layout",
+      "property": "bookLayout",
+      "type": "string",
+      "default": "\"columns\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "toc-fold",
+      "property": "tocFold",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "prevPage",
+      "property": "prevPage",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "nextPage",
+      "property": "nextPage",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "pageTimestamp",
+      "property": "pageTimestamp",
+      "type": "number",
+      "default": "0",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "siteTitle",
+      "property": "siteTitle",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "be577cdd8623",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/book-theme",
+    "file": "book-theme.js"
+  }
+}

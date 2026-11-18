@@ -42,6 +42,11 @@ describe("keyboard flow: simple-modal dialog contract", () => {
         <button id="before">before</button>
         <button id="opener">Open settings</button>
         <simple-modal></simple-modal>
+        <!-- something focusable after the opener keeps the Tab, Shift+Tab
+             round trip inside the page; without it Tab leaves the document
+             in full Chrome, Firefox and WebKit (only the bundled headless
+             Chromium wraps back into the page) -->
+        <button id="after">after</button>
       </div>`,
     );
     opener = wrapper.querySelector("#opener");

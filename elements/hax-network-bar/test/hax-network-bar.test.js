@@ -232,6 +232,30 @@ describe("hax-network-bar", () => {
     strip.closeInstall();
   });
 
+  it("gives a demo's own controls a place in the strip and shortens its wording for them", async () => {
+    const plain = await fixture(html`<hax-network-bar demo></hax-network-bar>`);
+    await plain.updateComplete;
+    expect(plain.hasPre).to.be.false;
+    const strip = await fixture(
+      html`<hax-network-bar demo
+        ><button slot="pre" type="button">Theme</button></hax-network-bar
+      >`,
+    );
+    await strip.updateComplete;
+    // slotchange is async
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    await strip.updateComplete;
+    const slot = strip.shadowRoot.querySelector(".strip slot[name='pre']");
+    expect(slot).to.exist;
+    expect(slot.assignedElements().length).to.equal(1);
+    expect(strip.hasPre).to.be.true;
+    expect(strip.hasAttribute("has-pre")).to.be.true;
+    if (globalThis.matchMedia("(min-width: 1280px)").matches) {
+      const long = strip.shadowRoot.querySelector(".strip .notice .long");
+      expect(globalThis.getComputedStyle(long).display).to.equal("none");
+    }
+  });
+
   it("keeps --haxcms-top-offset at the strip's height while it is on the page", async () => {
     const root = document.documentElement;
     const strip = await fixture(html`<hax-network-bar demo></hax-network-bar>`);

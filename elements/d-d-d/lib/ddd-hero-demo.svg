@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 800" role="img" aria-label="Rolling fields under a low sun">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1e407c"/>
+      <stop offset="0.6" stop-color="#3ea39e"/>
+      <stop offset="1" stop-color="#f2c77a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="800" fill="url(#sky)"/>
+  <circle cx="1220" cy="430" r="90" fill="#ffd100"/>
+  <path d="M0 520 C260 430 520 470 800 510 S1320 470 1600 440 V800 H0Z" fill="#4a7729"/>
+  <path d="M0 600 C300 530 620 590 900 600 S1380 560 1600 590 V800 H0Z" fill="#3a5f20"/>
+  <path d="M0 690 C340 640 700 700 1000 690 S1400 660 1600 690 V800 H0Z" fill="#294514"/>
+  <g stroke="#6a9a3a" stroke-width="6" fill="none" opacity="0.6">
+    <path d="M120 640 C420 600 760 640 1040 640"/>
+    <path d="M60 670 C400 630 780 672 1100 668"/>
+    <path d="M900 560 C1100 540 1340 548 1560 536"/>
+  </g>
+</svg>

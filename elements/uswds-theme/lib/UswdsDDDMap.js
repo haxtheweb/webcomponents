@@ -125,6 +125,9 @@ export const UswdsDDDMap = css`
     --ddd-primary-25-rgb: 33, 110, 31;
     /* text color paired with each remapped palette, where DDD's own no longer reads */
     --ddd-primary-17-on: white;
+    /* palette text paired with each remapped palette color, where DDD's own no longer reads */
+    --ddd-palette-1-text-color-6: white;
+    --ddd-palette-3-text-color-1: white;
   }
 `;
 
