@@ -143,6 +143,9 @@ export const CarbonDDDMap = css`
     /* text color paired with each remapped palette, where DDD's own no longer reads */
     --ddd-primary-17-on: white;
     --ddd-primary-19-on: black;
+    /* palette text paired with each remapped palette color, where DDD's own no longer reads */
+    --ddd-palette-6-text-color-3: white;
+    --ddd-palette-8-text-color-3: white;
   }
 `;
 

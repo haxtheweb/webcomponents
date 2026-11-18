@@ -166,6 +166,44 @@ export function simpleColors() {
   return { hues, shades, dark };
 }
 
+/**
+ * The numbered palettes in DDDPaletteStyles: for each `[data-palette="N"]`
+ * block, its seven background colors and the text color paired with each
+ * (`--ddd-palette-text-color-K` is the text that reads on
+ * `--ddd-palette-color-K`), as written. Values are the CSS as authored,
+ * with the hook a bridge can answer unwrapped (see DDDPaletteTextHook).
+ * [{ number, slug, colors: { 1: "var(...)", ... }, text: { 1: ..., ... } }]
+ */
+export function dddPalettes() {
+  const src = read("elements", "d-d-d", "lib", "DDDStyles.js");
+  const start = src.indexOf("export const DDDPaletteStyles");
+  const block = src.slice(start, src.indexOf("`;", start));
+  const palettes = [];
+  const re =
+    /\[data-palette="([a-z][\w-]*)"\],\s*\[data-palette="(\d+)"\]\s*\{([^}]*)\}/g;
+  let m;
+  while ((m = re.exec(block))) {
+    const colors = {};
+    const text = {};
+    const body = m[3].replace(/\/\*[\s\S]*?\*\//g, "");
+    for (const [, kind, k, raw] of body.matchAll(
+      /--ddd-palette-(color|text-color)-(\d+):\s*([^;]+);/g,
+    )) {
+      let v = raw
+        .replace(/\s+/g, " ")
+        .replace(/\( /g, "(")
+        .replace(/ \)/g, ")")
+        .trim();
+      // the bridge hook wrapped around DDD's value -> DDD's value
+      const hook = /^var\(--ddd-palette-\d+-text-color-\d+, (.+)\)$/.exec(v);
+      if (hook) v = hook[1];
+      (kind === "color" ? colors : text)[k] = v;
+    }
+    palettes.push({ number: Number(m[2]), slug: m[1], colors, text });
+  }
+  return palettes;
+}
+
 export function dddVersion() {
   return JSON.parse(read("elements", "d-d-d", "package.json")).version;
 }

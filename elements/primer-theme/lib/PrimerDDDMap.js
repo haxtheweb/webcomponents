@@ -143,6 +143,9 @@ export const PrimerDDDMap = css`
     --ddd-primary-25-rgb: 26, 127, 55;
     /* text color paired with each remapped palette, where DDD's own no longer reads */
     --ddd-primary-17-on: white;
+    /* palette text paired with each remapped palette color, where DDD's own no longer reads */
+    --ddd-palette-7-text-color-3: black;
+    --ddd-palette-8-text-color-3: white;
   }
 `;
 

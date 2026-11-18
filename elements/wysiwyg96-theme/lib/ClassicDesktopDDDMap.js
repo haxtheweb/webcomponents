@@ -122,6 +122,9 @@ export const ClassicDesktopDDDMap = css`
     --ddd-primary-25-rgb: 0, 80, 0;
     /* text color paired with each remapped palette, where DDD's own no longer reads */
     --ddd-primary-17-on: white;
+    /* palette text paired with each remapped palette color, where DDD's own no longer reads */
+    --ddd-palette-1-text-color-4: black;
+    --ddd-palette-6-text-color-4: black;
   }
 `;
 

@@ -517,4 +517,25 @@ describe("simple-cta shared vocabulary", () => {
     expect(height(small)).to.equal(56);
     expect(height(large)).to.equal(72);
   });
+
+  // haxtheweb/issues#3372: a long label wraps in a narrow container
+  it("wraps a long label instead of overflowing a narrow container", async () => {
+    const box = await fixture(
+      html`<div style="width: 200px">
+        <simple-cta link="#a" label="Build it in my browser today"></simple-cta>
+        <simple-cta link="#b" label="Go"></simple-cta>
+      </div>`,
+    );
+    const [long, short] = box.querySelectorAll("simple-cta");
+    await long.updateComplete;
+    await short.updateComplete;
+    const edge = box.getBoundingClientRect().right;
+    const btn = (cta) =>
+      cta.shadowRoot.querySelector(".btn").getBoundingClientRect();
+    expect(long.getBoundingClientRect().right <= edge + 0.5).to.equal(true);
+    expect(btn(long).right <= edge + 0.5).to.equal(true);
+    // two lines: taller than the short button, which keeps its one line
+    expect(btn(long).height > btn(short).height + 4).to.equal(true);
+    expect(btn(short).width < 120).to.equal(true);
+  });
 });
