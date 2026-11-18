@@ -17,7 +17,6 @@ import { autorun, toJS } from "mobx";
 import "@haxtheweb/haxcms-elements/lib/ui-components/site/site-title.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu-content.js";
-import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-version-switcher.js";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
@@ -270,14 +269,7 @@ class BookTheme extends HAXCMSOperationButtons(
           align-items: center;
           gap: var(--ddd-spacing-1);
         }
-        /* versions of the docs, when the outline has them */
-        .menu-versions:not([empty]) {
-          display: flex;
-          margin-bottom: var(--ddd-spacing-4);
-        }
-        .header site-version-switcher {
-          --site-version-switcher-color: var(--book-theme-header-color);
-        }
+
         .tool,
         site-modal {
           --simple-icon-width: var(--ddd-icon-xxs);
@@ -604,14 +596,7 @@ class BookTheme extends HAXCMSOperationButtons(
           @click="${this.toggleMenu}"
         ></simple-icon-button-lite>
         <div class="header-title">${this.siteTitle}</div>
-        ${
-          this.bookLayout === "topbar"
-            ? html`<site-version-switcher
-                  part="version-switcher"
-                ></site-version-switcher>
-                ${this.renderTools()}`
-            : ``
-        }
+        ${this.bookLayout === "topbar" ? this.renderTools() : ``}
       </header>
       <div class="container">
         <aside
@@ -628,14 +613,7 @@ class BookTheme extends HAXCMSOperationButtons(
             ></site-title>
             ${this.bookLayout === "topbar" ? `` : this.renderTools()}
           </div>
-          ${
-            this.bookLayout === "topbar"
-              ? ``
-              : html`<site-version-switcher
-                  class="menu-versions"
-                  part="version-switcher"
-                ></site-version-switcher>`
-          }
+
           <nav aria-label="${this.t.siteNavigation}">
             <site-menu part="site-menu"></site-menu>
           </nav>

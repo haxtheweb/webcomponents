@@ -128,20 +128,6 @@ describe("book-theme", () => {
 });
 
 describe("book-theme layout options", () => {
-  it("carries the version switcher: in the menu column, or in the top bar", async () => {
-    const book = await fixture(html`<book-theme></book-theme>`);
-    await book.updateComplete;
-    expect(book.shadowRoot.querySelector(".menu site-version-switcher")).to
-      .exist;
-    const manual = await fixture(html`<manual-theme></manual-theme>`);
-    await manual.updateComplete;
-    expect(manual.shadowRoot.querySelector(".header site-version-switcher")).to
-      .exist;
-    expect(
-      manual.shadowRoot.querySelectorAll("site-version-switcher").length,
-    ).to.equal(1);
-  });
-
   it("says it takes a site's design system", () => {
     expect(BookTheme.acceptsDesignSystems).to.be.true;
     expect(globalThis.customElements.get("manual-theme").acceptsDesignSystems)

@@ -10,7 +10,6 @@ The theme is a layout over parts HAXcms already ships, styled with DDD tokens. I
 |---|---|
 | Site name | `site-title` |
 | Search | `site-modal` with `site-search` |
-| Versions | `site-version-switcher` |
 | Site menu | `site-menu` |
 | Breadcrumb, title, tags | `site-breadcrumb`, `site-active-title`, `site-active-tags` |
 | On this page | `site-menu-content` |
@@ -26,17 +25,13 @@ The theme is a layout over parts HAXcms already ships, styled with DDD tokens. I
 
 Widths are set by `--book-theme-menu-width`, `--book-theme-toc-width` and `--book-theme-container-width`.
 
-## Versions
-
-Every theme here carries `site-version-switcher`. A version is a top level page tagged `version`; the pages under it are that version's docs, and the first one in the outline is the current one. The switcher keeps the reader on the same page when the other version has it at the same path, and shows nothing until the outline has two versions. The site menu still lists every version as a section.
-
 ## Design systems
 
 The chrome reads only DDD tokens, so these themes take a site's design system (`acceptsDesignSystems`): Book with Carbon, Manual with Material 3, and so on.
 
 ## Demos
 
-`demo/index.html` is Book. Each theme in `lib/` has its own at `demo/<tag>/index.html`; Handbook, Manual and Guidebook use a versioned docs site to show the switcher.
+`demo/index.html` is Book. Each theme in `lib/` has its own at `demo/<tag>/index.html`, showing the same small documentation book.
 
 ## Themes built on Book
 

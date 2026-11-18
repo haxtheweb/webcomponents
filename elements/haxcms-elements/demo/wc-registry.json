@@ -312,7 +312,6 @@
   "site-menu-content": "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu-content.js",
   "site-menu": "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu.js",
   "site-top-menu": "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-top-menu.js",
-  "site-version-switcher": "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-version-switcher.js",
   "haxcms-tracking-lens": "@haxtheweb/haxcms-elements/lib/ui-components/progress/haxcms-tracking-lens.js",
   "my-learning-button": "@haxtheweb/haxcms-elements/lib/ui-components/progress/my-learning-button.js",
   "my-learning-panel": "@haxtheweb/haxcms-elements/lib/ui-components/progress/my-learning-panel.js",
