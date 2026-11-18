@@ -132,6 +132,81 @@ function isElementHaxCapable(elementPath, elementName, haxDemoSchema) {
   return false;
 }
 
+// HAXcms theme registry; a package whose own tag is a registered theme is a
+// theme even when its name does not end in -theme (clean-one, simple-blog)
+let THEME_TAGS = null;
+function themeTags() {
+  if (THEME_TAGS) {
+    return THEME_TAGS;
+  }
+  THEME_TAGS = new Set();
+  const themesFile = path.join(
+    ELEMENTS_DIR,
+    "haxcms-elements",
+    "lib",
+    "themes.json",
+  );
+  try {
+    const themes = JSON.parse(fs.readFileSync(themesFile, "utf8"));
+    Object.values(themes).forEach((theme) => {
+      if (theme && theme.element) {
+        THEME_TAGS.add(theme.element);
+      }
+    });
+  } catch {
+    console.warn("Warning: could not read haxcms-elements/lib/themes.json");
+  }
+  return THEME_TAGS;
+}
+
+function isElementTheme(elementName) {
+  return /-themes?$/.test(elementName) || themeTags().has(elementName);
+}
+
+// DDD itself, its docs, and every DDD bridge package (one that ships
+// design-system/bridge.json, the same signal design-system-discovery uses)
+function isElementDesignSystem(elementPath, elementName) {
+  return (
+    elementName === "d-d-d" ||
+    elementName === "d-d-docs" ||
+    fs.existsSync(path.join(elementPath, "design-system", "bridge.json"))
+  );
+}
+
+// Gizmo tags of the package's own element, from lib/<tag>.haxProperties.json
+// or an inline static haxProperties in <tag>.js
+function extractGizmoTags(elementPath, elementName) {
+  const jsonPath = path.join(
+    elementPath,
+    "lib",
+    `${elementName}.haxProperties.json`,
+  );
+  try {
+    if (fs.existsSync(jsonPath)) {
+      const hax = JSON.parse(fs.readFileSync(jsonPath, "utf8"));
+      return hax.gizmo && Array.isArray(hax.gizmo.tags) ? hax.gizmo.tags : [];
+    }
+    const jsPath = path.join(elementPath, `${elementName}.js`);
+    if (fs.existsSync(jsPath)) {
+      const src = fs.readFileSync(jsPath, "utf8");
+      const m = src.match(/gizmo\s*:\s*\{[\s\S]*?\btags\s*:\s*\[([^\]]*)\]/);
+      if (m) {
+        return [...m[1].matchAll(/['"`]([^'"`]+)['"`]/g)].map((t) => t[1]);
+      }
+    }
+  } catch {
+    // unreadable schema: no tags
+  }
+  return [];
+}
+
+// Instructional blocks are the ones HAX files under the Instructional gizmo tag
+function isElementInstructional(elementPath, elementName) {
+  return extractGizmoTags(elementPath, elementName).some((t) =>
+    /^instructional$/i.test(String(t).trim()),
+  );
+}
+
 // Function to generate HTML for a component demo using HAX schema
 // kept for building a HAX demo page by hand
 // eslint-disable-next-line no-unused-vars
@@ -226,6 +301,15 @@ function getComponentInfo() {
             elementName,
             haxDemoSchema,
           );
+          const isTheme = isElementTheme(elementName);
+          const isInstructional = isElementInstructional(
+            elementPath,
+            elementName,
+          );
+          const isDesignSystem = isElementDesignSystem(
+            elementPath,
+            elementName,
+          );
 
           // Documentation data and walkthrough storyboard, when present
           let docs = null;
@@ -267,6 +351,9 @@ function getComponentInfo() {
             importPath,
             haxDemoSchema,
             isHaxCapable,
+            isTheme,
+            isInstructional,
+            isDesignSystem,
             additionalDemos: demoFiles
               .filter((f) => f !== "index.html")
               .map((f) => ({
@@ -1137,6 +1224,15 @@ ${
           <button class="hax-ui-chip filter-btn" aria-pressed="false" data-filter="hax" title="Show only HAX-capable components">
             HAX <span class="n">${components.filter((c) => c.isHaxCapable).length}</span>
           </button>
+          <button class="hax-ui-chip filter-btn" aria-pressed="false" data-filter="theme" title="Show HAXcms themes">
+            Themes <span class="n">${components.filter((c) => c.isTheme).length}</span>
+          </button>
+          <button class="hax-ui-chip filter-btn" aria-pressed="false" data-filter="instructional" title="Show instructional blocks">
+            Instructional <span class="n">${components.filter((c) => c.isInstructional).length}</span>
+          </button>
+          <button class="hax-ui-chip filter-btn" aria-pressed="false" data-filter="design-system" title="Show DDD and design system bridges">
+            Design system <span class="n">${components.filter((c) => c.isDesignSystem).length}</span>
+          </button>
           <button class="hax-ui-chip filter-btn" aria-pressed="false" data-filter="walkthrough" title="Show components with an animated walkthrough">
             Walkthrough <span class="n">${walkthroughCount}</span>
           </button>
@@ -1309,6 +1405,15 @@ ${
         case 'hax':
           components = COMPONENTS.filter(c => c.isHaxCapable);
           break;
+        case 'theme':
+          components = COMPONENTS.filter(c => c.isTheme);
+          break;
+        case 'instructional':
+          components = COMPONENTS.filter(c => c.isInstructional);
+          break;
+        case 'design-system':
+          components = COMPONENTS.filter(c => c.isDesignSystem);
+          break;
         case 'walkthrough':
           components = COMPONENTS.filter(c => c.motionStatus && c.motionStatus !== 'none');
           break;
@@ -1395,6 +1500,9 @@ ${
 
         const tags = [];
         if (component.isHaxCapable) tags.push('<span class="hax-ui-pill" data-tone="accent">HAX</span>');
+        if (component.isTheme) tags.push('<span class="hax-ui-pill">Theme</span>');
+        if (component.isInstructional) tags.push('<span class="hax-ui-pill" data-tone="success">Instructional</span>');
+        if (component.isDesignSystem) tags.push('<span class="hax-ui-pill" data-tone="muted">Design system</span>');
         if (component.motionStatus && component.motionStatus !== 'none') {
           tags.push('<span class="hax-ui-pill" data-tone="info">Walkthrough</span>');
           if (component.motionStatus === 'stale') tags.push('<span class="hax-ui-pill" data-tone="warning">Needs update</span>');
