@@ -1078,6 +1078,14 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
         vhs-blog-console retro-controller {
           zoom: 0.8;
         }
+        /* the controller is an easter egg drawn at miniature size; on a
+           touch screen its buttons would be too small to tap (WCAG 2.5.8),
+           so it is not offered there */
+        @media (pointer: coarse), (max-width: 700px) {
+          vhs-blog-console retro-controller {
+            display: none;
+          }
+        }
         .tower {
           min-width: 0;
           box-sizing: border-box;

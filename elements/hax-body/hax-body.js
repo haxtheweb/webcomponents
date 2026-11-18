@@ -1999,6 +1999,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       ].forEach((attr) => el.removeAttribute(attr));
       el.removeAttribute("contenteditable");
       if (el.getAttribute("role") === "textbox") el.removeAttribute("role");
+      // the name the text editor gives the block being edited
+      if (el.hasAttribute("data-rte-editing-name")) {
+        el.removeAttribute("aria-label");
+        el.removeAttribute("data-rte-editing-name");
+      }
     });
   }
   /**
