@@ -5,6 +5,16 @@ import { ESGlobalBridgeStore } from "@haxtheweb/es-global-bridge/es-global-bridg
 
 const tick = (ms = 20) => new Promise((resolve) => setTimeout(resolve, ms));
 
+// la-tex waits for the shared MathJax loader before handing an element to
+// LaTeX2HTML5. These tests stub the bundle, so they stand in a ready
+// MathJax 4 as well (the loader shares a MathJax 3/4 already on the page);
+// la-tex-mathjax.test.js runs the real ones.
+globalThis.MathJax = {
+  startup: { promise: Promise.resolve() },
+  typesetPromise: () => Promise.resolve(),
+  svgStylesheet: () => ({ textContent: "" }),
+};
+
 function stubBridgeImport() {
   const originalImport = ESGlobalBridgeStore.import;
   let calls = 0;

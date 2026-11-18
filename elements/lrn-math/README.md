@@ -18,6 +18,13 @@ import '@haxtheweb/lrn-math/lrn-math.js';
 </script>
 ```
 
+## MathJax
+`lrn-math` typesets with [MathJax 4](https://www.mathjax.org/) (Apache-2.0), which it depends on as the `mathjax` npm package together with `@mathjax/mathjax-newcm-font` and the font extensions some TeX packages need. MathJax is served with HAX next to this element, never from a third-party CDN, and `la-tex` shares the same copy through `lib/mathjax-loader.js`, so a page loads it once.
+
+- Output is SVG with each equation carrying its own glyphs, so it needs no web font and renders inside shadow roots. MathJax adds spoken text for screen readers.
+- TeX packages beyond the defaults (mhchem, cancel, physics and others) load on demand, also from the local copy.
+- To upgrade, bump the `mathjax` and `@mathjax/*` versions in this package's `package.json`. `scripts/mathjax-runtime-files.json` lists the files MathJax loads at run time; ubiquity (`vendor-copy-mathjax`) and Vercel previews ship exactly those.
+
 ## Develop / Demo
 Running `npm start` will start a local development server and open your default browser to display it. It will start watching *.js and lib/*.js files for changes automatically for your demo.
 ```bash

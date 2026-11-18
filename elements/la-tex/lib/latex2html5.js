@@ -43097,46 +43097,22 @@
               exports.DEFAULT_SCRIPT =
                 void 0;
 
-            var _loadScript = _interopRequireDefault(require("load-script"));
-
-            var DEFAULT_SCRIPT =
-              process.env.MATHJAX_CDN ||
-              "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js";
+            // @hack HAX: MathJax 4 is loaded by la-tex through
+            // @haxtheweb/lrn-math/lib/mathjax-loader.js (served with HAX,
+            // shared with lrn-math), never from a CDN here. These two
+            // keep the module's API for the rest of the bundle: getMathJax
+            // finds a MathJax 3/4 on the page, loadMathJax waits for it.
+            var DEFAULT_SCRIPT = null;
             exports.DEFAULT_SCRIPT = DEFAULT_SCRIPT;
-            var DEFAULT_OPTIONS = {
-              TeX: {
-                extensions: ["AMSmath.js", "AMSsymbols.js"],
-              },
-              extensions: ["tex2jax.js"],
-              showProcessingMessages: false,
-              jax: ["input/TeX", "output/HTML-CSS"],
-              messageStyle: "none",
-              showMathMenu: false,
-              showMathMenuMSIE: false,
-              tex2jax: {
-                processEnvironments: true,
-                inlineMath: [
-                  ["$", "$"],
-                  ["\\(", "\\)"],
-                ],
-                displayMath: [
-                  ["$$", "$$"],
-                  ["\\[", "\\]"],
-                ],
-                preview: "none",
-                processEscapes: true,
-              },
-              "HTML-CSS": {
-                linebreaks: {
-                  automatic: true,
-                  width: "container",
-                },
-              },
-            };
+            var DEFAULT_OPTIONS = {};
             exports.DEFAULT_OPTIONS = DEFAULT_OPTIONS;
 
             var getMathJax = function getMathJax() {
-              return typeof MathJax === "undefined" ? undefined : MathJax;
+              return typeof MathJax !== "undefined" &&
+                MathJax.startup &&
+                MathJax.typesetPromise
+                ? MathJax
+                : undefined;
             };
 
             exports.getMathJax = getMathJax;
@@ -43146,25 +43122,22 @@
                 arguments.length > 0 && arguments[0] !== undefined
                   ? arguments[0]
                   : function () {};
-              var script =
-                arguments.length > 1 && arguments[1] !== undefined
-                  ? arguments[1]
-                  : DEFAULT_SCRIPT;
-              var options =
-                arguments.length > 2 && arguments[2] !== undefined
-                  ? arguments[2]
-                  : DEFAULT_OPTIONS;
-
-              var onLoad = function onLoad() {
-                MathJax.Hub.Config(options);
-                callback();
-              };
-
-              if (!script) {
-                return onLoad();
+              if (
+                typeof MathJax !== "undefined" &&
+                MathJax.startup &&
+                MathJax.startup.promise
+              ) {
+                return MathJax.startup.promise.then(
+                  function () {
+                    callback();
+                  },
+                  function () {
+                    callback();
+                  },
+                );
               }
-
-              (0, _loadScript["default"])(script, onLoad);
+              // no MathJax: render the LaTeX layout with TeX source showing
+              callback();
             };
 
             exports.loadMathJax = loadMathJax;
@@ -43685,7 +43658,12 @@
                 div.style.left = "".concat(x - w, "px");
               };
 
-              MathJax.Hub.Queue(["Typeset", MathJax.Hub, div], [done]); // using the queue works, but looks hackier in the UI than this setTimeout does in code
+              // @hack HAX: MathJax 4 (typesetPromise) replaces the 2.x Hub queue
+              if (typeof MathJax !== "undefined" && MathJax.typesetPromise) {
+                MathJax.typesetPromise([div]).then(done, done);
+              } else {
+                done();
+              }
               // setTimeout(done, 1100);
             },
             pspicture: function pspicture(svg) {

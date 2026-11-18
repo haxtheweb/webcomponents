@@ -52,3 +52,4 @@ benchmarks/work/
 # The repo installs with yarn (yarn.lock). A root package-lock.json from a
 # stray `npm install` drifts from yarn.lock and gives false audit alerts.
 /package-lock.json
+_vendor/

@@ -146,6 +146,166 @@
           }
         }
       ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/mathjax-loader.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "mathJaxPackagesBase",
+          "description": "Base URL of the folder that holds the installed npm packages. The build\nand a site installed from npm put",
+          "return": {
+            "type": {
+              "text": "string"
+            }
+          }
+        },
+        {
+          "kind": "function",
+          "name": "mathJaxConfig",
+          "parameters": [
+            {
+              "name": "base",
+              "description": "node_modules URL",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "description": "TeX input matching what MathJax 2 accepted in HAX content: $...$ and\n\\(...\\) inline, $$...$$ and \\[...\\] display, AMS math and symbols, and\nunknown macros shown in place rather than breaking the page (MathJax 4\nshows TeX errors in place on its own; MathJax 2 needed noErrors for it).\nPackages beyond the defaults load on demand (\\require, autoload) from the\nsame local copy.",
+          "return": {
+            "type": {
+              "text": "object"
+            }
+          }
+        },
+        {
+          "kind": "function",
+          "name": "loadMathJax",
+          "description": "Load MathJax once per page. Resolves with the MathJax object once it is\nready to typeset; rejects if it can not load (callers leave the TeX\nsource showing).",
+          "return": {
+            "type": {
+              "text": "Promise<object>"
+            }
+          }
+        },
+        {
+          "kind": "function",
+          "name": "adoptMathJaxStyles",
+          "parameters": [
+            {
+              "name": "root",
+              "type": {
+                "text": "ShadowRoot|Document"
+              }
+            },
+            {
+              "name": "MathJax",
+              "description": "the loaded MathJax",
+              "type": {
+                "text": "object"
+              }
+            }
+          ],
+          "description": "Copy the CSS MathJax's SVG output needs into a shadow root, once."
+        },
+        {
+          "kind": "function",
+          "name": "typesetIn",
+          "parameters": [
+            {
+              "name": "container",
+              "description": "holds TeX between the delimiters above",
+              "type": {
+                "text": "Element"
+              }
+            }
+          ],
+          "description": "Typeset TeX inside an element, which may be in a shadow root.",
+          "return": {
+            "type": {
+              "text": "Promise<void>"
+            }
+          }
+        },
+        {
+          "kind": "function",
+          "name": "texToElement",
+          "parameters": [
+            {
+              "name": "tex",
+              "description": "the TeX source, without delimiters",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "name": "display",
+              "description": "display (block) or inline math",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "description": "Render one TeX expression to a MathJax container element.",
+          "return": {
+            "type": {
+              "text": "Promise<Element>"
+            }
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "mathJaxPackagesBase",
+          "declaration": {
+            "name": "mathJaxPackagesBase",
+            "module": "lib/mathjax-loader.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "mathJaxConfig",
+          "declaration": {
+            "name": "mathJaxConfig",
+            "module": "lib/mathjax-loader.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "loadMathJax",
+          "declaration": {
+            "name": "loadMathJax",
+            "module": "lib/mathjax-loader.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "adoptMathJaxStyles",
+          "declaration": {
+            "name": "adoptMathJaxStyles",
+            "module": "lib/mathjax-loader.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "typesetIn",
+          "declaration": {
+            "name": "typesetIn",
+            "module": "lib/mathjax-loader.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "texToElement",
+          "declaration": {
+            "name": "texToElement",
+            "module": "lib/mathjax-loader.js"
+          }
+        }
+      ]
     }
   ]
 }

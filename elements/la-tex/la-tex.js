@@ -9,6 +9,10 @@ import {
   DDDBlockStyles,
   renderDDDBlockHeader,
 } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
+import {
+  loadMathJax,
+  typesetIn,
+} from "@haxtheweb/lrn-math/lib/mathjax-loader.js";
 
 /**
  * `la-tex`
@@ -40,9 +44,29 @@ class LaTex extends I18NMixin(LitElement) {
     ESGlobalBridgeStore.import(
       "latex2html5",
       new URL(`./lib/latex2html5.js`, import.meta.url).href,
-    ).then(() => {
+    ).then(async () => {
+      // es-global-bridge resolves a second import of a script that is still
+      // loading right away; wait for it to finish (each la-tex now renders
+      // itself, so one that gave up here would never render)
+      if (
+        !globalThis.LaTeX2HTML5 &&
+        typeof ESGlobalBridgeStore.imports.latex2html5 === "string"
+      ) {
+        await new Promise((resolve) => {
+          globalThis.document.addEventListener(
+            "es-bridge-latex2html5-loaded",
+            resolve,
+            { once: true },
+          );
+        });
+      }
       setTimeout(async () => {
         if (globalThis.LaTeX2HTML5) {
+          // MathJax 4, shared with lrn-math and served with HAX; if it can
+          // not load, the layout still renders with the TeX source showing
+          await loadMathJax().catch((error) => {
+            console.warn(error.message);
+          });
           try {
             if (globalThis.LaTeX2HTML5.hydrate) {
               // render just this element (its wrapper exists once it has
@@ -193,6 +217,24 @@ class LaTex extends I18NMixin(LitElement) {
     }
     const display = globalThis.getComputedStyle(this).display || "";
     this._inline = display.indexOf("inline") === 0 || display === "contents";
+  }
+  /**
+   * once LaTeX2HTML5 has laid out the content, typeset the math in it.
+   * MathJax 2 only ever scanned the main document, so math inside this
+   * element's shadow root used to stay as raw TeX.
+   */
+  updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
+    if (changedProperties.has("hydrated") && this.hydrated) {
+      const wrapper = this.shadowRoot.querySelector(".wrapper");
+      if (wrapper) {
+        typesetIn(wrapper).catch((error) => {
+          console.warn(error.message);
+        });
+      }
+    }
   }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
