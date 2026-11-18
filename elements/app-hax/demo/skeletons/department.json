@@ -1,0 +1,200 @@
+{
+  "meta": {
+    "name": "department",
+    "description": "A website for a university department, office or center on the Polaris Flex Sidebar theme: about, services, people, news, contact and a privacy page, shown with a sample learning design office.",
+    "version": "1.0.0",
+    "created": "2026-11-18T00:00:00.000Z",
+    "type": "skeleton",
+    "useCaseTitle": "Department or Office",
+    "useCaseDescription": "A website for a university department, office or center on the Polaris Flex Sidebar theme: about, services, people, news, contact and a privacy page, shown with a sample learning design office.",
+    "useCaseImage": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-polaris-flex-sidebar-thumb.jpg",
+    "category": ["Website"],
+    "tags": ["department", "office", "organization", "university"],
+    "attributes": []
+  },
+  "site": {
+    "name": "department",
+    "description": "The Office of Learning Design helps faculty build better courses.",
+    "theme": "polaris-flex-sidebar",
+    "settings": {
+      "lang": "en-US",
+      "publishPagesOn": true,
+      "canonical": true
+    }
+  },
+  "build": {
+    "type": "skeleton",
+    "structure": "from-skeleton",
+    "items": [
+      {
+        "id": "department-home",
+        "title": "Office of Learning Design",
+        "slug": "home",
+        "order": 0,
+        "parent": null,
+        "indent": 0,
+        "content": "<h2 data-style-guide=\"headline\" data-design-treatment=\"vert\" data-primary=\"8\" data-padding=\"xs\" data-border-radius=\"xs\">Better courses, built together</h2><p>The Office of Learning Design helps faculty plan, build and teach online and hybrid courses. We are a small team of designers, media producers and instructional technologists.</p><p>Replace this sample office with your own department, office or center: who you serve, what you do for them and how to start.</p><h3 data-style-guide=\"sectionDivider\" data-design-treatment=\"horz-md\" data-primary=\"2\" data-padding=\"xs\">Start here</h3><grid-plate layout=\"1-1-1\"><div slot=\"col-1\"><p><strong>Services</strong></p><p>Course design, media and workshops.</p><simple-cta label=\"See services\" link=\"services\"></simple-cta></div><div slot=\"col-2\"><p><strong>People</strong></p><p>Who does what, and how to reach them.</p><simple-cta label=\"Meet the team\" link=\"people\"></simple-cta></div><div slot=\"col-3\"><p><strong>Contact</strong></p><p>Hours, location and the fastest way in.</p><simple-cta label=\"Contact us\" link=\"contact\"></simple-cta></div></grid-plate>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": []
+        }
+      },
+      {
+        "id": "department-about",
+        "title": "About",
+        "slug": "about",
+        "order": 1,
+        "parent": null,
+        "indent": 0,
+        "content": "<p>We started as two people answering course questions from a shared office. Today we support every program in the college that teaches online.</p><h3 data-style-guide=\"sectionDivider\" data-design-treatment=\"horz-md\" data-primary=\"2\" data-padding=\"xs\">What we do</h3><ul><li>Plan new courses and redesign existing ones with faculty</li><li>Produce video, audio and interactive media for teaching</li><li>Run workshops on teaching with technology</li><li>Keep course sites accessible and up to date</li></ul><h3 data-style-guide=\"sectionDivider\" data-design-treatment=\"horz-md\" data-primary=\"2\" data-padding=\"xs\">How we work</h3><p>Faculty own their courses. We bring structure, media and a second pair of eyes, and we hand back work they can keep editing.</p>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": []
+        }
+      },
+      {
+        "id": "department-services",
+        "title": "Services",
+        "slug": "services",
+        "order": 2,
+        "parent": null,
+        "indent": 0,
+        "content": "<p>Every service is free to faculty and staff in the college. Pick one below, or <a href=\"contact\">contact us</a> if you are not sure where to start.</p>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": []
+        }
+      },
+      {
+        "id": "department-course-design",
+        "title": "Course design",
+        "slug": "services/course-design",
+        "order": 0,
+        "parent": "department-services",
+        "indent": 1,
+        "content": "<p>A designer works with you over one semester to plan a new course or rebuild an existing one: outcomes, structure, activities and assessments.</p><p>Typical time: 4 to 6 meetings, plus build time between them.</p><simple-cta label=\"Request course design\" link=\"mailto:learningdesign@example.edu?subject=Course%20design\"></simple-cta>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": []
+        }
+      },
+      {
+        "id": "department-media-production",
+        "title": "Media production",
+        "slug": "services/media-production",
+        "order": 1,
+        "parent": "department-services",
+        "indent": 1,
+        "content": "<p>Short lecture videos, interviews, narrated slides and podcasts, recorded in our studio or on location, captioned before they reach students.</p><p>Book at least three weeks ahead during the semester.</p><simple-cta label=\"Book the studio\" link=\"mailto:learningdesign@example.edu?subject=Media%20production\"></simple-cta>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": []
+        }
+      },
+      {
+        "id": "department-workshops",
+        "title": "Workshops",
+        "slug": "services/workshops",
+        "order": 2,
+        "parent": "department-services",
+        "indent": 1,
+        "content": "<p>Hour-long sessions on teaching with technology, offered every month and on request for a department.</p><editable-table accent-color=\"grey\" column-header><table><caption>This semester</caption><thead><tr><th scope=\"col\">Workshop</th><th scope=\"col\">When</th></tr></thead><tbody><tr><td>Accessible course materials</td><td>First Tuesday</td></tr><tr><td>Building a course site</td><td>Second Wednesday</td></tr><tr><td>Video that students watch</td><td>Third Thursday</td></tr></tbody></table></editable-table><simple-cta label=\"Ask for a workshop\" link=\"mailto:learningdesign@example.edu?subject=Workshop\"></simple-cta>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": []
+        }
+      },
+      {
+        "id": "department-people",
+        "title": "People",
+        "slug": "people",
+        "order": 3,
+        "parent": null,
+        "indent": 0,
+        "content": "<p>Sample staff. Replace the names, roles and addresses with your own; each person uses the same card so the page stays consistent.</p><collection-list accent-color=\"grey\"><collection-item icon=\"social:person\" line1=\"A. Example\" line2=\"Director\" line3=\"Strategy and partnerships\" url=\"mailto:director@example.edu\"></collection-item><collection-item icon=\"social:person\" line1=\"B. Sample\" line2=\"Senior learning designer\" line3=\"Course design\" url=\"mailto:designer@example.edu\"></collection-item><collection-item icon=\"social:person\" line1=\"C. Placeholder\" line2=\"Media producer\" line3=\"Video and audio\" url=\"mailto:media@example.edu\"></collection-item><collection-item icon=\"social:person\" line1=\"D. Stand-in\" line2=\"Instructional technologist\" line3=\"Course sites and accessibility\" url=\"mailto:technology@example.edu\"></collection-item></collection-list>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": []
+        }
+      },
+      {
+        "id": "department-news",
+        "title": "News",
+        "slug": "news",
+        "order": 4,
+        "parent": null,
+        "indent": 0,
+        "content": "<p>Updates from the office. Add a new page under News for each update; the newest goes first.</p>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": []
+        }
+      },
+      {
+        "id": "department-new-media-studio",
+        "title": "Our new media studio is open",
+        "slug": "news/new-media-studio",
+        "order": 0,
+        "parent": "department-news",
+        "indent": 1,
+        "content": "<p>The studio on the second floor is ready for recording. It has a lighting kit, a teleprompter and a quiet room for audio.</p><p>Book it through <a href=\"services/media-production\">Media production</a>.</p>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": []
+        }
+      },
+      {
+        "id": "department-workshop-series",
+        "title": "Spring workshop series announced",
+        "slug": "news/workshop-series",
+        "order": 1,
+        "parent": "department-news",
+        "indent": 1,
+        "content": "<p>Three workshops run every month this spring, each repeated once online. See the schedule on the <a href=\"services/workshops\">Workshops</a> page.</p>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": []
+        }
+      },
+      {
+        "id": "department-contact",
+        "title": "Contact",
+        "slug": "contact",
+        "order": 5,
+        "parent": null,
+        "indent": 0,
+        "content": "<editable-table accent-color=\"grey\" column-header><table><caption>Hours</caption><thead><tr><th scope=\"col\">Day</th><th scope=\"col\">Open</th></tr></thead><tbody><tr><td>Monday to Friday</td><td>8 to 5</td></tr><tr><td>Saturday and Sunday</td><td>Closed</td></tr></tbody></table></editable-table><p>Room 200, Example Hall. Walk-ins welcome during open hours.</p><simple-cta label=\"Email the office\" link=\"mailto:learningdesign@example.edu\"></simple-cta><p><a href=\"privacy\">How we handle what you send us</a></p>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": []
+        }
+      },
+      {
+        "id": "department-privacy",
+        "title": "Privacy",
+        "slug": "privacy",
+        "order": 6,
+        "parent": null,
+        "indent": 0,
+        "content": "<p>What this office keeps about you, in plain words. Replace this page with what your site really does.</p><h2>What you send us</h2><p>When you email us or ask for a service, we use what you send only to answer you and do the work. We do not sell it or share it.</p><h2>What this site keeps</h2><p>This site sets no cookies and runs no trackers of its own. If you turn on analytics in Site settings, name the service here and say what it collects.</p><h2>Questions</h2><p>Ask us through the <a href=\"contact\">Contact</a> page.</p>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": true,
+          "tags": []
+        }
+      }
+    ],
+    "files": []
+  }
+}

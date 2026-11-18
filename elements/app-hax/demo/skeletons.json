@@ -3,7 +3,7 @@
   "data": [
     {
       "title": "Academic",
-      "description": "A research group or scholar site on the al-folio theme: about, publications by year, projects, teaching and people, shown with a sample coastal ecology lab.",
+      "description": "A research group or scholar site on the al-folio theme: about, publications by year, projects, teaching, people and contact, shown with a sample coastal ecology lab.",
       "image": "/elements/haxcms-elements/lib/theme-screenshots/theme-al-folio-theme-thumb.jpg",
       "priority": 10,
       "category": ["Website"],
@@ -29,7 +29,7 @@
     },
     {
       "title": "Blog",
-      "description": "A blog starter on the Clean One theme: posts, a journal and topic pages, shown with a sample coffee blog.",
+      "description": "A blog starter on the Clean One theme: posts, a journal, topic pages, about and contact, shown with a sample coffee blog.",
       "image": "/elements/haxcms-elements/lib/theme-screenshots/theme-clean-one-thumb.jpg",
       "priority": -1,
       "category": ["Website"],
@@ -52,6 +52,19 @@
       "machine-name": "club-website",
       "demo-url": "#",
       "skeleton-url": "skeletons/club-website.json"
+    },
+    {
+      "title": "Department or Office",
+      "description": "A website for a university department, office or center on the Polaris Flex Sidebar theme: about, services, people, news, contact and a privacy page, shown with a sample learning design office.",
+      "image": "/elements/haxcms-elements/lib/theme-screenshots/theme-polaris-flex-sidebar-thumb.jpg",
+      "priority": 0,
+      "category": ["Website"],
+      "attributes": [],
+      "scope": "core",
+      "machineName": "department",
+      "machine-name": "department",
+      "demo-url": "#",
+      "skeleton-url": "skeletons/department.json"
     },
     {
       "title": "Documentation",
@@ -81,7 +94,7 @@
     },
     {
       "title": "Landing Page",
-      "description": "A landing page for a small business or product on the AstroWind theme: a home page that sells, services, pricing, about and contact, shown with a sample bike repair shop.",
+      "description": "A landing page for a small business or product on the AstroWind theme: a home page that sells, services, pricing, about, contact and a privacy page, shown with a sample bike repair shop.",
       "image": "/elements/haxcms-elements/lib/theme-screenshots/theme-astrowind-theme-thumb.jpg",
       "priority": 10,
       "category": ["Website"],
@@ -107,7 +120,7 @@
     },
     {
       "title": "Portfolio",
-      "description": "A professional portfolio on the Glossy Portfolio theme: summary, projects, experience, and education and certifications.",
+      "description": "A professional portfolio on the Glossy Portfolio theme: summary, projects, experience, education and certifications, and contact.",
       "image": "/elements/haxcms-elements/lib/theme-screenshots/theme-glossy-portfolio-theme-thumb.jpg",
       "priority": 0,
       "category": ["Website"],
@@ -130,6 +143,19 @@
       "machine-name": "resume-journey",
       "demo-url": "#",
       "skeleton-url": "skeletons/resume-journey.json"
+    },
+    {
+      "title": "Writing",
+      "description": "Nothing but the writing: a home page of recent posts, plain post pages and an archive by year.",
+      "image": "/elements/haxcms-elements/lib/theme-screenshots/theme-writing-theme-thumb.jpg",
+      "priority": 0,
+      "category": ["Website"],
+      "attributes": [],
+      "scope": "core",
+      "machineName": "writing",
+      "machine-name": "writing",
+      "demo-url": "#",
+      "skeleton-url": "skeletons/writing.json"
     },
     {
       "title": "Studio Starter (User)",

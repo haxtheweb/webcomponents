@@ -1,0 +1,160 @@
+{
+  "meta": {
+    "name": "writing",
+    "description": "A writing-only site on the Writing theme: a home page of recent posts, an About page, a Contact page, an archive by year, and posts under Posts.",
+    "version": "1.0.0",
+    "created": "2026-11-16T00:00:00.000Z",
+    "type": "skeleton",
+    "useCaseTitle": "Writing",
+    "useCaseDescription": "Nothing but the writing: a home page of recent posts, plain post pages and an archive by year.",
+    "useCaseImage": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-writing-theme-thumb.jpg",
+    "category": ["Website"],
+    "tags": ["blog", "writing", "posts", "minimal"],
+    "attributes": []
+  },
+  "site": {
+    "name": "back-forty-notes",
+    "description": "Back forty notes, a small farm's writing about what was planted and what the soil said.",
+    "theme": "writing-theme",
+    "settings": {
+      "lang": "en-US",
+      "publishPagesOn": true,
+      "canonical": true
+    },
+    "platform": {}
+  },
+  "build": {
+    "type": "skeleton",
+    "structure": "from-skeleton",
+    "items": [
+      {
+        "id": "f462748b-e393-5d75-b888-d1f7525a335f",
+        "title": "Home",
+        "slug": "home",
+        "order": 0,
+        "parent": null,
+        "indent": 0,
+        "content": "<p>Notes from a small farm: what we planted, what the soil said, and what we would do differently next year.</p><p>New posts go under <strong>Posts</strong> in the outline; the newest ten show up below, and every one of them is in the archive.</p>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": [],
+          "hideTitle": true
+        }
+      },
+      {
+        "id": "fa0df606-2fe1-5431-bf4f-bf9cdb66caa0",
+        "title": "About",
+        "slug": "about",
+        "order": 1,
+        "parent": null,
+        "indent": 0,
+        "content": "<p>Written by the people who work the back forty. This is an ordinary page: edit it like any other.</p>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": []
+        }
+      },
+      {
+        "id": "add81cd5-e665-51b8-b6ff-a19b5f2328d5",
+        "title": "Archive",
+        "slug": "archive",
+        "order": 2,
+        "parent": null,
+        "indent": 0,
+        "content": "<p>Every post, newest first.</p>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": []
+        }
+      },
+      {
+        "id": "d8324e5c-5f7d-51fe-bc27-56d025bd3c6c",
+        "title": "Posts",
+        "slug": "posts",
+        "order": 4,
+        "parent": null,
+        "indent": 0,
+        "content": "<p>Every post lives under this page. It stays out of the menu; the archive lists them all.</p>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": true,
+          "tags": []
+        }
+      },
+      {
+        "id": "6d3c9747-8c84-5921-8867-b5738029acc6",
+        "title": "Planting the north beds",
+        "slug": "posts/planting-the-north-beds",
+        "order": 0,
+        "parent": "d8324e5c-5f7d-51fe-bc27-56d025bd3c6c",
+        "indent": 1,
+        "content": "<p>The frost held off until the first week of November this year, which gave the garlic a full three weeks to root before the ground hardened.<a11y-footnote>Hardneck garlic wants about four to six weeks of root growth before the soil freezes.</a11y-footnote></p><p>We split the north beds into four rows of hardneck and two of softneck, mulched with straw from the east field, and marked each row with the variety and date.</p>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": ["garlic", "planting"]
+        }
+      },
+      {
+        "id": "3426537d-9e6b-5d4e-92b1-79e19cb7e1fb",
+        "title": "What the soil test said",
+        "slug": "posts/what-the-soil-test-said",
+        "order": 1,
+        "parent": "d8324e5c-5f7d-51fe-bc27-56d025bd3c6c",
+        "indent": 1,
+        "content": "<p>The extension office sent back the soil report in nine days. Phosphorus is high, potassium is fine, and the pH sits at 6.4, close enough to leave alone.</p><p>The surprise was organic matter: 2.1 percent, lower than the compost we have been adding would suggest.</p>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": ["soil"]
+        }
+      },
+      {
+        "id": "fa48a1fa-d145-56b6-b55c-592f7006d61f",
+        "title": "Saving tomato seed",
+        "slug": "posts/saving-tomato-seed",
+        "order": 2,
+        "parent": "d8324e5c-5f7d-51fe-bc27-56d025bd3c6c",
+        "indent": 1,
+        "content": "<p>Fermenting the seed for three days in a jar of its own pulp lifts off the gel coat.</p><p>Rinse, dry on a plate for a week, and label the envelope before you forget which plant they came from.</p>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": ["seed saving", "tomatoes"]
+        }
+      },
+      {
+        "id": "a9f496dd-d52b-5957-8f6e-90719ac24f2e",
+        "title": "Mulch, measured",
+        "slug": "posts/mulch-measured",
+        "order": 3,
+        "parent": "d8324e5c-5f7d-51fe-bc27-56d025bd3c6c",
+        "indent": 1,
+        "content": "<p>Straw at four inches kept the beds two degrees warmer than bare ground through December.</p><p>Leaves did almost as well, but matted down by February.</p>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": ["soil", "mulch"]
+        }
+      },
+      {
+        "id": "02b484c8-512e-5008-9e11-5064d94158a6",
+        "title": "Contact",
+        "slug": "contact",
+        "order": 3,
+        "parent": null,
+        "indent": 0,
+        "content": "<p>Questions about something we wrote, or a correction? We read everything that comes in.</p><p>Email <a href=\"mailto:farm@example.com\">farm@example.com</a>.</p>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": []
+        }
+      }
+    ],
+    "files": []
+  }
+}
