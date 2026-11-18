@@ -38,6 +38,16 @@ function writeView(v) {
   }
 }
 
+/** True when the page address asks for the embed view (?embed, but not ?embed=0). */
+function readEmbed() {
+  try {
+    const q = new URLSearchParams(globalThis.location.search);
+    return q.has("embed") && q.get("embed") !== "0";
+  } catch {
+    return false;
+  }
+}
+
 /**
  * Move to a page the way the site menu does: the HAXcms router
  * (history.pushState plus popstate, no reload) when the site has one, else a
@@ -73,6 +83,12 @@ function go(url) {
  *
  * The viewer's choice is remembered on their device. Pages that are not part
  * of a web (people, recent activity) open in the Site view.
+ *
+ * **Embed**: a page address ending in `?embed` (or the `embed` attribute)
+ * draws the page for an iframe on another site: no network strip, top bar,
+ * link bar, outline or footer, only the page's title, a link that opens it
+ * on the site itself, the web (when the page is part of one) and the page
+ * content. Moving around the web inside the frame keeps the embed view.
  *
  * Site-wide settings come from `metadata.theme.variables` in site.json:
  * `ecosystemSrc` (the bundle URL, default `ecosystem-webs.json`), `nav`
@@ -113,6 +129,7 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
       outline: "Site outline",
       whereInWeb: "Where this sits in the web",
       openInWeb: "Open in the web",
+      openOn: "Open on",
       theWeb: "The interactive web",
       askMerlin: "Ask Merlin",
       takeTour: "Take the tour",
@@ -122,6 +139,7 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
       merlinPages: "hax.cloud",
     };
     this.view = "web";
+    this.embed = readEmbed();
     this.menuOpen = false;
     this._items = [];
     this._active = null;
@@ -140,6 +158,8 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
       ...super.properties,
       /** "web" or "site": the interactive web or the reading layout */
       view: { type: String, reflect: true },
+      /** draw the page for an iframe on another site: no site chrome (set by ?embed in the address) */
+      embed: { type: Boolean, reflect: true },
       /** the header menu on narrow screens */
       menuOpen: { type: Boolean, reflect: true, attribute: "menu-open" },
       _items: { type: Array, state: true },
@@ -173,7 +193,10 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           this._active = a || null;
           this._copied = false;
           this.menuOpen = false;
-          this.view = this._eco() ? this._chosen || "web" : "site";
+          // an embed always shows the web: the viewer's remembered choice is for the site itself
+          this.view = this._eco()
+            ? (!this.embed && this._chosen) || "web"
+            : "site";
         });
       }),
     );
@@ -249,13 +272,19 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
   }
 
   // ---------- actions ----------
+  /** Move to a page of this site, staying in the embed view when in it. */
+  _go(slug) {
+    const u = new URL(slug, globalThis.document.baseURI);
+    if (this.embed) u.search = "?embed";
+    go(u.href);
+  }
   _setView(v) {
     if (v === "web" && !this._eco()) {
       // a page outside the webs has nothing to draw: the home web opens
       const home = this._items.find((i) => !i.parent);
       this._chosen = "web";
       writeView("web");
-      if (home) go(new URL(home.slug, globalThis.document.baseURI).href);
+      if (home) this._go(home.slug);
       return;
     }
     this._chosen = v;
@@ -268,7 +297,7 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     const slug = String(d.path || "").replace(/^\//, "");
     if (!slug || !this._active || slug === this._active.slug) return;
     const item = this._itemBySlug(slug);
-    if (item) go(new URL(item.slug, globalThis.document.baseURI).href);
+    if (item) this._go(item.slug);
   }
   /**
    * Merlin opened from the network strip for the first time: every web, tour
@@ -309,7 +338,7 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
   /** Go to a page of this site by its slug. */
   goTo(slug) {
     const item = this._itemBySlug(slug);
-    if (item) go(new URL(item.slug, globalThis.document.baseURI).href);
+    if (item) this._go(item.slug);
   }
   /** The home page's greeting, when the site sets one and this is the home page. */
   _welcome() {
@@ -737,6 +766,46 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           text-decoration: none;
         }
 
+        /* ---------- embed view ---------- */
+        :host([embed]) {
+          min-height: 0;
+        }
+        .embedbar {
+          background-color: var(--eco-band);
+          border-bottom: var(--ddd-border-xs);
+          border-color: var(--eco-line);
+        }
+        .embedbar .wrap {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: space-between;
+          gap: var(--ddd-spacing-2) var(--ddd-spacing-6);
+          padding-block: var(--ddd-spacing-2);
+        }
+        .embedbar h1 {
+          margin: var(--ddd-spacing-0);
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-xs);
+          font-weight: var(--ddd-font-weight-bold);
+          line-height: 1.2;
+          color: var(--eco-heading);
+          overflow-wrap: anywhere;
+        }
+        .embedbar a.btn {
+          display: inline-flex;
+          align-items: center;
+          box-sizing: border-box;
+          line-height: 1.2;
+          text-decoration: none;
+          color: var(--ddd-theme-default-white);
+          background-color: var(--ddd-theme-default-nittanyNavy);
+          border-color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-pughBlue)
+          );
+        }
+
         /* ---------- web view ---------- */
         .webview {
           max-width: var(--eco-wrap);
@@ -963,12 +1032,133 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     const web = this.view === "web" && !!eco;
     const top = this._topId();
     const src = this._vars.ecosystemSrc || "ecosystem-webs.json";
-    const footer = Array.isArray(this._vars.footer) ? this._vars.footer : [];
-    const welcome = web ? this._welcome() : null;
+    const embed = this.embed;
+    const welcome = web && !embed ? this._welcome() : null;
     const tour =
       welcome && welcome.tour ? this._itemBySlug(welcome.tour) : null;
     return html`
       <a class="skip-link" href="#contentcontainer">${this.t.skip}</a>
+      ${embed ? this._renderEmbedBar() : this._renderTop(web, top)}
+      ${
+        welcome
+          ? html`<section class="welcome" aria-labelledby="welcome">
+              <div class="wrap">
+                <div class="words">
+                  <p class="kicker">${this.t.welcome}</p>
+                  <h1 id="welcome">${welcome.title}</h1>
+                  ${welcome.text ? html`<p class="text">${welcome.text}</p>` : ""}
+                </div>
+                <div class="go">
+                  ${
+                    tour
+                      ? html`<a class="btn" href="${tour.slug}"
+                          >${welcome.tourLabel || this.t.takeTour}</a
+                        >`
+                      : ""
+                  }
+                  <button
+                    class="btn ghost"
+                    type="button"
+                    @click="${this._askMerlin}"
+                  >
+                    ${this.t.askMerlin}
+                  </button>
+                </div>
+              </div>
+            </section>`
+          : ""
+      }
+      ${
+        web && !embed
+          ? html`<div class="linkbar">
+              <div class="wrap">
+                <site-breadcrumb></site-breadcrumb>
+                <span class="lbl">${this.t.linkToView}</span>
+                <code class="url">${this._pageUrl()}</code>
+                <button class="btn" type="button" @click="${this._copy}">
+                  ${this._copied ? this.t.copied : this.t.copy}
+                </button>
+                <span class="visually-hidden" role="status"
+                  >${this._copied ? this.t.copied : ""}</span
+                >
+              </div>
+            </div>`
+          : ""
+      }
+      <div class="${web ? "" : "wrap"}">
+        <div class="body">
+          ${
+            web || embed
+              ? ""
+              : html`<nav class="outline" aria-label="${this.t.outline}">
+                  <p class="ol-head">${this._topTitle(top)}</p>
+                  <site-menu></site-menu>
+                </nav>`
+          }
+          <main>
+            ${
+              web
+                ? html`<section class="webview" aria-label="${this.t.theWeb}">
+                    <ecosystem-web
+                      src="${src}"
+                      web="${eco.web}"
+                      node="${eco.node || ""}"
+                      tour="${eco.tour || ""}"
+                      @ecosystem-web-changed="${this._onWebChanged}"
+                    ></ecosystem-web>
+                  </section>`
+                : embed
+                  ? ""
+                  : html`<site-breadcrumb></site-breadcrumb>`
+            }
+            <div class="content">
+              ${
+                web || embed
+                  ? ""
+                  : html`${
+                        this._eyebrow()
+                          ? html`<p class="eyebrow">${this._eyebrow()}</p>`
+                          : ""
+                      }<site-active-title></site-active-title>`
+              }
+              ${
+                !web && !embed && eco && (eco.node || eco.web !== "main")
+                  ? html`<figure class="where">
+                      <ecosystem-web
+                        compact
+                        src="${src}"
+                        web="${eco.web}"
+                        node="${eco.node || ""}"
+                        @ecosystem-web-changed="${this._onWebChanged}"
+                      ></ecosystem-web>
+                      <figcaption>
+                        <span>${this.t.whereInWeb}</span>
+                        <button
+                          class="btn"
+                          type="button"
+                          @click="${() => this._setView("web")}"
+                        >
+                          ${this.t.openInWeb}
+                        </button>
+                      </figcaption>
+                    </figure>`
+                  : ""
+              }
+              <div id="contentcontainer">
+                <div id="slot">
+                  <slot @slotchange="${() => this.requestUpdate()}"></slot>
+                </div>
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+      ${embed ? "" : this._renderFooter()}
+    `;
+  }
+  /** The network strip and the HAX top bar: everything above a page on the site itself. */
+  _renderTop(web, top) {
+    return html`
       <hax-network-bar
         current="cloud"
         @hax-network-merlin="${this._onMerlin}"
@@ -1065,118 +1255,33 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           </div>
         </div>
       </header>
-      ${
-        welcome
-          ? html`<section class="welcome" aria-labelledby="welcome">
-              <div class="wrap">
-                <div class="words">
-                  <p class="kicker">${this.t.welcome}</p>
-                  <h1 id="welcome">${welcome.title}</h1>
-                  ${welcome.text ? html`<p class="text">${welcome.text}</p>` : ""}
-                </div>
-                <div class="go">
-                  ${
-                    tour
-                      ? html`<a class="btn" href="${tour.slug}"
-                          >${welcome.tourLabel || this.t.takeTour}</a
-                        >`
-                      : ""
-                  }
-                  <button
-                    class="btn ghost"
-                    type="button"
-                    @click="${this._askMerlin}"
-                  >
-                    ${this.t.askMerlin}
-                  </button>
-                </div>
-              </div>
-            </section>`
-          : ""
-      }
-      ${
-        web
-          ? html`<div class="linkbar">
-              <div class="wrap">
-                <site-breadcrumb></site-breadcrumb>
-                <span class="lbl">${this.t.linkToView}</span>
-                <code class="url">${this._pageUrl()}</code>
-                <button class="btn" type="button" @click="${this._copy}">
-                  ${this._copied ? this.t.copied : this.t.copy}
-                </button>
-                <span class="visually-hidden" role="status"
-                  >${this._copied ? this.t.copied : ""}</span
-                >
-              </div>
-            </div>`
-          : ""
-      }
-      <div class="${web ? "" : "wrap"}">
-        <div class="body">
+    `;
+  }
+  /** The embed view's only chrome: the page's title and a link that opens it on the site. */
+  _renderEmbedBar() {
+    const title = this._active ? this._active.title : this._title;
+    return html`
+      <div class="embedbar">
+        <div class="wrap">
+          <h1>${title}</h1>
           ${
-            web
-              ? ""
-              : html`<nav class="outline" aria-label="${this.t.outline}">
-                  <p class="ol-head">${this._topTitle(top)}</p>
-                  <site-menu></site-menu>
-                </nav>`
+            this._domain
+              ? html`<a
+                  class="btn"
+                  href="https://${this._pageUrl()}"
+                  target="_blank"
+                  rel="noopener"
+                  >${this.t.openOn} ${this._domain} ↗</a
+                >`
+              : ""
           }
-          <main>
-            ${
-              web
-                ? html`<section class="webview" aria-label="${this.t.theWeb}">
-                    <ecosystem-web
-                      src="${src}"
-                      web="${eco.web}"
-                      node="${eco.node || ""}"
-                      tour="${eco.tour || ""}"
-                      @ecosystem-web-changed="${this._onWebChanged}"
-                    ></ecosystem-web>
-                  </section>`
-                : html`<site-breadcrumb></site-breadcrumb>`
-            }
-            <div class="content">
-              ${
-                web
-                  ? ""
-                  : html`${
-                        this._eyebrow()
-                          ? html`<p class="eyebrow">${this._eyebrow()}</p>`
-                          : ""
-                      }<site-active-title></site-active-title>`
-              }
-              ${
-                !web && eco && (eco.node || eco.web !== "main")
-                  ? html`<figure class="where">
-                      <ecosystem-web
-                        compact
-                        src="${src}"
-                        web="${eco.web}"
-                        node="${eco.node || ""}"
-                        @ecosystem-web-changed="${this._onWebChanged}"
-                      ></ecosystem-web>
-                      <figcaption>
-                        <span>${this.t.whereInWeb}</span>
-                        <button
-                          class="btn"
-                          type="button"
-                          @click="${() => this._setView("web")}"
-                        >
-                          ${this.t.openInWeb}
-                        </button>
-                      </figcaption>
-                    </figure>`
-                  : ""
-              }
-              <div id="contentcontainer">
-                <div id="slot">
-                  <slot @slotchange="${() => this.requestUpdate()}"></slot>
-                </div>
-              </div>
-            </div>
-          </main>
         </div>
       </div>
+    `;
+  }
+  _renderFooter() {
+    const footer = Array.isArray(this._vars.footer) ? this._vars.footer : [];
+    return html`
       <footer>
         <div class="wrap">
           ${
