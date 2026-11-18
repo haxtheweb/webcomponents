@@ -1,0 +1,72 @@
+name: gallery-audit
+
+# Blocking: the component gallery holds the bar every HAX property holds,
+# on desktop and phone, in light and dark mode, under every design system
+# it offers (scripts/gallery-audit.mjs): axe-core WCAG 2.2 A/AA in every
+# state a reviewer reaches (first load, a filter, the appearance panel, a
+# live demo, its documentation, the phone drawer reopened after
+# scrolling); nothing scrolls sideways or covers a control; the phone
+# drawer starts below the title bar and is opaque; keyboard focus lands
+# only on visible, uncovered controls that show focus; reduced motion;
+# each design system and a palette apply to the gallery and its demo and
+# keep contrast; rel="noopener", no off-site requests but DDD's fonts,
+# vercel.json headers; first-load budgets; license links. The repo is
+# served locally (never a live site) and off-site requests are aborted.
+# No baseline: any finding fails. See CONTRIBUTING.md, "Gallery audit".
+#
+# Runs on pull_request (not pull_request_target): no secrets, read-only token.
+on:
+  # No branch filter: stacked PRs (base is another feature branch) must run too.
+  pull_request:
+    paths:
+      - "scripts/build-component-gallery.js"
+      - "scripts/gallery/**"
+      - "scripts/gallery-audit.mjs"
+      - "scripts/lib/demo-runner.mjs"
+      - "vercel.json"
+      # the gallery chrome and its appearance are built from these
+      - "elements/d-d-d/**"
+      - "elements/simple-fields/**"
+      - "elements/simple-icon/**"
+      - "elements/documentation-player/**"
+      - "elements/hax-network-bar/**"
+      - "elements/haxcms-elements/lib/designSystems.json"
+      - "elements/haxcms-elements/lib/core/utils/HAXCMSDesignSystems.js"
+      - "elements/*-theme/design-system/**"
+      - "elements/*-theme/lib/*DesignSystem*.js"
+      - "elements/*-theme/lib/*DDDMap.js"
+      - "elements/*-theme/lib/*Tokens.js"
+      - "web-dev-server.config.mjs"
+      - ".github/workflows/gallery-audit.yml"
+      - ".github/actions/setup-playwright/**"
+permissions:
+  contents: read
+jobs:
+  gallery-audit:
+    name: Gallery audit (a11y, mobile, dark, design systems, security, budgets)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+          cache: yarn
+      - name: Install
+        run: yarn install --frozen-lockfile
+      - name: Install Playwright Chromium
+        # the Playwright version yarn.lock resolves, so the browser build
+        # matches what the check launches; extra fonts since results depend
+        # on how text renders
+        # the local path, not the $/ self-repository form: $/ downloads the
+        # whole repo as an action archive, and that extraction fails here
+        uses: ./.github/actions/setup-playwright # zizmor: ignore[self-repository]
+        timeout-minutes: 12
+        with:
+          fonts: "true"
+      - name: Gallery audit
+        run: node scripts/gallery-audit.mjs

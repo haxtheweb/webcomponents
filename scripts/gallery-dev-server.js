@@ -7,7 +7,11 @@ const { spawn, exec } = require("child_process");
 console.log("🎨 Starting Gallery Development Server...");
 
 // Files to watch for changes
-const WATCH_FILES = ["scripts/build-component-gallery.js", "wc-registry.json"];
+const WATCH_FILES = [
+  "scripts/build-component-gallery.js",
+  "scripts/gallery/appearance.js",
+  "wc-registry.json",
+];
 
 // Directories to watch for changes
 const WATCH_DIRS = ["elements/*/package.json", "elements/*/demo/**/*.html"];
