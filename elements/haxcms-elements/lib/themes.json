@@ -21,8 +21,7 @@
     "hidden": true,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null,
-    "screenshotGenerated": "2026-11-18T17:13:16.630Z"
+    "supportedPalettes": null
   },
   "astro-cactus-theme": {
     "element": "astro-cactus-theme",
@@ -94,8 +93,7 @@
     "hidden": false,
     "priority": 100,
     "terrible": false,
-    "supportedPalettes": null,
-    "screenshotGenerated": "2026-11-18T17:13:23.309Z"
+    "supportedPalettes": null
   },
   "carbon-theme": {
     "element": "carbon-theme",
@@ -107,8 +105,7 @@
     "hidden": false,
     "priority": 50,
     "terrible": false,
-    "supportedPalettes": null,
-    "screenshotGenerated": "2026-11-18T17:13:29.955Z"
+    "supportedPalettes": null
   },
   "chamfer-theme": {
     "element": "chamfer-theme",
@@ -120,8 +117,7 @@
     "hidden": true,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null,
-    "screenshotGenerated": "2026-11-18T17:13:36.629Z"
+    "supportedPalettes": null
   },
   "chirpy-theme": {
     "element": "chirpy-theme",
@@ -145,8 +141,7 @@
     "hidden": false,
     "priority": -2,
     "terrible": false,
-    "supportedPalettes": ["4", "5"],
-    "screenshotGenerated": "2026-11-18T17:13:42.989Z"
+    "supportedPalettes": ["4", "5"]
   },
   "clean-portfolio-theme": {
     "element": "clean-portfolio-theme",
@@ -158,8 +153,7 @@
     "hidden": false,
     "priority": -10,
     "terrible": false,
-    "supportedPalettes": null,
-    "screenshotGenerated": "2026-11-18T17:13:49.339Z"
+    "supportedPalettes": null
   },
   "clean-two": {
     "element": "clean-two",
@@ -171,8 +165,7 @@
     "hidden": false,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null,
-    "screenshotGenerated": "2026-11-18T17:13:56.025Z"
+    "supportedPalettes": null
   },
   "coder-theme": {
     "element": "coder-theme",
@@ -196,8 +189,7 @@
     "hidden": true,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null,
-    "screenshotGenerated": "2026-11-18T17:14:02.722Z"
+    "supportedPalettes": null
   },
   "ddd-brochure-theme": {
     "element": "ddd-brochure-theme",
@@ -209,8 +201,7 @@
     "hidden": true,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null,
-    "screenshotGenerated": "2026-11-18T17:14:09.067Z"
+    "supportedPalettes": null
   },
   "ecosystem-theme": {
     "element": "ecosystem-theme",
@@ -222,8 +213,7 @@
     "hidden": false,
     "priority": 5,
     "terrible": false,
-    "supportedPalettes": null,
-    "screenshotGenerated": "2026-11-18T17:14:15.355Z"
+    "supportedPalettes": null
   },
   "fluent-theme": {
     "element": "fluent-theme",
@@ -235,8 +225,7 @@
     "hidden": false,
     "priority": 50,
     "terrible": false,
-    "supportedPalettes": null,
-    "screenshotGenerated": "2026-11-18T17:14:22.038Z"
+    "supportedPalettes": null
   },
   "glossy-portfolio-theme": {
     "element": "glossy-portfolio-theme",
@@ -248,8 +237,7 @@
     "hidden": false,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null,
-    "screenshotGenerated": "2026-11-18T17:14:28.687Z"
+    "supportedPalettes": null
   },
   "guidebook-theme": {
     "element": "guidebook-theme",
@@ -285,8 +273,7 @@
     "hidden": true,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null,
-    "screenshotGenerated": "2026-11-18T17:14:35.056Z"
+    "supportedPalettes": null
   },
   "haxcms-json-theme": {
     "element": "haxcms-json-theme",
@@ -298,8 +285,7 @@
     "hidden": true,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null,
-    "screenshotGenerated": "2026-11-18T17:14:41.720Z"
+    "supportedPalettes": null
   },
   "haxcms-print-theme": {
     "element": "haxcms-print-theme",
@@ -311,8 +297,7 @@
     "hidden": true,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null,
-    "screenshotGenerated": "2026-11-18T17:14:48.288Z"
+    "supportedPalettes": null
   },
   "haxma-theme": {
     "element": "haxma-theme",
@@ -324,8 +309,7 @@
     "hidden": false,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null,
-    "screenshotGenerated": "2026-11-18T17:14:54.993Z"
+    "supportedPalettes": null
   },
   "haxor-slevin": {
     "element": "haxor-slevin",
@@ -337,8 +321,7 @@
     "hidden": true,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null,
-    "screenshotGenerated": "2026-11-18T17:15:01.685Z"
+    "supportedPalettes": null
   },
   "hyde-theme": {
     "element": "hyde-theme",
@@ -362,8 +345,7 @@
     "hidden": true,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null,
-    "screenshotGenerated": "2026-11-18T17:15:08.322Z"
+    "supportedPalettes": null
   },
   "journey-theme": {
     "element": "journey-theme",
@@ -375,8 +357,7 @@
     "hidden": false,
     "priority": -1,
     "terrible": false,
-    "supportedPalettes": null,
-    "screenshotGenerated": "2026-11-18T17:15:14.967Z"
+    "supportedPalettes": null
   },
   "journey-topbar-theme": {
     "element": "journey-topbar-theme",
@@ -388,8 +369,7 @@
     "hidden": true,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null,
-    "screenshotGenerated": "2026-11-18T17:15:21.656Z"
+    "supportedPalettes": null
   },
   "just-the-docs-theme": {
     "element": "just-the-docs-theme",
@@ -413,8 +393,7 @@
     "hidden": false,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null,
-    "screenshotGenerated": "2026-11-18T17:15:28.339Z"
+    "supportedPalettes": null
   },
   "link-card-theme": {
     "element": "link-card-theme",
@@ -426,8 +405,7 @@
     "hidden": false,
     "priority": -6,
     "terrible": false,
-    "supportedPalettes": null,
-    "screenshotGenerated": "2026-11-18T17:15:35.051Z"
+    "supportedPalettes": null
   },
   "manual-theme": {
     "element": "manual-theme",
@@ -451,8 +429,7 @@
     "hidden": false,
     "priority": 50,
     "terrible": false,
-    "supportedPalettes": null,
-    "screenshotGenerated": "2026-11-18T17:15:41.737Z"
+    "supportedPalettes": null
   },
   "minima-theme": {
     "element": "minima-theme",
@@ -488,8 +465,7 @@
     "hidden": true,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null,
-    "screenshotGenerated": "2026-11-18T17:15:48.321Z"
+    "supportedPalettes": null
   },
   "papermod-theme": {
     "element": "papermod-theme",
@@ -513,8 +489,7 @@
     "hidden": false,
     "priority": 50,
     "terrible": false,
-    "supportedPalettes": null,
-    "screenshotGenerated": "2026-11-18T17:15:55.019Z"
+    "supportedPalettes": null
   },
   "polaris-flex-sidebar": {
     "element": "polaris-flex-sidebar",
@@ -526,8 +501,7 @@
     "hidden": false,
     "priority": -1,
     "terrible": false,
-    "supportedPalettes": null,
-    "screenshotGenerated": "2026-11-18T17:16:01.717Z"
+    "supportedPalettes": null
   },
   "polaris-flex-theme": {
     "element": "polaris-flex-theme",
@@ -539,8 +513,7 @@
     "hidden": false,
     "priority": -1,
     "terrible": false,
-    "supportedPalettes": null,
-    "screenshotGenerated": "2026-11-18T17:16:08.331Z"
+    "supportedPalettes": null
   },
   "polaris-invent-theme": {
     "element": "polaris-invent-theme",
@@ -552,8 +525,7 @@
     "hidden": false,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null,
-    "screenshotGenerated": "2026-11-18T17:16:15.031Z"
+    "supportedPalettes": null
   },
   "polaris-theme": {
     "element": "polaris-theme",
@@ -565,8 +537,7 @@
     "hidden": false,
     "priority": 10,
     "terrible": false,
-    "supportedPalettes": null,
-    "screenshotGenerated": "2026-11-18T17:16:21.715Z"
+    "supportedPalettes": null
   },
   "primer-theme": {
     "element": "primer-theme",
@@ -578,8 +549,7 @@
     "hidden": false,
     "priority": 50,
     "terrible": false,
-    "supportedPalettes": null,
-    "screenshotGenerated": "2026-11-18T17:16:28.351Z"
+    "supportedPalettes": null
   },
   "resume-theme": {
     "element": "resume-theme",
@@ -591,8 +561,7 @@
     "hidden": false,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null,
-    "screenshotGenerated": "2026-11-18T17:16:35.048Z"
+    "supportedPalettes": null
   },
   "shadcn-theme": {
     "element": "shadcn-theme",
@@ -604,8 +573,7 @@
     "hidden": false,
     "priority": 50,
     "terrible": false,
-    "supportedPalettes": null,
-    "screenshotGenerated": "2026-11-18T17:16:41.748Z"
+    "supportedPalettes": null
   },
   "simple-blog": {
     "element": "simple-blog",
@@ -617,8 +585,7 @@
     "hidden": true,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null,
-    "screenshotGenerated": "2026-11-18T17:16:48.365Z"
+    "supportedPalettes": null
   },
   "spacebook-theme": {
     "element": "spacebook-theme",
@@ -630,8 +597,7 @@
     "hidden": false,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null,
-    "screenshotGenerated": "2026-11-18T17:16:55.064Z"
+    "supportedPalettes": null
   },
   "spectrum-theme": {
     "element": "spectrum-theme",
@@ -643,8 +609,7 @@
     "hidden": false,
     "priority": 50,
     "terrible": false,
-    "supportedPalettes": null,
-    "screenshotGenerated": "2026-11-18T17:17:01.763Z"
+    "supportedPalettes": null
   },
   "tailwind-theme": {
     "element": "tailwind-theme",
@@ -656,8 +621,7 @@
     "hidden": false,
     "priority": 50,
     "terrible": false,
-    "supportedPalettes": null,
-    "screenshotGenerated": "2026-11-18T17:17:08.397Z"
+    "supportedPalettes": null
   },
   "terminal-theme": {
     "element": "terminal-theme",
@@ -681,8 +645,7 @@
     "hidden": false,
     "priority": 0,
     "terrible": true,
-    "supportedPalettes": null,
-    "screenshotGenerated": "2026-11-18T17:17:15.114Z"
+    "supportedPalettes": null
   },
   "terrible-outlet-themes": {
     "element": "terrible-outlet-themes",
@@ -694,8 +657,7 @@
     "hidden": false,
     "priority": 0,
     "terrible": true,
-    "supportedPalettes": null,
-    "screenshotGenerated": "2026-11-18T17:17:21.832Z"
+    "supportedPalettes": null
   },
   "terrible-productionz-themes": {
     "element": "terrible-productionz-themes",
@@ -707,8 +669,7 @@
     "hidden": false,
     "priority": 0,
     "terrible": true,
-    "supportedPalettes": null,
-    "screenshotGenerated": "2026-11-18T17:17:28.454Z"
+    "supportedPalettes": null
   },
   "terrible-resume-themes": {
     "element": "terrible-resume-themes",
@@ -720,8 +681,7 @@
     "hidden": false,
     "priority": 0,
     "terrible": true,
-    "supportedPalettes": null,
-    "screenshotGenerated": "2026-11-18T17:17:35.163Z"
+    "supportedPalettes": null
   },
   "terrible-themes": {
     "element": "terrible-themes",
@@ -733,8 +693,7 @@
     "hidden": false,
     "priority": 0,
     "terrible": true,
-    "supportedPalettes": null,
-    "screenshotGenerated": "2026-11-18T17:17:41.862Z"
+    "supportedPalettes": null
   },
   "training-theme": {
     "element": "training-theme",
@@ -746,8 +705,7 @@
     "hidden": false,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null,
-    "screenshotGenerated": "2026-11-18T17:17:48.479Z"
+    "supportedPalettes": null
   },
   "twenty-six-theme": {
     "element": "twenty-six-theme",
@@ -759,8 +717,7 @@
     "hidden": false,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null,
-    "screenshotGenerated": "2026-11-18T17:17:55.362Z"
+    "supportedPalettes": null
   },
   "uswds-theme": {
     "element": "uswds-theme",
@@ -772,8 +729,7 @@
     "hidden": false,
     "priority": 50,
     "terrible": false,
-    "supportedPalettes": null,
-    "screenshotGenerated": "2026-11-18T17:18:02.228Z"
+    "supportedPalettes": null
   },
   "vhs-blog-theme": {
     "element": "vhs-blog-theme",
@@ -785,8 +741,7 @@
     "hidden": false,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null,
-    "screenshotGenerated": "2026-11-18T17:18:09.022Z"
+    "supportedPalettes": null
   },
   "webawesome-theme": {
     "element": "webawesome-theme",
@@ -798,8 +753,7 @@
     "hidden": false,
     "priority": 50,
     "terrible": false,
-    "supportedPalettes": null,
-    "screenshotGenerated": "2026-11-18T17:18:15.945Z"
+    "supportedPalettes": null
   },
   "writing-theme": {
     "element": "writing-theme",
@@ -811,8 +765,7 @@
     "hidden": false,
     "priority": 5,
     "terrible": false,
-    "supportedPalettes": null,
-    "screenshotGenerated": "2026-11-18T17:18:22.679Z"
+    "supportedPalettes": null
   },
   "wysiwyg96-theme": {
     "element": "wysiwyg96-theme",
@@ -824,7 +777,6 @@
     "hidden": false,
     "priority": 40,
     "terrible": false,
-    "supportedPalettes": null,
-    "screenshotGenerated": "2026-11-18T17:18:29.408Z"
+    "supportedPalettes": null
   }
 }

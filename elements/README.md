@@ -3,7 +3,7 @@
 <!-- GENERATED FILE: do not edit by hand. Run `yarn run elements-readme` -->
 <!-- Descriptions come from each element's package.json; edit them there. -->
 
-Every element in this monorepo (253 packages). Browse them live with `yarn gallery`, or open an element's folder for its own README.
+Every element in this monorepo (256 packages). Browse them live with `yarn gallery`, or open an element's folder for its own README.
 
 | Element | Description | Package | Demo |
 | --- | --- | --- | --- |
@@ -32,6 +32,7 @@ Every element in this monorepo (253 packages). Browse them live with `yarn galle
 | [baseline-build-hax](./baseline-build-hax/) | create an inflexible baseline build of hax with all elements | `@haxtheweb/baseline-build-hax` |  |
 | [beaker-broker](./beaker-broker/) | A broker element to make working with Beaker Browser's API even easier. | `@haxtheweb/beaker-broker` | [demo](./beaker-broker/demo/) |
 | [bibliography-builder](./bibliography-builder/) | Webcomponent bibliography-builder following hax / open-wc recommendations | `@haxtheweb/bibliography-builder` | [demo](./bibliography-builder/demo/) |
+| [book-theme](./book-theme/) | Book, a quiet three-column documentation theme for HAXcms: site menu, page, on-this-page headings | `@haxtheweb/book-theme` | [demo](./book-theme/demo/) |
 | [bootstrap-theme](./bootstrap-theme/) | Bootstrap 5 theme for HAXcms, built on the DDD-capable Bootstrap design system bridge | `@haxtheweb/bootstrap-theme` | [demo](./bootstrap-theme/demo/) |
 | [branching-scenario](./branching-scenario/) | A story where each choice leads to a different scene and ending | `@haxtheweb/branching-scenario` | [demo](./branching-scenario/demo/) |
 | [bullet-check-list](./bullet-check-list/) | Bulleted or numbered list of checkboxes whose state is remembered on this machine | `@haxtheweb/bullet-check-list` | [demo](./bullet-check-list/demo/) |
@@ -162,6 +163,7 @@ Every element in this monorepo (253 packages). Browse them live with `yarn galle
 | [page-flag](./page-flag/) | visual flag for notes about a piece of content | `@haxtheweb/page-flag` | [demo](./page-flag/demo/) |
 | [page-section](./page-section/) | A well designed section of a page with many options for marketing purposes | `@haxtheweb/page-section` | [demo](./page-section/demo/) |
 | [paper-input-flagged](./paper-input-flagged/) | Text input that flags and gives feedback on what the user enters, such as alt text quality | `@haxtheweb/paper-input-flagged` | [demo](./paper-input-flagged/demo/) |
+| [papermod-theme](./papermod-theme/) | PaperMod and eleven more HAXcms themes paying homage to popular Hugo, Jekyll and Astro themes: single column and sidebar layouts from DDD tokens | `@haxtheweb/papermod-theme` | [demo](./papermod-theme/demo/) |
 | [parallax-image](./parallax-image/) | Image with a parallax scrolling effect and title overlay | `@haxtheweb/parallax-image` | [demo](./parallax-image/demo/) |
 | [patternfly-theme](./patternfly-theme/) | PatternFly 6 theme for HAXcms, built on the DDD-capable PatternFly design system bridge | `@haxtheweb/patternfly-theme` | [demo](./patternfly-theme/demo/) |
 | [pdf-browser-viewer](./pdf-browser-viewer/) | Embeds a PDF using the browser's built-in viewer | `@haxtheweb/pdf-browser-viewer` | [demo](./pdf-browser-viewer/demo/) |
@@ -260,3 +262,4 @@ Every element in this monorepo (253 packages). Browse them live with `yarn galle
 | [word-search](./word-search/) | A word search: a letter grid generated from an authored word list, played with two taps or the keyboard | `@haxtheweb/word-search` | [demo](./word-search/demo/) |
 | [writing-theme](./writing-theme/) | A HAXcms theme with nothing but the writing: recent posts, a plain post page and an archive by year | `@haxtheweb/writing-theme` | [demo](./writing-theme/demo/) |
 | [wysiwyg-hax](./wysiwyg-hax/) | Integrates HAX as the editor inside a page's form field | `@haxtheweb/wysiwyg-hax` | [demo](./wysiwyg-hax/demo/) |
+| [wysiwyg96-theme](./wysiwyg96-theme/) | WYSIWYG 96: a HAXcms theme in homage to the first WYSIWYG web editors, with the Classic Desktop design system | `@haxtheweb/wysiwyg96-theme` | [demo](./wysiwyg96-theme/demo/) |
