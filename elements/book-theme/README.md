@@ -25,6 +25,19 @@ The theme is a layout over parts HAXcms already ships, styled with DDD tokens. I
 
 Widths are set by `--book-theme-menu-width`, `--book-theme-toc-width` and `--book-theme-container-width`.
 
+## Themes built on Book
+
+`lib/` holds four more documentation themes that extend `book-theme` with its two layout options and their own colors.
+
+| Tag | Name | Pays homage to | What sets it apart |
+|---|---|---|---|
+| `just-the-docs-theme` | Just the Docs | Just the Docs (Jekyll) | tinted menu column, on this page list kept in its button |
+| `handbook-theme` | Handbook | Docsy (Hugo) | solid top bar, ruled columns |
+| `manual-theme` | Manual | Docusaurus classic | light top bar, green accent, previous and next as cards |
+| `guidebook-theme` | Guidebook | Starlight (Astro) | slim top bar, violet accent |
+
+Options a theme built on Book sets in its constructor: `bookLayout = "topbar"` keeps the header on every screen size and moves the site name, search and dark mode switch into it; `tocFold = true` keeps the on this page list in its button at every width.
+
 ## Attribution
 
-The layout pays homage to the [Hugo Book](https://github.com/alex-shpak/hugo-book) theme by Alex Shpak (MIT). No code, styles or assets from Hugo Book are used. See `NOTICE`. This is an independent HAX theme, not affiliated with or endorsed by its author.
+The layout pays homage to the [Hugo Book](https://github.com/alex-shpak/hugo-book) theme by Alex Shpak (MIT). No code, styles or assets from Hugo Book are used. The themes in `lib/` credit the themes they honor the same way. See `NOTICE`. This is an independent HAX theme, not affiliated with or endorsed by its author.

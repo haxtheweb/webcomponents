@@ -1,4 +1,16 @@
 {
+  "al-folio-theme": {
+    "element": "al-folio-theme",
+    "path": "@haxtheweb/papermod-theme/lib/al-folio-theme.js",
+    "name": "al-folio",
+    "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-al-folio-theme-thumb.jpg",
+    "description": "Start with a blank site using the al-folio",
+    "category": ["Website"],
+    "hidden": false,
+    "priority": 0,
+    "terrible": false,
+    "supportedPalettes": null
+  },
   "app-hax-theme": {
     "element": "app-hax-theme",
     "path": "@haxtheweb/app-hax/lib/app-hax-theme.js",
@@ -7,6 +19,54 @@
     "description": "Start with a blank site using the 8-Bit Land",
     "category": ["Course"],
     "hidden": true,
+    "priority": 0,
+    "terrible": false,
+    "supportedPalettes": null
+  },
+  "astro-cactus-theme": {
+    "element": "astro-cactus-theme",
+    "path": "@haxtheweb/papermod-theme/lib/astro-cactus-theme.js",
+    "name": "Astro Cactus",
+    "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-astro-cactus-theme-thumb.jpg",
+    "description": "Start with a blank site using the Astro Cactus",
+    "category": ["Blog", "Website"],
+    "hidden": false,
+    "priority": 0,
+    "terrible": false,
+    "supportedPalettes": null
+  },
+  "astrofy-theme": {
+    "element": "astrofy-theme",
+    "path": "@haxtheweb/papermod-theme/lib/astrofy-theme.js",
+    "name": "Astrofy",
+    "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-astrofy-theme-thumb.jpg",
+    "description": "Start with a blank site using the Astrofy",
+    "category": ["Website"],
+    "hidden": false,
+    "priority": 0,
+    "terrible": false,
+    "supportedPalettes": null
+  },
+  "astropaper-theme": {
+    "element": "astropaper-theme",
+    "path": "@haxtheweb/papermod-theme/lib/astropaper-theme.js",
+    "name": "AstroPaper",
+    "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-astropaper-theme-thumb.jpg",
+    "description": "Start with a blank site using the AstroPaper",
+    "category": ["Blog", "Website"],
+    "hidden": false,
+    "priority": 0,
+    "terrible": false,
+    "supportedPalettes": null
+  },
+  "astrowind-theme": {
+    "element": "astrowind-theme",
+    "path": "@haxtheweb/papermod-theme/lib/astrowind-theme.js",
+    "name": "AstroWind",
+    "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-astrowind-theme-thumb.jpg",
+    "description": "Start with a blank site using the AstroWind",
+    "category": ["Website"],
+    "hidden": false,
     "priority": 0,
     "terrible": false,
     "supportedPalettes": null
@@ -59,6 +119,18 @@
     "terrible": false,
     "supportedPalettes": null
   },
+  "chirpy-theme": {
+    "element": "chirpy-theme",
+    "path": "@haxtheweb/papermod-theme/lib/chirpy-theme.js",
+    "name": "Chirpy",
+    "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-chirpy-theme-thumb.jpg",
+    "description": "Start with a blank site using the Chirpy",
+    "category": ["Blog", "Website"],
+    "hidden": false,
+    "priority": 0,
+    "terrible": false,
+    "supportedPalettes": null
+  },
   "clean-one": {
     "element": "clean-one",
     "path": "@haxtheweb/clean-one/clean-one.js",
@@ -90,6 +162,18 @@
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-clean-two-thumb.jpg",
     "description": "Start with a blank site using the Clean Two",
     "category": ["Course"],
+    "hidden": false,
+    "priority": 0,
+    "terrible": false,
+    "supportedPalettes": null
+  },
+  "coder-theme": {
+    "element": "coder-theme",
+    "path": "@haxtheweb/papermod-theme/lib/coder-theme.js",
+    "name": "Coder",
+    "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-coder-theme-thumb.jpg",
+    "description": "Start with a blank site using the Coder",
+    "category": ["Blog", "Website"],
     "hidden": false,
     "priority": 0,
     "terrible": false,
@@ -155,6 +239,30 @@
     "terrible": false,
     "supportedPalettes": null
   },
+  "guidebook-theme": {
+    "element": "guidebook-theme",
+    "path": "@haxtheweb/book-theme/lib/guidebook-theme.js",
+    "name": "Guidebook",
+    "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-guidebook-theme-thumb.jpg",
+    "description": "Start with a blank site using the Guidebook",
+    "category": ["Documentation", "Course", "Website"],
+    "hidden": false,
+    "priority": 0,
+    "terrible": false,
+    "supportedPalettes": null
+  },
+  "handbook-theme": {
+    "element": "handbook-theme",
+    "path": "@haxtheweb/book-theme/lib/handbook-theme.js",
+    "name": "Handbook",
+    "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-handbook-theme-thumb.jpg",
+    "description": "Start with a blank site using the Handbook",
+    "category": ["Documentation", "Course", "Website"],
+    "hidden": false,
+    "priority": 0,
+    "terrible": false,
+    "supportedPalettes": null
+  },
   "haxcms-blank-theme": {
     "element": "haxcms-blank-theme",
     "path": "@haxtheweb/haxcms-elements/lib/haxcms-blank-theme.js",
@@ -215,6 +323,18 @@
     "terrible": false,
     "supportedPalettes": null
   },
+  "hyde-theme": {
+    "element": "hyde-theme",
+    "path": "@haxtheweb/papermod-theme/lib/hyde-theme.js",
+    "name": "Hyde",
+    "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-hyde-theme-thumb.jpg",
+    "description": "Start with a blank site using the Hyde",
+    "category": ["Blog", "Website"],
+    "hidden": false,
+    "priority": 0,
+    "terrible": false,
+    "supportedPalettes": null
+  },
   "journey-sidebar-theme": {
     "element": "journey-sidebar-theme",
     "path": "@haxtheweb/journey-theme/lib/journey-sidebar-theme.js",
@@ -251,6 +371,18 @@
     "terrible": false,
     "supportedPalettes": null
   },
+  "just-the-docs-theme": {
+    "element": "just-the-docs-theme",
+    "path": "@haxtheweb/book-theme/lib/just-the-docs-theme.js",
+    "name": "Just the Docs",
+    "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-just-the-docs-theme-thumb.jpg",
+    "description": "Start with a blank site using the Just the Docs",
+    "category": ["Documentation", "Course", "Website"],
+    "hidden": false,
+    "priority": 0,
+    "terrible": false,
+    "supportedPalettes": null
+  },
   "learn-two-theme": {
     "element": "learn-two-theme",
     "path": "@haxtheweb/learn-two-theme/learn-two-theme.js",
@@ -275,6 +407,18 @@
     "terrible": false,
     "supportedPalettes": null
   },
+  "manual-theme": {
+    "element": "manual-theme",
+    "path": "@haxtheweb/book-theme/lib/manual-theme.js",
+    "name": "Manual",
+    "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-manual-theme-thumb.jpg",
+    "description": "Start with a blank site using the Manual",
+    "category": ["Documentation", "Course", "Website"],
+    "hidden": false,
+    "priority": 0,
+    "terrible": false,
+    "supportedPalettes": null
+  },
   "material-theme": {
     "element": "material-theme",
     "path": "@haxtheweb/material-theme/material-theme.js",
@@ -287,6 +431,30 @@
     "terrible": false,
     "supportedPalettes": null
   },
+  "minima-theme": {
+    "element": "minima-theme",
+    "path": "@haxtheweb/papermod-theme/lib/minima-theme.js",
+    "name": "Minima",
+    "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-minima-theme-thumb.jpg",
+    "description": "Start with a blank site using the Minima",
+    "category": ["Blog", "Website"],
+    "hidden": false,
+    "priority": 0,
+    "terrible": false,
+    "supportedPalettes": null
+  },
+  "minimal-mistakes-theme": {
+    "element": "minimal-mistakes-theme",
+    "path": "@haxtheweb/papermod-theme/lib/minimal-mistakes-theme.js",
+    "name": "Minimal Mistakes",
+    "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-minimal-mistakes-theme-thumb.jpg",
+    "description": "Start with a blank site using the Minimal Mistakes",
+    "category": ["Blog", "Website", "Documentation"],
+    "hidden": false,
+    "priority": 0,
+    "terrible": false,
+    "supportedPalettes": null
+  },
   "outline-player": {
     "element": "outline-player",
     "path": "@haxtheweb/outline-player/outline-player.js",
@@ -295,6 +463,18 @@
     "description": "Start with a blank site using the Outline Player",
     "category": ["Website"],
     "hidden": true,
+    "priority": 0,
+    "terrible": false,
+    "supportedPalettes": null
+  },
+  "papermod-theme": {
+    "element": "papermod-theme",
+    "path": "@haxtheweb/papermod-theme/papermod-theme.js",
+    "name": "PaperMod",
+    "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-papermod-theme-thumb.jpg",
+    "description": "Start with a blank site using the PaperMod",
+    "category": ["Blog", "Website"],
+    "hidden": false,
     "priority": 0,
     "terrible": false,
     "supportedPalettes": null
@@ -440,6 +620,18 @@
     "category": ["Website", "Course", "Documentation"],
     "hidden": false,
     "priority": 50,
+    "terrible": false,
+    "supportedPalettes": null
+  },
+  "terminal-theme": {
+    "element": "terminal-theme",
+    "path": "@haxtheweb/papermod-theme/lib/terminal-theme.js",
+    "name": "Terminal",
+    "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-terminal-theme-thumb.jpg",
+    "description": "Start with a blank site using the Terminal",
+    "category": ["Blog", "Website"],
+    "hidden": false,
+    "priority": 0,
     "terrible": false,
     "supportedPalettes": null
   },

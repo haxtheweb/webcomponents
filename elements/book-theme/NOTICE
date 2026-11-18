@@ -11,3 +11,28 @@ This package contains no code, styles, templates, fonts, icons or other
 assets from Hugo Book. It is written for HAXcms from DDD design tokens and
 HAXcms theme parts. It is an independent work and is not affiliated with or
 endorsed by the author of Hugo Book.
+
+The themes in lib/ are built on book-theme and pay homage to the themes
+below on the same terms: no code, styles, templates, fonts, icons or other
+assets from any of them, independent works, not affiliated with or endorsed
+by their authors. Three are named apart from the theme they honor because
+that name belongs to a company or project brand.
+
+  just-the-docs-theme  Just the Docs (Jekyll), MIT License
+                       https://github.com/just-the-docs/just-the-docs
+                       Copyright (c) 2016 Patrick Marsceill
+
+  handbook-theme       Docsy (Hugo), Apache License 2.0
+                       https://github.com/google/docsy
+                       Copyright 2018 Google LLC
+
+  manual-theme         the classic theme of Docusaurus, MIT License
+                       https://github.com/facebook/docusaurus
+                       Copyright (c) Facebook, Inc. and its affiliates
+
+  guidebook-theme      Starlight (Astro), MIT License
+                       https://github.com/withastro/starlight
+                       Copyright (c) 2023 Astro contributors
+
+Docsy, Docusaurus and Starlight are names of their respective owners and are
+used here only to say which layouts these themes honor.

@@ -4,7 +4,12 @@ globalThis.process = globalThis.process || {
   },
 };
 import { fixture, expect, html } from "@open-wc/testing";
+import { unsafeStatic, html as staticHtml } from "lit/static-html.js";
 import { BookTheme } from "../book-theme.js";
+import "../lib/just-the-docs-theme.js";
+import "../lib/handbook-theme.js";
+import "../lib/manual-theme.js";
+import "../lib/guidebook-theme.js";
 
 describe("book-theme", () => {
   let element;
@@ -77,5 +82,60 @@ describe("book-theme", () => {
     await expect(element).shadowDom.to.be.accessible({
       ignoredRules: ["skip-link", "empty-heading"],
     });
+  });
+});
+
+[
+  "just-the-docs-theme",
+  "handbook-theme",
+  "manual-theme",
+  "guidebook-theme",
+].forEach((tag) => {
+  describe(tag, () => {
+    let element;
+    beforeEach(async () => {
+      const t = unsafeStatic(tag);
+      element = await fixture(staticHtml`<${t}></${t}>`);
+      await element.updateComplete;
+    });
+
+    it("is a theme built on book-theme", () => {
+      expect(element).to.be.instanceOf(BookTheme);
+      expect(element.constructor.tag).to.equal(tag);
+    });
+
+    it("keeps the HAX content contract and a skip link", () => {
+      const root = element.shadowRoot;
+      expect(root.querySelector("a.skip-link[href='#contentcontainer']")).to
+        .exist;
+      expect(root.querySelector("#contentcontainer > #slot > slot")).to.exist;
+      expect(root.querySelector("nav site-menu")).to.exist;
+    });
+
+    it("puts search and the dark mode switch in one place", () => {
+      const root = element.shadowRoot;
+      expect(root.querySelectorAll("[part='search-btn']").length).to.equal(1);
+      const inHeader = !!root.querySelector(".header [part='search-btn']");
+      expect(inHeader).to.equal(element.bookLayout === "topbar");
+    });
+
+    it("passes the a11y audit", async () => {
+      await expect(element).shadowDom.to.be.accessible({
+        ignoredRules: ["skip-link", "empty-heading"],
+      });
+    });
+  });
+});
+
+describe("book-theme layout options", () => {
+  it("keeps the on this page list folded when a theme asks", async () => {
+    const element = await fixture(
+      html`<just-the-docs-theme></just-the-docs-theme>`,
+    );
+    await element.updateComplete;
+    expect(element.tocFold).to.be.true;
+    expect(element.shadowRoot.querySelector("aside.toc")).to.not.exist;
+    expect(element.shadowRoot.querySelector("site-menu-content[mobile]")).to
+      .exist;
   });
 });

@@ -23,6 +23,22 @@
       "hax": null
     },
     {
+      "name": "book-layout",
+      "property": "bookLayout",
+      "type": "string",
+      "default": "\"columns\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "toc-fold",
+      "property": "tocFold",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
       "name": "prevPage",
       "property": "prevPage",
       "type": "string",
@@ -60,7 +76,7 @@
   ],
   "events": [],
   "hax": {},
-  "surfaceHash": "16f9190c616c",
+  "surfaceHash": "be577cdd8623",
   "walkthroughs": [],
   "videos": [],
   "motion": {

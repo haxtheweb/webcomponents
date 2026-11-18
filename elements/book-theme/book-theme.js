@@ -51,7 +51,7 @@ class BookTheme extends HAXCMSOperationButtons(
   HAXCMSGlobalStyleSheetContent() {
     return [
       ...super.HAXCMSGlobalStyleSheetContent(),
-      dddReadingProse("book-theme", "start"),
+      dddReadingProse(this.constructor.tag, "start"),
       css`
         body {
           margin: 0;
@@ -83,6 +83,7 @@ class BookTheme extends HAXCMSOperationButtons(
     // no I18NMixin in this class chain, so register with the store directly
     I18NManagerStore.registerLocalization({
       context: this,
+      namespace: "book-theme",
       localesPath: new URL("./locales/", import.meta.url).href,
     });
     this.HAXCMSThemeSettings.autoScroll = true;
@@ -93,6 +94,12 @@ class BookTheme extends HAXCMSOperationButtons(
     this.siteTitle = "";
     this._overlay = false;
     this._tocFolded = false;
+    // layout options for themes built on this one (see lib/):
+    // bookLayout "topbar" keeps the header on every screen size and moves
+    // the site name, search and dark mode switch into it; tocFold keeps the
+    // on this page list in its button at every width
+    this.bookLayout = "columns";
+    this.tocFold = false;
     this._dark = false;
     this.__bookDisposers = [];
     // prettier-ignore
@@ -133,6 +140,8 @@ class BookTheme extends HAXCMSOperationButtons(
     return {
       ...super.properties,
       menuOpen: { type: Boolean, reflect: true, attribute: "menu-open" },
+      bookLayout: { type: String, reflect: true, attribute: "book-layout" },
+      tocFold: { type: Boolean, reflect: true, attribute: "toc-fold" },
       prevPage: { type: String },
       nextPage: { type: String },
       pageTimestamp: { type: Number },
@@ -153,10 +162,7 @@ class BookTheme extends HAXCMSOperationButtons(
           min-height: 100vh;
           color-scheme: light dark;
           color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
-          background-color: light-dark(
-            var(--ddd-accent-6),
-            var(--ddd-primary-4)
-          );
+          background-color: var(--book-theme-surface);
           font-family: var(--ddd-font-primary);
           --book-theme-menu-width: 272px;
           --book-theme-toc-width: 240px;
@@ -164,6 +170,13 @@ class BookTheme extends HAXCMSOperationButtons(
           --book-theme-header-height: 56px;
           --book-theme-gutter: var(--ddd-spacing-8);
           --book-theme-top: 0px;
+          --book-theme-surface: light-dark(
+            var(--ddd-accent-6),
+            var(--ddd-primary-4)
+          );
+          --book-theme-menu-surface: var(--book-theme-surface);
+          --book-theme-header-surface: var(--book-theme-surface);
+          --book-theme-header-color: inherit;
           --book-theme-rule: light-dark(
             var(--ddd-theme-default-limestoneLight),
             var(--ddd-theme-default-slateGray)
@@ -175,6 +188,23 @@ class BookTheme extends HAXCMSOperationButtons(
         }
         :host([hidden]) {
           display: none;
+        }
+        /* edit mode: move over for the HAX tray, as it sets on the page */
+        :host([edit-mode]) {
+          margin: var(
+            --hax-tray-element-align-margin,
+            0 0 0
+              calc(var(--hax-tray-width) - var(--hax-tray-menubar-min-width))
+          );
+          transition: margin var(--ddd-duration-slow, 0.6s) ease-in-out;
+        }
+        :host([edit-mode][tray-status="collapsed"]) {
+          margin: 0;
+        }
+        @media (max-width: 800px) {
+          :host([edit-mode]) {
+            margin: 0;
+          }
         }
         /* logged in, the HAXcms top bar is fixed over the page */
         :host([is-logged-in]) {
@@ -208,10 +238,7 @@ class BookTheme extends HAXCMSOperationButtons(
           overflow-y: auto;
           box-sizing: border-box;
           padding: var(--ddd-spacing-6) var(--ddd-spacing-4);
-          background-color: light-dark(
-            var(--ddd-accent-6),
-            var(--ddd-primary-4)
-          );
+          background-color: var(--book-theme-menu-surface);
         }
         .brand {
           display: flex;
@@ -230,6 +257,11 @@ class BookTheme extends HAXCMSOperationButtons(
           --site-title-heading-margin: 0;
           --site-title-heading-padding: 0;
           color: inherit;
+        }
+        .tools {
+          display: flex;
+          align-items: center;
+          gap: var(--ddd-spacing-1);
         }
         .tool,
         site-modal {
@@ -405,9 +437,66 @@ class BookTheme extends HAXCMSOperationButtons(
         .scrim {
           display: none;
         }
+        .header .tool,
+        .header site-modal {
+          --site-modal-icon-color: var(--book-theme-header-color);
+          color: var(--book-theme-header-color);
+        }
+
+        /* topbar layout: the header stays on every screen size */
+        :host([book-layout="topbar"]) .header {
+          position: sticky;
+          top: var(--book-theme-top);
+          z-index: 2;
+          display: flex;
+          align-items: center;
+          gap: var(--ddd-spacing-2);
+          min-height: var(--book-theme-header-height);
+          /* the bar runs edge to edge; what is in it lines up with the
+             columns under it */
+          padding: 0
+            max(
+              var(--ddd-spacing-4),
+              calc(
+                (100% - var(--book-theme-container-width)) / 2 +
+                  var(--ddd-spacing-4)
+              )
+            );
+          border-bottom: var(--ddd-border-xs);
+          border-bottom-color: var(--book-theme-rule);
+          color: var(--book-theme-header-color);
+          background-color: var(--book-theme-header-surface);
+        }
+        :host([book-layout="topbar"]) .header .header-title {
+          flex: 1 1 auto;
+          min-width: 0;
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-xs);
+          font-weight: var(--ddd-font-weight-bold);
+        }
+        :host([book-layout="topbar"]) .header .menu-toggle {
+          display: none;
+        }
+        :host([book-layout="topbar"]) .brand {
+          display: none;
+        }
+        :host([book-layout="topbar"]) .menu,
+        :host([book-layout="topbar"]) .toc {
+          top: calc(var(--book-theme-top) + var(--book-theme-header-height));
+        }
+        :host([book-layout="topbar"]) .menu {
+          height: calc(
+            100vh - var(--book-theme-top) - var(--book-theme-header-height)
+          );
+        }
+        :host([book-layout="topbar"]) .toc {
+          max-height: calc(
+            100vh - var(--book-theme-top) - var(--book-theme-header-height)
+          );
+        }
 
         /* edit mode keeps the theme chrome out of the way of the editor */
-        :host([edit-mode]) .brand .tools,
+        :host([edit-mode]) .tools,
         :host([edit-mode]) .pager {
           opacity: 0.4;
           pointer-events: none;
@@ -436,10 +525,8 @@ class BookTheme extends HAXCMSOperationButtons(
             padding: 0 var(--ddd-spacing-2);
             border-bottom: var(--ddd-border-xs);
             border-bottom-color: var(--book-theme-rule);
-            background-color: light-dark(
-              var(--ddd-accent-6),
-              var(--ddd-primary-4)
-            );
+            color: var(--book-theme-header-color);
+            background-color: var(--book-theme-header-surface);
           }
           .header .header-title {
             flex: 1 1 auto;
@@ -461,6 +548,12 @@ class BookTheme extends HAXCMSOperationButtons(
           }
           :host(:not([menu-open])) .menu {
             display: none;
+          }
+          :host([book-layout="topbar"]) .header {
+            padding: 0 var(--ddd-spacing-2);
+          }
+          :host([book-layout="topbar"]) .header .menu-toggle {
+            display: inline-flex;
           }
           :host([menu-open]) .scrim {
             display: block;
@@ -488,7 +581,7 @@ class BookTheme extends HAXCMSOperationButtons(
       <div id="haxcms-theme-top"></div>
       <header class="header" part="header">
         <simple-icon-button-lite
-          class="tool"
+          class="tool menu-toggle"
           icon="menu"
           title="${this.t.toggleSiteMenu}"
           aria-expanded="${this.menuOpen ? "true" : "false"}"
@@ -496,6 +589,7 @@ class BookTheme extends HAXCMSOperationButtons(
           @click="${this.toggleMenu}"
         ></simple-icon-button-lite>
         <div class="header-title">${this.siteTitle}</div>
+        ${this.bookLayout === "topbar" ? this.renderTools() : ``}
       </header>
       <div class="container">
         <aside
@@ -510,25 +604,7 @@ class BookTheme extends HAXCMSOperationButtons(
               ?disabled="${this.editMode}"
               part="site-title"
             ></site-title>
-            <div class="tools">
-              <site-modal
-                ?disabled="${this.editMode}"
-                icon="icons:search"
-                title="${this.t.searchSite}"
-                button-label="${this.t.search}"
-                part="search-btn"
-              >
-                <site-search></site-search>
-              </site-modal>
-            </div>
-            <simple-icon-button-lite
-              class="tool"
-              icon="${this._dark ? "image:brightness-7" : "image:brightness-3"}"
-              title="${this.t.toggleDarkMode}"
-              aria-pressed="${this._dark ? "true" : "false"}"
-              @click="${this.toggleDarkMode}"
-              part="dark-mode-btn"
-            ></simple-icon-button-lite>
+            ${this.bookLayout === "topbar" ? `` : this.renderTools()}
           </div>
           <nav aria-label="${this.t.siteNavigation}">
             <site-menu part="site-menu"></site-menu>
@@ -613,6 +689,32 @@ class BookTheme extends HAXCMSOperationButtons(
     `;
   }
 
+  // search and the dark mode switch: beside the site name in the menu, or in
+  // the header under the topbar layout
+  renderTools() {
+    return html`
+      <div class="tools">
+        <site-modal
+          ?disabled="${this.editMode}"
+          icon="icons:search"
+          title="${this.t.searchSite}"
+          button-label="${this.t.search}"
+          part="search-btn"
+        >
+          <site-search></site-search>
+        </site-modal>
+        <simple-icon-button-lite
+          class="tool"
+          icon="${this._dark ? "image:brightness-7" : "image:brightness-3"}"
+          title="${this.t.toggleDarkMode}"
+          aria-pressed="${this._dark ? "true" : "false"}"
+          @click="${this.toggleDarkMode}"
+          part="dark-mode-btn"
+        ></simple-icon-button-lite>
+      </div>
+    `;
+  }
+
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
@@ -634,7 +736,7 @@ class BookTheme extends HAXCMSOperationButtons(
     this.__overlayHandler(this.__overlayMq);
     this.__tocMq = globalThis.matchMedia(TOC_FOLD_QUERY);
     this.__tocHandler = (e) => {
-      this._tocFolded = e.matches;
+      this._tocFolded = this.tocFold || e.matches;
     };
     this.__tocMq.addEventListener("change", this.__tocHandler);
     this.__tocHandler(this.__tocMq);
@@ -686,7 +788,7 @@ class BookTheme extends HAXCMSOperationButtons(
 
   closeMenu() {
     this.menuOpen = false;
-    const toggle = this.shadowRoot.querySelector(".header .tool");
+    const toggle = this.shadowRoot.querySelector(".header .menu-toggle");
     if (toggle) {
       toggle.focus();
     }

@@ -1,0 +1,121 @@
+{
+  "tag": "papermod-theme",
+  "folder": "papermod-theme",
+  "package": "@haxtheweb/papermod-theme",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "papermod-theme",
+  "description": "PaperMod and eleven more HAXcms themes paying homage to popular Hugo, Jekyll and Astro themes: single column and sidebar layouts from DDD tokens",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/papermod-theme/papermod-theme.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/papermod-theme/papermod-theme.js",
+  "install": "npm i @haxtheweb/papermod-theme",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "header-layout",
+      "property": "headerLayout",
+      "type": "string",
+      "default": "\"split\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "sticky-header",
+      "property": "stickyHeader",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "prevPage",
+      "property": "prevPage",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "nextPage",
+      "property": "nextPage",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "pageCreated",
+      "property": "pageCreated",
+      "type": "number",
+      "default": "0",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "pageUpdated",
+      "property": "pageUpdated",
+      "type": "number",
+      "default": "0",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "siteTitle",
+      "property": "siteTitle",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "siteDescription",
+      "property": "siteDescription",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "listVariant",
+      "property": "listVariant",
+      "type": "string",
+      "default": "\"rows\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "has-page-list",
+      "property": "hasPageList",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "darkModeSwitch",
+      "property": "darkModeSwitch",
+      "type": "boolean",
+      "default": "true",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "941d983e8795",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/papermod-theme",
+    "file": "papermod-theme.js"
+  }
+}
