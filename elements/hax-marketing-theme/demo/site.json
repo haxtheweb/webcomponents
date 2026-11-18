@@ -1,0 +1,223 @@
+{
+  "id": "hax-marketing-theme-demo",
+  "title": "HAX the web",
+  "author": "",
+  "description": "Demonstration site for hax-marketing-theme: the haxtheweb.org landing pages, with the style switcher and the use case picker.",
+  "license": "by-sa",
+  "metadata": {
+    "author": {
+      "image": "",
+      "name": "",
+      "email": "",
+      "socialLink": ""
+    },
+    "site": {
+      "name": "hax-marketing-theme",
+      "logo": "",
+      "lang": "en",
+      "created": 1794960000,
+      "updated": 1794960000,
+      "git": {},
+      "version": "9.0.6",
+      "domain": "",
+      "static": {},
+      "settings": {
+        "pathauto": false,
+        "publishPagesOn": true,
+        "sw": false,
+        "forceUpgrade": false,
+        "lang": "",
+        "gaID": ""
+      },
+      "tags": "",
+      "homePageId": "item-landing-i-want-a-website-that"
+    },
+    "theme": {
+      "element": "hax-marketing-theme",
+      "path": "@haxtheweb/hax-marketing-theme/hax-marketing-theme.js",
+      "name": "HAX marketing",
+      "variables": {},
+      "regions": {}
+    },
+    "node": {
+      "fields": {}
+    },
+    "build": {
+      "version": "6.0.1",
+      "structure": "course",
+      "type": "Create Your Own"
+    }
+  },
+  "items": [
+    {
+      "id": "item-landing-i-want-a-website-that",
+      "title": "I want a website that\u2026",
+      "slug": "i-want-a-website-that",
+      "order": 0,
+      "parent": null,
+      "indent": 0,
+      "location": "pages/item-landing-i-want-a-website-that/index.html",
+      "description": "",
+      "metadata": {
+        "created": 1794960000,
+        "updated": 1794960000,
+        "published": true,
+        "hideInMenu": false,
+        "tags": []
+      }
+    },
+    {
+      "id": "item-landing-who-its-for",
+      "title": "Who it's for",
+      "slug": "who-its-for",
+      "order": 1,
+      "parent": null,
+      "indent": 0,
+      "location": "pages/item-landing-who-its-for/index.html",
+      "description": "",
+      "metadata": {
+        "created": 1794960000,
+        "updated": 1794960000,
+        "published": true,
+        "hideInMenu": false,
+        "tags": []
+      }
+    },
+    {
+      "id": "item-landing-compare",
+      "title": "Compare",
+      "slug": "compare",
+      "order": 2,
+      "parent": null,
+      "indent": 0,
+      "location": "pages/item-landing-compare/index.html",
+      "description": "",
+      "metadata": {
+        "created": 1794960000,
+        "updated": 1794960000,
+        "published": true,
+        "hideInMenu": false,
+        "tags": []
+      }
+    },
+    {
+      "id": "item-landing-showcase",
+      "title": "Showcase",
+      "slug": "showcase",
+      "order": 3,
+      "parent": null,
+      "indent": 0,
+      "location": "pages/item-landing-showcase/index.html",
+      "description": "",
+      "metadata": {
+        "created": 1794960000,
+        "updated": 1794960000,
+        "published": true,
+        "hideInMenu": false,
+        "tags": []
+      }
+    },
+    {
+      "id": "item-landing-migrate",
+      "title": "Migrate",
+      "slug": "migrate",
+      "order": 4,
+      "parent": null,
+      "indent": 0,
+      "location": "pages/item-landing-migrate/index.html",
+      "description": "",
+      "metadata": {
+        "created": 1794960000,
+        "updated": 1794960000,
+        "published": true,
+        "hideInMenu": false,
+        "tags": []
+      }
+    },
+    {
+      "id": "item-landing-for-agents",
+      "title": "For agents",
+      "slug": "for-agents",
+      "order": 5,
+      "parent": null,
+      "indent": 0,
+      "location": "pages/item-landing-for-agents/index.html",
+      "description": "",
+      "metadata": {
+        "created": 1794960000,
+        "updated": 1794960000,
+        "published": true,
+        "hideInMenu": false,
+        "tags": []
+      }
+    },
+    {
+      "id": "item-landing-hosting",
+      "title": "Hosting",
+      "slug": "hosting",
+      "order": 6,
+      "parent": null,
+      "indent": 0,
+      "location": "pages/item-landing-hosting/index.html",
+      "description": "",
+      "metadata": {
+        "created": 1794960000,
+        "updated": 1794960000,
+        "published": true,
+        "hideInMenu": false,
+        "tags": []
+      }
+    },
+    {
+      "id": "item-landing-trust",
+      "title": "Trust",
+      "slug": "trust",
+      "order": 7,
+      "parent": null,
+      "indent": 0,
+      "location": "pages/item-landing-trust/index.html",
+      "description": "",
+      "metadata": {
+        "created": 1794960000,
+        "updated": 1794960000,
+        "published": true,
+        "hideInMenu": false,
+        "tags": []
+      }
+    },
+    {
+      "id": "item-landing-build-with-us",
+      "title": "Build with us",
+      "slug": "build-with-us",
+      "order": 8,
+      "parent": null,
+      "indent": 0,
+      "location": "pages/item-landing-build-with-us/index.html",
+      "description": "",
+      "metadata": {
+        "created": 1794960000,
+        "updated": 1794960000,
+        "published": true,
+        "hideInMenu": false,
+        "tags": []
+      }
+    },
+    {
+      "id": "item-landing-learn",
+      "title": "Learn",
+      "slug": "learn",
+      "order": 9,
+      "parent": null,
+      "indent": 0,
+      "location": "pages/item-landing-learn/index.html",
+      "description": "",
+      "metadata": {
+        "created": 1794960000,
+        "updated": 1794960000,
+        "published": true,
+        "hideInMenu": false,
+        "tags": []
+      }
+    }
+  ]
+}

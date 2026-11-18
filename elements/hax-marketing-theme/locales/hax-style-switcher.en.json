@@ -1,0 +1,13 @@
+{
+  "theme": "Theme",
+  "designSystem": "Design system",
+  "dddDefault": "DDD (default)",
+  "designSystemHelp": "Color, type, corners and focus. The theme keeps the layout.",
+  "designSystemFixed": "This theme keeps its own design system.",
+  "palette": "Palette",
+  "themeDefault": "Theme default",
+  "paletteNumber": "Palette {n}",
+  "siteTheme": "{name} (this site's theme)",
+  "restyle": "Restyle this site",
+  "close": "Close"
+}

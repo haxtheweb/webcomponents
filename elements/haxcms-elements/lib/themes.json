@@ -562,5 +562,17 @@
     "priority": 5,
     "terrible": false,
     "supportedPalettes": null
+  },
+  "hax-marketing-theme": {
+    "element": "hax-marketing-theme",
+    "path": "@haxtheweb/hax-marketing-theme/hax-marketing-theme.js",
+    "name": "HAX marketing",
+    "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-hax-marketing-theme-thumb.jpg",
+    "description": "The haxtheweb.org landing theme: a palette band, a top menu and a live style switcher",
+    "category": ["Website"],
+    "hidden": false,
+    "priority": 20,
+    "terrible": false,
+    "supportedPalettes": null
   }
 }

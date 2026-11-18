@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <script>
+      // anchor the HAXcms router + relative paths to this demo folder so the
+      // site renders whether served from the element or the monorepo root
+      (() => {
+        const loc = globalThis.location;
+        if (loc.pathname.endsWith("/index.html")) {
+          globalThis.history.replaceState(null, "", loc.pathname.replace(/index\.html$/, "") + loc.search + loc.hash);
+        }
+        const i = loc.pathname.lastIndexOf("/demo/");
+        const base = globalThis.document.createElement("base");
+        base.href = i === -1 ? "./" : loc.pathname.slice(0, i + 6);
+        globalThis.document.head.appendChild(base);
+      })();
+    </script>
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>hax-marketing-theme demo</title>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <script>
+      globalThis.process = globalThis.process || {
+        env: {
+          NODE_ENV: "production"
+        }
+      };
+    </script>
+    <script>
+      // a static demo of the theme as a visitor sees haxtheweb.org: there is
+      // no backend to ask for editing settings, and the site's components
+      // load through the registry the HAXcms demo uses
+      globalThis.HAXCMSContext = globalThis.HAXCMSContext || "published";
+      globalThis.WCAutoloadRegistryFile =
+        globalThis.WCAutoloadRegistryFile ||
+        "../../haxcms-elements/demo/wc-registry.json";
+      globalThis.WCGlobalBasePath = globalThis.WCGlobalBasePath || "/node_modules/";
+    </script>
+    <script type="module">
+      import "@haxtheweb/haxcms-elements/lib/core/haxcms-site-builder.js";
+      import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+      import { autorun } from "mobx";
+      import "../hax-marketing-theme.js";
+      import "../lib/hax-use-case-picker.js";
+      // the marketing theme shows the switcher in its own chrome; when a
+      // visitor swaps to another theme it stays reachable as a floating
+      // button, so they can always get back
+      const floater = globalThis.document.createElement("hax-style-switcher");
+      floater.floating = true;
+      floater.hidden = true;
+      globalThis.document.body.appendChild(floater);
+      autorun(() => {
+        const theme =
+          store.manifest && store.manifest.metadata && store.manifest.metadata.theme
+            ? store.manifest.metadata.theme.element
+            : null;
+        floater.hidden = !theme || theme === "hax-marketing-theme";
+      });
+    </script>
+  </head>
+  <body>
+    <haxcms-site-builder id="site" file="site.json"></haxcms-site-builder>
+  </body>
+</html>

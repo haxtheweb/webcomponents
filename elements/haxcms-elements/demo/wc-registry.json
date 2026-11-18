@@ -661,5 +661,8 @@
   "baseline-icon": "baseline-status/baseline-icon.js",
   "baseline-status": "baseline-status/baseline-status.js",
   "scrollable-component": "scrollable-component/index.js",
-  "web-dialog": "web-dialog/web-dialog.js"
+  "web-dialog": "web-dialog/web-dialog.js",
+  "hax-marketing-theme": "@haxtheweb/hax-marketing-theme/hax-marketing-theme.js",
+  "hax-style-switcher": "@haxtheweb/hax-marketing-theme/lib/hax-style-switcher.js",
+  "hax-use-case-picker": "@haxtheweb/hax-marketing-theme/lib/hax-use-case-picker.js"
 }
