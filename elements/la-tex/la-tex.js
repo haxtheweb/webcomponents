@@ -41,10 +41,17 @@ class LaTex extends I18NMixin(LitElement) {
       "latex2html5",
       new URL(`./lib/latex2html5.js`, import.meta.url).href,
     ).then(() => {
-      setTimeout(() => {
+      setTimeout(async () => {
         if (globalThis.LaTeX2HTML5) {
           try {
-            globalThis.LaTeX2HTML5.init();
+            if (globalThis.LaTeX2HTML5.hydrate) {
+              // render just this element (its wrapper exists once it has
+              // rendered); init re-scans the whole page for every la-tex
+              await this.updateComplete;
+              globalThis.LaTeX2HTML5.hydrate(this);
+            } else {
+              globalThis.LaTeX2HTML5.init();
+            }
           } catch (error) {
             // the vendored bundle throws on page content it cannot parse;
             // log it instead of letting an uncaught error break the page

@@ -277,30 +277,55 @@ describe("AbsolutePositionStateManager direct lib import", () => {
   });
 
   describe("_handleResize and _handleScroll", () => {
-    it("_handleResize sets a timeout", () => {
-      manager.__timeout = false;
-      manager._handleResize();
-      expect(manager.__timeout).to.not.be.false;
-    });
+    const nextFrame = () =>
+      new Promise((resolve) => requestAnimationFrame(() => resolve()));
+    // swap the update passes for counters while a test runs
+    const count = (fn) => {
+      const counts = { full: 0, sticky: 0 };
+      const { updateElements, updateStickyElements } = manager;
+      manager.updateElements = () => {
+        counts.full += 1;
+      };
+      manager.updateStickyElements = () => {
+        counts.sticky += 1;
+      };
+      return fn(counts).finally(() => {
+        manager.updateElements = updateElements;
+        manager.updateStickyElements = updateStickyElements;
+      });
+    };
 
-    it("_handleResize clears existing timeout", () => {
-      manager.__timeout = setTimeout(() => {}, 10000);
-      manager._handleResize();
-      // If it cleared properly, __timeout should be a new timeout
-      expect(manager.__timeout).to.not.be.false;
-    });
+    it("_handleResize repositions every element once, on the next frame", () =>
+      count(async (counts) => {
+        manager._handleResize();
+        manager._handleResize();
+        manager._handleResize();
+        expect(counts.full).to.equal(0);
+        await nextFrame();
+        expect(counts.full).to.equal(1);
+        expect(counts.sticky).to.equal(0);
+      }));
 
-    it("_handleScroll sets a timeout", () => {
-      manager.__timeout2 = false;
-      manager._handleScroll();
-      expect(manager.__timeout2).to.not.be.false;
-    });
+    it("_handleScroll repositions sticky elements once, on the next frame", () =>
+      count(async (counts) => {
+        // called the way the scroll listener calls it: not bound to the manager
+        const handleScroll = manager._handleScroll;
+        handleScroll.call(globalThis.document);
+        handleScroll.call(globalThis.document);
+        expect(counts.sticky).to.equal(0);
+        await nextFrame();
+        expect(counts.sticky).to.equal(1);
+        expect(counts.full).to.equal(0);
+      }));
 
-    it("_handleScroll clears existing timeout", () => {
-      manager.__timeout2 = setTimeout(() => {}, 10000);
-      manager._handleScroll();
-      expect(manager.__timeout2).to.not.be.false;
-    });
+    it("a resize in the same frame as a scroll updates everything", () =>
+      count(async (counts) => {
+        manager._handleScroll();
+        manager._handleResize();
+        await nextFrame();
+        expect(counts.full).to.equal(1);
+        expect(counts.sticky).to.equal(0);
+      }));
   });
 
   describe("checkMutations", () => {

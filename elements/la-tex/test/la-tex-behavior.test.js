@@ -90,6 +90,32 @@ describe("la-tex behavior", () => {
     }
   });
 
+  it("hydrates only itself when the bundle offers hydrate", async () => {
+    const hydrated = [];
+    let initCalls = 0;
+    const restoreGlobal = stubLatexGlobal({
+      init() {
+        initCalls += 1;
+      },
+      hydrate(el) {
+        hydrated.push(el);
+      },
+    });
+    try {
+      const host = await fixture(
+        html`<div><la-tex>a</la-tex><la-tex>b</la-tex><la-tex>c</la-tex></div>`,
+      );
+      await waitUntil(() => hydrated.length === 3);
+      await tick();
+      const elements = [...host.querySelectorAll("la-tex")];
+      expect(hydrated.length).to.equal(3);
+      elements.forEach((el) => expect(hydrated).to.include(el));
+      expect(initCalls).to.equal(0);
+    } finally {
+      restoreGlobal();
+    }
+  });
+
   it("does not initialize anything when the global is missing", async () => {
     const restoreGlobal = stubLatexGlobal(undefined);
     try {
