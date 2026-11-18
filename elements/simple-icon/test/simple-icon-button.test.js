@@ -50,14 +50,31 @@ describe("simple-icon-button-lite", () => {
     expect(btn.getAttribute("label")).to.equal("Search");
   });
 
-  it("maps controls to aria-controls on the button", async () => {
+  it("points the button at the controlled element beside it", async () => {
+    const wrap = await fixture(
+      html`<div>
+        <simple-icon-button-lite controls="target-id"></simple-icon-button-lite>
+        <div id="target-id"></div>
+      </div>`,
+    );
+    const el = wrap.querySelector("simple-icon-button-lite");
+    await el.updateComplete;
+    const btn = el.shadowRoot.querySelector("button");
+    // an id could never match across the shadow root, so the element is
+    // referenced directly
+    expect(btn.ariaControlsElements[0]).to.equal(
+      wrap.querySelector("#target-id"),
+    );
+  });
+
+  it("leaves no aria-controls when the id does not resolve", async () => {
     const el = await fixture(
       html`<simple-icon-button-lite
         controls="target-id"
       ></simple-icon-button-lite>`,
     );
     const btn = el.shadowRoot.querySelector("button");
-    expect(btn.getAttribute("aria-controls")).to.equal("target-id");
+    expect(btn.getAttribute("aria-controls")).to.equal(null);
   });
 
   // fixed: the render binds `nothing` for unused features, which removes
@@ -70,14 +87,22 @@ describe("simple-icon-button-lite", () => {
     expect(btn.getAttribute("aria-controls")).to.equal(null);
   });
 
-  it("maps aria-labelledby to the button", async () => {
-    const el = await fixture(
-      html`<simple-icon-button-lite
-        aria-labelledby="label-id"
-      ></simple-icon-button-lite>`,
+  it("names the button from the aria-labelledby element beside it", async () => {
+    const wrap = await fixture(
+      html`<div>
+        <span id="label-id">Close the panel</span>
+        <simple-icon-button-lite
+          icon="close"
+          aria-labelledby="label-id"
+        ></simple-icon-button-lite>
+      </div>`,
     );
+    const el = wrap.querySelector("simple-icon-button-lite");
+    await el.updateComplete;
     const btn = el.shadowRoot.querySelector("button");
-    expect(btn.getAttribute("aria-labelledby")).to.equal("label-id");
+    expect(btn.ariaLabelledByElements[0]).to.equal(
+      wrap.querySelector("#label-id"),
+    );
   });
 
   it("maps field-name to the name attribute on the button", async () => {
@@ -161,10 +186,21 @@ describe("simple-icon-button-lite", () => {
       ></simple-icon-button-lite>`,
     );
     const btn = el.shadowRoot.querySelector("button");
-    expect(btn.getAttribute("aria-label")).to.equal("icons:home");
+    // the icon name made readable, never the raw "icons:home"
+    expect(btn.getAttribute("aria-label")).to.equal("home");
     // empty idrefs are no longer rendered either
     expect(btn.getAttribute("aria-labelledby")).to.equal(null);
     await expect(el).shadowDom.to.be.accessible();
+  });
+
+  it("reads multi-word icon names as words", async () => {
+    const el = await fixture(
+      html`<simple-icon-button-lite
+        icon="hax:folder-shared"
+      ></simple-icon-button-lite>`,
+    );
+    const btn = el.shadowRoot.querySelector("button");
+    expect(btn.getAttribute("aria-label")).to.equal("folder shared");
   });
 
   it("omits aria-label when there is nothing to name the button", async () => {
@@ -397,7 +433,7 @@ describe("simple-icon-button", () => {
       html`<simple-icon-button icon="icons:home"></simple-icon-button>`,
     );
     const btn = el.shadowRoot.querySelector("button");
-    expect(btn.getAttribute("aria-label")).to.equal("icons:home");
+    expect(btn.getAttribute("aria-label")).to.equal("home");
     await expect(el).shadowDom.to.be.accessible();
   });
 

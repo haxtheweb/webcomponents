@@ -123,6 +123,69 @@ export const SimpleIconButtonBehaviors = function (SuperClass) {
     }
 
     /**
+     * Fallback name for a button given no label: its visible text when it
+     * has some, else the host title, else the icon name made readable
+     * ("icons:create" reads "create"), never the raw machine name.
+     * Give every icon-only button a real label; this only keeps an
+     * unlabeled one from being announced as "icons colon create".
+     *
+     * @readonly
+     */
+    get iconLabel() {
+      // visible text in the button names it; never override that
+      if (this.textContent && this.textContent.trim() !== "") return "";
+      // a title on the host is the author's own name for the button
+      const title = this.getAttribute("title");
+      if (title && title.trim() !== "") return title.trim();
+      if (!this.icon) return "";
+      const name = String(this.icon).split(":").pop();
+      return name.replace(/[-_]+/g, " ").trim();
+    }
+
+    updated(changedProperties) {
+      if (super.updated) super.updated(changedProperties);
+      this._syncAriaReferences();
+    }
+
+    /**
+     * aria-labelledby and controls name ids that live beside this element,
+     * outside its shadow root, so an id on the inner button could never
+     * match. Look them up where this element lives and hand the inner
+     * button element references instead; an id that does not resolve
+     * leaves no broken reference behind.
+     */
+    _syncAriaReferences() {
+      const button = this.shadowRoot && this.shadowRoot.querySelector("button");
+      if (!button) return;
+      const root = this.getRootNode();
+      const lookup = (ids) => {
+        if (!ids || !root || typeof root.getElementById !== "function") {
+          return null;
+        }
+        const found = String(ids)
+          .split(/\s+/)
+          .filter((id) => id !== "")
+          .map((id) => root.getElementById(id))
+          .filter((el) => !!el);
+        return found.length > 0 ? found : null;
+      };
+      // clearing a reflected property would leave an empty attribute, so a
+      // reference that does not resolve removes the attribute instead
+      const labels = lookup(this.ariaLabelledby);
+      if (labels && "ariaLabelledByElements" in button) {
+        button.ariaLabelledByElements = labels;
+      } else if (button.hasAttribute("aria-labelledby")) {
+        button.removeAttribute("aria-labelledby");
+      }
+      const controlled = lookup(this.controls);
+      if (controlled && "ariaControlsElements" in button) {
+        button.ariaControlsElements = controlled;
+      } else if (button.hasAttribute("aria-controls")) {
+        button.removeAttribute("aria-controls");
+      }
+    }
+
+    /**
      * Delegates focus to the internal native button so consumers (e.g.
      * roving-tabindex widgets) can move focus without reaching into this
      * element's shadow root (haxtheweb/issues#3107)
@@ -141,11 +204,9 @@ export const SimpleIconButtonBehaviors = function (SuperClass) {
       return html`
         <button
           ?autofocus="${this.autofocus}"
-          aria-labelledby="${this.ariaLabelledby || nothing}"
           aria-pressed="${
             this.toggles ? (this.toggled ? "true" : "false") : nothing
           }"
-          aria-controls="${this.controls || nothing}"
           role="${this.buttonRole || nothing}"
           aria-checked="${
             this.ariaChecked === undefined
@@ -163,7 +224,7 @@ export const SimpleIconButtonBehaviors = function (SuperClass) {
           ?disabled="${this.disabled}"
           form="${this.form}"
           label="${this.label}"
-          aria-label="${this.label || this.icon || nothing}"
+          aria-label="${this.label || this.iconLabel || nothing}"
           name="${this.fieldName}"
           .type="${this.type}"
           value="${this.value}"

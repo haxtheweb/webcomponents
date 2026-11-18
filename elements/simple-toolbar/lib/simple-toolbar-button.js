@@ -348,6 +348,32 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
       ) {
         toolbar.refreshCurrentItem();
       }
+      this._syncAriaControls();
+    }
+    /**
+     * Points the inner control at the element named by controls.
+     * An aria-controls id on the inner button could only match ids inside
+     * this shadow root, so the id is looked up where the button itself
+     * lives and handed over as an element reference instead; a missing
+     * target leaves no broken reference behind.
+     */
+    _syncAriaControls() {
+      const button = this.focusableElement;
+      if (!button || !("ariaControlsElements" in button)) return;
+      let target = null;
+      if (this.controls) {
+        const root = this.getRootNode();
+        target =
+          root && typeof root.getElementById === "function"
+            ? root.getElementById(this.controls)
+            : null;
+      }
+      if (target) {
+        button.ariaControlsElements = [target];
+      } else if (button.hasAttribute("aria-controls")) {
+        // clearing the reflected property would leave aria-controls=""
+        button.removeAttribute("aria-controls");
+      }
     }
     /**
      * tabindex for the inner control. Inside a simple-toolbar only the
@@ -608,7 +634,6 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
               }"
               class="simple-toolbar-button"
               ?disabled="${this.disabled}"
-              aria-controls="${this.controls || undefined}"
               aria-keyshortcuts="${this.keyShortcuts || nothing}"
               @click="${this._handleClick}"
               @keydown="${this._handleKeydown}"
@@ -633,7 +658,6 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
                 }"
                 class="simple-toolbar-button"
                 ?disabled="${this.disabled}"
-                aria-controls="${this.controls || undefined}"
                 aria-keyshortcuts="${this.keyShortcuts || nothing}"
                 @click="${this._handleClick}"
                 @keydown="${this._handleKeys}"
@@ -655,7 +679,6 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
                 }"
                 class="simple-toolbar-button"
                 ?disabled="${this.disabled}"
-                aria-controls="${this.controls || undefined}"
                 aria-keyshortcuts="${this.keyShortcuts || nothing}"
                 @click="${this._handleClick}"
                 @keydown="${this._handleKeys}"

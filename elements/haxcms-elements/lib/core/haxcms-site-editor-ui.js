@@ -4063,7 +4063,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             ></app-hax-user-menu-button>
           </app-hax-user-menu>
           <span class="topbar-divider" aria-hidden="true"></span>
-          <div class="toolbar-buttons left-toolbar-buttons" role="menubar">
+          <div class="toolbar-buttons left-toolbar-buttons" role="group">
             <slot name="haxcms-site-editor-ui-prefix-buttons"></slot>
             <app-hax-user-menu
               id="site-menu"
@@ -4087,7 +4087,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 part="manifestbtn"
                 ?active="${this.adminDocked}"
                 class="top-bar-button"
-                role="menuitem"
                 id="manifestbtn"
                 aria-haspopup="true"
                 aria-expanded="${this.siteMenuOpen ? "true" : "false"}"
@@ -4118,7 +4117,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                     icon="hax:add-page"
                     label="${labelWithShortcut(this.t.addPage, "Ctrl⇧3")}"
                     merlin
-                    role="menuitem"
                   ></haxcms-button-add>`
                 : ``
             }
@@ -4129,7 +4127,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             ></span>
             <simple-toolbar-button
               id="exportbtn"
-              role="menuitem"
               icon="hax:html-code"
               label="${labelWithShortcut(this.t.viewSource, "Ctrl⇧2")}"
               data-event="view-source"
@@ -4143,7 +4140,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             >
             </simple-toolbar-button>
             <simple-toolbar-button
-              role="menuitem"
               ?hidden="${!this.editMode || !store.platformAllows("contentMap")}"
               ?disabled="${!this.editMode}"
               data-event="content-map"
@@ -4160,7 +4156,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             <simple-toolbar-button
               ?hidden="${!this.editMode || !store.platformAllows("addBlock")}"
               ?disabled="${!this.editMode}"
-              role="menuitem"
               data-event="content-add"
               icon="hax:add-brick"
               id="content-add"
@@ -4187,7 +4182,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 !this.activeNode.tagName
               }"
               voice-command="(modify)(configure)(edit) selected"
-              role="menuitem"
               controls="tray-detail"
               tooltip="${this.t.configure} ${this.activeTagName}"
               ?active="${this.trayDetail === "content-edit"}"
@@ -4202,7 +4196,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             <simple-toolbar-button
               icon="icons:undo"
               class="top-bar-button"
-              role="menuitem"
               icon-position="${this.getIconPosition(this.responsiveSize)}"
               ?disabled="${!this.canUndo}"
               @click="${this.haxButtonOp}"
@@ -4216,7 +4209,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             <simple-toolbar-button
               icon="icons:redo"
               class="top-bar-button"
-              role="menuitem"
               @click="${this.haxButtonOp}"
               ?disabled="${!this.canRedo}"
               ?hidden="${!this.editMode}"
@@ -4240,7 +4232,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               @click="${this._cancelButtonTap}"
               ?hidden="${!this.editMode}"
               ?disabled="${!this.editMode}"
-              role="menuitem"
               label="${labelWithShortcut(this.t.cancel, "Ctrl⇧/")}"
               voice-command="cancel (editing)"
             ></simple-toolbar-button>
@@ -4254,7 +4245,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                   !this.editMode)
               }"
               class="top-bar-button"
-              role="menuitem"
               id="editbutton"
               icon="${this.__editIcon}"
               icon-position="${this.getIconPosition(this.responsiveSize)}"
@@ -4276,7 +4266,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               icon-position="${this.getIconPosition(this.responsiveSize)}"
               label="${this.t.unlockPage}"
               @click="${this._toggleLockedStatus}"
-              role="menuitem"
             ></simple-toolbar-button>
           </div>
         </div>
@@ -4294,8 +4283,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               label="${this.t.merlin}"
               class="merlin top-bar-button merlin-anchor-button"
               id="merlin"
-              tabindex="-1"
               aria-hidden="true"
+              inert
             ></simple-toolbar-button>
             <super-daemon-search
               @click="${this.haxButtonOp}"
@@ -4318,7 +4307,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           </div>
         </div>
         <div slot="right" class="topbar-right-group">
-          <div class="toolbar-buttons right-toolbar-buttons" role="menubar">
+          <div class="toolbar-buttons right-toolbar-buttons" role="group">
             <slot name="haxcms-site-editor-ui-suffix-buttons"></slot>
           </div>
           ${this._renderPreviewControls()}
@@ -7539,7 +7528,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     return html`
       <div
         class="toolbar-buttons preview-toolbar-buttons"
-        role="menubar"
+        role="group"
         part="preview-controls"
       >
         ${
@@ -7649,7 +7638,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         <simple-toolbar-button
           id="previewbutton"
           class="top-bar-button"
-          role="menuitem"
           icon="icons:visibility"
           label="${labelWithShortcut(this.previewMode ? this.t.exitPreview : this.t.preview, "Ctrl⇧8")}"
           voice-command="preview (site)"

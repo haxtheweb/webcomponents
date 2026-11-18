@@ -98,14 +98,9 @@ describe("outline-player", () => {
     // the audit ran while simple-tooltip was still undefined, so the tooltip
     // text showed as raw page text. Audit the settled theme instead.
     await settle(element);
-    await expect(element).shadowDom.to.be.accessible({
-      // the menu toggle mirrors aria-controls onto its inner button, but the
-      // #drawer target lives in the host shadow root, so axe cannot resolve
-      // the idref across the simple-icon-button-lite shadow boundary
-      // (same class of cross-boundary limitation as the collections-theme
-      // skip-link ignore)
-      ignoredRules: ["aria-valid-attr-value"],
-    });
+    // the menu toggle points at #drawer by element reference, so there is
+    // no id reference left that axe cannot resolve across the boundary
+    await expect(element).shadowDom.to.be.accessible();
   });
 
   it("renders the skip link, navigation drawer, scrim and content areas", async () => {
@@ -169,7 +164,7 @@ describe("outline-player", () => {
     expect(toggle.getAttribute("icon")).to.equal("menu");
     expect(toggle.getAttribute("label")).to.equal("Toggle navigation");
     expect(toggle.getAttribute("aria-expanded")).to.equal("true");
-    expect(toggle.getAttribute("aria-controls")).to.equal("drawer");
+    expect(toggle.getAttribute("controls")).to.equal("drawer");
     expect(element.shadowRoot.querySelector("site-modal#searchmodalbtn")).to
       .exist;
     // fixed (site-print-button.js): the button only manages the
@@ -234,7 +229,9 @@ describe("outline-player", () => {
       "true",
       "initial _syncMenuToggleA11y labels the button on first render",
     );
-    expect(inner.getAttribute("aria-controls")).to.equal("drawer");
+    expect(inner.ariaControlsElements[0]).to.equal(
+      element.shadowRoot.querySelector("#drawer"),
+    );
     // an opened change re-runs the sync and updates the label
     element.opened = false;
     await element.updateComplete;

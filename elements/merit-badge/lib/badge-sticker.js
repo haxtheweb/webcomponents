@@ -208,6 +208,7 @@ class BadgeSticker extends I18NMixin(SimpleColors) {
             @click="${this.skillClick}"
             aria-expanded="${this.skillsOpened}"
             aria-controls="skills-popover"
+            aria-label="${this.t.skills}"
           >
             <i class="fas fa-info-circle" aria-hidden="true"></i>
             <simple-icon-lite

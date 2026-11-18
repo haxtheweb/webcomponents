@@ -2,7 +2,7 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see LICENSE for full text.
  */
-import { html, css } from "lit";
+import { html, css, nothing } from "lit";
 import { remoteLinkBehavior } from "@haxtheweb/utils/lib/remoteLinkBehavior.js";
 import { activeStateBehavior } from "@haxtheweb/utils/lib/activeStateBehavior.js";
 import { DDD, DDDPulseEffectSuper } from "@haxtheweb/d-d-d/d-d-d.js";
@@ -326,8 +326,7 @@ class SimpleCta extends DDDVocabulary(
   render() {
     return html` <a
       href="${this.link ? this.link : "#"}"
-      role="button"
-      aria-label="${this._computeAriaLabel()}"
+      aria-label="${this._computeAriaLabel() || nothing}"
       aria-disabled="${this.disabled}"
       part="simple-cta-link"
       @click="${this._clickCard}"
@@ -349,18 +348,23 @@ class SimpleCta extends DDDVocabulary(
   }
 
   /**
-   * Compute an accessible name for the rendered anchor.
+   * Compute an accessible name for the rendered anchor, only when it has
+   * no visible text of its own.
    *
-   * Priority: explicit `label` property, then the host element's `title`
-   * attribute (the most common fallback consumers already supply), then the
-   * target URL so the link is at least self-describing. An empty `link="#"`
-   * placeholder falls through to a generic call-to-action string.
+   * The visible text (the label property or slotted text) is the link name,
+   * so it is never overridden: screen readers announce what is on screen and
+   * voice control ("click Get started") matches it. Without visible text the
+   * host title is used, then the target URL, then a generic call-to-action
+   * string.
    *
    * @returns {string | undefined}
    */
   _computeAriaLabel() {
     if (this.label && String(this.label).trim() !== "") {
-      return String(this.label).trim();
+      return undefined;
+    }
+    if (this.textContent && this.textContent.trim() !== "") {
+      return undefined;
     }
     const hostTitle = this.getAttribute("title");
     if (hostTitle && hostTitle.trim() !== "") {

@@ -42,6 +42,7 @@ class ActiveWhenVisible extends LitElement {
           .href="${this._a}"
           .name="#${this.itemId}"
           aria-hidden="true"
+          tabindex="-1"
         ></a>
         <slot></slot>
       </div>

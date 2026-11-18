@@ -2,7 +2,7 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see LICENSE for full text.
  */
-import { LitElement, html, css } from "lit";
+import { LitElement, html, css, nothing } from "lit";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import "@haxtheweb/haxcms-elements/lib/ui-components/query/site-query-menu-slice.js";
@@ -94,12 +94,13 @@ class SiteChildrenBlock extends LitElement {
           color: var(--site-children-block-link-color, #444444);
           text-decoration: none;
         }
-        .link button:hover div,
-        .link button:focus div {
+        .link:hover .link-inner .indent,
+        .link:focus-visible .link-inner .indent {
           text-decoration: underline;
           color: var(--site-children-block-link-hover-color, #000000);
         }
-        button {
+        /* the link itself is the one tab stop; this only lays out its text */
+        .link-inner {
           cursor: pointer;
           display: block;
           line-height: inherit;
@@ -133,7 +134,7 @@ class SiteChildrenBlock extends LitElement {
           padding-inline-start: 4px;
           border-inline-start: var(--site-children-block-active-border-left);
         }
-        .active button {
+        .active .link-inner {
           font-weight: 700;
           color: var(--site-children-block-link-active-color, #000000);
         }
@@ -143,7 +144,7 @@ class SiteChildrenBlock extends LitElement {
             --site-children-block-parent-active-padding
           );
         }
-        .top-level button {
+        .top-level .link-inner {
           font-weight: var(--site-children-block-parent-font-weight);
           font-size: calc(var(--site-children-block-font-size, inherit) + 2px);
           text-transform: var(
@@ -151,10 +152,10 @@ class SiteChildrenBlock extends LitElement {
             uppercase
           );
         }
-        .top-level .active button {
+        .top-level .active .link-inner {
           font-weight: 700;
         }
-        .sub-level button {
+        .sub-level .link-inner {
           text-transform: var(
             --site-children-block-child-text-transform,
             capitalize
@@ -207,15 +208,15 @@ class SiteChildrenBlock extends LitElement {
   // render function
   render() {
     return html`
+      <site-query-menu-slice
+        @result-changed="${this.resultChanged}"
+        dynamic-methodology="${this.dynamicMethodology}"
+        start="${this.start}"
+        end="${this.end}"
+        parent="${this.parent}"
+        ?fixed-id="${this.fixedId}"
+      ></site-query-menu-slice>
       <ul class="wrapper">
-        <site-query-menu-slice
-          @result-changed="${this.resultChanged}"
-          dynamic-methodology="${this.dynamicMethodology}"
-          start="${this.start}"
-          end="${this.end}"
-          parent="${this.parent}"
-          ?fixed-id="${this.fixedId}"
-        ></site-query-menu-slice>
         ${this.__items.map(
           (item) =>
             html`${
@@ -230,14 +231,16 @@ class SiteChildrenBlock extends LitElement {
                     >
                       <a
                         class="link ${item.id === this.activeId ? "active" : ""}"
-                        tabindex="-1"
                         href="${item.slug}"
+                        aria-current="${
+                          item.id === this.activeId ? "page" : nothing
+                        }"
                       >
-                        <button>
-                          <div class="indent indent-${item.indent}">
+                        <span class="link-inner">
+                          <span class="indent indent-${item.indent}">
                             ${item.title}
-                          </div>
-                        </button>
+                          </span>
+                        </span>
                       </a>
                     </li>
                   `

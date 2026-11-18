@@ -25,6 +25,29 @@ import {
 import "./haxcms-site-router.js";
 import "@haxtheweb/simple-progress/simple-progress.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import {
+  getLanguageDirection,
+  getLanguageRegistry,
+} from "@haxtheweb/i18n-manager/lib/LanguageRegistry.js";
+
+// right-to-left primary language subtags, so the site direction is known
+// without fetching the language registry (same list the backends use for
+// exports); the registry, when already loaded, covers the rest
+const RTL_LANGUAGES = [
+  "ar",
+  "arc",
+  "ckb",
+  "dv",
+  "fa",
+  "he",
+  "ks",
+  "ku",
+  "ps",
+  "sd",
+  "ug",
+  "ur",
+  "yi",
+];
 import { whenIdle } from "@haxtheweb/utils/lib/idle.js";
 import "@haxtheweb/replace-tag/replace-tag.js";
 // toggle store darkmode
@@ -1503,7 +1526,37 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
   _manifestChanged(newValue, _oldValue) {
     if (newValue && newValue.metadata && newValue.items) {
       store.loadManifest(newValue, this);
+      HAXCMSSiteBuilder.prototype._applySiteLanguage.call(this, newValue);
     }
+  }
+  /**
+   * Marks the site's content with the site language and its direction, so
+   * screen readers read it in the right voice and right-to-left sites read
+   * and lay out in order (WCAG 3.1.1). The language lives in
+   * metadata.site.settings.lang (what the SEO settings and both backends
+   * write). It is set on this builder, which holds the theme and page
+   * content, not on the document, so the editor UI keeps its own language.
+   */
+  _applySiteLanguage(manifest) {
+    const site =
+      manifest && manifest.metadata && manifest.metadata.site
+        ? manifest.metadata.site
+        : {};
+    const lang = String(
+      (site.settings && site.settings.lang) || site.lang || "",
+    ).trim();
+    if (!lang) {
+      this.removeAttribute("lang");
+      this.removeAttribute("dir");
+      return;
+    }
+    this.setAttribute("lang", lang);
+    const primary = lang.split(/[-_]/)[0].toLowerCase();
+    let dir = RTL_LANGUAGES.includes(primary) ? "rtl" : "ltr";
+    if (dir === "ltr" && getLanguageRegistry()) {
+      dir = getLanguageDirection(lang);
+    }
+    this.setAttribute("dir", dir);
   }
   /**
    * notice theme changes and ensure slot is rebuilt.

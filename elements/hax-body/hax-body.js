@@ -1301,7 +1301,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       cantBeTransformed: "Sorry, this can not be transformed!",
       typeForQuickActions: "Type '/' for quick actions",
       addBlockHere: "Add a block here (/)",
+      leaveEditingHint:
+        "Editing. Tab indents text. To leave the editing area, press Escape, then Tab.",
     };
+    this.__editingHint = "";
     // double key press counter
     this.timesClickedArrowDown = 0;
     this.timesClickedArrowUp = 0;
@@ -1664,6 +1667,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
            the announcement state comes from the UndoManagerBehaviors mixin so
            mixin consumers self-announce without a nested undo-manager element -->
       <div class="sr-only" aria-live="polite">${this.__undoAnnouncement}</div>
+      <div class="sr-only" aria-live="polite">${this.__editingHint}</div>
       <!-- block motion: drop line, landing wash, remove hatch -->
       <div id="motion" aria-hidden="true"></div>
       <!-- gutter +: add a block where the pointer rests, the same as /.
@@ -1712,6 +1716,13 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       ...super.properties,
       _useristyping: {
         type: Boolean,
+      },
+      /**
+       * text for a polite live region: tells screen reader users how to
+       * leave the editing area, since Tab indents while editing
+       */
+      __editingHint: {
+        type: String,
       },
       haxMover: {
         type: Boolean,
@@ -2684,6 +2695,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     changedProperties.forEach(async (oldValue, propName) => {
       if (propName === "t") {
         this._applyQuickActionsText();
+      }
+      if (propName === "editMode") {
+        // Tab indents while editing and Escape, then Tab, leaves; say so
+        // when editing starts (WCAG 2.1.2 asks that the way out is told)
+        this.__editingHint = this.editMode ? this.t.leaveEditingHint : "";
       }
       if (propName == "editMode" && oldValue !== undefined) {
         // microtask delay to allow store to establish child nodes appropriately
