@@ -13,7 +13,8 @@
  *                     Schema (scripts/lib/haxProperties.schema.json, from
  *                     https://github.com/haxtheweb/hax-schema) plus the rules
  *                     its validator adds: select/radio fields need options,
- *                     an array of options is only for iconpicker, and an
+ *                     an array of options is only for iconpicker (icon
+ *                     names) or haxcms-language-picker, and an
  *                     element with a gizmo needs a demoSchema entry
  *   setting-property  a settings field's "property" is a property the element
  *                     declares (Lit properties, inherited ones included)
@@ -216,10 +217,19 @@ export function schemaFindings(doc, unresolved, validate) {
       ) {
         found.push(`${where}: ${f.inputMethod} needs options or itemsList`);
       }
-      if (Array.isArray(f.options) && f.inputMethod !== "iconpicker") {
+      // arrays of options: icon names for iconpicker; language codes (or
+      // { value, label }) for haxcms-language-picker; a map for the rest
+      const listInputs = ["iconpicker", "haxcms-language-picker"];
+      if (Array.isArray(f.options) && !listInputs.includes(f.inputMethod)) {
         found.push(
-          `${where}: an array of options is only for iconpicker; ${f.inputMethod} needs a value -> label map`,
+          `${where}: an array of options is only for iconpicker or haxcms-language-picker; ${f.inputMethod} needs a value -> label map`,
         );
+      } else if (
+        Array.isArray(f.options) &&
+        f.inputMethod === "iconpicker" &&
+        f.options.some((o) => typeof o !== "string")
+      ) {
+        found.push(`${where}: iconpicker options are icon names (strings)`);
       }
     });
   }
