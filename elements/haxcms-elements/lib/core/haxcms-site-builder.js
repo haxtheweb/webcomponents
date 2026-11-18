@@ -49,6 +49,7 @@ const RTL_LANGUAGES = [
   "yi",
 ];
 import { whenIdle } from "@haxtheweb/utils/lib/idle.js";
+import { applySvgContrast } from "@haxtheweb/utils/lib/svg-contrast.js";
 import "@haxtheweb/replace-tag/replace-tag.js";
 // toggle store darkmode
 function darkToggle(e) {
@@ -1079,6 +1080,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         } else {
           globalThis.document.body.classList.remove("dark-mode");
         }
+        this._checkSvgContrast();
       });
     });
     autorun(() => {
@@ -1135,6 +1137,18 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     }, 3000);
   }
 
+  /**
+   * Give page content drawings that are unreadable on the current background
+   * (dark ink with no background of their own, in dark mode) a backdrop;
+   * only the ones that fail contrast, see @haxtheweb/utils/lib/svg-contrast.js
+   */
+  _checkSvgContrast() {
+    globalThis.requestAnimationFrame(() => {
+      if (store.themeElement) {
+        applySvgContrast(store.themeElement);
+      }
+    });
+  }
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
@@ -1453,6 +1467,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
           // iframes with http(s) src) renders unchanged.
           sanitizeNodeTree(frag);
           store.themeElement.appendChild(frag);
+          this._checkSvgContrast();
           this.dispatchEvent(
             new CustomEvent("json-outline-schema-active-body-changed", {
               bubbles: true,

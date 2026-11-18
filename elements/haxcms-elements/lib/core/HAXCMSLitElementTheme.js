@@ -248,6 +248,21 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
         body.dark-mode .haxcms-copyable::after {
           filter: invert(1);
         }
+        /* A page drawing that is unreadable where it lands (hard-coded dark
+           ink with no background of its own, on a dark page) is marked by
+           haxcms-site-builder after measuring its contrast, and gets a
+           backdrop. Drawings that read fine are left alone. Authors can
+           choose with data-backdrop="light|dark|none" on the svg. */
+        haxcms-site-builder svg[data-hax-contrast="light"] {
+          background-color: var(--ddd-theme-default-white, #ffffff);
+          color: var(--ddd-theme-default-coalyGray, #262626);
+          border-radius: var(--ddd-radius-xs, 4px);
+        }
+        haxcms-site-builder svg[data-hax-contrast="dark"] {
+          background-color: var(--ddd-theme-default-coalyGray, #262626);
+          color: var(--ddd-theme-default-white, #ffffff);
+          border-radius: var(--ddd-radius-xs, 4px);
+        }
         @media (prefers-color-scheme: dark) {
           .haxcms-copyable::after {
             filter: invert(1);

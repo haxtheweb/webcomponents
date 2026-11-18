@@ -30,6 +30,23 @@
       "hax": null
     },
     {
+      "name": "backdrop",
+      "property": "backdrop",
+      "type": "string",
+      "default": "",
+      "description": "background behind drawn (pspicture) pictures: \"auto\" (the default) adds one only when the drawing would be hard to see where it is, \"light\" or \"dark\" always, \"none\" never",
+      "hax": {
+        "title": "Picture backdrop",
+        "input": "select",
+        "options": {
+          "auto": "Automatic",
+          "light": "Light",
+          "dark": "Dark",
+          "none": "None"
+        }
+      }
+    },
+    {
       "name": "initialText",
       "property": "initialText",
       "type": "string",
@@ -68,7 +85,20 @@
       }
     },
     "settings": {
-      "configure": [],
+      "configure": [
+        {
+          "property": "backdrop",
+          "title": "Picture backdrop",
+          "description": "Background behind drawn pictures. Automatic adds one only when the drawing would be hard to see on the page, such as dark lines in dark mode.",
+          "inputMethod": "select",
+          "options": {
+            "auto": "Automatic",
+            "light": "Light",
+            "dark": "Dark",
+            "none": "None"
+          }
+        }
+      ],
       "advanced": [],
       "developer": []
     },
@@ -89,7 +119,7 @@
       }
     ]
   },
-  "surfaceHash": "e26b0c996eb5",
+  "surfaceHash": "2ca0177413b6",
   "walkthroughs": [
     {
       "id": "",
@@ -97,13 +127,13 @@
       "order": 0,
       "src": "la-tex.motion.json",
       "file": "lib/la-tex.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/la-tex.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {
