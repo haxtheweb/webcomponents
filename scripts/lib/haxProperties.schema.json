@@ -246,6 +246,7 @@
         "haxupload",
         "screenRecorder",
         "srcset",
+        "image-framing",
         "code",
         "code-editor",
         "markup",
@@ -377,6 +378,21 @@
         },
         "suffix": {
           "type": "string"
+        },
+        "sourceProperty": {
+          "description": "image-framing: the setting that holds the photo to frame.",
+          "type": "string",
+          "minLength": 1
+        },
+        "focalXProperty": {
+          "description": "image-framing: the setting that holds the focal point's horizontal position (0-100).",
+          "type": "string",
+          "minLength": 1
+        },
+        "focalYProperty": {
+          "description": "image-framing: the setting that holds the focal point's vertical position (0-100).",
+          "type": "string",
+          "minLength": 1
         },
         "properties": {
           "description": "Sub-fields for array / object / fieldset / tabs / collapse.",
