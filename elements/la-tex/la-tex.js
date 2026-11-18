@@ -136,15 +136,17 @@ class LaTex extends I18NMixin(LitElement) {
         /* a picture whose drawing would be hard to see where it lands (an
            author color like linecolor=black on a dark page), or the backdrop
            the author picked */
+        /* fallbacks: on a page without the DDD tokens (la-tex outside
+           HAXcms) the backdrop must still paint */
         .pspicture[data-hax-contrast="light"] {
-          background-color: var(--ddd-theme-default-white);
-          color: var(--ddd-theme-default-coalyGray);
-          border-radius: var(--ddd-radius-xs);
+          background-color: var(--ddd-theme-default-white, #ffffff);
+          color: var(--ddd-theme-default-coalyGray, #262626);
+          border-radius: var(--ddd-radius-xs, 4px);
         }
         .pspicture[data-hax-contrast="dark"] {
-          background-color: var(--ddd-theme-default-coalyGray);
-          color: var(--ddd-theme-default-white);
-          border-radius: var(--ddd-radius-xs);
+          background-color: var(--ddd-theme-default-coalyGray, #262626);
+          color: var(--ddd-theme-default-white, #ffffff);
+          border-radius: var(--ddd-radius-xs, 4px);
         }
 
         /* pspicture slider controls sit side by side under the picture,
