@@ -116,6 +116,49 @@ describe("polaris-flex-theme", () => {
     expect(element.__navStuck).to.equal(false);
   });
 
+  describe("menu drop downs option", () => {
+    const depths = () =>
+      [
+        element.shadowRoot.querySelector("#sitemenu"),
+        element.shadowRoot.querySelector("#sitemenu-mirror"),
+      ].map((m) => m.getAttribute("max-depth"));
+
+    it("shows drop downs by default (three levels in both navs)", () => {
+      expect(element.hideMenuDropdowns).to.equal(false);
+      expect(element.hasAttribute("hide-menu-dropdowns")).to.equal(false);
+      expect(depths()).to.deep.equal(["3", "3"]);
+    });
+
+    it("shows only the top level when drop downs are hidden", async () => {
+      element.responsiveSize = "lg";
+      element.hideMenuDropdowns = true;
+      await element.updateComplete;
+      expect(element.hasAttribute("hide-menu-dropdowns")).to.equal(true);
+      expect(depths()).to.deep.equal(["1", "1"]);
+    });
+
+    it("keeps every level in the phone menu", async () => {
+      element.hideMenuDropdowns = true;
+      element.responsiveSize = "xs";
+      await element.updateComplete;
+      expect(depths()).to.deep.equal(["3", "3"]);
+    });
+
+    it("reads the site's menuDropdowns theme variable", async () => {
+      const prior = store.manifest;
+      const m = makeManifest();
+      m.metadata.theme.variables = {
+        ...(m.metadata.theme.variables || {}),
+        menuDropdowns: false,
+      };
+      store.manifest = m;
+      await new Promise((r) => setTimeout(r, 0));
+      await element.updateComplete;
+      expect(element.hideMenuDropdowns).to.equal(true);
+      store.manifest = prior;
+    });
+  });
+
   it("shows Outline Actions for the current page by the breadcrumb when signed in", async () => {
     // isLoggedIn is computed from the jwt (no connection test configured)
     const savedJwt = store.jwt;

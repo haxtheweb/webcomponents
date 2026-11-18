@@ -46,7 +46,9 @@ class MapMenuBuilder extends LitElement {
               ? this.items.map(
                   (item) => html`
                     ${
-                      item.children.length > 0 && this.hasVisibleChildren(item)
+                      item.children.length > 0 &&
+                      this.hasVisibleChildren(item) &&
+                      this.depthCount < this.maxDepth
                         ? html`
                             <map-menu-submenu
                               itemtitle="${item.title}"
