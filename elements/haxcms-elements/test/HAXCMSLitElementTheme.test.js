@@ -266,6 +266,12 @@ describe("HAXCMSLitElementTheme page change scrolling", () => {
   it("publishes how far down the page the theme starts", async () => {
     await new Promise((r) => requestAnimationFrame(() => r()));
     await new Promise((r) => setTimeout(r, 50));
+    // the body observer set it once the theme was laid out
+    expect(
+      element.style.getPropertyValue("--haxcms-theme-offset-top"),
+    ).to.match(/^\d+px$/);
+    // and it follows the theme when other suites shift the page around it
+    element._syncThemeOffsetTop();
     const expected = Math.round(
       element.getBoundingClientRect().top + globalThis.scrollY,
     );
