@@ -7148,7 +7148,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   }
 
   _triggerOutlineActionsShortcut() {
-    const operations = store.pageOperationsElement;
+    const operations =
+      store.pageOperationsElement || store.pageOperationsFallbackElement;
     if (!operations || !operations.isConnected || !operations.shadowRoot) {
       return false;
     }

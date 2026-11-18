@@ -494,7 +494,9 @@ class MapMenu extends SchemaBehaviors(LitElement) {
     this.editControls = false;
     this.isFlex = false;
     this.isHorizontal = false;
-    this.maxDepth = 5;
+    // how many levels of the outline the menu shows; deep enough for any
+    // real site, with an end so nesting is not unlimited
+    this.maxDepth = 10;
     this.disabled = false;
     this.title = "Content outline";
     this.data = null;

@@ -250,10 +250,16 @@ class Store {
     this.cmsSiteEditorBackend = {
       instance: null,
     };
+    // the Outline Actions on the current page's row in the site menu, or null
+    // when no menu shows that page (deeper than the menu goes, hidden from
+    // it, or a theme without the menu)
     this.pageOperationsElement = null;
+    // the Outline Actions the page itself offers when no menu row has them
+    this.pageOperationsFallbackElement = null;
     this._registration = {}; // used for initial state registration as system setsup
     makeObservable(this, {
       location: observable.ref, // router location in url
+      pageOperationsElement: observable.ref, // Outline Actions in the site menu
       currentRouterLocation: observable.ref,
       internalRoutes: observable, // internal routes to haxcms
       editMode: observable, // global editing state

@@ -125,7 +125,14 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
       );
     }
     super.connectedCallback();
-    store.pageOperationsElement = this;
+    // a fallback copy (the page offers it when no menu row does) must not
+    // claim the menu's slot, or the page would take it for a menu row and
+    // remove the copy again
+    if (this.hasAttribute("fallback")) {
+      store.pageOperationsFallbackElement = this;
+    } else {
+      store.pageOperationsElement = this;
+    }
   }
 
   disconnectedCallback() {
@@ -133,6 +140,9 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
     this.__disposer = [];
     if (store.pageOperationsElement === this) {
       store.pageOperationsElement = null;
+    }
+    if (store.pageOperationsFallbackElement === this) {
+      store.pageOperationsFallbackElement = null;
     }
     super.disconnectedCallback();
   }

@@ -23,7 +23,8 @@ describe("map-menu data and selection", () => {
     expect(el.editControls).to.equal(false);
     expect(el.isFlex).to.equal(false);
     expect(el.isHorizontal).to.equal(false);
-    expect(el.maxDepth).to.equal(5);
+    // ten levels: deep enough for any real site, with an end to nesting
+    expect(el.maxDepth).to.equal(10);
     expect(el.disabled).to.equal(false);
     expect(el.autoScroll).to.equal(false);
     expect(el.activeIndicator).to.equal(false);

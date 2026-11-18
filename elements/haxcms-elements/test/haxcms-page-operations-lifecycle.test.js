@@ -123,4 +123,20 @@ describe("haxcms-page-operations store subscriptions", () => {
     expect(el.isLocked).to.equal(true);
     expect(store.pageOperationsElement).to.equal(el);
   });
+
+  it("a fallback copy does not claim the site menu's slot", async () => {
+    // the page offers its own copy when no menu row has Outline Actions;
+    // if that copy took the menu's slot the page would remove it again
+    const host = await fixture(html`<div></div>`);
+    const before = store.pageOperationsElement;
+    const el = document.createElement("haxcms-page-operations");
+    el.setAttribute("fallback", "");
+    host.appendChild(el);
+    await settle();
+    expect(store.pageOperationsElement).to.equal(before);
+    expect(store.pageOperationsFallbackElement).to.equal(el);
+    el.remove();
+    await settle();
+    expect(store.pageOperationsFallbackElement).to.equal(null);
+  });
 });
