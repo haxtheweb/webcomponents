@@ -535,3 +535,28 @@ describe("page-contents-menu keyboard and mobile menu", () => {
     expect(el.isEmpty).to.equal(false);
   });
 });
+
+// haxtheweb/issues#3274: ids the menu gives content so it can link to it are
+// generated (from a resource made on this load, or an index), so learner data
+// must never be keyed by them
+describe("page-contents-menu generated ids", () => {
+  it("marks the ids it generates and leaves authored ones alone", async () => {
+    const root = await fixture(html`
+      <div>
+        <page-contents-menu relationship="parent"></page-contents-menu>
+        <h2 resource="#4c658e32-89f7-966d-f825-ffa958558869">From resource</h2>
+        <h2>By index</h2>
+        <h2 id="authored">Authored</h2>
+      </div>
+    `);
+    const el = root.querySelector("page-contents-menu");
+    el.updateMenu();
+    const [fromResource, byIndex, authored] = root.querySelectorAll("h2");
+    expect(fromResource.id).to.equal("h24c658e3289f7966df825ffa958558869");
+    expect(fromResource._xapiGeneratedId).to.equal(fromResource.id);
+    expect(byIndex.id).to.match(/^h2\d+$/);
+    expect(byIndex._xapiGeneratedId).to.equal(byIndex.id);
+    expect(authored.id).to.equal("authored");
+    expect(authored._xapiGeneratedId).to.equal(undefined);
+  });
+});
