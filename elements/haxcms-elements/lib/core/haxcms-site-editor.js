@@ -3709,10 +3709,17 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
               : undefined,
             true,
           );
+    // the site's profiles elsewhere (metadata.site.sameAs), a list of URLs
+    const sameAs = Array.isArray(detail.sameAs)
+      ? detail.sameAs.filter((link) => typeof link === "string")
+      : manifestSite && Array.isArray(manifestSite.sameAs)
+        ? manifestSite.sameAs.filter((link) => typeof link === "string")
+        : [];
     const seoValues = {
       description,
       logo,
       domain,
+      sameAs,
       lang,
       gaID,
       private: privateSite,
@@ -3754,6 +3761,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
           "manifest.description": description,
           "manifest.metadata.site.logo": logo,
           "manifest.metadata.site.domain": domain,
+          "manifest.metadata.site.sameAs": sameAs,
           "manifest.metadata.site.settings.lang": lang,
           "manifest.metadata.site.settings.gaID": gaID,
           "manifest.metadata.site.settings.private": privateSite,

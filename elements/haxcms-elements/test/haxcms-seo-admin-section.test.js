@@ -36,6 +36,7 @@ const UNCHANGED_PAYLOAD = {
   description: "Cells and things",
   logo: "files/leaf.png",
   domain: "https://example.edu/bio",
+  sameAs: [],
   lang: "en",
   gaID: "",
   private: false,
@@ -60,6 +61,8 @@ const EDITED_PAYLOAD = Object.assign({}, UNCHANGED_PAYLOAD, {
   private: true,
   authorName: "Grace",
   authorWebsite2: "https://g.example",
+  // one link per line in the form, sent as a list (haxtheweb/issues#3367)
+  sameAs: ["https://github.com/biolab", "https://www.youtube.com/@biolab"],
   pathauto: true,
 });
 
@@ -71,6 +74,10 @@ function applyEdits(el) {
   el._setValue("manifest-license", "by-nc");
   el._setValue("manifest-metadata-author-name", "Grace");
   el._setValue("manifest-metadata-author-website2", "https://g.example");
+  el._setValue(
+    "manifest-metadata-site-sameAs",
+    "https://github.com/biolab\n\n  https://www.youtube.com/@biolab  ",
+  );
 }
 
 async function seoInShell(route = "seo") {
@@ -120,6 +127,23 @@ describe("haxcms-seo-admin-dialog save payload", () => {
     setTimeout(() => el.save());
     const e = await oneEvent(globalThis, "haxcms-save-seo-data");
     expect(e.detail).to.deep.equal(EDITED_PAYLOAD);
+  });
+
+  it("loads metadata.site.sameAs one per line and sends the same list back", async () => {
+    const el = document.createElement("haxcms-seo-admin-dialog");
+    el.inShell = true;
+    const m = manifest();
+    m.metadata.site.sameAs = [
+      "https://github.com/biolab",
+      "https://mastodon.social/@biolab",
+    ];
+    el.refreshFromManifest(m);
+    expect(el.values["manifest-metadata-site-sameAs"]).to.equal(
+      "https://github.com/biolab\nhttps://mastodon.social/@biolab",
+    );
+    setTimeout(() => el.save());
+    const e = await oneEvent(globalThis, "haxcms-save-seo-data");
+    expect(e.detail.sameAs).to.deep.equal(m.metadata.site.sameAs);
   });
 
   it("will not save before settings load, like the old disabled Save", () => {
