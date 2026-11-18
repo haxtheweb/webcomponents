@@ -170,6 +170,7 @@ export class PageBreak extends IntersectionObserverMixin(
         });
       }),
     );
+    this._outlineActionsHere = false;
   }
   _openPageReport(e) {
     const menu = this.shadowRoot.querySelector("#menu");
@@ -292,6 +293,7 @@ export class PageBreak extends IntersectionObserverMixin(
       linkUrl: { type: String, attribute: "link-url" },
       linkTarget: { type: String, attribute: "link-target" },
       _haxState: { type: Boolean },
+      _outlineActionsHere: { type: Boolean, state: true },
       _haxActive: { type: Boolean, state: true },
       hidden: { type: Boolean, reflect: true },
       isLoggedIn: { type: Boolean, reflect: true, attribute: "is-logged-in" },
@@ -355,8 +357,37 @@ export class PageBreak extends IntersectionObserverMixin(
       this._ensureBand();
     }
   }
+  /**
+   * Outline Actions (move, indent, add child, delete) sit on the current
+   * page's row in the site menu. When no menu row has them (the page is
+   * deeper than the menu shows, hidden from it, or the theme has no menu),
+   * the page offers them here beside Page Actions, so every page can be
+   * managed. Waits a moment: a row goes away and comes back as the menu
+   * redraws on navigation.
+   */
+  _watchOutlineActions() {
+    if (this.__outlineActionsDisposer) {
+      return;
+    }
+    this.__outlineActionsDisposer = autorun(() => {
+      const inMenu = !!store.pageOperationsElement;
+      clearTimeout(this.__outlineActionsTimer);
+      this.__outlineActionsTimer = setTimeout(
+        () => {
+          const needed = !store.pageOperationsElement;
+          if (needed && !this.__pageOperationsLoaded) {
+            this.__pageOperationsLoaded = true;
+            import("@haxtheweb/haxcms-elements/lib/core/micros/haxcms-page-operations.js");
+          }
+          this._outlineActionsHere = needed;
+        },
+        inMenu ? 0 : 500,
+      );
+    });
+  }
   connectedCallback() {
     super.connectedCallback();
+    this._watchOutlineActions();
     if (this.hasAttribute("data-hax-ray") || this._haxState) {
       this._ensureBand();
     }
@@ -452,6 +483,11 @@ export class PageBreak extends IntersectionObserverMixin(
       }),
     );
     this.remoteHeadingobserver.disconnect();
+    clearTimeout(this.__outlineActionsTimer);
+    if (this.__outlineActionsDisposer) {
+      this.__outlineActionsDisposer();
+      this.__outlineActionsDisposer = null;
+    }
     // Clean up store observers
     for (let i in this.__disposer) {
       if (typeof this.__disposer[i] === "function") {
@@ -771,6 +807,20 @@ export class PageBreak extends IntersectionObserverMixin(
           box-shadow: var(--ddd-boxShadow-sm);
           --simple-toolbar-button-hover-border-color: transparent;
         }
+        /* Outline Actions, shown only when no site menu row has them:
+           sits just before the Page Actions pencil */
+        haxcms-page-operations.outline-actions {
+          position: absolute;
+          top: var(--page-break-menu-button-top, -8px);
+          inset-inline-end: calc(
+            var(--page-break-menu-button-right, 0px) + var(--ddd-spacing-8)
+          );
+          /* same size as the Page Actions pencil beside it */
+          line-height: 0;
+          --haxcms-page-operations-ops-icon-size: 12px;
+          --haxcms-page-operations-ops-height: 16px;
+          --haxcms-page-operations-ops-width: 16px;
+        }
         simple-toolbar-button.menu-button {
           position: absolute;
           top: var(--page-break-menu-button-top, -8px);
@@ -973,6 +1023,15 @@ export class PageBreak extends IntersectionObserverMixin(
                   ?hidden=${!store.platformAllows("deletePage")}
                 ></simple-toolbar-button>
               </simple-context-menu>
+              ${
+                this._outlineActionsHere
+                  ? html`<haxcms-page-operations
+                      fallback
+                      class="outline-actions"
+                      action-id="${this.itemId}"
+                    ></haxcms-page-operations>`
+                  : ``
+              }
             `
           : ``
       }

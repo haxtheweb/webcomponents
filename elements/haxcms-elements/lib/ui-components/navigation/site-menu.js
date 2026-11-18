@@ -108,7 +108,7 @@ class SiteMenu extends I18NMixin(HAXCMSThemeParts(LitElement)) {
     this.editControls = false;
     this.isFlex = false;
     this.isHorizontal = false;
-    this.maxDepth = 5;
+    this.maxDepth = 10;
     this.showProgress = false;
     this._activePercent = null;
     this.registerLocalization({

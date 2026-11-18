@@ -23,7 +23,7 @@ class MapMenuBuilder extends LitElement {
     this.editControls = false;
     this.items = [];
     this.depthCount = 1;
-    this.maxDepth = 5;
+    this.maxDepth = 10;
     this.isFlex = false;
     this.isNested = false;
     this.isHorizontal = false;
