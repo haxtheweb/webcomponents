@@ -334,6 +334,17 @@ export class VhsBlogSpine extends LitElement {
           .studio {
             display: none;
           }
+          /* the read-time sticker is the last extra to step aside: on a
+             phone-width spine the title needs its room (the cover still
+             shows the read time) */
+          .sticker {
+            display: none;
+          }
+          /* a title that wraps here gets line room for tall display faces,
+             whose glyphs collide at the one-line 1.05 */
+          .ttl {
+            line-height: 1.2;
+          }
         }
       `,
     ];
