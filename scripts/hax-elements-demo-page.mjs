@@ -113,7 +113,11 @@ const SECTION_NOTES = {
  * from the demo site root (e.g. a relative data file) and a self-contained
  * variant is needed instead.
  */
-const EXAMPLE_OVERRIDES = {};
+const EXAMPLE_OVERRIDES = {
+  // a branch of the demo site with enough pages to fill the grid; its
+  // demoSchema has no parent, so it would list the whole site
+  "site-collection-list": `<site-collection-list responsive-width="913" responsive-size="sm" published="" limit="8" sort="title" breakpoint-sm="900" breakpoint-md="1200" breakpoint-lg="1500" breakpoint-xl="1800" parent="item-a13f6fde-9c55-4a1c-bd64-cf8498be649d" items-per-row="7" sort-obj="{&quot;title&quot;:&quot;ASC&quot;}" edit-mode="" accent-color="grey"></site-collection-list>`,
+};
 
 /**
  * Hand-authored examples for registry tags with no demoSchema and no demo
@@ -125,7 +129,6 @@ const FALLBACK_EXAMPLES = {
   <lesson-highlight accent-color="blue" icon="star" title="Lesson 2: Building" subtitle="Work through the hands-on activity"></lesson-highlight>
 </lesson-overview>`,
   "page-anchor": `<p>Click the highlighted anchor to jump back to the top of the gallery: <page-anchor target="#gallery-top">back to the top</page-anchor></p>`,
-  "site-collection-list": `<site-collection-list responsive-width="913" responsive-size="sm" published="" limit="8" sort="title" breakpoint-sm="900" breakpoint-md="1200" breakpoint-lg="1500" breakpoint-xl="1800" parent="item-a13f6fde-9c55-4a1c-bd64-cf8498be649d" items-per-row="7" sort-obj="{&quot;title&quot;:&quot;ASC&quot;}" edit-mode="" accent-color="grey"></site-collection-list>`,
 };
 
 /**
@@ -334,11 +337,22 @@ function evalArrayLiteral(arrayText, tag) {
 // falling back to parsing the array literal out of the element's source
 function findDemoSchema(tag) {
   const folder = findFolderForTag(tag);
+  const jsFile = findJsFileForTag(tag);
+  const candidates = [];
   if (folder) {
-    const candidates = [
+    candidates.push(
       path.join(folder, "lib", tag + ".haxProperties.json"),
       path.join(folder, tag + ".haxProperties.json"),
-    ];
+    );
+  }
+  // elements deeper in a package (haxcms-elements keeps many under
+  // lib/ui-components/<group>/) keep the file beside their source
+  if (jsFile) {
+    candidates.push(
+      path.join(path.dirname(jsFile), tag + ".haxProperties.json"),
+    );
+  }
+  {
     for (const candidate of candidates) {
       if (!fs.existsSync(candidate)) {
         continue;
@@ -353,7 +367,6 @@ function findDemoSchema(tag) {
       }
     }
   }
-  const jsFile = findJsFileForTag(tag);
   if (jsFile) {
     const content = fs.readFileSync(jsFile, "utf8");
     const arrayText = extractBalancedArray(content, "demoSchema");
