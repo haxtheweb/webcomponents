@@ -194,6 +194,87 @@ describe("ecosystem-theme", function () {
     expect(r.querySelector("section.welcome")).to.equal(null);
   });
 
+  describe("embed view", () => {
+    let embedded;
+    beforeEach(async () => {
+      // one theme per page: the site-view fixture above gives way to the embed
+      element.remove();
+      store.activeId = "goal";
+      embedded = await fixture(html`<ecosystem-theme embed></ecosystem-theme>`);
+      await tick();
+      await embedded.updateComplete;
+      await forceThemeReveal(embedded);
+    });
+
+    it("drops the site chrome and keeps the web, the content and a way back", () => {
+      const r = embedded.shadowRoot;
+      [
+        "hax-network-bar",
+        "header.top",
+        ".linkbar",
+        "nav.outline",
+        "footer",
+        "section.welcome",
+      ].forEach((sel) => expect(r.querySelector(sel), sel).to.equal(null));
+      expect(r.querySelector(".embedbar h1").textContent).to.equal(
+        "4. Quality Education",
+      );
+      const back = r.querySelector(".embedbar a.btn");
+      expect(back.getAttribute("href")).to.equal(
+        "https://hax.cloud/un-sdgs/4-quality-education",
+      );
+      expect(back.getAttribute("target")).to.equal("_blank");
+      const web = r.querySelector(".webview ecosystem-web");
+      expect(web.getAttribute("node")).to.equal("sdg_4");
+      expect(r.querySelector("#contentcontainer > #slot > slot")).to.exist;
+    });
+
+    it("shows the web even when the viewer chose the Site view on the site", async () => {
+      globalThis.localStorage.setItem("hax-cloud-view", "site");
+      const el = await fixture(html`<ecosystem-theme embed></ecosystem-theme>`);
+      await tick();
+      await el.updateComplete;
+      expect(el.view).to.equal("web");
+      globalThis.localStorage.removeItem("hax-cloud-view");
+    });
+
+    it("shows a page outside the webs as its content alone", async () => {
+      store.activeId = "tours";
+      await tick();
+      await embedded.updateComplete;
+      const r = embedded.shadowRoot;
+      expect(r.querySelector("ecosystem-web")).to.equal(null);
+      expect(r.querySelector("site-menu")).to.equal(null);
+      expect(r.querySelector(".embedbar h1").textContent).to.equal("Tours");
+    });
+
+    it("keeps the embed view when the web moves to another page", () => {
+      const pushed = [];
+      const push = globalThis.history.pushState;
+      const assign = globalThis.HAXCMS;
+      globalThis.HAXCMS = {
+        requestAvailability: () => ({ storePieces: { siteRouter: {} } }),
+      };
+      globalThis.history.pushState = (a, b, url) => pushed.push(String(url));
+      try {
+        embedded._onWebChanged({ detail: { path: "/ecosystem" } });
+      } finally {
+        globalThis.history.pushState = push;
+        globalThis.HAXCMS = assign;
+      }
+      expect(pushed.length).to.equal(1);
+      expect(new URL(pushed[0]).search).to.equal("?embed");
+      expect(new URL(pushed[0]).pathname.endsWith("/ecosystem")).to.be.true;
+    });
+
+    it("is accessible", async () => {
+      // skip-link: see "passes the a11y audit" below
+      await expect(embedded).shadowDom.to.be.accessible({
+        ignoredRules: ["skip-link"],
+      });
+    });
+  });
+
   it("gives Merlin every page of the site to jump to", () => {
     const options = [];
     element._onMerlin({

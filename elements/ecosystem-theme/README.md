@@ -13,6 +13,21 @@ Above both views:
 - **The HAX top bar**, drawn the way the HAX editor draws its own: the dark HAX UI chrome in both color schemes, the site title and its nav, Web/Site in the middle, and the Future Traveler in the right-hand corner.
 - **The welcome**, on the home page in the Web view, when the site sets `welcome`: a greeting, a button that starts a tour and one that opens Merlin.
 
+## Embed
+
+Add `?embed` to any page's address to draw it for an iframe on another site: the network strip, top bar, link bar, outline and footer are left out, and what remains is the page's title, a link that opens the page on the site itself, the web (when the page is part of one) and the page content. Moving around the web inside the frame keeps the embed view. The `embed` attribute on the theme does the same.
+
+```html
+<iframe
+  src="https://hax.cloud/stories/ee450a19?embed"
+  title="James Kane IV on hax.cloud"
+  loading="lazy"
+  style="width:100%;height:640px;border:0"
+></iframe>
+```
+
+An embed always opens in the Web view; the Web/Site choice a viewer made on the site is not read or changed.
+
 ## Page data
 
 Each page says what it shows in `metadata.ecosystem`:
