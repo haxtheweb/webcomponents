@@ -338,9 +338,7 @@ class Wysiwyg96Theme extends DDDSuper(HAXCMSLitElementTheme) {
         .titlebar .caption {
           flex: 1 1 auto;
           min-width: 0;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
+          overflow-wrap: anywhere;
           text-align: center;
         }
         .winbtn {
@@ -364,11 +362,12 @@ class Wysiwyg96Theme extends DDDSuper(HAXCMSLitElementTheme) {
         .winbtn:active {
           box-shadow: var(--wysiwyg96-sunken);
         }
+        /* the bar is a border, so forced colors still draw it */
         .winbtn.sys::before {
           content: "";
           width: 12px;
-          height: 3px;
-          background: var(--wysiwyg96-ink);
+          height: 0;
+          border-top: 3px solid var(--wysiwyg96-ink);
           box-shadow: 0 0 0 1px var(--wysiwyg96-hi);
         }
         .winbtn.min::before {
@@ -502,8 +501,7 @@ class Wysiwyg96Theme extends DDDSuper(HAXCMSLitElementTheme) {
           padding: 0 var(--ddd-spacing-2);
           background-color: var(--wysiwyg96-field);
           box-shadow: var(--wysiwyg96-sunken);
-          overflow: hidden;
-          white-space: nowrap;
+          overflow-wrap: anywhere;
         }
         site-breadcrumb {
           --site-breadcrumb-color: var(--wysiwyg96-ink);
@@ -549,9 +547,7 @@ class Wysiwyg96Theme extends DDDSuper(HAXCMSLitElementTheme) {
         .statusbar span {
           padding: 3px var(--ddd-spacing-2);
           box-shadow: var(--wysiwyg96-sunken);
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
+          overflow-wrap: anywhere;
           min-height: 18px;
         }
         .explorer .tree {
@@ -618,9 +614,7 @@ class Wysiwyg96Theme extends DDDSuper(HAXCMSLitElementTheme) {
         .desk-icon .name {
           padding: 1px var(--ddd-spacing-1);
           background-color: var(--wysiwyg96-field);
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
+          overflow-wrap: anywhere;
           max-width: 100%;
         }
         dialog {
@@ -713,6 +707,26 @@ class Wysiwyg96Theme extends DDDSuper(HAXCMSLitElementTheme) {
         }
         dialog .push:active {
           box-shadow: var(--wysiwyg96-sunken);
+        }
+        @media (forced-colors: active) {
+          .window,
+          .winbtn,
+          .tool,
+          .canvas,
+          .addressrow .field,
+          .statusbar span,
+          .desk-icon .glyph,
+          dialog,
+          dialog .push,
+          dialog pre {
+            border: 1px solid CanvasText;
+          }
+          .titlebar {
+            border-bottom: 1px solid CanvasText;
+          }
+          .tool[aria-pressed="true"] {
+            border-width: 2px;
+          }
         }
         @media (max-width: 900px) {
           .desktop {

@@ -69,6 +69,7 @@ jobs:
         system:
           - bootstrap
           - carbon
+          - classic-desktop
           - fluent
           - keepcase
           - material
