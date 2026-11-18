@@ -2285,7 +2285,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       createAPage: "Create a page",
       pageTitlePlaceholder: "Page title",
       createNewPageTypeToName: "Create New Page (type a title to name it)",
-      newPageCapitalized: "New Page",
       createTitleWithView: "Create {title} with view",
       createTitle: "Create {title}",
       duplicateCurrentPage: "Duplicate current page",
@@ -2566,7 +2565,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           // Empty, each option says it takes the title you type; with a
           // title, each option says what it will be called.
           const typed = input ? input.trim() : "";
-          const title = typed || this.t.newPageCapitalized;
+          // an untitled page gets the same default every surface stores
+          // ("New page"), so a blank title reads the same wherever it came from
+          const title = typed || this.t.newPageDefaultTitle;
           try {
             const results = [];
 

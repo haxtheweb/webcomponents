@@ -127,8 +127,10 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
         case ">":
         case "<":
           // inside a program the field is that program's input (a page title,
-          // tags, a search), so these are characters to type, not a context
-          if (this.programName) {
+          // tags, a search), so these are characters to type, not a context.
+          // super-daemon-ui tells this field a program runs with
+          // program-running; it does not pass the program's name
+          if (this.programRunning || this.programName) {
             break;
           }
           // support variations on "slash" and developer commands that should interpret as same thing
@@ -182,7 +184,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
       case "<":
         // inside a program the field is that program's input: a title may
         // be just "<" (or start with it), so keep it as typed
-        if (this.programName) {
+        if (this.programRunning || this.programName) {
           if (!this.disabled) {
             e.stopPropagation();
             e.stopImmediatePropagation();

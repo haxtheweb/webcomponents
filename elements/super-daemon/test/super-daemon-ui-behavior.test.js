@@ -52,6 +52,31 @@ describe("super-daemon-ui behavior", () => {
     expect(element.where).to.equal("index");
   });
 
+  it("its own search field keeps < as typed text while a program runs", async () => {
+    // through the real field super-daemon-ui renders, not a hand-set one:
+    // a page title starting with "<" lost it because the field was never
+    // told a program was running in a way its key handling looked at
+    element.programName = "Create Page";
+    element.commandContext = "/";
+    await element.updateComplete;
+    const search = element.shadowRoot.querySelector("super-daemon-search");
+    await search.updateComplete;
+    expect(search.programRunning).to.equal(true);
+    search.value = "";
+    const down = new KeyboardEvent("keydown", { key: "<", cancelable: true });
+    search._inputKeydown(down);
+    expect(down.defaultPrevented).to.equal(false);
+    expect(search.commandContext).to.equal("/");
+    // outside a program the same key still switches context
+    element.programName = null;
+    await element.updateComplete;
+    await search.updateComplete;
+    const down2 = new KeyboardEvent("keydown", { key: "<", cancelable: true });
+    search._inputKeydown(down2);
+    expect(down2.defaultPrevented).to.equal(true);
+    expect(search.commandContext).to.equal(">");
+  });
+
   it("shows a program's rows when the text it started with was replaced", async () => {
     // edit tags starts with the page's current tags ("week0") in the field;
     // select all and typing "week1" makes the program offer to save week1,

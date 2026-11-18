@@ -322,7 +322,8 @@ describe("super-daemon-search behavior", () => {
   it("context keys are typed text while a program runs", () => {
     // a program's field takes a page title, tags or a search: "<script>"
     // as a title must keep its "<"
-    element.programName = "Create a page";
+    // what super-daemon-ui sets on its field while a program runs
+    element.programRunning = true;
     element.value = "";
     element.commandContext = "*";
     ["<", ">", "/", "!", "\\"].forEach((key) => {
