@@ -356,6 +356,29 @@ gulp.task("vendor-copy-latex2html5", () => {
     './node_modules/@haxtheweb/la-tex/lib/latex2html5.js',
   ], { base: '.' }).pipe(gulp.dest('./build/es6/'));
 });
+// MathJax 4 (Apache-2.0) is a runtime dependency of @haxtheweb/lrn-math and
+// is shared with la-tex through lrn-math/lib/mathjax-loader.js, which loads
+// it by path (no module imports it, so the polymer build never sees it).
+// Copy what it loads at runtime, as the MathJax team ships it: the TeX to
+// SVG component, the TeX extensions, accessibility (speech) and menu code
+// it loads on demand, and the SVG data of its font and the font
+// extensions some TeX packages need (scripts/mathjax-runtime-files.json,
+// which PR previews read too). Upgrading MathJax is a version bump
+// in lrn-math/package.json. The @mathjax packages carry their license
+// (Apache-2.0) in package.json, which is copied with them.
+gulp.task("vendor-copy-mathjax", () => {
+  const { paths } = JSON.parse(
+    fs.readFileSync("./scripts/mathjax-runtime-files.json", "utf8"),
+  );
+  return gulp.src(
+    paths.map((p) =>
+      fs.statSync(`./node_modules/${p}`).isDirectory()
+        ? `./node_modules/${p}/**`
+        : `./node_modules/${p}`,
+    ),
+    { base: '.', encoding: false },
+  ).pipe(gulp.dest('./build/es6/'));
+});
 // @haxtheweb/mermaid-diagram/lib/mermaid/mermaid.min.js is the unmodified,
 // already-minified mermaid dist bundle (see its README for version and
 // sha256). It uses class static blocks, which polymer-build's babylon parser
@@ -411,7 +434,7 @@ function validateElementName(name) {
 }
 // build output paths (relative to build/es6/node_modules) that hold AMD /
 // non-ESM vendor bundles and must not contribute tags to wc-registry.json
-const NON_ESM_VENDOR_PREFIXES = ["monaco-editor/min/"];
+const NON_ESM_VENDOR_PREFIXES = ["monaco-editor/min/", "mathjax/", "@mathjax/"];
 gulp.task("wc-autoloader", async () => {
   glob(path.join("./build/es6/node_modules/**/*.js"), (er, files) => {
     let elements = {};
