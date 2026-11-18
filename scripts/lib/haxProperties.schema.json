@@ -246,6 +246,7 @@
         "haxupload",
         "screenRecorder",
         "srcset",
+        "image-framing",
         "code",
         "code-editor",
         "markup",
@@ -421,6 +422,18 @@
         },
         "fileActions": {
           "type": "boolean"
+        },
+        "sourceProperty": {
+          "description": "image-framing: the property that holds the photo being framed.",
+          "type": "string"
+        },
+        "focalXProperty": {
+          "description": "image-framing: the property that holds the photo's horizontal focal point (0-100).",
+          "type": "string"
+        },
+        "focalYProperty": {
+          "description": "image-framing: the property that holds the photo's vertical focal point (0-100).",
+          "type": "string"
         },
         "noCamera": {
           "type": "boolean"
