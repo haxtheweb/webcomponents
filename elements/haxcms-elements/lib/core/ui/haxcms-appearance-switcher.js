@@ -125,9 +125,13 @@ class HAXCMSAppearanceSwitcher extends I18NMixin(LitElement) {
           outline: var(--ddd-focus-ring);
           outline-offset: var(--ddd-focus-offset, 2px);
         }
+        /* the open list is the browser's own surface, not the bar's */
         option {
-          color: var(--ddd-theme-default-coalyGray);
-          background-color: var(--ddd-theme-default-white);
+          color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
+          background-color: light-dark(
+            var(--ddd-accent-6),
+            var(--ddd-primary-4)
+          );
         }
       `,
     ];
