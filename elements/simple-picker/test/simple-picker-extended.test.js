@@ -272,12 +272,28 @@ describe("simple-picker _computeListboxAriaLabel", () => {
     expect(el._computeListboxAriaLabel()).to.equal("Select");
   });
 
-  it("returns undefined when ariaLabelledby is set", async () => {
+  it("returns undefined when aria-labelledby names an element beside it", async () => {
+    const wrap = await fixture(
+      html`<div>
+        <span id="lbl">Pick a color</span>
+        <simple-picker aria-labelledby="lbl"></simple-picker>
+      </div>`,
+    );
+    const el = wrap.querySelector("simple-picker");
+    await el.updateComplete;
+    expect(el._computeListboxAriaLabel()).to.be.undefined;
+    const listbox = el.shadowRoot.querySelector("#listbox");
+    expect(listbox.ariaLabelledByElements[0]).to.equal(
+      wrap.querySelector("#lbl"),
+    );
+  });
+
+  it("keeps the fallback name when aria-labelledby does not resolve", async () => {
     const el = await fixture(
       html`<simple-picker aria-labelledby="lbl"></simple-picker>`,
     );
     await el.updateComplete;
-    expect(el._computeListboxAriaLabel()).to.be.undefined;
+    expect(el._computeListboxAriaLabel()).to.equal("Select");
   });
 
   it("returns undefined when label is set", async () => {

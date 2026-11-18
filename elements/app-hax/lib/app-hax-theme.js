@@ -118,6 +118,17 @@ class AppHaxTheme extends HAXCMSRememberRoute(
           width: 300px;
           color: light-dark(#364149, var(--ddd-accent-6, #f5f5f5));
           background-color: light-dark(#ffffffee, #000000aa);
+          /* the active page row: map-menu falls back to a black row that
+             kept this dark text (2:1); give it a light row with dark text
+             in light mode and the reverse in dark mode (AA) */
+          --map-menu-item-a-active-background-color: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight, #f2f2f4),
+            var(--ddd-theme-default-coalyGray, #262626)
+          );
+          --map-menu-item-a-active-color: light-dark(
+            var(--ddd-theme-default-potentialMidnight, #1d1d1d),
+            var(--ddd-theme-default-white, #ffffff)
+          );
           border-right: 1px solid rgba(0, 0, 0, 0.07);
           transition: left var(--ddd-duration-normal, 0.3s) ease;
         }

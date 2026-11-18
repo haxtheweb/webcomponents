@@ -3,7 +3,7 @@
  * @license Apache-2.0, see LICENSE for full text.
  */
 // import stuff
-import { LitElement, html, css } from "lit";
+import { LitElement, html, css, nothing } from "lit";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import { HAXCMSThemeParts } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
@@ -162,6 +162,8 @@ export class TrainingButton extends HAXCMSThemeParts(LitElement) {
         @click="${this._editClick}"
         .part="${this.editMode ? `edit-mode-active` : ``}"
         aria-current="${this.active ? "page" : "false"}"
+        tabindex="${this.editMode ? "-1" : nothing}"
+        aria-disabled="${this.disabled || this.editMode ? "true" : nothing}"
       >
         <span class="index">${this.index}</span>
         <span id="title">${this.title}</span>

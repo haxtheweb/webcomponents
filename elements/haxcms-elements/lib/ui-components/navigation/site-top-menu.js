@@ -96,6 +96,8 @@ class SiteTopMenu extends I18NMixin(LitElement) {
         }
         button {
           cursor: pointer;
+          /* at least the 24px pointer target size (WCAG 2.5.8) */
+          min-height: var(--site-top-menu-button-min-height, 24px);
           text-transform: unset;
           background-color: var(--site-top-menu-link-bg-color, transparent);
           min-width: unset;

@@ -493,8 +493,9 @@ const SimplePickerBehaviors = function (SuperClass) {
             this.expanded ? this.__activeDesc : undefined
           }"
           aria-labelledby="${
-            this.ariaLabelledby ||
-            (this.label && this.label.trim() !== "" ? "listLabel" : undefined)
+            !this.ariaLabelledby && this.label && this.label.trim() !== ""
+              ? "listLabel"
+              : undefined
           }"
           aria-label="${this._computeListboxAriaLabel()}"
           ?disabled="${this.disabled || !this.__options}"
@@ -812,9 +813,42 @@ const SimplePickerBehaviors = function (SuperClass) {
         if (propName === "options") this._optionsChanged(oldValue);
       });
     }
+    /**
+     * Elements named by a consumer-supplied aria-labelledby. Those ids live
+     * beside this element, outside its shadow root, so they are looked up
+     * where this element lives and handed to the listbox as element
+     * references (an id inside the shadow root could never match them).
+     *
+     * @returns {Array<Element>}
+     */
+    _consumerLabelElements() {
+      if (!this.ariaLabelledby) return [];
+      const root = this.getRootNode();
+      if (!root || typeof root.getElementById !== "function") return [];
+      return String(this.ariaLabelledby)
+        .split(/\s+/)
+        .filter((id) => id !== "")
+        .map((id) => root.getElementById(id))
+        .filter((el) => !!el);
+    }
+
     updated(changedProperties) {
       if (super.updated) {
         super.updated(changedProperties);
+      }
+      const listbox =
+        this.shadowRoot && this.shadowRoot.querySelector("#listbox");
+      if (listbox && "ariaLabelledByElements" in listbox) {
+        const labels = this._consumerLabelElements();
+        if (labels.length > 0) {
+          listbox.ariaLabelledByElements = labels;
+        } else if (
+          this.ariaLabelledby &&
+          listbox.hasAttribute("aria-labelledby")
+        ) {
+          // clearing the reflected property would leave aria-labelledby=""
+          listbox.removeAttribute("aria-labelledby");
+        }
       }
       changedProperties.forEach((oldValue, propName) => {
         if (propName === "expanded" && this.shadowRoot && this.expanded) {
@@ -1087,7 +1121,7 @@ const SimplePickerBehaviors = function (SuperClass) {
      * @returns {string | undefined}
      */
     _computeListboxAriaLabel() {
-      if (this.ariaLabelledby) return undefined;
+      if (this._consumerLabelElements().length > 0) return undefined;
       if (this.label && this.label.trim() !== "") return undefined;
       return "Select";
     }

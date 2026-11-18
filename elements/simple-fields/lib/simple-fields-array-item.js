@@ -321,7 +321,6 @@ class SimpleFieldsArrayItem extends I18NMixin(
               class="danger"
               tooltip-direction="left"
               align-horizontal="left"
-              role="menuitem"
               controls="${this.id}"
               icon="delete"
               label="${this.t.remove}"

@@ -206,6 +206,16 @@ class I18NManager extends LitElement {
       // disconnect may already hold translated text in t
       if (detail.context.t && !detail.context._t) {
         detail.context._t = { ...detail.context.t };
+      } else if (detail.context.t && detail.context._t) {
+        // a subclass registers after its parent did (both from their
+        // constructors): add the defaults it brings, so resetting to the
+        // defaults never blanks the subclass's own strings. Existing
+        // defaults are kept as they are.
+        for (const key of Object.keys(detail.context.t)) {
+          if (!(key in detail.context._t)) {
+            detail.context._t[key] = detail.context.t[key];
+          }
+        }
       }
       let match = this.elements.filter((el) => {
         // Match by namespace and localesPath, locales is optional for manifest-based

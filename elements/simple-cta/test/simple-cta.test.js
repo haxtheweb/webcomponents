@@ -109,12 +109,32 @@ describe("simple-cta defaults and rendering", () => {
 });
 
 describe("simple-cta aria label computation", () => {
-  it("uses a trimmed label when the label property is set", async () => {
+  it("leaves the visible label as the name when the label property is set", async () => {
     const el = await fixture(
-      html`<simple-cta label="  Learn more  "></simple-cta>`,
+      html`<simple-cta
+        label="  Learn more  "
+        link="https://haxtheweb.org/"
+      ></simple-cta>`,
     );
     const a = el.shadowRoot.querySelector('a[part="simple-cta-link"]');
-    expect(a.getAttribute("aria-label")).to.equal("Learn more");
+    expect(a.hasAttribute("aria-label")).to.equal(false);
+    expect(a.textContent).to.contain("Learn more");
+  });
+
+  it("leaves slotted text as the name instead of the url", async () => {
+    const el = await fixture(
+      html`<simple-cta link="https://haxtheweb.org/">Get started</simple-cta>`,
+    );
+    const a = el.shadowRoot.querySelector('a[part="simple-cta-link"]');
+    expect(a.hasAttribute("aria-label")).to.equal(false);
+  });
+
+  it("renders a link, not a button role", async () => {
+    const el = await fixture(
+      html`<simple-cta link="https://haxtheweb.org/">Go</simple-cta>`,
+    );
+    const a = el.shadowRoot.querySelector('a[part="simple-cta-link"]');
+    expect(a.hasAttribute("role")).to.equal(false);
   });
 
   it("falls back to the host title attribute when there is no label", async () => {
@@ -313,7 +333,7 @@ describe("simple-cta progressive enhancement", () => {
     expect(el.label).to.equal("Legacy label");
     const a = el.shadowRoot.querySelector('a[part="simple-cta-link"]');
     expect(a.getAttribute("href")).to.equal("https://example.com/legacy");
-    expect(a.getAttribute("aria-label")).to.equal("Legacy label");
+    expect(a.hasAttribute("aria-label")).to.equal(false);
     document.body.removeChild(container);
   });
 });
