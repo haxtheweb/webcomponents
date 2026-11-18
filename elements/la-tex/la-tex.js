@@ -143,7 +143,7 @@ class LaTex extends I18NMixin(LitElement) {
           .pspicture > label {
             display: block;
             position: sticky;
-            left: 0;
+            inset-inline-start: 0;
             width: fit-content;
             max-width: 100cqi;
           }

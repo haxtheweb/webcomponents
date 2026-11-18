@@ -43266,7 +43266,7 @@
                 .attr("x2", this.x2)
                 .attr("y2", this.y1)
                 .style("stroke-width", 2)
-                .style("stroke", "rgb(0,0,0)")
+                .style("stroke", "currentColor")
                 .style("stroke-opacity", 1);
               svg
                 .append("svg:line")
@@ -43275,7 +43275,7 @@
                 .attr("x2", this.x2)
                 .attr("y2", this.y2)
                 .style("stroke-width", 2)
-                .style("stroke", "rgb(0,0,0)")
+                .style("stroke", "currentColor")
                 .style("stroke-opacity", 1);
               svg
                 .append("svg:line")
@@ -43284,7 +43284,7 @@
                 .attr("x2", this.x1)
                 .attr("y2", this.y2)
                 .style("stroke-width", 2)
-                .style("stroke", "rgb(0,0,0)")
+                .style("stroke", "currentColor")
                 .style("stroke-opacity", 1);
               svg
                 .append("svg:line")
@@ -43293,7 +43293,7 @@
                 .attr("x2", this.x1)
                 .attr("y2", this.y1)
                 .style("stroke-width", 2)
-                .style("stroke", "rgb(0,0,0)")
+                .style("stroke", "currentColor")
                 .style("stroke-opacity", 1);
             },
             pscircle: function pscircle(svg) {
@@ -43302,7 +43302,7 @@
                 .attr("cx", this.cx)
                 .attr("cy", this.cy)
                 .attr("r", this.r)
-                .style("stroke", "black")
+                .style("stroke", "currentColor")
                 .style("fill", "none")
                 .style("stroke-width", 2)
                 .style("stroke-opacity", 1);
@@ -43361,7 +43361,7 @@
                   "fill",
                   this.fillstyle === "none" ? "none" : this.fillcolor,
                 )
-                .style("stroke", "black");
+                .style("stroke", "currentColor");
             },
             psarc: function psarc(svg) {
               // http://www.w3.org/TR/SVG/paths.html#PathDataEllipticalArcCommands
@@ -43386,7 +43386,7 @@
                 .style("stroke-width", 2)
                 .style("stroke-opacity", 1)
                 .style("fill", "blue")
-                .style("stroke", "black");
+                .style("stroke", "currentColor");
             },
             psaxes: function psaxes(svg) {
               var xaxis = [this.bottomLeft[0], this.topRight[0]];
@@ -43398,7 +43398,7 @@
                   .append("svg:path")
                   .attr("d", "M " + x1 + " " + y1 + " L " + x2 + " " + y2)
                   .style("stroke-width", 2)
-                  .style("stroke", "rgb(0,0,0)")
+                  .style("stroke", "currentColor")
                   .style("stroke-opacity", 1);
               }
 
@@ -43432,26 +43432,26 @@
                 svg
                   .append("path")
                   .attr("d", arrow(xaxis[1], origin[1], xaxis[0], origin[1]))
-                  .style("fill", "black")
-                  .style("stroke", "black");
+                  .style("fill", "currentColor")
+                  .style("stroke", "currentColor");
                 svg
                   .append("path")
                   .attr("d", arrow(origin[0], yaxis[1], origin[0], yaxis[0]))
-                  .style("fill", "black")
-                  .style("stroke", "black");
+                  .style("fill", "currentColor")
+                  .style("stroke", "currentColor");
               }
 
               if (this.arrows[1]) {
                 svg
                   .append("path")
                   .attr("d", arrow(xaxis[0], origin[1], xaxis[1], origin[1]))
-                  .style("fill", "black")
-                  .style("stroke", "black");
+                  .style("fill", "currentColor")
+                  .style("stroke", "currentColor");
                 svg
                   .append("path")
                   .attr("d", arrow(origin[0], yaxis[0], origin[0], yaxis[1]))
-                  .style("fill", "black")
-                  .style("stroke", "black");
+                  .style("fill", "currentColor")
+                  .style("stroke", "currentColor");
               }
             },
             psline: function psline(svg) {
@@ -44042,7 +44042,7 @@
               }
 
               var obj = {
-                linecolor: "black",
+                linecolor: "currentColor",
                 linestyle: "solid",
                 fillstyle: "none",
                 fillcolor: "none",
@@ -44068,10 +44068,10 @@
                 data.push(_latex2jsUtils.Y.call(_this, d[2]));
               });
               var obj = {
-                linecolor: "black",
+                linecolor: "currentColor",
                 linestyle: "solid",
                 fillstyle: "none",
-                fillcolor: "black",
+                fillcolor: "currentColor",
                 linewidth: 2,
                 data: data,
               };
@@ -44084,10 +44084,10 @@
               var arrows = l.arrows;
               var dots = l.dots;
               var obj = {
-                linecolor: "black",
+                linecolor: "currentColor",
                 linestyle: "solid",
                 fillstyle: "solid",
-                fillcolor: "black",
+                fillcolor: "currentColor",
                 linewidth: 2,
                 arrows: arrows,
                 dots: dots,
@@ -44145,10 +44145,10 @@
               var arrows = l.arrows;
               var dots = l.dots;
               var obj = {
-                linecolor: "black",
+                linecolor: "currentColor",
                 linestyle: "solid",
                 fillstyle: "solid",
-                fillcolor: "black",
+                fillcolor: "currentColor",
                 linewidth: 2,
                 arrows: arrows,
                 dots: dots,
@@ -44334,10 +44334,10 @@
                     eval(expression + expy4 + expx4 + yExp2),
                   );
                 },
-                linecolor: "black",
+                linecolor: "currentColor",
                 linestyle: "solid",
                 fillstyle: "solid",
-                fillcolor: "black",
+                fillcolor: "currentColor",
                 linewidth: 2,
                 arrows: arrows,
                 dots: dots,
@@ -45148,9 +45148,14 @@
             this.objects = [];
             this.environment = null; // emulating a match
 
+            // @hack HAX: pstricks drawings default to currentColor, not
+            // black, so lines, arrows and default fills take the text color
+            // of the block around them and stay visible in dark mode, like
+            // the MathJax math in them; colors the author sets (linecolor=red,
+            // even linecolor=black) are used as written
             this.settings = this.PSTricks.Functions.psset.call(this, [
               "",
-              "units=1cm,linecolor=black,linestyle=solid,fillstyle=none",
+              "units=1cm,linecolor=currentColor,linestyle=solid,fillstyle=none",
             ]);
           }
 
