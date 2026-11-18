@@ -5,6 +5,7 @@
 import { LitElement, html, css } from "lit";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import { sanitizeHTMLString } from "@haxtheweb/utils/lib/sanitize.js";
 /**
  * `simple-picker-option`
  * a simple picker for options, icons, etc.
@@ -199,7 +200,10 @@ class SimplePickerOption extends LitElement {
     super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "label") {
-        this.innerHTML = this.label;
+        // Security (attribute text is never markup we trust): labels may be
+        // entities such as &copy;, so they render as HTML after sanitizing.
+        this.innerHTML =
+          typeof this.label === "string" ? sanitizeHTMLString(this.label) : "";
       }
     });
   }

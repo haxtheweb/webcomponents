@@ -451,3 +451,21 @@ describe("chartist-render test", () => {
     });
   });
 });
+
+describe("chartist-render table cells are sanitized", () => {
+  it("writes data cells without event handlers", async () => {
+    const el = await fixture(html`<chartist-render></chartist-render>`);
+    el.data = [
+      ['<img src=x onerror="globalThis.__chartXss=1">', "Q2"],
+      [1, 2],
+    ];
+    await el.updateComplete;
+    await aTimeout(100);
+    const table = el.querySelector("table");
+    expect(table).to.exist;
+    const img = table.querySelector("img");
+    expect(img === null || !img.hasAttribute("onerror")).to.be.true;
+    expect(table.textContent).to.contain("Q2");
+    expect(globalThis.__chartXss).to.equal(undefined);
+  });
+});

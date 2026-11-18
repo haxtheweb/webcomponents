@@ -6,6 +6,7 @@ import { html, css, LitElement } from "lit";
 import { GradeBookStore } from "./grade-book-store.js";
 import { autorun, toJS } from "mobx";
 import { isGraded, gradeBookLetterIndex } from "./GradeBookHelpers.js";
+import { sanitizeHTMLString } from "@haxtheweb/utils/lib/sanitize.js";
 class LetterGrade extends LitElement {
   constructor() {
     super();
@@ -275,7 +276,9 @@ class LetterGrade extends LitElement {
       }
       if (propName === "letter" && this.gradeScale[this._letterIndex]) {
         // progressive enhancement like PDF printing
-        this.innerHTML = `
+        // Security (attribute text is never markup we trust): letter,
+        // score, total and points system are sanitized with the block.
+        this.innerHTML = sanitizeHTMLString(`
         <div>---------------------------------------</div>
         <div style="font-size:36px;line-height:48px;">${this.letter}</div>
         <div style="font-size:20px;line-height:24px;">${this.score}/${
@@ -286,7 +289,7 @@ class LetterGrade extends LitElement {
         }% -
         ${this.gradeScale[this._letterIndex].highRange}%</div>
         <div>---------------------------------------</div>
-        `;
+        `);
       }
     });
   }

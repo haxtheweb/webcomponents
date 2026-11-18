@@ -1,5 +1,6 @@
 import { fixture, expect, html } from "@open-wc/testing";
 import "../page-flag.js";
+import "../lib/page-flag-comment.js";
 
 describe("page-flag test", () => {
   let element;
@@ -194,3 +195,19 @@ describe('Test Desktop Responsiveness', () => {
       expect(hidden).to.equal(true);
     })
 }) */
+
+describe("page-flag-comment mood is sanitized", () => {
+  it("renders the mood without event handlers", async () => {
+    const el = await fixture(
+      html`<page-flag-comment
+        mood='&#128512;&lt;img src=x onerror="globalThis.__moodXss=1"&gt;'
+      ></page-flag-comment>`,
+    );
+    await el.updateComplete;
+    const emoji = el.shadowRoot.querySelector(".emoji");
+    const img = emoji.querySelector("img");
+    expect(img === null || !img.hasAttribute("onerror")).to.be.true;
+    expect(emoji.textContent).to.contain("\ud83d\ude00");
+    expect(globalThis.__moodXss).to.equal(undefined);
+  });
+});

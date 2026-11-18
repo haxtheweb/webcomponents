@@ -210,3 +210,18 @@ describe("simple-emoji-picker", () => {
     await expect(el).shadowDom.to.be.accessible();
   });
 });
+
+describe("simple-picker-option label is sanitized", () => {
+  it("renders entities and drops event handlers", async () => {
+    const el = await fixture(
+      html`<simple-picker-option
+        label='&amp;copy;&lt;img src=x onerror="globalThis.__pickerXss=1"&gt;'
+      ></simple-picker-option>`,
+    );
+    await el.updateComplete;
+    const img = el.querySelector("img");
+    expect(img === null || !img.hasAttribute("onerror")).to.be.true;
+    expect(el.textContent).to.contain("\u00a9");
+    expect(globalThis.__pickerXss).to.equal(undefined);
+  });
+});

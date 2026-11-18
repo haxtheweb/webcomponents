@@ -6,6 +6,7 @@ import { LitElement, html, css } from "lit";
 import { IntersectionObserverMixin } from "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js";
 import { DDDAccentStyles } from "@haxtheweb/d-d-d/lib/DDDAccent.js";
 import { CountUp } from "./lib/countup.js";
+import { sanitizeHTMLString } from "@haxtheweb/utils/lib/sanitize.js";
 
 /**
  * `count-up`
@@ -242,6 +243,10 @@ class CountUpElement extends IntersectionObserverMixin(LitElement) {
     );
   }
 
+  _safeText(value) {
+    return typeof value === "string" ? sanitizeHTMLString(value) : "";
+  }
+
   _buildCountUp() {
     const reduced = this._prefersReducedMotion();
     const options = {
@@ -250,10 +255,13 @@ class CountUpElement extends IntersectionObserverMixin(LitElement) {
       // reduced motion: no animation, the final number shows straight away
       duration: reduced ? 0 : this.duration,
       useEasing: !this.noeasing,
-      separator: this.separator,
-      decimal: this.decimal,
-      prefix: this.prefixtext,
-      suffix: this.suffixtext,
+      // Security (attribute text is never markup we trust): the counter
+      // writes these around the number as HTML, so they are sanitized first.
+      // Entities and plain inline markup keep working.
+      separator: this._safeText(this.separator),
+      decimal: this._safeText(this.decimal),
+      prefix: this._safeText(this.prefixtext),
+      suffix: this._safeText(this.suffixtext),
     };
     this._countUp = new CountUp(
       this.shadowRoot.querySelector("#counter"),

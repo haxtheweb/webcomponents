@@ -10,6 +10,7 @@ import "@haxtheweb/simple-datetime/simple-datetime.js";
 import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
 import "@haxtheweb/simple-picker/lib/simple-emoji-picker.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import { sanitizeHTMLString } from "@haxtheweb/utils/lib/sanitize.js";
 
 export class PageFlagComment extends I18NMixin(LitElement) {
   static get tag() {
@@ -113,7 +114,10 @@ export class PageFlagComment extends I18NMixin(LitElement) {
                 value="${this.mood}"
                 @value-changed="${this.emojiChanged}"
               ></simple-emoji-picker>`
-            : html`<div class="emoji" .innerHTML="${this.mood}"></div>`
+            : html`<div
+                class="emoji"
+                .innerHTML="${sanitizeHTMLString(this.mood || "")}"
+              ></div>`
         }
         <div class="comment__header">
           <div class="comment__header__avatar">

@@ -625,3 +625,25 @@ describe("count-up animation across removal and moves", () => {
     );
   });
 });
+
+describe("count-up prefix and suffix are sanitized", () => {
+  it("drops event handlers and keeps entities and inline markup", async () => {
+    const el = await fixture(
+      html`<count-up
+        end="5"
+        duration="0"
+        prefixtext='&lt;img src=x onerror="globalThis.__countUpXss=1"&gt;&amp;euro;'
+        suffixtext="&lt;sup&gt;2&lt;/sup&gt;"
+      ></count-up>`,
+    );
+    await el.updateComplete;
+    el._buildCountUp();
+    el._countUp.start();
+    const counter = el.shadowRoot.querySelector("#counter");
+    const img = counter.querySelector("img");
+    expect(img === null || !img.hasAttribute("onerror")).to.be.true;
+    expect(counter.textContent).to.contain("\u20ac");
+    expect(counter.querySelector("sup")).to.exist;
+    expect(globalThis.__countUpXss).to.equal(undefined);
+  });
+});
