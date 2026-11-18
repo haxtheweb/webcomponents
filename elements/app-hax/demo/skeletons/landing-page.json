@@ -1,13 +1,13 @@
 {
   "meta": {
     "name": "landing-page",
-    "description": "A landing page for a small business or product on the AstroWind theme: a home page that sells, services, pricing, about and contact, shown with a sample bike repair shop.",
+    "description": "A landing page for a small business or product on the AstroWind theme: a home page that sells, services, pricing, about, contact and a privacy page, shown with a sample bike repair shop.",
     "version": "1.0.0",
     "created": "2026-11-18T00:00:00.000Z",
     "type": "skeleton",
     "priority": 10,
     "useCaseTitle": "Landing Page",
-    "useCaseDescription": "A landing page for a small business or product on the AstroWind theme: a home page that sells, services, pricing, about and contact, shown with a sample bike repair shop.",
+    "useCaseDescription": "A landing page for a small business or product on the AstroWind theme: a home page that sells, services, pricing, about, contact and a privacy page, shown with a sample bike repair shop.",
     "useCaseImage": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-astrowind-theme-thumb.jpg",
     "category": ["Website"],
     "tags": ["landing", "business", "marketing", "services"],
@@ -133,10 +133,24 @@
         "order": 4,
         "parent": null,
         "indent": 0,
-        "content": "<editable-table accent-color=\"grey\" column-header><table><caption>Hours</caption><thead><tr><th scope=\"col\">Day</th><th scope=\"col\">Open</th></tr></thead><tbody><tr><td>Monday to Friday</td><td>8 to 6</td></tr><tr><td>Saturday</td><td>9 to 4</td></tr><tr><td>Sunday</td><td>Closed</td></tr></tbody></table></editable-table><p>100 Example Street. Walk-ins welcome.</p><simple-cta label=\"Email the shop\" link=\"mailto:shop@example.com\"></simple-cta>",
+        "content": "<editable-table accent-color=\"grey\" column-header><table><caption>Hours</caption><thead><tr><th scope=\"col\">Day</th><th scope=\"col\">Open</th></tr></thead><tbody><tr><td>Monday to Friday</td><td>8 to 6</td></tr><tr><td>Saturday</td><td>9 to 4</td></tr><tr><td>Sunday</td><td>Closed</td></tr></tbody></table></editable-table><p>100 Example Street. Walk-ins welcome.</p><simple-cta label=\"Email the shop\" link=\"mailto:shop@example.com\"></simple-cta><p><a href=\"privacy\">How we handle what you send us</a></p>",
         "metadata": {
           "published": true,
           "hideInMenu": false,
+          "tags": []
+        }
+      },
+      {
+        "id": "landing-page-privacy",
+        "title": "Privacy",
+        "slug": "privacy",
+        "order": 5,
+        "parent": null,
+        "indent": 0,
+        "content": "<p>What this shop keeps about you, in plain words. Replace this page with what your site really does.</p><h2>What you send us</h2><p>When you email us, we use what you send only to answer you and book your repair. We do not sell it or share it.</p><h2>What this site keeps</h2><p>This site sets no cookies and runs no trackers of its own. If you turn on analytics in Site settings, name the service here and say what it collects.</p><h2>Questions</h2><p>Ask us through the <a href=\"contact\">Contact</a> page.</p>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": true,
           "tags": []
         }
       }

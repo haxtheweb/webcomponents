@@ -1,13 +1,13 @@
 {
   "meta": {
     "name": "academic",
-    "description": "A research group or scholar site on the al-folio theme: about, publications by year, projects, teaching and people, shown with a sample coastal ecology lab.",
+    "description": "A research group or scholar site on the al-folio theme: about, publications by year, projects, teaching, people and contact, shown with a sample coastal ecology lab.",
     "version": "1.0.0",
     "created": "2026-11-18T00:00:00.000Z",
     "type": "skeleton",
     "priority": 10,
     "useCaseTitle": "Academic",
-    "useCaseDescription": "A research group or scholar site on the al-folio theme: about, publications by year, projects, teaching and people, shown with a sample coastal ecology lab.",
+    "useCaseDescription": "A research group or scholar site on the al-folio theme: about, publications by year, projects, teaching, people and contact, shown with a sample coastal ecology lab.",
     "useCaseImage": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-al-folio-theme-thumb.jpg",
     "category": ["Website"],
     "tags": ["academic", "research", "publications", "lab"],
@@ -136,6 +136,34 @@
         "metadata": {
           "published": true,
           "hideInMenu": false,
+          "tags": []
+        }
+      },
+      {
+        "id": "academic-contact",
+        "title": "Contact",
+        "slug": "contact",
+        "order": 5,
+        "parent": null,
+        "indent": 0,
+        "content": "<p>Email is the best way to reach the lab. If you are a prospective student, say which project interests you and what you have worked on so far.</p><simple-cta label=\"Email the lab\" link=\"mailto:lab@example.edu\"></simple-cta><p>Room 100, Example Hall. Visits by appointment.</p><p><a href=\"privacy\">How we handle what you send us</a></p>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": []
+        }
+      },
+      {
+        "id": "academic-privacy",
+        "title": "Privacy",
+        "slug": "privacy",
+        "order": 6,
+        "parent": null,
+        "indent": 0,
+        "content": "<p>What this lab site keeps about you, in plain words. Replace this page with what your site really does.</p><h2>What you send us</h2><p>When you email us, we use what you send only to answer you. We do not sell it or share it.</p><h2>What this site keeps</h2><p>This site sets no cookies and runs no trackers of its own. If you turn on analytics in Site settings, name the service here and say what it collects.</p><h2>Questions</h2><p>Ask us through the <a href=\"contact\">Contact</a> page.</p><p>Data from research participants is covered by the study it was collected for, not by this page.</p>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": true,
           "tags": []
         }
       }
