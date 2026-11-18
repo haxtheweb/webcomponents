@@ -507,6 +507,14 @@ function galleryLoader() {
   return { styles: "", markup: "" };
 }
 
+// Third-party notices for the CDN build the gallery loads its third-party
+// code from (scripts/copy-dep-licenses.js writes it during ubiquity). The
+// plain-text name is what builds published before the Markdown notices have.
+const LICENSES_MD_URL =
+  "https://cdn.hax.cloud/cdn/build/THIRD_PARTY_LICENSES.md";
+const LICENSES_TEXT_URL =
+  "https://cdn.hax.cloud/cdn/build/THIRD_PARTY_LICENSES";
+
 // The design systems a site can pick (scripts/design-system-discovery.mjs
 // writes the registry): the gallery offers the same list, by name and title
 function galleryDesignSystems() {
@@ -615,6 +623,8 @@ ${loader.styles}
     globalThis.dispatchEvent(new CustomEvent('gallery-styled'));
   </script>
   <script type="module" src="./elements/documentation-player/documentation-player.js"></script>
+  <!-- renders the third-party license notices (?view=licenses) -->
+  <script type="module" src="./elements/md-block/md-block.js"></script>
   <!-- the strip that links every hax.cloud site (hax.cloud, this gallery, the live demo, RPG me) -->
   <script type="module" src="./elements/hax-network-bar/hax-network-bar.js"></script>
   <!-- dogfood: the gallery's form controls are the same elements the HAX
@@ -1138,6 +1148,45 @@ ${loader.styles}
       max-width: 72rem;
     }
 
+    .licenses-pane {
+      height: 100%;
+      overflow-y: auto;
+      padding: var(--ddd-spacing-5, 20px);
+      color: var(--hax-ui-text);
+      background-color: var(--hax-ui-surface);
+    }
+
+    .licenses-pane:focus {
+      outline: none;
+    }
+
+    /* reference text: DDD's smaller steps, not page-content sizes */
+    #licensesBlock {
+      --ddd-theme-h1-font-size: var(--ddd-font-size-m);
+      --ddd-theme-h2-font-size: var(--ddd-font-size-s);
+      --ddd-theme-h3-font-size: var(--ddd-font-size-xs);
+      --ddd-theme-body-font-size: var(--ddd-font-size-4xs);
+    }
+
+    .licenses-pane > p {
+      max-width: 48rem;
+      margin: 0 0 var(--hax-ui-gap-lg);
+      color: var(--hax-ui-text-muted);
+    }
+
+    .licenses-pane a,
+    .licenses-pane a:any-link {
+      color: var(--hax-ui-text);
+      text-decoration: underline;
+    }
+
+    /* the package index is a wide table: it scrolls on its own, the page
+       never scrolls sideways */
+    .licenses-scroll {
+      max-width: 72rem;
+      overflow-x: auto;
+    }
+
     .welcome-message {
       display: grid;
       place-items: center;
@@ -1281,7 +1330,8 @@ ${loader.styles}
         height: 80vh;
       }
 
-      .docs-pane {
+      .docs-pane,
+      .licenses-pane {
         height: auto;
         overflow: visible;
         padding: var(--hax-ui-gap-lg) var(--hax-ui-gap-md);
@@ -1389,7 +1439,7 @@ ${
 
       <footer class="gallery-footer">
         <a href="https://github.com/haxtheweb/webcomponents/blob/master/LICENSE.md" target="_blank" rel="noopener">Apache-2.0 license</a>
-        <a href="https://cdn.hax.cloud/cdn/build/THIRD_PARTY_LICENSES" target="_blank" rel="noopener">Third-party licenses</a>
+        <a href="?view=licenses" id="licensesLink">Third-party licenses</a>
         <a href="https://github.com/haxtheweb/webcomponents" target="_blank" rel="noopener">Source</a>
       </footer>
     </aside>
@@ -1440,6 +1490,12 @@ ${
         <div class="stage-progress" aria-hidden="true"></div>
         <iframe class="demo-frame hidden" id="demoFrame" title="Component demo"></iframe>
         <div class="docs-pane hidden" id="docsPane"></div>
+        <section class="licenses-pane hidden" id="licensesPane" aria-label="Third-party licenses" tabindex="-1">
+          <p>Notices for the CDN build the gallery and HAX sites load their code from. <a id="licensesSourceLink" href="${LICENSES_MD_URL}" target="_blank" rel="noopener">Open the file</a></p>
+          <div class="licenses-scroll">
+            <md-block id="licensesBlock"></md-block>
+          </div>
+        </section>
       </div>
     </main>
   </div>
@@ -1707,6 +1763,7 @@ ${
       buildDemoSelector(component);
 
       // Show demo header and hide welcome
+      licensesPane.classList.add('hidden');
       demoHeader.classList.remove('hidden');
       welcomeMessage.classList.add('hidden');
       demoFrame.classList.remove('hidden');
@@ -1871,6 +1928,9 @@ ${
           }
         }
       }
+      if (!currentComponent && !licensesPane.classList.contains('hidden')) {
+        params.set('view', 'licenses');
+      }
       if (appearance.system) params.set('system', appearance.system);
       if (appearance.palette) params.set('palette', appearance.palette);
       const search = params.toString();
@@ -1880,6 +1940,9 @@ ${
     function applyRouteFromUrl() {
       const slug = getQueryParam('element');
       if (!slug) {
+        if (getQueryParam('view') === 'licenses') {
+          showLicenses();
+        }
         return;
       }
       let component = null;
@@ -1967,6 +2030,60 @@ ${
         setDrawer(false);
         listToggle.focus();
       }
+    });
+
+    // Third-party licenses: the CDN build's notices as a page, loaded when
+    // the view first opens. Builds published before the Markdown notices
+    // only have the plain-text file, shown as preformatted text.
+    const licensesPane = document.getElementById('licensesPane');
+    const licensesBlock = document.getElementById('licensesBlock');
+    const licensesSourceLink = document.getElementById('licensesSourceLink');
+    let licensesLoaded = false;
+    async function loadLicenses() {
+      licensesLoaded = true;
+      licensesBlock.markdown = 'Loading the license notices…';
+      try {
+        const md = await fetch('${LICENSES_MD_URL}');
+        if (md.ok) {
+          licensesBlock.markdown = await md.text();
+          return;
+        }
+        const text = await fetch('${LICENSES_TEXT_URL}');
+        if (!text.ok) {
+          throw new Error('not found');
+        }
+        const body = await text.text();
+        // a fence longer than any run of backticks in the text
+        const runs = body.match(/\`+/g) || [];
+        const longest = runs.reduce((n, r) => Math.max(n, r.length), 0);
+        const fence = '\`'.repeat(Math.max(3, longest + 1));
+        licensesBlock.markdown = fence + 'text\\n' + body + '\\n' + fence;
+        licensesSourceLink.href = '${LICENSES_TEXT_URL}';
+      } catch (e) {
+        licensesLoaded = false;
+        licensesBlock.markdown = 'The license notices could not be loaded. Open the file with the link above.';
+      }
+    }
+    function showLicenses() {
+      currentComponent = null;
+      currentDemoPath = null;
+      document.querySelectorAll('.component-item[aria-current]').forEach(item => item.removeAttribute('aria-current'));
+      mobileTitle.textContent = 'Third-party licenses';
+      demoHeader.classList.add('hidden');
+      welcomeMessage.classList.add('hidden');
+      demoFrame.classList.add('hidden');
+      docsPane.classList.add('hidden');
+      licensesPane.classList.remove('hidden');
+      setDrawer(false);
+      if (!licensesLoaded) {
+        loadLicenses();
+      }
+      updateUrlForCurrentDemo();
+      licensesPane.focus();
+    }
+    document.getElementById('licensesLink').addEventListener('click', (e) => {
+      e.preventDefault();
+      showLicenses();
     });
 
     // Appearance: design system and palette, as a HAXcms site picks them.
@@ -2067,7 +2184,7 @@ ${
     // Initialize
     renderComponentList();
     applyRouteFromUrl();
-    if (!currentComponent) {
+    if (!currentComponent && licensesPane.classList.contains('hidden')) {
       setDrawer(phone.matches);
     }
   </script>

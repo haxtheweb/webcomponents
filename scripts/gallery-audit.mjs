@@ -87,6 +87,33 @@ const BUDGET = {
 // d-d-d/lib/DDDStyles.js and each bridge's fonts); anything else off-site
 // on first load is a finding
 const FONT_HOSTS = /^https:\/\/fonts\.(googleapis|gstatic)\.com\//;
+// The Licenses view shows the CDN build's notices; the audit answers that
+// request with a small fixture shaped like scripts/copy-dep-licenses.js
+// output (an index table and a fenced license text), never the network
+const LICENSES_MD = "https://cdn.hax.cloud/cdn/build/THIRD_PARTY_LICENSES.md";
+const LICENSES_FIXTURE = [
+  "# Third-party licenses",
+  "",
+  "Every package is at `es6/node_modules/<package>` in the build.",
+  "",
+  "## Package index",
+  "",
+  "| Package | License | Attribution |",
+  "| --- | --- | --- |",
+  "| @haxtheweb/a-very-long-package-name-that-must-wrap-on-phones | Apache-2.0 | License text 1 |",
+  "| lit | BSD-3-Clause | License text 2 |",
+  "",
+  "## License texts",
+  "",
+  "### License text 1: Apache-2.0",
+  "",
+  "Used by @haxtheweb/a-very-long-package-name-that-must-wrap-on-phones.",
+  "",
+  "```text",
+  "                                 Apache License, Version 2.0, January 2004, http://www.apache.org/licenses/ (a long unbroken line)",
+  "```",
+  "",
+].join("\n");
 const args = process.argv.slice(2);
 
 function readRegistry() {
@@ -116,6 +143,16 @@ async function newPage(browser, origin, viewport, scheme, extra = {}) {
     (url) => !LOCAL.test(url.href),
     (route) => route.abort(),
   );
+  await context.route(LICENSES_MD, (route) =>
+    route.fulfill({
+      status: 200,
+      body: LICENSES_FIXTURE,
+      headers: {
+        "content-type": "text/markdown",
+        "access-control-allow-origin": "*",
+      },
+    }),
+  );
   const page = await context.newPage();
   page.setDefaultTimeout(TIMEOUT);
   const errors = [];
@@ -133,7 +170,9 @@ async function newPage(browser, origin, viewport, scheme, extra = {}) {
   page.on("request", (r) => {
     if (r.frame() !== page.mainFrame()) return;
     stats.requests++;
-    if (!LOCAL.test(r.url()) && !FONT_HOSTS.test(r.url())) offsite.push(r.url());
+    if (!LOCAL.test(r.url()) && !FONT_HOSTS.test(r.url()) && r.url() !== LICENSES_MD) {
+      offsite.push(r.url());
+    }
   });
   page.on("response", async (r) => {
     if (r.frame() !== page.mainFrame()) return;
@@ -470,6 +509,25 @@ async function auditStates(browser, origin, axeSource, viewport, scheme) {
     await load(page, origin, `?element=${ELEMENT}&view=docs`);
     add(`${where} docs`, await axe(page, axeSource));
     add(`${where} docs`, await page.evaluate(layoutFindings, { drawer: false }));
+    // the third-party licenses, opened from the footer link: rendered as
+    // a page, never under the drawer, never scrolling the page sideways
+    await load(page, origin, "?view=licenses");
+    const rendered = await page
+      .waitForFunction(
+        () => {
+          const md = document.getElementById("licensesBlock");
+          return !!(md && md.shadowRoot && md.shadowRoot.querySelector("table pre, table") && md.shadowRoot.querySelector("pre"));
+        },
+        null,
+        { timeout: 10000 },
+      )
+      .then(() => true, () => false);
+    if (!rendered) findings.push(`${where} licenses: the notices did not render as a table and license text`);
+    add(`${where} licenses`, await axe(page, axeSource));
+    add(`${where} licenses`, await page.evaluate(layoutFindings, { drawer: false }));
+    if (phone && (await page.evaluate(() => document.getElementById("sidebar").classList.contains("open")))) {
+      findings.push(`${where} licenses: the component drawer opened over the licenses`);
+    }
     add(where, s.errors);
     add(`${where} security`, s.offsite.map((u) => `requested off-site ${u}`));
   } catch (e) {

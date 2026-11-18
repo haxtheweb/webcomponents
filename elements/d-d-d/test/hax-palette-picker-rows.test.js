@@ -1,5 +1,5 @@
 import { fixture, expect, html, oneEvent, aTimeout } from "@open-wc/testing";
-import { sendKeys } from "@web/test-runner-commands";
+import { sendKeys, setViewport } from "@web/test-runner-commands";
 import "../lib/hax-palette-picker.js";
 import { getDDDPaletteOptions } from "../lib/DDDPaletteRegistry.js";
 
@@ -21,12 +21,24 @@ const narrow = () =>
       <hax-palette-picker value="0" active-value="5"></hax-palette-picker>
     </div>`,
   ).then((host) => host.querySelector("hax-palette-picker"));
+// narrow with no room beside it for a preview, as on a phone
+const cramped = () =>
+  fixture(
+    html`<div style="width: 350px; margin-left: 20px">
+      <hax-palette-picker value="3" active-value="5"></hax-palette-picker>
+    </div>`,
+  ).then((host) => host.querySelector("hax-palette-picker"));
+const pointer = (type, pointerType) =>
+  new PointerEvent(type, { pointerType, bubbles: true, composed: true });
 const settle = async (el) => {
   await aTimeout(60);
   await el.updateComplete;
 };
 
 describe("hax-palette-picker rows", () => {
+  // a test that narrows the viewport can't leave it narrow for the next
+  afterEach(() => setViewport({ width: 800, height: 600 }));
+
   it("draws one row per palette, each with a disc of its seven colours", async () => {
     const el = await wide();
     await settle(el);
@@ -104,7 +116,7 @@ describe("hax-palette-picker rows", () => {
     expect(el.hasAttribute("data-narrow")).to.equal(true);
     expect(el.shadowRoot.querySelector(".specimen")).to.equal(null);
     const row = el.shadowRoot.querySelector('.option[data-palette="5"]');
-    row.dispatchEvent(new MouseEvent("mouseenter"));
+    row.dispatchEvent(pointer("pointerenter", "mouse"));
     await settle(el);
     const peek = el.shadowRoot.querySelector(".peek");
     expect(peek.hidden).to.equal(false);
@@ -116,9 +128,48 @@ describe("hax-palette-picker rows", () => {
     const p = peek.getBoundingClientRect();
     const h = el.getBoundingClientRect();
     expect(p.right <= h.left || p.left >= h.right).to.equal(true);
-    row.dispatchEvent(new MouseEvent("mouseleave"));
+    row.dispatchEvent(pointer("pointerleave", "mouse"));
     await settle(el);
     expect(peek.hidden).to.equal(true);
+  });
+
+  it("narrow: a tap never opens the preview (touch has no hover)", async () => {
+    const el = await narrow();
+    await settle(el);
+    const row = el.shadowRoot.querySelector('.option[data-palette="3"]');
+    const input = row.querySelector("input");
+    row.dispatchEvent(pointer("pointerenter", "touch"));
+    row.dispatchEvent(pointer("pointerdown", "touch"));
+    input.focus();
+    await settle(el);
+    expect(el.shadowRoot.querySelector(".peek").hidden).to.equal(true);
+    // the keyboard still previews
+    input.blur();
+    await sendKeys({ press: "Shift" });
+    input.focus();
+    await settle(el);
+    expect(el.shadowRoot.querySelector(".peek").hidden).to.equal(false);
+  });
+
+  it("narrow with no room beside it: the chosen palette shows below, never over the rows", async () => {
+    await setViewport({ width: 390, height: 844 });
+    const el = await cramped();
+    await settle(el);
+    expect(el.hasAttribute("data-narrow")).to.equal(true);
+    expect(el.hasAttribute("data-peek-below")).to.equal(true);
+    const specimen = el.shadowRoot.querySelector(".specimen");
+    expect(specimen).to.exist;
+    expect(specimen.textContent).to.contain("Offbrand Blue");
+    expect(specimen.querySelectorAll(".codes li").length).to.equal(7);
+    const row = el.shadowRoot.querySelector('.option[data-palette="5"]');
+    row.dispatchEvent(pointer("pointerenter", "mouse"));
+    row.querySelector("input").focus();
+    await settle(el);
+    expect(el.shadowRoot.querySelector(".peek").hidden).to.equal(true);
+    expect(
+      row.querySelector("input").getAttribute("aria-describedby"),
+    ).to.equal("");
+    await expect(el).to.be.accessible();
   });
 
   it("narrow: focus opens the preview, described by it; Escape and blur close it", async () => {

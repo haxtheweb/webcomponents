@@ -86,7 +86,9 @@ class HaxPalettePicker extends I18NMixin(DDD) {
         /* one row per palette: a disc cut into its colours, the name and
            an Active pill; wide pickers list rows in a grid with the chosen
            palette in full below, narrow ones preview a palette beside the
-           row on hover or focus */
+           row on mouse hover or keyboard focus. A narrow picker with no
+           room beside it (a phone) shows the chosen palette below, like a
+           wide one: a preview there would cover the rows */
         .options {
           display: grid;
           grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -387,6 +389,11 @@ class HaxPalettePicker extends I18NMixin(DDD) {
     return 420;
   }
 
+  /** room a preview needs beside the picker: its width, gap and margin */
+  static get PEEK_ROOM() {
+    return 240 + 12 + 8;
+  }
+
   connectedCallback() {
     super.connectedCallback();
     // narrow when the picker itself is narrow (the Theme Preview panel),
@@ -401,22 +408,41 @@ class HaxPalettePicker extends I18NMixin(DDD) {
     if (this.__resize) {
       this.__resize.observe(this);
     }
+    if (!this.__onViewport) {
+      this.__onViewport = () => this._setNarrow(this._narrow);
+    }
+    globalThis.addEventListener("resize", this.__onViewport);
   }
 
   disconnectedCallback() {
     if (this.__resize) {
       this.__resize.disconnect();
     }
+    if (this.__onViewport) {
+      globalThis.removeEventListener("resize", this.__onViewport);
+    }
     this._hidePeek();
     super.disconnectedCallback();
   }
 
   _setNarrow(narrow) {
-    if (narrow === this.hasAttribute("data-narrow")) {
+    // narrow with no room beside it for a preview: the chosen palette
+    // shows below the rows instead (data-peek-below)
+    let below = false;
+    if (narrow) {
+      const r = this.getBoundingClientRect();
+      const room = HaxPalettePicker.PEEK_ROOM;
+      below = r.left < room && globalThis.innerWidth - r.right < room;
+    }
+    if (
+      narrow === this.hasAttribute("data-narrow") &&
+      below === this.hasAttribute("data-peek-below")
+    ) {
       return;
     }
     this.toggleAttribute("data-narrow", narrow);
-    if (!narrow) {
+    this.toggleAttribute("data-peek-below", below);
+    if (!narrow || below) {
       this._hidePeek();
     }
     this.requestUpdate();
@@ -424,6 +450,11 @@ class HaxPalettePicker extends I18NMixin(DDD) {
 
   get _narrow() {
     return this.hasAttribute("data-narrow");
+  }
+
+  /** narrow and previewing beside the picker (there is room for it) */
+  get _peeks() {
+    return this._narrow && !this.hasAttribute("data-peek-below");
   }
 
   willUpdate(changedProperties) {
@@ -687,7 +718,7 @@ class HaxPalettePicker extends I18NMixin(DDD) {
   }
 
   _renderSpecimen() {
-    if (this._narrow) {
+    if (this._peeks) {
       return "";
     }
     const option = this._getMatchedOption(this.value);
@@ -737,7 +768,7 @@ class HaxPalettePicker extends I18NMixin(DDD) {
   }
 
   _showPeek(option, row) {
-    if (!this._narrow || !option || !row) {
+    if (!this._peeks || !option || !row) {
       return;
     }
     this._peekKey = option.key;
@@ -793,22 +824,46 @@ class HaxPalettePicker extends I18NMixin(DDD) {
   }
 
   _onKeydown(e) {
+    this.__touchFocus = false;
     if (e.key === "Escape" && this._peekKey) {
       this._hidePeek();
     }
+  }
+
+  // a mouse (or pen hovering) previews the row under it; a touch never
+  // hovers, so it never opens a preview
+  _onPointerEnter(e, option) {
+    if (e.pointerType !== "touch") {
+      this._showPeek(option, e.currentTarget);
+    }
+  }
+
+  // a tap focuses the radio; that focus must not open a preview that then
+  // stays over the rows until focus moves, so it is skipped
+  _onPointerDown(e) {
+    this.__touchFocus = e.pointerType === "touch" || e.pointerType === "pen";
+  }
+
+  _onFocus(e, option) {
+    if (this.__touchFocus) {
+      this.__touchFocus = false;
+      return;
+    }
+    this._showPeek(option, e.target.closest("label"));
   }
 
   _renderOption(option, index) {
     const checked = this._optionMatchesValue(option, this.value);
     const active = this._optionMatchesValue(option, this.activeValue);
     const id = `${this.__inputId}-${index}`;
-    const describedBy = this._narrow ? `${this.__inputId}-peek` : "";
+    const describedBy = this._peeks ? `${this.__inputId}-peek` : "";
     return html`
       <label
         class="option ${checked ? "selected" : ""}"
         data-palette="${option.dataPalette}"
-        @mouseenter="${(e) => this._showPeek(option, e.currentTarget)}"
-        @mouseleave="${() => this._hidePeek()}"
+        @pointerenter="${(e) => this._onPointerEnter(e, option)}"
+        @pointerleave="${() => this._hidePeek()}"
+        @pointerdown="${this._onPointerDown}"
       >
         <input
           id="${id}"
@@ -820,7 +875,7 @@ class HaxPalettePicker extends I18NMixin(DDD) {
           ?required="${this.required}"
           ?disabled="${this.disabled}"
           @change="${() => this._handleSelection(option)}"
-          @focus="${(e) => this._showPeek(option, e.target.closest("label"))}"
+          @focus="${(e) => this._onFocus(e, option)}"
           @blur="${() => this._hidePeek()}"
         />
         ${this._renderDisc(option)}
