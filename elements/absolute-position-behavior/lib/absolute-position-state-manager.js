@@ -237,7 +237,12 @@ class AbsolutePositionStateManager extends LitElement {
   removeEventListeners() {
     if (this.__observer && this.__observer.disconnect)
       this.__observer.disconnect();
-    this.windowControllers.abort();
+    // swap in a fresh controller before aborting: the abort reason is an
+    // AbortError whose captured stack holds the element that unloaded last,
+    // and this page-wide singleton would keep that element alive through it
+    const controllers = this.windowControllers;
+    this.windowControllers = new AbortController();
+    controllers.abort();
     if (this.__watchSticky && this.scrollTarget)
       this.scrollTarget.removeEventListener("scroll", this._handleScroll);
   }

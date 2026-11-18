@@ -86,7 +86,11 @@ export async function optionsFor(source) {
   return { ...TERSER_OPTIONS, module: await isModuleSource(source) };
 }
 
-/** every *.js under dir, skipping dot files and dot folders like gulp.src */
+/**
+ * every *.js and *.mjs under dir, skipping dot files and dot folders like
+ * gulp.src. .mjs is always a module; vendored ES module bundles ship it
+ * (sheet-music's alphaTab.core.mjs is 2.3MB unminified, about 1.3MB after)
+ */
 export function listJs(dir, excludes, out = []) {
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
     if (entry.name.startsWith(".")) {
@@ -98,7 +102,10 @@ export function listJs(dir, excludes, out = []) {
     }
     if (entry.isDirectory()) {
       listJs(full, excludes, out);
-    } else if (entry.isFile() && entry.name.endsWith(".js")) {
+    } else if (
+      entry.isFile() &&
+      (entry.name.endsWith(".js") || entry.name.endsWith(".mjs"))
+    ) {
       out.push(full);
     }
   }

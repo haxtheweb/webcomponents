@@ -62,11 +62,31 @@ class A11yMediaStateManager extends LitElement {
     this.players = [];
     this.__stickyManager = (e) => this.setStickyPlayer(e.detail);
     this.__fullscreenManager = (e) => this._handleFullscreen(e.detail);
-    this.__playerLoader = (e) => this.players.push(e.detail);
+    this.__playerLoader = (e) => {
+      if (e.detail && !this.players.includes(e.detail)) {
+        this.players.push(e.detail);
+      }
+    };
 
     // sets the instance to the current instance
     if (!globalThis.A11yMediaStateManager.instance) {
       globalThis.A11yMediaStateManager.instance = this;
+    }
+  }
+
+  /**
+   * forgets a player that left the page; the manager is a page-wide
+   * singleton, so a removed player it still lists can never be collected
+   *
+   * @param {object} player the player that was removed
+   */
+  removePlayer(player) {
+    this.players = this.players.filter((item) => item !== player);
+    if (this.activePlayer === player) {
+      if (this._observer) {
+        this._observer.unobserve(player);
+      }
+      this.activePlayer = null;
     }
   }
 
