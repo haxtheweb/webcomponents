@@ -142,6 +142,32 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */
+  /**
+   * localized name for the block being edited (see setEditingName)
+   *
+   * @param {object} target the element being edited
+   * @returns {string}
+   */
+  editingTargetName(target) {
+    const tag = target && target.tagName ? target.tagName.toLowerCase() : "";
+    const keys = {
+      p: "blockP",
+      h1: "blockH1",
+      h2: "blockH2",
+      h3: "blockH3",
+      h4: "blockH4",
+      h5: "blockH5",
+      h6: "blockH6",
+      pre: "blockPre",
+      blockquote: "blockquoteButton",
+      li: "blockListItem",
+    };
+    const block = (this.t && this.t[keys[tag]]) || (this.t && this.t.blockText);
+    if (!block || !this.t || !this.t.editingBlock) {
+      return super.editingTargetName(target);
+    }
+    return this.t.editingBlock.replace("{block}", block);
+  }
   static get tag() {
     return "hax-text-editor-toolbar";
   }
@@ -162,6 +188,9 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       blockH5: "Heading 5",
       blockH6: "Heading 6",
       blockPre: "Preformatted",
+      blockText: "Text",
+      blockListItem: "List item",
+      editingBlock: "{block}, editing",
       h1Button: "Header 1",
       h2Button: "Header 2",
       italicButton: "Italic",

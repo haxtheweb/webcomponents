@@ -1693,9 +1693,11 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           oldTarget.getAttribute("role") === "textbox"
         ) {
           oldTarget.removeAttribute("role");
+          this.clearEditingName(oldTarget);
         }
         if (target && target.setAttribute) {
           target.setAttribute("role", "textbox");
+          this.setEditingName(target);
         }
         if (oldTarget !== target) {
           if (oldTarget) this.unsetTarget(oldTarget);
@@ -1724,6 +1726,66 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         this.range = undefined;
         this._rangeChanged();
       }
+    }
+    /**
+     * The block being edited is a textbox, and a textbox needs a name
+     * (WCAG 4.1.2). Only one block is edited at a time, so the name moves
+     * with the editor: it is added here, marked with
+     * data-rte-editing-name so whatever saves the content knows the editor
+     * added it and strips it, and removed when editing moves on. An
+     * aria-label or aria-labelledby the author wrote is never touched.
+     *
+     * @param {object} target the element being edited
+     */
+    setEditingName(target) {
+      if (
+        !target ||
+        !target.setAttribute ||
+        target.hasAttribute("aria-label") ||
+        target.hasAttribute("aria-labelledby")
+      ) {
+        return;
+      }
+      target.setAttribute("aria-label", this.editingTargetName(target));
+      target.setAttribute("data-rte-editing-name", "");
+    }
+    /**
+     * removes a name setEditingName added; an author's own label stays
+     *
+     * @param {object} target the element that was being edited
+     */
+    clearEditingName(target) {
+      if (
+        target &&
+        target.hasAttribute &&
+        target.hasAttribute("data-rte-editing-name")
+      ) {
+        target.removeAttribute("aria-label");
+        target.removeAttribute("data-rte-editing-name");
+      }
+    }
+    /**
+     * the name screen readers hear for the block being edited, from its
+     * kind of block (can be overridden for localized names)
+     *
+     * @param {object} target the element being edited
+     * @returns {string}
+     */
+    editingTargetName(target) {
+      const tag = target && target.tagName ? target.tagName.toLowerCase() : "";
+      const names = {
+        p: "Paragraph",
+        h1: "Heading 1",
+        h2: "Heading 2",
+        h3: "Heading 3",
+        h4: "Heading 4",
+        h5: "Heading 5",
+        h6: "Heading 6",
+        pre: "Preformatted",
+        blockquote: "Blockquote",
+        li: "List item",
+      };
+      return `${names[tag] || "Text"}, editing`;
     }
     unsetTarget(target = this.target) {
       let handlers = this.targetHandlers(target);
