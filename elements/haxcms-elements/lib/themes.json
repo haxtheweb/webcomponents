@@ -611,6 +611,18 @@
     "terrible": false,
     "supportedPalettes": null
   },
+  "svg-contrast": {
+    "element": "svg-contrast",
+    "path": "@haxtheweb/utils/lib/svg-contrast.js",
+    "name": "Svg Contrast",
+    "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-svg-contrast-thumb.jpg",
+    "description": "Start with a blank site using the Svg Contrast",
+    "category": ["Website"],
+    "hidden": false,
+    "priority": 0,
+    "terrible": false,
+    "supportedPalettes": null
+  },
   "tailwind-theme": {
     "element": "tailwind-theme",
     "path": "@haxtheweb/tailwind-theme/tailwind-theme.js",
