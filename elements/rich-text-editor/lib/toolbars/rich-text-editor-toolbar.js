@@ -990,6 +990,39 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     connectedCallback() {
       super.connectedCallback();
       globalThis.RichTextEditorToolbars.push(this);
+      // re-attached after a removal: listen to the prompt again
+      if (this.__prompt) {
+        this._listenToPrompt();
+      }
+    }
+
+    /**
+     * tracks whether the page-wide prompt singleton is open. The prompt
+     * outlives every toolbar, so its listeners are dropped on disconnect;
+     * otherwise each removed toolbar (and the editor it controls) stays
+     * reachable from the singleton and can never be collected.
+     * @returns {void}
+     */
+    _listenToPrompt() {
+      if (this.__promptControllers) {
+        this.__promptControllers.abort();
+      }
+      this.__promptControllers = new AbortController();
+      const options = { signal: this.__promptControllers.signal };
+      this.__prompt.addEventListener(
+        "open",
+        () => {
+          this.__promptOpen = true;
+        },
+        options,
+      );
+      this.__prompt.addEventListener(
+        "close",
+        () => {
+          this.__promptOpen = false;
+        },
+        options,
+      );
     }
 
     /**
@@ -998,6 +1031,10 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      */
     disconnectedCallback() {
       this.windowControllers.abort();
+      if (this.__promptControllers) {
+        this.__promptControllers.abort();
+        this.__promptControllers = null;
+      }
       globalThis.RichTextEditorToolbars =
         globalThis.RichTextEditorToolbars.filter((toolbar) => toolbar !== this);
       super.disconnectedCallback();
@@ -1034,12 +1071,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       if (this.hasBreadcrumbs && this.editor)
         this.positionByTarget(this.editor);
       this.__prompt = globalThis.RichTextEditorPrompt.requestAvailability();
-      this.__prompt.addEventListener("open", (_e) => {
-        this.__promptOpen = true;
-      });
-      this.__prompt.addEventListener("close", (_e) => {
-        this.__promptOpen = false;
-      });
+      this._listenToPrompt();
       this.onmousedown = this._addHighlight;
       this.onkeydown = this._addHighlight;
     }

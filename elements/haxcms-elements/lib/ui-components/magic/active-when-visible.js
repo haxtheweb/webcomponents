@@ -98,7 +98,11 @@ class ActiveWhenVisible extends LitElement {
   }
   connectedCallback() {
     super.connectedCallback();
-    // setup the intersection observer
+    // setup the intersection observer; a re-attached element replaces the
+    // one it had instead of adding a second that reports every change twice
+    if (this.observer) {
+      this.observer.disconnect();
+    }
     this.observer = new IntersectionObserver(
       this.handleIntersectionCallback.bind(this),
       {
@@ -107,6 +111,13 @@ class ActiveWhenVisible extends LitElement {
       },
     );
     this.observer.observe(this);
+  }
+  disconnectedCallback() {
+    if (this.observer) {
+      this.observer.disconnect();
+      this.observer = null;
+    }
+    super.disconnectedCallback();
   }
   /**
    * Handle this being visible

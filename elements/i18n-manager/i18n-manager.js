@@ -24,6 +24,30 @@ globalThis.I18NManagerStore.requestAvailability = () => {
 };
 const FALLBACK_LANG = "en";
 const FALLBACK_DIR = "ltr";
+
+/**
+ * Turn a loaded translation-manifest.json into namespace -> language list.
+ * The generator (scripts/generate-translation-manifest.js) writes each
+ * distinct language list once in `languageSets` and stores its index per
+ * namespace; namespaces that share a list share one array in memory. A
+ * manifest with plain arrays per namespace (no languageSets) is used as is.
+ * @param {object} data parsed manifest file
+ * @returns {object} namespace -> array of language codes
+ */
+export function expandTranslationManifest(data) {
+  const list = data && data.manifest ? data.manifest : {};
+  const sets =
+    data && Array.isArray(data.languageSets) ? data.languageSets : null;
+  if (!sets) {
+    return list;
+  }
+  const expanded = {};
+  Object.keys(list).forEach((namespace) => {
+    const value = list[namespace];
+    expanded[namespace] = typeof value === "number" ? sets[value] || [] : value;
+  });
+  return expanded;
+}
 /**
  * `i18n-manager`
  * `internationalization management singleton and helper classes`
@@ -315,7 +339,7 @@ class I18NManager extends LitElement {
       const response = await fetch(manifestUrl);
       if (response.ok) {
         const data = await response.json();
-        this.translationManifest = data.manifest || {};
+        this.translationManifest = expandTranslationManifest(data);
         this.manifestLoaded = true;
       } else {
         console.warn(

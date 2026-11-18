@@ -96,16 +96,35 @@ class LecturePlayer extends I18NMixin(DDDSuper(LitElement)) {
         }
       }, 2000);
     }
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    // window listeners live only while the player is on the page; a removed
+    // player is otherwise kept alive by the window forever
+    this.__windowControllers = new AbortController();
     globalThis.addEventListener &&
-      globalThis.addEventListener("hashChange", () => {
-        let [id, timestamp] = globalThis.location.hash.split("--");
-        if (id === "#lecture-player-video" && !timestamp) {
-          this.showModal();
-          setTimeout(() => {
-            this.activeIndex = "slide-1";
-          }, 1000);
-        }
-      });
+      globalThis.addEventListener(
+        "hashChange",
+        () => {
+          let [id, timestamp] = globalThis.location.hash.split("--");
+          if (id === "#lecture-player-video" && !timestamp) {
+            this.showModal();
+            setTimeout(() => {
+              this.activeIndex = "slide-1";
+            }, 1000);
+          }
+        },
+        { signal: this.__windowControllers.signal },
+      );
+  }
+
+  disconnectedCallback() {
+    if (this.__windowControllers) {
+      this.__windowControllers.abort();
+      this.__windowControllers = null;
+    }
+    super.disconnectedCallback();
   }
 
   static get properties() {
@@ -620,11 +639,17 @@ class LecturePlayer extends I18NMixin(DDDSuper(LitElement)) {
       document
         .querySelector("simple-modal .modal-content .videoSection video-player")
         .setAttribute("id", "lecture-player-video");
+      // once per opening: showModal runs on every open, so a plain listener
+      // piled up one more handler (holding this player) each time
       globalThis.addEventListener &&
-        globalThis.addEventListener("simple-modal-closed", () => {
-          this.querySelector("video-player").removeAttribute("hidden");
-          this.open = false;
-        });
+        globalThis.addEventListener(
+          "simple-modal-closed",
+          () => {
+            this.querySelector("video-player").removeAttribute("hidden");
+            this.open = false;
+          },
+          { once: true },
+        );
     }, 3000);
   }
 

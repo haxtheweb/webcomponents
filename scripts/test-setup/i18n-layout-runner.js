@@ -94,7 +94,15 @@ function wrapFetch() {
       } catch {
         // fall through with an empty manifest
       }
-      const list = data.manifest || {};
+      // the manifest stores each distinct language list once in
+      // languageSets and an index per namespace; expand it so the pseudo
+      // language is added to each namespace and not to a shared list
+      const sets = Array.isArray(data.languageSets) ? data.languageSets : [];
+      const list = {};
+      Object.entries(data.manifest || {}).forEach(([ns, value]) => {
+        list[ns] = typeof value === "number" ? sets[value] || [] : value;
+      });
+      delete data.languageSets;
       const m = manager();
       const namespaces = new Set(Object.keys(list));
       if (m) {

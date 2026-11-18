@@ -311,11 +311,15 @@ gulp.task(
 // there's nothing useful for Babel/terser to do to these files anyway, copy
 // them straight from node_modules instead of routing them through the
 // polymer build/optimize pipeline.
+// Only the ES module builds: web-container imports "@xterm/xterm" and
+// "@xterm/addon-fit", which the build resolves to lib/*.mjs ("module" field).
+// The UMD lib/*.js copies and the source maps (3.6MB, never requested by a
+// browser outside devtools) are left out.
 gulp.task("vendor-copy-xterm", () => {
   return gulp.src([
-    './node_modules/@xterm/xterm/lib/*',
+    './node_modules/@xterm/xterm/lib/*.mjs',
     './node_modules/@xterm/xterm/css/*',
-    './node_modules/@xterm/addon-fit/lib/*'
+    './node_modules/@xterm/addon-fit/lib/*.mjs'
   ], { base: '.' }).pipe(gulp.dest('./build/es6/'));
 });
 // monaco-editor/min is Monaco's own minified build: workers and editor chunks
