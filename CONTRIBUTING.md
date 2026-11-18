@@ -297,6 +297,22 @@ Invariant: the component gallery's own chrome (header, sidebar, search, filters,
 - **No baseline**: the gallery starts clean, so any finding fails.
 - **CI**: the `gallery-contrast` workflow runs on pull requests touching the gallery build script, the check, the shared runner, or the elements whose styles build the gallery chrome (`d-d-d`, `simple-fields`, `simple-icon`, `documentation-player`), and blocks on any finding.
 
+### Gallery audit
+
+Invariant: the component gallery holds the same bar as the other HAX properties, on desktop and phone, in light and dark mode, and under every design system it offers.
+
+- **What runs**: `scripts/gallery-audit.mjs` builds `index.html` and serves it with the same local demo runner (never a live site; every request off the local server is aborted). Chromium opens it at desktop and phone sizes, light and dark, and visits every state a reviewer reaches: first load, a filter applied, the Appearance panel open, a component's live demo, its documentation, and on phones the component drawer reopened after scrolling.
+- **Accessibility**: axe-core's WCAG 2.2 A/AA rules (target size included) in each state, shadow DOM included, the demo iframe excluded (element demos have their own gates). A keyboard walk tabs through the chrome: each stop must be visible, not covered, and look different focused than blurred (compared pixel for pixel, so a ring drawn on a wrapper counts).
+- **Mobile**: nothing scrolls sideways; no control on screen is covered by another; the phone drawer starts below the sticky title bar and has an opaque background (`--hax-ui-sunken` is see-through in dark mode, so it is laid over `--hax-ui-surface`); the page under the open drawer is `inert`.
+- **Reduced motion**: the loading screen leaves within 5 s and nothing in the chrome animates forever.
+- **Design systems**: for each system in `elements/haxcms-elements/lib/designSystems.json`, light and dark, `?system=<name>&palette=2` must make that system active in the gallery and in the demo frame (with the palette), and the chrome must pass axe `color-contrast`. The gallery's Appearance panel applies a choice the way a HAXcms site does: `scripts/gallery/appearance.js` (copied to `gallery-data/`) runs in the page and each demo frame and imports the system through `HAXCMSDesignSystems`, so a URL value is only ever a registry key.
+- **Security**: links that open a new window carry `rel="noopener"`; no `javascript:` URLs; no request off the local server on load except DDD's Google Fonts; `vercel.json` sends `X-Content-Type-Options`, `Referrer-Policy` and a content security policy.
+- **Performance**: the first load stays within `BUDGET` in the script (requests, kilobytes, time until the page is styled). Raise a budget only with a reason in the pull request.
+- **Licenses**: the gallery footer links the project license and the third-party notices for the code it loads from the CDN.
+- **Run locally**: `yarn test:gallery-audit` (`--no-build` reuses an existing `index.html`). Exit 1 means a finding. Set `GALLERY_AUDIT_CHROMIUM=<path>` to use a Chromium other than Playwright's.
+- **No baseline**: the gallery starts clean, so any finding fails.
+- **CI**: the `gallery-audit` workflow runs on pull requests touching the gallery build, its appearance module, the audit, the shared runner, `vercel.json`, or the elements and design system bridges the gallery chrome is built from, and blocks on any finding.
+
 ### Dark mode and reduced motion check
 
 Invariant: an element responds to dark mode and respects reduced motion. Contrast in dark mode is the color contrast check's job; this one asks whether the element ignores dark mode at all.

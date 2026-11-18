@@ -990,6 +990,39 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
     connectedCallback() {
       super.connectedCallback();
       globalThis.RichTextEditorToolbars.push(this);
+      // re-attached after a removal: listen to the prompt again
+      if (this.__prompt) {
+        this._listenToPrompt();
+      }
+    }
+
+    /**
+     * tracks whether the page-wide prompt singleton is open. The prompt
+     * outlives every toolbar, so its listeners are dropped on disconnect;
+     * otherwise each removed toolbar (and the editor it controls) stays
+     * reachable from the singleton and can never be collected.
+     * @returns {void}
+     */
+    _listenToPrompt() {
+      if (this.__promptControllers) {
+        this.__promptControllers.abort();
+      }
+      this.__promptControllers = new AbortController();
+      const options = { signal: this.__promptControllers.signal };
+      this.__prompt.addEventListener(
+        "open",
+        () => {
+          this.__promptOpen = true;
+        },
+        options,
+      );
+      this.__prompt.addEventListener(
+        "close",
+        () => {
+          this.__promptOpen = false;
+        },
+        options,
+      );
     }
 
     /**
@@ -998,6 +1031,10 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      */
     disconnectedCallback() {
       this.windowControllers.abort();
+      if (this.__promptControllers) {
+        this.__promptControllers.abort();
+        this.__promptControllers = null;
+      }
       globalThis.RichTextEditorToolbars =
         globalThis.RichTextEditorToolbars.filter((toolbar) => toolbar !== this);
       super.disconnectedCallback();
@@ -1034,12 +1071,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       if (this.hasBreadcrumbs && this.editor)
         this.positionByTarget(this.editor);
       this.__prompt = globalThis.RichTextEditorPrompt.requestAvailability();
-      this.__prompt.addEventListener("open", (_e) => {
-        this.__promptOpen = true;
-      });
-      this.__prompt.addEventListener("close", (_e) => {
-        this.__promptOpen = false;
-      });
+      this._listenToPrompt();
       this.onmousedown = this._addHighlight;
       this.onkeydown = this._addHighlight;
     }
@@ -1693,9 +1725,11 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
           oldTarget.getAttribute("role") === "textbox"
         ) {
           oldTarget.removeAttribute("role");
+          this.clearEditingName(oldTarget);
         }
         if (target && target.setAttribute) {
           target.setAttribute("role", "textbox");
+          this.setEditingName(target);
         }
         if (oldTarget !== target) {
           if (oldTarget) this.unsetTarget(oldTarget);
@@ -1724,6 +1758,66 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         this.range = undefined;
         this._rangeChanged();
       }
+    }
+    /**
+     * The block being edited is a textbox, and a textbox needs a name
+     * (WCAG 4.1.2). Only one block is edited at a time, so the name moves
+     * with the editor: it is added here, marked with
+     * data-rte-editing-name so whatever saves the content knows the editor
+     * added it and strips it, and removed when editing moves on. An
+     * aria-label or aria-labelledby the author wrote is never touched.
+     *
+     * @param {object} target the element being edited
+     */
+    setEditingName(target) {
+      if (
+        !target ||
+        !target.setAttribute ||
+        target.hasAttribute("aria-label") ||
+        target.hasAttribute("aria-labelledby")
+      ) {
+        return;
+      }
+      target.setAttribute("aria-label", this.editingTargetName(target));
+      target.setAttribute("data-rte-editing-name", "");
+    }
+    /**
+     * removes a name setEditingName added; an author's own label stays
+     *
+     * @param {object} target the element that was being edited
+     */
+    clearEditingName(target) {
+      if (
+        target &&
+        target.hasAttribute &&
+        target.hasAttribute("data-rte-editing-name")
+      ) {
+        target.removeAttribute("aria-label");
+        target.removeAttribute("data-rte-editing-name");
+      }
+    }
+    /**
+     * the name screen readers hear for the block being edited, from its
+     * kind of block (can be overridden for localized names)
+     *
+     * @param {object} target the element being edited
+     * @returns {string}
+     */
+    editingTargetName(target) {
+      const tag = target && target.tagName ? target.tagName.toLowerCase() : "";
+      const names = {
+        p: "Paragraph",
+        h1: "Heading 1",
+        h2: "Heading 2",
+        h3: "Heading 3",
+        h4: "Heading 4",
+        h5: "Heading 5",
+        h6: "Heading 6",
+        pre: "Preformatted",
+        blockquote: "Blockquote",
+        li: "List item",
+      };
+      return `${names[tag] || "Text"}, editing`;
     }
     unsetTarget(target = this.target) {
       let handlers = this.targetHandlers(target);

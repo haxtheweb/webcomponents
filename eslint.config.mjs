@@ -5,6 +5,7 @@ import eslintConfigPrettier from "eslint-config-prettier";
 import baselineJs from "eslint-plugin-baseline-js";
 import globals from "globals";
 import leakPatterns from "./scripts/eslint-rules/leak-patterns.mjs";
+import htmlSinks from "./scripts/eslint-rules/html-sinks.mjs";
 
 /**
  * ESLint 9 flat config for the webcomponents monorepo.
@@ -163,6 +164,18 @@ export default [
       "haxtheweb-leaks/disposer-without-disconnect": "error",
       "haxtheweb-leaks/responsive-element-unregister": "error",
       "haxtheweb-leaks/live-document-parse": "error",
+    },
+  },
+  {
+    // Markup sinks (scripts/eslint-rules/html-sinks.mjs): a value that is not
+    // a fixed string must be sanitized before it is written as HTML. Error,
+    // with every hit that predates the rule recorded in
+    // eslint-suppressions.json, so only new code is reported; fixing an old
+    // one: `npx eslint elements --prune-suppressions`.
+    files: ["elements/**/*.js"],
+    plugins: { "haxtheweb-html": htmlSinks },
+    rules: {
+      "haxtheweb-html/unsanitized-html-sink": "error",
     },
   },
   {

@@ -301,6 +301,45 @@ describe("hax-store methods round 3", () => {
       expect(content).to.not.contain("contenteditable");
     });
 
+    it("never saves the name the editor gives the block being edited", async () => {
+      const p = globalThis.document.createElement("p");
+      p.textContent = "Hello";
+      p.setAttribute("role", "textbox");
+      p.setAttribute("aria-label", "Paragraph, editing");
+      p.setAttribute("data-rte-editing-name", "");
+      const content = await HAXStore.nodeToContent(p);
+      expect(content).to.not.contain("aria-label");
+      expect(content).to.not.contain("data-rte-editing-name");
+      expect(content).to.not.contain("textbox");
+      expect(content).to.contain("Hello");
+    });
+
+    it("keeps an aria-label the author wrote", async () => {
+      const p = globalThis.document.createElement("p");
+      p.textContent = "Hello";
+      p.setAttribute("aria-label", "Author label");
+      const content = await HAXStore.nodeToContent(p);
+      expect(content).to.contain('aria-label="Author label"');
+    });
+
+    it("strips the editing name from a nested block too", async () => {
+      HAXStore.elementList.div = {
+        gizmo: {},
+        saveOptions: {},
+        settings: { configure: [], advanced: [] },
+      };
+      const div = globalThis.document.createElement("div");
+      const p = globalThis.document.createElement("p");
+      p.textContent = "Inner";
+      p.setAttribute("aria-label", "Paragraph, editing");
+      p.setAttribute("data-rte-editing-name", "");
+      div.appendChild(p);
+      const content = await HAXStore.nodeToContent(div);
+      expect(content).to.not.contain("aria-label");
+      expect(content).to.not.contain("data-rte-editing-name");
+      expect(content).to.contain("Inner");
+    });
+
     it("removes hax-specific attributes whose values span lines", async () => {
       const p = globalThis.document.createElement("p");
       p.textContent = "Hello";

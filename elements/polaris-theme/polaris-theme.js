@@ -472,15 +472,19 @@ class PolarisTheme extends HAXCMSOperationButtons(
           <site-region name="header"></site-region>
           <slot name="header">
             <div id="mark">
-              <a href="${this.imageLink}">
-                <img
-                  src="${this.image}"
-                  alt="${this.imageAlt}"
-                  loading="lazy"
-                  decoding="async"
-                  fetchpriority="low"
-                />
-              </a>
+              ${
+                this.image
+                  ? html`<a href="${this.imageLink}">
+                      <img
+                        src="${this.image}"
+                        alt="${this.imageAlt || this.t.home}"
+                        loading="lazy"
+                        decoding="async"
+                        fetchpriority="low"
+                      />
+                    </a>`
+                  : ``
+              }
             </div>
             <div class="title-area">
               <p class="site-title" itemprop="headline">
@@ -623,6 +627,7 @@ class PolarisTheme extends HAXCMSOperationButtons(
       primary: "Primary",
       primarySidebar: "Primary Sidebar",
       contents: "Contents",
+      home: "Home",
     };
     this.windowControllersLoaded = new AbortController();
     globalThis.addEventListener &&

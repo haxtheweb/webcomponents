@@ -164,11 +164,12 @@ cd ~/haxtheweb/haxcms-mcp
 uv run python scripts/sync_specs.py --from ~/haxtheweb/haxcms-nodejs --check || echo "NOTE: haxcms-mcp specs will be re-synced by ubiquity-push.sh"
 
 
-# release gate (haxtheweb/issues#3334): the same check ubiquity-push.sh runs
-# before it commits anything: both backends serve the same OpenAPI contract,
-# and every golden parity case matches on haxcms-nodejs, haxcms-php and the
-# CLI running on this haxcms-nodejs. Report only here. It logs in to the local
-# haxcms-php as HAX_PARITY_PHP_USER / HAX_PARITY_PHP_PASS (default admin /
-# admin); the report is in ~/haxtheweb/create/parity-results/release-gate.md.
+# release gate (haxtheweb/issues#3334), first half: both backends must serve
+# the same OpenAPI contract. That is a file comparison and takes seconds.
+# The golden parity suite, which boots both backends and takes minutes, runs
+# in ubiquity-push.sh before anything is committed; to run it here as well:
+#   cd ~/haxtheweb/create && npm run test:parity:release -- \
+#     --nodejs ~/haxtheweb/haxcms-nodejs --php ~/haxtheweb/haxcms-php --link-cli
+# Report only here.
 cd ~/haxtheweb/create
-npm run test:parity:release -- --nodejs ~/haxtheweb/haxcms-nodejs --php ~/haxtheweb/haxcms-php --link-cli || echo "WARNING: release gate failed; ubiquity-push.sh will stop until it passes (report: ~/haxtheweb/create/parity-results/release-gate.md)"
+npm run test:parity:release -- --nodejs ~/haxtheweb/haxcms-nodejs --php ~/haxtheweb/haxcms-php --specs-only || echo "WARNING: the backends' OpenAPI specs differ; ubiquity-push.sh will stop until they match (report: ~/haxtheweb/create/parity-results/release-gate.md)"

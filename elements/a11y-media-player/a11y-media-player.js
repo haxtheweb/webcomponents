@@ -5227,6 +5227,17 @@ class A11yMediaPlayer extends SchemaBehaviors(
     }
     // moved, or removed and added again: observe it again
     reregisterResponsiveElement(this);
+    // the state manager forgot it on removal (firstUpdated only runs once)
+    if (this.__playerReady) {
+      globalThis.dispatchEvent(
+        new CustomEvent("a11y-player", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: this,
+        }),
+      );
+    }
     this._applyLayoutPreference(this._readLayoutPreference());
     if (globalThis.addEventListener) {
       globalThis.addEventListener(
@@ -5250,6 +5261,13 @@ class A11yMediaPlayer extends SchemaBehaviors(
     this._saveLearnerState();
     // the utility's ResizeObserver keeps a registered element alive
     unregisterResponsiveElement(this);
+    // so does the page-wide media state manager's player list
+    const stateManager =
+      globalThis.A11yMediaStateManager &&
+      globalThis.A11yMediaStateManager.instance;
+    if (stateManager && stateManager.removePlayer) {
+      stateManager.removePlayer(this);
+    }
     if (globalThis.removeEventListener) {
       globalThis.removeEventListener(
         "a11y-media-layout-preference",

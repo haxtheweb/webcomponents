@@ -180,6 +180,39 @@ describe("rich-text-editor-toolbar", () => {
     editor2.remove();
   });
 
+  it("names the block being edited and moves the name with the editor", async () => {
+    const editor2 = await makeEditor("<p>second editor</p>");
+    toolbar.setTarget(editor);
+    // a textbox needs a name; the editor marks the one it adds
+    expect(editor.getAttribute("aria-label")).to.equal("Text, editing");
+    expect(editor.hasAttribute("data-rte-editing-name")).to.equal(true);
+    toolbar.setTarget(editor2);
+    expect(editor.hasAttribute("aria-label")).to.equal(false);
+    expect(editor.hasAttribute("data-rte-editing-name")).to.equal(false);
+    expect(editor2.getAttribute("aria-label")).to.equal("Text, editing");
+    toolbar.unsetTarget(editor2);
+    editor2.remove();
+  });
+
+  it("never replaces an aria-label the author wrote", async () => {
+    const editor2 = await makeEditor("<p>second editor</p>");
+    editor2.setAttribute("aria-label", "Author label");
+    toolbar.setTarget(editor2);
+    expect(editor2.getAttribute("aria-label")).to.equal("Author label");
+    expect(editor2.hasAttribute("data-rte-editing-name")).to.equal(false);
+    toolbar.setTarget(editor);
+    expect(editor2.getAttribute("aria-label")).to.equal("Author label");
+    toolbar.unsetTarget(editor);
+    editor2.remove();
+  });
+
+  it("names blocks by their kind", async () => {
+    const h2 = globalThis.document.createElement("h2");
+    expect(toolbar.editingTargetName(h2)).to.equal("Heading 2, editing");
+    const p = globalThis.document.createElement("p");
+    expect(toolbar.editingTargetName(p)).to.equal("Paragraph, editing");
+  });
+
   it("setTarget with the same target does not rewire", async () => {
     toolbar.setTarget(editor);
     const range = selectContents(editor);

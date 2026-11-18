@@ -18,7 +18,7 @@ describeQuestionKeyboardFlow(
     </sorting-question>`,
   async (fx) => {
     // move the first option down one place
-    await fx.tabTo(/arrow-downward|move down/i);
+    await fx.tabTo(/move option down|move down/i);
     await press("Enter", 150);
   },
 );

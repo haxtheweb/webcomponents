@@ -164,7 +164,7 @@ describe("super-daemon-row behavior", () => {
     const el = await fixture(
       html`<super-daemon-row title="H" shortcut="Ctrl⇧3"></super-daemon-row>`,
     );
-    const btn = el.shadowRoot.querySelector("button");
+    const btn = el.shadowRoot.querySelector(".row");
     const enter = el.shadowRoot.querySelector(".enter-icon");
     const chip = el.shadowRoot.querySelector(".shortcut");
     const chipLeft = chip.getBoundingClientRect().left;
@@ -198,16 +198,63 @@ describe("super-daemon-row behavior", () => {
     ).to.equal("\u{1F3B5}");
   });
 
-  it("focus() focuses the inner button", async () => {
+  it("focus() focuses the row itself, the option", async () => {
     const el = await fixture(
-      html`<super-daemon-row title="F"></super-daemon-row>`,
+      html`<super-daemon-row
+        title="F"
+        role="option"
+        tabindex="-1"
+      ></super-daemon-row>`,
     );
     el.focus();
-    const btn = el.shadowRoot.querySelector("button");
-    // delegatesFocus makes the host the document-level active element while
-    // the shadow root tracks the inner focused button
-    expect(el.shadowRoot.activeElement === btn).to.equal(true);
     expect(document.activeElement === el).to.equal(true);
+    expect(el.active).to.equal(true);
+    // nothing inside the option is focusable (an option holds no controls)
+    expect(el.shadowRoot.querySelector("button")).to.equal(null);
+  });
+
+  it("runs the row on Enter pressed on the focused option", async () => {
+    const el = await fixture(
+      html`<super-daemon-row
+        title="K"
+        event-name="ke"
+        role="option"
+        tabindex="-1"
+      ></super-daemon-row>`,
+    );
+    let ran = false;
+    el.addEventListener("ke", () => (ran = true));
+    el.focus();
+    el.dispatchEvent(
+      new KeyboardEvent("keydown", {
+        code: "Enter",
+        key: "Enter",
+        bubbles: true,
+        cancelable: true,
+      }),
+    );
+    expect(ran).to.equal(true);
+  });
+
+  it("passes axe as an option inside a listbox, details toggle included", async () => {
+    const wrap = await fixture(
+      html`<div role="listbox" aria-label="Results">
+        <super-daemon-row
+          title="Opt"
+          role="option"
+          tabindex="-1"
+          aria-selected="false"
+          more
+          ><p>Some details</p></super-daemon-row
+        >
+      </div>`,
+    );
+    const el = wrap.querySelector("super-daemon-row");
+    await el.updateComplete;
+    // the details describe the option, since keyboard users do not reach
+    // the pointer-only toggle
+    expect(el.ariaDescribedByElements[0]).to.equal(el.querySelector("p"));
+    await expect(wrap).to.be.accessible();
   });
 
   it("pickColor alternates accent colors", async () => {
@@ -241,16 +288,14 @@ describe("super-daemon-row behavior", () => {
     expect(el.shadowRoot.querySelector(".tags")).to.be.null;
   });
 
-  it("does not hardcode aria-selected on the inner button", async () => {
-    // regression (a11y follow-up): the inner button hardcoded
-    // aria-selected="false" while the host wrapper (role=option) carried the
-    // dynamic value set by super-daemon-ui, conflicting for assistive tech;
-    // the host is the single source of truth now
+  it("does not hardcode aria-selected inside the row", async () => {
+    // the host (role=option) carries the value super-daemon-ui sets; the
+    // host is the single source of truth
     const el = await fixture(
       html`<super-daemon-row title="Aria"></super-daemon-row>`,
     );
-    const btn = el.shadowRoot.querySelector("button");
-    expect(btn.getAttribute("aria-selected")).to.equal(null);
+    const row = el.shadowRoot.querySelector(".row");
+    expect(row.getAttribute("aria-selected")).to.equal(null);
   });
 
   it("renders the external link icon and more details toggle", async () => {
@@ -261,24 +306,13 @@ describe("super-daemon-row behavior", () => {
     const moreBtn = el.shadowRoot.querySelector("simple-icon-button.more");
     expect(moreBtn).to.exist;
     expect(el.shadowRoot.querySelector("details")).to.exist;
+    // a pointer shortcut: not a separate tab stop inside the option
+    expect(moreBtn.getAttribute("aria-hidden")).to.equal("true");
     el.toggleDetailsClick(new Event("click", { cancelable: true }));
     expect(el.showDetails).to.equal(true);
-    el.toggleDetailsKey(
-      new KeyboardEvent("keydown", { key: "Enter", cancelable: true }),
-    );
+    el.toggleDetailsClick(new Event("click", { cancelable: true }));
     expect(el.showDetails).to.equal(false);
     el.openChanged({ target: { open: true } });
     expect(el.showDetails).to.equal(true);
-  });
-
-  it("toggleDetailsKey ignores non-activating keys", async () => {
-    const el = await fixture(
-      html`<super-daemon-row title="K2" more></super-daemon-row>`,
-    );
-    el.showDetails = false;
-    el.toggleDetailsKey(
-      new KeyboardEvent("keydown", { key: "a", cancelable: true }),
-    );
-    expect(el.showDetails).to.equal(false);
   });
 });

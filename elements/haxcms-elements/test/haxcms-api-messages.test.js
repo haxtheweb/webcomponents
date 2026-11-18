@@ -9,6 +9,7 @@ import {
   isHardDenial,
   REFRESHABLE_AUTH_CODES,
 } from "../lib/core/utils/HAXCMSApiMessages.js";
+import { expandTranslationManifest } from "@haxtheweb/i18n-manager/i18n-manager.js";
 
 const LOCALES = new URL("../locales/", import.meta.url).href;
 const placeholders = (text) =>
@@ -52,9 +53,9 @@ describe("HAXCMSApiMessages", () => {
         import.meta.url,
       ).href,
     );
-    const languages = (manifest.manifest["haxcms-api"] || []).filter(
-      (lang) => lang !== "en",
-    );
+    const languages = (
+      expandTranslationManifest(manifest)["haxcms-api"] || []
+    ).filter((lang) => lang !== "en");
     expect(languages.length).to.be.greaterThan(100);
     const problems = [];
     const files = await Promise.all(

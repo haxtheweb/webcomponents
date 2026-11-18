@@ -781,6 +781,13 @@ class JourneyTheme extends HAXCMSLitElementTheme {
           --simple-icon-button-border-radius: none;
         }
 
+        /* reflow at 320px wide without sideways scrolling (WCAG 1.4.10):
+           the text column is a flex item, so let it shrink below its
+           longest word and break long words instead of widening the row */
+        .article-wrap {
+          min-width: 0;
+          overflow-wrap: anywhere;
+        }
         @media (max-width: 800px) {
           header {
             height: unset;

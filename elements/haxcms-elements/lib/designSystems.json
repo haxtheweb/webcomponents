@@ -86,5 +86,13 @@
     "theme": "webawesome-theme",
     "path": "@haxtheweb/webawesome-theme/lib/WebawesomeDesignSystem.js",
     "activate": "activateWebawesomeDesignSystem"
+  },
+  "classic-desktop": {
+    "name": "classic-desktop",
+    "title": "Classic Desktop",
+    "homepage": "https://github.com/haxtheweb/webcomponents/tree/master/elements/wysiwyg96-theme",
+    "theme": "wysiwyg96-theme",
+    "path": "@haxtheweb/wysiwyg96-theme/lib/ClassicDesktopDesignSystem.js",
+    "activate": "activateClassicDesktopDesignSystem"
   }
 }

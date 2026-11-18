@@ -56,10 +56,13 @@ describe("haxcms-site-editor-ui preview", () => {
     expect(controls.nextElementSibling).to.equal(mark);
   });
 
-  it("Preview is a plain menuitem: its label says the state, so no aria-pressed", async () => {
+  it("Preview is a plain button in a group: its label says the state, so no aria-pressed", async () => {
     const controls = () =>
       element.shadowRoot.querySelector(".preview-toolbar-buttons");
-    expect(button().getAttribute("role")).to.equal("menuitem");
+    // the top bar holds plain buttons a Tab apart, so neither the group nor
+    // the buttons claim menu roles that promise arrow-key navigation
+    expect(button().hasAttribute("role")).to.equal(false);
+    expect(controls().getAttribute("role")).to.equal("group");
     expect(button().hasAttribute("aria-pressed")).to.equal(false);
     await expect(controls()).to.be.accessible();
     await element.enterPreview();

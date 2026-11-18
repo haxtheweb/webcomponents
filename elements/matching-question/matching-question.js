@@ -370,7 +370,7 @@ class MatchingQuestion extends QuestionElement {
   }
 
   renderInteraction() {
-    return html` <dialog id="selecttarget">
+    return html` <dialog id="selecttarget" aria-labelledby="selecttarget-label">
         <simple-icon-button-lite
           icon="close"
           @click="${() => {
@@ -378,12 +378,16 @@ class MatchingQuestion extends QuestionElement {
           }}"
           >${this.t.close}</simple-icon-button-lite
         >
-        <label
+        <label id="selecttarget-label" for="selecttarget-select"
           >${this._tParts(this.t.matchItemTo, {
             item: html`<em>${this.__activeOption.label}</em>`,
           })}</label
         >
-        <select @change="${this.selectTargetChange}" autofocus>
+        <select
+          id="selecttarget-select"
+          @change="${this.selectTargetChange}"
+          autofocus
+        >
           <option value="">${this.t.possibleOptions}</option>
           ${this.answers
             .filter((answer) => answer.target)

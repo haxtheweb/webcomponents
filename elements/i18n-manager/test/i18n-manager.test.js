@@ -485,6 +485,17 @@ describe("i18n-manager test", () => {
       expect(ctx._t).to.deep.equal({ hello: "world" });
     });
 
+    it("adds a subclass's new defaults to _t without replacing existing ones", () => {
+      // parent registers in its constructor first, then the subclass adds
+      // its own strings and registers again (hax-upload-field extends
+      // simple-fields-upload)
+      const ctx = { tagName: "X", t: { hello: "world" } };
+      element.detailNormalize({ context: ctx, namespace: "parent" });
+      ctx.t = { hello: "changed", imageInfo: "Image info" };
+      element.detailNormalize({ context: ctx, namespace: "child" });
+      expect(ctx._t).to.deep.equal({ hello: "world", imageInfo: "Image info" });
+    });
+
     it("does not set _t when context has no t", () => {
       const ctx = { tagName: "X" };
       element.detailNormalize({ context: ctx });

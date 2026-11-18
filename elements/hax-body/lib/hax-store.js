@@ -76,6 +76,21 @@ function isNullText(tag, attribute, value) {
   return !(tag === "page-break" && attribute === "title");
 }
 
+/**
+ * The text editor names the block being edited (it is a textbox) and marks
+ * that name with data-rte-editing-name; the name only exists while editing,
+ * so it is removed before content is saved. An author's own aria-label has
+ * no marker and is kept.
+ *
+ * @param {Node} node
+ */
+function stripEditingName(node) {
+  if (node && node.hasAttribute && node.hasAttribute("data-rte-editing-name")) {
+    node.removeAttribute("aria-label");
+    node.removeAttribute("data-rte-editing-name");
+  }
+}
+
 class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
   /**
    * test a hook's existence in a target
@@ -5967,8 +5982,11 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     // account for things that say NOT to save slot values
     let props = this.elementList[tag];
     let propvals = {};
+    // the name the text editor gives the block being edited never saves
+    stripEditingName(node);
     // prevent these from being put in the DOM
     let badAttributes = [
+      "data-rte-editing-name",
       "data-hax-ray",
       "data-hax-layout",
       "data-hax-grid",
@@ -6223,6 +6241,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             ) {
               content += await this.nodeToContent(slotnodes[j]);
             } else {
+              stripEditingName(slotnodes[j]);
               for (let i = 0; i < badAttributes.length; i++) {
                 slotnodes[j].removeAttribute(badAttributes[i]);
               }
@@ -6274,6 +6293,10 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     content = content.replace(/ class=""/gim, "");
     content = content.replace(/ style=""/gim, "");
     content = replaceLazyRun(content, [' contenteditable="', '"'], {
+      ignoreCase: true,
+      crossLines: true,
+    });
+    content = replaceLazyRun(content, [' data-rte-editing-name="', '"'], {
       ignoreCase: true,
       crossLines: true,
     });

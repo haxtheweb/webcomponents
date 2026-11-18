@@ -445,7 +445,7 @@ class OutlinePlayer extends I18NMixin(
                 icon="menu"
                 label="${this.t.toggleNavigation}"
                 aria-expanded="${this.opened}"
-                aria-controls="drawer"
+                controls="drawer"
                 @click="${this._toggleMenu}"
               ></simple-icon-button-lite>
               <site-modal
@@ -562,7 +562,12 @@ class OutlinePlayer extends I18NMixin(
       const btn = toggle.shadowRoot.querySelector("button");
       if (btn) {
         btn.setAttribute("aria-expanded", this.opened ? "true" : "false");
-        btn.setAttribute("aria-controls", "drawer");
+        // the drawer lives in this shadow root, not the button's, so an id
+        // could never resolve: reference the element itself
+        const drawer = this.shadowRoot.querySelector("#drawer");
+        if (drawer && "ariaControlsElements" in btn) {
+          btn.ariaControlsElements = [drawer];
+        }
       }
     }
   }
