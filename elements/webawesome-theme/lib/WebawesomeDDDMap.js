@@ -128,6 +128,9 @@ export const WebawesomeDDDMap = css`
     --ddd-primary-23-rgb: 140, 70, 2;
     --ddd-primary-24-rgb: 0, 83, 192;
     --ddd-primary-25-rgb: 3, 103, 48;
+    /* palette text paired with each remapped palette color, where DDD's own no longer reads */
+    --ddd-palette-3-text-color-1: white;
+    --ddd-palette-8-text-color-3: white;
   }
 `;
 

@@ -51,6 +51,14 @@ DDD gives every primary palette (`data-primary="0"` to `"25"`) the text color th
 
 The report lists every checked pair under `pairs`, with its ratio and whether it is DDD's, paired by the generator, or set by the bridge.
 
+The numbered palettes (`data-palette="0"` to `"19"`) pair text the same way: text on `--ddd-palette-color-K` uses `--ddd-palette-text-color-K`, chosen for DDD's own colors. Every pair whose colors come out differently under the bridge is re-checked in light and dark (a translucent color both over white and over black):
+
+- DDD's text color is kept when it still reaches 4.5:1.
+- Otherwise the map sets that pair's hook, `--ddd-palette-N-text-color-K`, to black or white, whichever reads. `DDDPaletteStyles` reads the hook before DDD's own text color, and DDD itself never sets it.
+- A pair neither black nor white reads on fails the build.
+
+The report lists these under `palettePairs`.
+
 The generator fails when a bridge maps a locked token, maps a token the contract doesn't list (add it to a tier first), breaks a guard, points a named DDD color at a value that changes between light and dark, drops a key DDD color pair or a palette's text color pair below 4.5:1 contrast, or uses a license that can't ship with Apache-2.0. The `<system>.ddd-map.json` it writes reports coverage per tier and family, and lists which tokens stayed DDD.
 
 Changing the contract changes what every bridge may do. Do it in its own PR, then regenerate every bridge.

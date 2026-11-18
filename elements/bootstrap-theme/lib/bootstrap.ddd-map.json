@@ -445,6 +445,320 @@
       "source": "ddd"
     }
   ],
+  "palettePairs": [
+    {
+      "palette": 0,
+      "pair": 4,
+      "color": "var(--ddd-theme-default-futureLime)",
+      "on": "var(--simple-colors-fixed-theme-teal-12)",
+      "ratio": 7.7,
+      "source": "ddd"
+    },
+    {
+      "palette": 0,
+      "pair": 6,
+      "color": "var(--ddd-theme-default-inventOrange)",
+      "on": "var(--ddd-theme-default-coalyGray)",
+      "ratio": 6,
+      "source": "ddd"
+    },
+    {
+      "palette": 1,
+      "pair": 4,
+      "color": "var(--ddd-theme-default-discoveryCoral)",
+      "on": "var(--simple-colors-default-theme-red-12)",
+      "ratio": 9.46,
+      "source": "ddd"
+    },
+    {
+      "palette": 1,
+      "pair": 6,
+      "color": "var(--ddd-theme-default-slateGray)",
+      "on": "var(--ddd-theme-default-skyLight)",
+      "ratio": 4.62,
+      "source": "ddd"
+    },
+    {
+      "palette": 1,
+      "pair": 7,
+      "color": "var(--ddd-theme-default-pughBlue)",
+      "on": "var(--simple-colors-default-theme-blue-10)",
+      "ratio": 8.08,
+      "source": "ddd"
+    },
+    {
+      "palette": 2,
+      "pair": 5,
+      "color": "var(--ddd-theme-default-keystoneYellow)",
+      "on": "var(--simple-colors-fixed-theme-deep-orange-11)",
+      "ratio": 10.45,
+      "source": "ddd"
+    },
+    {
+      "palette": 2,
+      "pair": 6,
+      "color": "var(--ddd-theme-default-creekTeal)",
+      "on": "var(--simple-colors-fixed-theme-cyan-12)",
+      "ratio": 8.44,
+      "source": "ddd"
+    },
+    {
+      "palette": 3,
+      "pair": 1,
+      "color": "var(--ddd-theme-default-nittanyNavy)",
+      "on": "var(--simple-colors-default-theme-light-blue-4)",
+      "ratio": 6.08,
+      "source": "ddd"
+    },
+    {
+      "palette": 3,
+      "pair": 7,
+      "color": "var(--ddd-theme-default-keystoneYellow)",
+      "on": "var(--simple-colors-fixed-theme-orange-10)",
+      "ratio": 6.84,
+      "source": "ddd"
+    },
+    {
+      "palette": 4,
+      "pair": 1,
+      "color": "var(--ddd-theme-default-coalyGray)",
+      "on": "var(--simple-colors-fixed-theme-blue-grey-2)",
+      "ratio": 8.63,
+      "source": "ddd"
+    },
+    {
+      "palette": 4,
+      "pair": 6,
+      "color": "var(--ddd-theme-default-slateGray)",
+      "on": "var(--simple-colors-fixed-theme-blue-grey-1)",
+      "ratio": 7.01,
+      "source": "ddd"
+    },
+    {
+      "palette": 5,
+      "pair": 2,
+      "color": "var(--ddd-theme-default-coalyGray)",
+      "on": "var(--simple-colors-fixed-theme-grey-1)",
+      "ratio": 15.43,
+      "source": "ddd"
+    },
+    {
+      "palette": 6,
+      "pair": 3,
+      "color": "var(--ddd-theme-default-original87Pink)",
+      "on": "var(--simple-colors-default-theme-pink-1)",
+      "ratio": 8.01,
+      "source": "ddd"
+    },
+    {
+      "palette": 6,
+      "pair": 4,
+      "color": "var(--ddd-theme-default-discoveryCoral)",
+      "on": "var(--simple-colors-default-theme-red-12)",
+      "ratio": 9.46,
+      "source": "ddd"
+    },
+    {
+      "palette": 8,
+      "pair": 1,
+      "color": "var(--ddd-theme-default-skyBlue)",
+      "on": "var(--ddd-theme-default-coalyGray)",
+      "ratio": 6.39,
+      "source": "ddd"
+    },
+    {
+      "palette": 8,
+      "pair": 3,
+      "color": "var(--ddd-theme-default-beaverBlue)",
+      "on": "var(--simple-colors-default-theme-cyan-2)",
+      "ratio": 4.78,
+      "source": "ddd"
+    },
+    {
+      "palette": 8,
+      "pair": 4,
+      "color": "var(--ddd-theme-default-nittanyNavy)",
+      "on": "var(--simple-colors-default-theme-cyan-4)",
+      "ratio": 7.72,
+      "source": "ddd"
+    },
+    {
+      "palette": 8,
+      "pair": 5,
+      "color": "var(--ddd-theme-default-limestoneLight)",
+      "on": "var(--ddd-theme-default-coalyGray)",
+      "ratio": 11.85,
+      "source": "ddd"
+    },
+    {
+      "palette": 8,
+      "pair": 6,
+      "color": "var(--ddd-theme-default-coalyGray)",
+      "on": "var(--ddd-theme-default-white)",
+      "ratio": 15.43,
+      "source": "ddd"
+    },
+    {
+      "palette": 8,
+      "pair": 7,
+      "color": "var(--ddd-theme-default-inventOrange)",
+      "on": "var(--ddd-theme-default-coalyGray)",
+      "ratio": 6,
+      "source": "ddd"
+    },
+    {
+      "palette": 9,
+      "pair": 2,
+      "color": "var(--ddd-theme-default-wonderPurple)",
+      "on": "var(--ddd-theme-default-white)",
+      "ratio": 6.51,
+      "source": "ddd"
+    },
+    {
+      "palette": 9,
+      "pair": 3,
+      "color": "var(--ddd-theme-default-athertonViolet)",
+      "on": "var(--ddd-theme-default-coalyGray)",
+      "ratio": 5.56,
+      "source": "ddd"
+    },
+    {
+      "palette": 9,
+      "pair": 6,
+      "color": "var(--ddd-theme-default-shrineTan)",
+      "on": "var(--ddd-theme-default-coalyGray)",
+      "ratio": 7.43,
+      "source": "ddd"
+    },
+    {
+      "palette": 10,
+      "pair": 1,
+      "color": "var(--simple-colors-default-theme-deep-orange-1)",
+      "on": "var(--ddd-theme-default-coalyGray)",
+      "ratio": 13.05,
+      "source": "ddd"
+    },
+    {
+      "palette": 10,
+      "pair": 3,
+      "color": "var(--ddd-theme-default-landgrantBrown)",
+      "on": "var(--ddd-theme-default-white)",
+      "ratio": 7.99,
+      "source": "ddd"
+    },
+    {
+      "palette": 11,
+      "pair": 1,
+      "color": "var(--ddd-theme-default-nittanyNavy)",
+      "on": "var(--ddd-theme-default-white)",
+      "ratio": 13.51,
+      "source": "ddd"
+    },
+    {
+      "palette": 11,
+      "pair": 2,
+      "color": "var(--ddd-theme-default-beaverBlue)",
+      "on": "var(--ddd-theme-default-white)",
+      "ratio": 6.44,
+      "source": "ddd"
+    },
+    {
+      "palette": 11,
+      "pair": 3,
+      "color": "var(--ddd-theme-default-pughBlue)",
+      "on": "var(--ddd-theme-default-coalyGray)",
+      "ratio": 8.72,
+      "source": "ddd"
+    },
+    {
+      "palette": 11,
+      "pair": 4,
+      "color": "var(--ddd-theme-default-slateGray)",
+      "on": "var(--ddd-theme-default-white)",
+      "ratio": 8.18,
+      "source": "ddd"
+    },
+    {
+      "palette": 11,
+      "pair": 5,
+      "color": "var(--ddd-theme-default-limestoneLight)",
+      "on": "var(--ddd-theme-default-nittanyNavy)",
+      "ratio": 10.37,
+      "source": "ddd"
+    },
+    {
+      "palette": 11,
+      "pair": 6,
+      "color": "var(--ddd-theme-default-coalyGray)",
+      "on": "var(--ddd-theme-default-limestoneLight)",
+      "ratio": 11.85,
+      "source": "ddd"
+    },
+    {
+      "palette": 11,
+      "pair": 7,
+      "color": "var(--ddd-theme-default-keystoneYellow)",
+      "on": "var(--ddd-theme-default-nittanyNavy)",
+      "ratio": 8.29,
+      "source": "ddd"
+    },
+    {
+      "palette": 12,
+      "pair": 3,
+      "color": "var(--simple-colors-default-theme-light-blue-6)",
+      "on": "var(--ddd-theme-default-coalyGray)",
+      "ratio": 5.71,
+      "source": "ddd"
+    },
+    {
+      "palette": 12,
+      "pair": 4,
+      "color": "var(--simple-colors-default-theme-cyan-7)",
+      "on": "var(--ddd-theme-default-coalyGray)",
+      "ratio": 4.88,
+      "source": "ddd"
+    },
+    {
+      "palette": 12,
+      "pair": 7,
+      "color": "var(--simple-colors-default-theme-amber-7)",
+      "on": "var(--ddd-theme-default-coalyGray)",
+      "ratio": 4.75,
+      "source": "ddd"
+    },
+    {
+      "palette": 15,
+      "pair": 1,
+      "color": "var(--ddd-theme-default-coalyGray)",
+      "on": "var(--ddd-theme-default-white)",
+      "ratio": 15.43,
+      "source": "ddd"
+    },
+    {
+      "palette": 15,
+      "pair": 4,
+      "color": "var(--simple-colors-default-theme-grey-5)",
+      "on": "var(--ddd-theme-default-coalyGray)",
+      "ratio": 8.04,
+      "source": "ddd"
+    },
+    {
+      "palette": 15,
+      "pair": 6,
+      "color": "var(--simple-colors-default-theme-cyan-7)",
+      "on": "var(--ddd-theme-default-coalyGray)",
+      "ratio": 4.88,
+      "source": "ddd"
+    },
+    {
+      "palette": 15,
+      "pair": 7,
+      "color": "var(--simple-colors-default-theme-amber-7)",
+      "on": "var(--ddd-theme-default-coalyGray)",
+      "ratio": 4.75,
+      "source": "ddd"
+    }
+  ],
   "colorNames": {
     "primary": {
       "0": "Primary Border Subtle",
