@@ -1,0 +1,275 @@
+{
+  "$comment": "DDD bridge for Classic Desktop, the design system wysiwyg96-theme defines for itself (design-system/classic-desktop.tokens.json, a local source). Tiers follow elements/d-d-d/design-system/bridge/contract.json. Every named DDD color points at one of the 20 static colors of the classic system palette, except where a color DDD uses as text has to read on silver: slateGray (muted text) and success take a darker gray and green, original87Pink takes the palette purple, and creekTeal (which DDD pairs with dark text) takes aqua. Fonts are system font stacks, so nothing is downloaded. Kept as DDD on purpose: font weights, state opacities, control heights and border widths, and heading/body sizes (pages keep DDD's reading sizes). Motion is instant: the classic desktop did not animate, and reduced motion is unaffected.",
+  "system": "classic-desktop",
+  "title": "Classic Desktop",
+  "prefix": "ClassicDesktop",
+  "colorNames": {
+    "strip": ["--classic-desktop-palette-", "--classic-desktop-"]
+  },
+  "homepage": "https://github.com/haxtheweb/webcomponents/tree/master/elements/wysiwyg96-theme",
+  "sources": [
+    {
+      "local": true,
+      "file": "design-system/classic-desktop.tokens.json",
+      "format": "dtcg",
+      "prefix": "--classic-desktop-",
+      "license": "Apache-2.0",
+      "copyright": "Copyright 2026 The Pennsylvania State University"
+    }
+  ],
+  "extraTokens": [
+    "--classic-desktop-palette-gray",
+    "--classic-desktop-palette-silver",
+    "--classic-desktop-palette-navy",
+    "--classic-desktop-palette-teal",
+    "--classic-desktop-palette-white",
+    "--classic-desktop-palette-black",
+    "--classic-desktop-palette-aqua",
+    "--classic-desktop-palette-purple",
+    "--classic-desktop-ink-light",
+    "--classic-desktop-bevel-sunken",
+    "--classic-desktop-font-ui"
+  ],
+  "ddd": {
+    "--ddd-theme-default-beaverBlue": {
+      "token": "--classic-desktop-palette-navy",
+      "note": "primary: the navy of an active title bar"
+    },
+    "--ddd-theme-default-nittanyNavy": {
+      "token": "--classic-desktop-palette-navy"
+    },
+    "--ddd-theme-default-potentialMidnight": {
+      "token": "--classic-desktop-palette-black"
+    },
+    "--ddd-theme-default-pughBlue": {
+      "token": "--classic-desktop-palette-sky-blue"
+    },
+    "--ddd-theme-default-accent": {
+      "token": "--classic-desktop-palette-sky-blue"
+    },
+    "--ddd-theme-default-skyBlue": {
+      "token": "--classic-desktop-palette-sky-blue"
+    },
+    "--ddd-theme-default-skyLight": {
+      "token": "--classic-desktop-palette-sky-blue"
+    },
+    "--ddd-theme-default-skyMaxLight": {
+      "token": "--classic-desktop-palette-cream"
+    },
+    "--ddd-theme-default-slateGray": {
+      "token": "--classic-desktop-ink-muted",
+      "note": "muted text; the palette gray is too light on silver",
+      "name": "Dark Gray"
+    },
+    "--ddd-theme-default-slateLight": {
+      "token": "--classic-desktop-palette-silver"
+    },
+    "--ddd-theme-default-slateMaxLight": {
+      "token": "--classic-desktop-palette-cream"
+    },
+    "--ddd-theme-default-coalyGray": {
+      "token": "--classic-desktop-palette-black"
+    },
+    "--ddd-theme-default-black": {
+      "token": "--classic-desktop-palette-black"
+    },
+    "--ddd-theme-default-white": {
+      "token": "--classic-desktop-palette-white"
+    },
+    "--ddd-theme-default-limestoneGray": {
+      "token": "--classic-desktop-palette-medium-gray"
+    },
+    "--ddd-theme-default-limestoneLight": {
+      "token": "--classic-desktop-palette-silver"
+    },
+    "--ddd-theme-default-limestoneMaxLight": {
+      "token": "--classic-desktop-palette-cream"
+    },
+    "--ddd-theme-default-background": {
+      "token": "--classic-desktop-palette-silver",
+      "note": "the gray page canvas of 1996"
+    },
+    "--ddd-theme-default-disabled": {
+      "token": "--classic-desktop-palette-silver"
+    },
+    "--ddd-theme-default-keystoneYellow": {
+      "token": "--classic-desktop-palette-yellow"
+    },
+    "--ddd-theme-default-globalNeon": {
+      "token": "--classic-desktop-palette-yellow"
+    },
+    "--ddd-theme-default-roarGolden": {
+      "token": "--classic-desktop-palette-olive"
+    },
+    "--ddd-theme-default-roarLight": {
+      "token": "--classic-desktop-palette-yellow"
+    },
+    "--ddd-theme-default-roarMaxlight": {
+      "token": "--classic-desktop-palette-cream"
+    },
+    "--ddd-theme-default-shrineTan": {
+      "token": "--classic-desktop-palette-money-green"
+    },
+    "--ddd-theme-default-shrineLight": {
+      "token": "--classic-desktop-palette-money-green"
+    },
+    "--ddd-theme-default-shrineMaxLight": {
+      "token": "--classic-desktop-palette-cream"
+    },
+    "--ddd-theme-default-inventOrange": {
+      "token": "--classic-desktop-palette-red"
+    },
+    "--ddd-theme-default-landgrantBrown": {
+      "token": "--classic-desktop-palette-maroon"
+    },
+    "--ddd-theme-default-creekTeal": {
+      "token": "--classic-desktop-palette-aqua",
+      "note": "DDD sets dark text on creekTeal; the palette teal reads at 4.4:1 with black, so blocks get aqua and the theme draws its desktop in teal"
+    },
+    "--ddd-theme-default-creekLight": {
+      "token": "--classic-desktop-palette-money-green"
+    },
+    "--ddd-theme-default-creekMaxLight": {
+      "token": "--classic-desktop-palette-money-green"
+    },
+    "--ddd-theme-default-opportunityGreen": {
+      "token": "--classic-desktop-palette-green"
+    },
+    "--ddd-theme-default-forestGreen": {
+      "token": "--classic-desktop-palette-green"
+    },
+    "--ddd-theme-default-futureLime": {
+      "token": "--classic-desktop-palette-lime"
+    },
+    "--ddd-theme-default-athertonViolet": {
+      "token": "--classic-desktop-palette-fuchsia"
+    },
+    "--ddd-theme-default-wonderPurple": {
+      "token": "--classic-desktop-palette-purple"
+    },
+    "--ddd-theme-default-original87Pink": {
+      "token": "--classic-desktop-palette-purple",
+      "note": "DDD uses this pink as text (stop-note), so it takes the palette's dark purple, not fuchsia"
+    },
+    "--ddd-theme-default-discoveryCoral": {
+      "token": "--classic-desktop-palette-red"
+    },
+    "--ddd-theme-default-link": {
+      "token": "--classic-desktop-palette-blue",
+      "note": "classic unvisited link blue: 4.7:1 on silver"
+    },
+    "--ddd-theme-default-linkLight": {
+      "token": "--classic-desktop-palette-aqua"
+    },
+    "--ddd-theme-default-error": {
+      "token": "--classic-desktop-palette-maroon"
+    },
+    "--ddd-theme-default-errorLight": {
+      "token": "--classic-desktop-palette-cream"
+    },
+    "--ddd-theme-default-warning": {
+      "token": "--classic-desktop-palette-maroon"
+    },
+    "--ddd-theme-default-warningLight": {
+      "token": "--classic-desktop-palette-cream"
+    },
+    "--ddd-theme-default-info": {
+      "token": "--classic-desktop-palette-navy"
+    },
+    "--ddd-theme-default-infoLight": {
+      "token": "--classic-desktop-palette-sky-blue"
+    },
+    "--ddd-theme-default-success": {
+      "token": "--classic-desktop-ink-success",
+      "name": "Dark Green",
+      "note": "success text has to read on silver, so it takes a darker green than the palette's"
+    },
+    "--ddd-theme-default-successLight": {
+      "token": "--classic-desktop-palette-cream"
+    },
+    "--ddd-theme-default-alertImmediate": {
+      "token": "--classic-desktop-palette-yellow"
+    },
+    "--ddd-theme-default-alertUrgent": {
+      "token": "--classic-desktop-palette-yellow"
+    },
+    "--ddd-theme-default-alertAllClear": {
+      "token": "--classic-desktop-palette-money-green"
+    },
+    "--ddd-theme-default-alertNonEmergency": {
+      "token": "--classic-desktop-palette-sky-blue"
+    },
+    "--ddd-font-primary": {
+      "token": "--classic-desktop-font-page"
+    },
+    "--ddd-font-secondary": {
+      "token": "--classic-desktop-font-page"
+    },
+    "--ddd-font-navigation": {
+      "token": "--classic-desktop-font-ui"
+    },
+    "--ddd-font-mono": {
+      "token": "--classic-desktop-font-mono"
+    },
+    "--ddd-radius-xs": {
+      "value": "0px",
+      "note": "square corners everywhere"
+    },
+    "--ddd-radius-sm": {
+      "value": "0px"
+    },
+    "--ddd-radius-md": {
+      "value": "0px"
+    },
+    "--ddd-radius-lg": {
+      "value": "0px"
+    },
+    "--ddd-radius-xl": {
+      "value": "0px"
+    },
+    "--ddd-boxShadow-sm": {
+      "token": "--classic-desktop-bevel-raised",
+      "note": "elevation is a bevel, not a blur"
+    },
+    "--ddd-boxShadow-md": {
+      "token": "--classic-desktop-bevel-raised"
+    },
+    "--ddd-boxShadow-lg": {
+      "token": "--classic-desktop-bevel-lifted"
+    },
+    "--ddd-boxShadow-xl": {
+      "token": "--classic-desktop-bevel-floating"
+    },
+    "--ddd-focus-ring": {
+      "token": "--classic-desktop-focus-ring"
+    },
+    "--ddd-focus-offset": {
+      "value": "1px"
+    },
+    "--ddd-duration-fast": {
+      "token": "--classic-desktop-duration-instant"
+    },
+    "--ddd-duration-normal": {
+      "token": "--classic-desktop-duration-instant"
+    },
+    "--ddd-duration-slow": {
+      "token": "--classic-desktop-duration-instant"
+    },
+    "--ddd-card-radius": {
+      "value": "0px"
+    },
+    "--ddd-card-shadow": {
+      "token": "--classic-desktop-bevel-raised",
+      "note": "cards are raised panels"
+    },
+    "--ddd-card-border-width": {
+      "value": "0px"
+    },
+    "--ddd-control-radius": {
+      "value": "0px"
+    },
+    "--ddd-tag-radius": {
+      "value": "0px"
+    }
+  }
+}

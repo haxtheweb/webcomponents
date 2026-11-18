@@ -208,3 +208,69 @@ describe("HAXCMSLitElementTheme skip link", () => {
     expect(active ? active.tagName : "none").to.equal("MAIN");
   });
 });
+
+// a theme that opts into autoScroll with the default target, the window
+class TestHaxcmsScrollTheme extends HAXCMSLitElementTheme {
+  constructor() {
+    super();
+    this.HAXCMSThemeSettings.autoScroll = true;
+  }
+}
+customElements.define("test-haxcms-scroll-theme", TestHaxcmsScrollTheme);
+
+describe("HAXCMSLitElementTheme page change scrolling", () => {
+  let element;
+  let spacer;
+  let savedId;
+  let savedContent;
+
+  beforeEach(async () => {
+    savedId = store.activeId;
+    savedContent = store.activeItemContent;
+    store.activeId = "page-a";
+    store.activeItemContent = "<p>a</p>";
+    // room to scroll, the way a long page gives it
+    spacer = document.createElement("div");
+    spacer.style.height = "4000px";
+    document.body.appendChild(spacer);
+    element = await fixture(
+      html`<test-haxcms-scroll-theme></test-haxcms-scroll-theme>`,
+    );
+    await flush(element);
+  });
+
+  afterEach(() => {
+    spacer.remove();
+    globalThis.scrollTo(0, 0);
+    store.activeId = savedId;
+    store.activeItemContent = savedContent;
+  });
+
+  it("starts a new page at the top when the target is the window", async () => {
+    globalThis.scrollTo(0, 1500);
+    expect(globalThis.scrollY).to.be.greaterThan(0);
+    store.activeId = "page-b";
+    store.activeItemContent = "<p>b</p>";
+    await flush(element);
+    expect(globalThis.scrollY).to.equal(0);
+  });
+
+  it("does not move when the same page's content changes (a save)", async () => {
+    globalThis.scrollTo(0, 1500);
+    const y = globalThis.scrollY;
+    store.activeItemContent = "<p>a, saved</p>";
+    await flush(element);
+    expect(globalThis.scrollY).to.equal(y);
+  });
+
+  it("publishes how far down the page the theme starts", async () => {
+    await new Promise((r) => requestAnimationFrame(() => r()));
+    await new Promise((r) => setTimeout(r, 50));
+    const expected = Math.round(
+      element.getBoundingClientRect().top + globalThis.scrollY,
+    );
+    expect(
+      element.style.getPropertyValue("--haxcms-theme-offset-top"),
+    ).to.equal(`${Math.max(0, expected)}px`);
+  });
+});

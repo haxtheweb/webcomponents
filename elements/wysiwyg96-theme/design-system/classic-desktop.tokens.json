@@ -1,0 +1,144 @@
+{
+  "$description": "Classic Desktop, the design system of wysiwyg96-theme: the look of the 1992-1996 desktop that the first WYSIWYG web editors ran on. The 16 VGA colors plus the 4 extra static colors of the classic system palette, square corners, two-tone bevels and a dotted focus ring. Every value is fixed (no light/dark pairs); the theme draws its high contrast black scheme with light-dark().",
+  "palette": {
+    "$type": "color",
+    "black": {
+      "$value": "#000000"
+    },
+    "maroon": {
+      "$value": "#800000"
+    },
+    "green": {
+      "$value": "#008000"
+    },
+    "olive": {
+      "$value": "#808000"
+    },
+    "navy": {
+      "$value": "#000080",
+      "$description": "active title bars and selection"
+    },
+    "purple": {
+      "$value": "#800080"
+    },
+    "teal": {
+      "$value": "#008080",
+      "$description": "the desktop"
+    },
+    "silver": {
+      "$value": "#c0c0c0",
+      "$description": "button face, window frames and the 1996 page canvas"
+    },
+    "gray": {
+      "$value": "#808080",
+      "$description": "bevel shadow"
+    },
+    "red": {
+      "$value": "#ff0000"
+    },
+    "lime": {
+      "$value": "#00ff00"
+    },
+    "yellow": {
+      "$value": "#ffff00"
+    },
+    "blue": {
+      "$value": "#0000ff",
+      "$description": "unvisited links"
+    },
+    "fuchsia": {
+      "$value": "#ff00ff"
+    },
+    "aqua": {
+      "$value": "#00ffff"
+    },
+    "white": {
+      "$value": "#ffffff",
+      "$description": "bevel highlight, fields"
+    },
+    "money-green": {
+      "$value": "#c0dcc0"
+    },
+    "sky-blue": {
+      "$value": "#a6caf0"
+    },
+    "cream": {
+      "$value": "#fffbf0"
+    },
+    "medium-gray": {
+      "$value": "#a0a0a4"
+    }
+  },
+  "ink": {
+    "$type": "color",
+    "muted": {
+      "$value": "#404040",
+      "$description": "muted text: the palette gray reads at 2 to 3:1 on silver, so muted text takes a darker gray"
+    },
+    "light": {
+      "$value": "#dfdfdf",
+      "$description": "inner bevel highlight"
+    },
+    "success": {
+      "$value": "#005000",
+      "$description": "success text: the palette green reads at 2.8:1 on silver"
+    }
+  },
+  "bevel": {
+    "$type": "shadow",
+    "raised": {
+      "$value": "inset -1px -1px 0 #000000, inset 1px 1px 0 #ffffff, inset -2px -2px 0 #808080, inset 2px 2px 0 #dfdfdf",
+      "$description": "buttons, cards and windows"
+    },
+    "sunken": {
+      "$value": "inset 1px 1px 0 #808080, inset -1px -1px 0 #ffffff, inset 2px 2px 0 #000000, inset -2px -2px 0 #dfdfdf",
+      "$description": "fields, wells and pressed buttons"
+    },
+    "lifted": {
+      "$value": "inset -1px -1px 0 #000000, inset 1px 1px 0 #ffffff, inset -2px -2px 0 #808080, inset 2px 2px 0 #dfdfdf, 2px 2px 0 0 #000000",
+      "$description": "a raised surface with a hard drop"
+    },
+    "floating": {
+      "$value": "inset -1px -1px 0 #000000, inset 1px 1px 0 #ffffff, inset -2px -2px 0 #808080, inset 2px 2px 0 #dfdfdf, 4px 4px 0 0 #000000",
+      "$description": "dialogs and windows over the desktop"
+    }
+  },
+  "font": {
+    "$type": "fontFamily",
+    "ui": {
+      "$value": [
+        "Microsoft Sans Serif",
+        "MS Sans Serif",
+        "Tahoma",
+        "Geneva",
+        "Verdana",
+        "Arial",
+        "sans-serif"
+      ],
+      "$description": "menus, title bars and dialogs; system fonts only, nothing is downloaded",
+      "$type": "fontFamily"
+    },
+    "page": {
+      "$value": ["Times New Roman", "Times", "Liberation Serif", "serif"],
+      "$description": "page text, as a 1996 browser drew it",
+      "$type": "fontFamily"
+    },
+    "mono": {
+      "$value": ["Courier New", "Courier", "monospace"],
+      "$type": "fontFamily"
+    }
+  },
+  "duration": {
+    "$type": "duration",
+    "instant": {
+      "$value": "0ms",
+      "$description": "the classic desktop did not animate"
+    }
+  },
+  "focus": {
+    "ring": {
+      "$value": "2px dotted #000000",
+      "$description": "the dotted focus rectangle"
+    }
+  }
+}

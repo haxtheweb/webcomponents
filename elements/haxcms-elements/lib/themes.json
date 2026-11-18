@@ -562,5 +562,17 @@
     "priority": 5,
     "terrible": false,
     "supportedPalettes": null
+  },
+  "wysiwyg96-theme": {
+    "element": "wysiwyg96-theme",
+    "path": "@haxtheweb/wysiwyg96-theme/wysiwyg96-theme.js",
+    "name": "WYSIWYG 96",
+    "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-wysiwyg96-theme-thumb.jpg",
+    "description": "Start with a blank site using the WYSIWYG 96",
+    "category": ["Website"],
+    "hidden": false,
+    "priority": 40,
+    "terrible": false,
+    "supportedPalettes": null
   }
 }

@@ -28,6 +28,7 @@ import {
   loadDesignSystemRegistry,
   siteDesignSystemName,
   themeAcceptsDesignSystems,
+  themeDefaultDesignSystemTitle,
 } from "./utils/HAXCMSDesignSystems.js";
 import "@haxtheweb/simple-fields/simple-fields.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
@@ -87,6 +88,7 @@ class HAXCMSAppearanceAdminDialog extends HaxcmsAdminSectionMixin(
       designSystemDescription:
         "Color, type, corners and density for this theme. The theme keeps its layout.",
       designSystemDefault: "DDD (default)",
+      designSystemThemeDefault: "{name} (theme default)",
       paletteGroupDescription: "Control accent colors and DDD palette tokens.",
       accentColor: "Accent color",
       accentColorDescription:
@@ -805,7 +807,16 @@ class HAXCMSAppearanceAdminDialog extends HaxcmsAdminSectionMixin(
     if (names.length === 0 || !themeAcceptsDesignSystems(themeElement)) {
       return null;
     }
-    const options = { "": this.t.designSystemDefault };
+    // a theme that starts on its own system says which one "default" means
+    const themeDefault = themeDefaultDesignSystemTitle(
+      themeElement,
+      this.__designSystems,
+    );
+    const options = {
+      "": themeDefault
+        ? this.t.designSystemThemeDefault.replace("{name}", () => themeDefault)
+        : this.t.designSystemDefault,
+    };
     names.forEach((name) => {
       options[name] = this.__designSystems[name].title || name;
     });
