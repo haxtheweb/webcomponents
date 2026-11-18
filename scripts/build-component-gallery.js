@@ -507,6 +507,55 @@ function galleryLoader() {
   return { styles: "", markup: "" };
 }
 
+// The design systems a site can pick (scripts/design-system-discovery.mjs
+// writes the registry): the gallery offers the same list, by name and title
+function galleryDesignSystems() {
+  const file = path.join(
+    ELEMENTS_DIR,
+    "haxcms-elements",
+    "lib",
+    "designSystems.json",
+  );
+  try {
+    const registry = JSON.parse(fs.readFileSync(file, "utf8"));
+    return Object.values(registry)
+      .filter((d) => d && /^[a-z0-9-]+$/.test(d.name))
+      .map((d) => ({ name: d.name, title: String(d.title || d.name) }));
+  } catch {
+    console.warn("Warning: could not read designSystems.json");
+    return [];
+  }
+}
+
+// DDD palettes, by data-palette value and label, from the registry the
+// palette picker reads (d-d-d/lib/DDDPaletteRegistry.js)
+function galleryPalettes() {
+  const file = path.join(ELEMENTS_DIR, "d-d-d", "lib", "DDDPaletteRegistry.js");
+  try {
+    const src = fs.readFileSync(file, "utf8");
+    const out = [];
+    const re = /label:\s*"([^"]+)",\s*dataPalette:\s*"([a-z0-9-]+)"/g;
+    let m;
+    while ((m = re.exec(src)) !== null) {
+      out.push({ label: m[1], value: m[2] });
+    }
+    return out;
+  } catch {
+    console.warn("Warning: could not read DDDPaletteRegistry.js");
+    return [];
+  }
+}
+
+// gallery-data/appearance.js: applies the picked design system and palette
+// in the gallery page and in each demo frame
+function copyAppearanceModule() {
+  fs.mkdirSync(DOCS_DIR, { recursive: true });
+  fs.copyFileSync(
+    path.join(__dirname, "gallery", "appearance.js"),
+    path.join(DOCS_DIR, "appearance.js"),
+  );
+}
+
 function generateHTML(components) {
   const totalComponents = components.length;
   // shortcut to the full system demo, used to review everything working together
@@ -518,6 +567,8 @@ function generateHTML(components) {
   ).length;
   const loader = galleryLoader();
   const componentsData = JSON.stringify(components, null, 2);
+  const designSystemsData = JSON.stringify(galleryDesignSystems());
+  const palettesData = JSON.stringify(galleryPalettes());
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -569,6 +620,10 @@ ${loader.styles}
   <!-- dogfood: the gallery's form controls are the same elements the HAX
        admin screens use, so their light/dark handling is the shared one -->
   <script type="module" src="./elements/simple-fields/lib/simple-fields-field.js"></script>
+  <!-- the palette picker HAXcms appearance settings use -->
+  <script type="module" src="./elements/d-d-d/lib/hax-palette-picker.js"></script>
+  <!-- applies ?system= and ?palette= here and in each demo frame -->
+  <script type="module" src="./gallery-data/appearance.js"></script>
   <style id="gallery-styles">
     /* Gallery styles: the HAX UI admin layer (the --hax-ui-* tokens and
        .hax-ui-* controls from d-d-d), so the gallery reads like the rest of
@@ -721,7 +776,10 @@ ${loader.styles}
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      background-color: var(--hax-ui-sunken);
+      /* --hax-ui-sunken is see-through in dark mode, so it is laid over
+         the opaque surface: the phone drawer never shows the page under it */
+      background-color: var(--hax-ui-surface);
+      background-image: linear-gradient(var(--hax-ui-sunken), var(--hax-ui-sunken));
       border-right: 1px solid var(--hax-ui-line);
     }
 
@@ -826,6 +884,69 @@ ${loader.styles}
       margin-top: var(--hax-ui-gap);
     }
 
+    /* Appearance: the design system and palette the gallery and its
+       demos are drawn in, picked the way a HAXcms site picks them */
+    .appearance-toggle {
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .appearance-summary {
+      font-weight: var(--ddd-font-weight-regular, 400);
+      color: var(--hax-ui-text-muted);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .appearance-panel {
+      display: flex;
+      flex-direction: column;
+      gap: var(--hax-ui-gap-lg);
+      max-height: 45vh;
+      overflow-y: auto;
+      padding: var(--hax-ui-gap-md);
+      border: 1px solid var(--hax-ui-line);
+      border-radius: var(--hax-ui-radius);
+      background-color: var(--hax-ui-surface);
+    }
+
+    .appearance-panel[hidden] {
+      display: none;
+    }
+
+    .appearance-panel simple-fields-field {
+      display: block;
+      width: 100%;
+      --simple-fields-input-max-width: 100%;
+    }
+
+    .appearance-note {
+      font-size: var(--hax-ui-admin-font-size-xs, 12px);
+      color: var(--hax-ui-text-muted);
+    }
+
+    .gallery-footer {
+      flex: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--hax-ui-gap) var(--hax-ui-gap-lg);
+      padding: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
+      border-top: 1px solid var(--hax-ui-line);
+      font-size: var(--hax-ui-admin-font-size-xs, 12px);
+      color: var(--hax-ui-text-muted);
+    }
+
+    .gallery-footer a,
+    .gallery-footer a:any-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      font-weight: var(--ddd-font-weight-regular, 400);
+      color: var(--hax-ui-text);
+      text-decoration: underline;
+    }
+
     /* Main area: page header, toolbar, then the stage */
     .main-content {
       flex: 1;
@@ -871,6 +992,11 @@ ${loader.styles}
       letter-spacing: 0.04em;
       text-transform: uppercase;
       color: var(--hax-ui-text-muted);
+    }
+
+    .snippet-code:focus-visible {
+      outline: var(--hax-ui-focus-width, 2px) solid var(--hax-ui-focus);
+      outline-offset: 2px;
     }
 
     .snippet-code {
@@ -1095,6 +1221,8 @@ ${loader.styles}
       .sidebar {
         display: none;
         position: fixed;
+        /* where the title bar ends on screen (the network bar above it
+           scrolls away), kept current by the gallery script */
         top: var(--gal-bar, 6rem);
         left: 0;
         right: 0;
@@ -1240,6 +1368,16 @@ ${
             hax-* <span class="n">${components.filter((c) => c.name.startsWith("hax-")).length}</span>
           </button>
         </div>
+
+        <button class="hax-ui-btn appearance-toggle" id="appearanceToggle" aria-expanded="false" aria-controls="appearancePanel">
+          Appearance <span class="appearance-summary" id="appearanceSummary">DDD</span>
+        </button>
+        <div class="appearance-panel" id="appearancePanel" role="group" aria-label="Appearance" hidden>
+          <simple-fields-field class="hax-ui-simple-field compact" id="systemSelect" type="select" label="Design system"></simple-fields-field>
+          <hax-palette-picker id="palettePicker" label="Palette"></hax-palette-picker>
+          <p class="appearance-note">Applies to the gallery and the demo, the way a HAXcms site applies a design system and palette. The link keeps your choice.</p>
+          <button class="hax-ui-btn" id="appearanceReset">Reset to DDD</button>
+        </div>
       </div>
 
       <p class="rail-label" id="listLabel" aria-live="polite">${totalComponents} shown</p>
@@ -1248,6 +1386,12 @@ ${
       </nav>
 
       <p class="hax-ui-message no-results hidden" id="noResults">No components found</p>
+
+      <footer class="gallery-footer">
+        <a href="https://github.com/haxtheweb/webcomponents/blob/master/LICENSE.md" target="_blank" rel="noopener">Apache-2.0 license</a>
+        <a href="https://cdn.hax.cloud/cdn/build/THIRD_PARTY_LICENSES" target="_blank" rel="noopener">Third-party licenses</a>
+        <a href="https://github.com/haxtheweb/webcomponents" target="_blank" rel="noopener">Source</a>
+      </footer>
     </aside>
 
     <!-- Main content area -->
@@ -1260,10 +1404,10 @@ ${
 
         <div class="snippets">
           <span class="snippet-label">Install</span>
-          <code class="snippet-code" id="installationCode">npm install @haxtheweb/example-element</code>
+          <code class="snippet-code" id="installationCode" tabindex="0">npm install @haxtheweb/example-element</code>
           <button class="hax-ui-btn ghost" data-copy="installationCode">Copy</button>
           <span class="snippet-label">Import</span>
-          <code class="snippet-code" id="usageCode">import '@haxtheweb/example-element/example-element.js';</code>
+          <code class="snippet-code" id="usageCode" tabindex="0">import '@haxtheweb/example-element/example-element.js';</code>
           <button class="hax-ui-btn ghost" data-copy="usageCode">Copy</button>
         </div>
 
@@ -1479,7 +1623,7 @@ ${
     // Render component list
     function renderComponentList() {
       filteredComponents = filterComponents();
-      componentList.innerHTML = '';
+      componentList.replaceChildren();
       
       listLabel.textContent = filteredComponents.length + ' shown';
       if (filteredComponents.length === 0) {
@@ -1498,21 +1642,36 @@ ${
           item.setAttribute('aria-current', 'page');
         }
 
+        // [label, tone] pairs; built as text nodes, never HTML strings
         const tags = [];
-        if (component.isHaxCapable) tags.push('<span class="hax-ui-pill" data-tone="accent">HAX</span>');
-        if (component.isTheme) tags.push('<span class="hax-ui-pill">Theme</span>');
-        if (component.isInstructional) tags.push('<span class="hax-ui-pill" data-tone="success">Instructional</span>');
-        if (component.isDesignSystem) tags.push('<span class="hax-ui-pill" data-tone="muted">Design system</span>');
+        if (component.isHaxCapable) tags.push(['HAX', 'accent']);
+        if (component.isTheme) tags.push(['Theme', '']);
+        if (component.isInstructional) tags.push(['Instructional', 'success']);
+        if (component.isDesignSystem) tags.push(['Design system', 'muted']);
         if (component.motionStatus && component.motionStatus !== 'none') {
-          tags.push('<span class="hax-ui-pill" data-tone="info">Walkthrough</span>');
-          if (component.motionStatus === 'stale') tags.push('<span class="hax-ui-pill" data-tone="warning">Needs update</span>');
+          tags.push(['Walkthrough', 'info']);
+          if (component.motionStatus === 'stale') tags.push(['Needs update', 'warning']);
         }
 
-        item.innerHTML = \`
-          <div class="component-item-name">&lt;\${component.name}&gt;</div>
-          <div class="component-item-description">\${component.description}</div>
-          \${tags.length ? '<div class="tags">' + tags.join('') + '</div>' : ''}
-        \`;
+        const name = document.createElement('div');
+        name.className = 'component-item-name';
+        name.textContent = '<' + component.name + '>';
+        const description = document.createElement('div');
+        description.className = 'component-item-description';
+        description.textContent = component.description;
+        item.append(name, description);
+        if (tags.length) {
+          const row = document.createElement('div');
+          row.className = 'tags';
+          tags.forEach(([label, tone]) => {
+            const pill = document.createElement('span');
+            pill.className = 'hax-ui-pill';
+            if (tone) pill.dataset.tone = tone;
+            pill.textContent = label;
+            row.appendChild(pill);
+          });
+          item.appendChild(row);
+        }
         
         item.addEventListener('click', () => selectComponent(component));
         componentList.appendChild(item);
@@ -1595,7 +1754,11 @@ ${
           return;
         }
         const picked = demoSelector.value || currentComponent.demoPath;
-        if (picked === currentDemoPath) {
+        // only one of this component's own demo pages is ever loaded
+        const known = [currentComponent.demoPath].concat(
+          (currentComponent.additionalDemos || []).map(d => d.path)
+        );
+        if (picked === currentDemoPath || known.indexOf(picked) === -1) {
           return;
         }
         currentDemoPath = picked;
@@ -1684,31 +1847,32 @@ ${
     }
 
     function updateUrlForCurrentDemo() {
-      if (!currentComponent) {
-        return;
-      }
       const params = new URLSearchParams();
-      params.set('element', currentComponent.name);
-      if (currentDemoPath && currentDemoPath !== currentComponent.demoPath) {
-        let demoName = null;
-        if (currentComponent.additionalDemos && currentComponent.additionalDemos.length > 0) {
-          for (let i = 0; i < currentComponent.additionalDemos.length; i++) {
-            if (currentComponent.additionalDemos[i].path === currentDemoPath) {
-              demoName = currentComponent.additionalDemos[i].name;
-              break;
+      if (currentComponent) {
+        params.set('element', currentComponent.name);
+        if (currentDemoPath && currentDemoPath !== currentComponent.demoPath) {
+          let demoName = null;
+          if (currentComponent.additionalDemos && currentComponent.additionalDemos.length > 0) {
+            for (let i = 0; i < currentComponent.additionalDemos.length; i++) {
+              if (currentComponent.additionalDemos[i].path === currentDemoPath) {
+                demoName = currentComponent.additionalDemos[i].name;
+                break;
+              }
             }
           }
+          if (demoName) {
+            params.set('demo', demoName);
+          }
         }
-        if (demoName) {
-          params.set('demo', demoName);
+        if (currentView === 'docs') {
+          params.set('view', 'docs');
+          if (currentTopic) {
+            params.set('topic', currentTopic);
+          }
         }
       }
-      if (currentView === 'docs') {
-        params.set('view', 'docs');
-        if (currentTopic) {
-          params.set('topic', currentTopic);
-        }
-      }
+      if (appearance.system) params.set('system', appearance.system);
+      if (appearance.palette) params.set('palette', appearance.palette);
       const search = params.toString();
       globalThis.history.replaceState({}, '', globalThis.location.pathname + (search ? '?' + search : ''));
     }
@@ -1758,17 +1922,43 @@ ${
     const mobileBar = document.getElementById('mobileBar');
     const mobileTitle = document.getElementById('mobileTitle');
     const phone = globalThis.matchMedia('(max-width: 768px)');
+    const mainContent = document.querySelector('.main-content');
+    // a phone turned to a wide window: the drawer is a sidebar again
+    phone.addEventListener('change', () => {
+      mainContent.inert = phone.matches && sidebar.classList.contains('open');
+    });
     function setDrawer(open) {
       sidebar.classList.toggle('open', open);
       listToggle.setAttribute('aria-expanded', String(open));
       listToggle.textContent = open ? 'Close' : 'Components';
       // nothing to close back to until a component is chosen
       listToggle.hidden = open && !currentComponent;
-      document.documentElement.style.setProperty('--gal-bar', mobileBar.offsetHeight + 'px');
+      // on phones the drawer covers the page: keep focus out from under it
+      mainContent.inert = open && phone.matches;
+      placeDrawer();
       if (!open && phone.matches) {
         globalThis.scrollTo(0, 0);
       }
     }
+    // the network bar above the title bar scrolls away and the title bar
+    // sticks, so the drawer follows the bar's bottom edge on screen
+    function placeDrawer() {
+      const bottom = Math.max(0, Math.round(mobileBar.getBoundingClientRect().bottom));
+      document.documentElement.style.setProperty('--gal-bar', bottom + 'px');
+    }
+    globalThis.addEventListener('scroll', () => {
+      if (sidebar.classList.contains('open')) placeDrawer();
+    }, { passive: true });
+    globalThis.addEventListener('resize', placeDrawer);
+    // the network bar renders after this script runs and pushes the title
+    // bar down, so watch both bars' sizes, and settle again once loaded
+    if (globalThis.ResizeObserver) {
+      const bars = new globalThis.ResizeObserver(placeDrawer);
+      bars.observe(mobileBar);
+      const network = document.querySelector('hax-network-bar');
+      if (network) bars.observe(network);
+    }
+    globalThis.addEventListener('load', placeDrawer);
     listToggle.addEventListener('click', () => {
       setDrawer(!sidebar.classList.contains('open'));
     });
@@ -1778,6 +1968,101 @@ ${
         listToggle.focus();
       }
     });
+
+    // Appearance: design system and palette, as a HAXcms site picks them.
+    // ?system= is only ever a key of the registry below and ?palette= a
+    // DDD palette name, so a link can't load anything else.
+    const DESIGN_SYSTEMS = ${designSystemsData};
+    const PALETTES = ${palettesData};
+    const appearance = { system: '', palette: '' };
+    const appearanceToggle = document.getElementById('appearanceToggle');
+    const appearancePanel = document.getElementById('appearancePanel');
+    const appearanceSummary = document.getElementById('appearanceSummary');
+    const systemSelect = document.getElementById('systemSelect');
+    const palettePicker = document.getElementById('palettePicker');
+    const APPEARANCE_MODULE = new URL('gallery-data/appearance.js', document.baseURI).href;
+    {
+      const system = getQueryParam('system');
+      if (system && DESIGN_SYSTEMS.some(d => d.name === system)) appearance.system = system;
+      const palette = getQueryParam('palette');
+      if (palette && PALETTES.some(p => p.value === palette)) appearance.palette = palette;
+    }
+    function appearanceIsDefault() {
+      return !appearance.system && !appearance.palette;
+    }
+    function summarize() {
+      const system = DESIGN_SYSTEMS.find(d => d.name === appearance.system);
+      const palette = PALETTES.find(p => p.value === appearance.palette);
+      appearanceSummary.textContent = (system ? system.title : 'DDD') + (palette ? ' · ' + palette.label : '');
+    }
+    // mark a document's root and ask the appearance module there to apply it
+    function applyTo(doc, win) {
+      doc.documentElement.dataset.gallerySystem = appearance.system;
+      if (appearance.palette) {
+        doc.documentElement.setAttribute('data-palette', appearance.palette);
+      } else {
+        doc.documentElement.removeAttribute('data-palette');
+      }
+      win.dispatchEvent(new CustomEvent('gallery-appearance'));
+    }
+    function applyToFrame() {
+      let doc = null;
+      try {
+        doc = demoFrame.contentDocument;
+      } catch (e) {
+        return;
+      }
+      if (!doc || !doc.head) return;
+      const loaded = doc.querySelector('script[data-gallery-appearance]');
+      // demos are left exactly as they are until a reviewer picks something
+      if (!loaded && appearanceIsDefault()) return;
+      applyTo(doc, demoFrame.contentWindow);
+      if (!loaded) {
+        const script = doc.createElement('script');
+        script.type = 'module';
+        script.src = APPEARANCE_MODULE;
+        script.dataset.galleryAppearance = '';
+        doc.head.appendChild(script);
+      }
+    }
+    function setAppearance(system, palette) {
+      appearance.system = system;
+      appearance.palette = palette;
+      summarize();
+      applyTo(document, globalThis);
+      applyToFrame();
+      updateUrlForCurrentDemo();
+    }
+    demoFrame.addEventListener('load', applyToFrame);
+    systemSelect.itemsList = [{ text: 'DDD (default)', value: '' }].concat(
+      DESIGN_SYSTEMS.map(d => ({ text: d.title, value: d.name }))
+    );
+    systemSelect.value = appearance.system;
+    palettePicker.value = appearance.palette;
+    systemSelect.addEventListener('value-changed', () => {
+      const value = systemSelect.value || '';
+      if (value !== appearance.system && (value === '' || DESIGN_SYSTEMS.some(d => d.name === value))) {
+        setAppearance(value, appearance.palette);
+      }
+    });
+    palettePicker.addEventListener('value-changed', (e) => {
+      const value = String((e.detail && e.detail.value) || palettePicker.value || '');
+      if (value !== appearance.palette && (value === '' || PALETTES.some(p => p.value === value))) {
+        setAppearance(appearance.system, value);
+      }
+    });
+    document.getElementById('appearanceReset').addEventListener('click', () => {
+      systemSelect.value = '';
+      palettePicker.value = '';
+      setAppearance('', '');
+    });
+    appearanceToggle.addEventListener('click', () => {
+      const open = appearancePanel.hidden;
+      appearancePanel.hidden = !open;
+      appearanceToggle.setAttribute('aria-expanded', String(open));
+    });
+    summarize();
+    applyTo(document, globalThis);
 
     // Initialize
     renderComponentList();
@@ -1793,6 +2078,7 @@ ${
 // Generate the gallery
 console.log("Scanning components...");
 buildDocsData();
+copyAppearanceModule();
 const components = getComponentInfo();
 
 // Count components that are HAX-capable (have haxProperties wiring)
