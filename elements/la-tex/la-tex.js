@@ -41,6 +41,10 @@ class LaTex extends I18NMixin(LitElement) {
     this.hydrateLaTeX();
   }
   hydrateLaTeX() {
+    // fetch MathJax alongside the layout bundle rather than after it
+    const mathJax = loadMathJax().catch((error) => {
+      console.warn(error.message);
+    });
     ESGlobalBridgeStore.import(
       "latex2html5",
       new URL(`./lib/latex2html5.js`, import.meta.url).href,
@@ -64,9 +68,7 @@ class LaTex extends I18NMixin(LitElement) {
         if (globalThis.LaTeX2HTML5) {
           // MathJax 4, shared with lrn-math and served with HAX; if it can
           // not load, the layout still renders with the TeX source showing
-          await loadMathJax().catch((error) => {
-            console.warn(error.message);
-          });
+          await mathJax;
           try {
             if (globalThis.LaTeX2HTML5.hydrate) {
               // render just this element (its wrapper exists once it has
@@ -104,6 +106,7 @@ class LaTex extends I18NMixin(LitElement) {
         .ddd-block-body {
           padding: var(--ddd-spacing-3) var(--ddd-spacing-4);
           overflow-x: auto;
+          container-type: inline-size;
         }
         /* placed inline by the page: no frame, exactly as before */
         .ddd-block.is-inline {
@@ -124,6 +127,29 @@ class LaTex extends I18NMixin(LitElement) {
         .pspicture {
           position: relative;
           margin: auto;
+        }
+
+        /* pspicture slider controls sit side by side under the picture,
+           which keeps its own (often wide) width. In a narrow block, stack
+           them and keep them at the visible left edge while the picture
+           scrolls, so none is pushed out of view (reflow) */
+        /* the picture gets a fixed inline height for its drawing; slider
+           controls come after the drawing, so let the box grow to hold
+           them instead of letting them hang out of it */
+        .pspicture:has(> label) {
+          height: auto !important;
+        }
+        @container (max-width: 480px) {
+          .pspicture > label {
+            display: block;
+            position: sticky;
+            left: 0;
+            width: fit-content;
+            max-width: 100cqi;
+          }
+          .pspicture > label input {
+            max-width: 100%;
+          }
         }
 
         .enumerate {

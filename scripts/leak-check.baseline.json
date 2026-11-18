@@ -7,9 +7,6 @@
     "d-d-docs": {
       "retained": 1
     },
-    "la-tex": {
-      "retained": 1
-    },
     "unity-webgl": {
       "listeners": 4,
       "raf-loops": 1,
