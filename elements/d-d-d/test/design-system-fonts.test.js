@@ -3,18 +3,14 @@ import { mergeGoogleFontsURLs } from "../lib/DesignSystemManager.js";
 import { DDDFonts } from "../lib/DDDStyles.js";
 
 describe("DesignSystemManager font loading", () => {
-  it("loads the three DDD families from one Google Fonts request", () => {
-    const merged = mergeGoogleFontsURLs(DDDFonts);
-    expect(merged.length).to.equal(1);
-    const url = new URL(merged[0]);
-    expect(url.hostname).to.equal("fonts.googleapis.com");
-    expect(url.pathname).to.equal("/css2");
-    expect(url.searchParams.getAll("family")).to.deep.equal(
-      DDDFonts.map((f) => new URL(f).searchParams.get("family")),
-    );
-    expect(url.searchParams.get("display")).to.equal("swap");
-    // the css2 syntax survives as Google writes it
-    expect(merged[0]).to.contain("family=Roboto+Slab:wght@300;400;500;700;900");
+  it("merges Google Fonts fallbacks (families HAX doesn't ship) into one request", () => {
+    const merged = mergeGoogleFontsURLs([
+      "https://fonts.googleapis.com/css2?family=Not+Shipped:wght@400&display=swap",
+      "https://fonts.googleapis.com/css2?family=Also+Not:wght@300;400&display=swap",
+    ]);
+    expect(merged).to.deep.equal([
+      "https://fonts.googleapis.com/css2?family=Not+Shipped:wght@400&family=Also+Not:wght@300;400&display=swap",
+    ]);
   });
 
   it("keeps other stylesheets and differing display values apart", () => {

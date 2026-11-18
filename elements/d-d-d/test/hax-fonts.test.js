@@ -37,7 +37,22 @@ describe("HAX fonts", () => {
     expect(haxFontURL("constructor")).to.equal(null);
   });
 
-  it("resolves Google Fonts URLs (css2 and the old css API) to local stylesheets", () => {
+  it("resolves family names, the convention, to local stylesheets", () => {
+    expect(
+      resolveFontURLs([
+        "IBM Plex Sans",
+        "Roboto",
+        "IBM Plex Sans",
+        "Not A HAX Font",
+      ]),
+    ).to.deep.equal([
+      haxFontURL("IBM Plex Sans"),
+      haxFontURL("Roboto"),
+      "https://fonts.googleapis.com/css2?family=Not+A+HAX+Font&display=swap",
+    ]);
+  });
+
+  it("still resolves Google Fonts URLs (css2 and the old css API) to local stylesheets", () => {
     const out = resolveFontURLs([
       "https://example.com/brand.css",
       "https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,400&family=Roboto+Mono:wght@400&display=swap",

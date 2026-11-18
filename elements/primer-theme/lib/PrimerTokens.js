@@ -92,6 +92,4 @@ export const PrimerTokens = css`
   }
 `;
 
-export const PrimerFonts = [
-  "https://fonts.googleapis.com/css2?family=Mona+Sans:wght@300..600&display=swap",
-];
+export const PrimerFonts = ["Mona Sans"];

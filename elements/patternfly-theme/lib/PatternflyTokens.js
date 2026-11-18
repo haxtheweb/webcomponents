@@ -147,7 +147,7 @@ export const PatternflyTokens = css`
 `;
 
 export const PatternflyFonts = [
-  "https://fonts.googleapis.com/css2?family=Red+Hat+Text:ital,wght@0,400;0,500;0,700;1,400&display=swap",
-  "https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700&display=swap",
-  "https://fonts.googleapis.com/css2?family=Red+Hat+Mono:wght@400;500&display=swap",
+  "Red Hat Text",
+  "Red Hat Display",
+  "Red Hat Mono",
 ];

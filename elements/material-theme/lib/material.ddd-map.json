@@ -77,13 +77,11 @@
   "fonts": [
     {
       "family": "Roboto",
-      "license": "OFL-1.1",
-      "url": "https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap"
+      "license": "OFL-1.1"
     },
     {
       "family": "Roboto Mono",
-      "license": "Apache-2.0",
-      "url": "https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap"
+      "license": "Apache-2.0"
     }
   ],
   "coverage": {

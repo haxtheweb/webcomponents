@@ -79,10 +79,8 @@ export class GlossyPortfolioTheme extends DDDSuper(
     // Playfair Display, Source Code Pro, and Work Sans were loaded but never referenced.
     // Note: 'DM Serif Display' is referenced in glossy-portfolio-home .title em but was never
     // loaded; left as-is (falls back to serif) to avoid changing the rendered appearance.
-    const PortfolioFonts = [
-      "https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap",
-      "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
-    ];
+    // font families, by name: HAX serves each one (d-d-d/lib/fonts)
+    const PortfolioFonts = ["Manrope", "Inter"];
     let DesignSystemManager =
       globalThis.DesignSystemManager.requestAvailability();
     DesignSystemManager.addDesignSystem({

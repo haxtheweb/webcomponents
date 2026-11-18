@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 /**
  * Vendored fonts gate. Invariants:
- *   - every font family the elements name (in a fonts.googleapis.com URL,
- *     or in a family list or loader call that loads faces by name) is one
+ *   - every font family the elements name (in a design system's fonts list
+ *     or a bridge's fonts, by family name as the convention is or as a
+ *     fonts.googleapis.com URL, or in a loader call or face list) is one
  *     HAX ships in elements/d-d-d/lib/fonts, so no page sends a visitor to
  *     Google for it (d-d-d/lib/fonts.js serves the local copy)
  *   - no HTML in elements links or preconnects to Google Fonts
@@ -90,6 +91,12 @@ function namedFamilies(src) {
     const inner = m[1].match(/["']([^"']+)["']/g) || [];
     inner.forEach((q) => out.push(q.slice(1, -1)));
   }
+  // design system font lists by family name: export const CarbonFonts =
+  // ["IBM Plex Sans"], const PortfolioFonts = [...], DDDFonts
+  const fontLists = /\b\w*Fonts\s*=\s*\[([^\]]*)\]/g;
+  while ((m = fontLists.exec(src)) !== null) {
+    (m[1].match(/["']([^"'/]+)["']/g) || []).forEach((q) => out.push(q.slice(1, -1)));
+  }
   // const CHROME_FACES = [...] / export const VHS_BLOG_FACES = [["A", 400, ...], ...]
   const lists = /\b(?:CHROME_FACES|VHS_BLOG_FACES)\s*=\s*\[([\s\S]*?)\];/g;
   while ((m = lists.exec(src)) !== null) {
@@ -102,6 +109,16 @@ function namedFamilies(src) {
     }
   }
   return out;
+}
+
+// a bridge's fonts: { "fonts": [{ "family": "IBM Plex Sans", ... }] }
+function jsonFamilies(src) {
+  try {
+    const fonts = JSON.parse(src).fonts;
+    return Array.isArray(fonts) ? fonts.map((f) => f && f.family).filter(Boolean) : [];
+  } catch {
+    return [];
+  }
 }
 
 async function main() {
@@ -147,7 +164,10 @@ async function main() {
   walk(ELEMENTS, []).forEach((file) => {
     const src = fs.readFileSync(file, "utf8");
     const rel = path.relative(root, file);
-    urlFamilies(src).concat(/\.(js|mjs)$/.test(file) ? namedFamilies(src) : []).forEach((family) => {
+    urlFamilies(src)
+      .concat(/\.(js|mjs)$/.test(file) ? namedFamilies(src) : [])
+      .concat(/(bridge|\.ddd-map)\.json$/.test(file) ? jsonFamilies(src) : [])
+      .forEach((family) => {
       if (!named.has(family)) named.set(family, new Set());
       named.get(family).add(rel);
     });

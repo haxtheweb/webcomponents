@@ -34,18 +34,15 @@
   "fonts": [
     {
       "family": "Source Sans 3",
-      "license": "OFL-1.1",
-      "url": "https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,700;1,400&display=swap"
+      "license": "OFL-1.1"
     },
     {
       "family": "Merriweather",
-      "license": "OFL-1.1",
-      "url": "https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap"
+      "license": "OFL-1.1"
     },
     {
       "family": "Roboto Mono",
-      "license": "Apache-2.0",
-      "url": "https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap"
+      "license": "Apache-2.0"
     }
   ],
   "coverage": {

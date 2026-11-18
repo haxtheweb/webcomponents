@@ -3,9 +3,8 @@
  * @license Apache-2.0, see LICENSE for full text.
  *
  * Fonts HAX serves itself. DDD, the design system bridges and the themes
- * name their fonts the way Google Fonts does (a family, or a fonts.googleapis
- * stylesheet URL); these functions turn that into the stylesheets under
- * lib/fonts, which HAX ships with the rest of the build (the CDN, both
+ * name their fonts by family ("IBM Plex Sans"), as Google Fonts names them;
+ * these functions turn a family into its stylesheet under lib/fonts, which HAX ships with the rest of the build (the CDN, both
  * backends, a site's own copy). A family that is not vendored keeps loading
  * from Google Fonts, so nothing that names a new family breaks.
  *
@@ -66,10 +65,13 @@ function familiesOf(url) {
 }
 
 /**
- * Stylesheet URLs with every family HAX ships served locally: a Google Fonts
- * URL becomes one local stylesheet per vendored family, plus a Google URL
- * for whatever families are left. Other URLs pass through. No duplicates.
- * @param {Array<String>} fonts stylesheet URLs
+ * The stylesheets for a design system's fonts list. Each entry is a family
+ * name (the convention: "Roboto Slab") or, as older systems and custom
+ * themes may still have, a stylesheet URL. A family HAX ships is served
+ * locally; a Google Fonts URL becomes one local stylesheet per vendored
+ * family plus a Google URL for whatever families are left; other URLs pass
+ * through. No duplicates.
+ * @param {Array<String>} fonts family names or stylesheet URLs
  * @returns {Array<String>}
  */
 export function resolveFontURLs(fonts) {
@@ -81,6 +83,11 @@ export function resolveFontURLs(fonts) {
     }
   };
   list.forEach((font) => {
+    // a family name: no scheme, so not a URL
+    if (typeof font === "string" && font.indexOf("://") === -1) {
+      add(fontStylesheetURL(font));
+      return;
+    }
     let url = null;
     try {
       url = new URL(font);

@@ -5,8 +5,9 @@ instead of Google Fonts, so a HAX site, the CDN build and both backends serve
 them alongside the rest of HAX: no visitor's address goes to Google, and
 sites work offline and on networks that block Google.
 
-`lib/fonts.js` maps a family (or a Google Fonts URL naming it) to the CSS
-here; a family that is not listed still loads from Google Fonts. Each font
+Name a font by family: a design system's `fonts: ["IBM Plex Sans"]`, or
+`loadFontFamily("VT323")` from `lib/fonts.js`, which serves the CSS here
+once per page. A family that is not listed still loads from Google Fonts. Each font
 keeps its own license, in the `LICENSE` beside its CSS, and is listed with it
 in `THIRD_PARTY_LICENSES.md` (from `third-party.json`). Only OFL-1.1 and
 Apache-2.0 fonts are vendored.
