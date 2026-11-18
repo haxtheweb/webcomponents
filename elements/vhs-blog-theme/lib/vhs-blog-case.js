@@ -2,6 +2,7 @@
  * Copyright 2026 haxtheweb
  * @license Apache-2.0, see LICENSE for full text.
  */
+import { fontStylesheetURL } from "@haxtheweb/d-d-d/lib/fonts.js";
 
 /**
  * Keepcase: the case generator behind vhs-blog-theme.
@@ -306,8 +307,9 @@ const FONT_QUERY = {
 };
 
 /**
- * Load a Google Fonts family once per document, only when a case on the
- * page uses it. @font-face has to live in the document for shadow roots to
+ * Load a font family once per document, only when a case on the page uses
+ * it: from HAX when HAX ships the family (every face here), otherwise Google
+ * Fonts with the axes in FONT_QUERY. @font-face has to live in the document for shadow roots to
  * use it, so this adds one <link> per family to document.head.
  * @param {string} family
  */
@@ -321,10 +323,13 @@ export function vhsBlogLoadFace(family) {
   if (doc.getElementById(id)) {
     return;
   }
-  const query = FONT_QUERY[family] || family.replace(/ /g, "+");
+  const query = FONT_QUERY[family] || "";
   const link = doc.createElement("link");
   link.id = id;
   link.rel = "stylesheet";
-  link.href = `https://fonts.googleapis.com/css2?family=${query}&display=swap`;
+  link.href = fontStylesheetURL(
+    family,
+    query.indexOf(":") === -1 ? "" : query.slice(query.indexOf(":") + 1),
+  );
   doc.head.appendChild(link);
 }

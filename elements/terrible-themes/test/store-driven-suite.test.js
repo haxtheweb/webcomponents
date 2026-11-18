@@ -14,10 +14,9 @@ const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 const savedManifest = store.manifest;
 const savedActiveId = store.activeId;
 
-// block every googleapis font stylesheet for the whole session: the
-// productionz theme's firstUpdated injects a remote Caveat font link and
-// the d-d-d design system registers Roboto fonts, neither of which should
-// ever be fetched from the network in tests
+// record (and drop) any Google Fonts stylesheet for the whole session: HAX
+// serves Caveat and DDD's Roboto itself (d-d-d/lib/fonts), so none should
+// ever be asked for
 const savedAppendChild = globalThis.document.head.appendChild;
 const blockedFontLinks = [];
 globalThis.document.head.appendChild = (el) => {
@@ -258,13 +257,13 @@ describe("terrible-productionz-themes", () => {
         "productionzbg.jpg",
       ),
     ).to.equal(true);
-    // the remote Caveat font link never lands in the document head
+    // Caveat loads from HAX's own copy, and nothing asks Google for a font
     expect(
-      globalThis.document.head.querySelector('link[href*="Caveat"]') === null,
-    ).to.equal(true);
-    expect(
-      blockedFontLinks.some((href) => (href || "").includes("family=Caveat")),
-    ).to.equal(true);
+      globalThis.document.head.querySelector(
+        'link[href*="/lib/fonts/caveat/caveat.css"]',
+      ),
+    ).to.not.equal(null);
+    expect(blockedFontLinks).to.deep.equal([]);
   });
 
   it("falls back through manifest author sources", async () => {

@@ -10,9 +10,10 @@ describe("collections-theme", () => {
   let savedManifest;
   let savedActiveId;
   let savedBadDevice;
-  const googleFontLinks = () => [
+  // HAX serves Roboto itself (d-d-d/lib/fonts), never Google
+  const robotoFontLinks = () => [
     ...globalThis.document.head.querySelectorAll(
-      'link[href*="fonts.googleapis.com/css2?family=Roboto"]',
+      'link[href*="/lib/fonts/roboto/roboto.css"]',
     ),
   ];
 
@@ -218,11 +219,16 @@ describe("collections-theme", () => {
   });
 
   it("injects the Roboto font link on good devices", async () => {
-    const before = googleFontLinks().length;
+    const before = robotoFontLinks().length;
     store.badDevice = false;
     await new Promise((r) => setTimeout(r, 50));
-    const after = googleFontLinks();
+    const after = robotoFontLinks();
     expect(after.length > before).to.equal(true);
+    expect(
+      globalThis.document.head.querySelector(
+        'link[href*="fonts.googleapis.com"]',
+      ),
+    ).to.equal(null);
     // clean up the injected font links
     after.forEach((link) => link.remove());
     store.badDevice = true;

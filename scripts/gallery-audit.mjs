@@ -25,7 +25,7 @@
  *     the system is the active one in the gallery and in the demo.
  *   - security: links that open a new window carry rel="noopener"; no
  *     javascript: URLs; the gallery makes no request off the local server
- *     on load; vercel.json sends nosniff, a referrer policy and a CSP.
+ *     on load, fonts included (HAX serves its own); vercel.json sends nosniff, a referrer policy and a CSP.
  *   - performance: first load stays within request, byte and
  *     time-to-styled budgets (BUDGET below), so a heavy import is caught.
  *   - licenses: the gallery links the project license and the third-party
@@ -83,10 +83,6 @@ const BUDGET = {
   kilobytes: 2500,
   styledMs: 6000,
 };
-// DDD loads its fonts from Google Fonts on every HAX property (DDDFonts in
-// d-d-d/lib/DDDStyles.js and each bridge's fonts); anything else off-site
-// on first load is a finding
-const FONT_HOSTS = /^https:\/\/fonts\.(googleapis|gstatic)\.com\//;
 // The Licenses view shows the CDN build's notices; the audit answers that
 // request with a small fixture shaped like scripts/copy-dep-licenses.js
 // output (an index table and a fenced license text), never the network
@@ -170,7 +166,7 @@ async function newPage(browser, origin, viewport, scheme, extra = {}) {
   page.on("request", (r) => {
     if (r.frame() !== page.mainFrame()) return;
     stats.requests++;
-    if (!LOCAL.test(r.url()) && !FONT_HOSTS.test(r.url()) && r.url() !== LICENSES_MD) {
+    if (!LOCAL.test(r.url()) && r.url() !== LICENSES_MD) {
       offsite.push(r.url());
     }
   });
@@ -594,6 +590,8 @@ async function auditSystem(browser, origin, axeSource, system, scheme) {
     await s.page.waitForTimeout(300);
     add(where, await axe(s.page, axeSource, ["color-contrast"]));
     add(where, s.errors);
+    // the system's fonts come from HAX, like everything else
+    add(`${where} security`, s.offsite.map((u) => `requested off-site ${u}`));
   } catch (e) {
     findings.push(`${where}: could not be audited (${e.message.split("\n")[0]})`);
   } finally {

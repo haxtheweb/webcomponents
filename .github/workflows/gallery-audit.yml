@@ -9,7 +9,7 @@ name: gallery-audit
 # drawer starts below the title bar and is opaque; keyboard focus lands
 # only on visible, uncovered controls that show focus; reduced motion;
 # each design system and a palette apply to the gallery and its demo and
-# keep contrast; rel="noopener", no off-site requests but DDD's fonts,
+# keep contrast; rel="noopener", no off-site requests, fonts included,
 # vercel.json headers; first-load budgets; license links. The repo is
 # served locally (never a live site) and off-site requests are aborted.
 # No baseline: any finding fails. See CONTRIBUTING.md, "Gallery audit".

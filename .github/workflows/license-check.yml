@@ -22,6 +22,11 @@ name: license-check
 #   webcomponent` scaffolds (Copyright <year> <holder> / @license Apache-2.0).
 #   Tests, demos, generated files and the third-party code listed in
 #   THIRD_PARTY are skipped. scripts/license-header-check.mjs --all.
+# - pull_request (fonts job): fonts are vendored files, not npm dependencies,
+#   so they have their own policy: every font family the elements name is
+#   served by HAX from elements/d-d-d/lib/fonts under OFL-1.1 or Apache-2.0,
+#   with its license file and a third-party.json entry, and no HTML links or
+#   preconnects to Google Fonts. scripts/fonts-check.mjs.
 on:
   # No branch filter: stacked PRs (base is another feature branch) must run too.
   pull_request:
@@ -34,6 +39,13 @@ on:
       - .github/workflows/license-check.yml
       - "elements/**/*.js"
       - scripts/license-header-check.mjs
+      - "elements/**/*.html"
+      - "elements/**/*.json"
+      - "elements/d-d-d/lib/fonts/**"
+      - "elements/d-d-d/third-party.json"
+      - scripts/fonts/hax-fonts.json
+      - scripts/fonts-check.mjs
+      - scripts/vendor-fonts.mjs
   schedule:
     - cron: "41 23 * * 0" # weekly, Sunday 23:41 UTC
   workflow_dispatch:
@@ -98,6 +110,27 @@ jobs:
           node-version: 24
       - name: Element source files carry the license header
         run: node scripts/license-header-check.mjs --all
+
+  fonts:
+    # Blocking: every font family the elements name is served by HAX from
+    # d-d-d/lib/fonts (never Google), each under OFL-1.1 or Apache-2.0 with
+    # its own license file and a third-party.json entry, so
+    # THIRD_PARTY_LICENSES.md lists it (scripts/fonts-check.mjs).
+    name: Vendored fonts
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+      - name: Fonts are vendored and licensed
+        run: node scripts/fonts-check.mjs
 
   weekly-sweep:
     name: Dependency license sweep

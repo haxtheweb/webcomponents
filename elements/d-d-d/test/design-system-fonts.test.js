@@ -35,7 +35,7 @@ describe("DesignSystemManager font loading", () => {
     ]);
   });
 
-  it("the active system adds a single font link", async () => {
+  it("the active system loads DDD's fonts from HAX, not Google", async () => {
     const manager = globalThis.DesignSystemManager.requestAvailability();
     manager.addDesignSystem({
       name: "fonts-test-system",
@@ -44,11 +44,38 @@ describe("DesignSystemManager font loading", () => {
     });
     manager.active = "fonts-test-system";
     await manager.updateComplete;
-    const links = globalThis.document.head.querySelectorAll(
-      'link[data-ds="font"]',
+    const links = [
+      ...globalThis.document.head.querySelectorAll('link[data-ds="font"]'),
+    ];
+    // one stylesheet per family, each from lib/fonts
+    expect(
+      links.map((l) => new URL(l.href).pathname.split("/").pop()),
+    ).to.deep.equal(["roboto.css", "roboto-slab.css", "roboto-condensed.css"]);
+    links.forEach((link) => {
+      expect(link.href).to.not.contain("fonts.googleapis.com");
+      expect(link.getAttribute("fetchpriority")).to.equal("low");
+    });
+  });
+
+  it("a family HAX doesn't ship still loads from Google, merged", async () => {
+    const manager = globalThis.DesignSystemManager.requestAvailability();
+    manager.addDesignSystem({
+      name: "fonts-test-mixed",
+      styles: [],
+      fonts: [
+        "https://fonts.googleapis.com/css2?family=Roboto:wght@400&family=Not+A+HAX+Font:wght@400&display=swap",
+      ],
+    });
+    manager.active = "fonts-test-mixed";
+    await manager.updateComplete;
+    const hrefs = [
+      ...globalThis.document.head.querySelectorAll('link[data-ds="font"]'),
+    ].map((l) => l.href);
+    expect(hrefs.length).to.equal(2);
+    expect(hrefs[0]).to.contain("/lib/fonts/roboto/roboto.css");
+    expect(hrefs[1]).to.equal(
+      "https://fonts.googleapis.com/css2?family=Not+A+HAX+Font:wght@400&display=swap",
     );
-    expect(links.length).to.equal(1);
-    expect(links[0].getAttribute("fetchpriority")).to.equal("low");
   });
 
   it("is empty for no fonts", () => {

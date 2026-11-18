@@ -22,6 +22,7 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/layout/site-region.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/blocks/site-children-block.js";
 import { autorun, toJS } from "mobx";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { fontStylesheetURL } from "@haxtheweb/d-d-d/lib/fonts.js";
 /**
  * @title Polaris
  * `A HAXcms inspired by an old wordpress theme
@@ -689,7 +690,8 @@ class PolarisTheme extends HAXCMSOperationButtons(
           const link = globalThis.document.createElement("link");
           link.setAttribute(
             "href",
-            "https://fonts.googleapis.com/css2?family=Open+Sans&display=swap",
+            // HAX ships Open Sans: it loads from HAX, not Google
+            fontStylesheetURL("Open Sans"),
           );
           link.setAttribute("rel", "stylesheet");
           link.setAttribute("fetchpriority", "low");
