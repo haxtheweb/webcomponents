@@ -2,6 +2,19 @@
   "status": 200,
   "data": [
     {
+      "title": "Academic",
+      "description": "A research group or scholar site on the al-folio theme: about, publications by year, projects, teaching and people, shown with a sample coastal ecology lab.",
+      "image": "/elements/haxcms-elements/lib/theme-screenshots/theme-al-folio-theme-thumb.jpg",
+      "priority": 10,
+      "category": ["Website"],
+      "attributes": [],
+      "scope": "core",
+      "machineName": "academic",
+      "machine-name": "academic",
+      "demo-url": "#",
+      "skeleton-url": "skeletons/academic.json"
+    },
+    {
       "title": "Art Portfolio",
       "description": "An artist portfolio on the Clean Portfolio theme: artist statement, featured works, two series and a contact page for commissions.",
       "image": "/elements/haxcms-elements/lib/theme-screenshots/theme-clean-portfolio-theme-thumb.jpg",
@@ -65,6 +78,19 @@
       "machine-name": "isc-graduate-portfolio",
       "demo-url": "#",
       "skeleton-url": "skeletons/isc-graduate-portfolio.json"
+    },
+    {
+      "title": "Landing Page",
+      "description": "A landing page for a small business or product on the AstroWind theme: a home page that sells, services, pricing, about and contact, shown with a sample bike repair shop.",
+      "image": "/elements/haxcms-elements/lib/theme-screenshots/theme-astrowind-theme-thumb.jpg",
+      "priority": 10,
+      "category": ["Website"],
+      "attributes": [],
+      "scope": "core",
+      "machineName": "landing-page",
+      "machine-name": "landing-page",
+      "demo-url": "#",
+      "skeleton-url": "skeletons/landing-page.json"
     },
     {
       "title": "Online Course",

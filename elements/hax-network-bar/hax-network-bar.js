@@ -305,7 +305,7 @@ export const HAX_NETWORK_DESTINATIONS = [
  *
  * @demo demo/index.html
  * @element hax-network-bar
- * @slot pre - after the network's links, for the page's own links
+ * @slot pre - after the network's links, for the page's own links (in the demo strip too, where it is for the demo's own controls)
  * @slot post - before the Future Traveler; holds the GitHub link unless the page fills it
  * @fires hax-network-merlin - {merlin, add(option)} the first time Merlin opens
  */
@@ -322,6 +322,7 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
     this.installMethod = "";
     this.menuOpen = false;
     this.demo = false;
+    this.hasPre = false;
     this._copied = "";
     this.t = this.t || {};
     this.t = {
@@ -492,6 +493,8 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
        * its height so the HAXcms editor bar sits under it.
        */
       demo: { type: Boolean, reflect: true },
+      /** the demo strip's pre slot holds something (a page's own controls) */
+      hasPre: { type: Boolean, attribute: "has-pre", reflect: true },
       _copied: { type: String, state: true },
     };
   }
@@ -1256,6 +1259,27 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
           position: fixed;
           inset: var(--hax-network-bar-height) 0 auto 0;
         }
+        /* a page's own controls in the strip: the notice and the browser
+           link give them room by using their short wording */
+        .strip slot[name="pre"] {
+          display: contents;
+        }
+        :host([demo]) ::slotted([slot="pre"]) {
+          flex: none;
+          font-size: var(--hax-ui-admin-font-size);
+          --haxcms-appearance-switcher-select-width: 116px;
+        }
+        @media (max-width: 1279px) {
+          .strip slot[name="pre"] {
+            display: none;
+          }
+        }
+        :host([demo][has-pre]) .strip .long {
+          display: none;
+        }
+        :host([demo][has-pre]) .strip .short {
+          display: inline;
+        }
         @media (max-width: 1279px) {
           .strip .long {
             display: none;
@@ -1581,6 +1605,7 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
             )}
           </ul>
         </nav>
+        <slot name="pre" @slotchange="${this._preSlotChanged}"></slot>
         <p class="notice">
           <span class="tag">${this.t.demoTag}</span>
           <span class="text"
@@ -1604,6 +1629,10 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
       </div>
       ${this._renderInstall()}
     `;
+  }
+
+  _preSlotChanged(e) {
+    this.hasPre = e.target.assignedElements().length > 0;
   }
 
   connectedCallback() {

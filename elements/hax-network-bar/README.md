@@ -32,6 +32,20 @@ bar.addEventListener("hax-network-merlin", (e) => {
 
 Only http(s) links and same-site paths are followed.
 
+## The demo strip
+
+`<hax-network-bar demo>` is the thin strip over a HAXcms demo with no backend: the network's links, a notice that nothing is saved, the browser version and Install HAX. It keeps `--haxcms-top-offset` on the page at its height so the HAXcms editor bar sits under it.
+
+A demo's own controls go in the `pre` slot. The HAXcms element demo puts the theme, palette and design system switcher there:
+
+```html
+<hax-network-bar demo current="elements">
+  <haxcms-appearance-switcher slot="pre" sync-url></haxcms-appearance-switcher>
+</hax-network-bar>
+```
+
+With the slot filled the notice and the browser link use their short wording. Below 1280px the slot is hidden, as it is in the full bar.
+
 ## Styling
 
 | Variable                      | Default                | What it sets                                        |

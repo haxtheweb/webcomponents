@@ -1,0 +1,211 @@
+{
+  "id": "papermod-theme-hyde-theme",
+  "title": "Side Notes",
+  "author": "",
+  "description": "A blog with its name and menu in a dark sidebar.",
+  "license": "by-sa",
+  "metadata": {
+    "author": {
+      "image": "",
+      "name": "",
+      "email": "",
+      "socialLink": ""
+    },
+    "site": {
+      "name": "hyde-theme",
+      "logo": "",
+      "lang": "en",
+      "created": 1736889000,
+      "updated": 1736889000,
+      "git": {},
+      "version": "9.0.6",
+      "domain": "",
+      "static": {},
+      "settings": {
+        "pathauto": false,
+        "publishPagesOn": true,
+        "sw": false,
+        "forceUpgrade": false,
+        "lang": "",
+        "gaID": ""
+      },
+      "tags": ""
+    },
+    "theme": {
+      "element": "hyde-theme",
+      "path": "@haxtheweb/papermod-theme/lib/hyde-theme.js",
+      "name": "hyde-theme",
+      "regions": {}
+    },
+    "node": {
+      "fields": {}
+    },
+    "build": {
+      "version": "6.0.1",
+      "structure": "flat",
+      "type": ""
+    }
+  },
+  "items": [
+    {
+      "id": "item-9a9e7m0d-home",
+      "indent": 0,
+      "location": "../pages/item-9a9e7m0d-home/index.html",
+      "slug": "home",
+      "order": 0,
+      "parent": null,
+      "title": "Home",
+      "description": "Where to start.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-9a9e7m0d-posts",
+      "indent": 0,
+      "location": "../pages/item-9a9e7m0d-posts/index.html",
+      "slug": "posts",
+      "order": 1,
+      "parent": null,
+      "title": "Posts",
+      "description": "Everything written so far, newest first.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-9a9e7m0d-post-plain-text",
+      "indent": 1,
+      "location": "../pages/item-9a9e7m0d-post-plain-text/index.html",
+      "slug": "posts/start-with-plain-text",
+      "order": 0,
+      "parent": "item-9a9e7m0d-posts",
+      "title": "Start with plain text",
+      "description": "Why the first draft of every page here is a text file.",
+      "metadata": {
+        "created": 1757500000,
+        "updated": 1757500000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-9a9e7m0d-post-one-column",
+      "indent": 1,
+      "location": "../pages/item-9a9e7m0d-post-one-column/index.html",
+      "slug": "posts/one-column-is-enough",
+      "order": 1,
+      "parent": "item-9a9e7m0d-posts",
+      "title": "One column is enough",
+      "description": "A narrow column keeps lines short and readers moving.",
+      "metadata": {
+        "created": 1752000000,
+        "updated": 1752000000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-9a9e7m0d-post-dates",
+      "indent": 1,
+      "location": "../pages/item-9a9e7m0d-post-dates/index.html",
+      "slug": "posts/dates-are-navigation",
+      "order": 2,
+      "parent": "item-9a9e7m0d-posts",
+      "title": "Dates are navigation",
+      "description": "A list of posts by date is the oldest menu a blog has.",
+      "metadata": {
+        "created": 1746000000,
+        "updated": 1746000000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-9a9e7m0d-post-dark",
+      "indent": 1,
+      "location": "../pages/item-9a9e7m0d-post-dark/index.html",
+      "slug": "posts/light-and-dark",
+      "order": 3,
+      "parent": "item-9a9e7m0d-posts",
+      "title": "Light and dark",
+      "description": "Two color schemes, one set of tokens.",
+      "metadata": {
+        "created": 1740000000,
+        "updated": 1740000000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-9a9e7m0d-about",
+      "indent": 0,
+      "location": "../pages/item-9a9e7m0d-about/index.html",
+      "slug": "about",
+      "order": 2,
+      "parent": null,
+      "title": "About",
+      "description": "Who writes this and how it is made.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-9a9e7m0d-credits",
+      "indent": 0,
+      "location": "../pages/item-9a9e7m0d-credits/index.html",
+      "slug": "credits",
+      "order": 3,
+      "parent": null,
+      "title": "Credits",
+      "description": "Where the layouts come from.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    }
+  ]
+}

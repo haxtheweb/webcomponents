@@ -1,0 +1,152 @@
+{
+  "meta": {
+    "name": "landing-page",
+    "description": "A landing page for a small business or product on the AstroWind theme: a home page that sells, services, pricing, about and contact, shown with a sample bike repair shop.",
+    "version": "1.0.0",
+    "created": "2026-11-18T00:00:00.000Z",
+    "type": "skeleton",
+    "priority": 10,
+    "useCaseTitle": "Landing Page",
+    "useCaseDescription": "A landing page for a small business or product on the AstroWind theme: a home page that sells, services, pricing, about and contact, shown with a sample bike repair shop.",
+    "useCaseImage": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-astrowind-theme-thumb.jpg",
+    "category": ["Website"],
+    "tags": ["landing", "business", "marketing", "services"],
+    "attributes": []
+  },
+  "site": {
+    "name": "spoke-and-chain",
+    "description": "Spoke & Chain, a sample neighborhood bike repair shop.",
+    "theme": "astrowind-theme",
+    "settings": {
+      "lang": "en-US",
+      "publishPagesOn": true,
+      "canonical": true
+    }
+  },
+  "build": {
+    "type": "skeleton",
+    "structure": "from-skeleton",
+    "items": [
+      {
+        "id": "landing-page-home",
+        "title": "Home",
+        "slug": "home",
+        "order": 0,
+        "parent": null,
+        "indent": 0,
+        "content": "<h2 data-style-guide=\"headline\" data-design-treatment=\"vert\" data-primary=\"8\" data-padding=\"xs\" data-border-radius=\"xs\">Your bike, fixed the same day</h2><p data-font-size=\"s\">Spoke &amp; Chain is a sample neighborhood shop. Drop your bike off before ten and ride it home after work.</p><simple-cta label=\"See what we fix\" link=\"services\"></simple-cta><grid-plate layout=\"1-1-1\" disable-responsive><p slot=\"col-1\" data-style-guide=\"statBlock\" data-primary=\"10\" data-accent=\"2\" data-padding=\"m\" data-border-radius=\"md\" data-box-shadow=\"sm\" data-text-align=\"center\"><strong>Same day</strong><br>on most repairs</p><p slot=\"col-2\" data-style-guide=\"statBlock\" data-primary=\"10\" data-accent=\"2\" data-padding=\"m\" data-border-radius=\"md\" data-box-shadow=\"sm\" data-text-align=\"center\"><strong>30 days</strong><br>guarantee on our work</p><p slot=\"col-3\" data-style-guide=\"statBlock\" data-primary=\"10\" data-accent=\"2\" data-padding=\"m\" data-border-radius=\"md\" data-box-shadow=\"sm\" data-text-align=\"center\"><strong>6 days</strong><br>open every week</p></grid-plate><h2 data-style-guide=\"headline\" data-design-treatment=\"vert\" data-primary=\"8\" data-padding=\"xs\" data-border-radius=\"xs\">How it works</h2><ol><li><strong>Drop off.</strong> Tell us what feels wrong. We look it over while you wait.</li><li><strong>Get a price.</strong> You hear the cost before we touch a wrench.</li><li><strong>Ride home.</strong> We text you when it is ready.</li></ol><h2 data-style-guide=\"headline\" data-design-treatment=\"vert\" data-primary=\"8\" data-padding=\"xs\" data-border-radius=\"xs\">Questions people ask</h2><a11y-collapse-group><a11y-collapse heading=\"Do I need an appointment?\"><p slot=\"content\">No. Walk in any time we are open.</p></a11y-collapse><a11y-collapse heading=\"What if you find something else wrong?\"><p slot=\"content\">We call first. Nothing is added to the bill without your say.</p></a11y-collapse><a11y-collapse heading=\"Do you work on e-bikes?\"><p slot=\"content\">Yes, everything but the battery and motor.</p></a11y-collapse></a11y-collapse-group><simple-cta label=\"Find us\" link=\"contact\"></simple-cta>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": [],
+          "hideTitle": true
+        }
+      },
+      {
+        "id": "landing-page-services",
+        "title": "Services",
+        "slug": "services",
+        "order": 1,
+        "parent": null,
+        "indent": 0,
+        "content": "<p>Each service has its own page under this one. The cards below are made by the theme from those pages.</p>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": []
+        }
+      },
+      {
+        "id": "landing-page-tune-ups",
+        "title": "Tune-ups",
+        "slug": "services/tune-ups",
+        "order": 0,
+        "parent": "landing-page-services",
+        "indent": 1,
+        "content": "<p>A tune-up brings a bike that rides fine back to riding well.</p><h2 data-style-guide=\"headline\" data-design-treatment=\"vert\" data-primary=\"8\" data-padding=\"xs\" data-border-radius=\"xs\">What is included</h2><ul><li>Brakes and gears adjusted</li><li>Wheels trued</li><li>Chain cleaned and oiled</li><li>Every bolt checked</li></ul>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": []
+        }
+      },
+      {
+        "id": "landing-page-repairs",
+        "title": "Repairs",
+        "slug": "services/repairs",
+        "order": 1,
+        "parent": "landing-page-services",
+        "indent": 1,
+        "content": "<p>Something broke. We fix it, and tell you why it broke.</p><h2 data-style-guide=\"headline\" data-design-treatment=\"vert\" data-primary=\"8\" data-padding=\"xs\" data-border-radius=\"xs\">Most common</h2><ul><li>Flat tires and worn tubes</li><li>Broken spokes</li><li>Stretched chains and worn gears</li></ul>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": []
+        }
+      },
+      {
+        "id": "landing-page-classes",
+        "title": "Classes",
+        "slug": "services/classes",
+        "order": 2,
+        "parent": "landing-page-services",
+        "indent": 1,
+        "content": "<p>One evening a month we teach the repairs every rider should know.</p><h2 data-style-guide=\"headline\" data-design-treatment=\"vert\" data-primary=\"8\" data-padding=\"xs\" data-border-radius=\"xs\">You will learn</h2><ul><li>Fixing a flat by the side of the road</li><li>Adjusting brakes</li><li>Cleaning and oiling a chain</li></ul>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": []
+        }
+      },
+      {
+        "id": "landing-page-pricing",
+        "title": "Pricing",
+        "slug": "pricing",
+        "order": 2,
+        "parent": null,
+        "indent": 0,
+        "content": "<p>Sample prices. Parts are extra and quoted before any work starts.</p><editable-table accent-color=\"grey\" column-header><table><caption>Prices</caption><thead><tr><th scope=\"col\">Service</th><th scope=\"col\">Price</th><th scope=\"col\">Ready</th></tr></thead><tbody><tr><td>Flat fix</td><td>$15</td><td>While you wait</td></tr><tr><td>Basic tune-up</td><td>$60</td><td>Same day</td></tr><tr><td>Full tune-up</td><td>$110</td><td>Next day</td></tr><tr><td>Evening class</td><td>$25</td><td>First Thursday</td></tr></tbody></table></editable-table><simple-cta label=\"Find us\" link=\"contact\"></simple-cta>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": []
+        }
+      },
+      {
+        "id": "landing-page-about",
+        "title": "About",
+        "slug": "about",
+        "order": 3,
+        "parent": null,
+        "indent": 0,
+        "content": "<h2 data-style-guide=\"headline\" data-design-treatment=\"vert\" data-primary=\"8\" data-padding=\"xs\" data-border-radius=\"xs\">A shop for people who ride to get somewhere</h2><p>We opened because the nearest repair shop was a bus ride away. Most of what we fix is how somebody gets to work.</p><p>Replace this page with your own story: who you are, why you started, and what you will not compromise on.</p>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": []
+        }
+      },
+      {
+        "id": "landing-page-contact",
+        "title": "Contact",
+        "slug": "contact",
+        "order": 4,
+        "parent": null,
+        "indent": 0,
+        "content": "<editable-table accent-color=\"grey\" column-header><table><caption>Hours</caption><thead><tr><th scope=\"col\">Day</th><th scope=\"col\">Open</th></tr></thead><tbody><tr><td>Monday to Friday</td><td>8 to 6</td></tr><tr><td>Saturday</td><td>9 to 4</td></tr><tr><td>Sunday</td><td>Closed</td></tr></tbody></table></editable-table><p>100 Example Street. Walk-ins welcome.</p><simple-cta label=\"Email the shop\" link=\"mailto:shop@example.com\"></simple-cta>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": []
+        }
+      }
+    ],
+    "files": []
+  },
+  "theme": {
+    "hexCode": "#1e88e5",
+    "cssVariable": "--simple-colors-default-theme-blue-7",
+    "icon": "icons:store",
+    "image": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-astrowind-theme-thumb.jpg"
+  }
+}

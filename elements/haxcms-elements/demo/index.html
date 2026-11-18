@@ -402,17 +402,25 @@
     // only changes the theme of the site.json this page loads; nothing is saved.
     // &designSystem=<name> previews a design system from ../lib/designSystems.json
     // on a theme that accepts one (clean-one, learn-two-theme).
+    // &palette=<0-99> previews a DDD palette on a theme that supports it.
+    // The strip above the site (hax-network-bar with haxcms-appearance-switcher)
+    // changes all three live and keeps these parameters in the address. It is
+    // part of this demo page only; a HAXcms site does not carry it.
     (function () {
       var params = new URLSearchParams(globalThis.location.search);
       var requested = params.get('theme');
       var system = params.get('designSystem');
+      var palette = params.get('palette');
       if (!requested || !/^[a-z0-9-]+$/.test(requested)) {
         requested = null;
       }
       if (!system || !/^[a-z0-9-]+$/.test(system)) {
         system = null;
       }
-      if (!requested && !system) {
+      if (!palette || !/^[0-9]{1,2}$/.test(palette)) {
+        palette = null;
+      }
+      if (!requested && !system && !palette) {
         return;
       }
       var nativeFetch = globalThis.fetch.bind(globalThis);
@@ -428,7 +436,7 @@
         return Promise.all([nativeFetch(input, init), themes]).then(function (both) {
           var res = both[0];
           var theme = requested && Object.prototype.hasOwnProperty.call(both[1], requested) ? both[1][requested] : null;
-          if (!res.ok || (!system && (!theme || !theme.element || !theme.path))) {
+          if (!res.ok || (!system && !palette && (!theme || !theme.element || !theme.path))) {
             return res;
           }
           return res.clone().json().then(function (manifest) {
@@ -443,6 +451,9 @@
             if (system) {
               manifest.metadata.theme.designSystem = system;
             }
+            if (palette) {
+              manifest.metadata.theme.variables = Object.assign({}, manifest.metadata.theme.variables, { palette: palette });
+            }
             return new Response(JSON.stringify(manifest), {
               status: res.status,
               headers: { 'Content-Type': 'application/json' },
@@ -452,6 +463,9 @@
       };
     })();
   </script>
+  <hax-network-bar demo current="elements">
+    <haxcms-appearance-switcher slot="pre" sync-url></haxcms-appearance-switcher>
+  </hax-network-bar>
   <haxcms-site-builder id="site" file="site.json"></haxcms-site-builder>
   <script>
       // reduce FOUC for dark mode so it starts in dark rapidly if selected
@@ -472,6 +486,10 @@
   document.body.removeAttribute('no-js');globalThis.__appCDN='./node_modules/';globalThis.__appForceUpgrade=false;</script>
   <script type="module">
     import "@haxtheweb/wc-autoload/wc-autoload.js";
+    // demo only: the HAX network strip with the theme, palette and design
+    // system switcher in it
+    import "@haxtheweb/hax-network-bar/hax-network-bar.js";
+    import "@haxtheweb/haxcms-elements/lib/core/ui/haxcms-appearance-switcher.js";
     import './custom/src/custom.js';
   </script>
   <script>

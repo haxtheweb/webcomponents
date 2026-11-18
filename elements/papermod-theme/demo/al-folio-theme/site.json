@@ -1,0 +1,211 @@
+{
+  "id": "item-ac4d3m1c-site",
+  "title": "Tidewater Lab",
+  "author": "",
+  "description": "Tidewater Lab, a sample coastal ecology research group.",
+  "license": "by-sa",
+  "metadata": {
+    "author": {
+      "image": "",
+      "name": "",
+      "email": "",
+      "socialLink": ""
+    },
+    "site": {
+      "name": "al-folio-theme",
+      "logo": "",
+      "lang": "en",
+      "created": 1736889000,
+      "updated": 1736889000,
+      "git": {},
+      "version": "9.0.6",
+      "domain": "",
+      "static": {},
+      "settings": {
+        "pathauto": false,
+        "publishPagesOn": true,
+        "sw": false,
+        "forceUpgrade": false,
+        "lang": "",
+        "gaID": ""
+      },
+      "tags": ""
+    },
+    "theme": {
+      "element": "al-folio-theme",
+      "path": "@haxtheweb/papermod-theme/lib/al-folio-theme.js",
+      "name": "al-folio-theme",
+      "regions": {}
+    },
+    "node": {
+      "fields": {}
+    },
+    "build": {
+      "version": "6.0.1",
+      "structure": "flat",
+      "type": ""
+    }
+  },
+  "items": [
+    {
+      "id": "item-ac4d3m1c-about",
+      "indent": 0,
+      "location": "../pages/item-ac4d3m1c-about/index.html",
+      "slug": "about",
+      "order": 0,
+      "parent": null,
+      "title": "About",
+      "description": "Who we are and what we study.",
+      "metadata": {
+        "created": 1757500000,
+        "updated": 1757500000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-ac4d3m1c-publications",
+      "indent": 0,
+      "location": "../pages/item-ac4d3m1c-publications/index.html",
+      "slug": "publications",
+      "order": 1,
+      "parent": null,
+      "title": "Publications",
+      "description": "Papers and reports, newest first.",
+      "metadata": {
+        "created": 1754900000,
+        "updated": 1754900000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-ac4d3m1c-projects",
+      "indent": 0,
+      "location": "../pages/item-ac4d3m1c-projects/index.html",
+      "slug": "projects",
+      "order": 2,
+      "parent": null,
+      "title": "Projects",
+      "description": "What the lab is working on now.",
+      "metadata": {
+        "created": 1752300000,
+        "updated": 1752300000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-ac4d3m1c-project-elevation",
+      "indent": 1,
+      "location": "../pages/item-ac4d3m1c-project-elevation/index.html",
+      "slug": "projects/marsh-elevation-survey",
+      "order": 0,
+      "parent": "item-ac4d3m1c-projects",
+      "title": "Marsh elevation survey",
+      "description": "Measuring how fast fourteen marshes rise, year over year.",
+      "metadata": {
+        "created": 1749700000,
+        "updated": 1749700000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-ac4d3m1c-project-sensors",
+      "indent": 1,
+      "location": "../pages/item-ac4d3m1c-project-sensors/index.html",
+      "slug": "projects/open-sensor-kit",
+      "order": 1,
+      "parent": "item-ac4d3m1c-projects",
+      "title": "Open sensor kit",
+      "description": "A tide and salinity sensor anyone can build for the cost of a textbook.",
+      "metadata": {
+        "created": 1747100000,
+        "updated": 1747100000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-ac4d3m1c-project-plants",
+      "indent": 1,
+      "location": "../pages/item-ac4d3m1c-project-plants/index.html",
+      "slug": "projects/plants-that-hold-mud",
+      "order": 2,
+      "parent": "item-ac4d3m1c-projects",
+      "title": "Plants that hold mud",
+      "description": "Comparing how well four marsh plants trap sediment.",
+      "metadata": {
+        "created": 1744500000,
+        "updated": 1744500000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-ac4d3m1c-teaching",
+      "indent": 0,
+      "location": "../pages/item-ac4d3m1c-teaching/index.html",
+      "slug": "teaching",
+      "order": 3,
+      "parent": null,
+      "title": "Teaching",
+      "description": "Courses and how to join one.",
+      "metadata": {
+        "created": 1741900000,
+        "updated": 1741900000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-ac4d3m1c-people",
+      "indent": 0,
+      "location": "../pages/item-ac4d3m1c-people/index.html",
+      "slug": "people",
+      "order": 4,
+      "parent": null,
+      "title": "People",
+      "description": "Who is in the lab.",
+      "metadata": {
+        "created": 1739300000,
+        "updated": 1739300000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    }
+  ]
+}
