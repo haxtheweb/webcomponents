@@ -411,6 +411,9 @@ const NON_ESM_VENDOR_PREFIXES = ["monaco-editor/min/"];
 gulp.task("wc-autoloader", async () => {
   glob(path.join("./build/es6/node_modules/**/*.js"), (er, files) => {
     let elements = {};
+    // tags a file defines after its first one; used only for tags that no
+    // file defines first
+    let secondaryElements = {};
     // adjacency map: fLocation -> array of raw static import specifiers
     // (relative paths as written in the built file). Used below to compute
     // per-tag transitive static-import closures for wc-registry-graph.json.
@@ -445,12 +448,23 @@ gulp.task("wc-autoloader", async () => {
         // This Regex is looking for tags that are defined by string values
         // this will work for customElements.define("local-time",s))
         // This will NOT work for customElements.define(LocalTime.tagName,s))
-        const defineStatements = /customElements\.define\(["'`](.*?)["'`]/gm.exec(
-          contents
-        );
+        // Every tag a file defines is recorded, not only the first: a file
+        // such as @google/model-viewer defines several ("extra-model", then
+        // "model-viewer") and each must resolve to a file that defines it.
+        // The first define keeps the mapping it always had; later ones only
+        // fill tags no file defines first (merged after the loop).
+        const definedTags = Array.from(
+          contents.matchAll(/customElements\.define\(["'`](.*?)["'`]/gm),
+          (match) => match[1],
+        ).filter((tag) => validateElementName(tag));
         // basic
-        if (defineStatements && validateElementName(defineStatements[1])) {
-          elements[defineStatements[1]] = fLocation;
+        if (definedTags.length > 0) {
+          elements[definedTags[0]] = fLocation;
+          definedTags.slice(1).forEach((tag) => {
+            if (!secondaryElements[tag]) {
+              secondaryElements[tag] = fLocation;
+            }
+          });
         }
         // .tag calls
         else {
@@ -490,6 +504,11 @@ gulp.task("wc-autoloader", async () => {
             }
           }
         }
+      }
+    });
+    Object.keys(secondaryElements).forEach((tag) => {
+      if (!elements[tag]) {
+        elements[tag] = secondaryElements[tag];
       }
     });
 
