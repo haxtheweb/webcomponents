@@ -58,6 +58,9 @@ class HAXCMSSEOAdminDialog extends HaxcmsAdminFieldsMixin(I18NMixin(DDD)) {
         "Browser tab image / used on phones as small site logo",
       domain: "Domain",
       domainDescription: "Domain of this website",
+      sameAs: "Other profiles of this site",
+      sameAsDescription:
+        "One link per line to this site's or organization's profiles elsewhere (GitHub, LinkedIn, YouTube, Mastodon). Search engines use them to connect those profiles to this site.",
       language: "Language",
       languageDescription:
         "Language of this site. Search by name or code, or enter another code such as fr-CA.",
@@ -236,6 +239,13 @@ class HAXCMSSEOAdminDialog extends HaxcmsAdminFieldsMixin(I18NMixin(DDD)) {
             title: this.t.domain,
             description: this.t.domainDescription,
             inputMethod: "textfield",
+            required: false,
+          },
+          {
+            property: "manifest-metadata-site-sameAs",
+            title: this.t.sameAs,
+            description: this.t.sameAsDescription,
+            inputMethod: "textarea",
             required: false,
           },
           {
@@ -460,6 +470,12 @@ class HAXCMSSEOAdminDialog extends HaxcmsAdminFieldsMixin(I18NMixin(DDD)) {
       siteAuthorObject.email,
     ]);
     const domain = this._firstDefinedString([metadataSite.domain]);
+    // metadata.site.sameAs is a list; the form edits it one URL per line
+    const sameAs = Array.isArray(metadataSite.sameAs)
+      ? metadataSite.sameAs
+          .filter((link) => typeof link === "string" && link !== "")
+          .join("\n")
+      : "";
     const siteDescription = this._firstDefinedString([
       manifest ? manifest.description : "",
     ]);
@@ -501,6 +517,7 @@ class HAXCMSSEOAdminDialog extends HaxcmsAdminFieldsMixin(I18NMixin(DDD)) {
     values["manifest-description"] = siteDescription;
     values["manifest-metadata-site-logo"] = favicon;
     values["manifest-metadata-site-domain"] = domain;
+    values["manifest-metadata-site-sameAs"] = sameAs;
     values["manifest-metadata-site-settings-lang"] = lang;
     values["manifest-metadata-site-settings-gaID"] = gaID;
     values["manifest-metadata-site-settings-private"] = this._toBoolValue(
@@ -611,6 +628,13 @@ class HAXCMSSEOAdminDialog extends HaxcmsAdminFieldsMixin(I18NMixin(DDD)) {
       domain: this.values["manifest-metadata-site-domain"]
         ? String(this.values["manifest-metadata-site-domain"])
         : "",
+      // the backend keeps only http(s) URLs (haxcms sameAs normalizer)
+      sameAs: this.values["manifest-metadata-site-sameAs"]
+        ? String(this.values["manifest-metadata-site-sameAs"])
+            .split(/[\r\n]+/)
+            .map((link) => link.trim())
+            .filter((link) => link !== "")
+        : [],
       lang: this.values["manifest-metadata-site-settings-lang"]
         ? String(this.values["manifest-metadata-site-settings-lang"])
         : "",

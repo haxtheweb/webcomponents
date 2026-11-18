@@ -577,6 +577,30 @@ class HAXCMSBackendBeaker extends I18NMixin(LitElement) {
         manifestSeo["manifest.metadata.site.logo"] || "",
       );
     }
+    // the site's profiles elsewhere; the server backends normalize these
+    // the same way (http(s) only, listed once)
+    let sameAsInput;
+    if (hasOwn(detail, "sameAs")) {
+      sameAsInput = detail.sameAs;
+    } else if (hasOwn(seo, "sameAs")) {
+      sameAsInput = seo.sameAs;
+    } else if (hasOwn(manifestSeo, "manifest.metadata.site.sameAs")) {
+      sameAsInput = manifestSeo["manifest.metadata.site.sameAs"];
+    }
+    if (typeof sameAsInput !== "undefined") {
+      const sameAs = (Array.isArray(sameAsInput) ? sameAsInput : [])
+        .filter((link) => typeof link === "string")
+        .map((link) => link.trim())
+        .filter(
+          (link, index, list) =>
+            /^https?:\/\/[^\s/?#]+/i.test(link) && list.indexOf(link) === index,
+        );
+      if (sameAs.length > 0) {
+        this.manifest.metadata.site.sameAs = sameAs;
+      } else {
+        delete this.manifest.metadata.site.sameAs;
+      }
+    }
     if (hasOwn(detail, "domain")) {
       this.manifest.metadata.site.domain = String(detail.domain || "");
     } else if (hasOwn(seo, "domain")) {
