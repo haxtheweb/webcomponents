@@ -132,6 +132,10 @@ function isElementHaxCapable(elementPath, elementName, haxDemoSchema) {
   return false;
 }
 
+// The HAX platform itself, as opposed to blocks and themes: the full HAXcms
+// system demo and the AppHax dashboard. The Platform filter lists these.
+const PLATFORM_ELEMENTS = ["haxcms-elements", "app-hax"];
+
 // HAXcms theme registry; a package whose own tag is a registered theme is a
 // theme even when its name does not end in -theme (clean-one, simple-blog)
 let THEME_TAGS = null;
@@ -310,6 +314,7 @@ function getComponentInfo() {
             elementPath,
             elementName,
           );
+          const isPlatform = PLATFORM_ELEMENTS.includes(elementName);
 
           // Documentation data and walkthrough storyboard, when present
           let docs = null;
@@ -354,6 +359,7 @@ function getComponentInfo() {
             isTheme,
             isInstructional,
             isDesignSystem,
+            isPlatform,
             additionalDemos: demoFiles
               .filter((f) => f !== "index.html")
               .map((f) => ({
@@ -507,6 +513,14 @@ function galleryLoader() {
   return { styles: "", markup: "" };
 }
 
+// Third-party notices for the CDN build the gallery loads its third-party
+// code from (scripts/copy-dep-licenses.js writes it during ubiquity). The
+// plain-text name is what builds published before the Markdown notices have.
+const LICENSES_MD_URL =
+  "https://cdn.hax.cloud/cdn/build/THIRD_PARTY_LICENSES.md";
+const LICENSES_TEXT_URL =
+  "https://cdn.hax.cloud/cdn/build/THIRD_PARTY_LICENSES";
+
 // The design systems a site can pick (scripts/design-system-discovery.mjs
 // writes the registry): the gallery offers the same list, by name and title
 function galleryDesignSystems() {
@@ -558,10 +572,6 @@ function copyAppearanceModule() {
 
 function generateHTML(components) {
   const totalComponents = components.length;
-  // shortcut to the full system demo, used to review everything working together
-  const haxcmsDemo = components.find((c) => c.name === "haxcms-elements");
-  // and to the AppHax dashboard, which boots the same way
-  const appHaxDemo = components.find((c) => c.name === "app-hax");
   const walkthroughCount = components.filter(
     (c) => c.motionStatus && c.motionStatus !== "none",
   ).length;
@@ -615,6 +625,8 @@ ${loader.styles}
     globalThis.dispatchEvent(new CustomEvent('gallery-styled'));
   </script>
   <script type="module" src="./elements/documentation-player/documentation-player.js"></script>
+  <!-- renders the third-party license notices (?view=licenses) -->
+  <script type="module" src="./elements/md-block/md-block.js"></script>
   <!-- the strip that links every hax.cloud site (hax.cloud, this gallery, the live demo, RPG me) -->
   <script type="module" src="./elements/hax-network-bar/hax-network-bar.js"></script>
   <!-- dogfood: the gallery's form controls are the same elements the HAX
@@ -729,30 +741,10 @@ ${loader.styles}
       display: none;
     }
 
-    .shortcuts {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--hax-ui-gap-md);
-    }
-
     hax-network-bar {
       flex: none;
       --hax-network-bar-max-width: none;
       --hax-network-bar-gutter: var(--ddd-spacing-4, 16px);
-    }
-
-    /* the live demo is the gallery's main call to action, in the same
-       Keystone yellow as hax.cloud's "Try the live demo" */
-    body a.hax-ui-btn#haxcmsDemoBtn,
-    body a.hax-ui-btn#haxcmsDemoBtn:any-link {
-      font-weight: var(--ddd-font-weight-bold, 700);
-      color: var(--ddd-theme-default-nittanyNavy);
-      background-color: var(--ddd-theme-default-keystoneYellow);
-      border-color: var(--ddd-theme-default-keystoneYellow);
-    }
-
-    body a.hax-ui-btn#haxcmsDemoBtn:hover {
-      background-color: var(--ddd-theme-default-white);
     }
 
     .titlebar .hax-ui-btn {
@@ -1138,6 +1130,45 @@ ${loader.styles}
       max-width: 72rem;
     }
 
+    .licenses-pane {
+      height: 100%;
+      overflow-y: auto;
+      padding: var(--ddd-spacing-5, 20px);
+      color: var(--hax-ui-text);
+      background-color: var(--hax-ui-surface);
+    }
+
+    .licenses-pane:focus {
+      outline: none;
+    }
+
+    /* reference text: DDD's smaller steps, not page-content sizes */
+    #licensesBlock {
+      --ddd-theme-h1-font-size: var(--ddd-font-size-m);
+      --ddd-theme-h2-font-size: var(--ddd-font-size-s);
+      --ddd-theme-h3-font-size: var(--ddd-font-size-xs);
+      --ddd-theme-body-font-size: var(--ddd-font-size-4xs);
+    }
+
+    .licenses-pane > p {
+      max-width: 48rem;
+      margin: 0 0 var(--hax-ui-gap-lg);
+      color: var(--hax-ui-text-muted);
+    }
+
+    .licenses-pane a,
+    .licenses-pane a:any-link {
+      color: var(--hax-ui-text);
+      text-decoration: underline;
+    }
+
+    /* the package index is a wide table: it scrolls on its own, the page
+       never scrolls sideways */
+    .licenses-scroll {
+      max-width: 72rem;
+      overflow-x: auto;
+    }
+
     .welcome-message {
       display: grid;
       place-items: center;
@@ -1203,15 +1234,6 @@ ${loader.styles}
 
       #listToggle[hidden] {
         display: none;
-      }
-
-      .shortcuts {
-        order: 3;
-        width: 100%;
-      }
-
-      .shortcuts .hax-ui-btn {
-        flex: 1;
       }
 
       .gallery-container {
@@ -1281,7 +1303,8 @@ ${loader.styles}
         height: 80vh;
       }
 
-      .docs-pane {
+      .docs-pane,
+      .licenses-pane {
         height: auto;
         overflow: visible;
         padding: var(--hax-ui-gap-lg) var(--hax-ui-gap-md);
@@ -1317,23 +1340,7 @@ ${loader.markup}
       <span class="mobile-title" id="mobileTitle">Component gallery</span>
     </div>
     <button class="hax-ui-btn" id="listToggle" aria-expanded="false" aria-controls="sidebar">Components</button>
-${
-  haxcmsDemo || appHaxDemo
-    ? `    <nav class="shortcuts" aria-label="System demos">
-${
-  haxcmsDemo
-    ? `      <a class="hax-ui-btn" id="haxcmsDemoBtn" href="${haxcmsDemo.demoPath}" target="haxcms-demo" rel="noopener" title="Open the full HAXcms system demo (haxcms-elements) in its own window">Try HAXcms</a>
-`
-    : ""
-}${
-        appHaxDemo
-          ? `      <a class="hax-ui-btn" id="appHaxDemoBtn" href="${appHaxDemo.demoPath}" target="_blank" rel="noopener" title="Open the AppHax dashboard demo (app-hax) in a new tab">Open AppHax demo</a>
-`
-          : ""
-      }    </nav>
-`
-    : ""
-}  </header>
+  </header>
 
   <div class="gallery-container">
     <!-- Sidebar with component list -->
@@ -1349,8 +1356,11 @@ ${
           <button class="hax-ui-chip filter-btn" aria-pressed="true" data-filter="all" title="Show all components">
             All <span class="n">${totalComponents}</span>
           </button>
-          <button class="hax-ui-chip filter-btn" aria-pressed="false" data-filter="hax" title="Show only HAX-capable components">
-            HAX <span class="n">${components.filter((c) => c.isHaxCapable).length}</span>
+          <button class="hax-ui-chip filter-btn" aria-pressed="false" data-filter="platform" title="The HAX platform: try HAXcms and the AppHax dashboard">
+            Platform <span class="n">${components.filter((c) => c.isPlatform).length}</span>
+          </button>
+          <button class="hax-ui-chip filter-btn" aria-pressed="false" data-filter="hax" title="Blocks you can place in a page with HAX">
+            HAX Blocks <span class="n">${components.filter((c) => c.isHaxCapable).length}</span>
           </button>
           <button class="hax-ui-chip filter-btn" aria-pressed="false" data-filter="theme" title="Show HAXcms themes">
             Themes <span class="n">${components.filter((c) => c.isTheme).length}</span>
@@ -1389,7 +1399,7 @@ ${
 
       <footer class="gallery-footer">
         <a href="https://github.com/haxtheweb/webcomponents/blob/master/LICENSE.md" target="_blank" rel="noopener">Apache-2.0 license</a>
-        <a href="https://cdn.hax.cloud/cdn/build/THIRD_PARTY_LICENSES" target="_blank" rel="noopener">Third-party licenses</a>
+        <a href="?view=licenses" id="licensesLink">Third-party licenses</a>
         <a href="https://github.com/haxtheweb/webcomponents" target="_blank" rel="noopener">Source</a>
       </footer>
     </aside>
@@ -1434,12 +1444,18 @@ ${
         <div class="welcome-message" id="welcomeMessage">
           <div class="hax-ui-empty">
             <strong>Welcome to the HAX web components gallery</strong>
-            <p>Choose a component to see its demo, documentation and walkthrough.</p>
+            <p>Choose a component to see its demo, documentation and walkthrough. To try HAXcms or the AppHax dashboard, filter by Platform.</p>
           </div>
         </div>
         <div class="stage-progress" aria-hidden="true"></div>
         <iframe class="demo-frame hidden" id="demoFrame" title="Component demo"></iframe>
         <div class="docs-pane hidden" id="docsPane"></div>
+        <section class="licenses-pane hidden" id="licensesPane" aria-label="Third-party licenses" tabindex="-1">
+          <p>Notices for the CDN build the gallery and HAX sites load their code from. <a id="licensesSourceLink" href="${LICENSES_MD_URL}" target="_blank" rel="noopener">Open the file</a></p>
+          <div class="licenses-scroll">
+            <md-block id="licensesBlock"></md-block>
+          </div>
+        </section>
       </div>
     </main>
   </div>
@@ -1546,6 +1562,9 @@ ${
       let components = [];
       
       switch (currentFilter) {
+        case 'platform':
+          components = COMPONENTS.filter(c => c.isPlatform);
+          break;
         case 'hax':
           components = COMPONENTS.filter(c => c.isHaxCapable);
           break;
@@ -1644,7 +1663,8 @@ ${
 
         // [label, tone] pairs; built as text nodes, never HTML strings
         const tags = [];
-        if (component.isHaxCapable) tags.push(['HAX', 'accent']);
+        if (component.isPlatform) tags.push(['Platform', 'info']);
+        if (component.isHaxCapable) tags.push(['HAX Block', 'accent']);
         if (component.isTheme) tags.push(['Theme', '']);
         if (component.isInstructional) tags.push(['Instructional', 'success']);
         if (component.isDesignSystem) tags.push(['Design system', 'muted']);
@@ -1707,6 +1727,7 @@ ${
       buildDemoSelector(component);
 
       // Show demo header and hide welcome
+      licensesPane.classList.add('hidden');
       demoHeader.classList.remove('hidden');
       welcomeMessage.classList.add('hidden');
       demoFrame.classList.remove('hidden');
@@ -1871,6 +1892,9 @@ ${
           }
         }
       }
+      if (!currentComponent && !licensesPane.classList.contains('hidden')) {
+        params.set('view', 'licenses');
+      }
       if (appearance.system) params.set('system', appearance.system);
       if (appearance.palette) params.set('palette', appearance.palette);
       const search = params.toString();
@@ -1880,6 +1904,9 @@ ${
     function applyRouteFromUrl() {
       const slug = getQueryParam('element');
       if (!slug) {
+        if (getQueryParam('view') === 'licenses') {
+          showLicenses();
+        }
         return;
       }
       let component = null;
@@ -1967,6 +1994,60 @@ ${
         setDrawer(false);
         listToggle.focus();
       }
+    });
+
+    // Third-party licenses: the CDN build's notices as a page, loaded when
+    // the view first opens. Builds published before the Markdown notices
+    // only have the plain-text file, shown as preformatted text.
+    const licensesPane = document.getElementById('licensesPane');
+    const licensesBlock = document.getElementById('licensesBlock');
+    const licensesSourceLink = document.getElementById('licensesSourceLink');
+    let licensesLoaded = false;
+    async function loadLicenses() {
+      licensesLoaded = true;
+      licensesBlock.markdown = 'Loading the license notices…';
+      try {
+        const md = await fetch('${LICENSES_MD_URL}');
+        if (md.ok) {
+          licensesBlock.markdown = await md.text();
+          return;
+        }
+        const text = await fetch('${LICENSES_TEXT_URL}');
+        if (!text.ok) {
+          throw new Error('not found');
+        }
+        const body = await text.text();
+        // a fence longer than any run of backticks in the text
+        const runs = body.match(/\`+/g) || [];
+        const longest = runs.reduce((n, r) => Math.max(n, r.length), 0);
+        const fence = '\`'.repeat(Math.max(3, longest + 1));
+        licensesBlock.markdown = fence + 'text\\n' + body + '\\n' + fence;
+        licensesSourceLink.href = '${LICENSES_TEXT_URL}';
+      } catch (e) {
+        licensesLoaded = false;
+        licensesBlock.markdown = 'The license notices could not be loaded. Open the file with the link above.';
+      }
+    }
+    function showLicenses() {
+      currentComponent = null;
+      currentDemoPath = null;
+      document.querySelectorAll('.component-item[aria-current]').forEach(item => item.removeAttribute('aria-current'));
+      mobileTitle.textContent = 'Third-party licenses';
+      demoHeader.classList.add('hidden');
+      welcomeMessage.classList.add('hidden');
+      demoFrame.classList.add('hidden');
+      docsPane.classList.add('hidden');
+      licensesPane.classList.remove('hidden');
+      setDrawer(false);
+      if (!licensesLoaded) {
+        loadLicenses();
+      }
+      updateUrlForCurrentDemo();
+      licensesPane.focus();
+    }
+    document.getElementById('licensesLink').addEventListener('click', (e) => {
+      e.preventDefault();
+      showLicenses();
     });
 
     // Appearance: design system and palette, as a HAXcms site picks them.
@@ -2067,7 +2148,7 @@ ${
     // Initialize
     renderComponentList();
     applyRouteFromUrl();
-    if (!currentComponent) {
+    if (!currentComponent && licensesPane.classList.contains('hidden')) {
       setDrawer(phone.matches);
     }
   </script>

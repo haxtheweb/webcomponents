@@ -98,7 +98,9 @@ class HaxPalettePicker extends I18NMixin(DDD) {
         /* one row per palette: a disc cut into its colours, the name and
            an Active pill; wide pickers list rows in a grid with the chosen
            palette in full below, narrow ones preview a palette beside the
-           row on hover or focus */
+           row on hover or focus. A narrow picker with no room beside it (a
+           phone) shows the chosen palette below, like a wide one: a
+           preview there would cover the rows */
         .options {
           display: grid;
           grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -406,6 +408,11 @@ class HaxPalettePicker extends I18NMixin(DDD) {
     return 420;
   }
 
+  /** room a preview needs beside the picker: its width, gap and margin */
+  static get PEEK_ROOM() {
+    return 240 + 12 + 8;
+  }
+
   connectedCallback() {
     super.connectedCallback();
     // narrow when the picker itself is narrow (the Theme Preview panel),
@@ -420,6 +427,11 @@ class HaxPalettePicker extends I18NMixin(DDD) {
     if (this.__resize) {
       this.__resize.observe(this);
     }
+    // the room beside the picker changes with the window, not its own size
+    if (!this.__onViewport) {
+      this.__onViewport = () => this._setNarrow(this._narrow);
+    }
+    globalThis.addEventListener("resize", this.__onViewport);
     globalThis.addEventListener(
       "design-system-active-changed",
       this._onDesignSystemChanged,
@@ -484,6 +496,9 @@ class HaxPalettePicker extends I18NMixin(DDD) {
     if (this.__resize) {
       this.__resize.disconnect();
     }
+    if (this.__onViewport) {
+      globalThis.removeEventListener("resize", this.__onViewport);
+    }
     globalThis.removeEventListener(
       "design-system-active-changed",
       this._onDesignSystemChanged,
@@ -493,11 +508,23 @@ class HaxPalettePicker extends I18NMixin(DDD) {
   }
 
   _setNarrow(narrow) {
-    if (narrow === this.hasAttribute("data-narrow")) {
+    // narrow with no room beside it for a preview: the chosen palette
+    // shows below the rows instead (data-peek-below)
+    let below = false;
+    if (narrow) {
+      const r = this.getBoundingClientRect();
+      const room = HaxPalettePicker.PEEK_ROOM;
+      below = r.left < room && globalThis.innerWidth - r.right < room;
+    }
+    if (
+      narrow === this.hasAttribute("data-narrow") &&
+      below === this.hasAttribute("data-peek-below")
+    ) {
       return;
     }
     this.toggleAttribute("data-narrow", narrow);
-    if (!narrow) {
+    this.toggleAttribute("data-peek-below", below);
+    if (!narrow || below) {
       this._hidePeek();
     }
     this.requestUpdate();
@@ -505,6 +532,11 @@ class HaxPalettePicker extends I18NMixin(DDD) {
 
   get _narrow() {
     return this.hasAttribute("data-narrow");
+  }
+
+  /** narrow, with room to preview a palette beside the picker */
+  get _peeks() {
+    return this._narrow && !this.hasAttribute("data-peek-below");
   }
 
   willUpdate(changedProperties) {
@@ -768,7 +800,7 @@ class HaxPalettePicker extends I18NMixin(DDD) {
   }
 
   _renderSpecimen() {
-    if (this._narrow) {
+    if (this._peeks) {
       return "";
     }
     const option = this._getMatchedOption(this.value);
@@ -823,7 +855,7 @@ class HaxPalettePicker extends I18NMixin(DDD) {
    * (WCAG 1.4.13). Escape, a scroll or a press anywhere else closes it.
    */
   _showPeek(option, row) {
-    if (!this._narrow || !option || !row || this.__pointerType === "touch") {
+    if (!this._peeks || !option || !row || this.__pointerType === "touch") {
       return;
     }
     if (!this._peekKey) {
@@ -920,7 +952,7 @@ class HaxPalettePicker extends I18NMixin(DDD) {
     const checked = this._optionMatchesValue(option, this.value);
     const active = this._optionMatchesValue(option, this.activeValue);
     const id = `${this.__inputId}-${index}`;
-    const describedBy = this._narrow ? `${this.__inputId}-peek` : "";
+    const describedBy = this._peeks ? `${this.__inputId}-peek` : "";
     return html`
       <label
         class="option ${checked ? "selected" : ""}"

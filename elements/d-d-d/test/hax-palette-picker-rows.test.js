@@ -1,5 +1,5 @@
 import { fixture, expect, html, oneEvent, aTimeout } from "@open-wc/testing";
-import { sendKeys } from "@web/test-runner-commands";
+import { sendKeys, setViewport } from "@web/test-runner-commands";
 import "../lib/hax-palette-picker.js";
 import { getDDDPaletteOptions } from "../lib/DDDPaletteRegistry.js";
 
@@ -21,12 +21,22 @@ const narrow = () =>
       <hax-palette-picker value="0" active-value="5"></hax-palette-picker>
     </div>`,
   ).then((host) => host.querySelector("hax-palette-picker"));
+// narrow with no room beside it for a preview, as on a phone
+const cramped = () =>
+  fixture(
+    html`<div style="width: 350px; margin-left: 20px">
+      <hax-palette-picker value="3" active-value="5"></hax-palette-picker>
+    </div>`,
+  ).then((host) => host.querySelector("hax-palette-picker"));
 const settle = async (el) => {
   await aTimeout(60);
   await el.updateComplete;
 };
 
 describe("hax-palette-picker rows", () => {
+  // a test that narrows the viewport can't leave it narrow for the next
+  afterEach(() => setViewport({ width: 800, height: 600 }));
+
   it("draws one row per palette, each with a disc of its seven colours", async () => {
     const el = await wide();
     await settle(el);
@@ -247,6 +257,28 @@ describe("hax-palette-picker rows", () => {
     } finally {
       globalThis.DesignSystemManager = previous;
     }
+  });
+
+  it("narrow with no room beside it: the chosen palette shows below, never over the rows", async () => {
+    await setViewport({ width: 390, height: 844 });
+    const el = await cramped();
+    await settle(el);
+    expect(el.hasAttribute("data-narrow")).to.equal(true);
+    expect(el.hasAttribute("data-peek-below")).to.equal(true);
+    const specimen = el.shadowRoot.querySelector(".specimen");
+    expect(specimen).to.exist;
+    expect(specimen.textContent).to.contain("Offbrand Blue");
+    expect(specimen.querySelectorAll(".codes li").length).to.equal(7);
+    // neither a mouse hover nor keyboard focus floats a preview here
+    const row = el.shadowRoot.querySelector('.option[data-palette="5"]');
+    row.dispatchEvent(new MouseEvent("mouseenter"));
+    row.querySelector("input").focus();
+    await settle(el);
+    expect(el.shadowRoot.querySelector(".peek").hidden).to.equal(true);
+    expect(
+      row.querySelector("input").getAttribute("aria-describedby"),
+    ).to.equal("");
+    await expect(el).to.be.accessible();
   });
 
   it("keeps every attribute it had", async () => {
