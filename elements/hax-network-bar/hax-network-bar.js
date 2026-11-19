@@ -1607,7 +1607,12 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
         .frame {
           position: relative;
         }
+        /* the host is the bar's stacking context, so the host (not just the
+           fixed frame) sits above the HAXcms editor bar under it
+           (var(--ddd-z-modal, 10000)); otherwise the cards and the sites
+           menu that drop below the bar open underneath the editor bar */
         :host([demo]) {
+          z-index: calc(var(--ddd-z-modal, 10000) + 1);
           background-color: transparent;
           border-bottom: none;
         }

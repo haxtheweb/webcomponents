@@ -589,6 +589,10 @@ describe("hax-network-bar", () => {
     const frame = demo.shadowRoot.querySelector(".frame");
     const height = () => `${Math.ceil(frame.getBoundingClientRect().height)}px`;
     expect(getComputedStyle(frame).position).to.equal("fixed");
+    // the host is the bar's stacking context: it, not only the frame, sits
+    // above the HAXcms editor bar (--ddd-z-modal, 10000), so the cards and
+    // the sites menu that drop below the bar open over the editor bar
+    expect(Number(getComputedStyle(demo).zIndex)).to.be.above(10000);
     expect(root.style.getPropertyValue("--haxcms-top-offset")).to.equal(
       height(),
     );
