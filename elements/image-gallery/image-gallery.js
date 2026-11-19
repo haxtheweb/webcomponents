@@ -254,13 +254,38 @@ export class ImageGallery extends I18NMixin(DDD) {
           padding: 0 var(--ddd-spacing-2);
         }
 
+        /* previous / next sit on a solid chip so the arrow reads over any
+           photo (a bare arrow in the theme colour did not); hover washes
+           it, keyboard focus rings it and a push adds the pressed layer */
         .gallery-nav-wrap simple-icon-button-lite {
           pointer-events: all;
-          color: var(--ddd-theme-primary);
-          --simple-icon-width: var(--ddd-icon-2xl);
-          --simple-icon-height: var(--ddd-icon-2xl);
-          height: var(--ddd-icon-2xl);
-          width: var(--ddd-icon-2xl);
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray, #262626),
+            var(--ddd-theme-default-white, #ffffff)
+          );
+          --simple-icon-width: var(--ddd-icon-xs, 32px);
+          --simple-icon-height: var(--ddd-icon-xs, 32px);
+          --simple-icon-button-border-radius: var(--ddd-radius-circle, 50%);
+          --simple-icon-button-background-color: light-dark(
+            var(--ddd-theme-default-white, #ffffff),
+            var(--ddd-theme-default-coalyGray, #262626)
+          );
+          --simple-icon-button-focus-opacity: 1;
+          --simple-icon-button-focus-background-color: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight, #f2f2f4),
+            var(--ddd-theme-default-slateGray, #314d64)
+          );
+          height: var(--ddd-icon-md, 48px);
+          width: var(--ddd-icon-md, 48px);
+          border-radius: var(--ddd-radius-circle, 50%);
+          box-shadow: var(--ddd-boxShadow-sm, 0 1px 3px rgba(0, 0, 0, 0.3));
+        }
+        .gallery-nav-wrap simple-icon-button-lite::part(button):focus-visible {
+          outline: var(--ddd-focus-ring, 2px solid currentColor);
+          outline-offset: var(--ddd-focus-offset, 2px);
+        }
+        .gallery-nav-wrap simple-icon-button-lite[disabled] {
+          box-shadow: none;
         }
 
         .gallery-thumbnails {

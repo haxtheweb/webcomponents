@@ -7,7 +7,6 @@ import "../csv-render.js";
 // query for them (ES module caching means this is a no-op, not a double
 // registration, when csv-render's own dynamic import resolves).
 import "@haxtheweb/hexagon-loader/hexagon-loader.js";
-import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 
 // Mock CSV data for testing
 const mockCSVData = {
@@ -165,18 +164,15 @@ describe("csv-render test", () => {
       const downloadLink = element.shadowRoot.querySelector("#download");
       expect(downloadLink).to.exist;
       expect(downloadLink.getAttribute("href")).to.equal("test.csv");
-
-      const button = element.shadowRoot.querySelector(
-        "simple-icon-button-lite",
-      );
-      expect(button).to.exist;
-      expect(button.getAttribute("icon")).to.equal("file-download");
-    });
-
-    it("includes tooltip for download button", () => {
-      const tooltip = element.shadowRoot.querySelector("simple-tooltip");
-      expect(tooltip).to.exist;
-      expect(tooltip.getAttribute("for")).to.equal("ficon");
+      // the link is the control: icon and visible words, nothing nested
+      expect(downloadLink.classList.contains("ddd-block-action")).to.be.true;
+      expect(downloadLink.textContent.trim()).to.equal("Download table data");
+      expect(downloadLink.hasAttribute("tabindex")).to.be.false;
+      expect(downloadLink.querySelector("button, simple-icon-button-lite")).to
+        .be.null;
+      const icon = downloadLink.querySelector("simple-icon-lite");
+      expect(icon.getAttribute("icon")).to.equal("file-download");
+      expect(icon.getAttribute("aria-hidden")).to.equal("true");
     });
 
     it("has correct table accessibility attributes", () => {

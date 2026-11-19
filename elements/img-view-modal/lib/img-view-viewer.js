@@ -197,18 +197,55 @@ class ImgViewViewer extends I18NMixin(FullscreenBehaviors(ImgPanZoom)) {
           );
         }
 
-        button:focus,
-        button:hover,
+        /* hover washes a button, keyboard focus rings it (2px, the DDD
+           focus colour unless overridden), a push adds the pressed layer;
+           the viewer keeps its own ring while it holds focus */
+        button {
+          cursor: pointer;
+        }
+        button:hover:not([disabled]) {
+          background-color: color-mix(
+            in srgb,
+            currentColor calc(var(--ddd-state-hover-opacity, 0.08) * 100%),
+            transparent
+          );
+        }
+        button:focus-visible,
         #viewer:focus-within {
-          outline: 1px solid
+          outline: var(--ddd-border-size-sm, 2px) solid
             var(
               --img-view-viewer-focus-borderColor,
               light-dark(
-                var(--ddd-theme-default-info, blue),
-                var(--ddd-theme-default-infoLight, #e5f6fd)
+                var(--ddd-theme-default-link, #005fa9),
+                var(--ddd-theme-default-linkLight, #cce9ff)
               )
             );
+          outline-offset: calc(-1 * var(--ddd-border-size-sm, 2px));
           z-index: 2;
+        }
+        button:active:not([disabled]) {
+          transform: translateY(1px);
+          box-shadow: inset 0 0 0 999px
+            color-mix(
+              in srgb,
+              currentColor calc(var(--ddd-state-pressed-opacity, 0.12) * 100%),
+              transparent
+            );
+        }
+        /* a toggled button also carries an underline bar, so on reads
+           differently from off without relying on the fill colour */
+        button[aria-pressed="true"] {
+          box-shadow: inset 0 -3px 0 currentColor;
+        }
+        button[aria-pressed="true"]:active:not([disabled]) {
+          box-shadow:
+            inset 0 -3px 0 currentColor,
+            inset 0 0 0 999px
+              color-mix(
+                in srgb,
+                currentColor calc(var(--ddd-state-pressed-opacity, 0.12) * 100%),
+                transparent
+              );
         }
         simple-tooltip:not(:defined) {
           display: none;

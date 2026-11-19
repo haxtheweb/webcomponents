@@ -6,7 +6,7 @@ import { LitElement, html, css } from "lit";
 import { HAXCMSThemeParts } from "../../core/utils/HAXCMSThemeParts.js";
 import { HAXCMSI18NMixin } from "../../core/utils/HAXCMSI18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
-import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 /**
  * `site-rss-button`
@@ -26,13 +26,43 @@ class SiteRSSButton extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
           display: inline-flex;
           color: var(--site-rss-button-color, inherit);
         }
+        /* the link is the control (no button nested inside it): the same
+           24px round icon at rest, plus hover, a focus ring and a
+           held-down overlay */
         a {
+          display: inline-grid;
+          place-items: center;
+          width: var(--simple-icon-width, 24px);
+          height: var(--simple-icon-height, 24px);
+          border-radius: var(--simple-icon-button-border-radius, 50%);
           text-decoration: var(--site-rss-text-decoration);
-          outline: none;
           color: var(--site-rss-button-color, inherit);
         }
-        simple-icon-button-lite {
-          color: var(--site-rss-button-color, inherit);
+        a:hover {
+          background-color: color-mix(
+            in srgb,
+            currentColor calc(var(--ddd-state-hover-opacity, 0.08) * 100%),
+            transparent
+          );
+        }
+        a:focus-visible {
+          outline: var(--ddd-focus-ring, 2px solid currentColor);
+          outline-offset: var(--ddd-focus-offset, 2px);
+        }
+        a:active:not([aria-disabled="true"]) {
+          box-shadow: inset 0 0 0 999px
+            color-mix(
+              in srgb,
+              currentColor calc(var(--ddd-state-pressed-opacity, 0.12) * 100%),
+              transparent
+            );
+        }
+        a[aria-disabled="true"] {
+          opacity: var(--ddd-state-disabled-opacity, 0.5);
+          pointer-events: none;
+        }
+        simple-icon-lite {
+          color: inherit;
         }
       `,
     ];
@@ -63,21 +93,18 @@ class SiteRSSButton extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
   render() {
     return html`
       <a
-        ?disabled="${this.disabled}"
-        tabindex="-1"
+        aria-disabled="${this.disabled ? "true" : "false"}"
         href="${this.href}"
         .id="btn${this.type}"
         target="_blank"
         rel="noopener noreferrer"
+        aria-label="${this._link.title}"
         .part="${this.editMode ? `edit-mode-active` : ``}"
       >
-        <simple-icon-button-lite
+        <simple-icon-lite
           icon="${this.icon}"
-          label="${this._link.title}"
-          @click="${this.print}"
-          ?disabled="${this.disabled}"
-          .part="${this.editMode ? `edit-mode-active` : ``}"
-        ></simple-icon-button-lite>
+          aria-hidden="true"
+        ></simple-icon-lite>
       </a>
       <simple-tooltip
         .for="btn${this.type}"

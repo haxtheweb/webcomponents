@@ -83,20 +83,57 @@ class SimpleAutocomplete extends I18NMixin(SimpleFilterMixin(LitElement)) {
           text-overflow: ellipsis;
           overflow: hidden;
           text-align: left;
-          color: var(--simple-autocomplete-color, #333333);
+          color: var(
+            --simple-autocomplete-color,
+            light-dark(
+              var(--ddd-theme-default-coalyGray, #262626),
+              var(--ddd-theme-default-white, #ffffff)
+            )
+          );
         }
         ul li:first-child button {
           border-top: none;
         }
+        /* hover and the highlighted option share a wash; keyboard focus
+           adds an inset ring (the wash alone is nearly invisible on
+           white) and a push adds the pressed layer */
         button:hover,
         button:active,
         button:focus {
           background-color: var(
             --simple-autocomplete-button-hover-background-color,
-            #eeeeee
+            light-dark(
+              var(--ddd-theme-default-limestoneMaxLight, #f2f2f4),
+              color-mix(
+                in srgb,
+                var(--ddd-theme-default-white, #ffffff) 12%,
+                transparent
+              )
+            )
           );
-          color: var(--simple-autocomplete-hover-color, #000000);
+          color: var(
+            --simple-autocomplete-hover-color,
+            light-dark(
+              var(--ddd-theme-default-coalyGray, #262626),
+              var(--ddd-theme-default-white, #ffffff)
+            )
+          );
           outline: none;
+        }
+        button:focus-visible {
+          outline: var(
+            --simple-autocomplete-focus-ring,
+            var(--ddd-focus-ring, 2px solid #005fa9)
+          );
+          outline-offset: calc(-1 * var(--ddd-border-size-sm, 2px));
+        }
+        button:active {
+          box-shadow: inset 0 0 0 999px
+            color-mix(
+              in srgb,
+              currentColor calc(var(--ddd-state-pressed-opacity, 0.12) * 100%),
+              transparent
+            );
         }
         .no-results {
           font-size: var(

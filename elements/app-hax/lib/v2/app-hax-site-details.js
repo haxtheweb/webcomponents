@@ -183,8 +183,22 @@ export class AppHaxSiteDetails extends I18NMixin(SimpleColors) {
           padding: 4px;
           width: 80%;
         }
+        /* the inner button keeps no outline of its own; keyboard focus
+           rings the whole action (its edge is the visible frame) and hover
+           washes it, so both read on the card */
         .info-icon::part(button) {
           outline: none;
+        }
+        .info-icon::part(button):focus-visible {
+          outline: var(--ddd-focus-ring, 2px solid currentColor);
+          outline-offset: calc(var(--ddd-focus-offset, 2px) + 4px);
+        }
+        .info-icon:hover {
+          background-color: color-mix(
+            in srgb,
+            currentColor calc(var(--ddd-state-hover-opacity, 0.08) * 100%),
+            transparent
+          );
         }
         @media (max-width: 640px) {
           :host {

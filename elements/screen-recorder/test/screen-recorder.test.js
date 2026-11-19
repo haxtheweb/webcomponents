@@ -136,9 +136,7 @@ describe("screen-recorder capture flow", () => {
   it("records with mixed system and microphone audio", async () => {
     const el = await fixture(html`<screen-recorder></screen-recorder>`);
     await el.updateComplete;
-    const buttons = el.shadowRoot.querySelectorAll(
-      ".controls > simple-icon-button-lite",
-    );
+    const buttons = el.shadowRoot.querySelectorAll(".controls > button");
     const startBtn = buttons[0];
     const stopBtn = buttons[1];
     // start a take
@@ -213,9 +211,7 @@ describe("screen-recorder capture flow", () => {
     const el = await fixture(html`<screen-recorder></screen-recorder>`);
     el.includeMicrophoneAudio = false;
     await el.updateComplete;
-    el.shadowRoot
-      .querySelectorAll(".controls > simple-icon-button-lite")[0]
-      .click();
+    el.shadowRoot.querySelectorAll(".controls > button")[0].click();
     await el.updateComplete;
     await settle();
     expect(env.behavior.getUserMediaCalls).to.have.lengthOf(0);
@@ -225,9 +221,7 @@ describe("screen-recorder capture flow", () => {
     el.recorder.ondataavailable({
       data: new Blob(["no-mic-chunk"], { type: "video/webm" }),
     });
-    el.shadowRoot
-      .querySelectorAll(".controls > simple-icon-button-lite")[1]
-      .click();
+    el.shadowRoot.querySelectorAll(".controls > button")[1].click();
     await settle();
     expect(el.recording).to.be.false;
   });
@@ -236,9 +230,7 @@ describe("screen-recorder capture flow", () => {
     const el = await fixture(html`<screen-recorder></screen-recorder>`);
     el.includeSystemAudio = false;
     await el.updateComplete;
-    el.shadowRoot
-      .querySelectorAll(".controls > simple-icon-button-lite")[0]
-      .click();
+    el.shadowRoot.querySelectorAll(".controls > button")[0].click();
     await el.updateComplete;
     await settle();
     expect(env.behavior.getDisplayMediaCalls[0].audio).to.be.false;
@@ -246,9 +238,7 @@ describe("screen-recorder capture flow", () => {
     el.recorder.ondataavailable({
       data: new Blob(["no-audio-chunk"], { type: "video/webm" }),
     });
-    el.shadowRoot
-      .querySelectorAll(".controls > simple-icon-button-lite")[1]
-      .click();
+    el.shadowRoot.querySelectorAll(".controls > button")[1].click();
     await settle();
   });
 
@@ -257,9 +247,7 @@ describe("screen-recorder capture flow", () => {
     const quiet = silenceConsole();
     const el = await fixture(html`<screen-recorder></screen-recorder>`);
     await el.updateComplete;
-    el.shadowRoot
-      .querySelectorAll(".controls > simple-icon-button-lite")[0]
-      .click();
+    el.shadowRoot.querySelectorAll(".controls > button")[0].click();
     await el.updateComplete;
     await settle();
     quiet.restore();
@@ -272,9 +260,7 @@ describe("screen-recorder capture flow", () => {
     el.recorder.ondataavailable({
       data: new Blob(["mic-failure-chunk"], { type: "video/webm" }),
     });
-    el.shadowRoot
-      .querySelectorAll(".controls > simple-icon-button-lite")[1]
-      .click();
+    el.shadowRoot.querySelectorAll(".controls > button")[1].click();
     await settle();
   });
 
@@ -283,9 +269,7 @@ describe("screen-recorder capture flow", () => {
     const quiet = silenceConsole();
     const el = await fixture(html`<screen-recorder></screen-recorder>`);
     await el.updateComplete;
-    el.shadowRoot
-      .querySelectorAll(".controls > simple-icon-button-lite")[0]
-      .click();
+    el.shadowRoot.querySelectorAll(".controls > button")[0].click();
     await settle();
     quiet.restore();
     expect(quiet.errors).to.have.lengthOf(1);
