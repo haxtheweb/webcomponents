@@ -266,56 +266,11 @@
       }
     },
     {
-      "id": "item-hosting",
-      "indent": 1,
-      "location": "pages/item-hosting/index.html",
-      "slug": "hosting",
-      "order": 2,
-      "parent": "item-get-started",
-      "title": "Hosting",
-      "description": "Where it runs. Free paths first.",
-      "metadata": {
-        "published": true,
-        "created": 1795046400,
-        "updated": 1795132800
-      }
-    },
-    {
-      "id": "item-migrate",
-      "indent": 1,
-      "location": "pages/item-migrate/index.html",
-      "slug": "migrate",
-      "order": 3,
-      "parent": "item-get-started",
-      "title": "Migrate",
-      "description": "Bring what you already have. Pick your source, see the path.",
-      "metadata": {
-        "published": true,
-        "created": 1795046400,
-        "updated": 1795132800
-      }
-    },
-    {
-      "id": "item-for-agents",
-      "indent": 1,
-      "location": "pages/item-for-agents/index.html",
-      "slug": "for-agents",
-      "order": 4,
-      "parent": "item-get-started",
-      "title": "For agents",
-      "description": "Humans lead. Agents help. Ideas ship. When someone says \"I want a website that does X\", HAX is built so an agent can select it, install it and operate it correctly.",
-      "metadata": {
-        "published": true,
-        "created": 1795046400,
-        "updated": 1795132800
-      }
-    },
-    {
       "id": "item-pillars",
       "indent": 0,
       "location": "pages/item-pillars/index.html",
       "slug": "pillars",
-      "order": 5,
+      "order": 2,
       "parent": null,
       "title": "7 pillars",
       "description": "Ubiquity sits at the center: HAX is web publishing for everyone, everywhere. These seven are what make something ubiquitous, and every decision is checked against them.",
@@ -330,7 +285,7 @@
       "indent": 0,
       "location": "pages/item-who-its-for/index.html",
       "slug": "who-its-for",
-      "order": 6,
+      "order": 3,
       "parent": null,
       "title": "Who's it for?",
       "description": "One short answer to \"why is this for me\", by who is asking.",
@@ -345,70 +300,10 @@
       "indent": 0,
       "location": "pages/item-community/index.html",
       "slug": "community",
-      "order": 7,
+      "order": 4,
       "parent": null,
       "title": "Community",
       "description": "HAX is built by students, faculty and friends. Here is everyone, what they made, and where it took them.",
-      "metadata": {
-        "published": true,
-        "created": 1795046400,
-        "updated": 1795132800
-      }
-    },
-    {
-      "id": "item-showcase",
-      "indent": 1,
-      "location": "pages/item-showcase/index.html",
-      "slug": "showcase",
-      "order": 8,
-      "parent": "item-community",
-      "title": "Showcase",
-      "description": "Real courses and websites running on HAX today. Each one opens the live site.",
-      "metadata": {
-        "published": true,
-        "created": 1795046400,
-        "updated": 1795132800
-      }
-    },
-    {
-      "id": "item-trust",
-      "indent": 1,
-      "location": "pages/item-trust/index.html",
-      "slug": "trust",
-      "order": 9,
-      "parent": "item-community",
-      "title": "Trust",
-      "description": "Governance, sustainability, security and the license, in writing.",
-      "metadata": {
-        "published": true,
-        "created": 1795046400,
-        "updated": 1795132800
-      }
-    },
-    {
-      "id": "item-learn",
-      "indent": 1,
-      "location": "pages/item-learn/index.html",
-      "slug": "learn",
-      "order": 10,
-      "parent": "item-community",
-      "title": "Learn",
-      "description": "A TV for HAX. Pick a channel, play a tutorial, jump into the demo it shows.",
-      "metadata": {
-        "published": true,
-        "created": 1795046400,
-        "updated": 1795132800
-      }
-    },
-    {
-      "id": "item-story-button",
-      "indent": 1,
-      "location": "pages/item-story-button/index.html",
-      "slug": "story-button",
-      "order": 11,
-      "parent": "item-community",
-      "title": "The story button",
-      "description": "One button, the same everywhere: it opens the story on hax.cloud behind whatever it sits beside.",
       "metadata": {
         "published": true,
         "created": 1795046400,
@@ -420,7 +315,7 @@
       "indent": 0,
       "location": "pages/item-compare/index.html",
       "slug": "compare",
-      "order": 12,
+      "order": 5,
       "parent": null,
       "title": "Compare",
       "description": "Pick any two. Every platform stands on its own, feature by feature.",

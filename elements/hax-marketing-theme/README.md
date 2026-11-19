@@ -90,7 +90,7 @@ All variables are optional. A site that sets none gets the header, the title ban
 
 ## Demo
 
-`demo/` is a whole marketing site built from the theme and its blocks: 13 pages, with its pictures and data in `demo/files/`. It is demo content for this theme, not a starter site. One video on the pillars page plays from the haxtheweb/art repository so the file is not copied here.
+`demo/` is the home page and the five top-level pages of the haxtheweb.org marketing site, with their pictures and data in `demo/files/`. It is demo content for this theme, not a starter site; the whole site, with the pages under these, is in [haxtheweb/haxtheweb.org](https://github.com/haxtheweb/haxtheweb.org), so links to those pages go to haxtheweb.org. One video on the pillars page plays from the haxtheweb/art repository so the file is not copied here.
 
 To see the theme in the HAXcms editor demo, open `elements/haxcms-elements/demo/index.html?theme=hax-marketing-theme`.
 
