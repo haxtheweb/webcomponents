@@ -59,7 +59,7 @@
       "property": "demo",
       "type": "boolean",
       "default": "false",
-      "description": "The demo strip: a thin bar for a HAXcms demo with no backend (demo.hax.cloud). It says nothing is saved, links HAXcms in the browser and Install HAX, and has no Merlin of its own (the editor under it has him). It keeps --haxcms-top-offset on the page set to its height so the HAXcms editor bar sits under it.",
+      "description": "A HAXcms demo with no backend (demo.hax.cloud, the haxcms-elements demo): the mini bar (as compact) with a notice that nothing is saved, pinned above the HAXcms editor bar. It keeps --haxcms-top-offset on the page set to its height so the editor bar sits under it.",
       "hax": null
     },
     {
@@ -67,7 +67,7 @@
       "property": "compact",
       "type": "boolean",
       "default": "false",
-      "description": "The bar for a full platform (HAXcms in the browser): shorter, with no character, Merlin or Future Traveler of its own, and the pre slot in the middle for the platform's own status and functions.",
+      "description": "The mini bar, for a page whose editor already has Merlin and the Future Traveler (HAXcms in the browser): shorter, with the same property icons but no character, Merlin or Future Traveler of its own, and the pre slot in the middle for the page's own status and functions.",
       "hax": null
     },
     {
@@ -75,7 +75,7 @@
       "property": "hasPre",
       "type": "boolean",
       "default": "false",
-      "description": "the demo strip's pre slot holds something (a page's own controls)",
+      "description": "the mini bar's pre slot holds something (a page's own controls)",
       "hax": null
     },
     {

@@ -527,91 +527,118 @@ describe("hax-network-bar", () => {
     }
   });
 
-  it("draws the demo strip: nothing is saved, the browser version, Install HAX, no Merlin", async () => {
-    const strip = await fixture(html`<hax-network-bar demo></hax-network-bar>`);
-    const r = strip.shadowRoot;
-    expect(r.querySelector(".strip .notice .tag").textContent).to.equal("Demo");
-    expect(r.querySelector(".strip .notice .long").textContent).to.equal(
-      strip.t.demoNotice,
+  it("draws a demo as the mini bar: the property icons, a notice that nothing is saved, Install HAX, no Merlin", async () => {
+    const demo = await fixture(html`<hax-network-bar demo></hax-network-bar>`);
+    const mini = await fixture(
+      html`<hax-network-bar compact current="elements"></hax-network-bar>`,
     );
-    expect(r.querySelector(".strip a.browser").getAttribute("href")).to.equal(
-      "https://browser.hax.cloud",
+    const r = demo.shadowRoot;
+    expect(demo.mini).to.be.true;
+    expect(r.querySelector(".app .notice .tag").textContent).to.equal("Demo");
+    expect(r.querySelector(".app .notice .long").textContent).to.equal(
+      demo.t.demoNotice,
     );
-    expect(r.querySelector(".strip .install-btn")).to.exist;
+    // the same icons as the mini bar, in the same order
+    const ids = (bar) =>
+      [...bar.shadowRoot.querySelectorAll("nav.props li")].map(
+        (li) => li.className,
+      );
+    expect(ids(demo).length).to.equal(HAX_NETWORK_SITES.length);
+    expect(ids(demo)).to.deep.equal(ids(mini));
+    expect(r.querySelector(".install-btn")).to.exist;
     expect(r.querySelector("button.merlin")).to.not.exist;
     expect(r.querySelector("a.character")).to.not.exist;
-    expect(r.querySelectorAll("nav.sites a").length).to.equal(
-      HAX_NETWORK_SITES.length,
-    );
-    r.querySelector(".strip .install-btn").click();
-    await strip.updateComplete;
+    expect(r.querySelector("button.traveler")).to.not.exist;
+    // the old strip and its text links are gone
+    expect(r.querySelector(".strip")).to.not.exist;
+    expect(r.querySelector("nav.sites")).to.not.exist;
+    // a mini bar that is not a demo has no notice
+    expect(mini.shadowRoot.querySelector(".notice")).to.not.exist;
+    r.querySelector(".install-btn").click();
+    await demo.updateComplete;
     expect(r.querySelector("dialog").open).to.be.true;
-    strip.closeInstall();
+    demo.closeInstall();
   });
 
-  it("gives a demo's own controls a place in the strip and shortens its wording for them", async () => {
+  it("gives a demo's own controls a place in the mini bar and shortens its notice for them", async () => {
     const plain = await fixture(html`<hax-network-bar demo></hax-network-bar>`);
     await plain.updateComplete;
     expect(plain.hasPre).to.be.false;
-    const strip = await fixture(
+    const demo = await fixture(
       html`<hax-network-bar demo
         ><button slot="pre" type="button">Theme</button></hax-network-bar
       >`,
     );
-    await strip.updateComplete;
+    await demo.updateComplete;
     // slotchange is async
     await new Promise((resolve) => setTimeout(resolve, 0));
-    await strip.updateComplete;
-    const slot = strip.shadowRoot.querySelector(".strip slot[name='pre']");
+    await demo.updateComplete;
+    const slot = demo.shadowRoot.querySelector(".app slot[name='pre']");
     expect(slot).to.exist;
     expect(slot.assignedElements().length).to.equal(1);
-    expect(strip.hasPre).to.be.true;
-    expect(strip.hasAttribute("has-pre")).to.be.true;
-    if (globalThis.matchMedia("(min-width: 1280px)").matches) {
-      const long = strip.shadowRoot.querySelector(".strip .notice .long");
-      expect(globalThis.getComputedStyle(long).display).to.equal("none");
-    }
+    expect(getComputedStyle(slot).display).to.not.equal("none");
+    expect(demo.hasPre).to.be.true;
+    expect(demo.hasAttribute("has-pre")).to.be.true;
+    const long = demo.shadowRoot.querySelector(".notice .long");
+    expect(getComputedStyle(long).display).to.equal("none");
   });
 
-  it("keeps --haxcms-top-offset at the strip's height while it is on the page", async () => {
+  it("keeps --haxcms-top-offset at the demo bar's height while it is on the page", async () => {
     const root = document.documentElement;
-    const strip = await fixture(html`<hax-network-bar demo></hax-network-bar>`);
-    expect(root.style.getPropertyValue("--haxcms-top-offset")).to.equal("40px");
-    strip.demo = false;
-    await strip.updateComplete;
+    const demo = await fixture(html`<hax-network-bar demo></hax-network-bar>`);
+    const frame = demo.shadowRoot.querySelector(".frame");
+    const height = () => `${Math.ceil(frame.getBoundingClientRect().height)}px`;
+    expect(getComputedStyle(frame).position).to.equal("fixed");
+    expect(root.style.getPropertyValue("--haxcms-top-offset")).to.equal(
+      height(),
+    );
+    // the host holds the fixed bar's room in the page
+    expect(demo.getBoundingClientRect().height).to.equal(
+      parseInt(height(), 10),
+    );
+    demo.demo = false;
+    await demo.updateComplete;
     expect(root.style.getPropertyValue("--haxcms-top-offset")).to.equal("");
-    strip.demo = true;
-    await strip.updateComplete;
-    expect(root.style.getPropertyValue("--haxcms-top-offset")).to.equal("40px");
-    strip.remove();
+    demo.demo = true;
+    await demo.updateComplete;
+    expect(root.style.getPropertyValue("--haxcms-top-offset")).to.equal(
+      height(),
+    );
+    demo.remove();
     expect(root.style.getPropertyValue("--haxcms-top-offset")).to.equal("");
     // the full bar never sets it
     expect(element.demo).to.be.false;
   });
 
-  it("leaves Alt⇧ to the editor's Merlin in a demo", async () => {
-    const strip = await fixture(html`<hax-network-bar demo></hax-network-bar>`);
-    let opened = false;
-    strip.openMerlin = () => {
-      opened = true;
-    };
-    const ready = HaxNetworkBar._merlinReady;
-    HaxNetworkBar._merlinReady = false;
-    try {
-      strip._onKey(
-        new KeyboardEvent("keydown", {
-          key: "Shift",
-          shiftKey: true,
-          altKey: true,
-        }),
+  ["demo", "compact"].forEach((mode) =>
+    it(`leaves Alt⇧ to the editor's Merlin in the mini bar (${mode})`, async () => {
+      const strip = await fixture(
+        mode === "demo"
+          ? html`<hax-network-bar demo></hax-network-bar>`
+          : html`<hax-network-bar compact></hax-network-bar>`,
       );
-      expect(opened).to.be.false;
-    } finally {
-      HaxNetworkBar._merlinReady = ready;
-    }
-  });
+      let opened = false;
+      strip.openMerlin = () => {
+        opened = true;
+      };
+      const ready = HaxNetworkBar._merlinReady;
+      HaxNetworkBar._merlinReady = false;
+      try {
+        strip._onKey(
+          new KeyboardEvent("keydown", {
+            key: "Shift",
+            shiftKey: true,
+            altKey: true,
+          }),
+        );
+        expect(opened).to.be.false;
+      } finally {
+        HaxNetworkBar._merlinReady = ready;
+      }
+    }),
+  );
 
-  it("passes the a11y audit as the demo strip", async () => {
+  it("passes the a11y audit as a demo", async () => {
     const strip = await fixture(html`<hax-network-bar demo></hax-network-bar>`);
     await expect(strip).shadowDom.to.be.accessible();
   });
