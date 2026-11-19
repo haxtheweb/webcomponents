@@ -1,0 +1,767 @@
+{
+  "platforms": [
+    {
+      "id": "hax",
+      "name": "HAX",
+      "kind": "Open web publishing",
+      "url": "https://haxtheweb.org"
+    },
+    {
+      "id": "wordpress",
+      "name": "WordPress",
+      "kind": "CMS",
+      "url": "https://wordpress.org"
+    },
+    {
+      "id": "drupal",
+      "name": "Drupal",
+      "kind": "CMS",
+      "url": "https://www.drupal.org"
+    },
+    {
+      "id": "ghost",
+      "name": "Ghost",
+      "kind": "CMS",
+      "url": "https://ghost.org"
+    },
+    {
+      "id": "grav",
+      "name": "Grav",
+      "kind": "Flat-file CMS",
+      "url": "https://getgrav.org"
+    },
+    {
+      "id": "squarespace",
+      "name": "Squarespace",
+      "kind": "Website builder",
+      "url": "https://www.squarespace.com"
+    },
+    {
+      "id": "wix",
+      "name": "Wix",
+      "kind": "Website builder",
+      "url": "https://www.wix.com"
+    },
+    {
+      "id": "hugo",
+      "name": "Hugo",
+      "kind": "Static site generator",
+      "url": "https://gohugo.io"
+    },
+    {
+      "id": "astro",
+      "name": "Astro",
+      "kind": "Static site generator",
+      "url": "https://astro.build"
+    },
+    {
+      "id": "eleventy",
+      "name": "11ty",
+      "kind": "Static site generator",
+      "url": "https://www.11ty.dev"
+    },
+    {
+      "id": "notion",
+      "name": "Notion",
+      "kind": "Workspace",
+      "url": "https://www.notion.com"
+    },
+    {
+      "id": "canvas",
+      "name": "Canvas",
+      "kind": "Learning management system",
+      "url": "https://www.instructure.com/canvas"
+    }
+  ],
+  "features": [
+    {
+      "label": "Free and open source",
+      "cells": {
+        "hax": {
+          "r": "y",
+          "note": "Apache-2.0, the whole stack"
+        },
+        "wordpress": {
+          "r": "y",
+          "note": "GPLv2 or later"
+        },
+        "drupal": {
+          "r": "y",
+          "note": "GPLv2 or later"
+        },
+        "ghost": {
+          "r": "y",
+          "note": "MIT; hosted Ghost(Pro) is paid"
+        },
+        "grav": {
+          "r": "y",
+          "note": "MIT"
+        },
+        "squarespace": {
+          "r": "n",
+          "note": "Proprietary"
+        },
+        "wix": {
+          "r": "n",
+          "note": "Proprietary"
+        },
+        "hugo": {
+          "r": "y",
+          "note": "Apache-2.0"
+        },
+        "astro": {
+          "r": "y",
+          "note": "MIT"
+        },
+        "eleventy": {
+          "r": "y",
+          "note": "MIT"
+        },
+        "notion": {
+          "r": "n",
+          "note": "Proprietary"
+        },
+        "canvas": {
+          "r": "p",
+          "note": "AGPLv3 code, sold as a hosted product"
+        }
+      }
+    },
+    {
+      "label": "Your content is plain files you keep",
+      "cells": {
+        "hax": {
+          "r": "y",
+          "note": "HTML pages and one JSON outline"
+        },
+        "wordpress": {
+          "r": "n",
+          "note": "Lives in a database; exports lose layout"
+        },
+        "drupal": {
+          "r": "n",
+          "note": "Lives in a database"
+        },
+        "ghost": {
+          "r": "p",
+          "note": "Database, with a JSON export"
+        },
+        "grav": {
+          "r": "y",
+          "note": "Markdown files"
+        },
+        "squarespace": {
+          "r": "n",
+          "note": "Exports some pages and posts as XML, without the design"
+        },
+        "wix": {
+          "r": "n",
+          "note": "No full export"
+        },
+        "hugo": {
+          "r": "y",
+          "note": "Markdown files"
+        },
+        "astro": {
+          "r": "y",
+          "note": "Files in your repo"
+        },
+        "eleventy": {
+          "r": "y",
+          "note": "Files in your repo"
+        },
+        "notion": {
+          "r": "p",
+          "note": "Exports to Markdown or HTML"
+        },
+        "canvas": {
+          "r": "p",
+          "note": "Course export as Common Cartridge"
+        }
+      }
+    },
+    {
+      "label": "Edit on the page, no code",
+      "cells": {
+        "hax": {
+          "r": "y",
+          "note": "Click a block and type"
+        },
+        "wordpress": {
+          "r": "y",
+          "note": "Block editor"
+        },
+        "drupal": {
+          "r": "p",
+          "note": "Forms and Layout Builder"
+        },
+        "ghost": {
+          "r": "y",
+          "note": "Writing-first editor"
+        },
+        "grav": {
+          "r": "p",
+          "note": "Admin panel with a Markdown editor"
+        },
+        "squarespace": {
+          "r": "y",
+          "note": "Drag and drop"
+        },
+        "wix": {
+          "r": "y",
+          "note": "Drag and drop"
+        },
+        "hugo": {
+          "r": "n",
+          "note": "Text editor and terminal"
+        },
+        "astro": {
+          "r": "n",
+          "note": "Text editor and terminal"
+        },
+        "eleventy": {
+          "r": "n",
+          "note": "Text editor and terminal"
+        },
+        "notion": {
+          "r": "y",
+          "note": "Type anywhere"
+        },
+        "canvas": {
+          "r": "y",
+          "note": "Rich content editor"
+        }
+      }
+    },
+    {
+      "label": "No database to run or patch",
+      "cells": {
+        "hax": {
+          "r": "y",
+          "note": "Flat files"
+        },
+        "wordpress": {
+          "r": "n",
+          "note": "MySQL or MariaDB"
+        },
+        "drupal": {
+          "r": "n",
+          "note": "SQL database"
+        },
+        "ghost": {
+          "r": "n",
+          "note": "MySQL"
+        },
+        "grav": {
+          "r": "y",
+          "note": "Flat files"
+        },
+        "squarespace": {
+          "r": "p",
+          "note": "Vendor runs it for you"
+        },
+        "wix": {
+          "r": "p",
+          "note": "Vendor runs it for you"
+        },
+        "hugo": {
+          "r": "y",
+          "note": "Build output only"
+        },
+        "astro": {
+          "r": "y",
+          "note": "Build output only"
+        },
+        "eleventy": {
+          "r": "y",
+          "note": "Build output only"
+        },
+        "notion": {
+          "r": "p",
+          "note": "Vendor runs it for you"
+        },
+        "canvas": {
+          "r": "p",
+          "note": "Vendor runs it; PostgreSQL if you self-host"
+        }
+      }
+    },
+    {
+      "label": "Publish as a static site anywhere",
+      "cells": {
+        "hax": {
+          "r": "y",
+          "note": "GitHub Pages, Netlify, Vercel, Surge"
+        },
+        "wordpress": {
+          "r": "p",
+          "note": "With plugins"
+        },
+        "drupal": {
+          "r": "p",
+          "note": "With add-on modules"
+        },
+        "ghost": {
+          "r": "p",
+          "note": "With third-party tools"
+        },
+        "grav": {
+          "r": "p",
+          "note": "With a plugin"
+        },
+        "squarespace": {
+          "r": "n",
+          "note": "Vendor hosting only"
+        },
+        "wix": {
+          "r": "n",
+          "note": "Vendor hosting only"
+        },
+        "hugo": {
+          "r": "y",
+          "note": "Native"
+        },
+        "astro": {
+          "r": "y",
+          "note": "Native"
+        },
+        "eleventy": {
+          "r": "y",
+          "note": "Native"
+        },
+        "notion": {
+          "r": "n",
+          "note": "Vendor hosting only"
+        },
+        "canvas": {
+          "r": "n",
+          "note": "Vendor hosting only"
+        }
+      }
+    },
+    {
+      "label": "Accessibility built into every block",
+      "cells": {
+        "hax": {
+          "r": "y",
+          "note": "Tested for contrast, keyboard and screen readers before it ships"
+        },
+        "wordpress": {
+          "r": "p",
+          "note": "Depends on theme and plugins"
+        },
+        "drupal": {
+          "r": "p",
+          "note": "Strong core, depends on theme"
+        },
+        "ghost": {
+          "r": "p",
+          "note": "Depends on theme"
+        },
+        "grav": {
+          "r": "p",
+          "note": "Depends on theme"
+        },
+        "squarespace": {
+          "r": "p",
+          "note": "Depends on template and author"
+        },
+        "wix": {
+          "r": "p",
+          "note": "Tools provided, depends on template"
+        },
+        "hugo": {
+          "r": "p",
+          "note": "Up to the developer"
+        },
+        "astro": {
+          "r": "p",
+          "note": "Up to the developer"
+        },
+        "eleventy": {
+          "r": "p",
+          "note": "Up to the developer"
+        },
+        "notion": {
+          "r": "p",
+          "note": "Fixed interface, mixed results"
+        },
+        "canvas": {
+          "r": "p",
+          "note": "Checker in the editor, depends on author"
+        }
+      }
+    },
+    {
+      "label": "One design system across blocks and themes",
+      "cells": {
+        "hax": {
+          "r": "y",
+          "note": "DDD, plus bridges to 12 other systems"
+        },
+        "wordpress": {
+          "r": "p",
+          "note": "Per theme"
+        },
+        "drupal": {
+          "r": "p",
+          "note": "Per theme"
+        },
+        "ghost": {
+          "r": "p",
+          "note": "Per theme"
+        },
+        "grav": {
+          "r": "p",
+          "note": "Per theme"
+        },
+        "squarespace": {
+          "r": "p",
+          "note": "Vendor templates only"
+        },
+        "wix": {
+          "r": "p",
+          "note": "Vendor templates only"
+        },
+        "hugo": {
+          "r": "n",
+          "note": "You build it"
+        },
+        "astro": {
+          "r": "n",
+          "note": "You build it"
+        },
+        "eleventy": {
+          "r": "n",
+          "note": "You build it"
+        },
+        "notion": {
+          "r": "p",
+          "note": "One fixed look"
+        },
+        "canvas": {
+          "r": "p",
+          "note": "One fixed look"
+        }
+      }
+    },
+    {
+      "label": "Swap the look without redoing content",
+      "cells": {
+        "hax": {
+          "r": "y",
+          "note": "Change theme, palette or design system live"
+        },
+        "wordpress": {
+          "r": "p",
+          "note": "Themes switch, layouts often need rework"
+        },
+        "drupal": {
+          "r": "p",
+          "note": "Themes switch, layouts often need rework"
+        },
+        "ghost": {
+          "r": "y",
+          "note": "Themes switch cleanly"
+        },
+        "grav": {
+          "r": "p",
+          "note": "Themes switch, templates may differ"
+        },
+        "squarespace": {
+          "r": "p",
+          "note": "Restyle only; a 7.1 site cannot switch template"
+        },
+        "wix": {
+          "r": "n",
+          "note": "A site cannot change template"
+        },
+        "hugo": {
+          "r": "p",
+          "note": "Depends on theme conventions"
+        },
+        "astro": {
+          "r": "p",
+          "note": "Depends on how it was built"
+        },
+        "eleventy": {
+          "r": "p",
+          "note": "Depends on how it was built"
+        },
+        "notion": {
+          "r": "n",
+          "note": "No themes"
+        },
+        "canvas": {
+          "r": "n",
+          "note": "No themes"
+        }
+      }
+    },
+    {
+      "label": "Built for agents to operate",
+      "cells": {
+        "hax": {
+          "r": "y",
+          "note": "CLI, OpenAPI contract, MCP server (pre-release) and skills"
+        },
+        "wordpress": {
+          "r": "y",
+          "note": "WP-CLI, REST API and an official MCP plugin"
+        },
+        "drupal": {
+          "r": "p",
+          "note": "Drush and JSON:API; MCP through an add-on module"
+        },
+        "ghost": {
+          "r": "p",
+          "note": "Admin API; MCP through its CLI and community servers"
+        },
+        "grav": {
+          "r": "y",
+          "note": "Grav 2 ships an API and an MCP server"
+        },
+        "squarespace": {
+          "r": "n",
+          "note": "Limited APIs"
+        },
+        "wix": {
+          "r": "y",
+          "note": "Official hosted MCP server and APIs, on a closed platform"
+        },
+        "hugo": {
+          "r": "p",
+          "note": "Files and a CLI, no content API"
+        },
+        "astro": {
+          "r": "p",
+          "note": "Files and a CLI, no content API"
+        },
+        "eleventy": {
+          "r": "p",
+          "note": "Files and a CLI, no content API"
+        },
+        "notion": {
+          "r": "y",
+          "note": "Official API and MCP server, on a closed platform"
+        },
+        "canvas": {
+          "r": "p",
+          "note": "REST and GraphQL APIs; MCP servers only from the community"
+        }
+      }
+    },
+    {
+      "label": "Made for courses and open textbooks",
+      "cells": {
+        "hax": {
+          "r": "y",
+          "note": "Course sites, OER, Canvas import, xAPI"
+        },
+        "wordpress": {
+          "r": "p",
+          "note": "With LMS plugins"
+        },
+        "drupal": {
+          "r": "p",
+          "note": "With distributions"
+        },
+        "ghost": {
+          "r": "n",
+          "note": "Not its purpose"
+        },
+        "grav": {
+          "r": "p",
+          "note": "Open course starter sites"
+        },
+        "squarespace": {
+          "r": "n",
+          "note": "Not its purpose"
+        },
+        "wix": {
+          "r": "p",
+          "note": "Online programs app"
+        },
+        "hugo": {
+          "r": "n",
+          "note": "Not its purpose"
+        },
+        "astro": {
+          "r": "n",
+          "note": "Not its purpose"
+        },
+        "eleventy": {
+          "r": "n",
+          "note": "Not its purpose"
+        },
+        "notion": {
+          "r": "n",
+          "note": "Not its purpose"
+        },
+        "canvas": {
+          "r": "y",
+          "note": "It is an LMS; content stays inside it"
+        }
+      }
+    },
+    {
+      "label": "Free to run on your own hosting",
+      "cells": {
+        "hax": {
+          "r": "y",
+          "note": "PHP, Node, static, or just your browser"
+        },
+        "wordpress": {
+          "r": "y",
+          "note": "Any PHP host"
+        },
+        "drupal": {
+          "r": "y",
+          "note": "Any PHP host"
+        },
+        "ghost": {
+          "r": "y",
+          "note": "Node host"
+        },
+        "grav": {
+          "r": "y",
+          "note": "Any PHP host"
+        },
+        "squarespace": {
+          "r": "n",
+          "note": "Subscription"
+        },
+        "wix": {
+          "r": "p",
+          "note": "Free tier with ads, vendor only"
+        },
+        "hugo": {
+          "r": "y",
+          "note": "Any static host"
+        },
+        "astro": {
+          "r": "y",
+          "note": "Any static host"
+        },
+        "eleventy": {
+          "r": "y",
+          "note": "Any static host"
+        },
+        "notion": {
+          "r": "p",
+          "note": "Free tier, vendor only"
+        },
+        "canvas": {
+          "r": "p",
+          "note": "Possible, but heavy to operate"
+        }
+      }
+    },
+    {
+      "label": "Brings your old site in",
+      "cells": {
+        "hax": {
+          "r": "y",
+          "note": "WordPress, Elementor, Canvas, Word, static generators and more"
+        },
+        "wordpress": {
+          "r": "y",
+          "note": "Many importers"
+        },
+        "drupal": {
+          "r": "y",
+          "note": "Migrate framework"
+        },
+        "ghost": {
+          "r": "y",
+          "note": "Migrate tools for WordPress, Substack, Medium and more"
+        },
+        "grav": {
+          "r": "p",
+          "note": "A few importers"
+        },
+        "squarespace": {
+          "r": "p",
+          "note": "WordPress import"
+        },
+        "wix": {
+          "r": "p",
+          "note": "Limited import"
+        },
+        "hugo": {
+          "r": "p",
+          "note": "Community scripts"
+        },
+        "astro": {
+          "r": "p",
+          "note": "Community scripts"
+        },
+        "eleventy": {
+          "r": "p",
+          "note": "Community scripts"
+        },
+        "notion": {
+          "r": "y",
+          "note": "Many importers"
+        },
+        "canvas": {
+          "r": "p",
+          "note": "Common Cartridge, Moodle and Blackboard packages"
+        }
+      }
+    },
+    {
+      "label": "Large ecosystem and name recognition",
+      "cells": {
+        "hax": {
+          "r": "p",
+          "note": "Small and growing"
+        },
+        "wordpress": {
+          "r": "y",
+          "note": "Massive"
+        },
+        "drupal": {
+          "r": "y",
+          "note": "Large"
+        },
+        "ghost": {
+          "r": "y",
+          "note": "Large"
+        },
+        "grav": {
+          "r": "p",
+          "note": "Smaller"
+        },
+        "squarespace": {
+          "r": "y",
+          "note": "Large"
+        },
+        "wix": {
+          "r": "y",
+          "note": "Large"
+        },
+        "hugo": {
+          "r": "y",
+          "note": "Large"
+        },
+        "astro": {
+          "r": "y",
+          "note": "Large"
+        },
+        "eleventy": {
+          "r": "p",
+          "note": "Smaller"
+        },
+        "notion": {
+          "r": "y",
+          "note": "Large"
+        },
+        "canvas": {
+          "r": "y",
+          "note": "Large in education"
+        }
+      }
+    }
+  ]
+}

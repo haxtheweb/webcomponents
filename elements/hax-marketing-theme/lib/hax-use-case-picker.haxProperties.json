@@ -1,0 +1,46 @@
+{
+  "canScale": false,
+  "canEditSource": true,
+  "gizmo": {
+    "title": "Use case picker",
+    "description": "Pick what a site is for and get a link that opens HAX in the browser with that starter site, plus the matching CLI command.",
+    "icon": "icons:touch-app",
+    "color": "blue",
+    "tags": ["Other", "marketing", "skeleton", "onboarding"],
+    "meta": {
+      "author": "HAXTheWeb core team",
+      "owner": "The Pennsylvania State University"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "browserUrl",
+        "title": "HAX in the browser address",
+        "description": "Where the link opens; it gets ?skeleton= and &name= added",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "exclude",
+        "title": "Starter sites to leave out",
+        "description": "Machine names, comma separated",
+        "inputMethod": "textfield"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "source",
+        "title": "Starter site list",
+        "description": "Address of the skeleton list (the format app-hax reads)",
+        "inputMethod": "textfield"
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "tag": "hax-use-case-picker",
+      "properties": {},
+      "content": ""
+    }
+  ]
+}

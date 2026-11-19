@@ -1,0 +1,16 @@
+{
+  "theme": "Theme",
+  "designSystem": "Design system",
+  "dddDefault": "DDD (default)",
+  "designSystemHelp": "Color, type, corners and focus. The theme keeps the layout.",
+  "designSystemFixed": "This theme keeps its own design system.",
+  "palette": "Palette",
+  "themeDefault": "Theme default",
+  "paletteNumber": "Palette {n}",
+  "siteTheme": "{name} (this site's theme)",
+  "restyle": "Restyle this site",
+  "close": "Close",
+  "reset": "Back to this site's own look",
+  "random": "Surprise me",
+  "about": "This shows a few of the looks built into HAX. The pages never change: structure lives in JSON Outline Schema and every block is a standard web component, so the design is free to swap."
+}

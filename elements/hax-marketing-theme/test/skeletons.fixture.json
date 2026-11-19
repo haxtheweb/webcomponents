@@ -1,0 +1,28 @@
+{
+  "data": [
+    {
+      "title": "Blog",
+      "description": "A blog starter.",
+      "machineName": "blog",
+      "priority": -1
+    },
+    {
+      "title": "Online Course",
+      "description": "An online course.",
+      "machineName": "online-course",
+      "priority": -2
+    },
+    {
+      "title": "Studio Starter (User)",
+      "description": "User-provided starter.",
+      "machineName": "studio-user-template",
+      "priority": -8
+    },
+    {
+      "title": "Something new",
+      "description": "Not phrased yet.",
+      "machineName": "new-thing",
+      "priority": 5
+    }
+  ]
+}

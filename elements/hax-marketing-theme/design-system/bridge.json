@@ -1,0 +1,93 @@
+{
+  "$comment": "DDD bridge for Future Traveler, the design system hax-marketing-theme defines for itself (design-system/future-traveler.tokens.json, a local source). Tiers follow elements/d-d-d/design-system/bridge/contract.json. The identity colors come from the Future Traveler logo; fonts are the Roboto families DDD already ships, with the slab face leading. Kept as DDD on purpose: spacing and type scales, motion, shadows and control heights. lib/FutureTravelerDesignSystem.js adds the default palette a site gets under this system until it picks one.",
+  "system": "future-traveler",
+  "title": "Future Traveler",
+  "prefix": "FutureTraveler",
+  "colorNames": {
+    "strip": ["--ft-"]
+  },
+  "homepage": "https://github.com/haxtheweb/webcomponents/tree/master/elements/hax-marketing-theme",
+  "sources": [
+    {
+      "local": true,
+      "file": "design-system/future-traveler.tokens.json",
+      "format": "dtcg",
+      "prefix": "--ft-",
+      "license": "Apache-2.0",
+      "copyright": "Copyright 2026 The Pennsylvania State University"
+    }
+  ],
+  "extraTokens": ["--ft-pack"],
+  "ddd": {
+    "--ddd-theme-default-beaverBlue": {
+      "token": "--ft-red",
+      "note": "primary: the traveler's red"
+    },
+    "--ddd-theme-default-nittanyNavy": {
+      "token": "--ft-navy"
+    },
+    "--ddd-theme-default-potentialMidnight": {
+      "token": "--ft-midnight"
+    },
+    "--ddd-theme-default-pughBlue": {
+      "token": "--ft-lens"
+    },
+    "--ddd-theme-default-accent": {
+      "token": "--ft-lens"
+    },
+    "--ddd-theme-default-keystoneYellow": {
+      "token": "--ft-bulb"
+    },
+    "--ddd-theme-default-link": {
+      "token": "--ft-link"
+    },
+    "--ddd-theme-default-linkLight": {
+      "token": "--ft-link-light"
+    },
+    "--ddd-font-primary": {
+      "token": "--ft-font-body"
+    },
+    "--ddd-font-secondary": {
+      "token": "--ft-font-heading"
+    },
+    "--ddd-font-navigation": {
+      "token": "--ft-font-navigation"
+    },
+    "--ddd-font-heading": {
+      "token": "--ft-font-heading",
+      "note": "headings and block titles take the slab face"
+    },
+    "--ddd-radius-xs": {
+      "value": "4px",
+      "note": "rounder corners at every step"
+    },
+    "--ddd-radius-sm": {
+      "value": "8px"
+    },
+    "--ddd-radius-md": {
+      "value": "12px"
+    },
+    "--ddd-radius-lg": {
+      "value": "20px"
+    },
+    "--ddd-radius-xl": {
+      "value": "28px"
+    },
+    "--ddd-border-size-md": {
+      "value": "3px",
+      "note": "sticker-weight rules"
+    },
+    "--ddd-focus-ring": {
+      "token": "--ft-focus-ring"
+    },
+    "--ddd-focus-offset": {
+      "value": "2px"
+    },
+    "--ddd-card-radius": {
+      "value": "20px"
+    },
+    "--ddd-control-radius": {
+      "value": "8px"
+    }
+  }
+}

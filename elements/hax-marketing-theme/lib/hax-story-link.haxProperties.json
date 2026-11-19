@@ -1,0 +1,59 @@
+{
+  "canScale": false,
+  "canEditSource": true,
+  "gizmo": {
+    "title": "Story button",
+    "description": "The button that opens the story behind a claim on hax.cloud, or the matching place on another HAX network site",
+    "icon": "icons:book",
+    "color": "blue",
+    "tags": ["Marketing", "content"],
+    "meta": {
+      "author": "HAXTheWeb core team",
+      "owner": "The Pennsylvania State University"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "site",
+        "title": "Where it goes",
+        "inputMethod": "select",
+        "options": {
+          "cloud": "hax.cloud, the story",
+          "learn": "learn.hax.cloud, a tutorial",
+          "try": "browser.hax.cloud, try it",
+          "elements": "webcomponents.hax.cloud, a block",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "property": "story",
+        "title": "Address on that site (a story on hax.cloud looks like stories/ee450a19)",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "about",
+        "title": "What it is about",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "compact",
+        "title": "Small chip",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "named",
+        "title": "Show what it is about in the button",
+        "inputMethod": "boolean"
+      }
+    ],
+    "advanced": []
+  },
+  "demoSchema": [
+    {
+      "tag": "hax-story-link",
+      "properties": {},
+      "content": ""
+    }
+  ]
+}

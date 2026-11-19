@@ -1,0 +1,43 @@
+{
+  "tag": "hax-marketing-theme",
+  "folder": "hax-marketing-theme",
+  "package": "@haxtheweb/hax-marketing-theme",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "hax-marketing-theme",
+  "description": "A HAXcms marketing theme, first built for haxtheweb.org: palette-driven chrome, section blocks, a live theme, palette and design system switcher, a use case picker and its own design system",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/hax-marketing-theme/hax-marketing-theme.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/hax-marketing-theme/hax-marketing-theme.js",
+  "install": "npm i @haxtheweb/hax-marketing-theme",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "data-palette",
+      "property": "dataPalette",
+      "type": "string",
+      "default": "\"3\"",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "8eff39018306",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/hax-marketing-theme",
+    "file": "hax-marketing-theme.js"
+  }
+}

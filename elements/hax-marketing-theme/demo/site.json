@@ -1,0 +1,329 @@
+{
+  "id": "hax-marketing-theme-demo",
+  "title": "HAX",
+  "author": "",
+  "description": "Demonstration site for hax-marketing-theme: the haxtheweb.org marketing pages built from the theme and its blocks.",
+  "license": "by-sa",
+  "metadata": {
+    "author": {},
+    "site": {
+      "name": "hax-marketing-theme",
+      "logo": "files/traveler-logo.svg",
+      "settings": {
+        "lang": "en-US",
+        "publishPagesOn": true,
+        "canonical": true,
+        "pathauto": true
+      },
+      "created": 1794960000,
+      "updated": 1795132800,
+      "git": {
+        "vendor": "github",
+        "branch": "gh-pages"
+      }
+    },
+    "theme": {
+      "element": "hax-marketing-theme",
+      "path": "@haxtheweb/hax-marketing-theme/hax-marketing-theme.js",
+      "name": "HAX marketing",
+      "designSystem": "future-traveler",
+      "variables": {
+        "network": "hax",
+        "cta": "Start building",
+        "eyebrow": "Free. Open. Yours to keep. Forever.",
+        "heroAction": "Pick a starter",
+        "payoff": "Every era had its tools. This one's yours.",
+        "legal": "HAX is free and open source under the Apache-2.0 license, the whole stack. Founded at and backed by Penn State.",
+        "art": [
+          {
+            "src": "files/traveler-burst.webp",
+            "alt": "The baseline look: red helmet with HAX band, cyan goggles, green backpack with lightbulb, chin on arms, white starburst in a red circle."
+          },
+          {
+            "character": "educators",
+            "alt": "An RPG character: HAX is for educators"
+          },
+          {
+            "src": "files/traveler-24.webp",
+            "alt": "Flat-vector starburst badge: helmet, goggles and backpack with the face hidden behind folded arms."
+          },
+          {
+            "callout": "Try it now",
+            "site": "try",
+            "alt": "Try it now, at browser.hax.cloud"
+          },
+          {
+            "src": "files/traveler-27.webp",
+            "alt": "Layered cut-paper version of the traveler with soft shadows under a white and red burst."
+          },
+          {
+            "character": "students",
+            "alt": "An RPG character: HAX is for students"
+          },
+          {
+            "src": "files/traveler-12.webp",
+            "alt": "Torn-paper collage of the traveler resting his chin on his arm, red and white paper burst behind, yellow lightbulb."
+          },
+          {
+            "callout": "640+ blocks",
+            "site": "elements",
+            "alt": "640+ blocks, at webcomponents.hax.cloud"
+          },
+          {
+            "src": "files/traveler-13.webp",
+            "alt": "Traveler in a red HAX hoodie with goggles and green backpack, hands on a desk, tan and orange starburst."
+          },
+          {
+            "character": "agents",
+            "alt": "An RPG character: HAX is for agents"
+          },
+          {
+            "src": "files/traveler-02.webp",
+            "alt": "Starburst badge with the traveler duplicated and glitching, several HAX visors overlapping."
+          },
+          {
+            "callout": "Learn HAX",
+            "site": "learn",
+            "alt": "Learn HAX, at learn.hax.cloud"
+          }
+        ],
+        "logos": [
+          {
+            "src": "files/traveler-logo.svg",
+            "alt": "The Future Traveler logo"
+          },
+          {
+            "src": "files/sticker-beaver-blue.svg",
+            "alt": "Future Traveler as a sticker"
+          },
+          {
+            "src": "files/paper-cut-hax-red.svg",
+            "alt": "Future Traveler cut from paper, no sticker edge"
+          },
+          {
+            "src": "files/sticker-round-beaver-blue.svg",
+            "alt": "Future Traveler as a round sticker"
+          },
+          {
+            "src": "files/traveler-app-tile.svg",
+            "alt": "Future Traveler as an app tile"
+          },
+          {
+            "src": "files/paper-sticker-creek-teal.svg",
+            "alt": "Future Traveler as a paper sticker"
+          }
+        ],
+        "screens": [
+          {
+            "src": "../../haxcms-elements/lib/theme-screenshots/theme-clean-one.jpg",
+            "alt": "The Clean One theme",
+            "name": "Clean One",
+            "tags": ["Course"]
+          },
+          {
+            "src": "../../haxcms-elements/lib/theme-screenshots/theme-writing-theme.jpg",
+            "alt": "The Writing theme",
+            "name": "Writing",
+            "tags": ["Website"]
+          },
+          {
+            "src": "../../haxcms-elements/lib/theme-screenshots/theme-vhs-blog-theme.jpg",
+            "alt": "The VHS Blog theme",
+            "name": "VHS Blog",
+            "tags": ["Blog", "Website"]
+          },
+          {
+            "src": "../../haxcms-elements/lib/theme-screenshots/theme-glossy-portfolio-theme.jpg",
+            "alt": "The Glossy Portfolio theme",
+            "name": "Glossy Portfolio",
+            "tags": ["Website"]
+          },
+          {
+            "src": "../../haxcms-elements/lib/theme-screenshots/theme-polaris-flex-theme.jpg",
+            "alt": "The Polaris Flex theme",
+            "name": "Polaris Flex",
+            "tags": ["Website"]
+          },
+          {
+            "src": "../../haxcms-elements/lib/theme-screenshots/theme-haxma-theme.jpg",
+            "alt": "The Design docs theme",
+            "name": "Design docs",
+            "tags": ["Website"]
+          },
+          {
+            "src": "../../haxcms-elements/lib/theme-screenshots/theme-journey-theme.jpg",
+            "alt": "The Journey theme",
+            "name": "Journey",
+            "tags": ["Website"]
+          },
+          {
+            "src": "../../haxcms-elements/lib/theme-screenshots/theme-book-theme.jpg",
+            "alt": "The Book theme",
+            "name": "Book",
+            "tags": ["Documentation", "Course", "Website"]
+          }
+        ],
+        "stickers": [
+          {
+            "src": "files/sticker-round-beaver-blue.svg",
+            "alt": "Future Traveler round sticker, beaver blue"
+          },
+          {
+            "src": "files/sticker-creek-teal.svg",
+            "alt": "Future Traveler sticker, creek teal"
+          },
+          {
+            "src": "files/sticker-invent-orange.svg",
+            "alt": "Future Traveler sticker, invent orange"
+          },
+          {
+            "src": "files/sticker-wonder-purple.svg",
+            "alt": "Future Traveler sticker, wonder purple"
+          },
+          {
+            "src": "files/sticker-opportunity-green.svg",
+            "alt": "Future Traveler sticker, opportunity green"
+          },
+          {
+            "src": "files/paper-cut-hax-red.svg",
+            "alt": "Future Traveler cut from paper"
+          },
+          {
+            "src": "files/paper-sticker-creek-teal.svg",
+            "alt": "Future Traveler paper sticker"
+          }
+        ],
+        "copyright": "Copyright © 2026 The Pennsylvania State University.",
+        "footerLinks": [
+          {
+            "label": "HAX at Penn State: hax.psu.edu",
+            "url": "https://hax.psu.edu"
+          },
+          {
+            "label": "HAX on GitHub",
+            "url": "https://github.com/haxtheweb"
+          },
+          {
+            "label": "Report an issue",
+            "url": "https://github.com/haxtheweb/issues/issues"
+          }
+        ],
+        "remixStories": [
+          {
+            "story": "data-contracts/json-outline-schema",
+            "about": "JSON Outline Schema"
+          },
+          {
+            "story": "web-component-stack",
+            "about": "the web component standard"
+          }
+        ]
+      }
+    },
+    "node": {
+      "fields": {}
+    },
+    "platform": {
+      "audience": "expert",
+      "features": {},
+      "allowedBlocks": []
+    },
+    "build": {
+      "version": "26.8.0",
+      "structure": "course",
+      "type": "own"
+    }
+  },
+  "items": [
+    {
+      "id": "item-i-want-a-website-that",
+      "indent": 0,
+      "location": "pages/item-i-want-a-website-that/index.html",
+      "slug": "i-want-a-website-that",
+      "order": 0,
+      "parent": null,
+      "title": "I want a website that…",
+      "description": "Pick what it is for. You land in HAX with that site already built, in your browser, with files you own. No account, no database, no subscription.",
+      "metadata": {
+        "published": true,
+        "created": 1795046400,
+        "updated": 1795132800
+      }
+    },
+    {
+      "id": "item-get-started",
+      "indent": 0,
+      "location": "pages/item-get-started/index.html",
+      "slug": "get-started",
+      "order": 1,
+      "parent": null,
+      "title": "Get started",
+      "description": "Three ways in. The first needs nothing installed.",
+      "metadata": {
+        "published": true,
+        "created": 1795046400,
+        "updated": 1795132800
+      }
+    },
+    {
+      "id": "item-pillars",
+      "indent": 0,
+      "location": "pages/item-pillars/index.html",
+      "slug": "pillars",
+      "order": 2,
+      "parent": null,
+      "title": "7 pillars",
+      "description": "Ubiquity sits at the center: HAX is web publishing for everyone, everywhere. These seven are what make something ubiquitous, and every decision is checked against them.",
+      "metadata": {
+        "published": true,
+        "created": 1795046400,
+        "updated": 1795132800
+      }
+    },
+    {
+      "id": "item-who-its-for",
+      "indent": 0,
+      "location": "pages/item-who-its-for/index.html",
+      "slug": "who-its-for",
+      "order": 3,
+      "parent": null,
+      "title": "Who's it for?",
+      "description": "One short answer to \"why is this for me\", by who is asking.",
+      "metadata": {
+        "published": true,
+        "created": 1795046400,
+        "updated": 1795132800
+      }
+    },
+    {
+      "id": "item-community",
+      "indent": 0,
+      "location": "pages/item-community/index.html",
+      "slug": "community",
+      "order": 4,
+      "parent": null,
+      "title": "Community",
+      "description": "HAX is built by students, faculty and friends. Here is everyone, what they made, and where it took them.",
+      "metadata": {
+        "published": true,
+        "created": 1795046400,
+        "updated": 1795132800
+      }
+    },
+    {
+      "id": "item-compare",
+      "indent": 0,
+      "location": "pages/item-compare/index.html",
+      "slug": "compare",
+      "order": 5,
+      "parent": null,
+      "title": "Compare",
+      "description": "Pick any two. Every platform stands on its own, feature by feature.",
+      "metadata": {
+        "published": true,
+        "created": 1795046400,
+        "updated": 1795132800
+      }
+    }
+  ]
+}

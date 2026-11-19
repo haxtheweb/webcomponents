@@ -1,0 +1,27 @@
+{
+  "canScale": false,
+  "canEditSource": true,
+  "gizmo": {
+    "title": "Stat strip",
+    "description": "A row that holds stats",
+    "icon": "icons:view-week",
+    "color": "blue",
+    "tags": ["Marketing", "content"],
+    "meta": {
+      "author": "HAXTheWeb core team",
+      "owner": "The Pennsylvania State University"
+    }
+  },
+  "settings": {
+    "configure": [],
+    "advanced": []
+  },
+  "contentEditable": true,
+  "demoSchema": [
+    {
+      "tag": "hax-stat-strip",
+      "properties": {},
+      "content": ""
+    }
+  ]
+}

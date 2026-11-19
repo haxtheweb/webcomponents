@@ -71,6 +71,7 @@ jobs:
           - carbon
           - classic-desktop
           - fluent
+          - future-traveler
           - keepcase
           - material
           - patternfly

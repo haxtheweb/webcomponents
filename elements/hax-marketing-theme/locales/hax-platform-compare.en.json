@@ -1,0 +1,15 @@
+{
+  "loading": "Loading the comparison.",
+  "yes": "Yes",
+  "partly": "Partly",
+  "no": "No",
+  "compare": "Compare",
+  "with": "With",
+  "vs": "vs",
+  "caption": "{a} and {b}, feature by feature",
+  "feature": "Feature",
+  "clearYes": "{count} of {total} a clear yes",
+  "seeForYourself": "See for yourself:",
+  "and": "and",
+  "why": "Why"
+}

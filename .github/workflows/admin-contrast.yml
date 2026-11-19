@@ -54,6 +54,7 @@ jobs:
           - ddd
           - carbon
           - classic-desktop
+          - future-traveler
           - keepcase
           - material
           - patternfly

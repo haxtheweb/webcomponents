@@ -1,0 +1,845 @@
+{
+  "source": "https://github.com/haxtheweb/hax-lab",
+  "lab": [
+    {
+      "name": "Aarya Awasthy",
+      "url": "https://www.linkedin.com/in/aarya-awasthy/",
+      "work": [
+        {
+          "what": "2 Portfolio themes for HAXcms",
+          "when": "Summer 2025",
+          "year": 2025
+        }
+      ],
+      "landed": null,
+      "story": "stories/da173629",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/aarya-awasthy/"
+        },
+        {
+          "kind": "github",
+          "url": "https://github.com/aarya0804"
+        }
+      ],
+      "github": "aarya0804",
+      "year": 2025
+    },
+    {
+      "name": "Nazman Rosman",
+      "url": "https://www.linkedin.com/in/nazman-rosman/",
+      "work": [
+        {
+          "what": "Glossy Portfolio theme for HAXcms",
+          "when": "Summer 2025",
+          "year": 2025
+        }
+      ],
+      "landed": null,
+      "story": "stories/aa51ef41",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/nazman-rosman/"
+        },
+        {
+          "kind": "github",
+          "url": "https://github.com/NazmanRosman"
+        }
+      ],
+      "github": "NazmanRosman",
+      "year": 2025
+    },
+    {
+      "name": "Jonathan Skeete",
+      "url": "https://indigosec.dev/",
+      "work": [
+        {
+          "what": "2025 HAX Pentest (CCSO): Lead, Discovery, Reporting",
+          "when": "Spring 2025",
+          "year": 2025
+        }
+      ],
+      "landed": null,
+      "story": "stories/3ad914b7",
+      "links": [
+        {
+          "kind": "site",
+          "url": "https://indigosec.dev/"
+        }
+      ],
+      "github": "",
+      "year": 2025
+    },
+    {
+      "name": "Liam Geyer",
+      "url": "https://lfgberg.org",
+      "work": [
+        {
+          "what": "2025 HAX Pentest (CCSO): Lead, Discovery, Reporting",
+          "when": "Spring 2025",
+          "year": 2025
+        }
+      ],
+      "landed": null,
+      "story": "stories/8788a69c",
+      "links": [
+        {
+          "kind": "site",
+          "url": "https://lfgberg.org"
+        }
+      ],
+      "github": "",
+      "year": 2025
+    },
+    {
+      "name": "Asa Reynolds",
+      "url": "https://asareynolds.com/",
+      "work": [
+        {
+          "what": "2025 HAX Pentest (CCSO): Discovery, Reporting",
+          "when": "Spring 2025",
+          "year": 2025
+        }
+      ],
+      "landed": null,
+      "story": "stories/f2406af8",
+      "links": [
+        {
+          "kind": "site",
+          "url": "https://asareynolds.com/"
+        }
+      ],
+      "github": "",
+      "year": 2025
+    },
+    {
+      "name": "Robert Roderick",
+      "url": "https://github.com/userRPR",
+      "work": [
+        {
+          "what": "2025 HAX Pentest (CCSO): Discovery, Reporting",
+          "when": "Spring 2025",
+          "year": 2025
+        }
+      ],
+      "landed": null,
+      "story": "stories/186e83bb",
+      "links": [
+        {
+          "kind": "github",
+          "url": "https://github.com/userRPR"
+        }
+      ],
+      "github": "userRPR",
+      "year": 2025
+    },
+    {
+      "name": "Maguire Younes",
+      "url": "https://maguireyounes.com/",
+      "work": [
+        {
+          "what": "2025 HAX Pentest (CCSO): Discovery, Reporting",
+          "when": "Spring 2025",
+          "year": 2025
+        }
+      ],
+      "landed": null,
+      "story": "stories/3286acb4",
+      "links": [
+        {
+          "kind": "site",
+          "url": "https://maguireyounes.com/"
+        }
+      ],
+      "github": "",
+      "year": 2025
+    },
+    {
+      "name": "Owen Dransfield",
+      "url": "https://www.linkedin.com/in/owendransfield/",
+      "work": [
+        {
+          "what": "2025 HAX Pentest (CCSO): Reporting",
+          "when": "Spring 2025",
+          "year": 2025
+        }
+      ],
+      "landed": null,
+      "story": "stories/dc3b9f14",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/owendransfield/"
+        }
+      ],
+      "github": "",
+      "year": 2025
+    },
+    {
+      "name": "Nicholas Thomas",
+      "url": "https://www.linkedin.com/in/nicholas-thomas485/",
+      "work": [
+        {
+          "what": "2025 HAX Pentest (CCSO): Reporting",
+          "when": "Spring 2025",
+          "year": 2025
+        }
+      ],
+      "landed": null,
+      "story": "stories/c054a52d",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/nicholas-thomas485/"
+        }
+      ],
+      "github": "",
+      "year": 2025
+    },
+    {
+      "name": "Kekoa Merez",
+      "url": "https://www.linkedin.com/in/kekoa-merez/",
+      "work": [
+        {
+          "what": "2025 HAX Pentest (CCSO): Reporting",
+          "when": "Spring 2025",
+          "year": 2025
+        }
+      ],
+      "landed": null,
+      "story": "stories/4892c235",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/kekoa-merez/"
+        }
+      ],
+      "github": "",
+      "year": 2025
+    },
+    {
+      "name": "Miles Handelman",
+      "url": "https://www.linkedin.com/in/mileshandelman",
+      "work": [
+        {
+          "what": "2025 HAX Pentest (CCSO): Reporting",
+          "when": "Spring 2025",
+          "year": 2025
+        }
+      ],
+      "landed": null,
+      "story": "stories/3632f5b1",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/mileshandelman"
+        }
+      ],
+      "github": "",
+      "year": 2025
+    },
+    {
+      "name": "Josh Owen-Guenther",
+      "url": "https://github.com/jno-de",
+      "work": [
+        {
+          "what": "Portfolio Theme",
+          "when": "Spring 2025",
+          "year": 2025
+        }
+      ],
+      "landed": null,
+      "story": "stories/55d5482d",
+      "links": [
+        {
+          "kind": "github",
+          "url": "https://github.com/jno-de"
+        }
+      ],
+      "github": "jno-de",
+      "year": 2025
+    },
+    {
+      "name": "Winston White",
+      "url": "https://github.com/winstonwumbo",
+      "work": [
+        {
+          "what": "Theme CLI workflow",
+          "when": "Spring 2025",
+          "year": 2025
+        },
+        {
+          "what": "Polaris Themes, Flex Map Menu",
+          "when": "Fall 2024",
+          "year": 2024
+        }
+      ],
+      "landed": {
+        "role": "Site reliability",
+        "org": "IBM"
+      },
+      "story": "stories/325e6281",
+      "links": [
+        {
+          "kind": "github",
+          "url": "https://github.com/winstonwumbo"
+        }
+      ],
+      "github": "winstonwumbo",
+      "year": 2025
+    },
+    {
+      "name": "Skyler Koba",
+      "url": "https://github.com/SkylerKoba88",
+      "work": [
+        {
+          "what": "Start Journey Screen",
+          "when": "Spring 2025",
+          "year": 2025
+        }
+      ],
+      "landed": null,
+      "story": "stories/b915aa27",
+      "links": [
+        {
+          "kind": "github",
+          "url": "https://github.com/SkylerKoba88"
+        }
+      ],
+      "github": "SkylerKoba88",
+      "year": 2025
+    },
+    {
+      "name": "Isabella Masso",
+      "url": "https://github.com/izzabizz5",
+      "work": [
+        {
+          "what": "Start Journey Screen",
+          "when": "Spring 2025",
+          "year": 2025
+        }
+      ],
+      "landed": null,
+      "story": "stories/961f1b19",
+      "links": [
+        {
+          "kind": "github",
+          "url": "https://github.com/izzabizz5"
+        }
+      ],
+      "github": "izzabizz5",
+      "year": 2025
+    },
+    {
+      "name": "Kai Huang",
+      "url": "https://github.com/klh6157",
+      "work": [
+        {
+          "what": "Auditing DDD Usage, QA Elements in Monorepo",
+          "when": "Fall 2024",
+          "year": 2024
+        }
+      ],
+      "landed": null,
+      "story": "stories/c6179139",
+      "links": [
+        {
+          "kind": "github",
+          "url": "https://github.com/klh6157"
+        }
+      ],
+      "github": "klh6157",
+      "year": 2024
+    },
+    {
+      "name": "Zach Dodson",
+      "url": "https://github.com/zdodson21",
+      "work": [
+        {
+          "what": "AI Chat Agent",
+          "when": "Summer 2024",
+          "year": 2024
+        }
+      ],
+      "landed": {
+        "role": "",
+        "org": "Penn State"
+      },
+      "story": "stories/a3d9550d",
+      "links": [
+        {
+          "kind": "github",
+          "url": "https://github.com/zdodson21"
+        }
+      ],
+      "github": "zdodson21",
+      "year": 2024
+    },
+    {
+      "name": "Keith Charlton",
+      "url": "https://github.com/kchar601",
+      "work": [
+        {
+          "what": "DDD Creation",
+          "when": "Spring 2024",
+          "year": 2024
+        }
+      ],
+      "landed": null,
+      "story": "stories/a130323f",
+      "links": [
+        {
+          "kind": "github",
+          "url": "https://github.com/kchar601"
+        }
+      ],
+      "github": "kchar601",
+      "year": 2024
+    },
+    {
+      "name": "Andrew Maier",
+      "url": "https://www.linkedin.com/in/maier-andrew/",
+      "work": [
+        {
+          "what": "JWT policy review and build Headless user authentication prototype",
+          "when": "2023",
+          "year": 2023
+        },
+        {
+          "what": "HAX Camp 2022 planning committee",
+          "when": "2022",
+          "year": 2022
+        }
+      ],
+      "landed": null,
+      "story": "stories/c228be2b",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/maier-andrew/"
+        }
+      ],
+      "github": "",
+      "year": 2023
+    },
+    {
+      "name": "Liz Blake",
+      "url": "https://www.linkedin.com/in/lizblake17/",
+      "work": [
+        {
+          "what": "HAX Camp 2022 planning committee",
+          "when": "2022",
+          "year": 2022
+        }
+      ],
+      "landed": null,
+      "story": "stories/c3f7cda2",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/lizblake17/"
+        }
+      ],
+      "github": "",
+      "year": 2022
+    },
+    {
+      "name": "Taylor Bracone",
+      "url": "https://www.linkedin.com/in/taylor-bracone/",
+      "work": [
+        {
+          "what": "HAX Camp 2022 planning committee",
+          "when": "2022",
+          "year": 2022
+        }
+      ],
+      "landed": null,
+      "story": "stories/46e68cdc",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/taylor-bracone/"
+        }
+      ],
+      "github": "",
+      "year": 2022
+    },
+    {
+      "name": "James Kane IV",
+      "url": "https://github.com/liljimmyk99",
+      "work": [
+        {
+          "what": "8-bit video game aesthetic and user flow for site creation",
+          "when": "Spring 2022",
+          "year": 2022
+        }
+      ],
+      "landed": {
+        "role": "iOS engineer",
+        "org": "Ford Motor Credit"
+      },
+      "story": "stories/ee450a19",
+      "links": [
+        {
+          "kind": "github",
+          "url": "https://github.com/liljimmyk99"
+        }
+      ],
+      "github": "liljimmyk99",
+      "year": 2022
+    },
+    {
+      "name": "Drew Ronk",
+      "url": "https://github.com/dronk6",
+      "work": [
+        {
+          "what": "8-bit video game aesthetic and user flow for site creation",
+          "when": "Spring 2022",
+          "year": 2022
+        }
+      ],
+      "landed": null,
+      "story": "stories/0e1f213f",
+      "links": [
+        {
+          "kind": "github",
+          "url": "https://github.com/dronk6"
+        }
+      ],
+      "github": "dronk6",
+      "year": 2022
+    },
+    {
+      "name": "Elizabeth Delor",
+      "url": "https://github.com/elizabeth-delor",
+      "work": [
+        {
+          "what": "8-bit video game aesthetic and user flow for site creation",
+          "when": "Spring 2022",
+          "year": 2022
+        }
+      ],
+      "landed": null,
+      "story": "stories/4ab703ee",
+      "links": [
+        {
+          "kind": "github",
+          "url": "https://github.com/elizabeth-delor"
+        }
+      ],
+      "github": "elizabeth-delor",
+      "year": 2022
+    },
+    {
+      "name": "Hanna Kern",
+      "url": "https://www.linkedin.com/in/hannah-kern/",
+      "work": [
+        {
+          "what": "Vocab web component for presenting terms",
+          "when": "2021",
+          "year": 2021
+        }
+      ],
+      "landed": null,
+      "story": "stories/9a1c5080",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/hannah-kern/"
+        },
+        {
+          "kind": "github",
+          "url": "https://github.com/hvk5388"
+        }
+      ],
+      "github": "hvk5388",
+      "year": 2021
+    },
+    {
+      "name": "Collin Kleest",
+      "url": "https://github.com/collinkleest",
+      "work": [
+        {
+          "what": "Bootstrap Theme for HAXcms",
+          "when": "Spring 2021",
+          "year": 2021
+        }
+      ],
+      "landed": null,
+      "story": "stories/bbdea1d5",
+      "links": [
+        {
+          "kind": "github",
+          "url": "https://github.com/collinkleest"
+        }
+      ],
+      "github": "collinkleest",
+      "year": 2021
+    },
+    {
+      "name": "Sara Cunningham",
+      "url": "https://www.linkedin.com/in/saracunn/",
+      "work": [
+        {
+          "what": "Media dashboard UX prototype development",
+          "when": "2020",
+          "year": 2020
+        }
+      ],
+      "landed": null,
+      "story": "stories/5aa60e74",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/saracunn/"
+        }
+      ],
+      "github": "",
+      "year": 2020
+    },
+    {
+      "name": "Tevin Julien",
+      "url": "https://www.linkedin.com/in/tevin-julien-b5123a185/",
+      "work": [
+        {
+          "what": "Pre-release HAX UX study",
+          "when": "2020",
+          "year": 2020
+        }
+      ],
+      "landed": null,
+      "story": "stories/992d37ae",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/tevin-julien-b5123a185/"
+        }
+      ],
+      "github": "",
+      "year": 2020
+    },
+    {
+      "name": "Shiju \"Tom\" Varughese",
+      "url": "https://www.linkedin.com/in/shiju-tom-varughese/",
+      "work": [
+        {
+          "what": "HAX Multimedia production, HAX Camp Duke planning committee, social media",
+          "when": "2019",
+          "year": 2019
+        }
+      ],
+      "landed": null,
+      "story": "stories/15253c24",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/shiju-tom-varughese/"
+        }
+      ],
+      "github": "",
+      "year": 2019
+    },
+    {
+      "name": "Mark Milutinović",
+      "url": "https://www.linkedin.com/in/mmilutinovic013/",
+      "work": [
+        {
+          "what": "Original ELMS:LN / Drupal student contributor",
+          "when": "2017",
+          "year": 2017
+        }
+      ],
+      "landed": null,
+      "story": "stories/a334adcd",
+      "links": [
+        {
+          "kind": "linkedin",
+          "url": "https://www.linkedin.com/in/mmilutinovic013/"
+        }
+      ],
+      "github": "",
+      "year": 2017
+    },
+    {
+      "name": "Dave Fusco",
+      "url": "https://github.com/djfusco",
+      "work": [
+        {
+          "what": "xAPI and AI Integration",
+          "when": "Fall 2016",
+          "year": 2016
+        }
+      ],
+      "landed": null,
+      "story": "stories/cd7260f8",
+      "links": [
+        {
+          "kind": "github",
+          "url": "https://github.com/djfusco"
+        }
+      ],
+      "github": "djfusco",
+      "year": 2016
+    }
+  ],
+  "code": [
+    {
+      "login": "btopro",
+      "commits": 6958
+    },
+    {
+      "login": "nikkimk",
+      "commits": 1885
+    },
+    {
+      "login": "zdodson21",
+      "commits": 291
+    },
+    {
+      "login": "winstonwumbo",
+      "commits": 126
+    },
+    {
+      "login": "heyMP",
+      "commits": 89
+    },
+    {
+      "login": "collinkleest",
+      "commits": 79
+    },
+    {
+      "login": "NazmanRosman",
+      "commits": 53
+    },
+    {
+      "login": "izzabizz5",
+      "commits": 46
+    },
+    {
+      "login": "cgldevel",
+      "commits": 42
+    },
+    {
+      "login": "JAlbert2",
+      "commits": 41
+    },
+    {
+      "login": "klh6157",
+      "commits": 36
+    },
+    {
+      "login": "jno-de",
+      "commits": 25
+    },
+    {
+      "login": "JackWillDavis",
+      "commits": 20
+    },
+    {
+      "login": "aam198",
+      "commits": 20
+    },
+    {
+      "login": "chloemartin312",
+      "commits": 19
+    },
+    {
+      "login": "ChristianMurphy",
+      "commits": 19
+    },
+    {
+      "login": "SkylerKoba88",
+      "commits": 17
+    },
+    {
+      "login": "kchar601",
+      "commits": 16
+    },
+    {
+      "login": "aarya0804",
+      "commits": 15
+    },
+    {
+      "login": "hvk5388",
+      "commits": 15
+    },
+    {
+      "login": "liljimmyk99",
+      "commits": 14
+    },
+    {
+      "login": "firaol4",
+      "commits": 14
+    },
+    {
+      "login": "SanikaA3",
+      "commits": 13
+    },
+    {
+      "login": "McGarvelcuddy",
+      "commits": 12
+    },
+    {
+      "login": "kazmyriad",
+      "commits": 11
+    },
+    {
+      "login": "rickhumphries",
+      "commits": 6
+    },
+    {
+      "login": "djfusco",
+      "commits": 6
+    },
+    {
+      "login": "yosilevy",
+      "commits": 3
+    },
+    {
+      "login": "JonasJason",
+      "commits": 3
+    },
+    {
+      "login": "user383747292",
+      "commits": 3
+    },
+    {
+      "login": "michael-collins",
+      "commits": 3
+    },
+    {
+      "login": "justbycris",
+      "commits": 2
+    },
+    {
+      "login": "Griffin-Sullivan",
+      "commits": 2
+    },
+    {
+      "login": "OrangeOakTree",
+      "commits": 1
+    },
+    {
+      "login": "Daymannovaes",
+      "commits": 1
+    },
+    {
+      "login": "profmikegreene",
+      "commits": 1
+    },
+    {
+      "login": "shuuji3",
+      "commits": 1
+    },
+    {
+      "login": "donoberry",
+      "commits": 1
+    },
+    {
+      "login": "infodigger33",
+      "commits": 1
+    }
+  ]
+}

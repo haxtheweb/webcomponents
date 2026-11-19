@@ -1,0 +1,42 @@
+{
+  "canScale": false,
+  "canEditSource": true,
+  "gizmo": {
+    "title": "Platform compare",
+    "description": "Head to head: pick any two platforms from a data file",
+    "icon": "icons:compare-arrows",
+    "color": "blue",
+    "tags": ["Marketing", "content", "compare", "table"],
+    "meta": {
+      "author": "HAXTheWeb core team",
+      "owner": "The Pennsylvania State University"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Comparison data (JSON)",
+        "inputMethod": "haxupload"
+      },
+      {
+        "property": "a",
+        "title": "Left platform id",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "b",
+        "title": "Right platform id",
+        "inputMethod": "textfield"
+      }
+    ],
+    "advanced": []
+  },
+  "demoSchema": [
+    {
+      "tag": "hax-platform-compare",
+      "properties": {},
+      "content": ""
+    }
+  ]
+}

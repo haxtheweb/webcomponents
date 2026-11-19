@@ -263,6 +263,18 @@
     "terrible": false,
     "supportedPalettes": null
   },
+  "hax-marketing-theme": {
+    "element": "hax-marketing-theme",
+    "path": "@haxtheweb/hax-marketing-theme/hax-marketing-theme.js",
+    "name": "HAX marketing",
+    "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-hax-marketing-theme-thumb.jpg",
+    "description": "Start with a blank site using the HAX marketing",
+    "category": ["Website"],
+    "hidden": false,
+    "priority": 20,
+    "terrible": false,
+    "supportedPalettes": null
+  },
   "haxcms-blank-theme": {
     "element": "haxcms-blank-theme",
     "path": "@haxtheweb/haxcms-elements/lib/haxcms-blank-theme.js",

@@ -1,0 +1,56 @@
+{
+  "lab": [
+    {
+      "name": "Sam Example",
+      "work": [
+        {
+          "what": "A theme",
+          "when": "Summer 2025",
+          "year": 2025
+        }
+      ],
+      "landed": {
+        "org": "Example Co",
+        "role": "Engineer"
+      },
+      "story": "stories/abc12345",
+      "links": [
+        {
+          "kind": "github",
+          "url": "https://github.com/example"
+        },
+        {
+          "kind": "site",
+          "url": "javascript:alert(1)"
+        }
+      ],
+      "github": "example",
+      "year": 2025
+    },
+    {
+      "name": "Pat Sample",
+      "work": [
+        {
+          "what": "A block",
+          "when": "Fall 2024",
+          "year": 2024
+        }
+      ],
+      "landed": null,
+      "story": "",
+      "links": [],
+      "github": "",
+      "year": 2024
+    }
+  ],
+  "code": [
+    {
+      "login": "example",
+      "commits": 12
+    },
+    {
+      "login": "solo",
+      "commits": 1
+    }
+  ]
+}

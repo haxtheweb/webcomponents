@@ -1,0 +1,63 @@
+{
+  "canScale": false,
+  "canEditSource": true,
+  "gizmo": {
+    "title": "Pillar",
+    "description": "A pillar: name, phrase, icon, color and why it matters",
+    "icon": "image:nature",
+    "color": "blue",
+    "tags": ["Marketing", "content"],
+    "meta": {
+      "author": "HAXTheWeb core team",
+      "owner": "The Pennsylvania State University"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "label",
+        "title": "Name",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "phrase",
+        "title": "Phrase",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "icon",
+        "title": "Icon",
+        "inputMethod": "iconpicker"
+      },
+      {
+        "property": "color",
+        "title": "Color (DDD name)",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "order",
+        "title": "Which pillar, 1 to 7",
+        "inputMethod": "number"
+      },
+      {
+        "property": "compact",
+        "title": "Small card",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "link",
+        "title": "Where the name goes",
+        "inputMethod": "textfield"
+      }
+    ],
+    "advanced": []
+  },
+  "contentEditable": true,
+  "demoSchema": [
+    {
+      "tag": "hax-pillar",
+      "properties": {},
+      "content": ""
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "canScale": false,
+  "canEditSource": true,
+  "gizmo": {
+    "title": "Stat",
+    "description": "A number that counts up, with a label and a link to its story",
+    "icon": "editor:insert-chart",
+    "color": "blue",
+    "tags": ["Marketing", "content"],
+    "meta": {
+      "author": "HAXTheWeb core team",
+      "owner": "The Pennsylvania State University"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "end",
+        "title": "Number to count up to",
+        "inputMethod": "number"
+      },
+      {
+        "property": "prefix",
+        "title": "Before the number",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "suffix",
+        "title": "After the number",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "value",
+        "title": "Words instead of a number",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "label",
+        "title": "What it counts",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "story",
+        "title": "Story address on hax.cloud (stories/ee450a19)",
+        "inputMethod": "textfield"
+      }
+    ],
+    "advanced": []
+  },
+  "demoSchema": [
+    {
+      "tag": "hax-stat",
+      "properties": {},
+      "content": ""
+    }
+  ]
+}

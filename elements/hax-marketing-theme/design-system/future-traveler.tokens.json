@@ -1,0 +1,77 @@
+{
+  "$description": "Future Traveler, the design system of hax-marketing-theme: the colors of the Future Traveler logo, a slab display face, rounder corners and sticker-weight rules.",
+  "red": {
+    "$type": "color",
+    "$value": "#bc204b",
+    "$description": "the traveler's red: the lead color"
+  },
+  "midnight": {
+    "$type": "color",
+    "$value": "#0b0f2b",
+    "$description": "the night sky behind the traveler"
+  },
+  "navy": {
+    "$type": "color",
+    "$value": "#141c4a"
+  },
+  "lens": {
+    "$type": "color",
+    "$value": "#7ee7f2",
+    "$description": "the cyan of the traveler's lens: the accent"
+  },
+  "bulb": {
+    "$type": "color",
+    "$value": "#ffd100",
+    "$description": "the idea bulb"
+  },
+  "pack": {
+    "$type": "color",
+    "$value": "#1d5e3c",
+    "$description": "the backpack green"
+  },
+  "link": {
+    "$type": "color",
+    "$value": "#a3163d",
+    "$description": "link on a light surface: a deeper red that reads at over 7:1 on white"
+  },
+  "link-light": {
+    "$type": "color",
+    "$value": "#ffa3b8",
+    "$description": "link on a dark surface"
+  },
+  "font": {
+    "$type": "fontFamily",
+    "heading": {
+      "$type": "fontFamily",
+      "$value": [
+        "Roboto Slab",
+        "Rockwell",
+        "Rockwell Nova",
+        "Georgia",
+        "serif"
+      ],
+      "$description": "the slab display face; Roboto Slab ships with DDD, so nothing new is downloaded"
+    },
+    "body": {
+      "$type": "fontFamily",
+      "$value": ["Roboto", "Helvetica Neue", "Helvetica", "Arial", "sans-serif"]
+    },
+    "navigation": {
+      "$type": "fontFamily",
+      "$value": [
+        "Roboto Condensed",
+        "Roboto",
+        "Helvetica Neue",
+        "Helvetica",
+        "Arial",
+        "sans-serif"
+      ]
+    }
+  },
+  "focus": {
+    "ring": {
+      "$value": "3px solid light-dark(#0b0f2b, #7ee7f2)",
+      "$description": "midnight on light surfaces, lens cyan on dark ones"
+    }
+  }
+}
