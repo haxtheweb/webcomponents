@@ -54,6 +54,26 @@ describe("grade-book-pop-up", () => {
     expect(GradeBookStore.activeAssignment).to.equal(0);
   });
 
+  it("shortcut buttons show a glyph and words, and work when the words are clicked", async () => {
+    const el = await fixture(html`<grade-book-pop-up></grade-book-pop-up>`);
+    await flush();
+    const btn = el.querySelector('button[value="next-Student"]');
+    expect(btn.getAttribute("type")).to.equal("button");
+    expect(
+      btn.querySelector(".gb-pop-glyph").getAttribute("aria-hidden"),
+    ).to.equal("true");
+    expect(
+      btn.querySelector("span:not(.gb-pop-glyph)").textContent.trim(),
+    ).to.equal("Next student");
+    const before = GradeBookStore.activeStudent;
+    btn.querySelector("span:not(.gb-pop-glyph)").click();
+    expect(GradeBookStore.activeStudent).to.not.equal(before);
+    el.querySelector(
+      'button[value="prev-Student"] span:not(.gb-pop-glyph)',
+    ).click();
+    expect(GradeBookStore.activeStudent).to.equal(before);
+  });
+
   it("renders a URL submission as an iframe with the cleaned video source", async () => {
     const el = await fixture(html`<grade-book-pop-up></grade-book-pop-up>`);
     await flush();

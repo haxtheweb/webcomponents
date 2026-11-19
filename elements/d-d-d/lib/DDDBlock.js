@@ -354,6 +354,18 @@ export const DDDBlockStyles = css`
     outline: var(--ddd-focus-ring);
     outline-offset: var(--ddd-focus-offset);
   }
+  /* held down: a state layer of the action's own color (the DDD pressed
+     opacity, which design system bridges map) and a 1px drop, so a push
+     is confirmed before it is let go; never on a disabled action */
+  .ddd-block-action:active:not([disabled], [aria-disabled="true"]) {
+    transform: translateY(1px);
+    box-shadow: inset 0 0 0 999px
+      color-mix(
+        in srgb,
+        currentColor calc(var(--ddd-state-pressed-opacity, 0.12) * 100%),
+        transparent
+      );
+  }
   .ddd-block-action[aria-pressed="true"],
   .ddd-block-action[aria-expanded="true"] {
     border-color: var(

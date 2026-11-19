@@ -4,9 +4,9 @@
  */
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { DDDBlockStyles } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
-import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import { IntersectionObserverMixin } from "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
@@ -109,10 +109,6 @@ class CsvRender extends I18NMixin(IntersectionObserverMixin(DDD)) {
         :host([accent-color="grey"]) .table thead th {
           box-shadow: inset 0 -2px 0 var(--ddd-palette-accent, transparent);
         }
-        :host(:not([accent-color])) #download,
-        :host([accent-color="grey"]) #download {
-          color: var(--ddd-palette-accent, LinkText);
-        }
         .table td {
           border-top: 1px solid var(--simple-colors-default-theme-accent-6);
           border-bottom: 1px solid var(--simple-colors-default-theme-accent-6);
@@ -145,13 +141,14 @@ class CsvRender extends I18NMixin(IntersectionObserverMixin(DDD)) {
           margin: 0;
           padding: 0;
         }
-        #download button:hover,
-        #download button:focus,
-        #download button:active {
-          color: var(--simple-colors-default-theme-accent-8);
-          outline: 2px solid var(--simple-colors-default-theme-accent-6);
+        /* the download link is the DDD block action itself (icon and
+           words, hover, focus ring, held-down state), not a button
+           nested inside a link */
+        #download {
+          margin-block-end: var(--ddd-spacing-2);
         }
       `,
+      DDDBlockStyles,
     ];
   }
   /**
@@ -202,7 +199,6 @@ class CsvRender extends I18NMixin(IntersectionObserverMixin(DDD)) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "elementVisible" && this.elementVisible) {
         import("@haxtheweb/hexagon-loader/hexagon-loader.js");
-        import("@haxtheweb/simple-tooltip/simple-tooltip.js");
       }
       if (
         ["dataSource", "elementVisible"].includes(propName) &&
@@ -242,19 +238,14 @@ class CsvRender extends I18NMixin(IntersectionObserverMixin(DDD)) {
       <a
         href="${this.dataSource}"
         id="download"
-        tabindex="-1"
-        title="${this.t.downloadTableData}"
+        class="ddd-block-action has-text"
       >
-        <simple-icon-button-lite
-          id="ficon"
-          aria-labelledby="download"
-          label="${this.t.downloadTableData}"
+        <simple-icon-lite
           icon="file-download"
-        ></simple-icon-button-lite>
+          aria-hidden="true"
+        ></simple-icon-lite>
+        <span>${this.t.downloadTableData}</span>
       </a>
-      <simple-tooltip for="ficon" offset="14" position="top"
-        >${this.t.downloadTableData}</simple-tooltip
-      >
       <table class="table" summary="${this.summary}">
         ${
           this.caption

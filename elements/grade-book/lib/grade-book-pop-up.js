@@ -38,7 +38,9 @@ class GradeBookPopUp extends I18NMixin(LitElement) {
 
   // weirdest way to do this award goes to...
   changeActive(e) {
-    const tmp = e.target.value.split("-");
+    // currentTarget is the button even when the click lands on its icon
+    // or words
+    const tmp = (e.currentTarget || e.target).value.split("-");
     if (tmp[0] !== "prev" && tmp[0] !== "next") {
       return;
     }
@@ -61,27 +63,65 @@ class GradeBookPopUp extends I18NMixin(LitElement) {
   render() {
     return html`
       <style>
+        /* the pop-up window gets no page styles, so every value here
+           carries its DDD fallback. Buttons follow the shared control
+           states: icon and words, a visible edge, hover, a focus ring,
+           and a held-down overlay with a 1px drop. */
         grade-book-pop-up .shortcut-btns {
           position: sticky;
+          top: 0;
           background-color: var(
             --simple-colors-default-theme-accent-12,
             #001333
           );
           color: var(--simple-colors-default-theme-accent-1, #e2ecff);
-          height: 36px;
-          vertical-align: middle;
-          width: 100%;
           display: flex;
+          flex-wrap: wrap;
+          gap: var(--ddd-spacing-2, 8px);
+          padding: var(--ddd-spacing-2, 8px);
         }
-        grade-book-pop-up .shortcut-btns button {
+        grade-book-pop-up .gb-pop-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--ddd-spacing-1, 4px);
+          box-sizing: border-box;
+          min-height: var(--ddd-control-height-xs, 32px);
+          margin: 0;
+          padding: 0 var(--ddd-spacing-3, 12px);
+          border: 1px solid currentColor;
+          border-radius: var(--ddd-radius-xs, 4px);
           background: transparent;
-          margin: 0 10px;
-          padding: 4px 8px;
-          font-size: 12px;
-          color: var(--simple-colors-default-theme-accent-1, #e2ecff);
-          border: none;
-          outline: 1px solid white;
+          color: inherit;
+          font-family: var(--ddd-font-navigation, sans-serif);
+          font-size: 14px;
+          text-decoration: none;
           cursor: pointer;
+        }
+        /* the pop-up is its own window: Lit elements such as simple-icon
+           cannot share their stylesheets into it, so the icons are text
+           glyphs (hidden from screen readers; the words name the action) */
+        grade-book-pop-up .gb-pop-glyph {
+          font-size: 16px;
+          line-height: 1;
+        }
+        grade-book-pop-up .gb-pop-btn:hover {
+          background-color: color-mix(in srgb, currentColor 12%, transparent);
+        }
+        grade-book-pop-up .gb-pop-btn:focus-visible {
+          outline: 2px solid var(--ddd-theme-default-keystoneYellow, #ffd100);
+          outline-offset: 2px;
+        }
+        grade-book-pop-up .gb-pop-btn:active {
+          transform: translateY(1px);
+          box-shadow: inset 0 0 0 999px rgba(128, 128, 128, 0.28);
+        }
+        /* the open link sits on the window body, not the dark bar */
+        grade-book-pop-up .gb-pop-btn.gb-pop-link {
+          margin-inline-start: var(--ddd-spacing-2, 8px);
+          color: var(--ddd-theme-default-link, #005fa9);
+        }
+        grade-book-pop-up .gb-pop-btn.gb-pop-link:focus-visible {
+          outline-color: var(--ddd-theme-default-link, #005fa9);
         }
         .active-submission {
           overflow: hidden;
@@ -103,17 +143,41 @@ class GradeBookPopUp extends I18NMixin(LitElement) {
         }
       </style>
       <div class="shortcut-btns">
-        <button @click="${this.changeActive}" value="prev-Student">
-          ${this.t.previousStudent}
+        <button
+          type="button"
+          class="gb-pop-btn"
+          @click="${this.changeActive}"
+          value="prev-Student"
+        >
+          <span class="gb-pop-glyph" aria-hidden="true">↑</span>
+          <span>${this.t.previousStudent}</span>
         </button>
-        <button @click="${this.changeActive}" value="next-Student">
-          ${this.t.nextStudent}
+        <button
+          type="button"
+          class="gb-pop-btn"
+          @click="${this.changeActive}"
+          value="next-Student"
+        >
+          <span class="gb-pop-glyph" aria-hidden="true">↓</span>
+          <span>${this.t.nextStudent}</span>
         </button>
-        <button @click="${this.changeActive}" value="prev-Assignment">
-          ${this.t.previousAssignment}
+        <button
+          type="button"
+          class="gb-pop-btn"
+          @click="${this.changeActive}"
+          value="prev-Assignment"
+        >
+          <span class="gb-pop-glyph" aria-hidden="true">←</span>
+          <span>${this.t.previousAssignment}</span>
         </button>
-        <button @click="${this.changeActive}" value="next-Assignment">
-          ${this.t.nextAssignment}
+        <button
+          type="button"
+          class="gb-pop-btn"
+          @click="${this.changeActive}"
+          value="next-Assignment"
+        >
+          <span class="gb-pop-glyph" aria-hidden="true">→</span>
+          <span>${this.t.nextAssignment}</span>
         </button>
       </div>
       <div class="assignment-container">
@@ -139,12 +203,16 @@ class GradeBookPopUp extends I18NMixin(LitElement) {
       }`;
     // test if this smells like a URL
     if (validURL(data)) {
+      // the link is the control (icon and words), not a button nested
+      // inside a link
       return html`${pre}<a
+          class="gb-pop-btn gb-pop-link"
           href="${data}"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <button>${this.t.openInNewWindow}</button></a
+          <span class="gb-pop-glyph" aria-hidden="true">↗</span>
+          <span>${this.t.openInNewWindow}</span></a
         >
         <div class="active-submission video">
           <iframe

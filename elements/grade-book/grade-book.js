@@ -313,15 +313,19 @@ class GradeBook extends UIRenderPieces(
       ></relative-time> `;
     // test if this smells like a URL
     if (validURL(data)) {
+      // the link is the DDD block action itself (icon and words), not a
+      // button nested inside a link
       pre = html`${pre}<a
+          class="ddd-block-action has-text"
           href="${data}"
           target="_blank"
           rel="noopener noreferrer"
-          ><simple-icon-button-lite
-            label="${this.t.openInNewWindow}"
+          ><simple-icon-lite
             icon="open-in-new"
-          ></simple-icon-button-lite
-        ></a>`;
+            aria-hidden="true"
+          ></simple-icon-lite
+          ><span>${this.t.openInNewWindow}</span></a
+        >`;
       // see if this is a video we know about
       if (data != cleanVideoSource(data)) {
         // implies it was able to clean it up in some way

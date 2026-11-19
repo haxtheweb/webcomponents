@@ -66,21 +66,50 @@ class a11yCarousel extends RadioBehaviors(LitElement) {
           }
           a11y-carousel-button.prevnext simple-icon-lite {
             opacity: 0;
-            --simple-icon-width: 30%;
-            --simple-icon-height: 30%;
+            /* a navigation-size chip instead of 30% of the slide, so the
+               solid chip behind it never covers the photo */
+            --simple-icon-width: var(--ddd-icon-md, 48px);
+            --simple-icon-height: var(--ddd-icon-md, 48px);
             transition: var(--ddd-duration-slow, 0.6s) all ease-in-out;
           }
-          a11y-carousel-button.prevnext:focus,
-          a11y-carousel-button.prevnext:hover {
+          /* previous / next: the chevron sits on its own solid chip so it
+             reads over any photo; hover and focus show it, keyboard focus
+             also rings the half it controls (inset, as the halves are
+             clipped by the slide), and a push darkens the chip */
+          a11y-carousel-button.prevnext {
             outline: none;
           }
-          a11y-carousel-button.prevnext:focus simple-icon-lite,
-          a11y-carousel-button.prevnext:hover simple-icon-lite {
+          a11y-carousel-button.prevnext:focus-visible {
+            outline: var(--ddd-focus-ring, 2px solid currentColor);
+            outline-offset: calc(-1 * var(--ddd-spacing-1, 4px));
+          }
+          a11y-carousel-button.prevnext:hover simple-icon-lite,
+          a11y-carousel-button.prevnext:focus-visible simple-icon-lite {
             opacity: 1;
             color: var(
               --a11y-carousel-button-background-color,
-              var(--ddd-theme-default-black, black)
+              light-dark(
+                var(--ddd-theme-default-coalyGray, #262626),
+                var(--ddd-theme-default-white, #ffffff)
+              )
             );
+            background-color: light-dark(
+              var(--ddd-theme-default-white, #ffffff),
+              var(--ddd-theme-default-coalyGray, #262626)
+            );
+            border-radius: var(--ddd-radius-circle, 50%);
+            box-shadow: var(--ddd-boxShadow-sm, 0 1px 3px rgba(0, 0, 0, 0.3));
+          }
+          a11y-carousel-button.prevnext:active simple-icon-lite {
+            box-shadow:
+              inset 0 0 0 999px
+                color-mix(
+                  in srgb,
+                  currentColor
+                    calc(var(--ddd-state-pressed-opacity, 0.12) * 100%),
+                  transparent
+                ),
+              var(--ddd-boxShadow-sm, 0 1px 3px rgba(0, 0, 0, 0.3));
           }
           a11y-carousel-button[button-type="prev"] {
             left: 0;

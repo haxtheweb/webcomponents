@@ -6,7 +6,8 @@
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
-import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
+import { DDDBlockStyles } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 
 /**
@@ -120,6 +121,7 @@ export class ScreenRecorder extends DDDSuper(I18NMixin(LitElement)) {
   static get styles() {
     return [
       super.styles,
+      DDDBlockStyles,
       css`
         :host {
           display: block;
@@ -142,47 +144,14 @@ export class ScreenRecorder extends DDDSuper(I18NMixin(LitElement)) {
           text-align: center;
           margin: var(--ddd-spacing-2) 0;
         }
-        .controls simple-icon-button-lite {
-          background-color: var(--ddd-theme-default-error, #d32f2f);
-          color: white;
-          border: none;
-          padding: var(--ddd-spacing-1, 4px) var(--ddd-spacing-2, 8px);
-          margin: var(--ddd-spacing-1, 4px);
-          border-radius: var(--ddd-radius-sm, 4px);
-          font-family: var(--ddd-font-navigation, sans-serif);
-          font-size: var(--ddd-font-size-4xs, 10px);
-          cursor: pointer;
-          transition: background-color 0.2s ease;
-          min-width: 60px;
-          text-align: center;
-          display: inline-flex;
-          align-items: center;
+        /* record, stop and download are DDD block actions: icon and
+           words, a visible edge, hover, focus ring and held-down state;
+           download is the link itself, not a button nested in a link */
+        .controls {
+          display: flex;
+          flex-wrap: wrap;
           justify-content: center;
-          --simple-icon-width: 12px;
-          --simple-icon-height: 12px;
-        }
-        .controls button:hover {
-          background-color: var(--ddd-theme-default-original87Pink);
-        }
-        .controls button:disabled {
-          opacity: var(--ddd-opacity-60, 0.6);
-          cursor: not-allowed;
-        }
-        .download-link {
-          text-decoration: none;
-        }
-        .download-link simple-icon-button-lite {
-          background-color: var(
-            --ddd-theme-default-keystoneYellow,
-            #ffd100
-          ) !important;
-          color: var(--ddd-theme-default-coalyGray, #444) !important;
-        }
-        .download-link simple-icon-button-lite:hover {
-          background-color: var(
-            --ddd-theme-default-original87Pink,
-            #ff6b9d
-          ) !important;
+          gap: var(--ddd-spacing-2);
         }
         .error-region {
           margin: var(--ddd-spacing-2) 0;
@@ -276,35 +245,42 @@ export class ScreenRecorder extends DDDSuper(I18NMixin(LitElement)) {
         </div>
 
         <div class="controls">
-          <simple-icon-button-lite
-            icon="av:fiber-smart-record"
-            label="${this.t.startRecording}"
-            class="${this.recording ? "hidden" : ""}"
+          <button
+            type="button"
+            class="ddd-block-action has-text ${this.recording ? "hidden" : ""}"
             @click="${this._startRecording}"
           >
-            ${this.t.startRecording}
-          </simple-icon-button-lite>
+            <simple-icon-lite
+              icon="av:fiber-smart-record"
+              aria-hidden="true"
+            ></simple-icon-lite>
+            <span>${this.t.startRecording}</span>
+          </button>
 
-          <simple-icon-button-lite
-            icon="av:stop"
-            label="${this.t.stopRecording}"
-            class="${this.recording ? "" : "hidden"}"
+          <button
+            type="button"
+            class="ddd-block-action has-text ${this.recording ? "" : "hidden"}"
             @click="${this._stopRecording}"
           >
-            ${this.t.stopRecording}
-          </simple-icon-button-lite>
+            <simple-icon-lite
+              icon="av:stop"
+              aria-hidden="true"
+            ></simple-icon-lite>
+            <span>${this.t.stopRecording}</span>
+          </button>
 
           <a
-            class="download-link ${this.downloadUrl ? "" : "hidden"}"
+            class="ddd-block-action has-text download-link ${
+              this.downloadUrl ? "" : "hidden"
+            }"
             href="${this.downloadUrl}"
             download="screen-recording-${Date.now()}.${this.recordingExtension}"
           >
-            <simple-icon-button-lite
+            <simple-icon-lite
               icon="icons:file-download"
-              label="${this.t.downloadVideo}"
-            >
-              ${this.t.downloadVideo}
-            </simple-icon-button-lite>
+              aria-hidden="true"
+            ></simple-icon-lite>
+            <span>${this.t.downloadVideo}</span>
           </a>
         </div>
 
