@@ -300,11 +300,18 @@ export const HAX_NETWORK_DESTINATIONS = [
  * The top bar of every site in the HAX network, drawn like the HAX editor's
  * own top bar. Each property of the network is an icon in its own color: the
  * one you are on opens into a pill with its name, and hovering or focusing
- * any of them shows a card saying what it is for. Your character in the
- * corner is the way to RPG me. Merlin sits in the middle; Discord, GitHub,
+ * any of them shows a card saying what it is for. Your character comes after
+ * them and is the way to RPG me: an icon like the rest until you come by,
+ * then the real one, walking. Merlin sits in the middle; Discord, GitHub,
  * Install HAX and the Future Traveler on the right. Nothing in the bar
  * belongs to the site under it: a site draws its own header, links and
  * controls below.
+ *
+ * The bar is playful on purpose. On hover or focus Discord talks, GitHub
+ * pushes, Install HAX drops in, and the Future Traveler tears through every
+ * era he has been to (lib/hax-future-traveler.js, loaded the first time he
+ * is touched); a click keeps the next one. Nothing moves for a visitor who
+ * asks for less motion.
  *
  * What a property is called, its color, its icon and the sentence on its
  * card come from the network's record, lib/hax-network.js.
@@ -339,6 +346,13 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
     super();
     this.current = "";
     this.character = "";
+    this.travelerEra = "now";
+    this._tearing = false;
+    this._eras = null;
+    this._alive = false;
+    this._walking = false;
+    this._remixTimer = null;
+    this._eraPinned = false;
     this.installOpen = false;
     this.installMethod = "";
     this.menuOpen = false;
@@ -352,7 +366,7 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
       network: "HAX network",
       web: "HAXTheWeb",
       webAbout: "Why HAX is for you, and every way to get it.",
-      try: "Try it now",
+      try: "Build now",
       tryAbout: "Use HAX right now in this browser tab. Nothing to install.",
       learn: "Learn",
       learnAbout: "Tutorials that teach HAX one flow at a time.",
@@ -364,6 +378,7 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
       rpg: "RPG me",
       rpgAbout: "Make the character that is you across HAX.",
       here: "You are here",
+      remix: "Remix the HAX Future Traveler",
       github: "GitHub",
       discord: "Discord",
       issues: "Issues",
@@ -379,7 +394,7 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
       sitesMenu: "HAX network sites",
       character: "Your character: make it in RPG me",
       merlin: "Merlin",
-      merlinHint: "Jump anywhere",
+      merlinHint: "Travel anywhere",
       merlinWhere: " in the HAX network",
       networkPath: "HAX network",
       installPath: "Install HAX",
@@ -469,7 +484,7 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
         "Step-by-step walks through the web for faculty, students, developers and more.",
       goElements: "Web components: every HAX element",
       goElementsAbout: "Browse, search and try the elements HAX authors with.",
-      goBrowser: "Try it now: HAXcms in your browser",
+      goBrowser: "Build now: HAXcms in your browser",
       goBrowserAbout:
         "Make and edit HAX sites in a browser tab, saved to a folder you pick.",
       goDemo: "Live demo: try the HAX editor",
@@ -512,7 +527,7 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
        */
       current: { type: String, reflect: true },
       /**
-       * The character in the left corner, as an rpg-character code
+       * Your character, after the properties, as an rpg-character code
        * (RPG me makes one). Empty draws HAX's own.
        */
       character: { type: String },
@@ -539,6 +554,20 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
       /** the demo strip's pre slot holds something (a page's own controls) */
       hasPre: { type: Boolean, attribute: "has-pre", reflect: true },
       _copied: { type: String, state: true },
+      /**
+       * The era the Future Traveler is drawn in: now, steam, nouveau, deco,
+       * tomorrow, rainbow, stripes, neon, handheld, web, polygon or terminal
+       * (HAX_TRAVELER_ERAS in lib/hax-future-traveler.js).
+       */
+      travelerEra: { type: String, attribute: "traveler-era", reflect: true },
+      /** the traveler is tearing between two eras */
+      _tearing: { type: Boolean, state: true },
+      /** the eras have loaded */
+      _eras: { type: Object, state: true },
+      /** your character has come to life (he has been hovered or focused) */
+      _alive: { type: Boolean, state: true },
+      /** your character is walking */
+      _walking: { type: Boolean, state: true },
     };
   }
 
@@ -601,29 +630,23 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
             var(--ddd-theme-default-keystoneYellow);
           outline-offset: 2px;
         }
-        /* your character, in the same dark well as the editor's user menu */
-        .character {
-          flex: none;
-          display: grid;
-          place-items: center;
-          width: 48px;
-          height: 48px;
-          overflow: hidden;
-          border: 1px solid var(--hax-ui-line-strong);
-          border-radius: var(--ddd-radius-sm);
-          background-color: #111;
-          transition: background-color var(--hax-ui-duration)
-            var(--hax-ui-easing);
-        }
-        .character:hover {
-          background-color: #222;
-        }
+        /* your character: an icon like the rest until he is hovered or
+           focused, then the real one, walking */
         .character rpg-character {
-          display: block;
-          width: 40px;
-          height: 46px;
+          display: none;
+          width: 35px;
+          height: 40px;
           margin-top: 4px;
           pointer-events: none;
+        }
+        .prop.me[data-alive] .character rpg-character {
+          display: block;
+        }
+        .prop.me[data-alive] .character svg.glyph {
+          display: none;
+        }
+        .prop.me[data-alive] .character:not([aria-current="page"]) {
+          background-color: var(--prop);
         }
         /* DDD lays lists out as columns; the sites run in a row */
         nav.sites ul,
@@ -783,14 +806,136 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
           background-color: var(--hax-ui-hover);
         }
         /* the Future Traveler: decorative, top right as in every HAX UI */
+        /* the Future Traveler: hover flips him through every era he has
+           been to, a click keeps the next one */
         .traveler {
           flex: none;
           display: inline-grid;
           place-items: center;
           width: 40px;
           height: 40px;
+          margin: 0;
+          padding: 0;
+          border: none;
+          border-radius: var(--hax-ui-radius);
+          background-color: transparent;
+          cursor: pointer;
           --simple-icon-width: 36px;
           --simple-icon-height: 36px;
+          --future-traveler-size: 36px;
+        }
+        .traveler:active {
+          transform: translateY(1px);
+        }
+
+        /* ---------- play ---------- */
+        /* Discord talks, GitHub pushes, Install HAX drops in */
+        .community,
+        .github,
+        .install-btn {
+          transition:
+            color var(--hax-ui-duration) var(--hax-ui-easing),
+            background-color var(--hax-ui-duration) var(--hax-ui-easing),
+            box-shadow var(--hax-ui-duration) var(--hax-ui-easing);
+        }
+        .discord:hover,
+        .discord:focus-visible {
+          color: var(--ddd-theme-default-athertonViolet);
+          --simple-icon-color: var(--ddd-theme-default-athertonViolet);
+        }
+        .github:hover,
+        .github:focus-visible {
+          color: var(--ddd-theme-default-futureLime);
+          --simple-icon-color: var(--ddd-theme-default-futureLime);
+        }
+        .install-btn:hover,
+        .install-btn:focus-visible {
+          box-shadow:
+            0 0 0 3px var(--ddd-theme-default-coalyGray),
+            0 0 0 5px var(--ddd-theme-default-keystoneYellow);
+        }
+        @media (prefers-reduced-motion: no-preference) {
+          .discord:hover simple-icon-lite,
+          .discord:focus-visible simple-icon-lite {
+            animation: net-talk 0.7s ease-in-out infinite;
+          }
+          .github:hover simple-icon-lite,
+          .github:focus-visible simple-icon-lite {
+            animation: net-push 0.8s ease-in-out infinite;
+          }
+          .install-btn:hover,
+          .install-btn:focus-visible {
+            animation: net-pop 0.4s ease-out;
+          }
+          .install-btn:hover simple-icon-lite,
+          .install-btn:focus-visible simple-icon-lite {
+            animation: net-drop 0.7s ease-in infinite;
+          }
+        }
+        @keyframes net-talk {
+          0%,
+          100% {
+            transform: rotate(0) scale(1);
+          }
+          20% {
+            transform: rotate(-12deg) scale(1.12);
+          }
+          40% {
+            transform: rotate(10deg) scale(1.12);
+          }
+          60% {
+            transform: rotate(-6deg) scale(1.06);
+          }
+          80% {
+            transform: rotate(4deg);
+          }
+        }
+        @keyframes net-push {
+          0%,
+          100% {
+            transform: translateY(0) scale(1, 1);
+          }
+          25% {
+            transform: translateY(2px) scale(1.12, 0.86);
+          }
+          55% {
+            transform: translateY(-5px) scale(0.94, 1.1);
+          }
+          80% {
+            transform: translateY(0) scale(1.06, 0.94);
+          }
+        }
+        @keyframes net-pop {
+          0% {
+            transform: scale(1);
+          }
+          45% {
+            transform: scale(1.1) rotate(-2deg);
+          }
+          75% {
+            transform: scale(0.97) rotate(1deg);
+          }
+          100% {
+            transform: scale(1);
+          }
+        }
+        @keyframes net-drop {
+          0% {
+            transform: translateY(-5px);
+            opacity: 0;
+          }
+          40% {
+            transform: translateY(0);
+            opacity: 1;
+          }
+          60% {
+            transform: translateY(2px) scale(1.15, 0.85);
+          }
+          80%,
+          100% {
+            transform: translateY(0);
+            opacity: 1;
+          }
         }
         .sr-only {
           position: absolute;
@@ -1075,11 +1220,7 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
             margin-left: 0;
           }
         }
-        @media (prefers-reduced-motion: reduce) {
-          .character {
-            transition: none;
-          }
-        }
+
         @media (forced-colors: active) {
           .merlin,
           .character,
@@ -1149,6 +1290,9 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
           --glyph-accent: var(--on);
           --glyph-lit: var(--on);
         }
+        .props a.character {
+          overflow: hidden;
+        }
         .props a[aria-current="page"] .name {
           position: static;
           width: auto;
@@ -1217,15 +1361,6 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
           background-color: var(--prop);
           color: var(--on);
           font-weight: var(--ddd-font-weight-bold);
-        }
-        /* your character is RPG me's place in the bar */
-        .prop.me .character {
-          box-sizing: border-box;
-          border-bottom: 3px solid var(--prop);
-        }
-        .prop.me .character[aria-current="page"] {
-          border: 2px solid var(--ddd-theme-default-white);
-          background-color: var(--prop);
         }
         /* narrow screens and touch: the same properties as one menu, with
            each one's sentence in it */
@@ -1643,10 +1778,10 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
     return html`
       <div class="bar">
         <div class="start" @keydown="${this._menuKey}">
-          ${this.compact ? `` : this._renderCharacter(here)}
           <nav class="props" aria-label="${this.t.network}">
             <ul>
               ${HAX_NETWORK.order.map((id) => this._renderProperty(id, here))}
+              ${this.compact ? `` : this._renderCharacter(here)}
             </ul>
           </nav>
           ${this._renderMenu(here)}
@@ -1678,7 +1813,7 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
         }
         <div class="end">
           <a
-            class="community"
+            class="community discord"
             href="${HAX_COMMUNITY_LINKS[0].href}"
             title="${this.t.discord}"
           >
@@ -1710,12 +1845,27 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
           ${
             this.compact
               ? ``
-              : html`<span class="traveler" aria-hidden="true">
-                  <simple-icon-lite
-                    icon="hax:future-traveler"
-                    no-colorize
-                  ></simple-icon-lite>
-                </span>`
+              : html`<button
+                  class="traveler ft-host ${this._tearing ? "ft-glitch" : ""}"
+                  type="button"
+                  title="${this.t.remix}"
+                  aria-label="${this.t.remix}"
+                  aria-pressed="${this.travelerEra !== "now" ? "true" : "false"}"
+                  @mouseenter="${this._remixStart}"
+                  @focus="${this._remixStart}"
+                  @mouseleave="${this._remixStop}"
+                  @blur="${this._remixStop}"
+                  @click="${this.remix}"
+                >
+                  ${
+                    this._eras && this.travelerEra !== "now"
+                      ? this._eras.futureTraveler(this.travelerEra)
+                      : html`<simple-icon-lite
+                          icon="hax:future-traveler"
+                          no-colorize
+                        ></simple-icon-lite>`
+                  }
+                </button>`
           }
         </div>
       </div>
@@ -1749,29 +1899,57 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
     </div>`;
   }
 
-  /** your character: the way to RPG me, and its place in the bar */
+  /**
+   * Your character: the way to RPG me, and its place in the bar. At rest he
+   * is an icon like the rest; on hover or focus he comes to life and walks.
+   */
   _renderCharacter(here) {
-    return html`<div
+    return html`<li
       class="prop me"
       style="${this._tint("rpg")}"
+      ?data-alive="${this._walking}"
       @keydown="${this._cardKey}"
+      @mouseenter="${this._wake}"
+      @focusin="${this._wake}"
+      @mouseleave="${this._rest}"
+      @focusout="${this._rest}"
     >
       <a
-        class="character"
+        class="character glyph-host"
         href="${this._characterHref()}"
         aria-label="${this.t.character}"
         aria-describedby="card-rpg"
         aria-current="${here === "rpg" ? "page" : "false"}"
       >
-        <rpg-character
-          height="46"
-          width="40"
-          seed="${this.character ? "" : "HAX"}"
-          code="${this.character || ""}"
-        ></rpg-character>
+        ${haxNetworkGlyph("rpg")}
+        ${
+          this._alive
+            ? html`<rpg-character
+                height="40"
+                width="35"
+                seed="${this.character ? "" : "HAX"}"
+                code="${this.character || ""}"
+                ?walking="${this._walking}"
+              ></rpg-character>`
+            : ``
+        }
+        <span class="name">${this.t.rpg}</span>
       </a>
       ${this._renderCard("rpg", here)}
-    </div>`;
+    </li>`;
+  }
+
+  /** your character comes to life: he loads the first time, then walks */
+  _wake() {
+    if (!this._alive) {
+      import("@haxtheweb/rpg-character/rpg-character.js");
+      this._alive = true;
+    }
+    this._walking = true;
+  }
+
+  _rest() {
+    this._walking = false;
   }
 
   _renderProperty(id, here) {
@@ -1804,7 +1982,7 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
         @click="${this.toggleMenu}"
       >
         ${
-          HAX_NETWORK.order.includes(here)
+          HAX_NETWORK.properties[here]
             ? haxNetworkGlyph(here)
             : html`<simple-icon-lite icon="icons:menu"></simple-icon-lite>`
         }
@@ -1817,12 +1995,16 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
       </button>
       <div class="net-menu" id="net-menu" ?hidden="${!this.menuOpen}">
         <ul>
-          ${HAX_NETWORK.order.map(
+          ${[...HAX_NETWORK.order, ...(this.compact ? [] : ["rpg"])].map(
             (id) =>
               html`<li style="${this._tint(id)}">
                 <a
                   class="glyph-host"
-                  href="${HAX_NETWORK.properties[id].url}"
+                  href="${
+                    id === "rpg"
+                      ? this._characterHref()
+                      : HAX_NETWORK.properties[id].url
+                  }"
                   aria-current="${id === here ? "page" : "false"}"
                 >
                   <span class="tile">${haxNetworkGlyph(id)}</span>
@@ -2121,6 +2303,8 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
     globalThis.removeEventListener("hashchange", this._onHash);
     globalThis.document.removeEventListener("keydown", this._onKey);
     this._syncTopOffset(true);
+    globalThis.clearInterval(this._remixTimer);
+    this._remixTimer = null;
     super.disconnectedCallback();
   }
 
@@ -2143,11 +2327,8 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
 
   firstUpdated(changedProperties) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);
-    // the character is decoration on every network page, so it loads after
-    // the bar has drawn
-    if (!this.demo) {
-      import("@haxtheweb/rpg-character/rpg-character.js");
-    }
+    // an era the page asked for is his to keep: hovering does not undo it
+    this._eraPinned = this.travelerEra !== "now";
     this._onHash();
   }
 
@@ -2155,6 +2336,13 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
     if (super.updated) super.updated(changedProperties);
     if (changedProperties.has("demo")) {
       this._syncTopOffset();
+    }
+    if (
+      changedProperties.has("travelerEra") &&
+      this.travelerEra !== "now" &&
+      !this._eras
+    ) {
+      this._loadEras();
     }
     if (changedProperties.has("installOpen")) {
       const dialog = this.shadowRoot.querySelector("dialog");
@@ -2164,6 +2352,82 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
         dialog.close();
       }
     }
+  }
+
+  /**
+   * The Future Traveler's eras load the first time he is touched, with their
+   * styles, so a page that never touches him never downloads them.
+   */
+  async _loadEras() {
+    if (!this._eras) {
+      const eras = await import("./lib/hax-future-traveler.js");
+      if (this.shadowRoot && eras.HaxFutureTravelerStyles.styleSheet) {
+        this.shadowRoot.adoptedStyleSheets = [
+          ...this.shadowRoot.adoptedStyleSheets,
+          eras.HaxFutureTravelerStyles.styleSheet,
+        ];
+      }
+      this._eras = eras;
+    }
+    return this._eras;
+  }
+
+  _nextEra() {
+    const ids = this._eras.HAX_TRAVELER_ERAS.map((e) => e.id);
+    return ids[(ids.indexOf(this.travelerEra) + 1) % ids.length];
+  }
+
+  /** tear from the era showing to another: the swap happens mid-glitch */
+  _tearTo(era) {
+    if (
+      globalThis.matchMedia &&
+      globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      this.travelerEra = era;
+      return;
+    }
+    this._tearing = true;
+    globalThis.setTimeout(() => {
+      this.travelerEra = era;
+    }, 150);
+    globalThis.setTimeout(() => {
+      this._tearing = false;
+    }, 330);
+  }
+
+  /** hover or focus: he flips through every era he has been to */
+  async _remixStart() {
+    await this._loadEras();
+    if (
+      this._remixTimer ||
+      (globalThis.matchMedia &&
+        globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches)
+    ) {
+      return;
+    }
+    this._tearTo(this._nextEra());
+    this._remixTimer = globalThis.setInterval(() => {
+      this._tearTo(this._nextEra());
+    }, 1200);
+  }
+
+  /** he goes back to today, unless a click chose the era he is in */
+  _remixStop() {
+    globalThis.clearInterval(this._remixTimer);
+    this._remixTimer = null;
+    if (!this._eraPinned && this.travelerEra !== "now") {
+      this._tearTo("now");
+    }
+  }
+
+  /** Click to remix: the next era, and he stays in it */
+  async remix() {
+    await this._loadEras();
+    globalThis.clearInterval(this._remixTimer);
+    this._remixTimer = null;
+    const era = this._nextEra();
+    this._eraPinned = era !== "now";
+    this._tearTo(era);
   }
 
   /** RPG me, opened on this character when there is one */

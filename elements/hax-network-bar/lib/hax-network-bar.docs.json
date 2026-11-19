@@ -27,7 +27,7 @@
       "property": "character",
       "type": "string",
       "default": "\"\"",
-      "description": "The character in the left corner, as an rpg-character code (RPG me makes one). Empty draws HAX's own.",
+      "description": "Your character, after the properties, as an rpg-character code (RPG me makes one). Empty draws HAX's own.",
       "hax": null
     },
     {
@@ -77,6 +77,14 @@
       "default": "false",
       "description": "the demo strip's pre slot holds something (a page's own controls)",
       "hax": null
+    },
+    {
+      "name": "traveler-era",
+      "property": "travelerEra",
+      "type": "string",
+      "default": "\"now\"",
+      "description": "The era the Future Traveler is drawn in: now, steam, nouveau, deco, tomorrow, rainbow, stripes, neon, handheld, web, polygon or terminal (HAX_TRAVELER_ERAS in lib/hax-future-traveler.js).",
+      "hax": null
     }
   ],
   "slots": [
@@ -87,7 +95,7 @@
     "hax-network-merlin"
   ],
   "hax": {},
-  "surfaceHash": "c734fabdc9e5",
+  "surfaceHash": "a1d69ffcf72f",
   "walkthroughs": [],
   "videos": [],
   "motion": {
