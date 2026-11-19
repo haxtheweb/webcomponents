@@ -884,6 +884,17 @@ describe("hax-store primitives + registration wiring", () => {
       expect(content).to.not.contain("data-other");
     });
 
+    it("never saves the run-time contrast backdrop marker, keeps the author's choice", async () => {
+      const wrap = globalThis.document.createElement("div");
+      wrap.innerHTML =
+        '<svg data-backdrop="light" data-hax-contrast="light" width="10" height="10"><line x1="0" y1="0" x2="9" y2="9" stroke="#231f20"></line></svg>';
+      const content = await HAXStore.nodeToContent(wrap);
+      expect(content).to.not.contain("data-hax-contrast");
+      expect(content).to.contain('data-backdrop="light"');
+      const svg = await HAXStore.nodeToContent(wrap.firstElementChild);
+      expect(svg).to.not.contain("data-hax-contrast");
+    });
+
     it("unset saveOptions attributes are dropped from output", async () => {
       HAXStore.elementList = {
         h2: { saveOptions: { unsetAttributes: ["data-original-level"] } },

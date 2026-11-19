@@ -3,7 +3,7 @@
  * copy-dep-licenses.js
  *
  * Consolidates OSS license attribution for the ubiquity-built node_modules tree
- * into a single THIRD_PARTY_LICENSES file that ships with the build.
+ * into a single THIRD_PARTY_LICENSES.md file that ships with the build.
  *
  * `polymer build` (the first step of the `ubiquity` npm script) copies only the
  * JS/CSS/SVG/source-map files listed in polymer.json `extraDependencies` into
@@ -18,8 +18,11 @@
  * and other metadata we prefer not to publish, and scattering hundreds of
  * per-package LICENSE files made attribution hard to discover.
  *
- * This version instead writes ONE THIRD_PARTY_LICENSES file at the root of the
- * build. For every package present in the built tree it records the package
+ * This version instead writes ONE THIRD_PARTY_LICENSES.md file at the root of
+ * the build. It is Markdown so it reads as a page wherever it is shown (the
+ * component gallery renders it with md-block) and stays searchable: a package
+ * index table, then each license text once, in a fenced code block so its
+ * own formatting is kept and nothing in it is read as Markdown or HTML. For every package present in the built tree it records the package
  * name, its location within the build, its SPDX license identifier (read from
  * the source package.json at build time and never shipped), and the full text
  * of that package's license/attribution files. License texts that are
@@ -30,12 +33,21 @@
  *
  * No per-package package.json or LICENSE files are written into the build.
  *
+ * Vendored assets: a package can ship things under their own licenses rather
+ * than the package's (d-d-d's fonts, for example). It lists them in a
+ * third-party.json at its root:
+ *   { "assets": [ { "name", "kind", "version", "license", "copyright",
+ *                   "source", "path", "licenseFiles": [...] } ] }
+ * with paths relative to the package. Each asset that is in the build gets
+ * its own index row ("<package> > <name> (<kind>)") under its own license,
+ * with its copyright line and license files as its license text.
+ *
  * Usage:
  *   node scripts/copy-dep-licenses.js [builtNodeModules] [sourceNodeModules] [outFile]
  *   # defaults:
  *   #   builtNodeModules = build/es6/node_modules
  *   #   sourceNodeModules = node_modules
- *   #   outFile = build/THIRD_PARTY_LICENSES  (two levels above builtNodeModules)
+ *   #   outFile = build/THIRD_PARTY_LICENSES.md  (two levels above builtNodeModules)
  *
  * Standalone, no dependencies. No optional chaining (toolchain constraint).
  */
@@ -201,7 +213,7 @@ function main() {
   const pkgs = builtPackages();
   const buildRoot = path.resolve(builtDir, "..", "..");
   const outFile = path.resolve(
-    process.argv[4] || path.join(buildRoot, "THIRD_PARTY_LICENSES"),
+    process.argv[4] || path.join(buildRoot, "THIRD_PARTY_LICENSES.md"),
   );
 
   // Dedup table: sha1(attribution text) -> { id, spdx, files, text, packages[] }.
@@ -215,15 +227,93 @@ function main() {
   let noLicenseFile = 0;
   const noLicenseNames = [];
 
+  // One shared license text per distinct text; returns its number.
+  function textIdFor(text, spdx, files, label) {
+    const key = crypto.createHash("sha1").update(text).digest("hex");
+    let entry = textMap[key];
+    if (!entry) {
+      entry = {
+        id: textOrder.length + 1,
+        spdx: spdx,
+        files: files.slice(),
+        text: text,
+        packages: [],
+      };
+      textMap[key] = entry;
+      textOrder.push(entry);
+    }
+    entry.packages.push(label);
+    return entry.id;
+  }
+
+  // Assets a package vendors under their own licenses (third-party.json).
+  function addVendoredAssets(rel, srcRoot) {
+    const manifest = path.join(srcRoot, "third-party.json");
+    if (!exists(manifest)) return;
+    let assets = [];
+    try {
+      assets = JSON.parse(fs.readFileSync(manifest, "utf8")).assets || [];
+    } catch (e) {
+      console.error(
+        "copy-dep-licenses: unreadable " + manifest + ": " + e.message,
+      );
+      process.exitCode = 1;
+      return;
+    }
+    // a path from the manifest stays inside its package
+    const inside = function (p) {
+      const abs = path.resolve(srcRoot, String(p || ""));
+      return abs === srcRoot || abs.indexOf(srcRoot + path.sep) === 0
+        ? abs
+        : null;
+    };
+    for (const asset of assets) {
+      const label =
+        rel + " > " + asset.name + (asset.kind ? " (" + asset.kind + ")" : "");
+      const built = asset.path ? path.join(builtDir, rel, asset.path) : null;
+      // only what this build actually ships is listed
+      if (!built || !inside(asset.path) || !exists(built)) continue;
+      let text = "";
+      if (asset.copyright) text += asset.copyright + "\n";
+      if (asset.version) text += "Version: " + asset.version + "\n";
+      if (asset.source) text += "Source: " + asset.source + "\n";
+      if (text) text += "\n";
+      const files = [];
+      for (const file of asset.licenseFiles || []) {
+        const abs = inside(file);
+        const body = abs ? readFileText(abs) : null;
+        if (body === null) continue;
+        files.push(file);
+        text += "---- " + file + " ----\n" + body;
+        if (body.length && body.charAt(body.length - 1) !== "\n") text += "\n";
+      }
+      if (!files.length) {
+        noLicenseFile++;
+        noLicenseNames.push(label);
+        records.push({
+          rel: label,
+          spdx: asset.license || "",
+          textId: 0,
+          note: "no license file found for this vendored asset",
+        });
+        continue;
+      }
+      records.push({
+        rel: label,
+        spdx: asset.license || "",
+        textId: textIdFor(text, asset.license || "", files, label),
+        note: "",
+      });
+    }
+  }
+
   for (const rel of pkgs) {
-    const buildPath = path.relative(buildRoot, path.join(builtDir, rel));
     const srcPkg = resolveSource(rel);
     if (!srcPkg) {
       missing++;
       missingNames.push(rel);
       records.push({
         rel: rel,
-        buildPath: buildPath,
         spdx: "",
         textId: 0,
         note: "source package not found in node_modules; no license text available",
@@ -232,6 +322,7 @@ function main() {
     }
 
     const srcRoot = resolveSourceRoot(srcPkg);
+    addVendoredAssets(rel, srcRoot);
     const spdx = readSpdxLicense(srcRoot);
     const attrFiles = collectAttribution(srcRoot);
 
@@ -240,7 +331,6 @@ function main() {
       noLicenseNames.push(rel + (spdx ? " (" + spdx + ")" : ""));
       records.push({
         rel: rel,
-        buildPath: buildPath,
         spdx: spdx,
         textId: 0,
         note: "no license file found in source package",
@@ -263,7 +353,6 @@ function main() {
       noLicenseNames.push(rel + (spdx ? " (" + spdx + ")" : ""));
       records.push({
         rel: rel,
-        buildPath: buildPath,
         spdx: spdx,
         textId: 0,
         note: "license file(s) found but unreadable in source package",
@@ -271,25 +360,10 @@ function main() {
       continue;
     }
 
-    const key = crypto.createHash("sha1").update(text).digest("hex");
-    let entry = textMap[key];
-    if (!entry) {
-      entry = {
-        id: textOrder.length + 1,
-        spdx: spdx,
-        files: attrFiles.slice(),
-        text: text,
-        packages: [],
-      };
-      textMap[key] = entry;
-      textOrder.push(entry);
-    }
-    entry.packages.push(rel);
     records.push({
       rel: rel,
-      buildPath: buildPath,
       spdx: spdx,
-      textId: entry.id,
+      textId: textIdFor(text, spdx, attrFiles, rel),
       note: "",
     });
   }
@@ -300,7 +374,9 @@ function main() {
   });
 
   fs.mkdirSync(path.dirname(outFile), { recursive: true });
-  fs.writeFileSync(outFile, buildOutput(records, textOrder));
+  // where every package sits in the build, said once in the file
+  const prefix = path.relative(buildRoot, builtDir).split(path.sep).join("/");
+  fs.writeFileSync(outFile, buildOutput(records, textOrder, prefix));
 
   console.log("copy-dep-licenses: scanned " + pkgs.length + " built packages");
   console.log("  consolidated into: " + outFile);
@@ -317,82 +393,75 @@ function main() {
   );
 }
 
-function buildOutput(records, textOrder) {
-  const sep =
-    "================================================================================\n";
-  const subsep =
-    "--------------------------------------------------------------------------------\n";
+// Text for a Markdown table cell: one line, backslashes then pipes escaped,
+// so no value can end the cell early or swallow an escape.
+function cell(value) {
+  return String(value)
+    .replace(/\r?\n/g, " ")
+    .replace(/\\/g, "\\\\")
+    .replace(/\|/g, "\\|");
+}
+
+// A code fence longer than any run of backticks in the text, so a license
+// that itself contains ``` can't close the block early.
+function fenceFor(text) {
+  let longest = 0;
+  const runs = text.match(/`+/g) || [];
+  for (const run of runs) {
+    if (run.length > longest) longest = run.length;
+  }
+  return "`".repeat(Math.max(3, longest + 1));
+}
+
+function buildOutput(records, textOrder, prefix) {
   let out = "";
 
-  out += sep;
-  out += "THIRD_PARTY_LICENSES\n";
-  out += sep;
-  out += "\n";
+  out += "# Third-party licenses\n\n";
   out +=
-    "This file consolidates the open-source license and copyright notices for\n";
-  out +=
-    "every package included in this build of the HAX web component distribution.\n";
-  out +=
-    "Each entry references the package by name and gives its location within the\n";
-  out +=
-    "build tree. License texts that are identical across multiple packages are\n";
-  out +=
-    "printed once in the LICENSE TEXTS section and shared by reference (see the\n";
-  out +=
-    '"attribution" line of each entry). Per-package package.json and LICENSE\n';
-  out +=
-    "files are intentionally NOT shipped with this build; this single file is the\n";
-  out +=
-    "attribution record. Each package remains under its own license as noted.\n";
-  out += "\n";
-  out += sep;
-  out += "PACKAGE INDEX\n";
-  out += sep;
-  out += "\n";
+    "The open-source license and copyright notices for every package in this " +
+    "build of the HAX web component distribution. Every package is at `" +
+    prefix +
+    "/<package>` in the build. The package index gives each " +
+    "package's license and which license text below applies to it. A " +
+    "license text that is identical " +
+    "across packages is printed once and shared by number. Per-package " +
+    "package.json and LICENSE files are intentionally not shipped with the " +
+    "build; this file is the attribution record. Each package remains under " +
+    "its own license as noted.\n\n";
 
+  out += "## Package index\n\n";
+  out += "| Package | License | Attribution |\n";
+  out += "| --- | --- | --- |\n";
   for (const r of records) {
-    out += r.rel + "\n";
-    out += "  build path:  " + r.buildPath + "\n";
-    out += "  license:     " + (r.spdx || "(unspecified)") + "\n";
-    if (r.textId) {
-      out += "  attribution: see license text #" + r.textId + "\n";
-    } else if (r.note) {
-      out += "  attribution: " + r.note + "\n";
-    }
-    out += "\n";
+    const attribution = r.textId
+      ? "License text " + r.textId
+      : r.note || "(none)";
+    out +=
+      "| " +
+      cell(r.rel) +
+      " | " +
+      cell(r.spdx || "(unspecified)") +
+      " | " +
+      cell(attribution) +
+      " |\n";
   }
-
-  out += sep;
-  out += "LICENSE TEXTS\n";
-  out += sep;
   out += "\n";
 
+  out += "## License texts\n\n";
   for (const entry of textOrder) {
-    out += subsep;
-    const count = entry.packages.length;
     const label = entry.spdx || "license text";
-    if (count > 1) {
-      out +=
-        "#" +
-        entry.id +
-        " - " +
-        label +
-        " (shared by " +
-        count +
-        " packages)\n";
-    } else {
-      out += "#" + entry.id + " - " + label + " - " + entry.packages[0] + "\n";
-    }
-    out += "source files: " + entry.files.join(", ") + "\n";
-    out += subsep;
-    out += entry.text;
+    out += "### License text " + entry.id + ": " + label + "\n\n";
+    out += "Used by " + entry.packages.join(", ") + ".\n\n";
+    out += "Source files: " + entry.files.join(", ") + "\n\n";
+    const fence = fenceFor(entry.text);
+    out += fence + "text\n" + entry.text;
     if (
       entry.text.length &&
       entry.text.charAt(entry.text.length - 1) !== "\n"
     ) {
       out += "\n";
     }
-    out += "\n";
+    out += fence + "\n\n";
   }
 
   return out;

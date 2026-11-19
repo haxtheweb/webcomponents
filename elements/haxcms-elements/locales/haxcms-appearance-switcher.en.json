@@ -1,0 +1,8 @@
+{
+  "theme": "Theme",
+  "palette": "Palette",
+  "themeDefault": "Theme default",
+  "designSystem": "Design system",
+  "designSystemDefault": "DDD (default)",
+  "designSystemUnavailable": "This theme keeps its own design system"
+}

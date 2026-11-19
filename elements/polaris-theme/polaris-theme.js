@@ -22,6 +22,7 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/layout/site-region.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/blocks/site-children-block.js";
 import { autorun, toJS } from "mobx";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { loadFontFamily } from "@haxtheweb/d-d-d/lib/fonts.js";
 /**
  * @title Polaris
  * `A HAXcms inspired by an old wordpress theme
@@ -472,15 +473,19 @@ class PolarisTheme extends HAXCMSOperationButtons(
           <site-region name="header"></site-region>
           <slot name="header">
             <div id="mark">
-              <a href="${this.imageLink}">
-                <img
-                  src="${this.image}"
-                  alt="${this.imageAlt}"
-                  loading="lazy"
-                  decoding="async"
-                  fetchpriority="low"
-                />
-              </a>
+              ${
+                this.image
+                  ? html`<a href="${this.imageLink}">
+                      <img
+                        src="${this.image}"
+                        alt="${this.imageAlt || this.t.home}"
+                        loading="lazy"
+                        decoding="async"
+                        fetchpriority="low"
+                      />
+                    </a>`
+                  : ``
+              }
             </div>
             <div class="title-area">
               <p class="site-title" itemprop="headline">
@@ -623,6 +628,7 @@ class PolarisTheme extends HAXCMSOperationButtons(
       primary: "Primary",
       primarySidebar: "Primary Sidebar",
       contents: "Contents",
+      home: "Home",
     };
     this.windowControllersLoaded = new AbortController();
     globalThis.addEventListener &&
@@ -681,14 +687,8 @@ class PolarisTheme extends HAXCMSOperationButtons(
         const badDevice = _mobx_val_0;
         // good device, we can inject font we use
         if (badDevice === false) {
-          const link = globalThis.document.createElement("link");
-          link.setAttribute(
-            "href",
-            "https://fonts.googleapis.com/css2?family=Open+Sans&display=swap",
-          );
-          link.setAttribute("rel", "stylesheet");
-          link.setAttribute("fetchpriority", "low");
-          globalThis.document.head.appendChild(link);
+          // HAX ships Open Sans (d-d-d/lib/fonts): once per page, never Google
+          loadFontFamily("Open Sans", { priority: "low" });
         }
       });
     });

@@ -1,113 +1,40 @@
 // forked from https://github.com/janmarthedal/math-tex
-const states = { start: 1, loading: 2, ready: 3, typesetting: 4, error: 5 };
-// security: the MathJax URL is a fixed constant and can not be overridden by
-// markup. A configurable src let any injected lrn-math-controller load an
-// arbitrary script, bypassing HTML sanitization (script gadget).
-const src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js";
-let mathjaxHub,
-  typesets = [],
-  state = states.start,
-  styleNode;
+import { loadMathJax, texToElement } from "./lib/mathjax-loader.js";
 
-function getStyleNode() {
-  const styleNodes = globalThis.document.querySelectorAll("style");
-  const sn = Array.prototype.filter.call(styleNodes, function (n) {
-    return (
-      n.sheet &&
-      n.sheet.cssRules.length > 100 &&
-      n.sheet.cssRules[0].selectorText === ".mjx-chtml"
-    );
-  });
-  styleNode = sn[0];
-}
+// MathJax 4 is served with HAX (./lib/mathjax-loader.js), not fetched from a
+// third-party CDN, and is shared with la-tex. The controller keeps its
+// typeset(math, displayMode, callback) API: callback(element, styleNode)
+// gets the rendered equation and the CSS it needs (null on failure).
+let styleNode = null;
 
-// precondition: state === states.ready
-function flush_typesets() {
-  if (!typesets.length) return;
-  const jaxs = [],
-    items = [];
-  typesets.forEach(function (item) {
-    const script = globalThis.document.createElement("script"),
-      div = globalThis.document.createElement("div");
-    script.type = item[1] ? "math/tex; mode=display" : "math/tex";
-    script.text = item[0];
-    div.style.position = "fixed";
-    div.style.top = 0;
-    div.style.left = "99999px";
-    div.appendChild(script);
-    globalThis.document.body.appendChild(div);
-    jaxs.push(script);
-    items.push([div, item[2]]);
-  });
-  typesets = [];
-  state = states.typesetting;
-  mathjaxHub.Queue(["Typeset", mathjaxHub, jaxs]);
-  mathjaxHub.Queue(function () {
-    if (!styleNode) getStyleNode();
-    items.forEach(function (item) {
-      const div = item[0];
-      const result =
-        div.firstElementChild.tagName === "SPAN" ? div.firstElementChild : null;
-      item[1](result, styleNode);
-      globalThis.document.body.removeChild(div);
-    });
-    state = states.ready;
-    flush_typesets();
-  });
-}
-
-function load_library() {
-  // security: only ever inject the library once per page
-  if (state !== states.start) return;
-  state = states.loading;
-  globalThis.MathJax = {
-    skipStartupTypeset: true,
-    showMathMenu: false,
-    jax: ["input/TeX", "output/CommonHTML"],
-    TeX: {
-      extensions: [
-        "AMSmath.js",
-        "AMSsymbols.js",
-        "noErrors.js",
-        "noUndefined.js",
-      ],
-    },
-    AuthorInit() {
-      mathjaxHub = globalThis.MathJax.Hub;
-      mathjaxHub.Register.StartupHook("End", function () {
-        state = states.ready;
-        flush_typesets();
-      });
-    },
-  };
-  let script = globalThis.document.createElement("script");
-  script.type = "text/javascript";
-  // security follow-up: pin this with Subresource Integrity
-  // (script.integrity = "sha384-..."; script.crossOrigin = "anonymous").
-  // The hash must be computed from the exact pinned URL above
-  // (curl URL | openssl dgst -sha384 -binary | openssl base64 -A); it was
-  // not added here because the CDN was unreachable from the audit sandbox
-  // and a guessed hash would break MathJax for everyone.
-  script.src = src;
-  script.async = true;
-  script.onerror = function () {
-    console.warn("Error loading MathJax library " + src);
-    state = states.error;
-    typesets = [];
-  };
-  globalThis.document.head.appendChild(script);
+function getStyleNode(MathJax) {
+  if (!styleNode && MathJax.svgStylesheet) {
+    styleNode = globalThis.document.createElement("style");
+    styleNode.textContent = MathJax.svgStylesheet().textContent;
+  }
+  return styleNode;
 }
 
 class LrnMathController extends HTMLElement {
   connectedCallback() {
-    if (!this.hasAttribute("lazy")) load_library();
+    if (!this.hasAttribute("lazy")) {
+      loadMathJax().catch((error) => {
+        console.warn(error.message);
+      });
+    }
   }
 
   typeset(math, displayMode, cb) {
-    if (state === states.error) return;
-    typesets.push([math, displayMode, cb]);
-    if (state === states.start) load_library();
-    else if (state === states.ready) flush_typesets();
+    loadMathJax()
+      .then((MathJax) =>
+        texToElement(math, displayMode).then((melem) =>
+          cb(melem, getStyleNode(MathJax)),
+        ),
+      )
+      .catch((error) => {
+        console.warn(error.message);
+        cb(null, null);
+      });
   }
 }
 
@@ -245,8 +172,19 @@ class LrnMath extends HTMLElement {
       this.shadowRoot.innerHTML = "";
       this._private.check = check;
       if (math.length && handler) {
-        handler.typeset(math, isBlock, function (melem, styleNode) {
-          sdom.appendChild(styleNode.cloneNode(true));
+        handler.typeset(math, isBlock, (melem, styleNode) => {
+          // a newer typeset replaced this one while it rendered
+          if (this._private.check !== check) {
+            return;
+          }
+          if (!melem) {
+            // MathJax could not load: show the TeX source instead of nothing
+            sdom.textContent = math;
+            return;
+          }
+          if (styleNode) {
+            sdom.appendChild(styleNode.cloneNode(true));
+          }
           sdom.appendChild(melem);
         });
       }

@@ -1,0 +1,251 @@
+{
+  "id": "book-theme-handbook-theme",
+  "title": "Handbook",
+  "author": "",
+  "description": "A small documentation book in the Handbook layout.",
+  "license": "by-sa",
+  "metadata": {
+    "author": {
+      "image": "",
+      "name": "",
+      "email": "",
+      "socialLink": ""
+    },
+    "site": {
+      "name": "handbook-theme",
+      "logo": "",
+      "lang": "en",
+      "created": 1736889000,
+      "updated": 1736889000,
+      "git": {},
+      "version": "9.0.6",
+      "domain": "",
+      "static": {},
+      "settings": {
+        "pathauto": false,
+        "publishPagesOn": true,
+        "sw": false,
+        "forceUpgrade": false,
+        "lang": "",
+        "gaID": ""
+      },
+      "tags": ""
+    },
+    "theme": {
+      "element": "handbook-theme",
+      "path": "@haxtheweb/book-theme/lib/handbook-theme.js",
+      "name": "handbook-theme",
+      "regions": {}
+    },
+    "node": {
+      "fields": {}
+    },
+    "build": {
+      "version": "6.0.1",
+      "structure": "flat",
+      "type": ""
+    }
+  },
+  "items": [
+    {
+      "id": "item-b00c7e3a-introduction",
+      "indent": 0,
+      "location": "../pages/item-b00c7e3a-introduction/index.html",
+      "slug": "introduction",
+      "order": 0,
+      "parent": null,
+      "title": "Introduction",
+      "description": "What this theme is and how its three columns work.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-b00c7e3a-guide",
+      "indent": 0,
+      "location": "../pages/item-b00c7e3a-guide/index.html",
+      "slug": "guide",
+      "order": 1,
+      "parent": null,
+      "title": "Guide",
+      "description": "How a book is put together.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-b00c7e3a-guide-on-this-page",
+      "indent": 1,
+      "location": "../pages/item-b00c7e3a-guide-on-this-page/index.html",
+      "slug": "guide/on-this-page",
+      "order": 0,
+      "parent": "item-b00c7e3a-guide",
+      "title": "On this page",
+      "description": "A long page whose headings fill the right column.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-b00c7e3a-guide-menu",
+      "indent": 1,
+      "location": "../pages/item-b00c7e3a-guide-menu/index.html",
+      "slug": "guide/menu-and-navigation",
+      "order": 1,
+      "parent": "item-b00c7e3a-guide",
+      "title": "Menu and navigation",
+      "description": "The site menu, previous and next, and search.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-b00c7e3a-blocks",
+      "indent": 0,
+      "location": "../pages/item-b00c7e3a-blocks/index.html",
+      "slug": "blocks",
+      "order": 2,
+      "parent": null,
+      "title": "Blocks",
+      "description": "HAX blocks as they read in this theme.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-b00c7e3a-blocks-notes",
+      "indent": 1,
+      "location": "../pages/item-b00c7e3a-blocks-notes/index.html",
+      "slug": "blocks/notes",
+      "order": 0,
+      "parent": "item-b00c7e3a-blocks",
+      "title": "Notes",
+      "description": "Notes, warnings and tips.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-b00c7e3a-blocks-details",
+      "indent": 1,
+      "location": "../pages/item-b00c7e3a-blocks-details/index.html",
+      "slug": "blocks/details",
+      "order": 1,
+      "parent": "item-b00c7e3a-blocks",
+      "title": "Details",
+      "description": "Collapsed sections and tabs.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-b00c7e3a-blocks-columns",
+      "indent": 1,
+      "location": "../pages/item-b00c7e3a-blocks-columns/index.html",
+      "slug": "blocks/columns",
+      "order": 2,
+      "parent": "item-b00c7e3a-blocks",
+      "title": "Columns",
+      "description": "Side by side content.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-b00c7e3a-blocks-code",
+      "indent": 1,
+      "location": "../pages/item-b00c7e3a-blocks-code/index.html",
+      "slug": "blocks/code-and-tables",
+      "order": 3,
+      "parent": "item-b00c7e3a-blocks",
+      "title": "Code and tables",
+      "description": "Code samples and a data table.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-b00c7e3a-credits",
+      "indent": 0,
+      "location": "../pages/item-b00c7e3a-credits/index.html",
+      "slug": "credits",
+      "order": 3,
+      "parent": null,
+      "title": "Credits",
+      "description": "Where the layout comes from.",
+      "metadata": {
+        "created": 1736889000,
+        "updated": 1736889000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    }
+  ]
+}

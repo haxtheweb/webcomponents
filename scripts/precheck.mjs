@@ -135,6 +135,14 @@ const CONFIG = {
       label: "License header on element files",
       args: ["scripts/license-header-check.mjs", "--all"],
     },
+    {
+      // every font family the elements name is one HAX ships (served from
+      // d-d-d/lib/fonts, never Google), each with its own license file, an
+      // OFL-1.1 or Apache-2.0 license and a third-party.json entry. Also run
+      // by the license-check workflow. See d-d-d/lib/fonts/README.md.
+      label: "Vendored fonts",
+      args: ["scripts/fonts-check.mjs"],
+    },
   ],
 };
 

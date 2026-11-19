@@ -41,6 +41,7 @@
  *   --ddd-table-color, --ddd-table-background, --ddd-table-font-family,
  *   --ddd-table-font-size, --ddd-table-divider (row dividers and borders),
  *   --ddd-table-header-background, --ddd-table-header-color,
+ *   --ddd-table-header-link-color (links in header cells),
  *   --ddd-table-row-header-color, --ddd-table-stripe-background,
  *   --ddd-table-caption-color, --ddd-table-cell-padding-block,
  *   --ddd-table-cell-padding-inline, --ddd-table-cell-padding-block-condensed,
@@ -130,6 +131,26 @@ export const DDDTableStyles = css`
           var(--ddd-theme-default-slateGray)
         )
       );
+  }
+  /* links in header cells: a shadow root does not get the page's DDD link
+     color, so they kept the browser's own (3.69:1 on the dark header).
+     Light takes DDD's link color (4.5:1 on white and limestone in DDD and
+     every bridge); dark takes the header text color, the one that holds
+     on slateGray under every bridge, underlined so it still reads as a
+     link. A header given its own text color passes it to its links. */
+  .ddd-table thead a,
+  .ddd-table thead a:any-link {
+    color: var(
+      --ddd-table-header-link-color,
+      var(
+        --ddd-table-header-color,
+        light-dark(
+          var(--ddd-theme-default-link),
+          var(--ddd-theme-default-white)
+        )
+      )
+    );
+    text-decoration: underline;
   }
   .ddd-table tbody th,
   .ddd-table tfoot th {

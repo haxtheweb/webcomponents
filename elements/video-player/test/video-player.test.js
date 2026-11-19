@@ -1,6 +1,8 @@
 import { fixture, expect, html } from "@open-wc/testing";
 
 import "../video-player.js";
+import "@haxtheweb/page-contents-menu/page-contents-menu.js";
+import { activityKey } from "@haxtheweb/user-action/lib/xapi.js";
 
 // HAX schemas ship as JSON next to the element; read one whether the class
 // returns the object or the URL of its file
@@ -857,5 +859,40 @@ describe("video-player DDD block header", () => {
         .querySelector(".ddd-block-header .ddd-block-title")
         .textContent.trim(),
     ).to.equal("Later");
+  });
+});
+
+// haxtheweb/issues#3274: in clean-two, page-contents-menu gives a
+// video-player without an id one built from its resource, which is generated
+// on every load. The player must keep one activity across visits.
+describe("video-player activity key across loads", () => {
+  const load = async () => {
+    const host = await fixture(html`
+      <div>
+        <page-contents-menu relationship="parent"></page-contents-menu>
+        <video-player
+          source="https://www.youtube.com/watch?v=LrS7dqokTLE"
+        ></video-player>
+      </div>
+    `);
+    const menu = host.querySelector("page-contents-menu");
+    menu.hierarchyTags = ["video-player"];
+    const vp = host.querySelector("video-player");
+    await vp.updateComplete;
+    menu.updateMenu();
+    return vp;
+  };
+  it("ignores the id page-contents-menu generated", async () => {
+    // one load at a time, like two visits to the page
+    const first = await load();
+    const firstId = first.id;
+    const firstKey = activityKey(first, first.xapiFingerprint());
+    first.parentElement.remove();
+    const second = await load();
+    // the menu gave each load a different generated id
+    expect(firstId).to.match(/^video-player[0-9a-f]{32}$/);
+    expect(second.id).to.not.equal(firstId);
+    expect(activityKey(second, second.xapiFingerprint())).to.equal(firstKey);
+    expect(firstKey).to.match(/^video-player-[0-9a-z]+$/);
   });
 });

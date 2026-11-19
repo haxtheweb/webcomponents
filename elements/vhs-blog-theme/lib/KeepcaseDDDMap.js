@@ -121,6 +121,12 @@ export const KeepcaseDDDMap = css`
     /* text color paired with each remapped palette, where DDD's own no longer reads */
     --ddd-primary-11-on: black;
     --ddd-primary-17-on: white;
+    /* palette text paired with each remapped palette color, where DDD's own no longer reads */
+    --ddd-palette-1-text-color-4: black;
+    --ddd-palette-1-text-color-6: white;
+    --ddd-palette-6-text-color-3: black;
+    --ddd-palette-6-text-color-4: black;
+    --ddd-palette-7-text-color-7: white;
   }
 `;
 

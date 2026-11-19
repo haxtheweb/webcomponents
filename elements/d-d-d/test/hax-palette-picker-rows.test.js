@@ -1,5 +1,5 @@
 import { fixture, expect, html, oneEvent, aTimeout } from "@open-wc/testing";
-import { sendKeys } from "@web/test-runner-commands";
+import { sendKeys, setViewport } from "@web/test-runner-commands";
 import "../lib/hax-palette-picker.js";
 import { getDDDPaletteOptions } from "../lib/DDDPaletteRegistry.js";
 
@@ -21,12 +21,22 @@ const narrow = () =>
       <hax-palette-picker value="0" active-value="5"></hax-palette-picker>
     </div>`,
   ).then((host) => host.querySelector("hax-palette-picker"));
+// narrow with no room beside it for a preview, as on a phone
+const cramped = () =>
+  fixture(
+    html`<div style="width: 350px; margin-left: 20px">
+      <hax-palette-picker value="3" active-value="5"></hax-palette-picker>
+    </div>`,
+  ).then((host) => host.querySelector("hax-palette-picker"));
 const settle = async (el) => {
   await aTimeout(60);
   await el.updateComplete;
 };
 
 describe("hax-palette-picker rows", () => {
+  // a test that narrows the viewport can't leave it narrow for the next
+  afterEach(() => setViewport({ width: 800, height: 600 }));
+
   it("draws one row per palette, each with a disc of its seven colours", async () => {
     const el = await wide();
     await settle(el);
@@ -141,6 +151,134 @@ describe("hax-palette-picker rows", () => {
     input.blur();
     await settle(el);
     expect(peek.hidden).to.equal(true);
+  });
+
+  it("narrow: a tap shows no preview over the other options (#3371)", async () => {
+    const el = await narrow();
+    await settle(el);
+    const options = el.shadowRoot.querySelector(".options");
+    const row = el.shadowRoot.querySelector('.option[data-palette="8"]');
+    const input = row.querySelector("input");
+    // what a tap sends: pointerdown, then the emulated hover and focus
+    options.dispatchEvent(
+      new PointerEvent("pointerdown", {
+        pointerType: "touch",
+        bubbles: true,
+        composed: true,
+      }),
+    );
+    row.dispatchEvent(new MouseEvent("mouseenter"));
+    input.focus();
+    await settle(el);
+    const peek = el.shadowRoot.querySelector(".peek");
+    expect(peek.hidden).to.equal(true);
+    // the keyboard brings it back
+    await sendKeys({ press: "ArrowDown" });
+    await settle(el);
+    expect(peek.hidden).to.equal(false);
+    input.blur();
+  });
+
+  it("narrow: a press outside the row, or Escape anywhere, closes the preview", async () => {
+    const el = await narrow();
+    await settle(el);
+    const row = el.shadowRoot.querySelector('.option[data-palette="5"]');
+    row.dispatchEvent(new MouseEvent("mouseenter"));
+    await settle(el);
+    const peek = el.shadowRoot.querySelector(".peek");
+    expect(peek.hidden).to.equal(false);
+    document.body.dispatchEvent(
+      new PointerEvent("pointerdown", { pointerType: "mouse", bubbles: true }),
+    );
+    await settle(el);
+    expect(peek.hidden).to.equal(true);
+    row.dispatchEvent(new MouseEvent("mouseenter"));
+    await settle(el);
+    expect(peek.hidden).to.equal(false);
+    // hovering leaves focus outside the picker; Escape still closes it
+    document.body.dispatchEvent(
+      new KeyboardEvent("keydown", { key: "Escape", bubbles: true }),
+    );
+    await settle(el);
+    expect(peek.hidden).to.equal(true);
+  });
+
+  it("names palettes by number under a bridge, and by DDD name otherwise (#3371)", async () => {
+    const previous = globalThis.DesignSystemManager;
+    const systems = {
+      ddd: { name: "ddd" },
+      carbon: { name: "carbon", extends: "ddd", colorNames: { primary: {} } },
+      named: {
+        name: "named",
+        extends: "ddd",
+        colorNames: { palette: { 8: "Blue 60 and Orange 40" } },
+      },
+    };
+    const manager = {
+      active: "carbon",
+      systemChain(name) {
+        const chain = [];
+        let current = systems[name];
+        while (current) {
+          chain.unshift(current);
+          current = current.extends ? systems[current.extends] : null;
+        }
+        return chain;
+      },
+    };
+    globalThis.DesignSystemManager = { instance: manager };
+    try {
+      const el = await wide();
+      el.value = "8";
+      await settle(el);
+      const label = () =>
+        el.shadowRoot
+          .querySelector('.option[data-palette="8"] .option-label')
+          .textContent.trim();
+      expect(label()).to.equal("Palette 8");
+      expect(
+        el.shadowRoot.querySelector(".specimen-name").textContent,
+      ).to.contain("Palette 8");
+      expect(el.shadowRoot.textContent).to.not.contain("Sky and Ember");
+      // a bridge may name a palette itself
+      el.designSystem = "named";
+      await settle(el);
+      expect(label()).to.equal("Blue 60 and Orange 40");
+      // DDD keeps its names
+      el.designSystem = "ddd";
+      await settle(el);
+      expect(label()).to.equal("Sky and Ember");
+      // following the active system when none is set on the picker
+      el.designSystem = "";
+      manager.active = "ddd";
+      globalThis.dispatchEvent(new CustomEvent("design-system-active-changed"));
+      await settle(el);
+      expect(label()).to.equal("Sky and Ember");
+    } finally {
+      globalThis.DesignSystemManager = previous;
+    }
+  });
+
+  it("narrow with no room beside it: the chosen palette shows below, never over the rows", async () => {
+    await setViewport({ width: 390, height: 844 });
+    const el = await cramped();
+    await settle(el);
+    expect(el.hasAttribute("data-narrow")).to.equal(true);
+    expect(el.hasAttribute("data-peek-below")).to.equal(true);
+    const specimen = el.shadowRoot.querySelector(".specimen");
+    expect(specimen).to.exist;
+    expect(specimen.textContent).to.contain("Offbrand Blue");
+    expect(specimen.querySelectorAll(".codes li").length).to.equal(7);
+    // neither a mouse hover nor keyboard focus floats a preview here
+    const row = el.shadowRoot.querySelector('.option[data-palette="5"]');
+    row.dispatchEvent(new MouseEvent("mouseenter"));
+    row.querySelector("input").focus();
+    await settle(el);
+    expect(el.shadowRoot.querySelector(".peek").hidden).to.equal(true);
+    expect(
+      row.querySelector("input").getAttribute("aria-describedby"),
+    ).to.equal("");
+    await expect(el).to.be.accessible();
   });
 
   it("keeps every attribute it had", async () => {

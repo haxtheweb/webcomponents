@@ -75,12 +75,12 @@ describe("DDDStyles exported objects", () => {
     );
   });
 
-  it("DDDFonts is an array of font URLs", () => {
-    expect(Array.isArray(DDDFonts)).to.be.true;
-    expect(DDDFonts.length).to.be.greaterThan(0);
-    for (const url of DDDFonts) {
-      expect(url).to.include("fonts.googleapis.com");
-    }
+  it("DDDFonts names DDD's font families (HAX serves them, lib/fonts)", () => {
+    expect(DDDFonts).to.deep.equal([
+      "Roboto",
+      "Roboto Slab",
+      "Roboto Condensed",
+    ]);
   });
 
   it("ApplicationAttributeData has expected categories", () => {

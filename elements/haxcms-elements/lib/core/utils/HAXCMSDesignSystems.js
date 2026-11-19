@@ -11,6 +11,9 @@
  *
  * Only themes whose chrome reads nothing but --ddd-* tokens can take another
  * system; they say so with `static get acceptsDesignSystems() { return true; }`.
+ * Such a theme can also name the system it starts on when the site has not
+ * picked one, with `static get defaultDesignSystem() { return "<name>"; }`;
+ * that name is a key into the registry like any other.
  * Bridged themes (carbon-theme, ...) keep the system they activate
  * themselves, and every other theme stays as it is today.
  *
@@ -67,6 +70,35 @@ export function siteDesignSystemName(themeData) {
 export function themeAcceptsDesignSystems(themeTag) {
   const ElClass = themeTag ? globalThis.customElements.get(themeTag) : null;
   return !!(ElClass && ElClass.acceptsDesignSystems === true);
+}
+
+/**
+ * The design system a theme that accepts one starts on when the site has not
+ * picked one, "" for DDD
+ * @param {String} themeTag
+ * @returns {String}
+ */
+export function themeDefaultDesignSystem(themeTag) {
+  if (!themeAcceptsDesignSystems(themeTag)) {
+    return "";
+  }
+  const ElClass = globalThis.customElements.get(themeTag);
+  return siteDesignSystemName({ designSystem: ElClass.defaultDesignSystem });
+}
+
+/**
+ * The title of the system a theme starts on, for labelling the "default"
+ * choice in pickers; "" when the theme starts on DDD
+ * @param {String} themeTag
+ * @param {Object} registry loadDesignSystemRegistry() result
+ * @returns {String}
+ */
+export function themeDefaultDesignSystemTitle(themeTag, registry) {
+  const name = themeDefaultDesignSystem(themeTag);
+  if (!name || !registry || !registry[name]) {
+    return "";
+  }
+  return registry[name].title || name;
 }
 
 /** where a registry path is served from, next to this package */
@@ -128,7 +160,9 @@ export async function applySiteDesignSystem(
   if (themeTag) {
     await globalThis.customElements.whenDefined(themeTag);
   }
-  const loaded = await loading;
+  // no choice saved: a theme that accepts systems may start on its own
+  const fallback = name ? "" : themeDefaultDesignSystem(themeTag);
+  const loaded = fallback ? await loadDesignSystem(fallback) : await loading;
   // a newer choice (a quick switch in settings) wins
   if (stamp !== applyStamp || !manager) {
     return null;

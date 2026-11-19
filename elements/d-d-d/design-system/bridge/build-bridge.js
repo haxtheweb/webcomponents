@@ -55,7 +55,14 @@ import os from "os";
 import path from "path";
 import { execFileSync } from "child_process";
 import prettier from "prettier";
-import { dddVariables, contrast, hexToRgb } from "../lib/source.js";
+import {
+  dddVariables,
+  dddPalettes,
+  simpleColors,
+  splitLightDark,
+  contrast,
+  hexToRgb,
+} from "../lib/source.js";
 
 const args = process.argv.slice(2);
 const themeDir = path.resolve(args.find((a) => !a.startsWith("--")) || "");
@@ -108,9 +115,22 @@ if (config.icons && !SHIPPABLE.includes(config.icons.license)) {
   );
   process.exit(1);
 }
+// fonts HAX serves itself, never from Google (scripts/fonts/hax-fonts.json)
+const HAX_FONTS = JSON.parse(
+  fs.readFileSync(
+    new URL("../../../../scripts/fonts/hax-fonts.json", import.meta.url),
+    "utf8",
+  ),
+).families.map((f) => f.family);
 (config.fonts || []).forEach((font) => {
   if (!SHIPPABLE_FONTS.includes(font.license)) {
     console.error(`Font ${font.family} is ${font.license}, which can't ship.`);
+    process.exit(1);
+  }
+  if (!HAX_FONTS.includes(font.family)) {
+    console.error(
+      `Font ${font.family} is not one HAX ships: add it to scripts/fonts/hax-fonts.json and run node scripts/vendor-fonts.mjs.`,
+    );
     process.exit(1);
   }
 });
@@ -1087,6 +1107,129 @@ ddd
   });
 
 /*
+ * palette text pairs: every numbered palette (data-palette="N") pairs each
+ * of its seven colors with the text color that reads on it
+ * (--ddd-palette-text-color-K on --ddd-palette-color-K), chosen for DDD's
+ * own colors. A bridge that remaps one of those colors can break the pair,
+ * so every pair that reads a remapped color is re-checked in both modes.
+ * DDD's text color is kept while it still reaches 4.5:1; otherwise the map
+ * answers that pair's hook (--ddd-palette-N-text-color-K, read first by
+ * DDDPaletteStyles) with black or white, whichever reads, and a pair
+ * neither reads on fails the build.
+ */
+const simple = simpleColors();
+// the value a palette color or text color has, as written, in one mode;
+// with the bridge's map applied or (mapped false) as DDD has it
+const paletteValue = (v, mode, mapped) => {
+  const ref = /^var\((--[\w-]+)\)$/.exec(String(v || "").trim());
+  if (!ref) return String(v || "").trim();
+  const name = ref[1];
+  const sc = /^--simple-colors-(?:default|fixed)-theme-([a-z-]+)-(\d+)$/.exec(
+    name,
+  );
+  if (sc) {
+    const shades = simple.shades[sc[1]];
+    return shades ? shades[Number(sc[2]) - 1] || null : null;
+  }
+  const row = mapped !== false && rows.find((r) => r.ddd === name);
+  if (row) return mode === "dark" ? row.dark : row.light;
+  const d = dddByName[name];
+  if (!d) return null;
+  const split = splitLightDark(d.value);
+  return split ? split[mode] : d.value;
+};
+// the opaque colors a palette value can show as: one, or for a translucent
+// color the two it comes out as over white and over black (whatever sits
+// behind the band lands between them)
+const paletteColors = (v, mode) => {
+  const value = paletteValue(v, mode);
+  const hex = toHex(value);
+  if (hex) return [hex];
+  const rgba =
+    /^rgba?\(\s*([\d.]+)[\s,]+([\d.]+)[\s,]+([\d.]+)\s*[,/]\s*([\d.]+)(%?)\s*\)$/i.exec(
+      String(value || "").trim(),
+    );
+  if (!rgba) return [];
+  const alpha = Number(rgba[4]) / (rgba[5] ? 100 : 1);
+  return [255, 0].map(
+    (under) =>
+      "#" +
+      [rgba[1], rgba[2], rgba[3]]
+        .map((c) =>
+          Math.round(Number(c) * alpha + under * (1 - alpha))
+            .toString(16)
+            .padStart(2, "0"),
+        )
+        .join(""),
+  );
+};
+// a pair whose colors come out as DDD's own under this bridge kept DDD's
+// contrast (a translucent color, which has no ratio of its own, included)
+const paletteDrifted = (bg, text) =>
+  ["light", "dark"].some((mode) =>
+    [bg, text].some((v) => {
+      const a = paletteValue(v, mode);
+      const b = paletteValue(v, mode, false);
+      return a !== b && toHex(a) !== toHex(b);
+    }),
+  );
+const paletteRatio = (fg, bg) => {
+  const ratios = ["light", "dark"].flatMap((mode) => {
+    const a = paletteColors(fg, mode);
+    const b = paletteColors(bg, mode);
+    if (!a.length || !b.length) return [null];
+    return a.flatMap((x) => b.map((y) => contrast(x, y)));
+  });
+  return ratios.includes(null) ? null : Math.min(...ratios);
+};
+const remapped = (v) => {
+  const ref = /var\(\s*(--ddd-theme-default-[\w-]+)/.exec(String(v || ""));
+  return ref ? rows.some((r) => r.ddd === ref[1]) : false;
+};
+const paletteTextRows = [];
+const palettePairsReport = [];
+dddPalettes().forEach((palette) => {
+  Object.keys(palette.colors).forEach((k) => {
+    const bg = palette.colors[k];
+    const text = palette.text[k];
+    if (!text || !(remapped(bg) || remapped(text))) return;
+    if (!paletteDrifted(bg, text)) return;
+    const hook = `--ddd-palette-${palette.number}-text-color-${k}`;
+    const where = `data-palette="${palette.number}" text ${k} on color ${k}`;
+    let on = text;
+    let source = "ddd";
+    let ratio = paletteRatio(text, bg);
+    if (ratio === null) {
+      problems.push(`${where}: can't read the colors to check contrast`);
+      return;
+    }
+    if (ratio < PAIR_MIN) {
+      const best = ["white", "black"]
+        .map((c) => ({ c, r: paletteRatio(c, bg) }))
+        .filter((o) => o.r !== null)
+        .sort((a, b) => b.r - a.r)[0];
+      if (best && best.r > ratio) {
+        on = best.c;
+        ratio = best.r;
+        source = "paired";
+        paletteTextRows.push({ ddd: hook, css: best.c });
+      }
+    }
+    if (ratio < PAIR_MIN) {
+      problems.push(`${where} (${on}): ${ratio.toFixed(2)} < ${PAIR_MIN}`);
+    }
+    palettePairsReport.push({
+      palette: palette.number,
+      pair: Number(k),
+      color: bg,
+      on,
+      ratio: Number(ratio.toFixed(2)),
+      source,
+    });
+  });
+});
+
+/*
  * Color picker names. The primary / accent pickers list options by number
  * (data-primary="2"), and DDD names each one after its own color ("Nittany
  * navy"). Under a bridge that option shows another system's color, so it
@@ -1270,8 +1413,9 @@ const tokensJs =
   `export const ${prefix}Tokens = css\`\n  :root,\n  :host {\n` +
   tokens.map(decl).join("\n") +
   `\n  }\n\`;\n\n` +
+  // fonts by family name: HAX serves each one (d-d-d/lib/fonts)
   `export const ${prefix}Fonts = ${JSON.stringify(
-    (config.fonts || []).map((f) => f.url),
+    (config.fonts || []).map((f) => f.family),
     null,
     2,
   )};\n`;
@@ -1291,6 +1435,10 @@ const mapJs =
     ? "\n    /* text color paired with each remapped palette, where DDD's own no longer reads */\n"
     : "") +
   onRows.map((r) => `    ${r.ddd}: ${r.css};`).join("\n") +
+  (paletteTextRows.length
+    ? "\n    /* palette text paired with each remapped palette color, where DDD's own no longer reads */\n"
+    : "") +
+  paletteTextRows.map((r) => `    ${r.ddd}: ${r.css};`).join("\n") +
   `\n  }\n\`;\n\n` +
   `/**\n * What the color pickers call each primary / accent option while\n` +
   ` * ${config.title} is active: the ${config.title} token that option now shows.\n */\n` +
@@ -1308,6 +1456,7 @@ const report = {
   coverage,
   contrast: contrastReport,
   pairs: pairsReport,
+  palettePairs: palettePairsReport,
   colorNames,
   problems,
   contract: contract.version,

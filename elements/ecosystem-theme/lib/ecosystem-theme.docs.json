@@ -23,6 +23,14 @@
       "hax": null
     },
     {
+      "name": "embed",
+      "property": "embed",
+      "type": "boolean",
+      "default": "",
+      "description": "draw the page for an iframe on another site: no site chrome (set by ?embed in the address)",
+      "hax": null
+    },
+    {
       "name": "menu-open",
       "property": "menuOpen",
       "type": "boolean",
@@ -34,7 +42,7 @@
   "slots": [],
   "events": [],
   "hax": {},
-  "surfaceHash": "7360fcc72010",
+  "surfaceHash": "de9aa42c52d4",
   "walkthroughs": [],
   "videos": [],
   "motion": {

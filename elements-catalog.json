@@ -363,6 +363,16 @@
       "walkthrough": true
     },
     {
+      "tag": "al-folio-theme",
+      "title": "",
+      "description": "Academic site theme with a fixed top bar, a wide column, light weight headings and a violet accent. The layout pays homage to the al-folio Jekyll theme by Maruan Al-Shedivat (MIT). None of its code, styles or assets are used; see NOTICE. A HAXCMSLitElementTheme built on HomageColumnTheme: HAXcms...",
+      "package": "@haxtheweb/papermod-theme",
+      "import": "@haxtheweb/papermod-theme/lib/al-folio-theme.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
       "tag": "app-hax",
       "title": "",
       "description": "HAX+HAXcms as a full app experience",
@@ -611,6 +621,46 @@
       ]
     },
     {
+      "tag": "astro-cactus-theme",
+      "title": "",
+      "description": "Blog theme set in a monospace face, with the navigation under the site name and section pages listed one to a line beside their dates. The layout pays homage to the Astro Cactus theme by Chris Williams (MIT). None of its code, styles or assets are used; see NOTICE. A HAXCMSLitElementTheme built o...",
+      "package": "@haxtheweb/papermod-theme",
+      "import": "@haxtheweb/papermod-theme/lib/astro-cactus-theme.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "astrofy-theme",
+      "title": "",
+      "description": "Personal site theme with a centered sidebar and the page on a rounded surface over a tinted ground, with section pages as cards. The layout pays homage to the Astrofy Astro theme by Manuel Ernesto Garcia (MIT). None of its code, styles or assets are used; see NOTICE. A HAXCMSLitElementTheme built...",
+      "package": "@haxtheweb/papermod-theme",
+      "import": "@haxtheweb/papermod-theme/lib/astrofy-theme.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "astropaper-theme",
+      "title": "",
+      "description": "Blog theme set in a monospace face on a warm page, with a ruled header and section pages listed with accent colored titles. The layout pays homage to the AstroPaper Astro theme by Sat Naing (MIT). None of its code, styles or assets are used; see NOTICE. A HAXCMSLitElementTheme built on HomageColu...",
+      "package": "@haxtheweb/papermod-theme",
+      "import": "@haxtheweb/papermod-theme/lib/astropaper-theme.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "astrowind-theme",
+      "title": "",
+      "description": "Site theme for landing pages: a fixed top bar, a wide column, heavy headings, section pages as a grid of cards and a tinted footer. The layout pays homage to the AstroWind Astro theme by onWidget (MIT). None of its code, styles or assets are used; see NOTICE. A HAXCMSLitElementTheme built on Homa...",
+      "package": "@haxtheweb/papermod-theme",
+      "import": "@haxtheweb/papermod-theme/lib/astrowind-theme.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
       "tag": "audio-player",
       "title": "Audio Player",
       "description": "simple audio web component to match video",
@@ -703,6 +753,16 @@
       "type": "grid",
       "haxCapable": true,
       "tags": ["Content", "quote", "blockquote", "design", "presentation"]
+    },
+    {
+      "tag": "book-theme",
+      "title": "",
+      "description": "A quiet documentation theme for HAXcms: the site menu down the left, the page in the middle, the headings of the page down the right, and nothing else. Built from DDD tokens and the shared HAXcms theme parts. The layout pays homage to the Hugo Book theme by Alex Shpak (MIT). None of its code, sty...",
+      "package": "@haxtheweb/book-theme",
+      "import": "@haxtheweb/book-theme/book-theme.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
     },
     {
       "tag": "bootstrap-breadcrumb",
@@ -855,6 +915,16 @@
       "walkthrough": true
     },
     {
+      "tag": "chirpy-theme",
+      "title": "",
+      "description": "Blog theme with a tinted sidebar, the page in the middle, the headings of the page on the right and section pages listed as cards. The layout pays homage to the Chirpy Jekyll theme by Cotes Chung (MIT). None of its code, styles or assets are used; see NOTICE. A HAXCMSLitElementTheme built on Homa...",
+      "package": "@haxtheweb/papermod-theme",
+      "import": "@haxtheweb/papermod-theme/lib/chirpy-theme.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
       "tag": "citation-element",
       "title": "Citation",
       "description": "An element dedicated to presenting and managing a correct citation on the web both visually as well as semantically with simple inputs.",
@@ -946,6 +1016,16 @@
       "haxCapable": true,
       "tags": ["Instructional", "code", "highlight", "syntax", "code-sample"],
       "walkthrough": true
+    },
+    {
+      "tag": "coder-theme",
+      "title": "",
+      "description": "Personal site theme with a spare header, light weight headings and section pages listed one to a line beside their dates. The layout pays homage to the Coder Hugo theme by Luiz F. A. de Prá (MIT). None of its code, styles or assets are used; see NOTICE. A HAXCMSLitElementTheme built on HomageColu...",
+      "package": "@haxtheweb/papermod-theme",
+      "import": "@haxtheweb/papermod-theme/lib/coder-theme.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
     },
     {
       "tag": "collection-item",
@@ -1870,6 +1950,16 @@
       "walkthrough": true
     },
     {
+      "tag": "guidebook-theme",
+      "title": "",
+      "description": "Documentation theme with a slim top bar, a violet accent, and an on this page column set off by a rule. The layout pays homage to Starlight, the documentation theme for Astro (MIT, Copyright Astro contributors). None of its code, styles or assets are used, and it is named apart from it on purpose...",
+      "package": "@haxtheweb/book-theme",
+      "import": "@haxtheweb/book-theme/lib/guidebook-theme.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
       "tag": "h-a-x",
       "title": "",
       "description": "",
@@ -1906,6 +1996,16 @@
       "description": "",
       "package": "@haxtheweb/hal-9000",
       "import": "@haxtheweb/hal-9000/lib/hal-9000-ui/hal-9000-ui.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "handbook-theme",
+      "title": "",
+      "description": "Documentation theme with a solid top bar holding the site name, search and the dark mode switch, over the menu, page and on this page columns. The layout pays homage to Docsy, the documentation theme for Hugo (Apache-2.0, Copyright 2018 Google LLC). None of its code, styles or assets are used, an...",
+      "package": "@haxtheweb/book-theme",
+      "import": "@haxtheweb/book-theme/lib/handbook-theme.js",
       "type": "element",
       "haxCapable": false,
       "tags": []
@@ -2104,7 +2204,7 @@
     {
       "tag": "hax-palette-picker",
       "title": "",
-      "description": "A radio-style palette selector that writes values compatible with data-palette. Value contract: - value is the canonical data-palette attribute value (for example \"5\"). - selectedKey is the associated palette key (for example \"monotone\"). - Emits value-changed with { value, key, dataPalette, opti...",
+      "description": "",
       "package": "@haxtheweb/d-d-d",
       "import": "@haxtheweb/d-d-d/lib/hax-palette-picker.js",
       "type": "element",
@@ -2367,6 +2467,16 @@
       "description": "The Appearance admin section: theme, palette, branding and regions. Renders inside the one admin dialog (haxcms-site-admin) and implements its section contract: it stages edits against the values loaded from the manifest, reports them with haxcms-admin-section-state, and its save() fires the same...",
       "package": "@haxtheweb/haxcms-elements",
       "import": "@haxtheweb/haxcms-elements/lib/core/haxcms-appearance-admin-dialog.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "haxcms-appearance-switcher",
+      "title": "",
+      "description": "Three selects that change how the site on the page looks, live: its theme, its palette and its design system. Nothing is saved; it rewrites metadata.theme on the loaded manifest the way Theme Preview does, and the site builder swaps the theme. For demos and showcases, not for site settings (Appea...",
+      "package": "@haxtheweb/haxcms-elements",
+      "import": "@haxtheweb/haxcms-elements/lib/core/ui/haxcms-appearance-switcher.js",
       "type": "element",
       "haxCapable": false,
       "tags": []
@@ -2874,6 +2984,16 @@
       "walkthrough": true
     },
     {
+      "tag": "homage-page-list",
+      "title": "",
+      "description": "The pages under the active page, as a list of title, date and description: a post index, or the contents of a section. Renders nothing when the active page has no pages under it. Theme chrome, not a HAX block. Colors come from the --homage-* properties of the theme around it. variant: cards | row...",
+      "package": "@haxtheweb/papermod-theme",
+      "import": "@haxtheweb/papermod-theme/lib/homage-page-list.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
       "tag": "html-block",
       "title": "Html Block",
       "description": "A basic HTML block that provides HAXschema wiring",
@@ -2883,6 +3003,16 @@
       "haxCapable": true,
       "tags": ["Other", "developer", "html"],
       "walkthrough": true
+    },
+    {
+      "tag": "hyde-theme",
+      "title": "",
+      "description": "Blog theme with a dark sidebar that holds the site name, its description and the menu at the foot of the column, beside a narrow page. The layout pays homage to the Hyde Jekyll theme by Mark Otto (MIT). None of its code, styles or assets are used; see NOTICE. A HAXCMSLitElementTheme built on Homa...",
+      "package": "@haxtheweb/papermod-theme",
+      "import": "@haxtheweb/papermod-theme/lib/hyde-theme.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
     },
     {
       "tag": "i18n-manager",
@@ -3241,6 +3371,16 @@
       "description": "JS based state management helper for the json outline schema spec",
       "package": "@haxtheweb/json-outline-schema",
       "import": "@haxtheweb/json-outline-schema/json-outline-schema.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "just-the-docs-theme",
+      "title": "",
+      "description": "Documentation theme with a tinted menu column set off by a rule, a wide page, and the on this page list kept in its button. The layout pays homage to the Just the Docs Jekyll theme by Patrick Marsceill (MIT). None of its code, styles or assets are used; see NOTICE. A HAXCMSLitElementTheme built o...",
+      "package": "@haxtheweb/book-theme",
+      "import": "@haxtheweb/book-theme/lib/just-the-docs-theme.js",
       "type": "element",
       "haxCapable": false,
       "tags": []
@@ -3647,6 +3787,16 @@
       "tags": []
     },
     {
+      "tag": "manual-theme",
+      "title": "",
+      "description": "Documentation theme with a light top bar over a bordered menu column, a green accent, and previous and next links drawn as cards. The layout pays homage to the classic theme of Docusaurus (MIT, Copyright Facebook, Inc. and its affiliates). None of its code, styles or assets are used, and it is na...",
+      "package": "@haxtheweb/book-theme",
+      "import": "@haxtheweb/book-theme/lib/manual-theme.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
       "tag": "map-menu",
       "title": "",
       "description": "A series of elements that generate a hierarchical menu",
@@ -3892,6 +4042,26 @@
       "description": "A singleton for registration and managing access to leverage microservices for web components",
       "package": "@haxtheweb/micro-frontend-registry",
       "import": "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "minima-theme",
+      "title": "",
+      "description": "Blog theme with a heavy rule over the header, a light rule under it, and the pages of a section listed by date. The layout pays homage to Minima, the default Jekyll theme, by Parker Moore and the minima contributors (MIT). None of its code, styles or assets are used; see NOTICE. A HAXCMSLitElemen...",
+      "package": "@haxtheweb/papermod-theme",
+      "import": "@haxtheweb/papermod-theme/lib/minima-theme.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "minimal-mistakes-theme",
+      "title": "",
+      "description": "Flexible site theme with a top bar for the site name and top level pages, a slim sidebar for the description and menu, and the headings of the page on the right. The layout pays homage to the Minimal Mistakes Jekyll theme by Michael Rose and contributors (MIT). None of its code, styles or assets...",
+      "package": "@haxtheweb/papermod-theme",
+      "import": "@haxtheweb/papermod-theme/lib/minimal-mistakes-theme.js",
       "type": "element",
       "haxCapable": false,
       "tags": []
@@ -4176,6 +4346,16 @@
       "haxCapable": false,
       "tags": [],
       "walkthrough": true
+    },
+    {
+      "tag": "papermod-theme",
+      "title": "",
+      "description": "Blog theme with a plain header, a narrow column on a tinted page, and the pages of a section listed as rounded cards. The layout pays homage to the PaperMod Hugo theme by Aditya Telange and nanxiaobei (MIT). None of its code, styles or assets are used; see NOTICE. A HAXCMSLitElementTheme built on...",
+      "package": "@haxtheweb/papermod-theme",
+      "import": "@haxtheweb/papermod-theme/papermod-theme.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
     },
     {
       "tag": "parallax-image",
@@ -6614,6 +6794,16 @@
       "tags": []
     },
     {
+      "tag": "terminal-theme",
+      "title": "",
+      "description": "Blog theme that is dark by design: a monospace face, an orange accent, the site name in a solid block and the navigation under it. The layout pays homage to the Terminal Hugo theme by panr (MIT). None of its code, styles or assets are used; see NOTICE. A HAXCMSLitElementTheme built on HomageColum...",
+      "package": "@haxtheweb/papermod-theme",
+      "import": "@haxtheweb/papermod-theme/lib/terminal-theme.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
       "tag": "terrible-best-themes",
       "title": "",
       "description": "",
@@ -7087,6 +7277,16 @@
       "description": "Integration of wysiwyg edit form for a page with HAX.",
       "package": "@haxtheweb/wysiwyg-hax",
       "import": "@haxtheweb/wysiwyg-hax/wysiwyg-hax.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "wysiwyg96-theme",
+      "title": "",
+      "description": "An homage to the first WYSIWYG web editors of 1995-96: the site drawn as two desktop windows. \"Explorer\" holds the site outline; the page window has a title bar naming the page file, a menu bar of the site's top pages, a toolbar of real site actions, the page on the classic gray canvas and a stat...",
+      "package": "@haxtheweb/wysiwyg96-theme",
+      "import": "@haxtheweb/wysiwyg96-theme/wysiwyg96-theme.js",
       "type": "element",
       "haxCapable": false,
       "tags": []

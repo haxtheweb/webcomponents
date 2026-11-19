@@ -5,6 +5,16 @@ import { ESGlobalBridgeStore } from "@haxtheweb/es-global-bridge/es-global-bridg
 
 const tick = (ms = 20) => new Promise((resolve) => setTimeout(resolve, ms));
 
+// la-tex waits for the shared MathJax loader before handing an element to
+// LaTeX2HTML5. These tests stub the bundle, so they stand in a ready
+// MathJax 4 as well (the loader shares a MathJax 3/4 already on the page);
+// la-tex-mathjax.test.js runs the real ones.
+globalThis.MathJax = {
+  startup: { promise: Promise.resolve() },
+  typesetPromise: () => Promise.resolve(),
+  svgStylesheet: () => ({ textContent: "" }),
+};
+
 function stubBridgeImport() {
   const originalImport = ESGlobalBridgeStore.import;
   let calls = 0;
@@ -85,6 +95,32 @@ describe("la-tex behavior", () => {
       await fixture(html`<la-tex>y = x^2</la-tex>`);
       await tick();
       expect(initCalls).to.equal(1);
+    } finally {
+      restoreGlobal();
+    }
+  });
+
+  it("hydrates only itself when the bundle offers hydrate", async () => {
+    const hydrated = [];
+    let initCalls = 0;
+    const restoreGlobal = stubLatexGlobal({
+      init() {
+        initCalls += 1;
+      },
+      hydrate(el) {
+        hydrated.push(el);
+      },
+    });
+    try {
+      const host = await fixture(
+        html`<div><la-tex>a</la-tex><la-tex>b</la-tex><la-tex>c</la-tex></div>`,
+      );
+      await waitUntil(() => hydrated.length === 3);
+      await tick();
+      const elements = [...host.querySelectorAll("la-tex")];
+      expect(hydrated.length).to.equal(3);
+      elements.forEach((el) => expect(hydrated).to.include(el));
+      expect(initCalls).to.equal(0);
     } finally {
       restoreGlobal();
     }

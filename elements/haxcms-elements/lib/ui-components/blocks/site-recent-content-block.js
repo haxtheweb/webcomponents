@@ -140,6 +140,7 @@ class SiteRecentContentBlock extends I18NMixin(LitElement) {
                   class="image"
                   loading="lazy"
                   src="${item.metadata.fields.image}"
+                  alt=""
                 />
               </div>
               <div class="item-heading">

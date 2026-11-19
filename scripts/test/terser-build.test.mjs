@@ -25,6 +25,7 @@ function fixture() {
     "export function add(first, second) {\n  return first + second;\n}\n",
   );
   write("sub/b.js", "const value = 1 + 2;\nexport default value;\n");
+  write("sub/c.mjs", "export const total   =   1 + 2;\n");
   write("sub/data.json", '{ "keep": true }\n');
   write("vendor/v.js", "export const untouched   =   1;\n");
   write(".hidden/h.js", "export const hidden   =   1;\n");
@@ -43,7 +44,7 @@ test("lists .js files only, skipping dot folders and excluded paths", () => {
   const found = listJs(dir, [path.join(dir, "vendor")])
     .map((f) => path.relative(dir, f).split(path.sep).join("/"))
     .sort();
-  assert.deepEqual(found, ["a.js", "sub/b.js"]);
+  assert.deepEqual(found, ["a.js", "sub/b.js", "sub/c.mjs"]);
 });
 
 test("writes what terser.minify returns, and the same bytes from the cache", async () => {

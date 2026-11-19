@@ -2,8 +2,8 @@ import { fixture, expect, html } from "@open-wc/testing";
 
 import { LrnMath, LrnMathController } from "../lrn-math.js";
 
-// Never hit the network: when the module tries to append the MathJax CDN
-// script, simulate an immediate load failure by invoking its onerror handler.
+// When the module appends the MathJax script, simulate a load failure by
+// invoking its onerror handler instead of loading it.
 const origAppendChild = document.head.appendChild.bind(document.head);
 const warnings = [];
 const origWarn = console.warn;
@@ -37,25 +37,24 @@ describe("lrn-math error state (library fails to load)", () => {
   });
 
   it("warns when the MathJax library fails to load", async () => {
-    expect(
-      warnings.some((w) => w.indexOf("Error loading MathJax library") !== -1),
-    ).to.be.true;
+    expect(warnings.some((w) => w.indexOf("Error loading MathJax from") !== -1))
+      .to.be.true;
   });
 
-  it("never typesets into the shadow DOM while in error state", async () => {
-    expect(element.shadowRoot.querySelector("span")).to.not.exist;
-    expect(element.shadowRoot.textContent).to.equal("");
+  it("shows the TeX source when MathJax can not load", async () => {
+    expect(element.shadowRoot.querySelector("mjx-container")).to.not.exist;
+    expect(element.shadowRoot.textContent).to.equal("a + b");
   });
 
-  it("drops queued typesets when the library errors", async () => {
+  it("tells a typeset caller that nothing rendered", async () => {
     const handler = document.querySelector("lrn-math-controller");
     expect(handler).to.exist;
-    let called = false;
-    handler.typeset("q^2", false, function () {
-      called = true;
+    const result = await new Promise((resolve) => {
+      handler.typeset("q^2", false, (melem, styleNode) =>
+        resolve([melem, styleNode]),
+      );
     });
-    await new Promise((resolve) => setTimeout(resolve, 50));
-    expect(called).to.be.false;
+    expect(result).to.deep.equal([null, null]);
   });
 
   it("still reflects mathtext and processing while in error state", async () => {
@@ -68,7 +67,7 @@ describe("lrn-math error state (library fails to load)", () => {
     await new Promise((resolve) => setTimeout(resolve, 400));
     expect(element.getAttribute("mathtext")).to.equal("z + 9");
     expect(element.querySelector("span")).to.exist;
-    expect(element.shadowRoot.querySelector("span")).to.not.exist;
+    expect(element.shadowRoot.querySelector("mjx-container")).to.not.exist;
   });
 
   it("supports a lazy controller that defers library loading", async () => {
@@ -79,7 +78,7 @@ describe("lrn-math error state (library fails to load)", () => {
     await new Promise((resolve) => setTimeout(resolve, 50));
     expect(lazy instanceof LrnMathController).to.be.true;
     expect(lazy.getAttribute("src")).to.equal("mathjax-local-fake.js");
-    // no mathjax script was ever appended to the document
+    // MathJax is never fetched from a third-party CDN
     const scripts = document.querySelectorAll("script");
     let appendedCdnScript = false;
     scripts.forEach((s) => {

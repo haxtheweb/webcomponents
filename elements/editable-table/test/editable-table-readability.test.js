@@ -162,4 +162,57 @@ describe("editable-table display readability", () => {
     const row = sorts[2].shadowRoot.querySelector("div");
     expect(getComputedStyle(row).flexDirection).to.equal("row-reverse");
   });
+
+  // haxtheweb/issues#3373: links in header cells kept the
+  // browser's link color, 3.69:1 on the dark heading
+  it("gives header links a color that reads on them, light and dark", async () => {
+    const rgb = (c) => (c.match(/[\d.]+/g) || []).slice(0, 3).map(Number);
+    const lum = (c) => {
+      const [r, g, b] = rgb(c).map((v) => {
+        v = v / 255;
+        return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+      });
+      return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    };
+    const ratio = (a, b) => {
+      const [x, y] = [lum(a), lum(b)].sort((m, n) => n - m);
+      return (x + 0.05) / (y + 0.05);
+    };
+    const data = [
+      ["Plain", '<a href="https://wordpress.org">Head link</a>'],
+      ['<a href="https://drupal.org">Cell link</a>', "x"],
+      ['<a href="https://haxtheweb.org">Foot link</a>', "y"],
+    ];
+    for (const scheme of ["light", "dark"]) {
+      const wrap = await fixture(
+        html`<div style="color-scheme: ${scheme}">
+          <editable-table-display
+            .data=${data}
+            bordered
+            striped
+            column-header
+            footer
+          ></editable-table-display>
+        </div>`,
+      );
+      const el = wrap.querySelector("editable-table-display");
+      await el.updateComplete;
+      for (const [where, text] of [["thead th", "Head link"]]) {
+        const link = [...el.shadowRoot.querySelectorAll(`${where} a`)].find(
+          (a) => a.textContent.includes(text),
+        );
+        expect(link, `${scheme} ${text}`).to.exist;
+        const cell = link.closest("th, td");
+        const style = getComputedStyle(link);
+        const bg = getComputedStyle(cell).backgroundColor;
+        // the light header is a 6% tint over the page: measured on white
+        const under = scheme === "dark" ? bg : "rgb(255, 255, 255)";
+        expect(
+          ratio(style.color, under) >= 4.5,
+          `${scheme} ${text}: ${style.color} on ${under}`,
+        ).to.equal(true);
+        expect(style.textDecorationLine).to.contain("underline");
+      }
+    }
+  });
 });

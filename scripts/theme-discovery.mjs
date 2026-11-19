@@ -31,7 +31,7 @@ function generateThumbnailPath(elementName) {
 function extractThemeName(content, filename) {
   // Look for static get tag() methods FIRST (most reliable)
   const tagMatch = content.match(
-    /static\s+get\s+tag\(\)\s*{\s*return\s+['"`]([a-z-]+)['"`]/,
+    /static\s+get\s+tag\(\)\s*{\s*return\s+['"`]([a-z][a-z0-9-]*)['"`]/,
   );
   if (tagMatch) {
     return tagMatch[1];
@@ -39,14 +39,14 @@ function extractThemeName(content, filename) {
 
   // Look for customElements.define calls
   const defineMatch = content.match(
-    /customElements\.define\(['"`]([a-z-]+)['"`]/,
+    /customElements\.define\(['"`]([a-z][a-z0-9-]*)['"`]/,
   );
   if (defineMatch) {
     return defineMatch[1];
   }
 
   // Look for explicit theme name in comments or JSDoc (less reliable)
-  const nameMatch = content.match(/@element\s+([a-z-]+)/);
+  const nameMatch = content.match(/@element\s+([a-z][a-z0-9-]*)/);
   if (nameMatch) {
     return nameMatch[1];
   }

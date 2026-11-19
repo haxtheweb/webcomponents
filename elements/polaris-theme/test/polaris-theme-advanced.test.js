@@ -257,16 +257,21 @@ describe("polaris-theme store wiring", () => {
     });
   });
 
-  it("injects the Open Sans font link on good devices", async () => {
+  it("injects the Open Sans font link on good devices, from HAX not Google", async () => {
     const fontLinks = () =>
       globalThis.document.head.querySelectorAll(
-        'link[href*="fonts.googleapis.com/css2?family=Open+Sans"]',
+        'link[href*="/lib/fonts/open-sans/open-sans.css"]',
       );
     const before = fontLinks().length;
     store.badDevice = false;
     await flushAsync();
     const after = [...fontLinks()];
     expect(after.length > before).to.equal(true);
+    expect(
+      globalThis.document.head.querySelector(
+        'link[href*="fonts.googleapis.com"]',
+      ),
+    ).to.equal(null);
     after.forEach((link) => link.remove());
     store.badDevice = true;
   });

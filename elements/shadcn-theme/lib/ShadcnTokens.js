@@ -104,7 +104,4 @@ export const ShadcnTokens = css`
   }
 `;
 
-export const ShadcnFonts = [
-  "https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;900&display=swap",
-  "https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;600&display=swap",
-];
+export const ShadcnFonts = ["Geist", "Geist Mono"];

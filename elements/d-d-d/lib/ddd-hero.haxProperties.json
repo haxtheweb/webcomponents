@@ -127,7 +127,7 @@
     {
       "tag": "ddd-hero",
       "properties": {
-        "source": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-polaris-flex-theme.jpg",
+        "source": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/d-d-d/lib/ddd-hero-demo.svg",
         "alt": "",
         "heading": "Open house, May 9",
         "fade": "bottom",

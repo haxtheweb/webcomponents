@@ -132,6 +132,85 @@ function isElementHaxCapable(elementPath, elementName, haxDemoSchema) {
   return false;
 }
 
+// The HAX platform itself, as opposed to blocks and themes: the full HAXcms
+// system demo and the AppHax dashboard. The Platform filter lists these.
+const PLATFORM_ELEMENTS = ["haxcms-elements", "app-hax"];
+
+// HAXcms theme registry; a package whose own tag is a registered theme is a
+// theme even when its name does not end in -theme (clean-one, simple-blog)
+let THEME_TAGS = null;
+function themeTags() {
+  if (THEME_TAGS) {
+    return THEME_TAGS;
+  }
+  THEME_TAGS = new Set();
+  const themesFile = path.join(
+    ELEMENTS_DIR,
+    "haxcms-elements",
+    "lib",
+    "themes.json",
+  );
+  try {
+    const themes = JSON.parse(fs.readFileSync(themesFile, "utf8"));
+    Object.values(themes).forEach((theme) => {
+      if (theme && theme.element) {
+        THEME_TAGS.add(theme.element);
+      }
+    });
+  } catch {
+    console.warn("Warning: could not read haxcms-elements/lib/themes.json");
+  }
+  return THEME_TAGS;
+}
+
+function isElementTheme(elementName) {
+  return /-themes?$/.test(elementName) || themeTags().has(elementName);
+}
+
+// DDD itself, its docs, and every DDD bridge package (one that ships
+// design-system/bridge.json, the same signal design-system-discovery uses)
+function isElementDesignSystem(elementPath, elementName) {
+  return (
+    elementName === "d-d-d" ||
+    elementName === "d-d-docs" ||
+    fs.existsSync(path.join(elementPath, "design-system", "bridge.json"))
+  );
+}
+
+// Gizmo tags of the package's own element, from lib/<tag>.haxProperties.json
+// or an inline static haxProperties in <tag>.js
+function extractGizmoTags(elementPath, elementName) {
+  const jsonPath = path.join(
+    elementPath,
+    "lib",
+    `${elementName}.haxProperties.json`,
+  );
+  try {
+    if (fs.existsSync(jsonPath)) {
+      const hax = JSON.parse(fs.readFileSync(jsonPath, "utf8"));
+      return hax.gizmo && Array.isArray(hax.gizmo.tags) ? hax.gizmo.tags : [];
+    }
+    const jsPath = path.join(elementPath, `${elementName}.js`);
+    if (fs.existsSync(jsPath)) {
+      const src = fs.readFileSync(jsPath, "utf8");
+      const m = src.match(/gizmo\s*:\s*\{[\s\S]*?\btags\s*:\s*\[([^\]]*)\]/);
+      if (m) {
+        return [...m[1].matchAll(/['"`]([^'"`]+)['"`]/g)].map((t) => t[1]);
+      }
+    }
+  } catch {
+    // unreadable schema: no tags
+  }
+  return [];
+}
+
+// Instructional blocks are the ones HAX files under the Instructional gizmo tag
+function isElementInstructional(elementPath, elementName) {
+  return extractGizmoTags(elementPath, elementName).some((t) =>
+    /^instructional$/i.test(String(t).trim()),
+  );
+}
+
 // Function to generate HTML for a component demo using HAX schema
 // kept for building a HAX demo page by hand
 // eslint-disable-next-line no-unused-vars
@@ -226,6 +305,16 @@ function getComponentInfo() {
             elementName,
             haxDemoSchema,
           );
+          const isTheme = isElementTheme(elementName);
+          const isInstructional = isElementInstructional(
+            elementPath,
+            elementName,
+          );
+          const isDesignSystem = isElementDesignSystem(
+            elementPath,
+            elementName,
+          );
+          const isPlatform = PLATFORM_ELEMENTS.includes(elementName);
 
           // Documentation data and walkthrough storyboard, when present
           let docs = null;
@@ -267,6 +356,10 @@ function getComponentInfo() {
             importPath,
             haxDemoSchema,
             isHaxCapable,
+            isTheme,
+            isInstructional,
+            isDesignSystem,
+            isPlatform,
             additionalDemos: demoFiles
               .filter((f) => f !== "index.html")
               .map((f) => ({
@@ -420,17 +513,72 @@ function galleryLoader() {
   return { styles: "", markup: "" };
 }
 
+// Third-party notices for the CDN build the gallery loads its third-party
+// code from (scripts/copy-dep-licenses.js writes it during ubiquity). The
+// plain-text name is what builds published before the Markdown notices have.
+const LICENSES_MD_URL =
+  "https://cdn.hax.cloud/cdn/build/THIRD_PARTY_LICENSES.md";
+const LICENSES_TEXT_URL =
+  "https://cdn.hax.cloud/cdn/build/THIRD_PARTY_LICENSES";
+
+// The design systems a site can pick (scripts/design-system-discovery.mjs
+// writes the registry): the gallery offers the same list, by name and title
+function galleryDesignSystems() {
+  const file = path.join(
+    ELEMENTS_DIR,
+    "haxcms-elements",
+    "lib",
+    "designSystems.json",
+  );
+  try {
+    const registry = JSON.parse(fs.readFileSync(file, "utf8"));
+    return Object.values(registry)
+      .filter((d) => d && /^[a-z0-9-]+$/.test(d.name))
+      .map((d) => ({ name: d.name, title: String(d.title || d.name) }));
+  } catch {
+    console.warn("Warning: could not read designSystems.json");
+    return [];
+  }
+}
+
+// DDD palettes, by data-palette value and label, from the registry the
+// palette picker reads (d-d-d/lib/DDDPaletteRegistry.js)
+function galleryPalettes() {
+  const file = path.join(ELEMENTS_DIR, "d-d-d", "lib", "DDDPaletteRegistry.js");
+  try {
+    const src = fs.readFileSync(file, "utf8");
+    const out = [];
+    const re = /label:\s*"([^"]+)",\s*dataPalette:\s*"([a-z0-9-]+)"/g;
+    let m;
+    while ((m = re.exec(src)) !== null) {
+      out.push({ label: m[1], value: m[2] });
+    }
+    return out;
+  } catch {
+    console.warn("Warning: could not read DDDPaletteRegistry.js");
+    return [];
+  }
+}
+
+// gallery-data/appearance.js: applies the picked design system and palette
+// in the gallery page and in each demo frame
+function copyAppearanceModule() {
+  fs.mkdirSync(DOCS_DIR, { recursive: true });
+  fs.copyFileSync(
+    path.join(__dirname, "gallery", "appearance.js"),
+    path.join(DOCS_DIR, "appearance.js"),
+  );
+}
+
 function generateHTML(components) {
   const totalComponents = components.length;
-  // shortcut to the full system demo, used to review everything working together
-  const haxcmsDemo = components.find((c) => c.name === "haxcms-elements");
-  // and to the AppHax dashboard, which boots the same way
-  const appHaxDemo = components.find((c) => c.name === "app-hax");
   const walkthroughCount = components.filter(
     (c) => c.motionStatus && c.motionStatus !== "none",
   ).length;
   const loader = galleryLoader();
   const componentsData = JSON.stringify(components, null, 2);
+  const designSystemsData = JSON.stringify(galleryDesignSystems());
+  const palettesData = JSON.stringify(galleryPalettes());
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -477,11 +625,17 @@ ${loader.styles}
     globalThis.dispatchEvent(new CustomEvent('gallery-styled'));
   </script>
   <script type="module" src="./elements/documentation-player/documentation-player.js"></script>
+  <!-- renders the third-party license notices (?view=licenses) -->
+  <script type="module" src="./elements/md-block/md-block.js"></script>
   <!-- the strip that links every hax.cloud site (hax.cloud, this gallery, the live demo, RPG me) -->
   <script type="module" src="./elements/hax-network-bar/hax-network-bar.js"></script>
   <!-- dogfood: the gallery's form controls are the same elements the HAX
        admin screens use, so their light/dark handling is the shared one -->
   <script type="module" src="./elements/simple-fields/lib/simple-fields-field.js"></script>
+  <!-- the palette picker HAXcms appearance settings use -->
+  <script type="module" src="./elements/d-d-d/lib/hax-palette-picker.js"></script>
+  <!-- applies ?system= and ?palette= here and in each demo frame -->
+  <script type="module" src="./gallery-data/appearance.js"></script>
   <style id="gallery-styles">
     /* Gallery styles: the HAX UI admin layer (the --hax-ui-* tokens and
        .hax-ui-* controls from d-d-d), so the gallery reads like the rest of
@@ -587,30 +741,10 @@ ${loader.styles}
       display: none;
     }
 
-    .shortcuts {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--hax-ui-gap-md);
-    }
-
     hax-network-bar {
       flex: none;
       --hax-network-bar-max-width: none;
       --hax-network-bar-gutter: var(--ddd-spacing-4, 16px);
-    }
-
-    /* the live demo is the gallery's main call to action, in the same
-       Keystone yellow as hax.cloud's "Try the live demo" */
-    body a.hax-ui-btn#haxcmsDemoBtn,
-    body a.hax-ui-btn#haxcmsDemoBtn:any-link {
-      font-weight: var(--ddd-font-weight-bold, 700);
-      color: var(--ddd-theme-default-nittanyNavy);
-      background-color: var(--ddd-theme-default-keystoneYellow);
-      border-color: var(--ddd-theme-default-keystoneYellow);
-    }
-
-    body a.hax-ui-btn#haxcmsDemoBtn:hover {
-      background-color: var(--ddd-theme-default-white);
     }
 
     .titlebar .hax-ui-btn {
@@ -634,7 +768,10 @@ ${loader.styles}
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      background-color: var(--hax-ui-sunken);
+      /* --hax-ui-sunken is see-through in dark mode, so it is laid over
+         the opaque surface: the phone drawer never shows the page under it */
+      background-color: var(--hax-ui-surface);
+      background-image: linear-gradient(var(--hax-ui-sunken), var(--hax-ui-sunken));
       border-right: 1px solid var(--hax-ui-line);
     }
 
@@ -739,6 +876,69 @@ ${loader.styles}
       margin-top: var(--hax-ui-gap);
     }
 
+    /* Appearance: the design system and palette the gallery and its
+       demos are drawn in, picked the way a HAXcms site picks them */
+    .appearance-toggle {
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .appearance-summary {
+      font-weight: var(--ddd-font-weight-regular, 400);
+      color: var(--hax-ui-text-muted);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .appearance-panel {
+      display: flex;
+      flex-direction: column;
+      gap: var(--hax-ui-gap-lg);
+      max-height: 45vh;
+      overflow-y: auto;
+      padding: var(--hax-ui-gap-md);
+      border: 1px solid var(--hax-ui-line);
+      border-radius: var(--hax-ui-radius);
+      background-color: var(--hax-ui-surface);
+    }
+
+    .appearance-panel[hidden] {
+      display: none;
+    }
+
+    .appearance-panel simple-fields-field {
+      display: block;
+      width: 100%;
+      --simple-fields-input-max-width: 100%;
+    }
+
+    .appearance-note {
+      font-size: var(--hax-ui-admin-font-size-xs, 12px);
+      color: var(--hax-ui-text-muted);
+    }
+
+    .gallery-footer {
+      flex: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--hax-ui-gap) var(--hax-ui-gap-lg);
+      padding: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
+      border-top: 1px solid var(--hax-ui-line);
+      font-size: var(--hax-ui-admin-font-size-xs, 12px);
+      color: var(--hax-ui-text-muted);
+    }
+
+    .gallery-footer a,
+    .gallery-footer a:any-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      font-weight: var(--ddd-font-weight-regular, 400);
+      color: var(--hax-ui-text);
+      text-decoration: underline;
+    }
+
     /* Main area: page header, toolbar, then the stage */
     .main-content {
       flex: 1;
@@ -784,6 +984,11 @@ ${loader.styles}
       letter-spacing: 0.04em;
       text-transform: uppercase;
       color: var(--hax-ui-text-muted);
+    }
+
+    .snippet-code:focus-visible {
+      outline: var(--hax-ui-focus-width, 2px) solid var(--hax-ui-focus);
+      outline-offset: 2px;
     }
 
     .snippet-code {
@@ -925,6 +1130,45 @@ ${loader.styles}
       max-width: 72rem;
     }
 
+    .licenses-pane {
+      height: 100%;
+      overflow-y: auto;
+      padding: var(--ddd-spacing-5, 20px);
+      color: var(--hax-ui-text);
+      background-color: var(--hax-ui-surface);
+    }
+
+    .licenses-pane:focus {
+      outline: none;
+    }
+
+    /* reference text: DDD's smaller steps, not page-content sizes */
+    #licensesBlock {
+      --ddd-theme-h1-font-size: var(--ddd-font-size-m);
+      --ddd-theme-h2-font-size: var(--ddd-font-size-s);
+      --ddd-theme-h3-font-size: var(--ddd-font-size-xs);
+      --ddd-theme-body-font-size: var(--ddd-font-size-4xs);
+    }
+
+    .licenses-pane > p {
+      max-width: 48rem;
+      margin: 0 0 var(--hax-ui-gap-lg);
+      color: var(--hax-ui-text-muted);
+    }
+
+    .licenses-pane a,
+    .licenses-pane a:any-link {
+      color: var(--hax-ui-text);
+      text-decoration: underline;
+    }
+
+    /* the package index is a wide table: it scrolls on its own, the page
+       never scrolls sideways */
+    .licenses-scroll {
+      max-width: 72rem;
+      overflow-x: auto;
+    }
+
     .welcome-message {
       display: grid;
       place-items: center;
@@ -992,15 +1236,6 @@ ${loader.styles}
         display: none;
       }
 
-      .shortcuts {
-        order: 3;
-        width: 100%;
-      }
-
-      .shortcuts .hax-ui-btn {
-        flex: 1;
-      }
-
       .gallery-container {
         display: block;
       }
@@ -1008,6 +1243,8 @@ ${loader.styles}
       .sidebar {
         display: none;
         position: fixed;
+        /* where the title bar ends on screen (the network bar above it
+           scrolls away), kept current by the gallery script */
         top: var(--gal-bar, 6rem);
         left: 0;
         right: 0;
@@ -1066,7 +1303,8 @@ ${loader.styles}
         height: 80vh;
       }
 
-      .docs-pane {
+      .docs-pane,
+      .licenses-pane {
         height: auto;
         overflow: visible;
         padding: var(--hax-ui-gap-lg) var(--hax-ui-gap-md);
@@ -1102,23 +1340,7 @@ ${loader.markup}
       <span class="mobile-title" id="mobileTitle">Component gallery</span>
     </div>
     <button class="hax-ui-btn" id="listToggle" aria-expanded="false" aria-controls="sidebar">Components</button>
-${
-  haxcmsDemo || appHaxDemo
-    ? `    <nav class="shortcuts" aria-label="System demos">
-${
-  haxcmsDemo
-    ? `      <a class="hax-ui-btn" id="haxcmsDemoBtn" href="${haxcmsDemo.demoPath}" target="haxcms-demo" rel="noopener" title="Open the full HAXcms system demo (haxcms-elements) in its own window">Try HAXcms</a>
-`
-    : ""
-}${
-        appHaxDemo
-          ? `      <a class="hax-ui-btn" id="appHaxDemoBtn" href="${appHaxDemo.demoPath}" target="_blank" rel="noopener" title="Open the AppHax dashboard demo (app-hax) in a new tab">Open AppHax demo</a>
-`
-          : ""
-      }    </nav>
-`
-    : ""
-}  </header>
+  </header>
 
   <div class="gallery-container">
     <!-- Sidebar with component list -->
@@ -1134,8 +1356,20 @@ ${
           <button class="hax-ui-chip filter-btn" aria-pressed="true" data-filter="all" title="Show all components">
             All <span class="n">${totalComponents}</span>
           </button>
-          <button class="hax-ui-chip filter-btn" aria-pressed="false" data-filter="hax" title="Show only HAX-capable components">
-            HAX <span class="n">${components.filter((c) => c.isHaxCapable).length}</span>
+          <button class="hax-ui-chip filter-btn" aria-pressed="false" data-filter="platform" title="The HAX platform: try HAXcms and the AppHax dashboard">
+            Platform <span class="n">${components.filter((c) => c.isPlatform).length}</span>
+          </button>
+          <button class="hax-ui-chip filter-btn" aria-pressed="false" data-filter="hax" title="Blocks you can place in a page with HAX">
+            HAX Blocks <span class="n">${components.filter((c) => c.isHaxCapable).length}</span>
+          </button>
+          <button class="hax-ui-chip filter-btn" aria-pressed="false" data-filter="theme" title="Show HAXcms themes">
+            Themes <span class="n">${components.filter((c) => c.isTheme).length}</span>
+          </button>
+          <button class="hax-ui-chip filter-btn" aria-pressed="false" data-filter="instructional" title="Show instructional blocks">
+            Instructional <span class="n">${components.filter((c) => c.isInstructional).length}</span>
+          </button>
+          <button class="hax-ui-chip filter-btn" aria-pressed="false" data-filter="design-system" title="Show DDD and design system bridges">
+            Design system <span class="n">${components.filter((c) => c.isDesignSystem).length}</span>
           </button>
           <button class="hax-ui-chip filter-btn" aria-pressed="false" data-filter="walkthrough" title="Show components with an animated walkthrough">
             Walkthrough <span class="n">${walkthroughCount}</span>
@@ -1143,6 +1377,16 @@ ${
           <button class="hax-ui-chip filter-btn" aria-pressed="false" data-filter="hax-ecosystem" title="Show HAX ecosystem components">
             hax-* <span class="n">${components.filter((c) => c.name.startsWith("hax-")).length}</span>
           </button>
+        </div>
+
+        <button class="hax-ui-btn appearance-toggle" id="appearanceToggle" aria-expanded="false" aria-controls="appearancePanel">
+          Appearance <span class="appearance-summary" id="appearanceSummary">DDD</span>
+        </button>
+        <div class="appearance-panel" id="appearancePanel" role="group" aria-label="Appearance" hidden>
+          <simple-fields-field class="hax-ui-simple-field compact" id="systemSelect" type="select" label="Design system"></simple-fields-field>
+          <hax-palette-picker id="palettePicker" label="Palette"></hax-palette-picker>
+          <p class="appearance-note">Applies to the gallery and the demo, the way a HAXcms site applies a design system and palette. The link keeps your choice.</p>
+          <button class="hax-ui-btn" id="appearanceReset">Reset to DDD</button>
         </div>
       </div>
 
@@ -1152,6 +1396,12 @@ ${
       </nav>
 
       <p class="hax-ui-message no-results hidden" id="noResults">No components found</p>
+
+      <footer class="gallery-footer">
+        <a href="https://github.com/haxtheweb/webcomponents/blob/master/LICENSE.md" target="_blank" rel="noopener">Apache-2.0 license</a>
+        <a href="?view=licenses" id="licensesLink">Third-party licenses</a>
+        <a href="https://github.com/haxtheweb/webcomponents" target="_blank" rel="noopener">Source</a>
+      </footer>
     </aside>
 
     <!-- Main content area -->
@@ -1164,10 +1414,10 @@ ${
 
         <div class="snippets">
           <span class="snippet-label">Install</span>
-          <code class="snippet-code" id="installationCode">npm install @haxtheweb/example-element</code>
+          <code class="snippet-code" id="installationCode" tabindex="0">npm install @haxtheweb/example-element</code>
           <button class="hax-ui-btn ghost" data-copy="installationCode">Copy</button>
           <span class="snippet-label">Import</span>
-          <code class="snippet-code" id="usageCode">import '@haxtheweb/example-element/example-element.js';</code>
+          <code class="snippet-code" id="usageCode" tabindex="0">import '@haxtheweb/example-element/example-element.js';</code>
           <button class="hax-ui-btn ghost" data-copy="usageCode">Copy</button>
         </div>
 
@@ -1194,12 +1444,18 @@ ${
         <div class="welcome-message" id="welcomeMessage">
           <div class="hax-ui-empty">
             <strong>Welcome to the HAX web components gallery</strong>
-            <p>Choose a component to see its demo, documentation and walkthrough.</p>
+            <p>Choose a component to see its demo, documentation and walkthrough. To try HAXcms or the AppHax dashboard, filter by Platform.</p>
           </div>
         </div>
         <div class="stage-progress" aria-hidden="true"></div>
         <iframe class="demo-frame hidden" id="demoFrame" title="Component demo"></iframe>
         <div class="docs-pane hidden" id="docsPane"></div>
+        <section class="licenses-pane hidden" id="licensesPane" aria-label="Third-party licenses" tabindex="-1">
+          <p>Notices for the CDN build the gallery and HAX sites load their code from. <a id="licensesSourceLink" href="${LICENSES_MD_URL}" target="_blank" rel="noopener">Open the file</a></p>
+          <div class="licenses-scroll">
+            <md-block id="licensesBlock"></md-block>
+          </div>
+        </section>
       </div>
     </main>
   </div>
@@ -1306,8 +1562,20 @@ ${
       let components = [];
       
       switch (currentFilter) {
+        case 'platform':
+          components = COMPONENTS.filter(c => c.isPlatform);
+          break;
         case 'hax':
           components = COMPONENTS.filter(c => c.isHaxCapable);
+          break;
+        case 'theme':
+          components = COMPONENTS.filter(c => c.isTheme);
+          break;
+        case 'instructional':
+          components = COMPONENTS.filter(c => c.isInstructional);
+          break;
+        case 'design-system':
+          components = COMPONENTS.filter(c => c.isDesignSystem);
           break;
         case 'walkthrough':
           components = COMPONENTS.filter(c => c.motionStatus && c.motionStatus !== 'none');
@@ -1374,7 +1642,7 @@ ${
     // Render component list
     function renderComponentList() {
       filteredComponents = filterComponents();
-      componentList.innerHTML = '';
+      componentList.replaceChildren();
       
       listLabel.textContent = filteredComponents.length + ' shown';
       if (filteredComponents.length === 0) {
@@ -1393,18 +1661,37 @@ ${
           item.setAttribute('aria-current', 'page');
         }
 
+        // [label, tone] pairs; built as text nodes, never HTML strings
         const tags = [];
-        if (component.isHaxCapable) tags.push('<span class="hax-ui-pill" data-tone="accent">HAX</span>');
+        if (component.isPlatform) tags.push(['Platform', 'info']);
+        if (component.isHaxCapable) tags.push(['HAX Block', 'accent']);
+        if (component.isTheme) tags.push(['Theme', '']);
+        if (component.isInstructional) tags.push(['Instructional', 'success']);
+        if (component.isDesignSystem) tags.push(['Design system', 'muted']);
         if (component.motionStatus && component.motionStatus !== 'none') {
-          tags.push('<span class="hax-ui-pill" data-tone="info">Walkthrough</span>');
-          if (component.motionStatus === 'stale') tags.push('<span class="hax-ui-pill" data-tone="warning">Needs update</span>');
+          tags.push(['Walkthrough', 'info']);
+          if (component.motionStatus === 'stale') tags.push(['Needs update', 'warning']);
         }
 
-        item.innerHTML = \`
-          <div class="component-item-name">&lt;\${component.name}&gt;</div>
-          <div class="component-item-description">\${component.description}</div>
-          \${tags.length ? '<div class="tags">' + tags.join('') + '</div>' : ''}
-        \`;
+        const name = document.createElement('div');
+        name.className = 'component-item-name';
+        name.textContent = '<' + component.name + '>';
+        const description = document.createElement('div');
+        description.className = 'component-item-description';
+        description.textContent = component.description;
+        item.append(name, description);
+        if (tags.length) {
+          const row = document.createElement('div');
+          row.className = 'tags';
+          tags.forEach(([label, tone]) => {
+            const pill = document.createElement('span');
+            pill.className = 'hax-ui-pill';
+            if (tone) pill.dataset.tone = tone;
+            pill.textContent = label;
+            row.appendChild(pill);
+          });
+          item.appendChild(row);
+        }
         
         item.addEventListener('click', () => selectComponent(component));
         componentList.appendChild(item);
@@ -1440,6 +1727,7 @@ ${
       buildDemoSelector(component);
 
       // Show demo header and hide welcome
+      licensesPane.classList.add('hidden');
       demoHeader.classList.remove('hidden');
       welcomeMessage.classList.add('hidden');
       demoFrame.classList.remove('hidden');
@@ -1487,7 +1775,11 @@ ${
           return;
         }
         const picked = demoSelector.value || currentComponent.demoPath;
-        if (picked === currentDemoPath) {
+        // only one of this component's own demo pages is ever loaded
+        const known = [currentComponent.demoPath].concat(
+          (currentComponent.additionalDemos || []).map(d => d.path)
+        );
+        if (picked === currentDemoPath || known.indexOf(picked) === -1) {
           return;
         }
         currentDemoPath = picked;
@@ -1576,31 +1868,35 @@ ${
     }
 
     function updateUrlForCurrentDemo() {
-      if (!currentComponent) {
-        return;
-      }
       const params = new URLSearchParams();
-      params.set('element', currentComponent.name);
-      if (currentDemoPath && currentDemoPath !== currentComponent.demoPath) {
-        let demoName = null;
-        if (currentComponent.additionalDemos && currentComponent.additionalDemos.length > 0) {
-          for (let i = 0; i < currentComponent.additionalDemos.length; i++) {
-            if (currentComponent.additionalDemos[i].path === currentDemoPath) {
-              demoName = currentComponent.additionalDemos[i].name;
-              break;
+      if (currentComponent) {
+        params.set('element', currentComponent.name);
+        if (currentDemoPath && currentDemoPath !== currentComponent.demoPath) {
+          let demoName = null;
+          if (currentComponent.additionalDemos && currentComponent.additionalDemos.length > 0) {
+            for (let i = 0; i < currentComponent.additionalDemos.length; i++) {
+              if (currentComponent.additionalDemos[i].path === currentDemoPath) {
+                demoName = currentComponent.additionalDemos[i].name;
+                break;
+              }
             }
           }
+          if (demoName) {
+            params.set('demo', demoName);
+          }
         }
-        if (demoName) {
-          params.set('demo', demoName);
+        if (currentView === 'docs') {
+          params.set('view', 'docs');
+          if (currentTopic) {
+            params.set('topic', currentTopic);
+          }
         }
       }
-      if (currentView === 'docs') {
-        params.set('view', 'docs');
-        if (currentTopic) {
-          params.set('topic', currentTopic);
-        }
+      if (!currentComponent && !licensesPane.classList.contains('hidden')) {
+        params.set('view', 'licenses');
       }
+      if (appearance.system) params.set('system', appearance.system);
+      if (appearance.palette) params.set('palette', appearance.palette);
       const search = params.toString();
       globalThis.history.replaceState({}, '', globalThis.location.pathname + (search ? '?' + search : ''));
     }
@@ -1608,6 +1904,9 @@ ${
     function applyRouteFromUrl() {
       const slug = getQueryParam('element');
       if (!slug) {
+        if (getQueryParam('view') === 'licenses') {
+          showLicenses();
+        }
         return;
       }
       let component = null;
@@ -1650,17 +1949,43 @@ ${
     const mobileBar = document.getElementById('mobileBar');
     const mobileTitle = document.getElementById('mobileTitle');
     const phone = globalThis.matchMedia('(max-width: 768px)');
+    const mainContent = document.querySelector('.main-content');
+    // a phone turned to a wide window: the drawer is a sidebar again
+    phone.addEventListener('change', () => {
+      mainContent.inert = phone.matches && sidebar.classList.contains('open');
+    });
     function setDrawer(open) {
       sidebar.classList.toggle('open', open);
       listToggle.setAttribute('aria-expanded', String(open));
       listToggle.textContent = open ? 'Close' : 'Components';
       // nothing to close back to until a component is chosen
       listToggle.hidden = open && !currentComponent;
-      document.documentElement.style.setProperty('--gal-bar', mobileBar.offsetHeight + 'px');
+      // on phones the drawer covers the page: keep focus out from under it
+      mainContent.inert = open && phone.matches;
+      placeDrawer();
       if (!open && phone.matches) {
         globalThis.scrollTo(0, 0);
       }
     }
+    // the network bar above the title bar scrolls away and the title bar
+    // sticks, so the drawer follows the bar's bottom edge on screen
+    function placeDrawer() {
+      const bottom = Math.max(0, Math.round(mobileBar.getBoundingClientRect().bottom));
+      document.documentElement.style.setProperty('--gal-bar', bottom + 'px');
+    }
+    globalThis.addEventListener('scroll', () => {
+      if (sidebar.classList.contains('open')) placeDrawer();
+    }, { passive: true });
+    globalThis.addEventListener('resize', placeDrawer);
+    // the network bar renders after this script runs and pushes the title
+    // bar down, so watch both bars' sizes, and settle again once loaded
+    if (globalThis.ResizeObserver) {
+      const bars = new globalThis.ResizeObserver(placeDrawer);
+      bars.observe(mobileBar);
+      const network = document.querySelector('hax-network-bar');
+      if (network) bars.observe(network);
+    }
+    globalThis.addEventListener('load', placeDrawer);
     listToggle.addEventListener('click', () => {
       setDrawer(!sidebar.classList.contains('open'));
     });
@@ -1671,10 +1996,159 @@ ${
       }
     });
 
+    // Third-party licenses: the CDN build's notices as a page, loaded when
+    // the view first opens. Builds published before the Markdown notices
+    // only have the plain-text file, shown as preformatted text.
+    const licensesPane = document.getElementById('licensesPane');
+    const licensesBlock = document.getElementById('licensesBlock');
+    const licensesSourceLink = document.getElementById('licensesSourceLink');
+    let licensesLoaded = false;
+    async function loadLicenses() {
+      licensesLoaded = true;
+      licensesBlock.markdown = 'Loading the license notices…';
+      try {
+        const md = await fetch('${LICENSES_MD_URL}');
+        if (md.ok) {
+          licensesBlock.markdown = await md.text();
+          return;
+        }
+        const text = await fetch('${LICENSES_TEXT_URL}');
+        if (!text.ok) {
+          throw new Error('not found');
+        }
+        const body = await text.text();
+        // a fence longer than any run of backticks in the text
+        const runs = body.match(/\`+/g) || [];
+        const longest = runs.reduce((n, r) => Math.max(n, r.length), 0);
+        const fence = '\`'.repeat(Math.max(3, longest + 1));
+        licensesBlock.markdown = fence + 'text\\n' + body + '\\n' + fence;
+        licensesSourceLink.href = '${LICENSES_TEXT_URL}';
+      } catch (e) {
+        licensesLoaded = false;
+        licensesBlock.markdown = 'The license notices could not be loaded. Open the file with the link above.';
+      }
+    }
+    function showLicenses() {
+      currentComponent = null;
+      currentDemoPath = null;
+      document.querySelectorAll('.component-item[aria-current]').forEach(item => item.removeAttribute('aria-current'));
+      mobileTitle.textContent = 'Third-party licenses';
+      demoHeader.classList.add('hidden');
+      welcomeMessage.classList.add('hidden');
+      demoFrame.classList.add('hidden');
+      docsPane.classList.add('hidden');
+      licensesPane.classList.remove('hidden');
+      setDrawer(false);
+      if (!licensesLoaded) {
+        loadLicenses();
+      }
+      updateUrlForCurrentDemo();
+      licensesPane.focus();
+    }
+    document.getElementById('licensesLink').addEventListener('click', (e) => {
+      e.preventDefault();
+      showLicenses();
+    });
+
+    // Appearance: design system and palette, as a HAXcms site picks them.
+    // ?system= is only ever a key of the registry below and ?palette= a
+    // DDD palette name, so a link can't load anything else.
+    const DESIGN_SYSTEMS = ${designSystemsData};
+    const PALETTES = ${palettesData};
+    const appearance = { system: '', palette: '' };
+    const appearanceToggle = document.getElementById('appearanceToggle');
+    const appearancePanel = document.getElementById('appearancePanel');
+    const appearanceSummary = document.getElementById('appearanceSummary');
+    const systemSelect = document.getElementById('systemSelect');
+    const palettePicker = document.getElementById('palettePicker');
+    const APPEARANCE_MODULE = new URL('gallery-data/appearance.js', document.baseURI).href;
+    {
+      const system = getQueryParam('system');
+      if (system && DESIGN_SYSTEMS.some(d => d.name === system)) appearance.system = system;
+      const palette = getQueryParam('palette');
+      if (palette && PALETTES.some(p => p.value === palette)) appearance.palette = palette;
+    }
+    function appearanceIsDefault() {
+      return !appearance.system && !appearance.palette;
+    }
+    function summarize() {
+      const system = DESIGN_SYSTEMS.find(d => d.name === appearance.system);
+      const palette = PALETTES.find(p => p.value === appearance.palette);
+      appearanceSummary.textContent = (system ? system.title : 'DDD') + (palette ? ' · ' + palette.label : '');
+    }
+    // mark a document's root and ask the appearance module there to apply it
+    function applyTo(doc, win) {
+      doc.documentElement.dataset.gallerySystem = appearance.system;
+      if (appearance.palette) {
+        doc.documentElement.setAttribute('data-palette', appearance.palette);
+      } else {
+        doc.documentElement.removeAttribute('data-palette');
+      }
+      win.dispatchEvent(new CustomEvent('gallery-appearance'));
+    }
+    function applyToFrame() {
+      let doc = null;
+      try {
+        doc = demoFrame.contentDocument;
+      } catch (e) {
+        return;
+      }
+      if (!doc || !doc.head) return;
+      const loaded = doc.querySelector('script[data-gallery-appearance]');
+      // demos are left exactly as they are until a reviewer picks something
+      if (!loaded && appearanceIsDefault()) return;
+      applyTo(doc, demoFrame.contentWindow);
+      if (!loaded) {
+        const script = doc.createElement('script');
+        script.type = 'module';
+        script.src = APPEARANCE_MODULE;
+        script.dataset.galleryAppearance = '';
+        doc.head.appendChild(script);
+      }
+    }
+    function setAppearance(system, palette) {
+      appearance.system = system;
+      appearance.palette = palette;
+      summarize();
+      applyTo(document, globalThis);
+      applyToFrame();
+      updateUrlForCurrentDemo();
+    }
+    demoFrame.addEventListener('load', applyToFrame);
+    systemSelect.itemsList = [{ text: 'DDD (default)', value: '' }].concat(
+      DESIGN_SYSTEMS.map(d => ({ text: d.title, value: d.name }))
+    );
+    systemSelect.value = appearance.system;
+    palettePicker.value = appearance.palette;
+    systemSelect.addEventListener('value-changed', () => {
+      const value = systemSelect.value || '';
+      if (value !== appearance.system && (value === '' || DESIGN_SYSTEMS.some(d => d.name === value))) {
+        setAppearance(value, appearance.palette);
+      }
+    });
+    palettePicker.addEventListener('value-changed', (e) => {
+      const value = String((e.detail && e.detail.value) || palettePicker.value || '');
+      if (value !== appearance.palette && (value === '' || PALETTES.some(p => p.value === value))) {
+        setAppearance(appearance.system, value);
+      }
+    });
+    document.getElementById('appearanceReset').addEventListener('click', () => {
+      systemSelect.value = '';
+      palettePicker.value = '';
+      setAppearance('', '');
+    });
+    appearanceToggle.addEventListener('click', () => {
+      const open = appearancePanel.hidden;
+      appearancePanel.hidden = !open;
+      appearanceToggle.setAttribute('aria-expanded', String(open));
+    });
+    summarize();
+    applyTo(document, globalThis);
+
     // Initialize
     renderComponentList();
     applyRouteFromUrl();
-    if (!currentComponent) {
+    if (!currentComponent && licensesPane.classList.contains('hidden')) {
       setDrawer(phone.matches);
     }
   </script>
@@ -1685,6 +2159,7 @@ ${
 // Generate the gallery
 console.log("Scanning components...");
 buildDocsData();
+copyAppearanceModule();
 const components = getComponentInfo();
 
 // Count components that are HAX-capable (have haxProperties wiring)

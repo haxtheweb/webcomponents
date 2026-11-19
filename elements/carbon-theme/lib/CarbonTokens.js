@@ -91,7 +91,4 @@ export const CarbonTokens = css`
   }
 `;
 
-export const CarbonFonts = [
-  "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;1,400&display=swap",
-  "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap",
-];
+export const CarbonFonts = ["IBM Plex Sans", "IBM Plex Mono"];

@@ -281,7 +281,12 @@ async function openGenerated(browser, origin, name, html, watch) {
   page.on("pageerror", (e) =>
     watch.errors.push(normalizeError((e && e.message) || e, origin)),
   );
+  // code only: an image or other file that happens to sit in a HAXcms or
+  // editor package (a demo photo from the CDN, say) loads no HAXcms code
   page.on("request", (req) => {
+    if (req.resourceType() !== "script") {
+      return;
+    }
     const area = areaOfUrl(req.url());
     if (area && !watch.areas[area]) {
       watch.areas[area] = req.url().split(origin).join("");

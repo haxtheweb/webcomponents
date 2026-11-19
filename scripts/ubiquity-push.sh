@@ -215,8 +215,9 @@ cp ~/haxtheweb/webcomponents/wc-registry.json ~/haxtheweb/create/src/lib/wc-regi
 # haxcms-nodejs, haxcms-php and the CLI running on this haxcms-nodejs (the
 # snapshots in create are the expected output). It builds haxcms-nodejs and
 # the CLI from the trees about to ship and links the CLI to this
-# haxcms-nodejs for the run only. It logs in to the local haxcms-php as
-# HAX_PARITY_PHP_USER / HAX_PARITY_PHP_PASS (default admin / admin).
+# haxcms-nodejs for the run only. Every leg runs on its own state and port:
+# haxcms-php is a fresh copy of the checkout installed for the run, so your
+# local install's login, settings and sites are not used.
 # A failure is a parity break to fix, or an intended output change: refresh
 # the snapshots in create (--update-golden), review and commit them, rerun.
 cd ~/haxtheweb/create

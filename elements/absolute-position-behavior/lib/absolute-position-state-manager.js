@@ -55,18 +55,6 @@ class AbsolutePositionStateManager extends LitElement {
       __observer: {
         type: Object,
       },
-      /**
-       * resize timeout
-       */
-      __timeout: {
-        type: Object,
-      },
-      /**
-       * resize timeout
-       */
-      __timeout2: {
-        type: Object,
-      },
     };
   }
 
@@ -77,7 +65,8 @@ class AbsolutePositionStateManager extends LitElement {
     super();
     this.windowControllers = new AbortController();
     this.elements = [];
-    this.__timeout = false;
+    this.__frame = null;
+    this.__fullUpdate = false;
     this.__observer = new MutationObserver((mutations) =>
       this.checkMutations(mutations),
     );
@@ -127,25 +116,47 @@ class AbsolutePositionStateManager extends LitElement {
   }
 
   /**
-   * handles resize event
+   * scroll listener on scrollTarget (unbound, so it reaches the manager
+   * through its singleton): reposition sticky elements on the next frame
+   * @return {void}
    */
   _handleScroll() {
-    if (this.__timeout2) clearTimeout(this.__timeout2);
-    this.__timeout2 = setTimeout(
-      globalThis.AbsolutePositionStateManager.instance.updateStickyElements(),
-      1000,
-    );
+    globalThis.AbsolutePositionStateManager.instance.scheduleUpdate(true);
   }
 
   /**
    * handles resize event
    */
+  /**
+   * window resize listener: reposition every element on the next frame
+   * @return {void}
+   */
   _handleResize() {
-    if (this.__timeout) clearTimeout(this.__timeout);
-    this.__timeout = setTimeout(
-      globalThis.AbsolutePositionStateManager.instance.updateElements(),
-      250,
-    );
+    globalThis.AbsolutePositionStateManager.instance.scheduleUpdate();
+  }
+
+  /**
+   * Repositions on the next animation frame, once however many scroll,
+   * resize or mutation events arrive before it. Each pass measures every
+   * element (getBoundingClientRect forces layout), so running it on every
+   * event thrashed layout during scrolling and resizing; one pass a frame
+   * keeps elements in step with what is painted.
+   * @param {boolean} stickyOnly only sticky elements need repositioning
+   * @return {void}
+   */
+  scheduleUpdate(stickyOnly = false) {
+    this.__fullUpdate = this.__fullUpdate || !stickyOnly;
+    if (this.__frame) return;
+    this.__frame = globalThis.requestAnimationFrame(() => {
+      this.__frame = null;
+      const full = this.__fullUpdate;
+      this.__fullUpdate = false;
+      if (full) {
+        this.updateElements();
+      } else {
+        this.updateStickyElements();
+      }
+    });
   }
 
   /**
@@ -171,11 +182,7 @@ class AbsolutePositionStateManager extends LitElement {
         );
     });
     if (update) {
-      if (this.__timeout) clearTimeout(this.__timeout);
-      this.__timeout = setTimeout(
-        globalThis.AbsolutePositionStateManager.instance.updateElements(),
-        250,
-      );
+      this.scheduleUpdate();
     }
   }
 
@@ -237,7 +244,12 @@ class AbsolutePositionStateManager extends LitElement {
   removeEventListeners() {
     if (this.__observer && this.__observer.disconnect)
       this.__observer.disconnect();
-    this.windowControllers.abort();
+    // swap in a fresh controller before aborting: the abort reason is an
+    // AbortError whose captured stack holds the element that unloaded last,
+    // and this page-wide singleton would keep that element alive through it
+    const controllers = this.windowControllers;
+    this.windowControllers = new AbortController();
+    controllers.abort();
     if (this.__watchSticky && this.scrollTarget)
       this.scrollTarget.removeEventListener("scroll", this._handleScroll);
   }

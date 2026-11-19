@@ -736,6 +736,12 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
         core: {
           engine: "svg",
           fontDirectory: new URL("./lib/alphatab/font/", import.meta.url).href,
+          // woff2 only: every browser HAX supports reads it, so the .woff
+          // and .otf copies alphaTab lists by default are not shipped
+          smuflFontSources: {
+            woff2: new URL("./lib/alphatab/font/Bravura.woff2", import.meta.url)
+              .href,
+          },
         },
         ...(this.source ? { file: this.source } : { tex: true }),
         player: {

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <script>
+      // anchor the HAXcms router + relative paths to this demo folder so the
+      // site renders whether served from the element or the monorepo root
+      (() => {
+        const loc = globalThis.location;
+        if (loc.pathname.endsWith("/index.html")) {
+          globalThis.history.replaceState(null, "", loc.pathname.replace(/index\.html$/, "") + loc.search + loc.hash);
+        }
+        const here = "/demo/coder-theme/";
+        const i = loc.pathname.lastIndexOf(here);
+        const base = globalThis.document.createElement("base");
+        base.href = i === -1 ? "./" : loc.pathname.slice(0, i + here.length);
+        globalThis.document.head.appendChild(base);
+      })();
+    </script>
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <meta name="Description" content="Demonstration for papermod-theme">
+    <title>Coder theme: coder-theme Demo</title>
+    <script src="../../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <script>
+      globalThis.process = globalThis.process || {
+        env: {
+          NODE_ENV: "production"
+        }
+      };
+    </script>
+    <script>
+      // a static demo of the theme: there is no backend to ask for editing
+      // settings, and the site's components load through the registry the
+      // HAXcms demo uses (otherwise the menu and other lazily loaded parts
+      // stay as "Loading" placeholders)
+      globalThis.HAXCMSContext = globalThis.HAXCMSContext || "published";
+      globalThis.WCAutoloadRegistryFile =
+        globalThis.WCAutoloadRegistryFile ||
+        "../../../haxcms-elements/demo/wc-registry.json";
+      globalThis.WCGlobalBasePath = globalThis.WCGlobalBasePath || "/node_modules/";
+    </script>
+    <script type="module">
+      import "@haxtheweb/haxcms-elements/lib/core/haxcms-site-builder.js";
+      // a HAXcms site always carries the autoloader that defines the blocks
+      // a page uses; a bare demo page has to ask for it
+      import "@haxtheweb/wc-autoload/wc-autoload.js";
+      import '../../lib/coder-theme.js';
+    </script>
+  </head>
+  <body>
+    <haxcms-site-builder id="site" file="site.json"></haxcms-site-builder>
+  </body>
+</html>

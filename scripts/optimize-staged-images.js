@@ -36,7 +36,15 @@ async function optimizeRaster(filePath) {
   }
 
   const optimized = await pipeline.toBuffer();
-  if (optimized.length > 0 && optimized.length < original.length) {
+  // JPEG is lossy: every re-encode of an already optimized photo loses a
+  // little more detail for a few bytes. Keep a re-encode only when it saves
+  // at least a tenth of the file, so committing the same JPEG again (a
+  // rename, a bulk recompress) does not degrade it a generation each time.
+  const minimum =
+    ext === ".png" || ext === ".gif"
+      ? original.length
+      : Math.floor(original.length * 0.9);
+  if (optimized.length > 0 && optimized.length < minimum) {
     fs.writeFileSync(filePath, optimized);
     console.log(
       `optimize-staged-images: ${filePath} ${original.length}B -> ${optimized.length}B`,

@@ -10,9 +10,10 @@ describe("collections-theme", () => {
   let savedManifest;
   let savedActiveId;
   let savedBadDevice;
-  const googleFontLinks = () => [
+  // HAX serves Roboto itself (d-d-d/lib/fonts), never Google
+  const robotoFontLinks = () => [
     ...globalThis.document.head.querySelectorAll(
-      'link[href*="fonts.googleapis.com/css2?family=Roboto"]',
+      'link[href*="/lib/fonts/roboto/roboto.css"]',
     ),
   ];
 
@@ -217,14 +218,22 @@ describe("collections-theme", () => {
     expect(element._getColor(null)).to.equal(undefined);
   });
 
-  it("injects the Roboto font link on good devices", async () => {
-    const before = googleFontLinks().length;
+  it("loads Roboto once per page on good devices, never from Google", async () => {
     store.badDevice = false;
     await new Promise((r) => setTimeout(r, 50));
-    const after = googleFontLinks();
-    expect(after.length > before).to.equal(true);
-    // clean up the injected font links
-    after.forEach((link) => link.remove());
+    // DDD may already have loaded it: the theme reuses that link rather
+    // than adding a second one
+    expect(robotoFontLinks().length).to.equal(1);
+    store.badDevice = true;
+    await new Promise((r) => setTimeout(r, 50));
+    store.badDevice = false;
+    await new Promise((r) => setTimeout(r, 50));
+    expect(robotoFontLinks().length).to.equal(1);
+    expect(
+      globalThis.document.head.querySelector(
+        'link[href*="fonts.googleapis.com"]',
+      ),
+    ).to.equal(null);
     store.badDevice = true;
   });
 

@@ -1,0 +1,299 @@
+{
+  "$comment": "Fonts HAX serves itself instead of loading from Google Fonts. scripts/vendor-fonts.mjs fetches each pinned Fontsource package and writes elements/d-d-d/lib/fonts (CSS, woff2 subsets, license), its registry and d-d-d/third-party.json. Variable families take one axis ('wght', or 'standard' for every axis); static ones the weights listed. italic: ship italic files too (only where some code asks for italics). Licenses must be OFL-1.1 or Apache-2.0.",
+  "families": [
+    {
+      "family": "Abril Fatface",
+      "package": "@fontsource/abril-fatface",
+      "version": "5.3.0",
+      "weights": [400],
+      "italic": false
+    },
+    {
+      "family": "Anton",
+      "package": "@fontsource/anton",
+      "version": "5.3.0",
+      "weights": [400],
+      "italic": false
+    },
+    {
+      "family": "Archivo",
+      "package": "@fontsource-variable/archivo",
+      "version": "5.3.0",
+      "axis": "wght",
+      "italic": false
+    },
+    {
+      "family": "Archivo Black",
+      "package": "@fontsource/archivo-black",
+      "version": "5.3.0",
+      "weights": [400],
+      "italic": false
+    },
+    {
+      "family": "Archivo Narrow",
+      "package": "@fontsource-variable/archivo-narrow",
+      "version": "5.3.0",
+      "axis": "wght",
+      "italic": false
+    },
+    {
+      "family": "Bebas Neue",
+      "package": "@fontsource/bebas-neue",
+      "version": "5.3.0",
+      "weights": [400],
+      "italic": false
+    },
+    {
+      "family": "Black Ops One",
+      "package": "@fontsource/black-ops-one",
+      "version": "5.3.0",
+      "weights": [400],
+      "italic": false
+    },
+    {
+      "family": "Bungee",
+      "package": "@fontsource/bungee",
+      "version": "5.3.0",
+      "weights": [400],
+      "italic": false
+    },
+    {
+      "family": "Caveat",
+      "package": "@fontsource-variable/caveat",
+      "version": "5.3.0",
+      "axis": "wght",
+      "italic": false
+    },
+    {
+      "family": "Cinzel",
+      "package": "@fontsource-variable/cinzel",
+      "version": "5.3.0",
+      "axis": "wght",
+      "italic": false
+    },
+    {
+      "family": "Geist",
+      "package": "@fontsource-variable/geist",
+      "version": "5.3.0",
+      "axis": "wght",
+      "italic": false
+    },
+    {
+      "family": "Geist Mono",
+      "package": "@fontsource-variable/geist-mono",
+      "version": "5.3.0",
+      "axis": "wght",
+      "italic": false
+    },
+    {
+      "family": "IBM Plex Mono",
+      "package": "@fontsource/ibm-plex-mono",
+      "version": "5.3.0",
+      "weights": [400, 500, 600],
+      "italic": false
+    },
+    {
+      "family": "IBM Plex Sans",
+      "package": "@fontsource-variable/ibm-plex-sans",
+      "version": "5.3.0",
+      "axis": "wght",
+      "italic": true
+    },
+    {
+      "family": "Inter",
+      "package": "@fontsource-variable/inter",
+      "version": "5.3.0",
+      "axis": "standard",
+      "italic": true
+    },
+    {
+      "family": "Lobster",
+      "package": "@fontsource/lobster",
+      "version": "5.3.0",
+      "weights": [400],
+      "italic": false
+    },
+    {
+      "family": "Manrope",
+      "package": "@fontsource-variable/manrope",
+      "version": "5.3.0",
+      "axis": "wght",
+      "italic": false
+    },
+    {
+      "family": "Merriweather",
+      "package": "@fontsource-variable/merriweather",
+      "version": "5.3.0",
+      "axis": "wght",
+      "italic": false
+    },
+    {
+      "family": "Mona Sans",
+      "package": "@fontsource-variable/mona-sans",
+      "version": "5.3.0",
+      "axis": "wght",
+      "italic": false
+    },
+    {
+      "family": "Monoton",
+      "package": "@fontsource/monoton",
+      "version": "5.3.0",
+      "weights": [400],
+      "italic": false
+    },
+    {
+      "family": "Open Sans",
+      "package": "@fontsource-variable/open-sans",
+      "version": "5.3.0",
+      "axis": "wght",
+      "italic": false
+    },
+    {
+      "family": "Orbitron",
+      "package": "@fontsource-variable/orbitron",
+      "version": "5.3.0",
+      "axis": "wght",
+      "italic": false
+    },
+    {
+      "family": "Oswald",
+      "package": "@fontsource-variable/oswald",
+      "version": "5.3.0",
+      "axis": "wght",
+      "italic": false
+    },
+    {
+      "family": "Patrick Hand",
+      "package": "@fontsource/patrick-hand",
+      "version": "5.3.0",
+      "weights": [400],
+      "italic": false
+    },
+    {
+      "family": "Permanent Marker",
+      "package": "@fontsource/permanent-marker",
+      "version": "5.3.0",
+      "weights": [400],
+      "italic": false
+    },
+    {
+      "family": "Playfair Display",
+      "package": "@fontsource-variable/playfair-display",
+      "version": "5.3.0",
+      "axis": "wght",
+      "italic": true
+    },
+    {
+      "family": "Press Start 2P",
+      "package": "@fontsource/press-start-2p",
+      "version": "5.3.0",
+      "weights": [400],
+      "italic": false
+    },
+    {
+      "family": "Red Hat Display",
+      "package": "@fontsource-variable/red-hat-display",
+      "version": "5.3.0",
+      "axis": "wght",
+      "italic": false
+    },
+    {
+      "family": "Red Hat Mono",
+      "package": "@fontsource-variable/red-hat-mono",
+      "version": "5.3.0",
+      "axis": "wght",
+      "italic": false
+    },
+    {
+      "family": "Red Hat Text",
+      "package": "@fontsource-variable/red-hat-text",
+      "version": "5.3.0",
+      "axis": "wght",
+      "italic": true
+    },
+    {
+      "family": "Righteous",
+      "package": "@fontsource/righteous",
+      "version": "5.3.0",
+      "weights": [400],
+      "italic": false
+    },
+    {
+      "family": "Roboto",
+      "package": "@fontsource-variable/roboto",
+      "version": "5.3.0",
+      "axis": "wght",
+      "italic": true
+    },
+    {
+      "family": "Roboto Condensed",
+      "package": "@fontsource-variable/roboto-condensed",
+      "version": "5.3.0",
+      "axis": "wght",
+      "italic": true
+    },
+    {
+      "family": "Roboto Mono",
+      "package": "@fontsource-variable/roboto-mono",
+      "version": "5.3.0",
+      "axis": "wght",
+      "italic": false
+    },
+    {
+      "family": "Roboto Slab",
+      "package": "@fontsource-variable/roboto-slab",
+      "version": "5.3.0",
+      "axis": "wght",
+      "italic": false
+    },
+    {
+      "family": "Russo One",
+      "package": "@fontsource/russo-one",
+      "version": "5.3.0",
+      "weights": [400],
+      "italic": false
+    },
+    {
+      "family": "Source Code Pro",
+      "package": "@fontsource-variable/source-code-pro",
+      "version": "5.3.1",
+      "axis": "wght",
+      "italic": true
+    },
+    {
+      "family": "Source Sans 3",
+      "package": "@fontsource-variable/source-sans-3",
+      "version": "5.3.1",
+      "axis": "wght",
+      "italic": true
+    },
+    {
+      "family": "Special Elite",
+      "package": "@fontsource/special-elite",
+      "version": "5.3.0",
+      "weights": [400],
+      "italic": false
+    },
+    {
+      "family": "Staatliches",
+      "package": "@fontsource/staatliches",
+      "version": "5.3.0",
+      "weights": [400],
+      "italic": false
+    },
+    {
+      "family": "VT323",
+      "package": "@fontsource/vt323",
+      "version": "5.3.0",
+      "weights": [400],
+      "italic": false
+    },
+    {
+      "family": "Work Sans",
+      "package": "@fontsource-variable/work-sans",
+      "version": "5.3.0",
+      "axis": "wght",
+      "italic": true
+    }
+  ]
+}

@@ -159,3 +159,70 @@ test("gate baseline: new, known, fixed, growth and shrink", () => {
     { a: { m: { x: 1 } } },
   );
 });
+
+test("image-framing, doodle and haxcms-language-picker fields validate with their keys", () => {
+  const schema = JSON.parse(JSON.stringify(good));
+  schema.settings.configure.push(
+    {
+      property: "imageSrc",
+      title: "Framing",
+      inputMethod: "image-framing",
+      sourceProperty: "imageSrc",
+      focalXProperty: "focalX",
+      focalYProperty: "focalY",
+    },
+    {
+      property: "imageSrc",
+      title: "Drawing",
+      inputMethod: "doodle",
+      backgroundProperty: "imageSrc",
+      modeProperty: "mode",
+    },
+    {
+      property: "imageSrc",
+      title: "Language",
+      inputMethod: "haxcms-language-picker",
+      includeRegions: "all",
+      popularFirst: true,
+      allowCustom: true,
+      options: ["en-US", { value: "es", label: "Español" }],
+    },
+  );
+  assert.deepEqual(checkTag("x-el", facts(schema), validate), {});
+});
+
+test("an options array is only for iconpicker (names) and haxcms-language-picker", () => {
+  const schema = JSON.parse(JSON.stringify(good));
+  schema.settings.configure.push(
+    { property: "imageSrc", title: "a", inputMethod: "select", options: ["x"] },
+    {
+      property: "imageSrc",
+      title: "b",
+      inputMethod: "iconpicker",
+      options: [{ value: "icons:star" }],
+    },
+    {
+      property: "imageSrc",
+      title: "c",
+      inputMethod: "haxcms-language-picker",
+      includeRegions: "some",
+    },
+  );
+  const found = Object.keys(checkTag("x-el", facts(schema), validate).schema);
+  assert.ok(
+    found.some((f) =>
+      f.includes(
+        "an array of options is only for iconpicker or haxcms-language-picker; select",
+      ),
+    ),
+    found.join("\n"),
+  );
+  assert.ok(
+    found.some((f) => f.includes("iconpicker options are icon names")),
+    found.join("\n"),
+  );
+  assert.ok(
+    found.some((f) => f.includes("includeRegions")),
+    found.join("\n"),
+  );
+});

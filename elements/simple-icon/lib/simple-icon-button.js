@@ -29,11 +29,9 @@ class SimpleIconButton extends SimpleIconButtonBehaviors(SimpleColors) {
     return html`
       <button
         ?autofocus="${this.autofocus}"
-        aria-labelledby="${this.ariaLabelledby || nothing}"
         aria-pressed="${
           this.toggles ? (this.toggled ? "true" : "false") : nothing
         }"
-        aria-controls="${this.controls || nothing}"
         role="${this.buttonRole || nothing}"
         aria-checked="${
           this.ariaChecked === undefined
@@ -51,7 +49,7 @@ class SimpleIconButton extends SimpleIconButtonBehaviors(SimpleColors) {
         ?disabled="${this.disabled}"
         form="${this.form}"
         label="${this.label}"
-        aria-label="${this.label || this.icon || nothing}"
+        aria-label="${this.label || this.iconLabel || nothing}"
         name="${this.fieldName}"
         .type="${this.type}"
         value="${this.value}"

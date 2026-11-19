@@ -4,6 +4,7 @@
  */
 import { LitElement, css } from "lit";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import { loadFontFamily } from "@haxtheweb/d-d-d/lib/fonts.js";
 
 /**
  * Whether the viewer asked for less motion.
@@ -17,28 +18,12 @@ export function retroTvReducedMotion() {
 }
 
 /**
- * Load a Google Fonts face once per page, the same way DDD loads its faces.
+ * Load a font face once per page, the way DDD loads its faces: HAX ships
+ * every retro-tv face (d-d-d/lib/fonts), so none comes from Google.
  * @param {String} family font family name, for example "VT323"
  */
 export function retroTvLoadFace(family) {
-  const doc = globalThis.document;
-  if (!doc || !doc.head || !family) {
-    return;
-  }
-  const href = `https://fonts.googleapis.com/css2?family=${family.replace(
-    / /g,
-    "+",
-  )}&display=swap`;
-  const id =
-    "retro-tv-font-" + family.toLowerCase().replace(/[^a-z0-9]+/g, "-");
-  if (doc.getElementById(id) || doc.querySelector(`link[href="${href}"]`)) {
-    return;
-  }
-  const link = doc.createElement("link");
-  link.id = id;
-  link.rel = "stylesheet";
-  link.href = href;
-  doc.head.appendChild(link);
+  loadFontFamily(family);
 }
 
 /**

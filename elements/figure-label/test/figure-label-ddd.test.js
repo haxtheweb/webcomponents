@@ -184,12 +184,13 @@ describe("figure-label DDD design system integration", () => {
       DesignSystemManager.applyDesignSystem(ddd, ddd);
       // fonts get re-added with data-ds for the (re)applied system
       const fonts = globalThis.document.head.querySelectorAll("[data-ds]");
-      // DDD's three Google Fonts families load through one merged request
-      expect(fonts).to.have.lengthOf(1);
-      const href = fonts[0].getAttribute("href");
-      expect(href).to.contain("family=Roboto:");
-      expect(href).to.contain("family=Roboto+Slab:");
-      expect(href).to.contain("family=Roboto+Condensed:");
+      // DDD's three families load from HAX (d-d-d/lib/fonts), never Google
+      expect(fonts).to.have.lengthOf(3);
+      const hrefs = [...fonts].map((f) => f.getAttribute("href"));
+      ["roboto", "roboto-slab", "roboto-condensed"].forEach((family, i) => {
+        expect(hrefs[i]).to.contain(`/lib/fonts/${family}/${family}.css`);
+      });
+      hrefs.forEach((href) => expect(href).to.not.contain("googleapis"));
     });
 
     it("runs the ddd onload fallback when initial-letter is unsupported", () => {

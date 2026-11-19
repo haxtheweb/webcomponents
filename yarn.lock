@@ -2783,6 +2783,31 @@
   dependencies:
     "@lit/reactive-element" "^1.0.0 || ^2.0.0"
 
+"@mathjax/mathjax-bbm-font-extension@4.1.3":
+  version "4.1.3"
+  resolved "https://registry.yarnpkg.com/@mathjax/mathjax-bbm-font-extension/-/mathjax-bbm-font-extension-4.1.3.tgz#c287c954b1f68022954beebfe4b633a0fac20e7e"
+  integrity sha512-dhL8qBIA7COFAeB+ypxbmNtb85+E8Xgis1TaUP5SKpYMMhU0wLcbDwgpriZcpca4Jneo7r6Ty4qEN+0yu6FQyw==
+
+"@mathjax/mathjax-bboldx-font-extension@4.1.3":
+  version "4.1.3"
+  resolved "https://registry.yarnpkg.com/@mathjax/mathjax-bboldx-font-extension/-/mathjax-bboldx-font-extension-4.1.3.tgz#04d13ee932e0d396d3f958358d094b45e802a29f"
+  integrity sha512-14X0eHMrl9s5jHYuvb3hZcKD1wM6lBHPrnmgFFLAminw2QvZ7mcaLHQJ5epTjPYLe0zKcICZJk+9ndih/JVuPg==
+
+"@mathjax/mathjax-dsfont-font-extension@4.1.3":
+  version "4.1.3"
+  resolved "https://registry.yarnpkg.com/@mathjax/mathjax-dsfont-font-extension/-/mathjax-dsfont-font-extension-4.1.3.tgz#b927159264e5dd696dae319c0092e6a80533e4b4"
+  integrity sha512-etOaSzjnPlt/iMHrw1NKyBQ3p41juyyzarOIIMZ5wiSoti+THx0mEtxh33sa/Y0/xXa0CwiSsT5uhHXNKnI7QA==
+
+"@mathjax/mathjax-mhchem-font-extension@4.1.3":
+  version "4.1.3"
+  resolved "https://registry.yarnpkg.com/@mathjax/mathjax-mhchem-font-extension/-/mathjax-mhchem-font-extension-4.1.3.tgz#c5b2236f384c1e7d3fd417a5818e82c03190ebc9"
+  integrity sha512-WFx0IooitEJq1TXc9V941o8eaZdICSPn8FpsIBDdhkMhb0if61jCvk6vtQN84dlLnNEorK011NfpirMkHYygSQ==
+
+"@mathjax/mathjax-newcm-font@4.1.3", "@mathjax/mathjax-newcm-font@^4.1.3":
+  version "4.1.3"
+  resolved "https://registry.yarnpkg.com/@mathjax/mathjax-newcm-font/-/mathjax-newcm-font-4.1.3.tgz#cb107f923c22962f627d90fab2b01c532fd2d8db"
+  integrity sha512-gzAB3dFHilHX1l5x2xUqRL+1jDQt3Fyza1DkEMVXWC4E8SvsGdlgEza47HYi2WhVcgfkvf4zgUGzuhbq3Pjlew==
+
 "@mdjs/mdjs-preview@0.5.9":
   version "0.5.9"
   resolved "https://registry.yarnpkg.com/@mdjs/mdjs-preview/-/mdjs-preview-0.5.9.tgz#5e862b8e895f93df33e8441036c252b720d73394"
@@ -15481,6 +15506,13 @@ math-intrinsics@^1.1.0:
   resolved "https://registry.yarnpkg.com/math-intrinsics/-/math-intrinsics-1.1.0.tgz#a0dd74be81e2aa5c2f27e65ce283605ee4e2b7f9"
   integrity sha512-/IXtbwEk5HTPyEwyKX6hGkYXxM9nbj64B+ilVJnC/R6B0pH5G4V3b0pVbL7DBj4tkhBAppbQUlf6F6Xl9LHu1g==
 
+mathjax@4.1.3:
+  version "4.1.3"
+  resolved "https://registry.yarnpkg.com/mathjax/-/mathjax-4.1.3.tgz#00975837f93b879aad55ca8afa1c9f902451df56"
+  integrity sha512-BN/8Pkgn7G1pIDYJqd9md+JHsE/jydSYbyOZnSdSA0WziuVO8mRxdYiWFumkVVly/8U+hm9DpIIoWuvySverzw==
+  dependencies:
+    "@mathjax/mathjax-newcm-font" "^4.1.3"
+
 mathml-tag-names@^2.1.3:
   version "2.1.3"
   resolved "https://registry.yarnpkg.com/mathml-tag-names/-/mathml-tag-names-2.1.3.tgz#4ddadd67308e780cf16a47685878ee27b736a0a3"
@@ -21151,10 +21183,10 @@ undici-types@~8.9.0:
   resolved "https://registry.yarnpkg.com/undici-types/-/undici-types-8.9.0.tgz#e240d97c8b5d85e5347ce73d25865c7906c1ec9f"
   integrity sha512-KTDyRTYX8sWmKXAikPHHSyc63CRPETMctyjKFupcC6OBLXT3xsN0e9aF7m+mIXutFWpUXuedtowG7iLOzp0kQg==
 
-undici@7.29.0:
-  version "7.29.0"
-  resolved "https://registry.yarnpkg.com/undici/-/undici-7.29.0.tgz#ae0f6f62e06e057a9cbb7b2b5fde2bb74f791b8f"
-  integrity sha512-IDxfleLmmbSskfWSUATiN1nfn2rDuvnMOqb5CWR92iIfojA0Ud+ulOAAEQ57LPr9rWmsreUyf5lwyao+7GNNVw==
+undici@7.29.0, undici@^7.30.1:
+  version "7.30.2"
+  resolved "https://registry.yarnpkg.com/undici/-/undici-7.30.2.tgz#26c6acb0ffe838f823511f8cb79a8d530652135e"
+  integrity sha512-mLyPQnHwUxaM/rideoK/+KL8DaAJLRl4aBCfmX444aCSLnIaomqPLtNRe2jdCYcsk5wZzXrDIQC8ZeYNRAYyIA==
 
 undici@^6.25.0:
   version "6.29.1"

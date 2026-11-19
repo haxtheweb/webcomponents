@@ -348,11 +348,8 @@ export const instructionalStyles = Object.keys(learningComponentColors).map(
   When to use // after headers?
 */
 // fonts used
-export const DDDFonts = [
-  "https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap",
-  "https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;700;900&display=swap",
-  "https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;500;700;900&display=swap",
-];
+// DDD's font families, by name: HAX serves each one (lib/fonts.js)
+export const DDDFonts = ["Roboto", "Roboto Slab", "Roboto Condensed"];
 // CSS variables which is most of the system needed
 export const DDDVariables = css`
   :root,
@@ -3013,7 +3010,11 @@ export const DDDAnimations = css`
      1 element default   2 theme default (--ddd-theme-primary)
      3 theme palette     4 instructional significance / other indicator
      5 colour picked on the element itself (accent-color, data-primary)
-   In var() fallbacks that reads 5, 4, 3, 2, 1. */
+   In var() fallbacks that reads 5, 4, 3, 2, 1.
+   Each palette text color reads its hook first
+   (--ddd-palette-N-text-color-K, unset in DDD): a design system bridge
+   that remaps a palette color sets the hook where DDD's text color would
+   drop below 4.5:1 on it (design-system/bridge/build-bridge.js). */
 export const DDDPaletteStyles = css`
   /** Default Palette */
   html,
@@ -3050,14 +3051,33 @@ export const DDDPaletteStyles = css`
 
     --ddd-palette-video-player-color: var(--ddd-theme-default-black);
 
-    --ddd-palette-text-color-1: var(--simple-colors-fixed-theme-green-3);
-    --ddd-palette-text-color-2: var(--ddd-theme-default-white);
-    --ddd-palette-text-color-3: var(--ddd-theme-default-black);
-    --ddd-palette-text-color-4: var(--simple-colors-fixed-theme-teal-12);
-    --ddd-palette-text-color-5: var(--simple-colors-default-theme-lime-10);
-    --ddd-palette-text-color-6: var(--ddd-theme-default-coalyGray);
+    --ddd-palette-text-color-1: var(
+      --ddd-palette-0-text-color-1,
+      var(--simple-colors-fixed-theme-green-3)
+    );
+    --ddd-palette-text-color-2: var(
+      --ddd-palette-0-text-color-2,
+      var(--ddd-theme-default-white)
+    );
+    --ddd-palette-text-color-3: var(
+      --ddd-palette-0-text-color-3,
+      var(--ddd-theme-default-black)
+    );
+    --ddd-palette-text-color-4: var(
+      --ddd-palette-0-text-color-4,
+      var(--simple-colors-fixed-theme-teal-12)
+    );
+    --ddd-palette-text-color-5: var(
+      --ddd-palette-0-text-color-5,
+      var(--simple-colors-default-theme-lime-10)
+    );
+    --ddd-palette-text-color-6: var(
+      --ddd-palette-0-text-color-6,
+      var(--ddd-theme-default-coalyGray)
+    );
     --ddd-palette-text-color-7: var(
-      --simple-colors-default-theme-deep-orange-10
+      --ddd-palette-0-text-color-7,
+      var(--simple-colors-default-theme-deep-orange-10)
     );
     /* accent roles: decorative accents only, never meaning (status) colours */
     --ddd-palette-accent: light-dark(
@@ -3110,15 +3130,34 @@ export const DDDPaletteStyles = css`
     --ddd-palette-color-7: var(--ddd-theme-default-pughBlue);
 
     /* text colors; to be used on top of corresponding palette-color */
-    --ddd-palette-text-color-1: var(--simple-colors-fixed-theme-red-2);
-    --ddd-palette-text-color-2: var(--simple-colors-fixed-theme-red-1);
-    --ddd-palette-text-color-3: var(
-      --simple-colors-default-theme-deep-orange-12
+    --ddd-palette-text-color-1: var(
+      --ddd-palette-1-text-color-1,
+      var(--simple-colors-fixed-theme-red-2)
     );
-    --ddd-palette-text-color-4: var(--simple-colors-default-theme-red-12);
-    --ddd-palette-text-color-5: var(--simple-colors-default-theme-red-10);
-    --ddd-palette-text-color-6: var(--ddd-theme-default-skyLight);
-    --ddd-palette-text-color-7: var(--simple-colors-default-theme-blue-10);
+    --ddd-palette-text-color-2: var(
+      --ddd-palette-1-text-color-2,
+      var(--simple-colors-fixed-theme-red-1)
+    );
+    --ddd-palette-text-color-3: var(
+      --ddd-palette-1-text-color-3,
+      var(--simple-colors-default-theme-deep-orange-12)
+    );
+    --ddd-palette-text-color-4: var(
+      --ddd-palette-1-text-color-4,
+      var(--simple-colors-default-theme-red-12)
+    );
+    --ddd-palette-text-color-5: var(
+      --ddd-palette-1-text-color-5,
+      var(--simple-colors-default-theme-red-10)
+    );
+    --ddd-palette-text-color-6: var(
+      --ddd-palette-1-text-color-6,
+      var(--ddd-theme-default-skyLight)
+    );
+    --ddd-palette-text-color-7: var(
+      --ddd-palette-1-text-color-7,
+      var(--simple-colors-default-theme-blue-10)
+    );
     /* accent roles: decorative accents only, never meaning (status) colours */
     --ddd-palette-accent: var(--ddd-palette-color-3);
     --ddd-palette-accent-ink: var(--ddd-palette-text-color-3);
@@ -3154,13 +3193,34 @@ export const DDDPaletteStyles = css`
     --ddd-palette-video-player-color: var(--ddd-theme-default-black);
 
     /* text colors; to be used on top of corresponding palette-color */
-    --ddd-palette-text-color-1: var(--simple-colors-fixed-theme-yellow-2);
-    --ddd-palette-text-color-2: var(--simple-colors-fixed-theme-orange-12);
-    --ddd-palette-text-color-3: var(--simple-colors-fixed-theme-orange-11);
-    --ddd-palette-text-color-4: var(--simple-colors-fixed-theme-orange-10);
-    --ddd-palette-text-color-5: var(--simple-colors-fixed-theme-deep-orange-11);
-    --ddd-palette-text-color-6: var(--simple-colors-fixed-theme-cyan-12);
-    --ddd-palette-text-color-7: var(--simple-colors-fixed-theme-light-blue-10);
+    --ddd-palette-text-color-1: var(
+      --ddd-palette-2-text-color-1,
+      var(--simple-colors-fixed-theme-yellow-2)
+    );
+    --ddd-palette-text-color-2: var(
+      --ddd-palette-2-text-color-2,
+      var(--simple-colors-fixed-theme-orange-12)
+    );
+    --ddd-palette-text-color-3: var(
+      --ddd-palette-2-text-color-3,
+      var(--simple-colors-fixed-theme-orange-11)
+    );
+    --ddd-palette-text-color-4: var(
+      --ddd-palette-2-text-color-4,
+      var(--simple-colors-fixed-theme-orange-10)
+    );
+    --ddd-palette-text-color-5: var(
+      --ddd-palette-2-text-color-5,
+      var(--simple-colors-fixed-theme-deep-orange-11)
+    );
+    --ddd-palette-text-color-6: var(
+      --ddd-palette-2-text-color-6,
+      var(--simple-colors-fixed-theme-cyan-12)
+    );
+    --ddd-palette-text-color-7: var(
+      --ddd-palette-2-text-color-7,
+      var(--simple-colors-fixed-theme-light-blue-10)
+    );
     /* accent roles: decorative accents only, never meaning (status) colours */
     --ddd-palette-accent: light-dark(
       var(--ddd-palette-color-2),
@@ -3214,13 +3274,34 @@ export const DDDPaletteStyles = css`
     --ddd-palette-video-player-color: var(--ddd-theme-default-black);
 
     /* text colors; to be used on top of corresponding palette-color */
-    --ddd-palette-text-color-1: var(--simple-colors-default-theme-light-blue-4);
-    --ddd-palette-text-color-2: var(--simple-colors-fixed-theme-cyan-2);
-    --ddd-palette-text-color-3: var(--ddd-theme-default-white);
-    --ddd-palette-text-color-4: var(--simple-colors-fixed-theme-blue-11);
-    --ddd-palette-text-color-5: var(--simple-colors-fixed-theme-light-blue-10);
-    --ddd-palette-text-color-6: var(--simple-colors-fixed-theme-orange-12);
-    --ddd-palette-text-color-7: var(--simple-colors-fixed-theme-orange-10);
+    --ddd-palette-text-color-1: var(
+      --ddd-palette-3-text-color-1,
+      var(--simple-colors-default-theme-light-blue-4)
+    );
+    --ddd-palette-text-color-2: var(
+      --ddd-palette-3-text-color-2,
+      var(--simple-colors-fixed-theme-cyan-2)
+    );
+    --ddd-palette-text-color-3: var(
+      --ddd-palette-3-text-color-3,
+      var(--ddd-theme-default-white)
+    );
+    --ddd-palette-text-color-4: var(
+      --ddd-palette-3-text-color-4,
+      var(--simple-colors-fixed-theme-blue-11)
+    );
+    --ddd-palette-text-color-5: var(
+      --ddd-palette-3-text-color-5,
+      var(--simple-colors-fixed-theme-light-blue-10)
+    );
+    --ddd-palette-text-color-6: var(
+      --ddd-palette-3-text-color-6,
+      var(--simple-colors-fixed-theme-orange-12)
+    );
+    --ddd-palette-text-color-7: var(
+      --ddd-palette-3-text-color-7,
+      var(--simple-colors-fixed-theme-orange-10)
+    );
     /* accent roles: decorative accents only, never meaning (status) colours */
     --ddd-palette-accent: light-dark(
       var(--ddd-palette-color-3),
@@ -3271,13 +3352,34 @@ export const DDDPaletteStyles = css`
     --ddd-palette-video-player-color: var(--ddd-theme-default-black);
 
     /* text colors; to be used on top of corresponding palette-color */
-    --ddd-palette-text-color-1: var(--simple-colors-fixed-theme-blue-grey-2);
-    --ddd-palette-text-color-2: var(--simple-colors-fixed-theme-blue-grey-1);
-    --ddd-palette-text-color-3: var(--ddd-theme-default-white);
-    --ddd-palette-text-color-4: var(--simple-colors-fixed-theme-blue-grey-12);
-    --ddd-palette-text-color-5: var(--simple-colors-fixed-theme-blue-grey-11);
-    --ddd-palette-text-color-6: var(--simple-colors-fixed-theme-blue-grey-1);
-    --ddd-palette-text-color-7: var(--simple-colors-fixed-theme-blue-grey-10);
+    --ddd-palette-text-color-1: var(
+      --ddd-palette-4-text-color-1,
+      var(--simple-colors-fixed-theme-blue-grey-2)
+    );
+    --ddd-palette-text-color-2: var(
+      --ddd-palette-4-text-color-2,
+      var(--simple-colors-fixed-theme-blue-grey-1)
+    );
+    --ddd-palette-text-color-3: var(
+      --ddd-palette-4-text-color-3,
+      var(--ddd-theme-default-white)
+    );
+    --ddd-palette-text-color-4: var(
+      --ddd-palette-4-text-color-4,
+      var(--simple-colors-fixed-theme-blue-grey-12)
+    );
+    --ddd-palette-text-color-5: var(
+      --ddd-palette-4-text-color-5,
+      var(--simple-colors-fixed-theme-blue-grey-11)
+    );
+    --ddd-palette-text-color-6: var(
+      --ddd-palette-4-text-color-6,
+      var(--simple-colors-fixed-theme-blue-grey-1)
+    );
+    --ddd-palette-text-color-7: var(
+      --ddd-palette-4-text-color-7,
+      var(--simple-colors-fixed-theme-blue-grey-10)
+    );
     /* accent roles: decorative accents only, never meaning (status) colours */
     --ddd-palette-accent: light-dark(
       var(--ddd-palette-color-3),
@@ -3331,13 +3433,34 @@ export const DDDPaletteStyles = css`
     --ddd-palette-video-player-color: var(--ddd-theme-default-black);
 
     /* text colors; to be used on top of corresponding palette-color */
-    --ddd-palette-text-color-1: var(--simple-colors-fixed-theme-blue-grey-1);
-    --ddd-palette-text-color-2: var(--simple-colors-fixed-theme-grey-1);
-    --ddd-palette-text-color-3: var(--simple-colors-fixed-theme-grey-1);
-    --ddd-palette-text-color-4: var(--simple-colors-fixed-theme-grey-1);
-    --ddd-palette-text-color-5: var(--simple-colors-fixed-theme-grey-12);
-    --ddd-palette-text-color-6: var(--simple-colors-fixed-theme-grey-12);
-    --ddd-palette-text-color-7: var(--simple-colors-fixed-theme-orange-12);
+    --ddd-palette-text-color-1: var(
+      --ddd-palette-5-text-color-1,
+      var(--simple-colors-fixed-theme-blue-grey-1)
+    );
+    --ddd-palette-text-color-2: var(
+      --ddd-palette-5-text-color-2,
+      var(--simple-colors-fixed-theme-grey-1)
+    );
+    --ddd-palette-text-color-3: var(
+      --ddd-palette-5-text-color-3,
+      var(--simple-colors-fixed-theme-grey-1)
+    );
+    --ddd-palette-text-color-4: var(
+      --ddd-palette-5-text-color-4,
+      var(--simple-colors-fixed-theme-grey-1)
+    );
+    --ddd-palette-text-color-5: var(
+      --ddd-palette-5-text-color-5,
+      var(--simple-colors-fixed-theme-grey-12)
+    );
+    --ddd-palette-text-color-6: var(
+      --ddd-palette-5-text-color-6,
+      var(--simple-colors-fixed-theme-grey-12)
+    );
+    --ddd-palette-text-color-7: var(
+      --ddd-palette-5-text-color-7,
+      var(--simple-colors-fixed-theme-orange-12)
+    );
     /* accent roles: decorative accents only, never meaning (status) colours */
     --ddd-palette-accent: light-dark(
       var(--ddd-palette-color-3),
@@ -3389,14 +3512,33 @@ export const DDDPaletteStyles = css`
     --ddd-palette-video-player-caption-color: var(--ddd-theme-default-black);
 
     /* text colors; to be used on top of corresponding palette-color */
-    --ddd-palette-text-color-1: var(--simple-colors-default-theme-pink-11);
-    --ddd-palette-text-color-2: var(--simple-colors-default-theme-pink-12);
-    --ddd-palette-text-color-3: var(--simple-colors-default-theme-pink-1);
-    --ddd-palette-text-color-4: var(--simple-colors-default-theme-red-12);
-    --ddd-palette-text-color-5: var(--simple-colors-default-theme-pink-2);
-    --ddd-palette-text-color-6: var(--simple-colors-default-theme-lime-1);
+    --ddd-palette-text-color-1: var(
+      --ddd-palette-6-text-color-1,
+      var(--simple-colors-default-theme-pink-11)
+    );
+    --ddd-palette-text-color-2: var(
+      --ddd-palette-6-text-color-2,
+      var(--simple-colors-default-theme-pink-12)
+    );
+    --ddd-palette-text-color-3: var(
+      --ddd-palette-6-text-color-3,
+      var(--simple-colors-default-theme-pink-1)
+    );
+    --ddd-palette-text-color-4: var(
+      --ddd-palette-6-text-color-4,
+      var(--simple-colors-default-theme-red-12)
+    );
+    --ddd-palette-text-color-5: var(
+      --ddd-palette-6-text-color-5,
+      var(--simple-colors-default-theme-pink-2)
+    );
+    --ddd-palette-text-color-6: var(
+      --ddd-palette-6-text-color-6,
+      var(--simple-colors-default-theme-lime-1)
+    );
     --ddd-palette-text-color-7: var(
-      --simple-colors-default-theme-light-green-10
+      --ddd-palette-6-text-color-7,
+      var(--simple-colors-default-theme-light-green-10)
     );
     /* accent roles: decorative accents only, never meaning (status) colours */
     --ddd-palette-accent: light-dark(
@@ -3451,15 +3593,34 @@ export const DDDPaletteStyles = css`
     --ddd-palette-video-player-color: var(--ddd-theme-default-black);
 
     /* text colors; to be used on top of corresponding palette-color */
-    --ddd-palette-text-color-1: var(--simple-colors-default-theme-indigo-12);
-    --ddd-palette-text-color-2: var(
-      --simple-colors-default-theme-light-blue-12
+    --ddd-palette-text-color-1: var(
+      --ddd-palette-7-text-color-1,
+      var(--simple-colors-default-theme-indigo-12)
     );
-    --ddd-palette-text-color-3: var(--ddd-theme-default-black);
-    --ddd-palette-text-color-4: var(--simple-colors-default-theme-cyan-1);
-    --ddd-palette-text-color-5: var(--simple-colors-default-theme-teal-1);
-    --ddd-palette-text-color-6: var(--simple-colors-default-theme-purple-1);
-    --ddd-palette-text-color-7: var(--ddd-theme-default-white);
+    --ddd-palette-text-color-2: var(
+      --ddd-palette-7-text-color-2,
+      var(--simple-colors-default-theme-light-blue-12)
+    );
+    --ddd-palette-text-color-3: var(
+      --ddd-palette-7-text-color-3,
+      var(--ddd-theme-default-black)
+    );
+    --ddd-palette-text-color-4: var(
+      --ddd-palette-7-text-color-4,
+      var(--simple-colors-default-theme-cyan-1)
+    );
+    --ddd-palette-text-color-5: var(
+      --ddd-palette-7-text-color-5,
+      var(--simple-colors-default-theme-teal-1)
+    );
+    --ddd-palette-text-color-6: var(
+      --ddd-palette-7-text-color-6,
+      var(--simple-colors-default-theme-purple-1)
+    );
+    --ddd-palette-text-color-7: var(
+      --ddd-palette-7-text-color-7,
+      var(--ddd-theme-default-white)
+    );
     /* accent roles: decorative accents only, never meaning (status) colours */
     --ddd-palette-accent: var(--ddd-palette-color-3);
     --ddd-palette-accent-ink: var(--ddd-theme-default-potentialMidnight);
@@ -3496,13 +3657,34 @@ export const DDDPaletteStyles = css`
     --ddd-palette-video-player-color: var(--ddd-theme-default-white);
 
     /* text colors; to be used on top of corresponding palette-color */
-    --ddd-palette-text-color-1: var(--ddd-theme-default-coalyGray);
-    --ddd-palette-text-color-2: var(--ddd-theme-default-white);
-    --ddd-palette-text-color-3: var(--simple-colors-default-theme-cyan-2);
-    --ddd-palette-text-color-4: var(--simple-colors-default-theme-cyan-4);
-    --ddd-palette-text-color-5: var(--ddd-theme-default-coalyGray);
-    --ddd-palette-text-color-6: var(--ddd-theme-default-white);
-    --ddd-palette-text-color-7: var(--ddd-theme-default-coalyGray);
+    --ddd-palette-text-color-1: var(
+      --ddd-palette-8-text-color-1,
+      var(--ddd-theme-default-coalyGray)
+    );
+    --ddd-palette-text-color-2: var(
+      --ddd-palette-8-text-color-2,
+      var(--ddd-theme-default-white)
+    );
+    --ddd-palette-text-color-3: var(
+      --ddd-palette-8-text-color-3,
+      var(--simple-colors-default-theme-cyan-2)
+    );
+    --ddd-palette-text-color-4: var(
+      --ddd-palette-8-text-color-4,
+      var(--simple-colors-default-theme-cyan-4)
+    );
+    --ddd-palette-text-color-5: var(
+      --ddd-palette-8-text-color-5,
+      var(--ddd-theme-default-coalyGray)
+    );
+    --ddd-palette-text-color-6: var(
+      --ddd-palette-8-text-color-6,
+      var(--ddd-theme-default-white)
+    );
+    --ddd-palette-text-color-7: var(
+      --ddd-palette-8-text-color-7,
+      var(--ddd-theme-default-coalyGray)
+    );
     /* accent roles: decorative accents only, never meaning (status) colours */
     --ddd-palette-accent: var(--ddd-palette-color-1);
     --ddd-palette-accent-ink: var(--ddd-theme-default-nittanyNavy);
@@ -3541,18 +3723,33 @@ export const DDDPaletteStyles = css`
 
     /* text colors; to be used on top of corresponding palette-color */
     --ddd-palette-text-color-1: var(
-      --simple-colors-default-theme-deep-purple-11
+      --ddd-palette-9-text-color-1,
+      var(--simple-colors-default-theme-deep-purple-11)
     );
-    --ddd-palette-text-color-2: var(--ddd-theme-default-white);
-    --ddd-palette-text-color-3: var(--ddd-theme-default-coalyGray);
+    --ddd-palette-text-color-2: var(
+      --ddd-palette-9-text-color-2,
+      var(--ddd-theme-default-white)
+    );
+    --ddd-palette-text-color-3: var(
+      --ddd-palette-9-text-color-3,
+      var(--ddd-theme-default-coalyGray)
+    );
     --ddd-palette-text-color-4: var(
-      --simple-colors-default-theme-deep-purple-2
+      --ddd-palette-9-text-color-4,
+      var(--simple-colors-default-theme-deep-purple-2)
     );
     --ddd-palette-text-color-5: var(
-      --simple-colors-default-theme-deep-purple-5
+      --ddd-palette-9-text-color-5,
+      var(--simple-colors-default-theme-deep-purple-5)
     );
-    --ddd-palette-text-color-6: var(--ddd-theme-default-coalyGray);
-    --ddd-palette-text-color-7: var(--simple-colors-default-theme-brown-11);
+    --ddd-palette-text-color-6: var(
+      --ddd-palette-9-text-color-6,
+      var(--ddd-theme-default-coalyGray)
+    );
+    --ddd-palette-text-color-7: var(
+      --ddd-palette-9-text-color-7,
+      var(--simple-colors-default-theme-brown-11)
+    );
     /* accent roles: decorative accents only, never meaning (status) colours */
     --ddd-palette-accent: light-dark(
       var(--ddd-palette-color-2),
@@ -3602,13 +3799,34 @@ export const DDDPaletteStyles = css`
     --ddd-palette-video-player-color: var(--ddd-theme-default-black);
 
     /* text colors; to be used on top of corresponding palette-color */
-    --ddd-palette-text-color-1: var(--ddd-theme-default-coalyGray);
-    --ddd-palette-text-color-2: var(--simple-colors-default-theme-orange-10);
-    --ddd-palette-text-color-3: var(--ddd-theme-default-white);
-    --ddd-palette-text-color-4: var(--simple-colors-default-theme-brown-1);
-    --ddd-palette-text-color-5: var(--simple-colors-default-theme-brown-2);
-    --ddd-palette-text-color-6: var(--simple-colors-default-theme-orange-3);
-    --ddd-palette-text-color-7: var(--simple-colors-default-theme-orange-4);
+    --ddd-palette-text-color-1: var(
+      --ddd-palette-10-text-color-1,
+      var(--ddd-theme-default-coalyGray)
+    );
+    --ddd-palette-text-color-2: var(
+      --ddd-palette-10-text-color-2,
+      var(--simple-colors-default-theme-orange-10)
+    );
+    --ddd-palette-text-color-3: var(
+      --ddd-palette-10-text-color-3,
+      var(--ddd-theme-default-white)
+    );
+    --ddd-palette-text-color-4: var(
+      --ddd-palette-10-text-color-4,
+      var(--simple-colors-default-theme-brown-1)
+    );
+    --ddd-palette-text-color-5: var(
+      --ddd-palette-10-text-color-5,
+      var(--simple-colors-default-theme-brown-2)
+    );
+    --ddd-palette-text-color-6: var(
+      --ddd-palette-10-text-color-6,
+      var(--simple-colors-default-theme-orange-3)
+    );
+    --ddd-palette-text-color-7: var(
+      --ddd-palette-10-text-color-7,
+      var(--simple-colors-default-theme-orange-4)
+    );
     /* accent roles: decorative accents only, never meaning (status) colours */
     --ddd-palette-accent: light-dark(
       var(--ddd-palette-color-3),
@@ -3662,13 +3880,34 @@ export const DDDPaletteStyles = css`
     --ddd-palette-video-player-caption-color: var(--ddd-theme-default-white);
 
     /* text colors; to be used on top of corresponding palette-color */
-    --ddd-palette-text-color-1: var(--ddd-theme-default-white);
-    --ddd-palette-text-color-2: var(--ddd-theme-default-white);
-    --ddd-palette-text-color-3: var(--ddd-theme-default-coalyGray);
-    --ddd-palette-text-color-4: var(--ddd-theme-default-white);
-    --ddd-palette-text-color-5: var(--ddd-theme-default-nittanyNavy);
-    --ddd-palette-text-color-6: var(--ddd-theme-default-limestoneLight);
-    --ddd-palette-text-color-7: var(--ddd-theme-default-nittanyNavy);
+    --ddd-palette-text-color-1: var(
+      --ddd-palette-11-text-color-1,
+      var(--ddd-theme-default-white)
+    );
+    --ddd-palette-text-color-2: var(
+      --ddd-palette-11-text-color-2,
+      var(--ddd-theme-default-white)
+    );
+    --ddd-palette-text-color-3: var(
+      --ddd-palette-11-text-color-3,
+      var(--ddd-theme-default-coalyGray)
+    );
+    --ddd-palette-text-color-4: var(
+      --ddd-palette-11-text-color-4,
+      var(--ddd-theme-default-white)
+    );
+    --ddd-palette-text-color-5: var(
+      --ddd-palette-11-text-color-5,
+      var(--ddd-theme-default-nittanyNavy)
+    );
+    --ddd-palette-text-color-6: var(
+      --ddd-palette-11-text-color-6,
+      var(--ddd-theme-default-limestoneLight)
+    );
+    --ddd-palette-text-color-7: var(
+      --ddd-palette-11-text-color-7,
+      var(--ddd-theme-default-nittanyNavy)
+    );
     /* accent roles: decorative accents only, never meaning (status) colours */
     --ddd-palette-accent: light-dark(
       var(--ddd-palette-color-2),
@@ -3722,15 +3961,34 @@ export const DDDPaletteStyles = css`
     --ddd-palette-video-player-color: var(--ddd-theme-default-black);
 
     /* text colors; to be used on top of corresponding palette-color */
-    --ddd-palette-text-color-1: var(--simple-colors-default-theme-indigo-12);
-    --ddd-palette-text-color-2: var(
-      --simple-colors-default-theme-light-blue-12
+    --ddd-palette-text-color-1: var(
+      --ddd-palette-12-text-color-1,
+      var(--simple-colors-default-theme-indigo-12)
     );
-    --ddd-palette-text-color-3: var(--ddd-theme-default-coalyGray);
-    --ddd-palette-text-color-4: var(--ddd-theme-default-coalyGray);
-    --ddd-palette-text-color-5: var(--ddd-theme-default-black);
-    --ddd-palette-text-color-6: var(--simple-colors-default-theme-blue-grey-2);
-    --ddd-palette-text-color-7: var(--ddd-theme-default-coalyGray);
+    --ddd-palette-text-color-2: var(
+      --ddd-palette-12-text-color-2,
+      var(--simple-colors-default-theme-light-blue-12)
+    );
+    --ddd-palette-text-color-3: var(
+      --ddd-palette-12-text-color-3,
+      var(--ddd-theme-default-coalyGray)
+    );
+    --ddd-palette-text-color-4: var(
+      --ddd-palette-12-text-color-4,
+      var(--ddd-theme-default-coalyGray)
+    );
+    --ddd-palette-text-color-5: var(
+      --ddd-palette-12-text-color-5,
+      var(--ddd-theme-default-black)
+    );
+    --ddd-palette-text-color-6: var(
+      --ddd-palette-12-text-color-6,
+      var(--simple-colors-default-theme-blue-grey-2)
+    );
+    --ddd-palette-text-color-7: var(
+      --ddd-palette-12-text-color-7,
+      var(--ddd-theme-default-coalyGray)
+    );
     /* accent roles: decorative accents only, never meaning (status) colours */
     --ddd-palette-accent: var(--ddd-palette-color-4);
     --ddd-palette-accent-ink: var(--ddd-theme-default-nittanyNavy);
@@ -3767,16 +4025,33 @@ export const DDDPaletteStyles = css`
 
     /* text colors; to be used on top of corresponding palette-color */
     --ddd-palette-text-color-1: var(
-      --simple-colors-default-theme-deep-purple-12
+      --ddd-palette-13-text-color-1,
+      var(--simple-colors-default-theme-deep-purple-12)
     );
-    --ddd-palette-text-color-2: var(--simple-colors-default-theme-indigo-12);
-    --ddd-palette-text-color-3: var(--simple-colors-default-theme-indigo-12);
+    --ddd-palette-text-color-2: var(
+      --ddd-palette-13-text-color-2,
+      var(--simple-colors-default-theme-indigo-12)
+    );
+    --ddd-palette-text-color-3: var(
+      --ddd-palette-13-text-color-3,
+      var(--simple-colors-default-theme-indigo-12)
+    );
     --ddd-palette-text-color-4: var(
-      --simple-colors-default-theme-deep-purple-1
+      --ddd-palette-13-text-color-4,
+      var(--simple-colors-default-theme-deep-purple-1)
     );
-    --ddd-palette-text-color-5: var(--simple-colors-default-theme-purple-2);
-    --ddd-palette-text-color-6: var(--simple-colors-default-theme-blue-grey-1);
-    --ddd-palette-text-color-7: var(--simple-colors-default-theme-blue-grey-2);
+    --ddd-palette-text-color-5: var(
+      --ddd-palette-13-text-color-5,
+      var(--simple-colors-default-theme-purple-2)
+    );
+    --ddd-palette-text-color-6: var(
+      --ddd-palette-13-text-color-6,
+      var(--simple-colors-default-theme-blue-grey-1)
+    );
+    --ddd-palette-text-color-7: var(
+      --ddd-palette-13-text-color-7,
+      var(--simple-colors-default-theme-blue-grey-2)
+    );
     /* accent roles: decorative accents only, never meaning (status) colours */
     --ddd-palette-accent: light-dark(
       var(--ddd-palette-color-4),
@@ -3830,13 +4105,34 @@ export const DDDPaletteStyles = css`
     --ddd-palette-video-player-color: var(--ddd-theme-default-black);
 
     /* text colors; to be used on top of corresponding palette-color */
-    --ddd-palette-text-color-1: var(--simple-colors-default-theme-green-12);
-    --ddd-palette-text-color-2: var(--simple-colors-default-theme-green-12);
-    --ddd-palette-text-color-3: var(--ddd-theme-default-black);
-    --ddd-palette-text-color-4: var(--simple-colors-default-theme-lime-1);
-    --ddd-palette-text-color-5: var(--simple-colors-default-theme-brown-1);
-    --ddd-palette-text-color-6: var(--simple-colors-default-theme-amber-1);
-    --ddd-palette-text-color-7: var(--simple-colors-default-theme-brown-2);
+    --ddd-palette-text-color-1: var(
+      --ddd-palette-14-text-color-1,
+      var(--simple-colors-default-theme-green-12)
+    );
+    --ddd-palette-text-color-2: var(
+      --ddd-palette-14-text-color-2,
+      var(--simple-colors-default-theme-green-12)
+    );
+    --ddd-palette-text-color-3: var(
+      --ddd-palette-14-text-color-3,
+      var(--ddd-theme-default-black)
+    );
+    --ddd-palette-text-color-4: var(
+      --ddd-palette-14-text-color-4,
+      var(--simple-colors-default-theme-lime-1)
+    );
+    --ddd-palette-text-color-5: var(
+      --ddd-palette-14-text-color-5,
+      var(--simple-colors-default-theme-brown-1)
+    );
+    --ddd-palette-text-color-6: var(
+      --ddd-palette-14-text-color-6,
+      var(--simple-colors-default-theme-amber-1)
+    );
+    --ddd-palette-text-color-7: var(
+      --ddd-palette-14-text-color-7,
+      var(--simple-colors-default-theme-brown-2)
+    );
     /* accent roles: decorative accents only, never meaning (status) colours */
     --ddd-palette-accent: var(--ddd-palette-color-3);
     --ddd-palette-accent-ink: var(--ddd-theme-default-nittanyNavy);
@@ -3872,13 +4168,34 @@ export const DDDPaletteStyles = css`
     --ddd-palette-video-player-color: var(--ddd-theme-default-black);
 
     /* text colors; to be used on top of corresponding palette-color */
-    --ddd-palette-text-color-1: var(--ddd-theme-default-white);
-    --ddd-palette-text-color-2: var(--ddd-theme-default-white);
-    --ddd-palette-text-color-3: var(--ddd-theme-default-white);
-    --ddd-palette-text-color-4: var(--ddd-theme-default-coalyGray);
-    --ddd-palette-text-color-5: var(--simple-colors-default-theme-blue-grey-12);
-    --ddd-palette-text-color-6: var(--ddd-theme-default-coalyGray);
-    --ddd-palette-text-color-7: var(--ddd-theme-default-coalyGray);
+    --ddd-palette-text-color-1: var(
+      --ddd-palette-15-text-color-1,
+      var(--ddd-theme-default-white)
+    );
+    --ddd-palette-text-color-2: var(
+      --ddd-palette-15-text-color-2,
+      var(--ddd-theme-default-white)
+    );
+    --ddd-palette-text-color-3: var(
+      --ddd-palette-15-text-color-3,
+      var(--ddd-theme-default-white)
+    );
+    --ddd-palette-text-color-4: var(
+      --ddd-palette-15-text-color-4,
+      var(--ddd-theme-default-coalyGray)
+    );
+    --ddd-palette-text-color-5: var(
+      --ddd-palette-15-text-color-5,
+      var(--simple-colors-default-theme-blue-grey-12)
+    );
+    --ddd-palette-text-color-6: var(
+      --ddd-palette-15-text-color-6,
+      var(--ddd-theme-default-coalyGray)
+    );
+    --ddd-palette-text-color-7: var(
+      --ddd-palette-15-text-color-7,
+      var(--ddd-theme-default-coalyGray)
+    );
     /* accent roles: decorative accents only, never meaning (status) colours */
     --ddd-palette-accent: var(--ddd-palette-color-6);
     --ddd-palette-accent-ink: var(--ddd-theme-default-nittanyNavy);
@@ -3915,13 +4232,13 @@ export const DDDPaletteStyles = css`
     --ddd-palette-video-player-color: var(--ddd-theme-default-black);
 
     /* text colors; to be used on top of corresponding palette-color */
-    --ddd-palette-text-color-1: #0bcbbb;
-    --ddd-palette-text-color-2: #adfbf2;
-    --ddd-palette-text-color-3: #000000;
-    --ddd-palette-text-color-4: #0a2926;
-    --ddd-palette-text-color-5: #0e534a;
-    --ddd-palette-text-color-6: #300b03;
-    --ddd-palette-text-color-7: #5c4305;
+    --ddd-palette-text-color-1: var(--ddd-palette-16-text-color-1, #0bcbbb);
+    --ddd-palette-text-color-2: var(--ddd-palette-16-text-color-2, #adfbf2);
+    --ddd-palette-text-color-3: var(--ddd-palette-16-text-color-3, #000000);
+    --ddd-palette-text-color-4: var(--ddd-palette-16-text-color-4, #0a2926);
+    --ddd-palette-text-color-5: var(--ddd-palette-16-text-color-5, #0e534a);
+    --ddd-palette-text-color-6: var(--ddd-palette-16-text-color-6, #300b03);
+    --ddd-palette-text-color-7: var(--ddd-palette-16-text-color-7, #5c4305);
     /* accent roles: decorative accents only, never meaning (status) colours */
     --ddd-palette-accent: light-dark(
       var(--ddd-palette-color-3),
@@ -3976,13 +4293,13 @@ export const DDDPaletteStyles = css`
     --ddd-palette-video-player-color: var(--ddd-theme-default-black);
 
     /* text colors; to be used on top of corresponding palette-color */
-    --ddd-palette-text-color-1: #d7ad93;
-    --ddd-palette-text-color-2: #fcf9f7;
-    --ddd-palette-text-color-3: #000000;
-    --ddd-palette-text-color-4: #2d1c0b;
-    --ddd-palette-text-color-5: #5f4216;
-    --ddd-palette-text-color-6: #000000;
-    --ddd-palette-text-color-7: #fbfdfd;
+    --ddd-palette-text-color-1: var(--ddd-palette-17-text-color-1, #d7ad93);
+    --ddd-palette-text-color-2: var(--ddd-palette-17-text-color-2, #fcf9f7);
+    --ddd-palette-text-color-3: var(--ddd-palette-17-text-color-3, #000000);
+    --ddd-palette-text-color-4: var(--ddd-palette-17-text-color-4, #2d1c0b);
+    --ddd-palette-text-color-5: var(--ddd-palette-17-text-color-5, #5f4216);
+    --ddd-palette-text-color-6: var(--ddd-palette-17-text-color-6, #000000);
+    --ddd-palette-text-color-7: var(--ddd-palette-17-text-color-7, #fbfdfd);
     /* accent roles: decorative accents only, never meaning (status) colours */
     --ddd-palette-accent: var(--ddd-palette-color-3);
     --ddd-palette-accent-ink: var(--ddd-palette-text-color-3);
@@ -4022,13 +4339,13 @@ export const DDDPaletteStyles = css`
     --ddd-palette-video-player-color: var(--ddd-theme-default-black);
 
     /* text colors; to be used on top of corresponding palette-color */
-    --ddd-palette-text-color-1: #ed78d0;
-    --ddd-palette-text-color-2: #f5b7e2;
-    --ddd-palette-text-color-3: #fefbfd;
-    --ddd-palette-text-color-4: #000000;
-    --ddd-palette-text-color-5: #79114c;
-    --ddd-palette-text-color-6: #ffffff;
-    --ddd-palette-text-color-7: #3e2a04;
+    --ddd-palette-text-color-1: var(--ddd-palette-18-text-color-1, #ed78d0);
+    --ddd-palette-text-color-2: var(--ddd-palette-18-text-color-2, #f5b7e2);
+    --ddd-palette-text-color-3: var(--ddd-palette-18-text-color-3, #fefbfd);
+    --ddd-palette-text-color-4: var(--ddd-palette-18-text-color-4, #000000);
+    --ddd-palette-text-color-5: var(--ddd-palette-18-text-color-5, #79114c);
+    --ddd-palette-text-color-6: var(--ddd-palette-18-text-color-6, #ffffff);
+    --ddd-palette-text-color-7: var(--ddd-palette-18-text-color-7, #3e2a04);
     /* accent roles: decorative accents only, never meaning (status) colours */
     --ddd-palette-accent: light-dark(
       var(--ddd-palette-color-3),
@@ -4083,13 +4400,13 @@ export const DDDPaletteStyles = css`
     --ddd-palette-video-player-color: var(--ddd-theme-default-black);
 
     /* text colors; to be used on top of corresponding palette-color */
-    --ddd-palette-text-color-1: #ffffff;
-    --ddd-palette-text-color-2: #ffffff;
-    --ddd-palette-text-color-3: #000000;
-    --ddd-palette-text-color-4: #062232;
-    --ddd-palette-text-color-5: #4c4706;
-    --ddd-palette-text-color-6: #000000;
-    --ddd-palette-text-color-7: #000000;
+    --ddd-palette-text-color-1: var(--ddd-palette-19-text-color-1, #ffffff);
+    --ddd-palette-text-color-2: var(--ddd-palette-19-text-color-2, #ffffff);
+    --ddd-palette-text-color-3: var(--ddd-palette-19-text-color-3, #000000);
+    --ddd-palette-text-color-4: var(--ddd-palette-19-text-color-4, #062232);
+    --ddd-palette-text-color-5: var(--ddd-palette-19-text-color-5, #4c4706);
+    --ddd-palette-text-color-6: var(--ddd-palette-19-text-color-6, #000000);
+    --ddd-palette-text-color-7: var(--ddd-palette-19-text-color-7, #000000);
     /* accent roles: decorative accents only, never meaning (status) colours */
     --ddd-palette-accent: light-dark(
       var(--ddd-palette-color-2),

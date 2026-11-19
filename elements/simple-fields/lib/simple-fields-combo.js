@@ -287,6 +287,24 @@ class SimpleFieldsCombo extends I18NMixin(
     this._fireValueChanged();
   }
 
+  /**
+   * autocomplete here is the combobox mode (none, list or both), which is
+   * aria-autocomplete; the native input attribute of the same name only
+   * takes autofill tokens, so it is turned off instead of copied
+   * (autocomplete="both" is invalid HTML, WCAG 1.3.5)
+   *
+   * @param {string} attribute
+   */
+  _updateAttribute(attribute) {
+    if (attribute === "autocomplete") {
+      if (this.field && this.field.getAttribute("autocomplete") !== "off") {
+        this.field.setAttribute("autocomplete", "off");
+      }
+      return;
+    }
+    super._updateAttribute(attribute);
+  }
+
   autocompleteChanged() {
     if (typeof this.autocomplete === "string") {
       let autocomplete = this.autocomplete.toLowerCase();

@@ -2,6 +2,7 @@
  * Copyright 2026 haxtheweb
  * @license Apache-2.0, see LICENSE for full text.
  */
+import { loadFontFamily } from "@haxtheweb/d-d-d/lib/fonts.js";
 
 /**
  * Keepcase: the case generator behind vhs-blog-theme.
@@ -295,36 +296,12 @@ export function vhsBlogCase(title, seed = 0) {
   };
 }
 
-const FONT_QUERY = {
-  "Playfair Display": "Playfair+Display:ital,wght@1,900",
-  Oswald: "Oswald:wght@700",
-  Cinzel: "Cinzel:wght@700",
-  Orbitron: "Orbitron:wght@800",
-  Archivo: "Archivo:wght@400;600;800",
-  "Archivo Narrow": "Archivo+Narrow:wght@500;700",
-  "IBM Plex Mono": "IBM+Plex+Mono:wght@500",
-};
-
 /**
- * Load a Google Fonts family once per document, only when a case on the
- * page uses it. @font-face has to live in the document for shadow roots to
- * use it, so this adds one <link> per family to document.head.
+ * Load a font family once per document, only when a case on the page uses
+ * it. HAX ships every face here (d-d-d/lib/fonts), so none comes from
+ * Google; @font-face has to live in the document for shadow roots to use it.
  * @param {string} family
  */
 export function vhsBlogLoadFace(family) {
-  const doc = globalThis.document;
-  if (!doc || !doc.head || !family) {
-    return;
-  }
-  const id =
-    "vhs-blog-font-" + family.toLowerCase().replace(/[^a-z0-9]+/g, "-");
-  if (doc.getElementById(id)) {
-    return;
-  }
-  const query = FONT_QUERY[family] || family.replace(/ /g, "+");
-  const link = doc.createElement("link");
-  link.id = id;
-  link.rel = "stylesheet";
-  link.href = `https://fonts.googleapis.com/css2?family=${query}&display=swap`;
-  doc.head.appendChild(link);
+  loadFontFamily(family);
 }

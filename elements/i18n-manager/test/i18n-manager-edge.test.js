@@ -1,5 +1,9 @@
 import { expect } from "@open-wc/testing";
-import { I18NManager, I18NManagerStore } from "../i18n-manager.js";
+import {
+  I18NManager,
+  I18NManagerStore,
+  expandTranslationManifest,
+} from "../i18n-manager.js";
 
 // stub/restore pattern for the global I18NManagerStore singleton
 // (mirrors test/i18n-manager.test.js)
@@ -213,6 +217,34 @@ describe("i18n-manager edge cases", () => {
     expect(ctx.t.hello).to.equal("translated");
     expect(fetchMock.calls.some((u) => u.includes("/loc/mb-el2.es.json"))).to.be
       .true;
+  });
+
+  it("expands the compact manifest (languageSets + index) into shared lists", () => {
+    const expanded = expandTranslationManifest({
+      languageSets: [["de", "es", "fr"], ["es"]],
+      manifest: { "ns-a": 0, "ns-b": 0, "ns-c": 1, "ns-old": ["ja"] },
+    });
+    expect(expanded["ns-a"]).to.deep.equal(["de", "es", "fr"]);
+    expect(expanded["ns-a"]).to.equal(expanded["ns-b"]);
+    expect(expanded["ns-c"]).to.deep.equal(["es"]);
+    expect(expanded["ns-old"]).to.deep.equal(["ja"]);
+    // the plain format (an array per namespace) is used as is
+    const plain = { "ns-a": ["es"] };
+    expect(expandTranslationManifest({ manifest: plain })).to.equal(plain);
+    expect(expandTranslationManifest(null)).to.deep.equal({});
+  });
+
+  it("loadTranslationManifest reads the compact manifest format", async () => {
+    globalThis.fetch = async () => ({
+      ok: true,
+      json: async () => ({
+        languageSets: [["es", "fr"]],
+        manifest: { "mb-compact": 0 },
+      }),
+    });
+    await I18NManagerStore.loadTranslationManifest();
+    expect(I18NManagerStore.hasTranslation("mb-compact", "fr")).to.be.true;
+    expect(I18NManagerStore.hasTranslation("mb-compact", "de")).to.be.false;
   });
 
   it("updateLanguage falls back to the base language file for es-XX", async () => {

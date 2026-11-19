@@ -520,8 +520,13 @@ class PageContentsMenu extends SchemaBehaviors(DDD) {
             item.tagName.toLowerCase() +
               item.getAttribute("resource").replace(/[^a-zA-Z0-9]/g, ""),
           );
+          // the resource can be generated on every load, so this id must not
+          // key learner data (@haxtheweb/user-action/lib/xapi.js activityKey)
+          item._xapiGeneratedId = item.id;
         } else if (!item.id) {
           item.setAttribute("id", item.tagName.toLowerCase() + i);
+          // an index id moves when content is added above it
+          item._xapiGeneratedId = item.id;
         }
         let reference = {
           title: title,

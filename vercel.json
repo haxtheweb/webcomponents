@@ -15,6 +15,14 @@
       "destination": "/elements/:path*"
     },
     {
+      "source": "/node_modules/mathjax/:path*",
+      "destination": "/_vendor/node_modules/mathjax/:path*"
+    },
+    {
+      "source": "/node_modules/@mathjax/:path*",
+      "destination": "/_vendor/node_modules/@mathjax/:path*"
+    },
+    {
       "source": "/elements/:element/demo/node_modules/:path*",
       "destination": "https://cdn.hax.cloud/cdn/build/es6/node_modules/:path*"
     },
@@ -38,6 +46,10 @@
         {
           "key": "X-Content-Type-Options",
           "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
         }
       ]
     }

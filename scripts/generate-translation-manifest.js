@@ -85,6 +85,27 @@ function generateTranslationManifest() {
 
   const sortedLanguages = Array.from(languageSet).sort();
 
+  // Almost every namespace is translated into the same full set of
+  // languages, so each distinct language list is written once in
+  // languageSets and a namespace points at its list by index. Every
+  // non-English visitor downloads and parses this file (i18n-manager
+  // loadTranslationManifest); repeating ~100 codes for each of ~430
+  // namespaces made it about 500KB, this keeps it near 20KB. i18n-manager
+  // expands the indexes back into shared arrays when it loads the file.
+  const languageSets = [];
+  const setIndex = new Map();
+  const compact = {};
+  Object.keys(manifest)
+    .sort()
+    .forEach((namespace) => {
+      const key = manifest[namespace].join(",");
+      if (!setIndex.has(key)) {
+        setIndex.set(key, languageSets.length);
+        languageSets.push(manifest[namespace]);
+      }
+      compact[namespace] = setIndex.get(key);
+    });
+
   // Create the JSON manifest
   // NOTE: Intentionally omit timestamps to keep this file deterministic between builds
   // and avoid needless commits during local testing.
@@ -95,7 +116,8 @@ function generateTranslationManifest() {
       translationFilesFound: totalFiles,
       languagesSupported: sortedLanguages,
     },
-    manifest: manifest,
+    languageSets: languageSets,
+    manifest: compact,
   };
 
   // Write the JSON file

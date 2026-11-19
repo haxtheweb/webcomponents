@@ -146,13 +146,19 @@ export class AppHaxSiteLogin extends I18NMixin(DDDSuper(LitElement)) {
           font-size: var(--hax-ui-admin-font-size);
           color: var(--hax-ui-text-muted);
         }
-        .notyou a {
+        /* a real button so it is reachable by keyboard; it keeps the
+           underlined text look it had as an anchor */
+        .notyou .notyou-button {
+          background: none;
+          border: none;
+          padding: 0;
+          font: inherit;
           color: var(--hax-ui-accent-strong);
           text-decoration: underline;
           cursor: pointer;
           font-weight: var(--ddd-font-weight-medium, 500);
         }
-        .notyou a:focus-visible {
+        .notyou .notyou-button:focus-visible {
           outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
           outline-offset: 2px;
         }
@@ -388,7 +394,13 @@ export class AppHaxSiteLogin extends I18NMixin(DDDSuper(LitElement)) {
                 </button>`
             : html` <div class="notyou">
                   ${this.t.welcomeBack.replace("{username}", () => this.username)}
-                  <a @click=${this.reset}>${this.t.notYou}</a>
+                  <button
+                    type="button"
+                    class="notyou-button"
+                    @click=${this.reset}
+                  >
+                    ${this.t.notYou}
+                  </button>
                 </div>
                 <div class="form-group">
                   <input

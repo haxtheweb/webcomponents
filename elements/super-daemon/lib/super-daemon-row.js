@@ -42,12 +42,15 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
     this.tags = [];
     this.groupLabel = null;
     this.detailsInPane = false;
-    this.shadowRootOptions = {
-      ...SimpleColors.shadowRootOptions,
-      delegatesFocus: true,
-    };
     this.active = false;
     this.hovered = false;
+    // the row is one option in Merlin's listbox: the host (role="option",
+    // given by super-daemon-ui) takes focus and keys itself, and nothing
+    // inside it is a separate control, so screen readers read one option
+    // (an option may not hold buttons)
+    this.addEventListener("keydown", this.keyEvent);
+    this.addEventListener("focus", this._focusIn);
+    this.addEventListener("blur", this._focusOut);
   }
   static get tag() {
     return "super-daemon-row";
@@ -133,8 +136,10 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
         :host([mini]) .group-label::after {
           display: none;
         }
-        button {
-          all: unset;
+        :host(:focus) {
+          outline: none;
+        }
+        .row {
           box-sizing: border-box;
           cursor: pointer;
           display: flex;
@@ -151,19 +156,19 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
           transition: background-color var(--hax-ui-duration)
             var(--hax-ui-easing);
         }
-        :host([mini]) button {
+        :host([mini]) .row {
           gap: var(--hax-ui-gap-md);
           min-height: var(--hax-ui-row-height);
           padding: 0 var(--hax-ui-gap-md);
         }
-        :host([hovered]:not([active])) button {
+        :host([hovered]:not([active])) .row {
           background-color: var(--hax-ui-hover);
         }
-        :host([active]) button {
+        :host([active]) .row {
           background-color: var(--hax-ui-selected);
           box-shadow: inset 3px 0 0 var(--hax-ui-accent-strong);
         }
-        button:focus-visible {
+        :host(:focus-visible) .row {
           outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
           outline-offset: calc(-1 * var(--hax-ui-focus-width));
         }
@@ -358,7 +363,7 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
           color: var(--hax-ui-text-muted);
         }
         @media (prefers-reduced-motion: reduce) {
-          button {
+          .row {
             transition: none;
           }
           details[open] {
@@ -436,8 +441,27 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
     this.hovered = false;
   }
 
-  focus() {
-    this.shadowRoot.querySelector("button").focus();
+  /**
+   * the row itself takes focus (it is the option). The details toggle is a
+   * pointer shortcut only: keyboard and screen reader users get the details
+   * as the option's description instead.
+   */
+  focus(options) {
+    HTMLElement.prototype.focus.call(this, options);
+  }
+
+  updated(changedProperties) {
+    if (super.updated) super.updated(changedProperties);
+    // the details are this row's light DOM children, in the same tree as
+    // the row, so they can describe the option directly
+    if ("ariaDescribedByElements" in this) {
+      const details = this.more ? [...this.children] : [];
+      if (details.length > 0) {
+        this.ariaDescribedByElements = details;
+      } else if (this.hasAttribute("aria-describedby")) {
+        this.removeAttribute("aria-describedby");
+      }
+    }
   }
 
   /**
@@ -475,15 +499,12 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
             </div>`
           : ``
       }
-      <button
+      <div
         part="button"
-        tabindex="-1"
+        class="row"
         @click="${this.clickEvent}"
-        @keydown="${this.keyEvent}"
         @mouseover="${this._hoverIn}"
         @mouseout="${this._hoverOut}"
-        @focusin="${this._focusIn}"
-        @focusout="${this._focusOut}"
       >
         ${
           this.voiceNumber
@@ -563,9 +584,9 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
                 accent-color="${this.accentColor}"
                 label="${this.t.moreDetails || "More details"}"
                 icon="${HaxUiAdminIcons.more}"
-                aria-controls="details"
+                button-tabindex="-1"
+                aria-hidden="true"
                 @click="${this.toggleDetailsClick}"
-                @keydown="${this.toggleDetailsKey}"
               ></simple-icon-button>`
             : html`<div class="more"></div>`
         }
@@ -574,7 +595,7 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
           class="enter-icon"
           aria-hidden="true"
         ></simple-icon-lite>
-      </button>
+      </div>
       ${
         this.more
           ? html`<details
@@ -590,15 +611,6 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
           : ``
       }
     `;
-  }
-  // toggle on click but prevent the event from bubbling up
-  toggleDetailsKey(e) {
-    if (e.key === "Enter" || e.key === "Space") {
-      this.showDetails = !this.showDetails;
-      e.preventDefault();
-      e.stopPropagation();
-      e.stopImmediatePropagation();
-    }
   }
   // toggle on click but prevent the event from bubbling up
   toggleDetailsClick(e) {

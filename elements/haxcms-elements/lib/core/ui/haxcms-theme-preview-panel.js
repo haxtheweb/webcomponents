@@ -22,6 +22,7 @@ import {
   loadDesignSystemRegistry,
   siteDesignSystemName,
   themeAcceptsDesignSystems,
+  themeDefaultDesignSystemTitle,
 } from "../utils/HAXCMSDesignSystems.js";
 
 class HAXCMSThemePreviewPanel extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
@@ -85,6 +86,7 @@ class HAXCMSThemePreviewPanel extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
       palette: "Palette",
       designSystem: "Design system",
       designSystemDefault: "DDD (default)",
+      designSystemThemeDefault: "{name} (theme default)",
       designSystemHelp:
         "Color, type, corners and density. The theme still decides the layout.",
       cancel: "Cancel",
@@ -684,6 +686,11 @@ class HAXCMSThemePreviewPanel extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
     if (names.length === 0 || !themeAcceptsDesignSystems(this.selectedTheme)) {
       return "";
     }
+    // a theme that starts on its own system says which one "default" means
+    const themeDefault = themeDefaultDesignSystemTitle(
+      this.selectedTheme,
+      this._designSystems,
+    );
     return html`<div class="design-system">
       <label class="picker-heading" for="design-system"
         >${this.t.designSystem}</label
@@ -696,7 +703,14 @@ class HAXCMSThemePreviewPanel extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
         @change=${this._designSystemValueChanged}
       >
         <option value="" ?selected=${this.selectedDesignSystem === ""}>
-          ${this.t.designSystemDefault}
+          ${
+            themeDefault
+              ? this.t.designSystemThemeDefault.replace(
+                  "{name}",
+                  () => themeDefault,
+                )
+              : this.t.designSystemDefault
+          }
         </option>
         ${names.map(
           (name) =>

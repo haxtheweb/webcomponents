@@ -1,0 +1,75 @@
+{
+  "tag": "wysiwyg96-theme",
+  "folder": "wysiwyg96-theme",
+  "package": "@haxtheweb/wysiwyg96-theme",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "wysiwyg96-theme",
+  "description": "WYSIWYG 96: a HAXcms theme in homage to the first WYSIWYG web editors, with the Classic Desktop design system",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/wysiwyg96-theme/wysiwyg96-theme.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/wysiwyg96-theme/wysiwyg96-theme.js",
+  "install": "npm i @haxtheweb/wysiwyg96-theme",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "explorer-open",
+      "property": "explorerOpen",
+      "type": "boolean",
+      "default": "true",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "explorer-rolled",
+      "property": "explorerRolled",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "page-rolled",
+      "property": "pageRolled",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "page-minimized",
+      "property": "pageMinimized",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "page-maximized",
+      "property": "pageMaximized",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "ef05237ce533",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/wysiwyg96-theme",
+    "file": "wysiwyg96-theme.js"
+  }
+}

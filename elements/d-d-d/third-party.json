@@ -1,0 +1,425 @@
+{
+  "$comment": "Third-party assets vendored into this package, each under its own license (not this package's Apache-2.0). scripts/copy-dep-licenses.js lists them in THIRD_PARTY_LICENSES.md. Fonts: written by scripts/vendor-fonts.mjs.",
+  "assets": [
+    {
+      "name": "Abril Fatface",
+      "kind": "font",
+      "version": "Google Fonts v25 (@fontsource/abril-fatface@5.3.0)",
+      "license": "OFL-1.1",
+      "copyright": "Copyright (c) 2011, Copyright (c) 2011, TypeTogether (www.type-together.com info@type-together.com), with Reserved Font Names \"Abril\" and \"Abril Fatface\"",
+      "source": "https://github.com/google/fonts",
+      "path": "lib/fonts/abril-fatface",
+      "licenseFiles": ["lib/fonts/abril-fatface/LICENSE"]
+    },
+    {
+      "name": "Anton",
+      "kind": "font",
+      "version": "Google Fonts v27 (@fontsource/anton@5.3.0)",
+      "license": "OFL-1.1",
+      "copyright": "Copyright 2020 The Anton Project Authors (https://github.com/googlefonts/AntonFont.git)",
+      "source": "https://github.com/google/fonts",
+      "path": "lib/fonts/anton",
+      "licenseFiles": ["lib/fonts/anton/LICENSE"]
+    },
+    {
+      "name": "Archivo",
+      "kind": "font",
+      "version": "Google Fonts v25 (@fontsource-variable/archivo@5.3.0)",
+      "license": "OFL-1.1",
+      "copyright": "Copyright 2020 The Archivo Project Authors (https://github.com/Omnibus-Type/Archivo) Archivo-Italic[wdth,wght].ttf: Copyright 2020 The Archivo Project Authors (https://github.com/Omnibus-Type/Archivo)",
+      "source": "https://github.com/google/fonts",
+      "path": "lib/fonts/archivo",
+      "licenseFiles": ["lib/fonts/archivo/LICENSE"]
+    },
+    {
+      "name": "Archivo Black",
+      "kind": "font",
+      "version": "Google Fonts v23 (@fontsource/archivo-black@5.3.0)",
+      "license": "OFL-1.1",
+      "copyright": "Copyright 2017 The Archivo Black Project Authors (https://github.com/Omnibus-Type/ArchivoBlack)",
+      "source": "https://github.com/google/fonts",
+      "path": "lib/fonts/archivo-black",
+      "licenseFiles": ["lib/fonts/archivo-black/LICENSE"]
+    },
+    {
+      "name": "Archivo Narrow",
+      "kind": "font",
+      "version": "Google Fonts v35 (@fontsource-variable/archivo-narrow@5.3.0)",
+      "license": "OFL-1.1",
+      "copyright": "Copyright 2019 The Archivo Narrow Project Authors (https://github.com/Omnibus-Type/ArchivoNarrow) ArchivoNarrow-Italic[wght].ttf: Copyright 2019 The Archivo Narrow Project Authors (https://github.com/Omnibus-Type/ArchivoNarrow)",
+      "source": "https://github.com/google/fonts",
+      "path": "lib/fonts/archivo-narrow",
+      "licenseFiles": ["lib/fonts/archivo-narrow/LICENSE"]
+    },
+    {
+      "name": "Bebas Neue",
+      "kind": "font",
+      "version": "Google Fonts v16 (@fontsource/bebas-neue@5.3.0)",
+      "license": "OFL-1.1",
+      "copyright": "Copyright 2019 The Bebas Neue Project Authors (https://github.com/dharmatype/Bebas-Neue)",
+      "source": "https://github.com/google/fonts",
+      "path": "lib/fonts/bebas-neue",
+      "licenseFiles": ["lib/fonts/bebas-neue/LICENSE"]
+    },
+    {
+      "name": "Black Ops One",
+      "kind": "font",
+      "version": "Google Fonts v21 (@fontsource/black-ops-one@5.3.0)",
+      "license": "OFL-1.1",
+      "copyright": "Copyright 2022 The PinyonScript Project Authors (https://github.com/SorkinType/Black-Ops)",
+      "source": "https://github.com/google/fonts",
+      "path": "lib/fonts/black-ops-one",
+      "licenseFiles": ["lib/fonts/black-ops-one/LICENSE"]
+    },
+    {
+      "name": "Bungee",
+      "kind": "font",
+      "version": "Google Fonts v17 (@fontsource/bungee@5.3.0)",
+      "license": "OFL-1.1",
+      "copyright": "Copyright 2023 The Bungee Project Authors (https://github.com/djrrb/Bungee)",
+      "source": "https://github.com/google/fonts",
+      "path": "lib/fonts/bungee",
+      "licenseFiles": ["lib/fonts/bungee/LICENSE"]
+    },
+    {
+      "name": "Caveat",
+      "kind": "font",
+      "version": "Google Fonts v23 (@fontsource-variable/caveat@5.3.0)",
+      "license": "OFL-1.1",
+      "copyright": "Copyright 2014 The Caveat Project Authors (https://github.com/googlefonts/caveat)",
+      "source": "https://github.com/google/fonts",
+      "path": "lib/fonts/caveat",
+      "licenseFiles": ["lib/fonts/caveat/LICENSE"]
+    },
+    {
+      "name": "Cinzel",
+      "kind": "font",
+      "version": "Google Fonts v26 (@fontsource-variable/cinzel@5.3.0)",
+      "license": "OFL-1.1",
+      "copyright": "Copyright 2020 The Cinzel Project Authors (https://github.com/NDISCOVER/Cinzel)",
+      "source": "https://github.com/google/fonts",
+      "path": "lib/fonts/cinzel",
+      "licenseFiles": ["lib/fonts/cinzel/LICENSE"]
+    },
+    {
+      "name": "Geist",
+      "kind": "font",
+      "version": "Google Fonts v5 (@fontsource-variable/geist@5.3.0)",
+      "license": "OFL-1.1",
+      "copyright": "Copyright 2024 The Geist Project Authors (https://github.com/vercel/geist-font) Geist-Italic[wght].ttf: Copyright 2024 The Geist Project Authors (https://github.com/vercel/geist-font)",
+      "source": "https://github.com/google/fonts",
+      "path": "lib/fonts/geist",
+      "licenseFiles": ["lib/fonts/geist/LICENSE"]
+    },
+    {
+      "name": "Geist Mono",
+      "kind": "font",
+      "version": "Google Fonts v6 (@fontsource-variable/geist-mono@5.3.0)",
+      "license": "OFL-1.1",
+      "copyright": "Copyright 2024 The Geist Project Authors (https://github.com/vercel/geist-font.git) GeistMono-Italic[wght].ttf: Copyright 2024 The Geist Project Authors (https://github.com/vercel/geist-font.git)",
+      "source": "https://github.com/google/fonts",
+      "path": "lib/fonts/geist-mono",
+      "licenseFiles": ["lib/fonts/geist-mono/LICENSE"]
+    },
+    {
+      "name": "IBM Plex Mono",
+      "kind": "font",
+      "version": "Google Fonts v20 (@fontsource/ibm-plex-mono@5.3.0)",
+      "license": "OFL-1.1",
+      "copyright": "Copyright 2017 IBM Corp. All rights reserved. IBMPlexMono-ThinItalic.ttf: Copyright 2017 IBM Corp. All rights reserved. IBMPlexMono-ExtraLight.ttf: Copyright 2017 IBM Corp. All rights reserved. IBMPlexMono-ExtraLightItalic.ttf: Copyright 2017 IBM Corp. All rights reserved. IBMPlexMono-Light.ttf: Copyright 2017 IBM Corp. All rights reserved. IBMPlexMono-LightItalic.ttf: Copyright 2017 IBM Corp. All rights reserved. IBMPlexMono-Regular.ttf: Copyright 2017 IBM Corp. All rights reserved. IBMPlexMono-Italic.ttf: Copyright 2017 IBM Corp. All rights reserved. IBMPlexMono-Medium.ttf: Copyright 2017 IBM Corp. All rights reserved. IBMPlexMono-MediumItalic.ttf: Copyright 2017 IBM Corp. All rights reserved. IBMPlexMono-SemiBold.ttf: Copyright 2017 IBM Corp. All rights reserved. IBMPlexMono-SemiBoldItalic.ttf: Copyright 2017 IBM Corp. All rights reserved. IBMPlexMono-Bold.ttf: Copyright 2017 IBM Corp. All rights reserved. IBMPlexMono-BoldItalic.ttf: Copyright 2017 IBM Corp. All rights reserved.",
+      "source": "https://github.com/google/fonts",
+      "path": "lib/fonts/ibm-plex-mono",
+      "licenseFiles": ["lib/fonts/ibm-plex-mono/LICENSE"]
+    },
+    {
+      "name": "IBM Plex Sans",
+      "kind": "font",
+      "version": "Google Fonts v23 (@fontsource-variable/ibm-plex-sans@5.3.0)",
+      "license": "OFL-1.1",
+      "copyright": "Copyright 2019 IBM Corp. All rights reserved. IBMPlexSans-Italic[wdth,wght].ttf: Copyright 2019 IBM Corp. All rights reserved.",
+      "source": "https://github.com/google/fonts",
+      "path": "lib/fonts/ibm-plex-sans",
+      "licenseFiles": ["lib/fonts/ibm-plex-sans/LICENSE"]
+    },
+    {
+      "name": "Inter",
+      "kind": "font",
+      "version": "Google Fonts v20 (@fontsource-variable/inter@5.3.0)",
+      "license": "OFL-1.1",
+      "copyright": "Copyright 2016 The Inter Project Authors (https://github.com/rsms/inter) Inter-Italic[opsz,wght].ttf: Copyright 2016 The Inter Project Authors (https://github.com/rsms/inter)",
+      "source": "https://github.com/google/fonts",
+      "path": "lib/fonts/inter",
+      "licenseFiles": ["lib/fonts/inter/LICENSE"]
+    },
+    {
+      "name": "Lobster",
+      "kind": "font",
+      "version": "Google Fonts v32 (@fontsource/lobster@5.3.0)",
+      "license": "OFL-1.1",
+      "copyright": "Copyright 2010 The Lobster Project Authors (https://github.com/impallari/The-Lobster-Font), with Reserved Font Name \"Lobster\".",
+      "source": "https://github.com/google/fonts",
+      "path": "lib/fonts/lobster",
+      "licenseFiles": ["lib/fonts/lobster/LICENSE"]
+    },
+    {
+      "name": "Manrope",
+      "kind": "font",
+      "version": "Google Fonts v20 (@fontsource-variable/manrope@5.3.0)",
+      "license": "OFL-1.1",
+      "copyright": "Copyright 2019 The Manrope Project Authors (https://github.com/sharanda/manrope)",
+      "source": "https://github.com/google/fonts",
+      "path": "lib/fonts/manrope",
+      "licenseFiles": ["lib/fonts/manrope/LICENSE"]
+    },
+    {
+      "name": "Merriweather",
+      "kind": "font",
+      "version": "Google Fonts v33 (@fontsource-variable/merriweather@5.3.0)",
+      "license": "OFL-1.1",
+      "copyright": "Copyright 2024 The Merriweather Project Authors (https://github.com/EbenSorkin/Merriweather4) with Reserved Font Name \"Merriweather\". Merriweather-Italic[opsz,wdth,wght].ttf: Copyright 2024 The Merriweather Project Authors (https://github.com/EbenSorkin/Merriweather4) with Reserved Font Name \"Merriweather\".",
+      "source": "https://github.com/google/fonts",
+      "path": "lib/fonts/merriweather",
+      "licenseFiles": ["lib/fonts/merriweather/LICENSE"]
+    },
+    {
+      "name": "Mona Sans",
+      "kind": "font",
+      "version": "Google Fonts v4 (@fontsource-variable/mona-sans@5.3.0)",
+      "license": "OFL-1.1",
+      "copyright": "Copyright 2022 The Mona Sans Project Authors (https://github.com/github/mona-sans), with Reserved Font Name \"Mona\" MonaSans-Italic[wdth,wght].ttf: Copyright 2022 The Mona Sans Project Authors (https://github.com/github/mona-sans), with Reserved Font Name \"Mona\"",
+      "source": "https://github.com/google/fonts",
+      "path": "lib/fonts/mona-sans",
+      "licenseFiles": ["lib/fonts/mona-sans/LICENSE"]
+    },
+    {
+      "name": "Monoton",
+      "kind": "font",
+      "version": "Google Fonts v22 (@fontsource/monoton@5.3.0)",
+      "license": "OFL-1.1",
+      "copyright": "Copyright (c) 2011, Vernon Adams (vern@newtypography.co.uk) with Reserved Font Name 'Monoton'. All rights reserved.",
+      "source": "https://github.com/google/fonts",
+      "path": "lib/fonts/monoton",
+      "licenseFiles": ["lib/fonts/monoton/LICENSE"]
+    },
+    {
+      "name": "Open Sans",
+      "kind": "font",
+      "version": "Google Fonts v44 (@fontsource-variable/open-sans@5.3.0)",
+      "license": "OFL-1.1",
+      "copyright": "Copyright 2020 The Open Sans Project Authors (https://github.com/googlefonts/opensans) OpenSans-Italic[wdth,wght].ttf: Copyright 2020 The Open Sans Project Authors (https://github.com/googlefonts/opensans)",
+      "source": "https://github.com/google/fonts",
+      "path": "lib/fonts/open-sans",
+      "licenseFiles": ["lib/fonts/open-sans/LICENSE"]
+    },
+    {
+      "name": "Orbitron",
+      "kind": "font",
+      "version": "Google Fonts v35 (@fontsource-variable/orbitron@5.3.0)",
+      "license": "OFL-1.1",
+      "copyright": "Copyright 2018 The Orbitron Project Authors (https://github.com/theleagueof/orbitron)",
+      "source": "https://github.com/google/fonts",
+      "path": "lib/fonts/orbitron",
+      "licenseFiles": ["lib/fonts/orbitron/LICENSE"]
+    },
+    {
+      "name": "Oswald",
+      "kind": "font",
+      "version": "Google Fonts v57 (@fontsource-variable/oswald@5.3.0)",
+      "license": "OFL-1.1",
+      "copyright": "Copyright 2016 The Oswald Project Authors (https://github.com/googlefonts/OswaldFont)",
+      "source": "https://github.com/google/fonts",
+      "path": "lib/fonts/oswald",
+      "licenseFiles": ["lib/fonts/oswald/LICENSE"]
+    },
+    {
+      "name": "Patrick Hand",
+      "kind": "font",
+      "version": "Google Fonts v25 (@fontsource/patrick-hand@5.3.0)",
+      "license": "OFL-1.1",
+      "copyright": "Copyright (c) 2010-2012 Patrick Wagesreiter (mail@patrickwagesreiter.at)",
+      "source": "https://github.com/google/fonts",
+      "path": "lib/fonts/patrick-hand",
+      "licenseFiles": ["lib/fonts/patrick-hand/LICENSE"]
+    },
+    {
+      "name": "Permanent Marker",
+      "kind": "font",
+      "version": "Google Fonts v16 (@fontsource/permanent-marker@5.3.0)",
+      "license": "Apache-2.0",
+      "copyright": "Copyright (c) 2010 by Font Diner, Inc. All rights reserved.",
+      "source": "https://github.com/google/fonts",
+      "path": "lib/fonts/permanent-marker",
+      "licenseFiles": ["lib/fonts/permanent-marker/LICENSE"]
+    },
+    {
+      "name": "Playfair Display",
+      "kind": "font",
+      "version": "Google Fonts v40 (@fontsource-variable/playfair-display@5.3.0)",
+      "license": "OFL-1.1",
+      "copyright": "Copyright 2017 The Playfair Display Project Authors (https://github.com/clauseggers/Playfair-Display), with Reserved Font Name \"Playfair Display\". PlayfairDisplay-Italic[wght].ttf: Copyright 2017 The Playfair Display Project Authors (https://github.com/clauseggers/Playfair-Display), with Reserved Font Name \"Playfair Display\".",
+      "source": "https://github.com/google/fonts",
+      "path": "lib/fonts/playfair-display",
+      "licenseFiles": ["lib/fonts/playfair-display/LICENSE"]
+    },
+    {
+      "name": "Press Start 2P",
+      "kind": "font",
+      "version": "Google Fonts v16 (@fontsource/press-start-2p@5.3.0)",
+      "license": "OFL-1.1",
+      "copyright": "Copyright 2012 The Press Start 2P Project Authors (cody@zone38.net), with Reserved Font Name \"Press Start 2P\"",
+      "source": "https://github.com/google/fonts",
+      "path": "lib/fonts/press-start-2p",
+      "licenseFiles": ["lib/fonts/press-start-2p/LICENSE"]
+    },
+    {
+      "name": "Red Hat Display",
+      "kind": "font",
+      "version": "Google Fonts v21 (@fontsource-variable/red-hat-display@5.3.0)",
+      "license": "OFL-1.1",
+      "copyright": "Copyright 2024 The Red Hat Project Authors (https://github.com/RedHatOfficial/RedHatFont) RedHatDisplay-Italic[wght].ttf: Copyright 2024 The Red Hat Project Authors (https://github.com/RedHatOfficial/RedHatFont)",
+      "source": "https://github.com/google/fonts",
+      "path": "lib/fonts/red-hat-display",
+      "licenseFiles": ["lib/fonts/red-hat-display/LICENSE"]
+    },
+    {
+      "name": "Red Hat Mono",
+      "kind": "font",
+      "version": "Google Fonts v16 (@fontsource-variable/red-hat-mono@5.3.0)",
+      "license": "OFL-1.1",
+      "copyright": "Copyright 2024 The Red Hat Project Authors (https://github.com/RedHatOfficial/RedHatFont) RedHatMono-Italic[wght].ttf: Copyright 2024 The Red Hat Project Authors (https://github.com/RedHatOfficial/RedHatFont)",
+      "source": "https://github.com/google/fonts",
+      "path": "lib/fonts/red-hat-mono",
+      "licenseFiles": ["lib/fonts/red-hat-mono/LICENSE"]
+    },
+    {
+      "name": "Red Hat Text",
+      "kind": "font",
+      "version": "Google Fonts v19 (@fontsource-variable/red-hat-text@5.3.0)",
+      "license": "OFL-1.1",
+      "copyright": "Copyright 2024 The Red Hat Project Authors (https://github.com/RedHatOfficial/RedHatFont) RedHatText-Italic[wght].ttf: Copyright 2024 The Red Hat Project Authors (https://github.com/RedHatOfficial/RedHatFont)",
+      "source": "https://github.com/google/fonts",
+      "path": "lib/fonts/red-hat-text",
+      "licenseFiles": ["lib/fonts/red-hat-text/LICENSE"]
+    },
+    {
+      "name": "Righteous",
+      "kind": "font",
+      "version": "Google Fonts v18 (@fontsource/righteous@5.3.0)",
+      "license": "OFL-1.1",
+      "copyright": "Copyright (c) 2011 by Brian J. Bonislawsky DBA Astigmatic (AOETI) (astigma@astigmatic.com), with Reserved Font Name \"Righteous\"",
+      "source": "https://github.com/google/fonts",
+      "path": "lib/fonts/righteous",
+      "licenseFiles": ["lib/fonts/righteous/LICENSE"]
+    },
+    {
+      "name": "Roboto",
+      "kind": "font",
+      "version": "Google Fonts v51 (@fontsource-variable/roboto@5.3.0)",
+      "license": "OFL-1.1",
+      "copyright": "Copyright 2011 The Roboto Project Authors (https://github.com/googlefonts/roboto-classic) Roboto-Italic[wdth,wght].ttf: Copyright 2011 The Roboto Project Authors (https://github.com/googlefonts/roboto-classic)",
+      "source": "https://github.com/google/fonts",
+      "path": "lib/fonts/roboto",
+      "licenseFiles": ["lib/fonts/roboto/LICENSE"]
+    },
+    {
+      "name": "Roboto Condensed",
+      "kind": "font",
+      "version": "Google Fonts v31 (@fontsource-variable/roboto-condensed@5.3.0)",
+      "license": "OFL-1.1",
+      "copyright": "Copyright 2011 Google Inc. All Rights Reserved. RobotoCondensed-Italic[wght].ttf: Copyright 2011 Google Inc. All Rights Reserved.",
+      "source": "https://github.com/google/fonts",
+      "path": "lib/fonts/roboto-condensed",
+      "licenseFiles": ["lib/fonts/roboto-condensed/LICENSE"]
+    },
+    {
+      "name": "Roboto Mono",
+      "kind": "font",
+      "version": "Google Fonts v31 (@fontsource-variable/roboto-mono@5.3.0)",
+      "license": "OFL-1.1",
+      "copyright": "Copyright 2015 The Roboto Mono Project Authors (https://github.com/googlefonts/robotomono) RobotoMono-Italic[wght].ttf: Copyright 2015 The Roboto Mono Project Authors (https://github.com/googlefonts/robotomono)",
+      "source": "https://github.com/google/fonts",
+      "path": "lib/fonts/roboto-mono",
+      "licenseFiles": ["lib/fonts/roboto-mono/LICENSE"]
+    },
+    {
+      "name": "Roboto Slab",
+      "kind": "font",
+      "version": "Google Fonts v36 (@fontsource-variable/roboto-slab@5.3.0)",
+      "license": "Apache-2.0",
+      "copyright": "Copyright 2018 The Roboto Slab Project Authors (https://github.com/googlefonts/robotoslab)",
+      "source": "https://github.com/google/fonts",
+      "path": "lib/fonts/roboto-slab",
+      "licenseFiles": ["lib/fonts/roboto-slab/LICENSE"]
+    },
+    {
+      "name": "Russo One",
+      "kind": "font",
+      "version": "Google Fonts v18 (@fontsource/russo-one@5.3.0)",
+      "license": "OFL-1.1",
+      "copyright": "Copyright (c) 2011-2012, Jovanny Lemonad (lemonad@jovanny.ru), with Reserved Font Name \"Russo\"",
+      "source": "https://github.com/google/fonts",
+      "path": "lib/fonts/russo-one",
+      "licenseFiles": ["lib/fonts/russo-one/LICENSE"]
+    },
+    {
+      "name": "Source Code Pro",
+      "kind": "font",
+      "version": "Google Fonts v32 (@fontsource-variable/source-code-pro@5.3.1)",
+      "license": "OFL-1.1",
+      "copyright": "Google Inc.",
+      "source": "https://github.com/google/fonts",
+      "path": "lib/fonts/source-code-pro",
+      "licenseFiles": ["lib/fonts/source-code-pro/LICENSE"]
+    },
+    {
+      "name": "Source Sans 3",
+      "kind": "font",
+      "version": "Google Fonts v20 (@fontsource-variable/source-sans-3@5.3.1)",
+      "license": "OFL-1.1",
+      "copyright": "Google Inc.",
+      "source": "https://github.com/google/fonts",
+      "path": "lib/fonts/source-sans-3",
+      "licenseFiles": ["lib/fonts/source-sans-3/LICENSE"]
+    },
+    {
+      "name": "Special Elite",
+      "kind": "font",
+      "version": "Google Fonts v20 (@fontsource/special-elite@5.3.0)",
+      "license": "Apache-2.0",
+      "copyright": "Copyright (c) 2010 by Brian J. Bonislawsky DBA Astigmatic (AOETI). All rights reserved. Available under the Apache 2.0 licence. http://www.apache.org/licenses/LICENSE-2.0.html",
+      "source": "https://github.com/google/fonts",
+      "path": "lib/fonts/special-elite",
+      "licenseFiles": ["lib/fonts/special-elite/LICENSE"]
+    },
+    {
+      "name": "Staatliches",
+      "kind": "font",
+      "version": "Google Fonts v15 (@fontsource/staatliches@5.3.0)",
+      "license": "OFL-1.1",
+      "copyright": "Copyright 2018 The Staatliches Project Authors (https://github.com/googlefonts/staatliches)",
+      "source": "https://github.com/google/fonts",
+      "path": "lib/fonts/staatliches",
+      "licenseFiles": ["lib/fonts/staatliches/LICENSE"]
+    },
+    {
+      "name": "VT323",
+      "kind": "font",
+      "version": "Google Fonts v18 (@fontsource/vt323@5.3.0)",
+      "license": "OFL-1.1",
+      "copyright": "Copyright 2011, The VT323 Project Authors (peter.hull@oikoi.com)",
+      "source": "https://github.com/google/fonts",
+      "path": "lib/fonts/vt323",
+      "licenseFiles": ["lib/fonts/vt323/LICENSE"]
+    },
+    {
+      "name": "Work Sans",
+      "kind": "font",
+      "version": "Google Fonts v24 (@fontsource-variable/work-sans@5.3.0)",
+      "license": "OFL-1.1",
+      "copyright": "Copyright 2019 The Work Sans Project Authors (https://github.com/weiweihuanghuang/Work-Sans) WorkSans-Italic[wght].ttf: Copyright 2019 The Work Sans Project Authors (https://github.com/weiweihuanghuang/Work-Sans)",
+      "source": "https://github.com/google/fonts",
+      "path": "lib/fonts/work-sans",
+      "licenseFiles": ["lib/fonts/work-sans/LICENSE"]
+    }
+  ]
+}

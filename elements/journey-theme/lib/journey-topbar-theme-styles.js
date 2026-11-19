@@ -11,9 +11,12 @@ export const JourneyTopbarThemeStyles = css`
       var(--ddd-palette-color-5, var(--ddd-theme-default-white)),
       var(--ddd-palette-color-1, var(--ddd-theme-default-coalyGray))
     );
+    /* the dark surface stays dark whatever the palette: a palette whose
+       color-6 is light put dark-mode content (light links, code labels)
+       on a light card at 1.07:1 */
     --content-surface: light-dark(
       var(--ddd-theme-default-white),
-      var(--ddd-palette-color-6, var(--ddd-theme-default-potentialMidnight))
+      var(--ddd-theme-default-potentialMidnight)
     );
     --text-heading: light-dark(
       var(--ddd-palette-text-color-5, var(--ddd-theme-default-nittanyNavy)),
@@ -23,7 +26,7 @@ export const JourneyTopbarThemeStyles = css`
     /* text paired with --content-surface (the article card) */
     --text-surface: light-dark(
       var(--ddd-theme-default-coalyGray),
-      var(--ddd-palette-text-color-6, var(--ddd-theme-default-white))
+      var(--ddd-theme-default-white)
     );
     --accent-color: var(--ddd-palette-color-7, var(--ddd-primary-9));
     --topbar-bg: var(

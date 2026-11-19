@@ -195,3 +195,25 @@ describe("a11y-media-state-manager global listeners", () => {
     expect(manager.players.length).to.equal(before);
   });
 });
+
+describe("a11y-media-state-manager player list", () => {
+  it("lists a player once and forgets it on removePlayer", async () => {
+    const manager = await fixture(
+      html`<a11y-media-state-manager></a11y-media-state-manager>`,
+    );
+    const player = makePlayer();
+    globalThis.document.body.appendChild(player);
+    const announce = () =>
+      globalThis.dispatchEvent(
+        new CustomEvent("a11y-player", { detail: player }),
+      );
+    announce();
+    announce();
+    expect(manager.players.filter((p) => p === player).length).to.equal(1);
+    manager.setActivePlayer(player);
+    manager.removePlayer(player);
+    expect(manager.players.includes(player)).to.be.false;
+    expect(manager.activePlayer).to.equal(null);
+    player.remove();
+  });
+});

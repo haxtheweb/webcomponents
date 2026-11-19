@@ -1,0 +1,59 @@
+papermod-theme
+Copyright 2026 The Pennsylvania State University
+Licensed under the Apache License, Version 2.0 (see LICENSE).
+
+The layouts of the themes in this package pay homage to the themes below.
+This package contains no code, styles, templates, fonts, icons or other
+assets from any of them. Each theme here is written for HAXcms from DDD
+design tokens and HAXcms theme parts, is an independent work, and is not
+affiliated with or endorsed by the authors of the theme it honors.
+
+  papermod-theme          PaperMod (Hugo), MIT License
+                          https://github.com/adityatelange/hugo-PaperMod
+                          Copyright (c) 2020 nanxiaobei and adityatelange
+                          Copyright (c) 2021-2026 adityatelange
+
+  minima-theme            Minima (Jekyll), MIT License
+                          https://github.com/jekyll/minima
+                          Copyright (c) 2016-present Parker Moore and the
+                          minima contributors
+
+  astropaper-theme        AstroPaper (Astro), MIT License
+                          https://github.com/satnaing/astro-paper
+                          Copyright (c) 2023 Sat Naing
+
+  astro-cactus-theme      Astro Cactus (Astro), MIT License
+                          https://github.com/chrismwilliams/astro-theme-cactus
+                          Copyright (c) 2022 Chris Williams
+
+  coder-theme             Coder (Hugo), MIT License
+                          https://github.com/luizdepra/hugo-coder
+                          Copyright (c) 2018 Luiz F. A. de Prá
+
+  terminal-theme          Terminal (Hugo), MIT License
+                          https://github.com/panr/hugo-theme-terminal
+                          Copyright (c) 2024 panr
+
+  al-folio-theme          al-folio (Jekyll), MIT License
+                          https://github.com/alshedivat/al-folio
+                          Copyright (c) 2025 Maruan Al-Shedivat
+
+  astrowind-theme         AstroWind (Astro), MIT License
+                          https://github.com/arthelokyo/astrowind
+                          Copyright (c) 2023 onWidget
+
+  hyde-theme              Hyde (Jekyll), MIT License
+                          https://github.com/poole/hyde
+                          Copyright (c) 2013 Mark Otto
+
+  chirpy-theme            Chirpy (Jekyll), MIT License
+                          https://github.com/cotes2020/jekyll-theme-chirpy
+                          Copyright (c) 2019 Cotes Chung
+
+  minimal-mistakes-theme  Minimal Mistakes (Jekyll), MIT License
+                          https://github.com/mmistakes/minimal-mistakes
+                          Copyright (c) 2013-2024 Michael Rose and contributors
+
+  astrofy-theme           Astrofy (Astro), MIT License
+                          https://github.com/manuelernestog/astrofy
+                          Copyright (c) 2022 Manuel Ernesto Garcia
