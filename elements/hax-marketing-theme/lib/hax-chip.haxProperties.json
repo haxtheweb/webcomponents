@@ -1,0 +1,37 @@
+{
+  "canScale": false,
+  "canEditSource": true,
+  "gizmo": {
+    "title": "Chip",
+    "description": "A small labelled icon",
+    "icon": "icons:label",
+    "color": "blue",
+    "tags": ["Marketing", "content"],
+    "meta": {
+      "author": "HAXTheWeb core team",
+      "owner": "The Pennsylvania State University"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Icon",
+        "inputMethod": "iconpicker"
+      },
+      {
+        "property": "label",
+        "title": "Label",
+        "inputMethod": "textfield"
+      }
+    ],
+    "advanced": []
+  },
+  "demoSchema": [
+    {
+      "tag": "hax-chip",
+      "properties": {},
+      "content": ""
+    }
+  ]
+}

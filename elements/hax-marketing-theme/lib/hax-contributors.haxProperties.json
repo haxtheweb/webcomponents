@@ -1,0 +1,42 @@
+{
+  "canScale": false,
+  "canEditSource": true,
+  "gizmo": {
+    "title": "Contributors",
+    "description": "The people who built the project, from a roster file",
+    "icon": "social:people",
+    "color": "blue",
+    "tags": ["Marketing", "content"],
+    "meta": {
+      "author": "HAXTheWeb core team",
+      "owner": "The Pennsylvania State University"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "source",
+        "title": "Roster file (JSON)",
+        "inputMethod": "haxupload"
+      },
+      {
+        "property": "show",
+        "title": "View: landed, lab or code",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "limit",
+        "title": "Most people to show (0 is all)",
+        "inputMethod": "number"
+      }
+    ],
+    "advanced": []
+  },
+  "demoSchema": [
+    {
+      "tag": "hax-contributors",
+      "properties": {},
+      "content": ""
+    }
+  ]
+}

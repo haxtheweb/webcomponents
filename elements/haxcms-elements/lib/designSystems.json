@@ -23,6 +23,14 @@
     "path": "@haxtheweb/fluent-theme/lib/FluentDesignSystem.js",
     "activate": "activateFluentDesignSystem"
   },
+  "future-traveler": {
+    "name": "future-traveler",
+    "title": "Future Traveler",
+    "homepage": "https://github.com/haxtheweb/webcomponents/tree/master/elements/hax-marketing-theme",
+    "theme": "hax-marketing-theme",
+    "path": "@haxtheweb/hax-marketing-theme/lib/FutureTravelerDesignSystem.js",
+    "activate": "activateFutureTravelerDesignSystem"
+  },
   "material": {
     "name": "material",
     "title": "Material 3",

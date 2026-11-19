@@ -1,0 +1,54 @@
+{
+  "platforms": [
+    {
+      "id": "hax",
+      "name": "HAX",
+      "kind": "Open web publishing",
+      "url": "https://haxtheweb.org"
+    },
+    {
+      "id": "other",
+      "name": "Other",
+      "kind": "CMS",
+      "url": "https://example.com"
+    },
+    {
+      "id": "third",
+      "name": "Third",
+      "kind": "CMS",
+      "url": "https://example.org"
+    }
+  ],
+  "features": [
+    {
+      "label": "Free and open source",
+      "cells": {
+        "hax": {
+          "r": "y",
+          "note": "Apache-2.0"
+        },
+        "other": {
+          "r": "p",
+          "note": "Core only"
+        },
+        "third": {
+          "r": "n",
+          "note": ""
+        }
+      }
+    },
+    {
+      "label": "Works offline",
+      "cells": {
+        "hax": {
+          "r": "y",
+          "note": ""
+        },
+        "other": {
+          "r": "n",
+          "note": ""
+        }
+      }
+    }
+  ]
+}

@@ -1,222 +1,352 @@
 {
   "id": "hax-marketing-theme-demo",
-  "title": "HAX the web",
+  "title": "HAX",
   "author": "",
-  "description": "Demonstration site for hax-marketing-theme: the haxtheweb.org landing pages, with the style switcher and the use case picker.",
+  "description": "Demonstration site for hax-marketing-theme: the haxtheweb.org marketing pages built from the theme and its blocks.",
   "license": "by-sa",
   "metadata": {
-    "author": {
-      "image": "",
-      "name": "",
-      "email": "",
-      "socialLink": ""
-    },
+    "author": {},
     "site": {
       "name": "hax-marketing-theme",
-      "logo": "",
-      "lang": "en",
-      "created": 1794960000,
-      "updated": 1794960000,
-      "git": {},
-      "version": "9.0.6",
-      "domain": "",
-      "static": {},
+      "logo": "files/traveler-logo.svg",
       "settings": {
-        "pathauto": false,
+        "lang": "en-US",
         "publishPagesOn": true,
-        "sw": false,
-        "forceUpgrade": false,
-        "lang": "",
-        "gaID": ""
+        "canonical": true,
+        "pathauto": true
       },
-      "tags": "",
-      "homePageId": "item-landing-i-want-a-website-that"
+      "created": 1794960000,
+      "updated": 1795046400,
+      "git": {
+        "vendor": "github",
+        "branch": "gh-pages"
+      }
     },
     "theme": {
       "element": "hax-marketing-theme",
       "path": "@haxtheweb/hax-marketing-theme/hax-marketing-theme.js",
       "name": "HAX marketing",
-      "variables": {},
-      "regions": {}
+      "designSystem": "future-traveler",
+      "variables": {
+        "network": "hax",
+        "cta": "Start building",
+        "eyebrow": "Free. Open. Yours to keep. Forever.",
+        "heroAction": "Pick a starter",
+        "sticker": "files/sticker-round-beaver-blue.svg",
+        "payoff": "Every era had its tools. This one's yours.",
+        "legal": "HAX is Apache-2.0, the whole stack. Founded at and backed by Penn State.",
+        "art": [
+          {
+            "src": "files/traveler-burst.webp",
+            "alt": "The baseline look: red helmet with HAX band, cyan goggles, green backpack with lightbulb, chin on arms, white starburst in a red circle."
+          },
+          {
+            "src": "files/traveler-24.webp",
+            "alt": "Flat-vector starburst badge: helmet, goggles and backpack with the face hidden behind folded arms."
+          },
+          {
+            "src": "files/traveler-27.webp",
+            "alt": "Layered cut-paper version of the traveler with soft shadows under a white and red burst."
+          },
+          {
+            "src": "files/traveler-12.webp",
+            "alt": "Torn-paper collage of the traveler resting his chin on his arm, red and white paper burst behind, yellow lightbulb."
+          },
+          {
+            "src": "files/traveler-13.webp",
+            "alt": "Traveler in a red HAX hoodie with goggles and green backpack, hands on a desk, tan and orange starburst."
+          },
+          {
+            "src": "files/traveler-02.webp",
+            "alt": "Starburst badge with the traveler duplicated and glitching, several HAX visors overlapping."
+          }
+        ],
+        "logos": [
+          {
+            "src": "files/traveler-logo.svg",
+            "alt": "The Future Traveler logo"
+          },
+          {
+            "src": "files/sticker-beaver-blue.svg",
+            "alt": "Future Traveler sticker, beaver blue"
+          },
+          {
+            "src": "files/sticker-creek-teal.svg",
+            "alt": "Future Traveler sticker, creek teal"
+          },
+          {
+            "src": "files/sticker-invent-orange.svg",
+            "alt": "Future Traveler sticker, invent orange"
+          },
+          {
+            "src": "files/sticker-wonder-purple.svg",
+            "alt": "Future Traveler sticker, wonder purple"
+          },
+          {
+            "src": "files/sticker-opportunity-green.svg",
+            "alt": "Future Traveler sticker, opportunity green"
+          }
+        ],
+        "screens": [
+          {
+            "src": "../../haxcms-elements/lib/theme-screenshots/theme-clean-one.jpg",
+            "alt": "The Clean One theme",
+            "name": "Clean One",
+            "tags": ["Course"]
+          },
+          {
+            "src": "../../haxcms-elements/lib/theme-screenshots/theme-writing-theme.jpg",
+            "alt": "The Writing theme",
+            "name": "Writing",
+            "tags": ["Website"]
+          },
+          {
+            "src": "../../haxcms-elements/lib/theme-screenshots/theme-vhs-blog-theme.jpg",
+            "alt": "The VHS Blog theme",
+            "name": "VHS Blog",
+            "tags": ["Blog", "Website"]
+          },
+          {
+            "src": "../../haxcms-elements/lib/theme-screenshots/theme-glossy-portfolio-theme.jpg",
+            "alt": "The Glossy Portfolio theme",
+            "name": "Glossy Portfolio",
+            "tags": ["Website"]
+          },
+          {
+            "src": "../../haxcms-elements/lib/theme-screenshots/theme-polaris-flex-theme.jpg",
+            "alt": "The Polaris Flex theme",
+            "name": "Polaris Flex",
+            "tags": ["Website"]
+          },
+          {
+            "src": "../../haxcms-elements/lib/theme-screenshots/theme-haxma-theme.jpg",
+            "alt": "The Design docs theme",
+            "name": "Design docs",
+            "tags": ["Website"]
+          },
+          {
+            "src": "../../haxcms-elements/lib/theme-screenshots/theme-journey-theme.jpg",
+            "alt": "The Journey theme",
+            "name": "Journey",
+            "tags": ["Website"]
+          },
+          {
+            "src": "../../haxcms-elements/lib/theme-screenshots/theme-book-theme.jpg",
+            "alt": "The Book theme",
+            "name": "Book",
+            "tags": ["Documentation", "Course", "Website"]
+          }
+        ]
+      }
     },
     "node": {
       "fields": {}
     },
+    "platform": {
+      "audience": "expert",
+      "features": {},
+      "allowedBlocks": []
+    },
     "build": {
-      "version": "6.0.1",
+      "version": "26.8.0",
       "structure": "course",
-      "type": "Create Your Own"
+      "type": "own"
     }
   },
   "items": [
     {
-      "id": "item-landing-i-want-a-website-that",
-      "title": "I want a website that\u2026",
+      "id": "item-i-want-a-website-that",
+      "indent": 0,
+      "location": "pages/item-i-want-a-website-that/index.html",
       "slug": "i-want-a-website-that",
       "order": 0,
       "parent": null,
-      "indent": 0,
-      "location": "pages/item-landing-i-want-a-website-that/index.html",
-      "description": "",
+      "title": "I want a website that\u2026",
+      "description": "Pick what it is for. You land in HAX with that site already built, in your browser, with files you own. No account, no database, no subscription.",
       "metadata": {
-        "created": 1794960000,
-        "updated": 1794960000,
         "published": true,
-        "hideInMenu": false,
-        "tags": []
+        "created": 1795046400,
+        "updated": 1795046400
       }
     },
     {
-      "id": "item-landing-who-its-for",
-      "title": "Who it's for",
+      "id": "item-who-its-for",
+      "indent": 0,
+      "location": "pages/item-who-its-for/index.html",
       "slug": "who-its-for",
       "order": 1,
       "parent": null,
-      "indent": 0,
-      "location": "pages/item-landing-who-its-for/index.html",
-      "description": "",
+      "title": "Who it's for",
+      "description": "One short answer to \"why is this for me\", by who is asking.",
       "metadata": {
-        "created": 1794960000,
-        "updated": 1794960000,
         "published": true,
-        "hideInMenu": false,
-        "tags": []
+        "created": 1795046400,
+        "updated": 1795046400
       }
     },
     {
-      "id": "item-landing-compare",
-      "title": "Compare",
+      "id": "item-compare",
+      "indent": 0,
+      "location": "pages/item-compare/index.html",
       "slug": "compare",
       "order": 2,
       "parent": null,
-      "indent": 0,
-      "location": "pages/item-landing-compare/index.html",
-      "description": "",
+      "title": "Compare",
+      "description": "Pick any two. Every platform stands on its own, feature by feature.",
       "metadata": {
-        "created": 1794960000,
-        "updated": 1794960000,
         "published": true,
-        "hideInMenu": false,
-        "tags": []
+        "created": 1795046400,
+        "updated": 1795046400
       }
     },
     {
-      "id": "item-landing-showcase",
-      "title": "Showcase",
-      "slug": "showcase",
+      "id": "item-pillars",
+      "indent": 0,
+      "location": "pages/item-pillars/index.html",
+      "slug": "pillars",
       "order": 3,
       "parent": null,
-      "indent": 0,
-      "location": "pages/item-landing-showcase/index.html",
-      "description": "",
+      "title": "The seven pillars",
+      "description": "Ubiquity sits at the center: HAX is web publishing for everyone, everywhere. These seven are what make something ubiquitous, and every decision is checked against them.",
       "metadata": {
-        "created": 1794960000,
-        "updated": 1794960000,
         "published": true,
-        "hideInMenu": false,
-        "tags": []
+        "created": 1795046400,
+        "updated": 1795046400
       }
     },
     {
-      "id": "item-landing-migrate",
-      "title": "Migrate",
-      "slug": "migrate",
+      "id": "item-get-started",
+      "indent": 0,
+      "location": "pages/item-get-started/index.html",
+      "slug": "get-started",
       "order": 4,
       "parent": null,
-      "indent": 0,
-      "location": "pages/item-landing-migrate/index.html",
-      "description": "",
+      "title": "Get started",
+      "description": "Three ways in. The first needs nothing installed.",
       "metadata": {
-        "created": 1794960000,
-        "updated": 1794960000,
         "published": true,
-        "hideInMenu": false,
-        "tags": []
+        "created": 1795046400,
+        "updated": 1795046400
       }
     },
     {
-      "id": "item-landing-for-agents",
-      "title": "For agents",
-      "slug": "for-agents",
-      "order": 5,
-      "parent": null,
-      "indent": 0,
-      "location": "pages/item-landing-for-agents/index.html",
-      "description": "",
-      "metadata": {
-        "created": 1794960000,
-        "updated": 1794960000,
-        "published": true,
-        "hideInMenu": false,
-        "tags": []
-      }
-    },
-    {
-      "id": "item-landing-hosting",
-      "title": "Hosting",
+      "id": "item-hosting",
+      "indent": 1,
+      "location": "pages/item-hosting/index.html",
       "slug": "hosting",
+      "order": 5,
+      "parent": "item-get-started",
+      "title": "Hosting",
+      "description": "Where it runs. Free paths first.",
+      "metadata": {
+        "published": true,
+        "created": 1795046400,
+        "updated": 1795046400
+      }
+    },
+    {
+      "id": "item-migrate",
+      "indent": 1,
+      "location": "pages/item-migrate/index.html",
+      "slug": "migrate",
       "order": 6,
-      "parent": null,
-      "indent": 0,
-      "location": "pages/item-landing-hosting/index.html",
-      "description": "",
+      "parent": "item-get-started",
+      "title": "Migrate",
+      "description": "Bring what you already have. Pick your source, see the path.",
       "metadata": {
-        "created": 1794960000,
-        "updated": 1794960000,
         "published": true,
-        "hideInMenu": false,
-        "tags": []
+        "created": 1795046400,
+        "updated": 1795046400
       }
     },
     {
-      "id": "item-landing-trust",
-      "title": "Trust",
-      "slug": "trust",
+      "id": "item-for-agents",
+      "indent": 1,
+      "location": "pages/item-for-agents/index.html",
+      "slug": "for-agents",
       "order": 7,
-      "parent": null,
-      "indent": 0,
-      "location": "pages/item-landing-trust/index.html",
-      "description": "",
+      "parent": "item-get-started",
+      "title": "For agents",
+      "description": "Humans lead. Agents help. Ideas ship. When someone says \"I want a website that does X\", HAX is built so an agent can select it, install it and operate it correctly.",
       "metadata": {
-        "created": 1794960000,
-        "updated": 1794960000,
         "published": true,
-        "hideInMenu": false,
-        "tags": []
+        "created": 1795046400,
+        "updated": 1795046400
       }
     },
     {
-      "id": "item-landing-build-with-us",
-      "title": "Build with us",
-      "slug": "build-with-us",
+      "id": "item-community",
+      "indent": 0,
+      "location": "pages/item-community/index.html",
+      "slug": "community",
       "order": 8,
       "parent": null,
-      "indent": 0,
-      "location": "pages/item-landing-build-with-us/index.html",
-      "description": "",
+      "title": "Community",
+      "description": "HAX is built by students, faculty and friends. Here is everyone, what they made, and where it took them.",
       "metadata": {
-        "created": 1794960000,
-        "updated": 1794960000,
         "published": true,
-        "hideInMenu": false,
-        "tags": []
+        "created": 1795046400,
+        "updated": 1795046400
       }
     },
     {
-      "id": "item-landing-learn",
-      "title": "Learn",
-      "slug": "learn",
+      "id": "item-showcase",
+      "indent": 1,
+      "location": "pages/item-showcase/index.html",
+      "slug": "showcase",
       "order": 9,
-      "parent": null,
-      "indent": 0,
-      "location": "pages/item-landing-learn/index.html",
-      "description": "",
+      "parent": "item-community",
+      "title": "Showcase",
+      "description": "Real sites, by what they do. Every example opens the live site and the story of who built it.",
       "metadata": {
-        "created": 1794960000,
-        "updated": 1794960000,
         "published": true,
-        "hideInMenu": false,
-        "tags": []
+        "created": 1795046400,
+        "updated": 1795046400
+      }
+    },
+    {
+      "id": "item-trust",
+      "indent": 1,
+      "location": "pages/item-trust/index.html",
+      "slug": "trust",
+      "order": 10,
+      "parent": "item-community",
+      "title": "Trust",
+      "description": "Governance, sustainability, security and the license, in writing.",
+      "metadata": {
+        "published": true,
+        "created": 1795046400,
+        "updated": 1795046400
+      }
+    },
+    {
+      "id": "item-learn",
+      "indent": 1,
+      "location": "pages/item-learn/index.html",
+      "slug": "learn",
+      "order": 11,
+      "parent": "item-community",
+      "title": "Learn",
+      "description": "A TV for HAX is coming. Pick a channel, play a tutorial, jump into the demo it shows.",
+      "metadata": {
+        "published": true,
+        "created": 1795046400,
+        "updated": 1795046400
+      }
+    },
+    {
+      "id": "item-story-button",
+      "indent": 1,
+      "location": "pages/item-story-button/index.html",
+      "slug": "story-button",
+      "order": 12,
+      "parent": "item-community",
+      "title": "The story button",
+      "description": "One button, the same everywhere: it opens the story on hax.cloud behind whatever it sits beside.",
+      "metadata": {
+        "published": true,
+        "created": 1795046400,
+        "updated": 1795046400
       }
     }
   ]

@@ -1,0 +1,58 @@
+{
+  "canScale": false,
+  "canEditSource": true,
+  "gizmo": {
+    "title": "Cast member",
+    "description": "One audience, played by a character, with words and a button",
+    "icon": "social:person",
+    "color": "blue",
+    "tags": ["Marketing", "content"],
+    "meta": {
+      "author": "HAXTheWeb core team",
+      "owner": "The Pennsylvania State University"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Who this is",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "preset",
+        "title": "Character type",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "seed",
+        "title": "Character seed",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "color",
+        "title": "Stage color (DDD name)",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "link",
+        "title": "Where the button goes",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "label",
+        "title": "Button text",
+        "inputMethod": "textfield"
+      }
+    ],
+    "advanced": []
+  },
+  "contentEditable": true,
+  "demoSchema": [
+    {
+      "tag": "hax-cast-member",
+      "properties": {},
+      "content": ""
+    }
+  ]
+}

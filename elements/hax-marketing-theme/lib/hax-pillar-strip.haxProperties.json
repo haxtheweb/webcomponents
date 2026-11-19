@@ -1,0 +1,27 @@
+{
+  "canScale": false,
+  "canEditSource": true,
+  "gizmo": {
+    "title": "Pillar strip",
+    "description": "A row that holds pillar cards",
+    "icon": "icons:view-column",
+    "color": "blue",
+    "tags": ["Marketing", "content"],
+    "meta": {
+      "author": "HAXTheWeb core team",
+      "owner": "The Pennsylvania State University"
+    }
+  },
+  "settings": {
+    "configure": [],
+    "advanced": []
+  },
+  "contentEditable": true,
+  "demoSchema": [
+    {
+      "tag": "hax-pillar-strip",
+      "properties": {},
+      "content": ""
+    }
+  ]
+}

@@ -20,5 +20,7 @@
   "nameClub": "Our Club",
   "nameDocs": "Project Docs",
   "nameBlog": "My Blog",
-  "nameJourney": "My Journey"
+  "nameJourney": "My Journey",
+  "nameWriting": "My Writing",
+  "screenshotAlt": "Screenshot of the theme the {title} starter uses."
 }

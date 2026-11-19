@@ -687,5 +687,18 @@
   "midi-visualizer": "@haxtheweb/music-player/lib/html-midi-player.js",
   "hax-marketing-theme": "@haxtheweb/hax-marketing-theme/hax-marketing-theme.js",
   "hax-style-switcher": "@haxtheweb/hax-marketing-theme/lib/hax-style-switcher.js",
-  "hax-use-case-picker": "@haxtheweb/hax-marketing-theme/lib/hax-use-case-picker.js"
+  "hax-use-case-picker": "@haxtheweb/hax-marketing-theme/lib/hax-use-case-picker.js",
+  "hax-cast": "@haxtheweb/hax-marketing-theme/lib/hax-marketing-blocks.js",
+  "hax-cast-member": "@haxtheweb/hax-marketing-theme/lib/hax-marketing-blocks.js",
+  "hax-pillar": "@haxtheweb/hax-marketing-theme/lib/hax-marketing-blocks.js",
+  "hax-pillar-strip": "@haxtheweb/hax-marketing-theme/lib/hax-marketing-blocks.js",
+  "hax-feature-row": "@haxtheweb/hax-marketing-theme/lib/hax-marketing-blocks.js",
+  "hax-stat-strip": "@haxtheweb/hax-marketing-theme/lib/hax-marketing-blocks.js",
+  "hax-stat": "@haxtheweb/hax-marketing-theme/lib/hax-marketing-blocks.js",
+  "hax-versus": "@haxtheweb/hax-marketing-theme/lib/hax-marketing-blocks.js",
+  "hax-chip": "@haxtheweb/hax-marketing-theme/lib/hax-marketing-blocks.js",
+  "hax-contributors": "@haxtheweb/hax-marketing-theme/lib/hax-contributors.js",
+  "hax-platform-compare": "@haxtheweb/hax-marketing-theme/lib/hax-platform-compare.js",
+  "hax-reel": "@haxtheweb/hax-marketing-theme/lib/hax-reel.js",
+  "hax-story-link": "@haxtheweb/hax-marketing-theme/lib/hax-story-link.js"
 }

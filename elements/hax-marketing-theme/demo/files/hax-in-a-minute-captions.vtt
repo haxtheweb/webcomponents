@@ -1,0 +1,16 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:08.000
+HAX is the open web, built from plain text and blocks that anyone can edit. Each block is a web component.
+
+00:00:08.000 --> 00:00:17.000
+Same blocks, same editor, which reads each component's schema. Run it as a single site, multisite or multi-tenant, or publish plain static files.
+
+00:00:17.000 --> 00:00:30.000
+The magic script loads each element once. Later pages only fetch what is new, so every follow-up request is faster.
+
+00:00:30.000 --> 00:00:43.000
+Seven community pillars hold it up for students, designers, educators, developers and AI agents: accessible, extensible, free and open, efficient, platform agnostic, remixable and sustainable.
+
+00:00:43.000 --> 00:00:57.000
+So what will you launch? A docs site, a portfolio, a website, a blog, a course. Everyone gets a rocket, and our pillars are your engines of change!

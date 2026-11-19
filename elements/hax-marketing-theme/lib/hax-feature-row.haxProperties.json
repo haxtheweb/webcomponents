@@ -1,0 +1,58 @@
+{
+  "canScale": false,
+  "canEditSource": true,
+  "gizmo": {
+    "title": "Feature row",
+    "description": "A screen of the product beside what it means for you",
+    "icon": "image:photo-size-select-large",
+    "color": "blue",
+    "tags": ["Marketing", "content"],
+    "meta": {
+      "author": "HAXTheWeb core team",
+      "owner": "The Pennsylvania State University"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "eyebrow",
+        "title": "Small label",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "heading",
+        "title": "Heading",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "image",
+        "title": "Picture",
+        "inputMethod": "haxupload"
+      },
+      {
+        "property": "alt",
+        "title": "What the picture shows",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "flip",
+        "title": "Picture on the right",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "color",
+        "title": "Shadow color (DDD name, blank follows the palette)",
+        "inputMethod": "textfield"
+      }
+    ],
+    "advanced": []
+  },
+  "contentEditable": true,
+  "demoSchema": [
+    {
+      "tag": "hax-feature-row",
+      "properties": {},
+      "content": ""
+    }
+  ]
+}

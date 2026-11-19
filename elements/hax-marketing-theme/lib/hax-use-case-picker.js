@@ -19,6 +19,7 @@ const PHRASES = {
   docs: ["documentsMyProject", "nameDocs"],
   blog: ["publishesMyWriting", "nameBlog"],
   "resume-journey": ["tellsMyCareer", "nameJourney"],
+  writing: ["publishesMyWriting", "nameWriting"],
 };
 
 /** an http(s) address, or "" */
@@ -99,6 +100,8 @@ class HaxUseCasePicker extends I18NMixin(DDD) {
       nameDocs: "Project Docs",
       nameBlog: "My Blog",
       nameJourney: "My Journey",
+      nameWriting: "My Writing",
+      screenshotAlt: "Screenshot of the theme the {title} starter uses.",
     };
     this.registerLocalization({
       context: this,
@@ -165,13 +168,15 @@ class HaxUseCasePicker extends I18NMixin(DDD) {
           flex-direction: column;
           gap: var(--ddd-spacing-4);
           padding: var(--ddd-spacing-5);
-          border: var(--ddd-card-border-width, var(--ddd-border-size-sm)) solid
-            light-dark(
-              var(--ddd-theme-default-limestoneLight),
-              var(--ddd-theme-default-slateGray)
+          border: var(--ddd-border-size-md) solid
+            var(
+              --hm-edge,
+              light-dark(
+                var(--ddd-theme-default-coalyGray),
+                var(--ddd-theme-default-white)
+              )
             );
-          border-radius: var(--ddd-card-radius, var(--ddd-radius-xl));
-          box-shadow: var(--ddd-card-shadow, var(--ddd-boxShadow-sm));
+          border-radius: var(--ddd-radius-lg);
           background-color: light-dark(
             var(--ddd-theme-default-white),
             var(--ddd-theme-default-coalyGray)
@@ -181,8 +186,8 @@ class HaxUseCasePicker extends I18NMixin(DDD) {
             var(--ddd-theme-default-white)
           );
         }
-        /* simple-cta keeps its label on one line, so on a phone the card
-           gives it room: less padding and a smaller label */
+        /* simple-cta keeps its label on one line, so on a phone the card gives
+           it room: less padding and a smaller label */
         @media (max-width: 480px) {
           .card {
             padding: var(--ddd-spacing-3);
@@ -191,10 +196,60 @@ class HaxUseCasePicker extends I18NMixin(DDD) {
             --simple-cta-font-size: var(--ddd-font-size-4xs);
           }
         }
+        .preview {
+          display: grid;
+          grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+          gap: var(--ddd-spacing-6);
+          align-items: center;
+        }
+        .preview img {
+          display: block;
+          width: 100%;
+          height: auto;
+          border: var(--ddd-border-size-md) solid
+            var(
+              --hm-edge,
+              light-dark(
+                var(--ddd-theme-default-coalyGray),
+                var(--ddd-theme-default-white)
+              )
+            );
+          border-radius: var(--ddd-radius-md);
+          box-shadow: var(--ddd-spacing-2) var(--ddd-spacing-2)
+            var(--ddd-spacing-0)
+            var(--hm-shade, var(--ddd-theme-default-keystoneYellow));
+          box-sizing: border-box;
+        }
+        .preview .what {
+          font-family: var(--ddd-font-heading, var(--ddd-font-primary));
+          font-size: var(--ddd-font-size-m);
+          font-weight: var(--ddd-font-weight-bold);
+          line-height: var(--ddd-lh-120);
+          margin: var(--ddd-spacing-0) var(--ddd-spacing-0) var(--ddd-spacing-2);
+        }
+        @media (max-width: 640px) {
+          .preview {
+            grid-template-columns: 1fr;
+          }
+          .preview img {
+            width: calc(100% - var(--ddd-spacing-2));
+          }
+        }
+        /* the build button takes the site palette when the theme supplies one */
+        simple-cta {
+          --ddd-theme-primary: var(--hm-brand);
+          --ddd-theme-accent: var(--hm-on-brand);
+        }
         .choices {
           display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+          /* eight starters read as two rows of four */
+          grid-template-columns: repeat(4, minmax(0, 1fr));
           gap: var(--ddd-spacing-2);
+        }
+        @media (max-width: 760px) {
+          .choices {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
         }
         .choice {
           display: flex;
@@ -234,10 +289,10 @@ class HaxUseCasePicker extends I18NMixin(DDD) {
         .choice:active {
           transform: translateY(1px);
         }
-        /* the picked one: ink fill with the surface color as text, and a
-           check mark. Not a palette pair: under some design system bridges
-           palette pairs fall below 4.5:1, and the state must not rest on
-           color alone */
+        /* the picked one: ink fill with the surface color as text, and a check
+           mark. Not a palette pair: under a bridged design system some palette
+           pairs fall below 4.5:1, and the state must not rest on color alone
+           (WCAG 1.4.1, 1.4.3, 1.4.11) */
         .choice[aria-pressed="true"] {
           background-color: light-dark(
             var(--ddd-theme-default-coalyGray),
@@ -439,7 +494,25 @@ class HaxUseCasePicker extends I18NMixin(DDD) {
         ${
           active
             ? html`
-                <p>${active.description}</p>
+                <div class="preview">
+                  ${
+                    this._shot(active)
+                      ? html`<img
+                          src="${this._shot(active)}"
+                          alt="${this.t.screenshotAlt.replace(
+                            "{title}",
+                            active.title,
+                          )}"
+                          width="1440"
+                          height="900"
+                        />`
+                      : ``
+                  }
+                  <div>
+                    <p class="what">${active.title}</p>
+                    <p>${active.description}</p>
+                  </div>
+                </div>
                 <div>
                   <label for="name">${this.t.siteName}</label>
                   <input
@@ -491,6 +564,17 @@ class HaxUseCasePicker extends I18NMixin(DDD) {
         }
       </div>
     `;
+  }
+
+  // the skeleton's own screenshot: the full-size image beside its thumbnail
+  _shot(item) {
+    const file = `${item.image || ""}`.split("/").pop().replace("-thumb", "");
+    return /^[a-z0-9-]+\.jpg$/.test(file)
+      ? new URL(
+          `../../haxcms-elements/lib/theme-screenshots/${file}`,
+          import.meta.url,
+        ).href
+      : "";
   }
 
   static get haxProperties() {

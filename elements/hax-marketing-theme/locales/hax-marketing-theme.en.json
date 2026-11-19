@@ -1,7 +1,8 @@
 {
   "skipToContent": "Skip to content",
   "site": "Site",
-  "switcherHeading": "Same site, your pick. Swap it live:",
-  "payoff": "Every era had its tools. This one's yours.",
-  "license": "HAX is Apache-2.0, the whole stack."
+  "changeLogo": "Change the logo",
+  "anotherPicture": "Show another picture",
+  "anotherTheme": "Show another theme",
+  "switcherHeading": "Same site, your pick. Swap it live:"
 }

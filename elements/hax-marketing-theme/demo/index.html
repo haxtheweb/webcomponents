@@ -18,7 +18,7 @@
     </script>
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>hax-marketing-theme demo</title>
-    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <script src="/node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
     <script>
       globalThis.process = globalThis.process || {
         env: {
@@ -27,9 +27,9 @@
       };
     </script>
     <script>
-      // a static demo of the theme as a visitor sees haxtheweb.org: there is
-      // no backend to ask for editing settings, and the site's components
-      // load through the registry the HAXcms demo uses
+      // a static demo of the theme as a visitor sees a site built with it:
+      // there is no backend to ask for editing settings, and the site's
+      // components load through the registry the HAXcms demo uses
       globalThis.HAXCMSContext = globalThis.HAXCMSContext || "published";
       globalThis.WCAutoloadRegistryFile =
         globalThis.WCAutoloadRegistryFile ||
@@ -40,8 +40,10 @@
       import "@haxtheweb/haxcms-elements/lib/core/haxcms-site-builder.js";
       import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
       import { autorun } from "mobx";
-      import "../hax-marketing-theme.js";
-      import "../lib/hax-use-case-picker.js";
+      import "@haxtheweb/hax-marketing-theme/hax-marketing-theme.js";
+      // page content names its blocks; the autoloader loads each one from the
+      // registry when it shows up
+      import "@haxtheweb/wc-autoload/wc-autoload.js";
       // the marketing theme shows the switcher in its own chrome; when a
       // visitor swaps to another theme it stays reachable as a floating
       // button, so they can always get back

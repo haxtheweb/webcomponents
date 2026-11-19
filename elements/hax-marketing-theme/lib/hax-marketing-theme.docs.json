@@ -5,7 +5,7 @@
   "version": "26.8.0",
   "license": "Apache-2.0",
   "title": "hax-marketing-theme",
-  "description": "A HAXcms theme for the haxtheweb.org landing site, with a live theme, palette and design system switcher and a use case picker that opens HAX with a starter site",
+  "description": "A HAXcms marketing theme, first built for haxtheweb.org: palette-driven chrome, section blocks, a live theme, palette and design system switcher, a use case picker and its own design system",
   "icon": "",
   "tags": [],
   "haxCapable": false,

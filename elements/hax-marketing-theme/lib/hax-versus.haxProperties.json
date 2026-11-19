@@ -1,0 +1,53 @@
+{
+  "canScale": false,
+  "canEditSource": true,
+  "gizmo": {
+    "title": "Versus",
+    "description": "Words beside a head-to-head button with two characters",
+    "icon": "icons:compare-arrows",
+    "color": "blue",
+    "tags": ["Marketing", "content"],
+    "meta": {
+      "author": "HAXTheWeb core team",
+      "owner": "The Pennsylvania State University"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "heading",
+        "title": "Heading",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "link",
+        "title": "Where the button goes",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "label",
+        "title": "Button text",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "left",
+        "title": "Left character seed",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "right",
+        "title": "Right character seed",
+        "inputMethod": "textfield"
+      }
+    ],
+    "advanced": []
+  },
+  "contentEditable": true,
+  "demoSchema": [
+    {
+      "tag": "hax-versus",
+      "properties": {},
+      "content": ""
+    }
+  ]
+}
