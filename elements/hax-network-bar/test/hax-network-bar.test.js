@@ -172,14 +172,52 @@ describe("hax-network-bar", () => {
         a.getAttribute("href"),
       ),
     ).to.deep.equal([
+      "https://www.linkedin.com/company/haxtheweb/",
       "https://discord.gg/aCGxmRHEJP",
       "https://github.com/haxtheweb",
+      "https://x.com/haxtheweb",
     ]);
     btn.dispatchEvent(
       new KeyboardEvent("keydown", { key: "Escape", bubbles: true }),
     );
     await element.updateComplete;
     expect(element.menuOpen).to.be.false;
+  });
+
+  it("leaves Discord and GitHub to the menu wherever the properties fold into it", async () => {
+    const folded = globalThis.matchMedia(
+      "(max-width: 900px), (hover: none)",
+    ).matches;
+    const shown = (sel) =>
+      getComputedStyle(element.shadowRoot.querySelector(sel)).display !==
+      "none";
+    expect(shown(".end a.discord")).to.equal(!folded);
+    expect(shown('slot[name="post"] > a.github')).to.equal(!folded);
+    expect(shown("button.net-btn")).to.equal(folded);
+  });
+
+  it("keeps a page's own post content when the menu holds GitHub", async () => {
+    const own = document.createElement("a");
+    own.slot = "post";
+    own.href = "https://example.com/";
+    own.textContent = "Own link";
+    element.appendChild(own);
+    await element.updateComplete;
+    expect(getComputedStyle(own).display).to.not.equal("none");
+    own.remove();
+  });
+
+  it("keeps a compact bar's pre slot at every width", async () => {
+    element.compact = true;
+    const app = document.createElement("span");
+    app.slot = "pre";
+    app.textContent = "Running in your browser";
+    element.appendChild(app);
+    await element.updateComplete;
+    expect(app.getBoundingClientRect().width).to.be.above(0);
+    app.remove();
+    element.compact = false;
+    await element.updateComplete;
   });
 
   it("marks nothing when current names no site", async () => {
