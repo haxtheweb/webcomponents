@@ -3,11 +3,15 @@
  * @license Apache-2.0, see LICENSE for full text.
  */
 import { LitElement, html, css } from "lit";
-import "@haxtheweb/simple-icon/simple-icon.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
-import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/img-pan-zoom/img-pan-zoom.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import {
+  HaxUiAdminTokens,
+  HaxUiAdminScheme,
+} from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";
+import { HaxUiAdminControls } from "@haxtheweb/d-d-d/lib/HaxUiAdminControls.js";
 /**
  * `image-inspector`
  * `Zoom, Rotate, Mirror, Download, and View image`
@@ -20,74 +24,50 @@ class ImageInspector extends I18NMixin(LitElement) {
    */
   static get styles() {
     return [
+      ...HaxUiAdminTokens,
+      ...HaxUiAdminScheme,
+      ...HaxUiAdminControls,
       css`
         :host {
           display: block;
           overflow: hidden;
         }
-
-        /* toolbar buttons follow the HAX modal icon button: 32px square,
-           4px corners, muted icon that darkens on hover, a visible focus
-           ring from the browser, so the inspector reads as part of the
-           dialog around it */
-        simple-icon-button-lite {
-          display: inline-flex;
-          --simple-icon-width: var(--ddd-icon-4xs, 16px);
-          --simple-icon-height: var(--ddd-icon-4xs, 16px);
-          --simple-icon-button-border-radius: var(--ddd-radius-xs, 4px);
-          --simple-icon-button-focus-opacity: 1;
-          --simple-icon-button-focus-color: currentColor;
-          width: var(--ddd-control-height-xs, 32px);
-          height: var(--ddd-control-height-xs, 32px);
-          margin: 0;
-          padding: 0;
-          border-radius: var(--ddd-radius-xs, 4px);
+        /* the toolbar uses the shared HAX UI button (.hax-ui-btn): a
+           visible word beside its icon, a 3:1 edge, hover, a focus ring
+           and the held-down overlay. The older --image-inspector-* hooks
+           still recolor it from outside. */
+        .internal-btn-wrap .hax-ui-btn {
+          color: var(--image-inspector-color, var(--hax-ui-text));
           background-color: var(
             --image-inspector-background-color,
-            transparent
+            var(--hax-ui-surface)
           );
-          color: var(
-            --image-inspector-color,
-            light-dark(
-              var(--ddd-theme-default-slateGray, #314d64),
-              var(--ddd-theme-default-white65, rgba(255, 255, 255, 0.65))
-            )
-          );
-          transition:
-            background-color var(--ddd-duration-fast, 0.15s)
-              var(--ddd-timing-ease, ease-in-out),
-            color var(--ddd-duration-fast, 0.15s)
-              var(--ddd-timing-ease, ease-in-out);
-          cursor: pointer;
+          text-decoration: none;
         }
-        simple-icon-button-lite:hover,
-        simple-icon-button-lite:focus-within,
-        simple-icon-button-lite:active {
-          color: var(
-            --image-inspector-color,
-            light-dark(
-              var(--ddd-theme-default-coalyGray, #262626),
-              var(--ddd-theme-default-white, #ffffff)
-            )
-          );
+        .internal-btn-wrap .hax-ui-btn:hover {
           background-color: var(
             --image-inspector-background-color-active,
-            light-dark(
-              var(--ddd-theme-default-limestoneMaxLight, #f2f2f4),
-              color-mix(
-                in srgb,
-                var(--ddd-theme-default-white, #ffffff) 8%,
-                transparent
-              )
-            )
+            var(--hax-ui-control-hover)
           );
         }
-        a {
-          display: inline-flex;
-          border-radius: var(--ddd-radius-xs, 4px);
+        /* mirror is a toggle: when on it wears the accent and an underline
+           bar, so on reads differently from off without relying on color */
+        .internal-btn-wrap .hax-ui-btn[aria-pressed="true"] {
+          font-weight: var(--ddd-font-weight-bold, 700);
+          /* words in the accent (beaver / sky light) keep 4.5:1 on the
+             wash in both schemes; the strong accent is for the edge */
+          color: var(--hax-ui-accent);
+          border-color: var(--hax-ui-accent-strong);
+          background-color: var(--hax-ui-accent-soft);
+          box-shadow: inset 0 -3px 0 var(--hax-ui-accent-strong);
+        }
+        .internal-btn-wrap .hax-ui-btn[aria-pressed="true"]:active {
+          box-shadow:
+            inset 0 -3px 0 var(--hax-ui-accent-strong),
+            inset 0 0 0 999px var(--hax-ui-pressed);
         }
         @media (prefers-reduced-motion: reduce) {
-          simple-icon-button-lite {
+          .internal-btn-wrap .hax-ui-btn {
             transition: none;
           }
         }
@@ -104,31 +84,20 @@ class ImageInspector extends I18NMixin(LitElement) {
           display: flex;
           margin-bottom: var(--ddd-spacing-3, 12px);
         }
-        /* one quiet toolbar group: hairline border, 8px corners, 4px gaps */
+        /* one toolbar group; wraps on narrow screens so every label stays */
         .internal-btn-wrap {
-          display: inline-flex;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
           align-items: center;
-          gap: var(--ddd-spacing-1, 4px);
-          padding: var(--ddd-spacing-1, 4px);
-          border: var(--ddd-border-size-xs, 1px) solid
-            var(
-              --image-inspector-border-color,
-              light-dark(
-                var(--ddd-theme-default-limestoneLight, #e4e5e7),
-                color-mix(
-                  in srgb,
-                  var(--ddd-theme-default-white, #ffffff) 18%,
-                  transparent
-                )
-              )
-            );
+          gap: var(--hax-ui-gap);
+          padding: var(--hax-ui-gap);
+          border: 1px solid
+            var(--image-inspector-border-color, var(--hax-ui-line));
           border-radius: var(--ddd-radius-sm, 8px);
           background-color: var(
             --image-inspector-background-color,
-            light-dark(
-              var(--ddd-theme-default-white, #ffffff),
-              var(--ddd-theme-default-coalyGray, #262626)
-            )
+            var(--hax-ui-surface)
           );
         }
       `,
@@ -138,6 +107,7 @@ class ImageInspector extends I18NMixin(LitElement) {
     super();
     this.noLeft = false;
     this.degrees = 0;
+    this.mirrored = false;
     this.src = "";
     this.t = this.t || {};
     this.t = {
@@ -147,6 +117,7 @@ class ImageInspector extends I18NMixin(LitElement) {
       rotateRight: "Rotate right",
       mirrorImage: "Mirror image",
       openInNewWindow: "Open in new window",
+      imageTools: "Image tools",
     };
     this.registerLocalization({
       context: this,
@@ -156,32 +127,72 @@ class ImageInspector extends I18NMixin(LitElement) {
   render() {
     return html`
       <div class="wrap">
-        <div class="internal-btn-wrap">
-          <simple-icon-button-lite
-            label="${this.t.zoomIn}"
-            icon="zoom-in"
+        <div
+          class="internal-btn-wrap"
+          role="toolbar"
+          aria-label="${this.t.imageTools}"
+        >
+          <button
+            type="button"
+            class="hax-ui-btn"
+            data-action="zoom-in"
             @click="${this.zoomIn}"
-          ></simple-icon-button-lite>
-          <simple-icon-button-lite
-            label="${this.t.zoomOut}"
-            icon="zoom-out"
+          >
+            <simple-icon-lite
+              icon="zoom-in"
+              aria-hidden="true"
+            ></simple-icon-lite>
+            <span>${this.t.zoomIn}</span>
+          </button>
+          <button
+            type="button"
+            class="hax-ui-btn"
+            data-action="zoom-out"
             @click="${this.zoomOut}"
-          ></simple-icon-button-lite>
-          <simple-icon-button-lite
-            label="${this.t.rotateRight}"
-            icon="image:rotate-right"
+          >
+            <simple-icon-lite
+              icon="zoom-out"
+              aria-hidden="true"
+            ></simple-icon-lite>
+            <span>${this.t.zoomOut}</span>
+          </button>
+          <button
+            type="button"
+            class="hax-ui-btn"
+            data-action="rotate-right"
             @click="${this.rotateRight}"
-          ></simple-icon-button-lite>
-          <simple-icon-button-lite
-            label="${this.t.mirrorImage}"
-            icon="image:flip"
+          >
+            <simple-icon-lite
+              icon="image:rotate-right"
+              aria-hidden="true"
+            ></simple-icon-lite>
+            <span>${this.t.rotateRight}</span>
+          </button>
+          <button
+            type="button"
+            class="hax-ui-btn"
+            data-action="mirror"
+            aria-pressed="${this.mirrored ? "true" : "false"}"
             @click="${this.mirrorImage}"
-          ></simple-icon-button-lite>
-          <a href="${this.src}" target="_blank" rel="noopener noreferrer">
-            <simple-icon-button-lite
-              label="${this.t.openInNewWindow}"
+          >
+            <simple-icon-lite
+              icon="image:flip"
+              aria-hidden="true"
+            ></simple-icon-lite>
+            <span>${this.t.mirrorImage}</span>
+          </button>
+          <a
+            class="hax-ui-btn"
+            data-action="open"
+            href="${this.src}"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <simple-icon-lite
               icon="launch"
-            ></simple-icon-button-lite>
+              aria-hidden="true"
+            ></simple-icon-lite>
+            <span>${this.t.openInNewWindow}</span>
           </a>
           <slot name="toolbar"></slot>
         </div>
@@ -209,6 +220,13 @@ class ImageInspector extends I18NMixin(LitElement) {
         reflect: true,
       },
       /**
+       * Whether the image is mirrored, toggled by the mirror button.
+       */
+      mirrored: {
+        type: Boolean,
+        reflect: true,
+      },
+      /**
        * Address of the image to inspect.
        */
       src: {
@@ -230,12 +248,27 @@ class ImageInspector extends I18NMixin(LitElement) {
     this.__img = this.shadowRoot.querySelector("#img");
   }
   /**
+   * Rotation and mirroring share one transform, so turning one never
+   * undoes the other.
+   */
+  _applyTransform() {
+    if (!this.__img) return;
+    const parts = [];
+    if (this.degrees % 360 !== 0) {
+      parts.push("rotate(" + this.degrees + "deg)");
+    }
+    if (this.mirrored) {
+      parts.push("scaleX(-1)");
+    }
+    this.__img.style.transform = parts.join(" ");
+  }
+  /**
    * Rotate the image to the right.
    */
   rotateRight() {
     // spin 90
     this.degrees += 90;
-    this.__img.style.transform = "rotate(" + this.degrees + "deg)";
+    this._applyTransform();
     if (this.__img.classList.contains("top-rotated")) {
       this.__img.classList.remove("top-rotated");
     } else {
@@ -244,15 +277,11 @@ class ImageInspector extends I18NMixin(LitElement) {
   }
 
   /**
-   * Flip the image.
+   * Flip the image; a toggle, so the button reports it with aria-pressed.
    */
   mirrorImage() {
-    // toggle from the current state so the first click mirrors immediately
-    if (this.__img.style.transform === "scaleX(-1)") {
-      this.__img.style.transform = "scaleX(1)";
-    } else {
-      this.__img.style.transform = "scaleX(-1)";
-    }
+    this.mirrored = !this.mirrored;
+    this._applyTransform();
   }
 
   /**

@@ -31,6 +31,14 @@
       "hax": null
     },
     {
+      "name": "mirrored",
+      "property": "mirrored",
+      "type": "boolean",
+      "default": "false",
+      "description": "Whether the image is mirrored, toggled by the mirror button.",
+      "hax": null
+    },
+    {
       "name": "src",
       "property": "src",
       "type": "string",
@@ -53,7 +61,7 @@
   ],
   "events": [],
   "hax": {},
-  "surfaceHash": "02583d52ecb6",
+  "surfaceHash": "99b5ff3bbef3",
   "walkthroughs": [
     {
       "id": "",
@@ -61,13 +69,13 @@
       "order": 0,
       "src": "image-inspector.motion.json",
       "file": "lib/image-inspector.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/image-inspector.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {
