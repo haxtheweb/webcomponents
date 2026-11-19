@@ -152,13 +152,6 @@ class PolarisInventTheme extends LTIResizingMixin(
           outline-offset: 2px;
         }
 
-        :host([data-palette="8"]) site-menu,
-        :host([data-palette="11"]) site-menu,
-        :host([data-palette="boldly-lion"]) site-menu {
-          --site-menu-container-background-color: var(--ddd-palette-color-7);
-          --map-menu-item-a-color: var(--ddd-palette-text-color-7);
-        }
-
         scroll-button {
           position: fixed;
           right: 0px;
@@ -242,12 +235,18 @@ class PolarisInventTheme extends LTIResizingMixin(
             var(--ddd-theme-default-inventOrange)
           );
           --map-menu-overflow: visible;
-          --site-menu-container-background-color: var(--ddd-palette-color-6);
-          /* item text paired with the fill under it: the menu panel
-             (color-6, color-7 above) and the active item (color-2) */
-          --map-menu-item-a-color: var(--ddd-palette-text-color-6);
+          /* the menu sits on the .nav fill (palette color-1): map-menu's
+             container is an inline box around block items, so it paints no
+             fill of its own. Every menu color is paired with color-1, the
+             fill people actually see, and the container token names that
+             same fill so the hovered collapse icon (drawn on the container
+             token) matches it. Item text is text-color-1, which DDD holds at
+             WCAG AA (4.5:1) on color-1 in every palette (WCAG 1.4.3, 1.4.11);
+             the active item (color-2) uses text-color-2. */
+          --site-menu-container-background-color: var(--ddd-palette-color-1);
+          --map-menu-item-a-color: var(--ddd-palette-text-color-1);
           --map-menu-item-a-active-color: var(--ddd-palette-text-color-2);
-          --map-menu-item-icon-active-color: white;
+          --map-menu-item-icon-active-color: var(--ddd-palette-text-color-1);
           max-width: 300px;
           overflow-x: hidden;
         }

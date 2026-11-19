@@ -2,6 +2,7 @@ import { fixture, expect, html } from "@open-wc/testing";
 import { PolarisInventTheme } from "../lib/polaris-invent-theme.js";
 import { HAXCMSToastInstance } from "@haxtheweb/haxcms-elements/lib/core/haxcms-toast.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+import { DDDPaletteRegistry } from "@haxtheweb/d-d-d/lib/DDDPaletteRegistry.js";
 
 // store-driven coverage for lib/polaris-invent-theme.js: default palette,
 // firstUpdated scroll wiring, constructor autoruns (themeData.variables,
@@ -114,6 +115,70 @@ describe("polaris-invent-theme", () => {
     element.dataPalette = 11;
     await element.updateComplete;
     expect(element.getAttribute("data-palette")).to.equal("11");
+  });
+
+  // the menu draws no fill of its own (map-menu's container is an inline
+  // box), so its text must read on the .nav fill under it, in every palette
+  // the theme can be given and in both color schemes
+  describe("sidebar menu contrast across palettes", () => {
+    const parse = (c) =>
+      c
+        .match(/rgba?\(([^)]+)\)/)[1]
+        .split(/[ ,/]+/)
+        .filter(Boolean)
+        .map(Number);
+    const lum = ([r, g, b]) => {
+      const f = (v) => {
+        v = v / 255;
+        return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+      };
+      return 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b);
+    };
+    const ratio = (a, b) => {
+      const l1 = lum(parse(a));
+      const l2 = lum(parse(b));
+      return (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05);
+    };
+    // a color as the menu resolves it: read the token off a site-menu placed
+    // where the theme renders one (so the theme's site-menu rule applies),
+    // then paint it on a rendered sibling probe in the same color scheme
+    const resolve = (menu, prop, cssProp = "color") => {
+      const probe = globalThis.document.createElement("span");
+      probe.style[cssProp] = getComputedStyle(menu)
+        .getPropertyValue(prop)
+        .trim();
+      menu.parentNode.appendChild(probe);
+      const color = getComputedStyle(probe)[cssProp];
+      probe.remove();
+      return color;
+    };
+    ["light", "dark"].forEach((scheme) => {
+      DDDPaletteRegistry.forEach((palette) => {
+        it(`menu text reads on the sidebar in ${palette.key} (${scheme})`, async () => {
+          element.style.colorScheme = scheme;
+          element.setAttribute("data-palette", palette.dataPalette);
+          await element.updateComplete;
+          const sr = element.shadowRoot;
+          const navBg = getComputedStyle(
+            sr.querySelector(".nav"),
+          ).backgroundColor;
+          const menu = globalThis.document.createElement("site-menu");
+          sr.querySelector(".left-col").appendChild(menu);
+          const text = resolve(menu, "--map-menu-item-a-color");
+          const panelBg = resolve(
+            menu,
+            "--site-menu-container-background-color",
+            "backgroundColor",
+          );
+          const icon = resolve(menu, "--map-menu-item-icon-active-color");
+          menu.remove();
+          expect(ratio(text, navBg)).to.be.at.least(4.5);
+          // the hovered collapse icon is drawn on the container token
+          expect(ratio(icon, panelBg)).to.be.at.least(3);
+          expect(panelBg).to.equal(navBg);
+        });
+      });
+    });
   });
 
   it("renders the full theme scaffold", () => {
