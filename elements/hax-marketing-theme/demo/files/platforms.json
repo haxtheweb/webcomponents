@@ -152,7 +152,7 @@
         },
         "squarespace": {
           "r": "n",
-          "note": "Limited export"
+          "note": "Exports some pages and posts as XML, without the design"
         },
         "wix": {
           "r": "n",
@@ -470,7 +470,7 @@
         },
         "squarespace": {
           "r": "p",
-          "note": "Within the same template family"
+          "note": "Restyle only; a 7.1 site cannot switch template"
         },
         "wix": {
           "r": "n",
@@ -547,7 +547,7 @@
         },
         "canvas": {
           "r": "p",
-          "note": "REST API"
+          "note": "REST and GraphQL APIs; MCP servers only from the community"
         }
       }
     },
@@ -673,8 +673,8 @@
           "note": "Migrate framework"
         },
         "ghost": {
-          "r": "p",
-          "note": "A few importers"
+          "r": "y",
+          "note": "Migrate tools for WordPress, Substack, Medium and more"
         },
         "grav": {
           "r": "p",
@@ -706,7 +706,7 @@
         },
         "canvas": {
           "r": "p",
-          "note": "Common Cartridge and other LMS packages"
+          "note": "Common Cartridge, Moodle and Blackboard packages"
         }
       }
     },
