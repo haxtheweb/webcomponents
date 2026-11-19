@@ -31,11 +31,11 @@
       "hax": null
     },
     {
-      "name": "menu-open",
-      "property": "menuOpen",
+      "name": "places-open",
+      "property": "placesOpen",
       "type": "boolean",
       "default": "false",
-      "description": "the header menu on narrow screens",
+      "description": "the menu of the site's places, on its name",
       "hax": null
     },
     {
@@ -50,7 +50,7 @@
   "slots": [],
   "events": [],
   "hax": {},
-  "surfaceHash": "7d37a0abdc80",
+  "surfaceHash": "1a95f98bdf19",
   "walkthroughs": [],
   "videos": [],
   "motion": {

@@ -7,10 +7,7 @@ import { autorun, toJS } from "mobx";
 import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
-import {
-  HaxUiAdminTokens,
-  HaxUiDarkChromeDeclarations,
-} from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";
+import { HaxUiAdminTokens } from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";
 import { HAXCMSThemeParts } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
@@ -18,6 +15,10 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-tit
 import "@haxtheweb/haxcms-elements/lib/ui-components/layout/site-region.js";
 import "@haxtheweb/ecosystem-web/ecosystem-web.js";
 import "@haxtheweb/hax-network-bar/hax-network-bar.js";
+import {
+  haxNetworkGlyph,
+  HaxNetworkGlyphStyles,
+} from "@haxtheweb/hax-network-bar/lib/hax-network.js";
 
 const VIEW_KEY = "hax-cloud-view";
 
@@ -74,34 +75,36 @@ function go(url) {
  * tile or a tour from PRAW's ecosystem webs (its `metadata.ecosystem` says
  * which), and every page has two views:
  *
- * - **Web**: the interactive `<ecosystem-web>` routed to that page, with a
- *   link bar to copy the page's address, and the page's own content below.
- *   Selecting a tile, opening a sub-web or picking a tour moves the site to
- *   that page, so the address bar always holds a link to what is shown.
- * - **Site**: a reading layout with the site outline, breadcrumb, title, a
- *   "Where this sits in the web" figure and the page content.
+ * - **Network view** (`view="web"`): the interactive `<ecosystem-web>`
+ *   routed to that page, and the page's own content below. Selecting a
+ *   tile, opening a sub-web or picking a tour moves the site to that page,
+ *   so the address bar always holds a link to what is shown.
+ * - **Content view** (`view="site"`): a reading layout with the site
+ *   outline, title, a "Where this sits in the web" figure and the page
+ *   content.
  *
  * The viewer's choice is remembered on their device. Pages that are not part
- * of a web (people, recent activity) open in the Site view.
+ * of a web (people, recent activity) open in the Content view.
  *
  * **Embed**: a page address ending in `?embed` (or the `embed` attribute)
- * draws the page for an iframe on another site: no network strip, top bar,
- * link bar, outline or footer, only the page's title, a link that opens it
+ * draws the page for an iframe on another site: no network strip, no row
+ * under it, no outline or footer, only the page's title, a link that opens it
  * on the site itself, the web (when the page is part of one) and the page
  * content. Moving around the web inside the frame keeps the embed view.
  *
  * Site-wide settings come from `metadata.theme.variables` in site.json:
  * `ecosystemSrc` (the bundle URL, default `ecosystem-webs.json`), `nav`
- * (`[{label, slug}]`, default the top-level pages), `links`
- * (`[{label, href, kind}]` where kind is `docs`, `portfolio` or `demo`) and
- * `footer` (`[{label, href}]`, plus a `footerNote` line) and `welcome`
+ * (`[{label, slug}]`, default the top-level pages: the site's places, in the
+ * menu on its name) and `footer` (`[{label, href}]`, plus a `footerNote` line) and `welcome`
  * (`{title, text, tour, tourLabel}`: the greeting on the home page, `tour`
  * being the slug of the tour its button starts).
  *
- * The header is the HAX top bar as the HAX editor draws it (the dark HAX UI
- * chrome, the Future Traveler in its right-hand corner), under the HAX
- * network strip. Merlin, in that strip, can jump to every web, tile and tour
- * of the site as well as across the network.
+ * The header is the HAX network bar, then one row: the site's name, opening
+ * a menu of its places; the breadcrumb; the two views, Network view and
+ * Content view; and the link to this view, whose address is the Copy
+ * button. HAXTheWeb, Build now and Web components are not repeated there:
+ * the network bar has them. Merlin, in that bar, can jump to every web,
+ * tile and tour of the site as well as across the network.
  *
  * @title Ecosystem
  * @element ecosystem-theme
@@ -118,12 +121,13 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     this.t = {
       skip: "Skip to content",
       home: "home",
-      main: "Main",
-      menu: "Menu",
       view: "View",
-      web: "Web",
-      site: "Site",
-      linkToView: "Link to this view",
+      networkView: "Network view",
+      contentView: "Content view",
+      networkViewAbout: "Every part of HAX as a web you can move through",
+      contentViewAbout: "This page to read, with the site outline",
+      places: "Places on this site",
+      copyThis: "Copy the link to this view",
       copy: "Copy link",
       copied: "Copied",
       outline: "Site outline",
@@ -140,7 +144,7 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     };
     this.view = "web";
     this.embed = readEmbed();
-    this.menuOpen = false;
+    this.placesOpen = false;
     this.outlineOpen = false;
     this._items = [];
     this._active = null;
@@ -152,6 +156,11 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     this._disposers = [];
     this._onWebChanged = this._onWebChanged.bind(this);
     this._onMerlin = this._onMerlin.bind(this);
+    this._away = (e) => {
+      if (this.placesOpen && !e.composedPath().includes(this)) {
+        this.placesOpen = false;
+      }
+    };
   }
 
   static get properties() {
@@ -161,8 +170,8 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
       view: { type: String, reflect: true },
       /** draw the page for an iframe on another site: no site chrome (set by ?embed in the address) */
       embed: { type: Boolean, reflect: true },
-      /** the header menu on narrow screens */
-      menuOpen: { type: Boolean, reflect: true, attribute: "menu-open" },
+      /** the menu of the site's places, on its name */
+      placesOpen: { type: Boolean, reflect: true, attribute: "places-open" },
       /** the site outline on narrow screens, where it folds behind its heading */
       outlineOpen: { type: Boolean, reflect: true, attribute: "outline-open" },
       _items: { type: Array, state: true },
@@ -176,6 +185,7 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
 
   connectedCallback() {
     super.connectedCallback();
+    globalThis.addEventListener("click", this._away);
     this._disposers.push(
       autorun(() => {
         const m = toJS(store.manifest);
@@ -196,7 +206,7 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           const moved = !!(this._active && a && this._active.id !== a.id);
           this._active = a || null;
           this._copied = false;
-          this.menuOpen = false;
+          this.placesOpen = false;
           this.outlineOpen = false;
           // an embed always shows the web: the viewer's remembered choice is for the site itself
           this.view = this._eco()
@@ -228,6 +238,7 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
   }
 
   disconnectedCallback() {
+    globalThis.removeEventListener("click", this._away);
     this._disposers.forEach((d) => d());
     this._disposers = [];
     clearTimeout(this._copyTimer);
@@ -281,12 +292,6 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     return this._items
       .filter((i) => !i.parent)
       .map((i) => ({ label: i.title, item: i }));
-  }
-  _links(kind) {
-    const v = this._vars.links;
-    return (Array.isArray(v) ? v : []).filter(
-      (l) => l && l.kind === kind && /^https?:\/\//.test(l.href || ""),
-    );
   }
   _href(item) {
     return item ? item.slug : "";
@@ -386,7 +391,7 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
       }, 2000);
     };
     const select = () => {
-      const code = this.shadowRoot.querySelector(".linkbar code");
+      const code = this.shadowRoot.querySelector(".copylink code");
       const sel = globalThis.getSelection && globalThis.getSelection();
       if (code && sel) {
         const r = globalThis.document.createRange();
@@ -407,6 +412,7 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     return [
       super.styles,
       ...HaxUiAdminTokens,
+      HaxNetworkGlyphStyles,
       css`
         :host {
           display: block;
@@ -494,182 +500,253 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           --hax-network-bar-max-width: var(--eco-wrap);
           --hax-network-bar-gutter: var(--eco-gutter);
         }
-        /* the HAX top bar, as the HAX editor draws it: the dark HAX UI
-           chrome in both schemes, 64px, a hairline under it; the Future
-           Traveler's corner is the network bar's, above it */
-        header.top {
-          ${HaxUiDarkChromeDeclarations}
-          background-color: var(--ddd-theme-default-coalyGray);
-          color: var(--hax-ui-on-titlebar);
-          font-family: var(--hax-ui-admin-font-family);
-          border-bottom: 1px solid var(--hax-ui-line);
-        }
-        header.top .wrap {
-          display: grid;
-          grid-template-columns: auto minmax(0, 1fr) auto minmax(0, 1fr) auto;
-          align-items: center;
-          gap: 0 var(--ddd-spacing-6);
-          min-height: 64px;
-          padding-inline-end: var(--ddd-spacing-3);
-        }
-        .brand {
-          color: var(--hax-ui-on-titlebar);
-          font-family: var(--ddd-font-navigation);
-          font-weight: var(--ddd-font-weight-bold);
-          font-size: var(--ddd-font-size-xs);
-          white-space: nowrap;
-        }
-        .brand:hover {
-          text-decoration: none;
-        }
-        .navs {
-          display: contents;
-        }
-        .brand {
-          grid-column: 1;
-          grid-row: 1;
-        }
-        nav.main {
-          grid-column: 2;
-          grid-row: 1;
-        }
-        .toggle {
-          grid-column: 3;
-          grid-row: 1;
-        }
-        .acts {
-          grid-column: 4;
-          grid-row: 1;
-        }
-        .end {
-          grid-column: 5;
-          grid-row: 1;
-        }
-        nav.main {
-          display: flex;
-          flex-wrap: wrap;
-          align-items: center;
-          gap: var(--ddd-spacing-1) var(--ddd-spacing-6);
-          font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-4xs);
-          min-width: 0;
-        }
-        nav.main a {
-          color: var(--hax-ui-on-titlebar);
-          font-weight: var(--ddd-font-weight-regular);
-          padding-block: var(--ddd-spacing-2);
-          border-bottom: var(--ddd-border-size-md) solid transparent;
-        }
-        nav.main a:hover {
-          text-decoration: none;
-          border-bottom-color: var(--ddd-theme-default-pughBlue);
-        }
-        nav.main a[aria-current="page"] {
-          font-weight: var(--ddd-font-weight-bold);
-          border-bottom-color: var(--ddd-theme-default-keystoneYellow);
-        }
-        nav.main a.out {
-          color: var(--ddd-theme-default-linkLight);
-        }
-        .acts {
-          display: flex;
-          flex-wrap: wrap;
-          align-items: center;
-          justify-content: flex-end;
-          gap: var(--ddd-spacing-3);
-        }
-        .pill {
-          font-size: var(--ddd-font-size-4xs);
-          font-weight: var(--ddd-font-weight-bold);
-          padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
-          border-radius: var(--ddd-radius-rounded);
-          line-height: 1.5;
-          white-space: nowrap;
-        }
-        .pill:hover {
-          text-decoration: none;
-        }
-        .pill.portfolio {
-          color: var(--hax-ui-on-titlebar);
-          border: var(--ddd-border-size-sm) solid var(--hax-ui-line);
-        }
-        .pill.portfolio:hover {
-          background-color: var(--hax-ui-hover);
-        }
-        .pill.demo {
-          color: var(--ddd-theme-default-coalyGray);
-          background-color: var(--ddd-theme-default-keystoneYellow);
-          border: var(--ddd-border-size-sm) solid
-            var(--ddd-theme-default-keystoneYellow);
-        }
-        /* Web or Site, in the middle like the editor's main action */
-        .toggle {
-          display: inline-flex;
-          border: 1px solid var(--hax-ui-line);
-          border-radius: var(--ddd-radius-rounded);
-          background-color: #111;
-        }
-        .toggle button {
-          font-family: var(--hax-ui-admin-font-family);
-          font-size: var(--ddd-font-size-4xs);
-          font-weight: var(--ddd-font-weight-medium);
-          padding: var(--ddd-spacing-2) var(--ddd-spacing-5);
-          min-height: 40px;
-          border: 0;
-          background: transparent;
-          color: var(--hax-ui-on-titlebar);
-          cursor: pointer;
-        }
-        .toggle button:hover {
-          background-color: var(--hax-ui-hover);
-        }
-        .toggle button:first-child {
-          border-start-start-radius: var(--ddd-radius-rounded);
-          border-end-start-radius: var(--ddd-radius-rounded);
-        }
-        .toggle button:last-child {
-          border-start-end-radius: var(--ddd-radius-rounded);
-          border-end-end-radius: var(--ddd-radius-rounded);
-        }
-        .toggle button[aria-pressed="true"] {
-          background-color: var(--ddd-theme-default-white);
-          color: var(--ddd-theme-default-coalyGray);
-          font-weight: var(--ddd-font-weight-bold);
-        }
-        /* the ring sits outside the button, on the bar, so it keeps its
-           contrast on the white pressed half too */
-        .toggle button:focus-visible {
+        /* ---------- the view bar ---------- */
+        .viewbar {
+          color-scheme: dark;
           position: relative;
           z-index: 1;
-          outline-offset: 2px;
+          background-color: var(--ddd-theme-default-potentialMidnight);
+          color: var(--ddd-theme-default-white);
+          border-bottom: var(--ddd-spacing-1) solid
+            var(--ddd-theme-default-keystoneYellow);
+          font-family: var(--ddd-font-navigation);
+          --site-breadcrumb-margin: 0;
+          --site-breadcrumb-last-color: var(--ddd-theme-default-white);
         }
-        header.top a:focus-visible,
-        header.top button:focus-visible {
-          outline: var(--hax-ui-focus-width, 2px) solid var(--hax-ui-focus);
+        .viewbar .wrap {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: var(--ddd-spacing-2) var(--ddd-spacing-4);
+          min-height: 56px;
+          padding-block: var(--ddd-spacing-2);
         }
-        .end {
+        .vb-crumbs {
           display: flex;
           align-items: center;
           gap: var(--ddd-spacing-2);
+          flex: 1 1 280px;
+          min-width: 0;
         }
-        .menu-btn {
-          display: none;
-          width: 44px;
-          height: 44px;
-          border: 0;
+        .vb-crumbs site-breadcrumb {
+          min-width: 0;
+          flex: 1 1 auto;
+        }
+
+        /* hax.cloud: the site's name in slab type, opening its places */
+        .places {
+          position: relative;
+          flex: none;
+        }
+        .places-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--ddd-spacing-2);
+          min-height: 40px;
+          padding: 0 var(--ddd-spacing-2) 0 var(--ddd-spacing-1);
+          border: var(--ddd-border-size-sm) solid
+            var(--ddd-theme-default-limestoneGray);
           border-radius: var(--ddd-radius-sm);
           background-color: transparent;
-          color: var(--hax-ui-on-titlebar);
+          color: var(--ddd-theme-default-white);
+          font-family: var(--ddd-font-secondary, var(--ddd-font-primary));
+          font-size: var(--ddd-font-size-xs);
+          font-weight: var(--ddd-font-weight-bold);
+          cursor: pointer;
+          --prop: var(--ddd-theme-default-original87Pink);
+          --glyph-size: 26px;
+        }
+        .places-btn:hover,
+        .places-btn[aria-expanded="true"] {
+          border-color: var(--ddd-theme-default-white);
+        }
+        .places-btn:focus-visible {
+          outline: var(--ddd-border-size-md) solid
+            var(--ddd-theme-default-keystoneYellow);
+          outline-offset: 2px;
+        }
+        .places-btn:active {
+          transform: translateY(1px);
+        }
+        .places-btn svg {
+          width: 20px;
+          height: 20px;
+          transition: transform 0.15s;
+        }
+        :host([places-open]) .places-btn svg {
+          transform: rotate(180deg);
+        }
+        .places-menu {
+          display: none;
+          position: absolute;
+          top: calc(100% + var(--ddd-spacing-2));
+          left: 0;
+          min-width: 240px;
+          margin: 0;
+          padding: var(--ddd-spacing-2);
+          list-style: none;
+          background-color: var(--ddd-theme-default-potentialMidnight);
+          border: var(--ddd-border-size-md) solid var(--ddd-theme-default-white);
+          border-radius: var(--ddd-radius-sm);
+          box-shadow: var(--ddd-spacing-1) var(--ddd-spacing-1) 0
+            var(--ddd-theme-default-keystoneYellow);
+        }
+        :host([places-open]) .places-menu {
+          display: block;
+        }
+        .places-menu a {
+          display: block;
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
+          border-radius: var(--ddd-radius-xs);
+          color: var(--ddd-theme-default-white);
+          font-size: var(--ddd-font-size-4xs);
+          text-decoration: none;
+        }
+        .places-menu a:hover,
+        .places-menu a:focus-visible {
+          background-color: var(--ddd-theme-default-white);
+          color: var(--ddd-theme-default-potentialMidnight);
+          outline: none;
+        }
+        .places-menu a[aria-current="page"] {
+          font-weight: var(--ddd-font-weight-bold);
+          box-shadow: inset var(--ddd-spacing-1) 0 0
+            var(--ddd-theme-default-keystoneYellow);
+        }
+
+        /* the two views: a sticker switch, the view you are in filled */
+        .views {
+          display: inline-flex;
+          flex: none;
+          padding: 3px;
+          gap: 3px;
+          border: var(--ddd-border-size-md) solid var(--ddd-theme-default-white);
+          border-radius: var(--ddd-radius-rounded, 999px);
+          box-shadow: var(--ddd-spacing-1) var(--ddd-spacing-1) 0
+            var(--ddd-theme-default-keystoneYellow);
+        }
+        .views button {
+          display: inline-flex;
           align-items: center;
-          justify-content: center;
+          gap: var(--ddd-spacing-2);
+          min-height: 36px;
+          padding: 0 var(--ddd-spacing-4) 0 var(--ddd-spacing-3);
+          border: var(--ddd-border-size-sm) solid
+            var(--ddd-theme-default-limestoneGray);
+          border-radius: var(--ddd-radius-rounded, 999px);
+          background-color: transparent;
+          color: var(--ddd-theme-default-white);
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-weight-bold);
+          white-space: nowrap;
           cursor: pointer;
         }
-        .menu-btn:hover {
-          background-color: var(--hax-ui-hover);
+        .views button svg {
+          width: 20px;
+          height: 20px;
+          flex: none;
         }
-        .menu-btn svg {
-          width: 22px;
-          height: 22px;
+        .views button:hover {
+          border-color: var(--ddd-theme-default-white);
+        }
+        .views button:focus-visible {
+          outline: var(--ddd-border-size-md) solid
+            var(--ddd-theme-default-keystoneYellow);
+          outline-offset: 2px;
+        }
+        .views button:active {
+          transform: translateY(1px);
+        }
+        .views button[aria-pressed="true"] {
+          background-color: var(--ddd-theme-default-keystoneYellow);
+          color: var(--ddd-theme-default-potentialMidnight);
+          border-color: var(--ddd-theme-default-potentialMidnight);
+        }
+
+        /* the link to this view: the address is the button */
+        .copylink {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--ddd-spacing-2);
+          flex: 0 1 auto;
+          min-width: 0;
+          min-height: 40px;
+          padding: 0 var(--ddd-spacing-3);
+          border: var(--ddd-border-size-md) solid var(--ddd-theme-default-white);
+          border-radius: var(--ddd-radius-sm);
+          background-color: var(--ddd-theme-default-white);
+          color: var(--ddd-theme-default-potentialMidnight);
+          font-family: var(--ddd-font-primary);
+          font-size: var(--ddd-font-size-4xs);
+          box-shadow: var(--ddd-spacing-1) var(--ddd-spacing-1) 0
+            var(--ddd-theme-default-keystoneYellow);
+          cursor: pointer;
+          transition:
+            transform 0.12s,
+            box-shadow 0.12s;
+        }
+        .copylink:hover {
+          transform: translate(-1px, -1px);
+          box-shadow: calc(var(--ddd-spacing-1) * 1.5)
+            calc(var(--ddd-spacing-1) * 1.5) 0
+            var(--ddd-theme-default-keystoneYellow);
+        }
+        .copylink:active {
+          transform: translate(2px, 2px);
+          box-shadow: none;
+        }
+        .copylink:focus-visible {
+          outline: var(--ddd-border-size-md) solid
+            var(--ddd-theme-default-keystoneYellow);
+          outline-offset: 3px;
+        }
+        .copylink code {
+          all: unset;
+          font-family: var(--ddd-font-primary);
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          min-width: 0;
+        }
+        .copylink .what {
+          font-weight: var(--ddd-font-weight-bold);
+          font-family: var(--ddd-font-navigation);
+          white-space: nowrap;
+        }
+        .copylink svg {
+          flex: none;
+          width: 18px;
+          height: 18px;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .copylink,
+          .copylink:hover,
+          .copylink:active,
+          .views button:active,
+          .places-btn:active {
+            transform: none;
+            transition: none;
+          }
+        }
+        @media (max-width: 1100px) {
+          .vb-crumbs {
+            order: 3;
+            flex-basis: 100%;
+          }
+        }
+        @media (max-width: 640px) {
+          .views .long,
+          .copylink code,
+          .copylink .what {
+            display: none;
+          }
+          .views button {
+            padding: 0 var(--ddd-spacing-3);
+          }
+          .viewbar .wrap {
+            gap: var(--ddd-spacing-2);
+          }
         }
 
         /* ---------- welcome ---------- */
@@ -740,37 +817,6 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           background-color: var(--eco-current);
         }
 
-        /* ---------- link bar ---------- */
-        .linkbar {
-          background-color: var(--eco-band);
-          border-bottom: var(--ddd-border-xs);
-          border-color: var(--eco-line);
-        }
-        .linkbar .wrap {
-          display: flex;
-          flex-wrap: wrap;
-          align-items: center;
-          gap: var(--ddd-spacing-3) var(--ddd-spacing-6);
-          padding-block: var(--ddd-spacing-3);
-          font-size: var(--ddd-font-size-4xs);
-        }
-        .linkbar site-breadcrumb {
-          flex: 1 1 320px;
-          min-width: 0;
-        }
-        .linkbar .lbl {
-          color: var(--eco-muted);
-        }
-        code.url {
-          font-family: var(--ddd-font-primary);
-          font-size: var(--ddd-font-size-4xs);
-          background-color: var(--eco-bg);
-          border: var(--ddd-border-xs);
-          border-color: var(--eco-line);
-          border-radius: var(--ddd-radius-xs);
-          padding: var(--ddd-spacing-1) var(--ddd-spacing-3);
-          overflow-wrap: anywhere;
-        }
         .btn {
           font-family: var(--ddd-font-primary);
           font-size: var(--ddd-font-size-4xs);
@@ -895,10 +941,6 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           box-sizing: border-box;
           padding: var(--ddd-spacing-12) var(--eco-gutter) var(--ddd-spacing-8);
         }
-        main site-breadcrumb {
-          display: block;
-          margin-bottom: var(--ddd-spacing-6);
-        }
         .eyebrow {
           margin: 0 0 var(--ddd-spacing-2);
           font-family: var(--ddd-font-navigation);
@@ -966,67 +1008,11 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           :host {
             --eco-gutter: var(--ddd-spacing-4);
           }
-          header.top .wrap {
-            grid-template-columns: minmax(0, 1fr) auto auto;
-            gap: 0 var(--ddd-spacing-2);
-          }
-          .toggle {
-            grid-column: 2;
-          }
-          .end {
-            grid-column: 3;
-          }
-          nav.main,
-          .acts {
-            grid-column: auto;
-            grid-row: auto;
-          }
-          .brand {
-            font-size: var(--ddd-font-size-3xs);
-            white-space: normal;
-          }
-          .menu-btn {
-            display: inline-flex;
-          }
-          .toggle button {
-            padding-inline: var(--ddd-spacing-3);
-          }
-          .navs {
-            display: none;
-            grid-column: 1 / -1;
-            grid-row: 2;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: var(--ddd-spacing-3);
-            padding-bottom: var(--ddd-spacing-4);
-          }
-          :host([menu-open]) .navs {
-            display: flex;
-          }
-          nav.main {
-            flex-direction: column;
-            align-items: flex-start;
-          }
-          .acts {
-            justify-content: flex-start;
-          }
           .welcome .wrap {
             padding-block: var(--ddd-spacing-6);
           }
           .welcome h1 {
             font-size: var(--ddd-font-size-m);
-          }
-          .linkbar site-breadcrumb,
-          .linkbar .lbl,
-          .linkbar .btn {
-            display: none;
-          }
-          .linkbar code.url {
-            background: transparent;
-            border: 0;
-            padding: 0;
-            color: var(--eco-muted);
-            font-family: var(--ddd-font-navigation);
           }
           nav.outline {
             max-width: none;
@@ -1089,16 +1075,6 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           :host {
             --eco-gutter: var(--ddd-spacing-3);
           }
-          header.top .wrap {
-            gap: 0 var(--ddd-spacing-1);
-            padding-inline-end: var(--ddd-spacing-1);
-          }
-          .toggle button {
-            padding-inline: var(--ddd-spacing-2);
-          }
-          .end {
-            gap: 0;
-          }
         }
       `,
     ];
@@ -1144,23 +1120,6 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
                 </div>
               </div>
             </section>`
-          : ""
-      }
-      ${
-        web && !embed
-          ? html`<div class="linkbar">
-              <div class="wrap">
-                <site-breadcrumb></site-breadcrumb>
-                <span class="lbl">${this.t.linkToView}</span>
-                <code class="url">${this._pageUrl()}</code>
-                <button class="btn" type="button" @click="${this._copy}">
-                  ${this._copied ? this.t.copied : this.t.copy}
-                </button>
-                <span class="visually-hidden" role="status"
-                  >${this._copied ? this.t.copied : ""}</span
-                >
-              </div>
-            </div>`
           : ""
       }
       <div class="${web ? "" : "wrap"}">
@@ -1209,9 +1168,7 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
                       @ecosystem-web-changed="${this._onWebChanged}"
                     ></ecosystem-web>
                   </section>`
-                : embed
-                  ? ""
-                  : html`<site-breadcrumb></site-breadcrumb>`
+                : ""
             }
             <div class="content">
               ${
@@ -1258,90 +1215,70 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
       ${embed ? "" : this._renderFooter()}
     `;
   }
-  /** The network strip and the HAX top bar: everything above a page on the site itself. */
+  /**
+   * The network bar, then one row: the site's name opening its places, the
+   * breadcrumb, the two views and the link to this view. Everything above a
+   * page on the site itself.
+   */
   _renderTop(web, top) {
     return html`
       <hax-network-bar
         current="cloud"
         @hax-network-merlin="${this._onMerlin}"
       ></hax-network-bar>
-      <header class="top">
+      <div class="viewbar">
         <div class="wrap">
-          <a
-            class="brand"
-            href="${this._items.length ? this._items[0].slug : "./"}"
-            >${this._title}</a
-          >
-          <div class="toggle" role="group" aria-label="${this.t.view}">
+          <div class="places">
+            <button
+              class="places-btn glyph-host"
+              type="button"
+              aria-expanded="${this.placesOpen ? "true" : "false"}"
+              aria-controls="places"
+              aria-label="${this._title} (${this.t.places})"
+              @click="${this._togglePlaces}"
+              @keydown="${this._placesKey}"
+            >
+              ${haxNetworkGlyph("cloud")}<span>${this._title}</span>
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M6 9l6 6 6-6"></path>
+              </svg>
+            </button>
+            <ul
+              class="places-menu"
+              id="places"
+              aria-label="${this.t.places}"
+              @keydown="${this._placesKey}"
+            >
+              ${this._nav().map(
+                (n) =>
+                  html`<li>
+                    <a
+                      href="${this._href(n.item)}"
+                      aria-current="${n.item.id === top ? "page" : "false"}"
+                      >${n.label}</a
+                    >
+                  </li>`,
+              )}
+            </ul>
+          </div>
+          <div class="vb-crumbs">
+            <site-breadcrumb></site-breadcrumb>
+          </div>
+          <div class="views" role="group" aria-label="${this.t.view}">
             <button
               type="button"
               aria-pressed="${web ? "true" : "false"}"
+              aria-label="${this.t.networkView}"
+              title="${this.t.networkViewAbout}"
               @click="${() => this._setView("web")}"
-            >
-              ${this.t.web}
-            </button>
-            <button
-              type="button"
-              aria-pressed="${web ? "false" : "true"}"
-              @click="${() => this._setView("site")}"
-            >
-              ${this.t.site}
-            </button>
-          </div>
-          <div class="navs" id="navs">
-            <nav class="main" aria-label="${this.t.main}">
-              ${this._nav().map(
-                (n) =>
-                  html`<a
-                    href="${this._href(n.item)}"
-                    aria-current="${n.item.id === top ? "page" : "false"}"
-                    >${n.label}</a
-                  >`,
-              )}
-              ${this._links("docs").map(
-                (l) =>
-                  html`<a
-                    class="out"
-                    href="${l.href}"
-                    target="_blank"
-                    rel="noopener"
-                    >${l.label} ↗</a
-                  >`,
-              )}
-            </nav>
-            <div class="acts">
-              ${this._links("portfolio").map(
-                (l) =>
-                  html`<a
-                    class="pill portfolio"
-                    href="${l.href}"
-                    target="_blank"
-                    rel="noopener"
-                    >${l.label} ↗</a
-                  >`,
-              )}
-              ${this._links("demo").map(
-                (l) =>
-                  html`<a
-                    class="pill demo"
-                    href="${l.href}"
-                    target="_blank"
-                    rel="noopener"
-                    >${l.label} ↗</a
-                  >`,
-              )}
-            </div>
-          </div>
-          <div class="end">
-            <button
-              class="menu-btn"
-              type="button"
-              aria-label="${this.t.menu}"
-              aria-expanded="${this.menuOpen ? "true" : "false"}"
-              aria-controls="navs"
-              @click="${() => {
-                this.menuOpen = !this.menuOpen;
-              }}"
             >
               <svg
                 aria-hidden="true"
@@ -1350,14 +1287,116 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
                 stroke="currentColor"
                 stroke-width="2"
                 stroke-linecap="round"
+                stroke-linejoin="round"
               >
-                <path d="M4 6h16M4 12h16M4 18h16"></path>
+                <circle cx="12" cy="5" r="2.5"></circle>
+                <circle cx="5" cy="19" r="2.5"></circle>
+                <circle cx="19" cy="19" r="2.5"></circle>
+                <path d="M12 7.5v4M12 11.5l-5.5 5.5M12 11.5l5.5 5.5"></path>
               </svg>
+              <span class="long">${this.t.networkView}</span>
+            </button>
+            <button
+              type="button"
+              aria-pressed="${web ? "false" : "true"}"
+              aria-label="${this.t.contentView}"
+              title="${this.t.contentViewAbout}"
+              @click="${() => this._setView("site")}"
+            >
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M14 3H6v18h12V7z"></path>
+                <path d="M14 3v4h4M9 12h6M9 16h6"></path>
+              </svg>
+              <span class="long">${this.t.contentView}</span>
             </button>
           </div>
+          <button
+            class="copylink"
+            type="button"
+            aria-label="${this._pageUrl()} ${this._copied ? this.t.copied : this.t.copy}"
+            title="${this.t.copyThis}"
+            @click="${this._copy}"
+          >
+            ${
+              this._copied
+                ? html`<svg
+                    aria-hidden="true"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M5 12l5 5L19 7"></path>
+                  </svg>`
+                : html`<svg
+                    aria-hidden="true"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"
+                    ></path>
+                    <path
+                      d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"
+                    ></path>
+                  </svg>`
+            }
+            <code>${this._pageUrl()}</code>
+            <span class="what"
+              >${this._copied ? this.t.copied : this.t.copy}</span
+            >
+          </button>
+          <span class="visually-hidden" role="status"
+            >${this._copied ? this.t.copied : ""}</span
+          >
         </div>
-      </header>
+      </div>
     `;
+  }
+  _togglePlaces(e) {
+    e.stopPropagation();
+    this.placesOpen = !this.placesOpen;
+    if (this.placesOpen) {
+      this.updateComplete.then(() => {
+        const first = this.shadowRoot.querySelector(".places-menu a");
+        if (first) first.focus();
+      });
+    }
+  }
+  /** Escape closes the places menu; the arrow keys move through it */
+  _placesKey(e) {
+    if (e.key === "Escape" && this.placesOpen) {
+      this.placesOpen = false;
+      const b = this.shadowRoot.querySelector(".places-btn");
+      if (b) b.focus();
+      return;
+    }
+    if (!this.placesOpen || (e.key !== "ArrowDown" && e.key !== "ArrowUp"))
+      return;
+    const links = [...this.shadowRoot.querySelectorAll(".places-menu a")];
+    const at = links.indexOf(this.shadowRoot.activeElement);
+    const next =
+      e.key === "ArrowDown"
+        ? (at + 1) % links.length
+        : (at - 1 + links.length) % links.length;
+    if (links[next]) {
+      e.preventDefault();
+      links[next].focus();
+    }
   }
   /** The embed view's only chrome: the page's title and a link that opens it on the site. */
   _renderEmbedBar() {
@@ -1399,7 +1438,7 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
       </footer>
     `;
   }
-  /** The page's group, from its eyebrow paragraph (shown above the title in the Site view). */
+  /** The page's group, from its eyebrow paragraph (shown above the title in the Content view). */
   _eyebrow() {
     const kids = this.children ? [...this.children] : [];
     const p = kids.find(
