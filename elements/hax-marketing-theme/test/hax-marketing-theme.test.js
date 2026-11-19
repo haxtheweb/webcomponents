@@ -4,7 +4,23 @@ import {
   forceThemeReveal,
   lockLightColorScheme,
 } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeA11yTestHelpers.js";
-import "../hax-marketing-theme.js";
+import { HaxMarketingTheme } from "../hax-marketing-theme.js";
+
+// a theme made from this one, as the README describes
+class MarketingSubTheme extends HaxMarketingTheme {
+  static get tag() {
+    return "marketing-sub-theme";
+  }
+  renderHero({ active }) {
+    return html`<div class="hero own">
+      <h1>${active ? active.title : ""}</h1>
+    </div>`;
+  }
+  renderContentTop() {
+    return html`<p class="own-top">Above the page</p>`;
+  }
+}
+globalThis.customElements.define(MarketingSubTheme.tag, MarketingSubTheme);
 
 const tick = (ms) => new Promise((r) => setTimeout(r, ms || 60));
 
@@ -184,6 +200,38 @@ describe("hax-marketing-theme", function () {
       ],
     });
     expect(root.querySelector(".hero hax-reel.sticker").index).to.equal(1);
+  });
+
+  it("marks the property the site names in the network bar", async () => {
+    let root = await show("start", { network: "hax" });
+    expect(root.querySelector("hax-network-bar").current).to.equal("web");
+    root = await show("start", { network: "hax", networkCurrent: "learn" });
+    expect(root.querySelector("hax-network-bar").current).to.equal("learn");
+  });
+
+  it("lets a theme made from it replace the title band and add above the page", async () => {
+    store.manifest = manifest();
+    store.activeId = "compare";
+    const sub = await fixture(
+      html`<marketing-sub-theme></marketing-sub-theme>`,
+    );
+    await tick();
+    await sub.updateComplete;
+    await forceThemeReveal(sub);
+    const root = sub.shadowRoot;
+    expect(root.querySelector(".hero.own h1").textContent).to.equal("Compare");
+    expect(root.querySelector("site-active-title")).to.not.exist;
+    expect(root.querySelector("main .own-top")).to.exist;
+    // the parts it did not replace are still the parent's
+    expect(root.querySelector("header nav")).to.exist;
+    expect(root.querySelector("#contentcontainer #slot slot")).to.exist;
+    // page rules are written under the new theme's own tag
+    const rules = sub
+      .HAXCMSGlobalStyleSheetContent()
+      .map((sheet) => sheet.cssText)
+      .join("");
+    expect(rules).to.include("marketing-sub-theme h2");
+    expect(rules).to.not.include("hax-marketing-theme h2");
   });
 
   it("draws nothing site specific until the site sets it", async () => {

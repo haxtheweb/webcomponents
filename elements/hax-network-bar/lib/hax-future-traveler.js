@@ -9,7 +9,8 @@ import { html, svg, css } from "lit";
  * best ideas in his pack, so the same icon can be drawn the way each era
  * would have drawn it. Every era here follows one of the styles HAX's
  * posters tell the story of the pillars in (haxtheweb/art, haxtheweb/posters);
- * `from` names the poster. `now` is the icon as it ships (hax:future-traveler).
+ * `from` names the poster, and is empty for an era that has no poster yet.
+ * `now` is the icon as it ships (hax:future-traveler).
  *
  * The network bar loads this file the first time its traveler is hovered,
  * focused or clicked, so a page that never touches him never downloads it.
@@ -19,6 +20,7 @@ export const HAX_TRAVELER_ERAS = [
   { id: "steam", label: "1880s steam age", from: "hax_1880s_poster" },
   { id: "nouveau", label: "1900s modern marvel", from: "hax_1900s_poster" },
   { id: "deco", label: "1920s roaring twenties", from: "hax_1920s_poster" },
+  { id: "wartime", label: "1940s home front poster", from: "" },
   {
     id: "tomorrow",
     label: "1960s world of tomorrow",
@@ -34,6 +36,7 @@ export const HAX_TRAVELER_ERAS = [
   },
   { id: "web", label: "1990s early web", from: "hax_1990s_poster" },
   { id: "polygon", label: "32-bit polygons", from: "hax_ps_poster" },
+  { id: "flash", label: "2000s web cartoon", from: "" },
   { id: "terminal", label: "Terminal", from: "hax_hacker_poster" },
 ];
 
@@ -194,6 +197,39 @@ const ERA = {
       lens: "#d4af37",
     }),
   // a 1960s travel poster, in the color of one pillar
+  // a home front poster: olive steel, stencil lettering, flat ink on cream
+  wartime: () =>
+    parts({
+      back: svg`<circle cx="12" cy="12.6" r="11.2" fill="#efe3c4" stroke="#1f2f55" stroke-width="1"></circle>`,
+      stalk: "#2c3018",
+      bulb: "#ffd24a",
+      bulbLine: "#2c3018",
+      helmet: "#4b5320",
+      line: "#2c3018",
+      lineWidth: 0.7,
+      word: "#efe3c4",
+      font: "Stencil, Impact, 'Arial Black', sans-serif",
+      band: "#8a6a3a",
+      lens: "#cfe0e6",
+      lensLine: "#2c3018",
+      over: svg`<path d="M5.2 13.9c.5-2.9 2-4.9 4.2-5.9" fill="none" stroke="#6b7435" stroke-width=".9" stroke-linecap="round"></path>`,
+    }),
+  // a web cartoon of the 2000s: thick ink outline, flat color, dot eyes
+  flash: () =>
+    parts({
+      stalk: "#111111",
+      bulb: "#ffe14d",
+      bulbLine: "#111111",
+      helmet: "#e5352b",
+      line: "#111111",
+      lineWidth: 1,
+      word: "#ffffff",
+      font: "'Comic Sans MS', 'Trebuchet MS', sans-serif",
+      band: "#2f9bd8",
+      lens: "#ffffff",
+      lensLine: "#111111",
+      front: svg`<g fill="#111111"><circle cx="8.9" cy="16.9" r=".9"></circle><circle cx="16.5" cy="16.9" r=".9"></circle></g><path d="M6.4 9.6c1-1.2 2.3-1.9 3.8-2.1" fill="none" stroke="#ffffff" stroke-width=".8" stroke-linecap="round"></path>`,
+    }),
   tomorrow: (tint) =>
     parts({
       back: svg`<circle cx="12" cy="12" r="11.4" fill="#f3e6c4"></circle>

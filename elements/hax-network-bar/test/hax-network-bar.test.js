@@ -222,7 +222,7 @@ describe("hax-network-bar", () => {
     const eras = await import("../lib/hax-future-traveler.js");
     const ids = eras.HAX_TRAVELER_ERAS.map((e) => e.id);
     expect(ids[0]).to.equal("now");
-    expect(ids.length).to.equal(12);
+    expect(ids.length).to.equal(14);
     const seen = [];
     for (let i = 0; i < ids.length; i++) {
       await element.remix();

@@ -60,8 +60,42 @@ All variables are optional. A site that sets none gets the header, the title ban
 | `payoff` | A line at the top of the footer |
 | `legal` | A line at the bottom of the footer |
 | `network` | `"hax"` adds the HAX network bar above the header |
+| `networkCurrent` | Which property the network bar marks as this site: `web` (the default), `cloud`, `try`, `learn` or `elements` |
 
 `designSystem` is optional too. Leave it out for plain DDD.
+
+## Make a theme from this one
+
+Another site in the same family (a docs or tutorials site, say) can keep this theme's header, menu, remix panel and footer and change only what makes it its own. Extend the class and return your own parts:
+
+```js
+import { html } from "lit";
+import { HaxMarketingTheme } from "@haxtheweb/hax-marketing-theme/hax-marketing-theme.js";
+
+class MySiteTheme extends HaxMarketingTheme {
+  static get tag() {
+    return "my-site-theme";
+  }
+  // the band under the header that carries the page title
+  renderHero({ active }) {
+    return html`<div class="hero">
+      <div class="inner"><h1>${active ? active.title : ""}</h1></div>
+    </div>`;
+  }
+  // drawn above the page content, inside the content column
+  renderContentTop() {
+    return html`<my-site-notice></my-site-notice>`;
+  }
+}
+globalThis.customElements.define(MySiteTheme.tag, MySiteTheme);
+```
+
+| Part | What it is given | Default |
+| --- | --- | --- |
+| `renderHero(page)` | `home`, `isHome`, `start`, `v` (the theme variables), `at`, `active`, `parent`, `stickers` | The title band |
+| `renderContentTop(page)` | `home`, `isHome`, `v`, `active`, `parent` | Nothing |
+
+The rules this theme sets on page content (heading sizes, call-to-action colors) are written under the element's own tag, so they follow the new theme without being repeated.
 
 ## Blocks in page content
 

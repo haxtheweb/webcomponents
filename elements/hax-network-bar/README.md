@@ -43,7 +43,7 @@ The bar is playful on purpose, and all of it answers hover and keyboard focus al
 
 ### The Future Traveler across time
 
-He has collected the best ideas of every era, so the same icon can be drawn the way each era would have drawn it. `lib/hax-future-traveler.js` holds them (`HAX_TRAVELER_ERAS`, `futureTraveler(era, tint)`, `HaxFutureTravelerStyles`), one for each style HAX's posters tell the story of the pillars in ([haxtheweb/art](https://github.com/haxtheweb/art/tree/main/haxtheweb/posters)):
+He has collected the best ideas of every era, so the same icon can be drawn the way each era would have drawn it. `lib/hax-future-traveler.js` holds them (`HAX_TRAVELER_ERAS`, `futureTraveler(era, tint)`, `HaxFutureTravelerStyles`), one for each style HAX's posters tell the story of the pillars in ([haxtheweb/art](https://github.com/haxtheweb/art/tree/main/haxtheweb/posters)), plus two that have no poster yet (`wartime` and `flash`), drawn for the periods learn.hax.cloud teaches in:
 
 | `traveler-era` | Era                                            |
 | -------------- | ---------------------------------------------- |
@@ -51,6 +51,7 @@ He has collected the best ideas of every era, so the same icon can be drawn the 
 | `steam`        | 1880s steam age                                |
 | `nouveau`      | 1900s modern marvel                            |
 | `deco`         | 1920s roaring twenties                         |
+| `wartime`      | 1940s home front poster                        |
 | `tomorrow`     | 1960s world of tomorrow, in any pillar's color |
 | `rainbow`      | 1970s rainbow                                  |
 | `stripes`      | 1980s corporate                                |
@@ -58,6 +59,7 @@ He has collected the best ideas of every era, so the same icon can be drawn the 
 | `handheld`     | Handheld, four greens                          |
 | `web`          | 1990s early web                                |
 | `polygon`      | 32-bit polygons                                |
+| `flash`        | 2000s web cartoon                              |
 | `terminal`     | Terminal                                       |
 
 The bar loads that file, and adopts its styles, the first time the traveler is hovered, focused or clicked, so a page that never touches him never downloads it. Your character's `rpg-character` loads the same way.
