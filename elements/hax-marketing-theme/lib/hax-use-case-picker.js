@@ -363,6 +363,10 @@ class HaxUseCasePicker extends I18NMixin(DDD) {
             var(--ddd-theme-default-potentialMidnight)
           );
         }
+        code:focus-visible {
+          outline: var(--ddd-focus-ring);
+          outline-offset: var(--ddd-focus-offset);
+        }
         code {
           flex: 1 1 auto;
           min-width: 0;
@@ -532,7 +536,7 @@ class HaxUseCasePicker extends I18NMixin(DDD) {
                         <div>
                           <span class="rowlabel">${this.t.agentLink}</span>
                           <div class="row">
-                            <code>${link}</code>
+                            <code tabindex="0">${link}</code>
                             <button
                               class="copy"
                               @click="${() => this._copy("link", link)}"
@@ -550,7 +554,7 @@ class HaxUseCasePicker extends I18NMixin(DDD) {
                 <div>
                   <span class="rowlabel">${this.t.terminal}</span>
                   <div class="row">
-                    <code>${this._command()}</code>
+                    <code tabindex="0">${this._command()}</code>
                     <button
                       class="copy"
                       @click="${() => this._copy("cli", this._command())}"

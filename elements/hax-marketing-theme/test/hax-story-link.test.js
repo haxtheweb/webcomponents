@@ -52,6 +52,41 @@ describe("hax-story-link", () => {
     );
   });
 
+  it("opens another site in the network with that site's words", async () => {
+    const el = await fixture(
+      html`<hax-story-link site="learn" story="editing"></hax-story-link>`,
+    );
+    const link = el.shadowRoot.querySelector("a");
+    expect(link.getAttribute("href")).to.equal(
+      "https://learn.hax.cloud/editing",
+    );
+    expect(link.textContent).to.contain("Learn how");
+    expect(link.textContent).to.contain("on learn.hax.cloud");
+    expect(link.querySelector("svg.glyph")).to.exist;
+  });
+
+  it("treats a site it does not know as hax.cloud", async () => {
+    const el = await fixture(
+      html`<hax-story-link site="elsewhere" story="hax-lab"></hax-story-link>`,
+    );
+    expect(el.shadowRoot.querySelector("a").getAttribute("href")).to.equal(
+      "https://hax.cloud/hax-lab",
+    );
+  });
+
+  it("shows what it is about when named", async () => {
+    const el = await fixture(
+      html`<hax-story-link
+        compact
+        named
+        story="hax-lab"
+        about="HAX Lab"
+      ></hax-story-link>`,
+    );
+    const shown = el.shadowRoot.querySelector("a > span:not(.mark):not(.sr)");
+    expect(shown.textContent.trim()).to.equal("Story: HAX Lab");
+  });
+
   it("passes the a11y audit", async () => {
     const el = await fixture(
       html`<hax-story-link story="hax-lab" about="HAX Lab"></hax-story-link>`,

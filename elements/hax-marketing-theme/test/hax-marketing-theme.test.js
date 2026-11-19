@@ -78,7 +78,7 @@ describe("hax-marketing-theme", function () {
     const links = [...root.querySelectorAll("header nav a")].map((a) =>
       a.textContent.trim(),
     );
-    expect(links).to.deep.equal(["Compare", "Get started"]);
+    expect(links).to.deep.equal(["Compare", "Get started", "Hosting"]);
     expect(
       root
         .querySelector('header nav a[aria-current="page"]')
@@ -101,6 +101,89 @@ describe("hax-marketing-theme", function () {
       ["HAX", ["I want a website that", "Compare", "Get started"]],
       ["Get started", ["Hosting"]],
     ]);
+  });
+
+  it("opens a menu of the pages under a page, and closes it with Escape", async () => {
+    const root = await show("compare");
+    const more = root.querySelector("header nav button.more");
+    expect(more.getAttribute("aria-expanded")).to.equal("false");
+    expect(more.getAttribute("aria-label")).to.equal("Pages under Get started");
+    more.click();
+    await element.updateComplete;
+    expect(more.getAttribute("aria-expanded")).to.equal("true");
+    expect(more.closest("li").classList.contains("open")).to.be.true;
+    more.dispatchEvent(
+      new KeyboardEvent("keydown", { key: "Escape", bubbles: true }),
+    );
+    await element.updateComplete;
+    expect(more.getAttribute("aria-expanded")).to.equal("false");
+  });
+
+  it("marks the parent in the menu and shows the way up on a page under it", async () => {
+    const root = await show("hosting");
+    expect(
+      root.querySelector("header nav li.within > a").textContent.trim(),
+    ).to.equal("Get started");
+    expect(root.querySelector(".crumb a").textContent.trim()).to.equal(
+      "Get started",
+    );
+  });
+
+  it("names the previous and next page", async () => {
+    const root = await show("compare");
+    expect(
+      root.querySelector(".pager .to-prev .where").textContent.trim(),
+    ).to.equal("I want a website that");
+    expect(
+      root.querySelector(".pager .to-next .where").textContent.trim(),
+    ).to.equal("Get started");
+    const last = await show("hosting");
+    expect(last.querySelector(".pager .to-next")).to.not.exist;
+  });
+
+  it("opens the remix panel from the header and keeps it shut until asked", async () => {
+    const root = await show("start");
+    const panel = root.querySelector("#remix");
+    expect(panel.hidden).to.be.true;
+    const buttons = root.querySelectorAll("header .remix button");
+    expect(buttons.length).to.equal(2);
+    buttons[1].click();
+    await element.updateComplete;
+    expect(panel.hidden).to.be.false;
+    expect(buttons[1].getAttribute("aria-expanded")).to.equal("true");
+  });
+
+  it("has a back to top button that waits until the page has scrolled", async () => {
+    const root = await show("start");
+    expect(root.querySelector("scroll-button").hidden).to.be.true;
+  });
+
+  it("draws the footer's copyright and links from the theme variables", async () => {
+    const root = await show("start", {
+      copyright: "Copyright 2026 Someone.",
+      footerLinks: [
+        { label: "Home base", url: "https://example.com" },
+        { label: "Not a web address", url: "javascript:alert(1)" },
+      ],
+    });
+    expect(root.querySelector("footer .legal").textContent.trim()).to.equal(
+      "Copyright 2026 Someone.",
+    );
+    const links = [...root.querySelectorAll("footer .cols > div:last-child a")];
+    expect(links.map((a) => a.textContent.trim())).to.deep.equal(["Home base"]);
+  });
+
+  it("gives a page under the first its own sticker from the list", async () => {
+    const picture = new URL("../demo/files/traveler-logo.svg", import.meta.url)
+      .href;
+    const root = await show("compare", {
+      stickers: [
+        { src: picture, alt: "One" },
+        { src: picture, alt: "Two" },
+        { src: picture, alt: "Three" },
+      ],
+    });
+    expect(root.querySelector(".hero hax-reel.sticker").index).to.equal(1);
   });
 
   it("draws nothing site specific until the site sets it", async () => {

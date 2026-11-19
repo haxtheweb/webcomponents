@@ -4,5 +4,13 @@
   "changeLogo": "Change the logo",
   "anotherPicture": "Show another picture",
   "anotherTheme": "Show another theme",
-  "switcherHeading": "Same site, your pick. Swap it live:"
+  "switcherHeading": "Same site, your pick. Swap it live:",
+  "remix": "Remix",
+  "remixRandom": "Remix this site: a look picked by chance",
+  "remixOptions": "Show every way to remix this site",
+  "pagesUnder": "Pages under {name}",
+  "previous": "Previous",
+  "next": "Next",
+  "pages": "Previous and next page",
+  "footerLinks": "More"
 }

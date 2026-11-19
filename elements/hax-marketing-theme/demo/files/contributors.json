@@ -38,9 +38,13 @@
         {
           "kind": "linkedin",
           "url": "https://www.linkedin.com/in/nazman-rosman/"
+        },
+        {
+          "kind": "github",
+          "url": "https://github.com/NazmanRosman"
         }
       ],
-      "github": "",
+      "github": "NazmanRosman",
       "year": 2025
     },
     {

@@ -10,15 +10,17 @@ What is particular to one site (logo, art, eyebrow line, payoff line, network ba
 | --- | --- | --- |
 | Theme | `hax-marketing-theme` | The site chrome |
 | Design system | `lib/FutureTravelerDesignSystem.js` (`future-traveler`) | The HAX brand as a DDD dialect, with its own default palette. Any theme that takes a design system can use it |
-| Style switcher | `hax-style-switcher` | Lets a visitor swap theme, palette and design system on the live site. Nothing is saved |
+| Style switcher | `hax-style-switcher` | Lets a visitor swap theme, palette and design system on the live site, pick one by chance, and go back to the site's own look. Nothing is saved. In another theme it floats in the corner as the way back |
 | Use case picker | `hax-use-case-picker` | Pick what a site is for and get a link that opens HAX with that starter |
 | Compare | `hax-platform-compare` | Two platforms side by side, feature by feature, from a JSON file |
 | Contributors | `hax-contributors` | People from a roster JSON file, drawn as rpg-characters |
-| Story button | `hax-story-link` | The one button that opens the story behind a claim on hax.cloud |
-| Reel | `hax-reel` | A picture you click to flip to the next one |
+| Story button | `hax-story-link` | The one button that opens the story behind a claim on hax.cloud. `site` points it at another HAX network site (`learn`, `try`, `elements`, `web`) with that site's icon; `named` shows what it is about |
+| Reel | `hax-reel` | Something you click to flip to the next one: a picture, an rpg-character or a callout. `effect="glitch"` is the rpg-glitch burst; reduced motion gets a plain swap |
 | Section blocks | `hax-cast`, `hax-cast-member`, `hax-pillar-strip`, `hax-pillar`, `hax-feature-row`, `hax-stat-strip`, `hax-stat`, `hax-versus`, `hax-chip` | The pieces a marketing page is assembled from |
 
 Every block except the reel and the style switcher has a HAX editor schema in `lib/<tag>.haxProperties.json`, so pages built from them stay editable.
+
+The header lists the top-level pages; a page with pages under it gets a menu of them, and those pages show the way back up over their title. Remix in the header restyles the site: the dice picks a look by chance, the arrow opens every option. Each page ends with the previous and next page by name, and a back to top button appears once the page has scrolled.
 
 ## Use it
 
@@ -48,10 +50,13 @@ All variables are optional. A site that sets none gets the header, the title ban
 | `cta` | A button in the header that goes to the home page |
 | `eyebrow` | A small line over the title on the home page |
 | `heroAction` | A button under the home title that scrolls to the first `hax-use-case-picker`, or to the content |
-| `logos` | `[{ src, alt }]`: the header logo, flipping to the next on click |
-| `art` | `[{ src, alt }]`: the round picture on the home page |
+| `logos` | `[{ src, alt }]`: the header logo, flipping to the next form on click |
+| `art` | The round picture on the home page, flipping on click. Each entry is a picture `{ src, alt }`, a character `{ character, alt }` or a callout `{ callout, site, alt }` |
 | `screens` | `[{ src, alt, name, tags }]`: a second picture over the art, with its name and tags under it |
-| `sticker` | A picture address shown beside the title on other pages |
+| `stickers` | `[{ src, alt }]`: the picture beside the title on other pages. Each page starts on a different one, and a click flips to the next (`sticker`, one address, still works) |
+| `remixStories` | `[{ story, about }]`: story buttons shown in the remix panel |
+| `copyright` | The copyright line in the footer |
+| `footerLinks` | `[{ label, url }]`: a last footer column of outside links |
 | `payoff` | A line at the top of the footer |
 | `legal` | A line at the bottom of the footer |
 | `network` | `"hax"` adds the HAX network bar above the header |

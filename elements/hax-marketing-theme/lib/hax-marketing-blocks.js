@@ -131,6 +131,7 @@ class HaxCastMember extends DDD {
       label: { type: String },
       /** DDD color name for the stage behind the character */
       color: { type: String },
+      _walk: { type: Boolean, state: true },
     };
   }
   static get haxProperties() {
@@ -144,6 +145,16 @@ class HaxCastMember extends DDD {
     this.link = "";
     this.label = "";
     this.color = "skyLight";
+    this._walk = false;
+    // the character walks while the card has the pointer or the focus
+    this.addEventListener("pointerenter", () => this._stride(true));
+    this.addEventListener("pointerleave", () => this._stride(false));
+    this.addEventListener("focusin", () => this._stride(true));
+    this.addEventListener("focusout", () => this._stride(false));
+  }
+  _stride(on) {
+    this._walk =
+      on && !globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches;
   }
   static get styles() {
     return [
@@ -197,6 +208,34 @@ class HaxCastMember extends DDD {
         .button {
           align-self: flex-start;
         }
+        :host {
+          transition:
+            transform 0.15s ease-out,
+            box-shadow 0.15s ease-out;
+        }
+        :host(:hover),
+        :host(:focus-within) {
+          transform: translateY(calc(var(--ddd-spacing-1) * -1));
+          box-shadow: var(--ddd-spacing-2) var(--ddd-spacing-2)
+            var(--ddd-spacing-0) var(--hm-shade, var(--hm-ink));
+        }
+        /* the way in lights up with the card, so it reads as a button */
+        :host(:hover) a.button,
+        :host(:focus-within) a.button {
+          color: var(--hm-on-accent, var(--hm-ink));
+          background-color: var(--hm-accent, var(--hm-surface));
+          box-shadow: var(--ddd-spacing-1) var(--ddd-spacing-1)
+            var(--ddd-spacing-0) var(--hm-edge, var(--hm-ink));
+        }
+        @media (prefers-reduced-motion: reduce) {
+          :host {
+            transition: none;
+          }
+          :host(:hover),
+          :host(:focus-within) {
+            transform: none;
+          }
+        }
       `,
     ];
   }
@@ -214,6 +253,7 @@ class HaxCastMember extends DDD {
           seed="${this.seed || this.name}"
           height="142"
           width="113"
+          ?walking="${this._walk}"
         ></rpg-character>
       </div>
       <div class="body">

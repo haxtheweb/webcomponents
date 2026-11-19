@@ -37,6 +37,7 @@ class HaxPlatformCompare extends I18NMixin(DDD) {
       a: { type: String, reflect: true },
       /** platform id on the right */
       b: { type: String, reflect: true },
+      _pinned: { type: String, state: true },
       _data: { type: Object },
     };
   }
@@ -52,6 +53,7 @@ class HaxPlatformCompare extends I18NMixin(DDD) {
     this.a = "hax";
     this.b = "wordpress";
     this._data = null;
+    this._pinned = "";
     this.t = {
       loading: "Loading the comparison.",
       yes: "Yes",
@@ -64,6 +66,7 @@ class HaxPlatformCompare extends I18NMixin(DDD) {
       feature: "Feature",
       clearYes: "{count} of {total} a clear yes",
       seeForYourself: "See for yourself:",
+      why: "Why",
       and: "and",
     };
     this.registerLocalization({
@@ -245,6 +248,61 @@ class HaxPlatformCompare extends I18NMixin(DDD) {
           font-size: var(--ddd-font-size-s);
           line-height: 1;
         }
+        td {
+          position: relative;
+        }
+        .mark .word {
+          flex: 1 1 auto;
+        }
+        .info {
+          flex: none;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: var(--ddd-spacing-6);
+          height: var(--ddd-spacing-6);
+          padding: var(--ddd-spacing-0);
+          border: var(--ddd-border-size-sm) solid currentColor;
+          border-radius: 50%;
+          background-color: transparent;
+          color: inherit;
+          font-family: var(--ddd-font-secondary, serif);
+          font-size: var(--ddd-font-size-4xs);
+          font-style: italic;
+          font-weight: var(--ddd-font-weight-bold);
+          line-height: 1;
+          cursor: pointer;
+        }
+        .info:hover,
+        .info[aria-expanded="true"] {
+          background-color: var(--hpc-ink);
+          color: var(--hpc-surface);
+        }
+        .info:focus-visible {
+          outline: var(--ddd-focus-ring);
+          outline-offset: var(--ddd-focus-offset);
+        }
+        .tip {
+          display: none;
+          position: absolute;
+          z-index: 2;
+          top: calc(100% - var(--ddd-spacing-1));
+          right: var(--ddd-spacing-2);
+          left: var(--ddd-spacing-2);
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
+          border-radius: var(--ddd-radius-xs);
+          background-color: var(--hpc-ink);
+          color: var(--hpc-surface);
+          font-size: var(--ddd-font-size-5xs);
+          font-weight: var(--ddd-font-weight-regular);
+          line-height: var(--ddd-lh-140);
+          box-shadow: var(--ddd-boxShadow-sm);
+        }
+        .info:hover + .tip,
+        .info:focus-visible + .tip,
+        .tip.pinned {
+          display: block;
+        }
         .foot {
           padding: var(--ddd-spacing-4) var(--ddd-spacing-5);
           font-size: var(--ddd-font-size-4xs);
@@ -272,6 +330,15 @@ class HaxPlatformCompare extends I18NMixin(DDD) {
           }
           thead th:first-child {
             display: none;
+          }
+          table,
+          thead,
+          tbody {
+            display: block;
+            width: 100%;
+          }
+          .mark .word {
+            overflow-wrap: normal;
           }
           tbody tr {
             display: grid;
@@ -354,19 +421,48 @@ class HaxPlatformCompare extends I18NMixin(DDD) {
       .replace("{total}", total);
   }
 
-  _cell(feature, id) {
+  _pin(key) {
+    this._pinned = this._pinned === key ? "" : key;
+  }
+  _unpin(e) {
+    if (e.key === "Escape") {
+      this._pinned = "";
+    }
+  }
+  // the mark and its word up front; the reason waits behind the (i)
+  _cell(feature, id, row) {
     const cell = feature.cells[id] || { r: "n", note: "" };
     const rating = RATING[cell.r] || RATING.n;
+    const key = `tip-${row}-${id}`;
     return html`
-      <td>
+      <td class="${rating.word}">
         <div class="mark">
-          <span aria-hidden="true">${rating.mark}</span>${this.t[rating.word]}
+          <span aria-hidden="true">${rating.mark}</span
+          ><span class="word">${this.t[rating.word]}</span>
+          ${
+            cell.note
+              ? html`<button
+                    type="button"
+                    class="info"
+                    aria-label="${this.t.why}"
+                    aria-describedby="${key}"
+                    aria-expanded="${this._pinned === key ? "true" : "false"}"
+                    @click="${() => this._pin(key)}"
+                    @keydown="${this._unpin}"
+                  >
+                    i</button
+                  ><span
+                    class="tip ${this._pinned === key ? "pinned" : ""}"
+                    role="tooltip"
+                    id="${key}"
+                    >${cell.note}</span
+                  >`
+              : ``
+          }
         </div>
-        ${cell.note}
       </td>
     `;
   }
-
   render() {
     if (!this._data) {
       return html`<p>${this.t.loading}</p>`;
@@ -403,10 +499,14 @@ class HaxPlatformCompare extends I18NMixin(DDD) {
           </thead>
           <tbody>
             ${this._data.features.map(
-              (feature) => html`
+              (feature, row) => html`
                 <tr>
                   <th scope="row">${feature.label}</th>
-                  ${this._cell(feature, a.id)}${this._cell(feature, b.id)}
+                  ${this._cell(feature, a.id, row)}${this._cell(
+                    feature,
+                    b.id,
+                    row,
+                  )}
                 </tr>
               `,
             )}

@@ -98,6 +98,54 @@ describe("hax-style-switcher", function () {
     expect(values).to.include("hax-marketing-theme");
   });
 
+  it("lists the site's own theme first and goes back to it on reset", async () => {
+    const root = await show();
+    expect(root.querySelector("#theme option").value).to.equal(
+      "hax-marketing-theme",
+    );
+    const reset = [...root.querySelectorAll("button.act")][1];
+    expect(reset.disabled).to.be.true;
+    element._apply({ theme: "clean-one", palette: "3", ds: "" });
+    await tick();
+    await element.updateComplete;
+    expect(element.remixed).to.be.true;
+    expect(reset.disabled).to.be.false;
+    // away from the site's theme, a floating switcher is the way back
+    expect(document.querySelector("hax-style-switcher[data-way-back]")).to
+      .exist;
+    reset.click();
+    await tick();
+    await element.updateComplete;
+    const theme = toJS(store.manifest.metadata.theme);
+    expect(theme.element).to.equal("hax-marketing-theme");
+    expect(theme.variables.palette).to.equal(undefined);
+    expect(element.remixed).to.be.false;
+    expect(document.querySelector("hax-style-switcher[data-way-back]")).to.not
+      .exist;
+    expect(globalThis.sessionStorage.getItem("hax-style-switcher")).to.equal(
+      null,
+    );
+  });
+
+  it("picks another look by chance", async () => {
+    await show();
+    element.random();
+    await tick();
+    const theme = toJS(store.manifest.metadata.theme);
+    expect(theme.element).to.not.equal("hax-marketing-theme");
+    expect(Object.keys(element._themes)).to.include(theme.element);
+    element.reset();
+    await tick();
+  });
+
+  it("says what the remix shows and takes links in its slot", async () => {
+    const root = await show();
+    expect(root.querySelector(".about p").textContent).to.contain(
+      "JSON Outline Schema",
+    );
+    expect(root.querySelector(".about slot")).to.exist;
+  });
+
   it("stays out of the way of someone who can edit", async () => {
     await show();
     store.jwt = "editor-token";

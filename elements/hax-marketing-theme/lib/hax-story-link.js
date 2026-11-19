@@ -2,20 +2,38 @@
  * Copyright 2026 The Pennsylvania State University
  * @license Apache-2.0, see LICENSE for full text.
  */
-import { html, css, svg } from "lit";
+import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import {
+  HAX_NETWORK,
+  haxNetworkGlyph,
+  HaxNetworkGlyphStyles,
+} from "@haxtheweb/hax-network-bar/lib/hax-network.js";
 
-// the story mark: an open book with a spark over it
-export const storyMark = svg`<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 1.2l.8 1.7 1.7.8-1.7.8-.8 1.7-.8-1.7-1.7-.8 1.7-.8z" fill="currentColor"/><path d="M2.5 8.2c3-1.1 6-1 9.5.9 3.5-1.9 6.5-2 9.5-.9v11.6c-3-1.1-6-1-9.5.9-3.5-1.9-6.5-2-9.5-.9z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 9.1v11.6" stroke="currentColor" stroke-width="1.8"/></svg>`;
+// what the chip says for each place in the HAX network: [full, compact, where]
+const WORDS = {
+  cloud: ["seeTheStory", "story", "onHaxCloud"],
+  learn: ["learnHow", "learn", "onLearn"],
+  try: ["tryIt", "try", "onTry"],
+  elements: ["seeTheBlock", "block", "onElements"],
+  web: ["readMore", "hax", "onWeb"],
+};
 
 /**
  * `hax-story-link`
  * `The one button that opens the story behind a claim, on hax.cloud`
  *
  * Put it beside anything that makes a claim: a number, a pillar, a person,
- * an element. `story` is the story's address on hax.cloud (stories/ee450a19, or a web's path such as hax-lab). The label and the
- * mark never change, so people learn it once and recognize it on any site.
+ * an element. `story` is the story's address on hax.cloud (stories/ee450a19,
+ * or a web's path such as hax-lab). The label and the mark never change, so
+ * people learn it once and recognize it on any site.
+ *
+ * `site` points the same chip at another place in the HAX network, with that
+ * place's own icon from the network bar: `learn` (a tutorial on
+ * learn.hax.cloud), `try` (browser.hax.cloud), `elements` (the block gallery)
+ * or `web` (haxtheweb.org). `story` is then the path on that site. `named`
+ * shows what it is about in the chip itself, for chips that sit in a row.
  *
  * @element hax-story-link
  */
@@ -36,7 +54,11 @@ class HaxStoryLink extends I18NMixin(DDD) {
       about: { type: String },
       /** small chip that reads "Story" */
       compact: { type: Boolean, reflect: true },
-      /** where stories live */
+      /** which HAX network site it opens: cloud (stories), learn, try, elements or web */
+      site: { type: String, reflect: true },
+      /** show what it is about in the chip, not only to screen readers */
+      named: { type: Boolean, reflect: true },
+      /** where stories live, when not the network site's own address */
       base: { type: String },
     };
   }
@@ -45,11 +67,25 @@ class HaxStoryLink extends I18NMixin(DDD) {
     this.story = "";
     this.about = "";
     this.compact = false;
-    this.base = "https://hax.cloud/";
+    this.site = "cloud";
+    this.named = false;
+    this.base = "";
     this.t = {
       seeTheStory: "See the story",
       story: "Story",
       onHaxCloud: "on hax.cloud",
+      learnHow: "Learn how",
+      learn: "Learn",
+      onLearn: "on learn.hax.cloud",
+      tryIt: "Try it now",
+      try: "Try",
+      onTry: "on browser.hax.cloud",
+      seeTheBlock: "See the block",
+      block: "Block",
+      onElements: "on webcomponents.hax.cloud",
+      readMore: "Read more",
+      hax: "HAX",
+      onWeb: "on haxtheweb.org",
     };
     this.registerLocalization({
       context: this,
@@ -61,6 +97,7 @@ class HaxStoryLink extends I18NMixin(DDD) {
   static get styles() {
     return [
       super.styles,
+      HaxNetworkGlyphStyles,
       css`
         :host {
           display: inline-block;
@@ -103,9 +140,8 @@ class HaxStoryLink extends I18NMixin(DDD) {
           background-color: var(--hm-brand, var(--hsl-ink));
           flex: none;
         }
-        svg {
-          width: var(--ddd-spacing-4);
-          height: var(--ddd-spacing-4);
+        a {
+          --glyph-size: var(--ddd-spacing-4);
         }
         a:hover {
           color: var(--hsl-surface);
@@ -132,27 +168,38 @@ class HaxStoryLink extends I18NMixin(DDD) {
       `,
     ];
   }
+  get _site() {
+    return Object.prototype.hasOwnProperty.call(WORDS, this.site)
+      ? this.site
+      : "cloud";
+  }
   get href() {
-    let base = "https://hax.cloud/";
+    let base = HAX_NETWORK.properties[this._site].url;
     try {
       const url = new URL(this.base);
       if (url.protocol === "https:" || url.protocol === "http:") {
         base = url.href;
       }
     } catch {
-      // keep hax.cloud
+      // keep the network site's own address
     }
-    // a story's address (stories/ee450a19) or a web's path (hax-lab), nothing else
+    // a story's address (stories/ee450a19) or a path (hax-lab), nothing else
     const path = String(this.story || "").replace(/^\/+/, "");
+    base = base.replace(/\/*$/, "/");
     if (!/^[a-z0-9-]+(\/[a-z0-9-]+)*$/.test(path)) return base;
-    return base.replace(/\/*$/, "/") + path;
+    return base + path;
   }
   render() {
-    return html`<a href="${this.href}"
-      ><span class="mark">${storyMark}</span>${
-        this.compact ? this.t.story : this.t.seeTheStory
-      }<span class="sr"
-        >${this.about ? `: ${this.about},` : ``} ${this.t.onHaxCloud}</span
+    const words = WORDS[this._site];
+    const about = this.about ? `: ${this.about}` : ``;
+    return html`<a class="glyph-host" href="${this.href}"
+      ><span class="mark">${haxNetworkGlyph(this._site)}</span
+      ><span
+        >${this.t[this.compact ? words[1] : words[0]]}${
+          this.named ? about : ``
+        }</span
+      ><span class="sr"
+        >${this.named ? `` : `${about},`} ${this.t[words[2]]}</span
       ></a
     >`;
   }

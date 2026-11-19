@@ -42,6 +42,26 @@ describe("hax-platform-compare", function () {
     expect(cells[1]).to.contain("Core only");
   });
 
+  it("keeps the reason behind an info button that describes itself", async () => {
+    const root = await show();
+    const cell = root.querySelectorAll("tbody tr:first-child td")[1];
+    const button = cell.querySelector("button.info");
+    const tip = cell.querySelector(".tip");
+    expect(button.getAttribute("aria-label")).to.equal("Why");
+    expect(button.getAttribute("aria-describedby")).to.equal(tip.id);
+    expect(tip.getAttribute("role")).to.equal("tooltip");
+    expect(getComputedStyle(tip).display).to.equal("none");
+    button.click();
+    await element.updateComplete;
+    expect(button.getAttribute("aria-expanded")).to.equal("true");
+    expect(getComputedStyle(tip).display).to.equal("block");
+    button.dispatchEvent(
+      new KeyboardEvent("keydown", { key: "Escape", bubbles: true }),
+    );
+    await element.updateComplete;
+    expect(getComputedStyle(tip).display).to.equal("none");
+  });
+
   it("treats a platform with no answer as a no", async () => {
     const root = await show("hax", "third");
     const cell = root.querySelector("tbody tr:last-child td:last-child");

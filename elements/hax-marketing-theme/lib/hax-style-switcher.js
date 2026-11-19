@@ -41,6 +41,25 @@ function canEdit() {
 }
 
 /**
+ * Another theme has no remix button of its own, so while the visitor is in
+ * one the switcher floats in the corner as the way back.
+ */
+function wayBack(needed) {
+  const doc = globalThis.document;
+  let floater = doc.querySelector(
+    "hax-style-switcher[floating][data-way-back]",
+  );
+  if (needed && !floater) {
+    floater = doc.createElement("hax-style-switcher");
+    floater.setAttribute("floating", "");
+    floater.setAttribute("data-way-back", "");
+    doc.body.appendChild(floater);
+  } else if (!needed && floater) {
+    floater.remove();
+  }
+}
+
+/**
  * `hax-style-switcher`
  * Lets a visitor swap the site's theme, palette and design system live.
  *
@@ -103,6 +122,10 @@ class HaxStyleSwitcher extends I18NMixin(DDD) {
       siteTheme: "{name} (this site's theme)",
       restyle: "Restyle this site",
       close: "Close",
+      reset: "Back to this site's own look",
+      random: "Surprise me",
+      about:
+        "This shows a few of the looks built into HAX. The pages never change: structure lives in JSON Outline Schema and every block is a standard web component, so the design is free to swap.",
     };
     this.registerLocalization({
       context: this,
@@ -358,6 +381,51 @@ class HaxStyleSwitcher extends I18NMixin(DDD) {
           font-size: var(--ddd-font-size-6xs);
           line-height: var(--ddd-lh-140);
         }
+        .about {
+          flex: 1 1 100%;
+          font-size: var(--ddd-font-size-4xs);
+          line-height: var(--ddd-lh-150);
+          max-width: 80ch;
+        }
+        .about p {
+          margin: var(--ddd-spacing-0) var(--ddd-spacing-0) var(--ddd-spacing-2);
+        }
+        .actions {
+          flex: 1 1 100%;
+          display: flex;
+          flex-wrap: wrap;
+          gap: var(--ddd-spacing-2);
+        }
+        .act {
+          font: inherit;
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-weight-bold);
+          min-height: var(--ddd-spacing-10);
+          padding: var(--ddd-spacing-1) var(--ddd-spacing-4);
+          border-radius: var(--ddd-control-radius, var(--ddd-radius-xs));
+          border: var(--ddd-border-size-sm) solid currentColor;
+          background-color: transparent;
+          color: inherit;
+          cursor: pointer;
+        }
+        .act:hover:not(:disabled) {
+          color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-coalyGray)
+          );
+          background-color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
+        }
+        .act:disabled {
+          opacity: var(--ddd-state-disabled-opacity, 0.6);
+          cursor: not-allowed;
+        }
+        .act:focus-visible {
+          outline: var(--ddd-focus-ring);
+          outline-offset: var(--ddd-focus-offset);
+        }
       `,
     ];
   }
@@ -417,6 +485,7 @@ class HaxStyleSwitcher extends I18NMixin(DDD) {
       delete themeData.designSystem;
     }
     store.manifest.metadata.theme = themeData;
+    wayBack(!!this._siteTheme && themeData.element !== this._siteTheme.element);
     try {
       globalThis.sessionStorage.setItem(
         STORAGE_KEY,
@@ -475,29 +544,84 @@ class HaxStyleSwitcher extends I18NMixin(DDD) {
 
   _themeOptions() {
     const options = [];
-    if (
-      this._siteTheme &&
-      this._siteTheme.element &&
-      !Object.prototype.hasOwnProperty.call(
-        this._themes,
-        this._siteTheme.element,
-      )
-    ) {
+    const own = this._siteTheme ? this._siteTheme.element : "";
+    // the site's own theme leads the list, so there is always a way home
+    if (own) {
+      const known = Object.prototype.hasOwnProperty.call(this._themes, own)
+        ? this._themes[own]
+        : null;
       options.push({
-        element: this._siteTheme.element,
+        element: own,
         name: this.t.siteTheme.replace(
           "{name}",
-          () => this._siteTheme.name || this._siteTheme.element,
+          () => this._siteTheme.name || (known && known.name) || own,
         ),
       });
     }
     Object.keys(this._themes).forEach((key) => {
       const theme = this._themes[key];
-      if (theme && !theme.hidden && !theme.terrible) {
+      if (theme && key !== own && !theme.hidden && !theme.terrible) {
         options.push({ element: key, name: theme.name || key });
       }
     });
     return options;
+  }
+
+  /** true when the visitor has changed anything from the site's own look */
+  get remixed() {
+    const site = this._siteTheme;
+    if (!site) {
+      return false;
+    }
+    const palette =
+      site.variables &&
+      typeof site.variables.palette !== "undefined" &&
+      site.variables.palette !== null
+        ? `${site.variables.palette}`
+        : "";
+    return (
+      this.theme !== (site.element || "") ||
+      this.palette !== palette ||
+      this.designSystem !== siteDesignSystemName(site)
+    );
+  }
+
+  /** put back the site's own theme, palette and design system */
+  reset() {
+    if (!this._siteTheme || canEdit() || !store.manifest) {
+      return;
+    }
+    store.manifest.metadata.theme = JSON.parse(JSON.stringify(this._siteTheme));
+    try {
+      globalThis.sessionStorage.removeItem(STORAGE_KEY);
+    } catch {
+      // nothing was kept
+    }
+    wayBack(false);
+  }
+
+  /** a theme, palette and design system picked by chance */
+  random() {
+    const pick = (list) => {
+      const roll = new Uint32Array(1);
+      globalThis.crypto.getRandomValues(roll);
+      return list[roll[0] % list.length];
+    };
+    const themes = this._themeOptions().filter(
+      (option) => option.element !== this.theme,
+    );
+    if (!themes.length) {
+      return;
+    }
+    const palettes = [];
+    for (let n = 0; n < 20; n++) {
+      palettes.push(`${n}`);
+    }
+    this._apply({
+      theme: pick(themes).element,
+      palette: pick(palettes),
+      ds: pick(["", ...Object.keys(this._systems)]),
+    });
   }
 
   render() {
@@ -508,6 +632,10 @@ class HaxStyleSwitcher extends I18NMixin(DDD) {
     const panel = html`
       <div class="panel" id="panel">
         ${this.heading ? html`<p class="heading">${this.heading}</p>` : ``}
+        <div class="about">
+          <p>${this.t.about}</p>
+          <slot></slot>
+        </div>
         <div class="field">
           <label for="theme">${this.t.theme}</label>
           <select id="theme" @change="${this._themeChanged}">
@@ -570,6 +698,19 @@ class HaxStyleSwitcher extends I18NMixin(DDD) {
               @value-changed="${this._paletteChanged}"
             ></hax-palette-picker>
           </details>
+        </div>
+        <div class="actions">
+          <button type="button" class="act" @click="${this.random}">
+            ${this.t.random}
+          </button>
+          <button
+            type="button"
+            class="act"
+            @click="${this.reset}"
+            ?disabled="${!this.remixed}"
+          >
+            ${this.t.reset}
+          </button>
         </div>
       </div>
     `;

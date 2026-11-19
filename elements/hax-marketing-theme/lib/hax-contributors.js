@@ -229,6 +229,21 @@ class HaxContributors extends I18NMixin(DDD) {
           padding-top: var(--ddd-spacing-1);
           box-sizing: border-box;
         }
+        /* the whole card of someone with a commit opens their GitHub */
+        li.coder {
+          position: relative;
+        }
+        li.coder a.login::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          border-radius: inherit;
+        }
+        li.coder:hover {
+          border-color: var(--hm-brand, currentColor);
+          box-shadow: var(--ddd-spacing-1) var(--ddd-spacing-1)
+            var(--ddd-spacing-0) var(--hm-shade, currentColor);
+        }
         a:focus-visible {
           outline: var(--ddd-focus-ring);
           outline-offset: var(--ddd-focus-offset);
@@ -239,16 +254,30 @@ class HaxContributors extends I18NMixin(DDD) {
 
   // the GitHub picture is an extra: fetched the first time a card is
   // hovered or focused, and simply not shown if it cannot load
-  _face(login) {
-    if (!login || this._faces[login] !== undefined) {
+  _face(login, photo) {
+    const key = login || photo;
+    if (!key || this._faces[key] !== undefined) {
       return;
     }
-    this._faces = { ...this._faces, [login]: false };
-    const image = new globalThis.Image();
-    image.onload = () => {
-      this._faces = { ...this._faces, [login]: image.src };
+    this._faces = { ...this._faces, [key]: false };
+    const github = login
+      ? `https://github.com/${encodeURIComponent(login)}.png?size=160`
+      : "";
+    // a person's own photo first (the one they use on LinkedIn, say), then
+    // their GitHub picture
+    const sources = [safeLink(photo), github].filter((src) => src);
+    const load = () => {
+      if (!sources.length) {
+        return;
+      }
+      const image = new globalThis.Image();
+      image.onload = () => {
+        this._faces = { ...this._faces, [key]: image.src };
+      };
+      image.onerror = load;
+      image.src = sources.shift();
     };
-    image.src = `https://github.com/${encodeURIComponent(login)}.png?size=160`;
+    load();
   }
 
   _person(person) {
@@ -258,8 +287,8 @@ class HaxContributors extends I18NMixin(DDD) {
     const size = this.show === "landed" ? [112, 90] : [78, 62];
     return html`
       <li
-        @pointerenter="${() => this._face(person.github)}"
-        @focusin="${() => this._face(person.github)}"
+        @pointerenter="${() => this._face(person.github, person.photo)}"
+        @focusin="${() => this._face(person.github, person.photo)}"
       >
         <div class="face" aria-hidden="true">
           <rpg-character
@@ -268,8 +297,11 @@ class HaxContributors extends I18NMixin(DDD) {
             width="${size[1]}"
           ></rpg-character>
           ${
-            this._faces[person.github]
-              ? html`<img src="${this._faces[person.github]}" alt="" />`
+            this._faces[person.github || person.photo]
+              ? html`<img
+                  src="${this._faces[person.github || person.photo]}"
+                  alt=""
+                />`
               : ``
           }
         </div>
@@ -323,6 +355,7 @@ class HaxContributors extends I18NMixin(DDD) {
   _coder(coder) {
     return html`
       <li
+        class="coder"
         @pointerenter="${() => this._face(coder.login)}"
         @focusin="${() => this._face(coder.login)}"
       >
