@@ -19,27 +19,54 @@
         background-color: light-dark(#ffffff, #000321);
         color: light-dark(#262626, #ffffff);
       }
-      p { margin: 16px 32px; }
-      a { color: light-dark(#005fa9, #99ccff); }
-      .page-link { color: inherit; font-size: 14px; }
+      p {
+        margin: 16px 32px;
+      }
+      a {
+        color: light-dark(#005fa9, #99ccff);
+      }
+      .status {
+        color: #ffffff;
+        font-size: 14px;
+      }
+      .fn {
+        height: 32px;
+        padding: 0 12px;
+        border: 1px solid #a2aaad;
+        border-radius: 4px;
+        background-color: transparent;
+        color: #ffffff;
+        font: inherit;
+        font-size: 14px;
+        cursor: pointer;
+      }
     </style>
   </head>
   <body>
+    <p>On haxtheweb.org</p>
+    <hax-network-bar current="web"></hax-network-bar>
+    <p>On Learn</p>
+    <hax-network-bar current="learn"></hax-network-bar>
+    <p>On the web components</p>
+    <hax-network-bar current="elements"></hax-network-bar>
     <p>On hax.cloud</p>
     <hax-network-bar current="cloud"></hax-network-bar>
-    <p>
-      On the element portfolio, with a page link in the <code>pre</code> slot
-    </p>
-    <hax-network-bar current="elements">
-      <a slot="pre" class="page-link" href="#">This page's link</a>
-    </hax-network-bar>
-    <p>On HAXcms in the browser</p>
-    <hax-network-bar current="browser"></hax-network-bar>
     <p>On RPG me, with your own character</p>
     <hax-network-bar
       current="rpg"
       character="1-0103020401020305060009"
     ></hax-network-bar>
+    <p>
+      On HAXcms in the browser: compact, with the platform's own functions in
+      the <code>pre</code> slot
+    </p>
+    <hax-network-bar compact current="try">
+      <span slot="pre" class="status">Running in your browser</span>
+      <button slot="pre" class="fn" type="button">Sign in</button>
+      <button slot="pre" class="fn" type="button">Publish</button>
+    </hax-network-bar>
+    <p>The demo strip</p>
+    <hax-network-bar demo current="elements"></hax-network-bar>
     <p>
       <a href="#install">Open Install HAX (#install)</a> ·
       <a href="#install/agent">Ask your agent (#install/agent)</a>
