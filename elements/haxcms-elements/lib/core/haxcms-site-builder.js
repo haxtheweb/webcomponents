@@ -14,6 +14,7 @@ import {
 import { buildPageContentHTML } from "./utils/page-content-html.js";
 import {
   neutralizeStrayScripts,
+  removeExternalScripts,
   sanitizeNodeTree,
 } from "@haxtheweb/utils/lib/sanitize.js";
 import { autorun, toJS } from "mobx";
@@ -191,6 +192,10 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       const inert = globalThis.document.implementation.createHTMLDocument("");
       let tmp = inert.createElement("div");
       tmp.innerHTML = data;
+      // hosts add their own <script src> to every HTML file they serve (the
+      // Vercel preview toolbar, dev-server reload sockets); drop those here
+      // so they don't render as escaped `<script></script>` text
+      removeExternalScripts(tmp);
       for (const node of tmp.childNodes) {
         this.nodeNormalizeIDs(node);
       }

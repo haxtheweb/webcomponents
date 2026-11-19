@@ -90,4 +90,27 @@ describe("haxcms-site-builder _updateActiveItemContent", () => {
     expect(seen).to.include('<h2 id="h2-');
     expect(stub.__pageContentOwner).to.equal("p1");
   });
+
+  // Vercel preview deploys add their toolbar script to every HTML file,
+  // page content included; it rendered as `<script></script>` text
+  it("drops a host-added <script src> from the page content", async () => {
+    const Builder = globalThis.customElements.get("haxcms-site-builder");
+    let seen = null;
+    const stub = {
+      nodeNormalizeIDs: Builder.prototype.nodeNormalizeIDs,
+      hashCode: Builder.prototype.hashCode,
+      _activeItemContentChanged(content) {
+        seen = content;
+      },
+      _flushAfterFirstContent() {},
+    };
+    Builder.prototype._updateActiveItemContent.call(
+      stub,
+      '<p>Body</p><script async data-explicit-opt-in="true" src="https://vercel.live/_next-live/feedback/feedback.js"></script>',
+      { id: "p2" },
+    );
+    await new Promise((r) => setTimeout(r, 100));
+    expect(seen).to.include("<p");
+    expect(seen).to.not.include("script");
+  });
 });
