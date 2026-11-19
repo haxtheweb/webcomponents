@@ -10,6 +10,7 @@ import {
   autorun,
   toJS,
 } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
+import { unsafeCSS } from "lit";
 import { HAXCMSThemeParts } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
@@ -200,6 +201,9 @@ class HaxMarketingTheme extends HAXCMSThemeParts(
   }
 
   HAXCMSGlobalStyleSheetContent() {
+    // keyed to this element's own tag, so a theme that extends this one gets
+    // the same page rules under its own name
+    const tag = unsafeCSS(this.tagName.toLowerCase());
     return [
       ...super.HAXCMSGlobalStyleSheetContent(),
       css`
@@ -211,7 +215,7 @@ class HaxMarketingTheme extends HAXCMSThemeParts(
             var(--ddd-theme-default-coalyGray)
           );
         }
-        hax-marketing-theme h2 {
+        ${tag} h2 {
           font-family: var(--ddd-font-heading, var(--ddd-font-primary));
           font-size: clamp(
             var(--ddd-font-size-m),
@@ -223,12 +227,12 @@ class HaxMarketingTheme extends HAXCMSThemeParts(
             var(--ddd-spacing-4);
         }
         /* call-to-action buttons in the page take the palette's lead color */
-        hax-marketing-theme simple-cta {
+        ${tag} simple-cta {
           --ddd-theme-primary: var(--hm-brand);
           --ddd-theme-accent: var(--hm-on-brand);
         }
-        hax-marketing-theme h2 + p,
-        hax-marketing-theme p.lead {
+        ${tag} h2 + p,
+        ${tag} p.lead {
           font-size: var(--ddd-font-size-xs);
           line-height: var(--ddd-lh-150);
           max-width: 62ch;
@@ -1023,110 +1027,13 @@ class HaxMarketingTheme extends HAXCMSThemeParts(
     });
   }
 
-  render() {
-    const home = this._items.length ? this._items[0] : null;
-    const isHome = home && home.id === this.activeId;
-    const start = this._all.find((item) => item.slug === "get-started");
-    const v = this._vars || {};
-    const at = this._all.findIndex((item) => item.id === this.activeId);
-    const active = at > -1 ? this._all[at] : null;
-    const parent =
-      active && active.parent
-        ? this._all.find((item) => item.id === active.parent)
-        : null;
-    const before = at > 0 ? this._all[at - 1] : null;
-    const after =
-      at > -1 && at < this._all.length - 1 ? this._all[at + 1] : null;
-    const stickers = Array.isArray(v.stickers)
-      ? v.stickers
-      : v.sticker
-        ? [{ src: v.sticker, alt: "" }]
-        : [];
-    const links = Array.isArray(v.footerLinks) ? v.footerLinks : [];
-    const stories = Array.isArray(v.remixStories) ? v.remixStories : [];
+  /**
+   * The band under the header that carries the page title. A theme that
+   * extends this one can return its own band here.
+   * @param {object} page home, isHome, start, v (theme variables), at, active, parent, stickers
+   */
+  renderHero({ isHome, start, v, at, parent, stickers }) {
     return html`
-      <a class="skip-link" href="#contentcontainer">${this.t.skipToContent}</a>
-      ${
-        v.network === "hax"
-          ? html`<hax-network-bar current="web"></hax-network-bar>`
-          : ``
-      }
-      <header>
-        <div class="inner">
-          <div class="brand">
-            ${
-              Array.isArray(v.logos) && v.logos.length
-                ? html`<hax-reel
-                    class="logo"
-                    effect="glitch"
-                    label="${this.t.changeLogo}"
-                    .items="${v.logos}"
-                  ></hax-reel>`
-                : this._logo
-                  ? html`<img src="${this._logo}" alt="" />`
-                  : ``
-            }
-            <a href="${home ? home.slug : "./"}">${this._title}</a>
-          </div>
-          <nav aria-label="${this.t.site}" @keydown="${this._menuKey}">
-            <ul>
-              ${this._nav(this._items.slice(1), active)}
-            </ul>
-          </nav>
-          <div class="tools">
-            ${
-              this._editor
-                ? ``
-                : html`<span class="remix">
-                    <button
-                      type="button"
-                      aria-label="${this.t.remixRandom}"
-                      @click="${this._remixRandom}"
-                    >
-                      <svg class="dice" viewBox="0 0 24 24" aria-hidden="true">
-                        <rect x="3.5" y="3.5" width="17" height="17" rx="3" />
-                        <path
-                          d="M8.5 8.5h.01M15.5 8.5h.01M12 12h.01M8.5 15.5h.01M15.5 15.5h.01"
-                        />
-                      </svg>
-                      ${this.t.remix}
-                    </button>
-                    <button
-                      type="button"
-                      aria-expanded="${this._remix ? "true" : "false"}"
-                      aria-controls="remix"
-                      aria-label="${this.t.remixOptions}"
-                      @click="${this._remixToggle}"
-                    >
-                      <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="m6 9 6 6 6-6" />
-                      </svg>
-                    </button>
-                  </span>`
-            }
-            ${
-              home && v.cta
-                ? html`<a class="cta" href="${home.slug}">${v.cta}</a>`
-                : ``
-            }
-          </div>
-        </div>
-      </header>
-      <div class="switcher" id="remix" ?hidden="${!this._remix}">
-        <div class="inner">
-          <hax-style-switcher heading="${this.t.switcherHeading}">
-            ${stories.map(
-              (story) =>
-                html`<hax-story-link
-                  compact
-                  named
-                  story="${story.story}"
-                  about="${story.about}"
-                ></hax-story-link> `,
-            )}
-          </hax-style-switcher>
-        </div>
-      </div>
       <div class="hero ${isHome ? "home" : ""}">
         <div class="inner">
           <div>
@@ -1209,9 +1116,129 @@ class HaxMarketingTheme extends HAXCMSThemeParts(
           }
         </div>
       </div>
+    `;
+  }
+
+  /**
+   * Nothing here. A theme that extends this one can return what it wants
+   * drawn above the page content, inside the content column.
+   * @param {object} page home, isHome, v (theme variables), active, parent
+   */
+  renderContentTop() {
+    return html``;
+  }
+
+  render() {
+    const home = this._items.length ? this._items[0] : null;
+    const isHome = home && home.id === this.activeId;
+    const start = this._all.find((item) => item.slug === "get-started");
+    const v = this._vars || {};
+    const at = this._all.findIndex((item) => item.id === this.activeId);
+    const active = at > -1 ? this._all[at] : null;
+    const parent =
+      active && active.parent
+        ? this._all.find((item) => item.id === active.parent)
+        : null;
+    const before = at > 0 ? this._all[at - 1] : null;
+    const after =
+      at > -1 && at < this._all.length - 1 ? this._all[at + 1] : null;
+    const stickers = Array.isArray(v.stickers)
+      ? v.stickers
+      : v.sticker
+        ? [{ src: v.sticker, alt: "" }]
+        : [];
+    const links = Array.isArray(v.footerLinks) ? v.footerLinks : [];
+    const stories = Array.isArray(v.remixStories) ? v.remixStories : [];
+    return html`
+      <a class="skip-link" href="#contentcontainer">${this.t.skipToContent}</a>
+      ${
+        v.network === "hax"
+          ? html`<hax-network-bar
+              current="${v.networkCurrent || "web"}"
+            ></hax-network-bar>`
+          : ``
+      }
+      <header>
+        <div class="inner">
+          <div class="brand">
+            ${
+              Array.isArray(v.logos) && v.logos.length
+                ? html`<hax-reel
+                    class="logo"
+                    effect="glitch"
+                    label="${this.t.changeLogo}"
+                    .items="${v.logos}"
+                  ></hax-reel>`
+                : this._logo
+                  ? html`<img src="${this._logo}" alt="" />`
+                  : ``
+            }
+            <a href="${home ? home.slug : "./"}">${this._title}</a>
+          </div>
+          <nav aria-label="${this.t.site}" @keydown="${this._menuKey}">
+            <ul>
+              ${this._nav(this._items.slice(1), active)}
+            </ul>
+          </nav>
+          <div class="tools">
+            ${
+              this._editor
+                ? ``
+                : html`<span class="remix">
+                    <button
+                      type="button"
+                      aria-label="${this.t.remixRandom}"
+                      @click="${this._remixRandom}"
+                    >
+                      <svg class="dice" viewBox="0 0 24 24" aria-hidden="true">
+                        <rect x="3.5" y="3.5" width="17" height="17" rx="3" />
+                        <path
+                          d="M8.5 8.5h.01M15.5 8.5h.01M12 12h.01M8.5 15.5h.01M15.5 15.5h.01"
+                        />
+                      </svg>
+                      ${this.t.remix}
+                    </button>
+                    <button
+                      type="button"
+                      aria-expanded="${this._remix ? "true" : "false"}"
+                      aria-controls="remix"
+                      aria-label="${this.t.remixOptions}"
+                      @click="${this._remixToggle}"
+                    >
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="m6 9 6 6 6-6" />
+                      </svg>
+                    </button>
+                  </span>`
+            }
+            ${
+              home && v.cta
+                ? html`<a class="cta" href="${home.slug}">${v.cta}</a>`
+                : ``
+            }
+          </div>
+        </div>
+      </header>
+      <div class="switcher" id="remix" ?hidden="${!this._remix}">
+        <div class="inner">
+          <hax-style-switcher heading="${this.t.switcherHeading}">
+            ${stories.map(
+              (story) =>
+                html`<hax-story-link
+                  compact
+                  named
+                  story="${story.story}"
+                  about="${story.about}"
+                ></hax-story-link> `,
+            )}
+          </hax-style-switcher>
+        </div>
+      </div>
+      ${this.renderHero({ home, isHome, start, v, at, active, parent, stickers })}
       <main>
         <div class="inner">
           <site-region name="contentTop"></site-region>
+          ${this.renderContentTop({ home, isHome, v, active, parent })}
           <article>
             <!-- required for HAX to edit the page: contentcontainer, slot, and the wrapped slot -->
             <div id="contentcontainer">
