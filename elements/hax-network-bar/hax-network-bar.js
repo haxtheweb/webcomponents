@@ -1766,6 +1766,18 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
             display: none;
           }
         }
+        /* at the narrowest the notice takes two short lines; it is never
+           cut off */
+        @media (max-width: 380px) {
+          .strip .notice {
+            white-space: normal;
+          }
+          .strip .notice .text {
+            overflow: visible;
+            font-size: var(--hax-ui-admin-font-size-xs);
+            line-height: 1.15;
+          }
+        }
       `,
     ];
   }
