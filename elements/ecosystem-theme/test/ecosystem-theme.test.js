@@ -167,6 +167,23 @@ describe("ecosystem-theme", function () {
     expect(element.hasAttribute("menu-open")).to.be.true;
   });
 
+  it("folds the outline on narrow screens and closes it when a page is chosen", async () => {
+    element._setView("site");
+    await element.updateComplete;
+    const btn = element.shadowRoot.querySelector("nav.outline .ol-toggle");
+    expect(btn.getAttribute("aria-controls")).to.equal("outline-menu");
+    expect(btn.getAttribute("aria-expanded")).to.equal("false");
+    btn.click();
+    await element.updateComplete;
+    expect(btn.getAttribute("aria-expanded")).to.equal("true");
+    expect(element.hasAttribute("outline-open")).to.be.true;
+    store.activeId = "tours";
+    await tick();
+    await element.updateComplete;
+    expect(element.outlineOpen).to.be.false;
+    expect(element.hasAttribute("outline-open")).to.be.false;
+  });
+
   it("leaves the Future Traveler's corner to the network bar above it", () => {
     expect(element.shadowRoot.querySelector("header.top .haxLogo")).to.not
       .exist;
