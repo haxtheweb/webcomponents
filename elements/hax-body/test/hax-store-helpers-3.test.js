@@ -88,7 +88,7 @@ describe("hax-store methods round 3", () => {
         "title=%5Bmerlin%5D%20New%20command%20request%20from%20HAX%20daemon",
       );
       expect(decodeURIComponent(url.split("&body=")[1])).to.contain(
-        "Merlin command: * zz q&a",
+        "Searched for: * zz q&a",
       );
     });
 

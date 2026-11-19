@@ -97,7 +97,7 @@ export function defineCheatCodes(editorInstance, SuperDaemonInstance) {
   // DKMODE - Make RPG character have big head
   SuperDaemonInstance.defineOption({
     title: "DKMODE",
-    icon: "hax:wizard-hat",
+    icon: "hax:future-goggles",
     textCharacter: "🍌",
     tags: ["cheat", "character", "dk", "donkey-kong"],
     // developer commands only (the > list), never global search

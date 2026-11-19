@@ -135,7 +135,7 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
       openInWeb: "Open in the web",
       openOn: "Open on",
       theWeb: "The interactive web",
-      askMerlin: "Ask Merlin",
+      askMerlin: "Ask Future",
       takeTour: "Take the tour",
       welcome: "Welcome",
       merlinWebs: "hax.cloud: webs",

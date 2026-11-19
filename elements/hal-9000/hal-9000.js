@@ -234,8 +234,8 @@ class Hal9000 extends LitElement {
         this.utter.rate = this.rate;
         this.utter.lang = this.language;
         if (globalThis.HAXCMS) {
-          globalThis.HAXCMS.instance.setCursor("hax:wizard-hat");
-          globalThis.HAXCMS.instance.setFavicon("hax:wizard-hat");
+          globalThis.HAXCMS.instance.setCursor("hax:future-goggles");
+          globalThis.HAXCMS.instance.setFavicon("hax:future-goggles");
         }
         this.speaking = true;
         let done = false;

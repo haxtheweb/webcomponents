@@ -54,6 +54,12 @@ HAX's mascot, the Future Traveler. They were first named
 under `wcfactory.iconset.legacy` in `package.json`, which keeps them out of the
 manifest and the icon picker. Use the `future-traveler` names in anything new.
 
+`hax:future-goggles` is his goggles on their own, in one ink: the short form of
+him, and the mark for search and commands (the palette that opens with
+`Alt+Shift`). Use it where the wand (`hax:wand`) or the wizard hat
+(`hax:wizard-hat`) once stood for the palette; those two icons stay in the set
+for content that names them.
+
 ## Attribution
 
 The `hax:admin-*` glyph paths are taken from Google's

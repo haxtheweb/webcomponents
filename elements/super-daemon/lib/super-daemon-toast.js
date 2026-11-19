@@ -59,7 +59,8 @@ export class SuperDaemonToast extends I18NMixin(SimpleToastEl) {
     super();
     this.t = {
       saved: "Saved",
-      merlin: "Merlin",
+      // who is speaking: the voice answers to "Ok Future"
+      voiceName: "Future",
       listeningState: "Listening",
       speakingState: "Speaking",
       santaModeState: "Santa mode",
@@ -686,7 +687,7 @@ export class SuperDaemonToast extends I18NMixin(SimpleToastEl) {
         ${
           this.voiceState !== "message"
             ? html`<div class="head">
-                <span class="who">${this.t.merlin}</span>
+                <span class="who">${this.t.voiceName}</span>
                 ${this._renderPill()}
                 ${
                   this.santa

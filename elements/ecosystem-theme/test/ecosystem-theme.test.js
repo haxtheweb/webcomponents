@@ -213,7 +213,7 @@ describe("ecosystem-theme", function () {
     );
     expect(w.querySelector("a.btn").getAttribute("href")).to.equal("tours");
     expect(w.querySelector("button.btn").textContent.trim()).to.equal(
-      "Ask Merlin",
+      "Ask Future",
     );
     store.activeId = "goal";
     await tick();

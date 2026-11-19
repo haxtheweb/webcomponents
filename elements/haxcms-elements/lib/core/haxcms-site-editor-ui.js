@@ -2280,7 +2280,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       rootLevel: "Root Level",
       pageMovedUnder: 'Page moved under "{parent}"',
       expectingToSeeAnOptionMerlinDidntProvide:
-        "Expecting to see an option Merlin didn't provide?",
+        "Expecting to see an option that isn't here?",
       makeASuggestionToImproveResults: "Make a suggestion to improve results",
       createAPage: "Create a page",
       pageTitlePlaceholder: "Page title",
@@ -2324,7 +2324,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       spreadsheetConvertedToCsvText: "Spreadsheet converted to CSV text",
       fileUploadedAndLinkedTo: "File uploaded and linked to",
       fileUploadedForLaterUse: "File uploaded for later use",
-      watchMerlinWorkHisMagic: "Watch Merlin work his magic!",
+      watchMerlinWorkHisMagic: "Watch the Future Traveler get to work!",
       youtubeVideoEmbeddedInPage: "YouTube video embedded in page",
       kalturaMediaEmbeddedInPage: "Kaltura media embedded in page",
       imageFromUrlEmbeddedInPage: "Image from URL embedded in page",
@@ -2420,12 +2420,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       allThemesUnlockedSpeech:
         "All terrible, hidden and legacy themes unlocked. You must choose, but choose wisely.",
       welcomeProgramDismissed:
-        "Welcome program dismissed. You can always access Merlin by pressing Alt+Shift or clicking the search bar.",
+        "Welcome program dismissed. You can always open search and commands by pressing Alt+Shift or clicking the search bar.",
       noActivePageFound: "No active page found",
       noActivePageFoundToShare: "No active page found to share",
       linkCopiedFor: "Link copied for {title}",
       unableToCopyAutomatically:
-        "Unable to copy automatically. Open Merlin to view the share link.",
+        "Unable to copy automatically. Open search and commands to view the share link.",
       shortcutSavePageAndExitEditMode: "Save page and exit edit mode",
       shortcutEnterEditMode: "Enter edit mode",
       shortcutCancelEditing: "Cancel editing",
@@ -2464,11 +2464,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       importLabel: "Import",
       pasteUrlToImport: "Paste URL to import:",
       cheatCodesUnlocked:
-        "🎮 Cheat codes unlocked! Check Merlin for new programs.",
+        "🎮 Cheat codes unlocked! Check search and commands for new programs.",
       failedToUnlockCheatCodes: "🎮 Failed to unlock cheat codes",
       cheatCodes: "Cheat codes (↑↑↓↓←→←→ B A)",
       cheatCodesDescription:
-        "Unlock silly extras. Or type up up down down left right left right B A anywhere, even with Merlin open.",
+        "Unlock silly extras. Or type up up down down left right left right B A anywhere, even with search open.",
       platformSettings: "Platform settings",
       selectFileEllipsis: "Select file..",
     };
@@ -3441,7 +3441,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       siteSettings: "Site Settings",
       siteMenu: "Site settings quick links",
       siteMenuDashboard: "Dashboard",
-      closeMerlin: "Close Merlin",
+      closeMerlin: "Close search and commands",
       siteMenuContent: "Content",
       siteMenuStructure: "Structure",
       siteMenuFiles: "Files",
@@ -3471,8 +3471,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       pageActions: "Page actions",
       reports: "Reports",
       dashboard: "Dashboard",
-      merlin: "Merlin",
-      summonMerlin: "Summon Merlin",
+      merlin: "Search and commands",
+      summonMerlin: "Open search and commands",
       logOut: "Log out",
       menu: "Menu",
       showMore: "More",

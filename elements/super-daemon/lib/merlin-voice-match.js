@@ -26,7 +26,7 @@ export function merlinWordList(value) {
 /** The English defaults; super-daemon passes translated ones. */
 export const MERLIN_VOICE_VOCAB_EN = {
   fillers:
-    "please|can you|could you|would you|will you|i want to|i'd like to|i would like to|let's|let me|go ahead and|um|uh|hey|merlin|ok|okay",
+    "please|can you|could you|would you|will you|i want to|i'd like to|i would like to|let's|let me|go ahead and|um|uh|ok future|okay future|hey future|hey|merlin|ok|okay",
   stopWords: "a|an|the|to|my|this|for|of|me",
   numbers: "zero|one|two|three|four|five|six|seven|eight|nine|ten",
   ordinals: "zeroth|first|second|third|fourth|fifth|sixth|seventh|eighth|ninth",

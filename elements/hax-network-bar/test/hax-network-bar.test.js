@@ -340,7 +340,7 @@ describe("hax-network-bar", () => {
   it("offers Merlin, drawn as the Future Traveler", () => {
     const btn = element.shadowRoot.querySelector("button.merlin");
     expect(btn.querySelector(".sr-only").textContent).to.equal(
-      "Merlin in the HAX network",
+      "Search in the HAX network",
     );
     expect(btn.querySelector("svg.merlin-traveler")).to.exist;
   });

@@ -557,17 +557,6 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
           height: 100%;
           padding: 0 var(--hax-ui-gap-md) 0 var(--hax-ui-gap-lg);
         }
-        /* Merlin's mark: purple only here, where it invites you in */
-        .field .merlin-wand {
-          --merlin-wand-size: 20px;
-          color: light-dark(
-            var(--ddd-theme-default-wonderPurple, #491d70),
-            var(--ddd-theme-default-athertonViolet, #ac8dce)
-          );
-        }
-        :host([mini]:not([wand])) .field .merlin-wand {
-          --merlin-wand-size: var(--hax-ui-icon);
-        }
         /* the Future Traveler takes the field's ink; his lit parts carry
            the color */
         .field .merlin-traveler {
@@ -836,7 +825,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
     switch (context) {
       case "CMS":
       case "/":
-        return "hax:wand";
+        return "image:flash-on";
       case ">":
         return "hax:console-line";
     }
