@@ -584,6 +584,9 @@ describe("Utils test", () => {
       expect(mimeTypeToName("image/jpeg")).to.equal(".jpeg");
       expect(mimeTypeToName("image/png")).to.equal(".png");
       expect(mimeTypeToName("text/plain")).to.equal("text");
+      expect(
+        mimeTypeToName("application/vnd.oasis.opendocument.text"),
+      ).to.equal(".odt");
       expect(mimeTypeToName("application/pdf")).to.equal(".pdf");
     });
 
