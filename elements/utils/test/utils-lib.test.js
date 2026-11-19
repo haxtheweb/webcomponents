@@ -48,6 +48,7 @@ import {
   winEventsElement,
   stripMSWord,
 } from "../utils.js";
+import { removeExternalScripts } from "../lib/sanitize.js";
 
 // ---- ids.js ----
 describe("lib/ids generateResourceID", () => {
@@ -940,6 +941,42 @@ describe("utils removeUnsafeIframeAttributes", () => {
 
   it("returns null for null input", () => {
     expect(removeUnsafeIframeAttributes(null)).to.be.null;
+  });
+});
+
+describe("lib/sanitize removeExternalScripts", () => {
+  const VERCEL_TAIL =
+    '<p>content</p><script async data-explicit-opt-in="true" data-deployment-id="dpl_x" src="https://vercel.live/_next-live/feedback/feedback.js"></script>';
+  function inertDiv(html) {
+    const doc = document.implementation.createHTMLDocument("");
+    const div = doc.createElement("div");
+    div.innerHTML = html;
+    return div;
+  }
+
+  it("drops a host-added toolbar script so encapScript has nothing to show", () => {
+    const div = removeExternalScripts(inertDiv(VERCEL_TAIL));
+    expect(div.innerHTML).to.equal("<p>content</p>");
+    expect(encapScript(div.innerHTML)).to.not.include("script");
+  });
+
+  it("keeps scripts with an inline body for encapScript to show as text", () => {
+    const div = removeExternalScripts(
+      inertDiv('<script src="a.js">alert(1)</script><script>alert(2)</script>'),
+    );
+    expect(div.querySelectorAll("script").length).to.equal(2);
+  });
+
+  it("leaves scripts inside a template alone", () => {
+    const div = removeExternalScripts(
+      inertDiv('<template><script src="example.js"></script></template>'),
+    );
+    expect(div.querySelector("template").content.querySelector("script")).to
+      .exist;
+  });
+
+  it("returns non-node input unchanged", () => {
+    expect(removeExternalScripts(null)).to.be.null;
   });
 });
 

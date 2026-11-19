@@ -461,6 +461,30 @@ export function sanitizeNodeTree(
   return root;
 }
 /**
+ * Remove <script src> elements that have no inline body. Page content never
+ * runs scripts, so one of these can only ever show up as escaped
+ * `<script></script>` text; hosts add them to every HTML response they serve
+ * (the Vercel preview toolbar, dev-server reload sockets), including the page
+ * files HAXcms fetches as content. Scripts with a body are left for
+ * encapScript / neutralizeStrayScripts, which keep them visible as text, and
+ * querySelectorAll never descends into <template> content, so code-sample
+ * examples are untouched.
+ * @param {DocumentFragment|Element} root parsed content (an inert document)
+ * @returns {DocumentFragment|Element} root, modified in place
+ */
+export function removeExternalScripts(root) {
+  if (!root || !root.querySelectorAll) {
+    return root;
+  }
+  const scripts = root.querySelectorAll("script[src]");
+  for (let i = 0; i < scripts.length; i++) {
+    if (scripts[i].textContent.trim() === "") {
+      scripts[i].remove();
+    }
+  }
+  return root;
+}
+/**
  * Turn any <script> / <style> that is NOT inside a <template> back into
  * inert text, matching what encapScript intends. encapScript works on the
  * raw string and deliberately restores scripts inside <template> (code-sample
