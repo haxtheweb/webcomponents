@@ -20,15 +20,6 @@ const MANIFEST = {
           { label: "Explore", slug: "ecosystem" },
           { label: "Tours", slug: "tours" },
         ],
-        links: [
-          { kind: "docs", label: "Docs", href: "https://haxtheweb.org" },
-          {
-            kind: "demo",
-            label: "Try the live demo",
-            href: "https://webcomponents.hax.cloud",
-          },
-          { kind: "portfolio", label: "Bad", href: "javascript:alert(1)" },
-        ],
         footerNote: "Built from PRAW.",
         welcome: {
           title: "Everything in HAX is connected",
@@ -107,7 +98,7 @@ describe("ecosystem-theme", function () {
     const web = element.shadowRoot.querySelector(".webview ecosystem-web");
     expect(web.getAttribute("web")).to.equal("main");
     expect(
-      element.shadowRoot.querySelector(".linkbar code").textContent,
+      element.shadowRoot.querySelector(".viewbar .copylink code").textContent,
     ).to.equal("hax.cloud/ecosystem");
   });
 
@@ -134,7 +125,16 @@ describe("ecosystem-theme", function () {
     const fig = r.querySelector("figure.where ecosystem-web");
     expect(fig.hasAttribute("compact")).to.be.true;
     expect(fig.getAttribute("node")).to.equal("sdg_4");
-    expect(r.querySelector(".linkbar")).to.equal(null);
+    // one row in both views: the breadcrumb, the views and the link
+    expect(r.querySelector(".viewbar site-breadcrumb")).to.exist;
+    expect(r.querySelector(".viewbar .copylink")).to.exist;
+    expect(r.querySelector("main site-breadcrumb")).to.equal(null);
+    const views = [...r.querySelectorAll(".views button")];
+    expect(views.map((b) => b.getAttribute("aria-label"))).to.deep.equal([
+      "Network view",
+      "Content view",
+    ]);
+    expect(views[1].getAttribute("aria-pressed")).to.equal("true");
   });
 
   it("opens pages outside the webs in the Site view", async () => {
@@ -145,26 +145,37 @@ describe("ecosystem-theme", function () {
     expect(element.shadowRoot.querySelector("ecosystem-web")).to.equal(null);
   });
 
-  it("builds the header from the theme variables and drops unsafe links", () => {
+  it("puts the site's places in a menu on its name, with no links the network bar has", () => {
     const r = element.shadowRoot;
-    const nav = [...r.querySelectorAll("nav.main a")].map((a) =>
+    const places = [...r.querySelectorAll(".places-menu a")].map((a) =>
       a.textContent.trim(),
     );
-    expect(nav).to.deep.equal(["Explore", "Tours", "Docs ↗"]);
+    expect(places).to.deep.equal(["Explore", "Tours"]);
     expect(
-      r.querySelector('nav.main a[aria-current="page"]').textContent.trim(),
+      r.querySelector('.places-menu a[aria-current="page"]').textContent.trim(),
     ).to.equal("Explore");
-    expect(r.querySelector(".pill.demo")).to.exist;
-    expect(r.querySelector(".pill.portfolio")).to.equal(null);
+    expect(r.querySelector("header.top")).to.equal(null);
+    expect(r.querySelector(".linkbar")).to.equal(null);
+    expect(r.querySelector(".pill")).to.equal(null);
   });
 
-  it("toggles the header menu on narrow screens", async () => {
-    const btn = element.shadowRoot.querySelector(".menu-btn");
+  it("opens and closes the places menu, Escape giving focus back", async () => {
+    const btn = element.shadowRoot.querySelector(".places-btn");
     expect(btn.getAttribute("aria-expanded")).to.equal("false");
     btn.click();
     await element.updateComplete;
     expect(btn.getAttribute("aria-expanded")).to.equal("true");
-    expect(element.hasAttribute("menu-open")).to.be.true;
+    expect(element.hasAttribute("places-open")).to.be.true;
+    btn.dispatchEvent(
+      new KeyboardEvent("keydown", { key: "Escape", bubbles: true }),
+    );
+    await element.updateComplete;
+    expect(element.placesOpen).to.be.false;
+    btn.click();
+    await element.updateComplete;
+    globalThis.document.body.click();
+    await element.updateComplete;
+    expect(element.placesOpen).to.be.false;
   });
 
   it("folds the outline on narrow screens and closes it when a page is chosen", async () => {
@@ -185,8 +196,7 @@ describe("ecosystem-theme", function () {
   });
 
   it("leaves the Future Traveler's corner to the network bar above it", () => {
-    expect(element.shadowRoot.querySelector("header.top .haxLogo")).to.not
-      .exist;
+    expect(element.shadowRoot.querySelector(".viewbar .haxLogo")).to.not.exist;
     const bar = element.shadowRoot.querySelector("hax-network-bar");
     expect(
       bar.shadowRoot
@@ -227,8 +237,7 @@ describe("ecosystem-theme", function () {
       const r = embedded.shadowRoot;
       [
         "hax-network-bar",
-        "header.top",
-        ".linkbar",
+        ".viewbar",
         "nav.outline",
         "footer",
         "section.welcome",
