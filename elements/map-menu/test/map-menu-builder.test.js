@@ -46,6 +46,21 @@ describe("map-menu-builder", () => {
     expect(leafTitles.join(",")).to.equal("Child One,Leaf One,Hidden Parent");
   });
 
+  it("renders a parent at the last allowed level as a plain item, with no drop down", async () => {
+    const el = await fixture(
+      html`<map-menu-builder
+        .items=${tree()}
+        max-depth="1"
+      ></map-menu-builder>`,
+    );
+    await el.updateComplete;
+    expect(el.querySelectorAll("map-menu-submenu").length).to.equal(0);
+    const titles = [...el.querySelectorAll("map-menu-item")].map((i) =>
+      i.getAttribute("itemtitle"),
+    );
+    expect(titles.join(",")).to.equal("Parent One,Leaf One,Hidden Parent");
+  });
+
   it("passes metadata into the rendered items", async () => {
     const el = await fixture(
       html`<map-menu-builder
@@ -145,9 +160,12 @@ describe("map-menu-builder", () => {
       ></map-menu-builder>`,
     );
     await el.updateComplete;
-    // levels one through three render as submenus, deeper levels are dropped
-    expect(el.querySelectorAll("map-menu-submenu").length).to.equal(3);
-    expect(el.querySelectorAll("map-menu-item").length).to.equal(0);
+    // levels one and two render as submenus; level three is the last level
+    // shown, so it is a plain item with no empty drop down; deeper levels are dropped
+    expect(el.querySelectorAll("map-menu-submenu").length).to.equal(2);
+    const items = el.querySelectorAll("map-menu-item");
+    expect(items.length).to.equal(1);
+    expect(items[0].getAttribute("itemtitle")).to.equal("Level 3");
   });
 
   it("hideInMenuStatus only hides when metadata says so", async () => {
