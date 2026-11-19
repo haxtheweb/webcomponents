@@ -141,6 +141,7 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     this.view = "web";
     this.embed = readEmbed();
     this.menuOpen = false;
+    this.outlineOpen = false;
     this._items = [];
     this._active = null;
     this._vars = {};
@@ -162,6 +163,8 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
       embed: { type: Boolean, reflect: true },
       /** the header menu on narrow screens */
       menuOpen: { type: Boolean, reflect: true, attribute: "menu-open" },
+      /** the site outline on narrow screens, where it folds behind its heading */
+      outlineOpen: { type: Boolean, reflect: true, attribute: "outline-open" },
       _items: { type: Array, state: true },
       _active: { type: Object, state: true },
       _vars: { type: Object, state: true },
@@ -190,16 +193,38 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
       autorun(() => {
         const a = toJS(store.activeItem);
         Promise.resolve().then(() => {
+          const moved = !!(this._active && a && this._active.id !== a.id);
           this._active = a || null;
           this._copied = false;
           this.menuOpen = false;
+          this.outlineOpen = false;
           // an embed always shows the web: the viewer's remembered choice is for the site itself
           this.view = this._eco()
             ? (!this.embed && this._chosen) || "web"
             : "site";
+          if (moved) this._showPage();
         });
       }),
     );
+  }
+
+  /**
+   * On a narrow screen the outline sits above the page: after choosing a
+   * page from it, the outline folds and the page's title is brought into
+   * view, so the reader lands on what they picked instead of the menu.
+   */
+  async _showPage() {
+    const narrow =
+      globalThis.matchMedia &&
+      globalThis.matchMedia("(max-width: 900px)").matches;
+    if (!narrow || this.embed) return;
+    await this.updateComplete;
+    if (this.view !== "site") return;
+    // after the base theme's own scroll to the top of the new page
+    globalThis.requestAnimationFrame(() => {
+      const main = this.shadowRoot && this.shadowRoot.querySelector("main");
+      if (main) main.scrollIntoView({ block: "start", behavior: "auto" });
+    });
   }
 
   disconnectedCallback() {
@@ -843,6 +868,9 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           --map-menu-header-button-padding: var(--ddd-spacing-2)
             var(--ddd-spacing-3) var(--ddd-spacing-2) var(--ddd-spacing-8);
         }
+        .ol-toggle {
+          display: none;
+        }
         .ol-head {
           margin: 0 0 var(--ddd-spacing-3);
           font-family: var(--ddd-font-navigation);
@@ -1005,6 +1033,56 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
             flex-basis: 100%;
             padding-block: var(--ddd-spacing-4) 0;
           }
+          /* the outline folds behind a button with its heading, and closes
+             when a page is chosen (_showPage) */
+          nav.outline .ol-head,
+          nav.outline .ol-menu {
+            display: none;
+          }
+          :host([outline-open]) nav.outline .ol-menu {
+            display: block;
+            padding-top: var(--ddd-spacing-2);
+          }
+          .ol-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--ddd-spacing-2);
+            width: 100%;
+            min-height: 44px;
+            box-sizing: border-box;
+            margin: 0;
+            padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
+            border: var(--ddd-border-xs);
+            border-color: var(--eco-line);
+            border-radius: var(--ddd-radius-sm);
+            background-color: var(--eco-panel);
+            color: var(--eco-heading);
+            font-family: var(--ddd-font-navigation);
+            font-size: var(--ddd-font-size-4xs);
+            font-weight: var(--ddd-font-weight-bold);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            text-align: start;
+            cursor: pointer;
+          }
+          .ol-toggle:hover {
+            background-color: var(--eco-current);
+          }
+          .ol-toggle svg {
+            flex: none;
+            width: 20px;
+            height: 20px;
+            transition: transform 0.2s ease;
+          }
+          :host([outline-open]) .ol-toggle svg {
+            transform: rotate(180deg);
+          }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .ol-toggle svg {
+            transition: none;
+          }
         }
         /* the narrowest phones: everything in the bar stays on one row */
         @media (max-width: 400px) {
@@ -1092,7 +1170,31 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
               ? ""
               : html`<nav class="outline" aria-label="${this.t.outline}">
                   <p class="ol-head">${this._topTitle(top)}</p>
-                  <site-menu></site-menu>
+                  <button
+                    class="ol-toggle"
+                    type="button"
+                    aria-expanded="${this.outlineOpen ? "true" : "false"}"
+                    aria-controls="outline-menu"
+                    @click="${() => {
+                      this.outlineOpen = !this.outlineOpen;
+                    }}"
+                  >
+                    <span>${this._topTitle(top)}</span>
+                    <svg
+                      aria-hidden="true"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M6 9l6 6 6-6"></path>
+                    </svg>
+                  </button>
+                  <div id="outline-menu" class="ol-menu">
+                    <site-menu></site-menu>
+                  </div>
                 </nav>`
           }
           <main>

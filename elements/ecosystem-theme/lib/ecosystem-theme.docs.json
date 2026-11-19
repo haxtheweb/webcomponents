@@ -37,12 +37,20 @@
       "default": "false",
       "description": "the header menu on narrow screens",
       "hax": null
+    },
+    {
+      "name": "outline-open",
+      "property": "outlineOpen",
+      "type": "boolean",
+      "default": "false",
+      "description": "the site outline on narrow screens, where it folds behind its heading",
+      "hax": null
     }
   ],
   "slots": [],
   "events": [],
   "hax": {},
-  "surfaceHash": "de9aa42c52d4",
+  "surfaceHash": "7d37a0abdc80",
   "walkthroughs": [],
   "videos": [],
   "motion": {
