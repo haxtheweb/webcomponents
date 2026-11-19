@@ -19,13 +19,18 @@
             },
             {
               "kind": "method",
+              "name": "_applyTransform",
+              "description": "Rotation and mirroring share one transform, so turning one never\nundoes the other."
+            },
+            {
+              "kind": "method",
               "name": "rotateRight",
               "description": "Rotate the image to the right."
             },
             {
               "kind": "method",
               "name": "mirrorImage",
-              "description": "Flip the image."
+              "description": "Flip the image; a toggle, so the button reports it with aria-pressed."
             },
             {
               "kind": "method",
@@ -61,6 +66,18 @@
             },
             {
               "kind": "field",
+              "name": "mirrored",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Whether the image is mirrored, toggled by the mirror button.",
+              "default": "false",
+              "attribute": "mirrored",
+              "reflects": true
+            },
+            {
+              "kind": "field",
               "name": "src",
               "privacy": "public",
               "type": {
@@ -76,7 +93,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ ...this.t, zoomIn: \"Zoom in\", zoomOut: \"Zoom out\", rotateRight: \"Rotate right\", mirrorImage: \"Mirror image\", openInNewWindow: \"Open in new window\", }"
+              "default": "{ ...this.t, zoomIn: \"Zoom in\", zoomOut: \"Zoom out\", rotateRight: \"Rotate right\", mirrorImage: \"Mirror image\", openInNewWindow: \"Open in new window\", imageTools: \"Image tools\", }"
             },
             {
               "kind": "field",
@@ -106,6 +123,15 @@
               "description": "Rotation of the image in degrees, changed by the rotate buttons.",
               "default": "0",
               "fieldName": "degrees"
+            },
+            {
+              "name": "mirrored",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Whether the image is mirrored, toggled by the mirror button.",
+              "default": "false",
+              "fieldName": "mirrored"
             },
             {
               "name": "src",
