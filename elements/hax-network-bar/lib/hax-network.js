@@ -63,9 +63,9 @@ export const HAX_NETWORK = {
       color: "original87Pink",
       on: "white",
       icon: "lrn:network",
-      label: "hax.cloud",
+      label: "PRAW",
       purpose:
-        "The brain of HAX: every person, pillar and project, and how they connect.",
+        "The brain of the HAX ecosystem: every person, pillar and project, and how they connect.",
       relation:
         "PRAW drawn as a web. Every other property takes its stories from here.",
     },
@@ -92,7 +92,7 @@ export const HAX_NETWORK = {
 export const HAX_NETWORK_GLYPHS = {
   // HAXTheWeb: an H between the brackets of a tag
   web: svg`<path class="m g-l" d="M8 6 3 12l5 6"/><path class="m g-r" d="m16 6 5 6-5 6"/><path class="a g-h" d="M10 9.2v5.6M14 9.2v5.6M10 12h4"/>`,
-  // hax.cloud: the brain that is also a cloud, its web inside it and
+  // PRAW (hax.cloud): the brain that is also a cloud, its web inside it and
   // neurons reaching out to everything around it
   cloud: svg`<path class="m" d="M12 5.9c-.88-1.67-4.05-1.67-4.58.88-1.94.35-2.64 2.38-1.76 3.87-1.14 1.41-.62 3.78 1.41 4.31.35 2.29 3.52 3.17 4.93 1.5"/><path class="m" d="M12 5.9c.88-1.67 4.05-1.67 4.58.88 1.94.35 2.64 2.38 1.76 3.87 1.14 1.41.62 3.78-1.41 4.31-.35 2.29-3.52 3.17-4.93 1.5"/><path class="m" d="M12 5.9v10.6"/><path class="a t g-link" d="M9.9 9.6H12M14.1 11.9H12M10.2 14.1H12"/><circle class="a f g-n1" cx="9" cy="9.6" r=".95"/><circle class="a f g-n2" cx="15" cy="11.9" r=".95"/><circle class="a f g-n3" cx="9.3" cy="14.1" r=".95"/><path class="a t g-link" d="M3.2 3.8 5.5 6.1M20.8 3.8l-2.3 2.3M21.2 12.3l-1.5-.3M19.1 20.3l-1.7-2.5M4.9 20.3l1.7-2.5M2.8 12.3l1.5-.3"/><circle class="a f g-o g-o1" cx="2.5" cy="3.1" r="1"/><circle class="a f g-o g-o2" cx="21.5" cy="3.1" r="1"/><circle class="a f g-o g-o3" cx="22.1" cy="12.5" r="1"/><circle class="a f g-o g-o4" cx="19.6" cy="21" r="1"/><circle class="a f g-o g-o5" cx="4.4" cy="21" r="1"/><circle class="a f g-o g-o6" cx="1.9" cy="12.5" r="1"/>`,
   // Build now: a browser window with play in it and a live light

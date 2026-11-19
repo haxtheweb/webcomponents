@@ -80,6 +80,23 @@ const parts = (o) => svg`
   </g>
   ${o.front || ``}`;
 
+/**
+ * A glow, drawn: the same outline again, wider and faint, under the real
+ * one. A CSS filter on the svg would do it too, but leaves torn copies behind
+ * when something inside it moves.
+ */
+const glow = (
+  helmet,
+  goggles,
+  bulb,
+) => svg`<g class="ft-glow" fill="none" stroke-linejoin="round" opacity=".3">
+    <path d="${HELMET}" stroke="${helmet}" stroke-width="3"></path>
+    <rect x="3" y="14.4" width="18" height="2.4" rx="1.2" stroke="${helmet}" stroke-width="2.6"></rect>
+    <circle cx="8.2" cy="16.6" r="2.8" stroke="${goggles}" stroke-width="3"></circle>
+    <circle cx="15.8" cy="16.6" r="2.8" stroke="${goggles}" stroke-width="3"></circle>
+    <circle cx="12" cy="4" r="1.8" stroke="${bulb}" stroke-width="2.4"></circle>
+  </g>`;
+
 /** the icon on a 12 by 12 grid of pixels, for the handheld era */
 const PIXELS = [
   ".....BB.....",
@@ -91,11 +108,11 @@ const PIXELS = [
   ".HVLVLLVLVH.",
   ".HVVVLLVVVH.",
   "GGGGGGGGGGGG",
-  ".GLLG..GLLG.",
-  ".GLLG..GLLG.",
+  ".GEEG..GEEG.",
+  ".GEEG..GEEG.",
   "..GG....GG..",
 ];
-const pixels = (ink) => {
+const pixels = (ink, only) => {
   const out = [];
   PIXELS.forEach((row, y) => {
     let x = 0;
@@ -103,7 +120,7 @@ const pixels = (ink) => {
       const c = row[x];
       let w = 1;
       while (x + w < row.length && row[x + w] === c) w++;
-      if (ink[c]) {
+      if (ink[c] && (only ? only === c : c !== "E")) {
         out.push(
           svg`<rect x="${x * 2}" y="${y * 2}" width="${w * 2}" height="2" fill="${ink[c]}"></rect>`,
         );
@@ -180,7 +197,7 @@ const ERA = {
   tomorrow: (tint) =>
     parts({
       back: svg`<circle cx="12" cy="12" r="11.4" fill="#f3e6c4"></circle>
-        <ellipse class="ft-orbit" cx="12" cy="11.4" rx="11" ry="3.4" fill="none" stroke="${tint}" stroke-width=".7"></ellipse>
+        <ellipse class="ft-orbit" cx="12" cy="11.4" rx="11" ry="3.4" fill="none" stroke="${tint}" stroke-width=".7" transform="rotate(-18 12 11.4)"></ellipse>
         <path d="M19.6 3.4l.4 1 1 .4-1 .4-.4 1-.4-1-1-.4 1-.4z" fill="#e8742c"></path>`,
       stalk: "#1a2a44",
       bulb: "#fff7df",
@@ -227,6 +244,7 @@ const ERA = {
   // cyberpunk: nothing but neon tube
   neon: () =>
     parts({
+      back: glow("#ff4fb0", "#2fe6ff", "#ffe14a"),
       stalk: "#2fe6ff",
       bulb: "none",
       bulbLine: "#ffe14a",
@@ -238,18 +256,25 @@ const ERA = {
       lens: "none",
       lensLine: "#2fe6ff",
     }),
-  // a handheld screen: twelve pixels square, four greens
-  handheld: () =>
-    svg`<g shape-rendering="crispEdges"><rect width="24" height="24" fill="#9bbc0f"></rect>${pixels(
-      {
-        B: "#8bac0f",
-        S: "#306230",
-        H: "#306230",
-        V: "#0f380f",
-        L: "#9bbc0f",
-        G: "#0f380f",
-      },
-    )}<path d="M9.5 0h5v4.5h-5z" fill="none" stroke="#0f380f" stroke-width="1"></path></g>`,
+  // a handheld screen: twelve pixels square, four greens; his goggle eyes
+  // blink
+  handheld: () => {
+    const ink = {
+      B: "#8bac0f",
+      S: "#306230",
+      H: "#306230",
+      V: "#0f380f",
+      L: "#9bbc0f",
+      G: "#0f380f",
+      E: "#9bbc0f",
+    };
+    return svg`<g shape-rendering="crispEdges">
+      <rect width="24" height="24" fill="#9bbc0f"></rect>
+      ${pixels(ink)}
+      <path d="M9.5 0h5v4.5h-5z" fill="none" stroke="#0f380f" stroke-width="1"></path>
+      <g class="ft-eyes">${pixels(ink, "E")}</g>
+    </g>`;
+  },
   // the early web: a rainbow fill and a hard drop shadow
   web: () => {
     const id = `ft-web-${++made}`;
@@ -289,6 +314,7 @@ const ERA = {
   // a terminal: green phosphor, drawn in dashes, with a cursor
   terminal: () =>
     svg`${parts({
+      back: glow("#33ff66", "#33ff66", "#33ff66"),
       stalk: "#33ff66",
       bulb: "none",
       bulbLine: "#33ff66",
@@ -338,6 +364,8 @@ export const HaxFutureTravelerStyles = css`
     overflow: visible;
   }
   .ft-bulb,
+  .ft-eyes,
+  .ft-glow,
   .ft-spin,
   .ft-rays,
   .ft-orbit,
@@ -348,12 +376,6 @@ export const HaxFutureTravelerStyles = css`
   }
   .ft-orbit {
     transform: rotate(-18deg);
-  }
-  svg.future-traveler[data-era="neon"] {
-    filter: drop-shadow(0 0 1.5px #ff4fb0) drop-shadow(0 0 3px #2fe6ff);
-  }
-  svg.future-traveler[data-era="terminal"] {
-    filter: drop-shadow(0 0 1.5px #33ff66);
   }
   svg.future-traveler[data-era="handheld"] {
     image-rendering: pixelated;
@@ -386,6 +408,14 @@ export const HaxFutureTravelerStyles = css`
     .ft-host:hover .ft-cursor,
     .ft-host:focus-visible .ft-cursor {
       animation: ft-cursor 0.7s steps(1, end) infinite;
+    }
+    .ft-host:hover .ft-eyes,
+    .ft-host:focus-visible .ft-eyes {
+      animation: ft-wink 1.6s steps(1, end) infinite;
+    }
+    .ft-host:hover .ft-glow,
+    .ft-host:focus-visible .ft-glow {
+      animation: ft-hum 1.3s ease-in-out infinite;
     }
   }
   @keyframes ft-glitch {
@@ -451,6 +481,28 @@ export const HaxFutureTravelerStyles = css`
   @keyframes ft-tilt {
     50% {
       transform: rotate(-32deg);
+    }
+  }
+  @keyframes ft-wink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    42%,
+    50% {
+      opacity: 0;
+    }
+    58% {
+      opacity: 1;
+    }
+    64%,
+    70% {
+      opacity: 0;
+    }
+  }
+  @keyframes ft-hum {
+    50% {
+      opacity: 0.55;
     }
   }
   @keyframes ft-cursor {

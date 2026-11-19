@@ -21,7 +21,7 @@ What a property is called, where it lives, its color, its icon and the sentence 
 | `current`  | Property       | Where                   | Color          |
 | ---------- | -------------- | ----------------------- | -------------- |
 | `web`      | HAXTheWeb      | haxtheweb.org           | keystoneYellow |
-| `cloud`    | hax.cloud      | hax.cloud               | original87Pink |
+| `cloud`    | PRAW           | hax.cloud               | original87Pink |
 | `try`      | Build now      | browser.hax.cloud       | futureLime     |
 | `learn`    | Learn          | learn.hax.cloud         | skyBlue        |
 | `elements` | Web components | webcomponents.hax.cloud | inventOrange   |

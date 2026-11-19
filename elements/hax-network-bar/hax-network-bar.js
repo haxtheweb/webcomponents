@@ -372,9 +372,9 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
       learnAbout: "Tutorials that teach HAX one flow at a time.",
       elements: "Web components",
       elementsAbout: "Every HAX element, with live demos and walkthroughs.",
-      cloud: "hax.cloud",
+      cloud: "PRAW",
       cloudAbout:
-        "The brain of HAX: every person, pillar and project, and how they connect.",
+        "The brain of the HAX ecosystem: every person, pillar and project, and how they connect.",
       rpg: "RPG me",
       rpgAbout: "Make the character that is you across HAX.",
       here: "You are here",
@@ -476,7 +476,7 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
       installAgentPraw: "PRAW: what agents read about HAX",
       installAgentPrompt:
         "Set up HAX (https://haxtheweb.org) on this computer. Install the HAX CLI with `npm install @haxtheweb/create --global`, then install its agent skills with `hax skills install --all`. Make a site with `hax site my-hax-site --y --no-i`, start it with `cd my-hax-site && hax serve`, and tell me the address it prints. Read the site's AGENTS.md and https://github.com/haxtheweb/praw before you change anything.",
-      goCloud: "hax.cloud: the HAX ecosystem web",
+      goCloud: "PRAW: the brain of the HAX ecosystem",
       goCloudAbout:
         "Every part of HAX and everyone who builds it, in one interactive web.",
       goTours: "Tours of the ecosystem",
@@ -595,7 +595,11 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
         }
         .bar {
           display: grid;
-          grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+          /* Merlin stays in the middle while there is room; when there is
+             not, he gives way and the two sides keep their own width */
+          grid-template-columns:
+            minmax(max-content, 1fr) minmax(40px, auto)
+            minmax(max-content, 1fr);
           align-items: center;
           gap: 0 var(--ddd-spacing-4);
           max-width: var(--hax-network-bar-max-width, none);
@@ -725,6 +729,7 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
           gap: var(--hax-ui-gap-md);
           box-sizing: border-box;
           width: var(--hax-network-bar-merlin-width, clamp(280px, 28vw, 448px));
+          min-width: 40px;
           max-width: 100%;
           height: var(--hax-ui-field-height);
           padding: 0 var(--hax-ui-gap-md) 0 var(--hax-ui-gap-lg);

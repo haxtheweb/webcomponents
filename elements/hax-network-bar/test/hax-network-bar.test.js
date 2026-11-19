@@ -467,7 +467,7 @@ describe("hax-network-bar", () => {
       expect(added.length).to.equal(
         HAX_NETWORK_DESTINATIONS.length + HAX_INSTALL_METHODS.length + 2,
       );
-      expect(added[0].title).to.equal("hax.cloud: the HAX ecosystem web");
+      expect(added[0].title).to.equal("PRAW: the brain of the HAX ecosystem");
       const install = added.filter((o) => o.value.method === "openInstall");
       expect(install.map((o) => o.value.args[0])).to.deep.equal([
         "",
