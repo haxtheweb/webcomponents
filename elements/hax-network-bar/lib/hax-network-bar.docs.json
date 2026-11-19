@@ -5,7 +5,7 @@
   "version": "26.8.0",
   "license": "Apache-2.0",
   "title": "hax-network-bar",
-  "description": "The top bar of every hax.cloud site: your character and the network sites, Merlin to jump anywhere, and Install HAX with every way to get it",
+  "description": "The top bar of every site in the HAX network: an icon for every property, your character, Merlin to jump anywhere, and Install HAX with every way to get it",
   "icon": "",
   "tags": [],
   "haxCapable": false,
@@ -19,7 +19,7 @@
       "property": "current",
       "type": "string",
       "default": "\"\"",
-      "description": "Which site this is: cloud, elements, browser, rpg or docs.",
+      "description": "Which site this is: web, try, learn, elements, cloud or rpg (what it was called before, browser and docs, still works).",
       "hax": null
     },
     {
@@ -43,7 +43,7 @@
       "property": "installMethod",
       "type": "string",
       "default": "\"\"",
-      "description": "The way to install whose steps are showing; empty lists them all",
+      "description": "The way to install whose tab is open; empty is the first",
       "hax": null
     },
     {
@@ -63,6 +63,14 @@
       "hax": null
     },
     {
+      "name": "compact",
+      "property": "compact",
+      "type": "boolean",
+      "default": "false",
+      "description": "The bar for a full platform (HAXcms in the browser): shorter, with no character, Merlin or Future Traveler of its own, and the pre slot in the middle for the platform's own status and functions.",
+      "hax": null
+    },
+    {
       "name": "has-pre",
       "property": "hasPre",
       "type": "boolean",
@@ -79,7 +87,7 @@
     "hax-network-merlin"
   ],
   "hax": {},
-  "surfaceHash": "1ea7b157423d",
+  "surfaceHash": "c734fabdc9e5",
   "walkthroughs": [],
   "videos": [],
   "motion": {

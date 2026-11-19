@@ -1,7 +1,7 @@
 {
   "name": "@haxtheweb/hax-network-bar",
   "version": "26.8.0",
-  "description": "The top bar of every hax.cloud site: your character and the network sites, Merlin to jump anywhere, and Install HAX with every way to get it",
+  "description": "The top bar of every site in the HAX network: an icon for every property, your character, Merlin to jump anywhere, and Install HAX with every way to get it",
   "license": "Apache-2.0",
   "author": {
     "name": "haxtheweb"

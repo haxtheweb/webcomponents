@@ -1,6 +1,6 @@
 # &lt;hax-network-bar&gt;
 
-The strip across the top of every hax.cloud site (hax.cloud, the element portfolio, the live HAXcms demo, RPG me) that links them as one network and marks the one you are on. Each site keeps its own header under it.
+The bar across the top of every site in the HAX network. Each property is an icon in its own color: the one you are on opens into a pill with its name, and hovering or focusing any of them shows a card saying what it is for. Your character in the corner is the way to RPG me. Merlin sits in the middle; Discord, GitHub and Install HAX on the right. Nothing in the bar belongs to the site under it: a site draws its own header, links and controls below.
 
 ## Usage
 
@@ -9,14 +9,48 @@ The strip across the top of every hax.cloud site (hax.cloud, the element portfol
   type="module"
   src="https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/hax-network-bar/hax-network-bar.js"
 ></script>
-<hax-network-bar current="rpg"></hax-network-bar>
+<hax-network-bar current="learn"></hax-network-bar>
 ```
 
-`current` is one of `cloud`, `elements`, `demo`, `rpg` or `docs`. The list of sites is `HAX_NETWORK_SITES`, exported from `hax-network-bar.js`.
+`current` is one of `web`, `try`, `learn`, `elements`, `cloud` or `rpg` (`browser` and `docs`, what two of them used to be called, still work).
+
+## The network's record
+
+What a property is called, where it lives, its color, its icon and the sentence on its card all come from one record, `HAX_NETWORK` in `lib/hax-network.js`:
+
+| `current`  | Property       | Where                   | Color          |
+| ---------- | -------------- | ----------------------- | -------------- |
+| `web`      | HAXTheWeb      | haxtheweb.org           | keystoneYellow |
+| `try`      | Try it now     | browser.hax.cloud       | futureLime     |
+| `learn`    | Learn          | learn.hax.cloud         | skyBlue        |
+| `elements` | Web components | webcomponents.hax.cloud | inventOrange   |
+| `cloud`    | hax.cloud      | hax.cloud               | original87Pink |
+| `rpg`      | RPG me         | rpg-me.hax.cloud        | athertonViolet |
+
+`order` is the order the bar lists them. RPG me is not in it: your character is its place in the bar, and fills with its color when you are there. To add, rename or move a property, change the record; the bar, its menu and its cards follow. The strings are translated through the bar's own `t`, whose English matches the record.
+
+The same file holds the network's own icons (`HAX_NETWORK_GLYPHS`, `haxNetworkGlyph(id)`, `HaxNetworkGlyphStyles`). Each is two tones: the main strokes carry the shape; the accent is quiet at rest and takes the property's color, and moves, when its host (an element with class `glyph-host`) is hovered or focused. Nothing moves for a visitor who asks for less motion. Another element can draw them by adding `HaxNetworkGlyphStyles` to its styles and setting `--prop` on the host.
+
+Below 900px, and on touch screens where there is no hover, the icons fold into one menu that lists every property with its sentence.
+
+## Over a full platform
+
+`<hax-network-bar compact>` is the bar for a platform with a top bar of its own (HAXcms in the browser): shorter, with no character, Merlin or Future Traveler because the editor under it has them, and with the `pre` slot in the middle for the platform's own status and functions.
+
+```html
+<hax-network-bar compact current="try">
+  <span slot="pre">Running in your browser</span>
+  <button slot="pre" type="button">Publish</button>
+</hax-network-bar>
+```
+
+## Install HAX
+
+Install HAX opens in place, so nobody loses the page they are on. It has a tab for every way to get HAX (`HAX_INSTALL_METHODS`): what it is, who it is best for, its quick steps with a Copy button on each command, and a link to that way's details on haxtheweb.org. Any page with the bar opens it from `#install`, or on one way's tab from `#install/<way>` (`browser`, `cli`, `nodejs`, `php`, `desktop`, `agent`).
 
 ## Merlin
 
-The **Merlin** button (the Future Traveler, as in the HAX top bar) opens HAX's command palette with every place in the network to jump to: hax.cloud and its tours, the element portfolio, the live demo, RPG me, the docs and GitHub (`HAX_NETWORK_DESTINATIONS`). Merlin (`@haxtheweb/super-daemon`) loads the first time the button is pressed, so a page that never opens him never downloads him.
+The **Merlin** button (the Future Traveler, as in the HAX top bar) opens HAX's command palette with every place in the network to jump to: hax.cloud and its tours, the web components, HAXcms in your browser, Learn, the live demo, RPG me, HAXTheWeb and GitHub (`HAX_NETWORK_DESTINATIONS`). Merlin (`@haxtheweb/super-daemon`) loads the first time the button is pressed, so a page that never opens him never downloads him.
 
 A page can add its own places. The first time Merlin opens, the bar fires `hax-network-merlin` (bubbles, composed) with `{merlin, add}`; `add({title, href, about, icon, tags})` adds one, or use `merlin.defineOption()` for anything else. hax.cloud adds every web, tile and tour this way:
 
@@ -44,7 +78,7 @@ A demo's own controls go in the `pre` slot. The HAXcms element demo puts the the
 </hax-network-bar>
 ```
 
-With the slot filled the notice and the browser link use their short wording. Below 1280px the slot is hidden, as it is in the full bar.
+With the slot filled the notice and the browser link use their short wording. Below 1280px the slot is hidden.
 
 ## Styling
 
@@ -53,7 +87,7 @@ With the slot filled the notice and the browser link use their short wording. Be
 | `--hax-network-bar-max-width` | `1440px`               | Width of the row of links, centered                 |
 | `--hax-network-bar-gutter`    | `var(--ddd-spacing-8)` | Space at either end, matched to the header under it |
 
-The strip is brand chrome: Potential midnight with white links in light and dark mode, the current site underlined in Keystone yellow, and Merlin in the same dark field the HAX top bar opens him from.
+The bar is HAX UI dark chrome in light and dark mode, the same as the HAX editor's own top bar, so the network reads as one place.
 
 ## License
 
