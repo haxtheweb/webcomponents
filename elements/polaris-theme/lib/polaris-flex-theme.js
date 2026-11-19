@@ -919,7 +919,7 @@ class PolarisFlexTheme extends HAXCMSOperationButtons(
             with="site-menu"
             part="site-menu-mirror"
             id="sitemenu-mirror"
-            max-depth="3"
+            max-depth="${this._topMenuDepth()}"
             ?is-flex="${this.isFlex}"
             ?is-horizontal="${this.isHorizontal}"
             import-method="view"
@@ -927,6 +927,18 @@ class PolarisFlexTheme extends HAXCMSOperationButtons(
         </nav>
       </div>
     `;
+  }
+
+  /**
+   * Levels the top menu shows: 1 when drop downs are turned off, so a page
+   * with pages below it is a plain link; the phone menu is a list, not a
+   * hover menu, so it keeps every level.
+   */
+  _topMenuDepth() {
+    if (this.hideMenuDropdowns && !["xs", "sm"].includes(this.responsiveSize)) {
+      return 1;
+    }
+    return 3;
   }
 
   /**
@@ -993,7 +1005,7 @@ class PolarisFlexTheme extends HAXCMSOperationButtons(
                   : ``
               }
             </div>
-            ${this.HAXCMSFlexMenu()}
+            ${this.HAXCMSFlexMenu(this._topMenuDepth())}
           </div>
           <site-active-media-banner></site-active-media-banner>
         </div>
@@ -1074,6 +1086,17 @@ class PolarisFlexTheme extends HAXCMSOperationButtons(
       },
       pageTimestamp: {
         type: Number,
+      },
+      /**
+       * Top menu shows only the top-level pages, with no hover drop downs
+       * for the pages below them. Set by the site's theme variable
+       * `menuDropdowns: false` (metadata.theme.variables) or this attribute.
+       * The phone menu still lists every level.
+       */
+      hideMenuDropdowns: {
+        type: Boolean,
+        reflect: true,
+        attribute: "hide-menu-dropdowns",
       },
       __navStuck: {
         type: Boolean,
@@ -1167,6 +1190,7 @@ class PolarisFlexTheme extends HAXCMSOperationButtons(
     // a deterministic falsy default so the template never reads as undefined
     this.__navStuck = false;
     this.__pageOpsId = null;
+    this.hideMenuDropdowns = false;
     this.__disposer = this.__disposer ? this.__disposer : [];
 
     this.__disposer.push(
@@ -1182,6 +1206,9 @@ class PolarisFlexTheme extends HAXCMSOperationButtons(
             this.imageAlt = vars.imageAlt;
             this.image = vars.image;
             this.imageLink = vars.imageLink;
+            if (typeof vars.menuDropdowns === "boolean") {
+              this.hideMenuDropdowns = !vars.menuDropdowns;
+            }
           }
         });
       }),

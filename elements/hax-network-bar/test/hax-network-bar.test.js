@@ -6,6 +6,7 @@ import {
   HAX_COMMUNITY_LINKS,
   HaxNetworkBar,
 } from "../hax-network-bar.js";
+import { HAX_NETWORK, HAX_NETWORK_GLYPHS } from "../lib/hax-network.js";
 
 describe("hax-network-bar", () => {
   let element;
@@ -18,27 +19,147 @@ describe("hax-network-bar", () => {
     element.closeInstall();
   });
 
-  it("links every site in the network, the browser one at browser.hax.cloud", async () => {
-    const links = element.shadowRoot.querySelectorAll("nav.sites a");
-    expect(links.length).to.equal(HAX_NETWORK_SITES.length);
-    expect(links[0].getAttribute("href")).to.equal("https://hax.cloud");
-    const browser = [...links].find((a) => a.textContent.trim() === "Browser");
-    expect(browser.getAttribute("href")).to.equal("https://browser.hax.cloud");
+  it("links every property in the network's order, each as its own icon", async () => {
+    const links = element.shadowRoot.querySelectorAll("nav.props a");
+    expect(HAX_NETWORK_SITES.map((s) => s.id)).to.deep.equal([
+      "web",
+      "try",
+      "learn",
+      "elements",
+      "cloud",
+    ]);
+    expect([...links].map((a) => a.getAttribute("href"))).to.deep.equal(
+      HAX_NETWORK_SITES.map((s) => s.href),
+    );
+    expect(links[0].getAttribute("href")).to.equal("https://haxtheweb.org");
+    const tryIt = [...links].find(
+      (a) => a.querySelector(".name").textContent === "Try it now",
+    );
+    expect(tryIt.getAttribute("href")).to.equal("https://browser.hax.cloud");
+    links.forEach((a) => expect(a.querySelector("svg.glyph")).to.exist);
+    expect(Object.keys(HAX_NETWORK_GLYPHS)).to.deep.equal(HAX_NETWORK.order);
   });
 
-  it("marks only the current site", async () => {
+  it("says what the network's record says about every property", () => {
+    Object.keys(HAX_NETWORK.properties).forEach((id) => {
+      const p = HAX_NETWORK.properties[id];
+      expect(element.t[id], id).to.equal(p.label);
+      expect(element.t[`${id}About`], id).to.equal(p.purpose);
+      const card = element.shadowRoot.querySelector(`#card-${id}`);
+      expect(card.getAttribute("role")).to.equal("tooltip");
+      expect(card.querySelector(".purpose").textContent).to.equal(p.purpose);
+      expect(card.querySelector(".host").textContent).to.equal(
+        p.url.replace("https://", ""),
+      );
+    });
+  });
+
+  it("shows a property's card on focus and puts it away on Escape", async () => {
+    const link = element.shadowRoot.querySelector(
+      'nav.props a[href="https://learn.hax.cloud"]',
+    );
+    const card = element.shadowRoot.querySelector("#card-learn");
+    expect(link.getAttribute("aria-describedby")).to.equal("card-learn");
+    expect(globalThis.getComputedStyle(card).display).to.equal("none");
+    if (
+      globalThis.matchMedia("(min-width: 901px) and (hover: hover)").matches
+    ) {
+      link.focus();
+      expect(globalThis.getComputedStyle(card).display).to.equal("grid");
+      link.dispatchEvent(
+        new KeyboardEvent("keydown", { key: "Escape", bubbles: true }),
+      );
+      expect(globalThis.getComputedStyle(card).display).to.equal("none");
+      link.blur();
+    }
+  });
+
+  it("marks only the current site, and opens it into its name", async () => {
     const current = element.shadowRoot.querySelectorAll(
-      'a[aria-current="page"]',
+      '.bar .start > nav a[aria-current="page"], a.character[aria-current="page"]',
     );
     expect(current.length).to.equal(1);
-    expect(current[0].textContent.trim()).to.equal("Elements");
+    expect(current[0].querySelector(".name").textContent).to.equal(
+      "Web components",
+    );
+    expect(
+      element.shadowRoot.querySelector("#card-elements .you").textContent,
+    ).to.equal("You are here");
+    expect(element.shadowRoot.querySelectorAll(".card .you").length).to.equal(
+      1,
+    );
+  });
+
+  it("still knows the sites by what current used to call them", async () => {
+    element.current = "browser";
+    await element.updateComplete;
+    expect(
+      element.shadowRoot
+        .querySelector('nav.props a[aria-current="page"]')
+        .getAttribute("href"),
+    ).to.equal("https://browser.hax.cloud");
+    element.current = "docs";
+    await element.updateComplete;
+    expect(
+      element.shadowRoot
+        .querySelector('nav.props a[aria-current="page"]')
+        .getAttribute("href"),
+    ).to.equal("https://haxtheweb.org");
+  });
+
+  it("makes your character RPG me's place in the bar", async () => {
+    expect(element.shadowRoot.querySelectorAll("nav.props a").length).to.equal(
+      5,
+    );
+    const me = element.shadowRoot.querySelector("a.character");
+    expect(me.getAttribute("aria-current")).to.equal("false");
+    element.current = "rpg";
+    await element.updateComplete;
+    expect(me.getAttribute("aria-current")).to.equal("page");
+    expect(
+      element.shadowRoot.querySelectorAll('nav.props a[aria-current="page"]')
+        .length,
+    ).to.equal(0);
+  });
+
+  it("lists the same properties, with their sentences, in the menu for narrow screens and touch", async () => {
+    const btn = element.shadowRoot.querySelector("button.net-btn");
+    const menu = element.shadowRoot.querySelector("#net-menu");
+    expect(btn.getAttribute("aria-expanded")).to.equal("false");
+    expect(menu.hidden).to.be.true;
+    element.toggleMenu();
+    await element.updateComplete;
+    expect(btn.getAttribute("aria-expanded")).to.equal("true");
+    expect(menu.hidden).to.be.false;
+    const items = menu.querySelectorAll("ul:not(.more) a");
+    expect([...items].map((a) => a.getAttribute("href"))).to.deep.equal(
+      HAX_NETWORK_SITES.map((s) => s.href),
+    );
+    expect(items[1].querySelector(".text span").textContent).to.equal(
+      element.t.tryAbout,
+    );
+    expect(
+      [...menu.querySelectorAll("ul.more a")].map((a) =>
+        a.getAttribute("href"),
+      ),
+    ).to.deep.equal([
+      "https://discord.gg/aCGxmRHEJP",
+      "https://github.com/haxtheweb",
+    ]);
+    btn.dispatchEvent(
+      new KeyboardEvent("keydown", { key: "Escape", bubbles: true }),
+    );
+    await element.updateComplete;
+    expect(element.menuOpen).to.be.false;
   });
 
   it("marks nothing when current names no site", async () => {
     element.current = "";
     await element.updateComplete;
     expect(
-      element.shadowRoot.querySelectorAll('a[aria-current="page"]').length,
+      element.shadowRoot.querySelectorAll(
+        'nav.props a[aria-current="page"], a.character[aria-current="page"]',
+      ).length,
     ).to.equal(0);
   });
 
@@ -47,11 +168,33 @@ describe("hax-network-bar", () => {
     const end = element.shadowRoot.querySelector(".end");
     expect(start.querySelector("a.character rpg-character")).to.exist;
     expect(start.querySelector('slot[name="pre"]')).to.exist;
+    expect(end.querySelector("a.community").getAttribute("href")).to.equal(
+      "https://discord.gg/aCGxmRHEJP",
+    );
     expect(end.querySelector('slot[name="post"] a.github')).to.exist;
+    expect(end.querySelector("button.install-btn")).to.exist;
     expect(end.lastElementChild.classList.contains("traveler")).to.be.true;
     expect(
       end.querySelector(".traveler simple-icon-lite").getAttribute("icon"),
     ).to.equal("hax:future-traveler");
+  });
+
+  it("is shorter over a full platform: no character, Merlin or Future Traveler, the page's functions in the middle", async () => {
+    const bar = await fixture(
+      html`<hax-network-bar compact current="try"
+        ><button slot="pre" type="button">Publish</button></hax-network-bar
+      >`,
+    );
+    const r = bar.shadowRoot;
+    expect(r.querySelector("a.character")).to.not.exist;
+    expect(r.querySelector("button.merlin")).to.not.exist;
+    expect(r.querySelector(".traveler")).to.not.exist;
+    expect(r.querySelectorAll("nav.props a").length).to.equal(5);
+    expect(
+      r.querySelector('.app slot[name="pre"]').assignedElements().length,
+    ).to.equal(1);
+    expect(r.querySelector("button.install-btn")).to.exist;
+    await expect(bar).shadowDom.to.be.accessible();
   });
 
   it("sends the character to RPG me, on its code when it has one", async () => {
@@ -72,13 +215,13 @@ describe("hax-network-bar", () => {
     expect(btn.querySelector("svg.merlin-traveler")).to.exist;
   });
 
-  it("lists every way to install on one screen, the desktop app as beta", async () => {
+  it("gives every way to install a tab, the first one open", async () => {
     element.shadowRoot.querySelector("button.install-btn").click();
     await element.updateComplete;
     const dialog = element.shadowRoot.querySelector("dialog");
     expect(dialog.open).to.be.true;
-    const ways = dialog.querySelectorAll("button.way");
-    expect([...ways].map((w) => w.dataset.way)).to.deep.equal([
+    const tabs = dialog.querySelectorAll('[role="tablist"] [role="tab"]');
+    expect([...tabs].map((w) => w.dataset.way)).to.deep.equal([
       "browser",
       "cli",
       "nodejs",
@@ -86,31 +229,71 @@ describe("hax-network-bar", () => {
       "desktop",
       "agent",
     ]);
-    expect(dialog.querySelector('.way[data-way="desktop"] .beta')).to.exist;
-    expect(dialog.querySelectorAll(".beta").length).to.equal(1);
+    expect([...tabs].map((w) => w.getAttribute("aria-selected"))).to.deep.equal(
+      ["true", "false", "false", "false", "false", "false"],
+    );
+    const panel = dialog.querySelector('[role="tabpanel"]');
+    expect(panel.dataset.way).to.equal("browser");
+    expect(panel.getAttribute("aria-labelledby")).to.equal("tab-browser");
+    expect(panel.querySelector("a.install-btn").getAttribute("href")).to.equal(
+      "https://browser.hax.cloud",
+    );
+    expect(dialog.querySelectorAll(".beta").length).to.equal(0);
     const social = [...dialog.querySelectorAll(".install-foot .social a")].map(
       (a) => a.getAttribute("href"),
     );
     expect(social).to.deep.equal(HAX_COMMUNITY_LINKS.map((l) => l.href));
   });
 
-  it("opens one way's steps and goes back to the list", async () => {
+  it("opens one way's quick steps from its tab, and a page for the rest", async () => {
     element.openInstall();
     await element.updateComplete;
-    element.shadowRoot.querySelector('.way[data-way="cli"]').click();
+    element.shadowRoot.querySelector('[role="tab"][data-way="cli"]').click();
     await element.updateComplete;
     const detail = element.shadowRoot.querySelector(".detail");
     expect(detail.dataset.way).to.equal("cli");
     expect(detail.querySelector("pre").textContent).to.equal(
       "npm install @haxtheweb/create --global",
     );
-    expect(element.shadowRoot.activeElement).to.equal(
-      detail.querySelector("h3"),
+    expect(detail.querySelectorAll("ol.steps > li").length).to.equal(4);
+    const more = detail.querySelector("a.more");
+    expect(more.getAttribute("href")).to.equal(
+      "https://haxtheweb.org/installation#cli",
     );
-    element.shadowRoot.querySelector("button.back").click();
+    expect(more.getAttribute("aria-label")).to.equal(
+      "More details on haxtheweb.org: HAX CLI",
+    );
+    element.showInstallMethod("desktop");
     await element.updateComplete;
-    expect(element.shadowRoot.querySelector(".detail")).to.not.exist;
-    expect(element.shadowRoot.activeElement.dataset.way).to.equal("cli");
+    expect(
+      element.shadowRoot.querySelectorAll(".detail .beta").length,
+    ).to.equal(1);
+  });
+
+  it("moves between the ways' tabs with the arrow keys, Home and End", async () => {
+    element.openInstall("cli");
+    await element.updateComplete;
+    const list = element.shadowRoot.querySelector('[role="tablist"]');
+    const press = async (key) => {
+      list.dispatchEvent(new KeyboardEvent("keydown", { key, bubbles: true }));
+      await element.updateComplete;
+      await element.updateComplete;
+    };
+    await press("ArrowRight");
+    expect(element.installMethod).to.equal("nodejs");
+    expect(element.shadowRoot.activeElement.id).to.equal("tab-nodejs");
+    await press("ArrowLeft");
+    await press("ArrowLeft");
+    expect(element.installMethod).to.equal("browser");
+    await press("ArrowLeft");
+    expect(element.installMethod).to.equal("agent");
+    await press("Home");
+    expect(element.installMethod).to.equal("browser");
+    await press("End");
+    expect(element.installMethod).to.equal("agent");
+    expect(
+      element.shadowRoot.querySelector("#tab-agent").getAttribute("tabindex"),
+    ).to.equal("0");
   });
 
   it("gives every way steps and links, and the agent a prompt to copy", async () => {
@@ -143,6 +326,9 @@ describe("hax-network-bar", () => {
       element._onHash();
       await element.updateComplete;
       expect(element.installMethod).to.equal("");
+      expect(
+        element.shadowRoot.querySelector('[role="tabpanel"]').dataset.way,
+      ).to.equal("browser");
     } finally {
       globalThis.history.replaceState(null, "", before);
     }
@@ -199,6 +385,7 @@ describe("hax-network-bar", () => {
         .filter((o) => o.value.method === "go")
         .map((o) => o.value.args[0]);
       expect(hrefs).to.include("https://browser.hax.cloud");
+      expect(hrefs).to.include("https://learn.hax.cloud");
       expect(hrefs).to.include("https://discord.gg/aCGxmRHEJP");
       expect(hrefs).to.include("https://github.com/haxtheweb/issues");
       expect(added[added.length - 1].value.args).to.deep.equal(["/tours"]);

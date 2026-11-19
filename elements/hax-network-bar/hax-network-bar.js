@@ -17,25 +17,28 @@ import {
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
+import {
+  HAX_NETWORK,
+  haxNetworkGlyph,
+  HaxNetworkGlyphStyles,
+} from "./lib/hax-network.js";
 
 /** Where Install HAX lives: any network page opens it from #install. */
 export const HAX_INSTALL_URL = "https://hax.cloud/#install";
 
 /**
- * The sites in the HAX network, in the order the bar shows them. `id` is what
- * `current` names; `label` is a key into `this.t`.
+ * The sites in the HAX network, in the order the bar shows them, read from
+ * the network's record (lib/hax-network.js). `id` is what `current` names;
+ * `label` is a key into `this.t`.
  */
-export const HAX_NETWORK_SITES = [
-  { id: "cloud", label: "cloud", href: "https://hax.cloud" },
-  {
-    id: "elements",
-    label: "elements",
-    href: "https://webcomponents.hax.cloud",
-  },
-  { id: "browser", label: "browser", href: "https://browser.hax.cloud" },
-  { id: "rpg", label: "rpg", href: "https://rpg-me.hax.cloud" },
-  { id: "docs", label: "docs", href: "https://haxtheweb.org" },
-];
+export const HAX_NETWORK_SITES = HAX_NETWORK.order.map((id) => ({
+  id,
+  label: id,
+  href: HAX_NETWORK.properties[id].url,
+}));
+
+/** What `current` used to call two of the sites; both still work. */
+const FORMER_SITE_IDS = { browser: "try", docs: "web" };
 
 /** Where the HAX community talks, shares and files issues. */
 export const HAX_COMMUNITY_LINKS = [
@@ -237,6 +240,12 @@ export const HAX_NETWORK_DESTINATIONS = [
     icon: "hax:globe",
   },
   {
+    title: "goLearn",
+    about: "goLearnAbout",
+    href: "https://learn.hax.cloud",
+    icon: "hardware:tv",
+  },
+  {
     title: "goDemo",
     about: "goDemoAbout",
     href: "https://demo.hax.cloud",
@@ -288,25 +297,37 @@ export const HAX_NETWORK_DESTINATIONS = [
 
 /**
  * `hax-network-bar`
- * The top bar of every hax.cloud site (hax.cloud, the element portfolio,
- * HAXcms in the browser, RPG me), drawn like the HAX editor's own top bar:
- * your character and the network's sites on the left, Merlin in the middle,
- * Install HAX, GitHub and the Future Traveler on the right. Each site keeps
- * its own header under it.
+ * The top bar of every site in the HAX network, drawn like the HAX editor's
+ * own top bar. Each property of the network is an icon in its own color: the
+ * one you are on opens into a pill with its name, and hovering or focusing
+ * any of them shows a card saying what it is for. Your character in the
+ * corner is the way to RPG me. Merlin sits in the middle; Discord, GitHub,
+ * Install HAX and the Future Traveler on the right. Nothing in the bar
+ * belongs to the site under it: a site draws its own header, links and
+ * controls below.
+ *
+ * What a property is called, its color, its icon and the sentence on its
+ * card come from the network's record, lib/hax-network.js.
+ *
+ * `compact` is the bar for a full platform (HAXcms in the browser): shorter,
+ * with no character, Merlin or Future Traveler of its own because the editor
+ * under it has them, and with the `pre` slot in the middle for the
+ * platform's own status and functions.
  *
  * Merlin loads the first time he is opened (from the field or Alt⇧), so a
  * page that never asks for him never downloads him. A page can add its own
  * places: listen for `hax-network-merlin` and call `detail.add(option)` with
  * `{title, href, about, icon, tags}` (hax.cloud adds every web and tour).
  *
- * Install HAX opens a dialog listing every way to get HAX on one screen; each
- * opens the steps for that way. Any page with the bar opens it from
- * `#install` (or `#install/<way>`: browser, cli, nodejs, php, desktop, agent).
+ * Install HAX opens in place: a tab for every way to get HAX with its quick
+ * steps, and a link to haxtheweb.org for the rest. Any page with the bar
+ * opens it from `#install` (or `#install/<way>`: browser, cli, nodejs, php,
+ * desktop, agent).
  *
  * @demo demo/index.html
  * @element hax-network-bar
- * @slot pre - after the network's links, for the page's own links (in the demo strip too, where it is for the demo's own controls)
- * @slot post - before the Future Traveler; holds the GitHub link unless the page fills it
+ * @slot pre - after the network's icons (in the middle when compact), for the page's own controls (in the demo strip too)
+ * @slot post - before Install HAX; holds the GitHub link unless the page fills it
  * @fires hax-network-merlin - {merlin, add(option)} the first time Merlin opens
  */
 export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
@@ -322,17 +343,27 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
     this.installMethod = "";
     this.menuOpen = false;
     this.demo = false;
+    this.compact = false;
     this.hasPre = false;
     this._copied = "";
     this.t = this.t || {};
     this.t = {
       ...this.t,
       network: "HAX network",
+      web: "HAXTheWeb",
+      webAbout: "Why HAX is for you, and every way to get it.",
+      try: "Try it now",
+      tryAbout: "Use HAX right now in this browser tab. Nothing to install.",
+      learn: "Learn",
+      learnAbout: "Tutorials that teach HAX one flow at a time.",
+      elements: "Web components",
+      elementsAbout: "Every HAX element, with live demos and walkthroughs.",
       cloud: "hax.cloud",
-      elements: "Elements",
-      browser: "Browser",
+      cloudAbout:
+        "The brain of HAX: every person, pillar and project, and how they connect.",
       rpg: "RPG me",
-      docs: "Docs",
+      rpgAbout: "Make the character that is you across HAX.",
+      here: "You are here",
       github: "GitHub",
       discord: "Discord",
       issues: "Issues",
@@ -363,6 +394,8 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
       installBestFor: "Best for",
       installSteps: "Steps",
       installMore: "More",
+      installWays: "Ways to install",
+      installDetails: "More details on haxtheweb.org",
       installCopy: "Copy",
       installCopied: "Copied",
       installCommunity: "Questions? Ask in Discord or file an issue.",
@@ -434,17 +467,20 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
       goTours: "Tours of the ecosystem",
       goToursAbout:
         "Step-by-step walks through the web for faculty, students, developers and more.",
-      goElements: "Elements: every HAX web component",
+      goElements: "Web components: every HAX element",
       goElementsAbout: "Browse, search and try the elements HAX authors with.",
-      goBrowser: "Browser: HAXcms in your browser",
+      goBrowser: "Try it now: HAXcms in your browser",
       goBrowserAbout:
         "Make and edit HAX sites in a browser tab, saved to a folder you pick.",
       goDemo: "Live demo: try the HAX editor",
       goDemoAbout: "Edit a HAX site in your browser, nothing to install.",
       goRpg: "RPG me: make your character",
       goRpgAbout: "Design the character that stands for you across HAX.",
-      goDocs: "Docs: learn HAX",
-      goDocsAbout: "Guides, tutorials and the documentation for HAX.",
+      goLearn: "Learn: tutorials for HAX",
+      goLearnAbout: "Tutorials that teach HAX one flow at a time.",
+      goDocs: "HAXTheWeb: why HAX, and how to get it",
+      goDocsAbout:
+        "Who HAX is for, how it compares and every way to install it.",
       goGithub: "GitHub: the code",
       goGithubAbout: "Every HAX repository, issue and pull request.",
       goIssues: "Issues: report a bug or ask for a feature",
@@ -471,7 +507,8 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
     return {
       ...super.properties,
       /**
-       * Which site this is: cloud, elements, browser, rpg or docs.
+       * Which site this is: web, try, learn, elements, cloud or rpg (what
+       * it was called before, browser and docs, still works).
        */
       current: { type: String, reflect: true },
       /**
@@ -481,7 +518,7 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
       character: { type: String },
       /** Install HAX is open */
       installOpen: { type: Boolean, attribute: "install-open", reflect: true },
-      /** The way to install whose steps are showing; empty lists them all */
+      /** The way to install whose tab is open; empty is the first */
       installMethod: { type: String, attribute: "install-method" },
       /** The sites menu is open (narrow screens) */
       menuOpen: { type: Boolean, attribute: "menu-open", reflect: true },
@@ -493,6 +530,12 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
        * its height so the HAXcms editor bar sits under it.
        */
       demo: { type: Boolean, reflect: true },
+      /**
+       * The bar for a full platform (HAXcms in the browser): shorter, with
+       * no character, Merlin or Future Traveler of its own, and the pre slot
+       * in the middle for the platform's own status and functions.
+       */
+      compact: { type: Boolean, reflect: true },
       /** the demo strip's pre slot holds something (a page's own controls) */
       hasPre: { type: Boolean, attribute: "has-pre", reflect: true },
       _copied: { type: String, state: true },
@@ -505,6 +548,7 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
       ...HaxUiAdminTokens,
       HaxUiDialogTitlebarStyles,
       MerlinWandStyles,
+      HaxNetworkGlyphStyles,
       css`
         /* HAX UI dark chrome in every scheme: the same bar the HAX editor
            draws, so the network reads as one place */
@@ -583,17 +627,17 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
         }
         /* DDD lays lists out as columns; the sites run in a row */
         nav.sites ul,
-        .ways,
+        nav.props ul,
+        .net-menu ul,
         .install-foot .social,
-        .detail-links,
         ol.steps {
           margin: 0;
           padding: 0;
         }
         nav.sites li,
-        .ways li,
-        .install-foot .social li,
-        .detail-links li {
+        nav.props li,
+        .net-menu li,
+        .install-foot .social li {
           margin: 0;
           padding: 0;
         }
@@ -724,7 +768,8 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
         .install-btn .short {
           display: none;
         }
-        .github {
+        .github,
+        .community {
           display: inline-grid;
           place-items: center;
           width: 40px;
@@ -733,7 +778,8 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
           --simple-icon-width: 28px;
           --simple-icon-height: 28px;
         }
-        .github:hover {
+        .github:hover,
+        .community:hover {
           background-color: var(--hax-ui-hover);
         }
         /* the Future Traveler: decorative, top right as in every HAX UI */
@@ -802,8 +848,8 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
           .end {
             gap: var(--ddd-spacing-1);
           }
-          .divider,
-          .github,
+          .community,
+          .traveler,
           slot[name="post"] {
             display: none;
           }
@@ -874,73 +920,6 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
           line-height: 1.5;
           color: var(--hax-ui-text-muted);
         }
-        .ways {
-          display: grid;
-          grid-template-columns: repeat(3, minmax(0, 1fr));
-          gap: var(--ddd-spacing-3);
-          margin: 0;
-          padding: 0;
-          list-style: none;
-        }
-        .way {
-          box-sizing: border-box;
-          display: grid;
-          grid-template-columns: auto minmax(0, 1fr);
-          grid-template-rows: auto 1fr auto;
-          gap: var(--ddd-spacing-1) var(--ddd-spacing-3);
-          width: 100%;
-          height: 100%;
-          padding: var(--ddd-spacing-4);
-          border: 1px solid var(--hax-ui-line);
-          border-radius: var(--ddd-radius-sm);
-          background-color: transparent;
-          color: inherit;
-          font: inherit;
-          text-align: start;
-          cursor: pointer;
-          transition:
-            border-color var(--hax-ui-duration) var(--hax-ui-easing),
-            background-color var(--hax-ui-duration) var(--hax-ui-easing);
-        }
-        .way:hover {
-          border-color: var(--hax-ui-accent-strong);
-          background-color: var(--hax-ui-accent-soft);
-        }
-        .way:focus-visible {
-          outline: var(--hax-ui-focus-width) solid var(--hax-ui-accent-strong);
-          outline-offset: 2px;
-        }
-        .way-icon {
-          grid-row: 1 / 4;
-          display: grid;
-          place-items: center;
-          width: 48px;
-          height: 48px;
-          border-radius: var(--ddd-radius-sm);
-          background-color: var(--hax-ui-accent-soft);
-          color: var(--hax-ui-accent-strong);
-          --simple-icon-width: 28px;
-          --simple-icon-height: 28px;
-          --merlin-traveler-size: 30px;
-        }
-        .way-title {
-          display: flex;
-          align-items: center;
-          gap: var(--ddd-spacing-2);
-          font-size: var(--ddd-font-size-3xs);
-          font-weight: var(--ddd-font-weight-bold);
-        }
-        .way-about {
-          font-size: var(--ddd-font-size-4xs);
-          line-height: 1.45;
-          color: var(--hax-ui-text-muted);
-        }
-        .way-best {
-          margin-top: var(--ddd-spacing-2);
-          font-size: 12px;
-          font-weight: var(--ddd-font-weight-bold);
-          color: var(--hax-ui-accent-strong);
-        }
         .beta {
           display: inline-block;
           padding: 2px 6px;
@@ -973,8 +952,7 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
           list-style: none;
         }
         .install-foot .social a,
-        .install-foot span,
-        .detail-links a {
+        .install-foot span {
           font-size: var(--hax-ui-admin-font-size);
         }
         .install-foot .social a {
@@ -998,28 +976,6 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
           outline-offset: 2px;
         }
         /* one way's steps */
-        .detail-head {
-          display: grid;
-          grid-template-columns: auto minmax(0, 1fr);
-          gap: 0 var(--ddd-spacing-4);
-          align-items: center;
-          margin-bottom: var(--ddd-spacing-4);
-        }
-        .detail-head h3 {
-          display: flex;
-          align-items: center;
-          gap: var(--ddd-spacing-2);
-          margin: 0;
-          font-size: var(--ddd-font-size-xs);
-        }
-        .detail-head h3:focus {
-          outline: none;
-        }
-        .detail-head p {
-          margin: var(--ddd-spacing-1) 0 0;
-          color: var(--hax-ui-text-muted);
-          font-size: var(--ddd-font-size-4xs);
-        }
         ol.steps {
           display: grid;
           gap: var(--ddd-spacing-4);
@@ -1104,42 +1060,6 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
         .copy[data-copied] {
           border-color: var(--ddd-theme-default-opportunityGreen);
         }
-        .detail-links {
-          display: flex;
-          flex-direction: row;
-          flex-wrap: wrap;
-          gap: var(--ddd-spacing-2);
-          margin: var(--ddd-spacing-5) 0 0;
-          padding: 0;
-          list-style: none;
-        }
-        .detail-links a {
-          display: inline-flex;
-          align-items: center;
-          gap: var(--ddd-spacing-1);
-          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
-          border: 1px solid var(--hax-ui-line-strong);
-          border-radius: var(--ddd-radius-rounded);
-          color: var(--hax-ui-accent-strong);
-          font-size: var(--ddd-font-size-4xs);
-          font-weight: var(--ddd-font-weight-bold);
-          text-decoration: none;
-          --simple-icon-width: 16px;
-          --simple-icon-height: 16px;
-        }
-        .detail-links a:hover {
-          background-color: var(--hax-ui-accent-soft);
-        }
-        .detail-links li:first-child a {
-          background-color: var(--hax-ui-accent-strong);
-          border-color: var(--hax-ui-accent-strong);
-          color: var(--hax-ui-on-accent);
-        }
-        @media (max-width: 900px) {
-          .ways {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-          }
-        }
         @media (max-width: 599px) {
           dialog {
             width: 100vw;
@@ -1151,31 +1071,440 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
           .install-body {
             padding: var(--ddd-spacing-4);
           }
-          .ways {
-            grid-template-columns: minmax(0, 1fr);
-            gap: var(--ddd-spacing-2);
-          }
-          .way {
-            padding: var(--ddd-spacing-3);
-          }
-          .way-best {
-            display: none;
-          }
           .install-foot .social {
             margin-left: 0;
           }
         }
         @media (prefers-reduced-motion: reduce) {
-          .way,
           .character {
             transition: none;
           }
         }
         @media (forced-colors: active) {
           .merlin,
-          .way,
-          .character {
+          .character,
+          .props a,
+          .net-btn,
+          .tabs button {
             border-color: ButtonText;
+          }
+        }
+
+        /* an open card or menu hangs below the bar, over whatever the page
+           puts there */
+        :host([menu-open]),
+        :host(:hover),
+        :host(:focus-within) {
+          z-index: var(--hax-network-bar-open-z-index, 1001);
+        }
+        /* ---------- the properties ---------- */
+        /* an icon each, its color under it; the one you are on opens into a
+           pill in its color with its name */
+        nav.props ul {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: var(--ddd-spacing-1);
+          list-style: none;
+          white-space: nowrap;
+        }
+        .prop {
+          position: relative;
+        }
+        .props a {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: var(--ddd-spacing-2);
+          box-sizing: border-box;
+          min-width: 44px;
+          height: 44px;
+          padding: 0 var(--ddd-spacing-2);
+          border-radius: var(--hax-ui-radius);
+          border-bottom: 3px solid var(--prop);
+          font-size: var(--hax-ui-admin-font-size);
+          line-height: 1.5;
+          text-decoration: none;
+          --glyph-accent: var(--hax-ui-text-muted);
+        }
+        .props a:hover,
+        .props a:focus-visible {
+          background-color: #111;
+        }
+        .props a .name {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          overflow: hidden;
+          clip-path: inset(50%);
+          white-space: nowrap;
+        }
+        .props a[aria-current="page"] {
+          padding: 0 var(--ddd-spacing-3);
+          border: 2px solid var(--ddd-theme-default-white);
+          background-color: var(--prop);
+          color: var(--on);
+          font-family: var(--ddd-font-navigation);
+          font-weight: var(--ddd-font-weight-bold);
+          --glyph-accent: var(--on);
+          --glyph-lit: var(--on);
+        }
+        .props a[aria-current="page"] .name {
+          position: static;
+          width: auto;
+          height: auto;
+          overflow: visible;
+          clip-path: none;
+          font-size: var(--hax-ui-admin-font-size);
+        }
+        /* what a property is for, on hover or focus */
+        .card {
+          display: none;
+          position: absolute;
+          top: calc(100% + var(--ddd-spacing-2));
+          left: 0;
+          z-index: 6;
+          width: 280px;
+          box-sizing: border-box;
+          padding: var(--ddd-spacing-3);
+          border: 1px solid var(--hax-ui-line-strong);
+          border-top: 4px solid var(--prop);
+          border-radius: var(--hax-ui-radius);
+          background-color: var(--ddd-theme-default-coalyGray);
+          box-shadow: var(--hax-ui-shadow-popover);
+          white-space: normal;
+          text-align: start;
+        }
+        /* a bridge so the pointer can travel from the icon to its card */
+        .card::before {
+          content: "";
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: calc(-1 * var(--ddd-spacing-3));
+          height: var(--ddd-spacing-3);
+        }
+        .prop:hover .card,
+        .prop:focus-within .card {
+          display: grid;
+          gap: var(--ddd-spacing-1);
+        }
+        .prop[data-away] .card {
+          display: none;
+        }
+        .card,
+        .card span {
+          font-size: var(--hax-ui-admin-font-size);
+          line-height: 1.4;
+        }
+        .card-head {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: baseline;
+          gap: 0 var(--ddd-spacing-2);
+        }
+        .card strong {
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-4xs);
+        }
+        .card .host {
+          color: var(--hax-ui-text-muted);
+        }
+        .card .you {
+          justify-self: start;
+          padding: 0 var(--ddd-spacing-2);
+          border-radius: var(--ddd-radius-rounded);
+          background-color: var(--prop);
+          color: var(--on);
+          font-weight: var(--ddd-font-weight-bold);
+        }
+        /* your character is RPG me's place in the bar */
+        .prop.me .character {
+          box-sizing: border-box;
+          border-bottom: 3px solid var(--prop);
+        }
+        .prop.me .character[aria-current="page"] {
+          border: 2px solid var(--ddd-theme-default-white);
+          background-color: var(--prop);
+        }
+        /* narrow screens and touch: the same properties as one menu, with
+           each one's sentence in it */
+        .net-btn {
+          display: none;
+          align-items: center;
+          gap: var(--ddd-spacing-2);
+          box-sizing: border-box;
+          height: 44px;
+          padding: 0 var(--ddd-spacing-2);
+          border: 2px solid var(--ddd-theme-default-white);
+          border-radius: var(--hax-ui-radius);
+          background-color: var(--prop, transparent);
+          color: var(--on, inherit);
+          font: inherit;
+          font-size: var(--hax-ui-admin-font-size);
+          font-weight: var(--ddd-font-weight-bold);
+          white-space: nowrap;
+          cursor: pointer;
+          --glyph-accent: var(--on, currentColor);
+          --glyph-lit: var(--on, currentColor);
+          --simple-icon-width: 24px;
+          --simple-icon-height: 24px;
+        }
+        .net-btn:active {
+          transform: translateY(1px);
+        }
+        .net-btn[aria-expanded="true"] .caret {
+          transform: rotate(180deg);
+        }
+        .net-menu {
+          position: absolute;
+          top: 100%;
+          left: var(--hax-network-bar-gutter, var(--ddd-spacing-3));
+          z-index: 6;
+          width: 320px;
+          max-width: calc(
+            100% - 2 * var(--hax-network-bar-gutter, var(--ddd-spacing-3))
+          );
+          box-sizing: border-box;
+          padding: var(--ddd-spacing-2);
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius);
+          background-color: var(--ddd-theme-default-coalyGray);
+          box-shadow: var(--hax-ui-shadow-popover);
+        }
+        .net-menu[hidden] {
+          display: none;
+        }
+        .net-menu ul {
+          display: flex;
+          flex-direction: column;
+          align-items: stretch;
+          gap: var(--ddd-spacing-1);
+          list-style: none;
+        }
+        .net-menu ul.more {
+          flex-direction: row;
+          margin-top: var(--ddd-spacing-2);
+          padding-top: var(--ddd-spacing-2);
+          border-top: 1px solid var(--hax-ui-line);
+        }
+        .net-menu ul.more li {
+          flex: 1 1 0;
+        }
+        .net-menu a {
+          display: flex;
+          align-items: center;
+          gap: var(--ddd-spacing-3);
+          min-height: 44px;
+          box-sizing: border-box;
+          padding: var(--ddd-spacing-2);
+          border: 2px solid transparent;
+          border-radius: var(--hax-ui-radius);
+          font-size: var(--hax-ui-admin-font-size);
+          line-height: 1.5;
+          text-decoration: none;
+          --simple-icon-width: 24px;
+          --simple-icon-height: 24px;
+        }
+        .net-menu a:hover {
+          background-color: var(--hax-ui-hover);
+        }
+        .net-menu a[aria-current="page"] {
+          border-color: var(--ddd-theme-default-white);
+        }
+        .net-menu .tile {
+          flex: none;
+          display: grid;
+          place-items: center;
+          width: 40px;
+          height: 40px;
+          border-radius: var(--hax-ui-radius);
+          background-color: var(--prop);
+          color: var(--on);
+          --glyph-accent: var(--on);
+          --glyph-lit: var(--on);
+        }
+        .net-menu .text {
+          display: grid;
+          font-size: var(--hax-ui-admin-font-size);
+        }
+        .net-menu .text span {
+          font-size: var(--hax-ui-admin-font-size);
+          font-weight: var(--ddd-font-weight-regular);
+        }
+        .community {
+          --simple-icon-width: 24px;
+          --simple-icon-height: 24px;
+        }
+        .install-btn:active,
+        .copy:active,
+        .tabs button:active {
+          transform: translateY(1px);
+        }
+
+        /* ---------- compact: the bar over a full platform ---------- */
+        :host([compact]) {
+          --hax-network-bar-height: 48px;
+        }
+        :host([compact]) .bar {
+          grid-template-columns: auto minmax(0, 1fr) auto;
+        }
+        :host([compact]) .props a {
+          min-width: 36px;
+          height: 36px;
+          --glyph-size: 22px;
+        }
+        :host([compact]) .net-btn {
+          height: 36px;
+        }
+        :host([compact]) .install-btn {
+          height: 32px;
+          padding: 0 var(--ddd-spacing-3);
+        }
+        .app {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: var(--ddd-spacing-1) var(--ddd-spacing-3);
+          min-width: 0;
+        }
+
+        /* ---------- Install HAX: a tab for every way ---------- */
+        .tabs {
+          display: flex;
+          flex-wrap: wrap;
+          gap: var(--ddd-spacing-1);
+          border-bottom: 1px solid var(--hax-ui-line-strong);
+        }
+        .tabs button {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--ddd-spacing-2);
+          box-sizing: border-box;
+          min-height: 40px;
+          padding: 0 var(--ddd-spacing-3);
+          border: 1px solid transparent;
+          border-bottom: 3px solid transparent;
+          border-radius: var(--hax-ui-radius) var(--hax-ui-radius) 0 0;
+          background-color: transparent;
+          color: inherit;
+          font: inherit;
+          font-size: var(--hax-ui-admin-font-size);
+          white-space: nowrap;
+          cursor: pointer;
+          --simple-icon-width: 20px;
+          --simple-icon-height: 20px;
+          --merlin-traveler-size: 20px;
+        }
+        .tabs button:hover {
+          background-color: var(--hax-ui-hover);
+        }
+        .tabs button[aria-selected="true"] {
+          border-color: var(--hax-ui-line-strong);
+          border-bottom-color: var(--hax-ui-accent-strong);
+          background-color: var(--hax-ui-sunken);
+          font-weight: var(--ddd-font-weight-bold);
+        }
+        .detail {
+          display: grid;
+          gap: var(--ddd-spacing-4);
+          min-width: 0;
+          padding: var(--ddd-spacing-4) 0 0;
+        }
+        .detail:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 2px;
+        }
+        .detail-about {
+          margin: 0;
+          font-size: var(--ddd-font-size-4xs);
+          line-height: 1.5;
+        }
+        .detail-about .best {
+          color: var(--hax-ui-text-muted);
+        }
+        .detail-more {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: var(--ddd-spacing-3);
+        }
+        .detail-more a.install-btn {
+          text-decoration: none;
+        }
+        a.more {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--ddd-spacing-2);
+          min-height: 32px;
+          color: var(--hax-ui-accent-text);
+          font-size: var(--hax-ui-admin-font-size);
+          font-weight: var(--ddd-font-weight-bold);
+          --simple-icon-width: 18px;
+          --simple-icon-height: 18px;
+        }
+
+        /* the icons fold into the menu where there is no room for them, and
+           on touch, where there is no hover to say what each one is */
+        @media (max-width: 1100px) {
+          :host([compact]) .bar {
+            height: auto;
+            min-height: var(--hax-network-bar-height);
+            grid-template-columns: minmax(0, 1fr) auto;
+            padding-top: var(--ddd-spacing-2);
+            padding-bottom: var(--ddd-spacing-2);
+            row-gap: var(--ddd-spacing-2);
+          }
+          :host([compact]) .app {
+            grid-row: 2;
+            grid-column: 1 / -1;
+          }
+          :host([compact]) .start,
+          :host([compact]) .end {
+            height: auto;
+          }
+        }
+        @media (max-width: 900px), (hover: none) {
+          nav.props {
+            display: none;
+          }
+          .net-btn {
+            display: inline-flex;
+          }
+        }
+        @media (max-width: 900px) {
+          :host(:not([compact]):not([demo])) .bar {
+            grid-template-columns: auto minmax(40px, 1fr) auto;
+          }
+          .merlin {
+            justify-self: end;
+          }
+          .net-btn .label {
+            max-width: 120px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+        }
+        @media (min-width: 600px) and (max-width: 900px) {
+          .merlin {
+            width: 100%;
+            max-width: var(--hax-network-bar-merlin-width-narrow, 280px);
+          }
+        }
+        @media (max-width: 599px) {
+          .net-btn .label {
+            max-width: 64px;
+          }
+          .code {
+            flex-direction: column;
+          }
+          .code pre {
+            width: 100%;
+          }
+        }
+        @media (max-width: 380px) {
+          .net-btn .label {
+            display: none;
           }
         }
 
@@ -1237,6 +1566,9 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
         }
         .strip .browser {
           flex: none;
+          display: inline-flex;
+          align-items: center;
+          min-height: 24px;
           color: var(--ddd-theme-default-white);
           font-size: var(--hax-ui-admin-font-size);
           font-weight: var(--ddd-font-weight-bold);
@@ -1307,81 +1639,52 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
     if (this.demo) {
       return this._renderDemo();
     }
+    const here = this._here();
     return html`
       <div class="bar">
-        <div class="start">
-          <a
-            class="character"
-            href="${this._characterHref()}"
-            title="${this.t.character}"
-            aria-label="${this.t.character}"
-          >
-            <rpg-character
-              height="46"
-              width="40"
-              seed="${this.character ? "" : "HAX"}"
-              code="${this.character || ""}"
-            ></rpg-character>
-          </a>
-          <button
-            class="icon-btn menu-btn"
-            type="button"
-            aria-expanded="${this.menuOpen ? "true" : "false"}"
-            aria-controls="sites"
-            title="${this.t.sitesMenu}"
-            @click="${this.toggleMenu}"
-          >
-            <simple-icon-lite
-              icon="${this.menuOpen ? "icons:close" : "icons:menu"}"
-            ></simple-icon-lite>
-            <span class="sr-only">${this.t.sitesMenu}</span>
-          </button>
-          <span class="divider" aria-hidden="true"></span>
-          <nav class="sites" id="sites" aria-label="${this.t.network}">
+        <div class="start" @keydown="${this._menuKey}">
+          ${this.compact ? `` : this._renderCharacter(here)}
+          <nav class="props" aria-label="${this.t.network}">
             <ul>
-              ${HAX_NETWORK_SITES.map(
-                (s) =>
-                  html`<li>
-                    <a
-                      href="${s.href}"
-                      aria-current="${s.id === this.current ? "page" : "false"}"
-                      >${this.t[s.label]}</a
-                    >
-                  </li>`,
-              )}
+              ${HAX_NETWORK.order.map((id) => this._renderProperty(id, here))}
             </ul>
           </nav>
-          <slot name="pre"></slot>
+          ${this._renderMenu(here)}
+          ${this.compact ? `` : html`<slot name="pre"></slot>`}
         </div>
-        <button
-          class="merlin merlin-wand-host"
-          type="button"
-          aria-haspopup="dialog"
-          title="${this.t.merlin}"
-          @click="${this.openMerlin}"
-        >
-          ${merlinTraveler()}
-          <span class="hint">${this.t.merlinHint}</span>
-          <span class="sr-only">${this.t.merlin}${this.t.merlinWhere}</span>
-          ${
-            this._shortcutLabel()
-              ? html`<kbd class="chip" aria-hidden="true"
-                  >${this._shortcutLabel()}</kbd
-                >`
-              : ``
-          }
-        </button>
+        ${
+          this.compact
+            ? html`<div class="app"><slot name="pre"></slot></div>`
+            : html`<button
+                class="merlin merlin-wand-host"
+                type="button"
+                aria-haspopup="dialog"
+                title="${this.t.merlin}"
+                @click="${this.openMerlin}"
+              >
+                ${merlinTraveler()}
+                <span class="hint">${this.t.merlinHint}</span>
+                <span class="sr-only"
+                  >${this.t.merlin}${this.t.merlinWhere}</span
+                >
+                ${
+                  this._shortcutLabel()
+                    ? html`<kbd class="chip" aria-hidden="true"
+                        >${this._shortcutLabel()}</kbd
+                      >`
+                    : ``
+                }
+              </button>`
+        }
         <div class="end">
-          <button
-            class="install-btn"
-            type="button"
-            aria-haspopup="dialog"
-            @click="${() => this.openInstall()}"
+          <a
+            class="community"
+            href="${HAX_COMMUNITY_LINKS[0].href}"
+            title="${this.t.discord}"
           >
-            <simple-icon-lite icon="hax:admin-download"></simple-icon-lite>
-            <span class="long">${this.t.install}</span
-            ><span class="short">${this.t.installShort}</span>
-          </button>
+            <simple-icon-lite icon="hax:discord"></simple-icon-lite>
+            <span class="sr-only">${this.t.discord}</span>
+          </a>
           <slot name="post">
             <a
               class="github"
@@ -1394,20 +1697,192 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
               <span class="sr-only">${this.t.githubLink}</span>
             </a>
           </slot>
-          <span class="traveler" aria-hidden="true">
-            <simple-icon-lite
-              icon="hax:future-traveler"
-              no-colorize
-            ></simple-icon-lite>
-          </span>
+          <button
+            class="install-btn"
+            type="button"
+            aria-haspopup="dialog"
+            @click="${() => this.openInstall()}"
+          >
+            <simple-icon-lite icon="hax:admin-download"></simple-icon-lite>
+            <span class="long">${this.t.install}</span
+            ><span class="short">${this.t.installShort}</span>
+          </button>
+          ${
+            this.compact
+              ? ``
+              : html`<span class="traveler" aria-hidden="true">
+                  <simple-icon-lite
+                    icon="hax:future-traveler"
+                    no-colorize
+                  ></simple-icon-lite>
+                </span>`
+          }
         </div>
       </div>
       ${this._renderInstall()}
     `;
   }
 
+  /** the site this bar is on, by the name the network's record gives it */
+  _here() {
+    return FORMER_SITE_IDS[this.current] || this.current || "";
+  }
+
+  /** a property's color and the ink that reads on it, as custom properties */
+  _tint(id) {
+    const p = HAX_NETWORK.properties[id];
+    return p
+      ? `--prop:var(--ddd-theme-default-${p.color});--on:var(--ddd-theme-default-${p.on})`
+      : "";
+  }
+
+  /** the card a property shows on hover or focus: what it is, in a sentence */
+  _renderCard(id, here) {
+    const p = HAX_NETWORK.properties[id];
+    return html`<div class="card" role="tooltip" id="card-${id}">
+      <span class="card-head">
+        <strong>${this.t[id]}</strong>
+        <span class="host">${p.url.replace("https://", "")}</span>
+      </span>
+      <span class="purpose">${this.t[`${id}About`]}</span>
+      ${id === here ? html`<span class="you">${this.t.here}</span>` : ``}
+    </div>`;
+  }
+
+  /** your character: the way to RPG me, and its place in the bar */
+  _renderCharacter(here) {
+    return html`<div
+      class="prop me"
+      style="${this._tint("rpg")}"
+      @keydown="${this._cardKey}"
+    >
+      <a
+        class="character"
+        href="${this._characterHref()}"
+        aria-label="${this.t.character}"
+        aria-describedby="card-rpg"
+        aria-current="${here === "rpg" ? "page" : "false"}"
+      >
+        <rpg-character
+          height="46"
+          width="40"
+          seed="${this.character ? "" : "HAX"}"
+          code="${this.character || ""}"
+        ></rpg-character>
+      </a>
+      ${this._renderCard("rpg", here)}
+    </div>`;
+  }
+
+  _renderProperty(id, here) {
+    const p = HAX_NETWORK.properties[id];
+    return html`<li
+      class="prop"
+      style="${this._tint(id)}"
+      @keydown="${this._cardKey}"
+    >
+      <a
+        class="glyph-host"
+        href="${p.url}"
+        aria-current="${id === here ? "page" : "false"}"
+        aria-describedby="card-${id}"
+      >
+        ${haxNetworkGlyph(id)}<span class="name">${this.t[id]}</span>
+      </a>
+      ${this._renderCard(id, here)}
+    </li>`;
+  }
+
+  /** the same properties as one menu, for narrow screens and touch */
+  _renderMenu(here) {
+    return html`<button
+        class="net-btn"
+        type="button"
+        style="${this._tint(here)}"
+        aria-expanded="${this.menuOpen ? "true" : "false"}"
+        aria-controls="net-menu"
+        @click="${this.toggleMenu}"
+      >
+        ${
+          HAX_NETWORK.order.includes(here)
+            ? haxNetworkGlyph(here)
+            : html`<simple-icon-lite icon="icons:menu"></simple-icon-lite>`
+        }
+        <span class="label">${this.t[here] || this.t.network}</span>
+        <simple-icon-lite
+          class="caret"
+          icon="icons:expand-more"
+        ></simple-icon-lite>
+        <span class="sr-only">${this.t.sitesMenu}</span>
+      </button>
+      <div class="net-menu" id="net-menu" ?hidden="${!this.menuOpen}">
+        <ul>
+          ${HAX_NETWORK.order.map(
+            (id) =>
+              html`<li style="${this._tint(id)}">
+                <a
+                  class="glyph-host"
+                  href="${HAX_NETWORK.properties[id].url}"
+                  aria-current="${id === here ? "page" : "false"}"
+                >
+                  <span class="tile">${haxNetworkGlyph(id)}</span>
+                  <span class="text"
+                    ><strong>${this.t[id]}</strong
+                    ><span>${this.t[`${id}About`]}</span></span
+                  >
+                </a>
+              </li>`,
+          )}
+        </ul>
+        <ul class="more">
+          ${HAX_COMMUNITY_LINKS.filter(
+            (l) => l.id === "discord" || l.id === "github",
+          ).map(
+            (l) =>
+              html`<li>
+                <a href="${l.href}">
+                  <simple-icon-lite icon="${l.icon}"></simple-icon-lite
+                  >${this.t[l.label]}
+                </a>
+              </li>`,
+          )}
+        </ul>
+      </div>`;
+  }
+
+  /** Escape puts a card away until the pointer or focus leaves it */
+  _cardKey(e) {
+    if (e.key !== "Escape") return;
+    const el = e.currentTarget;
+    el.setAttribute("data-away", "");
+    const back = () => {
+      el.removeAttribute("data-away");
+      el.removeEventListener("mouseleave", back);
+      el.removeEventListener("focusout", back);
+    };
+    el.addEventListener("mouseleave", back);
+    el.addEventListener("focusout", back);
+  }
+
+  /** Escape closes the properties menu and gives focus back to its button */
+  _menuKey(e) {
+    if (e.key === "Escape" && this.menuOpen) {
+      this.menuOpen = false;
+      const btn = this.shadowRoot.querySelector(".net-btn");
+      if (btn) btn.focus();
+    }
+  }
+
+  /** the way to install whose tab is open */
+  _way() {
+    return (
+      HAX_INSTALL_METHODS.find((m) => m.id === this.installMethod) ||
+      HAX_INSTALL_METHODS[0]
+    );
+  }
+
   _renderInstall() {
-    const way = HAX_INSTALL_METHODS.find((m) => m.id === this.installMethod);
+    const way = this._way();
     return html`
       <dialog
         aria-labelledby="install-title"
@@ -1415,19 +1890,6 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
         @click="${this._dialogClick}"
       >
         <div class="hax-ui-dialog-titlebar">
-          ${
-            way
-              ? html`<button
-                  class="hax-ui-dialog-close back"
-                  type="button"
-                  title="${this.t.installBack}"
-                  @click="${() => this.showInstallMethod("")}"
-                >
-                  <simple-icon-lite icon="icons:arrow-back"></simple-icon-lite>
-                  <span class="sr-only">${this.t.installBack}</span>
-                </button>`
-              : ``
-          }
           <h2 class="hax-ui-dialog-title" id="install-title">
             ${this.t.installTitle}
           </h2>
@@ -1442,7 +1904,30 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
           </button>
         </div>
         <div class="install-body">
-          ${way ? this._renderWay(way) : this._renderWays()}
+          <p class="install-intro">${this.t.installIntro}</p>
+          <div
+            class="tabs"
+            role="tablist"
+            aria-label="${this.t.installWays}"
+            @keydown="${this._tabKey}"
+          >
+            ${HAX_INSTALL_METHODS.map(
+              (m) =>
+                html`<button
+                  type="button"
+                  role="tab"
+                  id="tab-${m.id}"
+                  data-way="${m.id}"
+                  aria-selected="${m.id === way.id ? "true" : "false"}"
+                  aria-controls="way-panel"
+                  tabindex="${m.id === way.id ? "0" : "-1"}"
+                  @click="${() => this.showInstallMethod(m.id)}"
+                >
+                  ${this._wayIcon(m)}${this.t[m.title]}
+                </button>`,
+            )}
+          </div>
+          ${this._renderWay(way)}
           <div class="install-foot">
             <span>${this.t.installCommunity}</span>
             <ul class="social">
@@ -1468,60 +1953,22 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
       : html`<simple-icon-lite icon="${m.icon}"></simple-icon-lite>`;
   }
 
-  _renderWays() {
-    return html`
-      <p class="install-intro">${this.t.installIntro}</p>
-      <ul class="ways">
-        ${HAX_INSTALL_METHODS.map(
-          (m) =>
-            html`<li>
-              <button
-                class="way"
-                type="button"
-                data-way="${m.id}"
-                @click="${() => this.showInstallMethod(m.id)}"
-              >
-                <span class="way-icon" aria-hidden="true"
-                  >${this._wayIcon(m)}</span
-                >
-                <span class="way-title"
-                  >${this.t[m.title]}
-                  ${
-                    m.beta
-                      ? html`<span class="beta">${this.t.installBeta}</span>`
-                      : ``
-                  }</span
-                >
-                <span class="way-about">${this.t[m.about]}</span>
-                <span class="way-best"
-                  >${this.t.installBestFor}: ${this.t[m.best]}</span
-                >
-              </button>
-            </li>`,
-        )}
-      </ul>
-    `;
-  }
-
+  /** one way's tab panel: what it is, its quick steps, and a page for the rest */
   _renderWay(m) {
     return html`
-      <div class="detail" data-way="${m.id}">
-        <div class="detail-head">
-          <span class="way-icon" aria-hidden="true">${this._wayIcon(m)}</span>
-          <div>
-            <h3 tabindex="-1">
-              ${this.t[m.title]}
-              ${
-                m.beta
-                  ? html`<span class="beta">${this.t.installBeta}</span>`
-                  : ``
-              }
-            </h3>
-            <p>
-              ${this.t[m.about]} ${this.t.installBestFor}: ${this.t[m.best]}.
-            </p>
-          </div>
-        </div>
+      <div
+        class="detail"
+        id="way-panel"
+        role="tabpanel"
+        aria-labelledby="tab-${m.id}"
+        tabindex="0"
+        data-way="${m.id}"
+      >
+        <p class="detail-about">
+          ${this.t[m.about]}
+          ${m.beta ? html`<span class="beta">${this.t.installBeta}</span>` : ``}
+          <span class="best">${this.t.installBestFor}: ${this.t[m.best]}.</span>
+        </p>
         <ol class="steps" aria-label="${this.t.installSteps}">
           ${m.steps.map((s, i) => {
             const code = s.prompt ? this.t.installAgentPrompt : s.code;
@@ -1559,19 +2006,47 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
             </li>`;
           })}
         </ol>
-        <ul class="detail-links" aria-label="${this.t.installMore}">
-          ${m.links.map(
-            (l) =>
-              html`<li>
-                <a href="${l.href}" target="_blank" rel="noopener"
-                  >${this.t[l.text]}
-                  <simple-icon-lite icon="hax:admin-external"></simple-icon-lite
-                ></a>
-              </li>`,
-          )}
-        </ul>
+        <div class="detail-more">
+          ${
+            m.id === "browser"
+              ? html`<a class="install-btn" href="${m.links[0].href}"
+                  >${this.t[m.links[0].text]}</a
+                >`
+              : ``
+          }
+          <a
+            class="more"
+            href="${HAX_NETWORK.install.details}#${m.id}"
+            aria-label="${this.t.installDetails}: ${this.t[m.title]}"
+            >${this.t.installDetails}
+            <simple-icon-lite icon="hax:admin-external"></simple-icon-lite
+          ></a>
+        </div>
       </div>
     `;
+  }
+
+  /** arrow keys, Home and End move between the ways' tabs */
+  _tabKey(e) {
+    const ids = HAX_INSTALL_METHODS.map((m) => m.id);
+    let i = ids.indexOf(this._way().id);
+    if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+      i = (i + 1) % ids.length;
+    } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+      i = (i - 1 + ids.length) % ids.length;
+    } else if (e.key === "Home") {
+      i = 0;
+    } else if (e.key === "End") {
+      i = ids.length - 1;
+    } else {
+      return;
+    }
+    e.preventDefault();
+    this.showInstallMethod(ids[i]);
+    this.updateComplete.then(() => {
+      const tab = this.shadowRoot.querySelector(`#tab-${ids[i]}`);
+      if (tab) tab.focus();
+    });
   }
 
   /** The demo strip: sites, a notice that nothing is saved, the browser version and Install HAX */
@@ -1689,19 +2164,6 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
         dialog.close();
       }
     }
-    if (
-      changedProperties.has("installMethod") &&
-      changedProperties.get("installMethod") !== undefined &&
-      this.installOpen
-    ) {
-      // moving between the list and a way: focus lands on what changed
-      const target = this.installMethod
-        ? this.shadowRoot.querySelector(".detail h3")
-        : this.shadowRoot.querySelector(
-            `.way[data-way="${changedProperties.get("installMethod")}"]`,
-          );
-      if (target) target.focus();
-    }
   }
 
   /** RPG me, opened on this character when there is one */
@@ -1742,13 +2204,13 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
     }
   }
 
-  /** Open or close the sites menu (narrow screens) */
+  /** Open or close the properties menu (narrow screens and touch) */
   toggleMenu() {
     this.menuOpen = !this.menuOpen;
   }
 
   /**
-   * Open Install HAX, on the list or on one way's steps.
+   * Open Install HAX, on its first tab or on one way's.
    * @param {string} method browser, cli, nodejs, php, desktop or agent
    */
   openInstall(method = "") {
@@ -1759,7 +2221,7 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
     this.installOpen = true;
   }
 
-  /** Show one way's steps, or the list when empty */
+  /** Show one way's tab, or the first when empty */
   showInstallMethod(method) {
     this.installMethod = method || "";
   }
