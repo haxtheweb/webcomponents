@@ -14,18 +14,15 @@
   "fonts": [
     {
       "family": "Archivo",
-      "license": "OFL-1.1",
-      "url": "https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800;900&display=swap"
+      "license": "OFL-1.1"
     },
     {
       "family": "Archivo Narrow",
-      "license": "OFL-1.1",
-      "url": "https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;700&display=swap"
+      "license": "OFL-1.1"
     },
     {
       "family": "IBM Plex Mono",
-      "license": "OFL-1.1",
-      "url": "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      "license": "OFL-1.1"
     }
   ],
   "coverage": {

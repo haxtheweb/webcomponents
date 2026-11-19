@@ -64,8 +64,4 @@ export const UswdsTokens = css`
   }
 `;
 
-export const UswdsFonts = [
-  "https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,700;1,400&display=swap",
-  "https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap",
-  "https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap",
-];
+export const UswdsFonts = ["Source Sans 3", "Merriweather", "Roboto Mono"];

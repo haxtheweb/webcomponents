@@ -3,6 +3,7 @@
  * @license Apache-2.0, see LICENSE for full text.
  */
 import { LitElement } from "lit";
+import { resolveFontURLs } from "./fonts.js";
 
 /**
  * Need to think about support for multiple Design systems at the global level
@@ -360,14 +361,17 @@ export class DesignSystem extends LitElement {
         globalThis.document.head.appendChild(oldStyleSafariBs);
       }
       if (newSystem.fonts) {
-        mergeGoogleFontsURLs(newSystem.fonts).forEach((font) => {
-          const link = globalThis.document.createElement("link");
-          link.setAttribute("href", font);
-          link.setAttribute("rel", "stylesheet");
-          link.setAttribute("fetchpriority", "low");
-          link.setAttribute("data-ds", "font");
-          globalThis.document.head.appendChild(link);
-        });
+        // fonts HAX ships load from HAX, anything else from Google as named
+        mergeGoogleFontsURLs(resolveFontURLs(newSystem.fonts)).forEach(
+          (font) => {
+            const link = globalThis.document.createElement("link");
+            link.setAttribute("href", font);
+            link.setAttribute("rel", "stylesheet");
+            link.setAttribute("fetchpriority", "low");
+            link.setAttribute("data-ds", "font");
+            globalThis.document.head.appendChild(link);
+          },
+        );
       }
       if (newSystem.onload) {
         globalThis.document.onload = newSystem.onload();

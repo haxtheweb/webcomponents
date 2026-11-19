@@ -115,9 +115,22 @@ if (config.icons && !SHIPPABLE.includes(config.icons.license)) {
   );
   process.exit(1);
 }
+// fonts HAX serves itself, never from Google (scripts/fonts/hax-fonts.json)
+const HAX_FONTS = JSON.parse(
+  fs.readFileSync(
+    new URL("../../../../scripts/fonts/hax-fonts.json", import.meta.url),
+    "utf8",
+  ),
+).families.map((f) => f.family);
 (config.fonts || []).forEach((font) => {
   if (!SHIPPABLE_FONTS.includes(font.license)) {
     console.error(`Font ${font.family} is ${font.license}, which can't ship.`);
+    process.exit(1);
+  }
+  if (!HAX_FONTS.includes(font.family)) {
+    console.error(
+      `Font ${font.family} is not one HAX ships: add it to scripts/fonts/hax-fonts.json and run node scripts/vendor-fonts.mjs.`,
+    );
     process.exit(1);
   }
 });
@@ -1400,8 +1413,9 @@ const tokensJs =
   `export const ${prefix}Tokens = css\`\n  :root,\n  :host {\n` +
   tokens.map(decl).join("\n") +
   `\n  }\n\`;\n\n` +
+  // fonts by family name: HAX serves each one (d-d-d/lib/fonts)
   `export const ${prefix}Fonts = ${JSON.stringify(
-    (config.fonts || []).map((f) => f.url),
+    (config.fonts || []).map((f) => f.family),
     null,
     2,
   )};\n`;

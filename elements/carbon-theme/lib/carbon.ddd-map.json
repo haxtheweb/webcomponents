@@ -38,13 +38,11 @@
   "fonts": [
     {
       "family": "IBM Plex Sans",
-      "license": "OFL-1.1",
-      "url": "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;1,400&display=swap"
+      "license": "OFL-1.1"
     },
     {
       "family": "IBM Plex Mono",
-      "license": "OFL-1.1",
-      "url": "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      "license": "OFL-1.1"
     }
   ],
   "coverage": {

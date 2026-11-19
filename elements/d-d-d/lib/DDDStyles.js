@@ -348,11 +348,8 @@ export const instructionalStyles = Object.keys(learningComponentColors).map(
   When to use // after headers?
 */
 // fonts used
-export const DDDFonts = [
-  "https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap",
-  "https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;700;900&display=swap",
-  "https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;500;700;900&display=swap",
-];
+// DDD's font families, by name: HAX serves each one (lib/fonts.js)
+export const DDDFonts = ["Roboto", "Roboto Slab", "Roboto Condensed"];
 // CSS variables which is most of the system needed
 export const DDDVariables = css`
   :root,

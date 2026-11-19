@@ -33,6 +33,15 @@
  *
  * No per-package package.json or LICENSE files are written into the build.
  *
+ * Vendored assets: a package can ship things under their own licenses rather
+ * than the package's (d-d-d's fonts, for example). It lists them in a
+ * third-party.json at its root:
+ *   { "assets": [ { "name", "kind", "version", "license", "copyright",
+ *                   "source", "path", "licenseFiles": [...] } ] }
+ * with paths relative to the package. Each asset that is in the build gets
+ * its own index row ("<package> > <name> (<kind>)") under its own license,
+ * with its copyright line and license files as its license text.
+ *
  * Usage:
  *   node scripts/copy-dep-licenses.js [builtNodeModules] [sourceNodeModules] [outFile]
  *   # defaults:
@@ -218,6 +227,86 @@ function main() {
   let noLicenseFile = 0;
   const noLicenseNames = [];
 
+  // One shared license text per distinct text; returns its number.
+  function textIdFor(text, spdx, files, label) {
+    const key = crypto.createHash("sha1").update(text).digest("hex");
+    let entry = textMap[key];
+    if (!entry) {
+      entry = {
+        id: textOrder.length + 1,
+        spdx: spdx,
+        files: files.slice(),
+        text: text,
+        packages: [],
+      };
+      textMap[key] = entry;
+      textOrder.push(entry);
+    }
+    entry.packages.push(label);
+    return entry.id;
+  }
+
+  // Assets a package vendors under their own licenses (third-party.json).
+  function addVendoredAssets(rel, srcRoot) {
+    const manifest = path.join(srcRoot, "third-party.json");
+    if (!exists(manifest)) return;
+    let assets = [];
+    try {
+      assets = JSON.parse(fs.readFileSync(manifest, "utf8")).assets || [];
+    } catch (e) {
+      console.error(
+        "copy-dep-licenses: unreadable " + manifest + ": " + e.message,
+      );
+      process.exitCode = 1;
+      return;
+    }
+    // a path from the manifest stays inside its package
+    const inside = function (p) {
+      const abs = path.resolve(srcRoot, String(p || ""));
+      return abs === srcRoot || abs.indexOf(srcRoot + path.sep) === 0
+        ? abs
+        : null;
+    };
+    for (const asset of assets) {
+      const label =
+        rel + " > " + asset.name + (asset.kind ? " (" + asset.kind + ")" : "");
+      const built = asset.path ? path.join(builtDir, rel, asset.path) : null;
+      // only what this build actually ships is listed
+      if (!built || !inside(asset.path) || !exists(built)) continue;
+      let text = "";
+      if (asset.copyright) text += asset.copyright + "\n";
+      if (asset.version) text += "Version: " + asset.version + "\n";
+      if (asset.source) text += "Source: " + asset.source + "\n";
+      if (text) text += "\n";
+      const files = [];
+      for (const file of asset.licenseFiles || []) {
+        const abs = inside(file);
+        const body = abs ? readFileText(abs) : null;
+        if (body === null) continue;
+        files.push(file);
+        text += "---- " + file + " ----\n" + body;
+        if (body.length && body.charAt(body.length - 1) !== "\n") text += "\n";
+      }
+      if (!files.length) {
+        noLicenseFile++;
+        noLicenseNames.push(label);
+        records.push({
+          rel: label,
+          spdx: asset.license || "",
+          textId: 0,
+          note: "no license file found for this vendored asset",
+        });
+        continue;
+      }
+      records.push({
+        rel: label,
+        spdx: asset.license || "",
+        textId: textIdFor(text, asset.license || "", files, label),
+        note: "",
+      });
+    }
+  }
+
   for (const rel of pkgs) {
     const srcPkg = resolveSource(rel);
     if (!srcPkg) {
@@ -233,6 +322,7 @@ function main() {
     }
 
     const srcRoot = resolveSourceRoot(srcPkg);
+    addVendoredAssets(rel, srcRoot);
     const spdx = readSpdxLicense(srcRoot);
     const attrFiles = collectAttribution(srcRoot);
 
@@ -270,24 +360,10 @@ function main() {
       continue;
     }
 
-    const key = crypto.createHash("sha1").update(text).digest("hex");
-    let entry = textMap[key];
-    if (!entry) {
-      entry = {
-        id: textOrder.length + 1,
-        spdx: spdx,
-        files: attrFiles.slice(),
-        text: text,
-        packages: [],
-      };
-      textMap[key] = entry;
-      textOrder.push(entry);
-    }
-    entry.packages.push(rel);
     records.push({
       rel: rel,
       spdx: spdx,
-      textId: entry.id,
+      textId: textIdFor(text, spdx, attrFiles, rel),
       note: "",
     });
   }

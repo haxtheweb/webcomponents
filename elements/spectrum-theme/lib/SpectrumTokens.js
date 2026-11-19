@@ -124,7 +124,4 @@ export const SpectrumTokens = css`
   }
 `;
 
-export const SpectrumFonts = [
-  "https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,700;0,800;0,900;1,400&display=swap",
-  "https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600&display=swap",
-];
+export const SpectrumFonts = ["Source Sans 3", "Source Code Pro"];
