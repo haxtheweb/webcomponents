@@ -91,6 +91,8 @@
     "ubiquity-build": "bash scripts/ubiquity-testing.sh",
     "ubiquity-manifest": "node scripts/ubiquity-manifest.mjs write",
     "ubiquity-publish": "bash scripts/ubiquity-push.sh",
+    "ubiquity-dry-run": "bash scripts/ubiquity-dry-run.sh",
+    "ubiquity-network": "node scripts/ubiquity-network.mjs",
     "terser": "node scripts/terser-build.mjs build/es6 --exclude build/es6/node_modules/@xterm --exclude build/es6/node_modules/monaco-editor --exclude build/es6/node_modules/h5p-standalone --exclude build/es6/node_modules/mathjax --exclude build/es6/node_modules/@mathjax --exclude build/es6/node_modules/@haxtheweb/mermaid-diagram/lib/mermaid/mermaid.min.js",
     "minify-css-templates": "node scripts/minify-css-templates.mjs build/es6/node_modules/@haxtheweb",
     "test:fuzz": "HAX_FUZZ_SEED=${HAX_FUZZ_SEED:-random} HAX_FUZZ_RUNS=${HAX_FUZZ_RUNS:-4000} web-test-runner \"elements/*/test/*-fuzz.test.js\" --node-resolve --root-dir . --playwright --browsers chromium --static-logging",

@@ -29,6 +29,7 @@ describe("hax-network-bar", () => {
       "try",
       "learn",
       "elements",
+      "art",
     ]);
     expect([...links].map((a) => a.getAttribute("href"))).to.deep.equal(
       HAX_NETWORK_SITES.map((s) => s.href),
@@ -114,8 +115,8 @@ describe("hax-network-bar", () => {
 
   it("puts your character after the properties, as RPG me's place in the bar", async () => {
     const links = element.shadowRoot.querySelectorAll("nav.props a");
-    expect(links.length).to.equal(6);
-    const me = links[5];
+    expect(links.length).to.equal(7);
+    const me = links[6];
     expect(me.classList.contains("character")).to.be.true;
     expect(me.querySelector(".name").textContent).to.equal("RPG me");
     expect(me.getAttribute("aria-current")).to.equal("false");
@@ -319,12 +320,41 @@ describe("hax-network-bar", () => {
     expect(r.querySelector("a.character")).to.not.exist;
     expect(r.querySelector("button.merlin")).to.not.exist;
     expect(r.querySelector(".traveler")).to.not.exist;
-    expect(r.querySelectorAll("nav.props a").length).to.equal(5);
+    expect(r.querySelectorAll("nav.props a").length).to.equal(6);
     expect(
       r.querySelector('.app slot[name="pre"]').assignedElements().length,
     ).to.equal(1);
     expect(r.querySelector("button.install-btn")).to.exist;
     await expect(bar).shadowDom.to.be.accessible();
+  });
+
+  it("presents RPG me as one of Art's tools, right after Art, keeping its own address", async () => {
+    expect(HAX_NETWORK.order).to.not.include("rpg");
+    expect(HAX_NETWORK.properties.rpg.within).to.equal("art");
+    expect(HAX_NETWORK.properties.rpg.url).to.equal("https://rpg-me.hax.cloud");
+    const links = [...element.shadowRoot.querySelectorAll("nav.props a")];
+    const art = links.findIndex(
+      (a) => a.getAttribute("href") === "https://haxtheweb.github.io/art/",
+    );
+    expect(art).to.be.greaterThan(-1);
+    expect(links[art + 1].classList.contains("character")).to.be.true;
+    expect(
+      element.shadowRoot.querySelector("#card-rpg .within").textContent.trim(),
+    ).to.equal("Part of Art");
+    expect(element.shadowRoot.querySelector("#card-art .within")).to.not.exist;
+    element.menuOpen = true;
+    await element.updateComplete;
+    const items = [
+      ...element.shadowRoot.querySelectorAll("#net-menu ul:not(.more) > li"),
+    ];
+    const hrefs = items.map((li) => li.querySelector("a").getAttribute("href"));
+    const i = hrefs.indexOf("https://haxtheweb.github.io/art/");
+    expect(hrefs[i + 1]).to.equal("https://rpg-me.hax.cloud");
+    expect(items[i + 1].classList.contains("sub")).to.be.true;
+    expect(items[i].classList.contains("sub")).to.be.false;
+    expect(hrefs.length).to.equal(HAX_NETWORK.order.length + 1);
+    element.menuOpen = false;
+    await element.updateComplete;
   });
 
   it("sends the character to RPG me, on its code when it has one", async () => {

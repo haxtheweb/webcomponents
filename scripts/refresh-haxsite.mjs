@@ -85,13 +85,21 @@ if (!fs.existsSync(coreEntry)) {
 // (_config, _sites, ...) or touch authored content in the real checkout.
 const scratch = fs.mkdtempSync(path.join(os.tmpdir(), "refresh-haxsite-"));
 const work = path.join(scratch, path.basename(haxsiteDir));
-fs.cpSync(haxsiteDir, work, {
+// Copy from the real folder. Given a symlink (a checkout linked into
+// $HAXTHEWEB_ROOT), cpSync copies the link itself, so the "scratch" site would
+// be the real checkout and every managed file, package.json included, would
+// be rewritten in place, --dry-run or not.
+fs.cpSync(fs.realpathSync(haxsiteDir), work, {
   recursive: true,
   filter: (src) => {
     const name = path.basename(src);
     return name !== ".git" && name !== "node_modules";
   },
 });
+
+if (fs.lstatSync(work).isSymbolicLink()) {
+  fail(`scratch copy of ${haxsiteDir} is a link back to it; refusing to write`);
+}
 
 // Give HAXcms a throwaway config folder next to the scratch site. It looks for
 // `_config/.isHAXcmsConfig` walking up from the cwd; without one it falls back
