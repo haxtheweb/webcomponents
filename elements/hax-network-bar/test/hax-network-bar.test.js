@@ -1,4 +1,4 @@
-import { html, fixture, expect, oneEvent } from "@open-wc/testing";
+import { html, fixture, expect, oneEvent, aTimeout } from "@open-wc/testing";
 import {
   HAX_NETWORK_DESTINATIONS,
   HAX_NETWORK_SITES,
@@ -20,24 +20,29 @@ describe("hax-network-bar", () => {
   });
 
   it("links every property in the network's order, each as its own icon", async () => {
-    const links = element.shadowRoot.querySelectorAll("nav.props a");
+    const links = element.shadowRoot.querySelectorAll(
+      "nav.props a:not(.character)",
+    );
     expect(HAX_NETWORK_SITES.map((s) => s.id)).to.deep.equal([
       "web",
+      "cloud",
       "try",
       "learn",
       "elements",
-      "cloud",
     ]);
     expect([...links].map((a) => a.getAttribute("href"))).to.deep.equal(
       HAX_NETWORK_SITES.map((s) => s.href),
     );
     expect(links[0].getAttribute("href")).to.equal("https://haxtheweb.org");
     const tryIt = [...links].find(
-      (a) => a.querySelector(".name").textContent === "Try it now",
+      (a) => a.querySelector(".name").textContent === "Build now",
     );
     expect(tryIt.getAttribute("href")).to.equal("https://browser.hax.cloud");
     links.forEach((a) => expect(a.querySelector("svg.glyph")).to.exist);
-    expect(Object.keys(HAX_NETWORK_GLYPHS)).to.deep.equal(HAX_NETWORK.order);
+    expect(Object.keys(HAX_NETWORK_GLYPHS)).to.deep.equal([
+      ...HAX_NETWORK.order,
+      "rpg",
+    ]);
   });
 
   it("says what the network's record says about every property", () => {
@@ -107,11 +112,12 @@ describe("hax-network-bar", () => {
     ).to.equal("https://haxtheweb.org");
   });
 
-  it("makes your character RPG me's place in the bar", async () => {
-    expect(element.shadowRoot.querySelectorAll("nav.props a").length).to.equal(
-      5,
-    );
-    const me = element.shadowRoot.querySelector("a.character");
+  it("puts your character after the properties, as RPG me's place in the bar", async () => {
+    const links = element.shadowRoot.querySelectorAll("nav.props a");
+    expect(links.length).to.equal(6);
+    const me = links[5];
+    expect(me.classList.contains("character")).to.be.true;
+    expect(me.querySelector(".name").textContent).to.equal("RPG me");
     expect(me.getAttribute("aria-current")).to.equal("false");
     element.current = "rpg";
     await element.updateComplete;
@@ -119,7 +125,29 @@ describe("hax-network-bar", () => {
     expect(
       element.shadowRoot.querySelectorAll('nav.props a[aria-current="page"]')
         .length,
-    ).to.equal(0);
+    ).to.equal(1);
+  });
+
+  it("draws your character as an icon until you come by, then he walks", async () => {
+    const li = element.shadowRoot.querySelector("li.prop.me");
+    const me = li.querySelector("a.character");
+    expect(me.querySelector("svg.glyph")).to.exist;
+    expect(me.querySelector("rpg-character")).to.not.exist;
+    li.dispatchEvent(new MouseEvent("mouseenter"));
+    await element.updateComplete;
+    const alive = me.querySelector("rpg-character");
+    expect(alive).to.exist;
+    expect(alive.hasAttribute("walking")).to.be.true;
+    expect(li.hasAttribute("data-alive")).to.be.true;
+    li.dispatchEvent(new MouseEvent("mouseleave"));
+    await element.updateComplete;
+    expect(alive.hasAttribute("walking")).to.be.false;
+    expect(li.hasAttribute("data-alive")).to.be.false;
+    li.dispatchEvent(new FocusEvent("focusin"));
+    await element.updateComplete;
+    expect(alive.hasAttribute("walking")).to.be.true;
+    li.dispatchEvent(new FocusEvent("focusout"));
+    await element.updateComplete;
   });
 
   it("lists the same properties, with their sentences, in the menu for narrow screens and touch", async () => {
@@ -132,10 +160,11 @@ describe("hax-network-bar", () => {
     expect(btn.getAttribute("aria-expanded")).to.equal("true");
     expect(menu.hidden).to.be.false;
     const items = menu.querySelectorAll("ul:not(.more) a");
-    expect([...items].map((a) => a.getAttribute("href"))).to.deep.equal(
-      HAX_NETWORK_SITES.map((s) => s.href),
-    );
-    expect(items[1].querySelector(".text span").textContent).to.equal(
+    expect([...items].map((a) => a.getAttribute("href"))).to.deep.equal([
+      ...HAX_NETWORK_SITES.map((s) => s.href),
+      "https://rpg-me.hax.cloud",
+    ]);
+    expect(items[2].querySelector(".text span").textContent).to.equal(
       element.t.tryAbout,
     );
     expect(
@@ -163,12 +192,15 @@ describe("hax-network-bar", () => {
     ).to.equal(0);
   });
 
-  it("is laid out like the HAX top bar: character, Merlin, Future Traveler", () => {
+  it("is laid out like the HAX top bar: Merlin in the middle, the Future Traveler last", () => {
     const start = element.shadowRoot.querySelector(".start");
     const end = element.shadowRoot.querySelector(".end");
-    expect(start.querySelector("a.character rpg-character")).to.exist;
+    expect(start.querySelector("nav.props a.character")).to.exist;
     expect(start.querySelector('slot[name="pre"]')).to.exist;
-    expect(end.querySelector("a.community").getAttribute("href")).to.equal(
+    expect(
+      element.shadowRoot.querySelector("button.merlin .hint").textContent,
+    ).to.equal("Travel anywhere");
+    expect(end.querySelector("a.discord").getAttribute("href")).to.equal(
       "https://discord.gg/aCGxmRHEJP",
     );
     expect(end.querySelector('slot[name="post"] a.github')).to.exist;
@@ -177,6 +209,66 @@ describe("hax-network-bar", () => {
     expect(
       end.querySelector(".traveler simple-icon-lite").getAttribute("icon"),
     ).to.equal("hax:future-traveler");
+  });
+
+  it("remixes the Future Traveler through every era on a click, loading the eras only then", async () => {
+    const btn = element.shadowRoot.querySelector("button.traveler");
+    expect(btn.getAttribute("aria-label")).to.equal(
+      "Remix the HAX Future Traveler",
+    );
+    expect(btn.getAttribute("aria-pressed")).to.equal("false");
+    expect(element.travelerEra).to.equal("now");
+    expect(element._eras).to.equal(null);
+    const eras = await import("../lib/hax-future-traveler.js");
+    const ids = eras.HAX_TRAVELER_ERAS.map((e) => e.id);
+    expect(ids[0]).to.equal("now");
+    expect(ids.length).to.equal(12);
+    const seen = [];
+    for (let i = 0; i < ids.length; i++) {
+      await element.remix();
+      await aTimeout(400);
+      await element.updateComplete;
+      seen.push(element.travelerEra);
+    }
+    expect(seen).to.deep.equal([...ids.slice(1), "now"]);
+    expect(element._eras).to.not.equal(null);
+    await element.remix();
+    await aTimeout(400);
+    await element.updateComplete;
+    expect(element.getAttribute("traveler-era")).to.equal("steam");
+    expect(btn.getAttribute("aria-pressed")).to.equal("true");
+    const drawn = btn.querySelector("svg.future-traveler");
+    expect(drawn.getAttribute("data-era")).to.equal("steam");
+    // a click chose this era, so leaving does not send him back to today
+    btn.dispatchEvent(new MouseEvent("mouseleave"));
+    await aTimeout(400);
+    expect(element.travelerEra).to.equal("steam");
+    await expect(element).shadowDom.to.be.accessible();
+  });
+
+  it("draws every era, and the world of tomorrow in every pillar's color", async () => {
+    const eras = await import("../lib/hax-future-traveler.js");
+    const { render } = await import("lit");
+    const box = document.createElement("div");
+    document.body.appendChild(box);
+    eras.HAX_TRAVELER_ERAS.forEach((e) => {
+      render(eras.futureTraveler(e.id), box);
+      const drawn = box.querySelector("svg.future-traveler");
+      expect(drawn.getAttribute("data-era"), e.id).to.equal(e.id);
+      expect(drawn.children.length, e.id).to.be.greaterThan(0);
+    });
+    Object.keys(eras.HAX_TRAVELER_PILLAR_TINTS).forEach((p) => {
+      render(eras.futureTraveler("tomorrow", p), box);
+      expect(
+        box.querySelector("ellipse.ft-orbit").getAttribute("stroke"),
+        p,
+      ).to.equal(eras.HAX_TRAVELER_PILLAR_TINTS[p]);
+    });
+    render(eras.futureTraveler("no-such-era"), box);
+    expect(
+      box.querySelector("svg.future-traveler").getAttribute("data-era"),
+    ).to.equal("now");
+    box.remove();
   });
 
   it("is shorter over a full platform: no character, Merlin or Future Traveler, the page's functions in the middle", async () => {
@@ -375,7 +467,7 @@ describe("hax-network-bar", () => {
       expect(added.length).to.equal(
         HAX_NETWORK_DESTINATIONS.length + HAX_INSTALL_METHODS.length + 2,
       );
-      expect(added[0].title).to.equal("hax.cloud: the HAX ecosystem web");
+      expect(added[0].title).to.equal("PRAW: the brain of the HAX ecosystem");
       const install = added.filter((o) => o.value.method === "openInstall");
       expect(install.map((o) => o.value.args[0])).to.deep.equal([
         "",

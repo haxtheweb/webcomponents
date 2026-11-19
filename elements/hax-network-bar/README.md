@@ -1,6 +1,6 @@
 # &lt;hax-network-bar&gt;
 
-The bar across the top of every site in the HAX network. Each property is an icon in its own color: the one you are on opens into a pill with its name, and hovering or focusing any of them shows a card saying what it is for. Your character in the corner is the way to RPG me. Merlin sits in the middle; Discord, GitHub and Install HAX on the right. Nothing in the bar belongs to the site under it: a site draws its own header, links and controls below.
+The bar across the top of every site in the HAX network. Each property is an icon in its own color: the one you are on opens into a pill with its name, and hovering or focusing any of them shows a card saying what it is for. Your character comes after them and is the way to RPG me. Merlin sits in the middle; Discord, GitHub, Install HAX and the Future Traveler on the right. Nothing in the bar belongs to the site under it: a site draws its own header, links and controls below.
 
 ## Usage
 
@@ -21,17 +21,46 @@ What a property is called, where it lives, its color, its icon and the sentence 
 | `current`  | Property       | Where                   | Color          |
 | ---------- | -------------- | ----------------------- | -------------- |
 | `web`      | HAXTheWeb      | haxtheweb.org           | keystoneYellow |
-| `try`      | Try it now     | browser.hax.cloud       | futureLime     |
+| `cloud`    | PRAW           | hax.cloud               | original87Pink |
+| `try`      | Build now      | browser.hax.cloud       | futureLime     |
 | `learn`    | Learn          | learn.hax.cloud         | skyBlue        |
 | `elements` | Web components | webcomponents.hax.cloud | inventOrange   |
-| `cloud`    | hax.cloud      | hax.cloud               | original87Pink |
 | `rpg`      | RPG me         | rpg-me.hax.cloud        | athertonViolet |
 
-`order` is the order the bar lists them. RPG me is not in it: your character is its place in the bar, and fills with its color when you are there. To add, rename or move a property, change the record; the bar, its menu and its cards follow. The strings are translated through the bar's own `t`, whose English matches the record.
+`order` is the order the bar lists them. RPG me comes after them as your character. To add, rename or move a property, change the record; the bar, its menu and its cards follow. The strings are translated through the bar's own `t`, whose English matches the record.
 
 The same file holds the network's own icons (`HAX_NETWORK_GLYPHS`, `haxNetworkGlyph(id)`, `HaxNetworkGlyphStyles`). Each is two tones: the main strokes carry the shape; the accent is quiet at rest and takes the property's color, and moves, when its host (an element with class `glyph-host`) is hovered or focused. Nothing moves for a visitor who asks for less motion. Another element can draw them by adding `HaxNetworkGlyphStyles` to its styles and setting `--prop` on the host.
 
 Below 900px, and on touch screens where there is no hover, the icons fold into one menu that lists every property with its sentence.
+
+## Play
+
+The bar is playful on purpose, and all of it answers hover and keyboard focus alike. Nothing moves for a visitor who asks for less motion; the colors still change.
+
+- **Your character** is an icon like the rest until you come by. Then the real `rpg-character` loads, lights up in RPG me's color and walks.
+- **Discord** talks and **GitHub** pushes, each taking a color; **Install HAX** pops and its arrow drops in.
+- **The Future Traveler** tears through every era he has been to while you hover, and goes back to today when you leave. A click keeps the next era (`remix()`, or set `traveler-era`).
+
+### The Future Traveler across time
+
+He has collected the best ideas of every era, so the same icon can be drawn the way each era would have drawn it. `lib/hax-future-traveler.js` holds them (`HAX_TRAVELER_ERAS`, `futureTraveler(era, tint)`, `HaxFutureTravelerStyles`), one for each style HAX's posters tell the story of the pillars in ([haxtheweb/art](https://github.com/haxtheweb/art/tree/main/haxtheweb/posters)):
+
+| `traveler-era` | Era                                            |
+| -------------- | ---------------------------------------------- |
+| `now`          | Today, the icon as it ships                    |
+| `steam`        | 1880s steam age                                |
+| `nouveau`      | 1900s modern marvel                            |
+| `deco`         | 1920s roaring twenties                         |
+| `tomorrow`     | 1960s world of tomorrow, in any pillar's color |
+| `rainbow`      | 1970s rainbow                                  |
+| `stripes`      | 1980s corporate                                |
+| `neon`         | 1980s cyberpunk                                |
+| `handheld`     | Handheld, four greens                          |
+| `web`          | 1990s early web                                |
+| `polygon`      | 32-bit polygons                                |
+| `terminal`     | Terminal                                       |
+
+The bar loads that file, and adopts its styles, the first time the traveler is hovered, focused or clicked, so a page that never touches him never downloads it. Your character's `rpg-character` loads the same way.
 
 ## Over a full platform
 

@@ -10,15 +10,15 @@ import { html, svg, css } from "lit";
  * the same thing. PRAW keeps the record of why (ecosystem/network.json in
  * https://github.com/haxtheweb/praw); this is the copy the elements ship.
  *
- * `order` is the order the bar lists them. RPG me is not in it: your
- * character in the corner of the bar is its place. `color` and `on` are DDD
+ * `order` is the order the bar lists them. RPG me comes after them, as your
+ * character. `color` and `on` are DDD
  * color names (the fill, and the ink that reads on it). `icon` is the plain
  * simple-icon to use where the property's own glyph cannot be drawn (Merlin,
  * for one). `label` and `purpose` are the English the bar's own strings
  * start from; the bar translates them through its `t`.
  */
 export const HAX_NETWORK = {
-  order: ["web", "try", "learn", "elements", "cloud"],
+  order: ["web", "cloud", "try", "learn", "elements"],
   properties: {
     web: {
       url: "https://haxtheweb.org",
@@ -34,7 +34,7 @@ export const HAX_NETWORK = {
       color: "futureLime",
       on: "coalyGray",
       icon: "av:play-circle-filled",
-      label: "Try it now",
+      label: "Build now",
       purpose: "Use HAX right now in this browser tab. Nothing to install.",
       relation:
         "The platform itself, live. Install HAX is how you take it with you.",
@@ -63,9 +63,9 @@ export const HAX_NETWORK = {
       color: "original87Pink",
       on: "white",
       icon: "lrn:network",
-      label: "hax.cloud",
+      label: "PRAW",
       purpose:
-        "The brain of HAX: every person, pillar and project, and how they connect.",
+        "The brain of the HAX ecosystem: every person, pillar and project, and how they connect.",
       relation:
         "PRAW drawn as a web. Every other property takes its stories from here.",
     },
@@ -77,7 +77,7 @@ export const HAX_NETWORK = {
       label: "RPG me",
       purpose: "Make the character that is you across HAX.",
       relation:
-        "Not an icon in the list. Your character in the corner of the bar is the way in.",
+        "Your character, after the list, is the way in. He comes to life when you come by.",
     },
   },
   install: { details: "https://haxtheweb.org/installation" },
@@ -92,20 +92,22 @@ export const HAX_NETWORK = {
 export const HAX_NETWORK_GLYPHS = {
   // HAXTheWeb: an H between the brackets of a tag
   web: svg`<path class="m g-l" d="M8 6 3 12l5 6"/><path class="m g-r" d="m16 6 5 6-5 6"/><path class="a g-h" d="M10 9.2v5.6M14 9.2v5.6M10 12h4"/>`,
-  // Try it now: a browser window with play in it and a live light
+  // PRAW (hax.cloud): the brain that is also a cloud, its web inside it and
+  // neurons reaching out to everything around it
+  cloud: svg`<path class="m" d="M12 5.9c-.88-1.67-4.05-1.67-4.58.88-1.94.35-2.64 2.38-1.76 3.87-1.14 1.41-.62 3.78 1.41 4.31.35 2.29 3.52 3.17 4.93 1.5"/><path class="m" d="M12 5.9c.88-1.67 4.05-1.67 4.58.88 1.94.35 2.64 2.38 1.76 3.87 1.14 1.41.62 3.78-1.41 4.31-.35 2.29-3.52 3.17-4.93 1.5"/><path class="m" d="M12 5.9v10.6"/><path class="a t g-link" d="M9.9 9.6H12M14.1 11.9H12M10.2 14.1H12"/><circle class="a f g-n1" cx="9" cy="9.6" r=".95"/><circle class="a f g-n2" cx="15" cy="11.9" r=".95"/><circle class="a f g-n3" cx="9.3" cy="14.1" r=".95"/><path class="a t g-link" d="M3.2 3.8 5.5 6.1M20.8 3.8l-2.3 2.3M21.2 12.3l-1.5-.3M19.1 20.3l-1.7-2.5M4.9 20.3l1.7-2.5M2.8 12.3l1.5-.3"/><circle class="a f g-o g-o1" cx="2.5" cy="3.1" r="1"/><circle class="a f g-o g-o2" cx="21.5" cy="3.1" r="1"/><circle class="a f g-o g-o3" cx="22.1" cy="12.5" r="1"/><circle class="a f g-o g-o4" cx="19.6" cy="21" r="1"/><circle class="a f g-o g-o5" cx="4.4" cy="21" r="1"/><circle class="a f g-o g-o6" cx="1.9" cy="12.5" r="1"/>`,
+  // Build now: a browser window with play in it and a live light
   try: svg`<rect class="m" x="3" y="4" width="18" height="16" rx="2"/><path class="m" d="M3 8.6h18"/><circle class="a f g-dot" cx="6" cy="6.3" r="1"/><path class="a f g-play" d="M10.2 11.2v6l5.2-3z"/>`,
   // Learn: the TV tutorials play on
   learn: svg`<path class="m g-ant" d="m8.5 3 3.5 5 3.5-5"/><rect class="m" x="3" y="8" width="18" height="12" rx="2"/><path class="a g-scan" d="M6.5 12h8"/><path class="a g-scan g-scan2" d="M6.5 16h5"/><circle class="a f" cx="17.7" cy="12" r="1"/><circle class="a f" cx="17.7" cy="16" r="1"/>`,
   // Web components: parts, and the one that snaps in
   elements: svg`<rect class="m" x="3.5" y="3.5" width="7.5" height="7.5" rx="1.2"/><rect class="m" x="3.5" y="13" width="7.5" height="7.5" rx="1.2"/><rect class="m" x="13" y="13" width="7.5" height="7.5" rx="1.2"/><rect class="a g-piece" x="13" y="3.5" width="7.5" height="7.5" rx="1.2"/>`,
-  // hax.cloud: the brain that is also a cloud, its web inside it and
-  // neurons reaching out to everything around it
-  cloud: svg`<path class="m" d="M12 5.9c-.88-1.67-4.05-1.67-4.58.88-1.94.35-2.64 2.38-1.76 3.87-1.14 1.41-.62 3.78 1.41 4.31.35 2.29 3.52 3.17 4.93 1.5"/><path class="m" d="M12 5.9c.88-1.67 4.05-1.67 4.58.88 1.94.35 2.64 2.38 1.76 3.87 1.14 1.41.62 3.78-1.41 4.31-.35 2.29-3.52 3.17-4.93 1.5"/><path class="m" d="M12 5.9v10.6"/><path class="a t g-link" d="M9.9 9.6H12M14.1 11.9H12M10.2 14.1H12"/><circle class="a f g-n1" cx="9" cy="9.6" r=".95"/><circle class="a f g-n2" cx="15" cy="11.9" r=".95"/><circle class="a f g-n3" cx="9.3" cy="14.1" r=".95"/><path class="a t g-link" d="M3.2 3.8 5.5 6.1M20.8 3.8l-2.3 2.3M21.2 12.3l-1.5-.3M19.1 20.3l-1.7-2.5M4.9 20.3l1.7-2.5M2.8 12.3l1.5-.3"/><circle class="a f g-o g-o1" cx="2.5" cy="3.1" r="1"/><circle class="a f g-o g-o2" cx="21.5" cy="3.1" r="1"/><circle class="a f g-o g-o3" cx="22.1" cy="12.5" r="1"/><circle class="a f g-o g-o4" cx="19.6" cy="21" r="1"/><circle class="a f g-o g-o5" cx="4.4" cy="21" r="1"/><circle class="a f g-o g-o6" cx="1.9" cy="12.5" r="1"/>`,
+  // RPG me: your character, standing still until you come by
+  rpg: svg`<path class="a" d="M6 5h12M8.4 5V2.6h7.2V5"/><rect class="m" x="7.5" y="5" width="9" height="7" rx="1.6"/><circle class="a f" cx="10.3" cy="8.6" r=".95"/><circle class="a f" cx="13.7" cy="8.6" r=".95"/><path class="m" d="M8.6 12.6h6.8v5.6H8.6zM8.6 13.8 6.2 16.4M15.4 13.8l2.4 2.6M10.4 18.2v3.2M13.6 18.2v3.2"/>`,
 };
 
 /**
  * A property's glyph as an svg element; nothing for a property without one.
- * @param {string} id web, try, learn, elements or cloud
+ * @param {string} id web, cloud, try, learn, elements or rpg
  */
 export function haxNetworkGlyph(id) {
   return HAX_NETWORK_GLYPHS[id]
