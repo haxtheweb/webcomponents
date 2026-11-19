@@ -31,7 +31,7 @@ What a property is called, where it lives, its color, its icon and the sentence 
 
 The same file holds the network's own icons (`HAX_NETWORK_GLYPHS`, `haxNetworkGlyph(id)`, `HaxNetworkGlyphStyles`). Each is two tones: the main strokes carry the shape; the accent is quiet at rest and takes the property's color, and moves, when its host (an element with class `glyph-host`) is hovered or focused. Nothing moves for a visitor who asks for less motion. Another element can draw them by adding `HaxNetworkGlyphStyles` to its styles and setting `--prop` on the host.
 
-Below 900px, and on touch screens where there is no hover, the icons fold into one menu that lists every property with its sentence.
+Below 900px, and on touch screens where there is no hover, the icons fold into one menu that lists every property with its sentence, with LinkedIn, Discord, GitHub and X at its foot (`HAX_MENU_COMMUNITY`). There Discord and the default GitHub link leave the bar's right side, since the menu holds them; anything a page puts in the `post` slot stays.
 
 ## Play
 
@@ -66,7 +66,7 @@ The bar loads that file, and adopts its styles, the first time the traveler is h
 
 ## Over a full platform
 
-`<hax-network-bar compact>` is the bar for a platform with a top bar of its own (HAXcms in the browser): shorter, with no character, Merlin or Future Traveler because the editor under it has them, and with the `pre` slot in the middle for the platform's own status and functions.
+`<hax-network-bar compact>` is the bar for a platform with a top bar of its own (HAXcms in the browser): shorter, with no character, Merlin or Future Traveler because the editor under it has them, and with the `pre` slot in the middle for the platform's own status and functions. Below 1100px the `pre` slot takes its own row under the bar, at every width down to a phone.
 
 ```html
 <hax-network-bar compact current="try">

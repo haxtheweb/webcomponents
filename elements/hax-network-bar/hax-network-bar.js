@@ -75,6 +75,13 @@ export const HAX_COMMUNITY_LINKS = [
 ];
 
 /**
+ * The community links at the foot of the properties menu, in order. Where
+ * the properties fold into that menu, Discord and GitHub leave the bar's
+ * right side, since the menu already holds them.
+ */
+export const HAX_MENU_COMMUNITY = ["linkedin", "discord", "github", "x"];
+
+/**
  * Every way to get HAX, in the order Install HAX lists them. Text is keys
  * into `this.t`; commands are not translated. `beta` marks a way that is
  * still settling.
@@ -954,7 +961,7 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
         /* narrower screens: the sites fold into a menu under the bar */
         @media (max-width: 1279px) {
           nav.sites,
-          slot[name="pre"] {
+          :host(:not([compact])) slot[name="pre"] {
             display: none;
           }
           .menu-btn {
@@ -1423,13 +1430,14 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
           list-style: none;
         }
         .net-menu ul.more {
-          flex-direction: row;
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
           margin-top: var(--ddd-spacing-2);
           padding-top: var(--ddd-spacing-2);
           border-top: 1px solid var(--hax-ui-line);
         }
         .net-menu ul.more li {
-          flex: 1 1 0;
+          min-width: 0;
         }
         .net-menu a {
           display: flex;
@@ -1610,6 +1618,11 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
           }
           .net-btn {
             display: inline-flex;
+          }
+          /* the menu's foot holds them now; a page's own post content stays */
+          .end .community,
+          slot[name="post"] > a.github {
+            display: none;
           }
         }
         @media (max-width: 900px) {
@@ -2034,8 +2047,8 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
           )}
         </ul>
         <ul class="more">
-          ${HAX_COMMUNITY_LINKS.filter(
-            (l) => l.id === "discord" || l.id === "github",
+          ${HAX_MENU_COMMUNITY.map((id) =>
+            HAX_COMMUNITY_LINKS.find((l) => l.id === id),
           ).map(
             (l) =>
               html`<li>
