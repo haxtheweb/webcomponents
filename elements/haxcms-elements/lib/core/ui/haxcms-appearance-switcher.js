@@ -91,10 +91,14 @@ class HAXCMSAppearanceSwitcher extends I18NMixin(LitElement) {
   static get styles() {
     return [
       css`
+        /* the three pickers wrap onto their own rows where the bar is
+           narrow (phones), instead of running off its edge */
         :host {
           display: inline-flex;
+          flex-wrap: wrap;
           align-items: center;
-          gap: var(--ddd-spacing-3);
+          gap: var(--ddd-spacing-1) var(--ddd-spacing-3);
+          max-width: 100%;
           font-family: var(--ddd-font-navigation);
           font-size: var(--ddd-font-size-4xs);
           color: inherit;
