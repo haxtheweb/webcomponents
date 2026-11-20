@@ -117,8 +117,8 @@ class HaxStoryLink extends I18NMixin(DDD) {
           gap: var(--ddd-spacing-2);
           min-height: var(--ddd-spacing-8);
           box-sizing: border-box;
-          padding: var(--ddd-spacing-1) var(--ddd-spacing-4)
-            var(--ddd-spacing-1) var(--ddd-spacing-1);
+          padding-block: var(--ddd-spacing-1);
+          padding-inline: var(--ddd-spacing-1) var(--ddd-spacing-4);
           font-family: var(--ddd-font-navigation, var(--ddd-font-primary));
           font-size: var(--ddd-font-size-4xs);
           font-weight: var(--ddd-font-weight-bold);
@@ -153,7 +153,8 @@ class HaxStoryLink extends I18NMixin(DDD) {
         }
         :host([compact]) a {
           min-height: var(--ddd-spacing-6);
-          padding: 0 var(--ddd-spacing-3) 0 0;
+          padding-block: 0;
+          padding-inline: 0 var(--ddd-spacing-3);
           font-size: var(--ddd-font-size-5xs);
           gap: var(--ddd-spacing-1);
         }

@@ -260,7 +260,7 @@ class HaxUseCasePicker extends I18NMixin(DDD) {
           font: inherit;
           font-size: var(--ddd-font-size-4xs);
           line-height: var(--ddd-lh-120);
-          text-align: left;
+          text-align: start;
           cursor: pointer;
           color: inherit;
           background-color: transparent;
@@ -389,7 +389,7 @@ class HaxUseCasePicker extends I18NMixin(DDD) {
             var(--ddd-theme-default-coalyGray)
           );
           border: 0;
-          border-left: var(--ddd-border-size-xs) solid
+          border-inline-start: var(--ddd-border-size-xs) solid
             light-dark(
               var(--ddd-theme-default-slateGray),
               var(--ddd-theme-default-limestoneLight)
