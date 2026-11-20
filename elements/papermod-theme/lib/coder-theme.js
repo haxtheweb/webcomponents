@@ -17,7 +17,9 @@ import { HomageColumnTheme } from "@haxtheweb/papermod-theme/lib/HomageColumnThe
  * that layout, with colors, fonts and widths from DDD tokens.
  *
  * @title Coder
- * @haxcms-theme-category Blog, Website
+ * @haxcms-theme-category Blog, Website, Portfolio
+ * @haxcms-theme-layout Single column
+ * @haxcms-theme-inspired-by Hugo Coder
  * @haxcms-theme-priority 0
  * @demo ../demo/coder-theme/index.html
  * @element coder-theme

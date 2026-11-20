@@ -18,7 +18,9 @@ import { HomageSidebarTheme } from "@haxtheweb/papermod-theme/lib/HomageSidebarT
  * that layout, with colors, fonts and widths from DDD tokens.
  *
  * @title Astrofy
- * @haxcms-theme-category Website
+ * @haxcms-theme-category Website, Portfolio, Blog
+ * @haxcms-theme-layout Sidebar
+ * @haxcms-theme-inspired-by Astro Astrofy
  * @haxcms-theme-priority 0
  * @demo ../demo/astrofy-theme/index.html
  * @element astrofy-theme

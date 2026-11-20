@@ -39,7 +39,9 @@ import { applyMarketingPalette } from "@haxtheweb/hax-marketing-theme/lib/hax-ma
  * site's theme variables, not from this file.
  *
  * @title HAX marketing
- * @haxcms-theme-category Website
+ * @haxcms-theme-category Website, Landing page
+ * @haxcms-theme-layout Top nav
+ * @haxcms-theme-design-system Future Traveler
  * @haxcms-theme-priority 20
  * @element hax-marketing-theme
  */

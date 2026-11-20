@@ -18,6 +18,8 @@ import { HomageSidebarTheme } from "@haxtheweb/papermod-theme/lib/HomageSidebarT
  *
  * @title Hyde
  * @haxcms-theme-category Blog, Website
+ * @haxcms-theme-layout Sidebar
+ * @haxcms-theme-inspired-by Jekyll Hyde
  * @haxcms-theme-priority 0
  * @demo ../demo/hyde-theme/index.html
  * @element hyde-theme

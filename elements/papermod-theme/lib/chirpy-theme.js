@@ -18,6 +18,8 @@ import { HomageSidebarTheme } from "@haxtheweb/papermod-theme/lib/HomageSidebarT
  *
  * @title Chirpy
  * @haxcms-theme-category Blog, Website
+ * @haxcms-theme-layout Sidebar
+ * @haxcms-theme-inspired-by Jekyll Chirpy
  * @haxcms-theme-priority 0
  * @demo ../demo/chirpy-theme/index.html
  * @element chirpy-theme

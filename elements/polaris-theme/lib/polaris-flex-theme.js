@@ -27,7 +27,8 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/layout/site-region.js";
  *  - HAXcms - A headless content management system
  *  - HAXCMSTheme - A super class that provides correct baseline wiring to build a new theme
  *
- * @haxcms-theme-category Website
+ * @haxcms-theme-category Website, Organization
+ * @haxcms-theme-layout Top nav
  * @haxcms-theme-internal false
  * @haxcms-theme-priority -1
  * @demo demo/index.html

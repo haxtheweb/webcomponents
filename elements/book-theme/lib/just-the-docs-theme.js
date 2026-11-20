@@ -18,6 +18,8 @@ import { BookTheme } from "@haxtheweb/book-theme/book-theme.js";
  *
  * @title Just the Docs
  * @haxcms-theme-category Documentation, Course, Website
+ * @haxcms-theme-layout Sidebar
+ * @haxcms-theme-inspired-by Jekyll Just the Docs
  * @haxcms-theme-priority 0
  * @demo ../demo/just-the-docs-theme/index.html
  * @element just-the-docs-theme

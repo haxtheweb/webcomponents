@@ -28,6 +28,9 @@ import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
  * `Inspired by Figma documentation for HAXcms`
  *
  * @demo index.html
+ * @haxcms-theme-category Website, Documentation
+ * @haxcms-theme-layout Sidebar
+ * @haxcms-theme-inspired-by Figma docs
  * @element haxma-theme
  */
 export class HaxmaTheme extends I18NMixin(

@@ -48,7 +48,8 @@ function tagsOf(item) {
  * writing skeleton sets this up), newest first by when they were created.
  *
  * @title Writing
- * @haxcms-theme-category Website
+ * @haxcms-theme-category Website, Blog
+ * @haxcms-theme-layout Single column
  * @haxcms-theme-priority 5
  * @element writing-theme
  */

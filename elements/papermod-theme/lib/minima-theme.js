@@ -19,6 +19,8 @@ import { HomageColumnTheme } from "@haxtheweb/papermod-theme/lib/HomageColumnThe
  *
  * @title Minima
  * @haxcms-theme-category Blog, Website
+ * @haxcms-theme-layout Single column
+ * @haxcms-theme-inspired-by Jekyll Minima
  * @haxcms-theme-priority 0
  * @demo ../demo/minima-theme/index.html
  * @element minima-theme

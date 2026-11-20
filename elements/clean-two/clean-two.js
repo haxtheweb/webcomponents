@@ -36,6 +36,7 @@ import {
  *  - HAXCMSTheme - A super class that provides correct baseline wiring to build a new theme
  *
  * @haxcms-theme-category Course
+ * @haxcms-theme-layout Sidebar
  * @haxcms-theme-internal false
  * @haxcms-theme-priority 0
  * @demo demo/index.html

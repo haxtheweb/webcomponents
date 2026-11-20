@@ -15,6 +15,7 @@ import { askImportUrl } from "./app-hax-import-url-dialog.js";
 import "./app-hax-use-case.js";
 import "./app-hax-search-results.js";
 import "./app-hax-site-creation-modal.js";
+import "./app-hax-design-browser.js";
 import { trimChars } from "@haxtheweb/utils/lib/safe-html.js";
 
 export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
@@ -55,6 +56,10 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
       createNewSite: "Create New Site",
       optionsAvailable: "{count} options available",
       fromTemplate: "From Template",
+      browseAllTemplates: "Browse all {count} templates",
+      browseAllThemes: "Browse all {count} themes",
+      browseAllHelp: "Search and filter by use case, layout and design system",
+      usedOnYourSites: "Used on your sites",
       templateBasedStarters: "Template-based starters",
       noTemplatesMatchFilters: "No templates match your current filters.",
       fromScratchUsingTheme: "From Scratch Using Theme",
@@ -193,6 +198,8 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
     this.sortMenuOpen = false;
     // Default to sorting sites by most recently updated
     this.sortOption = "newest";
+    // how many templates or themes show before "Browse all"
+    this.shelfSize = 5;
 
     // Advanced template visibility (controlled via Merlin programs)
     this.showTerrible = false;
@@ -1336,8 +1343,7 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
                   { icon: "icons:add", tooltip: this.t.moreTemplatesTooltip },
                 ]}
                 ?dark="${this.dark}"
-                @click=${() =>
-                  this.scrollToGroup("from-template-heading", "skeleton")}
+                @click=${() => this.openDesignBrowser("skeleton")}
               ></app-hax-use-case>
             </div>
 
@@ -1353,8 +1359,7 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
                   },
                 ]}
                 ?dark="${this.dark}"
-                @click=${() =>
-                  this.scrollToGroup("from-scratch-heading", "blank")}
+                @click=${() => this.openDesignBrowser("blank")}
               ></app-hax-use-case>
             </div>
 
@@ -1539,6 +1544,36 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
                       }
                     });
 
+                    const browsing =
+                      (this.searchTerm || "") === "" &&
+                      this.activeFilters.length === 0;
+                    const shelf = (entries, kind) => {
+                      if (!browsing || entries.length <= this.shelfSize) {
+                        return renderEntries(entries);
+                      }
+                      return html`${renderEntries(
+                          this._shelfOrder(entries).slice(0, this.shelfSize),
+                        )}
+                        <div role="listitem">
+                          <app-hax-use-case
+                            class="browse-all"
+                            .source=${""}
+                            .title=${(kind === "skeleton"
+                              ? this.t.browseAllTemplates
+                              : this.t.browseAllThemes
+                            ).replace("{count}", () => entries.length)}
+                            .description=${this.t.browseAllHelp}
+                            .iconImage=${[
+                              {
+                                icon: "icons:view-module",
+                                tooltip: this.t.browseAllHelp,
+                              },
+                            ]}
+                            ?dark="${this.dark}"
+                            @click=${() => this.openDesignBrowser(kind)}
+                          ></app-hax-use-case>
+                        </div>`;
+                    };
                     const renderEntries = (entries) => {
                       return entries.map(
                         (entry) => html`
@@ -1550,7 +1585,21 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
                               .title=${entry.item.useCaseTitle || ""}
                               .description=${entry.item.useCaseDescription || ""}
                               .demoLink=${entry.item.demoLink || ""}
-                              .iconImage=${entry.item.useCaseIcon || []}
+                              .iconImage=${
+                                this._usedThemes().has(
+                                  entry.item.dataType === "blank"
+                                    ? entry.item.machineName
+                                    : (entry.item.originalData || {}).theme,
+                                )
+                                  ? [
+                                      ...(entry.item.useCaseIcon || []),
+                                      {
+                                        icon: "icons:history",
+                                        tooltip: this.t.usedOnYourSites,
+                                      },
+                                    ]
+                                  : entry.item.useCaseIcon || []
+                              }
                               .isSelected=${entry.item.isSelected || false}
                               .showContinue=${entry.item.showContinue || false}
                               ?dark="${this.dark}"
@@ -1585,7 +1634,7 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
                                 aria-label="${this.t.templateBasedStarters}"
                                 aria-describedby="template-count"
                               >
-                                ${renderEntries(skeletonEntries)}
+                                ${shelf(skeletonEntries, "skeleton")}
                               </div>`
                             : html`<p
                                 role="status"
@@ -1617,7 +1666,7 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
                                 aria-label="${this.t.themeBasedStarters}"
                                 aria-describedby="template-count"
                               >
-                                ${renderEntries(blankEntries)}
+                                ${shelf(blankEntries, "blank")}
                               </div>`
                             : html`<p
                                 role="status"
@@ -1698,12 +1747,50 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
         </div>
       </div>
 
+      <app-hax-design-browser
+        id="designBrowser"
+        .items=${(this.items || []).filter(
+          (i) => i && (i.dataType === "skeleton" || i.dataType === "blank"),
+        )}
+        @design-chosen=${(e) => this.openTemplateModal(e.detail)}
+      ></app-hax-design-browser>
+
       <!-- Site Creation Modal -->
       <app-hax-site-creation-modal
         id="siteCreationModal"
         @modal-closed=${this.handleModalClosed}
       ></app-hax-site-creation-modal>
     `;
+  }
+
+  openDesignBrowser(kind) {
+    const browser = this.shadowRoot.querySelector("#designBrowser");
+    if (browser) browser.show(kind);
+  }
+
+  // themes already used on this person's sites, from the sites the dashboard loaded
+  _usedThemes() {
+    const used = new Set();
+    (this.returningSites || []).forEach((site) => {
+      const od = site.originalData || {};
+      const meta = od.metadata || {};
+      if (meta.theme && meta.theme.element) used.add(meta.theme.element);
+    });
+    return used;
+  }
+
+  // shelf order: what you already use first, then the dashboard's priority order
+  _shelfOrder(entries) {
+    const used = this._usedThemes();
+    const themeOf = (item) =>
+      item.dataType === "blank"
+        ? item.machineName
+        : (item.originalData || {}).theme;
+    return [...entries].sort((a, b) => {
+      const ua = used.has(themeOf(a.item)) ? 0 : 1;
+      const ub = used.has(themeOf(b.item)) ? 0 : 1;
+      return ua - ub || a.index - b.index;
+    });
   }
 
   getImportItems() {
@@ -2863,6 +2950,11 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
     }
 
     // Set the template details in the modal
+    modal.designItems = (this.items || []).filter(
+      (i) => i && (i.dataType === "skeleton" || i.dataType === "blank"),
+    );
+    modal.kind = selectedTemplate.dataType;
+    modal.demoLink = selectedTemplate.demoLink || "";
     modal.title = selectedTemplate.useCaseTitle;
     modal.description = selectedTemplate.useCaseDescription;
     modal.source = selectedTemplate.useCaseImage;

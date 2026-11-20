@@ -26,7 +26,9 @@ import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
  * is active.
  *
  * @title Carbon
- * @haxcms-theme-category Website, Course, Documentation
+ * @haxcms-theme-category Website, Course, Documentation, Organization
+ * @haxcms-theme-layout Sidebar
+ * @haxcms-theme-design-system Carbon
  * @haxcms-theme-priority 50
  * @demo demo/index.html
  * @element carbon-theme

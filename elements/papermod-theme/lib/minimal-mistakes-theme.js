@@ -20,6 +20,8 @@ import { HomageSidebarTheme } from "@haxtheweb/papermod-theme/lib/HomageSidebarT
  *
  * @title Minimal Mistakes
  * @haxcms-theme-category Blog, Website, Documentation
+ * @haxcms-theme-layout Sidebar
+ * @haxcms-theme-inspired-by Jekyll Minimal Mistakes
  * @haxcms-theme-priority 0
  * @demo ../demo/minimal-mistakes-theme/index.html
  * @element minimal-mistakes-theme

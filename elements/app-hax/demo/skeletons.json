@@ -6,104 +6,120 @@
       "description": "A research group or scholar site on the al-folio theme: about, publications by year, projects, teaching, people and contact, shown with a sample coastal ecology lab.",
       "image": "/elements/haxcms-elements/lib/theme-screenshots/theme-al-folio-theme-thumb.jpg",
       "priority": 10,
-      "category": ["Website"],
+      "category": ["Research", "Portfolio"],
       "attributes": [],
       "scope": "core",
       "machineName": "academic",
       "machine-name": "academic",
       "demo-url": "#",
-      "skeleton-url": "skeletons/academic.json"
+      "skeleton-url": "skeletons/academic.json",
+      "theme": "al-folio-theme",
+      "pageCount": 10
     },
     {
       "title": "Art Portfolio",
       "description": "An artist portfolio on the Clean Portfolio theme: artist statement, featured works, two series and a contact page for commissions.",
       "image": "/elements/haxcms-elements/lib/theme-screenshots/theme-clean-portfolio-theme-thumb.jpg",
       "priority": 0,
-      "category": ["Website"],
+      "category": ["Portfolio"],
       "attributes": [],
       "scope": "core",
       "machineName": "art-portfolio",
       "machine-name": "art-portfolio",
       "demo-url": "#",
-      "skeleton-url": "skeletons/art-portfolio.json"
+      "skeleton-url": "skeletons/art-portfolio.json",
+      "theme": "clean-portfolio-theme",
+      "pageCount": 5
     },
     {
       "title": "Blog",
       "description": "A blog starter on the Clean One theme: posts, a journal, topic pages, about and contact, shown with a sample coffee blog.",
       "image": "/elements/haxcms-elements/lib/theme-screenshots/theme-clean-one-thumb.jpg",
       "priority": -1,
-      "category": ["Website"],
+      "category": ["Blog"],
       "attributes": [],
       "scope": "core",
       "machineName": "blog",
       "machine-name": "blog",
       "demo-url": "#",
-      "skeleton-url": "skeletons/blog.json"
+      "skeleton-url": "skeletons/blog.json",
+      "theme": "clean-one",
+      "pageCount": 10
     },
     {
       "title": "Club Website",
       "description": "A website for a student club or organization on the Polaris Flex theme: about, events, a blog and a way to join, shown with a sample book club.",
       "image": "/elements/haxcms-elements/lib/theme-screenshots/theme-polaris-flex-theme-thumb.jpg",
       "priority": 0,
-      "category": ["Website"],
+      "category": ["Organization"],
       "attributes": [],
       "scope": "core",
       "machineName": "club-website",
       "machine-name": "club-website",
       "demo-url": "#",
-      "skeleton-url": "skeletons/club-website.json"
+      "skeleton-url": "skeletons/club-website.json",
+      "theme": "polaris-flex-theme",
+      "pageCount": 5
     },
     {
       "title": "Department or Office",
       "description": "A website for a university department, office or center on the Polaris Flex Sidebar theme: about, services, people, news, contact and a privacy page, shown with a sample learning design office.",
       "image": "/elements/haxcms-elements/lib/theme-screenshots/theme-polaris-flex-sidebar-thumb.jpg",
       "priority": 0,
-      "category": ["Website"],
+      "category": ["Organization"],
       "attributes": [],
       "scope": "core",
       "machineName": "department",
       "machine-name": "department",
       "demo-url": "#",
-      "skeleton-url": "skeletons/department.json"
+      "skeleton-url": "skeletons/department.json",
+      "theme": "polaris-flex-sidebar",
+      "pageCount": 12
     },
     {
       "title": "Documentation",
       "description": "A documentation site on the HAXma theme, shown documenting the HAX command line tool (HAX create).",
       "image": "/elements/haxcms-elements/lib/theme-screenshots/theme-haxma-theme-thumb.jpg",
       "priority": 10,
-      "category": ["Website"],
+      "category": ["Documentation"],
       "attributes": [],
       "scope": "core",
       "machineName": "docs",
       "machine-name": "docs",
       "demo-url": "#",
-      "skeleton-url": "skeletons/docs.json"
+      "skeleton-url": "skeletons/docs.json",
+      "theme": "haxma-theme",
+      "pageCount": 3
     },
     {
       "title": "ISC Graduate Portfolio",
       "description": "A graduate competency portfolio on the Clean Portfolio theme: About Me, Competencies, three domains, Specialization and Publications.",
       "image": "/elements/haxcms-elements/lib/theme-screenshots/theme-clean-portfolio-theme-thumb.jpg",
       "priority": 0,
-      "category": ["Website"],
+      "category": ["Portfolio"],
       "attributes": [],
       "scope": "core",
       "machineName": "isc-graduate-portfolio",
       "machine-name": "isc-graduate-portfolio",
       "demo-url": "#",
-      "skeleton-url": "skeletons/isc-graduate-portfolio.json"
+      "skeleton-url": "skeletons/isc-graduate-portfolio.json",
+      "theme": "clean-portfolio-theme",
+      "pageCount": 7
     },
     {
       "title": "Landing Page",
       "description": "A landing page for a small business or product on the AstroWind theme: a home page that sells, services, pricing, about, contact and a privacy page, shown with a sample bike repair shop.",
       "image": "/elements/haxcms-elements/lib/theme-screenshots/theme-astrowind-theme-thumb.jpg",
       "priority": 10,
-      "category": ["Website"],
+      "category": ["Landing page"],
       "attributes": [],
       "scope": "core",
       "machineName": "landing-page",
       "machine-name": "landing-page",
       "demo-url": "#",
-      "skeleton-url": "skeletons/landing-page.json"
+      "skeleton-url": "skeletons/landing-page.json",
+      "theme": "astrowind-theme",
+      "pageCount": 9
     },
     {
       "title": "Online Course",
@@ -116,46 +132,54 @@
       "machineName": "online-course",
       "machine-name": "online-course",
       "demo-url": "#",
-      "skeleton-url": "skeletons/online-course.json"
+      "skeleton-url": "skeletons/online-course.json",
+      "theme": "clean-one",
+      "pageCount": 5
     },
     {
       "title": "Portfolio",
       "description": "A professional portfolio on the Glossy Portfolio theme: summary, projects, experience, education and certifications, and contact.",
       "image": "/elements/haxcms-elements/lib/theme-screenshots/theme-glossy-portfolio-theme-thumb.jpg",
       "priority": 0,
-      "category": ["Website"],
+      "category": ["Portfolio"],
       "attributes": [],
       "scope": "core",
       "machineName": "portfolio",
       "machine-name": "portfolio",
       "demo-url": "#",
-      "skeleton-url": "skeletons/portfolio.json"
+      "skeleton-url": "skeletons/portfolio.json",
+      "theme": "glossy-portfolio-theme",
+      "pageCount": 6
     },
     {
       "title": "Resume Journey",
       "description": "A resume told as a journey on the Journey theme: education, experience, projects, skills and a way to reach out.",
       "image": "/elements/haxcms-elements/lib/theme-screenshots/theme-journey-theme-thumb.jpg",
       "priority": 0,
-      "category": ["Website"],
+      "category": ["Resume", "Portfolio"],
       "attributes": [],
       "scope": "core",
       "machineName": "resume-journey",
       "machine-name": "resume-journey",
       "demo-url": "#",
-      "skeleton-url": "skeletons/resume-journey.json"
+      "skeleton-url": "skeletons/resume-journey.json",
+      "theme": "journey-theme",
+      "pageCount": 5
     },
     {
       "title": "Writing",
       "description": "Nothing but the writing: a home page of recent posts, plain post pages and an archive by year.",
       "image": "/elements/haxcms-elements/lib/theme-screenshots/theme-writing-theme-thumb.jpg",
       "priority": 0,
-      "category": ["Website"],
+      "category": ["Blog"],
       "attributes": [],
       "scope": "core",
       "machineName": "writing",
       "machine-name": "writing",
       "demo-url": "#",
-      "skeleton-url": "skeletons/writing.json"
+      "skeleton-url": "skeletons/writing.json",
+      "theme": "writing-theme",
+      "pageCount": 9
     },
     {
       "title": "Studio Starter (User)",
@@ -163,7 +187,7 @@
       "priority": -8,
       "description": "User-provided starter used to demo rename and delete actions.",
       "image": "/elements/haxcms-elements/lib/theme-screenshots/theme-clean-two-thumb.jpg",
-      "category": ["custom", "user"],
+      "category": ["Course"],
       "scope": "user",
       "enabled": true,
       "attributes": [
@@ -173,7 +197,9 @@
         }
       ],
       "demo-url": "#",
-      "skeleton-url": "skeletons/studio-user-template.json"
+      "skeleton-url": "skeletons/studio-user-template.json",
+      "theme": "clean-two",
+      "pageCount": 2
     }
   ]
 }

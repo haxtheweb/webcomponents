@@ -19,6 +19,8 @@ import { HomageColumnTheme } from "@haxtheweb/papermod-theme/lib/HomageColumnThe
  *
  * @title PaperMod
  * @haxcms-theme-category Blog, Website
+ * @haxcms-theme-layout Single column
+ * @haxcms-theme-inspired-by Hugo PaperMod
  * @haxcms-theme-priority 0
  * @demo demo/index.html
  * @element papermod-theme

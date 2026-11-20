@@ -30,6 +30,8 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/progress/my-learning-button
  * `theme for training content`
  * @description A theme for creating training content in HAXcms
  * @demo demo/index.html
+ * @haxcms-theme-category Website, Course
+ * @haxcms-theme-layout Sidebar
  * @element training-theme
  */
 class TrainingTheme extends HAXCMSOperationButtons(

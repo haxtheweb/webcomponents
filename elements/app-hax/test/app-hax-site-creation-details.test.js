@@ -14,6 +14,69 @@ function createModal() {
   return el;
 }
 
+describe("AppHaxSiteCreationModal what you're getting", () => {
+  const theme = {
+    dataType: "blank",
+    machineName: "clean-one",
+    useCaseTitle: "Clean One",
+    originalData: {
+      layout: "Sidebar",
+      acceptsDesignSystems: true,
+      supportedPalettes: ["4", "5"],
+    },
+  };
+  const blog = {
+    dataType: "skeleton",
+    machineName: "blog",
+    useCaseTitle: "Blog",
+    originalData: { theme: "clean-one" },
+  };
+
+  it("reads pages, blocks, sample images and editor limits from the skeleton", () => {
+    const el = createModal();
+    el.designItems = [theme, blog];
+    el.themeElement = "clean-one";
+    el.skeletonMachineName = "blog";
+    el.blockNames = {
+      "simple-cta": "Simple Cta",
+      "media-image": "Media Image",
+    };
+    el.skeletonData = {
+      site: { platform: { features: { addPage: false } } },
+      build: {
+        items: [
+          { title: "Home", content: '<simple-cta href="/x">Go</simple-cta>' },
+          {
+            title: "Post",
+            content:
+              '<media-image source="https://example.com/a.jpg"></media-image>',
+          },
+        ],
+      },
+    };
+    const f = el._facts();
+    expect(f.theme.useCaseTitle).to.equal("Clean One");
+    expect(f.items).to.have.length(2);
+    expect(f.blocks).to.deep.equal(["Media Image", "Simple Cta"]);
+    expect(f.images).to.equal(1);
+    expect(f.limited).to.equal(true);
+    expect(f.facets.layout).to.equal("Sidebar");
+    expect(f.facets.designSystem).to.equal("DDD");
+    expect(f.related).to.deep.equal(["Blog"]);
+  });
+
+  it("knows nothing about a theme the list does not have", () => {
+    const el = createModal();
+    el.designItems = [];
+    el.themeElement = "missing-theme";
+    el.skeletonData = null;
+    const f = el._facts();
+    expect(f.theme).to.equal(null);
+    expect(f.facets.designSystem).to.equal("");
+    expect(f.limited).to.equal(false);
+  });
+});
+
 describe("AppHaxSiteCreationModal pure logic", () => {
   describe("static tag", () => {
     it("has correct tag name", () => {

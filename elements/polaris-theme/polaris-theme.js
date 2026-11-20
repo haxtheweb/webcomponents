@@ -31,7 +31,9 @@ import { loadFontFamily } from "@haxtheweb/d-d-d/lib/fonts.js";
  *  - HAXcms - A headless content management system
  *  - HAXCMSTheme - A super class that provides correct baseline wiring to build a new theme
  *
- * @haxcms-theme-category Website
+ * @haxcms-theme-category Website, Organization
+ * @haxcms-theme-layout Top nav
+ * @haxcms-theme-inspired-by WordPress
  * @haxcms-theme-internal false
  * @haxcms-theme-priority 10
  * @demo demo/index.html
