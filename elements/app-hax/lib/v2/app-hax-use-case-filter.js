@@ -494,17 +494,28 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
           grid-template-columns: repeat(2, minmax(0, 1fr));
           column-gap: var(--ddd-spacing-4, 16px);
         }
+        /* long type names wrap under themselves, never under the icon */
         .import-kinds li {
           font-size: 15px;
           display: flex;
-          align-items: center;
+          align-items: flex-start;
           gap: var(--hax-ui-gap-md);
           padding: var(--hax-ui-gap-sm, 4px) 0;
           --simple-icon-width: 20px;
           --simple-icon-height: 20px;
         }
         .import-kinds simple-icon-lite {
+          flex: none;
           color: var(--hax-ui-accent-strong);
+        }
+        .import-kind-text {
+          min-width: 0;
+          overflow-wrap: anywhere;
+        }
+        @media (max-width: 420px) {
+          .import-kinds.two-col {
+            grid-template-columns: minmax(0, 1fr);
+          }
         }
         .import-kind-name {
           font-weight: var(--ddd-font-weight-medium, 500);
@@ -3171,7 +3182,7 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
                   <p>${this.t.fromAFileDescription}</p>
                 </div>
               </div>
-              <ul class="import-kinds">
+              <ul class="import-kinds two-col">
                 ${fileKinds.map(
                   (item) =>
                     html`<li>
@@ -3179,9 +3190,13 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
                         icon="${item.useCaseIcon[0].icon}"
                         aria-hidden="true"
                       ></simple-icon-lite>
-                      <span class="import-kind-name">${item.useCaseTitle}</span>
-                      <span class="import-kind-ext"
-                        >${this._fileExtensionsLabel(item)}</span
+                      <span class="import-kind-text"
+                        ><span class="import-kind-name"
+                          >${item.useCaseTitle}</span
+                        >
+                        <span class="import-kind-ext"
+                          >${this._fileExtensionsLabel(item)}</span
+                        ></span
                       >
                     </li>`,
                 )}
@@ -3238,7 +3253,7 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
 
   /**
    * The importers of one kind, in the order the cards and the URL dialog
-   * list them (site platforms first, then repos, then plain HTML).
+   * list them (URLs: site platforms first, then repos, then plain HTML).
    * @param {string} kind "file" or "url"
    * @returns {Array}
    */
@@ -3257,16 +3272,18 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
         "quarto",
         "html",
       ],
+      // two columns fill row by row, so each row pairs an office format
+      // with its OpenDocument twin
       file: [
         "docx",
         "odt",
-        "pdf",
         "pptx",
         "odp",
         "xlsx",
         "ods",
         "md",
         "txt",
+        "pdf",
         "html",
       ],
     };
