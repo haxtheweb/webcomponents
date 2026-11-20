@@ -8,6 +8,7 @@ import { IntersectionObserverMixin } from "@haxtheweb/intersection-element/lib/I
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import { DDDBlockStyles } from "@haxtheweb/d-d-d/lib/DDDBlock.js";
 /**
  * `a11y-gif-player`
@@ -48,12 +49,19 @@ class A11yGifPlayer extends I18NMixin(
     this.__playing = false;
     this.mediaTitle = "";
     this.__hasCaption = false;
+    this.__infoOpen = false;
+    this.__localStill = "";
+    this.__stillFailed = false;
     this._updateFromSlot();
     this.t = {
       toggleAnimation: "Toggle animation",
       info: "info",
       image: "Image",
       animatedGif: "Animated GIF",
+      playAnimation: "Play animation",
+      pauseAnimation: "Pause animation",
+      showDescription: "Show description",
+      hideDescription: "Hide description",
     };
     this.registerLocalization({
       context: this,
@@ -92,7 +100,9 @@ class A11yGifPlayer extends I18NMixin(
         img {
           width: 100%;
         }
-        button {
+        /* the play surface over the image; the header actions are buttons
+           too and keep the DDD block action look */
+        #button {
           position: absolute;
           width: 100%;
           min-height: 100px;
@@ -109,16 +119,16 @@ class A11yGifPlayer extends I18NMixin(
             )
           );
         }
-        button:active,
-        button:focus,
-        button:hover {
+        #button:active,
+        #button:focus,
+        #button:hover {
           border: var(--a11y-gif-player-focus-border, none);
           outline: var(--a11y-gif-player-outline, 3px solid);
         }
-        button[disabled] {
+        #button[disabled] {
           cursor: var(--a11y-gif-player-disabled-cursor, not-allowed);
         }
-        button[aria-pressed="true"] {
+        #button[aria-pressed="true"] {
           opacity: 0;
         }
         /* physical on purpose: placed over the image, which does not
@@ -175,12 +185,24 @@ class A11yGifPlayer extends I18NMixin(
         .gif-caption:not([has-caption]) {
           display: none;
         }
+        /* the description opens below the image from the (i) action in
+           the header, instead of sitting over the picture */
         #longdesc {
-          position: absolute;
-          inset-inline-start: 2px;
-          bottom: 2px;
-          width: calc(100% - 2px);
-          font-size: 80%;
+          margin: 0;
+          padding: var(--ddd-spacing-3) var(--ddd-spacing-2) 0;
+          font-size: var(--ddd-font-size-4xs, 16px);
+          line-height: var(--ddd-lh-150, 1.5);
+        }
+        #longdesc[hidden] {
+          display: none;
+        }
+        @media print {
+          #longdesc[hidden] {
+            display: block;
+          }
+        }
+        .ddd-block-actions simple-tooltip:not(:defined) {
+          display: none;
         }
       `,
     ];
@@ -218,6 +240,32 @@ class A11yGifPlayer extends I18NMixin(
               : ``
           }
         </span>
+        <div class="ddd-block-actions">
+          ${this._renderHeaderAction({
+            id: "play-toggle",
+            icon: this.__playing ? "av:pause" : "av:play-arrow",
+            label: this.__playing
+              ? this.t.pauseAnimation
+              : this.t.playAnimation,
+            pressed: this.__playing,
+            controls: "gif",
+            disabled: this.disabled || !this.src,
+            onClick: () => this.toggle(),
+          })}
+          ${this._renderHeaderAction({
+            id: "info-toggle",
+            icon: "icons:info-outline",
+            label: this.__infoOpen
+              ? this.t.hideDescription
+              : this.t.showDescription,
+            expanded: this.__infoOpen,
+            controls: "longdesc",
+            hidden: !this.src || !this.longdesc,
+            onClick: () => {
+              this.__infoOpen = !this.__infoOpen;
+            },
+          })}
+        </div>
       </div>
       <div class="ddd-block-body">
         ${
@@ -230,8 +278,9 @@ class A11yGifPlayer extends I18NMixin(
                     src="${
                       this.__gifLoaded && this.__playing
                         ? this.src
-                        : this.srcWithoutAnimation
+                        : this._stillSrc
                     }"
+                    @error="${this._stillError}"
                     alt="${this.alt}"
                     loading="lazy"
                     aria-describedby="${this.longdesc ? "longdesc" : ""} ${(
@@ -258,7 +307,7 @@ class A11yGifPlayer extends I18NMixin(
                     aria-pressed="${this.__playing ? "true" : "false"}"
                     @click="${this.toggle}"
                     ?disabled="${this.disabled || !this.src}"
-                    .style="background-image: url('${this.srcWithoutAnimation}')"
+                    .style="background-image: url('${this._stillSrc}')"
                   >
                     <svg
                       id="svg"
@@ -273,15 +322,14 @@ class A11yGifPlayer extends I18NMixin(
                       </g>
                     </svg>
                   </button>
-                  <a11y-details
-                    id="longdesc"
-                    ?hidden="${!this.src || !this.longdesc}"
-                    .style="opacity:${this.__playing ? 0 : 1}"
-                  >
-                    <div slot="summary">${this.t.info}</div>
-                    <div slot="details">${this.longdesc}</div>
-                  </a11y-details>
                 </div>
+                <p
+                  id="longdesc"
+                  part="longdesc"
+                  ?hidden="${!this.src || !this.longdesc || !this.__infoOpen}"
+                >
+                  ${this.longdesc}
+                </p>
                 <div
                   id="caption"
                   class="gif-caption"
@@ -371,6 +419,17 @@ class A11yGifPlayer extends I18NMixin(
       __gifLoaded: {
         type: Boolean,
       },
+      /** the long description is open below the image */
+      __infoOpen: {
+        type: Boolean,
+      },
+      /** first frame drawn in the browser, when no still loads */
+      __localStill: {
+        type: String,
+      },
+      __stillFailed: {
+        type: Boolean,
+      },
     };
   }
   /**
@@ -400,7 +459,7 @@ class A11yGifPlayer extends I18NMixin(
     changedProperties.forEach((oldValue, propName) => {
       // import on visibility
       if (propName === "elementVisible" && this[propName]) {
-        import("@haxtheweb/a11y-details/a11y-details.js");
+        this._makeLocalStill();
         // support for automatic web service scrape of the gif for a still image
         if (this.shadowRoot && !this.srcWithoutAnimation && this.src) {
           // import registry
@@ -423,6 +482,10 @@ class A11yGifPlayer extends I18NMixin(
         setTimeout(async () => {
           this.srcWithoutAnimation = await this.generateStill(this.src);
         }, 0);
+      }
+      if (propName === "src" && this.elementVisible && oldValue !== undefined) {
+        this.__stillFailed = false;
+        this._makeLocalStill();
       }
     });
   }
@@ -456,17 +519,19 @@ class A11yGifPlayer extends I18NMixin(
       childList: true,
       subtree: true,
     });
+    // printed pages carry the description (print CSS shows it too)
     globalThis.addEventListener(
       "beforeprint",
       (_event) => {
-        this.shadowRoot.querySelector("#longdesc").toggleOpen();
+        this.__infoWasOpen = this.__infoOpen;
+        this.__infoOpen = true;
       },
       { signal: this.windowControllers.signal },
     );
     globalThis.addEventListener(
       "afterprint",
       (_event) => {
-        this.shadowRoot.querySelector("#longdesc").toggleOpen();
+        this.__infoOpen = !!this.__infoWasOpen;
       },
       { signal: this.windowControllers.signal },
     );
@@ -475,6 +540,80 @@ class A11yGifPlayer extends I18NMixin(
     this.observer.disconnect();
     this.windowControllers.abort();
     if (super.disconnectedCallback) super.disconnectedCallback();
+  }
+  /**
+   * One round header action (DDD block action pattern), with the same
+   * tooltip the media players use
+   */
+  _renderHeaderAction(o) {
+    return html`<button
+        type="button"
+        class="ddd-block-action"
+        id="${o.id}"
+        aria-label="${o.label}"
+        aria-pressed="${
+          typeof o.pressed === "boolean" ? String(o.pressed) : nothing
+        }"
+        aria-expanded="${
+          typeof o.expanded === "boolean" ? String(o.expanded) : nothing
+        }"
+        aria-controls="${o.controls || nothing}"
+        ?hidden="${o.hidden}"
+        ?disabled="${o.disabled}"
+        @click="${o.onClick}"
+      >
+        <simple-icon-lite
+          icon="${o.icon}"
+          aria-hidden="true"
+        ></simple-icon-lite></button
+      >${
+        o.hidden
+          ? nothing
+          : html`<simple-tooltip
+              for="${o.id}"
+              position="bottom"
+              aria-hidden="true"
+              >${o.label}</simple-tooltip
+            >`
+      }`;
+  }
+  /**
+   * the still shown before play: the authored one, or when there is none
+   * (or it does not load) the gif's first frame drawn here
+   */
+  get _stillSrc() {
+    if (this.srcWithoutAnimation && !this.__stillFailed) {
+      return this.srcWithoutAnimation;
+    }
+    return this.__localStill || this.srcWithoutAnimation || "";
+  }
+  _stillError() {
+    if (!this.__playing && this.srcWithoutAnimation && !this.__stillFailed) {
+      this.__stillFailed = true;
+    }
+  }
+  _makeLocalStill() {
+    if (!this.src || !globalThis.document) {
+      return;
+    }
+    const src = this.src;
+    const img = new Image();
+    img.onload = () => {
+      if (src !== this.src || !img.naturalWidth) {
+        return;
+      }
+      try {
+        const canvas = globalThis.document.createElement("canvas");
+        canvas.width = img.naturalWidth;
+        canvas.height = img.naturalHeight;
+        canvas.getContext("2d").drawImage(img, 0, 0);
+        this.__localStill = canvas.toDataURL("image/png");
+      } catch {
+        // a gif from another site without CORS can't be read back; the
+        // still then stays whatever the author or the service supplied
+      }
+    };
+    img.src = src;
   }
   /**
    * plays the animation regarless of previous state

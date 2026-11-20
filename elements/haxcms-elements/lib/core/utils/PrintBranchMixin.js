@@ -228,10 +228,10 @@ export const PrintBranchMixin = function (SuperClass) {
                       ? this.t.printingPleaseWait
                       : this.t.printSite
                   }"
-                  id="print-branch-btn"
+                  id="print-site-btn"
                 >
                 </simple-icon-button-lite>
-                <simple-tooltip for="print-branch-btn" position="${position}">
+                <simple-tooltip for="print-site-btn" position="${position}">
                   ${
                     this.__printBranchLoading
                       ? this.t.printingPleaseWait

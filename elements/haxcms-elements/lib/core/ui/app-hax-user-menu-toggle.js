@@ -74,6 +74,8 @@ export async function openCharacterBuilder(origin, options) {
         invokedBy: origin,
         clone: false,
         modal: true,
+        // the titlebar X closes without saving, same as Cancel
+        showClose: true,
         styles: {
           ...SITE_ADMIN_TITLEBAR_STYLES,
           ...SITE_ADMIN_MODAL_SIZE,

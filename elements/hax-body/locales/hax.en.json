@@ -337,5 +337,8 @@
   "framingManyCustom": "{n} sizes framed by hand",
   "framingFor": "Framing for {size}. Drag or use the arrow keys to move the photo; plus and minus zoom.",
   "framingCustomMark": "* Custom",
-  "framePhoto": "Frame photo"
+  "framePhoto": "Frame photo",
+  "uploadOfFileFailed": "Could not upload {name}: {reason}",
+  "uploadFailedReason": "the server did not accept it",
+  "joinHaxCommunity": "Join HAX community"
 }

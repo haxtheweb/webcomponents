@@ -9,7 +9,6 @@ import {
   localStorageGet,
   safeNavigateHref,
 } from "@haxtheweb/utils/utils.js";
-import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
@@ -372,9 +371,22 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       dragOptions,
     );
     globalThis.addEventListener("drop", this._fileDrop.bind(this), dragOptions);
+    // a drag that starts on the page (a screenshot, a card) is not a file
+    // coming in from the desktop, even though the browser lists an image
+    // drag as "Files"; it never wakes the drop veil
+    globalThis.addEventListener(
+      "dragstart",
+      () => {
+        this.__pageDrag = true;
+      },
+      dragOptions,
+    );
     globalThis.addEventListener(
       "dragend",
-      this._resetFileDrag.bind(this),
+      (e) => {
+        this.__pageDrag = false;
+        this._resetFileDrag(e);
+      },
       dragOptions,
     );
   }
@@ -451,9 +463,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       showHiddenTemplates: "Show hidden templates",
       goToSite: "Go to site",
       systemSettings: "System Settings",
-      joinOurCommunity: "Join our Community",
+      joinHaxCommunity: "Join HAX community",
       userTutorials: "User Tutorials",
-      userDocumentation: "User Documentation",
       // no longer in Merlin; kept until the nightly translations drop it
       // from every locale (translated files may not have keys en lacks)
       haxTeachingExcellence: "HAX Teaching Excellence",
@@ -629,8 +640,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     });
     // contribution helpers
     SuperDaemonInstance.defineOption({
-      i18n: { context: this, title: "joinOurCommunity" },
-      title: this.t.joinOurCommunity,
+      i18n: { context: this, title: "joinHaxCommunity" },
+      title: this.t.joinHaxCommunity,
       icon: "hax:discord",
       priority: 100,
       tags: ["community", "discord", "chat", "help"],
@@ -654,26 +665,10 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       value: {
         target: this,
         method: "_openExternalLink",
-        args: ["https://haxtheweb.org/tutorials"],
+        args: ["https://learn.hax.cloud/"],
       },
       eventName: "super-daemon-element-method",
       path: "Community/Tutorials",
-      context: ["logged-in", "CMS", "HAX", "*"],
-    });
-    SuperDaemonInstance.defineOption({
-      i18n: { context: this, title: "userDocumentation" },
-      title: this.t.userDocumentation,
-      icon: "hax:hax2022",
-      priority: 100,
-      tags: ["Documentation", "community", "help"],
-      externalLink: true,
-      value: {
-        target: this,
-        method: "_openExternalLink",
-        args: ["https://haxtheweb.org/documentation"],
-      },
-      eventName: "super-daemon-element-method",
-      path: "Community/Documentation",
       context: ["logged-in", "CMS", "HAX", "*"],
     });
     SuperDaemonInstance.defineOption({
@@ -817,8 +812,10 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     });
     autorun(() => {
       const _mobx_val_0 = toJS(store.user.name);
+      const _mobx_val_1 = toJS(store.user.avatarCode);
       Promise.resolve().then(() => {
         this.userName = _mobx_val_0;
+        this.userAvatarCode = _mobx_val_1 || "";
       });
     });
     autorun(() => {
@@ -952,6 +949,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       unlockTerrible: { type: Boolean },
       courses: { type: Array },
       userName: { type: String },
+      userAvatarCode: { type: String },
       activeItem: { type: Object },
       soundIcon: { type: String },
       searchTerm: { type: String },
@@ -1933,12 +1931,59 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
   }
 
   toggleMenu() {
+    // hover already opened it: the click that follows keeps it open
+    if (this.userMenuOpen && this.__userMenuHoverOpened) {
+      this.__userMenuHoverOpened = false;
+      return;
+    }
+    this.__userMenuHoverOpened = false;
     this.userMenuOpen = !this.userMenuOpen;
     store.appEl.playSound("click");
   }
 
   closeMenu() {
+    this.__userMenuHoverOpened = false;
     this.userMenuOpen = false;
+  }
+
+  _userMenuOpenChanged(e) {
+    if (!e || !e.detail || typeof e.detail.value !== "boolean") {
+      return;
+    }
+    if (this.userMenuOpen !== e.detail.value) {
+      this.userMenuOpen = e.detail.value;
+    }
+  }
+
+  /**
+   * A mouse resting on the character opens the user menu, the same as in
+   * a site, so the menu (with the name at its top) is what hover shows
+   */
+  _menuPointerEnter(e) {
+    if (!e || e.pointerType !== "mouse") {
+      return;
+    }
+    clearTimeout(this.__userMenuHoverTimer);
+    this.__userMenuHoverTimer = setTimeout(() => {
+      this.__userMenuHoverOpened = !this.userMenuOpen;
+      this.userMenuOpen = true;
+    }, 150);
+  }
+
+  _menuPointerLeave(e) {
+    if (!e || e.pointerType !== "mouse") {
+      return;
+    }
+    const menu = e.currentTarget;
+    clearTimeout(this.__userMenuHoverTimer);
+    this.__userMenuHoverTimer = setTimeout(() => {
+      // keyboard focus inside the menu keeps it open
+      if (menu && menu.matches && menu.matches(":focus-within")) {
+        return;
+      }
+      this.userMenuOpen = false;
+      this.__userMenuHoverOpened = false;
+    }, 300);
   }
 
   _isHAXiamDeployment(appSettings = null) {
@@ -2644,6 +2689,13 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       if (creationModal && creationModal.open) {
         return true;
       }
+      // the template and theme browser is a dialog too
+      const designBrowser = filter.shadowRoot.querySelector(
+        "app-hax-design-browser",
+      );
+      if (designBrowser && designBrowser.open) {
+        return true;
+      }
     }
 
     return false;
@@ -2747,6 +2799,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
 
   _isFileDrag(e) {
     return !!(
+      !this.__pageDrag &&
       e &&
       e.dataTransfer &&
       e.dataTransfer.types &&
@@ -2825,6 +2878,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
   }
 
   _fileDrop(e) {
+    this.__pageDrag = false;
     if (!this.fileDragActive) {
       return;
     }
@@ -2957,11 +3011,15 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
               align="start"
               label="${displayUserName}"
               ?is-open="${this.userMenuOpen}"
+              @is-open-changed="${this._userMenuOpenChanged}"
+              @pointerenter="${this._menuPointerEnter}"
+              @pointerleave="${this._menuPointerLeave}"
             >
               <app-hax-user-menu-toggle
                 slot="menuButton"
                 id="tbchar"
                 seed="${this.userName}"
+                avatar-code="${this.userAvatarCode}"
                 width="68"
                 height="68"
                 hat="${this.userMenuOpen ? "edit" : "none"}"
@@ -2977,14 +3035,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
                 @mouseout="${this.rpgStopWalk}"
                 @focusout="${this.rpgStopWalk}"
               ></app-hax-user-menu-toggle>
-              <simple-tooltip
-                for="tbchar"
-                slot="menuButton"
-                position="bottom"
-                ?hidden="${this.userMenuOpen}"
-              >
-                ${displayUserName}
-              </simple-tooltip>
               <div slot="pre-menu" class="ops-panel">
                 <app-hax-darkmode-toggle id="wt"></app-hax-darkmode-toggle>
                 <button

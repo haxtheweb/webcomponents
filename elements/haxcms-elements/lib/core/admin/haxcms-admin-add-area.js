@@ -54,6 +54,8 @@ export class HAXCMSAdminAddArea extends LitElement {
       /** the panel opens its own picker for Browse (Files' upload field) */
       browseHandled: { type: Boolean, attribute: "browse-handled" },
       _over: { state: true },
+      /** a file is being dragged somewhere over the window */
+      _waiting: { state: true },
     };
   }
 
@@ -69,6 +71,51 @@ export class HAXCMSAdminAddArea extends LitElement {
     this.busy = false;
     this.browseHandled = false;
     this._over = false;
+    this._waiting = false;
+    this.__dragDepth = 0;
+    this._onWindowDragEnter = (e) => {
+      if (!this._isFileDrag(e) || this.disabled || this.busy) return;
+      this.__dragDepth++;
+      this._waiting = true;
+    };
+    this._onWindowDragLeave = (e) => {
+      if (!this._isFileDrag(e)) return;
+      this.__dragDepth = Math.max(0, this.__dragDepth - 1);
+      if (this.__dragDepth === 0) this._waiting = false;
+    };
+    this._onWindowDragDone = () => {
+      this.__dragDepth = 0;
+      this._waiting = false;
+    };
+  }
+
+  /**
+   * A file dragged anywhere over the window lights this area up, so the
+   * place to drop it is obvious before the pointer gets here
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    globalThis.addEventListener("dragenter", this._onWindowDragEnter, true);
+    globalThis.addEventListener("dragleave", this._onWindowDragLeave, true);
+    globalThis.addEventListener("drop", this._onWindowDragDone, true);
+    globalThis.addEventListener("dragend", this._onWindowDragDone, true);
+  }
+
+  disconnectedCallback() {
+    globalThis.removeEventListener("dragenter", this._onWindowDragEnter, true);
+    globalThis.removeEventListener("dragleave", this._onWindowDragLeave, true);
+    globalThis.removeEventListener("drop", this._onWindowDragDone, true);
+    globalThis.removeEventListener("dragend", this._onWindowDragDone, true);
+    super.disconnectedCallback();
+  }
+
+  _isFileDrag(e) {
+    return !!(
+      e &&
+      e.dataTransfer &&
+      e.dataTransfer.types &&
+      Array.from(e.dataTransfer.types).includes("Files")
+    );
   }
 
   static get styles() {
@@ -112,6 +159,12 @@ export class HAXCMSAdminAddArea extends LitElement {
         .drop:focus-visible {
           outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
           outline-offset: 2px;
+        }
+        .drop.waiting {
+          border-style: solid;
+          border-color: var(--hax-ui-accent-strong);
+          color: var(--hax-ui-text);
+          box-shadow: 0 0 0 var(--hax-ui-focus-width) var(--hax-ui-accent-soft);
         }
         .drop.over {
           border-style: solid;
@@ -162,7 +215,9 @@ export class HAXCMSAdminAddArea extends LitElement {
     return html`
       <button
         type="button"
-        class="drop ${this._over ? "over" : ""}"
+        class="drop ${this._over ? "over" : ""} ${
+          this._waiting && !this.disabled && !this.busy ? "waiting" : ""
+        }"
         part="drop"
         aria-label="${`${this.label} ${this.browseLabel}`.trim()}"
         aria-describedby="hint msg"
@@ -253,6 +308,7 @@ export class HAXCMSAdminAddArea extends LitElement {
   _onDrop(e) {
     e.preventDefault();
     this._over = false;
+    this._onWindowDragDone();
     if (this.disabled || this.busy) {
       return;
     }

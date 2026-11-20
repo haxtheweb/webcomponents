@@ -853,11 +853,13 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
 
   _clearUseCaseUrlParams() {
     // The `use-case` deep-link param (and its historical spelling variants)
-    // should not linger in the URL once a site has actually been created,
-    // otherwise reloading the page looks like the use-case was never opened.
+    // and the `name` typed into the dialog describe the dialog that is open.
+    // Once it closes (cancelled, or created and the person stayed on the
+    // dashboard) they go, so a reload lands where the person actually is.
     this._updateUrlQueryParam("use-case", "");
     this._updateUrlQueryParam("use_case", "");
     this._updateUrlQueryParam("useCase", "");
+    this._updateUrlQueryParam("name", "");
   }
 
   _syncUrlNameParam() {
@@ -992,6 +994,7 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
     this.themeElement = "";
     this.skeletonData = null;
     this.skeletonMachineName = null;
+    this._clearUseCaseUrlParams();
 
     this.dispatchEvent(
       new CustomEvent("modal-closed", {
@@ -1029,6 +1032,7 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
     this.siteUrl = "";
     this.themeElement = "";
     this.skeletonData = null;
+    this._clearUseCaseUrlParams();
 
     this.dispatchEvent(
       new CustomEvent("modal-closed", {

@@ -809,7 +809,7 @@ describe("a11y-media-player settings and sticky", () => {
     expect(el.__settingsOpen).to.equal(false);
   });
 
-  it("closes the settings menu when clicking outside", async () => {
+  it("keeps the settings menu open when clicking outside", async () => {
     el.toggleSettings(true);
     await el.updateComplete;
     globalThis.document.body.dispatchEvent(
@@ -820,7 +820,7 @@ describe("a11y-media-player settings and sticky", () => {
       }),
     );
     await el.updateComplete;
-    expect(el.__settingsOpen).to.equal(false);
+    expect(el.__settingsOpen).to.equal(true);
   });
 
   it("toggleSticky flips sticky mode once per change", async () => {

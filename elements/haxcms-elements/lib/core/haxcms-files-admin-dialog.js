@@ -2474,7 +2474,59 @@ class HAXCMSFilesAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
   }
 
   _embedInPage(row) {
-    this._onBulkInsert([row], "standalone");
+    // one file: HAX picks the element for its type (a GIF, a video, a PDF)
+    this._onBulkInsert([row]);
+  }
+
+  /**
+   * what a block stores for a file: its site-relative path (files/x.gif),
+   * the same as an upload stores, so the page keeps working when the site
+   * is published, moved or renamed. publicUrl (with /_sites/<name>/ and a
+   * cache buster) is only for previews in this dialog.
+   */
+  _contentSource(row) {
+    const p = this._s(row.path || "");
+    return p ? p.replace(/^\/+/, "") : row.publicUrl;
+  }
+
+  _attr(v) {
+    return this._s(v)
+      .replace(/&/g, "&amp;")
+      .replace(/"/g, "&quot;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+  }
+
+  /**
+   * resolves once the page is in edit mode and its content is in the
+   * editor. Turning edit mode on loads the page into hax-body, and a block
+   * inserted before that finishes is replaced by the load (the insert said
+   * it worked but nothing was there).
+   */
+  async _whenEditing(timeout = 6000) {
+    const start = Date.now();
+    const frame = () =>
+      new Promise((r) => globalThis.requestAnimationFrame(() => r()));
+    let readySince = 0;
+    while (Date.now() - start < timeout) {
+      const body = HAXStore.activeHaxBody;
+      const ready = !!(
+        body &&
+        store.editMode &&
+        body.editMode &&
+        body.hasAttribute("edit-mode") &&
+        body.children.length > 0
+      );
+      if (ready) {
+        if (!readySince) readySince = Date.now();
+        // ready and still ready a moment later: the load has settled
+        if (Date.now() - readySince > 250) return true;
+      } else {
+        readySince = 0;
+      }
+      await frame();
+    }
+    return !!HAXStore.activeHaxBody;
   }
 
   /**
@@ -2500,7 +2552,7 @@ class HAXCMSFilesAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
         detail: {},
       }),
     );
-    setTimeout(() => {
+    this._whenEditing().then(() => {
       if (!HAXStore.activeHaxBody) {
         this._msg(this.t.unableToEmbed, true);
         return;
@@ -2509,7 +2561,7 @@ class HAXCMSFilesAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
         const innerHTML = insertable
           .map(
             (row) =>
-              `<media-image source="${row.publicUrl}" alt="${row.name || ""}"></media-image>`,
+              `<media-image source="${this._attr(this._contentSource(row))}" alt="${this._attr(row.name || "")}"></media-image>`,
           )
           .join("");
         HAXStore.activeHaxBody.haxInsert("image-gallery", innerHTML, {
@@ -2522,7 +2574,7 @@ class HAXCMSFilesAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
         // auto-gallery/selection logic is fragile in a tight loop.
         insertable.forEach((row) => {
           HAXStore.activeHaxBody.haxInsert("media-image", "", {
-            source: row.publicUrl,
+            source: this._contentSource(row),
             alt: row.name || "",
           });
         });
@@ -2530,9 +2582,11 @@ class HAXCMSFilesAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
         // Single file (any type) — gizmo guessing inserts non-image types
         // (PDF, video, audio) via their correct element.
         insertable.forEach((row) => {
+          // the event goes out from the page being edited: this dialog
+          // has closed, and an event from a closed dialog reaches no one
           HAXStore.insertLogicFromValues(
-            { source: row.publicUrl, title: row.name },
-            this,
+            { source: this._contentSource(row), title: row.name },
+            HAXStore.activeHaxBody,
           );
         });
       }
@@ -2548,7 +2602,7 @@ class HAXCMSFilesAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
           this.t.insertedIntoPage.replace("{count}", () => insertable.length),
         );
       }
-    }, 300);
+    });
   }
 
   firstUpdated(changedProperties) {

@@ -102,10 +102,18 @@ describe("a11y-media-player block header", () => {
       "settings",
       "fullscreen",
     ]);
-    // every action is a real button with a visible tooltip title
+    // every action is a real button; a shown one has the same tooltip the
+    // player's own controls use (simple-tooltip), not a native title
     buttons.forEach((b) => {
       expect(b.tagName).to.equal("BUTTON");
-      expect(b.getAttribute("title")).to.equal(b.getAttribute("aria-label"));
+      expect(b.hasAttribute("title")).to.equal(false);
+      if (!b.hidden) {
+        const tip = el.shadowRoot.querySelector(
+          `simple-tooltip[for="${b.id}"]`,
+        );
+        expect(tip, b.id).to.exist;
+        expect(tip.textContent.trim()).to.equal(b.getAttribute("aria-label"));
+      }
     });
     // at a desktop width all but (maybe) Fullscreen are shown; audio
     // description and the media link only when they apply

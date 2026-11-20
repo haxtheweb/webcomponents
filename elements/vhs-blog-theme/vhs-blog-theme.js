@@ -223,6 +223,8 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
       /** the box art is turned to its back */
       flipped: { type: Boolean, reflect: true },
       _unbox: { type: Object, state: true },
+      /** the page title as typed in its page-break while editing */
+      _liveTitle: { type: String, state: true },
     };
   }
 
@@ -231,6 +233,11 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     CHROME_FACES.forEach((f) => vhsBlogLoadFace(f));
     this.__onDenKey = this.__onDenKey || ((e) => this._onDenKey(e));
     globalThis.addEventListener("keydown", this.__onDenKey);
+    // the box art follows the page title as it is typed in its page-break,
+    // so the case shows what the post will look like before it is saved
+    this.__onPageBreakChange =
+      this.__onPageBreakChange || ((e) => this._pageBreakChanged(e));
+    globalThis.addEventListener("page-break-change", this.__onPageBreakChange);
     // store reactions live only while connected
     this.__vhsReactions = [];
     this.__vhsReactions.push(
@@ -271,6 +278,10 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
   disconnectedCallback() {
     this._clearTimers();
     globalThis.removeEventListener("keydown", this.__onDenKey);
+    globalThis.removeEventListener(
+      "page-break-change",
+      this.__onPageBreakChange,
+    );
     if (this.__vhsReactions) {
       this.__vhsReactions.forEach((dispose) => dispose());
       this.__vhsReactions = null;
@@ -295,6 +306,21 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     );
   }
 
+  willUpdate(changedProperties) {
+    if (super.willUpdate) {
+      super.willUpdate(changedProperties);
+    }
+    // a typed title belongs to the page being edited: a new page, or
+    // leaving edit mode (saved or cancelled), goes back to the saved one
+    if (
+      (changedProperties.has("activeId") ||
+        (changedProperties.has("editMode") && !this.editMode)) &&
+      this._liveTitle
+    ) {
+      this._liveTitle = "";
+    }
+  }
+
   updated(changedProperties) {
     if (super.updated) {
       super.updated(changedProperties);
@@ -308,6 +334,22 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     if (live && live !== this.contentContainer) {
       this.contentContainer = live;
     }
+    // editing starts on the content, not on the TV above it
+    if (
+      changedProperties.has("editMode") &&
+      this.editMode &&
+      changedProperties.get("editMode") === false &&
+      live
+    ) {
+      const top = live.getBoundingClientRect().top;
+      if (top > globalThis.innerHeight * 0.5 || top < 0) {
+        live.scrollIntoView({
+          block: "start",
+          behavior: this._reduced() ? "auto" : "smooth",
+        });
+      }
+    }
+
     if (
       changedProperties.has("activeId") &&
       !this.isHome &&
@@ -321,6 +363,21 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     }
   }
 
+  _pageBreakChanged(e) {
+    const pb = e && e.detail ? e.detail.value : null;
+    if (!this.editMode || !pb || !pb.getAttribute) {
+      return;
+    }
+    // only the page-break that heads the page being edited
+    const id = pb.getAttribute("item-id");
+    if (!id || id !== this.activeId) {
+      return;
+    }
+    if (typeof pb.title === "string") {
+      this._liveTitle = pb.title;
+    }
+  }
+
   /**
    * The shelf shows at the site root; any other route plays the post.
    */
@@ -328,6 +385,15 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     if (!location || !location.route) {
       return;
     }
+    // the store hands out a fresh location for things that are not a move
+    // (editing, saving, a block being activated); only a real move to
+    // another page resets the deck and goes to the top. Re-running this for
+    // the same page while editing pulled the window back to the TV.
+    const key = `${location.pathname || ""}|${location.route.name || ""}`;
+    if (key === this.__locationKey) {
+      return;
+    }
+    this.__locationKey = key;
     const home =
       location.route.name === "home" || location.route.name === "404";
     this._clearTimers();
@@ -341,7 +407,7 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     if (dialog && dialog.open) {
       dialog.close();
     }
-    if (!home) {
+    if (!home && !this.editMode) {
       globalThis.scrollTo({ top: 0, left: 0 });
     }
   }
@@ -912,22 +978,9 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           font-family: "Archivo", var(--ddd-font-primary), sans-serif;
           min-height: 100vh;
         }
-        :host([edit-mode]) {
-          margin: var(
-            --hax-tray-element-align-margin,
-            0 0 0
-              calc(var(--hax-tray-width) - var(--hax-tray-menubar-min-width))
-          );
-          transition: margin var(--ddd-duration-slow, 0.6s) ease-in-out;
-        }
-        :host([edit-mode][tray-status="collapsed"]) {
-          margin: var(--ddd-spacing-0);
-        }
-        @media (max-width: 800px) {
-          :host([edit-mode]) {
-            margin: var(--ddd-spacing-0);
-          }
-        }
+        /* the editing tray opens over the left column (the box art)
+           instead of pushing the whole den over, so the post keeps the
+           width it has when published */
         .sr-only {
           position: absolute;
           width: 1px;
@@ -1787,7 +1840,12 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
 
   _renderDen(tower) {
     const showPost = this._showPost();
-    const active = this.activeItem || {};
+    const saved = this.activeItem || {};
+    // while editing, the TV shows the title as it is being typed too
+    const active =
+      this.editMode && this._liveTitle
+        ? { ...saved, title: this._liveTitle }
+        : saved;
     const playing = this.phase === "playing" && showPost;
     const tapeTitle =
       this.phase === "playing" ? active.title || "" : this.loadingTitle;
@@ -2077,7 +2135,8 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
 
   _renderPost() {
     const item = this.activeItem || {};
-    const title = item.title || "";
+    const title =
+      (this.editMode && this._liveTitle ? this._liveTitle : item.title) || "";
     const rt = this._readtime(item);
     const flat = this._flat();
     const index = flat.findIndex((i) => i.id === this.activeId);

@@ -758,6 +758,56 @@ export const HaxUiAdminSimpleFields = [
     simple-fields-field.hax-ui-simple-field.compact,
     simple-fields.hax-ui-simple-field.compact simple-fields-field {
       min-height: var(--hax-ui-row-height);
+      /* the control itself carries the inline padding, so the whole box
+         drawn around a compact field is what a click lands on */
+      padding: 0;
+      --simple-fields-select-max-width: 100%;
+    }
+    /* a toolbar field has no description or counter below it: their empty
+       rows pushed the text a few pixels above the middle of the box */
+    simple-fields-field.hax-ui-simple-field.compact::part(field-desc),
+    simple-fields-field.hax-ui-simple-field.compact::part(field-meta),
+    simple-fields.hax-ui-simple-field.compact
+      simple-fields-field::part(field-desc),
+    simple-fields.hax-ui-simple-field.compact
+      simple-fields-field::part(field-meta) {
+      display: none;
+    }
+    simple-fields-field.hax-ui-simple-field.compact::part(field-main),
+    simple-fields-field.hax-ui-simple-field.compact::part(field-main-inner),
+    simple-fields.hax-ui-simple-field.compact
+      simple-fields-field::part(field-main),
+    simple-fields.hax-ui-simple-field.compact
+      simple-fields-field::part(field-main-inner) {
+      flex: 1 1 auto;
+      width: 100%;
+      margin: 0;
+    }
+    simple-fields-field.hax-ui-simple-field.compact:not([type="checkbox"]):not(
+        [type="radio"]
+      )::part(option-input),
+    simple-fields.hax-ui-simple-field.compact
+      simple-fields-field:not([type="checkbox"]):not([type="radio"])::part(
+        option-input
+      ) {
+      box-sizing: border-box;
+      width: 100%;
+      min-height: calc(var(--hax-ui-row-height) - 2px);
+      padding-inline: var(--hax-ui-gap-md);
+    }
+    simple-fields-field.hax-ui-simple-field.compact::part(select),
+    simple-fields.hax-ui-simple-field.compact
+      simple-fields-field::part(select) {
+      box-sizing: border-box;
+      width: 100%;
+      min-height: calc(var(--hax-ui-row-height) - 2px);
+      padding-inline: var(--hax-ui-gap-md)
+        calc(var(--hax-ui-gap-md) + var(--hax-ui-target));
+    }
+    simple-fields-field.hax-ui-simple-field.compact::part(select-icon),
+    simple-fields.hax-ui-simple-field.compact
+      simple-fields-field::part(select-icon) {
+      margin-inline-end: var(--ddd-spacing-1, 4px);
     }
     /* an option's words stay the text color when it has focus: the accent
        simple-fields gives a focused option's label is a fill color, and in
