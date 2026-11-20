@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "산수 연습",
+    "description": "즉시 피드백을 주는 짧은 자동 생성 산수 문제 모음. 연산과 숫자 범위를 고르세요. 매번 새로운 문제가 나옵니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "제목",
+        "description": "머리글에 표시되는 이 연습의 이름."
+      },
+      {
+        "title": "연산",
+        "description": "출제할 문제 종류. 학습자는 시작하기 전에 원하는 항목을 끌 수 있습니다.",
+        "options": {
+          "add": "덧셈",
+          "subtract": "뺄셈",
+          "multiply": "곱셈",
+          "divide": "나눗셈",
+          "add subtract": "덧셈과 뺄셈",
+          "multiply divide": "곱셈과 나눗셈",
+          "add multiply": "덧셈과 곱셈",
+          "add divide": "덧셈과 나눗셈",
+          "subtract multiply": "뺄셈과 곱셈",
+          "subtract divide": "뺄셈과 나눗셈",
+          "add subtract multiply": "덧셈, 뺄셈, 곱셈",
+          "add subtract divide": "덧셈, 뺄셈, 나눗셈",
+          "add multiply divide": "덧셈, 곱셈, 나눗셈",
+          "subtract multiply divide": "뺄셈, 곱셈, 나눗셈",
+          "add subtract multiply divide": "네 가지 모두"
+        }
+      },
+      {
+        "title": "가장 작은 수",
+        "description": "문제에 쓰이는 가장 작은 수. 0 이상의 정수."
+      },
+      {
+        "title": "가장 큰 수",
+        "description": "문제에 쓰이는 가장 큰 수. 나눗셈의 답과 나누는 수도 이 범위 안에 있습니다."
+      },
+      {
+        "title": "문제 수",
+        "description": "한 번에 나오는 문제 수(1~100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "제한 시간",
+        "description": "한 번 전체에 허용되는 초. 0은 타이머 없음이며 기본값입니다. 시간 제한이 있는 연습은 시간이 더 필요한 학습자를 불리하게 합니다. 설정하더라도 학습자는 직접 타이머를 끌 수 있습니다."
+      },
+      {
+        "title": "강조 색상",
+        "description": "머리글 칩과 버튼의 색상. 테마를 따르려면 비워 두세요."
+      }
+    ]
+  }
+}

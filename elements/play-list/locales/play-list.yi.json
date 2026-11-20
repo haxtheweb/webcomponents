@@ -9,5 +9,7 @@
   "slidePages": "סלײַד־זײַטן",
   "goToSlide": "גיי צו סלײַד {number}",
   "slides": "סלײַדס",
-  "position": "{number} פֿון {total}"
+  "position": "{number} פֿון {total}",
+  "fullScreen": "פֿולער עקראַן",
+  "exitFullScreen": "אַרויס פֿון פֿולן עקראַן"
 }

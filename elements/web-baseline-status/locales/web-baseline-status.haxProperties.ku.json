@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Rewşa Baseline",
+    "description": "Rewşa piştgiriya gerokê ya Baseline ji bo taybetmendiyeke platforma webê nîşan bide."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID-ya taybetmendiyê",
+        "description": "ID-ya taybetmendiya webê, wek anchor-positioning. ID-yan li webstatus.dev bibîne; ID beşa dawî ya URL-ya rûpela taybetmendiyê ye."
+      }
+    ]
+  }
+}

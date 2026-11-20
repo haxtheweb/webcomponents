@@ -4,7 +4,12 @@
     "description": "Seinneann sé inneachar idirghníomhach H5P ó chomhad .h5p uaslódáilte, gan freastalaí H5P ar bith"
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "title": "Comhad H5P",
+        "description": "Uaslódáil nó nasc comhad .h5p. Díphacáiltear sa bhrabhsálaí é; níl freastalaí H5P de dhíth."
+      }
+    ],
     "advanced": [
       {
         "title": "Cód leabaithe iframe oidhreachta",

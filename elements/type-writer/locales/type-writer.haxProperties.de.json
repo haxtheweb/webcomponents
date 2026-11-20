@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Schreibmaschine",
     "description": "Text, der sich Zeichen für Zeichen selbst tippt."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Text",
+        "description": "Der Text, der getippt wird, sobald das Element in den sichtbaren Bereich scrollt."
+      },
+      {
+        "title": "Tippt",
+        "description": "Den blinkenden Cursor anzeigen; das Element setzt dies, während es tippt."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Verzögerung",
+        "description": "Millisekunden Wartezeit, bevor das Tippen beginnt."
+      },
+      {
+        "title": "Cursordauer",
+        "description": "Millisekunden, die der Cursor nach dem Tippen weiterblinkt."
+      },
+      {
+        "title": "Geschwindigkeit",
+        "description": "Millisekunden pro Zeichen; kleinere Zahlen tippen schneller."
+      }
+    ]
   }
 }

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Qabduu seenaa",
+    "description": "Qabduu seenaa himata tokko duuba jiru hax.cloud irratti banu, ykn bakka walsimu marsariitii neetworkii HAX biraa irratti"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Eessa akka deemu",
+        "options": {
+          "cloud": "hax.cloud, seenaa",
+          "learn": "learn.hax.cloud, barnoota",
+          "try": "browser.hax.cloud, yaali",
+          "elements": "webcomponents.hax.cloud, kutaa",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Teessoo marsariitii sana irratti (seenaan hax.cloud irratti akka stories/ee450a19 fakkaata)"
+      },
+      {
+        "title": "Waa'ee maalii akka ta'e"
+      },
+      {
+        "title": "Chip xiqqaa"
+      },
+      {
+        "title": "Waa'ee maalii akka ta'e qabduu keessatti agarsiisi"
+      }
+    ]
+  }
+}

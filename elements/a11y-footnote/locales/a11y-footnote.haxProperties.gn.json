@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Jehaipy",
+    "description": "Peteĩ jehaipy ojehaíva oĩhaguépe moñe'ẽrãme. Ojehechauka papapy ramo, ha jehaipy lista papapy reheve ojejapo ijeheguínte kuatiarogue pahápe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Jehaipy",
+        "description": "Jehaipy michĩ moñe'ẽrã."
+      },
+      {
+        "title": "Ndaipóri jehecha mboyve",
+        "description": "Ani rehechauka jehaipy moñe'ẽhára ombohasávo térã omoĩvo jesareko papapy ári."
+      }
+    ]
+  }
+}

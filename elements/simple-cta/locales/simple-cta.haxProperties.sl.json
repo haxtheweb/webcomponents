@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Skrij ikono",
         "description": "Skrij ikono, ki poudarja besedilo"
+      },
+      {
+        "title": "Videz",
+        "description": "Kako močno je gumb poudarjen.",
+        "options": {
+          "": "Zapolnjen",
+          "tonal": "Tonski",
+          "outlined": "Obrobljen",
+          "plain": "Navaden"
+        }
+      },
+      {
+        "title": "Velikost",
+        "description": "Velikost gumba.",
+        "options": {
+          "s": "Majhen",
+          "": "Srednje",
+          "l": "Velik"
+        }
       }
     ],
     "advanced": [

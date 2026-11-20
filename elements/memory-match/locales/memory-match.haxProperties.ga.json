@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Cluiche cuimhne",
+    "description": "Iompaigh cártaí chun péirí a aimsiú. Péireáil téarma lena bhrí ionas go léiríonn meaitseáil tuiscint, nó úsáid dhá théacs nó dhá íomhá a mheaitseálann."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Teideal",
+        "description": "An leid a thaispeántar sa cheanntásc, mar shampla: Meaitseáil an téarma lena phost."
+      },
+      {
+        "title": "Péirí",
+        "description": "Is dhá chárta a théann le chéile gach péire, téarma agus a bhrí de ghnáth. Teastaíonn téacs, íomhá nó an dá cheann ó thaobh."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Dath aibhsithe",
+        "description": "Dath roghnach do shlis an cheanntáisc, cúl na gcártaí agus an cnaipe."
+      }
+    ]
+  }
+}

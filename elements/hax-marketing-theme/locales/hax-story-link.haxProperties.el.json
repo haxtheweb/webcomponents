@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Κουμπί ιστορίας",
+    "description": "Το κουμπί που ανοίγει την ιστορία πίσω από έναν ισχυρισμό στο hax.cloud ή το αντίστοιχο σημείο σε άλλον ιστότοπο του δικτύου HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Πού οδηγεί",
+        "options": {
+          "cloud": "hax.cloud, η ιστορία",
+          "learn": "learn.hax.cloud, ένας οδηγός",
+          "try": "browser.hax.cloud, δοκιμάστε το",
+          "elements": "webcomponents.hax.cloud, ένα μπλοκ",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Διεύθυνση σε εκείνον τον ιστότοπο (μια ιστορία στο hax.cloud μοιάζει με stories/ee450a19)"
+      },
+      {
+        "title": "Τι αφορά"
+      },
+      {
+        "title": "Μικρή ετικέτα"
+      },
+      {
+        "title": "Εμφάνιση του θέματος στο κουμπί"
+      }
+    ]
+  }
+}

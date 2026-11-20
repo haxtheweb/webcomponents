@@ -5,5 +5,7 @@
   "editModeLabel": "Médialejátszási lista szerkesztési módja",
   "position": "{current} / {total}",
   "previousItem": "Előző elem",
-  "nextItem": "Következő elem"
+  "nextItem": "Következő elem",
+  "fullScreen": "Teljes képernyő",
+  "exitFullScreen": "Kilépés a teljes képernyőből"
 }

@@ -60,6 +60,8 @@
   "flagsFound": "{total}(e)tik {correct} aurkituta",
   "toRethink": "{count} berriz pentsatzeko",
   "notEvidence": "ez da banderatxo honen froga",
+  "isEvidence": "bandera honen ebidentzia",
+  "readingKeys": "Erabili gezi-teklak {unit} batetik hurrengora mugitzeko.",
   "markAnswers": "Markatu erantzunak",
   "doneMarking": "Erantzunak markatzen amaitu",
   "editHint": "Editatu beheko testua. Erabili blokearen menuko Markatu erantzunak banderatxo bakoitza non doan aukeratzeko.",

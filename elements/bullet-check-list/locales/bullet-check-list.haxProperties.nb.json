@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Avkrysningsliste",
+    "description": "En liste med avkrysningsbokser. Lesere krysser av punkter, og fremdriften huskes på deres egen enhet."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tittel",
+        "description": "Navnet på listen. Leses opp som etiketten for gruppen med avkrysningsbokser."
+      },
+      {
+        "title": "Punkter",
+        "description": "Hvert punkt er en avkrysningsboks. Avkryssede eller deaktiverte punkter kan ikke endres av lesere."
+      },
+      {
+        "title": "Nummerert",
+        "description": "Vis en nummerert liste i stedet for en punktliste."
+      },
+      {
+        "title": "Status",
+        "description": "Endrer fargene slik at de passer med stop-note.",
+        "options": {
+          "info": "Merknad",
+          "success": "Bekreftelse",
+          "warning": "Advarsel",
+          "stop": "Stopp"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "Lagrings-ID",
+        "description": "Unik ID som brukes til å huske leserens fremdrift på enheten. Genereres automatisk; endre den bare for å dele fremdrift mellom lister eller for å starte på nytt."
+      }
+    ]
+  }
+}

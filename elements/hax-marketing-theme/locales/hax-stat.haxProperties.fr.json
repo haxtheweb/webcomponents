@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Statistique",
+    "description": "Un nombre qui défile en comptant, avec un libellé et un lien vers son histoire"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nombre à atteindre"
+      },
+      {
+        "title": "Avant le nombre"
+      },
+      {
+        "title": "Après le nombre"
+      },
+      {
+        "title": "Des mots au lieu d'un nombre"
+      },
+      {
+        "title": "Ce qu'il compte"
+      },
+      {
+        "title": "Adresse de l'histoire sur hax.cloud (stories/ee450a19)"
+      }
+    ]
+  }
+}

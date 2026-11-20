@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Ārēja rīka palaišana",
+    "description": "Bloks, kas atver ārēju mācību rīku jaunā logā vai lapā kā vienkāršu saiti vai ar LTI 1.3 pierakstīšanās pieprasījumu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Virsraksts",
+        "description": "Rīka nosaukums. Tas tiek rādīts galvenē un uz pogas."
+      },
+      {
+        "title": "Apraksts",
+        "description": "Ko izglītojamie dara rīkā; tiek rādīts virs pogas."
+      },
+      {
+        "title": "Palaišanas URL",
+        "description": "Rīka adrese. Tai jābūt pilnai adresei, kas sākas ar https:// vai http://."
+      },
+      {
+        "title": "Atvērt",
+        "description": "Jauns logs darbojas ar katru rīku. “Šajā lapā” darbojas tikai ar rīkiem, kas atļauj sevi rādīt citā vietnē.",
+        "options": {
+          "window": "Jaunā logā",
+          "embed": "Šajā lapā"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "LTI pierakstīšanās URL",
+        "description": "Tikai LTI 1.3: rīka pierakstīšanās sākšanas adrese. Ar to, klienta ID un izvietošanas ID poga nosūta LTI pierakstīšanās pieprasījumu, nevis atver vienkāršu saiti. Palaišanas pabeigšanai nepieciešams šīs vietnes LTI pakalpojums."
+      },
+      {
+        "title": "LTI klienta ID",
+        "description": "Klienta ID, ko rīks piešķīra šai vietnei. Publisks identifikators, nevis noslēpums: nekad neievietojiet šeit atslēgas vai noslēpumus."
+      },
+      {
+        "title": "LTI izvietošanas ID",
+        "description": "Izvietošanas ID, ko rīks piešķīra šai vietnei. Publisks identifikators, nevis noslēpums."
+      },
+      {
+        "title": "LTI izdevējs",
+        "description": "Adrese, kas identificē šo vietni rīkam. Atstājiet tukšu, lai izmantotu tās vietnes adresi, kurā atrodas lapa."
+      },
+      {
+        "title": "Augstums lapā",
+        "description": "Rīka augstums, kad tas atveras šajā lapā, pikseļos (no 200 līdz 2000)."
+      },
+      {
+        "title": "Akcenta krāsa",
+        "description": "Galvenes etiķetes un pogas krāsa. Atstājiet tukšu, lai sekotu motīvam."
+      }
+    ],
+    "developer": [
+      {
+        "title": "LTI pierakstīšanās mājiens",
+        "description": "Necaurredzama vērtība, ko šīs vietnes LTI pakalpojums izmanto, lai atpazītu izglītojamo. Parasti to nodrošina vietne ar notikumu lti-launch-request, nevis saglabā šeit. Nekad nav parole vai atslēga."
+      },
+      {
+        "title": "LTI ziņojuma mājiens",
+        "description": "Necaurredzama vērtība, ko šīs vietnes LTI pakalpojums izmanto, lai atpazītu šo palaišanu. Parasti to nodrošina vietne, nevis saglabā šeit."
+      }
+    ]
+  }
+}

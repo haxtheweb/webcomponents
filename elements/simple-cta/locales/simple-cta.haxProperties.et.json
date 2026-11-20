@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Peida ikoon",
         "description": "Peida teksti rõhutamiseks kasutatav ikoon"
+      },
+      {
+        "title": "Välimus",
+        "description": "Kui palju rõhku nupul on.",
+        "options": {
+          "": "Täidetud",
+          "tonal": "Toonitud",
+          "outlined": "Piirjoonega",
+          "plain": "Lihtne"
+        }
+      },
+      {
+        "title": "Suurus",
+        "description": "Nupu suurus.",
+        "options": {
+          "s": "Väike",
+          "": "Keskmine",
+          "l": "Suur"
+        }
       }
     ],
     "advanced": [

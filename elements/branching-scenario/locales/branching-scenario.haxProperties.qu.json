@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Ramayuq escenario",
+    "description": "Huk willakuy maypichus sapa akllay huk rikhuriyman tukukuymanwan apan. Yachaqaqkunaqa qhipaman kutispa huk ñankunata pruebayta atinku; chayasqa tukukuymi puntajeta churan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Suti",
+        "description": "Escenariop sutin, uma siq'inpi rikuchisqa."
+      },
+      {
+        "title": "Qallariy rikhuriy",
+        "description": "Yachaqaqkuna qallarisqanku rikhuriyp id-nin. Ch'usaqta saqiy ñawpaq rikhuriypi qallarinanpaq."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Sapaqchay llimp'i",
+        "description": "Uma siq'i chip, ñit'inakuna, akllaypa patanpaq munaspa churana llimp'i."
+      }
+    ]
+  }
+}

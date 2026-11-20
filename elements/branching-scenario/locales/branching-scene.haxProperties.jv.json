@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Adegan skenario",
+    "description": "Siji adegan saka skenario bercabang. Gandhengake saben pilihan menyang adegan liya nganggo # banjur ID adegane."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID adegan",
+        "description": "Panggonan pilihan nggandheng: pranala menyang # banjur ID iki tumuju adegan iki. Aksara, angka lan tandha pisah."
+      },
+      {
+        "title": "Irah-irahan",
+        "description": "Irah-irahan adegan."
+      },
+      {
+        "title": "Pungkasan",
+        "description": "Apa adegan iki mungkasi dalan, lan kepiye asile.",
+        "options": {
+          "": "Dudu pungkasan",
+          "good": "Pungkasan apik",
+          "mixed": "Pungkasan campuran",
+          "poor": "Pungkasan ala"
+        }
+      },
+      {
+        "title": "Skor",
+        "description": "Skor kanggo tekan pungkasan iki. Skor pungkasan paling dhuwur ing skenario dadi maksimal."
+      }
+    ]
+  }
+}

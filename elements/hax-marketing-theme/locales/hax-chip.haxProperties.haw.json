@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "ʻĀpana",
+    "description": "He kiʻi ikona liʻiliʻi me ka lepili"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kiʻi ikona"
+      },
+      {
+        "title": "Lepili"
+      }
+    ]
+  }
+}

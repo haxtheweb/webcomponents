@@ -1,0 +1,16 @@
+{
+  "drawing": "Teikning",
+  "edit": "Breyta teikningu",
+  "start": "Byrja að teikna",
+  "remove": "Fjarlægja teikningu",
+  "empty": "Ekkert teiknað enn",
+  "save": "Vista",
+  "cancel": "Hætta við",
+  "close": "Loka",
+  "discard": "Henda breytingum",
+  "discardConfirm": "Henda óvistuðum breytingum?",
+  "keepEditing": "Halda áfram að breyta",
+  "draw": "Teikning",
+  "feedback": "Endurgjöf",
+  "signature": "Undirskrift"
+}

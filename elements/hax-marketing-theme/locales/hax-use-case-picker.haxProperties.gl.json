@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Selector de casos de uso",
+    "description": "Escolle para que é un sitio e obtén unha ligazón que abre HAX no navegador con ese sitio de inicio, ademais da orde CLI correspondente."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Enderezo de HAX no navegador",
+        "description": "Onde se abre a ligazón; engádeselle ?skeleton= e &name="
+      },
+      {
+        "title": "Sitios de inicio que deixar fóra",
+        "description": "Nomes de máquina, separados por comas"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Lista de sitios de inicio",
+        "description": "Enderezo da lista de esqueletos (o formato que le app-hax)"
+      }
+    ]
+  }
+}

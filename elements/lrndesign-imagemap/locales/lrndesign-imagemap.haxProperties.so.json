@@ -14,6 +14,10 @@
         "property": "hotspotDetails",
         "title": "Faahfaahinta barta",
         "description": "Barrooyinka is-dhexgalka leh ee khariidadda sawirka."
+      },
+      {
+        "title": "Faahfaahinta meelaha",
+        "description": "Meelaha is-dhexgalka ah ee khariidadda sawirka."
       }
     ]
   }

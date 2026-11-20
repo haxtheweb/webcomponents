@@ -3,5 +3,8 @@
   "copyAsCsv": "Emonguatia CSV ramo.",
   "printTable": "Embokuatia Tabla",
   "selectColumn": "Eiporavo Ysyry",
-  "dataTable": "Mba'ekuaarã · Tabla"
+  "dataTable": "Mba'ekuaarã · Tabla",
+  "filterStatus": "Ojehechauka {shown} {total} tysýi apytégui, oñemboguapýva {column} rupive: {text}",
+  "columnNumber": "Columna {column}",
+  "clearFilter": "Emopotĩ mbogua"
 }

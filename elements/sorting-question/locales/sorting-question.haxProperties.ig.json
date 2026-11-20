@@ -13,6 +13,14 @@
       {
         "property": "answers",
         "title": "Azịza",
+        "description": "Usoro azịza na-akọwa usoro ziri ezi.",
+        "options": {
+          "": "Ndepụta",
+          "cards": "Kaadị onyonyo"
+        }
+      },
+      {
+        "title": "Azịza",
         "description": "Usoro azịza na-akọwa usoro ziri ezi."
       }
     ],

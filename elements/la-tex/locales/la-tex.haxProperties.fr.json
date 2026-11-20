@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "Écrire avec la notation mathématique LaTeX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Fond des images",
+        "description": "Arrière-plan derrière les images dessinées. Automatique en ajoute un uniquement si le dessin serait difficile à voir sur la page, comme des traits sombres en mode sombre.",
+        "options": {
+          "auto": "Automatique",
+          "light": "Clair",
+          "dark": "Sombre",
+          "none": "Aucun"
+        }
+      }
+    ]
   }
 }

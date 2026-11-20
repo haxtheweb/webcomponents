@@ -52,6 +52,20 @@
           "_top": "Iwindi eliphezulu - _top",
           "_parent": "Iwindi elingumzali - _parent"
         }
+      },
+      {
+        "title": "Awukho Umcibisholo",
+        "description": "Fihla umcibisholo wenkinobho."
+      },
+      {
+        "title": "Isixhumanisi: okuhlosiwe",
+        "description": "Lapho isixhumanisi sizovulwa khona.",
+        "options": {
+          "": "Iwindi elifanayo",
+          "_blank": "Iwindi elisha - _blank",
+          "_top": "Iwindi eliphezulu - _top",
+          "_parent": "Iwindi lomzali - _parent"
+        }
       }
     ],
     "developer": [

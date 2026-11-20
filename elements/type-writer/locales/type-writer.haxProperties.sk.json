@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Písací stroj",
     "description": "Text, ktorý sa píše sám, znak po znaku."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Text",
+        "description": "Text, ktorý sa vypíše, keď sa prvok posunie do zobrazenia."
+      },
+      {
+        "title": "Písanie",
+        "description": "Zobraziť blikajúci kurzor; prvok ho nastavuje počas písania."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Oneskorenie",
+        "description": "Milisekundy čakania pred začatím písania."
+      },
+      {
+        "title": "Trvanie kurzora",
+        "description": "Milisekundy, počas ktorých kurzor bliká po vypísaní textu."
+      },
+      {
+        "title": "Rýchlosť",
+        "description": "Milisekundy na znak; nižšie čísla píšu rýchlejšie."
+      }
+    ]
   }
 }

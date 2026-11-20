@@ -5,5 +5,6 @@
   "selected": "ټاکل شوی",
   "currentlyActiveAndSelectedPalette": "اوسمهال فعاله او ټاکل شوې رنګ ټولګه",
   "currentlyActivePalette": "اوسمهال فعاله رنګ ټولګه",
-  "selectedPaletteToApply": "د پلي کولو لپاره ټاکل شوې رنګ ټولګه"
+  "selectedPaletteToApply": "د پلي کولو لپاره ټاکل شوې رنګ ټولګه",
+  "paletteNumber": "رنګ‌پاڼه {number}"
 }

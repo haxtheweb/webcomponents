@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Radarrit",
+    "description": "Radarrit (kongulóarrit) til búningarmyndlar og flatametingar, sum HEOSAT. Hevur tekst í staðin og dátutalvu við."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Heiti",
+        "description": "Yvirskrift á ritinum; eisini brúkt sum atkomuligt navn tess."
+      },
+      {
+        "title": "Hægstu stig",
+        "description": "Hægsta virðið á skalanum."
+      },
+      {
+        "title": "Bólkar",
+        "description": "Ein bólkur fyri hvørja linju. Krevur í minsta lagi 3."
+      },
+      {
+        "title": "Stig",
+        "description": "Tøl skild við komma, eitt fyri hvønn bólk í somu røð."
+      },
+      {
+        "title": "Málstig",
+        "description": "Tøl skild við komma, eitt fyri hvønn bólk í somu røð."
+      },
+      {
+        "title": "Vís tekningaforkláring",
+        "description": "Vís eina tekningaforkláring, ið nevnir stigini og málini."
+      },
+      {
+        "title": "Tætt",
+        "description": "Minni rit uttan heiti, tekningaforkláring ella dátutalvu. Hald músina yvir einum punkti fyri at síggja virðini."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Heiti á stigum",
+        "description": "Heiti í tekningaforkláring og talvu fyri stigini."
+      },
+      {
+        "title": "Heiti á málum",
+        "description": "Heiti í tekningaforkláring og talvu fyri málini."
+      }
+    ]
+  }
+}

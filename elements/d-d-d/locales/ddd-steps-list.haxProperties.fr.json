@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Liste d'étapes",
     "description": "Étapes numérotées pour accomplir une tâche."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Indicateur d'étapes",
+        "description": "Afficher les étapes sous forme d'une ligne compacte de titres qui marque la progression. Le contenu des étapes n'est pas affiché dans cette disposition."
+      },
+      {
+        "title": "Étape actuelle",
+        "description": "L'étape où se trouve le lecteur, en comptant à partir de 1. Les étapes précédentes s'affichent comme terminées. Utilisé par l'indicateur d'étapes."
+      }
+    ]
   }
 }

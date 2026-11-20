@@ -8,5 +8,9 @@
   "theme": "Мавзӯъ",
   "palette": "Палитра",
   "cancel": "Бекор кардан",
-  "openAppearanceSettings": "Кушодани танзимоти намуди зоҳирӣ"
+  "openAppearanceSettings": "Кушодани танзимоти намуди зоҳирӣ",
+  "designSystem": "Системаи тарҳрезӣ",
+  "designSystemDefault": "DDD (пешфарз)",
+  "designSystemThemeDefault": "{name} (пешфарзи мавзӯъ)",
+  "designSystemHelp": "Ранг, ҳуруф, кунҷҳо ва зичӣ. Тарҳбандиро ҳоло ҳам мавзӯъ муайян мекунад."
 }

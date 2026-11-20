@@ -1,0 +1,13 @@
+{
+  "gizmo": {
+    "title": "example-hax-element",
+    "description": "Misalin abin farawa da ake amfani da shi don nuna saitin HAX da kaddarorin da ake iya gyarawa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Take"
+      }
+    ]
+  }
+}

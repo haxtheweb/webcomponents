@@ -1,0 +1,16 @@
+{
+  "theme": "테마",
+  "designSystem": "디자인 시스템",
+  "dddDefault": "DDD(기본값)",
+  "designSystemHelp": "색상, 글꼴, 모서리, 포커스. 레이아웃은 테마가 유지합니다.",
+  "designSystemFixed": "이 테마는 자체 디자인 시스템을 유지합니다.",
+  "palette": "팔레트",
+  "themeDefault": "테마 기본값",
+  "paletteNumber": "팔레트 {n}",
+  "siteTheme": "{name}(이 사이트의 테마)",
+  "restyle": "이 사이트 스타일 바꾸기",
+  "close": "닫기",
+  "reset": "이 사이트 원래 모습으로 되돌리기",
+  "random": "아무거나 골라 줘",
+  "about": "HAX에 내장된 몇 가지 모습을 보여 줍니다. 페이지는 절대 바뀌지 않습니다. 구조는 JSON Outline Schema에 있고 모든 블록은 표준 웹 컴포넌트이므로 디자인을 자유롭게 바꿀 수 있습니다."
+}

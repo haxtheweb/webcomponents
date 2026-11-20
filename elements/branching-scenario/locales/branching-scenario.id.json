@@ -1,0 +1,22 @@
+{
+  "scenario": "Skenario",
+  "directions": "Petunjuk",
+  "showDirections": "Tampilkan petunjuk",
+  "hideDirections": "Sembunyikan petunjuk",
+  "directionsRead": "Baca setiap adegan dan pilih apa yang akan Anda lakukan.",
+  "directionsEndings": "Ada beberapa akhir cerita. Coba jalur lain setelah Anda selesai.",
+  "startOver": "Mulai lagi",
+  "back": "Mundur satu langkah",
+  "tryAnother": "Coba jalur lain",
+  "path": "Jalur",
+  "scene": "Adegan",
+  "ending": "Akhir",
+  "end": "selesai",
+  "scenesSeen": "{seen} dari {total} adegan dilihat",
+  "endingReached": "Akhir tercapai",
+  "addScene": "Tambah adegan",
+  "newScene": "Adegan baru",
+  "newSceneText": "Jelaskan apa yang terjadi, lalu tautkan setiap pilihan ke sebuah adegan.",
+  "editingNote": "Menyunting: semua adegan ditampilkan. Pilihan adalah tautan ke # diikuti ID adegan.",
+  "noScenes": "Tambahkan adegan untuk memulai skenario."
+}

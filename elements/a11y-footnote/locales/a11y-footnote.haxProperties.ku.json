@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Jêrenot",
+    "description": "Notek ku li cihê wê yê di nivîsê de tê nivîsîn. Ew wekî hejmarek xuya dike, û lîsteya notên bi hejmar bi xwe li binê rûpelê ava dibe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Not",
+        "description": "Nivîsa jêrenotê."
+      },
+      {
+        "title": "Pêşdîtin tune",
+        "description": "Dema xwîner li ser hejmarê disekine an fokus dide, notê nîşan nede."
+      }
+    ]
+  }
+}

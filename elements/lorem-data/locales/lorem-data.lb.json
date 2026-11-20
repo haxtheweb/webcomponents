@@ -1,4 +1,6 @@
 {
   "saveAll": "All späicheren",
-  "saveTheFollowing": "Folgendes späicheren: {list}?"
+  "saveTheFollowing": "Folgendes späicheren: {list}?",
+  "save": "Späicheren",
+  "cancel": "Ofbriechen"
 }

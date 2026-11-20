@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Rapu kupu",
+    "description": "He mātiti pū me ngā kupu huna. Ka pātō ngā ākonga i te pū tuatahi me te pū whakamutunga o ia kupu. Ka whakaharatau i te kite i te tuhi o tētahi kupu, kaua ko tōna tikanga."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Taitara",
+        "description": "Te mea e tonoa ana ngā ākonga kia kimihia, ka whakaaturia ki te pane."
+      },
+      {
+        "title": "Ngā kupu",
+        "description": "Ngā kupu hei huna. Ka waiho ngā mokowā me ngā tohutuhi ki waho o te mātiti. Ko ngā kupu kāore e uru ka whakarārangitia i a koe e whakatika ana, ā, ka waiho ki waho mō ngā ākonga."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Rahi mātiti",
+        "description": "Ngā pū mō ia taha, 4 ki te 16. Waiho kia wātea kia uru te kupu roa rawa (tae atu ki te 12). Ki te nui ake i te 12 ka panuku whakatahā i te waea."
+      },
+      {
+        "title": "Ngā kupu hauroki",
+        "description": "Hunaia hoki ngā kupu ā-hauroki. He uaua ake."
+      },
+      {
+        "title": "Ngā kupu whakamuri",
+        "description": "Hunaia hoki ngā kupu kua tuhia whakamuri. He uaua ake."
+      },
+      {
+        "title": "Tae arotahi",
+        "description": "He tae kōwhiri mō te maramara pane, te pū tuatahi kua kōwhiria me te pātene."
+      }
+    ]
+  }
+}

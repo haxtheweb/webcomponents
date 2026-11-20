@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Baseline статус",
+    "description": "Прикажи Baseline статус подршке у прегледачима за функцију веб платформе."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID функције",
+        "description": "ID веб функције, на пример anchor-positioning. ID-јеве пронађите на webstatus.dev; ID је последњи део URL-а странице функције."
+      }
+    ]
+  }
+}

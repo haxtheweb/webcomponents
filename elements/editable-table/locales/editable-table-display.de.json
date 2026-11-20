@@ -3,5 +3,8 @@
   "copyAsCsv": "Als CSV kopieren.",
   "printTable": "Tabelle drucken",
   "selectColumn": "Spalte auswählen",
-  "dataTable": "Daten · Tabelle"
+  "dataTable": "Daten · Tabelle",
+  "filterStatus": "{shown} von {total} Zeilen werden angezeigt, gefiltert nach {column}: {text}",
+  "columnNumber": "Spalte {column}",
+  "clearFilter": "Filter entfernen"
 }

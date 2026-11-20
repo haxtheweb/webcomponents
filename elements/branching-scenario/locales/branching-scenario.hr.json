@@ -1,0 +1,22 @@
+{
+  "scenario": "Scenarij",
+  "directions": "Upute",
+  "showDirections": "Prikaži upute",
+  "hideDirections": "Sakrij upute",
+  "directionsRead": "Pročitajte svaki prizor i odaberite što biste učinili.",
+  "directionsEndings": "Postoji nekoliko završetaka. Kad završite, isprobajte drugi put.",
+  "startOver": "Počni ispočetka",
+  "back": "Jedan korak natrag",
+  "tryAnother": "Isprobaj drugi put",
+  "path": "Put",
+  "scene": "Prizor",
+  "ending": "Završetak",
+  "end": "kraj",
+  "scenesSeen": "Viđeno prizora: {seen} od {total}",
+  "endingReached": "Dosegnut završetak",
+  "addScene": "Dodaj prizor",
+  "newScene": "Novi prizor",
+  "newSceneText": "Opišite što se događa, a zatim svaki izbor povežite s prizorom.",
+  "editingNote": "Uređivanje: prikazani su svi prizori. Izbor je poveznica na # iza koje slijedi ID prizora.",
+  "noScenes": "Dodajte prizor za početak scenarija."
+}

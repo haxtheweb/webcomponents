@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Bočna bilješka",
+    "description": "Bilješka odvojena od okolnog sadržaja, s neobaveznom ikonom i oznakom."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Oznaka",
+        "description": "Oznaka bočne bilješke."
+      },
+      {
+        "title": "Ikona",
+        "description": "Ikona bočne bilješke."
+      },
+      {
+        "title": "Sadržaj",
+        "description": "Sadržaj bočne bilješke."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Boja",
+        "description": "Boja kojom je bočna bilješka obojena."
+      }
+    ]
+  }
+}

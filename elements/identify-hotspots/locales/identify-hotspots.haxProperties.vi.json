@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Xác định điểm nóng",
+    "description": "Người học tìm các điểm đúng trên hình ảnh bằng cách nhấp, chạm hoặc di chuyển tâm ngắm bằng bàn phím. Phiên bản có chấm điểm của bản đồ hình ảnh."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Hình ảnh",
+        "description": "Hình ảnh người học tìm kiếm."
+      },
+      {
+        "title": "Văn bản thay thế",
+        "description": "Mô tả hình ảnh cho những người không thể nhìn thấy nó. Không bao giờ được hiển thị làm tiêu đề."
+      },
+      {
+        "title": "Tiêu đề",
+        "description": "Một tiêu đề ngắn hiển thị phía trên hình ảnh."
+      },
+      {
+        "title": "Câu hỏi",
+        "description": "Những gì người học được yêu cầu tìm trong hình ảnh."
+      },
+      {
+        "title": "Đáp án",
+        "description": "Mỗi đáp án là một hình bầu dục có tên trên hình ảnh. Vị trí và kích thước là phần trăm của hình ảnh, đo từ góc trên bên trái. Khi chỉnh sửa, mọi đáp án đều được viền trên hình ảnh."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Số lần thử",
+        "description": "Số lần người học có thể thử. 0 nghĩa là không giới hạn."
+      },
+      {
+        "title": "Số lần trượt cho phép",
+        "description": "Bao nhiêu lần trượt thì kết thúc một lượt thử. 0 nghĩa là không giới hạn, và người học có nút Hoàn thành."
+      },
+      {
+        "title": "Thu gọn được",
+        "description": "Hiển thị câu hỏi này dưới dạng một hàng có thể mở và đóng. Mở một hàng sẽ đóng các câu hỏi thu gọn khác bên cạnh."
+      },
+      {
+        "title": "Bắt đầu ở dạng thu gọn",
+        "description": "Khi thu gọn được, bắt đầu dưới dạng hàng đóng chỉ hiển thị câu hỏi và trạng thái."
+      },
+      {
+        "title": "Hình thức chấm điểm",
+        "description": "OER Schema: hình thức chấm điểm cho bài đánh giá này (ví dụ: điểm số, điểm chữ, phần trăm, hoàn thành)."
+      },
+      {
+        "title": "Mục tiêu học tập",
+        "description": "OER Schema: mục tiêu học tập gắn với bài đánh giá này."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Tên bài kiểm tra",
+        "description": "Tên bài kiểm tra được truyền vào để nhận dạng mục này trong các môi trường dùng xAPI"
+      },
+      {
+        "title": "Khóa học",
+        "description": "OER Schema: khóa học mà bài đánh giá này hướng tới."
+      }
+    ]
+  }
+}

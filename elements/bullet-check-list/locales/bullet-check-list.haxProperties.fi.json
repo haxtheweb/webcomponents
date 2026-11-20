@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Tarkistuslista",
+    "description": "Valintaruutujen luettelo. Lukijat rastittavat kohtia, ja heidän edistymisensä muistetaan heidän omalla laitteellaan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Otsikko",
+        "description": "Luettelon nimi. Luetaan ääneen valintaruuturyhmän nimenä."
+      },
+      {
+        "title": "Kohteet",
+        "description": "Jokainen kohde on valintaruutu. Lukijat eivät voi muuttaa valittuja tai poistettuja kohteita."
+      },
+      {
+        "title": "Numeroitu",
+        "description": "Näytä numeroitu luettelo luettelomerkityn sijaan."
+      },
+      {
+        "title": "Tila",
+        "description": "Muuttaa värit vastaamaan stop-notea.",
+        "options": {
+          "info": "Ilmoitus",
+          "success": "Vahvistus",
+          "warning": "Varoitus",
+          "stop": "Seis"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "Tallennuksen tunnus",
+        "description": "Yksilöllinen tunnus, jolla lukijan edistyminen muistetaan hänen laitteellaan. Luodaan automaattisesti; muuta vain, jos haluat jakaa edistymisen luetteloiden välillä tai aloittaa alusta."
+      }
+    ]
+  }
+}

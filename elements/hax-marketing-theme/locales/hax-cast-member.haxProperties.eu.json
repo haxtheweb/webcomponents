@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Aktorea",
+    "description": "Publiko bat, pertsonaia batek antzeztua, testuarekin eta botoi batekin"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nor den hau"
+      },
+      {
+        "title": "Pertsonaia mota"
+      },
+      {
+        "title": "Pertsonaiaren hazia"
+      },
+      {
+        "title": "Eszenatokiaren kolorea (DDD izena)"
+      },
+      {
+        "title": "Nora doan botoia"
+      },
+      {
+        "title": "Botoiaren testua"
+      }
+    ]
+  }
+}

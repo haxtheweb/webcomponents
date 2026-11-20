@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Memory-Spill",
+    "description": "Dréit Kaarten ëm, fir Paren ze fannen. Verbannt e Begrëff mat senger Bedeitung, sou datt e Pair Verständnis weist, oder benotzt zwee passend Texter oder Biller."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "D'Opgab am Kapp, zum Beispill: Verbann de Begrëff mat senger Aufgab."
+      },
+      {
+        "title": "Paren",
+        "description": "All Pair sinn zwou Kaarten, déi zesummegehéieren, normalerweis e Begrëff a seng Bedeitung. Eng Säit brauch Text, e Bild oder béides."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Akzentfaarf",
+        "description": "Optional Faarf fir de Kapp-Chip, d'Réckseite vun de Kaarten an de Knäppchen."
+      }
+    ]
+  }
+}

@@ -1,4 +1,6 @@
 {
   "saveAll": "सभी सहेजें",
-  "saveTheFollowing": "निम्नलिखित सहेजें: {list}?"
+  "saveTheFollowing": "निम्नलिखित सहेजें: {list}?",
+  "save": "सहेजें",
+  "cancel": "रद्द करें"
 }

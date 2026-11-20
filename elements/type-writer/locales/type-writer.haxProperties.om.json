@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Maashina barreeffamaa",
     "description": "Barreeffama qubee tokko tokkoon of barreessu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Barreeffama",
+        "description": "Barreeffama erga elementichi gara mul'ataatti sochoofamee booda barreeffamu."
+      },
+      {
+        "title": "Barreessaa jira",
+        "description": "Kursara ibsamaa agarsiisi; elementichi yeroo barreessu kana kaa'a."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Turtii",
+        "description": "Millisekondii osoo barreessuun hin jalqabin dura eegamu."
+      },
+      {
+        "title": "Turtii kursaraa",
+        "description": "Millisekondii kursarri erga barreeffamni barreeffamee booda ibsamuu itti fufu."
+      },
+      {
+        "title": "Saffisa",
+        "description": "Millisekondii qubee tokkoof; lakkoofsi gadi aanaan dafee barreessa."
+      }
+    ]
   }
 }

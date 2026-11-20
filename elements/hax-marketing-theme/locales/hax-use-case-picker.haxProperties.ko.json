@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "용도 선택기",
+    "description": "사이트의 용도를 고르면 해당 시작 사이트로 브라우저에서 HAX를 여는 링크와 그에 맞는 CLI 명령을 받습니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "브라우저용 HAX 주소",
+        "description": "링크가 열리는 곳. ?skeleton=과 &name=이 붙습니다"
+      },
+      {
+        "title": "제외할 시작 사이트",
+        "description": "머신 이름, 쉼표로 구분"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "시작 사이트 목록",
+        "description": "스켈레톤 목록의 주소(app-hax가 읽는 형식)"
+      }
+    ]
+  }
+}

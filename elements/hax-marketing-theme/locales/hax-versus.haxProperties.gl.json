@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Contra",
+    "description": "Texto ao lado dun botón cara a cara con dous personaxes"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Título"
+      },
+      {
+        "title": "A onde leva o botón"
+      },
+      {
+        "title": "Texto do botón"
+      },
+      {
+        "title": "Semente do personaxe da esquerda"
+      },
+      {
+        "title": "Semente do personaxe da dereita"
+      }
+    ]
+  }
+}

@@ -4,7 +4,12 @@
     "description": "Luan përmbajtje interaktive H5P nga një skedar .h5p i ngarkuar, pa nevojën e një serveri H5P"
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "title": "Skedari H5P",
+        "description": "Ngarko ose lidh një skedar .h5p. Hapet në shfletues; nuk nevojitet server H5P."
+      }
+    ],
     "advanced": [
       {
         "title": "Kod i vjetër për ngulitje me iframe",

@@ -1,0 +1,19 @@
+{
+  "label": "Ngwaọrụ mpụga",
+  "labelLti": "Ngwaọrụ mpụga · LTI 1.3",
+  "theTool": "ngwaọrụ ahụ",
+  "directions": "Ntụziaka",
+  "showDirections": "Gosi ntụziaka",
+  "hideDirections": "Zoo ntụziaka",
+  "directionsWindow": "Bọtịnụ ahụ na-emepe windo ọhụrụ nwere ngwaọrụ ahụ n'ime ya.",
+  "directionsEmbed": "Bọtịnụ ahụ na-emepe ngwaọrụ ahụ na peeji a. Ọ bụrụ na ọ bulighị, mepee ya na windo ọhụrụ kama.",
+  "directionsLti": "Saịtị a na-abanye gị na ngwaọrụ ahụ, ya mere ị chọghị akaụntụ dị iche.",
+  "openWindow": "Mepee {title} (windo ọhụrụ)",
+  "openEmbed": "Mepee {title}",
+  "openInstead": "Mepee na windo ọhụrụ kama",
+  "frameTitle": "{title} (ngwaọrụ mpụga)",
+  "openedWindow": "Windo ọhụrụ emeghere nwere ngwaọrụ ahụ.",
+  "openedEmbed": "Ngwaọrụ ahụ emeghere na peeji a.",
+  "needsUrl": "Ngọngọ a chọrọ adreesị mmalite na-amalite na http:// ma ọ bụ https://.",
+  "needsSignIn": "Ngwaọrụ a chọrọ ọrụ nbanye nke saịtị a, nke na-adịghị ebe a. E meghere ihe ọ bụla."
+}

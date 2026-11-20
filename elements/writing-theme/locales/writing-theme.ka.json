@@ -1,0 +1,13 @@
+{
+  "skipToContent": "შინაარსზე გადასვლა",
+  "site": "საიტი",
+  "recentPosts": "ბოლო პოსტები",
+  "moreInArchive": "მეტი არქივში",
+  "byTag": "ტეგის მიხედვით",
+  "posted": "გამოქვეყნდა",
+  "updated": "განახლდა",
+  "tags": "ტეგები",
+  "postsTagged": "პოსტები ტეგით {tag}",
+  "allPosts": "ყველა პოსტი",
+  "madeWithHax": "შექმნილია HAX-ით"
+}

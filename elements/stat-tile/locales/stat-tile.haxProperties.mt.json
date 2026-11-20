@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Madum tal-istatistika",
+    "description": "Numru wieħed li jgħodd, bit-tikketta tiegħu u kif inbidel. Poġġi diversi fi grilja għal ringiela ta' dashboard."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tikketta",
+        "description": "X'ikejjel in-numru."
+      },
+      {
+        "title": "Valur",
+        "description": "In-numru. Numru sempliċi jiġi raggruppat skont il-lingwa tal-paġna; kull ħaġa oħra tidher kif miktuba."
+      },
+      {
+        "title": "Bidla",
+        "description": "Kif inbidel, bil-kliem, bħal 6% dan it-terminu."
+      },
+      {
+        "title": "Direzzjoni",
+        "description": "Jekk il-bidla hijiex 'il fuq jew 'l isfel.",
+        "options": {
+          "": "Xejn",
+          "up": "Fuq",
+          "down": "Isfel"
+        }
+      }
+    ]
+  }
+}

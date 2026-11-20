@@ -1,0 +1,8 @@
+{
+  "theme": "Тақырып",
+  "palette": "Палитра",
+  "themeDefault": "Тақырыптың әдепкісі",
+  "designSystem": "Дизайн жүйесі",
+  "designSystemDefault": "DDD (әдепкі)",
+  "designSystemUnavailable": "Бұл тақырып өз дизайн жүйесін сақтайды"
+}

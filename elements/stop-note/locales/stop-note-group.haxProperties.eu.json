@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Stop oharren taldea",
+    "description": "Pilatu hainbat stop ohar bloke bakar batean ohar bat aldi berean erakusten duena, adibidez Aholkuak edo Berritasunak. Jarraibide-txartelak, alboko oharrak eta aipu markodunak ere pila daitezke haiekin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etiketa",
+        "description": "Pantaila-irakurgailuek iragartzen duten taldearen izena, adibidez Aholkuak edo Berritasunak."
+      },
+      {
+        "title": "Oharrak",
+        "description": "Taldeko stop oharrak. Jarraibide-txartelak, alboko oharrak eta aipu markodunak ere gehi daitezke."
+      }
+    ]
+  }
+}

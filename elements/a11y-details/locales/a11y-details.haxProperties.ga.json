@@ -24,11 +24,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Téacs achoimre roghnach nuair atá na sonraí oscailte"
+        "title": "Téacs achoimre roghnach nuair atá na sonraí oscailte",
+        "description": "Téacs an chnaipe fad atá an cur síos i bhfolach, mar shampla Taispeáin cur síos."
       },
       {
         "property": "closeText",
-        "title": "Téacs achoimre roghnach nuair atá na sonraí dúnta"
+        "title": "Téacs achoimre roghnach nuair atá na sonraí dúnta",
+        "description": "Téacs an chnaipe fad atá an cur síos á thaispeáint, mar shampla Folaigh cur síos."
       }
     ]
   }

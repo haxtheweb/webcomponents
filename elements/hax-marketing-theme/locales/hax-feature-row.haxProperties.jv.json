@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Baris fitur",
+    "description": "Layar produk ing sandhinge apa tegese kanggo panjenengan"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Label cilik"
+      },
+      {
+        "title": "Irah-irahan"
+      },
+      {
+        "title": "Gambar"
+      },
+      {
+        "title": "Apa sing dituduhake gambar"
+      },
+      {
+        "title": "Gambar ing sisih tengen"
+      },
+      {
+        "title": "Warna wewayangan (jeneng DDD, kosong ngetutake palet)"
+      }
+    ]
+  }
+}

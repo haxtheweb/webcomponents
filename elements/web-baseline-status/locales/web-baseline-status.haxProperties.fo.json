@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Baseline-støða",
+    "description": "Vís Baseline-kagastuðulsstøðuna hjá einum eginleika í vevpallinum."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Eginleika-ID",
+        "description": "ID á veveginleikanum, til dømis anchor-positioning. Finn ID á webstatus.dev; ID er seinasti parturin av URL'inum á eini eginleikasíðu."
+      }
+    ]
+  }
+}

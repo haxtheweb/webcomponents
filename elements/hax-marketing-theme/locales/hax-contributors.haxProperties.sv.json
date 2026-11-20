@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Bidragsgivare",
+    "description": "Personerna som byggde projektet, från en namnlistefil"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Namnlistefil (JSON)"
+      },
+      {
+        "title": "Vy: landed, lab eller code"
+      },
+      {
+        "title": "Max antal personer att visa (0 är alla)"
+      }
+    ]
+  }
+}

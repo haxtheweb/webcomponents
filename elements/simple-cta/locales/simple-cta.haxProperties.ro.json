@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Ascunde pictograma",
         "description": "Ascunde pictograma folosită pentru a accentua textul"
+      },
+      {
+        "title": "Aspect",
+        "description": "Cât de accentuat este butonul.",
+        "options": {
+          "": "Plin",
+          "tonal": "Tonal",
+          "outlined": "Conturat",
+          "plain": "Simplu"
+        }
+      },
+      {
+        "title": "Dimensiune",
+        "description": "Dimensiunea butonului.",
+        "options": {
+          "s": "Mic",
+          "": "Mediu",
+          "l": "Mare"
+        }
       }
     ],
     "advanced": [

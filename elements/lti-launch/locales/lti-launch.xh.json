@@ -1,0 +1,19 @@
+{
+  "label": "Isixhobo sangaphandle",
+  "labelLti": "Isixhobo sangaphandle · LTI 1.3",
+  "theTool": "isixhobo",
+  "directions": "Imiyalelo",
+  "showDirections": "Bonisa imiyalelo",
+  "hideDirections": "Fihla imiyalelo",
+  "directionsWindow": "Iqhosha livula ifestile entsha enesixhobo kuyo.",
+  "directionsEmbed": "Iqhosha livula isixhobo kweli phepha. Ukuba asilayishi, sivule kwifestile entsha endaweni yoko.",
+  "directionsLti": "Le sayithi ikungenisa kwisixhobo, ngoko awudingi akhawunti eyahlukileyo.",
+  "openWindow": "Vula i-{title} (ifestile entsha)",
+  "openEmbed": "Vula i-{title}",
+  "openInstead": "Vula kwifestile entsha endaweni yoko",
+  "frameTitle": "{title} (isixhobo sangaphandle)",
+  "openedWindow": "Kuvuleke ifestile entsha enesixhobo.",
+  "openedEmbed": "Isixhobo sivuleke kweli phepha.",
+  "needsUrl": "Le bhloko ifuna idilesi yokuqalisa eqala nge-http:// okanye https://.",
+  "needsSignIn": "Esi sixhobo sifuna inkonzo yokungena yale sayithi, engafumanekiyo apha. Akukho nto ivuliweyo."
+}

@@ -4,7 +4,12 @@
     "description": "Memainkan kandungan interaktif H5P daripada fail .h5p yang dimuat naik, tanpa memerlukan pelayan H5P"
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "title": "Fail H5P",
+        "description": "Muat naik atau pautkan fail .h5p. Ia dibuka dalam pelayar; tiada pelayan H5P diperlukan."
+      }
+    ],
     "advanced": [
       {
         "title": "Kod benam iframe lama",

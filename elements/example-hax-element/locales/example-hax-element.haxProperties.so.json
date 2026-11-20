@@ -1,0 +1,13 @@
+{
+  "gizmo": {
+    "title": "example-hax-element",
+    "description": "Element bilow tusaale ah oo loo isticmaalo muujinta dejinta HAX iyo sifooyinka wax laga beddeli karo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Cinwaan"
+      }
+    ]
+  }
+}

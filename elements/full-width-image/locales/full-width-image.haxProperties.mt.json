@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Immaġni tal-isfond."
+        "description": "Immaġni tal-isfond.",
+        "title": "Immaġni"
       },
       {
         "property": "caption",
-        "description": "Intestatura tat-test."
+        "description": "Intestatura tat-test.",
+        "title": "Didaskalija"
       }
     ]
   }

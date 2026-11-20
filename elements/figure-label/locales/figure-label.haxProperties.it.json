@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Etichetta di figura",
     "description": "Elemento etichetta di figura per contrassegnare le risorse multimediali nei contenuti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Numero della figura",
+        "description": "Numero o breve etichetta per la figura, ad es. 1.3"
+      },
+      {
+        "title": "Descrizione",
+        "description": "Breve descrizione della figura"
+      }
+    ]
   }
 }

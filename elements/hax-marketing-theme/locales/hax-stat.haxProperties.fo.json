@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Hagtal",
+    "description": "Eitt tal, sum telur upp, við heiti og leinki til søguna aftanfyri"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tal at telja upp til"
+      },
+      {
+        "title": "Undan talinum"
+      },
+      {
+        "title": "Aftan á talið"
+      },
+      {
+        "title": "Orð í staðin fyri eitt tal"
+      },
+      {
+        "title": "Hvat tað telur"
+      },
+      {
+        "title": "Søguadressa á hax.cloud (stories/ee450a19)"
+      }
+    ]
+  }
+}

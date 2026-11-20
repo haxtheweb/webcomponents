@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Korsord",
+    "description": "Ett korsord skapat från en lista med ord och ledtrådar. Rutnätet genereras åt dig; eleverna skriver orden och kontrollerar dem."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Titeln eller frågan som visas ovanför korsordet."
+      },
+      {
+        "title": "Ord",
+        "description": "Varje ord och dess ledtråd. Rutnätet genereras från den här listan: det längsta ordet placeras först och de andra korsar det på gemensamma bokstäver."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Försök",
+        "description": "Hur många gånger en elev kan kontrollera. 0 betyder obegränsat."
+      },
+      {
+        "title": "Accentfärg",
+        "description": "Valfri färg för rubriketiketten, det aktiva ordet och åtgärdsknapparna."
+      },
+      {
+        "title": "Hopfällbar",
+        "description": "Visa korsordet som en rad som öppnas och stängs. När en öppnas stängs de andra hopfällbara frågorna bredvid."
+      },
+      {
+        "title": "Börja hopfälld",
+        "description": "När den är hopfällbar börjar den som en stängd rad som bara visar titeln och dess status."
+      },
+      {
+        "title": "Bedömningsformat",
+        "description": "OER Schema: bedömningsformat för den här bedömningen (t.ex. poäng, bokstav, procent, slutförande)."
+      },
+      {
+        "title": "Lärandemål",
+        "description": "OER Schema: lärandemål som hör till den här bedömningen."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Quizets namn",
+        "description": "Quiznamn som används för xAPI-identifiering i analyssystem."
+      },
+      {
+        "title": "Kurs",
+        "description": "OER Schema: kurs som den här bedömningen är avsedd för."
+      }
+    ]
+  }
+}

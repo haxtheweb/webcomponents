@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Baseline நிலை",
+    "description": "ஒரு வலைத்தள அம்சத்தின் Baseline உலாவி ஆதரவு நிலையைக் காட்டு."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "அம்ச ID",
+        "description": "வலை அம்சத்தின் ID, உதாரணமாக anchor-positioning. webstatus.dev-இல் ID-களைக் கண்டறியவும்; ID என்பது அம்சப் பக்க URL-இன் கடைசிப் பகுதி."
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Loo nupp",
+    "description": "Nupp, mis avab väite taga oleva loo saidil hax.cloud või vastava koha mõnel teisel HAX-i võrgustiku saidil"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kuhu see viib",
+        "options": {
+          "cloud": "hax.cloud, lugu",
+          "learn": "learn.hax.cloud, õpetus",
+          "try": "browser.hax.cloud, proovi",
+          "elements": "webcomponents.hax.cloud, plokk",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Aadress sellel saidil (lugu saidil hax.cloud näeb välja nagu stories/ee450a19)"
+      },
+      {
+        "title": "Millest see räägib"
+      },
+      {
+        "title": "Väike kiip"
+      },
+      {
+        "title": "Näita nupus, millest see räägib"
+      }
+    ]
+  }
+}

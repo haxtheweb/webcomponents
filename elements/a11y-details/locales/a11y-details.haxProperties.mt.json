@@ -24,11 +24,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Test tas-sommarju opzjonali meta d-dettalji jkunu miftuħa"
+        "title": "Test tas-sommarju opzjonali meta d-dettalji jkunu miftuħa",
+        "description": "Test tal-buttuna meta d-deskrizzjoni tkun moħbija, bħal Uri d-deskrizzjoni."
       },
       {
         "property": "closeText",
-        "title": "Test tas-sommarju opzjonali meta d-dettalji jkunu magħluqa"
+        "title": "Test tas-sommarju opzjonali meta d-dettalji jkunu magħluqa",
+        "description": "Test tal-buttuna meta d-deskrizzjoni tkun tidher, bħal Aħbi d-deskrizzjoni."
       }
     ]
   }

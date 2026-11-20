@@ -8,5 +8,9 @@
   "theme": "Tema",
   "palette": "Paleta",
   "cancel": "Cancelar",
-  "openAppearanceSettings": "Abrir a configuración de aparencia"
+  "openAppearanceSettings": "Abrir a configuración de aparencia",
+  "designSystem": "Sistema de deseño",
+  "designSystemDefault": "DDD (predeterminado)",
+  "designSystemThemeDefault": "{name} (predeterminado do tema)",
+  "designSystemHelp": "Cor, tipografía, esquinas e densidade. O tema segue a decidir a disposición."
 }

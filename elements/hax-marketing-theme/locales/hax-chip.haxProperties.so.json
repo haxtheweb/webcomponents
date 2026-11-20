@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "Chip",
+    "description": "Astaan yar oo calaamad leh"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Astaan"
+      },
+      {
+        "title": "Calaamad"
+      }
+    ]
+  }
+}

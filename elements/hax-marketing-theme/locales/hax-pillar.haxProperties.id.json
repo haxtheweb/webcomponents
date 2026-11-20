@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Pilar",
+    "description": "Sebuah pilar: nama, frasa, ikon, warna, dan alasan pentingnya"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nama"
+      },
+      {
+        "title": "Frasa"
+      },
+      {
+        "title": "Ikon"
+      },
+      {
+        "title": "Warna (nama DDD)"
+      },
+      {
+        "title": "Pilar yang mana, 1 sampai 7"
+      },
+      {
+        "title": "Kartu kecil"
+      },
+      {
+        "title": "Letak nama"
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Chochitika cha nkhani",
+    "description": "Chochitika chimodzi cha nkhani yanthambi. Lumikizani chisankho chilichonse ku chochitika china ndi # yotsatiridwa ndi ID ya chochitikacho."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID ya chochitika",
+        "description": "Zomwe zisankho zimalumikizana nazo: ulalo wopita ku # wotsatiridwa ndi ID iyi umatsogolera ku chochitika ichi. Zilembo, manambala ndi makansalu."
+      },
+      {
+        "title": "Mutu",
+        "description": "Mutu wa chochitika."
+      },
+      {
+        "title": "Mathero",
+        "description": "Ngati chochitika ichi chimathetsa njira, ndi momwe zinathera.",
+        "options": {
+          "": "Si mathero",
+          "good": "Mathero abwino",
+          "mixed": "Mathero osakanikirana",
+          "poor": "Mathero oipa"
+        }
+      },
+      {
+        "title": "Zigoli",
+        "description": "Zigoli zofika ku mathero awa. Zigoli zapamwamba kwambiri za mathero mu nkhaniyo ndizo zochuluka kwambiri."
+      }
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Membre de la distribution",
+    "description": "Un public, incarné par un personnage, avec du texte et un bouton"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Qui c'est"
+      },
+      {
+        "title": "Type de personnage"
+      },
+      {
+        "title": "Graine du personnage"
+      },
+      {
+        "title": "Couleur de scène (nom DDD)"
+      },
+      {
+        "title": "Destination du bouton"
+      },
+      {
+        "title": "Texte du bouton"
+      }
+    ]
+  }
+}

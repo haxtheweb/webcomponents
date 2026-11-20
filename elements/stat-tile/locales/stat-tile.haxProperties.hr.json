@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Pločica statistike",
+    "description": "Jedan važan broj, s oznakom i načinom na koji se promijenio. Postavite nekoliko u mrežu za redak nadzorne ploče."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Oznaka",
+        "description": "Što broj mjeri."
+      },
+      {
+        "title": "Vrijednost",
+        "description": "Broj. Običan broj grupira se prema jeziku stranice; sve ostalo prikazuje se kako je napisano."
+      },
+      {
+        "title": "Promjena",
+        "description": "Kako se promijenio, riječima, npr. 6% ovaj semestar."
+      },
+      {
+        "title": "Smjer",
+        "description": "Je li promjena prema gore ili prema dolje.",
+        "options": {
+          "": "Nema",
+          "up": "Gore",
+          "down": "Dolje"
+        }
+      }
+    ]
+  }
+}

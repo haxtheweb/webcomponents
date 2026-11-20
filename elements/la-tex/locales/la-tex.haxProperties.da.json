@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "Skriv med den matematiske notation LaTeX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Billedbaggrund",
+        "description": "Baggrund bag tegnede billeder. Automatisk tilføjer kun en, når tegningen ville være svær at se på siden, f.eks. mørke streger i mørk tilstand.",
+        "options": {
+          "auto": "Automatisk",
+          "light": "Lys",
+          "dark": "Mørk",
+          "none": "Ingen"
+        }
+      }
+    ]
   }
 }

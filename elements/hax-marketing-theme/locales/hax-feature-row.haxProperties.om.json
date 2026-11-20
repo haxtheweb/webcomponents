@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Tarree amalaa",
+    "description": "Iskiriinii oomishaa waan inni siif jedhu cinaatti"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Maqaa xiqqaa"
+      },
+      {
+        "title": "Mata-duree"
+      },
+      {
+        "title": "Fakkii"
+      },
+      {
+        "title": "Waan fakkiin agarsiisu"
+      },
+      {
+        "title": "Fakkii gara mirgaa"
+      },
+      {
+        "title": "Halluu gaaddisaa (maqaa DDD, duwwaan paleetii hordofa)"
+      }
+    ]
+  }
+}

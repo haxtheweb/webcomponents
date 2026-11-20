@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Mutambo wendangariro",
+    "description": "Pidigura makadhi kuti uwane vaviri. Batanidza izwi nerevo yaro kuti kuenderana kuratidze kunzwisisa, kana shandisa mavara kana mifananidzo miviri inoenderana."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Musoro",
+        "description": "Murayiridzo unoratidzwa pamusoro, semuenzaniso: Batanidza izwi nebasa raro."
+      },
+      {
+        "title": "Vaviri",
+        "description": "Vaviri vamwe nevamwe imakadhi maviri anoenderana, kazhinji izwi nerevo yaro. Rutivi runoda mavara, mufananidzo, kana zvese."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ruvara rwekusimbisa",
+        "description": "Ruvara rwesarudzo rwechip yemusoro, kumashure kwemakadhi nebhatani."
+      }
+    ]
+  }
+}

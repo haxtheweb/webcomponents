@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Radar diagrammasy",
+    "description": "HEOSAT ýaly kämillik modelleri we tarap boýunça bahalandyrmak üçin radar (möý tory) diagrammasy. Alternatiw tekst we maglumat tablisasy bar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sözbaşy",
+        "description": "Diagrammanyň sözbaşysy; onuň elýeterli ady hökmünde hem ulanylýar."
+      },
+      {
+        "title": "Iň ýokary bal",
+        "description": "Şkaladaky iň ýokary baha."
+      },
+      {
+        "title": "Kategoriýalar",
+        "description": "Her setirde bir kategoriýa. Azyndan 3 gerek."
+      },
+      {
+        "title": "Ballar",
+        "description": "Otur bilen bölünen sanlar, şol bir tertipde her kategoriýa üçin bir san."
+      },
+      {
+        "title": "Maksat ballary",
+        "description": "Otur bilen bölünen sanlar, şol bir tertipde her kategoriýa üçin bir san."
+      },
+      {
+        "title": "Şertli belgileri görkez",
+        "description": "Ballary we maksatlary atlandyrýan şertli belgileri görkez."
+      },
+      {
+        "title": "Ykjam",
+        "description": "Belliksiz, şertli belgisiz ýa-da maglumat tablisasyz kiçi diagramma. Bahalaryny görmek üçin nokadyň üstüne getiriň."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Bal belligi",
+        "description": "Ballar üçin şertli belgi we tablisa belligi."
+      },
+      {
+        "title": "Maksat belligi",
+        "description": "Maksatlar üçin şertli belgi we tablisa belligi."
+      }
+    ]
+  }
+}

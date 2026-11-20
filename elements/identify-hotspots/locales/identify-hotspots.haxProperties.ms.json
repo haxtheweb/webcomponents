@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Kenal pasti titik panas",
+    "description": "Pelajar mencari tempat yang betul pada imej dengan mengklik, mengetik atau menggerakkan penanda silang papan kekunci. Rakan bergred kepada peta imej."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Imej",
+        "description": "Gambar yang dicari oleh pelajar."
+      },
+      {
+        "title": "Teks alternatif",
+        "description": "Menghuraikan gambar untuk orang yang tidak dapat melihatnya. Ia tidak pernah dipaparkan sebagai tajuk."
+      },
+      {
+        "title": "Tajuk",
+        "description": "Tajuk pendek yang kelihatan, dipaparkan di atas gambar."
+      },
+      {
+        "title": "Soalan",
+        "description": "Apa yang pelajar diminta cari dalam gambar."
+      },
+      {
+        "title": "Jawapan",
+        "description": "Setiap jawapan ialah bujur bernama pada gambar. Kedudukan dan saiz ialah peratusan gambar, diukur dari bucu kiri atasnya. Semasa menyunting, setiap jawapan digariskan pada gambar."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Cubaan",
+        "description": "Berapa kali pelajar boleh mencuba. 0 bermaksud tanpa had."
+      },
+      {
+        "title": "Kesilapan yang dibenarkan",
+        "description": "Berapa banyak kesilapan yang menamatkan cubaan. 0 bermaksud tanpa had, dan pelajar mendapat butang Selesai."
+      },
+      {
+        "title": "Boleh dilipat",
+        "description": "Tunjukkan soalan ini sebagai baris yang boleh dibuka dan ditutup. Membuka satu akan menutup soalan boleh lipat lain di sebelahnya."
+      },
+      {
+        "title": "Mula dalam keadaan dilipat",
+        "description": "Apabila boleh dilipat, mula sebagai baris tertutup yang hanya menunjukkan soalan dan statusnya."
+      },
+      {
+        "title": "Format penggredan",
+        "description": "OER Schema: format penggredan untuk penilaian ini (cth. mata, huruf, peratus, penyiapan)."
+      },
+      {
+        "title": "Objektif pembelajaran",
+        "description": "OER Schema: objektif pembelajaran yang dikaitkan dengan penilaian ini."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Nama kuiz",
+        "description": "Nama kuiz yang dihantar untuk digunakan dalam persekitaran berasaskan xAPI bagi mengenal pasti item ini"
+      },
+      {
+        "title": "Kursus",
+        "description": "OER Schema: kursus yang dimaksudkan untuk penilaian ini."
+      }
+    ]
+  }
+}

@@ -3,5 +3,6 @@
   "zoomOut": "缩小",
   "rotateRight": "往右转",
   "mirrorImage": "镜像图片",
-  "openInNewWindow": "勒新窗口打开"
+  "openInNewWindow": "勒新窗口打开",
+  "imageTools": "图片工具"
 }

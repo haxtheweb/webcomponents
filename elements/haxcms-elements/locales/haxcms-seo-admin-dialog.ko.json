@@ -6,6 +6,8 @@
   "faviconDescription": "브라우저 탭 이미지 / 휴대폰에서 작은 사이트 로고로 사용",
   "domain": "도메인",
   "domainDescription": "이 웹사이트의 도메인",
+  "sameAs": "이 사이트의 다른 프로필",
+  "sameAsDescription": "다른 곳(GitHub, LinkedIn, YouTube, Mastodon)에 있는 이 사이트나 조직의 프로필 링크를 한 줄에 하나씩 입력하세요. 검색 엔진은 이를 사용해 해당 프로필을 이 사이트와 연결합니다.",
   "language": "언어",
   "languageDescription": "이 사이트의 언어입니다. 이름이나 코드로 검색하거나 fr-CA와 같은 다른 코드를 입력하세요.",
   "googleAnalyticsId": "Google Analytics ID",

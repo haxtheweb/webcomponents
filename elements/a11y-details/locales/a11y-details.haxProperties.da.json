@@ -24,11 +24,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Valgfri resumétekst, når detaljerne er åbne"
+        "title": "Valgfri resumétekst, når detaljerne er åbne",
+        "description": "Knaptekst, mens beskrivelsen er skjult, f.eks. Vis beskrivelse."
       },
       {
         "property": "closeText",
-        "title": "Valgfri resumétekst, når detaljerne er lukkede"
+        "title": "Valgfri resumétekst, når detaljerne er lukkede",
+        "description": "Knaptekst, mens beskrivelsen vises, f.eks. Skjul beskrivelse."
       }
     ]
   }

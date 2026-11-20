@@ -2,5 +2,9 @@
   "answerInCorrectOrder": "Cevap doğru sırada",
   "answerInIncorrectOrder": "Cevap yanlış sırada",
   "moveOptionUp": "Seçeneği sırada yukarı taşımak için seçin",
-  "moveOptionDown": "Seçeneği sırada aşağı taşımak için seçin"
+  "moveOptionDown": "Seçeneği sırada aşağı taşımak için seçin",
+  "moveEarlier": "Öne taşı",
+  "moveLater": "Sona taşı",
+  "correct": "Doğru",
+  "incorrect": "Yanlış"
 }

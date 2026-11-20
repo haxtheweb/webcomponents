@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Ɓoye gunki",
         "description": "Ɓoye gunkin da ake amfani da shi don ƙawata rubutu"
+      },
+      {
+        "title": "Kamanni",
+        "description": "Yawan fifikon da maɓallin yake da shi.",
+        "options": {
+          "": "An cika",
+          "tonal": "Mai launi",
+          "outlined": "Mai zayyana",
+          "plain": "Mai sauƙi"
+        }
+      },
+      {
+        "title": "Girma",
+        "description": "Girman maɓalli.",
+        "options": {
+          "s": "Ƙarami",
+          "": "Matsakaici",
+          "l": "Babba"
+        }
       }
     ],
     "advanced": [

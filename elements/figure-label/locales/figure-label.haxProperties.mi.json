@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Tapanga whakaahua",
     "description": "Huānga tapanga whakaahua hei tohu i ngā rawa pāpāho i roto i ngā ihirangi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tau whakaahua",
+        "description": "He tau, he tapanga poto rānei mō te whakaahua, hei tauira 1.3"
+      },
+      {
+        "title": "Whakaahuatanga",
+        "description": "He whakaahuatanga poto o te whakaahua"
+      }
+    ]
   }
 }

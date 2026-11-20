@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Číselná otázka",
+    "description": "Otázka, na kterou se odpovídá číslem. Odpověď je pevné číslo nebo vzorec vypočtený z proměnných a počítá se, pokud je v rámci tolerance."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Otázka",
+        "description": "Na co se studentů ptáte. Napište název proměnné do složených závorek, například {d}, a zobrazí se její hodnota."
+      },
+      {
+        "title": "Jednotka",
+        "description": "Zobrazeno jako text vedle pole odpovědi, například km/h."
+      },
+      {
+        "title": "Odpověď",
+        "description": "Správné číslo. Ponechte prázdné, pokud odpověď vypočítá vzorec."
+      },
+      {
+        "title": "Vzorec",
+        "description": "Vypočítá odpověď z proměnných, například d / (t / 60). Může používat + - * / ^, závorky, sqrt() a abs(). Je-li nastaven, použije se místo odpovědi."
+      },
+      {
+        "title": "Proměnné",
+        "description": "Čísla, která používá vzorec a otázka. Každé nabývá hodnoty mezi nejnižší a nejvyšší, po krocích."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tolerance",
+        "description": "Jak daleko od přesné odpovědi se ještě počítá. 0 znamená přesně, nebo zaokrouhleno na desetinná místa níže."
+      },
+      {
+        "title": "Typ tolerance",
+        "description": "Absolutní: plus minus tolerance. Procentní: plus minus tolik procent přesné odpovědi.",
+        "options": {
+          "absolute": "Absolutní",
+          "percent": "Procentní"
+        }
+      },
+      {
+        "title": "Desetinná místa",
+        "description": "Studenti mají zaokrouhlit na tolik míst a odpověď se zobrazí takto zaokrouhlená. Ponechte prázdné pro žádné zaokrouhlení."
+      },
+      {
+        "title": "Pokusy",
+        "description": "Kolikrát může student kontrolovat. 0 znamená neomezeně."
+      },
+      {
+        "title": "Nová čísla při každém pokusu",
+        "description": "Vylosovat nové hodnoty proměnných pokaždé, když to student zkusí znovu. Jeho dřívější odpověď se pak po návratu nezobrazí, jen to, zda odpověděl správně."
+      },
+      {
+        "title": "Sbalitelné",
+        "description": "Zobrazit tuto otázku jako řádek, který se otevírá a zavírá. Otevření jednoho zavře ostatní sbalitelné otázky vedle něj."
+      },
+      {
+        "title": "Začít sbalené",
+        "description": "Je-li sbalitelné, začít jako zavřený řádek, který ukazuje jen otázku a stav."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Název kvízu",
+        "description": "Název kvízu používaný k identifikaci xAPI v analytických systémech."
+      }
+    ]
+  }
+}

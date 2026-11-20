@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Elenco puntato di controllo",
+    "description": "Un elenco di caselle di controllo. I lettori spuntano gli elementi e i loro progressi vengono ricordati sul loro dispositivo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titolo",
+        "description": "Nome dell'elenco. Viene letto ad alta voce come etichetta del gruppo di caselle."
+      },
+      {
+        "title": "Elementi",
+        "description": "Ogni elemento è una casella di controllo. Gli elementi spuntati o disattivati non possono essere modificati dai lettori."
+      },
+      {
+        "title": "Numerato",
+        "description": "Mostra un elenco numerato invece di uno puntato."
+      },
+      {
+        "title": "Stato",
+        "description": "Cambia i colori in modo che corrispondano a stop-note.",
+        "options": {
+          "info": "Avviso",
+          "success": "Conferma",
+          "warning": "Attenzione",
+          "stop": "Stop"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "Id di archiviazione",
+        "description": "Id univoco usato per ricordare i progressi del lettore sul suo dispositivo. Generato automaticamente; cambialo solo per condividere i progressi tra elenchi o per ricominciare da zero."
+      }
+    ]
+  }
+}

@@ -3,5 +3,7 @@
   "status_stop": "Waqqaf",
   "status_warning": "Twissija",
   "status_success": "Suċċess",
-  "status_info": "Nota"
+  "status_info": "Nota",
+  "status_tip": "Kont taf?",
+  "status_new": "X'hemm ġdid"
 }

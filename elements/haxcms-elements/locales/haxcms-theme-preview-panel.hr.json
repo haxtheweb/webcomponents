@@ -8,5 +8,9 @@
   "theme": "Tema",
   "palette": "Paleta",
   "cancel": "Odustani",
-  "openAppearanceSettings": "Otvori postavke izgleda"
+  "openAppearanceSettings": "Otvori postavke izgleda",
+  "designSystem": "Sustav dizajna",
+  "designSystemDefault": "DDD (zadano)",
+  "designSystemThemeDefault": "{name} (zadano za temu)",
+  "designSystemHelp": "Boja, tipografija, kutovi i gustoća. Raspored i dalje određuje tema."
 }

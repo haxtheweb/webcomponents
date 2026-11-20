@@ -3,5 +3,7 @@
   "status_stop": "ਰੁਕੋ",
   "status_warning": "ਚੇਤਾਵਨੀ",
   "status_success": "ਸਫਲਤਾ",
-  "status_info": "ਨੋਟ"
+  "status_info": "ਨੋਟ",
+  "status_tip": "ਕੀ ਤੁਸੀਂ ਜਾਣਦੇ ਹੋ?",
+  "status_new": "ਨਵਾਂ ਕੀ ਹੈ"
 }

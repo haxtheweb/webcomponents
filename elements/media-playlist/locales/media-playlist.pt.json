@@ -5,5 +5,7 @@
   "editModeLabel": "Modo de edição da lista de reprodução de mídia",
   "position": "{current} de {total}",
   "previousItem": "Item anterior",
-  "nextItem": "Item seguinte"
+  "nextItem": "Item seguinte",
+  "fullScreen": "Tela cheia",
+  "exitFullScreen": "Sair da tela cheia"
 }

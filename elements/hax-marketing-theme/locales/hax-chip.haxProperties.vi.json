@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "Chip",
+    "description": "Một biểu tượng nhỏ có nhãn"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Biểu tượng"
+      },
+      {
+        "title": "Nhãn"
+      }
+    ]
+  }
+}

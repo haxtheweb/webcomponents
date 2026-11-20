@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Kolpunt-kontrolelys",
+    "description": "'n Lys merkblokkies. Lesers merk items af en hul vordering word op hul eie toestel onthou."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Naam van die lys. Hardop gelees as die etiket van die groep merkblokkies."
+      },
+      {
+        "title": "Items",
+        "description": "Elke item is 'n merkblokkie. Gemerkte of gedeaktiveerde items kan nie deur lesers verander word nie."
+      },
+      {
+        "title": "Genommer",
+        "description": "Wys 'n genommerde lys in plaas van 'n kolpuntlys."
+      },
+      {
+        "title": "Status",
+        "description": "Verander die kleure om by stop-note te pas.",
+        "options": {
+          "info": "Kennisgewing",
+          "success": "Bevestiging",
+          "warning": "Waarskuwing",
+          "stop": "Stop"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "Bergings-ID",
+        "description": "Unieke ID wat gebruik word om lesers se vordering op hul toestel te onthou. Outomaties gegenereer; verander dit net om vordering tussen lyste te deel of om vars te begin."
+      }
+    ]
+  }
+}

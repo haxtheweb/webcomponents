@@ -1,0 +1,8 @@
+{
+  "theme": "थीम",
+  "palette": "पॅलेट",
+  "themeDefault": "थीम डीफॉल्ट",
+  "designSystem": "डिझाइन सिस्टम",
+  "designSystemDefault": "DDD (डीफॉल्ट)",
+  "designSystemUnavailable": "ही थीम स्वतःची डिझाइन सिस्टम ठेवते"
+}

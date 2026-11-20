@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Фонавая выява."
+        "description": "Фонавая выява.",
+        "title": "Выява"
       },
       {
         "property": "caption",
-        "description": "Тэкставы загаловак."
+        "description": "Тэкставы загаловак.",
+        "title": "Подпіс"
       }
     ]
   }

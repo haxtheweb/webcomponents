@@ -13,7 +13,10 @@
       {
         "property": "modifier",
         "title": "Media tikraq",
-        "description": "Munaspa churana media tikraq. Kay licencia mayqin media layaman chayasqanta niykun."
+        "description": "Munaspa churana media tikraq. Kay licencia mayqin media layaman chayasqanta niykun.",
+        "options": {
+          "": "Mana tikraqniyuq"
+        }
       },
       {
         "property": "uri",

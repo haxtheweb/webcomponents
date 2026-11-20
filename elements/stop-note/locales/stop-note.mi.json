@@ -3,5 +3,7 @@
   "status_stop": "Whakamutua",
   "status_warning": "Whakatūpato",
   "status_success": "Angitu",
-  "status_info": "Tuhipoka"
+  "status_info": "Tuhipoka",
+  "status_tip": "I mōhio koe?",
+  "status_new": "He aha ngā mea hou"
 }

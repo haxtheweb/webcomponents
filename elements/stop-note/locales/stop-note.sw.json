@@ -3,5 +3,7 @@
   "status_stop": "Simama",
   "status_warning": "Onyo",
   "status_success": "Mafanikio",
-  "status_info": "Kumbuka"
+  "status_info": "Kumbuka",
+  "status_tip": "Je, ulijua?",
+  "status_new": "Kipya ni nini"
 }

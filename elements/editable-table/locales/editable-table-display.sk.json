@@ -3,5 +3,8 @@
   "copyAsCsv": "Kopírovať ako CSV.",
   "printTable": "Vytlačiť tabuľku",
   "selectColumn": "Vybrať stĺpec",
-  "dataTable": "Údaje · Tabuľka"
+  "dataTable": "Údaje · Tabuľka",
+  "filterStatus": "Zobrazuje sa {shown} z {total} riadkov, filtrované podľa {column}: {text}",
+  "columnNumber": "Stĺpec {column}",
+  "clearFilter": "Zrušiť filter"
 }

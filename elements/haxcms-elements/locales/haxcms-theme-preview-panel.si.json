@@ -8,5 +8,9 @@
   "theme": "තේමාව",
   "palette": "වර්ණ තලය",
   "cancel": "අවලංගු කරන්න",
-  "openAppearanceSettings": "පෙනුම් සැකසුම් විවෘත කරන්න"
+  "openAppearanceSettings": "පෙනුම් සැකසුම් විවෘත කරන්න",
+  "designSystem": "නිර්මාණ පද්ධතිය",
+  "designSystemDefault": "DDD (පෙරනිමි)",
+  "designSystemThemeDefault": "{name} (තේමා පෙරනිමිය)",
+  "designSystemHelp": "වර්ණය, අකුරු, කොන් සහ ඝනත්වය. පිරිසැලසුම තවමත් තීරණය කරන්නේ තේමාවයි."
 }

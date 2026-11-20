@@ -13,7 +13,10 @@
       {
         "property": "modifier",
         "title": "Mediamodificator",
-        "description": "Optionele modificator voor mediadomein. Geeft aan op welk type media deze licentie van toepassing is."
+        "description": "Optionele modificator voor mediadomein. Geeft aan op welk type media deze licentie van toepassing is.",
+        "options": {
+          "": "Geen modifier"
+        }
       },
       {
         "property": "uri",

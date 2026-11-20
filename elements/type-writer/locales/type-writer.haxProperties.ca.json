@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Màquina d’escriure",
     "description": "Text que s’escriu tot sol, un caràcter cada vegada."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Text",
+        "description": "El text que s'escriurà quan l'element entri a la vista."
+      },
+      {
+        "title": "Escrivint",
+        "description": "Mostra el cursor parpellejant; l'element ho activa mentre escriu."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Retard",
+        "description": "Mil·lisegons d'espera abans que comenci a escriure."
+      },
+      {
+        "title": "Durada del cursor",
+        "description": "Mil·lisegons que el cursor continua parpellejant després d'escriure el text."
+      },
+      {
+        "title": "Velocitat",
+        "description": "Mil·lisegons per caràcter; com més baix el nombre, més ràpid escriu."
+      }
+    ]
   }
 }

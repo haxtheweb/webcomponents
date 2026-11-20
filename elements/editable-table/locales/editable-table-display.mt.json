@@ -3,5 +3,8 @@
   "copyAsCsv": "Ikkopja bħala CSV.",
   "printTable": "Ipprintja t-Tabella",
   "selectColumn": "Agħżel Kolonna",
-  "dataTable": "Dejta · Tabella"
+  "dataTable": "Dejta · Tabella",
+  "filterStatus": "Qed juri {shown} minn {total} ringieli, iffiltrati skont {column}: {text}",
+  "columnNumber": "Kolonna {column}",
+  "clearFilter": "Neħħi l-filtru"
 }

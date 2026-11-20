@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Mitwirkende",
+    "description": "Die Menschen, die das Projekt gebaut haben, aus einer Personenliste"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Personenliste (JSON)"
+      },
+      {
+        "title": "Ansicht: landed, lab oder code"
+      },
+      {
+        "title": "Höchstzahl angezeigter Personen (0 = alle)"
+      }
+    ]
+  }
+}

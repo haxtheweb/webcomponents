@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Baris ciri",
+    "description": "Skrin produk di sebelah maknanya untuk anda"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Label kecil"
+      },
+      {
+        "title": "Tajuk"
+      },
+      {
+        "title": "Gambar"
+      },
+      {
+        "title": "Apa yang ditunjukkan oleh gambar"
+      },
+      {
+        "title": "Gambar di sebelah kanan"
+      },
+      {
+        "title": "Warna bayang (nama DDD, kosong mengikut palet)"
+      }
+    ]
+  }
+}

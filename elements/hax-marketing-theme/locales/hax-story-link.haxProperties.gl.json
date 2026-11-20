@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Botón de historia",
+    "description": "O botón que abre a historia detrás dunha afirmación en hax.cloud, ou o lugar correspondente noutro sitio da rede HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "A onde leva",
+        "options": {
+          "cloud": "hax.cloud, a historia",
+          "learn": "learn.hax.cloud, un titorial",
+          "try": "browser.hax.cloud, próbao",
+          "elements": "webcomponents.hax.cloud, un bloque",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Enderezo nese sitio (unha historia en hax.cloud ten a forma stories/ee450a19)"
+      },
+      {
+        "title": "De que trata"
+      },
+      {
+        "title": "Etiqueta pequena"
+      },
+      {
+        "title": "Mostrar de que trata no botón"
+      }
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Sidenote",
+    "description": "En note adskilt fra det omgivende indhold, med valgfrit ikon og etiket."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etiket",
+        "description": "Sidenotens etiket."
+      },
+      {
+        "title": "Ikon",
+        "description": "Sidenotens ikon."
+      },
+      {
+        "title": "Indhold",
+        "description": "Sidenotens indhold."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Farve",
+        "description": "Den farve, sidenoten er tonet med."
+      }
+    ]
+  }
+}

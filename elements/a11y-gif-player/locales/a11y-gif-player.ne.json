@@ -2,5 +2,9 @@
   "toggleAnimation": "एनिमेसन खोल्नुहोस्/बन्द गर्नुहोस्",
   "info": "जानकारी",
   "image": "तस्बिर",
-  "animatedGif": "एनिमेटेड GIF"
+  "animatedGif": "एनिमेटेड GIF",
+  "playAnimation": "एनिमेसन प्ले गर्नुहोस्",
+  "pauseAnimation": "एनिमेसन पज गर्नुहोस्",
+  "showDescription": "विवरण देखाउनुहोस्",
+  "hideDescription": "विवरण लुकाउनुहोस्"
 }

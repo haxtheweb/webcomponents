@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Stûn",
+    "description": "Stûnek: nav, hevok, îkon, reng û çima girîng e"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nav"
+      },
+      {
+        "title": "Hevok"
+      },
+      {
+        "title": "Îkon"
+      },
+      {
+        "title": "Reng (navê DDD)"
+      },
+      {
+        "title": "Kîjan stûn, 1 heta 7"
+      },
+      {
+        "title": "Karta biçûk"
+      },
+      {
+        "title": "Nav diçe ku derê"
+      }
+    ]
+  }
+}

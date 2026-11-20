@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Jaantus qoraal ka yimid",
+    "description": "Qor jaantus qoraal ahaan (Mermaid): flowchart, sequence, timeline iyo wax kale. Waxaa lagu sawiraa bogga oo leh beddel qoraal ah."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Cinwaan",
+        "description": "Wuxuu ka muuqdaa jaantuska korkiisa waxaana loo isticmaalaa magaciisa."
+      },
+      {
+        "title": "Isha jaantuska",
+        "description": "Qoraal Mermaid, tusaale: flowchart TD, kadibna hal sadar link kasta sida A[Draft] --> B{Ready?}. Ku dar |label| fallaadh kadib si aad calaamad u siiso. Sawirku wuu cusboonaadaa inta aad qorayso."
+      },
+      {
+        "title": "Beddel qoraal ah",
+        "description": "Sharax waxa jaantusku muujinayo dadka aan arki karin. Flowchart-ka ka tag madhan si tallaabooyinkiisa laguugu taxo."
+      },
+      {
+        "title": "Qoraal sharraxaad",
+        "description": "Qoraal sharraxaad ikhtiyaari ah oo ka muuqda jaantuska hoostiisa."
+      },
+      {
+        "title": "Muuji isha",
+        "description": "Muuji qoraalka jaantuska sawirka agtiisa."
+      },
+      {
+        "title": "Muuji beddelka qoraalka",
+        "description": "Muuji beddelka qoraalka sawirka hoostiisa. Had iyo jeer waa u diyaar akhriyeyaasha shaashadda."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Faylka isha",
+        "description": "Cinwaanka fayl .mmd ah oo la sawirayo halkii qoraalka sare (https ama waddo goobtan ku taal)."
+      },
+      {
+        "title": "Midabka xoojinta",
+        "description": "Midabka chip-ka astaanta ee madaxa."
+      }
+    ]
+  }
+}

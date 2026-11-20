@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Írógép",
     "description": "Szöveg, amely karakterenként írja ki magát."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Szöveg",
+        "description": "A szöveg, amely kigépelődik, amint az elem a látótérbe görgetődik."
+      },
+      {
+        "title": "Gépelés",
+        "description": "A villogó kurzor megjelenítése; az elem gépelés közben beállítja."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Késleltetés",
+        "description": "A gépelés kezdete előtti várakozás ezredmásodpercben."
+      },
+      {
+        "title": "Kurzor időtartama",
+        "description": "Hány ezredmásodpercig villog a kurzor a szöveg kigépelése után."
+      },
+      {
+        "title": "Sebesség",
+        "description": "Ezredmásodperc karakterenként; a kisebb szám gyorsabb gépelést jelent."
+      }
+    ]
   }
 }

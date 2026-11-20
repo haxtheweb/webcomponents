@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Pīlārs",
+    "description": "Pīlārs: nosaukums, frāze, ikona, krāsa un kāpēc tas ir svarīgs"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nosaukums"
+      },
+      {
+        "title": "Frāze"
+      },
+      {
+        "title": "Ikona"
+      },
+      {
+        "title": "Krāsa (DDD nosaukums)"
+      },
+      {
+        "title": "Kurš pīlārs, no 1 līdz 7"
+      },
+      {
+        "title": "Maza kartīte"
+      },
+      {
+        "title": "Kur atrodas nosaukums"
+      }
+    ]
+  }
+}

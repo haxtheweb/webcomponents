@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "Scrieți folosind notația matematică LaTeX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Fundal pentru imagine",
+        "description": "Fundal în spatele imaginilor desenate. Automat adaugă unul doar când desenul ar fi greu de văzut pe pagină, de exemplu linii întunecate în modul întunecat.",
+        "options": {
+          "auto": "Automat",
+          "light": "Luminos",
+          "dark": "Întunecat",
+          "none": "Niciuna"
+        }
+      }
+    ]
   }
 }

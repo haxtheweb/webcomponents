@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Lettore di documentazione",
+    "description": "Guida, demo e riferimento per un web component, con pulsanti di copia per HTML, import, npm e CDN."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "File di dati della documentazione",
+        "description": "I dati della documentazione inclusi con l'elemento (lib/tag.docs.json)."
+      },
+      {
+        "title": "Storyboard della guida",
+        "description": "Lo storyboard animato incluso con l'elemento (tag.motion.json). Facoltativo."
+      },
+      {
+        "title": "Tutorial video",
+        "description": "Un breve video sull'elemento (YouTube, Vimeo o un file video). Sostituisce il video nei dati della documentazione."
+      },
+      {
+        "title": "Apri sulla scheda",
+        "description": "Quale scheda viene mostrata per prima.",
+        "options": {
+          "motion": "Guida",
+          "video": "Video",
+          "demo": "Demo",
+          "docs": "Documentazione",
+          "schema": "Schema"
+        }
+      },
+      {
+        "title": "Avvia automaticamente la guida",
+        "description": "Avvia la guida appena compare il lettore. Ignorato se il lettore preferisce movimenti ridotti."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Argomento della guida",
+        "description": "Per gli elementi con più guide, quale argomento aprire per primo (ad esempio add-blocks). Lascia vuoto per quella principale."
+      },
+      {
+        "title": "Link alla demo dal vivo",
+        "description": "Dove porta il pulsante Apri sorgente della demo. Per impostazione predefinita, la cartella demo nel repository."
+      },
+      {
+        "title": "Link alla documentazione",
+        "description": "Dove porta il pulsante della documentazione completa, ad esempio la pagina Learn HAX corrispondente."
+      }
+    ]
+  }
+}

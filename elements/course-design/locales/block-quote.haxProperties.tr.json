@@ -20,6 +20,12 @@
         "title": "Görsel",
         "description": "Alıntıyla birlikte gösterilen görsel."
       }
+    ],
+    "advanced": [
+      {
+        "title": "Çerçeveli",
+        "description": "Alıntıyı, üstünde simge ve etiketle ortak blok çerçevesine çizin; böylece notlar ve yönerge kartlarıyla uyumlu olur."
+      }
     ]
   }
 }

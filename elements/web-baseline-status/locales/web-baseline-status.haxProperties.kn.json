@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Baseline ಸ್ಥಿತಿ",
+    "description": "ವೆಬ್ ಪ್ಲಾಟ್‌ಫಾರ್ಮ್ ವೈಶಿಷ್ಟ್ಯದ Baseline ಬ್ರೌಸರ್ ಬೆಂಬಲ ಸ್ಥಿತಿಯನ್ನು ತೋರಿಸಿ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ವೈಶಿಷ್ಟ್ಯ ID",
+        "description": "ವೆಬ್ ವೈಶಿಷ್ಟ್ಯದ ID, ಉದಾಹರಣೆಗೆ anchor-positioning. webstatus.dev ನಲ್ಲಿ ID ಗಳನ್ನು ಹುಡುಕಿ; ID ವೈಶಿಷ್ಟ್ಯ ಪುಟದ URL ನ ಕೊನೆಯ ಭಾಗ."
+      }
+    ]
+  }
+}

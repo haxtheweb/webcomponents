@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Ratsjárrit",
+    "description": "Ratsjárrit (köngulóarrit) fyrir þroskalíkön og stigagjöf eftir þáttum, svo sem HEOSAT. Inniheldur textavalkost og gagnatöflu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titill",
+        "description": "Fyrirsögn ritsins; einnig notuð sem aðgengilegt heiti þess."
+      },
+      {
+        "title": "Hámarksstig",
+        "description": "Hæsta gildi kvarðans."
+      },
+      {
+        "title": "Flokkar",
+        "description": "Einn flokkur í hverri línu. Þarf að minnsta kosti 3."
+      },
+      {
+        "title": "Stig",
+        "description": "Tölur aðskildar með kommum, ein fyrir hvern flokk í sömu röð."
+      },
+      {
+        "title": "Markstig",
+        "description": "Tölur aðskildar með kommum, ein fyrir hvern flokk í sömu röð."
+      },
+      {
+        "title": "Sýna skýringar",
+        "description": "Sýna skýringar sem nefna stigin og markmiðin."
+      },
+      {
+        "title": "Þétt",
+        "description": "Minna rit án merkja, skýringa eða gagnatöflu. Bentu á punkt til að sjá gildi hans."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Merki stiga",
+        "description": "Merki í skýringum og töflu fyrir stigin."
+      },
+      {
+        "title": "Merki markmiða",
+        "description": "Merki í skýringum og töflu fyrir markmiðin."
+      }
+    ]
+  }
+}

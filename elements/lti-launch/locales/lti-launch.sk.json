@@ -1,0 +1,19 @@
+{
+  "label": "Externý nástroj",
+  "labelLti": "Externý nástroj · LTI 1.3",
+  "theTool": "nástroj",
+  "directions": "Pokyny",
+  "showDirections": "Zobraziť pokyny",
+  "hideDirections": "Skryť pokyny",
+  "directionsWindow": "Tlačidlo otvorí nové okno s nástrojom.",
+  "directionsEmbed": "Tlačidlo otvorí nástroj na tejto stránke. Ak sa nenačíta, otvorte ho radšej v novom okne.",
+  "directionsLti": "Táto stránka vás do nástroja prihlási, takže nepotrebujete samostatný účet.",
+  "openWindow": "Otvoriť {title} (nové okno)",
+  "openEmbed": "Otvoriť {title}",
+  "openInstead": "Radšej otvoriť v novom okne",
+  "frameTitle": "{title} (externý nástroj)",
+  "openedWindow": "Otvorilo sa nové okno s nástrojom.",
+  "openedEmbed": "Nástroj sa otvoril na tejto stránke.",
+  "needsUrl": "Tento blok potrebuje spúšťaciu adresu, ktorá začína http:// alebo https://.",
+  "needsSignIn": "Tento nástroj potrebuje prihlasovaciu službu tejto stránky, ktorá tu nie je dostupná. Nič sa neotvorilo."
+}

@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Osatäitja",
+    "description": "Üks sihtrühm, keda kehastab tegelane, koos teksti ja nupuga"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kes see on"
+      },
+      {
+        "title": "Tegelase tüüp"
+      },
+      {
+        "title": "Tegelase seeme"
+      },
+      {
+        "title": "Lava värv (DDD nimi)"
+      },
+      {
+        "title": "Kuhu nupp viib"
+      },
+      {
+        "title": "Nupu tekst"
+      }
+    ]
+  }
+}

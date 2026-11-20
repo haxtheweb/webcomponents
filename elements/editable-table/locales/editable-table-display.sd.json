@@ -3,5 +3,8 @@
   "copyAsCsv": "CSV طور ڪاپي ڪريو.",
   "printTable": "ٽيبل ڇاپيو",
   "selectColumn": "ڪالم چونڊيو",
-  "dataTable": "ڊيٽا · جدول"
+  "dataTable": "ڊيٽا · جدول",
+  "filterStatus": "{total} مان {shown} قطارون ڏيکاريون پيون وڃن، {column} سان فلٽر ٿيل: {text}",
+  "columnNumber": "ڪالم {column}",
+  "clearFilter": "فلٽر صاف ڪريو"
 }

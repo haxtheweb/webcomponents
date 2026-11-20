@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Kryžiažodis",
+    "description": "Kryžiažodis, sudarytas iš žodžių ir užuominų sąrašo. Tinklelis sugeneruojamas už jus; besimokantieji įveda žodžius ir juos patikrina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pavadinimas",
+        "description": "Pavadinimas arba klausimas, rodomas virš kryžiažodžio."
+      },
+      {
+        "title": "Žodžiai",
+        "description": "Kiekvienas žodis ir jo užuomina. Tinklelis sugeneruojamas iš šio sąrašo: ilgiausias žodis padedamas pirmas, o kiti jį kerta bendromis raidėmis."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Bandymai",
+        "description": "Kiek kartų besimokantysis gali tikrinti. 0 reiškia neribotai."
+      },
+      {
+        "title": "Akcento spalva",
+        "description": "Pasirinktinė antraštės žymės, aktyvaus žodžio ir veiksmų mygtukų spalva."
+      },
+      {
+        "title": "Suskleidžiamas",
+        "description": "Rodyti šį kryžiažodį kaip eilutę, kuri atsidaro ir užsidaro. Atidarius vieną, užsidaro kiti šalia esantys suskleidžiami klausimai."
+      },
+      {
+        "title": "Pradėti suskleistą",
+        "description": "Jei suskleidžiamas, pradėti kaip uždarą eilutę, rodančią tik pavadinimą ir būseną."
+      },
+      {
+        "title": "Vertinimo formatas",
+        "description": "OER Schema: šio vertinimo formatas (pvz., taškai, raidė, procentai, užbaigimas)."
+      },
+      {
+        "title": "Mokymosi tikslas",
+        "description": "OER Schema: su šiuo vertinimu susijęs mokymosi tikslas."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Testo pavadinimas",
+        "description": "Testo pavadinimas, naudojamas xAPI identifikavimui analitikos sistemose."
+      },
+      {
+        "title": "Kursas",
+        "description": "OER Schema: kursas, kuriam skirtas šis vertinimas."
+      }
+    ]
+  }
+}

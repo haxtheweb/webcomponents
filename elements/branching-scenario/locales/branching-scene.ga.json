@@ -1,0 +1,14 @@
+{
+  "scene": "Radharc",
+  "ending": "Deireadh",
+  "goodEnding": "Deireadh maith",
+  "mixedEnding": "Deireadh measctha",
+  "poorEnding": "Deireadh lag",
+  "scoreOf": "Scór {score} as {max}",
+  "scoreOnly": "Scór {score}",
+  "startScene": "Tosaigh",
+  "sceneIdLabel": "Aitheantas radhairc",
+  "needsId": "Cuir aitheantas radhairc leis ionas gur féidir le roghanna nascadh leis an radharc seo.",
+  "orphan": "Níl aon rogha nasctha leis an radharc seo.",
+  "deadLinks": "Díríonn na naisc seo ar radharc nach ann dó:"
+}

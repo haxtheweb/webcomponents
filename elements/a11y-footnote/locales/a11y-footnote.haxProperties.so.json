@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Qoraal hoose",
+    "description": "Qoraal lagu qoray meeshii uu qoraalka kaga habboonaa. Wuxuu u muuqdaa tiro, liiska tirsan ee qoraalladuna wuxuu iskiis ugu dhismaa bogga hoostiisa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Qoraal",
+        "description": "Qoraalka qoraalka hoose."
+      },
+      {
+        "title": "Horudhac ma jiro",
+        "description": "Ha muujin qoraalka marka akhristuhu dul saaro ama diiradda saaro tirada."
+      }
+    ]
+  }
+}

@@ -3,5 +3,7 @@
   "status_stop": "Pyta",
   "status_warning": "Ñemomarandu",
   "status_success": "Ojehupity",
-  "status_info": "Marandu"
+  "status_info": "Marandu",
+  "status_tip": "Reikuaápa?",
+  "status_new": "Mba'e pyahu"
 }

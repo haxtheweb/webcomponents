@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Start vun engem externen Tool",
+    "description": "E Block, deen en externt Léiertool an enger neier Fënster oder op der Säit opmécht, als einfache Link oder mat enger LTI 1.3-Umeldungsufro."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Numm vum Tool. E gëtt am Kapp an um Knäppchen gewisen."
+      },
+      {
+        "title": "Beschreiwung",
+        "description": "Wat d'Léierender am Tool maachen, iwwer dem Knäppchen gewisen."
+      },
+      {
+        "title": "Start-URL",
+        "description": "Adress vum Tool. Et muss eng komplett Adress sinn, déi mat https:// oder http:// ufänkt."
+      },
+      {
+        "title": "Opmaachen an",
+        "description": "Eng nei Fënster funktionéiert mat all Tool. Op dëser Säit funktionéiert just mat Tools, déi et erlaben, an enger anerer Websäit gewisen ze ginn.",
+        "options": {
+          "window": "Enger neier Fënster",
+          "embed": "Op dëser Säit"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "LTI-Umeldungs-URL",
+        "description": "Just LTI 1.3: d'Adress fir d'Umeldungsinitiatioun vum Tool. Mat dëser, enger Client-ID an enger Deployment-ID schéckt de Knäppchen eng LTI-Umeldungsufro amplaz en einfache Link opzemaachen. Fir de Start ofzeschléissen, brauch et den LTI-Service vun dëser Websäit."
+      },
+      {
+        "title": "LTI-Client-ID",
+        "description": "D'Client-ID, déi d'Tool dëser Websäit ginn huet. En ëffentlechen Identifiant, kee Geheimnis: setzt hei ni Schlësselen oder Geheimnisser an."
+      },
+      {
+        "title": "LTI-Deployment-ID",
+        "description": "D'Deployment-ID, déi d'Tool dëser Websäit ginn huet. En ëffentlechen Identifiant, kee Geheimnis."
+      },
+      {
+        "title": "LTI-Aussteller",
+        "description": "D'Adress, déi dës Websäit beim Tool identifizéiert. Eidel loossen, fir d'Adress vun der Websäit ze benotzen, op där d'Säit ass."
+      },
+      {
+        "title": "Héicht op der Säit",
+        "description": "Héicht vum Tool, wann et op dëser Säit opgeet, a Pixel (200 bis 2000)."
+      },
+      {
+        "title": "Akzentfaarf",
+        "description": "Faarf vum Kapp-Chip a vum Knäppchen. Eidel loossen, fir dem Thema ze verfollegen."
+      }
+    ],
+    "developer": [
+      {
+        "title": "LTI-Umeldungshiweis",
+        "description": "En opaken Wäert, deen den LTI-Service vun dëser Websäit benotzt, fir de Léierenden z'erkennen. Normalerweis vun der Websäit iwwer den Event lti-launch-request geliwwert amplaz hei gespäichert. Ni e Passwuert oder e Schlëssel."
+      },
+      {
+        "title": "LTI-Messagehiweis",
+        "description": "En opaken Wäert, deen den LTI-Service vun dëser Websäit benotzt, fir dëse Start z'erkennen. Normalerweis vun der Websäit geliwwert amplaz hei gespäichert."
+      }
+    ]
+  }
+}

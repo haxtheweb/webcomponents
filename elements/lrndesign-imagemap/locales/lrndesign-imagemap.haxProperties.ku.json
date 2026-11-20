@@ -14,6 +14,10 @@
         "property": "hotspotDetails",
         "title": "Hûrguliyên xalên germ",
         "description": "Xalên germ ên înteraktîf li ser nexşeya wêneyê."
+      },
+      {
+        "title": "Hûrguliyên xala germ",
+        "description": "Xalên germ ên înteraktîf li ser nexşeya wêneyê."
       }
     ]
   }

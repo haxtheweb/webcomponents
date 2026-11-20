@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Megide",
+    "description": "Okwu n'akụkụ bọtịnụ isi na isi nwere agwa abụọ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Isiokwu"
+      },
+      {
+        "title": "Ebe bọtịnụ na-aga"
+      },
+      {
+        "title": "Ederede bọtịnụ"
+      },
+      {
+        "title": "Mkpụrụ agwa aka ekpe"
+      },
+      {
+        "title": "Mkpụrụ agwa aka nri"
+      }
+    ]
+  }
+}

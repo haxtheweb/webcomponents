@@ -1,0 +1,22 @@
+{
+  "scenario": "Szenario",
+  "directions": "Anleitung",
+  "showDirections": "Anleitung anzeigen",
+  "hideDirections": "Anleitung ausblenden",
+  "directionsRead": "Lies jede Szene und wähle, was du tun würdest.",
+  "directionsEndings": "Es gibt mehrere Enden. Probiere danach einen anderen Weg aus.",
+  "startOver": "Von vorn beginnen",
+  "back": "Einen Schritt zurück",
+  "tryAnother": "Anderen Weg ausprobieren",
+  "path": "Weg",
+  "scene": "Szene",
+  "ending": "Ende",
+  "end": "Ende",
+  "scenesSeen": "{seen} von {total} Szenen gesehen",
+  "endingReached": "Ende erreicht",
+  "addScene": "Szene hinzufügen",
+  "newScene": "Neue Szene",
+  "newSceneText": "Beschreibe, was passiert, und verknüpfe dann jede Wahl mit einer Szene.",
+  "editingNote": "Bearbeitung: Alle Szenen werden angezeigt. Eine Wahl ist ein Link auf # gefolgt von einer Szenen-ID.",
+  "noScenes": "Füge eine Szene hinzu, um das Szenario zu beginnen."
+}

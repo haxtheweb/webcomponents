@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "用数学记号 LaTeX 写"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "图片背景",
+        "description": "画个图片后头个背景。“自动”只辣图画辣页面上看勿清爽个辰光加，比方深色模式里个深色线条。",
+        "options": {
+          "auto": "自动",
+          "light": "浅色",
+          "dark": "深色",
+          "none": "呒没"
+        }
+      }
+    ]
   }
 }

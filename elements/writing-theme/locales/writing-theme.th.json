@@ -1,0 +1,13 @@
+{
+  "skipToContent": "ข้ามไปยังเนื้อหา",
+  "site": "เว็บไซต์",
+  "recentPosts": "โพสต์ล่าสุด",
+  "moreInArchive": "เพิ่มเติมในคลัง",
+  "byTag": "ตามแท็ก",
+  "posted": "โพสต์เมื่อ",
+  "updated": "อัปเดตแล้ว",
+  "tags": "แท็ก",
+  "postsTagged": "โพสต์ที่ติดแท็ก {tag}",
+  "allPosts": "โพสต์ทั้งหมด",
+  "madeWithHax": "สร้างด้วย HAX"
+}

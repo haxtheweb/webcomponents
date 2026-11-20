@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Scenārija aina",
+    "description": "Viena sazarota scenārija aina. Sasaistiet katru izvēli ar citu ainu, izmantojot #, kam seko tās ainas ID."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ainas ID",
+        "description": "Uz ko norāda izvēles: saite uz #, kam seko šis ID, ved uz šo ainu. Burti, cipari un defises."
+      },
+      {
+        "title": "Virsraksts",
+        "description": "Ainas virsraksts."
+      },
+      {
+        "title": "Beigas",
+        "description": "Vai šī aina noslēdz ceļu un kā tas beidzās.",
+        "options": {
+          "": "Nav beigas",
+          "good": "Labas beigas",
+          "mixed": "Jauktas beigas",
+          "poor": "Sliktas beigas"
+        }
+      },
+      {
+        "title": "Rezultāts",
+        "description": "Rezultāts par šo beigu sasniegšanu. Augstākais beigu rezultāts scenārijā ir maksimums."
+      }
+    ]
+  }
+}

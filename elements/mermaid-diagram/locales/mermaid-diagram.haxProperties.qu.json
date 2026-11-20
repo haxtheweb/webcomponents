@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Qillqamanta diagrama",
+    "description": "Huk diagramata qillqa hina qillqay (Mermaid): ruray siq'i, qatinakuy, pacha siq'i, aswanpas. P'anqapi qillqa rantinwan siq'isqa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Suti",
+        "description": "Diagramap hanaqninpi rikuchisqa, sutin hinataq llamk'achisqa."
+      },
+      {
+        "title": "Diagramap pukyun",
+        "description": "Mermaid qillqa, kayhina: flowchart TD, chaymanta sapa t'inkipaq huk siq'i A[Draft] --> B{Ready?} hina. Huk wach'i qhipanpi |etiqueta| yapay etiquetanapaq. Siq'iyqa qillqachkaptiyki musuqchakun."
+      },
+      {
+        "title": "Qillqa rantin",
+        "description": "Mana rikuyta atiqkunapaq diagrama imatachus rikuchisqanta willay. Ruray siq'ipi ch'usaqta saqiy thatkinkuna qampaq listasqa kananpaq."
+      },
+      {
+        "title": "Rikch'a willay",
+        "description": "Diagramap uranpi munaspa rikuchina willay."
+      },
+      {
+        "title": "Pukyuta rikuchiy",
+        "description": "Diagramap qillqanta siq'iypa waqtanpi rikuchiy."
+      },
+      {
+        "title": "Qillqa rantinta rikuchiy",
+        "description": "Qillqa rantinta siq'iyp uranpi rikuchiy. Pantalla ñawinchaqkunapaqqa sapa kutim kan."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Pukyu willañiqi",
+        "description": "Hanaq qillqap rantinpi siq'inapaq .mmd willañiqip tiyanan (https utaq kay kitipi huk ñan)."
+      },
+      {
+        "title": "Sapaqchay llimp'i",
+        "description": "Uma siq'ipi icono chippa llimp'in."
+      }
+    ]
+  }
+}

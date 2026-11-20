@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Kantnota",
+    "description": "'n Nota wat van die omliggende inhoud afgesonder is, met 'n opsionele ikoon en etiket."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etiket",
+        "description": "Die etiket van die kantnota."
+      },
+      {
+        "title": "Ikoon",
+        "description": "Die ikoon van die kantnota."
+      },
+      {
+        "title": "Inhoud",
+        "description": "Inhoud van die kantnota."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Kleur",
+        "description": "Die kleur waarmee die kantnota getint word."
+      }
+    ]
+  }
+}

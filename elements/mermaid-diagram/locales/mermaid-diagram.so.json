@@ -1,0 +1,21 @@
+{
+  "diagram": "Jaantus",
+  "flowchart": "flowchart",
+  "sequence": "sequence",
+  "source": "Isha",
+  "textAlternative": "Beddel qoraal ah",
+  "present": "Soo bandhig",
+  "exitPresent": "Ka bax bandhigga",
+  "loading": "Jaantuska ayaa la soo gelinayaa",
+  "empty": "Weli wax la sawiro ma jiro. Ku dar isha jaantuska.",
+  "error": "Khalad",
+  "parseError": "Jaantuskan lama sawiri karin. Hubi isha.",
+  "loadError": "Maktabadda jaantuska lama soo gelin karin.",
+  "srcError": "Faylka jaantuska lama soo gelin karin.",
+  "decision": "go'aan",
+  "end": "dhammaad",
+  "goTo": "u gudub {target}",
+  "ifGoTo": "haddii {label}, u gudub {target}",
+  "describedBySource": "Jaantus lagu sharaxay isheeda.",
+  "scrollable": "Jaantus, la rogi karo"
+}

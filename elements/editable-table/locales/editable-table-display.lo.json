@@ -3,5 +3,8 @@
   "copyAsCsv": "ສຳເນົາເປັນ CSV.",
   "printTable": "ພິມຕາຕະລາງ",
   "selectColumn": "ເລືອກຖັນ",
-  "dataTable": "ຂໍ້ມູນ · ຕາຕະລາງ"
+  "dataTable": "ຂໍ້ມູນ · ຕາຕະລາງ",
+  "filterStatus": "ສະແດງ {shown} ຈາກ {total} ແຖວ, ກັ່ນຕອງຕາມ {column}: {text}",
+  "columnNumber": "ຖັນ {column}",
+  "clearFilter": "ລ້າງຕົວກັ່ນຕອງ"
 }

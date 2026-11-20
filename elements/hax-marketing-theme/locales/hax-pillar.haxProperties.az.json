@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Sütun",
+    "description": "Sütun: ad, ifadə, ikon, rəng və onun niyə vacib olduğu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ad"
+      },
+      {
+        "title": "İfadə"
+      },
+      {
+        "title": "İkon"
+      },
+      {
+        "title": "Rəng (DDD adı)"
+      },
+      {
+        "title": "Hansı sütun, 1-dən 7-yə"
+      },
+      {
+        "title": "Kiçik kart"
+      },
+      {
+        "title": "Adın getdiyi yer"
+      }
+    ]
+  }
+}

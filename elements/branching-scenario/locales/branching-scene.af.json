@@ -1,0 +1,14 @@
+{
+  "scene": "Toneel",
+  "ending": "Einde",
+  "goodEnding": "Goeie einde",
+  "mixedEnding": "Gemengde einde",
+  "poorEnding": "Swak einde",
+  "scoreOf": "Telling {score} van {max}",
+  "scoreOnly": "Telling {score}",
+  "startScene": "Begin",
+  "sceneIdLabel": "Toneel-ID",
+  "needsId": "Voeg 'n toneel-ID by sodat keuses na hierdie toneel kan skakel.",
+  "orphan": "Geen keuse skakel na hierdie toneel nie.",
+  "deadLinks": "Hierdie skakels wys na 'n toneel wat nie bestaan nie:"
+}

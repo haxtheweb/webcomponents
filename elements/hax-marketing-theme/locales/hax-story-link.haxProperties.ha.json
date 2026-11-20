@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Maɓallin labari",
+    "description": "Maɓallin da ke buɗe labarin da ke bayan iƙirari a hax.cloud, ko wurin da ya dace a wani shafin cibiyar HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Inda yake zuwa",
+        "options": {
+          "cloud": "hax.cloud, labarin",
+          "learn": "learn.hax.cloud, darasi",
+          "try": "browser.hax.cloud, gwada shi",
+          "elements": "webcomponents.hax.cloud, tubali",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Adireshi a wannan shafi (labari a hax.cloud yana kama da stories/ee450a19)"
+      },
+      {
+        "title": "Abin da ya shafi"
+      },
+      {
+        "title": "Ƙaramin gunta"
+      },
+      {
+        "title": "Nuna abin da ya shafi a cikin maɓallin"
+      }
+    ]
+  }
+}

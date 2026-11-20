@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Paragone di piattaforme",
+    "description": "Faccia à faccia: sceglite duie piattaforme qualunque da un schedariu di dati"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Dati di paragone (JSON)"
+      },
+      {
+        "title": "ID di a piattaforma di manca"
+      },
+      {
+        "title": "ID di a piattaforma di diritta"
+      }
+    ]
+  }
+}

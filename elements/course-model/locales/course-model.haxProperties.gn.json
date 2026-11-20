@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "téra"
+        "title": "téra",
+        "description": "Omoakãva ojehechaukáva curso modelo ári."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "Modelo 3D marandurenda kundaharape (.glb térã .gltf) ojehechauka hag̃ua."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "Emombe'u modelo 3D umi tapicha ndaikatúivape ohecha."
       },
       {
         "title": "Marandu renda"

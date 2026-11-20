@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Colún",
+    "description": "Colún: ainm, frása, deilbhín, dath agus cén fáth a bhfuil sé tábhachtach"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ainm"
+      },
+      {
+        "title": "Frása"
+      },
+      {
+        "title": "Deilbhín"
+      },
+      {
+        "title": "Dath (ainm DDD)"
+      },
+      {
+        "title": "Cén colún, 1 go 7"
+      },
+      {
+        "title": "Cárta beag"
+      },
+      {
+        "title": "Cá dtéann an t-ainm"
+      }
+    ]
+  }
+}

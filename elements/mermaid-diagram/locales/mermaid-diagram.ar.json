@@ -1,0 +1,21 @@
+{
+  "diagram": "مخطط",
+  "flowchart": "مخطط انسيابي",
+  "sequence": "تسلسل",
+  "source": "المصدر",
+  "textAlternative": "بديل نصي",
+  "present": "عرض تقديمي",
+  "exitPresent": "الخروج من العرض التقديمي",
+  "loading": "جارٍ تحميل المخطط",
+  "empty": "لا شيء لرسمه بعد. أضف مصدر المخطط.",
+  "error": "خطأ",
+  "parseError": "تعذّر رسم هذا المخطط. تحقق من المصدر.",
+  "loadError": "تعذّر تحميل مكتبة المخططات.",
+  "srcError": "تعذّر تحميل ملف المخطط.",
+  "decision": "قرار",
+  "end": "نهاية",
+  "goTo": "انتقل إلى {target}",
+  "ifGoTo": "إذا {label}، انتقل إلى {target}",
+  "describedBySource": "مخطط موصوف بمصدره.",
+  "scrollable": "مخطط، قابل للتمرير"
+}

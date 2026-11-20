@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "နောက်ခံ ပုံ။"
+        "description": "နောက်ခံ ပုံ။",
+        "title": "ပုံ"
       },
       {
         "property": "caption",
-        "description": "စာသား ခေါင်းစီး။"
+        "description": "စာသား ခေါင်းစီး။",
+        "title": "စာတန်း"
       }
     ]
   }

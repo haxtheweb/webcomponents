@@ -13,7 +13,15 @@
       {
         "property": "answers",
         "title": "Erantzunak",
-        "description": "Erantzunen ordenak sekuentzia zuzena definitzen du."
+        "description": "Erantzunen ordenak sekuentzia zuzena definitzen du.",
+        "options": {
+          "": "Zerrenda",
+          "cards": "Irudi-txartelak"
+        }
+      },
+      {
+        "title": "Erantzunak",
+        "description": "Erantzunen ordenak sekuentzia zuzena zehazten du."
       }
     ],
     "advanced": [

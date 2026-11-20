@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Ñe'ẽ kurusu",
+    "description": "Peteĩ ñe'ẽ kurusu ojejapóva ñe'ẽ ha pytyvõ lista guive. Kuadrícula ojejapo ndéve; temimbo'ekuéra ohai ñe'ẽ ha ohechajey."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Téra",
+        "description": "Téra térã porandu ojehechaukáva ñe'ẽ kurusu ári."
+      },
+      {
+        "title": "Ñe'ẽkuéra",
+        "description": "Peteĩteĩ ñe'ẽ ha ipytyvõ. Kuadrícula ojejapo ko lista guive: ñe'ẽ ipukuvéva oñemoĩ raẽ ha ambuekuéra ohasa hese tai ojeguerekóvape."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ñeha'ãkuéra",
+        "description": "Mboy jey temimbo'e ikatu ohechajey. 0 he'ise ndaipóri ñemboja'i."
+      },
+      {
+        "title": "Sa'y mbohesakãha",
+        "description": "Sa'y ojeiporavokuaáva iñakã chip, ñe'ẽ hendýva ha tembiapo botõkuéra peg̃uarã."
+      },
+      {
+        "title": "Ikatúva oñemboty",
+        "description": "Ehechauka ko ñe'ẽ kurusu tysýi ramo ojepe'a ha oñembotýva. Peteĩ jepe'a omboty ambue porandu ikatúva oñemboty hi'ykére oĩva."
+      },
+      {
+        "title": "Eñepyrũ oñembotývo",
+        "description": "Ikatúramo oñemboty, eñepyrũ tysýi oñembotýva ramo ohechaukáva téra ha hekotee añoite."
+      },
+      {
+        "title": "Kytã reko",
+        "description": "OER Schema: kytã reko ko jeha'ãme g̃uarã (techapyrã kytã, tai, porcentaje, ñemohu'ã)."
+      },
+      {
+        "title": "Jehekombo'e jehupytyrã",
+        "description": "OER Schema: jehekombo'e jehupytyrã ojoajúva ko jeha'ã rehe."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Porandupy réra",
+        "description": "Porandupy réra ojeipurúva xAPI jehechakuaápe análisis sistema-pe."
+      },
+      {
+        "title": "Curso",
+        "description": "OER Schema: curso ko jeha'ã oñembosako'ihápe."
+      }
+    ]
+  }
+}

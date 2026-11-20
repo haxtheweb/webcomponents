@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Sembunyikan ikon",
         "description": "Sembunyikan ikon yang digunakan untuk menonjolkan teks"
+      },
+      {
+        "title": "Tampilan",
+        "description": "Seberapa menonjol tombol ini.",
+        "options": {
+          "": "Terisi",
+          "tonal": "Tonal",
+          "outlined": "Bergaris tepi",
+          "plain": "Polos"
+        }
+      },
+      {
+        "title": "Ukuran",
+        "description": "Ukuran tombol.",
+        "options": {
+          "s": "Kecil",
+          "": "Sedang",
+          "l": "Besar"
+        }
       }
     ],
     "advanced": [

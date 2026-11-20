@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Vabatsiri",
+    "description": "Vanhu vakavaka purojekiti, kubva pafaira remazita"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Faira remazita (JSON)"
+      },
+      {
+        "title": "Maonero: landed, lab kana code"
+      },
+      {
+        "title": "Vanhu vakawanda vekuratidza (0 vese)"
+      }
+    ]
+  }
+}

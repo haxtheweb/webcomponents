@@ -14,6 +14,10 @@
         "property": "hotspotDetails",
         "title": "Aktyviųjų sričių informacija",
         "description": "Interaktyvios aktyviosios sritys vaizdo žemėlapyje."
+      },
+      {
+        "title": "Taškų informacija",
+        "description": "Interaktyvūs vaizdo žemėlapio taškai."
       }
     ]
   }

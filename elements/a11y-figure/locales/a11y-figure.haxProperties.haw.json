@@ -11,7 +11,8 @@
       },
       {
         "property": "imgAlt",
-        "title": "Kikokikona Pani"
+        "title": "Kikokikona Pani",
+        "description": "E wehewehe i ke kiʻi no ka poʻe hiki ʻole ke ʻike iā ia."
       },
       {
         "slot": "figcaption",
@@ -32,11 +33,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Kikokikona hōʻuluʻulu koho ke wehe ʻia nā kikoʻī"
+        "title": "Kikokikona hōʻuluʻulu koho ke wehe ʻia nā kikoʻī",
+        "description": "Kikokikona pihi ʻoiai hūnā ʻia ka wehewehe, e like me Hōʻike i ka wehewehe."
       },
       {
         "property": "closeText",
-        "title": "Kikokikona hōʻuluʻulu koho ke pani ʻia nā kikoʻī"
+        "title": "Kikokikona hōʻuluʻulu koho ke pani ʻia nā kikoʻī",
+        "description": "Kikokikona pihi ʻoiai hōʻike ʻia ka wehewehe, e like me Hūnā i ka wehewehe."
       }
     ]
   }

@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Sélecteur de cas d'usage",
+    "description": "Choisissez à quoi sert un site et obtenez un lien qui ouvre HAX dans le navigateur avec ce site de départ, ainsi que la commande CLI correspondante."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Adresse de HAX dans le navigateur",
+        "description": "Où le lien s'ouvre ; ?skeleton= et &name= y sont ajoutés"
+      },
+      {
+        "title": "Sites de départ à exclure",
+        "description": "Noms machine, séparés par des virgules"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Liste des sites de départ",
+        "description": "Adresse de la liste des squelettes (le format que lit app-hax)"
+      }
+    ]
+  }
+}

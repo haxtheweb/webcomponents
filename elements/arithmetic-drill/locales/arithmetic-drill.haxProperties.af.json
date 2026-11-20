@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Rekenkunde-oefening",
+    "description": "'n Kort reeks gegenereerde rekenkundeprobleme met onmiddellike terugvoer. Kies die bewerkings en die getalbereik; elke rondte is nuut."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Naam van hierdie oefening, in sy opskrif gewys."
+      },
+      {
+        "title": "Bewerkings",
+        "description": "Watter soorte probleme gevra word. Leerders kan enige hiervan afskakel voordat hulle begin.",
+        "options": {
+          "add": "Optelling",
+          "subtract": "Aftrekking",
+          "multiply": "Vermenigvuldiging",
+          "divide": "Deling",
+          "add subtract": "Optelling en aftrekking",
+          "multiply divide": "Vermenigvuldiging en deling",
+          "add multiply": "Optelling en vermenigvuldiging",
+          "add divide": "Optelling en deling",
+          "subtract multiply": "Aftrekking en vermenigvuldiging",
+          "subtract divide": "Aftrekking en deling",
+          "add subtract multiply": "Optelling, aftrekking en vermenigvuldiging",
+          "add subtract divide": "Optelling, aftrekking en deling",
+          "add multiply divide": "Optelling, vermenigvuldiging en deling",
+          "subtract multiply divide": "Aftrekking, vermenigvuldiging en deling",
+          "add subtract multiply divide": "Al vier"
+        }
+      },
+      {
+        "title": "Kleinste getal",
+        "description": "Die kleinste getal wat in 'n probleem gebruik word. Heelgetalle, 0 of meer."
+      },
+      {
+        "title": "Grootste getal",
+        "description": "Die grootste getal wat in 'n probleem gebruik word. Delingsantwoorde en delers bly ook in hierdie bereik."
+      },
+      {
+        "title": "Aantal probleme",
+        "description": "Hoeveel probleme in een rondte is (1 tot 100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tydsbeperking",
+        "description": "Sekondes toegelaat vir 'n hele rondte. 0 beteken geen tydhouer nie, wat die verstek is: getimede oefeninge laat leerders wat meer tyd nodig het, druip. Wanneer dit gestel is, kan leerders steeds die tydhouer self afskakel."
+      },
+      {
+        "title": "Aksentkleur",
+        "description": "Kleur van die opskrifskyfie en knoppies. Laat leeg om die tema te volg."
+      }
+    ]
+  }
+}

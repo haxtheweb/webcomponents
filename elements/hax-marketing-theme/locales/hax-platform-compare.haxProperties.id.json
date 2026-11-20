@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Perbandingan platform",
+    "description": "Adu langsung: pilih dua platform mana saja dari file data"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Data perbandingan (JSON)"
+      },
+      {
+        "title": "ID platform kiri"
+      },
+      {
+        "title": "ID platform kanan"
+      }
+    ]
+  }
+}

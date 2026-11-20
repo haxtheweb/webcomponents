@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Careu de cuvinte încrucișate",
+    "description": "Un careu de cuvinte încrucișate făcut dintr-o listă de cuvinte și definiții. Grila este generată pentru dvs.; cursanții tastează cuvintele și le verifică."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titlu",
+        "description": "Titlul sau întrebarea afișată deasupra careului."
+      },
+      {
+        "title": "Cuvinte",
+        "description": "Fiecare cuvânt și definiția lui. Grila este generată din această listă: cel mai lung cuvânt este plasat primul, iar celelalte îl intersectează prin litere comune."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Încercări",
+        "description": "De câte ori poate verifica un cursant. 0 înseamnă nelimitat."
+      },
+      {
+        "title": "Culoare de accent",
+        "description": "Culoare opțională pentru eticheta din antet, cuvântul activ și butoanele de acțiune."
+      },
+      {
+        "title": "Pliabil",
+        "description": "Afișați acest careu ca un rând care se deschide și se închide. Deschiderea unuia le închide pe celelalte întrebări pliabile de lângă el."
+      },
+      {
+        "title": "Începeți restrâns",
+        "description": "Când este pliabil, începe ca un rând închis care arată doar titlul și starea."
+      },
+      {
+        "title": "Format de notare",
+        "description": "OER Schema: formatul de notare pentru această evaluare (de ex. puncte, literă, procent, finalizare)."
+      },
+      {
+        "title": "Obiectiv de învățare",
+        "description": "OER Schema: obiectivul de învățare asociat acestei evaluări."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Numele testului",
+        "description": "Numele testului folosit pentru identificarea xAPI în sistemele de analiză."
+      },
+      {
+        "title": "Curs",
+        "description": "OER Schema: cursul căruia îi este destinată această evaluare."
+      }
+    ]
+  }
+}

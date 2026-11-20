@@ -5,5 +5,7 @@
   "editModeLabel": "Mode suntingan daftar puter media",
   "position": "{current} saka {total}",
   "previousItem": "Item sadurunge",
-  "nextItem": "Item sabanjure"
+  "nextItem": "Item sabanjure",
+  "fullScreen": "Layar wutuh",
+  "exitFullScreen": "Metu saka layar wutuh"
 }

@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Tfittxija tal-kliem",
+    "description": "Grilja ta' ittri bi kliem moħbi. L-istudenti jmissu l-ewwel u l-aħħar ittra ta' kull kelma. Tipprattika kif tagħraf kif terminu jinkiteb, mhux xi jfisser."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titlu",
+        "description": "X'jintalbu jsibu l-istudenti, muri fl-intestatura."
+      },
+      {
+        "title": "Kliem",
+        "description": "Il-kliem li jinħeba. L-ispazji u l-punteġġjatura jitħallew barra mill-grilja. Il-kliem li ma jidħolx jiġi elenkat waqt li teditja u jitħalla barra għall-istudenti."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Daqs tal-grilja",
+        "description": "Ittri għal kull naħa, 4 sa 16. Ħallih vojt biex jidħol l-itwal kelma (sa 12). Aktar minn 12 jiskrollja lejn il-ġenb fuq mowbajl."
+      },
+      {
+        "title": "Kliem dijagonali",
+        "description": "Aħbi wkoll kliem dijagonalment. Aktar diffiċli."
+      },
+      {
+        "title": "Kliem bil-maqlub",
+        "description": "Aħbi wkoll kliem miktub bil-maqlub. Aktar diffiċli."
+      },
+      {
+        "title": "Kulur tal-aċċent",
+        "description": "Kulur fakultattiv għaċ-ċippa tal-intestatura, l-ewwel ittra magħżula u l-buttuna."
+      }
+    ]
+  }
+}

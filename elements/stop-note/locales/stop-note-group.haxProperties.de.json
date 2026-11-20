@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Stop-Note-Gruppe",
+    "description": "Staple mehrere Stop-Notes in einen Block, der jeweils eine Notiz zeigt, etwa Tipps oder Neuigkeiten. Anleitungskarten, Randnotizen und gerahmte Zitate können mit ihnen gestapelt werden."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Beschriftung",
+        "description": "Name der Gruppe, den Screenreader ansagen, etwa Tipps oder Neuigkeiten."
+      },
+      {
+        "title": "Notizen",
+        "description": "Die Stop-Notes in der Gruppe. Anleitungskarten, Randnotizen und gerahmte Zitate können ebenfalls hinzugefügt werden."
+      }
+    ]
+  }
+}

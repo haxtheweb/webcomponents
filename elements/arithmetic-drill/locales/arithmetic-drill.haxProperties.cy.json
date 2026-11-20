@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Dril rhifyddeg",
+    "description": "Rhediad byr o broblemau rhifyddeg wedi'u cynhyrchu gydag adborth ar unwaith. Dewiswch y gweithrediadau a'r ystod rhifau; mae pob rownd yn newydd."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Teitl",
+        "description": "Enw'r dril hwn, wedi'i ddangos yn ei bennawd."
+      },
+      {
+        "title": "Gweithrediadau",
+        "description": "Pa fathau o broblemau a ofynnir. Gall dysgwyr ddiffodd unrhyw rai o'r rhain cyn dechrau.",
+        "options": {
+          "add": "Adio",
+          "subtract": "Tynnu",
+          "multiply": "Lluosi",
+          "divide": "Rhannu",
+          "add subtract": "Adio a thynnu",
+          "multiply divide": "Lluosi a rhannu",
+          "add multiply": "Adio a lluosi",
+          "add divide": "Adio a rhannu",
+          "subtract multiply": "Tynnu a lluosi",
+          "subtract divide": "Tynnu a rhannu",
+          "add subtract multiply": "Adio, tynnu a lluosi",
+          "add subtract divide": "Adio, tynnu a rhannu",
+          "add multiply divide": "Adio, lluosi a rhannu",
+          "subtract multiply divide": "Tynnu, lluosi a rhannu",
+          "add subtract multiply divide": "Pob un o'r pedwar"
+        }
+      },
+      {
+        "title": "Rhif lleiaf",
+        "description": "Y rhif lleiaf a ddefnyddir mewn problem. Rhifau cyfan, 0 neu fwy."
+      },
+      {
+        "title": "Rhif mwyaf",
+        "description": "Y rhif mwyaf a ddefnyddir mewn problem. Mae atebion rhannu a rhanwyr yn aros yn yr ystod hon hefyd."
+      },
+      {
+        "title": "Nifer y problemau",
+        "description": "Faint o broblemau sydd mewn un rownd (1 i 100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Terfyn amser",
+        "description": "Eiliadau a ganiateir ar gyfer rownd gyfan. Mae 0 yn golygu dim amserydd, sef y diofyn: mae driliau wedi'u hamseru'n methu dysgwyr sydd angen mwy o amser. Pan gaiff ei osod, gall dysgwyr ddal i ddiffodd yr amserydd drostynt eu hunain."
+      },
+      {
+        "title": "Lliw acen",
+        "description": "Lliw sglodyn y pennawd a'r botymau. Gadewch yn wag i ddilyn y thema."
+      }
+    ]
+  }
+}

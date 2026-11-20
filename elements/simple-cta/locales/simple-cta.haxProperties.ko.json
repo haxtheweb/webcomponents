@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "아이콘 숨기기",
         "description": "텍스트를 강조하는 아이콘을 숨깁니다"
+      },
+      {
+        "title": "모양",
+        "description": "버튼의 강조 정도.",
+        "options": {
+          "": "채움",
+          "tonal": "톤",
+          "outlined": "윤곽선",
+          "plain": "기본"
+        }
+      },
+      {
+        "title": "크기",
+        "description": "버튼 크기.",
+        "options": {
+          "s": "작게",
+          "": "보통",
+          "l": "크게"
+        }
       }
     ],
     "advanced": [

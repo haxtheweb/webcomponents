@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Bagan radar",
+    "description": "Bagan radar (laba-laba) kanggo model kadewasan lan biji aspek, kayata HEOSAT. Kalebu alternatif teks lan tabel data."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Judhul",
+        "description": "Irah-irahan bagan; uga dienggo minangka jeneng sing bisa diakses."
+      },
+      {
+        "title": "Skor maksimal",
+        "description": "Nilai paling dhuwur ing skala."
+      },
+      {
+        "title": "Kategori",
+        "description": "Siji kategori saben baris. Butuh paling sethithik 3."
+      },
+      {
+        "title": "Skor",
+        "description": "Angka dipisah koma, siji saben kategori ing urutan sing padha."
+      },
+      {
+        "title": "Skor target",
+        "description": "Angka dipisah koma, siji saben kategori ing urutan sing padha."
+      },
+      {
+        "title": "Tampilake legenda",
+        "description": "Tampilake legenda sing nyebutake skor lan target."
+      },
+      {
+        "title": "Ringkes",
+        "description": "Bagan luwih cilik tanpa label, legenda utawa tabel data. Nglayang ing titik kanggo ndeleng nilaine."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Label skor",
+        "description": "Label legenda lan tabel kanggo skor."
+      },
+      {
+        "title": "Label target",
+        "description": "Label legenda lan tabel kanggo target."
+      }
+    ]
+  }
+}

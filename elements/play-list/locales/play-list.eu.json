@@ -9,5 +9,7 @@
   "slidePages": "Diapositiba-orriak",
   "goToSlide": "Joan {number}. diapositibara",
   "slides": "Diapositibak",
-  "position": "{number}/{total}"
+  "position": "{number}/{total}",
+  "fullScreen": "Pantaila osoa",
+  "exitFullScreen": "Irten pantaila osotik"
 }

@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Bula kontrollisto",
+    "description": "Listo de markobutonoj. Legantoj markas erojn, kaj ilia progreso estas memorata en ilia propra aparato."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titolo",
+        "description": "Nomo de la listo. Laŭtlegata kiel la etikedo de la grupo de markobutonoj."
+      },
+      {
+        "title": "Eroj",
+        "description": "Ĉiu ero estas markobutono. Markitaj aŭ malŝaltitaj eroj ne povas esti ŝanĝitaj de legantoj."
+      },
+      {
+        "title": "Numerita",
+        "description": "Montri numeritan liston anstataŭ bulan."
+      },
+      {
+        "title": "Stato",
+        "description": "Ŝanĝas la kolorojn por kongrui kun stop-note.",
+        "options": {
+          "info": "Avizo",
+          "success": "Konfirmo",
+          "warning": "Averto",
+          "stop": "Halto"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "Konserva identigilo",
+        "description": "Unika identigilo uzata por memori la progreson de leganto en ria aparato. Aŭtomate generita; ŝanĝu ĝin nur por kunhavigi progreson inter listoj aŭ por rekomenci de nulo."
+      }
+    ]
+  }
+}

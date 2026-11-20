@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Tukio la hali",
+    "description": "Tukio moja la hali yenye matawi. Unganisha kila chaguo na tukio jingine kwa # ikifuatiwa na ID ya tukio lake."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID ya tukio",
+        "description": "Kile ambacho chaguo huunganisha: kiungo cha # kikifuatiwa na ID hii huelekea tukio hili. Herufi, namba na vistari."
+      },
+      {
+        "title": "Kichwa",
+        "description": "Kichwa cha tukio."
+      },
+      {
+        "title": "Mwisho",
+        "description": "Kama tukio hili linamaliza njia, na matokeo yalikuwaje.",
+        "options": {
+          "": "Si mwisho",
+          "good": "Mwisho mzuri",
+          "mixed": "Mwisho mchanganyiko",
+          "poor": "Mwisho mbaya"
+        }
+      },
+      {
+        "title": "Alama",
+        "description": "Alama za kufikia mwisho huu. Alama ya juu zaidi ya mwisho katika hali ndiyo kiwango cha juu."
+      }
+    ]
+  }
+}

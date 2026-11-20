@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Haşiyə",
+    "description": "Mətndə aid olduğu yerdə yazılmış qeyd. Rəqəm kimi göstərilir və qeydlərin nömrəli siyahısı səhifənin aşağısında avtomatik qurulur."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Qeyd",
+        "description": "Haşiyənin mətni."
+      },
+      {
+        "title": "Önizləmə yoxdur",
+        "description": "Oxucu rəqəmin üzərinə gələndə və ya ona fokuslananda qeydi göstərmə."
+      }
+    ]
+  }
+}

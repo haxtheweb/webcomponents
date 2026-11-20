@@ -8,5 +8,9 @@
   "theme": "தீம்",
   "palette": "வண்ணத் தட்டு",
   "cancel": "ரத்துசெய்",
-  "openAppearanceSettings": "தோற்ற அமைப்புகளைத் திற"
+  "openAppearanceSettings": "தோற்ற அமைப்புகளைத் திற",
+  "designSystem": "வடிவமைப்பு அமைப்பு",
+  "designSystemDefault": "DDD (இயல்புநிலை)",
+  "designSystemThemeDefault": "{name} (தீம் இயல்புநிலை)",
+  "designSystemHelp": "நிறம், எழுத்துரு, மூலைகள் மற்றும் அடர்த்தி. தளவமைப்பை இன்னும் தீம் தீர்மானிக்கிறது."
 }

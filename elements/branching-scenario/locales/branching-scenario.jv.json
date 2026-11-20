@@ -1,0 +1,22 @@
+{
+  "scenario": "Skenario",
+  "directions": "Pituduh",
+  "showDirections": "Tampilake pituduh",
+  "hideDirections": "Dhelikake pituduh",
+  "directionsRead": "Waca saben adegan lan pilih apa sing bakal panjenengan lakoni.",
+  "directionsEndings": "Ana sawetara pungkasan. Coba dalan liya sawise rampung.",
+  "startOver": "Wiwiti maneh",
+  "back": "Mundur siji langkah",
+  "tryAnother": "Coba dalan liya",
+  "path": "Dalan",
+  "scene": "Adegan",
+  "ending": "Pungkasan",
+  "end": "pungkasan",
+  "scenesSeen": "{seen} saka {total} adegan wis dideleng",
+  "endingReached": "Wis tekan pungkasan",
+  "addScene": "Tambah adegan",
+  "newScene": "Adegan anyar",
+  "newSceneText": "Gambarake apa sing kedadeyan, banjur gandhengake saben pilihan menyang adegan.",
+  "editingNote": "Nyunting: kabeh adegan ditampilake. Pilihan yaiku pranala menyang # banjur ID adegan.",
+  "noScenes": "Tambah adegan kanggo miwiti skenario."
+}

@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Stub",
+    "description": "Stub: naziv, fraza, ikona, boja i zašto je važan"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Naziv"
+      },
+      {
+        "title": "Fraza"
+      },
+      {
+        "title": "Ikona"
+      },
+      {
+        "title": "Boja (DDD naziv)"
+      },
+      {
+        "title": "Koji stub, od 1 do 7"
+      },
+      {
+        "title": "Mala kartica"
+      },
+      {
+        "title": "Gdje ide naziv"
+      }
+    ]
+  }
+}

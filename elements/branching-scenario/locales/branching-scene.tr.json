@@ -1,0 +1,14 @@
+{
+  "scene": "Sahne",
+  "ending": "Son",
+  "goodEnding": "İyi son",
+  "mixedEnding": "Karışık son",
+  "poorEnding": "Kötü son",
+  "scoreOf": "Puan {score} / {max}",
+  "scoreOnly": "Puan {score}",
+  "startScene": "Başla",
+  "sceneIdLabel": "Sahne kimliği",
+  "needsId": "Seçeneklerin bu sahneye bağlanabilmesi için bir sahne kimliği ekleyin.",
+  "orphan": "Bu sahneye bağlanan seçenek yok.",
+  "deadLinks": "Bu bağlantılar var olmayan bir sahneyi gösteriyor:"
+}

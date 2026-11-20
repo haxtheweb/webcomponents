@@ -24,11 +24,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Valfrír samandráttartekstur, tá ið smálutirnir eru opnir"
+        "title": "Valfrír samandráttartekstur, tá ið smálutirnir eru opnir",
+        "description": "Knøttatekstur, meðan lýsingin er fjald, t.d. Vís lýsing."
       },
       {
         "property": "closeText",
-        "title": "Valfrír samandráttartekstur, tá ið smálutirnir eru latnir aftur"
+        "title": "Valfrír samandráttartekstur, tá ið smálutirnir eru latnir aftur",
+        "description": "Knøttatekstur, meðan lýsingin verður víst, t.d. Fjal lýsing."
       }
     ]
   }

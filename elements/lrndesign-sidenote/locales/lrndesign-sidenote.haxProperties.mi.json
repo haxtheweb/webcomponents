@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Tuhipoka taha",
+    "description": "He tuhipoka kua wehea mai i te ihirangi e karapoti ana, me tētahi ata me tētahi tapanga kōwhiri."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tapanga",
+        "description": "Te tapanga o te tuhipoka taha."
+      },
+      {
+        "title": "Ata",
+        "description": "Te ata o te tuhipoka taha."
+      },
+      {
+        "title": "Ihirangi",
+        "description": "Te ihirangi o te tuhipoka taha."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tae",
+        "description": "Te tae e pania ai te tuhipoka taha."
+      }
+    ]
+  }
+}

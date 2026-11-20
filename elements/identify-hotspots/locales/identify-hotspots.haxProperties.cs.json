@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Určete aktivní body",
+    "description": "Studenti hledají správná místa na obrázku kliknutím, ťuknutím nebo posunem zaměřovače klávesnicí. Hodnocený protějšek obrázkové mapy."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Obrázek",
+        "description": "Obrázek, který studenti prohledávají."
+      },
+      {
+        "title": "Alternativní text",
+        "description": "Popisuje obrázek pro lidi, kteří ho nevidí. Nikdy se nezobrazuje jako název."
+      },
+      {
+        "title": "Název",
+        "description": "Krátký viditelný název zobrazený nad obrázkem."
+      },
+      {
+        "title": "Otázka",
+        "description": "Co mají studenti na obrázku najít."
+      },
+      {
+        "title": "Odpovědi",
+        "description": "Každá odpověď je pojmenovaný ovál na obrázku. Pozice a velikost jsou v procentech obrázku, měřeno od jeho levého horního rohu. Během úprav je každá odpověď na obrázku ohraničena."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Pokusy",
+        "description": "Kolikrát může student zkoušet. 0 znamená neomezeně."
+      },
+      {
+        "title": "Povolená minutí",
+        "description": "Kolik minutí ukončí pokus. 0 znamená neomezeně a studenti dostanou tlačítko Dokončit."
+      },
+      {
+        "title": "Sbalitelné",
+        "description": "Zobrazit tuto otázku jako řádek, který se otevírá a zavírá. Otevření jednoho zavře ostatní sbalitelné otázky vedle něj."
+      },
+      {
+        "title": "Začít sbalené",
+        "description": "Je-li sbalitelné, začít jako zavřený řádek, který ukazuje jen otázku a stav."
+      },
+      {
+        "title": "Formát hodnocení",
+        "description": "OER Schema: formát hodnocení tohoto testu (např. body, známka, procenta, dokončení)."
+      },
+      {
+        "title": "Vzdělávací cíl",
+        "description": "OER Schema: vzdělávací cíl spojený s tímto testem."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Název kvízu",
+        "description": "Název kvízu předávaný pro identifikaci této položky v prostředích řízených xAPI"
+      },
+      {
+        "title": "Kurz",
+        "description": "OER Schema: kurz, pro který je tento test určen."
+      }
+    ]
+  }
+}

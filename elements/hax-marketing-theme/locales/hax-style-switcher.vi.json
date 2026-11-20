@@ -1,0 +1,16 @@
+{
+  "theme": "Giao diện",
+  "designSystem": "Hệ thống thiết kế",
+  "dddDefault": "DDD (mặc định)",
+  "designSystemHelp": "Màu sắc, kiểu chữ, góc bo và tiêu điểm. Giao diện giữ nguyên bố cục.",
+  "designSystemFixed": "Giao diện này giữ hệ thống thiết kế riêng.",
+  "palette": "Bảng màu",
+  "themeDefault": "Mặc định của giao diện",
+  "paletteNumber": "Bảng màu {n}",
+  "siteTheme": "{name} (giao diện của trang web này)",
+  "restyle": "Đổi phong cách trang web này",
+  "close": "Đóng",
+  "reset": "Quay lại giao diện riêng của trang web này",
+  "random": "Làm tôi bất ngờ",
+  "about": "Đây là một vài giao diện được tích hợp trong HAX. Các trang không bao giờ thay đổi: cấu trúc nằm trong JSON Outline Schema và mỗi khối là một web component chuẩn, nên thiết kế có thể tự do hoán đổi."
+}

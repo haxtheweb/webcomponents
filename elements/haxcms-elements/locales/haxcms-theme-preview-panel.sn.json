@@ -8,5 +8,9 @@
   "theme": "Dingindira",
   "palette": "Paleti",
   "cancel": "Kanzura",
-  "openAppearanceSettings": "Vhura Marongerwo eChitarisiko"
+  "openAppearanceSettings": "Vhura Marongerwo eChitarisiko",
+  "designSystem": "Hurongwa hwedhizaini",
+  "designSystemDefault": "DDD (yakajairwa)",
+  "designSystemThemeDefault": "{name} (yakajairwa netheme)",
+  "designSystemHelp": "Ruvara, mavara, makona nekuwanda. Theme ichiri kusarudza marongerwo."
 }

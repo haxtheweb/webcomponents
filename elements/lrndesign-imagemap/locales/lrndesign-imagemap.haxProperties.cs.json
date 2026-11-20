@@ -14,6 +14,10 @@
         "property": "hotspotDetails",
         "title": "Podrobnosti aktivních bodů",
         "description": "Interaktivní aktivní body na obrázkové mapě."
+      },
+      {
+        "title": "Podrobnosti aktivních bodů",
+        "description": "Interaktivní aktivní body na obrázkové mapě."
       }
     ]
   }

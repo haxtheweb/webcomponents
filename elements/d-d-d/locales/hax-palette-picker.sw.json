@@ -5,5 +5,6 @@
   "selected": "Imechaguliwa",
   "currentlyActiveAndSelectedPalette": "Paleti amilifu na iliyochaguliwa kwa sasa",
   "currentlyActivePalette": "Paleti amilifu kwa sasa",
-  "selectedPaletteToApply": "Paleti iliyochaguliwa kutumika"
+  "selectedPaletteToApply": "Paleti iliyochaguliwa kutumika",
+  "paletteNumber": "Paleti {number}"
 }

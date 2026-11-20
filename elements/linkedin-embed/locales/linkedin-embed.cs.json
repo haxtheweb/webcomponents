@@ -1,3 +1,4 @@
 {
-  "viewOnLinkedin": "Zobrazit {name} na LinkedIn"
+  "viewOnLinkedin": "Zobrazit {name} na LinkedIn",
+  "badgeTitle": "Odznak profilu LinkedIn pro {name}"
 }

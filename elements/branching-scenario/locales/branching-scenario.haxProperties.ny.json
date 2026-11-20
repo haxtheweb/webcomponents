@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Nkhani yanthambi",
+    "description": "Nkhani yomwe chisankho chilichonse chimatsogolera ku chochitika ndi mathero osiyana. Ophunzira angabwerere ndi kuyesa njira zina; mathero ofikiridwa amakhazikitsa zigoli."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mutu",
+        "description": "Dzina la nkhaniyo, lowonetsedwa pamutu pake."
+      },
+      {
+        "title": "Chochitika choyambira",
+        "description": "ID ya chochitika chomwe ophunzira amayambira. Siyani chopanda kanthu kuti muyambe pa chochitika choyamba."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Mtundu wowonetsa",
+        "description": "Mtundu wosankha wa chizindikiro cha pamutu, mabatani ndi m'mbali mwa chisankho."
+      }
+    ]
+  }
+}

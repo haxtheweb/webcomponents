@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Buttone di storia",
+    "description": "U buttone chì apre a storia daretu à un'affirmazione nant'à hax.cloud, o u locu currispundente nant'à un altru situ di a reta HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Induve và",
+        "options": {
+          "cloud": "hax.cloud, a storia",
+          "learn": "learn.hax.cloud, un tutoriale",
+          "try": "browser.hax.cloud, pruvatelu",
+          "elements": "webcomponents.hax.cloud, un bloccu",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Indirizzu nant'à quellu situ (una storia nant'à hax.cloud s'assumiglia à stories/ee450a19)"
+      },
+      {
+        "title": "Di chì si tratta"
+      },
+      {
+        "title": "Chip chjucu"
+      },
+      {
+        "title": "Mustrà di chì si tratta in u buttone"
+      }
+    ]
+  }
+}

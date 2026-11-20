@@ -20,6 +20,12 @@
         "title": "Imagine",
         "description": "Imagine afișată împreună cu citatul."
       }
+    ],
+    "advanced": [
+      {
+        "title": "Încadrat",
+        "description": "Desenați citatul pe cadrul comun al blocurilor, cu o pictogramă și o etichetă deasupra, ca să se potrivească cu notele și fișele de instrucțiuni."
+      }
     ]
   }
 }

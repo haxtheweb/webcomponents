@@ -1,0 +1,10 @@
+{
+  "loading": "Cargando a las personas.",
+  "now": "Ahora:",
+  "personOn": "{name} en {place}",
+  "github": "GitHub",
+  "linkedin": "LinkedIn",
+  "ownSite": "su propio sitio",
+  "commit": "commit",
+  "commits": "commits"
+}

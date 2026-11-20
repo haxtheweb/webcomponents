@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Kitufe cha hadithi",
+    "description": "Kitufe kinachofungua hadithi iliyo nyuma ya dai kwenye hax.cloud, au mahali panapolingana kwenye tovuti nyingine ya mtandao wa HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Inaelekea wapi",
+        "options": {
+          "cloud": "hax.cloud, hadithi",
+          "learn": "learn.hax.cloud, mafunzo",
+          "try": "browser.hax.cloud, ijaribu",
+          "elements": "webcomponents.hax.cloud, kizuizi",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Anwani kwenye tovuti hiyo (hadithi kwenye hax.cloud inaonekana kama stories/ee450a19)"
+      },
+      {
+        "title": "Inahusu nini"
+      },
+      {
+        "title": "Kibandiko kidogo"
+      },
+      {
+        "title": "Onyesha inahusu nini ndani ya kitufe"
+      }
+    ]
+  }
+}

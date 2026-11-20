@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Pokretanje vanjskog alata",
+    "description": "Blok koji otvara vanjski alat za učenje u novom prozoru ili na stranici, kao običnu poveznicu ili sa zahtjevom za prijavu LTI 1.3."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Naslov",
+        "description": "Naziv alata. Prikazuje se u zaglavlju i na gumbu."
+      },
+      {
+        "title": "Opis",
+        "description": "Što polaznici rade u alatu, prikazano iznad gumba."
+      },
+      {
+        "title": "URL za pokretanje",
+        "description": "Adresa alata. Mora biti puna adresa koja počinje s https:// ili http://."
+      },
+      {
+        "title": "Otvori u",
+        "description": "Novi prozor radi sa svakim alatom. Na ovoj stranici radi samo s alatima koji dopuštaju prikaz unutar drugog web-mjesta.",
+        "options": {
+          "window": "Novi prozor",
+          "embed": "Na ovoj stranici"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "LTI URL za prijavu",
+        "description": "Samo LTI 1.3: adresa za pokretanje prijave alata. Uz nju, ID klijenta i ID implementacije gumb šalje zahtjev za LTI prijavu umjesto otvaranja obične poveznice. Za dovršetak pokretanja potrebna je LTI usluga ovog web-mjesta."
+      },
+      {
+        "title": "LTI ID klijenta",
+        "description": "ID klijenta koji je alat dao ovom web-mjestu. Javni identifikator, nije tajna: nikad ovdje ne stavljajte ključeve ili tajne."
+      },
+      {
+        "title": "LTI ID implementacije",
+        "description": "ID implementacije koji je alat dao ovom web-mjestu. Javni identifikator, nije tajna."
+      },
+      {
+        "title": "LTI izdavatelj",
+        "description": "Adresa koja identificira ovo web-mjesto prema alatu. Ostavite prazno za korištenje adrese web-mjesta na kojem je stranica."
+      },
+      {
+        "title": "Visina na stranici",
+        "description": "Visina alata kad se otvori na ovoj stranici, u pikselima (200 do 2000)."
+      },
+      {
+        "title": "Naglasna boja",
+        "description": "Boja oznake u zaglavlju i gumba. Ostavite prazno da prati temu."
+      }
+    ],
+    "developer": [
+      {
+        "title": "LTI savjet za prijavu",
+        "description": "Neprozirna vrijednost kojom LTI usluga ovog web-mjesta prepoznaje polaznika. Obično je web-mjesto dostavlja putem događaja lti-launch-request, a ne sprema se ovdje. Nikad lozinka ili ključ."
+      },
+      {
+        "title": "LTI savjet poruke",
+        "description": "Neprozirna vrijednost kojom LTI usluga ovog web-mjesta prepoznaje ovo pokretanje. Obično je dostavlja web-mjesto, a ne sprema se ovdje."
+      }
+    ]
+  }
+}

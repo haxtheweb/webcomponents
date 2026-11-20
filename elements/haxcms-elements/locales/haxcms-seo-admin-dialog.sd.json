@@ -6,6 +6,8 @@
   "faviconDescription": "براؤزر ٽيب جي تصوير / فونن تي ننڍي سائيٽ لوگو طور استعمال ٿئي ٿي",
   "domain": "ڊومين",
   "domainDescription": "هن ويب سائيٽ جو ڊومين",
+  "sameAs": "هن سائيٽ جا ٻيا پروفائل",
+  "sameAsDescription": "هر سٽ ۾ هڪ لنڪ، هن سائيٽ يا تنظيم جي ٻين هنڌن تي پروفائلن ڏانهن (GitHub، LinkedIn، YouTube، Mastodon). سرچ انجڻ انهن کي استعمال ڪري انهن پروفائلن کي هن سائيٽ سان ڳنڍين ٿا.",
   "language": "ٻولي",
   "languageDescription": "هن سائيٽ جي ٻولي. نالي يا ڪوڊ سان ڳوليو، يا fr-CA وانگر ٻيو ڪوڊ داخل ڪريو.",
   "googleAnalyticsId": "Google Analytics ID",

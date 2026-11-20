@@ -14,6 +14,10 @@
         "property": "hotspotDetails",
         "title": "Ruzivo rwenzvimbo dzinodyidzana",
         "description": "Nzvimbo dzinodyidzana pamepu yemufananidzo."
+      },
+      {
+        "title": "Ruzivo rwenzvimbo",
+        "description": "Nzvimbo dzinoshanda pamepu yemufananidzo."
       }
     ]
   }

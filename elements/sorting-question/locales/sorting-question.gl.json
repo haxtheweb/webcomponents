@@ -40,5 +40,7 @@
   "hideDirections": "Ocultar as instrucións",
   "showRelatedContent": "Mostrar o contido relacionado",
   "hideRelatedContent": "Ocultar o contido relacionado",
-  "notAttempted": "Sen tentar"
+  "notAttempted": "Sen tentar",
+  "cardsDirections": "Pon as cartas na orde correcta cos botóns mover antes e mover despois de cada carta, ou arrástraas co rato. Cando creas que están na orde correcta, comproba a resposta seleccionando {checkAnswer}.",
+  "movedToPosition": "{item} movido á posición {position} de {total}"
 }

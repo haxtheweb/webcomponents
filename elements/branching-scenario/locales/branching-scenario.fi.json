@@ -1,0 +1,22 @@
+{
+  "scenario": "Skenaario",
+  "directions": "Ohjeet",
+  "showDirections": "Näytä ohjeet",
+  "hideDirections": "Piilota ohjeet",
+  "directionsRead": "Lue jokainen kohtaus ja valitse, mitä tekisit.",
+  "directionsEndings": "Loppuja on useita. Kokeile toista polkua, kun olet valmis.",
+  "startOver": "Aloita alusta",
+  "back": "Askel taaksepäin",
+  "tryAnother": "Kokeile toista polkua",
+  "path": "Polku",
+  "scene": "Kohtaus",
+  "ending": "Loppu",
+  "end": "loppu",
+  "scenesSeen": "{seen}/{total} kohtausta nähty",
+  "endingReached": "Loppu saavutettu",
+  "addScene": "Lisää kohtaus",
+  "newScene": "Uusi kohtaus",
+  "newSceneText": "Kuvaile, mitä tapahtuu, ja linkitä jokainen valinta kohtaukseen.",
+  "editingNote": "Muokkaus: kaikki kohtaukset näytetään. Valinta on linkki, jossa on # ja kohtauksen tunnus.",
+  "noScenes": "Lisää kohtaus aloittaaksesi skenaarion."
+}

@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Mzere wa mbali",
+    "description": "Sikirini ya chinthucho pambali pa zomwe chikutanthauza kwa inu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Chilembo chaching'ono"
+      },
+      {
+        "title": "Mutu"
+      },
+      {
+        "title": "Chithunzi"
+      },
+      {
+        "title": "Zomwe chithunzi chikuwonetsa"
+      },
+      {
+        "title": "Chithunzi kumanja"
+      },
+      {
+        "title": "Mtundu wa mthunzi (dzina la DDD, chopanda kanthu chimatsatira mitundu)"
+      }
+    ]
+  }
+}

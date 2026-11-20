@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Zona culake gambar",
+    "description": "Siswa mapanake label ing zona sing dilapisake ing gambar, banjur mriksa wangsulane."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Gambar",
+        "description": "Gambar papan siswa mapanake label."
+      },
+      {
+        "title": "Teks alternatif",
+        "description": "Nggambarake gambar kanggo wong sing ora bisa ndeleng. Aja nuduhake panggonan label."
+      },
+      {
+        "title": "Judhul gambar",
+        "description": "Judhul cendhak sing katon kanggo gambar, ditampilake ing ndhuwure."
+      },
+      {
+        "title": "Pitakon",
+        "description": "Apa sing kudu ditindakake siswa karo label."
+      },
+      {
+        "title": "Label lan zona",
+        "description": "Saben item yaiku label sing bisa dipapanake siswa. Wenehi label jeneng zona kanggo mapanake zonane ing gambar; label tanpa jeneng zona yaiku luwihan sing ora duwe panggonan. Angka zona yaiku persen saka gambar."
+      },
+      {
+        "title": "Katrangan",
+        "description": "Katrangan pilihan sing ditampilake ing sangisore gambar."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Upaya",
+        "description": "Kaping pira siswa bisa mriksa. 0 tegese tanpa wates."
+      },
+      {
+        "title": "Acak label",
+        "description": "Tampilake label ing urutan sing beda saben ngunjungi."
+      },
+      {
+        "title": "Bisa dilempit",
+        "description": "Tampilake pitakon iki minangka baris sing bisa dibukak lan ditutup. Mbukak siji nutup pitakon lempitan liyane ing sandhinge."
+      },
+      {
+        "title": "Wiwiti kalempit",
+        "description": "Yen bisa dilempit, wiwiti minangka baris ketutup sing mung nampilake pitakon lan statuse."
+      },
+      {
+        "title": "Format biji",
+        "description": "OER Schema: format biji kanggo penilaian iki (contone poin, huruf, persen, rampung)."
+      },
+      {
+        "title": "Tujuan sinau",
+        "description": "OER Schema: tujuan sinau sing gegandhengan karo penilaian iki."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Jeneng kuis",
+        "description": "Jeneng kuis sing dienggo kanggo identifikasi xAPI ing sistem analitik."
+      },
+      {
+        "title": "Kursus",
+        "description": "OER Schema: kursus sing dituju penilaian iki."
+      }
+    ]
+  }
+}

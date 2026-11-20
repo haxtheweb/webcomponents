@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Fusnota",
+    "description": "Bilješka napisana tamo gdje joj je mjesto u tekstu. Prikazuje se kao broj, a numerisana lista bilješki sama se pravi na dnu stranice."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Bilješka",
+        "description": "Tekst fusnote."
+      },
+      {
+        "title": "Bez pregleda",
+        "description": "Ne prikazuj bilješku kad čitalac pređe mišem preko broja ili ga fokusira."
+      }
+    ]
+  }
+}

@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "аталыш"
+        "title": "аталыш",
+        "description": "Курс моделинин үстүндө көрсөтүлгөн аталыш."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "Көрсөтүлө турган 3D модель файлынын (.glb же .gltf) дареги."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "3D моделди көрө албаган адамдар үчүн аны сүрөттөп бериңиз."
       },
       {
         "title": "Маалымат аймагы"

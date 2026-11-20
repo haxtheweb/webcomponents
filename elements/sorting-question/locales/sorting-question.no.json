@@ -40,5 +40,7 @@
   "hideDirections": "Skjul veiledning",
   "showRelatedContent": "Vis relatert innhold",
   "hideRelatedContent": "Skjul relatert innhold",
-  "notAttempted": "Ikke forsøkt"
+  "notAttempted": "Ikke forsøkt",
+  "cardsDirections": "Sett kortene i riktig rekkefølge med knappene for å flytte tidligere og senere på hvert kort, eller dra dem med en mus. Når du tror du har riktig rekkefølge, test svaret ditt ved å velge {checkAnswer}.",
+  "movedToPosition": "{item} flyttet til posisjon {position} av {total}"
 }

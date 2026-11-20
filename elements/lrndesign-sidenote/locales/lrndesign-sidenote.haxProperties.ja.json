@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "サイドノート",
+    "description": "周りのコンテンツから区別されたノート。アイコンとラベルは任意。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ラベル",
+        "description": "サイドノートのラベル。"
+      },
+      {
+        "title": "アイコン",
+        "description": "サイドノートのアイコン。"
+      },
+      {
+        "title": "コンテンツ",
+        "description": "サイドノートのコンテンツ。"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "色",
+        "description": "サイドノートの色合い。"
+      }
+    ]
+  }
+}

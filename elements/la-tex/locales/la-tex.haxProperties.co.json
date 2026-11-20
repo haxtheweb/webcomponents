@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "Scrive cù a nutazione matematica LaTeX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Fondu di a maghjina",
+        "description": "Fondu daretu à e maghjine disegnate. Automaticu ne aghjunghje unu solu quandu u disegnu saria difficiule à vede nant'à a pagina, per esempiu linee scure in modu scuru.",
+        "options": {
+          "auto": "Automaticu",
+          "light": "Chjaru",
+          "dark": "Scuru",
+          "none": "Nisunu"
+        }
+      }
+    ]
   }
 }

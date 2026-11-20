@@ -9,5 +9,7 @@
   "slidePages": "صفحه‌های اسلاید",
   "goToSlide": "رفتن به اسلاید {number}",
   "slides": "اسلایدها",
-  "position": "{number} از {total}"
+  "position": "{number} از {total}",
+  "fullScreen": "تمام‌صفحه",
+  "exitFullScreen": "خروج از تمام‌صفحه"
 }

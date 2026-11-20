@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Isidlali samadokhumenti",
+    "description": "Umhlahlandlela, isibonakaliso nereferensi yengxenye yewebhu, nezinkinobho zokukopisha ze-HTML, import, npm ne-CDN."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ifayela ledatha yamadokhumenti",
+        "description": "Idatha yamadokhumenti eza nesakhi (lib/tag.docs.json)."
+      },
+      {
+        "title": "Ibhodi lendaba lomhlahlandlela",
+        "description": "Ibhodi lendaba lokunyakaza eliza nesakhi (tag.motion.json). Kuyakhethwa."
+      },
+      {
+        "title": "Isifundo sevidiyo",
+        "description": "Ividiyo emfushane mayelana nesakhi (YouTube, Vimeo noma ifayela levidiyo). Ithatha indawo yevidiyo esedatheni yamadokhumenti."
+      },
+      {
+        "title": "Vula kuthebhu",
+        "description": "Ithebhu eboniswa kuqala.",
+        "options": {
+          "motion": "Umhlahlandlela",
+          "video": "Ividiyo",
+          "demo": "Isibonakaliso",
+          "docs": "Amadokhumenti",
+          "schema": "Schema"
+        }
+      },
+      {
+        "title": "Umhlahlandlela odlala ngokuzenzakalelayo",
+        "description": "Qala umhlahlandlela ngokushesha uma isidlali sivela. Akunakwa uma umfundi ekhetha ukunyakaza okuncane."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Isihloko somhlahlandlela",
+        "description": "Ezakhini ezinemihlahlandlela eminingana, isihloko okufanele sivulwe kuqala (isibonelo add-blocks). Shiya kungenalutho kowomqoka."
+      },
+      {
+        "title": "Isixhumanisi sesibonakaliso esibukhoma",
+        "description": "Lapho inkinobho ethi Vula umthombo wesibonakaliso iya khona. Okuzenzakalelayo yifolda ye-demo ku-repository."
+      },
+      {
+        "title": "Isixhumanisi samadokhumenti",
+        "description": "Lapho inkinobho yamadokhumenti agcwele iya khona, isibonelo ikhasi le-Learn HAX elifanayo."
+      }
+    ]
+  }
+}

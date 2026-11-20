@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Krossvord",
+    "description": "So‘zlar va savollar ro‘yxatidan tuzilgan krossvord. To‘r siz uchun yaratiladi; o‘quvchilar so‘zlarni yozib, tekshiradi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sarlavha",
+        "description": "Krossvord ustida ko‘rsatiladigan sarlavha yoki savol."
+      },
+      {
+        "title": "So‘zlar",
+        "description": "Har bir so‘z va uning savoli. To‘r shu ro‘yxatdan yaratiladi: eng uzun so‘z birinchi joylashtiriladi, boshqalari uni umumiy harflarda kesib o‘tadi."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Urinishlar",
+        "description": "O‘quvchi necha marta tekshira oladi. 0 cheklanmagan degani."
+      },
+      {
+        "title": "Urg‘u rangi",
+        "description": "Sarlavha belgisi, faol so‘z va amal tugmalari uchun ixtiyoriy rang."
+      },
+      {
+        "title": "Yig‘iladigan",
+        "description": "Bu krossvordni ochilib-yopiladigan qator sifatida ko‘rsatish. Birini ochish yonidagi boshqa yig‘iladigan savollarni yopadi."
+      },
+      {
+        "title": "Yig‘ilgan holda boshlash",
+        "description": "Yig‘iladigan bo‘lsa, faqat sarlavha va holatni ko‘rsatadigan yopiq qator sifatida boshlanadi."
+      },
+      {
+        "title": "Baholash formati",
+        "description": "OER Schema: bu baholash uchun baholash formati (masalan, ballar, harf, foiz, bajarilganlik)."
+      },
+      {
+        "title": "O‘quv maqsadi",
+        "description": "OER Schema: bu baholash bilan bog‘liq o‘quv maqsadi."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Test nomi",
+        "description": "Tahlil tizimlarida xAPI identifikatsiyasi uchun ishlatiladigan test nomi."
+      },
+      {
+        "title": "Kurs",
+        "description": "OER Schema: bu baholash mo‘ljallangan kurs."
+      }
+    ]
+  }
+}

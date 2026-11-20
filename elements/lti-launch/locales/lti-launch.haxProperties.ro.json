@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Lansare instrument extern",
+    "description": "Un bloc care deschide un instrument extern de învățare într-o fereastră nouă sau pe pagină, ca link simplu sau cu o cerere de conectare LTI 1.3."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titlu",
+        "description": "Numele instrumentului. Este afișat în antet și pe buton."
+      },
+      {
+        "title": "Descriere",
+        "description": "Ce fac cursanții în instrument, afișat deasupra butonului."
+      },
+      {
+        "title": "URL de lansare",
+        "description": "Adresa instrumentului. Trebuie să fie o adresă completă care începe cu https:// sau http://."
+      },
+      {
+        "title": "Deschideți în",
+        "description": "O fereastră nouă funcționează cu orice instrument. Pe această pagină funcționează doar cu instrumentele care permit afișarea în alt site.",
+        "options": {
+          "window": "O fereastră nouă",
+          "embed": "Pe această pagină"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "URL de conectare LTI",
+        "description": "Doar LTI 1.3: adresa de inițiere a conectării instrumentului. Cu aceasta, un client ID și un deployment ID, butonul trimite o cerere de conectare LTI în loc să deschidă un link simplu. Finalizarea lansării necesită serviciul LTI al acestui site."
+      },
+      {
+        "title": "Client ID LTI",
+        "description": "Client ID-ul pe care instrumentul l-a dat acestui site. Un identificator public, nu un secret: nu puneți niciodată chei sau secrete aici."
+      },
+      {
+        "title": "Deployment ID LTI",
+        "description": "Deployment ID-ul pe care instrumentul l-a dat acestui site. Un identificator public, nu un secret."
+      },
+      {
+        "title": "Emitent LTI",
+        "description": "Adresa care identifică acest site în fața instrumentului. Lăsați gol pentru a folosi adresa site-ului pe care se află pagina."
+      },
+      {
+        "title": "Înălțimea pe pagină",
+        "description": "Înălțimea instrumentului când se deschide pe această pagină, în pixeli (200 până la 2000)."
+      },
+      {
+        "title": "Culoare de accent",
+        "description": "Culoarea etichetei din antet și a butonului. Lăsați gol pentru a urma tema."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Indiciu de conectare LTI",
+        "description": "O valoare opacă pe care serviciul LTI al acestui site o folosește pentru a recunoaște cursantul. De obicei furnizată de site prin evenimentul lti-launch-request, nu salvată aici. Niciodată o parolă sau o cheie."
+      },
+      {
+        "title": "Indiciu de mesaj LTI",
+        "description": "O valoare opacă pe care serviciul LTI al acestui site o folosește pentru a recunoaște această lansare. De obicei furnizată de site, nu salvată aici."
+      }
+    ]
+  }
+}

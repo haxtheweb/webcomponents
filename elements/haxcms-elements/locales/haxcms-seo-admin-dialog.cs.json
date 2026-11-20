@@ -6,6 +6,8 @@
   "faviconDescription": "Obrázek na kartě prohlížeče / na telefonech použit jako malé logo webu",
   "domain": "Doména",
   "domainDescription": "Doména tohoto webu",
+  "sameAs": "Další profily tohoto webu",
+  "sameAsDescription": "Jeden odkaz na řádek na profily tohoto webu nebo organizace jinde (GitHub, LinkedIn, YouTube, Mastodon). Vyhledávače je používají k propojení těchto profilů s tímto webem.",
   "language": "Jazyk",
   "languageDescription": "Jazyk tohoto webu. Hledejte podle názvu nebo kódu, nebo zadejte jiný kód, například fr-CA.",
   "googleAnalyticsId": "ID Google Analytics",

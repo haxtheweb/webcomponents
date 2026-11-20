@@ -13,6 +13,14 @@
       {
         "property": "answers",
         "title": "答案",
+        "description": "答案顺序即为正确顺序。",
+        "options": {
+          "": "列表",
+          "cards": "图片卡片"
+        }
+      },
+      {
+        "title": "答案",
         "description": "答案顺序即为正确顺序。"
       }
     ],

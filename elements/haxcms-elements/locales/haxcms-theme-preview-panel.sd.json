@@ -8,5 +8,9 @@
   "theme": "ٿيم",
   "palette": "پيليٽ",
   "cancel": "منسوخ ڪريو",
-  "openAppearanceSettings": "ظاهري صورت جون سيٽنگون کوليو"
+  "openAppearanceSettings": "ظاهري صورت جون سيٽنگون کوليو",
+  "designSystem": "ڊيزائن سسٽم",
+  "designSystemDefault": "DDD (ڊفالٽ)",
+  "designSystemThemeDefault": "{name} (ٿيم ڊفالٽ)",
+  "designSystemHelp": "رنگ، ٽائيپ، ڪنڊون ۽ گهاٽائي. ترتيب اڃا به ٿيم طئي ڪري ٿي."
 }

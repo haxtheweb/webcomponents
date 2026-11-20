@@ -2,5 +2,9 @@
   "answerInCorrectOrder": "ਜਵਾਬ ਸਹੀ ਕ੍ਰਮ ਵਿੱਚ ਹੈ",
   "answerInIncorrectOrder": "ਜਵਾਬ ਗ਼ਲਤ ਕ੍ਰਮ ਵਿੱਚ ਹੈ",
   "moveOptionUp": "ਵਿਕਲਪ ਨੂੰ ਕ੍ਰਮ ਵਿੱਚ ਉੱਪਰ ਲਿਜਾਣ ਲਈ ਚੁਣੋ",
-  "moveOptionDown": "ਵਿਕਲਪ ਨੂੰ ਕ੍ਰਮ ਵਿੱਚ ਹੇਠਾਂ ਲਿਜਾਣ ਲਈ ਚੁਣੋ"
+  "moveOptionDown": "ਵਿਕਲਪ ਨੂੰ ਕ੍ਰਮ ਵਿੱਚ ਹੇਠਾਂ ਲਿਜਾਣ ਲਈ ਚੁਣੋ",
+  "moveEarlier": "ਪਹਿਲਾਂ ਕਰੋ",
+  "moveLater": "ਬਾਅਦ ਵਿੱਚ ਕਰੋ",
+  "correct": "ਸਹੀ",
+  "incorrect": "ਗਲਤ"
 }

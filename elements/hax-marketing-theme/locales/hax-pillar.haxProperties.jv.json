@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Pilar",
+    "description": "Pilar: jeneng, frasa, lambang, warna lan kenapa penting"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Jeneng"
+      },
+      {
+        "title": "Frasa"
+      },
+      {
+        "title": "Lambang"
+      },
+      {
+        "title": "Warna (jeneng DDD)"
+      },
+      {
+        "title": "Pilar endi, 1 nganti 7"
+      },
+      {
+        "title": "Kertu cilik"
+      },
+      {
+        "title": "Panggonan jeneng"
+      }
+    ]
+  }
+}

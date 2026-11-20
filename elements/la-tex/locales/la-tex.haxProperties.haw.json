@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "E kākau me ka hōʻailona makemakika LaTeX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kua kiʻi",
+        "description": "Kua ma hope o nā kiʻi i kaha ʻia. Hoʻohui ʻo ʻAkomi i hoʻokahi wale nō ke paʻakikī ke ʻike ʻia ke kaha kiʻi ma ka ʻaoʻao, e like me nā laina pōʻeleʻele ma ke ʻano pōuliuli.",
+        "options": {
+          "auto": "ʻAkomi",
+          "light": "Mālamalama",
+          "dark": "Pōuliuli",
+          "none": "ʻAʻohe"
+        }
+      }
+    ]
   }
 }

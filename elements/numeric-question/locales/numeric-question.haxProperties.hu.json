@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Számos kérdés",
+    "description": "Számmal megválaszolandó kérdés. A válasz egy rögzített szám vagy változókból kiszámított képlet, és akkor fogadható el, ha a tűréshatáron belül van."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kérdés",
+        "description": "Mit kérdeznek a tanulóktól. Egy változó értékének megjelenítéséhez írja a nevét kapcsos zárójelbe, például {d}."
+      },
+      {
+        "title": "Mértékegység",
+        "description": "Szövegként jelenik meg a válaszmező mellett, például km/h."
+      },
+      {
+        "title": "Válasz",
+        "description": "A helyes szám. Hagyja üresen, ha egy képlet számítja ki a választ."
+      },
+      {
+        "title": "Képlet",
+        "description": "A változókból számítja ki a választ, például d / (t / 60). Használható a + - * / ^, zárójelek, sqrt() és abs(). Ha meg van adva, a válasz helyett ezt használja."
+      },
+      {
+        "title": "Változók",
+        "description": "A képlet és a kérdés által használt számok. Mindegyik a legkisebb és legnagyobb érték közötti értéket vesz fel, lépésközönként."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tűréshatár",
+        "description": "Mennyire térhet el a pontos választól, hogy még elfogadható legyen. A 0 pontosat jelent, vagy az alábbi tizedesjegyekre kerekítettet."
+      },
+      {
+        "title": "Tűréshatár típusa",
+        "description": "Abszolút: plusz-mínusz a tűréshatár. Százalék: plusz-mínusz a pontos válasz ennyi százaléka.",
+        "options": {
+          "absolute": "Abszolút",
+          "percent": "Százalék"
+        }
+      },
+      {
+        "title": "Tizedesjegyek",
+        "description": "A tanulóknak ennyi tizedesjegyre kell kerekíteniük, és a válasz is így kerekítve jelenik meg. Hagyja üresen, ha nincs kerekítés."
+      },
+      {
+        "title": "Próbálkozások",
+        "description": "Hányszor ellenőrizhet a tanuló. A 0 korlátlant jelent."
+      },
+      {
+        "title": "Új számok minden próbálkozásnál",
+        "description": "Új változóértékek sorsolása minden alkalommal, amikor a tanuló újrapróbálkozik. Ekkor a korábbi válasza visszatéréskor nem jelenik meg, csak az, hogy helyes volt-e."
+      },
+      {
+        "title": "Összecsukható",
+        "description": "A kérdés nyitható-csukható sorként jelenik meg. Az egyik megnyitása bezárja a mellette lévő többi összecsukható kérdést."
+      },
+      {
+        "title": "Összecsukva induljon",
+        "description": "Összecsukható módban zárt sorként indul, amely csak a kérdést és az állapotát mutatja."
+      }
+    ],
+    "developer": [
+      {
+        "title": "A kvíz neve",
+        "description": "Az elemzőrendszerekben xAPI-azonosításra használt kvíznév."
+      }
+    ]
+  }
+}

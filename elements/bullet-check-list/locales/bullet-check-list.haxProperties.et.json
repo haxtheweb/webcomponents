@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Täppidega kontrollnimekiri",
+    "description": "Märkeruutude loend. Lugejad märgivad üksusi ja nende edenemine jäetakse meelde nende enda seadmes."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pealkiri",
+        "description": "Loendi nimi. Loetakse ette märkeruutude rühma sildina."
+      },
+      {
+        "title": "Üksused",
+        "description": "Iga üksus on märkeruut. Märgitud või keelatud üksusi lugejad muuta ei saa."
+      },
+      {
+        "title": "Nummerdatud",
+        "description": "Näita täpploendi asemel nummerdatud loendit."
+      },
+      {
+        "title": "Olek",
+        "description": "Muudab värvid stop-note'iga sobivaks.",
+        "options": {
+          "info": "Teade",
+          "success": "Kinnitus",
+          "warning": "Hoiatus",
+          "stop": "Stopp"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "Salvestuse ID",
+        "description": "Unikaalne ID, mida kasutatakse lugeja edenemise meelespidamiseks tema seadmes. Genereeritakse automaatselt; muuda seda ainult edenemise jagamiseks loendite vahel või puhtalt lehelt alustamiseks."
+      }
+    ]
+  }
+}

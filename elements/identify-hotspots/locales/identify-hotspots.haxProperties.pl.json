@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Wskaż obszary",
+    "description": "Uczący się znajdują właściwe miejsca na obrazie, klikając, dotykając lub przesuwając celownik klawiaturą. Oceniany odpowiednik mapy obrazu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Obraz",
+        "description": "Obraz, który przeszukują uczący się."
+      },
+      {
+        "title": "Tekst alternatywny",
+        "description": "Opisuje obraz dla osób, które go nie widzą. Nigdy nie jest wyświetlany jako tytuł."
+      },
+      {
+        "title": "Tytuł",
+        "description": "Krótki widoczny tytuł wyświetlany nad obrazem."
+      },
+      {
+        "title": "Pytanie",
+        "description": "Co uczący się mają znaleźć na obrazie."
+      },
+      {
+        "title": "Odpowiedzi",
+        "description": "Każda odpowiedź to nazwany owal na obrazie. Położenie i rozmiar są procentami obrazu, mierzonymi od jego lewego górnego rogu. Podczas edycji każda odpowiedź jest obrysowana na obrazie."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Próby",
+        "description": "Ile razy uczący się może próbować. 0 oznacza bez limitu."
+      },
+      {
+        "title": "Dozwolone chybienia",
+        "description": "Ile chybień kończy próbę. 0 oznacza bez limitu, a uczący się dostają przycisk Zakończ."
+      },
+      {
+        "title": "Zwijana",
+        "description": "Pokaż to pytanie jako wiersz, który się otwiera i zamyka. Otwarcie jednego zamyka inne zwijane pytania obok."
+      },
+      {
+        "title": "Zacznij zwinięte",
+        "description": "Gdy jest zwijane, zacznij od zamkniętego wiersza pokazującego tylko pytanie i jego stan."
+      },
+      {
+        "title": "Format oceniania",
+        "description": "OER Schema: format oceniania tej oceny (np. punkty, litera, procent, ukończenie)."
+      },
+      {
+        "title": "Cel kształcenia",
+        "description": "OER Schema: cel kształcenia powiązany z tą oceną."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Nazwa quizu",
+        "description": "Nazwa quizu przekazywana do identyfikacji tego elementu w środowiskach opartych na xAPI"
+      },
+      {
+        "title": "Kurs",
+        "description": "OER Schema: kurs, dla którego przeznaczona jest ta ocena."
+      }
+    ]
+  }
+}

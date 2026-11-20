@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Staitistic",
+    "description": "Uimhir a chomhaireann suas, le lipéad agus nasc lena scéal"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Uimhir le comhaireamh suas chuici"
+      },
+      {
+        "title": "Roimh an uimhir"
+      },
+      {
+        "title": "Tar éis na huimhreach"
+      },
+      {
+        "title": "Focail in ionad uimhreach"
+      },
+      {
+        "title": "Cad a chomhaireann sé"
+      },
+      {
+        "title": "Seoladh an scéil ar hax.cloud (stories/ee450a19)"
+      }
+    ]
+  }
+}

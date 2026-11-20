@@ -13,7 +13,15 @@
       {
         "property": "answers",
         "title": "Svar",
-        "description": "Rekkefølgen på svarene definerer riktig sekvens."
+        "description": "Rekkefølgen på svarene definerer riktig sekvens.",
+        "options": {
+          "": "Liste",
+          "cards": "Bildekort"
+        }
+      },
+      {
+        "title": "Svar",
+        "description": "Svarrekkefølgen bestemmer riktig sekvens."
       }
     ],
     "advanced": [

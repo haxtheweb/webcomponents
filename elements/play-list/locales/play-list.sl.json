@@ -9,5 +9,7 @@
   "slidePages": "Strani prosojnic",
   "goToSlide": "Pojdi na prosojnico {number}",
   "slides": "Diapozitivi",
-  "position": "{number} od {total}"
+  "position": "{number} od {total}",
+  "fullScreen": "Celozaslonski način",
+  "exitFullScreen": "Zapri celozaslonski način"
 }

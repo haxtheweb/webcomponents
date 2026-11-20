@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Grup Catatan",
+    "description": "Tumpuk beberapa stop note menjadi satu blok yang menampilkan satu catatan sekaligus, seperti Tips atau Yang baru. Kartu instruksi, catatan samping, dan kutipan berbingkai dapat ditumpuk bersamanya."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Label",
+        "description": "Nama grup yang diumumkan pembaca layar, seperti Tips atau Yang baru."
+      },
+      {
+        "title": "Catatan",
+        "description": "Stop note dalam grup. Kartu instruksi, catatan samping, dan kutipan berbingkai juga dapat ditambahkan."
+      }
+    ]
+  }
+}

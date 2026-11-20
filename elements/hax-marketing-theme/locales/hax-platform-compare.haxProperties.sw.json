@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Ulinganisho wa majukwaa",
+    "description": "Ana kwa ana: chagua majukwaa mawili yoyote kutoka kwenye faili ya data"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Data ya ulinganisho (JSON)"
+      },
+      {
+        "title": "ID ya jukwaa la kushoto"
+      },
+      {
+        "title": "ID ya jukwaa la kulia"
+      }
+    ]
+  }
+}

@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "ಹಿನ್ನೆಲೆ ಚಿತ್ರ."
+        "description": "ಹಿನ್ನೆಲೆ ಚಿತ್ರ.",
+        "title": "ಚಿತ್ರ"
       },
       {
         "property": "caption",
-        "description": "ಪಠ್ಯ ಶೀರ್ಷಿಕೆ."
+        "description": "ಪಠ್ಯ ಶೀರ್ಷಿಕೆ.",
+        "title": "ಶೀರ್ಷಿಕೆ ಬರಹ"
       }
     ]
   }

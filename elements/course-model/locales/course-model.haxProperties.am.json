@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "ርዕስ"
+        "title": "ርዕስ",
+        "description": "ከኮርሱ ሞዴል በላይ የሚታይ ርዕስ።"
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "የሚታየው የ3D ሞዴል ፋይል (.glb ወይም .gltf) አድራሻ።"
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "ማየት ለማይችሉ ሰዎች የ3D ሞዴሉን ይግለጹ።"
       },
       {
         "title": "የመረጃ ቦታ"

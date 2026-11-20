@@ -1,0 +1,21 @@
+{
+  "diagram": "Diagramma",
+  "flowchart": "blok-shema",
+  "sequence": "yzygiderlik",
+  "source": "Çeşme",
+  "textAlternative": "Alternatiw tekst",
+  "present": "Görkez",
+  "exitPresent": "Görkezişden çyk",
+  "loading": "Diagramma ýüklenýär",
+  "empty": "Entek çyzmaly zat ýok. Diagrammanyň çeşmesini goşuň.",
+  "error": "Ýalňyşlyk",
+  "parseError": "Bu diagrammany çyzyp bolmady. Çeşmäni barlaň.",
+  "loadError": "Diagramma kitaphanasyny ýükläp bolmady.",
+  "srcError": "Diagramma faýlyny ýükläp bolmady.",
+  "decision": "karar",
+  "end": "soňy",
+  "goTo": "{target} geç",
+  "ifGoTo": "eger {label} bolsa, {target} geç",
+  "describedBySource": "Çeşmesi bilen beýan edilen diagramma.",
+  "scrollable": "Diagramma, aýlap bolýar"
+}

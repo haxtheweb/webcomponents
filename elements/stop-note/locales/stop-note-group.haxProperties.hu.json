@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Megjegyzéscsoport",
+    "description": "Több stop note egy blokkba rendezése, amely egyszerre egy megjegyzést mutat, például Tippek vagy Újdonságok. Utasításkártyák, széljegyzetek és keretezett idézetek is hozzáadhatók."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Címke",
+        "description": "A csoport neve, amelyet a képernyőolvasók bemondanak, például Tippek vagy Újdonságok."
+      },
+      {
+        "title": "Megjegyzések",
+        "description": "A csoport stop note-jai. Utasításkártyák, széljegyzetek és keretezett idézetek is hozzáadhatók."
+      }
+    ]
+  }
+}

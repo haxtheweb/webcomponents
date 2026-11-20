@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Eré ìrántí",
+    "description": "Yí àwọn káàdì padà láti rí àwọn méjì-méjì. So ọ̀rọ̀ kan pọ̀ mọ́ ìtumọ̀ rẹ̀ kí ìbámu lè fi òye hàn, tàbí lo ọ̀rọ̀ tàbí àwòrán méjì tó bára mu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Àkọlé",
+        "description": "Ìtọ́ni tí a fihàn nínú àkọlé, fún àpẹẹrẹ: So ọ̀rọ̀ náà pọ̀ mọ́ iṣẹ́ rẹ̀."
+      },
+      {
+        "title": "Àwọn méjì-méjì",
+        "description": "Méjì kọ̀ọ̀kan jẹ́ káàdì méjì tó jẹ́ ti ara wọn, ní ọ̀pọ̀ ìgbà ọ̀rọ̀ kan àti ìtumọ̀ rẹ̀. Ẹ̀gbẹ́ kan nílò ọ̀rọ̀, àwòrán, tàbí méjèèjì."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Àwọ̀ ìtẹnumọ́",
+        "description": "Àwọ̀ àṣàyàn fún chip àkọlé, ẹ̀yìn àwọn káàdì àti bọ́tìnnì."
+      }
+    ]
+  }
+}

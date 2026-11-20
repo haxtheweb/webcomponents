@@ -1,0 +1,13 @@
+{
+  "gizmo": {
+    "title": "example-hax-element",
+    "description": "HAX churanakunata allichanalla kaqninkunata rikuchinapaq qallariy ejemplo elemento."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Suti"
+      }
+    ]
+  }
+}

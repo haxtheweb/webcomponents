@@ -3,5 +3,7 @@
   "status_stop": "Тоқтау",
   "status_warning": "Абайлаңыз",
   "status_success": "Сәтті",
-  "status_info": "Ескертпе"
+  "status_info": "Ескертпе",
+  "status_tip": "Білесіз бе?",
+  "status_new": "Не жаңалық"
 }

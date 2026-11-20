@@ -1,0 +1,22 @@
+{
+  "scenario": "Xenarju",
+  "directions": "Struzzjonijiet",
+  "showDirections": "Uri l-istruzzjonijiet",
+  "hideDirections": "Aħbi l-istruzzjonijiet",
+  "directionsRead": "Aqra kull xena u agħżel x'kont tagħmel.",
+  "directionsEndings": "Hemm diversi tmiem. Ipprova triq oħra wara li tlesti.",
+  "startOver": "Ibda mill-ġdid",
+  "back": "Pass lura",
+  "tryAnother": "Ipprova triq oħra",
+  "path": "Triq",
+  "scene": "Xena",
+  "ending": "Tmiem",
+  "end": "tmiem",
+  "scenesSeen": "{seen} minn {total} xeni mara",
+  "endingReached": "Wasalt fit-tmiem",
+  "addScene": "Żid xena",
+  "newScene": "Xena ġdida",
+  "newSceneText": "Iddeskrivi x'jiġri, imbagħad orbot kull għażla ma' xena.",
+  "editingNote": "Editjar: kull xena tidher. Għażla hija link għal # segwit minn ID ta' xena.",
+  "noScenes": "Żid xena biex tibda x-xenarju."
+}

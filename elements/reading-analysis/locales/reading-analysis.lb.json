@@ -60,6 +60,8 @@
   "flagsFound": "{correct} vun {total} fonnt",
   "toRethink": "{count} nach eng Kéier iwwerdenken",
   "notEvidence": "kee Beweis fir dëse Fändel",
+  "isEvidence": "Beweis fir dës Markéierung",
+  "readingKeys": "Benotzt d'Pfeildasten, fir vun enger {unit} op déi nächst ze goen.",
   "markAnswers": "Äntwerten markéieren",
   "doneMarking": "Markéiere vun den Äntwerten ofgeschloss",
   "editHint": "Beaarbecht den Text hei ënnendrënner. Benotz Äntwerten markéieren am Blockmenü, fir auszewielen, wou all Fändel hikënnt.",

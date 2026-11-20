@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Radardiagram",
+    "description": "Radardiagram (spinnenweb) voor volwassenheidsmodellen en het scoren van facetten, zoals HEOSAT. Bevat een tekstalternatief en een gegevenstabel."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Kop voor het diagram; wordt ook gebruikt als toegankelijke naam."
+      },
+      {
+        "title": "Maximale score",
+        "description": "Hoogste waarde op de schaal."
+      },
+      {
+        "title": "Categorieën",
+        "description": "Eén categorie per regel. Minstens 3 nodig."
+      },
+      {
+        "title": "Scores",
+        "description": "Getallen gescheiden door komma's, één per categorie in dezelfde volgorde."
+      },
+      {
+        "title": "Doelscores",
+        "description": "Getallen gescheiden door komma's, één per categorie in dezelfde volgorde."
+      },
+      {
+        "title": "Legenda tonen",
+        "description": "Toon een legenda die de scores en de doelen benoemt."
+      },
+      {
+        "title": "Compact",
+        "description": "Kleiner diagram zonder labels, legenda of gegevenstabel. Beweeg over een punt om de waarden te zien."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Scorelabel",
+        "description": "Label in legenda en tabel voor de scores."
+      },
+      {
+        "title": "Doellabel",
+        "description": "Label in legenda en tabel voor de doelen."
+      }
+    ]
+  }
+}

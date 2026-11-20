@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "nosaukums"
+        "title": "nosaukums",
+        "description": "Virsraksts, kas tiek rādīts virs kursa modeļa."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "Rādāmā 3D modeļa faila (.glb vai .gltf) adrese."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "Aprakstiet 3D modeli cilvēkiem, kuri to nevar redzēt."
       },
       {
         "title": "Informācijas apgabals"

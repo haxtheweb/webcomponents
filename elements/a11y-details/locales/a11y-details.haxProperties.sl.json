@@ -24,11 +24,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Neobvezno besedilo povzetka, ko so podrobnosti odprte"
+        "title": "Neobvezno besedilo povzetka, ko so podrobnosti odprte",
+        "description": "Besedilo gumba, ko je opis skrit, na primer Prikaži opis."
       },
       {
         "property": "closeText",
-        "title": "Neobvezno besedilo povzetka, ko so podrobnosti zaprte"
+        "title": "Neobvezno besedilo povzetka, ko so podrobnosti zaprte",
+        "description": "Besedilo gumba, ko je opis prikazan, na primer Skrij opis."
       }
     ]
   }

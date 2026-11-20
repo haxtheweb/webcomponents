@@ -1,0 +1,16 @@
+{
+  "theme": "Motív",
+  "designSystem": "Dizajnový systém",
+  "dddDefault": "DDD (predvolený)",
+  "designSystemHelp": "Farba, písmo, rohy a zameranie. Motív si ponechá rozloženie.",
+  "designSystemFixed": "Tento motív si ponecháva vlastný dizajnový systém.",
+  "palette": "Paleta",
+  "themeDefault": "Predvolené motívu",
+  "paletteNumber": "Paleta {n}",
+  "siteTheme": "{name} (motív tejto stránky)",
+  "restyle": "Zmeniť štýl tejto stránky",
+  "close": "Zavrieť",
+  "reset": "Späť na vlastný vzhľad tejto stránky",
+  "random": "Prekvapte ma",
+  "about": "Toto ukazuje niekoľko vzhľadov zabudovaných v HAX. Stránky sa nikdy nemenia: štruktúra je v JSON Outline Schema a každý blok je štandardný webový komponent, takže dizajn sa dá voľne vymeniť."
+}

@@ -20,6 +20,12 @@
         "title": "Obrázok",
         "description": "Obrázok zobrazený s citátom."
       }
+    ],
+    "advanced": [
+      {
+        "title": "V ráme",
+        "description": "Vykresliť citát na spoločnom ráme blokov s ikonou a označením nad ním, aby ladil s poznámkami a kartami s pokynmi."
+      }
     ]
   }
 }

@@ -1,0 +1,16 @@
+{
+  "theme": "Tema",
+  "designSystem": "Tasarım sistemi",
+  "dddDefault": "DDD (varsayılan)",
+  "designSystemHelp": "Renk, yazı, köşeler ve odak. Tema düzeni korur.",
+  "designSystemFixed": "Bu tema kendi tasarım sistemini korur.",
+  "palette": "Palet",
+  "themeDefault": "Tema varsayılanı",
+  "paletteNumber": "Palet {n}",
+  "siteTheme": "{name} (bu sitenin teması)",
+  "restyle": "Bu sitenin stilini değiştir",
+  "close": "Kapat",
+  "reset": "Bu sitenin kendi görünümüne dön",
+  "random": "Beni şaşırt",
+  "about": "Bu, HAX'a yerleşik görünümlerden birkaçını gösterir. Sayfalar hiç değişmez: yapı JSON Outline Schema'da yaşar ve her blok standart bir web bileşenidir, bu yüzden tasarım serbestçe değiştirilebilir."
+}

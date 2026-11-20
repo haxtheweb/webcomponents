@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Ezaugarri-errenkada",
+    "description": "Produktuaren pantaila bat, zuretzat zer esan nahi duen alboan"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etiketa txikia"
+      },
+      {
+        "title": "Izenburua"
+      },
+      {
+        "title": "Irudia"
+      },
+      {
+        "title": "Irudiak zer erakusten duen"
+      },
+      {
+        "title": "Irudia eskuinean"
+      },
+      {
+        "title": "Itzalaren kolorea (DDD izena, hutsik paletari jarraitzen dio)"
+      }
+    ]
+  }
+}

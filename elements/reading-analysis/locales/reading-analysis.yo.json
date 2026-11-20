@@ -60,6 +60,8 @@
   "flagsFound": "A rí {correct} nínú {total}",
   "toRethink": "{count} láti tún ronú",
   "notEvidence": "kì í ṣe ẹ̀rí fún àsíá yìí",
+  "isEvidence": "ẹ̀rí fún àsíá yìí",
+  "readingKeys": "Lo àwọn bọ́tìnnì ọfà láti lọ láti {unit} kan sí èkejì.",
   "markAnswers": "Sàmì sí àwọn ìdáhùn",
   "doneMarking": "Mo ti parí síṣàmì sí àwọn ìdáhùn",
   "editHint": "Ṣàtúnṣe ìwé kíkà ní ìsàlẹ̀. Lo Sàmì sí àwọn ìdáhùn nínú àkójọ ìbúlọ́ọ̀kù láti yan ibi tí àsíá kọ̀ọ̀kan yẹ kí ó wà.",

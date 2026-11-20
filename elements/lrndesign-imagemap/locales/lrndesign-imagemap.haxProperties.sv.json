@@ -14,6 +14,10 @@
         "property": "hotspotDetails",
         "title": "Detaljer om aktiva punkter",
         "description": "De interaktiva aktiva punkterna på bildkartan."
+      },
+      {
+        "title": "Detaljer om punkter",
+        "description": "De interaktiva punkterna på bildkartan."
       }
     ]
   }

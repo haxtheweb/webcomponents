@@ -1,0 +1,21 @@
+{
+  "diagram": "Diagram",
+  "flowchart": "schemat blokowy",
+  "sequence": "sekwencja",
+  "source": "Źródło",
+  "textAlternative": "Alternatywa tekstowa",
+  "present": "Prezentuj",
+  "exitPresent": "Zakończ prezentację",
+  "loading": "Wczytywanie diagramu",
+  "empty": "Jeszcze nic do narysowania. Dodaj źródło diagramu.",
+  "error": "Błąd",
+  "parseError": "Nie udało się narysować tego diagramu. Sprawdź źródło.",
+  "loadError": "Nie udało się wczytać biblioteki diagramów.",
+  "srcError": "Nie udało się wczytać pliku diagramu.",
+  "decision": "decyzja",
+  "end": "koniec",
+  "goTo": "przejdź do {target}",
+  "ifGoTo": "jeśli {label}, przejdź do {target}",
+  "describedBySource": "Diagram opisany przez swoje źródło.",
+  "scrollable": "Diagram, przewijany"
+}

@@ -1,0 +1,21 @@
+{
+  "diagram": "Dijagramma",
+  "flowchart": "flowchart",
+  "sequence": "sekwenza",
+  "source": "Sors",
+  "textAlternative": "Alternattiva testwali",
+  "present": "Ippreżenta",
+  "exitPresent": "Oħroġ mill-preżentazzjoni",
+  "loading": "Qed titgħabba d-dijagramma",
+  "empty": "Għad m'hemm xejn x'tpinġi. Żid is-sors tad-dijagramma.",
+  "error": "Żball",
+  "parseError": "Din id-dijagramma ma setgħetx titpinġa. Iċċekkja s-sors.",
+  "loadError": "Il-librerija tad-dijagrammi ma setgħetx titgħabba.",
+  "srcError": "Il-fajl tad-dijagramma ma setax jitgħabba.",
+  "decision": "deċiżjoni",
+  "end": "tmiem",
+  "goTo": "mur għal {target}",
+  "ifGoTo": "jekk {label}, mur għal {target}",
+  "describedBySource": "Dijagramma deskritta mis-sors tagħha.",
+  "scrollable": "Dijagramma, tista' tiskrollja"
+}

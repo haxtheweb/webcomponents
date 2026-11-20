@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Permainan ingatan",
+    "description": "Terbalikkan kad untuk mencari pasangan. Pasangkan istilah dengan maknanya supaya padanan menunjukkan kefahaman, atau gunakan dua teks atau imej yang sepadan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tajuk",
+        "description": "Gesaan yang dipaparkan dalam pengepala, contohnya: Padankan istilah dengan tugasnya."
+      },
+      {
+        "title": "Pasangan",
+        "description": "Setiap pasangan ialah dua kad yang sepadan, biasanya istilah dan maknanya. Satu sisi memerlukan teks, imej, atau kedua-duanya."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Warna aksen",
+        "description": "Warna pilihan untuk cip pengepala, belakang kad dan butang."
+      }
+    ]
+  }
+}

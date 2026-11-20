@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Dropzone sa larawan",
+    "description": "Naglalagay ang mga mag-aaral ng mga label sa mga zone na nakapatong sa larawan, pagkatapos sinusuri ang kanilang sagot."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Larawan",
+        "description": "Ang larawang pinaglalagyan ng mga mag-aaral ng label."
+      },
+      {
+        "title": "Alternatibong teksto",
+        "description": "Inilalarawan ang larawan para sa mga taong hindi nakakakita nito. Huwag ibunyag kung saan napupunta ang mga label."
+      },
+      {
+        "title": "Pamagat ng larawan",
+        "description": "Maikling nakikitang pamagat para sa larawan, ipinapakita sa itaas nito."
+      },
+      {
+        "title": "Tanong",
+        "description": "Kung ano ang ipinapagawa sa mga mag-aaral sa mga label."
+      },
+      {
+        "title": "Mga label at zone",
+        "description": "Bawat item ay label na maaaring ilagay ng mga mag-aaral. Bigyan ang label ng pangalan ng zone para ilagay ang zone nito sa larawan; ang label na walang pangalan ng zone ay sobrang hindi kabilang kahit saan. Ang mga numero ng zone ay porsyento ng larawan."
+      },
+      {
+        "title": "Caption",
+        "description": "Opsyonal na caption na ipinapakita sa ilalim ng larawan."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Mga pagsubok",
+        "description": "Ilang beses makakapag-check ang isang mag-aaral. Ang 0 ay walang limitasyon."
+      },
+      {
+        "title": "I-shuffle ang mga label",
+        "description": "Ipakita ang mga label sa ibang pagkakasunod-sunod bawat pagbisita."
+      },
+      {
+        "title": "Nako-collapse",
+        "description": "Ipakita ang tanong na ito bilang hanay na bumubukas at sumasara. Ang pagbukas ng isa ay nagsasara sa ibang nako-collapse na tanong sa tabi nito."
+      },
+      {
+        "title": "Magsimulang naka-collapse",
+        "description": "Kapag nako-collapse, magsimula bilang saradong hanay na nagpapakita lang ng tanong at status nito."
+      },
+      {
+        "title": "Format ng pagmamarka",
+        "description": "OER Schema: format ng pagmamarka para sa pagtatasang ito (hal. puntos, letra, porsyento, pagkumpleto)."
+      },
+      {
+        "title": "Layunin sa pag-aaral",
+        "description": "OER Schema: layunin sa pag-aaral na kaugnay ng pagtatasang ito."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Pangalan ng pagsusulit",
+        "description": "Pangalan ng pagsusulit na ginagamit para sa xAPI identification sa mga analytics system."
+      },
+      {
+        "title": "Kurso",
+        "description": "OER Schema: kursong para sa pagtatasang ito."
+      }
+    ]
+  }
+}

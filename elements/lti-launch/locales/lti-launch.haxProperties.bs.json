@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Pokretanje vanjskog alata",
+    "description": "Blok koji otvara vanjski alat za učenje u novom prozoru ili na stranici, kao običan link ili sa LTI 1.3 zahtjevom za prijavu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Naslov",
+        "description": "Naziv alata. Prikazuje se u zaglavlju i na dugmetu."
+      },
+      {
+        "title": "Opis",
+        "description": "Šta učenici rade u alatu, prikazano iznad dugmeta."
+      },
+      {
+        "title": "URL pokretanja",
+        "description": "Adresa alata. Mora biti puna adresa koja počinje s https:// ili http://."
+      },
+      {
+        "title": "Otvori u",
+        "description": "Novi prozor radi sa svim alatima. Na ovoj stranici radi samo s alatima koji dozvoljavaju prikaz unutar druge stranice.",
+        "options": {
+          "window": "Novi prozor",
+          "embed": "Na ovoj stranici"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "LTI URL za prijavu",
+        "description": "Samo LTI 1.3: adresa alata za pokretanje prijave. Uz nju, client ID i deployment ID dugme šalje LTI zahtjev za prijavu umjesto otvaranja običnog linka. Za završetak pokretanja potrebna je LTI usluga ove stranice."
+      },
+      {
+        "title": "LTI client ID",
+        "description": "Client ID koji je alat dao ovoj stranici. Javni identifikator, ne tajna: nikad ovdje ne stavljajte ključeve ili tajne."
+      },
+      {
+        "title": "LTI deployment ID",
+        "description": "Deployment ID koji je alat dao ovoj stranici. Javni identifikator, ne tajna."
+      },
+      {
+        "title": "LTI izdavalac",
+        "description": "Adresa koja identifikuje ovu stranicu prema alatu. Ostavite prazno da se koristi adresa stranice na kojoj je ova stranica."
+      },
+      {
+        "title": "Visina na stranici",
+        "description": "Visina alata kad se otvori na ovoj stranici, u pikselima (od 200 do 2000)."
+      },
+      {
+        "title": "Akcentna boja",
+        "description": "Boja oznake u zaglavlju i dugmeta. Ostavite prazno da prati temu."
+      }
+    ],
+    "developer": [
+      {
+        "title": "LTI nagovještaj prijave",
+        "description": "Neprozirna vrijednost koju LTI usluga ove stranice koristi da prepozna učenika. Obično je stranica daje putem događaja lti-launch-request umjesto da se čuva ovdje. Nikad lozinka ili ključ."
+      },
+      {
+        "title": "LTI nagovještaj poruke",
+        "description": "Neprozirna vrijednost koju LTI usluga ove stranice koristi da prepozna ovo pokretanje. Obično je daje stranica umjesto da se čuva ovdje."
+      }
+    ]
+  }
+}

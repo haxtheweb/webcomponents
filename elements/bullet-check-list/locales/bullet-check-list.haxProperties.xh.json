@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Uluhlu lokujonga olunamachaphaza",
+    "description": "Uluhlu lweebhokisi zokukhangela. Abafundi bayaphawula izinto kwaye inkqubela yabo ikhunjulwa kwisixhobo sabo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Isihloko",
+        "description": "Igama loluhlu. Lifundwa ngokuvakalayo njengelebhile yeqela leebhokisi zokukhangela."
+      },
+      {
+        "title": "Izinto",
+        "description": "Into nganye yibhokisi yokukhangela. Izinto eziphawuliweyo okanye ezivaliweyo azinakutshintshwa ngabafundi."
+      },
+      {
+        "title": "Ezinamanani",
+        "description": "Bonisa uluhlu olunamanani endaweni yoluhlu olunamachaphaza."
+      },
+      {
+        "title": "Isimo",
+        "description": "Itshintsha imibala ukuze ihambelane ne-stop-note.",
+        "options": {
+          "info": "Isaziso",
+          "success": "Ukuqinisekisa",
+          "warning": "Isilumkiso",
+          "stop": "Yima"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "I-id yokugcina",
+        "description": "I-id ekhethekileyo esetyenziswa ukukhumbula inkqubela yomfundi kwisixhobo sakhe. Yenziwa ngokuzenzekelayo; yitshintshe kuphela ukwabelana ngenkqubela phakathi kwezintlu okanye ukuqala ngokutsha."
+      }
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Poređenje platformi",
+    "description": "Jedan na jedan: odaberite bilo koje dvije platforme iz datoteke s podacima"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Podaci za poređenje (JSON)"
+      },
+      {
+        "title": "Id lijeve platforme"
+      },
+      {
+        "title": "Id desne platforme"
+      }
+    ]
+  }
+}

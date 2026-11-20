@@ -24,11 +24,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Texto de resumo opcional quando os detalhes estão abertos"
+        "title": "Texto de resumo opcional quando os detalhes estão abertos",
+        "description": "Texto do botão enquanto a descrição está oculta, como Mostrar descrição."
       },
       {
         "property": "closeText",
-        "title": "Texto de resumo opcional quando os detalhes estão fechados"
+        "title": "Texto de resumo opcional quando os detalhes estão fechados",
+        "description": "Texto do botão enquanto a descrição está visível, como Ocultar descrição."
       }
     ]
   }

@@ -1,0 +1,8 @@
+{
+  "theme": "Tema",
+  "palette": "Paleta",
+  "themeDefault": "Parazgjedhja e temës",
+  "designSystem": "Sistemi i dizajnit",
+  "designSystemDefault": "DDD (parazgjedhje)",
+  "designSystemUnavailable": "Kjo temë ruan sistemin e vet të dizajnit"
+}

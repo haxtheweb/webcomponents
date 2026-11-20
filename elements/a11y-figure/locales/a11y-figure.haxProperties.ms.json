@@ -11,7 +11,8 @@
       },
       {
         "property": "imgAlt",
-        "title": "Teks Alt"
+        "title": "Teks Alt",
+        "description": "Huraikan imej untuk orang yang tidak dapat melihatnya."
       },
       {
         "slot": "figcaption",
@@ -32,11 +33,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Teks ringkasan pilihan apabila butiran dibuka"
+        "title": "Teks ringkasan pilihan apabila butiran dibuka",
+        "description": "Teks butang semasa keterangan disembunyikan, seperti Tunjukkan keterangan."
       },
       {
         "property": "closeText",
-        "title": "Teks ringkasan pilihan apabila butiran ditutup"
+        "title": "Teks ringkasan pilihan apabila butiran ditutup",
+        "description": "Teks butang semasa keterangan dipaparkan, seperti Sembunyikan keterangan."
       }
     ]
   }

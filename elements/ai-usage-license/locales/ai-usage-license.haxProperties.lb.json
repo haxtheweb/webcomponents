@@ -13,7 +13,10 @@
       {
         "property": "modifier",
         "title": "Medien-Modifikator",
-        "description": "Optionale Modifikator fir de Medieberäich. Gëtt un, op wéi eng Aart vu Medien dës Lizenz sech bezitt."
+        "description": "Optionale Modifikator fir de Medieberäich. Gëtt un, op wéi eng Aart vu Medien dës Lizenz sech bezitt.",
+        "options": {
+          "": "Keen Zousaz"
+        }
       },
       {
         "property": "uri",

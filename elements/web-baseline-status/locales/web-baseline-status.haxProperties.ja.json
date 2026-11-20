@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Baseline ステータス",
+    "description": "Web プラットフォーム機能の Baseline ブラウザー対応状況を表示します。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "機能 ID",
+        "description": "Web 機能の ID（例: anchor-positioning）。ID は webstatus.dev で調べられます。機能ページの URL の最後の部分が ID です。"
+      }
+    ]
+  }
+}

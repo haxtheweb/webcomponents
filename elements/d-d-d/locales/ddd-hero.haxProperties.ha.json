@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Hero",
+    "description": "Babban hoto, GIF ko bidiyo tare da kanun labari da rubutu a samansa, an sanya shi ko'ina a shafi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Hoto ko bidiyo",
+        "description": "Fayil ɗin JPG, PNG, WebP, GIF, MP4 ko WebM."
+      },
+      {
+        "title": "Madadin rubutu",
+        "description": "Bayyana hoton. Bar shi babu komai idan ado ne kawai."
+      },
+      {
+        "title": "Kanun labari",
+        "description": "Kanun labari da ake nunawa a kan kafofin watsa labarai. Bar shi babu komai idan babu."
+      },
+      {
+        "title": "Rubutu",
+        "description": "Rubutun da ake nunawa ƙarƙashin kanun labari, a kan kafofin watsa labarai."
+      },
+      {
+        "title": "Cikakken faɗi",
+        "description": "Shimfiɗa daga gefe zuwa gefe maimakon zama a cikin ginshiƙin abun ciki."
+      },
+      {
+        "title": "Tsayi",
+        "options": {
+          "tall": "Dogo",
+          "medium": "Matsakaici",
+          "short": "Gajere"
+        }
+      },
+      {
+        "title": "Tsarin firam",
+        "description": "Yadda hoton yake zaune a kowane girman allo"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Dushewa",
+        "description": "Launin da aka shimfiɗa a kan kafofin watsa labarai. Idan akwai kanun labari ko rubutu koyaushe akwai shi, don rubutu ya kasance mai karantuwa.",
+        "options": {
+          "blue": "Shuɗi",
+          "bottom": "Duhu a ƙasa",
+          "none": "Babu"
+        }
+      },
+      {
+        "title": "Matsayin rubutu",
+        "options": {
+          "bottom": "Ƙasa",
+          "middle": "Tsakiya"
+        }
+      },
+      {
+        "title": "Wurin mayar da hankali a kwance",
+        "description": "Ɓangaren hoton da ke zama a gani idan aka yanke shi, daga 0 (hagu) zuwa 100 (dama)."
+      },
+      {
+        "title": "Wurin mayar da hankali a tsaye",
+        "description": "Ɓangaren hoton da ke zama a gani idan aka yanke shi, daga 0 (sama) zuwa 100 (ƙasa)."
+      }
+    ]
+  }
+}

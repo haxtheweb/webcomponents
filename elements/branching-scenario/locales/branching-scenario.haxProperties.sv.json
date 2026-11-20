@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Förgrenat scenario",
+    "description": "En berättelse där varje val leder till en annan scen och ett annat slut. Eleverna kan backa och prova andra vägar; slutet de når avgör poängen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Scenariots namn, som visas i dess sidhuvud."
+      },
+      {
+        "title": "Startscen",
+        "description": "Scen-id för scenen där eleverna börjar. Lämna tomt för att börja på första scenen."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Accentfärg",
+        "description": "Valfri färg för rubriketiketten, knapparna och kanten på ett val."
+      }
+    ]
+  }
+}

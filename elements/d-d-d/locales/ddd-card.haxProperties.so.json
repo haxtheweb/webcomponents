@@ -52,6 +52,20 @@
           "_top": "Daaqadda sare - _top",
           "_parent": "Daaqadda waalidka - _parent"
         }
+      },
+      {
+        "title": "Fallaadh La'aan",
+        "description": "Qari fallaadhka badhanka."
+      },
+      {
+        "title": "Link: bartilmaameed",
+        "description": "Meesha link-ga laga furayo.",
+        "options": {
+          "": "Isla daaqadda",
+          "_blank": "Daaqad cusub - _blank",
+          "_top": "Daaqadda sare - _top",
+          "_parent": "Daaqadda waalidka - _parent"
+        }
       }
     ],
     "developer": [

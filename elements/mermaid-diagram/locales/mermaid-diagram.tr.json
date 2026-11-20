@@ -1,0 +1,21 @@
+{
+  "diagram": "Diyagram",
+  "flowchart": "akış şeması",
+  "sequence": "sıralama",
+  "source": "Kaynak",
+  "textAlternative": "Metin alternatifi",
+  "present": "Sun",
+  "exitPresent": "Sunumdan çık",
+  "loading": "Diyagram yükleniyor",
+  "empty": "Henüz çizilecek bir şey yok. Diyagram kaynağını ekleyin.",
+  "error": "Hata",
+  "parseError": "Bu diyagram çizilemedi. Kaynağı denetleyin.",
+  "loadError": "Diyagram kitaplığı yüklenemedi.",
+  "srcError": "Diyagram dosyası yüklenemedi.",
+  "decision": "karar",
+  "end": "son",
+  "goTo": "{target} öğesine git",
+  "ifGoTo": "{label} ise {target} öğesine git",
+  "describedBySource": "Kaynağıyla açıklanan diyagram.",
+  "scrollable": "Diyagram, kaydırılabilir"
+}

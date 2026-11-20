@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Stav Baseline",
+    "description": "Zobraziť stav podpory Baseline v prehliadačoch pre funkciu webovej platformy."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID funkcie",
+        "description": "ID webovej funkcie, napríklad anchor-positioning. ID nájdete na webstatus.dev; ID je posledná časť URL stránky funkcie."
+      }
+    ]
+  }
+}

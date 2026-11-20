@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Gahryman",
+    "description": "Üstünde sözbaşy we tekst bolan uly surat, GIF ýa-da wideo, sahypanyň islendik ýerinde ýerleşdirilýär."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Surat ýa-da wideo",
+        "description": "JPG, PNG, WebP, GIF, MP4 ýa-da WebM faýly."
+      },
+      {
+        "title": "Alternatiw tekst",
+        "description": "Suraty beýan ediň. Diňe bezeg bolsa boş goýuň."
+      },
+      {
+        "title": "Sözbaşy",
+        "description": "Mediýanyň üstünde görkezilýän sözbaşy. Gerek däl bolsa boş goýuň."
+      },
+      {
+        "title": "Tekst",
+        "description": "Sözbaşynyň aşagynda, mediýanyň üstünde görkezilýän tekst."
+      },
+      {
+        "title": "Doly giňlik",
+        "description": "Mazmun sütüninde oturmagyň ýerine gyradan gyra uzap git."
+      },
+      {
+        "title": "Beýiklik",
+        "options": {
+          "tall": "Beýik",
+          "medium": "Orta",
+          "short": "Pes"
+        }
+      },
+      {
+        "title": "Çarçuwalamak",
+        "description": "Suratyň her ekran ölçeginde nähili ýerleşýändigi"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Öçgünlik",
+        "description": "Mediýanyň üstüne ýaýran reňk. Sözbaşy ýa-da tekst bolanda elmydama bar, şonuň üçin tekst okalýar.",
+        "options": {
+          "blue": "Gök",
+          "bottom": "Aşagy garaňky",
+          "none": "Ýok"
+        }
+      },
+      {
+        "title": "Tekstiň ýeri",
+        "options": {
+          "bottom": "Aşak",
+          "middle": "Orta"
+        }
+      },
+      {
+        "title": "Keseligine fokus nokady",
+        "description": "Surat kesilende görünýän bölegi, 0-dan (çep) 100-e (sag) çenli."
+      },
+      {
+        "title": "Dikligine fokus nokady",
+        "description": "Surat kesilende görünýän bölegi, 0-dan (ýokary) 100-e (aşak) çenli."
+      }
+    ]
+  }
+}

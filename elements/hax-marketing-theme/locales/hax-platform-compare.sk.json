@@ -1,0 +1,15 @@
+{
+  "loading": "Načítava sa porovnanie.",
+  "yes": "Áno",
+  "partly": "Čiastočne",
+  "no": "Nie",
+  "compare": "Porovnať",
+  "with": "S",
+  "vs": "vs",
+  "caption": "{a} a {b}, funkcia po funkcii",
+  "feature": "Funkcia",
+  "clearYes": "{count} z {total} jasné áno",
+  "seeForYourself": "Presvedčte sa sami:",
+  "and": "a",
+  "why": "Prečo"
+}

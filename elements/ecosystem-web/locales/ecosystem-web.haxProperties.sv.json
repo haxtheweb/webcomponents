@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Ekosystemnät",
+    "description": "Ett interaktivt nät över hur delarna i ett projekt hänger ihop, med delnät och steg-för-steg-turer."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nätdata",
+        "description": "URL till JSON-paketet med nät (byggt i PRAW, ecosystem-webs.json)."
+      },
+      {
+        "title": "Nät",
+        "description": "Id för nätet som visas först; main är ekosystemnätet."
+      },
+      {
+        "title": "Vald ruta",
+        "description": "Id för en ruta som väljs när nätet öppnas."
+      },
+      {
+        "title": "Rundtur",
+        "description": "Id för en rundtur att börja på."
+      },
+      {
+        "title": "Börja i listvy",
+        "description": "Visa nätet som kapslade listor i stället för ritningen."
+      },
+      {
+        "title": "Endast ritning",
+        "description": "Visa bara ritningen, som en figur: ingen rubrik, rundturer, detaljer eller stegfält."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Läs efter",
+        "description": "Börja med att alla rutor läses efter ett mått.",
+        "options": {
+          "": "Endast kopplingar",
+          "fresh": "Färskhet",
+          "bus": "Bussfaktor",
+          "impact": "Påverkan",
+          "evidence": "Belägg",
+          "parity": "Paritet"
+        }
+      }
+    ]
+  }
+}

@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Tarree tarkaanfiiwwanii",
     "description": "Tarkaanfiiwwan lakkoofsa qaban hojii xumuruuf."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Agarsiisaa tarkaanfii",
+        "description": "Tarkaanfiiwwan akka tarree mata-dureewwan gabaabaa guddina agarsiisuutti agarsiisi. Qabiyyeen tarkaanfii qindaa'ina kana keessatti hin mul'atu."
+      },
+      {
+        "title": "Tarkaanfii ammaa",
+        "description": "Tarkaanfii dubbisaan irra jiru, 1 irraa lakkaa'amee. Tarkaanfiiwwan duraa akka xumurameetti mul'atu. Agarsiisaa tarkaanfiitiin fayyada."
+      }
+    ]
   }
 }

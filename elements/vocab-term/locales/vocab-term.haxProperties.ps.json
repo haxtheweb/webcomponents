@@ -7,7 +7,8 @@
     "configure": [
       {
         "property": "term",
-        "title": "اصطلاح"
+        "title": "اصطلاح",
+        "description": "هغه کلمه یا عبارت چې لوستونکي پرې کلیک کوي ترڅو یې تعریف وګوري."
       },
       {
         "property": "information",

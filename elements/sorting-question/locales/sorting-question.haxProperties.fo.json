@@ -13,7 +13,15 @@
       {
         "property": "answers",
         "title": "Svar",
-        "description": "Raðfylgjan á svarunum ásetur røttu raðfylgjuna."
+        "description": "Raðfylgjan á svarunum ásetur røttu raðfylgjuna.",
+        "options": {
+          "": "Listi",
+          "cards": "Myndakort"
+        }
+      },
+      {
+        "title": "Svar",
+        "description": "Røðin á svarunum ger røttu raðfylgjuna."
       }
     ],
     "advanced": [

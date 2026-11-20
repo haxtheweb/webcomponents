@@ -9,5 +9,7 @@
   "slidePages": "Fuulota islaayidii",
   "goToSlide": "Gara islaayidii {number} tti deemi",
   "slides": "Slaayidii",
-  "position": "{number} / {total}"
+  "position": "{number} / {total}",
+  "fullScreen": "Iskiriinii guutuu",
+  "exitFullScreen": "Iskiriinii guutuu keessaa ba'i"
 }

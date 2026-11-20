@@ -9,5 +9,7 @@
   "slidePages": "幻灯片页面",
   "goToSlide": "去幻灯片 {number}",
   "slides": "幻灯片",
-  "position": "{number} / {total}"
+  "position": "{number} / {total}",
+  "fullScreen": "全屏",
+  "exitFullScreen": "退出全屏"
 }

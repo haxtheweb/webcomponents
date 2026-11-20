@@ -3,5 +3,8 @@
   "copyAsCsv": "CSV အဖြစ် ကူးယူရန်။",
   "printTable": "ဇယား ပုံနှိပ်ရန်",
   "selectColumn": "ကော်လံ ရွေးရန်",
-  "dataTable": "ဒေတာ · ဇယား"
+  "dataTable": "ဒေတာ · ဇယား",
+  "filterStatus": "အတန်း {total} တန်းအနက် {shown} တန်းကို ပြသနေသည်၊ {column} ဖြင့် စစ်ထုတ်ထားသည်: {text}",
+  "columnNumber": "ကော်လံ {column}",
+  "clearFilter": "စစ်ထုတ်မှု ရှင်းလင်းရန်"
 }

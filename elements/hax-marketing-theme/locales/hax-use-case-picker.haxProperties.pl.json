@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Wybór zastosowania",
+    "description": "Wybierz, do czego służy witryna, i otrzymaj link, który otwiera HAX w przeglądarce z tą witryną startową, oraz pasujące polecenie CLI."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Adres HAX w przeglądarce",
+        "description": "Gdzie otwiera się link; dodawane są do niego ?skeleton= i &name="
+      },
+      {
+        "title": "Witryny startowe do pominięcia",
+        "description": "Nazwy maszynowe, oddzielone przecinkami"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Lista witryn startowych",
+        "description": "Adres listy szkieletów (w formacie odczytywanym przez app-hax)"
+      }
+    ]
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Ekosistemos tinklas",
+    "description": "Interaktyvus tinklas, rodantis, kaip susijusios projekto dalys, su potinkliais ir žingsnis po žingsnio turais."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tinklo duomenys",
+        "description": "Tinklų JSON paketo URL (sukurta PRAW, ecosystem-webs.json)."
+      },
+      {
+        "title": "Tinklas",
+        "description": "Pirmiausia rodomo tinklo ID; main yra ekosistemos tinklas."
+      },
+      {
+        "title": "Pasirinkta plytelė",
+        "description": "Plytelės, kurią pasirinkti atidarius tinklą, ID."
+      },
+      {
+        "title": "Turas",
+        "description": "Turo, nuo kurio pradėti, ID."
+      },
+      {
+        "title": "Pradėti sąrašo rodiniu",
+        "description": "Rodyti tinklą kaip įdėtinius sąrašus vietoj piešinio."
+      },
+      {
+        "title": "Tik piešinys",
+        "description": "Rodyti tik piešinį kaip iliustraciją: be antraštės, turų, informacijos ar žingsnių juostos."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Vertinti pagal",
+        "description": "Pradėti, kai kiekviena plytelė vertinama pagal vieną matą.",
+        "options": {
+          "": "Tik ryšiai",
+          "fresh": "Naujumas",
+          "bus": "Autobuso faktorius",
+          "impact": "Poveikis",
+          "evidence": "Įrodymai",
+          "parity": "Lygiavertiškumas"
+        }
+      }
+    ]
+  }
+}

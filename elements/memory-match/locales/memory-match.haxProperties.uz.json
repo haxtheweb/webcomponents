@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Xotira o‘yini",
+    "description": "Juftliklarni topish uchun kartalarni oching. Atamani uning ma’nosi bilan juftlang, shunda moslik tushunishni ko‘rsatadi, yoki ikkita mos matn yoki tasvirdan foydalaning."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sarlavha",
+        "description": "Sarlavhada ko‘rsatiladigan topshiriq, masalan: Atamani uning vazifasi bilan moslang."
+      },
+      {
+        "title": "Juftliklar",
+        "description": "Har bir juftlik bir-biriga tegishli ikki karta, odatda atama va uning ma’nosi. Har bir tomonda matn, tasvir yoki ikkalasi bo‘lishi kerak."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Urg‘u rangi",
+        "description": "Sarlavha belgisi, kartalar orqasi va tugma uchun ixtiyoriy rang."
+      }
+    ]
+  }
+}

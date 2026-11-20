@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ní ìdojúkọ",
+    "description": "Ọ̀rọ̀ lẹ́gbẹ̀ẹ́ bọ́tìnnì ojú-kojú pẹ̀lú ẹ̀dá-ìtàn méjì"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Àkọlé"
+      },
+      {
+        "title": "Ibi tí bọ́tìnnì ń lọ"
+      },
+      {
+        "title": "Ọ̀rọ̀ bọ́tìnnì"
+      },
+      {
+        "title": "Irúgbìn ẹ̀dá-ìtàn òsì"
+      },
+      {
+        "title": "Irúgbìn ẹ̀dá-ìtàn ọ̀tún"
+      }
+    ]
+  }
+}

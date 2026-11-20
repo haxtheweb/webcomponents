@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Senario bercabang",
+    "description": "Cerita di mana setiap pilihan membawa kepada babak dan pengakhiran yang berbeza. Pelajar boleh berundur dan mencuba laluan lain; pengakhiran yang dicapai menentukan skor."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tajuk",
+        "description": "Nama senario, dipaparkan dalam pengepalanya."
+      },
+      {
+        "title": "Babak permulaan",
+        "description": "ID babak tempat pelajar bermula. Biarkan kosong untuk bermula di babak pertama."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Warna aksen",
+        "description": "Warna pilihan untuk cip pengepala, butang dan tepi pilihan."
+      }
+    ]
+  }
+}

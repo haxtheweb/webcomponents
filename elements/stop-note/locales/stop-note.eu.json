@@ -3,5 +3,7 @@
   "status_stop": "Gelditu",
   "status_warning": "Abisua",
   "status_success": "Ondo",
-  "status_info": "Oharra"
+  "status_info": "Oharra",
+  "status_tip": "Ba al zenekien?",
+  "status_new": "Berritasunak"
 }

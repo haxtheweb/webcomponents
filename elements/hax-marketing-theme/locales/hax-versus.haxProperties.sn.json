@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Versus",
+    "description": "Mazwi padivi pebhatani remusoro nemusoro rine vanhu vaviri"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Musoro"
+      },
+      {
+        "title": "Panoenda bhatani"
+      },
+      {
+        "title": "Mavara ebhatani"
+      },
+      {
+        "title": "Mbeu yemunhu wekuruboshwe"
+      },
+      {
+        "title": "Mbeu yemunhu wekurudyi"
+      }
+    ]
+  }
+}

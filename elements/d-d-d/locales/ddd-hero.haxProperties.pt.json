@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Destaque",
+    "description": "Uma imagem, GIF ou vídeo grande com título e texto por cima, colocado em qualquer lugar da página."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Imagem ou vídeo",
+        "description": "Um arquivo JPG, PNG, WebP, GIF, MP4 ou WebM."
+      },
+      {
+        "title": "Texto alternativo",
+        "description": "Descreva a imagem. Deixe vazio quando ela for apenas decorativa."
+      },
+      {
+        "title": "Título",
+        "description": "Título mostrado sobre a mídia. Deixe vazio para nenhum."
+      },
+      {
+        "title": "Texto",
+        "description": "Texto mostrado abaixo do título, sobre a mídia."
+      },
+      {
+        "title": "Largura total",
+        "description": "Ocupar de ponta a ponta em vez de ficar na coluna de conteúdo."
+      },
+      {
+        "title": "Altura",
+        "options": {
+          "tall": "Alto",
+          "medium": "Médio",
+          "short": "Baixo"
+        }
+      },
+      {
+        "title": "Enquadramento",
+        "description": "Como a foto se posiciona em cada tamanho de tela"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Esmaecimento",
+        "description": "Cor sobreposta à mídia. Com título ou texto sempre há uma, para que o texto continue legível.",
+        "options": {
+          "blue": "Azul",
+          "bottom": "Escuro embaixo",
+          "none": "Nenhum"
+        }
+      },
+      {
+        "title": "Posição do texto",
+        "options": {
+          "bottom": "Embaixo",
+          "middle": "No meio"
+        }
+      },
+      {
+        "title": "Ponto focal horizontal",
+        "description": "Parte da imagem que fica visível quando ela é recortada, de 0 (esquerda) a 100 (direita)."
+      },
+      {
+        "title": "Ponto focal vertical",
+        "description": "Parte da imagem que fica visível quando ela é recortada, de 0 (topo) a 100 (base)."
+      }
+    ]
+  }
+}

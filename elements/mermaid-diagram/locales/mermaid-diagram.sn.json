@@ -1,0 +1,21 @@
+{
+  "diagram": "Dhayagiramu",
+  "flowchart": "flowchart",
+  "sequence": "sequence",
+  "source": "Kwakabva",
+  "textAlternative": "Imwe nzira yemavara",
+  "present": "Ratidza",
+  "exitPresent": "Buda mumharidzo",
+  "loading": "Kurodha dhayagiramu",
+  "empty": "Hapana chekudhirowa parizvino. Wedzera kodhi yedhayagiramu.",
+  "error": "Kukanganisa",
+  "parseError": "Dhayagiramu iyi haina kukwanisa kudhirowewa. Tarisa kodhi.",
+  "loadError": "Raibhurari yedhayagiramu haina kukwanisa kurodhwa.",
+  "srcError": "Faira redhayagiramu harina kukwanisa kurodhwa.",
+  "decision": "sarudzo",
+  "end": "magumo",
+  "goTo": "enda ku{target}",
+  "ifGoTo": "kana {label}, enda ku{target}",
+  "describedBySource": "Dhayagiramu inotsanangurwa nekodhi yayo.",
+  "scrollable": "Dhayagiramu, inogona kuskrorwa"
+}

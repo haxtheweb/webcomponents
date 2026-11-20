@@ -13,7 +13,15 @@
       {
         "property": "answers",
         "title": "Äntwerten",
-        "description": "D'Reiefolleg vun den Äntwerte bestëmmt déi richteg Sequenz."
+        "description": "D'Reiefolleg vun den Äntwerte bestëmmt déi richteg Sequenz.",
+        "options": {
+          "": "Lëscht",
+          "cards": "Bildkaarten"
+        }
+      },
+      {
+        "title": "Äntwerten",
+        "description": "D'Reiefolleg vun den Äntwerte leet déi richteg Sequenz fest."
       }
     ],
     "advanced": [

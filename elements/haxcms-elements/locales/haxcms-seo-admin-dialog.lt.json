@@ -6,6 +6,8 @@
   "faviconDescription": "Naršyklės skirtuko paveikslėlis / telefonuose naudojamas kaip mažas svetainės logotipas",
   "domain": "Domenas",
   "domainDescription": "Šios svetainės domenas",
+  "sameAs": "Kiti šios svetainės profiliai",
+  "sameAsDescription": "Po vieną nuorodą eilutėje į šios svetainės ar organizacijos profilius kitur (GitHub, LinkedIn, YouTube, Mastodon). Paieškos sistemos jas naudoja tiems profiliams susieti su šia svetaine.",
   "language": "Kalba",
   "languageDescription": "Šios svetainės kalba. Ieškokite pagal pavadinimą ar kodą arba įveskite kitą kodą, pvz., fr-CA.",
   "googleAnalyticsId": "Google Analytics ID",

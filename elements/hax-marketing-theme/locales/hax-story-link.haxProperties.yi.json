@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "געשיכטע־קנעפּל",
+    "description": "דער קנעפּל װאָס עפֿנט די געשיכטע הינטער אַ טענה אויף hax.cloud, אָדער דעם פּאַסיקן אָרט אויף אַן אַנדער HAX נעץ־זײַטל"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "װוּהין עס גייט",
+        "options": {
+          "cloud": "hax.cloud, די געשיכטע",
+          "learn": "learn.hax.cloud, אַ לעקציע",
+          "try": "browser.hax.cloud, פּרוּװ עס",
+          "elements": "webcomponents.hax.cloud, אַ בלאָק",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "אַדרעס אויף יענעם זײַטל (אַ געשיכטע אויף hax.cloud זעט אויס װי stories/ee450a19)"
+      },
+      {
+        "title": "װעגן װאָס עס איז"
+      },
+      {
+        "title": "קליינער צייכן"
+      },
+      {
+        "title": "װײַז װעגן װאָס עס איז אינעם קנעפּל"
+      }
+    ]
+  }
+}

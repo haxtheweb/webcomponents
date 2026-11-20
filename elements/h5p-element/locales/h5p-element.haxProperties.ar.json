@@ -4,7 +4,12 @@
     "description": "يشغّل محتوى H5P التفاعلي من ملف .h5p مرفوع، دون الحاجة إلى خادم H5P"
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "title": "ملف H5P",
+        "description": "ارفع ملف .h5p أو اربطه. يُفك ضغطه في المتصفح؛ لا حاجة إلى خادم H5P."
+      }
+    ],
     "advanced": [
       {
         "title": "رمز تضمين iframe القديم",

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Yn erbyn",
+    "description": "Geiriau wrth ymyl botwm pen wrth ben gyda dau gymeriad"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pennawd"
+      },
+      {
+        "title": "Ble mae'r botwm yn mynd"
+      },
+      {
+        "title": "Testun y botwm"
+      },
+      {
+        "title": "Hedyn y cymeriad chwith"
+      },
+      {
+        "title": "Hedyn y cymeriad de"
+      }
+    ]
+  }
+}

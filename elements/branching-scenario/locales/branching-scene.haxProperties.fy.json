@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Senariosêne",
+    "description": "Ien sêne fan in fertakkend senario. Keppelje elke kar oan in oare sêne mei # en dêrnei de sêne-id."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sêne-id",
+        "description": "Wêr't karren nei keppelje: in keppeling nei # mei dêrnei dizze id liedt nei dizze sêne. Letters, sifers en streekjes."
+      },
+      {
+        "title": "Koptekst",
+        "description": "Koptekst fan de sêne."
+      },
+      {
+        "title": "Ein",
+        "description": "Oft dizze sêne in paad beëiniget, en hoe't it ôfrûn is.",
+        "options": {
+          "": "Gjin ein",
+          "good": "Goed ein",
+          "mixed": "Mingd ein",
+          "poor": "Min ein"
+        }
+      },
+      {
+        "title": "Skoare",
+        "description": "Skoare foar it berikken fan dit ein. De heechste einskoare yn it senario is it maksimum."
+      }
+    ]
+  }
+}

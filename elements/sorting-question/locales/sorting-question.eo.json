@@ -40,5 +40,7 @@
   "hideDirections": "Kaŝi la instrukciojn",
   "showRelatedContent": "Montri rilatan enhavon",
   "hideRelatedContent": "Kaŝi rilatan enhavon",
-  "notAttempted": "Ne provita"
+  "notAttempted": "Ne provita",
+  "cardsDirections": "Metu la kartojn en la ĝustan ordon per la butonoj movi pli frue kaj movi pli malfrue sur ĉiu karto, aŭ trenu ilin per muso. Kiam vi kredas, ke ili estas en la ĝusta ordo, testu vian respondon elektante {checkAnswer}.",
+  "movedToPosition": "{item} movita al pozicio {position} el {total}"
 }

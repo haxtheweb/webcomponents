@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "पार्श्वभूमी प्रतिमा."
+        "description": "पार्श्वभूमी प्रतिमा.",
+        "title": "प्रतिमा"
       },
       {
         "property": "caption",
-        "description": "मजकूर शीर्षक."
+        "description": "मजकूर शीर्षक.",
+        "title": "मथळा"
       }
     ]
   }

@@ -2,5 +2,9 @@
   "answerInCorrectOrder": "Ответ в правильном порядке",
   "answerInIncorrectOrder": "Ответ в неправильном порядке",
   "moveOptionUp": "Выберите, чтобы переместить вариант выше",
-  "moveOptionDown": "Выберите, чтобы переместить вариант ниже"
+  "moveOptionDown": "Выберите, чтобы переместить вариант ниже",
+  "moveEarlier": "Переместить раньше",
+  "moveLater": "Переместить позже",
+  "correct": "Верно",
+  "incorrect": "Неверно"
 }

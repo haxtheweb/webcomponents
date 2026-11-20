@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Platformų palyginimas",
+    "description": "Akis į akį: pasirinkite bet kurias dvi platformas iš duomenų failo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Palyginimo duomenys (JSON)"
+      },
+      {
+        "title": "Kairiosios platformos ID"
+      },
+      {
+        "title": "Dešiniosios platformos ID"
+      }
+    ]
+  }
+}

@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "Scrivi usando la notazione matematica LaTeX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sfondo dell'immagine",
+        "description": "Sfondo dietro le immagini disegnate. Automatico ne aggiunge uno solo quando il disegno sarebbe difficile da vedere sulla pagina, come linee scure in modalità scura.",
+        "options": {
+          "auto": "Automatico",
+          "light": "Chiaro",
+          "dark": "Scuro",
+          "none": "Nessuno"
+        }
+      }
+    ]
   }
 }

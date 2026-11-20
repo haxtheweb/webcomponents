@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Metinden diyagram",
+    "description": "Bir diyagramı metin olarak (Mermaid) yazın: akış şeması, sıralama, zaman çizelgesi ve daha fazlası. Sayfada metin alternatifiyle birlikte çizilir."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Başlık",
+        "description": "Diyagramın üstünde gösterilir ve adı olarak kullanılır."
+      },
+      {
+        "title": "Diyagram kaynağı",
+        "description": "Mermaid metni, örneğin: flowchart TD, ardından her bağlantı için A[Draft] --> B{Ready?} gibi bir satır. Bir oku etiketlemek için okun ardına |label| ekleyin. Çizim siz yazdıkça güncellenir."
+      },
+      {
+        "title": "Metin alternatifi",
+        "description": "Diyagramın ne gösterdiğini göremeyen kişiler için açıklayın. Akış şemasında adımların sizin için listelenmesi için boş bırakın."
+      },
+      {
+        "title": "Altyazı",
+        "description": "Diyagramın altında gösterilen isteğe bağlı altyazı."
+      },
+      {
+        "title": "Kaynağı göster",
+        "description": "Diyagram metnini çizimin yanında göster."
+      },
+      {
+        "title": "Metin alternatifini göster",
+        "description": "Metin alternatifini çizimin altında göster. Ekran okuyucular için her zaman kullanılabilir."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Kaynak dosya",
+        "description": "Yukarıdaki metin yerine çizilecek bir .mmd dosyasının adresi (https veya bu sitedeki bir yol)."
+      },
+      {
+        "title": "Vurgu rengi",
+        "description": "Başlıktaki simge etiketinin rengi."
+      }
+    ]
+  }
+}

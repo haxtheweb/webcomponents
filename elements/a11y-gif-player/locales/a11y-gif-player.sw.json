@@ -2,5 +2,9 @@
   "toggleAnimation": "Washa/zima uhuishaji",
   "info": "maelezo",
   "image": "Picha",
-  "animatedGif": "GIF inayosogea"
+  "animatedGif": "GIF inayosogea",
+  "playAnimation": "Cheza uhuishaji",
+  "pauseAnimation": "Sitisha uhuishaji",
+  "showDescription": "Onyesha maelezo",
+  "hideDescription": "Ficha maelezo"
 }

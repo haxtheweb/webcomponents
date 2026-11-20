@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Finn punktene",
+    "description": "Elevene finner de riktige punktene på et bilde ved å klikke, trykke eller flytte et trådkors med tastaturet. Den vurderte motparten til et bildekart."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Bilde",
+        "description": "Bildet elevene leter i."
+      },
+      {
+        "title": "Alternativ tekst",
+        "description": "Beskriver bildet for dem som ikke kan se det. Det vises aldri som tittel."
+      },
+      {
+        "title": "Tittel",
+        "description": "En kort synlig tittel som vises over bildet."
+      },
+      {
+        "title": "Spørsmål",
+        "description": "Hva elevene blir bedt om å finne i bildet."
+      },
+      {
+        "title": "Svar",
+        "description": "Hvert svar er en navngitt oval på bildet. Plassering og størrelse er prosent av bildet, målt fra øvre venstre hjørne. Under redigering er alle svar markert på bildet."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Forsøk",
+        "description": "Hvor mange ganger en elev kan prøve. 0 betyr ubegrenset."
+      },
+      {
+        "title": "Tillatte bom",
+        "description": "Hvor mange bom som avslutter et forsøk. 0 betyr ubegrenset, og elevene får en Fullfør-knapp."
+      },
+      {
+        "title": "Sammenleggbar",
+        "description": "Vis dette spørsmålet som en rad som åpnes og lukkes. Når én åpnes, lukkes de andre sammenleggbare spørsmålene ved siden av."
+      },
+      {
+        "title": "Start sammenlagt",
+        "description": "Når det er sammenleggbart, start som en lukket rad som bare viser spørsmålet og statusen."
+      },
+      {
+        "title": "Vurderingsformat",
+        "description": "OER Schema: vurderingsformat for denne vurderingen (f.eks. poeng, bokstav, prosent, fullføring)."
+      },
+      {
+        "title": "Læringsmål",
+        "description": "OER Schema: læringsmål knyttet til denne vurderingen."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Navn på quizen",
+        "description": "Quiznavn som sendes inn for identifikasjon av dette elementet i xAPI-drevne miljøer"
+      },
+      {
+        "title": "Kurs",
+        "description": "OER Schema: kurset denne vurderingen er ment for."
+      }
+    ]
+  }
+}

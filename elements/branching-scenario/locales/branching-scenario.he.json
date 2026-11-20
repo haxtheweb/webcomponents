@@ -1,0 +1,22 @@
+{
+  "scenario": "תרחיש",
+  "directions": "הוראות",
+  "showDirections": "הצגת הוראות",
+  "hideDirections": "הסתרת הוראות",
+  "directionsRead": "קראו כל סצנה ובחרו מה הייתם עושים.",
+  "directionsEndings": "יש כמה סופים. נסו מסלול אחר אחרי שתסיימו.",
+  "startOver": "התחלה מחדש",
+  "back": "צעד אחד אחורה",
+  "tryAnother": "נסו מסלול אחר",
+  "path": "מסלול",
+  "scene": "סצנה",
+  "ending": "סוף",
+  "end": "סוף",
+  "scenesSeen": "נצפו {seen} מתוך {total} סצנות",
+  "endingReached": "הגעתם לסוף",
+  "addScene": "הוספת סצנה",
+  "newScene": "סצנה חדשה",
+  "newSceneText": "תארו מה קורה, ואז קשרו כל בחירה לסצנה.",
+  "editingNote": "עריכה: כל הסצנות מוצגות. בחירה היא קישור ל־# ואחריו מזהה סצנה.",
+  "noScenes": "הוסיפו סצנה כדי להתחיל את התרחיש."
+}

@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "ခေါင်းစဉ်"
+        "title": "ခေါင်းစဉ်",
+        "description": "သင်တန်းမော်ဒယ်အပေါ်တွင် ပြသော ခေါင်းစီး။"
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "ပြသရန် 3D မော်ဒယ်ဖိုင် (.glb သို့မဟုတ် .gltf) ၏ လိပ်စာ။"
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "မမြင်နိုင်သူများအတွက် 3D မော်ဒယ်ကို ဖော်ပြပါ။"
       },
       {
         "title": "အချက်အလက် နေရာ"

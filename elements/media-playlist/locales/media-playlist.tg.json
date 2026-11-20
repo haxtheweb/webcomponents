@@ -5,5 +5,7 @@
   "editModeLabel": "Реҷаи таҳрири рӯйхати пахши медиа",
   "position": "{current} аз {total}",
   "previousItem": "Объекти қаблӣ",
-  "nextItem": "Объекти навбатӣ"
+  "nextItem": "Объекти навбатӣ",
+  "fullScreen": "Экрани пурра",
+  "exitFullScreen": "Баромадан аз экрани пурра"
 }

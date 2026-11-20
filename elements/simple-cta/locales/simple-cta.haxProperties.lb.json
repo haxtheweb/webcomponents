@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Ikon verstoppen",
         "description": "Den Ikon verstoppen, deen den Text akzentuéiert"
+      },
+      {
+        "title": "Ausgesinn",
+        "description": "Wéi staark de Knäppchen ervirgehuewe gëtt.",
+        "options": {
+          "": "Gefëllt",
+          "tonal": "Tonal",
+          "outlined": "Ëmrannt",
+          "plain": "Einfach"
+        }
+      },
+      {
+        "title": "Gréisst",
+        "description": "Gréisst vum Knäppchen.",
+        "options": {
+          "s": "Kleng",
+          "": "Mëttel",
+          "l": "Grouss"
+        }
       }
     ],
     "advanced": [

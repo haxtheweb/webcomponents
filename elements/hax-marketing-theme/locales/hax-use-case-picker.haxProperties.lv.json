@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Lietojuma veida izvēle",
+    "description": "Izvēlieties, kam vietne paredzēta, un saņemiet saiti, kas atver HAX pārlūkā ar šo sākuma vietni, kā arī atbilstošo CLI komandu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "HAX pārlūkā adrese",
+        "description": "Kur atveras saite; tai tiek pievienots ?skeleton= un &name="
+      },
+      {
+        "title": "Izlaižamās sākuma vietnes",
+        "description": "Mašīnnosaukumi, atdalīti ar komatiem"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Sākuma vietņu saraksts",
+        "description": "Skeletu saraksta adrese (formāts, ko lasa app-hax)"
+      }
+    ]
+  }
+}

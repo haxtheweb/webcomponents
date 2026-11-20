@@ -5,5 +5,7 @@
   "editModeLabel": "မီဒီယာ ဖွင့်စာရင်း တည်းဖြတ်မုဒ်",
   "position": "{current} / {total}",
   "previousItem": "ယခင်အရာ",
-  "nextItem": "နောက်အရာ"
+  "nextItem": "နောက်အရာ",
+  "fullScreen": "မျက်နှာပြင်အပြည့်",
+  "exitFullScreen": "မျက်နှာပြင်အပြည့်မှ ထွက်ရန်"
 }

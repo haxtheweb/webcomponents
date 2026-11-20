@@ -1,0 +1,22 @@
+{
+  "scenario": "Escenario",
+  "directions": "Instrucións",
+  "showDirections": "Mostrar as instrucións",
+  "hideDirections": "Ocultar as instrucións",
+  "directionsRead": "Le cada escena e escolle que farías.",
+  "directionsEndings": "Hai varios finais. Proba outro camiño cando remates.",
+  "startOver": "Comezar de novo",
+  "back": "Un paso atrás",
+  "tryAnother": "Probar outro camiño",
+  "path": "Camiño",
+  "scene": "Escena",
+  "ending": "Final",
+  "end": "fin",
+  "scenesSeen": "{seen} de {total} escenas vistas",
+  "endingReached": "Chegaches a un final",
+  "addScene": "Engadir escena",
+  "newScene": "Nova escena",
+  "newSceneText": "Describe o que pasa e despois liga cada opción a unha escena.",
+  "editingNote": "Edición: móstranse todas as escenas. Unha opción é unha ligazón a # seguido dun id de escena.",
+  "noScenes": "Engade unha escena para comezar o escenario."
+}

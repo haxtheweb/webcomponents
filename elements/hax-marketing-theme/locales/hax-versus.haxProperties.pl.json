@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Kontra",
+    "description": "Tekst obok przycisku pojedynku z dwiema postaciami"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nagłówek"
+      },
+      {
+        "title": "Dokąd prowadzi przycisk"
+      },
+      {
+        "title": "Tekst przycisku"
+      },
+      {
+        "title": "Ziarno lewej postaci"
+      },
+      {
+        "title": "Ziarno prawej postaci"
+      }
+    ]
+  }
+}

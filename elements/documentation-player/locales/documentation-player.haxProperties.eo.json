@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Dokumentara ludilo",
+    "description": "Gvidilo, demonstraĵo kaj referenco por retkomponanto, kun kopiobutonoj por HTML, import, npm kaj CDN."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Datumdosiero de la dokumentaro",
+        "description": "La dokumentaraj datumoj liverataj kun la elemento (lib/tag.docs.json)."
+      },
+      {
+        "title": "Rakontotabulo de la gvidilo",
+        "description": "La moviĝa rakontotabulo liverata kun la elemento (tag.motion.json). Nedeviga."
+      },
+      {
+        "title": "Videa lernilo",
+        "description": "Mallonga video pri la elemento (YouTube, Vimeo aŭ videodosiero). Anstataŭas la videon en la dokumentaraj datumoj."
+      },
+      {
+        "title": "Malfermi ĉe langeto",
+        "description": "Kiu langeto montriĝas unue.",
+        "options": {
+          "motion": "Gvidilo",
+          "video": "Video",
+          "demo": "Demo",
+          "docs": "Dokumentaro",
+          "schema": "Skemo"
+        }
+      },
+      {
+        "title": "Aŭtomate ludi la gvidilon",
+        "description": "Komenci la gvidilon tuj kiam la ludilo montriĝas. Ignorata, kiam la leganto preferas reduktitan moviĝon."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Temo de la gvidilo",
+        "description": "Por elementoj kun pluraj gvidiloj, kiun temon malfermi unue (ekzemple add-blocks). Lasu malplena por la ĉefa."
+      },
+      {
+        "title": "Ligilo al viva demonstraĵo",
+        "description": "Kien iras la butono Malfermi fonton de demonstraĵo. Defaŭlte al la dosierujo demo en la deponejo."
+      },
+      {
+        "title": "Ligilo al dokumentaro",
+        "description": "Kien iras la butono de plena dokumentaro, ekzemple al la kongrua paĝo de Learn HAX."
+      }
+    ]
+  }
+}

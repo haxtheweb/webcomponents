@@ -1,0 +1,8 @@
+{
+  "theme": "Тема",
+  "palette": "Палитра",
+  "themeDefault": "Тема килешүе буенча",
+  "designSystem": "Дизайн системасы",
+  "designSystemDefault": "DDD (килешү буенча)",
+  "designSystemUnavailable": "Бу тема үз дизайн системасын саклый"
+}

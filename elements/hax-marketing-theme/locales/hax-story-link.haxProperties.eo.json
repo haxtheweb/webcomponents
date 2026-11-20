@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Rakonta butono",
+    "description": "La butono, kiu malfermas la rakonton malantaŭ aserto ĉe hax.cloud, aŭ la kongruan lokon en alia retejo de la HAX-reto"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kien ĝi iras",
+        "options": {
+          "cloud": "hax.cloud, la rakonto",
+          "learn": "learn.hax.cloud, lernilo",
+          "try": "browser.hax.cloud, provu ĝin",
+          "elements": "webcomponents.hax.cloud, bloko",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Adreso en tiu retejo (rakonto ĉe hax.cloud aspektas kiel stories/ee450a19)"
+      },
+      {
+        "title": "Pri kio ĝi temas"
+      },
+      {
+        "title": "Malgranda ĉipo"
+      },
+      {
+        "title": "Montri en la butono, pri kio ĝi temas"
+      }
+    ]
+  }
+}

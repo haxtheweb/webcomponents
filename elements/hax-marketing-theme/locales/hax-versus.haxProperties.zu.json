@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ngokumelene",
+    "description": "Amazwi eceleni kwenkinobho yobuso nobuso enabalingiswa ababili"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Isihloko"
+      },
+      {
+        "title": "Lapho inkinobho iya khona"
+      },
+      {
+        "title": "Umbhalo wenkinobho"
+      },
+      {
+        "title": "Imbewu yomlingiswa wesokunxele"
+      },
+      {
+        "title": "Imbewu yomlingiswa wesokudla"
+      }
+    ]
+  }
+}

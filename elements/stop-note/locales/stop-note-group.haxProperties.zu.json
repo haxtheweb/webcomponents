@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Iqembu Lamanothi Okuma",
+    "description": "Hlanganisa amanothi okuma amaningana ebhlokhini elilodwa elibonisa inothi elilodwa ngesikhathi, njengo-Amathiphu noma Okusha. Amakhadi emiyalelo, amanothi aseceleni nezicaphuno ezisohlakeni kungahlanganiswa nawo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ilebula",
+        "description": "Igama leqembu elimenyezelwa abafundi besikrini, njengo-Amathiphu noma Okusha."
+      },
+      {
+        "title": "Amanothi",
+        "description": "Amanothi okuma aseqenjini. Amakhadi emiyalelo, amanothi aseceleni nezicaphuno ezisohlakeni nakho kungengezwa."
+      }
+    ]
+  }
+}

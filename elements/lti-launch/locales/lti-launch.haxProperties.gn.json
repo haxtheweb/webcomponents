@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Tembiporu okágua ñepyrũ",
+    "description": "Peteĩ bloque oipe'áva tembiporu jehekombo'erã okágua ventana pyahúpe térã kuatiaroguépe, juajuha soke ramo térã LTI 1.3 jeike jerure reheve."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Téra",
+        "description": "Tembiporu réra. Ojehechauka iñakãme ha botõ ári."
+      },
+      {
+        "title": "Ñemombe'u",
+        "description": "Mba'épa temimbo'ekuéra ojapo tembiporúpe, ojehechaukáva botõ ári."
+      },
+      {
+        "title": "URL ñepyrũrã",
+        "description": "Tembiporu kundaharape. Iñimportante ha'e kundaharape henyhẽva oñepyrũva https:// térã http:// reheve."
+      },
+      {
+        "title": "Eipe'a",
+        "description": "Ventana pyahu omba'apo opaite tembiporu ndive. Ko kuatiaroguépe omba'apo añoite tembiporu oheja ojehechauka ambue tenda ryepýpe.",
+        "options": {
+          "window": "Ventana pyahu",
+          "embed": "Ko kuatiaroguépe"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "LTI jeike URL",
+        "description": "LTI 1.3 añoite: tembiporu jeike ñepyrũrã kundaharape. Kóva, peteĩ cliente ID ha peteĩ despliegue ID reheve, botõ omondo LTI jeike jerure juajuha soke oipe'a rangue. Ñepyrũ ñemohu'ã oikotevẽ ko tenda LTI servicio."
+      },
+      {
+        "title": "LTI cliente ID",
+        "description": "Cliente ID tembiporu ome'ẽva ko tendápe. Peteĩ jehechakuaaha opavavépe g̃uarã, ndaha'éi ñemigua: araka'eve ani remoĩ ko'ápe clave térã ñemigua."
+      },
+      {
+        "title": "LTI despliegue ID",
+        "description": "Despliegue ID tembiporu ome'ẽva ko tendápe. Peteĩ jehechakuaaha opavavépe g̃uarã, ndaha'éi ñemigua."
+      },
+      {
+        "title": "LTI ome'ẽva",
+        "description": "Kundaharape ohechakuaaukáva ko tenda tembiporúpe. Eheja nandi eipuru hag̃ua tenda kuatiarogue oĩhápe kundaharape."
+      },
+      {
+        "title": "Yvatekue kuatiaroguépe",
+        "description": "Tembiporu yvatekue ojepe'ávo ko kuatiaroguépe, píxel-pe (200 guive 2000 peve)."
+      },
+      {
+        "title": "Sa'y mbohesakãha",
+        "description": "Iñakã chip ha botõ sa'y. Eheja nandi emoirũ hag̃ua téma."
+      }
+    ],
+    "developer": [
+      {
+        "title": "LTI jeike pytyvõ",
+        "description": "Peteĩ hepy ñemigua ko tenda LTI servicio oipurúva ohechakuaa hag̃ua temimbo'e. Jepiverupi tenda ome'ẽ lti-launch-request rupive oñeñongatu rangue ko'ápe. Araka'eve ndaha'éi ñe'ẽñemi térã clave."
+      },
+      {
+        "title": "LTI marandu pytyvõ",
+        "description": "Peteĩ hepy ñemigua ko tenda LTI servicio oipurúva ohechakuaa hag̃ua ko ñepyrũ. Jepiverupi tenda ome'ẽ oñeñongatu rangue ko'ápe."
+      }
+    ]
+  }
+}

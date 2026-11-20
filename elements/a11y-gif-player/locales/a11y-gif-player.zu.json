@@ -2,5 +2,9 @@
   "toggleAnimation": "Shintsha opopayi",
   "info": "ulwazi",
   "image": "Isithombe",
-  "animatedGif": "I-GIF ephilayo"
+  "animatedGif": "I-GIF ephilayo",
+  "playAnimation": "Dlala opopayi",
+  "pauseAnimation": "Misa okwesikhashana opopayi",
+  "showDescription": "Bonisa incazelo",
+  "hideDescription": "Fihla incazelo"
 }

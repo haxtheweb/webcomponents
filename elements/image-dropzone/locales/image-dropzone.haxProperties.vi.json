@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Vùng thả trên hình ảnh",
+    "description": "Người học đặt nhãn vào các vùng phủ trên hình ảnh, rồi kiểm tra câu trả lời."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Hình ảnh",
+        "description": "Hình ảnh mà người học đặt nhãn lên."
+      },
+      {
+        "title": "Văn bản thay thế",
+        "description": "Mô tả hình ảnh cho những người không thể nhìn thấy nó. Đừng tiết lộ vị trí của các nhãn."
+      },
+      {
+        "title": "Tiêu đề hình ảnh",
+        "description": "Một tiêu đề ngắn hiển thị phía trên hình ảnh."
+      },
+      {
+        "title": "Câu hỏi",
+        "description": "Những gì người học được yêu cầu làm với các nhãn."
+      },
+      {
+        "title": "Nhãn và vùng",
+        "description": "Mỗi mục là một nhãn người học có thể đặt. Đặt tên vùng cho nhãn để vùng của nó xuất hiện trên hình ảnh; nhãn không có tên vùng là nhãn thừa không thuộc về đâu. Các số của vùng là phần trăm của hình ảnh."
+      },
+      {
+        "title": "Chú thích",
+        "description": "Chú thích tùy chọn hiển thị dưới hình ảnh."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Số lần thử",
+        "description": "Số lần người học có thể kiểm tra. 0 nghĩa là không giới hạn."
+      },
+      {
+        "title": "Xáo trộn nhãn",
+        "description": "Hiển thị nhãn theo thứ tự khác nhau mỗi lần truy cập."
+      },
+      {
+        "title": "Thu gọn được",
+        "description": "Hiển thị câu hỏi này dưới dạng một hàng có thể mở và đóng. Mở một hàng sẽ đóng các câu hỏi thu gọn khác bên cạnh."
+      },
+      {
+        "title": "Bắt đầu ở dạng thu gọn",
+        "description": "Khi thu gọn được, bắt đầu dưới dạng hàng đóng chỉ hiển thị câu hỏi và trạng thái."
+      },
+      {
+        "title": "Hình thức chấm điểm",
+        "description": "OER Schema: hình thức chấm điểm cho bài đánh giá này (ví dụ: điểm số, điểm chữ, phần trăm, hoàn thành)."
+      },
+      {
+        "title": "Mục tiêu học tập",
+        "description": "OER Schema: mục tiêu học tập gắn với bài đánh giá này."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Tên bài kiểm tra",
+        "description": "Tên bài kiểm tra dùng để nhận dạng xAPI trong các hệ thống phân tích."
+      },
+      {
+        "title": "Khóa học",
+        "description": "OER Schema: khóa học mà bài đánh giá này hướng tới."
+      }
+    ]
+  }
+}

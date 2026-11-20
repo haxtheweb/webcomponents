@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Porandu papapy rehegua",
+    "description": "Peteĩ porandu oñembohováiva papapy reheve. Mbohovái ha'e papapy ojeikuaáva térã fórmula oñemoha'ãngáva variable guive, ha oñemoneĩ oĩramo tolerancia ryepýpe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Porandu",
+        "description": "Mba'épa oñeporandu temimbo'ekuérape. Ehai peteĩ variable réra llave ryepýpe, {d}-icha, ehechauka hag̃ua hepy."
+      },
+      {
+        "title": "Ñemboja'i",
+        "description": "Ojehechauka moñe'ẽrã ramo mbohovái renda ykére, techapyrã km/h."
+      },
+      {
+        "title": "Mbohovái",
+        "description": "Papapy hekopetéva. Eheja nandi peteĩ fórmula omoha'ãngárõ mbohovái."
+      },
+      {
+        "title": "Fórmula",
+        "description": "Omoha'ãnga mbohovái variable guive, techapyrã d / (t / 60). Ikatu oipuru + - * / ^, paréntesis, sqrt() ha abs(). Ojeipuru mbohovái rendaguépe oñemoĩramo."
+      },
+      {
+        "title": "Variable",
+        "description": "Papapy fórmula ha porandu oipurúva. Peteĩteĩ ojagarra peteĩ hepy imichĩvéva ha iyvatevéva pa'ũme, jehasápe."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tolerancia",
+        "description": "Mboy mombyrýpa mbohovái hekopetévagui oñemoneĩ gueteri. 0 he'ise hekopete, térã oñemoapu'áva decimal iguýpe oĩvape."
+      },
+      {
+        "title": "Tolerancia reko",
+        "description": "Absoluto: hetave térã sa'ive tolerancia. Porcentaje: hetave térã sa'ive upe porcentaje mbohovái hekopetévagui.",
+        "options": {
+          "absolute": "Absoluto",
+          "percent": "Porcentaje"
+        }
+      },
+      {
+        "title": "Decimal",
+        "description": "Ojejerure temimbo'ekuérape omoapu'a hag̃ua kóva mboy decimal-pe, ha mbohovái ojehechauka oñemoapu'ávo. Eheja nandi ani hag̃ua oñemoapu'a."
+      },
+      {
+        "title": "Ñeha'ãkuéra",
+        "description": "Mboy jey temimbo'e ikatu ohechajey. 0 he'ise ndaipóri ñemboja'i."
+      },
+      {
+        "title": "Papapy pyahu peteĩteĩ ñeha'ãme",
+        "description": "Emoĩ variable hepy pyahu peteĩteĩ jey temimbo'e oñeha'ãjeývo. Upéi imbohovái mboyvegua ndojehechaukái ou jeývo, oĩporãpa añoite."
+      },
+      {
+        "title": "Ikatúva oñemboty",
+        "description": "Ehechauka ko porandu tysýi ramo ojepe'a ha oñembotýva. Peteĩ jepe'a omboty ambue porandu ikatúva oñemboty hi'ykére oĩva."
+      },
+      {
+        "title": "Eñepyrũ oñembotývo",
+        "description": "Ikatúramo oñemboty, eñepyrũ tysýi oñembotýva ramo ohechaukáva porandu ha hekotee añoite."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Porandupy réra",
+        "description": "Porandupy réra ojeipurúva xAPI jehechakuaápe análisis sistema-pe."
+      }
+    ]
+  }
+}

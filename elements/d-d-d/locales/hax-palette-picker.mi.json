@@ -5,5 +5,6 @@
   "selected": "Kua tīpakohia",
   "currentlyActiveAndSelectedPalette": "Papatae hohe, kua tīpakohia hoki",
   "currentlyActivePalette": "Papatae hohe o nāianei",
-  "selectedPaletteToApply": "Papatae kua tīpakohia hei hāngai"
+  "selectedPaletteToApply": "Papatae kua tīpakohia hei hāngai",
+  "paletteNumber": "Papatae {number}"
 }

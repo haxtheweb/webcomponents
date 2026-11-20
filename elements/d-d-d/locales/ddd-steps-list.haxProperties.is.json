@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Skrefalisti",
     "description": "Númeruð skref til að ljúka verkefni."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Skrefavísir",
+        "description": "Sýna skrefin sem þétta röð titla sem merkir framvindu. Efni skrefanna er ekki sýnt í þessu útliti."
+      },
+      {
+        "title": "Núverandi skref",
+        "description": "Skrefið sem lesandinn er á, talið frá 1. Fyrri skref birtast sem lokið. Notað af skrefavísinum."
+      }
+    ]
   }
 }

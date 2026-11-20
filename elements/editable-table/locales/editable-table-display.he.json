@@ -3,5 +3,8 @@
   "copyAsCsv": "העתקה כ-CSV.",
   "printTable": "הדפסת הטבלה",
   "selectColumn": "בחירת עמודה",
-  "dataTable": "נתונים · טבלה"
+  "dataTable": "נתונים · טבלה",
+  "filterStatus": "מוצגות {shown} מתוך {total} שורות, מסוננות לפי {column}: {text}",
+  "columnNumber": "עמודה {column}",
+  "clearFilter": "ניקוי מסנן"
 }

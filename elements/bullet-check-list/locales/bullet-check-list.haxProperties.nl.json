@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Afvinklijst",
+    "description": "Een lijst met selectievakjes. Lezers vinken items af en hun voortgang wordt op hun eigen apparaat onthouden."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Naam van de lijst. Wordt voorgelezen als label van de groep selectievakjes."
+      },
+      {
+        "title": "Items",
+        "description": "Elk item is een selectievakje. Aangevinkte of uitgeschakelde items kunnen niet door lezers worden gewijzigd."
+      },
+      {
+        "title": "Genummerd",
+        "description": "Een genummerde lijst tonen in plaats van een opsommingslijst."
+      },
+      {
+        "title": "Status",
+        "description": "Wijzigt de kleuren zodat ze passen bij stop-note.",
+        "options": {
+          "info": "Mededeling",
+          "success": "Bevestiging",
+          "warning": "Waarschuwing",
+          "stop": "Stop"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "Opslag-ID",
+        "description": "Unieke ID om de voortgang van lezers op hun apparaat te onthouden. Wordt automatisch gegenereerd; wijzig hem alleen om voortgang tussen lijsten te delen of om opnieuw te beginnen."
+      }
+    ]
+  }
+}

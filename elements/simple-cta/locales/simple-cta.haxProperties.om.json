@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Aayikoonii dhoksi",
         "description": "Aayikoonii barreeffama cimsuuf fayyadu dhoksi"
+      },
+      {
+        "title": "Bifa",
+        "description": "Qabduun hagam cimsamee akka mul'atu.",
+        "options": {
+          "": "Guutame",
+          "tonal": "Halluu laafaa",
+          "outlined": "Sararaan marfame",
+          "plain": "Salphaa"
+        }
+      },
+      {
+        "title": "Hamma",
+        "description": "Hamma qabduu.",
+        "options": {
+          "s": "Xiqqaa",
+          "": "Giddugaleessa",
+          "l": "Guddaa"
+        }
       }
     ],
     "advanced": [

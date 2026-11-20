@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Sopa de letras",
+    "description": "Una cuadrícula de letras con palabras ocultas. Los estudiantes tocan la primera y la última letra de cada palabra. Sirve para practicar cómo se escribe un término, no su significado."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Título",
+        "description": "Lo que se pide a los estudiantes que encuentren, mostrado en la cabecera."
+      },
+      {
+        "title": "Palabras",
+        "description": "Las palabras que se ocultarán. Los espacios y la puntuación se omiten de la cuadrícula. Las palabras que no caben se listan mientras editas y se omiten para los estudiantes."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tamaño de la cuadrícula",
+        "description": "Letras por lado, de 4 a 16. Déjalo vacío para ajustarse a la palabra más larga (hasta 12). Más de 12 se desplaza en horizontal en un teléfono."
+      },
+      {
+        "title": "Palabras en diagonal",
+        "description": "Ocultar también palabras en diagonal. Más difícil."
+      },
+      {
+        "title": "Palabras al revés",
+        "description": "Ocultar también palabras escritas al revés. Más difícil."
+      },
+      {
+        "title": "Color de acento",
+        "description": "Color opcional para la etiqueta de la cabecera, la primera letra elegida y el botón."
+      }
+    ]
+  }
+}

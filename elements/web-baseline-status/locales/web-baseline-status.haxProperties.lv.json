@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Baseline statuss",
+    "description": "Rādīt tīmekļa platformas funkcijas Baseline pārlūku atbalsta statusu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Funkcijas ID",
+        "description": "Tīmekļa funkcijas ID, piemēram, anchor-positioning. ID var atrast vietnē webstatus.dev; ID ir funkcijas lapas URL pēdējā daļa."
+      }
+    ]
+  }
+}

@@ -6,6 +6,8 @@
   "faviconDescription": "Kundahára tendayke ta'ãnga / ojepuru pumbyrýpe tenda ta'ãngaete michĩ ramo",
   "domain": "Dominio",
   "domainDescription": "Ko ñanduti renda dominio",
+  "sameAs": "Ko tenda ambue perfil",
+  "sameAsDescription": "Peteĩ juajuha peteĩteĩ tysýipe ko tenda térã atyguasu perfil ambue hendápe (GitHub, LinkedIn, YouTube, Mastodon). Jeheka motor oipuru ombojoaju hag̃ua umi perfil ko tenda ndive.",
   "language": "Ñe'ẽ",
   "languageDescription": "Ko tendápe ñe'ẽ. Eheka héra térã código rupive, térã emoĩ ótro código fr-CA ramo.",
   "googleAnalyticsId": "Google Analytics ID",

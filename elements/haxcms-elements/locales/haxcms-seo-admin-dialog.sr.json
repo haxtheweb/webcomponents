@@ -6,6 +6,8 @@
   "faviconDescription": "Слика на картици прегледача / користи се на телефонима као мали лого сајта",
   "domain": "Домен",
   "domainDescription": "Домен овог веб-сајта",
+  "sameAs": "Други профили овог сајта",
+  "sameAsDescription": "Један линк по реду ка профилима овог сајта или организације на другим местима (GitHub, LinkedIn, YouTube, Mastodon). Претраживачи их користе да повежу те профиле са овим сајтом.",
   "language": "Језик",
   "languageDescription": "Језик овог сајта. Претражите по називу или коду или унесите други код, на пример fr-CA.",
   "googleAnalyticsId": "Google Analytics ID",

@@ -14,6 +14,17 @@
         "property": "autoAccentColor",
         "title": "Automatyczny kolor akcentu",
         "description": "Automatycznie wyznaczaj kolor akcentu na podstawie tekstu etykiety."
+      },
+      {
+        "title": "Znaczenie",
+        "description": "Nadaj tagowi kolor znaczeniowy. Pozostaw puste dla neutralnego tagu.",
+        "options": {
+          "": "Neutralny",
+          "brand": "Marka",
+          "success": "Sukces",
+          "warning": "Ostrzeżenie",
+          "danger": "Niebezpieczeństwo"
+        }
       }
     ],
     "advanced": [

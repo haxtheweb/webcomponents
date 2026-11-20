@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Esercizio di aritmetica",
+    "description": "Una breve serie di problemi aritmetici generati con feedback immediato. Scegli le operazioni e l'intervallo di numeri; ogni sessione è nuova."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titolo",
+        "description": "Nome di questo esercizio, mostrato nell'intestazione."
+      },
+      {
+        "title": "Operazioni",
+        "description": "Quali tipi di problemi vengono proposti. Gli studenti possono disattivarne qualcuno prima di iniziare.",
+        "options": {
+          "add": "Addizione",
+          "subtract": "Sottrazione",
+          "multiply": "Moltiplicazione",
+          "divide": "Divisione",
+          "add subtract": "Addizione e sottrazione",
+          "multiply divide": "Moltiplicazione e divisione",
+          "add multiply": "Addizione e moltiplicazione",
+          "add divide": "Addizione e divisione",
+          "subtract multiply": "Sottrazione e moltiplicazione",
+          "subtract divide": "Sottrazione e divisione",
+          "add subtract multiply": "Addizione, sottrazione e moltiplicazione",
+          "add subtract divide": "Addizione, sottrazione e divisione",
+          "add multiply divide": "Addizione, moltiplicazione e divisione",
+          "subtract multiply divide": "Sottrazione, moltiplicazione e divisione",
+          "add subtract multiply divide": "Tutte e quattro"
+        }
+      },
+      {
+        "title": "Numero più piccolo",
+        "description": "Il numero più piccolo usato in un problema. Numeri interi, da 0 in su."
+      },
+      {
+        "title": "Numero più grande",
+        "description": "Il numero più grande usato in un problema. Anche i risultati e i divisori delle divisioni restano in questo intervallo."
+      },
+      {
+        "title": "Numero di problemi",
+        "description": "Quanti problemi ci sono in una sessione (da 1 a 100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Limite di tempo",
+        "description": "Secondi concessi per un'intera sessione. 0 significa nessun timer, che è il valore predefinito: gli esercizi a tempo penalizzano gli studenti che hanno bisogno di più tempo. Se impostato, gli studenti possono comunque disattivare il timer per sé."
+      },
+      {
+        "title": "Colore di accento",
+        "description": "Colore dell'etichetta nell'intestazione e dei pulsanti. Lascia vuoto per seguire il tema."
+      }
+    ]
+  }
+}

@@ -23,7 +23,9 @@
           "stop": "Dhaabi",
           "warning": "Akeekkachiisa",
           "success": "Mirkaneessa",
-          "info": "Beeksisa"
+          "info": "Beeksisa",
+          "tip": "Gorsa",
+          "new": "Maaltu haaraa"
         }
       },
       {

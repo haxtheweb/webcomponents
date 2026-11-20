@@ -1,4 +1,6 @@
 {
   "saveAll": "Alles opslaan",
-  "saveTheFollowing": "Het volgende opslaan: {list}?"
+  "saveTheFollowing": "Het volgende opslaan: {list}?",
+  "save": "Opslaan",
+  "cancel": "Annuleren"
 }

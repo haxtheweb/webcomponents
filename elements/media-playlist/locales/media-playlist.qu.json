@@ -5,5 +5,7 @@
   "editModeLabel": "Media uyarina sinrita allichana modo",
   "position": "{total}manta {current}",
   "previousItem": "Ñawpaq",
-  "nextItem": "Qatiq"
+  "nextItem": "Qatiq",
+  "fullScreen": "Hunt'asqa qhawana",
+  "exitFullScreen": "Hunt'asqa qhawanamanta lluqsiy"
 }

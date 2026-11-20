@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Baseline حالت",
+    "description": "ویب پلیٹ فارم خوبی دی Baseline براؤزر سہائتا حالت وکھاؤ۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "خوبی ID",
+        "description": "ویب خوبی دا ID، مثال دے طور تے anchor-positioning۔ ID webstatus.dev تے لبھو؛ ID خوبی صفحے دے URL دا آخری حصہ اے۔"
+      }
+    ]
+  }
+}

@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "図のラベル",
     "description": "コンテンツ内のメディア素材に印を付ける図のラベル要素。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "図番号",
+        "description": "図の番号または短いラベル（例: 1.3）"
+      },
+      {
+        "title": "説明",
+        "description": "図の短い説明"
+      }
+    ]
   }
 }

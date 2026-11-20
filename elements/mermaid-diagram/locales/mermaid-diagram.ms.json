@@ -1,0 +1,21 @@
+{
+  "diagram": "Rajah",
+  "flowchart": "carta alir",
+  "sequence": "jujukan",
+  "source": "Sumber",
+  "textAlternative": "Alternatif teks",
+  "present": "Persembahkan",
+  "exitPresent": "Keluar persembahan",
+  "loading": "Memuatkan rajah",
+  "empty": "Belum ada apa untuk dilukis. Tambah sumber rajah.",
+  "error": "Ralat",
+  "parseError": "Rajah ini tidak dapat dilukis. Semak sumbernya.",
+  "loadError": "Pustaka rajah tidak dapat dimuatkan.",
+  "srcError": "Fail rajah tidak dapat dimuatkan.",
+  "decision": "keputusan",
+  "end": "tamat",
+  "goTo": "pergi ke {target}",
+  "ifGoTo": "jika {label}, pergi ke {target}",
+  "describedBySource": "Rajah diterangkan oleh sumbernya.",
+  "scrollable": "Rajah, boleh ditatal"
+}

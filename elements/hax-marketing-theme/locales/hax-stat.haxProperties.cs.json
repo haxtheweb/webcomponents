@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Statistika",
+    "description": "Číslo, které napočítává, s popiskem a odkazem na svůj příběh"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Číslo, do kterého napočítat"
+      },
+      {
+        "title": "Před číslem"
+      },
+      {
+        "title": "Za číslem"
+      },
+      {
+        "title": "Slova místo čísla"
+      },
+      {
+        "title": "Co počítá"
+      },
+      {
+        "title": "Adresa příběhu na hax.cloud (stories/ee450a19)"
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Ҳолати Baseline",
+    "description": "Ҳолати дастгирии браузерии Baseline-и хусусияти платформаи вебро нишон диҳед."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID-и хусусият",
+        "description": "ID-и хусусияти веб, масалан anchor-positioning. ID-ҳоро дар webstatus.dev ёбед; ID қисми охири URL-и саҳифаи хусусият аст."
+      }
+    ]
+  }
+}

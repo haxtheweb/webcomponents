@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Pallsamanbering",
+    "description": "Høvd móti høvdi: vel hvørjar sum helst tveir pallar úr eini dátufílu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Samanberingardáta (JSON)"
+      },
+      {
+        "title": "Id á vinstra palli"
+      },
+      {
+        "title": "Id á høgra palli"
+      }
+    ]
+  }
+}

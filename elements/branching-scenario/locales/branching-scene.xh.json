@@ -1,0 +1,14 @@
+{
+  "scene": "Umboniso",
+  "ending": "Isiphelo",
+  "goodEnding": "Isiphelo esihle",
+  "mixedEnding": "Isiphelo esixubeneyo",
+  "poorEnding": "Isiphelo esibi",
+  "scoreOf": "Amanqaku {score} kwali-{max}",
+  "scoreOnly": "Amanqaku {score}",
+  "startScene": "Qala",
+  "sceneIdLabel": "I-id yomboniso",
+  "needsId": "Yongeza i-id yomboniso ukuze ukhetho lunxibelelane nalo mboniso.",
+  "orphan": "Akukho khetho lunxibelelana nalo mboniso.",
+  "deadLinks": "La makhonkco akhomba kumboniso ongekhoyo:"
+}

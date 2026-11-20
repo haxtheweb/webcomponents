@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Sazarots scenārijs",
+    "description": "Stāsts, kurā katra izvēle ved uz citu ainu un beigām. Izglītojamie var atkāpties un izmēģināt citus ceļus; sasniegtās beigas nosaka rezultātu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Virsraksts",
+        "description": "Scenārija nosaukums, kas tiek rādīts tā galvenē."
+      },
+      {
+        "title": "Sākuma aina",
+        "description": "Tās ainas ID, no kuras izglītojamie sāk. Atstājiet tukšu, lai sāktu ar pirmo ainu."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Akcenta krāsa",
+        "description": "Neobligāta krāsa galvenes etiķetei, pogām un izvēles malai."
+      }
+    ]
+  }
+}

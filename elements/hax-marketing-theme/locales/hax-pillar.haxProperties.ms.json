@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Tonggak",
+    "description": "Tonggak: nama, frasa, ikon, warna dan sebab ia penting"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nama"
+      },
+      {
+        "title": "Frasa"
+      },
+      {
+        "title": "Ikon"
+      },
+      {
+        "title": "Warna (nama DDD)"
+      },
+      {
+        "title": "Tonggak yang mana, 1 hingga 7"
+      },
+      {
+        "title": "Kad kecil"
+      },
+      {
+        "title": "Kedudukan nama"
+      }
+    ]
+  }
+}

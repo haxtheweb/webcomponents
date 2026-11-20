@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Panga kupu",
+    "description": "He panga kupu i hangaia mai i tētahi rārangi kupu me ngā tohu. Ka waihangatia te mātiti mōu; ka patohia e ngā ākonga ngā kupu ka arowhai ai."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Taitara",
+        "description": "Te taitara, te pātai rānei ka whakaaturia i runga ake i te panga kupu."
+      },
+      {
+        "title": "Ngā kupu",
+        "description": "Ia kupu me tōna tohu. Ka waihangatia te mātiti mai i tēnei rārangi: ka whakanohoia tuatahitia te kupu roa rawa, ā, ka whakawhiti ētahi atu i a ia i ngā pū ōrite."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ngā ngana",
+        "description": "E hia ngā wā ka taea e te ākonga te arowhai. Ko te 0 te tikanga kāore he tepe."
+      },
+      {
+        "title": "Tae arotahi",
+        "description": "He tae kōwhiri mō te maramara pane, te kupu hohe me ngā pātene mahi."
+      },
+      {
+        "title": "Ka taea te kōpaki",
+        "description": "Whakaaturia tēnei panga kupu hei rārangi ka tuwhera, ka kati hoki. Ka kati te whakatuwhera i tētahi i ētahi atu pātai kōpaki i tōna taha."
+      },
+      {
+        "title": "Tīmata kua kōpakina",
+        "description": "Ina taea te kōpaki, tīmata hei rārangi kua kati e whakaatu ana i te taitara me tōna tūnga anake."
+      },
+      {
+        "title": "Hōputu kōeke",
+        "description": "OER Schema: hōputu kōeke mō tēnei aromatawai (hei tauira, ngā piro, te reta, te ōrau, te whakaoti)."
+      },
+      {
+        "title": "Whāinga ako",
+        "description": "OER Schema: te whāinga ako e hāngai ana ki tēnei aromatawai."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Ingoa o te pātaitai",
+        "description": "Te ingoa pātaitai e whakamahia ana mō te tautohu xAPI i ngā pūnaha tātari."
+      },
+      {
+        "title": "Akoranga",
+        "description": "OER Schema: te akoranga e whakaritea ana tēnei aromatawai."
+      }
+    ]
+  }
+}

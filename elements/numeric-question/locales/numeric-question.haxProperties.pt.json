@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Pergunta numérica",
+    "description": "Uma pergunta respondida com um número. A resposta é um número fixo ou uma fórmula calculada a partir de variáveis, e vale quando está dentro de uma tolerância."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pergunta",
+        "description": "O que é perguntado aos alunos. Escreva o nome de uma variável entre chaves, como {d}, para mostrar o valor dela."
+      },
+      {
+        "title": "Unidade",
+        "description": "Mostrada como texto ao lado do campo de resposta, por exemplo km/h."
+      },
+      {
+        "title": "Resposta",
+        "description": "O número correto. Deixe vazio quando uma fórmula calcula a resposta."
+      },
+      {
+        "title": "Fórmula",
+        "description": "Calcula a resposta a partir das variáveis, por exemplo d / (t / 60). Pode usar + - * / ^, parênteses, sqrt() e abs(). Usada no lugar da resposta quando definida."
+      },
+      {
+        "title": "Variáveis",
+        "description": "Números que a fórmula e a pergunta usam. Cada um assume um valor entre o mínimo e o máximo, em incrementos."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tolerância",
+        "description": "Quão longe da resposta exata ainda vale. 0 significa exato, ou arredondado para as casas decimais abaixo."
+      },
+      {
+        "title": "Tipo de tolerância",
+        "description": "Absoluta: mais ou menos a tolerância. Porcentagem: mais ou menos essa porcentagem da resposta exata.",
+        "options": {
+          "absolute": "Absoluta",
+          "percent": "Porcentagem"
+        }
+      },
+      {
+        "title": "Casas decimais",
+        "description": "Os alunos devem arredondar para esse número de casas, e a resposta é mostrada arredondada assim. Deixe vazio para não arredondar."
+      },
+      {
+        "title": "Tentativas",
+        "description": "Quantas vezes um aluno pode verificar. 0 significa ilimitado."
+      },
+      {
+        "title": "Novos números a cada tentativa",
+        "description": "Sortear novos valores das variáveis cada vez que o aluno tentar novamente. A resposta anterior não é mostrada quando ele voltar, apenas se acertou."
+      },
+      {
+        "title": "Recolhível",
+        "description": "Mostrar esta pergunta como uma linha que abre e fecha. Abrir uma fecha as outras perguntas recolhíveis ao lado."
+      },
+      {
+        "title": "Começar recolhido",
+        "description": "Quando recolhível, começar como uma linha fechada que mostra só a pergunta e o status."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Nome do questionário",
+        "description": "Nome do questionário usado para identificação xAPI em sistemas de análise."
+      }
+    ]
+  }
+}

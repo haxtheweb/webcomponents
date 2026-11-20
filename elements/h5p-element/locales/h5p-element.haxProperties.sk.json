@@ -4,7 +4,12 @@
     "description": "Prehráva interaktívny obsah H5P z nahraného súboru .h5p bez potreby servera H5P"
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "title": "Súbor H5P",
+        "description": "Nahrajte alebo prepojte súbor .h5p. Rozbalí sa v prehliadači; server H5P nie je potrebný."
+      }
+    ],
     "advanced": [
       {
         "title": "Starší kód na vloženie iframe",

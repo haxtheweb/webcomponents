@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Tikmasjien",
     "description": "Teks wat homself een karakter op 'n slag uittik."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Teks",
+        "description": "Die teks om uit te tik sodra die element in sig rol."
+      },
+      {
+        "title": "Tik",
+        "description": "Wys die flikkerende wyser; die element stel dit terwyl dit tik."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Vertraging",
+        "description": "Millisekondes om te wag voordat tik begin."
+      },
+      {
+        "title": "Wyserduur",
+        "description": "Millisekondes wat die wyser aanhou flikker nadat die teks getik is."
+      },
+      {
+        "title": "Spoed",
+        "description": "Millisekondes per karakter; laer getalle tik vinniger."
+      }
+    ]
   }
 }

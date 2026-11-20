@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Ndị nyere aka",
+    "description": "Ndị wuru ọrụ ahụ, site na faịlụ ndepụta aha"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Faịlụ ndepụta aha (JSON)"
+      },
+      {
+        "title": "Nlele: landed, lab ma ọ bụ code"
+      },
+      {
+        "title": "Ọnụọgụ mmadụ kacha ọtụtụ a ga-egosi (0 bụ ha niile)"
+      }
+    ]
+  }
+}

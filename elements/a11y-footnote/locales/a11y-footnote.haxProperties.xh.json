@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Inqaku elisezantsi",
+    "description": "Inqaku elibhalwe apho lifanele khona kwisicatshulwa. Libonakala njengenani, kwaye uluhlu lwamanqaku olunamanani luzakheka ngokwalo ezantsi kwephepha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Inqaku",
+        "description": "Isicatshulwa senqaku elisezantsi."
+      },
+      {
+        "title": "Akukho kujonga kwangaphambili",
+        "description": "Musa ukubonisa inqaku xa umfundi ehambisa imowusi phezu okanye egxila kwinani."
+      }
+    ]
+  }
+}

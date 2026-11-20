@@ -5,5 +5,7 @@
   "editModeLabel": "미디어 재생 목록 편집 모드",
   "position": "{current} / {total}",
   "previousItem": "이전 항목",
-  "nextItem": "다음 항목"
+  "nextItem": "다음 항목",
+  "fullScreen": "전체 화면",
+  "exitFullScreen": "전체 화면 종료"
 }

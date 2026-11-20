@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Yozuv mashinkasi",
     "description": "O'zini bittadan belgi bilan teradigan matn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Matn",
+        "description": "Element ko‘rinishga kelganda yoziladigan matn."
+      },
+      {
+        "title": "Yozilmoqda",
+        "description": "Miltillovchi kursorni ko‘rsatish; element yozayotganda buni o‘zi o‘rnatadi."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Kechikish",
+        "description": "Yozish boshlanishidan oldin kutiladigan millisoniyalar."
+      },
+      {
+        "title": "Kursor davomiyligi",
+        "description": "Matn yozilgandan keyin kursor miltillashda davom etadigan millisoniyalar."
+      },
+      {
+        "title": "Tezlik",
+        "description": "Har bir belgi uchun millisoniyalar; kichikroq sonlar tezroq yozadi."
+      }
+    ]
   }
 }

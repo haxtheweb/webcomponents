@@ -9,5 +9,7 @@
   "slidePages": "Kurasa za slaidi",
   "goToSlide": "Nenda kwenye slaidi {number}",
   "slides": "Slaidi",
-  "position": "{number} kati ya {total}"
+  "position": "{number} kati ya {total}",
+  "fullScreen": "Skrini nzima",
+  "exitFullScreen": "Toka kwenye skrini nzima"
 }

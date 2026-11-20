@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Söz axtarışı",
+    "description": "Gizli sözləri olan hərf şəbəkəsi. Öyrənənlər hər sözün ilk və son hərfinə toxunur. Terminin mənasını deyil, necə yazıldığını tanımağı məşq etdirir."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Başlıq",
+        "description": "Öyrənənlərdən nəyi tapmaq tələb olunur, başlıqda göstərilir."
+      },
+      {
+        "title": "Sözlər",
+        "description": "Gizlədiləcək sözlər. Boşluqlar və durğu işarələri şəbəkədən çıxarılır. Sığmayan sözlər redaktə zamanı sadalanır və öyrənənlər üçün çıxarılır."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Şəbəkə ölçüsü",
+        "description": "Hər tərəfdə hərf sayı, 4-dən 16-ya. Ən uzun sözə uyğunlaşmaq üçün boş saxlayın (12-yə qədər). 12-dən çox olduqda telefonda yana sürüşür."
+      },
+      {
+        "title": "Diaqonal sözlər",
+        "description": "Sözləri diaqonal da gizlət. Daha çətin."
+      },
+      {
+        "title": "Tərs sözlər",
+        "description": "Tərsinə yazılmış sözləri də gizlət. Daha çətin."
+      },
+      {
+        "title": "Vurğu rəngi",
+        "description": "Başlıq nişanı, seçilmiş ilk hərf və düymə üçün ixtiyari rəng."
+      }
+    ]
+  }
+}

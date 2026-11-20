@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Gumb priče",
+    "description": "Gumb koji otvara priču iza tvrdnje na hax.cloud ili odgovarajuće mjesto na drugom web-mjestu HAX mreže"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kamo vodi",
+        "options": {
+          "cloud": "hax.cloud, priča",
+          "learn": "learn.hax.cloud, vodič",
+          "try": "browser.hax.cloud, isprobajte",
+          "elements": "webcomponents.hax.cloud, blok",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Adresa na tom web-mjestu (priča na hax.cloud izgleda kao stories/ee450a19)"
+      },
+      {
+        "title": "O čemu se radi"
+      },
+      {
+        "title": "Mala oznaka"
+      },
+      {
+        "title": "Prikaži temu u gumbu"
+      }
+    ]
+  }
+}

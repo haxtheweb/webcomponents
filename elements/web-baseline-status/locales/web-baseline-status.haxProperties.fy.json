@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Baseline-status",
+    "description": "De Baseline-browserstipe-status fan in webplatfoarmfunksje sjen litte."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Funksje-ID",
+        "description": "ID fan de webfunksje, bygelyks anchor-positioning. Fyn ID's op webstatus.dev; de ID is it lêste part fan de URL fan in funksjeside."
+      }
+    ]
+  }
+}

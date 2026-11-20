@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Mreža ekosustava",
+    "description": "Interaktivna mreža povezanosti dijelova projekta, s podmrežama i obilascima korak po korak."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Podaci mreže",
+        "description": "URL JSON paketa mreža (izgrađen u PRAW-u, ecosystem-webs.json)."
+      },
+      {
+        "title": "Mreža",
+        "description": "ID mreže koja se prikazuje prva; main je mreža ekosustava."
+      },
+      {
+        "title": "Odabrana pločica",
+        "description": "ID pločice koja se odabire kad se mreža otvori."
+      },
+      {
+        "title": "Obilazak",
+        "description": "ID obilaska s kojim se počinje."
+      },
+      {
+        "title": "Počni u prikazu popisa",
+        "description": "Prikaži mrežu kao ugniježđene popise umjesto crteža."
+      },
+      {
+        "title": "Samo crtež",
+        "description": "Prikaži samo crtež, kao sliku: bez zaglavlja, obilazaka, pojedinosti i trake koraka."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Čitaj prema",
+        "description": "Počni tako da se svaka pločica čita prema jednoj mjeri.",
+        "options": {
+          "": "Samo veze",
+          "fresh": "Svježina",
+          "bus": "Faktor autobusa",
+          "impact": "Utjecaj",
+          "evidence": "Dokaz",
+          "parity": "Paritet"
+        }
+      }
+    ]
+  }
+}

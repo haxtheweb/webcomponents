@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Hōʻike i nā kiko wela",
+    "description": "Loaʻa i nā haumāna nā wahi pololei ma kekahi kiʻi ma ke kaomi ʻana, ka paʻi ʻana a i ʻole ka neʻe ʻana i ke keʻa kuhi papa kikokiko. Ka hoa kaha helu ʻia o ka palapala ʻāina kiʻi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kiʻi",
+        "description": "Ke kiʻi a nā haumāna e huli ai."
+      },
+      {
+        "title": "Kikokikona pani",
+        "description": "Wehewehe i ke kiʻi no ka poʻe hiki ʻole ke ʻike iā ia. ʻAʻole loa e hōʻike ʻia ma ke ʻano he poʻo inoa."
+      },
+      {
+        "title": "Poʻo inoa",
+        "description": "He poʻo inoa pōkole ʻike ʻia ma luna o ke kiʻi."
+      },
+      {
+        "title": "Nīnau",
+        "description": "Ka mea i noi ʻia i nā haumāna e loaʻa ma ke kiʻi."
+      },
+      {
+        "title": "Nā pane",
+        "description": "He pōʻai lōʻihi inoa ʻia kēlā me kēia pane ma ke kiʻi. He pakeneka o ke kiʻi ke kūlana a me ka nui, ana ʻia mai kona kihi hema luna. ʻOiai e hoʻoponopono ana, kahakaha ʻia kēlā me kēia pane ma ke kiʻi."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Nā hoʻāʻo",
+        "description": "ʻEhia manawa e hiki ai i kekahi haumāna ke hoʻāʻo. ʻO ka 0, palena ʻole."
+      },
+      {
+        "title": "Nā hala i ʻae ʻia",
+        "description": "ʻEhia hala e hoʻopau ai i kekahi hoʻāʻo. ʻO ka 0, palena ʻole, a loaʻa i nā haumāna kahi pihi Hoʻopau."
+      },
+      {
+        "title": "Hiki ke ʻōpiʻi",
+        "description": "Hōʻike i kēia nīnau ma ke ʻano he lālani e wehe a pani ai. Ke wehe ʻia kekahi, pani ʻia nā nīnau ʻōpiʻi ʻē aʻe ma kona ʻaoʻao."
+      },
+      {
+        "title": "Hoʻomaka me ka ʻōpiʻi",
+        "description": "Ke hiki ke ʻōpiʻi, e hoʻomaka ma ke ʻano he lālani pani e hōʻike ana i ka nīnau a me kona kūlana wale nō."
+      },
+      {
+        "title": "ʻAno kaha helu",
+        "description": "OER Schema: ke ʻano kaha helu no kēia loiloi (e laʻa nā ʻai, hua palapala, pakeneka, pau ʻana)."
+      },
+      {
+        "title": "Pahuhopu aʻo",
+        "description": "OER Schema: ka pahuhopu aʻo e pili ana i kēia loiloi."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Inoa o ka hoʻokolohua",
+        "description": "Inoa hoʻokolohua i hāʻawi ʻia no ka hoʻohana ʻana ma nā kaiapuni xAPI no ka hōʻike ʻana i kēia mea"
+      },
+      {
+        "title": "Papa",
+        "description": "OER Schema: ka papa i manaʻo ʻia ai kēia loiloi."
+      }
+    ]
+  }
+}

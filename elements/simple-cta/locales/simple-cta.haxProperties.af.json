@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Versteek ikoon",
         "description": "Versteek die ikoon wat gebruik word om teks te beklemtoon"
+      },
+      {
+        "title": "Voorkoms",
+        "description": "Hoeveel klem die knoppie het.",
+        "options": {
+          "": "Gevul",
+          "tonal": "Tonaal",
+          "outlined": "Omlyn",
+          "plain": "Eenvoudig"
+        }
+      },
+      {
+        "title": "Grootte",
+        "description": "Knoppiegrootte.",
+        "options": {
+          "s": "Klein",
+          "": "Medium",
+          "l": "Groot"
+        }
       }
     ],
     "advanced": [

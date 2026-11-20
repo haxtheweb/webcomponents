@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Sayay willay huñu",
+    "description": "Achka sayay willaykunata huk bloquepi huñuy huk willaytalla sapa kuti rikuchinanpaq, Yanapaykuna utaq Ima musuq hina. Yachachiy tarjetakuna, waqta willaykuna, marcochasqa rimaykunapas paykunawan huñukunmanmi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etiqueta",
+        "description": "Pantalla ñawinchaqkunap willasqan huñup sutin, Yanapaykuna utaq Ima musuq hina."
+      },
+      {
+        "title": "Willaykuna",
+        "description": "Huñupi sayay willaykuna. Yachachiy tarjetakuna, waqta willaykuna, marcochasqa rimaykunapas yapakunmanmi."
+      }
+    ]
+  }
+}

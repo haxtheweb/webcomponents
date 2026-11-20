@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Paglunsad ng panlabas na tool",
+    "description": "Isang block na nagbubukas ng panlabas na learning tool sa bagong window o sa pahina, bilang simpleng link o may LTI 1.3 login request."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pamagat",
+        "description": "Pangalan ng tool. Ipinapakita ito sa header at sa button."
+      },
+      {
+        "title": "Paglalarawan",
+        "description": "Kung ano ang ginagawa ng mga mag-aaral sa tool, ipinapakita sa itaas ng button."
+      },
+      {
+        "title": "Launch URL",
+        "description": "Address ng tool. Dapat itong buong address na nagsisimula sa https:// o http://."
+      },
+      {
+        "title": "Buksan sa",
+        "description": "Gumagana ang bagong window sa bawat tool. Ang Sa pahinang ito ay gumagana lang sa mga tool na pumapayag na maipakita sa loob ng ibang site.",
+        "options": {
+          "window": "Bagong window",
+          "embed": "Sa pahinang ito"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "LTI login URL",
+        "description": "LTI 1.3 lang: ang login initiation address ng tool. Kasama nito, ng client ID at ng deployment ID, nagpapadala ang button ng LTI login request sa halip na magbukas ng simpleng link. Kailangan ng LTI service ng site na ito para matapos ang paglunsad."
+      },
+      {
+        "title": "LTI client ID",
+        "description": "Ang client ID na ibinigay ng tool sa site na ito. Isang pampublikong identifier, hindi lihim: huwag kailanman maglagay ng mga key o lihim dito."
+      },
+      {
+        "title": "LTI deployment ID",
+        "description": "Ang deployment ID na ibinigay ng tool sa site na ito. Isang pampublikong identifier, hindi lihim."
+      },
+      {
+        "title": "LTI issuer",
+        "description": "Ang address na nagpapakilala sa site na ito sa tool. Iwanang blangko para gamitin ang address ng site kung nasaan ang pahina."
+      },
+      {
+        "title": "Taas sa pahina",
+        "description": "Taas ng tool kapag bumukas ito sa pahinang ito, sa pixel (200 hanggang 2000)."
+      },
+      {
+        "title": "Kulay ng accent",
+        "description": "Kulay ng header chip at button. Iwanang blangko para sundan ang tema."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Hint sa login ng LTI",
+        "description": "Isang opaque na halaga na ginagamit ng LTI service ng site na ito para makilala ang mag-aaral. Karaniwang ibinibigay ng site sa pamamagitan ng lti-launch-request event sa halip na i-save dito. Hindi kailanman password o key."
+      },
+      {
+        "title": "Hint sa mensahe ng LTI",
+        "description": "Isang opaque na halaga na ginagamit ng LTI service ng site na ito para makilala ang paglunsad na ito. Karaniwang ibinibigay ng site sa halip na i-save dito."
+      }
+    ]
+  }
+}

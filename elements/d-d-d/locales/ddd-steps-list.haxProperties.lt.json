@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Žingsnių sąrašas",
     "description": "Sunumeruoti žingsniai užduočiai atlikti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Žingsnių indikatorius",
+        "description": "Rodyti žingsnius kaip kompaktišką pavadinimų eilutę, žyminčią pažangą. Šiame išdėstyme žingsnių turinys nerodomas."
+      },
+      {
+        "title": "Dabartinis žingsnis",
+        "description": "Žingsnis, kuriame yra skaitytojas, skaičiuojant nuo 1. Ankstesni žingsniai rodomi kaip atlikti. Naudojamas žingsnių indikatoriaus."
+      }
+    ]
   }
 }

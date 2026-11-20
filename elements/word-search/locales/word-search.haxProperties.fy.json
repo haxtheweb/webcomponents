@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Wurdsykje",
+    "description": "In letterrooster mei ferstoppe wurden. Learlingen tikke de earste en lêste letter fan elk wurd oan. Oefenet it sjen hoe't in term stavere wurdt, net wat er betsjut."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Wat learlingen fine moatte, toand yn de koptekst."
+      },
+      {
+        "title": "Wurden",
+        "description": "De wurden om te ferstopjen. Spaasjes en ynterpunksje wurde út it rooster litten. Wurden dy't net passe, wurde by it bewurkjen opsomme en foar learlingen weilitten."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Roostergrutte",
+        "description": "Letters per kant, 4 oant 16. Lit leech om it langste wurd te passen (oant 12). Mear as 12 skowt op in tillefoan nei de kant."
+      },
+      {
+        "title": "Diagonale wurden",
+        "description": "Ek wurden diagonaal ferstopje. Dreger."
+      },
+      {
+        "title": "Efterstefoarske wurden",
+        "description": "Ek efterstefoaren skreaune wurden ferstopje. Dreger."
+      },
+      {
+        "title": "Aksintkleur",
+        "description": "Opsjonele kleur foar it kopteksttsjip, de keazen earste letter en de knop."
+      }
+    ]
+  }
+}

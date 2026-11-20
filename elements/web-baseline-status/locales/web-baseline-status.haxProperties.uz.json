@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Baseline holati",
+    "description": "Veb-platforma imkoniyatining Baseline brauzer qo‘llab-quvvatlash holatini ko‘rsatish."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Imkoniyat ID si",
+        "description": "Veb-imkoniyat ID si, masalan anchor-positioning. ID larni webstatus.dev da toping; ID imkoniyat sahifasi URL manzilining oxirgi qismi."
+      }
+    ]
+  }
+}

@@ -13,6 +13,14 @@
       {
         "property": "answers",
         "title": "Risposte",
+        "description": "L'ordine di e risposte definisce a sequenza ghjusta.",
+        "options": {
+          "": "Lista",
+          "cards": "Carte cù maghjine"
+        }
+      },
+      {
+        "title": "Risposte",
         "description": "L'ordine di e risposte definisce a sequenza ghjusta."
       }
     ],

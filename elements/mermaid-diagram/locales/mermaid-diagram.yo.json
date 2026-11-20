@@ -1,0 +1,21 @@
+{
+  "diagram": "Àwòrán àtòjọ",
+  "flowchart": "àtẹ ìṣàn",
+  "sequence": "ìtẹ̀léra",
+  "source": "Orísun",
+  "textAlternative": "Ọ̀rọ̀ dípò àwòrán",
+  "present": "Ṣàfihàn",
+  "exitPresent": "Jáde kúrò nínú àfihàn",
+  "loading": "Ó ń gbé àwòrán àtòjọ wá",
+  "empty": "Kò tíì sí nǹkan láti yà. Ṣàfikún orísun àwòrán àtòjọ.",
+  "error": "Àṣìṣe",
+  "parseError": "A kò lè ya àwòrán àtòjọ yìí. Ṣàyẹ̀wò orísun náà.",
+  "loadError": "A kò lè gbé ilé-ìkàwé àwòrán àtòjọ wá.",
+  "srcError": "A kò lè gbé fáìlì àwòrán àtòjọ wá.",
+  "decision": "ìpinnu",
+  "end": "òpin",
+  "goTo": "lọ sí {target}",
+  "ifGoTo": "tí {label} bá jẹ́ bẹ́ẹ̀, lọ sí {target}",
+  "describedBySource": "Àwòrán àtòjọ tí orísun rẹ̀ ṣàpèjúwe.",
+  "scrollable": "Àwòrán àtòjọ, ó ṣeé yí lọ"
+}

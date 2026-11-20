@@ -60,6 +60,8 @@
   "flagsFound": "{correct} af {total} fundið",
   "toRethink": "{count} þarf að endurskoða",
   "notEvidence": "ekki sönnun fyrir þessu flaggi",
+  "isEvidence": "rökstuðningur fyrir þessari flöggun",
+  "readingKeys": "Notaðu örvalyklana til að fara frá einu {unit} í það næsta.",
   "markAnswers": "Merkja svör",
   "doneMarking": "Lokið við að merkja svör",
   "editHint": "Breyttu textanum hér að neðan. Notaðu Merkja svör í valmynd kubbsins til að velja hvar hvert flagg á heima.",

@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Lista ta' kontroll b'bullets",
+    "description": "Lista ta' kaxxi tal-immarkar. Il-qarrejja jimmarkaw l-elementi u l-progress tagħhom jiġi mfakkar fuq l-apparat tagħhom stess."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titlu",
+        "description": "Isem il-lista. Jinqara b'leħen għoli bħala t-tikketta tal-grupp ta' kaxxi tal-immarkar."
+      },
+      {
+        "title": "Elementi",
+        "description": "Kull element huwa kaxxa tal-immarkar. Elementi mmarkati jew diżattivati ma jistgħux jinbidlu mill-qarrejja."
+      },
+      {
+        "title": "Numerata",
+        "description": "Uri lista numerata minflok waħda b'bullets."
+      },
+      {
+        "title": "Status",
+        "description": "Jibdel il-kuluri biex jaqblu ma' stop-note.",
+        "options": {
+          "info": "Avviż",
+          "success": "Konferma",
+          "warning": "Twissija",
+          "stop": "Waqfa"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "ID tal-ħażna",
+        "description": "ID uniku użat biex jiftakar il-progress tal-qarrej fuq l-apparat tiegħu. Iġġenerat awtomatikament; ibdlu biss biex taqsam il-progress bejn listi jew biex tibda mill-ġdid."
+      }
+    ]
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Hero",
+    "description": "Un'immagine, GIF o video di grandi dimensioni con un titolo e del testo sovrapposti, da collocare ovunque in una pagina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Immagine o video",
+        "description": "Un file JPG, PNG, WebP, GIF, MP4 o WebM."
+      },
+      {
+        "title": "Testo alternativo",
+        "description": "Descrivi l'immagine. Lascia vuoto se è solo decorativa."
+      },
+      {
+        "title": "Titolo",
+        "description": "Titolo mostrato sopra il contenuto multimediale. Lascia vuoto per nessuno."
+      },
+      {
+        "title": "Testo",
+        "description": "Testo mostrato sotto il titolo, sopra il contenuto multimediale."
+      },
+      {
+        "title": "Larghezza piena",
+        "description": "Si estende da bordo a bordo invece di stare nella colonna dei contenuti."
+      },
+      {
+        "title": "Altezza",
+        "options": {
+          "tall": "Alto",
+          "medium": "Medio",
+          "short": "Basso"
+        }
+      },
+      {
+        "title": "Inquadratura",
+        "description": "Come si posiziona la foto a ogni dimensione dello schermo"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Sfumatura",
+        "description": "Colore sovrapposto al contenuto multimediale. Con un titolo o un testo ce n'è sempre uno, così il testo resta leggibile.",
+        "options": {
+          "blue": "Blu",
+          "bottom": "Scuro in basso",
+          "none": "Nessuno"
+        }
+      },
+      {
+        "title": "Posizione del testo",
+        "options": {
+          "bottom": "In basso",
+          "middle": "Al centro"
+        }
+      },
+      {
+        "title": "Punto focale orizzontale",
+        "description": "Parte dell'immagine che resta visibile quando viene ritagliata, da 0 (sinistra) a 100 (destra)."
+      },
+      {
+        "title": "Punto focale verticale",
+        "description": "Parte dell'immagine che resta visibile quando viene ritagliata, da 0 (alto) a 100 (basso)."
+      }
+    ]
+  }
+}

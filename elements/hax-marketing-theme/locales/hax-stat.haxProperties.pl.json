@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Statystyka",
+    "description": "Liczba, która odlicza w górę, z etykietą i linkiem do jej historii"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Liczba, do której odliczać"
+      },
+      {
+        "title": "Przed liczbą"
+      },
+      {
+        "title": "Po liczbie"
+      },
+      {
+        "title": "Słowa zamiast liczby"
+      },
+      {
+        "title": "Co liczy"
+      },
+      {
+        "title": "Adres historii na hax.cloud (stories/ee450a19)"
+      }
+    ]
+  }
+}

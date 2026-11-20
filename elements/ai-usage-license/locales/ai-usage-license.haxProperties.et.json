@@ -13,7 +13,10 @@
       {
         "property": "modifier",
         "title": "Meediamuutja",
-        "description": "Valikuline meediavaldkonna muutja. Määrab meediatüübi, millele see litsents kehtib."
+        "description": "Valikuline meediavaldkonna muutja. Määrab meediatüübi, millele see litsents kehtib.",
+        "options": {
+          "": "Muutjata"
+        }
       },
       {
         "property": "uri",

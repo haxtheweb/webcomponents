@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Aktýor",
+    "description": "Bir tomaşaçy topary, söz we düwme bilen bir gahryman tarapyndan oýnalýar"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Bu kim"
+      },
+      {
+        "title": "Gahrymanyň görnüşi"
+      },
+      {
+        "title": "Gahrymanyň seed-i"
+      },
+      {
+        "title": "Sahna reňki (DDD ady)"
+      },
+      {
+        "title": "Düwmäniň nirä alyp barýandygy"
+      },
+      {
+        "title": "Düwmäniň teksti"
+      }
+    ]
+  }
+}

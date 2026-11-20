@@ -8,5 +8,9 @@
   "theme": "Tema",
   "palette": "Palet",
   "cancel": "Kanselleer",
-  "openAppearanceSettings": "Open voorkomsinstellings"
+  "openAppearanceSettings": "Open voorkomsinstellings",
+  "designSystem": "Ontwerpstelsel",
+  "designSystemDefault": "DDD (verstek)",
+  "designSystemThemeDefault": "{name} (tema-verstek)",
+  "designSystemHelp": "Kleur, lettertipe, hoeke en digtheid. Die tema besluit steeds die uitleg."
 }

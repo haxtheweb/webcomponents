@@ -1,0 +1,16 @@
+{
+  "theme": "Tema",
+  "designSystem": "Sistema di design",
+  "dddDefault": "DDD (predefinito)",
+  "designSystemHelp": "Colore, tipografia, angoli e focus. Il tema mantiene il layout.",
+  "designSystemFixed": "Questo tema mantiene il proprio design system.",
+  "palette": "Tavolozza",
+  "themeDefault": "Predefinito del tema",
+  "paletteNumber": "Tavolozza {n}",
+  "siteTheme": "{name} (tema di questo sito)",
+  "restyle": "Cambia lo stile di questo sito",
+  "close": "Chiudi",
+  "reset": "Torna all'aspetto originale di questo sito",
+  "random": "Sorprendimi",
+  "about": "Qui vedi alcuni degli stili integrati in HAX. Le pagine non cambiano mai: la struttura vive nel JSON Outline Schema e ogni blocco è un web component standard, quindi il design si può cambiare liberamente."
+}

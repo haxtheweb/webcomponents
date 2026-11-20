@@ -3,5 +3,7 @@
   "status_stop": "Sayay",
   "status_warning": "Yuyachiy",
   "status_success": "Atipay",
-  "status_info": "Yuyay"
+  "status_info": "Yuyay",
+  "status_tip": "¿Yacharqankichu?",
+  "status_new": "Ima musuq"
 }

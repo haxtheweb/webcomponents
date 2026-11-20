@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "Viết bằng ký hiệu toán học LaTeX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nền hình vẽ",
+        "description": "Nền phía sau hình vẽ. Tự động chỉ thêm nền khi hình vẽ khó nhìn trên trang, ví dụ nét tối trong chế độ tối.",
+        "options": {
+          "auto": "Tự động",
+          "light": "Sáng",
+          "dark": "Tối",
+          "none": "Không có"
+        }
+      }
+    ]
   }
 }

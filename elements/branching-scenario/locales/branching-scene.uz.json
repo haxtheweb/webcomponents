@@ -1,0 +1,14 @@
+{
+  "scene": "Sahna",
+  "ending": "Yakun",
+  "goodEnding": "Yaxshi yakun",
+  "mixedEnding": "Aralash yakun",
+  "poorEnding": "Yomon yakun",
+  "scoreOf": "Ball: {max} dan {score}",
+  "scoreOnly": "Ball: {score}",
+  "startScene": "Boshlash",
+  "sceneIdLabel": "Sahna ID si",
+  "needsId": "Tanlovlar shu sahnaga bog‘lanishi uchun sahna ID sini qo‘shing.",
+  "orphan": "Hech bir tanlov bu sahnaga bog‘lanmagan.",
+  "deadLinks": "Bu havolalar mavjud bo‘lmagan sahnaga ishora qiladi:"
+}

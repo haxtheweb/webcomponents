@@ -8,5 +8,9 @@
   "theme": "Ñemohenda",
   "palette": "Sa'y ñembyaty",
   "cancel": "Heja",
-  "openAppearanceSettings": "Embojuruja Jehechapy Ñemboheko"
+  "openAppearanceSettings": "Embojuruja Jehechapy Ñemboheko",
+  "designSystem": "Ñembosako'i sistema",
+  "designSystemDefault": "DDD (ojeiporavóva ypy)",
+  "designSystemThemeDefault": "{name} (téma ypy)",
+  "designSystemHelp": "Sa'y, tai reko, jyke ha densidad. Téma odesidi gueteri ñemohenda."
 }

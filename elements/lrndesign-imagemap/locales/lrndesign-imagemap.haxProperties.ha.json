@@ -14,6 +14,10 @@
         "property": "hotspotDetails",
         "title": "Bayanan wurare masu mu'amala",
         "description": "Wurare masu mu'amala a kan taswirar hoton."
+      },
+      {
+        "title": "Bayanan wurare masu muhimmanci",
+        "description": "Wurare masu muhimmanci masu mu'amala a kan taswirar hoto."
       }
     ]
   }

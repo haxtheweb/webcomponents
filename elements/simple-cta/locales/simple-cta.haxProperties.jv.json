@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Dhelikake lambang",
         "description": "Dhelikake lambang sing dienggo kanggo aksen teks"
+      },
+      {
+        "title": "Tampilan",
+        "description": "Sepira kuwate penekanan tombol.",
+        "options": {
+          "": "Diisi",
+          "tonal": "Tonal",
+          "outlined": "Garis pinggir",
+          "plain": "Polos"
+        }
+      },
+      {
+        "title": "Ukuran",
+        "description": "Ukuran tombol.",
+        "options": {
+          "s": "Cilik",
+          "": "Sedheng",
+          "l": "Gedhe"
+        }
       }
     ],
     "advanced": [

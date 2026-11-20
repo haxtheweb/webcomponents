@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Statistiek",
+    "description": "Een getal dat optelt, met een label en een link naar het verhaal erachter"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Getal om naar op te tellen"
+      },
+      {
+        "title": "Voor het getal"
+      },
+      {
+        "title": "Na het getal"
+      },
+      {
+        "title": "Woorden in plaats van een getal"
+      },
+      {
+        "title": "Wat het telt"
+      },
+      {
+        "title": "Verhaaladres op hax.cloud (stories/ee450a19)"
+      }
+    ]
+  }
+}

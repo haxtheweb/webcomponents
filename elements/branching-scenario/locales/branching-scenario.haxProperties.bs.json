@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Razgranati scenarij",
+    "description": "Priča u kojoj svaki izbor vodi do druge scene i završetka. Učenici se mogu vratiti i isprobati druge puteve; dostignuti završetak određuje rezultat."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Naslov",
+        "description": "Naziv scenarija, prikazan u zaglavlju."
+      },
+      {
+        "title": "Početna scena",
+        "description": "Id scene na kojoj učenici počinju. Ostavite prazno za početak na prvoj sceni."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Akcentna boja",
+        "description": "Opcionalna boja za oznaku u zaglavlju, dugmad i rub izbora."
+      }
+    ]
+  }
+}

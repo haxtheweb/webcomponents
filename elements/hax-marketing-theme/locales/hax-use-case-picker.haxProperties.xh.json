@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Isikhethi senjongo",
+    "description": "Khetha ukuba isayithi yeyantoni uze ufumane ikhonkco elivula i-HAX kwibhrawuza ngaloo sayithi yokuqala, kunye nomyalelo we-CLI ohambelanayo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Idilesi ye-HAX kwibhrawuza",
+        "description": "Apho ikhonkco livuleka khona; lifumana ?skeleton= kunye ne-&name= ezongeziweyo"
+      },
+      {
+        "title": "Iisayithi zokuqala ezishiywa ngaphandle",
+        "description": "Amagama oomatshini, ahlulwe ngeekoma"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Uluhlu lweesayithi zokuqala",
+        "description": "Idilesi yoluhlu lwamathambo (ifomathi efundwa yi-app-hax)"
+      }
+    ]
+  }
+}

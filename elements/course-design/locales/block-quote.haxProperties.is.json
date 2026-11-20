@@ -20,6 +20,12 @@
         "title": "Mynd",
         "description": "Mynd sem birtist með tilvitnuninni."
       }
+    ],
+    "advanced": [
+      {
+        "title": "Innrammað",
+        "description": "Teikna tilvitnunina á sameiginlega kubbarammann, með tákni og merki fyrir ofan, svo hún passi við athugasemdir og leiðbeiningaspjöld."
+      }
     ]
   }
 }

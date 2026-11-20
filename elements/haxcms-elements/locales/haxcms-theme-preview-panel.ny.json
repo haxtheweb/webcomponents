@@ -8,5 +8,9 @@
   "theme": "Mawonekedwe",
   "palette": "Mitundu",
   "cancel": "Letsani",
-  "openAppearanceSettings": "Tsegulani Zokonda za Maonekedwe"
+  "openAppearanceSettings": "Tsegulani Zokonda za Maonekedwe",
+  "designSystem": "Dongosolo la kapangidwe",
+  "designSystemDefault": "DDD (yokhazikika)",
+  "designSystemThemeDefault": "{name} (yokhazikika ya mutu)",
+  "designSystemHelp": "Mtundu, zilembo, makona ndi kuchuluka. Mutu wa mawonekedwe ukusankhabe kapangidwe."
 }

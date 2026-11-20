@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Nota tal-ġenb",
+    "description": "Nota mifruda mill-kontenut ta' madwarha, b'ikona u tikketta fakultattivi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tikketta",
+        "description": "It-tikketta tan-nota tal-ġenb."
+      },
+      {
+        "title": "Ikona",
+        "description": "L-ikona tan-nota tal-ġenb."
+      },
+      {
+        "title": "Kontenut",
+        "description": "Kontenut tan-nota tal-ġenb."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Kulur",
+        "description": "Il-kulur li bih tiġi mlewna n-nota tal-ġenb."
+      }
+    ]
+  }
+}

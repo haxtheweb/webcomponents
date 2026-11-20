@@ -8,5 +8,9 @@
   "theme": "Тема",
   "palette": "Палета",
   "cancel": "Откажи",
-  "openAppearanceSettings": "Отвори ги поставките за изглед"
+  "openAppearanceSettings": "Отвори ги поставките за изглед",
+  "designSystem": "Дизајн систем",
+  "designSystemDefault": "DDD (стандардно)",
+  "designSystemThemeDefault": "{name} (стандардно за темата)",
+  "designSystemHelp": "Боја, фонт, агли и густина. Темата сè уште одлучува за распоредот."
 }

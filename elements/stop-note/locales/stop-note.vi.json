@@ -3,5 +3,7 @@
   "status_stop": "Dừng",
   "status_warning": "Cảnh báo",
   "status_success": "Thành công",
-  "status_info": "Ghi chú"
+  "status_info": "Ghi chú",
+  "status_tip": "Bạn có biết?",
+  "status_new": "Có gì mới"
 }

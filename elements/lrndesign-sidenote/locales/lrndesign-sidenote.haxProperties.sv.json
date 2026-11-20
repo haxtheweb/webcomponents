@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Sidoanteckning",
+    "description": "En anteckning som avskiljs från innehållet runt omkring, med valfri ikon och etikett."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etikett",
+        "description": "Sidoanteckningens etikett."
+      },
+      {
+        "title": "Ikon",
+        "description": "Sidoanteckningens ikon."
+      },
+      {
+        "title": "Innehåll",
+        "description": "Sidoanteckningens innehåll."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Färg",
+        "description": "Färgen som sidoanteckningen tonas med."
+      }
+    ]
+  }
+}

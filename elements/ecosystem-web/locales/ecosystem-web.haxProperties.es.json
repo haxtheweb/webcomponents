@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Red del ecosistema",
+    "description": "Una red interactiva de cómo se conectan las partes de un proyecto, con subredes y recorridos paso a paso."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Datos de la red",
+        "description": "URL del paquete JSON de redes (generado en PRAW, ecosystem-webs.json)."
+      },
+      {
+        "title": "Red",
+        "description": "Id de la red que se muestra primero; main es la red del ecosistema."
+      },
+      {
+        "title": "Casilla seleccionada",
+        "description": "Id de una casilla que se seleccionará al abrir la red."
+      },
+      {
+        "title": "Recorrido",
+        "description": "Id de un recorrido con el que empezar."
+      },
+      {
+        "title": "Empezar en vista de lista",
+        "description": "Mostrar la red como listas anidadas en lugar del dibujo."
+      },
+      {
+        "title": "Solo el dibujo",
+        "description": "Mostrar solo el dibujo, como figura: sin cabecera, recorridos, detalles ni barra de pasos."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Interpretar por",
+        "description": "Empezar con todas las casillas interpretadas según una medida.",
+        "options": {
+          "": "Solo conexiones",
+          "fresh": "Actualidad",
+          "bus": "Factor bus",
+          "impact": "Impacto",
+          "evidence": "Evidencia",
+          "parity": "Paridad"
+        }
+      }
+    ]
+  }
+}

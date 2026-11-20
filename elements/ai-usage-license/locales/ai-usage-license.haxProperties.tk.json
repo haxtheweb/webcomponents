@@ -13,7 +13,10 @@
       {
         "property": "modifier",
         "title": "Media modifikatory",
-        "description": "Hökmany däl media ugry modifikatory. Bu ygtyýarnamanyň degişli media görnüşini kesgitleýär."
+        "description": "Hökmany däl media ugry modifikatory. Bu ygtyýarnamanyň degişli media görnüşini kesgitleýär.",
+        "options": {
+          "": "Üýtgediji ýok"
+        }
       },
       {
         "property": "uri",

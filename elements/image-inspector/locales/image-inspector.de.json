@@ -3,5 +3,6 @@
   "zoomOut": "Verkleinern",
   "rotateRight": "Nach rechts drehen",
   "mirrorImage": "Bild spiegeln",
-  "openInNewWindow": "In neuem Fenster öffnen"
+  "openInNewWindow": "In neuem Fenster öffnen",
+  "imageTools": "Bildwerkzeuge"
 }

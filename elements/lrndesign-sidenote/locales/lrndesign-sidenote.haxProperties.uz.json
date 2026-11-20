@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Yon eslatma",
+    "description": "Atrofdagi kontentdan ajratilgan, ixtiyoriy belgi va yorliqli eslatma."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Yorliq",
+        "description": "Yon eslatma yorlig‘i."
+      },
+      {
+        "title": "Belgi",
+        "description": "Yon eslatma belgisi."
+      },
+      {
+        "title": "Kontent",
+        "description": "Yon eslatma kontenti."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Rang",
+        "description": "Yon eslatma bo‘yaladigan rang."
+      }
+    ]
+  }
+}

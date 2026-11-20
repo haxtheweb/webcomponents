@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Ta'ãnga hapykuegua."
+        "description": "Ta'ãnga hapykuegua.",
+        "title": "Ta'ãnga"
       },
       {
         "property": "caption",
-        "description": "Moñe'ẽrã moakãha."
+        "description": "Moñe'ẽrã moakãha.",
+        "title": "Ta'ãnga rehegua"
       }
     ]
   }

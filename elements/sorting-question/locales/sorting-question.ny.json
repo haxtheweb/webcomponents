@@ -40,5 +40,7 @@
   "hideDirections": "Bisani malangizo",
   "showRelatedContent": "Onetsani zokhudzana",
   "hideRelatedContent": "Bisani zokhudzana",
-  "notAttempted": "Sizinayesedwe"
+  "notAttempted": "Sizinayesedwe",
+  "cardsDirections": "Ikani makadi motsatira bwino ndi mabatani osunthira kale ndi pambuyo pa khadi lililonse, kapena muwakoke ndi mbewa. Mukakhulupirira kuti ali motsatira bwino, yesani yankho lanu posankha {checkAnswer}.",
+  "movedToPosition": "{item} yasunthidwa ku malo {position} mwa {total}"
 }

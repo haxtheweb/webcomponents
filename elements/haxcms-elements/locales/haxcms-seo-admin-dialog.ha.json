@@ -6,6 +6,8 @@
   "faviconDescription": "Hoton shafin burauza / ana amfani da shi a wayoyi a matsayin ƙaramin tambarin gidan yanar gizo",
   "domain": "Yanki",
   "domainDescription": "Yankin wannan gidan yanar gizo",
+  "sameAs": "Sauran bayanan martaba na wannan shafi",
+  "sameAsDescription": "Mahaɗi ɗaya a kowane layi zuwa bayanan martaba na wannan shafi ko ƙungiya a wasu wurare (GitHub, LinkedIn, YouTube, Mastodon). Injunan bincike suna amfani da su don haɗa waɗannan bayanan martaba da wannan shafi.",
   "language": "Harshe",
   "languageDescription": "Harshen wannan shafin. Nemi da suna ko lamba, ko shigar da wata lamba kamar fr-CA.",
   "googleAnalyticsId": "ID na Google Analytics",

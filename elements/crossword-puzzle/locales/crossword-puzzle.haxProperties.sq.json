@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Fjalëkryq",
+    "description": "Një fjalëkryq i bërë nga një listë fjalësh dhe përkufizimesh. Rrjeta gjenerohet për ty; nxënësit shkruajnë fjalët dhe i kontrollojnë."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titulli",
+        "description": "Titulli ose pyetja e shfaqur mbi fjalëkryqin."
+      },
+      {
+        "title": "Fjalët",
+        "description": "Çdo fjalë dhe përkufizimi i saj. Rrjeta gjenerohet nga kjo listë: fjala më e gjatë vendoset e para dhe të tjerat e kryqëzojnë në shkronjat e përbashkëta."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Përpjekjet",
+        "description": "Sa herë mund të kontrollojë një nxënës. 0 do të thotë pa kufi."
+      },
+      {
+        "title": "Ngjyra theksuese",
+        "description": "Ngjyrë opsionale për etiketën e kokës, fjalën aktive dhe butonat e veprimeve."
+      },
+      {
+        "title": "I palosshëm",
+        "description": "Shfaqe këtë fjalëkryq si rresht që hapet dhe mbyllet. Hapja e njërit mbyll pyetjet e tjera të palosshme pranë tij."
+      },
+      {
+        "title": "Fillo i palosur",
+        "description": "Kur është i palosshëm, fillo si rresht i mbyllur që shfaq vetëm titullin dhe statusin."
+      },
+      {
+        "title": "Formati i vlerësimit",
+        "description": "OER Schema: formati i vlerësimit për këtë test (p.sh. pikë, shkronjë, përqindje, përfundim)."
+      },
+      {
+        "title": "Objektivi mësimor",
+        "description": "OER Schema: objektivi mësimor i lidhur me këtë test."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Emri i kuizit",
+        "description": "Emri i kuizit i përdorur për identifikimin xAPI në sistemet e analitikës."
+      },
+      {
+        "title": "Kursi",
+        "description": "OER Schema: kursi për të cilin është menduar ky test."
+      }
+    ]
+  }
+}

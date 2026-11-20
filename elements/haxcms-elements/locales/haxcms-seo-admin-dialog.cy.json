@@ -6,6 +6,8 @@
   "faviconDescription": "Delwedd tab y porwr / a ddefnyddir ar ffonau fel logo bach y wefan",
   "domain": "Parth",
   "domainDescription": "Parth y wefan hon",
+  "sameAs": "Proffiliau eraill y wefan hon",
+  "sameAsDescription": "Un ddolen fesul llinell i broffiliau'r wefan neu'r sefydliad hwn mewn mannau eraill (GitHub, LinkedIn, YouTube, Mastodon). Mae peiriannau chwilio'n eu defnyddio i gysylltu'r proffiliau hynny â'r wefan hon.",
   "language": "Iaith",
   "languageDescription": "Iaith y wefan hon. Chwiliwch yn ôl enw neu god, neu rhowch god arall fel fr-CA.",
   "googleAnalyticsId": "ID Google Analytics",

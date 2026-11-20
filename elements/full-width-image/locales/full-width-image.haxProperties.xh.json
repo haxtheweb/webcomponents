@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Umfanekiso ongasemva."
+        "description": "Umfanekiso ongasemva.",
+        "title": "Umfanekiso"
       },
       {
         "property": "caption",
-        "description": "Isihloko sombhalo."
+        "description": "Isihloko sombhalo.",
+        "title": "Ingcaciso"
       }
     ]
   }

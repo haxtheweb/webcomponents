@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Crios scaoilte íomhá",
+    "description": "Cuireann foghlaimeoirí lipéid ar chriosanna leagtha thar íomhá, ansin seiceálann siad a bhfreagra."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Íomhá",
+        "description": "An íomhá a gcuireann foghlaimeoirí lipéid uirthi."
+      },
+      {
+        "title": "Téacs malartach",
+        "description": "Déanann sé cur síos ar an íomhá do dhaoine nach féidir leo í a fheiceáil. Ná sceith cá dtéann na lipéid."
+      },
+      {
+        "title": "Teideal na híomhá",
+        "description": "Teideal gearr infheicthe don íomhá, taispeánta os a cionn."
+      },
+      {
+        "title": "Ceist",
+        "description": "An rud a iarrtar ar fhoghlaimeoirí a dhéanamh leis na lipéid."
+      },
+      {
+        "title": "Lipéid agus criosanna",
+        "description": "Is lipéad gach mír is féidir le foghlaimeoirí a chur. Tabhair ainm crios do lipéad chun a chrios a chur ar an íomhá; is lipéad breise nach mbaineann áit ar bith é lipéad gan ainm crios. Is céatadáin den íomhá iad uimhreacha na gcriosanna."
+      },
+      {
+        "title": "Fotheideal",
+        "description": "Fotheideal roghnach a thaispeántar faoin íomhá."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Iarrachtaí",
+        "description": "Cé mhéad uair is féidir le foghlaimeoir seiceáil. Ciallaíonn 0 gan teorainn."
+      },
+      {
+        "title": "Suaith na lipéid",
+        "description": "Taispeáin na lipéid in ord difriúil ar gach cuairt."
+      },
+      {
+        "title": "In-laghdaithe",
+        "description": "Taispeáin an cheist seo mar ró a osclaíonn agus a dhúnann. Dúnann oscailt ceann amháin na ceisteanna in-laghdaithe eile in aice leis."
+      },
+      {
+        "title": "Tosaigh laghdaithe",
+        "description": "Nuair atá sé in-laghdaithe, tosaigh mar ró dúnta nach dtaispeánann ach an cheist agus a stádas."
+      },
+      {
+        "title": "Formáid ghrádaithe",
+        "description": "OER Schema: formáid ghrádaithe don mheasúnú seo (m.sh. pointí, litir, céatadán, críochnú)."
+      },
+      {
+        "title": "Cuspóir foghlama",
+        "description": "OER Schema: cuspóir foghlama a bhaineann leis an measúnú seo."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Ainm an tráth na gceist",
+        "description": "Ainm an tráth na gceist a úsáidtear le haghaidh aitheantais xAPI i gcórais anailísíochta."
+      },
+      {
+        "title": "Cúrsa",
+        "description": "OER Schema: an cúrsa a bhfuil an measúnú seo beartaithe dó."
+      }
+    ]
+  }
+}

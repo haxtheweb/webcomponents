@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Hotspots fannen",
+    "description": "D'Léierender fannen déi richteg Plazen op engem Bild, andeems se klicken, tippen oder e Tastatur-Fadekräiz réckelen. Dat bewäert Géigestéck zu enger Image-Map."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Bild",
+        "description": "D'Bild, an deem d'Léierender sichen."
+      },
+      {
+        "title": "Alternativen Text",
+        "description": "Beschreift d'Bild fir Leit, déi et net gesi kënnen. Et gëtt ni als Titel gewisen."
+      },
+      {
+        "title": "Titel",
+        "description": "E kuerze sichtbaren Titel iwwer dem Bild."
+      },
+      {
+        "title": "Fro",
+        "description": "Wat d'Léierender am Bild solle fannen."
+      },
+      {
+        "title": "Äntwerten",
+        "description": "All Äntwert ass en Oval mat engem Numm um Bild. Positioun a Gréisst sinn a Prozent vum Bild, vum ieweschte lénksen Eck aus gemooss. Während der Beaarbechtung ass all Äntwert um Bild ëmrannt."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Versich",
+        "description": "Wéi oft e Léierende probéiere kann. 0 heescht onbegrenzt."
+      },
+      {
+        "title": "Erlaabt Feeler",
+        "description": "No wéi vill Feeler e Versuch eriwwer ass. 0 heescht onbegrenzt, an d'Léierender kréien e Knäppchen „Ofschléissen“."
+      },
+      {
+        "title": "Zouklappbar",
+        "description": "Dës Fro als Zeil weisen, déi op- an zougeet. Wann eng opgeet, ginn déi aner zouklappbar Froen dernieft zou."
+      },
+      {
+        "title": "Zougeklappt ufänken",
+        "description": "Wann zouklappbar, als zou Zeil ufänken, déi just d'Fro an hire Status weist."
+      },
+      {
+        "title": "Bewäertungsformat",
+        "description": "OER Schema: Bewäertungsformat fir dës Evaluatioun (z. B. Punkten, Buschtaf, Prozent, Ofschloss)."
+      },
+      {
+        "title": "Léierzil",
+        "description": "OER Schema: Léierzil, dat mat dëser Evaluatioun verbonnen ass."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Numm vum Quiz",
+        "description": "Quiznumm, deen an xAPI-gesteierten Ëmfelder fir d'Identifikatioun vun dësem Element weidergeleet gëtt"
+      },
+      {
+        "title": "Cours",
+        "description": "OER Schema: Cours, fir deen dës Evaluatioun geduecht ass."
+      }
+    ]
+  }
+}

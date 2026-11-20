@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Εικόνα φόντου."
+        "description": "Εικόνα φόντου.",
+        "title": "Εικόνα"
       },
       {
         "property": "caption",
-        "description": "Επικεφαλίδα κειμένου."
+        "description": "Επικεφαλίδα κειμένου.",
+        "title": "Λεζάντα"
       }
     ]
   }

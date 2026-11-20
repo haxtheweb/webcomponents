@@ -13,7 +13,10 @@
       {
         "property": "modifier",
         "title": "Medijos modifikatorius",
-        "description": "Pasirenkamas medijos srities modifikatorius. Nurodo, kokiai medijai taikoma ši licencija."
+        "description": "Pasirenkamas medijos srities modifikatorius. Nurodo, kokiai medijai taikoma ši licencija.",
+        "options": {
+          "": "Be modifikatoriaus"
+        }
       },
       {
         "property": "uri",

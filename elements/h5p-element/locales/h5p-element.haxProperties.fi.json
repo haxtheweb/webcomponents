@@ -4,7 +4,12 @@
     "description": "Toistaa H5P-vuorovaikutteista sisältöä ladatusta .h5p-tiedostosta ilman H5P-palvelinta"
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "title": "H5P-tiedosto",
+        "description": "Lataa tai linkitä .h5p-tiedosto. Se puretaan selaimessa; H5P-palvelinta ei tarvita."
+      }
+    ],
     "advanced": [
       {
         "title": "Vanha iframe-upotuskoodi",

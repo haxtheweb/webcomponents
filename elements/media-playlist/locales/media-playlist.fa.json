@@ -5,5 +5,7 @@
   "editModeLabel": "حالت ویرایش فهرست پخش رسانه",
   "position": "{current} از {total}",
   "previousItem": "مورد قبلی",
-  "nextItem": "مورد بعدی"
+  "nextItem": "مورد بعدی",
+  "fullScreen": "تمام‌صفحه",
+  "exitFullScreen": "خروج از تمام‌صفحه"
 }

@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Chosankhira cholinga",
+    "description": "Sankhani cholinga cha tsamba ndipo pezani ulalo womwe umatsegula HAX mu msakatuli ndi tsamba loyambira limenelo, pamodzi ndi lamulo la CLI lofanana."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Adiresi ya HAX mu msakatuli",
+        "description": "Komwe ulalo umatsegukira; umawonjezeredwa ?skeleton= ndi &name="
+      },
+      {
+        "title": "Masamba oyambira oti asiyidwe",
+        "description": "Mayina a makina, olekanitsidwa ndi koma"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Mndandanda wa masamba oyambira",
+        "description": "Adiresi ya mndandanda wa skeleton (mtundu womwe app-hax imawerenga)"
+      }
+    ]
+  }
+}

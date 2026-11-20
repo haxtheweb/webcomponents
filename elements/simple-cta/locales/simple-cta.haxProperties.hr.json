@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Sakrij ikonu",
         "description": "Sakrij ikonu koja naglašava tekst"
+      },
+      {
+        "title": "Izgled",
+        "description": "Koliko je gumb istaknut.",
+        "options": {
+          "": "Ispunjeno",
+          "tonal": "Tonsko",
+          "outlined": "Obrubljeno",
+          "plain": "Obično"
+        }
+      },
+      {
+        "title": "Veličina",
+        "description": "Veličina gumba.",
+        "options": {
+          "s": "Malo",
+          "": "Srednje",
+          "l": "Veliko"
+        }
       }
     ],
     "advanced": [

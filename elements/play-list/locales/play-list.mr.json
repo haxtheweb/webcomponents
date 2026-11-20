@@ -9,5 +9,7 @@
   "slidePages": "स्लाइड पाने",
   "goToSlide": "स्लाइड {number} वर जा",
   "slides": "स्लाइड्स",
-  "position": "{number}/{total}"
+  "position": "{number}/{total}",
+  "fullScreen": "पूर्ण स्क्रीन",
+  "exitFullScreen": "पूर्ण स्क्रीनमधून बाहेर पडा"
 }

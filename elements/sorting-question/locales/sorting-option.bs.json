@@ -2,5 +2,9 @@
   "answerInCorrectOrder": "Odgovor je u ispravnom redoslijedu",
   "answerInIncorrectOrder": "Odgovor je u neispravnom redoslijedu",
   "moveOptionUp": "Odaberite za pomjeranje opcije gore u redoslijedu",
-  "moveOptionDown": "Odaberite za pomjeranje opcije dolje u redoslijedu"
+  "moveOptionDown": "Odaberite za pomjeranje opcije dolje u redoslijedu",
+  "moveEarlier": "Pomjeri ranije",
+  "moveLater": "Pomjeri kasnije",
+  "correct": "Tačno",
+  "incorrect": "Netačno"
 }

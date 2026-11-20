@@ -2,5 +2,9 @@
   "toggleAnimation": "اينيميشن آن/آف ڪريو",
   "info": "معلومات",
   "image": "تصوير",
-  "animatedGif": "متحرڪ GIF"
+  "animatedGif": "متحرڪ GIF",
+  "playAnimation": "اينيميشن هلايو",
+  "pauseAnimation": "اينيميشن روڪيو",
+  "showDescription": "وضاحت ڏيکاريو",
+  "hideDescription": "وضاحت لڪايو"
 }

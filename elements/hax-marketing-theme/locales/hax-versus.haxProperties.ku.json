@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Li hember",
+    "description": "Peyvên li kêleka bişkokeke rû bi rû bi du karakteran"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sernav"
+      },
+      {
+        "title": "Bişkok diçe ku derê"
+      },
+      {
+        "title": "Nivîsa bişkokê"
+      },
+      {
+        "title": "Tova karakterê çep"
+      },
+      {
+        "title": "Tova karakterê rast"
+      }
+    ]
+  }
+}

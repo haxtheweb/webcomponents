@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Sopa de lletres",
+    "description": "Una graella de lletres amb paraules amagades. Els alumnes toquen la primera i l'última lletra de cada paraula. Practica reconèixer com s'escriu un terme, no què vol dir."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Títol",
+        "description": "Què se'ls demana als alumnes que trobin, que es mostra a la capçalera."
+      },
+      {
+        "title": "Paraules",
+        "description": "Les paraules que s'amagaran. Els espais i la puntuació es deixen fora de la graella. Les paraules que no hi caben es llisten mentre edites i es deixen fora per als alumnes."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Mida de la graella",
+        "description": "Lletres per costat, de 4 a 16. Deixa-ho buit per ajustar-la a la paraula més llarga (fins a 12). Més de 12 es desplaça lateralment en un mòbil."
+      },
+      {
+        "title": "Paraules en diagonal",
+        "description": "Amaga també paraules en diagonal. Més difícil."
+      },
+      {
+        "title": "Paraules al revés",
+        "description": "Amaga també paraules escrites al revés. Més difícil."
+      },
+      {
+        "title": "Color d'èmfasi",
+        "description": "Color opcional per a l'etiqueta de la capçalera, la primera lletra triada i el botó."
+      }
+    ]
+  }
+}

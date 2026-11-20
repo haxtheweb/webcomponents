@@ -1,0 +1,14 @@
+{
+  "scene": "Scena",
+  "ending": "Pabaiga",
+  "goodEnding": "Gera pabaiga",
+  "mixedEnding": "Mišri pabaiga",
+  "poorEnding": "Prasta pabaiga",
+  "scoreOf": "Rezultatas {score} iš {max}",
+  "scoreOnly": "Rezultatas {score}",
+  "startScene": "Pradžia",
+  "sceneIdLabel": "Scenos ID",
+  "needsId": "Pridėkite scenos ID, kad pasirinkimai galėtų vesti į šią sceną.",
+  "orphan": "Joks pasirinkimas neveda į šią sceną.",
+  "deadLinks": "Šios nuorodos veda į neegzistuojančią sceną:"
+}

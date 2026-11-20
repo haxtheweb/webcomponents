@@ -2,5 +2,9 @@
   "toggleAnimation": "ਐਨੀਮੇਸ਼ਨ ਚਾਲੂ/ਬੰਦ ਕਰੋ",
   "info": "ਜਾਣਕਾਰੀ",
   "image": "ਚਿੱਤਰ",
-  "animatedGif": "ਐਨੀਮੇਟਿਡ GIF"
+  "animatedGif": "ਐਨੀਮੇਟਿਡ GIF",
+  "playAnimation": "ਐਨੀਮੇਸ਼ਨ ਚਲਾਓ",
+  "pauseAnimation": "ਐਨੀਮੇਸ਼ਨ ਰੋਕੋ",
+  "showDescription": "ਵਰਣਨ ਦਿਖਾਓ",
+  "hideDescription": "ਵਰਣਨ ਲੁਕਾਓ"
 }

@@ -3,5 +3,7 @@
   "status_stop": "Tigil",
   "status_warning": "Babala",
   "status_success": "Tagumpay",
-  "status_info": "Tala"
+  "status_info": "Tala",
+  "status_tip": "Alam mo ba?",
+  "status_new": "Ano ang bago"
 }

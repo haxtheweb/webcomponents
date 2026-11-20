@@ -1,4 +1,6 @@
 {
   "saveAll": "Alles bewarje",
-  "saveTheFollowing": "It folgjende bewarje: {list}?"
+  "saveTheFollowing": "It folgjende bewarje: {list}?",
+  "save": "Bewarje",
+  "cancel": "Annulearje"
 }

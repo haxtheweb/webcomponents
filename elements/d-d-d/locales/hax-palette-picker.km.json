@@ -5,5 +5,6 @@
   "selected": "បានជ្រើសរើស",
   "currentlyActiveAndSelectedPalette": "ក្ដារពណ៌ដែលសកម្ម និងបានជ្រើសរើសបច្ចុប្បន្ន",
   "currentlyActivePalette": "ក្ដារពណ៌ដែលសកម្មបច្ចុប្បន្ន",
-  "selectedPaletteToApply": "ក្ដារពណ៌ដែលបានជ្រើសរើសដើម្បីអនុវត្ត"
+  "selectedPaletteToApply": "ក្ដារពណ៌ដែលបានជ្រើសរើសដើម្បីអនុវត្ត",
+  "paletteNumber": "ក្ដារពណ៌ {number}"
 }

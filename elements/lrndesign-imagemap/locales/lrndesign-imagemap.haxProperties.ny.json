@@ -14,6 +14,10 @@
         "property": "hotspotDetails",
         "title": "Zambiri za malo odina",
         "description": "Malo odina pa mapu a chithunzi."
+      },
+      {
+        "title": "Zambiri za malo ofunikira",
+        "description": "Malo ofunikira ochitirana pa mapu a chithunzi."
       }
     ]
   }

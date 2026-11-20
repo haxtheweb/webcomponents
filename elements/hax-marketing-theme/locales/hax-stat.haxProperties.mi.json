@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Tatauranga",
+    "description": "He tau e tatau whakarunga ana, me tētahi tapanga me tētahi hono ki tōna kōrero"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Te tau hei tatau atu ki"
+      },
+      {
+        "title": "I mua i te tau"
+      },
+      {
+        "title": "I muri i te tau"
+      },
+      {
+        "title": "He kupu hei whakakapi i te tau"
+      },
+      {
+        "title": "Te mea e tatauria ana"
+      },
+      {
+        "title": "Wāhitau kōrero i hax.cloud (stories/ee450a19)"
+      }
+    ]
+  }
+}

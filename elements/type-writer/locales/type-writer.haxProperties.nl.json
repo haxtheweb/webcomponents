@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Typemachine",
     "description": "Tekst die zichzelf typt, teken voor teken."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tekst",
+        "description": "De tekst die wordt uitgetypt zodra het element in beeld scrolt."
+      },
+      {
+        "title": "Typen",
+        "description": "Toon de knipperende cursor; het element zet dit aan terwijl het typt."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Vertraging",
+        "description": "Milliseconden wachten voordat het typen begint."
+      },
+      {
+        "title": "Cursorduur",
+        "description": "Milliseconden dat de cursor blijft knipperen nadat de tekst is getypt."
+      },
+      {
+        "title": "Snelheid",
+        "description": "Milliseconden per teken; lagere getallen typen sneller."
+      }
+    ]
   }
 }

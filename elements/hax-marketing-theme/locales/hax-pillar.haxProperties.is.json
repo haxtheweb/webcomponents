@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Stoð",
+    "description": "Stoð: heiti, orðasamband, tákn, litur og hvers vegna hún skiptir máli"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nafn"
+      },
+      {
+        "title": "Orðasamband"
+      },
+      {
+        "title": "Tákn"
+      },
+      {
+        "title": "Litur (DDD-heiti)"
+      },
+      {
+        "title": "Hvaða stoð, 1 til 7"
+      },
+      {
+        "title": "Lítið spjald"
+      },
+      {
+        "title": "Hvar heitið fer"
+      }
+    ]
+  }
+}

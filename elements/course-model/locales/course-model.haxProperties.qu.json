@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "suti"
+        "title": "suti",
+        "description": "Yachaqay modelop hanaqninpi rikuchisqa uma siq'i."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "Rikuchinapaq 3D model willañiqip (.glb utaq .gltf) tiyanan."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "Mana rikuyta atiqkunapaq 3D modelota willay."
       },
       {
         "title": "Willakuy sitio"

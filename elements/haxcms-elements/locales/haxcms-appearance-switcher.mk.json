@@ -1,0 +1,8 @@
+{
+  "theme": "Тема",
+  "palette": "Палета",
+  "themeDefault": "Стандардно за темата",
+  "designSystem": "Дизајн систем",
+  "designSystemDefault": "DDD (стандардно)",
+  "designSystemUnavailable": "Оваа тема го задржува својот дизајн систем"
+}

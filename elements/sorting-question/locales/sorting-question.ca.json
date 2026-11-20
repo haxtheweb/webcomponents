@@ -40,5 +40,7 @@
   "hideDirections": "Amaga les instruccions",
   "showRelatedContent": "Mostra el contingut relacionat",
   "hideRelatedContent": "Amaga el contingut relacionat",
-  "notAttempted": "No intentat"
+  "notAttempted": "No intentat",
+  "cardsDirections": "Posa les cartes en l'ordre correcte amb els botons de moure abans i moure després de cada carta, o arrossega-les amb el ratolí. Quan creguis que estan en l'ordre correcte, comprova la resposta seleccionant {checkAnswer}.",
+  "movedToPosition": "{item} s'ha mogut a la posició {position} de {total}"
 }

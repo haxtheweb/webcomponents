@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Myndaspjaldur",
     "description": "Myndaspjaldselement til at merkja miðilsognir í innihaldi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Myndanummar",
+        "description": "Nummar ella stutt heiti á myndini, t.d. 1.3"
+      },
+      {
+        "title": "Lýsing",
+        "description": "Stutt lýsing av myndini"
+      }
+    ]
   }
 }

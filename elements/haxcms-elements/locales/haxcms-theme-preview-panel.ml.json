@@ -8,5 +8,9 @@
   "theme": "തീം",
   "palette": "പാലറ്റ്",
   "cancel": "റദ്ദാക്കുക",
-  "openAppearanceSettings": "രൂപഭാവ ക്രമീകരണങ്ങൾ തുറക്കുക"
+  "openAppearanceSettings": "രൂപഭാവ ക്രമീകരണങ്ങൾ തുറക്കുക",
+  "designSystem": "ഡിസൈൻ സിസ്റ്റം",
+  "designSystemDefault": "DDD (സ്ഥിരസ്ഥിതി)",
+  "designSystemThemeDefault": "{name} (തീം സ്ഥിരസ്ഥിതി)",
+  "designSystemHelp": "നിറം, അക്ഷരരൂപം, കോണുകൾ, സാന്ദ്രത. ലേഔട്ട് ഇപ്പോഴും തീം തീരുമാനിക്കുന്നു."
 }

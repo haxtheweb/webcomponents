@@ -9,5 +9,7 @@
   "slidePages": "Diaoldalak",
   "goToSlide": "Ugrás a(z) {number}. diára",
   "slides": "Diák",
-  "position": "{number} / {total}"
+  "position": "{number} / {total}",
+  "fullScreen": "Teljes képernyő",
+  "exitFullScreen": "Kilépés a teljes képernyőből"
 }

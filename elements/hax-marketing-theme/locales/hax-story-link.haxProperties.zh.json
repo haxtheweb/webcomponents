@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "故事按钮",
+    "description": "打开 hax.cloud 上某个说法背后故事的按钮，或指向其他 HAX 网络站点上对应位置"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "指向位置",
+        "options": {
+          "cloud": "hax.cloud，故事",
+          "learn": "learn.hax.cloud，教程",
+          "try": "browser.hax.cloud，试用",
+          "elements": "webcomponents.hax.cloud，块",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "该站点上的地址（hax.cloud 上的故事形如 stories/ee450a19）"
+      },
+      {
+        "title": "相关主题"
+      },
+      {
+        "title": "小标签片"
+      },
+      {
+        "title": "在按钮中显示相关主题"
+      }
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "Chip",
+    "description": "Lambang cilik nganggo label"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Lambang"
+      },
+      {
+        "title": "Label"
+      }
+    ]
+  }
+}

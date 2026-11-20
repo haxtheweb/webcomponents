@@ -3,5 +3,8 @@
   "copyAsCsv": "CSV ಆಗಿ ನಕಲಿಸಿ.",
   "printTable": "ಕೋಷ್ಟಕ ಮುದ್ರಿಸಿ",
   "selectColumn": "ಕಾಲಮ್ ಆಯ್ಕೆಮಾಡಿ",
-  "dataTable": "ಡೇಟಾ · ಕೋಷ್ಟಕ"
+  "dataTable": "ಡೇಟಾ · ಕೋಷ್ಟಕ",
+  "filterStatus": "{total} ಸಾಲುಗಳಲ್ಲಿ {shown} ತೋರಿಸಲಾಗುತ್ತಿದೆ, {column} ಮೂಲಕ ಫಿಲ್ಟರ್ ಮಾಡಲಾಗಿದೆ: {text}",
+  "columnNumber": "ಕಾಲಮ್ {column}",
+  "clearFilter": "ಫಿಲ್ಟರ್ ತೆರವುಗೊಳಿಸಿ"
 }

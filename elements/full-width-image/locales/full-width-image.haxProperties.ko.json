@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "배경 이미지입니다."
+        "description": "배경 이미지입니다.",
+        "title": "이미지"
       },
       {
         "property": "caption",
-        "description": "텍스트 제목입니다."
+        "description": "텍스트 제목입니다.",
+        "title": "캡션"
       }
     ]
   }

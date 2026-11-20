@@ -1,0 +1,13 @@
+{
+  "gizmo": {
+    "title": "example-hax-element",
+    "description": "Ekzempla komenca elemento uzata por montri HAX-agordon kaj redakteblajn ecojn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titolo"
+      }
+    ]
+  }
+}

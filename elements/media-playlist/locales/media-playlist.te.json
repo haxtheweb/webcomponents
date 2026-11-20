@@ -5,5 +5,7 @@
   "editModeLabel": "మీడియా ప్లేలిస్ట్ సవరణ మోడ్",
   "position": "{current} / {total}",
   "previousItem": "మునుపటి అంశం",
-  "nextItem": "తదుపరి అంశం"
+  "nextItem": "తదుపరి అంశం",
+  "fullScreen": "పూర్తి స్క్రీన్",
+  "exitFullScreen": "పూర్తి స్క్రీన్ నుండి నిష్క్రమించు"
 }

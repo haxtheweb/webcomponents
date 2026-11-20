@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Baseline ýagdaýy",
+    "description": "Web platformasynyň aýratynlygynyň Baseline brauzer goldaw ýagdaýyny görkez."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Aýratynlyk ID-si",
+        "description": "Web aýratynlygynyň ID-si, meselem anchor-positioning. ID-leri webstatus.dev-de tapyň; ID aýratynlyk sahypasynyň URL-iniň soňky bölegidir."
+      }
+    ]
+  }
+}

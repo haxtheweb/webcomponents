@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Whakarewa utauta o waho",
+    "description": "He paraka e whakatuwhera ana i tētahi utauta ako o waho ki tētahi matapihi hou, ki te whārangi rānei, hei hono noa, me tētahi tono takiuru LTI 1.3 rānei."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Taitara",
+        "description": "Te ingoa o te utauta. Ka whakaaturia ki te pane me te pātene."
+      },
+      {
+        "title": "Whakaahuatanga",
+        "description": "Te mea ka mahia e ngā ākonga i te utauta, ka whakaaturia i runga ake i te pātene."
+      },
+      {
+        "title": "URL whakarewa",
+        "description": "Te wāhitau o te utauta. Me wāhitau katoa e tīmata ana ki te https:// ki te http:// rānei."
+      },
+      {
+        "title": "Whakatuwhera ki",
+        "description": "Ka mahi te matapihi hou ki ia utauta. Ko “I tēnei whārangi” ka mahi anake ki ngā utauta e whakaae ana kia whakaaturia ki roto i tētahi atu pae.",
+        "options": {
+          "window": "He matapihi hou",
+          "embed": "I tēnei whārangi"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "URL takiuru LTI",
+        "description": "LTI 1.3 anake: te wāhitau tīmata takiuru o te utauta. Mā tēnei, he ID kiritaki me tētahi ID tuku, ka tuku te pātene i tētahi tono takiuru LTI, kaua e whakatuwhera i tētahi hono noa. Me whai te ratonga LTI o tēnei pae hei whakaoti i te whakarewatanga."
+      },
+      {
+        "title": "ID kiritaki LTI",
+        "description": "Te ID kiritaki i hoatu e te utauta ki tēnei pae. He tautuhi tūmatanui, ehara i te muna: kaua rawa e tuku kī, muna rānei ki konei."
+      },
+      {
+        "title": "ID tuku LTI",
+        "description": "Te ID tuku i hoatu e te utauta ki tēnei pae. He tautuhi tūmatanui, ehara i te muna."
+      },
+      {
+        "title": "Kaiwhakaputa LTI",
+        "description": "Te wāhitau e tautohu ana i tēnei pae ki te utauta. Waiho kia wātea hei whakamahi i te wāhitau o te pae kei reira te whārangi."
+      },
+      {
+        "title": "Teitei i te whārangi",
+        "description": "Te teitei o te utauta ina tuwhera i tēnei whārangi, i ngā pika (200 ki te 2000)."
+      },
+      {
+        "title": "Tae arotahi",
+        "description": "Te tae o te maramara pane me te pātene. Waiho kia wātea hei whai i te kaupapa."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Tohu takiuru LTI",
+        "description": "He uara pūataata-kore e whakamahia ana e te ratonga LTI o tēnei pae hei mōhio ki te ākonga. I te nuinga o te wā ka tukuna e te pae mā te takahanga lti-launch-request, kaua e tiakina ki konei. Ehara rawa i te kupuhipa, i te kī rānei."
+      },
+      {
+        "title": "Tohu karere LTI",
+        "description": "He uara pūataata-kore e whakamahia ana e te ratonga LTI o tēnei pae hei mōhio ki tēnei whakarewatanga. I te nuinga o te wā ka tukuna e te pae, kaua e tiakina ki konei."
+      }
+    ]
+  }
+}

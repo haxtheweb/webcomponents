@@ -13,7 +13,15 @@
       {
         "property": "answers",
         "title": "Mayankho",
-        "description": "Ndondomeko ya mayankho imatanthauza kutsatana kolondola."
+        "description": "Ndondomeko ya mayankho imatanthauza kutsatana kolondola.",
+        "options": {
+          "": "Mndandanda",
+          "cards": "Makadi a zithunzi"
+        }
+      },
+      {
+        "title": "Mayankho",
+        "description": "Motsatira mayankho kumatanthauza dongosolo lolondola."
       }
     ],
     "advanced": [

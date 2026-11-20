@@ -13,7 +13,10 @@
       {
         "property": "modifier",
         "title": "Pengubah suai media",
-        "description": "Pengubah suai domain media pilihan. Menyatakan jenis media yang tertakluk kepada lesen ini."
+        "description": "Pengubah suai domain media pilihan. Menyatakan jenis media yang tertakluk kepada lesen ini.",
+        "options": {
+          "": "Tiada pengubah suai"
+        }
       },
       {
         "property": "uri",

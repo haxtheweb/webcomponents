@@ -13,7 +13,10 @@
       {
         "property": "modifier",
         "title": "Jijjiiraa miidiyaa",
-        "description": "Jijjiiraa damee miidiyaa filannoo. Gosa miidiyaa hayyamni kun irratti hojjetu ibsa."
+        "description": "Jijjiiraa damee miidiyaa filannoo. Gosa miidiyaa hayyamni kun irratti hojjetu ibsa.",
+        "options": {
+          "": "Jijjiiraan hin jiru"
+        }
       },
       {
         "property": "uri",

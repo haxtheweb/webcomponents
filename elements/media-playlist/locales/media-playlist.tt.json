@@ -5,5 +5,7 @@
   "editModeLabel": "Медиа уйнату исемлеген үзгәртү режимы",
   "position": "{current} / {total}",
   "previousItem": "Алдагы элемент",
-  "nextItem": "Киләсе элемент"
+  "nextItem": "Киләсе элемент",
+  "fullScreen": "Тулы экран",
+  "exitFullScreen": "Тулы экраннан чыгу"
 }

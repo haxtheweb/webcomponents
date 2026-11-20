@@ -1,0 +1,8 @@
+{
+  "theme": "Tema",
+  "palette": "Palet",
+  "themeDefault": "Gawan tema",
+  "designSystem": "Sistem desain",
+  "designSystemDefault": "DDD (gawan)",
+  "designSystemUnavailable": "Tema iki njaga sistem desaine dhewe"
+}

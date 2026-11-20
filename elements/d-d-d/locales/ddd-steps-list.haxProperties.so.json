@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Liiska tallaabooyinka",
     "description": "Tallaabooyin lambaraysan oo lagu dhammaystiro hawl."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tilmaamaha tallaabada",
+        "description": "Muuji tallaabooyinka sida saf koobban oo cinwaanno ah oo calaamadeeya horumarka. Nuxurka tallaabada laguma muujiyo qaabkan."
+      },
+      {
+        "title": "Tallaabada hadda",
+        "description": "Tallaabada akhristuhu joogo, laga tiriyo 1. Tallaabooyinkii hore waxay u muuqdaan kuwo la dhammeeyay. Waxaa isticmaala tilmaamaha tallaabada."
+      }
+    ]
   }
 }

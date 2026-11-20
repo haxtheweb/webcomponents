@@ -3,5 +3,8 @@
   "copyAsCsv": "Kopiraj kot CSV.",
   "printTable": "Natisni tabelo",
   "selectColumn": "Izberi stolpec",
-  "dataTable": "Podatki · Tabela"
+  "dataTable": "Podatki · Tabela",
+  "filterStatus": "Prikazanih {shown} od {total} vrstic, filtrirano po {column}: {text}",
+  "columnNumber": "Stolpec {column}",
+  "clearFilter": "Počisti filter"
 }

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Radharc cáis",
+    "description": "Radharc amháin de chás craobhach. Nasc gach rogha le radharc eile le # agus aitheantas an radhairc ina dhiaidh."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Aitheantas radhairc",
+        "description": "An rud a nascann roghanna leis: treoraíonn nasc go # agus an t-aitheantas seo ina dhiaidh chuig an radharc seo. Litreacha, uimhreacha agus fleiscíní."
+      },
+      {
+        "title": "Ceannteideal",
+        "description": "Ceannteideal an radhairc."
+      },
+      {
+        "title": "Deireadh",
+        "description": "Cé acu an gcríochnaíonn an radharc seo cosán, agus conas a d'éirigh leis.",
+        "options": {
+          "": "Ní deireadh é",
+          "good": "Deireadh maith",
+          "mixed": "Deireadh measctha",
+          "poor": "Deireadh lag"
+        }
+      },
+      {
+        "title": "Scór",
+        "description": "Scór as an deireadh seo a bhaint amach. Is é an scór deiridh is airde sa chás an t-uasmhéid."
+      }
+    ]
+  }
+}

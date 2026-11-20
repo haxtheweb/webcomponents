@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "ປຸ່ມເລື່ອງລາວ",
+    "description": "ປຸ່ມທີ່ເປີດເລື່ອງລາວເບື້ອງຫຼັງຄຳກ່າວອ້າງໃນ hax.cloud, ຫຼື ບ່ອນທີ່ກົງກັນໃນເວັບໄຊອື່ນຂອງເຄືອຂ່າຍ HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ມັນໄປໃສ",
+        "options": {
+          "cloud": "hax.cloud, ເລື່ອງລາວ",
+          "learn": "learn.hax.cloud, ບົດສອນ",
+          "try": "browser.hax.cloud, ລອງໃຊ້",
+          "elements": "webcomponents.hax.cloud, ບລັອກ",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "ທີ່ຢູ່ໃນເວັບໄຊນັ້ນ (ເລື່ອງລາວໃນ hax.cloud ມີລັກສະນະຄື stories/ee450a19)"
+      },
+      {
+        "title": "ມັນກ່ຽວກັບຫຍັງ"
+      },
+      {
+        "title": "ຊິບນ້ອຍ"
+      },
+      {
+        "title": "ສະແດງວ່າມັນກ່ຽວກັບຫຍັງໃນປຸ່ມ"
+      }
+    ]
+  }
+}

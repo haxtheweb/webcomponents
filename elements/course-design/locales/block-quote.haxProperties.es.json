@@ -20,6 +20,12 @@
         "title": "Imagen",
         "description": "Imagen que se muestra con la cita."
       }
+    ],
+    "advanced": [
+      {
+        "title": "Enmarcada",
+        "description": "Dibuja la cita sobre el marco compartido de bloques, con un icono y una etiqueta encima, para que combine con las notas y las tarjetas de instrucciones."
+      }
     ]
   }
 }

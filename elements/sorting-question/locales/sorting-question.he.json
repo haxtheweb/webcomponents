@@ -40,5 +40,7 @@
   "hideDirections": "הסתרת ההנחיות",
   "showRelatedContent": "הצגת תוכן קשור",
   "hideRelatedContent": "הסתרת תוכן קשור",
-  "notAttempted": "לא נוסה"
+  "notAttempted": "לא נוסה",
+  "cardsDirections": "סדרו את הקלפים בסדר הנכון עם כפתורי ההזזה מוקדם ומאוחר בכל קלף, או גררו אותם עם העכבר. כשאתם חושבים שהם בסדר הנכון, בדקו את התשובה על ידי בחירה ב־{checkAnswer}.",
+  "movedToPosition": "{item} הועבר למיקום {position} מתוך {total}"
 }

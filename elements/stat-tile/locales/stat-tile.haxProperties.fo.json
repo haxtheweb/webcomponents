@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Hagtalsflísur",
+    "description": "Eitt tal, sum hevur týdning, við heiti og hvussu tað broyttist. Set fleiri í eitt net fyri eina stýriborðsrøð."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Heiti",
+        "description": "Hvat talið mátar."
+      },
+      {
+        "title": "Virði",
+        "description": "Talið. Eitt vanligt tal verður bólkað eftir málinum á síðuni; alt annað verður víst, sum tað er skrivað."
+      },
+      {
+        "title": "Broyting",
+        "description": "Hvussu tað broyttist, í orðum, sum 6% hetta lestrartíðarskeiðið."
+      },
+      {
+        "title": "Rætningur",
+        "description": "Hvørt broytingin er upp ella niður.",
+        "options": {
+          "": "Eingin",
+          "up": "Upp",
+          "down": "Niður"
+        }
+      }
+    ]
+  }
+}

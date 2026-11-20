@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "ဇာတ်လမ်း ခလုတ်",
+    "description": "hax.cloud ရှိ အဆိုတစ်ခု၏ နောက်ကွယ်ဇာတ်လမ်း သို့မဟုတ် အခြား HAX ကွန်ရက်ဆိုက်ရှိ ကိုက်ညီသောနေရာကို ဖွင့်ပေးသော ခလုတ်"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "သွားမည့်နေရာ",
+        "options": {
+          "cloud": "hax.cloud၊ ဇာတ်လမ်း",
+          "learn": "learn.hax.cloud၊ သင်ခန်းစာ",
+          "try": "browser.hax.cloud၊ စမ်းကြည့်ပါ",
+          "elements": "webcomponents.hax.cloud၊ ဘလောက်",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "ထိုဆိုက်ပေါ်ရှိ လိပ်စာ (hax.cloud ရှိ ဇာတ်လမ်းသည် stories/ee450a19 ကဲ့သို့ ဖြစ်သည်)"
+      },
+      {
+        "title": "အကြောင်းအရာ"
+      },
+      {
+        "title": "chip ငယ်"
+      },
+      {
+        "title": "ခလုတ်တွင် အကြောင်းအရာကို ပြရန်"
+      }
+    ]
+  }
+}

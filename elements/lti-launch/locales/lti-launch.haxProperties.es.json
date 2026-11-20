@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Lanzamiento de herramienta externa",
+    "description": "Un bloque que abre una herramienta de aprendizaje externa en una ventana nueva o en la página, como enlace simple o con una solicitud de inicio de sesión LTI 1.3."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Título",
+        "description": "Nombre de la herramienta. Se muestra en la cabecera y en el botón."
+      },
+      {
+        "title": "Descripción",
+        "description": "Lo que hacen los estudiantes en la herramienta, que se muestra sobre el botón."
+      },
+      {
+        "title": "URL de lanzamiento",
+        "description": "Dirección de la herramienta. Debe ser una dirección completa que empiece por https:// o http://."
+      },
+      {
+        "title": "Abrir en",
+        "description": "Una ventana nueva funciona con todas las herramientas. En esta página solo funciona con herramientas que permiten mostrarse dentro de otro sitio.",
+        "options": {
+          "window": "Una ventana nueva",
+          "embed": "En esta página"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "URL de inicio de sesión LTI",
+        "description": "Solo LTI 1.3: la dirección de inicio de sesión de la herramienta. Con ella, un ID de cliente y un ID de implementación, el botón envía una solicitud de inicio de sesión LTI en lugar de abrir un enlace simple. Para completar el lanzamiento se necesita el servicio LTI de este sitio."
+      },
+      {
+        "title": "ID de cliente LTI",
+        "description": "El ID de cliente que la herramienta dio a este sitio. Es un identificador público, no un secreto: nunca pongas aquí claves ni secretos."
+      },
+      {
+        "title": "ID de implementación LTI",
+        "description": "El ID de implementación que la herramienta dio a este sitio. Es un identificador público, no un secreto."
+      },
+      {
+        "title": "Emisor LTI",
+        "description": "La dirección que identifica a este sitio ante la herramienta. Déjalo vacío para usar la dirección del sitio en el que está la página."
+      },
+      {
+        "title": "Altura en la página",
+        "description": "Altura de la herramienta cuando se abre en esta página, en píxeles (de 200 a 2000)."
+      },
+      {
+        "title": "Color de acento",
+        "description": "Color de la etiqueta de la cabecera y del botón. Déjalo vacío para seguir el tema."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Pista de inicio de sesión LTI",
+        "description": "Un valor opaco que el servicio LTI de este sitio usa para reconocer al estudiante. Normalmente lo proporciona el sitio mediante el evento lti-launch-request en lugar de guardarse aquí. Nunca es una contraseña ni una clave."
+      },
+      {
+        "title": "Pista de mensaje LTI",
+        "description": "Un valor opaco que el servicio LTI de este sitio usa para reconocer este lanzamiento. Normalmente lo proporciona el sitio en lugar de guardarse aquí."
+      }
+    ]
+  }
+}

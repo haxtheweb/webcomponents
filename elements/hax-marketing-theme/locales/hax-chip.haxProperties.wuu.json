@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "小标签",
+    "description": "一个带标签个小图标"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "图标"
+      },
+      {
+        "title": "标签"
+      }
+    ]
+  }
+}

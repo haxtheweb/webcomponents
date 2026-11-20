@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Bellik",
+    "description": "Tekstde degişli ýerinde ýazylan bellik. Ol san hökmünde görkezilýär we belgilenen bellikleriň sanawy sahypanyň aşagynda öz-özünden düzülýär."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Bellik",
+        "description": "Belligiň teksti."
+      },
+      {
+        "title": "Öňünden görkezme ýok",
+        "description": "Okyjy sanyň üstüne syçany getirende ýa-da fokus edende belligi görkezme."
+      }
+    ]
+  }
+}

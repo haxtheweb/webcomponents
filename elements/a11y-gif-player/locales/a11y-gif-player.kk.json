@@ -2,5 +2,9 @@
   "toggleAnimation": "Анимацияны қосу/өшіру",
   "info": "ақпарат",
   "image": "Сурет",
-  "animatedGif": "Анимациялық GIF"
+  "animatedGif": "Анимациялық GIF",
+  "playAnimation": "Анимацияны ойнату",
+  "pauseAnimation": "Анимацияны кідірту",
+  "showDescription": "Сипаттаманы көрсету",
+  "hideDescription": "Сипаттаманы жасыру"
 }

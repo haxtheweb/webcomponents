@@ -1,0 +1,14 @@
+{
+  "scene": "Xena",
+  "ending": "Tmiem",
+  "goodEnding": "Tmiem tajjeb",
+  "mixedEnding": "Tmiem imħallat",
+  "poorEnding": "Tmiem ħażin",
+  "scoreOf": "Punteġġ {score} minn {max}",
+  "scoreOnly": "Punteġġ {score}",
+  "startScene": "Bidu",
+  "sceneIdLabel": "ID tax-xena",
+  "needsId": "Żid ID tax-xena biex l-għażliet ikunu jistgħu jorbtu ma' din ix-xena.",
+  "orphan": "L-ebda għażla ma torbot ma' din ix-xena.",
+  "deadLinks": "Dawn il-links jippuntaw lejn xena li ma teżistix:"
+}

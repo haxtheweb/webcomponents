@@ -1,0 +1,16 @@
+{
+  "theme": "Thema",
+  "designSystem": "Designsystem",
+  "dddDefault": "DDD (Standard)",
+  "designSystemHelp": "Faarf, Schrëft, Ecken a Fokus. D'Thema behält de Layout.",
+  "designSystemFixed": "Dëst Thema behält säin eegent Designsystem.",
+  "palette": "Palett",
+  "themeDefault": "Standard vum Thema",
+  "paletteNumber": "Palett {n}",
+  "siteTheme": "{name} (Thema vun dëser Websäit)",
+  "restyle": "Dës Websäit nei stylen",
+  "close": "Zoumaachen",
+  "reset": "Zréck op den eegene Look vun dëser Websäit",
+  "random": "Iwwerrascht mech",
+  "about": "Dëst weist e puer vun de Looks, déi an HAX agebaut sinn. D'Säiten änneren sech ni: d'Struktur ass am JSON Outline Schema, an all Block ass e Standard-Webkomponent, dofir kann den Design fräi gewiesselt ginn."
+}

@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Umdwebo kusuka embhalweni",
+    "description": "Bhala umdwebo njengombhalo (Mermaid): ishadi lokugeleza, ukulandelana, umugqa wesikhathi nokunye. Udwetshwa ekhasini kanye nombhalo ongenye indlela."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Isihloko",
+        "description": "Kuboniswa ngaphezu komdwebo futhi kusetshenziswa njengegama lawo."
+      },
+      {
+        "title": "Umthombo womdwebo",
+        "description": "Umbhalo we-Mermaid, isibonelo: flowchart TD, bese umugqa owodwa ngesixhumanisi ngasinye njengo-A[Draft] --> B{Ready?}. Engeza |label| ngemva komcibisholo ukuze uwunike ilebula. Umdwebo uyabuyekezwa njengoba uthayipha."
+      },
+      {
+        "title": "Enye indlela yombhalo",
+        "description": "Chaza lokho umdwebo okubonisayo kubantu abangakwazi ukuwubona. Shiya kungenalutho kushadi lokugeleza ukuze izinyathelo zalo zibhalwe ohlwini wena."
+      },
+      {
+        "title": "Okushiwo ngesithombe",
+        "description": "Okushiwo okungakhethwa okuboniswa ngaphansi komdwebo."
+      },
+      {
+        "title": "Bonisa umthombo",
+        "description": "Bonisa umbhalo womdwebo eceleni komdwebo."
+      },
+      {
+        "title": "Bonisa umbhalo ongenye indlela",
+        "description": "Bonisa umbhalo ongenye indlela ngaphansi komdwebo. Uhlala utholakala kubafundi besikrini."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ifayela lomthombo",
+        "description": "Ikheli lefayela le-.mmd okufanele lidwetshwe esikhundleni sombhalo ongenhla (https noma indlela kule sayithi)."
+      },
+      {
+        "title": "Umbala wokugcizelela",
+        "description": "Umbala we-chip yesithonjana esihlokweni."
+      }
+    ]
+  }
+}

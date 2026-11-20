@@ -1,0 +1,16 @@
+{
+  "theme": "Theme",
+  "designSystem": "Designsystem",
+  "dddDefault": "DDD (Standard)",
+  "designSystemHelp": "Farbe, Schrift, Ecken und Fokus. Das Theme behält das Layout.",
+  "designSystemFixed": "Dieses Theme behält sein eigenes Designsystem.",
+  "palette": "Palette",
+  "themeDefault": "Theme-Standard",
+  "paletteNumber": "Palette {n}",
+  "siteTheme": "{name} (Theme dieser Website)",
+  "restyle": "Diese Website neu gestalten",
+  "close": "Schließen",
+  "reset": "Zurück zum eigenen Look dieser Website",
+  "random": "Überrasch mich",
+  "about": "Hier siehst du einige der in HAX eingebauten Looks. Die Seiten ändern sich nie: Die Struktur liegt im JSON Outline Schema und jeder Block ist eine Standard-Webkomponente, daher lässt sich das Design frei austauschen."
+}

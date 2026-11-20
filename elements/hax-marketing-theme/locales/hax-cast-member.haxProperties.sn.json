@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Mutambi",
+    "description": "Vateereri vamwe, vanomiririrwa nemunhu, vane mazwi nebhatani"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ndiani uyu"
+      },
+      {
+        "title": "Rudzi rwemunhu"
+      },
+      {
+        "title": "Mbeu yemunhu"
+      },
+      {
+        "title": "Ruvara rwechikuva (zita reDDD)"
+      },
+      {
+        "title": "Panoenda bhatani"
+      },
+      {
+        "title": "Mavara ebhatani"
+      }
+    ]
+  }
+}

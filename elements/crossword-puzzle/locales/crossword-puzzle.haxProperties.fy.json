@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Krúswurd",
+    "description": "In krúswurd makke fan in list mei wurden en omskriuwings. It rooster wurdt foar jo generearre; learlingen typje de wurden en kontrolearje se."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "De titel of fraach toand boppe it krúswurd."
+      },
+      {
+        "title": "Wurden",
+        "description": "Elk wurd en syn omskriuwing. It rooster wurdt generearre út dizze list: it langste wurd wurdt earst pleatst en de oaren krúse it op dielde letters."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Pogingen",
+        "description": "Hoefolle kear in learling kontrolearje kin. 0 betsjut ûnbeheind."
+      },
+      {
+        "title": "Aksintkleur",
+        "description": "Opsjonele kleur foar it kopteksttsjip, it aktive wurd en de aksjeknoppen."
+      },
+      {
+        "title": "Ynklapber",
+        "description": "Dit krúswurd sjen litte as in rige dy't iepen en ticht giet. As jo der ien iepenje, slute de oare ynklapbere fragen dêrneist."
+      },
+      {
+        "title": "Ynklapt begjinne",
+        "description": "As it ynklapber is, begjinne as in sletten rige dy't allinnich de titel en de status toant."
+      },
+      {
+        "title": "Beoardielingsformaat",
+        "description": "OER Schema: beoardielingsformaat foar dizze toetsing (bgl. punten, letter, persintaazje, foltôging)."
+      },
+      {
+        "title": "Leardoel",
+        "description": "OER Schema: leardoel dat by dizze toetsing heart."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Namme fan de kwis",
+        "description": "Kwisnamme dy't brûkt wurdt foar xAPI-identifikaasje yn analysesystemen."
+      },
+      {
+        "title": "Kursus",
+        "description": "OER Schema: kursus dêr't dizze toetsing foar bedoeld is."
+      }
+    ]
+  }
+}

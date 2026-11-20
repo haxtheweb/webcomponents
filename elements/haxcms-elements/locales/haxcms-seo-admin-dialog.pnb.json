@@ -6,6 +6,8 @@
   "faviconDescription": "براؤزر ٹیب دی تصویر / فوناں تے چھوٹے سائٹ لوگو وجوں ورتی جاندی اے",
   "domain": "ڈومین",
   "domainDescription": "ایس ویب سائٹ دا ڈومین",
+  "sameAs": "ایس سائٹ دے ہور پروفائل",
+  "sameAsDescription": "ہور تھاواں (GitHub، LinkedIn، YouTube، Mastodon) تے ایس سائٹ یا ادارے دے پروفائلاں دا ہر لائن وچ اک لنک۔ سرچ انجن ایہناں نال اوہ پروفائل ایس سائٹ نال جوڑدے نیں۔",
   "language": "بولی",
   "languageDescription": "اس سائٹ دی بولی۔ ناں یا کوڈ نال لبھو، یا fr-CA ورگا کوئی ہور کوڈ پاؤ۔",
   "googleAnalyticsId": "Google Analytics ID",

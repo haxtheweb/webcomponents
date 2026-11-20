@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Pillér",
+    "description": "Egy pillér: név, mondat, ikon, szín és hogy miért fontos"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Név"
+      },
+      {
+        "title": "Mondat"
+      },
+      {
+        "title": "Ikon"
+      },
+      {
+        "title": "Szín (DDD név)"
+      },
+      {
+        "title": "Melyik pillér, 1–7"
+      },
+      {
+        "title": "Kis kártya"
+      },
+      {
+        "title": "Hová kerül a név"
+      }
+    ]
+  }
+}

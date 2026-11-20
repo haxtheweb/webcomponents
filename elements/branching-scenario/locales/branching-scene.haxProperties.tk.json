@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Ssenariý sahnasy",
+    "description": "Şahalanýan ssenariýanyň bir sahnasy. Her saýlawy # we yzyndan sahna id-si bilen başga sahna baglaň."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sahna id-si",
+        "description": "Saýlawlaryň baglanýan zady: # we yzyndan şu id bolan baglanyşyk şu sahna alyp barýar. Harplar, sanlar we defisler."
+      },
+      {
+        "title": "Sözbaşy",
+        "description": "Sahnanyň sözbaşysy."
+      },
+      {
+        "title": "Soňy",
+        "description": "Bu sahnanyň ýoly tamamlaýandygy we netijäniň nähili bolandygy.",
+        "options": {
+          "": "Soňy däl",
+          "good": "Gowy soňy",
+          "mixed": "Garyşyk soňy",
+          "poor": "Erbet soňy"
+        }
+      },
+      {
+        "title": "Bal",
+        "description": "Bu soňa ýetendigi üçin bal. Ssenariýadaky iň ýokary soňy baly iň ýokary baldyr."
+      }
+    ]
+  }
+}

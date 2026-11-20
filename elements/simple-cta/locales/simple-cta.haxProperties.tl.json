@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Itago ang icon",
         "description": "Itago ang icon na ginagamit para i-accent ang teksto"
+      },
+      {
+        "title": "Hitsura",
+        "description": "Gaano karaming diin ang mayroon ang button.",
+        "options": {
+          "": "Puno",
+          "tonal": "Tonal",
+          "outlined": "May outline",
+          "plain": "Simple"
+        }
+      },
+      {
+        "title": "Laki",
+        "description": "Laki ng button.",
+        "options": {
+          "s": "Maliit",
+          "": "Katamtaman",
+          "l": "Malaki"
+        }
       }
     ],
     "advanced": [

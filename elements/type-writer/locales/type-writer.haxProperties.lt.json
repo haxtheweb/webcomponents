@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Rašomoji mašinėlė",
     "description": "Tekstas, kuris pats rašosi po vieną simbolį."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tekstas",
+        "description": "Tekstas, kuris bus išrašytas, kai elementas atsiras matomoje srityje."
+      },
+      {
+        "title": "Rašoma",
+        "description": "Rodyti mirksintį žymeklį; elementas tai nustato, kol rašo."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Delsa",
+        "description": "Milisekundės, kurias laukti, kol prasidės rašymas."
+      },
+      {
+        "title": "Žymeklio trukmė",
+        "description": "Milisekundės, kurias žymeklis toliau mirksi išrašius tekstą."
+      },
+      {
+        "title": "Greitis",
+        "description": "Milisekundės vienam simboliui; mažesni skaičiai rašo greičiau."
+      }
+    ]
   }
 }

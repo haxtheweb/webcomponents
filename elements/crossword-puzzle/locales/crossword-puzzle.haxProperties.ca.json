@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Mots encreuats",
+    "description": "Uns mots encreuats fets a partir d'una llista de paraules i pistes. La graella es genera automàticament; els alumnes escriuen les paraules i les comproven."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Títol",
+        "description": "El títol o la pregunta que es mostra a sobre dels mots encreuats."
+      },
+      {
+        "title": "Paraules",
+        "description": "Cada paraula i la seva pista. La graella es genera a partir d'aquesta llista: la paraula més llarga es col·loca primer i les altres la creuen per lletres compartides."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Intents",
+        "description": "Quantes vegades pot comprovar un alumne. 0 vol dir il·limitades."
+      },
+      {
+        "title": "Color d'èmfasi",
+        "description": "Color opcional per a l'etiqueta de la capçalera, la paraula activa i els botons d'acció."
+      },
+      {
+        "title": "Plegable",
+        "description": "Mostra aquests mots encreuats com una fila que s'obre i es tanca. En obrir-ne una es tanquen les altres preguntes plegables del costat."
+      },
+      {
+        "title": "Comença plegat",
+        "description": "Si és plegable, comença com una fila tancada que només mostra el títol i el seu estat."
+      },
+      {
+        "title": "Format de qualificació",
+        "description": "OER Schema: format de qualificació d'aquesta avaluació (p. ex. punts, lletra, percentatge, compleció)."
+      },
+      {
+        "title": "Objectiu d'aprenentatge",
+        "description": "OER Schema: objectiu d'aprenentatge associat a aquesta avaluació."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Nom del qüestionari",
+        "description": "Nom del qüestionari utilitzat per a la identificació xAPI en sistemes d'analítica."
+      },
+      {
+        "title": "Curs",
+        "description": "OER Schema: curs al qual està destinada aquesta avaluació."
+      }
+    ]
+  }
+}

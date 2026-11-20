@@ -1,0 +1,16 @@
+{
+  "theme": "Thema",
+  "designSystem": "System ddylunio",
+  "dddDefault": "DDD (diofyn)",
+  "designSystemHelp": "Lliw, teip, corneli a ffocws. Mae'r thema'n cadw'r gosodiad.",
+  "designSystemFixed": "Mae'r thema hon yn cadw ei system ddylunio ei hun.",
+  "palette": "Palet",
+  "themeDefault": "Diofyn y thema",
+  "paletteNumber": "Palet {n}",
+  "siteTheme": "{name} (thema'r wefan hon)",
+  "restyle": "Ail-steilio'r wefan hon",
+  "close": "Cau",
+  "reset": "Yn ôl i olwg y wefan ei hun",
+  "random": "Synnwch fi",
+  "about": "Mae hyn yn dangos rhai o'r golygon sydd wedi'u cynnwys yn HAX. Nid yw'r tudalennau byth yn newid: mae'r strwythur yn byw yn JSON Outline Schema ac mae pob bloc yn gydran we safonol, felly mae'r dyluniad yn rhydd i'w gyfnewid."
+}

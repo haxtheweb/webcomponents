@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Na'urar buga rubutu",
     "description": "Rubutu da ke buga kansa harafi ɗaya a lokaci guda."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Rubutu",
+        "description": "Rubutun da za a buga da zarar abin ya gungura cikin gani."
+      },
+      {
+        "title": "Ana bugawa",
+        "description": "Nuna alamar rubutu mai ƙyalƙyali; abin yana saita wannan yayin da yake bugawa."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Jinkiri",
+        "description": "Millisakan da za a jira kafin bugawa ta fara."
+      },
+      {
+        "title": "Tsawon alamar rubutu",
+        "description": "Millisakan da alamar rubutu ke ci gaba da ƙyalƙyali bayan an buga rubutun."
+      },
+      {
+        "title": "Gudu",
+        "description": "Millisakan a kowane harafi; ƙananan lambobi suna bugawa da sauri."
+      }
+    ]
   }
 }

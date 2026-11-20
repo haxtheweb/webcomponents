@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Seicliosta urchair",
+    "description": "Liosta de bhoscaí seiceála. Cuireann léitheoirí tic le míreanna agus meabhraítear a ndul chun cinn ar a ngléas féin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Teideal",
+        "description": "Ainm an liosta. Léitear os ard é mar lipéad ghrúpa na mboscaí seiceála."
+      },
+      {
+        "title": "Míreanna",
+        "description": "Is bosca seiceála gach mír. Ní féidir le léitheoirí míreanna seiceáilte nó díchumasaithe a athrú."
+      },
+      {
+        "title": "Uimhrithe",
+        "description": "Taispeáin liosta uimhrithe in ionad liosta urchair."
+      },
+      {
+        "title": "Stádas",
+        "description": "Athraíonn sé na dathanna chun teacht le stop-note.",
+        "options": {
+          "info": "Fógra",
+          "success": "Deimhniú",
+          "warning": "Rabhadh",
+          "stop": "Stop"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "Aitheantas stórála",
+        "description": "Aitheantas uathúil a úsáidtear chun dul chun cinn an léitheora a mheabhrú ar a ghléas. Gintear go huathoibríoch é; ná hathraigh é ach chun dul chun cinn a roinnt idir liostaí nó chun tosú as an nua."
+      }
+    ]
+  }
+}

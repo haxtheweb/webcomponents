@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "ຊິບ",
+    "description": "ໄອຄອນນ້ອຍທີ່ມີປ້າຍ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ໄອຄອນ"
+      },
+      {
+        "title": "ປ້າຍ"
+      }
+    ]
+  }
+}

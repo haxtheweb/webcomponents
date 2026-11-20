@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Branĉiĝanta scenaro",
+    "description": "Rakonto, en kiu ĉiu elekto kondukas al malsama sceno kaj fino. Lernantoj povas paŝi reen kaj provi aliajn vojojn; la atingita fino difinas la poentaron."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titolo",
+        "description": "Nomo de la scenaro, montrata en ĝia kapo."
+      },
+      {
+        "title": "Komenca sceno",
+        "description": "Identigilo de la sceno, ĉe kiu lernantoj komencas. Lasu malplena por komenci ĉe la unua sceno."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Akcenta koloro",
+        "description": "Nedeviga koloro por la kapa ĉipo, la butonoj kaj la rando de elekto."
+      }
+    ]
+  }
+}

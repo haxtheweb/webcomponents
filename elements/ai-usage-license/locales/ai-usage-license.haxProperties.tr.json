@@ -13,7 +13,10 @@
       {
         "property": "modifier",
         "title": "Medya değiştiricisi",
-        "description": "İsteğe bağlı medya alanı değiştiricisi. Bu lisansın uygulandığı medya türünü belirtir."
+        "description": "İsteğe bağlı medya alanı değiştiricisi. Bu lisansın uygulandığı medya türünü belirtir.",
+        "options": {
+          "": "Değiştirici yok"
+        }
       },
       {
         "property": "uri",

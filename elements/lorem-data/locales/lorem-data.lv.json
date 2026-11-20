@@ -1,4 +1,6 @@
 {
   "saveAll": "Saglabāt visu",
-  "saveTheFollowing": "Vai saglabāt šo: {list}?"
+  "saveTheFollowing": "Vai saglabāt šo: {list}?",
+  "save": "Saglabāt",
+  "cancel": "Atcelt"
 }

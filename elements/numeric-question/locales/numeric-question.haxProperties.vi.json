@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Câu hỏi số",
+    "description": "Câu hỏi được trả lời bằng một số. Đáp án là một số cố định hoặc một công thức tính từ các biến, và được tính đúng khi nằm trong dung sai."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Câu hỏi",
+        "description": "Câu hỏi dành cho người học. Viết tên biến trong dấu ngoặc nhọn, như {d}, để hiển thị giá trị của nó."
+      },
+      {
+        "title": "Đơn vị",
+        "description": "Hiển thị dạng văn bản bên cạnh ô trả lời, ví dụ km/h."
+      },
+      {
+        "title": "Đáp án",
+        "description": "Số đúng. Để trống khi công thức tính ra đáp án."
+      },
+      {
+        "title": "Công thức",
+        "description": "Tính đáp án từ các biến, ví dụ d / (t / 60). Có thể dùng + - * / ^, dấu ngoặc, sqrt() và abs(). Được dùng thay cho đáp án khi được đặt."
+      },
+      {
+        "title": "Biến",
+        "description": "Các số mà công thức và câu hỏi sử dụng. Mỗi số nhận một giá trị giữa mức thấp nhất và cao nhất, theo bước."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Dung sai",
+        "description": "Mức chênh lệch so với đáp án chính xác vẫn được tính. 0 nghĩa là chính xác, hoặc làm tròn đến số chữ số thập phân bên dưới."
+      },
+      {
+        "title": "Loại dung sai",
+        "description": "Tuyệt đối: cộng hoặc trừ dung sai. Phần trăm: cộng hoặc trừ phần trăm đó của đáp án chính xác.",
+        "options": {
+          "absolute": "Tuyệt đối",
+          "percent": "Phần trăm"
+        }
+      },
+      {
+        "title": "Số chữ số thập phân",
+        "description": "Người học được yêu cầu làm tròn đến số chữ số này, và đáp án được hiển thị đã làm tròn. Để trống nếu không làm tròn."
+      },
+      {
+        "title": "Số lần thử",
+        "description": "Số lần người học có thể kiểm tra. 0 nghĩa là không giới hạn."
+      },
+      {
+        "title": "Số mới mỗi lần thử",
+        "description": "Tạo giá trị biến mới mỗi khi người học thử lại. Khi quay lại, câu trả lời trước đó sẽ không hiển thị, chỉ cho biết họ đúng hay sai."
+      },
+      {
+        "title": "Thu gọn được",
+        "description": "Hiển thị câu hỏi này dưới dạng một hàng có thể mở và đóng. Mở một hàng sẽ đóng các câu hỏi thu gọn khác bên cạnh."
+      },
+      {
+        "title": "Bắt đầu ở dạng thu gọn",
+        "description": "Khi thu gọn được, bắt đầu dưới dạng hàng đóng chỉ hiển thị câu hỏi và trạng thái."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Tên bài kiểm tra",
+        "description": "Tên bài kiểm tra dùng để nhận dạng xAPI trong các hệ thống phân tích."
+      }
+    ]
+  }
+}

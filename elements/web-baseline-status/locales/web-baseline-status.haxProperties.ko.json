@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Baseline 상태",
+    "description": "웹 플랫폼 기능의 Baseline 브라우저 지원 상태를 표시합니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "기능 ID",
+        "description": "웹 기능의 ID. 예: anchor-positioning. ID는 webstatus.dev에서 찾을 수 있으며, 기능 페이지 URL의 마지막 부분입니다."
+      }
+    ]
+  }
+}

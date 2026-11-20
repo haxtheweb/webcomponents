@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Mtandao wa mfumo ikolojia",
+    "description": "Mtandao shirikishi wa jinsi sehemu za mradi zinavyounganishwa, wenye mitandao midogo na ziara za hatua kwa hatua."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Data ya mtandao",
+        "description": "URL ya kifurushi cha JSON cha mitandao (kimejengwa katika PRAW, ecosystem-webs.json)."
+      },
+      {
+        "title": "Mtandao",
+        "description": "ID ya mtandao wa kuonyesha kwanza; main ni mtandao wa mfumo ikolojia."
+      },
+      {
+        "title": "Kigae kilichochaguliwa",
+        "description": "ID ya kigae cha kuchagua mtandao unapofunguka."
+      },
+      {
+        "title": "Ziara",
+        "description": "ID ya ziara ya kuanzia."
+      },
+      {
+        "title": "Anza katika mwonekano wa orodha",
+        "description": "Onyesha mtandao kama orodha zilizo ndani ya nyingine badala ya mchoro."
+      },
+      {
+        "title": "Mchoro tu",
+        "description": "Onyesha mchoro tu, kama kielelezo: bila kichwa, ziara, maelezo au upau wa hatua."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Soma kwa",
+        "description": "Anza na kila kigae kikisomwa kwa kipimo kimoja.",
+        "options": {
+          "": "Miunganisho tu",
+          "fresh": "Usasa",
+          "bus": "Kipengele cha basi",
+          "impact": "Athari",
+          "evidence": "Ushahidi",
+          "parity": "Usawa"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Papa inoa kiko hōʻoia",
+    "description": "He papa inoa o nā pahu kaha. Kaha nā mea heluhelu i nā mea a hoʻomanaʻo ʻia ko lākou holomua ma ko lākou mea ponoʻī."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Poʻo inoa",
+        "description": "Inoa o ka papa inoa. Heluhelu leo nui ʻia ma ke ʻano he lepili o ka pūʻulu pahu kaha."
+      },
+      {
+        "title": "Nā mea",
+        "description": "He pahu kaha kēlā me kēia mea. ʻAʻole hiki i nā mea heluhelu ke hoʻololi i nā mea i kaha ʻia a i ʻole i hoʻopio ʻia."
+      },
+      {
+        "title": "Helu ʻia",
+        "description": "Hōʻike i papa inoa helu ma kahi o ka papa inoa kiko."
+      },
+      {
+        "title": "Kūlana",
+        "description": "Hoʻololi i nā waihoʻoluʻu e like me stop-note.",
+        "options": {
+          "info": "Hoʻolaha",
+          "success": "Hōʻoia",
+          "warning": "ʻŌlelo aʻo",
+          "stop": "Kū"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "Id waihona",
+        "description": "He id kūʻokoʻa i hoʻohana ʻia e hoʻomanaʻo i ka holomua o ka mea heluhelu ma kona mea. Hana ʻakomi ʻia; e hoʻololi wale nō e kaʻana like i ka holomua ma waena o nā papa inoa a i ʻole e hoʻomaka hou."
+      }
+    ]
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Zindikirani malo",
+    "description": "Ophunzira amapeza malo oyenera pa chithunzi podina, kukhudza kapena kusuntha chizindikiro cha kiyibodi. Mnzake wopatsidwa magiredi wa mapu a chithunzi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Chithunzi",
+        "description": "Chithunzi chomwe ophunzira amafufuzamo."
+      },
+      {
+        "title": "Zolemba zina",
+        "description": "Chimafotokoza chithunzi kwa anthu omwe sangathe kuchiwona. Sichiwonetsedwa ngati mutu."
+      },
+      {
+        "title": "Mutu",
+        "description": "Mutu wachidule wowoneka wowonetsedwa pamwamba pa chithunzi."
+      },
+      {
+        "title": "Funso",
+        "description": "Zomwe ophunzira afunsidwa kupeza mu chithunzi."
+      },
+      {
+        "title": "Mayankho",
+        "description": "Yankho lililonse ndi chozungulira chotchulidwa dzina pa chithunzi. Malo ndi kukula ndi maperesenti a chithunzi, oyezedwa kuchokera ku ngodya yake yakumanzere pamwamba. Mukamasintha, yankho lililonse limazunguliridwa mzere pa chithunzi."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Kuyesa",
+        "description": "Kangati wophunzira angayese. 0 imatanthauza mopanda malire."
+      },
+      {
+        "title": "Kuphonya kololedwa",
+        "description": "Kuphonya kangati kumathetsa kuyesa. 0 imatanthauza mopanda malire, ndipo ophunzira amapeza batani la Malizani."
+      },
+      {
+        "title": "Yopindika",
+        "description": "Onetsani funsoli ngati mzere womwe umatseguka ndi kutseka. Kutsegula limodzi kumatseka mafunso ena opindika omwe ali pafupi nalo."
+      },
+      {
+        "title": "Yambani mopindidwa",
+        "description": "Ikakhala yopindika, yambani ngati mzere wotsekedwa womwe umawonetsa funso ndi momwe lilili kokha."
+      },
+      {
+        "title": "Mtundu wa kupereka magiredi",
+        "description": "OER Schema: mtundu wa kupereka magiredi pa kuyesa uku (mwachitsanzo mapointi, chilembo, peresenti, kumaliza)."
+      },
+      {
+        "title": "Cholinga cha maphunziro",
+        "description": "OER Schema: cholinga cha maphunziro chogwirizana ndi kuyesa uku."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Dzina la mayeso",
+        "description": "Dzina la mayeso lotumizidwa kuti ligwiritsidwe ntchito m'malo oyendetsedwa ndi xAPI pozindikiritsa chinthu ichi"
+      },
+      {
+        "title": "Maphunziro",
+        "description": "OER Schema: maphunziro omwe kuyesa uku kwapangidwira."
+      }
+    ]
+  }
+}

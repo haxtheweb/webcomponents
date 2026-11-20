@@ -23,7 +23,9 @@
           "stop": "Stopp",
           "warning": "Advarsel",
           "success": "Bekreftelse",
-          "info": "Merknad"
+          "info": "Merknad",
+          "tip": "Tips",
+          "new": "Hva er nytt"
         }
       },
       {

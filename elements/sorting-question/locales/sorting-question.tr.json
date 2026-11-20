@@ -40,5 +40,7 @@
   "hideDirections": "Yönergeleri gizle",
   "showRelatedContent": "İlgili içeriği göster",
   "hideRelatedContent": "İlgili içeriği gizle",
-  "notAttempted": "Denenmedi"
+  "notAttempted": "Denenmedi",
+  "cardsDirections": "Kartları, her karttaki öne taşı ve sona taşı düğmeleriyle veya fareyle sürükleyerek doğru sıraya koyun. Doğru sırada olduklarını düşündüğünüzde {checkAnswer} seçerek yanıtınızı test edin.",
+  "movedToPosition": "{item}, {total} konumdan {position}. konuma taşındı"
 }

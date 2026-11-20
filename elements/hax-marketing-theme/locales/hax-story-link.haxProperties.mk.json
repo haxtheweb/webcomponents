@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Копче за приказна",
+    "description": "Копчето што ја отвора приказната зад тврдењето на hax.cloud или соодветното место на друга страница од HAX мрежата"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Каде води",
+        "options": {
+          "cloud": "hax.cloud, приказната",
+          "learn": "learn.hax.cloud, упатство",
+          "try": "browser.hax.cloud, пробајте",
+          "elements": "webcomponents.hax.cloud, блок",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Адреса на таа страница (приказна на hax.cloud изгледа како stories/ee450a19)"
+      },
+      {
+        "title": "За што станува збор"
+      },
+      {
+        "title": "Мал чип"
+      },
+      {
+        "title": "Прикажи во копчето за што станува збор"
+      }
+    ]
+  }
+}

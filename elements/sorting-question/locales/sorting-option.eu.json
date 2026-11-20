@@ -2,5 +2,9 @@
   "answerInCorrectOrder": "Erantzuna ordena zuzenean dago",
   "answerInIncorrectOrder": "Erantzuna ordena okerrean dago",
   "moveOptionUp": "Hautatu aukera ordenan gora mugitzeko",
-  "moveOptionDown": "Hautatu aukera ordenan behera mugitzeko"
+  "moveOptionDown": "Hautatu aukera ordenan behera mugitzeko",
+  "moveEarlier": "Mugitu lehenago",
+  "moveLater": "Mugitu geroago",
+  "correct": "Zuzena",
+  "incorrect": "Okerra"
 }

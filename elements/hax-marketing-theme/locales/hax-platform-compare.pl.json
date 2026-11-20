@@ -1,0 +1,15 @@
+{
+  "loading": "Wczytywanie porównania.",
+  "yes": "Tak",
+  "partly": "Częściowo",
+  "no": "Nie",
+  "compare": "Porównaj",
+  "with": "Z",
+  "vs": "vs",
+  "caption": "{a} i {b}, funkcja po funkcji",
+  "feature": "Funkcja",
+  "clearYes": "Jednoznaczne tak: {count} z {total}",
+  "seeForYourself": "Przekonaj się sam:",
+  "and": "i",
+  "why": "Dlaczego"
+}

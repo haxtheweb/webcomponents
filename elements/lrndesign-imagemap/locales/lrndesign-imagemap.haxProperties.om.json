@@ -14,6 +14,10 @@
         "property": "hotspotDetails",
         "title": "Bal'ina bakkeewwan tuqamoo",
         "description": "Bakkeewwan tuqamoo kaartaa suuraa irra jiran."
+      },
+      {
+        "title": "Bal'ina bakkeewwan ijoo",
+        "description": "Bakkeewwan ijoo walqunnamtii kaartaa suuraa irratti."
       }
     ]
   }

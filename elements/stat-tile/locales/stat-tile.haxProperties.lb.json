@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Statistik-Kachel",
+    "description": "Eng Zuel, déi zielt, mat hirer Bezeechnung a wéi se sech geännert huet. Setzt e puer an e Gitter fir eng Dashboard-Zeil."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Bezeechnung",
+        "description": "Wat d'Zuel moosst."
+      },
+      {
+        "title": "Wäert",
+        "description": "D'Zuel. Eng einfach Zuel gëtt no der Sprooch vun der Säit gruppéiert; alles anescht gëtt gewisen, wéi et geschriwwen ass."
+      },
+      {
+        "title": "Ännerung",
+        "description": "Wéi se sech geännert huet, a Wierder, wéi 6% dëst Semester."
+      },
+      {
+        "title": "Richtung",
+        "description": "Ob d'Ännerung erop oder erof geet.",
+        "options": {
+          "": "Keng",
+          "up": "Erop",
+          "down": "Erof"
+        }
+      }
+    ]
+  }
+}

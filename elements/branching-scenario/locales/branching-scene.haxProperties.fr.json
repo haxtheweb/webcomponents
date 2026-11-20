@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Scène de scénario",
+    "description": "Une scène d'un scénario à embranchements. Liez chaque choix à une autre scène avec # suivi de son id de scène."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Id de la scène",
+        "description": "Ce vers quoi pointent les choix : un lien vers # suivi de cet id mène à cette scène. Lettres, chiffres et tirets."
+      },
+      {
+        "title": "Titre",
+        "description": "Titre de la scène."
+      },
+      {
+        "title": "Fin",
+        "description": "Si cette scène termine un chemin, et comment il s'est terminé.",
+        "options": {
+          "": "Pas une fin",
+          "good": "Bonne fin",
+          "mixed": "Fin mitigée",
+          "poor": "Mauvaise fin"
+        }
+      },
+      {
+        "title": "Score",
+        "description": "Score pour avoir atteint cette fin. Le score de fin le plus élevé du scénario est le maximum."
+      }
+    ]
+  }
+}

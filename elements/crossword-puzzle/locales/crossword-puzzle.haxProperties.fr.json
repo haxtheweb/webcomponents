@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Mots croisés",
+    "description": "Des mots croisés créés à partir d'une liste de mots et de définitions. La grille est générée pour vous ; les apprenants saisissent les mots et les vérifient."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titre",
+        "description": "Le titre ou la question affiché au-dessus des mots croisés."
+      },
+      {
+        "title": "Mots",
+        "description": "Chaque mot et sa définition. La grille est générée à partir de cette liste : le mot le plus long est placé en premier et les autres le croisent sur des lettres communes."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tentatives",
+        "description": "Combien de fois un apprenant peut vérifier. 0 signifie illimité."
+      },
+      {
+        "title": "Couleur d'accent",
+        "description": "Couleur facultative pour la pastille d'en-tête, le mot actif et les boutons d'action."
+      },
+      {
+        "title": "Repliable",
+        "description": "Afficher ces mots croisés sous forme de ligne qui s'ouvre et se ferme. En ouvrir une ferme les autres questions repliables à côté."
+      },
+      {
+        "title": "Démarrer replié",
+        "description": "Si repliable, commencer comme une ligne fermée qui n'affiche que le titre et son état."
+      },
+      {
+        "title": "Format de notation",
+        "description": "OER Schema : format de notation de cette évaluation (par ex. points, lettre, pourcentage, achèvement)."
+      },
+      {
+        "title": "Objectif d'apprentissage",
+        "description": "OER Schema : objectif d'apprentissage associé à cette évaluation."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Nom du quiz",
+        "description": "Nom du quiz utilisé pour l'identification xAPI dans les systèmes d'analyse."
+      },
+      {
+        "title": "Cours",
+        "description": "OER Schema : cours auquel cette évaluation est destinée."
+      }
+    ]
+  }
+}

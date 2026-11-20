@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Cari kata",
+    "description": "Grid huruf dengan perkataan tersembunyi. Pelajar mengetik huruf pertama dan terakhir setiap perkataan. Melatih mengenal pasti ejaan sesuatu istilah, bukan maknanya."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tajuk",
+        "description": "Apa yang pelajar diminta cari, dipaparkan dalam pengepala."
+      },
+      {
+        "title": "Perkataan",
+        "description": "Perkataan untuk disembunyikan. Ruang dan tanda baca dikecualikan daripada grid. Perkataan yang tidak muat disenaraikan semasa anda menyunting dan dikecualikan untuk pelajar."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Saiz grid",
+        "description": "Huruf setiap sisi, 4 hingga 16. Biarkan kosong untuk memuatkan perkataan terpanjang (sehingga 12). Lebih daripada 12 akan menatal ke sisi pada telefon."
+      },
+      {
+        "title": "Perkataan menyerong",
+        "description": "Juga sembunyikan perkataan secara menyerong. Lebih sukar."
+      },
+      {
+        "title": "Perkataan terbalik",
+        "description": "Juga sembunyikan perkataan yang ditulis terbalik. Lebih sukar."
+      },
+      {
+        "title": "Warna aksen",
+        "description": "Warna pilihan untuk cip pengepala, huruf pertama yang dipilih dan butang."
+      }
+    ]
+  }
+}

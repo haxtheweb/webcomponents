@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Parth gollwng delwedd",
+    "description": "Mae dysgwyr yn gosod labeli ar barthau wedi'u gosod dros ddelwedd, yna'n gwirio eu hateb."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Delwedd",
+        "description": "Y ddelwedd y mae dysgwyr yn gosod labeli arni."
+      },
+      {
+        "title": "Testun amgen",
+        "description": "Yn disgrifio'r ddelwedd ar gyfer pobl na allant ei gweld. Peidiwch â datgelu ble mae'r labeli'n mynd."
+      },
+      {
+        "title": "Teitl y ddelwedd",
+        "description": "Teitl gweladwy byr ar gyfer y ddelwedd, wedi'i ddangos uwch ei phen."
+      },
+      {
+        "title": "Cwestiwn",
+        "description": "Yr hyn y gofynnir i ddysgwyr ei wneud gyda'r labeli."
+      },
+      {
+        "title": "Labeli a pharthau",
+        "description": "Mae pob eitem yn label y gall dysgwyr ei osod. Rhowch enw parth i label i roi ei barth ar y ddelwedd; mae label heb enw parth yn ychwanegol ac nid yw'n perthyn i unman. Mae rhifau parthau'n ganrannau o'r ddelwedd."
+      },
+      {
+        "title": "Capsiwn",
+        "description": "Capsiwn dewisol a ddangosir o dan y ddelwedd."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ymgeisiau",
+        "description": "Sawl gwaith y gall dysgwr wirio. Mae 0 yn golygu diderfyn."
+      },
+      {
+        "title": "Cymysgu'r labeli",
+        "description": "Dangos y labeli mewn trefn wahanol bob ymweliad."
+      },
+      {
+        "title": "Plygadwy",
+        "description": "Dangos y cwestiwn hwn fel rhes sy'n agor ac yn cau. Mae agor un yn cau'r cwestiynau plygadwy eraill wrth ei ymyl."
+      },
+      {
+        "title": "Dechrau wedi'i blygu",
+        "description": "Pan fydd yn blygadwy, dechrau fel rhes gaeedig sy'n dangos y cwestiwn a'i statws yn unig."
+      },
+      {
+        "title": "Fformat graddio",
+        "description": "OER Schema: fformat graddio ar gyfer yr asesiad hwn (e.e. pwyntiau, llythyren, canran, cwblhau)."
+      },
+      {
+        "title": "Amcan dysgu",
+        "description": "OER Schema: amcan dysgu sy'n gysylltiedig â'r asesiad hwn."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Enw'r cwis",
+        "description": "Enw'r cwis a ddefnyddir ar gyfer adnabod xAPI mewn systemau dadansoddeg."
+      },
+      {
+        "title": "Cwrs",
+        "description": "OER Schema: y cwrs y bwriedir yr asesiad hwn ar ei gyfer."
+      }
+    ]
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "문서 플레이어",
+    "description": "웹 컴포넌트의 안내, 데모, 참고 자료. HTML, import, npm, CDN 복사 버튼이 있습니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "문서 데이터 파일",
+        "description": "요소와 함께 제공되는 문서 데이터(lib/tag.docs.json)."
+      },
+      {
+        "title": "안내 스토리보드",
+        "description": "요소와 함께 제공되는 모션 스토리보드(tag.motion.json). 선택 사항."
+      },
+      {
+        "title": "동영상 튜토리얼",
+        "description": "요소에 대한 짧은 동영상(YouTube, Vimeo 또는 동영상 파일). 문서 데이터의 동영상보다 우선합니다."
+      },
+      {
+        "title": "처음 열 탭",
+        "description": "처음에 표시할 탭.",
+        "options": {
+          "motion": "안내",
+          "video": "동영상",
+          "demo": "데모",
+          "docs": "문서",
+          "schema": "스키마"
+        }
+      },
+      {
+        "title": "안내 자동 재생",
+        "description": "플레이어가 보이자마자 안내를 시작합니다. 독자가 동작 줄이기를 선호하면 무시됩니다."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "안내 주제",
+        "description": "안내가 여러 개인 요소에서 먼저 열 주제(예: add-blocks). 기본 안내를 쓰려면 비워 두세요."
+      },
+      {
+        "title": "라이브 데모 링크",
+        "description": "데모 소스 열기 버튼이 가는 곳. 기본값은 저장소의 demo 폴더입니다."
+      },
+      {
+        "title": "문서 링크",
+        "description": "전체 문서 버튼이 가는 곳. 예: 해당 Learn HAX 페이지."
+      }
+    ]
+  }
+}

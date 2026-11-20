@@ -14,6 +14,17 @@
         "property": "autoAccentColor",
         "title": "Automatikus kiemelőszín",
         "description": "A kiemelőszín automatikus származtatása a címke szövegéből."
+      },
+      {
+        "title": "Jelentés",
+        "description": "Adjon a címkének jelentést hordozó színt. Hagyja üresen semleges címkéhez.",
+        "options": {
+          "": "Semleges",
+          "brand": "Márka",
+          "success": "Siker",
+          "warning": "Figyelmeztetés",
+          "danger": "Veszély"
+        }
       }
     ],
     "advanced": [

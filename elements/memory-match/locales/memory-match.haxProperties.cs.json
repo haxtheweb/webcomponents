@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Pexeso",
+    "description": "Otáčejte karty a hledejte páry. Spárujte pojem s jeho významem, aby shoda ukázala porozumění, nebo použijte dva shodné texty či obrázky."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Název",
+        "description": "Zadání zobrazené v záhlaví, například: Přiřaďte pojem k jeho funkci."
+      },
+      {
+        "title": "Páry",
+        "description": "Každý pár jsou dvě karty, které k sobě patří, obvykle pojem a jeho význam. Strana potřebuje text, obrázek nebo obojí."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Zvýrazňující barva",
+        "description": "Volitelná barva štítku záhlaví, rubů karet a tlačítka."
+      }
+    ]
+  }
+}

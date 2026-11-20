@@ -3,5 +3,8 @@
   "copyAsCsv": "Kopírovat jako CSV.",
   "printTable": "Vytisknout tabulku",
   "selectColumn": "Vybrat sloupec",
-  "dataTable": "Data · Tabulka"
+  "dataTable": "Data · Tabulka",
+  "filterStatus": "Zobrazeno {shown} z {total} řádků, filtrováno podle {column}: {text}",
+  "columnNumber": "Sloupec {column}",
+  "clearFilter": "Zrušit filtr"
 }

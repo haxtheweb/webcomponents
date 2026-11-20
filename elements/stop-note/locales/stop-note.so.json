@@ -3,5 +3,7 @@
   "status_stop": "Jooji",
   "status_warning": "Digniin",
   "status_success": "Guul",
-  "status_info": "Fiiro gaar ah"
+  "status_info": "Fiiro gaar ah",
+  "status_tip": "Ma ogtahay?",
+  "status_new": "Waxa cusub"
 }

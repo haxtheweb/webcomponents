@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Cuntributori",
+    "description": "E persone chì anu custruitu u prughjettu, da un schedariu di lista"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Schedariu di lista (JSON)"
+      },
+      {
+        "title": "Vista: landed, lab o code"
+      },
+      {
+        "title": "Numeru massimu di persone à mustrà (0 hè tutti)"
+      }
+    ]
+  }
+}

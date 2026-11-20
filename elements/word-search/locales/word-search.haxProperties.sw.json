@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Kutafuta maneno",
+    "description": "Gridi ya herufi yenye maneno yaliyofichwa. Wanafunzi hugusa herufi ya kwanza na ya mwisho ya kila neno. Hufanyia mazoezi kutambua jinsi istilahi inavyoandikwa, si maana yake."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kichwa",
+        "description": "Kile wanafunzi wanachoombwa kupata, kinachoonyeshwa kwenye kichwa."
+      },
+      {
+        "title": "Maneno",
+        "description": "Maneno ya kuficha. Nafasi na alama za uakifishaji zinaachwa nje ya gridi. Maneno yasiyotosha yanaorodheshwa unapohariri na kuachwa nje kwa wanafunzi."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ukubwa wa gridi",
+        "description": "Herufi kwa kila upande, 4 hadi 16. Acha tupu ili kutosha neno refu zaidi (hadi 12). Zaidi ya 12 husogea kando kwenye simu."
+      },
+      {
+        "title": "Maneno ya mshazari",
+        "description": "Ficha maneno kwa mshazari pia. Ngumu zaidi."
+      },
+      {
+        "title": "Maneno ya kinyumenyume",
+        "description": "Ficha pia maneno yaliyoandikwa kinyumenyume. Ngumu zaidi."
+      },
+      {
+        "title": "Rangi ya msisitizo",
+        "description": "Rangi ya hiari ya kibandiko cha kichwa, herufi ya kwanza iliyochaguliwa na kitufe."
+      }
+    ]
+  }
+}

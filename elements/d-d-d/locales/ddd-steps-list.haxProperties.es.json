@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Lista de pasos",
     "description": "Pasos numerados para completar una tarea."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Indicador de pasos",
+        "description": "Muestra los pasos como una fila compacta de títulos que marca el progreso. El contenido de los pasos no se muestra en esta disposición."
+      },
+      {
+        "title": "Paso actual",
+        "description": "El paso en el que está el lector, contando desde 1. Los pasos anteriores se muestran como completados. Lo usa el indicador de pasos."
+      }
+    ]
   }
 }

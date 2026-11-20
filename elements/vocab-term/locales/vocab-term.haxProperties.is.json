@@ -7,7 +7,8 @@
     "configure": [
       {
         "property": "term",
-        "title": "Hugtak"
+        "title": "Hugtak",
+        "description": "Orðið eða orðasambandið sem lesendur smella á til að sjá skilgreiningu þess."
       },
       {
         "property": "information",

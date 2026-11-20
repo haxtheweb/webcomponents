@@ -5,5 +5,7 @@
   "editModeLabel": "Režim úprav zoznamu médií",
   "position": "{current} z {total}",
   "previousItem": "Predchádzajúca položka",
-  "nextItem": "Ďalšia položka"
+  "nextItem": "Ďalšia položka",
+  "fullScreen": "Celá obrazovka",
+  "exitFullScreen": "Ukončiť celú obrazovku"
 }

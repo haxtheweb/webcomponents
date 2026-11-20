@@ -13,7 +13,10 @@
       {
         "property": "modifier",
         "title": "Mea hoʻololi media",
-        "description": "Mea hoʻololi kahua media koho. Hōʻike ia i ke ʻano media e pili ai kēia laikini."
+        "description": "Mea hoʻololi kahua media koho. Hōʻike ia i ke ʻano media e pili ai kēia laikini.",
+        "options": {
+          "": "ʻAʻohe mea hoʻololi"
+        }
       },
       {
         "property": "uri",

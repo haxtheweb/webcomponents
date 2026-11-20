@@ -5,5 +5,7 @@
   "editModeLabel": "របៀបកែសម្រួលបញ្ជីចាក់មេឌៀ",
   "position": "{current} ក្នុងចំណោម {total}",
   "previousItem": "ធាតុមុន",
-  "nextItem": "ធាតុបន្ទាប់"
+  "nextItem": "ធាតុបន្ទាប់",
+  "fullScreen": "ពេញអេក្រង់",
+  "exitFullScreen": "ចាកចេញពីពេញអេក្រង់"
 }

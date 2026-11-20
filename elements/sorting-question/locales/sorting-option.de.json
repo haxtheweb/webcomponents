@@ -2,5 +2,9 @@
   "answerInCorrectOrder": "Antwort ist in der richtigen Reihenfolge",
   "answerInIncorrectOrder": "Antwort ist in der falschen Reihenfolge",
   "moveOptionUp": "Auswählen, um die Option in der Reihenfolge nach oben zu verschieben",
-  "moveOptionDown": "Auswählen, um die Option in der Reihenfolge nach unten zu verschieben"
+  "moveOptionDown": "Auswählen, um die Option in der Reihenfolge nach unten zu verschieben",
+  "moveEarlier": "Nach vorn verschieben",
+  "moveLater": "Nach hinten verschieben",
+  "correct": "Richtig",
+  "incorrect": "Falsch"
 }

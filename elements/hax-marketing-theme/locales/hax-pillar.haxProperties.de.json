@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Säule",
+    "description": "Eine Säule: Name, Leitsatz, Symbol, Farbe und warum sie wichtig ist"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Name"
+      },
+      {
+        "title": "Leitsatz"
+      },
+      {
+        "title": "Symbol"
+      },
+      {
+        "title": "Farbe (DDD-Name)"
+      },
+      {
+        "title": "Welche Säule, 1 bis 7"
+      },
+      {
+        "title": "Kleine Karte"
+      },
+      {
+        "title": "Wo der Name steht"
+      }
+    ]
+  }
+}

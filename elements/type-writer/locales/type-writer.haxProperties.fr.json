@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Machine à écrire",
     "description": "Texte qui se tape tout seul, un caractère à la fois."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Texte",
+        "description": "Le texte à taper une fois que l'élément défile dans la vue."
+      },
+      {
+        "title": "Frappe",
+        "description": "Afficher le curseur clignotant ; l'élément le définit pendant qu'il tape."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Délai",
+        "description": "Millisecondes d'attente avant le début de la frappe."
+      },
+      {
+        "title": "Durée du curseur",
+        "description": "Millisecondes pendant lesquelles le curseur continue de clignoter après la frappe du texte."
+      },
+      {
+        "title": "Vitesse",
+        "description": "Millisecondes par caractère ; plus le nombre est petit, plus la frappe est rapide."
+      }
+    ]
   }
 }

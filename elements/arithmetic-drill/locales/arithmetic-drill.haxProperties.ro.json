@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Exercițiu de aritmetică",
+    "description": "O serie scurtă de probleme de aritmetică generate, cu feedback instantaneu. Alegeți operațiile și intervalul de numere; fiecare rundă este nouă."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titlu",
+        "description": "Numele acestui exercițiu, afișat în antet."
+      },
+      {
+        "title": "Operații",
+        "description": "Ce tipuri de probleme sunt puse. Cursanții pot dezactiva oricare dintre ele înainte de a începe.",
+        "options": {
+          "add": "Adunare",
+          "subtract": "Scădere",
+          "multiply": "Înmulțire",
+          "divide": "Împărțire",
+          "add subtract": "Adunare și scădere",
+          "multiply divide": "Înmulțire și împărțire",
+          "add multiply": "Adunare și înmulțire",
+          "add divide": "Adunare și împărțire",
+          "subtract multiply": "Scădere și înmulțire",
+          "subtract divide": "Scădere și împărțire",
+          "add subtract multiply": "Adunare, scădere și înmulțire",
+          "add subtract divide": "Adunare, scădere și împărțire",
+          "add multiply divide": "Adunare, înmulțire și împărțire",
+          "subtract multiply divide": "Scădere, înmulțire și împărțire",
+          "add subtract multiply divide": "Toate patru"
+        }
+      },
+      {
+        "title": "Cel mai mic număr",
+        "description": "Cel mai mic număr folosit într-o problemă. Numere întregi, 0 sau mai mult."
+      },
+      {
+        "title": "Cel mai mare număr",
+        "description": "Cel mai mare număr folosit într-o problemă. Rezultatele împărțirilor și împărțitorii rămân și ei în acest interval."
+      },
+      {
+        "title": "Numărul de probleme",
+        "description": "Câte probleme sunt într-o rundă (de la 1 la 100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Limită de timp",
+        "description": "Secunde permise pentru o rundă întreagă. 0 înseamnă fără cronometru, care este valoarea implicită: exercițiile cronometrate îi dezavantajează pe cursanții care au nevoie de mai mult timp. Când este setată, cursanții pot totuși opri cronometrul pentru ei înșiși."
+      },
+      {
+        "title": "Culoare de accent",
+        "description": "Culoarea etichetei din antet și a butoanelor. Lăsați gol pentru a urma tema."
+      }
+    ]
+  }
+}

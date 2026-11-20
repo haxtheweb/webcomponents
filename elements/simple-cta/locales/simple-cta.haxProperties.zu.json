@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Fihla isithonjana",
         "description": "Fihla isithonjana esisetshenziselwa ukugcizelela umbhalo"
+      },
+      {
+        "title": "Ukubukeka",
+        "description": "Ukugcizelelwa okungakanani kwenkinobho.",
+        "options": {
+          "": "Kugcwalisiwe",
+          "tonal": "Kunethoni",
+          "outlined": "Kunomugqa",
+          "plain": "Kuvamile"
+        }
+      },
+      {
+        "title": "Usayizi",
+        "description": "Usayizi wenkinobho.",
+        "options": {
+          "s": "Kuncane",
+          "": "Maphakathi",
+          "l": "Kukhulu"
+        }
       }
     ],
     "advanced": [

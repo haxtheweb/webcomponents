@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Makina olembera",
     "description": "Mawu odzilemba okha chilembo chimodzi pa nthawi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Zolemba",
+        "description": "Zolemba zoti zilembedwe chinthucho chikangofika powonekera."
+      },
+      {
+        "title": "Kulemba",
+        "description": "Onetsani cholozera chophethira; chinthucho chimachiyika pamene chikulemba."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Kuchedwa",
+        "description": "Ma millisecond odikira kulemba kusanayambe."
+      },
+      {
+        "title": "Nthawi ya cholozera",
+        "description": "Ma millisecond omwe cholozera chimapitiriza kuphethira zolemba zitalembedwa."
+      },
+      {
+        "title": "Liwiro",
+        "description": "Ma millisecond pa chilembo chilichonse; manambala otsika amalemba mwachangu."
+      }
+    ]
   }
 }

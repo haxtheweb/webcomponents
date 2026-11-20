@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "Titel"
+        "title": "Titel",
+        "description": "Iwwerschrëft iwwer dem Coursmodell."
       },
       {
         "property": "src",
-        "title": "Quell"
+        "title": "Quell",
+        "description": "Adress vum 3D-Modellfichier (.glb oder .gltf), dee gewise gëtt."
       },
       {
         "property": "alt",
-        "title": "Alt-Text"
+        "title": "Alt-Text",
+        "description": "Beschreift den 3D-Modell fir Leit, déi en net gesi kënnen."
       },
       {
         "title": "Informatiounsberäich"

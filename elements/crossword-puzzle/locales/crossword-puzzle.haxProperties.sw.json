@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Chemshabongo",
+    "description": "Chemshabongo iliyotengenezwa kutoka orodha ya maneno na vidokezo. Gridi inazalishwa kwa ajili yako; wanafunzi huandika maneno na kuyakagua."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kichwa",
+        "description": "Kichwa au swali linaloonyeshwa juu ya chemshabongo."
+      },
+      {
+        "title": "Maneno",
+        "description": "Kila neno na kidokezo chake. Gridi inazalishwa kutoka orodha hii: neno refu zaidi huwekwa kwanza na mengine hulikatiza kwenye herufi zinazoshirikiwa."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Majaribio",
+        "description": "Ni mara ngapi mwanafunzi anaweza kukagua. 0 inamaanisha bila kikomo."
+      },
+      {
+        "title": "Rangi ya msisitizo",
+        "description": "Rangi ya hiari ya kibandiko cha kichwa, neno linalotumika na vitufe vya vitendo."
+      },
+      {
+        "title": "Inayokunjika",
+        "description": "Onyesha chemshabongo hii kama safu inayofunguka na kufungwa. Kufungua moja hufunga maswali mengine yanayokunjika kando yake."
+      },
+      {
+        "title": "Anza ikiwa imekunjwa",
+        "description": "Ikiwa inakunjika, anza kama safu iliyofungwa inayoonyesha kichwa na hali yake tu."
+      },
+      {
+        "title": "Muundo wa upimaji",
+        "description": "OER Schema: muundo wa upimaji wa tathmini hii (k.m. pointi, herufi, asilimia, ukamilishaji)."
+      },
+      {
+        "title": "Lengo la kujifunza",
+        "description": "OER Schema: lengo la kujifunza linalohusishwa na tathmini hii."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Jina la jaribio",
+        "description": "Jina la jaribio linalotumika kwa utambulisho wa xAPI katika mifumo ya uchanganuzi."
+      },
+      {
+        "title": "Kozi",
+        "description": "OER Schema: kozi ambayo tathmini hii imekusudiwa."
+      }
+    ]
+  }
+}

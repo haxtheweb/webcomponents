@@ -23,7 +23,9 @@
           "stop": "Oprire",
           "warning": "Avertisment",
           "success": "Confirmare",
-          "info": "Aviz"
+          "info": "Aviz",
+          "tip": "Sfat",
+          "new": "Noutăți"
         }
       },
       {

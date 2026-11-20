@@ -24,11 +24,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Jikme-jiklikler açyk wagty goşmaça gysgaça tekst"
+        "title": "Jikme-jiklikler açyk wagty goşmaça gysgaça tekst",
+        "description": "Düşündiriş gizlenende düwmäniň teksti, meselem Düşündirişi görkez."
       },
       {
         "property": "closeText",
-        "title": "Jikme-jiklikler ýapyk wagty goşmaça gysgaça tekst"
+        "title": "Jikme-jiklikler ýapyk wagty goşmaça gysgaça tekst",
+        "description": "Düşündiriş görkezilende düwmäniň teksti, meselem Düşündirişi gizle."
       }
     ]
   }

@@ -1,0 +1,16 @@
+{
+  "theme": "Motīvs",
+  "designSystem": "Dizaina sistēma",
+  "dddDefault": "DDD (noklusējums)",
+  "designSystemHelp": "Krāsa, fonts, stūri un fokuss. Motīvs saglabā izkārtojumu.",
+  "designSystemFixed": "Šis motīvs saglabā savu dizaina sistēmu.",
+  "palette": "Palete",
+  "themeDefault": "Motīva noklusējums",
+  "paletteNumber": "Palete {n}",
+  "siteTheme": "{name} (šīs vietnes motīvs)",
+  "restyle": "Mainīt šīs vietnes stilu",
+  "close": "Aizvērt",
+  "reset": "Atpakaļ uz šīs vietnes izskatu",
+  "random": "Pārsteidziet mani",
+  "about": "Šeit redzami daži HAX iebūvētie izskati. Lapas nekad nemainās: struktūra glabājas JSON Outline Schema, un katrs bloks ir standarta tīmekļa komponents, tāpēc dizainu var brīvi mainīt."
+}

@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Papa kaʻina hana",
     "description": "Nā ʻanuʻu i helu ʻia no ka hoʻopau ʻana i kekahi hana."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mea hōʻike ʻanuʻu",
+        "description": "Hōʻike i nā ʻanuʻu ma ke ʻano he lālani paʻapū o nā poʻo inoa e kaha ana i ka holomua. ʻAʻole hōʻike ʻia ka ʻike o nā ʻanuʻu ma kēia hoʻonohonoho."
+      },
+      {
+        "title": "ʻAnuʻu o kēia manawa",
+        "description": "Ka ʻanuʻu e noho ai ka mea heluhelu, helu ʻia mai 1. Hōʻike ʻia nā ʻanuʻu ma mua he pau. Hoʻohana ʻia e ka mea hōʻike ʻanuʻu."
+      }
+    ]
   }
 }

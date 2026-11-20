@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Checklëscht",
+    "description": "Eng Lëscht mat Kontrollkëschtercher. D'Lieser kräizen Elementer un, an hire Fortschrëtt gëtt op hirem eegenen Apparat gespäichert."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Numm vun der Lëscht. Gëtt als Bezeechnung vun der Grupp vu Kontrollkëschtercher virgelies."
+      },
+      {
+        "title": "Elementer",
+        "description": "All Element ass e Kontrollkëschtchen. Ugekräizt oder desaktivéiert Elementer kënnen d'Lieser net änneren."
+      },
+      {
+        "title": "Nummeréiert",
+        "description": "Eng nummeréiert Lëscht amplaz enger Lëscht mat Punkte weisen."
+      },
+      {
+        "title": "Status",
+        "description": "Ännert d'Faarwen, fir zu stop-note ze passen.",
+        "options": {
+          "info": "Hiweis",
+          "success": "Bestätegung",
+          "warning": "Warnung",
+          "stop": "Stopp"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "Späicher-ID",
+        "description": "Eendeiteg ID, fir de Fortschrëtt vum Lieser op sengem Apparat ze späicheren. Automatesch generéiert; ännert se just, fir de Fortschrëtt tëscht Lëschten ze deelen oder fir nei unzefänken."
+      }
+    ]
+  }
+}

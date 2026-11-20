@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Zenbakizko galdera",
+    "description": "Zenbaki batekin erantzuten den galdera. Erantzuna zenbaki finko bat edo aldagaietatik kalkulatutako formula bat da, eta tolerantzia baten barruan dagoenean onartzen da."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Galdera",
+        "description": "Ikasleei galdetzen zaiena. Idatzi aldagai baten izena giltzen artean, {d} bezala, haren balioa erakusteko."
+      },
+      {
+        "title": "Unitatea",
+        "description": "Erantzun-eremuaren ondoan testu gisa erakusten da, adibidez km/h."
+      },
+      {
+        "title": "Erantzuna",
+        "description": "Zenbaki zuzena. Utzi hutsik formula batek erantzuna kalkulatzen duenean."
+      },
+      {
+        "title": "Formula",
+        "description": "Erantzuna aldagaietatik kalkulatzen du, adibidez d / (t / 60). + - * / ^, parentesiak, sqrt() eta abs() erabil ditzake. Ezarrita dagoenean erantzunaren ordez erabiltzen da."
+      },
+      {
+        "title": "Aldagaiak",
+        "description": "Formulak eta galderak erabiltzen dituzten zenbakiak. Bakoitzak bere txikienaren eta handienaren arteko balio bat hartzen du, urratsetan."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tolerantzia",
+        "description": "Erantzun zehatzetik zenbateraino onartzen den oraindik. 0k zehatza esan nahi du, edo beheko hamartarretara biribildua."
+      },
+      {
+        "title": "Tolerantzia mota",
+        "description": "Absolutua: tolerantzia gehi edo ken. Ehunekoa: erantzun zehatzaren ehuneko hori gehi edo ken.",
+        "options": {
+          "absolute": "Absolutua",
+          "percent": "Ehunekoa"
+        }
+      },
+      {
+        "title": "Hamartarrak",
+        "description": "Ikasleei hainbeste hamartarretara biribiltzeko eskatzen zaie, eta erantzuna horretara biribilduta erakusten da. Utzi hutsik biribiltzerik ez izateko."
+      },
+      {
+        "title": "Saiakerak",
+        "description": "Zenbat aldiz egiazta dezakeen ikasle batek. 0k mugagabea esan nahi du."
+      },
+      {
+        "title": "Zenbaki berriak saiakera bakoitzean",
+        "description": "Sortu aldagai-balio berriak ikasle bat berriro saiatzen den bakoitzean. Itzultzean ez da haren aurreko erantzuna erakusten, zuzen egin zuen ala ez soilik."
+      },
+      {
+        "title": "Tolesgarria",
+        "description": "Erakutsi galdera hau ireki eta ixten den errenkada gisa. Bat irekitzeak ondoko beste galdera tolesgarriak ixten ditu."
+      },
+      {
+        "title": "Hasi tolestuta",
+        "description": "Tolesgarria denean, hasi galdera eta haren egoera soilik erakusten dituen errenkada itxi gisa."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Galdetegiaren izena",
+        "description": "Analitika-sistemetan xAPI identifikaziorako erabiltzen den galdetegiaren izena."
+      }
+    ]
+  }
+}

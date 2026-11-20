@@ -1,0 +1,14 @@
+{
+  "scene": "Sceno",
+  "ending": "Fino",
+  "goodEnding": "Bona fino",
+  "mixedEnding": "Miksita fino",
+  "poorEnding": "Malbona fino",
+  "scoreOf": "Poentoj {score} el {max}",
+  "scoreOnly": "Poentoj {score}",
+  "startScene": "Komenci",
+  "sceneIdLabel": "Identigilo de sceno",
+  "needsId": "Aldonu identigilon de sceno, por ke elektoj povu ligi al ĉi tiu sceno.",
+  "orphan": "Neniu elekto ligas al ĉi tiu sceno.",
+  "deadLinks": "Ĉi tiuj ligiloj celas scenon, kiu ne ekzistas:"
+}

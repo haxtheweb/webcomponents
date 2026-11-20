@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Achtergrondafbeelding."
+        "description": "Achtergrondafbeelding.",
+        "title": "Afbeelding"
       },
       {
         "property": "caption",
-        "description": "Tekstkop."
+        "description": "Tekstkop.",
+        "title": "Bijschrift"
       }
     ]
   }

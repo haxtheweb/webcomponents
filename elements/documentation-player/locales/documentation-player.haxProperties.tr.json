@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Belge oynatıcı",
+    "description": "Bir web bileşeni için HTML, içe aktarma, npm ve CDN kopyalama düğmeleriyle adım adım anlatım, demo ve başvuru."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Belge veri dosyası",
+        "description": "Öğeyle birlikte gelen belge verileri (lib/tag.docs.json)."
+      },
+      {
+        "title": "Anlatım senaryosu",
+        "description": "Öğeyle birlikte gelen hareket senaryosu (tag.motion.json). İsteğe bağlı."
+      },
+      {
+        "title": "Video eğitim",
+        "description": "Öğe hakkında kısa bir video (YouTube, Vimeo veya bir video dosyası). Belge verilerindeki videonun yerine geçer."
+      },
+      {
+        "title": "Açılacak sekme",
+        "description": "İlk hangi sekmenin gösterileceği.",
+        "options": {
+          "motion": "Adım adım anlatım",
+          "video": "Video",
+          "demo": "Demo",
+          "docs": "Belgeler",
+          "schema": "Şema"
+        }
+      },
+      {
+        "title": "Anlatımı otomatik oynat",
+        "description": "Oynatıcı görünür görünmez anlatımı başlat. Okuyucu azaltılmış hareketi tercih ediyorsa yok sayılır."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Anlatım konusu",
+        "description": "Birkaç anlatımı olan öğeler için önce hangi konunun açılacağı (örneğin add-blocks). Ana konu için boş bırakın."
+      },
+      {
+        "title": "Canlı demo bağlantısı",
+        "description": "Demo kaynağını aç düğmesinin gittiği yer. Varsayılan olarak depodaki demo klasörüdür."
+      },
+      {
+        "title": "Belge bağlantısı",
+        "description": "Tam belgeler düğmesinin gittiği yer, örneğin ilgili Learn HAX sayfası."
+      }
+    ]
+  }
+}

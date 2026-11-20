@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Cyfranwyr",
+    "description": "Y bobl a adeiladodd y prosiect, o ffeil rhestr"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ffeil rhestr (JSON)"
+      },
+      {
+        "title": "Golwg: landed, lab neu code"
+      },
+      {
+        "title": "Uchafswm y bobl i'w dangos (0 yw pawb)"
+      }
+    ]
+  }
+}

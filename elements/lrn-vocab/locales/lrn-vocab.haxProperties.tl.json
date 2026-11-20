@@ -7,7 +7,8 @@
     "configure": [
       {
         "property": "term",
-        "title": "Termino"
+        "title": "Termino",
+        "description": "Ang salita o pariralang kini-click ng mga mambabasa para makita ang kahulugan nito."
       },
       {
         "slot": "",

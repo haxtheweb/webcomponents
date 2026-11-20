@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Aizzīmju kontrolsaraksts",
+    "description": "Izvēles rūtiņu saraksts. Lasītāji atzīmē vienumus, un viņu progress tiek atcerēts viņu pašu ierīcē."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Virsraksts",
+        "description": "Saraksta nosaukums. Tiek nolasīts balsī kā izvēles rūtiņu grupas etiķete."
+      },
+      {
+        "title": "Vienumi",
+        "description": "Katrs vienums ir izvēles rūtiņa. Atzīmētus vai atspējotus vienumus lasītāji nevar mainīt."
+      },
+      {
+        "title": "Numurēts",
+        "description": "Rādīt numurētu sarakstu, nevis aizzīmju sarakstu."
+      },
+      {
+        "title": "Statuss",
+        "description": "Maina krāsas, lai tās atbilstu stop-note.",
+        "options": {
+          "info": "Paziņojums",
+          "success": "Apstiprinājums",
+          "warning": "Brīdinājums",
+          "stop": "Stop"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "Krātuves ID",
+        "description": "Unikāls ID, ko izmanto, lai atcerētos lasītāja progresu viņa ierīcē. Tiek ģenerēts automātiski; mainiet tikai tad, ja vēlaties kopīgot progresu starp sarakstiem vai sākt no jauna."
+      }
+    ]
+  }
+}

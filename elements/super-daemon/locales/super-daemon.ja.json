@@ -41,6 +41,7 @@
   "resultsCount": "{count}件の結果",
   "superDaemon": "Super Daemon",
   "merlin": "Merlin",
+  "voiceName": "Future",
   "closeMerlin": "Merlin を閉じる",
   "listeningState": "聞き取り中",
   "speakingState": "音声出力中",

@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Žodžių paieška",
+    "description": "Raidžių tinklelis su paslėptais žodžiais. Besimokantieji bakstelėja kiekvieno žodžio pirmąją ir paskutinę raidę. Lavina gebėjimą pastebėti, kaip sąvoka rašoma, o ne ką ji reiškia."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pavadinimas",
+        "description": "Ką besimokantieji turi rasti, rodoma antraštėje."
+      },
+      {
+        "title": "Žodžiai",
+        "description": "Paslėpti žodžiai. Tarpai ir skyrybos ženklai į tinklelį neįtraukiami. Netelpantys žodžiai išvardijami jums redaguojant ir praleidžiami besimokantiesiems."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tinklelio dydis",
+        "description": "Raidžių kiekvienoje pusėje, nuo 4 iki 16. Palikite tuščią, kad tilptų ilgiausias žodis (iki 12). Daugiau nei 12 telefone slenka į šonus."
+      },
+      {
+        "title": "Įstrižiniai žodžiai",
+        "description": "Taip pat slėpti žodžius įstrižai. Sunkiau."
+      },
+      {
+        "title": "Atbuliniai žodžiai",
+        "description": "Taip pat slėpti atbulai parašytus žodžius. Sunkiau."
+      },
+      {
+        "title": "Akcento spalva",
+        "description": "Pasirinktinė antraštės žymės, pasirinktos pirmosios raidės ir mygtuko spalva."
+      }
+    ]
+  }
+}

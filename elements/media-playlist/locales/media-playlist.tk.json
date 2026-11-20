@@ -5,5 +5,7 @@
   "editModeLabel": "Media pleý-listini redaktirlemek tertibi",
   "position": "{current} / {total}",
   "previousItem": "Öňki element",
-  "nextItem": "Indiki element"
+  "nextItem": "Indiki element",
+  "fullScreen": "Doly ekran",
+  "exitFullScreen": "Doly ekrandan çyk"
 }

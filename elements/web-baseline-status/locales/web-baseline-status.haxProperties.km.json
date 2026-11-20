@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "ស្ថានភាព Baseline",
+    "description": "បង្ហាញស្ថានភាពគាំទ្រកម្មវិធីរុករក Baseline នៃមុខងារវេទិកាបណ្ដាញ។"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID មុខងារ",
+        "description": "ID នៃមុខងារបណ្ដាញ ឧទាហរណ៍ anchor-positioning។ រក ID នៅ webstatus.dev; ID គឺជាផ្នែកចុងក្រោយនៃ URL ទំព័រមុខងារ។"
+      }
+    ]
+  }
+}

@@ -60,6 +60,8 @@
   "flagsFound": "Kufunyenwe {correct} kwezi {total}",
   "toRethink": "{count} zokucinga kwakhona",
   "notEvidence": "ayibobungqina bale flegi",
+  "isEvidence": "ubungqina bale flegi",
+  "readingKeys": "Sebenzisa izitshixo zeentolo ukusuka kwi-{unit} enye ukuya kwelandelayo.",
   "markAnswers": "Phawula iimpendulo",
   "doneMarking": "Ndigqibile ukuphawula iimpendulo",
   "editHint": "Hlela okufundwayo okungezantsi. Sebenzisa u-Phawula iimpendulo kwimenyu yebhloko ukukhetha apho iflegi nganye ifanele khona.",

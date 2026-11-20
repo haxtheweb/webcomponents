@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Haala fakkeessaa damee qabu",
+    "description": "Seenaa filannoon tokkoon tokkoon gara taatee fi xumura adda ta'eetti geessu. Barattoonni duubatti deebi'anii karaa biraa yaaluu danda'u; xumurri irra gahame qabxii murteessa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mata-duree",
+        "description": "Maqaa haala fakkeessaa, mata-duree isaa keessatti kan mul'atu."
+      },
+      {
+        "title": "Taatee jalqabaa",
+        "description": "ID taatee barattoonni irraa jalqaban. Taatee jalqabaa irraa jalqabuuf duwwaa dhiisi."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Halluu calaqqee",
+        "description": "Halluu filannoo mallattoo mata-duree, qabduuwwanii fi qarqara filannoof."
+      }
+    ]
+  }
+}

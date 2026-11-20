@@ -1,0 +1,8 @@
+{
+  "theme": "Tema",
+  "palette": "Litaborð",
+  "themeDefault": "Vanligt fyri temað",
+  "designSystem": "Sniðgevingarkervi",
+  "designSystemDefault": "DDD (vanligt)",
+  "designSystemUnavailable": "Hetta temað varðveitir sítt egna sniðgevingarkervi"
+}

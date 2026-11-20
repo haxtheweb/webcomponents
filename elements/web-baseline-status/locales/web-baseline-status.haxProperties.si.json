@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Baseline තත්ත්වය",
+    "description": "වෙබ් වේදිකා විශේෂාංගයක Baseline බ්‍රව්සර් සහාය තත්ත්වය පෙන්වන්න."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "විශේෂාංග ID",
+        "description": "වෙබ් විශේෂාංගයේ ID, උදාහරණයක් ලෙස anchor-positioning. webstatus.dev හි ID සොයා ගන්න; ID යනු විශේෂාංග පිටු URL එකක අවසාන කොටසයි."
+      }
+    ]
+  }
+}

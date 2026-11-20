@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Rohe tuku atahanga",
+    "description": "Ka whakanoho ngā ākonga i ngā tapanga ki ngā rohe kei runga i tētahi atahanga, kātahi ka arowhai i tā rātou whakautu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Atahanga",
+        "description": "Te atahanga e whakanohoia ai e ngā ākonga ngā tapanga."
+      },
+      {
+        "title": "Kuputuhi kē",
+        "description": "Ka whakaahua i te atahanga mō te hunga kāore e kite. Kaua e whāki i te wāhi e haere ai ngā tapanga."
+      },
+      {
+        "title": "Taitara atahanga",
+        "description": "He taitara poto e kitea ana mō te atahanga, ka whakaaturia i runga ake."
+      },
+      {
+        "title": "Pātai",
+        "description": "Te mea e tonoa ana ngā ākonga kia mahia ki ngā tapanga."
+      },
+      {
+        "title": "Ngā tapanga me ngā rohe",
+        "description": "He tapanga ia tūemi ka taea e ngā ākonga te whakanoho. Hoatu he ingoa rohe ki tētahi tapanga kia puta tōna rohe i te atahanga; ko te tapanga kāore he ingoa rohe he tāpiri kāore e tika ki hea. Ko ngā tau rohe he ōrau o te atahanga."
+      },
+      {
+        "title": "Tapanga",
+        "description": "He tapanga kōwhiri ka whakaaturia i raro i te atahanga."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ngā ngana",
+        "description": "E hia ngā wā ka taea e te ākonga te arowhai. Ko te 0 te tikanga kāore he tepe."
+      },
+      {
+        "title": "Kōrapu ngā tapanga",
+        "description": "Whakaaturia ngā tapanga ki tētahi raupapa rerekē i ia toronga."
+      },
+      {
+        "title": "Ka taea te kōpaki",
+        "description": "Whakaaturia tēnei pātai hei rārangi ka tuwhera, ka kati hoki. Ka kati te whakatuwhera i tētahi i ētahi atu pātai kōpaki i tōna taha."
+      },
+      {
+        "title": "Tīmata kua kōpakina",
+        "description": "Ina taea te kōpaki, tīmata hei rārangi kua kati e whakaatu ana i te pātai me tōna tūnga anake."
+      },
+      {
+        "title": "Hōputu kōeke",
+        "description": "OER Schema: hōputu kōeke mō tēnei aromatawai (hei tauira, ngā piro, te reta, te ōrau, te whakaoti)."
+      },
+      {
+        "title": "Whāinga ako",
+        "description": "OER Schema: te whāinga ako e hāngai ana ki tēnei aromatawai."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Ingoa o te pātaitai",
+        "description": "Te ingoa pātaitai e whakamahia ana mō te tautohu xAPI i ngā pūnaha tātari."
+      },
+      {
+        "title": "Akoranga",
+        "description": "OER Schema: te akoranga e whakaritea ana tēnei aromatawai."
+      }
+    ]
+  }
+}

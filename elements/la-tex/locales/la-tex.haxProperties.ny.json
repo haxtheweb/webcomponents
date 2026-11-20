@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "Lembani pogwiritsa ntchito zizindikiro za masamu za LaTeX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kumbuyo kwa chithunzi",
+        "description": "Kumbuyo kwa zithunzi zojambulidwa. Zokha imawonjezera kokha ngati chojambula chingakhale chovuta kuwona patsamba, monga mizere yakuda mu mawonekedwe amdima.",
+        "options": {
+          "auto": "Zokha",
+          "light": "Kowala",
+          "dark": "Kwamdima",
+          "none": "Palibe"
+        }
+      }
+    ]
   }
 }

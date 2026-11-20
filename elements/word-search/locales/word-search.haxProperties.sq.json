@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Kërkim fjalësh",
+    "description": "Një rrjetë shkronjash me fjalë të fshehura. Nxënësit prekin shkronjën e parë dhe të fundit të çdo fjale. Praktikon dallimin se si shkruhet një term, jo çfarë do të thotë."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titulli",
+        "description": "Çfarë u kërkohet nxënësve të gjejnë, e shfaqur në kokë."
+      },
+      {
+        "title": "Fjalët",
+        "description": "Fjalët për t'u fshehur. Hapësirat dhe shenjat e pikësimit lihen jashtë rrjetës. Fjalët që nuk hyjnë listohen ndërsa redakton dhe lihen jashtë për nxënësit."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Madhësia e rrjetës",
+        "description": "Shkronja për anë, 4 deri në 16. Lëre bosh që të përshtatet me fjalën më të gjatë (deri në 12). Më shumë se 12 lëviz anash në telefon."
+      },
+      {
+        "title": "Fjalë diagonale",
+        "description": "Fshih fjalë edhe diagonalisht. Më e vështirë."
+      },
+      {
+        "title": "Fjalë së prapthi",
+        "description": "Fshih edhe fjalë të shkruara së prapthi. Më e vështirë."
+      },
+      {
+        "title": "Ngjyra theksuese",
+        "description": "Ngjyrë opsionale për etiketën e kokës, shkronjën e parë të zgjedhur dhe butonin."
+      }
+    ]
+  }
+}

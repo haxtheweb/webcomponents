@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Garşy",
+    "description": "Iki gahrymanly ýüzbe-ýüz düwmäniň ýanyndaky sözler"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sözbaşy"
+      },
+      {
+        "title": "Düwmäniň nirä alyp barýandygy"
+      },
+      {
+        "title": "Düwmäniň teksti"
+      },
+      {
+        "title": "Çep gahrymanyň seed-i"
+      },
+      {
+        "title": "Sag gahrymanyň seed-i"
+      }
+    ]
+  }
+}

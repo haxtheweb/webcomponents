@@ -11,7 +11,8 @@
       },
       {
         "property": "imgAlt",
-        "title": "Umbhalo Ongenye"
+        "title": "Umbhalo Ongenye",
+        "description": "Chaza isithombe kubantu abangakwazi ukusibona."
       },
       {
         "slot": "figcaption",
@@ -32,11 +33,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Umbhalo wesifinyezo ongaphoqelekile uma imininingwane ivuliwe"
+        "title": "Umbhalo wesifinyezo ongaphoqelekile uma imininingwane ivuliwe",
+        "description": "Umbhalo wenkinobho ngenkathi incazelo ifihliwe, njengo-Bonisa incazelo."
       },
       {
         "property": "closeText",
-        "title": "Umbhalo wesifinyezo ongaphoqelekile uma imininingwane ivaliwe"
+        "title": "Umbhalo wesifinyezo ongaphoqelekile uma imininingwane ivaliwe",
+        "description": "Umbhalo wenkinobho ngenkathi incazelo iboniswa, njengo-Fihla incazelo."
       }
     ]
   }

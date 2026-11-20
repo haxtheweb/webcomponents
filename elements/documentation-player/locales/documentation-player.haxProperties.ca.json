@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Reproductor de documentació",
+    "description": "Guia, demostració i referència d'un component web, amb botons de còpia per a HTML, importació, npm i CDN."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Fitxer de dades de la documentació",
+        "description": "Les dades de documentació que inclou l'element (lib/tag.docs.json)."
+      },
+      {
+        "title": "Guió de la guia",
+        "description": "El guió d'animació que inclou l'element (tag.motion.json). Opcional."
+      },
+      {
+        "title": "Vídeo tutorial",
+        "description": "Un vídeo breu sobre l'element (YouTube, Vimeo o un fitxer de vídeo). Substitueix el vídeo de les dades de documentació."
+      },
+      {
+        "title": "Obre a la pestanya",
+        "description": "Quina pestanya es mostra primer.",
+        "options": {
+          "motion": "Guia",
+          "video": "Vídeo",
+          "demo": "Demo",
+          "docs": "Documentació",
+          "schema": "Esquema"
+        }
+      },
+      {
+        "title": "Reprodueix la guia automàticament",
+        "description": "Comença la guia tan bon punt es mostra el reproductor. S'ignora quan el lector prefereix moviment reduït."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tema de la guia",
+        "description": "Per a elements amb diverses guies, quin tema s'obre primer (per exemple add-blocks). Deixa-ho buit per a la principal."
+      },
+      {
+        "title": "Enllaç a la demostració en directe",
+        "description": "On porta el botó Obre el codi de la demostració. Per defecte, la carpeta demo del repositori."
+      },
+      {
+        "title": "Enllaç a la documentació",
+        "description": "On porta el botó de la documentació completa, per exemple la pàgina corresponent de Learn HAX."
+      }
+    ]
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Mai kunna takardu",
+    "description": "Jagora, nuni da nassoshi don web component, tare da maɓallan kwafi don HTML, import, npm da CDN."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Fayil ɗin bayanan takardu",
+        "description": "Bayanan takardun da ke zuwa tare da abin (lib/tag.docs.json)."
+      },
+      {
+        "title": "Allon labarin jagora",
+        "description": "Allon labarin motsi da ke zuwa tare da abin (tag.motion.json). Na zaɓi."
+      },
+      {
+        "title": "Darasin bidiyo",
+        "description": "Gajeren bidiyo game da abin (YouTube, Vimeo ko fayil ɗin bidiyo). Yana maye gurbin bidiyon da ke cikin bayanan takardu."
+      },
+      {
+        "title": "Buɗe a shafin",
+        "description": "Wane shafi ne ake nunawa da farko.",
+        "options": {
+          "motion": "Jagora",
+          "video": "Bidiyo",
+          "demo": "Nuni",
+          "docs": "Takardu",
+          "schema": "Tsari"
+        }
+      },
+      {
+        "title": "Kunna jagora kai tsaye",
+        "description": "Fara jagorar da zarar mai kunnawa ya bayyana. Ana watsi da shi idan mai karatu ya fi son rage motsi."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Batun jagora",
+        "description": "Don abubuwa masu jagorori da yawa, wane batu za a buɗe da farko (misali add-blocks). Bar shi babu komai don babban."
+      },
+      {
+        "title": "Mahaɗin nuni kai tsaye",
+        "description": "Inda maɓallin Buɗe tushen nuni ke zuwa. A tsoho yana zuwa babban fayil ɗin demo a cikin rumbun."
+      },
+      {
+        "title": "Mahaɗin takardu",
+        "description": "Inda maɓallin cikakkun takardu ke zuwa, misali shafin Learn HAX da ya dace."
+      }
+    ]
+  }
+}

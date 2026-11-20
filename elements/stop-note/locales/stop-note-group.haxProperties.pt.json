@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Grupo de notas de parada",
+    "description": "Empilhe várias notas de parada em um bloco que mostra uma nota por vez, como Dicas ou Novidades. Cartões de instrução, notas laterais e citações emolduradas podem ser empilhados junto."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Rótulo",
+        "description": "Nome do grupo que os leitores de tela anunciam, como Dicas ou Novidades."
+      },
+      {
+        "title": "Notas",
+        "description": "As notas de parada do grupo. Cartões de instrução, notas laterais e citações emolduradas também podem ser adicionados."
+      }
+    ]
+  }
+}

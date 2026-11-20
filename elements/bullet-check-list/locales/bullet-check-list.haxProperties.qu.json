@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Puntoyuq qhawana lista",
+    "description": "Casillakunap listan. Ñawinchaqkunaqa kaqkunata señalanku, puriynintaq kikin equiponkupi yuyarisqa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Suti",
+        "description": "Listap sutin. Casillakuna huñup etiquetan hina kunkawan ñawinchasqa."
+      },
+      {
+        "title": "Kaqkuna",
+        "description": "Sapa kaq huk casilla. Señalasqa utaq wañuchisqa kaqkunataqa ñawinchaqkuna mana tikrayta atinkuchu."
+      },
+      {
+        "title": "Yupasqa",
+        "description": "Puntoyuq lista rantinpi yupasqa listata rikuchiy."
+      },
+      {
+        "title": "Kaqnin",
+        "description": "Llimp'ikunata stop-note nisqawan tupanankupaq tikran.",
+        "options": {
+          "info": "Willay",
+          "success": "Takyachiy",
+          "warning": "Paqtataq",
+          "stop": "Sayay"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "Waqaychana id",
+        "description": "Ñawinchaqpa puriyninta equiponpi yuyarinapaq sapaq id. Kikillanmanta paqarichisqa; listakuna chawpipi puriyta rakinaykipaq utaq musuqmanta qallarinaykipaqlla tikray."
+      }
+    ]
+  }
+}

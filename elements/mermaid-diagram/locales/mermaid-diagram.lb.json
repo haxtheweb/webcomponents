@@ -1,0 +1,21 @@
+{
+  "diagram": "Diagramm",
+  "flowchart": "Flossdiagramm",
+  "sequence": "Sequenz",
+  "source": "Quell",
+  "textAlternative": "Textalternativ",
+  "present": "Presentéieren",
+  "exitPresent": "Presentatioun verloossen",
+  "loading": "D'Diagramm gëtt gelueden",
+  "empty": "Nach näischt ze zeechnen. Setzt d'Quell vum Diagramm derbäi.",
+  "error": "Feeler",
+  "parseError": "Dëst Diagramm konnt net gezeechent ginn. Iwwerpréift d'Quell.",
+  "loadError": "D'Diagrammbibliothéik konnt net geluede ginn.",
+  "srcError": "Den Diagrammfichier konnt net geluede ginn.",
+  "decision": "Entscheedung",
+  "end": "Enn",
+  "goTo": "op {target} goen",
+  "ifGoTo": "wann {label}, op {target} goen",
+  "describedBySource": "Diagramm, beschriwwe vu senger Quell.",
+  "scrollable": "Diagramm, scrollbar"
+}

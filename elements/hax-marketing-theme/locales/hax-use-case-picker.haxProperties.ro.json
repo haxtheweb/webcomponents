@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Selector de utilizare",
+    "description": "Alegeți la ce folosește un site și primiți un link care deschide HAX în browser cu acel site de pornire, plus comanda CLI corespunzătoare."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Adresa HAX în browser",
+        "description": "Unde se deschide linkul; i se adaugă ?skeleton= și &name="
+      },
+      {
+        "title": "Site-uri de pornire de omis",
+        "description": "Nume de sistem, separate prin virgulă"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Lista site-urilor de pornire",
+        "description": "Adresa listei de schelete (formatul pe care îl citește app-hax)"
+      }
+    ]
+  }
+}

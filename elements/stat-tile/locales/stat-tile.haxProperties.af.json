@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Statistiekteël",
+    "description": "Een getal wat saak maak, met sy etiket en hoe dit verander het. Plaas verskeie in 'n rooster vir 'n paneelbordry."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etiket",
+        "description": "Wat die getal meet."
+      },
+      {
+        "title": "Waarde",
+        "description": "Die getal. 'n Gewone getal word vir die bladsytaal gegroepeer; enigiets anders wys soos geskryf."
+      },
+      {
+        "title": "Verandering",
+        "description": "Hoe dit verander het, in woorde, soos 6% hierdie kwartaal."
+      },
+      {
+        "title": "Rigting",
+        "description": "Of die verandering op of af is.",
+        "options": {
+          "": "Geen",
+          "up": "Op",
+          "down": "Af"
+        }
+      }
+    ]
+  }
+}

@@ -1,4 +1,6 @@
 {
   "saveAll": "Simpen Kabeh",
-  "saveTheFollowing": "Simpen iki: {list}?"
+  "saveTheFollowing": "Simpen iki: {list}?",
+  "save": "Simpen",
+  "cancel": "Batal"
 }

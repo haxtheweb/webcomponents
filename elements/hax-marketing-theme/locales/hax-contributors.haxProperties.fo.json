@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Luttakarar",
+    "description": "Fólkini, sum bygdu verkætlanina, úr eini navnalistafílu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Navnalistafíla (JSON)"
+      },
+      {
+        "title": "Vísing: landed, lab ella code"
+      },
+      {
+        "title": "Flest fólk at vísa (0 er øll)"
+      }
+    ]
+  }
+}

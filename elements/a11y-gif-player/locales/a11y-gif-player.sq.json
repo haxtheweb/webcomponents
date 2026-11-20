@@ -2,5 +2,9 @@
   "toggleAnimation": "Ndiz/fik animacionin",
   "info": "info",
   "image": "Imazh",
-  "animatedGif": "GIF i animuar"
+  "animatedGif": "GIF i animuar",
+  "playAnimation": "Luaj animacionin",
+  "pauseAnimation": "Ndalo animacionin",
+  "showDescription": "Shfaq përshkrimin",
+  "hideDescription": "Fshih përshkrimin"
 }

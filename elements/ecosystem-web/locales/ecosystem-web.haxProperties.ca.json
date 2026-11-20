@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Xarxa de l'ecosistema",
+    "description": "Una xarxa interactiva de com es connecten les parts d'un projecte, amb subxarxes i recorreguts pas a pas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Dades de la xarxa",
+        "description": "URL del paquet JSON de xarxes (generat a PRAW, ecosystem-webs.json)."
+      },
+      {
+        "title": "Xarxa",
+        "description": "Id de la xarxa que es mostra primer; main és la xarxa de l'ecosistema."
+      },
+      {
+        "title": "Mosaic seleccionat",
+        "description": "Id d'un mosaic que se selecciona quan s'obre la xarxa."
+      },
+      {
+        "title": "Recorregut",
+        "description": "Id d'un recorregut amb què començar."
+      },
+      {
+        "title": "Comença a la vista de llista",
+        "description": "Mostra la xarxa com a llistes niades en lloc del dibuix."
+      },
+      {
+        "title": "Només el dibuix",
+        "description": "Mostra només el dibuix, com una figura: sense capçalera, recorreguts, detalls ni barra de passos."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Llegit per",
+        "description": "Comença amb tots els mosaics llegits segons una mesura.",
+        "options": {
+          "": "Només connexions",
+          "fresh": "Actualitat",
+          "bus": "Factor autobús",
+          "impact": "Impacte",
+          "evidence": "Evidència",
+          "parity": "Paritat"
+        }
+      }
+    ]
+  }
+}

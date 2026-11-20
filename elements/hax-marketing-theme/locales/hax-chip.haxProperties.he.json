@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "תג",
+    "description": "סמל קטן עם תווית"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "סמל"
+      },
+      {
+        "title": "תווית"
+      }
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "Itshiphu",
+    "description": "Impawu encinci enelebhile"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Impawu"
+      },
+      {
+        "title": "Ilebhile"
+      }
+    ]
+  }
+}

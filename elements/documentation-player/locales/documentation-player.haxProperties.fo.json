@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Skjalfestingarspælari",
+    "description": "Gjøgnumgongd, framsýning og ávísing til ein vevlut, við avritingarknøttum fyri HTML, innflutning, npm og CDN."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Dátufíla við skjalfesting",
+        "description": "Skjalfestingardátan, sum fylgir við lutinum (lib/tag.docs.json)."
+      },
+      {
+        "title": "Søguborð til gjøgnumgongdina",
+        "description": "Rørslusøguborðið, sum fylgir við lutinum (tag.motion.json). Valfrítt."
+      },
+      {
+        "title": "Sjónbandsvegleiðing",
+        "description": "Eitt stutt sjónband um lutin (YouTube, Vimeo ella ein sjónbandsfíla). Gongur fram um sjónbandið í skjalfestingardátuni."
+      },
+      {
+        "title": "Lat upp á spjaldri",
+        "description": "Hvørt spjaldur verður víst fyrst.",
+        "options": {
+          "motion": "Gjøgnumgongd",
+          "video": "Sjónband",
+          "demo": "Framsýning",
+          "docs": "Skjalfesting",
+          "schema": "Skipan"
+        }
+      },
+      {
+        "title": "Spæl gjøgnumgongdina sjálvvirkið",
+        "description": "Byrja gjøgnumgongdina, so skjótt sum spælarin verður víst. Ansað ikki eftir, um lesarin ynskir minni rørslu."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Evni í gjøgnumgongdini",
+        "description": "Fyri lutir við fleiri gjøgnumgongdum, hvørt evni skal latast upp fyrst (til dømis add-blocks). Lat vera tómt fyri høvuðsgjøgnumgongdina."
+      },
+      {
+        "title": "Leinki til beinleiðis framsýning",
+        "description": "Hvar knøtturin Lat framsýningarkeldu upp fer. Vanliga framsýningarmappan í goymsluni."
+      },
+      {
+        "title": "Skjalfestingarleinki",
+        "description": "Hvar knøtturin til fullu skjalfestingina fer, til dømis samsvarandi Learn HAX-síðan."
+      }
+    ]
+  }
+}

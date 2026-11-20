@@ -52,6 +52,20 @@
           "_top": "Ventana superior - _top",
           "_parent": "Ventana principal - _parent"
         }
+      },
+      {
+        "title": "Sin flecha",
+        "description": "Ocultar la flecha del botón."
+      },
+      {
+        "title": "Enlace: destino",
+        "description": "Dónde abrir el enlace.",
+        "options": {
+          "": "Misma ventana",
+          "_blank": "Ventana nueva - _blank",
+          "_top": "Ventana superior - _top",
+          "_parent": "Ventana principal - _parent"
+        }
       }
     ],
     "developer": [

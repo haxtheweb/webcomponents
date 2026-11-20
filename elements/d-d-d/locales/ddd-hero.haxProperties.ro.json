@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Hero",
+    "description": "O imagine, un GIF sau un videoclip mare, cu un titlu și un text deasupra, plasat oriunde într-o pagină."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Imagine sau videoclip",
+        "description": "Un fișier JPG, PNG, WebP, GIF, MP4 sau WebM."
+      },
+      {
+        "title": "Text alternativ",
+        "description": "Descrieți imaginea. Lăsați gol când este doar decorativă."
+      },
+      {
+        "title": "Titlu",
+        "description": "Titlul afișat peste media. Lăsați gol pentru niciunul."
+      },
+      {
+        "title": "Text",
+        "description": "Text afișat sub titlu, peste media."
+      },
+      {
+        "title": "Lățime completă",
+        "description": "Se întinde de la o margine la alta în loc să stea în coloana de conținut."
+      },
+      {
+        "title": "Înălțime",
+        "options": {
+          "tall": "Înalt",
+          "medium": "Mediu",
+          "short": "Scurt"
+        }
+      },
+      {
+        "title": "Încadrare",
+        "description": "Cum se așază fotografia la fiecare dimensiune de ecran"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Estompare",
+        "description": "Culoare aplicată peste media. Cu un titlu sau un text există mereu una, ca textul să rămână lizibil.",
+        "options": {
+          "blue": "Albastru",
+          "bottom": "Întunecat jos",
+          "none": "Niciuna"
+        }
+      },
+      {
+        "title": "Poziția textului",
+        "options": {
+          "bottom": "Jos",
+          "middle": "Mijloc"
+        }
+      },
+      {
+        "title": "Punct focal orizontal",
+        "description": "Partea imaginii care rămâne vizibilă când este decupată, de la 0 (stânga) la 100 (dreapta)."
+      },
+      {
+        "title": "Punct focal vertical",
+        "description": "Partea imaginii care rămâne vizibilă când este decupată, de la 0 (sus) la 100 (jos)."
+      }
+    ]
+  }
+}

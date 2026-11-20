@@ -1,0 +1,19 @@
+{
+  "label": "ውጫዊ መሣሪያ",
+  "labelLti": "ውጫዊ መሣሪያ · LTI 1.3",
+  "theTool": "መሣሪያው",
+  "directions": "መመሪያዎች",
+  "showDirections": "መመሪያዎችን አሳይ",
+  "hideDirections": "መመሪያዎችን ደብቅ",
+  "directionsWindow": "አዝራሩ መሣሪያውን የያዘ አዲስ መስኮት ይከፍታል።",
+  "directionsEmbed": "አዝራሩ መሣሪያውን በዚህ ገጽ ላይ ይከፍታል። ካልተጫነ በምትኩ በአዲስ መስኮት ይክፈቱት።",
+  "directionsLti": "ይህ ድረ-ገጽ ወደ መሣሪያው ያስገባዎታል፣ ስለዚህ የተለየ መለያ አያስፈልግዎትም።",
+  "openWindow": "{title}ን ክፈት (አዲስ መስኮት)",
+  "openEmbed": "{title}ን ክፈት",
+  "openInstead": "በምትኩ በአዲስ መስኮት ክፈት",
+  "frameTitle": "{title} (ውጫዊ መሣሪያ)",
+  "openedWindow": "መሣሪያውን የያዘ አዲስ መስኮት ተከፍቷል።",
+  "openedEmbed": "መሣሪያው በዚህ ገጽ ላይ ተከፍቷል።",
+  "needsUrl": "ይህ ብሎክ በ http:// ወይም https:// የሚጀምር የማስጀመሪያ አድራሻ ያስፈልገዋል።",
+  "needsSignIn": "ይህ መሣሪያ የዚህን ድረ-ገጽ የመግቢያ አገልግሎት ያስፈልገዋል፣ እሱም እዚህ አይገኝም። ምንም አልተከፈተም።"
+}

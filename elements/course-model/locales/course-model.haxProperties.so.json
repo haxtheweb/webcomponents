@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "cinwaan"
+        "title": "cinwaan",
+        "description": "Cinwaanka ka muuqda moodeelka koorsada korkiisa."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "Cinwaanka faylka moodeelka 3D (.glb ama .gltf) ee la muujinayo."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "U sharax moodeelka 3D dadka aan arki karin."
       },
       {
         "title": "Meesha macluumaadka"

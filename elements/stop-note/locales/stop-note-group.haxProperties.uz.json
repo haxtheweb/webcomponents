@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Eslatmalar guruhi",
+    "description": "Bir nechta eslatmani bir vaqtda bittasini ko‘rsatadigan bitta blokka yig‘ing, masalan Maslahatlar yoki Yangiliklar. Ko‘rsatma kartalari, yon eslatmalar va ramkali iqtiboslarni ham ular bilan birga yig‘ish mumkin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Yorliq",
+        "description": "Ekran o‘quvchilari e’lon qiladigan guruh nomi, masalan Maslahatlar yoki Yangiliklar."
+      },
+      {
+        "title": "Eslatmalar",
+        "description": "Guruhdagi eslatmalar. Ko‘rsatma kartalari, yon eslatmalar va ramkali iqtiboslarni ham qo‘shish mumkin."
+      }
+    ]
+  }
+}

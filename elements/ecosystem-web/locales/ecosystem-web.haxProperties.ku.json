@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Tora ekosîstemê",
+    "description": "Toreke înteraktîf a ka beşên projeyekê çawa bi hev ve girêdayî ne, bi binetoran û gerên gav bi gav."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Daneyên torê",
+        "description": "URL-ya koma JSON ya toran (di PRAW de hatiye avakirin, ecosystem-webs.json)."
+      },
+      {
+        "title": "Tor",
+        "description": "ID-ya tora ku pêşî tê nîşandan; main tora ekosîstemê ye."
+      },
+      {
+        "title": "Çargoşeya hilbijartî",
+        "description": "ID-ya çargoşeyekê ku dema tor vedibe tê hilbijartin."
+      },
+      {
+        "title": "Ger",
+        "description": "ID-ya gerekê ku pê dest pê bike."
+      },
+      {
+        "title": "Di dîtina lîsteyê de dest pê bike",
+        "description": "Torê li şûna xêzkirinê wekî lîsteyên hêlînkirî nîşan bide."
+      },
+      {
+        "title": "Tenê xêzkirin",
+        "description": "Tenê xêzkirinê wekî wêneyekê nîşan bide: bê serî, ger, hûrgulî an darika gavan."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Li gorî",
+        "description": "Bi xwendina her çargoşeyê li gorî yek pîvanê dest pê bike.",
+        "options": {
+          "": "Tenê girêdan",
+          "fresh": "Nûbûn",
+          "bus": "Faktora otobûsê",
+          "impact": "Bandor",
+          "evidence": "Delîl",
+          "parity": "Wekhevî"
+        }
+      }
+    ]
+  }
+}

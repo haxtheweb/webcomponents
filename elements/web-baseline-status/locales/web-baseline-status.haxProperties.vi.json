@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Trạng thái Baseline",
+    "description": "Hiển thị trạng thái hỗ trợ trình duyệt Baseline của một tính năng nền tảng web."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID tính năng",
+        "description": "ID của tính năng web, ví dụ anchor-positioning. Tìm ID tại webstatus.dev; ID là phần cuối của URL trang tính năng."
+      }
+    ]
+  }
+}

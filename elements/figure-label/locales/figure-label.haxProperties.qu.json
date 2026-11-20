@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Siq'i unancha",
     "description": "Ukhunpi media kaqkunata unanchanapaq siq'i unancha elemento."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Rikch'ap yupaynin",
+        "description": "Rikch'ap yupaynin utaq pisi etiquetan, kayhina 1.3"
+      },
+      {
+        "title": "Willakuy",
+        "description": "Rikch'ap pisi willakuynin"
+      }
+    ]
   }
 }

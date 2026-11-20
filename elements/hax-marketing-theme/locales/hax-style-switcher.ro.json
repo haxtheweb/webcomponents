@@ -1,0 +1,16 @@
+{
+  "theme": "Temă",
+  "designSystem": "Sistem de design",
+  "dddDefault": "DDD (implicit)",
+  "designSystemHelp": "Culoare, tipografie, colțuri și focalizare. Tema își păstrează aspectul.",
+  "designSystemFixed": "Această temă își păstrează propriul sistem de design.",
+  "palette": "Paletă",
+  "themeDefault": "Implicit temă",
+  "paletteNumber": "Paleta {n}",
+  "siteTheme": "{name} (tema acestui site)",
+  "restyle": "Restilizați acest site",
+  "close": "Închideți",
+  "reset": "Înapoi la aspectul propriu al site-ului",
+  "random": "Surprindeți-mă",
+  "about": "Aici vedeți câteva dintre aspectele integrate în HAX. Paginile nu se schimbă niciodată: structura stă în JSON Outline Schema și fiecare bloc este o componentă web standard, așa că designul poate fi schimbat liber."
+}

@@ -1,0 +1,22 @@
+{
+  "scenario": "Ssenariý",
+  "directions": "Görkezmeler",
+  "showDirections": "Görkezmeleri görkez",
+  "hideDirections": "Görkezmeleri gizle",
+  "directionsRead": "Her sahnany okaň we näme etjekdigiňizi saýlaň.",
+  "directionsEndings": "Birnäçe soňy bar. Tamamlanyňyzdan soň başga ýoly synap görüň.",
+  "startOver": "Täzeden başla",
+  "back": "Bir ädim yza",
+  "tryAnother": "Başga ýoly synap gör",
+  "path": "Ýol",
+  "scene": "Sahna",
+  "ending": "Soňy",
+  "end": "soňy",
+  "scenesSeen": "{total} sahnadan {seen}-si göreldi",
+  "endingReached": "Soňuna ýetildi",
+  "addScene": "Sahna goş",
+  "newScene": "Täze sahna",
+  "newSceneText": "Näme bolýandygyny beýan ediň, soňra her saýlawy bir sahna baglaň.",
+  "editingNote": "Redaktirlemek: ähli sahnalar görkezilýär. Saýlaw # we yzyndan sahna id-si bolan baglanyşykdyr.",
+  "noScenes": "Ssenariýany başlamak üçin sahna goşuň."
+}

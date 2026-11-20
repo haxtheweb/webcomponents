@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Tashqi vositani ishga tushirish",
+    "description": "Tashqi o‘quv vositasini yangi oynada yoki sahifada oddiy havola sifatida yoki LTI 1.3 kirish so‘rovi bilan ochadigan blok."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sarlavha",
+        "description": "Vosita nomi. Sarlavhada va tugmada ko‘rsatiladi."
+      },
+      {
+        "title": "Tavsif",
+        "description": "O‘quvchilar vositada nima qiladi, tugma ustida ko‘rsatiladi."
+      },
+      {
+        "title": "Ishga tushirish URL manzili",
+        "description": "Vosita manzili. U https:// yoki http:// bilan boshlanadigan to‘liq manzil bo‘lishi kerak."
+      },
+      {
+        "title": "Qayerda ochish",
+        "description": "Yangi oyna barcha vositalar bilan ishlaydi. Shu sahifada esa faqat boshqa sayt ichida ko‘rsatilishiga ruxsat beradigan vositalar bilan ishlaydi.",
+        "options": {
+          "window": "Yangi oyna",
+          "embed": "Ushbu sahifada"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "LTI kirish URL manzili",
+        "description": "Faqat LTI 1.3: vositaning kirishni boshlash manzili. Bu, client ID va deployment ID bilan tugma oddiy havolani ochish o‘rniga LTI kirish so‘rovini yuboradi. Ishga tushirishni yakunlash uchun bu saytning LTI xizmati kerak."
+      },
+      {
+        "title": "LTI client ID",
+        "description": "Vosita bu saytga bergan client ID. Ommaviy identifikator, sir emas: bu yerga hech qachon kalit yoki sirlarni qo‘ymang."
+      },
+      {
+        "title": "LTI deployment ID",
+        "description": "Vosita bu saytga bergan deployment ID. Ommaviy identifikator, sir emas."
+      },
+      {
+        "title": "LTI emitenti",
+        "description": "Bu saytni vositaga tanitadigan manzil. Sahifa joylashgan sayt manzilidan foydalanish uchun bo‘sh qoldiring."
+      },
+      {
+        "title": "Sahifadagi balandlik",
+        "description": "Vosita shu sahifada ochilgandagi balandligi, pikselda (200 dan 2000 gacha)."
+      },
+      {
+        "title": "Urg‘u rangi",
+        "description": "Sarlavha belgisi va tugma rangi. Mavzuga ergashish uchun bo‘sh qoldiring."
+      }
+    ],
+    "developer": [
+      {
+        "title": "LTI kirish ishorasi",
+        "description": "Bu saytning LTI xizmati o‘quvchini tanish uchun foydalanadigan shaffof bo‘lmagan qiymat. Odatda bu yerda saqlanmasdan, sayt tomonidan lti-launch-request hodisasi orqali beriladi. Hech qachon parol yoki kalit emas."
+      },
+      {
+        "title": "LTI xabar ishorasi",
+        "description": "Bu saytning LTI xizmati ushbu ishga tushirishni tanish uchun foydalanadigan shaffof bo‘lmagan qiymat. Odatda bu yerda saqlanmasdan, sayt tomonidan beriladi."
+      }
+    ]
+  }
+}

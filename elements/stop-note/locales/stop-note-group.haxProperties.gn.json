@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Stop Note aty",
+    "description": "Embyaty heta jehaipy pyta peteĩ bloque-pe ohechaukáva peteĩ jehaipy peteĩ jey, Ñemoñe'ẽ térã Mba'e pyahu-icha. Tape kárta, jehaipy ykegua ha jehe'ijey marco reheve ikatu avei oñembyaty hendivekuéra."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Teraguã",
+        "description": "Aty réra mba'erechaha moñe'ẽhára omomarandúva, Ñemoñe'ẽ térã Mba'e pyahu-icha."
+      },
+      {
+        "title": "Jehaipy",
+        "description": "Jehaipy pyta atýpe. Tape kárta, jehaipy ykegua ha jehe'ijey marco reheve ikatu avei oñembojoapy."
+      }
+    ]
+  }
+}

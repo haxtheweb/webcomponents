@@ -3,5 +3,8 @@
   "copyAsCsv": "Kopisha njenge-CSV.",
   "printTable": "Phrinta Ithebula",
   "selectColumn": "Khetha Ikholomu",
-  "dataTable": "Idatha · Ithebula"
+  "dataTable": "Idatha · Ithebula",
+  "filterStatus": "Kuboniswa imigqa engu-{shown} kwengu-{total}, ehlungwe ngo-{column}: {text}",
+  "columnNumber": "Ikholomu {column}",
+  "clearFilter": "Sula isihlungi"
 }

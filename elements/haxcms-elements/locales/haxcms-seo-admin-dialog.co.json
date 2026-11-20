@@ -6,6 +6,8 @@
   "faviconDescription": "Imagine di l'unghjetta di u navigatore / aduprata nant'à i telefoni cum'è picculu logo di u situ",
   "domain": "Duminiu",
   "domainDescription": "Duminiu di stu situ web",
+  "sameAs": "Altri prufili di stu situ",
+  "sameAsDescription": "Un liame per linea versu i prufili di stu situ o di l'urganizazione altrò (GitHub, LinkedIn, YouTube, Mastodon). I mutori di ricerca l'adopranu per ligà quessi prufili à stu situ.",
   "language": "Lingua",
   "languageDescription": "Lingua di stu situ. Circate per nome o codice, o scrivite un altru codice cum'è fr-CA.",
   "googleAnalyticsId": "ID Google Analytics",

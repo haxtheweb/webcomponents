@@ -1,0 +1,21 @@
+{
+  "diagram": "Ta'ãngarysýi",
+  "flowchart": "jeku'e ta'ãngarysýi",
+  "sequence": "jehasa ñemoĩ",
+  "source": "Ypykue",
+  "textAlternative": "Moñe'ẽrã ambue",
+  "present": "Ehechauka",
+  "exitPresent": "Esẽ jehechaukágui",
+  "loading": "Oñemyanyhẽ ta'ãngarysýi",
+  "empty": "Ndaipóri gueteri mba'eve oñeta'ãngahai hag̃ua. Embojoapy ta'ãngarysýi ypykue.",
+  "error": "Jejavy",
+  "parseError": "Ko ta'ãngarysýi ndaikatúi oñeta'ãngahai. Ehecha ypykue.",
+  "loadError": "Ta'ãngarysýi aranduka ndaikatúi ojehupyty.",
+  "srcError": "Ta'ãngarysýi marandurenda ndaikatúi ojehupyty.",
+  "decision": "jeporavo",
+  "end": "paha",
+  "goTo": "eho {target}-pe",
+  "ifGoTo": "{label} ramo, eho {target}-pe",
+  "describedBySource": "Ta'ãngarysýi oñemombe'úva ypykue rupive.",
+  "scrollable": "Ta'ãngarysýi, ikatúva oñemongu'e"
+}

@@ -52,6 +52,20 @@
           "_top": "Zenera lapamwamba - _top",
           "_parent": "Zenera la kholo - _parent"
         }
+      },
+      {
+        "title": "Palibe muvi",
+        "description": "Bisani muvi wa batani."
+      },
+      {
+        "title": "Ulalo: kopita",
+        "description": "Komwe ulalo utsegukire.",
+        "options": {
+          "": "Zenera lomwelo",
+          "_blank": "Zenera latsopano - _blank",
+          "_top": "Zenera lapamwamba - _top",
+          "_parent": "Zenera la kholo - _parent"
+        }
       }
     ],
     "developer": [

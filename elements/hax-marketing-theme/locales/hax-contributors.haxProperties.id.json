@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Kontributor",
+    "description": "Orang-orang yang membangun proyek, dari file daftar"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "File daftar (JSON)"
+      },
+      {
+        "title": "Tampilan: landed, lab, atau code"
+      },
+      {
+        "title": "Jumlah orang maksimum yang ditampilkan (0 berarti semua)"
+      }
+    ]
+  }
+}

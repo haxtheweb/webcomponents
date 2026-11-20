@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Papapy jehekombo'e",
+    "description": "Peteĩ aty mbyky apañuãi papapy rehegua ñembohovái pya'e reheve. Eiporavo tembiapo ha papapy ñemboja'i; peteĩteĩ ñembosarái ipyahu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Téra",
+        "description": "Ko jehekombo'e réra, ojehechaukáva iñakãme."
+      },
+      {
+        "title": "Tembiapokuéra",
+        "description": "Mba'eichagua apañuãipa oñeporandu. Temimbo'ekuéra ikatu ombogue oimeraẽva oñepyrũ mboyve.",
+        "options": {
+          "add": "Mbojoapy",
+          "subtract": "Mboguepy",
+          "multiply": "Mbohetapy",
+          "divide": "Mboja'opy",
+          "add subtract": "Mbojoapy ha mboguepy",
+          "multiply divide": "Mbohetapy ha mboja'opy",
+          "add multiply": "Mbojoapy ha mbohetapy",
+          "add divide": "Mbojoapy ha mboja'opy",
+          "subtract multiply": "Mboguepy ha mbohetapy",
+          "subtract divide": "Mboguepy ha mboja'opy",
+          "add subtract multiply": "Mbojoapy, mboguepy ha mbohetapy",
+          "add subtract divide": "Mbojoapy, mboguepy ha mboja'opy",
+          "add multiply divide": "Mbojoapy, mbohetapy ha mboja'opy",
+          "subtract multiply divide": "Mboguepy, mbohetapy ha mboja'opy",
+          "add subtract multiply divide": "Irundyvéva"
+        }
+      },
+      {
+        "title": "Papapy michĩvéva",
+        "description": "Papapy michĩvéva ojeipurúva peteĩ apañuãime. Papapy henyhẽva, 0 térã hetave."
+      },
+      {
+        "title": "Papapy tuichavéva",
+        "description": "Papapy tuichavéva ojeipurúva peteĩ apañuãime. Mboja'opy mbohovái ha mboja'oha opyta avei ko ñemboja'ípe."
+      },
+      {
+        "title": "Mboy apañuãi",
+        "description": "Mboy apañuãipa oĩ peteĩ ñembosaráipe (1 guive 100 peve)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ára ñemboja'i",
+        "description": "Aravo'ive oñemoneĩva peteĩ ñembosarái henyhẽvape g̃uarã. 0 he'ise ndaipóri aravopapaha, upéva ha'e ypy: jehekombo'e aravopapaha reheve omoñapytĩ temimbo'ekuéra oikotevẽvéva ára. Oñemoĩramo, temimbo'ekuéra ikatu gueteri ombogue aravopapaha ijupe g̃uarã."
+      },
+      {
+        "title": "Sa'y mbohesakãha",
+        "description": "Iñakã chip ha botõkuéra sa'y. Eheja nandi emoirũ hag̃ua téma."
+      }
+    ]
+  }
+}

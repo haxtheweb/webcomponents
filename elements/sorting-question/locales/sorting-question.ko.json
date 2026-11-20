@@ -40,5 +40,7 @@
   "hideDirections": "안내 숨기기",
   "showRelatedContent": "관련 콘텐츠 보기",
   "hideRelatedContent": "관련 콘텐츠 숨기기",
-  "notAttempted": "시도하지 않음"
+  "notAttempted": "시도하지 않음",
+  "cardsDirections": "각 카드의 앞으로 이동, 뒤로 이동 버튼을 쓰거나 마우스로 끌어서 카드를 올바른 순서로 놓으세요. 순서가 맞다고 생각되면 {checkAnswer}을(를) 선택해 답을 확인하세요.",
+  "movedToPosition": "{item}을(를) {total}개 중 {position}번째 위치로 옮겼습니다"
 }

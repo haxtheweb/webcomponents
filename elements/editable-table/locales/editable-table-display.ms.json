@@ -3,5 +3,8 @@
   "copyAsCsv": "Salin sebagai CSV.",
   "printTable": "Cetak Jadual",
   "selectColumn": "Pilih Lajur",
-  "dataTable": "Data · Jadual"
+  "dataTable": "Data · Jadual",
+  "filterStatus": "Menunjukkan {shown} daripada {total} baris, ditapis mengikut {column}: {text}",
+  "columnNumber": "Lajur {column}",
+  "clearFilter": "Kosongkan penapis"
 }

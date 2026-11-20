@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Statistyktegel",
+    "description": "Ien getal dat der ta docht, mei it label en hoe't it feroare is. Pleats der ferskate yn in rooster foar in dashboerdrige."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Label",
+        "description": "Wat it getal mjit."
+      },
+      {
+        "title": "Wearde",
+        "description": "It getal. In gewoan getal wurdt groepearre neffens de taal fan de side; al it oare wurdt toand sa't it skreaun is."
+      },
+      {
+        "title": "Feroaring",
+        "description": "Hoe't it feroare is, yn wurden, lykas 6% dit semester."
+      },
+      {
+        "title": "Rjochting",
+        "description": "Oft de feroaring omheech of omleech is.",
+        "options": {
+          "": "Gjin",
+          "up": "Omheech",
+          "down": "Omleech"
+        }
+      }
+    ]
+  }
+}

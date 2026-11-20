@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Walfaallaa",
+    "description": "Jechoota qabduu fuula fuulatti taatoo lama qabu cinaa jiran"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mata-duree"
+      },
+      {
+        "title": "Qabduun eessa deema"
+      },
+      {
+        "title": "Barreeffama qabduu"
+      },
+      {
+        "title": "Sanyii taatoo bitaa"
+      },
+      {
+        "title": "Sanyii taatoo mirgaa"
+      }
+    ]
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Àtẹ radar",
+    "description": "Àtẹ radar (aláǹtakùn) fún àwọn àwòṣe ìdàgbàsókè àti ìdíwọ̀n ẹ̀ka, bí HEOSAT. Ó ní ọ̀rọ̀ àfidípò àti tábìlì dátà."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Àkọlé",
+        "description": "Àkọlé fún àtẹ náà; a tún ń lò ó gẹ́gẹ́ bí orúkọ tó ṣeé dé rẹ̀."
+      },
+      {
+        "title": "Àmì tó ga jù",
+        "description": "Iye tó ga jù lórí ìwọ̀n náà."
+      },
+      {
+        "title": "Àwọn ẹ̀ka",
+        "description": "Ẹ̀ka kan fún ìlà kọ̀ọ̀kan. Ó nílò ó kéré tán 3."
+      },
+      {
+        "title": "Àwọn àmì",
+        "description": "Àwọn nọ́mbà tí a fi kọ́mà yà, ọ̀kan fún ẹ̀ka kọ̀ọ̀kan ní ìtò kan náà."
+      },
+      {
+        "title": "Àwọn àmì àfojúsùn",
+        "description": "Àwọn nọ́mbà tí a fi kọ́mà yà, ọ̀kan fún ẹ̀ka kọ̀ọ̀kan ní ìtò kan náà."
+      },
+      {
+        "title": "Fi àlàyé àmì hàn",
+        "description": "Fi àlàyé àmì tó ń dárúkọ àwọn àmì àti àfojúsùn hàn."
+      },
+      {
+        "title": "Kékeré",
+        "description": "Àtẹ tó kéré jù láìsí àmì, àlàyé àmì tàbí tábìlì dátà. Rá lé ojú-àmì kan láti rí àwọn iye rẹ̀."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Àmì fún àwọn àmì",
+        "description": "Àmì àlàyé àti tábìlì fún àwọn àmì."
+      },
+      {
+        "title": "Àmì àfojúsùn",
+        "description": "Àmì àlàyé àti tábìlì fún àwọn àfojúsùn."
+      }
+    ]
+  }
+}

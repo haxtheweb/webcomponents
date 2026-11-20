@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Diagram radar",
+    "description": "Diagram radar (laba-laba) untuk model kematangan dan penilaian aspek, seperti HEOSAT. Termasuk alternatif teks dan tabel data."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Judul",
+        "description": "Judul diagram; juga digunakan sebagai nama aksesibelnya."
+      },
+      {
+        "title": "Skor maksimum",
+        "description": "Nilai tertinggi pada skala."
+      },
+      {
+        "title": "Kategori",
+        "description": "Satu kategori per baris. Minimal 3."
+      },
+      {
+        "title": "Skor",
+        "description": "Angka dipisahkan koma, satu per kategori dalam urutan yang sama."
+      },
+      {
+        "title": "Skor target",
+        "description": "Angka dipisahkan koma, satu per kategori dalam urutan yang sama."
+      },
+      {
+        "title": "Tampilkan legenda",
+        "description": "Tampilkan legenda yang menamai skor dan target."
+      },
+      {
+        "title": "Ringkas",
+        "description": "Diagram lebih kecil tanpa label, legenda, atau tabel data. Arahkan kursor ke titik untuk melihat nilainya."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Label skor",
+        "description": "Label legenda dan tabel untuk skor."
+      },
+      {
+        "title": "Label target",
+        "description": "Label legenda dan tabel untuk target."
+      }
+    ]
+  }
+}

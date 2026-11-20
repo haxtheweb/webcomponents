@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Funktiounszeil",
+    "description": "E Schierm vum Produit nieft deem, wat et fir Iech bedeit"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kleng Bezeechnung"
+      },
+      {
+        "title": "Iwwerschrëft"
+      },
+      {
+        "title": "Bild"
+      },
+      {
+        "title": "Wat d'Bild weist"
+      },
+      {
+        "title": "Bild op der rietser Säit"
+      },
+      {
+        "title": "Schiedfaarf (DDD-Numm, eidel follegt der Palett)"
+      }
+    ]
+  }
+}

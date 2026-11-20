@@ -60,6 +60,8 @@
   "flagsFound": "Atrasti {correct} no {total}",
   "toRethink": "Jāpārdomā: {count}",
   "notEvidence": "nav šī karodziņa pierādījums",
+  "isEvidence": "pierādījums šai atzīmei",
+  "readingKeys": "Izmantojiet bulttaustiņus, lai pārietu no vienas {unit} uz nākamo.",
   "markAnswers": "Atzīmēt atbildes",
   "doneMarking": "Pabeigt atbilžu atzīmēšanu",
   "editHint": "Rediģējiet tekstu zemāk. Bloka izvēlnē izmantojiet “Atzīmēt atbildes”, lai izvēlētos, kur jāliek katrs karodziņš.",

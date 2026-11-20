@@ -6,6 +6,8 @@
   "faviconDescription": "Bild am Browser-Tab / gëtt op Handyen als klengt Site-Logo benotzt",
   "domain": "Domain",
   "domainDescription": "Domain vun dëser Websäit",
+  "sameAs": "Aner Profiller vun dëser Websäit",
+  "sameAsDescription": "Ee Link pro Linn op Profiller vun dëser Websäit oder Organisatioun anzwousch (GitHub, LinkedIn, YouTube, Mastodon). Sichmaschinne benotzen se, fir dës Profiller mat dëser Websäit ze verbannen.",
   "language": "Sprooch",
   "languageDescription": "Sprooch vun dësem Site. Sicht no Numm oder Code, oder gitt en aneren Code wéi fr-CA un.",
   "googleAnalyticsId": "Google Analytics ID",

@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Krossorðagáta",
+    "description": "Ein krossorðagáta gjørd úr einum lista við orðum og vísbendingum. Netið verður gjørt fyri teg; lesandi skriva orðini og kanna tey."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Heiti",
+        "description": "Heitið ella spurningurin víst omanfyri krossorðagátuna."
+      },
+      {
+        "title": "Orð",
+        "description": "Hvørt orð og vísbending tess. Netið verður gjørt úr hesum listanum: longsta orðið verður sett fyrst, og hini krossa tað á felags bókstavum."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Royndir",
+        "description": "Hvussu nógvar ferðir ein lesandi kann kanna. 0 merkir óavmarkað."
+      },
+      {
+        "title": "Áherðslulitur",
+        "description": "Valfríur litur til høvuðsmerkið, virkna orðið og gerðarknøttarnar."
+      },
+      {
+        "title": "Kann leggjast saman",
+        "description": "Vís hesa krossorðagátuna sum eina røð, ið letst upp og aftur. At lata eina upp letur hinar samanleggjandi spurningarnar við síðuna av aftur."
+      },
+      {
+        "title": "Byrja samanlagt",
+        "description": "Tá ið hon kann leggjast saman, byrja sum ein afturlatin røð, ið bert vísir heitið og støðuna."
+      },
+      {
+        "title": "Metingarsnið",
+        "description": "OER Schema: metingarsnið fyri hesa meting (t.d. stig, bókstavur, prosent, liðugt)."
+      },
+      {
+        "title": "Lærumál",
+        "description": "OER Schema: lærumál, sum hoyrir til hesa meting."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Navn á spurnarkappingini",
+        "description": "Navn á spurnarkapping, brúkt til xAPI-eyðmerking í greiningarkervum."
+      },
+      {
+        "title": "Skeið",
+        "description": "OER Schema: skeiðið, sum henda metingin er ætlað til."
+      }
+    ]
+  }
+}

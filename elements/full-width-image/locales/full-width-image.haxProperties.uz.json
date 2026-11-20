@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Fon rasmi."
+        "description": "Fon rasmi.",
+        "title": "Tasvir"
       },
       {
         "property": "caption",
-        "description": "Matn sarlavhasi."
+        "description": "Matn sarlavhasi.",
+        "title": "Izoh"
       }
     ]
   }

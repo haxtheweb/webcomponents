@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Krossword",
+    "description": "Sözler we ugurlar sanawyndan düzülen krossword. Gözenek siziň üçin döredilýär; öwrenijiler sözleri ýazýarlar we barlaýarlar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sözbaşy",
+        "description": "Krosswordyň üstünde görkezilýän at ýa-da sorag."
+      },
+      {
+        "title": "Sözler",
+        "description": "Her söz we onuň ugry. Gözenek şu sanawdan döredilýär: iň uzyn söz ilki ýerleşdirilýär, beýlekiler umumy harplarda ony kesip geçýär."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Synanyşyklar",
+        "description": "Öwreniji näçe gezek barlap biler. 0 çäksiz diýmegi aňladýar."
+      },
+      {
+        "title": "Aksent reňki",
+        "description": "Sözbaşy nyşany, işjeň söz we hereket düwmeleri üçin goşmaça reňk."
+      },
+      {
+        "title": "Ýygnalýan",
+        "description": "Bu krosswordy açylýan we ýapylýan setir hökmünde görkez. Birini açmak onuň ýanyndaky beýleki ýygnalýan soraglary ýapýar."
+      },
+      {
+        "title": "Ýygnalan görnüşde başla",
+        "description": "Ýygnalýan bolanda, diňe ady we ýagdaýy görkezilýän ýapyk setir hökmünde başla."
+      },
+      {
+        "title": "Bahalandyryş formaty",
+        "description": "OER Schema: bu baha bermek üçin bahalandyryş formaty (meselem ballar, harp, göterim, tamamlama)."
+      },
+      {
+        "title": "Okuw maksady",
+        "description": "OER Schema: bu baha bermek bilen baglanyşykly okuw maksady."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Testiň ady",
+        "description": "Analitika ulgamlarynda xAPI kesgitlemesi üçin ulanylýan testiň ady."
+      },
+      {
+        "title": "Kurs",
+        "description": "OER Schema: bu baha bermegiň niýetlenen kursy."
+      }
+    ]
+  }
+}

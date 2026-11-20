@@ -4,7 +4,12 @@
     "description": "Esitab interaktiivset H5P-sisu üleslaaditud .h5p-failist ilma H5P-serverita"
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "title": "H5P-fail",
+        "description": "Laadi üles või lingi .h5p-fail. See pakitakse lahti brauseris; H5P-serverit pole vaja."
+      }
+    ],
     "advanced": [
       {
         "title": "Vana iframe'i manustamiskood",

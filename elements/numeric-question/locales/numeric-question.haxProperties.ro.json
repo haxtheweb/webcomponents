@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Întrebare numerică",
+    "description": "O întrebare la care se răspunde cu un număr. Răspunsul este un număr fix sau o formulă calculată din variabile și este acceptat când se încadrează într-o toleranță."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Întrebare",
+        "description": "Ce sunt întrebați cursanții. Scrieți numele unei variabile între acolade, de exemplu {d}, pentru a-i afișa valoarea."
+      },
+      {
+        "title": "Unitate",
+        "description": "Afișată ca text lângă câmpul de răspuns, de exemplu km/h."
+      },
+      {
+        "title": "Răspuns",
+        "description": "Numărul corect. Lăsați gol când o formulă calculează răspunsul."
+      },
+      {
+        "title": "Formulă",
+        "description": "Calculează răspunsul din variabile, de exemplu d / (t / 60). Poate folosi + - * / ^, paranteze, sqrt() și abs(). Folosită în locul răspunsului când este setată."
+      },
+      {
+        "title": "Variabile",
+        "description": "Numerele pe care le folosesc formula și întrebarea. Fiecare ia o valoare între cea mai mică și cea mai mare, în pași."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Toleranță",
+        "description": "Cât de departe de răspunsul exact este încă acceptat. 0 înseamnă exact sau rotunjit la zecimalele de mai jos."
+      },
+      {
+        "title": "Tipul toleranței",
+        "description": "Absolută: plus sau minus toleranța. Procent: plus sau minus acel procent din răspunsul exact.",
+        "options": {
+          "absolute": "Absolută",
+          "percent": "Procent"
+        }
+      },
+      {
+        "title": "Zecimale",
+        "description": "Cursanților li se cere să rotunjească la atâtea zecimale, iar răspunsul este afișat rotunjit astfel. Lăsați gol pentru fără rotunjire."
+      },
+      {
+        "title": "Încercări",
+        "description": "De câte ori poate verifica un cursant. 0 înseamnă nelimitat."
+      },
+      {
+        "title": "Numere noi la fiecare încercare",
+        "description": "Generați valori noi ale variabilelor de fiecare dată când un cursant încearcă din nou. Răspunsul anterior nu mai este afișat când revine, doar dacă a răspuns corect."
+      },
+      {
+        "title": "Pliabil",
+        "description": "Afișați această întrebare ca un rând care se deschide și se închide. Deschiderea uneia le închide pe celelalte întrebări pliabile de lângă ea."
+      },
+      {
+        "title": "Începeți restrâns",
+        "description": "Când este pliabilă, începe ca un rând închis care arată doar întrebarea și starea."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Numele testului",
+        "description": "Numele testului folosit pentru identificarea xAPI în sistemele de analiză."
+      }
+    ]
+  }
+}

@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Máquina de escribir",
     "description": "Texto que se escribe só, carácter a carácter."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Texto",
+        "description": "O texto que se escribe cando o elemento entra na vista."
+      },
+      {
+        "title": "Escribindo",
+        "description": "Mostrar o cursor intermitente; o elemento defíneo mentres escribe."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Retardo",
+        "description": "Milisegundos de espera antes de comezar a escribir."
+      },
+      {
+        "title": "Duración do cursor",
+        "description": "Milisegundos que o cursor segue pestanexando despois de escribir o texto."
+      },
+      {
+        "title": "Velocidade",
+        "description": "Milisegundos por carácter; os números máis baixos escriben máis rápido."
+      }
+    ]
   }
 }

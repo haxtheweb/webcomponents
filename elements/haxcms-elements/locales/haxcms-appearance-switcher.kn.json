@@ -1,0 +1,8 @@
+{
+  "theme": "ಥೀಮ್",
+  "palette": "ಪ್ಯಾಲೆಟ್",
+  "themeDefault": "ಥೀಮ್ ಡೀಫಾಲ್ಟ್",
+  "designSystem": "ವಿನ್ಯಾಸ ವ್ಯವಸ್ಥೆ",
+  "designSystemDefault": "DDD (ಡೀಫಾಲ್ಟ್)",
+  "designSystemUnavailable": "ಈ ಥೀಮ್ ತನ್ನದೇ ಆದ ವಿನ್ಯಾಸ ವ್ಯವಸ್ಥೆಯನ್ನು ಉಳಿಸಿಕೊಳ್ಳುತ್ತದೆ"
+}

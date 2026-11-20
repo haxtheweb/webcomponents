@@ -23,7 +23,9 @@
           "stop": "Gelditu",
           "warning": "Abisua",
           "success": "Berrespena",
-          "info": "Oharra"
+          "info": "Oharra",
+          "tip": "Aholkua",
+          "new": "Berritasunak"
         }
       },
       {

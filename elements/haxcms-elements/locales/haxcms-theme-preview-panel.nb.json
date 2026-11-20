@@ -8,5 +8,9 @@
   "theme": "Tema",
   "palette": "Palett",
   "cancel": "Avbryt",
-  "openAppearanceSettings": "Åpne innstillinger for utseende"
+  "openAppearanceSettings": "Åpne innstillinger for utseende",
+  "designSystem": "Designsystem",
+  "designSystemDefault": "DDD (standard)",
+  "designSystemThemeDefault": "{name} (temaets standard)",
+  "designSystemHelp": "Farge, skrift, hjørner og tetthet. Temaet bestemmer fortsatt oppsettet."
 }

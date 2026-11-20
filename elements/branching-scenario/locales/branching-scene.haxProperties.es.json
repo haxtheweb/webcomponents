@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Escena del escenario",
+    "description": "Una escena de un escenario ramificado. Enlaza cada opción a otra escena con # seguido de su id de escena."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Id de la escena",
+        "description": "A qué enlazan las opciones: un enlace a # seguido de este id lleva a esta escena. Letras, números y guiones."
+      },
+      {
+        "title": "Encabezado",
+        "description": "Encabezado de la escena."
+      },
+      {
+        "title": "Final",
+        "description": "Si esta escena termina un camino y cómo acabó.",
+        "options": {
+          "": "No es un final",
+          "good": "Buen final",
+          "mixed": "Final mixto",
+          "poor": "Mal final"
+        }
+      },
+      {
+        "title": "Puntuación",
+        "description": "Puntuación por llegar a este final. La puntuación más alta de los finales del escenario es el máximo."
+      }
+    ]
+  }
+}

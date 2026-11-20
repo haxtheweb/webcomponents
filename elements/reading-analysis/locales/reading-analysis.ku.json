@@ -60,6 +60,8 @@
   "flagsFound": "{correct} ji {total} hatin dîtin",
   "toRethink": "{count} divê ji nû ve were fikirîn",
   "notEvidence": "ne delîla vê alayê ye",
+  "isEvidence": "delîl ji bo vê alê",
+  "readingKeys": "Bişkokên tîran bi kar bîne da ku ji {unit}ekê derbasî ya din bibî.",
   "markAnswers": "Bersivan nîşan bike",
   "doneMarking": "Nîşankirina bersivan qediya",
   "editHint": "Xwendina jêrîn biguherîne. Ji bo hilbijartina cihê her alayê, di menuya blokê de Bersivan nîşan bike bi kar bîne.",

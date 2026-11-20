@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "雷达图",
+    "description": "用于成熟度模型和维度评分（如 HEOSAT）的雷达（蛛网）图。包含文本替代和数据表。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "标题",
+        "description": "图表的标题；也用作其无障碍名称。"
+      },
+      {
+        "title": "最高分",
+        "description": "刻度上的最高值。"
+      },
+      {
+        "title": "类别",
+        "description": "每行一个类别。至少需要 3 个。"
+      },
+      {
+        "title": "得分",
+        "description": "用逗号分隔的数字，按相同顺序每个类别一个。"
+      },
+      {
+        "title": "目标分",
+        "description": "用逗号分隔的数字，按相同顺序每个类别一个。"
+      },
+      {
+        "title": "显示图例",
+        "description": "显示标明得分和目标的图例。"
+      },
+      {
+        "title": "紧凑",
+        "description": "较小的图表，没有标签、图例或数据表。悬停在某个点上可查看其数值。"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "得分标签",
+        "description": "得分的图例和表格标签。"
+      },
+      {
+        "title": "目标标签",
+        "description": "目标的图例和表格标签。"
+      }
+    ]
+  }
+}

@@ -6,6 +6,8 @@
   "faviconDescription": "ຮູບພາບແຖບບຣາວເຊີ / ໃຊ້ໃນໂທລະສັບເປັນໂລໂກ້ເວັບໄຊຂະໜາດນ້ອຍ",
   "domain": "ໂດເມນ",
   "domainDescription": "ໂດເມນຂອງເວັບໄຊນີ້",
+  "sameAs": "ໂປຣໄຟລ໌ອື່ນຂອງເວັບໄຊນີ້",
+  "sameAsDescription": "ໜຶ່ງລິ້ງຕໍ່ແຖວໄປຫາໂປຣໄຟລ໌ຂອງເວັບໄຊ ຫຼື ອົງກອນນີ້ຢູ່ບ່ອນອື່ນ (GitHub, LinkedIn, YouTube, Mastodon). ເຄື່ອງມືຊອກຫາໃຊ້ພວກມັນເພື່ອເຊື່ອມໂຍງໂປຣໄຟລ໌ເຫຼົ່ານັ້ນກັບເວັບໄຊນີ້.",
   "language": "ພາສາ",
   "languageDescription": "ພາສາຂອງເວັບໄຊນີ້. ຄົ້ນຫາຕາມຊື່ ຫຼື ລະຫັດ ຫຼື ປ້ອນລະຫັດອື່ນເຊັ່ນ fr-CA.",
   "googleAnalyticsId": "Google Analytics ID",

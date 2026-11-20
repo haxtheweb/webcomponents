@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Makîneya nivîsandinê",
     "description": "Nivîsek ku xwe bi xwe tîp bi tîp dinivîse."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nivîs",
+        "description": "Nivîsa ku dema hêman tê nav dîtinê tê nivîsîn."
+      },
+      {
+        "title": "Tê nivîsîn",
+        "description": "Nîşankera ku dibiriqe nîşan bide; hêman vê dema dinivîse diyar dike."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Derengî",
+        "description": "Mîlîçirkeyên ji bo li bendê mayînê berî ku nivîsîn dest pê bike."
+      },
+      {
+        "title": "Dema nîşankerê",
+        "description": "Mîlîçirkeyên ku nîşanker piştî nivîsîna nivîsê dibiriqe."
+      },
+      {
+        "title": "Lez",
+        "description": "Mîlîçirke ji bo her tîpê; hejmarên kêmtir zûtir dinivîsin."
+      }
+    ]
   }
 }

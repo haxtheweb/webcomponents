@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "ストーリーボタン",
+    "description": "hax.cloud で主張の背景にあるストーリー、またはほかの HAX ネットワークサイトの対応する場所を開くボタン"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "リンク先",
+        "options": {
+          "cloud": "hax.cloud、ストーリー",
+          "learn": "learn.hax.cloud、チュートリアル",
+          "try": "browser.hax.cloud、試す",
+          "elements": "webcomponents.hax.cloud、ブロック",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "そのサイト上のアドレス（hax.cloud のストーリーは stories/ee450a19 のような形式）"
+      },
+      {
+        "title": "何についてか"
+      },
+      {
+        "title": "小さなチップ"
+      },
+      {
+        "title": "ボタンに何についてかを表示"
+      }
+    ]
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Aqoonso meelaha",
+    "description": "Ardaydu waxay ka helaan meelaha saxda ah sawir iyagoo gujinaya, taabanaya ama dhaqaajinaya calaamad kiiboodh. Dhiggeeda la qiimeeyo ee khariidad sawir."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sawir",
+        "description": "Sawirka ardaydu baaraan."
+      },
+      {
+        "title": "Qoraal beddel ah",
+        "description": "Wuxuu u sharxaa sawirka dadka aan arki karin. Weligiis looma muujiyo cinwaan ahaan."
+      },
+      {
+        "title": "Cinwaan",
+        "description": "Cinwaan gaaban oo muuqda oo ka muuqda sawirka korkiisa."
+      },
+      {
+        "title": "Su'aal",
+        "description": "Waxa ardayda laga codsanayo inay ka helaan sawirka."
+      },
+      {
+        "title": "Jawaabaha",
+        "description": "Jawaab kastaa waa ugxaan magac leh oo sawirka saaran. Booska iyo cabbirku waa boqolleyda sawirka, laga cabbiro geeskiisa sare ee bidix. Inta wax laga beddelayo, jawaab kasta waa lagu xariiqaa sawirka."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Isku dayada",
+        "description": "Immisa jeer ayuu ardaygu isku dayi karaa. 0 macnaheedu waa xad la'aan."
+      },
+      {
+        "title": "Seegisyada la oggol yahay",
+        "description": "Immisa seegis ayaa dhammeeya isku day. 0 macnaheedu waa xad la'aan, ardayduna waxay helaan badhanka Dhammee."
+      },
+      {
+        "title": "La isku duubi karo",
+        "description": "U muuji su'aashan sida saf la furo oo la xiro. Furitaanka mid wuxuu xiraa su'aalaha kale ee la isku duubi karo ee agtiisa ah."
+      },
+      {
+        "title": "Ku bilow isagoo duuban",
+        "description": "Marka la isku duubi karo, ku bilow saf xiran oo muujiya su'aasha iyo xaaladdeeda oo keliya."
+      },
+      {
+        "title": "Qaabka qiimaynta",
+        "description": "OER Schema: qaabka qiimaynta ee qiimayntan (tusaale dhibco, xaraf, boqolley, dhammaystir)."
+      },
+      {
+        "title": "Ujeeddada waxbarasho",
+        "description": "OER Schema: ujeeddada waxbarasho ee la xiriirta qiimayntan."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Magaca kedisada",
+        "description": "Magaca kedisada ee loo gudbiyo in loo isticmaalo deegaannada xAPI ku shaqeeya si loo aqoonsado shaygan"
+      },
+      {
+        "title": "Koorso",
+        "description": "OER Schema: koorsada qiimayntan loogu talagalay."
+      }
+    ]
+  }
+}

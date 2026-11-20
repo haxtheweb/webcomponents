@@ -24,11 +24,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Xehetasunak irekita daudeneko aukerako laburpen-testua"
+        "title": "Xehetasunak irekita daudeneko aukerako laburpen-testua",
+        "description": "Botoiaren testua deskribapena ezkutatuta dagoenean, adibidez Erakutsi deskribapena."
       },
       {
         "property": "closeText",
-        "title": "Xehetasunak itxita daudeneko aukerako laburpen-testua"
+        "title": "Xehetasunak itxita daudeneko aukerako laburpen-testua",
+        "description": "Botoiaren testua deskribapena erakusten denean, adibidez Ezkutatu deskribapena."
       }
     ]
   }

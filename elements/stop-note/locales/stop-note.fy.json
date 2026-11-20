@@ -3,5 +3,7 @@
   "status_stop": "Stop",
   "status_warning": "Warskôging",
   "status_success": "Súkses",
-  "status_info": "Opmerking"
+  "status_info": "Opmerking",
+  "status_tip": "Wisten jo dat?",
+  "status_new": "Wat is nij"
 }

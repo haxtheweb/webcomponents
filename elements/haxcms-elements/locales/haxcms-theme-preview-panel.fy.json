@@ -8,5 +8,9 @@
   "theme": "Tema",
   "palette": "Palet",
   "cancel": "Annulearje",
-  "openAppearanceSettings": "Uterlikynstellings iepenje"
+  "openAppearanceSettings": "Uterlikynstellings iepenje",
+  "designSystem": "Untwerpsysteem",
+  "designSystemDefault": "DDD (standert)",
+  "designSystemThemeDefault": "{name} (temastandert)",
+  "designSystemHelp": "Kleur, lettertype, hoeken en tichtens. It tema bepaalt noch altyd de opmaak."
 }

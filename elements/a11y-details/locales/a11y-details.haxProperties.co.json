@@ -24,11 +24,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Testu di riassuntu facultativu quandu i dettagli sò aperti"
+        "title": "Testu di riassuntu facultativu quandu i dettagli sò aperti",
+        "description": "Testu di u buttone quandu a discrizzione hè piattata, per esempiu Mustrà a discrizzione."
       },
       {
         "property": "closeText",
-        "title": "Testu di riassuntu facultativu quandu i dettagli sò chjosi"
+        "title": "Testu di riassuntu facultativu quandu i dettagli sò chjosi",
+        "description": "Testu di u buttone quandu a discrizzione hè mustrata, per esempiu Piattà a discrizzione."
       }
     ]
   }

@@ -13,7 +13,10 @@
       {
         "property": "modifier",
         "title": "Mediatarkenne",
-        "description": "Valinnainen mediatyypin tarkenne. Määrittää, mihin mediatyyppiin tämä lisenssi koskee."
+        "description": "Valinnainen mediatyypin tarkenne. Määrittää, mihin mediatyyppiin tämä lisenssi koskee.",
+        "options": {
+          "": "Ei muunninta"
+        }
       },
       {
         "property": "uri",

@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Pilaar",
+    "description": "'n Pilaar: naam, frase, ikoon, kleur en waarom dit saak maak"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Naam"
+      },
+      {
+        "title": "Frase"
+      },
+      {
+        "title": "Ikoon"
+      },
+      {
+        "title": "Kleur (DDD-naam)"
+      },
+      {
+        "title": "Watter pilaar, 1 tot 7"
+      },
+      {
+        "title": "Klein kaart"
+      },
+      {
+        "title": "Waar die naam gaan"
+      }
+    ]
+  }
+}

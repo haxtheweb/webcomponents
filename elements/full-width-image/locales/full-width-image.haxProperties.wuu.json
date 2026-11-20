@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "背景图片。"
+        "description": "背景图片。",
+        "title": "图片"
       },
       {
         "property": "caption",
-        "description": "文字标题。"
+        "description": "文字标题。",
+        "title": "说明文字"
       }
     ]
   }

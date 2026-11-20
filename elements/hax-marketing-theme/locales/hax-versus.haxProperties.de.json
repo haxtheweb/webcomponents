@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Versus",
+    "description": "Text neben einer Duell-Schaltfläche mit zwei Figuren"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Überschrift"
+      },
+      {
+        "title": "Wohin die Schaltfläche führt"
+      },
+      {
+        "title": "Schaltflächentext"
+      },
+      {
+        "title": "Seed der linken Figur"
+      },
+      {
+        "title": "Seed der rechten Figur"
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Ihe nkiri ọnọdụ",
+    "description": "Otu ihe nkiri nke ọnọdụ nwere alaka. Jikọọ nhọrọ ọ bụla na ihe nkiri ọzọ site na # sochiri id ihe nkiri ya."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Id ihe nkiri",
+        "description": "Ihe nhọrọ na-ejikọ na ya: njikọ na # sochiri id a na-eduga n'ihe nkiri a. Mkpụrụedemede, ọnụọgụ na hyphen."
+      },
+      {
+        "title": "Isiokwu",
+        "description": "Isiokwu nke ihe nkiri ahụ."
+      },
+      {
+        "title": "Njedebe",
+        "description": "Ma ihe nkiri a ọ na-akwụsị ụzọ, na otu o si gaa.",
+        "options": {
+          "": "Ọ bụghị njedebe",
+          "good": "Njedebe ọma",
+          "mixed": "Njedebe agwakọtara",
+          "poor": "Njedebe ọjọọ"
+        }
+      },
+      {
+        "title": "Akara",
+        "description": "Akara maka iru njedebe a. Akara njedebe kacha elu n'ọnọdụ ahụ bụ oke kacha elu."
+      }
+    ]
+  }
+}

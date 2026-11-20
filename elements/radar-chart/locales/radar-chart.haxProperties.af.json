@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Radargrafiek",
+    "description": "Radar- (spinneweb-) grafiek vir volwassenheidsmodelle en faset-telling, soos HEOSAT. Sluit 'n teksalternatief en datatabel in."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Opskrif vir die grafiek; ook as sy toeganklike naam gebruik."
+      },
+      {
+        "title": "Maksimum telling",
+        "description": "Hoogste waarde op die skaal."
+      },
+      {
+        "title": "Kategorieë",
+        "description": "Een kategorie per reël. Benodig ten minste 3."
+      },
+      {
+        "title": "Tellings",
+        "description": "Kommageskeide getalle, een per kategorie in dieselfde volgorde."
+      },
+      {
+        "title": "Teikentellings",
+        "description": "Kommageskeide getalle, een per kategorie in dieselfde volgorde."
+      },
+      {
+        "title": "Wys legende",
+        "description": "Wys 'n legende wat die tellings en die teikens benoem."
+      },
+      {
+        "title": "Kompak",
+        "description": "Kleiner grafiek sonder etikette, legende of datatabel. Beweeg oor 'n punt om sy waardes te sien."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Telling-etiket",
+        "description": "Legende- en tabeletiket vir die tellings."
+      },
+      {
+        "title": "Teiken-etiket",
+        "description": "Legende- en tabeletiket vir die teikens."
+      }
+    ]
+  }
+}

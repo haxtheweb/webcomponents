@@ -1,0 +1,19 @@
+{
+  "label": "Chida chakunja",
+  "labelLti": "Chida chakunja · LTI 1.3",
+  "theTool": "chida",
+  "directions": "Malangizo",
+  "showDirections": "Onetsani malangizo",
+  "hideDirections": "Bisani malangizo",
+  "directionsWindow": "Batani limatsegula zenera latsopano lokhala ndi chida.",
+  "directionsEmbed": "Batani limatsegula chida patsamba ili. Ngati sichitsegula, chitsegulani mu zenera latsopano m'malo mwake.",
+  "directionsLti": "Tsamba ili limakulowetsani mu chida, choncho simukufunika akaunti ina.",
+  "openWindow": "Tsegulani {title} (zenera latsopano)",
+  "openEmbed": "Tsegulani {title}",
+  "openInstead": "Tsegulani mu zenera latsopano m'malo mwake",
+  "frameTitle": "{title} (chida chakunja)",
+  "openedWindow": "Zenera latsopano latseguka ndi chida.",
+  "openedEmbed": "Chida chatseguka patsamba ili.",
+  "needsUrl": "Gawo ili likufunika adiresi yoyambira yomwe imayamba ndi http:// kapena https://.",
+  "needsSignIn": "Chida ichi chikufunika ntchito yolowera ya tsamba ili, yomwe kulibe pano. Palibe chomwe chatsegulidwa."
+}

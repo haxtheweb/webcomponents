@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Ẩn biểu tượng",
         "description": "Ẩn biểu tượng dùng để nhấn mạnh văn bản"
+      },
+      {
+        "title": "Giao diện",
+        "description": "Mức độ nổi bật của nút.",
+        "options": {
+          "": "Tô đầy",
+          "tonal": "Tông màu",
+          "outlined": "Viền",
+          "plain": "Đơn giản"
+        }
+      },
+      {
+        "title": "Kích thước",
+        "description": "Kích thước nút.",
+        "options": {
+          "s": "Nhỏ",
+          "": "Vừa",
+          "l": "Lớn"
+        }
       }
     ],
     "advanced": [

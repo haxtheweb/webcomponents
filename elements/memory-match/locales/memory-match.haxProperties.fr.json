@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Jeu de mémoire",
+    "description": "Retournez des cartes pour trouver des paires. Associez un terme à sa signification pour qu'une paire montre la compréhension, ou utilisez deux textes ou images identiques."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titre",
+        "description": "La consigne affichée dans l'en-tête, par exemple : Associez le terme à sa fonction."
+      },
+      {
+        "title": "Paires",
+        "description": "Chaque paire est composée de deux cartes qui vont ensemble, en général un terme et sa signification. Un côté a besoin de texte, d'une image, ou des deux."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Couleur d'accent",
+        "description": "Couleur facultative pour la pastille d'en-tête, le dos des cartes et le bouton."
+      }
+    ]
+  }
+}

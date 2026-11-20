@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Platforma komparo",
+    "description": "Kap-al-kape: elektu ajnajn du platformojn el datumdosiero"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Komparaj datumoj (JSON)"
+      },
+      {
+        "title": "Identigilo de la maldekstra platformo"
+      },
+      {
+        "title": "Identigilo de la dekstra platformo"
+      }
+    ]
+  }
+}

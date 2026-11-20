@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "打字机",
     "description": "逐字自动打出的文字。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "文本",
+        "description": "元素滚动进入视图后要逐字打出的文本。"
+      },
+      {
+        "title": "正在输入",
+        "description": "显示闪烁的光标；元素在打字时会设置此项。"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "延迟",
+        "description": "开始打字前等待的毫秒数。"
+      },
+      {
+        "title": "光标持续时间",
+        "description": "文本打完后光标继续闪烁的毫秒数。"
+      },
+      {
+        "title": "速度",
+        "description": "每个字符的毫秒数；数字越小打字越快。"
+      }
+    ]
   }
 }

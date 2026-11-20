@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Radar diaqramı",
+    "description": "Yetkinlik modelləri və aspekt qiymətləndirməsi üçün radar (hörümçək) diaqramı, məsələn HEOSAT. Mətn alternativi və məlumat cədvəli daxildir."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Başlıq",
+        "description": "Diaqramın başlığı; həm də onun əlçatan adı kimi istifadə olunur."
+      },
+      {
+        "title": "Maksimum xal",
+        "description": "Şkaladakı ən yüksək qiymət."
+      },
+      {
+        "title": "Kateqoriyalar",
+        "description": "Hər sətirdə bir kateqoriya. Ən azı 3 lazımdır."
+      },
+      {
+        "title": "Xallar",
+        "description": "Vergüllə ayrılmış ədədlər, eyni ardıcıllıqla hər kateqoriya üçün bir."
+      },
+      {
+        "title": "Hədəf xallar",
+        "description": "Vergüllə ayrılmış ədədlər, eyni ardıcıllıqla hər kateqoriya üçün bir."
+      },
+      {
+        "title": "Şərti işarələri göstər",
+        "description": "Xalları və hədəfləri adlandıran şərti işarələri göstər."
+      },
+      {
+        "title": "Yığcam",
+        "description": "Etiketsiz, şərti işarəsiz və məlumat cədvəlsiz kiçik diaqram. Qiymətlərini görmək üçün nöqtənin üzərinə gəlin."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Xal etiketi",
+        "description": "Xallar üçün şərti işarə və cədvəl etiketi."
+      },
+      {
+        "title": "Hədəf etiketi",
+        "description": "Hədəflər üçün şərti işarə və cədvəl etiketi."
+      }
+    ]
+  }
+}

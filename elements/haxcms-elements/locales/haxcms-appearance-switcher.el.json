@@ -1,0 +1,8 @@
+{
+  "theme": "Θέμα",
+  "palette": "Παλέτα",
+  "themeDefault": "Προεπιλογή θέματος",
+  "designSystem": "Σύστημα σχεδίασης",
+  "designSystemDefault": "DDD (προεπιλογή)",
+  "designSystemUnavailable": "Αυτό το θέμα διατηρεί το δικό του σύστημα σχεδίασης"
+}

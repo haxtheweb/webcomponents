@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Hoʻomaka mea hana o waho",
+    "description": "He poloka e wehe ana i kekahi mea hana aʻo o waho ma kahi pukaaniani hou a i ʻole ma ka ʻaoʻao, ma ke ʻano he loulou maʻalahi a i ʻole me kahi noi komo LTI 1.3."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Poʻo inoa",
+        "description": "Inoa o ka mea hana. Hōʻike ʻia ma ke poʻo a ma ke pihi."
+      },
+      {
+        "title": "Wehewehe",
+        "description": "Ka mea a nā haumāna e hana ai ma ka mea hana, hōʻike ʻia ma luna o ke pihi."
+      },
+      {
+        "title": "URL hoʻomaka",
+        "description": "Helu wahi o ka mea hana. Pono he helu wahi piha e hoʻomaka ana me https:// a i ʻole http://."
+      },
+      {
+        "title": "Wehe ma",
+        "description": "Hana ka pukaaniani hou me nā mea hana a pau. Hana ʻo Ma kēia ʻaoʻao me nā mea hana e ʻae ana e hōʻike ʻia i loko o kekahi kahua ʻē aʻe wale nō.",
+        "options": {
+          "window": "He pukaaniani hou",
+          "embed": "Ma kēia ʻaoʻao"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "URL komo LTI",
+        "description": "LTI 1.3 wale nō: ka helu wahi hoʻomaka komo o ka mea hana. Me kēia, he client ID a me he deployment ID, hoʻouna ke pihi i kahi noi komo LTI ma kahi o ka wehe ʻana i kahi loulou maʻalahi. Pono ka lawelawe LTI o kēia kahua e hoʻopau i ka hoʻomaka ʻana."
+      },
+      {
+        "title": "LTI client ID",
+        "description": "Ka client ID a ka mea hana i hāʻawi ai i kēia kahua. He mea hōʻike lehulehu, ʻaʻole he huna: mai kau loa i nā kī a i ʻole nā huna ma ʻaneʻi."
+      },
+      {
+        "title": "LTI deployment ID",
+        "description": "Ka deployment ID a ka mea hana i hāʻawi ai i kēia kahua. He mea hōʻike lehulehu, ʻaʻole he huna."
+      },
+      {
+        "title": "LTI issuer",
+        "description": "Ka helu wahi e hōʻike ana i kēia kahua i ka mea hana. E waiho hakahaka e hoʻohana i ka helu wahi o ke kahua e noho ai ka ʻaoʻao."
+      },
+      {
+        "title": "Kiʻekiʻe ma ka ʻaoʻao",
+        "description": "Kiʻekiʻe o ka mea hana ke wehe ʻia ma kēia ʻaoʻao, ma nā pika (200 a i 2000)."
+      },
+      {
+        "title": "Waihoʻoluʻu koʻikoʻi",
+        "description": "Waihoʻoluʻu o ka ʻāpana poʻo a me ke pihi. E waiho hakahaka e ukali i ke kumuhana."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Kuhi komo LTI",
+        "description": "He waiwai pōhihi e hoʻohana ai ka lawelawe LTI o kēia kahua e ʻike i ka haumāna. Hāʻawi pinepine ʻia e ke kahua ma o ka hanana lti-launch-request ma kahi o ka mālama ʻia ma ʻaneʻi. ʻAʻole loa he ʻōlelo huna a i ʻole kī."
+      },
+      {
+        "title": "Kuhi memo LTI",
+        "description": "He waiwai pōhihi e hoʻohana ai ka lawelawe LTI o kēia kahua e ʻike i kēia hoʻomaka ʻana. Hāʻawi pinepine ʻia e ke kahua ma kahi o ka mālama ʻia ma ʻaneʻi."
+      }
+    ]
+  }
+}

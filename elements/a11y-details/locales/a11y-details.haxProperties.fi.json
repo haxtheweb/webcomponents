@@ -24,11 +24,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Valinnainen yhteenvetoteksti, kun lisätiedot ovat auki"
+        "title": "Valinnainen yhteenvetoteksti, kun lisätiedot ovat auki",
+        "description": "Painikkeen teksti, kun kuvaus on piilotettu, esimerkiksi Näytä kuvaus."
       },
       {
         "property": "closeText",
-        "title": "Valinnainen yhteenvetoteksti, kun lisätiedot ovat kiinni"
+        "title": "Valinnainen yhteenvetoteksti, kun lisätiedot ovat kiinni",
+        "description": "Painikkeen teksti, kun kuvaus näkyy, esimerkiksi Piilota kuvaus."
       }
     ]
   }

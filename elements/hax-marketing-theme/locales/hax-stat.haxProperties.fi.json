@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Tilasto",
+    "description": "Ylöspäin laskeva luku nimiön ja sen tarinaan vievän linkin kera"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Luku, johon lasketaan"
+      },
+      {
+        "title": "Ennen lukua"
+      },
+      {
+        "title": "Luvun jälkeen"
+      },
+      {
+        "title": "Sanat luvun sijaan"
+      },
+      {
+        "title": "Mitä se laskee"
+      },
+      {
+        "title": "Tarinan osoite hax.cloudissa (stories/ee450a19)"
+      }
+    ]
+  }
+}

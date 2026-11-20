@@ -1,0 +1,13 @@
+{
+  "gizmo": {
+    "title": "example-hax-element",
+    "description": "Into yomzekelo yokuqala esetyenziselwa ukubonisa uqwalaselo lwe-HAX neempawu ezihlelekayo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Isihloko"
+      }
+    ]
+  }
+}

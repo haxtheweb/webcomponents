@@ -60,6 +60,8 @@
   "flagsFound": "Leitud {correct}/{total}",
   "toRethink": "Ümber mõelda: {count}",
   "notEvidence": "pole selle lipukese tõend",
+  "isEvidence": "tõend selle märgistuse kohta",
+  "readingKeys": "Kasuta nooleklahve, et liikuda ühelt üksuselt ({unit}) järgmisele.",
   "markAnswers": "Märgi vastused",
   "doneMarking": "Vastuste märkimine lõpetatud",
   "editHint": "Muuda allolevat teksti. Kasuta ploki menüüs käsku Märgi vastused, et valida, kuhu iga lipuke kuulub.",

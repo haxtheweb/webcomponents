@@ -4,7 +4,12 @@
     "description": "Reproduz conteúdo interativo H5P a partir de um arquivo .h5p enviado, sem precisar de servidor H5P"
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "title": "Arquivo H5P",
+        "description": "Envie ou vincule um arquivo .h5p. Ele é descompactado no navegador; nenhum servidor H5P é necessário."
+      }
+    ],
     "advanced": [
       {
         "title": "Código de incorporação iframe legado",

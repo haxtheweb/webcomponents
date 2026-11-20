@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Schreifmaschinn",
     "description": "Text, dee sech selwer Zeeche fir Zeechen tippt."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Text",
+        "description": "Den Text, deen ausgetippt gëtt, soubal d'Element an d'Bild scrollt."
+      },
+      {
+        "title": "Tippt",
+        "description": "De blénkende Cursor weisen; d'Element setzt dëst, während et tippt."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Verzögerung",
+        "description": "Millisekonnen, déi gewaart gëtt, ier d'Tippen ufänkt."
+      },
+      {
+        "title": "Dauer vum Cursor",
+        "description": "Millisekonnen, déi de Cursor weider blénkt, nodeems den Text getippt ass."
+      },
+      {
+        "title": "Vitesse",
+        "description": "Millisekonne pro Zeechen; méi kleng Zuelen tippe méi séier."
+      }
+    ]
   }
 }

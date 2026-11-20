@@ -40,5 +40,7 @@
   "hideDirections": "Peida juhised",
   "showRelatedContent": "Näita seotud sisu",
   "hideRelatedContent": "Peida seotud sisu",
-  "notAttempted": "Pole proovitud"
+  "notAttempted": "Pole proovitud",
+  "cardsDirections": "Pane kaardid õigesse järjekorda iga kaardi nuppudega liiguta varasemaks ja liiguta hilisemaks või lohista neid hiirega. Kui arvad, et need on õiges järjekorras, kontrolli vastust, valides {checkAnswer}.",
+  "movedToPosition": "{item} liigutati kohale {position}/{total}"
 }

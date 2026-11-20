@@ -8,5 +8,9 @@
   "theme": "Тема",
   "palette": "Палитра",
   "cancel": "Отмена",
-  "openAppearanceSettings": "Открыть настройки внешнего вида"
+  "openAppearanceSettings": "Открыть настройки внешнего вида",
+  "designSystem": "Дизайн-система",
+  "designSystemDefault": "DDD (по умолчанию)",
+  "designSystemThemeDefault": "{name} (по умолчанию для темы)",
+  "designSystemHelp": "Цвет, шрифт, углы и плотность. Макет по-прежнему определяет тема."
 }

@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Nokatly barlag sanawy",
+    "description": "Belgi gutujyklarynyň sanawy. Okyjylar elementleri belleýärler we olaryň öňe gidişi öz enjamynda ýatda saklanýar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sözbaşy",
+        "description": "Sanawyň ady. Belgi gutujyklary toparynyň belligi hökmünde sesli okalýar."
+      },
+      {
+        "title": "Elementler",
+        "description": "Her element belgi gutujygy. Bellenen ýa-da öçürilen elementleri okyjylar üýtgedip bilmeýär."
+      },
+      {
+        "title": "Belgili",
+        "description": "Nokatly sanawyň ýerine belgili sanaw görkez."
+      },
+      {
+        "title": "Ýagdaý",
+        "description": "Reňkleri stop-note bilen gabat getirmek üçin üýtgedýär.",
+        "options": {
+          "info": "Habarnama",
+          "success": "Tassyklama",
+          "warning": "Duýduryş",
+          "stop": "Duruz"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "Ammar id-si",
+        "description": "Okyjynyň öňe gidişini onuň enjamynda ýatda saklamak üçin ulanylýan üýtgeşik id. Awtomatik döredilýär; diňe sanawlaryň arasynda öňe gidişi paýlaşmak ýa-da täzeden başlamak üçin üýtgediň."
+      }
+    ]
+  }
+}

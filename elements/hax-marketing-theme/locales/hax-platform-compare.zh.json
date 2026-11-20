@@ -1,0 +1,15 @@
+{
+  "loading": "正在加载对比。",
+  "yes": "是",
+  "partly": "部分",
+  "no": "否",
+  "compare": "对比",
+  "with": "与",
+  "vs": "对比",
+  "caption": "{a} 与 {b}，逐项功能对比",
+  "feature": "功能",
+  "clearYes": "{total} 项中有 {count} 项明确支持",
+  "seeForYourself": "亲自看看：",
+  "and": "和",
+  "why": "原因"
+}

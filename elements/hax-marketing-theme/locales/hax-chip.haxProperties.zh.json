@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "标签片",
+    "description": "带标签的小图标"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "图标"
+      },
+      {
+        "title": "标签"
+      }
+    ]
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "算术练习",
+    "description": "一小串自动生成个算术题，马上有反馈。拣运算搭数字范围；每轮侪是新个。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "标题",
+        "description": "迭个练习个名字，显示辣伊个标题里。"
+      },
+      {
+        "title": "运算",
+        "description": "出啥种题目。学习者开始之前好关脱其中随便啥种。",
+        "options": {
+          "add": "加法",
+          "subtract": "减法",
+          "multiply": "乘法",
+          "divide": "除法",
+          "add subtract": "加法搭减法",
+          "multiply divide": "乘法搭除法",
+          "add multiply": "加法搭乘法",
+          "add divide": "加法搭除法",
+          "subtract multiply": "减法搭乘法",
+          "subtract divide": "减法搭除法",
+          "add subtract multiply": "加法、减法搭乘法",
+          "add subtract divide": "加法、减法搭除法",
+          "add multiply divide": "加法、乘法搭除法",
+          "subtract multiply divide": "减法、乘法搭除法",
+          "add subtract multiply divide": "四种侪要"
+        }
+      },
+      {
+        "title": "最小个数",
+        "description": "题目里用个最小个数。整数，0 或者更大。"
+      },
+      {
+        "title": "最大个数",
+        "description": "题目里用个最大个数。除法个答案搭除数也辣迭个范围里。"
+      },
+      {
+        "title": "题目数量",
+        "description": "一轮里有几道题（1 到 100）。"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "时间限制",
+        "description": "一整轮允许个秒数。0 表示呒没计时器，迭个是默认：计时练习会难为要更多辰光个学习者。设好以后，学习者还是好自家关脱计时器。"
+      },
+      {
+        "title": "强调色",
+        "description": "标题标签搭按钮个颜色。空辣海就跟主题走。"
+      }
+    ]
+  }
+}

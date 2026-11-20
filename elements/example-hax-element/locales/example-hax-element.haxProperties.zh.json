@@ -1,0 +1,13 @@
+{
+  "gizmo": {
+    "title": "example-hax-element",
+    "description": "用于演示 HAX 配置和可编辑属性的示例入门元素。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "标题"
+      }
+    ]
+  }
+}

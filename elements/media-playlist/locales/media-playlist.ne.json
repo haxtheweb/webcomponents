@@ -5,5 +5,7 @@
   "editModeLabel": "मिडिया प्लेलिस्ट सम्पादन मोड",
   "position": "{current} / {total}",
   "previousItem": "अघिल्लो वस्तु",
-  "nextItem": "अर्को वस्तु"
+  "nextItem": "अर्को वस्तु",
+  "fullScreen": "पूरा स्क्रिन",
+  "exitFullScreen": "पूरा स्क्रिनबाट बाहिर निस्कनुहोस्"
 }

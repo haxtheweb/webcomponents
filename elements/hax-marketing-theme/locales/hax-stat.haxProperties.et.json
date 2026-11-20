@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Statistika",
+    "description": "Ülesloendav arv koos sildi ja lingiga selle loole"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Arv, milleni loendada"
+      },
+      {
+        "title": "Enne arvu"
+      },
+      {
+        "title": "Pärast arvu"
+      },
+      {
+        "title": "Sõnad arvu asemel"
+      },
+      {
+        "title": "Mida see loendab"
+      },
+      {
+        "title": "Loo aadress saidil hax.cloud (stories/ee450a19)"
+      }
+    ]
+  }
+}

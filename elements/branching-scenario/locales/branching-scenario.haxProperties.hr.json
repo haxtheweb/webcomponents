@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Razgranati scenarij",
+    "description": "Priča u kojoj svaki izbor vodi do drugačijeg prizora i završetka. Polaznici se mogu vratiti i isprobati druge putove; dosegnuti završetak određuje rezultat."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Naslov",
+        "description": "Naziv scenarija, prikazan u njegovu zaglavlju."
+      },
+      {
+        "title": "Početni prizor",
+        "description": "ID prizora od kojeg polaznici počinju. Ostavite prazno za početak od prvog prizora."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Naglasna boja",
+        "description": "Neobavezna boja za oznaku u zaglavlju, gumbe i rub izbora."
+      }
+    ]
+  }
+}

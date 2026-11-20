@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Senarai semak berbulet",
+    "description": "Senarai kotak semak. Pembaca menandakan item dan kemajuan mereka diingati pada peranti mereka sendiri."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tajuk",
+        "description": "Nama senarai. Dibacakan sebagai label kumpulan kotak semak."
+      },
+      {
+        "title": "Item",
+        "description": "Setiap item ialah kotak semak. Item yang ditanda atau dinyahdayakan tidak boleh diubah oleh pembaca."
+      },
+      {
+        "title": "Bernombor",
+        "description": "Tunjukkan senarai bernombor dan bukannya senarai berbulet."
+      },
+      {
+        "title": "Status",
+        "description": "Mengubah warna supaya sepadan dengan stop-note.",
+        "options": {
+          "info": "Notis",
+          "success": "Pengesahan",
+          "warning": "Amaran",
+          "stop": "Berhenti"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "ID storan",
+        "description": "ID unik yang digunakan untuk mengingati kemajuan pembaca pada peranti mereka. Dijana secara automatik; ubah hanya untuk berkongsi kemajuan antara senarai atau untuk bermula semula."
+      }
+    ]
+  }
+}

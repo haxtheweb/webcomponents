@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Statistikas flīze",
+    "description": "Viens svarīgs skaitlis ar tā etiķeti un to, kā tas mainījās. Novietojiet vairākus režģī, lai izveidotu informācijas paneļa rindu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etiķete",
+        "description": "Ko skaitlis mēra."
+      },
+      {
+        "title": "Vērtība",
+        "description": "Skaitlis. Vienkāršs skaitlis tiek grupēts atbilstoši lapas valodai; viss pārējais tiek rādīts, kā uzrakstīts."
+      },
+      {
+        "title": "Izmaiņa",
+        "description": "Kā tas mainījās, vārdiem, piemēram, 6% šajā semestrī."
+      },
+      {
+        "title": "Virziens",
+        "description": "Vai izmaiņa ir uz augšu vai uz leju.",
+        "options": {
+          "": "Nav",
+          "up": "Augšup",
+          "down": "Lejup"
+        }
+      }
+    ]
+  }
+}

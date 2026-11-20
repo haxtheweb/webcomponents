@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Sõnarägastik",
+    "description": "Tähtede ruudustik peidetud sõnadega. Õppijad puudutavad iga sõna esimest ja viimast tähte. Harjutab märkama, kuidas mõistet kirjutatakse, mitte mida see tähendab."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pealkiri",
+        "description": "Mida õppijatel palutakse leida, kuvatakse päises."
+      },
+      {
+        "title": "Sõnad",
+        "description": "Peidetavad sõnad. Tühikud ja kirjavahemärgid jäetakse ruudustikust välja. Sõnad, mis ei mahu, loetletakse muutmise ajal ja jäetakse õppijate jaoks välja."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ruudustiku suurus",
+        "description": "Tähti külje kohta, 4 kuni 16. Jäta tühjaks, et sobitada kõige pikema sõnaga (kuni 12). Üle 12 kerib telefonis külgsuunas."
+      },
+      {
+        "title": "Diagonaalsed sõnad",
+        "description": "Peida sõnu ka diagonaalselt. Raskem."
+      },
+      {
+        "title": "Tagurpidi sõnad",
+        "description": "Peida ka tagurpidi kirjutatud sõnu. Raskem."
+      },
+      {
+        "title": "Rõhuvärv",
+        "description": "Valikuline värv päise sildile, valitud esimesele tähele ja nupule."
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Kontra",
+    "description": "Kliem ħdejn buttuna wiċċ imb wiċċ b'żewġ karattri"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Intestatura"
+      },
+      {
+        "title": "Fejn tmur il-buttuna"
+      },
+      {
+        "title": "Test tal-buttuna"
+      },
+      {
+        "title": "Żerriegħa tal-karattru tax-xellug"
+      },
+      {
+        "title": "Żerriegħa tal-karattru tal-lemin"
+      }
+    ]
+  }
+}

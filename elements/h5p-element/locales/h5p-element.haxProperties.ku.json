@@ -4,7 +4,12 @@
     "description": "Naveroka înteraktîf a H5P ji pelê .h5p yê barkirî lê dide, bêyî pêwistiya serverê H5P"
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "title": "Pela H5P",
+        "description": "Pelekê .h5p bar bike an girê bide. Ew di gerokê de tê vekirin; servereke H5P ne hewce ye."
+      }
+    ],
     "advanced": [
       {
         "title": "Koda embed ya iframe ya kevn",

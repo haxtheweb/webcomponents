@@ -6,6 +6,8 @@
   "faviconDescription": "Selaimen välilehden kuva / käytetään puhelimissa pienenä sivuston logona",
   "domain": "Verkkotunnus",
   "domainDescription": "Tämän verkkosivuston verkkotunnus",
+  "sameAs": "Tämän sivuston muut profiilit",
+  "sameAsDescription": "Yksi linkki riviä kohden tämän sivuston tai organisaation profiileihin muualla (GitHub, LinkedIn, YouTube, Mastodon). Hakukoneet käyttävät niitä yhdistääkseen profiilit tähän sivustoon.",
   "language": "Kieli",
   "languageDescription": "Tämän sivuston kieli. Hae nimellä tai koodilla tai kirjoita toinen koodi, esimerkiksi fr-CA.",
   "googleAnalyticsId": "Google Analytics -tunnus",

@@ -52,6 +52,20 @@
           "_top": "Okno najwyższego poziomu - _top",
           "_parent": "Okno nadrzędne - _parent"
         }
+      },
+      {
+        "title": "Bez strzałki",
+        "description": "Ukryj strzałkę przycisku."
+      },
+      {
+        "title": "Link: cel",
+        "description": "Gdzie otworzyć link.",
+        "options": {
+          "": "To samo okno",
+          "_blank": "Nowe okno - _blank",
+          "_top": "Okno nadrzędne najwyższe - _top",
+          "_parent": "Okno nadrzędne - _parent"
+        }
       }
     ],
     "developer": [

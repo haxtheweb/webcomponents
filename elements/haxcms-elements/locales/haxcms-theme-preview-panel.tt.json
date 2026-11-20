@@ -8,5 +8,9 @@
   "theme": "Тема",
   "palette": "Палитра",
   "cancel": "Баш тарту",
-  "openAppearanceSettings": "Тышкы күренеш көйләүләрен ачу"
+  "openAppearanceSettings": "Тышкы күренеш көйләүләрен ачу",
+  "designSystem": "Дизайн системасы",
+  "designSystemDefault": "DDD (килешү буенча)",
+  "designSystemThemeDefault": "{name} (тема килешүе буенча)",
+  "designSystemHelp": "Төс, шрифт, почмаклар һәм тыгызлык. Макетны барыбер тема хәл итә."
 }

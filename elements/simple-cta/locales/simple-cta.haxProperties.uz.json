@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Belgini yashirish",
         "description": "Matnni bezash uchun ishlatiladigan belgini yashirish"
+      },
+      {
+        "title": "Ko‘rinish",
+        "description": "Tugma qanchalik ajralib turadi.",
+        "options": {
+          "": "To‘ldirilgan",
+          "tonal": "Ohangli",
+          "outlined": "Konturli",
+          "plain": "Oddiy"
+        }
+      },
+      {
+        "title": "O‘lcham",
+        "description": "Tugma o‘lchami.",
+        "options": {
+          "s": "Kichik",
+          "": "O‘rtacha",
+          "l": "Katta"
+        }
       }
     ],
     "advanced": [

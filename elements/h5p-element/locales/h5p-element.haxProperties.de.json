@@ -4,7 +4,12 @@
     "description": "Spielt interaktive H5P-Inhalte aus einer hochgeladenen .h5p-Datei ab, ohne dass ein H5P-Server nötig ist"
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "title": "H5P-Datei",
+        "description": "Lade eine .h5p-Datei hoch oder verlinke sie. Sie wird im Browser entpackt; kein H5P-Server erforderlich."
+      }
+    ],
     "advanced": [
       {
         "title": "Veralteter iframe-Einbettungscode",

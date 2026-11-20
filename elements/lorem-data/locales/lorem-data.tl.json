@@ -1,4 +1,6 @@
 {
   "saveAll": "I-save Lahat",
-  "saveTheFollowing": "I-save ang mga sumusunod: {list}?"
+  "saveTheFollowing": "I-save ang mga sumusunod: {list}?",
+  "save": "I-save",
+  "cancel": "Kanselahin"
 }

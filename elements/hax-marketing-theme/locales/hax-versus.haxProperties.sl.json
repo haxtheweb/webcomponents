@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Proti",
+    "description": "Besede ob gumbu za dvoboj z dvema likoma"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Naslov"
+      },
+      {
+        "title": "Kam vodi gumb"
+      },
+      {
+        "title": "Besedilo gumba"
+      },
+      {
+        "title": "Seme levega lika"
+      },
+      {
+        "title": "Seme desnega lika"
+      }
+    ]
+  }
+}

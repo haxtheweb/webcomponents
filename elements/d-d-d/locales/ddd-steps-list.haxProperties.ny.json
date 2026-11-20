@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Mndandanda wa masitepe",
     "description": "Masitepe a manambala omaliza ntchito."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Chizindikiro cha masitepe",
+        "description": "Onetsani masitepe ngati mzere wawung'ono wa mitu womwe umasonyeza kupita patsogolo. Zomwe zili m'sitepe siziwonetsedwa m'kapangidwe aka."
+      },
+      {
+        "title": "Sitepe yapano",
+        "description": "Sitepe yomwe wowerenga ali, kuwerengera kuchokera pa 1. Masitepe am'mbuyo amawonetsedwa ngati omalizidwa. Imagwiritsidwa ntchito ndi chizindikiro cha masitepe."
+      }
+    ]
   }
 }

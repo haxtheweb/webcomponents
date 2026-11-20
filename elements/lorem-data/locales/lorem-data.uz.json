@@ -1,4 +1,6 @@
 {
   "saveAll": "Hammasini saqlash",
-  "saveTheFollowing": "Quyidagilar saqlansinmi: {list}?"
+  "saveTheFollowing": "Quyidagilar saqlansinmi: {list}?",
+  "save": "Saqlash",
+  "cancel": "Bekor qilish"
 }

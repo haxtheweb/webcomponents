@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Membro do elenco",
+    "description": "Um público, interpretado por um personagem, com texto e um botão"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Quem é"
+      },
+      {
+        "title": "Tipo de personagem"
+      },
+      {
+        "title": "Semente do personagem"
+      },
+      {
+        "title": "Cor do palco (nome DDD)"
+      },
+      {
+        "title": "Para onde vai o botão"
+      },
+      {
+        "title": "Texto do botão"
+      }
+    ]
+  }
+}

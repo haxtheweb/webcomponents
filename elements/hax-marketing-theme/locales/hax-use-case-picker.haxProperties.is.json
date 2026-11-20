@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Notkunardæmaval",
+    "description": "Veldu til hvers vefur er og fáðu tengil sem opnar HAX í vafranum með þeim upphafsvef, auk samsvarandi CLI-skipunar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Slóð HAX í vafranum",
+        "description": "Hvar tengillinn opnast; ?skeleton= og &name= er bætt við hann"
+      },
+      {
+        "title": "Upphafsvefir til að sleppa",
+        "description": "Vélarheiti, aðskilin með kommum"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Listi upphafsvefja",
+        "description": "Slóð beinagrindalistans (sniðið sem app-hax les)"
+      }
+    ]
+  }
+}

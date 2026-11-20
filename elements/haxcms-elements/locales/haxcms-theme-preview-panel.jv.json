@@ -8,5 +8,9 @@
   "theme": "Tema",
   "palette": "Palet",
   "cancel": "Batal",
-  "openAppearanceSettings": "Bukak Setelan Tampilan"
+  "openAppearanceSettings": "Bukak Setelan Tampilan",
+  "designSystem": "Sistem desain",
+  "designSystemDefault": "DDD (gawan)",
+  "designSystemThemeDefault": "{name} (gawan tema)",
+  "designSystemHelp": "Warna, aksara, pojok lan kapadhetan. Tema tetep nemtokake tata letak."
 }

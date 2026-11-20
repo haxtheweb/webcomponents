@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Izoh",
+    "description": "Matnda tegishli joyida yozilgan eslatma. U raqam sifatida ko‘rinadi, raqamlangan eslatmalar ro‘yxati esa sahifa oxirida o‘zi tuziladi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Eslatma",
+        "description": "Izoh matni."
+      },
+      {
+        "title": "Oldindan ko‘rishsiz",
+        "description": "O‘quvchi raqam ustiga kursor olib borganda yoki fokus qo‘yganda eslatmani ko‘rsatmaslik."
+      }
+    ]
+  }
+}

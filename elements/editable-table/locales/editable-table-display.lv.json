@@ -3,5 +3,8 @@
   "copyAsCsv": "Kopēt kā CSV.",
   "printTable": "Drukāt tabulu",
   "selectColumn": "Izvēlēties kolonnu",
-  "dataTable": "Dati · Tabula"
+  "dataTable": "Dati · Tabula",
+  "filterStatus": "Rāda {shown} no {total} rindām, filtrēts pēc {column}: {text}",
+  "columnNumber": "Kolonna {column}",
+  "clearFilter": "Notīrīt filtru"
 }

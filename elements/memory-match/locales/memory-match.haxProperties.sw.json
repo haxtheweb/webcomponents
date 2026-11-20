@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Mchezo wa kumbukumbu",
+    "description": "Geuza kadi kupata jozi. Unganisha istilahi na maana yake ili jozi ionyeshe uelewa, au tumia maandishi au picha mbili zinazolingana."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kichwa",
+        "description": "Agizo linaloonyeshwa kwenye kichwa, kwa mfano: Linganisha istilahi na kazi yake."
+      },
+      {
+        "title": "Jozi",
+        "description": "Kila jozi ni kadi mbili zinazoendana, kwa kawaida istilahi na maana yake. Upande unahitaji maandishi, picha, au vyote viwili."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Rangi ya msisitizo",
+        "description": "Rangi ya hiari ya kibandiko cha kichwa, migongo ya kadi na kitufe."
+      }
+    ]
+  }
+}

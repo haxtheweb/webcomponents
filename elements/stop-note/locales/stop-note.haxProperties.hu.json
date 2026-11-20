@@ -23,7 +23,9 @@
           "stop": "Stop",
           "warning": "Figyelmeztetés",
           "success": "Megerősítés",
-          "info": "Közlemény"
+          "info": "Közlemény",
+          "tip": "Tipp",
+          "new": "Újdonságok"
         }
       },
       {

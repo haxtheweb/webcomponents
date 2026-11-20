@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Hlavní banner",
+    "description": "Velký obrázek, GIF nebo video s nadpisem a textem přes něj, umístěné kdekoli na stránce."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Obrázek nebo video",
+        "description": "Soubor JPG, PNG, WebP, GIF, MP4 nebo WebM."
+      },
+      {
+        "title": "Alternativní text",
+        "description": "Popište obrázek. Ponechte prázdné, pokud jde jen o dekoraci."
+      },
+      {
+        "title": "Nadpis",
+        "description": "Nadpis zobrazený přes médium. Ponechte prázdné, pokud žádný nechcete."
+      },
+      {
+        "title": "Text",
+        "description": "Text zobrazený pod nadpisem, přes médium."
+      },
+      {
+        "title": "Plná šířka",
+        "description": "Roztáhnout od okraje k okraji místo umístění ve sloupci obsahu."
+      },
+      {
+        "title": "Výška",
+        "options": {
+          "tall": "Vysoký",
+          "medium": "Střední",
+          "short": "Nízký"
+        }
+      },
+      {
+        "title": "Rámování",
+        "description": "Jak fotka sedí na každé velikosti obrazovky"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Přechod",
+        "description": "Barva položená přes médium. S nadpisem nebo textem je vždy nějaká, aby text zůstal čitelný.",
+        "options": {
+          "blue": "Modrá",
+          "bottom": "Tmavá dole",
+          "none": "Žádná"
+        }
+      },
+      {
+        "title": "Pozice textu",
+        "options": {
+          "bottom": "Dole",
+          "middle": "Uprostřed"
+        }
+      },
+      {
+        "title": "Ohnisko vodorovně",
+        "description": "Část obrázku, která zůstane viditelná při oříznutí, od 0 (vlevo) do 100 (vpravo)."
+      },
+      {
+        "title": "Ohnisko svisle",
+        "description": "Část obrázku, která zůstane viditelná při oříznutí, od 0 (nahoře) do 100 (dole)."
+      }
+    ]
+  }
+}

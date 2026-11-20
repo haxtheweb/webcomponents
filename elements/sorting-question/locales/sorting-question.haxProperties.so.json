@@ -13,7 +13,15 @@
       {
         "property": "answers",
         "title": "Jawaabaha",
-        "description": "Kala horraynta jawaabaha ayaa qeexaysa taxanaha saxda ah."
+        "description": "Kala horraynta jawaabaha ayaa qeexaysa taxanaha saxda ah.",
+        "options": {
+          "": "Liis",
+          "cards": "Kaarar sawir"
+        }
+      },
+      {
+        "title": "Jawaabaha",
+        "description": "Habka jawaabaha ayaa qeexa taxanaha saxda ah."
       }
     ],
     "advanced": [

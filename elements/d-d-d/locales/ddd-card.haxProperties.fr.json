@@ -52,6 +52,20 @@
           "_top": "Fenêtre principale - _top",
           "_parent": "Fenêtre parente - _parent"
         }
+      },
+      {
+        "title": "Sans flèche",
+        "description": "Masquer la flèche du bouton."
+      },
+      {
+        "title": "Lien : cible",
+        "description": "Où ouvrir le lien.",
+        "options": {
+          "": "Même fenêtre",
+          "_blank": "Nouvelle fenêtre - _blank",
+          "_top": "Fenêtre principale - _top",
+          "_parent": "Fenêtre parente - _parent"
+        }
       }
     ],
     "developer": [

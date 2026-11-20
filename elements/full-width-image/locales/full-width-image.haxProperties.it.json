@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Immagine di sfondo."
+        "description": "Immagine di sfondo.",
+        "title": "Immagine"
       },
       {
         "property": "caption",
-        "description": "Intestazione di testo."
+        "description": "Intestazione di testo.",
+        "title": "Didascalia"
       }
     ]
   }

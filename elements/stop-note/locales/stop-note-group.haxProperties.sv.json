@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Stop note-grupp",
+    "description": "Stapla flera stop notes i ett block som visar en anteckning i taget, till exempel Tips eller Nyheter. Instruktionskort, sidoanteckningar och inramade citat kan staplas med dem."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etikett",
+        "description": "Gruppens namn som skärmläsare läser upp, till exempel Tips eller Nyheter."
+      },
+      {
+        "title": "Anteckningar",
+        "description": "Gruppens stop notes. Instruktionskort, sidoanteckningar och inramade citat kan också läggas till."
+      }
+    ]
+  }
+}

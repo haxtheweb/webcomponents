@@ -1,0 +1,15 @@
+{
+  "loading": "比較を読み込み中。",
+  "yes": "はい",
+  "partly": "一部",
+  "no": "いいえ",
+  "compare": "比較",
+  "with": "比較対象",
+  "vs": "vs",
+  "caption": "{a} と {b} の機能別比較",
+  "feature": "機能",
+  "clearYes": "{total} 件中 {count} 件が明確に対応",
+  "seeForYourself": "ご自身で確かめてください:",
+  "and": "と",
+  "why": "理由"
+}

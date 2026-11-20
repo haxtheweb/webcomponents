@@ -1,0 +1,21 @@
+{
+  "diagram": "Diagrama",
+  "flowchart": "struktūrinė schema",
+  "sequence": "sekų diagrama",
+  "source": "Šaltinis",
+  "textAlternative": "Tekstinė alternatyva",
+  "present": "Pristatyti",
+  "exitPresent": "Baigti pristatymą",
+  "loading": "Įkeliama diagrama",
+  "empty": "Kol kas nėra ką piešti. Pridėkite diagramos šaltinį.",
+  "error": "Klaida",
+  "parseError": "Šios diagramos nubraižyti nepavyko. Patikrinkite šaltinį.",
+  "loadError": "Nepavyko įkelti diagramų bibliotekos.",
+  "srcError": "Nepavyko įkelti diagramos failo.",
+  "decision": "sprendimas",
+  "end": "pabaiga",
+  "goTo": "eiti į {target}",
+  "ifGoTo": "jei {label}, eiti į {target}",
+  "describedBySource": "Diagrama, aprašyta jos šaltiniu.",
+  "scrollable": "Diagrama, slenkama"
+}

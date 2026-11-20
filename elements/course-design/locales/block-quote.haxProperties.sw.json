@@ -20,6 +20,12 @@
         "title": "Picha",
         "description": "Picha inayoonyeshwa pamoja na nukuu."
       }
+    ],
+    "advanced": [
+      {
+        "title": "Yenye fremu",
+        "description": "Chora nukuu kwenye fremu ya pamoja ya kizuizi, yenye ikoni na lebo juu yake, ili ilingane na madokezo na kadi za maelekezo."
+      }
     ]
   }
 }

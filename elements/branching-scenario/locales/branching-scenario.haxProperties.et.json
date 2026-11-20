@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Hargnev stsenaarium",
+    "description": "Lugu, kus iga valik viib erineva stseeni ja lõpuni. Õppijad saavad sammu tagasi astuda ja proovida teisi teid; saavutatud lõpp määrab punktid."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pealkiri",
+        "description": "Stsenaariumi nimi, kuvatakse päises."
+      },
+      {
+        "title": "Algusstseen",
+        "description": "Stseeni ID, millest õppijad alustavad. Jäta tühjaks, et alustada esimesest stseenist."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Rõhuvärv",
+        "description": "Valikuline värv päise sildile, nuppudele ja valiku servale."
+      }
+    ]
+  }
+}

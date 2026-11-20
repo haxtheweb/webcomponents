@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Selector de casos d'ús",
+    "description": "Tria per a què serveix un lloc i obtén un enllaç que obre HAX al navegador amb aquest lloc inicial, a més de l'ordre de la CLI corresponent."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Adreça de HAX al navegador",
+        "description": "On s'obre l'enllaç; s'hi afegeixen ?skeleton= i &name="
+      },
+      {
+        "title": "Llocs inicials que s'exclouen",
+        "description": "Noms de màquina, separats per comes"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Llista de llocs inicials",
+        "description": "Adreça de la llista d'esquelets (el format que llegeix app-hax)"
+      }
+    ]
+  }
+}

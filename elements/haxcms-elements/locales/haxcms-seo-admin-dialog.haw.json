@@ -6,6 +6,8 @@
   "faviconDescription": "Kiʻi pākaʻa polokalamu mākaʻikaʻi / hoʻohana ʻia ma nā kelepona ma ke ʻano lōkō pūnaewele liʻiliʻi",
   "domain": "Kāpili",
   "domainDescription": "Kāpili o kēia pūnaewele",
+  "sameAs": "Nā moʻolelo pilikino ʻē aʻe o kēia kahua",
+  "sameAsDescription": "Hoʻokahi loulou ma kēlā me kēia laina i nā moʻolelo pilikino o kēia kahua a i ʻole hui ma nā wahi ʻē aʻe (GitHub, LinkedIn, YouTube, Mastodon). Hoʻohana nā mīkini huli iā lākou e hoʻopili i kēlā mau moʻolelo pilikino me kēia kahua.",
   "language": "ʻŌlelo",
   "languageDescription": "ʻŌlelo o kēia pūnaewele. E huli ma ka inoa a i ʻole ka code, a i ʻole e kākau i kekahi code ʻē aʻe e like me fr-CA.",
   "googleAnalyticsId": "ID Google Analytics",

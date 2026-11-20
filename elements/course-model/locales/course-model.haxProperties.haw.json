@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "poʻo inoa"
+        "title": "poʻo inoa",
+        "description": "Poʻo i hōʻike ʻia ma luna o ke kumu hoʻohālike papa."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "Helu wahi o ka waihona kumu hoʻohālike 3D (.glb a i ʻole .gltf) e hōʻike ai."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "E wehewehe i ke kumu hoʻohālike 3D no ka poʻe hiki ʻole ke ʻike iā ia."
       },
       {
         "title": "Wahi ʻike"

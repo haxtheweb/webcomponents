@@ -20,6 +20,12 @@
         "title": "Imatge",
         "description": "Imatge que es mostra amb la cita."
       }
+    ],
+    "advanced": [
+      {
+        "title": "Emmarcada",
+        "description": "Dibuixa la cita sobre el marc de bloc compartit, amb una icona i una etiqueta a sobre, perquè coincideixi amb les notes i les targetes d'instruccions."
+      }
     ]
   }
 }

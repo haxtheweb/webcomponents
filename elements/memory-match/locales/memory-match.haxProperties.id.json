@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Permainan memori",
+    "description": "Balik kartu untuk menemukan pasangan. Pasangkan istilah dengan maknanya agar kecocokan menunjukkan pemahaman, atau gunakan dua teks atau gambar yang sama."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Judul",
+        "description": "Perintah yang ditampilkan di judul, misalnya: Cocokkan istilah dengan fungsinya."
+      },
+      {
+        "title": "Pasangan",
+        "description": "Setiap pasangan adalah dua kartu yang saling berkaitan, biasanya istilah dan maknanya. Satu sisi memerlukan teks, gambar, atau keduanya."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Warna aksen",
+        "description": "Warna opsional untuk label judul, bagian belakang kartu, dan tombol."
+      }
+    ]
+  }
+}

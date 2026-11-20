@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Ndepụta nlele nwere ntụpọ",
+    "description": "Ndepụta igbe nlele. Ndị na-agụ akwụkwọ na-akara ihe, a na-echetakwa ọganihu ha na ngwaọrụ nke ha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Aha",
+        "description": "Aha ndepụta ahụ. A na-agụpụta ya dịka akara aha otu igbe nlele ahụ."
+      },
+      {
+        "title": "Ihe",
+        "description": "Ihe ọ bụla bụ igbe nlele. Ndị na-agụ akwụkwọ enweghị ike ịgbanwe ihe akaralarị ma ọ bụ ndị agbanyụrụ."
+      },
+      {
+        "title": "Nwere nọmba",
+        "description": "Gosi ndepụta nwere nọmba kama nke nwere ntụpọ."
+      },
+      {
+        "title": "Ọnọdụ",
+        "description": "Na-agbanwe agba ka o kwekọọ na stop-note.",
+        "options": {
+          "info": "Ọkwa",
+          "success": "Nkwenye",
+          "warning": "Ịdọ aka na ntị",
+          "stop": "Kwụsị"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "Id nchekwa",
+        "description": "Id pụrụ iche e ji echeta ọganihu onye na-agụ akwụkwọ na ngwaọrụ ya. Emepụtara ya na-akpaghị aka; gbanwee ya naanị iji kekọrịta ọganihu n'etiti ndepụta ma ọ bụ ịmalite ọhụrụ."
+      }
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Diagramo el teksto",
+    "description": "Skribu diagramon kiel tekston (Mermaid): fluskemon, sekvencon, templinion kaj pli. Ĝi estas desegnita en la paĝo kun teksta alternativo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titolo",
+        "description": "Montrata super la diagramo kaj uzata kiel ĝia nomo."
+      },
+      {
+        "title": "Fonto de la diagramo",
+        "description": "Mermaid-teksto, ekzemple: flowchart TD, poste unu linio po ligo, kiel A[Draft] --> B{Ready?}. Aldonu |etikedo| post sago por etikedi ĝin. La desegnaĵo ĝisdatiĝas dum vi tajpas."
+      },
+      {
+        "title": "Teksta alternativo",
+        "description": "Priskribu, kion la diagramo montras, por homoj, kiuj ne povas vidi ĝin. Lasu malplena ĉe fluskemo, por ke ĝiaj paŝoj estu listigitaj por vi."
+      },
+      {
+        "title": "Bildoteksto",
+        "description": "Nedeviga bildoteksto montrata sub la diagramo."
+      },
+      {
+        "title": "Montri la fonton",
+        "description": "Montri la diagraman tekston apud la desegnaĵo."
+      },
+      {
+        "title": "Montri la tekstan alternativon",
+        "description": "Montri la tekstan alternativon sub la desegnaĵo. Ĝi ĉiam disponeblas al ekranlegiloj."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Fonta dosiero",
+        "description": "Adreso de .mmd-dosiero por desegni anstataŭ la supra teksto (https aŭ vojo en ĉi tiu retejo)."
+      },
+      {
+        "title": "Akcenta koloro",
+        "description": "Koloro de la piktograma ĉipo en la kapo."
+      }
+    ]
+  }
+}

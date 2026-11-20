@@ -9,5 +9,7 @@
   "slidePages": "ໜ້າສະໄລ້",
   "goToSlide": "ໄປທີ່ສະໄລ້ {number}",
   "slides": "ສະໄລ້",
-  "position": "{number} ຈາກ {total}"
+  "position": "{number} ຈາກ {total}",
+  "fullScreen": "ເຕັມຈໍ",
+  "exitFullScreen": "ອອກຈາກເຕັມຈໍ"
 }

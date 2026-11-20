@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Stappelist",
     "description": "Nûmere stappen om in taak te foltôgjen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Stapyndikator",
+        "description": "De stappen sjen litte as in kompakte rige titels dy't de fuortgong markearret. De ynhâld fan de stappen wurdt yn dizze yndieling net toand."
+      },
+      {
+        "title": "Hjoeddeiske stap",
+        "description": "De stap dêr't de lêzer by is, telle fan 1 ôf. Eardere stappen wurde as foltôge toand. Brûkt troch de stapyndikator."
+      }
+    ]
   }
 }

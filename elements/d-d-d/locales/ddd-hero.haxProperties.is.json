@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Hero",
+    "description": "Stór mynd, GIF eða myndband með fyrirsögn og texta ofan á, sett hvar sem er á síðu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mynd eða myndband",
+        "description": "JPG-, PNG-, WebP-, GIF-, MP4- eða WebM-skrá."
+      },
+      {
+        "title": "Textalýsing",
+        "description": "Lýstu myndinni. Skildu eftir autt ef hún er aðeins skraut."
+      },
+      {
+        "title": "Fyrirsögn",
+        "description": "Fyrirsögn sýnd ofan á miðlinum. Skildu eftir autt fyrir enga."
+      },
+      {
+        "title": "Texti",
+        "description": "Texti sýndur undir fyrirsögninni, ofan á miðlinum."
+      },
+      {
+        "title": "Full breidd",
+        "description": "Ná frá jaðri til jaðars í stað þess að vera í efnisdálknum."
+      },
+      {
+        "title": "Hæð",
+        "options": {
+          "tall": "Hátt",
+          "medium": "Miðlungs",
+          "short": "Lágt"
+        }
+      },
+      {
+        "title": "Innrömmun",
+        "description": "Hvernig myndin liggur við hverja skjástærð"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Dofnun",
+        "description": "Litur lagður yfir miðilinn. Með fyrirsögn eða texta er alltaf einn, svo textinn haldist læsilegur.",
+        "options": {
+          "blue": "Blár",
+          "bottom": "Dökkt neðst",
+          "none": "Ekkert"
+        }
+      },
+      {
+        "title": "Staðsetning texta",
+        "options": {
+          "bottom": "Neðst",
+          "middle": "Miðja"
+        }
+      },
+      {
+        "title": "Brennipunktur lárétt",
+        "description": "Hluti myndarinnar sem helst sýnilegur þegar hún er skorin, frá 0 (vinstri) til 100 (hægri)."
+      },
+      {
+        "title": "Brennipunktur lóðrétt",
+        "description": "Hluti myndarinnar sem helst sýnilegur þegar hún er skorin, frá 0 (efst) til 100 (neðst)."
+      }
+    ]
+  }
+}

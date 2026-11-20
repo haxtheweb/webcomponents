@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Leikari",
+    "description": "Ein áskoðarabólkur, spældur av einum persóni, við orðum og einum knøtti"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Hvør hetta er"
+      },
+      {
+        "title": "Persónsslag"
+      },
+      {
+        "title": "Persónsfræ"
+      },
+      {
+        "title": "Pallslitur (DDD-navn)"
+      },
+      {
+        "title": "Hvar knøtturin fer"
+      },
+      {
+        "title": "Knøttatekstur"
+      }
+    ]
+  }
+}

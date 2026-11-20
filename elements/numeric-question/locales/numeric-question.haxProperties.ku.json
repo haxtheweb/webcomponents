@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Pirsa hejmarî",
+    "description": "Pirsek ku bi hejmarekê tê bersivandin. Bersiv hejmareke sabît an formulek e ku ji guherbaran tê hesabkirin, û dema di nav toleransê de be tê hesibandin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pirs",
+        "description": "Ji fêrxwazan çi tê pirsîn. Navê guherbarekê di nav kevanên kulîlkî de binivîse, wek {d}, da ku nirxa wê nîşan bide."
+      },
+      {
+        "title": "Yekîne",
+        "description": "Wekî nivîs li kêleka qada bersivê tê nîşandan, wek km/h."
+      },
+      {
+        "title": "Bersiv",
+        "description": "Hejmara rast. Dema formulek bersivê hesab dike vala bihêle."
+      },
+      {
+        "title": "Formul",
+        "description": "Bersivê ji guherbaran hesab dike, wek d / (t / 60). Dikare + - * / ^, kevan, sqrt() û abs() bi kar bîne. Dema hatibe diyarkirin li şûna bersivê tê bikaranîn."
+      },
+      {
+        "title": "Guherbar",
+        "description": "Hejmarên ku formul û pirs bi kar tînin. Her yek nirxekê di navbera ya herî nizm û herî bilind de, bi gavan, digire."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tolerans",
+        "description": "Çiqas dûrî bersiva tam hêj tê hesibandin. 0 tê wateya tam, an bi reqemên piştî xalê yên li jêr gerandî."
+      },
+      {
+        "title": "Celebê toleransê",
+        "description": "Mutleq: zêde an kêm tolerans. Ji sedî: zêde an kêm ew ji sedî ya bersiva tam.",
+        "options": {
+          "absolute": "Mutleq",
+          "percent": "Ji sedî"
+        }
+      },
+      {
+        "title": "Reqemên piştî xalê",
+        "description": "Ji fêrxwazan tê xwestin ku bo ewqas reqeman bigerînin, û bersiv bi wê gerandî tê nîşandan. Ji bo bê gerandin vala bihêle."
+      },
+      {
+        "title": "Hewl",
+        "description": "Fêrxwazek çend caran dikare kontrol bike. 0 tê wateya bêsînor."
+      },
+      {
+        "title": "Her hewlê hejmarên nû",
+        "description": "Her car ku fêrxwazek dîsa diceribîne nirxên nû yên guherbaran derxîne. Wê demê bersiva wan a berê dema vegerin nayê nîşandan, tenê ka rast bû an na."
+      },
+      {
+        "title": "Qatbar",
+        "description": "Vê pirsê wekî rêzeke ku vedibe û digire nîşan bide. Vekirina yekê pirsên din ên qatbar ên li kêleka wê digire."
+      },
+      {
+        "title": "Qatkirî dest pê bike",
+        "description": "Dema qatbar be, wekî rêzeke girtî dest pê bike ku tenê pirs û rewşa wê nîşan dide."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Navê quizê",
+        "description": "Navê quizê ji bo naskirina xAPI di pergalên analîtîkê de."
+      }
+    ]
+  }
+}

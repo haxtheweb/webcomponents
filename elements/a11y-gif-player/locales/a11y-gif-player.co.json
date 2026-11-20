@@ -2,5 +2,9 @@
   "toggleAnimation": "Attivà/disattivà l'animazione",
   "info": "infurmazione",
   "image": "Immagine",
-  "animatedGif": "GIF animata"
+  "animatedGif": "GIF animata",
+  "playAnimation": "Leghje l'animazione",
+  "pauseAnimation": "Mette in pausa l'animazione",
+  "showDescription": "Mustrà a descrizzione",
+  "hideDescription": "Piattà a descrizzione"
 }

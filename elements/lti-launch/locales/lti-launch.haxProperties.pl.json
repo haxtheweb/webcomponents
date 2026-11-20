@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Uruchomienie narzędzia zewnętrznego",
+    "description": "Blok otwierający zewnętrzne narzędzie edukacyjne w nowym oknie lub na stronie, jako zwykły link lub z żądaniem logowania LTI 1.3."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tytuł",
+        "description": "Nazwa narzędzia. Wyświetlana w nagłówku i na przycisku."
+      },
+      {
+        "title": "Opis",
+        "description": "Co uczący się robią w narzędziu, wyświetlane nad przyciskiem."
+      },
+      {
+        "title": "URL uruchomienia",
+        "description": "Adres narzędzia. Musi to być pełny adres zaczynający się od https:// lub http://."
+      },
+      {
+        "title": "Otwórz w",
+        "description": "Nowe okno działa z każdym narzędziem. Na tej stronie działa tylko z narzędziami, które pozwalają na wyświetlanie wewnątrz innej witryny.",
+        "options": {
+          "window": "Nowym oknie",
+          "embed": "Na tej stronie"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "URL logowania LTI",
+        "description": "Tylko LTI 1.3: adres inicjowania logowania narzędzia. Mając go, ID klienta i ID wdrożenia, przycisk wysyła żądanie logowania LTI zamiast otwierać zwykły link. Dokończenie uruchomienia wymaga usługi LTI tej witryny."
+      },
+      {
+        "title": "ID klienta LTI",
+        "description": "ID klienta, które narzędzie nadało tej witrynie. Publiczny identyfikator, nie sekret: nigdy nie wpisuj tu kluczy ani sekretów."
+      },
+      {
+        "title": "ID wdrożenia LTI",
+        "description": "ID wdrożenia, które narzędzie nadało tej witrynie. Publiczny identyfikator, nie sekret."
+      },
+      {
+        "title": "Wystawca LTI",
+        "description": "Adres identyfikujący tę witrynę w narzędziu. Pozostaw puste, aby użyć adresu witryny, na której jest strona."
+      },
+      {
+        "title": "Wysokość na stronie",
+        "description": "Wysokość narzędzia otwartego na tej stronie, w pikselach (od 200 do 2000)."
+      },
+      {
+        "title": "Kolor akcentu",
+        "description": "Kolor etykiety nagłówka i przycisku. Pozostaw puste, aby użyć motywu."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Wskazówka logowania LTI",
+        "description": "Nieprzezroczysta wartość, której usługa LTI tej witryny używa do rozpoznania uczącego się. Zwykle dostarczana przez witrynę zdarzeniem lti-launch-request, a nie zapisywana tutaj. Nigdy hasło ani klucz."
+      },
+      {
+        "title": "Wskazówka komunikatu LTI",
+        "description": "Nieprzezroczysta wartość, której usługa LTI tej witryny używa do rozpoznania tego uruchomienia. Zwykle dostarczana przez witrynę, a nie zapisywana tutaj."
+      }
+    ]
+  }
+}

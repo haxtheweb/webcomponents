@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Comparație de platforme",
+    "description": "Față în față: alegeți oricare două platforme dintr-un fișier de date"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Date de comparație (JSON)"
+      },
+      {
+        "title": "Id-ul platformei din stânga"
+      },
+      {
+        "title": "Id-ul platformei din dreapta"
+      }
+    ]
+  }
+}

@@ -13,6 +13,14 @@
       {
         "property": "answers",
         "title": "Respondoj",
+        "description": "La ordo de la respondoj difinas la ĝustan sinsekvon.",
+        "options": {
+          "": "Listo",
+          "cards": "Bildaj kartoj"
+        }
+      },
+      {
+        "title": "Respondoj",
         "description": "La ordo de la respondoj difinas la ĝustan sinsekvon."
       }
     ],

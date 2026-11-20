@@ -14,6 +14,17 @@
         "property": "autoAccentColor",
         "title": "Couleur d'accent automatique",
         "description": "Déduire automatiquement la couleur d'accent du texte du libellé."
+      },
+      {
+        "title": "Signification",
+        "description": "Donnez à l'étiquette une couleur de signification. Laissez vide pour une étiquette neutre.",
+        "options": {
+          "": "Neutre",
+          "brand": "Marque",
+          "success": "Succès",
+          "warning": "Avertissement",
+          "danger": "Danger"
+        }
       }
     ],
     "advanced": [

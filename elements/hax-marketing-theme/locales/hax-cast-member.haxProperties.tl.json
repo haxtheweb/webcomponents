@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Miyembro ng cast",
+    "description": "Isang audience, ginagampanan ng isang karakter, na may mga salita at button"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sino ito"
+      },
+      {
+        "title": "Uri ng karakter"
+      },
+      {
+        "title": "Seed ng karakter"
+      },
+      {
+        "title": "Kulay ng entablado (pangalan sa DDD)"
+      },
+      {
+        "title": "Kung saan pupunta ang button"
+      },
+      {
+        "title": "Teksto ng button"
+      }
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Diyagram ji nivîsê",
+    "description": "Diyagramekê wekî nivîs (Mermaid) binivîse: nexşeya herikînê, rêzik, demnameyek û bêtir. Ew bi alternatîfa nivîsê li ser rûpelê tê xêzkirin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sernav",
+        "description": "Li jora diyagramê tê nîşandan û wekî navê wê tê bikaranîn."
+      },
+      {
+        "title": "Çavkaniya diyagramê",
+        "description": "Nivîsa Mermaid, wek: flowchart TD, paşê her girêdanekê rêzek wekî A[Draft] --> B{Ready?}. Piştî tîrekê |label| zêde bike da ku etîketê lê bikî. Xêzkirin dema tu dinivîsî nû dibe."
+      },
+      {
+        "title": "Alternatîfa nivîsê",
+        "description": "Ji bo kesên ku nikarin bibînin rave bike ka diyagram çi nîşan dide. Li ser nexşeya herikînê vala bihêle da ku gavên wê ji te re bên rêzkirin."
+      },
+      {
+        "title": "Binnivîs",
+        "description": "Binnivîsa vebijarkî ku di bin diyagramê de tê nîşandan."
+      },
+      {
+        "title": "Çavkaniyê nîşan bide",
+        "description": "Nivîsa diyagramê li kêleka xêzkirinê nîşan bide."
+      },
+      {
+        "title": "Alternatîfa nivîsê nîşan bide",
+        "description": "Alternatîfa nivîsê di bin xêzkirinê de nîşan bide. Ew her tim ji bo xwînerên ekranê heye."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Pela çavkaniyê",
+        "description": "Navnîşana pelekê .mmd ji bo xêzkirinê li şûna nivîsa li jor (https an rêyek li ser vê malperê)."
+      },
+      {
+        "title": "Rengê balkêş",
+        "description": "Rengê çîpa îkonê di serî de."
+      }
+    ]
+  }
+}

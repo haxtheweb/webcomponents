@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Statistika plitkasi",
+    "description": "Muhim bitta son, yorlig‘i va qanday o‘zgargani bilan. Boshqaruv paneli qatori uchun bir nechtasini to‘rga joylang."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Yorliq",
+        "description": "Son nimani o‘lchaydi."
+      },
+      {
+        "title": "Qiymat",
+        "description": "Son. Oddiy son sahifa tiliga ko‘ra guruhlanadi; boshqa har qanday narsa yozilganidek ko‘rsatiladi."
+      },
+      {
+        "title": "O‘zgarish",
+        "description": "Qanday o‘zgargani so‘zlar bilan, masalan bu semestrda 6%."
+      },
+      {
+        "title": "Yo‘nalish",
+        "description": "O‘zgarish yuqoriga yoki pastga ekani.",
+        "options": {
+          "": "Yo‘q",
+          "up": "Yuqoriga",
+          "down": "Pastga"
+        }
+      }
+    ]
+  }
+}

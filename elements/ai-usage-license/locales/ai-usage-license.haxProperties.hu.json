@@ -13,7 +13,10 @@
       {
         "property": "modifier",
         "title": "Médiamódosító",
-        "description": "Nem kötelező médiaterület-módosító. Megadja, milyen típusú médiára vonatkozik ez a licenc."
+        "description": "Nem kötelező médiaterület-módosító. Megadja, milyen típusú médiára vonatkozik ez a licenc.",
+        "options": {
+          "": "Nincs módosító"
+        }
       },
       {
         "property": "uri",

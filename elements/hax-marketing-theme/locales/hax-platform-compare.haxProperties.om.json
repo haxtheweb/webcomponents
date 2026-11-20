@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Walbira qabiinsa waltajjii",
+    "description": "Fuula fuulatti: waltajjiiwwan lama kamiyyuu faayilii daataa irraa filadhu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Daataa walbira qabiinsaa (JSON)"
+      },
+      {
+        "title": "ID waltajjii bitaa"
+      },
+      {
+        "title": "ID waltajjii mirgaa"
+      }
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "theme": "Tema",
+  "designSystem": "Sistema tad-disinn",
+  "dddDefault": "DDD (default)",
+  "designSystemHelp": "Kulur, tipa, kantunieri u fokus. It-tema żżomm it-tqassim.",
+  "designSystemFixed": "Din it-tema żżomm is-sistema tad-disinn tagħha stess.",
+  "palette": "Paletta",
+  "themeDefault": "Default tat-tema",
+  "paletteNumber": "Paletta {n}",
+  "siteTheme": "{name} (it-tema ta' dan is-sit)",
+  "restyle": "Erġa' ddisinja dan is-sit",
+  "close": "Agħlaq",
+  "reset": "Lura għad-dehra oriġinali ta' dan is-sit",
+  "random": "Issorprendini",
+  "about": "Dan juri ftit mid-dehriet mibnija f'HAX. Il-paġni qatt ma jinbidlu: l-istruttura tgħix f'JSON Outline Schema u kull blokk huwa web component standard, għalhekk id-disinn jista' jinbidel liberament."
+}

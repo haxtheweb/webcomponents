@@ -5,5 +5,7 @@
   "editModeLabel": "მედია დასაკრავი სიის რედაქტირების რეჟიმი",
   "position": "{total}-დან {current}",
   "previousItem": "წინა ელემენტი",
-  "nextItem": "შემდეგი ელემენტი"
+  "nextItem": "შემდეგი ელემენტი",
+  "fullScreen": "სრული ეკრანი",
+  "exitFullScreen": "სრული ეკრანიდან გასვლა"
 }

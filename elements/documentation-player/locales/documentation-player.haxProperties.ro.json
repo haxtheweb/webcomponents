@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Player de documentație",
+    "description": "Ghid, demonstrație și referință pentru o componentă web, cu butoane de copiere pentru HTML, import, npm și CDN."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Fișier de date pentru documentație",
+        "description": "Datele de documentație livrate cu elementul (lib/tag.docs.json)."
+      },
+      {
+        "title": "Storyboard pentru ghid",
+        "description": "Storyboardul de animație livrat cu elementul (tag.motion.json). Opțional."
+      },
+      {
+        "title": "Tutorial video",
+        "description": "Un videoclip scurt despre element (YouTube, Vimeo sau un fișier video). Înlocuiește videoclipul din datele de documentație."
+      },
+      {
+        "title": "Deschide pe fila",
+        "description": "Ce filă este afișată prima.",
+        "options": {
+          "motion": "Ghid",
+          "video": "Video",
+          "demo": "Demo",
+          "docs": "Documentație",
+          "schema": "Schemă"
+        }
+      },
+      {
+        "title": "Redare automată a ghidului",
+        "description": "Porniți ghidul imediat ce apare playerul. Ignorat când cititorul preferă mișcare redusă."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Subiectul ghidului",
+        "description": "Pentru elementele cu mai multe ghiduri, ce subiect să se deschidă primul (de exemplu add-blocks). Lăsați gol pentru cel principal."
+      },
+      {
+        "title": "Link demonstrație live",
+        "description": "Unde duce butonul Deschideți sursa demonstrației. Implicit, dosarul demo din depozit."
+      },
+      {
+        "title": "Link documentație",
+        "description": "Unde duce butonul de documentație completă, de exemplu pagina Learn HAX corespunzătoare."
+      }
+    ]
+  }
+}

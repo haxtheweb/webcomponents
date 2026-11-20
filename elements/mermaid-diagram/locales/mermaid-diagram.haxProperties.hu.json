@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Diagram szövegből",
+    "description": "Írjon diagramot szövegként (Mermaid): folyamatábrát, szekvenciát, idővonalat és mást. Az oldalon rajzolódik ki szöveges alternatívával."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Cím",
+        "description": "A diagram fölött jelenik meg, és a neveként szolgál."
+      },
+      {
+        "title": "Diagram forrása",
+        "description": "Mermaid szöveg, például: flowchart TD, majd kapcsolatonként egy sor, például A[Draft] --> B{Ready?}. Egy nyíl címkézéséhez írjon utána |label| szöveget. A rajz gépelés közben frissül."
+      },
+      {
+        "title": "Szöveges alternatíva",
+        "description": "Írja le, mit mutat a diagram azok számára, akik nem látják. Folyamatábránál hagyja üresen, és a lépései automatikusan listázódnak."
+      },
+      {
+        "title": "Képaláírás",
+        "description": "Opcionális képaláírás a diagram alatt."
+      },
+      {
+        "title": "Forrás megjelenítése",
+        "description": "A diagram szövegének megjelenítése a rajz mellett."
+      },
+      {
+        "title": "Szöveges alternatíva megjelenítése",
+        "description": "A szöveges alternatíva megjelenítése a rajz alatt. A képernyőolvasók számára mindig elérhető."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Forrásfájl",
+        "description": "Egy .mmd fájl címe, amelyet a fenti szöveg helyett kell megrajzolni (https vagy egy útvonal ezen a webhelyen)."
+      },
+      {
+        "title": "Kiemelőszín",
+        "description": "A fejlécben lévő ikoncímke színe."
+      }
+    ]
+  }
+}

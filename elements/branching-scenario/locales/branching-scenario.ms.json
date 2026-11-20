@@ -1,0 +1,22 @@
+{
+  "scenario": "Senario",
+  "directions": "Arahan",
+  "showDirections": "Tunjukkan arahan",
+  "hideDirections": "Sembunyikan arahan",
+  "directionsRead": "Baca setiap babak dan pilih apa yang akan anda lakukan.",
+  "directionsEndings": "Terdapat beberapa pengakhiran. Cuba laluan lain selepas anda selesai.",
+  "startOver": "Mula semula",
+  "back": "Undur satu langkah",
+  "tryAnother": "Cuba laluan lain",
+  "path": "Laluan",
+  "scene": "Babak",
+  "ending": "Pengakhiran",
+  "end": "tamat",
+  "scenesSeen": "{seen} daripada {total} babak dilihat",
+  "endingReached": "Pengakhiran dicapai",
+  "addScene": "Tambah babak",
+  "newScene": "Babak baharu",
+  "newSceneText": "Huraikan apa yang berlaku, kemudian pautkan setiap pilihan ke satu babak.",
+  "editingNote": "Menyunting: semua babak ditunjukkan. Pilihan ialah pautan ke # diikuti ID babak.",
+  "noScenes": "Tambah babak untuk memulakan senario."
+}

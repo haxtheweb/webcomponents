@@ -3,5 +3,7 @@
   "status_stop": "නවත්වන්න",
   "status_warning": "අවවාදය",
   "status_success": "සාර්ථකත්වය",
-  "status_info": "සටහන"
+  "status_info": "සටහන",
+  "status_tip": "ඔබ දන්නවාද?",
+  "status_new": "අලුත් දේ"
 }

@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Sakrij ikonu",
         "description": "Sakrij ikonu koja naglašava tekst"
+      },
+      {
+        "title": "Izgled",
+        "description": "Koliko je dugme naglašeno.",
+        "options": {
+          "": "Ispunjeno",
+          "tonal": "Tonsko",
+          "outlined": "Obrisano",
+          "plain": "Obično"
+        }
+      },
+      {
+        "title": "Veličina",
+        "description": "Veličina dugmeta.",
+        "options": {
+          "s": "Malo",
+          "": "Srednje",
+          "l": "Veliko"
+        }
       }
     ],
     "advanced": [

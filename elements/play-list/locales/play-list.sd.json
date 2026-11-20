@@ -9,5 +9,7 @@
   "slidePages": "سلائيڊ صفحا",
   "goToSlide": "سلائيڊ {number} تي وڃو",
   "slides": "سلائيڊون",
-  "position": "{total} مان {number}"
+  "position": "{total} مان {number}",
+  "fullScreen": "پوري اسڪرين",
+  "exitFullScreen": "پوري اسڪرين مان نڪرو"
 }

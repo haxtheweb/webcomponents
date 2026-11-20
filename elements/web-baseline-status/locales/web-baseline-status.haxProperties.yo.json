@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Ipò Baseline",
+    "description": "Fi ipò àtìlẹ́yìn aṣàwákiri Baseline ti ẹ̀yà pẹpẹ wẹ́ẹ̀bù kan hàn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID ẹ̀yà",
+        "description": "ID ẹ̀yà wẹ́ẹ̀bù náà, fún àpẹẹrẹ anchor-positioning. Wá àwọn ID ní webstatus.dev; ID ni apá tó kẹ́yìn URL ojú-ìwé ẹ̀yà."
+      }
+    ]
+  }
+}

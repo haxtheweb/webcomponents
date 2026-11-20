@@ -9,5 +9,7 @@
   "slidePages": "Слайд битләре",
   "goToSlide": "{number} нче слайдка күчү",
   "slides": "Слайдлар",
-  "position": "{number} / {total}"
+  "position": "{number} / {total}",
+  "fullScreen": "Тулы экран",
+  "exitFullScreen": "Тулы экраннан чыгу"
 }

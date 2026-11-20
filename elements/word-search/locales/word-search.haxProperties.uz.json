@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "So‘z qidirish",
+    "description": "Yashirin so‘zli harflar to‘ri. O‘quvchilar har bir so‘zning birinchi va oxirgi harfiga tegadi. Atamaning ma’nosini emas, qanday yozilishini topishni mashq qildiradi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sarlavha",
+        "description": "O‘quvchilardan nimani topish so‘raladi, sarlavhada ko‘rsatiladi."
+      },
+      {
+        "title": "So‘zlar",
+        "description": "Yashiriladigan so‘zlar. Bo‘shliqlar va tinish belgilari to‘rga kiritilmaydi. Sig‘magan so‘zlar tahrirlash paytida ro‘yxatlanadi va o‘quvchilar uchun chiqarib tashlanadi."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "To‘r o‘lchami",
+        "description": "Har bir tomondagi harflar, 4 dan 16 gacha. Eng uzun so‘zga moslash uchun bo‘sh qoldiring (12 gacha). 12 dan ortig‘i telefonda yon tomonga aylanadi."
+      },
+      {
+        "title": "Diagonal so‘zlar",
+        "description": "So‘zlarni diagonal ham yashirish. Qiyinroq."
+      },
+      {
+        "title": "Teskari so‘zlar",
+        "description": "Teskari yozilgan so‘zlarni ham yashirish. Qiyinroq."
+      },
+      {
+        "title": "Urg‘u rangi",
+        "description": "Sarlavha belgisi, tanlangan birinchi harf va tugma uchun ixtiyoriy rang."
+      }
+    ]
+  }
+}

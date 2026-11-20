@@ -24,11 +24,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Mawu achidule osankha zambiri zikatsegulidwa"
+        "title": "Mawu achidule osankha zambiri zikatsegulidwa",
+        "description": "Zolemba za batani pamene kufotokozera kwabisika, monga Onetsani kufotokozera."
       },
       {
         "property": "closeText",
-        "title": "Mawu achidule osankha zambiri zikatsekedwa"
+        "title": "Mawu achidule osankha zambiri zikatsekedwa",
+        "description": "Zolemba za batani pamene kufotokozera kukuwonetsedwa, monga Bisani kufotokozera."
       }
     ]
   }

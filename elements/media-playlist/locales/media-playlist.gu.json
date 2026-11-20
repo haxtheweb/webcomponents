@@ -5,5 +5,7 @@
   "editModeLabel": "મીડિયા પ્લેલિસ્ટ સંપાદન મોડ",
   "position": "{total} માંથી {current}",
   "previousItem": "પાછલી આઇટમ",
-  "nextItem": "આગલી આઇટમ"
+  "nextItem": "આગલી આઇટમ",
+  "fullScreen": "પૂર્ણ સ્ક્રીન",
+  "exitFullScreen": "પૂર્ણ સ્ક્રીનમાંથી બહાર નીકળો"
 }

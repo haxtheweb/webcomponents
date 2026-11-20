@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "İstifadə halı seçicisi",
+    "description": "Saytın nə üçün olduğunu seçin və HAX-ı həmin başlanğıc saytla brauzerdə açan keçid, üstəlik uyğun CLI əmri alın."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Brauzerdə HAX ünvanı",
+        "description": "Keçidin açıldığı yer; ona ?skeleton= və &name= əlavə olunur"
+      },
+      {
+        "title": "Çıxarılacaq başlanğıc saytlar",
+        "description": "Maşın adları, vergüllə ayrılmış"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Başlanğıc saytlar siyahısı",
+        "description": "Skelet siyahısının ünvanı (app-hax-ın oxuduğu format)"
+      }
+    ]
+  }
+}

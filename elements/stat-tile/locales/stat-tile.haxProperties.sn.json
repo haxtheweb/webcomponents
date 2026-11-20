@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Tile yenhamba",
+    "description": "Nhamba imwe inokosha, ine zita rayo nekuchinja kwayakaita. Isa dzakawanda mugridi kuti uwane mutsara wedashboard."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Zita",
+        "description": "Zvinoyerwa nenhamba."
+      },
+      {
+        "title": "Kukosha",
+        "description": "Nhamba. Nhamba yakapusa inorongwa zvichienderana nemutauro wepeji; chimwe chinhu chinoratidzwa sezvachakanyorwa."
+      },
+      {
+        "title": "Shanduko",
+        "description": "Kuchinja kwayakaita, nemazwi, se6% temu ino."
+      },
+      {
+        "title": "Nzira",
+        "description": "Kana shanduko iri kumusoro kana pasi.",
+        "options": {
+          "": "Hapana",
+          "up": "Kumusoro",
+          "down": "Pasi"
+        }
+      }
+    ]
+  }
+}

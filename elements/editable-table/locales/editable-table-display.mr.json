@@ -3,5 +3,8 @@
   "copyAsCsv": "CSV म्हणून कॉपी करा.",
   "printTable": "टेबल मुद्रित करा",
   "selectColumn": "स्तंभ निवडा",
-  "dataTable": "डेटा · तक्ता"
+  "dataTable": "डेटा · तक्ता",
+  "filterStatus": "{total} पैकी {shown} ओळी दाखवत आहे, {column} नुसार फिल्टर: {text}",
+  "columnNumber": "स्तंभ {column}",
+  "clearFilter": "फिल्टर साफ करा"
 }

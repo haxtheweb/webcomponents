@@ -2,5 +2,9 @@
   "toggleAnimation": "Yatsa/zimitsa makanema",
   "info": "zambiri",
   "image": "Chithunzi",
-  "animatedGif": "GIF yosuntha"
+  "animatedGif": "GIF yosuntha",
+  "playAnimation": "Sewerani makanema",
+  "pauseAnimation": "Imitsani makanema kaye",
+  "showDescription": "Onetsani kufotokozera",
+  "hideDescription": "Bisani kufotokozera"
 }

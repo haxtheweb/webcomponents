@@ -1,0 +1,19 @@
+{
+  "label": "Kayan aiki na waje",
+  "labelLti": "Kayan aiki na waje · LTI 1.3",
+  "theTool": "kayan aikin",
+  "directions": "Umarni",
+  "showDirections": "Nuna umarni",
+  "hideDirections": "Ɓoye umarni",
+  "directionsWindow": "Maɓallin yana buɗe sabuwar taga da kayan aikin a ciki.",
+  "directionsEmbed": "Maɓallin yana buɗe kayan aikin a wannan shafi. Idan bai loda ba, buɗe shi a sabuwar taga maimakon haka.",
+  "directionsLti": "Wannan shafi yana shigar da kai cikin kayan aikin, don haka ba ka buƙatar wani asusu daban.",
+  "openWindow": "Buɗe {title} (sabuwar taga)",
+  "openEmbed": "Buɗe {title}",
+  "openInstead": "Buɗe a sabuwar taga maimakon haka",
+  "frameTitle": "{title} (kayan aiki na waje)",
+  "openedWindow": "Sabuwar taga ta buɗe da kayan aikin.",
+  "openedEmbed": "Kayan aikin ya buɗe a wannan shafi.",
+  "needsUrl": "Wannan tubali yana buƙatar adireshin ƙaddamarwa da ya fara da http:// ko https://.",
+  "needsSignIn": "Wannan kayan aiki yana buƙatar sabis ɗin shiga na wannan shafi, wanda babu shi a nan. Ba a buɗe komai ba."
+}

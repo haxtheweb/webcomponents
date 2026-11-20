@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "sarlavha"
+        "title": "sarlavha",
+        "description": "Kurs modeli ustida ko‘rsatiladigan sarlavha."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "Ko‘rsatiladigan 3D model faylining (.glb yoki .gltf) manzili."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "3D modelni ko‘ra olmaydigan odamlar uchun tavsiflang."
       },
       {
         "title": "Maʼlumot maydoni"

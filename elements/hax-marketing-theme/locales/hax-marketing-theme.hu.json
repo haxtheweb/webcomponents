@@ -1,0 +1,16 @@
+{
+  "skipToContent": "Ugrás a tartalomra",
+  "site": "Webhely",
+  "changeLogo": "A logó cseréje",
+  "anotherPicture": "Másik kép mutatása",
+  "anotherTheme": "Másik téma mutatása",
+  "switcherHeading": "Ugyanaz a webhely, Ön választ. Cserélje élőben:",
+  "remix": "Újrakeverés",
+  "remixRandom": "A webhely újrakeverése: véletlenszerűen választott megjelenés",
+  "remixOptions": "A webhely újrakeverésének összes módja",
+  "pagesUnder": "{name} alatti oldalak",
+  "previous": "Előző",
+  "next": "Következő",
+  "pages": "Előző és következő oldal",
+  "footerLinks": "Továbbiak"
+}

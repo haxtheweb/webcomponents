@@ -1,0 +1,14 @@
+{
+  "scene": "Scena",
+  "ending": "Završetak",
+  "goodEnding": "Dobar završetak",
+  "mixedEnding": "Mješovit završetak",
+  "poorEnding": "Loš završetak",
+  "scoreOf": "Rezultat {score} od {max}",
+  "scoreOnly": "Rezultat {score}",
+  "startScene": "Početak",
+  "sceneIdLabel": "Id scene",
+  "needsId": "Dodajte id scene kako bi izbori mogli voditi na ovu scenu.",
+  "orphan": "Nijedan izbor ne vodi na ovu scenu.",
+  "deadLinks": "Ovi linkovi vode na scenu koja ne postoji:"
+}

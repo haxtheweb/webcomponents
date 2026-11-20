@@ -4,7 +4,12 @@
     "description": "Ýüklenen .h5p faýlyndan H5P interaktiw mazmunyny H5P serwersiz ýaňlandyrýar"
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "title": "H5P faýly",
+        "description": ".h5p faýlyny ýükläň ýa-da baglaň. Ol brauzerde açylýar; H5P serweri gerek däl."
+      }
+    ],
     "advanced": [
       {
         "title": "Köne iframe goýma kody",

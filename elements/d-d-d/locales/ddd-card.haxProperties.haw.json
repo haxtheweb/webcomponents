@@ -52,6 +52,20 @@
           "_top": "Puka aniani luna - _top",
           "_parent": "Puka aniani makua - _parent"
         }
+      },
+      {
+        "title": "ʻAʻohe pua",
+        "description": "Hūnā i ka pua o ke pihi."
+      },
+      {
+        "title": "Loulou: pahuhopu",
+        "description": "Ma hea e wehe ai i ka loulou.",
+        "options": {
+          "": "Pukaaniani like",
+          "_blank": "Pukaaniani hou - _blank",
+          "_top": "Pukaaniani luna - _top",
+          "_parent": "Pukaaniani makua - _parent"
+        }
       }
     ],
     "developer": [

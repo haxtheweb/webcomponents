@@ -1,0 +1,8 @@
+{
+  "theme": "Temă",
+  "palette": "Paletă",
+  "themeDefault": "Implicit temă",
+  "designSystem": "Sistem de design",
+  "designSystemDefault": "DDD (implicit)",
+  "designSystemUnavailable": "Această temă își păstrează propriul sistem de design"
+}

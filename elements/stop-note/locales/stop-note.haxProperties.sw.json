@@ -23,7 +23,9 @@
           "stop": "Simama",
           "warning": "Onyo",
           "success": "Uthibitisho",
-          "info": "Ilani"
+          "info": "Ilani",
+          "tip": "Kidokezo",
+          "new": "Kipya ni nini"
         }
       },
       {

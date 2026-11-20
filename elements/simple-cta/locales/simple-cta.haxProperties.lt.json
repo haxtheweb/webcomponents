@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Slėpti piktogramą",
         "description": "Slėpti tekstą paryškinančią piktogramą"
+      },
+      {
+        "title": "Išvaizda",
+        "description": "Kiek mygtukas išryškintas.",
+        "options": {
+          "": "Užpildytas",
+          "tonal": "Tonuotas",
+          "outlined": "Kontūrinis",
+          "plain": "Paprastas"
+        }
+      },
+      {
+        "title": "Dydis",
+        "description": "Mygtuko dydis.",
+        "options": {
+          "s": "Mažas",
+          "": "Vidutinė",
+          "l": "Didelis"
+        }
       }
     ],
     "advanced": [

@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Chwaraewr dogfennaeth",
+    "description": "Canllaw, demo a chyfeirnod ar gyfer cydran we, gyda botymau copïo ar gyfer HTML, mewnforio, npm a CDN."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ffeil data dogfennaeth",
+        "description": "Y data dogfennaeth sy'n dod gyda'r elfen (lib/tag.docs.json)."
+      },
+      {
+        "title": "Bwrdd stori'r canllaw",
+        "description": "Y bwrdd stori symud sy'n dod gyda'r elfen (tag.motion.json). Dewisol."
+      },
+      {
+        "title": "Tiwtorial fideo",
+        "description": "Fideo byr am yr elfen (YouTube, Vimeo neu ffeil fideo). Yn diystyru'r fideo yn y data dogfennaeth."
+      },
+      {
+        "title": "Agor ar y tab",
+        "description": "Pa dab sy'n cael ei ddangos gyntaf.",
+        "options": {
+          "motion": "Canllaw",
+          "video": "Fideo",
+          "demo": "Demo",
+          "docs": "Dogfennaeth",
+          "schema": "Sgema"
+        }
+      },
+      {
+        "title": "Chwarae'r canllaw yn awtomatig",
+        "description": "Dechrau'r canllaw cyn gynted ag y bydd y chwaraewr yn ymddangos. Caiff ei anwybyddu pan fydd y darllenydd yn dewis llai o symud."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Pwnc y canllaw",
+        "description": "Ar gyfer elfennau â sawl canllaw, pa bwnc i'w agor gyntaf (er enghraifft add-blocks). Gadewch yn wag ar gyfer y prif un."
+      },
+      {
+        "title": "Dolen demo byw",
+        "description": "Ble mae'r botwm Agor ffynhonnell y demo yn mynd. Yn ddiofyn, ffolder demo y storfa."
+      },
+      {
+        "title": "Dolen dogfennaeth",
+        "description": "Ble mae'r botwm dogfennaeth lawn yn mynd, er enghraifft y dudalen Learn HAX gyfatebol."
+      }
+    ]
+  }
+}

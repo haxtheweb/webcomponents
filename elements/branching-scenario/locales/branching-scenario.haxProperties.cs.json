@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Větvený scénář",
+    "description": "Příběh, ve kterém každá volba vede k jiné scéně a konci. Studenti se mohou vracet a zkoušet jiné cesty; dosažený konec určuje skóre."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Název",
+        "description": "Název scénáře, zobrazený v jeho záhlaví."
+      },
+      {
+        "title": "Úvodní scéna",
+        "description": "ID scény, ve které studenti začínají. Ponechte prázdné pro začátek v první scéně."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Zvýrazňující barva",
+        "description": "Volitelná barva štítku záhlaví, tlačítek a okraje volby."
+      }
+    ]
+  }
+}

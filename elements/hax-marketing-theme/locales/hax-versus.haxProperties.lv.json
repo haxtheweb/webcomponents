@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Pret",
+    "description": "Vārdi blakus pogai “viens pret vienu” ar diviem personāžiem"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Virsraksts"
+      },
+      {
+        "title": "Kur ved poga"
+      },
+      {
+        "title": "Pogas teksts"
+      },
+      {
+        "title": "Kreisā personāža sēkla"
+      },
+      {
+        "title": "Labā personāža sēkla"
+      }
+    ]
+  }
+}

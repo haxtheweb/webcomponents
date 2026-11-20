@@ -1,0 +1,19 @@
+{
+  "label": "Qalab dibadeed",
+  "labelLti": "Qalab dibadeed · LTI 1.3",
+  "theTool": "qalabka",
+  "directions": "Tilmaamo",
+  "showDirections": "Muuji tilmaamaha",
+  "hideDirections": "Qari tilmaamaha",
+  "directionsWindow": "Badhanku wuxuu furayaa daaqad cusub oo qalabku ku jiro.",
+  "directionsEmbed": "Badhanku wuxuu qalabka ku furayaa boggan. Haddii uusan soo bixin, halkii ku fur daaqad cusub.",
+  "directionsLti": "Goobtani waxay kugu gelinaysaa qalabka, sidaas darteed uma baahnid akoon gooni ah.",
+  "openWindow": "Fur {title} (daaqad cusub)",
+  "openEmbed": "Fur {title}",
+  "openInstead": "Halkii ku fur daaqad cusub",
+  "frameTitle": "{title} (qalab dibadeed)",
+  "openedWindow": "Daaqad cusub ayaa la furay oo qalabku ku jiro.",
+  "openedEmbed": "Qalabka waxaa lagu furay boggan.",
+  "needsUrl": "Block-gan wuxuu u baahan yahay cinwaan bilow ah oo ku bilaabma http:// ama https://.",
+  "needsSignIn": "Qalabkan wuxuu u baahan yahay adeegga galitaanka goobtan, oo aan halkan laga heli karin. Waxba lama furin."
+}

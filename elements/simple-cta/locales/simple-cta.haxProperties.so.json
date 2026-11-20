@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Qari astaanta",
         "description": "Qari astaanta loo isticmaalo xoojinta qoraalka"
+      },
+      {
+        "title": "Muuqaal",
+        "description": "Inta xoojin ee badhanku leeyahay.",
+        "options": {
+          "": "Buuxa",
+          "tonal": "Midab khafiif ah",
+          "outlined": "Xariiqan",
+          "plain": "Caadi"
+        }
+      },
+      {
+        "title": "Cabbir",
+        "description": "Cabbirka badhanka.",
+        "options": {
+          "s": "Yar",
+          "": "Dhexdhexaad",
+          "l": "Weyn"
+        }
       }
     ],
     "advanced": [

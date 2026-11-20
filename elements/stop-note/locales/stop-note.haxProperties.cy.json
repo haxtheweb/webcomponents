@@ -23,7 +23,9 @@
           "stop": "Stop",
           "warning": "Rhybudd",
           "success": "Cadarnhad",
-          "info": "Hysbysiad"
+          "info": "Hysbysiad",
+          "tip": "Awgrym",
+          "new": "Beth sy'n newydd"
         }
       },
       {

@@ -1,0 +1,22 @@
+{
+  "scenario": "Senaryo",
+  "directions": "Yönergeler",
+  "showDirections": "Yönergeleri göster",
+  "hideDirections": "Yönergeleri gizle",
+  "directionsRead": "Her sahneyi okuyun ve ne yapacağınızı seçin.",
+  "directionsEndings": "Birkaç son var. Bitirdikten sonra başka bir yol deneyin.",
+  "startOver": "Baştan başla",
+  "back": "Bir adım geri",
+  "tryAnother": "Başka bir yol dene",
+  "path": "Yol",
+  "scene": "Sahne",
+  "ending": "Son",
+  "end": "son",
+  "scenesSeen": "{total} sahneden {seen} tanesi görüldü",
+  "endingReached": "Sona ulaşıldı",
+  "addScene": "Sahne ekle",
+  "newScene": "Yeni sahne",
+  "newSceneText": "Ne olduğunu anlatın, ardından her seçeneği bir sahneye bağlayın.",
+  "editingNote": "Düzenleme: tüm sahneler gösterilir. Seçenek, # ve ardından bir sahne kimliğine giden bir bağlantıdır.",
+  "noScenes": "Senaryoyu başlatmak için bir sahne ekleyin."
+}

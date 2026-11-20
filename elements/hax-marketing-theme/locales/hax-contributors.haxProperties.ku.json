@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Beşdar",
+    "description": "Mirovên ku proje ava kirine, ji pela lîsteyê"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pela lîsteyê (JSON)"
+      },
+      {
+        "title": "Dîtin: landed, lab an code"
+      },
+      {
+        "title": "Herî zêde çend kes nîşan bide (0 hemû ye)"
+      }
+    ]
+  }
+}

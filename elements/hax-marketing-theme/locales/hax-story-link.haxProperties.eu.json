@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Istorio-botoia",
+    "description": "hax.cloud-en baieztapen baten atzeko istorioa irekitzen duen botoia, edo HAX sareko beste gune bateko dagokion lekua"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nora doan",
+        "options": {
+          "cloud": "hax.cloud, istorioa",
+          "learn": "learn.hax.cloud, tutorial bat",
+          "try": "browser.hax.cloud, probatu",
+          "elements": "webcomponents.hax.cloud, bloke bat",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Gune horretako helbidea (hax.cloud-eko istorio batek stories/ee450a19 itxura du)"
+      },
+      {
+        "title": "Zertaz den"
+      },
+      {
+        "title": "Txip txikia"
+      },
+      {
+        "title": "Erakutsi zertaz den botoian"
+      }
+    ]
+  }
+}

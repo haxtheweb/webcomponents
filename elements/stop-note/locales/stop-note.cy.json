@@ -3,5 +3,7 @@
   "status_stop": "Stopio",
   "status_warning": "Rhybudd",
   "status_success": "Llwyddiant",
-  "status_info": "Nodyn"
+  "status_info": "Nodyn",
+  "status_tip": "Wyddech chi?",
+  "status_new": "Beth sy'n newydd"
 }

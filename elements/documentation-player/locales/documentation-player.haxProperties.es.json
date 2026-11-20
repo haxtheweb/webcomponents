@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Reproductor de documentación",
+    "description": "Guía, demostración y referencia de un componente web, con botones para copiar HTML, import, npm y CDN."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Archivo de datos de la documentación",
+        "description": "Los datos de documentación que incluye el elemento (lib/tag.docs.json)."
+      },
+      {
+        "title": "Guion de la guía",
+        "description": "El guion de animación que incluye el elemento (tag.motion.json). Opcional."
+      },
+      {
+        "title": "Videotutorial",
+        "description": "Un vídeo corto sobre el elemento (YouTube, Vimeo o un archivo de vídeo). Sustituye al vídeo de los datos de documentación."
+      },
+      {
+        "title": "Abrir en la pestaña",
+        "description": "Qué pestaña se muestra primero.",
+        "options": {
+          "motion": "Guía",
+          "video": "Vídeo",
+          "demo": "Demo",
+          "docs": "Documentación",
+          "schema": "Esquema"
+        }
+      },
+      {
+        "title": "Reproducir la guía automáticamente",
+        "description": "Inicia la guía en cuanto se muestra el reproductor. Se ignora si el lector prefiere movimiento reducido."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tema de la guía",
+        "description": "Para elementos con varias guías, qué tema abrir primero (por ejemplo add-blocks). Déjalo vacío para la principal."
+      },
+      {
+        "title": "Enlace a la demostración en directo",
+        "description": "Adónde lleva el botón Abrir el código de la demostración. Por defecto, a la carpeta demo del repositorio."
+      },
+      {
+        "title": "Enlace a la documentación",
+        "description": "Adónde lleva el botón de documentación completa, por ejemplo a la página correspondiente de Learn HAX."
+      }
+    ]
+  }
+}

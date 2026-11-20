@@ -2,5 +2,9 @@
   "answerInCorrectOrder": "Жооп туура иретте",
   "answerInIncorrectOrder": "Жооп туура эмес иретте",
   "moveOptionUp": "Вариантты жогору жылдыруу үчүн тандаңыз",
-  "moveOptionDown": "Вариантты төмөн жылдыруу үчүн тандаңыз"
+  "moveOptionDown": "Вариантты төмөн жылдыруу үчүн тандаңыз",
+  "moveEarlier": "Алдыга жылдыруу",
+  "moveLater": "Артка жылдыруу",
+  "correct": "Туура",
+  "incorrect": "Туура эмес"
 }

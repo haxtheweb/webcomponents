@@ -1,3 +1,4 @@
 {
-  "viewOnLinkedin": "ดู {name} บน LinkedIn"
+  "viewOnLinkedin": "ดู {name} บน LinkedIn",
+  "badgeTitle": "ป้ายโปรไฟล์ LinkedIn ของ {name}"
 }

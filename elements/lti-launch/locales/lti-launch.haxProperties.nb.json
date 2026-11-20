@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Start av eksternt verktøy",
+    "description": "En blokk som åpner et eksternt læringsverktøy i et nytt vindu eller på siden, som en vanlig lenke eller med en LTI 1.3-innloggingsforespørsel."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tittel",
+        "description": "Navnet på verktøyet. Det vises i toppteksten og på knappen."
+      },
+      {
+        "title": "Beskrivelse",
+        "description": "Hva elevene gjør i verktøyet, vist over knappen."
+      },
+      {
+        "title": "Oppstarts-URL",
+        "description": "Adressen til verktøyet. Den må være en fullstendig adresse som begynner med https:// eller http://."
+      },
+      {
+        "title": "Åpne i",
+        "description": "Et nytt vindu fungerer med alle verktøy. På denne siden fungerer bare med verktøy som tillater å bli vist inne i et annet nettsted.",
+        "options": {
+          "window": "Et nytt vindu",
+          "embed": "På denne siden"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "LTI-innloggings-URL",
+        "description": "Bare LTI 1.3: verktøyets adresse for innloggingsstart. Med denne, en klient-ID og en distribusjons-ID sender knappen en LTI-innloggingsforespørsel i stedet for å åpne en vanlig lenke. For å fullføre oppstarten trengs dette nettstedets LTI-tjeneste."
+      },
+      {
+        "title": "LTI-klient-ID",
+        "description": "Klient-ID-en verktøyet ga dette nettstedet. En offentlig identifikator, ikke en hemmelighet: legg aldri nøkler eller hemmeligheter her."
+      },
+      {
+        "title": "LTI-distribusjons-ID",
+        "description": "Distribusjons-ID-en verktøyet ga dette nettstedet. En offentlig identifikator, ikke en hemmelighet."
+      },
+      {
+        "title": "LTI-utsteder",
+        "description": "Adressen som identifiserer dette nettstedet overfor verktøyet. La stå tomt for å bruke adressen til nettstedet siden ligger på."
+      },
+      {
+        "title": "Høyde på siden",
+        "description": "Høyden på verktøyet når det åpnes på denne siden, i piksler (200 til 2000)."
+      },
+      {
+        "title": "Aksentfarge",
+        "description": "Farge på toppetiketten og knappen. La stå tomt for å følge temaet."
+      }
+    ],
+    "developer": [
+      {
+        "title": "LTI-innloggingshint",
+        "description": "En ugjennomsiktig verdi dette nettstedets LTI-tjeneste bruker for å gjenkjenne eleven. Leveres vanligvis av nettstedet via lti-launch-request-hendelsen i stedet for å lagres her. Aldri et passord eller en nøkkel."
+      },
+      {
+        "title": "LTI-meldingshint",
+        "description": "En ugjennomsiktig verdi dette nettstedets LTI-tjeneste bruker for å gjenkjenne denne oppstarten. Leveres vanligvis av nettstedet i stedet for å lagres her."
+      }
+    ]
+  }
+}

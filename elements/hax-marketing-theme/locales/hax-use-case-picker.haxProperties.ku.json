@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Hilbijêra rewşa bikaranînê",
+    "description": "Hilbijêre malper ji bo çi ye û girêdanekê bistîne ku HAX di gerokê de bi wê malpera destpêkê vedike, digel fermana CLI ya guncaw."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Navnîşana HAX di gerokê de",
+        "description": "Girêdan li ku vedibe; ?skeleton= û &name= lê tên zêdekirin"
+      },
+      {
+        "title": "Malperên destpêkê yên ku derxîne",
+        "description": "Navên makîneyê, bi bêhnokê veqetandî"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Lîsteya malperên destpêkê",
+        "description": "Navnîşana lîsteya skeletonan (formata ku app-hax dixwîne)"
+      }
+    ]
+  }
+}

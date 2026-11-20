@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "用途ピッカー",
+    "description": "サイトの用途を選ぶと、そのスターターサイトでブラウザー版 HAX を開くリンクと、対応する CLI コマンドが得られます。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ブラウザー版 HAX のアドレス",
+        "description": "リンクの開く先。?skeleton= と &name= が追加されます"
+      },
+      {
+        "title": "除外するスターターサイト",
+        "description": "マシン名（カンマ区切り）"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "スターターサイトの一覧",
+        "description": "スケルトン一覧のアドレス（app-hax が読む形式）"
+      }
+    ]
+  }
+}

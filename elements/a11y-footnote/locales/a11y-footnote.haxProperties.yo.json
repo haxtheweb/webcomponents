@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Àkọsílẹ̀ ìsàlẹ̀",
+    "description": "Àkọsílẹ̀ tí a kọ sí ibi tí ó yẹ nínú ọ̀rọ̀. Ó ń hàn gẹ́gẹ́ bí nọ́mbà, àkójọ àwọn àkọsílẹ̀ olónọ́mbà sì ń kọ́ ara rẹ̀ ní ìsàlẹ̀ ojú-ìwé."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Àkọsílẹ̀",
+        "description": "Ọ̀rọ̀ àkọsílẹ̀ ìsàlẹ̀ náà."
+      },
+      {
+        "title": "Kò sí àyẹ̀wò ṣáájú",
+        "description": "Má ṣe fi àkọsílẹ̀ náà hàn nígbà tí òǹkàwé bá rá lé tàbí fojú sí nọ́mbà náà."
+      }
+    ]
+  }
+}

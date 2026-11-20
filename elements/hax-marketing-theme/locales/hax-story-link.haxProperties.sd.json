@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "ڪهاڻي بٽڻ",
+    "description": "اهو بٽڻ جيڪو hax.cloud تي ڪنهن دعويٰ پويان ڪهاڻي کولي ٿو، يا HAX نيٽ ورڪ جي ٻي سائيٽ تي ملندڙ جاءِ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "اهو ڪٿي وڃي ٿو",
+        "options": {
+          "cloud": "hax.cloud، ڪهاڻي",
+          "learn": "learn.hax.cloud، سبق",
+          "try": "browser.hax.cloud، آزمايو",
+          "elements": "webcomponents.hax.cloud، بلاڪ",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "ان سائيٽ تي پتو (hax.cloud تي ڪهاڻي stories/ee450a19 جهڙي لڳي ٿي)"
+      },
+      {
+        "title": "اهو ڪهڙي باري ۾ آهي"
+      },
+      {
+        "title": "ننڍي چپ"
+      },
+      {
+        "title": "بٽڻ ۾ ڏيکاريو ته اهو ڪهڙي باري ۾ آهي"
+      }
+    ]
+  }
+}

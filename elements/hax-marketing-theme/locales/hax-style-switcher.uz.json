@@ -1,0 +1,16 @@
+{
+  "theme": "Mavzu",
+  "designSystem": "Dizayn tizimi",
+  "dddDefault": "DDD (standart)",
+  "designSystemHelp": "Rang, shrift, burchaklar va fokus. Mavzu maketni saqlab qoladi.",
+  "designSystemFixed": "Bu mavzu o‘z dizayn tizimini saqlaydi.",
+  "palette": "Palitra",
+  "themeDefault": "Mavzu standarti",
+  "paletteNumber": "Palitra {n}",
+  "siteTheme": "{name} (bu saytning mavzusi)",
+  "restyle": "Bu sayt uslubini o‘zgartirish",
+  "close": "Yopish",
+  "reset": "Bu saytning asl ko‘rinishiga qaytish",
+  "random": "Meni hayratlantiring",
+  "about": "Bu HAX ga o‘rnatilgan bir nechta ko‘rinishni ko‘rsatadi. Sahifalar hech qachon o‘zgarmaydi: tuzilma JSON Outline Schema da saqlanadi va har bir blok standart veb-komponent, shuning uchun dizaynni erkin almashtirish mumkin."
+}

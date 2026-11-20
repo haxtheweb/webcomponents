@@ -1,0 +1,8 @@
+{
+  "theme": "Mavzu",
+  "palette": "Palitra",
+  "themeDefault": "Mavzu standarti",
+  "designSystem": "Dizayn tizimi",
+  "designSystemDefault": "DDD (standart)",
+  "designSystemUnavailable": "Bu mavzu o‘z dizayn tizimini saqlaydi"
+}

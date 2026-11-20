@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "నేపథ్య చిత్రం."
+        "description": "నేపథ్య చిత్రం.",
+        "title": "చిత్రం"
       },
       {
         "property": "caption",
-        "description": "వచన శీర్షిక."
+        "description": "వచన శీర్షిక.",
+        "title": "క్యాప్షన్"
       }
     ]
   }

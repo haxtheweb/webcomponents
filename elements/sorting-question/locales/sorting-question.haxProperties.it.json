@@ -13,6 +13,14 @@
       {
         "property": "answers",
         "title": "Risposte",
+        "description": "L'ordine delle risposte definisce la sequenza corretta.",
+        "options": {
+          "": "Elenco",
+          "cards": "Schede con immagini"
+        }
+      },
+      {
+        "title": "Risposte",
         "description": "L'ordine delle risposte definisce la sequenza corretta."
       }
     ],

@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Stop Note Group",
+    "description": "Pagsamahin ang ilang stop note sa isang block na nagpapakita ng isang tala sa bawat pagkakataon, tulad ng Mga tip o Ano ang bago. Maaaring isama rin dito ang mga instruction card, side note at sipi na may frame."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Label",
+        "description": "Pangalan ng grupo na ina-announce ng mga screen reader, tulad ng Mga tip o Ano ang bago."
+      },
+      {
+        "title": "Mga tala",
+        "description": "Ang mga stop note sa grupo. Maaari ring magdagdag ng mga instruction card, side note at sipi na may frame."
+      }
+    ]
+  }
+}

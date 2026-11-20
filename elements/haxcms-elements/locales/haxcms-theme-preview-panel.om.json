@@ -8,5 +8,9 @@
   "theme": "Dhiyeessa",
   "palette": "Paaleetii",
   "cancel": "Haqi",
-  "openAppearanceSettings": "Qindaa'ina Bifaa Bani"
+  "openAppearanceSettings": "Qindaa'ina Bifaa Bani",
+  "designSystem": "Sirna dizaayinii",
+  "designSystemDefault": "DDD (durtii)",
+  "designSystemThemeDefault": "{name} (durtii dhaabbii)",
+  "designSystemHelp": "Halluu, qubee, golee fi hamma walitti dhiyeenyaa. Dhaabbiin ammallee qindaa'ina murteessa."
 }

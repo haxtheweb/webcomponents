@@ -5,5 +5,6 @@
   "selected": "Valitud",
   "currentlyActiveAndSelectedPalette": "Praegu aktiivne ja valitud palett",
   "currentlyActivePalette": "Praegu aktiivne palett",
-  "selectedPaletteToApply": "Rakendamiseks valitud palett"
+  "selectedPaletteToApply": "Rakendamiseks valitud palett",
+  "paletteNumber": "Palett {number}"
 }

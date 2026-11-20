@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Nhãn hình",
     "description": "Phần tử nhãn hình để đánh dấu tài nguyên đa phương tiện trong nội dung."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Số hình",
+        "description": "Số hoặc nhãn ngắn cho hình, ví dụ 1.3"
+      },
+      {
+        "title": "Mô tả",
+        "description": "Mô tả ngắn về hình"
+      }
+    ]
   }
 }

@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "Skyfie",
+    "description": "'n Klein ikoon met 'n etiket"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ikoon"
+      },
+      {
+        "title": "Etiket"
+      }
+    ]
+  }
+}

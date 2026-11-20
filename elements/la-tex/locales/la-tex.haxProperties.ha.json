@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "Rubuta ta amfani da alamomin lissafi na LaTeX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Bangon hoto",
+        "description": "Bango a bayan hotunan da aka zana. Atomatik yana ƙara ɗaya ne kawai idan zanen zai yi wuyar gani a shafin, kamar layukan duhu a yanayin duhu.",
+        "options": {
+          "auto": "Atomatik",
+          "light": "Haske",
+          "dark": "Duhu",
+          "none": "Babu"
+        }
+      }
+    ]
   }
 }

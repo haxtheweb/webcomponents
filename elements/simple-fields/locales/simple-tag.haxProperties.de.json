@@ -14,6 +14,17 @@
         "property": "autoAccentColor",
         "title": "Automatische Akzentfarbe",
         "description": "Die Akzentfarbe automatisch aus dem Beschriftungstext ableiten."
+      },
+      {
+        "title": "Bedeutung",
+        "description": "Gib dem Tag eine Bedeutungsfarbe. Leer lassen für ein neutrales Tag.",
+        "options": {
+          "": "Neutral",
+          "brand": "Marke",
+          "success": "Erfolg",
+          "warning": "Warnung",
+          "danger": "Gefahr"
+        }
       }
     ],
     "advanced": [

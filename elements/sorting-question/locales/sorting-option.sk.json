@@ -2,5 +2,9 @@
   "answerInCorrectOrder": "Odpoveď je v správnom poradí",
   "answerInIncorrectOrder": "Odpoveď je v nesprávnom poradí",
   "moveOptionUp": "Vyberte na posunutie možnosti v poradí vyššie",
-  "moveOptionDown": "Vyberte na posunutie možnosti v poradí nižšie"
+  "moveOptionDown": "Vyberte na posunutie možnosti v poradí nižšie",
+  "moveEarlier": "Posunúť skôr",
+  "moveLater": "Posunúť neskôr",
+  "correct": "Správne",
+  "incorrect": "Nesprávne"
 }

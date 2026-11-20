@@ -2,5 +2,9 @@
   "toggleAnimation": "Միացնել/անջատել անիմացիան",
   "info": "տեղեկություն",
   "image": "Պատկեր",
-  "animatedGif": "Շարժանկար GIF"
+  "animatedGif": "Շարժանկար GIF",
+  "playAnimation": "Նվագարկել անիմացիան",
+  "pauseAnimation": "Դադարեցնել անիմացիան",
+  "showDescription": "Ցույց տալ նկարագրությունը",
+  "hideDescription": "Թաքցնել նկարագրությունը"
 }

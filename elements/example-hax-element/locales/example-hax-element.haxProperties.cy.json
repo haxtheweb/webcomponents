@@ -1,0 +1,13 @@
+{
+  "gizmo": {
+    "title": "example-hax-element",
+    "description": "Elfen gychwynnol enghreifftiol a ddefnyddir i ddangos ffurfweddiad HAX a phriodweddau golygadwy."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Teitl"
+      }
+    ]
+  }
+}

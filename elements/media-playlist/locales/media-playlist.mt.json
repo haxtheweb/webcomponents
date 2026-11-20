@@ -5,5 +5,7 @@
   "editModeLabel": "Modalità ta' editjar tal-lista tal-midja",
   "position": "{current} minn {total}",
   "previousItem": "Element preċedenti",
-  "nextItem": "Element li jmiss"
+  "nextItem": "Element li jmiss",
+  "fullScreen": "Skrin sħiħ",
+  "exitFullScreen": "Oħroġ mill-iskrin sħiħ"
 }

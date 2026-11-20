@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Nota al pie",
+    "description": "Una nota escrita en su lugar dentro del texto. Se muestra como un número, y la lista numerada de notas se crea sola al final de la página."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nota",
+        "description": "El texto de la nota al pie."
+      },
+      {
+        "title": "Sin vista previa",
+        "description": "No mostrar la nota cuando un lector pasa el cursor por el número o lo enfoca."
+      }
+    ]
+  }
+}

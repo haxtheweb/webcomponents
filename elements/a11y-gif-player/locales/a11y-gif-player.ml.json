@@ -2,5 +2,9 @@
   "toggleAnimation": "ആനിമേഷൻ ടോഗിൾ ചെയ്യുക",
   "info": "വിവരം",
   "image": "ചിത്രം",
-  "animatedGif": "ആനിമേറ്റഡ് GIF"
+  "animatedGif": "ആനിമേറ്റഡ് GIF",
+  "playAnimation": "ആനിമേഷൻ പ്ലേ ചെയ്യുക",
+  "pauseAnimation": "ആനിമേഷൻ താൽക്കാലികമായി നിർത്തുക",
+  "showDescription": "വിവരണം കാണിക്കുക",
+  "hideDescription": "വിവരണം മറയ്ക്കുക"
 }

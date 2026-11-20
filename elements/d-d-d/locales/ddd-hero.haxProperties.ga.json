@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Laoch",
+    "description": "Íomhá mhór, GIF nó físeán le ceannteideal agus téacs os a chionn, curtha áit ar bith i leathanach."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Íomhá nó físeán",
+        "description": "Comhad JPG, PNG, WebP, GIF, MP4 nó WebM."
+      },
+      {
+        "title": "Téacs malartach",
+        "description": "Déan cur síos ar an íomhá. Fág folamh í nuair nach bhfuil inti ach maisiú."
+      },
+      {
+        "title": "Ceannteideal",
+        "description": "Ceannteideal a thaispeántar thar na meáin. Fág folamh gan aon cheann."
+      },
+      {
+        "title": "Téacs",
+        "description": "Téacs a thaispeántar faoin gceannteideal, thar na meáin."
+      },
+      {
+        "title": "Lánleithead",
+        "description": "Rith ó imeall go himeall in ionad suí sa cholún ábhair."
+      },
+      {
+        "title": "Airde",
+        "options": {
+          "tall": "Ard",
+          "medium": "Meánach",
+          "short": "Gearr"
+        }
+      },
+      {
+        "title": "Frámú",
+        "description": "Conas a shuíonn an grianghraf ag gach méid scáileáin"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Céimniú",
+        "description": "Dath leagtha thar na meáin. Le ceannteideal nó téacs bíonn ceann ann i gcónaí, ionas go bhfanann an téacs inléite.",
+        "options": {
+          "blue": "Gorm",
+          "bottom": "Dorcha ag an mbun",
+          "none": "Dada"
+        }
+      },
+      {
+        "title": "Suíomh an téacs",
+        "options": {
+          "bottom": "Bun",
+          "middle": "Lár"
+        }
+      },
+      {
+        "title": "Pointe fócasach trasna",
+        "description": "An chuid den íomhá a fhanann le feiceáil nuair a bhearrtar í, ó 0 (clé) go 100 (deas)."
+      },
+      {
+        "title": "Pointe fócasach síos",
+        "description": "An chuid den íomhá a fhanann le feiceáil nuair a bhearrtar í, ó 0 (barr) go 100 (bun)."
+      }
+    ]
+  }
+}

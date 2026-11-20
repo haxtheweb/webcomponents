@@ -8,5 +8,9 @@
   "theme": "ธีม",
   "palette": "ชุดสี",
   "cancel": "ยกเลิก",
-  "openAppearanceSettings": "เปิดการตั้งค่ารูปลักษณ์"
+  "openAppearanceSettings": "เปิดการตั้งค่ารูปลักษณ์",
+  "designSystem": "ระบบการออกแบบ",
+  "designSystemDefault": "DDD (ค่าเริ่มต้น)",
+  "designSystemThemeDefault": "{name} (ค่าเริ่มต้นของธีม)",
+  "designSystemHelp": "สี ตัวอักษร มุม และความหนาแน่น ธีมยังคงเป็นผู้กำหนดเลย์เอาต์"
 }

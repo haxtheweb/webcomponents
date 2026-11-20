@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Zanen radar",
+    "description": "Zanen radar (gizo-gizo) don samfuran balaga da bayar da maki ta fuskoki, kamar HEOSAT. Ya haɗa da madadin rubutu da teburin bayanai."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Take",
+        "description": "Kanun labari don zanen; ana kuma amfani da shi a matsayin sunansa mai sauƙin isa."
+      },
+      {
+        "title": "Matsakaicin maki",
+        "description": "Mafi girman ƙima a ma'auni."
+      },
+      {
+        "title": "Rukunoni",
+        "description": "Rukuni ɗaya a kowane layi. Yana buƙatar aƙalla 3."
+      },
+      {
+        "title": "Maki",
+        "description": "Lambobi da aka raba da waƙafi, ɗaya don kowane rukuni a tsari ɗaya."
+      },
+      {
+        "title": "Makin manufa",
+        "description": "Lambobi da aka raba da waƙafi, ɗaya don kowane rukuni a tsari ɗaya."
+      },
+      {
+        "title": "Nuna maɓalli",
+        "description": "Nuna maɓalli da ke sanya sunan maki da manufofi."
+      },
+      {
+        "title": "Ƙarami",
+        "description": "Ƙaramin zane ba tare da lakabi, maɓalli ko teburin bayanai ba. Shawagi a kan wuri don ganin ƙimominsa."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Lakabin maki",
+        "description": "Lakabin maɓalli da tebur don maki."
+      },
+      {
+        "title": "Lakabin manufa",
+        "description": "Lakabin maɓalli da tebur don manufofi."
+      }
+    ]
+  }
+}

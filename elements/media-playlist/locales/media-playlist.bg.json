@@ -5,5 +5,7 @@
   "editModeLabel": "Режим на редактиране на медиен плейлист",
   "position": "{current} от {total}",
   "previousItem": "Предишен елемент",
-  "nextItem": "Следващ елемент"
+  "nextItem": "Следващ елемент",
+  "fullScreen": "Цял екран",
+  "exitFullScreen": "Изход от цял екран"
 }

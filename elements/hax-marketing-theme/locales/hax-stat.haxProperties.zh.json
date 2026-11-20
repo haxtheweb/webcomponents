@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "统计",
+    "description": "一个递增计数的数字，带有标签和指向其故事的链接"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "要计数到的数字"
+      },
+      {
+        "title": "数字前"
+      },
+      {
+        "title": "数字后"
+      },
+      {
+        "title": "用文字代替数字"
+      },
+      {
+        "title": "统计的内容"
+      },
+      {
+        "title": "hax.cloud 上的故事地址（stories/ee450a19）"
+      }
+    ]
+  }
+}

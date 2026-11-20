@@ -2,5 +2,9 @@
   "answerInCorrectOrder": "Mbohovái oĩ ñemohenda hekopetépe",
   "answerInIncorrectOrder": "Mbohovái oĩ ñemohenda ndahekopetéivape",
   "moveOptionUp": "Eiporavo emongu'e hag̃ua jeporavorã yvate gotyo",
-  "moveOptionDown": "Eiporavo emongu'e hag̃ua jeporavorã yvy gotyo"
+  "moveOptionDown": "Eiporavo emongu'e hag̃ua jeporavorã yvy gotyo",
+  "moveEarlier": "Emongu'e tenondeve",
+  "moveLater": "Emongu'e tapykueve",
+  "correct": "Oĩporã",
+  "incorrect": "Oĩvai"
 }

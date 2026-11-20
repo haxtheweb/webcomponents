@@ -9,5 +9,7 @@
   "slidePages": "Halaman slide",
   "goToSlide": "Buka slide {number}",
   "slides": "Slide",
-  "position": "{number} dari {total}"
+  "position": "{number} dari {total}",
+  "fullScreen": "Layar penuh",
+  "exitFullScreen": "Keluar dari layar penuh"
 }

@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Ekotizim tarmog‘i",
+    "description": "Loyiha qismlari qanday bog‘langanini ko‘rsatadigan interaktiv tarmoq, ichki tarmoqlar va bosqichma-bosqich sayohatlar bilan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tarmoq ma’lumotlari",
+        "description": "Tarmoqlarning JSON to‘plami URL manzili (PRAW da qurilgan, ecosystem-webs.json)."
+      },
+      {
+        "title": "Tarmoq",
+        "description": "Birinchi ko‘rsatiladigan tarmoq ID si; main — ekotizim tarmog‘i."
+      },
+      {
+        "title": "Tanlangan katak",
+        "description": "Tarmoq ochilganda tanlanadigan katak ID si."
+      },
+      {
+        "title": "Sayohat",
+        "description": "Boshlanadigan sayohat ID si."
+      },
+      {
+        "title": "Ro‘yxat ko‘rinishida boshlash",
+        "description": "Tarmoqni chizma o‘rniga ichma-ich ro‘yxatlar sifatida ko‘rsatish."
+      },
+      {
+        "title": "Faqat chizma",
+        "description": "Faqat chizmani rasm sifatida ko‘rsatish: sarlavha, sayohatlar, tafsilotlar yoki bosqich paneli yo‘q."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "O‘lchov bo‘yicha",
+        "description": "Har bir katakni bitta o‘lchov bo‘yicha o‘qib boshlash.",
+        "options": {
+          "": "Faqat bog‘lanishlar",
+          "fresh": "Yangilik",
+          "bus": "Bus factor",
+          "impact": "Ta’sir",
+          "evidence": "Dalil",
+          "parity": "Moslik"
+        }
+      }
+    ]
+  }
+}

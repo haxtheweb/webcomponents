@@ -4,7 +4,12 @@
     "description": "Yüklenen bir .h5p dosyasındaki H5P etkileşimli içeriği, H5P sunucusuna gerek kalmadan oynatır"
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "title": "H5P dosyası",
+        "description": "Bir .h5p dosyası yükleyin veya bağlayın. Tarayıcıda açılır; H5P sunucusu gerekmez."
+      }
+    ],
     "advanced": [
       {
         "title": "Eski iframe gömme kodu",

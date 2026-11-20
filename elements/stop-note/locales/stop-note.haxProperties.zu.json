@@ -23,7 +23,9 @@
           "stop": "Yima",
           "warning": "Isexwayiso",
           "success": "Ukuqinisekisa",
-          "info": "Isaziso"
+          "info": "Isaziso",
+          "tip": "Ithiphu",
+          "new": "Okusha"
         }
       },
       {

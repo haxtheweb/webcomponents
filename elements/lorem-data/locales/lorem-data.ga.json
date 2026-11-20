@@ -1,4 +1,6 @@
 {
   "saveAll": "Sábháil Gach Rud",
-  "saveTheFollowing": "Sábháil an méid seo a leanas: {list}?"
+  "saveTheFollowing": "Sábháil an méid seo a leanas: {list}?",
+  "save": "Sábháil",
+  "cancel": "Cealaigh"
 }

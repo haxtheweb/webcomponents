@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Aritmetični dril",
+    "description": "Kratek niz samodejno ustvarjenih aritmetičnih nalog s takojšnjo povratno informacijo. Izberite operacije in obseg števil; vsak krog je nov."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Naslov",
+        "description": "Ime tega drila, prikazano v glavi."
+      },
+      {
+        "title": "Operacije",
+        "description": "Katere vrste nalog se zastavljajo. Učenci lahko katero koli od njih izklopijo pred začetkom.",
+        "options": {
+          "add": "Seštevanje",
+          "subtract": "Odštevanje",
+          "multiply": "Množenje",
+          "divide": "Deljenje",
+          "add subtract": "Seštevanje in odštevanje",
+          "multiply divide": "Množenje in deljenje",
+          "add multiply": "Seštevanje in množenje",
+          "add divide": "Seštevanje in deljenje",
+          "subtract multiply": "Odštevanje in množenje",
+          "subtract divide": "Odštevanje in deljenje",
+          "add subtract multiply": "Seštevanje, odštevanje in množenje",
+          "add subtract divide": "Seštevanje, odštevanje in deljenje",
+          "add multiply divide": "Seštevanje, množenje in deljenje",
+          "subtract multiply divide": "Odštevanje, množenje in deljenje",
+          "add subtract multiply divide": "Vse štiri"
+        }
+      },
+      {
+        "title": "Najmanjše število",
+        "description": "Najmanjše število, uporabljeno v nalogi. Cela števila, 0 ali več."
+      },
+      {
+        "title": "Največje število",
+        "description": "Največje število, uporabljeno v nalogi. Rezultati deljenja in delitelji prav tako ostanejo v tem obsegu."
+      },
+      {
+        "title": "Število nalog",
+        "description": "Koliko nalog je v enem krogu (1 do 100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Časovna omejitev",
+        "description": "Število sekund za cel krog. 0 pomeni brez časovnika, kar je privzeto: časovno omejeni drili so nepravični do učencev, ki potrebujejo več časa. Če je nastavljen, si ga učenci še vedno lahko izklopijo."
+      },
+      {
+        "title": "Poudarjalna barva",
+        "description": "Barva značke v glavi in gumbov. Pustite prazno, da sledi temi."
+      }
+    ]
+  }
+}

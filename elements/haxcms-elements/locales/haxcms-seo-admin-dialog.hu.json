@@ -6,6 +6,8 @@
   "faviconDescription": "Böngészőlap képe / telefonokon kis webhelylogóként használva",
   "domain": "Domain",
   "domainDescription": "A webhely domainje",
+  "sameAs": "A webhely egyéb profiljai",
+  "sameAsDescription": "Soronként egy hivatkozás a webhely vagy a szervezet máshol található profiljaira (GitHub, LinkedIn, YouTube, Mastodon). A keresőmotorok ezek alapján kapcsolják össze a profilokat ezzel a webhellyel.",
   "language": "Nyelv",
   "languageDescription": "Az oldal nyelve. Keressen név vagy kód alapján, vagy adjon meg másik kódot, például fr-CA.",
   "googleAnalyticsId": "Google Analytics-azonosító",

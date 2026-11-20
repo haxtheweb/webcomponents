@@ -1,0 +1,12 @@
+{
+  "gizmo": {
+    "title": "example-haxcms-theme"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Izenburua"
+      }
+    ]
+  }
+}

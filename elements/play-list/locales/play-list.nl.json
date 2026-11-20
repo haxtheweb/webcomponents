@@ -9,5 +9,7 @@
   "slidePages": "Diapagina's",
   "goToSlide": "Ga naar dia {number}",
   "slides": "Dia's",
-  "position": "{number} van {total}"
+  "position": "{number} van {total}",
+  "fullScreen": "Volledig scherm",
+  "exitFullScreen": "Volledig scherm afsluiten"
 }

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Motsutsana",
+    "description": "Mawu pambali pa batani la maso ndi maso lokhala ndi anthu awiri ojambulidwa"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mutu"
+      },
+      {
+        "title": "Komwe batani limapita"
+      },
+      {
+        "title": "Zolemba za batani"
+      },
+      {
+        "title": "Mbewu ya munthu wakumanzere"
+      },
+      {
+        "title": "Mbewu ya munthu wakumanja"
+      }
+    ]
+  }
+}

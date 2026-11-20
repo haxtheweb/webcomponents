@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Lakabin hoto",
     "description": "Abun lakabin hoto don yi wa kadarorin kafofin watsa labarai alama a cikin abun ciki."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Lambar hoto",
+        "description": "Lamba ko gajeren lakabi don hoton, misali 1.3"
+      },
+      {
+        "title": "Bayani",
+        "description": "Gajeren bayanin hoton"
+      }
+    ]
   }
 }

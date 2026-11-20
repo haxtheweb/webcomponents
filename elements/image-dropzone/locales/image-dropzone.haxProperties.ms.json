@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Zon lepas imej",
+    "description": "Pelajar meletakkan label pada zon yang dilapis di atas imej, kemudian menyemak jawapan mereka."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Imej",
+        "description": "Imej tempat pelajar meletakkan label."
+      },
+      {
+        "title": "Teks alternatif",
+        "description": "Menghuraikan imej untuk orang yang tidak dapat melihatnya. Jangan dedahkan tempat label diletakkan."
+      },
+      {
+        "title": "Tajuk imej",
+        "description": "Tajuk pendek yang kelihatan untuk imej, dipaparkan di atasnya."
+      },
+      {
+        "title": "Soalan",
+        "description": "Apa yang pelajar diminta lakukan dengan label."
+      },
+      {
+        "title": "Label dan zon",
+        "description": "Setiap item ialah label yang boleh diletakkan oleh pelajar. Berikan label nama zon untuk meletakkan zonnya pada imej; label tanpa nama zon ialah lebihan yang tidak berada di mana-mana. Nombor zon ialah peratusan imej."
+      },
+      {
+        "title": "Kapsyen",
+        "description": "Kapsyen pilihan yang dipaparkan di bawah imej."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Cubaan",
+        "description": "Berapa kali pelajar boleh menyemak. 0 bermaksud tanpa had."
+      },
+      {
+        "title": "Kocok label",
+        "description": "Tunjukkan label dalam susunan berbeza setiap lawatan."
+      },
+      {
+        "title": "Boleh dilipat",
+        "description": "Tunjukkan soalan ini sebagai baris yang boleh dibuka dan ditutup. Membuka satu akan menutup soalan boleh lipat lain di sebelahnya."
+      },
+      {
+        "title": "Mula dalam keadaan dilipat",
+        "description": "Apabila boleh dilipat, mula sebagai baris tertutup yang hanya menunjukkan soalan dan statusnya."
+      },
+      {
+        "title": "Format penggredan",
+        "description": "OER Schema: format penggredan untuk penilaian ini (cth. mata, huruf, peratus, penyiapan)."
+      },
+      {
+        "title": "Objektif pembelajaran",
+        "description": "OER Schema: objektif pembelajaran yang dikaitkan dengan penilaian ini."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Nama kuiz",
+        "description": "Nama kuiz yang digunakan untuk pengenalan xAPI dalam sistem analitik."
+      },
+      {
+        "title": "Kursus",
+        "description": "OER Schema: kursus yang dimaksudkan untuk penilaian ini."
+      }
+    ]
+  }
+}

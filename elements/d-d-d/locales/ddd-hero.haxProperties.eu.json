@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Hero",
+    "description": "Irudi, GIF edo bideo handi bat, gainean izenburu eta testuarekin, orriko edozein lekutan kokatua."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Irudia edo bideoa",
+        "description": "JPG, PNG, WebP, GIF, MP4 edo WebM fitxategi bat."
+      },
+      {
+        "title": "Testu alternatiboa",
+        "description": "Deskribatu irudia. Utzi hutsik apaingarria besterik ez denean."
+      },
+      {
+        "title": "Izenburua",
+        "description": "Multimediaren gainean erakusten den izenburua. Utzi hutsik bat ere ez izateko."
+      },
+      {
+        "title": "Testua",
+        "description": "Izenburuaren azpian, multimediaren gainean erakusten den testua."
+      },
+      {
+        "title": "Zabalera osoa",
+        "description": "Ertzetik ertzera zabaldu edukiaren zutabean egon beharrean."
+      },
+      {
+        "title": "Altuera",
+        "options": {
+          "tall": "Altua",
+          "medium": "Ertaina",
+          "short": "Baxua"
+        }
+      },
+      {
+        "title": "Enkoadraketa",
+        "description": "Nola kokatzen den argazkia pantaila-tamaina bakoitzean"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Iluntzea",
+        "description": "Multimediaren gainean jarritako kolorea. Izenburu edo testua badago, beti dago bat, testua irakurgarri izan dadin.",
+        "options": {
+          "blue": "Urdina",
+          "bottom": "Iluna behealdean",
+          "none": "Bat ere ez"
+        }
+      },
+      {
+        "title": "Testuaren posizioa",
+        "options": {
+          "bottom": "Behean",
+          "middle": "Erdian"
+        }
+      },
+      {
+        "title": "Foku-puntua zeharka",
+        "description": "Irudia moztean ikusgai geratzen den zatia, 0tik (ezkerra) 100era (eskuina)."
+      },
+      {
+        "title": "Foku-puntua behera",
+        "description": "Irudia moztean ikusgai geratzen den zatia, 0tik (goian) 100era (behean)."
+      }
+    ]
+  }
+}

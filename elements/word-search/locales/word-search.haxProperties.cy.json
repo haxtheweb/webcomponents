@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Chwilair",
+    "description": "Grid llythrennau gyda geiriau cudd. Mae dysgwyr yn tapio llythyren gyntaf ac olaf pob gair. Yn ymarfer sylwi sut mae term yn cael ei sillafu, nid beth mae'n ei olygu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Teitl",
+        "description": "Yr hyn y gofynnir i ddysgwyr ei ganfod, wedi'i ddangos yn y pennawd."
+      },
+      {
+        "title": "Geiriau",
+        "description": "Y geiriau i'w cuddio. Mae bylchau ac atalnodi'n cael eu gadael allan o'r grid. Rhestrir geiriau nad ydynt yn ffitio tra byddwch yn golygu ac fe'u gadewir allan i ddysgwyr."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Maint y grid",
+        "description": "Llythrennau fesul ochr, 4 i 16. Gadewch yn wag i ffitio'r gair hiraf (hyd at 12). Mae mwy na 12 yn sgrolio i'r ochr ar ffôn."
+      },
+      {
+        "title": "Geiriau croeslinol",
+        "description": "Cuddio geiriau'n groeslinol hefyd. Anoddach."
+      },
+      {
+        "title": "Geiriau tuag yn ôl",
+        "description": "Cuddio geiriau wedi'u hysgrifennu tuag yn ôl hefyd. Anoddach."
+      },
+      {
+        "title": "Lliw acen",
+        "description": "Lliw dewisol ar gyfer sglodyn y pennawd, y llythyren gyntaf a ddewiswyd a'r botwm."
+      }
+    ]
+  }
+}

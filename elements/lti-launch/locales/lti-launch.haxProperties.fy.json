@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Ekstern ark starte",
+    "description": "In blok dat in ekstern learark iepenet yn in nij finster of op de side, as gewoane keppeling of mei in LTI 1.3-oanmeldfersyk."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Namme fan it ark. It wurdt toand yn de koptekst en op de knop."
+      },
+      {
+        "title": "Beskriuwing",
+        "description": "Wat learlingen yn it ark dogge, toand boppe de knop."
+      },
+      {
+        "title": "Start-URL",
+        "description": "Adres fan it ark. It moat in folslein adres wêze dat begjint mei https:// of http://."
+      },
+      {
+        "title": "Iepenje yn",
+        "description": "In nij finster wurket mei elk ark. Op dizze side wurket allinnich mei ark dat tastiet om yn in oare side toand te wurden.",
+        "options": {
+          "window": "In nij finster",
+          "embed": "Op dizze side"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "LTI-oanmeld-URL",
+        "description": "Allinnich LTI 1.3: it oanmeld-inisjearadres fan it ark. Hjirmei, in client ID en in deployment ID stjoert de knop in LTI-oanmeldfersyk ynstee fan in gewoane keppeling te iepenjen. Om de start ôf te meitsjen is de LTI-tsjinst fan dizze side nedich."
+      },
+      {
+        "title": "LTI client ID",
+        "description": "De client ID dy't it ark oan dizze side jûn hat. In iepenbiere identifikaasje, gjin geheim: set hjir nea kaaien of geheimen."
+      },
+      {
+        "title": "LTI deployment ID",
+        "description": "De deployment ID dy't it ark oan dizze side jûn hat. In iepenbiere identifikaasje, gjin geheim."
+      },
+      {
+        "title": "LTI-útjouwer",
+        "description": "It adres dat dizze side by it ark identifisearret. Lit leech om it adres te brûken fan de side dêr't de side op stiet."
+      },
+      {
+        "title": "Hichte op de side",
+        "description": "Hichte fan it ark as it op dizze side iepenet, yn piksels (200 oant 2000)."
+      },
+      {
+        "title": "Aksintkleur",
+        "description": "Kleur fan it kopteksttsjip en de knop. Lit leech om it tema te folgjen."
+      }
+    ],
+    "developer": [
+      {
+        "title": "LTI-oanmeldhint",
+        "description": "In ûntrochsichtige wearde dy't de LTI-tsjinst fan dizze side brûkt om de learling te werkennen. Meastal levere troch de side fia it evenemint lti-launch-request ynstee fan hjir bewarre. Nea in wachtwurd of kaai."
+      },
+      {
+        "title": "LTI-berjochthint",
+        "description": "In ûntrochsichtige wearde dy't de LTI-tsjinst fan dizze side brûkt om dizze start te werkennen. Meastal levere troch de side ynstee fan hjir bewarre."
+      }
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Imkoniyat qatori",
+    "description": "Mahsulot ekrani va uning siz uchun ahamiyati yonma-yon"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kichik yorliq"
+      },
+      {
+        "title": "Sarlavha"
+      },
+      {
+        "title": "Rasm"
+      },
+      {
+        "title": "Rasm nimani ko‘rsatadi"
+      },
+      {
+        "title": "Rasm o‘ngda"
+      },
+      {
+        "title": "Soya rangi (DDD nomi, bo‘sh bo‘lsa palitraga ergashadi)"
+      }
+    ]
+  }
+}

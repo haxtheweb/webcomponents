@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Ploščica statistike",
+    "description": "Eno pomembno število z oznako in tem, kako se je spremenilo. Več jih postavite v mrežo kot vrstico nadzorne plošče."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Oznaka",
+        "description": "Kaj število meri."
+      },
+      {
+        "title": "Vrednost",
+        "description": "Število. Navadno število se združi glede na jezik strani; vse drugo se prikaže, kot je zapisano."
+      },
+      {
+        "title": "Sprememba",
+        "description": "Kako se je spremenilo, z besedami, na primer 6 % ta semester."
+      },
+      {
+        "title": "Smer",
+        "description": "Ali je sprememba navzgor ali navzdol.",
+        "options": {
+          "": "Brez",
+          "up": "Navzgor",
+          "down": "Navzdol"
+        }
+      }
+    ]
+  }
+}

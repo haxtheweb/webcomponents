@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Filataa haala fayyadamaa",
+    "description": "Marsariitiin maaliif akka ta'e filadhuu liinkii HAX barbaadduu keessatti marsariitii jalqabaa sana waliin banu, akkasumas ajaja CLI walsimu argadhu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Teessoo HAX barbaadduu keessaa",
+        "description": "Liinkichi eessatti akka banamu; ?skeleton= fi &name= itti dabalama"
+      },
+      {
+        "title": "Marsariitiiwwan jalqabaa hafan",
+        "description": "Maqaa maashinii, qooddiidhaan gargar ba'an"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tarree marsariitiiwwan jalqabaa",
+        "description": "Teessoo tarree skeleton (bifa app-hax dubbisu)"
+      }
+    ]
+  }
+}

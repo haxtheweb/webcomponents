@@ -3,5 +3,8 @@
   "copyAsCsv": "Kopiëren als CSV.",
   "printTable": "Tabel afdrukken",
   "selectColumn": "Kolom selecteren",
-  "dataTable": "Gegevens · Tabel"
+  "dataTable": "Gegevens · Tabel",
+  "filterStatus": "{shown} van {total} rijen getoond, gefilterd op {column}: {text}",
+  "columnNumber": "Kolom {column}",
+  "clearFilter": "Filter wissen"
 }

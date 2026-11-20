@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Позадинска слика."
+        "description": "Позадинска слика.",
+        "title": "Слика"
       },
       {
         "property": "caption",
-        "description": "Текстуални наслов."
+        "description": "Текстуални наслов.",
+        "title": "Натпис"
       }
     ]
   }

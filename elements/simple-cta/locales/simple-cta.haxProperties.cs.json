@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Skrýt ikonu",
         "description": "Skrýt ikonu zvýrazňující text"
+      },
+      {
+        "title": "Vzhled",
+        "description": "Jak výrazné tlačítko je.",
+        "options": {
+          "": "Vyplněné",
+          "tonal": "Tónové",
+          "outlined": "Obrysové",
+          "plain": "Prosté"
+        }
+      },
+      {
+        "title": "Velikost",
+        "description": "Velikost tlačítka.",
+        "options": {
+          "s": "Malé",
+          "": "Střední",
+          "l": "Velké"
+        }
       }
     ],
     "advanced": [

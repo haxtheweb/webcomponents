@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Greinandi støða",
+    "description": "Ein søga, har hvørt val førir til eina aðra senu og ein annan enda. Lesandi kunnu fara aftur og royna aðrar vegir; endin, sum røkkur verður, ger stigini."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Heiti",
+        "description": "Navnið á støðuni, víst í høvdinum."
+      },
+      {
+        "title": "Byrjanarsena",
+        "description": "Senu-id á senuni, har lesandi byrja. Lat vera tómt fyri at byrja við fyrstu senuni."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Áherðslulitur",
+        "description": "Valfríur litur til høvuðsmerkið, knøttarnar og kantin á einum vali."
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "scene": "منظر",
+  "ending": "انت",
+  "goodEnding": "چنگا انت",
+  "mixedEnding": "رلیا ملیا انت",
+  "poorEnding": "ماڑا انت",
+  "scoreOf": "سکور {max} وچوں {score}",
+  "scoreOnly": "سکور {score}",
+  "startScene": "شروع",
+  "sceneIdLabel": "منظر ID",
+  "needsId": "منظر ID جوڑو تاں جو چوݨاں ایس منظر نال جڑ سکن۔",
+  "orphan": "کوئی چوݨ ایس منظر نال نہیں جڑدی۔",
+  "deadLinks": "ایہہ لنک اوس منظر ول اشارہ کردے نیں جیہڑا موجود نہیں:"
+}

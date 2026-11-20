@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "కథ బటన్",
+    "description": "hax.cloudలో ఒక వాదన వెనుక ఉన్న కథను, లేదా మరో HAX నెట్‌వర్క్ సైట్‌లో సరిపోయే చోటును తెరిచే బటన్"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "అది వెళ్లే చోటు",
+        "options": {
+          "cloud": "hax.cloud, కథ",
+          "learn": "learn.hax.cloud, ఒక ట్యుటోరియల్",
+          "try": "browser.hax.cloud, ప్రయత్నించండి",
+          "elements": "webcomponents.hax.cloud, ఒక బ్లాక్",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "ఆ సైట్‌లోని చిరునామా (hax.cloudలో కథ stories/ee450a19 లాగా ఉంటుంది)"
+      },
+      {
+        "title": "అది దేని గురించి"
+      },
+      {
+        "title": "చిన్న చిప్"
+      },
+      {
+        "title": "అది దేని గురించో బటన్‌లో చూపు"
+      }
+    ]
+  }
+}

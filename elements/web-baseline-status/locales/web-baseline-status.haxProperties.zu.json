@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Isimo se-Baseline",
+    "description": "Bonisa isimo sokusekelwa kwesiphequluli se-Baseline sesici sepulatifomu yewebhu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "I-ID yesici",
+        "description": "I-ID yesici sewebhu, isibonelo anchor-positioning. Thola ama-ID ku-webstatus.dev; i-ID iyingxenye yokugcina ye-URL yekhasi lesici."
+      }
+    ]
+  }
+}

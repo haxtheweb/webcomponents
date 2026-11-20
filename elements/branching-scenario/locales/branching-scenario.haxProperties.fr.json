@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Scénario à embranchements",
+    "description": "Une histoire où chaque choix mène à une scène et une fin différentes. Les apprenants peuvent revenir en arrière et essayer d'autres chemins ; la fin atteinte détermine le score."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titre",
+        "description": "Nom du scénario, affiché dans son en-tête."
+      },
+      {
+        "title": "Scène de départ",
+        "description": "Id de la scène où les apprenants commencent. Laissez vide pour commencer à la première scène."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Couleur d'accent",
+        "description": "Couleur facultative pour la pastille d'en-tête, les boutons et le bord d'un choix."
+      }
+    ]
+  }
+}

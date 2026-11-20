@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Ciyaarta xusuusta",
+    "description": "Rog kaararka si aad u hesho lammaane. Ku lammaanee erey macnihiisa si isku-helku u muujiyo faham, ama isticmaal labo qoraal ama sawir oo is-leh."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Cinwaan",
+        "description": "Tilmaanta ka muuqata madaxa, tusaale: Ku lammaanee ereyga shaqadiisa."
+      },
+      {
+        "title": "Lammaanayaal",
+        "description": "Lammaane kastaa waa labo kaar oo is-leh, badanaa erey iyo macnihiisa. Dhinac wuxuu u baahan yahay qoraal, sawir, ama labadaba."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Midabka xoojinta",
+        "description": "Midab ikhtiyaari ah oo loogu talagalay chip-ka madaxa, gadaasha kaararka iyo badhanka."
+      }
+    ]
+  }
+}

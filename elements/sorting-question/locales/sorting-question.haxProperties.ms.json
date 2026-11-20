@@ -13,7 +13,15 @@
       {
         "property": "answers",
         "title": "Jawapan",
-        "description": "Susunan jawapan menentukan jujukan yang betul."
+        "description": "Susunan jawapan menentukan jujukan yang betul.",
+        "options": {
+          "": "Senarai",
+          "cards": "Kad imej"
+        }
+      },
+      {
+        "title": "Jawapan",
+        "description": "Susunan jawapan menentukan urutan yang betul."
       }
     ],
     "advanced": [

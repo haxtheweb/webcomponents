@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Jecha qaxxaamuraa",
+    "description": "Jecha qaxxaamuraa tarree jechootaa fi akeekkachiisota irraa hojjetame. Kaartaan siif uumama; barattoonni jechoota barreessanii sakatta'u."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mata-duree",
+        "description": "Mata-duree ykn gaaffii jecha qaxxaamuraa ol mul'atu."
+      },
+      {
+        "title": "Jechoota",
+        "description": "Jecha tokkoon tokkoon fi akeekkachiisa isaa. Kaartaan tarree kana irraa uumama: jechi dheeraan dura kaa'ama, kanneen biroo immoo qubee waloo irratti isa qaxxaamuru."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Yaaliiwwan",
+        "description": "Barataan si'a meeqa sakatta'uu danda'a. 0 jechuun daangaa malee."
+      },
+      {
+        "title": "Halluu calaqqee",
+        "description": "Halluu filannoo mallattoo mata-duree, jecha hojii irra jiru fi qabduuwwan gochaatiif."
+      },
+      {
+        "title": "Kan cufamu",
+        "description": "Jecha qaxxaamuraa kana akka tarree banamuu fi cufamuutti agarsiisi. Tokko banuun gaaffiiwwan cufaman biroo cinaa isaa jiran cufa."
+      },
+      {
+        "title": "Cufamee jalqabi",
+        "description": "Yeroo cufamu ta'u, akka tarree cufamaa mata-duree fi haala isaa qofa agarsiisuutti jalqabi."
+      },
+      {
+        "title": "Bifa kennaa qabxii",
+        "description": "OER Schema: bifa kennaa qabxii madaallii kanaaf (fkn. qabxii, qubee, dhibbeentaa, xumuruu)."
+      },
+      {
+        "title": "Kaayyoo barnootaa",
+        "description": "OER Schema: kaayyoo barnootaa madaallii kana waliin walqabatu."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Maqaa qormaata gabaabaa",
+        "description": "Maqaa qormaata gabaabaa sirnoota xiinxalaa keessatti adda baafannaa xAPI'f fayyadu."
+      },
+      {
+        "title": "Koorsii",
+        "description": "OER Schema: koorsii madaalliin kun itti yaadame."
+      }
+    ]
+  }
+}

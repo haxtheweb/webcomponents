@@ -1,3 +1,4 @@
 {
-  "viewOnLinkedin": "LinkedIn で {name} を表示"
+  "viewOnLinkedin": "LinkedIn で {name} を表示",
+  "badgeTitle": "{name} の LinkedIn プロフィールバッジ"
 }

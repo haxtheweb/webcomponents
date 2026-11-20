@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Szókereső",
+    "description": "Betűrács rejtett szavakkal. A tanulók minden szó első és utolsó betűjére koppintanak. Azt gyakoroltatja, hogyan íródik egy fogalom, nem azt, hogy mit jelent."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Cím",
+        "description": "Mit kell a tanulóknak megtalálniuk, a fejlécben jelenik meg."
+      },
+      {
+        "title": "Szavak",
+        "description": "Az elrejtendő szavak. A szóközök és az írásjelek kimaradnak a rácsból. A nem férő szavak szerkesztés közben listázódnak, a tanulóknál pedig kimaradnak."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Rács mérete",
+        "description": "Betűk oldalanként, 4–16. Hagyja üresen, hogy a leghosszabb szóhoz igazodjon (legfeljebb 12). 12 felett telefonon oldalra görgethető."
+      },
+      {
+        "title": "Átlós szavak",
+        "description": "Szavak elrejtése átlósan is. Nehezebb."
+      },
+      {
+        "title": "Visszafelé írt szavak",
+        "description": "Visszafelé írt szavak elrejtése is. Nehezebb."
+      },
+      {
+        "title": "Kiemelőszín",
+        "description": "Opcionális szín a fejléccímkéhez, a kiválasztott első betűhöz és a gombhoz."
+      }
+    ]
+  }
+}

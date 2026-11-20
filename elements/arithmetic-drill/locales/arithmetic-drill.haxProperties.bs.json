@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Aritmetička vježba",
+    "description": "Kratka serija generisanih aritmetičkih zadataka s trenutnom povratnom informacijom. Odaberite operacije i raspon brojeva; svaka runda je nova."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Naslov",
+        "description": "Naziv ove vježbe, prikazan u zaglavlju."
+      },
+      {
+        "title": "Operacije",
+        "description": "Koje vrste zadataka se postavljaju. Učenici mogu isključiti bilo koju od njih prije početka.",
+        "options": {
+          "add": "Sabiranje",
+          "subtract": "Oduzimanje",
+          "multiply": "Množenje",
+          "divide": "Dijeljenje",
+          "add subtract": "Sabiranje i oduzimanje",
+          "multiply divide": "Množenje i dijeljenje",
+          "add multiply": "Sabiranje i množenje",
+          "add divide": "Sabiranje i dijeljenje",
+          "subtract multiply": "Oduzimanje i množenje",
+          "subtract divide": "Oduzimanje i dijeljenje",
+          "add subtract multiply": "Sabiranje, oduzimanje i množenje",
+          "add subtract divide": "Sabiranje, oduzimanje i dijeljenje",
+          "add multiply divide": "Sabiranje, množenje i dijeljenje",
+          "subtract multiply divide": "Oduzimanje, množenje i dijeljenje",
+          "add subtract multiply divide": "Sve četiri"
+        }
+      },
+      {
+        "title": "Najmanji broj",
+        "description": "Najmanji broj koji se koristi u zadatku. Cijeli brojevi, 0 ili više."
+      },
+      {
+        "title": "Najveći broj",
+        "description": "Najveći broj koji se koristi u zadatku. Rezultati dijeljenja i djelioci također ostaju u ovom rasponu."
+      },
+      {
+        "title": "Broj zadataka",
+        "description": "Koliko zadataka ima u jednoj rundi (od 1 do 100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Vremensko ograničenje",
+        "description": "Sekunde dozvoljene za cijelu rundu. 0 znači bez tajmera, što je zadano: vježbe s vremenskim ograničenjem obaraju učenike kojima treba više vremena. Kad je postavljeno, učenici i dalje mogu sami sebi isključiti tajmer."
+      },
+      {
+        "title": "Akcentna boja",
+        "description": "Boja oznake u zaglavlju i dugmadi. Ostavite prazno da prati temu."
+      }
+    ]
+  }
+}

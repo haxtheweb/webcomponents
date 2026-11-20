@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Randnotiz",
+    "description": "Eng Notiz, déi vum ronderëmleien Inhalt ofgesat ass, mat engem optionalen Ikon an enger Bezeechnung."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Bezeechnung",
+        "description": "D'Bezeechnung vun der Randnotiz."
+      },
+      {
+        "title": "Ikon",
+        "description": "D'Ikon vun der Randnotiz."
+      },
+      {
+        "title": "Inhalt",
+        "description": "Inhalt vun der Randnotiz."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Faarf",
+        "description": "D'Faarf, mat där d'Randnotiz getéint gëtt."
+      }
+    ]
+  }
+}

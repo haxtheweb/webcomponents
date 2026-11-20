@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Webhu yehurongwa",
+    "description": "Webhu inoshanda inoratidza mabatanidziro ezvikamu zvepurojekiti, ine madiki-webhu nekushanya nhanho nenhanho."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Data rewebhu",
+        "description": "URL yeJSON bundle yemawebhu (yakavakwa muPRAW, ecosystem-webs.json)."
+      },
+      {
+        "title": "Webhu",
+        "description": "ID yewebhu yekuratidza kutanga; main ndiyo webhu yehurongwa."
+      },
+      {
+        "title": "Tile yakasarudzwa",
+        "description": "ID yetile yekusarudza kana webhu yavhurika."
+      },
+      {
+        "title": "Kushanya",
+        "description": "ID yekushanya kwekutangira."
+      },
+      {
+        "title": "Tanga mumaonero erondedzero",
+        "description": "Ratidza webhu semarondedzero akaiswa mukati panzvimbo pemufananidzo."
+      },
+      {
+        "title": "Mufananidzo chete",
+        "description": "Ratidza mufananidzo chete, semufananidzo: pasina musoro, kushanya, ruzivo kana bhawa renhanho."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Verenga ne",
+        "description": "Tanga netile yese ichiverengwa nechiyero chimwe.",
+        "options": {
+          "": "Kubatana chete",
+          "fresh": "Kutsva",
+          "bus": "Bus factor",
+          "impact": "Simba",
+          "evidence": "Humbowo",
+          "parity": "Kuenzana"
+        }
+      }
+    ]
+  }
+}

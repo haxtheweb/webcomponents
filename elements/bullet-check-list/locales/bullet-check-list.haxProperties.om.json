@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Tarree mirkaneessaa",
+    "description": "Tarree saanduqota mallattoo. Dubbistoonni wantoota mallatteessu, guddinni isaaniis meeshaa isaanii irratti yaadatama."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mata-duree",
+        "description": "Maqaa tarree. Akka mallattoo garee saanduqota mallattoo tti sagaleen dubbifama."
+      },
+      {
+        "title": "Wantoota",
+        "description": "Wanti tokkoon tokkoon saanduqa mallattoo ti. Wantoonni mallatteeffaman ykn dhaamsaman dubbistootaan jijjiiramuu hin danda'an."
+      },
+      {
+        "title": "Lakkoofsifame",
+        "description": "Tarree tuqaalee mannaa tarree lakkoofsaa agarsiisi."
+      },
+      {
+        "title": "Haala",
+        "description": "Akka stop-note waliin walsimuuf halluuwwan jijjiira.",
+        "options": {
+          "info": "Beeksisa",
+          "success": "Mirkaneessa",
+          "warning": "Akeekkachiisa",
+          "stop": "Dhaabi"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "ID kuusaa",
+        "description": "ID addaa guddina dubbisaa meeshaa isaa irratti yaadachuuf fayyadu. Ofumaan uumama; guddina tarreewwan gidduu qooddachuuf ykn haaraa jalqabuuf qofa jijjiiri."
+      }
+    ]
+  }
+}

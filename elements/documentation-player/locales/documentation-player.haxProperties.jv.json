@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Pamuter dokumentasi",
+    "description": "Panuntun, demo lan referensi kanggo komponen web, karo tombol salin kanggo HTML, impor, npm lan CDN."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Berkas data dokumen",
+        "description": "Data dokumen sing melu karo elemen (lib/tag.docs.json)."
+      },
+      {
+        "title": "Storyboard panuntun",
+        "description": "Storyboard gerak sing melu karo elemen (tag.motion.json). Pilihan."
+      },
+      {
+        "title": "Tutorial video",
+        "description": "Video cendhak babagan elemen (YouTube, Vimeo utawa berkas video). Nggantekake video ing data dokumen."
+      },
+      {
+        "title": "Bukak ing tab",
+        "description": "Tab endi sing ditampilake dhisik.",
+        "options": {
+          "motion": "Panuntun",
+          "video": "Video",
+          "demo": "Demo",
+          "docs": "Dokumentasi",
+          "schema": "Skema"
+        }
+      },
+      {
+        "title": "Puter panuntun otomatis",
+        "description": "Wiwiti panuntun sanalika pamuter katon. Ora digatekake yen pamaca milih gerak sing dikurangi."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Topik panuntun",
+        "description": "Kanggo elemen sing duwe sawetara panuntun, topik endi sing dibukak dhisik (contone add-blocks). Kosongake kanggo sing utama."
+      },
+      {
+        "title": "Pranala demo langsung",
+        "description": "Panggonan tujuan tombol Bukak sumber demo. Gawane folder demo ing repositori."
+      },
+      {
+        "title": "Pranala dokumentasi",
+        "description": "Panggonan tujuan tombol dokumentasi lengkap, contone kaca Learn HAX sing cocog."
+      }
+    ]
+  }
+}

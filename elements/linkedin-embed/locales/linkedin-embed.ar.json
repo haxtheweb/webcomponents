@@ -1,3 +1,4 @@
 {
-  "viewOnLinkedin": "عرض {name} على LinkedIn"
+  "viewOnLinkedin": "عرض {name} على LinkedIn",
+  "badgeTitle": "شارة ملف LinkedIn لـ {name}"
 }

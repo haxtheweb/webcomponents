@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "ਸਿਰਲੇਖ"
+        "title": "ਸਿਰਲੇਖ",
+        "description": "ਕੋਰਸ ਮਾਡਲ ਦੇ ਉੱਪਰ ਦਿਖਾਇਆ ਸਿਰਲੇਖ।"
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "ਦਿਖਾਉਣ ਲਈ 3D ਮਾਡਲ ਫ਼ਾਈਲ (.glb ਜਾਂ .gltf) ਦਾ ਪਤਾ।"
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "ਉਨ੍ਹਾਂ ਲੋਕਾਂ ਲਈ 3D ਮਾਡਲ ਦਾ ਵਰਣਨ ਕਰੋ ਜੋ ਇਸਨੂੰ ਨਹੀਂ ਦੇਖ ਸਕਦੇ।"
       },
       {
         "title": "ਜਾਣਕਾਰੀ ਖੇਤਰ"

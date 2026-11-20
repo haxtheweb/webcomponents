@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Aritmeetikaharjutus",
+    "description": "Lühike genereeritud aritmeetikaülesannete seeria kohese tagasisidega. Vali tehted ja arvuvahemik; iga voor on uus."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pealkiri",
+        "description": "Selle harjutuse nimi, kuvatakse päises."
+      },
+      {
+        "title": "Tehted",
+        "description": "Milliseid ülesandeid küsitakse. Õppijad saavad enne alustamist neist mis tahes välja lülitada.",
+        "options": {
+          "add": "Liitmine",
+          "subtract": "Lahutamine",
+          "multiply": "Korrutamine",
+          "divide": "Jagamine",
+          "add subtract": "Liitmine ja lahutamine",
+          "multiply divide": "Korrutamine ja jagamine",
+          "add multiply": "Liitmine ja korrutamine",
+          "add divide": "Liitmine ja jagamine",
+          "subtract multiply": "Lahutamine ja korrutamine",
+          "subtract divide": "Lahutamine ja jagamine",
+          "add subtract multiply": "Liitmine, lahutamine ja korrutamine",
+          "add subtract divide": "Liitmine, lahutamine ja jagamine",
+          "add multiply divide": "Liitmine, korrutamine ja jagamine",
+          "subtract multiply divide": "Lahutamine, korrutamine ja jagamine",
+          "add subtract multiply divide": "Kõik neli"
+        }
+      },
+      {
+        "title": "Väikseim arv",
+        "description": "Väikseim ülesandes kasutatav arv. Täisarvud, 0 või rohkem."
+      },
+      {
+        "title": "Suurim arv",
+        "description": "Suurim ülesandes kasutatav arv. Ka jagamise vastused ja jagajad jäävad sellesse vahemikku."
+      },
+      {
+        "title": "Ülesannete arv",
+        "description": "Mitu ülesannet on ühes voorus (1 kuni 100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ajapiirang",
+        "description": "Kogu vooru jaoks lubatud sekundid. 0 tähendab taimerita, mis on vaikimisi: ajastatud harjutused jätavad hätta õppijad, kes vajavad rohkem aega. Kui see on määratud, saavad õppijad taimeri ikkagi enda jaoks välja lülitada."
+      },
+      {
+        "title": "Rõhuvärv",
+        "description": "Päise sildi ja nuppude värv. Jäta tühjaks, et järgida kujundust."
+      }
+    ]
+  }
+}

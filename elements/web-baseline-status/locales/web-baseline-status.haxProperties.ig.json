@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Ọnọdụ Baseline",
+    "description": "Gosi ọnọdụ nkwado brawụza Baseline nke njirimara ikpo okwu weebụ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID njirimara",
+        "description": "ID njirimara weebụ, dịka anchor-positioning. Chọta ID na webstatus.dev; ID ahụ bụ akụkụ ikpeazụ nke URL peeji njirimara."
+      }
+    ]
+  }
+}

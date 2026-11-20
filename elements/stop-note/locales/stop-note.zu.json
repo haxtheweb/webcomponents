@@ -3,5 +3,7 @@
   "status_stop": "Yima",
   "status_warning": "Isexwayiso",
   "status_success": "Impumelelo",
-  "status_info": "Inothi"
+  "status_info": "Inothi",
+  "status_tip": "Ubuwazi?",
+  "status_new": "Okusha"
 }

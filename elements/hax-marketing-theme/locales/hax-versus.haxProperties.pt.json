@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Versus",
+    "description": "Texto ao lado de um botão de confronto com dois personagens"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Título"
+      },
+      {
+        "title": "Para onde vai o botão"
+      },
+      {
+        "title": "Texto do botão"
+      },
+      {
+        "title": "Semente do personagem da esquerda"
+      },
+      {
+        "title": "Semente do personagem da direita"
+      }
+    ]
+  }
+}

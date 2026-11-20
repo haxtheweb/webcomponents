@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Suuraa duubaa."
+        "description": "Suuraa duubaa.",
+        "title": "Suuraa"
       },
       {
         "property": "caption",
-        "description": "Mata-duree barreeffamaa."
+        "description": "Mata-duree barreeffamaa.",
+        "title": "Ibsa suuraa"
       }
     ]
   }

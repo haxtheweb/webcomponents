@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "Mit der mathematischen Notation LaTeX schreiben"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Bildhintergrund",
+        "description": "Hintergrund hinter gezeichneten Bildern. Automatisch fügt nur dann einen hinzu, wenn die Zeichnung auf der Seite schwer zu sehen wäre, etwa dunkle Linien im Dunkelmodus.",
+        "options": {
+          "auto": "Automatisch",
+          "light": "Hell",
+          "dark": "Dunkel",
+          "none": "Keine"
+        }
+      }
+    ]
   }
 }

@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Popisek obrázku",
     "description": "Prvek popisku obrázku k označení mediálních prvků v obsahu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Číslo obrázku",
+        "description": "Číslo nebo krátké označení obrázku, např. 1.3"
+      },
+      {
+        "title": "Popis",
+        "description": "Krátký popis obrázku"
+      }
+    ]
   }
 }

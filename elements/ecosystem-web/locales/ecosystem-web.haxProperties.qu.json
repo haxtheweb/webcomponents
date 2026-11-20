@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Ecosistema llika",
+    "description": "Huk proyectop t'aqankuna imaynatam t'inkinakunku chay kuyuq llika, uchuy llikakunawan thatkin thatkin purinakunawan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Llika willay",
+        "description": "Llikakunap JSON q'ipinpa URL-nin (PRAW-pi rurasqa, ecosystem-webs.json)."
+      },
+      {
+        "title": "Llika",
+        "description": "Ñawpaqta rikuchinapaq llikap id-nin; main ecosistema llikam."
+      },
+      {
+        "title": "Akllasqa tawa k'uchu",
+        "description": "Llika kichakuptin akllanapaq tawa k'uchup id-nin."
+      },
+      {
+        "title": "Purina",
+        "description": "Qallarinapaq purinap id-nin."
+      },
+      {
+        "title": "Lista qhawaypi qallariy",
+        "description": "Llikata siq'iy rantinpi ukhunchasqa listakuna hina rikuchiy."
+      },
+      {
+        "title": "Siq'iylla",
+        "description": "Siq'iyllata huk rikch'a hina rikuchiy: mana uma siq'i, purinakuna, willaykuna, thatki barrapas."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Kaywan ñawinchay",
+        "description": "Sapa tawa k'uchu huk tupuwan ñawinchasqawan qallariy.",
+        "options": {
+          "": "T'inkikunalla",
+          "fresh": "Musuq kay",
+          "bus": "Bus factor",
+          "impact": "Kallpa",
+          "evidence": "Rikuchiy",
+          "parity": "Kikin kay"
+        }
+      }
+    ]
+  }
+}

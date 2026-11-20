@@ -3,5 +3,8 @@
   "copyAsCsv": "Salin minangka CSV.",
   "printTable": "Cithak Tabel",
   "selectColumn": "Pilih Kolom",
-  "dataTable": "Data · Tabel"
+  "dataTable": "Data · Tabel",
+  "filterStatus": "Nampilake {shown} saka {total} baris, disaring miturut {column}: {text}",
+  "columnNumber": "Kolom {column}",
+  "clearFilter": "Resiki saringan"
 }

@@ -1,0 +1,13 @@
+{
+  "skipToContent": "Siirry sisältöön",
+  "site": "Sivusto",
+  "recentPosts": "Viimeisimmät kirjoitukset",
+  "moreInArchive": "Lisää arkistossa",
+  "byTag": "Tunnisteen mukaan",
+  "posted": "Julkaistu",
+  "updated": "Päivitetty",
+  "tags": "Tunnisteet",
+  "postsTagged": "Kirjoitukset tunnisteella {tag}",
+  "allPosts": "Kaikki kirjoitukset",
+  "madeWithHax": "Tehty HAXilla"
+}

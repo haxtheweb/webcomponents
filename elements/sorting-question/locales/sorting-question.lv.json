@@ -40,5 +40,7 @@
   "hideDirections": "Paslēpt norādījumus",
   "showRelatedContent": "Rādīt saistīto saturu",
   "hideRelatedContent": "Paslēpt saistīto saturu",
-  "notAttempted": "Nav mēģināts"
+  "notAttempted": "Nav mēģināts",
+  "cardsDirections": "Sakārtojiet kārtis pareizā secībā ar pogām “Pārvietot agrāk” un “Pārvietot vēlāk” uz katras kārts vai velciet tās ar peli. Kad uzskatāt, ka tās ir pareizā secībā, pārbaudiet atbildi, atlasot {checkAnswer}.",
+  "movedToPosition": "{item} pārvietots uz pozīciju {position} no {total}"
 }

@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "隐藏图标",
         "description": "隐藏用于点缀文本的图标"
+      },
+      {
+        "title": "外观",
+        "description": "按钮的强调程度。",
+        "options": {
+          "": "填充",
+          "tonal": "色调",
+          "outlined": "描边",
+          "plain": "朴素"
+        }
+      },
+      {
+        "title": "大小",
+        "description": "按钮大小。",
+        "options": {
+          "s": "小",
+          "": "中",
+          "l": "大"
+        }
       }
     ],
     "advanced": [

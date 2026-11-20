@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Statistikk",
+    "description": "Et tall som teller opp, med en etikett og en lenke til historien bak"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tall å telle opp til"
+      },
+      {
+        "title": "Før tallet"
+      },
+      {
+        "title": "Etter tallet"
+      },
+      {
+        "title": "Ord i stedet for et tall"
+      },
+      {
+        "title": "Hva det teller"
+      },
+      {
+        "title": "Historieadresse på hax.cloud (stories/ee450a19)"
+      }
+    ]
+  }
+}

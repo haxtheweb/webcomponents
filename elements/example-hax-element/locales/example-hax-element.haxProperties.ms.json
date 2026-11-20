@@ -1,0 +1,13 @@
+{
+  "gizmo": {
+    "title": "example-hax-element",
+    "description": "Contoh elemen permulaan yang digunakan untuk menunjukkan konfigurasi HAX dan sifat yang boleh disunting."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tajuk"
+      }
+    ]
+  }
+}

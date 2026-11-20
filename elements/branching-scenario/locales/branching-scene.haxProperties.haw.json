@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Kiʻina hanana",
+    "description": "Hoʻokahi kiʻina o kekahi hanana lālā. E hoʻopili i kēlā me kēia koho i kekahi kiʻina ʻē aʻe me # a ukali ʻia e kona id kiʻina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Id kiʻina",
+        "description": "Ka mea e loulou ai nā koho: alakaʻi ka loulou i # a ukali ʻia e kēia id i kēia kiʻina. Nā hua palapala, nā helu a me nā kaha."
+      },
+      {
+        "title": "Poʻo",
+        "description": "Poʻo o ke kiʻina."
+      },
+      {
+        "title": "Hopena",
+        "description": "Inā hoʻopau kēia kiʻina i kekahi ala, a pehea i hopena ai.",
+        "options": {
+          "": "ʻAʻole he hopena",
+          "good": "Hopena maikaʻi",
+          "mixed": "Hopena hui",
+          "poor": "Hopena ʻino"
+        }
+      },
+      {
+        "title": "Helu",
+        "description": "Ka helu no ka hiki ʻana i kēia hopena. ʻO ka helu hopena kiʻekiʻe loa ma ka hanana ka nui loa."
+      }
+    ]
+  }
+}

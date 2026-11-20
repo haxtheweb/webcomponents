@@ -1,0 +1,16 @@
+{
+  "theme": "Àkòrí",
+  "designSystem": "Ètò ìṣeọ̀nà",
+  "dddDefault": "DDD (àìyípadà)",
+  "designSystemHelp": "Àwọ̀, ìrísí lẹ́tà, igun àti ìfojúsùn. Àkòrí náà ń pa ìtò rẹ̀ mọ́.",
+  "designSystemFixed": "Àkòrí yìí ń pa ètò ìṣeọ̀nà tirẹ̀ mọ́.",
+  "palette": "Àpò àwọ̀",
+  "themeDefault": "Àìyípadà àkòrí",
+  "paletteNumber": "Àpò àwọ̀ {n}",
+  "siteTheme": "{name} (àkòrí ojú-òpó yìí)",
+  "restyle": "Tún ìrísí ojú-òpó yìí ṣe",
+  "close": "Pa á dé",
+  "reset": "Padà sí ìrísí ojú-òpó yìí fúnra rẹ̀",
+  "random": "Yà mí lẹ́nu",
+  "about": "Èyí fi díẹ̀ lára àwọn ìrísí tí a kọ́ sínú HAX hàn. Àwọn ojú-ìwé kì í yí padà láé: ìgbékalẹ̀ wà nínú JSON Outline Schema, búlọ́ọ̀kù kọ̀ọ̀kan sì jẹ́ ẹ̀yà wẹ́ẹ̀bù ìlànà, nítorí náà ìṣeọ̀nà ní òmìnira láti pààrọ̀."
+}

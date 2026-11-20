@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Graphique radar",
+    "description": "Graphique radar (en toile d'araignée) pour les modèles de maturité et la notation par facettes, comme HEOSAT. Comprend une alternative textuelle et un tableau de données."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titre",
+        "description": "Titre du graphique ; sert aussi de nom accessible."
+      },
+      {
+        "title": "Score maximal",
+        "description": "Valeur la plus élevée de l'échelle."
+      },
+      {
+        "title": "Catégories",
+        "description": "Une catégorie par ligne. Au moins 3 nécessaires."
+      },
+      {
+        "title": "Scores",
+        "description": "Nombres séparés par des virgules, un par catégorie dans le même ordre."
+      },
+      {
+        "title": "Scores cibles",
+        "description": "Nombres séparés par des virgules, un par catégorie dans le même ordre."
+      },
+      {
+        "title": "Afficher la légende",
+        "description": "Afficher une légende nommant les scores et les cibles."
+      },
+      {
+        "title": "Compact",
+        "description": "Graphique plus petit sans libellés, légende ni tableau de données. Survolez un point pour voir ses valeurs."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Libellé des scores",
+        "description": "Libellé de légende et de tableau pour les scores."
+      },
+      {
+        "title": "Libellé des cibles",
+        "description": "Libellé de légende et de tableau pour les cibles."
+      }
+    ]
+  }
+}

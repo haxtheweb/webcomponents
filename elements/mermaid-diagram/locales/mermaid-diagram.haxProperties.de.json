@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Diagramm aus Text",
+    "description": "Schreibe ein Diagramm als Text (Mermaid): ein Flussdiagramm, eine Sequenz, eine Zeitleiste und mehr. Es wird auf der Seite mit einer Textalternative gezeichnet."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Wird über dem Diagramm angezeigt und als dessen Name verwendet."
+      },
+      {
+        "title": "Diagrammquelltext",
+        "description": "Mermaid-Text, zum Beispiel: flowchart TD, dann eine Zeile pro Verbindung wie A[Draft] --> B{Ready?}. Füge |label| nach einem Pfeil hinzu, um ihn zu beschriften. Die Zeichnung aktualisiert sich beim Tippen."
+      },
+      {
+        "title": "Textalternative",
+        "description": "Beschreibe, was das Diagramm zeigt, für Menschen, die es nicht sehen können. Bei einem Flussdiagramm leer lassen, um seine Schritte automatisch auflisten zu lassen."
+      },
+      {
+        "title": "Bildunterschrift",
+        "description": "Optionale Bildunterschrift unter dem Diagramm."
+      },
+      {
+        "title": "Quelltext anzeigen",
+        "description": "Den Diagrammtext neben der Zeichnung anzeigen."
+      },
+      {
+        "title": "Textalternative anzeigen",
+        "description": "Die Textalternative unter der Zeichnung anzeigen. Für Screenreader ist sie immer verfügbar."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Quelldatei",
+        "description": "Adresse einer .mmd-Datei, die statt des Textes oben gezeichnet wird (https oder ein Pfad auf dieser Website)."
+      },
+      {
+        "title": "Akzentfarbe",
+        "description": "Farbe des Symbol-Chips in der Kopfzeile."
+      }
+    ]
+  }
+}

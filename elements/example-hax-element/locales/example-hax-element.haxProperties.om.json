@@ -1,0 +1,13 @@
+{
+  "gizmo": {
+    "title": "example-hax-element",
+    "description": "Fakkeenya elementii jalqabaa qindaa'ina HAX fi amaloota gulaalamoo agarsiisuuf fayyadu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mata-duree"
+      }
+    ]
+  }
+}

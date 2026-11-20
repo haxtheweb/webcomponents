@@ -1,0 +1,14 @@
+{
+  "scene": "Golygfa",
+  "ending": "Diweddglo",
+  "goodEnding": "Diweddglo da",
+  "mixedEnding": "Diweddglo cymysg",
+  "poorEnding": "Diweddglo gwael",
+  "scoreOf": "Sgôr {score} o {max}",
+  "scoreOnly": "Sgôr {score}",
+  "startScene": "Dechrau",
+  "sceneIdLabel": "ID golygfa",
+  "needsId": "Ychwanegwch ID golygfa fel y gall dewisiadau gysylltu â'r olygfa hon.",
+  "orphan": "Does dim dewis yn cysylltu â'r olygfa hon.",
+  "deadLinks": "Mae'r dolenni hyn yn pwyntio at olygfa nad yw'n bodoli:"
+}

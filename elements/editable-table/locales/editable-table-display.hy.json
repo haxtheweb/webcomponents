@@ -3,5 +3,8 @@
   "copyAsCsv": "Պատճենել որպես CSV.",
   "printTable": "Տպել աղյուսակը",
   "selectColumn": "Ընտրել սյունակ",
-  "dataTable": "Տվյալներ · Աղյուսակ"
+  "dataTable": "Տվյալներ · Աղյուսակ",
+  "filterStatus": "Ցուցադրվում է {shown} տող {total}-ից, զտված ըստ {column}՝ {text}",
+  "columnNumber": "Սյունակ {column}",
+  "clearFilter": "Մաքրել զտիչը"
 }

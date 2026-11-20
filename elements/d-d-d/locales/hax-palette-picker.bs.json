@@ -5,5 +5,6 @@
   "selected": "Odabrana",
   "currentlyActiveAndSelectedPalette": "Trenutno aktivna i odabrana paleta",
   "currentlyActivePalette": "Trenutno aktivna paleta",
-  "selectedPaletteToApply": "Odabrana paleta za primjenu"
+  "selectedPaletteToApply": "Odabrana paleta za primjenu",
+  "paletteNumber": "Paleta {number}"
 }

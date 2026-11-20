@@ -1,0 +1,14 @@
+{
+  "scene": "Adegan",
+  "ending": "Akhir",
+  "goodEnding": "Akhir yang baik",
+  "mixedEnding": "Akhir campuran",
+  "poorEnding": "Akhir yang buruk",
+  "scoreOf": "Skor {score} dari {max}",
+  "scoreOnly": "Skor {score}",
+  "startScene": "Mulai",
+  "sceneIdLabel": "ID adegan",
+  "needsId": "Tambahkan ID adegan agar pilihan dapat menautkan ke adegan ini.",
+  "orphan": "Tidak ada pilihan yang menautkan ke adegan ini.",
+  "deadLinks": "Tautan berikut mengarah ke adegan yang tidak ada:"
+}

@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Imazhi i sfondit."
+        "description": "Imazhi i sfondit.",
+        "title": "Imazh"
       },
       {
         "property": "caption",
-        "description": "Titulli i tekstit."
+        "description": "Titulli i tekstit.",
+        "title": "Legjenda"
       }
     ]
   }

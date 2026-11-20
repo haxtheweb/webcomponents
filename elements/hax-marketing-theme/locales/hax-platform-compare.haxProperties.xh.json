@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Uthelekiso lwamaqonga",
+    "description": "Ubuso ngobuso: khetha naziphi na iiqonga ezimbini kwifayile yedatha"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Idatha yothelekiso (JSON)"
+      },
+      {
+        "title": "I-id yeqonga ngasekhohlo"
+      },
+      {
+        "title": "I-id yeqonga ngasekunene"
+      }
+    ]
+  }
+}

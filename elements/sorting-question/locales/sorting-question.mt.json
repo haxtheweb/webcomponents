@@ -40,5 +40,7 @@
   "hideDirections": "Aħbi d-direzzjonijiet",
   "showRelatedContent": "Uri l-kontenut relatat",
   "hideRelatedContent": "Aħbi l-kontenut relatat",
-  "notAttempted": "Ma ppruvax"
+  "notAttempted": "Ma ppruvax",
+  "cardsDirections": "Poġġi l-karti fl-ordni t-tajba bil-buttuni ċaqlaq qabel u ċaqlaq wara fuq kull karta, jew kaxkarhom bil-maws. Meta temmen li għandek l-ordni t-tajba, ittestja t-tweġiba tiegħek billi tagħżel {checkAnswer}.",
+  "movedToPosition": "{item} imċaqlaq għall-pożizzjoni {position} minn {total}"
 }

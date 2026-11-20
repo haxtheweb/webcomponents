@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "Chip",
+    "description": "Icon diki ine zita"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Icon"
+      },
+      {
+        "title": "Zita"
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Tölfræðiflís",
+    "description": "Ein tala sem skiptir máli, með merki sínu og hvernig hún breyttist. Settu nokkrar í net fyrir stjórnborðsröð."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Merki",
+        "description": "Hvað talan mælir."
+      },
+      {
+        "title": "Gildi",
+        "description": "Talan. Einföld tala er sniðin eftir tungumáli síðunnar; annað birtist eins og það er skrifað."
+      },
+      {
+        "title": "Breyting",
+        "description": "Hvernig hún breyttist, í orðum, svo sem 6% þessa önn."
+      },
+      {
+        "title": "Stefna",
+        "description": "Hvort breytingin er upp eða niður.",
+        "options": {
+          "": "Ekkert",
+          "up": "Upp",
+          "down": "Niður"
+        }
+      }
+    ]
+  }
+}

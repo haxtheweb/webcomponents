@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Foussnot",
+    "description": "Eng Notiz, déi do am Text geschriwwe gëtt, wou se higehéiert. Si gëtt als Zuel gewisen, an déi nummeréiert Lëscht vun den Notizen entsteet vun eleng ënnen op der Säit."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Notiz",
+        "description": "Den Text vun der Foussnot."
+      },
+      {
+        "title": "Keng Virschau",
+        "description": "D'Notiz net weisen, wann e Lieser mat der Maus iwwer d'Zuel fiert oder se fokusséiert."
+      }
+    ]
+  }
+}

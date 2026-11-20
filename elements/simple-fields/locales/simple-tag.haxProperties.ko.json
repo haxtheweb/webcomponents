@@ -14,6 +14,17 @@
         "property": "autoAccentColor",
         "title": "자동 강조 색상",
         "description": "레이블 텍스트에서 강조 색상을 자동으로 도출합니다."
+      },
+      {
+        "title": "의미",
+        "description": "태그에 의미 색상을 지정합니다. 중립 태그는 비워 두세요.",
+        "options": {
+          "": "중립",
+          "brand": "브랜드",
+          "success": "성공",
+          "warning": "경고",
+          "danger": "위험"
+        }
       }
     ],
     "advanced": [

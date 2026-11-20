@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Zona e lëshimit në imazh",
+    "description": "Nxënësit vendosin etiketa në zona mbi një imazh, pastaj kontrollojnë përgjigjen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Imazh",
+        "description": "Imazhi ku nxënësit vendosin etiketat."
+      },
+      {
+        "title": "Tekst alternativ",
+        "description": "Përshkruan imazhin për njerëzit që nuk mund ta shohin. Mos zbulo ku shkojnë etiketat."
+      },
+      {
+        "title": "Titulli i imazhit",
+        "description": "Një titull i shkurtër i dukshëm për imazhin, i shfaqur mbi të."
+      },
+      {
+        "title": "Pyetje",
+        "description": "Çfarë u kërkohet nxënësve të bëjnë me etiketat."
+      },
+      {
+        "title": "Etiketat dhe zonat",
+        "description": "Çdo element është një etiketë që nxënësit mund ta vendosin. Jepi një etikete emër zone për të vendosur zonën e saj në imazh; një etiketë pa emër zone është tepër dhe nuk i përket askund. Numrat e zonave janë përqindje të imazhit."
+      },
+      {
+        "title": "Legjenda",
+        "description": "Legjendë opsionale e shfaqur nën imazh."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Përpjekjet",
+        "description": "Sa herë mund të kontrollojë një nxënës. 0 do të thotë pa kufi."
+      },
+      {
+        "title": "Përziej etiketat",
+        "description": "Shfaq etiketat në rend tjetër në çdo vizitë."
+      },
+      {
+        "title": "I palosshëm",
+        "description": "Shfaqe këtë pyetje si rresht që hapet dhe mbyllet. Hapja e njërës mbyll pyetjet e tjera të palosshme pranë saj."
+      },
+      {
+        "title": "Fillo i palosur",
+        "description": "Kur është e palosshme, fillo si rresht i mbyllur që shfaq vetëm pyetjen dhe statusin."
+      },
+      {
+        "title": "Formati i vlerësimit",
+        "description": "OER Schema: formati i vlerësimit për këtë test (p.sh. pikë, shkronjë, përqindje, përfundim)."
+      },
+      {
+        "title": "Objektivi mësimor",
+        "description": "OER Schema: objektivi mësimor i lidhur me këtë test."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Emri i kuizit",
+        "description": "Emri i kuizit i përdorur për identifikimin xAPI në sistemet e analitikës."
+      },
+      {
+        "title": "Kursi",
+        "description": "OER Schema: kursi për të cilin është menduar ky test."
+      }
+    ]
+  }
+}

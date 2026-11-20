@@ -60,6 +60,8 @@
   "flagsFound": "{correct} dari {total} ditemukan",
   "toRethink": "{count} perlu dipikirkan ulang",
   "notEvidence": "bukan bukti untuk bendera ini",
+  "isEvidence": "bukti untuk tanda ini",
+  "readingKeys": "Gunakan tombol panah untuk berpindah dari satu {unit} ke berikutnya.",
   "markAnswers": "Tandai jawaban",
   "doneMarking": "Selesai menandai jawaban",
   "editHint": "Edit bacaan di bawah. Gunakan Tandai jawaban di menu blok untuk memilih tempat setiap bendera.",

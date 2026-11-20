@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Uhlu lwezinyathelo",
     "description": "Izinyathelo ezinezinombolo zokuqeda umsebenzi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Inkomba yesinyathelo",
+        "description": "Bonisa izinyathelo njengomugqa omncane wezihloko okhombisa inqubekelaphambili. Okuqukethwe kwesinyathelo akuboniswa kulesi sakhiwo."
+      },
+      {
+        "title": "Isinyathelo samanje",
+        "description": "Isinyathelo umfundi akuso, kubalwa kusuka ku-1. Izinyathelo zangaphambili ziboniswa njengeziqediwe. Kusetshenziswa yinkomba yesinyathelo."
+      }
+    ]
   }
 }

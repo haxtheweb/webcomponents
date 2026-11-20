@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "कहानी बटन",
+    "description": "वह बटन जो hax.cloud पर किसी दावे के पीछे की कहानी खोलता है, या किसी दूसरी HAX नेटवर्क साइट पर मेल खाती जगह"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "यह कहाँ ले जाता है",
+        "options": {
+          "cloud": "hax.cloud, कहानी",
+          "learn": "learn.hax.cloud, एक ट्यूटोरियल",
+          "try": "browser.hax.cloud, आज़माएँ",
+          "elements": "webcomponents.hax.cloud, एक ब्लॉक",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "उस साइट पर पता (hax.cloud पर कहानी stories/ee450a19 जैसी दिखती है)"
+      },
+      {
+        "title": "यह किस बारे में है"
+      },
+      {
+        "title": "छोटी चिप"
+      },
+      {
+        "title": "बटन में दिखाएँ कि यह किस बारे में है"
+      }
+    ]
+  }
+}

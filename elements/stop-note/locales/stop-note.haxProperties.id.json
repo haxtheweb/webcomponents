@@ -23,7 +23,9 @@
           "stop": "Berhenti",
           "warning": "Peringatan",
           "success": "Konfirmasi",
-          "info": "Pemberitahuan"
+          "info": "Pemberitahuan",
+          "tip": "Tips",
+          "new": "Yang baru"
         }
       },
       {

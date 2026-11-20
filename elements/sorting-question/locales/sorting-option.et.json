@@ -2,5 +2,9 @@
   "answerInCorrectOrder": "Vastus on õiges järjekorras",
   "answerInIncorrectOrder": "Vastus on vales järjekorras",
   "moveOptionUp": "Vali, et liigutada valikut järjekorras üles",
-  "moveOptionDown": "Vali, et liigutada valikut järjekorras alla"
+  "moveOptionDown": "Vali, et liigutada valikut järjekorras alla",
+  "moveEarlier": "Liiguta varasemaks",
+  "moveLater": "Liiguta hilisemaks",
+  "correct": "Õige",
+  "incorrect": "Vale"
 }

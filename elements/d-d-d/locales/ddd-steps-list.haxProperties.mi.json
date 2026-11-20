@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Rārangi hipanga",
     "description": "Ngā hipanga whai tau hei whakaoti i tētahi tūmahi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tūtohu hipanga",
+        "description": "Whakaaturia ngā hipanga hei rārangi taitara kiato e tohu ana i te ahunga whakamua. Kāore te ihirangi o ngā hipanga e whakaaturia i tēnei tahora."
+      },
+      {
+        "title": "Hipanga o nāianei",
+        "description": "Te hipanga kei reira te kaipānui, ka tatau mai i te 1. Ka whakaaturia ngā hipanga o mua hei mea kua oti. Ka whakamahia e te tūtohu hipanga."
+      }
+    ]
   }
 }

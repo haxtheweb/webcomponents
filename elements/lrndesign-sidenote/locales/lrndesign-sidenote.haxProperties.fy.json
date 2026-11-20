@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Kanttekening",
+    "description": "In notysje apart fan de omlizzende ynhâld, mei in opsjoneel ikoan en label."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Label",
+        "description": "It label fan de kanttekening."
+      },
+      {
+        "title": "Ikoan",
+        "description": "It ikoan fan de kanttekening."
+      },
+      {
+        "title": "Ynhâld",
+        "description": "Ynhâld fan de kanttekening."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Kleur",
+        "description": "De kleur dêr't de kanttekening mei tinte wurdt."
+      }
+    ]
+  }
+}

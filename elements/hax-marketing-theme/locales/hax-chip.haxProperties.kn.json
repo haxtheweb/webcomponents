@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "ಚಿಪ್",
+    "description": "ಲೇಬಲ್ ಇರುವ ಚಿಕ್ಕ ಐಕಾನ್"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ಐಕಾನ್"
+      },
+      {
+        "title": "ಲೇಬಲ್"
+      }
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Rhestr wirio bwledi",
+    "description": "Rhestr o flychau ticio. Mae darllenwyr yn ticio eitemau ac mae eu cynnydd yn cael ei gofio ar eu dyfais eu hunain."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Teitl",
+        "description": "Enw'r rhestr. Fe'i darllenir yn uchel fel label y grŵp o flychau ticio."
+      },
+      {
+        "title": "Eitemau",
+        "description": "Mae pob eitem yn flwch ticio. Ni all darllenwyr newid eitemau sydd wedi'u ticio neu eu hanalluogi."
+      },
+      {
+        "title": "Wedi'i rhifo",
+        "description": "Dangos rhestr wedi'i rhifo yn lle rhestr bwledi."
+      },
+      {
+        "title": "Statws",
+        "description": "Yn newid y lliwiau i gyd-fynd â stop-note.",
+        "options": {
+          "info": "Hysbysiad",
+          "success": "Cadarnhad",
+          "warning": "Rhybudd",
+          "stop": "Stop"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "ID storio",
+        "description": "ID unigryw a ddefnyddir i gofio cynnydd darllenwyr ar eu dyfais. Caiff ei gynhyrchu'n awtomatig; newidiwch ef dim ond i rannu cynnydd rhwng rhestrau neu i ddechrau o'r newydd."
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Støðusena",
+    "description": "Ein sena í eini greinandi støðu. Leinkja hvørt val til eina aðra senu við # fylgt av senu-id."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Senu-id",
+        "description": "Tað, sum val leinkja til: eitt leinki til # fylgt av hesum id førir til hesa senuna. Bókstavir, tøl og bindistrikur."
+      },
+      {
+        "title": "Yvirskrift",
+        "description": "Yvirskrift á senuni."
+      },
+      {
+        "title": "Endi",
+        "description": "Hvørt henda senan endar ein veg, og hvussu tað gekk.",
+        "options": {
+          "": "Ikki ein endi",
+          "good": "Góður endi",
+          "mixed": "Blandaður endi",
+          "poor": "Vánaligur endi"
+        }
+      },
+      {
+        "title": "Stig",
+        "description": "Stig fyri at røkka hendan endan. Hægstu endastigini í støðuni eru hámarkið."
+      }
+    ]
+  }
+}

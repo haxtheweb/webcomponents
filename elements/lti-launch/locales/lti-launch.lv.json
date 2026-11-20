@@ -1,0 +1,19 @@
+{
+  "label": "Ārējs rīks",
+  "labelLti": "Ārējs rīks · LTI 1.3",
+  "theTool": "rīks",
+  "directions": "Norādījumi",
+  "showDirections": "Rādīt norādījumus",
+  "hideDirections": "Slēpt norādījumus",
+  "directionsWindow": "Poga atver jaunu logu ar rīku.",
+  "directionsEmbed": "Poga atver rīku šajā lapā. Ja tas neielādējas, tā vietā atveriet to jaunā logā.",
+  "directionsLti": "Šī vietne jūs pieraksta rīkā, tāpēc atsevišķs konts nav vajadzīgs.",
+  "openWindow": "Atvērt {title} (jauns logs)",
+  "openEmbed": "Atvērt {title}",
+  "openInstead": "Tā vietā atvērt jaunā logā",
+  "frameTitle": "{title} (ārējs rīks)",
+  "openedWindow": "Tika atvērts jauns logs ar rīku.",
+  "openedEmbed": "Rīks tika atvērts šajā lapā.",
+  "needsUrl": "Šim blokam nepieciešama palaišanas adrese, kas sākas ar http:// vai https://.",
+  "needsSignIn": "Šim rīkam nepieciešams šīs vietnes pierakstīšanās pakalpojums, kas šeit nav pieejams. Nekas netika atvērts."
+}

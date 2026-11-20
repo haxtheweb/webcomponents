@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Skjölunarspilari",
+    "description": "Leiðsögn, sýnidæmi og tilvísun fyrir vefíhlut, með afritunarhnöppum fyrir HTML, import, npm og CDN."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Skjölunargagnaskrá",
+        "description": "Skjölunargögnin sem fylgja íhlutnum (lib/tag.docs.json)."
+      },
+      {
+        "title": "Söguborð leiðsagnar",
+        "description": "Hreyfisöguborðið sem fylgir íhlutnum (tag.motion.json). Valfrjálst."
+      },
+      {
+        "title": "Kennslumyndband",
+        "description": "Stutt myndband um íhlutinn (YouTube, Vimeo eða myndbandsskrá). Kemur í stað myndbandsins í skjölunargögnunum."
+      },
+      {
+        "title": "Opna á flipa",
+        "description": "Hvaða flipi birtist fyrst.",
+        "options": {
+          "motion": "Leiðsögn",
+          "video": "Myndband",
+          "demo": "Sýning",
+          "docs": "Skjölun",
+          "schema": "Skema"
+        }
+      },
+      {
+        "title": "Spila leiðsögn sjálfkrafa",
+        "description": "Hefja leiðsögnina um leið og spilarinn birtist. Hunsað þegar lesandinn kýs minni hreyfingu."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Efni leiðsagnar",
+        "description": "Fyrir íhluti með margar leiðsagnir, hvaða efni á að opna fyrst (til dæmis add-blocks). Skildu eftir autt fyrir aðalleiðsögnina."
+      },
+      {
+        "title": "Tengill á lifandi sýnidæmi",
+        "description": "Hvert hnappurinn Opna frumkóða sýnidæmis vísar. Sjálfgefið er sýnidæmamappan í geymslunni."
+      },
+      {
+        "title": "Tengill á skjölun",
+        "description": "Hvert hnappurinn fyrir alla skjölunina vísar, til dæmis á samsvarandi Learn HAX-síðu."
+      }
+    ]
+  }
+}

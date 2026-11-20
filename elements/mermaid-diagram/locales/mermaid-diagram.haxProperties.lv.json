@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Diagramma no teksta",
+    "description": "Uzrakstiet diagrammu kā tekstu (Mermaid): blokshēmu, secību, laika līniju un citu. Tā tiek uzzīmēta lapā ar teksta alternatīvu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Virsraksts",
+        "description": "Tiek rādīts virs diagrammas un izmantots kā tās nosaukums."
+      },
+      {
+        "title": "Diagrammas pirmkods",
+        "description": "Mermaid teksts, piemēram: flowchart TD, tad pa vienai rindai katrai saitei, piemēram, A[Draft] --> B{Ready?}. Pievienojiet |label| aiz bultiņas, lai to marķētu. Zīmējums atjaunojas, kamēr rakstāt."
+      },
+      {
+        "title": "Teksta alternatīva",
+        "description": "Aprakstiet, ko diagramma rāda, cilvēkiem, kuri to nevar redzēt. Blokshēmai atstājiet tukšu, lai tās soļi tiktu uzskaitīti automātiski."
+      },
+      {
+        "title": "Paraksts",
+        "description": "Neobligāts paraksts, kas tiek rādīts zem diagrammas."
+      },
+      {
+        "title": "Rādīt pirmkodu",
+        "description": "Rādīt diagrammas tekstu blakus zīmējumam."
+      },
+      {
+        "title": "Rādīt teksta alternatīvu",
+        "description": "Rādīt teksta alternatīvu zem zīmējuma. Tā vienmēr ir pieejama ekrāna lasītājiem."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Avota fails",
+        "description": ".mmd faila adrese, ko zīmēt augstāk esošā teksta vietā (https vai ceļš šajā vietnē)."
+      },
+      {
+        "title": "Akcenta krāsa",
+        "description": "Ikonas žetona krāsa galvenē."
+      }
+    ]
+  }
+}

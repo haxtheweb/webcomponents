@@ -2,5 +2,9 @@
   "toggleAnimation": "Animasiyanı aç/bağla",
   "info": "məlumat",
   "image": "Təsvir",
-  "animatedGif": "Animasiyalı GIF"
+  "animatedGif": "Animasiyalı GIF",
+  "playAnimation": "Animasiyanı oynat",
+  "pauseAnimation": "Animasiyanı dayandır",
+  "showDescription": "Təsviri göstər",
+  "hideDescription": "Təsviri gizlət"
 }

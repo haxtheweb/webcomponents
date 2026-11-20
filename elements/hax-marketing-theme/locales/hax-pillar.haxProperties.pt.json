@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Pilar",
+    "description": "Um pilar: nome, frase, ícone, cor e por que ele importa"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nome"
+      },
+      {
+        "title": "Frase"
+      },
+      {
+        "title": "Ícone"
+      },
+      {
+        "title": "Cor (nome DDD)"
+      },
+      {
+        "title": "Qual pilar, de 1 a 7"
+      },
+      {
+        "title": "Cartão pequeno"
+      },
+      {
+        "title": "Onde o nome vai"
+      }
+    ]
+  }
+}

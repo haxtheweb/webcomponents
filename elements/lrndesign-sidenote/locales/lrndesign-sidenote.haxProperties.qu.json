@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Waqta willay",
+    "description": "Muyuriq ukhunkunamanta t'aqasqa willay, munaspa iconowan etiquetawan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etiqueta",
+        "description": "Waqta willaypa etiquetan."
+      },
+      {
+        "title": "Icono",
+        "description": "Waqta willaypa iconon."
+      },
+      {
+        "title": "Ukhun",
+        "description": "Waqta willaypa ukhun."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Llimp'i",
+        "description": "Waqta willay llimp'isqa kananpaq llimp'i."
+      }
+    ]
+  }
+}

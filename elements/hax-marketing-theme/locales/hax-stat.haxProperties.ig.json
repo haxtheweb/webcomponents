@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Ọnụọgụ",
+    "description": "Ọnụọgụ na-agụ elu, nwere akara aha na njikọ gaa n'akụkọ ya"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ọnụọgụ a ga-agụ ruo"
+      },
+      {
+        "title": "Tupu ọnụọgụ ahụ"
+      },
+      {
+        "title": "Mgbe ọnụọgụ ahụ gasịrị"
+      },
+      {
+        "title": "Okwu kama ọnụọgụ"
+      },
+      {
+        "title": "Ihe ọ na-agụ"
+      },
+      {
+        "title": "Adreesị akụkọ na hax.cloud (stories/ee450a19)"
+      }
+    ]
+  }
+}

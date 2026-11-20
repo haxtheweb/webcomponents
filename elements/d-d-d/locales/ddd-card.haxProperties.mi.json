@@ -52,6 +52,20 @@
           "_top": "Matapihi runga - _top",
           "_parent": "Matapihi matua - _parent"
         }
+      },
+      {
+        "title": "Kāore he pere",
+        "description": "Huna i te pere o te pātene."
+      },
+      {
+        "title": "Hono: whāinga",
+        "description": "Te wāhi hei whakatuwhera i te hono.",
+        "options": {
+          "": "Matapihi ōrite",
+          "_blank": "Matapihi hou - _blank",
+          "_top": "Matapihi runga - _top",
+          "_parent": "Matapihi matua - _parent"
+        }
       }
     ],
     "developer": [

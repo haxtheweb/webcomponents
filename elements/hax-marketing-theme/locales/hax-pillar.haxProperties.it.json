@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Pilastro",
+    "description": "Un pilastro: nome, frase, icona, colore e perché è importante"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nome"
+      },
+      {
+        "title": "Frase"
+      },
+      {
+        "title": "Icona"
+      },
+      {
+        "title": "Colore (nome DDD)"
+      },
+      {
+        "title": "Quale pilastro, da 1 a 7"
+      },
+      {
+        "title": "Scheda piccola"
+      },
+      {
+        "title": "Dove va il nome"
+      }
+    ]
+  }
+}

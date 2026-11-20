@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Inicio de ferramenta externa",
+    "description": "Un bloque que abre unha ferramenta de aprendizaxe externa nunha nova xanela ou na páxina, como ligazón simple ou cunha solicitude de inicio de sesión LTI 1.3."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Título",
+        "description": "Nome da ferramenta. Móstrase na cabeceira e no botón."
+      },
+      {
+        "title": "Descrición",
+        "description": "O que fai o alumnado na ferramenta, mostrado enriba do botón."
+      },
+      {
+        "title": "URL de inicio",
+        "description": "Enderezo da ferramenta. Debe ser un enderezo completo que comece por https:// ou http://."
+      },
+      {
+        "title": "Abrir en",
+        "description": "Unha nova xanela funciona con todas as ferramentas. Nesta páxina só funciona coas ferramentas que permiten mostrarse dentro doutro sitio.",
+        "options": {
+          "window": "Unha nova xanela",
+          "embed": "Nesta páxina"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "URL de inicio de sesión LTI",
+        "description": "Só LTI 1.3: o enderezo de inicio de sesión da ferramenta. Con isto, un ID de cliente e un ID de despregamento, o botón envía unha solicitude de inicio de sesión LTI en vez de abrir unha ligazón simple. Para completar o inicio precísase o servizo LTI deste sitio."
+      },
+      {
+        "title": "ID de cliente LTI",
+        "description": "O ID de cliente que a ferramenta lle deu a este sitio. Un identificador público, non un segredo: nunca poñas aquí chaves nin segredos."
+      },
+      {
+        "title": "ID de despregamento LTI",
+        "description": "O ID de despregamento que a ferramenta lle deu a este sitio. Un identificador público, non un segredo."
+      },
+      {
+        "title": "Emisor LTI",
+        "description": "O enderezo que identifica este sitio ante a ferramenta. Déixao baleiro para usar o enderezo do sitio no que está a páxina."
+      },
+      {
+        "title": "Altura na páxina",
+        "description": "Altura da ferramenta cando se abre nesta páxina, en píxeles (de 200 a 2000)."
+      },
+      {
+        "title": "Cor de realce",
+        "description": "Cor da etiqueta da cabeceira e do botón. Déixao baleiro para seguir o tema."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Indicación de inicio de sesión LTI",
+        "description": "Un valor opaco que usa o servizo LTI deste sitio para recoñecer a persoa. Normalmente o proporciona o sitio mediante o evento lti-launch-request en vez de gardarse aquí. Nunca é un contrasinal nin unha chave."
+      },
+      {
+        "title": "Indicación de mensaxe LTI",
+        "description": "Un valor opaco que usa o servizo LTI deste sitio para recoñecer este inicio. Normalmente o proporciona o sitio en vez de gardarse aquí."
+      }
+    ]
+  }
+}

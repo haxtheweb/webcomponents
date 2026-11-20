@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Diagram fra tekst",
+    "description": "Skriv et diagram som tekst (Mermaid): et rutediagram, en sekvens, en tidslinje og mere. Det tegnes på siden med et tekstalternativ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Vises over diagrammet og bruges som dets navn."
+      },
+      {
+        "title": "Diagramkilde",
+        "description": "Mermaid-tekst, for eksempel: flowchart TD, derefter én linje pr. forbindelse som A[Draft] --> B{Ready?}. Tilføj |label| efter en pil for at give den en etiket. Tegningen opdateres, mens du skriver."
+      },
+      {
+        "title": "Tekstalternativ",
+        "description": "Beskriv, hvad diagrammet viser, for personer, der ikke kan se det. Lad være tom på et rutediagram for at få dets trin listet for dig."
+      },
+      {
+        "title": "Billedtekst",
+        "description": "Valgfri billedtekst vist under diagrammet."
+      },
+      {
+        "title": "Vis kilden",
+        "description": "Vis diagramteksten ved siden af tegningen."
+      },
+      {
+        "title": "Vis tekstalternativet",
+        "description": "Vis tekstalternativet under tegningen. Det er altid tilgængeligt for skærmlæsere."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Kildefil",
+        "description": "Adressen på en .mmd-fil, der skal tegnes i stedet for teksten ovenfor (https eller en sti på dette websted)."
+      },
+      {
+        "title": "Accentfarve",
+        "description": "Farve på ikonmærket i overskriften."
+      }
+    ]
+  }
+}

@@ -1,4 +1,6 @@
 {
   "saveAll": "Desa-ho tot",
-  "saveTheFollowing": "Vols desar el següent: {list}?"
+  "saveTheFollowing": "Vols desar el següent: {list}?",
+  "save": "Desa",
+  "cancel": "Cancel·la"
 }

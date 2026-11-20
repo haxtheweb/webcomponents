@@ -1,0 +1,8 @@
+{
+  "theme": "Motív",
+  "palette": "Paleta",
+  "themeDefault": "Predvolené motívu",
+  "designSystem": "Dizajnový systém",
+  "designSystemDefault": "DDD (predvolený)",
+  "designSystemUnavailable": "Tento motív si ponecháva vlastný dizajnový systém"
+}

@@ -4,7 +4,12 @@
     "description": "Inoridza zvinhu zvinobvumira kuita zveH5P kubva pafaera ye.h5p yakaiswa, pasina kuda server yeH5P"
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "title": "Faira reH5P",
+        "description": "Isa kana batanidza faira re.h5p. Rinovhurwa mubrowser; hapana server yeH5P inodiwa."
+      }
+    ],
     "advanced": [
       {
         "title": "Kodhi yekare yekuisa iframe",

@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Kuyerekeza nsanja",
+    "description": "Maso ndi maso: sankhani nsanja ziwiri zilizonse kuchokera ku fayilo ya deta"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Deta ya kuyerekeza (JSON)"
+      },
+      {
+        "title": "ID ya nsanja yakumanzere"
+      },
+      {
+        "title": "ID ya nsanja yakumanja"
+      }
+    ]
+  }
+}

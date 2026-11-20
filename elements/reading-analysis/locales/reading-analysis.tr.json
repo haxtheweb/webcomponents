@@ -60,6 +60,8 @@
   "flagsFound": "{total} içinden {correct} bulundu",
   "toRethink": "Yeniden düşünülecek: {count}",
   "notEvidence": "bu bayrak için kanıt değil",
+  "isEvidence": "bu işaret için kanıt",
+  "readingKeys": "Bir {unit} öğesinden diğerine geçmek için ok tuşlarını kullanın.",
   "markAnswers": "Cevapları işaretle",
   "doneMarking": "Cevapları işaretlemeyi bitir",
   "editHint": "Aşağıdaki metni düzenleyin. Her bayrağın nereye ait olduğunu seçmek için blok menüsündeki Cevapları işaretle seçeneğini kullanın.",

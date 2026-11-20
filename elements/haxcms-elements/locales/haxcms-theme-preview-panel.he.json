@@ -8,5 +8,9 @@
   "theme": "ערכת נושא",
   "palette": "פלטה",
   "cancel": "ביטול",
-  "openAppearanceSettings": "פתיחת הגדרות המראה"
+  "openAppearanceSettings": "פתיחת הגדרות המראה",
+  "designSystem": "מערכת עיצוב",
+  "designSystemDefault": "DDD (ברירת מחדל)",
+  "designSystemThemeDefault": "{name} (ברירת המחדל של ערכת העיצוב)",
+  "designSystemHelp": "צבע, טיפוגרפיה, פינות וצפיפות. ערכת העיצוב עדיין קובעת את הפריסה."
 }

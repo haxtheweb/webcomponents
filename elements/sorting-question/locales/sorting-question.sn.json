@@ -40,5 +40,7 @@
   "hideDirections": "Vanza mirayiridzo",
   "showRelatedContent": "Ratidza zvinoenderana",
   "hideRelatedContent": "Vanza zvinoenderana",
-  "notAttempted": "Hazvina kuyedzwa"
+  "notAttempted": "Hazvina kuyedzwa",
+  "cardsDirections": "Isa makadhi muhurongwa hwakarurama nemabhatani ekuendesa kumberi nekuendesa shure pakadhi rimwe nerimwe, kana kuadhonza nemouse. Kana wafunga kuti ari muhurongwa hwakarurama, edza mhinduro yako nekusarudza {checkAnswer}.",
+  "movedToPosition": "{item} yaendeswa kunzvimbo {position} pa{total}"
 }

@@ -24,11 +24,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Text de rezumat opțional când detaliile sunt deschise"
+        "title": "Text de rezumat opțional când detaliile sunt deschise",
+        "description": "Textul butonului cât timp descrierea este ascunsă, de exemplu Afișați descrierea."
       },
       {
         "property": "closeText",
-        "title": "Text de rezumat opțional când detaliile sunt închise"
+        "title": "Text de rezumat opțional când detaliile sunt închise",
+        "description": "Textul butonului cât timp descrierea este afișată, de exemplu Ascundeți descrierea."
       }
     ]
   }

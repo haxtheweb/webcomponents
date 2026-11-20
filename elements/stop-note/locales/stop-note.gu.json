@@ -3,5 +3,7 @@
   "status_stop": "રોકો",
   "status_warning": "ચેતવણી",
   "status_success": "સફળતા",
-  "status_info": "નોંધ"
+  "status_info": "નોંધ",
+  "status_tip": "શું તમે જાણો છો?",
+  "status_new": "નવું શું છે"
 }

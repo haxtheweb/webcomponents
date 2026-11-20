@@ -3,5 +3,8 @@
   "copyAsCsv": "Kopiatu CSV gisa.",
   "printTable": "Inprimatu taula",
   "selectColumn": "Hautatu zutabea",
-  "dataTable": "Datuak · Taula"
+  "dataTable": "Datuak · Taula",
+  "filterStatus": "{total} errenkadetatik {shown} erakusten, {column} zutabearen arabera iragazita: {text}",
+  "columnNumber": "{column}. zutabea",
+  "clearFilter": "Garbitu iragazkia"
 }

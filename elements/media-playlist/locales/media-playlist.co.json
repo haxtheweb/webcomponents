@@ -5,5 +5,7 @@
   "editModeLabel": "Modu di mudificazione di a lista di lettura multimedia",
   "position": "{current} nantu à {total}",
   "previousItem": "Elementu precedente",
-  "nextItem": "Elementu seguente"
+  "nextItem": "Elementu seguente",
+  "fullScreen": "Screnu sanu",
+  "exitFullScreen": "Esce da u screnu sanu"
 }

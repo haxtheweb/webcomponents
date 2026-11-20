@@ -1,0 +1,16 @@
+{
+  "drawing": "Lukisan",
+  "edit": "Sunting lukisan",
+  "start": "Mula melukis",
+  "remove": "Buang lukisan",
+  "empty": "Belum ada lukisan",
+  "save": "Simpan",
+  "cancel": "Batal",
+  "close": "Tutup",
+  "discard": "Buang perubahan",
+  "discardConfirm": "Buang perubahan yang belum disimpan?",
+  "keepEditing": "Teruskan menyunting",
+  "draw": "Lukisan",
+  "feedback": "Maklum balas",
+  "signature": "Tandatangan"
+}

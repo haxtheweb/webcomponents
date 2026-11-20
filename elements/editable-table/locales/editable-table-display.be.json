@@ -3,5 +3,8 @@
   "copyAsCsv": "Капіраваць як CSV.",
   "printTable": "Друкаваць табліцу",
   "selectColumn": "Выбраць слупок",
-  "dataTable": "Даныя · Табліца"
+  "dataTable": "Даныя · Табліца",
+  "filterStatus": "Паказана радкоў: {shown} з {total}, фільтр па {column}: {text}",
+  "columnNumber": "Слупок {column}",
+  "clearFilter": "Ачысціць фільтр"
 }

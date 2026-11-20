@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Membre del repartiment",
+    "description": "Un públic, interpretat per un personatge, amb text i un botó"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Qui és"
+      },
+      {
+        "title": "Tipus de personatge"
+      },
+      {
+        "title": "Llavor del personatge"
+      },
+      {
+        "title": "Color de l'escenari (nom DDD)"
+      },
+      {
+        "title": "On porta el botó"
+      },
+      {
+        "title": "Text del botó"
+      }
+    ]
+  }
+}

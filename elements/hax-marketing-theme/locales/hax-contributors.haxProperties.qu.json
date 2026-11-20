@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Yanapaqkuna",
+    "description": "Proyectota ruraq runakuna, huk suti lista willañiqimanta"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Suti lista willañiqi (JSON)"
+      },
+      {
+        "title": "Qhaway: landed, lab utaq code"
+      },
+      {
+        "title": "Rikuchinapaq aswan achka runakuna (0 llapanmi)"
+      }
+    ]
+  }
+}

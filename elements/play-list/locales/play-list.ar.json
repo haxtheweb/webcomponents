@@ -9,5 +9,7 @@
   "slidePages": "صفحات الشرائح",
   "goToSlide": "الانتقال إلى الشريحة {number}",
   "slides": "شرائح",
-  "position": "{number} من {total}"
+  "position": "{number} من {total}",
+  "fullScreen": "ملء الشاشة",
+  "exitFullScreen": "الخروج من ملء الشاشة"
 }

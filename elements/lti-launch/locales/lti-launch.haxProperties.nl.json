@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Externe tool starten",
+    "description": "Een blok dat een externe leertool opent in een nieuw venster of op de pagina, als gewone link of met een LTI 1.3-inlogverzoek."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Naam van de tool. Die wordt getoond in de kop en op de knop."
+      },
+      {
+        "title": "Beschrijving",
+        "description": "Wat leerlingen in de tool doen, getoond boven de knop."
+      },
+      {
+        "title": "Start-URL",
+        "description": "Adres van de tool. Het moet een volledig adres zijn dat begint met https:// of http://."
+      },
+      {
+        "title": "Openen in",
+        "description": "Een nieuw venster werkt met elke tool. Op deze pagina werkt alleen met tools die toestaan dat ze binnen een andere site worden getoond.",
+        "options": {
+          "window": "Een nieuw venster",
+          "embed": "Op deze pagina"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "LTI-inlog-URL",
+        "description": "Alleen LTI 1.3: het adres van de tool waar het inloggen begint. Hiermee, met een client-ID en een deployment-ID, stuurt de knop een LTI-inlogverzoek in plaats van een gewone link te openen. Voor het afronden van de start is de LTI-dienst van deze site nodig."
+      },
+      {
+        "title": "LTI-client-ID",
+        "description": "De client-ID die de tool aan deze site heeft gegeven. Een openbare identificatie, geen geheim: zet hier nooit sleutels of geheimen."
+      },
+      {
+        "title": "LTI-deployment-ID",
+        "description": "De deployment-ID die de tool aan deze site heeft gegeven. Een openbare identificatie, geen geheim."
+      },
+      {
+        "title": "LTI-uitgever",
+        "description": "Het adres dat deze site bij de tool identificeert. Laat leeg om het adres te gebruiken van de site waarop de pagina staat."
+      },
+      {
+        "title": "Hoogte op de pagina",
+        "description": "Hoogte van de tool als die op deze pagina opent, in pixels (200 tot 2000)."
+      },
+      {
+        "title": "Accentkleur",
+        "description": "Kleur van het kopetiket en de knop. Laat leeg om het thema te volgen."
+      }
+    ],
+    "developer": [
+      {
+        "title": "LTI-inloghint",
+        "description": "Een ondoorzichtige waarde die de LTI-dienst van deze site gebruikt om de leerling te herkennen. Meestal door de site aangeleverd via de gebeurtenis lti-launch-request in plaats van hier opgeslagen. Nooit een wachtwoord of sleutel."
+      },
+      {
+        "title": "LTI-berichthint",
+        "description": "Een ondoorzichtige waarde die de LTI-dienst van deze site gebruikt om deze start te herkennen. Meestal door de site aangeleverd in plaats van hier opgeslagen."
+      }
+    ]
+  }
+}

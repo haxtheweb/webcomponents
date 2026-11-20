@@ -20,6 +20,12 @@
         "title": "Kuva",
         "description": "Lainauksen kanssa näytettävä kuva."
       }
+    ],
+    "advanced": [
+      {
+        "title": "Kehystetty",
+        "description": "Piirrä lainaus yhteiseen lohkokehykseen, yläpuolella kuvake ja nimiö, jotta se sopii huomautuksiin ja ohjekortteihin."
+      }
     ]
   }
 }

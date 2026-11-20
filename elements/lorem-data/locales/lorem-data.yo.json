@@ -1,4 +1,6 @@
 {
   "saveAll": "Fi Gbogbo Rẹ̀ Pamọ́",
-  "saveTheFollowing": "Fi àwọn wọ̀nyí pamọ́: {list}?"
+  "saveTheFollowing": "Fi àwọn wọ̀nyí pamọ́: {list}?",
+  "save": "Fi pamọ́",
+  "cancel": "Fagilé"
 }

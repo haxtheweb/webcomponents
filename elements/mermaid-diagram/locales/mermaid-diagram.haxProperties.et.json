@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Diagramm tekstist",
+    "description": "Kirjuta diagramm tekstina (Mermaid): vooskeem, jadaskeem, ajajoon ja muud. See joonistatakse lehele koos tekstilise alternatiiviga."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pealkiri",
+        "description": "Kuvatakse diagrammi kohal ja kasutatakse selle nimena."
+      },
+      {
+        "title": "Diagrammi lähtekood",
+        "description": "Mermaidi tekst, näiteks: flowchart TD ja seejärel üks rida iga lingi kohta, nagu A[Draft] --> B{Ready?}. Noole sildistamiseks lisa selle järele |silt|. Joonis uueneb kirjutamise ajal."
+      },
+      {
+        "title": "Tekstiline alternatiiv",
+        "description": "Kirjelda, mida diagramm näitab, inimestele, kes seda näha ei saa. Vooskeemi puhul jäta tühjaks, et selle sammud loetletaks sinu eest."
+      },
+      {
+        "title": "Pildiallkiri",
+        "description": "Valikuline allkiri, mis kuvatakse diagrammi all."
+      },
+      {
+        "title": "Näita lähtekoodi",
+        "description": "Näita diagrammi teksti joonise kõrval."
+      },
+      {
+        "title": "Näita tekstilist alternatiivi",
+        "description": "Näita tekstilist alternatiivi joonise all. See on ekraanilugejatele alati kättesaadav."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Lähtefail",
+        "description": ".mmd-faili aadress, mis joonistatakse ülaltoodud teksti asemel (https või tee sellel saidil)."
+      },
+      {
+        "title": "Rõhuvärv",
+        "description": "Päise ikoonikiibi värv."
+      }
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Stop Note-groep",
+    "description": "Stapel meerdere stop notes in één blok dat één notitie tegelijk toont, zoals Tips of Wat is er nieuw. Instructiekaarten, kanttekeningen en omkaderde citaten kunnen ermee worden gestapeld."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Label",
+        "description": "Naam van de groep die schermlezers aankondigen, zoals Tips of Wat is er nieuw."
+      },
+      {
+        "title": "Notities",
+        "description": "De stop notes in de groep. Instructiekaarten, kanttekeningen en omkaderde citaten kunnen ook worden toegevoegd."
+      }
+    ]
+  }
+}

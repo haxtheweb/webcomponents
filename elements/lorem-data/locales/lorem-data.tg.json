@@ -1,4 +1,6 @@
 {
   "saveAll": "Ҳамаро нигоҳ доштан",
-  "saveTheFollowing": "Инҳоро нигоҳ дорем: {list}?"
+  "saveTheFollowing": "Инҳоро нигоҳ дорем: {list}?",
+  "save": "Нигоҳ доштан",
+  "cancel": "Бекор кардан"
 }

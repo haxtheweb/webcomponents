@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Dallanan senaryo",
+    "description": "Her seçimin farklı bir sahneye ve sona götürdüğü bir hikâye. Öğrenenler geri adım atıp başka yollar deneyebilir; ulaşılan son puanı belirler."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Başlık",
+        "description": "Başlığında gösterilen senaryonun adı."
+      },
+      {
+        "title": "Başlangıç sahnesi",
+        "description": "Öğrenenlerin başladığı sahnenin kimliği. İlk sahneden başlamak için boş bırakın."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Vurgu rengi",
+        "description": "Başlık etiketi, düğmeler ve seçenek kenarı için isteğe bağlı renk."
+      }
+    ]
+  }
+}

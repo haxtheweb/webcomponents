@@ -1,0 +1,8 @@
+{
+  "theme": "Mövzu",
+  "palette": "Palitra",
+  "themeDefault": "Mövzunun standartı",
+  "designSystem": "Dizayn sistemi",
+  "designSystemDefault": "DDD (standart)",
+  "designSystemUnavailable": "Bu mövzu öz dizayn sistemini saxlayır"
+}

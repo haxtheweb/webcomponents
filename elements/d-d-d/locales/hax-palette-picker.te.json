@@ -5,5 +5,6 @@
   "selected": "ఎంచుకోబడింది",
   "currentlyActiveAndSelectedPalette": "ప్రస్తుతం సక్రియంగా ఉన్న మరియు ఎంచుకున్న పాలెట్",
   "currentlyActivePalette": "ప్రస్తుతం సక్రియంగా ఉన్న పాలెట్",
-  "selectedPaletteToApply": "వర్తింపజేయడానికి ఎంచుకున్న పాలెట్"
+  "selectedPaletteToApply": "వర్తింపజేయడానికి ఎంచుకున్న పాలెట్",
+  "paletteNumber": "పాలెట్ {number}"
 }

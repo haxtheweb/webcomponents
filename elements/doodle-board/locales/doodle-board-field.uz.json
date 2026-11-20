@@ -1,0 +1,16 @@
+{
+  "drawing": "Rasm",
+  "edit": "Rasmni tahrirlash",
+  "start": "Chizishni boshlash",
+  "remove": "Rasmni olib tashlash",
+  "empty": "Hali hech narsa chizilmagan",
+  "save": "Saqlash",
+  "cancel": "Bekor qilish",
+  "close": "Yopish",
+  "discard": "O‘zgarishlarni bekor qilish",
+  "discardConfirm": "Saqlanmagan o‘zgarishlar bekor qilinsinmi?",
+  "keepEditing": "Tahrirlashni davom ettirish",
+  "draw": "Rasm",
+  "feedback": "Fikr-mulohaza",
+  "signature": "Imzo"
+}

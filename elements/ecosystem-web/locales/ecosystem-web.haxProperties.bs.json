@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Mreža ekosistema",
+    "description": "Interaktivna mreža povezanosti dijelova projekta, s podmrežama i turama korak po korak."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Podaci mreže",
+        "description": "URL JSON paketa mreža (napravljen u PRAW-u, ecosystem-webs.json)."
+      },
+      {
+        "title": "Mreža",
+        "description": "Id mreže koja se prva prikazuje; main je mreža ekosistema."
+      },
+      {
+        "title": "Odabrana pločica",
+        "description": "Id pločice koja se odabire kad se mreža otvori."
+      },
+      {
+        "title": "Tura",
+        "description": "Id ture s kojom se počinje."
+      },
+      {
+        "title": "Počni u prikazu liste",
+        "description": "Prikaži mrežu kao ugniježđene liste umjesto crteža."
+      },
+      {
+        "title": "Samo crtež",
+        "description": "Prikaži samo crtež, kao sliku: bez zaglavlja, tura, detalja ili trake koraka."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Čitano po",
+        "description": "Počni tako da su sve pločice čitane po jednoj mjeri.",
+        "options": {
+          "": "Samo veze",
+          "fresh": "Svježina",
+          "bus": "Faktor autobusa",
+          "impact": "Uticaj",
+          "evidence": "Dokaz",
+          "parity": "Paritet"
+        }
+      }
+    ]
+  }
+}

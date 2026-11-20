@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Ahịrị njirimara",
+    "description": "Ihuenyo ngwaahịa n'akụkụ ihe ọ pụtara maka gị"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Obere akara aha"
+      },
+      {
+        "title": "Isiokwu"
+      },
+      {
+        "title": "Foto"
+      },
+      {
+        "title": "Ihe foto ahụ na-egosi"
+      },
+      {
+        "title": "Foto n'aka nri"
+      },
+      {
+        "title": "Agba onyinyo (aha DDD, efu na-eso paleti)"
+      }
+    ]
+  }
+}

@@ -24,11 +24,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Teks ringkesan opsional nalika rincian dibukak"
+        "title": "Teks ringkesan opsional nalika rincian dibukak",
+        "description": "Teks tombol nalika katrangan didhelikake, kayata Tampilake katrangan."
       },
       {
         "property": "closeText",
-        "title": "Teks ringkesan opsional nalika rincian ditutup"
+        "title": "Teks ringkesan opsional nalika rincian ditutup",
+        "description": "Teks tombol nalika katrangan ditampilake, kayata Dhelikake katrangan."
       }
     ]
   }

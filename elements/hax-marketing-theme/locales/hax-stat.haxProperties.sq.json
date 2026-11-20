@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Statistikë",
+    "description": "Një numër që numëron lart, me etiketë dhe lidhje te historia e tij"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Numri deri ku numërohet"
+      },
+      {
+        "title": "Para numrit"
+      },
+      {
+        "title": "Pas numrit"
+      },
+      {
+        "title": "Fjalë në vend të numrit"
+      },
+      {
+        "title": "Çfarë numëron"
+      },
+      {
+        "title": "Adresa e historisë në hax.cloud (stories/ee450a19)"
+      }
+    ]
+  }
+}

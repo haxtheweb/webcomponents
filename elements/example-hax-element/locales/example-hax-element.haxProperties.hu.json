@@ -1,0 +1,13 @@
+{
+  "gizmo": {
+    "title": "example-hax-element",
+    "description": "Példa kezdőelem a HAX konfiguráció és a szerkeszthető tulajdonságok bemutatására."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Cím"
+      }
+    ]
+  }
+}

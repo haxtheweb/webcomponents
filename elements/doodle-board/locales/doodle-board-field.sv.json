@@ -1,0 +1,16 @@
+{
+  "drawing": "Teckning",
+  "edit": "Redigera teckning",
+  "start": "Börja rita",
+  "remove": "Ta bort teckning",
+  "empty": "Inget ritat än",
+  "save": "Spara",
+  "cancel": "Avbryt",
+  "close": "Stäng",
+  "discard": "Ignorera ändringar",
+  "discardConfirm": "Ignorera dina osparade ändringar?",
+  "keepEditing": "Fortsätt redigera",
+  "draw": "Teckning",
+  "feedback": "Återkoppling",
+  "signature": "Signatur"
+}

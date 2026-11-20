@@ -1,0 +1,10 @@
+{
+  "loading": "Läser in personerna.",
+  "now": "Nu:",
+  "personOn": "{name} på {place}",
+  "github": "GitHub",
+  "linkedin": "LinkedIn",
+  "ownSite": "sin egen webbplats",
+  "commit": "commit",
+  "commits": "commits"
+}

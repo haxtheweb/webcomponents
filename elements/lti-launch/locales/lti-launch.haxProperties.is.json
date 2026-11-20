@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Ræsing ytra verkfæris",
+    "description": "Kubbur sem opnar ytra námsverkfæri í nýjum glugga eða á síðunni, sem einfaldan tengil eða með LTI 1.3-innskráningarbeiðni."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titill",
+        "description": "Heiti verkfærisins. Það er sýnt í hausnum og á hnappnum."
+      },
+      {
+        "title": "Lýsing",
+        "description": "Hvað nemendur gera í verkfærinu, sýnt fyrir ofan hnappinn."
+      },
+      {
+        "title": "Ræsislóð",
+        "description": "Slóð verkfærisins. Hún verður að vera full slóð sem byrjar á https:// eða http://."
+      },
+      {
+        "title": "Opna í",
+        "description": "Nýr gluggi virkar með öllum verkfærum. Á þessari síðu virkar aðeins með verkfærum sem leyfa að vera sýnd inni í öðrum vef.",
+        "options": {
+          "window": "Nýjum glugga",
+          "embed": "Á þessari síðu"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "LTI-innskráningarslóð",
+        "description": "Aðeins LTI 1.3: slóð verkfærisins til að hefja innskráningu. Með henni, client ID og deployment ID sendir hnappurinn LTI-innskráningarbeiðni í stað þess að opna einfaldan tengil. Til að ljúka ræsingunni þarf LTI-þjónustu þessa vefs."
+      },
+      {
+        "title": "LTI client ID",
+        "description": "Client ID sem verkfærið gaf þessum vef. Opinbert auðkenni, ekki leyndarmál: settu aldrei lykla eða leyndarmál hér."
+      },
+      {
+        "title": "LTI deployment ID",
+        "description": "Deployment ID sem verkfærið gaf þessum vef. Opinbert auðkenni, ekki leyndarmál."
+      },
+      {
+        "title": "LTI-útgefandi",
+        "description": "Slóðin sem auðkennir þennan vef gagnvart verkfærinu. Skildu eftir autt til að nota slóð vefsins sem síðan er á."
+      },
+      {
+        "title": "Hæð á síðunni",
+        "description": "Hæð verkfærisins þegar það opnast á þessari síðu, í dílum (200 til 2000)."
+      },
+      {
+        "title": "Áherslulitur",
+        "description": "Litur haus-merkisins og hnappsins. Skildu eftir autt til að fylgja þemanu."
+      }
+    ],
+    "developer": [
+      {
+        "title": "LTI-innskráningarvísbending",
+        "description": "Ógagnsætt gildi sem LTI-þjónusta þessa vefs notar til að þekkja nemandann. Venjulega gefið af vefnum í gegnum lti-launch-request-atburðinn frekar en vistað hér. Aldrei lykilorð eða lykill."
+      },
+      {
+        "title": "LTI-skilaboðavísbending",
+        "description": "Ógagnsætt gildi sem LTI-þjónusta þessa vefs notar til að þekkja þessa ræsingu. Venjulega gefið af vefnum frekar en vistað hér."
+      }
+    ]
+  }
+}

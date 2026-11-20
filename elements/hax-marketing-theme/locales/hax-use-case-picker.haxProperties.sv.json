@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Användningsväljare",
+    "description": "Välj vad en webbplats är till för och få en länk som öppnar HAX i webbläsaren med den startwebbplatsen, plus motsvarande CLI-kommando."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Adress till HAX i webbläsaren",
+        "description": "Var länken öppnas; ?skeleton= och &name= läggs till"
+      },
+      {
+        "title": "Startwebbplatser att utelämna",
+        "description": "Maskinnamn, kommaseparerade"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Lista över startwebbplatser",
+        "description": "Adress till skelettlistan (formatet som app-hax läser)"
+      }
+    ]
+  }
+}

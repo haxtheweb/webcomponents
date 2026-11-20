@@ -3,5 +3,8 @@
   "copyAsCsv": "Kopii kiel CSV.",
   "printTable": "Presi tabelon",
   "selectColumn": "Elekti kolumnon",
-  "dataTable": "Datumoj · Tabelo"
+  "dataTable": "Datumoj · Tabelo",
+  "filterStatus": "Montrante {shown} el {total} vicoj, filtritaj laŭ {column}: {text}",
+  "columnNumber": "Kolumno {column}",
+  "clearFilter": "Forigi filtrilon"
 }

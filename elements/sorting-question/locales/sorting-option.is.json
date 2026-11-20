@@ -2,5 +2,9 @@
   "answerInCorrectOrder": "Svarið er í réttri röð",
   "answerInIncorrectOrder": "Svarið er í rangri röð",
   "moveOptionUp": "Veldu til að færa valkost ofar í röðinni",
-  "moveOptionDown": "Veldu til að færa valkost neðar í röðinni"
+  "moveOptionDown": "Veldu til að færa valkost neðar í röðinni",
+  "moveEarlier": "Færa framar",
+  "moveLater": "Færa aftar",
+  "correct": "Rétt",
+  "incorrect": "Rangt"
 }

@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Kile helu",
+    "description": "Hoʻokahi helu koʻikoʻi, me kona lepili a me ke ʻano o kona loli ʻana. E kau i kekahi mau mea ma ka mānoanoa no kahi lālani papa hoʻokele."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Lepili",
+        "description": "Ka mea a ka helu e ana ai."
+      },
+      {
+        "title": "Waiwai",
+        "description": "Ka helu. Hoʻopūʻulu ʻia ka helu maʻalahi e like me ka ʻōlelo o ka ʻaoʻao; hōʻike ʻia nā mea ʻē aʻe e like me ke kākau ʻia."
+      },
+      {
+        "title": "Loli",
+        "description": "Pehea i loli ai, ma nā huaʻōlelo, e like me 6% i kēia kau."
+      },
+      {
+        "title": "Kuhikuhina",
+        "description": "Inā i luna a i lalo paha ka loli.",
+        "options": {
+          "": "ʻAʻohe",
+          "up": "I luna",
+          "down": "I lalo"
+        }
+      }
+    ]
+  }
+}

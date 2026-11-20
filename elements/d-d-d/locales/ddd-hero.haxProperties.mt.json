@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Hero",
+    "description": "Immaġni, GIF jew vidjo kbir b'intestatura u test fuqu, imqiegħed kullimkien f'paġna."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Immaġni jew vidjo",
+        "description": "Fajl JPG, PNG, WebP, GIF, MP4 jew WebM."
+      },
+      {
+        "title": "Test alternattiv",
+        "description": "Iddeskrivi l-immaġni. Ħallih vojt meta tkun biss dekorazzjoni."
+      },
+      {
+        "title": "Intestatura",
+        "description": "Intestatura murija fuq il-midja. Ħalliha vojta għal xejn."
+      },
+      {
+        "title": "Test",
+        "description": "Test muri taħt l-intestatura, fuq il-midja."
+      },
+      {
+        "title": "Wisa' sħiħ",
+        "description": "Imtedd minn tarf għal tarf minflok ma joqgħod fil-kolonna tal-kontenut."
+      },
+      {
+        "title": "Għoli",
+        "options": {
+          "tall": "Għoli",
+          "medium": "Medju",
+          "short": "Qasir"
+        }
+      },
+      {
+        "title": "Ikkwadrar",
+        "description": "Kif jidher ir-ritratt f'kull daqs tal-iskrin"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Sfumatura",
+        "description": "Kulur imqiegħed fuq il-midja. B'intestatura jew test dejjem ikun hemm wieħed, biex it-test jibqa' jinqara.",
+        "options": {
+          "blue": "Blu",
+          "bottom": "Skur fil-qiegħ",
+          "none": "Xejn"
+        }
+      },
+      {
+        "title": "Pożizzjoni tat-test",
+        "options": {
+          "bottom": "Isfel",
+          "middle": "Nofs"
+        }
+      },
+      {
+        "title": "Punt fokali orizzontali",
+        "description": "Parti mill-immaġni li tibqa' tidher meta tinqata', minn 0 (xellug) sa 100 (lemin)."
+      },
+      {
+        "title": "Punt fokali vertikali",
+        "description": "Parti mill-immaġni li tibqa' tidher meta tinqata', minn 0 (fuq) sa 100 (isfel)."
+      }
+    ]
+  }
+}

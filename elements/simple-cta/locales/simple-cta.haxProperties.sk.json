@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Skryť ikonu",
         "description": "Skryť ikonu použitú na zvýraznenie textu"
+      },
+      {
+        "title": "Vzhľad",
+        "description": "Ako veľmi je tlačidlo zdôraznené.",
+        "options": {
+          "": "Vyplnené",
+          "tonal": "Tónové",
+          "outlined": "Obrysové",
+          "plain": "Jednoduché"
+        }
+      },
+      {
+        "title": "Veľkosť",
+        "description": "Veľkosť tlačidla.",
+        "options": {
+          "s": "Malé",
+          "": "Stredný",
+          "l": "Veľké"
+        }
       }
     ],
     "advanced": [

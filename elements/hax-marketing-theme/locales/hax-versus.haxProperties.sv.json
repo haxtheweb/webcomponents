@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Mot",
+    "description": "Ord bredvid en duellknapp med två karaktärer"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Rubrik"
+      },
+      {
+        "title": "Vart knappen går"
+      },
+      {
+        "title": "Knapptext"
+      },
+      {
+        "title": "Vänster karaktärsfrö"
+      },
+      {
+        "title": "Höger karaktärsfrö"
+      }
+    ]
+  }
+}

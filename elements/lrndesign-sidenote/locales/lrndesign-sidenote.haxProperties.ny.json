@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Cholemba cham'mbali",
+    "description": "Cholemba cholekanitsidwa ndi zomwe zili mozungulira, ndi chizindikiro ndi chilembo chosankha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Chilembo",
+        "description": "Chilembo cha cholemba cham'mbali."
+      },
+      {
+        "title": "Chizindikiro",
+        "description": "Chizindikiro cha cholemba cham'mbali."
+      },
+      {
+        "title": "Zomwe zili mkati",
+        "description": "Zomwe zili mu cholemba cham'mbali."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Mtundu",
+        "description": "Mtundu womwe cholemba cham'mbali chimapakidwa."
+      }
+    ]
+  }
+}

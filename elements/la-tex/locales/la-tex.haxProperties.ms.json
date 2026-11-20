@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "Tulis menggunakan tatatanda matematik LaTeX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Latar gambar",
+        "description": "Latar belakang di sebalik gambar yang dilukis. Automatik menambahkannya hanya apabila lukisan sukar dilihat pada halaman, seperti garisan gelap dalam mod gelap.",
+        "options": {
+          "auto": "Automatik",
+          "light": "Cerah",
+          "dark": "Gelap",
+          "none": "Tiada"
+        }
+      }
+    ]
   }
 }

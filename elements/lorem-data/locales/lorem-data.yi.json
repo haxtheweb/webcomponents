@@ -1,4 +1,6 @@
 {
   "saveAll": "היט אָפּ אַלץ",
-  "saveTheFollowing": "אָפּהיטן די ווײַטערדיקע: {list}?"
+  "saveTheFollowing": "אָפּהיטן די ווײַטערדיקע: {list}?",
+  "save": "אָפּהיטן",
+  "cancel": "אָפּזאָגן"
 }

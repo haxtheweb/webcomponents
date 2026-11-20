@@ -1,0 +1,22 @@
+{
+  "scenario": "Szenario",
+  "directions": "Uweisungen",
+  "showDirections": "Uweisunge weisen",
+  "hideDirections": "Uweisunge verstoppen",
+  "directionsRead": "Liest all Zeen a wielt, wat Dir géift maachen.",
+  "directionsEndings": "Et gëtt e puer Ennen. Probéiert en anere Wee, wann Dir fäerdeg sidd.",
+  "startOver": "Nei ufänken",
+  "back": "E Schrëtt zréck",
+  "tryAnother": "En anere Wee probéieren",
+  "path": "Wee",
+  "scene": "Zeen",
+  "ending": "Enn",
+  "end": "Enn",
+  "scenesSeen": "{seen} vun {total} Zeene gesinn",
+  "endingReached": "Enn erreecht",
+  "addScene": "Zeen derbäisetzen",
+  "newScene": "Nei Zeen",
+  "newSceneText": "Beschreift, wat geschitt, a verlinkt dann all Wiel mat enger Zeen.",
+  "editingNote": "Beaarbechtung: all Zeen gëtt gewisen. Eng Wiel ass e Link op #, gefollegt vun enger Zeen-ID.",
+  "noScenes": "Setzt eng Zeen derbäi, fir de Szenario unzefänken."
+}

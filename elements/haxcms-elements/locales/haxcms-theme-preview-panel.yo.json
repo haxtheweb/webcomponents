@@ -8,5 +8,9 @@
   "theme": "Àkòrí",
   "palette": "Àkójọ àwọ̀",
   "cancel": "Fagilé",
-  "openAppearanceSettings": "Ṣí Àwọn Ètò Ìrísí"
+  "openAppearanceSettings": "Ṣí Àwọn Ètò Ìrísí",
+  "designSystem": "Ètò ìṣeọ̀nà",
+  "designSystemDefault": "DDD (àìyípadà)",
+  "designSystemThemeDefault": "{name} (àìyípadà àkòrí)",
+  "designSystemHelp": "Àwọ̀, ìrísí lẹ́tà, igun àti ìkìjọ. Àkòrí ṣì ń pinnu ìtò."
 }

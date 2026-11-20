@@ -14,6 +14,10 @@
         "property": "hotspotDetails",
         "title": "Detalji žarišnih tačaka",
         "description": "Interaktivne žarišne tačke na mapi slike."
+      },
+      {
+        "title": "Detalji aktivnih tačaka",
+        "description": "Interaktivne aktivne tačke na mapi slike."
       }
     ]
   }

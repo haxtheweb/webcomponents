@@ -1,4 +1,6 @@
 {
   "saveAll": "Alle speichern",
-  "saveTheFollowing": "Folgendes speichern: {list}?"
+  "saveTheFollowing": "Folgendes speichern: {list}?",
+  "save": "Speichern",
+  "cancel": "Abbrechen"
 }

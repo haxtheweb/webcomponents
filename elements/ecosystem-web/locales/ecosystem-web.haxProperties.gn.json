@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Ekosistema ñanduti",
+    "description": "Peteĩ ñanduti oñomongetáva mba'éichapa ojoaju proyecto pehẽkuéra, ñanduti michĩ ha jeguata jehasa ha jehasa reheve."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ñanduti marandu",
+        "description": "Ñanduti JSON aty URL (ojejapóva PRAW-pe, ecosystem-webs.json)."
+      },
+      {
+        "title": "Ñanduti",
+        "description": "Ñanduti id ojehechauka raẽ hag̃ua; main ha'e ekosistema ñanduti."
+      },
+      {
+        "title": "Azulejo ojeiporavóva",
+        "description": "Azulejo id ojeiporavo hag̃ua ñanduti ojepe'ávo."
+      },
+      {
+        "title": "Jeguata",
+        "description": "Jeguata id reñepyrũ hag̃ua."
+      },
+      {
+        "title": "Eñepyrũ lista jehechápe",
+        "description": "Ehechauka ñanduti lista oñemoĩva ojuehe ramo ta'ãngahaipy rendaguépe."
+      },
+      {
+        "title": "Ta'ãngahaipy añoite",
+        "description": "Ehechauka ta'ãngahaipy añoite, ta'ãnga ramo: akã'ỹre, jeguata, mba'ekuaa térã jehasa barra'ỹre."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Oñemoñe'ẽ",
+        "description": "Eñepyrũ opaite azulejo oñemoñe'ẽva peteĩ ñemboja'i rupive.",
+        "options": {
+          "": "Joaju añoite",
+          "fresh": "Ipyahukue",
+          "bus": "Factor ómnibus",
+          "impact": "Mbopy",
+          "evidence": "Techapyrã",
+          "parity": "Joja"
+        }
+      }
+    ]
+  }
+}

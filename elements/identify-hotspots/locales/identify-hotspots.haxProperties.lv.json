@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Atrast karstos punktus",
+    "description": "Izglītojamie atrod pareizās vietas attēlā, noklikšķinot, pieskaroties vai pārvietojot tastatūras tēmekli. Vērtējamais attēlu kartes ekvivalents."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Attēls",
+        "description": "Attēls, kurā izglītojamie meklē."
+      },
+      {
+        "title": "Alternatīvais teksts",
+        "description": "Apraksta attēlu cilvēkiem, kuri to nevar redzēt. Tas nekad netiek rādīts kā virsraksts."
+      },
+      {
+        "title": "Virsraksts",
+        "description": "Īss redzams virsraksts, kas tiek rādīts virs attēla."
+      },
+      {
+        "title": "Jautājums",
+        "description": "Kas izglītojamajiem jāatrod attēlā."
+      },
+      {
+        "title": "Atbildes",
+        "description": "Katra atbilde ir nosaukts ovāls attēlā. Novietojums un izmērs ir procentos no attēla, mērot no tā augšējā kreisā stūra. Rediģējot katra atbilde attēlā ir apvilkta."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Mēģinājumi",
+        "description": "Cik reižu izglītojamais var mēģināt. 0 nozīmē neierobežoti."
+      },
+      {
+        "title": "Atļautās kļūdas",
+        "description": "Cik kļūdas beidz mēģinājumu. 0 nozīmē neierobežoti, un izglītojamie saņem pogu “Pabeigt”."
+      },
+      {
+        "title": "Sakļaujams",
+        "description": "Rādīt šo jautājumu kā rindu, kas atveras un aizveras. Atverot vienu, aizveras citi blakus esošie sakļaujamie jautājumi."
+      },
+      {
+        "title": "Sākt sakļautu",
+        "description": "Ja sakļaujams, sākt kā aizvērtu rindu, kas rāda tikai jautājumu un tā statusu."
+      },
+      {
+        "title": "Vērtēšanas formāts",
+        "description": "OER Schema: šī vērtējuma vērtēšanas formāts (piemēram, punkti, atzīme ar burtu, procenti, izpilde)."
+      },
+      {
+        "title": "Mācību mērķis",
+        "description": "OER Schema: ar šo vērtējumu saistītais mācību mērķis."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Testa nosaukums",
+        "description": "Testa nosaukums, ko nodod izmantošanai xAPI vidēs šī vienuma identificēšanai"
+      },
+      {
+        "title": "Kurss",
+        "description": "OER Schema: kurss, kuram šis vērtējums paredzēts."
+      }
+    ]
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Lancement d'outil externe",
+    "description": "Un bloc qui ouvre un outil d'apprentissage externe dans une nouvelle fenêtre ou sur la page, comme simple lien ou avec une requête de connexion LTI 1.3."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titre",
+        "description": "Nom de l'outil. Il est affiché dans l'en-tête et sur le bouton."
+      },
+      {
+        "title": "Description",
+        "description": "Ce que les apprenants font dans l'outil, affiché au-dessus du bouton."
+      },
+      {
+        "title": "URL de lancement",
+        "description": "Adresse de l'outil. Ce doit être une adresse complète commençant par https:// ou http://."
+      },
+      {
+        "title": "Ouvrir dans",
+        "description": "Une nouvelle fenêtre fonctionne avec tous les outils. Sur cette page ne fonctionne qu'avec les outils qui acceptent d'être affichés dans un autre site.",
+        "options": {
+          "window": "Une nouvelle fenêtre",
+          "embed": "Sur cette page"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "URL de connexion LTI",
+        "description": "LTI 1.3 uniquement : l'adresse d'initiation de connexion de l'outil. Avec elle, un client ID et un deployment ID, le bouton envoie une requête de connexion LTI au lieu d'ouvrir un simple lien. Finaliser le lancement nécessite le service LTI de ce site."
+      },
+      {
+        "title": "Client ID LTI",
+        "description": "Le client ID que l'outil a attribué à ce site. Un identifiant public, pas un secret : ne mettez jamais de clés ni de secrets ici."
+      },
+      {
+        "title": "Deployment ID LTI",
+        "description": "Le deployment ID que l'outil a attribué à ce site. Un identifiant public, pas un secret."
+      },
+      {
+        "title": "Émetteur LTI",
+        "description": "L'adresse qui identifie ce site auprès de l'outil. Laissez vide pour utiliser l'adresse du site où se trouve la page."
+      },
+      {
+        "title": "Hauteur sur la page",
+        "description": "Hauteur de l'outil lorsqu'il s'ouvre sur cette page, en pixels (200 à 2000)."
+      },
+      {
+        "title": "Couleur d'accent",
+        "description": "Couleur de la pastille d'en-tête et du bouton. Laissez vide pour suivre le thème."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Indice de connexion LTI",
+        "description": "Une valeur opaque que le service LTI de ce site utilise pour reconnaître l'apprenant. Généralement fournie par le site via l'événement lti-launch-request plutôt qu'enregistrée ici. Jamais un mot de passe ni une clé."
+      },
+      {
+        "title": "Indice de message LTI",
+        "description": "Une valeur opaque que le service LTI de ce site utilise pour reconnaître ce lancement. Généralement fournie par le site plutôt qu'enregistrée ici."
+      }
+    ]
+  }
+}

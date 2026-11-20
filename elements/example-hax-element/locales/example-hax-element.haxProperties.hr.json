@@ -1,0 +1,13 @@
+{
+  "gizmo": {
+    "title": "example-hax-element",
+    "description": "Primjer početnog elementa za demonstraciju HAX konfiguracije i svojstava koja se mogu uređivati."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Naslov"
+      }
+    ]
+  }
+}

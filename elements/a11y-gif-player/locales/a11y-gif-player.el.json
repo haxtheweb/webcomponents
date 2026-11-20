@@ -2,5 +2,9 @@
   "toggleAnimation": "Εναλλαγή κινούμενης εικόνας",
   "info": "πληροφορίες",
   "image": "Εικόνα",
-  "animatedGif": "Κινούμενο GIF"
+  "animatedGif": "Κινούμενο GIF",
+  "playAnimation": "Αναπαραγωγή κινούμενης εικόνας",
+  "pauseAnimation": "Παύση κινούμενης εικόνας",
+  "showDescription": "Εμφάνιση περιγραφής",
+  "hideDescription": "Απόκρυψη περιγραφής"
 }

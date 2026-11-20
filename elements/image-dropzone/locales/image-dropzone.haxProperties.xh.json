@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Indawo yokuwisa yomfanekiso",
+    "description": "Abafundi babeka iilebhile kwiindawo ezibekwe phezu komfanekiso, emva koko bajonge impendulo yabo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Umfanekiso",
+        "description": "Umfanekiso abafundi ababeka kuwo iilebhile."
+      },
+      {
+        "title": "Isicatshulwa esingenye indlela",
+        "description": "Ichaza umfanekiso kubantu abangakwaziyo ukuwubona. Musa ukutyhila apho iilebhile ziya khona."
+      },
+      {
+        "title": "Isihloko somfanekiso",
+        "description": "Isihloko esifutshane esibonakalayo somfanekiso, esiboniswa ngaphezulu kwawo."
+      },
+      {
+        "title": "Umbuzo",
+        "description": "Oko abafundi bacelwa ukuba bakwenze ngeelebhile."
+      },
+      {
+        "title": "Iilebhile neendawo",
+        "description": "Into nganye yilebhile abafundi abanokuyibeka. Nika ilebhile igama lendawo ukubeka indawo yayo kumfanekiso; ilebhile engenagama lendawo yeyongezelelweyo engekho ndawo. Amanani endawo ziipesenti zomfanekiso."
+      },
+      {
+        "title": "Ingcaciso",
+        "description": "Ingcaciso engakhethwa eboniswa ngezantsi komfanekiso."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Iinzame",
+        "description": "Kangaphi umfundi anokujonga. 0 kuthetha akunamda."
+      },
+      {
+        "title": "Xuba iilebhile",
+        "description": "Bonisa iilebhile ngolandelelwano olwahlukileyo kutyelelo ngalunye."
+      },
+      {
+        "title": "Iyasongeka",
+        "description": "Bonisa lo mbuzo njengomqolo ovulekayo novalekayo. Ukuvula omnye kuvala eminye imibuzo esongekayo ecaleni kwawo."
+      },
+      {
+        "title": "Qala usongiwe",
+        "description": "Xa isongeka, qala njengomqolo ovaliweyo obonisa umbuzo nesimo sawo kuphela."
+      },
+      {
+        "title": "Ifomathi yokumaka",
+        "description": "OER Schema: ifomathi yokumaka yolu vavanyo (umz. amanqaku, unobumba, ipesenti, ukugqitywa)."
+      },
+      {
+        "title": "Injongo yokufunda",
+        "description": "OER Schema: injongo yokufunda enxulumene nolu vavanyo."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Igama lovavanyo",
+        "description": "Igama lovavanyo elisetyenziselwa ukuchonga kwe-xAPI kwiinkqubo zohlalutyo."
+      },
+      {
+        "title": "Ikhosi",
+        "description": "OER Schema: ikhosi olu vavanyo lwenzelwe yona."
+      }
+    ]
+  }
+}

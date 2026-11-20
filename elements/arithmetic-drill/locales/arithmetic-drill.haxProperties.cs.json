@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Aritmetický dril",
+    "description": "Krátká série generovaných aritmetických příkladů s okamžitou zpětnou vazbou. Vyberte operace a rozsah čísel; každé kolo je nové."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Název",
+        "description": "Název tohoto drilu, zobrazený v jeho záhlaví."
+      },
+      {
+        "title": "Operace",
+        "description": "Jaké druhy příkladů se zadávají. Studenti mohou kterýkoli z nich před začátkem vypnout.",
+        "options": {
+          "add": "Sčítání",
+          "subtract": "Odčítání",
+          "multiply": "Násobení",
+          "divide": "Dělení",
+          "add subtract": "Sčítání a odčítání",
+          "multiply divide": "Násobení a dělení",
+          "add multiply": "Sčítání a násobení",
+          "add divide": "Sčítání a dělení",
+          "subtract multiply": "Odčítání a násobení",
+          "subtract divide": "Odčítání a dělení",
+          "add subtract multiply": "Sčítání, odčítání a násobení",
+          "add subtract divide": "Sčítání, odčítání a dělení",
+          "add multiply divide": "Sčítání, násobení a dělení",
+          "subtract multiply divide": "Odčítání, násobení a dělení",
+          "add subtract multiply divide": "Všechny čtyři"
+        }
+      },
+      {
+        "title": "Nejmenší číslo",
+        "description": "Nejmenší číslo použité v příkladu. Celá čísla, 0 nebo více."
+      },
+      {
+        "title": "Největší číslo",
+        "description": "Největší číslo použité v příkladu. Výsledky dělení a dělitelé zůstávají také v tomto rozsahu."
+      },
+      {
+        "title": "Počet příkladů",
+        "description": "Kolik příkladů je v jednom kole (1 až 100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Časový limit",
+        "description": "Počet sekund na celé kolo. 0 znamená bez časovače, což je výchozí: drily na čas znevýhodňují studenty, kteří potřebují více času. Když je nastaven, studenti si časovač mohou sami vypnout."
+      },
+      {
+        "title": "Zvýrazňující barva",
+        "description": "Barva štítku záhlaví a tlačítek. Ponechte prázdné, aby se řídila motivem."
+      }
+    ]
+  }
+}

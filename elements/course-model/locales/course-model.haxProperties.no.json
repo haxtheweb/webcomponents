@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "tittel"
+        "title": "tittel",
+        "description": "Overskrift som vises over kursmodellen."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "Adressen til 3D-modellfilen (.glb eller .gltf) som skal vises."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "Beskriv 3D-modellen for personer som ikke kan se den."
       },
       {
         "title": "Informasjonsområde"

@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Fila destacada",
+    "description": "Una pantalla del producto junto a lo que significa para ti"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etiqueta pequeña"
+      },
+      {
+        "title": "Encabezado"
+      },
+      {
+        "title": "Imagen"
+      },
+      {
+        "title": "Qué muestra la imagen"
+      },
+      {
+        "title": "Imagen a la derecha"
+      },
+      {
+        "title": "Color de la sombra (nombre DDD; en blanco sigue la paleta)"
+      }
+    ]
+  }
+}

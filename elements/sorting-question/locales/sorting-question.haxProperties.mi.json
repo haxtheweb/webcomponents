@@ -13,7 +13,15 @@
       {
         "property": "answers",
         "title": "Ngā Whakautu",
-        "description": "Mā te raupapa whakautu e tautuhi te raupapa tika."
+        "description": "Mā te raupapa whakautu e tautuhi te raupapa tika.",
+        "options": {
+          "": "Rārangi",
+          "cards": "Kāri atahanga"
+        }
+      },
+      {
+        "title": "Ngā whakautu",
+        "description": "Mā te raupapa o ngā whakautu e tautuhi te raupapa tika."
       }
     ],
     "advanced": [

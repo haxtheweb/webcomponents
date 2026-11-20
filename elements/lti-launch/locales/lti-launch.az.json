@@ -1,0 +1,19 @@
+{
+  "label": "Xarici alət",
+  "labelLti": "Xarici alət · LTI 1.3",
+  "theTool": "alət",
+  "directions": "Təlimatlar",
+  "showDirections": "Təlimatları göstər",
+  "hideDirections": "Təlimatları gizlət",
+  "directionsWindow": "Düymə aləti yeni pəncərədə açır.",
+  "directionsEmbed": "Düymə aləti bu səhifədə açır. Yüklənməsə, əvəzinə yeni pəncərədə açın.",
+  "directionsLti": "Bu sayt sizi alətə daxil edir, ona görə ayrıca hesab lazım deyil.",
+  "openWindow": "{title} aç (yeni pəncərə)",
+  "openEmbed": "{title} aç",
+  "openInstead": "Əvəzinə yeni pəncərədə aç",
+  "frameTitle": "{title} (xarici alət)",
+  "openedWindow": "Alət ilə yeni pəncərə açıldı.",
+  "openedEmbed": "Alət bu səhifədə açıldı.",
+  "needsUrl": "Bu blok http:// və ya https:// ilə başlayan işə salma ünvanı tələb edir.",
+  "needsSignIn": "Bu alət bu saytın giriş xidmətini tələb edir, amma o burada mövcud deyil. Heç nə açılmadı."
+}

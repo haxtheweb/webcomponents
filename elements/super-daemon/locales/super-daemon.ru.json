@@ -41,6 +41,7 @@
   "resultsCount": "Результатов: {count}",
   "superDaemon": "Super Daemon",
   "merlin": "Merlin",
+  "voiceName": "Future",
   "closeMerlin": "Закрыть Merlin",
   "listeningState": "Слушаю",
   "speakingState": "Говорю",

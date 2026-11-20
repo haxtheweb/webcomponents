@@ -60,6 +60,8 @@
   "flagsFound": "{correct} o te {total} kua kitea",
   "toRethink": "{count} hei whakaaro anō",
   "notEvidence": "ehara i te taunakitanga mō tēnei haki",
+  "isEvidence": "taunakitanga mō tēnei haki",
+  "readingKeys": "Whakamahia ngā pātuhi pere hei neke mai i tētahi {unit} ki te mea e whai ake ana.",
   "markAnswers": "Tohua ngā whakautu",
   "doneMarking": "Kua oti te tohu whakautu",
   "editHint": "Whakatikahia te pānui i raro. Whakamahia te Tohua ngā whakautu i te tahua paraka hei kōwhiri i te wāhi e tika ai ia haki.",

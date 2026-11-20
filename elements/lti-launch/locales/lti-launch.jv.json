@@ -1,0 +1,19 @@
+{
+  "label": "Piranti eksternal",
+  "labelLti": "Piranti eksternal · LTI 1.3",
+  "theTool": "pirantine",
+  "directions": "Pituduh",
+  "showDirections": "Tampilake pituduh",
+  "hideDirections": "Dhelikake pituduh",
+  "directionsWindow": "Tombol mbukak jendhela anyar sing isine piranti.",
+  "directionsEmbed": "Tombol mbukak piranti ing kaca iki. Yen ora kemot, bukak ing jendhela anyar wae.",
+  "directionsLti": "Situs iki mlebokake panjenengan menyang piranti, mula ora perlu akun liya.",
+  "openWindow": "Bukak {title} (jendhela anyar)",
+  "openEmbed": "Bukak {title}",
+  "openInstead": "Bukak ing jendhela anyar wae",
+  "frameTitle": "{title} (piranti eksternal)",
+  "openedWindow": "Jendhela anyar kebukak karo pirantine.",
+  "openedEmbed": "Piranti kebukak ing kaca iki.",
+  "needsUrl": "Blok iki butuh alamat peluncuran sing diwiwiti http:// utawa https://.",
+  "needsSignIn": "Piranti iki butuh layanan mlebu situs iki, sing ora kasedhiya ing kene. Ora ana sing dibukak."
+}

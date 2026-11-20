@@ -13,7 +13,10 @@
       {
         "property": "modifier",
         "title": "Kirekebishaji cha media",
-        "description": "Kirekebishaji cha hiari cha aina ya media. Hubainisha aina ya media ambayo leseni hii inahusu."
+        "description": "Kirekebishaji cha hiari cha aina ya media. Hubainisha aina ya media ambayo leseni hii inahusu.",
+        "options": {
+          "": "Hakuna kirekebishi"
+        }
       },
       {
         "property": "uri",

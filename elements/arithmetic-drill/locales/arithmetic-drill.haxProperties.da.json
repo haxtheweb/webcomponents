@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Regneøvelse",
+    "description": "En kort række genererede regneopgaver med øjeblikkelig feedback. Vælg regningsarterne og talområdet; hver runde er ny."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Navnet på denne øvelse, vist i dens overskrift."
+      },
+      {
+        "title": "Regningsarter",
+        "description": "Hvilke slags opgaver der stilles. Deltagerne kan slå enhver af disse fra, før de starter.",
+        "options": {
+          "add": "Addition",
+          "subtract": "Subtraktion",
+          "multiply": "Multiplikation",
+          "divide": "Division",
+          "add subtract": "Addition og subtraktion",
+          "multiply divide": "Multiplikation og division",
+          "add multiply": "Addition og multiplikation",
+          "add divide": "Addition og division",
+          "subtract multiply": "Subtraktion og multiplikation",
+          "subtract divide": "Subtraktion og division",
+          "add subtract multiply": "Addition, subtraktion og multiplikation",
+          "add subtract divide": "Addition, subtraktion og division",
+          "add multiply divide": "Addition, multiplikation og division",
+          "subtract multiply divide": "Subtraktion, multiplikation og division",
+          "add subtract multiply divide": "Alle fire"
+        }
+      },
+      {
+        "title": "Mindste tal",
+        "description": "Det mindste tal, der bruges i en opgave. Heltal, 0 eller derover."
+      },
+      {
+        "title": "Største tal",
+        "description": "Det største tal, der bruges i en opgave. Divisionssvar og divisorer holder sig også inden for dette område."
+      },
+      {
+        "title": "Antal opgaver",
+        "description": "Hvor mange opgaver der er i én runde (1 til 100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tidsgrænse",
+        "description": "Sekunder til en hel runde. 0 betyder ingen timer, hvilket er standard: tidsbegrænsede øvelser svigter deltagere, der har brug for mere tid. Når den er sat, kan deltagerne stadig selv slå timeren fra."
+      },
+      {
+        "title": "Accentfarve",
+        "description": "Farve på overskriftsmærket og knapperne. Lad være tom for at følge temaet."
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "scene": "장면",
+  "ending": "결말",
+  "goodEnding": "좋은 결말",
+  "mixedEnding": "엇갈린 결말",
+  "poorEnding": "나쁜 결말",
+  "scoreOf": "점수 {score}/{max}",
+  "scoreOnly": "점수 {score}",
+  "startScene": "시작",
+  "sceneIdLabel": "장면 ID",
+  "needsId": "선택지가 이 장면에 연결될 수 있도록 장면 ID를 추가하세요.",
+  "orphan": "이 장면에 연결된 선택지가 없습니다.",
+  "deadLinks": "다음 링크는 존재하지 않는 장면을 가리킵니다:"
+}

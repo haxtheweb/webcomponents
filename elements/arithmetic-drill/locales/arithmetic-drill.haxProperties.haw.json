@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Hoʻomaʻamaʻa helu",
+    "description": "He holo pōkole o nā nīnau helu i hana ʻia me ka manaʻo pane koke. E koho i nā hana helu a me ka laulā helu; hou kēlā me kēia holo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Poʻo inoa",
+        "description": "Inoa o kēia hoʻomaʻamaʻa, hōʻike ʻia ma kona poʻo."
+      },
+      {
+        "title": "Nā hana helu",
+        "description": "ʻO nā ʻano nīnau i nīnau ʻia. Hiki i nā haumāna ke hoʻopio i kekahi o kēia ma mua o ko lākou hoʻomaka ʻana.",
+        "options": {
+          "add": "Hoʻohui",
+          "subtract": "Hoʻolawe",
+          "multiply": "Hoʻonui",
+          "divide": "Puʻunaue",
+          "add subtract": "Hoʻohui a hoʻolawe",
+          "multiply divide": "Hoʻonui a puʻunaue",
+          "add multiply": "Hoʻohui a hoʻonui",
+          "add divide": "Hoʻohui a puʻunaue",
+          "subtract multiply": "Hoʻolawe a hoʻonui",
+          "subtract divide": "Hoʻolawe a puʻunaue",
+          "add subtract multiply": "Hoʻohui, hoʻolawe a hoʻonui",
+          "add subtract divide": "Hoʻohui, hoʻolawe a puʻunaue",
+          "add multiply divide": "Hoʻohui, hoʻonui a puʻunaue",
+          "subtract multiply divide": "Hoʻolawe, hoʻonui a puʻunaue",
+          "add subtract multiply divide": "Nā mea ʻehā a pau"
+        }
+      },
+      {
+        "title": "Helu liʻiliʻi loa",
+        "description": "Ka helu liʻiliʻi loa i hoʻohana ʻia ma kekahi nīnau. Nā helu piha, 0 a ʻoi aku."
+      },
+      {
+        "title": "Helu nui loa",
+        "description": "Ka helu nui loa i hoʻohana ʻia ma kekahi nīnau. Noho pū nā pane puʻunaue a me nā mea puʻunaue i loko o kēia laulā."
+      },
+      {
+        "title": "Ka nui o nā nīnau",
+        "description": "ʻEhia nīnau i loko o hoʻokahi holo (1 a i 100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Palena manawa",
+        "description": "Nā kekona i ʻae ʻia no ka holo holoʻokoʻa. ʻO ka 0, ʻaʻohe uaki, ʻo ia ka paʻamau: hāʻule nā haumāna e pono ai ka manawa hou aʻe i nā hoʻomaʻamaʻa me ka uaki. Ke hoʻonohonoho ʻia, hiki nō i nā haumāna ke hoʻopio i ka uaki no lākou iho."
+      },
+      {
+        "title": "Waihoʻoluʻu koʻikoʻi",
+        "description": "Waihoʻoluʻu o ka ʻāpana poʻo a me nā pihi. E waiho hakahaka e ukali i ke kumuhana."
+      }
+    ]
+  }
+}

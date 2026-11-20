@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Nyşany gizle",
         "description": "Teksti bezemek üçin ulanylýan nyşany gizle"
+      },
+      {
+        "title": "Daşky görnüş",
+        "description": "Düwmäniň näçe ünsi çekýändigi.",
+        "options": {
+          "": "Doldurylan",
+          "tonal": "Öwüşginli",
+          "outlined": "Gyrasy çyzykly",
+          "plain": "Ýönekeý"
+        }
+      },
+      {
+        "title": "Ölçeg",
+        "description": "Düwmäniň ölçegi.",
+        "options": {
+          "s": "Kiçi",
+          "": "Orta",
+          "l": "Uly"
+        }
       }
     ],
     "advanced": [

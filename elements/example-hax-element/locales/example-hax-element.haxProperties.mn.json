@@ -1,0 +1,13 @@
+{
+  "gizmo": {
+    "title": "example-hax-element",
+    "description": "HAX тохиргоо болон засварлах боломжтой шинж чанаруудыг харуулах жишээ эхлэлийн элемент."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Гарчиг"
+      }
+    ]
+  }
+}

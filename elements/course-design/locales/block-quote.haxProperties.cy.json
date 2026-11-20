@@ -20,6 +20,12 @@
         "title": "Delwedd",
         "description": "Delwedd a ddangosir gyda'r dyfyniad."
       }
+    ],
+    "advanced": [
+      {
+        "title": "Wedi'i fframio",
+        "description": "Lluniadu'r dyfyniad ar ffrâm y bloc a rennir, gydag eicon a label uwch ei ben, fel ei fod yn cyd-fynd â nodiadau a chardiau cyfarwyddiadau."
+      }
     ]
   }
 }

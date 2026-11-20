@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Pilíř",
+    "description": "Pilíř: název, fráze, ikona, barva a proč je důležitý"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Název"
+      },
+      {
+        "title": "Fráze"
+      },
+      {
+        "title": "Ikona"
+      },
+      {
+        "title": "Barva (název DDD)"
+      },
+      {
+        "title": "Který pilíř, 1 až 7"
+      },
+      {
+        "title": "Malá karta"
+      },
+      {
+        "title": "Kde je název"
+      }
+    ]
+  }
+}

@@ -3,5 +3,7 @@
   "status_stop": "Mandheg",
   "status_warning": "Pènget",
   "status_success": "Kasil",
-  "status_info": "Cathetan"
+  "status_info": "Cathetan",
+  "status_tip": "Apa panjenengan ngerti?",
+  "status_new": "Apa sing anyar"
 }

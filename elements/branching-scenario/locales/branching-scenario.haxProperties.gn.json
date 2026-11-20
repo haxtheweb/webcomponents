@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Jehasa hakãva",
+    "description": "Peteĩ tembiasakue peteĩteĩ jeporavo ogueraháva ambue escena ha pahápe. Temimbo'ekuéra ikatu ojevy ha oñeha'ã ambue tape; paha og̃uahẽva omoĩ kytã."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Téra",
+        "description": "Jehasa réra, ojehechaukáva iñakãme."
+      },
+      {
+        "title": "Escena ñepyrũrã",
+        "description": "Escena id temimbo'ekuéra oñepyrũhápe. Eheja nandi eñepyrũ hag̃ua escena peteĩhápe."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Sa'y mbohesakãha",
+        "description": "Sa'y ojeiporavokuaáva iñakã chip, botõkuéra ha peteĩ jeporavo rembe'ýpe g̃uarã."
+      }
+    ]
+  }
+}

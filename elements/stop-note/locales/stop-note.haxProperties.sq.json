@@ -23,7 +23,9 @@
           "stop": "Ndalo",
           "warning": "Paralajmërim",
           "success": "Konfirmim",
-          "info": "Njoftim"
+          "info": "Njoftim",
+          "tip": "Këshillë",
+          "new": "Çfarë ka të re"
         }
       },
       {

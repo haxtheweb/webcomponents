@@ -1,4 +1,6 @@
 {
   "saveAll": "Összes mentése",
-  "saveTheFollowing": "Menti a következőket: {list}?"
+  "saveTheFollowing": "Menti a következőket: {list}?",
+  "save": "Mentés",
+  "cancel": "Mégse"
 }

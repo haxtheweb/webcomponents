@@ -52,6 +52,20 @@
           "_top": "Ifestile ephezulu - _top",
           "_parent": "Ifestile engumzali - _parent"
         }
+      },
+      {
+        "title": "Akukho Tolo",
+        "description": "Fihla utolo lweqhosha."
+      },
+      {
+        "title": "Ikhonkco: ithagethi",
+        "description": "Apho kufuneka livulelwe khona ikhonkco.",
+        "options": {
+          "": "Ifestile efanayo",
+          "_blank": "Ifestile entsha - _blank",
+          "_top": "Ifestile ephezulu - _top",
+          "_parent": "Ifestile engumzali - _parent"
+        }
       }
     ],
     "developer": [

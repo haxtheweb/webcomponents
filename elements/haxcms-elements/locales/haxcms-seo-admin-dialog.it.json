@@ -6,6 +6,8 @@
   "faviconDescription": "Immagine della scheda del browser / usata sui telefoni come piccolo logo del sito",
   "domain": "Dominio",
   "domainDescription": "Dominio di questo sito web",
+  "sameAs": "Altri profili di questo sito",
+  "sameAsDescription": "Un link per riga ai profili di questo sito o organizzazione altrove (GitHub, LinkedIn, YouTube, Mastodon). I motori di ricerca li usano per collegare quei profili a questo sito.",
   "language": "Lingua",
   "languageDescription": "Lingua di questo sito. Cerca per nome o codice, oppure inserisci un altro codice come fr-CA.",
   "googleAnalyticsId": "ID Google Analytics",

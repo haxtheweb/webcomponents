@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Kontributuri",
+    "description": "In-nies li bnew il-proġett, minn fajl tar-roster"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Fajl tar-roster (JSON)"
+      },
+      {
+        "title": "Veduta: landed, lab jew code"
+      },
+      {
+        "title": "L-akbar numru ta' nies li jidhru (0 huwa kollha)"
+      }
+    ]
+  }
+}

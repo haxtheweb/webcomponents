@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "عنوان"
+        "title": "عنوان",
+        "description": "ڪورس ماڊل مٿان ڏيکاريل سرخي."
       },
       {
         "property": "src",
-        "title": "ذريعو"
+        "title": "ذريعو",
+        "description": "ڏيکارڻ لاءِ 3D ماڊل فائل (.glb يا .gltf) جو پتو."
       },
       {
         "property": "alt",
-        "title": "متبادل متن"
+        "title": "متبادل متن",
+        "description": "انهن ماڻهن لاءِ 3D ماڊل بيان ڪريو جيڪي ان کي ڏسي نٿا سگهن."
       },
       {
         "title": "معلومات جو حصو"

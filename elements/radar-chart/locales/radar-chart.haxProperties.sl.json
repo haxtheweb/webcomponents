@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Radarski grafikon",
+    "description": "Radarski (pajkov) grafikon za modele zrelosti in točkovanje vidikov, kot je HEOSAT. Vključuje besedilno alternativo in podatkovno tabelo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Naslov",
+        "description": "Naslov grafikona; uporablja se tudi kot njegovo dostopno ime."
+      },
+      {
+        "title": "Največji rezultat",
+        "description": "Najvišja vrednost na lestvici."
+      },
+      {
+        "title": "Kategorije",
+        "description": "Ena kategorija na vrstico. Potrebne so vsaj 3."
+      },
+      {
+        "title": "Rezultati",
+        "description": "Z vejico ločena števila, eno na kategorijo v istem vrstnem redu."
+      },
+      {
+        "title": "Ciljni rezultati",
+        "description": "Z vejico ločena števila, eno na kategorijo v istem vrstnem redu."
+      },
+      {
+        "title": "Prikaži legendo",
+        "description": "Prikaži legendo z imeni rezultatov in ciljev."
+      },
+      {
+        "title": "Strnjeno",
+        "description": "Manjši grafikon brez oznak, legende ali podatkovne tabele. Za vrednosti z miško preidite čez točko."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Oznaka rezultata",
+        "description": "Oznaka rezultatov v legendi in tabeli."
+      },
+      {
+        "title": "Oznaka cilja",
+        "description": "Oznaka ciljev v legendi in tabeli."
+      }
+    ]
+  }
+}

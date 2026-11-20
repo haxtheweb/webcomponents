@@ -5,5 +5,7 @@
   "editModeLabel": "Λειτουργία επεξεργασίας λίστας αναπαραγωγής πολυμέσων",
   "position": "{current} από {total}",
   "previousItem": "Προηγούμενο στοιχείο",
-  "nextItem": "Επόμενο στοιχείο"
+  "nextItem": "Επόμενο στοιχείο",
+  "fullScreen": "Πλήρης οθόνη",
+  "exitFullScreen": "Έξοδος από πλήρη οθόνη"
 }

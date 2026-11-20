@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Hotspots aanwijzen",
+    "description": "Leerlingen vinden de juiste plekken op een afbeelding door te klikken, te tikken of een vizier met het toetsenbord te verplaatsen. De beoordeelde tegenhanger van een image map."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Afbeelding",
+        "description": "De afbeelding die leerlingen doorzoeken."
+      },
+      {
+        "title": "Alternatieve tekst",
+        "description": "Beschrijft de afbeelding voor mensen die haar niet kunnen zien. Wordt nooit als titel getoond."
+      },
+      {
+        "title": "Titel",
+        "description": "Een korte zichtbare titel boven de afbeelding."
+      },
+      {
+        "title": "Vraag",
+        "description": "Wat leerlingen in de afbeelding moeten vinden."
+      },
+      {
+        "title": "Antwoorden",
+        "description": "Elk antwoord is een benoemd ovaal op de afbeelding. Positie en grootte zijn percentages van de afbeelding, gemeten vanaf de linkerbovenhoek. Tijdens het bewerken is elk antwoord op de afbeelding omlijnd."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Pogingen",
+        "description": "Hoe vaak een leerling het kan proberen. 0 betekent onbeperkt."
+      },
+      {
+        "title": "Toegestane missers",
+        "description": "Hoeveel missers een poging beëindigen. 0 betekent onbeperkt, en leerlingen krijgen een knop Afronden."
+      },
+      {
+        "title": "Inklapbaar",
+        "description": "Toon deze vraag als een rij die open- en dichtgaat. Als je er een opent, sluiten de andere inklapbare vragen ernaast."
+      },
+      {
+        "title": "Ingeklapt beginnen",
+        "description": "Als ze inklapbaar is, begin dan als een gesloten rij die alleen de vraag en de status toont."
+      },
+      {
+        "title": "Beoordelingsformaat",
+        "description": "OER Schema: beoordelingsformaat voor deze toets (bijv. punten, letter, percentage, voltooiing)."
+      },
+      {
+        "title": "Leerdoel",
+        "description": "OER Schema: leerdoel dat bij deze toets hoort."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Naam van de quiz",
+        "description": "Quiznaam die wordt doorgegeven ter identificatie van dit item in xAPI-gestuurde omgevingen"
+      },
+      {
+        "title": "Cursus",
+        "description": "OER Schema: cursus waarvoor deze toets bedoeld is."
+      }
+    ]
+  }
+}

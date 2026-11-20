@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Nýtsluveljari",
+    "description": "Vel, hvat ein síða er til, og fá eitt leinki, sum letur HAX upp í kaganum við teirri byrjanarsíðuni, umframt samsvarandi CLI-boðið."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Adressa á HAX í kaganum",
+        "description": "Hvar leinkið letst upp; ?skeleton= og &name= verða løgd afturat"
+      },
+      {
+        "title": "Byrjanarsíður at lata vera",
+        "description": "Maskinnøvn, skild við komma"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Listi yvir byrjanarsíður",
+        "description": "Adressa á skeletlistanum (sniðið, sum app-hax lesur)"
+      }
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Besetzungsmitglied",
+    "description": "Eine Zielgruppe, gespielt von einer Figur, mit Text und einer Schaltfläche"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Wer das ist"
+      },
+      {
+        "title": "Figurentyp"
+      },
+      {
+        "title": "Figuren-Seed"
+      },
+      {
+        "title": "Bühnenfarbe (DDD-Name)"
+      },
+      {
+        "title": "Wohin die Schaltfläche führt"
+      },
+      {
+        "title": "Schaltflächentext"
+      }
+    ]
+  }
+}

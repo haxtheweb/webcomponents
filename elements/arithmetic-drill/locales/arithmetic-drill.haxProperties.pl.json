@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Ćwiczenia z arytmetyki",
+    "description": "Krótka seria generowanych zadań arytmetycznych z natychmiastową informacją zwrotną. Wybierz działania i zakres liczb; każda runda jest nowa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tytuł",
+        "description": "Nazwa tego ćwiczenia, widoczna w nagłówku."
+      },
+      {
+        "title": "Działania",
+        "description": "Jakie rodzaje zadań są zadawane. Uczący się mogą wyłączyć dowolne z nich przed startem.",
+        "options": {
+          "add": "Dodawanie",
+          "subtract": "Odejmowanie",
+          "multiply": "Mnożenie",
+          "divide": "Dzielenie",
+          "add subtract": "Dodawanie i odejmowanie",
+          "multiply divide": "Mnożenie i dzielenie",
+          "add multiply": "Dodawanie i mnożenie",
+          "add divide": "Dodawanie i dzielenie",
+          "subtract multiply": "Odejmowanie i mnożenie",
+          "subtract divide": "Odejmowanie i dzielenie",
+          "add subtract multiply": "Dodawanie, odejmowanie i mnożenie",
+          "add subtract divide": "Dodawanie, odejmowanie i dzielenie",
+          "add multiply divide": "Dodawanie, mnożenie i dzielenie",
+          "subtract multiply divide": "Odejmowanie, mnożenie i dzielenie",
+          "add subtract multiply divide": "Wszystkie cztery"
+        }
+      },
+      {
+        "title": "Najmniejsza liczba",
+        "description": "Najmniejsza liczba używana w zadaniu. Liczby całkowite, 0 lub więcej."
+      },
+      {
+        "title": "Największa liczba",
+        "description": "Największa liczba używana w zadaniu. Wyniki dzielenia i dzielniki też mieszczą się w tym zakresie."
+      },
+      {
+        "title": "Liczba zadań",
+        "description": "Ile zadań jest w jednej rundzie (od 1 do 100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Limit czasu",
+        "description": "Liczba sekund na całą rundę. 0 oznacza brak licznika i jest wartością domyślną: ćwiczenia na czas krzywdzą uczących się, którzy potrzebują więcej czasu. Gdy limit jest ustawiony, uczący się nadal mogą sami wyłączyć licznik."
+      },
+      {
+        "title": "Kolor akcentu",
+        "description": "Kolor etykiety nagłówka i przycisków. Pozostaw puste, aby użyć motywu."
+      }
+    ]
+  }
+}

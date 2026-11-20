@@ -1,0 +1,16 @@
+{
+  "drawing": "Dibuix",
+  "edit": "Edita el dibuix",
+  "start": "Comença a dibuixar",
+  "remove": "Elimina el dibuix",
+  "empty": "Encara no hi ha res dibuixat",
+  "save": "Desa",
+  "cancel": "Cancel·la",
+  "close": "Tanca",
+  "discard": "Descarta els canvis",
+  "discardConfirm": "Vols descartar els canvis no desats?",
+  "keepEditing": "Continua editant",
+  "draw": "Dibuix",
+  "feedback": "Retroacció",
+  "signature": "Signatura"
+}

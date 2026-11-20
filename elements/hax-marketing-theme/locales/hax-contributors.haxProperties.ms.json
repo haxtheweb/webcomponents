@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Penyumbang",
+    "description": "Orang yang membina projek, daripada fail senarai nama"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Fail senarai nama (JSON)"
+      },
+      {
+        "title": "Paparan: landed, lab atau code"
+      },
+      {
+        "title": "Bilangan maksimum orang untuk dipaparkan (0 ialah semua)"
+      }
+    ]
+  }
+}

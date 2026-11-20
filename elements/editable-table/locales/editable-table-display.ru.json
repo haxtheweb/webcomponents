@@ -3,5 +3,8 @@
   "copyAsCsv": "Копировать как CSV.",
   "printTable": "Распечатать таблицу",
   "selectColumn": "Выбрать столбец",
-  "dataTable": "Данные · Таблица"
+  "dataTable": "Данные · Таблица",
+  "filterStatus": "Показано строк: {shown} из {total}, фильтр по {column}: {text}",
+  "columnNumber": "Столбец {column}",
+  "clearFilter": "Сбросить фильтр"
 }

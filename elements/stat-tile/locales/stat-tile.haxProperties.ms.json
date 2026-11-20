@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Jubin statistik",
+    "description": "Satu nombor yang penting, dengan labelnya dan cara ia berubah. Letakkan beberapa dalam grid untuk baris papan pemuka."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Label",
+        "description": "Apa yang diukur oleh nombor."
+      },
+      {
+        "title": "Nilai",
+        "description": "Nombor. Nombor biasa dikumpulkan mengikut bahasa halaman; selain itu dipaparkan seperti yang ditulis."
+      },
+      {
+        "title": "Perubahan",
+        "description": "Cara ia berubah, dalam perkataan, seperti 6% penggal ini."
+      },
+      {
+        "title": "Arah",
+        "description": "Sama ada perubahan itu naik atau turun.",
+        "options": {
+          "": "Tiada",
+          "up": "Naik",
+          "down": "Turun"
+        }
+      }
+    ]
+  }
+}

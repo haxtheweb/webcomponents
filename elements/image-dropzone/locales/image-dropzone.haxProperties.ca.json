@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Zona d'arrossegament d'imatge",
+    "description": "Els alumnes col·loquen etiquetes en zones superposades a una imatge i després comproven la resposta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Imatge",
+        "description": "La imatge on els alumnes col·loquen les etiquetes."
+      },
+      {
+        "title": "Text alternatiu",
+        "description": "Descriu la imatge per a les persones que no la poden veure. No reveleu on van les etiquetes."
+      },
+      {
+        "title": "Títol de la imatge",
+        "description": "Un títol breu visible per a la imatge, que es mostra a sobre."
+      },
+      {
+        "title": "Pregunta",
+        "description": "Què se'ls demana als alumnes que facin amb les etiquetes."
+      },
+      {
+        "title": "Etiquetes i zones",
+        "description": "Cada element és una etiqueta que els alumnes poden col·locar. Dona un nom de zona a una etiqueta per posar-ne la zona a la imatge; una etiqueta sense nom de zona és una sobrant que no va enlloc. Els nombres de zona són percentatges de la imatge."
+      },
+      {
+        "title": "Peu",
+        "description": "Peu opcional que es mostra sota la imatge."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Intents",
+        "description": "Quantes vegades pot comprovar un alumne. 0 vol dir il·limitades."
+      },
+      {
+        "title": "Barreja les etiquetes",
+        "description": "Mostra les etiquetes en un ordre diferent a cada visita."
+      },
+      {
+        "title": "Plegable",
+        "description": "Mostra aquesta pregunta com una fila que s'obre i es tanca. En obrir-ne una es tanquen les altres preguntes plegables del costat."
+      },
+      {
+        "title": "Comença plegat",
+        "description": "Si és plegable, comença com una fila tancada que només mostra la pregunta i el seu estat."
+      },
+      {
+        "title": "Format de qualificació",
+        "description": "OER Schema: format de qualificació d'aquesta avaluació (p. ex. punts, lletra, percentatge, compleció)."
+      },
+      {
+        "title": "Objectiu d'aprenentatge",
+        "description": "OER Schema: objectiu d'aprenentatge associat a aquesta avaluació."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Nom del qüestionari",
+        "description": "Nom del qüestionari utilitzat per a la identificació xAPI en sistemes d'analítica."
+      },
+      {
+        "title": "Curs",
+        "description": "OER Schema: curs al qual està destinada aquesta avaluació."
+      }
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Paghahambing ng platform",
+    "description": "Harapan: pumili ng anumang dalawang platform mula sa data file"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Data ng paghahambing (JSON)"
+      },
+      {
+        "title": "Id ng kaliwang platform"
+      },
+      {
+        "title": "Id ng kanang platform"
+      }
+    ]
+  }
+}

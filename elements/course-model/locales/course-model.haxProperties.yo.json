@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "àkọlé"
+        "title": "àkọlé",
+        "description": "Àkọlé tí a fihàn lókè àwòṣe ẹ̀kọ́ náà."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "Àdírẹ́sì fáìlì àwòṣe 3D (.glb tàbí .gltf) láti fihàn."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "Ṣàpèjúwe àwòṣe 3D náà fún àwọn tí kò lè rí i."
       },
       {
         "title": "Agbègbè àlàyé"

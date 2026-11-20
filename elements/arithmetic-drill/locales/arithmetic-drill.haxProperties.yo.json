@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Ìdánrawò ìṣirò",
+    "description": "Àwọn ìbéèrè ìṣirò díẹ̀ tí a ṣẹ̀dá pẹ̀lú èsì lójúkan náà. Yan àwọn iṣẹ́ ìṣirò àti ààlà nọ́mbà; gbogbo ìyípo jẹ́ tuntun."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Àkọlé",
+        "description": "Orúkọ ìdánrawò yìí, tí a fihàn nínú àkọlé rẹ̀."
+      },
+      {
+        "title": "Àwọn iṣẹ́ ìṣirò",
+        "description": "Irú àwọn ìbéèrè tí a ń béèrè. Àwọn akẹ́kọ̀ọ́ lè pa èyíkéyìí nínú wọn kí wọ́n tó bẹ̀rẹ̀.",
+        "options": {
+          "add": "Àròpọ̀",
+          "subtract": "Àyọkúrò",
+          "multiply": "Ìsọdipúpọ̀",
+          "divide": "Pínpín",
+          "add subtract": "Àròpọ̀ àti àyọkúrò",
+          "multiply divide": "Ìsọdipúpọ̀ àti pínpín",
+          "add multiply": "Àròpọ̀ àti ìsọdipúpọ̀",
+          "add divide": "Àròpọ̀ àti pínpín",
+          "subtract multiply": "Àyọkúrò àti ìsọdipúpọ̀",
+          "subtract divide": "Àyọkúrò àti pínpín",
+          "add subtract multiply": "Àròpọ̀, àyọkúrò àti ìsọdipúpọ̀",
+          "add subtract divide": "Àròpọ̀, àyọkúrò àti pínpín",
+          "add multiply divide": "Àròpọ̀, ìsọdipúpọ̀ àti pínpín",
+          "subtract multiply divide": "Àyọkúrò, ìsọdipúpọ̀ àti pínpín",
+          "add subtract multiply divide": "Gbogbo mẹ́rẹ̀ẹ̀rin"
+        }
+      },
+      {
+        "title": "Nọ́mbà tó kéré jù",
+        "description": "Nọ́mbà tó kéré jù tí a lò nínú ìbéèrè. Odidi nọ́mbà, 0 tàbí jù bẹ́ẹ̀ lọ."
+      },
+      {
+        "title": "Nọ́mbà tó tóbi jù",
+        "description": "Nọ́mbà tó tóbi jù tí a lò nínú ìbéèrè. Àwọn ìdáhùn pínpín àti olùpín náà wà nínú ààlà yìí."
+      },
+      {
+        "title": "Iye àwọn ìbéèrè",
+        "description": "Iye ìbéèrè tó wà nínú ìyípo kan (1 sí 100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ààlà àkókò",
+        "description": "Ìṣẹ́jú-àáyá tí a gbà láàyè fún gbogbo ìyípo. 0 túmọ̀ sí kò sí aago, èyí ni àìyípadà: àwọn ìdánrawò onígbà máa ń ja àwọn akẹ́kọ̀ọ́ tó nílò àkókò púpọ̀ sí i kulẹ̀. Nígbà tí a bá ṣètò rẹ̀, àwọn akẹ́kọ̀ọ́ ṣì lè pa aago fúnra wọn."
+      },
+      {
+        "title": "Àwọ̀ ìtẹnumọ́",
+        "description": "Àwọ̀ chip àkọlé àti àwọn bọ́tìnnì. Fi sílẹ̀ ní òfo láti tẹ̀lé àkòrí."
+      }
+    ]
+  }
+}

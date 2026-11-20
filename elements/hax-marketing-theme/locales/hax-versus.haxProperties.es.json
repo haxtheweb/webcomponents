@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Versus",
+    "description": "Texto junto a un botón de cara a cara con dos personajes"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Encabezado"
+      },
+      {
+        "title": "Adónde lleva el botón"
+      },
+      {
+        "title": "Texto del botón"
+      },
+      {
+        "title": "Semilla del personaje de la izquierda"
+      },
+      {
+        "title": "Semilla del personaje de la derecha"
+      }
+    ]
+  }
+}

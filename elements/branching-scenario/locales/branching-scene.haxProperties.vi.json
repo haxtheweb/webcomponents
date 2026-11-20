@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Cảnh trong tình huống",
+    "description": "Một cảnh của tình huống phân nhánh. Liên kết mỗi lựa chọn tới một cảnh khác bằng # theo sau là ID cảnh."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID cảnh",
+        "description": "Đích của các lựa chọn: một liên kết tới # theo sau là ID này dẫn tới cảnh này. Chữ cái, số và dấu gạch nối."
+      },
+      {
+        "title": "Tiêu đề",
+        "description": "Tiêu đề của cảnh."
+      },
+      {
+        "title": "Kết thúc",
+        "description": "Cảnh này có kết thúc một hướng đi hay không, và kết quả ra sao.",
+        "options": {
+          "": "Không phải kết thúc",
+          "good": "Kết thúc tốt",
+          "mixed": "Kết thúc lẫn lộn",
+          "poor": "Kết thúc kém"
+        }
+      },
+      {
+        "title": "Điểm",
+        "description": "Điểm khi đạt kết thúc này. Điểm kết thúc cao nhất trong tình huống là điểm tối đa."
+      }
+    ]
+  }
+}

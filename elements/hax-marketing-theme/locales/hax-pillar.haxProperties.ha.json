@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Ginshiƙi",
+    "description": "Ginshiƙi: suna, jimla, gunki, launi da dalilin muhimmancinsa"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Suna"
+      },
+      {
+        "title": "Jimla"
+      },
+      {
+        "title": "Gunki"
+      },
+      {
+        "title": "Launi (sunan DDD)"
+      },
+      {
+        "title": "Wane ginshiƙi, 1 zuwa 7"
+      },
+      {
+        "title": "Ƙaramin kati"
+      },
+      {
+        "title": "Inda sunan ke zuwa"
+      }
+    ]
+  }
+}

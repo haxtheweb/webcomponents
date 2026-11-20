@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Rechenübung",
+    "description": "Eng kuerz Rei vu generéierte Rechenaufgabe mat direktem Feedback. Wielt d'Rechenaarten an den Zuelebereich; all Ronn ass nei."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Numm vun dëser Übung, a sengem Kapp ugewisen."
+      },
+      {
+        "title": "Rechenaarten",
+        "description": "Wéi eng Aarte vun Aufgabe gestallt ginn. D'Léierender kënnen all dovun ausschalten, ier se ufänken.",
+        "options": {
+          "add": "Additioun",
+          "subtract": "Subtraktioun",
+          "multiply": "Multiplikatioun",
+          "divide": "Divisioun",
+          "add subtract": "Additioun a Subtraktioun",
+          "multiply divide": "Multiplikatioun an Divisioun",
+          "add multiply": "Additioun a Multiplikatioun",
+          "add divide": "Additioun an Divisioun",
+          "subtract multiply": "Subtraktioun a Multiplikatioun",
+          "subtract divide": "Subtraktioun an Divisioun",
+          "add subtract multiply": "Additioun, Subtraktioun a Multiplikatioun",
+          "add subtract divide": "Additioun, Subtraktioun an Divisioun",
+          "add multiply divide": "Additioun, Multiplikatioun an Divisioun",
+          "subtract multiply divide": "Subtraktioun, Multiplikatioun an Divisioun",
+          "add subtract multiply divide": "All véier"
+        }
+      },
+      {
+        "title": "Klengst Zuel",
+        "description": "Déi klengst Zuel, déi an enger Aufgab benotzt gëtt. Ganz Zuelen, 0 oder méi."
+      },
+      {
+        "title": "Gréisst Zuel",
+        "description": "Déi gréisst Zuel, déi an enger Aufgab benotzt gëtt. Resultater vun Divisiounen an Divisore bleiwen och an dësem Beräich."
+      },
+      {
+        "title": "Zuel vun Aufgaben",
+        "description": "Wéi vill Aufgaben an enger Ronn sinn (1 bis 100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Zäitlimitt",
+        "description": "Erlaabt Sekonne fir eng ganz Ronn. 0 heescht keen Timer, wat de Standard ass: Übunge mat Zäitlimitt loossen Léierender am Stach, déi méi Zäit brauchen. Wann en agestallt ass, kënnen d'Léierender den Timer trotzdeem fir sech ausschalten."
+      },
+      {
+        "title": "Akzentfaarf",
+        "description": "Faarf vum Kapp-Chip an de Knäppercher. Eidel loossen, fir dem Thema ze verfollegen."
+      }
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "Chip",
+    "description": "Peteĩ ta'ãngachu'i michĩ teraguã reheve"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ta'ãngachu'i"
+      },
+      {
+        "title": "Teraguã"
+      }
+    ]
+  }
+}

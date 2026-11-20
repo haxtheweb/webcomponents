@@ -1,0 +1,21 @@
+{
+  "diagram": "Diagramm",
+  "flowchart": "Flussdiagramm",
+  "sequence": "Sequenz",
+  "source": "Quelle",
+  "textAlternative": "Textalternative",
+  "present": "Präsentieren",
+  "exitPresent": "Präsentation beenden",
+  "loading": "Diagramm wird geladen",
+  "empty": "Noch nichts zu zeichnen. Füge den Diagrammquelltext hinzu.",
+  "error": "Fehler",
+  "parseError": "Dieses Diagramm konnte nicht gezeichnet werden. Prüfe den Quelltext.",
+  "loadError": "Die Diagrammbibliothek konnte nicht geladen werden.",
+  "srcError": "Die Diagrammdatei konnte nicht geladen werden.",
+  "decision": "Entscheidung",
+  "end": "Ende",
+  "goTo": "gehe zu {target}",
+  "ifGoTo": "wenn {label}, gehe zu {target}",
+  "describedBySource": "Diagramm, beschrieben durch seinen Quelltext.",
+  "scrollable": "Diagramm, scrollbar"
+}

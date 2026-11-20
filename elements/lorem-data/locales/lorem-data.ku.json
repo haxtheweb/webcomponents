@@ -1,4 +1,6 @@
 {
   "saveAll": "Hemûyan Tomar Bike",
-  "saveTheFollowing": "Van tomar bike: {list}?"
+  "saveTheFollowing": "Van tomar bike: {list}?",
+  "save": "Tomar bike",
+  "cancel": "Betal bike"
 }

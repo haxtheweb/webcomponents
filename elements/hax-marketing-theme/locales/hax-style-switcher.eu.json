@@ -1,0 +1,16 @@
+{
+  "theme": "Gaia",
+  "designSystem": "Diseinu-sistema",
+  "dddDefault": "DDD (lehenetsia)",
+  "designSystemHelp": "Kolorea, letra, ertzak eta fokua. Gaiak diseinua mantentzen du.",
+  "designSystemFixed": "Gai honek bere diseinu-sistema mantentzen du.",
+  "palette": "Paleta",
+  "themeDefault": "Gaiaren lehenetsia",
+  "paletteNumber": "{n}. paleta",
+  "siteTheme": "{name} (gune honen gaia)",
+  "restyle": "Aldatu gune honen estiloa",
+  "close": "Itxi",
+  "reset": "Itzuli gune honen itxura propiora",
+  "random": "Harritu nazazu",
+  "about": "HAXen barneko itxura batzuk erakusten ditu honek. Orriak ez dira inoiz aldatzen: egitura JSON Outline Schema-n dago eta bloke bakoitza web osagai estandar bat da, beraz diseinua libreki alda daiteke."
+}

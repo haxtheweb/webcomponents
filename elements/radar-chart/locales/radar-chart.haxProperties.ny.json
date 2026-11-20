@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Tchati cha radar",
+    "description": "Tchati cha radar (kangaude) cha zitsanzo za kukhwima ndi kupereka zigoli pa mbali, monga HEOSAT. Chili ndi zolemba zina m'malo mwake ndi tebulo la deta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mutu",
+        "description": "Mutu wa tchati; umagwiritsidwanso ntchito ngati dzina lake lofikirika."
+      },
+      {
+        "title": "Zigoli zochuluka kwambiri",
+        "description": "Mtengo wapamwamba kwambiri pa sikelo."
+      },
+      {
+        "title": "Magulu",
+        "description": "Gulu limodzi pa mzere uliwonse. Pakufunika osachepera 3."
+      },
+      {
+        "title": "Zigoli",
+        "description": "Manambala olekanitsidwa ndi koma, imodzi pa gulu lililonse motsatira momwemo."
+      },
+      {
+        "title": "Zigoli zolinga",
+        "description": "Manambala olekanitsidwa ndi koma, imodzi pa gulu lililonse motsatira momwemo."
+      },
+      {
+        "title": "Onetsani tanthauzo la zizindikiro",
+        "description": "Onetsani tanthauzo la zizindikiro lotchula zigoli ndi zolinga."
+      },
+      {
+        "title": "Chaching'ono",
+        "description": "Tchati chaching'ono chopanda zilembo, tanthauzo la zizindikiro kapena tebulo la deta. Ikani cholozera pa poyimilira kuti muwone mitengo yake."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Chilembo cha zigoli",
+        "description": "Chilembo cha zigoli pa tanthauzo la zizindikiro ndi tebulo."
+      },
+      {
+        "title": "Chilembo cha zolinga",
+        "description": "Chilembo cha zolinga pa tanthauzo la zizindikiro ndi tebulo."
+      }
+    ]
+  }
+}

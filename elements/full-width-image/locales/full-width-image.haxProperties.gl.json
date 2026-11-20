@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Imaxe de fondo."
+        "description": "Imaxe de fondo.",
+        "title": "Imaxe"
       },
       {
         "property": "caption",
-        "description": "Título de texto."
+        "description": "Título de texto.",
+        "title": "Lenda"
       }
     ]
   }

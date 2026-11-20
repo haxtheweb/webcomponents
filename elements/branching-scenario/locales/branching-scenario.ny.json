@@ -1,0 +1,22 @@
+{
+  "scenario": "Nkhani yoyerekeza",
+  "directions": "Malangizo",
+  "showDirections": "Onetsani malangizo",
+  "hideDirections": "Bisani malangizo",
+  "directionsRead": "Werengani chochitika chilichonse ndipo sankhani zomwe mungachite.",
+  "directionsEndings": "Pali mathero angapo. Yesani njira ina mukamaliza.",
+  "startOver": "Yambaninso",
+  "back": "Bwererani sitepe imodzi",
+  "tryAnother": "Yesani njira ina",
+  "path": "Njira",
+  "scene": "Chochitika",
+  "ending": "Mathero",
+  "end": "mapeto",
+  "scenesSeen": "Zochitika {seen} mwa {total} zawonedwa",
+  "endingReached": "Mwafika kumapeto",
+  "addScene": "Onjezani chochitika",
+  "newScene": "Chochitika chatsopano",
+  "newSceneText": "Fotokozani zomwe zikuchitika, kenako lumikizani chisankho chilichonse ku chochitika.",
+  "editingNote": "Kusintha: chochitika chilichonse chikuwonetsedwa. Chisankho ndi ulalo wopita ku # wotsatiridwa ndi ID ya chochitika.",
+  "noScenes": "Onjezani chochitika kuti muyambe nkhaniyo."
+}

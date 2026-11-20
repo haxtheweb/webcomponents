@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Kūʻē",
+    "description": "Nā huaʻōlelo ma ka ʻaoʻao o kahi pihi alo a alo me ʻelua kanaka keaka"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Poʻo"
+      },
+      {
+        "title": "Ma hea e hele ai ke pihi"
+      },
+      {
+        "title": "Kikokikona pihi"
+      },
+      {
+        "title": "Hua kanaka keaka hema"
+      },
+      {
+        "title": "Hua kanaka keaka ʻākau"
+      }
+    ]
+  }
+}

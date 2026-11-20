@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Adarkatutako agertokia",
+    "description": "Aukera bakoitzak eszena eta amaiera desberdin batera daraman istorioa. Ikasleek atzera egin eta beste bide batzuk proba ditzakete; lortutako amaierak ezartzen du puntuazioa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Izenburua",
+        "description": "Agertokiaren izena, goiburuan erakutsia."
+      },
+      {
+        "title": "Hasierako eszena",
+        "description": "Ikasleak hasten diren eszenaren IDa. Utzi hutsik lehen eszenan hasteko."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Azentu-kolorea",
+        "description": "Aukerako kolorea goiburuko txartelerako, botoietarako eta aukera baten ertzerako."
+      }
+    ]
+  }
+}

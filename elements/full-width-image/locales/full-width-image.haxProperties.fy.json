@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Eftergrûnôfbylding."
+        "description": "Eftergrûnôfbylding.",
+        "title": "Ofbylding"
       },
       {
         "property": "caption",
-        "description": "Tekstkop."
+        "description": "Tekstkop.",
+        "title": "Byskrift"
       }
     ]
   }

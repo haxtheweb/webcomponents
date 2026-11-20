@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Ìbéèrè oníǹọ́mbà",
+    "description": "Ìbéèrè tí a fi nọ́mbà dáhùn. Ìdáhùn jẹ́ nọ́mbà tí kò yí padà tàbí àgbékalẹ̀ tí a ṣírò láti inú àwọn oníyípadà, a sì kà á nígbà tí ó bá wà nínú ààlà ìfaradà."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ìbéèrè",
+        "description": "Ohun tí a béèrè lọ́wọ́ àwọn akẹ́kọ̀ọ́. Kọ orúkọ oníyípadà sínú àkámọ́ onígun, bí {d}, láti fi iye rẹ̀ hàn."
+      },
+      {
+        "title": "Ẹ̀yọ ìwọ̀n",
+        "description": "A fihàn gẹ́gẹ́ bí ọ̀rọ̀ lẹ́gbẹ̀ẹ́ àyè ìdáhùn, fún àpẹẹrẹ km/h."
+      },
+      {
+        "title": "Ìdáhùn",
+        "description": "Nọ́mbà tó tọ̀nà. Fi sílẹ̀ ní òfo nígbà tí àgbékalẹ̀ bá ń ṣírò ìdáhùn."
+      },
+      {
+        "title": "Àgbékalẹ̀",
+        "description": "Ó ń ṣírò ìdáhùn láti inú àwọn oníyípadà, fún àpẹẹrẹ d / (t / 60). Ó lè lo + - * / ^, àkámọ́, sqrt() àti abs(). A ń lò ó dípò ìdáhùn nígbà tí a bá ṣètò rẹ̀."
+      },
+      {
+        "title": "Àwọn oníyípadà",
+        "description": "Àwọn nọ́mbà tí àgbékalẹ̀ àti ìbéèrè ń lò. Ọ̀kọ̀ọ̀kan ń gba iye láàárín èyí tó kéré jù àti èyí tó ga jù rẹ̀, ní ìgbésẹ̀-ìgbésẹ̀."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ìfaradà",
+        "description": "Bí ó ṣe jìnnà tó sí ìdáhùn gangan tí a ṣì kà. 0 túmọ̀ sí gangan, tàbí tí a ṣe ní ibi ẹ̀sẹ̀ tó wà nísàlẹ̀."
+      },
+      {
+        "title": "Irú ìfaradà",
+        "description": "Pátápátá: pẹ̀lú tàbí yọ ìfaradà. Ìdá-ọgọ́rùn-ún: pẹ̀lú tàbí yọ ìdá-ọgọ́rùn-ún yẹn ti ìdáhùn gangan.",
+        "options": {
+          "absolute": "Pátápátá",
+          "percent": "Ìdá-ọgọ́rùn-ún"
+        }
+      },
+      {
+        "title": "Àwọn ibi ẹ̀sẹ̀",
+        "description": "A ní kí àwọn akẹ́kọ̀ọ́ ṣe é dé iye ibi yìí, a sì fi ìdáhùn hàn ní ìwọ̀n yẹn. Fi sílẹ̀ ní òfo fún àìṣe é."
+      },
+      {
+        "title": "Àwọn ìgbìyànjú",
+        "description": "Iye ìgbà tí akẹ́kọ̀ọ́ lè ṣàyẹ̀wò. 0 túmọ̀ sí láìní ààlà."
+      },
+      {
+        "title": "Nọ́mbà tuntun ní gbogbo ìgbìyànjú",
+        "description": "Mú àwọn iye oníyípadà tuntun ní gbogbo ìgbà tí akẹ́kọ̀ọ́ bá tún gbìyànjú. A kì í fi ìdáhùn wọn ti tẹ́lẹ̀ hàn nígbà tí wọ́n bá padà, bóyá wọ́n gbà á tọ̀nà nìkan."
+      },
+      {
+        "title": "Ó ṣeé ká",
+        "description": "Fi ìbéèrè yìí hàn gẹ́gẹ́ bí ìlà tó ń ṣí tí ó sì ń tì. Ṣíṣí ọ̀kan ń ti àwọn ìbéèrè tó ṣeé ká mìíràn lẹ́gbẹ̀ẹ́ rẹ̀."
+      },
+      {
+        "title": "Bẹ̀rẹ̀ ní kíká",
+        "description": "Nígbà tí ó bá ṣeé ká, bẹ̀rẹ̀ gẹ́gẹ́ bí ìlà tí a tì tí ó ń fi ìbéèrè àti ipò rẹ̀ nìkan hàn."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Orúkọ ìdánwò náà",
+        "description": "Orúkọ ìdánwò tí a ń lò fún ìdánimọ̀ xAPI nínú àwọn ètò ìtúpalẹ̀."
+      }
+    ]
+  }
+}

@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Figuuretiket",
     "description": "Figuuretiket-element om media-bates binne inhoud te merk."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Figuurnommer",
+        "description": "Nommer of kort etiket vir die figuur, bv. 1.3"
+      },
+      {
+        "title": "Beskrywing",
+        "description": "Kort beskrywing van die figuur"
+      }
+    ]
   }
 }

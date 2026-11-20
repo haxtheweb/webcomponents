@@ -1,0 +1,13 @@
+{
+  "gizmo": {
+    "title": "example-hax-element",
+    "description": "He huānga tīmatanga tauira hei whakaatu i te whirihoranga HAX me ngā āhuatanga ka taea te whakatika."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Taitara"
+      }
+    ]
+  }
+}

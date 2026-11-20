@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Scéna scenára",
+    "description": "Jedna scéna vetviaceho sa scenára. Každú voľbu prepojte s inou scénou pomocou # a jej ID scény."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID scény",
+        "description": "Na čo voľby odkazujú: odkaz na # a za ním toto ID vedie na túto scénu. Písmená, číslice a pomlčky."
+      },
+      {
+        "title": "Nadpis",
+        "description": "Nadpis scény."
+      },
+      {
+        "title": "Koniec",
+        "description": "Či táto scéna končí cestu a ako to dopadlo.",
+        "options": {
+          "": "Nie je koniec",
+          "good": "Dobrý koniec",
+          "mixed": "Zmiešaný koniec",
+          "poor": "Zlý koniec"
+        }
+      },
+      {
+        "title": "Skóre",
+        "description": "Skóre za dosiahnutie tohto konca. Najvyššie skóre konca v scenári je maximum."
+      }
+    ]
+  }
+}

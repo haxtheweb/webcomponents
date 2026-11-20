@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Pisaći stroj",
     "description": "Tekst koji se sam ispisuje, znak po znak."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tekst",
+        "description": "Tekst koji se ispisuje kad se element pomakne u prikaz."
+      },
+      {
+        "title": "Tipkanje",
+        "description": "Prikaži treptajući pokazivač; element to postavlja dok tipka."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Odgoda",
+        "description": "Milisekunde čekanja prije početka tipkanja."
+      },
+      {
+        "title": "Trajanje pokazivača",
+        "description": "Milisekunde koliko pokazivač nastavlja treptati nakon ispisa teksta."
+      },
+      {
+        "title": "Brzina",
+        "description": "Milisekunde po znaku; manji brojevi tipkaju brže."
+      }
+    ]
   }
 }

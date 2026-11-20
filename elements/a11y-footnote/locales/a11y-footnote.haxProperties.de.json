@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Fußnote",
+    "description": "Eine Anmerkung, die dort im Text steht, wo sie hingehört. Sie erscheint als Zahl, und die nummerierte Liste der Anmerkungen baut sich am Seitenende von selbst auf."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Anmerkung",
+        "description": "Der Text der Fußnote."
+      },
+      {
+        "title": "Keine Vorschau",
+        "description": "Die Anmerkung nicht anzeigen, wenn Lesende mit der Maus über die Zahl fahren oder sie fokussieren."
+      }
+    ]
+  }
+}

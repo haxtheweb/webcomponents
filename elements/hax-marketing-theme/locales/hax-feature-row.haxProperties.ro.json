@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Rând de funcție",
+    "description": "Un ecran al produsului lângă ce înseamnă pentru dvs."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etichetă mică"
+      },
+      {
+        "title": "Titlu"
+      },
+      {
+        "title": "Imagine"
+      },
+      {
+        "title": "Ce arată imaginea"
+      },
+      {
+        "title": "Imaginea în dreapta"
+      },
+      {
+        "title": "Culoarea umbrei (nume DDD, gol urmează paleta)"
+      }
+    ]
+  }
+}

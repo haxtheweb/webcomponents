@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Söz gözlegi",
+    "description": "Gizlin sözli harp gözenegi. Öwrenijiler her sözüň ilkinji we soňky harpyna basýarlar. Adalganyň manysyny däl-de, nähili ýazylýandygyny tapmagy türgenleşdirýär."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sözbaşy",
+        "description": "Öwrenijilerden näme tapmak soralýar, sözbaşyda görkezilýär."
+      },
+      {
+        "title": "Sözler",
+        "description": "Gizlenmeli sözler. Boşluklar we dyngy belgileri gözenekden aýrylýar. Sygmaýan sözler redaktirleýärkäňiz sanawlanýar we öwrenijiler üçin aýrylýar."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Gözenegiň ölçegi",
+        "description": "Her tarapdaky harplar, 4-den 16-a çenli. Iň uzyn söze laýyk bolmagy üçin boş goýuň (12-ä çenli). 12-den köp bolsa telefonda gapdala aýlanýar."
+      },
+      {
+        "title": "Diagonal sözler",
+        "description": "Sözleri diagonal hem gizle. Has kyn."
+      },
+      {
+        "title": "Ters sözler",
+        "description": "Tersine ýazylan sözleri hem gizle. Has kyn."
+      },
+      {
+        "title": "Aksent reňki",
+        "description": "Sözbaşy nyşany, saýlanan ilkinji harp we düwme üçin goşmaça reňk."
+      }
+    ]
+  }
+}

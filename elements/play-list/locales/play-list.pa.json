@@ -9,5 +9,7 @@
   "slidePages": "ਸਲਾਈਡ ਪੰਨੇ",
   "goToSlide": "ਸਲਾਈਡ {number} 'ਤੇ ਜਾਓ",
   "slides": "ਸਲਾਈਡਾਂ",
-  "position": "{number} / {total}"
+  "position": "{number} / {total}",
+  "fullScreen": "ਪੂਰੀ ਸਕਰੀਨ",
+  "exitFullScreen": "ਪੂਰੀ ਸਕਰੀਨ ਤੋਂ ਬਾਹਰ ਜਾਓ"
 }

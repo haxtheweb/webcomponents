@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Status Baseline",
+    "description": "Tunjukkan status sokongan pelayar Baseline bagi ciri platform web."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID ciri",
+        "description": "ID ciri web, contohnya anchor-positioning. Cari ID di webstatus.dev; ID ialah bahagian terakhir URL halaman ciri."
+      }
+    ]
+  }
+}

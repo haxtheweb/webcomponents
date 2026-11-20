@@ -1,0 +1,14 @@
+{
+  "scene": "Adegan",
+  "ending": "Pungkasan",
+  "goodEnding": "Pungkasan apik",
+  "mixedEnding": "Pungkasan campuran",
+  "poorEnding": "Pungkasan ala",
+  "scoreOf": "Skor {score} saka {max}",
+  "scoreOnly": "Skor {score}",
+  "startScene": "Wiwitan",
+  "sceneIdLabel": "ID adegan",
+  "needsId": "Tambahna ID adegan supaya pilihan bisa nggandheng menyang adegan iki.",
+  "orphan": "Ora ana pilihan sing nggandheng menyang adegan iki.",
+  "deadLinks": "Pranala iki nuding adegan sing ora ana:"
+}

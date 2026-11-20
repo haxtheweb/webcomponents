@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Lipéad figiúir",
     "description": "Eilimint lipéid figiúir chun sócmhainní meán a mharcáil laistigh d'ábhar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Uimhir an fhíora",
+        "description": "Uimhir nó lipéad gearr don fhíor, m.sh. 1.3"
+      },
+      {
+        "title": "Cur síos",
+        "description": "Cur síos gearr ar an bhfíor"
+      }
+    ]
   }
 }

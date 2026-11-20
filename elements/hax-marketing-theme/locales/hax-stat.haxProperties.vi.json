@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Số liệu",
+    "description": "Một con số đếm tăng dần, kèm nhãn và liên kết tới câu chuyện của nó"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Số cần đếm tới"
+      },
+      {
+        "title": "Trước con số"
+      },
+      {
+        "title": "Sau con số"
+      },
+      {
+        "title": "Chữ thay cho con số"
+      },
+      {
+        "title": "Nó đếm gì"
+      },
+      {
+        "title": "Địa chỉ câu chuyện trên hax.cloud (stories/ee450a19)"
+      }
+    ]
+  }
+}

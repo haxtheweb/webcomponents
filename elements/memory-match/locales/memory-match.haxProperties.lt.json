@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Atminties žaidimas",
+    "description": "Verskite korteles ir ieškokite porų. Suporuokite sąvoką su jos reikšme, kad atitikimas parodytų supratimą, arba naudokite du sutampančius tekstus ar paveikslėlius."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pavadinimas",
+        "description": "Antraštėje rodoma užduotis, pavyzdžiui: Suporuokite sąvoką su jos paskirtimi."
+      },
+      {
+        "title": "Poros",
+        "description": "Kiekviena pora – dvi kartu priklausančios kortelės, paprastai sąvoka ir jos reikšmė. Pusei reikia teksto, paveikslėlio arba abiejų."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Akcento spalva",
+        "description": "Pasirinktinė antraštės žymės, kortelių nugarėlių ir mygtuko spalva."
+      }
+    ]
+  }
+}

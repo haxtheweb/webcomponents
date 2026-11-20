@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Ystadegyn",
+    "description": "Rhif sy'n cyfrif i fyny, gyda label a dolen i'w stori"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Rhif i gyfrif i fyny ato"
+      },
+      {
+        "title": "Cyn y rhif"
+      },
+      {
+        "title": "Ar ôl y rhif"
+      },
+      {
+        "title": "Geiriau yn lle rhif"
+      },
+      {
+        "title": "Beth mae'n ei gyfrif"
+      },
+      {
+        "title": "Cyfeiriad y stori ar hax.cloud (stories/ee450a19)"
+      }
+    ]
+  }
+}

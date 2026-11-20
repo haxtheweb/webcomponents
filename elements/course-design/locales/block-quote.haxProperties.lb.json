@@ -20,6 +20,12 @@
         "title": "Bild",
         "description": "Bild, dat mam Zitat ugewise gëtt."
       }
+    ],
+    "advanced": [
+      {
+        "title": "Agerummt",
+        "description": "D'Zitat am gemeinsame Blockrumm weisen, mat engem Ikon an enger Bezeechnung driwwer, sou datt et zu Notizen an Uweisungskaarte passt."
+      }
     ]
   }
 }

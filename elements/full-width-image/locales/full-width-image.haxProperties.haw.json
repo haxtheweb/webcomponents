@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Kiʻi kāʻei hope."
+        "description": "Kiʻi kāʻei hope.",
+        "title": "Kiʻi"
       },
       {
         "property": "caption",
-        "description": "Poʻo kikokikona."
+        "description": "Poʻo kikokikona.",
+        "title": "Kākau kiʻi"
       }
     ]
   }

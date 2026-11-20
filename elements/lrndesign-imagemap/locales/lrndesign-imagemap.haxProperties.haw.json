@@ -14,6 +14,10 @@
         "property": "hotspotDetails",
         "title": "Nā kikoʻī kiko launa",
         "description": "Nā kiko launa ma ka palapala ʻāina kiʻi."
+      },
+      {
+        "title": "Nā kikoʻī kiko wela",
+        "description": "Nā kiko wela launa ma ka palapala ʻāina kiʻi."
       }
     ]
   }

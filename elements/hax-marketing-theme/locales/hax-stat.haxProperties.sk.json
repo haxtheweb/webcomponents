@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Štatistika",
+    "description": "Číslo, ktoré narastá, s označením a odkazom na jeho príbeh"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Číslo, do ktorého sa počíta"
+      },
+      {
+        "title": "Pred číslom"
+      },
+      {
+        "title": "Za číslom"
+      },
+      {
+        "title": "Slová namiesto čísla"
+      },
+      {
+        "title": "Čo počíta"
+      },
+      {
+        "title": "Adresa príbehu na hax.cloud (stories/ee450a19)"
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Umdlalo wenkumbulo",
+    "description": "Phenya amakhadi ukuze uthole amapheya. Faniselanisa igama nencazelo yalo ukuze ukufana kubonise ukuqonda, noma usebenzise imibhalo emibili noma izithombe ezimbili ezifanayo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Isihloko",
+        "description": "Umyalelo oboniswa esihlokweni, isibonelo: Faniselanisa igama nomsebenzi walo."
+      },
+      {
+        "title": "Amapheya",
+        "description": "Ipheya ngalinye lingamakhadi amabili ahambisanayo, ngokuvamile igama nencazelo yalo. Uhlangothi ludinga umbhalo, isithombe, noma kokubili."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Umbala wokugcizelela",
+        "description": "Umbala ongakhethwa we-chip yesihloko, ingemuva lamakhadi nenkinobho."
+      }
+    ]
+  }
+}

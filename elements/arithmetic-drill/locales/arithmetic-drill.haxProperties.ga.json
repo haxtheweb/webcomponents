@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Druil uimhríochta",
+    "description": "Sraith ghearr d'fhadhbanna uimhríochta ginte le haiseolas láithreach. Roghnaigh na hoibríochtaí agus raon na n-uimhreacha; bíonn gach rith nua."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Teideal",
+        "description": "Ainm an druil seo, taispeánta ina cheanntásc."
+      },
+      {
+        "title": "Oibríochtaí",
+        "description": "Na cineálacha fadhbanna a chuirtear. Is féidir le foghlaimeoirí aon cheann díobh seo a mhúchadh sula dtosaíonn siad.",
+        "options": {
+          "add": "Suimiú",
+          "subtract": "Dealú",
+          "multiply": "Iolrú",
+          "divide": "Roinnt",
+          "add subtract": "Suimiú agus dealú",
+          "multiply divide": "Iolrú agus roinnt",
+          "add multiply": "Suimiú agus iolrú",
+          "add divide": "Suimiú agus roinnt",
+          "subtract multiply": "Dealú agus iolrú",
+          "subtract divide": "Dealú agus roinnt",
+          "add subtract multiply": "Suimiú, dealú agus iolrú",
+          "add subtract divide": "Suimiú, dealú agus roinnt",
+          "add multiply divide": "Suimiú, iolrú agus roinnt",
+          "subtract multiply divide": "Dealú, iolrú agus roinnt",
+          "add subtract multiply divide": "Na ceithre cinn"
+        }
+      },
+      {
+        "title": "An uimhir is lú",
+        "description": "An uimhir is lú a úsáidtear i bhfadhb. Slánuimhreacha, 0 nó níos mó."
+      },
+      {
+        "title": "An uimhir is mó",
+        "description": "An uimhir is mó a úsáidtear i bhfadhb. Fanann freagraí roinnte agus roinnteoirí sa raon seo freisin."
+      },
+      {
+        "title": "Líon na bhfadhbanna",
+        "description": "Cé mhéad fadhb atá i rith amháin (1 go 100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Teorainn ama",
+        "description": "Soicind ceadaithe do rith iomlán. Ciallaíonn 0 gan amadóir, an réamhshocrú: teipeann drillí amaithe ar fhoghlaimeoirí a bhfuil níos mó ama de dhíth orthu. Nuair a shocraítear é, is féidir le foghlaimeoirí an t-amadóir a mhúchadh dóibh féin fós."
+      },
+      {
+        "title": "Dath aibhsithe",
+        "description": "Dath shlis an cheanntáisc agus na gcnaipí. Fág folamh chun an téama a leanúint."
+      }
+    ]
+  }
+}

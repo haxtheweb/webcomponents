@@ -9,5 +9,7 @@
   "slidePages": "ဆလိုက် စာမျက်နှာများ",
   "goToSlide": "ဆလိုက် {number} သို့ သွားရန်",
   "slides": "စလိုက်များ",
-  "position": "{number} / {total}"
+  "position": "{number} / {total}",
+  "fullScreen": "မျက်နှာပြင်အပြည့်",
+  "exitFullScreen": "မျက်နှာပြင်အပြည့်မှ ထွက်ရန်"
 }

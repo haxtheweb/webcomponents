@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Kuyeserera masamu",
+    "description": "Mafunso afupiafupi a masamu opangidwa okha omwe ali ndi ndemanga zapompopompo. Sankhani machitidwe ndi mitundu ya manambala; ulendo uliwonse ndi watsopano."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mutu",
+        "description": "Dzina la kuyeserera uku, lowonetsedwa pamutu pake."
+      },
+      {
+        "title": "Machitidwe",
+        "description": "Mitundu ya mafunso omwe amafunsidwa. Ophunzira angazimitse iliyonse mwa izi asanayambe.",
+        "options": {
+          "add": "Kuphatikiza",
+          "subtract": "Kuchotsa",
+          "multiply": "Kuchulukitsa",
+          "divide": "Kugawa",
+          "add subtract": "Kuphatikiza ndi kuchotsa",
+          "multiply divide": "Kuchulukitsa ndi kugawa",
+          "add multiply": "Kuphatikiza ndi kuchulukitsa",
+          "add divide": "Kuphatikiza ndi kugawa",
+          "subtract multiply": "Kuchotsa ndi kuchulukitsa",
+          "subtract divide": "Kuchotsa ndi kugawa",
+          "add subtract multiply": "Kuphatikiza, kuchotsa ndi kuchulukitsa",
+          "add subtract divide": "Kuphatikiza, kuchotsa ndi kugawa",
+          "add multiply divide": "Kuphatikiza, kuchulukitsa ndi kugawa",
+          "subtract multiply divide": "Kuchotsa, kuchulukitsa ndi kugawa",
+          "add subtract multiply divide": "Zonse zinayi"
+        }
+      },
+      {
+        "title": "Nambala yaing'ono kwambiri",
+        "description": "Nambala yaing'ono kwambiri yogwiritsidwa ntchito mu funso. Manambala athunthu, 0 kapena kupitirira."
+      },
+      {
+        "title": "Nambala yaikulu kwambiri",
+        "description": "Nambala yaikulu kwambiri yogwiritsidwa ntchito mu funso. Mayankho a kugawa ndi ogawa nawonso amakhala mu mtundu uwu."
+      },
+      {
+        "title": "Chiwerengero cha mafunso",
+        "description": "Kuchuluka kwa mafunso mu ulendo umodzi (1 mpaka 100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Malire a nthawi",
+        "description": "Masekondi ololedwa pa ulendo wonse. 0 imatanthauza palibe chowerengera nthawi, chomwe ndi chokhazikika: kuyeserera kwa nthawi kumalephera ophunzira omwe akufunika nthawi yochulukirapo. Chikakhazikitsidwa, ophunzira angathebe kuzimitsa chowerengera nthawi kwa iwo okha."
+      },
+      {
+        "title": "Mtundu wowonetsa",
+        "description": "Mtundu wa chizindikiro cha pamutu ndi mabatani. Siyani chopanda kanthu kuti chitsatire mutu wa mawonekedwe."
+      }
+    ]
+  }
+}

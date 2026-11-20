@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Isimo esinamagatsha",
+    "description": "Indaba lapho ukukhetha ngakunye kuholela esigcawini nasesiphethweni esihlukile. Abafundi bangabuyela emuva bazame ezinye izindlela; isiphetho esifinyelelwe sinquma amaphuzu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Isihloko",
+        "description": "Igama lesimo, eliboniswa esihlokweni sakho."
+      },
+      {
+        "title": "Isigcawu sokuqala",
+        "description": "I-ID yesigcawu abafundi abaqala kuso. Shiya kungenalutho ukuze uqale esigcawini sokuqala."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Umbala wokugcizelela",
+        "description": "Umbala ongakhethwa we-chip yesihloko, izinkinobho nomphetho wokukhetha."
+      }
+    ]
+  }
+}

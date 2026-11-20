@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Vrstica funkcije",
+    "description": "Zaslon izdelka ob tem, kar pomeni za vas"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Majhna oznaka"
+      },
+      {
+        "title": "Naslov"
+      },
+      {
+        "title": "Slika"
+      },
+      {
+        "title": "Kaj slika prikazuje"
+      },
+      {
+        "title": "Slika na desni"
+      },
+      {
+        "title": "Barva sence (ime DDD, prazno sledi paleti)"
+      }
+    ]
+  }
+}

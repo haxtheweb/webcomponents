@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Latihan aritmetika",
+    "description": "Sakumpulan cilik soal aritmetika sing digawe otomatis kanthi umpan balik langsung. Pilih operasi lan jangkauan angka; saben puteran anyar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Judhul",
+        "description": "Jeneng latihan iki, ditampilake ing judhule."
+      },
+      {
+        "title": "Operasi",
+        "description": "Jinis soal sing ditakokake. Siswa bisa mateni apa wae sadurunge miwiti.",
+        "options": {
+          "add": "Penjumlahan",
+          "subtract": "Pengurangan",
+          "multiply": "Perkalian",
+          "divide": "Pembagian",
+          "add subtract": "Penjumlahan lan pengurangan",
+          "multiply divide": "Perkalian lan pembagian",
+          "add multiply": "Penjumlahan lan perkalian",
+          "add divide": "Penjumlahan lan pembagian",
+          "subtract multiply": "Pengurangan lan perkalian",
+          "subtract divide": "Pengurangan lan pembagian",
+          "add subtract multiply": "Penjumlahan, pengurangan lan perkalian",
+          "add subtract divide": "Penjumlahan, pengurangan lan pembagian",
+          "add multiply divide": "Penjumlahan, perkalian lan pembagian",
+          "subtract multiply divide": "Pengurangan, perkalian lan pembagian",
+          "add subtract multiply divide": "Kabeh papat"
+        }
+      },
+      {
+        "title": "Angka paling cilik",
+        "description": "Angka paling cilik sing dienggo ing soal. Angka wutuh, 0 utawa luwih."
+      },
+      {
+        "title": "Angka paling gedhe",
+        "description": "Angka paling gedhe sing dienggo ing soal. Wangsulan pembagian lan pambagi uga tetep ing jangkauan iki."
+      },
+      {
+        "title": "Cacahe soal",
+        "description": "Pira soal ing siji puteran (1 nganti 100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Watesan wektu",
+        "description": "Detik sing diidini kanggo siji puteran. 0 tegese tanpa timer, iki gawane: latihan nganggo wektu ngrugekake siswa sing butuh wektu luwih. Yen disetel, siswa isih bisa mateni timer kanggo awake dhewe."
+      },
+      {
+        "title": "Warna aksen",
+        "description": "Warna chip judhul lan tombol. Kosongake kanggo ngetutake tema."
+      }
+    ]
+  }
+}

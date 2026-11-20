@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Teenoor",
+    "description": "Woorde langs 'n kop-aan-kop-knoppie met twee karakters"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Opskrif"
+      },
+      {
+        "title": "Waarheen die knoppie gaan"
+      },
+      {
+        "title": "Knoppieteks"
+      },
+      {
+        "title": "Linkerkaraktersaad"
+      },
+      {
+        "title": "Regterkaraktersaad"
+      }
+    ]
+  }
+}

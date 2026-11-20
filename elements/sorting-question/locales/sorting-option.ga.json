@@ -2,5 +2,9 @@
   "answerInCorrectOrder": "Tá an freagra san ord ceart",
   "answerInIncorrectOrder": "Tá an freagra san ord mícheart",
   "moveOptionUp": "Roghnaigh chun an rogha a bhogadh suas san ord",
-  "moveOptionDown": "Roghnaigh chun an rogha a bhogadh síos san ord"
+  "moveOptionDown": "Roghnaigh chun an rogha a bhogadh síos san ord",
+  "moveEarlier": "Bog níos luaithe",
+  "moveLater": "Bog níos déanaí",
+  "correct": "Ceart",
+  "incorrect": "Mícheart"
 }

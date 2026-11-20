@@ -8,5 +8,9 @@
   "theme": "थीम",
   "palette": "रंगसंच",
   "cancel": "रद्द करा",
-  "openAppearanceSettings": "स्वरूप सेटिंग्ज उघडा"
+  "openAppearanceSettings": "स्वरूप सेटिंग्ज उघडा",
+  "designSystem": "डिझाइन सिस्टम",
+  "designSystemDefault": "DDD (डीफॉल्ट)",
+  "designSystemThemeDefault": "{name} (थीम डीफॉल्ट)",
+  "designSystemHelp": "रंग, टाइप, कोपरे आणि घनता. लेआउट अजूनही थीम ठरवते."
 }

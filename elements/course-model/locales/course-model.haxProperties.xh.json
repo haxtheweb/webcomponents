@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "isihloko"
+        "title": "isihloko",
+        "description": "Isihloko esiboniswa ngaphezulu kwemodeli yekhosi."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "Idilesi yefayile yemodeli ye-3D (.glb okanye .gltf) eza kuboniswa."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "Chaza imodeli ye-3D kubantu abangakwaziyo ukuyibona."
       },
       {
         "title": "Indawo yolwazi"

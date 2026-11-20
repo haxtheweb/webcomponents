@@ -2,5 +2,9 @@
   "toggleAnimation": "אײַן/אױסשאַלטן אַנימאַציע",
   "info": "אינפֿאָ",
   "image": "בילד",
-  "animatedGif": "אַנימירטער GIF"
+  "animatedGif": "אַנימירטער GIF",
+  "playAnimation": "שפּילט די אַנימאַציע",
+  "pauseAnimation": "פּויזירט די אַנימאַציע",
+  "showDescription": "ווײַזט די באַשרײַבונג",
+  "hideDescription": "באַהאַלט די באַשרײַבונג"
 }

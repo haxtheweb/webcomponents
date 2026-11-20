@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Tūtohi rēta",
+    "description": "Tūtohi rēta (pūngāwerewere) mō ngā tauira pakeketanga me te kaute āhuatanga, pērā i HEOSAT. Kei roto he kuputuhi kē me tētahi ripanga raraunga."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Taitara",
+        "description": "Te upoko mō te tūtohi; ka whakamahia hoki hei ingoa wātea mōna."
+      },
+      {
+        "title": "Kaute mōrahi",
+        "description": "Te uara teitei rawa i te āwhata."
+      },
+      {
+        "title": "Ngā kāwai",
+        "description": "Kotahi te kāwai mō ia rārangi. Me 3 neke atu."
+      },
+      {
+        "title": "Ngā kaute",
+        "description": "Ngā tau kua wehea ki te piko, kotahi mō ia kāwai i te raupapa ōrite."
+      },
+      {
+        "title": "Ngā kaute whāinga",
+        "description": "Ngā tau kua wehea ki te piko, kotahi mō ia kāwai i te raupapa ōrite."
+      },
+      {
+        "title": "Whakaatu kī",
+        "description": "Whakaaturia he kī e whakaingoa ana i ngā kaute me ngā whāinga."
+      },
+      {
+        "title": "Kiato",
+        "description": "He tūtohi iti ake kāore he tapanga, kī, ripanga raraunga rānei. Tau te kiore ki runga i tētahi pūwāhi kia kite i ōna uara."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tapanga kaute",
+        "description": "Te tapanga kī me te ripanga mō ngā kaute."
+      },
+      {
+        "title": "Tapanga whāinga",
+        "description": "Te tapanga kī me te ripanga mō ngā whāinga."
+      }
+    ]
+  }
+}

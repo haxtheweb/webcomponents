@@ -1,4 +1,6 @@
 {
   "saveAll": "Бүгдийг хадгалах",
-  "saveTheFollowing": "Дараахыг хадгалах уу: {list}?"
+  "saveTheFollowing": "Дараахыг хадгалах уу: {list}?",
+  "save": "Хадгалах",
+  "cancel": "Цуцлах"
 }

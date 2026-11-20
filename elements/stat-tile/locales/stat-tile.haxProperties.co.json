@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Casella statistica",
+    "description": "Un numeru chì conta, cù a so etichetta è cumu hà cambiatu. Mettitene parechji in una griglia per una linea di tavulinu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etichetta",
+        "description": "Ciò chì u numeru misura."
+      },
+      {
+        "title": "Valore",
+        "description": "U numeru. Un numeru simplice hè raggruppatu secondu a lingua di a pagina; tuttu u restu si mostra cum'ellu hè scrittu."
+      },
+      {
+        "title": "Cambiamentu",
+        "description": "Cumu hà cambiatu, in parolle, per esempiu 6% stu semestru."
+      },
+      {
+        "title": "Direzzione",
+        "description": "S'è u cambiamentu hè in sù o in giò.",
+        "options": {
+          "": "Nisunu",
+          "up": "In sù",
+          "down": "In giù"
+        }
+      }
+    ]
+  }
+}

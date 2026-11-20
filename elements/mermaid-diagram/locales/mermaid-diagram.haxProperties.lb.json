@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Diagramm aus Text",
+    "description": "Schreift en Diagramm als Text (Mermaid): e Flossdiagramm, eng Sequenz, eng Zäitlinn a méi. E gëtt op der Säit mat enger Textalternativ gezeechent."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Iwwer dem Diagramm gewisen an als säin Numm benotzt."
+      },
+      {
+        "title": "Quell vum Diagramm",
+        "description": "Mermaid-Text, zum Beispill: flowchart TD, an dann eng Linn pro Verbindung, wéi A[Draft] --> B{Ready?}. Setzt |label| no engem Feil, fir en ze bezeechnen. D'Zeechnung aktualiséiert sech, während Dir tippt."
+      },
+      {
+        "title": "Textalternativ",
+        "description": "Beschreift, wat d'Diagramm weist, fir Leit, déi et net gesi kënnen. Bei engem Flossdiagramm eidel loossen, da ginn seng Schrëtt fir Iech opgelëscht."
+      },
+      {
+        "title": "Bildënnerschrëft",
+        "description": "Optional Ënnerschrëft ënner dem Diagramm."
+      },
+      {
+        "title": "D'Quell weisen",
+        "description": "Den Diagrammtext nieft der Zeechnung weisen."
+      },
+      {
+        "title": "D'Textalternativ weisen",
+        "description": "D'Textalternativ ënner der Zeechnung weisen. Si ass ëmmer fir Schiermliesere verfügbar."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Quellfichier",
+        "description": "Adress vun engem .mmd-Fichier, deen amplaz vum Text uewendriwwer gezeechent gëtt (https oder e Wee op dëser Websäit)."
+      },
+      {
+        "title": "Akzentfaarf",
+        "description": "Faarf vum Ikon-Chip am Kapp."
+      }
+    ]
+  }
+}

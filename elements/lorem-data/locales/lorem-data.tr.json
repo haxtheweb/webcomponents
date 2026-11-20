@@ -1,4 +1,6 @@
 {
   "saveAll": "Tümünü Kaydet",
-  "saveTheFollowing": "Şunlar kaydedilsin mi: {list}?"
+  "saveTheFollowing": "Şunlar kaydedilsin mi: {list}?",
+  "save": "Kaydet",
+  "cancel": "İptal"
 }

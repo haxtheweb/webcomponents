@@ -1,0 +1,8 @@
+{
+  "theme": "Тема",
+  "palette": "Палитра",
+  "themeDefault": "Теманын демейкиси",
+  "designSystem": "Дизайн тутуму",
+  "designSystemDefault": "DDD (демейки)",
+  "designSystemUnavailable": "Бул тема өзүнүн дизайн тутумун сактайт"
+}

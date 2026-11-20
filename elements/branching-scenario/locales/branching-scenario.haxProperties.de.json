@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Verzweigtes Szenario",
+    "description": "Eine Geschichte, in der jede Wahl zu einer anderen Szene und einem anderen Ende führt. Lernende können zurückgehen und andere Wege ausprobieren; das erreichte Ende bestimmt die Punktzahl."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Name des Szenarios, in seiner Kopfzeile angezeigt."
+      },
+      {
+        "title": "Startszene",
+        "description": "Szenen-ID der Szene, mit der Lernende beginnen. Leer lassen, um mit der ersten Szene zu beginnen."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Akzentfarbe",
+        "description": "Optionale Farbe für den Kopfzeilen-Chip, die Schaltflächen und den Rand einer Wahl."
+      }
+    ]
+  }
+}

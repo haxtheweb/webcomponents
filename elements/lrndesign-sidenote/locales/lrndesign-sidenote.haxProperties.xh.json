@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Inqaku elisecaleni",
+    "description": "Inqaku elahlukileyo kumxholo olingqongileyo, nempawu nelebhile ezingakhethwa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ilebhile",
+        "description": "Ilebhile yenqaku elisecaleni."
+      },
+      {
+        "title": "Impawu",
+        "description": "Impawu yenqaku elisecaleni."
+      },
+      {
+        "title": "Umxholo",
+        "description": "Umxholo wenqaku elisecaleni."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Umbala",
+        "description": "Umbala onikwa inqaku elisecaleni."
+      }
+    ]
+  }
+}

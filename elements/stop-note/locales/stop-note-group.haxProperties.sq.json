@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Grup Stop Note",
+    "description": "Grumbullo disa stop note në një bllok që shfaq një shënim në një kohë, si Këshilla ose Çfarë ka të re. Kartat e udhëzimeve, shënimet anësore dhe citimet me kornizë mund të grumbullohen me to."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etiketa",
+        "description": "Emri i grupit që njoftojnë lexuesit e ekranit, si Këshilla ose Çfarë ka të re."
+      },
+      {
+        "title": "Shënime",
+        "description": "Stop note-t në grup. Mund të shtohen edhe karta udhëzimesh, shënime anësore dhe citime me kornizë."
+      }
+    ]
+  }
+}

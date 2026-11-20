@@ -2,5 +2,9 @@
   "answerInCorrectOrder": "Yankho lili motsatana moyenera",
   "answerInIncorrectOrder": "Yankho silili motsatana moyenera",
   "moveOptionUp": "Sankhani kuti musunthire njira mmwamba motsatana",
-  "moveOptionDown": "Sankhani kuti musunthire njira pansi motsatana"
+  "moveOptionDown": "Sankhani kuti musunthire njira pansi motsatana",
+  "moveEarlier": "Sunthirani kale",
+  "moveLater": "Sunthirani pambuyo",
+  "correct": "Zolondola",
+  "incorrect": "Zolakwika"
 }

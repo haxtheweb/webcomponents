@@ -13,7 +13,15 @@
       {
         "property": "answers",
         "title": "Mbohovái",
-        "description": "Mbohovái ñemohenda ohechauka jeku'e añetegua."
+        "description": "Mbohovái ñemohenda ohechauka jeku'e añetegua.",
+        "options": {
+          "": "Lista",
+          "cards": "Ta'ãnga kárta"
+        }
+      },
+      {
+        "title": "Mbohováikuéra",
+        "description": "Mbohovái ñemohenda omoĩ jehasa hekopetéva."
       }
     ],
     "advanced": [

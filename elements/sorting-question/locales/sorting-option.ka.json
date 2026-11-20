@@ -2,5 +2,9 @@
   "answerInCorrectOrder": "პასუხი სწორი თანმიმდევრობითაა",
   "answerInIncorrectOrder": "პასუხი არასწორი თანმიმდევრობითაა",
   "moveOptionUp": "აირჩიეთ ვარიანტის ზემოთ გადასატანად",
-  "moveOptionDown": "აირჩიეთ ვარიანტის ქვემოთ გადასატანად"
+  "moveOptionDown": "აირჩიეთ ვარიანტის ქვემოთ გადასატანად",
+  "moveEarlier": "წინ გადატანა",
+  "moveLater": "უკან გადატანა",
+  "correct": "სწორია",
+  "incorrect": "არასწორია"
 }

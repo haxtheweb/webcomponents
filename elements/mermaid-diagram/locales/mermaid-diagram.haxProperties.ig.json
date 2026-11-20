@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Eserese site n'ederede",
+    "description": "Dee eserese dịka ederede (Mermaid): eserese usoro, usoro, ahịrị oge na ndị ọzọ. A na-ese ya na peeji nwere ederede nnọchi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Aha",
+        "description": "E gosiri n'elu eserese ahụ ma jiri ya dịka aha ya."
+      },
+      {
+        "title": "Isi eserese",
+        "description": "Ederede Mermaid, dịka: flowchart TD, wee otu ahịrị maka njikọ ọ bụla dịka A[Draft] --> B{Ready?}. Tinye |label| mgbe akụ gasịrị iji nye ya akara aha. Eserese ahụ na-emelite ka ị na-ede."
+      },
+      {
+        "title": "Ederede nnọchi",
+        "description": "Kọwaa ihe eserese ahụ na-egosi maka ndị na-enweghị ike ịhụ ya. Hapụ ya efu na eserese usoro ka e depụta gị nzọụkwụ ya."
+      },
+      {
+        "title": "Nkọwa onyonyo",
+        "description": "Nkọwa onyonyo nhọrọ e gosiri n'okpuru eserese ahụ."
+      },
+      {
+        "title": "Gosi isi ya",
+        "description": "Gosi ederede eserese ahụ n'akụkụ ihe osise ahụ."
+      },
+      {
+        "title": "Gosi ederede nnọchi",
+        "description": "Gosi ederede nnọchi n'okpuru ihe osise ahụ. Ọ na-adị mgbe niile maka ihe ọgụgụ ihuenyo."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Faịlụ isi",
+        "description": "Adreesị faịlụ .mmd a ga-ese kama ederede dị n'elu (https ma ọ bụ ụzọ na saịtị a)."
+      },
+      {
+        "title": "Agba ntụpọ",
+        "description": "Agba chip akara ngosi dị n'isi."
+      }
+    ]
+  }
+}

@@ -2,5 +2,9 @@
   "answerInCorrectOrder": "答えは正しい順序です",
   "answerInIncorrectOrder": "答えの順序が正しくありません",
   "moveOptionUp": "選択すると選択肢を上に移動します",
-  "moveOptionDown": "選択すると選択肢を下に移動します"
+  "moveOptionDown": "選択すると選択肢を下に移動します",
+  "moveEarlier": "前へ移動",
+  "moveLater": "後ろへ移動",
+  "correct": "正解",
+  "incorrect": "不正解"
 }

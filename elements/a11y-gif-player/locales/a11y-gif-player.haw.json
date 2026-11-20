@@ -2,5 +2,9 @@
   "toggleAnimation": "Hoʻā/Hoʻopio i ka hoʻoneʻe kiʻi",
   "info": "ʻike",
   "image": "Kiʻi",
-  "animatedGif": "GIF ʻoni"
+  "animatedGif": "GIF ʻoni",
+  "playAnimation": "Hoʻokani i ke kiʻi ʻoniʻoni",
+  "pauseAnimation": "Hoʻomaha i ke kiʻi ʻoniʻoni",
+  "showDescription": "Hōʻike i ka wehewehe",
+  "hideDescription": "Hūnā i ka wehewehe"
 }

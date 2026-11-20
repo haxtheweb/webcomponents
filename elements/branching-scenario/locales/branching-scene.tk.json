@@ -1,0 +1,14 @@
+{
+  "scene": "Sahna",
+  "ending": "Soňy",
+  "goodEnding": "Gowy soňy",
+  "mixedEnding": "Garyşyk soňy",
+  "poorEnding": "Erbet soňy",
+  "scoreOf": "Bal: {max}-dan {score}",
+  "scoreOnly": "Bal {score}",
+  "startScene": "Başla",
+  "sceneIdLabel": "Sahna id-si",
+  "needsId": "Saýlawlar bu sahna baglanyp biler ýaly sahna id-sini goşuň.",
+  "orphan": "Hiç bir saýlaw bu sahna baglanmaýar.",
+  "deadLinks": "Bu baglanyşyklar ýok sahna görkezýär:"
+}

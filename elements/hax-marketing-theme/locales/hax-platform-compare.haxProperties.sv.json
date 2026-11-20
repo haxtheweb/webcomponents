@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Plattformsjämförelse",
+    "description": "Sida vid sida: välj två valfria plattformar från en datafil"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Jämförelsedata (JSON)"
+      },
+      {
+        "title": "Vänster plattforms-id"
+      },
+      {
+        "title": "Höger plattforms-id"
+      }
+    ]
+  }
+}

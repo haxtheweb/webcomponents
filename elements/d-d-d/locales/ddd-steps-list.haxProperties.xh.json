@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Uluhlu lwamanyathelo",
     "description": "Amanyathelo anamanani okugqiba umsebenzi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Isibonisi senyathelo",
+        "description": "Bonisa amanyathelo njengomqolo omfutshane wezihloko ophawula inkqubela. Umxholo wenyathelo awuboniswa kolu yilo."
+      },
+      {
+        "title": "Inyathelo langoku",
+        "description": "Inyathelo umfundi akulo, ukubala ukusuka ku-1. Amanyathelo angaphambili aboniswa egqityiwe. Lisetyenziswa sisibonisi senyathelo."
+      }
+    ]
   }
 }

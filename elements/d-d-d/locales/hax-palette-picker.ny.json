@@ -5,5 +5,6 @@
   "selected": "Yosankhidwa",
   "currentlyActiveAndSelectedPalette": "Mitundu yomwe ikugwira ntchito ndi yosankhidwa",
   "currentlyActivePalette": "Mitundu yomwe ikugwira ntchito",
-  "selectedPaletteToApply": "Mitundu yosankhidwa kuti iikidwe"
+  "selectedPaletteToApply": "Mitundu yosankhidwa kuti iikidwe",
+  "paletteNumber": "Mitundu {number}"
 }

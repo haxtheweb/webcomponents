@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Ordjagt",
+    "description": "Et bogstavgitter med skjulte ord. Deltagerne trykker på det første og sidste bogstav i hvert ord. Øver i at genkende, hvordan et begreb staves, ikke hvad det betyder."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Hvad deltagerne bliver bedt om at finde, vist i overskriften."
+      },
+      {
+        "title": "Ord",
+        "description": "Ordene, der skal skjules. Mellemrum og tegnsætning udelades fra gitteret. Ord, der ikke passer, vises på en liste, mens du redigerer, og udelades for deltagerne."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Gitterstørrelse",
+        "description": "Bogstaver pr. side, 4 til 16. Lad være tom for at tilpasse til det længste ord (op til 12). Mere end 12 ruller sidelæns på en telefon."
+      },
+      {
+        "title": "Diagonale ord",
+        "description": "Skjul også ord diagonalt. Sværere."
+      },
+      {
+        "title": "Baglæns ord",
+        "description": "Skjul også ord skrevet baglæns. Sværere."
+      },
+      {
+        "title": "Accentfarve",
+        "description": "Valgfri farve til overskriftsmærket, det valgte første bogstav og knappen."
+      }
+    ]
+  }
+}

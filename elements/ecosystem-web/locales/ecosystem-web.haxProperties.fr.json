@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Toile de l'écosystème",
+    "description": "Une toile interactive montrant comment les parties d'un projet sont liées, avec des sous-toiles et des visites pas à pas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Données de la toile",
+        "description": "URL du lot JSON de toiles (construit dans PRAW, ecosystem-webs.json)."
+      },
+      {
+        "title": "Toile",
+        "description": "Id de la toile à afficher en premier ; main est la toile de l'écosystème."
+      },
+      {
+        "title": "Tuile sélectionnée",
+        "description": "Id d'une tuile à sélectionner à l'ouverture de la toile."
+      },
+      {
+        "title": "Visite",
+        "description": "Id d'une visite par laquelle commencer."
+      },
+      {
+        "title": "Démarrer en vue liste",
+        "description": "Afficher la toile sous forme de listes imbriquées au lieu du dessin."
+      },
+      {
+        "title": "Dessin seul",
+        "description": "N'afficher que le dessin, comme une figure : sans en-tête, visites, détails ni barre d'étapes."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Lire par",
+        "description": "Commencer avec chaque tuile lue selon une même mesure.",
+        "options": {
+          "": "Connexions uniquement",
+          "fresh": "Fraîcheur",
+          "bus": "Facteur bus",
+          "impact": "Impact",
+          "evidence": "Justification",
+          "parity": "Parité"
+        }
+      }
+    ]
+  }
+}

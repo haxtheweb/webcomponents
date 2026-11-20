@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Hafıza oyunu",
+    "description": "Çiftleri bulmak için kartları çevirin. Bir eşleşmenin anlamayı göstermesi için bir terimi anlamıyla eşleyin veya eşleşen iki metin ya da görsel kullanın."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Başlık",
+        "description": "Başlıkta gösterilen yönerge, örneğin: Terimi göreviyle eşleştirin."
+      },
+      {
+        "title": "Çiftler",
+        "description": "Her çift birbirine ait iki karttır, genellikle bir terim ve anlamı. Bir tarafın metne, görsele veya ikisine birden ihtiyacı vardır."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Vurgu rengi",
+        "description": "Başlık etiketi, kart arkaları ve düğme için isteğe bağlı renk."
+      }
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Mwigizaji",
+    "description": "Hadhira moja, inayoigizwa na mhusika, yenye maneno na kitufe"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Huyu ni nani"
+      },
+      {
+        "title": "Aina ya mhusika"
+      },
+      {
+        "title": "Mbegu ya mhusika"
+      },
+      {
+        "title": "Rangi ya jukwaa (jina la DDD)"
+      },
+      {
+        "title": "Mahali kitufe kinapoelekea"
+      },
+      {
+        "title": "Maandishi ya kitufe"
+      }
+    ]
+  }
+}

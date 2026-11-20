@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Obraz tła."
+        "description": "Obraz tła.",
+        "title": "Obraz"
       },
       {
         "property": "caption",
-        "description": "Nagłówek tekstowy."
+        "description": "Nagłówek tekstowy.",
+        "title": "Podpis"
       }
     ]
   }

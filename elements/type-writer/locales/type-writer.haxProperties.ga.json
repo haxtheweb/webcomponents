@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Clóscríobhán",
     "description": "Téacs a chlóscríobhann é féin carachtar amháin ag an am."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Téacs",
+        "description": "An téacs le clóscríobh nuair a scrollaíonn an eilimint isteach san amharc."
+      },
+      {
+        "title": "Ag clóscríobh",
+        "description": "Taispeáin an cúrsóir caochta; socraíonn an eilimint é seo fad atá sí ag clóscríobh."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Moill",
+        "description": "Milleasoicindí le fanacht sula dtosaíonn an clóscríobh."
+      },
+      {
+        "title": "Fad an chúrsóra",
+        "description": "Milleasoicindí a leanann an cúrsóir ag caochadh tar éis an téacs a chlóscríobh."
+      },
+      {
+        "title": "Luas",
+        "description": "Milleasoicindí in aghaidh an charachtair; clóscríobhann uimhreacha níos ísle níos tapúla."
+      }
+    ]
   }
 }

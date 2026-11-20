@@ -3,5 +3,8 @@
   "copyAsCsv": "Copia com a CSV.",
   "printTable": "Imprimeix la taula",
   "selectColumn": "Selecciona una columna",
-  "dataTable": "Dades · Taula"
+  "dataTable": "Dades · Taula",
+  "filterStatus": "Es mostren {shown} de {total} files, filtrades per {column}: {text}",
+  "columnNumber": "Columna {column}",
+  "clearFilter": "Esborra el filtre"
 }

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ki a",
+    "description": "Ngā kupu i te taha o tētahi pātene kanohi ki te kanohi me ngā kiripuaki e rua"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Upoko"
+      },
+      {
+        "title": "Te wāhi e haere ai te pātene"
+      },
+      {
+        "title": "Kuputuhi pātene"
+      },
+      {
+        "title": "Kākano kiripuaki mauī"
+      },
+      {
+        "title": "Kākano kiripuaki matau"
+      }
+    ]
+  }
+}

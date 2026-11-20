@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Krahasimi i platformave",
+    "description": "Kokë më kokë: zgjidh çdo dy platforma nga një skedar të dhënash"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Të dhënat e krahasimit (JSON)"
+      },
+      {
+        "title": "ID-ja e platformës majtas"
+      },
+      {
+        "title": "ID-ja e platformës djathtas"
+      }
+    ]
+  }
+}

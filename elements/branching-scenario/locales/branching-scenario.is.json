@@ -1,0 +1,22 @@
+{
+  "scenario": "Atburðarás",
+  "directions": "Leiðbeiningar",
+  "showDirections": "Sýna leiðbeiningar",
+  "hideDirections": "Fela leiðbeiningar",
+  "directionsRead": "Lestu hvert atriði og veldu hvað þú myndir gera.",
+  "directionsEndings": "Það eru nokkrir endar. Prófaðu aðra leið þegar þú ert búin(n).",
+  "startOver": "Byrja upp á nýtt",
+  "back": "Til baka um eitt skref",
+  "tryAnother": "Prófa aðra leið",
+  "path": "Leið",
+  "scene": "Atriði",
+  "ending": "Endir",
+  "end": "endir",
+  "scenesSeen": "{seen} af {total} atriðum skoðuð",
+  "endingReached": "Endi náð",
+  "addScene": "Bæta við atriði",
+  "newScene": "Nýtt atriði",
+  "newSceneText": "Lýstu því sem gerist og tengdu svo hvert val við atriði.",
+  "editingNote": "Breyting: öll atriði eru sýnd. Val er tengill á # og síðan auðkenni atriðis.",
+  "noScenes": "Bættu við atriði til að hefja atburðarásina."
+}

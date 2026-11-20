@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Hesab məşqi",
+    "description": "Ani rəylə avtomatik yaradılan qısa hesab məsələləri. Əməliyyatları və ədəd aralığını seçin; hər tur yenidir."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Başlıq",
+        "description": "Bu məşqin adı, başlığında göstərilir."
+      },
+      {
+        "title": "Əməliyyatlar",
+        "description": "Hansı növ məsələlərin veriləcəyi. Öyrənənlər başlamazdan əvvəl bunlardan istənilənini söndürə bilər.",
+        "options": {
+          "add": "Toplama",
+          "subtract": "Çıxma",
+          "multiply": "Vurma",
+          "divide": "Bölmə",
+          "add subtract": "Toplama və çıxma",
+          "multiply divide": "Vurma və bölmə",
+          "add multiply": "Toplama və vurma",
+          "add divide": "Toplama və bölmə",
+          "subtract multiply": "Çıxma və vurma",
+          "subtract divide": "Çıxma və bölmə",
+          "add subtract multiply": "Toplama, çıxma və vurma",
+          "add subtract divide": "Toplama, çıxma və bölmə",
+          "add multiply divide": "Toplama, vurma və bölmə",
+          "subtract multiply divide": "Çıxma, vurma və bölmə",
+          "add subtract multiply divide": "Dördü də"
+        }
+      },
+      {
+        "title": "Ən kiçik ədəd",
+        "description": "Məsələdə istifadə olunan ən kiçik ədəd. Tam ədədlər, 0 və ya daha çox."
+      },
+      {
+        "title": "Ən böyük ədəd",
+        "description": "Məsələdə istifadə olunan ən böyük ədəd. Bölmənin cavabları və bölənlər də bu aralıqda qalır."
+      },
+      {
+        "title": "Məsələlərin sayı",
+        "description": "Bir turda neçə məsələ var (1-dən 100-ə qədər)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Vaxt limiti",
+        "description": "Bütün tur üçün ayrılan saniyələr. 0 taymer olmaması deməkdir və bu standartdır: vaxtlı məşqlər daha çox vaxta ehtiyacı olan öyrənənləri uğursuz edir. Təyin edildikdə öyrənənlər yenə də taymeri özləri üçün söndürə bilər."
+      },
+      {
+        "title": "Vurğu rəngi",
+        "description": "Başlıq nişanının və düymələrin rəngi. Mövzuya uyğun olması üçün boş saxlayın."
+      }
+    ]
+  }
+}

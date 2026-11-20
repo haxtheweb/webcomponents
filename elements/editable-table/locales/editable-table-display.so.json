@@ -3,5 +3,8 @@
   "copyAsCsv": "Koobi sida CSV.",
   "printTable": "Daabac Shaxda",
   "selectColumn": "Dooro Tiir",
-  "dataTable": "Xog · Shaxda"
+  "dataTable": "Xog · Shaxda",
+  "filterStatus": "Waxaa la muujiyay {shown} ee {total} saf, lagu shaandheeyay {column}: {text}",
+  "columnNumber": "Tiirka {column}",
+  "clearFilter": "Nadiifi shaandhada"
 }

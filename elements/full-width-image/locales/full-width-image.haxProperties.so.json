@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Sawirka asalka."
+        "description": "Sawirka asalka.",
+        "title": "Sawir"
       },
       {
         "property": "caption",
-        "description": "Cinwaanka qoraalka."
+        "description": "Cinwaanka qoraalka.",
+        "title": "Qoraal sharraxaad"
       }
     ]
   }

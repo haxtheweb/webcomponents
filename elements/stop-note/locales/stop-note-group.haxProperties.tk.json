@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Stop Note topary",
+    "description": "Birnäçe stop note-y bir wagtda bir bellik görkezýän bir bloka ýygnaň, meselem Maslahatlar ýa-da Näme täzelik. Görkezme kartlary, gapdal bellikler we çarçuwaly sitatalar hem olar bilen ýygnalyp bilner."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Bellik",
+        "description": "Ekran okaýjylarynyň yglan edýän toparynyň ady, meselem Maslahatlar ýa-da Näme täzelik."
+      },
+      {
+        "title": "Bellikler",
+        "description": "Topardaky stop note-lar. Görkezme kartlary, gapdal bellikler we çarçuwaly sitatalar hem goşulyp bilner."
+      }
+    ]
+  }
+}

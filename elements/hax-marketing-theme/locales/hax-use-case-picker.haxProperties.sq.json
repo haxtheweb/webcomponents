@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Zgjedhësi i rasteve të përdorimit",
+    "description": "Zgjidh për çfarë është një sajt dhe merr një lidhje që hap HAX në shfletues me atë sajt fillestar, plus komandën përkatëse CLI."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Adresa e HAX në shfletues",
+        "description": "Ku hapet lidhja; i shtohen ?skeleton= dhe &name="
+      },
+      {
+        "title": "Sajtet fillestare për t'u lënë jashtë",
+        "description": "Emrat e makinës, të ndarë me presje"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Lista e sajteve fillestare",
+        "description": "Adresa e listës së skeleteve (formati që lexon app-hax)"
+      }
+    ]
+  }
+}

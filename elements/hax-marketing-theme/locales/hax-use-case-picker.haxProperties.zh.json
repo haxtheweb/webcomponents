@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "用途选择器",
+    "description": "选择网站的用途，获取一个在浏览器中用该入门网站打开 HAX 的链接，以及对应的 CLI 命令。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "浏览器版 HAX 地址",
+        "description": "链接打开的位置；会附加 ?skeleton= 和 &name="
+      },
+      {
+        "title": "要排除的入门网站",
+        "description": "机器名称，用逗号分隔"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "入门网站列表",
+        "description": "骨架列表的地址（app-hax 读取的格式）"
+      }
+    ]
+  }
+}

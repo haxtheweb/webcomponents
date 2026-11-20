@@ -8,5 +8,9 @@
   "theme": "Kaupapa",
   "palette": "Papatae",
   "cancel": "Whakakore",
-  "openAppearanceSettings": "Whakatuwhera Tautuhinga Āhua"
+  "openAppearanceSettings": "Whakatuwhera Tautuhinga Āhua",
+  "designSystem": "Pūnaha hoahoa",
+  "designSystemDefault": "DDD (taunoa)",
+  "designSystemThemeDefault": "{name} (taunoa o te kaupapa)",
+  "designSystemHelp": "Tae, momotuhi, kokonga me te kiato. Mā te kaupapa tonu e whakatau te tahora."
 }

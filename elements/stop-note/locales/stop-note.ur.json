@@ -3,5 +3,7 @@
   "status_stop": "رکیں",
   "status_warning": "انتباہ",
   "status_success": "کامیابی",
-  "status_info": "نوٹ"
+  "status_info": "نوٹ",
+  "status_tip": "کیا آپ جانتے ہیں؟",
+  "status_new": "نیا کیا ہے"
 }

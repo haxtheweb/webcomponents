@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "د کیسې تڼۍ",
+    "description": "هغه تڼۍ چې په hax.cloud کې د یوې ادعا تر شا کیسه، یا د HAX شبکې په بل سایټ کې اړونده ځای پرانیزي"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "چېرته ځي",
+        "options": {
+          "cloud": "hax.cloud، کیسه",
+          "learn": "learn.hax.cloud، یوه ښوونه",
+          "try": "browser.hax.cloud، وازمویئ",
+          "elements": "webcomponents.hax.cloud، یو بلاک",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "پر هغه سایټ پته (په hax.cloud کې کیسه داسې ښکاري لکه stories/ee450a19)"
+      },
+      {
+        "title": "د څه په اړه ده"
+      },
+      {
+        "title": "کوچنی چپ"
+      },
+      {
+        "title": "په تڼۍ کې وښیاست چې د څه په اړه ده"
+      }
+    ]
+  }
+}

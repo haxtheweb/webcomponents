@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Agbègbè ìjùsílẹ̀ àwòrán",
+    "description": "Àwọn akẹ́kọ̀ọ́ ń gbé àwọn àmì sórí àwọn agbègbè tí a tẹ́ lé àwòrán kan, lẹ́yìn náà wọ́n ń ṣàyẹ̀wò ìdáhùn wọn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Àwòrán",
+        "description": "Àwòrán tí àwọn akẹ́kọ̀ọ́ ń gbé àwọn àmì lé."
+      },
+      {
+        "title": "Ọ̀rọ̀ àfidípò",
+        "description": "Ó ń ṣàpèjúwe àwòrán náà fún àwọn tí kò lè rí i. Má ṣe tú ibi tí àwọn àmì ń lọ."
+      },
+      {
+        "title": "Àkọlé àwòrán",
+        "description": "Àkọlé kúkúrú tó ṣeé rí fún àwòrán náà, tí a fihàn lókè rẹ̀."
+      },
+      {
+        "title": "Ìbéèrè",
+        "description": "Ohun tí a ní kí àwọn akẹ́kọ̀ọ́ ṣe pẹ̀lú àwọn àmì náà."
+      },
+      {
+        "title": "Àwọn àmì àti agbègbè",
+        "description": "Ohun kọ̀ọ̀kan jẹ́ àmì tí àwọn akẹ́kọ̀ọ́ lè gbé sí ipò. Fún àmì kan ní orúkọ agbègbè láti gbé agbègbè rẹ̀ sórí àwòrán; àmì tí kò ní orúkọ agbègbè jẹ́ àfikún tí kò jẹ́ ti ibikíbi. Àwọn nọ́mbà agbègbè jẹ́ ìdá-ọgọ́rùn-ún ti àwòrán náà."
+      },
+      {
+        "title": "Àkọlé àwòrán",
+        "description": "Àkọlé àṣàyàn tí a fihàn lábẹ́ àwòrán náà."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Àwọn ìgbìyànjú",
+        "description": "Iye ìgbà tí akẹ́kọ̀ọ́ lè ṣàyẹ̀wò. 0 túmọ̀ sí láìní ààlà."
+      },
+      {
+        "title": "Da àwọn àmì pọ̀",
+        "description": "Fi àwọn àmì hàn ní ìtò ọ̀tọ̀ ní ìbẹ̀wò kọ̀ọ̀kan."
+      },
+      {
+        "title": "Ó ṣeé ká",
+        "description": "Fi ìbéèrè yìí hàn gẹ́gẹ́ bí ìlà tó ń ṣí tí ó sì ń tì. Ṣíṣí ọ̀kan ń ti àwọn ìbéèrè tó ṣeé ká mìíràn lẹ́gbẹ̀ẹ́ rẹ̀."
+      },
+      {
+        "title": "Bẹ̀rẹ̀ ní kíká",
+        "description": "Nígbà tí ó bá ṣeé ká, bẹ̀rẹ̀ gẹ́gẹ́ bí ìlà tí a tì tí ó ń fi ìbéèrè àti ipò rẹ̀ nìkan hàn."
+      },
+      {
+        "title": "Fọ́ọ̀mù ìdíwọ̀n",
+        "description": "OER Schema: fọ́ọ̀mù ìdíwọ̀n fún ìgbéléwọ̀n yìí (fún àpẹẹrẹ àmì, lẹ́tà, ìdá-ọgọ́rùn-ún, ìparí)."
+      },
+      {
+        "title": "Èròǹgbà ẹ̀kọ́",
+        "description": "OER Schema: èròǹgbà ẹ̀kọ́ tó jọmọ́ ìgbéléwọ̀n yìí."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Orúkọ ìdánwò náà",
+        "description": "Orúkọ ìdánwò tí a ń lò fún ìdánimọ̀ xAPI nínú àwọn ètò ìtúpalẹ̀."
+      },
+      {
+        "title": "Ẹ̀kọ́",
+        "description": "OER Schema: ẹ̀kọ́ tí a pète ìgbéléwọ̀n yìí fún."
+      }
+    ]
+  }
+}

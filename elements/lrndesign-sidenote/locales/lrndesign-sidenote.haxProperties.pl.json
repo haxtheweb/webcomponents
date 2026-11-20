@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Notatka na marginesie",
+    "description": "Notatka oddzielona od otaczającej treści, z opcjonalną ikoną i etykietą."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etykieta",
+        "description": "Etykieta notatki na marginesie."
+      },
+      {
+        "title": "Ikona",
+        "description": "Ikona notatki na marginesie."
+      },
+      {
+        "title": "Treść",
+        "description": "Treść notatki na marginesie."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Kolor",
+        "description": "Kolor, którym zabarwiona jest notatka na marginesie."
+      }
+    ]
+  }
+}

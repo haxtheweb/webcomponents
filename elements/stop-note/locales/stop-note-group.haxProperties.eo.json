@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Grupo de haltnotoj",
+    "description": "Stakigi plurajn haltnotojn en unu blokon, kiu montras po unu noto, ekzemple Konsiloj aŭ Kio novas. Instrukciaj kartoj, flankaj notoj kaj kadritaj citaĵoj povas esti stakigitaj kun ili."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etikedo",
+        "description": "Nomo por la grupo, kiun ekranlegiloj anoncas, ekzemple Konsiloj aŭ Kio novas."
+      },
+      {
+        "title": "Notoj",
+        "description": "La haltnotoj en la grupo. Instrukciaj kartoj, flankaj notoj kaj kadritaj citaĵoj ankaŭ povas esti aldonitaj."
+      }
+    ]
+  }
+}

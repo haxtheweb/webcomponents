@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Statistiko",
+    "description": "Nombro, kiu kalkulas supren, kun etikedo kaj ligilo al ĝia rakonto"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nombro ĝis kiu kalkuli"
+      },
+      {
+        "title": "Antaŭ la nombro"
+      },
+      {
+        "title": "Post la nombro"
+      },
+      {
+        "title": "Vortoj anstataŭ nombro"
+      },
+      {
+        "title": "Kion ĝi kalkulas"
+      },
+      {
+        "title": "Rakonta adreso ĉe hax.cloud (stories/ee450a19)"
+      }
+    ]
+  }
+}

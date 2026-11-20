@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Nota sisi",
+    "description": "Nota yang diasingkan daripada kandungan sekeliling, dengan ikon dan label pilihan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Label",
+        "description": "Label nota sisi."
+      },
+      {
+        "title": "Ikon",
+        "description": "Ikon nota sisi."
+      },
+      {
+        "title": "Kandungan",
+        "description": "Kandungan nota sisi."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Warna",
+        "description": "Warna yang mewarnai nota sisi."
+      }
+    ]
+  }
+}

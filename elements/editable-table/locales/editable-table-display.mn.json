@@ -3,5 +3,8 @@
   "copyAsCsv": "CSV-ээр хуулах.",
   "printTable": "Хүснэгт хэвлэх",
   "selectColumn": "Багана сонгох",
-  "dataTable": "Өгөгдөл · Хүснэгт"
+  "dataTable": "Өгөгдөл · Хүснэгт",
+  "filterStatus": "{total} мөрөөс {shown}-г харуулж байна, {column}-аар шүүсэн: {text}",
+  "columnNumber": "Багана {column}",
+  "clearFilter": "Шүүлтүүр арилгах"
 }

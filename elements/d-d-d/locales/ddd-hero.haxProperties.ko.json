@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "히어로",
+    "description": "제목과 텍스트를 위에 얹은 큰 이미지, GIF 또는 동영상으로, 페이지 어디에나 넣을 수 있습니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "이미지 또는 동영상",
+        "description": "JPG, PNG, WebP, GIF, MP4 또는 WebM 파일."
+      },
+      {
+        "title": "대체 텍스트",
+        "description": "이미지를 설명하세요. 장식용이라면 비워 두세요."
+      },
+      {
+        "title": "제목",
+        "description": "미디어 위에 표시되는 제목. 없으면 비워 두세요."
+      },
+      {
+        "title": "텍스트",
+        "description": "미디어 위, 제목 아래에 표시되는 텍스트."
+      },
+      {
+        "title": "전체 너비",
+        "description": "콘텐츠 열 안에 두지 않고 화면 끝에서 끝까지 펼칩니다."
+      },
+      {
+        "title": "높이",
+        "options": {
+          "tall": "높게",
+          "medium": "보통",
+          "short": "낮게"
+        }
+      },
+      {
+        "title": "구도",
+        "description": "화면 크기별 사진 배치"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "페이드",
+        "description": "미디어 위에 덮는 색상. 제목이나 텍스트가 있으면 텍스트를 읽을 수 있도록 항상 하나가 적용됩니다.",
+        "options": {
+          "blue": "파랑",
+          "bottom": "아래쪽 어둡게",
+          "none": "없음"
+        }
+      },
+      {
+        "title": "텍스트 위치",
+        "options": {
+          "bottom": "아래",
+          "middle": "가운데"
+        }
+      },
+      {
+        "title": "가로 초점",
+        "description": "이미지를 자를 때 보이게 남는 부분, 0(왼쪽)부터 100(오른쪽)까지."
+      },
+      {
+        "title": "세로 초점",
+        "description": "이미지를 자를 때 보이게 남는 부분, 0(위)부터 100(아래)까지."
+      }
+    ]
+  }
+}

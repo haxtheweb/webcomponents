@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Storieknoppie",
+    "description": "Die knoppie wat die storie agter 'n bewering op hax.cloud oopmaak, of die ooreenstemmende plek op 'n ander HAX-netwerkwebwerf"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Waarheen dit gaan",
+        "options": {
+          "cloud": "hax.cloud, die storie",
+          "learn": "learn.hax.cloud, 'n tutoriaal",
+          "try": "browser.hax.cloud, probeer dit",
+          "elements": "webcomponents.hax.cloud, 'n blok",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Adres op daardie webwerf ('n storie op hax.cloud lyk soos stories/ee450a19)"
+      },
+      {
+        "title": "Waaroor dit gaan"
+      },
+      {
+        "title": "Klein skyfie"
+      },
+      {
+        "title": "Wys waaroor dit gaan in die knoppie"
+      }
+    ]
+  }
+}

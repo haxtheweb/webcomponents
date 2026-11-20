@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Takwimu",
+    "description": "Namba inayohesabu kwenda juu, yenye lebo na kiungo cha hadithi yake"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Namba ya kuhesabu hadi"
+      },
+      {
+        "title": "Kabla ya namba"
+      },
+      {
+        "title": "Baada ya namba"
+      },
+      {
+        "title": "Maneno badala ya namba"
+      },
+      {
+        "title": "Inahesabu nini"
+      },
+      {
+        "title": "Anwani ya hadithi kwenye hax.cloud (stories/ee450a19)"
+      }
+    ]
+  }
+}

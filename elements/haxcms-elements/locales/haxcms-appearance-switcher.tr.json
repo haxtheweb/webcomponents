@@ -1,0 +1,8 @@
+{
+  "theme": "Tema",
+  "palette": "Palet",
+  "themeDefault": "Tema varsayılanı",
+  "designSystem": "Tasarım sistemi",
+  "designSystemDefault": "DDD (varsayılan)",
+  "designSystemUnavailable": "Bu tema kendi tasarım sistemini korur"
+}

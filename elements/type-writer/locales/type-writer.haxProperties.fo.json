@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Skrivimaskina",
     "description": "Tekstur, sum skrivar seg sjálvan eitt tekn í senn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tekstur",
+        "description": "Teksturin at skriva út, tá ið luturin rullar inn í sjónina."
+      },
+      {
+        "title": "Skrivar",
+        "description": "Vís blinkandi bendilin; luturin setur hetta, meðan hann skrivar."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Seinking",
+        "description": "Millisekund at bíða, áðrenn skrivingin byrjar."
+      },
+      {
+        "title": "Tíðarbil hjá bendlinum",
+        "description": "Millisekund, sum bendilin heldur fram at blinka, eftir at teksturin er skrivaður."
+      },
+      {
+        "title": "Ferð",
+        "description": "Millisekund fyri hvønn tekin; lægri tøl skriva skjótari."
+      }
+    ]
   }
 }

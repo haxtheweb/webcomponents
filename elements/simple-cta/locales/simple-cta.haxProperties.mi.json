@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Huna ata",
         "description": "Huna i te ata e whakamahia ana hei whakanui i te kuputuhi"
+      },
+      {
+        "title": "Āhua",
+        "description": "Te kaha o te aro ki te pātene.",
+        "options": {
+          "": "Kua whakakīia",
+          "tonal": "Tae ngāwari",
+          "outlined": "Whai tāhuhu",
+          "plain": "Noa"
+        }
+      },
+      {
+        "title": "Rahi",
+        "description": "Te rahi o te pātene.",
+        "options": {
+          "s": "Iti",
+          "": "Waenga",
+          "l": "Nui"
+        }
       }
     ],
     "advanced": [

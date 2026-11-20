@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Pyetje numerike",
+    "description": "Një pyetje që përgjigjet me numër. Përgjigjja është numër i fiksuar ose formulë e llogaritur nga variabla, dhe llogaritet kur është brenda një tolerance."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pyetje",
+        "description": "Çfarë u pyetet nxënësve. Shkruaj emrin e një variabli në kllapa gjarpërushe, si {d}, për të shfaqur vlerën e saj."
+      },
+      {
+        "title": "Njësia",
+        "description": "Shfaqet si tekst pranë fushës së përgjigjes, për shembull km/h."
+      },
+      {
+        "title": "Përgjigjja",
+        "description": "Numri i saktë. Lëre bosh kur një formulë e llogarit përgjigjen."
+      },
+      {
+        "title": "Formula",
+        "description": "Llogarit përgjigjen nga variablat, për shembull d / (t / 60). Mund të përdorë + - * / ^, kllapa, sqrt() dhe abs(). Përdoret në vend të përgjigjes kur caktohet."
+      },
+      {
+        "title": "Variablat",
+        "description": "Numrat që përdorin formula dhe pyetja. Secili merr një vlerë mes më të ulëtës dhe më të lartës, me hapa."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Toleranca",
+        "description": "Sa larg nga përgjigjja e saktë ende llogaritet. 0 do të thotë e saktë, ose e rrumbullakosur në shifrat dhjetore më poshtë."
+      },
+      {
+        "title": "Lloji i tolerancës",
+        "description": "Absolute: plus ose minus tolerancën. Përqindje: plus ose minus atë përqindje të përgjigjes së saktë.",
+        "options": {
+          "absolute": "Absolute",
+          "percent": "Përqindje"
+        }
+      },
+      {
+        "title": "Shifrat dhjetore",
+        "description": "Nxënësve u kërkohet të rrumbullakosin në kaq shifra, dhe përgjigjja shfaqet e rrumbullakosur. Lëre bosh për pa rrumbullakim."
+      },
+      {
+        "title": "Përpjekjet",
+        "description": "Sa herë mund të kontrollojë një nxënës. 0 do të thotë pa kufi."
+      },
+      {
+        "title": "Numra të rinj në çdo përpjekje",
+        "description": "Nxirr vlera të reja variablash sa herë që nxënësi provon përsëri. Përgjigjja e mëparshme nuk shfaqet kur kthehen, vetëm nëse e qëlluan."
+      },
+      {
+        "title": "I palosshëm",
+        "description": "Shfaqe këtë pyetje si rresht që hapet dhe mbyllet. Hapja e njërës mbyll pyetjet e tjera të palosshme pranë saj."
+      },
+      {
+        "title": "Fillo i palosur",
+        "description": "Kur është e palosshme, fillo si rresht i mbyllur që shfaq vetëm pyetjen dhe statusin."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Emri i kuizit",
+        "description": "Emri i kuizit i përdorur për identifikimin xAPI në sistemet e analitikës."
+      }
+    ]
+  }
+}

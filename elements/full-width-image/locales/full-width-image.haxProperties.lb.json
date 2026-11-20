@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Hannergrondbild."
+        "description": "Hannergrondbild.",
+        "title": "Bild"
       },
       {
         "property": "caption",
-        "description": "Textiwwerschrëft."
+        "description": "Textiwwerschrëft.",
+        "title": "Bildënnerschrëft"
       }
     ]
   }

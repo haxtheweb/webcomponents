@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Cena do cenário",
+    "description": "Uma cena de um cenário ramificado. Vincule cada escolha a outra cena com # seguido do id dela."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Id da cena",
+        "description": "O destino das escolhas: um link para # seguido deste id leva a esta cena. Letras, números e hífens."
+      },
+      {
+        "title": "Título",
+        "description": "Título da cena."
+      },
+      {
+        "title": "Final",
+        "description": "Se esta cena encerra um caminho, e como terminou.",
+        "options": {
+          "": "Não é um final",
+          "good": "Final bom",
+          "mixed": "Final misto",
+          "poor": "Final ruim"
+        }
+      },
+      {
+        "title": "Pontuação",
+        "description": "Pontuação por alcançar este final. A maior pontuação de final no cenário é o máximo."
+      }
+    ]
+  }
+}

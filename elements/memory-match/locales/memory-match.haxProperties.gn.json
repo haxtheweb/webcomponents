@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Mandu'a ñembosarái",
+    "description": "Embojere kárta ejuhu hag̃ua joja. Embojoaju peteĩ ñe'ẽ he'iséva ndive peteĩ joja ohechauka hag̃ua ñentende, térã eipuru mokõi moñe'ẽrã térã ta'ãnga ojojoguáva."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Téra",
+        "description": "Ñe'ẽ ojehechaukáva iñakãme, techapyrã: Embojoaju ñe'ẽ hembiapo ndive."
+      },
+      {
+        "title": "Joja",
+        "description": "Peteĩteĩ joja ha'e mokõi kárta oñe'ẽ joajúva, jepiverupi peteĩ ñe'ẽ ha he'iséva. Peteĩ ykére oikotevẽ moñe'ẽrã, ta'ãnga térã mokõivéva."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Sa'y mbohesakãha",
+        "description": "Sa'y ojeiporavokuaáva iñakã chip, kárta tapykue ha botõme g̃uarã."
+      }
+    ]
+  }
+}

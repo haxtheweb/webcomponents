@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Elágazó forgatókönyv",
+    "description": "Egy történet, amelyben minden választás más jelenethez és befejezéshez vezet. A tanulók visszaléphetnek és más utakat is kipróbálhatnak; az elért befejezés határozza meg a pontszámot."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Cím",
+        "description": "A forgatókönyv neve, a fejlécében jelenik meg."
+      },
+      {
+        "title": "Kezdő jelenet",
+        "description": "Annak a jelenetnek az azonosítója, ahol a tanulók kezdenek. Hagyja üresen az első jelenettel való kezdéshez."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Kiemelőszín",
+        "description": "Opcionális szín a fejléccímkéhez, a gombokhoz és a választások széléhez."
+      }
+    ]
+  }
+}

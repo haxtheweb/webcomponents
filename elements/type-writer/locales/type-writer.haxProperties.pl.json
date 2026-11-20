@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Maszyna do pisania",
     "description": "Tekst, który sam się wpisuje, znak po znaku."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tekst",
+        "description": "Tekst do wypisania, gdy element pojawi się w widoku."
+      },
+      {
+        "title": "Pisanie",
+        "description": "Pokaż migający kursor; element ustawia to podczas pisania."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Opóźnienie",
+        "description": "Milisekundy oczekiwania przed rozpoczęciem pisania."
+      },
+      {
+        "title": "Czas trwania kursora",
+        "description": "Milisekundy, przez które kursor miga po wpisaniu tekstu."
+      },
+      {
+        "title": "Szybkość",
+        "description": "Milisekundy na znak; mniejsze liczby piszą szybciej."
+      }
+    ]
   }
 }

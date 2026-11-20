@@ -9,5 +9,7 @@
   "slidePages": "Skaidrių puslapiai",
   "goToSlide": "Eiti į {number} skaidrę",
   "slides": "Skaidrės",
-  "position": "{number} iš {total}"
+  "position": "{number} iš {total}",
+  "fullScreen": "Visas ekranas",
+  "exitFullScreen": "Išeiti iš viso ekrano"
 }

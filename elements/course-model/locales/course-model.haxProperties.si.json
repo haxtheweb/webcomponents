@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "මාතෘකාව"
+        "title": "මාතෘකාව",
+        "description": "පාඨමාලා ආකෘතියට ඉහළින් පෙන්වන ශීර්ෂය."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "පෙන්වීමට ඇති 3D ආකෘති ගොනුවේ (.glb හෝ .gltf) ලිපිනය."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "3D ආකෘතිය දැකිය නොහැකි අය සඳහා එය විස්තර කරන්න."
       },
       {
         "title": "තොරතුරු ප්‍රදේශය"

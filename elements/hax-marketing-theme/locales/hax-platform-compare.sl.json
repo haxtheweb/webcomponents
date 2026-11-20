@@ -1,0 +1,15 @@
+{
+  "loading": "Nalaganje primerjave.",
+  "yes": "Da",
+  "partly": "Delno",
+  "no": "Ne",
+  "compare": "Primerjaj",
+  "with": "Z",
+  "vs": "proti",
+  "caption": "{a} in {b}, funkcija za funkcijo",
+  "feature": "Funkcija",
+  "clearYes": "{count} od {total} jasen da",
+  "seeForYourself": "Prepričajte se sami:",
+  "and": "in",
+  "why": "Zakaj"
+}

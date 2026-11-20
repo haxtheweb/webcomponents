@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Insika",
+    "description": "Insika: igama, umusho, isithonjana, umbala nokuthi kungani ibalulekile"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Igama"
+      },
+      {
+        "title": "Umusho"
+      },
+      {
+        "title": "Isithonjana"
+      },
+      {
+        "title": "Umbala (igama le-DDD)"
+      },
+      {
+        "title": "Iyiphi insika, 1 kuya ku-7"
+      },
+      {
+        "title": "Ikhadi elincane"
+      },
+      {
+        "title": "Lapho igama liya khona"
+      }
+    ]
+  }
+}

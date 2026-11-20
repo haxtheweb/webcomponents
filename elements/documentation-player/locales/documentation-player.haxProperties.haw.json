@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Mea pāʻani palapala",
+    "description": "Alakaʻi, hōʻikeʻike a me ke kuhikuhi no kekahi web component, me nā pihi kope no HTML, import, npm a me CDN."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Waihona ʻikepili palapala",
+        "description": "Ka ʻikepili palapala e hele pū ana me ka mea (lib/tag.docs.json)."
+      },
+      {
+        "title": "Papa moʻolelo alakaʻi",
+        "description": "Ka papa moʻolelo neʻe e hele pū ana me ka mea (tag.motion.json). Koho."
+      },
+      {
+        "title": "Haʻawina wikiō",
+        "description": "He wikiō pōkole e pili ana i ka mea (YouTube, Vimeo a i ʻole waihona wikiō). Pani i ka wikiō ma ka ʻikepili palapala."
+      },
+      {
+        "title": "Wehe ma ka lepa",
+        "description": "ʻO ka lepa hea e hōʻike mua ʻia.",
+        "options": {
+          "motion": "Alakaʻi",
+          "video": "Wikiō",
+          "demo": "Hōʻikeʻike",
+          "docs": "Palapala",
+          "schema": "Schema"
+        }
+      },
+      {
+        "title": "Pāʻani ʻakomi i ke alakaʻi",
+        "description": "Hoʻomaka i ke alakaʻi i ka wā e hōʻike ʻia ai ka mea pāʻani. Haʻalele ʻia inā makemake ka mea heluhelu i ka neʻe emi."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Kumuhana alakaʻi",
+        "description": "No nā mea me nā alakaʻi he nui, ʻo ke kumuhana hea e wehe mua ai (no ka laʻana add-blocks). E waiho hakahaka no ka mea nui."
+      },
+      {
+        "title": "Loulou hōʻikeʻike ola",
+        "description": "Ma hea e hele ai ke pihi Wehe i ke kumu hōʻikeʻike. Paʻamau i ka waihona demo ma ka waihona code."
+      },
+      {
+        "title": "Loulou palapala",
+        "description": "Ma hea e hele ai ke pihi palapala piha, no ka laʻana ka ʻaoʻao Learn HAX e kūlike ana."
+      }
+    ]
+  }
+}

@@ -1,4 +1,6 @@
 {
   "saveAll": "सबै सेभ गर्नुहोस्",
-  "saveTheFollowing": "निम्न सेभ गर्ने: {list}?"
+  "saveTheFollowing": "निम्न सेभ गर्ने: {list}?",
+  "save": "सुरक्षित गर्नुहोस्",
+  "cancel": "रद्द गर्नुहोस्"
 }

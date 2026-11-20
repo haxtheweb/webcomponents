@@ -1,0 +1,16 @@
+{
+  "drawing": "Dessin",
+  "edit": "Modifier le dessin",
+  "start": "Commencer à dessiner",
+  "remove": "Supprimer le dessin",
+  "empty": "Rien n'est encore dessiné",
+  "save": "Enregistrer",
+  "cancel": "Annuler",
+  "close": "Fermer",
+  "discard": "Abandonner les modifications",
+  "discardConfirm": "Abandonner vos modifications non enregistrées ?",
+  "keepEditing": "Continuer la modification",
+  "draw": "Dessin",
+  "feedback": "Retour",
+  "signature": "Signature"
+}

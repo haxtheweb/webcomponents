@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Capçalera destacada",
+    "description": "Una imatge, GIF o vídeo gran amb un encapçalament i text a sobre, col·locat a qualsevol part d'una pàgina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Imatge o vídeo",
+        "description": "Un fitxer JPG, PNG, WebP, GIF, MP4 o WebM."
+      },
+      {
+        "title": "Text alternatiu",
+        "description": "Descriu la imatge. Deixa-ho buit si només és decorativa."
+      },
+      {
+        "title": "Encapçalament",
+        "description": "Encapçalament que es mostra sobre el contingut multimèdia. Deixa-ho buit si no en vols cap."
+      },
+      {
+        "title": "Text",
+        "description": "Text que es mostra sota l'encapçalament, sobre el contingut multimèdia."
+      },
+      {
+        "title": "Amplada completa",
+        "description": "Ocupa de vora a vora en lloc de quedar-se dins la columna de contingut."
+      },
+      {
+        "title": "Alçada",
+        "options": {
+          "tall": "Alta",
+          "medium": "Mitjana",
+          "short": "Baixa"
+        }
+      },
+      {
+        "title": "Enquadrament",
+        "description": "Com es col·loca la foto a cada mida de pantalla"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Fos",
+        "description": "Color superposat al contingut multimèdia. Amb un encapçalament o text sempre n'hi ha un, perquè el text es pugui llegir.",
+        "options": {
+          "blue": "Blau",
+          "bottom": "Fosc a la part inferior",
+          "none": "Cap"
+        }
+      },
+      {
+        "title": "Posició del text",
+        "options": {
+          "bottom": "A baix",
+          "middle": "Al mig"
+        }
+      },
+      {
+        "title": "Punt focal horitzontal",
+        "description": "Part de la imatge que es manté visible quan es retalla, de 0 (esquerra) a 100 (dreta)."
+      },
+      {
+        "title": "Punt focal vertical",
+        "description": "Part de la imatge que es manté visible quan es retalla, de 0 (dalt) a 100 (baix)."
+      }
+    ]
+  }
+}

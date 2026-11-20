@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "آئیکن لُکاؤ",
         "description": "متن نوں نمایاں کرن والا آئیکن لُکاؤ"
+      },
+      {
+        "title": "شکل",
+        "description": "بٹن تے کنا زور اے۔",
+        "options": {
+          "": "بھریا",
+          "tonal": "ہلکا رنگ",
+          "outlined": "خاکے والا",
+          "plain": "سادا"
+        }
+      },
+      {
+        "title": "سائز",
+        "description": "بٹن دا سائز۔",
+        "options": {
+          "s": "نکا",
+          "": "درمیانہ",
+          "l": "وڈا"
+        }
       }
     ],
     "advanced": [

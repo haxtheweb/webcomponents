@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Wykreślanka",
+    "description": "Siatka liter z ukrytymi słowami. Uczący się dotykają pierwszej i ostatniej litery każdego słowa. Ćwiczy rozpoznawanie pisowni pojęcia, a nie jego znaczenia."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tytuł",
+        "description": "Co uczący się mają znaleźć, wyświetlane w nagłówku."
+      },
+      {
+        "title": "Słowa",
+        "description": "Słowa do ukrycia. Spacje i interpunkcja są pomijane w siatce. Słowa, które się nie mieszczą, są wypisywane podczas edycji i pomijane dla uczących się."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Rozmiar siatki",
+        "description": "Liter na bok, od 4 do 16. Pozostaw puste, aby dopasować do najdłuższego słowa (do 12). Powyżej 12 na telefonie przewija się w bok."
+      },
+      {
+        "title": "Słowa ukośne",
+        "description": "Ukrywaj słowa także ukośnie. Trudniejsze."
+      },
+      {
+        "title": "Słowa od tyłu",
+        "description": "Ukrywaj także słowa zapisane od tyłu. Trudniejsze."
+      },
+      {
+        "title": "Kolor akcentu",
+        "description": "Opcjonalny kolor etykiety nagłówka, wybranej pierwszej litery i przycisku."
+      }
+    ]
+  }
+}

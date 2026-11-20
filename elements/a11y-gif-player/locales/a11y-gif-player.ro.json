@@ -2,5 +2,9 @@
   "toggleAnimation": "Comută animația",
   "info": "info",
   "image": "Imagine",
-  "animatedGif": "GIF animat"
+  "animatedGif": "GIF animat",
+  "playAnimation": "Redă animația",
+  "pauseAnimation": "Întrerupe animația",
+  "showDescription": "Afișează descrierea",
+  "hideDescription": "Ascunde descrierea"
 }

@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Statistik",
+    "description": "Nombor yang mengira naik, dengan label dan pautan ke kisahnya"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nombor sasaran kiraan"
+      },
+      {
+        "title": "Sebelum nombor"
+      },
+      {
+        "title": "Selepas nombor"
+      },
+      {
+        "title": "Perkataan dan bukannya nombor"
+      },
+      {
+        "title": "Apa yang dikira"
+      },
+      {
+        "title": "Alamat kisah di hax.cloud (stories/ee450a19)"
+      }
+    ]
+  }
+}

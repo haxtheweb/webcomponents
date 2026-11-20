@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Radardiagram",
+    "description": "Radardiagram (edderkoppdiagram) for modenhetsmodeller og poengsetting av fasetter, for eksempel HEOSAT. Inkluderer et tekstalternativ og en datatabell."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tittel",
+        "description": "Overskrift for diagrammet; brukes også som tilgjengelig navn."
+      },
+      {
+        "title": "Maksimal poengsum",
+        "description": "Høyeste verdi på skalaen."
+      },
+      {
+        "title": "Kategorier",
+        "description": "Én kategori per linje. Trenger minst 3."
+      },
+      {
+        "title": "Poeng",
+        "description": "Kommaseparerte tall, ett per kategori i samme rekkefølge."
+      },
+      {
+        "title": "Målpoeng",
+        "description": "Kommaseparerte tall, ett per kategori i samme rekkefølge."
+      },
+      {
+        "title": "Vis forklaring",
+        "description": "Vis en forklaring som navngir poengene og målene."
+      },
+      {
+        "title": "Kompakt",
+        "description": "Mindre diagram uten etiketter, forklaring eller datatabell. Hold pekeren over et punkt for å se verdiene."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Poengetikett",
+        "description": "Etikett i forklaring og tabell for poengene."
+      },
+      {
+        "title": "Måletikett",
+        "description": "Etikett i forklaring og tabell for målene."
+      }
+    ]
+  }
+}

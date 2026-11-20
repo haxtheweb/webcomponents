@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Igra memorije",
+    "description": "Okrećite karte da pronađete parove. Uparite pojam s njegovim značenjem kako bi podudaranje pokazalo razumijevanje, ili koristite dva ista teksta ili slike."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Naslov",
+        "description": "Zadatak prikazan u zaglavlju, na primjer: Povežite pojam s njegovom ulogom."
+      },
+      {
+        "title": "Parovi",
+        "description": "Svaki par su dvije karte koje idu zajedno, obično pojam i njegovo značenje. Strani treba tekst, slika ili oboje."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Akcentna boja",
+        "description": "Opcionalna boja za oznaku u zaglavlju, poleđine karata i dugme."
+      }
+    ]
+  }
+}

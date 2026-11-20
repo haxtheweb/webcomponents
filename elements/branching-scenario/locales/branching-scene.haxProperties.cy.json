@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Golygfa senario",
+    "description": "Un olygfa o senario canghennog. Cysylltwch bob dewis â golygfa arall gyda # wedi'i ddilyn gan ei ID golygfa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID golygfa",
+        "description": "Yr hyn y mae dewisiadau'n cysylltu ag ef: mae dolen i # wedi'i dilyn gan yr ID hwn yn arwain at yr olygfa hon. Llythrennau, rhifau a chysylltnodau."
+      },
+      {
+        "title": "Pennawd",
+        "description": "Pennawd yr olygfa."
+      },
+      {
+        "title": "Diweddglo",
+        "description": "A yw'r olygfa hon yn gorffen llwybr, a sut y trodd allan.",
+        "options": {
+          "": "Nid diweddglo",
+          "good": "Diweddglo da",
+          "mixed": "Diweddglo cymysg",
+          "poor": "Diweddglo gwael"
+        }
+      },
+      {
+        "title": "Sgôr",
+        "description": "Sgôr am gyrraedd y diweddglo hwn. Sgôr y diweddglo uchaf yn y senario yw'r uchafswm."
+      }
+    ]
+  }
+}

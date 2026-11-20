@@ -2,5 +2,9 @@
   "answerInCorrectOrder": "Atsakymas yra teisinga tvarka",
   "answerInIncorrectOrder": "Atsakymas yra neteisinga tvarka",
   "moveOptionUp": "Pasirinkite, kad perkeltumėte parinktį aukštyn",
-  "moveOptionDown": "Pasirinkite, kad perkeltumėte parinktį žemyn"
+  "moveOptionDown": "Pasirinkite, kad perkeltumėte parinktį žemyn",
+  "moveEarlier": "Perkelti anksčiau",
+  "moveLater": "Perkelti vėliau",
+  "correct": "Teisingai",
+  "incorrect": "Neteisingai"
 }

@@ -40,5 +40,7 @@
   "hideDirections": "Anleitung ausblenden",
   "showRelatedContent": "Verwandte Inhalte anzeigen",
   "hideRelatedContent": "Verwandte Inhalte ausblenden",
-  "notAttempted": "Nicht versucht"
+  "notAttempted": "Nicht versucht",
+  "cardsDirections": "Bringe die Karten mit den Schaltflächen „Nach vorn verschieben“ und „Nach hinten verschieben“ auf jeder Karte in die richtige Reihenfolge oder ziehe sie mit der Maus. Wenn du glaubst, dass die Reihenfolge stimmt, prüfe deine Antwort mit {checkAnswer}.",
+  "movedToPosition": "{item} an Position {position} von {total} verschoben"
 }

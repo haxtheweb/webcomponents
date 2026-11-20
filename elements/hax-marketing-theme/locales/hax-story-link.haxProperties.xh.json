@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Iqhosha lebali",
+    "description": "Iqhosha elivula ibali elingemva kwebango kwi-hax.cloud, okanye indawo ehambelanayo kwenye isayithi yothungelwano lwe-HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Apho liya khona",
+        "options": {
+          "cloud": "hax.cloud, ibali",
+          "learn": "learn.hax.cloud, isifundo",
+          "try": "browser.hax.cloud, yizame",
+          "elements": "webcomponents.hax.cloud, ibhloko",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Idilesi kuloo sayithi (ibali kwi-hax.cloud lijongeka njenge-stories/ee450a19)"
+      },
+      {
+        "title": "Ingantoni"
+      },
+      {
+        "title": "Itshiphu encinci"
+      },
+      {
+        "title": "Bonisa ukuba ingantoni kwiqhosha"
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Kia",
+    "description": "He kia: inoa, māmalaʻōlelo, kiʻi ikona, waihoʻoluʻu a me ke kumu o kona koʻikoʻi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Inoa"
+      },
+      {
+        "title": "Māmalaʻōlelo"
+      },
+      {
+        "title": "Kiʻi ikona"
+      },
+      {
+        "title": "Waihoʻoluʻu (inoa DDD)"
+      },
+      {
+        "title": "ʻO ke kia hea, 1 a i 7"
+      },
+      {
+        "title": "Kāleka liʻiliʻi"
+      },
+      {
+        "title": "Ma hea e hele ai ka inoa"
+      }
+    ]
+  }
+}

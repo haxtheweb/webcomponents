@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Stranska opomba",
+    "description": "Opomba, ločena od okoliške vsebine, z izbirno ikono in oznako."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Oznaka",
+        "description": "Oznaka stranske opombe."
+      },
+      {
+        "title": "Ikona",
+        "description": "Ikona stranske opombe."
+      },
+      {
+        "title": "Vsebina",
+        "description": "Vsebina stranske opombe."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Barva",
+        "description": "Barva, s katero je obarvana stranska opomba."
+      }
+    ]
+  }
+}

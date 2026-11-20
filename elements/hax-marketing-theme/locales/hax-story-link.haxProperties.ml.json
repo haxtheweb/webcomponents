@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "കഥ ബട്ടൺ",
+    "description": "hax.cloud-ൽ ഒരു അവകാശവാദത്തിന് പിന്നിലെ കഥ, അല്ലെങ്കിൽ മറ്റൊരു HAX നെറ്റ്‌വർക്ക് സൈറ്റിലെ യോജിക്കുന്ന സ്ഥലം തുറക്കുന്ന ബട്ടൺ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ഇത് എവിടേക്ക് പോകുന്നു",
+        "options": {
+          "cloud": "hax.cloud, കഥ",
+          "learn": "learn.hax.cloud, ഒരു ട്യൂട്ടോറിയൽ",
+          "try": "browser.hax.cloud, പരീക്ഷിക്കുക",
+          "elements": "webcomponents.hax.cloud, ഒരു ബ്ലോക്ക്",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "ആ സൈറ്റിലെ വിലാസം (hax.cloud-ലെ ഒരു കഥ stories/ee450a19 പോലെയാണ്)"
+      },
+      {
+        "title": "ഇത് എന്തിനെക്കുറിച്ചാണ്"
+      },
+      {
+        "title": "ചെറിയ ചിപ്പ്"
+      },
+      {
+        "title": "ഇത് എന്തിനെക്കുറിച്ചാണെന്ന് ബട്ടണിൽ കാണിക്കുക"
+      }
+    ]
+  }
+}

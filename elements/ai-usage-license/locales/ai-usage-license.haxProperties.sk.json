@@ -13,7 +13,10 @@
       {
         "property": "modifier",
         "title": "Modifikátor médií",
-        "description": "Voliteľný modifikátor typu médií. Určuje, na aký typ médií sa táto licencia vzťahuje."
+        "description": "Voliteľný modifikátor typu médií. Určuje, na aký typ médií sa táto licencia vzťahuje.",
+        "options": {
+          "": "Bez modifikátora"
+        }
       },
       {
         "property": "uri",

@@ -3,5 +3,8 @@
   "copyAsCsv": "CSV ആയി പകർത്തുക.",
   "printTable": "ടേബിൾ പ്രിന്റ് ചെയ്യുക",
   "selectColumn": "കോളം തിരഞ്ഞെടുക്കുക",
-  "dataTable": "ഡാറ്റ · പട്ടിക"
+  "dataTable": "ഡാറ്റ · പട്ടിക",
+  "filterStatus": "{total} വരികളിൽ {shown} എണ്ണം കാണിക്കുന്നു, {column} പ്രകാരം ഫിൽട്ടർ ചെയ്തു: {text}",
+  "columnNumber": "കോളം {column}",
+  "clearFilter": "ഫിൽട്ടർ മായ്ക്കുക"
 }

@@ -52,6 +52,20 @@
           "_top": "Ffenestr uchaf - _top",
           "_parent": "Ffenestr rhiant - _parent"
         }
+      },
+      {
+        "title": "Dim saeth",
+        "description": "Cuddio saeth y botwm."
+      },
+      {
+        "title": "Dolen: targed",
+        "description": "Ble i agor y ddolen.",
+        "options": {
+          "": "Yr un ffenestr",
+          "_blank": "Ffenestr newydd - _blank",
+          "_top": "Ffenestr uchaf - _top",
+          "_parent": "Ffenestr riant - _parent"
+        }
       }
     ],
     "developer": [

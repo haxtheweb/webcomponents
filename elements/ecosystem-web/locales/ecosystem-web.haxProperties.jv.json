@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Jaringan ekosistem",
+    "description": "Jaringan interaktif babagan kepiye bagean-bagean proyek nyambung, karo sub-jaringan lan tur langkah demi langkah."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Data jaringan",
+        "description": "URL bundel JSON jaringan (dibangun ing PRAW, ecosystem-webs.json)."
+      },
+      {
+        "title": "Jaringan",
+        "description": "ID jaringan sing ditampilake dhisik; main yaiku jaringan ekosistem."
+      },
+      {
+        "title": "Ubin sing dipilih",
+        "description": "ID ubin sing dipilih nalika jaringan dibukak."
+      },
+      {
+        "title": "Tur",
+        "description": "ID tur kanggo miwiti."
+      },
+      {
+        "title": "Wiwiti ing tampilan dhaptar",
+        "description": "Tampilake jaringan minangka dhaptar bersusun tinimbang gambar."
+      },
+      {
+        "title": "Mung gambar",
+        "description": "Tampilake mung gambare, minangka figur: tanpa judhul, tur, rincian utawa bilah langkah."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Diwaca miturut",
+        "description": "Wiwiti kanthi saben ubin diwaca miturut siji ukuran.",
+        "options": {
+          "": "Mung sambungan",
+          "fresh": "Kasegeran",
+          "bus": "Faktor bis",
+          "impact": "Pengaruh",
+          "evidence": "Bukti",
+          "parity": "Kesetaraan"
+        }
+      }
+    ]
+  }
+}

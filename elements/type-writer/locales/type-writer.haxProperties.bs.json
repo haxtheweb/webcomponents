@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Pisaća mašina",
     "description": "Tekst koji se sam ispisuje, znak po znak."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tekst",
+        "description": "Tekst koji se ispisuje kad element dođe u vidno polje."
+      },
+      {
+        "title": "Kucanje",
+        "description": "Prikaži treptajući kursor; element ovo postavlja dok kuca."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Kašnjenje",
+        "description": "Milisekunde čekanja prije početka kucanja."
+      },
+      {
+        "title": "Trajanje kursora",
+        "description": "Milisekunde tokom kojih kursor nastavlja treptati nakon što je tekst ispisan."
+      },
+      {
+        "title": "Brzina",
+        "description": "Milisekunde po znaku; manji brojevi kucaju brže."
+      }
+    ]
   }
 }

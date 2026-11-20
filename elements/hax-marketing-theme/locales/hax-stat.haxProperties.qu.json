@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Yupay",
+    "description": "Hanaqman yupakuq yupay, etiquetawan willakuyninman t'inkiwan"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Maykamachus yupakunan"
+      },
+      {
+        "title": "Yupaypa ñawpaqnin"
+      },
+      {
+        "title": "Yupaypa qhipan"
+      },
+      {
+        "title": "Yupay rantinpi simikuna"
+      },
+      {
+        "title": "Imatam yupan"
+      },
+      {
+        "title": "hax.cloud nisqapi willakuyp tiyanan (stories/ee450a19)"
+      }
+    ]
+  }
+}

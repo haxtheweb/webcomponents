@@ -1,0 +1,19 @@
+{
+  "label": "Išorinis įrankis",
+  "labelLti": "Išorinis įrankis · LTI 1.3",
+  "theTool": "įrankį",
+  "directions": "Nurodymai",
+  "showDirections": "Rodyti nurodymus",
+  "hideDirections": "Slėpti nurodymus",
+  "directionsWindow": "Mygtukas atidaro naują langą su įrankiu.",
+  "directionsEmbed": "Mygtukas atidaro įrankį šiame puslapyje. Jei jis neįsikelia, verčiau atidarykite jį naujame lange.",
+  "directionsLti": "Ši svetainė prijungia jus prie įrankio, todėl atskiros paskyros nereikia.",
+  "openWindow": "Atidaryti {title} (naujas langas)",
+  "openEmbed": "Atidaryti {title}",
+  "openInstead": "Verčiau atidaryti naujame lange",
+  "frameTitle": "{title} (išorinis įrankis)",
+  "openedWindow": "Atsidarė naujas langas su įrankiu.",
+  "openedEmbed": "Įrankis atsidarė šiame puslapyje.",
+  "needsUrl": "Šiam blokui reikia paleidimo adreso, prasidedančio http:// arba https://.",
+  "needsSignIn": "Šiam įrankiui reikia šios svetainės prisijungimo paslaugos, kuri čia neprieinama. Niekas nebuvo atidaryta."
+}

@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Stat tile",
+    "description": "Isang mahalagang numero, na may label nito at kung paano ito nagbago. Maglagay ng ilan sa grid para sa hanay ng dashboard."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Label",
+        "description": "Kung ano ang sinusukat ng numero."
+      },
+      {
+        "title": "Halaga",
+        "description": "Ang numero. Ang simpleng numero ay pinapangkat ayon sa wika ng pahina; ipinapakita ang iba pa gaya ng pagkakasulat."
+      },
+      {
+        "title": "Pagbabago",
+        "description": "Kung paano ito nagbago, sa mga salita, tulad ng 6% ngayong termino."
+      },
+      {
+        "title": "Direksyon",
+        "description": "Kung pataas o pababa ang pagbabago.",
+        "options": {
+          "": "Wala",
+          "up": "Pataas",
+          "down": "Pababa"
+        }
+      }
+    ]
+  }
+}

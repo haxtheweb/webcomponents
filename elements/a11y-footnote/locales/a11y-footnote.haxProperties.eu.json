@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Oin-oharra",
+    "description": "Testuan dagokion lekuan idatzitako oharra. Zenbaki gisa agertzen da, eta oharren zerrenda zenbakidua orriaren behealdean sortzen da berez."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Oharra",
+        "description": "Oin-oharraren testua."
+      },
+      {
+        "title": "Aurrebistarik ez",
+        "description": "Ez erakutsi oharra irakurleak zenbakiaren gainean sagua jartzen duenean edo fokuratzen duenean."
+      }
+    ]
+  }
+}

@@ -14,6 +14,17 @@
         "property": "autoAccentColor",
         "title": "Tae arotahi aunoa",
         "description": "Tīkina aunoatia te tae arotahi mai i te kupu tapanga."
+      },
+      {
+        "title": "Tikanga",
+        "description": "Hoatu he tae tikanga ki te tūtohu. Waiho kia wātea mō tētahi tūtohu tōkeke.",
+        "options": {
+          "": "Tōkeke",
+          "brand": "Waitohu",
+          "success": "Angitu",
+          "warning": "Whakatūpato",
+          "danger": "Mōrearea"
+        }
       }
     ],
     "advanced": [

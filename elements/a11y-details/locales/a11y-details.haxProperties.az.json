@@ -24,11 +24,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Təfərrüatlar açıq olduqda istəyə bağlı xülasə mətni"
+        "title": "Təfərrüatlar açıq olduqda istəyə bağlı xülasə mətni",
+        "description": "Təsvir gizli olduqda düymə mətni, məsələn Təsviri göstər."
       },
       {
         "property": "closeText",
-        "title": "Təfərrüatlar bağlı olduqda istəyə bağlı xülasə mətni"
+        "title": "Təfərrüatlar bağlı olduqda istəyə bağlı xülasə mətni",
+        "description": "Təsvir göstərildikdə düymə mətni, məsələn Təsviri gizlət."
       }
     ]
   }

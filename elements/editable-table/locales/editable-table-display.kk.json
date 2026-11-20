@@ -3,5 +3,8 @@
   "copyAsCsv": "CSV ретінде көшіру.",
   "printTable": "Кестені басып шығару",
   "selectColumn": "Бағанды таңдау",
-  "dataTable": "Деректер · Кесте"
+  "dataTable": "Деректер · Кесте",
+  "filterStatus": "{total} жолдың {shown}-і көрсетілген, {column} бойынша сүзілген: {text}",
+  "columnNumber": "{column} баған",
+  "clearFilter": "Сүзгіні тазалау"
 }

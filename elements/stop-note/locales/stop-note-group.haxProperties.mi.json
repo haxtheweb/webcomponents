@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Rōpū Stop Note",
+    "description": "Puranga ētahi stop note ki tētahi paraka kotahi e whakaatu ana i tētahi tuhipoka i te wā kotahi, pērā i Ngā tohutohu, He aha ngā mea hou rānei. Ka taea hoki te puranga i ngā kāri tohutohu, ngā tuhipoka taha me ngā kōrero whakahua kua tāparetia."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tapanga",
+        "description": "Te ingoa mō te rōpū ka pānuitia e ngā kaipānui mata, pērā i Ngā tohutohu, He aha ngā mea hou rānei."
+      },
+      {
+        "title": "Ngā tuhipoka",
+        "description": "Ngā stop note i te rōpū. Ka taea hoki te tāpiri i ngā kāri tohutohu, ngā tuhipoka taha me ngā kōrero whakahua kua tāparetia."
+      }
+    ]
+  }
+}

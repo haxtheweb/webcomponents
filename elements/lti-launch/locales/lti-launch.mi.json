@@ -1,0 +1,19 @@
+{
+  "label": "Utauta o waho",
+  "labelLti": "Utauta o waho · LTI 1.3",
+  "theTool": "te utauta",
+  "directions": "Ngā tohutohu",
+  "showDirections": "Whakaatu tohutohu",
+  "hideDirections": "Huna tohutohu",
+  "directionsWindow": "Ka whakatuwhera te pātene i tētahi matapihi hou me te utauta i roto.",
+  "directionsEmbed": "Ka whakatuwhera te pātene i te utauta i tēnei whārangi. Ki te kore e uta, whakatuwherahia kē ki tētahi matapihi hou.",
+  "directionsLti": "Mā tēnei pae koe e takiuru ki te utauta, nō reira kāore koe e hiahia ki tētahi pūkete motuhake.",
+  "openWindow": "Whakatuwhera {title} (matapihi hou)",
+  "openEmbed": "Whakatuwhera {title}",
+  "openInstead": "Whakatuwherahia kē ki tētahi matapihi hou",
+  "frameTitle": "{title} (utauta o waho)",
+  "openedWindow": "I tuwhera tētahi matapihi hou me te utauta.",
+  "openedEmbed": "I tuwhera te utauta i tēnei whārangi.",
+  "needsUrl": "Me whai wāhitau whakarewa tēnei paraka e tīmata ana ki te http:// ki te https:// rānei.",
+  "needsSignIn": "Me whai tēnei utauta i te ratonga takiuru o tēnei pae, ā, kāore e wātea ana i konei. Kāore he mea i whakatuwheratia."
+}

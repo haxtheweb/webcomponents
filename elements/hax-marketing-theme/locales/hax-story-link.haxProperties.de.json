@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Geschichten-Schaltfläche",
+    "description": "Die Schaltfläche, die die Geschichte hinter einer Aussage auf hax.cloud öffnet, oder die passende Stelle auf einer anderen Website im HAX-Netzwerk"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Wohin es führt",
+        "options": {
+          "cloud": "hax.cloud, die Geschichte",
+          "learn": "learn.hax.cloud, ein Tutorial",
+          "try": "browser.hax.cloud, ausprobieren",
+          "elements": "webcomponents.hax.cloud, ein Block",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Adresse auf dieser Website (eine Geschichte auf hax.cloud sieht so aus: stories/ee450a19)"
+      },
+      {
+        "title": "Worum es geht"
+      },
+      {
+        "title": "Kleiner Chip"
+      },
+      {
+        "title": "In der Schaltfläche anzeigen, worum es geht"
+      }
+    ]
+  }
+}

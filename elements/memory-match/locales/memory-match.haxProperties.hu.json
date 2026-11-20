@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Memóriajáték",
+    "description": "Fordítson fel kártyákat a párok megtalálásához. Párosítson egy fogalmat a jelentésével, hogy az egyezés megértést mutasson, vagy használjon két egyező szöveget vagy képet."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Cím",
+        "description": "A fejlécben megjelenő feladat, például: Párosítsd a fogalmat a szerepével."
+      },
+      {
+        "title": "Párok",
+        "description": "Minden pár két összetartozó kártya, általában egy fogalom és a jelentése. Egy oldalnak szöveg, kép vagy mindkettő kell."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Kiemelőszín",
+        "description": "Opcionális szín a fejléccímkéhez, a kártyák hátoldalához és a gombhoz."
+      }
+    ]
+  }
+}

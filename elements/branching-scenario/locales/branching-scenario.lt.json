@@ -1,0 +1,22 @@
+{
+  "scenario": "Scenarijus",
+  "directions": "Nurodymai",
+  "showDirections": "Rodyti nurodymus",
+  "hideDirections": "Slėpti nurodymus",
+  "directionsRead": "Perskaitykite kiekvieną sceną ir pasirinkite, ką darytumėte.",
+  "directionsEndings": "Yra keletas pabaigų. Baigę išbandykite kitą kelią.",
+  "startOver": "Pradėti iš naujo",
+  "back": "Vienu žingsniu atgal",
+  "tryAnother": "Išbandyti kitą kelią",
+  "path": "Kelias",
+  "scene": "Scena",
+  "ending": "Pabaiga",
+  "end": "pabaiga",
+  "scenesSeen": "Peržiūrėta scenų: {seen} iš {total}",
+  "endingReached": "Pasiekta pabaiga",
+  "addScene": "Pridėti sceną",
+  "newScene": "Nauja scena",
+  "newSceneText": "Aprašykite, kas vyksta, tada susiekite kiekvieną pasirinkimą su scena.",
+  "editingNote": "Redagavimas: rodomos visos scenos. Pasirinkimas yra nuoroda į #, po kurio eina scenos ID.",
+  "noScenes": "Pridėkite sceną, kad pradėtumėte scenarijų."
+}

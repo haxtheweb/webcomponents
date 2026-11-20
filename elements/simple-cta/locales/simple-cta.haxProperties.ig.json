@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Zoo akara ngosi",
         "description": "Zoo akara ngosi e ji eme ka ederede pụta ìhè"
+      },
+      {
+        "title": "Ọdịdị",
+        "description": "Ole nlebara anya bọtịnụ ahụ nwere.",
+        "options": {
+          "": "Ejupụtara",
+          "tonal": "Nwere agba nro",
+          "outlined": "Nwere akara gburugburu",
+          "plain": "Nkịtị"
+        }
+      },
+      {
+        "title": "Nha",
+        "description": "Nha bọtịnụ.",
+        "options": {
+          "s": "Obere",
+          "": "Etiti",
+          "l": "Nnukwu"
+        }
       }
     ],
     "advanced": [

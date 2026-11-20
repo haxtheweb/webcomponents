@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Billed-dropzone",
+    "description": "Deltagerne placerer etiketter på zoner lagt over et billede og tjekker derefter deres svar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Billede",
+        "description": "Billedet, deltagerne placerer etiketter på."
+      },
+      {
+        "title": "Alternativ tekst",
+        "description": "Beskriver billedet for personer, der ikke kan se det. Afslør ikke, hvor etiketterne skal placeres."
+      },
+      {
+        "title": "Billedtitel",
+        "description": "En kort synlig titel for billedet, vist over det."
+      },
+      {
+        "title": "Spørgsmål",
+        "description": "Hvad deltagerne bliver bedt om at gøre med etiketterne."
+      },
+      {
+        "title": "Etiketter og zoner",
+        "description": "Hvert punkt er en etiket, deltagerne kan placere. Giv en etiket et zonenavn for at sætte dens zone på billedet; en etiket uden zonenavn er en ekstra, der ikke hører nogen steder. Zonetal er procenter af billedet."
+      },
+      {
+        "title": "Billedtekst",
+        "description": "Valgfri billedtekst vist under billedet."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Forsøg",
+        "description": "Hvor mange gange en deltager kan tjekke. 0 betyder ubegrænset."
+      },
+      {
+        "title": "Bland etiketter",
+        "description": "Vis etiketterne i en ny rækkefølge ved hvert besøg."
+      },
+      {
+        "title": "Sammenklappelig",
+        "description": "Vis dette spørgsmål som en række, der åbner og lukker. Når ét åbnes, lukkes de andre sammenklappelige spørgsmål ved siden af."
+      },
+      {
+        "title": "Start sammenklappet",
+        "description": "Når det er sammenklappeligt, startes det som en lukket række, der kun viser spørgsmålet og dets status."
+      },
+      {
+        "title": "Bedømmelsesformat",
+        "description": "OER Schema: bedømmelsesformat for denne opgave (f.eks. point, bogstavkarakter, procent, gennemførelse)."
+      },
+      {
+        "title": "Læringsmål",
+        "description": "OER Schema: læringsmål knyttet til denne opgave."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Quizzens navn",
+        "description": "Quiznavn, der bruges til xAPI-identifikation i analysesystemer."
+      },
+      {
+        "title": "Kursus",
+        "description": "OER Schema: det kursus, denne opgave er beregnet til."
+      }
+    ]
+  }
+}

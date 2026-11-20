@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Haarautuva skenaario",
+    "description": "Tarina, jossa jokainen valinta johtaa eri kohtaukseen ja loppuun. Oppijat voivat palata taaksepäin ja kokeilla muita polkuja; saavutettu loppu määrää pisteet."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Otsikko",
+        "description": "Skenaarion nimi, näytetään sen otsakkeessa."
+      },
+      {
+        "title": "Aloituskohtaus",
+        "description": "Sen kohtauksen tunnus, josta oppijat aloittavat. Jätä tyhjäksi aloittaaksesi ensimmäisestä kohtauksesta."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Korostusväri",
+        "description": "Valinnainen väri otsakemerkille, painikkeille ja valinnan reunalle."
+      }
+    ]
+  }
+}

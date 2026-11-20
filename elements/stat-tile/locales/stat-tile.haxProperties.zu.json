@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Ithayela lezibalo",
+    "description": "Inombolo eyodwa ebalulekile, nelebula yayo nokuthi ishintshe kanjani. Beka eziningana kugridi ukuze uthole umugqa wedeshibhodi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ilebula",
+        "description": "Lokho inombolo ekulinganisayo."
+      },
+      {
+        "title": "Inani",
+        "description": "Inombolo. Inombolo evamile iqoqwa ngokolimi lwekhasi; noma yini enye iboniswa njengoba ibhaliwe."
+      },
+      {
+        "title": "Ushintsho",
+        "description": "Ukuthi ishintshe kanjani, ngamagama, njengo-6% kule temu."
+      },
+      {
+        "title": "Ukuqondiswa",
+        "description": "Ukuthi ushintsho luya phezulu noma phansi.",
+        "options": {
+          "": "Lutho",
+          "up": "Phezulu",
+          "down": "Phansi"
+        }
+      }
+    ]
+  }
+}

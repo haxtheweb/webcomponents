@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "Kirjuta matemaatilises LaTeX-notatsioonis"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pildi taust",
+        "description": "Taust joonistatud piltide taga. Automaatne lisab selle ainult siis, kui joonist oleks lehel raske näha, näiteks tumedad jooned tumedas režiimis.",
+        "options": {
+          "auto": "Automaatne",
+          "light": "Hele",
+          "dark": "Tume",
+          "none": "Puudub"
+        }
+      }
+    ]
   }
 }

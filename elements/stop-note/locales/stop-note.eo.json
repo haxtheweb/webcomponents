@@ -3,5 +3,7 @@
   "status_stop": "Halt",
   "status_warning": "Averto",
   "status_success": "Sukceso",
-  "status_info": "Noto"
+  "status_info": "Noto",
+  "status_tip": "Ĉu vi sciis?",
+  "status_new": "Kio novas"
 }

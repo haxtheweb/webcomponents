@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Estatistika",
+    "description": "Gorantz zenbatzen duen zenbaki bat, etiketa batekin eta haren istoriorako esteka batekin"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Zenbatu beharreko zenbakia"
+      },
+      {
+        "title": "Zenbakiaren aurretik"
+      },
+      {
+        "title": "Zenbakiaren ondoren"
+      },
+      {
+        "title": "Hitzak zenbaki baten ordez"
+      },
+      {
+        "title": "Zer zenbatzen duen"
+      },
+      {
+        "title": "Istorioaren helbidea hax.cloud-en (stories/ee450a19)"
+      }
+    ]
+  }
+}

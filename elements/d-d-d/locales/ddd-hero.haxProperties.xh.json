@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Hero",
+    "description": "Umfanekiso omkhulu, i-GIF okanye ividiyo enesihloko nesicatshulwa phezu kwayo, ebekwe naphi na ephepheni."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Umfanekiso okanye ividiyo",
+        "description": "Ifayile ye-JPG, PNG, WebP, GIF, MP4 okanye WebM."
+      },
+      {
+        "title": "Isicatshulwa esingenye indlela",
+        "description": "Chaza umfanekiso. Shiya kungenanto xa ungowokuhombisa kuphela."
+      },
+      {
+        "title": "Isihloko",
+        "description": "Isihloko esiboniswa phezu kwemidiya. Shiya kungenanto ukuba awusifuni."
+      },
+      {
+        "title": "Isicatshulwa",
+        "description": "Isicatshulwa esiboniswa phantsi kwesihloko, phezu kwemidiya."
+      },
+      {
+        "title": "Ububanzi obupheleleyo",
+        "description": "Hamba ukusuka kumphetho ukuya kumphetho endaweni yokuhlala kwikholamu yomxholo."
+      },
+      {
+        "title": "Ukuphakama",
+        "options": {
+          "tall": "Inde",
+          "medium": "Phakathi",
+          "short": "Imfutshane"
+        }
+      },
+      {
+        "title": "Ukwakha isakhelo",
+        "description": "Indlela ifoto ehlala ngayo kubungakanani besikrini ngabunye"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ukufiphala",
+        "description": "Umbala obekwe phezu kwemidiya. Xa kukho isihloko okanye isicatshulwa uhlala ukhona, ukuze isicatshulwa sihlale sifundeka.",
+        "options": {
+          "blue": "Luhlaza okwesibhakabhaka",
+          "bottom": "Mnyama ezantsi",
+          "none": "Akukho"
+        }
+      },
+      {
+        "title": "Indawo yesicatshulwa",
+        "options": {
+          "bottom": "Ezantsi",
+          "middle": "Embindini"
+        }
+      },
+      {
+        "title": "Indawo yokugxila ecaleni",
+        "description": "Inxalenye yomfanekiso ehlala ibonakala xa isikiwe, ukusuka ku-0 (ekhohlo) ukuya ku-100 (ekunene)."
+      },
+      {
+        "title": "Indawo yokugxila ezantsi",
+        "description": "Inxalenye yomfanekiso ehlala ibonakala xa isikiwe, ukusuka ku-0 (phezulu) ukuya ku-100 (ezantsi)."
+      }
+    ]
+  }
+}

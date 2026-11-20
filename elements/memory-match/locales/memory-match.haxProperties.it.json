@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Gioco di memoria",
+    "description": "Gira le carte per trovare le coppie. Abbina un termine al suo significato così che una coppia dimostri comprensione, oppure usa due testi o immagini corrispondenti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titolo",
+        "description": "Il testo mostrato nell'intestazione, ad esempio: Abbina il termine alla sua funzione."
+      },
+      {
+        "title": "Coppie",
+        "description": "Ogni coppia è formata da due carte che vanno insieme, di solito un termine e il suo significato. Un lato richiede testo, un'immagine o entrambi."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Colore di accento",
+        "description": "Colore facoltativo per l'etichetta dell'intestazione, il retro delle carte e il pulsante."
+      }
+    ]
+  }
+}

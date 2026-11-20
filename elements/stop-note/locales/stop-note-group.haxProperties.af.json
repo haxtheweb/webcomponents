@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Stopnota-groep",
+    "description": "Stapel verskeie stopnotas in een blok wat een nota op 'n slag wys, soos Wenke of Wat is nuut. Instruksiekaarte, kantnotas en geraamde aanhalings kan saam met hulle gestapel word."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etiket",
+        "description": "Naam vir die groep wat skermlesers aankondig, soos Wenke of Wat is nuut."
+      },
+      {
+        "title": "Notas",
+        "description": "Die stopnotas in die groep. Instruksiekaarte, kantnotas en geraamde aanhalings kan ook bygevoeg word."
+      }
+    ]
+  }
+}

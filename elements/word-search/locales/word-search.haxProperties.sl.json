@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Iskanje besed",
+    "description": "Mreža črk s skritimi besedami. Učenci tapnejo prvo in zadnjo črko vsake besede. Uri prepoznavanje, kako se pojem piše, ne kaj pomeni."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Naslov",
+        "description": "Kaj morajo učenci najti, prikazano v glavi."
+      },
+      {
+        "title": "Besede",
+        "description": "Besede za skrivanje. Presledki in ločila so iz mreže izpuščeni. Besede, ki se ne prilegajo, so med urejanjem navedene in za učence izpuščene."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Velikost mreže",
+        "description": "Črk na stranico, 4 do 16. Pustite prazno, da se prilagodi najdaljši besedi (do 12). Več kot 12 se na telefonu pomika vstran."
+      },
+      {
+        "title": "Diagonalne besede",
+        "description": "Skrij besede tudi diagonalno. Težje."
+      },
+      {
+        "title": "Besede nazaj",
+        "description": "Skrij tudi besede, zapisane nazaj. Težje."
+      },
+      {
+        "title": "Poudarjalna barva",
+        "description": "Izbirna barva za značko v glavi, izbrano prvo črko in gumb."
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Gumb zgodbe",
+    "description": "Gumb, ki odpre zgodbo za trditvijo na hax.cloud ali ustrezno mesto na drugem spletišču omrežja HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kam vodi",
+        "options": {
+          "cloud": "hax.cloud, zgodba",
+          "learn": "learn.hax.cloud, vadnica",
+          "try": "browser.hax.cloud, preizkusite",
+          "elements": "webcomponents.hax.cloud, blok",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Naslov na tem spletišču (zgodba na hax.cloud je videti kot stories/ee450a19)"
+      },
+      {
+        "title": "O čem gre"
+      },
+      {
+        "title": "Majhna značka"
+      },
+      {
+        "title": "Prikaži v gumbu, o čem gre"
+      }
+    ]
+  }
+}

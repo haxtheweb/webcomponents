@@ -1,0 +1,22 @@
+{
+  "scenario": "Scenario",
+  "directions": "Aanwysings",
+  "showDirections": "Wys aanwysings",
+  "hideDirections": "Versteek aanwysings",
+  "directionsRead": "Lees elke toneel en kies wat jy sou doen.",
+  "directionsEndings": "Daar is verskeie eindes. Probeer 'n ander pad nadat jy klaar is.",
+  "startOver": "Begin oor",
+  "back": "Een stap terug",
+  "tryAnother": "Probeer 'n ander pad",
+  "path": "Pad",
+  "scene": "Toneel",
+  "ending": "Einde",
+  "end": "einde",
+  "scenesSeen": "{seen} van {total} tonele gesien",
+  "endingReached": "Einde bereik",
+  "addScene": "Voeg toneel by",
+  "newScene": "Nuwe toneel",
+  "newSceneText": "Beskryf wat gebeur en koppel dan elke keuse aan 'n toneel.",
+  "editingNote": "Redigering: elke toneel word gewys. 'n Keuse is 'n skakel na # gevolg deur 'n toneel-ID.",
+  "noScenes": "Voeg 'n toneel by om die scenario te begin."
+}

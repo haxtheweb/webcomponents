@@ -8,5 +8,9 @@
   "theme": "Tema",
   "palette": "Paleta",
   "cancel": "Cancel·la",
-  "openAppearanceSettings": "Obre la configuració d'aparença"
+  "openAppearanceSettings": "Obre la configuració d'aparença",
+  "designSystem": "Sistema de disseny",
+  "designSystemDefault": "DDD (per defecte)",
+  "designSystemThemeDefault": "{name} (per defecte del tema)",
+  "designSystemHelp": "Color, tipografia, cantonades i densitat. El tema continua decidint la disposició."
 }

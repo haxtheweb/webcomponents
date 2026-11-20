@@ -3,5 +3,8 @@
   "copyAsCsv": "CSV ஆக நகலெடு.",
   "printTable": "அட்டவணையை அச்சிடு",
   "selectColumn": "நெடுவரிசையைத் தேர்ந்தெடு",
-  "dataTable": "தரவு · அட்டவணை"
+  "dataTable": "தரவு · அட்டவணை",
+  "filterStatus": "{total} வரிசைகளில் {shown} காட்டப்படுகின்றன, {column} மூலம் வடிகட்டப்பட்டது: {text}",
+  "columnNumber": "நெடுவரிசை {column}",
+  "clearFilter": "வடிகட்டியை அழி"
 }

@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Nota laterale",
+    "description": "Una nota messa à parte da u cuntenutu chì a circonda, cù un'icona è un'etichetta facultative."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etichetta",
+        "description": "L'etichetta di a nota laterale."
+      },
+      {
+        "title": "Icona",
+        "description": "L'icona di a nota laterale."
+      },
+      {
+        "title": "Cuntenutu",
+        "description": "Cuntenutu di a nota laterale."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Culore",
+        "description": "U culore cù u quale hè tinta a nota laterale."
+      }
+    ]
+  }
+}

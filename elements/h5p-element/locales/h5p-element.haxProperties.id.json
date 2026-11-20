@@ -4,7 +4,12 @@
     "description": "Memutar konten interaktif H5P dari berkas .h5p yang diunggah, tanpa memerlukan server H5P"
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "title": "File H5P",
+        "description": "Unggah atau tautkan file .h5p. File diekstrak di browser; tidak perlu server H5P."
+      }
+    ],
     "advanced": [
       {
         "title": "Kode sematan iframe lama",

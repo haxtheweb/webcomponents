@@ -60,6 +60,8 @@
   "flagsFound": "{correct} de {total} encontrados",
   "toRethink": "{count} para repensar",
   "notEvidence": "não é evidência para este marcador",
+  "isEvidence": "evidência para esta sinalização",
+  "readingKeys": "Use as setas para ir de um(a) {unit} ao próximo.",
   "markAnswers": "Marcar respostas",
   "doneMarking": "Concluir marcação de respostas",
   "editHint": "Edite o texto abaixo. Use Marcar respostas no menu do bloco para escolher onde cada marcador deve ficar.",

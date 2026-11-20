@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Arka plan görseli."
+        "description": "Arka plan görseli.",
+        "title": "Görsel"
       },
       {
         "property": "caption",
-        "description": "Metin başlığı."
+        "description": "Metin başlığı.",
+        "title": "Altyazı"
       }
     ]
   }

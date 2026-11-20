@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Radardiagramm",
+    "description": "Radardiagramm (Spannweb) fir Reifemodeller a Facettebewäertung, wéi HEOSAT. Mat Textalternativ an Datentabell."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Iwwerschrëft fir d'Diagramm; och als säin zougängleche Numm benotzt."
+      },
+      {
+        "title": "Maximale Score",
+        "description": "Héchste Wäert op der Skala."
+      },
+      {
+        "title": "Kategorien",
+        "description": "Eng Kategorie pro Linn. Brauch op d'mannst 3."
+      },
+      {
+        "title": "Scoren",
+        "description": "Mat Komma getrennt Zuelen, eng pro Kategorie an der selwechter Reiefolleg."
+      },
+      {
+        "title": "Zil-Scoren",
+        "description": "Mat Komma getrennt Zuelen, eng pro Kategorie an der selwechter Reiefolleg."
+      },
+      {
+        "title": "Legend weisen",
+        "description": "Eng Legend weisen, déi d'Scoren an d'Ziler bennennt."
+      },
+      {
+        "title": "Kompakt",
+        "description": "Méi klengt Diagramm ouni Bezeechnungen, Legend oder Datentabell. Fuert mat der Maus iwwer e Punkt, fir seng Wäerter ze gesinn."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Bezeechnung fir d'Scoren",
+        "description": "Bezeechnung vun de Scoren an der Legend an an der Tabell."
+      },
+      {
+        "title": "Bezeechnung fir d'Ziler",
+        "description": "Bezeechnung vun den Ziler an der Legend an an der Tabell."
+      }
+    ]
+  }
+}

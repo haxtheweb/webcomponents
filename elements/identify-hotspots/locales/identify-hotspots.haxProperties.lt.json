@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Raskite taškus",
+    "description": "Besimokantieji randa tinkamas paveikslėlio vietas spustelėdami, bakstelėdami arba judindami klaviatūros taikiklį. Vertinamas vaizdo žemėlapio atitikmuo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Paveikslėlis",
+        "description": "Paveikslėlis, kuriame ieško besimokantieji."
+      },
+      {
+        "title": "Alternatyvusis tekstas",
+        "description": "Aprašo paveikslėlį tiems, kurie jo nemato. Niekada nerodomas kaip pavadinimas."
+      },
+      {
+        "title": "Pavadinimas",
+        "description": "Trumpas matomas pavadinimas, rodomas virš paveikslėlio."
+      },
+      {
+        "title": "Klausimas",
+        "description": "Ką besimokantieji turi rasti paveikslėlyje."
+      },
+      {
+        "title": "Atsakymai",
+        "description": "Kiekvienas atsakymas yra pavadintas ovalas paveikslėlyje. Padėtis ir dydis nurodomi paveikslėlio procentais, matuojant nuo viršutinio kairiojo kampo. Redaguojant kiekvienas atsakymas paveikslėlyje apvedamas."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Bandymai",
+        "description": "Kiek kartų besimokantysis gali bandyti. 0 reiškia neribotai."
+      },
+      {
+        "title": "Leidžiamos klaidos",
+        "description": "Po kiek klaidų bandymas baigiasi. 0 reiškia neribotai, o besimokantieji gauna mygtuką „Baigti“."
+      },
+      {
+        "title": "Suskleidžiamas",
+        "description": "Rodyti šį klausimą kaip eilutę, kuri atsidaro ir užsidaro. Atidarius vieną, užsidaro kiti šalia esantys suskleidžiami klausimai."
+      },
+      {
+        "title": "Pradėti suskleistą",
+        "description": "Jei suskleidžiamas, pradėti kaip uždarą eilutę, rodančią tik klausimą ir jo būseną."
+      },
+      {
+        "title": "Vertinimo formatas",
+        "description": "OER Schema: šio vertinimo formatas (pvz., taškai, raidė, procentai, užbaigimas)."
+      },
+      {
+        "title": "Mokymosi tikslas",
+        "description": "OER Schema: su šiuo vertinimu susijęs mokymosi tikslas."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Testo pavadinimas",
+        "description": "Testo pavadinimas, perduodamas naudoti xAPI aplinkose šiam elementui identifikuoti"
+      },
+      {
+        "title": "Kursas",
+        "description": "OER Schema: kursas, kuriam skirtas šis vertinimas."
+      }
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "label": "Eksternt verktøy",
+  "labelLti": "Eksternt verktøy · LTI 1.3",
+  "theTool": "verktøyet",
+  "directions": "Instruksjoner",
+  "showDirections": "Vis instruksjoner",
+  "hideDirections": "Skjul instruksjoner",
+  "directionsWindow": "Knappen åpner et nytt vindu med verktøyet.",
+  "directionsEmbed": "Knappen åpner verktøyet på denne siden. Hvis det ikke lastes inn, åpne det i et nytt vindu i stedet.",
+  "directionsLti": "Dette nettstedet logger deg inn i verktøyet, så du trenger ikke en egen konto.",
+  "openWindow": "Åpne {title} (nytt vindu)",
+  "openEmbed": "Åpne {title}",
+  "openInstead": "Åpne i et nytt vindu i stedet",
+  "frameTitle": "{title} (eksternt verktøy)",
+  "openedWindow": "Et nytt vindu åpnet seg med verktøyet.",
+  "openedEmbed": "Verktøyet åpnet seg på denne siden.",
+  "needsUrl": "Denne blokken trenger en oppstartsadresse som begynner med http:// eller https://.",
+  "needsSignIn": "Dette verktøyet trenger nettstedets innloggingstjeneste, som ikke er tilgjengelig her. Ingenting ble åpnet."
+}

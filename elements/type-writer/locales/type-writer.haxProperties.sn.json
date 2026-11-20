@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Muchina wekutaipa",
     "description": "Mavara anozvitaipa bhii rimwe panguva."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mavara",
+        "description": "Mavara ekunyora kana element yaskrorwa ikaonekwa."
+      },
+      {
+        "title": "Kunyora",
+        "description": "Ratidza cursor inopenya; element inoisa izvi painonyora."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Kunonoka",
+        "description": "Mamirisekondi ekumirira kunyora kusati kwatanga."
+      },
+      {
+        "title": "Nguva yecursor",
+        "description": "Mamirisekondi anoramba cursor ichipenya mushure mekunge mavara anyorwa."
+      },
+      {
+        "title": "Kukurumidza",
+        "description": "Mamirisekondi pachiratidzo chimwe; nhamba dzakaderera dzinonyora nekukurumidza."
+      }
+    ]
   }
 }

@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Dölj ikon",
         "description": "Dölj ikonen som används för att framhäva texten"
+      },
+      {
+        "title": "Utseende",
+        "description": "Hur mycket betoning knappen har.",
+        "options": {
+          "": "Fylld",
+          "tonal": "Tonad",
+          "outlined": "Konturerad",
+          "plain": "Enkel"
+        }
+      },
+      {
+        "title": "Storlek",
+        "description": "Knappstorlek.",
+        "options": {
+          "s": "Liten",
+          "": "Medel",
+          "l": "Stor"
+        }
       }
     ],
     "advanced": [

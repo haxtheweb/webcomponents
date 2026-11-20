@@ -1,0 +1,13 @@
+{
+  "gizmo": {
+    "title": "example-hax-element",
+    "description": "HAX yapılandırmasını ve düzenlenebilir özellikleri göstermek için kullanılan örnek başlangıç öğesi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Başlık"
+      }
+    ]
+  }
+}

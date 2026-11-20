@@ -2,5 +2,9 @@
   "toggleAnimation": "Animatioun un/aus",
   "info": "Info",
   "image": "Bild",
-  "animatedGif": "Animéierte GIF"
+  "animatedGif": "Animéierte GIF",
+  "playAnimation": "Animatioun ofspillen",
+  "pauseAnimation": "Animatioun pausen",
+  "showDescription": "Beschreiwung weisen",
+  "hideDescription": "Beschreiwung verstoppen"
 }

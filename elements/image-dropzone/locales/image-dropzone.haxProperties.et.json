@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Pildi asetusalad",
+    "description": "Õppijad paigutavad sildid pildi peale laotud aladele ja kontrollivad siis vastust."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pilt",
+        "description": "Pilt, millele õppijad sildid paigutavad."
+      },
+      {
+        "title": "Alternatiivtekst",
+        "description": "Kirjeldab pilti inimestele, kes seda näha ei saa. Ära reeda, kuhu sildid käivad."
+      },
+      {
+        "title": "Pildi pealkiri",
+        "description": "Lühike nähtav pealkiri pildile, kuvatakse selle kohal."
+      },
+      {
+        "title": "Küsimus",
+        "description": "Mida õppijatel palutakse siltidega teha."
+      },
+      {
+        "title": "Sildid ja alad",
+        "description": "Iga üksus on silt, mida õppijad saavad paigutada. Anna sildile ala nimi, et panna selle ala pildile; ala nimeta silt on üleliigne ja ei kuulu kuhugi. Ala numbrid on protsendid pildist."
+      },
+      {
+        "title": "Pildiallkiri",
+        "description": "Valikuline pildiallkiri, mis kuvatakse pildi all."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Katsed",
+        "description": "Mitu korda õppija saab kontrollida. 0 tähendab piiramatut."
+      },
+      {
+        "title": "Sega sildid",
+        "description": "Näita silte igal külastusel erinevas järjekorras."
+      },
+      {
+        "title": "Kokkupandav",
+        "description": "Näita seda küsimust reana, mis avaneb ja sulgub. Ühe avamine sulgeb kõrvalolevad teised kokkupandavad küsimused."
+      },
+      {
+        "title": "Alusta kokkupandult",
+        "description": "Kokkupandavana alusta suletud reana, mis näitab ainult küsimust ja olekut."
+      },
+      {
+        "title": "Hindamisvorming",
+        "description": "OER Schema: selle hindamise hindamisvorming (nt punktid, täht, protsent, sooritus)."
+      },
+      {
+        "title": "Õpieesmärk",
+        "description": "OER Schema: selle hindamisega seotud õpieesmärk."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Viktoriini nimi",
+        "description": "Viktoriini nimi, mida kasutatakse xAPI-tuvastuseks analüütikasüsteemides."
+      },
+      {
+        "title": "Kursus",
+        "description": "OER Schema: kursus, mille jaoks see hindamine on mõeldud."
+      }
+    ]
+  }
+}

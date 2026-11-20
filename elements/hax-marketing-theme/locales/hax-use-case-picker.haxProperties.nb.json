@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Bruksområdevelger",
+    "description": "Velg hva et nettsted skal brukes til, og få en lenke som åpner HAX i nettleseren med det startnettstedet, pluss tilsvarende CLI-kommando."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Adresse til HAX i nettleseren",
+        "description": "Hvor lenken åpnes; den får ?skeleton= og &name= lagt til"
+      },
+      {
+        "title": "Startnettsteder som skal utelates",
+        "description": "Maskinnavn, kommaseparert"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Liste over startnettsteder",
+        "description": "Adressen til skjelettlisten (formatet app-hax leser)"
+      }
+    ]
+  }
+}

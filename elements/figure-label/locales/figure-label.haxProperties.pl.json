@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Etykieta ilustracji",
     "description": "Element etykiety ilustracji do oznaczania zasobów multimedialnych w treści."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Numer ilustracji",
+        "description": "Numer lub krótka etykieta ilustracji, np. 1.3"
+      },
+      {
+        "title": "Opis",
+        "description": "Krótki opis ilustracji"
+      }
+    ]
   }
 }

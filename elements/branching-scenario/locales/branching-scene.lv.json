@@ -1,0 +1,14 @@
+{
+  "scene": "Aina",
+  "ending": "Beigas",
+  "goodEnding": "Labas beigas",
+  "mixedEnding": "Jauktas beigas",
+  "poorEnding": "Sliktas beigas",
+  "scoreOf": "Rezultāts {score} no {max}",
+  "scoreOnly": "Rezultāts {score}",
+  "startScene": "Sākums",
+  "sceneIdLabel": "Ainas ID",
+  "needsId": "Pievienojiet ainas ID, lai izvēles varētu saistīt ar šo ainu.",
+  "orphan": "Neviena izvēle nav saistīta ar šo ainu.",
+  "deadLinks": "Šīs saites norāda uz ainu, kas neeksistē:"
+}

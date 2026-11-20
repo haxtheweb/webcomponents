@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Rhestr camau",
     "description": "Camau wedi'u rhifo ar gyfer cwblhau tasg."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Dangosydd camau",
+        "description": "Dangos y camau fel rhes gryno o deitlau sy'n nodi cynnydd. Ni ddangosir cynnwys y camau yn y gosodiad hwn."
+      },
+      {
+        "title": "Cam presennol",
+        "description": "Y cam y mae'r darllenydd arno, gan gyfrif o 1. Dangosir camau cynharach fel rhai wedi'u cwblhau. Fe'i defnyddir gan y dangosydd camau."
+      }
+    ]
   }
 }

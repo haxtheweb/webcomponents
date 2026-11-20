@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Istaatistiksii",
+    "description": "Lakkoofsa ol lakkaa'u, maqaa fi liinkii gara seenaa isaatti waliin"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Lakkoofsa hanga itti lakkaa'amu"
+      },
+      {
+        "title": "Lakkoofsa dura"
+      },
+      {
+        "title": "Lakkoofsa booda"
+      },
+      {
+        "title": "Lakkoofsa mannaa jechoota"
+      },
+      {
+        "title": "Waan inni lakkaa'u"
+      },
+      {
+        "title": "Teessoo seenaa hax.cloud irratti (stories/ee450a19)"
+      }
+    ]
+  }
+}

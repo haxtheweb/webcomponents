@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Oznaka slike",
     "description": "Element oznake slike za označevanje medijskih sredstev v vsebini."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Številka slike",
+        "description": "Številka ali kratka oznaka slike, npr. 1.3"
+      },
+      {
+        "title": "Opis",
+        "description": "Kratek opis slike"
+      }
+    ]
   }
 }

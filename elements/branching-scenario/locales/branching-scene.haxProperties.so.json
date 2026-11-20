@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Muuqaalka xaaladda",
+    "description": "Hal muuqaal oo xaalad laamo leh ah. Doorasho kasta ku xir muuqaal kale adigoo isticmaalaya # oo ay ku xigto id-ga muuqaalka."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID-ga muuqaalka",
+        "description": "Waxa doorashooyinku ku xirmaan: link u socda # oo ay ku xigto id-gan wuxuu u horseedaa muuqaalkan. Xarfo, tirooyin iyo jiitimo."
+      },
+      {
+        "title": "Cinwaan",
+        "description": "Cinwaanka muuqaalka."
+      },
+      {
+        "title": "Dhammaad",
+        "description": "Haddii muuqaalkani dhammeeyo waddo, iyo sida ay ku dhammaatay.",
+        "options": {
+          "": "Ma aha dhammaad",
+          "good": "Dhammaad wanaagsan",
+          "mixed": "Dhammaad isku dhafan",
+          "poor": "Dhammaad liita"
+        }
+      },
+      {
+        "title": "Dhibcaha",
+        "description": "Dhibcaha gaaritaanka dhammaadkan. Dhibcaha dhammaadka ugu sarreeya ee xaaladdu waa kuwa ugu badan."
+      }
+    ]
+  }
+}

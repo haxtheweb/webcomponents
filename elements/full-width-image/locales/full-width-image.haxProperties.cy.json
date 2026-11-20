@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Delwedd gefndir."
+        "description": "Delwedd gefndir.",
+        "title": "Delwedd"
       },
       {
         "property": "caption",
-        "description": "Pennawd testun."
+        "description": "Pennawd testun.",
+        "title": "Capsiwn"
       }
     ]
   }

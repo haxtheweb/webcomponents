@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Ghi chú bên lề",
+    "description": "Một ghi chú tách biệt khỏi nội dung xung quanh, với biểu tượng và nhãn tùy chọn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nhãn",
+        "description": "Nhãn của ghi chú bên lề."
+      },
+      {
+        "title": "Biểu tượng",
+        "description": "Biểu tượng của ghi chú bên lề."
+      },
+      {
+        "title": "Nội dung",
+        "description": "Nội dung của ghi chú bên lề."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Màu",
+        "description": "Màu tô cho ghi chú bên lề."
+      }
+    ]
+  }
+}

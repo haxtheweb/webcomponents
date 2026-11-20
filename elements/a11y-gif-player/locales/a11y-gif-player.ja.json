@@ -2,5 +2,9 @@
   "toggleAnimation": "アニメーションの切り替え",
   "info": "情報",
   "image": "画像",
-  "animatedGif": "アニメーションGIF"
+  "animatedGif": "アニメーションGIF",
+  "playAnimation": "アニメーションを再生",
+  "pauseAnimation": "アニメーションを一時停止",
+  "showDescription": "説明を表示",
+  "hideDescription": "説明を非表示"
 }

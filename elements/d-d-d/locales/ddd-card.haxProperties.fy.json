@@ -52,6 +52,20 @@
           "_top": "Boppeste finster - _top",
           "_parent": "Aldersfinster - _parent"
         }
+      },
+      {
+        "title": "Gjin pylk",
+        "description": "De pylk fan de knop ferbergje."
+      },
+      {
+        "title": "Keppeling: doel",
+        "description": "Wêr't de keppeling iepenet.",
+        "options": {
+          "": "Itselde finster",
+          "_blank": "Nij finster - _blank",
+          "_top": "Boppeste finster - _top",
+          "_parent": "Alderfinster - _parent"
+        }
       }
     ],
     "developer": [

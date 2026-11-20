@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "수학 표기법 LaTeX로 작성합니다"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "그림 배경",
+        "description": "그린 그림 뒤의 배경. 자동은 어두운 모드의 어두운 선처럼 그림이 페이지에서 잘 보이지 않을 때만 배경을 추가합니다.",
+        "options": {
+          "auto": "자동",
+          "light": "밝게",
+          "dark": "어둡게",
+          "none": "없음"
+        }
+      }
+    ]
   }
 }

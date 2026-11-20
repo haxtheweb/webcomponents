@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Inkinobho yendaba",
+    "description": "Inkinobho evula indaba engemuva kwesimangalo ku-hax.cloud, noma indawo efanayo kwenye isayithi yenethiwekhi ye-HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Lapho iya khona",
+        "options": {
+          "cloud": "hax.cloud, indaba",
+          "learn": "learn.hax.cloud, isifundo",
+          "try": "browser.hax.cloud, yizame",
+          "elements": "webcomponents.hax.cloud, ibhlokhi",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Ikheli kuleyo sayithi (indaba ku-hax.cloud ibukeka njenge-stories/ee450a19)"
+      },
+      {
+        "title": "Lokho emayelana nakho"
+      },
+      {
+        "title": "I-chip encane"
+      },
+      {
+        "title": "Bonisa lokho emayelana nakho enkinobhweni"
+      }
+    ]
+  }
+}

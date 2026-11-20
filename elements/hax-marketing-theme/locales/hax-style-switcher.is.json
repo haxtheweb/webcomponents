@@ -1,0 +1,16 @@
+{
+  "theme": "Þema",
+  "designSystem": "Hönnunarkerfi",
+  "dddDefault": "DDD (sjálfgefið)",
+  "designSystemHelp": "Litir, letur, horn og fókus. Þemað heldur útlitinu.",
+  "designSystemFixed": "Þetta þema heldur eigin hönnunarkerfi.",
+  "palette": "Litaspjald",
+  "themeDefault": "Sjálfgefið í þema",
+  "paletteNumber": "Litaspjald {n}",
+  "siteTheme": "{name} (þema þessa vefs)",
+  "restyle": "Breyta stíl þessa vefs",
+  "close": "Loka",
+  "reset": "Aftur í eigið útlit þessa vefs",
+  "random": "Komdu mér á óvart",
+  "about": "Hér sjást nokkur af þeim útlitum sem eru innbyggð í HAX. Síðurnar breytast aldrei: uppbyggingin býr í JSON Outline Schema og hver kubbur er staðlaður vefíhlutur, svo hönnuninni má skipta að vild."
+}

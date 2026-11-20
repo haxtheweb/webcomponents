@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Bọ́tìnnì ìtàn",
+    "description": "Bọ́tìnnì tó ń ṣí ìtàn tó wà lẹ́yìn ọ̀rọ̀ kan lórí hax.cloud, tàbí ibi tó bá a mu lórí ojú-òpó nẹ́tíwọ̀ọ̀kì HAX mìíràn"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ibi tí ó ń lọ",
+        "options": {
+          "cloud": "hax.cloud, ìtàn náà",
+          "learn": "learn.hax.cloud, ẹ̀kọ́ kan",
+          "try": "browser.hax.cloud, gbìyànjú rẹ̀",
+          "elements": "webcomponents.hax.cloud, búlọ́ọ̀kù kan",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Àdírẹ́sì lórí ojú-òpó yẹn (ìtàn kan lórí hax.cloud dà bí stories/ee450a19)"
+      },
+      {
+        "title": "Ohun tí ó dá lé"
+      },
+      {
+        "title": "Chip kékeré"
+      },
+      {
+        "title": "Fi ohun tí ó dá lé hàn nínú bọ́tìnnì"
+      }
+    ]
+  }
+}

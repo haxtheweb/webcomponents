@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Netzdiagramm",
+    "description": "Netzdiagramm (Spinnendiagramm) für Reifegradmodelle und Facettenbewertung, etwa HEOSAT. Enthält eine Textalternative und eine Datentabelle."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Überschrift des Diagramms; wird auch als barrierefreier Name verwendet."
+      },
+      {
+        "title": "Höchstpunktzahl",
+        "description": "Höchster Wert der Skala."
+      },
+      {
+        "title": "Kategorien",
+        "description": "Eine Kategorie pro Zeile. Mindestens 3 erforderlich."
+      },
+      {
+        "title": "Werte",
+        "description": "Durch Kommas getrennte Zahlen, eine pro Kategorie in derselben Reihenfolge."
+      },
+      {
+        "title": "Zielwerte",
+        "description": "Durch Kommas getrennte Zahlen, eine pro Kategorie in derselben Reihenfolge."
+      },
+      {
+        "title": "Legende anzeigen",
+        "description": "Eine Legende anzeigen, die Werte und Ziele benennt."
+      },
+      {
+        "title": "Kompakt",
+        "description": "Kleineres Diagramm ohne Beschriftungen, Legende oder Datentabelle. Fahre mit der Maus über einen Punkt, um seine Werte zu sehen."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Beschriftung der Werte",
+        "description": "Legenden- und Tabellenbeschriftung für die Werte."
+      },
+      {
+        "title": "Beschriftung der Ziele",
+        "description": "Legenden- und Tabellenbeschriftung für die Ziele."
+      }
+    ]
+  }
+}

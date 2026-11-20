@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Pou",
+    "description": "He pou: ingoa, kīanga, ata, tae, me te take he mea nui"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ingoa"
+      },
+      {
+        "title": "Kīanga"
+      },
+      {
+        "title": "Ata"
+      },
+      {
+        "title": "Tae (ingoa DDD)"
+      },
+      {
+        "title": "Ko tēhea pou, 1 ki te 7"
+      },
+      {
+        "title": "Kāri iti"
+      },
+      {
+        "title": "Te wāhi e noho ai te ingoa"
+      }
+    ]
+  }
+}

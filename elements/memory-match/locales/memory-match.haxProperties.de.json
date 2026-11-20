@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Memory-Spiel",
+    "description": "Decke Karten auf, um Paare zu finden. Verbinde einen Begriff mit seiner Bedeutung, damit ein Treffer Verständnis zeigt, oder verwende zwei gleiche Texte oder Bilder."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Die Aufgabenstellung in der Kopfzeile, zum Beispiel: Ordne den Begriff seiner Aufgabe zu."
+      },
+      {
+        "title": "Paare",
+        "description": "Jedes Paar besteht aus zwei zusammengehörigen Karten, meist einem Begriff und seiner Bedeutung. Eine Seite braucht Text, ein Bild oder beides."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Akzentfarbe",
+        "description": "Optionale Farbe für den Kopfzeilen-Chip, die Kartenrückseiten und die Schaltfläche."
+      }
+    ]
+  }
+}

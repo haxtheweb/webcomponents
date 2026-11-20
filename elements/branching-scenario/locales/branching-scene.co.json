@@ -1,0 +1,14 @@
+{
+  "scene": "Scena",
+  "ending": "Fine",
+  "goodEnding": "Bona fine",
+  "mixedEnding": "Fine mischjata",
+  "poorEnding": "Fine scarsa",
+  "scoreOf": "Puntu {score} nant'à {max}",
+  "scoreOnly": "Puntu {score}",
+  "startScene": "Principiu",
+  "sceneIdLabel": "ID di a scena",
+  "needsId": "Aghjunghjite un ID di scena per chì e scelte possinu ligà à sta scena.",
+  "orphan": "Nisuna scelta ùn liga à sta scena.",
+  "deadLinks": "Sti liami portanu à una scena chì ùn esiste micca:"
+}

@@ -3,5 +3,8 @@
   "copyAsCsv": "نسخ بصيغة CSV.",
   "printTable": "طباعة الجدول",
   "selectColumn": "اختر العمود",
-  "dataTable": "بيانات · جدول"
+  "dataTable": "بيانات · جدول",
+  "filterStatus": "عرض {shown} من {total} صفًا، مصفّاة حسب {column}: {text}",
+  "columnNumber": "العمود {column}",
+  "clearFilter": "مسح عامل التصفية"
 }

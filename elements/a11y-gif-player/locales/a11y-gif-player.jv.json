@@ -2,5 +2,9 @@
   "toggleAnimation": "Uripake/patèni animasi",
   "info": "info",
   "image": "Gambar",
-  "animatedGif": "GIF animasi"
+  "animatedGif": "GIF animasi",
+  "playAnimation": "Puter animasi",
+  "pauseAnimation": "Ngaso animasi",
+  "showDescription": "Tampilake katrangan",
+  "hideDescription": "Umpetake katrangan"
 }

@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "脚注",
+    "description": "写辣正文里该写地方个注释。伊显示成一个数字，编好号个注释列表会自动辣页面底下生成。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "注释",
+        "description": "脚注个文字。"
+      },
+      {
+        "title": "勿预览",
+        "description": "读者鼠标悬停或者聚焦数字个辰光勿显示注释。"
+      }
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "gizmo": {
+    "title": "example-hax-element",
+    "description": "HAX konfigurazioa eta propietate editagarriak erakusteko erabiltzen den adibide-elementua."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Izenburua"
+      }
+    ]
+  }
+}

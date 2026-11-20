@@ -1,0 +1,16 @@
+{
+  "theme": "Motiv",
+  "designSystem": "Designový systém",
+  "dddDefault": "DDD (výchozí)",
+  "designSystemHelp": "Barvy, písmo, rohy a fokus. Motiv si ponechá rozvržení.",
+  "designSystemFixed": "Tento motiv má vlastní designový systém.",
+  "palette": "Paleta",
+  "themeDefault": "Výchozí podle motivu",
+  "paletteNumber": "Paleta {n}",
+  "siteTheme": "{name} (motiv tohoto webu)",
+  "restyle": "Změnit styl tohoto webu",
+  "close": "Zavřít",
+  "reset": "Zpět k vlastnímu vzhledu webu",
+  "random": "Překvapte mě",
+  "about": "Zde je několik vzhledů zabudovaných v HAX. Stránky se nikdy nemění: struktura žije v JSON Outline Schema a každý blok je standardní webová komponenta, takže design lze libovolně vyměnit."
+}

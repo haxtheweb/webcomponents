@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Umbuzo wenani",
+    "description": "Umbuzo ophendulwa ngenani. Impendulo linani elizinzileyo okanye ifomula esonjululwa kwizinto eziguquguqukayo, kwaye iyabalwa xa ingaphakathi kokunyamezelwa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Umbuzo",
+        "description": "Oko abafundi babuzwa kona. Bhala igama lento eguquguqukayo kwizibiyeli ezigoso, njenge-{d}, ukubonisa ixabiso layo."
+      },
+      {
+        "title": "Iyunithi",
+        "description": "Iboniswa njengesicatshulwa ecaleni kwendawo yempendulo, umzekelo km/h."
+      },
+      {
+        "title": "Impendulo",
+        "description": "Inani elichanekileyo. Shiya kungenanto xa ifomula isonjulula impendulo."
+      },
+      {
+        "title": "Ifomula",
+        "description": "Isonjulula impendulo kwizinto eziguquguqukayo, umzekelo d / (t / 60). Ingasebenzisa + - * / ^, izibiyeli, sqrt() kunye ne-abs(). Isetyenziswa endaweni yempendulo xa isetiwe."
+      },
+      {
+        "title": "Izinto eziguquguqukayo",
+        "description": "Amanani asetyenziswa yifomula nombuzo. Ngalinye lithatha ixabiso phakathi kwelona lisezantsi nelona liphezulu, ngamanyathelo."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ukunyamezela",
+        "description": "Kude kangakanani kwimpendulo echanekileyo kusabalwa. 0 kuthetha ngqo, okanye kujikelezwe kwiindawo zedesimali ezingezantsi."
+      },
+      {
+        "title": "Uhlobo lokunyamezela",
+        "description": "Ngokupheleleyo: dibanisa okanye uthabathe ukunyamezela. Ipesenti: dibanisa okanye uthabathe loo pesenti yempendulo echanekileyo.",
+        "options": {
+          "absolute": "Ngokupheleleyo",
+          "percent": "Ipesenti"
+        }
+      },
+      {
+        "title": "Iindawo zedesimali",
+        "description": "Abafundi bacelwa ukuba bajikeleze kwezi ndawo, kwaye impendulo iboniswa ijikelezwe kuzo. Shiya kungenanto ukuba akukho kujikeleza."
+      },
+      {
+        "title": "Iinzame",
+        "description": "Kangaphi umfundi anokujonga. 0 kuthetha akunamda."
+      },
+      {
+        "title": "Amanani amatsha kwinzame nganye",
+        "description": "Khupha amaxabiso amatsha ezinto eziguquguqukayo ngalo lonke ixesha umfundi ezama kwakhona. Impendulo yakhe yangaphambili ayiboniswa xa ebuya, kuphela ukuba ebeyichanile na."
+      },
+      {
+        "title": "Iyasongeka",
+        "description": "Bonisa lo mbuzo njengomqolo ovulekayo novalekayo. Ukuvula omnye kuvala eminye imibuzo esongekayo ecaleni kwawo."
+      },
+      {
+        "title": "Qala usongiwe",
+        "description": "Xa isongeka, qala njengomqolo ovaliweyo obonisa umbuzo nesimo sawo kuphela."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Igama lovavanyo",
+        "description": "Igama lovavanyo elisetyenziselwa ukuchonga kwe-xAPI kwiinkqubo zohlalutyo."
+      }
+    ]
+  }
+}

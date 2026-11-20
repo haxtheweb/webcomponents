@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Hero",
+    "description": "Sahifaning istalgan joyiga qo‘yiladigan, ustida sarlavha va matn bo‘lgan katta tasvir, GIF yoki video."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tasvir yoki video",
+        "description": "JPG, PNG, WebP, GIF, MP4 yoki WebM fayl."
+      },
+      {
+        "title": "Muqobil matn",
+        "description": "Tasvirni tavsiflang. Agar u faqat bezak bo‘lsa, bo‘sh qoldiring."
+      },
+      {
+        "title": "Sarlavha",
+        "description": "Media ustida ko‘rsatiladigan sarlavha. Kerak bo‘lmasa, bo‘sh qoldiring."
+      },
+      {
+        "title": "Matn",
+        "description": "Sarlavha ostida, media ustida ko‘rsatiladigan matn."
+      },
+      {
+        "title": "To‘liq kenglik",
+        "description": "Kontent ustunida turish o‘rniga chetdan chetgacha cho‘zilish."
+      },
+      {
+        "title": "Balandlik",
+        "options": {
+          "tall": "Baland",
+          "medium": "O‘rtacha",
+          "short": "Past"
+        }
+      },
+      {
+        "title": "Kadrlash",
+        "description": "Har bir ekran o‘lchamida rasm qanday joylashadi"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Qoplama",
+        "description": "Media ustiga qo‘yiladigan rang. Sarlavha yoki matn bo‘lsa, u doim bo‘ladi, shunda matn o‘qiladigan bo‘lib qoladi.",
+        "options": {
+          "blue": "Ko‘k",
+          "bottom": "Pastda qorong‘i",
+          "none": "Yo‘q"
+        }
+      },
+      {
+        "title": "Matn joylashuvi",
+        "options": {
+          "bottom": "Pastda",
+          "middle": "O‘rtada"
+        }
+      },
+      {
+        "title": "Gorizontal fokus nuqtasi",
+        "description": "Tasvir kesilganda ko‘rinishda qoladigan qismi, 0 (chap) dan 100 (o‘ng) gacha."
+      },
+      {
+        "title": "Vertikal fokus nuqtasi",
+        "description": "Tasvir kesilganda ko‘rinishda qoladigan qismi, 0 (yuqori) dan 100 (past) gacha."
+      }
+    ]
+  }
+}

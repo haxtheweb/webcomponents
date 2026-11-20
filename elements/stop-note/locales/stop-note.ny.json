@@ -3,5 +3,7 @@
   "status_stop": "Imani",
   "status_warning": "Chenjezo",
   "status_success": "Kupambana",
-  "status_info": "Chidziwitso"
+  "status_info": "Chidziwitso",
+  "status_tip": "Kodi mumadziwa?",
+  "status_new": "Zatsopano"
 }

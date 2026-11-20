@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Plataformen konparazioa",
+    "description": "Aurrez aurre: aukeratu edozein bi plataforma datu-fitxategi batetik"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Konparazio-datuak (JSON)"
+      },
+      {
+        "title": "Ezkerreko plataformaren IDa"
+      },
+      {
+        "title": "Eskuineko plataformaren IDa"
+      }
+    ]
+  }
+}

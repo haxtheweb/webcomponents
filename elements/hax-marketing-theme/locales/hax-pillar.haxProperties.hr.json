@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Stup",
+    "description": "Stup: naziv, izraz, ikona, boja i zašto je važan"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Naziv"
+      },
+      {
+        "title": "Izraz"
+      },
+      {
+        "title": "Ikona"
+      },
+      {
+        "title": "Boja (DDD naziv)"
+      },
+      {
+        "title": "Koji stup, 1 do 7"
+      },
+      {
+        "title": "Mala kartica"
+      },
+      {
+        "title": "Gdje ide naziv"
+      }
+    ]
+  }
+}

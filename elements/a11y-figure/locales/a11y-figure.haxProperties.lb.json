@@ -11,7 +11,8 @@
       },
       {
         "property": "imgAlt",
-        "title": "Alternativtext"
+        "title": "Alternativtext",
+        "description": "Beschreift d'Bild fir Leit, déi et net gesi kënnen."
       },
       {
         "slot": "figcaption",
@@ -32,11 +33,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Optionalen Resuméstext, wann d'Detailer op sinn"
+        "title": "Optionalen Resuméstext, wann d'Detailer op sinn",
+        "description": "Knäppchentext, wann d'Beschreiwung verstoppt ass, zum Beispill „Beschreiwung weisen“."
       },
       {
         "property": "closeText",
-        "title": "Optionalen Resuméstext, wann d'Detailer zou sinn"
+        "title": "Optionalen Resuméstext, wann d'Detailer zou sinn",
+        "description": "Knäppchentext, wann d'Beschreiwung ze gesinn ass, zum Beispill „Beschreiwung verstoppen“."
       }
     ]
   }

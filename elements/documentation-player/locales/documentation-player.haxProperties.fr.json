@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Lecteur de documentation",
+    "description": "Visite guidée, démo et référence d'un composant web, avec des boutons pour copier le HTML, l'import, npm et le CDN."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Fichier de données de la documentation",
+        "description": "Les données de documentation fournies avec l'élément (lib/tag.docs.json)."
+      },
+      {
+        "title": "Storyboard de la visite guidée",
+        "description": "Le storyboard d'animation fourni avec l'élément (tag.motion.json). Facultatif."
+      },
+      {
+        "title": "Tutoriel vidéo",
+        "description": "Une courte vidéo sur l'élément (YouTube, Vimeo ou un fichier vidéo). Remplace la vidéo des données de documentation."
+      },
+      {
+        "title": "Onglet d'ouverture",
+        "description": "L'onglet affiché en premier.",
+        "options": {
+          "motion": "Visite guidée",
+          "video": "Vidéo",
+          "demo": "Démo",
+          "docs": "Documentation",
+          "schema": "Schéma"
+        }
+      },
+      {
+        "title": "Lecture automatique de la visite guidée",
+        "description": "Démarrer la visite guidée dès que le lecteur s'affiche. Ignoré si le lecteur préfère réduire les animations."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Sujet de la visite guidée",
+        "description": "Pour les éléments qui ont plusieurs visites guidées, le sujet à ouvrir en premier (par exemple add-blocks). Laissez vide pour la principale."
+      },
+      {
+        "title": "Lien vers la démo en direct",
+        "description": "Destination du bouton Ouvrir la source de la démo. Par défaut, le dossier de démo du dépôt."
+      },
+      {
+        "title": "Lien vers la documentation",
+        "description": "Destination du bouton de documentation complète, par exemple la page Learn HAX correspondante."
+      }
+    ]
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Tutkakaavio",
+    "description": "Tutka- eli hämähäkkikaavio kypsyysmalleille ja osa-alueiden pisteytykselle, kuten HEOSAT. Sisältää tekstivastineen ja datataulukon."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Otsikko",
+        "description": "Kaavion otsikko; käytetään myös sen saavutettavana nimenä."
+      },
+      {
+        "title": "Enimmäispisteet",
+        "description": "Asteikon suurin arvo."
+      },
+      {
+        "title": "Luokat",
+        "description": "Yksi luokka riviä kohden. Vähintään 3 tarvitaan."
+      },
+      {
+        "title": "Pisteet",
+        "description": "Pilkuin erotellut luvut, yksi kutakin luokkaa kohden samassa järjestyksessä."
+      },
+      {
+        "title": "Tavoitepisteet",
+        "description": "Pilkuin erotellut luvut, yksi kutakin luokkaa kohden samassa järjestyksessä."
+      },
+      {
+        "title": "Näytä selite",
+        "description": "Näytä selite, joka nimeää pisteet ja tavoitteet."
+      },
+      {
+        "title": "Tiivis",
+        "description": "Pienempi kaavio ilman nimiöitä, selitettä tai datataulukkoa. Vie osoitin pisteen päälle nähdäksesi sen arvot."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Pisteiden nimiö",
+        "description": "Pisteiden nimiö selitteessä ja taulukossa."
+      },
+      {
+        "title": "Tavoitteen nimiö",
+        "description": "Tavoitteiden nimiö selitteessä ja taulukossa."
+      }
+    ]
+  }
+}

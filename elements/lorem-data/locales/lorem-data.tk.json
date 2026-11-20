@@ -1,4 +1,6 @@
 {
   "saveAll": "Hemmesini ýatda sakla",
-  "saveTheFollowing": "Şulary ýatda saklamalymy: {list}?"
+  "saveTheFollowing": "Şulary ýatda saklamalymy: {list}?",
+  "save": "Ýatda sakla",
+  "cancel": "Ýatyr"
 }

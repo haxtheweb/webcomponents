@@ -1,0 +1,16 @@
+{
+  "drawing": "Zeichnung",
+  "edit": "Zeichnung bearbeiten",
+  "start": "Zeichnen beginnen",
+  "remove": "Zeichnung entfernen",
+  "empty": "Noch nichts gezeichnet",
+  "save": "Speichern",
+  "cancel": "Abbrechen",
+  "close": "Schließen",
+  "discard": "Änderungen verwerfen",
+  "discardConfirm": "Ungespeicherte Änderungen verwerfen?",
+  "keepEditing": "Weiter bearbeiten",
+  "draw": "Zeichnung",
+  "feedback": "Feedback",
+  "signature": "Unterschrift"
+}

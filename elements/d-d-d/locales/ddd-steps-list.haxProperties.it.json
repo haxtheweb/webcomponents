@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Elenco di passaggi",
     "description": "Passaggi numerati per completare un’attività."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Indicatore dei passaggi",
+        "description": "Mostra i passaggi come una riga compatta di titoli che segna l'avanzamento. Il contenuto dei passaggi non è mostrato in questo layout."
+      },
+      {
+        "title": "Passaggio attuale",
+        "description": "Il passaggio in cui si trova il lettore, contando da 1. I passaggi precedenti appaiono completati. Usato dall'indicatore dei passaggi."
+      }
+    ]
   }
 }

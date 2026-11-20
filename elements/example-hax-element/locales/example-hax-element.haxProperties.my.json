@@ -1,0 +1,13 @@
+{
+  "gizmo": {
+    "title": "example-hax-element",
+    "description": "HAX ဖွဲ့စည်းပုံနှင့် တည်းဖြတ်နိုင်သော ဂုဏ်သတ္တိများကို သရုပ်ပြရန် သုံးသော ဥပမာ စတင် element။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ခေါင်းစဉ်"
+      }
+    ]
+  }
+}

@@ -9,5 +9,7 @@
   "slidePages": "Pagine di diapusitive",
   "goToSlide": "Andà à a diapusitiva {number}",
   "slides": "Diapositive",
-  "position": "{number} nantu à {total}"
+  "position": "{number} nantu à {total}",
+  "fullScreen": "Screnu sanu",
+  "exitFullScreen": "Esce da u screnu sanu"
 }

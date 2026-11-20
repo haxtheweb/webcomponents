@@ -23,7 +23,9 @@
           "stop": "Stop",
           "warning": "Warskôging",
           "success": "Befêstiging",
-          "info": "Meidieling"
+          "info": "Meidieling",
+          "tip": "Tip",
+          "new": "Wat is nij"
         }
       },
       {

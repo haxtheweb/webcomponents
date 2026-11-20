@@ -1,0 +1,21 @@
+{
+  "diagram": "다이어그램",
+  "flowchart": "순서도",
+  "sequence": "시퀀스",
+  "source": "소스",
+  "textAlternative": "대체 텍스트",
+  "present": "발표",
+  "exitPresent": "발표 종료",
+  "loading": "다이어그램을 불러오는 중",
+  "empty": "아직 그릴 것이 없습니다. 다이어그램 소스를 추가하세요.",
+  "error": "오류",
+  "parseError": "이 다이어그램을 그릴 수 없습니다. 소스를 확인하세요.",
+  "loadError": "다이어그램 라이브러리를 불러올 수 없습니다.",
+  "srcError": "다이어그램 파일을 불러올 수 없습니다.",
+  "decision": "결정",
+  "end": "끝",
+  "goTo": "{target}(으)로 이동",
+  "ifGoTo": "{label}이면 {target}(으)로 이동",
+  "describedBySource": "소스로 설명된 다이어그램.",
+  "scrollable": "다이어그램, 스크롤 가능"
+}

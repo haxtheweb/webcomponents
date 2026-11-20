@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Weebii sirna-naannoo",
+    "description": "Weebii walqunnamtii kutaaleen pirojektii akkamitti akka wal qunnaman agarsiisu, weebiiwwan xiqqaa fi daawwannaa tarkaanfiin waliin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Daataa weebii",
+        "description": "URL paakeejii JSON weebiiwwanii (PRAW keessatti ijaarame, ecosystem-webs.json)."
+      },
+      {
+        "title": "Weebii",
+        "description": "ID weebii dura agarsiifamu; main weebii sirna-naannoo ti."
+      },
+      {
+        "title": "Taayilii filatame",
+        "description": "ID taayilii yeroo weebiin banamu filatamu."
+      },
+      {
+        "title": "Daawwannaa",
+        "description": "ID daawwannaa irraa jalqabamu."
+      },
+      {
+        "title": "Mul'ata tarreetiin jalqabi",
+        "description": "Weebicha fakkii mannaa akka tarreewwan wal keessa jiraniitti agarsiisi."
+      },
+      {
+        "title": "Fakkii qofa",
+        "description": "Fakkii qofa, akka fakkiitti agarsiisi: mata-duree, daawwannaa, bal'ina ykn barruu tarkaanfii malee."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Kan dubbifamu",
+        "description": "Taayilii hunda safartuu tokkoon dubbifamee jalqabi.",
+        "options": {
+          "": "Walqunnamtii qofa",
+          "fresh": "Haaraa ta'uu",
+          "bus": "Bus factor",
+          "impact": "Dhiibbaa",
+          "evidence": "Ragaa",
+          "parity": "Walqixxummaa"
+        }
+      }
+    ]
+  }
+}

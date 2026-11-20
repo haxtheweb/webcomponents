@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Macchina da scrive",
     "description": "Testu chì si scrive da per ellu un caratteru à a volta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Testu",
+        "description": "U testu à scrive appena l'elementu entre in vista."
+      },
+      {
+        "title": "Scrittura",
+        "description": "Mustrà u cursore chì lampighja; l'elementu u definisce mentre ch'ellu scrive."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ritardu",
+        "description": "Millisecondi d'aspettà nanzu chì a scrittura principii."
+      },
+      {
+        "title": "Durata di u cursore",
+        "description": "Millisecondi durante i quali u cursore cuntinueghja à lampighjà dopu chì u testu hè scrittu."
+      },
+      {
+        "title": "Velocità",
+        "description": "Millisecondi per caratteru; i numeri più bassi scrivenu più prestu."
+      }
+    ]
   }
 }

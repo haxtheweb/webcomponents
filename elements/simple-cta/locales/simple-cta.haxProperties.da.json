@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Skjul ikon",
         "description": "Skjul ikonet, der bruges til at fremhæve teksten"
+      },
+      {
+        "title": "Udseende",
+        "description": "Hvor meget vægt knappen har.",
+        "options": {
+          "": "Udfyldt",
+          "tonal": "Tonet",
+          "outlined": "Omrids",
+          "plain": "Enkel"
+        }
+      },
+      {
+        "title": "Størrelse",
+        "description": "Knapstørrelse.",
+        "options": {
+          "s": "Lille",
+          "": "Mellem",
+          "l": "Stor"
+        }
       }
     ],
     "advanced": [

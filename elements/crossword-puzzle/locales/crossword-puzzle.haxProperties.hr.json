@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Križaljka",
+    "description": "Križaljka izrađena iz popisa riječi i pojmova. Mreža se izrađuje automatski; polaznici upisuju riječi i provjeravaju ih."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Naslov",
+        "description": "Naslov ili pitanje prikazano iznad križaljke."
+      },
+      {
+        "title": "Riječi",
+        "description": "Svaka riječ i njezin pojam. Mreža se izrađuje iz ovog popisa: najdulja riječ postavlja se prva, a ostale je križaju na zajedničkim slovima."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Pokušaji",
+        "description": "Koliko puta polaznik može provjeriti. 0 znači neograničeno."
+      },
+      {
+        "title": "Naglasna boja",
+        "description": "Neobavezna boja za oznaku u zaglavlju, aktivnu riječ i gumbe za radnje."
+      },
+      {
+        "title": "Sklopivo",
+        "description": "Prikaži ovu križaljku kao redak koji se otvara i zatvara. Otvaranje jednog zatvara ostala sklopiva pitanja pokraj njega."
+      },
+      {
+        "title": "Počni sklopljeno",
+        "description": "Kad je sklopivo, počni kao zatvoreni redak koji prikazuje samo naslov i njegov status."
+      },
+      {
+        "title": "Format ocjenjivanja",
+        "description": "OER Schema: format ocjenjivanja za ovu provjeru (npr. bodovi, slovo, postotak, dovršenost)."
+      },
+      {
+        "title": "Ishod učenja",
+        "description": "OER Schema: ishod učenja povezan s ovom provjerom."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Naziv kviza",
+        "description": "Naziv kviza koji se koristi za xAPI identifikaciju u analitičkim sustavima."
+      },
+      {
+        "title": "Tečaj",
+        "description": "OER Schema: tečaj kojemu je ova provjera namijenjena."
+      }
+    ]
+  }
+}

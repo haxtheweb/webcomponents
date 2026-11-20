@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Rekkenoefening",
+    "description": "In koarte rige generearre rekkensommen mei direkte weromkeppeling. Kies de bewurkings en it getalberik; elke rige is nij."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Namme fan dizze oefening, toand yn de koptekst."
+      },
+      {
+        "title": "Bewurkings",
+        "description": "Hokker soarten sommen frege wurde. Learlingen kinne elk hjirfan útsette foardat se begjinne.",
+        "options": {
+          "add": "Optellen",
+          "subtract": "Ôflûken",
+          "multiply": "Fermannichfâldigjen",
+          "divide": "Diele",
+          "add subtract": "Optellen en ôflûken",
+          "multiply divide": "Fermannichfâldigjen en diele",
+          "add multiply": "Optellen en fermannichfâldigjen",
+          "add divide": "Optellen en diele",
+          "subtract multiply": "Ôflûken en fermannichfâldigjen",
+          "subtract divide": "Ôflûken en diele",
+          "add subtract multiply": "Optellen, ôflûken en fermannichfâldigjen",
+          "add subtract divide": "Optellen, ôflûken en diele",
+          "add multiply divide": "Optellen, fermannichfâldigjen en diele",
+          "subtract multiply divide": "Ôflûken, fermannichfâldigjen en diele",
+          "add subtract multiply divide": "Alle fjouwer"
+        }
+      },
+      {
+        "title": "Lytste getal",
+        "description": "It lytste getal dat yn in som brûkt wurdt. Hiele getallen, 0 of mear."
+      },
+      {
+        "title": "Grutste getal",
+        "description": "It grutste getal dat yn in som brûkt wurdt. Utkomsten en dielers fan dielsommen bliuwe ek yn dit berik."
+      },
+      {
+        "title": "Oantal sommen",
+        "description": "Hoefolle sommen yn ien rige sitte (1 oant 100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tiidlimyt",
+        "description": "Sekonden tastien foar in hiele rige. 0 betsjut gjin timer, wat de standert is: oefeningen op tiid litte learlingen dy't mear tiid nedich hawwe tekoart kommen. As it ynsteld is, kinne learlingen de timer foar harsels noch altyd útsette."
+      },
+      {
+        "title": "Aksintkleur",
+        "description": "Kleur fan it kopteksttsjip en de knoppen. Lit leech om it tema te folgjen."
+      }
+    ]
+  }
+}

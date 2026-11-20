@@ -60,6 +60,8 @@
   "flagsFound": "Achọtara {correct} n'ime {total}",
   "toRethink": "{count} ka a ga-atụgharị uche na ya",
   "notEvidence": "ọ bụghị ihe akaebe maka ọkọlọtọ a",
+  "isEvidence": "ihe akaebe maka nkọ a",
+  "readingKeys": "Jiri igodo akụ si n'otu {unit} gaa na nke ọzọ.",
   "markAnswers": "Kaa azịza",
   "doneMarking": "Emechaala ịka azịza",
   "editHint": "Dezie ihe a na-agụ n'okpuru. Jiri Kaa azịza na menu ngọngọ ka ịhọrọ ebe ọkọlọtọ ọ bụla kwesịrị.",

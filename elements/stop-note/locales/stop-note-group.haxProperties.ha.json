@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Rukunin Stop Note",
+    "description": "Tara stop notes da yawa cikin tubali ɗaya da ke nuna bayani ɗaya a lokaci guda, kamar Shawarwari ko Abin da ke sabo. Ana iya tara katunan umarni, bayanan gefe da ƙaulin mai firam tare da su."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Lakabi",
+        "description": "Sunan rukunin da masu karanta allo ke sanarwa, kamar Shawarwari ko Abin da ke sabo."
+      },
+      {
+        "title": "Bayanai",
+        "description": "Stop notes a cikin rukunin. Ana iya ƙara katunan umarni, bayanan gefe da ƙaulin mai firam ma."
+      }
+    ]
+  }
+}

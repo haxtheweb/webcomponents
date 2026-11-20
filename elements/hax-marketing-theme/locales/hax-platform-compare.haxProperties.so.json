@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Isbarbardhigga madallada",
+    "description": "Madax ilaa madax: dooro labo madal oo kasta oo ka mid ah fayl xog"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Xogta isbarbardhigga (JSON)"
+      },
+      {
+        "title": "ID-ga madasha bidix"
+      },
+      {
+        "title": "ID-ga madasha midig"
+      }
+    ]
+  }
+}

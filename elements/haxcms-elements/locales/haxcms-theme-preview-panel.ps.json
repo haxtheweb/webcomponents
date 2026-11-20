@@ -8,5 +8,9 @@
   "theme": "تیم",
   "palette": "د رنګونو ټولګه",
   "cancel": "لغوه کول",
-  "openAppearanceSettings": "د بڼې تنظیمات پرانیزئ"
+  "openAppearanceSettings": "د بڼې تنظیمات پرانیزئ",
+  "designSystem": "د ډیزاین سیسټم",
+  "designSystemDefault": "DDD (ډیفالټ)",
+  "designSystemThemeDefault": "{name} (د تیم ډیفالټ)",
+  "designSystemHelp": "رنګ، لیکبڼه، کونجونه او ګڼوالی. تیم لا هم ترتیب ټاکي."
 }

@@ -1,0 +1,16 @@
+{
+  "drawing": "그림",
+  "edit": "그림 편집",
+  "start": "그리기 시작",
+  "remove": "그림 삭제",
+  "empty": "아직 그린 것이 없습니다",
+  "save": "저장",
+  "cancel": "취소",
+  "close": "닫기",
+  "discard": "변경 사항 버리기",
+  "discardConfirm": "저장하지 않은 변경 사항을 버릴까요?",
+  "keepEditing": "계속 편집",
+  "draw": "그림",
+  "feedback": "피드백",
+  "signature": "서명"
+}

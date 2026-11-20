@@ -2,5 +2,9 @@
   "toggleAnimation": "Įjungti / išjungti animaciją",
   "info": "info",
   "image": "Vaizdas",
-  "animatedGif": "Animuotas GIF"
+  "animatedGif": "Animuotas GIF",
+  "playAnimation": "Paleisti animaciją",
+  "pauseAnimation": "Pristabdyti animaciją",
+  "showDescription": "Rodyti aprašymą",
+  "hideDescription": "Slėpti aprašymą"
 }

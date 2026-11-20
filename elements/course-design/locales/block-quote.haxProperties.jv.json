@@ -20,6 +20,12 @@
         "title": "Gambar",
         "description": "Gambar sing katon karo kutipan."
       }
+    ],
+    "advanced": [
+      {
+        "title": "Dibingkai",
+        "description": "Gambar kutipan ing bingkai blok bebarengan, karo lambang lan label ing ndhuwure, supaya cocog karo cathetan lan kertu instruksi."
+      }
     ]
   }
 }

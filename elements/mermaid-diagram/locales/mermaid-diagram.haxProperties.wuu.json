@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "文字生成图表",
+    "description": "用文字写图表（Mermaid）：流程图、时序图、时间线等等。伊会辣页面里画出来，带文字替代。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "标题",
+        "description": "显示辣图表上头，当伊个名字用。"
+      },
+      {
+        "title": "图表源码",
+        "description": "Mermaid 文字，比方：flowchart TD，然后每行一个连接，像 A[Draft] --> B{Ready?}。辣箭头后头加 |label| 拨伊加标签。打字个辰光图会跟牢更新。"
+      },
+      {
+        "title": "文字替代",
+        "description": "为看勿见个人描述图表显示个是啥。流程图上空辣海，就会帮侬列出伊个步骤。"
+      },
+      {
+        "title": "说明文字",
+        "description": "图表下头显示个可选说明文字。"
+      },
+      {
+        "title": "显示源码",
+        "description": "辣图画旁边显示图表文字。"
+      },
+      {
+        "title": "显示文字替代",
+        "description": "辣图画下头显示文字替代。屏幕阅读器总归读得到。"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "源文件",
+        "description": "代替上头文字来画个 .mmd 文件地址（https 或者迭个网站上个路径）。"
+      },
+      {
+        "title": "强调色",
+        "description": "标题里图标标签个颜色。"
+      }
+    ]
+  }
+}

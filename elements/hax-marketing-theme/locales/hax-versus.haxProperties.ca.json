@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Contra",
+    "description": "Text al costat d'un botó cara a cara amb dos personatges"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Encapçalament"
+      },
+      {
+        "title": "On porta el botó"
+      },
+      {
+        "title": "Text del botó"
+      },
+      {
+        "title": "Llavor del personatge esquerre"
+      },
+      {
+        "title": "Llavor del personatge dret"
+      }
+    ]
+  }
+}

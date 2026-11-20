@@ -4,7 +4,12 @@
     "description": "Idoqq kontenut interattiv H5P minn fajl .h5p mgħoddi, mingħajr bżonn ta' server H5P"
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "title": "Fajl H5P",
+        "description": "Tella' jew orbot fajl .h5p. Jinfetaħ fil-browser; l-ebda server H5P mhu meħtieġ."
+      }
+    ],
     "advanced": [
       {
         "title": "Kodiċi tal-embed iframe antik",

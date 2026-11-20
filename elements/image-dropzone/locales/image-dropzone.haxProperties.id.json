@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Zona lepas gambar",
+    "description": "Pelajar menempatkan label pada zona yang dilapiskan di atas gambar, lalu memeriksa jawabannya."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Gambar",
+        "description": "Gambar tempat pelajar menempatkan label."
+      },
+      {
+        "title": "Teks alternatif",
+        "description": "Menjelaskan gambar untuk orang yang tidak dapat melihatnya. Jangan bocorkan letak label."
+      },
+      {
+        "title": "Judul gambar",
+        "description": "Judul singkat yang terlihat untuk gambar, ditampilkan di atasnya."
+      },
+      {
+        "title": "Pertanyaan",
+        "description": "Apa yang diminta untuk dilakukan pelajar dengan label."
+      },
+      {
+        "title": "Label dan zona",
+        "description": "Setiap item adalah label yang dapat ditempatkan pelajar. Beri label nama zona untuk menempatkan zonanya pada gambar; label tanpa nama zona adalah tambahan yang tidak termasuk di mana pun. Angka zona adalah persentase gambar."
+      },
+      {
+        "title": "Keterangan",
+        "description": "Keterangan opsional yang ditampilkan di bawah gambar."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Percobaan",
+        "description": "Berapa kali pelajar dapat memeriksa. 0 berarti tidak terbatas."
+      },
+      {
+        "title": "Acak label",
+        "description": "Tampilkan label dalam urutan berbeda setiap kunjungan."
+      },
+      {
+        "title": "Dapat diciutkan",
+        "description": "Tampilkan pertanyaan ini sebagai baris yang dapat dibuka dan ditutup. Membuka satu akan menutup pertanyaan lain yang dapat diciutkan di sebelahnya."
+      },
+      {
+        "title": "Mulai dalam keadaan tertutup",
+        "description": "Jika dapat diciutkan, mulai sebagai baris tertutup yang hanya menampilkan pertanyaan dan statusnya."
+      },
+      {
+        "title": "Format penilaian",
+        "description": "OER Schema: format penilaian untuk asesmen ini (mis. poin, huruf, persen, penyelesaian)."
+      },
+      {
+        "title": "Tujuan pembelajaran",
+        "description": "OER Schema: tujuan pembelajaran yang terkait dengan asesmen ini."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Nama kuis",
+        "description": "Nama kuis yang digunakan untuk identifikasi xAPI dalam sistem analitik."
+      },
+      {
+        "title": "Kursus",
+        "description": "OER Schema: kursus yang dituju oleh asesmen ini."
+      }
+    ]
+  }
+}

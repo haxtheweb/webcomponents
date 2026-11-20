@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Funksjonsrad",
+    "description": "En skjerm fra produktet ved siden av hva det betyr for deg"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Liten etikett"
+      },
+      {
+        "title": "Overskrift"
+      },
+      {
+        "title": "Bilde"
+      },
+      {
+        "title": "Hva bildet viser"
+      },
+      {
+        "title": "Bilde til høyre"
+      },
+      {
+        "title": "Skyggefarge (DDD-navn, tomt følger paletten)"
+      }
+    ]
+  }
+}

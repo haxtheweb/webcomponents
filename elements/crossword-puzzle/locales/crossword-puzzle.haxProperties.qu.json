@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Chimpanakuq simikuna",
+    "description": "Simikunap yanapaykunap listanmanta rurasqa chimpanakuq simikuna. Mallaqa qampaq paqarichisqa; yachaqaqkunaqa simikunata qillqanku, qhawankutaq."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Suti",
+        "description": "Chimpanakuq simikunap hanaqninpi rikuchisqa suti utaq tapuy."
+      },
+      {
+        "title": "Simikuna",
+        "description": "Sapa simi yanapayninwan. Mallaqa kay listamanta paqarichisqa: aswan suni simim ñawpaqta churakun, hukkunataq rakinakusqa siq'ikunapi chimpanku."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ruraykuykuna",
+        "description": "Huk yachaqaq hayk'a kutitam qhawanman. 0 niyta munan mana saywayuq."
+      },
+      {
+        "title": "Sapaqchay llimp'i",
+        "description": "Uma siq'i chip, kuyuq simi, ruray ñit'inakunapaq munaspa churana llimp'i."
+      },
+      {
+        "title": "K'uyunalla",
+        "description": "Kay chimpanakuq simikunata kichakuq wichq'akuq siq'i hina rikuchiy. Hukta kichayqa waqtanpi kaq huk k'uyunalla tapuykunata wichq'an."
+      },
+      {
+        "title": "K'uyusqa qallariy",
+        "description": "K'uyunalla kaptinqa, sutillanta kaqnintawan rikuchiq wichq'asqa siq'i hina qallariy."
+      },
+      {
+        "title": "Chaninchay laya",
+        "description": "OER Schema: kay chaninchaypa chaninchay layan (kayhina puntokuna, siq'i, porcentaje, tukuchay)."
+      },
+      {
+        "title": "Yachay munay",
+        "description": "OER Schema: kay chaninchaywan t'inkisqa yachay munay."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Tapukuyp sutin",
+        "description": "Análisis sistemakunapi xAPI riqsinapaq llamk'achisqa tapukuy suti."
+      },
+      {
+        "title": "Yachaqay",
+        "description": "OER Schema: kay chaninchay maymanchus rinan yachaqay."
+      }
+    ]
+  }
+}

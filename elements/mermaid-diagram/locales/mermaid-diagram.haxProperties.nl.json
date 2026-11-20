@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Diagram uit tekst",
+    "description": "Schrijf een diagram als tekst (Mermaid): een stroomdiagram, sequentie, tijdlijn en meer. Het wordt op de pagina getekend met een tekstalternatief."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Getoond boven het diagram en gebruikt als naam."
+      },
+      {
+        "title": "Diagrambron",
+        "description": "Mermaid-tekst, bijvoorbeeld: flowchart TD, dan één regel per verbinding zoals A[Draft] --> B{Ready?}. Zet |label| na een pijl om die te labelen. De tekening wordt bijgewerkt terwijl je typt."
+      },
+      {
+        "title": "Tekstalternatief",
+        "description": "Beschrijf wat het diagram toont voor mensen die het niet kunnen zien. Laat leeg bij een stroomdiagram om de stappen voor je te laten opsommen."
+      },
+      {
+        "title": "Bijschrift",
+        "description": "Optioneel bijschrift onder het diagram."
+      },
+      {
+        "title": "De bron tonen",
+        "description": "De diagramtekst naast de tekening tonen."
+      },
+      {
+        "title": "Het tekstalternatief tonen",
+        "description": "Toon het tekstalternatief onder de tekening. Het is altijd beschikbaar voor schermlezers."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Bronbestand",
+        "description": "Adres van een .mmd-bestand om te tekenen in plaats van de tekst hierboven (https of een pad op deze site)."
+      },
+      {
+        "title": "Accentkleur",
+        "description": "Kleur van de pictogramchip in de kop."
+      }
+    ]
+  }
+}

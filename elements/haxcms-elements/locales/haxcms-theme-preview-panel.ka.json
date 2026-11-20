@@ -8,5 +8,9 @@
   "theme": "თემა",
   "palette": "პალიტრა",
   "cancel": "გაუქმება",
-  "openAppearanceSettings": "იერსახის პარამეტრების გახსნა"
+  "openAppearanceSettings": "იერსახის პარამეტრების გახსნა",
+  "designSystem": "დიზაინ-სისტემა",
+  "designSystemDefault": "DDD (ნაგულისხმევი)",
+  "designSystemThemeDefault": "{name} (თემის ნაგულისხმევი)",
+  "designSystemHelp": "ფერი, შრიფტი, კუთხეები და სიმჭიდროვე. განლაგებას კვლავ თემა წყვეტს."
 }

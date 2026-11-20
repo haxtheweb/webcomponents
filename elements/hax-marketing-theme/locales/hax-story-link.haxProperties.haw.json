@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Pihi moʻolelo",
+    "description": "Ke pihi e wehe ana i ka moʻolelo ma hope o kekahi ʻōlelo ma hax.cloud, a i ʻole ka wahi kūlike ma kekahi kahua pūnaewele HAX ʻē aʻe"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ma hea e hele ai",
+        "options": {
+          "cloud": "hax.cloud, ka moʻolelo",
+          "learn": "learn.hax.cloud, he haʻawina",
+          "try": "browser.hax.cloud, hoʻāʻo",
+          "elements": "webcomponents.hax.cloud, he poloka",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Helu wahi ma kēlā kahua (ua like ka moʻolelo ma hax.cloud me stories/ee450a19)"
+      },
+      {
+        "title": "He aha kona kumuhana"
+      },
+      {
+        "title": "ʻĀpana liʻiliʻi"
+      },
+      {
+        "title": "Hōʻike i kona kumuhana ma ke pihi"
+      }
+    ]
+  }
+}

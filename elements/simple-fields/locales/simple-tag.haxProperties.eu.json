@@ -14,6 +14,17 @@
         "property": "autoAccentColor",
         "title": "Nabarmentze kolore automatikoa",
         "description": "Atera nabarmentze kolorea etiketaren testutik automatikoki."
+      },
+      {
+        "title": "Esanahia",
+        "description": "Eman etiketari esanahi-kolore bat. Utzi hutsik etiketa neutro baterako.",
+        "options": {
+          "": "Neutroa",
+          "brand": "Marka",
+          "success": "Arrakasta",
+          "warning": "Abisua",
+          "danger": "Arriskua"
+        }
       }
     ],
     "advanced": [

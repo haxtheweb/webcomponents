@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Erabilera-kasuen hautatzailea",
+    "description": "Aukeratu gune bat zertarako den eta lortu HAX arakatzailean hasierako gune horrekin irekitzen duen esteka bat, gehi dagokion CLI komandoa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "HAX arakatzailean helbidea",
+        "description": "Non irekitzen den esteka; ?skeleton= eta &name= gehitzen zaizkio"
+      },
+      {
+        "title": "Kanpoan utzi beharreko hasierako guneak",
+        "description": "Makina-izenak, komaz bereizita"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Hasierako guneen zerrenda",
+        "description": "Eskeleto-zerrendaren helbidea (app-hax-ek irakurtzen duen formatua)"
+      }
+    ]
+  }
+}

@@ -3,5 +3,7 @@
   "status_stop": "停止",
   "status_warning": "警告",
   "status_success": "成功",
-  "status_info": "メモ"
+  "status_info": "メモ",
+  "status_tip": "ご存じですか？",
+  "status_new": "新着情報"
 }

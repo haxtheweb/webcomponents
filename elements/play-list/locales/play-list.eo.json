@@ -9,5 +9,7 @@
   "slidePages": "Lumbildaj paĝoj",
   "goToSlide": "Iri al lumbildo {number}",
   "slides": "Lumbildoj",
-  "position": "{number} el {total}"
+  "position": "{number} el {total}",
+  "fullScreen": "Plenekrane",
+  "exitFullScreen": "Eliri el plenekrana reĝimo"
 }

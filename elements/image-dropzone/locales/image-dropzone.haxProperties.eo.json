@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Bilda demetejo",
+    "description": "Lernantoj metas etikedojn sur zonojn super bildo, poste kontrolas sian respondon."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Bildo",
+        "description": "La bildo, sur kiun lernantoj metas etikedojn."
+      },
+      {
+        "title": "Alternativa teksto",
+        "description": "Priskribas la bildon por homoj, kiuj ne povas vidi ĝin. Ne malkaŝu, kien la etikedoj iras."
+      },
+      {
+        "title": "Bilda titolo",
+        "description": "Mallonga videbla titolo por la bildo, montrata super ĝi."
+      },
+      {
+        "title": "Demando",
+        "description": "Kion lernantoj devas fari per la etikedoj."
+      },
+      {
+        "title": "Etikedoj kaj zonoj",
+        "description": "Ĉiu ero estas etikedo, kiun lernantoj povas meti. Donu al etikedo zonan nomon por meti ĝian zonon sur la bildon; etikedo sen zona nomo estas kroma, kiu apartenas nenien. Zonaj nombroj estas procentoj de la bildo."
+      },
+      {
+        "title": "Bildoteksto",
+        "description": "Nedeviga bildoteksto montrata sub la bildo."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Provoj",
+        "description": "Kiom da fojoj lernanto povas kontroli. 0 signifas senlime."
+      },
+      {
+        "title": "Miksi etikedojn",
+        "description": "Montri la etikedojn en malsama ordo ĉe ĉiu vizito."
+      },
+      {
+        "title": "Faldebla",
+        "description": "Montri ĉi tiun demandon kiel vicon, kiu malfermiĝas kaj fermiĝas. Malfermi unu fermas la aliajn faldeblajn demandojn apud ĝi."
+      },
+      {
+        "title": "Komenci faldita",
+        "description": "Se faldebla, komenci kiel fermita vico, kiu montras nur la demandon kaj ĝian staton."
+      },
+      {
+        "title": "Taksada formato",
+        "description": "OER Schema: taksada formato por ĉi tiu takso (ekz. poentoj, litero, procento, kompletigo)."
+      },
+      {
+        "title": "Lerncelo",
+        "description": "OER Schema: lerncelo asociita kun ĉi tiu takso."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Nomo de la kvizo",
+        "description": "Nomo de la kvizo uzata por xAPI-identigo en analizaj sistemoj."
+      },
+      {
+        "title": "Kurso",
+        "description": "OER Schema: kurso, por kiu ĉi tiu takso estas celita."
+      }
+    ]
+  }
+}

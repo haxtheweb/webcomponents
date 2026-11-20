@@ -20,6 +20,12 @@
         "title": "Obrázek",
         "description": "Obrázek zobrazený s citací."
       }
+    ],
+    "advanced": [
+      {
+        "title": "V rámečku",
+        "description": "Vykreslit citaci ve sdíleném rámečku bloku s ikonou a popiskem nad ní, aby odpovídala poznámkám a instrukčním kartám."
+      }
     ]
   }
 }

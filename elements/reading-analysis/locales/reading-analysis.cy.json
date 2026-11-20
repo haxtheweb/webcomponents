@@ -60,6 +60,8 @@
   "flagsFound": "{correct} o {total} wedi'u canfod",
   "toRethink": "{count} i'w hailystyried",
   "notEvidence": "nid yw'n dystiolaeth ar gyfer y faner hon",
+  "isEvidence": "tystiolaeth ar gyfer y faner hon",
+  "readingKeys": "Defnyddiwch y bysellau saeth i symud o un {unit} i'r nesaf.",
   "markAnswers": "Marcio atebion",
   "doneMarking": "Wedi gorffen marcio atebion",
   "editHint": "Golygwch y darn isod. Defnyddiwch Marcio atebion yn newislen y bloc i ddewis ble mae pob baner yn perthyn.",

@@ -2,5 +2,9 @@
   "answerInCorrectOrder": "Impendulo ikulandelelwano oluchanekileyo",
   "answerInIncorrectOrder": "Impendulo ikulandelelwano olungachanekanga",
   "moveOptionUp": "Khetha ukuze unyuse ukhetho kulandelelwano",
-  "moveOptionDown": "Khetha ukuze uhlise ukhetho kulandelelwano"
+  "moveOptionDown": "Khetha ukuze uhlise ukhetho kulandelelwano",
+  "moveEarlier": "Hambisa ngaphambili",
+  "moveLater": "Hambisa ngasemva",
+  "correct": "Ichanekile",
+  "incorrect": "Ayichanekanga"
 }

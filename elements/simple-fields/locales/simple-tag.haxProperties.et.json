@@ -14,6 +14,17 @@
         "property": "autoAccentColor",
         "title": "Automaatne rõhuvärv",
         "description": "Tuleta rõhuvärv automaatselt sildi tekstist."
+      },
+      {
+        "title": "Tähendus",
+        "description": "Anna sildile tähendusega värv. Neutraalse sildi jaoks jäta tühjaks.",
+        "options": {
+          "": "Neutraalne",
+          "brand": "Bränd",
+          "success": "Õnnestumine",
+          "warning": "Hoiatus",
+          "danger": "Oht"
+        }
       }
     ],
     "advanced": [

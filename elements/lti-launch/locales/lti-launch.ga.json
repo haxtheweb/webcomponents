@@ -1,0 +1,19 @@
+{
+  "label": "Uirlis sheachtrach",
+  "labelLti": "Uirlis sheachtrach · LTI 1.3",
+  "theTool": "an uirlis",
+  "directions": "Treoracha",
+  "showDirections": "Taispeáin treoracha",
+  "hideDirections": "Folaigh treoracha",
+  "directionsWindow": "Osclaíonn an cnaipe fuinneog nua leis an uirlis inti.",
+  "directionsEmbed": "Osclaíonn an cnaipe an uirlis ar an leathanach seo. Mura luchtaíonn sí, oscail i bhfuinneog nua í ina ionad.",
+  "directionsLti": "Síníonn an suíomh seo isteach thú san uirlis, mar sin níl cuntas ar leith de dhíth ort.",
+  "openWindow": "Oscail {title} (fuinneog nua)",
+  "openEmbed": "Oscail {title}",
+  "openInstead": "Oscail i bhfuinneog nua ina ionad",
+  "frameTitle": "{title} (uirlis sheachtrach)",
+  "openedWindow": "Osclaíodh fuinneog nua leis an uirlis.",
+  "openedEmbed": "Osclaíodh an uirlis ar an leathanach seo.",
+  "needsUrl": "Teastaíonn seoladh seolta ón mbloc seo a thosaíonn le http:// nó https://.",
+  "needsSignIn": "Teastaíonn seirbhís síniú isteach an tsuímh seo ón uirlis seo, agus níl sí ar fáil anseo. Níor osclaíodh aon rud."
+}

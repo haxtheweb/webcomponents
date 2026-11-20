@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Skýringarmynd úr texta",
+    "description": "Skrifaðu skýringarmynd sem texta (Mermaid): flæðirit, runu, tímalínu og fleira. Hún er teiknuð á síðunni með textavalkosti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titill",
+        "description": "Sýnt fyrir ofan skýringarmyndina og notað sem heiti hennar."
+      },
+      {
+        "title": "Frumtexti skýringarmyndar",
+        "description": "Mermaid-texti, til dæmis: flowchart TD, síðan ein lína fyrir hverja tengingu eins og A[Draft] --> B{Ready?}. Bættu |label| við á eftir ör til að merkja hana. Teikningin uppfærist meðan þú skrifar."
+      },
+      {
+        "title": "Textavalkostur",
+        "description": "Lýstu því sem skýringarmyndin sýnir fyrir fólk sem sér hana ekki. Skildu eftir autt á flæðiriti til að fá skrefin talin upp fyrir þig."
+      },
+      {
+        "title": "Myndatexti",
+        "description": "Valfrjáls myndatexti sýndur undir skýringarmyndinni."
+      },
+      {
+        "title": "Sýna frumtextann",
+        "description": "Sýna texta skýringarmyndarinnar við hlið teikningarinnar."
+      },
+      {
+        "title": "Sýna textavalkostinn",
+        "description": "Sýna textavalkostinn undir teikningunni. Hann er alltaf aðgengilegur skjálesurum."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Frumskrá",
+        "description": "Slóð .mmd-skrár til að teikna í stað textans hér að ofan (https eða slóð á þessum vef)."
+      },
+      {
+        "title": "Áherslulitur",
+        "description": "Litur táknflögunnar í hausnum."
+      }
+    ]
+  }
+}

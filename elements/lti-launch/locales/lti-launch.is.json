@@ -1,0 +1,19 @@
+{
+  "label": "Ytra verkfæri",
+  "labelLti": "Ytra verkfæri · LTI 1.3",
+  "theTool": "verkfærið",
+  "directions": "Leiðbeiningar",
+  "showDirections": "Sýna leiðbeiningar",
+  "hideDirections": "Fela leiðbeiningar",
+  "directionsWindow": "Hnappurinn opnar nýjan glugga með verkfærinu.",
+  "directionsEmbed": "Hnappurinn opnar verkfærið á þessari síðu. Ef það hleðst ekki, opnaðu það frekar í nýjum glugga.",
+  "directionsLti": "Þessi vefur skráir þig inn í verkfærið, svo þú þarft ekki sérstakan aðgang.",
+  "openWindow": "Opna {title} (nýr gluggi)",
+  "openEmbed": "Opna {title}",
+  "openInstead": "Opna frekar í nýjum glugga",
+  "frameTitle": "{title} (ytra verkfæri)",
+  "openedWindow": "Nýr gluggi opnaðist með verkfærinu.",
+  "openedEmbed": "Verkfærið opnaðist á þessari síðu.",
+  "needsUrl": "Þessi kubbur þarf ræsislóð sem byrjar á http:// eða https://.",
+  "needsSignIn": "Þetta verkfæri þarf innskráningarþjónustu þessa vefs, sem er ekki tiltæk hér. Ekkert var opnað."
+}

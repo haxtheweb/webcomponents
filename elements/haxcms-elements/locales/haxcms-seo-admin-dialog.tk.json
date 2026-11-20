@@ -6,6 +6,8 @@
   "faviconDescription": "Brauzer goýmasynyň suraty / telefonlarda saýtyň kiçi logotipi hökmünde ulanylýar",
   "domain": "Domen",
   "domainDescription": "Bu web saýtyň domeni",
+  "sameAs": "Bu saýtyň beýleki profilleri",
+  "sameAsDescription": "Her setirde bir baglanyşyk: bu saýtyň ýa-da guramanyň başga ýerdäki profillerine (GitHub, LinkedIn, YouTube, Mastodon). Gözleg ulgamlary şol profilleri bu saýt bilen baglanyşdyrmak üçin olary ulanýar.",
   "language": "Dil",
   "languageDescription": "Bu saýtyň dili. Ady ýa-da kody boýunça gözläň, ýa-da fr-CA ýaly başga kod giriziň.",
   "googleAnalyticsId": "Google Analytics ID",

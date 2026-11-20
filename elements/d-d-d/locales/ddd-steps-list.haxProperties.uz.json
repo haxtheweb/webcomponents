@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Qadamlar roʻyxati",
     "description": "Vazifani bajarish uchun raqamlangan qadamlar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Bosqich ko‘rsatkichi",
+        "description": "Bosqichlarni yutuqni belgilaydigan ixcham sarlavhalar qatori sifatida ko‘rsatish. Bu maketda bosqich kontenti ko‘rsatilmaydi."
+      },
+      {
+        "title": "Joriy bosqich",
+        "description": "O‘quvchi turgan bosqich, 1 dan sanaladi. Oldingi bosqichlar bajarilgan sifatida ko‘rsatiladi. Bosqich ko‘rsatkichi tomonidan ishlatiladi."
+      }
+    ]
   }
 }

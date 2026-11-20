@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "כותרת"
+        "title": "כותרת",
+        "description": "כותרת שמוצגת מעל מודל הקורס."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "כתובת קובץ המודל התלת־ממדי (‎.glb או ‎.gltf) להצגה."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "תארו את המודל התלת־ממדי עבור אנשים שלא יכולים לראות אותו."
       },
       {
         "title": "אזור מידע"

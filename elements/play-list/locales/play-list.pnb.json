@@ -9,5 +9,7 @@
   "slidePages": "سلائیڈ صفحے",
   "goToSlide": "سلائیڈ {number} تے جاؤ",
   "slides": "سلائیڈز",
-  "position": "{total} وچوں {number}"
+  "position": "{total} وچوں {number}",
+  "fullScreen": "پوری سکرین",
+  "exitFullScreen": "پوری سکرین توں باہر جاؤ"
 }

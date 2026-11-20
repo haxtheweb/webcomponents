@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Statistik",
+    "description": "Angka yang menghitung naik, dengan label dan tautan ke ceritanya"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Angka tujuan hitungan"
+      },
+      {
+        "title": "Sebelum angka"
+      },
+      {
+        "title": "Setelah angka"
+      },
+      {
+        "title": "Kata-kata alih-alih angka"
+      },
+      {
+        "title": "Apa yang dihitung"
+      },
+      {
+        "title": "Alamat cerita di hax.cloud (stories/ee450a19)"
+      }
+    ]
+  }
+}

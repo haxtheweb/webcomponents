@@ -1,0 +1,22 @@
+{
+  "scenario": "Ọnọdụ",
+  "directions": "Ntụziaka",
+  "showDirections": "Gosi ntụziaka",
+  "hideDirections": "Zoo ntụziaka",
+  "directionsRead": "Gụọ ihe nkiri ọ bụla ma họrọ ihe ị ga-eme.",
+  "directionsEndings": "E nwere ọtụtụ njedebe. Nwaa ụzọ ọzọ mgbe ị mechara.",
+  "startOver": "Malite ọzọ",
+  "back": "Laghachi otu nzọụkwụ",
+  "tryAnother": "Nwaa ụzọ ọzọ",
+  "path": "Ụzọ",
+  "scene": "Ihe nkiri",
+  "ending": "Njedebe",
+  "end": "njedebe",
+  "scenesSeen": "Ahụla ihe nkiri {seen} n'ime {total}",
+  "endingReached": "Eruola njedebe",
+  "addScene": "Tinye ihe nkiri",
+  "newScene": "Ihe nkiri ọhụrụ",
+  "newSceneText": "Kọwaa ihe na-eme, wee jikọọ nhọrọ ọ bụla na ihe nkiri.",
+  "editingNote": "Na-edezi: a na-egosi ihe nkiri niile. Nhọrọ bụ njikọ na # sochiri id ihe nkiri.",
+  "noScenes": "Tinye ihe nkiri iji malite ọnọdụ a."
+}

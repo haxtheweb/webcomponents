@@ -2,5 +2,9 @@
   "toggleAnimation": "Baskuligi animacion",
   "info": "informoj",
   "image": "Bildo",
-  "animatedGif": "Animita GIF"
+  "animatedGif": "Animita GIF",
+  "playAnimation": "Ludi animacion",
+  "pauseAnimation": "Paŭzigi animacion",
+  "showDescription": "Montri priskribon",
+  "hideDescription": "Kaŝi priskribon"
 }

@@ -1,0 +1,8 @@
+{
+  "theme": "Teema",
+  "palette": "Paletti",
+  "themeDefault": "Teeman oletus",
+  "designSystem": "Suunnittelujärjestelmä",
+  "designSystemDefault": "DDD (oletus)",
+  "designSystemUnavailable": "Tämä teema säilyttää oman suunnittelujärjestelmänsä"
+}

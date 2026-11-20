@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Juego de memoria",
+    "description": "Da la vuelta a las cartas para encontrar parejas. Empareja un término con su significado para que acertar demuestre comprensión, o usa dos textos o imágenes que coincidan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Título",
+        "description": "La consigna que se muestra en la cabecera, por ejemplo: Relaciona el término con su función."
+      },
+      {
+        "title": "Parejas",
+        "description": "Cada pareja son dos cartas que van juntas, normalmente un término y su significado. Cada lado necesita texto, una imagen o ambos."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Color de acento",
+        "description": "Color opcional para la etiqueta de la cabecera, el reverso de las cartas y el botón."
+      }
+    ]
+  }
+}

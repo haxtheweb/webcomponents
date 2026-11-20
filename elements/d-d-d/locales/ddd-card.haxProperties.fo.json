@@ -52,6 +52,20 @@
           "_top": "Ovasta vindeyga - _top",
           "_parent": "Yvirskipað vindeyga - _parent"
         }
+      },
+      {
+        "title": "Eingin píll",
+        "description": "Fjal pílin á knøttinum."
+      },
+      {
+        "title": "Leinki: mál",
+        "description": "Hvar leinkið skal latast upp.",
+        "options": {
+          "": "Sama vindeyga",
+          "_blank": "Nýtt vindeyga - _blank",
+          "_top": "Ovasta vindeyga - _top",
+          "_parent": "Foreldravindeyga - _parent"
+        }
       }
     ],
     "developer": [

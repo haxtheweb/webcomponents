@@ -13,6 +13,14 @@
       {
         "property": "answers",
         "title": "Jogaplar",
+        "description": "Jogaplaryň tertibi dogry yzygiderligi kesgitleýär.",
+        "options": {
+          "": "Sanaw",
+          "cards": "Surat kartlary"
+        }
+      },
+      {
+        "title": "Jogaplar",
         "description": "Jogaplaryň tertibi dogry yzygiderligi kesgitleýär."
       }
     ],

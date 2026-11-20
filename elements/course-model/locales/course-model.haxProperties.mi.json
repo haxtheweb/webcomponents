@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "taitara"
+        "title": "taitara",
+        "description": "Te upoko ka whakaaturia i runga ake i te tauira akoranga."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "Te wāhitau o te kōnae tauira 3D (.glb, .gltf rānei) hei whakaatu."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "Whakaahuatia te tauira 3D mō te hunga kāore e kite."
       },
       {
         "title": "Wāhi mōhiohio"

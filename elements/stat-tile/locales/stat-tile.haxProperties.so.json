@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Tile tirakoob",
+    "description": "Hal tiro oo muhiim ah, leh calaamaddeeda iyo sida ay isu beddeshay. Dhowr ku dhig shabakad si aad u hesho saf dashboard."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Calaamad",
+        "description": "Waxa tiradu cabbirto."
+      },
+      {
+        "title": "Qiime",
+        "description": "Tirada. Tiro caadi ah waxaa loo kooxeeyaa luqadda bogga; wax kale sida loo qoray ayuu u muuqdaa."
+      },
+      {
+        "title": "Isbeddel",
+        "description": "Sida ay isu beddeshay, erayo ahaan, sida 6% xilligan."
+      },
+      {
+        "title": "Jihada",
+        "description": "Haddii isbeddelku kor yahay ama hoos.",
+        "options": {
+          "": "Midna",
+          "up": "Kor",
+          "down": "Hoos"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Qarşı-qarşıya",
+    "description": "İki personajlı üz-üzə düymənin yanındakı sözlər"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Başlıq"
+      },
+      {
+        "title": "Düymənin apardığı yer"
+      },
+      {
+        "title": "Düymə mətni"
+      },
+      {
+        "title": "Sol personaj toxumu"
+      },
+      {
+        "title": "Sağ personaj toxumu"
+      }
+    ]
+  }
+}

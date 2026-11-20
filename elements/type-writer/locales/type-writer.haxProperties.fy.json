@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Skriuwmasine",
     "description": "Tekst dy't himsels teken foar teken typt."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tekst",
+        "description": "De tekst om út te typen sa gau't it elemint yn byld skowt."
+      },
+      {
+        "title": "Typen",
+        "description": "De knipperjende rinnerke sjen litte; it elemint stelt dit yn wylst it typt."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Fertraging",
+        "description": "Millisekonden om te wachtsjen foardat it typen begjint."
+      },
+      {
+        "title": "Rinnerkedoer",
+        "description": "Millisekonden dat de rinnerke trochknippert neidat de tekst typt is."
+      },
+      {
+        "title": "Snelheid",
+        "description": "Millisekonden per teken; legere getallen type flugger."
+      }
+    ]
   }
 }

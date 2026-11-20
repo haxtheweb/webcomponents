@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Crossword",
+    "description": "Crossword laga sameeyay liis erayo iyo tilmaamo. Shabakadda adiga ayaa laguu samaynayaa; ardaydu waxay qoraan erayada oo hubiyaan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Cinwaan",
+        "description": "Cinwaanka ama su'aasha ka muuqda crossword-ka korkiisa."
+      },
+      {
+        "title": "Erayada",
+        "description": "Erey kasta iyo tilmaantiisa. Shabakadda waxaa laga sameeyaa liiskan: ereyga ugu dheer ayaa marka hore la dhigaa, kuwa kalena waxay ka gudbaan xarfaha la wadaago."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Isku dayada",
+        "description": "Immisa jeer ayuu ardaygu hubin karaa. 0 macnaheedu waa xad la'aan."
+      },
+      {
+        "title": "Midabka xoojinta",
+        "description": "Midab ikhtiyaari ah oo loogu talagalay chip-ka madaxa, ereyga firfircoon iyo badhamada ficilka."
+      },
+      {
+        "title": "La isku duubi karo",
+        "description": "U muuji crossword-kan sida saf la furo oo la xiro. Furitaanka mid wuxuu xiraa su'aalaha kale ee la isku duubi karo ee agtiisa ah."
+      },
+      {
+        "title": "Ku bilow isagoo duuban",
+        "description": "Marka la isku duubi karo, ku bilow saf xiran oo muujiya cinwaanka iyo xaaladdiisa oo keliya."
+      },
+      {
+        "title": "Qaabka qiimaynta",
+        "description": "OER Schema: qaabka qiimaynta ee qiimayntan (tusaale dhibco, xaraf, boqolley, dhammaystir)."
+      },
+      {
+        "title": "Ujeeddada waxbarasho",
+        "description": "OER Schema: ujeeddada waxbarasho ee la xiriirta qiimayntan."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Magaca kedisada",
+        "description": "Magaca kedisada loo isticmaalo aqoonsiga xAPI ee nidaamyada falanqaynta."
+      },
+      {
+        "title": "Koorso",
+        "description": "OER Schema: koorsada qiimayntan loogu talagalay."
+      }
+    ]
+  }
+}

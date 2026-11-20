@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Umdlali wamaxwebhu",
+    "description": "Isikhokelo, umboniso nesalathiso secandelo lewebhu, namaqhosha okukopa e-HTML, import, npm ne-CDN."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ifayile yedatha yamaxwebhu",
+        "description": "Idatha yamaxwebhu eza nento (lib/tag.docs.json)."
+      },
+      {
+        "title": "Ibhodi yebali yesikhokelo",
+        "description": "Ibhodi yebali yentshukumo eza nento (tag.motion.json). Ayinyanzelekanga."
+      },
+      {
+        "title": "Isifundo sevidiyo",
+        "description": "Ividiyo emfutshane malunga nento (YouTube, Vimeo okanye ifayile yevidiyo). Ithatha indawo yevidiyo ekwidatha yamaxwebhu."
+      },
+      {
+        "title": "Vula kwithebhu",
+        "description": "Yeyiphi ithebhu eboniswa kuqala.",
+        "options": {
+          "motion": "Isikhokelo",
+          "video": "Ividiyo",
+          "demo": "Umboniso",
+          "docs": "Amaxwebhu",
+          "schema": "Schema"
+        }
+      },
+      {
+        "title": "Dlala isikhokelo ngokuzenzekelayo",
+        "description": "Qala isikhokelo xa nje umdlali ebonakala. Akuhoywa xa umfundi ekhetha intshukumo encitshisiweyo."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Isihloko sesikhokelo",
+        "description": "Kwizinto ezinezikhokelo ezininzi, sesiphi isihloko esivulwa kuqala (umzekelo add-blocks). Shiya kungenanto kwesiphambili."
+      },
+      {
+        "title": "Ikhonkco lomboniso ophilayo",
+        "description": "Apho iqhosha lokuvula umthombo womboniso liya khona. Ngokumiselweyo yifolda yomboniso kuvimba."
+      },
+      {
+        "title": "Ikhonkco lamaxwebhu",
+        "description": "Apho iqhosha lamaxwebhu apheleleyo liya khona, umzekelo iphepha le-Learn HAX elihambelanayo."
+      }
+    ]
+  }
+}

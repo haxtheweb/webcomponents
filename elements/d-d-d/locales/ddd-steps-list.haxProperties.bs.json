@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Lista koraka",
     "description": "Numerisani koraci za završetak zadatka."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Indikator koraka",
+        "description": "Prikaži korake kao kompaktan red naslova koji označava napredak. Sadržaj koraka se ne prikazuje u ovom rasporedu."
+      },
+      {
+        "title": "Trenutni korak",
+        "description": "Korak na kojem je čitalac, brojeći od 1. Raniji koraci se prikazuju kao završeni. Koristi ga indikator koraka."
+      }
+    ]
   }
 }

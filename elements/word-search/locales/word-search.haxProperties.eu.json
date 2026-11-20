@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Hitz-zopa",
+    "description": "Hitz ezkutuak dituen letra-sareta. Ikasleek hitz bakoitzaren lehen eta azken letra ukitzen dute. Termino bat nola idazten den antzematea lantzen du, ez zer esan nahi duen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Izenburua",
+        "description": "Ikasleei aurkitzeko eskatzen zaiena, goiburuan erakutsia."
+      },
+      {
+        "title": "Hitzak",
+        "description": "Ezkutatu beharreko hitzak. Zuriuneak eta puntuazioa saretatik kanpo uzten dira. Sartzen ez diren hitzak editatzean zerrendatzen dira eta ikasleentzat kanpoan geratzen dira."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Saretaren tamaina",
+        "description": "Letrak alde bakoitzeko, 4tik 16ra. Utzi hutsik hitzik luzeenera egokitzeko (gehienez 12). 12tik gora telefonoan alboetara korritzen da."
+      },
+      {
+        "title": "Hitz diagonalak",
+        "description": "Ezkutatu hitzak diagonalean ere. Zailagoa."
+      },
+      {
+        "title": "Atzekoz aurrerako hitzak",
+        "description": "Ezkutatu atzekoz aurrera idatzitako hitzak ere. Zailagoa."
+      },
+      {
+        "title": "Azentu-kolorea",
+        "description": "Aukerako kolorea goiburuko txartelerako, aukeratutako lehen letrarako eta botoirako."
+      }
+    ]
+  }
+}

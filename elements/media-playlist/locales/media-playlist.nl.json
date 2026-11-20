@@ -5,5 +5,7 @@
   "editModeLabel": "Bewerkmodus van mediaplaylist",
   "position": "{current} van {total}",
   "previousItem": "Vorig item",
-  "nextItem": "Volgend item"
+  "nextItem": "Volgend item",
+  "fullScreen": "Volledig scherm",
+  "exitFullScreen": "Volledig scherm afsluiten"
 }

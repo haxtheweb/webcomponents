@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Paŝolisto",
     "description": "Numeritaj paŝoj por plenumi taskon."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Paŝindikilo",
+        "description": "Montri la paŝojn kiel kompaktan vicon de titoloj, kiu markas progreson. La enhavo de la paŝoj ne estas montrata en ĉi tiu aranĝo."
+      },
+      {
+        "title": "Nuna paŝo",
+        "description": "La paŝo, ĉe kiu la leganto estas, kalkulante ekde 1. Pli fruaj paŝoj montriĝas kiel finitaj. Uzata de la paŝindikilo."
+      }
+    ]
   }
 }

@@ -1,0 +1,13 @@
+{
+  "gizmo": {
+    "title": "example-hax-element",
+    "description": "HAX ترتیب تے ایڈٹ جوگ خوبیاں وکھان لئی ورتیا مثالی شروعاتی ایلیمنٹ۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "سرناواں"
+      }
+    ]
+  }
+}

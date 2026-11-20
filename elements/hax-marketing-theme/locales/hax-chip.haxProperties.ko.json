@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "칩",
+    "description": "레이블이 붙은 작은 아이콘"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "아이콘"
+      },
+      {
+        "title": "레이블"
+      }
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Gruppe af stopnoter",
+    "description": "Stabl flere stopnoter i én blok, der viser én note ad gangen, såsom Tips eller Nyheder. Instruktionskort, sidenoter og indrammede citater kan stables med dem."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etiket",
+        "description": "Navn på gruppen, som skærmlæsere oplæser, såsom Tips eller Nyheder."
+      },
+      {
+        "title": "Noter",
+        "description": "Stopnoterne i gruppen. Instruktionskort, sidenoter og indrammede citater kan også tilføjes."
+      }
+    ]
+  }
+}

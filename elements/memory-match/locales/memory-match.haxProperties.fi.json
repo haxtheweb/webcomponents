@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Muistipeli",
+    "description": "Käännä kortteja löytääksesi pareja. Yhdistä termi sen merkitykseen, jotta pari osoittaa ymmärrystä, tai käytä kahta toisiaan vastaavaa tekstiä tai kuvaa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Otsikko",
+        "description": "Otsakkeessa näytettävä tehtävänanto, esimerkiksi: Yhdistä termi sen tehtävään."
+      },
+      {
+        "title": "Parit",
+        "description": "Jokainen pari on kaksi yhteen kuuluvaa korttia, yleensä termi ja sen merkitys. Puolella on oltava tekstiä, kuva tai molemmat."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Korostusväri",
+        "description": "Valinnainen väri otsakemerkille, korttien selkäpuolille ja painikkeelle."
+      }
+    ]
+  }
+}

@@ -8,5 +8,9 @@
   "theme": "Тэма",
   "palette": "Палітра",
   "cancel": "Скасаваць",
-  "openAppearanceSettings": "Адкрыць налады вонкавага выгляду"
+  "openAppearanceSettings": "Адкрыць налады вонкавага выгляду",
+  "designSystem": "Дызайн-сістэма",
+  "designSystemDefault": "DDD (па змаўчанні)",
+  "designSystemThemeDefault": "{name} (па змаўчанні тэмы)",
+  "designSystemHelp": "Колер, шрыфт, вуглы і шчыльнасць. Макет па-ранейшаму вызначае тэма."
 }

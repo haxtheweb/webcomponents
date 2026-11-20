@@ -1,0 +1,8 @@
+{
+  "theme": "Загвар",
+  "palette": "Палитр",
+  "themeDefault": "Загварын үндсэн",
+  "designSystem": "Дизайн систем",
+  "designSystemDefault": "DDD (үндсэн)",
+  "designSystemUnavailable": "Энэ загвар өөрийн дизайн системээ хадгална"
+}

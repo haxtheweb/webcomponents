@@ -13,7 +13,10 @@
       {
         "property": "modifier",
         "title": "Mai gyara kafofin watsa labarai",
-        "description": "Mai gyara yankin kafofin watsa labarai na zaɓi. Yana bayyana nau'in kafofin watsa labarai da wannan lasisi ya shafa."
+        "description": "Mai gyara yankin kafofin watsa labarai na zaɓi. Yana bayyana nau'in kafofin watsa labarai da wannan lasisi ya shafa.",
+        "options": {
+          "": "Babu mai gyarawa"
+        }
       },
       {
         "property": "uri",

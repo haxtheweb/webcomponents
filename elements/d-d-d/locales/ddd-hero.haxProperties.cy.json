@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Arwr",
+    "description": "Delwedd, GIF neu fideo mawr gyda phennawd a thestun drosto, wedi'i osod unrhyw le mewn tudalen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Delwedd neu fideo",
+        "description": "Ffeil JPG, PNG, WebP, GIF, MP4 neu WebM."
+      },
+      {
+        "title": "Testun amgen",
+        "description": "Disgrifiwch y ddelwedd. Gadewch yn wag pan fydd yn addurn yn unig."
+      },
+      {
+        "title": "Pennawd",
+        "description": "Pennawd a ddangosir dros y cyfryngau. Gadewch yn wag am ddim."
+      },
+      {
+        "title": "Testun",
+        "description": "Testun a ddangosir o dan y pennawd, dros y cyfryngau."
+      },
+      {
+        "title": "Lled llawn",
+        "description": "Rhedeg o ymyl i ymyl yn lle eistedd yng ngholofn y cynnwys."
+      },
+      {
+        "title": "Uchder",
+        "options": {
+          "tall": "Tal",
+          "medium": "Canolig",
+          "short": "Byr"
+        }
+      },
+      {
+        "title": "Fframio",
+        "description": "Sut mae'r llun yn eistedd ar bob maint sgrin"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Pylu",
+        "description": "Lliw wedi'i osod dros y cyfryngau. Gyda phennawd neu destun mae un bob amser, fel bod y testun yn aros yn ddarllenadwy.",
+        "options": {
+          "blue": "Glas",
+          "bottom": "Tywyll ar y gwaelod",
+          "none": "Dim"
+        }
+      },
+      {
+        "title": "Safle'r testun",
+        "options": {
+          "bottom": "Gwaelod",
+          "middle": "Canol"
+        }
+      },
+      {
+        "title": "Canolbwynt ar draws",
+        "description": "Y rhan o'r ddelwedd sy'n aros yn y golwg pan gaiff ei thocio, o 0 (chwith) i 100 (de)."
+      },
+      {
+        "title": "Canolbwynt i lawr",
+        "description": "Y rhan o'r ddelwedd sy'n aros yn y golwg pan gaiff ei thocio, o 0 (top) i 100 (gwaelod)."
+      }
+    ]
+  }
+}

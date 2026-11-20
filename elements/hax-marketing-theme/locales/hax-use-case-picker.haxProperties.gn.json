@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Jeporu poravoha",
+    "description": "Eiporavo mba'erãpa peteĩ tenda ha ehupyty peteĩ juajuha oipe'áva HAX kundahárape upe tenda ñepyrũrã reheve, ha avei CLI ñe'ẽjoapy ojoguáva."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "HAX kundahárape kundaharape",
+        "description": "Mamópa ojepe'a juajuha; oñembojoapy ?skeleton= ha &name="
+      },
+      {
+        "title": "Tenda ñepyrũrã opytáva okápe",
+        "description": "Máquina réra, coma rupive oñemboja'óva"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tenda ñepyrũrã lista",
+        "description": "Kanguekue lista kundaharape (reko app-hax omoñe'ẽva)"
+      }
+    ]
+  }
+}

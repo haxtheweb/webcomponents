@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Minnisleikur",
+    "description": "Snúðu við spjöldum til að finna pör. Paraðu hugtak við merkingu þess svo samsvörun sýni skilning, eða notaðu tvo samsvarandi texta eða myndir."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titill",
+        "description": "Fyrirmælin sem sýnd eru í hausnum, til dæmis: Paraðu hugtakið við hlutverk þess."
+      },
+      {
+        "title": "Pör",
+        "description": "Hvert par er tvö spjöld sem eiga saman, venjulega hugtak og merking þess. Hlið þarf texta, mynd eða hvort tveggja."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Áherslulitur",
+        "description": "Valfrjáls litur fyrir haus-merkið, bakhlið spjaldanna og hnappinn."
+      }
+    ]
+  }
+}

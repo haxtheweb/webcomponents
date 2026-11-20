@@ -1,0 +1,21 @@
+{
+  "diagram": "Diagram",
+  "flowchart": "siart llif",
+  "sequence": "dilyniant",
+  "source": "Ffynhonnell",
+  "textAlternative": "Dewis amgen testun",
+  "present": "Cyflwyno",
+  "exitPresent": "Gadael y cyflwyniad",
+  "loading": "Yn llwytho'r diagram",
+  "empty": "Dim i'w luniadu eto. Ychwanegwch ffynhonnell y diagram.",
+  "error": "Gwall",
+  "parseError": "Nid oedd modd lluniadu'r diagram hwn. Gwiriwch y ffynhonnell.",
+  "loadError": "Nid oedd modd llwytho'r llyfrgell diagramau.",
+  "srcError": "Nid oedd modd llwytho ffeil y diagram.",
+  "decision": "penderfyniad",
+  "end": "diwedd",
+  "goTo": "mynd i {target}",
+  "ifGoTo": "os {label}, mynd i {target}",
+  "describedBySource": "Diagram wedi'i ddisgrifio gan ei ffynhonnell.",
+  "scrollable": "Diagram, y gellir ei sgrolio"
+}

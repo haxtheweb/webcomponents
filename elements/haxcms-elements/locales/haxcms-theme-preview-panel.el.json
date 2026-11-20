@@ -8,5 +8,9 @@
   "theme": "Θέμα",
   "palette": "Παλέτα",
   "cancel": "Ακύρωση",
-  "openAppearanceSettings": "Άνοιγμα ρυθμίσεων εμφάνισης"
+  "openAppearanceSettings": "Άνοιγμα ρυθμίσεων εμφάνισης",
+  "designSystem": "Σύστημα σχεδίασης",
+  "designSystemDefault": "DDD (προεπιλογή)",
+  "designSystemThemeDefault": "{name} (προεπιλογή θέματος)",
+  "designSystemHelp": "Χρώμα, τυπογραφία, γωνίες και πυκνότητα. Το θέμα εξακολουθεί να αποφασίζει τη διάταξη."
 }

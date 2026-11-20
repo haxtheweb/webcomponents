@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Hero",
+    "description": "Hatun rikch'a, GIF utaq video, patanpi uma siq'iwan qillqawan, p'anqap mayninpipas churasqa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Rikch'a utaq video",
+        "description": "Huk JPG, PNG, WebP, GIF, MP4 utaq WebM willañiqi."
+      },
+      {
+        "title": "Rantin qillqa",
+        "description": "Rikch'ata willay. Sumaqchanallapaq kaptinqa ch'usaqta saqiy."
+      },
+      {
+        "title": "Uma siq'i",
+        "description": "Medio patapi rikuchisqa uma siq'i. Mana munaspaqa ch'usaqta saqiy."
+      },
+      {
+        "title": "Qillqa",
+        "description": "Uma siq'i uranpi, medio patapi rikuchisqa qillqa."
+      },
+      {
+        "title": "Hunt'asqa kinray",
+        "description": "Ukhun siq'ipi tiyanan rantinpi huk patamanta huk patakama mast'arikuy."
+      },
+      {
+        "title": "Sayay",
+        "options": {
+          "tall": "Suni",
+          "medium": "Chawpi",
+          "short": "Pisi"
+        }
+      },
+      {
+        "title": "Marcochay",
+        "description": "Fotoqa sapa qhawana sayaypi imaynatam tiyan"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Chinkachiy",
+        "description": "Medio patapi churasqa llimp'i. Uma siq'iwan utaq qillqawan kaptinqa sapa kutim kan, qillqa ñawinchanalla qhipakunanpaq.",
+        "options": {
+          "blue": "Anqas",
+          "bottom": "Uranpi tutayaq",
+          "none": "Mana imapas"
+        }
+      },
+      {
+        "title": "Qillqap tiyanan",
+        "options": {
+          "bottom": "Uran",
+          "middle": "Chawpi"
+        }
+      },
+      {
+        "title": "K'iriqman yuyaychana punto",
+        "description": "Rikch'a kuchusqa kaptin rikukuq qhipakuq t'aqan, 0 (lluq'i) manta 100 (paña) kama."
+      },
+      {
+        "title": "Uraqman yuyaychana punto",
+        "description": "Rikch'a kuchusqa kaptin rikukuq qhipakuq t'aqan, 0 (hanaq) manta 100 (uray) kama."
+      }
+    ]
+  }
+}

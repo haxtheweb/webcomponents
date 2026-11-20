@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Statistik",
+    "description": "Ett tal som räknar uppåt, med en etikett och en länk till dess berättelse"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tal att räkna upp till"
+      },
+      {
+        "title": "Före talet"
+      },
+      {
+        "title": "Efter talet"
+      },
+      {
+        "title": "Ord i stället för ett tal"
+      },
+      {
+        "title": "Vad det räknar"
+      },
+      {
+        "title": "Berättelsens adress på hax.cloud (stories/ee450a19)"
+      }
+    ]
+  }
+}

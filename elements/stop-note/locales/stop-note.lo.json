@@ -3,5 +3,7 @@
   "status_stop": "ຢຸດ",
   "status_warning": "ຄຳເຕືອນ",
   "status_success": "ສຳເລັດ",
-  "status_info": "ໝາຍເຫດ"
+  "status_info": "ໝາຍເຫດ",
+  "status_tip": "ທ່ານຮູ້ບໍ່?",
+  "status_new": "ມີຫຍັງໃໝ່"
 }

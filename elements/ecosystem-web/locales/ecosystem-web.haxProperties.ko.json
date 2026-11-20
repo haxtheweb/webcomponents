@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "생태계 웹",
+    "description": "프로젝트의 각 부분이 어떻게 연결되는지 보여 주는 인터랙티브 웹. 하위 웹과 단계별 둘러보기가 있습니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "웹 데이터",
+        "description": "웹 묶음 JSON의 URL(PRAW에서 빌드, ecosystem-webs.json)."
+      },
+      {
+        "title": "웹",
+        "description": "먼저 표시할 웹의 ID. main은 생태계 웹입니다."
+      },
+      {
+        "title": "선택된 타일",
+        "description": "웹이 열릴 때 선택할 타일의 ID."
+      },
+      {
+        "title": "둘러보기",
+        "description": "시작할 둘러보기의 ID."
+      },
+      {
+        "title": "목록 보기로 시작",
+        "description": "웹을 그림 대신 중첩 목록으로 표시합니다."
+      },
+      {
+        "title": "그림만",
+        "description": "머리글, 둘러보기, 세부 정보, 단계 바 없이 그림만 도판으로 표시합니다."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "보기 기준",
+        "description": "모든 타일을 한 가지 기준으로 보며 시작합니다.",
+        "options": {
+          "": "연결만",
+          "fresh": "최신성",
+          "bus": "버스 팩터",
+          "impact": "영향력",
+          "evidence": "근거",
+          "parity": "동등성"
+        }
+      }
+    ]
+  }
+}

@@ -5,5 +5,6 @@
   "selected": "Ikhethiwe",
   "currentlyActiveAndSelectedPalette": "Iphalethi esebenzayo nekhethiweyo ngoku",
   "currentlyActivePalette": "Iphalethi esebenzayo ngoku",
-  "selectedPaletteToApply": "Iphalethi ekhethiweyo eza kusetyenziswa"
+  "selectedPaletteToApply": "Iphalethi ekhethiweyo eza kusetyenziswa",
+  "paletteNumber": "Ipaleti {number}"
 }

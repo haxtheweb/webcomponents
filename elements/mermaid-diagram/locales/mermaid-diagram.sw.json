@@ -1,0 +1,21 @@
+{
+  "diagram": "Mchoro",
+  "flowchart": "chati mtiririko",
+  "sequence": "mfuatano",
+  "source": "Chanzo",
+  "textAlternative": "Mbadala wa maandishi",
+  "present": "Wasilisha",
+  "exitPresent": "Toka kwenye wasilisho",
+  "loading": "Inapakia mchoro",
+  "empty": "Bado hakuna cha kuchora. Ongeza chanzo cha mchoro.",
+  "error": "Hitilafu",
+  "parseError": "Mchoro huu haukuweza kuchorwa. Kagua chanzo.",
+  "loadError": "Maktaba ya michoro haikuweza kupakiwa.",
+  "srcError": "Faili ya mchoro haikuweza kupakiwa.",
+  "decision": "uamuzi",
+  "end": "mwisho",
+  "goTo": "nenda {target}",
+  "ifGoTo": "ikiwa {label}, nenda {target}",
+  "describedBySource": "Mchoro unaoelezwa na chanzo chake.",
+  "scrollable": "Mchoro, unaoweza kusogezwa"
+}

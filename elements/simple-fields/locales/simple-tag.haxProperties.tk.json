@@ -14,6 +14,17 @@
         "property": "autoAccentColor",
         "title": "Awtomatik aksent reňki",
         "description": "Aksent reňkini belginiň tekstinden awtomatik kesgitle."
+      },
+      {
+        "title": "Manysy",
+        "description": "Bellige manyly reňk beriň. Bitarap bellik üçin boş goýuň.",
+        "options": {
+          "": "Bitarap",
+          "brand": "Brend",
+          "success": "Üstünlik",
+          "warning": "Duýduryş",
+          "danger": "Howp"
+        }
       }
     ],
     "advanced": [

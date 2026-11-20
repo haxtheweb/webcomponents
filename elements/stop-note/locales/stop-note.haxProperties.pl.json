@@ -23,7 +23,9 @@
           "stop": "Stop",
           "warning": "Ostrzeżenie",
           "success": "Potwierdzenie",
-          "info": "Uwaga"
+          "info": "Uwaga",
+          "tip": "Wskazówka",
+          "new": "Co nowego"
         }
       },
       {

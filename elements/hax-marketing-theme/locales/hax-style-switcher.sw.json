@@ -1,0 +1,16 @@
+{
+  "theme": "Mandhari",
+  "designSystem": "Mfumo wa usanifu",
+  "dddDefault": "DDD (chaguo-msingi)",
+  "designSystemHelp": "Rangi, mwandiko, kona na ulengaji. Mandhari huhifadhi mpangilio.",
+  "designSystemFixed": "Mandhari hii inahifadhi mfumo wake wa usanifu.",
+  "palette": "Paleti",
+  "themeDefault": "Chaguo-msingi la mandhari",
+  "paletteNumber": "Paleti {n}",
+  "siteTheme": "{name} (mandhari ya tovuti hii)",
+  "restyle": "Badilisha mtindo wa tovuti hii",
+  "close": "Funga",
+  "reset": "Rudi kwenye mwonekano wa tovuti hii",
+  "random": "Nishangaze",
+  "about": "Hii inaonyesha baadhi ya mionekano iliyojengwa ndani ya HAX. Kurasa hazibadiliki kamwe: muundo unaishi katika JSON Outline Schema na kila kizuizi ni kijenzi cha kawaida cha wavuti, kwa hivyo usanifu unaweza kubadilishwa kwa uhuru."
+}

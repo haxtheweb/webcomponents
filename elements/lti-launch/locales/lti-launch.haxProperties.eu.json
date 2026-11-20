@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Kanpoko tresnaren abiaraztea",
+    "description": "Kanpoko ikaskuntza-tresna bat leiho berri batean edo orrian irekitzen duen blokea, esteka arrunt gisa edo LTI 1.3 saio-hasiera eskaera batekin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Izenburua",
+        "description": "Tresnaren izena. Goiburuan eta botoian erakusten da."
+      },
+      {
+        "title": "Deskribapena",
+        "description": "Ikasleek tresnan egiten dutena, botoiaren gainean erakutsia."
+      },
+      {
+        "title": "Abiarazte-URLa",
+        "description": "Tresnaren helbidea. https:// edo http://-rekin hasten den helbide osoa izan behar du."
+      },
+      {
+        "title": "Non ireki",
+        "description": "Leiho berriak tresna guztiekin funtzionatzen du. Orri honetan aukerak beste gune baten barruan erakustea onartzen duten tresnekin soilik funtzionatzen du.",
+        "options": {
+          "window": "Leiho berri bat",
+          "embed": "Orri honetan"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "LTI saio-hasiera URLa",
+        "description": "LTI 1.3 soilik: tresnaren saio-hasiera abiarazteko helbidea. Honekin, bezero-ID batekin eta hedapen-ID batekin, botoiak LTI saio-hasiera eskaera bat bidaltzen du esteka arrunt bat ireki beharrean. Abiaraztea amaitzeko gune honen LTI zerbitzua behar da."
+      },
+      {
+        "title": "LTI bezero-IDa",
+        "description": "Tresnak gune honi emandako bezero-IDa. Identifikatzaile publikoa da, ez sekretua: ez jarri inoiz gakorik edo sekreturik hemen."
+      },
+      {
+        "title": "LTI hedapen-IDa",
+        "description": "Tresnak gune honi emandako hedapen-IDa. Identifikatzaile publikoa da, ez sekretua."
+      },
+      {
+        "title": "LTI jaulkitzailea",
+        "description": "Gune hau tresnaren aurrean identifikatzen duen helbidea. Utzi hutsik orria dagoen gunearen helbidea erabiltzeko."
+      },
+      {
+        "title": "Altuera orrian",
+        "description": "Tresnaren altuera orri honetan irekitzen denean, pixeletan (200etik 2000ra)."
+      },
+      {
+        "title": "Azentu-kolorea",
+        "description": "Goiburuko txartelaren eta botoiaren kolorea. Utzi hutsik gaiari jarraitzeko."
+      }
+    ],
+    "developer": [
+      {
+        "title": "LTI saio-hasiera pista",
+        "description": "Gune honen LTI zerbitzuak ikaslea ezagutzeko erabiltzen duen balio opakua. Normalean guneak ematen du lti-launch-request gertaeraren bidez, hemen gorde beharrean. Ez da inoiz pasahitz edo gako bat."
+      },
+      {
+        "title": "LTI mezu-pista",
+        "description": "Gune honen LTI zerbitzuak abiarazte hau ezagutzeko erabiltzen duen balio opakua. Normalean guneak ematen du, hemen gorde beharrean."
+      }
+    ]
+  }
+}

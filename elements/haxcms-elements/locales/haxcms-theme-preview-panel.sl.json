@@ -8,5 +8,9 @@
   "theme": "Tema",
   "palette": "Paleta",
   "cancel": "Prekliči",
-  "openAppearanceSettings": "Odpri nastavitve videza"
+  "openAppearanceSettings": "Odpri nastavitve videza",
+  "designSystem": "Sistem oblikovanja",
+  "designSystemDefault": "DDD (privzeto)",
+  "designSystemThemeDefault": "{name} (privzeto teme)",
+  "designSystemHelp": "Barva, pisava, vogali in gostota. O postavitvi še vedno odloča tema."
 }

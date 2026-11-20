@@ -40,5 +40,7 @@
   "hideDirections": "Sakrij upute",
   "showRelatedContent": "Prikaži povezani sadržaj",
   "hideRelatedContent": "Sakrij povezani sadržaj",
-  "notAttempted": "Nije pokušano"
+  "notAttempted": "Nije pokušano",
+  "cardsDirections": "Poredajte karte ispravnim redoslijedom gumbima za pomicanje ranije i kasnije na svakoj karti ili ih povucite mišem. Kad mislite da su ispravno poredane, provjerite odgovor odabirom {checkAnswer}.",
+  "movedToPosition": "{item} premješten na položaj {position} od {total}"
 }

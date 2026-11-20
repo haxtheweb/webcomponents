@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Tlačítko příběhu",
+    "description": "Tlačítko, které otevře příběh za tvrzením na hax.cloud nebo odpovídající místo na jiném webu sítě HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kam vede",
+        "options": {
+          "cloud": "hax.cloud, příběh",
+          "learn": "learn.hax.cloud, návod",
+          "try": "browser.hax.cloud, vyzkoušet",
+          "elements": "webcomponents.hax.cloud, blok",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Adresa na tom webu (příběh na hax.cloud vypadá jako stories/ee450a19)"
+      },
+      {
+        "title": "O čem to je"
+      },
+      {
+        "title": "Malý čip"
+      },
+      {
+        "title": "Zobrazit v tlačítku, o čem to je"
+      }
+    ]
+  }
+}

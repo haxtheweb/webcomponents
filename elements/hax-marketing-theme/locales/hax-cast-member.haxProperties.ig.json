@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Onye otu ndị na-eme ihe nkiri",
+    "description": "Otu ndị na-ege ntị, nke agwa na-anọchi, nwere okwu na bọtịnụ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Onye a bụ"
+      },
+      {
+        "title": "Ụdị agwa"
+      },
+      {
+        "title": "Mkpụrụ agwa"
+      },
+      {
+        "title": "Agba ogbo (aha DDD)"
+      },
+      {
+        "title": "Ebe bọtịnụ na-aga"
+      },
+      {
+        "title": "Ederede bọtịnụ"
+      }
+    ]
+  }
+}

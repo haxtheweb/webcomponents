@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Hanay ng feature",
+    "description": "Isang screen ng produkto katabi ng kahulugan nito para sa iyo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Maliit na label"
+      },
+      {
+        "title": "Heading"
+      },
+      {
+        "title": "Larawan"
+      },
+      {
+        "title": "Ano ang ipinapakita ng larawan"
+      },
+      {
+        "title": "Larawan sa kanan"
+      },
+      {
+        "title": "Kulay ng anino (pangalan sa DDD, sinusundan ng blangko ang palette)"
+      }
+    ]
+  }
+}

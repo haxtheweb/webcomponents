@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Táìlì ìṣirò",
+    "description": "Nọ́mbà kan tó ṣe pàtàkì, pẹ̀lú àmì rẹ̀ àti bí ó ṣe yí padà. Gbé púpọ̀ sínú àwọ̀n fún ìlà pátákó ìṣàkóso."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Àmì",
+        "description": "Ohun tí nọ́mbà náà ń wọ̀n."
+      },
+      {
+        "title": "Iye",
+        "description": "Nọ́mbà náà. A ń ṣe àkójọpọ̀ nọ́mbà lásán fún èdè ojú-ìwé; ohunkóhun mìíràn ń hàn bí a ṣe kọ ọ́."
+      },
+      {
+        "title": "Àyípadà",
+        "description": "Bí ó ṣe yí padà, ní ọ̀rọ̀, bí 6% sáà yìí."
+      },
+      {
+        "title": "Ìtọ́sọ́nà",
+        "description": "Bóyá àyípadà náà lọ sókè tàbí sísàlẹ̀.",
+        "options": {
+          "": "Kò sí",
+          "up": "Sókè",
+          "down": "Ìsàlẹ̀"
+        }
+      }
+    ]
+  }
+}

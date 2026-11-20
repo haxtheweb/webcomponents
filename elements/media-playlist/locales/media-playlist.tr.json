@@ -5,5 +5,7 @@
   "editModeLabel": "Medya oynatma listesi düzenleme modu",
   "position": "{current} / {total}",
   "previousItem": "Önceki öğe",
-  "nextItem": "Sonraki öğe"
+  "nextItem": "Sonraki öğe",
+  "fullScreen": "Tam ekran",
+  "exitFullScreen": "Tam ekrandan çık"
 }

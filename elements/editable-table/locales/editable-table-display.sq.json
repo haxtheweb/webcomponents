@@ -3,5 +3,8 @@
   "copyAsCsv": "Kopjo si CSV.",
   "printTable": "Printo tabelën",
   "selectColumn": "Zgjidh kolonën",
-  "dataTable": "Të dhëna · Tabelë"
+  "dataTable": "Të dhëna · Tabelë",
+  "filterStatus": "Po shfaqen {shown} nga {total} rreshta, filtruar sipas {column}: {text}",
+  "columnNumber": "Kolona {column}",
+  "clearFilter": "Pastro filtrin"
 }

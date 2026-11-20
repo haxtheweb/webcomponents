@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Da",
+    "description": "Kalmomi kusa da maɓallin fuska da fuska tare da haruffa biyu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kanun labari"
+      },
+      {
+        "title": "Inda maɓallin ke zuwa"
+      },
+      {
+        "title": "Rubutun maɓalli"
+      },
+      {
+        "title": "Irin halin hagu"
+      },
+      {
+        "title": "Irin halin dama"
+      }
+    ]
+  }
+}

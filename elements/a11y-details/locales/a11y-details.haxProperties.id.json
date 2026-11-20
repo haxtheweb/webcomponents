@@ -24,11 +24,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Teks ringkasan opsional saat detail terbuka"
+        "title": "Teks ringkasan opsional saat detail terbuka",
+        "description": "Teks tombol saat deskripsi disembunyikan, misalnya Tampilkan deskripsi."
       },
       {
         "property": "closeText",
-        "title": "Teks ringkasan opsional saat detail tertutup"
+        "title": "Teks ringkasan opsional saat detail tertutup",
+        "description": "Teks tombol saat deskripsi ditampilkan, misalnya Sembunyikan deskripsi."
       }
     ]
   }

@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Bannière",
+    "description": "Une grande image, un GIF ou une vidéo avec un titre et du texte par-dessus, à placer n'importe où dans une page."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Image ou vidéo",
+        "description": "Un fichier JPG, PNG, WebP, GIF, MP4 ou WebM."
+      },
+      {
+        "title": "Texte alternatif",
+        "description": "Décrivez l'image. Laissez vide si elle est purement décorative."
+      },
+      {
+        "title": "Titre",
+        "description": "Titre affiché sur le média. Laissez vide pour aucun."
+      },
+      {
+        "title": "Texte",
+        "description": "Texte affiché sous le titre, sur le média."
+      },
+      {
+        "title": "Pleine largeur",
+        "description": "S'étendre d'un bord à l'autre au lieu de rester dans la colonne de contenu."
+      },
+      {
+        "title": "Hauteur",
+        "options": {
+          "tall": "Haute",
+          "medium": "Moyenne",
+          "short": "Basse"
+        }
+      },
+      {
+        "title": "Cadrage",
+        "description": "Position de la photo selon chaque taille d'écran"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Fondu",
+        "description": "Couleur posée sur le média. Avec un titre ou du texte, il y en a toujours une, pour que le texte reste lisible.",
+        "options": {
+          "blue": "Bleu",
+          "bottom": "Sombre en bas",
+          "none": "Aucun"
+        }
+      },
+      {
+        "title": "Position du texte",
+        "options": {
+          "bottom": "En bas",
+          "middle": "Au milieu"
+        }
+      },
+      {
+        "title": "Point focal horizontal",
+        "description": "Partie de l'image qui reste visible lorsqu'elle est recadrée, de 0 (gauche) à 100 (droite)."
+      },
+      {
+        "title": "Point focal vertical",
+        "description": "Partie de l'image qui reste visible lorsqu'elle est recadrée, de 0 (haut) à 100 (bas)."
+      }
+    ]
+  }
+}

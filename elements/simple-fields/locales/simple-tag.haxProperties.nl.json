@@ -14,6 +14,17 @@
         "property": "autoAccentColor",
         "title": "Automatische accentkleur",
         "description": "Leid de accentkleur automatisch af uit de labeltekst."
+      },
+      {
+        "title": "Betekenis",
+        "description": "Geef de tag een betekeniskleur. Laat leeg voor een neutrale tag.",
+        "options": {
+          "": "Neutraal",
+          "brand": "Merk",
+          "success": "Succes",
+          "warning": "Waarschuwing",
+          "danger": "Gevaar"
+        }
       }
     ],
     "advanced": [

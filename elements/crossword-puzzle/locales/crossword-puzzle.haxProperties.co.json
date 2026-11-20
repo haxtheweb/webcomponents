@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Parolle incrucciate",
+    "description": "Parolle incrucciate fatte da una lista di parolle è definizioni. A griglia hè generata per voi; i studienti scrivenu e parolle è e verificheghjanu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titulu",
+        "description": "U titulu o a quistione mustrata sopra e parolle incrucciate."
+      },
+      {
+        "title": "Parolle",
+        "description": "Ogni parolla è a so definizione. A griglia hè generata da sta lista: a parolla a più longa hè piazzata prima è l'altre a crucianu nant'à lettere spartute."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tentativi",
+        "description": "Quante volte un studiente pò verificà. 0 vole dì senza limitu."
+      },
+      {
+        "title": "Culore d'accentu",
+        "description": "Culore facultativu per l'etichetta di u capu, a parolla attiva è i buttoni d'azzione."
+      },
+      {
+        "title": "Pieghevule",
+        "description": "Mustrà ste parolle incrucciate cum'è una linea chì s'apre è si chjode. Apre ne una chjode l'altre quistioni pieghevule vicinu."
+      },
+      {
+        "title": "Principià piegatu",
+        "description": "Quand'ellu hè pieghevule, principià cum'è una linea chjosa chì mostra solu u titulu è u so statu."
+      },
+      {
+        "title": "Furmatu di valutazione",
+        "description": "OER Schema: furmatu di valutazione per sta prova (per esempiu punti, lettera, percentuale, cumpiimentu)."
+      },
+      {
+        "title": "Ugettivu d'amparera",
+        "description": "OER Schema: ugettivu d'amparera assuciatu à sta prova."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Nome di u quiz",
+        "description": "Nome di u quiz adupratu per l'identificazione xAPI in i sistemi d'analisi."
+      },
+      {
+        "title": "Corsu",
+        "description": "OER Schema: corsu per u quale hè destinata sta prova."
+      }
+    ]
+  }
+}

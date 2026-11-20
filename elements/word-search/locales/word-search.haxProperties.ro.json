@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Căutare de cuvinte",
+    "description": "O grilă de litere cu cuvinte ascunse. Cursanții ating prima și ultima literă a fiecărui cuvânt. Exersează recunoașterea modului în care se scrie un termen, nu a ce înseamnă."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titlu",
+        "description": "Ce li se cere cursanților să găsească, afișat în antet."
+      },
+      {
+        "title": "Cuvinte",
+        "description": "Cuvintele de ascuns. Spațiile și punctuația sunt omise din grilă. Cuvintele care nu încap sunt listate în timpul editării și omise pentru cursanți."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Dimensiunea grilei",
+        "description": "Litere pe latură, de la 4 la 16. Lăsați gol pentru a se potrivi celui mai lung cuvânt (până la 12). Peste 12 se derulează lateral pe telefon."
+      },
+      {
+        "title": "Cuvinte pe diagonală",
+        "description": "Ascundeți cuvinte și pe diagonală. Mai greu."
+      },
+      {
+        "title": "Cuvinte inversate",
+        "description": "Ascundeți și cuvinte scrise invers. Mai greu."
+      },
+      {
+        "title": "Culoare de accent",
+        "description": "Culoare opțională pentru eticheta din antet, prima literă aleasă și buton."
+      }
+    ]
+  }
+}

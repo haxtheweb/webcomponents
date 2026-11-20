@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Platvormide võrdlus",
+    "description": "Vastamisi: vali andmefailist mis tahes kaks platvormi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Võrdlusandmed (JSON)"
+      },
+      {
+        "title": "Vasaku platvormi ID"
+      },
+      {
+        "title": "Parema platvormi ID"
+      }
+    ]
+  }
+}

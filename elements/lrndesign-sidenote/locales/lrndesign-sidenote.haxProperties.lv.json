@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Sānu piezīme",
+    "description": "Piezīme, kas nodalīta no apkārtējā satura, ar neobligātu ikonu un etiķeti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etiķete",
+        "description": "Sānu piezīmes etiķete."
+      },
+      {
+        "title": "Ikona",
+        "description": "Sānu piezīmes ikona."
+      },
+      {
+        "title": "Saturs",
+        "description": "Sānu piezīmes saturs."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Krāsa",
+        "description": "Krāsa, kādā ir iekrāsota sānu piezīme."
+      }
+    ]
+  }
+}

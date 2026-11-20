@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Tarmoqlanuvchi ssenariy",
+    "description": "Har bir tanlov boshqa sahna va yakunga olib boradigan hikoya. O‘quvchilar orqaga qaytib, boshqa yo‘llarni sinashi mumkin; erishilgan yakun ballni belgilaydi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sarlavha",
+        "description": "Ssenariy nomi, sarlavhasida ko‘rsatiladi."
+      },
+      {
+        "title": "Boshlang‘ich sahna",
+        "description": "O‘quvchilar boshlaydigan sahna ID si. Birinchi sahnadan boshlash uchun bo‘sh qoldiring."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Urg‘u rangi",
+        "description": "Sarlavha belgisi, tugmalar va tanlov chetining ixtiyoriy rangi."
+      }
+    ]
+  }
+}

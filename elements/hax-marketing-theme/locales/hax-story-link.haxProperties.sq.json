@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Butoni i historisë",
+    "description": "Butoni që hap historinë pas një pohimi në hax.cloud, ose vendin përkatës në një sajt tjetër të rrjetit HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ku të çon",
+        "options": {
+          "cloud": "hax.cloud, historia",
+          "learn": "learn.hax.cloud, një udhëzues",
+          "try": "browser.hax.cloud, provoje",
+          "elements": "webcomponents.hax.cloud, një bllok",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Adresa në atë sajt (një histori në hax.cloud duket si stories/ee450a19)"
+      },
+      {
+        "title": "Për çfarë bëhet fjalë"
+      },
+      {
+        "title": "Etiketë e vogël"
+      },
+      {
+        "title": "Shfaq në buton për çfarë bëhet fjalë"
+      }
+    ]
+  }
+}

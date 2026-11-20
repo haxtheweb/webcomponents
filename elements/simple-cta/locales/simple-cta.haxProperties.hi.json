@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "आइकन छिपाएँ",
         "description": "टेक्स्ट को उभारने वाला आइकन छिपाएँ"
+      },
+      {
+        "title": "रूप",
+        "description": "बटन पर कितना ज़ोर हो।",
+        "options": {
+          "": "भरा हुआ",
+          "tonal": "टोनल",
+          "outlined": "रूपरेखा",
+          "plain": "सादा"
+        }
+      },
+      {
+        "title": "आकार",
+        "description": "बटन का आकार।",
+        "options": {
+          "s": "छोटा",
+          "": "मध्यम",
+          "l": "बड़ा"
+        }
       }
     ],
     "advanced": [

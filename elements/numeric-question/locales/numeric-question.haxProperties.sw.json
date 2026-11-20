@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Swali la namba",
+    "description": "Swali linalojibiwa kwa namba. Jibu ni namba isiyobadilika au fomula inayokokotolewa kutoka kwa vigeu, na linahesabiwa likiwa ndani ya uvumilivu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Swali",
+        "description": "Kile wanafunzi wanachoulizwa. Andika jina la kigeu ndani ya mabano singasinga, kama {d}, kuonyesha thamani yake."
+      },
+      {
+        "title": "Kipimo",
+        "description": "Kinaonyeshwa kama maandishi kando ya sehemu ya jibu, kwa mfano km/h."
+      },
+      {
+        "title": "Jibu",
+        "description": "Namba sahihi. Acha tupu fomula inapokokotoa jibu."
+      },
+      {
+        "title": "Fomula",
+        "description": "Hukokotoa jibu kutoka kwa vigeu, kwa mfano d / (t / 60). Inaweza kutumia + - * / ^, mabano, sqrt() na abs(). Hutumika badala ya jibu ikiwekwa."
+      },
+      {
+        "title": "Vigeu",
+        "description": "Namba ambazo fomula na swali hutumia. Kila moja huchukua thamani kati ya cha chini na cha juu zaidi, kwa hatua."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Uvumilivu",
+        "description": "Umbali kutoka jibu kamili ambao bado unahesabiwa. 0 inamaanisha kamili, au iliyokadiriwa hadi nafasi za desimali zilizo hapa chini."
+      },
+      {
+        "title": "Aina ya uvumilivu",
+        "description": "Kamili: jumlisha au toa uvumilivu. Asilimia: jumlisha au toa asilimia hiyo ya jibu kamili.",
+        "options": {
+          "absolute": "Kamili",
+          "percent": "Asilimia"
+        }
+      },
+      {
+        "title": "Nafasi za desimali",
+        "description": "Wanafunzi wanaombwa kukadiria hadi nafasi hizi, na jibu linaonyeshwa likiwa limekadiriwa hivyo. Acha tupu kwa kutokadiria."
+      },
+      {
+        "title": "Majaribio",
+        "description": "Ni mara ngapi mwanafunzi anaweza kukagua. 0 inamaanisha bila kikomo."
+      },
+      {
+        "title": "Namba mpya kila jaribio",
+        "description": "Chagua thamani mpya za vigeu kila mara mwanafunzi anapojaribu tena. Jibu lake la awali halitaonyeshwa anaporudi, ila tu kama alipata sahihi."
+      },
+      {
+        "title": "Inayokunjika",
+        "description": "Onyesha swali hili kama safu inayofunguka na kufungwa. Kufungua moja hufunga maswali mengine yanayokunjika kando yake."
+      },
+      {
+        "title": "Anza ikiwa imekunjwa",
+        "description": "Ikiwa inakunjika, anza kama safu iliyofungwa inayoonyesha swali na hali yake tu."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Jina la jaribio",
+        "description": "Jina la jaribio linalotumika kwa utambulisho wa xAPI katika mifumo ya uchanganuzi."
+      }
+    ]
+  }
+}

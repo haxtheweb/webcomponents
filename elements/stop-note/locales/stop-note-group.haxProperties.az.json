@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Stop note qrupu",
+    "description": "Bir neçə stop note-u bir dəfədə bir qeyd göstərən bir bloka yığın, məsələn Məsləhətlər və ya Yeniliklər. Təlimat kartları, yan qeydlər və çərçivəli sitatlar da onlarla birlikdə yığıla bilər."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etiket",
+        "description": "Ekran oxuyucularının elan etdiyi qrup adı, məsələn Məsləhətlər və ya Yeniliklər."
+      },
+      {
+        "title": "Qeydlər",
+        "description": "Qrupdakı stop note-lar. Təlimat kartları, yan qeydlər və çərçivəli sitatlar da əlavə edilə bilər."
+      }
+    ]
+  }
+}

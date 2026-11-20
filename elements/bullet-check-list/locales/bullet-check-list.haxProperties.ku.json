@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Lîsteya kontrolê ya bi xal",
+    "description": "Lîsteyek ji qutiyên nîşankirinê. Xwîner hêmanan nîşan dikin û pêşveçûna wan li ser cîhaza wan a xwe tê bîranîn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sernav",
+        "description": "Navê lîsteyê. Wekî etîketa koma qutiyên nîşankirinê bi deng tê xwendin."
+      },
+      {
+        "title": "Hêman",
+        "description": "Her hêman qutiyeke nîşankirinê ye. Hêmanên nîşankirî an neçalak ji aliyê xwîneran ve nayên guhertin."
+      },
+      {
+        "title": "Bi hejmar",
+        "description": "Li şûna lîsteya bi xal lîsteyeke bi hejmar nîşan bide."
+      },
+      {
+        "title": "Rewş",
+        "description": "Rengan li gorî stop-note diguherîne.",
+        "options": {
+          "info": "Agahdarî",
+          "success": "Pejirandin",
+          "warning": "Hişyarî",
+          "stop": "Rawestîne"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "ID-ya hilanînê",
+        "description": "ID-ya yekta ku ji bo bîranîna pêşveçûna xwîner li ser cîhaza wî tê bikaranîn. Bi xweber tê çêkirin; tenê biguherîne da ku pêşveçûnê di navbera lîsteyan de parve bikî an ji nû ve dest pê bikî."
+      }
+    ]
+  }
+}

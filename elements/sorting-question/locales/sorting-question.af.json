@@ -40,5 +40,7 @@
   "hideDirections": "Versteek instruksies",
   "showRelatedContent": "Wys verwante inhoud",
   "hideRelatedContent": "Versteek verwante inhoud",
-  "notAttempted": "Nie probeer nie"
+  "notAttempted": "Nie probeer nie",
+  "cardsDirections": "Plaas die kaarte in die korrekte volgorde met die skuif vroeër- en skuif later-knoppies op elke kaart, of sleep hulle met 'n muis. Wanneer jy glo jy het hulle in die korrekte volgorde, toets jou antwoord deur {checkAnswer} te kies.",
+  "movedToPosition": "{item} geskuif na posisie {position} van {total}"
 }

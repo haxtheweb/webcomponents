@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "isihloko"
+        "title": "isihloko",
+        "description": "Isihloko esiboniswa ngaphezu kwemodeli yesifundo."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "Ikheli lefayela lemodeli ye-3D (.glb noma .gltf) okufanele liboniswe."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "Chaza imodeli ye-3D kubantu abangakwazi ukuyibona."
       },
       {
         "title": "Indawo yolwazi"

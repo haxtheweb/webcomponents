@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Elektilo de uzkazoj",
+    "description": "Elektu, por kio retejo estas, kaj ricevu ligilon, kiu malfermas HAX en la retumilo kun tiu komenca retejo, plus la kongruan CLI-komandon."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Adreso de HAX en la retumilo",
+        "description": "Kie la ligilo malfermiĝas; ĝi ricevas aldonitajn ?skeleton= kaj &name="
+      },
+      {
+        "title": "Komencaj retejoj por ellasi",
+        "description": "Maŝinaj nomoj, apartigitaj per komoj"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Listo de komencaj retejoj",
+        "description": "Adreso de la skeleta listo (la formato, kiun app-hax legas)"
+      }
+    ]
+  }
+}

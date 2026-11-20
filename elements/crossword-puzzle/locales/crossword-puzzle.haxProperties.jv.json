@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Teka-teki silang",
+    "description": "Teka-teki silang sing digawe saka dhaptar tembung lan pitunjuk. Kothake digawe otomatis; siswa ngetik tembung lan mriksa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Judhul",
+        "description": "Judhul utawa pitakon sing ditampilake ing ndhuwur teka-teki silang."
+      },
+      {
+        "title": "Tembung",
+        "description": "Saben tembung lan pitunjuke. Kothak digawe saka dhaptar iki: tembung paling dawa dipapanake dhisik lan liyane nyabrang ing aksara sing padha."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Upaya",
+        "description": "Kaping pira siswa bisa mriksa. 0 tegese tanpa wates."
+      },
+      {
+        "title": "Warna aksen",
+        "description": "Warna pilihan kanggo chip judhul, tembung aktif lan tombol aksi."
+      },
+      {
+        "title": "Bisa dilempit",
+        "description": "Tampilake teka-teki silang iki minangka baris sing bisa dibukak lan ditutup. Mbukak siji nutup pitakon lempitan liyane ing sandhinge."
+      },
+      {
+        "title": "Wiwiti kalempit",
+        "description": "Yen bisa dilempit, wiwiti minangka baris ketutup sing mung nampilake judhul lan statuse."
+      },
+      {
+        "title": "Format biji",
+        "description": "OER Schema: format biji kanggo penilaian iki (contone poin, huruf, persen, rampung)."
+      },
+      {
+        "title": "Tujuan sinau",
+        "description": "OER Schema: tujuan sinau sing gegandhengan karo penilaian iki."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Jeneng kuis",
+        "description": "Jeneng kuis sing dienggo kanggo identifikasi xAPI ing sistem analitik."
+      },
+      {
+        "title": "Kursus",
+        "description": "OER Schema: kursus sing dituju penilaian iki."
+      }
+    ]
+  }
+}

@@ -6,6 +6,8 @@
   "faviconDescription": "Navegador pestaña siq'i / celularkunapi huch'uy tiyana logo hina llamk'achisqa",
   "domain": "Dominio",
   "domainDescription": "Kay web tiyanap dominion",
+  "sameAs": "Kay kitip huk perfilninkuna",
+  "sameAsDescription": "Sapa siq'ipi huk t'inki kay kitip utaq organizacionpa huk lado perfilninkunaman (GitHub, LinkedIn, YouTube, Mastodon). Maskana motorkunam chay perfilkunata kay kitiwan t'inkinankupaq llamk'achinku.",
   "language": "Simi",
   "languageDescription": "Kay llika p'anqap simin. Sutiwan icha codewan maskay, icha huk codeta qillqay fr-CA hina.",
   "googleAnalyticsId": "Google Analytics ID",

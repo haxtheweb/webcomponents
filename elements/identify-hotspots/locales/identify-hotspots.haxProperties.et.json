@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Leia kohad",
+    "description": "Õppijad leiavad pildilt õiged kohad klõpsates, puudutades või klaviatuuri sihtristi liigutades. Pildikaardi hinnatav vaste."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pilt",
+        "description": "Pilt, millelt õppijad otsivad."
+      },
+      {
+        "title": "Alternatiivtekst",
+        "description": "Kirjeldab pilti inimestele, kes seda näha ei saa. Seda ei kuvata kunagi pealkirjana."
+      },
+      {
+        "title": "Pealkiri",
+        "description": "Lühike nähtav pealkiri, mis kuvatakse pildi kohal."
+      },
+      {
+        "title": "Küsimus",
+        "description": "Mida õppijatel palutakse pildilt leida."
+      },
+      {
+        "title": "Vastused",
+        "description": "Iga vastus on nimega ovaal pildil. Asukoht ja suurus on protsendid pildist, mõõdetuna selle ülemisest vasakust nurgast. Muutmise ajal on iga vastus pildil piirjoonega näidatud."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Katsed",
+        "description": "Mitu korda õppija saab proovida. 0 tähendab piiramatut."
+      },
+      {
+        "title": "Lubatud möödapanekud",
+        "description": "Mitu möödapanekut lõpetab katse. 0 tähendab piiramatut ja õppijad saavad nupu Lõpeta."
+      },
+      {
+        "title": "Kokkupandav",
+        "description": "Näita seda küsimust reana, mis avaneb ja sulgub. Ühe avamine sulgeb kõrvalolevad teised kokkupandavad küsimused."
+      },
+      {
+        "title": "Alusta kokkupandult",
+        "description": "Kokkupandavana alusta suletud reana, mis näitab ainult küsimust ja olekut."
+      },
+      {
+        "title": "Hindamisvorming",
+        "description": "OER Schema: selle hindamise hindamisvorming (nt punktid, täht, protsent, sooritus)."
+      },
+      {
+        "title": "Õpieesmärk",
+        "description": "OER Schema: selle hindamisega seotud õpieesmärk."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Viktoriini nimi",
+        "description": "Viktoriini nimi, mis edastatakse selle üksuse tuvastamiseks xAPI-põhistes keskkondades"
+      },
+      {
+        "title": "Kursus",
+        "description": "OER Schema: kursus, mille jaoks see hindamine on mõeldud."
+      }
+    ]
+  }
+}

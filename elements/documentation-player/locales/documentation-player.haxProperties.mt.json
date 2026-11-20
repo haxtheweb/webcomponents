@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Plejer tad-dokumentazzjoni",
+    "description": "Gwida, demo u referenza għal web component, b'buttuni tal-ikkupjar għal HTML, import, npm u CDN."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Fajl tad-data tad-dokumenti",
+        "description": "Id-data tad-dokumenti li tiġi mal-element (lib/tag.docs.json)."
+      },
+      {
+        "title": "Storyboard tal-gwida",
+        "description": "L-istoryboard tal-moviment li jiġi mal-element (tag.motion.json). Fakultattiv."
+      },
+      {
+        "title": "Tutorial bil-vidjo",
+        "description": "Vidjo qasir dwar l-element (YouTube, Vimeo jew fajl tal-vidjo). Jieħu post il-vidjo fid-data tad-dokumenti."
+      },
+      {
+        "title": "Iftaħ fuq it-tab",
+        "description": "Liema tab tidher l-ewwel.",
+        "options": {
+          "motion": "Gwida",
+          "video": "Vidjo",
+          "demo": "Demo",
+          "docs": "Dokumentazzjoni",
+          "schema": "Skema"
+        }
+      },
+      {
+        "title": "Ħaddem il-gwida awtomatikament",
+        "description": "Ibda l-gwida hekk kif jidher il-plejer. Injorat meta l-qarrej jippreferi moviment imnaqqas."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Suġġett tal-gwida",
+        "description": "Għal elementi b'diversi gwidi, liema suġġett jinfetaħ l-ewwel (pereżempju add-blocks). Ħallih vojt għal dak prinċipali."
+      },
+      {
+        "title": "Link tad-demo diretta",
+        "description": "Fejn tmur il-buttuna Iftaħ is-sors tad-demo. B'mod default il-folder tad-demo fir-repożitorju."
+      },
+      {
+        "title": "Link tad-dokumentazzjoni",
+        "description": "Fejn tmur il-buttuna tad-dokumentazzjoni sħiħa, pereżempju l-paġna ta' Learn HAX li taqbel."
+      }
+    ]
+  }
+}

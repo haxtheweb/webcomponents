@@ -8,5 +8,9 @@
   "theme": "Gaia",
   "palette": "Paleta",
   "cancel": "Utzi",
-  "openAppearanceSettings": "Ireki itxura-ezarpenak"
+  "openAppearanceSettings": "Ireki itxura-ezarpenak",
+  "designSystem": "Diseinu-sistema",
+  "designSystemDefault": "DDD (lehenetsia)",
+  "designSystemThemeDefault": "{name} (gaiaren lehenetsia)",
+  "designSystemHelp": "Kolorea, letra, ertzak eta dentsitatea. Gaiak erabakitzen du oraindik diseinua."
 }

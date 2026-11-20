@@ -1,0 +1,22 @@
+{
+  "scenario": "Scenārijs",
+  "directions": "Norādījumi",
+  "showDirections": "Rādīt norādījumus",
+  "hideDirections": "Slēpt norādījumus",
+  "directionsRead": "Izlasiet katru ainu un izvēlieties, ko jūs darītu.",
+  "directionsEndings": "Ir vairākas beigas. Kad pabeidzat, izmēģiniet citu ceļu.",
+  "startOver": "Sākt no jauna",
+  "back": "Vienu soli atpakaļ",
+  "tryAnother": "Izmēģināt citu ceļu",
+  "path": "Ceļš",
+  "scene": "Aina",
+  "ending": "Beigas",
+  "end": "beigas",
+  "scenesSeen": "Apskatītas {seen} no {total} ainām",
+  "endingReached": "Beigas sasniegtas",
+  "addScene": "Pievienot ainu",
+  "newScene": "Jauna aina",
+  "newSceneText": "Aprakstiet, kas notiek, tad sasaistiet katru izvēli ar ainu.",
+  "editingNote": "Rediģēšana: tiek rādītas visas ainas. Izvēle ir saite uz #, kam seko ainas ID.",
+  "noScenes": "Pievienojiet ainu, lai sāktu scenāriju."
+}

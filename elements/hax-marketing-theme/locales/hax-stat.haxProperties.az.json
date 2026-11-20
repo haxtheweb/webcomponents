@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Statistika",
+    "description": "Etiketi və hekayəsinə keçidi olan, yuxarı sayan ədəd"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sayılacaq ədəd"
+      },
+      {
+        "title": "Ədəddən əvvəl"
+      },
+      {
+        "title": "Ədəddən sonra"
+      },
+      {
+        "title": "Ədəd əvəzinə sözlər"
+      },
+      {
+        "title": "Nəyi sayır"
+      },
+      {
+        "title": "hax.cloud-da hekayə ünvanı (stories/ee450a19)"
+      }
+    ]
+  }
+}

@@ -1,4 +1,6 @@
 {
   "saveAll": "全部保存",
-  "saveTheFollowing": "保存下头搿眼:{list}?"
+  "saveTheFollowing": "保存下头搿眼:{list}?",
+  "save": "保存",
+  "cancel": "取消"
 }

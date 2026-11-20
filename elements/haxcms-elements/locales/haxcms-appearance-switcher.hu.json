@@ -1,0 +1,8 @@
+{
+  "theme": "Téma",
+  "palette": "Paletta",
+  "themeDefault": "Téma alapértelmezése",
+  "designSystem": "Dizájnrendszer",
+  "designSystemDefault": "DDD (alapértelmezett)",
+  "designSystemUnavailable": "Ez a téma megtartja a saját dizájnrendszerét"
+}

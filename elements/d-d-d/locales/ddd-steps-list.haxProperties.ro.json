@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Listă de pași",
     "description": "Pași numerotați pentru finalizarea unei sarcini."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Indicator de pași",
+        "description": "Afișați pașii ca un rând compact de titluri care marchează progresul. Conținutul pașilor nu este afișat în acest aspect."
+      },
+      {
+        "title": "Pasul curent",
+        "description": "Pasul la care se află cititorul, numărând de la 1. Pașii anteriori apar ca finalizați. Folosit de indicatorul de pași."
+      }
+    ]
   }
 }

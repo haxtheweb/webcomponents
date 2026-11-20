@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "د شالید انځور."
+        "description": "د شالید انځور.",
+        "title": "انځور"
       },
       {
         "property": "caption",
-        "description": "د متن سرلیک."
+        "description": "د متن سرلیک.",
+        "title": "عنوان"
       }
     ]
   }

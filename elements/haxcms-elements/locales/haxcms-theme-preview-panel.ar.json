@@ -8,5 +8,9 @@
   "theme": "السمة",
   "palette": "لوحة الألوان",
   "cancel": "إلغاء",
-  "openAppearanceSettings": "فتح إعدادات المظهر"
+  "openAppearanceSettings": "فتح إعدادات المظهر",
+  "designSystem": "نظام التصميم",
+  "designSystemDefault": "DDD (افتراضي)",
+  "designSystemThemeDefault": "{name} (افتراضي السمة)",
+  "designSystemHelp": "اللون والخط والزوايا والكثافة. لا تزال السمة تحدد التخطيط."
 }

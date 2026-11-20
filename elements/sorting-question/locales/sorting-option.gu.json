@@ -2,5 +2,9 @@
   "answerInCorrectOrder": "જવાબ સાચા ક્રમમાં છે",
   "answerInIncorrectOrder": "જવાબ ખોટા ક્રમમાં છે",
   "moveOptionUp": "વિકલ્પને ક્રમમાં ઉપર ખસેડવા માટે પસંદ કરો",
-  "moveOptionDown": "વિકલ્પને ક્રમમાં નીચે ખસેડવા માટે પસંદ કરો"
+  "moveOptionDown": "વિકલ્પને ક્રમમાં નીચે ખસેડવા માટે પસંદ કરો",
+  "moveEarlier": "પહેલાં ખસેડો",
+  "moveLater": "પછી ખસેડો",
+  "correct": "સાચું",
+  "incorrect": "ખોટું"
 }

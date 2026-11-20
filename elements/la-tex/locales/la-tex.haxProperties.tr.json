@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "LaTeX matematik gösterimiyle yazın"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Resim arka planı",
+        "description": "Çizilen resimlerin arkasındaki arka plan. Otomatik, yalnızca çizim sayfada zor görülecekse (ör. karanlık modda koyu çizgiler) bir tane ekler.",
+        "options": {
+          "auto": "Otomatik",
+          "light": "Açık",
+          "dark": "Koyu",
+          "none": "Yok"
+        }
+      }
+    ]
   }
 }

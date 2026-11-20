@@ -20,6 +20,12 @@
         "title": "Wêne",
         "description": "Wêneyê bi gotinê re tê nîşandan."
       }
+    ],
+    "advanced": [
+      {
+        "title": "Bi çarçove",
+        "description": "Gotinê li ser çarçoveya hevpar a blokê bi îkon û etîketekê li jor xêz bike, da ku bi not û kartên rêwerzê re li hev bike."
+      }
     ]
   }
 }

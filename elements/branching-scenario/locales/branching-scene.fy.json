@@ -1,0 +1,14 @@
+{
+  "scene": "Sêne",
+  "ending": "Ein",
+  "goodEnding": "Goed ein",
+  "mixedEnding": "Mingd ein",
+  "poorEnding": "Min ein",
+  "scoreOf": "Skoare {score} fan {max}",
+  "scoreOnly": "Skoare {score}",
+  "startScene": "Begjin",
+  "sceneIdLabel": "Sêne-id",
+  "needsId": "Foegje in sêne-id ta sadat karren nei dizze sêne keppelje kinne.",
+  "orphan": "Gjin inkele kar keppelet nei dizze sêne.",
+  "deadLinks": "Dizze keppelings wize nei in sêne dy't net bestiet:"
+}

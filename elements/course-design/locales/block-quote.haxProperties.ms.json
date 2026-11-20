@@ -20,6 +20,12 @@
         "title": "Imej",
         "description": "Imej yang dipaparkan bersama petikan."
       }
+    ],
+    "advanced": [
+      {
+        "title": "Berbingkai",
+        "description": "Lukis petikan pada bingkai blok yang dikongsi, dengan ikon dan label di atasnya, supaya ia sepadan dengan nota dan kad arahan."
+      }
     ]
   }
 }

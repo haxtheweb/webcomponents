@@ -5,5 +5,7 @@
   "editModeLabel": "Modalità di modifica della playlist multimediale",
   "position": "{current} di {total}",
   "previousItem": "Elemento precedente",
-  "nextItem": "Elemento successivo"
+  "nextItem": "Elemento successivo",
+  "fullScreen": "Schermo intero",
+  "exitFullScreen": "Esci da schermo intero"
 }

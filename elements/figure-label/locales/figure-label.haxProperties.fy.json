@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Figuerlabel",
     "description": "Figuerlabel-elemint om media-items yn ynhâld te markearjen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Figuernûmer",
+        "description": "Nûmer of koart label foar de figuer, bgl. 1.3"
+      },
+      {
+        "title": "Beskriuwing",
+        "description": "Koarte beskriuwing fan de figuer"
+      }
+    ]
   }
 }

@@ -60,6 +60,8 @@
   "flagsFound": "{total}개 중 {correct}개 찾음",
   "toRethink": "다시 생각할 항목 {count}개",
   "notEvidence": "이 플래그의 근거가 아닙니다",
+  "isEvidence": "이 플래그의 근거",
+  "readingKeys": "화살표 키로 {unit} 단위로 이동하세요.",
   "markAnswers": "정답 표시",
   "doneMarking": "정답 표시 완료",
   "editHint": "아래 읽기 자료를 편집하세요. 블록 메뉴의 정답 표시를 사용해 각 플래그가 놓일 위치를 정하세요.",

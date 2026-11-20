@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "Mat der mathematescher Notatioun LaTeX schreiwen"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Bildhannergrond",
+        "description": "Hannergrond hannert gezeechente Biller. Automatesch setzt een nëmmen derbäi, wann d'Zeechnung op der Säit schwéier ze gesinn wier, wéi donkel Linnen am donkele Modus.",
+        "options": {
+          "auto": "Automatesch",
+          "light": "Hell",
+          "dark": "Donkel",
+          "none": "Keng"
+        }
+      }
+    ]
   }
 }

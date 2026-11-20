@@ -5,5 +5,7 @@
   "editModeLabel": "Bearbeitungsmodus der Medien-Playlist",
   "position": "{current} von {total}",
   "previousItem": "Vorheriges Element",
-  "nextItem": "Nächstes Element"
+  "nextItem": "Nächstes Element",
+  "fullScreen": "Vollbild",
+  "exitFullScreen": "Vollbild beenden"
 }

@@ -40,5 +40,7 @@
   "hideDirections": "説明を隠す",
   "showRelatedContent": "関連コンテンツを表示",
   "hideRelatedContent": "関連コンテンツを隠す",
-  "notAttempted": "未挑戦"
+  "notAttempted": "未挑戦",
+  "cardsDirections": "各カードの「前へ移動」「後ろへ移動」ボタンで、またはマウスでドラッグして、カードを正しい順番に並べてください。正しい順番だと思ったら、{checkAnswer} を選んで答えを確認します。",
+  "movedToPosition": "{item} を {total} 個中 {position} 番目に移動しました"
 }

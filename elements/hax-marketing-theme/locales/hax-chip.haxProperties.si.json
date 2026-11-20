@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "චිපය",
+    "description": "ලේබල් කළ කුඩා නිරූපකයක්"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "නිරූපකය"
+      },
+      {
+        "title": "ලේබලය"
+      }
+    ]
+  }
+}

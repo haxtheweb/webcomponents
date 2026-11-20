@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Matndan diagramma",
+    "description": "Diagrammani matn sifatida yozing (Mermaid): blok-sxema, ketma-ketlik, vaqt chizig‘i va boshqalar. U sahifada matnli muqobil bilan chiziladi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sarlavha",
+        "description": "Diagramma ustida ko‘rsatiladi va uning nomi sifatida ishlatiladi."
+      },
+      {
+        "title": "Diagramma manbasi",
+        "description": "Mermaid matni, masalan: flowchart TD, so‘ng har bir bog‘lanish uchun bitta qator, masalan A[Draft] --> B{Ready?}. Strelkaga yorliq qo‘yish uchun undan keyin |label| qo‘shing. Chizma siz yozgan sari yangilanadi."
+      },
+      {
+        "title": "Matnli muqobil",
+        "description": "Diagramma nimani ko‘rsatishini uni ko‘ra olmaydigan odamlar uchun tavsiflang. Blok-sxemada bosqichlar siz uchun ro‘yxatlanishi uchun bo‘sh qoldiring."
+      },
+      {
+        "title": "Izoh",
+        "description": "Diagramma ostida ko‘rsatiladigan ixtiyoriy izoh."
+      },
+      {
+        "title": "Manbani ko‘rsatish",
+        "description": "Diagramma matnini chizma yonida ko‘rsatish."
+      },
+      {
+        "title": "Matnli muqobilni ko‘rsatish",
+        "description": "Matnli muqobilni chizma ostida ko‘rsatish. U ekran o‘quvchilari uchun doim mavjud."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Manba fayli",
+        "description": "Yuqoridagi matn o‘rniga chiziladigan .mmd fayl manzili (https yoki shu saytdagi yo‘l)."
+      },
+      {
+        "title": "Urg‘u rangi",
+        "description": "Sarlavhadagi belgi chipining rangi."
+      }
+    ]
+  }
+}

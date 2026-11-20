@@ -1,0 +1,15 @@
+{
+  "loading": "ንጽጽሩን በመጫን ላይ።",
+  "yes": "አዎ",
+  "partly": "በከፊል",
+  "no": "አይ",
+  "compare": "አወዳድር",
+  "with": "ከ",
+  "vs": "ከ ጋር",
+  "caption": "{a} እና {b}፣ ባህሪ በባህሪ",
+  "feature": "ባህሪ",
+  "clearYes": "ከ {total} {count} ግልጽ አዎ",
+  "seeForYourself": "ራስዎ ይመልከቱ፦",
+  "and": "እና",
+  "why": "ለምን"
+}

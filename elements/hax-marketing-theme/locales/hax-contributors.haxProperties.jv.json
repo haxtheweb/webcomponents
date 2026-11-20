@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Kontributor",
+    "description": "Wong-wong sing mbangun proyek, saka berkas dhaptar"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Berkas dhaptar (JSON)"
+      },
+      {
+        "title": "Tampilan: landed, lab utawa code"
+      },
+      {
+        "title": "Paling akeh wong sing ditampilake (0 tegese kabeh)"
+      }
+    ]
+  }
+}

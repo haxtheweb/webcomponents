@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Háttérkép."
+        "description": "Háttérkép.",
+        "title": "Kép"
       },
       {
         "property": "caption",
-        "description": "Szöveges címsor."
+        "description": "Szöveges címsor.",
+        "title": "Képaláírás"
       }
     ]
   }

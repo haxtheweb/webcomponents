@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Lālani hiʻohiʻona",
+    "description": "He pakuhi o ka huahana ma ka ʻaoʻao o kona manaʻo nou"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Lepili liʻiliʻi"
+      },
+      {
+        "title": "Poʻo"
+      },
+      {
+        "title": "Kiʻi"
+      },
+      {
+        "title": "Ka mea a ke kiʻi e hōʻike ai"
+      },
+      {
+        "title": "Kiʻi ma ka ʻākau"
+      },
+      {
+        "title": "Waihoʻoluʻu aka (inoa DDD, ukali ka hakahaka i ka papa waihoʻoluʻu)"
+      }
+    ]
+  }
+}

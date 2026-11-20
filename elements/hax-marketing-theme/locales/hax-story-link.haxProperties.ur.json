@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "کہانی بٹن",
+    "description": "وہ بٹن جو hax.cloud پر کسی دعوے کے پیچھے کی کہانی کھولتا ہے، یا کسی اور HAX نیٹ ورک سائٹ پر متعلقہ جگہ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "یہ کہاں جاتا ہے",
+        "options": {
+          "cloud": "hax.cloud، کہانی",
+          "learn": "learn.hax.cloud، ایک سبق",
+          "try": "browser.hax.cloud، آزمائیں",
+          "elements": "webcomponents.hax.cloud، ایک بلاک",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "اس سائٹ پر پتہ (hax.cloud پر کہانی stories/ee450a19 جیسی دکھتی ہے)"
+      },
+      {
+        "title": "یہ کس بارے میں ہے"
+      },
+      {
+        "title": "چھوٹی چِپ"
+      },
+      {
+        "title": "بٹن میں دکھائیں کہ یہ کس بارے میں ہے"
+      }
+    ]
+  }
+}

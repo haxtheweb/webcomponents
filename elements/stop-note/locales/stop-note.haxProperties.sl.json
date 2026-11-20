@@ -23,7 +23,9 @@
           "stop": "Stop",
           "warning": "Opozorilo",
           "success": "Potrditev",
-          "info": "Obvestilo"
+          "info": "Obvestilo",
+          "tip": "Nasvet",
+          "new": "Kaj je novega"
         }
       },
       {

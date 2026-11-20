@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Statisztikacsempe",
+    "description": "Egy fontos szám a címkéjével és a változásával. Helyezzen el többet egy rácsban egy irányítópult-sorhoz."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Címke",
+        "description": "Mit mér a szám."
+      },
+      {
+        "title": "Érték",
+        "description": "A szám. Egy egyszerű szám az oldal nyelvének megfelelően tagolódik; minden más úgy jelenik meg, ahogy írták."
+      },
+      {
+        "title": "Változás",
+        "description": "Hogyan változott, szavakkal, például 6% ebben a félévben."
+      },
+      {
+        "title": "Irány",
+        "description": "Felfelé vagy lefelé történt-e a változás.",
+        "options": {
+          "": "Nincs",
+          "up": "Fel",
+          "down": "Le"
+        }
+      }
+    ]
+  }
+}

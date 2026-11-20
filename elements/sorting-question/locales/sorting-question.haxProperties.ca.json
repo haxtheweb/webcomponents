@@ -13,6 +13,14 @@
       {
         "property": "answers",
         "title": "Respostes",
+        "description": "L'ordre de les respostes defineix la seqüència correcta.",
+        "options": {
+          "": "Llista",
+          "cards": "Targetes amb imatge"
+        }
+      },
+      {
+        "title": "Respostes",
         "description": "L'ordre de les respostes defineix la seqüència correcta."
       }
     ],

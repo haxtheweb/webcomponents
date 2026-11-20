@@ -40,5 +40,7 @@
   "hideDirections": "لارښوونې پټې کړئ",
   "showRelatedContent": "اړوند منځپانګه وښایاست",
   "hideRelatedContent": "اړوند منځپانګه پټه کړئ",
-  "notAttempted": "هڅه نه ده شوې"
+  "notAttempted": "هڅه نه ده شوې",
+  "cardsDirections": "کارتونه د هر کارت پر مخکې او وروسته کولو تڼیو سره په سم ترتیب کې کېږدئ، یا یې په موږک کش کړئ. کله چې باور لرئ چې په سم ترتیب کې دي، د {checkAnswer} په ټاکلو سره خپل ځواب وازمویئ.",
+  "movedToPosition": "{item} د {total} له جملې {position} ځای ته ولېږدول شو"
 }

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Ìran ìṣẹ̀lẹ̀",
+    "description": "Ìran kan nínú ìṣẹ̀lẹ̀ onípẹ̀ka. So àṣàyàn kọ̀ọ̀kan mọ́ ìran mìíràn pẹ̀lú # tí ID ìran rẹ̀ tẹ̀lé."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID ìran",
+        "description": "Ohun tí àwọn àṣàyàn ń so mọ́: ìjápọ̀ sí # tí id yìí tẹ̀lé yóò yọrí sí ìran yìí. Lẹ́tà, nọ́mbà àti àmì ìdákọ."
+      },
+      {
+        "title": "Àkọlé",
+        "description": "Àkọlé ìran náà."
+      },
+      {
+        "title": "Ìparí",
+        "description": "Bóyá ìran yìí ń parí ọ̀nà kan, àti bí ó ṣe yọrí.",
+        "options": {
+          "": "Kì í ṣe ìparí",
+          "good": "Ìparí rere",
+          "mixed": "Ìparí àdàlù",
+          "poor": "Ìparí tí kò dára"
+        }
+      },
+      {
+        "title": "Àmì",
+        "description": "Àmì fún dídé ìparí yìí. Àmì ìparí tó ga jù nínú ìṣẹ̀lẹ̀ náà ni òpin."
+      }
+    ]
+  }
+}

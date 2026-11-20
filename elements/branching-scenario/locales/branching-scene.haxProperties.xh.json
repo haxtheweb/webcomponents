@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Umboniso wemeko",
+    "description": "Umboniso omnye wemeko enamasebe. Nxibelelanisa ukhetho ngalunye nomnye umboniso nge-# ilandelwa yi-id yomboniso wayo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "I-id yomboniso",
+        "description": "Oko ukhetho lunxibelelana nako: ikhonkco eliya ku-# lilandelwa yile id likhokelela kulo mboniso. Oonobumba, amanani nezihlanganisi."
+      },
+      {
+        "title": "Isihloko",
+        "description": "Isihloko somboniso."
+      },
+      {
+        "title": "Isiphelo",
+        "description": "Ingaba lo mboniso uphelisa indlela, nokuba kuphume njani.",
+        "options": {
+          "": "Asisosiphelo",
+          "good": "Isiphelo esihle",
+          "mixed": "Isiphelo esixubeneyo",
+          "poor": "Isiphelo esibi"
+        }
+      },
+      {
+        "title": "Amanqaku",
+        "description": "Amanqaku okufikelela kwesi siphelo. Amanqaku aphezulu esiphelo kwimeko ngawona aphezulu."
+      }
+    ]
+  }
+}

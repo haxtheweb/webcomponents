@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Xaalad laamo leh",
+    "description": "Sheeko doorasho kastaa ay u horseeddo muuqaal iyo dhammaad kala duwan. Ardaydu dib bay u noqon karaan oo isku dayi karaan waddooyin kale; dhammaadka la gaaro ayaa go'aamiya dhibcaha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Cinwaan",
+        "description": "Magaca xaaladda, oo ka muuqda madaxeeda."
+      },
+      {
+        "title": "Muuqaalka bilowga",
+        "description": "ID-ga muuqaalka ardaydu ka bilaabaan. Ka tag madhan si aad uga bilowdo muuqaalka ugu horreeya."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Midabka xoojinta",
+        "description": "Midab ikhtiyaari ah oo loogu talagalay chip-ka madaxa, badhamada iyo geeska doorashada."
+      }
+    ]
+  }
+}

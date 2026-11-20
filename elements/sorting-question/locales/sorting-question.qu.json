@@ -40,5 +40,7 @@
   "hideDirections": "Kamachiykunata pakay",
   "showRelatedContent": "Tupaq ukhunchayta rikuchiy",
   "hideRelatedContent": "Tupaq ukhunchayta pakay",
-  "notAttempted": "Mana pruebasqachu"
+  "notAttempted": "Mana pruebasqachu",
+  "cardsDirections": "Tarjetakunata allin siq'iman churay sapa tarjetapi ñawpaqman qhipaman kuyuchina ñit'inakunawan, utaq ratonwan aysay. Allin siq'ipi kasqanta yuyaspaqa, {checkAnswer} akllaspa kutichiyniykita pruebay.",
+  "movedToPosition": "{item} {position} kaq tiyanaman {total} manta kuyuchisqa"
 }

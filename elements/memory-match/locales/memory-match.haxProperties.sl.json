@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Igra spomina",
+    "description": "Obračajte karte in iščite pare. Pojem povežite z njegovim pomenom, da ujemanje pokaže razumevanje, ali uporabite dve ujemajoči se besedili ali sliki."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Naslov",
+        "description": "Navodilo, prikazano v glavi, na primer: Poveži pojem z njegovo nalogo."
+      },
+      {
+        "title": "Pari",
+        "description": "Vsak par sta dve karti, ki spadata skupaj, običajno pojem in njegov pomen. Stran potrebuje besedilo, sliko ali oboje."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Poudarjalna barva",
+        "description": "Izbirna barva za značko v glavi, hrbte kart in gumb."
+      }
+    ]
+  }
+}

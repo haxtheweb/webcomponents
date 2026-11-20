@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Iconota pakay",
         "description": "Qillqata sumaqchanapaq llamk'achisqa iconota pakay"
+      },
+      {
+        "title": "Rikch'ay",
+        "description": "Ñit'ina hayk'a sapaqchasqam.",
+        "options": {
+          "": "Hunt'asqa",
+          "tonal": "Llimp'isqa",
+          "outlined": "Muyurisqa",
+          "plain": "Ch'uya"
+        }
+      },
+      {
+        "title": "Sayay",
+        "description": "Ñit'inap sayaynin.",
+        "options": {
+          "s": "Huch'uy",
+          "": "Chawpi",
+          "l": "Hatun"
+        }
       }
     ],
     "advanced": [

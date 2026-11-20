@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Matsayin Baseline",
+    "description": "Nuna matsayin goyon bayan burauza na Baseline na fasalin dandalin yanar gizo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID na fasali",
+        "description": "ID na fasalin yanar gizo, misali anchor-positioning. Nemo ID a webstatus.dev; ID shi ne ɓangare na ƙarshe na URL na shafin fasali."
+      }
+    ]
+  }
+}

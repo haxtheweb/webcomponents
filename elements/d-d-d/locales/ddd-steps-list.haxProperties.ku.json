@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Lîsteya gavan",
     "description": "Gavên bi hejmar ji bo qedandina karekî."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nîşankera gavan",
+        "description": "Gavan wekî rêzeke kompakt a sernavan nîşan bide ku pêşveçûnê nîşan dide. Naveroka gavan di vê dirûvê de nayê nîşandan."
+      },
+      {
+        "title": "Gava niha",
+        "description": "Gava ku xwîner lê ye, ji 1 tê hejmartin. Gavên berê wekî qediyayî tên nîşandan. Ji aliyê nîşankera gavan ve tê bikaranîn."
+      }
+    ]
   }
 }

@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Poznámka pod čarou",
+    "description": "Poznámka napsaná tam, kam v textu patří. Zobrazí se jako číslo a číslovaný seznam poznámek se sám vytvoří na konci stránky."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Poznámka",
+        "description": "Text poznámky pod čarou."
+      },
+      {
+        "title": "Bez náhledu",
+        "description": "Nezobrazovat poznámku, když čtenář najede na číslo nebo na něj přejde."
+      }
+    ]
+  }
+}

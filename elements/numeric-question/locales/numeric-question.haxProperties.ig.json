@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Ajụjụ ọnụọgụ",
+    "description": "Ajụjụ a na-aza site na ọnụọgụ. Azịza ya bụ ọnụọgụ edobere ma ọ bụ usoro a gbakọrọ site na mgbanwe, ọ na-agụkwa mgbe ọ dị n'ime oke ndidi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ajụjụ",
+        "description": "Ihe a na-ajụ ndị mmụta. Dee aha mgbanwe n'ime akara mkpọchi, dịka {d}, iji gosi uru ya."
+      },
+      {
+        "title": "Nkeji",
+        "description": "E gosiri dịka ederede n'akụkụ ebe azịza, dịka km/h."
+      },
+      {
+        "title": "Azịza",
+        "description": "Ọnụọgụ ziri ezi. Hapụ ya efu mgbe usoro na-agbakọ azịza ya."
+      },
+      {
+        "title": "Usoro",
+        "description": "Na-agbakọ azịza site na mgbanwe, dịka d / (t / 60). Nwere ike iji + - * / ^, akara mkpọchi, sqrt() na abs(). A na-eji ya kama azịza mgbe etọrọ ya."
+      },
+      {
+        "title": "Mgbanwe",
+        "description": "Ọnụọgụ usoro na ajụjụ na-eji. Nke ọ bụla na-ewere uru n'etiti nke kacha ala ya na nke kacha elu ya, na nzọụkwụ."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Oke ndidi",
+        "description": "Otu o si dị anya site na azịza ziri ezi ma ka na-agụ. 0 pụtara kpọmkwem, ma ọ bụ e mere ka ọ bụrụ ebe ntụpọ dị n'okpuru."
+      },
+      {
+        "title": "Ụdị oke ndidi",
+        "description": "Zuru oke: gbakwunye ma ọ bụ wepụ oke ndidi. Pasentị: gbakwunye ma ọ bụ wepụ pasentị ahụ nke azịza ziri ezi.",
+        "options": {
+          "absolute": "Zuru oke",
+          "percent": "Pasentị"
+        }
+      },
+      {
+        "title": "Ebe ntụpọ",
+        "description": "A na-ajụ ndị mmụta ka ha mee ka ọ bụrụ ebe ndị a, a na-egosikwa azịza ahụ dịka ya. Hapụ ya efu maka enweghị mgbanwe."
+      },
+      {
+        "title": "Ngbalị",
+        "description": "Ugboro ole onye mmụta nwere ike ilele. 0 pụtara enweghị oke."
+      },
+      {
+        "title": "Ọnụọgụ ọhụrụ na ngbalị ọ bụla",
+        "description": "Wepụta uru mgbanwe ọhụrụ oge ọ bụla onye mmụta nwara ọzọ. A naghị egosi azịza ya gara aga mgbe ọ lọghachiri, naanị ma ọ ziri ezi."
+      },
+      {
+        "title": "Enwere ike ịkpachi",
+        "description": "Gosi ajụjụ a dịka ahịrị na-emeghe ma na-emechi. Imeghe otu na-emechi ajụjụ ndị ọzọ enwere ike ịkpachi dị n'akụkụ ya."
+      },
+      {
+        "title": "Malite emechiri emechi",
+        "description": "Mgbe enwere ike ịkpachi, malite dịka ahịrị emechiri emechi na-egosi naanị ajụjụ na ọnọdụ ya."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Aha ajụjụ ule",
+        "description": "Aha ajụjụ ule e ji maka njirimara xAPI na sistemụ nyocha data."
+      }
+    ]
+  }
+}

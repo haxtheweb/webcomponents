@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Baseline סטאַטוס",
+    "description": "װײַז דעם Baseline בלעטערער־שטיצע סטאַטוס פֿון אַ װעב־פּלאַטפֿאָרמע פֿונקציע."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "פֿונקציע־ID",
+        "description": "ID פֿון דער װעב־פֿונקציע, למשל anchor-positioning. געפֿין IDs אויף webstatus.dev; די ID איז דער לעצטער טייל פֿון אַ פֿונקציע־בלאַט URL."
+      }
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "theme": "تیم",
+  "palette": "رنګ‌پاڼه",
+  "themeDefault": "د تیم ډیفالټ",
+  "designSystem": "د ډیزاین سیسټم",
+  "designSystemDefault": "DDD (ډیفالټ)",
+  "designSystemUnavailable": "دا تیم خپل د ډیزاین سیسټم ساتي"
+}

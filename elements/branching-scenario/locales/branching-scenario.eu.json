@@ -1,0 +1,22 @@
+{
+  "scenario": "Agertokia",
+  "directions": "Jarraibideak",
+  "showDirections": "Erakutsi jarraibideak",
+  "hideDirections": "Ezkutatu jarraibideak",
+  "directionsRead": "Irakurri eszena bakoitza eta aukeratu zer egingo zenukeen.",
+  "directionsEndings": "Hainbat amaiera daude. Amaitu ondoren, saiatu beste bide bat.",
+  "startOver": "Hasi berriro",
+  "back": "Urrats bat atzera",
+  "tryAnother": "Saiatu beste bide bat",
+  "path": "Bidea",
+  "scene": "Eszena",
+  "ending": "Amaiera",
+  "end": "amaiera",
+  "scenesSeen": "{total} eszenatik {seen} ikusita",
+  "endingReached": "Amaierara iritsi zara",
+  "addScene": "Gehitu eszena",
+  "newScene": "Eszena berria",
+  "newSceneText": "Deskribatu zer gertatzen den, eta lotu aukera bakoitza eszena batekin.",
+  "editingNote": "Editatzen: eszena guztiak erakusten dira. Aukera bat # eta eszena-ID bat duen esteka da.",
+  "noScenes": "Gehitu eszena bat agertokia hasteko."
+}

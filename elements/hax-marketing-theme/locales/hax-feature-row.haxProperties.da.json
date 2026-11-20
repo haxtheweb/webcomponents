@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Funktionsrække",
+    "description": "Et skærmbillede af produktet ved siden af, hvad det betyder for dig"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Lille etiket"
+      },
+      {
+        "title": "Overskrift"
+      },
+      {
+        "title": "Billede"
+      },
+      {
+        "title": "Hvad billedet viser"
+      },
+      {
+        "title": "Billede til højre"
+      },
+      {
+        "title": "Skyggefarve (DDD-navn, tom følger paletten)"
+      }
+    ]
+  }
+}

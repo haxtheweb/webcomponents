@@ -2,5 +2,9 @@
   "toggleAnimation": "Scoránaigh beochan",
   "info": "eolas",
   "image": "Íomhá",
-  "animatedGif": "GIF beoite"
+  "animatedGif": "GIF beoite",
+  "playAnimation": "Seinn an beochan",
+  "pauseAnimation": "Cuir an beochan ar sos",
+  "showDescription": "Taispeáin an cur síos",
+  "hideDescription": "Folaigh an cur síos"
 }

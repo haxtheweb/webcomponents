@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Babak senario",
+    "description": "Satu babak dalam senario bercabang. Pautkan setiap pilihan ke babak lain dengan # diikuti ID babaknya."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID babak",
+        "description": "Sasaran pautan pilihan: pautan ke # diikuti ID ini membawa ke babak ini. Huruf, nombor dan sempang."
+      },
+      {
+        "title": "Tajuk",
+        "description": "Tajuk babak."
+      },
+      {
+        "title": "Pengakhiran",
+        "description": "Sama ada babak ini menamatkan laluan, dan bagaimana kesudahannya.",
+        "options": {
+          "": "Bukan pengakhiran",
+          "good": "Pengakhiran baik",
+          "mixed": "Pengakhiran bercampur",
+          "poor": "Pengakhiran lemah"
+        }
+      },
+      {
+        "title": "Skor",
+        "description": "Skor untuk mencapai pengakhiran ini. Skor pengakhiran tertinggi dalam senario ialah maksimum."
+      }
+    ]
+  }
+}

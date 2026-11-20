@@ -14,6 +14,10 @@
         "property": "hotspotDetails",
         "title": "Szczegóły punktów",
         "description": "Interaktywne punkty na mapie obrazu."
+      },
+      {
+        "title": "Szczegóły obszarów",
+        "description": "Interaktywne obszary na mapie obrazu."
       }
     ]
   }

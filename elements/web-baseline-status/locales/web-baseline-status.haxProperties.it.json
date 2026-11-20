@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Stato Baseline",
+    "description": "Mostra lo stato di supporto Baseline nei browser di una funzionalità della piattaforma web."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID della funzionalità",
+        "description": "ID della funzionalità web, ad esempio anchor-positioning. Trova gli ID su webstatus.dev; l'ID è l'ultima parte dell'URL della pagina di una funzionalità."
+      }
+    ]
+  }
+}

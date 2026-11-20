@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Byrja uttanhýsis amboð",
+    "description": "Ein blokkur, sum letur eitt uttanhýsis læruamboð upp í nýggjum vindeyga ella á síðuni, sum vanligt leinki ella við eini LTI 1.3-innritingarumbøn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Heiti",
+        "description": "Navnið á amboðnum. Tað verður víst í høvdinum og á knøttinum."
+      },
+      {
+        "title": "Lýsing",
+        "description": "Hvat lesandi gera í amboðnum, víst omanfyri knøttin."
+      },
+      {
+        "title": "Byrjanar-URL",
+        "description": "Adressan á amboðnum. Hon má vera ein full adressa, sum byrjar við https:// ella http://."
+      },
+      {
+        "title": "Lat upp í",
+        "description": "Eitt nýtt vindeyga virkar við øllum amboðum. Á hesi síðuni virkar bert við amboðum, sum loyva at verða víst inni í aðrari síðu.",
+        "options": {
+          "window": "Eitt nýtt vindeyga",
+          "embed": "Á hesi síðuni"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "LTI-innritingar-URL",
+        "description": "Bert LTI 1.3: innritingarbyrjanaradressan hjá amboðnum. Við hesi, einum client ID og einum deployment ID sendir knøtturin eina LTI-innritingarumbøn í staðin fyri at lata eitt vanligt leinki upp. At fullføra byrjanina krevur LTI-tænastuna hjá hesi síðuni."
+      },
+      {
+        "title": "LTI client ID",
+        "description": "Client ID, sum amboðið gav hesi síðuni. Ein almenn eyðmerking, ikki eitt loyndarmál: set ongantíð lyklar ella loyndarmál her."
+      },
+      {
+        "title": "LTI deployment ID",
+        "description": "Deployment ID, sum amboðið gav hesi síðuni. Ein almenn eyðmerking, ikki eitt loyndarmál."
+      },
+      {
+        "title": "LTI-útgevari",
+        "description": "Adressan, sum eyðmerkir hesa síðuna fyri amboðnum. Lat vera tómt fyri at brúka adressuna á síðuni, sum síðan er á."
+      },
+      {
+        "title": "Hædd á síðuni",
+        "description": "Hæddin á amboðnum, tá ið tað letst upp á hesi síðuni, í pikslum (200 til 2000)."
+      },
+      {
+        "title": "Áherðslulitur",
+        "description": "Litur á høvuðsmerkinum og knøttinum. Lat vera tómt fyri at fylgja temanum."
+      }
+    ],
+    "developer": [
+      {
+        "title": "LTI-innritingarábending",
+        "description": "Eitt ógjøgnumskygt virði, sum LTI-tænastan hjá hesi síðuni brúkar til at kenna lesandi aftur. Vanliga veitt av síðuni gjøgnum hendingina lti-launch-request heldur enn goymt her. Ongantíð eitt loyniorð ella ein lykil."
+      },
+      {
+        "title": "LTI-boðábending",
+        "description": "Eitt ógjøgnumskygt virði, sum LTI-tænastan hjá hesi síðuni brúkar til at kenna hesa byrjanina aftur. Vanliga veitt av síðuni heldur enn goymt her."
+      }
+    ]
+  }
+}

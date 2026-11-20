@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Urrats zerrenda",
     "description": "Zeregin bat osatzeko urrats zenbakituak."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Urrats-adierazlea",
+        "description": "Erakutsi urratsak aurrerapena markatzen duen izenburu-errenkada trinko gisa. Urratsen edukia ez da diseinu honetan erakusten."
+      },
+      {
+        "title": "Uneko urratsa",
+        "description": "Irakurlea zein urratsetan dagoen, 1etik zenbatzen hasita. Aurreko urratsak osatuta agertzen dira. Urrats-adierazleak erabiltzen du."
+      }
+    ]
   }
 }

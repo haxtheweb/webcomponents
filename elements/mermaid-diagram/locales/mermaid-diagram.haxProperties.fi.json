@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Kaavio tekstistä",
+    "description": "Kirjoita kaavio tekstinä (Mermaid): vuokaavio, sekvenssi, aikajana ja muuta. Se piirretään sivulle tekstivastineen kanssa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Otsikko",
+        "description": "Näytetään kaavion yläpuolella ja käytetään sen nimenä."
+      },
+      {
+        "title": "Kaavion lähde",
+        "description": "Mermaid-tekstiä, esimerkiksi: flowchart TD ja sitten yksi rivi linkkiä kohden, kuten A[Draft] --> B{Ready?}. Lisää |label| nuolen perään nimetäksesi sen. Piirros päivittyy kirjoittaessasi."
+      },
+      {
+        "title": "Tekstivastine",
+        "description": "Kuvaile, mitä kaavio esittää, niille, jotka eivät näe sitä. Jätä vuokaaviossa tyhjäksi, niin sen vaiheet luetellaan puolestasi."
+      },
+      {
+        "title": "Kuvateksti",
+        "description": "Valinnainen kuvateksti kaavion alla."
+      },
+      {
+        "title": "Näytä lähde",
+        "description": "Näytä kaavion teksti piirroksen vieressä."
+      },
+      {
+        "title": "Näytä tekstivastine",
+        "description": "Näytä tekstivastine piirroksen alla. Se on aina ruudunlukijoiden saatavilla."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Lähdetiedosto",
+        "description": "Piirrettävän .mmd-tiedoston osoite yllä olevan tekstin sijaan (https tai polku tällä sivustolla)."
+      },
+      {
+        "title": "Korostusväri",
+        "description": "Otsakkeen kuvakemerkin väri."
+      }
+    ]
+  }
+}

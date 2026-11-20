@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Ֆոնային պատկեր։"
+        "description": "Ֆոնային պատկեր։",
+        "title": "Պատկեր"
       },
       {
         "property": "caption",
-        "description": "Տեքստային վերնագիր։"
+        "description": "Տեքստային վերնագիր։",
+        "title": "Ենթագիր"
       }
     ]
   }

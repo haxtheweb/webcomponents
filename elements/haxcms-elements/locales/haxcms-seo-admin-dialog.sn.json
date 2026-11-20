@@ -6,6 +6,8 @@
   "faviconDescription": "Mufananidzo wetebhu yebhurawuza / unoshandiswa pamafoni selogo diki resaiti",
   "domain": "Domain",
   "domainDescription": "Domain yewebhusaiti iyi",
+  "sameAs": "Mamwe maprofile esaiti iyi",
+  "sameAsDescription": "Link imwe pamutsara kumaprofile esaiti iyi kana sangano kumwe kunhu (GitHub, LinkedIn, YouTube, Mastodon). Injini dzekutsvaga dzinodzishandisa kubatanidza maprofile iwayo nesaiti iyi.",
   "language": "Mutauro",
   "languageDescription": "Mutauro wesaiti iyi. Tsvaga nezita kana code, kana nyora imwe code seye fr-CA.",
   "googleAnalyticsId": "Google Analytics ID",

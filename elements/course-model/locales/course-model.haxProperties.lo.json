@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "ຫົວຂໍ້"
+        "title": "ຫົວຂໍ້",
+        "description": "ຫົວຂໍ້ທີ່ສະແດງຢູ່ເທິງແບບຈຳລອງຫຼັກສູດ."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "ທີ່ຢູ່ຂອງໄຟລ໌ແບບຈຳລອງ 3D (.glb ຫຼື .gltf) ທີ່ຈະສະແດງ."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "ອະທິບາຍແບບຈຳລອງ 3D ສຳລັບຄົນທີ່ບໍ່ສາມາດເຫັນມັນ."
       },
       {
         "title": "ພື້ນທີ່ຂໍ້ມູນ"

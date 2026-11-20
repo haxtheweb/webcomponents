@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Status Baseline",
+    "description": "Prikaži Baseline status podrške u preglednicima za značajku web-platforme."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID značajke",
+        "description": "ID web-značajke, npr. anchor-positioning. ID-ove pronađite na webstatus.dev; ID je zadnji dio URL-a stranice značajke."
+      }
+    ]
+  }
+}

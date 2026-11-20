@@ -40,5 +40,7 @@
   "hideDirections": "Nascondi le istruzioni",
   "showRelatedContent": "Mostra i contenuti correlati",
   "hideRelatedContent": "Nascondi i contenuti correlati",
-  "notAttempted": "Non tentato"
+  "notAttempted": "Non tentato",
+  "cardsDirections": "Metti le carte nell'ordine corretto con i pulsanti sposta prima e sposta dopo su ogni carta, oppure trascinale con il mouse. Quando pensi che siano nell'ordine corretto, verifica la risposta selezionando {checkAnswer}.",
+  "movedToPosition": "{item} spostato in posizione {position} di {total}"
 }

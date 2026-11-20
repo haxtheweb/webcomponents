@@ -40,5 +40,7 @@
   "hideDirections": "सूचना लपवा",
   "showRelatedContent": "संबंधित मजकूर दाखवा",
   "hideRelatedContent": "संबंधित मजकूर लपवा",
-  "notAttempted": "प्रयत्न केलेला नाही"
+  "notAttempted": "प्रयत्न केलेला नाही",
+  "cardsDirections": "प्रत्येक कार्डवरील आधी हलवा आणि नंतर हलवा बटणांनी, किंवा माउसने ओढून कार्डे योग्य क्रमात लावा. योग्य क्रम लागला असे वाटल्यावर {checkAnswer} निवडून तुमचे उत्तर तपासा.",
+  "movedToPosition": "{item} {total} पैकी स्थान {position} वर हलवले"
 }

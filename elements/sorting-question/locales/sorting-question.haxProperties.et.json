@@ -13,7 +13,15 @@
       {
         "property": "answers",
         "title": "Vastused",
-        "description": "Vastuste järjekord määrab õige järjestuse."
+        "description": "Vastuste järjekord määrab õige järjestuse.",
+        "options": {
+          "": "Loend",
+          "cards": "Pildikaardid"
+        }
+      },
+      {
+        "title": "Vastused",
+        "description": "Vastuste järjekord määrab õige jada."
       }
     ],
     "advanced": [

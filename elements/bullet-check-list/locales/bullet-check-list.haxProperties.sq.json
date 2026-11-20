@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Listë kontrolli me pika",
+    "description": "Një listë kutish zgjedhjeje. Lexuesit shënojnë elementet dhe përparimi i tyre mbahet mend në pajisjen e tyre."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titulli",
+        "description": "Emri i listës. Lexohet me zë si etiketa e grupit të kutive të zgjedhjes."
+      },
+      {
+        "title": "Elementet",
+        "description": "Çdo element është kuti zgjedhjeje. Elementet e shënuara ose të çaktivizuara nuk mund të ndryshohen nga lexuesit."
+      },
+      {
+        "title": "E numëruar",
+        "description": "Shfaq një listë të numëruar në vend të listës me pika."
+      },
+      {
+        "title": "Statusi",
+        "description": "Ndryshon ngjyrat që të përputhen me stop-note.",
+        "options": {
+          "info": "Njoftim",
+          "success": "Konfirmim",
+          "warning": "Paralajmërim",
+          "stop": "Ndalo"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "ID-ja e ruajtjes",
+        "description": "ID unike që përdoret për të mbajtur mend përparimin e lexuesit në pajisjen e tij. Gjenerohet automatikisht; ndryshoje vetëm për të ndarë përparimin mes listave ose për të filluar nga e para."
+      }
+    ]
+  }
+}

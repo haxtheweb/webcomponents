@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Umbuzo wezinombolo",
+    "description": "Umbuzo ophendulwa ngenombolo. Impendulo iyinombolo egxilile noma ifomula esetshenzwa ngokuguquguqukayo, futhi iyabalwa uma ingaphakathi kokubekezelelwa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Umbuzo",
+        "description": "Lokho abafundi abakubuzwayo. Bhala igama lokuguquguqukayo kubakaki abagobile, njengo-{d}, ukuze ubonise inani lakho."
+      },
+      {
+        "title": "Iyunithi",
+        "description": "Kuboniswa njengombhalo eceleni kwendawo yempendulo, isibonelo km/h."
+      },
+      {
+        "title": "Impendulo",
+        "description": "Inombolo elungile. Shiya kungenalutho uma ifomula ithola impendulo."
+      },
+      {
+        "title": "Ifomula",
+        "description": "Ithola impendulo kusuka kokuguquguqukayo, isibonelo d / (t / 60). Ingasebenzisa + - * / ^, abakaki, sqrt() kanye ne-abs(). Isetshenziswa esikhundleni sempendulo uma isethiwe."
+      },
+      {
+        "title": "Okuguquguqukayo",
+        "description": "Izinombolo ifomula nombuzo ezisebenzisayo. Ngayinye ithatha inani phakathi kokuphansi kwayo nokuphezulu kwayo, ngezinyathelo."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ukubekezelelwa",
+        "description": "Ibanga elingakanani kusuka empendulweni eqondile elisabalwa. U-0 usho okuqondile, noma okushaywe ezindaweni zedesimali ezingezansi."
+      },
+      {
+        "title": "Uhlobo lokubekezelelwa",
+        "description": "Ngokuphelele: hlanganisa noma susa ukubekezelelwa. Iphesenti: hlanganisa noma susa lelo phesenti lempendulo eqondile.",
+        "options": {
+          "absolute": "Ngokuphelele",
+          "percent": "Iphesenti"
+        }
+      },
+      {
+        "title": "Izindawo zedesimali",
+        "description": "Abafundi bacelwa ukuthi bashaye kuze kube yilezi zindawo, futhi impendulo iboniswa ishaywe kuzo. Shiya kungenalutho uma kungekho kushaywa."
+      },
+      {
+        "title": "Imizamo",
+        "description": "Izikhathi umfundi angahlola ngazo. U-0 usho ukuthi akunamkhawulo."
+      },
+      {
+        "title": "Izinombolo ezintsha kuwo wonke umzamo",
+        "description": "Khipha amanani amasha okuguquguqukayo njalo uma umfundi ezama futhi. Impendulo yabo yangaphambili ayibe isaboniswa uma bebuya, kuphela ukuthi baphendule kahle yini."
+      },
+      {
+        "title": "Iyagoqeka",
+        "description": "Bonisa lo mbuzo njengomugqa ovuleka futhi uvaleke. Ukuvula owodwa kuvala eminye imibuzo egoqekayo eseduze nawo."
+      },
+      {
+        "title": "Qala kugoqiwe",
+        "description": "Uma igoqeka, qala njengomugqa ovaliwe obonisa umbuzo nesimo sawo kuphela."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Igama lequizi",
+        "description": "Igama lequizi elisetshenziselwa ukuhlonza kwe-xAPI ezinhlelweni zokuhlaziya."
+      }
+    ]
+  }
+}

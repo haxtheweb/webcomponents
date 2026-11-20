@@ -3,5 +3,8 @@
   "copyAsCsv": "Detuo dị ka CSV.",
   "printTable": "Bipụta tebụl",
   "selectColumn": "Họrọ kọlụm",
-  "dataTable": "Data · Tebụl"
+  "dataTable": "Data · Tebụl",
+  "filterStatus": "Na-egosi ahịrị {shown} n'ime {total}, ehichara site na {column}: {text}",
+  "columnNumber": "Kọlụm {column}",
+  "clearFilter": "Hichapụ nzacha"
 }

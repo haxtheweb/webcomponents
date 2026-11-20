@@ -9,5 +9,7 @@
   "slidePages": "სლაიდის გვერდები",
   "goToSlide": "გადასვლა სლაიდზე {number}",
   "slides": "სლაიდები",
-  "position": "{total}-დან {number}"
+  "position": "{total}-დან {number}",
+  "fullScreen": "სრული ეკრანი",
+  "exitFullScreen": "სრული ეკრანიდან გასვლა"
 }

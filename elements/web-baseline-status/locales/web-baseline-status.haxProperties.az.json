@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Baseline statusu",
+    "description": "Veb platforma xüsusiyyətinin Baseline brauzer dəstəyi statusunu göstər."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Xüsusiyyət ID-si",
+        "description": "Veb xüsusiyyətinin ID-si, məsələn anchor-positioning. ID-ləri webstatus.dev-də tapın; ID xüsusiyyət səhifəsi URL-inin son hissəsidir."
+      }
+    ]
+  }
+}

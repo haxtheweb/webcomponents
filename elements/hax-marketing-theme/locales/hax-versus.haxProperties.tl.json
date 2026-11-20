@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Versus",
+    "description": "Mga salita sa tabi ng head-to-head button na may dalawang karakter"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Heading"
+      },
+      {
+        "title": "Kung saan pupunta ang button"
+      },
+      {
+        "title": "Teksto ng button"
+      },
+      {
+        "title": "Seed ng kaliwang karakter"
+      },
+      {
+        "title": "Seed ng kanang karakter"
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Baseline-staða",
+    "description": "Sýna Baseline-stöðu vafrastuðnings fyrir eiginleika vefkerfisins."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Auðkenni eiginleika",
+        "description": "Auðkenni vefeiginleikans, til dæmis anchor-positioning. Finndu auðkenni á webstatus.dev; auðkennið er síðasti hluti URL síðu eiginleikans."
+      }
+    ]
+  }
+}

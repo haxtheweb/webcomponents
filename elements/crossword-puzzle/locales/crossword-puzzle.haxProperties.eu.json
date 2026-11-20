@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Gurutzegrama",
+    "description": "Hitz eta pista zerrenda batetik egindako gurutzegrama. Sareta zuretzat sortzen da; ikasleek hitzak idazten eta egiaztatzen dituzte."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Izenburua",
+        "description": "Gurutzegramaren gainean erakusten den izenburua edo galdera."
+      },
+      {
+        "title": "Hitzak",
+        "description": "Hitz bakoitza eta haren pista. Sareta zerrenda honetatik sortzen da: hitzik luzeena lehenik kokatzen da eta besteek letra partekatuetan gurutzatzen dute."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Saiakerak",
+        "description": "Zenbat aldiz egiazta dezakeen ikasle batek. 0k mugagabea esan nahi du."
+      },
+      {
+        "title": "Azentu-kolorea",
+        "description": "Aukerako kolorea goiburuko txartelerako, hitz aktiborako eta ekintza-botoietarako."
+      },
+      {
+        "title": "Tolesgarria",
+        "description": "Erakutsi gurutzegrama hau ireki eta ixten den errenkada gisa. Bat irekitzeak ondoko beste galdera tolesgarriak ixten ditu."
+      },
+      {
+        "title": "Hasi tolestuta",
+        "description": "Tolesgarria denean, hasi izenburua eta haren egoera soilik erakusten dituen errenkada itxi gisa."
+      },
+      {
+        "title": "Kalifikazio-formatua",
+        "description": "OER Schema: ebaluazio honen kalifikazio-formatua (adib. puntuak, letra, ehunekoa, osaketa)."
+      },
+      {
+        "title": "Ikaskuntza-helburua",
+        "description": "OER Schema: ebaluazio honekin lotutako ikaskuntza-helburua."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Galdetegiaren izena",
+        "description": "Analitika-sistemetan xAPI identifikaziorako erabiltzen den galdetegiaren izena."
+      },
+      {
+        "title": "Ikastaroa",
+        "description": "OER Schema: ebaluazio hau zein ikastarorentzat den."
+      }
+    ]
+  }
+}

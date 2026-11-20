@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Escena de l'escenari",
+    "description": "Una escena d'un escenari ramificat. Enllaça cada opció a una altra escena amb # seguit del seu id d'escena."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Id de l'escena",
+        "description": "A què enllacen les opcions: un enllaç a # seguit d'aquest id porta a aquesta escena. Lletres, nombres i guions."
+      },
+      {
+        "title": "Encapçalament",
+        "description": "Encapçalament de l'escena."
+      },
+      {
+        "title": "Final",
+        "description": "Si aquesta escena acaba un camí, i com ha acabat.",
+        "options": {
+          "": "No és un final",
+          "good": "Bon final",
+          "mixed": "Final mixt",
+          "poor": "Mal final"
+        }
+      },
+      {
+        "title": "Puntuació",
+        "description": "Puntuació per arribar a aquest final. La puntuació de final més alta de l'escenari és el màxim."
+      }
+    ]
+  }
+}

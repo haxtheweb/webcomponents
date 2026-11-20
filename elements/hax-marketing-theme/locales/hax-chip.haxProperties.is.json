@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "Flaga",
+    "description": "Lítið tákn með merki"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tákn"
+      },
+      {
+        "title": "Merki"
+      }
+    ]
+  }
+}

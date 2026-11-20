@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "titolo"
+        "title": "titolo",
+        "description": "Titolo mostrato sopra il modello del corso."
       },
       {
         "property": "src",
-        "title": "sorgente"
+        "title": "sorgente",
+        "description": "Indirizzo del file del modello 3D (.glb o .gltf) da mostrare."
       },
       {
         "property": "alt",
-        "title": "testo alternativo"
+        "title": "testo alternativo",
+        "description": "Descrivi il modello 3D per chi non può vederlo."
       },
       {
         "title": "Area informazioni"

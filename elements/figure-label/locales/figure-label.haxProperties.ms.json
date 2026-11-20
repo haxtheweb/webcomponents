@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Label rajah",
     "description": "Elemen label rajah untuk menandakan aset media dalam kandungan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nombor rajah",
+        "description": "Nombor atau label pendek untuk rajah, cth. 1.3"
+      },
+      {
+        "title": "Keterangan",
+        "description": "Keterangan ringkas rajah"
+      }
+    ]
   }
 }

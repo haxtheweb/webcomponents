@@ -3,5 +3,7 @@
   "status_stop": "Зогс",
   "status_warning": "Анхааруулга",
   "status_success": "Амжилттай",
-  "status_info": "Тэмдэглэл"
+  "status_info": "Тэмдэглэл",
+  "status_tip": "Та мэдэх үү?",
+  "status_new": "Шинэ зүйлс"
 }

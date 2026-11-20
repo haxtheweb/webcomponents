@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Wiersz funkcji",
+    "description": "Ekran produktu obok tego, co to dla Ciebie znaczy"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mała etykieta"
+      },
+      {
+        "title": "Nagłówek"
+      },
+      {
+        "title": "Obraz"
+      },
+      {
+        "title": "Co pokazuje obraz"
+      },
+      {
+        "title": "Obraz po prawej"
+      },
+      {
+        "title": "Kolor cienia (nazwa DDD, puste podąża za paletą)"
+      }
+    ]
+  }
+}

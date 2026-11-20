@@ -5,5 +5,7 @@
   "editModeLabel": "Modo de edición da lista de reprodución multimedia",
   "position": "{current} de {total}",
   "previousItem": "Elemento anterior",
-  "nextItem": "Seguinte elemento"
+  "nextItem": "Seguinte elemento",
+  "fullScreen": "Pantalla completa",
+  "exitFullScreen": "Saír da pantalla completa"
 }

@@ -9,5 +9,7 @@
   "slidePages": "Stránky snímok",
   "goToSlide": "Prejsť na snímku {number}",
   "slides": "Prezentácia",
-  "position": "{number} z {total}"
+  "position": "{number} z {total}",
+  "fullScreen": "Celá obrazovka",
+  "exitFullScreen": "Ukončiť celú obrazovku"
 }

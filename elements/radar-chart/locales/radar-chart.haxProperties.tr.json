@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Radar grafiği",
+    "description": "HEOSAT gibi olgunluk modelleri ve boyut puanlaması için radar (örümcek) grafiği. Metin alternatifi ve veri tablosu içerir."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Başlık",
+        "description": "Grafiğin başlığı; erişilebilir adı olarak da kullanılır."
+      },
+      {
+        "title": "Maksimum puan",
+        "description": "Ölçekteki en yüksek değer."
+      },
+      {
+        "title": "Kategoriler",
+        "description": "Her satıra bir kategori. En az 3 gerekir."
+      },
+      {
+        "title": "Puanlar",
+        "description": "Virgülle ayrılmış sayılar, aynı sırayla her kategori için bir tane."
+      },
+      {
+        "title": "Hedef puanlar",
+        "description": "Virgülle ayrılmış sayılar, aynı sırayla her kategori için bir tane."
+      },
+      {
+        "title": "Göstergeyi göster",
+        "description": "Puanları ve hedefleri adlandıran bir gösterge göster."
+      },
+      {
+        "title": "Kompakt",
+        "description": "Etiket, gösterge veya veri tablosu olmayan daha küçük grafik. Değerlerini görmek için bir noktanın üzerine gelin."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Puan etiketi",
+        "description": "Puanlar için gösterge ve tablo etiketi."
+      },
+      {
+        "title": "Hedef etiketi",
+        "description": "Hedefler için gösterge ve tablo etiketi."
+      }
+    ]
+  }
+}

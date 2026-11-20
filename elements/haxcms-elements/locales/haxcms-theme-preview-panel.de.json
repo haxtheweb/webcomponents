@@ -8,5 +8,9 @@
   "theme": "Design",
   "palette": "Palette",
   "cancel": "Abbrechen",
-  "openAppearanceSettings": "Einstellungen zum Erscheinungsbild öffnen"
+  "openAppearanceSettings": "Einstellungen zum Erscheinungsbild öffnen",
+  "designSystem": "Designsystem",
+  "designSystemDefault": "DDD (Standard)",
+  "designSystemThemeDefault": "{name} (Theme-Standard)",
+  "designSystemHelp": "Farbe, Schrift, Ecken und Dichte. Das Layout bestimmt weiterhin das Theme."
 }

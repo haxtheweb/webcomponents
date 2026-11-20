@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Kuhia ma lalo",
+    "description": "He moʻolelo i kākau ʻia ma kona wahi kūpono i loko o ke kikokikona. Hōʻike ʻia ma ke ʻano he helu, a kūkulu ʻia ka papa inoa helu o nā moʻolelo ma lalo o ka ʻaoʻao."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Moʻolelo",
+        "description": "Ke kikokikona o ke kuhia ma lalo."
+      },
+      {
+        "title": "ʻAʻohe nānā mua",
+        "description": "Mai hōʻike i ka moʻolelo ke lele ka mea heluhelu a i ʻole kau i ka nānā ma ka helu."
+      }
+    ]
+  }
+}

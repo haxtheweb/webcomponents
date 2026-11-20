@@ -1,4 +1,6 @@
 {
   "saveAll": "Išsaugoti viską",
-  "saveTheFollowing": "Išsaugoti šiuos: {list}?"
+  "saveTheFollowing": "Išsaugoti šiuos: {list}?",
+  "save": "Išsaugoti",
+  "cancel": "Atšaukti"
 }

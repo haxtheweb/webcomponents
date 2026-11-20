@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Pilastru",
+    "description": "Pilastru: isem, frażi, ikona, kulur u għaliex huwa importanti"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Isem"
+      },
+      {
+        "title": "Frażi"
+      },
+      {
+        "title": "Ikona"
+      },
+      {
+        "title": "Kulur (isem DDD)"
+      },
+      {
+        "title": "Liema pilastru, 1 sa 7"
+      },
+      {
+        "title": "Karta żgħira"
+      },
+      {
+        "title": "Fejn imur l-isem"
+      }
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Nota a margine",
+    "description": "Una nota separata dal contenuto circostante, con icona ed etichetta facoltative."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etichetta",
+        "description": "L'etichetta della nota a margine."
+      },
+      {
+        "title": "Icona",
+        "description": "L'icona della nota a margine."
+      },
+      {
+        "title": "Contenuto",
+        "description": "Contenuto della nota a margine."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Colore",
+        "description": "Il colore con cui è tinta la nota a margine."
+      }
+    ]
+  }
+}

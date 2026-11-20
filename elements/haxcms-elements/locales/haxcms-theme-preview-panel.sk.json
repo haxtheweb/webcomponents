@@ -8,5 +8,9 @@
   "theme": "Téma",
   "palette": "Paleta",
   "cancel": "Zrušiť",
-  "openAppearanceSettings": "Otvoriť nastavenia vzhľadu"
+  "openAppearanceSettings": "Otvoriť nastavenia vzhľadu",
+  "designSystem": "Dizajnový systém",
+  "designSystemDefault": "DDD (predvolený)",
+  "designSystemThemeDefault": "{name} (predvolené motívu)",
+  "designSystemHelp": "Farba, písmo, rohy a hustota. O rozložení stále rozhoduje motív."
 }

@@ -11,7 +11,8 @@
       },
       {
         "property": "imgAlt",
-        "title": "Alternativni tekst"
+        "title": "Alternativni tekst",
+        "description": "Opišite sliku za ljude koji je ne mogu vidjeti."
       },
       {
         "slot": "figcaption",
@@ -32,11 +33,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Opcionalni tekst sažetka kada su detalji otvoreni"
+        "title": "Opcionalni tekst sažetka kada su detalji otvoreni",
+        "description": "Tekst dugmeta dok je opis sakriven, npr. Prikaži opis."
       },
       {
         "property": "closeText",
-        "title": "Opcionalni tekst sažetka kada su detalji zatvoreni"
+        "title": "Opcionalni tekst sažetka kada su detalji zatvoreni",
+        "description": "Tekst dugmeta dok je opis prikazan, npr. Sakrij opis."
       }
     ]
   }

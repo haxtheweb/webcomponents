@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Seznam kroků",
     "description": "Číslované kroky k dokončení úkolu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ukazatel kroků",
+        "description": "Zobrazit kroky jako kompaktní řádek názvů, který vyznačuje postup. Obsah kroků se v tomto rozvržení nezobrazuje."
+      },
+      {
+        "title": "Aktuální krok",
+        "description": "Krok, na kterém čtenář je, počítáno od 1. Dřívější kroky se zobrazí jako dokončené. Používá ho ukazatel kroků."
+      }
+    ]
   }
 }

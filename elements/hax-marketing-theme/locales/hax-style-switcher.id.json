@@ -1,0 +1,16 @@
+{
+  "theme": "Tema",
+  "designSystem": "Sistem desain",
+  "dddDefault": "DDD (bawaan)",
+  "designSystemHelp": "Warna, huruf, sudut, dan fokus. Tema mempertahankan tata letaknya.",
+  "designSystemFixed": "Tema ini mempertahankan sistem desainnya sendiri.",
+  "palette": "Palet",
+  "themeDefault": "Bawaan tema",
+  "paletteNumber": "Palet {n}",
+  "siteTheme": "{name} (tema situs ini)",
+  "restyle": "Ubah gaya situs ini",
+  "close": "Tutup",
+  "reset": "Kembali ke tampilan asli situs ini",
+  "random": "Kejutkan saya",
+  "about": "Ini menampilkan beberapa tampilan bawaan HAX. Halamannya tidak pernah berubah: struktur tersimpan di JSON Outline Schema dan setiap blok adalah komponen web standar, jadi desainnya bebas diganti."
+}

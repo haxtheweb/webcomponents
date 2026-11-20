@@ -40,5 +40,7 @@
   "hideDirections": "Fjal vegleiðing",
   "showRelatedContent": "Vís tilknýtt innihald",
   "hideRelatedContent": "Fjal tilknýtt innihald",
-  "notAttempted": "Ikki roynt"
+  "notAttempted": "Ikki roynt",
+  "cardsDirections": "Set kortini í røttu røðina við knøttunum flyt fram og flyt aftur á hvørjum korti, ella drag tey við mús. Tá ið tú heldur, at tey eru í røttu røð, royn svarið við at velja {checkAnswer}.",
+  "movedToPosition": "{item} flutt í stað {position} av {total}"
 }

@@ -9,5 +9,7 @@
   "slidePages": "Rûpelên slaydan",
   "goToSlide": "Here slayda {number}",
   "slides": "Slayd",
-  "position": "{number} ji {total}"
+  "position": "{number} ji {total}",
+  "fullScreen": "Ekrana tevahî",
+  "exitFullScreen": "Ji ekrana tevahî derkeve"
 }

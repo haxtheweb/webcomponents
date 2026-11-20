@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Membro del cast",
+    "description": "Un pubblico, interpretato da un personaggio, con testo e un pulsante"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Chi è"
+      },
+      {
+        "title": "Tipo di personaggio"
+      },
+      {
+        "title": "Seme del personaggio"
+      },
+      {
+        "title": "Colore del palco (nome DDD)"
+      },
+      {
+        "title": "Dove porta il pulsante"
+      },
+      {
+        "title": "Testo del pulsante"
+      }
+    ]
+  }
+}

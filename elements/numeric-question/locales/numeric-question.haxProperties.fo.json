@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Talspurningur",
+    "description": "Ein spurningur, sum verður svaraður við einum tali. Svarið er eitt fast tal ella ein formul roknaður út frá variablum, og telur, tá ið tað er innan fyri eitt frávik."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Spurningur",
+        "description": "Hvat lesandi verða spurd. Skriva eitt variabulnavn millum klombrur, sum {d}, fyri at vísa virðið."
+      },
+      {
+        "title": "Eind",
+        "description": "Víst sum tekstur við síðuna av svarteiginum, til dømis km/h."
+      },
+      {
+        "title": "Svar",
+        "description": "Rætta talið. Lat vera tómt, tá ið ein formul roknar svarið út."
+      },
+      {
+        "title": "Formul",
+        "description": "Roknar svarið út frá variablunum, til dømis d / (t / 60). Kann brúka + - * / ^, klombrur, sqrt() og abs(). Brúktur í staðin fyri svarið, tá ið hann er settur."
+      },
+      {
+        "title": "Variablar",
+        "description": "Tøl, sum formulurin og spurningurin brúka. Hvørt tekur eitt virði millum lægsta og hægsta, í stigum."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Frávik",
+        "description": "Hvussu langt frá rætta svarinum enn telur. 0 merkir neyvt, ella rundað til desimalarnar niðanfyri."
+      },
+      {
+        "title": "Fráviksslag",
+        "description": "Ítøkiligt: plus ella minus frávikið. Prosent: plus ella minus tað prosentið av rætta svarinum.",
+        "options": {
+          "absolute": "Ítøkiligt",
+          "percent": "Prosent"
+        }
+      },
+      {
+        "title": "Desimalar",
+        "description": "Lesandi verða biðin um at runda til so nógvar desimalar, og svarið verður víst rundað til tað. Lat vera tómt fyri onga runding."
+      },
+      {
+        "title": "Royndir",
+        "description": "Hvussu nógvar ferðir ein lesandi kann kanna. 0 merkir óavmarkað."
+      },
+      {
+        "title": "Nýggj tøl við hvørja roynd",
+        "description": "Drag nýggj variabulvirði hvørja ferð ein lesandi roynir aftur. Fyrra svarið verður tá ikki víst, tá ið tey koma aftur, bert hvørt tey høvdu rætt."
+      },
+      {
+        "title": "Kann leggjast saman",
+        "description": "Vís henda spurningin sum eina røð, ið letst upp og aftur. At lata ein upp letur hinar samanleggjandi spurningarnar við síðuna av aftur."
+      },
+      {
+        "title": "Byrja samanlagt",
+        "description": "Tá ið hann kann leggjast saman, byrja sum ein afturlatin røð, ið bert vísir spurningin og støðuna."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Navn á spurnarkappingini",
+        "description": "Navn á spurnarkapping, brúkt til xAPI-eyðmerking í greiningarkervum."
+      }
+    ]
+  }
+}

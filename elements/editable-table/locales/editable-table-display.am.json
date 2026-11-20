@@ -3,5 +3,8 @@
   "copyAsCsv": "እንደ CSV ቅዳ።",
   "printTable": "ሰንጠረዡን አትም",
   "selectColumn": "ዓምድ ምረጥ",
-  "dataTable": "ውሂብ · ሠንጠረዥ"
+  "dataTable": "ውሂብ · ሠንጠረዥ",
+  "filterStatus": "ከ {total} ረድፎች {shown} በማሳየት ላይ፣ በ {column} የተጣሩ፦ {text}",
+  "columnNumber": "አምድ {column}",
+  "clearFilter": "ማጣሪያን አጽዳ"
 }

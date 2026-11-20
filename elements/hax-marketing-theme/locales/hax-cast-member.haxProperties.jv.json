@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Paraga",
+    "description": "Siji pamirsa, diperanake paraga, karo tembung lan tombol"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sapa iki"
+      },
+      {
+        "title": "Jinis paraga"
+      },
+      {
+        "title": "Wiji paraga"
+      },
+      {
+        "title": "Warna panggung (jeneng DDD)"
+      },
+      {
+        "title": "Tujuan tombol"
+      },
+      {
+        "title": "Teks tombol"
+      }
+    ]
+  }
+}

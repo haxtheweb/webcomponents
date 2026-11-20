@@ -1,0 +1,19 @@
+{
+  "label": "Meeshaa alaa",
+  "labelLti": "Meeshaa alaa · LTI 1.3",
+  "theTool": "meeshicha",
+  "directions": "Qajeelfama",
+  "showDirections": "Qajeelfama agarsiisi",
+  "hideDirections": "Qajeelfama dhoksi",
+  "directionsWindow": "Qabduun foddaa haaraa meeshicha qabu bana.",
+  "directionsEmbed": "Qabduun meeshicha fuula kana irratti bana. Yoo hin fe'amne, kanaa mannaa foddaa haaraa keessatti bani.",
+  "directionsLti": "Marsariitiin kun meeshichatti si galcha, kanaaf herrega adda ta'e hin barbaaddu.",
+  "openWindow": "{title} bani (foddaa haaraa)",
+  "openEmbed": "{title} bani",
+  "openInstead": "Kanaa mannaa foddaa haaraa keessatti bani",
+  "frameTitle": "{title} (meeshaa alaa)",
+  "openedWindow": "Foddaan haaraan meeshicha waliin baneera.",
+  "openedEmbed": "Meeshichi fuula kana irratti baneera.",
+  "needsUrl": "Kutaan kun teessoo jalqabsiisaa http:// ykn https:// n jalqabu barbaada.",
+  "needsSignIn": "Meeshaan kun tajaajila seensa marsariitii kanaa barbaada, kunis asitti hin jiru. Homtuu hin banamne."
+}

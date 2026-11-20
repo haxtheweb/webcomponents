@@ -8,5 +8,9 @@
   "theme": "Tema",
   "palette": "Palitra",
   "cancel": "Ýatyrmak",
-  "openAppearanceSettings": "Daşky görnüş sazlamalaryny aç"
+  "openAppearanceSettings": "Daşky görnüş sazlamalaryny aç",
+  "designSystem": "Dizaýn ulgamy",
+  "designSystemDefault": "DDD (deslapky)",
+  "designSystemThemeDefault": "{name} (temanyň deslapkysy)",
+  "designSystemHelp": "Reňk, şrift, burçlar we dykyzlyk. Ýerleşişi ýene tema kesgitleýär."
 }

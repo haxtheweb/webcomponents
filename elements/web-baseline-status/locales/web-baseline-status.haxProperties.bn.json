@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Baseline অবস্থা",
+    "description": "একটি ওয়েব প্ল্যাটফর্ম ফিচারের Baseline ব্রাউজার সাপোর্ট অবস্থা দেখান।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ফিচার ID",
+        "description": "ওয়েব ফিচারের ID, যেমন anchor-positioning। webstatus.dev-এ ID খুঁজুন; ID হলো একটি ফিচার পাতার URL-এর শেষ অংশ।"
+      }
+    ]
+  }
+}

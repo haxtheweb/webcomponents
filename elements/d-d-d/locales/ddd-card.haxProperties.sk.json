@@ -52,6 +52,20 @@
           "_top": "Najvyššie okno - _top",
           "_parent": "Nadradené okno - _parent"
         }
+      },
+      {
+        "title": "Bez šípky",
+        "description": "Skryť šípku tlačidla."
+      },
+      {
+        "title": "Odkaz: cieľ",
+        "description": "Kde otvoriť odkaz.",
+        "options": {
+          "": "Rovnaké okno",
+          "_blank": "Nové okno - _blank",
+          "_top": "Horné okno - _top",
+          "_parent": "Nadradené okno - _parent"
+        }
       }
     ],
     "developer": [

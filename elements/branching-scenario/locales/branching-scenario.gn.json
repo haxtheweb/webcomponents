@@ -1,0 +1,22 @@
+{
+  "scenario": "Jehasa",
+  "directions": "Tape",
+  "showDirections": "Ehechauka tape",
+  "hideDirections": "Emokañy tape",
+  "directionsRead": "Emoñe'ẽ peteĩteĩ escena ha eiporavo mba'épa rejapóta.",
+  "directionsEndings": "Oĩ heta paha. Ehecha ambue tape remohu'ã rire.",
+  "startOver": "Eñepyrũjey",
+  "back": "Peteĩ jehasa tapykuépe",
+  "tryAnother": "Ehecha ambue tape",
+  "path": "Tape",
+  "scene": "Escena",
+  "ending": "Paha",
+  "end": "paha",
+  "scenesSeen": "{seen} {total} escena apytégui ojehecháma",
+  "endingReached": "Og̃uahẽ pahápe",
+  "addScene": "Embojoapy escena",
+  "newScene": "Escena pyahu",
+  "newSceneText": "Emombe'u mba'épa oiko, upéi embojoaju peteĩteĩ jeporavo peteĩ escena rehe.",
+  "editingNote": "Ñembosako'i: ojehechauka opaite escena. Peteĩ jeporavo ha'e juajuha # gotyo ha upéi peteĩ escena id.",
+  "noScenes": "Embojoapy peteĩ escena eñepyrũ hag̃ua jehasa."
+}

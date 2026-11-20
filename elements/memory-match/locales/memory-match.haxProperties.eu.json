@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Memoria-jokoa",
+    "description": "Buelta eman kartei bikoteak aurkitzeko. Lotu termino bat bere esanahiarekin bat etortzeak ulermena erakuts dezan, edo erabili bat datozen bi testu edo irudi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Izenburua",
+        "description": "Goiburuan erakusten den enuntziatua, adibidez: Lotu terminoa bere egitekoarekin."
+      },
+      {
+        "title": "Bikoteak",
+        "description": "Bikote bakoitza elkarrekin doazen bi karta dira, normalean termino bat eta haren esanahia. Alde batek testua, irudia edo biak behar ditu."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Azentu-kolorea",
+        "description": "Aukerako kolorea goiburuko txartelerako, karten atzealdeetarako eta botoirako."
+      }
+    ]
+  }
+}

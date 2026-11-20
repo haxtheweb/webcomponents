@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Historieknapp",
+    "description": "Knappen som åpner historien bak en påstand på hax.cloud, eller tilsvarende sted på et annet nettsted i HAX-nettverket"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Hvor den går",
+        "options": {
+          "cloud": "hax.cloud, historien",
+          "learn": "learn.hax.cloud, en opplæring",
+          "try": "browser.hax.cloud, prøv det",
+          "elements": "webcomponents.hax.cloud, en blokk",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Adresse på det nettstedet (en historie på hax.cloud ser ut som stories/ee450a19)"
+      },
+      {
+        "title": "Hva det handler om"
+      },
+      {
+        "title": "Liten brikke"
+      },
+      {
+        "title": "Vis hva det handler om i knappen"
+      }
+    ]
+  }
+}

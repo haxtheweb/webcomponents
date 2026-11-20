@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Felhasználásiterület-választó",
+    "description": "Válassza ki, mire szolgál egy webhely, és kap egy hivatkozást, amely a böngészőben nyitja meg a HAX-et az adott kezdő webhellyel, valamint a megfelelő CLI-parancsot."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "A böngészős HAX címe",
+        "description": "Hol nyílik meg a hivatkozás; hozzáadódik a ?skeleton= és a &name="
+      },
+      {
+        "title": "Kihagyandó kezdő webhelyek",
+        "description": "Gépi nevek, vesszővel elválasztva"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Kezdő webhelyek listája",
+        "description": "A vázlista címe (az app-hax által olvasott formátumban)"
+      }
+    ]
+  }
+}

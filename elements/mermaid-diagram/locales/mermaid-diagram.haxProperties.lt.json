@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Diagrama iš teksto",
+    "description": "Parašykite diagramą tekstu (Mermaid): struktūrinę schemą, sekų diagramą, laiko juostą ir kt. Ji nupiešiama puslapyje su tekstine alternatyva."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pavadinimas",
+        "description": "Rodoma virš diagramos ir naudojama kaip jos pavadinimas."
+      },
+      {
+        "title": "Diagramos šaltinis",
+        "description": "Mermaid tekstas, pavyzdžiui: flowchart TD, tada po vieną eilutę kiekvienai jungčiai, pvz., A[Draft] --> B{Ready?}. Po rodykle pridėkite |label|, kad ją pažymėtumėte. Piešinys atsinaujina jums rašant."
+      },
+      {
+        "title": "Tekstinė alternatyva",
+        "description": "Aprašykite, ką rodo diagrama, tiems, kurie jos nemato. Struktūrinėje schemoje palikite tuščią, kad jos žingsniai būtų išvardyti už jus."
+      },
+      {
+        "title": "Paaiškinimas",
+        "description": "Pasirinktinis paaiškinimas, rodomas po diagrama."
+      },
+      {
+        "title": "Rodyti šaltinį",
+        "description": "Rodyti diagramos tekstą šalia piešinio."
+      },
+      {
+        "title": "Rodyti tekstinę alternatyvą",
+        "description": "Rodyti tekstinę alternatyvą po piešiniu. Ekrano skaitytuvams ji prieinama visada."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Šaltinio failas",
+        "description": "Piešiamo .mmd failo adresas vietoj aukščiau esančio teksto (https arba kelias šioje svetainėje)."
+      },
+      {
+        "title": "Akcento spalva",
+        "description": "Piktogramos žymės antraštėje spalva."
+      }
+    ]
+  }
+}

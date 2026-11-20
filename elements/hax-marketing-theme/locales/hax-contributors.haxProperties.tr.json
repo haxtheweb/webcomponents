@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Katkıda bulunanlar",
+    "description": "Projeyi yapan kişiler, bir liste dosyasından"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Liste dosyası (JSON)"
+      },
+      {
+        "title": "Görünüm: landed, lab veya code"
+      },
+      {
+        "title": "Gösterilecek en fazla kişi (0 tümü)"
+      }
+    ]
+  }
+}

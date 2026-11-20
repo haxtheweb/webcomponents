@@ -3,5 +3,7 @@
   "status_stop": "Yima",
   "status_warning": "Isilumkiso",
   "status_success": "Impumelelo",
-  "status_info": "Inqaku"
+  "status_info": "Inqaku",
+  "status_tip": "Ubusazi?",
+  "status_new": "Yintoni entsha"
 }
