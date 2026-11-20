@@ -1635,6 +1635,22 @@ export const INTERNAL_CONTRACTS = [
       "haxcms-site-reports",
     ],
   },
+  {
+    id: "contract-gallery-areas",
+    title: "Component gallery: the eight areas, borrowed",
+    surface:
+      "The component gallery (webcomponents.hax.cloud, built by scripts/build-component-gallery.js), the dashboard PRAW, hax.cloud stories, CI review links and the Goggles lenses send people to.",
+    tokens: [
+      "HaxUiAdminTokens",
+      "HaxUiAdminControls",
+      "--hax-ui-titlebar",
+      "--hax-ui-sunken",
+      "--hax-ui-line",
+    ],
+    structure:
+      "Borrows the admin shell's eight areas rather than inventing a layout: 0 network bar (hax-network-bar, not the gallery's), 1 title bar (start: the menu button; end: Appearance, a button with the live palette and current pick whose panel hangs from the bar, and the lens switch; a demo with its own pickers keeps only its theme picker and takes the gallery pick through applyLook), 2 section rail as the components menu (search, filters including In this page, the list, license links at its foot; hides at any time, resizes by its edge, a drawer on phones), 3 page header (tag, one-line description, status pills, no buttons), 4 toolbar (view switch, demo and topic pickers, no copy/open/export), 5 workspace as the stage (demo, documentation, licenses; keeps its own styling, gallery CSS never reaches in), 6 detail panel as the inspector (Goggles lenses: X-ray, Makers, PRAW; full install and import lines; hides and resizes like the rail; a toolbar view on phones), 7 action bar (left: package, version, why it needs update; right: copy install, copy import, open in new tab, CodePen, fullscreen, report an issue; More on phones), 8 item menu on a list entry. Every area is addressable by link (element, view, demo, topic; menu, panel, lens, in, embed), a link value wins over the remembered state for that visit, landmarks follow the areas (header, nav, main, aside), and the gallery audit and contrast gates hold it to the bar of other HAX properties. Not an element: held by yarn test:gallery-audit, not by yarn lint:hax-ui-admin.",
+    targetElements: [],
+  },
   // ---- Phase 3: site-* and theme conformance contracts ----
   {
     id: "contract-site-menu",
