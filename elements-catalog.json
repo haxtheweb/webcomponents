@@ -414,6 +414,16 @@
       "tags": []
     },
     {
+      "tag": "app-hax-design-browser",
+      "title": "",
+      "description": "Browse every template or theme with search, facets and sort, then hand the pick to the create dialog (design-chosen event, detail: the use case item).",
+      "package": "@haxtheweb/app-hax",
+      "import": "@haxtheweb/app-hax/lib/v2/app-hax-design-browser.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
       "tag": "app-hax-filter-tag",
       "title": "",
       "description": "",
@@ -2201,6 +2211,16 @@
       "tags": []
     },
     {
+      "tag": "hax-future-traveler-mark",
+      "title": "",
+      "description": "The HAX mark in the top bar: the Future Traveler. He is decorative (hidden from assistive tech, never a tab stop), but click him and he glitches into the next era he has been to, the same eras the network bar's traveler remixes through, and stays there on every HAX screen until he is clicked agai...",
+      "package": "@haxtheweb/haxcms-elements",
+      "import": "@haxtheweb/haxcms-elements/lib/core/ui/hax-future-traveler-mark.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
       "tag": "hax-gizmo-browser",
       "title": "",
       "description": "",
@@ -2772,6 +2792,16 @@
       "tags": []
     },
     {
+      "tag": "haxcms-goggles",
+      "title": "",
+      "description": "haxcms-goggles The Future Traveler's goggles as a developer mode: rims around the whole system, and lenses that show how a piece is made, who made it, or let you flag it for an issue.",
+      "package": "@haxtheweb/haxcms-elements",
+      "import": "@haxtheweb/haxcms-elements/lib/core/ui/haxcms-goggles.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
       "tag": "haxcms-json-theme",
       "title": "",
       "description": "",
@@ -2817,16 +2847,6 @@
       "description": "Structure's import step inside the one admin dialog: the pages an import found, in an outline-designer to arrange before they are added. Save sends the same haxcms-create-node event (with outline-designer getData()) the old stand-alone import dialog sent, so the backend call and what it does afte...",
       "package": "@haxtheweb/haxcms-elements",
       "import": "@haxtheweb/haxcms-elements/lib/core/haxcms-outline-import-dialog.js",
-      "type": "element",
-      "haxCapable": false,
-      "tags": []
-    },
-    {
-      "tag": "haxcms-page-get-started",
-      "title": "",
-      "description": "Dialog for presenting an editable outline",
-      "package": "@haxtheweb/haxcms-elements",
-      "import": "@haxtheweb/haxcms-elements/lib/core/ui/haxcms-page-get-started.js",
       "type": "element",
       "haxCapable": false,
       "tags": []

@@ -2,7 +2,7 @@
   "_meta": {
     "elementsScanned": 267,
     "elementsWithTranslations": 176,
-    "translationFilesFound": 40869,
+    "translationFilesFound": 40870,
     "languagesSupported": [
       "af",
       "am",
@@ -616,6 +616,7 @@
     "haxcms-darkmode-toggle": 1,
     "haxcms-editor-settings-dialog-ui": 1,
     "haxcms-files-admin-dialog": 1,
+    "haxcms-goggles": 2,
     "haxcms-language-picker": 1,
     "haxcms-page-operations": 1,
     "haxcms-page-revisions-dialog": 1,
