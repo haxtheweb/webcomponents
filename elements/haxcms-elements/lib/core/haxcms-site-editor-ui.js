@@ -1758,6 +1758,18 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               dataToPost.append("parentId", itemPptx.parent);
             }
             break;
+          case "odp":
+            dataToPost.append("upload", values.data);
+            endpointCall = "@system/odpToHtml";
+            if (mode === "create-branch") {
+              endpointCall = "@system/importOdp";
+              dataToPost.append("method", "branch");
+              dataToPost.append("type", "branch");
+              // set parent to same as current page's parent
+              const itemOdp = toJS(store.activeItem);
+              dataToPost.append("parentId", itemOdp.parent);
+            }
+            break;
           case "odt":
             dataToPost.append("upload", values.data);
             endpointCall = "@system/odtToHtml";
@@ -2850,6 +2862,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               case "doc":
               case "odt":
               case "pptx":
+              case "odp":
               case "txt":
               case "html":
               case "htm":
@@ -2892,6 +2905,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                       "odt",
                       "pdf",
                       "pptx",
+                      "odp",
                       "md",
                       "markdown",
                       "txt",
