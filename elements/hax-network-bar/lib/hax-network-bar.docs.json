@@ -19,7 +19,7 @@
       "property": "current",
       "type": "string",
       "default": "\"\"",
-      "description": "Which site this is: web, try, learn, elements, cloud or rpg (what it was called before, browser and docs, still works).",
+      "description": "Which site this is: web, try, learn, elements, art, cloud or rpg (what it was called before, browser and docs, still works).",
       "hax": null
     },
     {

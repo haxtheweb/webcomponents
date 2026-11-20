@@ -259,6 +259,12 @@ export const HAX_NETWORK_DESTINATIONS = [
     icon: "hax:wand",
   },
   {
+    title: "goArt",
+    about: "goArtAbout",
+    href: "https://haxtheweb.github.io/art/",
+    icon: "image:palette",
+  },
+  {
     title: "goRpg",
     about: "goRpgAbout",
     href: "https://rpg-me.hax.cloud",
@@ -309,7 +315,8 @@ export const HAX_NETWORK_DESTINATIONS = [
  * one you are on opens into a pill with its name, and hovering or focusing
  * any of them shows a card saying what it is for. Your character comes after
  * them and is the way to RPG me: an icon like the rest until you come by,
- * then the real one, walking. Merlin sits in the middle; Discord, GitHub,
+ * then the real one, walking. RPG me is one of HAX Art's tools, so its card
+ * says so and the properties menu lists it under Art. Merlin sits in the middle; Discord, GitHub,
  * Install HAX and the Future Traveler on the right. Nothing in the bar
  * belongs to the site under it: a site draws its own header, links and
  * controls below.
@@ -385,8 +392,12 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
       cloud: "PRAW",
       cloudAbout:
         "The brain of the HAX ecosystem: every person, pillar and project, and how they connect.",
+      art: "Art",
+      artAbout:
+        "The HAX art movement: posters, the Future Traveler across time, and playful tools like RPG me.",
       rpg: "RPG me",
       rpgAbout: "Make the character that is you across HAX.",
+      partOf: "Part of {property}",
       here: "You are here",
       remix: "Remix the HAX Future Traveler",
       github: "GitHub",
@@ -498,7 +509,11 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
       goDemo: "Live demo: try the HAX editor",
       goDemoAbout: "Edit a HAX site in your browser, nothing to install.",
       goRpg: "RPG me: make your character",
-      goRpgAbout: "Design the character that stands for you across HAX.",
+      goArt: "Art: the HAX art movement",
+      goArtAbout:
+        "Posters, the Future Traveler across time, and playful tools like RPG me.",
+      goRpgAbout:
+        "Design the character that stands for you across HAX. One of HAX Art's tools.",
       goLearn: "Learn: tutorials for HAX",
       goLearnAbout: "Tutorials that teach HAX one flow at a time.",
       goDocs: "HAXTheWeb: why HAX, and how to get it",
@@ -530,7 +545,7 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
     return {
       ...super.properties,
       /**
-       * Which site this is: web, try, learn, elements, cloud or rpg (what
+       * Which site this is: web, try, learn, elements, art, cloud or rpg (what
        * it was called before, browser and docs, still works).
        */
       current: { type: String, reflect: true },
@@ -1296,6 +1311,10 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
         .card .host {
           color: var(--hax-ui-text-muted);
         }
+        .card .within {
+          color: var(--hax-ui-text-muted);
+          font-style: italic;
+        }
         .card .you {
           justify-self: start;
           padding: 0 var(--ddd-spacing-2);
@@ -1401,6 +1420,14 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
           color: var(--on);
           --glyph-accent: var(--on);
           --glyph-lit: var(--on);
+        }
+        /* a tool within a property (RPG me, within Art) sits under it */
+        .net-menu li.sub {
+          margin-inline-start: var(--ddd-spacing-6);
+        }
+        .net-menu li.sub .tile {
+          width: 32px;
+          height: 32px;
         }
         .net-menu .text {
           display: grid;
@@ -1804,6 +1831,13 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
         <span class="host">${p.url.replace("https://", "")}</span>
       </span>
       <span class="purpose">${this.t[`${id}About`]}</span>
+      ${
+        p.within
+          ? html`<span class="within"
+              >${this.t.partOf.replace("{property}", this.t[p.within])}</span
+            >`
+          : ``
+      }
       ${id === here ? html`<span class="you">${this.t.here}</span>` : ``}
     </div>`;
   }
@@ -1904,9 +1938,12 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
       </button>
       <div class="net-menu" id="net-menu" ?hidden="${!this.menuOpen}">
         <ul>
-          ${[...HAX_NETWORK.order, ...(this.mini ? [] : ["rpg"])].map(
+          ${this._menuIds().map(
             (id) =>
-              html`<li style="${this._tint(id)}">
+              html`<li
+                class="${HAX_NETWORK.properties[id].within ? "sub" : ""}"
+                style="${this._tint(id)}"
+              >
                 <a
                   class="glyph-host"
                   href="${
@@ -1939,6 +1976,27 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
           )}
         </ul>
       </div>`;
+  }
+
+  /**
+   * The properties menu, in the network's order, with each tool that lives
+   * within a property (RPG me, within Art) listed under that property. The
+   * mini bar has no character, so it leaves RPG me out.
+   */
+  _menuIds() {
+    const tools = this.mini
+      ? []
+      : Object.keys(HAX_NETWORK.properties).filter(
+          (id) => HAX_NETWORK.properties[id].within,
+        );
+    const ids = [];
+    HAX_NETWORK.order.forEach((id) => {
+      ids.push(id);
+      tools
+        .filter((t) => HAX_NETWORK.properties[t].within === id)
+        .forEach((t) => ids.push(t));
+    });
+    return ids;
   }
 
   /** Escape puts a card away until the pointer or focus leaves it */

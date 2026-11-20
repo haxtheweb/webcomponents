@@ -1,6 +1,6 @@
 # &lt;hax-network-bar&gt;
 
-The bar across the top of every site in the HAX network. Each property is an icon in its own color: the one you are on opens into a pill with its name, and hovering or focusing any of them shows a card saying what it is for. Your character comes after them and is the way to RPG me. Merlin sits in the middle; Discord, GitHub, Install HAX and the Future Traveler on the right. Nothing in the bar belongs to the site under it: a site draws its own header, links and controls below.
+The bar across the top of every site in the HAX network. Each property is an icon in its own color: the one you are on opens into a pill with its name, and hovering or focusing any of them shows a card saying what it is for. Your character comes after them and is the way to RPG me, one of HAX Art's tools. Merlin sits in the middle; Discord, GitHub, Install HAX and the Future Traveler on the right. Nothing in the bar belongs to the site under it: a site draws its own header, links and controls below.
 
 ## Usage
 
@@ -12,7 +12,7 @@ The bar across the top of every site in the HAX network. Each property is an ico
 <hax-network-bar current="learn"></hax-network-bar>
 ```
 
-`current` is one of `web`, `try`, `learn`, `elements`, `cloud` or `rpg` (`browser` and `docs`, what two of them used to be called, still work).
+`current` is one of `web`, `try`, `learn`, `elements`, `art`, `cloud` or `rpg` (`browser` and `docs`, what two of them used to be called, still work).
 
 ## The network's record
 
@@ -25,9 +25,10 @@ What a property is called, where it lives, its color, its icon and the sentence 
 | `try`      | Build now      | browser.hax.cloud       | futureLime     |
 | `learn`    | Learn          | learn.hax.cloud         | skyBlue        |
 | `elements` | Web components | webcomponents.hax.cloud | inventOrange   |
+| `art`      | Art            | haxtheweb.github.io/art | discoveryCoral |
 | `rpg`      | RPG me         | rpg-me.hax.cloud        | athertonViolet |
 
-`order` is the order the bar lists them. RPG me comes after them as your character. To add, rename or move a property, change the record; the bar, its menu and its cards follow. The strings are translated through the bar's own `t`, whose English matches the record.
+`order` is the order the bar lists them. RPG me is not in it: it is one of HAX Art's tools (its record says `within: "art"`), so it comes right after Art as your character, its card says it is part of Art, and the properties menu lists it under Art. It keeps its own address and stays a stand-alone tool. To add, rename or move a property, change the record; the bar, its menu and its cards follow. The strings are translated through the bar's own `t`, whose English matches the record.
 
 The same file holds the network's own icons (`HAX_NETWORK_GLYPHS`, `haxNetworkGlyph(id)`, `HaxNetworkGlyphStyles`). Each is two tones: the main strokes carry the shape; the accent is quiet at rest and takes the property's color, and moves, when its host (an element with class `glyph-host`) is hovered or focused. Nothing moves for a visitor who asks for less motion. Another element can draw them by adding `HaxNetworkGlyphStyles` to its styles and setting `--prop` on the host.
 
@@ -81,7 +82,7 @@ Install HAX opens in place, so nobody loses the page they are on. It has a tab f
 
 ## Merlin
 
-The **Merlin** button (the Future Traveler, as in the HAX top bar) opens HAX's command palette with every place in the network to jump to: hax.cloud and its tours, the web components, HAXcms in your browser, Learn, the live demo, RPG me, HAXTheWeb and GitHub (`HAX_NETWORK_DESTINATIONS`). Merlin (`@haxtheweb/super-daemon`) loads the first time the button is pressed, so a page that never opens him never downloads him.
+The **Merlin** button (the Future Traveler, as in the HAX top bar) opens HAX's command palette with every place in the network to jump to: hax.cloud and its tours, the web components, HAXcms in your browser, Learn, the live demo, Art and its RPG me, HAXTheWeb and GitHub (`HAX_NETWORK_DESTINATIONS`). Merlin (`@haxtheweb/super-daemon`) loads the first time the button is pressed, so a page that never opens him never downloads him.
 
 A page can add its own places. The first time Merlin opens, the bar fires `hax-network-merlin` (bubbles, composed) with `{merlin, add}`; `add({title, href, about, icon, tags})` adds one, or use `merlin.defineOption()` for anything else. hax.cloud adds every web, tile and tour this way:
 
