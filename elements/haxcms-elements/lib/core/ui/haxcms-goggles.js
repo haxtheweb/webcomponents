@@ -249,6 +249,8 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
     this._sort = "share";
     this._showAll = false;
     this._showAllPeople = false;
+    this._era = "now";
+    this._mark = null;
     this.t = this.t || {};
     this.t = {
       ...this.t,
@@ -404,6 +406,7 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
   disconnectedCallback() {
     globalThis.removeEventListener("haxcms-goggles-changed", this._sync);
     this._watch(false);
+    this._markAway(false);
     super.disconnectedCallback();
   }
   /** the page listeners exist only while the goggles are worn */
@@ -470,8 +473,90 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
       globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches
     );
   }
+  /*
+   * The goggles that warp out are the Future Traveler's own, from the mark in
+   * the corner: drawn in the era he was left in (hax-future-traveler-mark,
+   * kept under hax-future-traveler-era), flying out of where the mark sits
+   * and back into it when taken off. While he is out, the mark is empty.
+   */
+  _findMark() {
+    let best = null;
+    let bestRight = -1;
+    const walk = (root, depth) => {
+      if (!root || depth > 6) {
+        return;
+      }
+      root.querySelectorAll("*").forEach((el) => {
+        if (el.localName === "hax-future-traveler-mark") {
+          const r = el.getBoundingClientRect();
+          if (r.width > 0 && r.height > 0 && r.right > bestRight) {
+            best = el;
+            bestRight = r.right;
+          }
+        }
+        if (el.shadowRoot && el !== this) {
+          walk(el.shadowRoot, depth + 1);
+        }
+      });
+    };
+    walk(globalThis.document, 0);
+    return best;
+  }
+  _travelerFrom() {
+    const mark = this._findMark();
+    let era = mark && mark.era ? mark.era : "";
+    if (!era) {
+      try {
+        era =
+          globalThis.localStorage.getItem("hax-future-traveler-era") || "now";
+      } catch {
+        era = "now";
+      }
+    }
+    this._era = era;
+    // where his goggles sit on the icon, as a share of its height
+    const eyes = era === "handheld" ? 0.833 : 0.692;
+    this.style.setProperty("--haxcms-goggles-eyes", eyes * 100 + "%");
+    this.style.setProperty(
+      "--haxcms-goggles-eyes-shift",
+      -(eyes - 0.5) * 100 + "%",
+    );
+    this._mark = mark;
+    if (!mark) {
+      [
+        "--haxcms-goggles-from-x",
+        "--haxcms-goggles-from-y",
+        "--haxcms-goggles-from-scale",
+      ].forEach((v) => this.style.removeProperty(v));
+      return;
+    }
+    const r = mark.getBoundingClientRect();
+    const vw = globalThis.innerWidth;
+    const vh = globalThis.innerHeight;
+    const size = 0.4 * Math.min(vw, vh);
+    const scale = Math.max(r.width, r.height) / size;
+    // the icon scales around its goggles, so place its middle on the mark's
+    const x = r.left + r.width / 2 - vw / 2;
+    const y = r.top + r.height / 2 - vh / 2 - (eyes - 0.5) * size * (1 - scale);
+    this.style.setProperty("--haxcms-goggles-from-x", Math.round(x) + "px");
+    this.style.setProperty("--haxcms-goggles-from-y", Math.round(y) + "px");
+    this.style.setProperty("--haxcms-goggles-from-scale", scale.toFixed(3));
+  }
+  /** the mark is empty while he is out of his corner */
+  _markAway(away) {
+    if (this._mark && this._mark.style) {
+      this._mark.style.visibility = away ? "hidden" : "";
+    }
+    if (!away) {
+      this._mark = null;
+    }
+  }
   _putOn() {
     const still = this._still();
+    if (!still) {
+      this._travelerFrom();
+      this._markAway(true);
+    }
     this.on = true;
     this._watch(true);
     this.phase = still ? "" : "puton";
@@ -488,6 +573,7 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
     this._phaseTimer = setTimeout(
       () => {
         this.phase = "";
+        this._markAway(false);
       },
       still ? 0 : 1700,
     );
@@ -495,6 +581,10 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
   /** taking them off plays the put-on in reverse, then the overlay removes itself */
   _takeOff() {
     const still = this._still();
+    if (!still) {
+      this._travelerFrom();
+      this._markAway(true);
+    }
     this._watch(false);
     this.pinned = false;
     this._target = null;
@@ -511,6 +601,7 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
       () => {
         this.phase = "";
         this.on = false;
+        this._markAway(false);
         if (!GogglesState.on) {
           this.remove();
         }
@@ -540,11 +631,7 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
     const path = e.composedPath ? e.composedPath() : [];
     for (let i = 0; i < path.length; i++) {
       const n = path[i];
-      if (
-        n === this ||
-        n.id === "gogglesbutton" ||
-        n.id === "goggleslensesbutton"
-      ) {
+      if (n === this || n.id === "gogglesbutton") {
         return true;
       }
     }
@@ -2497,7 +2584,7 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
       ${
         this.phase
           ? html`<div class="puton" aria-hidden="true">
-              <div class="traveler">${futureTraveler("now")}</div>
+              <div class="traveler">${futureTraveler(this._era || "now")}</div>
               <span class="flash"></span>
             </div>`
           : nothing
@@ -3410,7 +3497,7 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
           width: 40vmin;
           height: 40vmin;
           margin: -20vmin 0 0 -20vmin;
-          transform-origin: 50% 69.2%;
+          transform-origin: 50% var(--haxcms-goggles-eyes, 69.2%);
           animation: puton-zoom 1500ms cubic-bezier(0.6, 0, 0.9, 0.4) both;
         }
         .traveler svg {
@@ -3428,7 +3515,12 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
         }
         @keyframes puton-zoom {
           0% {
-            transform: translate(42vw, -42vh) scale(0.12);
+            /* out of the Future Traveler mark in the corner */
+            transform: translate(
+                var(--haxcms-goggles-from-x, 42vw),
+                var(--haxcms-goggles-from-y, -42vh)
+              )
+              scale(var(--haxcms-goggles-from-scale, 0.12));
           }
           35% {
             transform: translate(0, -6vh) scale(1);
@@ -3437,7 +3529,8 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
             transform: translate(0, -6vh) scale(1.08);
           }
           100% {
-            transform: translate(0, -19.2%) scale(11);
+            transform: translate(0, var(--haxcms-goggles-eyes-shift, -19.2%))
+              scale(11);
           }
         }
         @keyframes puton-flash {

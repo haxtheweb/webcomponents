@@ -250,7 +250,6 @@ export const HaxIconsetManifest = [
       "git",
       "glance",
       "globe",
-      "goggles-lenses-off",
       "goggles",
       "graph",
       "h1",

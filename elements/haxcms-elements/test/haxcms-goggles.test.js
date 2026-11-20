@@ -191,4 +191,34 @@ describe("haxcms-goggles (developer mode)", () => {
     ).to.deep.equal({ lens: "person", person: "btopro" });
     await takeOff();
   });
+
+  it("warps out the goggles of the era the Future Traveler mark was left in", async () => {
+    GogglesState.set({ on: true, lensOn: true, lens: "code" });
+    const g = overlay();
+    globalThis.localStorage.setItem("hax-future-traveler-era", "steam");
+    // no mark on this page: the era comes from where the mark keeps it
+    g._travelerFrom();
+    expect(g._era).to.equal("steam");
+    // a mark on the page: his era, and the warp starts where he sits
+    const mark = globalThis.document.createElement("hax-future-traveler-mark");
+    mark.era = "handheld";
+    mark.style.cssText =
+      "position:fixed;right:8px;top:8px;width:32px;height:32px;display:block";
+    globalThis.document.body.appendChild(mark);
+    g._travelerFrom();
+    expect(g._era).to.equal("handheld");
+    expect(g.style.getPropertyValue("--haxcms-goggles-from-x")).to.not.equal(
+      "",
+    );
+    expect(
+      parseFloat(g.style.getPropertyValue("--haxcms-goggles-from-x")),
+    ).to.be.greaterThan(0);
+    // he leaves his corner while he is out, and is back after
+    g._markAway(true);
+    expect(mark.style.visibility).to.equal("hidden");
+    g._markAway(false);
+    expect(mark.style.visibility).to.equal("");
+    mark.remove();
+    globalThis.localStorage.removeItem("hax-future-traveler-era");
+  });
 });
