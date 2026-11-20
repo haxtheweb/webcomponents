@@ -117,6 +117,8 @@ const ADMIN_ROUTE_PATHS = new Set(Object.keys(ADMIN_ROUTE_QUERY_PATHS));
 
 // localStorage key for developer mode (the goggles), kept per browser
 const DEVELOPER_MODE_KEY = "haxcms-developer-mode";
+// the lens the goggles remember (ui/haxcms-goggles.js); forgotten with developer mode
+const GOGGLES_LENS_KEY = "haxcms-goggles-lens";
 
 /**
  * `haxcms-site-editor-ui`
@@ -7629,6 +7631,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       this._watchGoggles(true);
     } else {
       localStorageDelete(DEVELOPER_MODE_KEY);
+      localStorageDelete(GOGGLES_LENS_KEY);
       this._watchGoggles(false);
       if (this.gogglesOn) {
         import("./ui/haxcms-goggles.js").then((m) =>
@@ -7662,7 +7665,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   }
   async toggleGoggles() {
     const { GogglesState } = await import("./ui/haxcms-goggles.js");
-    GogglesState.set({ on: !GogglesState.on, lensOn: true, lens: "code" });
+    // the lens chosen last stays chosen; GogglesState remembers it
+    GogglesState.set({ on: !GogglesState.on, lensOn: true });
   }
   async toggleGogglesLenses() {
     const { GogglesState } = await import("./ui/haxcms-goggles.js");

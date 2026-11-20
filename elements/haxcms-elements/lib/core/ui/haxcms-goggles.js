@@ -14,6 +14,10 @@ import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/rpg-character/rpg-character.js";
 import { store } from "../haxcms-site-store.js";
+import {
+  localStorageGet,
+  localStorageSet,
+} from "@haxtheweb/utils/lib/storage.js";
 
 const REPO = "https://github.com/haxtheweb/webcomponents";
 const ISSUES = "https://github.com/haxtheweb/issues/issues/new";
@@ -127,26 +131,57 @@ const withoutComments = (text) => {
   return out;
 };
 
+/*
+ * The lens someone chose stays chosen: putting the goggles back on, or the
+ * lenses back on, uses it, here and after a reload. Only the developer's own
+ * browser keeps it, next to the developer mode switch.
+ */
+export const GOGGLES_LENS_KEY = "haxcms-goggles-lens";
+const LENS_IDS = ["code", "makers", "flag", "person"];
+const remembered = () => {
+  const saved = localStorageGet(GOGGLES_LENS_KEY, null);
+  if (!saved || LENS_IDS.indexOf(saved.lens) === -1) {
+    return { lens: "code", person: null };
+  }
+  if (saved.lens === "person") {
+    return typeof saved.person === "string" && saved.person
+      ? { lens: "person", person: saved.person }
+      : { lens: "makers", person: null };
+  }
+  return { lens: saved.lens, person: null };
+};
+
 /**
  * The one state the goggles and the editor's top bar buttons share. This
  * module is only imported once someone turns developer mode on; nothing is
  * drawn and no listener is added until the goggles are put on.
  */
-export const GogglesState = {
-  person: null,
-  on: false,
-  lensOn: true,
-  lens: "code",
-  set(change) {
-    Object.assign(this, change);
-    if (this.on) {
-      ensureOverlay();
-    }
-    globalThis.dispatchEvent(
-      new CustomEvent("haxcms-goggles-changed", { detail: this }),
-    );
+export const GogglesState = Object.assign(
+  {
+    on: false,
+    lensOn: true,
   },
-};
+  remembered(),
+  {
+    set(change) {
+      const lensBefore = this.lens;
+      const personBefore = this.person;
+      Object.assign(this, change);
+      if (this.lens !== lensBefore || this.person !== personBefore) {
+        localStorageSet(GOGGLES_LENS_KEY, {
+          lens: this.lens,
+          person: this.lens === "person" ? this.person : null,
+        });
+      }
+      if (this.on) {
+        ensureOverlay();
+      }
+      globalThis.dispatchEvent(
+        new CustomEvent("haxcms-goggles-changed", { detail: this }),
+      );
+    },
+  },
+);
 /** the overlay sits on the body so theme swaps leave it alone; it removes itself once taken off */
 const ensureOverlay = () => {
   if (!globalThis.document.querySelector("haxcms-goggles")) {
@@ -227,8 +262,7 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
         "Lenses off. The system works as usual; the rims show the goggles are still on.",
       followingSay:
         "Following {name}: everything they made is outlined. Click any piece to see who else made it.",
-      putOnSay:
-        "You are seeing what the Future Traveler sees. Point at anything to see how it is made.",
+      putOnSay: "You are seeing what the Future Traveler sees. {lens}",
       takeOffSay: "Goggles off.",
       holdingSay: "Holding still on {tag}. Press Escape to let go.",
       seeItAlone: "See it alone",
@@ -441,7 +475,14 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
     this.on = true;
     this._watch(true);
     this.phase = still ? "" : "puton";
-    this._status = this.t.putOnSay;
+    // the goggles go on with the lens chosen last time, not always the x-ray
+    const chosen = LENSES.find((l) => l.id === this.lens);
+    this._status = this.t.putOnSay.replace(
+      "{lens}",
+      this.lens === "person" && this.person
+        ? this.t.followingSay.replace("{name}", this._name(this.person))
+        : this.t[(chosen || LENSES[0]).say],
+    );
     loadMakers().then(() => this.requestUpdate());
     clearTimeout(this._phaseTimer);
     this._phaseTimer = setTimeout(
@@ -1362,6 +1403,26 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
     const vh = globalThis.innerHeight;
     const found = [];
     const used = {};
+    // wherever the editor's top bar is (other bars may sit above it)
+    let bar = null;
+    const findBar = (root, depth) => {
+      if (bar || !root || depth > 6) {
+        return;
+      }
+      root.querySelectorAll("*").forEach((el) => {
+        if (!bar && el.localName === "app-hax-top-bar") {
+          const r = el.getBoundingClientRect();
+          if (r.height > 0) {
+            bar = r;
+          }
+        }
+        if (!bar && el.shadowRoot && el !== this) {
+          findBar(el.shadowRoot, depth + 1);
+        }
+      });
+    };
+    findBar(doc, 0);
+    const below = bar ? Math.max(bar.bottom + 6, 68) : 68;
     const add = (el) => {
       if (!el || used[el.localName] || !MAKERS.tags[el.localName]) {
         return;
@@ -1377,8 +1438,11 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
       ) {
         return;
       }
-      // pieces of the top bar get their pin just under the bar, so the bar itself stays readable
-      const inBar = r.top < 60 && r.bottom < 80;
+      // pieces of the top bar get their pin just under the bar, so the bar
+      // and the goggles' own buttons in it stay readable and clickable
+      const inBar = bar
+        ? r.top >= bar.top - 1 && r.bottom <= bar.bottom + 1
+        : r.top < 60 && r.bottom < 80;
       const x = Math.min(
         Math.max(
           el.localName === "app-hax-top-bar" ? r.left + r.width * 0.68 : r.left,
@@ -1386,7 +1450,7 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
         ),
         vw - 150,
       );
-      const y = inBar ? 68 : Math.min(Math.max(r.top, 68), vh - 150);
+      const y = inBar ? below : Math.min(Math.max(r.top, below), vh - 150);
       for (let i = 0; i < found.length; i++) {
         if (Math.abs(found[i].x - x) < 210 && Math.abs(found[i].y - y) < 54) {
           return;
