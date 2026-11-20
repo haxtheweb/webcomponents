@@ -12,6 +12,7 @@ A simple, fast, and reliable component gallery system that replaces Storybook fo
 - ⚡ **Fast and reliable** - No complex build processes or breaking dependencies
 - 🔗 **Links to existing demos** - Leverages all your existing demo pages
 - 📊 **Categorized view** - Components grouped by prefix for better organization
+- **Components menu** - the menu button at the start of the title bar hides and shows the component list at any time, so a demo can use the full width. On wide screens drag the list's right edge to resize it (or focus the edge and use the arrow keys, Shift for bigger steps, Home and End; Enter hides it; double-click resets the width); dragging it most of the way shut hides it. The width and hidden state are kept in this browser. On phones the same button opens and closes the list as a drawer.
 
 ## Usage
 
