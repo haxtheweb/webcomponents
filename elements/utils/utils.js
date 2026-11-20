@@ -877,6 +877,8 @@ export function mimeTypeToName(mimeType) {
       return ".xlsx";
     case "vnd.openxmlformats-officedocument.presentationml.presentation":
       return ".pptx";
+    case "vnd.oasis.opendocument.text":
+      return ".odt";
     case "mpeg":
       return ".mp3";
     case "svg+xml":

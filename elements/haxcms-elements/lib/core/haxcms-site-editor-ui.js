@@ -1758,12 +1758,35 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               dataToPost.append("parentId", itemPptx.parent);
             }
             break;
+          case "odt":
+            dataToPost.append("upload", values.data);
+            endpointCall = "@system/odtToHtml";
+            if (mode === "create-branch") {
+              endpointCall = "@system/importOdt";
+              dataToPost.append("method", "branch");
+              dataToPost.append("type", "branch");
+              // set parent to same as current page's parent
+              const itemOdt = toJS(store.activeItem);
+              dataToPost.append("parentId", itemOdt.parent);
+            }
+            break;
           case "md":
+          case "markdown":
           case "txt":
-            endpointCall = "@system/mdToHtml";
-            dataToPost = {
-              md: values.contents,
-            };
+            // the import route reads the file itself: front matter is
+            // taken off and text is read as Markdown, the same as making
+            // a whole site from it
+            dataToPost.append("upload", values.data);
+            endpointCall = "@system/importMd";
+            if (mode === "create-branch") {
+              dataToPost.append("method", "branch");
+              dataToPost.append("type", "branch");
+              // set parent to same as current page's parent
+              const itemMd = toJS(store.activeItem);
+              dataToPost.append("parentId", itemMd.parent);
+            } else {
+              dataToPost.append("method", "page");
+            }
             break;
           case "html":
           case "htm":
@@ -2822,8 +2845,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             switch (values.type) {
               case "pdf":
               case "md":
+              case "markdown":
               case "docx":
               case "doc":
+              case "odt":
               case "pptx":
               case "txt":
               case "html":
@@ -2861,9 +2886,18 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                     path: this.t.pageCreatedUnderCurrent,
                   });
                   if (
-                    ["docx", "doc", "pdf", "pptx", "html", "htm"].includes(
-                      values.type,
-                    )
+                    [
+                      "docx",
+                      "doc",
+                      "odt",
+                      "pdf",
+                      "pptx",
+                      "md",
+                      "markdown",
+                      "txt",
+                      "html",
+                      "htm",
+                    ].includes(values.type)
                   ) {
                     results.push({
                       title: this.t.createOutlineFromType.replace(

@@ -100,6 +100,21 @@ describe("FileSystemBroker test", () => {
       });
     });
 
+    it("handles odt, md and txt types", () => {
+      expect(element.typeToAccept("odt")).to.deep.equal({
+        "application/vnd.oasis.opendocument.text": [".odt"],
+      });
+      expect(element.typeToAccept("md")).to.deep.equal({
+        "text/markdown": [".md", ".markdown"],
+      });
+      expect(element.typeToAccept("txt")).to.deep.equal({
+        "text/plain": [".txt"],
+      });
+      expect(element.typeToAcceptString("odt")).to.equal(".odt");
+      expect(element.typeToAcceptString("md")).to.equal(".md,.markdown");
+      expect(element.typeToAcceptString("txt")).to.equal(".txt");
+    });
+
     it("handles CSV type correctly", () => {
       const accept = element.typeToAccept("csv");
       expect(accept).to.deep.equal({

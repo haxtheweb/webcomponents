@@ -50,6 +50,18 @@ describe("dashboard Merlin: file types", () => {
     expect(dragTypeMakesSite("")).to.equal(false);
   });
 
+  it("names .odt, .md and .txt drags as site sources", () => {
+    expect(dragTypeLabel("application/vnd.oasis.opendocument.text")).to.equal(
+      ".odt",
+    );
+    expect(dragTypeLabel("text/plain")).to.equal(".txt");
+    expect(
+      dragTypeMakesSite("application/vnd.oasis.opendocument.text"),
+    ).to.equal(true);
+    expect(dragTypeMakesSite("text/markdown")).to.equal(true);
+    expect(dragTypeMakesSite("text/plain")).to.equal(true);
+  });
+
   it("only hands importers http(s) URLs", () => {
     expect(isImportUrl("https://news.example.edu")).to.equal(true);
     expect(isImportUrl(" http://example.org/x ")).to.equal(true);
@@ -75,6 +87,24 @@ describe("app-hax-use-case-filter: importers for Merlin", () => {
     expect(htm.importKind).to.equal("file");
     expect(el.importItemForFileName("map.png")).to.equal(null);
     expect(el.importItemForFileName("noextension")).to.equal(null);
+  });
+
+  it("finds the .odt, Markdown and text importers", () => {
+    const odt = el.importItemForFileName("Unit 1.ODT");
+    expect(odt.importType).to.equal("odt");
+    expect(odt.callback).to.equal("@system/importOdt");
+    expect(el.importItemForFileName("notes.md").callback).to.equal(
+      "@system/importMd",
+    );
+    expect(el.importItemForFileName("notes.markdown").importType).to.equal(
+      "md",
+    );
+    const txt = el.importItemForFileName("notes.txt");
+    expect(txt.importType).to.equal("txt");
+    expect(txt.callback).to.equal("@system/importMd");
+    expect(el._fileExtensionsLabel(el.importItemFor("file", "md"))).to.equal(
+      ".md, .markdown",
+    );
   });
 
   it("finds an importer by kind and type", () => {
@@ -117,6 +147,18 @@ describe("app-hax-use-case-filter: importers for Merlin", () => {
       expect(calls[0].params.get("upload")).to.equal(file);
       expect(modal.opened).to.equal(true);
       expect(modal.siteName).to.equal("unit 3");
+    });
+
+    it("sends a dropped .odt to the ODT importer", async () => {
+      const file = new File(["x"], "unit-3.odt");
+      await el.processImportTemplate(el.importItemFor("file", "odt"), modal, {
+        file,
+      });
+      expect(calls.length).to.equal(1);
+      expect(calls[0].name).to.equal("@system/importOdt");
+      expect(calls[0].params.get("upload")).to.equal(file);
+      expect(calls[0].params.get("method")).to.equal("site");
+      expect(modal.opened).to.equal(true);
     });
 
     it("uses a URL typed in Merlin instead of prompting", async () => {
@@ -338,9 +380,12 @@ describe("app-hax-use-case-filter: the two import cards", () => {
     ).map((n) => n.textContent.trim());
     expect(fileNames).to.deep.equal([
       "Word Doc",
+      "OpenDocument Text",
       "PDF",
       "PowerPoint",
       "Excel",
+      "Markdown",
+      "Text File",
       "HTML File",
     ]);
     const urlNames = Array.from(
