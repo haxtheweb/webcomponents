@@ -808,7 +808,9 @@ export class PageBreak extends IntersectionObserverMixin(
           --simple-toolbar-button-hover-border-color: transparent;
         }
         /* Outline Actions, shown only when no site menu row has them:
-           sits just before the Page Actions pencil */
+           sits just before the Page Actions pencil. It draws the
+           Structure glyph, not a pencil, so the two buttons read as
+           different actions side by side */
         haxcms-page-operations.outline-actions {
           position: absolute;
           top: var(--page-break-menu-button-top, -8px);
