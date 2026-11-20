@@ -1472,8 +1472,19 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
           align-items: center;
           gap: var(--ddd-spacing-3);
         }
+        /* a link drawn as the Install button: DDD's a:any-link rule
+           outranks .install-btn, so the fill and ink are set again here
+           or the label is dark on the dark dialog */
         .detail-more a.install-btn {
           text-decoration: none;
+          background-color: var(--ddd-theme-default-keystoneYellow);
+          color: var(--ddd-theme-default-coalyGray);
+        }
+        .detail-more a.install-btn:hover,
+        .detail-more a.install-btn:focus-visible {
+          background-color: var(--ddd-theme-default-roarGolden);
+          border-color: var(--ddd-theme-default-roarGolden);
+          color: var(--ddd-theme-default-coalyGray);
         }
         a.more {
           display: inline-flex;
