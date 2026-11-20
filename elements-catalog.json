@@ -2081,6 +2081,36 @@
       "tags": []
     },
     {
+      "tag": "hax-cast",
+      "title": "Hax Cast",
+      "description": "A grid for hax-cast-member cards",
+      "package": "@haxtheweb/hax-marketing-theme",
+      "import": "@haxtheweb/hax-marketing-theme/lib/hax-marketing-blocks.js",
+      "type": "element",
+      "haxCapable": true,
+      "tags": ["Marketing", "content"]
+    },
+    {
+      "tag": "hax-cast-member",
+      "title": "Cast member",
+      "description": "One audience, played by an rpg-character",
+      "package": "@haxtheweb/hax-marketing-theme",
+      "import": "@haxtheweb/hax-marketing-theme/lib/hax-marketing-blocks.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": ["Marketing", "content"]
+    },
+    {
+      "tag": "hax-chip",
+      "title": "Chip",
+      "description": "A small labelled icon, for lists of formats, tools and places",
+      "package": "@haxtheweb/hax-marketing-theme",
+      "import": "@haxtheweb/hax-marketing-theme/lib/hax-marketing-blocks.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": ["Marketing", "content"]
+    },
+    {
       "tag": "hax-confirm-dialog",
       "title": "",
       "description": "The HAX UI confirm card's body: a muted message and the HAX UI buttons (cancel plain and focused first, confirm primary, or a danger fill when destructive). Open it in a simple-modal with HaxUiDialogConfirm. It lives in d-d-d with the rest of the HAX UI layer so hax-body's dialogs and HAXcms's sh...",
@@ -2121,6 +2151,16 @@
       "tags": []
     },
     {
+      "tag": "hax-contributors",
+      "title": "Hax Contributors",
+      "description": "Everyone who built HAX, as the rpg-characters HAX gives every user Reads a JSON file made from the HAX Lab roster and the code contributor list. show picks the view: landed (people with a known next step), lab (the whole HAX Lab roster, newest first) or code (everyone with a commit). Hover or foc...",
+      "package": "@haxtheweb/hax-marketing-theme",
+      "import": "@haxtheweb/hax-marketing-theme/lib/hax-contributors.js",
+      "type": "element",
+      "haxCapable": true,
+      "tags": ["Marketing", "content"]
+    },
+    {
       "tag": "hax-element-demo",
       "title": "",
       "description": "",
@@ -2139,6 +2179,16 @@
       "type": "element",
       "haxCapable": false,
       "tags": []
+    },
+    {
+      "tag": "hax-feature-row",
+      "title": "Feature row",
+      "description": "A screen of the real product beside what it means for you",
+      "package": "@haxtheweb/hax-marketing-theme",
+      "import": "@haxtheweb/hax-marketing-theme/lib/hax-marketing-blocks.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": ["Marketing", "content"]
     },
     {
       "tag": "hax-file-actions",
@@ -2192,6 +2242,16 @@
       "tags": []
     },
     {
+      "tag": "hax-marketing-theme",
+      "title": "",
+      "description": "Marketing theme, first built for the haxtheweb.org site. A marketing theme anyone can use: a header with the site's logo, name and top-level pages (a page with pages under it opens a menu of them), a Remix button that restyles the site live, a band in the palette's lead color that carries the pag...",
+      "package": "@haxtheweb/hax-marketing-theme",
+      "import": "@haxtheweb/hax-marketing-theme/hax-marketing-theme.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
       "tag": "hax-network-bar",
       "title": "",
       "description": "The top bar of every hax.cloud site (hax.cloud, the element portfolio, HAXcms in the browser, RPG me), drawn like the HAX editor's own top bar: your character and the network's sites on the left, Merlin in the middle, Install HAX, GitHub and the Future Traveler on the right. Each site keeps its o...",
@@ -2222,6 +2282,26 @@
       "tags": []
     },
     {
+      "tag": "hax-pillar",
+      "title": "Pillar",
+      "description": "One of the seven pillars: name, phrase, icon and why it matters",
+      "package": "@haxtheweb/hax-marketing-theme",
+      "import": "@haxtheweb/hax-marketing-theme/lib/hax-marketing-blocks.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": ["Marketing", "content"]
+    },
+    {
+      "tag": "hax-pillar-strip",
+      "title": "Pillar strip",
+      "description": "A row for compact hax-pillar cards",
+      "package": "@haxtheweb/hax-marketing-theme",
+      "import": "@haxtheweb/hax-marketing-theme/lib/hax-marketing-blocks.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": ["Marketing", "content"]
+    },
+    {
       "tag": "hax-plate-context",
       "title": "",
       "description": "The block bar: one row of block operations above the active block.",
@@ -2230,6 +2310,46 @@
       "type": "element",
       "haxCapable": false,
       "tags": []
+    },
+    {
+      "tag": "hax-platform-compare",
+      "title": "Hax Platform Compare",
+      "description": "Head to head: pick any two platforms and see how they stack up Reads a JSON file of platforms and features. Every platform is its own column; none are grouped. Each cell shows a mark, the word for it and a short reason, so the meaning never rests on the mark or a color alone.",
+      "package": "@haxtheweb/hax-marketing-theme",
+      "import": "@haxtheweb/hax-marketing-theme/lib/hax-platform-compare.js",
+      "type": "element",
+      "haxCapable": true,
+      "tags": ["Marketing", "content", "compare", "table"]
+    },
+    {
+      "tag": "hax-reel",
+      "title": "",
+      "description": "Something you click to flip to the next one, like changing the channel items is the list to flip through. Each one is a picture ({ src, alt, name, tags }), an rpg-character ({ character: \"seed\", name }) or a callout ({ callout: \"Try it now\", site: \"try\", name }) that draws a HAX network icon over...",
+      "package": "@haxtheweb/hax-marketing-theme",
+      "import": "@haxtheweb/hax-marketing-theme/lib/hax-reel.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "hax-stat",
+      "title": "Stat",
+      "description": "One number that counts up, what it counts, and the story behind it",
+      "package": "@haxtheweb/hax-marketing-theme",
+      "import": "@haxtheweb/hax-marketing-theme/lib/hax-marketing-blocks.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": ["Marketing", "content"]
+    },
+    {
+      "tag": "hax-stat-strip",
+      "title": "Stat strip",
+      "description": "A row of hax-stat numbers",
+      "package": "@haxtheweb/hax-marketing-theme",
+      "import": "@haxtheweb/hax-marketing-theme/lib/hax-marketing-blocks.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": ["Marketing", "content"]
     },
     {
       "tag": "hax-stax",
@@ -2257,6 +2377,26 @@
       "description": "",
       "package": "@haxtheweb/hax-body",
       "import": "@haxtheweb/hax-body/lib/hax-store.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
+      "tag": "hax-story-link",
+      "title": "Hax Story Link",
+      "description": "The one button that opens the story behind a claim, on hax.cloud Put it beside anything that makes a claim: a number, a pillar, a person, an element. story is the story's address on hax.cloud (stories/ee450a19, or a web's path such as hax-lab). The label and the mark never change, so people learn...",
+      "package": "@haxtheweb/hax-marketing-theme",
+      "import": "@haxtheweb/hax-marketing-theme/lib/hax-story-link.js",
+      "type": "element",
+      "haxCapable": true,
+      "tags": ["Marketing", "content"]
+    },
+    {
+      "tag": "hax-style-switcher",
+      "title": "",
+      "description": "Lets a visitor swap the site's theme, palette and design system live. It writes the same manifest.metadata.theme shape the appearance preview writes (element, path, variables.palette, designSystem), so the site builder does the swap. Nothing is saved: the pick is kept for the browser session. Log...",
+      "package": "@haxtheweb/hax-marketing-theme",
+      "import": "@haxtheweb/hax-marketing-theme/lib/hax-style-switcher.js",
       "type": "element",
       "haxCapable": false,
       "tags": []
@@ -2410,6 +2550,26 @@
       "type": "element",
       "haxCapable": false,
       "tags": []
+    },
+    {
+      "tag": "hax-use-case-picker",
+      "title": "Hax Use Case Picker",
+      "description": "Pick what a site is for and get a link that opens HAX in the browser with that skeleton, plus the matching CLI command. Reads a skeleton list in the shape app-hax reads ({ data: [ { title, description, machineName, priority } ] }).",
+      "package": "@haxtheweb/hax-marketing-theme",
+      "import": "@haxtheweb/hax-marketing-theme/lib/hax-use-case-picker.js",
+      "type": "element",
+      "haxCapable": true,
+      "tags": ["Other", "marketing", "skeleton", "onboarding"]
+    },
+    {
+      "tag": "hax-versus",
+      "title": "Versus",
+      "description": "A heading and words on one side, a head-to-head button on the other Two rpg-characters face each other over the button and butt heads when it is hovered or focused. On a phone the button drops under the words.",
+      "package": "@haxtheweb/hax-marketing-theme",
+      "import": "@haxtheweb/hax-marketing-theme/lib/hax-marketing-blocks.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": ["Marketing", "content"]
     },
     {
       "tag": "hax-view-source",

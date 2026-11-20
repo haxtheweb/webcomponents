@@ -1,8 +1,8 @@
 {
   "_meta": {
-    "elementsScanned": 266,
-    "elementsWithTranslations": 175,
-    "translationFilesFound": 40862,
+    "elementsScanned": 267,
+    "elementsWithTranslations": 176,
+    "translationFilesFound": 40869,
     "languagesSupported": [
       "af",
       "am",
@@ -593,9 +593,16 @@
     "hax": 1,
     "hax-app-installer": 1,
     "hax-confirm-dialog": 1,
+    "hax-contributors": 2,
     "hax-logo.haxProperties": 0,
+    "hax-marketing-theme": 2,
     "hax-network-bar": 2,
     "hax-palette-picker": 1,
+    "hax-platform-compare": 2,
+    "hax-reel": 2,
+    "hax-story-link": 2,
+    "hax-style-switcher": 2,
+    "hax-use-case-picker": 2,
     "haxcms": 1,
     "haxcms-about-dialog-ui": 1,
     "haxcms-admin-confirm": 1,

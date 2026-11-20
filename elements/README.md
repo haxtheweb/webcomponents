@@ -3,7 +3,7 @@
 <!-- GENERATED FILE: do not edit by hand. Run `yarn run elements-readme` -->
 <!-- Descriptions come from each element's package.json; edit them there. -->
 
-Every element in this monorepo (256 packages). Browse them live with `yarn gallery`, or open an element's folder for its own README.
+Every element in this monorepo (257 packages). Browse them live with `yarn gallery`, or open an element's folder for its own README.
 
 | Element | Description | Package | Demo |
 | --- | --- | --- | --- |
@@ -93,7 +93,8 @@ Every element in this monorepo (256 packages). Browse them live with `yarn galle
 | [hax-body-behaviors](./hax-body-behaviors/) | Wire any element up to HAX | `@haxtheweb/hax-body-behaviors` |  |
 | [hax-iconset](./hax-iconset/) | HAX-specific icons | `@haxtheweb/hax-iconset` | [demo](./hax-iconset/demo/) |
 | [hax-logo](./hax-logo/) | logo element for hax, obviously as a hax capable element. | `@haxtheweb/hax-logo` | [demo](./hax-logo/demo/) |
-| [hax-network-bar](./hax-network-bar/) | The top bar of every hax.cloud site: your character and the network sites, Merlin to jump anywhere, and Install HAX with every way to get it | `@haxtheweb/hax-network-bar` | [demo](./hax-network-bar/demo/) |
+| [hax-marketing-theme](./hax-marketing-theme/) | A HAXcms marketing theme, first built for haxtheweb.org: palette-driven chrome, section blocks, a live theme, palette and design system switcher, a use case picker and its own design system | `@haxtheweb/hax-marketing-theme` | [demo](./hax-marketing-theme/demo/) |
+| [hax-network-bar](./hax-network-bar/) | The top bar of every site in the HAX network: an icon for every property, your character, Merlin to jump anywhere, and Install HAX with every way to get it | `@haxtheweb/hax-network-bar` | [demo](./hax-network-bar/demo/) |
 | [haxcms-elements](./haxcms-elements/) | HAX CMS series of elements to provide a full on CMS | `@haxtheweb/haxcms-elements` | [demo](./haxcms-elements/demo/) |
 | [haxma-theme](./haxma-theme/) | HAXma theme for HAXcms inspired by Figma documentation design | `@haxtheweb/haxma-theme` | [demo](./haxma-theme/demo/) |
 | [haxor-slevin](./haxor-slevin/) | Tech blogger theme | `@haxtheweb/haxor-slevin` | [demo](./haxor-slevin/demo/) |
