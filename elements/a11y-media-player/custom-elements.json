@@ -3753,6 +3753,20 @@
             },
             {
               "kind": "method",
+              "name": "removePlayer",
+              "parameters": [
+                {
+                  "name": "player",
+                  "description": "the player that was removed",
+                  "type": {
+                    "text": "object"
+                  }
+                }
+              ],
+              "description": "forgets a player that left the page; the manager is a page-wide\nsingleton, so a removed player it still lists can never be collected"
+            },
+            {
+              "kind": "method",
               "name": "checkConcurrentPlayers",
               "description": "if a player disallows concurrent players, pauses other players"
             },

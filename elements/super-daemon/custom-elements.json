@@ -651,7 +651,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ // product name; no locale entries, so it stays \"Super Daemon\" unless a language adds one superDaemon: \"Super Daemon\", toggleSantaMode: \"Toggle Santa Mode\", santaModeDescription: \"He sees you when your sleeping, he knows when your awake, and with this command active he is always listening for input ready to respond. He's.. Santa Merlin. Ho..Ho...Ho.\", santaModeActivated: \"Santa mode activated: Watch what you say\", santaModeDeactivated: \"Santa mode deactivated: Have a nice day believing you are not being watched\", disableSantaModeToStop: \"Please disable Santa mode to stop listening\", imHere: \"I'm here\", yes: \"Yes?\", what: \"What?\", whatCanIDo: \"What can I do for you?\", whatDoYouNeed: \"What do you need?\", howCanIHelp: \"How can I help?\", thanksForStopping: \"thanks for stopping by\", seeYa: \"See ya\", seeYouSoon: \"See you soon\", tillWeMeetAgain: \"Till we meet again\", howMayIHelp: \"How may I help you?\", listening: \"Listening..\", programModeActivated: \"program mode activated\", developerModeActivated: \"developer mode activated\", merlin: \"Merlin\", closeMerlin: \"Close Merlin\", // spoken search vocabulary: pipe separated, translated per language voiceFillers: \"please|can you|could you|would you|will you|i want to|i'd like to|i would like to|let's|let me|go ahead and|um|uh|hey|merlin|ok|okay\", voiceStopWords: \"a|an|the|to|my|this|for|of|me\", voiceNumbers: \"zero|one|two|three|four|five|six|seven|eight|nine|ten\", voiceOrdinals: \"zeroth|first|second|third|fourth|fifth|sixth|seventh|eighth|ninth\", voicePickPrefixes: \"number|option|item|result|pick|choose|select|the\", voicePickSuffix: \"one\", voiceNumberSoundalikes: \"won=1|to=2|too=2|tu=2|tree=3|free=3|for=4|fore=4|ate=8\", voiceNext: \"next|down|next one\", voiceBack: \"back|previous|up|go back\", voiceRun: \"run|go|yes|do it|run it|open it|that one\", voiceClear: \"clear|start over|reset\", voiceCancel: \"cancel|never mind|nevermind\", voiceHelp: \"help|what can i say|what can i do\", // spoken commands Merlin always knows, in the user's language sayStopListening: \"stop listening\", sayCloseMerlin: \"close merlin\", sayDisableSanta: \"disable santa mode\", // what the voice card says after hearing something voiceDidYouMean: \"{title}? To run it, say\", voiceShowingMatches: \"Showing matches. To run one, say\", voiceNoMatches: \"Nothing matched. Try other words, or say\", voiceNoSuchResult: \"There is no result {number}. Try\", voiceYouCanSay: \"You can say\", voiceMicBlocked: \"The microphone is blocked. Allow it in your browser to talk to Merlin.\", voiceUnavailable: \"Voice isn't available in this browser. You can still type to Merlin.\", voiceTipPick: \"To run a result, say\", voiceTipNext: \"To move down the list, say\", voiceTipClear: \"To start over, say\", voiceTipHelp: \"To see what you can say, say\", voiceRunResult: \"Run a result\", voiceMoveDown: \"Move down\", voiceMoveUp: \"Move up\", voiceRunHighlighted: \"Run the highlighted result\", voiceStartOver: \"Start over\", voiceStopListeningLabel: \"Stop listening\", voiceCloseLabel: \"Close Merlin\", }"
+              "default": "{ // product name; no locale entries, so it stays \"Super Daemon\" unless a language adds one superDaemon: \"Super Daemon\", toggleSantaMode: \"Toggle Santa Mode\", santaModeDescription: \"He sees you when you're sleeping, he knows when you're awake, and with this command active he is always listening for input, ready to respond. He's.. Santa from the Future. Ho..Ho...Ho.\", santaModeActivated: \"Santa mode activated: Watch what you say\", santaModeDeactivated: \"Santa mode deactivated: Have a nice day believing you are not being watched\", disableSantaModeToStop: \"Please disable Santa mode to stop listening\", imHere: \"I'm here\", yes: \"Yes?\", what: \"What?\", whatCanIDo: \"What can I do for you?\", whatDoYouNeed: \"What do you need?\", howCanIHelp: \"How can I help?\", thanksForStopping: \"thanks for stopping by\", seeYa: \"See ya\", seeYouSoon: \"See you soon\", tillWeMeetAgain: \"Till we meet again\", howMayIHelp: \"How may I help you?\", listening: \"Listening..\", programModeActivated: \"program mode activated\", developerModeActivated: \"developer mode activated\", merlin: \"Search and commands\", // who the voice is: it answers to \"Ok Future\" voiceName: \"Future\", closeMerlin: \"Close search and commands\", // spoken search vocabulary: pipe separated, translated per language voiceFillers: \"please|can you|could you|would you|will you|i want to|i'd like to|i would like to|let's|let me|go ahead and|um|uh|ok future|okay future|hey future|hey|merlin|ok|okay\", voiceStopWords: \"a|an|the|to|my|this|for|of|me\", voiceNumbers: \"zero|one|two|three|four|five|six|seven|eight|nine|ten\", voiceOrdinals: \"zeroth|first|second|third|fourth|fifth|sixth|seventh|eighth|ninth\", voicePickPrefixes: \"number|option|item|result|pick|choose|select|the\", voicePickSuffix: \"one\", voiceNumberSoundalikes: \"won=1|to=2|too=2|tu=2|tree=3|free=3|for=4|fore=4|ate=8\", voiceNext: \"next|down|next one\", voiceBack: \"back|previous|up|go back\", voiceRun: \"run|go|yes|do it|run it|open it|that one\", voiceClear: \"clear|start over|reset\", voiceCancel: \"cancel|never mind|nevermind\", voiceHelp: \"help|what can i say|what can i do\", // spoken commands Merlin always knows, in the user's language sayStopListening: \"stop listening\", sayCloseMerlin: \"close search\", sayDisableSanta: \"disable santa mode\", // what the voice card says after hearing something voiceDidYouMean: \"{title}? To run it, say\", voiceShowingMatches: \"Showing matches. To run one, say\", voiceNoMatches: \"Nothing matched. Try other words, or say\", voiceNoSuchResult: \"There is no result {number}. Try\", voiceYouCanSay: \"You can say\", voiceMicBlocked: \"The microphone is blocked. Allow it in your browser to use your voice.\", voiceUnavailable: \"Voice isn't available in this browser. You can still type.\", voiceTipPick: \"To run a result, say\", voiceTipNext: \"To move down the list, say\", voiceTipClear: \"To start over, say\", voiceTipHelp: \"To see what you can say, say\", voiceRunResult: \"Run a result\", voiceMoveDown: \"Move down\", voiceMoveUp: \"Move up\", voiceRunHighlighted: \"Run the highlighted result\", voiceStartOver: \"Start over\", voiceStopListeningLabel: \"Stop listening\", voiceCloseLabel: \"Close search\", }"
             },
             {
               "kind": "field",
@@ -801,7 +801,7 @@
               "type": {
                 "text": "string"
               },
-              "default": "\"merlin\""
+              "default": "\"future\""
             },
             {
               "kind": "field",
@@ -1315,7 +1315,7 @@
           "type": {
             "text": "object"
           },
-          "default": "{ fillers: \"please|can you|could you|would you|will you|i want to|i'd like to|i would like to|let's|let me|go ahead and|um|uh|hey|merlin|ok|okay\", stopWords: \"a|an|the|to|my|this|for|of|me\", numbers: \"zero|one|two|three|four|five|six|seven|eight|nine|ten\", ordinals: \"zeroth|first|second|third|fourth|fifth|sixth|seventh|eighth|ninth\", pickPrefixes: \"number|option|item|result|pick|choose|select|the\", pickSuffix: \"one\", // what speech engines often write for a spoken number after \"option\" or // \"number\": \"option to\", \"number for\" numberSoundalikes: \"won=1|to=2|too=2|tu=2|tree=3|free=3|for=4|fore=4|ate=8\", next: \"next|down|next one\", back: \"back|previous|up|go back\", run: \"run|go|yes|do it|run it|open it|that one\", clear: \"clear|start over|reset\", cancel: \"cancel|never mind|nevermind\", help: \"help|what can i say|what can i do\", }",
+          "default": "{ fillers: \"please|can you|could you|would you|will you|i want to|i'd like to|i would like to|let's|let me|go ahead and|um|uh|ok future|okay future|hey future|hey|merlin|ok|okay\", stopWords: \"a|an|the|to|my|this|for|of|me\", numbers: \"zero|one|two|three|four|five|six|seven|eight|nine|ten\", ordinals: \"zeroth|first|second|third|fourth|fifth|sixth|seventh|eighth|ninth\", pickPrefixes: \"number|option|item|result|pick|choose|select|the\", pickSuffix: \"one\", // what speech engines often write for a spoken number after \"option\" or // \"number\": \"option to\", \"number for\" numberSoundalikes: \"won=1|to=2|too=2|tu=2|tree=3|free=3|for=4|fore=4|ate=8\", next: \"next|down|next one\", back: \"back|previous|up|go back\", run: \"run|go|yes|do it|run it|open it|that one\", clear: \"clear|start over|reset\", cancel: \"cancel|never mind|nevermind\", help: \"help|what can i say|what can i do\", }",
           "description": "The English defaults; super-daemon passes translated ones."
         },
         {
@@ -1801,28 +1801,13 @@
           }
         },
         {
-          "kind": "function",
-          "name": "merlinWand",
-          "parameters": [
-            {
-              "name": "className",
-              "default": "\"\"",
-              "description": "extra class names for the svg",
-              "type": {
-                "text": "string"
-              }
-            }
-          ],
-          "description": "Merlin's mark is hax:wand. It is drawn inline, split into the stick and\nits three sparkles, so the sparkles can twinkle once when the Merlin\ncontrol is hovered or focused. Same paths as hax:wand in hax-iconset."
-        },
-        {
           "kind": "variable",
-          "name": "MERLIN_ICONS",
+          "name": "GOGGLES_ICONS",
           "type": {
             "text": "array"
           },
-          "default": "[\"hax:wand\", \"hax:wizard-hat\"]",
-          "description": "Icon names that mean Merlin. A Merlin control given one of these draws\nthe animated wand instead of a plain icon. hax:wizard-hat is kept so\nhosts that still set it get the new mark."
+          "default": "[ \"hax:future-goggles\", \"hax:wand\", \"hax:wizard-hat\", ]",
+          "description": "Icon names that mean the palette in its short form: the Future Traveler's\ngoggles. A Merlin control given one of these draws the goggles inline so\nthe lenses can light. hax:wand and hax:wizard-hat were the palette's marks\nbefore the goggles and are kept so hosts that still set them get the\ngoggles."
         },
         {
           "kind": "variable",
@@ -1850,6 +1835,21 @@
         },
         {
           "kind": "function",
+          "name": "merlinGoggles",
+          "parameters": [
+            {
+              "name": "className",
+              "default": "\"\"",
+              "description": "extra class names for the svg",
+              "type": {
+                "text": "string"
+              }
+            }
+          ],
+          "description": "The palette's short mark: the Future Traveler's goggles on their own, in\none ink (currentColor) with see-through lenses. Same paths as\nhax:future-goggles in hax-iconset. It carries the merlin-traveler class as well so the\nlenses light, glow and size by the same rules as the lenses he wears\n(MerlinWandStyles, and any host that styles .merlin-traveler)."
+        },
+        {
+          "kind": "function",
           "name": "merlinMark",
           "parameters": [
             {
@@ -1868,13 +1868,13 @@
               }
             }
           ],
-          "description": "Merlin's mark for an icon name: the Future Traveler for TRAVELER_ICONS,\nthe wand for MERLIN_ICONS, nothing otherwise."
+          "description": "The palette's mark for an icon name: the Future Traveler for\nTRAVELER_ICONS, his goggles for GOGGLES_ICONS, nothing otherwise."
         },
         {
           "kind": "variable",
           "name": "MerlinWandStyles",
-          "default": "css` .merlin-wand { display: inline-block; flex: none; width: var(--merlin-wand-size, var(--hax-ui-icon, 16px)); height: var(--merlin-wand-size, var(--hax-ui-icon, 16px)); fill: currentColor; overflow: visible; } .merlin-wand .sparkle { transform-box: fill-box; transform-origin: center; transition: filter var(--hax-ui-duration, 150ms) var(--hax-ui-easing, ease); } .merlin-wand .stick { transform-box: view-box; transform-origin: 3px 21px; } .merlin-wand .s2 { --merlin-wand-delay: 250ms; } .merlin-wand .s3 { --merlin-wand-delay: 500ms; } .merlin-wand-host:hover .merlin-wand .sparkle, .merlin-wand-host:focus-within .merlin-wand .sparkle { filter: drop-shadow(0 0 2px currentColor); } @media (prefers-reduced-motion: no-preference) { .merlin-wand-host:hover .merlin-wand .sparkle, .merlin-wand-host:focus-within .merlin-wand .sparkle { animation: merlin-wand-twinkle var(--ddd-duration-slow, 600ms) var(--ddd-timing-ease, cubic-bezier(0.4, 0, 0.2, 1)) var(--merlin-wand-delay, 0ms) 1 both; } .merlin-wand-host:hover .merlin-wand .stick, .merlin-wand-host:focus-within .merlin-wand .stick { animation: merlin-wand-flick var(--ddd-duration-slow, 600ms) var(--hax-ui-easing-move, cubic-bezier(0.2, 0, 0, 1)) 1; } } @keyframes merlin-wand-twinkle { 0% { transform: scale(1) rotate(0deg); opacity: 1; } 35% { transform: scale(0.55) rotate(40deg); opacity: 0.6; } 65% { transform: scale(1.15) rotate(70deg); opacity: 1; } 100% { transform: scale(1) rotate(90deg); opacity: 1; } } /* the Future Traveler: one ink, lit parts in color. His bulb and goggles light with hover or focus and glow while Merlin listens or works */ .merlin-traveler { display: inline-block; flex: none; width: var( --merlin-traveler-size, var(--merlin-wand-size, var(--hax-ui-icon, 16px)) ); height: var( --merlin-traveler-size, var(--merlin-wand-size, var(--hax-ui-icon, 16px)) ); overflow: visible; } .merlin-traveler .ink { fill: currentColor; } .merlin-traveler .lit { opacity: 0; transition: opacity var(--hax-ui-duration, 150ms) var(--hax-ui-easing, ease); } .merlin-traveler .halo-bulb { fill: var(--ddd-theme-default-keystoneYellow, #ffd100); opacity: 0.45; } .merlin-traveler .halo-lens { fill: #2fd3e0; opacity: 0.4; } .merlin-traveler .rays { fill: none; stroke: var(--ddd-theme-default-keystoneYellow, #ffd100); stroke-width: 1; stroke-linecap: round; } .merlin-traveler .bulb { fill: var(--ddd-theme-default-keystoneYellow, #ffd100); } .merlin-traveler .lens { fill: #7ff0f8; } .merlin-traveler .glint { fill: var(--ddd-theme-default-white, #ffffff); } .merlin-wand-host:hover .merlin-traveler .lit, .merlin-wand-host:focus-within .merlin-traveler .lit, :host([focused]) .merlin-traveler .lit, :host([listening-for-input]) .merlin-traveler .lit, :host([loading]) .merlin-traveler .lit { opacity: 1; } @media (prefers-reduced-motion: no-preference) { :host([listening-for-input]) .merlin-traveler .halo, :host([loading]) .merlin-traveler .halo { animation: merlin-traveler-glow 2.4s ease-in-out infinite; } :host([listening-for-input]) .merlin-traveler .bulb, :host([listening-for-input]) .merlin-traveler .lens, :host([loading]) .merlin-traveler .bulb, :host([loading]) .merlin-traveler .lens { animation: merlin-traveler-pulse 2.4s ease-in-out infinite; } } @keyframes merlin-traveler-glow { 0%, 100% { opacity: 0.25; } 50% { opacity: 0.75; } } @keyframes merlin-traveler-pulse { 0%, 100% { filter: brightness(1); } 50% { filter: brightness(1.35); } } @keyframes merlin-wand-flick { 0% { transform: rotate(0deg); } 40% { transform: rotate(-10deg); } 75% { transform: rotate(4deg); } 100% { transform: rotate(0deg); } } `",
-          "description": "Wand motion. Put the class merlin-wand-host on the control (a field or a\nbutton) that holds the wand. On hover or focus the sparkles glow and each\ntwinkles once, in turn, and the stick flicks once. With reduced motion\nonly the glow shows."
+          "default": "css` /* the Future Traveler: one ink, lit parts in color. His bulb and goggles light with hover or focus and glow while Merlin listens or works */ .merlin-traveler { display: inline-block; flex: none; width: var( --merlin-traveler-size, var(--merlin-wand-size, var(--hax-ui-icon, 16px)) ); height: var( --merlin-traveler-size, var(--merlin-wand-size, var(--hax-ui-icon, 16px)) ); overflow: visible; } .merlin-traveler .ink { fill: currentColor; } .merlin-traveler .lit { opacity: 0; transition: opacity var(--hax-ui-duration, 150ms) var(--hax-ui-easing, ease); } .merlin-traveler .halo-bulb { fill: var(--ddd-theme-default-keystoneYellow, #ffd100); opacity: 0.45; } .merlin-traveler .halo-lens { fill: #2fd3e0; opacity: 0.4; } .merlin-traveler .rays { fill: none; stroke: var(--ddd-theme-default-keystoneYellow, #ffd100); stroke-width: 1; stroke-linecap: round; } .merlin-traveler .bulb { fill: var(--ddd-theme-default-keystoneYellow, #ffd100); } .merlin-traveler .lens { fill: #7ff0f8; } .merlin-traveler .glint { fill: var(--ddd-theme-default-white, #ffffff); } .merlin-wand-host:hover .merlin-traveler .lit, .merlin-wand-host:focus-within .merlin-traveler .lit, :host([focused]) .merlin-traveler .lit, :host([listening-for-input]) .merlin-traveler .lit, :host([loading]) .merlin-traveler .lit { opacity: 1; } @media (prefers-reduced-motion: no-preference) { :host([listening-for-input]) .merlin-traveler .halo, :host([loading]) .merlin-traveler .halo { animation: merlin-traveler-glow 2.4s ease-in-out infinite; } :host([listening-for-input]) .merlin-traveler .bulb, :host([listening-for-input]) .merlin-traveler .lens, :host([loading]) .merlin-traveler .bulb, :host([loading]) .merlin-traveler .lens { animation: merlin-traveler-pulse 2.4s ease-in-out infinite; } } @keyframes merlin-traveler-glow { 0%, 100% { opacity: 0.25; } 50% { opacity: 0.75; } } @keyframes merlin-traveler-pulse { 0%, 100% { filter: brightness(1); } 50% { filter: brightness(1.35); } } `",
+          "description": "The mark's light. Put the class merlin-wand-host on the control (a field\nor a button) that holds the mark: the class name is from when the mark\nwas a wand and stays so hosts keep working. On hover or focus the lit\nparts come on; while the palette listens or works they glow. With reduced\nmotion they stay lit and still."
         },
         {
           "kind": "variable",
@@ -1894,17 +1894,9 @@
         },
         {
           "kind": "js",
-          "name": "merlinWand",
+          "name": "GOGGLES_ICONS",
           "declaration": {
-            "name": "merlinWand",
-            "module": "lib/super-daemon-hax-ui.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "MERLIN_ICONS",
-          "declaration": {
-            "name": "MERLIN_ICONS",
+            "name": "GOGGLES_ICONS",
             "module": "lib/super-daemon-hax-ui.js"
           }
         },
@@ -1921,6 +1913,14 @@
           "name": "merlinTraveler",
           "declaration": {
             "name": "merlinTraveler",
+            "module": "lib/super-daemon-hax-ui.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "merlinGoggles",
+          "declaration": {
+            "name": "merlinGoggles",
             "module": "lib/super-daemon-hax-ui.js"
           }
         },
@@ -2025,7 +2025,13 @@
             },
             {
               "kind": "method",
-              "name": "focus"
+              "name": "focus",
+              "parameters": [
+                {
+                  "name": "options"
+                }
+              ],
+              "description": "the row itself takes focus (it is the option). The details toggle is a\npointer shortcut only: keyboard and screen reader users get the details\nas the option's description instead."
             },
             {
               "kind": "method",
@@ -2051,15 +2057,6 @@
               "parameters": [
                 {
                   "name": "val"
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "toggleDetailsKey",
-              "parameters": [
-                {
-                  "name": "e"
                 }
               ]
             },
@@ -2229,14 +2226,6 @@
               "default": "false",
               "attribute": "details-in-pane",
               "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "shadowRootOptions",
-              "type": {
-                "text": "object"
-              },
-              "default": "{ ...SimpleColors.shadowRootOptions, delegatesFocus: true, }"
             },
             {
               "kind": "field",
@@ -3142,7 +3131,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ saved: \"Saved\", merlin: \"Merlin\", listeningState: \"Listening\", speakingState: \"Speaking\", santaModeState: \"Santa mode\", dismiss: \"Dismiss\", stopListening: \"Stop listening\", turnOffSantaMode: \"Turn off Santa mode\", sayACommand: \"Say a command, or\", toStopSay: \"To stop, say\", sayStopListening: \"stop listening\", sayDisableSanta: \"disable santa mode\", }"
+              "default": "{ saved: \"Saved\", // who is speaking: the voice answers to \"Ok Future\" voiceName: \"Future\", listeningState: \"Listening\", speakingState: \"Speaking\", santaModeState: \"Santa mode\", dismiss: \"Dismiss\", stopListening: \"Stop listening\", turnOffSantaMode: \"Turn off Santa mode\", sayACommand: \"Say a command, or\", toStopSay: \"To stop, say\", sayStopListening: \"stop listening\", sayDisableSanta: \"disable santa mode\", }"
             },
             {
               "kind": "field",
@@ -3618,7 +3607,7 @@
                   "name": "multiMatch"
                 }
               ],
-              "description": "Keep each group's results together (Insert blocks, Site, ...), groups\nordered by their best-ranked result and results keeping their order\ninside a group, so a heading never repeats. Programs and short lists\nare left as they are."
+              "description": "Keep each group's results together (Insert blocks, Site, ...), groups\nordered by their best-ranked result and results keeping their order\ninside a group, so a heading never repeats. Programs and short lists\nare left as they are.\nA running program filters its own results from what is typed, so its\nrows are never filtered by `like` here. `like` still holds the text a\nprogram started with (the page's current tags, say): filtering by it\nhid the program's row once that text was replaced, and Enter did nothing."
             },
             {
               "kind": "method",
@@ -3906,6 +3895,16 @@
             },
             {
               "kind": "method",
+              "name": "_keyFromSearchButton",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "True when a keydown that reached super-daemon-search started on one of\nits buttons (the voice button) rather than its text field. The listener\nsits on the whole search bar, so keys pressed on those controls bubble\nhere too."
+            },
+            {
+              "kind": "method",
               "name": "_inputKeydown",
               "parameters": [
                 {
@@ -4004,7 +4003,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ ...this.t, noResultsForThisTerm: this._defaultTextEmpty, typeToSeeResults: \"Type something to see results\", voiceSearch: \"Voice search\", results: \"Results\", resultsCount: \"{count} results\", loadingResults: \"Loading results\", insertBlocks: \"Insert blocks\", findMedia: \"Find media\", submitIdeas: \"Submit your ideas\", dropFilesHere: \"Drop files here\", typeWhatYouWant: \"Type what you want to do\", opensMemoryPalace: \"opens Merlin\", clickToDoAnything: \"Click to do anything!\", details: \"Details\", preview: \"Preview\", insert: \"Insert\", run: \"Run\", open: \"Open\", move: \"Move\", close: \"Close\", all: \"All\", commands: \"Commands\", developer: \"Developer\", searchIn: \"Search in\", typeSlashOrToSwitch: \"Type / or > to switch\", site: \"Site\", editor: \"Editor\", cheatCodes: \"Cheat codes\", openFullMerlin: \"Open full Merlin\", resultsOfTotal: \"{count} of {total} results\", stopListening: \"Stop listening\", runResult: \"Run a result\", sayPickResult: \"second one\", sayCloseMerlin: \"close merlin\", sayStopListening: \"stop listening\", }"
+              "default": "{ ...this.t, noResultsForThisTerm: this._defaultTextEmpty, typeToSeeResults: \"Type something to see results\", voiceSearch: \"Voice search\", results: \"Results\", resultsCount: \"{count} results\", loadingResults: \"Loading results\", insertBlocks: \"Insert blocks\", findMedia: \"Find media\", submitIdeas: \"Submit your ideas\", dropFilesHere: \"Drop files here\", typeWhatYouWant: \"Type what you want to do\", opensMemoryPalace: \"opens search and commands\", clickToDoAnything: \"Click to do anything!\", details: \"Details\", preview: \"Preview\", insert: \"Insert\", run: \"Run\", open: \"Open\", move: \"Move\", close: \"Close\", all: \"All\", commands: \"Commands\", developer: \"Developer\", searchIn: \"Search in\", typeSlashOrToSwitch: \"Type / or > to switch\", site: \"Site\", editor: \"Editor\", cheatCodes: \"Cheat codes\", openFullMerlin: \"Open full search\", resultsOfTotal: \"{count} of {total} results\", stopListening: \"Stop listening\", runResult: \"Run a result\", sayPickResult: \"second one\", sayCloseMerlin: \"close search\", sayStopListening: \"stop listening\", }"
             },
             {
               "kind": "field",

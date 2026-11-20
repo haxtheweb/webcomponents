@@ -15,10 +15,26 @@
   "demoHtml": "",
   "attributes": [
     {
+      "name": "activeId",
+      "property": "activeId",
+      "type": "null",
+      "default": "null",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "activeDescription",
+      "property": "activeDescription",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": null
+    },
+    {
       "name": "data-palette",
       "property": "dataPalette",
       "type": "string",
-      "default": "\"3\"",
+      "default": "",
       "description": "",
       "hax": null
     }
@@ -28,7 +44,7 @@
   ],
   "events": [],
   "hax": {},
-  "surfaceHash": "8eff39018306",
+  "surfaceHash": "407ff47dd32a",
   "walkthroughs": [],
   "videos": [],
   "motion": {

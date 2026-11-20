@@ -417,6 +417,63 @@
               }
             },
             {
+              "kind": "field",
+              "name": "questionIcon",
+              "description": "Icon in the block header chip. Question types that have their own icon\nin the block list return it here so the two match; the default is the\nshared question icon.",
+              "return": {
+                "type": {
+                  "text": "String"
+                }
+              },
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "xapiResultExtensions",
+              "parameters": [
+                {
+                  "name": "_correct",
+                  "type": {
+                    "text": "boolean"
+                  }
+                },
+                {
+                  "name": "_attempt",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "Extra result.extensions for an answer check, after attempts and\nmax-attempts (keys from XAPI_EXTENSIONS). None by default.",
+              "return": {
+                "type": {
+                  "text": "Object"
+                }
+              },
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "xapiContextExtensions",
+              "description": "Extra context.extensions for an answer check, after element (keys from\nXAPI_EXTENSIONS). None by default.",
+              "return": {
+                "type": {
+                  "text": "Object"
+                }
+              },
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
               "kind": "method",
               "name": "engagementDetail",
               "parameters": [
@@ -1863,6 +1920,51 @@
                 }
               ],
               "description": "Score of the current answer: { raw, max }"
+            },
+            {
+              "kind": "field",
+              "name": "questionIcon",
+              "description": "Icon in the block header chip. Question types that have their own icon\nin the block list return it here so the two match; the default is the\nshared question icon.",
+              "return": {
+                "type": {
+                  "text": "String"
+                }
+              },
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "xapiResultExtensions",
+              "parameters": [
+                {
+                  "name": "_correct",
+                  "type": {
+                    "text": "boolean"
+                  }
+                },
+                {
+                  "name": "_attempt",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "Extra result.extensions for an answer check, after attempts and\nmax-attempts (keys from XAPI_EXTENSIONS). None by default.",
+              "return": {
+                "type": {
+                  "text": "Object"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "xapiContextExtensions",
+              "description": "Extra context.extensions for an answer check, after element (keys from\nXAPI_EXTENSIONS). None by default.",
+              "return": {
+                "type": {
+                  "text": "Object"
+                }
+              }
             },
             {
               "kind": "method",
@@ -3315,6 +3417,63 @@
                 }
               ],
               "description": "Score of the current answer: { raw, max }",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "questionIcon",
+              "description": "Icon in the block header chip. Question types that have their own icon\nin the block list return it here so the two match; the default is the\nshared question icon.",
+              "return": {
+                "type": {
+                  "text": "String"
+                }
+              },
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "xapiResultExtensions",
+              "parameters": [
+                {
+                  "name": "_correct",
+                  "type": {
+                    "text": "boolean"
+                  }
+                },
+                {
+                  "name": "_attempt",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "Extra result.extensions for an answer check, after attempts and\nmax-attempts (keys from XAPI_EXTENSIONS). None by default.",
+              "return": {
+                "type": {
+                  "text": "Object"
+                }
+              },
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "xapiContextExtensions",
+              "description": "Extra context.extensions for an answer check, after element (keys from\nXAPI_EXTENSIONS). None by default.",
+              "return": {
+                "type": {
+                  "text": "Object"
+                }
+              },
               "inheritedFrom": {
                 "name": "QuestionElement",
                 "module": "lib/QuestionElement.js"
@@ -4916,6 +5075,63 @@
                 }
               ],
               "description": "Score of the current answer: { raw, max }",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "questionIcon",
+              "description": "Icon in the block header chip. Question types that have their own icon\nin the block list return it here so the two match; the default is the\nshared question icon.",
+              "return": {
+                "type": {
+                  "text": "String"
+                }
+              },
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "xapiResultExtensions",
+              "parameters": [
+                {
+                  "name": "_correct",
+                  "type": {
+                    "text": "boolean"
+                  }
+                },
+                {
+                  "name": "_attempt",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "Extra result.extensions for an answer check, after attempts and\nmax-attempts (keys from XAPI_EXTENSIONS). None by default.",
+              "return": {
+                "type": {
+                  "text": "Object"
+                }
+              },
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "xapiContextExtensions",
+              "description": "Extra context.extensions for an answer check, after element (keys from\nXAPI_EXTENSIONS). None by default.",
+              "return": {
+                "type": {
+                  "text": "Object"
+                }
+              },
               "inheritedFrom": {
                 "name": "QuestionElement",
                 "module": "lib/QuestionElement.js"

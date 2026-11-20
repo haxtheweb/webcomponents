@@ -21,7 +21,7 @@
             {
               "kind": "method",
               "name": "_computeAriaLabel",
-              "description": "Compute an accessible name for the rendered anchor.\n\nPriority: explicit `label` property, then the host element's `title`\nattribute (the most common fallback consumers already supply), then the\ntarget URL so the link is at least self-describing. An empty `link=\"#\"`\nplaceholder falls through to a generic call-to-action string.",
+              "description": "Compute an accessible name for the rendered anchor, only when it has\nno visible text of its own.\n\nThe visible text (the label property or slotted text) is the link name,\nso it is never overridden: screen readers announce what is on screen and\nvoice control (\"click Get started\") matches it. Without visible text the\nhost title is used, then the target URL, then a generic call-to-action\nstring.",
               "return": {
                 "type": {
                   "text": "string | undefined"
@@ -352,7 +352,7 @@
             {
               "kind": "method",
               "name": "_computeAriaLabel",
-              "description": "Compute an accessible name for the rendered anchor.\n\nPriority: explicit `label` property, then the host element's `title`\nattribute (the most common fallback consumers already supply), then the\ntarget URL so the link is at least self-describing. An empty `link=\"#\"`\nplaceholder falls through to a generic call-to-action string.",
+              "description": "Compute an accessible name for the rendered anchor, only when it has\nno visible text of its own.\n\nThe visible text (the label property or slotted text) is the link name,\nso it is never overridden: screen readers announce what is on screen and\nvoice control (\"click Get started\") matches it. Without visible text the\nhost title is used, then the target URL, then a generic call-to-action\nstring.",
               "return": {
                 "type": {
                   "text": "string | undefined"

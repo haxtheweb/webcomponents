@@ -508,6 +508,26 @@
             },
             {
               "kind": "method",
+              "name": "_slashTarget",
+              "parameters": [
+                {
+                  "name": "rng"
+                }
+              ],
+              "description": "The block a \"/\" typed at the caret belongs to: the active node, or\nthe list item the caret is in when the active node is a list."
+            },
+            {
+              "kind": "method",
+              "name": "_onSlashInput",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "\"/\" in an empty block opens the commands, also where there is no key\nto read. An on-screen keyboard (phones, tablets) sends keydown with no\nkey name, so _onKeyDown never sees the \"/\"; it arrives here as text\nalready typed into the block. When the block holds nothing but that\nslash it is taken back out and the commands open, the same as on a\nkeyboard, where keydown handles it and no input follows."
+            },
+            {
+              "kind": "method",
               "name": "_onKeyDown",
               "parameters": [
                 {
@@ -1666,7 +1686,18 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ addContent: \"Add Content\", cantBeTransformed: \"Sorry, this can not be transformed!\", typeForQuickActions: \"Type '/' for quick actions\", addBlockHere: \"Add a block here (/)\", }"
+              "default": "{ addContent: \"Add Content\", cantBeTransformed: \"Sorry, this can not be transformed!\", typeForQuickActions: \"Type '/' for quick actions\", addBlockHere: \"Add a block here (/)\", leaveEditingHint: \"Editing. Tab indents text. To leave the editing area, press Escape, then Tab.\", }"
+            },
+            {
+              "kind": "field",
+              "name": "__editingHint",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "text for a polite live region: tells screen reader users how to\nleave the editing area, since Tab indents while editing",
+              "default": "\"\"",
+              "attribute": "__editingHint"
             },
             {
               "kind": "field",
@@ -1766,6 +1797,15 @@
               },
               "default": "false",
               "fieldName": "_useristyping"
+            },
+            {
+              "name": "__editingHint",
+              "type": {
+                "text": "string"
+              },
+              "description": "text for a polite live region: tells screen reader users how to\nleave the editing area, since Tab indents while editing",
+              "default": "\"\"",
+              "fieldName": "__editingHint"
             },
             {
               "name": "hax-mover",
@@ -3884,6 +3924,16 @@
               },
               "default": "\"\"",
               "attribute": "gizmo-icon"
+            },
+            {
+              "kind": "field",
+              "name": "gizmoBadge",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "gizmo-badge"
             }
           ],
           "attributes": [
@@ -3926,6 +3976,14 @@
               },
               "default": "\"\"",
               "fieldName": "gizmoIcon"
+            },
+            {
+              "name": "gizmo-badge",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "gizmoBadge"
             }
           ],
           "mixins": [
@@ -4297,6 +4355,25 @@
             },
             {
               "kind": "method",
+              "name": "_lifecycleBadge",
+              "parameters": [
+                {
+                  "name": "gizmo"
+                }
+              ],
+              "description": "Word shown with a block that is not stable (gizmo.meta.lifecycle):\nexperimental blocks are marked Beta, deprecated ones Deprecated."
+            },
+            {
+              "kind": "method",
+              "name": "_tileLabel",
+              "parameters": [
+                {
+                  "name": "gizmo"
+                }
+              ]
+            },
+            {
+              "kind": "method",
               "name": "_filterAuxList",
               "parameters": [
                 {
@@ -4485,7 +4562,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ filterContentTypes: \"Filter Blocks\", recent: \"Recent\", popular: \"Popular\", }"
+              "default": "{ filterContentTypes: \"Filter Blocks\", recent: \"Recent\", popular: \"Popular\", beta: \"Beta\", deprecated: \"Deprecated\", }"
             },
             {
               "kind": "field",
@@ -10130,11 +10207,29 @@
               ]
             },
             {
+              "kind": "method",
+              "name": "editingTargetName",
+              "parameters": [
+                {
+                  "name": "target",
+                  "description": "the element being edited",
+                  "type": {
+                    "text": "object"
+                  }
+                }
+              ],
+              "description": "localized name for the block being edited (see setEditingName)",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
               "kind": "field",
               "name": "tag",
               "static": true,
               "readonly": true,
-              "description": "Store the tag name to make it easier to obtain directly.",
               "inheritedFrom": {
                 "name": "HaxContextBehaviors",
                 "module": "lib/hax-context-behaviors.js"
@@ -10742,7 +10837,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ undoButton: \"Undo\", redoButton: \"Redo\", formatButton: \"Format\", blockP: \"Paragraph\", blockH1: \"Heading 1\", blockH2: \"Heading 2\", blockH3: \"Heading 3\", blockH4: \"Heading 4\", blockH5: \"Heading 5\", blockH6: \"Heading 6\", blockPre: \"Preformatted\", h1Button: \"Header 1\", h2Button: \"Header 2\", italicButton: \"Italic\", boldButton: \"Bold\", underlineButton: \"Underline\", strikethroughButton: \"Cross out\", codeButton: \"Code\", markButton: \"Highlight\", kbdButton: \"Keyboard key\", abbrButton: \"Abbreviation\", removeFormatButton: \"Remove format\", linkButton: \"Link\", unlinkButton: \"Remove Link\", cutButton: \"Cut\", copyButton: \"Copy\", pasteButton: \"Paste Clipboard\", subscriptButton: \"Subscript\", superscriptButton: \"Superscript\", symbolButton: \"Insert Symbol\", emojiButton: \"Insert Emoticon\", imageButton: \"Insert Image\", orderedListButton: \"Numbered list\", unorderedListButton: \"Bulleted list\", blockquoteButton: \"Blockquote\", indentButton: \"Indent\", outdentButton: \"Outdent\", alignmentPicker: \"Text alignment\", moreFormats: \"More formats\", fewerFormats: \"Fewer formats\", addLink: \"Add link\", editLink: \"Edit link\", applyLink: \"Apply link\", updateLink: \"Update link\", linkAddress: \"Link address\", linkPlaceholder: \"Paste or type a link\", cancel: \"Cancel\", }"
+              "default": "{ undoButton: \"Undo\", redoButton: \"Redo\", formatButton: \"Format\", blockP: \"Paragraph\", blockH1: \"Heading 1\", blockH2: \"Heading 2\", blockH3: \"Heading 3\", blockH4: \"Heading 4\", blockH5: \"Heading 5\", blockH6: \"Heading 6\", blockPre: \"Preformatted\", blockText: \"Text\", blockListItem: \"List item\", editingBlock: \"{block}, editing\", h1Button: \"Header 1\", h2Button: \"Header 2\", italicButton: \"Italic\", boldButton: \"Bold\", underlineButton: \"Underline\", strikethroughButton: \"Cross out\", codeButton: \"Code\", markButton: \"Highlight\", kbdButton: \"Keyboard key\", abbrButton: \"Abbreviation\", removeFormatButton: \"Remove format\", linkButton: \"Link\", unlinkButton: \"Remove Link\", cutButton: \"Cut\", copyButton: \"Copy\", pasteButton: \"Paste Clipboard\", subscriptButton: \"Subscript\", superscriptButton: \"Superscript\", symbolButton: \"Insert Symbol\", emojiButton: \"Insert Emoticon\", imageButton: \"Insert Image\", orderedListButton: \"Numbered list\", unorderedListButton: \"Bulleted list\", blockquoteButton: \"Blockquote\", indentButton: \"Indent\", outdentButton: \"Outdent\", alignmentPicker: \"Text alignment\", moreFormats: \"More formats\", fewerFormats: \"Fewer formats\", addLink: \"Add link\", editLink: \"Edit link\", applyLink: \"Apply link\", updateLink: \"Update link\", linkAddress: \"Link address\", linkPlaceholder: \"Paste or type a link\", cancel: \"Cancel\", }"
             },
             {
               "kind": "field",
@@ -14002,7 +14097,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ structure: \"Structure\", htmlSource: \"HTML Source\", markdownSource: \"Markdown Source\", sourceFormat: \"Source format\", html: \"HTML\", markdown: \"Markdown\", structureTip: \"View Page Structure\", edit: \"Edit\", save: \"Save\", saveAndEdit: \"Save and edit\", move: \"Move\", close: \"Close\", menuAlignment: \"Menu Alignment\", menuLeft: \"Move\", menuRight: \"Move\", menuPosition: \"Menu position\", changeSideVisually: \"Change which side of the screen the menu is affixed to visually.\", expand: \"Expand\", collapse: \"Collapse\", menuSize: \"Menu size\", menuSizeDescription: \"Expand or collapse the menu visually.\", merlin: \"Merlin\", summonMerlin: \"Summon Merlin\", settings: \"Settings\", source: \"Source\", undo: \"Undo\", redo: \"Redo\", media: \"Media\", blocks: \"Blocks\", cancel: \"Cancel\", cancelWithoutSaving: \"Cancel without saving\", configure: \"Configure\", advanced: \"Advanced\", developer: \"Developer\", alignment: \"Alignment\", left: \"Left\", center: \"Center\", right: \"Right\", search: \"Search\", pages: \"Pages\", templates: \"Templates\", width: \"Width\", content: \"Content\", linkHtmlContentDescription: \"HTML inside this link. Nested elements like images are preserved; edit carefully.\", }"
+              "default": "{ structure: \"Structure\", htmlSource: \"HTML Source\", markdownSource: \"Markdown Source\", sourceFormat: \"Source format\", html: \"HTML\", markdown: \"Markdown\", structureTip: \"View Page Structure\", edit: \"Edit\", save: \"Save\", saveAndEdit: \"Save and edit\", move: \"Move\", close: \"Close\", menuAlignment: \"Menu Alignment\", menuLeft: \"Move\", menuRight: \"Move\", menuPosition: \"Menu position\", changeSideVisually: \"Change which side of the screen the menu is affixed to visually.\", expand: \"Expand\", collapse: \"Collapse\", menuSize: \"Menu size\", menuSizeDescription: \"Expand or collapse the menu visually.\", merlin: \"Search\", summonMerlin: \"Open search and commands\", settings: \"Settings\", source: \"Source\", undo: \"Undo\", redo: \"Redo\", media: \"Media\", blocks: \"Blocks\", cancel: \"Cancel\", cancelWithoutSaving: \"Cancel without saving\", configure: \"Configure\", advanced: \"Advanced\", developer: \"Developer\", alignment: \"Alignment\", left: \"Left\", center: \"Center\", right: \"Right\", search: \"Search\", pages: \"Pages\", templates: \"Templates\", width: \"Width\", content: \"Content\", linkHtmlContentDescription: \"HTML inside this link. Nested elements like images are preserved; edit carefully.\", }"
             },
             {
               "kind": "field",

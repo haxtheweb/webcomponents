@@ -420,7 +420,7 @@
                 {
                   "name": "meta",
                   "default": "{}",
-                  "description": "{ page, tag, name, trackable }",
+                  "description": "{ page, tag, name, trackable, reading (the page's\nown reading activity; covered is then the reading checkpoints seen) }",
                   "type": {
                     "text": "Object"
                   }

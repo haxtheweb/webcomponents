@@ -390,6 +390,25 @@
               }
             },
             {
+              "kind": "field",
+              "name": "iconLabel",
+              "description": "Fallback name for a button given no label: its visible text when it\nhas some, else the host title, else the icon name made readable\n(\"icons:create\" reads \"create\"), never the raw machine name.\nGive every icon-only button a real label; this only keeps an\nunlabeled one from being announced as \"icons colon create\".",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_syncAriaReferences",
+              "description": "aria-labelledby and controls name ids that live beside this element,\noutside its shadow root, so an id on the inner button could never\nmatch. Look them up where this element lives and hand the inner\nbutton element references instead; an id that does not resolve\nleaves no broken reference behind.",
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
               "kind": "method",
               "name": "focus",
               "description": "Delegates focus to the internal native button so consumers (e.g.\nroving-tabindex widgets) can move focus without reaching into this\nelement's shadow root (haxtheweb/issues#3107)",
@@ -884,6 +903,17 @@
               "readonly": true
             },
             {
+              "kind": "field",
+              "name": "iconLabel",
+              "description": "Fallback name for a button given no label: its visible text when it\nhas some, else the host title, else the icon name made readable\n(\"icons:create\" reads \"create\"), never the raw machine name.\nGive every icon-only button a real label; this only keeps an\nunlabeled one from being announced as \"icons colon create\".",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_syncAriaReferences",
+              "description": "aria-labelledby and controls name ids that live beside this element,\noutside its shadow root, so an id on the inner button could never\nmatch. Look them up where this element lives and hand the inner\nbutton element references instead; an id that does not resolve\nleaves no broken reference behind."
+            },
+            {
               "kind": "method",
               "name": "focus",
               "description": "Delegates focus to the internal native button so consumers (e.g.\nroving-tabindex widgets) can move focus without reaching into this\nelement's shadow root (haxtheweb/issues#3107)"
@@ -1222,6 +1252,25 @@
               "name": "styles",
               "static": true,
               "readonly": true,
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "iconLabel",
+              "description": "Fallback name for a button given no label: its visible text when it\nhas some, else the host title, else the icon name made readable\n(\"icons:create\" reads \"create\"), never the raw machine name.\nGive every icon-only button a real label; this only keeps an\nunlabeled one from being announced as \"icons colon create\".",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_syncAriaReferences",
+              "description": "aria-labelledby and controls name ids that live beside this element,\noutside its shadow root, so an id on the inner button could never\nmatch. Look them up where this element lives and hand the inner\nbutton element references instead; an id that does not resolve\nleaves no broken reference behind.",
               "inheritedFrom": {
                 "name": "SimpleIconButtonBehaviors",
                 "module": "lib/simple-icon-button-lite.js"
@@ -1739,6 +1788,25 @@
               "name": "styles",
               "static": true,
               "readonly": true,
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "iconLabel",
+              "description": "Fallback name for a button given no label: its visible text when it\nhas some, else the host title, else the icon name made readable\n(\"icons:create\" reads \"create\"), never the raw machine name.\nGive every icon-only button a real label; this only keeps an\nunlabeled one from being announced as \"icons colon create\".",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "SimpleIconButtonBehaviors",
+                "module": "lib/simple-icon-button-lite.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_syncAriaReferences",
+              "description": "aria-labelledby and controls name ids that live beside this element,\noutside its shadow root, so an id on the inner button could never\nmatch. Look them up where this element lives and hand the inner\nbutton element references instead; an id that does not resolve\nleaves no broken reference behind.",
               "inheritedFrom": {
                 "name": "SimpleIconButtonBehaviors",
                 "module": "lib/simple-icon-button-lite.js"

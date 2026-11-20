@@ -163,7 +163,8 @@
       ],
       "handles": [],
       "meta": {
-        "author": "haxtheweb"
+        "author": "haxtheweb",
+        "hidden": true
       }
     },
     "settings": {

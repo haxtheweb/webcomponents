@@ -4846,6 +4846,11 @@
               "description": "Called by the simple-toolbar that registers (or lets go of) this\nbutton, so the inner control knows whether it is part of a roving\ntabindex group."
             },
             {
+              "kind": "method",
+              "name": "_syncAriaControls",
+              "description": "Points the inner control at the element named by controls.\nAn aria-controls id on the inner button could only match ids inside\nthis shadow root, so the id is looked up where the button itself\nlives and handed over as an element reference instead; a missing\ntarget leaves no broken reference behind."
+            },
+            {
               "kind": "field",
               "name": "innerTabindex",
               "description": "tabindex for the inner control. Inside a simple-toolbar only the\ncurrent item is a tab stop (roving tabindex, arrow keys move between\nitems). A button no toolbar manages, such as a question's Check answer\nbutton, and a menu item are ordinary tab stops.",
@@ -5667,6 +5672,15 @@
                 }
               ],
               "description": "Called by the simple-toolbar that registers (or lets go of) this\nbutton, so the inner control knows whether it is part of a roving\ntabindex group.",
+              "inheritedFrom": {
+                "name": "SimpleToolbarButtonBehaviors",
+                "module": "lib/simple-toolbar-button.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_syncAriaControls",
+              "description": "Points the inner control at the element named by controls.\nAn aria-controls id on the inner button could only match ids inside\nthis shadow root, so the id is looked up where the button itself\nlives and handed over as an element reference instead; a missing\ntarget leaves no broken reference behind.",
               "inheritedFrom": {
                 "name": "SimpleToolbarButtonBehaviors",
                 "module": "lib/simple-toolbar-button.js"
@@ -6569,6 +6583,15 @@
                 }
               ],
               "description": "Called by the simple-toolbar that registers (or lets go of) this\nbutton, so the inner control knows whether it is part of a roving\ntabindex group.",
+              "inheritedFrom": {
+                "name": "SimpleToolbarButtonBehaviors",
+                "module": "lib/simple-toolbar-button.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_syncAriaControls",
+              "description": "Points the inner control at the element named by controls.\nAn aria-controls id on the inner button could only match ids inside\nthis shadow root, so the id is looked up where the button itself\nlives and handed over as an element reference instead; a missing\ntarget leaves no broken reference behind.",
               "inheritedFrom": {
                 "name": "SimpleToolbarButtonBehaviors",
                 "module": "lib/simple-toolbar-button.js"
@@ -7753,6 +7776,15 @@
               }
             },
             {
+              "kind": "method",
+              "name": "_syncAriaControls",
+              "description": "Points the inner control at the element named by controls.\nAn aria-controls id on the inner button could only match ids inside\nthis shadow root, so the id is looked up where the button itself\nlives and handed over as an element reference instead; a missing\ntarget leaves no broken reference behind.",
+              "inheritedFrom": {
+                "name": "SimpleToolbarButtonBehaviors",
+                "module": "lib/simple-toolbar-button.js"
+              }
+            },
+            {
               "kind": "field",
               "name": "innerTabindex",
               "description": "tabindex for the inner control. Inside a simple-toolbar only the\ncurrent item is a tab stop (roving tabindex, arrow keys move between\nitems). A button no toolbar manages, such as a question's Check answer\nbutton, and a menu item are ordinary tab stops.",
@@ -8765,6 +8797,15 @@
               }
             },
             {
+              "kind": "method",
+              "name": "_syncAriaControls",
+              "description": "Points the inner control at the element named by controls.\nAn aria-controls id on the inner button could only match ids inside\nthis shadow root, so the id is looked up where the button itself\nlives and handed over as an element reference instead; a missing\ntarget leaves no broken reference behind.",
+              "inheritedFrom": {
+                "name": "SimpleToolbarButtonBehaviors",
+                "module": "lib/simple-toolbar-button.js"
+              }
+            },
+            {
               "kind": "field",
               "name": "innerTabindex",
               "description": "tabindex for the inner control. Inside a simple-toolbar only the\ncurrent item is a tab stop (roving tabindex, arrow keys move between\nitems). A button no toolbar manages, such as a question's Check answer\nbutton, and a menu item are ordinary tab stops.",
@@ -9684,6 +9725,15 @@
                 }
               ],
               "description": "Called by the simple-toolbar that registers (or lets go of) this\nbutton, so the inner control knows whether it is part of a roving\ntabindex group.",
+              "inheritedFrom": {
+                "name": "SimpleToolbarButtonBehaviors",
+                "module": "lib/simple-toolbar-button.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_syncAriaControls",
+              "description": "Points the inner control at the element named by controls.\nAn aria-controls id on the inner button could only match ids inside\nthis shadow root, so the id is looked up where the button itself\nlives and handed over as an element reference instead; a missing\ntarget leaves no broken reference behind.",
               "inheritedFrom": {
                 "name": "SimpleToolbarButtonBehaviors",
                 "module": "lib/simple-toolbar-button.js"

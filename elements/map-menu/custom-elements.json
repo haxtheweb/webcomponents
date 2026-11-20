@@ -233,7 +233,7 @@
               "type": {
                 "text": "number"
               },
-              "default": "5",
+              "default": "10",
               "attribute": "max-depth"
             },
             {
@@ -430,7 +430,7 @@
               "type": {
                 "text": "number"
               },
-              "default": "5",
+              "default": "10",
               "fieldName": "maxDepth"
             },
             {
@@ -670,7 +670,7 @@
               "type": {
                 "text": "number"
               },
-              "default": "5",
+              "default": "10",
               "attribute": "max-depth",
               "reflects": true
             },
@@ -774,7 +774,7 @@
               "type": {
                 "text": "number"
               },
-              "default": "5",
+              "default": "10",
               "fieldName": "maxDepth"
             },
             {

@@ -46,6 +46,13 @@
             },
             {
               "kind": "field",
+              "name": "xapiVocabulary",
+              "static": true,
+              "description": "Sends no xAPI statements on purpose (see\nscripts/generate-xapi-vocabulary.mjs). Page reading notes when it was on screen, as evidence for the page's one reading record.",
+              "readonly": true
+            },
+            {
+              "kind": "field",
               "name": "haxProperties",
               "static": true,
               "description": "Wire to HAX",

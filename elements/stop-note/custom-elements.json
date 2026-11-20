@@ -51,6 +51,13 @@
               "readonly": true
             },
             {
+              "kind": "field",
+              "name": "xapiVocabulary",
+              "static": true,
+              "description": "Sends no xAPI statements on purpose (see\nscripts/generate-xapi-vocabulary.mjs). Page reading notes when it was on screen, as evidence for the page's one reading record.",
+              "readonly": true
+            },
+            {
               "kind": "method",
               "name": "haxHooks",
               "description": "Implements haxHooks to tie into life-cycle if hax exists."

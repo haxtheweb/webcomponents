@@ -79,6 +79,16 @@
             },
             {
               "kind": "method",
+              "name": "_consumerLabelElements",
+              "description": "Elements named by a consumer-supplied aria-labelledby. Those ids live\nbeside this element, outside its shadow root, so they are looked up\nwhere this element lives and handed to the listbox as element\nreferences (an id inside the shadow root could never match them).",
+              "return": {
+                "type": {
+                  "text": "Array<Element>"
+                }
+              }
+            },
+            {
+              "kind": "method",
               "name": "_getOption",
               "parameters": [
                 {
@@ -1152,6 +1162,20 @@
             },
             {
               "kind": "method",
+              "name": "_consumerLabelElements",
+              "description": "Elements named by a consumer-supplied aria-labelledby. Those ids live\nbeside this element, outside its shadow root, so they are looked up\nwhere this element lives and handed to the listbox as element\nreferences (an id inside the shadow root could never match them).",
+              "return": {
+                "type": {
+                  "text": "Array<Element>"
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimplePickerBehaviors",
+                "module": "simple-picker.js"
+              }
+            },
+            {
+              "kind": "method",
               "name": "_getOption",
               "parameters": [
                 {
@@ -2112,6 +2136,20 @@
                   "name": "rownum"
                 }
               ],
+              "inheritedFrom": {
+                "name": "SimplePickerBehaviors",
+                "module": "simple-picker.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_consumerLabelElements",
+              "description": "Elements named by a consumer-supplied aria-labelledby. Those ids live\nbeside this element, outside its shadow root, so they are looked up\nwhere this element lives and handed to the listbox as element\nreferences (an id inside the shadow root could never match them).",
+              "return": {
+                "type": {
+                  "text": "Array<Element>"
+                }
+              },
               "inheritedFrom": {
                 "name": "SimplePickerBehaviors",
                 "module": "simple-picker.js"
@@ -3555,6 +3593,20 @@
                   "name": "rownum"
                 }
               ],
+              "inheritedFrom": {
+                "name": "SimplePickerBehaviors",
+                "module": "simple-picker.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_consumerLabelElements",
+              "description": "Elements named by a consumer-supplied aria-labelledby. Those ids live\nbeside this element, outside its shadow root, so they are looked up\nwhere this element lives and handed to the listbox as element\nreferences (an id inside the shadow root could never match them).",
+              "return": {
+                "type": {
+                  "text": "Array<Element>"
+                }
+              },
               "inheritedFrom": {
                 "name": "SimplePickerBehaviors",
                 "module": "simple-picker.js"

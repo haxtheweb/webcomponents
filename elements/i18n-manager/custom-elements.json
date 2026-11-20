@@ -7,6 +7,25 @@
       "path": "i18n-manager.js",
       "declarations": [
         {
+          "kind": "function",
+          "name": "expandTranslationManifest",
+          "parameters": [
+            {
+              "name": "data",
+              "description": "parsed manifest file",
+              "type": {
+                "text": "object"
+              }
+            }
+          ],
+          "description": "Turn a loaded translation-manifest.json into namespace -> language list.\nThe generator (scripts/generate-translation-manifest.js) writes each\ndistinct language list once in `languageSets` and stores its index per\nnamespace; namespaces that share a list share one array in memory. A\nmanifest with plain arrays per namespace (no languageSets) is used as is.",
+          "return": {
+            "type": {
+              "text": "object"
+            }
+          }
+        },
+        {
           "kind": "class",
           "description": "`i18n-manager`\n`internationalization management singleton and helper classes`",
           "name": "I18NManager",
@@ -234,6 +253,14 @@
         }
       ],
       "exports": [
+        {
+          "kind": "js",
+          "name": "expandTranslationManifest",
+          "declaration": {
+            "name": "expandTranslationManifest",
+            "module": "i18n-manager.js"
+          }
+        },
         {
           "kind": "custom-element-definition",
           "declaration": {

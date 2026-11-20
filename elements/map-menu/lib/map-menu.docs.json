@@ -58,7 +58,7 @@
       "name": "max-depth",
       "property": "maxDepth",
       "type": "number",
-      "default": "5",
+      "default": "10",
       "description": "",
       "hax": null
     },
@@ -158,7 +158,7 @@
     null
   ],
   "hax": {},
-  "surfaceHash": "b5c188063422",
+  "surfaceHash": "66f0bacfc682",
   "walkthroughs": [
     {
       "id": "",
@@ -166,13 +166,13 @@
       "order": 0,
       "src": "map-menu.motion.json",
       "file": "lib/map-menu.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/map-menu.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

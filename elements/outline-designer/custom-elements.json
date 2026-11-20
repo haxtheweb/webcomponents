@@ -355,6 +355,16 @@
             },
             {
               "kind": "method",
+              "name": "_parseContents",
+              "parameters": [
+                {
+                  "name": "contents"
+                }
+              ],
+              "description": "Page HTML as a detached container to walk and re-serialize.\nSecurity: parsed by DOMParser into an inert document (no browsing\ncontext), so markup in a page (an img onerror, a srcset, an iframe)\nnever runs or loads while the outline reads, splits or rewrites it.\nThe nodes serialize the same as before; only side effects are gone."
+            },
+            {
+              "kind": "method",
               "name": "renderItemContents",
               "parameters": [
                 {

@@ -869,12 +869,22 @@
             {
               "kind": "method",
               "name": "_handleScroll",
-              "description": "handles resize event"
+              "description": "scroll listener on scrollTarget (unbound, so it reaches the manager\nthrough its singleton): reposition sticky elements on the next frame",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
             },
             {
               "kind": "method",
               "name": "_handleResize",
-              "description": "handles resize event"
+              "description": "window resize listener: reposition every element on the next frame",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
             },
             {
               "kind": "method",
@@ -1022,14 +1032,19 @@
             },
             {
               "kind": "field",
-              "name": "__timeout",
-              "privacy": "public",
+              "name": "__frame",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "__fullUpdate",
               "type": {
                 "text": "boolean"
               },
-              "description": "resize timeout",
-              "default": "false",
-              "attribute": "__timeout"
+              "default": "false"
             },
             {
               "kind": "field",
@@ -1050,16 +1065,6 @@
                 "text": "object"
               },
               "attribute": "scrollTarget"
-            },
-            {
-              "kind": "field",
-              "name": "__timeout2",
-              "privacy": "public",
-              "type": {
-                "text": "object"
-              },
-              "description": "resize timeout",
-              "attribute": "__timeout2"
             }
           ],
           "attributes": [
@@ -1087,23 +1092,6 @@
               "description": "mutation observer",
               "default": "new MutationObserver((mutations) => this.checkMutations(mutations), )",
               "fieldName": "__observer"
-            },
-            {
-              "name": "__timeout",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "resize timeout",
-              "default": "false",
-              "fieldName": "__timeout"
-            },
-            {
-              "name": "__timeout2",
-              "type": {
-                "text": "object"
-              },
-              "description": "resize timeout",
-              "fieldName": "__timeout2"
             }
           ],
           "superclass": {

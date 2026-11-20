@@ -1332,10 +1332,6 @@
             },
             {
               "kind": "field",
-              "name": "addEventListener"
-            },
-            {
-              "kind": "field",
               "name": "source",
               "privacy": "public",
               "type": {

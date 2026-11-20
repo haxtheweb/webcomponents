@@ -21834,9 +21834,11 @@
                             continue;
                           default:
                             if (
-                              !((i = s.trys),
-                              (i = i.length > 0 && i[i.length - 1]) ||
-                                (6 !== o[0] && 2 !== o[0]))
+                              !(
+                                (i = s.trys),
+                                (i = i.length > 0 && i[i.length - 1]) ||
+                                  (6 !== o[0] && 2 !== o[0])
+                              )
                             ) {
                               s = 0;
                               continue;

@@ -56,6 +56,15 @@
             },
             {
               "kind": "method",
+              "name": "_safeText",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
               "name": "_buildCountUp"
             },
             {

@@ -1473,7 +1473,7 @@
     {
       "tag": "ecosystem-theme",
       "title": "",
-      "description": "The hax.cloud theme: the HAX ecosystem as a website. Every page is a web, a tile or a tour from PRAW's ecosystem webs (its metadata.ecosystem says which), and every page has two views: - **Web**: the interactive <ecosystem-web> routed to that page, with a link bar to copy the page's address, and...",
+      "description": "The hax.cloud theme: the HAX ecosystem as a website. Every page is a web, a tile or a tour from PRAW's ecosystem webs (its metadata.ecosystem says which), and every page has two views: - **Network view** (view=\"web\"): the interactive <ecosystem-web> routed to that page, and the page's own content...",
       "package": "@haxtheweb/ecosystem-theme",
       "import": "@haxtheweb/ecosystem-theme/ecosystem-theme.js",
       "type": "element",
@@ -2274,7 +2274,7 @@
     {
       "tag": "hax-network-bar",
       "title": "",
-      "description": "The top bar of every hax.cloud site (hax.cloud, the element portfolio, HAXcms in the browser, RPG me), drawn like the HAX editor's own top bar: your character and the network's sites on the left, Merlin in the middle, Install HAX, GitHub and the Future Traveler on the right. Each site keeps its o...",
+      "description": "The top bar of every site in the HAX network, drawn like the HAX editor's own top bar. Each property of the network is an icon in its own color: the one you are on opens into a pill with its name, and hovering or focusing any of them shows a card saying what it is for. A tool that lives within a...",
       "package": "@haxtheweb/hax-network-bar",
       "import": "@haxtheweb/hax-network-bar/hax-network-bar.js",
       "type": "element",
