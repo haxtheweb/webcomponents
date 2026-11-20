@@ -265,12 +265,6 @@ export const HAX_NETWORK_DESTINATIONS = [
     icon: "image:palette",
   },
   {
-    title: "goRpg",
-    about: "goRpgAbout",
-    href: "https://rpg-me.hax.cloud",
-    icon: "face",
-  },
-  {
     title: "goDocs",
     about: "goDocsAbout",
     href: "https://haxtheweb.org",
@@ -313,10 +307,9 @@ export const HAX_NETWORK_DESTINATIONS = [
  * The top bar of every site in the HAX network, drawn like the HAX editor's
  * own top bar. Each property of the network is an icon in its own color: the
  * one you are on opens into a pill with its name, and hovering or focusing
- * any of them shows a card saying what it is for. Your character comes after
- * them and is the way to RPG me: an icon like the rest until you come by,
- * then the real one, walking. RPG me is one of HAX Art's tools, so its card
- * says so and the properties menu lists it under Art. Merlin sits in the middle; Discord, GitHub,
+ * any of them shows a card saying what it is for. A tool that lives within a
+ * property is not in the bar: on RPG me, one of HAX Art's tools, Art is the
+ * one lit up. Merlin sits in the middle; Discord, GitHub,
  * Install HAX and the Future Traveler on the right. Nothing in the bar
  * belongs to the site under it: a site draws its own header, links and
  * controls below.
@@ -333,7 +326,7 @@ export const HAX_NETWORK_DESTINATIONS = [
  * The bar has two modes. The full bar is the one above. The mini bar
  * (`compact`) is for a page whose editor already has Merlin and the Future
  * Traveler (HAXcms in the browser): shorter, the same property icons, no
- * character, Merlin or Future Traveler of its own, and the `pre` slot in the
+ * Merlin or Future Traveler of its own, and the `pre` slot in the
  * middle for the page's own status and functions. `demo` is the mini bar for
  * a HAXcms demo with no backend: it adds a notice that nothing is saved and
  * pins itself above the HAXcms editor bar.
@@ -362,12 +355,9 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
   constructor() {
     super();
     this.current = "";
-    this.character = "";
     this.travelerEra = "now";
     this._tearing = false;
     this._eras = null;
-    this._alive = false;
-    this._walking = false;
     this._remixTimer = null;
     this._eraPinned = false;
     this.installOpen = false;
@@ -395,9 +385,6 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
       art: "Art",
       artAbout:
         "The HAX art movement: posters, the Future Traveler across time, and playful tools like RPG me.",
-      rpg: "RPG me",
-      rpgAbout: "Make the character that is you across HAX.",
-      partOf: "Part of {property}",
       here: "You are here",
       remix: "Remix the HAX Future Traveler",
       github: "GitHub",
@@ -411,7 +398,6 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
       demoNoticeShort: "Nothing is saved.",
       githubLink: "HAX on GitHub",
       sitesMenu: "HAX network sites",
-      character: "Your character: make it in RPG me",
       merlin: "Merlin",
       merlinHint: "Travel anywhere",
       merlinWhere: " in the HAX network",
@@ -508,12 +494,9 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
         "Make and edit HAX sites in a browser tab, saved to a folder you pick.",
       goDemo: "Live demo: try the HAX editor",
       goDemoAbout: "Edit a HAX site in your browser, nothing to install.",
-      goRpg: "RPG me: make your character",
       goArt: "Art: the HAX art movement",
       goArtAbout:
         "Posters, the Future Traveler across time, and playful tools like RPG me.",
-      goRpgAbout:
-        "Design the character that stands for you across HAX. One of HAX Art's tools.",
       goLearn: "Learn: tutorials for HAX",
       goLearnAbout: "Tutorials that teach HAX one flow at a time.",
       goDocs: "HAXTheWeb: why HAX, and how to get it",
@@ -545,15 +528,12 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
     return {
       ...super.properties,
       /**
-       * Which site this is: web, try, learn, elements, art, cloud or rpg (what
-       * it was called before, browser and docs, still works).
+       * Which site this is: web, try, learn, elements, art or cloud (what it
+       * was called before, browser and docs, still works). A tool that lives
+       * within a property names itself and lights that property: rpg (RPG
+       * me) lights Art.
        */
       current: { type: String, reflect: true },
-      /**
-       * Your character, after the properties, as an rpg-character code
-       * (RPG me makes one). Empty draws HAX's own.
-       */
-      character: { type: String },
       /** Install HAX is open */
       installOpen: { type: Boolean, attribute: "install-open", reflect: true },
       /** The way to install whose tab is open; empty is the first */
@@ -571,8 +551,7 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
       /**
        * The mini bar, for a page whose editor already has Merlin and the
        * Future Traveler (HAXcms in the browser): shorter, with the same
-       * property icons but no character, Merlin or Future Traveler of its
-       * own, and the pre slot in the middle for the page's own status and
+       * property icons but no Merlin or Future Traveler of its own, and the pre slot in the middle for the page's own status and
        * functions.
        */
       compact: { type: Boolean, reflect: true },
@@ -589,10 +568,6 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
       _tearing: { type: Boolean, state: true },
       /** the eras have loaded */
       _eras: { type: Object, state: true },
-      /** your character has come to life (he has been hovered or focused) */
-      _alive: { type: Boolean, state: true },
-      /** your character is walking */
-      _walking: { type: Boolean, state: true },
     };
   }
 
@@ -658,24 +633,6 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
           outline: var(--hax-ui-focus-width) solid
             var(--ddd-theme-default-keystoneYellow);
           outline-offset: 2px;
-        }
-        /* your character: an icon like the rest until he is hovered or
-           focused, then the real one, walking */
-        .character rpg-character {
-          display: none;
-          width: 35px;
-          height: 40px;
-          margin-top: 4px;
-          pointer-events: none;
-        }
-        .prop.me[data-alive] .character rpg-character {
-          display: block;
-        }
-        .prop.me[data-alive] .character svg.glyph {
-          display: none;
-        }
-        .prop.me[data-alive] .character:not([aria-current="page"]) {
-          background-color: var(--prop);
         }
         /* DDD lays lists out as columns; the sites run in a row */
         nav.props ul,
@@ -1180,7 +1137,6 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
 
         @media (forced-colors: active) {
           .merlin,
-          .character,
           .props a,
           .net-btn,
           .tabs button {
@@ -1247,9 +1203,6 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
           --glyph-accent: var(--on);
           --glyph-lit: var(--on);
         }
-        .props a.character {
-          overflow: hidden;
-        }
         .props a[aria-current="page"] .name {
           position: static;
           width: auto;
@@ -1310,10 +1263,6 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
         }
         .card .host {
           color: var(--hax-ui-text-muted);
-        }
-        .card .within {
-          color: var(--hax-ui-text-muted);
-          font-style: italic;
         }
         .card .you {
           justify-self: start;
@@ -1420,14 +1369,6 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
           color: var(--on);
           --glyph-accent: var(--on);
           --glyph-lit: var(--on);
-        }
-        /* a tool within a property (RPG me, within Art) sits under it */
-        .net-menu li.sub {
-          margin-inline-start: var(--ddd-spacing-6);
-        }
-        .net-menu li.sub .tile {
-          width: 32px;
-          height: 32px;
         }
         .net-menu .text {
           display: grid;
@@ -1713,7 +1654,6 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
             <nav class="props" aria-label="${this.t.network}">
               <ul>
                 ${HAX_NETWORK.order.map((id) => this._renderProperty(id, here))}
-                ${this.mini ? `` : this._renderCharacter(here)}
               </ul>
             </nav>
             ${this._renderMenu(here)}
@@ -1810,8 +1750,14 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
   }
 
   /** the site this bar is on, by the name the network's record gives it */
+  /**
+   * The property this site is: its own id, or for a tool that lives within a
+   * property (RPG me, within Art) that property, so it lights up.
+   */
   _here() {
-    return FORMER_SITE_IDS[this.current] || this.current || "";
+    const id = FORMER_SITE_IDS[this.current] || this.current || "";
+    const p = HAX_NETWORK.properties[id];
+    return p && p.within ? p.within : id;
   }
 
   /** a property's color and the ink that reads on it, as custom properties */
@@ -1831,68 +1777,8 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
         <span class="host">${p.url.replace("https://", "")}</span>
       </span>
       <span class="purpose">${this.t[`${id}About`]}</span>
-      ${
-        p.within
-          ? html`<span class="within"
-              >${this.t.partOf.replace("{property}", this.t[p.within])}</span
-            >`
-          : ``
-      }
       ${id === here ? html`<span class="you">${this.t.here}</span>` : ``}
     </div>`;
-  }
-
-  /**
-   * Your character: the way to RPG me, and its place in the bar. At rest he
-   * is an icon like the rest; on hover or focus he comes to life and walks.
-   */
-  _renderCharacter(here) {
-    return html`<li
-      class="prop me"
-      style="${this._tint("rpg")}"
-      ?data-alive="${this._walking}"
-      @keydown="${this._cardKey}"
-      @mouseenter="${this._wake}"
-      @focusin="${this._wake}"
-      @mouseleave="${this._rest}"
-      @focusout="${this._rest}"
-    >
-      <a
-        class="character glyph-host"
-        href="${this._characterHref()}"
-        aria-label="${this.t.character}"
-        aria-describedby="card-rpg"
-        aria-current="${here === "rpg" ? "page" : "false"}"
-      >
-        ${haxNetworkGlyph("rpg")}
-        ${
-          this._alive
-            ? html`<rpg-character
-                height="40"
-                width="35"
-                seed="${this.character ? "" : "HAX"}"
-                code="${this.character || ""}"
-                ?walking="${this._walking}"
-              ></rpg-character>`
-            : ``
-        }
-        <span class="name">${this.t.rpg}</span>
-      </a>
-      ${this._renderCard("rpg", here)}
-    </li>`;
-  }
-
-  /** your character comes to life: he loads the first time, then walks */
-  _wake() {
-    if (!this._alive) {
-      import("@haxtheweb/rpg-character/rpg-character.js");
-      this._alive = true;
-    }
-    this._walking = true;
-  }
-
-  _rest() {
-    this._walking = false;
   }
 
   _renderProperty(id, here) {
@@ -1938,19 +1824,12 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
       </button>
       <div class="net-menu" id="net-menu" ?hidden="${!this.menuOpen}">
         <ul>
-          ${this._menuIds().map(
+          ${HAX_NETWORK.order.map(
             (id) =>
-              html`<li
-                class="${HAX_NETWORK.properties[id].within ? "sub" : ""}"
-                style="${this._tint(id)}"
-              >
+              html`<li style="${this._tint(id)}">
                 <a
                   class="glyph-host"
-                  href="${
-                    id === "rpg"
-                      ? this._characterHref()
-                      : HAX_NETWORK.properties[id].url
-                  }"
+                  href="${HAX_NETWORK.properties[id].url}"
                   aria-current="${id === here ? "page" : "false"}"
                 >
                   <span class="tile">${haxNetworkGlyph(id)}</span>
@@ -1976,27 +1855,6 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
           )}
         </ul>
       </div>`;
-  }
-
-  /**
-   * The properties menu, in the network's order, with each tool that lives
-   * within a property (RPG me, within Art) listed under that property. The
-   * mini bar has no character, so it leaves RPG me out.
-   */
-  _menuIds() {
-    const tools = this.mini
-      ? []
-      : Object.keys(HAX_NETWORK.properties).filter(
-          (id) => HAX_NETWORK.properties[id].within,
-        );
-    const ids = [];
-    HAX_NETWORK.order.forEach((id) => {
-      ids.push(id);
-      tools
-        .filter((t) => HAX_NETWORK.properties[t].within === id)
-        .forEach((t) => ids.push(t));
-    });
-    return ids;
   }
 
   /** Escape puts a card away until the pointer or focus leaves it */
@@ -2371,13 +2229,6 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
     const era = this._nextEra();
     this._eraPinned = era !== "now";
     this._tearTo(era);
-  }
-
-  /** RPG me, opened on this character when there is one */
-  _characterHref() {
-    return this.character
-      ? `https://rpg-me.hax.cloud/?code=${encodeURIComponent(this.character)}`
-      : "https://rpg-me.hax.cloud";
   }
 
   /** Merlin's open shortcut, written the way HAX writes it (Alt⇧, ⌘⇧ in Safari) */
