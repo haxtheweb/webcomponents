@@ -10,11 +10,11 @@ import { html, svg, css } from "lit";
  * the same thing. PRAW keeps the record of why (ecosystem/network.json in
  * https://github.com/haxtheweb/praw); this is the copy the elements ship.
  *
- * `order` is the order the bar lists them. RPG me comes after them, as your
- * character; it is one of HAX Art's tools, so its record names the property
- * it lives `within` and the bar presents it as part of Art rather than as a
- * property of its own. It keeps its own address and stays a stand-alone
- * tool. `color` and `on` are DDD
+ * `order` is the order the bar lists them. A tool that lives within a property
+ * names it in `within` and is not in the bar: RPG me is one of HAX Art's
+ * tools, a stand-alone service at its own address (rpg.art.hax.cloud) that
+ * the Art site's menu links to; on RPG me the bar lights up Art. `color` and
+ * `on` are DDD
  * color names (the fill, and the ink that reads on it). `icon` is the plain
  * simple-icon to use where the property's own glyph cannot be drawn (Merlin,
  * for one). `label` and `purpose` are the English the bar's own strings
@@ -84,7 +84,7 @@ export const HAX_NETWORK = {
         "Where HAX's creative side lives. RPG me is one of the tools in it.",
     },
     rpg: {
-      url: "https://rpg-me.hax.cloud",
+      url: "https://rpg.art.hax.cloud",
       color: "athertonViolet",
       on: "coalyGray",
       icon: "face",
@@ -92,7 +92,7 @@ export const HAX_NETWORK = {
       purpose: "Make the character that is you across HAX.",
       within: "art",
       relation:
-        "One of HAX Art's tools. Your character, after the list, is the way in. He comes to life when you come by.",
+        "One of HAX Art's tools, linked from the Art site's menu rather than the bar. On RPG me the bar lights up Art.",
     },
   },
   install: { details: "https://haxtheweb.org/installation" },
@@ -118,7 +118,8 @@ export const HAX_NETWORK_GLYPHS = {
   elements: svg`<rect class="m" x="3.5" y="3.5" width="7.5" height="7.5" rx="1.2"/><rect class="m" x="3.5" y="13" width="7.5" height="7.5" rx="1.2"/><rect class="m" x="13" y="13" width="7.5" height="7.5" rx="1.2"/><rect class="a g-piece" x="13" y="3.5" width="7.5" height="7.5" rx="1.2"/>`,
   // Art: a palette, its paints lighting up one after another, and the brush
   art: svg`<path class="m" d="M12 3.5c-4.9 0-8.5 3.6-8.5 8.2 0 4.4 3.5 7.8 7.9 7.8 1.4 0 2-.8 2-1.7 0-1.3-1.4-1.6-1.4-2.9 0-1 .8-1.6 1.8-1.6h2.4c2.4 0 3.8-1.6 3.8-3.6 0-3.4-3.6-6.2-8-6.2z"/><circle class="a f g-n1" cx="8" cy="10.6" r="1.1"/><circle class="a f g-n2" cx="10.9" cy="7.3" r="1.1"/><circle class="a f g-n3" cx="15" cy="8.2" r="1.1"/><path class="a g-ant" d="m21 14.2-3.4 6.1"/>`,
-  // RPG me: your character, standing still until you come by
+  // RPG me: the rpg-character, standing still (not in the bar; for content
+  // that names RPG me, such as a story link)
   rpg: svg`<path class="a" d="M6 5h12M8.4 5V2.6h7.2V5"/><rect class="m" x="7.5" y="5" width="9" height="7" rx="1.6"/><circle class="a f" cx="10.3" cy="8.6" r=".95"/><circle class="a f" cx="13.7" cy="8.6" r=".95"/><path class="m" d="M8.6 12.6h6.8v5.6H8.6zM8.6 13.8 6.2 16.4M15.4 13.8l2.4 2.6M10.4 18.2v3.2M13.6 18.2v3.2"/>`,
 };
 
