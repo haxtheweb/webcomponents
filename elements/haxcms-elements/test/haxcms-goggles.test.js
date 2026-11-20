@@ -62,6 +62,50 @@ describe("haxcms-goggles (developer mode)", () => {
     button.remove();
   });
 
+  it("flags an issue through the shared HAX UI fields, never hand-drawn ones", async () => {
+    const target = globalThis.document.createElement("simple-icon-lite");
+    globalThis.document.body.appendChild(target);
+    GogglesState.set({ on: true, lensOn: true, lens: "code" });
+    const g = overlay();
+    g.phase = "";
+    g._openIssue(target);
+    await g.updateComplete;
+    const form = g.shadowRoot.querySelector(".issue");
+    expect(form).to.not.equal(null);
+    expect(form.querySelectorAll("input, textarea, select").length).to.equal(0);
+    const fields = Array.from(form.querySelectorAll("simple-fields-field"));
+    const by = (name) => fields.find((f) => f.dataset.field === name);
+    ["kind", "title", "notes"].forEach((name) => {
+      expect(by(name), name).to.not.equal(undefined);
+      expect(by(name).classList.contains("hax-ui-simple-field")).to.equal(true);
+    });
+    // a field's change lands in the issue being written
+    const title = by("title");
+    title.value = "Caption overlaps";
+    title.dispatchEvent(
+      new CustomEvent("value-changed", {
+        bubbles: true,
+        composed: true,
+        detail: title,
+      }),
+    );
+    const kind = by("kind");
+    kind.value = "wish";
+    kind.dispatchEvent(
+      new CustomEvent("value-changed", {
+        bubbles: true,
+        composed: true,
+        detail: kind,
+      }),
+    );
+    await g.updateComplete;
+    expect(g._issue.title).to.equal("Caption overlaps");
+    expect(g._issue.kind).to.equal("wish");
+    // the notes label follows the kind
+    expect(by("notes").label).to.equal(g.t.whatDoYouWish);
+    target.remove();
+  });
+
   it("loads who made what and finds one person's work", async () => {
     const makers = await loadMakers();
     expect(Object.keys(makers.tags).length).to.be.greaterThan(100);
