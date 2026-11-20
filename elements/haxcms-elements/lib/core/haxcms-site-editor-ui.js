@@ -24,6 +24,7 @@ import { loadElementGizmo } from "./utils/ElementGizmo.js";
 import "./ui/app-hax-top-bar.js";
 import "./ui/app-hax-user-menu.js";
 import "./ui/app-hax-user-menu-button.js";
+import "./ui/hax-future-traveler-mark.js";
 import { openCharacterBuilder } from "./ui/app-hax-user-menu-toggle.js";
 import "./ui/hax-confirm-dialog.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
@@ -408,7 +409,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           height: var(--ddd-control-height-sm, 40px);
           --simple-icon-height: var(--ddd-icon-xs, 32px);
           --simple-icon-width: var(--ddd-icon-xs, 32px);
-          pointer-events: none;
+          /* decorative, but clickable: he remixes his era (an easter egg) */
+          pointer-events: auto;
         }
         /* a HAX UI menu row with a switch, like the dark mode row */
         .soundToggle {
@@ -4313,17 +4315,15 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           ${this._renderPreviewControls()}
           <span class="home-btn">
             <!-- the HAX mark: decorative, it says you are in HAX; the way
-                 back to your sites is in the user menu -->
+                 back to your sites is in the user menu. Click him and he
+                 glitches into another era, and stays there (an easter egg) -->
             <span
               class="haxLogo"
               id="backtosites"
               part="hax-logo"
               aria-hidden="true"
             >
-              <simple-icon-lite
-                icon="hax:future-traveler"
-                no-colorize
-              ></simple-icon-lite>
+              <hax-future-traveler-mark></hax-future-traveler-mark>
             </span>
           </span>
         </div>
