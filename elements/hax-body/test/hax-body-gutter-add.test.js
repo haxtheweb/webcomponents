@@ -104,6 +104,45 @@ describe("hax-body gutter +", () => {
     expect(first.nextElementSibling).to.equal(second);
   });
 
+  // an on-screen keyboard sends keydown with no key name, so the slash
+  // only shows up as text already typed into the block
+  const typeSlashWithNoKey = (block, text) => {
+    body.activeNode = block;
+    block.textContent = text;
+    const rng = globalThis.document.createRange();
+    rng.selectNodeContents(block);
+    rng.collapse(false);
+    const sel = globalThis.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(rng);
+    block.dispatchEvent(
+      new InputEvent("input", {
+        bubbles: true,
+        composed: true,
+        inputType: "insertText",
+        data: "/",
+      }),
+    );
+  };
+
+  it("a slash typed with no key event opens the commands in an empty block", async () => {
+    body.focus();
+    typeSlashWithNoKey(empty, "/");
+    await settle();
+    expect(SuperDaemonInstance.opened).to.equal(true);
+    expect(SuperDaemonInstance.mini).to.equal(true);
+    // the slash is taken back out, the same as on a keyboard
+    expect(empty.textContent).to.equal("");
+  });
+
+  it("a slash typed into a block that has text stays text", async () => {
+    body.focus();
+    typeSlashWithNoKey(first, "First block/");
+    await settle();
+    expect(SuperDaemonInstance.opened).to.equal(false);
+    expect(first.textContent).to.equal("First block/");
+  });
+
   it("opening inline puts recently used blocks first", () => {
     HAXStore.recentGizmoList = [
       { tag: "video-player" },

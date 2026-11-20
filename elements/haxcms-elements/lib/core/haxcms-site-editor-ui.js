@@ -351,8 +351,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           color: var(--hax-ui-on-titlebar);
           font-family: var(--hax-ui-admin-font-family);
         }
+        /* the search sits in the middle while there is room. The groups on
+           either side keep the width of what they hold, so their buttons
+           never slide under the search: it moves over and narrows first */
         app-hax-top-bar::part(top-bar) {
-          grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+          grid-template-columns:
+            minmax(max-content, 1fr) minmax(0, auto)
+            minmax(max-content, 1fr);
           overflow: visible;
           display: grid;
           border-bottom: 1px solid var(--hax-ui-line);
@@ -392,6 +397,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         }
         .topbar-center-group {
           justify-content: center;
+          min-width: 0;
+        }
+        .center-toolbar-buttons,
+        super-daemon-search.merlin {
+          min-width: 0;
         }
         .topbar-right-group {
           justify-content: flex-end;
@@ -940,7 +950,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             display: none;
           }
         }
-        @media (max-width: 600px) {
+        /* up to 680px the search folds to a button: below that width the
+           edit tools leave it no room to be a field (it needs 100px) */
+        @media (max-width: 680px) {
           /* preview sits on the right, after Merlin's button; the device
              button shows just its icon, and the device menu spans the
              screen under the bar so it always fits */
@@ -4623,11 +4635,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       case "super-daemon":
         // a phone's bar is too narrow for the field: Merlin is a button
         // that opens the search across the whole bar first
-        // (same query as the CSS that folds the field, so a 600px wide
+        // (same query as the CSS that folds the field, so a 680px wide
         // screen that shows the button also opens across the bar)
         if (
           (globalThis.matchMedia
-            ? globalThis.matchMedia("(max-width: 600px)").matches
+            ? globalThis.matchMedia("(max-width: 680px)").matches
             : this.responsiveSize === "xs") &&
           e.type === "click" &&
           !this.merlinPhoneOpen
