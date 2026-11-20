@@ -31,6 +31,11 @@ import { answerAdminDialogs } from "./fixtures/admin-dialog-answers.js";
 const OP = "@site/updateSiteOutline";
 const ENDPOINT = "/test-fault-injection/site/outline";
 const SITE = "fault-site";
+// Setup waits for the editor, the admin shell and a lazily imported outline
+// dialog. On a busy runner (several test pages at once on few cores) that
+// import alone can pass waitUntil's 1s default, so setup waits allow longer.
+// These only cover loading; the save behaviour waits in the tests keep theirs.
+const LOAD = { timeout: 8000 };
 
 function manifest() {
   const item = (id, order) => ({
@@ -187,6 +192,7 @@ describe("outline-designer Save Outline under injected faults", () => {
     await waitUntil(
       () => editor.manifest && editor._siteName() === SITE,
       "editor has the site manifest",
+      LOAD,
     );
     shell = await fixture(
       html`<haxcms-site-admin
@@ -195,18 +201,20 @@ describe("outline-designer Save Outline under injected faults", () => {
     );
     shell.allowRoute = () => true;
     shell.route = "structure";
-    await waitUntil(() => shell._sectionEl, "outline dialog created");
+    await waitUntil(() => shell._sectionEl, "outline dialog created", LOAD);
     dialog = shell._sectionEl;
     await dialog.updateComplete;
     await waitUntil(
       () => dialog.shadowRoot.querySelector("#outline"),
       "outline rendered",
+      LOAD,
     );
     outline = dialog.shadowRoot.querySelector("#outline");
     await outline.updateComplete;
     await waitUntil(
       () => Array.isArray(outline.items) && outline.items.length === 3,
       "outline has the manifest items",
+      LOAD,
     );
     historySpies = {
       push: sinon.spy(globalThis.history, "pushState"),
