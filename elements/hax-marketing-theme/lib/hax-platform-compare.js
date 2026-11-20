@@ -199,7 +199,7 @@ class HaxPlatformCompare extends I18NMixin(DDD) {
           padding: var(--ddd-spacing-4) var(--ddd-spacing-5);
         }
         .score div + div {
-          border-left: var(--ddd-border-size-sm) solid var(--hpc-line);
+          border-inline-start: var(--ddd-border-size-sm) solid var(--hpc-line);
         }
         .score strong {
           display: block;
@@ -223,7 +223,7 @@ class HaxPlatformCompare extends I18NMixin(DDD) {
           clip-path: inset(50%);
         }
         thead th {
-          text-align: left;
+          text-align: start;
           font-family: var(--ddd-font-heading, var(--ddd-font-primary));
           font-size: var(--ddd-font-size-xxs);
           padding: var(--ddd-spacing-3) var(--ddd-spacing-4);
@@ -243,7 +243,7 @@ class HaxPlatformCompare extends I18NMixin(DDD) {
           border-top: var(--ddd-border-size-xs) solid var(--hpc-line);
         }
         tbody th {
-          text-align: left;
+          text-align: start;
           vertical-align: middle;
           font-size: var(--ddd-font-size-4xs);
           font-weight: var(--ddd-font-weight-bold);
@@ -256,7 +256,7 @@ class HaxPlatformCompare extends I18NMixin(DDD) {
           font-size: var(--ddd-font-size-5xs);
           line-height: var(--ddd-lh-120);
           overflow-wrap: anywhere;
-          border-left: var(--ddd-border-size-xs) solid var(--hpc-line);
+          border-inline-start: var(--ddd-border-size-xs) solid var(--hpc-line);
         }
         .mark {
           display: flex;
@@ -381,7 +381,7 @@ class HaxPlatformCompare extends I18NMixin(DDD) {
             padding-right: var(--ddd-spacing-3);
           }
           td:first-of-type {
-            border-left: none;
+            border-inline-start: none;
           }
         }
       `,
