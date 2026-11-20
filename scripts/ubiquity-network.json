@@ -149,7 +149,7 @@
       "versionFile": "package.json",
       "tag": "direct",
       "dependencies": "@haxtheweb/",
-      "deploy": "rpg-me.hax.cloud, rebuilt from the push; one of HAX Art's tools, so it goes before art"
+      "deploy": "Vercel: rpg.art.hax.cloud (rpg-me.hax.cloud redirects there), rebuilt from the push; one of HAX Art's tools, linked from the art site's menu, so it goes before art"
     },
     {
       "repo": "art",
