@@ -675,6 +675,7 @@ ${loader.styles}
        and paragraph margins, bold accent links) that DDD's global styles
        give every page */
     .titlebar h1,
+    .titlebar p,
     .sidebar p,
     .demo-header h2,
     .demo-header p,
@@ -706,6 +707,7 @@ ${loader.styles}
       padding: 0 var(--ddd-spacing-4, 16px);
       color: var(--hax-ui-on-titlebar);
       background-color: var(--hax-ui-titlebar);
+      position: relative;
       z-index: 20;
     }
 
@@ -959,14 +961,49 @@ ${loader.styles}
       margin-top: var(--hax-ui-gap);
     }
 
-    /* Appearance: the design system and palette the gallery and its
-       demos are drawn in, picked the way a HAXcms site picks them */
-    .appearance-toggle {
-      justify-content: space-between;
-      width: 100%;
+    /* Appearance: the design system and palette everything below the
+       title bar is drawn in, picked the way a HAXcms site picks them. It
+       sits in the bar so it reads as applying to all of it. */
+    /* the panel hangs from the bar itself, not the button */
+    .appearance {
+      flex: none;
     }
 
+    .appearance-toggle {
+      gap: var(--hax-ui-gap-md);
+      max-width: 22rem;
+      border-color: var(--hax-ui-line-strong);
+    }
+
+    .appearance-toggle[aria-expanded="true"] {
+      background-color: var(--hax-ui-control-hover);
+    }
+
+    .appearance-label {
+      font-weight: var(--ddd-font-weight-bold, 700);
+    }
+
+    /* the live palette, drawn from the colors it sets on the page */
+    .appearance-swatch {
+      display: inline-flex;
+      flex: none;
+      overflow: hidden;
+      border: 1px solid var(--hax-ui-line-strong);
+      border-radius: var(--hax-ui-radius);
+    }
+
+    .appearance-swatch i {
+      width: 6px;
+      height: 16px;
+    }
+
+    .appearance-swatch i:nth-child(1) { background-color: var(--ddd-palette-color-1, var(--hax-ui-text)); }
+    .appearance-swatch i:nth-child(2) { background-color: var(--ddd-palette-color-2, var(--hax-ui-text-muted)); }
+    .appearance-swatch i:nth-child(3) { background-color: var(--ddd-palette-color-3, var(--hax-ui-line-strong)); }
+    .appearance-swatch i:nth-child(4) { background-color: var(--ddd-palette-color-4, var(--hax-ui-line)); }
+
     .appearance-summary {
+      min-width: 0;
       font-weight: var(--ddd-font-weight-regular, 400);
       color: var(--hax-ui-text-muted);
       overflow: hidden;
@@ -974,20 +1011,54 @@ ${loader.styles}
       white-space: nowrap;
     }
 
+    .appearance-chevron {
+      flex: none;
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+      transition: transform var(--hax-ui-duration, 150ms) var(--hax-ui-easing, ease);
+    }
+
+    .appearance-toggle[aria-expanded="true"] .appearance-chevron {
+      transform: rotate(180deg);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .appearance-chevron {
+        transition: none;
+      }
+    }
+
     .appearance-panel {
+      position: absolute;
+      top: calc(100% + var(--hax-ui-gap));
+      right: var(--ddd-spacing-4, 16px);
+      z-index: 30;
+      width: 22rem;
+      max-width: calc(100vw - 2 * var(--hax-ui-gap-lg));
       display: flex;
       flex-direction: column;
       gap: var(--hax-ui-gap-lg);
-      max-height: 45vh;
+      max-height: 70vh;
       overflow-y: auto;
-      padding: var(--hax-ui-gap-md);
-      border: 1px solid var(--hax-ui-line);
+      padding: var(--hax-ui-gap-lg);
+      border: 1px solid var(--hax-ui-line-strong);
       border-radius: var(--hax-ui-radius);
+      color: var(--hax-ui-text);
       background-color: var(--hax-ui-surface);
+      box-shadow: var(--ddd-boxShadow-md, 0 4px 12px rgba(0, 0, 0, 0.35));
     }
 
     .appearance-panel[hidden] {
       display: none;
+    }
+
+    .appearance-heading {
+      font-size: 11px;
+      font-weight: var(--ddd-font-weight-bold, 700);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--hax-ui-text-muted);
     }
 
     .appearance-panel simple-fields-field {
@@ -1301,6 +1372,22 @@ ${loader.styles}
         flex: 1;
       }
 
+      /* the bar is narrow: the swatch and the word, the picks are in the panel */
+      .appearance-summary,
+      .appearance-chevron {
+        display: none;
+      }
+
+      .appearance-panel {
+        position: fixed;
+        top: var(--gal-bar, 6rem);
+        left: var(--hax-ui-gap-md);
+        right: var(--hax-ui-gap-md);
+        width: auto;
+        max-width: none;
+        max-height: calc(100vh - var(--gal-bar, 6rem) - var(--hax-ui-gap-lg));
+      }
+
       .mobile-title {
         display: block;
         font-weight: var(--ddd-font-weight-bold, 700);
@@ -1423,6 +1510,22 @@ ${loader.markup}
       <span class="brand-stats">${totalComponents} components, ${walkthroughCount} with walkthroughs</span>
       <span class="mobile-title" id="mobileTitle">Component gallery</span>
     </div>
+    <!-- Appearance applies to everything below the bar: the gallery and the demo -->
+    <div class="appearance" id="appearance">
+      <button class="hax-ui-btn appearance-toggle" id="appearanceToggle" aria-expanded="false" aria-controls="appearancePanel">
+        <span class="appearance-swatch" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <span class="appearance-label">Appearance</span>
+        <span class="appearance-summary" id="appearanceSummary">DDD</span>
+        <svg class="appearance-chevron" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
+      </button>
+      <div class="appearance-panel" id="appearancePanel" role="group" aria-labelledby="appearanceHeading" hidden>
+        <p class="appearance-heading" id="appearanceHeading">Appearance of everything below</p>
+        <simple-fields-field class="hax-ui-simple-field compact" id="systemSelect" type="select" label="Design system"></simple-fields-field>
+        <hax-palette-picker id="palettePicker" label="Palette"></hax-palette-picker>
+        <p class="appearance-note">Applies to the gallery and the demo, the way a HAXcms site applies a design system and palette. In the HAXcms demo it changes the site, and the demo keeps only its theme picker. The link keeps your choice.</p>
+        <button class="hax-ui-btn" id="appearanceReset">Reset to DDD</button>
+      </div>
+    </div>
   </header>
 
   <div class="gallery-container">
@@ -1462,15 +1565,6 @@ ${loader.markup}
           </button>
         </div>
 
-        <button class="hax-ui-btn appearance-toggle" id="appearanceToggle" aria-expanded="false" aria-controls="appearancePanel">
-          Appearance <span class="appearance-summary" id="appearanceSummary">DDD</span>
-        </button>
-        <div class="appearance-panel" id="appearancePanel" role="group" aria-label="Appearance" hidden>
-          <simple-fields-field class="hax-ui-simple-field compact" id="systemSelect" type="select" label="Design system"></simple-fields-field>
-          <hax-palette-picker id="palettePicker" label="Palette"></hax-palette-picker>
-          <p class="appearance-note">Applies to the gallery and the demo, the way a HAXcms site applies a design system and palette. The link keeps your choice.</p>
-          <button class="hax-ui-btn" id="appearanceReset">Reset to DDD</button>
-        </div>
       </div>
 
       <p class="rail-label" id="listLabel" aria-live="polite">${totalComponents} shown</p>
@@ -2166,7 +2260,7 @@ ${loader.markup}
       document.documentElement.style.setProperty('--gal-bar', bottom + 'px');
     }
     globalThis.addEventListener('scroll', () => {
-      if (sidebar.classList.contains('open')) placeDrawer();
+      if (sidebar.classList.contains('open') || !document.getElementById('appearancePanel').hidden) placeDrawer();
     }, { passive: true });
     globalThis.addEventListener('resize', placeDrawer);
     // the network bar renders after this script runs and pushes the title
@@ -2187,7 +2281,8 @@ ${loader.markup}
       }
     });
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && phone.matches && sidebar.classList.contains('open')) {
+      // an open Appearance panel takes Escape first
+      if (e.key === 'Escape' && phone.matches && sidebar.classList.contains('open') && document.getElementById('appearancePanel').hidden) {
         setDrawer(false);
         listToggle.focus();
       }
@@ -2271,8 +2366,22 @@ ${loader.markup}
     function summarize() {
       const system = DESIGN_SYSTEMS.find(d => d.name === appearance.system);
       const palette = PALETTES.find(p => p.value === appearance.palette);
-      appearanceSummary.textContent = (system ? system.title : 'DDD') + (palette ? ' · ' + palette.label : '');
+      // the picker's own name for it: under a bridge a DDD palette name
+      // gives way to the bridge's (or a number), so the two always agree
+      const paletteName = !palette
+        ? ''
+        : typeof palettePicker.labelFor === 'function'
+          ? palettePicker.labelFor({ dataPalette: palette.value, label: palette.label })
+          : palette.label;
+      appearanceSummary.textContent = (system ? system.title : 'DDD') + (paletteName ? ' · ' + paletteName : '');
     }
+    // the bridge (and with it the palette names) is in place once the
+    // appearance module has applied it
+    new MutationObserver(summarize).observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-gallery-applied'],
+    });
+    customElements.whenDefined('hax-palette-picker').then(summarize);
     // mark a document's root and ask the appearance module there to apply it
     function applyTo(doc, win) {
       doc.documentElement.dataset.gallerySystem = appearance.system;
@@ -2283,6 +2392,25 @@ ${loader.markup}
       }
       win.dispatchEvent(new CustomEvent('gallery-appearance'));
     }
+    // a reviewer has picked something (or reset): until then demos are left
+    // exactly as they are
+    let appearanceTouched = !appearanceIsDefault();
+    // The HAXcms demo carries its own appearance switcher above the site.
+    // In the gallery the gallery's Appearance is the one in charge: the
+    // switcher keeps only its theme picker, and the gallery's pick goes on
+    // the demo site through it, the way HAXcms applies a look (the site's
+    // theme settings), not by restyling the frame from outside.
+    function applyToSwitcher(doc, win) {
+      const switcher = doc.querySelector('haxcms-appearance-switcher');
+      if (!switcher) return false;
+      win.customElements.whenDefined('haxcms-appearance-switcher').then(() => {
+        switcher.themeOnly = true;
+        if (appearanceTouched && typeof switcher.applyLook === 'function') {
+          switcher.applyLook({ palette: appearance.palette, designSystem: appearance.system });
+        }
+      });
+      return true;
+    }
     function applyToFrame() {
       let doc = null;
       try {
@@ -2291,9 +2419,9 @@ ${loader.markup}
         return;
       }
       if (!doc || !doc.head) return;
+      if (applyToSwitcher(doc, demoFrame.contentWindow)) return;
       const loaded = doc.querySelector('script[data-gallery-appearance]');
-      // demos are left exactly as they are until a reviewer picks something
-      if (!loaded && appearanceIsDefault()) return;
+      if (!loaded && !appearanceTouched) return;
       applyTo(doc, demoFrame.contentWindow);
       if (!loaded) {
         const script = doc.createElement('script');
@@ -2304,6 +2432,7 @@ ${loader.markup}
       }
     }
     function setAppearance(system, palette) {
+      appearanceTouched = true;
       appearance.system = system;
       appearance.palette = palette;
       summarize();
@@ -2334,10 +2463,38 @@ ${loader.markup}
       palettePicker.value = '';
       setAppearance('', '');
     });
-    appearanceToggle.addEventListener('click', () => {
-      const open = appearancePanel.hidden;
+    const appearanceRoot = document.getElementById('appearance');
+    function setAppearancePanel(open) {
       appearancePanel.hidden = !open;
       appearanceToggle.setAttribute('aria-expanded', String(open));
+      if (open) placeDrawer();
+    }
+    appearanceToggle.addEventListener('click', () => {
+      const open = appearancePanel.hidden;
+      // on phones one overlay at a time: the panel takes the drawer's place
+      if (open && phone.matches && sidebar.classList.contains('open')) {
+        setDrawer(false);
+      }
+      setAppearancePanel(open);
+    });
+    // a disclosure: Escape or a click anywhere else puts it away
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !appearancePanel.hidden) {
+        setAppearancePanel(false);
+        appearanceToggle.focus();
+      }
+    });
+    document.addEventListener('pointerdown', (e) => {
+      if (!appearancePanel.hidden && !e.composedPath().includes(appearanceRoot)) {
+        setAppearancePanel(false);
+      }
+    });
+    // a click in the demo frame never reaches this page, but moves focus
+    // into the frame
+    globalThis.addEventListener('blur', () => {
+      if (!appearancePanel.hidden && document.activeElement === demoFrame) {
+        setAppearancePanel(false);
+      }
     });
     summarize();
     applyTo(document, globalThis);

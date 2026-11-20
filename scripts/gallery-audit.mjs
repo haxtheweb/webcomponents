@@ -221,7 +221,9 @@ async function axe(page, axeSource, rules) {
       const out = [];
       for (const v of result.violations) {
         for (const n of v.nodes) {
-          out.push(`${v.id}: ${n.target.join(" ")} (${n.failureSummary.split("\n")[1] || v.help})`);
+          out.push(
+            `${v.id}: ${n.target.join(" ")} (${n.failureSummary.split("\n")[1] || v.help})`,
+          );
         }
       }
       return out;
@@ -231,6 +233,48 @@ async function axe(page, axeSource, rules) {
 }
 
 // runs in the page: layout findings for the chrome as it rests
+/**
+ * Appearance hangs from the title bar: the panel is open, starts below the
+ * bar, is opaque and fits the screen, and on phones the drawer gave way.
+ */
+function appearanceFindings() {
+  const out = [];
+  const panel = document.getElementById("appearancePanel");
+  const toggle = document.getElementById("appearanceToggle");
+  const bar = document.getElementById("mobileBar");
+  if (!panel || panel.hidden) {
+    return ["the appearance panel did not open"];
+  }
+  if (!bar.contains(toggle)) {
+    out.push("the appearance control is not in the title bar");
+  }
+  if (toggle.getAttribute("aria-expanded") !== "true") {
+    out.push("the appearance toggle does not say it is expanded");
+  }
+  const p = panel.getBoundingClientRect();
+  const b = bar.getBoundingClientRect();
+  if (p.top < b.bottom - 1) {
+    out.push(
+      `the appearance panel starts under the title bar (panel top ${Math.round(p.top)}px, bar bottom ${Math.round(b.bottom)}px)`,
+    );
+  }
+  if (p.left < 0 || p.right > globalThis.innerWidth + 1) {
+    out.push("the appearance panel runs off the screen");
+  }
+  const bg = getComputedStyle(panel).backgroundColor;
+  if (/rgba\([^)]*,\s*0\)$/.test(bg) || bg === "transparent") {
+    out.push(`the appearance panel background is see-through (${bg})`);
+  }
+  const sidebar = document.getElementById("sidebar");
+  if (
+    globalThis.matchMedia("(max-width: 768px)").matches &&
+    sidebar.classList.contains("open")
+  ) {
+    out.push("on phones the drawer stayed open under the appearance panel");
+  }
+  return out;
+}
+
 function layoutFindings({ drawer }) {
   const out = [];
   const vw = globalThis.innerWidth;
@@ -340,7 +384,9 @@ function layoutFindings({ drawer }) {
 // same box blurred), so a ring drawn on a wrapper or host counts too.
 async function keyboardWalk(page, steps) {
   const out = [];
-  await page.evaluate(() => document.activeElement && document.activeElement.blur());
+  await page.evaluate(
+    () => document.activeElement && document.activeElement.blur(),
+  );
   for (let i = 0; i < steps; i++) {
     await page.keyboard.press("Tab");
     const r = await page.evaluate(() => {
@@ -396,12 +442,22 @@ async function keyboardWalk(page, steps) {
       out.push(`Tab ${i + 1} lands on ${r.label}, which is covered`);
       continue;
     }
-    const focused = await page.screenshot({ clip: r.box, animations: "disabled" });
+    const focused = await page.screenshot({
+      clip: r.box,
+      animations: "disabled",
+    });
     await page.evaluate(() => globalThis.__auditFocus.blur());
-    const blurred = await page.screenshot({ clip: r.box, animations: "disabled" });
-    await page.evaluate(() => globalThis.__auditFocus.focus({ focusVisible: true }));
+    const blurred = await page.screenshot({
+      clip: r.box,
+      animations: "disabled",
+    });
+    await page.evaluate(() =>
+      globalThis.__auditFocus.focus({ focusVisible: true }),
+    );
     if (focused.equals(blurred)) {
-      out.push(`Tab ${i + 1} lands on ${r.label} with no visible focus indicator`);
+      out.push(
+        `Tab ${i + 1} lands on ${r.label} with no visible focus indicator`,
+      );
     }
   }
   return out;
@@ -410,22 +466,34 @@ async function keyboardWalk(page, steps) {
 // runs in the page: static security and license findings on the built page
 function staticFindings() {
   const out = [];
-  for (const a of document.querySelectorAll('a[target]:not([target="_self"])')) {
+  for (const a of document.querySelectorAll(
+    'a[target]:not([target="_self"])',
+  )) {
     const rel = (a.getAttribute("rel") || "").split(/\s+/);
     if (!rel.includes("noopener") && !rel.includes("noreferrer")) {
-      out.push(`security: ${a.id || a.textContent.trim()} opens a window without rel="noopener"`);
+      out.push(
+        `security: ${a.id || a.textContent.trim()} opens a window without rel="noopener"`,
+      );
     }
   }
   for (const a of document.querySelectorAll("[href],[src],[action]")) {
-    const v = a.getAttribute("href") || a.getAttribute("src") || a.getAttribute("action");
-    if (/^\s*javascript:/i.test(v)) out.push(`security: javascript: URL on ${a.tagName.toLowerCase()}`);
+    const v =
+      a.getAttribute("href") ||
+      a.getAttribute("src") ||
+      a.getAttribute("action");
+    if (/^\s*javascript:/i.test(v))
+      out.push(`security: javascript: URL on ${a.tagName.toLowerCase()}`);
   }
-  const links = [...document.querySelectorAll("footer a")].map((a) => a.textContent.trim().toLowerCase());
+  const links = [...document.querySelectorAll("footer a")].map((a) =>
+    a.textContent.trim().toLowerCase(),
+  );
   if (!links.some((t) => t.includes("license"))) {
     out.push("licenses: the gallery footer does not link the project license");
   }
   if (!links.some((t) => t.includes("third-party"))) {
-    out.push("licenses: the gallery footer does not link the third-party notices");
+    out.push(
+      "licenses: the gallery footer does not link the third-party notices",
+    );
   }
   return out;
 }
@@ -434,17 +502,17 @@ function headerFindings() {
   const out = [];
   let config = {};
   try {
-    config = JSON.parse(fs.readFileSync(path.join(root, "vercel.json"), "utf8"));
+    config = JSON.parse(
+      fs.readFileSync(path.join(root, "vercel.json"), "utf8"),
+    );
   } catch {
     return ["security: vercel.json could not be read"];
   }
   const all = (config.headers || []).find((h) => h.source === "/(.*)");
   const keys = all ? all.headers.map((h) => h.key.toLowerCase()) : [];
-  for (const need of [
-    "x-content-type-options",
-    "referrer-policy",
-  ]) {
-    if (!keys.includes(need)) out.push(`security: vercel.json does not send ${need}`);
+  for (const need of ["x-content-type-options", "referrer-policy"]) {
+    if (!keys.includes(need))
+      out.push(`security: vercel.json does not send ${need}`);
   }
   if (!keys.some((k) => k.startsWith("content-security-policy"))) {
     out.push("security: vercel.json sends no content security policy");
@@ -455,7 +523,8 @@ function headerFindings() {
 // one viewport and scheme: every state a reviewer reaches
 async function auditStates(browser, origin, axeSource, viewport, scheme) {
   const findings = [];
-  const add = (where, list) => list.forEach((f) => findings.push(`${where}: ${f}`));
+  const add = (where, list) =>
+    list.forEach((f) => findings.push(`${where}: ${f}`));
   const where = `${viewport} ${scheme}`;
   const s = await newPage(browser, origin, viewport, scheme);
   const { page } = s;
@@ -464,39 +533,66 @@ async function auditStates(browser, origin, axeSource, viewport, scheme) {
     const styledMs = await load(page, origin);
     if (viewport === "desktop" && scheme === "light") {
       const kb = Math.round(s.stats.bytes / 1024);
-      console.log(`  first load: ${s.stats.requests} requests, ${kb} KB, styled in ${styledMs} ms`);
+      console.log(
+        `  first load: ${s.stats.requests} requests, ${kb} KB, styled in ${styledMs} ms`,
+      );
       if (s.stats.requests > BUDGET.requests) {
-        findings.push(`performance: first load made ${s.stats.requests} requests (budget ${BUDGET.requests})`);
+        findings.push(
+          `performance: first load made ${s.stats.requests} requests (budget ${BUDGET.requests})`,
+        );
       }
       if (kb > BUDGET.kilobytes) {
-        findings.push(`performance: first load fetched ${kb} KB (budget ${BUDGET.kilobytes})`);
+        findings.push(
+          `performance: first load fetched ${kb} KB (budget ${BUDGET.kilobytes})`,
+        );
       }
       if (styledMs > BUDGET.styledMs) {
-        findings.push(`performance: styled after ${styledMs} ms (budget ${BUDGET.styledMs})`);
+        findings.push(
+          `performance: styled after ${styledMs} ms (budget ${BUDGET.styledMs})`,
+        );
       }
       add("static", await page.evaluate(staticFindings));
     }
     add(`${where} first load`, await axe(page, axeSource));
-    add(`${where} first load`, await page.evaluate(layoutFindings, { drawer: phone }));
+    add(
+      `${where} first load`,
+      await page.evaluate(layoutFindings, { drawer: phone }),
+    );
     // a filter applied (on phones the drawer is open on first load)
     await page.click('.filter-btn[data-filter="instructional"]');
     await page.waitForTimeout(150);
     add(`${where} filtered`, await axe(page, axeSource));
-    add(`${where} filtered`, await page.evaluate(layoutFindings, { drawer: phone }));
-    // the appearance panel open
+    add(
+      `${where} filtered`,
+      await page.evaluate(layoutFindings, { drawer: phone }),
+    );
+    // the appearance panel open: it hangs from the title bar and applies to
+    // everything below, so on phones it takes the place of the drawer
     await page.click("#appearanceToggle");
     await page.waitForTimeout(300);
     add(`${where} appearance`, await axe(page, axeSource));
-    add(`${where} appearance`, await page.evaluate(layoutFindings, { drawer: phone }));
+    add(
+      `${where} appearance`,
+      await page.evaluate(layoutFindings, { drawer: false }),
+    );
+    add(`${where} appearance`, await page.evaluate(appearanceFindings));
+    await page.keyboard.press("Escape");
+    await page.waitForTimeout(150);
     // a component's live demo
     await load(page, origin, `?element=${ELEMENT}`);
     add(`${where} demo`, await axe(page, axeSource));
-    add(`${where} demo`, await page.evaluate(layoutFindings, { drawer: false }));
+    add(
+      `${where} demo`,
+      await page.evaluate(layoutFindings, { drawer: false }),
+    );
     if (phone) {
       await page.evaluate(() => globalThis.scrollTo(0, 300));
       await page.click("#listToggle");
       await page.waitForTimeout(300);
-      add(`${where} drawer after scrolling`, await page.evaluate(layoutFindings, { drawer: true }));
+      add(
+        `${where} drawer after scrolling`,
+        await page.evaluate(layoutFindings, { drawer: true }),
+      );
       add(`${where} drawer after scrolling`, await axe(page, axeSource));
     } else {
       add(`${where} keyboard`, await keyboardWalk(page, 30));
@@ -504,7 +600,10 @@ async function auditStates(browser, origin, axeSource, viewport, scheme) {
     // its documentation
     await load(page, origin, `?element=${ELEMENT}&view=docs`);
     add(`${where} docs`, await axe(page, axeSource));
-    add(`${where} docs`, await page.evaluate(layoutFindings, { drawer: false }));
+    add(
+      `${where} docs`,
+      await page.evaluate(layoutFindings, { drawer: false }),
+    );
     // the third-party licenses, opened from the footer link: rendered as
     // a page, never under the drawer, never scrolling the page sideways
     await load(page, origin, "?view=licenses");
@@ -512,22 +611,48 @@ async function auditStates(browser, origin, axeSource, viewport, scheme) {
       .waitForFunction(
         () => {
           const md = document.getElementById("licensesBlock");
-          return !!(md && md.shadowRoot && md.shadowRoot.querySelector("table pre, table") && md.shadowRoot.querySelector("pre"));
+          return !!(
+            md &&
+            md.shadowRoot &&
+            md.shadowRoot.querySelector("table pre, table") &&
+            md.shadowRoot.querySelector("pre")
+          );
         },
         null,
         { timeout: 10000 },
       )
-      .then(() => true, () => false);
-    if (!rendered) findings.push(`${where} licenses: the notices did not render as a table and license text`);
+      .then(
+        () => true,
+        () => false,
+      );
+    if (!rendered)
+      findings.push(
+        `${where} licenses: the notices did not render as a table and license text`,
+      );
     add(`${where} licenses`, await axe(page, axeSource));
-    add(`${where} licenses`, await page.evaluate(layoutFindings, { drawer: false }));
-    if (phone && (await page.evaluate(() => document.getElementById("sidebar").classList.contains("open")))) {
-      findings.push(`${where} licenses: the component drawer opened over the licenses`);
+    add(
+      `${where} licenses`,
+      await page.evaluate(layoutFindings, { drawer: false }),
+    );
+    if (
+      phone &&
+      (await page.evaluate(() =>
+        document.getElementById("sidebar").classList.contains("open"),
+      ))
+    ) {
+      findings.push(
+        `${where} licenses: the component drawer opened over the licenses`,
+      );
     }
     add(where, s.errors);
-    add(`${where} security`, s.offsite.map((u) => `requested off-site ${u}`));
+    add(
+      `${where} security`,
+      s.offsite.map((u) => `requested off-site ${u}`),
+    );
   } catch (e) {
-    findings.push(`${where}: could not be audited (${e.message.split("\n")[0]})`);
+    findings.push(
+      `${where}: could not be audited (${e.message.split("\n")[0]})`,
+    );
   } finally {
     await s.context.close();
   }
@@ -537,20 +662,39 @@ async function auditStates(browser, origin, axeSource, viewport, scheme) {
 // reduced motion: the loader leaves at once, nothing in the chrome loops
 async function auditReducedMotion(browser, origin) {
   const findings = [];
-  const s = await newPage(browser, origin, "desktop", "light", { reducedMotion: true });
+  const s = await newPage(browser, origin, "desktop", "light", {
+    reducedMotion: true,
+  });
   try {
     await s.page.goto(`${origin}/index.html`, { waitUntil: "load" });
     await s.page
-      .waitForFunction(() => !document.getElementById("loading"), null, { timeout: 5000 })
-      .catch(() => findings.push("reduced motion: the loading screen stayed more than 5 s"));
+      .waitForFunction(() => !document.getElementById("loading"), null, {
+        timeout: 5000,
+      })
+      .catch(() =>
+        findings.push(
+          "reduced motion: the loading screen stayed more than 5 s",
+        ),
+      );
     await s.page.waitForTimeout(500);
     const looping = await s.page.evaluate(() =>
       document
         .getAnimations()
-        .filter((a) => a.playState === "running" && a.effect && a.effect.getTiming().iterations === Infinity)
-        .map((a) => (a.effect.target ? a.effect.target.className || a.effect.target.tagName : "?")),
+        .filter(
+          (a) =>
+            a.playState === "running" &&
+            a.effect &&
+            a.effect.getTiming().iterations === Infinity,
+        )
+        .map((a) =>
+          a.effect.target
+            ? a.effect.target.className || a.effect.target.tagName
+            : "?",
+        ),
     );
-    looping.forEach((l) => findings.push(`reduced motion: ${l} animates forever`));
+    looping.forEach((l) =>
+      findings.push(`reduced motion: ${l} animates forever`),
+    );
   } finally {
     await s.context.close();
   }
@@ -561,39 +705,63 @@ async function auditReducedMotion(browser, origin) {
 // the chrome still passes contrast
 async function auditSystem(browser, origin, axeSource, system, scheme) {
   const findings = [];
-  const add = (where, list) => list.forEach((f) => findings.push(`${where}: ${f}`));
+  const add = (where, list) =>
+    list.forEach((f) => findings.push(`${where}: ${f}`));
   const where = `${system} ${scheme}`;
   const s = await newPage(browser, origin, "desktop", scheme);
   try {
-    await load(s.page, origin, `?element=${ELEMENT}&system=${system}&palette=2`);
+    await load(
+      s.page,
+      origin,
+      `?element=${ELEMENT}&system=${system}&palette=2`,
+    );
     const pageOk = await s.page
       .waitForFunction(
         (name) => document.documentElement.dataset.galleryApplied === name,
         system,
         { timeout: 10000 },
       )
-      .then(() => true, () => false);
-    if (!pageOk) findings.push(`${where}: the gallery did not switch to ${system}`);
+      .then(
+        () => true,
+        () => false,
+      );
+    if (!pageOk)
+      findings.push(`${where}: the gallery did not switch to ${system}`);
     const frameOk = await s.page
       .waitForFunction(
         (name) => {
           const f = document.getElementById("demoFrame");
           const d = f && f.contentDocument;
-          return !!(d && d.documentElement.dataset.galleryApplied === name && d.documentElement.getAttribute("data-palette") === "2");
+          return !!(
+            d &&
+            d.documentElement.dataset.galleryApplied === name &&
+            d.documentElement.getAttribute("data-palette") === "2"
+          );
         },
         system,
         { timeout: 15000 },
       )
-      .then(() => true, () => false);
-    if (!frameOk) findings.push(`${where}: the demo did not take ${system} and the palette`);
+      .then(
+        () => true,
+        () => false,
+      );
+    if (!frameOk)
+      findings.push(
+        `${where}: the demo did not take ${system} and the palette`,
+      );
     // the system's styles are in: let them paint before measuring
     await s.page.waitForTimeout(300);
     add(where, await axe(s.page, axeSource, ["color-contrast"]));
     add(where, s.errors);
     // the system's fonts come from HAX, like everything else
-    add(`${where} security`, s.offsite.map((u) => `requested off-site ${u}`));
+    add(
+      `${where} security`,
+      s.offsite.map((u) => `requested off-site ${u}`),
+    );
   } catch (e) {
-    findings.push(`${where}: could not be audited (${e.message.split("\n")[0]})`);
+    findings.push(
+      `${where}: could not be audited (${e.message.split("\n")[0]})`,
+    );
   } finally {
     await s.context.close();
   }
@@ -604,7 +772,9 @@ async function audit(browser, origin, axeSource) {
   const jobs = [];
   for (const viewport of Object.keys(VIEWPORTS)) {
     for (const scheme of SCHEMES) {
-      jobs.push(() => auditStates(browser, origin, axeSource, viewport, scheme));
+      jobs.push(() =>
+        auditStates(browser, origin, axeSource, viewport, scheme),
+      );
     }
   }
   jobs.push(() => auditReducedMotion(browser, origin));
@@ -614,9 +784,14 @@ async function audit(browser, origin, axeSource) {
     }
   }
   const findings = [];
-  await runPool(jobs, CONCURRENCY, async (job) => {
-    findings.push(...(await job()));
-  }, "gallery audit");
+  await runPool(
+    jobs,
+    CONCURRENCY,
+    async (job) => {
+      findings.push(...(await job()));
+    },
+    "gallery audit",
+  );
   findings.push(...headerFindings().map((f) => `static: ${f}`));
   return findings;
 }
@@ -624,10 +799,14 @@ async function audit(browser, origin, axeSource) {
 async function main() {
   if (!args.includes("--no-build")) {
     console.log("building the component gallery (index.html)");
-    execFileSync(process.execPath, [path.join(root, "scripts", "build-component-gallery.js")], {
-      cwd: root,
-      stdio: "inherit",
-    });
+    execFileSync(
+      process.execPath,
+      [path.join(root, "scripts", "build-component-gallery.js")],
+      {
+        cwd: root,
+        stdio: "inherit",
+      },
+    );
   }
   if (!fs.existsSync(path.join(root, "index.html"))) {
     throw new Error("index.html is missing; run without --no-build");
@@ -637,7 +816,10 @@ async function main() {
   let server;
   let origin;
   try {
-    ({ server, origin } = await startServer(root, Number(process.env.GALLERY_AUDIT_PORT) || 8767));
+    ({ server, origin } = await startServer(
+      root,
+      Number(process.env.GALLERY_AUDIT_PORT) || 8767,
+    ));
   } catch (e) {
     await browser.close().catch(() => {});
     throw e;
@@ -658,11 +840,15 @@ async function main() {
     if (!merged.has(what)) merged.set(what, []);
     merged.get(what).push(where);
   }
-  const lines = [...merged].map(([what, wheres]) => `✖ ${what}\n    in: ${wheres.join(", ")}`);
+  const lines = [...merged].map(
+    ([what, wheres]) => `✖ ${what}\n    in: ${wheres.join(", ")}`,
+  );
   if (lines.length) {
     console.log(lines.join("\n"));
   }
-  console.log(`${lines.length ? "✖" : "✔"} gallery audit: ${lines.length} finding(s)`);
+  console.log(
+    `${lines.length ? "✖" : "✔"} gallery audit: ${lines.length} finding(s)`,
+  );
   if (process.env.GITHUB_STEP_SUMMARY) {
     fs.appendFileSync(
       process.env.GITHUB_STEP_SUMMARY,

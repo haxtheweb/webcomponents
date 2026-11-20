@@ -42,6 +42,10 @@ function loadThemeRegistry() {
  * sync-url keeps ?theme=&palette=&designSystem= in the address, so a look
  * can be linked to.
  *
+ * theme-only shows just the theme picker, for a page where something else
+ * picks the palette and design system (the component gallery's Appearance,
+ * which hands its pick over with applyLook()).
+ *
  * @element haxcms-appearance-switcher
  */
 class HAXCMSAppearanceSwitcher extends I18NMixin(LitElement) {
@@ -66,6 +70,8 @@ class HAXCMSAppearanceSwitcher extends I18NMixin(LitElement) {
       localesPath: new URL("../../../locales/", import.meta.url).href,
     });
     this.syncUrl = false;
+    this.themeOnly = false;
+    this.__pendingLook = null;
     this.theme = "";
     this.palette = "";
     this.designSystem = "";
@@ -79,6 +85,7 @@ class HAXCMSAppearanceSwitcher extends I18NMixin(LitElement) {
     return {
       ...super.properties,
       syncUrl: { type: Boolean, attribute: "sync-url" },
+      themeOnly: { type: Boolean, attribute: "theme-only", reflect: true },
       theme: { type: String },
       palette: { type: String },
       designSystem: { type: String, attribute: "design-system" },
@@ -190,46 +197,54 @@ class HAXCMSAppearanceSwitcher extends I18NMixin(LitElement) {
           )}
         </select>
       </label>
-      <label
-        >${this.t.palette}
-        <select id="palette" part="palette" @change="${this.__paletteChanged}">
-          <option value="" ?selected="${this.palette === ""}">
-            ${this.t.themeDefault}
-          </option>
-          ${this.paletteOptions.map(
-            (option) =>
-              html`<option
-                value="${option.dataPalette}"
-                ?selected="${String(option.dataPalette) === this.palette}"
-              >
-                ${option.label}
-              </option>`,
-          )}
-        </select>
-      </label>
-      <label
-        >${this.t.designSystem}
-        <select
-          id="designSystem"
-          part="design-system"
-          ?disabled="${!this._acceptsSystems}"
-          title="${this._acceptsSystems ? "" : this.t.designSystemUnavailable}"
-          @change="${this.__designSystemChanged}"
-        >
-          <option value="" ?selected="${this.designSystem === ""}">
-            ${this.t.designSystemDefault}
-          </option>
-          ${systems.map(
-            (name) =>
-              html`<option
-                value="${name}"
-                ?selected="${name === this.designSystem}"
-              >
-                ${this._designSystems[name].title || name}
-              </option>`,
-          )}
-        </select>
-      </label>
+      ${
+        this.themeOnly
+          ? ""
+          : html` <label
+                >${this.t.palette}
+                <select
+                  id="palette"
+                  part="palette"
+                  @change="${this.__paletteChanged}"
+                >
+                  <option value="" ?selected="${this.palette === ""}">
+                    ${this.t.themeDefault}
+                  </option>
+                  ${this.paletteOptions.map(
+                    (option) =>
+                      html`<option
+                        value="${option.dataPalette}"
+                        ?selected="${String(option.dataPalette) === this.palette}"
+                      >
+                        ${option.label}
+                      </option>`,
+                  )}
+                </select>
+              </label>
+              <label
+                >${this.t.designSystem}
+                <select
+                  id="designSystem"
+                  part="design-system"
+                  ?disabled="${!this._acceptsSystems}"
+                  title="${this._acceptsSystems ? "" : this.t.designSystemUnavailable}"
+                  @change="${this.__designSystemChanged}"
+                >
+                  <option value="" ?selected="${this.designSystem === ""}">
+                    ${this.t.designSystemDefault}
+                  </option>
+                  ${systems.map(
+                    (name) =>
+                      html`<option
+                        value="${name}"
+                        ?selected="${name === this.designSystem}"
+                      >
+                        ${this._designSystems[name].title || name}
+                      </option>`,
+                  )}
+                </select>
+              </label>`
+      }
     `;
   }
 
@@ -258,6 +273,12 @@ class HAXCMSAppearanceSwitcher extends I18NMixin(LitElement) {
             ? String(data.variables.palette).trim()
             : "";
         this.designSystem = siteDesignSystemName(data);
+        // a look handed over before the site loaded goes on once it has
+        if (this.__pendingLook && manifest && manifest.metadata) {
+          const look = this.__pendingLook;
+          this.__pendingLook = null;
+          setTimeout(() => this.applyLook(look), 0);
+        }
       }),
     );
   }
@@ -341,6 +362,54 @@ class HAXCMSAppearanceSwitcher extends I18NMixin(LitElement) {
       theme: this.theme,
       palette: this.palette,
       designSystem: value,
+    });
+  }
+
+  /**
+   * Put a palette and design system on the site from outside the switcher
+   * (the component gallery's Appearance), keeping its theme. Only a known
+   * palette or a design system in the registry is taken; anything else
+   * falls back to the theme's default. Waits for the site if it has not
+   * loaded yet.
+   * @param {{palette: string, designSystem: string}} look
+   */
+  applyLook(look) {
+    const palette = String((look && look.palette) || "");
+    const designSystem = String((look && look.designSystem) || "");
+    const next = {
+      theme: this.theme,
+      palette:
+        palette &&
+        getDDDPaletteOptions().some(
+          (option) => String(option.dataPalette) === palette,
+        )
+          ? palette
+          : "",
+      designSystem: NAME.test(designSystem) ? designSystem : "",
+    };
+    if (!store.manifest || !store.manifest.metadata) {
+      this.__pendingLook = next;
+      return;
+    }
+    // the registry decides which names are design systems
+    loadDesignSystemRegistry().then((systems) => {
+      if (
+        next.designSystem &&
+        !(
+          systems &&
+          Object.prototype.hasOwnProperty.call(systems, next.designSystem)
+        )
+      ) {
+        next.designSystem = "";
+      }
+      if (
+        next.palette === this.palette &&
+        next.designSystem === this.designSystem
+      ) {
+        return;
+      }
+      next.theme = this.theme;
+      this.__apply(next);
     });
   }
 
