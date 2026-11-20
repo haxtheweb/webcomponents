@@ -162,7 +162,7 @@ class SimpleContextMenu extends DDD {
         /* a small label, as the admin's group titles */
         .menu-header {
           padding: var(--hax-ui-gap) var(--hax-ui-gap-md) var(--hax-ui-gap);
-          font-size: 11px;
+          font-size: var(--hax-ui-admin-font-size-xs);
           font-weight: var(--ddd-font-weight-bold, 700);
           letter-spacing: 0.04em;
           text-transform: uppercase;
@@ -253,7 +253,7 @@ class SimpleContextMenu extends DDD {
           margin-left: auto;
           padding: 0 var(--hax-ui-gap-md);
           font-family: var(--ddd-font-mono, monospace);
-          font-size: 11px;
+          font-size: var(--hax-ui-admin-font-size-xs);
           color: var(--hax-ui-text-muted);
           pointer-events: none;
         }

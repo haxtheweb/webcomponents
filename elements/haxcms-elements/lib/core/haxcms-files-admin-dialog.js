@@ -46,6 +46,7 @@ import {
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import { haxcmsApiMessage } from "./utils/HAXCMSApiMessages.js";
+import { platformModifier } from "@haxtheweb/utils/lib/keyboardShortcuts.js";
 
 const FILE_TYPE_FILTER_ITEMS = [
   { value: "", text: "All types", key: "allTypes" },
@@ -426,7 +427,7 @@ class HAXCMSFilesAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
         }
         .ph h2 {
           margin: 0;
-          font-size: 22px;
+          font-size: var(--hax-ui-admin-font-size-xl);
           font-weight: var(--ddd-font-weight-bold, 700);
           line-height: 1.2;
         }
@@ -452,7 +453,7 @@ class HAXCMSFilesAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
           padding: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
         }
         :host([compact]) .ph h2 {
-          font-size: 18px;
+          font-size: var(--hax-ui-admin-font-size-lg);
         }
         :host([compact]) .ph p {
           font-size: var(--hax-ui-admin-font-size-xs);
@@ -573,7 +574,7 @@ class HAXCMSFilesAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
         }
         table.files .num {
           font-variant-numeric: tabular-nums;
-          font-size: 13px;
+          font-size: var(--hax-ui-admin-font-size);
           color: var(--hax-ui-text-muted);
         }
         table.files th.num,
@@ -749,7 +750,7 @@ class HAXCMSFilesAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
         }
         .insp-name {
           margin: 0;
-          font-size: 16px;
+          font-size: var(--hax-ui-admin-font-size-lg);
           font-weight: var(--ddd-font-weight-bold, 700);
           overflow-wrap: anywhere;
         }
@@ -760,7 +761,7 @@ class HAXCMSFilesAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
           margin: 0;
           padding: 0;
           border: 0;
-          font-size: 13px;
+          font-size: var(--hax-ui-admin-font-size);
         }
         .insp dt,
         .insp dd {
@@ -787,7 +788,7 @@ class HAXCMSFilesAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
           background-color: var(--hax-ui-hover);
           font-family:
             ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-          font-size: 12px;
+          font-size: var(--hax-ui-admin-font-size-xs);
         }
         .path span {
           flex: 1;
@@ -3392,6 +3393,8 @@ class HAXCMSFilesAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
     const aspect = CROP_ASPECTS.find((a) => a.id === crop.aspect);
     const canAll = more && aspect && typeof aspect.ratio === "number";
     const busy = !!this.busy;
+    // Ctrl or Command, the same key the crop keydown handler accepts
+    const mod = platformModifier();
     const heading =
       total > 1
         ? this.t.cropProgress
@@ -3430,8 +3433,8 @@ class HAXCMSFilesAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
                 type="button"
                 class="hax-ui-btn"
                 ?disabled="${busy}"
-                aria-keyshortcuts="Control+Shift+Enter"
-                data-shortcut="Ctrl⇧↵"
+                aria-keyshortcuts="${mod.aria}+Shift+Enter"
+                data-shortcut="${mod.label}⇧↵"
                 @click="${this._nextCrop}"
               >
                 ${this.t.skip}
@@ -3453,8 +3456,8 @@ class HAXCMSFilesAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
           type="button"
           class="hax-ui-btn primary"
           ?disabled="${busy}"
-          aria-keyshortcuts="Control+Enter"
-          data-shortcut="Ctrl↵"
+          aria-keyshortcuts="${mod.aria}+Enter"
+          data-shortcut="${mod.label}↵"
           @click="${this._replaceWithCrop}"
         >
           ${more ? this.t.replaceAndNext : this.t.replaceOriginal}

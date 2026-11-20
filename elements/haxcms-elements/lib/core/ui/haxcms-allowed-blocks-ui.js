@@ -169,7 +169,7 @@ class HAXCMSAllowedBlocksUI extends HaxcmsAdminSectionMixin(
         }
         h2 {
           margin: 0 0 var(--hax-ui-gap-lg);
-          font-size: 18px;
+          font-size: var(--hax-ui-admin-font-size-lg);
           font-weight: var(--ddd-font-weight-bold, 700);
         }
         .panel-shell {
@@ -210,7 +210,7 @@ class HAXCMSAllowedBlocksUI extends HaxcmsAdminSectionMixin(
           padding: 0 var(--hax-ui-gap-md);
           border: 1px solid var(--hax-ui-line-strong);
           border-radius: var(--hax-ui-radius);
-          font-size: 13px;
+          font-size: var(--hax-ui-admin-font-size);
           color: var(--hax-ui-text);
           background: var(--hax-ui-surface);
         }
@@ -505,7 +505,7 @@ class HAXCMSAllowedBlocksUI extends HaxcmsAdminSectionMixin(
           padding: 0 var(--ddd-spacing-5, 20px);
           border: 1px solid transparent;
           border-radius: var(--hax-ui-radius);
-          font-size: 13px;
+          font-size: var(--hax-ui-admin-font-size);
           font-weight: var(--ddd-font-weight-bold, 700);
           cursor: pointer;
           color: light-dark(

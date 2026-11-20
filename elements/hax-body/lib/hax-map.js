@@ -24,6 +24,7 @@ import {
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { autorun, toJS } from "mobx";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import { platformModifier } from "@haxtheweb/utils/lib/keyboardShortcuts.js";
 
 // how far the pointer travels before a press becomes a drag
 const DRAG_START = 4;
@@ -852,11 +853,7 @@ class HaxMap extends I18NMixin(SimpleColors) {
       selectable.every((row) => this.__selected.has(row.node));
     const some = selected.length > 0 && !all;
     const tree = this._treeInfo();
-    const mod =
-      globalThis.navigator &&
-      /Mac|iPhone|iPad/.test(globalThis.navigator.platform || "")
-        ? "⌘"
-        : "Ctrl";
+    const mod = platformModifier().label;
     const lockedCount = selected.filter((node) =>
       isLocked(node, this._body),
     ).length;

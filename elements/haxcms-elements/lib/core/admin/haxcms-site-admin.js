@@ -946,7 +946,7 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
         }
         .launcher h2 {
           margin: 0;
-          font-size: 22px;
+          font-size: var(--hax-ui-admin-font-size-xl);
           font-weight: var(--ddd-font-weight-bold, 700);
           line-height: 1.2;
         }
@@ -993,11 +993,11 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
           --simple-icon-height: 28px;
         }
         .pcard .name {
-          font-size: 17px;
+          font-size: var(--hax-ui-admin-font-size-lg);
           font-weight: var(--ddd-font-weight-bold, 700);
         }
         .card-desc {
-          font-size: 13px;
+          font-size: var(--hax-ui-admin-font-size);
           line-height: 1.35;
           color: var(--hax-ui-text-muted);
         }
@@ -1034,7 +1034,7 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
         }
         .acard .name {
           display: block;
-          font-size: 15px;
+          font-size: var(--hax-ui-admin-font-size);
           font-weight: var(--ddd-font-weight-bold, 700);
         }
 

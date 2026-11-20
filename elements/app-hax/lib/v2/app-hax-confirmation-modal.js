@@ -105,14 +105,14 @@ export class AppHaxConfirmationModal extends I18NMixin(DDDSuper(LitElement)) {
         }
         h3 {
           margin: 0;
-          font-size: 15px;
+          font-size: var(--hax-ui-admin-font-size);
           font-weight: var(--ddd-font-weight-bold, 700);
           line-height: 1.3;
           overflow-wrap: anywhere;
         }
         .message {
           margin: var(--hax-ui-gap) 0 0;
-          font-size: 13px;
+          font-size: var(--hax-ui-admin-font-size);
           line-height: 1.4;
           color: var(--hax-ui-text-muted);
           overflow-wrap: anywhere;

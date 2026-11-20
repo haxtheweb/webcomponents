@@ -476,7 +476,7 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
           height: var(--hax-ui-row-height);
           padding: 0 var(--hax-ui-gap);
           border-radius: var(--hax-ui-radius);
-          font-size: 13px;
+          font-size: var(--hax-ui-admin-font-size);
           white-space: nowrap;
           color: var(--hax-ui-text);
         }
@@ -525,7 +525,7 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
           min-height: var(--hax-ui-row-height);
           padding: var(--hax-ui-gap) var(--hax-ui-gap-lg);
           border-radius: var(--hax-ui-radius);
-          font-size: 13px;
+          font-size: var(--hax-ui-admin-font-size);
           color: var(--hax-ui-warning);
           background-color: var(--hax-ui-warning-soft);
         }
@@ -559,7 +559,7 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
           flex: 1;
           min-width: 0;
           margin: 0;
-          font-size: 13px;
+          font-size: var(--hax-ui-admin-font-size);
           font-variant-numeric: tabular-nums;
           color: var(--hax-ui-text-muted);
         }
@@ -575,7 +575,7 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
         }
         .paging .range {
           padding: 0 var(--hax-ui-gap-md);
-          font-size: 13px;
+          font-size: var(--hax-ui-admin-font-size);
           font-variant-numeric: tabular-nums;
           white-space: nowrap;
           color: var(--hax-ui-text-muted);
@@ -886,7 +886,7 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
           border: 0;
           box-shadow: none;
           font-family: var(--hax-ui-admin-font-family);
-          font-size: 13px;
+          font-size: var(--hax-ui-admin-font-size);
           line-height: 1.4;
           color: var(--hax-ui-text);
           background-color: transparent;
@@ -897,7 +897,7 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
           padding: 0;
           border: 0;
           font-family: var(--hax-ui-admin-font-family);
-          font-size: 13px;
+          font-size: var(--hax-ui-admin-font-size);
           line-height: 1.4;
         }
         .detail dt {
@@ -978,7 +978,7 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
         .local-status {
           flex: 1;
           min-width: 0;
-          font-size: 13px;
+          font-size: var(--hax-ui-admin-font-size);
           color: var(--hax-ui-text-muted);
         }
 
@@ -992,7 +992,7 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
           color: var(--hax-ui-text);
         }
         .empty .hint {
-          font-size: 13px;
+          font-size: var(--hax-ui-admin-font-size);
         }
         .empty.error {
           color: var(--hax-ui-danger);

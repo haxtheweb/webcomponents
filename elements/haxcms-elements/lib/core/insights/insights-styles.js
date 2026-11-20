@@ -120,7 +120,7 @@ export const InsightsStyles = [
       min-width: 0;
     }
     .kpi .v {
-      font-size: 22px;
+      font-size: var(--hax-ui-admin-font-size-xl);
       font-weight: var(--ddd-font-weight-bold, 700);
       font-variant-numeric: tabular-nums;
       line-height: 1.2;
@@ -331,7 +331,7 @@ export const InsightsStyles = [
         padding: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
       }
       .kpi .v {
-        font-size: 19px;
+        font-size: var(--hax-ui-admin-font-size-lg);
       }
       .bar {
         grid-template-columns: minmax(64px, 34%) 1fr 40px;

@@ -205,7 +205,7 @@ class HAXCMSThemePreviewPanel extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
         }
         .title {
           margin: 0;
-          font-size: 18px;
+          font-size: var(--hax-ui-admin-font-size-lg);
           font-weight: var(--ddd-font-weight-bold, 700);
           line-height: 1.2;
         }
@@ -235,7 +235,7 @@ class HAXCMSThemePreviewPanel extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
         }
         .picker-heading {
           margin: 0 0 var(--hax-ui-gap-md);
-          font-size: 11px;
+          font-size: var(--hax-ui-admin-font-size-xs);
           font-weight: var(--ddd-font-weight-bold, 700);
           letter-spacing: 0.04em;
           text-transform: uppercase;
