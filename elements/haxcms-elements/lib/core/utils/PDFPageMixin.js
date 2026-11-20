@@ -8,7 +8,6 @@ import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import { HAXCMSI18NMixin } from "./HAXCMSI18NMixin.js";
 import { toJS } from "mobx";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
-import { fetchPdfOrPrint } from "./pdf-print-fallback.js";
 
 export const PDFPageMixin = function (SuperClass) {
   return class extends HAXCMSI18NMixin(SuperClass) {
@@ -96,6 +95,8 @@ export const PDFPageMixin = function (SuperClass) {
         // the server's PDF, or the browser's print dialog where it can't
         // make one
         const title = toJS(store.activeTitle);
+        // loaded only when someone exports, not with every theme
+        const { fetchPdfOrPrint } = await import("./pdf-print-fallback.js");
         const result = await fetchPdfOrPrint(url, title);
         if (result.blob) {
           const link = globalThis.document.createElement("a");
