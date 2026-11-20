@@ -369,6 +369,11 @@ describe("hax-network-bar", () => {
     expect(panel.querySelector("a.install-btn").getAttribute("href")).to.equal(
       "https://browser.hax.cloud",
     );
+    // the link drawn as a button keeps its fill: DDD's a:any-link rule must
+    // not clear it, or the label is invisible on the dark dialog
+    const go = getComputedStyle(panel.querySelector("a.install-btn"));
+    expect(go.backgroundColor).to.equal("rgb(255, 209, 0)");
+    expect(go.color).to.equal("rgb(38, 38, 38)");
     expect(dialog.querySelectorAll(".beta").length).to.equal(0);
     const social = [...dialog.querySelectorAll(".install-foot .social a")].map(
       (a) => a.getAttribute("href"),
