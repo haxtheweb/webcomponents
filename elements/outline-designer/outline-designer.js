@@ -2279,8 +2279,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       // a stale preview node can point at an item that is no longer in the
       // tree, so guard the find result before reading contents off it
       if (item && item.contents) {
-        let div = globalThis.document.createElement("div");
-        div.innerHTML = item.contents;
+        let div = this._parseContents(item.contents);
         // walk up to the index in question
         for (let i = 0; i < div.childNodes.length; i++) {
           let node = div.childNodes[i];
@@ -2805,11 +2804,24 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     return false;
   }
 
+  /**
+   * Page HTML as a detached container to walk and re-serialize.
+   * Security: parsed by DOMParser into an inert document (no browsing
+   * context), so markup in a page (an img onerror, a srcset, an iframe)
+   * never runs or loads while the outline reads, splits or rewrites it.
+   * The nodes serialize the same as before; only side effects are gone.
+   */
+  _parseContents(contents) {
+    return new globalThis.DOMParser().parseFromString(
+      `<body>${contents}</body>`,
+      "text/html",
+    ).body;
+  }
+
   renderItemContents(item, cols = nothing) {
     let render = [this.itemContentsOperations(item, cols)];
     if (item.contents) {
-      let div = globalThis.document.createElement("div");
-      div.innerHTML = item.contents;
+      let div = this._parseContents(item.contents);
       let activeHeadingDepth = 1;
       let modifier = 0;
       div.childNodes.forEach((node, index) => {
@@ -3064,8 +3076,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       let item = this.items.find((item) => item.id === itemId);
       // should have contents but verify
       if (item.contents) {
-        let div = globalThis.document.createElement("div");
-        div.innerHTML = item.contents;
+        let div = this._parseContents(item.contents);
         let content = "";
         // up / down require reorganization prior to html calculation
         switch (action) {
@@ -3166,8 +3177,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       );
       // should have contents but verify
       if (item.contents) {
-        let div = globalThis.document.createElement("div");
-        div.innerHTML = item.contents;
+        let div = this._parseContents(item.contents);
         let oldContent = "";
         let newContent = "";
         let title = this.t.newPage;
@@ -3383,8 +3393,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       let item = this.items.find((item) => item.id === itemId);
       // should have contents but verify
       if (item.contents) {
-        let div = globalThis.document.createElement("div");
-        div.innerHTML = item.contents;
+        let div = this._parseContents(item.contents);
         let content = "";
         // walk up to the index in question
         for (let i = 0; i < div.childNodes.length; i++) {

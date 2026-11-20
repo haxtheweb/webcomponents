@@ -13,6 +13,7 @@ import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
+import { removeUnsafeElements } from "@haxtheweb/utils/lib/sanitize.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import {
   HaxUiAdminStyles,
@@ -2515,7 +2516,12 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
 
   /**
    * Page HTML for a preview that only shows: no scripts, no inline event
-   * handlers or script URLs, and embeds drawn as a labelled box.
+   * handlers or script URLs, no page styles reaching this dialog, and
+   * embeds drawn as a labelled box. Elements in it render live (custom
+   * elements upgrade), so the shared removeUnsafeElements rules apply too:
+   * content can't grant html-block its allowscript, and SVG animations
+   * that rewrite href are dropped. URLs keep this preview's own scheme
+   * list (inline raster pictures stay).
    */
   _cleanPreview(text) {
     const doc = new globalThis.DOMParser().parseFromString(
@@ -2523,7 +2529,9 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
       "text/html",
     );
     doc.body
-      .querySelectorAll("script, noscript, object, embed, link, meta, base")
+      .querySelectorAll(
+        "script, noscript, style, object, embed, link, meta, base",
+      )
       .forEach((node) => node.remove());
     doc.body.querySelectorAll("iframe").forEach((node) => {
       const box = doc.createElement("div");
@@ -2544,6 +2552,7 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
         }
       });
     });
+    removeUnsafeElements(doc.body);
     return doc.body.innerHTML;
   }
 

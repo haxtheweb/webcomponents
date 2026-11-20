@@ -438,6 +438,30 @@ describe("SiteSkeletonGenerator", () => {
       expect(out).to.contain(`<${tag} item-id="new-1"`);
     });
 
+    it("never runs markup in the page while reading it", async () => {
+      globalThis.__skeletonProbeRan = false;
+      const html =
+        '<p>x</p><img src="data:," onerror="globalThis.__skeletonProbeRan = true">';
+      const out = SiteSkeletonGenerator.rewriteContentUuids(
+        html,
+        new Map([["old-1", "new-1"]]),
+      );
+      // give an error event a chance to fire if the image was ever live
+      await new Promise((resolve) => setTimeout(resolve, 50));
+      expect(globalThis.__skeletonProbeRan).to.equal(false);
+      expect(out).to.equal(html);
+      delete globalThis.__skeletonProbeRan;
+    });
+
+    it("keeps a hooked element's event attributes as they were", () => {
+      const out = SiteSkeletonGenerator.rewriteContentUuids(
+        `<${tag} item-id="old-1" onclick="x()"></${tag}>`,
+        new Map([["old-1", "new-1"]]),
+      );
+      expect(out).to.contain('item-id="new-1"');
+      expect(out).to.contain('onclick="x()"');
+    });
+
     it("rewrites ids in page content to the new structure ids", async () => {
       PAGE_CONTENT["pages/second/index.html"] =
         `<${tag} item-id="childB"></${tag}>`;
