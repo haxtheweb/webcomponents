@@ -19,6 +19,7 @@ import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { PAGE_EXPORT_FORMATS } from "./import-export-options.js";
 import { siteApiFetch } from "./site-api-auth-fetch.js";
+import { fetchPdfOrPrint } from "./pdf-print-fallback.js";
 
 // English defaults for messages these helpers show. They run with `this`
 // bound to haxcms-site-editor-ui, so translations come from its (haxcms
@@ -29,6 +30,7 @@ const EXPORT_PAGE_T = {
   formatFileDownloadedSuccessfully: "{format} file downloaded successfully",
   pageFormatExportNotAvailable: "Page {format} export not available",
   formatExportServiceNotAvailable: "{format} export service not available",
+  pdfUsePrintDialog: "Your browser's print dialog is open: choose Save as PDF",
   haxSchemaJsonCopiedToClipboard: "HAX schema JSON copied to clipboard",
   failedToExportHaxSchemaJson: "Failed to export HAX schema JSON",
 };
@@ -274,18 +276,18 @@ export async function _exportPageAsPDF(title) {
     if (!url) {
       throw new Error("Current page URL unavailable for PDF export");
     }
-    const response = await siteApiFetch(url, { credentials: "include" });
-    if (response.ok) {
-      const blob = await response.blob();
-      this._downloadBlob(blob, `${title}.pdf`);
-      this.clearProcessingVisual();
+    // the server's PDF, or the browser's print dialog where it can't make one
+    const result = await fetchPdfOrPrint(url, title);
+    this.clearProcessingVisual();
+    if (result.blob) {
+      this._downloadBlob(result.blob, `${title}.pdf`);
       HAXStore.toast(
         _t(this, "formatFileDownloadedSuccessfully").replace("{format}", "PDF"),
         3000,
         "fit-bottom",
       );
     } else {
-      throw new Error(`Failed to export page as PDF: ${response.status}`);
+      HAXStore.toast(_t(this, "pdfUsePrintDialog"), 5000, "fit-bottom");
     }
   } catch (error) {
     console.error("PDF export error:", error);

@@ -444,6 +444,7 @@
   "siteExportFailed": "Site export failed: {error}",
   "siteFormatDownloadedSuccessfully": "Site {format} downloaded successfully",
   "siteFormatExportServiceNotAvailable": "Site {format} export service not available",
+  "pdfUsePrintDialog": "Your browser's print dialog is open: choose Save as PDF",
   "siteArchiveDownloadNotAvailable": "Site archive download not available",
   "siteArchiveDownloadInitiated": "Site archive download initiated",
   "siteSkeleton": "Site skeleton",

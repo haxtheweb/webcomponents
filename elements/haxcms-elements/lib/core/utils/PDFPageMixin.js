@@ -8,7 +8,7 @@ import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import { HAXCMSI18NMixin } from "./HAXCMSI18NMixin.js";
 import { toJS } from "mobx";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
-import { siteApiFetch } from "./site-api-auth-fetch.js";
+import { fetchPdfOrPrint } from "./pdf-print-fallback.js";
 
 export const PDFPageMixin = function (SuperClass) {
   return class extends HAXCMSI18NMixin(SuperClass) {
@@ -93,20 +93,20 @@ export const PDFPageMixin = function (SuperClass) {
           `x/api/v1/items/${encodeURIComponent(itemId)}/export/pdf`,
           baseUrl,
         ).toString();
-        const response = await siteApiFetch(url, { credentials: "include" });
-        if (response.ok) {
-          const blob = await response.blob();
+        // the server's PDF, or the browser's print dialog where it can't
+        // make one
+        const title = toJS(store.activeTitle);
+        const result = await fetchPdfOrPrint(url, title);
+        if (result.blob) {
           const link = globalThis.document.createElement("a");
-          const objectUrl = globalThis.URL.createObjectURL(blob);
+          const objectUrl = globalThis.URL.createObjectURL(result.blob);
           link.href = objectUrl;
-          link.download = `${toJS(store.activeTitle)}.pdf`;
+          link.download = `${title}.pdf`;
           link.target = "_blank";
           this.appendChild(link);
           link.click();
           this.removeChild(link);
           globalThis.URL.revokeObjectURL(objectUrl);
-        } else {
-          throw new Error(`PDF export failed: ${response.status}`);
         }
       } catch (error) {
         console.error("PDF export error:", error);

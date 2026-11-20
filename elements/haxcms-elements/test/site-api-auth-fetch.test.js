@@ -14,6 +14,7 @@ const siteExportsAs = [
   "PDFPageMixin.js",
   "PrintProgram.js",
   "PrintBranchMixin.js",
+  "pdf-print-fallback.js",
 ];
 
 // The HAXcms site API only reads credentials from the Authorization header.
@@ -204,9 +205,12 @@ describe("site-api-auth-fetch", () => {
             new URL(`../lib/core/utils/${file}`, import.meta.url),
           )
         ).text();
+        // pdf-print-fallback.js (guarded here too) wraps siteApiFetch for
+        // PDF downloads and their print fallback
         expect(
-          src.includes('from "./site-api-auth-fetch.js"'),
-          `${file} must import siteApiFetch from ./site-api-auth-fetch.js`,
+          src.includes('from "./site-api-auth-fetch.js"') ||
+            src.includes('from "./pdf-print-fallback.js"'),
+          `${file} must import siteApiFetch from ./site-api-auth-fetch.js (or use ./pdf-print-fallback.js)`,
         ).to.equal(true);
         expect(
           /(^|[^\w])fetch\(/m.test(src),
