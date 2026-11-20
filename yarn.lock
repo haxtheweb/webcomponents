@@ -15931,6 +15931,11 @@ mobx@6.16.1, mobx@^6.0.0:
   resolved "https://registry.yarnpkg.com/mobx/-/mobx-6.16.1.tgz#8b3166186d1298b1848395e10e64b5c43d6dc43b"
   integrity sha512-syNcDdX3KT+Jq3je6eGjBhuc24Z68td2VG0zNFqRswaE433D9SNH5VRy/xrGbJsUixfppLLccXhAW9JSf6n+SQ==
 
+modern-screenshot@4.7.0:
+  version "4.7.0"
+  resolved "https://registry.yarnpkg.com/modern-screenshot/-/modern-screenshot-4.7.0.tgz#22f6831de41df5717235a119bcd0cc309dacf7a9"
+  integrity sha512-9YxN+ddPSMMlhylOv25VHzXrl9u67QRxoh7+SEewGtgUw7t6hHTrjptSDJUSne9oG4Xk/h2cwG15nIt4Hc9ujg==
+
 modern-tar@^0.8.6:
   version "0.8.6"
   resolved "https://registry.yarnpkg.com/modern-tar/-/modern-tar-0.8.6.tgz#dc67de5954b4b679d55ba703d5263dbd328c1e4c"

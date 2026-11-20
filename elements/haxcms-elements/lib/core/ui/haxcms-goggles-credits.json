@@ -1,0 +1,75 @@
+{
+  "//": [
+    "Influence git cannot see: people who shaped a piece without (many) commits to it. Kept by hand; read by haxcms-goggles next to the generated haxcms-goggles-makers.json.",
+    "shaped: package or tag -> [[GitHub login, what they shaped]]. shapedTags: tag -> the package or tag whose credits it shares.",
+    "people: names and roles for people the HAX Lab roster (hax-marketing-theme/demo/files/contributors.json) does not list.",
+    "owners: npm package outside HAX -> who makes it, for registered tags that come from that package (the generated data lists them as third).",
+    "wraps: HAX tag -> the outside work it carries inside it, and whose it is."
+  ],
+  "shaped": {
+    "super-daemon": [
+      ["zdodson21", "Influenced Merlin"],
+      ["winstonwumbo", "Influenced Merlin"]
+    ],
+    "app-hax": [
+      [
+        "liljimmyk99",
+        "8-bit video game aesthetic and user flow for site creation"
+      ],
+      ["dronk6", "8-bit video game aesthetic and user flow for site creation"],
+      [
+        "elizabeth-delor",
+        "8-bit video game aesthetic and user flow for site creation"
+      ],
+      ["SkylerKoba88", "Start Journey Screen"],
+      ["izzabizz5", "Start Journey Screen"]
+    ],
+    "polaris-theme": [["winstonwumbo", "Polaris Themes, Flex Map Menu"]],
+    "map-menu": [["winstonwumbo", "Polaris Themes, Flex Map Menu"]],
+    "d-d-d": [
+      ["kchar601", "DDD Creation"],
+      ["klh6157", "Auditing DDD Usage"]
+    ],
+    "vocab-term": [["hvk5388", "Vocab web component for presenting terms"]],
+    "chat-agent": [["zdodson21", "AI Chat Agent"]],
+    "bootstrap-theme": [["collinkleest", "Bootstrap Theme for HAXcms"]],
+    "journey-theme": [
+      ["SkylerKoba88", "Start Journey Screen"],
+      ["izzabizz5", "Start Journey Screen"]
+    ],
+    "glossy-portfolio-theme": [
+      ["NazmanRosman", "Glossy Portfolio theme for HAXcms"]
+    ]
+  },
+  "shapedTags": {
+    "app-hax-top-bar": "app-hax",
+    "app-hax-user-menu": "app-hax",
+    "app-hax-user-menu-toggle": "app-hax",
+    "app-hax-user-menu-button": "app-hax",
+    "haxcms-site-dashboard": "app-hax",
+    "super-daemon-search": "super-daemon",
+    "super-daemon-ui": "super-daemon",
+    "super-daemon-row": "super-daemon"
+  },
+  "people": {
+    "btopro": {
+      "n": "Bryan Ollendyke",
+      "w": ["HAX project lead"]
+    },
+    "nikkimk": {
+      "n": "Nikki Massaro Kauffman",
+      "w": []
+    },
+    "heyMP": {
+      "n": "Michael Potter",
+      "w": []
+    }
+  },
+  "owners": {
+    "@google/model-viewer": "Google",
+    "@lit-labs/virtualizer": "the Lit team at Google"
+  },
+  "wraps": {
+    "monaco-element": "Monaco Editor, by Microsoft"
+  }
+}
