@@ -9,7 +9,9 @@
  * the web component registry it records the people with commits to that
  * tag's source file and to its package, with commit counts and years, the
  * total human commits to the file (so shares can be shown), each person's
- * commits per year, and which packages have a demo in the gallery.
+ * commits per year, which packages have a demo in the gallery, which
+ * other tags have a demo page of their own, and which registered tags come
+ * from a package outside HAX.
  * Commits made by bots and coding agents are counted apart, never credited
  * to a person. Names and HAX Lab roles come from the HAX Lab roster
  * (hax-marketing-theme/demo/files/contributors.json).
@@ -28,18 +30,40 @@ import fs from "node:fs";
 import path from "node:path";
 import process from "node:process";
 
-const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..");
+const ROOT = path.resolve(
+  path.dirname(new URL(import.meta.url).pathname),
+  "..",
+);
 const WC = path.join(ROOT, "elements");
-const OUT = path.join(WC, "haxcms-elements/lib/core/ui/haxcms-goggles-makers.json");
+const OUT = path.join(
+  WC,
+  "haxcms-elements/lib/core/ui/haxcms-goggles-makers.json",
+);
 
-const git = (args) => execFileSync("git", ["-C", ROOT, ...args], { encoding: "utf8", maxBuffer: 1 << 28 });
+const git = (args) =>
+  execFileSync("git", ["-C", ROOT, ...args], {
+    encoding: "utf8",
+    maxBuffer: 1 << 28,
+  });
 if (git(["rev-parse", "--is-shallow-repository"]).trim() === "true") {
-  console.error("goggles-makers: this clone is shallow; run it from a full clone so the history is complete.");
+  console.error(
+    "goggles-makers: this clone is shallow; run it from a full clone so the history is complete.",
+  );
   process.exit(1);
 }
 
-const registry = JSON.parse(fs.readFileSync(path.join(WC, "haxcms-elements/demo/wc-registry.json"), "utf8"));
-const roster = JSON.parse(fs.readFileSync(path.join(WC, "hax-marketing-theme/demo/files/contributors.json"), "utf8"));
+const registry = JSON.parse(
+  fs.readFileSync(
+    path.join(WC, "haxcms-elements/demo/wc-registry.json"),
+    "utf8",
+  ),
+);
+const roster = JSON.parse(
+  fs.readFileSync(
+    path.join(WC, "hax-marketing-theme/demo/files/contributors.json"),
+    "utf8",
+  ),
+);
 
 // commit author names that are the same person as a GitHub login
 const ALIASES = {
@@ -61,7 +85,8 @@ const ALIASES = {
 for (const c of roster.code || []) {
   ALIASES[c.login.toLowerCase()] = c.login;
 }
-const AGENT = /claude|renovate|dependabot|copilot|\[bot\]|github-actions|warp|cursor|codex|greenkeeper|snyk/i;
+const AGENT =
+  /claude|renovate|dependabot|copilot|\[bot\]|github-actions|warp|cursor|codex|greenkeeper|snyk/i;
 const who = (name, email) => {
   if (AGENT.test(name) || AGENT.test(email)) {
     return null;
@@ -100,13 +125,20 @@ const history = (rel) => {
       agents++;
       continue;
     }
-    const p = (people[login] = people[login] || { c: 0, a: +year, z: +year, y: {} });
+    const p = (people[login] = people[login] || {
+      c: 0,
+      a: +year,
+      z: +year,
+      y: {},
+    });
     p.c++;
     p.a = Math.min(p.a, +year);
     p.z = Math.max(p.z, +year);
     p.y[year] = (p.y[year] || 0) + 1;
   }
-  const all = Object.entries(people).sort((a, b) => b[1].c - a[1].c || a[0].localeCompare(b[0]));
+  const all = Object.entries(people).sort(
+    (a, b) => b[1].c - a[1].c || a[0].localeCompare(b[0]),
+  );
   const result = {
     p: all.slice(0, 8).map(([login, o]) => [login, o.c, o.a, o.z]),
     n: all.reduce((t, e) => t + e[1].c, 0),
@@ -121,9 +153,13 @@ const tags = {};
 const pkgs = {};
 const years = {};
 const counted = new Set();
+// registered tags that come from someone else's package: tag -> npm package
+const third = {};
 for (const tag of Object.keys(registry).sort()) {
   const spec = registry[tag];
   if (!spec.startsWith("@haxtheweb/")) {
+    const parts = spec.split("/");
+    third[tag] = spec.startsWith("@") ? parts.slice(0, 2).join("/") : parts[0];
     continue;
   }
   const file = spec.replace("@haxtheweb/", "");
@@ -152,7 +188,11 @@ for (const tag of Object.keys(registry).sort()) {
 const people = {};
 for (const person of roster.lab || []) {
   if (person.github) {
-    people[person.github] = { n: person.name, w: (person.work || []).map((w) => `${w.what} (${w.when})`), s: person.story || "" };
+    people[person.github] = {
+      n: person.name,
+      w: (person.work || []).map((w) => `${w.what} (${w.when})`),
+      s: person.story || "",
+    };
   }
 }
 const gallery = fs
@@ -160,6 +200,27 @@ const gallery = fs
   .filter((d) => fs.existsSync(path.join(WC, d, "demo/index.html")))
   .sort();
 
-const data = { sha: git(["rev-parse", "--short", "HEAD"]).trim(), tags, pkgs, people, years, gallery };
+// a tag that is not its package's own element is only shown alone when the
+// package has a demo named after it (?element=<package>&demo=<tag>)
+const demos = {};
+for (const [tag, t] of Object.entries(tags)) {
+  const pkg = t.f.split("/")[0];
+  if (tag !== pkg && fs.existsSync(path.join(WC, pkg, "demo", `${tag}.html`))) {
+    demos[tag] = tag;
+  }
+}
+
+const data = {
+  sha: git(["rev-parse", "--short", "HEAD"]).trim(),
+  tags,
+  pkgs,
+  people,
+  years,
+  gallery,
+  demos,
+  third,
+};
 fs.writeFileSync(OUT, JSON.stringify(data) + "\n");
-console.log(`goggles-makers: ${Object.keys(tags).length} tags, ${Object.keys(pkgs).length} packages, ${Object.keys(years).length} people, ${fs.statSync(OUT).size} bytes -> ${path.relative(ROOT, OUT)}`);
+console.log(
+  `goggles-makers: ${Object.keys(tags).length} tags, ${Object.keys(pkgs).length} packages, ${Object.keys(years).length} people, ${fs.statSync(OUT).size} bytes -> ${path.relative(ROOT, OUT)}`,
+);

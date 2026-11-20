@@ -67,8 +67,12 @@ let MAKERS = {
   people: {},
   years: {},
   gallery: [],
+  demos: {},
+  third: {},
   shaped: {},
   shapedTags: {},
+  owners: {},
+  wraps: {},
 };
 let makersReady = null;
 export function loadMakers() {
@@ -86,6 +90,8 @@ export function loadMakers() {
           people: Object.assign({}, both[1].people || {}, both[0].people || {}),
           shaped: both[1].shaped || {},
           shapedTags: both[1].shapedTags || {},
+          owners: both[1].owners || {},
+          wraps: both[1].wraps || {},
         });
         GogglesState.set({});
         return MAKERS;
@@ -185,6 +191,7 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
       _marks: { state: true },
       _sort: { state: true },
       _showAll: { state: true },
+      _showAllPeople: { state: true },
     };
   }
   constructor() {
@@ -206,6 +213,7 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
     this._marks = [];
     this._sort = "share";
     this._showAll = false;
+    this._showAllPeople = false;
     this.t = this.t || {};
     this.t = {
       ...this.t,
@@ -223,14 +231,30 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
         "You are seeing what the Future Traveler sees. Point at anything to see how it is made.",
       takeOffSay: "Goggles off.",
       holdingSay: "Holding still on {tag}. Press Escape to let go.",
-      stepBackTo: "Step back to",
       seeItAlone: "See it alone",
+      moveAround: "Move around",
+      upTo: "Up to {tag}",
+      downTo: "Down to {tag}",
+      aboveIt: "Above it ({count})",
+      insideIt: "Inside it ({count})",
+      timesCount: "{count} of these",
+      close: "Close",
+      onGitHub: "GitHub",
+      showTop: "Show top {count}",
+      ownerHax: "From HAX",
+      ownerHaxBy: "From HAX, by {names}",
+      ownerWraps: "Carries {work}",
+      ownerNative: "HTML standard: W3C and the browser",
+      ownerThird: "Not from HAX: {package}",
+      ownerThirdBy: "Not from HAX: {package}, by {owner}",
+      ownerOutside: "Not from HAX; who made it is not known here",
+      ownerLabel: "Owner",
+      andNames: "{first} and {second}",
       everythingMadeBy: "Everything made by {name}",
       following: "Following",
       personStats: "{pieces} pieces of HAX, {commits} commits.",
       personSince: "Since {year}.",
       personOnScreen: "{count} on this screen.",
-      theirStory: "Their story",
       stopFollowing: "Stop following",
       commitsByYear: "Commits by year",
       onThisScreen: "On this screen",
@@ -264,7 +288,7 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
       madeIn: "Made in",
       builtOn: "Built on",
       markup: "Markup",
-      propertiesNow: "Properties right now",
+      propertiesNow: "Properties right now ({count})",
       slots: "Slots",
       inTheEditor: "In the HAX editor",
       editable: "Editable",
@@ -595,6 +619,7 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
   }
   _choose(found, point) {
     this.pinned = false;
+    this._showAllPeople = false;
     this._look(found, point);
     if (this.lens === "flag") {
       this._openIssue(found.comp);
@@ -692,39 +717,222 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
     }
   }
 
-  /** the registered components this one sits inside, nearest first */
-  _outside(el) {
+  /*
+   * Moving around: only between custom elements. Plain tags in between are
+   * walked through, never stopped on, so a few steps reach anything
+   * interesting instead of wading through shadow roots div by div.
+   */
+  _isCustom(n) {
+    return (
+      !!n && n.nodeType === 1 && n !== this && n.localName.indexOf("-") > 0
+    );
+  }
+  /** the custom elements this one sits inside, nearest first, across shadow roots */
+  _above(el) {
     const out = [];
     let n = el;
-    while (n && out.length < 3) {
+    while (n && out.length < 40) {
       n = n.assignedSlot || n.parentNode || n.host;
-      if (
-        n &&
-        n.nodeType === 1 &&
-        n !== el &&
-        n.localName.indexOf("-") > 0 &&
-        MAKERS.tags[n.localName] &&
-        n.localName !== "haxcms-site-builder"
-      ) {
-        if (!out.length || out[out.length - 1] !== n) {
-          out.push(n);
-        }
+      if (this._isCustom(n) && out.indexOf(n) === -1) {
+        out.push(n);
       }
     }
     return out;
   }
-  _renderOutside() {
-    if (!this.pinned) {
+  /** the nearest custom elements inside this one, in its own shadow root and in what it holds */
+  _below(el) {
+    const out = [];
+    const walk = (root, depth) => {
+      if (!root || depth > 40 || out.length >= 600) {
+        return;
+      }
+      const kids = Array.from(root.children || []);
+      for (let i = 0; i < kids.length && out.length < 600; i++) {
+        const k = kids[i];
+        if (k.localName === "style" || k.localName === "script") {
+          continue;
+        }
+        if (this._isCustom(k)) {
+          out.push(k);
+        } else {
+          walk(k, depth + 1);
+          if (k.shadowRoot) {
+            walk(k.shadowRoot, depth + 1);
+          }
+        }
+      }
+    };
+    walk(el.shadowRoot, 0);
+    walk(el, 0);
+    return out;
+  }
+  /** one entry per tag, in the order first met, with how many there are */
+  _byTag(list) {
+    const out = [];
+    const at = {};
+    list.forEach((el) => {
+      if (at[el.localName] === undefined) {
+        at[el.localName] = out.length;
+        out.push({ tag: el.localName, el: el, count: 1 });
+      } else {
+        out[at[el.localName]].count++;
+      }
+    });
+    return out;
+  }
+  /** hold still on another element: scroll it into view and move the readout to it */
+  _go(el) {
+    if (!el || !el.isConnected) {
+      return;
+    }
+    let r = el.getBoundingClientRect();
+    if (r.bottom < 0 || r.top > globalThis.innerHeight) {
+      el.scrollIntoView({ block: "center" });
+      r = el.getBoundingClientRect();
+    }
+    this._choose(
+      { node: el, comp: el },
+      {
+        x: Math.min(Math.max(r.left + 12, 0), globalThis.innerWidth),
+        y: Math.min(Math.max(r.bottom, 0), globalThis.innerHeight),
+      },
+    );
+  }
+  _tagButton(entry) {
+    return html`<button
+      type="button"
+      class="code"
+      @click="${() => this._go(entry.el)}"
+    >
+      &lt;${entry.tag}&gt;${
+        entry.count > 1
+          ? html`<span class="count"
+              >${this.t.timesCount.replace("{count}", entry.count)}</span
+            >`
+          : nothing
+      }
+    </button>`;
+  }
+  _renderMoves() {
+    if (!this.pinned || !this._target) {
       return nothing;
     }
-    const outside = this._outside(this._target.comp);
-    if (!outside.length) {
+    const here = this.lens === "code" ? this._target.node : this._target.comp;
+    const above = this._byTag(this._above(here));
+    const below = this._byTag(this._below(here));
+    if (!above.length && !below.length) {
       return nothing;
     }
-    return html`<h3>${this.t.stepBackTo}</h3>
+    return html`<nav class="moves" aria-label="${this.t.moveAround}">
+      <h3>${this.t.moveAround}</h3>
       <div class="actions tight">
-        ${outside.map((el) => html`<button type="button" class="code" @click="${() => this._choose({ node: el, comp: el }, this._point)}">&lt;${el.localName}&gt;</button>`)}
-      </div>`;
+        ${
+          above.length
+            ? html`<button
+                type="button"
+                @click="${() => this._go(above[0].el)}"
+              >
+                <simple-icon-lite icon="icons:arrow-upward"></simple-icon-lite
+                ><span class="code"
+                  >${this.t.upTo.replace("{tag}", "<" + above[0].tag + ">")}</span
+                >
+              </button>`
+            : nothing
+        }
+        ${
+          below.length === 1
+            ? html`<button
+                type="button"
+                @click="${() => this._go(below[0].el)}"
+              >
+                <simple-icon-lite icon="icons:arrow-downward"></simple-icon-lite
+                ><span class="code"
+                  >${this.t.downTo.replace("{tag}", "<" + below[0].tag + ">")}</span
+                >
+              </button>`
+            : nothing
+        }
+      </div>
+      ${
+        above.length
+          ? html`<details class="fold">
+              <summary>
+                ${this.t.aboveIt.replace("{count}", above.length)}
+              </summary>
+              <div class="actions tight">
+                ${above.map((e) => this._tagButton(e))}
+              </div>
+            </details>`
+          : nothing
+      }
+      ${
+        below.length
+          ? html`<details class="fold">
+              <summary>
+                ${this.t.insideIt.replace("{count}", below.length)}
+              </summary>
+              <div class="actions tight">
+                ${below.map((e) => this._tagButton(e))}
+              </div>
+            </details>`
+          : nothing
+      }
+    </nav>`;
+  }
+
+  /* ---------- who owns a tag ---------- */
+  _names(list) {
+    if (list.length === 1) {
+      return list[0];
+    }
+    return this.t.andNames
+      .replace("{first}", list.slice(0, -1).join(", "))
+      .replace("{second}", list[list.length - 1]);
+  }
+  /** who a tag belongs to: HAX (and who made it), a package outside HAX, or the HTML standard */
+  _owner(tag) {
+    if (!tag || tag.indexOf("-") === -1) {
+      return { kind: "native", text: this.t.ownerNative };
+    }
+    const t = MAKERS.tags[tag];
+    if (t) {
+      const names = t.p.slice(0, 2).map((p) => this._name(p[0]));
+      const wraps = MAKERS.wraps[tag];
+      return {
+        kind: "hax",
+        text: names.length
+          ? this.t.ownerHaxBy.replace("{names}", this._names(names))
+          : this.t.ownerHax,
+        wraps: wraps ? this.t.ownerWraps.replace("{work}", wraps) : "",
+      };
+    }
+    const pkg = MAKERS.third[tag];
+    if (pkg) {
+      const owner = MAKERS.owners[pkg];
+      return {
+        kind: "third",
+        text: owner
+          ? this.t.ownerThirdBy
+              .replace("{package}", pkg)
+              .replace("{owner}", owner)
+          : this.t.ownerThird.replace("{package}", pkg),
+      };
+    }
+    return { kind: "outside", text: this.t.ownerOutside };
+  }
+  _renderOwner(tag) {
+    const o = this._owner(tag);
+    return html`<p class="row owner ${o.kind}">
+      <span class="muted">${this.t.ownerLabel}</span> ${o.text}${
+        o.wraps ? html`. ${o.wraps}` : nothing
+      }
+    </p>`;
+  }
+  /** a link out of the goggles: always the same chip, with an icon for where it goes */
+  _jump(href, icon, label) {
+    return html`<a class="jump" href="${href}" target="_blank" rel="noopener"
+      ><simple-icon-lite icon="${icon}"></simple-icon-lite>${label}</a
+    >`;
   }
 
   _commits(n) {
@@ -887,11 +1095,17 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
       return "";
     }
     const pkg = t.f.split("/")[0];
-    if ((MAKERS.gallery || []).indexOf(pkg) === -1) {
+    // the gallery shows packages; a tag that is not its package's own
+    // element is only alone there when the package has a demo named for it
+    const demo = tag === pkg ? "" : MAKERS.demos[tag];
+    if ((tag !== pkg && !demo) || MAKERS.gallery.indexOf(pkg) === -1) {
       return "";
     }
     const params = new URLSearchParams();
     params.set("element", pkg);
+    if (demo) {
+      params.set("demo", demo);
+    }
     const theme =
       store && store.manifest && store.manifest.metadata
         ? store.manifest.metadata.theme || {}
@@ -911,10 +1125,7 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
   _renderAlone(tag) {
     const url = this._alone(tag);
     return url
-      ? html`<a href="${url}" target="_blank" rel="noopener"
-          ><simple-icon-lite icon="icons:open-in-new"></simple-icon-lite
-          >${this.t.seeItAlone}</a
-        >`
+      ? this._jump(url, "icons:open-in-new", this.t.seeItAlone)
       : nothing;
   }
   _renderPersonPanel() {
@@ -938,7 +1149,7 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
           ? b.share - a.share || b.c - a.c
           : b.c - a.c || b.share - a.share,
       );
-    const shown = this._showAll ? sorted : sorted.slice(0, 20);
+    const shown = this._showAll ? sorted : sorted.slice(0, 5);
     const ghLogin = /^[A-Za-z0-9-]+$/.test(login);
     return html`<section
       class="panel"
@@ -967,8 +1178,8 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
         ${this.t.personOnScreen.replace("{count}", onScreen.length)}
       </p>
       <div class="actions tight">
-        ${known.s ? html`<a href="${STORIES + known.s}" target="_blank" rel="noopener"><simple-icon-lite icon="icons:book"></simple-icon-lite>${this.t.theirStory}</a>` : nothing}
-        ${ghLogin ? html`<a href="https://github.com/${login}" target="_blank" rel="noopener"><simple-icon-lite icon="icons:open-in-new"></simple-icon-lite>GitHub</a>` : nothing}
+        ${known.s ? this._jump(STORIES + known.s, "icons:book", this.t.theirStoryOnHax) : nothing}
+        ${ghLogin ? this._jump("https://github.com/" + login, "mdi-social:github-circle", this.t.onGitHub) : nothing}
         <button
           type="button"
           @click="${() => GogglesState.set({ lens: "makers" })}"
@@ -1040,19 +1251,31 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
                   .replace("{commits}", this._commits(w.c))
                   .replace("{years}", this._years(w.a, w.z))}</span
               >
-              <span class="links">
-                ${ghLogin ? html`<a href="${REPO}/commits/main/elements/${w.file}?author=${login}" target="_blank" rel="noopener">${this.t.theirCommits}</a>` : nothing}
+              <span class="actions tight">
+                ${ghLogin ? this._jump(REPO + "/commits/master/elements/" + w.file + "?author=" + login, "mdi-social:github-circle", this.t.theirCommits) : nothing}
                 ${this._renderAlone(w.tag)}
               </span>
             </li>`,
         )}
       </ul>
       ${
-        sorted.length > shown.length
-          ? html`<button type="button" @click="${() => (this._showAll = true)}">
-              <simple-icon-lite icon="icons:expand-more"></simple-icon-lite
-              >${this.t.showAll.replace("{count}", sorted.length)}
-            </button>`
+        sorted.length > 5
+          ? html`<div class="actions tight">
+              <button
+                type="button"
+                aria-expanded="${this._showAll ? "true" : "false"}"
+                @click="${() => (this._showAll = !this._showAll)}"
+              >
+                <simple-icon-lite
+                  icon="${this._showAll ? "icons:expand-less" : "icons:expand-more"}"
+                ></simple-icon-lite
+                >${
+                  this._showAll
+                    ? this.t.showTop.replace("{count}", 5)
+                    : this.t.showAll.replace("{count}", sorted.length)
+                }
+              </button>
+            </div>`
           : nothing
       }
     </section>`;
@@ -1258,7 +1481,7 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
       ctor && ctor.elementProperties
         ? Array.from(ctor.elementProperties.keys())
         : [];
-    for (let i = 0; i < defs.length && props.length < 8; i++) {
+    for (let i = 0; i < defs.length && props.length < 40; i++) {
       const k = defs[i];
       if (typeof k !== "string" || k.charAt(0) === "_" || k === "t") {
         continue;
@@ -1575,7 +1798,7 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
       "- On screen: " + i.w + " x " + i.h + " px at " + i.x + ", " + i.y,
       "- Viewport: " + i.viewport + ", " + i.scheme + " scheme",
       "- Browser: " + i.agent,
-      "- webcomponents main at " + MAKERS.sha,
+      "- webcomponents master at " + MAKERS.sha,
       "",
       "### People who know this piece",
       i.makers.length ? i.makers.join(", ") : "(unknown)",
@@ -1648,8 +1871,21 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
         ${span ? html`<div class="muted">${span}</div>` : nothing}
         ${p.credit ? html`<div>${p.credit}</div>` : nothing}
         ${!small && !p.credit && p.work.length ? html`<div>${p.work[0]}</div>` : nothing}
-        ${this.pinned && p.story ? html`<a href="${STORIES + p.story}" target="_blank" rel="noopener">${this.t.theirStoryOnHax}</a>` : nothing}
-        ${this.pinned ? html`<button type="button" class="follow" @click="${() => this._follow(p.login)}"><simple-icon-lite icon="social:person"></simple-icon-lite>${this.t.everythingTheyMade}</button>` : nothing}
+        ${
+          this.pinned
+            ? html`<div class="actions tight">
+                ${p.story ? this._jump(STORIES + p.story, "icons:book", this.t.theirStoryOnHax) : nothing}
+                <button
+                  type="button"
+                  class="follow"
+                  @click="${() => this._follow(p.login)}"
+                >
+                  <simple-icon-lite icon="social:person"></simple-icon-lite
+                  >${this.t.everythingTheyMade}
+                </button>
+              </div>`
+            : nothing
+        }
       </div>
     </li>`;
   }
@@ -1686,12 +1922,20 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
         ${this.t.lensXray}
       </p>
       <h2>&lt;${a.nodeTag}&gt;</h2>
-      ${a.same ? nothing : html`<p class="muted">${a.inShadow ? this.t.drawnInside : this.t.placedInside} <strong>&lt;${a.tag}&gt;</strong></p>`}
+      ${this._renderOwner(a.nodeTag)}
+      ${
+        a.same
+          ? nothing
+          : html`<p class="muted">
+              ${a.inShadow ? this.t.drawnInside : this.t.placedInside}
+              <strong>&lt;${a.tag}&gt;</strong> · ${this._owner(a.tag).text}
+            </p>`
+      }
       ${
         a.file
           ? html`<p class="row">
               <span class="muted">${this.t.madeIn}</span>
-              ${full ? html`<a href="${REPO}/blob/main/elements/${a.file}" target="_blank" rel="noopener">elements/${a.file}</a>` : html`<span class="path">elements/${a.file}</span>`}
+              <span class="path">elements/${a.file}</span>
             </p>`
           : nothing
       }
@@ -1702,7 +1946,10 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
       ><code>${a.markup.slice(0, full ? 1500 : 260)}${a.markup.length > (full ? 1500 : 260) ? " ..." : ""}</code></pre>
       ${
         full && a.props.length
-          ? html`<h3>${this.t.propertiesNow}</h3>
+          ? html`<details class="fold">
+              <summary>
+                ${this.t.propertiesNow.replace("{count}", a.props.length)}
+              </summary>
               <dl>
                 ${a.props.map(
                   (p) =>
@@ -1711,7 +1958,8 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
                       <dd>${p[1]}</dd>
                     </div>`,
                 )}
-              </dl>`
+              </dl>
+            </details>`
           : nothing
       }
       ${full && a.slots.length ? html`<p class="row"><span class="muted">${this.t.slots}</span> <span class="path">${a.slots.join(", ")}</span></p>` : nothing}
@@ -1727,21 +1975,44 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
           ${this.t.lensMakers}
         </p>
         <h2>&lt;${tag}&gt;</h2>
-        <p>${this.t.notRegistered}</p>`;
+        ${this._renderOwner(tag)}
+        <p class="muted">${this.t.notRegistered}</p>`;
     }
     const full = this.pinned;
-    const coded = full ? c.coded : c.coded.slice(0, 3);
+    const top = full ? 5 : 3;
+    const coded = full && this._showAllPeople ? c.coded : c.coded.slice(0, top);
     return html`
       <p class="eyebrow">
         <simple-icon-lite icon="social:group"></simple-icon-lite>
         ${this.t.lensMakers}
       </p>
       <h2>&lt;${tag}&gt;</h2>
+      ${this._renderOwner(tag)}
       <p class="row"><span class="path">elements/${c.file}</span></p>
       <ul class="people">
         ${coded.map((p) => this._person(p, !full))}
       </ul>
-      ${!full && c.coded.length > 3 ? html`<p class="muted">${this.t.andMore.replace("{count}", c.coded.length - 3)}</p>` : nothing}
+      ${!full && c.coded.length > top ? html`<p class="muted">${this.t.andMore.replace("{count}", c.coded.length - top)}</p>` : nothing}
+      ${
+        full && c.coded.length > top
+          ? html`<div class="actions tight">
+              <button
+                type="button"
+                aria-expanded="${this._showAllPeople ? "true" : "false"}"
+                @click="${() => (this._showAllPeople = !this._showAllPeople)}"
+              >
+                <simple-icon-lite
+                  icon="${this._showAllPeople ? "icons:expand-less" : "icons:expand-more"}"
+                ></simple-icon-lite
+                >${
+                  this._showAllPeople
+                    ? this.t.showTop.replace("{count}", top)
+                    : this.t.showAll.replace("{count}", c.coded.length)
+                }
+              </button>
+            </div>`
+          : nothing
+      }
       ${
         c.shaped.length
           ? html`<h3>${this.t.shapedBy}</h3>
@@ -1759,8 +2030,22 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
           : nothing
       }
       ${c.agents ? html`<p class="muted">${this.t.agentCommits.replace("{commits}", this._commits(c.agents))}</p>` : nothing}
-      ${full ? html`<p class="row"><a href="${REPO}/commits/main/elements/${c.file}" target="_blank" rel="noopener">${this.t.fullHistory}</a></p>` : nothing}
+      ${full ? html`<div class="actions tight">${this._jump(REPO + "/commits/master/elements/" + c.file, "mdi-social:github-circle", this.t.fullHistory)}</div>` : nothing}
     `;
+  }
+  /** the source of the piece on GitHub, from the code lens */
+  _renderSource() {
+    if (this.lens !== "code") {
+      return nothing;
+    }
+    const t = MAKERS.tags[this._target.comp.localName];
+    return t
+      ? this._jump(
+          REPO + "/blob/master/elements/" + t.f,
+          "mdi-social:github-circle",
+          this.t.onGitHub,
+        )
+      : nothing;
   }
   _renderCard() {
     if (
@@ -1778,8 +2063,22 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
       tabindex="-1"
       aria-label="${code ? this.t.howItIsMade : this.t.whoMadeIt}"
     >
-      ${code ? this._renderCode() : this._renderMakers()}
-      ${this._renderOutside()}
+      ${
+        this.pinned
+          ? html`<button
+              type="button"
+              class="close"
+              aria-label="${this.t.close}"
+              title="${this.t.close}"
+              @click="${() => {
+                this.pinned = false;
+              }}"
+            >
+              <simple-icon-lite icon="icons:close"></simple-icon-lite>
+            </button>`
+          : nothing
+      }
+      ${code ? this._renderCode() : this._renderMakers()} ${this._renderMoves()}
       ${
         this.pinned
           ? html`<div class="actions">
@@ -1793,6 +2092,7 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
                 >${code ? this.t.seeWhoMadeIt : this.t.seeHowItIsMade}
               </button>
               ${this._renderAlone(this._target.comp.localName)}
+              ${this._renderSource()}
               <button
                 type="button"
                 @click="${() => this._openIssue(this._target.comp)}"
@@ -2397,11 +2697,94 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
           font-weight: var(--ddd-font-weight-bold, 700);
           overflow-wrap: anywhere;
         }
-        .work .links {
+        /* every link out of the goggles is the same chip: icon for where it goes, then words */
+        a.jump {
+          line-height: normal;
+        }
+        a.jump simple-icon-lite,
+        button simple-icon-lite {
+          flex: none;
+          --simple-icon-height: var(--ddd-icon-4xs, 16px);
+          --simple-icon-width: var(--ddd-icon-4xs, 16px);
+        }
+        .card .close {
+          position: sticky;
+          top: 0;
+          float: right;
+          z-index: 1;
+          width: var(--ddd-control-height-sm, 40px);
+          padding: 0;
+          margin: 0 0 var(--ddd-spacing-1, 4px) var(--ddd-spacing-2, 8px);
+          background: var(--hax-ui-surface);
+        }
+        .card .close:hover {
+          background: var(--hax-ui-hover);
+        }
+        .owner {
+          margin-top: var(--ddd-spacing-1, 4px);
+        }
+        span.code,
+        button .count {
+          font-family: var(--ddd-font-mono, monospace);
+          font-size: var(--hax-ui-admin-font-size-xs, 12px);
+        }
+        button .count {
+          margin-left: var(--ddd-spacing-1, 4px);
+          color: var(--hax-ui-text-muted);
+          font-family: inherit;
+        }
+        /* a fold reads as a fieldset whose legend opens and closes it */
+        details.fold {
+          margin-top: var(--ddd-spacing-2, 8px);
+          padding: 0 var(--ddd-spacing-2, 8px);
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius, 4px);
+        }
+        details.fold[open] {
+          padding-bottom: var(--ddd-spacing-2, 8px);
+        }
+        details.fold summary {
           display: flex;
-          flex-wrap: wrap;
-          gap: 0 var(--ddd-spacing-4, 16px);
-          font-size: var(--hax-ui-admin-font-size, 14px);
+          align-items: center;
+          gap: var(--ddd-spacing-1, 4px);
+          min-height: var(--ddd-control-height-sm, 40px);
+          font-size: var(--hax-ui-admin-font-size-xs, 12px);
+          font-weight: var(--ddd-font-weight-bold, 700);
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+          color: var(--hax-ui-text-muted);
+          cursor: pointer;
+          list-style: none;
+        }
+        details.fold summary::-webkit-details-marker {
+          display: none;
+        }
+        details.fold summary::before {
+          content: "";
+          flex: none;
+          width: 0;
+          height: 0;
+          border-left: 5px solid currentColor;
+          border-top: 5px solid transparent;
+          border-bottom: 5px solid transparent;
+          transition: transform 0.15s;
+        }
+        details.fold[open] summary::before {
+          transform: rotate(90deg);
+        }
+        details.fold summary:hover {
+          color: var(--hax-ui-text);
+        }
+        details.fold summary:focus-visible {
+          outline: var(--hax-ui-focus-width, 2px) solid
+            var(--hax-ui-focus, #ffd100);
+          outline-offset: 2px;
+        }
+        details.fold .actions.tight {
+          margin-top: 0;
+        }
+        .moves h3 {
+          margin-bottom: 0;
         }
         .sort {
           display: flex;
@@ -2625,7 +3008,8 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
           font-size: var(--hax-ui-admin-font-size-xs, 12px);
         }
         button,
-        .actions a {
+        .actions a,
+        a.jump {
           display: inline-flex;
           align-items: center;
           justify-content: center;
@@ -2643,11 +3027,13 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
           cursor: pointer;
         }
         button:hover,
-        .actions a:hover {
+        .actions a:hover,
+        a.jump:hover {
           background: var(--hax-ui-hover);
         }
         button:active,
-        .actions a:active {
+        .actions a:active,
+        a.jump:active {
           background: var(--hax-ui-pressed, var(--hax-ui-hover));
           transform: translateY(1px);
         }
@@ -3078,7 +3464,8 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
           }
         }
         @media (prefers-reduced-motion: reduce) {
-          .glass {
+          .glass,
+          details.fold summary::before {
             transition: none;
           }
           .rims,

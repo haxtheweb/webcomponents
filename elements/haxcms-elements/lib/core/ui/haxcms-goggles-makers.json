@@ -8134,5 +8134,21 @@
     "writing-theme",
     "wysiwyg-hax",
     "wysiwyg96-theme"
-  ]
+  ],
+  "demos": {
+    "ddd-hero": "ddd-hero",
+    "lecture-player": "lecture-player",
+    "letter-grade-picker": "letter-grade-picker",
+    "mini-map": "mini-map"
+  },
+  "third": {
+    "baseline-icon": "baseline-status",
+    "baseline-status": "baseline-status",
+    "extra-model": "@google/model-viewer",
+    "focus-trap": "@a11y/focus-trap",
+    "lit-virtualizer": "@lit-labs/virtualizer",
+    "model-viewer": "@google/model-viewer",
+    "scrollable-component": "scrollable-component",
+    "web-dialog": "web-dialog"
+  }
 }

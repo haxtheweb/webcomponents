@@ -2,7 +2,9 @@
   "//": [
     "Influence git cannot see: people who shaped a piece without (many) commits to it. Kept by hand; read by haxcms-goggles next to the generated haxcms-goggles-makers.json.",
     "shaped: package or tag -> [[GitHub login, what they shaped]]. shapedTags: tag -> the package or tag whose credits it shares.",
-    "people: names and roles for people the HAX Lab roster (hax-marketing-theme/demo/files/contributors.json) does not list."
+    "people: names and roles for people the HAX Lab roster (hax-marketing-theme/demo/files/contributors.json) does not list.",
+    "owners: npm package outside HAX -> who makes it, for registered tags that come from that package (the generated data lists them as third).",
+    "wraps: HAX tag -> the outside work it carries inside it, and whose it is."
   ],
   "shaped": {
     "super-daemon": [
@@ -62,5 +64,12 @@
       "n": "Michael Potter",
       "w": []
     }
+  },
+  "owners": {
+    "@google/model-viewer": "Google",
+    "@lit-labs/virtualizer": "the Lit team at Google"
+  },
+  "wraps": {
+    "monaco-element": "Monaco Editor, by Microsoft"
   }
 }

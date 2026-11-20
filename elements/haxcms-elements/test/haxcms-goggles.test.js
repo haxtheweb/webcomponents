@@ -77,12 +77,89 @@ describe("haxcms-goggles (developer mode)", () => {
     expect(piece.share).to.be.within(0, 1);
   });
 
-  it("links a registered element to the gallery on its own", async () => {
+  it("links to the gallery only where the element really is alone", async () => {
     await loadMakers();
     GogglesState.set({ on: true, lensOn: true, lens: "code" });
-    const url = overlay()._alone("haxcms-site-editor-ui");
-    expect(url).to.contain(
-      "https://webcomponents.hax.cloud/?element=haxcms-elements",
+    const g = overlay();
+    // a package's own element
+    expect(g._alone("simple-icon")).to.contain(
+      "https://webcomponents.hax.cloud/?element=simple-icon",
     );
+    // another tag with a demo page named for it
+    const lecture = g._alone("lecture-player");
+    expect(lecture).to.contain("element=video-player");
+    expect(lecture).to.contain("demo=lecture-player");
+    // a tag inside a bigger package with no demo of its own has no alone link
+    expect(g._alone("haxcms-site-editor-ui")).to.equal("");
+    expect(g._alone("my-learning-button")).to.equal("");
+  });
+
+  it("says who owns a tag: HAX, a package outside HAX, or the HTML standard", async () => {
+    await loadMakers();
+    GogglesState.set({ on: true, lensOn: true, lens: "code" });
+    const g = overlay();
+    expect(g._owner("li").kind).to.equal("native");
+    expect(g._owner("li").text).to.contain("W3C");
+    const hax = g._owner("video-player");
+    expect(hax.kind).to.equal("hax");
+    expect(hax.text).to.contain("From HAX, by");
+    expect(g._owner("monaco-element").wraps).to.contain("Microsoft");
+    const third = g._owner("model-viewer");
+    expect(third.kind).to.equal("third");
+    expect(third.text).to.contain("@google/model-viewer");
+    expect(third.text).to.contain("Google");
+    expect(g._owner("not-a-known-thing").kind).to.equal("outside");
+  });
+
+  it("moves only between custom elements, across shadow roots", async () => {
+    GogglesState.set({ on: true, lensOn: true, lens: "code" });
+    const g = overlay();
+    const outer = globalThis.document.createElement("goggles-test-outer");
+    const box = globalThis.document.createElement("div");
+    const inner = globalThis.document.createElement("goggles-test-inner");
+    const deeper = globalThis.document.createElement("goggles-test-inner");
+    const p = globalThis.document.createElement("p");
+    inner.appendChild(deeper);
+    box.appendChild(inner);
+    box.appendChild(p);
+    outer.attachShadow({ mode: "open" }).appendChild(box);
+    const shadowed = globalThis.document.createElement("goggles-test-leaf");
+    const light = globalThis.document.createElement("section");
+    light.appendChild(shadowed);
+    outer.appendChild(light);
+    globalThis.document.body.appendChild(outer);
+    // below: the nearest custom elements only, walking through the div and section
+    const below = g._below(outer).map((el) => el.localName);
+    expect(below).to.deep.equal(["goggles-test-inner", "goggles-test-leaf"]);
+    // above, from a plain tag deep inside: out through the shadow root
+    const above = g._above(p).map((el) => el.localName);
+    expect(above[0]).to.equal("goggles-test-outer");
+    expect(above.every((t) => t.indexOf("-") > 0)).to.equal(true);
+    expect(g._above(deeper)[0]).to.equal(inner);
+    // two of the same tag are one entry with a count
+    const grouped = g._byTag([inner, deeper]);
+    expect(grouped.length).to.equal(1);
+    expect(grouped[0].count).to.equal(2);
+    outer.remove();
+  });
+
+  it("holds still on an element moved to, with a close button", async () => {
+    GogglesState.set({ on: true, lensOn: true, lens: "code" });
+    const g = overlay();
+    g.phase = "";
+    const el = globalThis.document.createElement("goggles-test-move");
+    el.textContent = "move here";
+    globalThis.document.body.appendChild(el);
+    g._go(el);
+    await g.updateComplete;
+    expect(g.pinned).to.equal(true);
+    expect(g._target.comp).to.equal(el);
+    const close = g.shadowRoot.querySelector(".card .close");
+    expect(close).to.not.equal(null);
+    expect(close.getAttribute("aria-label")).to.equal("Close");
+    close.click();
+    await g.updateComplete;
+    expect(g.pinned).to.equal(false);
+    el.remove();
   });
 });
