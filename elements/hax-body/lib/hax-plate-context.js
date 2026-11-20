@@ -202,6 +202,14 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
           outline: var(--hax-ui-focus-width, 2px) solid var(--hax-ui-focus);
           outline-offset: 1px;
         }
+        /* held down: the pressed overlay admin controls show
+           (HaxUiAdminTokens), so a push on the block toolbar is confirmed
+           before it is let go. An overlay, not a fill, so it reads on the
+           selected, hover and Confirm delete fills alike */
+        button:active:not(:disabled) {
+          box-shadow: inset 0 0 0 999px
+            var(--hax-ui-pressed, rgba(128, 128, 128, 0.28));
+        }
         button:disabled {
           color: var(--hax-ui-disabled-color);
           cursor: default;

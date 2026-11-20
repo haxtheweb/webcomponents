@@ -164,4 +164,20 @@ describe("hax-plate-context block bar", () => {
     e = await oneEvent(el, "hax-context-item-selected");
     expect(e.detail.eventName).to.equal("hax-source-view-cancel");
   });
+
+  it("shows the admin pressed overlay on a held-down button, never a disabled one", async () => {
+    const el = await fixture(html`<hax-plate-context></hax-plate-context>`);
+    await el.updateComplete;
+    const rules = [];
+    for (const sheet of el.shadowRoot.adoptedStyleSheets) {
+      for (const rule of sheet.cssRules) {
+        rules.push(rule);
+      }
+    }
+    const pressed = rules.find(
+      (rule) => rule.selectorText === "button:active:not(:disabled)",
+    );
+    expect(pressed).to.exist;
+    expect(pressed.style.boxShadow).to.contain("--hax-ui-pressed");
+  });
 });
