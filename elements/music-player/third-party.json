@@ -1,0 +1,33 @@
+{
+  "$comment": "Third-party code vendored into this package, each under its own license (not this package's Apache-2.0). scripts/copy-dep-licenses.js lists them in THIRD_PARTY_LICENSES.md. lib/html-midi-player.js is a jsDelivr combined bundle of @magenta/music (which carries Tone.js) and html-midi-player.",
+  "assets": [
+    {
+      "name": "html-midi-player",
+      "kind": "script",
+      "version": "1.0.1",
+      "license": "BSD-2-Clause",
+      "copyright": "Copyright (c) 2020, Ondřej Cífka",
+      "source": "https://github.com/cifkao/html-midi-player",
+      "path": "lib/html-midi-player.js",
+      "licenseFiles": ["lib/licenses/html-midi-player-LICENSE"]
+    },
+    {
+      "name": "@magenta/music",
+      "kind": "script",
+      "license": "Apache-2.0",
+      "copyright": "Copyright Google LLC (Magenta)",
+      "source": "https://github.com/magenta/magenta-js",
+      "path": "lib/html-midi-player.js",
+      "licenseFiles": ["lib/licenses/magenta-music-LICENSE"]
+    },
+    {
+      "name": "Tone.js",
+      "kind": "script",
+      "license": "MIT",
+      "copyright": "Copyright (c) 2014-2019 Yotam Mann",
+      "source": "https://github.com/Tonejs/Tone.js",
+      "path": "lib/html-midi-player.js",
+      "licenseFiles": ["lib/licenses/tone-LICENSE.md"]
+    }
+  ]
+}

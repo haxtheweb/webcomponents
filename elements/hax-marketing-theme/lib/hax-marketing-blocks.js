@@ -330,7 +330,7 @@ class HaxPillar extends DDD {
           padding: var(--ddd-spacing-6) var(--ddd-spacing-3);
           min-height: var(--ddd-spacing-24);
           box-sizing: border-box;
-          border-right: var(--ddd-border-size-md) solid
+          border-inline-end: var(--ddd-border-size-md) solid
             var(--hm-edge, var(--hm-ink));
           background-color: var(--hm-soft);
           border-top: var(--ddd-spacing-4) solid var(--cap);
@@ -445,7 +445,7 @@ class HaxPillar extends DDD {
           position: relative;
         }
         :host([compact]) .cap {
-          border-right: none;
+          border-inline-end: none;
           border-bottom: var(--ddd-border-size-md) solid
             var(--hm-edge, var(--hm-ink));
           padding: var(--ddd-spacing-4) var(--ddd-spacing-2);
@@ -473,7 +473,7 @@ class HaxPillar extends DDD {
           }
           .cap {
             flex-direction: row;
-            border-right: none;
+            border-inline-end: none;
             border-bottom: var(--ddd-border-size-md) solid
               var(--hm-edge, var(--hm-ink));
             border-top-width: var(--ddd-spacing-3);
@@ -664,7 +664,7 @@ class HaxFeatureRow extends DDD {
           .screen {
             box-shadow: var(--ddd-spacing-2) var(--ddd-spacing-2)
               var(--ddd-spacing-0) var(--shade);
-            margin-right: var(--ddd-spacing-2);
+            margin-inline-end: var(--ddd-spacing-2);
           }
         }
       `,

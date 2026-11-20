@@ -469,11 +469,18 @@ export function renderPageBreakBand(host) {
   const settingsLabel = host._haxActive
     ? host.t.editingPageSettings
     : host.t.pageSettings;
-  const states = [publishLabel, lockLabel, tagLabel];
-  if (slug) {
-    states.push(slug);
-  }
-  const ariaLabel = `${title}, ${settingsLabel}. ${states.join(", ")}`;
+  // the name reads the band's words in the order it draws them (WCAG 2.5.3
+  // label in name, so voice control can say what it sees); title and slug
+  // stay whole, the band only shortens them for space. The Enter hint is
+  // left out: it only shows while the band has keyboard focus
+  const ariaLabel = [
+    title,
+    publishLabel,
+    lockLabel,
+    tagLabel,
+    ...(slug ? [slug] : []),
+    settingsLabel,
+  ].join(", ");
   return html`
     <div class="pb-row">
       <button

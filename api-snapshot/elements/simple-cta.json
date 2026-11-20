@@ -4,6 +4,7 @@
   "source": "elements/simple-cta/simple-cta.js",
   "attributes": {
     "accent-color": "accentColor",
+    "appearance": "appearance",
     "dark": "dark",
     "data-pulse": "dataPulse",
     "disabled": "disabled",
@@ -16,7 +17,9 @@
     "large": "large",
     "light": "light",
     "link": "link",
-    "saturate": "saturate"
+    "saturate": "saturate",
+    "size": "size",
+    "variant": "variant"
   },
   "slots": [
     "(default)"
@@ -30,10 +33,12 @@
     "schema": "elements/simple-cta/lib/simple-cta.haxProperties.json",
     "gizmo": true,
     "properties": [
+      "appearance",
       "hideIcon",
       "icon",
       "label",
-      "link"
+      "link",
+      "size"
     ],
     "attributes": [],
     "slots": [],

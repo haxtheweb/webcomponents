@@ -206,10 +206,12 @@ describe("site-api-auth-fetch", () => {
           )
         ).text();
         // pdf-print-fallback.js (guarded here too) wraps siteApiFetch for
-        // PDF downloads and their print fallback
+        // PDF downloads and their print fallback; it is imported statically
+        // or loaded on first export with import()
         expect(
           src.includes('from "./site-api-auth-fetch.js"') ||
-            src.includes('from "./pdf-print-fallback.js"'),
+            src.includes('from "./pdf-print-fallback.js"') ||
+            src.includes('import("./pdf-print-fallback.js")'),
           `${file} must import siteApiFetch from ./site-api-auth-fetch.js (or use ./pdf-print-fallback.js)`,
         ).to.equal(true);
         expect(

@@ -1,0 +1,78 @@
+{
+  "tag": "numeric-question",
+  "package": "@haxtheweb/numeric-question",
+  "source": "elements/numeric-question/numeric-question.js",
+  "attributes": {
+    "answers": "answers",
+    "attempts": "attempts",
+    "collapsed": "collapsed",
+    "collapsible": "collapsible",
+    "decimals": "decimals",
+    "disabled": "disabled",
+    "displayedanswers": "displayedAnswers",
+    "edit": "edit",
+    "for-course": "forCourse",
+    "grading-format": "gradingFormat",
+    "has-learning-objective": "hasLearningObjective",
+    "hide-buttons": "hideButtons",
+    "is-safari": "isSafari",
+    "max-attempts": "maxAttempts",
+    "media": "media",
+    "question": "question",
+    "quiz-name": "quizName",
+    "randomize": "randomize",
+    "related-resource": "relatedResource",
+    "reroll": "reroll",
+    "schemamap": "schemaMap",
+    "show-answer": "showAnswer",
+    "single-option": "singleOption",
+    "t": "t",
+    "tolerance": "tolerance",
+    "tolerance-type": "toleranceType",
+    "typeof": "typeof",
+    "unit": "unit"
+  },
+  "slots": [
+    "content",
+    "evidence",
+    "feedbackCorrect",
+    "feedbackIncorrect",
+    "hint"
+  ],
+  "events": [
+    "eventName",
+    "learner-progress-request",
+    "question-element-state",
+    "user-engagement"
+  ],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/numeric-question/lib/numeric-question.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "answer",
+      "collapsed",
+      "collapsible",
+      "decimals",
+      "formula",
+      "maxAttempts",
+      "question",
+      "quizName",
+      "reroll",
+      "tolerance",
+      "toleranceType",
+      "unit",
+      "variables",
+      "variables[].max",
+      "variables[].min",
+      "variables[].name",
+      "variables[].step"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "numeric-question"
+    ]
+  }
+}

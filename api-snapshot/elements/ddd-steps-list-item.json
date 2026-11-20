@@ -3,7 +3,10 @@
   "package": "@haxtheweb/d-d-d",
   "source": "elements/d-d-d/lib/ddd-steps-list-item.js",
   "attributes": {
+    "donelabel": "doneLabel",
+    "horizontal": "horizontal",
     "is-safari": "isSafari",
+    "progress": "progress",
     "step": "step",
     "title": "title"
   },

@@ -4,6 +4,7 @@
   "source": "elements/simple-fields/lib/simple-tag.js",
   "attributes": {
     "accent-color": "accentColor",
+    "appearance": "appearance",
     "auto-accent-color": "autoAccentColor",
     "cancel-button": "cancelButton",
     "dark": "dark",
@@ -12,11 +13,13 @@
     "icon": "icon",
     "is-safari": "isSafari",
     "readonly": "readonly",
+    "size": "size",
     "t": "t",
     "toggled": "toggled",
     "toggled-icon": "toggledIcon",
     "toggles": "toggles",
-    "value": "value"
+    "value": "value",
+    "variant": "variant"
   },
   "slots": [],
   "events": [
@@ -36,7 +39,8 @@
       "toggled",
       "toggledIcon",
       "toggles",
-      "value"
+      "value",
+      "variant"
     ],
     "attributes": [],
     "slots": [],

@@ -150,17 +150,22 @@ class AiUsageLicense extends SchemaBehaviors(I18NMixin(DDDSuper(LitElement))) {
                 href="${this.licenseLink}"
                 rel="noopener noreferrer"
                 aria-label="${this.t.licenseNameLabel.replace("{license}", () =>
-                  `${this.licenseTag} ${this.licenseName || ""}`.trim(),
+                  // the badge's own words, in the order they are drawn, so
+                  // the name holds the visible text (WCAG 2.5.3)
+                  [badge.tag, badge.modifier, this.licenseName]
+                    .filter((part) => part)
+                    .join(" "),
                 )}"
                 ><span class="license-chip"
-                  ><span class="license-tag">${badge.tag}</span>${
+                  ><span class="license-tag">${badge.tag}</span> ${
                     badge.modifier
                       ? html`<span class="license-modifier"
                           >${badge.modifier}</span
                         >`
                       : ``
                   }</span
-                >${
+                >
+                ${
                   this.licenseName
                     ? html`<span class="license-link"
                         >${this.licenseName}</span

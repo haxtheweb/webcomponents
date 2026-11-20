@@ -1,0 +1,37 @@
+{
+  "tag": "hax-story-link",
+  "package": "@haxtheweb/hax-marketing-theme",
+  "source": "elements/hax-marketing-theme/lib/hax-story-link.js",
+  "attributes": {
+    "about": "about",
+    "accent-color": "accentColor",
+    "base": "base",
+    "compact": "compact",
+    "dark": "dark",
+    "is-safari": "isSafari",
+    "named": "named",
+    "site": "site",
+    "story": "story",
+    "t": "t"
+  },
+  "slots": [],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/hax-marketing-theme/lib/hax-story-link.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "about",
+      "compact",
+      "named",
+      "site",
+      "story"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "hax-story-link"
+    ]
+  }
+}

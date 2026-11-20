@@ -1,0 +1,14 @@
+{
+  "$comment": "Third-party code vendored into this package, each under its own license (not this package's Apache-2.0). scripts/copy-dep-licenses.js lists them in THIRD_PARTY_LICENSES.md.",
+  "assets": [
+    {
+      "name": "confetti-element",
+      "kind": "script",
+      "license": "MIT",
+      "copyright": "Copyright (c) 2020 Stefan Judis",
+      "source": "https://github.com/stefanjudis/confetti-element",
+      "path": "lib/confetti-container.js",
+      "licenseFiles": ["lib/licenses/confetti-element-LICENSE"]
+    }
+  ]
+}

@@ -13,6 +13,27 @@ const RATING = {
 };
 
 /**
+ * A platform's web address from the JSON, or "" when it isn't http(s).
+ * Security: the JSON comes from an author-set source; only http(s) addresses
+ * become links, so javascript: and data: never reach an href.
+ * @param {String} value
+ * @returns {String}
+ */
+export const platformLink = (value) => {
+  if (!value) {
+    return "";
+  }
+  try {
+    const url = new URL(String(value), globalThis.document.baseURI);
+    return url.protocol === "http:" || url.protocol === "https:"
+      ? url.href
+      : "";
+  } catch {
+    return "";
+  }
+};
+
+/**
  * `hax-platform-compare`
  * `Head to head: pick any two platforms and see how they stack up`
  *
@@ -178,7 +199,7 @@ class HaxPlatformCompare extends I18NMixin(DDD) {
           padding: var(--ddd-spacing-4) var(--ddd-spacing-5);
         }
         .score div + div {
-          border-left: var(--ddd-border-size-sm) solid var(--hpc-line);
+          border-inline-start: var(--ddd-border-size-sm) solid var(--hpc-line);
         }
         .score strong {
           display: block;
@@ -202,7 +223,7 @@ class HaxPlatformCompare extends I18NMixin(DDD) {
           clip-path: inset(50%);
         }
         thead th {
-          text-align: left;
+          text-align: start;
           font-family: var(--ddd-font-heading, var(--ddd-font-primary));
           font-size: var(--ddd-font-size-xxs);
           padding: var(--ddd-spacing-3) var(--ddd-spacing-4);
@@ -222,7 +243,7 @@ class HaxPlatformCompare extends I18NMixin(DDD) {
           border-top: var(--ddd-border-size-xs) solid var(--hpc-line);
         }
         tbody th {
-          text-align: left;
+          text-align: start;
           vertical-align: middle;
           font-size: var(--ddd-font-size-4xs);
           font-weight: var(--ddd-font-weight-bold);
@@ -235,7 +256,7 @@ class HaxPlatformCompare extends I18NMixin(DDD) {
           font-size: var(--ddd-font-size-5xs);
           line-height: var(--ddd-lh-120);
           overflow-wrap: anywhere;
-          border-left: var(--ddd-border-size-xs) solid var(--hpc-line);
+          border-inline-start: var(--ddd-border-size-xs) solid var(--hpc-line);
         }
         .mark {
           display: flex;
@@ -360,7 +381,7 @@ class HaxPlatformCompare extends I18NMixin(DDD) {
             padding-right: var(--ddd-spacing-3);
           }
           td:first-of-type {
-            border-left: none;
+            border-inline-start: none;
           }
         }
       `,
@@ -463,6 +484,12 @@ class HaxPlatformCompare extends I18NMixin(DDD) {
       </td>
     `;
   }
+  // a platform's name, linked when its address is a web address
+  _platformName(platform) {
+    const href = platformLink(platform.url);
+    return href ? html`<a href="${href}">${platform.name}</a>` : platform.name;
+  }
+
   render() {
     if (!this._data) {
       return html`<p>${this.t.loading}</p>`;
@@ -513,9 +540,8 @@ class HaxPlatformCompare extends I18NMixin(DDD) {
           </tbody>
         </table>
         <p class="foot">
-          ${this.t.seeForYourself}
-          <a href="${a.url}">${a.name}</a> ${this.t.and}
-          <a href="${b.url}">${b.name}</a>.
+          ${this.t.seeForYourself} ${this._platformName(a)} ${this.t.and}
+          ${this._platformName(b)}.
         </p>
       </div>
     `;

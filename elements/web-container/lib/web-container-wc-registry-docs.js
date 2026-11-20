@@ -2,7 +2,7 @@
  * Copyright 2024 The Pennsylvania State University
  * @license Apache-2.0, see LICENSE for full text.
  */
-import { html } from "lit";
+import { html, css } from "lit";
 import "./web-container-doc-player.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 
@@ -21,6 +21,18 @@ export class WebContainerWCRegistryDocs extends DDD {
     };
   }
 
+  static get styles() {
+    return [
+      super.styles,
+      css`
+        label {
+          display: block;
+          margin: var(--ddd-spacing-4) 0;
+        }
+      `,
+    ];
+  }
+
   static get properties() {
     return {
       file: { type: String },
@@ -31,13 +43,18 @@ export class WebContainerWCRegistryDocs extends DDD {
 
   render() {
     return html`
-      <select @change="${this.selectChange}">
+      <select
+        id="project"
+        aria-describedby="text"
+        @change="${this.selectChange}"
+      >
         <option></option>
         ${Object.keys(this.options).map(
           (o) => html`<option value="${o}">${o}</option>`,
         )}
       </select>
-      <p>${this.text}</p>
+      <!-- the instruction names the select it sits under -->
+      <label id="text" for="project">${this.text}</label>
       <div id="container"></div>
     `;
   }

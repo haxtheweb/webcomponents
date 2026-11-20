@@ -1,0 +1,54 @@
+{
+  "tag": "ddd-hero",
+  "package": "@haxtheweb/d-d-d",
+  "source": "elements/d-d-d/lib/ddd-hero.js",
+  "attributes": {
+    "alt": "alt",
+    "fade": "fade",
+    "focal-x": "focalX",
+    "focal-y": "focalY",
+    "framing": "framing",
+    "full-width": "fullWidth",
+    "heading": "heading",
+    "height": "height",
+    "is-safari": "isSafari",
+    "preview-size": "previewSize",
+    "source": "source",
+    "t": "t",
+    "text-position": "textPosition"
+  },
+  "slots": [
+    "(default)"
+  ],
+  "events": [
+    "hax-image-framing-open"
+  ],
+  "cssParts": [
+    "heading",
+    "hero",
+    "media-control",
+    "text"
+  ],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/d-d-d/lib/ddd-hero.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "alt",
+      "fade",
+      "focalX",
+      "focalY",
+      "framing",
+      "fullWidth",
+      "heading",
+      "height",
+      "source",
+      "textPosition"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "ddd-hero"
+    ]
+  }
+}
