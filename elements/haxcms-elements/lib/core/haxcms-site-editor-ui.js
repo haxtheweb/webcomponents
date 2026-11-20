@@ -9,7 +9,9 @@ import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 import { autorun, toJS } from "mobx";
 import { ResponsiveUtilityBehaviors } from "@haxtheweb/responsive-utility/lib/responsive-utility-behaviors.js";
 import {
+  localStorageGet,
   localStorageSet,
+  localStorageDelete,
   winEventsElement,
   validURL,
   sanitizeHTMLForImport,
@@ -112,6 +114,9 @@ Object.keys(ADMIN_ROUTE_QUERY_PATHS).forEach((routePath) => {
 });
 
 const ADMIN_ROUTE_PATHS = new Set(Object.keys(ADMIN_ROUTE_QUERY_PATHS));
+
+// localStorage key for developer mode (the goggles), kept per browser
+const DEVELOPER_MODE_KEY = "haxcms-developer-mode";
 
 /**
  * `haxcms-site-editor-ui`
@@ -3449,6 +3454,15 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       previewFrameTitle: "Preview of this page",
       previewShownAt: "{device}, shown at {percent}%",
       previewCloseDevice: "Close {device} view",
+      developerModeGoggles: "Developer mode: goggles",
+      developerModeGogglesDescription:
+        "Adds the goggles to the top bar: see how any part of HAX is made, who made it, and flag what needs fixing",
+      developerModeOn: "Developer mode on: the goggles are in the top bar",
+      developerModeOff: "Developer mode off",
+      gogglesPutOn: "Put on the goggles",
+      gogglesTakeOff: "Take off the goggles",
+      gogglesLensesOff: "Lenses off",
+      gogglesLensesOn: "Lenses on",
       previewDialogOpen: "Close the open dialog to preview the site",
       shortcutPreview: "Preview the site as a visitor sees it",
       siteDashboard: "Sites Dashboard",
@@ -3528,6 +3542,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.backLink = "../../";
     this.activeTagName = "";
     this.previewMode = false;
+    this.developerMode = localStorageGet(DEVELOPER_MODE_KEY, false) === true;
+    this.gogglesOn = false;
+    this.gogglesLensOn = true;
     this.previewDevice = "window";
     this.previewSideways = false;
     this.previewDark = false;
@@ -5466,6 +5483,33 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         },
       },
     });
+    // developer mode: turning it on puts the goggles in the top bar; their
+    // code (ui/haxcms-goggles.js) is imported the first time they go on
+    SuperDaemonInstance.defineOption({
+      i18n: { context: this, title: "developerModeGoggles" },
+      title: this.t.developerModeGoggles,
+      icon: "hax:goggles",
+      tags: [
+        "Developer",
+        "goggles",
+        "developer mode",
+        "x-ray",
+        "inspect",
+        "makers",
+        "contributors",
+        "issue",
+        "screenshot",
+      ],
+      eventName: "super-daemon-element-method",
+      path: ">developer/goggles",
+      context: [">"],
+      more: html`<span>${this.t.developerModeGogglesDescription}</span>`,
+      value: {
+        target: this,
+        method: "toggleDeveloperMode",
+        args: [],
+      },
+    });
     // not a developer tool: the same Preview as the top bar button, listed
     // with the everyday actions and showing its Ctrl⇧8 shortcut
     SuperDaemonInstance.defineOption({
@@ -6686,6 +6730,24 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         attribute: "preview-mode",
       },
       /**
+       * developer mode (Merlin >developer/goggles), kept per browser: shows
+       * the goggles buttons in the top bar. Nothing of the goggles loads
+       * until they are first put on.
+       */
+      developerMode: {
+        type: Boolean,
+        reflect: true,
+        attribute: "developer-mode",
+      },
+      gogglesOn: {
+        type: Boolean,
+        attribute: false,
+      },
+      gogglesLensOn: {
+        type: Boolean,
+        attribute: false,
+      },
+      /**
        * device id from PREVIEW_DEVICES the preview is shown on
        */
       previewDevice: {
@@ -6849,6 +6911,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   }
   connectedCallback() {
     super.connectedCallback();
+    if (this.developerMode) {
+      this._watchGoggles(true);
+    }
     // Merlin's popover covers its field exactly
     this.__boundSyncMerlinPopover = this._syncMerlinPopover.bind(this);
     globalThis.addEventListener("resize", this.__boundSyncMerlinPopover);
@@ -7043,6 +7108,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   }
   disconnectedCallback() {
     this._setSiteContentInert(false);
+    this._watchGoggles(false);
     if (this.__previewAbort) {
       this.__previewAbort.abort();
       this.__previewAbort = null;
@@ -7553,6 +7619,88 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   }
 
   /**
+   * Developer mode on or off (Merlin >developer/goggles). Off takes the
+   * goggles off and forgets the setting.
+   */
+  toggleDeveloperMode() {
+    this.developerMode = !this.developerMode;
+    if (this.developerMode) {
+      localStorageSet(DEVELOPER_MODE_KEY, true);
+      this._watchGoggles(true);
+    } else {
+      localStorageDelete(DEVELOPER_MODE_KEY);
+      this._watchGoggles(false);
+      if (this.gogglesOn) {
+        import("./ui/haxcms-goggles.js").then((m) =>
+          m.GogglesState.set({ on: false }),
+        );
+      }
+      this.gogglesOn = false;
+      this.gogglesLensOn = true;
+    }
+    HAXStore.toast(
+      this.developerMode ? this.t.developerModeOn : this.t.developerModeOff,
+      3000,
+      "fit-bottom",
+    );
+  }
+  /** the top bar buttons follow the goggles' state while developer mode is on */
+  _watchGoggles(on) {
+    if (on && !this.__gogglesSync) {
+      this.__gogglesSync = (e) => {
+        this.gogglesOn = !!e.detail.on;
+        this.gogglesLensOn = !!e.detail.lensOn;
+      };
+      globalThis.addEventListener("haxcms-goggles-changed", this.__gogglesSync);
+    } else if (!on && this.__gogglesSync) {
+      globalThis.removeEventListener(
+        "haxcms-goggles-changed",
+        this.__gogglesSync,
+      );
+      this.__gogglesSync = null;
+    }
+  }
+  async toggleGoggles() {
+    const { GogglesState } = await import("./ui/haxcms-goggles.js");
+    GogglesState.set({ on: !GogglesState.on, lensOn: true, lens: "code" });
+  }
+  async toggleGogglesLenses() {
+    const { GogglesState } = await import("./ui/haxcms-goggles.js");
+    GogglesState.set({ lensOn: !GogglesState.lensOn });
+  }
+  /**
+   * The goggles' buttons, only in developer mode: put them on or take them
+   * off, and (while they are on) the lenses off so the system can be used
+   * with the rims still showing.
+   */
+  _renderGogglesButtons() {
+    return html`
+      ${
+        this.gogglesOn
+          ? html`<simple-toolbar-button
+              id="goggleslensesbutton"
+              class="top-bar-button"
+              icon="${this.gogglesLensOn ? "hax:goggles-lenses-off" : "hax:goggles"}"
+              label="${this.gogglesLensOn ? this.t.gogglesLensesOff : this.t.gogglesLensesOn}"
+              voice-command="lenses"
+              icon-position="${this.getIconPosition(this.responsiveSize)}"
+              @click="${this.toggleGogglesLenses}"
+            ></simple-toolbar-button>`
+          : ``
+      }
+      <simple-toolbar-button
+        id="gogglesbutton"
+        class="top-bar-button"
+        icon="hax:goggles"
+        label="${this.gogglesOn ? this.t.gogglesTakeOff : this.t.gogglesPutOn}"
+        voice-command="goggles"
+        ?active="${this.gogglesOn}"
+        icon-position="${this.getIconPosition(this.responsiveSize)}"
+        @click="${this.toggleGoggles}"
+      ></simple-toolbar-button>
+    `;
+  }
+  /**
    * Preview controls in the bar's right group, just left of the HAX mark:
    * the Preview button, and while previewing the device button, the device
    * menu and (while editing) the unsaved edits pill.
@@ -7669,6 +7817,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               </app-hax-user-menu>`
             : ``
         }
+        ${this.developerMode && !this.previewMode ? this._renderGogglesButtons() : ``}
         <simple-toolbar-button
           id="previewbutton"
           class="top-bar-button"

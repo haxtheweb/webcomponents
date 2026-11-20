@@ -6,6 +6,7 @@
     "node_modules/@webcontainer/api/dist/utils/*.js",
     "node_modules/@webcontainer/api/dist/internal/*.js",
     "node_modules/marked/lib/marked.esm.js",
+    "node_modules/modern-screenshot/dist/index.mjs",
     "node_modules/@google/model-viewer/dist/model-viewer.js",
     "node_modules/@vowo/chart-elements/*.js",
     "node_modules/intl-messageformat/src/*.js",

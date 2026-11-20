@@ -732,5 +732,13 @@
   "previewShownAt": "{device}, shown at {percent}%",
   "previewDialogOpen": "Close the open dialog to preview the site",
   "shortcutPreview": "Preview the site as a visitor sees it",
-  "previewCloseDevice": "Close {device} view"
+  "previewCloseDevice": "Close {device} view",
+  "developerModeGoggles": "Developer mode: goggles",
+  "developerModeGogglesDescription": "Adds the goggles to the top bar: see how any part of HAX is made, who made it, and flag what needs fixing",
+  "developerModeOn": "Developer mode on: the goggles are in the top bar",
+  "developerModeOff": "Developer mode off",
+  "gogglesPutOn": "Put on the goggles",
+  "gogglesTakeOff": "Take off the goggles",
+  "gogglesLensesOff": "Lenses off",
+  "gogglesLensesOn": "Lenses on"
 }
