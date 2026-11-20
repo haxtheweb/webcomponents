@@ -148,7 +148,7 @@ describe("super-daemon-ui behavior", () => {
     );
     expect(said).to.deep.equal([
       "second one",
-      "close merlin",
+      "close search",
       "stop listening",
     ]);
     expect(footer.querySelector(".results-stats")).to.exist;

@@ -110,7 +110,7 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
       superDaemon: "Super Daemon",
       toggleSantaMode: "Toggle Santa Mode",
       santaModeDescription:
-        "He sees you when your sleeping, he knows when your awake, and with this command active he is always listening for input ready to respond. He's.. Santa Merlin. Ho..Ho...Ho.",
+        "He sees you when you're sleeping, he knows when you're awake, and with this command active he is always listening for input, ready to respond. He's.. Santa from the Future. Ho..Ho...Ho.",
       santaModeActivated: "Santa mode activated: Watch what you say",
       santaModeDeactivated:
         "Santa mode deactivated: Have a nice day believing you are not being watched",
@@ -129,11 +129,13 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
       listening: "Listening..",
       programModeActivated: "program mode activated",
       developerModeActivated: "developer mode activated",
-      merlin: "Merlin",
-      closeMerlin: "Close Merlin",
+      merlin: "Search and commands",
+      // who the voice is: it answers to "Ok Future"
+      voiceName: "Future",
+      closeMerlin: "Close search and commands",
       // spoken search vocabulary: pipe separated, translated per language
       voiceFillers:
-        "please|can you|could you|would you|will you|i want to|i'd like to|i would like to|let's|let me|go ahead and|um|uh|hey|merlin|ok|okay",
+        "please|can you|could you|would you|will you|i want to|i'd like to|i would like to|let's|let me|go ahead and|um|uh|ok future|okay future|hey future|hey|merlin|ok|okay",
       voiceStopWords: "a|an|the|to|my|this|for|of|me",
       voiceNumbers: "zero|one|two|three|four|five|six|seven|eight|nine|ten",
       voiceOrdinals:
@@ -150,7 +152,7 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
       voiceHelp: "help|what can i say|what can i do",
       // spoken commands Merlin always knows, in the user's language
       sayStopListening: "stop listening",
-      sayCloseMerlin: "close merlin",
+      sayCloseMerlin: "close search",
       sayDisableSanta: "disable santa mode",
       // what the voice card says after hearing something
       voiceDidYouMean: "{title}? To run it, say",
@@ -159,9 +161,9 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
       voiceNoSuchResult: "There is no result {number}. Try",
       voiceYouCanSay: "You can say",
       voiceMicBlocked:
-        "The microphone is blocked. Allow it in your browser to talk to Merlin.",
+        "The microphone is blocked. Allow it in your browser to use your voice.",
       voiceUnavailable:
-        "Voice isn't available in this browser. You can still type to Merlin.",
+        "Voice isn't available in this browser. You can still type.",
       voiceTipPick: "To run a result, say",
       voiceTipNext: "To move down the list, say",
       voiceTipClear: "To start over, say",
@@ -172,7 +174,7 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
       voiceRunHighlighted: "Run the highlighted result",
       voiceStartOver: "Start over",
       voiceStopListeningLabel: "Stop listening",
-      voiceCloseLabel: "Close Merlin",
+      voiceCloseLabel: "Close search",
     };
     // Konami Code detection
     this.konamiSequence = [
@@ -210,7 +212,8 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     this.activeNode = null;
     this.voiceSearch = false;
     this.listeningForInput = false;
-    this.voiceRespondsTo = "merlin";
+    // the name the voice answers to: "Ok Future"
+    this.voiceRespondsTo = "future";
     this.hal = null;
     // manages GLOBAL events for the whole thing
     this.windowControllers = new AbortController();
@@ -817,9 +820,13 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
           min-height: 0;
         }
         /* the HAX UI dialog frame titlebar (.hax-ui-dialog-*), with the
-           wand, the shortcut hint and a little room before close */
+           mark, the shortcut hint and a little room before close */
         .titlebar {
           --merlin-wand-size: 18px;
+        }
+        /* the goggles are on while the palette is open */
+        :host([opened]) .titlebar .merlin-traveler .lit {
+          opacity: 1;
         }
         .titlebar .keys {
           font-size: var(--hax-ui-admin-font-size-xs, 12px);
@@ -1528,7 +1535,7 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
               @focusout="${this.focusout}"
             >
               <div class="titlebar hax-ui-dialog-titlebar" part="titlebar">
-                ${merlinMark(this.icon) || merlinMark("hax:wand")}
+                ${merlinMark(this.icon) || merlinMark("hax:future-goggles")}
                 <h2 class="hax-ui-dialog-title">${this.t.merlin}</h2>
                 <span class="keys" aria-hidden="true"
                   >${this.key1} + ${this.key2}</span
@@ -1753,9 +1760,20 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
 
   // apply default voice commands for when we reset the voice UI
   defaultVoiceCommands() {
-    this.addVoiceCommand(`(hey) ${this.voiceRespondsTo}`, this, "promptMerlin");
+    // "Ok Future" gets its attention; speech engines write Ok as ok or okay
+    this.addVoiceCommand(`(ok) ${this.voiceRespondsTo}`, this, "promptMerlin");
+    this.addVoiceCommand(`okay ${this.voiceRespondsTo}`, this, "promptMerlin");
+    this.addVoiceCommand(`hey ${this.voiceRespondsTo}`, this, "promptMerlin");
+    // and by its name in the user's language, when that differs
+    const localName = String(this.t.voiceName || "").toLocaleLowerCase();
+    if (localName && localName !== this.voiceRespondsTo) {
+      this.addVoiceCommand(`(ok) ${localName}`, this, "promptMerlin");
+    }
+    // the name it answered to before, kept so the habit still works
+    this.addVoiceCommand(`(hey) merlin`, this, "promptMerlin");
     this.addVoiceCommand(`(hey) marilyn`, this, "promptMerlin"); // common mispronunciation
     this.addVoiceCommand(`stop listening`, this, "stopMerlin");
+    this.addVoiceCommand(`close search`, this, "closeMerlin");
     this.addVoiceCommand(`close merlin`, this, "closeMerlin");
     // the same commands in the user's language
     this.addVoiceCommand(this.t.sayStopListening, this, "stopMerlin");

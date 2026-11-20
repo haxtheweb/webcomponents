@@ -22,6 +22,26 @@ describe("super-daemon-search behavior", () => {
     sdi.listeningForInput = false;
   });
 
+  it("draws the goggles for the icons that once meant the wand", async () => {
+    element.icon = "hax:future-goggles";
+    await element.updateComplete;
+    expect(element.shadowRoot.querySelector(".field .merlin-goggles")).to.exist;
+    element.icon = "hax:wand";
+    await element.updateComplete;
+    const goggles = element.shadowRoot.querySelector(".field .merlin-goggles");
+    expect(goggles).to.exist;
+    // lit parts are off until the field is hovered, focused or working
+    expect(getComputedStyle(goggles.querySelector(".lit")).opacity).to.equal(
+      "0",
+    );
+    element.icon = "hax:future-traveler-plain";
+    await element.updateComplete;
+    expect(element.shadowRoot.querySelector(".field .merlin-goggles")).to.be
+      .null;
+    expect(element.shadowRoot.querySelector(".field .merlin-traveler")).to
+      .exist;
+  });
+
   it("renders the filter field with no context or program chrome", async () => {
     expect(element.shadowRoot.querySelector("#inputfilter")).to.exist;
     expect(element.shadowRoot.querySelector(".user-context-icon")).to.be.null;
@@ -37,7 +57,7 @@ describe("super-daemon-search behavior", () => {
     const icon = el.shadowRoot.querySelector(".user-context-icon");
     expect(icon).to.exist;
     expect(icon.getAttribute("title")).to.equal("Slash commands active");
-    expect(icon.getAttribute("icon")).to.equal("hax:wand");
+    expect(icon.getAttribute("icon")).to.equal("image:flash-on");
   });
 
   it("renders a context icon for developer console mode", async () => {
@@ -52,7 +72,7 @@ describe("super-daemon-search behavior", () => {
 
   it("resolves titles and icons for all contexts", () => {
     expect(element.getActiveTitle("CMS")).to.equal("Slash commands active");
-    expect(element.getActiveIcon("CMS")).to.equal("hax:wand");
+    expect(element.getActiveIcon("CMS")).to.equal("image:flash-on");
     expect(element.getActiveTitle("/")).to.equal("Slash commands active");
     expect(element.getActiveTitle(">")).to.equal("Developer console active");
     expect(element.getActiveIcon(">")).to.equal("hax:console-line");

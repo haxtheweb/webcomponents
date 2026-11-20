@@ -41,7 +41,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
       submitIdeas: "Submit your ideas",
       dropFilesHere: "Drop files here",
       typeWhatYouWant: "Type what you want to do",
-      opensMemoryPalace: "opens Merlin",
+      opensMemoryPalace: "opens search and commands",
       clickToDoAnything: "Click to do anything!",
       details: "Details",
       preview: "Preview",
@@ -58,12 +58,12 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
       site: "Site",
       editor: "Editor",
       cheatCodes: "Cheat codes",
-      openFullMerlin: "Open full Merlin",
+      openFullMerlin: "Open full search",
       resultsOfTotal: "{count} of {total} results",
       stopListening: "Stop listening",
       runResult: "Run a result",
       sayPickResult: "second one",
-      sayCloseMerlin: "close merlin",
+      sayCloseMerlin: "close search",
       sayStopListening: "stop listening",
     };
     this.registerLocalization({

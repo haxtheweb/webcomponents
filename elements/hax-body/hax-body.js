@@ -2952,6 +2952,87 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     }
   }
 
+  /**
+   * The block a "/" typed at the caret belongs to: the active node, or
+   * the list item the caret is in when the active node is a list.
+   */
+  _slashTarget(rng) {
+    let slashTarget = this.activeNode;
+    if (
+      slashTarget &&
+      (slashTarget.tagName === "UL" || slashTarget.tagName === "OL")
+    ) {
+      const containers = rng
+        ? [rng.commonAncestorContainer, rng.startContainer, rng.endContainer]
+        : [];
+      for (let i = 0; i < containers.length; i++) {
+        let container = containers[i];
+        if (container && container.nodeType === Node.TEXT_NODE) {
+          container = container.parentElement;
+        }
+        const li =
+          container && container.closest ? container.closest("li") : null;
+        if (li) {
+          slashTarget = li;
+          break;
+        }
+      }
+    }
+    return slashTarget;
+  }
+  /**
+   * "/" in an empty block opens the commands, also where there is no key
+   * to read. An on-screen keyboard (phones, tablets) sends keydown with no
+   * key name, so _onKeyDown never sees the "/"; it arrives here as text
+   * already typed into the block. When the block holds nothing but that
+   * slash it is taken back out and the commands open, the same as on a
+   * keyboard, where keydown handles it and no input follows.
+   */
+  _onSlashInput(e) {
+    if (
+      e.data !== "/" ||
+      !["insertText", "insertCompositionText"].includes(e.inputType) ||
+      !this.editMode ||
+      !this.getAttribute("contenteditable") ||
+      this._isFocusOutsideEditingContext() ||
+      SuperDaemonInstance.opened
+    ) {
+      return;
+    }
+    const slashTarget = this._slashTarget(HAXStore.getRange());
+    if (
+      !slashTarget ||
+      !slashTarget.tagName ||
+      !(HAXStore.isTextElement(slashTarget) || slashTarget.tagName === "LI") ||
+      !this.contains(slashTarget)
+    ) {
+      return;
+    }
+    const text = String(slashTarget.textContent || "")
+      .replaceAll(/[\u200b\n\r]/g, "")
+      .replaceAll(/\u00a0/g, " ")
+      .trim();
+    const onlyText = Array.from(slashTarget.childNodes).every(
+      (child) =>
+        child.nodeType !== globalThis.Node.ELEMENT_NODE ||
+        child.tagName === "BR",
+    );
+    if (text !== "/" || !onlyText) {
+      return;
+    }
+    slashTarget.textContent = "";
+    const rng = globalThis.document.createRange();
+    rng.selectNodeContents(slashTarget);
+    rng.collapse(true);
+    const sel = HAXStore.getSelection();
+    if (sel && sel.removeAllRanges) {
+      sel.removeAllRanges();
+      sel.addRange(rng);
+    }
+    this.__isEffectivelyEmptyTextBlock(slashTarget);
+    this._openInlineMerlin(rng);
+  }
+
   _onKeyDown(e) {
     // make sure we don't have an open drawer, and editing, and we are not focused on tray
     // Also bail out if any modal is currently open so keyboard shortcuts don't
@@ -3383,61 +3464,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               break;
             case "/": {
               const rng = HAXStore.getRange();
-              let slashTarget = this.activeNode;
-              // If the cursor is inside a list item, use the LI as the target
-              if (
-                slashTarget &&
-                (slashTarget.tagName === "UL" || slashTarget.tagName === "OL")
-              ) {
-                let container = rng ? rng.commonAncestorContainer : null;
-                if (container && container.nodeType === Node.TEXT_NODE) {
-                  container = container.parentElement;
-                }
-                if (container && container.closest) {
-                  let li = container.closest("li");
-                  if (li) {
-                    slashTarget = li;
-                  }
-                }
-                // Fallback: if commonAncestorContainer is the list itself, try startContainer
-                if (
-                  slashTarget &&
-                  (slashTarget.tagName === "UL" || slashTarget.tagName === "OL")
-                ) {
-                  let startContainer = rng ? rng.startContainer : null;
-                  if (
-                    startContainer &&
-                    startContainer.nodeType === Node.TEXT_NODE
-                  ) {
-                    startContainer = startContainer.parentElement;
-                  }
-                  if (startContainer && startContainer.closest) {
-                    let li = startContainer.closest("li");
-                    if (li) {
-                      slashTarget = li;
-                    }
-                  }
-                }
-                // Fallback: try endContainer
-                if (
-                  slashTarget &&
-                  (slashTarget.tagName === "UL" || slashTarget.tagName === "OL")
-                ) {
-                  let endContainer = rng ? rng.endContainer : null;
-                  if (
-                    endContainer &&
-                    endContainer.nodeType === Node.TEXT_NODE
-                  ) {
-                    endContainer = endContainer.parentElement;
-                  }
-                  if (endContainer && endContainer.closest) {
-                    let li = endContainer.closest("li");
-                    if (li) {
-                      slashTarget = li;
-                    }
-                  }
-                }
-              }
+              const slashTarget = this._slashTarget(rng);
               if (
                 slashTarget &&
                 (HAXStore.isTextElement(slashTarget) ||
@@ -6477,6 +6504,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       this.scrollerFixclickEvent = this.scrollerFixclickEvent.bind(this);
       this.blurEvent = this.blurEvent.bind(this);
       this._onKeyDown = this._onKeyDown.bind(this);
+      this._onSlashInput = this._onSlashInput.bind(this);
       this._onKeyUp = this._onKeyUp.bind(this);
       this._keepContextVisible = this._keepContextVisible.bind(this);
       // helps ensure correct state attachment and detachment; a listener set
@@ -6502,6 +6530,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         signal: this.windowControllers.signal,
       });
       globalThis.addEventListener("keydown", this._onKeyDown, {
+        signal: this.windowControllers.signal,
+      });
+      globalThis.addEventListener("input", this._onSlashInput, {
         signal: this.windowControllers.signal,
       });
       globalThis.addEventListener("keyup", this._onKeyUp, {

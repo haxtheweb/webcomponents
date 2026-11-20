@@ -145,8 +145,8 @@ describe("hal-9000 speak", () => {
       delete globalThis.HAXCMS;
     }
     expect(calls).to.deep.equal([
-      ["setCursor", "hax:wizard-hat"],
-      ["setFavicon", "hax:wizard-hat"],
+      ["setCursor", "hax:future-goggles"],
+      ["setFavicon", "hax:future-goggles"],
       ["resetCursor"],
       ["resetFavicon"],
     ]);

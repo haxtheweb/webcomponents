@@ -401,7 +401,7 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
       githubLink: "HAX on GitHub",
       sitesMenu: "HAX network sites",
       character: "Your character: make it in RPG me",
-      merlin: "Merlin",
+      merlin: "Search",
       merlinHint: "Travel anywhere",
       merlinWhere: " in the HAX network",
       networkPath: "HAX network",
