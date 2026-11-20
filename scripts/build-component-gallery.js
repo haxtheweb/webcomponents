@@ -751,8 +751,31 @@ ${loader.styles}
       text-decoration: none;
     }
 
+    /* the components menu toggle: a standard hamburger at the start of the
+       title bar. On wide screens it collapses the rail so the stage gets
+       the full width; on phones it opens and closes the drawer. */
     #listToggle {
-      display: none;
+      color: var(--hax-ui-on-titlebar);
+    }
+
+    #listToggle svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    #listToggle:active {
+      transform: translateY(1px);
+      background-color: var(--hax-ui-control-hover);
+    }
+
+    #listToggle[aria-expanded="true"] {
+      background-color: var(--hax-ui-control-hover);
+    }
+
+    #listToggle:focus-visible {
+      outline: var(--hax-ui-focus-width, 2px) solid var(--hax-ui-focus);
+      outline-offset: 2px;
     }
 
     .gallery-container {
@@ -761,9 +784,69 @@ ${loader.styles}
       display: flex;
     }
 
+    /* the rail collapsed: out of the layout and out of the tab order */
+    .gallery-container.rail-collapsed .sidebar,
+    .gallery-container.rail-collapsed .rail-resizer {
+      display: none;
+    }
+
+    /* drag the rail's edge to change its width (a window splitter: arrow
+       keys, Home and End, and Enter to collapse work from the keyboard) */
+    .rail-resizer {
+      flex: none;
+      position: relative;
+      width: 12px;
+      margin: 0 -6px;
+      z-index: 5;
+      cursor: col-resize;
+      touch-action: none;
+    }
+
+    .rail-resizer::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 5px;
+      width: 2px;
+      background-color: transparent;
+      transition: background-color var(--hax-ui-duration, 150ms) var(--hax-ui-easing, ease);
+    }
+
+    .rail-resizer:hover::before,
+    .rail-resizer.dragging::before {
+      background-color: var(--hax-ui-accent-strong);
+    }
+
+    .rail-resizer:focus-visible {
+      outline: none;
+    }
+
+    .rail-resizer:focus-visible::before {
+      left: 4px;
+      width: 4px;
+      background-color: var(--hax-ui-focus);
+    }
+
+    /* while dragging, the demo frame would swallow the pointer */
+    .gallery-container.resizing {
+      cursor: col-resize;
+      user-select: none;
+    }
+
+    .gallery-container.resizing .stage {
+      pointer-events: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .rail-resizer::before {
+        transition: none;
+      }
+    }
+
     /* Sidebar: the admin rail, sunken beside the stage */
     .sidebar {
-      width: 22rem;
+      width: var(--gal-rail-width, 22rem);
       flex: none;
       display: flex;
       flex-direction: column;
@@ -1227,17 +1310,14 @@ ${loader.styles}
         min-width: 0;
       }
 
-      #listToggle {
-        display: inline-flex;
-        flex: none;
-      }
-
-      #listToggle[hidden] {
-        display: none;
-      }
-
       .gallery-container {
         display: block;
+      }
+
+      /* phones size the drawer to the screen, so there is no edge to drag
+         and the wide-screen collapse does not apply */
+      .rail-resizer {
+        display: none;
       }
 
       .sidebar {
@@ -1254,7 +1334,8 @@ ${loader.styles}
         border-right: 0;
       }
 
-      .sidebar.open {
+      .sidebar.open,
+      .gallery-container.rail-collapsed .sidebar.open {
         display: flex;
       }
 
@@ -1333,13 +1414,15 @@ ${loader.markup}
   <hax-network-bar current="elements"></hax-network-bar>
 
   <header class="titlebar hax-ui-dark-chrome" id="mobileBar">
+    <button class="hax-ui-icon-btn" id="listToggle" aria-expanded="true" aria-controls="sidebar" aria-label="Components menu" title="Hide the components menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+    </button>
     <div class="brand">
       <span class="brand-mark" aria-hidden="true">HAX</span>
       <h1>Component gallery</h1>
       <span class="brand-stats">${totalComponents} components, ${walkthroughCount} with walkthroughs</span>
       <span class="mobile-title" id="mobileTitle">Component gallery</span>
     </div>
-    <button class="hax-ui-btn" id="listToggle" aria-expanded="false" aria-controls="sidebar">Components</button>
   </header>
 
   <div class="gallery-container">
@@ -1403,6 +1486,7 @@ ${loader.markup}
         <a href="https://github.com/haxtheweb/webcomponents" target="_blank" rel="noopener">Source</a>
       </footer>
     </aside>
+    <div class="rail-resizer" id="railResizer" role="separator" tabindex="0" aria-orientation="vertical" aria-controls="sidebar" aria-label="Components menu width" title="Drag to resize, double-click to reset"></div>
 
     <!-- Main content area -->
     <main class="main-content">
@@ -1950,23 +2034,131 @@ ${loader.markup}
     const mobileTitle = document.getElementById('mobileTitle');
     const phone = globalThis.matchMedia('(max-width: 768px)');
     const mainContent = document.querySelector('.main-content');
+    const galleryContainer = document.querySelector('.gallery-container');
+    const railResizer = document.getElementById('railResizer');
+    // the reader's rail width and collapsed state, kept per browser. Storage
+    // can be missing or throw (private modes, sandboxed frames): then the
+    // rail just starts at its default.
+    const RAIL_KEY = 'hax-gallery-rail';
+    const RAIL_DEFAULT = 352;
+    const RAIL_MIN = 240;
+    const railMax = () => Math.max(RAIL_MIN, Math.min(640, Math.round(globalThis.innerWidth * 0.6)));
+    const rail = { width: RAIL_DEFAULT, collapsed: false };
+    try {
+      const saved = JSON.parse(globalThis.localStorage.getItem(RAIL_KEY) || '{}');
+      if (typeof saved.width === 'number') rail.width = saved.width;
+      rail.collapsed = saved.collapsed === true;
+    } catch (e) {
+      // keep the defaults
+    }
+    function saveRail() {
+      try {
+        globalThis.localStorage.setItem(RAIL_KEY, JSON.stringify(rail));
+      } catch (e) {
+        // not kept between visits; the rail still works
+      }
+    }
+    function setRailWidth(px) {
+      rail.width = Math.round(Math.min(railMax(), Math.max(RAIL_MIN, px)));
+      galleryContainer.style.setProperty('--gal-rail-width', rail.width + 'px');
+      railResizer.setAttribute('aria-valuemin', String(RAIL_MIN));
+      railResizer.setAttribute('aria-valuemax', String(railMax()));
+      railResizer.setAttribute('aria-valuenow', String(rail.width));
+      railResizer.setAttribute('aria-valuetext', rail.width + ' pixels wide');
+    }
+    // the toggle names what it does next; aria-expanded says what is open now
+    function syncToggle() {
+      const open = phone.matches ? sidebar.classList.contains('open') : !rail.collapsed;
+      listToggle.setAttribute('aria-expanded', String(open));
+      listToggle.title = open ? 'Hide the components menu' : 'Show the components menu';
+    }
+    function setRailCollapsed(collapsed) {
+      rail.collapsed = collapsed;
+      galleryContainer.classList.toggle('rail-collapsed', collapsed);
+      saveRail();
+      syncToggle();
+    }
+    setRailWidth(rail.width);
+    galleryContainer.classList.toggle('rail-collapsed', rail.collapsed);
+
     // a phone turned to a wide window: the drawer is a sidebar again
     phone.addEventListener('change', () => {
       mainContent.inert = phone.matches && sidebar.classList.contains('open');
+      syncToggle();
     });
     function setDrawer(open) {
       sidebar.classList.toggle('open', open);
-      listToggle.setAttribute('aria-expanded', String(open));
-      listToggle.textContent = open ? 'Close' : 'Components';
-      // nothing to close back to until a component is chosen
-      listToggle.hidden = open && !currentComponent;
       // on phones the drawer covers the page: keep focus out from under it
       mainContent.inert = open && phone.matches;
+      syncToggle();
       placeDrawer();
       if (!open && phone.matches) {
         globalThis.scrollTo(0, 0);
       }
     }
+
+    // dragging the rail's edge; dragging it most of the way shut collapses it
+    let drag = null;
+    railResizer.addEventListener('pointerdown', (e) => {
+      if (e.button !== 0) return;
+      e.preventDefault();
+      drag = { x: e.clientX, width: sidebar.getBoundingClientRect().width };
+      railResizer.setPointerCapture(e.pointerId);
+      railResizer.classList.add('dragging');
+      galleryContainer.classList.add('resizing');
+    });
+    railResizer.addEventListener('pointermove', (e) => {
+      if (!drag) return;
+      const dir = getComputedStyle(galleryContainer).direction === 'rtl' ? -1 : 1;
+      setRailWidth(drag.width + (e.clientX - drag.x) * dir);
+      drag.raw = drag.width + (e.clientX - drag.x) * dir;
+    });
+    function endDrag(e) {
+      if (!drag) return;
+      if (railResizer.hasPointerCapture(e.pointerId)) {
+        railResizer.releasePointerCapture(e.pointerId);
+      }
+      railResizer.classList.remove('dragging');
+      galleryContainer.classList.remove('resizing');
+      const shut = typeof drag.raw === 'number' && drag.raw < RAIL_MIN / 2;
+      drag = null;
+      if (shut) {
+        setRailWidth(RAIL_DEFAULT);
+        setRailCollapsed(true);
+        listToggle.focus();
+      } else {
+        saveRail();
+      }
+    }
+    railResizer.addEventListener('pointerup', endDrag);
+    railResizer.addEventListener('pointercancel', endDrag);
+    railResizer.addEventListener('dblclick', () => {
+      setRailWidth(RAIL_DEFAULT);
+      saveRail();
+    });
+    railResizer.addEventListener('keydown', (e) => {
+      const rtl = getComputedStyle(galleryContainer).direction === 'rtl';
+      const step = e.shiftKey ? 64 : 16;
+      let width = null;
+      if (e.key === 'ArrowRight') width = rail.width + (rtl ? -step : step);
+      else if (e.key === 'ArrowLeft') width = rail.width + (rtl ? step : -step);
+      else if (e.key === 'Home') width = RAIL_MIN;
+      else if (e.key === 'End') width = railMax();
+      else if (e.key === 'Enter') {
+        e.preventDefault();
+        setRailCollapsed(true);
+        listToggle.focus();
+        return;
+      }
+      if (width === null) return;
+      e.preventDefault();
+      setRailWidth(width);
+      saveRail();
+    });
+    // a narrower window can push a saved width past what fits
+    globalThis.addEventListener('resize', () => {
+      if (!phone.matches && rail.width > railMax()) setRailWidth(rail.width);
+    });
     // the network bar above the title bar scrolls away and the title bar
     // sticks, so the drawer follows the bar's bottom edge on screen
     function placeDrawer() {
@@ -1987,10 +2179,15 @@ ${loader.markup}
     }
     globalThis.addEventListener('load', placeDrawer);
     listToggle.addEventListener('click', () => {
-      setDrawer(!sidebar.classList.contains('open'));
+      if (phone.matches) {
+        setDrawer(!sidebar.classList.contains('open'));
+      } else {
+        setRailCollapsed(!rail.collapsed);
+        if (!rail.collapsed) document.getElementById('searchBox').focus();
+      }
     });
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && sidebar.classList.contains('open') && currentComponent) {
+      if (e.key === 'Escape' && phone.matches && sidebar.classList.contains('open')) {
         setDrawer(false);
         listToggle.focus();
       }
