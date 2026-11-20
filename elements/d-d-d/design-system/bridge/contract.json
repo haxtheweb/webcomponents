@@ -105,12 +105,14 @@
       "families": {
         "card": "^ddd-card-(radius|padding|border-width|shadow|background)$",
         "control": "^ddd-control-(radius|height)$",
-        "tag": "^ddd-tag-radius$"
+        "tag": "^ddd-tag-radius$",
+        "range": "^ddd-range-lift-(height|height-coarse|width|rest|duration)$"
       },
       "patterns": [
         "^ddd-card-(radius|padding|border-width|shadow|background)$",
         "^ddd-control-(radius|height)$",
-        "^ddd-tag-radius$"
+        "^ddd-tag-radius$",
+        "^ddd-range-lift-(height|height-coarse|width|rest|duration)$"
       ]
     }
   ]

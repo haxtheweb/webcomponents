@@ -20,6 +20,26 @@
             },
             {
               "kind": "method",
+              "name": "__liftKeyboardFocus",
+              "description": "keyboard focus (not a click) on the native input"
+            },
+            {
+              "kind": "method",
+              "name": "__liftMetrics",
+              "description": "sizes the lift reads from its tokens, resolved through the probe"
+            },
+            {
+              "kind": "method",
+              "name": "_animateLift",
+              "description": "move the lift toward its grabbed or resting height"
+            },
+            {
+              "kind": "method",
+              "name": "_drawLift",
+              "description": "draw the track as two paths split at the pin: the filled part before\nit and the rest after it, bending up to the current lift height"
+            },
+            {
+              "kind": "method",
               "name": "_inputChanged",
               "parameters": [
                 {
@@ -118,6 +138,46 @@
               "default": "false",
               "attribute": "disabled",
               "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "lift",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Pin lift: the track bends up into a bump under the pin while it is\ngrabbed (pointer down or keyboard focus), so you can see where you\nare and that you have hold of it, even under a fingertip. For\nscrubbers along a long track (media seek bars); leave it off for\nshort sliders and settings. Sized by the --ddd-range-lift-* tokens.",
+              "default": "false",
+              "attribute": "lift",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "__liftNow",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "__liftGrabbed",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "__liftFrame",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "__liftRelease"
             }
           ],
           "events": [
@@ -198,6 +258,15 @@
               },
               "default": "false",
               "fieldName": "disabled"
+            },
+            {
+              "name": "lift",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Pin lift: the track bends up into a bump under the pin while it is\ngrabbed (pointer down or keyboard focus), so you can see where you\nare and that you have hold of it, even under a fingertip. For\nscrubbers along a long track (media seek bars); leave it off for\nshort sliders and settings. Sized by the --ddd-range-lift-* tokens.",
+              "default": "false",
+              "fieldName": "lift"
             }
           ],
           "superclass": {

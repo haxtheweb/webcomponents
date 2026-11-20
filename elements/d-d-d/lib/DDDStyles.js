@@ -1152,6 +1152,26 @@ export const DDDVariables = css`
     --ddd-skeleton-duration: 1.4s;
     --ddd-skeleton-text-height: 0.8em;
 
+    /* ===========================================
+       RANGE PIN LIFT
+       The track of a scrubber bends up into a bump under its pin while
+       the pin is grabbed (pointer down or keyboard focus), so you can see
+       where you are and that you have hold of it, and on touch the bump
+       shows above the fingertip. Space for the bump is always reserved so
+       nothing jumps. For long-track scrubbers only (media seek bars), not
+       short sliders, settings, or read-only progress.
+       Usage: <simple-range-input lift></simple-range-input>
+       A design system without a lift sets --ddd-range-lift-height and
+       --ddd-range-lift-height-coarse to 0px.
+       =========================================== */
+    --ddd-range-lift-height: var(--ddd-spacing-3); /* fine pointers */
+    --ddd-range-lift-height-coarse: var(
+      --ddd-spacing-6
+    ); /* touch: clears a fingertip */
+    --ddd-range-lift-width: var(--ddd-spacing-16); /* width of the bump */
+    --ddd-range-lift-rest: 0; /* share of the lift shown at rest, 0 to 1 */
+    --ddd-range-lift-duration: var(--ddd-duration-fast); /* rise and settle */
+
     --simple-modal-content-container-color: light-dark(
       var(--ddd-primary-4),
       var(--ddd-accent-6)
