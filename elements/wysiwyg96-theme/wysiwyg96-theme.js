@@ -39,7 +39,10 @@ import "@haxtheweb/simple-icon/lib/simple-icons.js";
  * Desktop.
  *
  * @title WYSIWYG 96
- * @haxcms-theme-category Website, Personal
+ * @haxcms-theme-category Website, Blog
+ * @haxcms-theme-layout Sidebar
+ * @haxcms-theme-inspired-by Classic web editors
+ * @haxcms-theme-inspired-by-theme 1995-96 WYSIWYG editors
  * @haxcms-theme-priority 40
  * @demo demo/index.html
  * @element wysiwyg96-theme

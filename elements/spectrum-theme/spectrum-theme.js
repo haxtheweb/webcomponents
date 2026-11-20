@@ -27,7 +27,9 @@ import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
  * reads --ddd-* tokens, which point at Spectrum tokens while it is active.
  *
  * @title Spectrum
- * @haxcms-theme-category Website, Course, Documentation
+ * @haxcms-theme-category Website, Course, Documentation, Organization
+ * @haxcms-theme-layout Sidebar
+ * @haxcms-theme-design-system Spectrum
  * @haxcms-theme-priority 50
  * @demo demo/index.html
  * @element spectrum-theme

@@ -46,6 +46,30 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
       failedToCreateSite: "Failed to create site. Please try again.",
       siteCreationFailed: "Site creation failed. Please try again.",
       templatePreview: "{title} preview",
+      whatYouGet: "What you're getting",
+      builtOnTheme: "Theme",
+      pagesLabel: "Starter pages",
+      blocksLabel: "Blocks used",
+      editorLabel: "Editor",
+      designLabel: "Design",
+      alsoBuiltOn: "Templates on this theme",
+      onePageHome: "One blank Home page, ready for your content",
+      morePages: "+{count} more",
+      pagesCount: "{count} pages",
+      sampleImages:
+        "{count} sample images linked from the web; replace them with your own",
+      sampleImage:
+        "1 sample image linked from the web; replace it with your own",
+      fullEditor: "Full editor: every block, page tools and outline",
+      simplifiedEditor:
+        "Simplified editor: page and block tools are turned off to keep it simple",
+      swapsDesignSystems: "Swap design systems after creating",
+      palettes: "{count} color palettes",
+      previewTheme: "Preview this theme",
+      layoutValue: "{layout} layout",
+      inspiredByValue: "Inspired by {name}",
+      designSystemValue: "{name} design system",
+      sitePreviewFor: "Preview of {title}",
       siteName: "Site Name",
       enterSiteName: "Enter your site name...",
       createSite: "Create Site",
@@ -71,6 +95,8 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
     this.siteName = "";
     this.currentStep = 1; // 1: naming, 2: creating, 3: success
     this.isCreating = false;
+    this._suit = "";
+    this._traveler = null;
     this.creationProgress = 0;
     this.errorMessage = "";
     this.showConfetti = false;
@@ -103,6 +129,10 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
       siteName: { type: String },
       currentStep: { type: Number },
       isCreating: { type: Boolean },
+      // the creating finale: "" wears the progress hat, "arriving" the hat
+      // fades as the Future Traveler lowers onto their head, "on" he is on
+      _suit: { type: String, state: true },
+      _traveler: { type: Object, state: true },
       creationProgress: { type: Number },
       errorMessage: { type: String },
       showConfetti: { type: Boolean },
@@ -112,6 +142,10 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
       max: { type: Number },
       skeletonData: { type: Object },
       skeletonMachineName: { type: String },
+      designItems: { type: Array },
+      blockNames: { type: Object },
+      kind: { type: String },
+      demoLink: { type: String },
     };
   }
 
@@ -134,6 +168,168 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
           --dialog-max-height: calc(100dvh - var(--ddd-spacing-8, 32px));
           --dialog-border-radius: var(--hax-ui-radius-lg);
           z-index: 1000;
+        }
+
+        web-dialog::part(dialog) {
+          display: flex;
+          flex-direction: column;
+        }
+        .modal-content {
+          flex: 1 1 auto;
+          min-height: 0;
+          overflow-y: auto;
+          overscroll-behavior: contain;
+        }
+        .template-info {
+          display: grid;
+          grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+          gap: var(--hax-ui-gap-lg);
+          align-items: start;
+        }
+        @media (max-width: 720px) {
+          .template-info {
+            grid-template-columns: 1fr;
+          }
+        }
+        @media (max-width: 480px) {
+          dl.facts {
+            grid-template-columns: 1fr;
+            row-gap: var(--ddd-spacing-1, 4px);
+          }
+          dl.facts dd {
+            margin-bottom: var(--ddd-spacing-2, 8px);
+          }
+        }
+        .template-visual {
+          display: flex;
+          flex-direction: column;
+          gap: var(--ddd-spacing-2, 8px);
+        }
+        .template-image {
+          border-radius: var(--hax-ui-radius);
+          overflow: hidden;
+          border: 1px solid var(--hax-ui-line);
+        }
+        .template-image img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: top left;
+          display: block;
+        }
+        .template-details {
+          min-width: 0;
+          text-align: left;
+        }
+        .template-title {
+          font-weight: var(--ddd-font-weight-bold, 700);
+          color: var(--hax-ui-text);
+        }
+        .template-description {
+          color: var(--hax-ui-text-muted);
+        }
+        .template-visual .template-image {
+          width: 100%;
+          height: auto;
+          aspect-ratio: 16 / 10;
+          background: var(--hax-ui-sunken);
+        }
+        .preview-link {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--ddd-spacing-1, 4px);
+          align-self: flex-start;
+          min-height: 32px;
+          color: var(--hax-ui-text);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          text-decoration: underline;
+          --simple-icon-width: 16px;
+          --simple-icon-height: 16px;
+        }
+        .preview-link:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 2px;
+        }
+        .template-info .template-title {
+          font-size: var(--hax-ui-admin-font-size);
+          margin: 0 0 var(--ddd-spacing-1, 4px);
+        }
+        .template-info .template-description {
+          font-size: var(--hax-ui-admin-font-size);
+          margin: 0 0 var(--ddd-spacing-3, 12px);
+          line-height: 1.45;
+        }
+        .get-heading {
+          margin: 0 0 var(--ddd-spacing-2, 8px);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          font-weight: var(--ddd-font-weight-bold, 700);
+          text-transform: uppercase;
+          letter-spacing: 0.04em;
+          color: var(--hax-ui-text-muted);
+        }
+        dl.facts {
+          border: 0;
+          padding: 0;
+          background: transparent;
+          display: grid;
+          grid-template-columns: max-content 1fr;
+          gap: var(--ddd-spacing-2, 8px) var(--ddd-spacing-3, 12px);
+          margin: 0;
+          font-size: var(--hax-ui-admin-font-size-xs);
+        }
+        dl.facts dt {
+          display: flex;
+          align-items: flex-start;
+          gap: var(--ddd-spacing-1, 4px);
+          color: var(--hax-ui-text-muted);
+          --simple-icon-width: 16px;
+          --simple-icon-height: 16px;
+        }
+        dl.facts dt,
+        dl.facts dd,
+        ol.outline li,
+        .tags li {
+          font-size: var(--hax-ui-admin-font-size-xs);
+          font-family: var(--hax-ui-admin-font-family);
+          line-height: 1.45;
+          margin: 0;
+          border: 0;
+          font-weight: normal;
+        }
+        dl.facts dd {
+          margin: 0;
+          color: var(--hax-ui-text);
+          line-height: 1.45;
+        }
+        .tags {
+          display: flex;
+          flex-wrap: wrap;
+          gap: var(--ddd-spacing-1, 4px);
+          list-style: none;
+          margin: 0;
+          padding: 0;
+        }
+        .tags li.tag {
+          padding: 1px var(--ddd-spacing-2, 8px);
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius-pill);
+        }
+        ol.outline {
+          display: block;
+          list-style: none;
+          margin: 0;
+          padding: 0;
+        }
+        ol.outline li {
+          padding: 0 0 0 calc(var(--indent, 0) * 14px);
+          line-height: 1.5;
+        }
+        ol.outline li.more {
+          color: var(--hax-ui-text-muted);
+        }
+        .note {
+          display: block;
+          color: var(--hax-ui-text-muted);
         }
 
         web-dialog::part(backdrop) {
@@ -186,51 +382,6 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
 
         .step-dot.completed {
           background: var(--hax-ui-success);
-        }
-
-        .template-info {
-          display: flex;
-          gap: var(--hax-ui-gap-lg);
-          padding: var(--hax-ui-gap-md);
-          background: var(--hax-ui-sunken);
-          border: 1px solid var(--hax-ui-line);
-          border-radius: var(--hax-ui-radius-lg);
-          align-items: center;
-        }
-
-        .template-image {
-          flex-shrink: 0;
-          width: 96px;
-          height: 64px;
-          border-radius: var(--hax-ui-radius);
-          overflow: hidden;
-          border: 1px solid var(--hax-ui-line);
-        }
-
-        .template-image img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          display: block;
-        }
-
-        .template-details {
-          flex: 1;
-          min-width: 0;
-          text-align: left;
-        }
-
-        .template-title {
-          font-size: var(--hax-ui-admin-font-size);
-          font-weight: var(--ddd-font-weight-bold, 700);
-          color: var(--hax-ui-text);
-          margin: 0 0 2px 0;
-        }
-
-        .template-description {
-          font-size: var(--hax-ui-admin-font-size-xs);
-          color: var(--hax-ui-text-muted);
-          margin: 0;
         }
 
         .form-group {
@@ -346,6 +497,94 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
           top: 16px;
           width: 150px;
           z-index: 1;
+        }
+
+        /* the finale (_suitUp): the hat fades off, the Future Traveler
+           lowers onto the same head, then his goggles light up */
+        .hat-avatar .traveler {
+          position: absolute;
+          left: calc(50% - var(--hax-traveler-size) / 2 - 1.5px);
+          top: var(--hax-traveler-top);
+          width: var(--hax-traveler-size);
+          z-index: 2;
+          pointer-events: none;
+        }
+        .hat-avatar {
+          --hax-traveler-size: 128px;
+          --hax-traveler-top: 40px;
+        }
+        .hat-avatar .traveler svg {
+          display: block;
+          width: 100%;
+          height: auto;
+          overflow: visible;
+        }
+        .hat-avatar[data-suit="arriving"] app-hax-simple-hat-progress {
+          animation: hax-hat-away var(--ddd-duration-slow, 0.6s) ease-in
+            forwards;
+        }
+        .hat-avatar[data-suit="arriving"] .traveler {
+          animation: hax-traveler-lower 1.3s cubic-bezier(0.2, 0.8, 0.3, 1) 0.5s
+            both;
+        }
+        /* the handheld era is drawn on its screen; on a head he goes
+           without it */
+        .hat-avatar .traveler svg[data-era="handheld"] g > rect[width="24"] {
+          display: none;
+        }
+        .hat-avatar[data-suit="arriving"] .traveler .ft-lens,
+        .hat-avatar[data-suit="arriving"] .traveler .ft-eyes {
+          animation: hax-traveler-see 0.5s ease-out 1.7s both;
+        }
+        .hat-avatar[data-suit="on"] .traveler .ft-eyes,
+        .hat-avatar[data-suit="on"] .traveler .ft-lens {
+          filter: brightness(1.45)
+            drop-shadow(0 0 1px var(--ddd-theme-default-white, #ffffff));
+        }
+        @keyframes hax-hat-away {
+          to {
+            opacity: 0;
+            transform: translateY(-14px) scale(1.06);
+            filter: blur(4px);
+          }
+        }
+        @keyframes hax-traveler-lower {
+          from {
+            opacity: 0;
+            transform: translateY(-64px);
+          }
+          20% {
+            opacity: 1;
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        @keyframes hax-traveler-see {
+          from {
+            filter: brightness(0.6);
+          }
+          to {
+            filter: brightness(1.45)
+              drop-shadow(0 0 1px var(--ddd-theme-default-white, #ffffff));
+          }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .hat-avatar[data-suit="arriving"] app-hax-simple-hat-progress {
+            animation: none;
+            opacity: 0;
+          }
+          .hat-avatar[data-suit="arriving"] .traveler,
+          .hat-avatar[data-suit="arriving"] .traveler .ft-lens,
+          .hat-avatar[data-suit="arriving"] .traveler .ft-eyes {
+            animation: none;
+          }
+          .hat-avatar[data-suit="arriving"] .traveler .ft-eyes,
+          .hat-avatar[data-suit="arriving"] .traveler .ft-lens {
+            filter: brightness(1.45)
+              drop-shadow(0 0 1px var(--ddd-theme-default-white, #ffffff));
+          }
         }
 
         promise-progress {
@@ -520,6 +759,7 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
   }
 
   disconnectedCallback() {
+    clearTimeout(this._suitTimer);
     globalThis.removeEventListener(AVATAR_EVENT, this._onAvatarChanged);
     super.disconnectedCallback();
   }
@@ -532,6 +772,7 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
   updated(changedProperties) {
     if (changedProperties.has("open") && this.open) {
       this._avatarCode = loadAvatarCode(this._userName());
+      this._loadBlockNames();
     }
     if (super.updated) {
       super.updated(changedProperties);
@@ -669,6 +910,9 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
     this.creationProgress = 0;
     this.creationCancelled = false;
     this.siteUrl = "";
+    clearTimeout(this._suitTimer);
+    this._suit = "";
+    this._traveler = null;
 
     // Prevent body scrolling while modal is open
     document.body.style.overflow = "hidden";
@@ -949,6 +1193,9 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
 
   progressValueChanged(e) {
     this.creationProgress = e.detail.value;
+    if (this.creationProgress >= (this.max || 100)) {
+      this._suitUp();
+    }
     // Update the hat progress component
     const hatProgress = this.shadowRoot.querySelector(
       "app-hax-simple-hat-progress",
@@ -1013,6 +1260,7 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
       this.currentStep = 3;
       this.isCreating = false;
       this.creationProgress = this.max || 100; // Ensure 100% completion
+      this._suitUp();
 
       // Update hat progress to show 100% completion
       const hatProgress = this.shadowRoot.querySelector(
@@ -1212,30 +1460,254 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
     `;
   }
 
+  // the theme item (from the dashboard's list) this pick is built on
+  _themeItem() {
+    const items = this.designItems || [];
+    return (
+      items.find(
+        (i) => i.dataType === "blank" && i.machineName === this.themeElement,
+      ) || null
+    );
+  }
+
+  // tag to name map for the blocks list, loaded once
+  async _loadBlockNames() {
+    if (this.blockNames || this._loadingBlockNames) return;
+    this._loadingBlockNames = true;
+    try {
+      const url = new URL(
+        "../../../haxcms-elements/lib/hax-elements-registry.json",
+        import.meta.url,
+      ).href;
+      const r = await fetch(url);
+      this.blockNames = r.ok ? await r.json() : {};
+    } catch {
+      this.blockNames = {};
+    }
+  }
+
+  // facts about what this pick will create, read from the skeleton and theme data
+  _facts() {
+    const sk = this.skeletonData || {};
+    const build = sk.build || {};
+    const items = Array.isArray(build.items) ? build.items : [];
+    const site = sk.site || {};
+    const platform = site.platform || {};
+    const theme = this._themeItem();
+    const tod = theme ? theme.originalData || {} : {};
+    const facets = {
+      layout: tod.layout || "",
+      designSystem: tod.designSystem || (theme ? "DDD" : ""),
+      inspiredBy: [tod.inspiredBy, tod.inspiredByTheme]
+        .filter((x) => x)
+        .join(" "),
+    };
+    let images = 0;
+    items.forEach((item) => {
+      const c = item.content || "";
+      images += (c.match(/<media-image[^>]*source="https?:/g) || []).length;
+    });
+    // the blocks the starter pages use, by the names the element registry gives them
+    const names = this.blockNames || {};
+    const blocks = [];
+    items.forEach((item) => {
+      const c = item.content || "";
+      (c.match(/<[a-z][a-z0-9]*-[a-z0-9-]+/g) || []).forEach((m) => {
+        const name = names[m.slice(1)];
+        if (name && blocks.indexOf(name) === -1) blocks.push(name);
+      });
+    });
+    blocks.sort();
+    const features = platform.features || {};
+    const limited = Object.keys(features).some((k) => features[k] === false);
+    const related = (this.designItems || [])
+      .filter(
+        (i) =>
+          i.dataType === "skeleton" &&
+          (i.originalData || {}).theme === this.themeElement,
+      )
+      .map((i) => i.useCaseTitle);
+    return { items, theme, tod, facets, blocks, images, limited, related };
+  }
+
   renderNamingStep() {
+    const f = this._facts();
+    const isTheme = this.kind === "blank";
+    const outline = f.items.slice(0, 7);
+    const design = [
+      f.facets.layout
+        ? this.t.layoutValue.replace("{layout}", () => f.facets.layout)
+        : "",
+      f.facets.designSystem
+        ? this.t.designSystemValue.replace(
+            "{name}",
+            () => f.facets.designSystem,
+          )
+        : "",
+      f.facets.inspiredBy
+        ? this.t.inspiredByValue.replace("{name}", () => f.facets.inspiredBy)
+        : "",
+      f.tod.acceptsDesignSystems ? this.t.swapsDesignSystems : "",
+      Array.isArray(f.tod.supportedPalettes)
+        ? this.t.palettes.replace(
+            "{count}",
+            () => f.tod.supportedPalettes.length,
+          )
+        : "",
+    ].filter((x) => x);
+    const themeDemo = f.theme ? f.theme.demoLink : "";
     return html`
       <div class="template-info">
-        ${
-          this.source
-            ? html`
-                <div class="template-image">
-                  <img
-                    src="${this.source}"
-                    alt="${this.t.templatePreview.replace(
-                      "{title}",
-                      () => this.title,
-                    )}"
-                    loading="lazy"
-                    decoding="async"
-                    fetchpriority="high"
-                  />
-                </div>
-              `
-            : ""
-        }
+        <div class="template-visual">
+          ${
+            this.source
+              ? html`
+                  <div class="template-image">
+                    <img
+                      src="${this.source}"
+                      alt="${this.t.sitePreviewFor.replace(
+                        "{title}",
+                        () => this.title,
+                      )}"
+                      decoding="async"
+                    />
+                  </div>
+                `
+              : ""
+          }
+          ${
+            themeDemo
+              ? html`<a
+                  class="preview-link"
+                  href="${themeDemo}"
+                  target="_blank"
+                  rel="noopener"
+                  ><simple-icon-lite
+                    icon="icons:open-in-new"
+                    aria-hidden="true"
+                  ></simple-icon-lite
+                  >${this.t.previewTheme}</a
+                >`
+              : ""
+          }
+        </div>
         <div class="template-details">
           <h3 class="template-title">${this.title}</h3>
           <p class="template-description">${this.description}</p>
+          <h4 class="get-heading">${this.t.whatYouGet}</h4>
+          <dl class="facts">
+            ${
+              f.theme
+                ? html`<dt>
+                      <simple-icon-lite
+                        icon="image:style"
+                        aria-hidden="true"
+                      ></simple-icon-lite
+                      >${this.t.builtOnTheme}
+                    </dt>
+                    <dd>${f.theme.useCaseTitle}</dd>`
+                : ""
+            }
+            <dt>
+              <simple-icon-lite
+                icon="icons:list"
+                aria-hidden="true"
+              ></simple-icon-lite
+              >${this.t.pagesLabel}
+            </dt>
+            <dd>
+              ${
+                isTheme || f.items.length <= 1
+                  ? this.t.onePageHome
+                  : html`<span class="note"
+                        >${this.t.pagesCount.replace(
+                          "{count}",
+                          () => f.items.length,
+                        )}</span
+                      >
+                      <ol class="outline">
+                        ${outline.map(
+                          (i) =>
+                            html`<li style="--indent:${i.indent || 0}">
+                              ${i.title}
+                            </li>`,
+                        )}
+                        ${
+                          f.items.length > outline.length
+                            ? html`<li class="more">
+                                ${this.t.morePages.replace(
+                                  "{count}",
+                                  () => f.items.length - outline.length,
+                                )}
+                              </li>`
+                            : ""
+                        }
+                      </ol>
+                      ${
+                        f.images
+                          ? html`<span class="note"
+                              >${
+                                f.images === 1
+                                  ? this.t.sampleImage
+                                  : this.t.sampleImages.replace(
+                                      "{count}",
+                                      () => f.images,
+                                    )
+                              }</span
+                            >`
+                          : ""
+                      }`
+              }
+            </dd>
+            ${
+              !isTheme && f.blocks.length
+                ? html`<dt>
+                      <simple-icon-lite
+                        icon="hax:bricks"
+                        aria-hidden="true"
+                      ></simple-icon-lite
+                      >${this.t.blocksLabel}
+                    </dt>
+                    <dd>
+                      <ul class="tags">
+                        ${f.blocks.map((b) => html`<li class="tag">${b}</li>`)}
+                      </ul>
+                    </dd>`
+                : ""
+            }
+            ${
+              design.length
+                ? html`<dt>
+                      <simple-icon-lite
+                        icon="image:palette"
+                        aria-hidden="true"
+                      ></simple-icon-lite
+                      >${this.t.designLabel}
+                    </dt>
+                    <dd>${design.join(" · ")}</dd>`
+                : ""
+            }
+            <dt>
+              <simple-icon-lite
+                icon="editor:mode-edit"
+                aria-hidden="true"
+              ></simple-icon-lite
+              >${this.t.editorLabel}
+            </dt>
+            <dd>${f.limited ? this.t.simplifiedEditor : this.t.fullEditor}</dd>
+            ${
+              isTheme && f.related.length
+                ? html`<dt>
+                      <simple-icon-lite
+                        icon="icons:content-copy"
+                        aria-hidden="true"
+                      ></simple-icon-lite
+                      >${this.t.alsoBuiltOn}
+                    </dt>
+                    <dd>${f.related.join(", ")}</dd>`
+                : ""
+            }
+          </dl>
         </div>
       </div>
 
@@ -1294,8 +1766,6 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
   renderCreatingStep() {
     return html`
       <div class="progress-container">
-        ${this.renderHatAvatar(this.creationProgress)}
-
         <promise-progress
           id="promise-progress"
           .list="${this.promises}"
@@ -1318,7 +1788,6 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
   renderSuccessStep() {
     return html`
       <div class="success-content">
-        ${this.renderHatAvatar(this.creationProgress || 100)}
         <h2 class="success-title">
           <simple-icon-lite
             icon="icons:check-circle"
@@ -1334,36 +1803,105 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
   }
 
   /**
+   * The finale at 100%: the progress hat fades away and the Future Traveler,
+   * drawn in the era the person last left him in (today when they never
+   * changed it), lowers onto their head and his goggles light up because
+   * they can see the future now. With reduced motion he is simply there.
+   */
+  async _suitUp() {
+    if (this._suit) return;
+    this._suit = "arriving";
+    let era = "now";
+    try {
+      // HAX_TRAVELER_ERA_KEY in haxcms-elements' hax-future-traveler-mark
+      era = globalThis.localStorage.getItem("hax-future-traveler-era") || "now";
+    } catch {
+      era = "now";
+    }
+    try {
+      const { futureTraveler } =
+        await import("@haxtheweb/hax-network-bar/lib/hax-future-traveler.js");
+      this._traveler = futureTraveler(era);
+    } catch {
+      // without the art the hat simply stays
+      this._suit = "";
+      return;
+    }
+    const still =
+      globalThis.matchMedia &&
+      globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    clearTimeout(this._suitTimer);
+    this._suitTimer = setTimeout(
+      () => {
+        this._suit = "on";
+      },
+      still ? 0 : 2200,
+    );
+  }
+
+  /**
    * The progress hat on the person's saved character (their seed look when
    * nothing is saved), so the wait reads as theirs.
    */
   renderHatAvatar(progress) {
+    const suit = this._traveler ? this._suit : "";
     return html`
-      <div class="hat-avatar">
-        <app-hax-simple-hat-progress
-          .progress="${progress}"
-          .max="100"
-        ></app-hax-simple-hat-progress>
-        <rpg-character
-          seed="${this._userName()}"
-          code="${this._avatarCode}"
-          width="120"
-          height="150"
-          aria-hidden="true"
-        ></rpg-character>
+      <div class="hat-avatar" data-suit="${suit}">
+        ${
+          suit !== "on"
+            ? html`<app-hax-simple-hat-progress
+                .progress="${progress}"
+                .max="100"
+              ></app-hax-simple-hat-progress>`
+            : ""
+        }
+        ${
+          suit
+            ? html`<rpg-character
+                seed="${this._userName()}"
+                code="${this._avatarCode}"
+                hat="none"
+                width="120"
+                height="150"
+                aria-hidden="true"
+              ></rpg-character>`
+            : html`<rpg-character
+                seed="${this._userName()}"
+                code="${this._avatarCode}"
+                width="120"
+                height="150"
+                aria-hidden="true"
+              ></rpg-character>`
+        }
+        ${
+          suit
+            ? html`<div class="traveler" aria-hidden="true">
+                ${this._traveler}
+              </div>`
+            : ""
+        }
       </div>
     `;
   }
 
-  renderSuccessButtons() {
+  /**
+   * The finish actions. While the site is being made they are already in
+   * place but disabled, so the dialog keeps its size from step to step.
+   */
+  renderSuccessButtons(waiting = false) {
     return html`
       <div class="button-group">
-        <button class="button button-secondary" @click="${this.closeModal}">
+        <button
+          class="button button-secondary"
+          @click="${this.closeModal}"
+          ?disabled="${waiting}"
+        >
           ${this.t.stayHere}
         </button>
         <button
           class="button button-primary go-to-site"
           @click="${this.goToSite}"
+          ?disabled="${waiting}"
         >
           ${this.t.goToSite}
           <simple-icon-lite
@@ -1378,6 +1916,7 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
   render() {
     return html`
       <web-dialog
+        style="--dialog-width: ${this.currentStep === 1 ? "760px" : "440px"}"
         .open="${this.open}"
         center
         role="dialog"
@@ -1409,6 +1948,13 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
           ${this.showConfetti ? html`<div class="confetti"></div>` : ""}
           ${this.renderStepIndicator()}
           ${
+            this.currentStep > 1
+              ? this.renderHatAvatar(
+                  this.currentStep === 3 ? 100 : this.creationProgress,
+                )
+              : ""
+          }
+          ${
             this.currentStep === 1
               ? this.renderNamingStep()
               : this.currentStep === 2
@@ -1419,9 +1965,7 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
         ${
           this.currentStep === 1
             ? this.renderNamingButtons()
-            : this.currentStep === 3
-              ? this.renderSuccessButtons()
-              : html``
+            : this.renderSuccessButtons(this.currentStep === 2)
         }
       </web-dialog>
     `;

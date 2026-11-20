@@ -223,6 +223,67 @@ function extractThemeHidden(content, elementName) {
 }
 
 /**
+ * Extract a single-line text value from a JSDoc tag, e.g.
+ * @haxcms-theme-layout Sidebar
+ */
+function extractTextDocblockTag(content, tagName) {
+  const match = content.match(new RegExp(`@${tagName}[ \\t]+([^\\n*]+)`, "i"));
+  if (match) {
+    const value = match[1].trim();
+    return value !== "" ? value : null;
+  }
+  return null;
+}
+
+/**
+ * Whether this file's class says it can take another design system:
+ * static get acceptsDesignSystems() { return true; }
+ */
+function declaresAcceptsDesignSystems(content) {
+  return /static\s+get\s+acceptsDesignSystems\s*\(\s*\)\s*\{\s*return\s+true\b/.test(
+    content,
+  );
+}
+
+/**
+ * One themes.json entry. Browsing facets come from docblock tags on the
+ * theme's own file:
+ *   @haxcms-theme-category      what it is for (comma separated)
+ *   @haxcms-theme-layout        Sidebar, Top nav or Single column
+ *   @haxcms-theme-design-system the system it is built on, when not DDD
+ *   @haxcms-theme-inspired-by   the project it is an homage to (Jekyll,
+ *                               Hugo, Astro...), the browsing group
+ *   @haxcms-theme-inspired-by-theme  that project's theme, when there is one
+ *   @haxcms-theme-description   one sentence shown when picking a theme
+ */
+function buildThemeEntry(content, file, elementName) {
+  const displayName = extractDisplayName(content, elementName);
+  return {
+    element: elementName,
+    path: generateNpmPath(file, elementName),
+    name: displayName,
+    thumbnail: getThumbnailPath(elementName),
+    description:
+      extractTextDocblockTag(content, "haxcms-theme-description") ||
+      generateBlankDescription(displayName),
+    category: extractThemeCategories(content, elementName),
+    hidden: extractThemeHidden(content, elementName),
+    priority: extractThemePriority(content),
+    terrible: extractThemeTerrible(content, elementName),
+    supportedPalettes: extractThemePalettes(content),
+    layout: extractTextDocblockTag(content, "haxcms-theme-layout"),
+    designSystem: extractTextDocblockTag(content, "haxcms-theme-design-system"),
+    inspiredBy: extractTextDocblockTag(content, "haxcms-theme-inspired-by"),
+    inspiredByTheme: extractTextDocblockTag(
+      content,
+      "haxcms-theme-inspired-by-theme",
+    ),
+    // filled in after discovery, following the class chain
+    acceptsDesignSystems: false,
+  };
+}
+
+/**
  * Generate the NPM path for the theme
  */
 function generateNpmPath(filePath, elementName) {
@@ -242,10 +303,11 @@ function generateNpmPath(filePath, elementName) {
  * Check if file contains direct HAXCMSLitElementTheme extension
  */
 function isDirectHAXcmsTheme(content) {
-  return (
-    content.includes("HAXCMSLitElementTheme") ||
-    content.includes("extends DDDSuper(HAXCMSLitElementTheme)") ||
-    content.includes("extends HAXCMSLitElementTheme")
+  // a class that extends HAXCMSLitElementTheme, directly or through mixins
+  // such as DDDSuper(...); a file that only mentions the name (in a comment,
+  // an import it re-exports) is not a theme
+  return /class\s+\w+\s+extends\s+[\w(\s,]*\bHAXCMSLitElementTheme\b/.test(
+    content,
   );
 }
 
@@ -363,36 +425,19 @@ async function discoverThemes() {
         if (isDirectHAXcmsTheme(content)) {
           const elementName = extractThemeName(content, file);
 
+          // Track the class even when the file is not a theme itself: base
+          // classes such as HomageThemeBase are what real themes extend
+          const classMatch = content.match(/class\s+(\w+)\s+extends/);
+          if (classMatch) {
+            knownThemeClasses.add(classMatch[1]);
+          }
+
           // Skip excluded themes
           if (shouldSkipTheme(elementName, file)) {
             continue;
           }
 
-          const displayName = extractDisplayName(content, elementName);
-          const thumbnail = getThumbnailPath(elementName);
-          const npmPath = generateNpmPath(file, elementName);
-          const categories = extractThemeCategories(content, elementName);
-          const hidden = extractThemeHidden(content, elementName);
-          const priority = extractThemePriority(content);
-
-          themes[elementName] = {
-            element: elementName,
-            path: npmPath,
-            name: displayName,
-            thumbnail: thumbnail,
-            description: generateBlankDescription(displayName),
-            category: categories,
-            hidden: hidden,
-            priority: priority,
-            terrible: extractThemeTerrible(content, elementName),
-            supportedPalettes: extractThemePalettes(content),
-          };
-
-          // Extract the class name from the content for inheritance tracking
-          const classMatch = content.match(/class\s+(\w+)\s+extends/);
-          if (classMatch) {
-            knownThemeClasses.add(classMatch[1]);
-          }
+          themes[elementName] = buildThemeEntry(content, file, elementName);
         }
       } catch (error) {
         console.warn(`⚠️  Error processing file ${file}: ${error.message}`);
@@ -408,42 +453,27 @@ async function discoverThemes() {
 
       for (const [file, content] of fileContentMap) {
         const elementName = extractThemeName(content, file);
-
-        // Skip if we already found this theme or it should be excluded
-        if (themes[elementName] || shouldSkipTheme(elementName, file)) {
+        if (
+          themes[elementName] ||
+          !extendsThemeClass(content, knownThemeClasses)
+        ) {
           continue;
         }
 
-        // Check if this theme extends any known theme classes
-        if (extendsThemeClass(content, knownThemeClasses)) {
-          const displayName = extractDisplayName(content, elementName);
-          const thumbnail = getThumbnailPath(elementName);
-          const npmPath = generateNpmPath(file, elementName);
-          const categories = extractThemeCategories(content, elementName);
-          const hidden = extractThemeHidden(content, elementName);
-          const priority = extractThemePriority(content);
-
-          themes[elementName] = {
-            element: elementName,
-            path: npmPath,
-            name: displayName,
-            thumbnail: thumbnail,
-            description: generateBlankDescription(displayName),
-            category: categories,
-            hidden: hidden,
-            priority: priority,
-            terrible: extractThemeTerrible(content, elementName),
-            supportedPalettes: extractThemePalettes(content),
-          };
-
-          // Extract the class name for future inheritance tracking
-          const classMatch = content.match(/class\s+(\w+)\s+extends/);
-          if (classMatch) {
-            knownThemeClasses.add(classMatch[1]);
-          }
-
+        // Track intermediate base classes (HomageSidebarTheme, ...) even
+        // though they are not themes themselves
+        const classMatch = content.match(/class\s+(\w+)\s+extends/);
+        if (classMatch && !knownThemeClasses.has(classMatch[1])) {
+          knownThemeClasses.add(classMatch[1]);
           foundNewThemes = true;
         }
+
+        if (shouldSkipTheme(elementName, file)) {
+          continue;
+        }
+
+        themes[elementName] = buildThemeEntry(content, file, elementName);
+        foundNewThemes = true;
       }
 
       passNumber++;
@@ -455,6 +485,31 @@ async function discoverThemes() {
         );
         break;
       }
+    }
+
+    // acceptsDesignSystems is inherited: a theme accepts one when its own
+    // class or any class it extends declares it (the homage themes get it
+    // from HomageThemeBase)
+    const classInfo = new Map();
+    const themeClass = new Map();
+    for (const [file, content] of fileContentMap) {
+      const classMatch = content.match(/class\s+(\w+)\s+extends/);
+      if (!classMatch) continue;
+      classInfo.set(classMatch[1], {
+        parent: getExtendedClassName(content),
+        accepts: declaresAcceptsDesignSystems(content),
+      });
+      const tag = extractThemeName(content, file);
+      if (themes[tag] && !themeClass.has(tag))
+        themeClass.set(tag, classMatch[1]);
+    }
+    const accepts = (className, depth) => {
+      const info = classInfo.get(className);
+      if (!info || depth > 10) return false;
+      return info.accepts || accepts(info.parent, depth + 1);
+    };
+    for (const [tag, className] of themeClass) {
+      themes[tag].acceptsDesignSystems = accepts(className, 0);
     }
 
     console.log(`🎨 Discovered ${Object.keys(themes).length} themes`);
@@ -515,3 +570,9 @@ if (import.meta.url === `file://${process.argv[1]}`) {
 }
 
 export default discoverThemes;
+export {
+  isDirectHAXcmsTheme,
+  declaresAcceptsDesignSystems,
+  extractTextDocblockTag,
+  buildThemeEntry,
+};

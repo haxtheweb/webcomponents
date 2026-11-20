@@ -38,6 +38,10 @@ import { autorun, toJS } from "mobx";
  * @haxcms-theme-priority 100
  * @demo demo/index.html
  * @element bootstrap-theme
+ *
+ * @haxcms-theme-category Website, Organization, Landing page
+ * @haxcms-theme-layout Top nav
+ * @haxcms-theme-design-system Bootstrap
  */
 class BootstrapTheme extends HAXCMSThemeParts(
   BootstrapUserStylesMenuMixin(

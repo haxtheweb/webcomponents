@@ -26,7 +26,8 @@ import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
  * @title Link Card
  * `Single-page profile + link hub theme for HAXcms`
  * @haxcms-theme-priority -6
- * @haxcms-theme-category Website
+ * @haxcms-theme-category Website, Portfolio
+ * @haxcms-theme-layout Single column
  * @demo index.html
  * @element link-card-theme
  */

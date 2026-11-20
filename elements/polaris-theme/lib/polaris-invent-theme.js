@@ -45,7 +45,8 @@ import { LTIResizingMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/LTIR
  * - 8 (Sky and Ember)
  * - 11 (Boldly Blue)
  *
- * @haxcms-theme-category Website
+ * @haxcms-theme-category Website, Organization, Landing page
+ * @haxcms-theme-layout Top nav
  * @haxcms-theme-internal false
  * @demo demo/index.html
  * @element polaris-invent-theme

@@ -108,7 +108,8 @@ function go(url) {
  *
  * @title Ecosystem
  * @element ecosystem-theme
- * @haxcms-theme-category Website, Course
+ * @haxcms-theme-category Website, Course, Organization
+ * @haxcms-theme-layout Sidebar
  * @haxcms-theme-priority 5
  */
 class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
