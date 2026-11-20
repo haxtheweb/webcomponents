@@ -397,15 +397,18 @@ describe("app-hax-use-case-filter: the two import cards", () => {
     expect(fileNames).to.deep.equal([
       "Word Doc",
       "OpenDocument Text",
-      "PDF",
       "PowerPoint",
       "OpenDocument Presentation",
       "Excel",
       "OpenDocument Spreadsheet",
       "Markdown",
       "Text File",
+      "PDF",
       "HTML File",
     ]);
+    // both lists flow into two columns
+    expect(cards[0].querySelector(".import-kinds.two-col")).to.exist;
+    expect(cards[1].querySelector(".import-kinds.two-col")).to.exist;
     const urlNames = Array.from(
       cards[1].querySelectorAll(".import-kind-name"),
     ).map((n) => n.textContent.trim());
