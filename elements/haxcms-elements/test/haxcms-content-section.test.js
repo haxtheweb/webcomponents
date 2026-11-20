@@ -1382,7 +1382,7 @@ describe("haxcms-content-admin-dialog add area", () => {
   it("reports an add area for documents", async () => {
     const el = await contentSection();
     const area = el.addArea;
-    expect(area.accept).to.equal(".docx,.doc,.pdf,.pptx,.md,.txt,.html,.htm");
+    expect(area.accept).to.equal(".docx,.doc,.odt,.pdf,.pptx,.md,.markdown,.txt,.html,.htm");
     expect(area.disabled).to.equal(false);
   });
 
