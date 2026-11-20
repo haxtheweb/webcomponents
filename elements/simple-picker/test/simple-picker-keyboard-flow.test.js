@@ -132,6 +132,18 @@ describe("simple-picker keyboard flow", () => {
     const { el, before } = await setup(
       html`<simple-emoji-picker label="Emoji"></simple-emoji-picker>`,
     );
+    // simple-emoji-picker renders nothing until its IntersectionObserver
+    // reports it visible, then loads the full emoji set; on a slow runner
+    // Tab used to skip the still-empty picker and land on #after
+    const ready = await waitFor(
+      () =>
+        el.elementVisible &&
+        el.options.length > 1 &&
+        el.shadowRoot.querySelector("#listbox"),
+      5000,
+    );
+    expect(ready, "emoji picker rendered its list").to.be.ok;
+    await el.updateComplete;
     before.focus();
     await press("Tab");
     await openList(el);
@@ -210,6 +222,18 @@ describe("simple-picker keyboard flow", () => {
     const { el, before } = await setup(
       html`<simple-emoji-picker label="Emoji"></simple-emoji-picker>`,
     );
+    // simple-emoji-picker renders nothing until its IntersectionObserver
+    // reports it visible, then loads the full emoji set; on a slow runner
+    // Tab used to skip the still-empty picker and land on #after
+    const ready = await waitFor(
+      () =>
+        el.elementVisible &&
+        el.options.length > 1 &&
+        el.shadowRoot.querySelector("#listbox"),
+      5000,
+    );
+    expect(ready, "emoji picker rendered its list").to.be.ok;
+    await el.updateComplete;
     before.focus();
     await press("Tab");
     const value = el.value;
