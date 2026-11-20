@@ -165,7 +165,7 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
       <simple-icon-button-lite
         class="ops"
         id="outlineactionsbtn"
-        icon="${HaxUiAdminIcons.edit}"
+        icon="${HaxUiAdminIcons.structure}"
         label="${this.t.outlineActions}"
         title="${this.t.outlineActions}"
         @click="${this._toggleDialog}"

@@ -305,9 +305,11 @@ export function adminFileType(file) {
 export const ADMIN_DOCUMENT_TYPES = Object.freeze([
   "docx",
   "doc",
+  "odt",
   "pdf",
   "pptx",
   "md",
+  "markdown",
   "txt",
   "html",
   "htm",

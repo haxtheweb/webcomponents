@@ -279,7 +279,7 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
       dropDocuments: "Drop documents here or",
       browseDocuments: "browse",
       dropDocumentsHint:
-        "Drop Word, PDF, PowerPoint, Markdown, text or HTML files to make new unpublished pages under the current page",
+        "Drop Word, OpenDocument, PDF, PowerPoint, Markdown, text or HTML files to make new unpublished pages under the current page",
       makingPage: "Making page {done} of {count}: {name}…",
       madePages: "Made {count} unpublished pages under {parent}.",
       madePage: "Made 1 unpublished page under {parent}.",
@@ -1671,7 +1671,7 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
       // the values Merlin's upload builds once a file is chosen
       const values = {
         operation: "file-selected",
-        contents: ["md", "txt", "html", "htm"].includes(type)
+        contents: ["md", "markdown", "txt", "html", "htm"].includes(type)
           ? await file.text()
           : "",
         data: file,

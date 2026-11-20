@@ -108,6 +108,26 @@ describe("haxcms-admin-add-area", () => {
     expect(taken.map((f) => f.name)).to.deep.equal(["A.DOCX", "c.htm"]);
     expect(refused.map((f) => f.name)).to.deep.equal(["b.png", "noext"]);
   });
+
+  it("takes .odt, .md, .markdown and .txt documents", () => {
+    const { taken, refused } = splitAdminAddFiles(
+      [
+        doc("a.odt"),
+        doc("b.md"),
+        doc("c.markdown"),
+        doc("d.txt"),
+        doc("e.ods"),
+      ],
+      ADMIN_DOCUMENT_TYPES,
+    );
+    expect(taken.map((f) => f.name)).to.deep.equal([
+      "a.odt",
+      "b.md",
+      "c.markdown",
+      "d.txt",
+    ]);
+    expect(refused.map((f) => f.name)).to.deep.equal(["e.ods"]);
+  });
 });
 
 describe("haxcms-site-admin draws a section's add area", () => {

@@ -35,6 +35,7 @@ import "./lib/v2/app-hax-use-case.js";
 import "./lib/v2/app-hax-use-case-filter.js";
 import "./lib/v2/app-hax-search-results.js";
 import "@haxtheweb/haxcms-elements/lib/core/ui/app-hax-user-menu.js";
+import "@haxtheweb/haxcms-elements/lib/core/ui/hax-future-traveler-mark.js";
 import { trimSlashes } from "@haxtheweb/utils/lib/safe-html.js";
 import { settleOnce } from "@haxtheweb/utils/lib/events.js";
 import { siteAdminDockedModalStyles } from "@haxtheweb/haxcms-elements/lib/core/admin/site-admin-sections.js";
@@ -486,11 +487,11 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       createSiteFromFile: "Create a site from {name}",
       chooseDifferentFile: "Choose a different file…",
       chooseFileDescription:
-        "Opens your file picker. Sites can be made from .docx, .pdf, .pptx, .xlsx, .html and .htm files.",
+        "Opens your file picker. Sites can be made from .docx, .odt, .pdf, .pptx, .xlsx, .md, .txt, .html and .htm files.",
       noImporterForType: "HAX can't make a site from a {type} file.",
       noImporterForFile: "HAX can't make a site from this file.",
       supportedFileTypes:
-        "Sites can be made from .docx, .pdf, .pptx, .xlsx, .html or .htm",
+        "Sites can be made from .docx, .odt, .pdf, .pptx, .xlsx, .md, .txt, .html or .htm",
       seeEveryImportOption: "See every import option",
       importFromUrlInstead: "Import from a link instead…",
       createSiteFromTemplate: "Create a site from a template…",
@@ -1272,7 +1273,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           margin-right: var(--hax-ui-gap-lg, 12px);
           --simple-icon-height: var(--ddd-icon-xs, 32px);
           --simple-icon-width: var(--ddd-icon-xs, 32px);
-          pointer-events: none;
+          pointer-events: auto;
         }
         .right-group {
           align-items: center;
@@ -3066,12 +3067,10 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
               name="app-header-post"
               @slotchange="${this._syncHeaderPostSlot}"
             ></slot>
-            <!-- the HAX mark: decorative, it says you are in HAX -->
+            <!-- the HAX mark: decorative, it says you are in HAX. Click
+                 him and he glitches into another era, and stays there -->
             <span class="haxLogo" id="hlogo" aria-hidden="true">
-              <simple-icon-lite
-                icon="hax:future-traveler"
-                no-colorize
-              ></simple-icon-lite>
+              <hax-future-traveler-mark></hax-future-traveler-mark>
             </span>
           </div>
         </app-hax-top-bar>

@@ -23,9 +23,13 @@ export { isImportUrl };
 // the file types a site can be made from, as the file importers take them
 export const SITE_FILE_EXTENSIONS = [
   "docx",
+  "odt",
   "pdf",
   "pptx",
   "xlsx",
+  "md",
+  "markdown",
+  "txt",
   "html",
   "htm",
 ];
@@ -53,6 +57,10 @@ export function fileExtension(name) {
  * @returns {string}
  */
 export function dragTypeLabel(mimeType) {
+  // mimeTypeToName names text/plain "text"; as a file it is a .txt
+  if (mimeType === "text/plain") {
+    return ".txt";
+  }
   const name = mimeTypeToName(mimeType);
   return name && name.indexOf(".") === 0 ? name : "";
 }

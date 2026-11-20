@@ -24,6 +24,7 @@ import { loadElementGizmo } from "./utils/ElementGizmo.js";
 import "./ui/app-hax-top-bar.js";
 import "./ui/app-hax-user-menu.js";
 import "./ui/app-hax-user-menu-button.js";
+import "./ui/hax-future-traveler-mark.js";
 import { openCharacterBuilder } from "./ui/app-hax-user-menu-toggle.js";
 import "./ui/hax-confirm-dialog.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
@@ -408,7 +409,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           height: var(--ddd-control-height-sm, 40px);
           --simple-icon-height: var(--ddd-icon-xs, 32px);
           --simple-icon-width: var(--ddd-icon-xs, 32px);
-          pointer-events: none;
+          /* decorative, but clickable: he remixes his era (an easter egg) */
+          pointer-events: auto;
         }
         /* a HAX UI menu row with a switch, like the dark mode row */
         .soundToggle {
@@ -1756,12 +1758,35 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               dataToPost.append("parentId", itemPptx.parent);
             }
             break;
+          case "odt":
+            dataToPost.append("upload", values.data);
+            endpointCall = "@system/odtToHtml";
+            if (mode === "create-branch") {
+              endpointCall = "@system/importOdt";
+              dataToPost.append("method", "branch");
+              dataToPost.append("type", "branch");
+              // set parent to same as current page's parent
+              const itemOdt = toJS(store.activeItem);
+              dataToPost.append("parentId", itemOdt.parent);
+            }
+            break;
           case "md":
+          case "markdown":
           case "txt":
-            endpointCall = "@system/mdToHtml";
-            dataToPost = {
-              md: values.contents,
-            };
+            // the import route reads the file itself: front matter is
+            // taken off and text is read as Markdown, the same as making
+            // a whole site from it
+            dataToPost.append("upload", values.data);
+            endpointCall = "@system/importMd";
+            if (mode === "create-branch") {
+              dataToPost.append("method", "branch");
+              dataToPost.append("type", "branch");
+              // set parent to same as current page's parent
+              const itemMd = toJS(store.activeItem);
+              dataToPost.append("parentId", itemMd.parent);
+            } else {
+              dataToPost.append("method", "page");
+            }
             break;
           case "html":
           case "htm":
@@ -2820,8 +2845,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             switch (values.type) {
               case "pdf":
               case "md":
+              case "markdown":
               case "docx":
               case "doc":
+              case "odt":
               case "pptx":
               case "txt":
               case "html":
@@ -2859,9 +2886,18 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                     path: this.t.pageCreatedUnderCurrent,
                   });
                   if (
-                    ["docx", "doc", "pdf", "pptx", "html", "htm"].includes(
-                      values.type,
-                    )
+                    [
+                      "docx",
+                      "doc",
+                      "odt",
+                      "pdf",
+                      "pptx",
+                      "md",
+                      "markdown",
+                      "txt",
+                      "html",
+                      "htm",
+                    ].includes(values.type)
                   ) {
                     results.push({
                       title: this.t.createOutlineFromType.replace(
@@ -4313,17 +4349,15 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           ${this._renderPreviewControls()}
           <span class="home-btn">
             <!-- the HAX mark: decorative, it says you are in HAX; the way
-                 back to your sites is in the user menu -->
+                 back to your sites is in the user menu. Click him and he
+                 glitches into another era, and stays there (an easter egg) -->
             <span
               class="haxLogo"
               id="backtosites"
               part="hax-logo"
               aria-hidden="true"
             >
-              <simple-icon-lite
-                icon="hax:future-traveler"
-                no-colorize
-              ></simple-icon-lite>
+              <hax-future-traveler-mark></hax-future-traveler-mark>
             </span>
           </span>
         </div>

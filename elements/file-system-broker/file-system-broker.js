@@ -142,6 +142,12 @@ class FileSystemBroker extends HTMLElement {
         return "video/*";
       case "markdown":
         return ".txt,.md";
+      case "md":
+        return ".md,.markdown";
+      case "txt":
+        return ".txt";
+      case "odt":
+        return ".odt";
       case "*":
         return "*/*";
       default:
@@ -241,6 +247,15 @@ class FileSystemBroker extends HTMLElement {
         break;
       case "markdown":
         accept = { "text/*": [".txt", ".md"] };
+        break;
+      case "md":
+        accept = { "text/markdown": [".md", ".markdown"] };
+        break;
+      case "txt":
+        accept = { "text/plain": [".txt"] };
+        break;
+      case "odt":
+        accept = { "application/vnd.oasis.opendocument.text": [".odt"] };
         break;
     }
     return accept;

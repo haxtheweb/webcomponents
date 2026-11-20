@@ -78,7 +78,7 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
       noImporterForType: "HAX can't make a site from a {type} file.",
       noImporterForFile: "HAX can't make a site from this file.",
       supportedFileTypes:
-        "Sites can be made from .docx, .pdf, .pptx, .xlsx, .html or .htm",
+        "Sites can be made from .docx, .odt, .pdf, .pptx, .xlsx, .md, .txt, .html or .htm",
       loadingTemplates: "Loading templates...",
       noTemplatesMatchResetFilters:
         "No templates match your current filters. Reset filters to see more options.",
@@ -120,6 +120,16 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
       htmlFileImportDescription:
         "Import a .html/.htm outline into a new HAX site",
       htmlFileImportTooltip: "HTML file import",
+      odtImportTitle: "OpenDocument Text",
+      odtImportDescription: "Import an .odt outline into a new HAX site",
+      odtImportTooltip: "ODT import",
+      markdownImportTitle: "Markdown",
+      markdownImportDescription: "Import a .md outline into a new HAX site",
+      markdownImportTooltip: "Markdown import",
+      textFileImportTitle: "Text File",
+      textFileImportDescription:
+        "Import a .txt file into a new HAX site; # headings become pages",
+      textFileImportTooltip: "TXT import",
       gitbookImportDescription: "Import a GitBook repo into a new HAX site",
       gitBasedImport: "Git-based import",
       gitbookImportPrompt: "URL for the GitBook git repo",
@@ -1718,6 +1728,21 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
       {
         dataType: "import",
         importKind: "file",
+        importType: "odt",
+        callback: "@system/importOdt",
+        fileType: "odt",
+        useCaseTitle: this.t.odtImportTitle,
+        useCaseImage: "",
+        useCaseDescription: this.t.odtImportDescription,
+        useCaseIcon: [
+          { icon: "hax:file-doc", tooltip: this.t.odtImportTooltip },
+        ],
+        useCaseTag: ["Import", "ODT"],
+        demoLink: "#",
+      },
+      {
+        dataType: "import",
+        importKind: "file",
         importType: "pdf",
         callback: "@system/importPdf",
         fileType: "pdf",
@@ -1758,6 +1783,36 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
           { icon: "hax:file-xls", tooltip: this.t.excelImportTooltip },
         ],
         useCaseTag: ["Import", "XLSX"],
+        demoLink: "#",
+      },
+      {
+        dataType: "import",
+        importKind: "file",
+        importType: "md",
+        callback: "@system/importMd",
+        fileType: "md",
+        useCaseTitle: this.t.markdownImportTitle,
+        useCaseImage: "",
+        useCaseDescription: this.t.markdownImportDescription,
+        useCaseIcon: [
+          { icon: "hax:markdown", tooltip: this.t.markdownImportTooltip },
+        ],
+        useCaseTag: ["Import", "Markdown"],
+        demoLink: "#",
+      },
+      {
+        dataType: "import",
+        importKind: "file",
+        importType: "txt",
+        callback: "@system/importMd",
+        fileType: "txt",
+        useCaseTitle: this.t.textFileImportTitle,
+        useCaseImage: "",
+        useCaseDescription: this.t.textFileImportDescription,
+        useCaseIcon: [
+          { icon: "hax:file-blank", tooltip: this.t.textFileImportTooltip },
+        ],
+        useCaseTag: ["Import", "TXT"],
         demoLink: "#",
       },
       {
@@ -3163,7 +3218,7 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
         "quarto",
         "html",
       ],
-      file: ["docx", "pdf", "pptx", "xlsx", "html"],
+      file: ["docx", "odt", "pdf", "pptx", "xlsx", "md", "txt", "html"],
     };
     const items = this.getImportItems().filter(
       (item) => item.importKind === kind,
@@ -3176,7 +3231,13 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
   }
 
   _fileExtensionsLabel(item) {
-    return item.importType === "html" ? ".html, .htm" : `.${item.fileType}`;
+    if (item.importType === "html") {
+      return ".html, .htm";
+    }
+    if (item.importType === "md") {
+      return ".md, .markdown";
+    }
+    return `.${item.fileType}`;
   }
 
   /**
@@ -3288,8 +3349,9 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
       return null;
     }
     const ext = parts.pop().toLowerCase();
-    // .htm is the HTML File importer too
-    return this.importItemFor("file", ext === "htm" ? "html" : ext);
+    // .htm is the HTML File importer too, .markdown the Markdown one
+    const aliases = { htm: "html", markdown: "md" };
+    return this.importItemFor("file", aliases[ext] || ext);
   }
 
   /**
