@@ -3736,6 +3736,60 @@
         }
       }
     },
+    "range": {
+      "lift": {
+        "height": {
+          "$type": "dimension",
+          "$value": "{ddd.spacing.3}",
+          "$description": "fine pointers",
+          "$extensions": {
+            "org.haxtheweb.ddd": {
+              "cssVar": "--ddd-range-lift-height"
+            }
+          }
+        },
+        "height-coarse": {
+          "$type": "dimension",
+          "$value": "{ddd.spacing.6}",
+          "$description": "touch: clears a fingertip",
+          "$extensions": {
+            "org.haxtheweb.ddd": {
+              "cssVar": "--ddd-range-lift-height-coarse"
+            }
+          }
+        },
+        "width": {
+          "$type": "dimension",
+          "$value": "{ddd.spacing.16}",
+          "$description": "width of the bump",
+          "$extensions": {
+            "org.haxtheweb.ddd": {
+              "cssVar": "--ddd-range-lift-width"
+            }
+          }
+        },
+        "rest": {
+          "$type": "number",
+          "$value": 0,
+          "$description": "share of the lift shown at rest, 0 to 1",
+          "$extensions": {
+            "org.haxtheweb.ddd": {
+              "cssVar": "--ddd-range-lift-rest"
+            }
+          }
+        },
+        "duration": {
+          "$type": "duration",
+          "$value": "{ddd.duration.fast}",
+          "$description": "rise and settle",
+          "$extensions": {
+            "org.haxtheweb.ddd": {
+              "cssVar": "--ddd-range-lift-duration"
+            }
+          }
+        }
+      }
+    },
     "status": {
       "default": {
         "signal": {

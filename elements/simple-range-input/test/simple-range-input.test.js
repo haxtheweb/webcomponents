@@ -219,3 +219,90 @@ describe("simple-range-input keyboard focus ring", () => {
     expect(parseFloat(cs.outlineWidth)).to.be.above(0);
   });
 });
+
+describe("simple-range-input pin lift", () => {
+  const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+  const liftNow = (el) =>
+    parseFloat(el.style.getPropertyValue("--simple-range-input-lift-now")) || 0;
+
+  it("is off by default and draws no lift", async () => {
+    const el = await fixture(html`<simple-range-input></simple-range-input>`);
+    expect(el.lift).to.equal(false);
+    expect(el.shadowRoot.querySelector("#lift")).to.equal(null);
+  });
+
+  it("draws the track as a hidden decoration under the native input", async () => {
+    const el = await fixture(
+      html`<simple-range-input
+        lift
+        label="Seek"
+        min="0"
+        max="100"
+        value="50"
+        style="width: 300px; --ddd-range-lift-duration: 0ms"
+      ></simple-range-input>`,
+    );
+    await sleep(20);
+    const svg = el.shadowRoot.querySelector("#lift");
+    expect(svg).to.not.equal(null);
+    expect(svg.getAttribute("aria-hidden")).to.equal("true");
+    expect(el.hasAttribute("lift")).to.equal(true);
+    // the native input stays the control
+    const input = el.shadowRoot.querySelector("input");
+    expect(input.getAttribute("type")).to.equal("range");
+    expect(
+      el.shadowRoot.querySelector("#lift-fill").getAttribute("d"),
+    ).to.match(/^M/);
+    expect(
+      el.shadowRoot.querySelector("#lift-track").getAttribute("d"),
+    ).to.match(/^M/);
+    // flat at rest, with the space for the bump reserved
+    expect(liftNow(el)).to.equal(0);
+    expect(
+      parseFloat(globalThis.getComputedStyle(el).paddingTop),
+    ).to.be.greaterThan(0);
+    await expect(el).shadowDom.to.be.accessible();
+  });
+
+  it("rises while grabbed and settles when let go", async () => {
+    const el = await fixture(
+      html`<simple-range-input
+        lift
+        min="0"
+        max="100"
+        value="25"
+        style="width: 300px; --ddd-range-lift-duration: 0ms; --simple-range-input-lift-height: 12px"
+      ></simple-range-input>`,
+    );
+    await sleep(20);
+    el.dispatchEvent(new PointerEvent("pointerdown", { bubbles: true }));
+    expect(liftNow(el)).to.equal(12);
+    globalThis.dispatchEvent(new PointerEvent("pointerup"));
+    expect(liftNow(el)).to.equal(0);
+  });
+
+  it("rises for value keys after a click focus", async () => {
+    const el = await fixture(
+      html`<simple-range-input
+        lift
+        style="width: 300px; --ddd-range-lift-duration: 0ms; --simple-range-input-lift-height: 10px"
+      ></simple-range-input>`,
+    );
+    await sleep(20);
+    el.dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowRight" }));
+    expect(liftNow(el)).to.equal(10);
+    el.dispatchEvent(new FocusEvent("focusout"));
+    expect(liftNow(el)).to.equal(0);
+  });
+
+  it("keeps part of the bump at rest when the rest token asks", async () => {
+    const el = await fixture(
+      html`<simple-range-input
+        lift
+        style="width: 300px; --ddd-range-lift-duration: 0ms; --simple-range-input-lift-height: 20px; --simple-range-input-lift-rest: 0.5"
+      ></simple-range-input>`,
+    );
+    await sleep(20);
+    expect(liftNow(el)).to.equal(10);
+  });
+});

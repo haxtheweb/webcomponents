@@ -120,6 +120,20 @@ describe("DDD typography, measure and aspect ratios", () => {
   });
 });
 
+describe("DDD range pin lift", () => {
+  it("defines the scrubber lift tokens on the DDD scales", () => {
+    expect(value("--ddd-range-lift-height")).to.equal("var(--ddd-spacing-3)");
+    expect(value("--ddd-range-lift-height-coarse")).to.equal(
+      "var(--ddd-spacing-6)",
+    );
+    expect(value("--ddd-range-lift-width")).to.equal("var(--ddd-spacing-16)");
+    expect(value("--ddd-range-lift-rest")).to.equal("0");
+    expect(value("--ddd-range-lift-duration")).to.equal(
+      "var(--ddd-duration-fast)",
+    );
+  });
+});
+
 describe("DDD loading skeleton", () => {
   it("defines skeleton tokens with light and dark fills", () => {
     expect(value("--ddd-skeleton-base")).to.match(/^light-dark\(/);
