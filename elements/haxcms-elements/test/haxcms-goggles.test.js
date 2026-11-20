@@ -67,6 +67,50 @@ describe("haxcms-goggles (developer mode)", () => {
     button.remove();
   });
 
+  it("flags an issue through the shared HAX UI fields, never hand-drawn ones", async () => {
+    const target = globalThis.document.createElement("simple-icon-lite");
+    globalThis.document.body.appendChild(target);
+    GogglesState.set({ on: true, lensOn: true, lens: "code" });
+    const g = overlay();
+    g.phase = "";
+    g._openIssue(target);
+    await g.updateComplete;
+    const form = g.shadowRoot.querySelector(".issue");
+    expect(form).to.not.equal(null);
+    // no hand-drawn fields: text goes in simple-fields, choices are pressed buttons
+    expect(form.querySelectorAll("input, textarea, select").length).to.equal(0);
+    ["#issue-title", "#issue-notes"].forEach((id) => {
+      const f = form.querySelector(id);
+      expect(f.localName, id).to.equal("simple-fields-field");
+      expect(f.classList.contains("hax-ui-simple-field")).to.equal(true);
+    });
+    // a field's change lands in the issue being written
+    const title = form.querySelector("#issue-title");
+    title.value = "Caption overlaps";
+    title.dispatchEvent(
+      new CustomEvent("value-changed", {
+        bubbles: true,
+        composed: true,
+        detail: { value: "Caption overlaps" },
+      }),
+    );
+    // the choices say which one is picked, and a press picks another
+    const kind = form.querySelectorAll('.choices [role="group"]')[0];
+    const [bug, wish] = kind.querySelectorAll("button");
+    expect(bug.getAttribute("aria-pressed")).to.equal("true");
+    wish.click();
+    await g.updateComplete;
+    expect(g._issue.title).to.equal("Caption overlaps");
+    expect(g._issue.kind).to.equal("wish");
+    expect(wish.getAttribute("aria-pressed")).to.equal("true");
+    expect(bug.getAttribute("aria-pressed")).to.equal("false");
+    // the notes label follows the kind
+    expect(form.querySelector("#issue-notes").label).to.equal(
+      g.t.whatDoYouWish,
+    );
+    target.remove();
+  });
+
   it("loads who made what and finds one person's work", async () => {
     const makers = await loadMakers();
     expect(Object.keys(makers.tags).length).to.be.greaterThan(100);

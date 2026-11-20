@@ -759,6 +759,14 @@ export const HaxUiAdminSimpleFields = [
     simple-fields.hax-ui-simple-field.compact simple-fields-field {
       min-height: var(--hax-ui-row-height);
     }
+    /* an option's words stay the text color when it has focus: the accent
+       simple-fields gives a focused option's label is a fill color, and in
+       dark chrome it falls under 4.5:1 on the hovered row. Focus and the
+       choice still show on the field's ring and the option's own control. */
+    simple-fields-field.hax-ui-simple-field::part(option-label),
+    simple-fields.hax-ui-simple-field simple-fields-field::part(option-label) {
+      color: var(--hax-ui-text);
+    }
     /* the field above sets --simple-fields-border-color transparent, which
        the icon picker also reads for its trigger; keep the trigger bordered */
     simple-fields-field.hax-ui-simple-field simple-icon-select,
