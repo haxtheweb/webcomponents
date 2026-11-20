@@ -113,6 +113,14 @@ describe("FileSystemBroker test", () => {
       expect(element.typeToAcceptString("odt")).to.equal(".odt");
       expect(element.typeToAcceptString("md")).to.equal(".md,.markdown");
       expect(element.typeToAcceptString("txt")).to.equal(".txt");
+      expect(element.typeToAccept("odp")).to.deep.equal({
+        "application/vnd.oasis.opendocument.presentation": [".odp"],
+      });
+      expect(element.typeToAcceptString("odp")).to.equal(".odp");
+      // .ods shares the spreadsheet picker
+      expect(element.typeToAcceptString("ods")).to.equal(
+        ".csv,.xls,.xlsx,.ods",
+      );
     });
 
     it("handles CSV type correctly", () => {

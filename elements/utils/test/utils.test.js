@@ -587,6 +587,12 @@ describe("Utils test", () => {
       expect(
         mimeTypeToName("application/vnd.oasis.opendocument.text"),
       ).to.equal(".odt");
+      expect(
+        mimeTypeToName("application/vnd.oasis.opendocument.presentation"),
+      ).to.equal(".odp");
+      expect(
+        mimeTypeToName("application/vnd.oasis.opendocument.spreadsheet"),
+      ).to.equal(".ods");
       expect(mimeTypeToName("application/pdf")).to.equal(".pdf");
     });
 

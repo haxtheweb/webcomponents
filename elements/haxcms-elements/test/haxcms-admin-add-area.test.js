@@ -117,6 +117,7 @@ describe("haxcms-admin-add-area", () => {
         doc("c.markdown"),
         doc("d.txt"),
         doc("e.ods"),
+        doc("f.odp"),
       ],
       ADMIN_DOCUMENT_TYPES,
     );
@@ -125,7 +126,9 @@ describe("haxcms-admin-add-area", () => {
       "b.md",
       "c.markdown",
       "d.txt",
+      "f.odp",
     ]);
+    // a spreadsheet makes a site, not a page
     expect(refused.map((f) => f.name)).to.deep.equal(["e.ods"]);
   });
 });

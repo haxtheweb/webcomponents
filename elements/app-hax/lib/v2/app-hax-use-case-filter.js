@@ -78,7 +78,7 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
       noImporterForType: "HAX can't make a site from a {type} file.",
       noImporterForFile: "HAX can't make a site from this file.",
       supportedFileTypes:
-        "Sites can be made from .docx, .odt, .pdf, .pptx, .xlsx, .md, .txt, .html or .htm",
+        "Sites can be made from .docx, .odt, .pdf, .pptx, .odp, .xlsx, .ods, .md, .txt, .html or .htm",
       loadingTemplates: "Loading templates...",
       noTemplatesMatchResetFilters:
         "No templates match your current filters. Reset filters to see more options.",
@@ -123,6 +123,14 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
       odtImportTitle: "OpenDocument Text",
       odtImportDescription: "Import an .odt outline into a new HAX site",
       odtImportTooltip: "ODT import",
+      odpImportTitle: "OpenDocument Presentation",
+      odpImportDescription:
+        "Import an .odp presentation into a new HAX site; each slide becomes a page",
+      odpImportTooltip: "ODP import",
+      odsImportTitle: "OpenDocument Spreadsheet",
+      odsImportDescription:
+        "Import an .ods outline (title, slug, parent, content columns) into a new HAX site",
+      odsImportTooltip: "ODS import",
       markdownImportTitle: "Markdown",
       markdownImportDescription: "Import a .md outline into a new HAX site",
       markdownImportTooltip: "Markdown import",
@@ -1773,6 +1781,21 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
       {
         dataType: "import",
         importKind: "file",
+        importType: "odp",
+        callback: "@system/importOdp",
+        fileType: "odp",
+        useCaseTitle: this.t.odpImportTitle,
+        useCaseImage: "",
+        useCaseDescription: this.t.odpImportDescription,
+        useCaseIcon: [
+          { icon: "hax:file-ppt", tooltip: this.t.odpImportTooltip },
+        ],
+        useCaseTag: ["Import", "ODP"],
+        demoLink: "#",
+      },
+      {
+        dataType: "import",
+        importKind: "file",
         importType: "xlsx",
         callback: "@system/importXlsx",
         fileType: "xlsx",
@@ -1783,6 +1806,22 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
           { icon: "hax:file-xls", tooltip: this.t.excelImportTooltip },
         ],
         useCaseTag: ["Import", "XLSX"],
+        demoLink: "#",
+      },
+      {
+        dataType: "import",
+        importKind: "file",
+        importType: "ods",
+        // the spreadsheet importer reads .ods with the same columns
+        callback: "@system/importXlsx",
+        fileType: "ods",
+        useCaseTitle: this.t.odsImportTitle,
+        useCaseImage: "",
+        useCaseDescription: this.t.odsImportDescription,
+        useCaseIcon: [
+          { icon: "hax:file-xls", tooltip: this.t.odsImportTooltip },
+        ],
+        useCaseTag: ["Import", "ODS"],
         demoLink: "#",
       },
       {
@@ -3218,7 +3257,18 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
         "quarto",
         "html",
       ],
-      file: ["docx", "odt", "pdf", "pptx", "xlsx", "md", "txt", "html"],
+      file: [
+        "docx",
+        "odt",
+        "pdf",
+        "pptx",
+        "odp",
+        "xlsx",
+        "ods",
+        "md",
+        "txt",
+        "html",
+      ],
     };
     const items = this.getImportItems().filter(
       (item) => item.importKind === kind,

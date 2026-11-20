@@ -107,6 +107,22 @@ describe("app-hax-use-case-filter: importers for Merlin", () => {
     );
   });
 
+  it("finds the .odp and .ods importers", () => {
+    const odp = el.importItemForFileName("deck.odp");
+    expect(odp.importType).to.equal("odp");
+    expect(odp.callback).to.equal("@system/importOdp");
+    const ods = el.importItemForFileName("Outline.ODS");
+    expect(ods.importType).to.equal("ods");
+    // the spreadsheet importer reads .ods too
+    expect(ods.callback).to.equal("@system/importXlsx");
+    expect(
+      dragTypeLabel("application/vnd.oasis.opendocument.presentation"),
+    ).to.equal(".odp");
+    expect(
+      dragTypeMakesSite("application/vnd.oasis.opendocument.spreadsheet"),
+    ).to.equal(true);
+  });
+
   it("finds an importer by kind and type", () => {
     expect(el.importItemFor("url", "wordpress").callback).to.equal(
       "@system/wordpressToSite",
@@ -383,7 +399,9 @@ describe("app-hax-use-case-filter: the two import cards", () => {
       "OpenDocument Text",
       "PDF",
       "PowerPoint",
+      "OpenDocument Presentation",
       "Excel",
+      "OpenDocument Spreadsheet",
       "Markdown",
       "Text File",
       "HTML File",
