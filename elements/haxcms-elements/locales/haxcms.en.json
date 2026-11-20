@@ -731,7 +731,5 @@
   "developerModeOn": "Developer mode on: the goggles are in the top bar",
   "developerModeOff": "Developer mode off",
   "gogglesPutOn": "Put on the goggles",
-  "gogglesTakeOff": "Take off the goggles",
-  "gogglesLensesOff": "Lenses off",
-  "gogglesLensesOn": "Lenses on"
+  "gogglesTakeOff": "Take off the goggles"
 }

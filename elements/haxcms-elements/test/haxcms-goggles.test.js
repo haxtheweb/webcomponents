@@ -1,6 +1,10 @@
 import { expect } from "@open-wc/testing";
 import { emulateMedia } from "@web/test-runner-commands";
-import { GogglesState, loadMakers } from "../lib/core/ui/haxcms-goggles.js";
+import {
+  GogglesState,
+  GOGGLES_LENS_KEY,
+  loadMakers,
+} from "../lib/core/ui/haxcms-goggles.js";
 
 const overlay = () => globalThis.document.querySelector("haxcms-goggles");
 const wait = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -18,6 +22,7 @@ describe("haxcms-goggles (developer mode)", () => {
   });
   after(async () => {
     await emulateMedia({ reducedMotion: "no-preference" });
+    globalThis.localStorage.removeItem(GOGGLES_LENS_KEY);
   });
   afterEach(async () => {
     if (GogglesState.on) {
@@ -72,37 +77,37 @@ describe("haxcms-goggles (developer mode)", () => {
     await g.updateComplete;
     const form = g.shadowRoot.querySelector(".issue");
     expect(form).to.not.equal(null);
+    // no hand-drawn fields: text goes in simple-fields, choices are pressed buttons
     expect(form.querySelectorAll("input, textarea, select").length).to.equal(0);
-    const fields = Array.from(form.querySelectorAll("simple-fields-field"));
-    const by = (name) => fields.find((f) => f.dataset.field === name);
-    ["kind", "title", "notes"].forEach((name) => {
-      expect(by(name), name).to.not.equal(undefined);
-      expect(by(name).classList.contains("hax-ui-simple-field")).to.equal(true);
+    ["#issue-title", "#issue-notes"].forEach((id) => {
+      const f = form.querySelector(id);
+      expect(f.localName, id).to.equal("simple-fields-field");
+      expect(f.classList.contains("hax-ui-simple-field")).to.equal(true);
     });
     // a field's change lands in the issue being written
-    const title = by("title");
+    const title = form.querySelector("#issue-title");
     title.value = "Caption overlaps";
     title.dispatchEvent(
       new CustomEvent("value-changed", {
         bubbles: true,
         composed: true,
-        detail: title,
+        detail: { value: "Caption overlaps" },
       }),
     );
-    const kind = by("kind");
-    kind.value = "wish";
-    kind.dispatchEvent(
-      new CustomEvent("value-changed", {
-        bubbles: true,
-        composed: true,
-        detail: kind,
-      }),
-    );
+    // the choices say which one is picked, and a press picks another
+    const kind = form.querySelectorAll('.choices [role="group"]')[0];
+    const [bug, wish] = kind.querySelectorAll("button");
+    expect(bug.getAttribute("aria-pressed")).to.equal("true");
+    wish.click();
     await g.updateComplete;
     expect(g._issue.title).to.equal("Caption overlaps");
     expect(g._issue.kind).to.equal("wish");
+    expect(wish.getAttribute("aria-pressed")).to.equal("true");
+    expect(bug.getAttribute("aria-pressed")).to.equal("false");
     // the notes label follows the kind
-    expect(by("notes").label).to.equal(g.t.whatDoYouWish);
+    expect(form.querySelector("#issue-notes").label).to.equal(
+      g.t.whatDoYouWish,
+    );
     target.remove();
   });
 
@@ -205,5 +210,59 @@ describe("haxcms-goggles (developer mode)", () => {
     await g.updateComplete;
     expect(g.pinned).to.equal(false);
     el.remove();
+  });
+
+  it("puts the goggles back on with the lens chosen last, not always the x-ray", async () => {
+    GogglesState.set({ on: true, lensOn: true, lens: "makers" });
+    expect(overlay().lens).to.equal("makers");
+    // off, then on again the way the top bar button does it
+    GogglesState.set({ on: false });
+    await wait(50);
+    GogglesState.set({ on: true, lensOn: true });
+    expect(overlay().lens).to.equal("makers");
+    expect(overlay()._status).to.contain("Makers lens");
+    // lenses off and on again keeps it too
+    GogglesState.set({ lensOn: false });
+    GogglesState.set({ lensOn: true });
+    expect(overlay().lens).to.equal("makers");
+    // kept for the next visit, with the person when following someone
+    expect(
+      JSON.parse(globalThis.localStorage.getItem(GOGGLES_LENS_KEY)).lens,
+    ).to.equal("makers");
+    GogglesState.set({ lens: "person", person: "btopro" });
+    expect(
+      JSON.parse(globalThis.localStorage.getItem(GOGGLES_LENS_KEY)),
+    ).to.deep.equal({ lens: "person", person: "btopro" });
+    await takeOff();
+  });
+
+  it("warps out the goggles of the era the Future Traveler mark was left in", async () => {
+    GogglesState.set({ on: true, lensOn: true, lens: "code" });
+    const g = overlay();
+    globalThis.localStorage.setItem("hax-future-traveler-era", "steam");
+    // no mark on this page: the era comes from where the mark keeps it
+    g._travelerFrom();
+    expect(g._era).to.equal("steam");
+    // a mark on the page: his era, and the warp starts where he sits
+    const mark = globalThis.document.createElement("hax-future-traveler-mark");
+    mark.era = "handheld";
+    mark.style.cssText =
+      "position:fixed;right:8px;top:8px;width:32px;height:32px;display:block";
+    globalThis.document.body.appendChild(mark);
+    g._travelerFrom();
+    expect(g._era).to.equal("handheld");
+    expect(g.style.getPropertyValue("--haxcms-goggles-from-x")).to.not.equal(
+      "",
+    );
+    expect(
+      parseFloat(g.style.getPropertyValue("--haxcms-goggles-from-x")),
+    ).to.be.greaterThan(0);
+    // he leaves his corner while he is out, and is back after
+    g._markAway(true);
+    expect(mark.style.visibility).to.equal("hidden");
+    g._markAway(false);
+    expect(mark.style.visibility).to.equal("");
+    mark.remove();
+    globalThis.localStorage.removeItem("hax-future-traveler-era");
   });
 });

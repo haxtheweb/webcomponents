@@ -117,6 +117,8 @@ const ADMIN_ROUTE_PATHS = new Set(Object.keys(ADMIN_ROUTE_QUERY_PATHS));
 
 // localStorage key for developer mode (the goggles), kept per browser
 const DEVELOPER_MODE_KEY = "haxcms-developer-mode";
+// the lens the goggles remember (ui/haxcms-goggles.js); forgotten with developer mode
+const GOGGLES_LENS_KEY = "haxcms-goggles-lens";
 
 /**
  * `haxcms-site-editor-ui`
@@ -3487,8 +3489,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       developerModeOff: "Developer mode off",
       gogglesPutOn: "Put on the goggles",
       gogglesTakeOff: "Take off the goggles",
-      gogglesLensesOff: "Lenses off",
-      gogglesLensesOn: "Lenses on",
       previewDialogOpen: "Close the open dialog to preview the site",
       shortcutPreview: "Preview the site as a visitor sees it",
       siteDashboard: "Sites Dashboard",
@@ -3570,7 +3570,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.previewMode = false;
     this.developerMode = localStorageGet(DEVELOPER_MODE_KEY, false) === true;
     this.gogglesOn = false;
-    this.gogglesLensOn = true;
     this.previewDevice = "window";
     this.previewSideways = false;
     this.previewDark = false;
@@ -6769,10 +6768,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         type: Boolean,
         attribute: false,
       },
-      gogglesLensOn: {
-        type: Boolean,
-        attribute: false,
-      },
       /**
        * device id from PREVIEW_DEVICES the preview is shown on
        */
@@ -7655,6 +7650,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       this._watchGoggles(true);
     } else {
       localStorageDelete(DEVELOPER_MODE_KEY);
+      localStorageDelete(GOGGLES_LENS_KEY);
       this._watchGoggles(false);
       if (this.gogglesOn) {
         import("./ui/haxcms-goggles.js").then((m) =>
@@ -7662,7 +7658,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         );
       }
       this.gogglesOn = false;
-      this.gogglesLensOn = true;
     }
     HAXStore.toast(
       this.developerMode ? this.t.developerModeOn : this.t.developerModeOff,
@@ -7675,7 +7670,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     if (on && !this.__gogglesSync) {
       this.__gogglesSync = (e) => {
         this.gogglesOn = !!e.detail.on;
-        this.gogglesLensOn = !!e.detail.lensOn;
       };
       globalThis.addEventListener("haxcms-goggles-changed", this.__gogglesSync);
     } else if (!on && this.__gogglesSync) {
@@ -7688,11 +7682,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   }
   async toggleGoggles() {
     const { GogglesState } = await import("./ui/haxcms-goggles.js");
-    GogglesState.set({ on: !GogglesState.on, lensOn: true, lens: "code" });
-  }
-  async toggleGogglesLenses() {
-    const { GogglesState } = await import("./ui/haxcms-goggles.js");
-    GogglesState.set({ lensOn: !GogglesState.lensOn });
+    // the lens chosen last stays chosen; GogglesState remembers it
+    GogglesState.set({ on: !GogglesState.on, lensOn: true });
   }
   /**
    * The goggles' buttons, only in developer mode: put them on or take them
@@ -7701,19 +7692,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
    */
   _renderGogglesButtons() {
     return html`
-      ${
-        this.gogglesOn
-          ? html`<simple-toolbar-button
-              id="goggleslensesbutton"
-              class="top-bar-button"
-              icon="${this.gogglesLensOn ? "hax:goggles-lenses-off" : "hax:goggles"}"
-              label="${this.gogglesLensOn ? this.t.gogglesLensesOff : this.t.gogglesLensesOn}"
-              voice-command="lenses"
-              icon-position="${this.getIconPosition(this.responsiveSize)}"
-              @click="${this.toggleGogglesLenses}"
-            ></simple-toolbar-button>`
-          : ``
-      }
       <simple-toolbar-button
         id="gogglesbutton"
         class="top-bar-button"

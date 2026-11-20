@@ -14,9 +14,14 @@ A simple, fast, and reliable component gallery system that replaces Storybook fo
 - 📊 **Categorized view** - Components grouped by prefix for better organization
 - **Components menu** - the menu button at the start of the title bar hides and shows the component list at any time, so a demo can use the full width. On wide screens drag the list's right edge to resize it (or focus the edge and use the arrow keys, Shift for bigger steps, Home and End; Enter hides it; double-click resets the width); dragging it most of the way shut hides it. The width and hidden state are kept in this browser. On phones the same button opens and closes the list as a drawer.
 
+## Layout contract
+
+The gallery's layout is a contract, not a one-off: it borrows the HAX UI admin shell's eight areas (title bar, components menu, page header, toolbar, stage, inspector, action bar, item menu), and says what each holds, what it never holds, and which link values open it. See "Dashboards outside the shells: the component gallery" in [`elements/d-d-d/design-system/source/hax-ui-admin.md`](elements/d-d-d/design-system/source/hax-ui-admin.md) and `contract-gallery-areas` in `INTERNAL_CONTRACTS` (`@haxtheweb/d-d-d/lib/DDDPatternLibrary.js`). Change the contract first when a change to the gallery moves something between areas.
+
 ## Usage
 
 ### Development
+
 ```bash
 # Generate and serve the gallery locally
 yarn gallery
@@ -26,9 +31,11 @@ yarn build-gallery
 ```
 
 ### Production / Preview
+
 The gallery is regenerated on every Vercel preview deployment via the `buildCommand` in `vercel.json` (`yarn install && yarn build-gallery`), so each PR preview at `*.vercel.app` includes a fresh `index.html` reflecting that branch's components — it's served automatically at the preview's root URL.
 
 For a local production build that includes the gallery:
+
 ```bash
 yarn build  # This runs lerna run build && yarn build-gallery
 ```
@@ -89,12 +96,15 @@ webcomponents/
 ## Customization
 
 ### Adding Component Categories
+
 Components are automatically categorized by their prefix (the part before the first `-`). For example:
+
 - `a11y-carousel` → **A11Y Components**
-- `hax-tray` → **HAX Components** 
+- `hax-tray` → **HAX Components**
 - `simple-icon` → **SIMPLE Components**
 
 ### Styling
+
 The gallery inherits styling from your DDD design system. To customize:
 
 1. Modify the CSS variables in your DDD theme
@@ -104,6 +114,7 @@ The gallery inherits styling from your DDD design system. To customize:
 ## Migration from Storybook
 
 ### What Changed
+
 - `yarn storybook` → `yarn gallery`
 - `yarn build-storybook` → `yarn build-gallery`
 - No more complex webpack configuration
@@ -111,8 +122,9 @@ The gallery inherits styling from your DDD design system. To customize:
 - Uses your existing demo pages instead of stories
 
 ### Benefits
+
 - ✅ **Reliable**: No more build failures
-- ✅ **Fast**: Instant startup, no complex bundling  
+- ✅ **Fast**: Instant startup, no complex bundling
 - ✅ **Simple**: Single HTML file output
 - ✅ **Consistent**: Uses your actual design system
 - ✅ **Maintainable**: Leverages existing demo infrastructure
@@ -129,16 +141,19 @@ For HAX webcomponents, the gallery is automatically built and deployed on every 
 ## Troubleshooting
 
 ### No components found
+
 - Ensure components have a `demo/index.html` file
 - Check that `package.json` files are valid JSON
 - Verify you're running from the repository root
 
-### Gallery not loading properly  
+### Gallery not loading properly
+
 - Check that the DDD design system is properly imported
 - Ensure all demo links are relative paths
 - Verify `d-d-d.js` is accessible from the gallery location
 
 ### Search not working
+
 - JavaScript must be enabled
 - Check browser console for errors
 - Ensure component data is properly embedded in the HTML
@@ -168,12 +183,12 @@ Each element's `yarn build` ends with `node ../../scripts/extract-element-docs.m
 ></documentation-player>
 ```
 
-| File | Made by | Purpose |
-| --- | --- | --- |
-| `lib/<tag>.docs.json` | the element build (generated, do not edit) | attributes, slots, events, HAX schema, snippets, surface hash |
-| `lib/<tag>.motion.json` | a person, or `draft-element-walkthrough.mjs` | the animated walkthrough |
-| `lib/<tag>.video.json` | `scripts/link-element-tutorial.mjs` (or a person) | `{ "source", "title", "captions", "tutorial" }`: the short video tutorial shown in the Video tab, its captions file and a link to the full tutorial page |
-| `lib/<tag>.captions.vtt` | `scripts/link-element-tutorial.mjs` | WebVTT captions for that video |
+| File                     | Made by                                           | Purpose                                                                                                                                                  |
+| ------------------------ | ------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `lib/<tag>.docs.json`    | the element build (generated, do not edit)        | attributes, slots, events, HAX schema, snippets, surface hash                                                                                            |
+| `lib/<tag>.motion.json`  | a person, or `draft-element-walkthrough.mjs`      | the animated walkthrough                                                                                                                                 |
+| `lib/<tag>.video.json`   | `scripts/link-element-tutorial.mjs` (or a person) | `{ "source", "title", "captions", "tutorial" }`: the short video tutorial shown in the Video tab, its captions file and a link to the full tutorial page |
+| `lib/<tag>.captions.vtt` | `scripts/link-element-tutorial.mjs`               | WebVTT captions for that video                                                                                                                           |
 
 ### Several walkthroughs for one element
 

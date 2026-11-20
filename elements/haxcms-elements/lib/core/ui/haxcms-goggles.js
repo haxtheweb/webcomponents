@@ -9,13 +9,17 @@ import {
   HaxUiAdminTokens,
   HaxUiDarkChromeDeclarations,
 } from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";
-import { futureTraveler } from "@haxtheweb/hax-network-bar/lib/hax-future-traveler.js";
 import { HaxUiAdminSimpleFields } from "@haxtheweb/d-d-d/lib/HaxUiAdminControls.js";
 import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
+import { futureTraveler } from "@haxtheweb/hax-network-bar/lib/hax-future-traveler.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/rpg-character/rpg-character.js";
 import { store } from "../haxcms-site-store.js";
+import {
+  localStorageGet,
+  localStorageSet,
+} from "@haxtheweb/utils/lib/storage.js";
 
 const REPO = "https://github.com/haxtheweb/webcomponents";
 const ISSUES = "https://github.com/haxtheweb/issues/issues/new";
@@ -129,26 +133,57 @@ const withoutComments = (text) => {
   return out;
 };
 
+/*
+ * The lens someone chose stays chosen: putting the goggles back on, or the
+ * lenses back on, uses it, here and after a reload. Only the developer's own
+ * browser keeps it, next to the developer mode switch.
+ */
+export const GOGGLES_LENS_KEY = "haxcms-goggles-lens";
+const LENS_IDS = ["code", "makers", "flag", "person"];
+const remembered = () => {
+  const saved = localStorageGet(GOGGLES_LENS_KEY, null);
+  if (!saved || LENS_IDS.indexOf(saved.lens) === -1) {
+    return { lens: "code", person: null };
+  }
+  if (saved.lens === "person") {
+    return typeof saved.person === "string" && saved.person
+      ? { lens: "person", person: saved.person }
+      : { lens: "makers", person: null };
+  }
+  return { lens: saved.lens, person: null };
+};
+
 /**
  * The one state the goggles and the editor's top bar buttons share. This
  * module is only imported once someone turns developer mode on; nothing is
  * drawn and no listener is added until the goggles are put on.
  */
-export const GogglesState = {
-  person: null,
-  on: false,
-  lensOn: true,
-  lens: "code",
-  set(change) {
-    Object.assign(this, change);
-    if (this.on) {
-      ensureOverlay();
-    }
-    globalThis.dispatchEvent(
-      new CustomEvent("haxcms-goggles-changed", { detail: this }),
-    );
+export const GogglesState = Object.assign(
+  {
+    on: false,
+    lensOn: true,
   },
-};
+  remembered(),
+  {
+    set(change) {
+      const lensBefore = this.lens;
+      const personBefore = this.person;
+      Object.assign(this, change);
+      if (this.lens !== lensBefore || this.person !== personBefore) {
+        localStorageSet(GOGGLES_LENS_KEY, {
+          lens: this.lens,
+          person: this.lens === "person" ? this.person : null,
+        });
+      }
+      if (this.on) {
+        ensureOverlay();
+      }
+      globalThis.dispatchEvent(
+        new CustomEvent("haxcms-goggles-changed", { detail: this }),
+      );
+    },
+  },
+);
 /** the overlay sits on the body so theme swaps leave it alone; it removes itself once taken off */
 const ensureOverlay = () => {
   if (!globalThis.document.querySelector("haxcms-goggles")) {
@@ -216,6 +251,8 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
     this._sort = "share";
     this._showAll = false;
     this._showAllPeople = false;
+    this._era = "now";
+    this._mark = null;
     this.t = this.t || {};
     this.t = {
       ...this.t,
@@ -229,8 +266,7 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
         "Lenses off. The system works as usual; the rims show the goggles are still on.",
       followingSay:
         "Following {name}: everything they made is outlined. Click any piece to see who else made it.",
-      putOnSay:
-        "You are seeing what the Future Traveler sees. Point at anything to see how it is made.",
+      putOnSay: "You are seeing what the Future Traveler sees. {lens}",
       takeOffSay: "Goggles off.",
       holdingSay: "Holding still on {tag}. Press Escape to let go.",
       seeItAlone: "See it alone",
@@ -372,6 +408,7 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
   disconnectedCallback() {
     globalThis.removeEventListener("haxcms-goggles-changed", this._sync);
     this._watch(false);
+    this._markAway(false);
     super.disconnectedCallback();
   }
   /** the page listeners exist only while the goggles are worn */
@@ -438,17 +475,107 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
       globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches
     );
   }
+  /*
+   * The goggles that warp out are the Future Traveler's own, from the mark in
+   * the corner: drawn in the era he was left in (hax-future-traveler-mark,
+   * kept under hax-future-traveler-era), flying out of where the mark sits
+   * and back into it when taken off. While he is out, the mark is empty.
+   */
+  _findMark() {
+    let best = null;
+    let bestRight = -1;
+    const walk = (root, depth) => {
+      if (!root || depth > 6) {
+        return;
+      }
+      root.querySelectorAll("*").forEach((el) => {
+        if (el.localName === "hax-future-traveler-mark") {
+          const r = el.getBoundingClientRect();
+          if (r.width > 0 && r.height > 0 && r.right > bestRight) {
+            best = el;
+            bestRight = r.right;
+          }
+        }
+        if (el.shadowRoot && el !== this) {
+          walk(el.shadowRoot, depth + 1);
+        }
+      });
+    };
+    walk(globalThis.document, 0);
+    return best;
+  }
+  _travelerFrom() {
+    const mark = this._findMark();
+    let era = mark && mark.era ? mark.era : "";
+    if (!era) {
+      try {
+        era =
+          globalThis.localStorage.getItem("hax-future-traveler-era") || "now";
+      } catch {
+        era = "now";
+      }
+    }
+    this._era = era;
+    // where his goggles sit on the icon, as a share of its height
+    const eyes = era === "handheld" ? 0.833 : 0.692;
+    this.style.setProperty("--haxcms-goggles-eyes", eyes * 100 + "%");
+    this.style.setProperty(
+      "--haxcms-goggles-eyes-shift",
+      -(eyes - 0.5) * 100 + "%",
+    );
+    this._mark = mark;
+    if (!mark) {
+      [
+        "--haxcms-goggles-from-x",
+        "--haxcms-goggles-from-y",
+        "--haxcms-goggles-from-scale",
+      ].forEach((v) => this.style.removeProperty(v));
+      return;
+    }
+    const r = mark.getBoundingClientRect();
+    const vw = globalThis.innerWidth;
+    const vh = globalThis.innerHeight;
+    const size = 0.4 * Math.min(vw, vh);
+    const scale = Math.max(r.width, r.height) / size;
+    // the icon scales around its goggles, so place its middle on the mark's
+    const x = r.left + r.width / 2 - vw / 2;
+    const y = r.top + r.height / 2 - vh / 2 - (eyes - 0.5) * size * (1 - scale);
+    this.style.setProperty("--haxcms-goggles-from-x", Math.round(x) + "px");
+    this.style.setProperty("--haxcms-goggles-from-y", Math.round(y) + "px");
+    this.style.setProperty("--haxcms-goggles-from-scale", scale.toFixed(3));
+  }
+  /** the mark is empty while he is out of his corner */
+  _markAway(away) {
+    if (this._mark && this._mark.style) {
+      this._mark.style.visibility = away ? "hidden" : "";
+    }
+    if (!away) {
+      this._mark = null;
+    }
+  }
   _putOn() {
     const still = this._still();
+    if (!still) {
+      this._travelerFrom();
+      this._markAway(true);
+    }
     this.on = true;
     this._watch(true);
     this.phase = still ? "" : "puton";
-    this._status = this.t.putOnSay;
+    // the goggles go on with the lens chosen last time, not always the x-ray
+    const chosen = LENSES.find((l) => l.id === this.lens);
+    this._status = this.t.putOnSay.replace(
+      "{lens}",
+      this.lens === "person" && this.person
+        ? this.t.followingSay.replace("{name}", this._name(this.person))
+        : this.t[(chosen || LENSES[0]).say],
+    );
     loadMakers().then(() => this.requestUpdate());
     clearTimeout(this._phaseTimer);
     this._phaseTimer = setTimeout(
       () => {
         this.phase = "";
+        this._markAway(false);
       },
       still ? 0 : 1700,
     );
@@ -456,6 +583,10 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
   /** taking them off plays the put-on in reverse, then the overlay removes itself */
   _takeOff() {
     const still = this._still();
+    if (!still) {
+      this._travelerFrom();
+      this._markAway(true);
+    }
     this._watch(false);
     this.pinned = false;
     this._target = null;
@@ -472,6 +603,7 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
       () => {
         this.phase = "";
         this.on = false;
+        this._markAway(false);
         if (!GogglesState.on) {
           this.remove();
         }
@@ -501,11 +633,7 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
     const path = e.composedPath ? e.composedPath() : [];
     for (let i = 0; i < path.length; i++) {
       const n = path[i];
-      if (
-        n === this ||
-        n.id === "gogglesbutton" ||
-        n.id === "goggleslensesbutton"
-      ) {
+      if (n === this || n.id === "gogglesbutton") {
         return true;
       }
     }
@@ -1364,6 +1492,26 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
     const vh = globalThis.innerHeight;
     const found = [];
     const used = {};
+    // wherever the editor's top bar is (other bars may sit above it)
+    let bar = null;
+    const findBar = (root, depth) => {
+      if (bar || !root || depth > 6) {
+        return;
+      }
+      root.querySelectorAll("*").forEach((el) => {
+        if (!bar && el.localName === "app-hax-top-bar") {
+          const r = el.getBoundingClientRect();
+          if (r.height > 0) {
+            bar = r;
+          }
+        }
+        if (!bar && el.shadowRoot && el !== this) {
+          findBar(el.shadowRoot, depth + 1);
+        }
+      });
+    };
+    findBar(doc, 0);
+    const below = bar ? Math.max(bar.bottom + 6, 68) : 68;
     const add = (el) => {
       if (!el || used[el.localName] || !MAKERS.tags[el.localName]) {
         return;
@@ -1379,8 +1527,11 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
       ) {
         return;
       }
-      // pieces of the top bar get their pin just under the bar, so the bar itself stays readable
-      const inBar = r.top < 60 && r.bottom < 80;
+      // pieces of the top bar get their pin just under the bar, so the bar
+      // and the goggles' own buttons in it stay readable and clickable
+      const inBar = bar
+        ? r.top >= bar.top - 1 && r.bottom <= bar.bottom + 1
+        : r.top < 60 && r.bottom < 80;
       const x = Math.min(
         Math.max(
           el.localName === "app-hax-top-bar" ? r.left + r.width * 0.68 : r.left,
@@ -1388,7 +1539,7 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
         ),
         vw - 150,
       );
-      const y = inBar ? 68 : Math.min(Math.max(r.top, 68), vh - 150);
+      const y = inBar ? below : Math.min(Math.max(r.top, below), vh - 150);
       for (let i = 0; i < found.length; i++) {
         if (Math.abs(found[i].x - x) < 210 && Math.abs(found[i].y - y) < 54) {
           return;
@@ -1845,20 +1996,33 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
       this._status = this.t.copyBlockedSay;
     }
   }
-  _issueField(e) {
-    const field = e.target.dataset.field;
-    const value = e.target.value;
-    // simple-fields reports its first render too: only real changes count
-    if (!field || !this._issue || this._issue[field] === value) {
-      return;
-    }
+  _issueField(name, value) {
     const next = Object.assign({}, this._issue);
-    next[field] = value;
-    if (field === "attach") {
+    next[name] = value;
+    if (name === "attach") {
       next.shotCopied = false;
     }
     this._issue = next;
     this._copied = false;
+  }
+  /** one of a few answers, as pressed buttons (the HAX UI way to pick one) */
+  _renderChoices(name, label, options) {
+    const id = "choice-" + name;
+    return html`<div class="choices">
+      <p class="legend" id="${id}">${label}</p>
+      <div class="sort" role="group" aria-labelledby="${id}">
+        ${options.map(
+          (o) =>
+            html`<button
+              type="button"
+              aria-pressed="${this._issue[name] === o.value ? "true" : "false"}"
+              @click="${() => this._issueField(name, o.value)}"
+            >
+              <simple-icon-lite icon="${o.icon}"></simple-icon-lite>${o.label}
+            </button>`,
+        )}
+      </div>
+    </div>`;
   }
 
   /* ---------- drawing ---------- */
@@ -2151,18 +2315,14 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
       </figure>`;
     }
     const pick = i.shot[i.attach];
-    return html`<simple-fields-field
-        class="hax-ui-simple-field"
-        type="radio"
-        data-field="attach"
-        label="${this.t.shotToAttach}"
-        .itemsList="${[
-          { value: "whole", text: this.t.wholeScreen },
-          { value: "piece", text: this.t.justThisPiece },
-        ]}"
-        .value="${i.attach}"
-        @value-changed="${this._issueField}"
-      ></simple-fields-field>
+    return html`${this._renderChoices("attach", this.t.shotToAttach, [
+        {
+          value: "whole",
+          icon: "hardware:desktop-windows",
+          label: this.t.wholeScreen,
+        },
+        { value: "piece", icon: "image:crop", label: this.t.justThisPiece },
+      ])}
       <figure class="shot">
         <img
           src="${pick.url}"
@@ -2191,35 +2351,30 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
         ${this.t.lensFlag}
       </p>
       <h2 id="issue-heading">&lt;${i.tag}&gt;</h2>
+      ${this._renderChoices("kind", this.t.whatIsThis, [
+        { value: "bug", icon: "icons:bug-report", label: this.t.needsFixing },
+        {
+          value: "wish",
+          icon: "icons:lightbulb-outline",
+          label: this.t.featureIWant,
+        },
+      ])}
       <simple-fields-field
-        class="hax-ui-simple-field"
-        type="radio"
-        data-field="kind"
-        label="${this.t.whatIsThis}"
-        .itemsList="${[
-          { value: "bug", text: this.t.needsFixing },
-          { value: "wish", text: this.t.featureIWant },
-        ]}"
-        .value="${i.kind}"
-        @value-changed="${this._issueField}"
-      ></simple-fields-field>
-      <simple-fields-field
-        class="hax-ui-simple-field"
         id="issue-title"
-        data-field="title"
+        class="hax-ui-simple-field"
+        type="text"
         label="${this.t.issueTitle}"
         autocomplete="off"
         .value="${i.title}"
-        @value-changed="${this._issueField}"
+        @value-changed="${(e) => this._issueField("title", e.detail.value || "")}"
       ></simple-fields-field>
       <simple-fields-field
-        class="hax-ui-simple-field"
-        type="textarea"
         id="issue-notes"
-        data-field="notes"
+        class="hax-ui-simple-field notes"
+        type="textarea"
         label="${i.kind === "bug" ? this.t.whatDidYouSee : this.t.whatDoYouWish}"
         .value="${i.notes}"
-        @value-changed="${this._issueField}"
+        @value-changed="${(e) => this._issueField("notes", e.detail.value || "")}"
       ></simple-fields-field>
       ${this._renderShot(i, scale)}
       <div class="evidence">
@@ -2408,7 +2563,7 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
       ${
         this.phase
           ? html`<div class="puton" aria-hidden="true">
-              <div class="traveler">${futureTraveler("now")}</div>
+              <div class="traveler">${futureTraveler(this._era || "now")}</div>
               <span class="flash"></span>
             </div>`
           : nothing
@@ -3020,9 +3175,24 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
           background: var(--haxcms-goggles-lens);
           color: var(--ddd-theme-default-black, #000);
         }
-        /* the issue form's fields: the shared HAX UI field, stacked */
-        .issue simple-fields-field.hax-ui-simple-field {
+        /* the issue's fields are HAX UI simple-fields (HaxUiAdminSimpleFields) */
+        .issue simple-fields-field {
           margin-top: var(--ddd-spacing-3, 12px);
+        }
+        .issue simple-fields-field.notes {
+          padding-top: var(--ddd-spacing-2, 8px);
+          padding-bottom: var(--ddd-spacing-2, 8px);
+        }
+        .choices .legend {
+          margin: var(--ddd-spacing-3, 12px) 0 var(--ddd-spacing-1, 4px);
+          font-size: var(--hax-ui-admin-font-size-xs, 12px);
+          font-weight: var(--ddd-font-weight-bold, 700);
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+          color: var(--hax-ui-text-muted);
+        }
+        .choices .sort {
+          flex-wrap: wrap;
         }
         .evidence {
           display: flex;
@@ -3276,7 +3446,7 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
           width: 40vmin;
           height: 40vmin;
           margin: -20vmin 0 0 -20vmin;
-          transform-origin: 50% 69.2%;
+          transform-origin: 50% var(--haxcms-goggles-eyes, 69.2%);
           animation: puton-zoom 1500ms cubic-bezier(0.6, 0, 0.9, 0.4) both;
         }
         .traveler svg {
@@ -3294,7 +3464,12 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
         }
         @keyframes puton-zoom {
           0% {
-            transform: translate(42vw, -42vh) scale(0.12);
+            /* out of the Future Traveler mark in the corner */
+            transform: translate(
+                var(--haxcms-goggles-from-x, 42vw),
+                var(--haxcms-goggles-from-y, -42vh)
+              )
+              scale(var(--haxcms-goggles-from-scale, 0.12));
           }
           35% {
             transform: translate(0, -6vh) scale(1);
@@ -3303,7 +3478,8 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
             transform: translate(0, -6vh) scale(1.08);
           }
           100% {
-            transform: translate(0, -19.2%) scale(11);
+            transform: translate(0, var(--haxcms-goggles-eyes-shift, -19.2%))
+              scale(11);
           }
         }
         @keyframes puton-flash {

@@ -137,6 +137,61 @@ describe("haxcms-appearance-switcher", () => {
     globalThis.history.replaceState({}, "", before);
   });
 
+  it("shows only the theme picker in theme-only mode", async () => {
+    const el = await make();
+    el.themeOnly = true;
+    await el.updateComplete;
+    expect(el.hasAttribute("theme-only")).to.equal(true);
+    expect(el.shadowRoot.querySelectorAll("select").length).to.equal(1);
+    expect(el.shadowRoot.querySelector("#theme")).to.not.equal(null);
+    await expect(el).shadowDom.to.be.accessible();
+  });
+
+  it("takes a palette and design system from outside and keeps the theme", async () => {
+    const el = await make({ variables: { palette: "9" } });
+    el.applyLook({ palette: "2", designSystem: "carbon" });
+    await aTimeout(100);
+    const theme = toJS(store.manifest.metadata.theme);
+    expect(theme.element).to.equal("book-theme");
+    expect(theme.variables.palette).to.equal("2");
+    expect(theme.designSystem).to.equal("carbon");
+    // back to the defaults
+    el.applyLook({ palette: "", designSystem: "" });
+    await aTimeout(100);
+    const reset = toJS(store.manifest.metadata.theme);
+    expect(reset.variables.palette).to.equal(undefined);
+    expect(reset.designSystem).to.equal(undefined);
+  });
+
+  it("only takes a known palette and a design system in the registry", async () => {
+    const el = await make();
+    el.applyLook({ palette: "not-a-palette", designSystem: "../evil" });
+    await aTimeout(100);
+    el.applyLook({ palette: "3", designSystem: "nope-not-registered" });
+    await aTimeout(100);
+    const theme = toJS(store.manifest.metadata.theme);
+    expect(theme.variables.palette).to.equal("3");
+    expect(theme.designSystem).to.equal(undefined);
+  });
+
+  it("holds a look handed over before the site loads, then applies it", async () => {
+    store.manifest = null;
+    const el = await fixture(
+      html`<haxcms-appearance-switcher></haxcms-appearance-switcher>`,
+    );
+    el.applyLook({ palette: "4", designSystem: "carbon" });
+    store.manifest = {
+      id: "test",
+      title: "Test",
+      metadata: { site: {}, theme: { element: "book-theme" } },
+      items: [],
+    };
+    await aTimeout(150);
+    const theme = toJS(store.manifest.metadata.theme);
+    expect(theme.variables.palette).to.equal("4");
+    expect(theme.designSystem).to.equal("carbon");
+  });
+
   it("labels each select and passes the a11y audit", async () => {
     const el = await make();
     el.shadowRoot.querySelectorAll("select").forEach((select) => {
