@@ -1208,25 +1208,36 @@ class A11yMediaPlayer extends SchemaBehaviors(
    */
   _renderHeaderAction(o) {
     return html`<button
-      type="button"
-      class="ddd-block-action"
-      id="${o.id}"
-      data-action="${o.action}"
-      aria-label="${o.label}"
-      title="${o.label}"
-      aria-pressed="${
-        typeof o.pressed === "boolean" ? String(o.pressed) : nothing
-      }"
-      aria-expanded="${
-        typeof o.expanded === "boolean" ? String(o.expanded) : nothing
-      }"
-      aria-controls="${o.controls || nothing}"
-      ?hidden="${o.hidden}"
-      ?disabled="${o.disabled}"
-      @click="${o.onClick}"
-    >
-      <simple-icon-lite icon="${o.icon}" aria-hidden="true"></simple-icon-lite>
-    </button>`;
+        type="button"
+        class="ddd-block-action"
+        id="${o.id}"
+        data-action="${o.action}"
+        aria-label="${o.label}"
+        aria-pressed="${
+          typeof o.pressed === "boolean" ? String(o.pressed) : nothing
+        }"
+        aria-expanded="${
+          typeof o.expanded === "boolean" ? String(o.expanded) : nothing
+        }"
+        aria-controls="${o.controls || nothing}"
+        ?hidden="${o.hidden}"
+        ?disabled="${o.disabled}"
+        @click="${o.onClick}"
+      >
+        <simple-icon-lite
+          icon="${o.icon}"
+          aria-hidden="true"
+        ></simple-icon-lite></button
+      >${
+        o.hidden
+          ? nothing
+          : html`<simple-tooltip
+              for="${o.id}"
+              position="bottom"
+              aria-hidden="true"
+              >${o.label}</simple-tooltip
+            >`
+      }`;
   }
 
   /**
@@ -2476,7 +2487,6 @@ class A11yMediaPlayer extends SchemaBehaviors(
     };
     // global listeners for settings menu ESC and click-away behavior
     this._settingsKeydownHandler = this._onSettingsKeydown.bind(this);
-    this._settingsClickHandler = this._onSettingsDocumentClick.bind(this);
     if (globalThis.addEventListener) {
       globalThis.addEventListener(
         "keydown",
@@ -2484,8 +2494,9 @@ class A11yMediaPlayer extends SchemaBehaviors(
         true,
       );
     }
-    globalThis.addEventListener &&
-      globalThis.addEventListener("click", this._settingsClickHandler, true);
+    // no click-away close: the settings tray stays open while the person
+    // looks around the player (or the page) before choosing; Settings,
+    // Escape or the tray's own choices close it
     (this.querySelectorAll ? this.querySelectorAll("video,audio") : []).forEach(
       (html5) => {
         html5.addEventListener("loadedmetadata", (_e) => {
@@ -5054,33 +5065,6 @@ class A11yMediaPlayer extends SchemaBehaviors(
   }
 
   /**
-   * Handle click-away to close settings when user clicks outside
-   */
-  _onSettingsDocumentClick(event) {
-    if (!this.__settingsOpen) return;
-    let path = event.composedPath
-      ? event.composedPath()
-      : normalizeEventPath(event) || [];
-    let settingsEl = this.shadowRoot
-      ? this.shadowRoot.querySelector("#settings")
-      : null;
-    let settingsButton = this.shadowRoot
-      ? this.shadowRoot.querySelector("#settings-button")
-      : null;
-    let isInside = false;
-    for (let i = 0; i < path.length; i++) {
-      let node = path[i];
-      if (node === this || node === settingsEl || node === settingsButton) {
-        isInside = true;
-        break;
-      }
-    }
-    if (!isInside) {
-      this.toggleSettings(false);
-    }
-  }
-
-  /**
    * returns time in seconds of a string, such as 00:00:00.0, 0h0m0.0s, or 0hh0mm0.0ss
    * @param {string} time
    * @returns {float} seconds
@@ -5305,9 +5289,6 @@ class A11yMediaPlayer extends SchemaBehaviors(
         this._settingsKeydownHandler,
         true,
       );
-    }
-    if (this._settingsClickHandler) {
-      globalThis.removeEventListener("click", this._settingsClickHandler, true);
     }
   }
 }

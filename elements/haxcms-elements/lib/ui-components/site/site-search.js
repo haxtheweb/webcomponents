@@ -156,27 +156,90 @@ class SiteSearch extends HAXCMSI18NMixin(DDD) {
           --simple-icon-height: var(--ddd-icon-3xs);
           --simple-icon-width: var(--ddd-icon-3xs);
         }
+        /* the search field: one full-width box with the icon at its start
+           and the words typed at a readable size. The field names itself
+           (aria-label), so the visible label is not drawn: inline, it took
+           most of the row and squeezed the input to a sliver. */
         #search {
-          flex-grow: 2;
-          margin-right: 4px;
-          margin-bottom: 0;
-          font-size: var(--ddd-font-size-xs);
-          --simple-fields-field-color: light-dark(
-            black,
-            var(--ddd-accent-6, #fff)
+          display: flex;
+          align-items: center;
+          box-sizing: border-box;
+          width: 100%;
+          min-height: var(--ddd-spacing-12, 48px);
+          margin: 0 0 var(--ddd-spacing-3, 12px);
+          padding: 0 var(--ddd-spacing-3, 12px);
+          border: var(--ddd-border-size-xs, 1px) solid
+            light-dark(
+              var(--ddd-theme-default-limestoneGray, #a2aaad),
+              rgba(255, 255, 255, 0.45)
+            );
+          border-radius: var(--ddd-radius-sm, 4px);
+          background-color: light-dark(
+            var(--ddd-theme-default-white, #fff),
+            var(--ddd-theme-default-coalyGray, #262626)
           );
-          --simple-fields-field-background-color: light-dark(
-            var(--ddd-accent-6, #fff),
-            var(--ddd-primary-4, #333)
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray, #262626),
+            var(--ddd-theme-default-white, #fff)
           );
-          --simple-fields-field-border-color: light-dark(
-            rgba(0, 0, 0, 0.1),
-            rgba(255, 255, 255, 0.2)
+          font-size: var(--ddd-font-size-s, 20px);
+          --simple-fields-font-size: var(--ddd-font-size-s, 20px);
+          --simple-fields-line-height: 1.3;
+          --simple-fields-color: currentColor;
+          --simple-fields-field-color: currentColor;
+          --simple-fields-background-color: transparent;
+          --simple-fields-field-background-color: transparent;
+          --simple-fields-border-color: transparent;
+          --simple-fields-border-bottom-size: 0;
+          --simple-fields-border-bottom-focus-size: 0;
+          --simple-fields-margin: 0;
+          --simple-fields-margin-small: 0;
+          --simple-fields-input-max-width: 100%;
+          --simple-fields-row-focus-outline-width: 0;
+          --simple-fields-placeholder-color: light-dark(
+            var(--ddd-theme-default-slateGray, #5c5c5c),
+            var(--ddd-theme-default-limestoneLight, #e4e5e7)
           );
-          --simple-fields-field-placeholder-color: light-dark(
-            rgba(0, 0, 0, 0.6),
-            rgba(255, 255, 255, 0.7)
+          --simple-fields-placeholder-opacity: 1;
+          --simple-fields-placeholder-focus-opacity: 1;
+          --simple-fields-placeholder-focus-color: var(
+            --simple-fields-placeholder-color
           );
+        }
+        #search:focus-within {
+          outline: var(--ddd-border-size-md, 2px) solid
+            light-dark(
+              var(--ddd-theme-default-skyBlue, #009cde),
+              var(--ddd-theme-default-skyLight, #ccf0ff)
+            );
+          outline-offset: 2px;
+        }
+        #search::part(label),
+        #search::part(field-desc),
+        #search::part(field-meta) {
+          display: none;
+        }
+        #search::part(field-main),
+        #search::part(field-main-inner),
+        #search::part(option-inner) {
+          flex: 1 1 auto;
+          width: 100%;
+          margin: 0;
+        }
+        #search::part(option-input) {
+          box-sizing: border-box;
+          width: 100%;
+          min-height: var(--ddd-spacing-11, 44px);
+          padding-inline: var(--ddd-spacing-2, 8px);
+          color: inherit;
+          font-size: inherit;
+        }
+        #search simple-icon {
+          flex: none;
+          color: inherit;
+          --simple-icon-color: currentColor;
+          --simple-icon-height: var(--ddd-icon-xxs, 24px);
+          --simple-icon-width: var(--ddd-icon-xxs, 24px);
         }
         .page-title-icon {
           --simple-icon-height: 32px;
@@ -256,7 +319,6 @@ class SiteSearch extends HAXCMSI18NMixin(DDD) {
       <simple-fields-field
         ?hidden="${this.hideInput}"
         id="search"
-        always-float-label
         label="${this.t.search}"
         placeholder="${this.t.typeAtLeast3LettersToStartSearch}..."
         type="text"

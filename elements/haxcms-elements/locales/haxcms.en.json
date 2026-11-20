@@ -121,6 +121,7 @@
   "enabled": "Enabled",
   "block": "Block",
   "preview": "Preview",
+  "userPreview": "User preview",
   "visitorAndDevicePreview": "Visitor and Device Preview",
   "filterBlocks": "Filter blocks",
   "requiredTextNote": "Some text tags are required and always enabled (shown disabled).",

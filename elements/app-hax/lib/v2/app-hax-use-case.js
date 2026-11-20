@@ -294,24 +294,23 @@ export class AppHaxUseCase extends I18NMixin(LitElement) {
     ];
   }
 
+  /**
+   * A card is a launcher: every press opens what it stands for. It does not
+   * hold a pressed state of its own (that stuck after the dialog closed);
+   * a host that wants to mark the card whose dialog is open binds
+   * isSelected from the toggle-display event and clears it on close.
+   */
   toggleDisplay() {
-    this.isSelected = !this.isSelected;
-    this.showContinue = this.isSelected;
-
     this.dispatchEvent(
       new CustomEvent("toggle-display", {
-        detail: { isSelected: this.isSelected },
+        detail: { isSelected: true },
         bubbles: true,
         composed: true,
       }),
     );
-
-    // If selected, immediately trigger the continue action to open modal
-    if (this.isSelected) {
-      setTimeout(() => {
-        this.continueAction();
-      }, 100); // Small delay to allow state to update
-    }
+    setTimeout(() => {
+      this.continueAction();
+    }, 100); // Small delay to allow the host to update
   }
 
   continueAction() {
@@ -363,7 +362,7 @@ export class AppHaxUseCase extends I18NMixin(LitElement) {
         class="card"
         @click="${this.toggleDisplay}"
         aria-label="${cardLabel}"
-        aria-pressed="${this.isSelected ? "true" : "false"}"
+        aria-haspopup="dialog"
       >
         <div class="image">
           ${

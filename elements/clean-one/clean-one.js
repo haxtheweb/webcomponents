@@ -735,7 +735,8 @@ class CleanOne extends LTIResizingMixin(
         }
 
         .site-body {
-          overflow-y: scroll;
+          /* auto, not scroll: no empty scrollbar track on a short page */
+          overflow-y: auto;
           color: var(--ddd-lightDark-1);
           /* reading surface is fixed DDD neutrals so body text contrast never depends on the palette */
           background: light-dark(
@@ -986,7 +987,9 @@ class CleanOne extends LTIResizingMixin(
   constructor() {
     super();
     // this theme presents learner progress on the page open in its menu
-    this.siteMenuShowProgress = true;
+    // learner progress lives in the My learning button; the menu itself
+    // stays a plain map of the site (marks on every page were noise)
+    this.siteMenuShowProgress = false;
     this.t = this.t || {};
     this.t = {
       ...this.t,
@@ -1102,8 +1105,34 @@ class CleanOne extends LTIResizingMixin(
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    // only way to hit this
-    globalThis.document.body.style.overflow = "hidden";
+    // the theme is fixed to the window and scrolls its own content area,
+    // so the page itself never scrolls. A stylesheet rather than an inline
+    // style: dialogs that clear body's inline overflow when they close
+    // (simple-modal, the site creation modal) gave the page a second
+    // scrollbar that moved nothing
+    if (!CleanOne.__pageScrollLock && globalThis.CSSStyleSheet) {
+      try {
+        CleanOne.__pageScrollLock = new CSSStyleSheet();
+        CleanOne.__pageScrollLock.replaceSync(
+          "html, body { overflow: hidden; }",
+        );
+      } catch {
+        CleanOne.__pageScrollLock = null;
+      }
+    }
+    if (
+      CleanOne.__pageScrollLock &&
+      !globalThis.document.adoptedStyleSheets.includes(
+        CleanOne.__pageScrollLock,
+      )
+    ) {
+      globalThis.document.adoptedStyleSheets = [
+        ...globalThis.document.adoptedStyleSheets,
+        CleanOne.__pageScrollLock,
+      ];
+    } else if (!CleanOne.__pageScrollLock) {
+      globalThis.document.body.style.overflow = "hidden";
+    }
     this.HAXCMSThemeSettings.scrollTarget =
       this.shadowRoot.querySelector("main");
     globalThis.AbsolutePositionStateManager.requestAvailability().scrollTarget =
@@ -1139,6 +1168,12 @@ class CleanOne extends LTIResizingMixin(
   disconnectedCallback() {
     // remove overflow
     globalThis.document.body.style.removeProperty("overflow");
+    if (CleanOne.__pageScrollLock) {
+      globalThis.document.adoptedStyleSheets =
+        globalThis.document.adoptedStyleSheets.filter(
+          (sheet) => sheet !== CleanOne.__pageScrollLock,
+        );
+    }
     super.disconnectedCallback();
   }
 }

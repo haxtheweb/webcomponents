@@ -1296,6 +1296,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
     const button = e.currentTarget;
     if (this._confirmRemove) {
       clearTimeout(this.__armTimer);
+      this._unwatchArmedClick();
       this._confirmRemove = false;
       this._fire(button, "hax-plate-delete");
       return;
@@ -1303,6 +1304,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
     const from = button.offsetWidth;
     this._confirmRemove = true;
     this._fire(button, "hax-plate-delete-arm");
+    this._watchArmedClick();
     await this.updateComplete;
     if (!this._reducedMotion) {
       button.animate(
@@ -1321,8 +1323,38 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       }
     }
   }
+  /**
+   * While Remove is armed, a press anywhere but Remove itself backs out of
+   * it, even one that leaves focus where it was (clicking the page text)
+   */
+  _watchArmedClick() {
+    this._unwatchArmedClick();
+    this.__armedOutside = (e) => {
+      const remove = this.shadowRoot
+        ? this.shadowRoot.querySelector("#remove")
+        : null;
+      if (remove && e.composedPath().includes(remove)) return;
+      this._disarm();
+    };
+    globalThis.document.addEventListener(
+      "pointerdown",
+      this.__armedOutside,
+      true,
+    );
+  }
+  _unwatchArmedClick() {
+    if (this.__armedOutside) {
+      globalThis.document.removeEventListener(
+        "pointerdown",
+        this.__armedOutside,
+        true,
+      );
+      this.__armedOutside = null;
+    }
+  }
   async _disarm() {
     clearTimeout(this.__armTimer);
+    this._unwatchArmedClick();
     if (!this._confirmRemove) return;
     const button = this.shadowRoot
       ? this.shadowRoot.querySelector("#remove")
@@ -1426,6 +1458,13 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       if (this._confirmRemove) {
         clearTimeout(this.__armTimer);
         this._confirmRemove = false;
+        // another block became active while Remove was armed: the marked
+        // block has to drop its "would be removed" box too
+        const button = this.shadowRoot
+          ? this.shadowRoot.querySelector("#remove")
+          : null;
+        if (button) this._fire(button, "hax-plate-delete-disarm");
+        this._unwatchArmedClick();
       }
       if (this._menu) {
         this._menu = null;
@@ -1468,6 +1507,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       true,
     );
     clearTimeout(this.__armTimer);
+    this._unwatchArmedClick();
     if (super.disconnectedCallback) super.disconnectedCallback();
   }
 

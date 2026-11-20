@@ -15,7 +15,7 @@ import { askImportUrl } from "./app-hax-import-url-dialog.js";
 import "./app-hax-use-case.js";
 import "./app-hax-search-results.js";
 import "./app-hax-site-creation-modal.js";
-import "./app-hax-design-browser.js";
+import { BROWSE_PARAM } from "./app-hax-design-browser.js";
 import { trimChars } from "@haxtheweb/utils/lib/safe-html.js";
 
 export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
@@ -32,9 +32,6 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
       moreTemplates: "More Templates",
       browseAllTemplateStarters: "Browse all template starters",
       moreTemplatesTooltip: "More templates",
-      fromScratch: "From Scratch",
-      startFromBlankSiteWithTheme: "Start from a blank site using a theme",
-      fromScratchTooltip: "From scratch",
       import: "Import",
       importContentFromExistingSource: "Import content from an existing source",
       importContent: "Import content",
@@ -977,6 +974,17 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
     return "";
   }
 
+  _getBrowseParamFromUrl() {
+    try {
+      const value = new URL(globalThis.location.href).searchParams.get(
+        BROWSE_PARAM,
+      );
+      return value === "themes" || value === "templates" ? value : "";
+    } catch {
+      return "";
+    }
+  }
+
   _updateUrlQueryParam(param, value) {
     if (!param || typeof param !== "string") {
       return;
@@ -1173,7 +1181,17 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
 
     const useCaseParam = this._getUseCaseParamFromUrl();
     if (!useCaseParam) {
-      this.__useCaseParamHandled = true;
+      // ?browse=templates|themes: the design browser was open
+      const browse = this._getBrowseParamFromUrl();
+      if (browse && Array.isArray(this.items) && this.items.length > 0) {
+        this.__useCaseParamHandled = true;
+        await this.updateComplete;
+        this.openDesignBrowser(browse === "themes" ? "blank" : "skeleton");
+        return;
+      }
+      if (!browse) {
+        this.__useCaseParamHandled = true;
+      }
       return;
     }
 
@@ -1363,22 +1381,6 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
                 ]}
                 ?dark="${this.dark}"
                 @click=${() => this.openDesignBrowser("skeleton")}
-              ></app-hax-use-case>
-            </div>
-
-            <div role="listitem">
-              <app-hax-use-case
-                .source=${""}
-                .title=${this.t.fromScratch}
-                .description=${this.t.startFromBlankSiteWithTheme}
-                .iconImage=${[
-                  {
-                    icon: "editor:insert-drive-file",
-                    tooltip: this.t.fromScratchTooltip,
-                  },
-                ]}
-                ?dark="${this.dark}"
-                @click=${() => this.openDesignBrowser("blank")}
               ></app-hax-use-case>
             </div>
 
@@ -2899,7 +2901,7 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
 
       modal.title = this.t.blankSite;
       modal.description = this.t.blankSiteDescription;
-      modal.source = "";
+      modal.source = this._themeImage("clean-one");
       modal.template = "Blank Site";
       modal.themeElement = "clean-one";
       modal.skeletonMachineName = null;
@@ -3536,6 +3538,23 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
     await this.processImportTemplate(selectedTemplate, modal, preset);
   }
 
+  /**
+   * The screenshot of a theme, from its "from scratch" card, for dialogs
+   * that build a site on that theme without a picture of their own
+   * @param {String} themeElement theme tag, like clean-one
+   * @returns {String} image url, or "" when the theme has none
+   */
+  _themeImage(themeElement) {
+    const items = Array.isArray(this.items) ? this.items : [];
+    const match = items.find(
+      (i) =>
+        i &&
+        i.dataType === "blank" &&
+        (i.themeElement === themeElement || i.machineName === themeElement),
+    );
+    return match && match.useCaseImage ? match.useCaseImage : "";
+  }
+
   async processImportTemplate(selectedTemplate, modal, preset = {}) {
     try {
       const [{ MicroFrontendRegistry }, { enableServices }] = await Promise.all(
@@ -3640,6 +3659,10 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
           modal.skeletonData.site.license = response.data.site.license;
         }
         modal.siteName = importedName;
+        // an import has no picture of its own: show the theme it will use
+        if (!modal.source) {
+          modal.source = this._themeImage(modal.themeElement);
+        }
         store.clearProcessingVisual();
         modal.openModal();
       } else {
@@ -3668,20 +3691,18 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
     }
   }
 
-  handleModalClosed(event) {
-    // If modal was cancelled (not completed), reset selected states
-    if (event.detail && event.detail.cancelled) {
-      // Reset the selected card if one was selected
-      if (
-        this.selectedCardIndex !== null &&
-        this.filteredItems[this.selectedCardIndex]
-      ) {
-        this.filteredItems[this.selectedCardIndex].isSelected = false;
-        this.filteredItems[this.selectedCardIndex].showContinue = false;
-        this.selectedCardIndex = null;
-        this.requestUpdate();
-      }
+  handleModalClosed(_event) {
+    // the card stays marked only while its dialog is open, whether the
+    // dialog was cancelled or the site was created and the person stayed
+    if (
+      this.selectedCardIndex !== null &&
+      this.filteredItems[this.selectedCardIndex]
+    ) {
+      this.filteredItems[this.selectedCardIndex].isSelected = false;
+      this.filteredItems[this.selectedCardIndex].showContinue = false;
     }
+    this.selectedCardIndex = null;
+    this.requestUpdate();
   }
 }
 customElements.define("app-hax-use-case-filter", AppHaxUseCaseFilter);

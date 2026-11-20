@@ -24,6 +24,9 @@ const FACETS = {
   blank: ["useCase", "layout", "designSystem", "inspiredBy"],
 };
 
+/** query param that holds the open design browser tab */
+export const BROWSE_PARAM = "browse";
+
 /**
  * `app-hax-design-browser`
  * Browse every template or theme with search, facets and sort, then hand the
@@ -137,11 +140,18 @@ export class AppHaxDesignBrowser extends I18NMixin(DDDSuper(LitElement)) {
           padding: var(--ddd-spacing-3, 12px) var(--ddd-spacing-5, 20px);
           border-bottom: 1px solid var(--hax-ui-line);
         }
+        /* no overflow clipping here: it cut the focus ring of the tabs
+           down to one edge; the end tabs round their own corners instead */
         .tabs {
           display: inline-flex;
           border: 1px solid var(--hax-ui-line-strong);
           border-radius: var(--hax-ui-radius);
-          overflow: hidden;
+        }
+        .tabs button:first-child {
+          border-radius: var(--hax-ui-radius) 0 0 var(--hax-ui-radius);
+        }
+        .tabs button:last-child {
+          border-radius: 0 var(--hax-ui-radius) var(--hax-ui-radius) 0;
         }
         .tabs button {
           all: unset;
@@ -166,6 +176,10 @@ export class AppHaxDesignBrowser extends I18NMixin(DDDSuper(LitElement)) {
         }
         .tabs button:hover {
           background: var(--hax-ui-hover);
+        }
+        .tabs button:focus-visible {
+          position: relative;
+          z-index: 1;
         }
         .tabs button:focus-visible,
         .chip:focus-visible,
@@ -414,6 +428,36 @@ export class AppHaxDesignBrowser extends I18NMixin(DDDSuper(LitElement)) {
     }
     if (changedProperties.has("open") && this.open) {
       this._labelDialog();
+    }
+    // the open browser and its tab are part of the address, so a reload
+    // (or a shared link) comes back to the same place; closing it, or
+    // picking a design, takes the param away again
+    if (
+      (changedProperties.has("open") || changedProperties.has("kind")) &&
+      (this.open || changedProperties.get("open") === true)
+    ) {
+      this._syncBrowseParam();
+    }
+  }
+
+  _syncBrowseParam() {
+    try {
+      const url = new URL(globalThis.location.href);
+      if (this.open) {
+        url.searchParams.set(
+          BROWSE_PARAM,
+          this.kind === "blank" ? "themes" : "templates",
+        );
+      } else {
+        url.searchParams.delete(BROWSE_PARAM);
+      }
+      globalThis.history.replaceState(
+        globalThis.history.state,
+        "",
+        `${url.pathname}${url.search}${url.hash}`,
+      );
+    } catch {
+      // no history access: the browser still opens and closes
     }
   }
 

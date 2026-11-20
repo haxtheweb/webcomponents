@@ -894,9 +894,9 @@ class CleanTwo extends LTIResizingMixin(
                     .timestamp="${this.pageTimestamp}"
                   ></simple-datetime>
                 </div>
-                <div class="footer-right" part="footer-right">
-                  ${this.HAXCMSRenderOperationButtons()}
-                </div>
+                <!-- no Edit page button here: the top bar has Edit, and a
+                     second one in the footer only repeated it -->
+                <div class="footer-right" part="footer-right"></div>
               </div>
             </footer>
           </div>
@@ -960,7 +960,9 @@ class CleanTwo extends LTIResizingMixin(
   constructor() {
     super();
     // this theme presents learner progress on the page open in its menu
-    this.siteMenuShowProgress = true;
+    // learner progress lives in the My learning button; the menu itself
+    // stays a plain map of the site (marks on every page were noise)
+    this.siteMenuShowProgress = false;
     this.t = this.t || {};
     this.t = {
       ...this.t,

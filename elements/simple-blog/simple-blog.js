@@ -284,11 +284,19 @@ class SimpleBlog extends I18NMixin(
     const name = location.route.name;
     if (name === "home" || name === "404") {
       this.selectedPage = 0;
+      this.__scrolledFor = "";
     } else {
-      globalThis.scrollTo({
-        top: 0,
-        left: 0,
-      });
+      // only a move to another page goes to the top: the store re-sends
+      // the same location while editing, and scrolling then pulled the
+      // window off the block being edited
+      const key = location.pathname || name;
+      if (key !== this.__scrolledFor && !store.editMode) {
+        globalThis.scrollTo({
+          top: 0,
+          left: 0,
+        });
+      }
+      this.__scrolledFor = key;
       this.selectedPage = 1;
       // @todo hacky timing thing
       setTimeout(() => {

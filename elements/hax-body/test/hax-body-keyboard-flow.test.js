@@ -176,6 +176,29 @@ describe("keyboard flow: the hax-body editing area", function () {
     });
   });
 
+  describe("Enter in a styled text block", () => {
+    it("Enter at the end starts a plain paragraph; a split keeps the style on both halves", async () => {
+      const p = body.querySelector("p");
+      p.setAttribute("data-accent", "3");
+      p.setAttribute("data-design-treatment", "dropCap-md");
+      await activateText(p);
+      caretIn(p, p.textContent.length);
+      expect(body.__splitTextBlockAtSelection(p)).to.equal(true);
+      const fresh = p.nextElementSibling;
+      expect(fresh.tagName).to.equal("P");
+      expect(fresh.hasAttribute("data-accent")).to.equal(false);
+      expect(fresh.hasAttribute("data-design-treatment")).to.equal(false);
+      expect(p.getAttribute("data-accent")).to.equal("3");
+      fresh.remove();
+      await activateText(p);
+      caretIn(p, 5);
+      expect(body.__splitTextBlockAtSelection(p)).to.equal(true);
+      const half = p.nextElementSibling;
+      expect(half.textContent.trim()).to.equal("paragraph");
+      expect(half.getAttribute("data-accent")).to.equal("3");
+    });
+  });
+
   describe("Select all in a text block", () => {
     it("Ctrl+A selects the active block's text, and typing replaces only that", async () => {
       const p = body.querySelector("p");

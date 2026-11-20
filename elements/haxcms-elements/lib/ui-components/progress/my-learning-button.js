@@ -2,7 +2,8 @@
  * Copyright 2026 The Pennsylvania State University
  * @license Apache-2.0, see LICENSE for full text.
  */
-import { LitElement, html, css } from "lit";
+import { LitElement, html, css, nothing } from "lit";
+import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import {
   DDDCompletionTracker,
@@ -305,7 +306,7 @@ export class MyLearningButton extends I18NMixin(DDDSuper(LitElement)) {
         aria-expanded="${this._open ? "true" : "false"}"
         aria-controls="panel"
         aria-label="${name}"
-        title="${name}"
+        title="${this.compact ? nothing : name}"
         @click="${this._clicked}"
         @pointerenter="${this._warmPanel}"
         @focus="${this._warmPanel}"
@@ -319,6 +320,17 @@ export class MyLearningButton extends I18NMixin(DDDSuper(LitElement)) {
         <span class="label" aria-hidden="true">${this.t.myLearning}</span>
         <span class="pct" aria-hidden="true">${pct}</span>
       </button>
+      ${
+        this.compact
+          ? html`<simple-tooltip
+              for="button"
+              position="auto"
+              ?hidden="${this._open}"
+              aria-hidden="true"
+              >${name}</simple-tooltip
+            >`
+          : nothing
+      }
       <my-learning-panel
         id="panel"
         popover="auto"

@@ -150,6 +150,31 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           right: 0;
           z-index: var(--ddd-z-modal, 10000);
           visibility: visible;
+          /* the bar arrives after the page has drawn: open its room and
+             bring it in instead of jerking the page down 64px at once */
+          animation: haxcms-editor-ui-arrive var(--ddd-duration-normal, 0.3s)
+            cubic-bezier(0.2, 0, 0, 1);
+        }
+        app-hax-top-bar {
+          animation: haxcms-editor-ui-bar-arrive
+            var(--ddd-duration-normal, 0.3s) cubic-bezier(0.2, 0, 0, 1);
+        }
+        @keyframes haxcms-editor-ui-arrive {
+          from {
+            height: 0;
+          }
+        }
+        @keyframes haxcms-editor-ui-bar-arrive {
+          from {
+            opacity: 0;
+            transform: translateY(-100%);
+          }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          :host,
+          app-hax-top-bar {
+            animation: none;
+          }
         }
         :host([edit-mode]) {
           z-index: 9999;
@@ -2434,6 +2459,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       exportThisPage: "Export this page",
       exportThisSite: "Export this site",
       preview: "Preview",
+      userPreview: "User preview",
       visitorAndDevicePreview: "Visitor and Device Preview",
       previewDescription:
         "See this site as a visitor would, on the device you pick, without logging out",
@@ -3221,7 +3247,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       },
       title: this.t.createBlockFromLink,
       icon: "editor:insert-link",
-      priority: -9999,
+      // after Create a page (-2000) and Edit (-1500): what most people do
+      // first comes first
+      priority: -1000,
       tags: ["Agent", "help", "merlin", "url", "link"],
       eventName: "super-daemon-run-program",
       path: "CMS/action/link-agent",
@@ -4548,6 +4576,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
    */
   __windowDragEnter(e) {
     this.__dragCounter++;
+    // Site settings (Files, Content...) has its own drop area that lights
+    // up for the drag; Merlin lighting up too pointed at the wrong place
+    if (this.adminDocked) {
+      return;
+    }
     if (this.__isFileDrop(e) && this.__dragCounter === 1) {
       if (this.sdSearch) {
         this.sdSearch.classList.add("window-file-drag");
@@ -5268,22 +5301,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         },
       },
     });
-    // Welcome to HAX program - shows 5 most common operations for new users
+    // Welcome to HAX program - the most common operations for new users,
+    // what can be done right now first: upload, add a page, edit this one
     const welcomeOps = [
-      {
-        title: this.t.editThisPage,
-        icon: "hax:page-edit",
-        tags: ["welcome", "common", "operation"],
-        shortcut: "cms-edit",
-        value: {
-          target: this,
-          method: "executeWelcomeAction",
-          args: ["edit-page"],
-        },
-        eventName: "super-daemon-element-method",
-        context: "CMS",
-        path: "CMS/welcome/edit-page",
-      },
       {
         title: this.t.uploadAFile,
         icon: "file-upload",
@@ -5310,6 +5330,20 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         eventName: "super-daemon-element-method",
         context: "addPage",
         path: "CMS/welcome/create-page",
+      },
+      {
+        title: this.t.editThisPage,
+        icon: "hax:page-edit",
+        tags: ["welcome", "common", "operation"],
+        shortcut: "cms-edit",
+        value: {
+          target: this,
+          method: "executeWelcomeAction",
+          args: ["edit-page"],
+        },
+        eventName: "super-daemon-element-method",
+        context: "CMS",
+        path: "CMS/welcome/edit-page",
       },
       {
         title: this.t.editSiteOutline,
@@ -5996,7 +6030,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       eventName: "super-daemon-run-program",
       path: "/sources/site-pages",
       context: ["HAX", "/"],
-      priority: -1,
+      // with the media searches, after Insert blocks (see hax-store)
+      priority: 15,
       value: {
         name: this.t.insertALinkToAPage,
         context: "/",
@@ -7826,7 +7861,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           id="previewbutton"
           class="top-bar-button"
           icon="icons:visibility"
-          label="${labelWithShortcut(this.previewMode ? this.t.exitPreview : this.t.preview, "Ctrl⇧8")}"
+          label="${labelWithShortcut(this.previewMode ? this.t.exitPreview : this.t.userPreview, "Ctrl⇧8")}"
           voice-command="preview (site)"
           ?active="${this.previewMode}"
           icon-position="${this.getIconPosition(this.responsiveSize)}"
