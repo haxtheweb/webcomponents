@@ -61,18 +61,32 @@ class AirHorn extends HTMLElement {
    * HTMLElement life cycle - inserted into the DOM
    */
   connectedCallback() {
-    // expose the clickable host as a keyboard-operable button
-    if (!this.hasAttribute("role")) {
-      this.setAttribute("role", "button");
-    }
-    if (!this.hasAttribute("tabindex")) {
-      this.setAttribute("tabindex", "0");
-    }
+    // remember what the author set so only what this element adds changes
+    this.__explicitRole = this.hasAttribute("role");
+    this.__explicitTabindex = this.hasAttribute("tabindex");
     this.__explicitAriaLabel = this.hasAttribute("aria-label");
     this._updateAriaLabel();
+    this._recheckWhenDefined();
+    // content that draws its controls once it scrolls into view (players,
+    // lazy media) is looked at again after it has had a frame to render
+    if (globalThis.IntersectionObserver && !this.__visibleObserver) {
+      this.__visibleObserver = new IntersectionObserver((entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          globalThis.requestAnimationFrame(() =>
+            globalThis.requestAnimationFrame(() => {
+              if (this.isConnected) this._updateAriaLabel();
+            }),
+          );
+        }
+      });
+      this.__visibleObserver.observe(this);
+    }
     this.addEventListener("click", this.__playSoundBound);
     this.addEventListener("keydown", this.__keyDownBound);
-    this.__slotChangeBound = this._updateAriaLabel.bind(this);
+    this.__slotChangeBound = () => {
+      this._updateAriaLabel();
+      this._recheckWhenDefined();
+    };
     this.shadowRoot
       .querySelector("slot")
       .addEventListener("slotchange", this.__slotChangeBound);
@@ -82,6 +96,10 @@ class AirHorn extends HTMLElement {
    * HTMLElement life cycle - removed from the DOM
    */
   disconnectedCallback() {
+    if (this.__visibleObserver) {
+      this.__visibleObserver.disconnect();
+      this.__visibleObserver = null;
+    }
     this.removeEventListener("click", this.__playSoundBound);
     this.removeEventListener("keydown", this.__keyDownBound);
     const slot = this.shadowRoot.querySelector("slot");
@@ -95,20 +113,76 @@ class AirHorn extends HTMLElement {
    * two never mismatch (label-content-name-mismatch).
    */
   _updateAriaLabel() {
+    // content that is already a control (a link, a button, a player) is
+    // what people operate: the host stays a plain wrapper so controls are
+    // never nested in a button, and a click on that control still bubbles
+    // up and plays the horn
+    this.__wrapsControl = this._hasControl();
+    if (this.__wrapsControl) {
+      if (!this.__explicitRole) this.removeAttribute("role");
+      if (!this.__explicitTabindex) this.removeAttribute("tabindex");
+      if (!this.__explicitAriaLabel) this.removeAttribute("aria-label");
+      return;
+    }
+    // otherwise expose the clickable host as a keyboard-operable button
+    if (!this.__explicitRole) this.setAttribute("role", "button");
+    if (!this.__explicitTabindex) this.setAttribute("tabindex", "0");
     if (this.__explicitAriaLabel) {
       return;
     }
+    // the name starts with the visible text (WCAG 2.5.3 label in name)
     const text = this.textContent.trim();
-    this.setAttribute(
-      "aria-label",
-      text ? `Play air horn: ${text}` : "Play air horn",
-    );
+    this.setAttribute("aria-label", text ? `${text}, air horn` : "Air horn");
+  }
+
+  /**
+   * Slotted custom elements draw their controls once they upgrade and
+   * render; look again then.
+   */
+  _recheckWhenDefined() {
+    const pending = Array.from(this.querySelectorAll("*"))
+      .filter((node) => node.localName.includes("-"))
+      .map((node) =>
+        globalThis.customElements
+          .whenDefined(node.localName)
+          .then(() => node.updateComplete),
+      );
+    if (pending.length) {
+      Promise.all(pending)
+        .then(() => {
+          if (this.isConnected) this._updateAriaLabel();
+        })
+        .catch(() => {});
+    }
+  }
+
+  /**
+   * Whether the slotted content holds something focusable of its own.
+   */
+  _hasControl() {
+    const focusable =
+      'a[href], button, input, select, textarea, audio[controls], video[controls], [tabindex]:not([tabindex="-1"]), [contenteditable=""], [contenteditable="true"]';
+    const nodes = this.querySelectorAll("*");
+    for (let i = 0; i < nodes.length; i++) {
+      const node = nodes[i];
+      if (
+        node.matches(focusable) ||
+        (node.shadowRoot && node.shadowRoot.querySelector(focusable))
+      ) {
+        return true;
+      }
+    }
+    return false;
   }
 
   /**
    * Enter and Space activate the horn like a native button would.
    */
   _keyDown(e) {
+    // a wrapped control activates itself; its click bubbles here
+    if (this.__wrapsControl || e.target !== this) {
+      return;
+    }
     if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") {
       e.preventDefault();
       this.click();

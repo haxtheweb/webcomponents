@@ -506,19 +506,31 @@ if ($MrTheCheat) {
     // code area joins the tab order only while it overflows
     const container = this.shadowRoot.querySelector("#code-container");
     if (container && globalThis.ResizeObserver) {
-      const sync = () => {
-        if (container.scrollWidth > container.clientWidth) {
-          container.setAttribute("tabindex", "0");
-        } else {
-          container.removeAttribute("tabindex");
-        }
-      };
-      this.__scrollObserver = new globalThis.ResizeObserver(sync);
+      this.__scrollObserver = new globalThis.ResizeObserver(() =>
+        this._syncScrollFocus(),
+      );
       this.__scrollObserver.observe(container);
-      const code = this.shadowRoot.querySelector("#code");
-      if (code) {
-        this.__scrollObserver.observe(code);
+      // the <code> element is what grows to its longest line; the boxes
+      // around it keep the container's width
+      if (this._code && this._code.isConnected) {
+        this.__scrollObserver.observe(this._code);
       }
+    }
+    this._syncScrollFocus();
+  }
+  /**
+   * The code area is in the tab order exactly while it scrolls sideways.
+   */
+  _syncScrollFocus() {
+    const container =
+      this.shadowRoot && this.shadowRoot.querySelector("#code-container");
+    if (!container) {
+      return;
+    }
+    if (container.scrollWidth > container.clientWidth) {
+      container.setAttribute("tabindex", "0");
+    } else {
+      container.removeAttribute("tabindex");
     }
   }
   /**
@@ -642,6 +654,9 @@ if ($MrTheCheat) {
   }
   _updateContent() {
     if (this._code && this._code.parentNode) {
+      if (this.__scrollObserver) {
+        this.__scrollObserver.unobserve(this._code);
+      }
       this._code.parentNode.removeChild(this._code);
     }
     let template = this._getCodeTemplate();
@@ -672,6 +687,12 @@ if ($MrTheCheat) {
       this.shadowRoot.querySelector("#code").appendChild(this._code);
       hljs.highlightBlock(this._code);
       hljs.initLineNumbersOnLoad({}, this.shadowRoot.querySelector("code"));
+      // new code can be wider than the old; keep watching the element
+      // that holds it
+      if (this.__scrollObserver) {
+        this.__scrollObserver.observe(this._code);
+      }
+      this._syncScrollFocus();
     }
   }
   _cleanIndentation(str) {

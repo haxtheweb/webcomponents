@@ -651,6 +651,21 @@ describe("code-sample keyboard scrolling", () => {
     expect(shortContainer.hasAttribute("tabindex")).to.equal(false);
   });
 
+  it("joins the tab order when new code makes it overflow", async () => {
+    const wrap = await fixture(html`<div style="width: 320px"></div>`);
+    wrap.innerHTML =
+      '<code-sample type="javascript"><template preserve-content="preserve-content">const a = 1;</template></code-sample>';
+    const sample = wrap.querySelector("code-sample");
+    await sample.updateComplete;
+    await new Promise((r) => setTimeout(r, 200));
+    const container = sample.shadowRoot.querySelector("#code-container");
+    expect(container.hasAttribute("tabindex")).to.equal(false);
+    sample._applyHighlightjs(`const x = "${"b".repeat(400)}";`);
+    await new Promise((r) => setTimeout(r, 200));
+    expect(container.scrollWidth).to.be.greaterThan(container.clientWidth);
+    expect(container.getAttribute("tabindex")).to.equal("0");
+  });
+
   it("keeps the theme background behind long lines that scroll", async () => {
     const el = await fixture(html`<div style="width: 320px"></div>`);
     el.innerHTML =

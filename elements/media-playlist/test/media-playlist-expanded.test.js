@@ -68,7 +68,10 @@ describe("media-playlist items and rendering", () => {
     expect(items[0].classList.contains("active")).to.be.true;
     expect(items[0].getAttribute("aria-current")).to.equal("true");
     expect(items[1].getAttribute("aria-current")).to.equal("false");
-    expect(items[0].getAttribute("aria-label")).to.equal("Play Video One, ");
+    expect(items[0].getAttribute("aria-label")).to.equal("1 Video One, Play");
+    expect(
+      element._itemLabel({ title: "Intro", duration: "3:20" }, 4),
+    ).to.equal("5 Intro, 3:20, Play");
     expect(items[0].querySelector("img.playlist-thumbnail")).to.exist;
     expect(items[1].querySelector("div.playlist-thumbnail")).to.exist;
     expect(
