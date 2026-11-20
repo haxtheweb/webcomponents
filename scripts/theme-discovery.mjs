@@ -251,7 +251,9 @@ function declaresAcceptsDesignSystems(content) {
  *   @haxcms-theme-category      what it is for (comma separated)
  *   @haxcms-theme-layout        Sidebar, Top nav or Single column
  *   @haxcms-theme-design-system the system it is built on, when not DDD
- *   @haxcms-theme-inspired-by   the site or generator it is an homage to
+ *   @haxcms-theme-inspired-by   the project it is an homage to (Jekyll,
+ *                               Hugo, Astro...), the browsing group
+ *   @haxcms-theme-inspired-by-theme  that project's theme, when there is one
  *   @haxcms-theme-description   one sentence shown when picking a theme
  */
 function buildThemeEntry(content, file, elementName) {
@@ -272,6 +274,10 @@ function buildThemeEntry(content, file, elementName) {
     layout: extractTextDocblockTag(content, "haxcms-theme-layout"),
     designSystem: extractTextDocblockTag(content, "haxcms-theme-design-system"),
     inspiredBy: extractTextDocblockTag(content, "haxcms-theme-inspired-by"),
+    inspiredByTheme: extractTextDocblockTag(
+      content,
+      "haxcms-theme-inspired-by-theme",
+    ),
     // filled in after discovery, following the class chain
     acceptsDesignSystems: false,
   };

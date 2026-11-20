@@ -19,7 +19,8 @@ import { HomageColumnTheme } from "@haxtheweb/papermod-theme/lib/HomageColumnThe
  * @title Coder
  * @haxcms-theme-category Blog, Website, Portfolio
  * @haxcms-theme-layout Single column
- * @haxcms-theme-inspired-by Hugo Coder
+ * @haxcms-theme-inspired-by Hugo
+ * @haxcms-theme-inspired-by-theme Coder
  * @haxcms-theme-priority 0
  * @demo ../demo/coder-theme/index.html
  * @element coder-theme

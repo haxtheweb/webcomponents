@@ -26,7 +26,8 @@ import "@haxtheweb/simple-icon/lib/simple-icons.js";
  *
  * @haxcms-theme-category Website, Blog, Organization
  * @haxcms-theme-layout Sidebar
- * @haxcms-theme-inspired-by Twenty Fifteen
+ * @haxcms-theme-inspired-by WordPress
+ * @haxcms-theme-inspired-by-theme Twenty Fifteen
  * @haxcms-theme-internal false
  * @haxcms-theme-priority 0
  * @element twenty-six-theme

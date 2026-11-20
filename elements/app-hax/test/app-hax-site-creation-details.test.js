@@ -77,6 +77,41 @@ describe("AppHaxSiteCreationModal what you're getting", () => {
   });
 });
 
+describe("AppHaxSiteCreationModal creating step", () => {
+  it("keeps the finish buttons in place, disabled, while it works", async () => {
+    const el = await fixture(
+      html`<app-hax-site-creation-modal></app-hax-site-creation-modal>`,
+    );
+    el.currentStep = 2;
+    el.isCreating = true;
+    await el.updateComplete;
+    const buttons = [...el.shadowRoot.querySelectorAll(".button-group button")];
+    expect(buttons).to.have.length(2);
+    buttons.forEach((b) => expect(b.disabled).to.equal(true));
+    el.currentStep = 3;
+    el.isCreating = false;
+    await el.updateComplete;
+    el.shadowRoot
+      .querySelectorAll(".button-group button")
+      .forEach((b) => expect(b.disabled).to.equal(false));
+  });
+
+  it("puts the Future Traveler on their head at 100%", async () => {
+    const el = await fixture(
+      html`<app-hax-site-creation-modal></app-hax-site-creation-modal>`,
+    );
+    el.currentStep = 3;
+    await el._suitUp();
+    await el.updateComplete;
+    const avatar = el.shadowRoot.querySelector(".hat-avatar");
+    expect(avatar.dataset.suit).to.equal("arriving");
+    expect(avatar.querySelector(".traveler svg.future-traveler")).to.exist;
+    // a second 100% does not restart it
+    await el._suitUp();
+    expect(el._suit).to.equal("arriving");
+  });
+});
+
 describe("AppHaxSiteCreationModal pure logic", () => {
   describe("static tag", () => {
     it("has correct tag name", () => {

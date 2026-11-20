@@ -12,7 +12,8 @@
     "supportedPalettes": null,
     "layout": "Single column",
     "designSystem": null,
-    "inspiredBy": "Jekyll al-folio",
+    "inspiredBy": "Jekyll",
+    "inspiredByTheme": "al-folio",
     "acceptsDesignSystems": true
   },
   "app-hax-theme": {
@@ -29,6 +30,7 @@
     "layout": null,
     "designSystem": null,
     "inspiredBy": null,
+    "inspiredByTheme": null,
     "acceptsDesignSystems": false
   },
   "astro-cactus-theme": {
@@ -44,7 +46,8 @@
     "supportedPalettes": null,
     "layout": "Single column",
     "designSystem": null,
-    "inspiredBy": "Astro Cactus",
+    "inspiredBy": "Astro",
+    "inspiredByTheme": "Cactus",
     "acceptsDesignSystems": true
   },
   "astrofy-theme": {
@@ -60,7 +63,8 @@
     "supportedPalettes": null,
     "layout": "Sidebar",
     "designSystem": null,
-    "inspiredBy": "Astro Astrofy",
+    "inspiredBy": "Astro",
+    "inspiredByTheme": "Astrofy",
     "acceptsDesignSystems": true
   },
   "astropaper-theme": {
@@ -76,7 +80,8 @@
     "supportedPalettes": null,
     "layout": "Single column",
     "designSystem": null,
-    "inspiredBy": "Astro AstroPaper",
+    "inspiredBy": "Astro",
+    "inspiredByTheme": "AstroPaper",
     "acceptsDesignSystems": true
   },
   "astrowind-theme": {
@@ -92,7 +97,8 @@
     "supportedPalettes": null,
     "layout": "Top nav",
     "designSystem": null,
-    "inspiredBy": "Astro AstroWind",
+    "inspiredBy": "Astro",
+    "inspiredByTheme": "AstroWind",
     "acceptsDesignSystems": true
   },
   "book-theme": {
@@ -108,7 +114,8 @@
     "supportedPalettes": null,
     "layout": "Sidebar",
     "designSystem": null,
-    "inspiredBy": "Hugo Book",
+    "inspiredBy": "Hugo",
+    "inspiredByTheme": "Book",
     "acceptsDesignSystems": true
   },
   "bootstrap-theme": {
@@ -125,6 +132,7 @@
     "layout": "Top nav",
     "designSystem": "Bootstrap",
     "inspiredBy": null,
+    "inspiredByTheme": null,
     "acceptsDesignSystems": false
   },
   "carbon-theme": {
@@ -141,6 +149,7 @@
     "layout": "Sidebar",
     "designSystem": "Carbon",
     "inspiredBy": null,
+    "inspiredByTheme": null,
     "acceptsDesignSystems": false
   },
   "chamfer-theme": {
@@ -157,6 +166,7 @@
     "layout": null,
     "designSystem": null,
     "inspiredBy": null,
+    "inspiredByTheme": null,
     "acceptsDesignSystems": false
   },
   "chirpy-theme": {
@@ -172,7 +182,8 @@
     "supportedPalettes": null,
     "layout": "Sidebar",
     "designSystem": null,
-    "inspiredBy": "Jekyll Chirpy",
+    "inspiredBy": "Jekyll",
+    "inspiredByTheme": "Chirpy",
     "acceptsDesignSystems": true
   },
   "clean-one": {
@@ -189,6 +200,7 @@
     "layout": "Sidebar",
     "designSystem": null,
     "inspiredBy": null,
+    "inspiredByTheme": null,
     "acceptsDesignSystems": true
   },
   "clean-portfolio-theme": {
@@ -205,6 +217,7 @@
     "layout": "Top nav",
     "designSystem": null,
     "inspiredBy": null,
+    "inspiredByTheme": null,
     "acceptsDesignSystems": false
   },
   "clean-two": {
@@ -221,6 +234,7 @@
     "layout": "Sidebar",
     "designSystem": null,
     "inspiredBy": null,
+    "inspiredByTheme": null,
     "acceptsDesignSystems": false
   },
   "coder-theme": {
@@ -236,7 +250,8 @@
     "supportedPalettes": null,
     "layout": "Single column",
     "designSystem": null,
-    "inspiredBy": "Hugo Coder",
+    "inspiredBy": "Hugo",
+    "inspiredByTheme": "Coder",
     "acceptsDesignSystems": true
   },
   "collections-theme": {
@@ -253,6 +268,7 @@
     "layout": null,
     "designSystem": null,
     "inspiredBy": null,
+    "inspiredByTheme": null,
     "acceptsDesignSystems": false
   },
   "ddd-brochure-theme": {
@@ -269,6 +285,7 @@
     "layout": null,
     "designSystem": null,
     "inspiredBy": null,
+    "inspiredByTheme": null,
     "acceptsDesignSystems": false
   },
   "ecosystem-theme": {
@@ -285,6 +302,7 @@
     "layout": "Sidebar",
     "designSystem": null,
     "inspiredBy": null,
+    "inspiredByTheme": null,
     "acceptsDesignSystems": false
   },
   "fluent-theme": {
@@ -301,6 +319,7 @@
     "layout": "Sidebar",
     "designSystem": "Fluent",
     "inspiredBy": null,
+    "inspiredByTheme": null,
     "acceptsDesignSystems": false
   },
   "glossy-portfolio-theme": {
@@ -317,6 +336,7 @@
     "layout": "Top nav",
     "designSystem": null,
     "inspiredBy": null,
+    "inspiredByTheme": null,
     "acceptsDesignSystems": false
   },
   "guidebook-theme": {
@@ -332,7 +352,8 @@
     "supportedPalettes": null,
     "layout": "Sidebar",
     "designSystem": null,
-    "inspiredBy": "Astro Starlight",
+    "inspiredBy": "Astro",
+    "inspiredByTheme": "Starlight",
     "acceptsDesignSystems": true
   },
   "handbook-theme": {
@@ -348,7 +369,8 @@
     "supportedPalettes": null,
     "layout": "Sidebar",
     "designSystem": null,
-    "inspiredBy": "Hugo Docsy",
+    "inspiredBy": "Hugo",
+    "inspiredByTheme": "Docsy",
     "acceptsDesignSystems": true
   },
   "hax-marketing-theme": {
@@ -365,6 +387,7 @@
     "layout": "Top nav",
     "designSystem": "Future Traveler",
     "inspiredBy": null,
+    "inspiredByTheme": null,
     "acceptsDesignSystems": true
   },
   "haxcms-blank-theme": {
@@ -381,6 +404,7 @@
     "layout": null,
     "designSystem": null,
     "inspiredBy": null,
+    "inspiredByTheme": null,
     "acceptsDesignSystems": false
   },
   "haxcms-json-theme": {
@@ -397,6 +421,7 @@
     "layout": null,
     "designSystem": null,
     "inspiredBy": null,
+    "inspiredByTheme": null,
     "acceptsDesignSystems": false
   },
   "haxcms-print-theme": {
@@ -413,6 +438,7 @@
     "layout": null,
     "designSystem": null,
     "inspiredBy": null,
+    "inspiredByTheme": null,
     "acceptsDesignSystems": false
   },
   "haxma-theme": {
@@ -428,7 +454,8 @@
     "supportedPalettes": null,
     "layout": "Sidebar",
     "designSystem": null,
-    "inspiredBy": "Figma docs",
+    "inspiredBy": "Figma",
+    "inspiredByTheme": null,
     "acceptsDesignSystems": false
   },
   "haxor-slevin": {
@@ -445,6 +472,7 @@
     "layout": null,
     "designSystem": null,
     "inspiredBy": null,
+    "inspiredByTheme": null,
     "acceptsDesignSystems": false
   },
   "hyde-theme": {
@@ -460,7 +488,8 @@
     "supportedPalettes": null,
     "layout": "Sidebar",
     "designSystem": null,
-    "inspiredBy": "Jekyll Hyde",
+    "inspiredBy": "Jekyll",
+    "inspiredByTheme": "Hyde",
     "acceptsDesignSystems": true
   },
   "journey-sidebar-theme": {
@@ -477,6 +506,7 @@
     "layout": null,
     "designSystem": null,
     "inspiredBy": null,
+    "inspiredByTheme": null,
     "acceptsDesignSystems": false
   },
   "journey-theme": {
@@ -493,6 +523,7 @@
     "layout": "Single column",
     "designSystem": null,
     "inspiredBy": null,
+    "inspiredByTheme": null,
     "acceptsDesignSystems": false
   },
   "journey-topbar-theme": {
@@ -509,6 +540,7 @@
     "layout": null,
     "designSystem": null,
     "inspiredBy": null,
+    "inspiredByTheme": null,
     "acceptsDesignSystems": false
   },
   "just-the-docs-theme": {
@@ -524,7 +556,8 @@
     "supportedPalettes": null,
     "layout": "Sidebar",
     "designSystem": null,
-    "inspiredBy": "Jekyll Just the Docs",
+    "inspiredBy": "Jekyll",
+    "inspiredByTheme": "Just the Docs",
     "acceptsDesignSystems": true
   },
   "learn-two-theme": {
@@ -540,7 +573,8 @@
     "supportedPalettes": null,
     "layout": "Sidebar",
     "designSystem": null,
-    "inspiredBy": "Learn2",
+    "inspiredBy": null,
+    "inspiredByTheme": null,
     "acceptsDesignSystems": true
   },
   "link-card-theme": {
@@ -557,6 +591,7 @@
     "layout": "Single column",
     "designSystem": null,
     "inspiredBy": null,
+    "inspiredByTheme": null,
     "acceptsDesignSystems": false
   },
   "manual-theme": {
@@ -573,6 +608,7 @@
     "layout": "Sidebar",
     "designSystem": null,
     "inspiredBy": "Docusaurus",
+    "inspiredByTheme": null,
     "acceptsDesignSystems": true
   },
   "material-theme": {
@@ -589,6 +625,7 @@
     "layout": "Sidebar",
     "designSystem": "Material",
     "inspiredBy": null,
+    "inspiredByTheme": null,
     "acceptsDesignSystems": false
   },
   "minima-theme": {
@@ -604,7 +641,8 @@
     "supportedPalettes": null,
     "layout": "Single column",
     "designSystem": null,
-    "inspiredBy": "Jekyll Minima",
+    "inspiredBy": "Jekyll",
+    "inspiredByTheme": "Minima",
     "acceptsDesignSystems": true
   },
   "minimal-mistakes-theme": {
@@ -620,7 +658,8 @@
     "supportedPalettes": null,
     "layout": "Sidebar",
     "designSystem": null,
-    "inspiredBy": "Jekyll Minimal Mistakes",
+    "inspiredBy": "Jekyll",
+    "inspiredByTheme": "Minimal Mistakes",
     "acceptsDesignSystems": true
   },
   "outline-player": {
@@ -637,6 +676,7 @@
     "layout": null,
     "designSystem": null,
     "inspiredBy": null,
+    "inspiredByTheme": null,
     "acceptsDesignSystems": false
   },
   "papermod-theme": {
@@ -652,7 +692,8 @@
     "supportedPalettes": null,
     "layout": "Single column",
     "designSystem": null,
-    "inspiredBy": "Hugo PaperMod",
+    "inspiredBy": "Hugo",
+    "inspiredByTheme": "PaperMod",
     "acceptsDesignSystems": true
   },
   "patternfly-theme": {
@@ -669,6 +710,7 @@
     "layout": "Sidebar",
     "designSystem": "PatternFly",
     "inspiredBy": null,
+    "inspiredByTheme": null,
     "acceptsDesignSystems": false
   },
   "polaris-flex-sidebar": {
@@ -685,6 +727,7 @@
     "layout": "Sidebar",
     "designSystem": null,
     "inspiredBy": null,
+    "inspiredByTheme": null,
     "acceptsDesignSystems": false
   },
   "polaris-flex-theme": {
@@ -701,6 +744,7 @@
     "layout": "Top nav",
     "designSystem": null,
     "inspiredBy": null,
+    "inspiredByTheme": null,
     "acceptsDesignSystems": false
   },
   "polaris-invent-theme": {
@@ -717,6 +761,7 @@
     "layout": "Top nav",
     "designSystem": null,
     "inspiredBy": null,
+    "inspiredByTheme": null,
     "acceptsDesignSystems": false
   },
   "polaris-theme": {
@@ -732,7 +777,8 @@
     "supportedPalettes": null,
     "layout": "Top nav",
     "designSystem": null,
-    "inspiredBy": "WordPress",
+    "inspiredBy": null,
+    "inspiredByTheme": null,
     "acceptsDesignSystems": false
   },
   "primer-theme": {
@@ -749,6 +795,7 @@
     "layout": "Sidebar",
     "designSystem": "Primer",
     "inspiredBy": null,
+    "inspiredByTheme": null,
     "acceptsDesignSystems": false
   },
   "resume-theme": {
@@ -765,6 +812,7 @@
     "layout": "Sidebar",
     "designSystem": null,
     "inspiredBy": null,
+    "inspiredByTheme": null,
     "acceptsDesignSystems": false
   },
   "shadcn-theme": {
@@ -781,6 +829,7 @@
     "layout": "Sidebar",
     "designSystem": "shadcn/ui",
     "inspiredBy": null,
+    "inspiredByTheme": null,
     "acceptsDesignSystems": false
   },
   "simple-blog": {
@@ -797,6 +846,7 @@
     "layout": null,
     "designSystem": null,
     "inspiredBy": null,
+    "inspiredByTheme": null,
     "acceptsDesignSystems": false
   },
   "spacebook-theme": {
@@ -812,7 +862,8 @@
     "supportedPalettes": null,
     "layout": "Sidebar",
     "designSystem": null,
-    "inspiredBy": "11ty SpaceBook",
+    "inspiredBy": "11ty",
+    "inspiredByTheme": "SpaceBook",
     "acceptsDesignSystems": false
   },
   "spectrum-theme": {
@@ -829,6 +880,7 @@
     "layout": "Sidebar",
     "designSystem": "Spectrum",
     "inspiredBy": null,
+    "inspiredByTheme": null,
     "acceptsDesignSystems": false
   },
   "tailwind-theme": {
@@ -845,6 +897,7 @@
     "layout": "Sidebar",
     "designSystem": "Tailwind",
     "inspiredBy": null,
+    "inspiredByTheme": null,
     "acceptsDesignSystems": false
   },
   "terminal-theme": {
@@ -860,7 +913,8 @@
     "supportedPalettes": null,
     "layout": "Single column",
     "designSystem": null,
-    "inspiredBy": "Hugo Terminal",
+    "inspiredBy": "Hugo",
+    "inspiredByTheme": "Terminal",
     "acceptsDesignSystems": true
   },
   "terrible-best-themes": {
@@ -877,6 +931,7 @@
     "layout": null,
     "designSystem": null,
     "inspiredBy": null,
+    "inspiredByTheme": null,
     "acceptsDesignSystems": false
   },
   "terrible-outlet-themes": {
@@ -893,6 +948,7 @@
     "layout": null,
     "designSystem": null,
     "inspiredBy": null,
+    "inspiredByTheme": null,
     "acceptsDesignSystems": false
   },
   "terrible-productionz-themes": {
@@ -909,6 +965,7 @@
     "layout": null,
     "designSystem": null,
     "inspiredBy": null,
+    "inspiredByTheme": null,
     "acceptsDesignSystems": false
   },
   "terrible-resume-themes": {
@@ -925,6 +982,7 @@
     "layout": null,
     "designSystem": null,
     "inspiredBy": null,
+    "inspiredByTheme": null,
     "acceptsDesignSystems": false
   },
   "terrible-themes": {
@@ -941,6 +999,7 @@
     "layout": null,
     "designSystem": null,
     "inspiredBy": null,
+    "inspiredByTheme": null,
     "acceptsDesignSystems": false
   },
   "training-theme": {
@@ -957,6 +1016,7 @@
     "layout": "Sidebar",
     "designSystem": null,
     "inspiredBy": null,
+    "inspiredByTheme": null,
     "acceptsDesignSystems": false
   },
   "twenty-six-theme": {
@@ -972,7 +1032,8 @@
     "supportedPalettes": null,
     "layout": "Sidebar",
     "designSystem": null,
-    "inspiredBy": "Twenty Fifteen",
+    "inspiredBy": "WordPress",
+    "inspiredByTheme": "Twenty Fifteen",
     "acceptsDesignSystems": false
   },
   "uswds-theme": {
@@ -989,6 +1050,7 @@
     "layout": "Sidebar",
     "designSystem": "USWDS",
     "inspiredBy": null,
+    "inspiredByTheme": null,
     "acceptsDesignSystems": false
   },
   "vhs-blog-theme": {
@@ -1005,6 +1067,7 @@
     "layout": "Sidebar",
     "designSystem": null,
     "inspiredBy": null,
+    "inspiredByTheme": null,
     "acceptsDesignSystems": false
   },
   "webawesome-theme": {
@@ -1021,6 +1084,7 @@
     "layout": "Sidebar",
     "designSystem": "Web Awesome",
     "inspiredBy": null,
+    "inspiredByTheme": null,
     "acceptsDesignSystems": false
   },
   "writing-theme": {
@@ -1037,6 +1101,7 @@
     "layout": "Single column",
     "designSystem": null,
     "inspiredBy": null,
+    "inspiredByTheme": null,
     "acceptsDesignSystems": false
   },
   "wysiwyg96-theme": {
@@ -1052,7 +1117,8 @@
     "supportedPalettes": null,
     "layout": "Sidebar",
     "designSystem": null,
-    "inspiredBy": "1995-96 WYSIWYG web editors",
+    "inspiredBy": "Classic web editors",
+    "inspiredByTheme": "1995-96 WYSIWYG editors",
     "acceptsDesignSystems": true
   }
 }

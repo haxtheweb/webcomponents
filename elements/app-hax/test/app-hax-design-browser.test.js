@@ -95,9 +95,37 @@ describe("app-hax-design-browser", () => {
     expect(el._values(items[3], "layout")).to.deep.equal(["Sidebar"]);
     // a template whose list entry does not name its theme has no layout
     expect(el._values(items[4], "layout")).to.deep.equal([]);
-    expect(el._values(items[4], "source")).to.deep.equal([el.t.yours]);
+    // user is a template you saved, config one installed for your
+    // organization, anything else ships with HAX
+    expect(el._values(items[4], "source")).to.deep.equal([el.t.you]);
+    expect(
+      el._values({ originalData: { scope: "config" } }, "source"),
+    ).to.deep.equal([el.t.yours]);
+    expect(el._values(items[3], "source")).to.deep.equal([el.t.hax]);
     expect(el._meta(items[3])).to.equal("Built on Clean One · 10 pages");
     expect(el._meta(items[4])).to.equal("");
+  });
+
+  it("draws every control as a simple-fields-field", async () => {
+    const el = await makeBrowser("blank");
+    const root = el.shadowRoot;
+    expect(root.querySelector("input, select, textarea")).to.equal(null);
+    expect(root.querySelector("simple-fields-field.search")).to.exist;
+    expect(root.querySelector('.sort simple-fields-field[type="select"]')).to
+      .exist;
+    expect(
+      root.querySelectorAll('.facet simple-fields-field[type="checkbox"]')
+        .length,
+    ).to.be.greaterThan(0);
+  });
+
+  it("sets a filter from the checkbox state, so a repeat does not flip it", async () => {
+    const el = await makeBrowser("blank");
+    el._setPick("layout", "Sidebar", true);
+    el._setPick("layout", "Sidebar", true);
+    expect(el.selected.layout).to.deep.equal(["Sidebar"]);
+    el._setPick("layout", "Sidebar", false);
+    expect(el.selected.layout).to.deep.equal([]);
   });
 
   it("searches title, description, tags and facet values", async () => {

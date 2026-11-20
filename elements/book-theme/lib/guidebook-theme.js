@@ -20,7 +20,8 @@ import { BookTheme } from "@haxtheweb/book-theme/book-theme.js";
  * @title Guidebook
  * @haxcms-theme-category Documentation, Course, Website
  * @haxcms-theme-layout Sidebar
- * @haxcms-theme-inspired-by Astro Starlight
+ * @haxcms-theme-inspired-by Astro
+ * @haxcms-theme-inspired-by-theme Starlight
  * @haxcms-theme-priority 0
  * @demo ../demo/guidebook-theme/index.html
  * @element guidebook-theme

@@ -38,7 +38,8 @@ const TOC_FOLD_QUERY = "(max-width: 1200px)";
  * @title Book
  * @haxcms-theme-category Documentation, Course, Website
  * @haxcms-theme-layout Sidebar
- * @haxcms-theme-inspired-by Hugo Book
+ * @haxcms-theme-inspired-by Hugo
+ * @haxcms-theme-inspired-by-theme Book
  * @haxcms-theme-priority 0
  * @demo demo/index.html
  * @element book-theme

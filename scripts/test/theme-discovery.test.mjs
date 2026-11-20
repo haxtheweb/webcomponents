@@ -51,7 +51,8 @@ test("browsing facets come from docblock tags", () => {
   const content = `/**
  * @haxcms-theme-category Website, Blog
  * @haxcms-theme-layout Single column
- * @haxcms-theme-inspired-by Hugo PaperMod
+ * @haxcms-theme-inspired-by Hugo
+ * @haxcms-theme-inspired-by-theme PaperMod
  * @haxcms-theme-description A quiet reading column for posts.
  * @element demo-theme
  */
@@ -68,7 +69,9 @@ class DemoTheme extends HAXCMSLitElementTheme {}`;
   assert.deepEqual(entry.category, ["Website", "Blog"]);
   assert.equal(entry.layout, "Single column");
   assert.equal(entry.designSystem, null);
-  assert.equal(entry.inspiredBy, "Hugo PaperMod");
+  // the project is the browsing group; its theme is kept apart
+  assert.equal(entry.inspiredBy, "Hugo");
+  assert.equal(entry.inspiredByTheme, "PaperMod");
   assert.equal(entry.description, "A quiet reading column for posts.");
   assert.equal(entry.acceptsDesignSystems, false);
 });

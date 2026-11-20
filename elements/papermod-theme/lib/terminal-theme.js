@@ -19,7 +19,8 @@ import { HomageColumnTheme } from "@haxtheweb/papermod-theme/lib/HomageColumnThe
  * @title Terminal
  * @haxcms-theme-category Blog, Website
  * @haxcms-theme-layout Single column
- * @haxcms-theme-inspired-by Hugo Terminal
+ * @haxcms-theme-inspired-by Hugo
+ * @haxcms-theme-inspired-by-theme Terminal
  * @haxcms-theme-priority 0
  * @demo ../demo/terminal-theme/index.html
  * @element terminal-theme

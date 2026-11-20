@@ -33,7 +33,6 @@ import { loadFontFamily } from "@haxtheweb/d-d-d/lib/fonts.js";
  *
  * @haxcms-theme-category Website, Organization
  * @haxcms-theme-layout Top nav
- * @haxcms-theme-inspired-by WordPress
  * @haxcms-theme-internal false
  * @haxcms-theme-priority 10
  * @demo demo/index.html

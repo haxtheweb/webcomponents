@@ -19,7 +19,8 @@ import { HomageColumnTheme } from "@haxtheweb/papermod-theme/lib/HomageColumnThe
  * @title AstroWind
  * @haxcms-theme-category Website, Landing page, Organization
  * @haxcms-theme-layout Top nav
- * @haxcms-theme-inspired-by Astro AstroWind
+ * @haxcms-theme-inspired-by Astro
+ * @haxcms-theme-inspired-by-theme AstroWind
  * @haxcms-theme-priority 0
  * @demo ../demo/astrowind-theme/index.html
  * @element astrowind-theme

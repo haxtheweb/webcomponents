@@ -36,6 +36,12 @@
  *   own-dialog     an admin file that draws its own <dialog> or <web-dialog>
  *                  uses the frame classes (.hax-ui-dialog-titlebar) or the
  *                  confirm card (hax-confirm-dialog)
+ *   raw-field      no admin file draws its own <input>, <select> or
+ *                  <textarea>: every field is a simple-fields-field (with
+ *                  class="hax-ui-simple-field" from HaxUiAdminSimpleFields),
+ *                  so fields look and behave the same everywhere and their
+ *                  light and dark colors come from one place. Hidden and
+ *                  file inputs are not fields and are allowed.
  *
  * The checks read source text, not a running page, so they are a floor: the
  * screenshots in a review still decide whether a surface looks right.
@@ -277,6 +283,23 @@ export function checkAdminSource(
         m[1],
         lineOf(code, m.index),
         `a hand-drawn <${m[1]}> must use the frame classes (.hax-ui-dialog-titlebar) or the confirm card (hax-confirm-dialog)`,
+      );
+    }
+  }
+  if (opener) {
+    for (const m of code.matchAll(/<(input|select|textarea)\b([^>]*)>/g)) {
+      if (
+        m[1] === "input" &&
+        /\btype\s*=\s*["']?(hidden|file)\b/.test(m[2])
+      ) {
+        continue;
+      }
+      add(
+        findings,
+        "raw-field",
+        m[1],
+        lineOf(code, m.index),
+        `a hand-drawn <${m[1]}>: use simple-fields-field (class="hax-ui-simple-field", HaxUiAdminSimpleFields) so every admin field shares one look and one light/dark color source`,
       );
     }
   }

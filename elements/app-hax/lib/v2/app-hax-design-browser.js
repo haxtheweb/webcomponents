@@ -6,8 +6,10 @@ import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { HaxUiAdminTokens } from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";
 import { HaxUiDialogTitlebarStyles } from "@haxtheweb/d-d-d/lib/HaxUiDialogFrame.js";
+import { HaxUiAdminSimpleFields } from "@haxtheweb/d-d-d/lib/HaxUiAdminControls.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "web-dialog/index.js";
+import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "./app-hax-use-case.js";
@@ -60,6 +62,7 @@ export class AppHaxDesignBrowser extends I18NMixin(DDDSuper(LitElement)) {
       inspiredBy: "Inspired by",
       source: "Made by",
       hax: "HAX",
+      you: "You",
       yours: "Your organization",
       showing: "Showing {count} of {total}",
       clearAll: "Clear all",
@@ -99,6 +102,7 @@ export class AppHaxDesignBrowser extends I18NMixin(DDDSuper(LitElement)) {
       super.styles,
       ...HaxUiAdminTokens,
       ...HaxUiDialogTitlebarStyles,
+      ...HaxUiAdminSimpleFields,
       css`
         :host {
           font-family: var(--hax-ui-admin-font-family);
@@ -164,11 +168,8 @@ export class AppHaxDesignBrowser extends I18NMixin(DDDSuper(LitElement)) {
           background: var(--hax-ui-hover);
         }
         .tabs button:focus-visible,
-        .field:focus-within,
-        select:focus-visible,
         .chip:focus-visible,
-        .clear:focus-visible,
-        .facet input:focus-visible + span {
+        .clear:focus-visible {
           outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
           outline-offset: 2px;
         }
@@ -176,33 +177,19 @@ export class AppHaxDesignBrowser extends I18NMixin(DDDSuper(LitElement)) {
           font-size: var(--hax-ui-admin-font-size-xs);
           color: var(--hax-ui-text-muted);
         }
-        .field {
+        /* fields are simple-fields-field in the shared admin field style
+           (HaxUiAdminSimpleFields); each names its own control, so the
+           visible words stay outside and the inner label is hidden */
+        simple-fields-field.search {
           flex: 1 1 260px;
-          display: flex;
-          align-items: center;
-          gap: var(--ddd-spacing-2, 8px);
-          min-height: 40px;
-          padding: 0 var(--ddd-spacing-3, 12px);
-          border: 1px solid var(--hax-ui-line-strong);
-          border-radius: var(--hax-ui-radius);
-          background: var(--hax-ui-background-color);
-          box-sizing: border-box;
-        }
-        .field simple-icon-lite {
-          --simple-icon-width: 18px;
-          --simple-icon-height: 18px;
-          color: var(--hax-ui-text-muted);
-        }
-        .field input {
-          all: unset;
-          flex: 1;
           min-width: 0;
-          min-height: 38px;
-          color: var(--hax-ui-text);
         }
-        .field input::placeholder {
-          color: var(--hax-ui-text-muted);
-          opacity: 1;
+        simple-fields-field.search::part(label),
+        .sort simple-fields-field::part(label) {
+          display: none;
+        }
+        simple-fields-field.search::part(field-main-inner) {
+          flex: 1 1 auto;
         }
         .sort {
           display: inline-flex;
@@ -210,14 +197,8 @@ export class AppHaxDesignBrowser extends I18NMixin(DDDSuper(LitElement)) {
           gap: var(--ddd-spacing-2, 8px);
           color: var(--hax-ui-text-muted);
         }
-        select {
-          min-height: 40px;
-          padding: 0 var(--ddd-spacing-2, 8px);
-          border: 1px solid var(--hax-ui-line-strong);
-          border-radius: var(--hax-ui-radius);
-          background: var(--hax-ui-background-color);
-          color: var(--hax-ui-text);
-          font: inherit;
+        .sort simple-fields-field {
+          min-width: 180px;
         }
         .body {
           flex: 1;
@@ -294,22 +275,41 @@ export class AppHaxDesignBrowser extends I18NMixin(DDDSuper(LitElement)) {
           cursor: pointer;
           color: var(--hax-ui-text);
         }
-        .facet input {
-          width: 18px;
-          height: 18px;
-          margin: 0;
-          accent-color: var(--hax-ui-accent-strong);
+        .facet simple-fields-field {
+          flex: 1 1 auto;
+          min-width: 0;
+          --simple-fields-font-family: var(--hax-ui-admin-font-family);
+          --simple-fields-font-size: var(--hax-ui-admin-font-size);
+          --simple-fields-color: var(--hax-ui-text);
+          --simple-fields-accent-color: var(--hax-ui-accent-strong);
+          --simple-fields-margin: 0;
+          --simple-fields-margin-small: 0;
         }
-        .facet span {
-          flex: 1;
+        /* box first, then its words, like any filter list */
+        .facet simple-fields-field::part(field-main) {
+          flex-direction: row-reverse;
+          justify-content: flex-end;
+          gap: var(--ddd-spacing-2, 8px);
+        }
+        .facet simple-fields-field::part(label) {
+          flex: 1 1 auto;
+          max-width: none;
+          margin: 0;
+        }
+        .facet simple-fields-field:focus-within {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 2px;
+          border-radius: var(--hax-ui-radius);
         }
         .facet .n {
           flex: none;
+          min-width: 3ch;
+          text-align: end;
           font-size: var(--hax-ui-admin-font-size-xs);
           color: var(--hax-ui-text-muted);
         }
-        .facet.empty {
-          color: var(--hax-ui-text-muted);
+        .facet.empty simple-fields-field {
+          --simple-fields-color: var(--hax-ui-text-muted);
         }
         .results {
           overflow-y: auto;
@@ -466,8 +466,13 @@ export class AppHaxDesignBrowser extends I18NMixin(DDDSuper(LitElement)) {
   // listings; templates read layout and design system off their theme
   _values(item, key) {
     const od = item.originalData || {};
-    if (key === "source")
-      return [od.scope === "user" ? this.t.yours : this.t.hax];
+    if (key === "source") {
+      // skeleton scopes: user = saved by you, config = installed for your
+      // organization, core = shipped with HAX
+      if (od.scope === "user") return [this.t.you];
+      if (od.scope === "config") return [this.t.yours];
+      return [this.t.hax];
+    }
     if (key === "useCase") {
       return (Array.isArray(od.category) ? od.category : []).filter(
         (c) => SKIP_USE_CASES.indexOf(c) === -1,
@@ -493,6 +498,7 @@ export class AppHaxDesignBrowser extends I18NMixin(DDDSuper(LitElement)) {
       item.useCaseDescription,
       ...(od.tags || []),
       th ? th.useCaseTitle : "",
+      od.inspiredByTheme || "",
       ...FACETS[this.kind].flatMap((k) => this._values(item, k)),
     ]
       .join(" ")
@@ -526,6 +532,18 @@ export class AppHaxDesignBrowser extends I18NMixin(DDDSuper(LitElement)) {
       );
     // "recommended" keeps the dashboard's own priority order
     return out;
+  }
+
+  // a checkbox reports its state, so set rather than flip: simple-fields
+  // also reports the value it was rendered with
+  _setPick(key, value, on) {
+    const picks = this.selected[key] || [];
+    const has = picks.indexOf(value) !== -1;
+    if (on === has) return;
+    this.selected = {
+      ...this.selected,
+      [key]: on ? [...picks, value] : picks.filter((p) => p !== value),
+    };
   }
 
   _toggle(key, value) {
@@ -594,17 +612,18 @@ export class AppHaxDesignBrowser extends I18NMixin(DDDSuper(LitElement)) {
             .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
             .map(
               ([v, n]) => html`
-                <label
+                <div
                   class="facet ${n === 0 && picks.indexOf(v) === -1 ? "empty" : ""}"
                 >
-                  <input
+                  <simple-fields-field
                     type="checkbox"
-                    .checked=${picks.indexOf(v) !== -1}
-                    @change=${() => this._toggle(key, v)}
-                  />
-                  <span>${v}</span>
-                  <span class="n" aria-label="${n} results">${n}</span>
-                </label>
+                    label="${v}"
+                    .value=${picks.indexOf(v) !== -1}
+                    @value-changed=${(e) =>
+                      this._setPick(key, v, e.detail.value === true)}
+                  ></simple-fields-field>
+                  <span class="n" aria-hidden="true">${n}</span>
+                </div>
               `,
             )}
         </fieldset>
@@ -665,37 +684,39 @@ export class AppHaxDesignBrowser extends I18NMixin(DDDSuper(LitElement)) {
               ${this.t.themes} <span class="count">${thCount}</span>
             </button>
           </div>
-          <label class="field">
-            <simple-icon-lite icon="icons:search"></simple-icon-lite>
-            <span class="visually-hidden">${this.t.search}</span>
-            <input
-              type="search"
-              .value=${this.search}
-              placeholder="${this.kind === "skeleton" ? this.t.searchTemplates : this.t.searchThemes}"
-              @input=${(e) => {
-                this.search = e.target.value;
+          <simple-fields-field
+            class="hax-ui-simple-field compact search"
+            type="search"
+            label="${this.t.search}"
+            placeholder="${
+              this.kind === "skeleton"
+                ? this.t.searchTemplates
+                : this.t.searchThemes
+            }"
+            .value=${this.search}
+            @value-changed=${(e) => {
+              this.search = e.detail.value || "";
+            }}
+          ></simple-fields-field>
+          <div class="sort">
+            <span aria-hidden="true">${this.t.sortBy}</span>
+            <simple-fields-field
+              class="hax-ui-simple-field compact"
+              type="select"
+              label="${this.t.sortBy}"
+              .value=${this.sort}
+              .itemsList=${[
+                { value: "recommended", text: this.t.recommended },
+                { value: "alpha", text: this.t.alphabetical },
+                ...(this.kind === "skeleton"
+                  ? [{ value: "pages", text: this.t.mostPages }]
+                  : []),
+              ]}
+              @value-changed=${(e) => {
+                if (e.detail.value) this.sort = e.detail.value;
               }}
-            />
-          </label>
-          <label class="sort">
-            ${this.t.sortBy}
-            <select
-              @change=${(e) => {
-                this.sort = e.target.value;
-              }}
-            >
-              <option
-                value="recommended"
-                ?selected=${this.sort === "recommended"}
-              >
-                ${this.t.recommended}
-              </option>
-              <option value="alpha" ?selected=${this.sort === "alpha"}>
-                ${this.t.alphabetical}
-              </option>
-              ${this.kind === "skeleton" ? html`<option value="pages" ?selected=${this.sort === "pages"}>${this.t.mostPages}</option>` : ""}
-            </select>
-          </label>
+            ></simple-fields-field>
+          </div>
         </div>
         <div class="body">
           <details class="facets" ?open=${!this.narrow}>

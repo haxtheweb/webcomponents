@@ -95,6 +95,8 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
     this.siteName = "";
     this.currentStep = 1; // 1: naming, 2: creating, 3: success
     this.isCreating = false;
+    this._suit = "";
+    this._traveler = null;
     this.creationProgress = 0;
     this.errorMessage = "";
     this.showConfetti = false;
@@ -127,6 +129,10 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
       siteName: { type: String },
       currentStep: { type: Number },
       isCreating: { type: Boolean },
+      // the creating finale: "" wears the progress hat, "arriving" the hat
+      // fades as the Future Traveler lowers onto their head, "on" he is on
+      _suit: { type: String, state: true },
+      _traveler: { type: Object, state: true },
       creationProgress: { type: Number },
       errorMessage: { type: String },
       showConfetti: { type: Boolean },
@@ -493,6 +499,94 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
           z-index: 1;
         }
 
+        /* the finale (_suitUp): the hat fades off, the Future Traveler
+           lowers onto the same head, then his goggles light up */
+        .hat-avatar .traveler {
+          position: absolute;
+          left: calc(50% - var(--hax-traveler-size) / 2 - 1.5px);
+          top: var(--hax-traveler-top);
+          width: var(--hax-traveler-size);
+          z-index: 2;
+          pointer-events: none;
+        }
+        .hat-avatar {
+          --hax-traveler-size: 128px;
+          --hax-traveler-top: 40px;
+        }
+        .hat-avatar .traveler svg {
+          display: block;
+          width: 100%;
+          height: auto;
+          overflow: visible;
+        }
+        .hat-avatar[data-suit="arriving"] app-hax-simple-hat-progress {
+          animation: hax-hat-away var(--ddd-duration-slow, 0.6s) ease-in
+            forwards;
+        }
+        .hat-avatar[data-suit="arriving"] .traveler {
+          animation: hax-traveler-lower 1.3s cubic-bezier(0.2, 0.8, 0.3, 1) 0.5s
+            both;
+        }
+        /* the handheld era is drawn on its screen; on a head he goes
+           without it */
+        .hat-avatar .traveler svg[data-era="handheld"] g > rect[width="24"] {
+          display: none;
+        }
+        .hat-avatar[data-suit="arriving"] .traveler .ft-lens,
+        .hat-avatar[data-suit="arriving"] .traveler .ft-eyes {
+          animation: hax-traveler-see 0.5s ease-out 1.7s both;
+        }
+        .hat-avatar[data-suit="on"] .traveler .ft-eyes,
+        .hat-avatar[data-suit="on"] .traveler .ft-lens {
+          filter: brightness(1.45)
+            drop-shadow(0 0 1px var(--ddd-theme-default-white, #ffffff));
+        }
+        @keyframes hax-hat-away {
+          to {
+            opacity: 0;
+            transform: translateY(-14px) scale(1.06);
+            filter: blur(4px);
+          }
+        }
+        @keyframes hax-traveler-lower {
+          from {
+            opacity: 0;
+            transform: translateY(-64px);
+          }
+          20% {
+            opacity: 1;
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        @keyframes hax-traveler-see {
+          from {
+            filter: brightness(0.6);
+          }
+          to {
+            filter: brightness(1.45)
+              drop-shadow(0 0 1px var(--ddd-theme-default-white, #ffffff));
+          }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .hat-avatar[data-suit="arriving"] app-hax-simple-hat-progress {
+            animation: none;
+            opacity: 0;
+          }
+          .hat-avatar[data-suit="arriving"] .traveler,
+          .hat-avatar[data-suit="arriving"] .traveler .ft-lens,
+          .hat-avatar[data-suit="arriving"] .traveler .ft-eyes {
+            animation: none;
+          }
+          .hat-avatar[data-suit="arriving"] .traveler .ft-eyes,
+          .hat-avatar[data-suit="arriving"] .traveler .ft-lens {
+            filter: brightness(1.45)
+              drop-shadow(0 0 1px var(--ddd-theme-default-white, #ffffff));
+          }
+        }
+
         promise-progress {
           display: none;
         }
@@ -665,6 +759,7 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
   }
 
   disconnectedCallback() {
+    clearTimeout(this._suitTimer);
     globalThis.removeEventListener(AVATAR_EVENT, this._onAvatarChanged);
     super.disconnectedCallback();
   }
@@ -815,6 +910,9 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
     this.creationProgress = 0;
     this.creationCancelled = false;
     this.siteUrl = "";
+    clearTimeout(this._suitTimer);
+    this._suit = "";
+    this._traveler = null;
 
     // Prevent body scrolling while modal is open
     document.body.style.overflow = "hidden";
@@ -1095,6 +1193,9 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
 
   progressValueChanged(e) {
     this.creationProgress = e.detail.value;
+    if (this.creationProgress >= (this.max || 100)) {
+      this._suitUp();
+    }
     // Update the hat progress component
     const hatProgress = this.shadowRoot.querySelector(
       "app-hax-simple-hat-progress",
@@ -1159,6 +1260,7 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
       this.currentStep = 3;
       this.isCreating = false;
       this.creationProgress = this.max || 100; // Ensure 100% completion
+      this._suitUp();
 
       // Update hat progress to show 100% completion
       const hatProgress = this.shadowRoot.querySelector(
@@ -1396,7 +1498,9 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
     const facets = {
       layout: tod.layout || "",
       designSystem: tod.designSystem || (theme ? "DDD" : ""),
-      inspiredBy: tod.inspiredBy || "",
+      inspiredBy: [tod.inspiredBy, tod.inspiredByTheme]
+        .filter((x) => x)
+        .join(" "),
     };
     let images = 0;
     items.forEach((item) => {
@@ -1662,8 +1766,6 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
   renderCreatingStep() {
     return html`
       <div class="progress-container">
-        ${this.renderHatAvatar(this.creationProgress)}
-
         <promise-progress
           id="promise-progress"
           .list="${this.promises}"
@@ -1686,7 +1788,6 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
   renderSuccessStep() {
     return html`
       <div class="success-content">
-        ${this.renderHatAvatar(this.creationProgress || 100)}
         <h2 class="success-title">
           <simple-icon-lite
             icon="icons:check-circle"
@@ -1702,36 +1803,105 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
   }
 
   /**
+   * The finale at 100%: the progress hat fades away and the Future Traveler,
+   * drawn in the era the person last left him in (today when they never
+   * changed it), lowers onto their head and his goggles light up because
+   * they can see the future now. With reduced motion he is simply there.
+   */
+  async _suitUp() {
+    if (this._suit) return;
+    this._suit = "arriving";
+    let era = "now";
+    try {
+      // HAX_TRAVELER_ERA_KEY in haxcms-elements' hax-future-traveler-mark
+      era = globalThis.localStorage.getItem("hax-future-traveler-era") || "now";
+    } catch {
+      era = "now";
+    }
+    try {
+      const { futureTraveler } =
+        await import("@haxtheweb/hax-network-bar/lib/hax-future-traveler.js");
+      this._traveler = futureTraveler(era);
+    } catch {
+      // without the art the hat simply stays
+      this._suit = "";
+      return;
+    }
+    const still =
+      globalThis.matchMedia &&
+      globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    clearTimeout(this._suitTimer);
+    this._suitTimer = setTimeout(
+      () => {
+        this._suit = "on";
+      },
+      still ? 0 : 2200,
+    );
+  }
+
+  /**
    * The progress hat on the person's saved character (their seed look when
    * nothing is saved), so the wait reads as theirs.
    */
   renderHatAvatar(progress) {
+    const suit = this._traveler ? this._suit : "";
     return html`
-      <div class="hat-avatar">
-        <app-hax-simple-hat-progress
-          .progress="${progress}"
-          .max="100"
-        ></app-hax-simple-hat-progress>
-        <rpg-character
-          seed="${this._userName()}"
-          code="${this._avatarCode}"
-          width="120"
-          height="150"
-          aria-hidden="true"
-        ></rpg-character>
+      <div class="hat-avatar" data-suit="${suit}">
+        ${
+          suit !== "on"
+            ? html`<app-hax-simple-hat-progress
+                .progress="${progress}"
+                .max="100"
+              ></app-hax-simple-hat-progress>`
+            : ""
+        }
+        ${
+          suit
+            ? html`<rpg-character
+                seed="${this._userName()}"
+                code="${this._avatarCode}"
+                hat="none"
+                width="120"
+                height="150"
+                aria-hidden="true"
+              ></rpg-character>`
+            : html`<rpg-character
+                seed="${this._userName()}"
+                code="${this._avatarCode}"
+                width="120"
+                height="150"
+                aria-hidden="true"
+              ></rpg-character>`
+        }
+        ${
+          suit
+            ? html`<div class="traveler" aria-hidden="true">
+                ${this._traveler}
+              </div>`
+            : ""
+        }
       </div>
     `;
   }
 
-  renderSuccessButtons() {
+  /**
+   * The finish actions. While the site is being made they are already in
+   * place but disabled, so the dialog keeps its size from step to step.
+   */
+  renderSuccessButtons(waiting = false) {
     return html`
       <div class="button-group">
-        <button class="button button-secondary" @click="${this.closeModal}">
+        <button
+          class="button button-secondary"
+          @click="${this.closeModal}"
+          ?disabled="${waiting}"
+        >
           ${this.t.stayHere}
         </button>
         <button
           class="button button-primary go-to-site"
           @click="${this.goToSite}"
+          ?disabled="${waiting}"
         >
           ${this.t.goToSite}
           <simple-icon-lite
@@ -1778,6 +1948,13 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
           ${this.showConfetti ? html`<div class="confetti"></div>` : ""}
           ${this.renderStepIndicator()}
           ${
+            this.currentStep > 1
+              ? this.renderHatAvatar(
+                  this.currentStep === 3 ? 100 : this.creationProgress,
+                )
+              : ""
+          }
+          ${
             this.currentStep === 1
               ? this.renderNamingStep()
               : this.currentStep === 2
@@ -1788,9 +1965,7 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
         ${
           this.currentStep === 1
             ? this.renderNamingButtons()
-            : this.currentStep === 3
-              ? this.renderSuccessButtons()
-              : html``
+            : this.renderSuccessButtons(this.currentStep === 2)
         }
       </web-dialog>
     `;
