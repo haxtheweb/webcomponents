@@ -25,7 +25,7 @@ What a property is called, where it lives, its color, its icon and the sentence 
 | `try`      | Build now       | browser.hax.cloud       | futureLime     |
 | `learn`    | Learn           | learn.hax.cloud         | skyBlue        |
 | `elements` | Web components  | webcomponents.hax.cloud | inventOrange   |
-| `art`      | Art             | haxtheweb.github.io/art | discoveryCoral |
+| `art`      | Art             | art.hax.cloud           | discoveryCoral |
 | `rpg`      | RPG me (in Art) | rpg.art.hax.cloud       | athertonViolet |
 
 `order` is the order the bar lists them. RPG me is not in it, and not in the bar at all: it is one of HAX Art's tools (its record says `within: "art"`), a stand-alone service at its own address that the Art site's menu links to. On RPG me (`current="rpg"`) the bar lights up Art, the property it lives within. To add, rename or move a property, change the record; the bar, its menu and its cards follow. The strings are translated through the bar's own `t`, whose English matches the record.
@@ -81,7 +81,7 @@ Install HAX opens in place, so nobody loses the page they are on. It has a tab f
 
 ## Merlin
 
-The **Merlin** button (the Future Traveler, as in the HAX top bar) opens HAX's command palette with every place in the network to jump to: hax.cloud and its tours, the web components, HAXcms in your browser, Learn, the live demo, Art, HAXTheWeb and GitHub (`HAX_NETWORK_DESTINATIONS`). Merlin (`@haxtheweb/super-daemon`) loads the first time the button is pressed, so a page that never opens him never downloads him.
+The **Merlin** button (the Future Traveler, as in the HAX top bar) opens HAX's command palette with every place in the network to jump to: hax.cloud and its tours, the web components, HAXcms in your browser, Learn, Art, HAXTheWeb and GitHub (`HAX_NETWORK_DESTINATIONS`). Merlin (`@haxtheweb/super-daemon`) loads the first time the button is pressed, so a page that never opens him never downloads him.
 
 A page can add its own places. The first time Merlin opens, the bar fires `hax-network-merlin` (bubbles, composed) with `{merlin, add}`; `add({title, href, about, icon, tags})` adds one, or use `merlin.defineOption()` for anything else. hax.cloud adds every web, tile and tour this way:
 

@@ -253,15 +253,9 @@ export const HAX_NETWORK_DESTINATIONS = [
     icon: "hardware:tv",
   },
   {
-    title: "goDemo",
-    about: "goDemoAbout",
-    href: "https://demo.hax.cloud",
-    icon: "hax:wand",
-  },
-  {
     title: "goArt",
     about: "goArtAbout",
-    href: "https://haxtheweb.github.io/art/",
+    href: "https://art.hax.cloud/",
     icon: "image:palette",
   },
   {
@@ -492,8 +486,6 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
       goBrowser: "Build now: HAXcms in your browser",
       goBrowserAbout:
         "Make and edit HAX sites in a browser tab, saved to a folder you pick.",
-      goDemo: "Live demo: try the HAX editor",
-      goDemoAbout: "Edit a HAX site in your browser, nothing to install.",
       goArt: "Art: the HAX art movement",
       goArtAbout:
         "Posters, the Future Traveler across time, and playful tools like RPG me.",
