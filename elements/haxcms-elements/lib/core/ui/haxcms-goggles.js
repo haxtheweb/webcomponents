@@ -9,6 +9,8 @@ import {
   HaxUiAdminTokens,
   HaxUiDarkChromeDeclarations,
 } from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";
+import { HaxUiAdminSimpleFields } from "@haxtheweb/d-d-d/lib/HaxUiAdminControls.js";
+import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
 import { futureTraveler } from "@haxtheweb/hax-network-bar/lib/hax-future-traveler.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
@@ -1994,14 +1996,33 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
       this._status = this.t.copyBlockedSay;
     }
   }
-  _issueField(e) {
+  _issueField(name, value) {
     const next = Object.assign({}, this._issue);
-    next[e.target.name] = e.target.value;
-    if (e.target.name === "attach") {
+    next[name] = value;
+    if (name === "attach") {
       next.shotCopied = false;
     }
     this._issue = next;
     this._copied = false;
+  }
+  /** one of a few answers, as pressed buttons (the HAX UI way to pick one) */
+  _renderChoices(name, label, options) {
+    const id = "choice-" + name;
+    return html`<div class="choices">
+      <p class="legend" id="${id}">${label}</p>
+      <div class="sort" role="group" aria-labelledby="${id}">
+        ${options.map(
+          (o) =>
+            html`<button
+              type="button"
+              aria-pressed="${this._issue[name] === o.value ? "true" : "false"}"
+              @click="${() => this._issueField(name, o.value)}"
+            >
+              <simple-icon-lite icon="${o.icon}"></simple-icon-lite>${o.label}
+            </button>`,
+        )}
+      </div>
+    </div>`;
   }
 
   /* ---------- drawing ---------- */
@@ -2294,35 +2315,14 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
       </figure>`;
     }
     const pick = i.shot[i.attach];
-    return html`<fieldset class="attach">
-        <legend>${this.t.shotToAttach}</legend>
-        <label class="choice"
-          ><input
-            type="radio"
-            name="attach"
-            value="whole"
-            .checked="${i.attach === "whole"}"
-            @change="${this._issueField}"
-          /><span
-            ><simple-icon-lite
-              icon="hardware:desktop-windows"
-            ></simple-icon-lite
-            >${this.t.wholeScreen}</span
-          ></label
-        >
-        <label class="choice"
-          ><input
-            type="radio"
-            name="attach"
-            value="piece"
-            .checked="${i.attach === "piece"}"
-            @change="${this._issueField}"
-          /><span
-            ><simple-icon-lite icon="image:crop"></simple-icon-lite
-            >${this.t.justThisPiece}</span
-          ></label
-        >
-      </fieldset>
+    return html`${this._renderChoices("attach", this.t.shotToAttach, [
+        {
+          value: "whole",
+          icon: "hardware:desktop-windows",
+          label: this.t.wholeScreen,
+        },
+        { value: "piece", icon: "image:crop", label: this.t.justThisPiece },
+      ])}
       <figure class="shot">
         <img
           src="${pick.url}"
@@ -2351,52 +2351,31 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
         ${this.t.lensFlag}
       </p>
       <h2 id="issue-heading">&lt;${i.tag}&gt;</h2>
-      <fieldset>
-        <legend>${this.t.whatIsThis}</legend>
-        <label class="choice"
-          ><input
-            type="radio"
-            name="kind"
-            value="bug"
-            .checked="${i.kind === "bug"}"
-            @change="${this._issueField}"
-          /><span
-            ><simple-icon-lite icon="icons:bug-report"></simple-icon-lite
-            >${this.t.needsFixing}</span
-          ></label
-        >
-        <label class="choice"
-          ><input
-            type="radio"
-            name="kind"
-            value="wish"
-            .checked="${i.kind === "wish"}"
-            @change="${this._issueField}"
-          /><span
-            ><simple-icon-lite icon="icons:lightbulb-outline"></simple-icon-lite
-            >${this.t.featureIWant}</span
-          ></label
-        >
-      </fieldset>
-      <label for="issue-title">${this.t.issueTitle}</label>
-      <input
+      ${this._renderChoices("kind", this.t.whatIsThis, [
+        { value: "bug", icon: "icons:bug-report", label: this.t.needsFixing },
+        {
+          value: "wish",
+          icon: "icons:lightbulb-outline",
+          label: this.t.featureIWant,
+        },
+      ])}
+      <simple-fields-field
         id="issue-title"
-        name="title"
+        class="hax-ui-simple-field"
         type="text"
-        .value="${i.title}"
-        @input="${this._issueField}"
+        label="${this.t.issueTitle}"
         autocomplete="off"
-      />
-      <label for="issue-notes"
-        >${i.kind === "bug" ? this.t.whatDidYouSee : this.t.whatDoYouWish}</label
-      >
-      <textarea
+        .value="${i.title}"
+        @value-changed="${(e) => this._issueField("title", e.detail.value || "")}"
+      ></simple-fields-field>
+      <simple-fields-field
         id="issue-notes"
-        name="notes"
-        rows="3"
+        class="hax-ui-simple-field notes"
+        type="textarea"
+        label="${i.kind === "bug" ? this.t.whatDidYouSee : this.t.whatDoYouWish}"
         .value="${i.notes}"
-        @input="${this._issueField}"
-      ></textarea>
+        @value-changed="${(e) => this._issueField("notes", e.detail.value || "")}"
+      ></simple-fields-field>
       ${this._renderShot(i, scale)}
       <div class="evidence">
         <dl>
@@ -2594,6 +2573,7 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
   static get styles() {
     return [
       HaxUiAdminTokens,
+      ...HaxUiAdminSimpleFields,
       css`
         :host {
           /* the goggles are HAX UI dark chrome, like the top bar, whatever the page uses */
@@ -3085,8 +3065,6 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
         }
         a:focus-visible,
         button:focus-visible,
-        input:focus-visible,
-        textarea:focus-visible,
         pre:focus-visible {
           outline: var(--hax-ui-focus-width, 2px) solid
             var(--hax-ui-focus, #ffd100);
@@ -3197,53 +3175,24 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
           background: var(--haxcms-goggles-lens);
           color: var(--ddd-theme-default-black, #000);
         }
-        input[type="text"],
-        textarea {
-          display: block;
-          box-sizing: border-box;
-          width: 100%;
-          min-height: var(--ddd-control-height-sm, 40px);
-          padding: var(--ddd-spacing-2, 8px);
-          background: var(--ddd-theme-default-black, #000);
-          color: var(--ddd-theme-default-white, #fff);
-          border: 1px solid var(--hax-ui-text);
-          border-radius: var(--hax-ui-radius, 4px);
-          font: inherit;
-          font-size: var(--ddd-font-size-4xs, 16px);
+        /* the issue's fields are HAX UI simple-fields (HaxUiAdminSimpleFields) */
+        .issue simple-fields-field {
+          margin-top: var(--ddd-spacing-3, 12px);
         }
-        .choice {
-          margin: 0;
-          display: inline-flex;
-          text-transform: none;
-          letter-spacing: 0;
-          font-weight: var(--ddd-font-weight-regular, 400);
-          cursor: pointer;
+        .issue simple-fields-field.notes {
+          padding-top: var(--ddd-spacing-2, 8px);
+          padding-bottom: var(--ddd-spacing-2, 8px);
         }
-        .choice input {
-          position: absolute;
-          opacity: 0;
-        }
-        .choice span {
-          display: inline-flex;
-          align-items: center;
-          gap: var(--ddd-spacing-1, 4px);
-          min-height: var(--ddd-control-height-sm, 40px);
-          padding: 0 var(--ddd-spacing-3, 12px);
-          box-sizing: border-box;
-          border: 1px solid var(--hax-ui-text);
-          border-radius: var(--hax-ui-radius-lg, 8px);
-          color: var(--hax-ui-text);
-          font-size: var(--hax-ui-admin-font-size, 14px);
-        }
-        .choice input:checked + span {
-          background: var(--hax-ui-text);
-          color: var(--hax-ui-surface);
+        .choices .legend {
+          margin: var(--ddd-spacing-3, 12px) 0 var(--ddd-spacing-1, 4px);
+          font-size: var(--hax-ui-admin-font-size-xs, 12px);
           font-weight: var(--ddd-font-weight-bold, 700);
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+          color: var(--hax-ui-text-muted);
         }
-        .choice input:focus-visible + span {
-          outline: var(--hax-ui-focus-width, 2px) solid
-            var(--hax-ui-focus, #ffd100);
-          outline-offset: 2px;
+        .choices .sort {
+          flex-wrap: wrap;
         }
         .evidence {
           display: flex;
