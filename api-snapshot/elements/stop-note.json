@@ -4,15 +4,18 @@
   "source": "elements/stop-note/stop-note.js",
   "attributes": {
     "accent-color": "accentColor",
+    "appearance": "appearance",
     "dark": "dark",
     "icon": "icon",
     "is-safari": "isSafari",
     "schemamap": "schemaMap",
+    "size": "size",
     "status": "status",
     "t": "t",
     "title": "title",
     "typeof": "typeof",
-    "url": "url"
+    "url": "url",
+    "variant": "variant"
   },
   "slots": [
     "(default)",

@@ -1,0 +1,32 @@
+{
+  "tag": "stat-tile",
+  "package": "@haxtheweb/stat-tile",
+  "source": "elements/stat-tile/stat-tile.js",
+  "attributes": {
+    "change": "change",
+    "is-safari": "isSafari",
+    "label": "label",
+    "t": "t",
+    "trend": "trend",
+    "value": "value"
+  },
+  "slots": [],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/stat-tile/lib/stat-tile.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "change",
+      "label",
+      "trend",
+      "value"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "stat-tile"
+    ]
+  }
+}

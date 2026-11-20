@@ -1,0 +1,38 @@
+{
+  "tag": "memory-match",
+  "package": "@haxtheweb/memory-match",
+  "source": "elements/memory-match/memory-match.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "is-safari": "isSafari",
+    "t": "t",
+    "title": "title"
+  },
+  "slots": [],
+  "events": [
+    "learner-progress-request",
+    "user-engagement"
+  ],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/memory-match/lib/memory-match.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "accentColor",
+      "pairs",
+      "pairs[].a",
+      "pairs[].aAlt",
+      "pairs[].aImage",
+      "pairs[].b",
+      "pairs[].bAlt",
+      "pairs[].bImage",
+      "title"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "memory-match"
+    ]
+  }
+}

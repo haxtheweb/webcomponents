@@ -1,0 +1,32 @@
+{
+  "tag": "hax-platform-compare",
+  "package": "@haxtheweb/hax-marketing-theme",
+  "source": "elements/hax-marketing-theme/lib/hax-platform-compare.js",
+  "attributes": {
+    "a": "a",
+    "accent-color": "accentColor",
+    "b": "b",
+    "dark": "dark",
+    "is-safari": "isSafari",
+    "source": "source",
+    "t": "t"
+  },
+  "slots": [],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/hax-marketing-theme/lib/hax-platform-compare.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "a",
+      "b",
+      "source"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "hax-platform-compare"
+    ]
+  }
+}

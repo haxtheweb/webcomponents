@@ -1,0 +1,85 @@
+{
+  "tag": "image-dropzone",
+  "package": "@haxtheweb/image-dropzone",
+  "source": "elements/image-dropzone/image-dropzone.js",
+  "attributes": {
+    "alt": "alt",
+    "answers": "answers",
+    "attempts": "attempts",
+    "collapsed": "collapsed",
+    "collapsible": "collapsible",
+    "disabled": "disabled",
+    "displayedanswers": "displayedAnswers",
+    "edit": "edit",
+    "for-course": "forCourse",
+    "grading-format": "gradingFormat",
+    "has-learning-objective": "hasLearningObjective",
+    "hide-buttons": "hideButtons",
+    "is-safari": "isSafari",
+    "max-attempts": "maxAttempts",
+    "media": "media",
+    "media-title": "mediaTitle",
+    "question": "question",
+    "quiz-name": "quizName",
+    "randomize": "randomize",
+    "related-resource": "relatedResource",
+    "schemamap": "schemaMap",
+    "show-answer": "showAnswer",
+    "single-option": "singleOption",
+    "src": "src",
+    "t": "t",
+    "typeof": "typeof"
+  },
+  "slots": [
+    "caption",
+    "content",
+    "evidence",
+    "feedbackCorrect",
+    "feedbackIncorrect",
+    "hint"
+  ],
+  "events": [
+    "eventName",
+    "learner-progress-request",
+    "question-element-state",
+    "simple-toast-hide",
+    "user-engagement"
+  ],
+  "cssParts": [
+    "block-header",
+    "image"
+  ],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/image-dropzone/lib/image-dropzone.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "alt",
+      "answers",
+      "answers[].height",
+      "answers[].label",
+      "answers[].width",
+      "answers[].x",
+      "answers[].y",
+      "answers[].zone",
+      "collapsed",
+      "collapsible",
+      "forCourse",
+      "gradingFormat",
+      "hasLearningObjective",
+      "maxAttempts",
+      "mediaTitle",
+      "question",
+      "quizName",
+      "randomize",
+      "src"
+    ],
+    "attributes": [],
+    "slots": [
+      "caption"
+    ],
+    "demoTags": [
+      "image-dropzone"
+    ]
+  }
+}

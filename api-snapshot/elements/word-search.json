@@ -1,0 +1,39 @@
+{
+  "tag": "word-search",
+  "package": "@haxtheweb/word-search",
+  "source": "elements/word-search/word-search.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "backwards": "backwards",
+    "diagonal": "diagonal",
+    "is-safari": "isSafari",
+    "size": "size",
+    "t": "t",
+    "title": "title"
+  },
+  "slots": [],
+  "events": [
+    "learner-progress-request",
+    "user-engagement"
+  ],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/word-search/lib/word-search.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "accentColor",
+      "backwards",
+      "diagonal",
+      "size",
+      "title",
+      "words",
+      "words[].word"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "word-search"
+    ]
+  }
+}
