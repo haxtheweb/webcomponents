@@ -1554,10 +1554,11 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
           --simple-icon-height: 18px;
         }
 
-        /* the icons fold into the menu where there is no room for them, and
-           on touch, where there is no hover to say what each one is */
+        /* where the page's own controls (the pre slot) move to a second
+           row: the demo strip's notice is long, so it moves sooner; the
+           compact bar keeps one row (its icons fold into the menu at 900px,
+           below) until a phone is too narrow for the three groups */
         @media (max-width: 1100px) {
-          :host([compact]) .bar,
           :host([demo]) .bar {
             height: auto;
             min-height: var(--hax-network-bar-height);
@@ -1566,15 +1567,30 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
             padding-bottom: var(--ddd-spacing-2);
             row-gap: var(--ddd-spacing-2);
           }
-          :host([compact]) .app,
           :host([demo]) .app {
             grid-row: 2;
             grid-column: 1 / -1;
           }
-          :host([compact]) .start,
           :host([demo]) .start,
-          :host([compact]) .end,
           :host([demo]) .end {
+            height: auto;
+          }
+        }
+        @media (max-width: 600px) {
+          :host([compact]) .bar {
+            height: auto;
+            min-height: var(--hax-network-bar-height);
+            grid-template-columns: minmax(0, 1fr) auto;
+            padding-top: var(--ddd-spacing-2);
+            padding-bottom: var(--ddd-spacing-2);
+            row-gap: var(--ddd-spacing-2);
+          }
+          :host([compact]) .app {
+            grid-row: 2;
+            grid-column: 1 / -1;
+          }
+          :host([compact]) .start,
+          :host([compact]) .end {
             height: auto;
           }
         }
