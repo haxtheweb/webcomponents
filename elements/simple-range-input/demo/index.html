@@ -26,6 +26,14 @@
           <simple-range-input disabled style="--simple-range-input-pin-height:30px;--simple-range-input-track-height:50px"></simple-range-input>
         </template>
       </demo-snippet>
+      <h3>Pin lift for seek bars</h3>
+      <p>Grab the pin (or tab to it) and the track bends up under it. Use it on long scrubbers such as media seek bars, not on short sliders or settings.</p>
+      <demo-snippet>
+        <template>
+          <simple-range-input lift label="Seek" min="0" max="180" value="59" style="--simple-range-input-track-height:var(--ddd-spacing-1);--simple-range-input-pin-height:var(--ddd-spacing-4);--simple-range-input-track-border-radius:var(--ddd-radius-rounded);--simple-range-input-fill-color:var(--ddd-theme-default-link)"></simple-range-input>
+          <simple-range-input lift dark label="Seek" min="0" max="180" value="120" style="--simple-range-input-track-height:var(--ddd-spacing-1);--simple-range-input-pin-height:var(--ddd-spacing-4);--simple-range-input-track-border-radius:var(--ddd-radius-rounded);--simple-range-input-fill-color:var(--ddd-theme-default-linkLight)"></simple-range-input>
+        </template>
+      </demo-snippet>
     </div>
   </body>
 </html>

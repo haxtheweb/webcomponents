@@ -10,8 +10,26 @@ done
 
 # deep breath..e
 
+# Every repo this touches, and why, is in scripts/ubiquity-network.json.
+# `yarn run ubiquity-dry-run` runs this whole script with every git, npm,
+# yarn, copy and publish step logged instead of run, and the checks for real.
+
+# A step that cannot get into its repo stops the release, rather than running
+# that repo's git commands in whichever repo the last step left us in.
+enter() {
+  cd "$1" || {
+    echo "ERROR: $1 is missing; stopping. Run: node scripts/ubiquity-network.mjs preflight"
+    exit 1
+  }
+}
+
+## PREFLIGHT, before anything changes: every repo PRAW names is accounted for,
+## and every checkout is there, on its release branch, with the tools it needs
+enter ~/haxtheweb/webcomponents
+node scripts/ubiquity-network.mjs preflight || exit 1
+
 ## STEP 0 publish all current assets
-cd ~/haxtheweb/webcomponents
+enter ~/haxtheweb/webcomponents
 #lerna run build --concurrency=1
 git add -A
 git commit -m "ubiquity publish"
@@ -20,7 +38,7 @@ git commit -m "ubiquity publish"
 
 ## STEP 1 RUN BUILD ROUTINE FOR ALL WEBCOMPONENTS
 # run new build routine in webcomponents
-cd ~/haxtheweb/webcomponents
+enter ~/haxtheweb/webcomponents
 # this makes a new build available
 # a release is built from scratch: no stored transform or terser results
 HAX_BUILD_CACHE=0 yarn run ubiquity
@@ -43,7 +61,7 @@ cp ~/haxtheweb/webcomponents/wc-registry-graph.json ~/haxtheweb/webcomponents/el
 # copied into the nodejs boilerplate; STEP 4 mirrors the whole nodejs boilerplate
 # into haxcms-php, so PHP sites get it automatically. The system set goes to both
 # deployment roots explicitly (they are not part of the boilerplate mirror).
-cd ~/haxtheweb/praw
+enter ~/haxtheweb/praw
 # praw pins the HAX CLI release its onboarding script and hax-onboarding plugin
 # hook install; both read a .version file (the plugin cache only holds the plugin
 # directory, so it needs its own copy). Write them before the index build, which
@@ -115,6 +133,9 @@ cp ~/haxtheweb/webcomponents/build.js ~/haxtheweb/psucdn/cdn/build.js
 cp ~/haxtheweb/webcomponents/build-haxcms.js ~/haxtheweb/psucdn/cdn/build-haxcms.js
 cp ~/haxtheweb/webcomponents/wc-registry.json ~/haxtheweb/psucdn/cdn/wc-registry.json
 cp ~/haxtheweb/webcomponents/wc-registry-graph.json ~/haxtheweb/psucdn/cdn/wc-registry-graph.json
+# the release version, served at cdn.hax.cloud/cdn/VERSION.txt so step 7 can
+# tell when the CDN is serving this release
+cp ~/haxtheweb/webcomponents/.version ~/haxtheweb/psucdn/cdn/VERSION.txt
 
 # we also have a haxcms path in case these would ever diverge; they haven't and probably won't
 rm -rf ~/haxtheweb/psucdn/haxcms/build
@@ -124,8 +145,10 @@ cp ~/haxtheweb/webcomponents/build.js ~/haxtheweb/psucdn/haxcms/build.js
 cp ~/haxtheweb/webcomponents/build-haxcms.js ~/haxtheweb/psucdn/haxcms/build-haxcms.js
 cp ~/haxtheweb/webcomponents/wc-registry.json ~/haxtheweb/psucdn/haxcms/wc-registry.json
 cp ~/haxtheweb/webcomponents/wc-registry-graph.json ~/haxtheweb/psucdn/haxcms/wc-registry-graph.json
+cp ~/haxtheweb/webcomponents/.version ~/haxtheweb/psucdn/haxcms/VERSION.txt
 
-# waxam mirror
+# waxam mirror (a maintainer-machine target; skipped where it is not checked out)
+if [ -d ~/Documents/git/waxam/cdn ]; then
 rm -rf ~/Documents/git/waxam/cdn/build
 cp -R ~/haxtheweb/webcomponents/build ~/Documents/git/waxam/cdn/build
 
@@ -133,9 +156,11 @@ cp ~/haxtheweb/webcomponents/build.js ~/Documents/git/waxam/cdn/build.js
 cp ~/haxtheweb/webcomponents/build-haxcms.js ~/Documents/git/waxam/cdn/build-haxcms.js
 cp ~/haxtheweb/webcomponents/wc-registry.json ~/Documents/git/waxam/cdn/wc-registry.json
 cp ~/haxtheweb/webcomponents/wc-registry-graph.json ~/Documents/git/waxam/cdn/wc-registry-graph.json
+fi
 
-# elmsln
+# elmsln (a maintainer-machine target; skipped where it is not checked out)
 # normalize build but need to copy in the legacy assets that we stopped supporting in core
+if [ -d ~/elmsln ]; then
 rm -rf ~/elmsln/core/dslmcode/cores/haxcms-1/build
 rm ~/elmsln/core/dslmcode/cores/haxcms-1/wc-registry.json
 rm ~/elmsln/core/webcomponents/wc-registry.json
@@ -153,6 +178,7 @@ cp -R ~/Documents/git/elmsln/ELMSLN-JS-FILES-FINAL/build/es6/node_modules/@lrnwe
 cp -R ~/Documents/git/elmsln/ELMSLN-JS-FILES-FINAL/build/es6/node_modules/@polymer/* ~/elmsln/core/dslmcode/cores/haxcms-1/build/es6/node_modules/@polymer/
 cp -R ~/Documents/git/elmsln/ELMSLN-JS-FILES-FINAL/build/es6/node_modules/@lrnwebcomponents/elmsln* ~/elmsln/core/dslmcode/cores/haxcms-1/build/es6/node_modules/@haxtheweb/
 cp -R ~/Documents/git/elmsln/ELMSLN-JS-FILES-FINAL/build/es6/node_modules/@lrnwebcomponents/lrn* ~/elmsln/core/dslmcode/cores/haxcms-1/build/es6/node_modules/@haxtheweb/
+fi
 
 ## STEP 3 SYNC THEMES.JSON FROM WEBCOMPONENTS TO BOTH PLATFORMS
 # Copy themes.json from webcomponents monorepo to both HAXcms platforms
@@ -164,7 +190,7 @@ cp ~/haxtheweb/webcomponents/elements/haxcms-elements/lib/themes.json ~/haxthewe
 # in a contract test. Recapture that output from the designer in this monorepo
 # so the test always checks what the designer actually sends. The fixture is
 # only rewritten when the sessions change; STEP 5 commits it with the rest.
-cd ~/haxtheweb/webcomponents
+enter ~/haxtheweb/webcomponents
 # A release must not ship with a fixture that no longer matches the designer,
 # so a failed capture (e.g. Playwright's Chromium missing) stops the push here,
 # before anything is tagged. ubiquity-testing.sh only warns.
@@ -220,7 +246,7 @@ cp ~/haxtheweb/webcomponents/wc-registry.json ~/haxtheweb/create/src/lib/wc-regi
 # local install's login, settings and sites are not used.
 # A failure is a parity break to fix, or an intended output change: refresh
 # the snapshots in create (--update-golden), review and commit them, rerun.
-cd ~/haxtheweb/create
+enter ~/haxtheweb/create
 if ! npm run test:parity:release -- --nodejs ~/haxtheweb/haxcms-nodejs --php ~/haxtheweb/haxcms-php --build --link-cli; then
   echo "ERROR: release gate failed, nothing was committed or tagged. Report: ~/haxtheweb/create/parity-results/release-gate.md"
   exit 1
@@ -228,51 +254,52 @@ fi
 
 
 ## STEP 4 COMPONENT GALLERY NEEDS REBUILT FOR CDN PUBLISHING
-cd ~/haxtheweb/webcomponents
+enter ~/haxtheweb/webcomponents
 yarn run build-gallery
 
 
 ## STEP 5 VERSION CONTROL ALL THE THINGS AND TAG
 # read in version from file
 version=$(cat ~/haxtheweb/webcomponents/.version 2>/dev/null || cat ~/haxtheweb/webcomponents/VERSION.txt)
+# only a dry run can preview a version .version does not hold yet
+if [ "$UBIQUITY_DRY_RUN" = "1" ] && [ -n "$UBIQUITY_DRY_RUN_VERSION" ]; then
+  version=$UBIQUITY_DRY_RUN_VERSION
+fi
 
-cd ~/elmsln/
+if [ -d ~/elmsln ]; then
+enter ~/elmsln/
 git pull origin master
 git add -A
 git commit -m "ubiquity publish" --no-verify
 git push --follow-tags origin master
+fi
 
-cd ~/haxtheweb/webcomponents
+enter ~/haxtheweb/webcomponents
 git pull origin master
 git add -A
 git commit -m "ubiquity publish"
 git push --follow-tags origin master
 
-# praw: CLI pin (.version) and the agent-skills index written in STEP 1.5.
-# praw has no package.json, so it is tagged directly; the tag matches the
-# v<version> tags commit-and-tag-version writes in the other repos.
-cd ~/haxtheweb/praw
-git pull origin main
-git add -A
-git commit -m "ubiquity publish"
-git tag -a "v$version" -m "v$version"
-git push --follow-tags origin main
+# praw (its CLI pin, .version, and the agent-skills index written in STEP
+# 1.5) is committed, tagged and pushed in STEP 7: hax.cloud builds from
+# haxcms-nodejs main and webcomponents master on that push, and its CLI pin
+# must not point at a create release that is not on npm yet.
 
-cd ~/haxtheweb/hax11ty/
+enter ~/haxtheweb/hax11ty/
 git pull origin master
 git add -A
 git commit -m "ubiquity publish"
 ./node_modules/.bin/commit-and-tag-version --release-as $version
 git push --follow-tags origin master
 
-cd ~/haxtheweb/haxcms-php/
+enter ~/haxtheweb/haxcms-php/
 git pull origin master
 git add -A
 git commit -m "ubiquity publish"
 ./node_modules/.bin/commit-and-tag-version --release-as $version
 git push --follow-tags origin master
 
-cd ~/haxtheweb/haxcms-nodejs/
+enter ~/haxtheweb/haxcms-nodejs/
 git pull origin main
 git add -A
 git commit -m "ubiquity publish"
@@ -281,7 +308,7 @@ npm run build
 git push --follow-tags origin main
 npm publish
 
-cd ~/haxtheweb/haxsite/
+enter ~/haxtheweb/haxsite/
 git pull origin main
 # haxsite is a standalone example site, not part of CI. Regenerate its managed files
 # (index.html, manifest, .htaccess, .well-known/agent-skills, sitemap/feeds/llms.txt, ...)
@@ -295,17 +322,18 @@ git add -A
 git commit -m "ubiquity publish"
 git push --follow-tags origin main
 
-cd ~/haxtheweb/HAXiam/
+enter ~/haxtheweb/HAXiam/
 git pull origin master
 git add -A
 git commit -m "ubiquity publish"
 git push --follow-tags origin master
 
-cd ~/haxtheweb/psucdn/
+enter ~/haxtheweb/psucdn/
 git pull origin master
 git add -A
 git commit -m "ubiquity publish"
-./node_modules/.bin/commit-and-tag-version --release-as $version
+# psucdn has no package.json; it is tagged directly, as praw is
+git tag -a "v$version" -m "v$version"
 git push --follow-tags origin master
 
 # STEP 5.5 SCHEMA / SPEC PACKAGES
@@ -314,7 +342,7 @@ git push --follow-tags origin master
 for spec in json-outline-schema:master hax-schema:main hax-element-schema:master merlin-schema:main appstore-spec:master; do
   repo=${spec%%:*}
   branch=${spec#*:}
-  cd ~/haxtheweb/$repo
+  enter ~/haxtheweb/$repo
   git pull origin $branch
   git add -A
   git commit -m "ubiquity publish"
@@ -326,7 +354,7 @@ done
 
 # STEP 6 THESE NEED THEIR PACKAGE UPDATED FOR NODEJS VERSION INTERNALLY
 
-cd ~/haxtheweb/open-apis
+enter ~/haxtheweb/open-apis
 git pull origin main
 git add -A
 git commit -m "ubiquity publish"
@@ -336,7 +364,7 @@ npm publish
 
 # haxcms-desktop (renamed from desktop): Electron wrapper around the
 # haxcms-nodejs release published above
-cd ~/haxtheweb/haxcms-desktop/
+enter ~/haxtheweb/haxcms-desktop/
 git pull origin master
 npm update @haxtheweb/haxcms-nodejs --save
 git add -A
@@ -348,7 +376,7 @@ git push --follow-tags origin master
 # haxcms-browser: haxcms-nodejs bundled to run in a browser Worker. Built from
 # the haxcms-nodejs checkout tagged above (HAXCMS_NODEJS_SRC) so the published
 # Worker is exactly this release; its GitHub Pages demo rebuilds from main on push.
-cd ~/haxtheweb/haxcms-browser/
+enter ~/haxtheweb/haxcms-browser/
 git pull origin main
 npm update @haxtheweb/haxcms-nodejs --save
 git add -A
@@ -364,7 +392,7 @@ npm publish
 # haxcms-mcp (Python): vendor the OpenAPI specs of the haxcms-nodejs release
 # tagged above, regenerate the routes/tools/docs built from them, then version
 # and tag to match. A failed regeneration stops here rather than tagging stale specs.
-cd ~/haxtheweb/haxcms-mcp/
+enter ~/haxtheweb/haxcms-mcp/
 git pull origin main
 uv run python scripts/sync_specs.py --from ~/haxtheweb/haxcms-nodejs || exit 1
 uv run python scripts/gen_routes.py || exit 1
@@ -379,7 +407,7 @@ git tag -a "v$version" -m "v$version"
 git push --follow-tags origin main
 
 
-cd ~/haxtheweb/create/
+enter ~/haxtheweb/create/
 git pull origin main
 npm update @haxtheweb/haxcms-nodejs --save
 npm update @haxtheweb/open-apis --save
@@ -389,3 +417,15 @@ npm run build
 ./node_modules/.bin/commit-and-tag-version --release-as $version
 git push --follow-tags origin main
 npm publish
+
+## STEP 7 SATELLITES, ONCE THE RELEASE IS PUBLIC
+# Sites that load HAX from cdn.hax.cloud or build from what was just
+# published (praw/hax.cloud, rpg-me, art, learn, haxtheweb.org) are refreshed,
+# versioned, tagged and pushed only after every package is on npm and the CDN
+# serves this version, so their deploys pick up the release and not the one
+# before it. If the wait runs out, nothing here has been touched: rerun
+#   node scripts/ubiquity-network.mjs satellites --version <version>
+# once `node scripts/ubiquity-network.mjs landed --once` passes.
+enter ~/haxtheweb/webcomponents
+node scripts/ubiquity-network.mjs landed --version "$version" || exit 1
+node scripts/ubiquity-network.mjs satellites --version "$version" || exit 1

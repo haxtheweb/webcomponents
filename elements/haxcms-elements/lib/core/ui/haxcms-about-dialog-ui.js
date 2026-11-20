@@ -726,7 +726,7 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
               ${this._renderLink(
                 "https://haxtheweb.org/hax-lab/hax-ai",
                 this.t.haxAiOverview,
-                "hax:wizard-hat",
+                "hax:future-goggles",
               )}
             </ul>
           </section>

@@ -96,8 +96,8 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
       collapse: "Collapse",
       menuSize: "Menu size",
       menuSizeDescription: "Expand or collapse the menu visually.",
-      merlin: "Merlin",
-      summonMerlin: "Summon Merlin",
+      merlin: "Search",
+      summonMerlin: "Open search and commands",
       settings: "Settings",
       source: "Source",
       undo: "Undo",
@@ -1327,7 +1327,7 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
       </hax-tray-button>
       <hax-tray-button
         event-name="super-daemon"
-        icon="hax:wand"
+        icon="hax:future-goggles"
         label="${this.t.merlin}"
         voice-command="${this.t.merlin}"
         toggles

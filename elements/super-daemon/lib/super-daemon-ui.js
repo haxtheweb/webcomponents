@@ -41,7 +41,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
       submitIdeas: "Submit your ideas",
       dropFilesHere: "Drop files here",
       typeWhatYouWant: "Type what you want to do",
-      opensMemoryPalace: "opens Merlin",
+      opensMemoryPalace: "opens search and commands",
       clickToDoAnything: "Click to do anything!",
       details: "Details",
       preview: "Preview",
@@ -58,12 +58,12 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
       site: "Site",
       editor: "Editor",
       cheatCodes: "Cheat codes",
-      openFullMerlin: "Open full Merlin",
+      openFullMerlin: "Open full search",
       resultsOfTotal: "{count} of {total} results",
       stopListening: "Stop listening",
       runResult: "Run a result",
       sayPickResult: "second one",
-      sayCloseMerlin: "close merlin",
+      sayCloseMerlin: "close search",
       sayStopListening: "stop listening",
     };
     this.registerLocalization({
@@ -1430,8 +1430,55 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
     this.commandContext = e.detail.value;
   }
 
+  /**
+   * True when a keydown that reached super-daemon-search started on one of
+   * its buttons (the voice button) rather than its text field. The listener
+   * sits on the whole search bar, so keys pressed on those controls bubble
+   * here too.
+   */
+  _keyFromSearchButton(e) {
+    const path = e.composedPath ? e.composedPath() : [];
+    for (let i = 0; i < path.length; i++) {
+      const node = path[i];
+      if (node === e.currentTarget) {
+        break;
+      }
+      if (
+        node &&
+        node.nodeType === 1 &&
+        (node.tagName === "BUTTON" ||
+          (node.getAttribute && node.getAttribute("role") === "button"))
+      ) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   // keydown when we have focus on the input field
   _inputKeydown(e) {
+    // Keys pressed on a button in the search bar (the voice button) belong to
+    // that button: Enter / Space activate the focused button, not the first
+    // result. Escape still closes Merlin from anywhere.
+    if (this._keyFromSearchButton(e)) {
+      if (e.key === "Escape") {
+        e.preventDefault();
+        e.stopPropagation();
+        this._updateActiveDescendant(-1);
+        this.dispatchEvent(
+          new CustomEvent("super-daemon-close", {
+            bubbles: true,
+            composed: true,
+            cancelable: true,
+          }),
+        );
+      } else if (e.key === "Enter" || e.key === " ") {
+        // the button handles it; keep it from reaching window-level listeners
+        // (hax-body would split the active paragraph on Enter)
+        e.stopPropagation();
+      }
+      return;
+    }
     // In welcome mode, first typed input should leave onboarding and return to general search.
     // Arrow-key navigation remains unchanged and still cycles welcome options.
     if (

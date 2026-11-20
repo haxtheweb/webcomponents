@@ -664,6 +664,9 @@ class A11yMediaPlayer extends SchemaBehaviors(
             var(--a11y-media-accent-color) 0 var(--a11y-media-seek-pct, 0%),
             var(--a11y-media-track-color) var(--a11y-media-seek-pct, 0%) 100%
           );
+          /* the pin lift draws the track itself: watched part in the accent */
+          --simple-range-input-track-color: var(--a11y-media-track-color);
+          --simple-range-input-fill-color: var(--a11y-media-accent-color);
         }
         :host(:dir(rtl)) #slider {
           --simple-range-input-bg: linear-gradient(
@@ -1669,6 +1672,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
           <simple-range-input
             id="slider"
             class="screen-only"
+            lift
             aria-labelledby="progresslabel"
             label="${this.t.seekSliderLabel}"
             min="0"

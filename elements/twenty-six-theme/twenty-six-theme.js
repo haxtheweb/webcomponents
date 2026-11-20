@@ -24,7 +24,10 @@ import "@haxtheweb/simple-icon/lib/simple-icons.js";
  *  - HAXcms - A headless content management system
  *  - HAXCMSTheme - A super class that provides correct baseline wiring to build a new theme
  *
- * @haxcms-theme-category Website
+ * @haxcms-theme-category Website, Blog, Organization
+ * @haxcms-theme-layout Sidebar
+ * @haxcms-theme-inspired-by WordPress
+ * @haxcms-theme-inspired-by-theme Twenty Fifteen
  * @haxcms-theme-internal false
  * @haxcms-theme-priority 0
  * @element twenty-six-theme

@@ -53,6 +53,7 @@
     "@haxtheweb/hax-body": "^26.8.0",
     "@haxtheweb/hax-body-behaviors": "^26.8.0",
     "@haxtheweb/hax-iconset": "^26.8.0",
+    "@haxtheweb/hax-network-bar": "^26.8.0",
     "@haxtheweb/haxcms-elements": "^26.8.0",
     "@haxtheweb/i18n-manager": "^26.8.0",
     "@haxtheweb/jwt-login": "^26.8.0",

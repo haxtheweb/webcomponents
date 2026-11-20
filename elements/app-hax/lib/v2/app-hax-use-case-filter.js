@@ -15,6 +15,7 @@ import { askImportUrl } from "./app-hax-import-url-dialog.js";
 import "./app-hax-use-case.js";
 import "./app-hax-search-results.js";
 import "./app-hax-site-creation-modal.js";
+import "./app-hax-design-browser.js";
 import { trimChars } from "@haxtheweb/utils/lib/safe-html.js";
 
 export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
@@ -55,6 +56,10 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
       createNewSite: "Create New Site",
       optionsAvailable: "{count} options available",
       fromTemplate: "From Template",
+      browseAllTemplates: "Browse all {count} templates",
+      browseAllThemes: "Browse all {count} themes",
+      browseAllHelp: "Search and filter by use case, layout and design system",
+      usedOnYourSites: "Used on your sites",
       templateBasedStarters: "Template-based starters",
       noTemplatesMatchFilters: "No templates match your current filters.",
       fromScratchUsingTheme: "From Scratch Using Theme",
@@ -78,7 +83,7 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
       noImporterForType: "HAX can't make a site from a {type} file.",
       noImporterForFile: "HAX can't make a site from this file.",
       supportedFileTypes:
-        "Sites can be made from .docx, .odt, .pdf, .pptx, .xlsx, .md, .txt, .html or .htm",
+        "Sites can be made from .docx, .odt, .pdf, .pptx, .odp, .xlsx, .ods, .md, .txt, .html or .htm",
       loadingTemplates: "Loading templates...",
       noTemplatesMatchResetFilters:
         "No templates match your current filters. Reset filters to see more options.",
@@ -123,6 +128,14 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
       odtImportTitle: "OpenDocument Text",
       odtImportDescription: "Import an .odt outline into a new HAX site",
       odtImportTooltip: "ODT import",
+      odpImportTitle: "OpenDocument Presentation",
+      odpImportDescription:
+        "Import an .odp presentation into a new HAX site; each slide becomes a page",
+      odpImportTooltip: "ODP import",
+      odsImportTitle: "OpenDocument Spreadsheet",
+      odsImportDescription:
+        "Import an .ods outline (title, slug, parent, content columns) into a new HAX site",
+      odsImportTooltip: "ODS import",
       markdownImportTitle: "Markdown",
       markdownImportDescription: "Import a .md outline into a new HAX site",
       markdownImportTooltip: "Markdown import",
@@ -193,6 +206,8 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
     this.sortMenuOpen = false;
     // Default to sorting sites by most recently updated
     this.sortOption = "newest";
+    // how many templates or themes show before "Browse all"
+    this.shelfSize = 5;
 
     // Advanced template visibility (controlled via Merlin programs)
     this.showTerrible = false;
@@ -486,17 +501,28 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
           grid-template-columns: repeat(2, minmax(0, 1fr));
           column-gap: var(--ddd-spacing-4, 16px);
         }
+        /* long type names wrap under themselves, never under the icon */
         .import-kinds li {
           font-size: 15px;
           display: flex;
-          align-items: center;
+          align-items: flex-start;
           gap: var(--hax-ui-gap-md);
           padding: var(--hax-ui-gap-sm, 4px) 0;
           --simple-icon-width: 20px;
           --simple-icon-height: 20px;
         }
         .import-kinds simple-icon-lite {
+          flex: none;
           color: var(--hax-ui-accent-strong);
+        }
+        .import-kind-text {
+          min-width: 0;
+          overflow-wrap: anywhere;
+        }
+        @media (max-width: 420px) {
+          .import-kinds.two-col {
+            grid-template-columns: minmax(0, 1fr);
+          }
         }
         .import-kind-name {
           font-weight: var(--ddd-font-weight-medium, 500);
@@ -1336,8 +1362,7 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
                   { icon: "icons:add", tooltip: this.t.moreTemplatesTooltip },
                 ]}
                 ?dark="${this.dark}"
-                @click=${() =>
-                  this.scrollToGroup("from-template-heading", "skeleton")}
+                @click=${() => this.openDesignBrowser("skeleton")}
               ></app-hax-use-case>
             </div>
 
@@ -1353,8 +1378,7 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
                   },
                 ]}
                 ?dark="${this.dark}"
-                @click=${() =>
-                  this.scrollToGroup("from-scratch-heading", "blank")}
+                @click=${() => this.openDesignBrowser("blank")}
               ></app-hax-use-case>
             </div>
 
@@ -1539,6 +1563,36 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
                       }
                     });
 
+                    const browsing =
+                      (this.searchTerm || "") === "" &&
+                      this.activeFilters.length === 0;
+                    const shelf = (entries, kind) => {
+                      if (!browsing || entries.length <= this.shelfSize) {
+                        return renderEntries(entries);
+                      }
+                      return html`${renderEntries(
+                          this._shelfOrder(entries).slice(0, this.shelfSize),
+                        )}
+                        <div role="listitem">
+                          <app-hax-use-case
+                            class="browse-all"
+                            .source=${""}
+                            .title=${(kind === "skeleton"
+                              ? this.t.browseAllTemplates
+                              : this.t.browseAllThemes
+                            ).replace("{count}", () => entries.length)}
+                            .description=${this.t.browseAllHelp}
+                            .iconImage=${[
+                              {
+                                icon: "icons:view-module",
+                                tooltip: this.t.browseAllHelp,
+                              },
+                            ]}
+                            ?dark="${this.dark}"
+                            @click=${() => this.openDesignBrowser(kind)}
+                          ></app-hax-use-case>
+                        </div>`;
+                    };
                     const renderEntries = (entries) => {
                       return entries.map(
                         (entry) => html`
@@ -1550,7 +1604,21 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
                               .title=${entry.item.useCaseTitle || ""}
                               .description=${entry.item.useCaseDescription || ""}
                               .demoLink=${entry.item.demoLink || ""}
-                              .iconImage=${entry.item.useCaseIcon || []}
+                              .iconImage=${
+                                this._usedThemes().has(
+                                  entry.item.dataType === "blank"
+                                    ? entry.item.machineName
+                                    : (entry.item.originalData || {}).theme,
+                                )
+                                  ? [
+                                      ...(entry.item.useCaseIcon || []),
+                                      {
+                                        icon: "icons:history",
+                                        tooltip: this.t.usedOnYourSites,
+                                      },
+                                    ]
+                                  : entry.item.useCaseIcon || []
+                              }
                               .isSelected=${entry.item.isSelected || false}
                               .showContinue=${entry.item.showContinue || false}
                               ?dark="${this.dark}"
@@ -1585,7 +1653,7 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
                                 aria-label="${this.t.templateBasedStarters}"
                                 aria-describedby="template-count"
                               >
-                                ${renderEntries(skeletonEntries)}
+                                ${shelf(skeletonEntries, "skeleton")}
                               </div>`
                             : html`<p
                                 role="status"
@@ -1617,7 +1685,7 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
                                 aria-label="${this.t.themeBasedStarters}"
                                 aria-describedby="template-count"
                               >
-                                ${renderEntries(blankEntries)}
+                                ${shelf(blankEntries, "blank")}
                               </div>`
                             : html`<p
                                 role="status"
@@ -1698,12 +1766,50 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
         </div>
       </div>
 
+      <app-hax-design-browser
+        id="designBrowser"
+        .items=${(this.items || []).filter(
+          (i) => i && (i.dataType === "skeleton" || i.dataType === "blank"),
+        )}
+        @design-chosen=${(e) => this.openTemplateModal(e.detail)}
+      ></app-hax-design-browser>
+
       <!-- Site Creation Modal -->
       <app-hax-site-creation-modal
         id="siteCreationModal"
         @modal-closed=${this.handleModalClosed}
       ></app-hax-site-creation-modal>
     `;
+  }
+
+  openDesignBrowser(kind) {
+    const browser = this.shadowRoot.querySelector("#designBrowser");
+    if (browser) browser.show(kind);
+  }
+
+  // themes already used on this person's sites, from the sites the dashboard loaded
+  _usedThemes() {
+    const used = new Set();
+    (this.returningSites || []).forEach((site) => {
+      const od = site.originalData || {};
+      const meta = od.metadata || {};
+      if (meta.theme && meta.theme.element) used.add(meta.theme.element);
+    });
+    return used;
+  }
+
+  // shelf order: what you already use first, then the dashboard's priority order
+  _shelfOrder(entries) {
+    const used = this._usedThemes();
+    const themeOf = (item) =>
+      item.dataType === "blank"
+        ? item.machineName
+        : (item.originalData || {}).theme;
+    return [...entries].sort((a, b) => {
+      const ua = used.has(themeOf(a.item)) ? 0 : 1;
+      const ub = used.has(themeOf(b.item)) ? 0 : 1;
+      return ua - ub || a.index - b.index;
+    });
   }
 
   getImportItems() {
@@ -1773,6 +1879,21 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
       {
         dataType: "import",
         importKind: "file",
+        importType: "odp",
+        callback: "@system/importOdp",
+        fileType: "odp",
+        useCaseTitle: this.t.odpImportTitle,
+        useCaseImage: "",
+        useCaseDescription: this.t.odpImportDescription,
+        useCaseIcon: [
+          { icon: "hax:file-ppt", tooltip: this.t.odpImportTooltip },
+        ],
+        useCaseTag: ["Import", "ODP"],
+        demoLink: "#",
+      },
+      {
+        dataType: "import",
+        importKind: "file",
         importType: "xlsx",
         callback: "@system/importXlsx",
         fileType: "xlsx",
@@ -1783,6 +1904,22 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
           { icon: "hax:file-xls", tooltip: this.t.excelImportTooltip },
         ],
         useCaseTag: ["Import", "XLSX"],
+        demoLink: "#",
+      },
+      {
+        dataType: "import",
+        importKind: "file",
+        importType: "ods",
+        // the spreadsheet importer reads .ods with the same columns
+        callback: "@system/importXlsx",
+        fileType: "ods",
+        useCaseTitle: this.t.odsImportTitle,
+        useCaseImage: "",
+        useCaseDescription: this.t.odsImportDescription,
+        useCaseIcon: [
+          { icon: "hax:file-xls", tooltip: this.t.odsImportTooltip },
+        ],
+        useCaseTag: ["Import", "ODS"],
         demoLink: "#",
       },
       {
@@ -2863,6 +3000,11 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
     }
 
     // Set the template details in the modal
+    modal.designItems = (this.items || []).filter(
+      (i) => i && (i.dataType === "skeleton" || i.dataType === "blank"),
+    );
+    modal.kind = selectedTemplate.dataType;
+    modal.demoLink = selectedTemplate.demoLink || "";
     modal.title = selectedTemplate.useCaseTitle;
     modal.description = selectedTemplate.useCaseDescription;
     modal.source = selectedTemplate.useCaseImage;
@@ -3132,7 +3274,7 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
                   <p>${this.t.fromAFileDescription}</p>
                 </div>
               </div>
-              <ul class="import-kinds">
+              <ul class="import-kinds two-col">
                 ${fileKinds.map(
                   (item) =>
                     html`<li>
@@ -3140,9 +3282,13 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
                         icon="${item.useCaseIcon[0].icon}"
                         aria-hidden="true"
                       ></simple-icon-lite>
-                      <span class="import-kind-name">${item.useCaseTitle}</span>
-                      <span class="import-kind-ext"
-                        >${this._fileExtensionsLabel(item)}</span
+                      <span class="import-kind-text"
+                        ><span class="import-kind-name"
+                          >${item.useCaseTitle}</span
+                        >
+                        <span class="import-kind-ext"
+                          >${this._fileExtensionsLabel(item)}</span
+                        ></span
                       >
                     </li>`,
                 )}
@@ -3199,7 +3345,7 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
 
   /**
    * The importers of one kind, in the order the cards and the URL dialog
-   * list them (site platforms first, then repos, then plain HTML).
+   * list them (URLs: site platforms first, then repos, then plain HTML).
    * @param {string} kind "file" or "url"
    * @returns {Array}
    */
@@ -3218,7 +3364,20 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
         "quarto",
         "html",
       ],
-      file: ["docx", "odt", "pdf", "pptx", "xlsx", "md", "txt", "html"],
+      // two columns fill row by row, so each row pairs an office format
+      // with its OpenDocument twin
+      file: [
+        "docx",
+        "odt",
+        "pptx",
+        "odp",
+        "xlsx",
+        "ods",
+        "md",
+        "txt",
+        "pdf",
+        "html",
+      ],
     };
     const items = this.getImportItems().filter(
       (item) => item.importKind === kind,

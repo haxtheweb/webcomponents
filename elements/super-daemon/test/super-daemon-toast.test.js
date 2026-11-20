@@ -51,6 +51,10 @@ describe("super-daemon-toast behavior", () => {
     expect(element.getAttribute("voice-state")).to.equal("speaking");
     const pill = element.shadowRoot.querySelector(".hax-ui-pill");
     expect(pill.textContent).to.contain("Speaking");
+    // the voice says who it is: it answers to "Ok Future"
+    expect(
+      element.shadowRoot.querySelector(".who").textContent.trim(),
+    ).to.equal("Future");
     expect(element.shadowRoot.querySelector(".timer")).to.be.null;
   });
 

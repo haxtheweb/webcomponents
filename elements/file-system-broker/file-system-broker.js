@@ -148,6 +148,8 @@ class FileSystemBroker extends HTMLElement {
         return ".txt";
       case "odt":
         return ".odt";
+      case "odp":
+        return ".odp";
       case "*":
         return "*/*";
       default:
@@ -256,6 +258,11 @@ class FileSystemBroker extends HTMLElement {
         break;
       case "odt":
         accept = { "application/vnd.oasis.opendocument.text": [".odt"] };
+        break;
+      case "odp":
+        accept = {
+          "application/vnd.oasis.opendocument.presentation": [".odp"],
+        };
         break;
     }
     return accept;

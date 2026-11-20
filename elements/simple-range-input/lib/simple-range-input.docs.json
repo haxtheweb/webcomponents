@@ -77,6 +77,14 @@
       "default": "false",
       "description": "",
       "hax": null
+    },
+    {
+      "name": "lift",
+      "property": "lift",
+      "type": "boolean",
+      "default": "false",
+      "description": "Pin lift: the track bends up into a bump under the pin while it is grabbed (pointer down or keyboard focus), so you can see where you are and that you have hold of it, even under a fingertip. For scrubbers along a long track (media seek bars); leave it off for short sliders and settings. Sized by the --ddd-range-lift-* tokens.",
+      "hax": null
     }
   ],
   "slots": [],
@@ -85,7 +93,7 @@
     "value-changed"
   ],
   "hax": {},
-  "surfaceHash": "dbe2aa0193e6",
+  "surfaceHash": "b88e4c2a491c",
   "walkthroughs": [
     {
       "id": "",
@@ -93,13 +101,13 @@
       "order": 0,
       "src": "simple-range-input.motion.json",
       "file": "lib/simple-range-input.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/simple-range-input.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

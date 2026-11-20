@@ -4577,8 +4577,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       "[merlin] New command request from HAX daemon",
       tags,
       `Location: ${globalThis.location.href}
-Merlin command: ${daemonTerm}
-What did you want merlin to do?
+Searched for: ${daemonTerm}
+What did you want search and commands to do?
 `,
     );
   }

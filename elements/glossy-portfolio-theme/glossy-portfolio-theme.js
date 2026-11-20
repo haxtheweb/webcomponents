@@ -22,6 +22,8 @@ import "./lib/glossy-portfolio-breadcrumb.js";
  * @title Glossy Portfolio
  * `A theme for creating glossy portfolio-style websites`
  * @demo index.html
+ * @haxcms-theme-category Website, Portfolio
+ * @haxcms-theme-layout Top nav
  * @element glossy-portfolio-theme
  */
 export class GlossyPortfolioTheme extends DDDSuper(

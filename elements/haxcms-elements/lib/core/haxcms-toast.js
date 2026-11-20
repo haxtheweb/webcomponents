@@ -495,7 +495,7 @@ export class HAXCMSToast extends I18NMixin(RPGCharacterToast) {
       danger: "Problem",
       working: "Working",
       incorrect: "Incorrect",
-      assistant: "Merlin",
+      assistant: "Future",
     };
     this.registerLocalization({
       context: this,
@@ -798,7 +798,7 @@ export class HAXCMSToast extends I18NMixin(RPGCharacterToast) {
             this.merlin
               ? html`<simple-icon-lite
                   class="merlin-icon"
-                  icon="hax:wand"
+                  icon="hax:future-goggles"
                   aria-hidden="true"
                 ></simple-icon-lite>`
               : html`<rpg-character

@@ -26,7 +26,9 @@ import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
  * while this theme is active.
  *
  * @title PatternFly
- * @haxcms-theme-category Website, Course, Documentation
+ * @haxcms-theme-category Website, Course, Documentation, Organization
+ * @haxcms-theme-layout Sidebar
+ * @haxcms-theme-design-system PatternFly
  * @haxcms-theme-priority 50
  * @demo demo/index.html
  * @element patternfly-theme

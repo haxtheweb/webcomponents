@@ -241,6 +241,7 @@ export const HaxIconsetManifest = [
       "flikr",
       "flip-cards",
       "format-textblock",
+      "future-goggles",
       "future-traveler-plain",
       "future-traveler",
       "game-map",

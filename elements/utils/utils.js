@@ -879,6 +879,10 @@ export function mimeTypeToName(mimeType) {
       return ".pptx";
     case "vnd.oasis.opendocument.text":
       return ".odt";
+    case "vnd.oasis.opendocument.presentation":
+      return ".odp";
+    case "vnd.oasis.opendocument.spreadsheet":
+      return ".ods";
     case "mpeg":
       return ".mp3";
     case "svg+xml":

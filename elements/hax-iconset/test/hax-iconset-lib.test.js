@@ -185,6 +185,8 @@ describe("hax-iconset — the Future Traveler", () => {
     const hax = HaxIconsetManifest.find((set) => set.name === "hax").icons;
     expect(hax).to.include("future-traveler");
     expect(hax).to.include("future-traveler-plain");
+    // his goggles on their own: the short form, and search and commands
+    expect(hax).to.include("future-goggles");
     expect(hax).to.not.include("world-traveler");
     expect(hax).to.not.include("world-traveler-plain");
   });

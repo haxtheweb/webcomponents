@@ -194,6 +194,29 @@ describe("SuperDaemon core behavior", () => {
     singleton.allowedCallback = singletonAllowed;
   });
 
+  it("the full dialog is titled Search and commands and drawn as lit goggles", async () => {
+    const icon = element.icon;
+    element.icon = "";
+    element.mini = false;
+    element.wand = false;
+    element.opened = true;
+    await element.updateComplete;
+    const bar = element.shadowRoot.querySelector(".titlebar");
+    expect(
+      bar.querySelector(".hax-ui-dialog-title").textContent.trim(),
+    ).to.equal("Search and commands");
+    expect(bar.textContent).to.not.contain("Merlin");
+    const goggles = bar.querySelector(".merlin-goggles");
+    expect(goggles).to.exist;
+    // the lenses are on while the palette is open
+    expect(getComputedStyle(goggles.querySelector(".lit")).opacity).to.equal(
+      "1",
+    );
+    element.icon = icon;
+    element.close();
+    await element.updateComplete;
+  });
+
   it("keyHandler Escape closes an open daemon", async () => {
     element.opened = true;
     element.mini = true;
@@ -937,9 +960,15 @@ describe("SuperDaemon core behavior", () => {
   it("defaultVoiceCommands registers the full command map", () => {
     element.defaultVoiceCommands();
     const keys = Object.keys(element.voiceCommands);
+    // "Ok Future" is the phrase that gets its attention
+    expect(keys.includes("(ok) future")).to.equal(true);
+    expect(keys.includes("okay future")).to.equal(true);
+    expect(keys.includes("hey future")).to.equal(true);
+    // the name it answered to before still works
     expect(keys.includes("(hey) merlin")).to.equal(true);
     expect(keys.includes("(hey) marilyn")).to.equal(true);
     expect(keys.includes("stop listening")).to.equal(true);
+    expect(keys.includes("close search")).to.equal(true);
     expect(keys.includes("close merlin")).to.equal(true);
     expect(keys.includes("cancel merlin")).to.equal(true);
     expect(keys.includes("disable santa (mode)")).to.equal(true);
@@ -995,8 +1024,8 @@ describe("SuperDaemon core behavior", () => {
       },
     };
     element.addVoiceCommand("(hey) :name:", ctx, "cb");
-    expect(typeof element.voiceCommands["(hey) merlin"]).to.equal("function");
-    element.voiceCommands["(hey) merlin"]();
+    expect(typeof element.voiceCommands["(hey) future"]).to.equal("function");
+    element.voiceCommands["(hey) future"]();
     expect(ctx.hit).to.equal(true);
     // without context the command is ignored
     element.voiceCommands = {};

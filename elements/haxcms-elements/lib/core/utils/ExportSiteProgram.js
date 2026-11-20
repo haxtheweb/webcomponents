@@ -20,6 +20,7 @@ import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-
 import { waitForAppHAXSystemApiRegistryReady } from "@haxtheweb/app-hax/lib/v2/app-hax-system-api-registry.js";
 import { haxcmsApiMessage } from "./HAXCMSApiMessages.js";
 import { siteApiFetch } from "./site-api-auth-fetch.js";
+import { fetchPdfOrPrint } from "./pdf-print-fallback.js";
 import { HaxUiDialogFrame } from "@haxtheweb/d-d-d/lib/HaxUiDialogFrame.js";
 
 // English defaults for messages these helpers show. They run with `this`
@@ -32,6 +33,7 @@ const EXPORT_SITE_T = {
   siteFormatDownloadedSuccessfully: "Site {format} downloaded successfully",
   siteFormatExportServiceNotAvailable:
     "Site {format} export service not available",
+  pdfUsePrintDialog: "Your browser's print dialog is open: choose Save as PDF",
   siteArchiveDownloadNotAvailable: "Site archive download not available",
   siteArchiveDownloadInitiated: "Site archive download initiated",
   platformSettings: "Platform settings",
@@ -285,20 +287,19 @@ export async function _exportSiteAsDOCX(manifest, title, baseUrl) {
 export async function _exportSiteAsPDF(manifest, title, baseUrl) {
   this.setProcessingVisual(600000);
   try {
+    // the server's PDF, or the browser's print dialog where it can't make one
     const url = _buildV1ExportUrl(baseUrl, "pdf");
-    const response = await siteApiFetch(url, { credentials: "include" });
-
-    if (response.ok) {
-      const blob = await response.blob();
-      this._downloadBlob(blob, `${title}.pdf`);
-      this.clearProcessingVisual();
+    const result = await fetchPdfOrPrint(url, title);
+    this.clearProcessingVisual();
+    if (result.blob) {
+      this._downloadBlob(result.blob, `${title}.pdf`);
       HAXStore.toast(
         _t(this, "siteFormatDownloadedSuccessfully").replace("{format}", "PDF"),
         3000,
         "fit-bottom",
       );
     } else {
-      throw new Error(`Failed to export site as PDF: ${response.status}`);
+      HAXStore.toast(_t(this, "pdfUsePrintDialog"), 5000, "fit-bottom");
     }
   } catch (error) {
     console.error("Site PDF export error:", error);

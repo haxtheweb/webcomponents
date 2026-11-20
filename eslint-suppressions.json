@@ -759,11 +759,6 @@
       "count": 1
     }
   },
-  "elements/haxcms-elements/lib/core/utils/site-skeleton-generator.js": {
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 1
-    }
-  },
   "elements/haxcms-elements/lib/development/haxcms-dev-theme.js": {
     "haxtheweb-leaks/autorun-in-constructor": {
       "count": 2
@@ -1134,14 +1129,8 @@
     "eqeqeq": {
       "count": 12
     },
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 5
-    },
     "haxtheweb-leaks/autorun-in-constructor": {
       "count": 3
-    },
-    "haxtheweb-leaks/live-document-parse": {
-      "count": 5
     }
   },
   "elements/outline-player/outline-player.js": {

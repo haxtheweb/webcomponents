@@ -108,7 +108,8 @@ function go(url) {
  *
  * @title Ecosystem
  * @element ecosystem-theme
- * @haxcms-theme-category Website, Course
+ * @haxcms-theme-category Website, Course, Organization
+ * @haxcms-theme-layout Sidebar
  * @haxcms-theme-priority 5
  */
 class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
@@ -135,7 +136,7 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
       openInWeb: "Open in the web",
       openOn: "Open on",
       theWeb: "The interactive web",
-      askMerlin: "Ask Merlin",
+      askMerlin: "Ask Future",
       takeTour: "Take the tour",
       welcome: "Welcome",
       merlinWebs: "hax.cloud: webs",

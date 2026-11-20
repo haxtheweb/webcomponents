@@ -184,6 +184,10 @@ export const HaxUiAdminTokens = [
       );
       --hax-ui-admin-font-size: var(--hax-ui-font-size-sm, 14px);
       --hax-ui-admin-font-size-xs: var(--hax-ui-font-size-xs, 12px);
+      /* titles in admin chrome: card and dialog names (lg), page and panel
+         headings and big figures (xl). Same steps as the HAX UI layer */
+      --hax-ui-admin-font-size-lg: var(--hax-ui-font-size-lg, 18px);
+      --hax-ui-admin-font-size-xl: var(--hax-ui-font-size-xl, 24px);
       --hax-ui-row-height: var(--ddd-control-height-xs, 32px);
       --hax-ui-row-height-compact: calc(
         var(--ddd-target-min, 24px) + var(--ddd-spacing-1, 4px)

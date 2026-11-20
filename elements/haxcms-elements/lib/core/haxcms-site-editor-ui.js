@@ -358,8 +358,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           color: var(--hax-ui-on-titlebar);
           font-family: var(--hax-ui-admin-font-family);
         }
+        /* the search sits in the middle while there is room. The groups on
+           either side keep the width of what they hold, so their buttons
+           never slide under the search: it moves over and narrows first */
         app-hax-top-bar::part(top-bar) {
-          grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+          grid-template-columns:
+            minmax(max-content, 1fr) minmax(0, auto)
+            minmax(max-content, 1fr);
           overflow: visible;
           display: grid;
           border-bottom: 1px solid var(--hax-ui-line);
@@ -399,6 +404,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         }
         .topbar-center-group {
           justify-content: center;
+          min-width: 0;
+        }
+        .center-toolbar-buttons,
+        super-daemon-search.merlin {
+          min-width: 0;
         }
         .topbar-right-group {
           justify-content: flex-end;
@@ -947,7 +957,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             display: none;
           }
         }
-        @media (max-width: 600px) {
+        /* up to 680px the search folds to a button: below that width the
+           edit tools leave it no room to be a field (it needs 100px) */
+        @media (max-width: 680px) {
           /* preview sits on the right, after Merlin's button; the device
              button shows just its icon, and the device menu spans the
              screen under the bar so it always fits */
@@ -1765,6 +1777,18 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               dataToPost.append("parentId", itemPptx.parent);
             }
             break;
+          case "odp":
+            dataToPost.append("upload", values.data);
+            endpointCall = "@system/odpToHtml";
+            if (mode === "create-branch") {
+              endpointCall = "@system/importOdp";
+              dataToPost.append("method", "branch");
+              dataToPost.append("type", "branch");
+              // set parent to same as current page's parent
+              const itemOdp = toJS(store.activeItem);
+              dataToPost.append("parentId", itemOdp.parent);
+            }
+            break;
           case "odt":
             dataToPost.append("upload", values.data);
             endpointCall = "@system/odtToHtml";
@@ -2312,7 +2336,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       rootLevel: "Root Level",
       pageMovedUnder: 'Page moved under "{parent}"',
       expectingToSeeAnOptionMerlinDidntProvide:
-        "Expecting to see an option Merlin didn't provide?",
+        "Expecting to see an option that isn't here?",
       makeASuggestionToImproveResults: "Make a suggestion to improve results",
       createAPage: "Create a page",
       pageTitlePlaceholder: "Page title",
@@ -2356,7 +2380,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       spreadsheetConvertedToCsvText: "Spreadsheet converted to CSV text",
       fileUploadedAndLinkedTo: "File uploaded and linked to",
       fileUploadedForLaterUse: "File uploaded for later use",
-      watchMerlinWorkHisMagic: "Watch Merlin work his magic!",
+      watchMerlinWorkHisMagic: "Watch the Future Traveler get to work!",
       youtubeVideoEmbeddedInPage: "YouTube video embedded in page",
       kalturaMediaEmbeddedInPage: "Kaltura media embedded in page",
       imageFromUrlEmbeddedInPage: "Image from URL embedded in page",
@@ -2452,12 +2476,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       allThemesUnlockedSpeech:
         "All terrible, hidden and legacy themes unlocked. You must choose, but choose wisely.",
       welcomeProgramDismissed:
-        "Welcome program dismissed. You can always access Merlin by pressing Alt+Shift or clicking the search bar.",
+        "Welcome program dismissed. You can always open search and commands by pressing Alt+Shift or clicking the search bar.",
       noActivePageFound: "No active page found",
       noActivePageFoundToShare: "No active page found to share",
       linkCopiedFor: "Link copied for {title}",
       unableToCopyAutomatically:
-        "Unable to copy automatically. Open Merlin to view the share link.",
+        "Unable to copy automatically. Open search and commands to view the share link.",
       shortcutSavePageAndExitEditMode: "Save page and exit edit mode",
       shortcutEnterEditMode: "Enter edit mode",
       shortcutCancelEditing: "Cancel editing",
@@ -2496,11 +2520,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       importLabel: "Import",
       pasteUrlToImport: "Paste URL to import:",
       cheatCodesUnlocked:
-        "🎮 Cheat codes unlocked! Check Merlin for new programs.",
+        "🎮 Cheat codes unlocked! Check search and commands for new programs.",
       failedToUnlockCheatCodes: "🎮 Failed to unlock cheat codes",
       cheatCodes: "Cheat codes (↑↑↓↓←→←→ B A)",
       cheatCodesDescription:
-        "Unlock silly extras. Or type up up down down left right left right B A anywhere, even with Merlin open.",
+        "Unlock silly extras. Or type up up down down left right left right B A anywhere, even with search open.",
       platformSettings: "Platform settings",
       selectFileEllipsis: "Select file..",
     };
@@ -2857,6 +2881,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               case "doc":
               case "odt":
               case "pptx":
+              case "odp":
               case "txt":
               case "html":
               case "htm":
@@ -2899,6 +2924,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                       "odt",
                       "pdf",
                       "pptx",
+                      "odp",
                       "md",
                       "markdown",
                       "txt",
@@ -3491,7 +3517,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       siteSettings: "Site Settings",
       siteMenu: "Site settings quick links",
       siteMenuDashboard: "Dashboard",
-      closeMerlin: "Close Merlin",
+      closeMerlin: "Close search and commands",
       siteMenuContent: "Content",
       siteMenuStructure: "Structure",
       siteMenuFiles: "Files",
@@ -3521,8 +3547,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       pageActions: "Page actions",
       reports: "Reports",
       dashboard: "Dashboard",
-      merlin: "Merlin",
-      summonMerlin: "Summon Merlin",
+      merlin: "Search and commands",
+      summonMerlin: "Open search and commands",
       logOut: "Log out",
       menu: "Menu",
       showMore: "More",
@@ -4639,11 +4665,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       case "super-daemon":
         // a phone's bar is too narrow for the field: Merlin is a button
         // that opens the search across the whole bar first
-        // (same query as the CSS that folds the field, so a 600px wide
+        // (same query as the CSS that folds the field, so a 680px wide
         // screen that shows the button also opens across the bar)
         if (
           (globalThis.matchMedia
-            ? globalThis.matchMedia("(max-width: 600px)").matches
+            ? globalThis.matchMedia("(max-width: 680px)").matches
             : this.responsiveSize === "xs") &&
           e.type === "click" &&
           !this.merlinPhoneOpen

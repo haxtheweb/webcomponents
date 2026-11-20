@@ -148,7 +148,7 @@ describe("super-daemon-ui behavior", () => {
     );
     expect(said).to.deep.equal([
       "second one",
-      "close merlin",
+      "close search",
       "stop listening",
     ]);
     expect(footer.querySelector(".results-stats")).to.exist;
@@ -340,6 +340,49 @@ describe("super-daemon-ui behavior", () => {
       new KeyboardEvent("keydown", { key: "Enter", cancelable: true }),
     );
     expect(selected2).to.equal(1);
+  });
+
+  // the keydown listener sits on the whole search bar, so keys on its voice
+  // button bubble to it; Enter on that focused button must press the button,
+  // not run the first result
+  it("Enter or Space on a search bar button does not run a result", async () => {
+    const el = await fixture(html`<super-daemon-ui mini></super-daemon-ui>`);
+    el.loading = false;
+    el.items = [
+      { title: "A", index: "a", value: { x: 1 }, eventName: "custom-event" },
+    ];
+    await el.updateComplete;
+    const search = el.shadowRoot.querySelector("super-daemon-search");
+    await search.updateComplete;
+    // stands in for the voice button, which only renders where the browser
+    // can listen and speak
+    const btn = globalThis.document.createElement("button");
+    btn.type = "button";
+    search.shadowRoot.querySelector(".field").appendChild(btn);
+    let selected = 0;
+    let closed = 0;
+    el.addEventListener("super-daemon-row-selected", () => selected++);
+    el.addEventListener("super-daemon-close", () => closed++);
+    const send = (key) => {
+      const evt = new KeyboardEvent("keydown", {
+        key: key,
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+      });
+      btn.dispatchEvent(evt);
+      return evt;
+    };
+    const enter = send("Enter");
+    expect(selected, "Enter on the button runs nothing").to.equal(0);
+    expect(enter.defaultPrevented, "button still activates").to.equal(false);
+    const space = send(" ");
+    expect(selected).to.equal(0);
+    expect(space.defaultPrevented).to.equal(false);
+    // Escape still closes Merlin from the button
+    send("Escape");
+    expect(closed).to.equal(1);
+    btn.remove();
   });
 
   it("_inputKeydown ArrowDown and ArrowUp move selection with wrap", async () => {

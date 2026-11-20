@@ -1711,6 +1711,30 @@ export const INTERNAL_CONTRACTS = [
     example:
       '<header style="display: flex; align-items: center; gap: var(--ddd-spacing-4); padding: var(--ddd-spacing-4)" data-primary="2"><site-title></site-title><site-breadcrumb></site-breadcrumb><site-menu-button type="prev"></site-menu-button><site-menu-button type="next"></site-menu-button></header>',
   },
+  {
+    id: "contract-range-pin-lift",
+    title: "Scrubber pin lift",
+    surface:
+      "The seek bar of a media or timeline player: a long track you drag along to move through time.",
+    tokens: [
+      "--ddd-range-lift-height",
+      "--ddd-range-lift-height-coarse",
+      "--ddd-range-lift-width",
+      "--ddd-range-lift-rest",
+      "--ddd-range-lift-duration",
+    ],
+    structure:
+      "Use simple-range-input with the lift attribute. While the pin is grabbed (pointer down, or keyboard focus) the track bends up into a bump under it, so the reader sees where they are and that they have hold of it; on touch the bump is taller so it shows above the fingertip. The space for the bump is always reserved, so nothing moves when it rises. The native range input stays on top for keyboard and assistive technology, and the focus ring stays. Color the played part with --simple-range-input-fill-color and the rest with --simple-range-input-track-color. Not for short sliders (volume, speed), settings, color strips, image compare handles or read-only progress, where a bump would suggest a scrubber that is not there. A bridge whose system has no lift sets --ddd-range-lift-height and --ddd-range-lift-height-coarse to 0px.",
+    targetElements: [
+      "simple-range-input",
+      "a11y-media-player",
+      "video-player",
+      "audio-player",
+      "documentation-player",
+    ],
+    example:
+      '<simple-range-input lift label="Seek" min="0" max="180" value="59"></simple-range-input>',
+  },
 ];
 
 /**

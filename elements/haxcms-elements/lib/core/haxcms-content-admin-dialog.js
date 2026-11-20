@@ -13,6 +13,7 @@ import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
+import { removeUnsafeElements } from "@haxtheweb/utils/lib/sanitize.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import {
   HaxUiAdminStyles,
@@ -475,7 +476,7 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
           height: var(--hax-ui-row-height);
           padding: 0 var(--hax-ui-gap);
           border-radius: var(--hax-ui-radius);
-          font-size: 13px;
+          font-size: var(--hax-ui-admin-font-size);
           white-space: nowrap;
           color: var(--hax-ui-text);
         }
@@ -524,7 +525,7 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
           min-height: var(--hax-ui-row-height);
           padding: var(--hax-ui-gap) var(--hax-ui-gap-lg);
           border-radius: var(--hax-ui-radius);
-          font-size: 13px;
+          font-size: var(--hax-ui-admin-font-size);
           color: var(--hax-ui-warning);
           background-color: var(--hax-ui-warning-soft);
         }
@@ -558,7 +559,7 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
           flex: 1;
           min-width: 0;
           margin: 0;
-          font-size: 13px;
+          font-size: var(--hax-ui-admin-font-size);
           font-variant-numeric: tabular-nums;
           color: var(--hax-ui-text-muted);
         }
@@ -574,7 +575,7 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
         }
         .paging .range {
           padding: 0 var(--hax-ui-gap-md);
-          font-size: 13px;
+          font-size: var(--hax-ui-admin-font-size);
           font-variant-numeric: tabular-nums;
           white-space: nowrap;
           color: var(--hax-ui-text-muted);
@@ -885,7 +886,7 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
           border: 0;
           box-shadow: none;
           font-family: var(--hax-ui-admin-font-family);
-          font-size: 13px;
+          font-size: var(--hax-ui-admin-font-size);
           line-height: 1.4;
           color: var(--hax-ui-text);
           background-color: transparent;
@@ -896,7 +897,7 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
           padding: 0;
           border: 0;
           font-family: var(--hax-ui-admin-font-family);
-          font-size: 13px;
+          font-size: var(--hax-ui-admin-font-size);
           line-height: 1.4;
         }
         .detail dt {
@@ -977,7 +978,7 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
         .local-status {
           flex: 1;
           min-width: 0;
-          font-size: 13px;
+          font-size: var(--hax-ui-admin-font-size);
           color: var(--hax-ui-text-muted);
         }
 
@@ -991,7 +992,7 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
           color: var(--hax-ui-text);
         }
         .empty .hint {
-          font-size: 13px;
+          font-size: var(--hax-ui-admin-font-size);
         }
         .empty.error {
           color: var(--hax-ui-danger);
@@ -2515,7 +2516,12 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
 
   /**
    * Page HTML for a preview that only shows: no scripts, no inline event
-   * handlers or script URLs, and embeds drawn as a labelled box.
+   * handlers or script URLs, no page styles reaching this dialog, and
+   * embeds drawn as a labelled box. Elements in it render live (custom
+   * elements upgrade), so the shared removeUnsafeElements rules apply too:
+   * content can't grant html-block its allowscript, and SVG animations
+   * that rewrite href are dropped. URLs keep this preview's own scheme
+   * list (inline raster pictures stay).
    */
   _cleanPreview(text) {
     const doc = new globalThis.DOMParser().parseFromString(
@@ -2523,7 +2529,9 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
       "text/html",
     );
     doc.body
-      .querySelectorAll("script, noscript, object, embed, link, meta, base")
+      .querySelectorAll(
+        "script, noscript, style, object, embed, link, meta, base",
+      )
       .forEach((node) => node.remove());
     doc.body.querySelectorAll("iframe").forEach((node) => {
       const box = doc.createElement("div");
@@ -2544,6 +2552,7 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
         }
       });
     });
+    removeUnsafeElements(doc.body);
     return doc.body.innerHTML;
   }
 

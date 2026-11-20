@@ -27,7 +27,9 @@ import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
  * Authored content uses no utility classes.
  *
  * @title Tailwind
- * @haxcms-theme-category Website, Course, Documentation
+ * @haxcms-theme-category Website, Course, Documentation, Organization
+ * @haxcms-theme-layout Sidebar
+ * @haxcms-theme-design-system Tailwind
  * @haxcms-theme-priority 50
  * @demo demo/index.html
  * @element tailwind-theme

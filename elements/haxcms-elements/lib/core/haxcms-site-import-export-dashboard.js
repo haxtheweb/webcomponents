@@ -149,7 +149,7 @@ class HAXCMSSiteImportExportDashboard extends I18NMixin(DDD) {
         }
         .section-description {
           margin: 2px 0 0;
-          font-size: 13px;
+          font-size: var(--hax-ui-admin-font-size);
           color: var(--hax-ui-text-muted);
         }
         .action-grid {

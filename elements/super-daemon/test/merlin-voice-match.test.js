@@ -48,6 +48,20 @@ describe("merlin voice text cleanup", () => {
     expect(merlinTokens("option two")).to.deep.equal(["option", "2"]);
     // repeats, found by fuzzing
     expect(merlinTokens("merlin merlin")).to.deep.equal([]);
+    // "Ok Future" is the wake phrase, so it is dropped from a command
+    expect(merlinTokens("Ok Future, upload the file")).to.deep.equal([
+      "upload",
+      "file",
+    ]);
+    expect(merlinTokens("okay future add a page")).to.deep.equal([
+      "add",
+      "page",
+    ]);
+    // on its own, future is a word people search for
+    expect(merlinTokens("future traveler")).to.deep.equal([
+      "future",
+      "traveler",
+    ]);
     expect(merlinTokens("please please a")).to.deep.equal([]);
   });
 

@@ -1,0 +1,201 @@
+{
+  "about": "Every repo a HAX release (ubiquity) touches, and the ones it deliberately leaves out. scripts/ubiquity-network.mjs reads this: `versions` (the release version gate), `preflight` (every checkout is there, on its branch, with its tools, before anything changes), `coverage` (every repo PRAW's network and ecosystem map name is listed here or excluded), `landed` (the release is public before satellites rebuild) and `satellites` (refresh, version, tag and push the satellite repos). Paths are relative to $HAXTHEWEB_ROOT (default ~/haxtheweb). phase core: built, versioned and published by ubiquity-push.sh's own steps. phase satellite: refreshed, versioned and tagged by `satellites` after `landed` passes, so their deploys pick up a release that is already public. versionFile: the file holding the repo's version (package.json, pyproject.toml or a plain text file); the version gate needs .version past every one of them. tag: commit-and-tag-version (bumps versionFile and tags), direct (git tag only), or none. publish: npm package name ubiquity publishes, checked by `landed`. landed: a public URL whose body must be the release version once the release is live. deploy: what pushing the branch deploys.",
+  "repos": [
+    {
+      "repo": "webcomponents",
+      "branch": "master",
+      "phase": "core",
+      "versionFile": ".version",
+      "tag": "none",
+      "deploy": "Vercel: webcomponents.hax.cloud"
+    },
+    {
+      "repo": "haxcms-nodejs",
+      "branch": "main",
+      "phase": "core",
+      "versionFile": "package.json",
+      "tag": "commit-and-tag-version",
+      "publish": "@haxtheweb/haxcms-nodejs"
+    },
+    {
+      "repo": "haxcms-php",
+      "branch": "master",
+      "phase": "core",
+      "versionFile": "package.json",
+      "tag": "commit-and-tag-version"
+    },
+    {
+      "repo": "create",
+      "branch": "main",
+      "phase": "core",
+      "versionFile": "package.json",
+      "tag": "commit-and-tag-version",
+      "publish": "@haxtheweb/create"
+    },
+    {
+      "repo": "open-apis",
+      "branch": "main",
+      "phase": "core",
+      "versionFile": "package.json",
+      "tag": "commit-and-tag-version",
+      "publish": "@haxtheweb/open-apis"
+    },
+    {
+      "repo": "hax11ty",
+      "branch": "master",
+      "phase": "core",
+      "versionFile": "package.json",
+      "tag": "commit-and-tag-version"
+    },
+    {
+      "repo": "psucdn",
+      "branch": "master",
+      "phase": "core",
+      "versionFile": "cdn/VERSION.txt",
+      "tag": "direct",
+      "landed": "https://cdn.hax.cloud/cdn/VERSION.txt",
+      "deploy": "Vercel: cdn.hax.cloud, which haxtheweb.org, learn, art and every CDN-loaded HAXsite load from"
+    },
+    {
+      "repo": "haxsite",
+      "branch": "main",
+      "phase": "core",
+      "versionFile": ".version",
+      "tag": "none",
+      "deploy": "GitHub Pages"
+    },
+    {
+      "repo": "HAXiam",
+      "branch": "master",
+      "phase": "core",
+      "versionFile": ".version",
+      "tag": "none"
+    },
+    {
+      "repo": "json-outline-schema",
+      "branch": "master",
+      "phase": "core",
+      "versionFile": "package.json",
+      "tag": "commit-and-tag-version",
+      "publish": "@haxtheweb/json-outline-schema-spec"
+    },
+    {
+      "repo": "hax-schema",
+      "branch": "main",
+      "phase": "core",
+      "versionFile": "package.json",
+      "tag": "commit-and-tag-version",
+      "publish": "@haxtheweb/hax-schema"
+    },
+    {
+      "repo": "hax-element-schema",
+      "branch": "master",
+      "phase": "core",
+      "versionFile": "package.json",
+      "tag": "commit-and-tag-version",
+      "publish": "@haxtheweb/hax-element-schema"
+    },
+    {
+      "repo": "merlin-schema",
+      "branch": "main",
+      "phase": "core",
+      "versionFile": "package.json",
+      "tag": "commit-and-tag-version",
+      "publish": "@haxtheweb/merlin-schema"
+    },
+    {
+      "repo": "appstore-spec",
+      "branch": "master",
+      "phase": "core",
+      "versionFile": "package.json",
+      "tag": "commit-and-tag-version",
+      "publish": "@haxtheweb/appstore-spec"
+    },
+    {
+      "repo": "haxcms-desktop",
+      "branch": "master",
+      "phase": "core",
+      "versionFile": "package.json",
+      "tag": "commit-and-tag-version"
+    },
+    {
+      "repo": "haxcms-browser",
+      "branch": "main",
+      "phase": "core",
+      "versionFile": "package.json",
+      "tag": "npx commit-and-tag-version",
+      "publish": "@haxtheweb/haxcms-browser",
+      "deploy": "GitHub Pages: browser.hax.cloud"
+    },
+    {
+      "repo": "haxcms-mcp",
+      "branch": "main",
+      "phase": "core",
+      "versionFile": "pyproject.toml",
+      "tag": "direct"
+    },
+    {
+      "repo": "praw",
+      "branch": "main",
+      "phase": "satellite",
+      "versionFile": ".version",
+      "tag": "direct",
+      "deploy": "Vercel: hax.cloud, built from haxcms-nodejs main and webcomponents master, so it goes after the release is public"
+    },
+    {
+      "repo": "rpg-me",
+      "branch": "main",
+      "phase": "satellite",
+      "versionFile": "package.json",
+      "tag": "direct",
+      "dependencies": "@haxtheweb/",
+      "deploy": "Vercel: rpg.art.hax.cloud (rpg-me.hax.cloud redirects there), rebuilt from the push; one of HAX Art's tools, linked from the art site's menu, so it goes before art"
+    },
+    {
+      "repo": "art",
+      "branch": "main",
+      "phase": "satellite",
+      "tag": "direct",
+      "deploy": "GitHub Pages: haxtheweb.github.io/art (loads HAX from cdn.hax.cloud at runtime; links to RPG me)"
+    },
+    {
+      "repo": "learn",
+      "branch": "master",
+      "phase": "satellite",
+      "versionFile": "package.json",
+      "tag": "direct",
+      "refresh": "haxsite",
+      "deploy": "GitHub Pages: learn.hax.cloud (loads HAX from cdn.hax.cloud)"
+    },
+    {
+      "repo": "haxtheweb.org",
+      "branch": "master",
+      "phase": "satellite",
+      "versionFile": "package.json",
+      "tag": "direct",
+      "refresh": "haxsite",
+      "deploy": "GitHub Pages: haxtheweb.org (loads HAX from cdn.hax.cloud)"
+    }
+  ],
+  "local": [
+    "elmsln and the waxam mirror are maintainer-machine targets outside $HAXTHEWEB_ROOT; ubiquity-push.sh copies into them when they exist and preflight only warns when they don't."
+  ],
+  "excluded": [
+    {
+      "repo": "issues",
+      "reason": "the unified issue queue, not a release target"
+    },
+    {
+      "repo": "hax-lab",
+      "reason": "being folded into PRAW, which ubiquity versions and tags"
+    },
+    {
+      "repo": "wcfactory",
+      "reason": "retired"
+    },
+    {
+      "repo": "haxcms-plugin-examples",
+      "reason": "not roped into releases yet"
+    }
+  ]
+}

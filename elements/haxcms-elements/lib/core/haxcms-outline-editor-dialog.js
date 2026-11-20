@@ -100,7 +100,7 @@ class HAXCMSOutlineEditorDialog extends HaxcmsAdminSectionMixin(
           margin: 0;
           white-space: nowrap;
           font-family: var(--ddd-font-navigation);
-          font-size: 14px;
+          font-size: var(--hax-ui-admin-font-size);
           font-weight: var(--ddd-font-weight-bold, 700);
           color: light-dark(
             var(--ddd-theme-default-white, #ffffff),

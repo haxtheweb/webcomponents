@@ -336,7 +336,7 @@ export class RPGCharacterToast extends SimpleToastEl {
           this.merlin
             ? html` <simple-icon
                 class="merlin"
-                icon="hax:wand"
+                icon="hax:future-goggles"
                 accent-color="purple"
               ></simple-icon>`
             : html`

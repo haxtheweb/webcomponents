@@ -19,15 +19,7 @@
       "property": "current",
       "type": "string",
       "default": "\"\"",
-      "description": "Which site this is: web, try, learn, elements, cloud or rpg (what it was called before, browser and docs, still works).",
-      "hax": null
-    },
-    {
-      "name": "character",
-      "property": "character",
-      "type": "string",
-      "default": "\"\"",
-      "description": "Your character, after the properties, as an rpg-character code (RPG me makes one). Empty draws HAX's own.",
+      "description": "Which site this is: web, try, learn, elements, art or cloud (what it was called before, browser and docs, still works). A tool that lives within a property names itself and lights that property: rpg (RPG me) lights Art.",
       "hax": null
     },
     {
@@ -67,7 +59,7 @@
       "property": "compact",
       "type": "boolean",
       "default": "false",
-      "description": "The mini bar, for a page whose editor already has Merlin and the Future Traveler (HAXcms in the browser): shorter, with the same property icons but no character, Merlin or Future Traveler of its own, and the pre slot in the middle for the page's own status and functions.",
+      "description": "The mini bar, for a page whose editor already has Merlin and the Future Traveler (HAXcms in the browser): shorter, with the same property icons but no Merlin or Future Traveler of its own, and the pre slot in the middle for the page's own status and functions.",
       "hax": null
     },
     {
@@ -95,7 +87,7 @@
     "hax-network-merlin"
   ],
   "hax": {},
-  "surfaceHash": "a1d69ffcf72f",
+  "surfaceHash": "7924083d1d10",
   "walkthroughs": [],
   "videos": [],
   "motion": {

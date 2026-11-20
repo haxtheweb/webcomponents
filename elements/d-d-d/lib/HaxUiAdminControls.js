@@ -765,6 +765,19 @@ export const HaxUiAdminSimpleFields = [
     simple-fields.hax-ui-simple-field simple-icon-select {
       --simple-icon-select-border-color: var(--hax-ui-line-strong);
     }
+    /* the control inside the field is the tap target: at least 24px tall
+       (WCAG 2.5.8), even in a 32px compact field */
+    simple-fields-field.hax-ui-simple-field:not([type="checkbox"]):not(
+        [type="radio"]
+      )::part(option-input),
+    simple-fields-field.hax-ui-simple-field::part(select),
+    simple-fields.hax-ui-simple-field
+      simple-fields-field:not([type="checkbox"]):not([type="radio"])::part(
+        option-input
+      ),
+    simple-fields.hax-ui-simple-field simple-fields-field::part(select) {
+      min-height: var(--hax-ui-target);
+    }
     simple-fields-field.hax-ui-simple-field:focus-within,
     simple-fields.hax-ui-simple-field simple-fields-field:focus-within {
       outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);

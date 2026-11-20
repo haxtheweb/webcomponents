@@ -107,6 +107,17 @@ const rules = [
   [/^ddd-skeleton-(base|shine)$/, (m) => ["skeleton", m[1]], "color"],
   [/^ddd-skeleton-duration$/, () => ["skeleton", "duration"], "duration"],
   [
+    /^ddd-range-lift-duration$/,
+    () => ["range", "lift", "duration"],
+    "duration",
+  ],
+  [/^ddd-range-lift-rest$/, () => ["range", "lift", "rest"], "number"],
+  [
+    /^ddd-range-lift-(height|height-coarse|width)$/,
+    (m) => ["range", "lift", m[1]],
+    "dimension",
+  ],
+  [
     /^ddd-skeleton-(radius|text-height)$/,
     (m) => ["skeleton", m[1]],
     "dimension",

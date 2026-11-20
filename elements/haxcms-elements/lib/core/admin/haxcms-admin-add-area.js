@@ -308,6 +308,7 @@ export const ADMIN_DOCUMENT_TYPES = Object.freeze([
   "odt",
   "pdf",
   "pptx",
+  "odp",
   "md",
   "markdown",
   "txt",

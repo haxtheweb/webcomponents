@@ -12,6 +12,7 @@ import {
   sanitizeHTMLString,
 } from "@haxtheweb/utils/utils.js";
 import { createScene, MOTION_CSS } from "./lib/motion-core.js";
+import "@haxtheweb/simple-range-input/simple-range-input.js";
 
 const REPO_TREE = "https://github.com/haxtheweb/webcomponents/tree/HEAD/";
 
@@ -351,10 +352,16 @@ export class DocumentationPlayer extends DDDSuper(I18NMixin(LitElement)) {
           color: var(--dp-ground);
           border-color: var(--dp-main);
         }
-        input[type="range"] {
+        simple-range-input {
           flex: 1;
           min-width: 8rem;
-          accent-color: var(--dp-main);
+          --simple-range-input-color: var(--dp-main);
+          --simple-range-input-bg: var(--dp-line);
+          --simple-range-input-track-color: var(--dp-line);
+          --simple-range-input-fill-color: var(--dp-main);
+          --simple-range-input-track-height: var(--ddd-spacing-1);
+          --simple-range-input-pin-height: var(--ddd-spacing-4);
+          --simple-range-input-track-border-radius: var(--ddd-radius-rounded);
         }
         .time {
           font-family: ui-monospace, Menlo, Consolas, monospace;
@@ -853,7 +860,9 @@ export class DocumentationPlayer extends DDDSuper(I18NMixin(LitElement)) {
     const scrub = this.shadowRoot.querySelector("#scrub");
     const label = this.shadowRoot.querySelector("#time");
     if (scrub) {
-      scrub.value = String(Math.round((this._time / dur) * 1000));
+      // remembered so the value-changed this causes is not read as a scrub
+      this.__scrubValue = Math.round((this._time / dur) * 1000);
+      scrub.value = this.__scrubValue;
     }
     if (label) {
       label.textContent = `${this._time.toFixed(1)} / ${dur.toFixed(1)}s`;
@@ -935,9 +944,13 @@ export class DocumentationPlayer extends DDDSuper(I18NMixin(LitElement)) {
   }
 
   _scrub(e) {
+    const value = Number(e.detail.value);
+    if (value === this.__scrubValue) {
+      return;
+    }
     this._pause();
     if (this._ctl) {
-      this._seek((Number(e.target.value) / 1000) * this._ctl.duration);
+      this._seek((value / 1000) * this._ctl.duration);
     }
   }
 
@@ -1170,15 +1183,16 @@ export class DocumentationPlayer extends DDDSuper(I18NMixin(LitElement)) {
                 : this.t.play
           }
         </button>
-        <input
-          type="range"
+        <simple-range-input
           id="scrub"
+          lift
           min="0"
           max="1000"
           value="0"
-          aria-label="${this.t.scrub}"
-          @input="${this._scrub}"
-        />
+          label="${this.t.scrub}"
+          @immediate-value-changed="${this._scrub}"
+          @value-changed="${this._scrub}"
+        ></simple-range-input>
         <span class="time" id="time">0.0 / 0.0s</span>
       </div>
       <div class="beats">
