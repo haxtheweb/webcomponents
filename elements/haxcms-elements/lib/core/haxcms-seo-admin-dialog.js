@@ -174,7 +174,7 @@ class HAXCMSSEOAdminDialog extends HaxcmsAdminFieldsMixin(I18NMixin(DDD)) {
           align-items: center;
           gap: var(--hax-ui-gap-lg);
           min-height: var(--ddd-textfield-height-sm, 40px);
-          font-size: 13px;
+          font-size: var(--hax-ui-admin-font-size);
           color: var(--hax-ui-text-muted);
         }
         .swrow .spacer {

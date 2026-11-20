@@ -973,7 +973,7 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
         .day {
           margin: 0;
           padding: var(--hax-ui-gap-lg) var(--hax-ui-gap) var(--hax-ui-gap);
-          font-size: 11px;
+          font-size: var(--hax-ui-admin-font-size-xs);
           font-weight: var(--ddd-font-weight-bold, 700);
           letter-spacing: 0.04em;
           text-transform: uppercase;
@@ -1079,7 +1079,7 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
           align-items: center;
           gap: var(--hax-ui-gap-md);
           margin: 0;
-          font-size: 18px;
+          font-size: var(--hax-ui-admin-font-size-lg);
           font-weight: var(--ddd-font-weight-bold, 700);
           line-height: 1.3;
         }
@@ -1129,7 +1129,7 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
         .diff.source {
           font-family:
             ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-          font-size: 12px;
+          font-size: var(--hax-ui-admin-font-size-xs);
           line-height: 1.5;
         }
         /* each run keeps its own spaces and line breaks; the box ignores
@@ -1248,7 +1248,7 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
         }
         .actions .hint {
           flex: 1;
-          font-size: 13px;
+          font-size: var(--hax-ui-admin-font-size);
           color: var(--hax-ui-text-muted);
         }
         /* restore confirmation */
@@ -1273,7 +1273,7 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
         }
         .confirm h3 {
           margin: 0 0 var(--hax-ui-gap-lg);
-          font-size: 17px;
+          font-size: var(--hax-ui-admin-font-size-lg);
         }
         .confirm ul.facts {
           display: flex;
@@ -1385,7 +1385,7 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
             var(--ddd-spacing-4, 16px);
         }
         :host([narrow]) .detail h3 {
-          font-size: 16px;
+          font-size: var(--hax-ui-admin-font-size-lg);
         }
         :host([narrow]) .controls {
           gap: var(--hax-ui-gap-md);

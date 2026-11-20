@@ -1051,6 +1051,25 @@ describe("haxcms-content-admin-dialog detail panel", () => {
     expect(attr("i4", "href")).to.equal(null);
   });
 
+  it("keeps page styles, allowscript and href animations out of the preview", async () => {
+    const el = await contentSection();
+    const clean = el._cleanPreview(
+      [
+        "<style>.pv-frame{display:none}</style>",
+        '<html-block id="hb" allowscript><p>x</p></html-block>',
+        '<svg><a id="sa"><animate attributeName="href" to="javascript:bad()"></animate><text>t</text></a></svg>',
+        '<p id="kept">kept</p>',
+      ].join(""),
+    );
+    const doc = new DOMParser().parseFromString(clean, "text/html");
+    expect(doc.querySelector("style")).to.equal(null);
+    expect(doc.getElementById("hb").hasAttribute("allowscript")).to.equal(
+      false,
+    );
+    expect(doc.querySelector("animate")).to.equal(null);
+    expect(doc.getElementById("kept").textContent).to.equal("kept");
+  });
+
   it("a narrow section has no detail panel", async () => {
     const el = await contentSection();
     el.compact = true;

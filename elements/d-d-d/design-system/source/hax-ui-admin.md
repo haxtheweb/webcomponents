@@ -100,6 +100,7 @@ Rules:
 | `--hax-ui-icon`                        | 16px                            |                        | Icons beside words                                                                              |
 | `--hax-ui-radius`, `-lg`, `-pill`      | 4, 8px, rounded                 |                        | Controls, panels, pills                                                                         |
 | `--hax-ui-admin-font-size`, `-xs`      | 14, 12px                        |                        | Body text, small labels                                                                         |
+| `--hax-ui-admin-font-size-lg`, `-xl`  | 18, 24px                        |                        | Card and dialog names (lg); page and panel headings, big figures (xl)                           |
 | `--hax-ui-duration`, `--hax-ui-easing` | 150ms, ease                     |                        | Hover and state changes                                                                         |
 
 ### Admin chrome tokens

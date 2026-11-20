@@ -104,7 +104,7 @@ export class AppHaxSiteDetails extends I18NMixin(SimpleColors) {
           display: flex;
           flex-direction: column;
           justify-content: center;
-          font-size: 12px;
+          font-size: var(--hax-ui-admin-font-size-xs);
           align-items: stretch;
           background-color: var(--simple-colors-default-theme-light-blue-11);
           color: var(--simple-colors-default-theme-light-blue-1);
@@ -144,17 +144,17 @@ export class AppHaxSiteDetails extends I18NMixin(SimpleColors) {
         }
 
         .info-headings {
-          font-size: 12px;
+          font-size: var(--hax-ui-admin-font-size-xs);
         }
         .info-item {
-          font-family: sans-serif;
+          font-family: var(--ddd-font-navigation, sans-serif);
           display: block;
           text-overflow: ellipsis;
           overflow: hidden;
           color: var(--simple-colors-default-theme-light-blue-1);
-          line-height: 12px;
+          line-height: var(--ddd-lh-120);
           max-width: 100%;
-          font-size: 14px;
+          font-size: var(--hax-ui-admin-font-size);
         }
         .pre ::slotted(*) {
           padding: 12px;
@@ -168,8 +168,8 @@ export class AppHaxSiteDetails extends I18NMixin(SimpleColors) {
         }
         .info-date {
           color: var(--simple-colors-default-theme-light-blue-1);
-          line-height: 12px;
-          font-size: 12px;
+          line-height: var(--ddd-lh-120);
+          font-size: var(--hax-ui-admin-font-size-xs);
         }
 
         .info-icon {
@@ -212,11 +212,11 @@ export class AppHaxSiteDetails extends I18NMixin(SimpleColors) {
             margin: 0px;
           }
           .info-headings {
-            font-size: 8px;
+            font-size: var(--hax-ui-admin-font-size-xs);
           }
           .info-date {
-            font-size: 8px;
-            line-height: 10px;
+            font-size: var(--hax-ui-admin-font-size-xs);
+            line-height: var(--ddd-lh-120);
           }
           .info-icon {
             --simple-icon-width: 30px;
@@ -225,7 +225,7 @@ export class AppHaxSiteDetails extends I18NMixin(SimpleColors) {
             border-radius: none;
           }
           .info-item {
-            font-size: 8px;
+            font-size: var(--hax-ui-admin-font-size-xs);
           }
           .flex-container {
             margin: 2px;

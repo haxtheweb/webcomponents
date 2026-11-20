@@ -121,7 +121,7 @@ class AppHaxUserAccessModal extends I18NMixin(DDD) {
 
         .site-title {
           font-weight: var(--ddd-font-weight-bold, 700);
-          font-size: 15px;
+          font-size: var(--hax-ui-admin-font-size);
           color: var(--hax-ui-text);
           overflow-wrap: anywhere;
         }

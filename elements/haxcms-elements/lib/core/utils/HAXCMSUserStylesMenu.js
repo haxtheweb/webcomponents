@@ -186,7 +186,7 @@ const HAXCMSUserStylesMenuMixin = function (SuperClass) {
             padding: 0;
             margin: 2px 0 0;
             list-style: none;
-            font-size: 14px;
+            font-size: var(--hax-ui-admin-font-size);
             background-color: transparent;
           }
           .hcusm .hcusm-buttons:after,

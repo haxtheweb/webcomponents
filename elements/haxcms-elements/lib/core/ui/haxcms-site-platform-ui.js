@@ -354,7 +354,7 @@ class HAXCMSSitePlatformUI extends HaxcmsAdminSectionMixin(
 
         h4 {
           margin: 0;
-          font-size: var(--ddd-font-size-xs);
+          font-size: var(--hax-ui-admin-font-size-xl);
           font-weight: var(--ddd-font-weight-bold);
         }
         .panel-shell {
@@ -506,7 +506,7 @@ class HAXCMSSitePlatformUI extends HaxcmsAdminSectionMixin(
         }
 
         .feature-table th {
-          font-size: var(--ddd-font-size-4xs);
+          font-size: var(--hax-ui-admin-font-size-lg);
           text-transform: uppercase;
           letter-spacing: 0.04em;
           font-weight: var(--ddd-font-weight-bold);
@@ -538,7 +538,7 @@ class HAXCMSSitePlatformUI extends HaxcmsAdminSectionMixin(
 
         .feature-description {
           margin: var(--ddd-spacing-1) 0 0 0;
-          font-size: var(--ddd-font-size-3xs);
+          font-size: var(--hax-ui-admin-font-size-lg);
           line-height: 1.35;
           opacity: 0.92;
         }
@@ -609,7 +609,7 @@ class HAXCMSSitePlatformUI extends HaxcmsAdminSectionMixin(
           display: flex;
           align-items: center;
           cursor: pointer;
-          font-size: var(--ddd-font-size-4xs);
+          font-size: var(--hax-ui-admin-font-size-lg);
           letter-spacing: 0.04em;
           text-transform: uppercase;
           font-weight: var(--ddd-font-weight-bold);
@@ -617,7 +617,7 @@ class HAXCMSSitePlatformUI extends HaxcmsAdminSectionMixin(
 
         .platform-note {
           margin: 0 0 var(--ddd-spacing-4) 0;
-          font-size: var(--ddd-font-size-xs);
+          font-size: var(--hax-ui-admin-font-size-xl);
           line-height: 1.4;
         }
 
@@ -649,7 +649,7 @@ class HAXCMSSitePlatformUI extends HaxcmsAdminSectionMixin(
 
         .audience label {
           font-weight: var(--ddd-font-weight-bold);
-          font-size: var(--ddd-font-size-xs);
+          font-size: var(--hax-ui-admin-font-size-xl);
         }
 
         .blocks-list {
@@ -684,7 +684,7 @@ class HAXCMSSitePlatformUI extends HaxcmsAdminSectionMixin(
 
         .block-category-note {
           margin: 0 0 var(--ddd-spacing-3) 0;
-          font-size: var(--ddd-font-size-3xs);
+          font-size: var(--hax-ui-admin-font-size-lg);
           opacity: 0.9;
         }
 
@@ -743,7 +743,7 @@ class HAXCMSSitePlatformUI extends HaxcmsAdminSectionMixin(
 
         .note {
           margin-top: var(--ddd-spacing-2);
-          font-size: var(--ddd-font-size-xs);
+          font-size: var(--hax-ui-admin-font-size-xl);
           opacity: 0.9;
         }
 
@@ -785,7 +785,7 @@ class HAXCMSSitePlatformUI extends HaxcmsAdminSectionMixin(
           margin: 0;
           padding: var(--hax-ui-gap-md) var(--hax-ui-gap-lg);
           border-radius: var(--hax-ui-radius);
-          font-size: 13px;
+          font-size: var(--hax-ui-admin-font-size);
           line-height: 1.35;
           color: light-dark(
             var(--ddd-theme-default-potentialMidnight, #000321),

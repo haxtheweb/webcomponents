@@ -290,36 +290,35 @@ class SiteSkeletonGenerator {
       return content;
     }
     try {
-      const container = document.createElement("div");
-      container.innerHTML = content;
-      const walker = document.createTreeWalker(
-        container,
-        NodeFilter.SHOW_ELEMENT,
+      // security: parse the page in an inert document (no browsing
+      // context) so nothing in it runs or loads, e.g. an img onerror in a
+      // page file that never went through the server's save sanitizer
+      const inert = new globalThis.DOMParser().parseFromString(
+        `<body>${content}</body>`,
+        "text/html",
       );
+      const container = inert.body;
+      const walker = inert.createTreeWalker(container, NodeFilter.SHOW_ELEMENT);
       const targets = [];
       let node = walker.nextNode();
       while (node) {
-        if (
-          node.tagName &&
-          node.tagName.indexOf("-") !== -1 &&
-          globalThis.customElements.get(node.tagName.toLowerCase())
-        ) {
-          globalThis.customElements.upgrade(node);
-          if (
-            typeof node.haxHooks === "function" &&
-            node.haxHooks()["siteToSkeleton"]
-          ) {
-            targets.push(node);
+        if (node.tagName && node.tagName.indexOf("-") !== -1) {
+          const proxy = SiteSkeletonGenerator.hookProxy(node);
+          if (proxy) {
+            targets.push({ node, proxy });
           }
         }
         node = walker.nextNode();
       }
       for (let i = 0; i < targets.length; i++) {
+        const { node, proxy } = targets[i];
         try {
+          const before = SiteSkeletonGenerator.attributeSnapshot(proxy);
           const details = { uuidMap, direction: "site-to-skeleton" };
-          targets[i][targets[i].haxHooks()["siteToSkeleton"]](details);
+          proxy[proxy.haxHooks()["siteToSkeleton"]](details);
+          SiteSkeletonGenerator.applyAttributeChanges(before, proxy, node);
         } catch (e) {
-          console.warn("siteToSkeleton hook failed for", targets[i].tagName, e);
+          console.warn("siteToSkeleton hook failed for", node.tagName, e);
         }
       }
       return container.innerHTML;
@@ -327,6 +326,69 @@ class SiteSkeletonGenerator {
       console.warn("rewriteContentUuids failed, using original content", e);
       return content;
     }
+  }
+
+  /**
+   * A live, detached stand-in for a custom element found in inert content,
+   * so its siteToSkeleton hook can run (an inert document has no element
+   * registry, so nothing in it upgrades). Event handler attributes are not
+   * copied over. Returns null when the tag has no hook to run.
+   * @param {HTMLElement} node - element from the inert document
+   * @returns {HTMLElement|null}
+   */
+  static hookProxy(node) {
+    const tag = node.tagName.toLowerCase();
+    if (!globalThis.customElements.get(tag)) {
+      return null;
+    }
+    const proxy = globalThis.document.createElement(tag);
+    for (const attr of Array.from(node.attributes)) {
+      if (!/^on/i.test(attr.name)) {
+        proxy.setAttribute(attr.name, attr.value);
+      }
+    }
+    if (
+      typeof proxy.haxHooks === "function" &&
+      proxy.haxHooks()["siteToSkeleton"]
+    ) {
+      return proxy;
+    }
+    return null;
+  }
+
+  /**
+   * Attribute name -> value map of an element
+   * @param {HTMLElement} el
+   * @returns {Map}
+   */
+  static attributeSnapshot(el) {
+    const snap = new Map();
+    for (const attr of Array.from(el.attributes)) {
+      snap.set(attr.name, attr.value);
+    }
+    return snap;
+  }
+
+  /**
+   * Copy the attribute changes a hook made on the stand-in back onto the
+   * inert element, so the serialized content carries them. Only what the
+   * hook changed moves; event handler attributes never do.
+   * @param {Map} before - snapshot taken just before the hook ran
+   * @param {HTMLElement} proxy - stand-in the hook ran on
+   * @param {HTMLElement} node - inert element to update
+   */
+  static applyAttributeChanges(before, proxy, node) {
+    const after = SiteSkeletonGenerator.attributeSnapshot(proxy);
+    after.forEach((value, name) => {
+      if (!/^on/i.test(name) && before.get(name) !== value) {
+        node.setAttribute(name, value);
+      }
+    });
+    before.forEach((value, name) => {
+      if (!after.has(name)) {
+        node.removeAttribute(name);
+      }
+    });
   }
 
   /**

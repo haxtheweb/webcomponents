@@ -215,7 +215,7 @@ export class AppHaxUseCase extends I18NMixin(LitElement) {
           align-items: center;
           gap: 8px;
           padding: 4px 8px;
-          border-bottom: 1px solid #ccc;
+          border-bottom: var(--ddd-border-xs);
         }
 
         .tooltip-row:last-child {
@@ -223,7 +223,7 @@ export class AppHaxUseCase extends I18NMixin(LitElement) {
         }
 
         .tooltip {
-          font-size: 12px;
+          font-size: var(--hax-ui-admin-font-size-xs);
           white-space: nowrap;
         }
 

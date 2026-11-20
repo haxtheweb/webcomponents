@@ -147,6 +147,30 @@ describe("outline-designer content operations", () => {
     ).to.equal(false);
   });
 
+  it("reads and rewrites page markup without running it", async () => {
+    globalThis.__outlineProbeRan = false;
+    const page = element.items.find((i) => i.id === "p1");
+    const probe =
+      '<img src="data:," onerror="globalThis.__outlineProbeRan = true">';
+    page.contents = `<h2 id="first">Heading one</h2><p id="second">${probe}</p>`;
+    await element.requestUpdate();
+    await settle(element);
+    // move the paragraph up: the page is parsed, reordered and serialized
+    element.modifyContentAction(
+      fakeEventFrom(contentLi(element, "p1", 1)),
+      page,
+      "up",
+    );
+    await settle(element);
+    await new Promise((resolve) => setTimeout(resolve, 50));
+    expect(globalThis.__outlineProbeRan).to.equal(false);
+    // the markup itself is kept as authored, only its order changed
+    expect(element.items.find((i) => i.id === "p1").contents).to.equal(
+      `<p id="second">${probe}</p><h2 id="first">Heading one</h2>`,
+    );
+    delete globalThis.__outlineProbeRan;
+  });
+
   it("moves content nodes up and down", async () => {
     const page = element.items.find((i) => i.id === "p1");
     const para = contentLi(element, "p1", 1);

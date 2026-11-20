@@ -3,6 +3,7 @@ import {
   KeyboardShortcutManager,
   KeyboardShortcutManagerInstance,
 } from "../utils.js";
+import { isApplePlatform, platformModifier } from "../lib/keyboardShortcuts.js";
 
 /**
  * Exercise the centralized KeyboardShortcutManager registry that backs all
@@ -292,5 +293,42 @@ describe("KeyboardShortcutManager", () => {
       expect(md.label).to.equal("###");
       expect(md.key).to.equal("###");
     });
+  });
+});
+
+describe("platformModifier", () => {
+  const nav = globalThis.navigator;
+  const stubPlatform = (value) => {
+    Object.defineProperty(nav, "platform", {
+      configurable: true,
+      get: () => value,
+    });
+    Object.defineProperty(nav, "userAgentData", {
+      configurable: true,
+      get: () => undefined,
+    });
+  };
+  afterEach(() => {
+    delete nav.platform;
+    delete nav.userAgentData;
+  });
+
+  it("is Command on Apple platforms", () => {
+    for (const platform of ["MacIntel", "iPhone", "iPad"]) {
+      stubPlatform(platform);
+      expect(isApplePlatform()).to.equal(true);
+      expect(platformModifier()).to.deep.equal({ label: "⌘", aria: "Meta" });
+    }
+  });
+
+  it("is Control everywhere else", () => {
+    for (const platform of ["Win32", "Linux x86_64", ""]) {
+      stubPlatform(platform);
+      expect(isApplePlatform()).to.equal(false);
+      expect(platformModifier()).to.deep.equal({
+        label: "Ctrl",
+        aria: "Control",
+      });
+    }
   });
 });

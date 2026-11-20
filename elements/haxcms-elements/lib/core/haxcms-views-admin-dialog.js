@@ -613,7 +613,7 @@ class HAXCMSViewsAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
           padding: var(--ddd-spacing-6, 24px);
         }
         .state b {
-          font-size: 15px;
+          font-size: var(--hax-ui-admin-font-size);
           color: var(--hax-ui-text);
         }
         .state p {
@@ -679,7 +679,7 @@ class HAXCMSViewsAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
           vertical-align: top;
           padding: var(--ddd-spacing-2);
           border-bottom: 1px solid var(--hax-ui-line);
-          font-size: var(--ddd-font-size-5xs);
+          font-size: var(--hax-ui-admin-font-size);
         }
         .card-grid {
           display: grid;
@@ -690,10 +690,10 @@ class HAXCMSViewsAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
           width: 100%;
         }
         .card-link {
-          font-size: var(--ddd-font-size-4xs);
+          font-size: var(--hax-ui-admin-font-size-lg);
         }
         .record-html {
-          font-size: var(--ddd-font-size-5xs);
+          font-size: var(--hax-ui-admin-font-size);
           line-height: var(--ddd-lh-150);
           overflow-wrap: anywhere;
         }
@@ -734,11 +734,11 @@ class HAXCMSViewsAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
         }
         .result-list-item {
           margin: 0;
-          font-size: var(--ddd-font-size-5xs);
+          font-size: var(--hax-ui-admin-font-size);
         }
         .result-title {
           margin: 0 0 var(--ddd-spacing-1) 0;
-          font-size: var(--ddd-font-size-4xs);
+          font-size: var(--hax-ui-admin-font-size-lg);
         }
         .content-records {
           display: flex;
@@ -781,7 +781,7 @@ class HAXCMSViewsAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
         .media-gallery-caption {
           display: block;
           padding: var(--ddd-spacing-2);
-          font-size: var(--ddd-font-size-5xs);
+          font-size: var(--hax-ui-admin-font-size);
         }
         .accordion-preview {
           display: block;

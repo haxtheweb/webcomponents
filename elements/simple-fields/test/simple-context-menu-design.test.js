@@ -84,7 +84,8 @@ describe("simple-context-menu HAX UI design", () => {
     expect(item("two").getBoundingClientRect().width).to.be.greaterThan(150);
     const header = el.shadowRoot.querySelector(".menu-header");
     expect(css(header).textTransform).to.equal("uppercase");
-    expect(css(header).fontSize).to.equal("11px");
+    // the admin scale's small step (--hax-ui-admin-font-size-xs)
+    expect(css(header).fontSize).to.equal("12px");
   });
 
   it("danger items read red and the shortcut hint shows", async () => {

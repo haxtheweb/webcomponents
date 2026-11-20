@@ -296,6 +296,33 @@ export function keyboardShortcutsHidden() {
 }
 
 /**
+ * True on macOS, iOS and iPadOS, where the platform modifier is Command
+ */
+export function isApplePlatform() {
+  const nav = globalThis.navigator;
+  if (!nav) {
+    return false;
+  }
+  const platform =
+    (nav.userAgentData && nav.userAgentData.platform) || nav.platform || "";
+  return /Mac|iPhone|iPad|iPod/i.test(platform);
+}
+
+/**
+ * The modifier for a single-modifier OS idiom (select all, submit with
+ * Enter): Command on Apple platforms, Control elsewhere. label is what a
+ * key chip shows; aria is the aria-keyshortcuts modifier name. HAX's own
+ * Ctrl+Shift bindings stay Control everywhere (Command+Shift+3/4/5 and
+ * Command+Shift+/ belong to macOS), so they keep "Ctrl".
+ * @returns {{label: string, aria: string}}
+ */
+export function platformModifier() {
+  return isApplePlatform()
+    ? { label: "⌘", aria: "Meta" }
+    : { label: "Ctrl", aria: "Control" };
+}
+
+/**
  * A label with its shortcut appended as "Label • Ctrl⇧2", or just the label
  * on a phone where the shortcut means nothing
  */
