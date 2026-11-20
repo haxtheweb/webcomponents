@@ -84,6 +84,7 @@ const CAST_SIZE = 8;
  *  - Keepcase: the theme's own design system (chrome colors, faces, case tables)
  *
  * @haxcms-theme-category Blog, Website
+ * @haxcms-theme-layout Sidebar
  * @haxcms-theme-internal false
  * @haxcms-theme-priority 0
  * @demo demo/index.html

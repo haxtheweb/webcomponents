@@ -207,7 +207,6 @@ The following tables list every custom element in the package, grouped by the `l
 | `haxcms-about-dialog-ui` | `lib/core/ui/haxcms-about-dialog-ui.js` | About dialog. |
 | `haxcms-allowed-blocks-ui` | `lib/core/ui/haxcms-allowed-blocks-ui.js` | Allowed blocks configuration. |
 | `haxcms-editor-settings-dialog-ui` | `lib/core/ui/haxcms-editor-settings-dialog-ui.js` | Editor settings dialog. |
-| `haxcms-page-get-started` | `lib/core/ui/haxcms-page-get-started.js` | Get-started onboarding. |
 | `haxcms-site-platform-ui` | `lib/core/ui/haxcms-site-platform-ui.js` | Platform settings UI. |
 | `haxcms-theme-preview-panel` | `lib/core/ui/haxcms-theme-preview-panel.js` | Theme live-preview panel. |
 | `rpg-character-toast` | `lib/core/ui/rpg-character-toast/rpg-character-toast.js` | RPG character welcome toast. |

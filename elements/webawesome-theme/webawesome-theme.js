@@ -28,7 +28,9 @@ import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
  * reads --ddd-* tokens, which point at Web Awesome tokens while it is active.
  *
  * @title Web Awesome
- * @haxcms-theme-category Website, Course, Documentation
+ * @haxcms-theme-category Website, Course, Documentation, Organization
+ * @haxcms-theme-layout Sidebar
+ * @haxcms-theme-design-system Web Awesome
  * @haxcms-theme-priority 50
  * @demo demo/index.html
  * @element webawesome-theme

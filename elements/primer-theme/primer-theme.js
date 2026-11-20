@@ -28,7 +28,9 @@ import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
  * tokens while this theme is active.
  *
  * @title Primer
- * @haxcms-theme-category Website, Course, Documentation
+ * @haxcms-theme-category Website, Course, Documentation, Organization
+ * @haxcms-theme-layout Sidebar
+ * @haxcms-theme-design-system Primer
  * @haxcms-theme-priority 50
  * @demo demo/index.html
  * @element primer-theme

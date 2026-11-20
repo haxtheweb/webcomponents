@@ -18,7 +18,10 @@ import { HomageColumnTheme } from "@haxtheweb/papermod-theme/lib/HomageColumnThe
  * that layout, with colors, fonts and widths from DDD tokens.
  *
  * @title al-folio
- * @haxcms-theme-category Website
+ * @haxcms-theme-category Website, Research, Portfolio
+ * @haxcms-theme-layout Single column
+ * @haxcms-theme-inspired-by Jekyll
+ * @haxcms-theme-inspired-by-theme al-folio
  * @haxcms-theme-priority 0
  * @demo ../demo/al-folio-theme/index.html
  * @element al-folio-theme

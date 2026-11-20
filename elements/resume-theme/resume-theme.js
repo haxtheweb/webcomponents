@@ -17,6 +17,8 @@ import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
  * `resume-theme`
  * A single-page résumé theme for HAXcms, inspired by https://demo-resume.netlify.app/
  * @demo index.html
+ * @haxcms-theme-category Website, Resume, Portfolio
+ * @haxcms-theme-layout Sidebar
  * @element resume-theme
  */
 export class ResumeTheme extends DDDSuper(HAXCMSLitElementTheme) {

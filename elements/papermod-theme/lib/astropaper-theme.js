@@ -18,6 +18,9 @@ import { HomageColumnTheme } from "@haxtheweb/papermod-theme/lib/HomageColumnThe
  *
  * @title AstroPaper
  * @haxcms-theme-category Blog, Website
+ * @haxcms-theme-layout Single column
+ * @haxcms-theme-inspired-by Astro
+ * @haxcms-theme-inspired-by-theme AstroPaper
  * @haxcms-theme-priority 0
  * @demo ../demo/astropaper-theme/index.html
  * @element astropaper-theme

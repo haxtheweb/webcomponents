@@ -19,6 +19,8 @@ import {
 import { I18NManagerStore } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 /**
  * @title Learn2
+ * @haxcms-theme-category Website, Course, Documentation
+ * @haxcms-theme-layout Sidebar
  * @element learn-two-theme
  * `Learn2 theme for HAXcms`
  *

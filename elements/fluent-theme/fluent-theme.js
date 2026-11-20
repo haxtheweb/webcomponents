@@ -27,7 +27,9 @@ import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
  * --ddd-* tokens, which point at Fluent tokens while this theme is active.
  *
  * @title Fluent 2
- * @haxcms-theme-category Website, Course, Documentation
+ * @haxcms-theme-category Website, Course, Documentation, Organization
+ * @haxcms-theme-layout Sidebar
+ * @haxcms-theme-design-system Fluent
  * @haxcms-theme-priority 50
  * @demo demo/index.html
  * @element fluent-theme

@@ -103,6 +103,25 @@ test("a hand-drawn dialog must use the frame classes or the confirm card", () =>
   );
 });
 
+test("admin fields are simple-fields, not hand-drawn controls", () => {
+  assert.deepEqual(rules('html`<select class="hax-ui-select"></select>`'), [
+    "raw-field",
+  ]);
+  assert.deepEqual(rules('html`<input type="search" />`'), ["raw-field"]);
+  assert.deepEqual(rules("html`<textarea></textarea>`"), ["raw-field"]);
+  assert.deepEqual(
+    rules(
+      'html`<simple-fields-field class="hax-ui-simple-field" type="select"></simple-fields-field>`',
+    ),
+    [],
+  );
+});
+
+test("hidden and file inputs are not fields", () => {
+  assert.deepEqual(rules('html`<input type="hidden" name="x" />`'), []);
+  assert.deepEqual(rules('html`<input type="file" accept="image/*" />`'), []);
+});
+
 test("stripComments keeps strings and line numbers", () => {
   const out = stripComments('a // x\nb = "// not a comment";\n/* c\n d */e');
   assert.equal(out.split("\n").length, 4);

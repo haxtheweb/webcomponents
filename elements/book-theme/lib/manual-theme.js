@@ -19,6 +19,8 @@ import { BookTheme } from "@haxtheweb/book-theme/book-theme.js";
  *
  * @title Manual
  * @haxcms-theme-category Documentation, Course, Website
+ * @haxcms-theme-layout Sidebar
+ * @haxcms-theme-inspired-by Docusaurus
  * @haxcms-theme-priority 0
  * @demo ../demo/manual-theme/index.html
  * @element manual-theme

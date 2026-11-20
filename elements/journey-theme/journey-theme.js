@@ -40,6 +40,8 @@ import { I18NManagerStore } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
  *  - Theme Blocks - https://haxtheweb.org/documentation/developers/theme-blocks
  *  - DDD - https://haxtheweb.org/documentation/ddd
  *  - Data Store - https://haxtheweb.org/documentation/developers/haxsite/data-store
+ * @haxcms-theme-category Website, Portfolio, Resume
+ * @haxcms-theme-layout Single column
  * @element journey-theme
  */
 class JourneyTheme extends HAXCMSLitElementTheme {

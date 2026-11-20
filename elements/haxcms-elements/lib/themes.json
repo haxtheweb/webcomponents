@@ -5,11 +5,16 @@
     "name": "al-folio",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-al-folio-theme-thumb.jpg",
     "description": "Start with a blank site using the al-folio",
-    "category": ["Website"],
+    "category": ["Website", "Research", "Portfolio"],
     "hidden": false,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": "Single column",
+    "designSystem": null,
+    "inspiredBy": "Jekyll",
+    "inspiredByTheme": "al-folio",
+    "acceptsDesignSystems": true
   },
   "app-hax-theme": {
     "element": "app-hax-theme",
@@ -21,7 +26,12 @@
     "hidden": true,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": null,
+    "designSystem": null,
+    "inspiredBy": null,
+    "inspiredByTheme": null,
+    "acceptsDesignSystems": false
   },
   "astro-cactus-theme": {
     "element": "astro-cactus-theme",
@@ -33,7 +43,12 @@
     "hidden": false,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": "Single column",
+    "designSystem": null,
+    "inspiredBy": "Astro",
+    "inspiredByTheme": "Cactus",
+    "acceptsDesignSystems": true
   },
   "astrofy-theme": {
     "element": "astrofy-theme",
@@ -41,11 +56,16 @@
     "name": "Astrofy",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-astrofy-theme-thumb.jpg",
     "description": "Start with a blank site using the Astrofy",
-    "category": ["Website"],
+    "category": ["Website", "Portfolio", "Blog"],
     "hidden": false,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": "Sidebar",
+    "designSystem": null,
+    "inspiredBy": "Astro",
+    "inspiredByTheme": "Astrofy",
+    "acceptsDesignSystems": true
   },
   "astropaper-theme": {
     "element": "astropaper-theme",
@@ -57,7 +77,12 @@
     "hidden": false,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": "Single column",
+    "designSystem": null,
+    "inspiredBy": "Astro",
+    "inspiredByTheme": "AstroPaper",
+    "acceptsDesignSystems": true
   },
   "astrowind-theme": {
     "element": "astrowind-theme",
@@ -65,11 +90,16 @@
     "name": "AstroWind",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-astrowind-theme-thumb.jpg",
     "description": "Start with a blank site using the AstroWind",
-    "category": ["Website"],
+    "category": ["Website", "Landing page", "Organization"],
     "hidden": false,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": "Top nav",
+    "designSystem": null,
+    "inspiredBy": "Astro",
+    "inspiredByTheme": "AstroWind",
+    "acceptsDesignSystems": true
   },
   "book-theme": {
     "element": "book-theme",
@@ -81,7 +111,12 @@
     "hidden": false,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": "Sidebar",
+    "designSystem": null,
+    "inspiredBy": "Hugo",
+    "inspiredByTheme": "Book",
+    "acceptsDesignSystems": true
   },
   "bootstrap-theme": {
     "element": "bootstrap-theme",
@@ -89,11 +124,16 @@
     "name": "Bootstrap",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-bootstrap-theme-thumb.jpg",
     "description": "Start with a blank site using the Bootstrap",
-    "category": ["Website"],
+    "category": ["Website", "Organization", "Landing page"],
     "hidden": false,
     "priority": 100,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": "Top nav",
+    "designSystem": "Bootstrap",
+    "inspiredBy": null,
+    "inspiredByTheme": null,
+    "acceptsDesignSystems": false
   },
   "carbon-theme": {
     "element": "carbon-theme",
@@ -101,11 +141,16 @@
     "name": "Carbon",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-carbon-theme-thumb.jpg",
     "description": "Start with a blank site using the Carbon",
-    "category": ["Website", "Course", "Documentation"],
+    "category": ["Website", "Course", "Documentation", "Organization"],
     "hidden": false,
     "priority": 50,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": "Sidebar",
+    "designSystem": "Carbon",
+    "inspiredBy": null,
+    "inspiredByTheme": null,
+    "acceptsDesignSystems": false
   },
   "chamfer-theme": {
     "element": "chamfer-theme",
@@ -117,7 +162,12 @@
     "hidden": true,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": null,
+    "designSystem": null,
+    "inspiredBy": null,
+    "inspiredByTheme": null,
+    "acceptsDesignSystems": false
   },
   "chirpy-theme": {
     "element": "chirpy-theme",
@@ -129,7 +179,12 @@
     "hidden": false,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": "Sidebar",
+    "designSystem": null,
+    "inspiredBy": "Jekyll",
+    "inspiredByTheme": "Chirpy",
+    "acceptsDesignSystems": true
   },
   "clean-one": {
     "element": "clean-one",
@@ -137,11 +192,16 @@
     "name": "Clean One",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-clean-one-thumb.jpg",
     "description": "Start with a blank site using the Clean One",
-    "category": ["Course"],
+    "category": ["Course", "Documentation"],
     "hidden": false,
     "priority": -2,
     "terrible": false,
-    "supportedPalettes": ["4", "5"]
+    "supportedPalettes": ["4", "5"],
+    "layout": "Sidebar",
+    "designSystem": null,
+    "inspiredBy": null,
+    "inspiredByTheme": null,
+    "acceptsDesignSystems": true
   },
   "clean-portfolio-theme": {
     "element": "clean-portfolio-theme",
@@ -149,11 +209,16 @@
     "name": "Clean Portfolio",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-clean-portfolio-theme-thumb.jpg",
     "description": "Start with a blank site using the Clean Portfolio",
-    "category": ["Website"],
+    "category": ["Website", "Portfolio"],
     "hidden": false,
     "priority": -10,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": "Top nav",
+    "designSystem": null,
+    "inspiredBy": null,
+    "inspiredByTheme": null,
+    "acceptsDesignSystems": false
   },
   "clean-two": {
     "element": "clean-two",
@@ -165,7 +230,12 @@
     "hidden": false,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": "Sidebar",
+    "designSystem": null,
+    "inspiredBy": null,
+    "inspiredByTheme": null,
+    "acceptsDesignSystems": false
   },
   "coder-theme": {
     "element": "coder-theme",
@@ -173,11 +243,16 @@
     "name": "Coder",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-coder-theme-thumb.jpg",
     "description": "Start with a blank site using the Coder",
-    "category": ["Blog", "Website"],
+    "category": ["Blog", "Website", "Portfolio"],
     "hidden": false,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": "Single column",
+    "designSystem": null,
+    "inspiredBy": "Hugo",
+    "inspiredByTheme": "Coder",
+    "acceptsDesignSystems": true
   },
   "collections-theme": {
     "element": "collections-theme",
@@ -189,7 +264,12 @@
     "hidden": true,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": null,
+    "designSystem": null,
+    "inspiredBy": null,
+    "inspiredByTheme": null,
+    "acceptsDesignSystems": false
   },
   "ddd-brochure-theme": {
     "element": "ddd-brochure-theme",
@@ -201,7 +281,12 @@
     "hidden": true,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": null,
+    "designSystem": null,
+    "inspiredBy": null,
+    "inspiredByTheme": null,
+    "acceptsDesignSystems": false
   },
   "ecosystem-theme": {
     "element": "ecosystem-theme",
@@ -209,11 +294,16 @@
     "name": "Ecosystem",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-ecosystem-theme-thumb.jpg",
     "description": "Start with a blank site using the Ecosystem",
-    "category": ["Website", "Course"],
+    "category": ["Website", "Course", "Organization"],
     "hidden": false,
     "priority": 5,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": "Sidebar",
+    "designSystem": null,
+    "inspiredBy": null,
+    "inspiredByTheme": null,
+    "acceptsDesignSystems": false
   },
   "fluent-theme": {
     "element": "fluent-theme",
@@ -221,11 +311,16 @@
     "name": "Fluent 2",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-fluent-theme-thumb.jpg",
     "description": "Start with a blank site using the Fluent 2",
-    "category": ["Website", "Course", "Documentation"],
+    "category": ["Website", "Course", "Documentation", "Organization"],
     "hidden": false,
     "priority": 50,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": "Sidebar",
+    "designSystem": "Fluent",
+    "inspiredBy": null,
+    "inspiredByTheme": null,
+    "acceptsDesignSystems": false
   },
   "glossy-portfolio-theme": {
     "element": "glossy-portfolio-theme",
@@ -233,11 +328,16 @@
     "name": "Glossy Portfolio",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-glossy-portfolio-theme-thumb.jpg",
     "description": "Start with a blank site using the Glossy Portfolio",
-    "category": ["Website"],
+    "category": ["Website", "Portfolio"],
     "hidden": false,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": "Top nav",
+    "designSystem": null,
+    "inspiredBy": null,
+    "inspiredByTheme": null,
+    "acceptsDesignSystems": false
   },
   "guidebook-theme": {
     "element": "guidebook-theme",
@@ -249,7 +349,12 @@
     "hidden": false,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": "Sidebar",
+    "designSystem": null,
+    "inspiredBy": "Astro",
+    "inspiredByTheme": "Starlight",
+    "acceptsDesignSystems": true
   },
   "handbook-theme": {
     "element": "handbook-theme",
@@ -261,7 +366,12 @@
     "hidden": false,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": "Sidebar",
+    "designSystem": null,
+    "inspiredBy": "Hugo",
+    "inspiredByTheme": "Docsy",
+    "acceptsDesignSystems": true
   },
   "hax-marketing-theme": {
     "element": "hax-marketing-theme",
@@ -269,11 +379,16 @@
     "name": "HAX marketing",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-hax-marketing-theme-thumb.jpg",
     "description": "Start with a blank site using the HAX marketing",
-    "category": ["Website"],
+    "category": ["Website", "Landing page"],
     "hidden": false,
     "priority": 20,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": "Top nav",
+    "designSystem": "Future Traveler",
+    "inspiredBy": null,
+    "inspiredByTheme": null,
+    "acceptsDesignSystems": true
   },
   "haxcms-blank-theme": {
     "element": "haxcms-blank-theme",
@@ -285,7 +400,12 @@
     "hidden": true,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": null,
+    "designSystem": null,
+    "inspiredBy": null,
+    "inspiredByTheme": null,
+    "acceptsDesignSystems": false
   },
   "haxcms-json-theme": {
     "element": "haxcms-json-theme",
@@ -297,7 +417,12 @@
     "hidden": true,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": null,
+    "designSystem": null,
+    "inspiredBy": null,
+    "inspiredByTheme": null,
+    "acceptsDesignSystems": false
   },
   "haxcms-print-theme": {
     "element": "haxcms-print-theme",
@@ -309,7 +434,12 @@
     "hidden": true,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": null,
+    "designSystem": null,
+    "inspiredBy": null,
+    "inspiredByTheme": null,
+    "acceptsDesignSystems": false
   },
   "haxma-theme": {
     "element": "haxma-theme",
@@ -317,11 +447,16 @@
     "name": "Design docs",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-haxma-theme-thumb.jpg",
     "description": "Start with a blank site using the Design docs",
-    "category": ["Website"],
+    "category": ["Website", "Documentation"],
     "hidden": false,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": "Sidebar",
+    "designSystem": null,
+    "inspiredBy": "Figma",
+    "inspiredByTheme": null,
+    "acceptsDesignSystems": false
   },
   "haxor-slevin": {
     "element": "haxor-slevin",
@@ -333,7 +468,12 @@
     "hidden": true,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": null,
+    "designSystem": null,
+    "inspiredBy": null,
+    "inspiredByTheme": null,
+    "acceptsDesignSystems": false
   },
   "hyde-theme": {
     "element": "hyde-theme",
@@ -345,7 +485,12 @@
     "hidden": false,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": "Sidebar",
+    "designSystem": null,
+    "inspiredBy": "Jekyll",
+    "inspiredByTheme": "Hyde",
+    "acceptsDesignSystems": true
   },
   "journey-sidebar-theme": {
     "element": "journey-sidebar-theme",
@@ -357,7 +502,12 @@
     "hidden": true,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": null,
+    "designSystem": null,
+    "inspiredBy": null,
+    "inspiredByTheme": null,
+    "acceptsDesignSystems": false
   },
   "journey-theme": {
     "element": "journey-theme",
@@ -365,11 +515,16 @@
     "name": "Journey",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-journey-theme-thumb.jpg",
     "description": "Start with a blank site using the Journey",
-    "category": ["Website"],
+    "category": ["Website", "Portfolio", "Resume"],
     "hidden": false,
     "priority": -1,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": "Single column",
+    "designSystem": null,
+    "inspiredBy": null,
+    "inspiredByTheme": null,
+    "acceptsDesignSystems": false
   },
   "journey-topbar-theme": {
     "element": "journey-topbar-theme",
@@ -381,7 +536,12 @@
     "hidden": true,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": null,
+    "designSystem": null,
+    "inspiredBy": null,
+    "inspiredByTheme": null,
+    "acceptsDesignSystems": false
   },
   "just-the-docs-theme": {
     "element": "just-the-docs-theme",
@@ -393,7 +553,12 @@
     "hidden": false,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": "Sidebar",
+    "designSystem": null,
+    "inspiredBy": "Jekyll",
+    "inspiredByTheme": "Just the Docs",
+    "acceptsDesignSystems": true
   },
   "learn-two-theme": {
     "element": "learn-two-theme",
@@ -401,11 +566,16 @@
     "name": "Learn2",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-learn-two-theme-thumb.jpg",
     "description": "Start with a blank site using the Learn2",
-    "category": ["Website"],
+    "category": ["Website", "Course", "Documentation"],
     "hidden": false,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": "Sidebar",
+    "designSystem": null,
+    "inspiredBy": null,
+    "inspiredByTheme": null,
+    "acceptsDesignSystems": true
   },
   "link-card-theme": {
     "element": "link-card-theme",
@@ -413,11 +583,16 @@
     "name": "Link Card",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-link-card-theme-thumb.jpg",
     "description": "Start with a blank site using the Link Card",
-    "category": ["Website"],
+    "category": ["Website", "Portfolio"],
     "hidden": false,
     "priority": -6,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": "Single column",
+    "designSystem": null,
+    "inspiredBy": null,
+    "inspiredByTheme": null,
+    "acceptsDesignSystems": false
   },
   "manual-theme": {
     "element": "manual-theme",
@@ -429,7 +604,12 @@
     "hidden": false,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": "Sidebar",
+    "designSystem": null,
+    "inspiredBy": "Docusaurus",
+    "inspiredByTheme": null,
+    "acceptsDesignSystems": true
   },
   "material-theme": {
     "element": "material-theme",
@@ -437,11 +617,16 @@
     "name": "Material 3",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-material-theme-thumb.jpg",
     "description": "Start with a blank site using the Material 3",
-    "category": ["Website", "Course", "Documentation"],
+    "category": ["Website", "Course", "Documentation", "Organization"],
     "hidden": false,
     "priority": 50,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": "Sidebar",
+    "designSystem": "Material",
+    "inspiredBy": null,
+    "inspiredByTheme": null,
+    "acceptsDesignSystems": false
   },
   "minima-theme": {
     "element": "minima-theme",
@@ -453,7 +638,12 @@
     "hidden": false,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": "Single column",
+    "designSystem": null,
+    "inspiredBy": "Jekyll",
+    "inspiredByTheme": "Minima",
+    "acceptsDesignSystems": true
   },
   "minimal-mistakes-theme": {
     "element": "minimal-mistakes-theme",
@@ -465,7 +655,12 @@
     "hidden": false,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": "Sidebar",
+    "designSystem": null,
+    "inspiredBy": "Jekyll",
+    "inspiredByTheme": "Minimal Mistakes",
+    "acceptsDesignSystems": true
   },
   "outline-player": {
     "element": "outline-player",
@@ -477,7 +672,12 @@
     "hidden": true,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": null,
+    "designSystem": null,
+    "inspiredBy": null,
+    "inspiredByTheme": null,
+    "acceptsDesignSystems": false
   },
   "papermod-theme": {
     "element": "papermod-theme",
@@ -489,7 +689,12 @@
     "hidden": false,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": "Single column",
+    "designSystem": null,
+    "inspiredBy": "Hugo",
+    "inspiredByTheme": "PaperMod",
+    "acceptsDesignSystems": true
   },
   "patternfly-theme": {
     "element": "patternfly-theme",
@@ -497,11 +702,16 @@
     "name": "PatternFly",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-patternfly-theme-thumb.jpg",
     "description": "Start with a blank site using the PatternFly",
-    "category": ["Website", "Course", "Documentation"],
+    "category": ["Website", "Course", "Documentation", "Organization"],
     "hidden": false,
     "priority": 50,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": "Sidebar",
+    "designSystem": "PatternFly",
+    "inspiredBy": null,
+    "inspiredByTheme": null,
+    "acceptsDesignSystems": false
   },
   "polaris-flex-sidebar": {
     "element": "polaris-flex-sidebar",
@@ -509,11 +719,16 @@
     "name": "Polaris Sidebar",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-polaris-flex-sidebar-thumb.jpg",
     "description": "Start with a blank site using the Polaris Sidebar",
-    "category": ["Website"],
+    "category": ["Website", "Organization"],
     "hidden": false,
     "priority": -1,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": "Sidebar",
+    "designSystem": null,
+    "inspiredBy": null,
+    "inspiredByTheme": null,
+    "acceptsDesignSystems": false
   },
   "polaris-flex-theme": {
     "element": "polaris-flex-theme",
@@ -521,11 +736,16 @@
     "name": "Polaris Flex",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-polaris-flex-theme-thumb.jpg",
     "description": "Start with a blank site using the Polaris Flex",
-    "category": ["Website"],
+    "category": ["Website", "Organization"],
     "hidden": false,
     "priority": -1,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": "Top nav",
+    "designSystem": null,
+    "inspiredBy": null,
+    "inspiredByTheme": null,
+    "acceptsDesignSystems": false
   },
   "polaris-invent-theme": {
     "element": "polaris-invent-theme",
@@ -533,11 +753,16 @@
     "name": "Polaris Invent",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-polaris-invent-theme-thumb.jpg",
     "description": "Start with a blank site using the Polaris Invent",
-    "category": ["Website"],
+    "category": ["Website", "Organization", "Landing page"],
     "hidden": false,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": "Top nav",
+    "designSystem": null,
+    "inspiredBy": null,
+    "inspiredByTheme": null,
+    "acceptsDesignSystems": false
   },
   "polaris-theme": {
     "element": "polaris-theme",
@@ -545,11 +770,16 @@
     "name": "Polaris",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-polaris-theme-thumb.jpg",
     "description": "Start with a blank site using the Polaris",
-    "category": ["Website"],
+    "category": ["Website", "Organization"],
     "hidden": false,
     "priority": 10,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": "Top nav",
+    "designSystem": null,
+    "inspiredBy": null,
+    "inspiredByTheme": null,
+    "acceptsDesignSystems": false
   },
   "primer-theme": {
     "element": "primer-theme",
@@ -557,11 +787,16 @@
     "name": "Primer",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-primer-theme-thumb.jpg",
     "description": "Start with a blank site using the Primer",
-    "category": ["Website", "Course", "Documentation"],
+    "category": ["Website", "Course", "Documentation", "Organization"],
     "hidden": false,
     "priority": 50,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": "Sidebar",
+    "designSystem": "Primer",
+    "inspiredBy": null,
+    "inspiredByTheme": null,
+    "acceptsDesignSystems": false
   },
   "resume-theme": {
     "element": "resume-theme",
@@ -569,11 +804,16 @@
     "name": "resume-theme",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-resume-theme-thumb.jpg",
     "description": "Start with a blank site using the resume-theme",
-    "category": ["Website"],
+    "category": ["Website", "Resume", "Portfolio"],
     "hidden": false,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": "Sidebar",
+    "designSystem": null,
+    "inspiredBy": null,
+    "inspiredByTheme": null,
+    "acceptsDesignSystems": false
   },
   "shadcn-theme": {
     "element": "shadcn-theme",
@@ -581,11 +821,16 @@
     "name": "shadcn/ui",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-shadcn-theme-thumb.jpg",
     "description": "Start with a blank site using the shadcn/ui",
-    "category": ["Website", "Course", "Documentation"],
+    "category": ["Website", "Course", "Documentation", "Organization"],
     "hidden": false,
     "priority": 50,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": "Sidebar",
+    "designSystem": "shadcn/ui",
+    "inspiredBy": null,
+    "inspiredByTheme": null,
+    "acceptsDesignSystems": false
   },
   "simple-blog": {
     "element": "simple-blog",
@@ -597,7 +842,12 @@
     "hidden": true,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": null,
+    "designSystem": null,
+    "inspiredBy": null,
+    "inspiredByTheme": null,
+    "acceptsDesignSystems": false
   },
   "spacebook-theme": {
     "element": "spacebook-theme",
@@ -605,11 +855,16 @@
     "name": "Space Book",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-spacebook-theme-thumb.jpg",
     "description": "Start with a blank site using the Space Book",
-    "category": ["Website"],
+    "category": ["Website", "Documentation"],
     "hidden": false,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": "Sidebar",
+    "designSystem": null,
+    "inspiredBy": "11ty",
+    "inspiredByTheme": "SpaceBook",
+    "acceptsDesignSystems": false
   },
   "spectrum-theme": {
     "element": "spectrum-theme",
@@ -617,23 +872,16 @@
     "name": "Spectrum",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-spectrum-theme-thumb.jpg",
     "description": "Start with a blank site using the Spectrum",
-    "category": ["Website", "Course", "Documentation"],
+    "category": ["Website", "Course", "Documentation", "Organization"],
     "hidden": false,
     "priority": 50,
     "terrible": false,
-    "supportedPalettes": null
-  },
-  "svg-contrast": {
-    "element": "svg-contrast",
-    "path": "@haxtheweb/utils/lib/svg-contrast.js",
-    "name": "Svg Contrast",
-    "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-svg-contrast-thumb.jpg",
-    "description": "Start with a blank site using the Svg Contrast",
-    "category": ["Website"],
-    "hidden": false,
-    "priority": 0,
-    "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": "Sidebar",
+    "designSystem": "Spectrum",
+    "inspiredBy": null,
+    "inspiredByTheme": null,
+    "acceptsDesignSystems": false
   },
   "tailwind-theme": {
     "element": "tailwind-theme",
@@ -641,11 +889,16 @@
     "name": "Tailwind",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-tailwind-theme-thumb.jpg",
     "description": "Start with a blank site using the Tailwind",
-    "category": ["Website", "Course", "Documentation"],
+    "category": ["Website", "Course", "Documentation", "Organization"],
     "hidden": false,
     "priority": 50,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": "Sidebar",
+    "designSystem": "Tailwind",
+    "inspiredBy": null,
+    "inspiredByTheme": null,
+    "acceptsDesignSystems": false
   },
   "terminal-theme": {
     "element": "terminal-theme",
@@ -657,7 +910,12 @@
     "hidden": false,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": "Single column",
+    "designSystem": null,
+    "inspiredBy": "Hugo",
+    "inspiredByTheme": "Terminal",
+    "acceptsDesignSystems": true
   },
   "terrible-best-themes": {
     "element": "terrible-best-themes",
@@ -669,7 +927,12 @@
     "hidden": false,
     "priority": 0,
     "terrible": true,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": null,
+    "designSystem": null,
+    "inspiredBy": null,
+    "inspiredByTheme": null,
+    "acceptsDesignSystems": false
   },
   "terrible-outlet-themes": {
     "element": "terrible-outlet-themes",
@@ -681,7 +944,12 @@
     "hidden": false,
     "priority": 0,
     "terrible": true,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": null,
+    "designSystem": null,
+    "inspiredBy": null,
+    "inspiredByTheme": null,
+    "acceptsDesignSystems": false
   },
   "terrible-productionz-themes": {
     "element": "terrible-productionz-themes",
@@ -693,7 +961,12 @@
     "hidden": false,
     "priority": 0,
     "terrible": true,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": null,
+    "designSystem": null,
+    "inspiredBy": null,
+    "inspiredByTheme": null,
+    "acceptsDesignSystems": false
   },
   "terrible-resume-themes": {
     "element": "terrible-resume-themes",
@@ -705,7 +978,12 @@
     "hidden": false,
     "priority": 0,
     "terrible": true,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": null,
+    "designSystem": null,
+    "inspiredBy": null,
+    "inspiredByTheme": null,
+    "acceptsDesignSystems": false
   },
   "terrible-themes": {
     "element": "terrible-themes",
@@ -717,7 +995,12 @@
     "hidden": false,
     "priority": 0,
     "terrible": true,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": null,
+    "designSystem": null,
+    "inspiredBy": null,
+    "inspiredByTheme": null,
+    "acceptsDesignSystems": false
   },
   "training-theme": {
     "element": "training-theme",
@@ -725,11 +1008,16 @@
     "name": "Training",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-training-theme-thumb.jpg",
     "description": "Start with a blank site using the Training",
-    "category": ["Website"],
+    "category": ["Website", "Course"],
     "hidden": false,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": "Sidebar",
+    "designSystem": null,
+    "inspiredBy": null,
+    "inspiredByTheme": null,
+    "acceptsDesignSystems": false
   },
   "twenty-six-theme": {
     "element": "twenty-six-theme",
@@ -737,11 +1025,16 @@
     "name": "Twenty Six",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-twenty-six-theme-thumb.jpg",
     "description": "Start with a blank site using the Twenty Six",
-    "category": ["Website"],
+    "category": ["Website", "Blog", "Organization"],
     "hidden": false,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": "Sidebar",
+    "designSystem": null,
+    "inspiredBy": "WordPress",
+    "inspiredByTheme": "Twenty Fifteen",
+    "acceptsDesignSystems": false
   },
   "uswds-theme": {
     "element": "uswds-theme",
@@ -749,11 +1042,16 @@
     "name": "USWDS",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-uswds-theme-thumb.jpg",
     "description": "Start with a blank site using the USWDS",
-    "category": ["Website", "Course", "Documentation"],
+    "category": ["Website", "Course", "Documentation", "Organization"],
     "hidden": false,
     "priority": 50,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": "Sidebar",
+    "designSystem": "USWDS",
+    "inspiredBy": null,
+    "inspiredByTheme": null,
+    "acceptsDesignSystems": false
   },
   "vhs-blog-theme": {
     "element": "vhs-blog-theme",
@@ -765,7 +1063,12 @@
     "hidden": false,
     "priority": 0,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": "Sidebar",
+    "designSystem": null,
+    "inspiredBy": null,
+    "inspiredByTheme": null,
+    "acceptsDesignSystems": false
   },
   "webawesome-theme": {
     "element": "webawesome-theme",
@@ -773,11 +1076,16 @@
     "name": "Web Awesome",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-webawesome-theme-thumb.jpg",
     "description": "Start with a blank site using the Web Awesome",
-    "category": ["Website", "Course", "Documentation"],
+    "category": ["Website", "Course", "Documentation", "Organization"],
     "hidden": false,
     "priority": 50,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": "Sidebar",
+    "designSystem": "Web Awesome",
+    "inspiredBy": null,
+    "inspiredByTheme": null,
+    "acceptsDesignSystems": false
   },
   "writing-theme": {
     "element": "writing-theme",
@@ -785,11 +1093,16 @@
     "name": "Writing",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-writing-theme-thumb.jpg",
     "description": "Start with a blank site using the Writing",
-    "category": ["Website"],
+    "category": ["Website", "Blog"],
     "hidden": false,
     "priority": 5,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": "Single column",
+    "designSystem": null,
+    "inspiredBy": null,
+    "inspiredByTheme": null,
+    "acceptsDesignSystems": false
   },
   "wysiwyg96-theme": {
     "element": "wysiwyg96-theme",
@@ -797,10 +1110,15 @@
     "name": "WYSIWYG 96",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-wysiwyg96-theme-thumb.jpg",
     "description": "Start with a blank site using the WYSIWYG 96",
-    "category": ["Website"],
+    "category": ["Website", "Blog"],
     "hidden": false,
     "priority": 40,
     "terrible": false,
-    "supportedPalettes": null
+    "supportedPalettes": null,
+    "layout": "Sidebar",
+    "designSystem": null,
+    "inspiredBy": "Classic web editors",
+    "inspiredByTheme": "1995-96 WYSIWYG editors",
+    "acceptsDesignSystems": true
   }
 }

@@ -26,6 +26,10 @@ import { I18NManagerStore } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
  * `SpaceBook theme inspired by 11ty SpaceBook theme for HAXcms`
  *
  * @demo index.html
+ * @haxcms-theme-category Website, Documentation
+ * @haxcms-theme-layout Sidebar
+ * @haxcms-theme-inspired-by 11ty
+ * @haxcms-theme-inspired-by-theme SpaceBook
  * @element spacebook-theme
  */
 export class SpacebookTheme extends HAXCMSThemeParts(

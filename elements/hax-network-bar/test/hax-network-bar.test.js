@@ -1,4 +1,5 @@
 import { html, fixture, expect, oneEvent, aTimeout } from "@open-wc/testing";
+import { setViewport } from "@web/test-runner-commands";
 import {
   HAX_NETWORK_DESTINATIONS,
   HAX_NETWORK_SITES,
@@ -312,6 +313,31 @@ describe("hax-network-bar", () => {
     ).to.equal(1);
     expect(r.querySelector("button.install-btn")).to.exist;
     await expect(bar).shadowDom.to.be.accessible();
+  });
+
+  it("keeps the compact bar to one row until a phone is too narrow for it", async () => {
+    const bar = await fixture(
+      html`<hax-network-bar compact current="try"
+        ><button slot="pre" type="button">Publish</button></hax-network-bar
+      >`,
+    );
+    const rows = async (width) => {
+      await setViewport({ width, height: 800 });
+      await aTimeout(50);
+      const r = bar.shadowRoot;
+      const app = r.querySelector(".app").getBoundingClientRect();
+      const start = r.querySelector(".start").getBoundingClientRect();
+      return app.top >= start.bottom ? 2 : 1;
+    };
+    try {
+      for (const width of [1280, 1100, 1000, 900, 700, 601]) {
+        expect(await rows(width), width + "px").to.equal(1);
+      }
+      expect(await rows(600)).to.equal(2);
+      expect(await rows(375)).to.equal(2);
+    } finally {
+      await setViewport({ width: 1280, height: 800 });
+    }
   });
 
   it("offers Merlin, drawn as the Future Traveler", () => {

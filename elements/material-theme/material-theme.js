@@ -28,7 +28,9 @@ import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
  * active.
  *
  * @title Material 3
- * @haxcms-theme-category Website, Course, Documentation
+ * @haxcms-theme-category Website, Course, Documentation, Organization
+ * @haxcms-theme-layout Sidebar
+ * @haxcms-theme-design-system Material
  * @haxcms-theme-priority 50
  * @demo demo/index.html
  * @element material-theme

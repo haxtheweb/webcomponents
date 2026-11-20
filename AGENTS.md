@@ -114,6 +114,10 @@ Before starting any work, check the unified issue queue:
   - Inherit from `DDDSuper` class for automatic DDD integration
   - Reference `.dddignore` file to exclude irrelevant files during audits
 
+### Admin fields
+- **Every field in admin chrome is a `simple-fields-field`** (app-hax, HAXcms core UI, the editor, outline-designer, the character builder): text, search, select, textarea, checkbox and radio. Style it with `HaxUiAdminSimpleFields` from `@haxtheweb/d-d-d/lib/HaxUiAdminControls.js` (`class="hax-ui-simple-field"`, add `compact` for a 32px toolbar field) and read changes from its `value-changed` event (`e.detail.value`; it also fires for the value it was rendered with, so set state from it rather than toggling). Never hand-draw `<input>`, `<select>` or `<textarea>` there: a native control styled per element is how white-on-white dark mode bugs slip in. Hidden and file inputs are the only exceptions.
+- `yarn lint:hax-ui-admin` reports a hand-drawn field as `raw-field`, and new ones fail `yarn precheck` and CI. The fields that predate the rule are listed in `scripts/hax-ui-admin-contract.baseline.json`; convert them when you touch those files, then run `node scripts/hax-ui-admin-contract-check.mjs --update-baseline`.
+
 ### Component Architecture
 - **HAX Properties**: Include `haxProperties` in web components for HAX compatibility (use `--writeHaxProperties` flag)
 - **Theme Development**: HAXcms themes should extend `HAXCMSLitElement` class
