@@ -156,7 +156,7 @@
       "branch": "main",
       "phase": "satellite",
       "tag": "direct",
-      "deploy": "GitHub Pages: haxtheweb.github.io/art (loads HAX from cdn.hax.cloud at runtime; links to RPG me)"
+      "deploy": "Vercel: art.hax.cloud (the hax-art portfolio, loads HAX from cdn.hax.cloud at runtime; its menu links to RPG me); GitHub Pages: haxtheweb.github.io/art (the whole repo, for the interactive pieces)"
     },
     {
       "repo": "learn",

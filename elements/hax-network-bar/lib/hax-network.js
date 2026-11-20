@@ -73,7 +73,7 @@ export const HAX_NETWORK = {
         "PRAW drawn as a web. Every other property takes its stories from here.",
     },
     art: {
-      url: "https://haxtheweb.github.io/art/",
+      url: "https://art.hax.cloud/",
       color: "discoveryCoral",
       on: "coalyGray",
       icon: "image:palette",

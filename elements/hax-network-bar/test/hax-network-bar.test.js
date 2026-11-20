@@ -128,9 +128,7 @@ describe("hax-network-bar", () => {
     await element.updateComplete;
     const lit = r.querySelectorAll('nav.props a[aria-current="page"]');
     expect(lit.length).to.equal(1);
-    expect(lit[0].getAttribute("href")).to.equal(
-      "https://haxtheweb.github.io/art/",
-    );
+    expect(lit[0].getAttribute("href")).to.equal("https://art.hax.cloud/");
     expect(lit[0].querySelector(".name").textContent).to.equal("Art");
     expect(r.querySelector("#card-art .you").textContent).to.equal(
       "You are here",
